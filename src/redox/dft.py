@@ -65,20 +65,72 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
     return out
 
 
+def read_manifest():
+    import csv
+    with (ROOT / "library" / "manifest.csv").open() as f:
+        return list(csv.DictReader(f))
+
+
+def geom_for(gid: str, state: str) -> Path:
+    """Prefer the UMA-relaxed geometry; fall back to the conformer seed."""
+    relaxed = ROOT / "calcs" / "uma" / gid / state / "relaxed.xyz"
+    return relaxed if relaxed.exists() else ROOT / "library" / gid / f"{state}.xyz"
+
+
+def run_batch(rows, xc, basis, force):
+    outroot = ROOT / "calcs" / "dft"
+    for r in rows:
+        gid, st = r["id"], r["state"]
+        outdir = outroot / gid / st
+        rj = outdir / "result.json"
+        if rj.exists() and not force:
+            print(f"[skip] {gid}/{st}", flush=True); continue
+        geom = geom_for(gid, st)
+        if not geom.exists():
+            print(f"[miss] {gid}/{st} no geometry ({geom})", flush=True); continue
+        print(f"[run ] {gid}/{st} q={r['charge']} m={r['mult']} ...", flush=True)
+        try:
+            res = dft_smd(geom, int(r["charge"]), int(r["mult"]), xc, basis)
+        except Exception as e:
+            print(f"[fail] {gid}/{st}: {type(e).__name__}: {str(e)[:120]}", flush=True)
+            continue
+        res.update(id=gid, state=st, n_e=int(r["n_e"]))
+        outdir.mkdir(parents=True, exist_ok=True)
+        rj.write_text(json.dumps(res, indent=2))
+        print(f"[done] {gid}/{st} E_smd={res['e_smd_eV']:.3f} eV "
+              f"dGsolv={res.get('dG_solv_eV', float('nan')):.3f} eV "
+              f"conv={res['converged_smd']}", flush=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--xyz", required=True)
-    ap.add_argument("--charge", type=int, required=True)
-    ap.add_argument("--mult", type=int, required=True)
+    ap.add_argument("--xyz", default=None, help="single-geometry mode")
+    ap.add_argument("--charge", type=int)
+    ap.add_argument("--mult", type=int)
+    ap.add_argument("--all", action="store_true", help="batch over manifest states")
+    ap.add_argument("--only", default=None, help="'group' or 'group:state'")
+    ap.add_argument("--shard", default=None, help="'n:i' for CPU fan-out")
     ap.add_argument("--xc", default="b3lyp")
     ap.add_argument("--basis", default="def2-svp")
-    ap.add_argument("--out", default=None, help="write result JSON here")
-    ap.add_argument("--nthreads", type=int, default=0, help="OMP threads (0=leave as is)")
+    ap.add_argument("--out", default=None)
+    ap.add_argument("--force", action="store_true")
+    ap.add_argument("--nthreads", type=int, default=0)
     args = ap.parse_args()
 
     if args.nthreads:
         import pyscf.lib
         pyscf.lib.num_threads(args.nthreads)
+
+    if args.all or args.only or args.shard:
+        rows = read_manifest()
+        if args.only:
+            gid, _, st = args.only.partition(":")
+            rows = [r for r in rows if r["id"] == gid and (not st or r["state"] == st)]
+        if args.shard:
+            n, i = (int(x) for x in args.shard.split(":"))
+            rows = [r for k, r in enumerate(rows) if k % n == i]
+        run_batch(rows, args.xc, args.basis, args.force)
+        return
 
     res = dft_smd(Path(args.xyz), args.charge, args.mult, args.xc, args.basis)
     print(json.dumps(res, indent=2))
