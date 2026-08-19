@@ -26,10 +26,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 LIBRARY = ROOT / "library"
 OUT = ROOT / "calcs" / "uma"
-# uma-s-1p1 is the newest UMA registered in fairchem-core 2.7.1 (the version compatible
-# with torch 2.6 / CUDA 12.4). uma-s-1p2* require newer fairchem -> torch 2.13 -> CUDA>=12.6,
-# which this driver can't run. uma-m-1p1 is available for an accuracy benchmark.
-DEFAULT_MODEL = "uma-s-1p1"
+# uma-s-1p2 is the newest UMA registered in fairchem-core 2.21.0 (matched to torch
+# 2.8+cu128, which runs on the 12.4 driver via CUDA minor-version compat). uma-s-1p2p1
+# needs fairchem 2.22 -> torch 2.13 (no cu12x build) so it's not usable here; uma-s-1p2
+# is what lambda6 uses. uma-m-1p1 available for an accuracy benchmark.
+DEFAULT_MODEL = "uma-s-1p2"
 
 
 def read_manifest():

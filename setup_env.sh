@@ -21,7 +21,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 #   No nvidia-smi -> cpu.
 if [ -z "${CUDA_TAG:-}" ]; then
   if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1; then
-    CUDA_TAG="cu124"
+    CUDA_TAG="cu128"
     echo ">> GPU detected -> CUDA_TAG=$CUDA_TAG (override if your driver's CUDA < 12.4)"
   else
     CUDA_TAG="cpu"

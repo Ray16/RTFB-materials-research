@@ -2,8 +2,8 @@
 # torch, so pip sees torch already satisfied and won't swap in a mismatched CUDA build.
 # torch itself is pinned here too, so fairchem's dependency resolution keeps the build
 # that setup_env.sh installed from the CUDA-specific index.
-torch==2.6.0
-fairchem-core
+torch==2.8.0
+fairchem-core==2.21.0
 ase
 rdkit
 pyscf
