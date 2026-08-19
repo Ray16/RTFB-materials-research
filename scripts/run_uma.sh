@@ -9,7 +9,7 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$HERE/../src"
 source ~/miniforge3/etc/profile.d/conda.sh && conda activate redox
 
-MODEL="${MODEL:-uma-s-1p1}"
+MODEL="${MODEL:-uma-s-1p2p1}"
 NGPU="$(python -c 'import torch; print(max(1, torch.cuda.device_count()))')"
 echo ">> fanning UMA ($MODEL) across $NGPU GPU(s)"
 

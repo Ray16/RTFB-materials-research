@@ -50,7 +50,10 @@ def ensure_registered(model: str):
         raise RuntimeError("uma-s-1p2 not in fairchem registry; cannot derive 1p2p1")
     entry = dict(d["uma-s-1p2"]); entry["filename"] = "uma-s-1p2p1.pt"
     d["uma-s-1p2p1"] = entry
-    reg.write_text(json.dumps(d, indent=4))
+    tmp = reg.with_suffix(".json.tmp")   # atomic write (avoids parallel-shard races)
+    tmp.write_text(json.dumps(d, indent=4))
+    import os
+    os.replace(tmp, reg)
 
 
 def read_manifest():
