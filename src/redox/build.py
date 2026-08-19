@@ -69,15 +69,16 @@ def radius_of_gyration(molH: Chem.Mol) -> float:
     return float(np.sqrt(((xyz - xyz.mean(0)) ** 2).sum(1).mean()))
 
 
-def best_conformer(mol: Chem.Mol, net_charge: int = 0,
-                   seed: int = 0xC0FFEE, prune_rms: float = 0.5):
-    """Conformer search: embed an ETKDG ensemble, FF-rank, RMSD-prune, pick lowest.
+def conformer_ensemble(mol: Chem.Mol, net_charge: int = 0, top_k: int = 10,
+                       seed: int = 0xC0FFEE, prune_rms: float = 0.1):
+    """Conformer search: embed an ETKDG ensemble, FF-rank, RMSD-prune, return the TOP-K
+    lowest-FF-energy distinct conformers (each re-ranked per redox state downstream with
+    UMA, which is charge/spin-aware; FF ranking here is only a coarse pre-filter).
 
-    ETKDG (distance geometry) yields extended seeds. For charged species we deliberately
-    do a LIGHT FF cleanup only (few iters), to avoid gas-phase over-folding into
-    artificial salt bridges / intramolecular H-bonds; those states are re-optimized in
-    implicit solvent (xtb-ALPB / DFT-SMD) downstream. Returns
-    (mol_best_conf, ff_used, energy, n_kept, rg)."""
+    Tighter pruning (0.1 A) keeps benzylic/linker rotamers the old 0.5 A collapsed. For
+    charged species we do a LIGHT FF cleanup only, to avoid gas-phase over-folding into
+    artificial salt bridges; final geometries come from UMA + DFT-SMD. Returns
+    (molH_with_topk_confs, conf_ids_sorted, ff_used, energies_sorted)."""
     molH = Chem.AddHs(mol)
     n = n_conformers(mol)
     params = AllChem.ETKDGv3()
@@ -85,13 +86,12 @@ def best_conformer(mol: Chem.Mol, net_charge: int = 0,
     params.pruneRmsThresh = prune_rms
     params.useRandomCoords = False
     cids = list(AllChem.EmbedMultipleConfs(molH, numConfs=n, params=params))
-    if not cids:  # retry with random coords for hard cases
+    if not cids:
         params.useRandomCoords = True
         cids = list(AllChem.EmbedMultipleConfs(molH, numConfs=n, params=params))
     if not cids:
         raise RuntimeError("conformer embedding failed")
 
-    # Gentle for charged species (avoid gas-phase collapse); fuller for neutral.
     maxiters = 200 if net_charge != 0 else 1000
     ff_used = "MMFF"
     props = AllChem.MMFFGetMoleculeProperties(molH)
@@ -102,11 +102,8 @@ def best_conformer(mol: Chem.Mol, net_charge: int = 0,
         res = AllChem.UFFOptimizeMoleculeConfs(molH, maxIters=maxiters)
     energies = [e for _, e in res]
 
-    best = min(range(len(cids)), key=lambda i: energies[i])
-    out = Chem.Mol(molH)
-    out.RemoveAllConformers()
-    out.AddConformer(molH.GetConformer(cids[best]), assignId=True)
-    return out, ff_used, energies[best], len(cids), radius_of_gyration(out)
+    order = sorted(range(len(cids)), key=lambda i: energies[i])[:top_k]
+    return molH, [cids[i] for i in order], ff_used, [energies[i] for i in order]
 
 
 def to_xyz(molH: Chem.Mol, comment: str) -> str:
@@ -133,26 +130,30 @@ def main():
                   f"embedding picks an arbitrary isomer; specify stereo in the SMILES "
                   f"or enumerate. SMILES={smi}")
         (gdir / f"{g['id']}.smiles").write_text(smi + "\n")
-        # One conformer search per molecular framework -> shared seed geometry.
+        # Conformer ENSEMBLE per molecular framework -> conf_00.xyz .. conf_KK.xyz.
+        # These are charge/spin-independent geometries; UMA re-ranks them per redox state
+        # (charge/spin-aware) and scans spin multiplicities downstream (see uma.py).
         net_q = Chem.GetFormalCharge(mol)
-        molH, ff, e, nkept, rg = best_conformer(mol, net_charge=net_q)
-        seed = to_xyz(molH, f"conformer seed ff={ff} E={e:.3f} nconf={nkept} Rg={rg:.2f} smiles={smi}")
-        (gdir / "conformer.xyz").write_text(seed)
-        print(f"  {g['id']:16s} seed ff={ff:4s} E={e:9.2f} nconf={nkept:3d} Rg={rg:.2f} q={net_q:+d}")
-        # Per-state seeds start from the same conformer; UMA/DFT relax each state.
-        # Charged states get solvated pre-opt (xtb-ALPB) to avoid gas-phase artifacts.
+        confdir = gdir / "conformers"; confdir.mkdir(exist_ok=True)
+        molH, conf_ids, ff, energies = conformer_ensemble(mol, net_charge=net_q)
+        for f in confdir.glob("conf_*.xyz"):
+            f.unlink()  # clear stale ensemble
+        for i, (cid, e) in enumerate(zip(conf_ids, energies)):
+            single = Chem.Mol(molH); single.RemoveAllConformers()
+            single.AddConformer(molH.GetConformer(cid), assignId=True)
+            rg = radius_of_gyration(single)
+            (confdir / f"conf_{i:02d}.xyz").write_text(
+                to_xyz(single, f"conf {i} ff={ff} E={e:.3f} Rg={rg:.2f} smiles={smi}"))
+        print(f"  {g['id']:16s} {len(conf_ids)} conformers (ff={ff}, q={net_q:+d})")
         for label, charge, mult, n_e in g["states"]:
-            (gdir / f"{label}.xyz").write_text(
-                to_xyz(molH, f"charge={charge} mult={mult} n_e={n_e} smiles={smi}"))
             rows.append(dict(id=g["id"], name=g["name"], family=g["family"],
-                             state=label, charge=charge, mult=mult, n_e=n_e,
-                             solv_preopt=int(charge != 0), smiles=smi))
-            print(f"      {label:5s} q={charge:+d} m={mult} n_e={n_e:+d}"
-                  f"{'  [solv-preopt]' if charge != 0 else ''}")
+                             state=label, charge=charge, mult_hint=mult, n_e=n_e,
+                             n_conf=len(conf_ids), solv_preopt=int(charge != 0), smiles=smi))
+            print(f"      {label:5s} q={charge:+d} mult_hint={mult} n_e={n_e:+d}")
     manifest = LIBRARY / "manifest.csv"
     with manifest.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["id", "name", "family", "state",
-                                          "charge", "mult", "n_e", "solv_preopt", "smiles"])
+        w = csv.DictWriter(f, fieldnames=["id", "name", "family", "state", "charge",
+                                          "mult_hint", "n_e", "n_conf", "solv_preopt", "smiles"])
         w.writeheader()
         w.writerows(rows)
     print(f"\nWrote {len(rows)} states across {len(groups)} groups -> {manifest}")

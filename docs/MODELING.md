@@ -13,6 +13,26 @@ adjacent states differing by one electron:
 O + e-  ->  R        (reduction)      E° = -ΔG°/(1·F) - E_ref
 ```
 
+**Spin state is DETERMINED, not assumed.** For each charge we scan candidate multiplicities
+with UMA (even-electron → singlet+triplet; odd → doublet; plus the config hint) and take
+the lowest-energy one. The singlet–triplet gap is recorded (`spin_gap_eV`). This matters for
+even-electron reduced species (viologen 2e-reduced, anthraquinone dianion), which could be
+closed-/open-shell singlet or triplet — the config `mult_hint` is only a starting guess.
+
+**Conformers are sampled per redox state.** build.py emits a conformer ENSEMBLE (top-K,
+0.1 Å pruning); UMA relaxes every (conformer × multiplicity) for each state and keeps the
+global minimum (`conf_idx`). FF ranking is only a coarse pre-filter — UMA (charge/spin-aware)
+does the real ranking, since the preferred conformation changes between oxidation states.
+
+**Protonation state — assumption (state explicitly).** We model **aprotic acetonitrile,
+pure outer-sphere electron transfer** with **fixed protonation** (no protons added/removed
+between redox states). This is appropriate for dry MeCN. CAVEAT: **proton-coupled electron
+transfer (PCET)** can dominate for **quinone radical anions/dianions** (→ semiquinone/
+hydroquinone) and **TEMPO reduction** (→ hydroxylamine) if any proton source (trace water,
+acidic electrolyte) is present; then the measured potential differs from our pure-ET value.
+Treat those groups' reduced states with this caveat; a separate PCET calculation is needed
+if the electrolyte is not rigorously dry.
+
 Multi-electron groups are modeled as **sequential 1e events**, each with its own E°:
 - viologen: `2+  --e-->  +•  --e-->  0`   → E°₁, E°₂
 - anthraquinone: `0  --e-->  -1•  --e-->  -2`  → E°₁, E°₂

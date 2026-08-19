@@ -70,27 +70,56 @@ def make_calculator(model: str, device: str):
     return FAIRChemCalculator(predictor, task_name="omol")
 
 
-def relax_state(calc, xyz_path: Path, charge: int, mult: int, fmax: float, steps: int):
-    """Relax one geometry with UMA under (charge, mult). Returns dict of results."""
-    from ase.io import read
+def candidate_mults(n_electrons: int, hint: int | None = None):
+    """Spin multiplicities to scan for a given electron count. Even-electron species get
+    singlet+triplet (the real ground-state question, e.g. reduced dications/dianions);
+    odd-electron get doublet. The config hint is always included."""
+    base = [1, 3] if n_electrons % 2 == 0 else [2]
+    if hint and hint not in base:
+        base.append(hint)
+    return sorted(set(base))
+
+
+def relax_one(calc, atoms, charge: int, mult: int, fmax: float, steps: int):
+    """Relax one geometry under (charge, mult). Returns (energy_eV, fmax, n_steps, atoms)."""
     from ase.optimize import BFGS
-    atoms = read(str(xyz_path))
-    # OMol conditioning: total charge + spin multiplicity (2S+1) carried on atoms.info.
-    atoms.info["charge"] = int(charge)
-    atoms.info["spin"] = int(mult)
-    atoms.calc = calc
-    opt = BFGS(atoms, logfile=None)
+    a = atoms.copy()
+    a.info["charge"] = int(charge)   # OMol conditioning: total charge + spin multiplicity
+    a.info["spin"] = int(mult)
+    a.calc = calc
+    opt = BFGS(a, logfile=None)
     opt.run(fmax=fmax, steps=steps)
-    f = atoms.get_forces()
+    f = a.get_forces()
     fmax_final = float((f ** 2).sum(axis=1).max() ** 0.5)
-    return dict(
-        energy_eV=float(atoms.get_potential_energy()),
-        fmax=fmax_final,
-        n_steps=int(opt.get_number_of_steps()),
-        converged=bool(fmax_final <= fmax),
-        charge=int(charge), mult=int(mult),
-        atoms=atoms,
-    )
+    return float(a.get_potential_energy()), fmax_final, int(opt.get_number_of_steps()), a
+
+
+def relax_state_scan(calc, conf_paths, charge: int, mult_hint: int, fmax: float, steps: int):
+    """Scan every (conformer x candidate multiplicity), relax each with UMA, and return the
+    global lowest-energy result + diagnostics (chosen mult, singlet-triplet gap, conformer
+    spread) so the spin ground state and best conformer are DETERMINED, not assumed."""
+    from ase.io import read
+    confs = [read(str(p)) for p in conf_paths]
+    n_elec = int(sum(confs[0].get_atomic_numbers())) - int(charge)
+    mults = candidate_mults(n_elec, mult_hint)
+
+    best = None                      # (energy, mult, conf_idx, atoms, fmax, nsteps)
+    per_mult_best = {}               # mult -> best energy (for spin gap)
+    for m in mults:
+        for ci, atoms in enumerate(confs):
+            e, fm, ns, a = relax_one(calc, atoms, charge, m, fmax, steps)
+            if m not in per_mult_best or e < per_mult_best[m]:
+                per_mult_best[m] = e
+            if best is None or e < best[0]:
+                best = (e, m, ci, a, fm, ns)
+    e, m, ci, a, fm, ns = best
+    others = sorted(v for k, v in per_mult_best.items() if k != m)
+    spin_gap = round(others[0] - e, 4) if others else None
+    return dict(energy_eV=e, chosen_mult=m, mult_hint=mult_hint, conf_idx=ci,
+                fmax=fm, n_steps=ns, converged=bool(fm <= fmax),
+                charge=int(charge), n_elec=n_elec, mults_scanned=mults,
+                spin_gap_eV=spin_gap, per_mult_eV={k: round(v, 4) for k, v in per_mult_best.items()},
+                n_conf=len(confs), atoms=a)
 
 
 def write_xyz(atoms, path: Path, comment: str):
@@ -130,22 +159,28 @@ def main():
         if res_json.exists() and not args.force:
             print(f"[skip] {gid}/{st} (done)")
             continue
-        seed = LIBRARY / gid / f"{st}.xyz"
+        conf_paths = sorted((LIBRARY / gid / "conformers").glob("conf_*.xyz"))
+        if not conf_paths:
+            print(f"[miss] {gid}/{st}: no conformer ensemble (run build.py)"); continue
         if calc is None:
             print(f"[load] {args.model} on {args.device}")
             calc = make_calculator(args.model, args.device)
-        print(f"[run ] {gid}/{st} q={r['charge']} m={r['mult']} ...", flush=True)
-        res = relax_state(calc, seed, int(r["charge"]), int(r["mult"]),
-                          args.fmax, args.steps)
+        mult_hint = int(r.get("mult_hint") or r.get("mult") or 1)
+        print(f"[run ] {gid}/{st} q={r['charge']} scan {len(conf_paths)} confs x mults ...",
+              flush=True)
+        res = relax_state_scan(calc, conf_paths, int(r["charge"]), mult_hint,
+                               args.fmax, args.steps)
         atoms = res.pop("atoms")
         write_xyz(atoms, outdir / "relaxed.xyz",
-                  comment=f"{gid}/{st} q={r['charge']} m={r['mult']} "
-                          f"E={res['energy_eV']:.6f}eV model={args.model}")
+                  comment=f"{gid}/{st} q={r['charge']} m={res['chosen_mult']} "
+                          f"E={res['energy_eV']:.6f}eV conf={res['conf_idx']} model={args.model}")
         res.update(id=gid, state=st, model=args.model,
                    n_e=int(r["n_e"]), smiles=r["smiles"])
         res_json.write_text(json.dumps(res, indent=2))
-        print(f"[done] {gid}/{st} E={res['energy_eV']:.4f} eV "
-              f"fmax={res['fmax']:.4f} steps={res['n_steps']} conv={res['converged']}")
+        flag = " <-- mult != hint" if res["chosen_mult"] != mult_hint else ""
+        print(f"[done] {gid}/{st} E={res['energy_eV']:.4f} mult={res['chosen_mult']} "
+              f"(hint {mult_hint}){flag} S-T gap={res['spin_gap_eV']} conf={res['conf_idx']} "
+              f"conv={res['converged']}")
 
 
 if __name__ == "__main__":
