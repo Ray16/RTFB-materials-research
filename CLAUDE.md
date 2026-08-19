@@ -25,7 +25,21 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - Solvent/referencing params live in `config/electrolyte.py` (acetonitrile, ε=37.5, SMD,
   PF₆⁻, Fc/Fc⁺ reference) — read from there, don't hard-code.
 - One molecule = one stable ID; keep its calcs in a dir keyed by ID + redox state.
-- GPUs: 4× V100 32GB — set `CUDA_VISIBLE_DEVICES` when launching parallel jobs.
+- Do not assume specific hardware — **detect** available GPUs/CPUs at runtime (e.g.
+  `torch.cuda.device_count()`, `os.cpu_count()`) and scale to what's present.
+
+## Parallelization (always maximize)
+- The redox **states/molecules are independent** — treat every stage as embarrassingly
+  parallel; never run them serially when they can fan out.
+- **GPUs:** detect how many are present and distribute independent jobs one-per-GPU via
+  `CUDA_VISIBLE_DEVICES`, keeping all of them busy. For UMA, batch structures through the
+  calculator rather than looping. Fall back to CPU when no GPU is present.
+- **CPUs:** use RDKit `numThreads=0` (all cores) for conformer generation; set
+  `OMP_NUM_THREADS`/`MKL_NUM_THREADS` for PySCF/xtb and shard jobs across cores.
+- **Avoid oversubscription:** partition cores/GPUs across workers; don't let N jobs each
+  grab all threads. Prefer a job queue that pins each task to a GPU + a core slice.
+- Make batch scripts resumable (skip states whose output already exists) so parallel
+  reruns don't redo finished work.
 
 ## Conventions
 - Generated structures → `library/`; raw inputs → `data/raw/`; don't mix.
