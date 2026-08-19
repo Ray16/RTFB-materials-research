@@ -54,6 +54,14 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - Make batch scripts resumable (skip states whose output already exists) so parallel
   reruns don't redo finished work.
 
+## Chemistry correctness
+- **Every compound entering the workflow must have fully specified stereochemistry.**
+  Unspecified tetrahedral centers or C=C geometry make the 3D embedder pick an arbitrary
+  isomer — a common silent error. `build.py` flags unassigned stereo; do not run a
+  compound with unresolved centers. Either specify it in the SMILES, or **enumerate the
+  stereoisomers** and treat each as its own library entry (they can differ in redox
+  properties). The current 6 compounds are verified stereocenter-free.
+
 ## Conventions
 - Generated structures → `library/`; raw inputs → `data/raw/`; don't mix.
 - Config (redox groups, run params) → `config/`; reusable code → `src/redox/`.
