@@ -42,14 +42,30 @@ optimizer.
 
 ## Setup
 
+`setup_env.sh` creates the `redox` env, installs pinned deps, and verifies. It
+auto-detects GPU vs CPU; override with `CUDA_TAG`.
+
+**GPU machine** (auto-detected → `cu124`):
 ```bash
-source ~/miniforge3/etc/profile.d/conda.sh
-conda activate redox
-python scripts/check_env.py
+./setup_env.sh
+```
+If your driver's CUDA version (`nvidia-smi`, top-right) is **below 12.4**, pick the
+matching PyTorch wheel tag instead, e.g. `CUDA_TAG=cu118 ./setup_env.sh`.
+
+**CPU-only machine** (auto-detected when no `nvidia-smi`, or force it):
+```bash
+CUDA_TAG=cpu ./setup_env.sh
+```
+
+Then activate and check:
+```bash
+source $(conda info --base)/etc/profile.d/conda.sh && conda activate redox
+python scripts/check_env.py     # ENV OK; "cuda available: True" on GPU, False on CPU
 ```
 
 UMA weights are gated — request access to `facebook/UMA` on HuggingFace, then
-`huggingface-cli login`.
+`huggingface-cli login`. Adding a pipeline dependency? Update `requirements.txt` +
+`scripts/check_env.py` so the env stays reproducible.
 
 ## Layout
 

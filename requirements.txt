@@ -1,0 +1,15 @@
+# Pip dependencies for the `redox` env. Installed by setup_env.sh AFTER a CUDA-matched
+# torch, so pip sees torch already satisfied and won't swap in a mismatched CUDA build.
+# torch itself is pinned here too, so fairchem's dependency resolution keeps the build
+# that setup_env.sh installed from the CUDA-specific index.
+torch==2.6.0
+fairchem-core
+ase
+rdkit
+pyscf
+pandas
+numpy
+scipy
+matplotlib
+jupyter
+huggingface_hub

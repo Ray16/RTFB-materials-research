@@ -7,6 +7,12 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - Always activate the env first:
   `source ~/miniforge3/etc/profile.d/conda.sh && conda activate redox`
 - Never install into `base`. Add packages to the `redox` env.
+- **Keep the env reproducible:** whenever you add a new Python package to the main
+  pipeline, immediately add it to `requirements.txt` (and `setup_env.sh` if it needs
+  special handling, e.g. a CUDA-matched index) so `./setup_env.sh` reproduces the env
+  after a fresh `git pull`. Also add its import to `scripts/check_env.py`.
+- torch must match the GPU driver's CUDA version — install it via `setup_env.sh` (pinned
+  before other deps), not ad hoc, or fairchem's resolver will pull a mismatched build.
 - Verify with `python scripts/check_env.py` after any env change.
 
 ## Guardrails
