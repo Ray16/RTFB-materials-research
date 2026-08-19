@@ -34,6 +34,13 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - Do not assume specific hardware — **detect** available GPUs/CPUs at runtime (e.g.
   `torch.cuda.device_count()`, `os.cpu_count()`) and scale to what's present.
 
+## Running jobs (never block the foreground)
+- **Always background any job that can run in the background** (installs, UMA/DFT runs,
+  downloads, long tests) so work continues while it runs; rely on the completion signal
+  to know when it's done. Do not sit and wait for a job in the foreground.
+- Write job output to a log file so progress can be inspected without blocking.
+- Only run trivially fast, must-be-sequential commands in the foreground.
+
 ## Parallelization (always maximize)
 - The redox **states/molecules are independent** — treat every stage as embarrassingly
   parallel; never run them serially when they can fan out.

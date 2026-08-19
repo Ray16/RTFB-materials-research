@@ -42,7 +42,28 @@ woven in, not deferred (§V). Status: **P0 mostly done**, env finishing.
 
 ---
 
-## §V — Validation strategy (we are using approximations, so anchor them)
+## §V — Validation strategy (HARD GATE — anchor the modeling before trusting it)
+
+**This is a gate, not a footnote.** No production ranking (P5) is reported until the
+pipeline reproduces measured redox potentials within tolerance on the validation set.
+
+**Acceptance criteria (vs experimental MeCN potentials, referenced to Fc/Fc⁺):**
+- Good: MAE ≤ 0.15 V and R² ≥ 0.9 after the linear calibration → proceed to P5.
+- Marginal: 0.15 < MAE ≤ 0.30 V → proceed but report wide error bars; note limitation.
+- **Fail: MAE > 0.30 V or R² < 0.8 → STOP.** Do not rank compounds. Return to modeling.
+
+**If it fails, iterate on modeling (in rough order of expected impact):**
+1. Solvation — geometries optimized in SMD? SMD vs alternative continuum; check ion states.
+2. Level of theory — functional (range-separated hybrid vs hybrid), basis (add diffuse
+   functions for anions: def2-TZVPD), dispersion.
+3. Geometry source — replace UMA gas-phase geoms with DFT+SMD-optimized (rules out MLIP
+   geometry error / gas-phase collapse as the cause).
+4. Thermal corrections — add/upgrade harmonic free-energy terms.
+5. Referencing — recompute Fc/Fc⁺ internal reference; check electron free-energy convention.
+6. Open-shell treatment — spin contamination ⟨S²⟩, (U)DFT stability, correct multiplicity.
+Re-run the validation set after each change; keep a log of MAE per configuration.
+
+
 
 **External (against reality) — the strongest checks:**
 1. **Experimental parents.** Our decorated monomers are benzyl-substituted versions of

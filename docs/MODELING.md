@@ -89,7 +89,25 @@ nonequilibrium-continuum from the DFT.
 - **Radical/ion stability:** spin contamination ⟨S²⟩, no spontaneous fragmentation,
   reasonable BDEs at the benzylic linker (the ex-Cl site is a known weak point).
 
-## 8. Level of theory  **[DECIDE]**
+## 8. Higher-order effects & limitations
+
+**π–π interactions / radical dimerization.** Several groups have aromatic redox states
+that stack: viologen⁺• (classic π-dimer), phenothiazine⁺•, quinone radicals. Two regimes:
+- *Intramolecular* (benzyl handle folding onto the redox aromatic) — captured by the
+  single-molecule model; watched by the collapse guard (Rg + contact count, §5).
+- *Intermolecular* (stacking/dimerization between neighboring groups in the packed resin)
+  — **NOT captured** by the single-molecule + implicit-solvent model. This can shift the
+  effective E° (merge/split multi-electron waves, drive comproportionation), especially
+  for the dimerization-prone radicals above.
+
+Implications:
+- **Requires a dispersion-corrected functional** (ωB97M-V/VV10 or ωB97X-D); plain B3LYP
+  misses π–π. Reinforces the §8 level-of-theory choice.
+- Reported single-molecule E° is the *isolated-monomer* value; note aggregation as a
+  caveat in P5. Optional follow-up: explicit π-dimer calcs (UMA-screened) for viologen⁺•
+  / phenothiazine⁺• → dimerization energy + ΔE° shift, checked vs the known viologen case.
+
+## 9. Level of theory  **[DECIDE]**
 
 Targets for comparability with **D3TaLES** (Risko/Odom, UKentucky) and with the UMA/OMol
 reference (ωB97M-V/def2-TZVPD):
