@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+
+# Model weights & caches (UMA weights live in the HF cache, never in-repo)
+*.pt
+*.pth
+*.ckpt
+.cache/
+hf_cache/
+
+# Large / regenerable QM outputs
+*.chk
+*.fchk
+*.molden
+*.cube
+*.hdf5
+*.h5
+*.wfn
+*.wfx
+*.log
+
+# Conda / venv
+.venv/
+env/
+
+# Scratch & OS
+scratch/
+tmp/
+.DS_Store
+
+# Secrets — never commit tokens
+*.token
+.env

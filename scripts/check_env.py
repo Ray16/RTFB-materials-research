@@ -1,0 +1,26 @@
+"""Smoke-test the `redox` environment."""
+import importlib, sys
+
+MODS = ["torch", "fairchem", "ase", "rdkit", "pyscf", "numpy", "pandas"]
+
+def main():
+    ok = True
+    for m in MODS:
+        try:
+            mod = importlib.import_module(m)
+            ver = getattr(mod, "__version__", "?")
+            print(f"  [ok] {m:10s} {ver}")
+        except Exception as e:
+            ok = False
+            print(f"  [--] {m:10s} MISSING: {e}")
+    try:
+        import torch
+        print(f"  cuda available: {torch.cuda.is_available()}  "
+              f"devices: {torch.cuda.device_count()}")
+    except Exception:
+        pass
+    print("ENV OK" if ok else "ENV INCOMPLETE")
+    sys.exit(0 if ok else 1)
+
+if __name__ == "__main__":
+    main()
