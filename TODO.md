@@ -9,18 +9,20 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 - **Env is WORKING**: conda env `redox` = `torch 2.8.0+cu128` + `fairchem-core 2.21.0` +
   pyscf. cu128 (CUDA 12.8) runs on this node's 12.4 driver via CUDA minor-version
   forward-compat (8 GPUs, `cuda=True`). HF logged in (`rayzhu16`), UMA access OK.
-- **CORRECTION to earlier note**: the driver is NOT too old. The only real blocker was a
-  `+cu130` (CUDA *13*, major mismatch) auto-install. A `cu12x` torch works fine. Production
-  model = **`uma-s-1p2`** (newest in fairchem 2.21 registry; same as lambda6). `uma-s-1p2p1`
-  needs fairchem 2.22 → torch 2.13 (no cu12x build) → not usable here. DONE: requirements
-  (torch2.8/fairchem2.21), setup_env (cu128 default), uma.py DEFAULT_MODEL=uma-s-1p2.
-- **Full UMA library relaxed with uma-s-1p1** (15/15 in `calcs/uma/`). Re-run with the new
-  default: `MODEL=uma-s-1p2 ./scripts/run_uma.sh` (resumable — remove/rename old result.json
-  first, or the 1p1 geoms will be kept).
+- **CORRECTION to earlier notes**: the driver is NOT too old. cu130 (CUDA *13*, major
+  mismatch) was the only real blocker; `cu12x` torch runs fine via minor-version compat.
+  Production model = **`uma-s-1p2p1`** (newest UMA), enabled via **registration** in
+  fairchem 2.21 (`uma.py::ensure_registered` clones the uma-s-1p2 registry entry → 1p2p1
+  checkpoint; verified: H2O 1p2p1 vs 1p2 differ ~0.5 kJ/mol, matching lambda6). Direct
+  path-load fails (checkpoint's embedded config has newer HydraModel kwargs). DONE:
+  requirements (torch2.8/fairchem2.21), setup_env (cu128), uma.py DEFAULT_MODEL=uma-s-1p2p1.
+- **Full UMA library was relaxed with uma-s-1p1** (15/15 in `calcs/uma/`). Re-run with the
+  new default: remove/rename old `calcs/uma/*/result.json` then `./scripts/run_uma.sh`
+  (resumable, so it skips existing results otherwise).
 
 ## Now
-- [~] Confirm `uma-s-1p2` runs (test in `calcs/uma/test_1p2.log`).
-- [ ] Re-run UMA library with uma-s-1p2 (see above), then descriptors on new geoms.
+- [x] Confirm `uma-s-1p2p1` runs (registration verified; H2O cross-check matches lambda6).
+- [ ] Re-run UMA library with uma-s-1p2p1, then descriptors on new geoms.
 - [ ] Run DFT+SMD batch: `./scripts/run_dft.sh` (all 15 states, CPU fan-out, resumable)
       → then `python -m redox.redox` for the first SOLVATED E° table.
 - [ ] Run `python -m redox.descriptors` on final geoms for RMSD (prefers DFT-opt geoms).

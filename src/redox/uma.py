@@ -26,11 +26,31 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 LIBRARY = ROOT / "library"
 OUT = ROOT / "calcs" / "uma"
-# uma-s-1p2 is the newest UMA registered in fairchem-core 2.21.0 (matched to torch
-# 2.8+cu128, which runs on the 12.4 driver via CUDA minor-version compat). uma-s-1p2p1
-# needs fairchem 2.22 -> torch 2.13 (no cu12x build) so it's not usable here; uma-s-1p2
-# is what lambda6 uses. uma-m-1p1 available for an accuracy benchmark.
-DEFAULT_MODEL = "uma-s-1p2"
+# uma-s-1p2p1 (newest UMA, v1.2.1) works in fairchem 2.21 via REGISTRATION: its checkpoint
+# is the same architecture as uma-s-1p2 (patched weights, ~0.5 kJ/mol apart), so we add a
+# registry entry pointing to uma-s-1p2p1.pt and load it through uma-s-1p2's compatible
+# config. (Direct path-load fails because the checkpoint's embedded config has newer
+# HydraModel kwargs.) ensure_registered() does this idempotently. torch 2.8+cu128 runs on
+# the 12.4 driver via CUDA minor-version compat.
+DEFAULT_MODEL = "uma-s-1p2p1"
+
+
+def ensure_registered(model: str):
+    """Idempotently register uma-s-1p2p1 in fairchem's model registry by cloning the
+    uma-s-1p2 entry with the 1p2p1 checkpoint filename. No-op for other models."""
+    if model != "uma-s-1p2p1":
+        return
+    import json
+    import fairchem.core.calculate as fcc
+    reg = Path(fcc.__file__).parent / "pretrained_models.json"
+    d = json.loads(reg.read_text())
+    if "uma-s-1p2p1" in d:
+        return
+    if "uma-s-1p2" not in d:
+        raise RuntimeError("uma-s-1p2 not in fairchem registry; cannot derive 1p2p1")
+    entry = dict(d["uma-s-1p2"]); entry["filename"] = "uma-s-1p2p1.pt"
+    d["uma-s-1p2p1"] = entry
+    reg.write_text(json.dumps(d, indent=4))
 
 
 def read_manifest():
@@ -42,6 +62,7 @@ def make_calculator(model: str, device: str):
     """Build a FAIRChem OMol calculator. API verified against the installed fairchem-core
     before first run (see scripts/probe_uma.py)."""
     from fairchem.core import pretrained_mlip, FAIRChemCalculator
+    ensure_registered(model)
     predictor = pretrained_mlip.get_predict_unit(model, device=device)
     return FAIRChemCalculator(predictor, task_name="omol")
 
