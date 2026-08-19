@@ -52,6 +52,10 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - Config (redox groups, run params) → `config/`; reusable code → `src/redox/`.
 - When adding a redox group, record its charge/spin per redox state in the config.
 
+## Task tracking
+- Keep `TODO.md` current: mark tasks done as you finish them, and add newly discovered
+  tasks. It's the living worklist; `docs/PLAN.md` is the strategic phased plan.
+
 ## Verification
 - After code changes, run the relevant smoke test before reporting success.
 - Report failures with the actual error; don't claim success on unverified steps.
