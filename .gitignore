@@ -34,3 +34,7 @@ tmp/
 # Secrets — never commit tokens
 *.token
 .env
+
+# Cloned external validation datasets (re-clone via docs/DATASETS.md; don't bloat repo)
+data/raw/validation/SI_data_redox_paper/
+data/raw/validation/ReSolvedDB/
