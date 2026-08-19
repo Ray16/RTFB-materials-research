@@ -42,6 +42,14 @@ def decorate(scaffold_smi: str, frag_smi: str) -> Chem.Mol:
     return mol
 
 
+def unassigned_stereo(mol: Chem.Mol) -> int:
+    """Count stereo elements (centers/bonds) left UNSPECIFIED. Non-zero means the 3D
+    embedding would pick an arbitrary isomer — a hard guard for library expansion."""
+    from rdkit.Chem import FindPotentialStereo, StereoSpecified
+    return sum(1 for e in FindPotentialStereo(mol)
+               if e.specified != StereoSpecified.Specified)
+
+
 def n_conformers(mol: Chem.Mol) -> int:
     """Heuristic ensemble size from rotatable-bond count."""
     from rdkit.Chem import Descriptors
@@ -119,6 +127,11 @@ def main():
         gdir.mkdir(exist_ok=True)
         mol = decorate(scaffold, g["frag"])
         smi = Chem.MolToSmiles(mol)
+        n_unspec = unassigned_stereo(mol)
+        if n_unspec:
+            print(f"  WARNING {g['id']}: {n_unspec} UNSPECIFIED stereo element(s) — "
+                  f"embedding picks an arbitrary isomer; specify stereo in the SMILES "
+                  f"or enumerate. SMILES={smi}")
         (gdir / f"{g['id']}.smiles").write_text(smi + "\n")
         # One conformer search per molecular framework -> shared seed geometry.
         net_q = Chem.GetFormalCharge(mol)
