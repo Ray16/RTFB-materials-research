@@ -40,13 +40,30 @@ def kabsch_rmsd(P: np.ndarray, Q: np.ndarray) -> float:
     return float(np.sqrt(((Pr - Qc) ** 2).sum(1).mean()))
 
 
+DFT = ROOT / "calcs" / "dft"
+
+
+def best_geom(gid: str, state: str):
+    """Prefer the solvated DFT+SMD-optimized geometry (what the plan wants for RMSD/λ);
+    fall back to UMA gas-phase. Returns (path, source) or (None, None)."""
+    dft_opt = DFT / gid / state / "opt.xyz"
+    if dft_opt.exists():
+        return dft_opt, "dft_smd"
+    uma = UMA / gid / state / "relaxed.xyz"
+    if uma.exists():
+        return uma, "uma_gas"
+    return None, None
+
+
 def heavy_rmsd(gid: str, sO: str, sR: str):
-    fO = UMA / gid / sO / "relaxed.xyz"
-    fR = UMA / gid / sR / "relaxed.xyz"
-    if not (fO.exists() and fR.exists()):
+    fO, srcO = best_geom(gid, sO)
+    fR, srcR = best_geom(gid, sR)
+    if fO is None or fR is None:
         return None
     symsO, PO = _read_xyz(fO)
     symsR, PR = _read_xyz(fR)
+    if symsO != symsR:
+        raise ValueError(f"{gid} {sO}/{sR}: atom-order/element mismatch — RMSD invalid")
     heavy = [i for i, s in enumerate(symsO) if s != "H"]
     P, Q = PO[heavy], PR[heavy]
     rmsd = kabsch_rmsd(P, Q)
@@ -56,7 +73,8 @@ def heavy_rmsd(gid: str, sO: str, sR: str):
     d = np.sign(np.linalg.det(V @ Wt))
     R = V @ np.diag([1, 1, d]) @ Wt
     maxd = float(np.sqrt(((Pc @ R - Qc) ** 2).sum(1)).max())
-    return dict(rmsd_heavy=round(rmsd, 4), max_disp_heavy=round(maxd, 4), n_heavy=len(heavy))
+    return dict(rmsd_heavy=round(rmsd, 4), max_disp_heavy=round(maxd, 4),
+                n_heavy=len(heavy), geom_source=srcO if srcO == srcR else f"{srcO}/{srcR}")
 
 
 def lambda_inner(calc, gid, sO, sR, qO, mO, qR, mR):
@@ -93,7 +111,7 @@ def main():
                 out.append(dict(id=gid, event=f"{sO}->{sR}", **d))
 
     RESULTS.mkdir(exist_ok=True)
-    cols = ["id", "event", "rmsd_heavy", "max_disp_heavy", "n_heavy"]
+    cols = ["id", "event", "rmsd_heavy", "max_disp_heavy", "n_heavy", "geom_source"]
     with (RESULTS / "structure_descriptors.csv").open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(out)
     for r in out:
