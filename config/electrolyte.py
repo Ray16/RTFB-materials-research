@@ -28,3 +28,23 @@ REFERENCE = dict(
     fc_vs_she_V=0.40,
     default_scale="Fc/Fc+",      # report potentials vs ferrocene by default
 )
+
+# --- Level-matched ferrocene reference (PREFERRED, physics not fitting) ---
+# The rigorous way to put computed potentials on the Fc/Fc+ scale is to compute the
+# ferrocene reference at the SAME functional/basis/solvent and subtract it:
+#     E_vs_Fc = E_abs(analyte) - E_abs(Fc/Fc+)_same_level
+# This cancels the systematic error in the absolute reference that otherwise dominates
+# implicit-solvation redox potentials (the OROP 313-system MeCN benchmark shows raw
+# implicit DFT carries a ~+0.3 V systematic bias, MAE ~0.5 V; referencing to Fc at the
+# same level removes most of the constant part). We compute our own value in the
+# validation run; until then FC_ABS_COMPUTED_V is None and redox.py falls back to the
+# thermodynamic she_abs + fc_vs_she constant above.
+FC_ABS_COMPUTED_V = 4.434749378960987         # filled from calcs/dft/ferrocene once computed at our level
+
+# Published level-matched ferrocene reference potentials in MeCN (OROP SI,
+# raw_ferrocene-ref-values.txt) — for cross-checking our own computed value.
+FC_ABS_REF_MeCN_V = {
+    "b3lyp":     4.63210987710688,   # b3lyp (no D3) / 6-31G*
+    "b3lyp-d3":  4.66224854035885,   # b3lyp-D3 / 6-31G*
+    "wb97x-d3":  4.618265132412174,  # wB97X-D3 / 6-31G*
+}

@@ -41,9 +41,23 @@ def _energy(root: Path, gid, state, key):
     return json.loads(p.read_text()).get(key)
 
 
-def main():
+def _fc_reference():
+    """Absolute potential of Fc/Fc+ to subtract, preferring the level-matched value.
+
+    Order: (1) our own ferrocene computed at this level (FC_ABS_COMPUTED_V), which
+    cancels systematic DFT/SMD error — physics, not fitting; (2) the thermodynamic
+    SHE_abs + Fc_vs_SHE constant as a fallback. Returns (value, source_label).
+    """
     ref = _cfg("electrolyte", "REFERENCE")
-    e_ref_abs = ref["she_abs_V"] + ref["fc_vs_she_V"]   # abs potential of Fc/Fc+
+    fc_computed = _cfg("electrolyte", "FC_ABS_COMPUTED_V")
+    if fc_computed is not None:
+        return float(fc_computed), "Fc-level-matched(computed)"
+    return ref["she_abs_V"] + ref["fc_vs_she_V"], "SHE_abs+Fc_vs_SHE(thermo)"
+
+
+def main():
+    e_ref_abs, ref_source = _fc_reference()
+    print(f"[ref] Fc/Fc+ absolute reference = {e_ref_abs:.3f} V  ({ref_source})")
 
     rows = read_manifest()
     # group -> {state: charge}, preserving metadata
@@ -64,7 +78,7 @@ def main():
             e_uma_R = _energy(UMA, gid, sR, "energy_eV")
 
             row = dict(id=gid, name=g["name"], family=g["family"],
-                       event=f"{sO}->{sR}", q_ox=qO, q_red=qR)
+                       event=f"{sO}->{sR}", q_ox=qO, q_red=qR, ref=ref_source)
             if g_smd_O is not None and g_smd_R is not None:
                 dG = g_smd_R - g_smd_O
                 E_abs = -dG
@@ -79,7 +93,7 @@ def main():
 
     RESULTS.mkdir(exist_ok=True)
     cols = ["id", "name", "family", "event", "q_ox", "q_red",
-            "dG_smd_eV", "E_abs_V", "E_vs_Fc_V", "dG_gas_uma_eV", "E_vs_Fc_gas_V"]
+            "dG_smd_eV", "E_abs_V", "E_vs_Fc_V", "dG_gas_uma_eV", "E_vs_Fc_gas_V", "ref"]
     outfile = RESULTS / "redox_potentials.csv"
     with outfile.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader()
