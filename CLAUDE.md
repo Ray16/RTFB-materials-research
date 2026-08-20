@@ -76,10 +76,15 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - Report failures with the actual error; don't claim success on unverified steps.
 
 ## Version control
-- **Push to remote after each pipeline stage completes** (UMA scan, DFT+SMD batch, redox
-  table, descriptors, validation/figures) so the remote always reflects the latest state.
-  Commit the code + small result artifacts (JSON/CSV/figures), then `git push`. Never
-  commit model weights, large calc outputs, or tokens (see Guardrails).
+- **Push to remote after every major update** — not only pipeline stages (UMA scan,
+  DFT+SMD batch, redox table, descriptors, validation/figures) but also: cloning/adding a
+  dataset, changing config or the validation set, and any diagnostic that changes our
+  understanding. Commit the code + small result artifacts (JSON/CSV/figures) + dataset
+  **pointers** (update `docs/DATASETS.md`), then `git push`, so the remote always reflects
+  the latest state.
+- **Never commit the bulk datasets themselves** — cloned external datasets live under
+  `data/raw/validation/<name>/` and are git-ignored (re-clone via `docs/DATASETS.md`).
+  Likewise never commit model weights, large calc outputs, or tokens (see Guardrails).
 - **Commit messages carry NO `Co-Authored-By: Claude` trailer** (and no other Claude
   attribution). Commits are authored solely under the repo's git identity (Ray Zhu).
 

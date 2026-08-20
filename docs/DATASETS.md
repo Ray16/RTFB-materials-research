@@ -15,6 +15,47 @@ Elsevier) 403 automated fetch but resolve in-browser; the *data* lives on the re
 
 ---
 
+## Local status (downloaded) — as of 2026-08-20
+
+Datasets live under `data/raw/validation/<name>/` and are **git-ignored** (bulk data is
+never committed; re-clone/re-download with the commands below).
+
+| Dataset | Local dir | State | Rows | Redox data |
+|---|---|---|---|---|
+| **OROP / ROP313** | `OROP/` | ✅ downloaded | 313 | **experimental** MeCN+DMF ox/red (V vs Fc) |
+| **ReSolvedDB** | `ReSolvedDB/` | ✅ downloaded | 19,785 | computed reduction pot. (5 solvents incl. MeCN) |
+| **D3TaLES** (bulk CC-BY) | `D3TaLES/d3tales_public.csv` | ✅ downloaded (35 MB) | 35,729 | computed ox/red (implicit MeCN, ε=35.688), λ, HOMO/LUMO, SA |
+| **D3TaLES API** (code) | `D3TaLES_api/` | ✅ cloned | — | REST/processors/CV calculators (MIT) |
+
+**Reproduce the downloads:**
+```bash
+cd data/raw/validation
+git clone https://github.com/Liu-group/SI_data_redox_paper OROP     # experimental anchor
+git clone https://github.com/grynova-ccc/ReSolvedDB                  # computed MeCN reductions
+git clone https://github.com/D3TaLES/d3tales_api D3TaLES_api         # API code (no data)
+# D3TaLES bulk dump: hosted on MDF/Globus (endpoint 82f1b5c6-...:/mdf_open/9bb8800f-.../1.1/).
+# The HTTPS mirror serves known files but gives no directory listing, so list via authed
+# globus-cli, then curl the file straight off the mirror (no Globus transfer needed):
+globus ls "82f1b5c6-6e9b-11e5-ba47-22000b92c6ec:/mdf_open/9bb8800f-9cda-4957-ad12-60ad2a381177/1.1/"
+mkdir -p D3TaLES && curl -L -o D3TaLES/d3tales_public.csv \
+  "https://data.materialsdatafacility.org/mdf_open/9bb8800f-9cda-4957-ad12-60ad2a381177/1.1/d3tales_public.csv"
+```
+
+**D3TaLES utilization findings** (`scripts/analyze_d3tales.py` → `results/d3tales_*.csv`):
+- Potentials are **absolute** (eV): `solv_oxidation_potential` −0.49..3.58, `solv_reduction_potential`
+  3.42..11.00 → subtract a level-matched Fc absolute for V vs Fc. Ranking cancels the reference.
+- Our-family coverage is **thin** (mostly ZINC drug-like neutrals): pyridinium 23, quinone 77,
+  phenothiazine 23, **viologen 0**, metallocene 0 — but **nitroxide 990** (direct TEMPO-family probe).
+- README **independently corroborates our viologen diagnosis**: it flags +2/−2 species as
+  implicit-solvent-unreliable ("strong interactions with individual solvent molecules") — the
+  same charge-dependent solvation failure we found for MV²⁺.
+- **Best use:** (a) large *computed* cross-check for ranking/offset on overlapping chemistry;
+  (b) the 990-nitroxide subset as a per-family validation probe; (c) λ (reorg.) + SA-score for
+  multi-objective candidate ranking. **Not** a viologen/candidate source. Experimental gating
+  stays with **OROP** (313 exp MeCN).
+
+---
+
 ## Ranked table (best match first)
 
 Rank = chemistry match × redox-data trust × ease of programmatic access.

@@ -35,6 +35,7 @@ tmp/
 *.token
 .env
 
-# Cloned external validation datasets (re-clone via docs/DATASETS.md; don't bloat repo)
-data/raw/validation/SI_data_redox_paper/
-data/raw/validation/ReSolvedDB/
+# Cloned external validation datasets (re-clone via docs/DATASETS.md; don't bloat repo).
+# Ignore ALL dataset subdirs under validation/; small tracked pointers (README.md,
+# manifests) are files, not dirs, so the trailing-slash glob never matches them.
+data/raw/validation/*/
