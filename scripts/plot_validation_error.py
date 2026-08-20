@@ -1,25 +1,27 @@
 #!/usr/bin/env python
-"""Validation-error bar plot: computed - measured E° per experimental redox event.
+"""Validation figure (hard gate): measured vs computed E° per experimental redox event.
 
-This is the hard-gate figure. One signed bar per validation event, referenced to
-ferrocene at OUR level (redox.py fills E_vs_Fc_V using electrolyte.FC_ABS_COMPUTED_V).
+Single panel, horizontal grouped bars — one pair per validation event: the measured
+value (dark grey) beside our computed value (family/level colour). Because the bars are
+horizontal, the event labels sit on the y-axis and never rotate or overlap. The signed
+residual is printed at the end of each pair and an MAE/RMSE box states the gate outcome.
+
 We NEVER rescale to match experiment — the bars show the true residual, warts and all.
 
   results/redox_potentials.csv   computed E° table (needs E_vs_Fc_V populated)
   config/validation.py           experimental anchors (V vs Fc/Fc+, MeCN)
 
-Writes results/figures/validation_error_bars.png and prints the numeric table.
-
-  python scripts/plot_validation_error.py
+  python scripts/plot_validation_error.py   ->  results/figures/validation.png
 """
 from __future__ import annotations
-import csv, importlib.util, math
+import csv, importlib.util, math, sys
 from pathlib import Path
 
-import matplotlib
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt
-import numpy as np
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from plot_style import apply_style, C, grid_x  # noqa: E402
+
+import matplotlib.pyplot as plt  # noqa: E402
+import numpy as np               # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 FIGDIR = ROOT / "results" / "figures"
@@ -51,7 +53,24 @@ def _pick(row):
     return None, None
 
 
+# Pretty, compact labels for the y-axis (avoid raw ids/events colliding).
+_PRETTY = {
+    "ferrocene":            "Ferrocene",
+    "methyl_viologen":      "Methyl viologen",
+    "tempo_parent":         "TEMPO",
+    "phenothiazine_parent": "Phenothiazine",
+    "anthraquinone_parent": "Anthraquinone",
+    "methylpyridinium":     "Methylpyridinium",
+}
+_EVENT = {
+    "ox->neu": "ox / neu", "ox2->ox1": "2+ / +", "ox1->neu": "+ / 0",
+    "ox->rad": "ox / rad", "neu->red1": "0 / -", "red1->red2": "- / 2-",
+    "ox->red": "ox / red",
+}
+
+
 def main():
+    apply_style()
     FIGDIR.mkdir(parents=True, exist_ok=True)
     p = ROOT / "results" / "redox_potentials.csv"
     rows = list(csv.DictReader(p.open())) if p.exists() else []
@@ -70,79 +89,79 @@ def main():
             if comp is None:
                 continue
             exp = ev["exp_V_vs_Fc"]; err = comp - exp
-            lab = f"{rid}\n{ev['event']}"
+            name = _PRETTY.get(rid, rid)
+            evl = _EVENT.get(ev["event"], ev["event"])
+            lab = f"{name}\n{evl}"
             pts.append((lab, exp, comp, err, src))
             print(f"  {rid:22s} {ev['event']:12s} {exp:+7.3f} {comp:+7.3f} {err:+7.3f}  {src}")
 
     if not pts:
-        fig, ax = plt.subplots(figsize=(7, 5.2))
-        ax.text(0.5, 0.5, "No validation events scored yet.\n"
-                          "(Run redox.py after the validation-core DFT+SMD finishes.)",
+        fig, ax = plt.subplots(figsize=(9, 6))
+        ax.text(0.5, 0.5, "No validation events scored yet.",
                 ha="center", va="center", transform=ax.transAxes)
-        ax.set_title("Validation error — awaiting data")
-        fig.tight_layout(); fig.savefig(FIGDIR / "validation_error_bars.png", dpi=150)
+        ax.axis("off")
+        fig.savefig(FIGDIR / "validation.png")
         print("\n  no anchors scored — placeholder written"); return
 
-    labels = [p[0] for p in pts]
-    exps = np.array([p[1] for p in pts])
-    comps = np.array([p[2] for p in pts])
-    errs = np.array([p[3] for p in pts])
-    srcs = [p[4] for p in pts]
-    x = np.arange(len(pts))
+    # order by measured potential (most reducing at bottom -> most oxidizing at top)
+    pts.sort(key=lambda t: t[1])
+    labels = [t[0] for t in pts]
+    exps = np.array([t[1] for t in pts])
+    comps = np.array([t[2] for t in pts])
+    errs = np.array([t[3] for t in pts])
+    srcs = [t[4] for t in pts]
 
     mae = float(np.mean(np.abs(errs))); rmse = float(np.sqrt(np.mean(errs**2)))
     mbe = float(np.mean(errs))
-    srcset = "+".join(sorted(set(srcs)))
+    n_in = int(np.sum(np.abs(errs) <= TARGET_BAND))
 
-    # Two panels: (top) measured vs computed E° side-by-side; (bottom) signed residual.
-    fig, (axv, axe) = plt.subplots(
-        2, 1, figsize=(max(8, 1.15 * len(pts) + 2), 8.4),
-        gridspec_kw=dict(height_ratios=[1.5, 1.0], hspace=0.08), sharex=True)
+    y = np.arange(len(pts))
+    h = 0.38
+    comp_colors = [C["dft"] if s == "DFT+SMD" else C["uma"] for s in srcs]
 
-    # --- top: grouped bars, experimental measurement alongside our computed value ---
-    w = 0.4
-    axv.bar(x - w / 2, exps, w, color="#555555", edgecolor="k", lw=0.5, zorder=3,
-            label="measured (exp, V vs Fc/Fc$^+$)")
-    comp_colors = ["#1f77b4" if s == "DFT+SMD" else "#ff7f0e" for s in srcs]
-    axv.bar(x + w / 2, comps, w, color=comp_colors, edgecolor="k", lw=0.5, zorder=3,
-            label="computed (DFT+SMD)")
-    for xi, v in zip(x - w / 2, exps):
-        axv.annotate(f"{v:+.2f}", (xi, v), ha="center",
-                     va="bottom" if v >= 0 else "top", fontsize=7,
-                     xytext=(0, 2 if v >= 0 else -2), textcoords="offset points")
-    for xi, v in zip(x + w / 2, comps):
-        axv.annotate(f"{v:+.2f}", (xi, v), ha="center",
-                     va="bottom" if v >= 0 else "top", fontsize=7,
-                     xytext=(0, 2 if v >= 0 else -2), textcoords="offset points")
-    axv.axhline(0, color="k", lw=1)
-    axv.set_ylabel(r"$E$  (V vs Fc/Fc$^+$)")
-    axv.set_title("Validation: measured vs computed redox potential")
-    axv.grid(True, axis="y", alpha=0.3)
-    axv.legend(loc="best", fontsize=8)
-    axv.text(0.02, 0.97,
-             f"n = {len(pts)}   source: {srcset}\nMAE = {mae:.3f} V   RMSE = {rmse:.3f} V\n"
-             f"mean signed err = {mbe:+.3f} V",
-             transform=axv.transAxes, va="top", ha="left", fontsize=9,
-             bbox=dict(boxstyle="round", fc="white", ec="0.7", alpha=0.9))
+    fig, ax = plt.subplots(figsize=(12.5, 1.05 * len(pts) + 3.2))
 
-    # --- bottom: signed residual (computed - measured) ---
-    axe.bar(x, errs, color=comp_colors, edgecolor="k", lw=0.5, zorder=3)
-    axe.axhline(0, color="k", lw=1)
-    axe.axhspan(-TARGET_BAND, TARGET_BAND, color="green", alpha=0.10, zorder=0,
-                label=f"±{TARGET_BAND:.2f} V target band")
-    for xi, ei in zip(x, errs):
-        axe.annotate(f"{ei:+.2f}", (xi, ei), ha="center",
-                     va="bottom" if ei >= 0 else "top", fontsize=8,
-                     xytext=(0, 3 if ei >= 0 else -3), textcoords="offset points")
-    axe.set_xticks(x); axe.set_xticklabels(labels, rotation=45, ha="right", fontsize=8)
-    axe.set_ylabel(r"computed $-$ measured (V)")
-    axe.set_title("Residual per redox event  (positive = computed too oxidizing)")
-    axe.grid(True, axis="y", alpha=0.3)
-    axe.legend(loc="lower right", fontsize=8)
+    ax.barh(y + h / 2, exps, h, color=C["measured"], edgecolor="k", lw=0.6,
+            zorder=3, label="Measured (experiment)")
+    ax.barh(y - h / 2, comps, h, color=comp_colors, edgecolor="k", lw=0.6,
+            zorder=3, label="Computed (DFT+SMD)")
 
-    fig.tight_layout(); fig.savefig(FIGDIR / "validation_error_bars.png", dpi=150)
+    # value annotations at the tip of each bar
+    span = max(abs(comps.min()), abs(comps.max()), abs(exps.min()), abs(exps.max()))
+    pad = 0.03 * span
+    for yi, v in zip(y + h / 2, exps):
+        ax.text(v + (pad if v >= 0 else -pad), yi, f"{v:+.2f}",
+                ha="left" if v >= 0 else "right", va="center",
+                fontsize=15, color=C["measured"], zorder=4)
+    for yi, v, er in zip(y - h / 2, comps, errs):
+        ax.text(v + (pad if v >= 0 else -pad), yi, f"{v:+.2f}",
+                ha="left" if v >= 0 else "right", va="center",
+                fontsize=15, color="#111111", zorder=4)
+
+    ax.axvline(0, color="k", lw=1.1, zorder=2)
+    ax.set_yticks(y)
+    ax.set_yticklabels(labels)
+    ax.set_ylim(-0.8, len(pts) - 0.2)
+    ax.set_xlabel(r"$E^\circ$  (V vs Fc/Fc$^+$)")
+    ax.set_title("Validation gate: computed vs measured redox potentials")
+    grid_x(ax)
+
+    # widen x so annotations fit
+    xlo = min(0, comps.min(), exps.min()) - 0.55
+    xhi = max(0, comps.max(), exps.max()) + 0.55
+    ax.set_xlim(xlo, xhi)
+
+    ax.legend(loc="lower right", framealpha=0.95)
+    ax.text(0.015, 0.985,
+            f"n = {len(pts)}   MAE = {mae:.2f} V   RMSE = {rmse:.2f} V\n"
+            f"mean signed = {mbe:+.2f} V   {n_in}/{len(pts)} within $\\pm${TARGET_BAND:.2f} V\n"
+            "No fitting — residuals shown as computed.",
+            transform=ax.transAxes, va="top", ha="left", fontsize=15,
+            bbox=dict(boxstyle="round,pad=0.5", fc="#FBFBF7", ec="#B9B9B9", lw=1.2))
+
+    fig.savefig(FIGDIR / "validation.png")
     print(f"\n  MAE = {mae:.3f} V   RMSE = {rmse:.3f} V   mean signed = {mbe:+.3f} V")
-    print(f"  -> {FIGDIR/'validation_error_bars.png'}")
+    print(f"  -> {FIGDIR/'validation.png'}")
 
 
 if __name__ == "__main__":

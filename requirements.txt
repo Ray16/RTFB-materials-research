@@ -7,6 +7,10 @@ fairchem-core==2.21.0
 ase
 rdkit
 pyscf
+geometric  # geomeTRIC — in-solvent DFT geometry optimizer driven by pyscf
+# gpu4pyscf-cuda12x + cutensor-cu12 (GPU DFT+SMD backend) are CUDA-tagged like torch, so
+# they are installed by setup_env.sh step 3b (not here) to keep pip's resolver from pulling
+# a mismatched CUDA build. On a GPU node the pipeline uses them via `redox.dft --backend gpu`.
 pandas
 numpy
 scipy

@@ -42,11 +42,39 @@ if [ "$CUDA_TAG" = "cpu" ]; then
 else
   TORCH_INDEX="https://download.pytorch.org/whl/${CUDA_TAG}"
 fi
-conda run -n "$ENV_NAME" pip install "torch==2.6.0" --index-url "$TORCH_INDEX"
+conda run -n "$ENV_NAME" pip install "torch==2.8.0" --index-url "$TORCH_INDEX"
 
 # 3. Install the rest. torch is pinned in requirements.txt to the version above, so this
 #    step leaves the CUDA build from step 2 untouched.
 conda run -n "$ENV_NAME" pip install -r "$HERE/requirements.txt"
+
+# 3b. GPU DFT backend (gpu4pyscf) — CUDA-tagged wheel, like torch. Only for cu12x GPUs;
+#     hugely faster DFT+SMD than CPU pyscf. Skipped on CPU-only boxes.
+case "$CUDA_TAG" in
+  cu12*)
+    conda run -n "$ENV_NAME" pip install gpu4pyscf-cuda12x cutensor-cu12
+    # The gpu4pyscf install can drag in CUDA-13 nvidia-* wheels (unsuffixed metapackages),
+    # whose cu13/ headers+libs shadow the cu12 ones and break nvrtc on pre-Ada GPUs (e.g.
+    # V100/sm_70 — CUDA 13 dropped Volta). Remove any nvidia-* that is NOT the -cu12 build
+    # so cuda-pathfinder resolves the cu12 runtime cleanly.
+    conda run -n "$ENV_NAME" python - <<'PYCLEAN'
+import subprocess, sys
+out = subprocess.check_output([sys.executable,"-m","pip","list","--format=freeze"]).decode()
+bad = [l.split("==")[0] for l in out.splitlines()
+       if l.startswith("nvidia-") and "-cu12" not in l.split("==")[0]]
+if bad:
+    print(">> removing stray non-cu12 nvidia packages:", bad)
+    subprocess.check_call([sys.executable,"-m","pip","uninstall","-y",*bad])
+import site, shutil, os
+cu13 = os.path.join(site.getsitepackages()[0], "nvidia", "cu13")
+shutil.rmtree(cu13, ignore_errors=True)
+PYCLEAN
+    ;;
+  cpu)
+    echo ">> CPU-only: skipping gpu4pyscf (DFT will use CPU pyscf)" ;;
+  *)
+    echo ">> CUDA_TAG=$CUDA_TAG: install a matching gpu4pyscf wheel manually if desired" ;;
+esac
 
 # 4. Verify (GPU visibility + imports).
 conda run -n "$ENV_NAME" python "$HERE/scripts/check_env.py"

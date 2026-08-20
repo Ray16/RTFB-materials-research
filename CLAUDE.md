@@ -75,6 +75,12 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - After code changes, run the relevant smoke test before reporting success.
 - Report failures with the actual error; don't claim success on unverified steps.
 
+## Version control
+- **Push to remote after each pipeline stage completes** (UMA scan, DFT+SMD batch, redox
+  table, descriptors, validation/figures) so the remote always reflects the latest state.
+  Commit the code + small result artifacts (JSON/CSV/figures), then `git push`. Never
+  commit model weights, large calc outputs, or tokens (see Guardrails).
+
 ---
 
 ## User instructions
