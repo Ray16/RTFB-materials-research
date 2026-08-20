@@ -80,6 +80,8 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
   table, descriptors, validation/figures) so the remote always reflects the latest state.
   Commit the code + small result artifacts (JSON/CSV/figures), then `git push`. Never
   commit model weights, large calc outputs, or tokens (see Guardrails).
+- **Commit messages carry NO `Co-Authored-By: Claude` trailer** (and no other Claude
+  attribution). Commits are authored solely under the repo's git identity (Ray Zhu).
 
 ---
 
