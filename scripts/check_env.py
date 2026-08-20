@@ -2,7 +2,7 @@
 import importlib, sys
 
 MODS = ["torch", "fairchem", "ase", "rdkit", "pyscf", "geometric", "numpy", "pandas",
-        "matplotlib"]
+        "matplotlib", "graphviz"]
 # Optional: GPU-only DFT backend. Import needs a GPU, so don't hard-fail on CPU nodes.
 OPTIONAL = ["gpu4pyscf.dft"]
 
@@ -28,6 +28,10 @@ def main():
               f"devices: {torch.cuda.device_count()}")
     except Exception:
         pass
+    # graphviz's python binding needs the system `dot` executable to render.
+    import shutil
+    dot = shutil.which("dot")
+    print(f"  dot binary: {dot or 'MISSING (pipeline flowchart cannot render)'}")
     print("ENV OK" if ok else "ENV INCOMPLETE")
     sys.exit(0 if ok else 1)
 

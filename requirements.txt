@@ -15,5 +15,7 @@ pandas
 numpy
 scipy
 matplotlib
+graphviz  # python binding for the pipeline flowchart; needs the system `dot` binary
+          # (apt: graphviz / conda: graphviz). Rendering falls back gracefully if absent.
 jupyter
 huggingface_hub

@@ -36,6 +36,11 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 - [x] **Publication figure set** (300 dpi, one panel/figure, 18 pt, no overlap):
       `pipeline.png`, `validation.png`, `redox_landscape.png`, `structure_change.png`;
       stale multi-panel figures pruned.
+- [x] **2D structure galleries** (`scripts/plot_molecules.py`, driven off manifest.csv):
+      `molecules_candidates.png` (6 monomers) + `molecules_validation.png` (6 cores).
+- [x] **Pipeline diagram rebuilt in Graphviz** (`scripts/plot_pipeline_graphviz.py`,
+      auto-layout, HTML records) → refreshed `pipeline.png`; graphviz registered in
+      requirements.txt + check_env.py (system `dot` verified present).
 
 ## Next
 - [x] Parallel UMA runner (`scripts/run_uma.sh`, GPU fan-out) + full library relaxed.
