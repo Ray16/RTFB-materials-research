@@ -43,11 +43,28 @@ def decorate(scaffold_smi: str, frag_smi: str) -> Chem.Mol:
 
 
 def unassigned_stereo(mol: Chem.Mol) -> int:
-    """Count stereo elements (centers/bonds) left UNSPECIFIED. Non-zero means the 3D
-    embedding would pick an arbitrary isomer — a hard guard for library expansion."""
-    from rdkit.Chem import FindPotentialStereo, StereoSpecified
-    return sum(1 for e in FindPotentialStereo(mol)
-               if e.specified != StereoSpecified.Specified)
+    """Count GENUINE stereo elements (centers/bonds) left UNSPECIFIED. Non-zero means the 3D
+    embedding would pick an arbitrary isomer — a hard guard for library expansion.
+
+    Excludes symmetric hypervalent centers that have no real stereoisomers: RDKit's
+    FindPotentialStereo over-eagerly flags e.g. octahedral PF6- (six identical F) as an
+    unspecified stereocenter, but with all ligands symmetry-equivalent there is only one
+    isomer. We drop any atom-centered element whose neighbors are all equivalent (identical
+    canonical ranks); genuine centers have distinguishable substituents and are still counted.
+    """
+    from rdkit.Chem import FindPotentialStereo, StereoSpecified, CanonicalRankAtoms
+    ranks = list(CanonicalRankAtoms(mol, breakTies=False))
+    n = 0
+    for e in FindPotentialStereo(mol):
+        if e.specified == StereoSpecified.Specified:
+            continue
+        if e.type.name.startswith("Atom"):
+            nbr_ranks = [ranks[nb.GetIdx()]
+                         for nb in mol.GetAtomWithIdx(e.centeredOn).GetNeighbors()]
+            if nbr_ranks and len(set(nbr_ranks)) == 1:
+                continue  # all ligands identical -> not a real stereocenter
+        n += 1
+    return n
 
 
 def n_conformers(mol: Chem.Mol) -> int:

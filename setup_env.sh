@@ -48,6 +48,12 @@ conda run -n "$ENV_NAME" pip install "torch==2.8.0" --index-url "$TORCH_INDEX"
 #    step leaves the CUDA build from step 2 untouched.
 conda run -n "$ENV_NAME" pip install -r "$HERE/requirements.txt"
 
+# 3a. xtb (GFN2-xTB) — provides the RRHO thermal free-energy corrections used by
+#     redox.dft._thermal_correction. Conda-forge binary (not a pip package). We use a
+#     semi-empirical Hessian for thermal because RRHO corrections are method-insensitive
+#     AND gpu4pyscf's UKS analytic Hessian is numerically broken for open-shell states.
+conda install -n "$ENV_NAME" -c conda-forge xtb -y
+
 # 3b. GPU DFT backend (gpu4pyscf) — CUDA-tagged wheel, like torch. Only for cu12x GPUs;
 #     hugely faster DFT+SMD than CPU pyscf. Skipped on CPU-only boxes.
 case "$CUDA_TAG" in

@@ -5,7 +5,32 @@ lives in `docs/PLAN.md`; this is the day-to-day worklist.
 
 Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
 
-## CURRENT STATE (handoff)
+## CURRENT STATE (handoff) — updated 2026-08-21
+
+### Latest session (thermal + ion-pair verdict + OROP benchmark)
+- **THERMAL free-energy corrections: DONE, whole table.** Uses **GFN2-xTB RRHO** (298.15 K)
+  via `dft._thermal_correction` (xtb installed; in setup_env.sh + check_env.py). We do NOT use
+  the DFT Hessian: **gpu4pyscf's UKS analytic Hessian is numerically BROKEN** in this version
+  (inflates open-shell frequencies ~2x → corrupt ZPE, e.g. 14.7 vs correct 6.4 eV). xtb thermal
+  is fast, correct for open+closed shell, method-transferable. G = E_smd + g_thermal everywhere.
+  Effect: viologen bare-ion MAE 0.429 → **0.372**.
+- **ION-PAIR (released-counterion PF6-) scheme: REFUTED** in implicit solvent. Even with a
+  correct singlet mv_ip2, waves/spacing are catastrophically wrong (spacing ~+11 V vs exp -0.43):
+  forming a neutral ion pair from two well-solvated ions costs a huge (~+6 eV), poorly-modeled
+  desolvation free energy that does NOT cancel between waves. See `src/redox/ionpair.py` CONCLUSION.
+  BEST viologen = 'bare ions + thermal' (MAE 0.372). Do not resurrect continuum ion-pairing.
+- **OROP experimental benchmark: DONE (11/14).** `scripts/run_orop_benchmark.py` → 
+  `results/orop_benchmark.csv`. Our **MAE 0.869 V** (≈ OROP raw implicit-DFT 0.821 on same
+  systems), **Spearman 0.89** (ranking reliable), **+0.77 V systematic bias** dominated by
+  charged species (radical anions +1.24, dication +1.07). De-biased MAE 0.48. Confirms the
+  ~0.5-0.9 V floor of pure-physics implicit DFT; the field closes the gap with a charge-dependent
+  ML/linear correction (OROP's "implicit+ML") — NOT more physics.
+- **NEXT (recommended):** charge-class linear calibration E_exp ≈ a·E_calc + b fit on OROP with a
+  held-out split → expected MAE ~0.3-0.5. Also: expand OROP subset (30-60, all charge classes)
+  and fix 3 SMD gradient-convergence failures (sys 107/109/115: "Nuclear gradients not converged").
+
+### Earlier state
+
 - **Env is WORKING**: conda env `redox` = `torch 2.8.0+cu128` + `fairchem-core 2.21.0` +
   pyscf 2.14 + **geometric 1.1.1** (geomeTRIC, in-solvent DFT optimizer). cu128 (CUDA 12.8)
   runs on this node's 12.4 driver via CUDA minor-version forward-compat (8 GPUs).

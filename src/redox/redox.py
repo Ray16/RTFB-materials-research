@@ -74,15 +74,21 @@ def main():
                 continue  # not a 1e step
             g_smd_O = _energy(DFT, gid, sO, "e_smd_eV")
             g_smd_R = _energy(DFT, gid, sR, "e_smd_eV")
+            # thermal free-energy correction (G = E_smd + G_thermal); 0.0 if not computed
+            # yet, which reproduces the prior electronic-energy-only behavior exactly.
+            gth_O = _energy(DFT, gid, sO, "g_thermal_eV") or 0.0
+            gth_R = _energy(DFT, gid, sR, "g_thermal_eV") or 0.0
             e_uma_O = _energy(UMA, gid, sO, "energy_eV")
             e_uma_R = _energy(UMA, gid, sR, "energy_eV")
 
             row = dict(id=gid, name=g["name"], family=g["family"],
                        event=f"{sO}->{sR}", q_ox=qO, q_red=qR, ref=ref_source)
             if g_smd_O is not None and g_smd_R is not None:
-                dG = g_smd_R - g_smd_O
+                dG = (g_smd_R + gth_R) - (g_smd_O + gth_O)
                 E_abs = -dG
                 row.update(dG_smd_eV=round(dG, 4),
+                           g_thermal_ox_eV=round(gth_O, 4),
+                           g_thermal_red_eV=round(gth_R, 4),
                            E_abs_V=round(E_abs, 3),
                            E_vs_Fc_V=round(E_abs - e_ref_abs, 3))
             if e_uma_O is not None and e_uma_R is not None:
@@ -93,7 +99,8 @@ def main():
 
     RESULTS.mkdir(exist_ok=True)
     cols = ["id", "name", "family", "event", "q_ox", "q_red",
-            "dG_smd_eV", "E_abs_V", "E_vs_Fc_V", "dG_gas_uma_eV", "E_vs_Fc_gas_V", "ref"]
+            "dG_smd_eV", "g_thermal_ox_eV", "g_thermal_red_eV",
+            "E_abs_V", "E_vs_Fc_V", "dG_gas_uma_eV", "E_vs_Fc_gas_V", "ref"]
     outfile = RESULTS / "redox_potentials.csv"
     with outfile.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader()

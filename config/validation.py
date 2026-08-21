@@ -31,6 +31,31 @@ VALIDATION = [
         events=[dict(event="ox2->ox1", exp_V_vs_Fc=-0.45, note="approx, verify"),
                 dict(event="ox1->neu", exp_V_vs_Fc=-0.88, note="approx, verify")],
     ),
+    # --- Explicit PF6- ion-pair species for the viologen fix (released-counterion scheme,
+    # docs/PLAN.md). Each keeps its NATURAL number of PF6- so every assembly is NEUTRAL
+    # (best for continuum SMD); each reduction releases one free PF6-. E° is assembled from
+    # these by src/redox/ionpair.py as a cross-species reaction, NOT redox.py's adjacent-
+    # charge pairing — so each species carries a SINGLE state (no auto-couples). The SMILES
+    # formal charges only seed RDKit; the per-state (charge, mult) sets the actual DFT charge
+    # (UMA re-scans spin). PF6- = F[P-](F)(F)(F)(F)F.
+    dict(
+        id="pf6",
+        name="hexafluorophosphate (free PF6- anion)",
+        smiles="F[P-](F)(F)(F)(F)F",
+        states=[("anion", -1, 1, 0)],   # 70 e- (even) -> singlet
+    ),
+    dict(
+        id="mv_ip2",
+        name="methyl viologen dication . 2 PF6- (ion pair, net 0)",
+        smiles="C[n+]1ccc(-c2cc[n+](C)cc2)cc1.F[P-](F)(F)(F)(F)F.F[P-](F)(F)(F)(F)F",
+        states=[("s0", 0, 1, 0)],       # MV2+ + 2 PF6- ; net 0, 238 e- (even) -> singlet
+    ),
+    dict(
+        id="mv_ip1",
+        name="methyl viologen radical-cation . 1 PF6- (ion pair, net 0)",
+        smiles="C[n+]1ccc(-c2cc[n+](C)cc2)cc1.F[P-](F)(F)(F)(F)F",
+        states=[("s0", 0, 2, 0)],       # MV+. + 1 PF6- ; net 0, 169 e- (odd) -> doublet
+    ),
     dict(
         id="tempo_parent",
         name="TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",

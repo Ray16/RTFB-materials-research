@@ -118,6 +118,59 @@ def _kernel_robust(mf):
         return e, bool(mf.converged)
 
 
+def _thermal_correction(atoms, charge, mult, xc=None, basis=None, disp=None,
+                        backend=None, temperature=298.15):
+    """Gibbs thermal free-energy correction (eV) from a GFN2-xTB Hessian (RRHO, 298.15 K).
+
+    Returns dict(g_thermal_eV, zpe_eV, n_imag, freq_min_cm, thermal_method) so redox uses
+    G = E_smd + g_thermal instead of the bare electronic energy. g_thermal is xtb's
+    'G(RRHO) contrib.' = ZPE + H_thermal - T*S (the part of G beyond the electronic energy).
+
+    Why semi-empirical for the thermal term: (1) RRHO thermal corrections are nearly
+    independent of the electronic-structure method, so a cheap Hessian is standard practice
+    (DFT electronic energy + GFN2 thermal is a well-established composite); (2) gpu4pyscf's
+    UKS analytic Hessian is numerically BROKEN in this version (it inflates open-shell
+    frequencies ~2x -> corrupt ZPE), so DFT Hessians are not a safe option for the radical
+    states that dominate this dataset. The DFT+SMD wb97m-v energy is untouched; only the
+    (ZPE + thermal - TS) term is xTB. xc/basis/disp/backend are accepted for signature
+    compatibility and IGNORED (the correction is method-transferable).
+
+    xtb runs GFN2 with the FIXED input geometry (no re-optimization), so the correction is
+    evaluated at our DFT+SMD-optimized structure. It uses xtb's free-/rigid-rotor treatment
+    of low/imaginary modes, which is robust for floppy species (e.g. ion pairs).
+    """
+    import subprocess
+    import tempfile
+    import os
+    import re
+
+    q = int(charge)
+    uhf = int(mult) - 1
+    xtb_bin = os.environ.get("XTB_BIN", "xtb")
+    with tempfile.TemporaryDirectory(prefix="xtbhess_") as d:
+        _write_xyz(atoms, Path(d) / "mol.xyz")
+        cmd = [xtb_bin, "mol.xyz", "--gfn", "2", "--chrg", str(q), "--uhf", str(uhf),
+               "--hess", "--acc", "1.0"]
+        env = dict(os.environ, OMP_NUM_THREADS=os.environ.get("XTB_THREADS", "8"))
+        r = subprocess.run(cmd, cwd=d, capture_output=True, text=True, env=env)
+        out = r.stdout + "\n" + r.stderr
+
+    def _grab(pat, cast=float):
+        m = re.search(pat, out)
+        return cast(m.group(1)) if m else None
+
+    g_rrho = _grab(r"G\(RRHO\) contrib\.\s+(-?\d+\.\d+)\s+Eh")   # ZPE + thermal - T*S, Hartree
+    zpe = _grab(r"zero point energy\s+(-?\d+\.\d+)\s+Eh")
+    n_imag = _grab(r"#\s*imaginary freq\.\s+(\d+)", int)
+    if g_rrho is None:
+        raise RuntimeError(f"xtb thermal parse failed (rc={r.returncode}): ...{out[-600:]}")
+    return dict(g_thermal_eV=g_rrho * HARTREE_EV,
+                zpe_eV=zpe * HARTREE_EV if zpe is not None else None,
+                n_imag=n_imag,
+                freq_min_cm=None,
+                thermal_method="gfn2-xtb")
+
+
 def dft_smd(xyz_path: Path, charge: int, mult: int,
             opt_xc: str = OPT_XC, opt_basis: str = OPT_BASIS,
             opt_basis_anion: str = OPT_BASIS_ANION, opt_disp: str | None = OPT_DISP,
@@ -126,7 +179,7 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             sp_basis_anion: str = SP_BASIS_ANION, sp_disp: str | None = SP_DISP,
             sp_nlc: str | None = SP_NLC,
             solvent: str | None = None, do_gas: bool = True,
-            do_opt: bool = True, opt_out: Path | None = None,
+            do_opt: bool = True, do_freq: bool = True, opt_out: Path | None = None,
             max_opt_steps: int = 100, backend: str = "cpu") -> dict:
     """Composite DFT+SMD: optimize geometry in solvent at (opt_xc/opt_basis), then score
     the energy at (sp_xc/sp_basis). Anions use the diffuse basis variant. Returns energies
@@ -187,6 +240,17 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
         out.update(e_gas_Ha=e_gas, e_gas_eV=e_gas * HARTREE_EV,
                    converged_gas=conv_gas,
                    dG_solv_eV=(e_smd - e_gas) * HARTREE_EV)
+
+    # Thermal free-energy correction (GFN2-xTB RRHO on the DFT+SMD-optimized geometry) so
+    # redox uses G = E_smd + g_thermal, not the bare electronic energy. See _thermal_correction.
+    if do_freq:
+        try:
+            th = _thermal_correction(atoms, q, int(mult))
+            out.update(**th, freq_level="gfn2-xtb (RRHO, 298.15K)")
+        except Exception as exc:  # a failed Hessian must not lose the (expensive) energies
+            print(f"[warn] freq/thermal failed: {type(exc).__name__}: {str(exc)[:120]}",
+                  flush=True)
+            out["g_thermal_eV"] = None
     return out
 
 
@@ -229,7 +293,7 @@ def _uma_mult(gid: str, state: str, fallback: int) -> int:
     return fallback
 
 
-def run_batch(rows, force, do_opt=True, backend="cpu"):
+def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu"):
     outroot = ROOT / "calcs" / "dft"
     for r in rows:
         gid, st = r["id"], r["state"]
@@ -247,14 +311,18 @@ def run_batch(rows, force, do_opt=True, backend="cpu"):
         try:
             outdir.mkdir(parents=True, exist_ok=True)
             res = dft_smd(geom, int(r["charge"]), mult,
-                          do_opt=do_opt, opt_out=outdir / "opt.xyz", backend=backend)
+                          do_opt=do_opt, do_freq=do_freq,
+                          opt_out=outdir / "opt.xyz", backend=backend)
         except Exception as e:
             print(f"[fail] {gid}/{st}: {type(e).__name__}: {str(e)[:120]}", flush=True)
             continue
         res.update(id=gid, state=st, n_e=int(r["n_e"]))
         rj.write_text(json.dumps(res, indent=2))
+        gth = res.get("g_thermal_eV")
+        gth_s = f"{gth:+.3f}" if isinstance(gth, (int, float)) else "n/a"
         print(f"[done] {gid}/{st} E_smd={res['e_smd_eV']:.3f} eV "
               f"dGsolv={res.get('dG_solv_eV', float('nan')):.3f} eV "
+              f"Gtherm={gth_s} eV (imag={res.get('n_imag', '-')}) "
               f"conv={res['converged_smd']} ({res['sp_xc']}/{res['sp_basis']})", flush=True)
 
 
@@ -270,6 +338,8 @@ def main():
     ap.add_argument("--force", action="store_true")
     ap.add_argument("--no-opt", dest="no_opt", action="store_true",
                     help="single-point only; skip in-solvent geometry optimization")
+    ap.add_argument("--no-freq", dest="no_freq", action="store_true",
+                    help="skip the gas-phase Hessian / thermal free-energy correction")
     ap.add_argument("--backend", default="cpu", choices=["cpu", "gpu"],
                     help="'gpu' uses gpu4pyscf (set CUDA_VISIBLE_DEVICES to pin a GPU)")
     ap.add_argument("--nthreads", type=int, default=0)
@@ -287,11 +357,12 @@ def main():
         if args.shard:
             n, i = (int(x) for x in args.shard.split(":"))
             rows = [r for k, r in enumerate(rows) if k % n == i]
-        run_batch(rows, args.force, do_opt=not args.no_opt, backend=args.backend)
+        run_batch(rows, args.force, do_opt=not args.no_opt,
+                  do_freq=not args.no_freq, backend=args.backend)
         return
 
     res = dft_smd(Path(args.xyz), args.charge, args.mult,
-                  do_opt=not args.no_opt, backend=args.backend,
+                  do_opt=not args.no_opt, do_freq=not args.no_freq, backend=args.backend,
                   opt_out=(Path(args.out).parent / "opt.xyz") if args.out else None)
     print(json.dumps(res, indent=2))
     if args.out:

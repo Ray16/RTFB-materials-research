@@ -33,6 +33,24 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - One molecule = one stable ID; keep its calcs in a dir keyed by ID + redox state.
 - Do not assume specific hardware — **detect** available GPUs/CPUs at runtime (e.g.
   `torch.cuda.device_count()`, `os.cpu_count()`) and scale to what's present.
+- **This node is SHARED — never introduce GPU contention.** Before launching ANY GPU job,
+  check which GPUs are actually IDLE (`nvidia-smi --query-gpu=index,utilization.gpu,memory.used
+  --format=csv,noheader`) and pin `CUDA_VISIBLE_DEVICES` only to GPUs with ~0% util AND
+  near-zero used memory (treat >~500 MiB or >~5% util as OCCUPIED — someone else's job).
+  Never hard-code a GPU index or assume a GPU is free because it was free earlier — re-check
+  immediately before each launch. Use `scripts/free_gpus.py` to pick free GPUs programmatically.
+  If no GPU is free, wait or fall back to CPU; do not collide with a running job.
+- **Multi-node: fan out across the lambda cluster.** Nodes `lambda1,lambda2,lambda4` (lambda3
+  is often down) share this NFS filesystem AND the same conda env, so a job on any node reads/
+  writes the SAME `calcs/`,`library/`,`results/` paths. SSH is passwordless. Scan peers for
+  idle GPUs with `python scripts/free_gpus.py --hosts lambda1,lambda2,lambda4` (returns
+  `host idx` slots, skips unreachable) and place one job per free (host,GPU). Run remote jobs
+  as `ssh <host> 'cd <repo> && source ~/miniforge3/etc/profile.d/conda.sh && conda activate
+  redox && CUDA_VISIBLE_DEVICES=<idx> python -m redox.dft --only <id> --backend gpu'`. GPU
+  DRIVERS are node-local — verify the env runs on a node (`check_env.py` on one of its GPUs)
+  before trusting a batch there. For large embarrassingly-parallel sweeps, use the
+  **lambda-fleet skill** (claim-based, resumable, self-healing fan-out). Same contention rule
+  applies per node.
 
 ## Running jobs (never block the foreground)
 - **Always background any job that can run in the background** (installs, UMA/DFT runs,

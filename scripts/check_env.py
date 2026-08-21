@@ -32,6 +32,11 @@ def main():
     import shutil
     dot = shutil.which("dot")
     print(f"  dot binary: {dot or 'MISSING (pipeline flowchart cannot render)'}")
+    # xtb provides the GFN2 RRHO thermal corrections (dft._thermal_correction).
+    xtb = shutil.which("xtb")
+    if not xtb:
+        ok = False
+    print(f"  xtb binary: {xtb or 'MISSING (thermal free-energy corrections unavailable)'}")
     print("ENV OK" if ok else "ENV INCOMPLETE")
     sys.exit(0 if ok else 1)
 
