@@ -178,7 +178,7 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             sp_xc: str = SP_XC, sp_basis: str = SP_BASIS,
             sp_basis_anion: str = SP_BASIS_ANION, sp_disp: str | None = SP_DISP,
             sp_nlc: str | None = SP_NLC,
-            solvent: str | None = None, do_gas: bool = True,
+            solvent: str | None = None, do_gas: bool = True, do_smd: bool = True,
             do_opt: bool = True, do_freq: bool = True, opt_out: Path | None = None,
             max_opt_steps: int = 100, backend: str = "cpu") -> dict:
     """Composite DFT+SMD: optimize geometry in solvent at (opt_xc/opt_basis), then score
@@ -224,10 +224,14 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
         atoms = opt_atoms
 
     # Energy: solvated single point at the sp level on the optimized geometry.
+    # do_smd=False skips the (expensive) SMD SCF for callers that only need the gas energy
+    # (e.g. inner-sphere reorganization cross-points) — a ~2x saving there.
     mol_sp = _mol(sbas)
-    mfs = _build_smd_mf(mol_sp, sp_xc, solvent, backend, sp_disp, sp_nlc)
-    e_smd, conv_smd = _kernel_robust(mfs)
-    out.update(e_smd_Ha=e_smd, e_smd_eV=e_smd * HARTREE_EV, converged_smd=conv_smd)
+    e_smd = None
+    if do_smd:
+        mfs = _build_smd_mf(mol_sp, sp_xc, solvent, backend, sp_disp, sp_nlc)
+        e_smd, conv_smd = _kernel_robust(mfs)
+        out.update(e_smd_Ha=e_smd, e_smd_eV=e_smd * HARTREE_EV, converged_smd=conv_smd)
 
     if do_gas:
         KS = dft.RKS if nunpaired == 0 else dft.UKS
@@ -237,9 +241,9 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
         if sp_nlc:
             mfg.nlc = sp_nlc
         e_gas, conv_gas = _kernel_robust(mfg)
-        out.update(e_gas_Ha=e_gas, e_gas_eV=e_gas * HARTREE_EV,
-                   converged_gas=conv_gas,
-                   dG_solv_eV=(e_smd - e_gas) * HARTREE_EV)
+        out.update(e_gas_Ha=e_gas, e_gas_eV=e_gas * HARTREE_EV, converged_gas=conv_gas)
+        if e_smd is not None:
+            out["dG_solv_eV"] = (e_smd - e_gas) * HARTREE_EV
 
     # Thermal free-energy correction (GFN2-xTB RRHO on the DFT+SMD-optimized geometry) so
     # redox uses G = E_smd + g_thermal, not the bare electronic energy. See _thermal_correction.

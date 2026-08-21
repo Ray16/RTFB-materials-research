@@ -146,15 +146,27 @@ def aggregate(systems):
         print("no completed systems yet"); return
     (ROOT / "results").mkdir(exist_ok=True)
     df.to_csv(ROOT / "results" / "orop_benchmark.csv", index=False)
-    from scipy.stats import spearmanr
+    from scipy.stats import spearmanr, kendalltau
     mae = df.err.abs().mean(); rmse = (df.err**2).mean()**0.5
     rho = spearmanr(df.calc, df.exp).correlation if len(df) > 2 else float("nan")
     mae_imp = df.err_impdft.abs().mean()
-    print(df.to_string(index=False))
-    print(f"\nn={len(df)}  OUR MAE={mae:.3f}  RMSE={rmse:.3f}  signed={df.err.mean():+.3f}  "
-          f"Spearman={rho:.3f}")
-    print(f"          OROP raw implicit-DFT MAE (same systems)={mae_imp:.3f}")
-    print(f"wrote results/orop_benchmark.csv")
+    print(df.sort_values(["charge_ox", "exp"]).to_string(index=False))
+    print(f"\n=== GLOBAL (n={len(df)}) ===")
+    print(f"  OUR   MAE={mae:.3f}  RMSE={rmse:.3f}  signed={df.err.mean():+.3f}  Spearman(all)={rho:.3f}")
+    print(f"  OROP raw implicit-DFT MAE (same systems)={mae_imp:.3f}")
+    # Within-class stats: ranking is Tier-1's real job; a constant per-class offset does
+    # not hurt ranking, so within-class Spearman/Kendall is the metric that matters.
+    print(f"\n=== BY CHARGE CLASS (within-class ranking is the Tier-1 metric) ===")
+    print(f"  {'q_ox':>4s} {'n':>3s} {'MAE':>6s} {'signed':>7s} {'Spearman':>9s} {'Kendall':>8s}")
+    for q, sub in df.groupby("charge_ox"):
+        if len(sub) >= 3:
+            sr = spearmanr(sub.calc, sub.exp).correlation
+            kt = kendalltau(sub.calc, sub.exp).correlation
+            sr_s, kt_s = f"{sr:9.3f}", f"{kt:8.3f}"
+        else:
+            sr_s, kt_s = f"{'n<3':>9s}", f"{'n<3':>8s}"
+        print(f"  {q:+4d} {len(sub):3d} {sub.err.abs().mean():6.3f} {sub.err.mean():+7.3f} {sr_s} {kt_s}")
+    print(f"\nwrote results/orop_benchmark.csv")
 
 
 DEFAULT = [103, 96, 101, 90, 16, 115,       # charge_ox=+1 (radical-cation / neutral)
@@ -172,7 +184,12 @@ def main():
     a = ap.parse_args()
 
     def parse(x):
-        return DEFAULT if x == "default" else [int(v) for v in x.split(",")]
+        if x == "default":
+            return DEFAULT
+        if x == "all":   # every system with a calcs/orop/<s> dir
+            return sorted(int(p.name) for p in CALC.iterdir()
+                          if p.is_dir() and p.name.isdigit())
+        return [int(v) for v in x.split(",")]
 
     if a.only is not None:
         run_system(a.only, a.backend, a.force)
