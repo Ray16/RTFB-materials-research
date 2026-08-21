@@ -18,6 +18,15 @@ SOLVENT = dict(
 # continuum by default). Model explicitly only if ion-pairing is being studied.
 COUNTERION = "PF6-"
 
+# --- Electrochemical stability window (approximate, V vs Fc/Fc+) ---
+# Practical window of MeCN + common supporting electrolyte: roughly -3.3 V (cathodic, set by
+# solvent/cation reduction) to +2.4 V (anodic, solvent oxidation). We use a slightly
+# conservative usable range; a redox event outside it is not addressable and is gated out of
+# the accessible-capacity count. Approximate — widen/narrow per the actual electrolyte.
+WINDOW_V_VS_FC = (-3.0, 2.0)
+# Rough anolyte/catholyte divider (V vs Fc): couples below -> anolyte side, above -> catholyte.
+ANOLYTE_CATHOLYTE_DIVIDER_V = 0.0
+
 # --- Electrochemical referencing (absolute -> reported scale) ---
 # E_abs = -dG / (n F).  E_vs_ref = E_abs - E_ref_abs.
 FARADAY = 96485.33212            # C/mol

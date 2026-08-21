@@ -140,7 +140,28 @@ the redox chemistry is *local* to each pendant group. Implications:
 - Strategy: **start with the monomer to establish we can model the local chemistry correctly**,
   then consider backbone/tether effects.
 
-## 15. Operational notes
+## 15. Stability axis validated vs experiment (disproportionation = wave spacing)
+dG_disp = F*(E_high - E_low) is validated directly against experimental two-wave spacings
+(redox.validate_stability): n=3 across families (MV 42, AQ 60, TEMPO 211 kJ/mol exp), MAE
+**16 kJ/mol (0.17 eV)**, Spearman **1.00**, small +bias (we slightly over-stabilise). So the
+disproportionation axis is trustworthy; its sigma is 0.17 eV. Broadening needs more molecules
+with two measured MeCN waves (a compute task).
+
+## 16. Selection engine assembled (scorecard -> Pareto shortlist)
+- `scorecard.py`: unifies the 5 axis CSVs into one per-candidate row with sigma + trust per
+  axis (config/scorecard_config.py). Gating: reversibility hard-filter; window gating of
+  accessible n (WINDOW_V_VS_FC); anolyte/catholyte/ambipolar split; per-side potentials
+  (a single mean is meaningless for ambipolar, e.g. TEMPO). Fc excluded (it's the reference).
+- `pareto.py`: SIGMA-AWARE domination per pool (A dominates B only if never worse beyond
+  combined noise, better on >=1) + transparent normalised figure of merit. Objectives =
+  trustworthy axes only (voltage, capacity, stability, kinetics); SA/solubility are annotations.
+- Lesson demonstrated: sigma-aware domination matters — phenothiazine has the top raw FoM
+  (best voltage) but is DOMINATED by phenothiazine_parent (its voltage/lambda edges are within
+  noise, parent's capacity is decisively higher). Raw scalar ranking would have misled.
+- CAVEAT surfaced: TEMPO ranks top anolyte only via its APPROXIMATE, edge-of-window reduction
+  couple (flagged) — a domain-judgement flag, not a trusted pick.
+
+## 17. Operational notes
 - xtb (GFN2) added to the env (setup_env.sh + check_env.py); provides all thermal corrections.
 - The lambda cluster node is SHARED (another user's training jobs held GPUs 2/4 this session) —
   always check GPU ownership before launching; never assume "dedicated."
