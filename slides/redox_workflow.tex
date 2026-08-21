@@ -1,0 +1,363 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% --- pdflatex-compatible, self-contained (no fontspec/metropolis) ---
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usepackage{xcolor}
+
+% --- clean modern theme built on defaults ---
+\usetheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+
+\definecolor{ink}{HTML}{15304A}      % deep blue
+\definecolor{teal}{HTML}{0E7C86}     % accent
+\definecolor{amber}{HTML}{E08A1E}    % highlight
+\definecolor{good}{HTML}{2E7D32}     % green
+\definecolor{bad}{HTML}{C0392B}      % red
+\definecolor{soft}{HTML}{F2F5F7}
+
+\setbeamercolor{frametitle}{fg=white,bg=ink}
+\setbeamercolor{title}{fg=ink}
+\setbeamercolor{structure}{fg=teal}
+\setbeamercolor{block title}{fg=white,bg=teal}
+\setbeamercolor{block body}{bg=soft}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamertemplate{frametitle}{\vspace{2pt}\insertframetitle\vspace{2pt}}
+\setbeamertemplate{footline}{\hfill\scriptsize\textcolor{ink!60}{\insertframenumber}\hspace{2ex}\vspace{1ex}}
+
+\newcommand{\good}[1]{\textcolor{good}{\textbf{#1}}}
+\newcommand{\bad}[1]{\textcolor{bad}{\textbf{#1}}}
+\newcommand{\hi}[1]{\textcolor{amber}{\textbf{#1}}}
+
+\title{\textbf{Computational Screening of Redox-Active Monomers}}
+\subtitle{A physics-based, multi-objective candidate-selection pipeline}
+\author{RTFB Materials Research}
+\date{\today}
+
+\begin{document}
+
+% ---------------------------------------------------------------
+\begin{frame}[plain]
+  \titlepage
+  \begin{center}\small\textcolor{ink!70}{Redox potential $\cdot$ Stability $\cdot$ Kinetics $\cdot$ Capacity}\end{center}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{The goal: pick good redox molecules for flow batteries}
+  \begin{columns}[T]
+    \begin{column}{0.56\textwidth}
+      \textbf{System.} A \hi{Merrifield-resin polymer} carrying pendant redox groups.
+      The redox chemistry is \emph{local}, so we model the \hi{monomer as a proxy}:
+      establish we can capture the local chemistry, then add backbone effects.
+      \vspace{1.5ex}
+
+      \textbf{Selection is multi-objective.} Voltage and stability are necessary but not
+      sufficient:
+      \[
+        \text{Energy density} \propto n \cdot V_\text{cell} \cdot \text{solubility}
+      \]
+      \vspace{-1ex}
+      \begin{itemize}
+        \item \textbf{redox potential} $\rightarrow$ cell voltage / window
+        \item \textbf{stability} $\rightarrow$ cycle life
+        \item \textbf{kinetics} ($\lambda$), \textbf{capacity} ($n$), cost, crossover
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \begin{block}{Guiding principle}
+        Energy \emph{differences} with error cancellation compute \good{reliably};
+        \emph{absolute} charged-species solvation does \bad{not}.
+        \\[1ex]
+        Build objectives on the cancellation-friendly quantities; treat the rest as
+        labelled proxies or filters.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{The pipeline (per redox state)}
+  \begin{center}
+  \begin{tikzpicture}[
+      node distance=6mm,
+      box/.style={rectangle,rounded corners,draw=ink,fill=soft,thick,
+                  minimum height=10mm,text width=20mm,align=center,font=\scriptsize},
+      arr/.style={-{Stealth[length=2mm]},thick,ink}]
+    \node[box] (a) {RDKit\\conformers};
+    \node[box,right=of a] (b) {UMA\\gas pre-opt\\(charge, spin)};
+    \node[box,right=of b] (c) {DFT+SMD\\geom.\ opt\\(MeCN)};
+    \node[box,right=of c] (d) {GFN2-xTB\\RRHO\\thermal};
+    \node[box,right=of d,fill=teal!15] (e) {$G = E_\text{SMD}$\\$+\,G_\text{therm}$};
+    \draw[arr] (a)--(b); \draw[arr] (b)--(c); \draw[arr] (c)--(d); \draw[arr] (d)--(e);
+  \end{tikzpicture}
+  \end{center}
+  \vspace{1ex}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \footnotesize
+      \textbf{Level of theory}
+      \begin{itemize}\footnotesize
+        \item opt: r$^2$SCAN/def2-SVP(D) + SMD
+        \item energy: $\omega$B97M-V/def2-TZVP
+        \item referenced to level-matched Fc/Fc$^+$
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \footnotesize
+      \textbf{Two hard-won fixes}
+      \begin{itemize}\footnotesize
+        \item gpu4pyscf open-shell Hessian is \bad{broken}
+              $\rightarrow$ thermal from \hi{GFN2-xTB} RRHO
+        \item cross-points gas-only (\texttt{do\_smd=False}), $\sim$2$\times$ cheaper
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Redox potential: benchmarked vs.\ experiment (OROP)}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{Blind test on OROP MeCN potentials} ($n=36$):
+      \begin{table}\footnotesize
+      \begin{tabular}{lcc}
+        \toprule
+         & ours & OROP impl.-DFT \\
+        \midrule
+        MAE (V)        & 0.58 & 0.43 \\
+        signed bias    & $+0.46$ & --- \\
+        Spearman (all) & \good{0.95} & --- \\
+        \bottomrule
+      \end{tabular}
+      \end{table}
+      \vspace{1ex}
+      Absolute accuracy sits at the \hi{$\sim$0.5--0.9 V physics floor} of implicit-solvent
+      DFT --- the same for everyone. \good{Ranking}, not absolute potential, is the usable
+      output.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Ranking must be judged \emph{within} charge class}
+      \begin{table}\footnotesize
+      \begin{tabular}{lccc}
+        \toprule
+        class & $n$ & MAE & Spearman \\
+        \midrule
+        cations ($+1$)  & 21 & 0.44 & \good{0.885} \\
+        anions ($0$)    & 13 & 0.77 & \bad{0.489} \\
+        anions (filtered) & 8 & 0.53 & \good{0.952} \\
+        \bottomrule
+      \end{tabular}
+      \end{table}
+      \vspace{1ex}
+      \footnotesize Global 0.95 is inflated (charge classes separate). Cations rank well;
+      anions needed a fix $\rightarrow$ next slide.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{The anion ``failure'' was category errors, not bad physics}
+  \begin{columns}[T]
+    \begin{column}{0.54\textwidth}
+      The anion ranking collapse (Spearman 0.49) traced to a few molecules with
+      \bad{no reversible reduction}:
+      \begin{table}\footnotesize
+      \begin{tabular}{llc}
+        \toprule
+        molecule & exp & RMSD$_\text{neu$\to$an}$ \\
+        \midrule
+        CCl$_4$    & $-2.57$ & \bad{3.4 \AA} \\
+        CH$_2$Br$_2$ & $-3.12$ & 1.3 \AA \\
+        (unbound anions) & --- & EA$_\text{gas}<0$ \\
+        \bottomrule
+      \end{tabular}
+      \end{table}
+      Dissociative electron attachment (CCl$_4$+e$^-\!\to$CCl$_3^{\bullet}$+Cl$^-$) ---
+      scored against irreversible \emph{peak} potentials.
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \begin{block}{Reversibility screen}
+        Bound anion (solvated EA $>0$) \emph{and} intact (\hi{bond-graph unchanged}, not
+        raw RMSD --- which is confounded by tether flexibility).
+      \end{block}
+      \vspace{-0.5ex}
+      \begin{itemize}\footnotesize
+        \item filtering $\rightarrow$ anion Spearman \bad{0.49}$\rightarrow$\good{0.95}
+        \item a \emph{required} screening criterion + a \emph{stability} signal
+        \item all 20 candidate couples: \good{reversible}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Stability = decomposition free energies}
+  \begin{columns}[T]
+    \begin{column}{0.54\textwidth}
+      \textbf{Disproportionation} $2R \!\rightarrow\! R^{+}\!+R^{-}$ \\ (atom- \&
+      electron-conserving $\rightarrow$ \good{cancellation $\rightarrow$ reliable}):
+      \begin{table}\footnotesize
+      \begin{tabular}{lr}
+        \toprule
+        intermediate & $\Delta G_\text{disp}$ (kJ/mol) \\
+        \midrule
+        TEMPO$^{\bullet}$          & \good{$+221$} \\
+        AQ semiquinone             & $+86$ \\
+        viologen MV$^{+\bullet}$   & $+52$ \\
+        \bottomrule
+      \end{tabular}
+      \end{table}
+      \footnotesize TEMPO --- the textbook persistent radical (our validation anchor) ---
+      ranks most stable, as it must. Exact from existing energies; no new calculation.
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \textbf{Dimerization} $2\,\text{MV}^{+\bullet}\!\rightarrow[\text{MV}_2]^{2+}$
+      (the real viologen failure mode):
+      \begin{block}{$\Delta G_\text{dim} = +0.49$ eV \ (flagged)}
+        Config sampling: minimum well-defined ($\sigma_\text{config}\!\approx$ 2 meV).
+        \\ The uncertainty is the \bad{$+2$ pimer desolvation} --- the continuum's weak spot.
+      \end{block}
+      \vspace{-0.5ex}
+      \footnotesize $\Rightarrow$ use dimerization as a \hi{relative} ranking; lean on
+      disproportionation as the trustworthy axis.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Kinetics: reorganization energy $\lambda$ (validated)}
+  \begin{columns}[T]
+    \begin{column}{0.52\textwidth}
+      Inner-sphere $\lambda_i$ via the \textbf{4-point (Nelsen)} scheme --- \emph{identical}
+      to D3TaLES's definition (verified in their source). Reliable via cancellation; low
+      $\lambda$ = fast, reversible ET.
+      \begin{table}\footnotesize
+      \begin{tabular}{lr}
+        \toprule
+        couple & $\lambda_i$ (eV) \\
+        \midrule
+        ferrocene ox$\to$neu     & \good{0.085} \\
+        viologen ox1$\to$neu     & 0.39 \\
+        phenothiazine ox$\to$neu & 0.43 \\
+        TEMPO ox$\to$rad         & 0.96 \\
+        \bottomrule
+      \end{tabular}
+      \end{table}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{Cross-check vs.\ D3TaLES computed $\lambda$}
+        MAD = \good{0.094 eV} ($n=3$ overlapping molecules)
+        \\[0.5ex]
+        \footnotesize e.g.\ TEMPO hole reorg: ours 0.97 vs 0.94 eV
+      \end{block}
+      \vspace{-0.5ex}
+      \footnotesize
+      Our $\lambda$ implementation is sound. Cross-points computed gas-only for efficiency;
+      geometry-source difference (SMD-opt vs D3TaLES gas-opt) explains the small residual.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{What we learned (the durable lessons)}
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{\textcolor{good}{What works}}
+      \begin{itemize}\footnotesize
+        \item ranking (within charge class)
+        \item xtb RRHO thermal (open-shell safe)
+        \item disproportionation stability
+        \item reorganization energy $\lambda$
+        \item reversibility as filter + stability signal
+        \item capacity ($n$, MW): exact
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{\textcolor{bad}{Negative results (saved effort)}}
+      \begin{itemize}\footnotesize
+        \item continuum ion-pairing: \bad{refuted} (spacing off by $\sim$11 V)
+        \item explicit microsolvation (4 MeCN): \bad{no gain} for viologen
+        \item absolute redox potential: capped $\sim$0.5 V
+        \item dimerization absolute: \bad{unreliable} ($+2$ desolvation)
+        \item solubility / crossover: proxies only
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{1ex}
+  \begin{center}\small
+  \textcolor{ink}{Corroborated by the metabolic-$\Delta G$ pipeline: 0.14 eV via isodesmic
+  cancellation $\Rightarrow$ \hi{cancellation, not more physics, is the lever}.}
+  \end{center}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Putting it together: a tiered, multi-objective search}
+  \begin{columns}[T]
+    \begin{column}{0.46\textwidth}
+      \textbf{Tiered funnel} (explicit solvation is a finisher, never for thousands):
+      \begin{center}
+      \begin{tikzpicture}[font=\scriptsize,node distance=3mm,
+        t/.style={rectangle,rounded corners,draw=ink,fill=soft,thick,align=center,
+                  minimum height=7mm}]
+        \node[t,text width=52mm] (t0) {Tier 0 --- cheap rank (thousands)};
+        \node[t,text width=38mm,below=of t0] (t1) {Tier 1 --- DFT+SMD (hundreds)};
+        \node[t,text width=24mm,below=of t1,fill=teal!20] (t2) {Tier 2 --- explicit (dozens)};
+        \draw[-{Stealth[length=2mm]},thick,ink] (t0)--(t1);
+        \draw[-{Stealth[length=2mm]},thick,ink] (t1)--(t2);
+      \end{tikzpicture}
+      \end{center}
+    \end{column}
+    \begin{column}{0.54\textwidth}
+      \textbf{Pareto scorecard --- built correctly}
+      \begin{itemize}\footnotesize
+        \item objectives = \good{trustworthy} axes only
+              (capacity, $\lambda$, disprop.\ stability, ranked potential)
+        \item proxies (solubility, SA, crossover) = \hi{filters}, not axes
+        \item \textbf{reversibility} = hard pre-filter
+        \item split \textbf{anolyte / catholyte} (potential isn't ``more is better'')
+        \item \textbf{$\sigma$-aware} domination (don't rank within error)
+        \item pair front with $n\cdot V\cdot$solubility figure of merit
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Next steps}
+  \begin{enumerate}
+    \item \textbf{Complete the scorecard} --- wire in capacity ($n$, MW), SA cost, and the
+          $\Delta G_\text{solv}$ solubility proxy (all cheap; no new DFT).
+    \item \textbf{Validate the stability axis} against known stable/unstable molecules
+          (as we did for redox vs OROP and $\lambda$ vs D3TaLES).
+    \item \textbf{Build the selection engine} (\texttt{pareto.py}) --- objectives + filters
+          + anolyte/catholyte split + $\sigma$-aware domination.
+    \item \textbf{Harden for scale} --- SCF-robustness patch ($\sim$20\% of jobs hit gradient
+          non-convergence).
+    \item \hi{\textbf{Validation $\rightarrow$ discovery}}: define the Merrifield-monomer design
+          space, run the funnel, produce the \textbf{Pareto shortlist}.
+    \item \textbf{Later:} backbone/tether \& inter-monomer effects; same-charge referencing
+          for absolute accuracy.
+  \end{enumerate}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}[plain]
+  \vfill
+  \begin{center}
+    {\Large\textbf{\textcolor{ink}{Summary}}}\\[2ex]
+    \begin{minipage}{0.85\textwidth}\centering
+    We can \good{rank} redox candidates and screen \good{stability}, \good{kinetics}, and
+    \good{reversibility} on a physics-based footing --- with each axis \hi{honestly labelled}
+    by how far we can trust it.\\[2ex]
+    Next: assemble the Pareto scorecard and point it at the real design space.
+    \end{minipage}
+  \end{center}
+  \vfill
+\end{frame}
+
+\end{document}
