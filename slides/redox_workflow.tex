@@ -27,7 +27,12 @@
 \setbeamercolor{block title}{fg=white,bg=teal}
 \setbeamercolor{block body}{bg=soft}
 \setbeamerfont{frametitle}{series=\bfseries}
-\setbeamertemplate{frametitle}{\vspace{2pt}\insertframetitle\vspace{2pt}}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.2ex,leftskip=0.35cm,rightskip=0.35cm]{frametitle}%
+    \bfseries\insertframetitle%
+  \end{beamercolorbox}%
+}
 \setbeamertemplate{footline}{\hfill\scriptsize\textcolor{ink!60}{\insertframenumber}\hspace{2ex}\vspace{1ex}}
 
 \newcommand{\good}[1]{\textcolor{good}{\textbf{#1}}}
@@ -117,6 +122,34 @@
       \end{itemize}
     \end{column}
   \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{How each axis is computed}
+  \footnotesize
+  \begin{table}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabular}{@{}p{2.5cm}p{5.4cm}p{3.5cm}@{}}
+    \toprule
+    \textbf{axis} & \textbf{method} & \textbf{validation / trust} \\
+    \midrule
+    redox potential & DFT+SMD $\Delta G$; $\omega$B97M-V/def2-TZVP\,//\,r$^2$SCAN/def2-SVP(D);
+                      level-matched Fc ref & OROP exp: MAE 0.58 V, $\rho$ 0.95 \\
+    thermal $G_\text{therm}$ & GFN2-xTB RRHO (298 K) & open-shell safe \\
+    stability (disprop.) & $\Delta G_\text{disp}=F(E_\text{hi}-E_\text{lo})$ from state $G$'s
+                      & exp spacings: MAE 0.17 eV, $\rho$ 1.0 \\
+    stability (dimer.) & pimer cluster DFT+SMD $\Delta G$ & \bad{flagged} (+2 desolvation) \\
+    reorg.\ energy $\lambda$ & 4-point (Nelsen), gas, $\omega$B97M-V & D3TaLES: MAD 0.094 eV \\
+    reversibility & bond-graph change + solvated EA & catches dissoc.\ (CCl$_4$) \\
+    capacity & $n\!\cdot\!F/\text{MW}$ (accessible $n$) & \good{exact} \\
+    solubility & $\Delta G_\text{solv}=E_\text{SMD}-E_\text{gas}$ (neutral) & proxy (relative) \\
+    synth.\ access. & RDKit SA\_Score & heuristic proxy \\
+    \bottomrule
+  \end{tabular}
+  \end{table}
+  \vspace{0.5ex}
+  \centering\footnotesize
+  \textcolor{ink!70}{Geometries optimized in SMD(MeCN); conformers via RDKit + UMA pre-opt.}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -328,20 +361,66 @@
 \end{frame}
 
 % ---------------------------------------------------------------
+\begin{frame}{Applying it: candidate scorecard $\rightarrow$ shortlist}
+  \footnotesize
+  Engine run on the current monomer set (11 candidates), $\sigma$-aware Pareto per pool:
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \textbf{Anolyte pool} (E most negative = better)
+      \begin{table}\scriptsize
+      \begin{tabular}{lrrrr}
+        \toprule
+        id & E$_\text{an}$ & Cap & $\lambda$ & FoM \\
+        \midrule
+        \good{tempo\_parent}$^\star$   & $-1.91$ & 343 & 1.14 & 0.81 \\
+        methylpyridinium               & $-1.67$ & 285 & 0.38 & 0.74 \\
+        anthraquinone\_parent          & $-1.61$ & 258 & 0.35 & 0.63 \\
+        \good{methyl\_viologen}$^\star$ & $-1.04$ & 288 & 0.46 & 0.45 \\
+        viologen                       & $-1.03$ & 194 & 0.47 & 0.31 \\
+        \bottomrule
+      \end{tabular}
+      \end{table}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \textbf{Catholyte pool} (E most positive = better)
+      \begin{table}\scriptsize
+      \begin{tabular}{lrrrr}
+        \toprule
+        id & E$_\text{cat}$ & Cap & $\lambda$ & FoM \\
+        \midrule
+        phenothiazine                    & $+0.54$ & 88  & 0.43 & 0.60 \\
+        \good{tempo\_parent}$^\star$     & $+0.38$ & 343 & 1.14 & 0.51 \\
+        \good{phenothiazine\_parent}$^\star$ & $+0.46$ & 134 & 0.52 & 0.47 \\
+        \bottomrule
+      \end{tabular}
+      \end{table}
+      \vspace{0.5ex}
+      \scriptsize $^\star$ = Pareto-optimal.\ \hi{$\sigma$-aware matters}: phenothiazine has
+      top FoM but is \emph{dominated} by phenothiazine\_parent (its E/$\lambda$ edges are within
+      noise; parent's capacity wins).
+    \end{column}
+  \end{columns}
+  \vspace{0.5ex}
+  \scriptsize\textcolor{ink!70}{Caveats surfaced automatically: TEMPO tops anolyte only via its
+  approximate edge-of-window reduction; viologen mid-pack (modest voltage + flagged dimerization).}
+\end{frame}
+
+% ---------------------------------------------------------------
 \begin{frame}{Next steps}
+  \textbf{\textcolor{good}{Done}}: all axes computed \& validated; unified $\sigma$-tagged
+  scorecard; $\sigma$-aware Pareto engine; first shortlist on the current monomer set.
+  \vspace{1ex}
   \begin{enumerate}
-    \item \textbf{Complete the scorecard} --- wire in capacity ($n$, MW), SA cost, and the
-          $\Delta G_\text{solv}$ solubility proxy (all cheap; no new DFT).
-    \item \textbf{Validate the stability axis} against known stable/unstable molecules
-          (as we did for redox vs OROP and $\lambda$ vs D3TaLES).
-    \item \textbf{Build the selection engine} (\texttt{pareto.py}) --- objectives + filters
-          + anolyte/catholyte split + $\sigma$-aware domination.
+    \item \hi{\textbf{Scale up discovery}} --- run the tiered funnel on a larger design space
+          (functionalized variants + D3TaLES-mined pools), not just the current 11.
     \item \textbf{Harden for scale} --- SCF-robustness patch ($\sim$20\% of jobs hit gradient
-          non-convergence).
-    \item \hi{\textbf{Validation $\rightarrow$ discovery}}: define the Merrifield-monomer design
-          space, run the funnel, produce the \textbf{Pareto shortlist}.
-    \item \textbf{Later:} backbone/tether \& inter-monomer effects; same-charge referencing
-          for absolute accuracy.
+          non-convergence); needed before screening hundreds.
+    \item \textbf{Broaden benchmarks} --- more two-wave molecules for stability; more OROP for
+          the redox ranking, esp.\ per charge class.
+    \item \textbf{Polymer effects} --- backbone/tether constraints \& inter-monomer
+          dimerization (where the \emph{relative} dimerization ranking becomes key).
+    \item \textbf{Absolute accuracy} (if needed) --- same-charge referencing to remove the
+          per-class redox bias.
   \end{enumerate}
 \end{frame}
 
@@ -354,7 +433,8 @@
     We can \good{rank} redox candidates and screen \good{stability}, \good{kinetics}, and
     \good{reversibility} on a physics-based footing --- with each axis \hi{honestly labelled}
     by how far we can trust it.\\[2ex]
-    Next: assemble the Pareto scorecard and point it at the real design space.
+    The $\sigma$-aware scorecard \& Pareto engine are built and applied.
+    Next: point the funnel at a larger design space.
     \end{minipage}
   \end{center}
   \vfill
