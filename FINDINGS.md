@@ -167,3 +167,26 @@ with two measured MeCN waves (a compute task).
   always check GPU ownership before launching; never assume "dedicated."
 - ~20% of OROP DFT jobs hit SMD gradient non-convergence ("Nuclear gradients not converged") —
   needs an SCF-robustness patch before any large screening campaign.
+
+## 18. ΔG_solv validated against EXPERIMENT — reliable for neutrals, fails only for concentrated charge
+Direct experimental validation of our computed ΔG_solv = e_smd − e_gas (full SMD, CDS included),
+comparing to two gold-standard databases with matched conventions (298 K, Ben-Naim 1 M→1 M,
+kcal/mol): **FreeSolv** (water, open) and **MNSol** (acetonitrile, the set SMD was parameterized
+against; used with MNSol's own M06-2X gas geometries — the textbook fixed-geometry SMD protocol).
+Scripts: `validate_solvation.py`, `plot_solvation_validation.py` → `results/solvation_validation.csv`,
+figures `solvation_parity.png` / `solvation_mae_summary.png`. n=100.
+- **Neutrals (the screening-relevant property): MAE 0.79 kcal/mol** (water n=24 MAE 0.78 R² 0.93;
+  MeCN n=7 MAE 0.84). Matches SMD's published ~1 kcal/mol accuracy → **our ΔG_solv is trustworthy
+  for neutral solutes.** This answers the Sept-2 action item.
+- **Ions decompose by CHARGE CHARACTER, not sign** — accuracy tracks charge delocalization:
+  delocalized ions (protonated amines, carboxylates, phenolates) MAE ~3 kcal/mol with good ranking
+  (anion R² 0.92); **small "hard" cations with concentrated charge** (protonated methanol, t-BuOH,
+  H2S, acids) MAE **14.9** kcal/mol (systematically under-stabilized, up to +31). Continuum SMD
+  cannot supply their strong first-shell H-bonding.
+- **This is independent experimental confirmation of Finding 0**: continuum solvation is reliable
+  for neutrals + delocalized/cancellation-friendly charge, and fails for concentrated charge — the
+  same physics as the viologen dication (Finding 5). Solvent choice (water vs MeCN) does not change
+  the neutral accuracy; charge concentration does.
+- CAVEAT: experimental *neutral* solvation data in MeCN is genuinely scarce (MNSol has only 7);
+  the water leg (n=24) carries the statistical weight for the neutral claim. MeCN's rich MNSol data
+  is ionic (39 cations + 30 anions).

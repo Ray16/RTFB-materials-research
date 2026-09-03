@@ -43,3 +43,9 @@ data/raw/validation/*/
 
 # slide QA renders (regenerable)
 slides/review/
+
+# MNSol is licensed / non-redistributable — keep MNSol-derived PER-MOLECULE values out of
+# git (aggregate figures + stats are fine; the raw value table is not). Scripts regenerate
+# these from the gitignored MNSol download.
+data/raw/validation/solvation_refset_acetonitrile.csv
+results/solvation_validation.csv
