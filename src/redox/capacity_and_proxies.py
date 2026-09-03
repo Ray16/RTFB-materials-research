@@ -3,8 +3,11 @@
   - CAPACITY: n accessible 1e- redox events, molecular weight, and specific capacity
       C_spec = n * F / MW  [mAh/g]   (F = 96485 C/mol; 1 mAh = 3.6 C)
     Exact bookkeeping (n from the resolved redox couples; MW from the formula).
-  - SYNTHETIC ACCESSIBILITY: RDKit SA_Score from the SMILES (1 = easy ... 10 = hard).
-    A cheap heuristic PROXY for synthesizability/cost, not a cost model.
+  - SYNTHETIC ACCESSIBILITY: RDKit SA_Score (1 = easy ... 10 = hard). A cheap heuristic PROXY
+    for synthesizability/cost, not a cost model. The scorer is deterministic, so correctness is
+    all in the INPUT: `_sa_prep` sanitizes, rejects dummy-atom fragments, and neutralizes where
+    chemically valid; inherently-charged aziniums (no neutral form) are scored as-is and flagged
+    in the `sa_species` column.
   - SOLUBILITY PROXY: implicit solvation free energy dG_solv = E_SMD - E_gas of the NEUTRAL
     state (the usual solubility-limiting form). More negative = better solvated. RELATIVE
     within a family only — absolute log S needs the solid/lattice term (not computed).
@@ -36,6 +39,38 @@ def _sascorer():
     sys.path.append(f"{RDConfig.RDContribDir}/SA_Score")
     import sascorer
     return sascorer
+
+
+def _sa_prep(smiles):
+    """Prepare the EXACT molecule handed to the SA scorer, enforcing input-prep correctness.
+
+    The scorer (Ertl fragment score) is deterministic — errors only come from the input. So:
+      1. reject multi-fragment/salt strings (score the molecule, not a lattice);
+      2. reject dummy/attachment atoms ([*:1]) — a fragment with an open valence would corrupt
+         the fragment-contribution score (the classic bug);
+      3. NEUTRALIZE where chemically valid (rdMolStandardize.Uncharger) — Ertl's score is
+         calibrated on neutral molecules. N-alkyl aziniums (pyridinium, viologen) have NO
+         neutral form of the same connectivity, so they stay charged and are FLAGGED, making
+         the choice explicit rather than hidden.
+    Returns (mol_to_score, charge, note) or (None, None, reason_to_skip).
+    """
+    from rdkit import Chem
+    from rdkit.Chem.MolStandardize import rdMolStandardize
+    if not smiles or "." in smiles:
+        return None, None, "salt/multi-fragment"
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return None, None, "parse-fail"
+    if any(a.GetAtomicNum() == 0 for a in mol.GetAtoms()):
+        return None, None, "dummy/attachment atom present"
+    try:
+        neutral = rdMolStandardize.Uncharger().uncharge(mol)
+        Chem.SanitizeMol(neutral)
+        mol = neutral
+    except Exception:
+        pass  # keep the sanitized original if neutralization/sanitize fails
+    q = Chem.GetFormalCharge(mol)
+    return mol, q, ("neutral" if q == 0 else "inherently-charged (azinium; no neutral form)")
 
 
 def _manifest_smiles():
@@ -98,16 +133,19 @@ def main():
         s = smi.get(gid)
         mol = Chem.MolFromSmiles(s) if s else None
         if mol is None or "." in (s or ""):
-            continue   # need a single well-defined neutral molecule
-        mw = Descriptors.MolWt(mol)
+            continue   # need a single well-defined molecule (salts/refs handled elsewhere)
+        mw = Descriptors.MolWt(mol)         # MW of the actual monomer (charge doesn't change it)
         n = _n_events(states)
         cspec = n * F_C_PER_MOL / (mw * C_PER_MAH) if mw else None   # mAh/g
-        sa = sascorer.calculateScore(mol)
+        sa_mol, sa_q, sa_note = _sa_prep(s)  # hardened input prep (neutralize/guard/flag)
+        if sa_mol is None:
+            print(f"[skip SA] {gid}: {sa_note}", flush=True); continue
+        sa = sascorer.calculateScore(sa_mol)
         dgs = _dG_solv_neutral(states)
         rows.append(dict(
             id=gid, n_electrons=n, MW=round(mw, 1),
             specific_capacity_mAh_g=(round(cspec, 1) if cspec else None),
-            SA_score=round(sa, 2),
+            SA_score=round(sa, 2), sa_species=sa_note,
             dGsolv_neutral_eV=(round(dgs, 3) if dgs is not None else None),
         ))
 
@@ -125,7 +163,8 @@ def main():
           "solubility proxy (neutral; absolute logS needs the solid-state term).")
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "capacity_and_proxies.csv"
-    cols = ["id", "n_electrons", "MW", "specific_capacity_mAh_g", "SA_score", "dGsolv_neutral_eV"]
+    cols = ["id", "n_electrons", "MW", "specific_capacity_mAh_g", "SA_score", "sa_species",
+            "dGsolv_neutral_eV"]
     with out.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
     print(f"wrote {out}")
