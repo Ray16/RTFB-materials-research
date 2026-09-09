@@ -2,7 +2,7 @@
 import importlib, sys
 
 MODS = ["torch", "fairchem", "ase", "rdkit", "pyscf", "geometric", "numpy", "pandas",
-        "matplotlib", "graphviz"]
+        "matplotlib", "graphviz", "adjustText"]
 # Optional: GPU-only DFT backend. Import needs a GPU, so don't hard-fail on CPU nodes.
 OPTIONAL = ["gpu4pyscf.dft"]
 
