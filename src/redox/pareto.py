@@ -12,8 +12,11 @@ Applies the design decided earlier:
     on every shared objective AND strictly better (beyond noise) on at least one. sigma per
     axis from config/scorecard_config.py; capacity sigma = 0 (exact).
   - proxies (solubility, SA) are NOT objectives; carried as annotations/tiebreakers.
-  - the Pareto front is the primary output; a transparent normalized figure-of-merit gives a
-    secondary headline ranking.
+  - the sigma-aware Pareto front is the output; within a pool candidates are ordered by the
+    primary axis (voltage). There is deliberately NO scalarized figure-of-merit: a weighted-sum
+    FoM would (a) require arbitrary weights, (b) ignore sigma (so it disagrees with the
+    sigma-aware front), and (c) be pool-relative via min-max normalization, so it silently
+    rescales when the candidate set changes. Read the front + the raw axes instead.
 
   PYTHONPATH=src python -m redox.pareto
 """
@@ -24,9 +27,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RESULTS = ROOT / "results"
-
-# figure-of-merit weights (transparent; document any change). Sum ~1.
-FOM_WEIGHTS = dict(voltage=0.30, capacity=0.30, stability=0.20, kinetics=0.20)
 
 
 def _cfg(mod):
@@ -100,30 +100,6 @@ def _pareto_front(cands, pool, sc):
     return front, objs
 
 
-def _fom(cands, pool, sc):
-    """Min-max normalized weighted figure of merit within the pool (secondary ranking).
-    Missing stability -> neutral 0.5 (neither rewarded nor penalized)."""
-    objs = {c["id"]: _objectives(c, pool, sc) for c in cands}
-    axes = ["voltage", "capacity", "stability", "kinetics"]
-    ranges = {}
-    for a in axes:
-        vals = [objs[c["id"]][a][0] for c in cands if a in objs[c["id"]]]
-        ranges[a] = (min(vals), max(vals)) if vals else None
-    scores = {}
-    for c in cands:
-        cid = c["id"]; s = 0.0
-        for a in axes:
-            lo_hi = ranges[a]
-            if a in objs[cid] and lo_hi and lo_hi[1] > lo_hi[0]:
-                v = objs[cid][a][0]
-                norm = (v - lo_hi[0]) / (lo_hi[1] - lo_hi[0])
-            else:
-                norm = 0.5      # missing or degenerate -> neutral
-            s += FOM_WEIGHTS[a] * norm
-        scores[cid] = round(s, 3)
-    return scores
-
-
 def run_pool(pool, cands, sc):
     # pool membership = the molecule has an accessible couple on this side
     key = "E_anolyte_V" if pool == "anolyte" else "E_catholyte_V"
@@ -131,7 +107,6 @@ def run_pool(pool, cands, sc):
     if not pool_cands:
         return []
     front, _ = _pareto_front(pool_cands, pool, sc)
-    fom = _fom(pool_cands, pool, sc)
     out = []
     for c in pool_cands:
         out.append(dict(pool=pool, id=c["id"], family=c["family"],
@@ -140,8 +115,10 @@ def run_pool(pool, cands, sc):
                         lambda_eV=_f(c["lambda_eV"]),
                         dG_disp_kJmol=_f(c["dG_disp_kJmol"]),
                         SA=_f(c["SA_score"]), dGsolv=_f(c["dGsolv_proxy_eV"]),
-                        pareto_optimal=(c["id"] in front), fom=fom[c["id"]]))
-    return sorted(out, key=lambda x: -x["fom"])
+                        pareto_optimal=(c["id"] in front)))
+    # order by the pool's primary axis (best voltage first): anolyte = most negative E,
+    # catholyte = most positive E. The Pareto flag marks the shortlist; no scalarized score.
+    return sorted(out, key=lambda x: (x["E_V"] if pool == "anolyte" else -x["E_V"]))
 
 
 def main():
@@ -153,8 +130,8 @@ def main():
         all_rows.extend(rows)
         print(f"\n=== {pool.upper()} pool ({len(rows)} candidates) ===")
         print(f"{'id':22s} {'E(V)':>6s} {'n':>2s} {'Cap':>5s} {'lam':>5s} {'dGdisp':>7s} "
-              f"{'SA':>4s} {'FoM':>5s} {'Pareto':>7s}")
-        print("-" * 78)
+              f"{'SA':>4s} {'Pareto':>7s}")
+        print("-" * 72)
         for r in rows:
             cap = f"{r['capacity']:.0f}" if r['capacity'] else "-"
             lam = f"{r['lambda_eV']:.2f}" if r['lambda_eV'] is not None else "-"
@@ -162,18 +139,19 @@ def main():
             sa = f"{r['SA']:.1f}" if r['SA'] is not None else "-"
             star = "  YES" if r["pareto_optimal"] else ""
             print(f"{r['id']:22s} {r['E_V']:+6.2f} {r['n']:>2s} {cap:>5s} {lam:>5s} {dg:>7s} "
-                  f"{sa:>4s} {r['fom']:5.2f} {star:>7s}")
+                  f"{sa:>4s} {star:>7s}")
         top = [r for r in rows if r["pareto_optimal"]]
         print(f"Pareto-optimal ({pool}): {[r['id'] for r in top]}")
 
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "pareto_shortlist.csv"
     cols = ["pool", "id", "family", "E_V", "n", "capacity", "lambda_eV", "dG_disp_kJmol",
-            "SA", "dGsolv", "pareto_optimal", "fom"]
+            "SA", "dGsolv", "pareto_optimal"]
     with out.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(all_rows)
     print(f"\nObjectives = trustworthy axes (voltage, capacity, stability, kinetics); proxies "
-          f"(SA, dGsolv) are annotations. sigma-aware domination. Weights {FOM_WEIGHTS}.")
+          f"(SA, dGsolv) are annotations. sigma-aware domination; ordered by primary axis "
+          f"(voltage). No scalarized figure-of-merit (see module docstring).")
     print(f"wrote {out}")
     return all_rows
 

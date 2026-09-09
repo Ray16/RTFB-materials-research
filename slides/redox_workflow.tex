@@ -414,7 +414,8 @@
         \item \textbf{reversibility} = hard pre-filter
         \item split \textbf{anolyte / catholyte} (potential isn't ``more is better'')
         \item \textbf{$\sigma$-aware} domination (don't rank within error)
-        \item pair front with $n\cdot V\cdot$solubility figure of merit
+        \item read the front against the \emph{raw} axes --- no scalarized score (arbitrary
+              weights, $\sigma$-blind, pool-relative)
       \end{itemize}
     \end{column}
   \end{columns}
@@ -429,29 +430,30 @@
     \begin{column}{0.56\textwidth}
       \begin{table}\scriptsize
       \renewcommand{\arraystretch}{1.1}
-      \begin{tabular}{lrrrrrc}
+      \begin{tabular}{lrrrrc}
         \toprule
-        id & E$_\text{an}$ & Cap & $\lambda$ & $\Delta G_\text{d}$ & FoM & Par. \\
+        id & E$_\text{an}$ & Cap & $\lambda$ & $\Delta G_\text{d}$ & Par. \\
         \midrule
-        pmdi                          & $-1.49$ & 160 & 0.46 & 73  & \textbf{0.77} & --- \\
-        \good{mophquinone}$^\star$    & $-1.05$ & 176 & 0.48 & 101 & 0.59 & \good{Y} \\
-        \good{viologen}$^\star$       & $-1.03$ & 194 & 0.47 & 52  & 0.54 & \good{Y} \\
-        ethylviologen                 & $-1.03$ & 185 & 0.49 & 50  & 0.45 & --- \\
-        dmophquinone                  & $-1.01$ & 147 & 0.54 & 101 & 0.33 & --- \\
-        ndi\_ammonium                 & $-1.00$ & 114 & 0.45 & 29  & 0.20 & --- \\
+        pmdi                          & $-1.49$ & 160 & 0.46 & 73  & --- \\
+        \good{mophquinone}$^\star$    & $-1.05$ & 176 & 0.48 & 101 & \good{Y} \\
+        \good{viologen}$^\star$       & $-1.03$ & 194 & 0.47 & 52  & \good{Y} \\
+        ethylviologen                 & $-1.03$ & 185 & 0.49 & 50  & --- \\
+        dmophquinone                  & $-1.01$ & 147 & 0.54 & 101 & --- \\
+        ndi\_ammonium                 & $-1.00$ & 114 & 0.45 & 29  & --- \\
         \bottomrule
       \end{tabular}
       \end{table}
-      \scriptsize E$_\text{an}$ [V vs Fc], Cap [mAh/g], $\lambda$ [eV], $\Delta G_\text{d}$
-      (disprop.) [kJ/mol].
+      \scriptsize Ordered by primary axis (E$_\text{an}$). E$_\text{an}$ [V vs Fc], Cap
+      [mAh/g], $\lambda$ [eV], $\Delta G_\text{d}$ (disprop.) [kJ/mol].
     \end{column}
     \begin{column}{0.44\textwidth}
       \scriptsize $^\star$ = Pareto-optimal ($\Rightarrow$ shortlist: \good{mophquinone},
-      \good{viologen}).
+      \good{viologen}). No scalarized ``figure of merit'': it needs arbitrary weights, ignores
+      $\sigma$, and rescales with the candidate set. The front $+$ raw axes are the output.
       \vspace{1ex}
 
-      \hi{$\sigma$-aware matters}: \textbf{pmdi} has the \emph{top} FoM (best voltage,
-      $-1.49$ V) yet is \emph{dropped} from the Pareto front --- its 0.44 V edge sits inside
+      \hi{$\sigma$-aware matters}: \textbf{pmdi} has the \emph{best voltage}
+      ($-1.49$ V) yet is \emph{dropped} from the Pareto front --- its 0.44 V edge sits inside
       $\sigma_E\!\approx\!0.8$ V, so it is $\sigma$-dominated by the higher-capacity /
       more-stable mophquinone \& viologen.
       \vspace{1ex}
