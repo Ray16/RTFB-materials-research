@@ -18,7 +18,7 @@ multi-panel version are dropped — validation.png now carries the measured comp
 
 Physics, not fitting: nothing here is rescaled to experiment.
 
-  python scripts/plot_results.py
+  python scripts/plotting/plot_results.py
 """
 from __future__ import annotations
 import csv
@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt      # noqa: E402
 from matplotlib.patches import Patch  # noqa: E402
 import numpy as np                   # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 FIGDIR = ROOT / "results" / "figures"
 
 E_COLS = [("E_vs_Fc_V", "DFT+SMD"), ("E_vs_Fc_gas_V", "UMA gas")]

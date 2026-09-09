@@ -3,7 +3,7 @@
 solvated. Only the grafted (functionalized) monomers exist for these, so this is a 1x2
 gas | solvated panel (no before/after). Publication style.
 
-  PYTHONPATH=src python scripts/plot_candidates_sa_reorg.py
+  PYTHONPATH=src python scripts/plotting/plot_candidates_sa_reorg.py
 """
 from __future__ import annotations
 import csv
@@ -12,7 +12,7 @@ import statistics
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from redox.solvated_reorg import hydrodynamic_radius_A, lambda_outer_eV  # noqa: E402
 RESULTS = ROOT / "results"

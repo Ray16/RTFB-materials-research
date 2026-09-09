@@ -2,7 +2,7 @@
 """Gallery of the SIX starting candidates (from starting_candidates/Candidates.xlsx), as the
 Merrifield-grafted monomers we built. Landscape 3x2 for slides.
 
-  PYTHONPATH=src python scripts/plot_starting_candidates.py  ->  results/figures/molecules_starting_candidates.png
+  PYTHONPATH=src python scripts/plotting/plot_starting_candidates.py  ->  results/figures/molecules_starting_candidates.png
 """
 from __future__ import annotations
 import csv
@@ -18,7 +18,7 @@ from rdkit import Chem
 from rdkit.Chem.Draw import rdMolDraw2D
 from rdkit import RDLogger; RDLogger.DisableLog("rdApp.*")
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 MANIFEST = ROOT / "library" / "manifest.csv"
 OUT = ROOT / "results" / "figures" / "candidates" / "molecules_starting_candidates.png"
 OUT.parent.mkdir(parents=True, exist_ok=True)

@@ -8,7 +8,7 @@ basis artificially confines the escaping electron -> a 'bound-like' anion geomet
 relaxation. A diffuse basis lets it escape -> neutral-like geometry -> small relaxation. This
 isolates geometry-source + basis as the cause of the ours(0.52)-vs-D3TaLES(0.87) gap.
 
-  PYTHONPATH=src OMP_NUM_THREADS=6 python scripts/diag_gas_anion_reorg.py
+  PYTHONPATH=src OMP_NUM_THREADS=6 python scripts/diagnostics/diag_gas_anion_reorg.py
 """
 from __future__ import annotations
 from pathlib import Path
@@ -19,7 +19,7 @@ from pyscf.geomopt.geometric_solver import optimize
 from gpu4pyscf import dft           # GPU backend (~15x faster); clean SCF settings only
 from ase.io import read
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 HARTREE_EV = 27.211386245988
 
 CASES = {

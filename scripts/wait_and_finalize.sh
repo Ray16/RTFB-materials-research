@@ -41,7 +41,7 @@ echo "$(date '+%F %T') == finalize chain =="
 bash scripts/finalize_after_dft.sh || echo "!! finalize_after_dft.sh returned non-zero"
 
 echo "$(date '+%F %T') == validation-error bar plot =="
-python scripts/plot_validation_error.py || echo "!! plot_validation_error.py returned non-zero"
+python scripts/plotting/plot_validation_error.py || echo "!! plot_validation_error.py returned non-zero"
 
 echo "$(date '+%F %T') == commit + push small artifacts =="
 # Only small, reproducible artifacts + code — never calc outputs, weights, or tokens.

@@ -25,14 +25,19 @@ operating rules, `docs/PLAN.md` for the phased plan, `docs/DATASETS.md` for exte
 - `scorecard.py`, `pareto.py` — unified scorecard + Pareto shortlist.
 
 ## `scripts/` — runnable entry points
-- `run_*.sh`, `free_gpus.py`, `check_env.py` — launch/env helpers (idle-GPU + thread caps).
-- `plot_*.py` — all figures; **all import `plot_style.py` (`apply_style()`) — the one canonical
-  publication style** (18 pt, no overlaps, top-journal theme, Okabe-Ito).
-- D3TaLES reorg validation: `build_d3tales_reorg_set.py` → `validate_reorg_worker.py`
-  (resumable, `_launch_node_workers.sh` for cluster fan-out) → `aggregate_d3tales_reorg.py` →
-  `plot_d3tales_reorg_compare.py`.
-- Diagnostics (one-off, kept for provenance): `diag_gas_anion_reorg.py`,
+- `scripts/plotting/` — **all figures.** Every `plot_*.py` imports the co-located `plot_style.py`
+  (`apply_style()`) — the one canonical publication style (18 pt, no overlaps, top-journal theme,
+  Okabe-Ito). Run e.g. `python scripts/plotting/plot_results.py`.
+- `scripts/diagnostics/` — one-off diagnostics kept for provenance: `diag_gas_anion_reorg.py`,
   `diag_smiles_reorg.py`, `scan_dihedral_reorg.py`, `aggregate_scan_reorg.py`.
+- Top-level `scripts/` — the interconnected pipeline/launch/finalize chain (kept flat because
+  shell scripts and `CLAUDE.md` reference these by path):
+  - launch/env: `run_*.sh`, `free_gpus.py`, `check_env.py`.
+  - D3TaLES reorg validation: `build_d3tales_reorg_set.py` → `validate_reorg_worker.py`
+    (resumable; `_launch_node_workers.sh` / `launch_reorg_validation.sh` for cluster fan-out) →
+    `aggregate_d3tales_reorg.py`; figure via `scripts/plotting/plot_d3tales_reorg_compare.py`.
+  - finalize chain: `wait_and_finalize.sh` → `finalize_after_dft.sh` → `set_fc_reference.py` +
+    `scripts/plotting/plot_results.py`; plus `add_thermal.py`, `probe_*`, `sample_dimer.py`, etc.
 
 ## `config/` — parameters (no logic)
 `electrolyte.py` + `project.json` (solvent/referencing), `validation.py`, `standalone.py`,

@@ -20,6 +20,6 @@ echo "== [3/4] structure descriptors (RMSD from DFT geometries) =="
 python -m redox.descriptors
 
 echo "== [4/4] discussion figures =="
-python scripts/plot_results.py
+python scripts/plotting/plot_results.py
 
 echo "== finalization complete =="

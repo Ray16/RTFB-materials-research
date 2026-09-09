@@ -9,7 +9,7 @@ energies for a subset of D3TaLES structures (with viologen / quinone / imide hig
 Both are parity plots against y = x, annotated with n / R^2 / MAE. Target redox-flow families
 (viologen, quinone, imide) are colored; everything else is a light-grey background cloud.
 
-  PYTHONPATH=src python scripts/plot_d3tales_validation.py
+  PYTHONPATH=src python scripts/plotting/plot_d3tales_validation.py
 """
 from __future__ import annotations
 import sys
@@ -18,7 +18,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 CSV = ROOT / "data" / "raw" / "validation" / "D3TaLES" / "d3tales_public.csv"
 OUT = ROOT / "results" / "figures" / "validation" / "d3tales_validation.png"

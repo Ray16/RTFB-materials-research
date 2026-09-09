@@ -17,7 +17,7 @@ ESTIMATE (crude single-sphere Born model + structural r_hyd proxy, ~factor-2 unc
 The RELATIVE story (low-SA + low-lambda corner, before->after shift) is the reliable readout;
 lambda_i (gas) is the validated, trustworthy reorganization descriptor.
 
-  PYTHONPATH=src python scripts/plot_sa_vs_reorg.py
+  PYTHONPATH=src python scripts/plotting/plot_sa_vs_reorg.py
 """
 from __future__ import annotations
 import csv
@@ -26,7 +26,7 @@ import statistics
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 from redox.solvated_reorg import hydrodynamic_radius_A, lambda_outer_eV  # noqa: E402
 

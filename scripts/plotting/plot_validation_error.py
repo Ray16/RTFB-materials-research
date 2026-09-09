@@ -11,7 +11,7 @@ We NEVER rescale to match experiment — the bars show the true residual, warts 
   results/redox_potentials.csv   computed E° table (needs E_vs_Fc_V populated)
   config/validation.py           experimental anchors (V vs Fc/Fc+, MeCN)
 
-  python scripts/plot_validation_error.py   ->  results/figures/validation.png
+  python scripts/plotting/plot_validation_error.py   ->  results/figures/validation.png
 """
 from __future__ import annotations
 import csv, importlib.util, math, sys
@@ -23,7 +23,7 @@ from plot_style import apply_style, C, grid_x  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np               # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 FIGDIR = ROOT / "results" / "figures" / "validation"
 FIGDIR.mkdir(parents=True, exist_ok=True)
 # DFT+SMD is the trusted level; fall back to UMA gas only if DFT is missing, and label it.

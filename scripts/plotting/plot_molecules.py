@@ -14,7 +14,7 @@ Depictions are schematic 2D graphs — e.g. ferrocene renders as Fe + two Cp
 anions because RDKit cannot embed a metallocene sandwich in 2D. That is a
 drawing limitation only; the 3D pipeline special-cases ferrocene's geometry.
 
-  python scripts/plot_molecules.py
+  python scripts/plotting/plot_molecules.py
 
 Physics, not fitting: nothing here touches a number; these are cosmetics.
 """
@@ -36,7 +36,7 @@ from rdkit import Chem                   # noqa: E402
 from rdkit.Chem import Draw              # noqa: E402
 from rdkit.Chem.Draw import rdMolDraw2D  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 FIGDIR = ROOT / "results" / "figures"
 MANIFEST = ROOT / "library" / "manifest.csv"
 

@@ -7,7 +7,7 @@ Single-shot on purpose: one RDKit conformer, no scan -- faithfully mimics a high
 pipeline. Rigid molecules have one minimum (should match D3TaLES); floppy ones have several
 (may diverge, like the two biaryl quinones).
 
-  CUDA_VISIBLE_DEVICES=<idx> python scripts/diag_smiles_reorg.py --key anthraquinone
+  CUDA_VISIBLE_DEVICES=<idx> python scripts/diagnostics/diag_smiles_reorg.py --key anthraquinone
 """
 from __future__ import annotations
 import argparse

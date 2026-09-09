@@ -23,7 +23,7 @@ from gpu4pyscf import dft
 from ase.io import read
 from ase import Atoms
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 HARTREE_EV = 27.211386245988
 XC, BASIS = "b3lyp", "6-31g*"
 

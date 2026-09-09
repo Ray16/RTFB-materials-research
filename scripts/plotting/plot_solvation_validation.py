@@ -19,8 +19,8 @@ import csv
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "scripts"))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from plot_style import apply_style, C, grid_xy, grid_y  # noqa: E402
 
 import matplotlib.pyplot as plt   # noqa: E402

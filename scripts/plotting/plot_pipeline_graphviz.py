@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Workflow diagram (Graphviz edition): how a molecule flows through the pipeline.
 
-Rebuilds the old hand-laid-matplotlib flowchart (scripts/plot_pipeline.py) with
+Rebuilds the old hand-laid-matplotlib flowchart (scripts/plotting/plot_pipeline.py) with
 Graphviz, which does the layout for us — cleaner routing, no hand-tuned
 coordinates, and crisp records. The two inputs (candidate monomers + the known-E
 validation set) share the IDENTICAL pipeline; the validation gate is what
@@ -10,7 +10,7 @@ licenses the final ranking.
 Needs the system `dot` executable (package: graphviz). If it is missing this
 script says so and exits non-zero rather than writing a broken file.
 
-  python scripts/plot_pipeline_graphviz.py   ->  results/figures/pipeline.png
+  python scripts/plotting/plot_pipeline_graphviz.py   ->  results/figures/pipeline.png
 
 Physics, not fitting: this only draws the workflow; it changes no number.
 """
@@ -24,7 +24,7 @@ from plot_style import C  # noqa: E402  (reuse the house palette)
 
 import graphviz  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 FIGDIR = ROOT / "results" / "figures" / "pipeline"
 FIGDIR.mkdir(parents=True, exist_ok=True)
 

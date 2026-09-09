@@ -6,7 +6,7 @@ carries its method/level-of-theory; the two inputs (candidate monomers and the
 known-E validation set) share the *identical* pipeline, and the validation gate
 is what licenses the final ranking. Read left column top->bottom.
 
-  python scripts/plot_pipeline.py   ->  results/figures/pipeline.png
+  python scripts/plotting/plot_pipeline.py   ->  results/figures/pipeline.png
 """
 from __future__ import annotations
 from pathlib import Path
@@ -18,7 +18,7 @@ from plot_style import apply_style, C  # noqa: E402
 import matplotlib.pyplot as plt          # noqa: E402
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch  # noqa: E402
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 FIGDIR = ROOT / "results" / "figures" / "pipeline"
 FIGDIR.mkdir(parents=True, exist_ok=True)
 

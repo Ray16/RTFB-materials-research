@@ -20,7 +20,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))            # scripts/ f
 from plot_style import apply_style, FAM_COLOR, OKABE_ITO
 apply_style()
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 BASE = ROOT / "results" / "d3tales_reorg_validation"                 # input data
 FIGDIR = ROOT / "results" / "figures" / "reorg"                     # output figures
 FIGDIR.mkdir(parents=True, exist_ok=True)
