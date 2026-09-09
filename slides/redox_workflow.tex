@@ -423,46 +423,47 @@
 % ---------------------------------------------------------------
 \begin{frame}{Applying it: candidate scorecard $\rightarrow$ shortlist}
   \footnotesize
-  Engine run on the current monomer set (11 candidates), $\sigma$-aware Pareto per pool:
+  $\sigma$-aware Pareto on the \hi{six grafted starting candidates} --- all fall in the
+  \textbf{anolyte} pool (2e reductions / viologen reductions), all reversible, none gated out:
   \begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-      \textbf{Anolyte pool} (E most negative = better)
+    \begin{column}{0.56\textwidth}
       \begin{table}\scriptsize
-      \begin{tabular}{lrrrr}
+      \renewcommand{\arraystretch}{1.1}
+      \begin{tabular}{lrrrrrc}
         \toprule
-        id & E$_\text{an}$ & Cap & $\lambda$ & FoM \\
+        id & E$_\text{an}$ & Cap & $\lambda$ & $\Delta G_\text{d}$ & FoM & Par. \\
         \midrule
-        \good{tempo\_parent}$^\star$   & $-1.91$ & 343 & 1.14 & 0.81 \\
-        methylpyridinium               & $-1.67$ & 285 & 0.38 & 0.74 \\
-        anthraquinone\_parent          & $-1.61$ & 258 & 0.35 & 0.63 \\
-        \good{methyl\_viologen}$^\star$ & $-1.04$ & 288 & 0.46 & 0.45 \\
-        viologen                       & $-1.03$ & 194 & 0.47 & 0.31 \\
+        pmdi                          & $-1.49$ & 160 & 0.46 & 73  & \textbf{0.77} & --- \\
+        \good{mophquinone}$^\star$    & $-1.05$ & 176 & 0.48 & 101 & 0.59 & \good{Y} \\
+        \good{viologen}$^\star$       & $-1.03$ & 194 & 0.47 & 52  & 0.54 & \good{Y} \\
+        ethylviologen                 & $-1.03$ & 185 & 0.49 & 50  & 0.45 & --- \\
+        dmophquinone                  & $-1.01$ & 147 & 0.54 & 101 & 0.33 & --- \\
+        ndi\_ammonium                 & $-1.00$ & 114 & 0.45 & 29  & 0.20 & --- \\
         \bottomrule
       \end{tabular}
       \end{table}
+      \scriptsize E$_\text{an}$ [V vs Fc], Cap [mAh/g], $\lambda$ [eV], $\Delta G_\text{d}$
+      (disprop.) [kJ/mol].
     \end{column}
-    \begin{column}{0.5\textwidth}
-      \textbf{Catholyte pool} (E most positive = better)
-      \begin{table}\scriptsize
-      \begin{tabular}{lrrrr}
-        \toprule
-        id & E$_\text{cat}$ & Cap & $\lambda$ & FoM \\
-        \midrule
-        phenothiazine                    & $+0.54$ & 88  & 0.43 & 0.60 \\
-        \good{tempo\_parent}$^\star$     & $+0.38$ & 343 & 1.14 & 0.51 \\
-        \good{phenothiazine\_parent}$^\star$ & $+0.46$ & 134 & 0.52 & 0.47 \\
-        \bottomrule
-      \end{tabular}
-      \end{table}
-      \vspace{0.5ex}
-      \scriptsize $^\star$ = Pareto-optimal.\ \hi{$\sigma$-aware matters}: phenothiazine has
-      top FoM but is \emph{dominated} by phenothiazine\_parent (its E/$\lambda$ edges are within
-      noise; parent's capacity wins).
+    \begin{column}{0.44\textwidth}
+      \scriptsize $^\star$ = Pareto-optimal ($\Rightarrow$ shortlist: \good{mophquinone},
+      \good{viologen}).
+      \vspace{1ex}
+
+      \hi{$\sigma$-aware matters}: \textbf{pmdi} has the \emph{top} FoM (best voltage,
+      $-1.49$ V) yet is \emph{dropped} from the Pareto front --- its 0.44 V edge sits inside
+      $\sigma_E\!\approx\!0.8$ V, so it is $\sigma$-dominated by the higher-capacity /
+      more-stable mophquinone \& viologen.
+      \vspace{1ex}
+
+      $\Rightarrow$ across this tight set voltage is \emph{non-discriminating}; \good{capacity
+      $+$ disproportionation stability $+$ $\lambda$} drive the ranking.
     \end{column}
   \end{columns}
   \vspace{0.5ex}
-  \scriptsize\textcolor{ink!70}{Caveats surfaced automatically: TEMPO tops anolyte only via its
-  approximate edge-of-window reduction; viologen mid-pack (modest voltage + flagged dimerization).}
+  \scriptsize\textcolor{ink!70}{Caveats surfaced automatically: the quinones' larger $\Delta
+  G_\text{disp}$ (persistent semiquinone) offsets their lower capacity; viologen carries a
+  flagged dimerization mode ($\Delta G_\text{dim}$ from earlier). All six are anolyte-side.}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -480,11 +481,12 @@
 % ---------------------------------------------------------------
 \begin{frame}{Next steps}
   \textbf{\textcolor{good}{Done}}: all axes computed \& validated; unified $\sigma$-tagged
-  scorecard; $\sigma$-aware Pareto engine; first shortlist on the current monomer set.
+  scorecard; $\sigma$-aware Pareto engine; shortlist on the six grafted starting candidates
+  (\good{mophquinone}, \good{viologen} Pareto-optimal).
   \vspace{1ex}
   \begin{enumerate}
     \item \hi{\textbf{Scale up discovery}} --- run the tiered funnel on a larger design space
-          (functionalized variants + D3TaLES-mined pools), not just the current 11.
+          (functionalized variants + D3TaLES-mined pools), not just the current six.
     \item \textbf{Harden for scale} --- SCF-robustness patch ($\sim$20\% of jobs hit gradient
           non-convergence); needed before screening hundreds.
     \item \textbf{Broaden benchmarks} --- more two-wave molecules for stability; more OROP for

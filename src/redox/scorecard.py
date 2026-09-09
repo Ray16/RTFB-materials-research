@@ -42,6 +42,19 @@ UMA = ROOT / "calcs" / "uma"
 REFERENCE_IDS = {"ferrocene"}
 
 
+def _candidate_ids():
+    """The current screening candidates = the six grafted starting candidates. Five are in
+    config/starting_candidates.py; the sixth (`viologen` = the sheet's methylviologen) is
+    deduped into config/redox_groups.py, so add it explicitly. The scorecard is scoped to
+    these ids — the old exploratory redox_groups, the validation cores, and the standalone
+    `*_sa` reference forms all have data in the per-axis tables but are NOT screening
+    candidates and are excluded here."""
+    sc = _cfg("starting_candidates")
+    ids = {g["id"] for g in sc.GROUPS}
+    ids.add("viologen")
+    return ids
+
+
 def _min_spin_gap_eV(gid):
     """Smallest |spin-state gap| across a molecule's UMA states (calcs/uma/<id>/<state>/
     result.json). None when no state scanned >1 multiplicity (spin_gap_eV is null for states
@@ -95,10 +108,13 @@ def build():
     for r in _load("stability_disproportionation"):
         disp.setdefault(r["id"], []).append(_f(r["dG_disp_kJmol"]))
     cap = {r["id"]: r for r in _load("capacity_and_proxies")}
+    candidate_ids = _candidate_ids()
 
-    # group redox couples by molecule
+    # group redox couples by molecule (scoped to the current screening candidates)
     by_mol = {}
     for r in redox:
+        if r["id"] not in candidate_ids:
+            continue
         if _f(r.get("E_vs_Fc_V")) is None:
             continue
         by_mol.setdefault(r["id"], {"name": r["name"], "family": r["family"], "couples": []})
