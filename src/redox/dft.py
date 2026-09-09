@@ -75,12 +75,16 @@ def _basis_for(charge: int, base: str, diffuse: str) -> str:
 def _build_smd_mf(mol, xc, solvent, backend="cpu", disp=None, nlc=None):
     dft = _dft_module(backend)
     KS = dft.RKS if mol.spin == 0 else dft.UKS
-    mf = KS(mol); mf.xc = xc
+    # RI-J (density fitting) by default: ~3-5x faster; the DF error on the absolute energy is
+    # ~1 meV and cancels to sub-meV in the energy DIFFERENCES this pipeline reports (redox
+    # Delta-G, reorg lambda). density_fit() MUST be applied BEFORE .SMD() (solvent wraps the DF
+    # SCF; the reverse order raises in gpu4pyscf).
+    mf = KS(mol).density_fit().SMD()
+    mf.xc = xc
     if disp:
         mf.disp = disp          # empirical dispersion (e.g. r2SCAN-D4)
     if nlc:
         mf.nlc = nlc            # nonlocal correlation (VV10, for wB97M-V)
-    mf = mf.SMD()
     mf.with_solvent.solvent = solvent
     return mf
 
@@ -171,6 +175,60 @@ def _thermal_correction(atoms, charge, mult, xc=None, basis=None, disp=None,
                 thermal_method="gfn2-xtb")
 
 
+def _xtb_alpb_opt(atoms, charge: int, mult: int, solvent: str = "acetonitrile",
+                  accuracy: float = 1.0):
+    """Fast SOLVATED pre-optimization with GFN2-xTB + ALPB(<solvent>). Returns
+    (ASE Atoms of the ALPB-optimized geometry, ok_flag); on any failure returns the input
+    geometry unchanged with ok=False (never loses the seed).
+
+    Purpose: warm-start the DFT+SMD optimization from a geometry that already feels the
+    solvent, removing the gas-phase-collapse basin-trapping risk a gas-only (UMA) seed carries
+    for charged/floppy species. ALPB also binds otherwise gas-unbound dianions, so the pre-opt
+    is well-defined for the -2 states. Cheap enough to run on every seed.
+    """
+    import subprocess
+    import tempfile
+    import os
+    from ase.io import read as ase_read
+    q = int(charge)
+    uhf = int(mult) - 1
+    xtb_bin = os.environ.get("XTB_BIN", "xtb")
+    with tempfile.TemporaryDirectory(prefix="xtbalpb_") as d:
+        _write_xyz(atoms, Path(d) / "mol.xyz")
+        cmd = [xtb_bin, "mol.xyz", "--gfn", "2", "--chrg", str(q), "--uhf", str(uhf),
+               "--opt", "--alpb", solvent, "--acc", str(accuracy)]
+        env = dict(os.environ, OMP_NUM_THREADS=os.environ.get("XTB_THREADS", "2"))
+        r = subprocess.run(cmd, cwd=d, capture_output=True, text=True, env=env)
+        optxyz = Path(d) / "xtbopt.xyz"
+        if r.returncode == 0 and optxyz.exists():
+            return ase_read(str(optxyz)), True
+    return atoms, False
+
+
+def conformer_seeds(gid: str, state: str, n: int) -> list:
+    """Starting geometries for a state's DFT+SMD optimization.
+
+    n<=1 (DEFAULT): the single BEST seed = the UMA-relaxed geometry (charge/spin-aware, the
+    lowest-energy conformer UMA already selected for this state), falling back to the FF-lowest
+    conformer, then the per-state library seed. For the rigid aromatic redox cores here the
+    conformers collapse to one solvated minimum (measured DFT seed spread <5 meV in 13/14
+    candidate states), so one seed is enough.
+
+    n>1 (opt-in, --nconf): the top-n FF-ranked conformers, multi-conformer screened (keep the
+    lowest DFT+SMD energy). Reserve for genuinely floppy species / reduced dianions, where the
+    seed choice can matter (~0.05 eV in the one case it did, pmdi/red2)."""
+    if n <= 1:
+        g = geom_for(gid, state)          # UMA-relaxed best seed (charge/spin-aware)
+        if g.exists():
+            return [g]
+    confdir = ROOT / "library" / gid / "conformers"
+    confs = sorted(confdir.glob("conf_*.xyz"))[:n]
+    if confs:
+        return confs
+    g = geom_for(gid, state)
+    return [g] if g.exists() else []
+
+
 def dft_smd(xyz_path: Path, charge: int, mult: int,
             opt_xc: str = OPT_XC, opt_basis: str = OPT_BASIS,
             opt_basis_anion: str = OPT_BASIS_ANION, opt_disp: str | None = OPT_DISP,
@@ -235,7 +293,7 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
 
     if do_gas:
         KS = dft.RKS if nunpaired == 0 else dft.UKS
-        mfg = KS(mol_sp); mfg.xc = sp_xc
+        mfg = KS(mol_sp).density_fit(); mfg.xc = sp_xc   # RI-J: ~3-5x faster (see _build_smd_mf)
         if sp_disp:
             mfg.disp = sp_disp
         if sp_nlc:
@@ -297,7 +355,20 @@ def _uma_mult(gid: str, state: str, fallback: int) -> int:
     return fallback
 
 
-def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu"):
+def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, preopt="alpb",
+              torsion_scan=False):
+    """For each state: multi-conformer DFT+SMD screening. Take up to `nconf` conformer seeds,
+    optionally pre-optimize each in solvent with xtb-ALPB (`preopt`), DFT+SMD-optimize every
+    seed, and keep the LOWEST-E_smd result (the winning solvated conformer). Thermal (RRHO) is
+    computed only on the winner (RRHO is ~conformer-independent → saves N-1 xtb Hessians).
+    Resumable: a state whose result.json exists is skipped.
+
+    torsion_scan (opt-in, default OFF): for floppy molecules, replace the FF/UMA seeds with
+    geometries rotated around the primary ring-ring torsion (>= max(nconf, 8) angles), so the
+    lowest-E_smd selection finds the global-min conformer. Rigid molecules (no such torsion)
+    fall back to normal seeding automatically. See src/redox/torsion_scan.py."""
+    import shutil
+    from ase.io import read as ase_read
     outroot = ROOT / "calcs" / "dft"
     for r in rows:
         gid, st = r["id"], r["state"]
@@ -305,29 +376,72 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu"):
         rj = outdir / "result.json"
         if rj.exists() and not force:
             print(f"[skip] {gid}/{st}", flush=True); continue
-        geom = geom_for(gid, st)
-        if not geom.exists():
-            print(f"[miss] {gid}/{st} no geometry ({geom})", flush=True); continue
+        q = int(r["charge"])
+        seeds = conformer_seeds(gid, st, nconf) if do_opt else [geom_for(gid, st)]
+        seeds = [s for s in seeds if s and s.exists()]
+        if not seeds:
+            print(f"[miss] {gid}/{st} no geometry", flush=True); continue
+        if do_opt and torsion_scan:
+            outdir.mkdir(parents=True, exist_ok=True)
+            from redox.torsion_scan import torsion_rotated_seeds
+            rot = torsion_rotated_seeds(seeds[0], max(nconf, 8), outdir)
+            if len(rot) > 1:                       # a ring-ring torsion was found; else no-op
+                seeds = rot
+                print(f"[tscan] {gid}/{st}: {len(seeds)} torsion-rotated seeds", flush=True)
         fallback_mult = int(r.get("mult_hint") or r.get("mult") or 1)
         mult = _uma_mult(gid, st, fallback_mult)
-        print(f"[run ] {gid}/{st} q={r['charge']} m={mult} opt={do_opt} "
-              f"backend={backend} ...", flush=True)
-        try:
-            outdir.mkdir(parents=True, exist_ok=True)
-            res = dft_smd(geom, int(r["charge"]), mult,
-                          do_opt=do_opt, do_freq=do_freq,
-                          opt_out=outdir / "opt.xyz", backend=backend)
-        except Exception as e:
-            print(f"[fail] {gid}/{st}: {type(e).__name__}: {str(e)[:120]}", flush=True)
-            continue
-        res.update(id=gid, state=st, n_e=int(r["n_e"]))
+        print(f"[run ] {gid}/{st} q={q} m={mult} seeds={len(seeds)} preopt={preopt} "
+              f"opt={do_opt} backend={backend} ...", flush=True)
+        outdir.mkdir(parents=True, exist_ok=True)
+        best = None            # (e_smd_eV, seed_idx, res_dict, opt_path)
+        seed_es = []
+        for si, seed in enumerate(seeds):
+            try:
+                atoms0 = ase_read(str(seed))
+                if do_opt and preopt == "alpb":
+                    atoms0, ok = _xtb_alpb_opt(atoms0, q, mult)  # solvated warm start
+                seed_tmp = outdir / f"_seed_{si:02d}.xyz"
+                _write_xyz(atoms0, seed_tmp, comment=f"seed {si} preopt={preopt}")
+                opt_tmp = outdir / f"_opt_{si:02d}.xyz"
+                res = dft_smd(seed_tmp, q, mult, do_opt=do_opt, do_freq=False,
+                              opt_out=opt_tmp, backend=backend)
+                e = res.get("e_smd_eV")
+                seed_es.append(e)
+                if e is not None and (best is None or e < best[0]):
+                    best = (e, si, res, opt_tmp if opt_tmp.exists() else seed_tmp)
+            except Exception as e:
+                print(f"[warn] {gid}/{st} seed {si} failed: {type(e).__name__}: "
+                      f"{str(e)[:100]}", flush=True)
+                seed_es.append(None)
+                continue
+        if best is None:
+            print(f"[fail] {gid}/{st}: all {len(seeds)} seeds failed", flush=True); continue
+        e_best, si_best, res, optpath = best
+        # thermal (RRHO) only on the winning conformer
+        if do_freq:
+            try:
+                th = _thermal_correction(ase_read(str(optpath)), q, mult)
+                res.update(**th, freq_level="gfn2-xtb (RRHO, 298.15K)")
+            except Exception as exc:
+                print(f"[warn] {gid}/{st} thermal failed: {str(exc)[:100]}", flush=True)
+                res["g_thermal_eV"] = None
+        shutil.copy(optpath, outdir / "opt.xyz"); res["opt_out"] = str(outdir / "opt.xyz")
+        valid_es = [x for x in seed_es if x is not None]
+        res.update(id=gid, state=st, n_e=int(r["n_e"]),
+                   n_seeds=len(seeds), seed_preopt=preopt, winning_seed=si_best,
+                   seed_e_smd_eV=[round(x, 4) if x is not None else None for x in seed_es],
+                   seed_spread_eV=(round(max(valid_es) - min(valid_es), 4)
+                                   if len(valid_es) > 1 else 0.0))
         rj.write_text(json.dumps(res, indent=2))
+        for f in outdir.glob("_seed_*.xyz"):
+            f.unlink()
+        for f in outdir.glob("_opt_*.xyz"):
+            f.unlink()
         gth = res.get("g_thermal_eV")
         gth_s = f"{gth:+.3f}" if isinstance(gth, (int, float)) else "n/a"
-        print(f"[done] {gid}/{st} E_smd={res['e_smd_eV']:.3f} eV "
-              f"dGsolv={res.get('dG_solv_eV', float('nan')):.3f} eV "
-              f"Gtherm={gth_s} eV (imag={res.get('n_imag', '-')}) "
-              f"conv={res['converged_smd']} ({res['sp_xc']}/{res['sp_basis']})", flush=True)
+        print(f"[done] {gid}/{st} E_smd={e_best:.3f} eV (winner {si_best}/{len(seeds)}, "
+              f"spread {res['seed_spread_eV']:.3f} eV) Gtherm={gth_s} "
+              f"conv={res.get('converged_smd')} ({res['sp_xc']}/{res['sp_basis']})", flush=True)
 
 
 def main():
@@ -347,6 +461,17 @@ def main():
     ap.add_argument("--backend", default="cpu", choices=["cpu", "gpu"],
                     help="'gpu' uses gpu4pyscf (set CUDA_VISIBLE_DEVICES to pin a GPU)")
     ap.add_argument("--nthreads", type=int, default=0)
+    ap.add_argument("--nconf", type=int, default=1,
+                    help="# conformer seeds to DFT+SMD-optimize per state, keep lowest. "
+                         "Default 1 = single best UMA-relaxed seed (rigid cores need no more). "
+                         "Set >1 to multi-conformer screen floppy species / dianions.")
+    ap.add_argument("--preopt", default="alpb", choices=["alpb", "none"],
+                    help="solvated pre-opt of each seed before DFT (alpb=xtb-ALPB(MeCN), none=off)")
+    ap.add_argument("--torsion-scan", dest="torsion_scan", action="store_true",
+                    help="opt-in: seed the multi-conformer search with geometries rotated around "
+                         "the primary ring-ring torsion (>= max(nconf,8) angles) to find the "
+                         "global-min conformer. For floppy species (viologens, biaryl quinones); "
+                         "no-op on rigid molecules. OFF by default.")
     args = ap.parse_args()
 
     if args.nthreads:
@@ -362,7 +487,8 @@ def main():
             n, i = (int(x) for x in args.shard.split(":"))
             rows = [r for k, r in enumerate(rows) if k % n == i]
         run_batch(rows, args.force, do_opt=not args.no_opt,
-                  do_freq=not args.no_freq, backend=args.backend)
+                  do_freq=not args.no_freq, backend=args.backend,
+                  nconf=args.nconf, preopt=args.preopt, torsion_scan=args.torsion_scan)
         return
 
     res = dft_smd(Path(args.xyz), args.charge, args.mult,

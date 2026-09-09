@@ -21,6 +21,8 @@ Data model: candidate = molecule; couple-level properties are rolled up:
   - dG_disp     : disproportionation dG of the accessible interior intermediate, if any
                   (worst/min over intermediates); n/a for a single-couple molecule
   - reversible  : all accessible couples reversible (True by construction of the filter)
+  - spin        : min |spin-state gap| over the molecule's UMA states; spin_confidence='low'
+                  when it is near-degenerate (< SPIN_GAP_LOW_EV) -> potentials less certain
   - SA, dGsolv  : molecule-level proxies
 
   PYTHONPATH=src python -m redox.scorecard
@@ -28,14 +30,35 @@ Data model: candidate = molecule; couple-level properties are rolled up:
 from __future__ import annotations
 import csv
 import importlib.util
+import json
 import statistics
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 RESULTS = ROOT / "results"
+UMA = ROOT / "calcs" / "uma"
 
 # not real candidates: the Fc/Fc+ internal reference
 REFERENCE_IDS = {"ferrocene"}
+
+
+def _min_spin_gap_eV(gid):
+    """Smallest |spin-state gap| across a molecule's UMA states (calcs/uma/<id>/<state>/
+    result.json). None when no state scanned >1 multiplicity (spin_gap_eV is null for states
+    with a single sensible multiplicity, e.g. odd-electron doublets). A small value means the
+    spin ground state is near-degenerate -> lower-confidence potentials for this molecule."""
+    gdir = UMA / gid
+    if not gdir.is_dir():
+        return None
+    gaps = []
+    for rj in gdir.glob("*/result.json"):
+        try:
+            g = json.loads(rj.read_text()).get("spin_gap_eV")
+        except (OSError, ValueError):
+            continue
+        if g is not None:
+            gaps.append(abs(float(g)))
+    return round(min(gaps), 4) if gaps else None
 
 
 def _cfg(mod):
@@ -113,9 +136,13 @@ def build():
         cspec = round(n_acc * ele.FARADAY / (mw * 3.6), 1) if mw else None
         lams = [c["lam"] for c in acc if c["lam"] is not None]
         disp_vals = disp.get(gid)          # interior intermediate(s), worst case = min
+        spin_gap = _min_spin_gap_eV(gid)   # smallest |spin gap| over this molecule's states
+        spin_conf = ("low" if (spin_gap is not None and spin_gap < sc.SPIN_GAP_LOW_EV)
+                     else "ok")
         rows.append(dict(
             id=gid, name=m["name"], family=m["family"], status="candidate", role=role,
             n_accessible=n_acc,
+            min_spin_gap_eV=spin_gap, spin_confidence=spin_conf,
             E_anolyte_V=(round(statistics.mean(ano), 3) if ano else None),
             E_catholyte_V=(round(statistics.mean(cat), 3) if cat else None),
             sigma_E_V=round(max(c["sigma_E"] for c in acc), 3),
@@ -134,7 +161,8 @@ def build():
     RESULTS.mkdir(exist_ok=True)
     cols = ["id", "name", "family", "status", "role", "n_accessible", "E_anolyte_V",
             "E_catholyte_V", "sigma_E_V", "specific_capacity_mAh_g", "MW", "lambda_eV",
-            "sigma_lambda_eV", "dG_disp_kJmol", "sigma_disp_eV", "all_reversible", "SA_score",
+            "sigma_lambda_eV", "dG_disp_kJmol", "sigma_disp_eV", "all_reversible",
+            "min_spin_gap_eV", "spin_confidence", "SA_score",
             "dGsolv_proxy_eV", "n_couples_rejected", "reason"]
     out = RESULTS / "scorecard.csv"
     with out.open("w", newline="") as f:
@@ -157,8 +185,9 @@ def build():
         lam_s = f"{r['lambda_eV']:.2f}" if r["lambda_eV"] is not None else "-"
         dg_s = f"{r['dG_disp_kJmol']:.0f}" if r["dG_disp_kJmol"] is not None else "-"
         sa_s = f"{r['SA_score']:.1f}" if r["SA_score"] is not None else "-"
+        spin_flag = "  <-- spin near-degenerate (low confidence)" if r.get("spin_confidence") == "low" else ""
         print(f"{r['id']:22s} {r['role']:9s} {r['n_accessible']:2d} "
-              f"{ea:>6s} {ec:>6s} {cap_s:>5s} {lam_s:>5s} {dg_s:>7s} {sa_s:>4s}")
+              f"{ea:>6s} {ec:>6s} {cap_s:>5s} {lam_s:>5s} {dg_s:>7s} {sa_s:>4s}{spin_flag}")
     rej = [r for r in rows if r["status"] == "REJECTED"]
     if rej:
         print(f"\nREJECTED (gated out): {[r['id'] for r in rej]}")

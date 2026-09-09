@@ -53,10 +53,21 @@ IFS=',' read -ra GARR <<< "$GPUS"
 NW="${#GARR[@]}"
 echo ">> DFT+SMD (GPU) composite r2SCAN-D4//wB97X-D3 : $NW workers on GPUs [$GPUS]"
 
+# CPU thread cap per GPU worker: gpu4pyscf runs the SCF on the GPU but does CPU-side integral
+# screening/DF that defaults to ALL cores -> N workers would oversubscribe the shared node
+# (CLAUDE.md: no CPU contention). Cap and guard (threads x workers) << nproc.
+GPU_THREADS="${GPU_THREADS:-4}"
+NPROC="$($PY -c 'import os;print(os.cpu_count())')"
+if [ $(( GPU_THREADS * NW )) -gt $(( NPROC / 2 )) ]; then
+  GPU_THREADS=$(( NPROC / (2 * NW) )); [ "$GPU_THREADS" -lt 1 ] && GPU_THREADS=1
+  echo ">> capped GPU_THREADS to $GPU_THREADS to avoid CPU oversubscription (nproc=$NPROC)"
+fi
+echo ">> $GPU_THREADS CPU threads/worker = $((GPU_THREADS*NW))/$NPROC cores; load $(cut -d' ' -f1-3 /proc/loadavg)"
 pids=()
 for i in "${!GARR[@]}"; do
   g="${GARR[$i]}"
-  CUDA_VISIBLE_DEVICES="$g" \
+  CUDA_VISIBLE_DEVICES="$g" OMP_NUM_THREADS="$GPU_THREADS" MKL_NUM_THREADS="$GPU_THREADS" \
+    OPENBLAS_NUM_THREADS="$GPU_THREADS" \
     "$PY" -m redox.dft --all --shard "$NW:$i" --backend gpu \
       > "$LOGDIR/gpu_${g}.log" 2>&1 &
   pids+=($!)

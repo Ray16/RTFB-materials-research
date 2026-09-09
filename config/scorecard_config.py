@@ -27,6 +27,12 @@ SIGMA_LAMBDA_EV = 0.10
 SIGMA_DISP_EV = 0.17          # measured: redox.validate_stability MAE 16 kJ/mol (n=3, rho=1.0)
 SIGMA_CAPACITY = 0.0          # exact
 
+# Spin-state confidence: UMA scans multiplicities per state and records the singlet-triplet
+# (etc.) gap. A near-degenerate spin ground state means the DFT charge/energy could rest on
+# the wrong multiplicity, so the potentials for that molecule are lower confidence. Flag when
+# the smallest |spin gap| across a molecule's states falls below this. 5 kcal/mol = 0.217 eV.
+SPIN_GAP_LOW_EV = 0.217
+
 TRUST = dict(
     redox_potential="validated",     # ranking within class; absolute carries the sigma above
     reorganization="validated",

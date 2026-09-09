@@ -11,6 +11,12 @@ before using them to calibrate. Do NOT fit away discrepancies — diagnose the p
 
 Ferrocene is the internal reference (E° vs Fc/Fc+ = 0 by definition); it also needs a
 metallocene geometry that RDKit cannot embed, so it is flagged special (build separately).
+
+REFERENCE-FRAME AUDIT (2026-09): each anchor was checked against the established MeCN-vs-Fc
+window for its couple. TEMPO+/TEMPO (+0.24), phenothiazine+./PTZ (+0.26), 9,10-anthraquinone
+(-1.28/-1.90), and N-methylpyridinium (-1.8) all sit inside their vs-Fc windows -> correctly
+labeled. ONLY methyl viologen was wrong: -0.45/-0.88 are MeCN vs SCE, mislabeled vs Fc, now
+converted (see below). Remaining TODO: back every anchor with a primary MeCN CV citation.
 """
 
 VALIDATION = [
@@ -27,9 +33,18 @@ VALIDATION = [
         name="methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",
         smiles="C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
         states=[("ox2", 2, 1, 0), ("ox1", 1, 2, -1), ("neu", 0, 1, -2)],
-        # MV2+/+. and MV+./0 are textbook; values vs Fc/Fc+ in MeCN — VERIFY vs OROP.
-        events=[dict(event="ox2->ox1", exp_V_vs_Fc=-0.45, note="approx, verify"),
-                dict(event="ox1->neu", exp_V_vs_Fc=-0.88, note="approx, verify")],
+        # CORRECTED 2026-09 (reference-frame audit): the prior -0.45/-0.88 were MeCN vs SCE
+        # (docs/PLAN.md states them "vs SCE"), MISLABELED here as vs Fc. They sit ~0.4 V above
+        # the established MeCN-vs-Fc viologen window (1st red ~-0.8, 2nd red ~-1.25), i.e. in the
+        # vs-SCE window. Converted to Fc via Pavlishchuk & Addison (Inorg. Chim. Acta 2000):
+        # Fc/Fc+ = +0.40 V vs SCE in MeCN  =>  E_vs_Fc = E_vs_SCE - 0.40.
+        # PROVISIONAL (+/-~0.05 V); replace with a primary MeCN CV vs Fc when available. The
+        # reference-free wave spacing (E1-E2 ~0.44 V) independently matches experiment and our
+        # computed ladder, so the shift is a referencing fix, not a fit to our numbers.
+        events=[dict(event="ox2->ox1", exp_V_vs_Fc=-0.85,
+                     note="MeCN vs SCE (-0.45) - 0.40 (Pavlishchuk-Addison); provisional"),
+                dict(event="ox1->neu", exp_V_vs_Fc=-1.28,
+                     note="MeCN vs SCE (-0.88) - 0.40 (Pavlishchuk-Addison); provisional")],
     ),
     # --- Explicit PF6- ion-pair species for the viologen fix (released-counterion scheme,
     # docs/PLAN.md). Each keeps its NATURAL number of PF6- so every assembly is NEUTRAL

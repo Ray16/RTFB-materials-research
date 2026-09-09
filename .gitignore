@@ -49,3 +49,13 @@ slides/review/
 # these from the gitignored MNSol download.
 data/raw/validation/solvation_refset_acetonitrile.csv
 results/solvation_validation.csv
+
+# Copyrighted reference papers (reference only, not for redistribution)
+paper/
+
+# Regenerable per-molecule validation JSONs (summary comparison.csv + figures ARE committed;
+# re-create the raw JSONs with scripts/validate_reorg_worker.py)
+results/d3tales_reorg_validation/calc/
+
+# Calc backups (e.g. pre-torsion-scan snapshots)
+calcs/*.bak_pretscan/

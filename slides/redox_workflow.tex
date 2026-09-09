@@ -7,6 +7,8 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,shapes.geometric}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{../results/figures/}{figures/}}
 
 % --- clean modern theme built on defaults ---
 \usetheme{default}
@@ -139,7 +141,7 @@
     stability (disprop.) & $\Delta G_\text{disp}=F(E_\text{hi}-E_\text{lo})$ from state $G$'s
                       & exp spacings: MAE 0.17 eV, $\rho$ 1.0 \\
     stability (dimer.) & pimer cluster DFT+SMD $\Delta G$ & \bad{flagged} (+2 desolvation) \\
-    reorg.\ energy $\lambda$ & 4-point (Nelsen), gas, $\omega$B97M-V & D3TaLES: MAD 0.094 eV \\
+    reorg.\ energy $\lambda$ & $\lambda_i$ 4-point (Nelsen), gas $+\ \lambda_o$ (Marcus/Born, Eq.\,13) & D3TaLES $\lambda_i$: \good{$R^2{=}1.0$} ($n{=}2636$) \\
     reversibility & bond-graph change + solvated EA & catches dissoc.\ (CCl$_4$) \\
     capacity & $n\!\cdot\!F/\text{MW}$ (accessible $n$) & \good{exact} \\
     solubility & $\Delta G_\text{solv}=E_\text{SMD}-E_\text{gas}$ (neutral) & proxy (relative) \\
@@ -263,35 +265,56 @@
 \end{frame}
 
 % ---------------------------------------------------------------
-\begin{frame}{Kinetics: reorganization energy $\lambda$ (validated)}
+\begin{frame}{Kinetics: reorganization energy $\lambda=\lambda_i+\lambda_o$}
   \begin{columns}[T]
-    \begin{column}{0.52\textwidth}
-      Inner-sphere $\lambda_i$ via the \textbf{4-point (Nelsen)} scheme --- \emph{identical}
-      to D3TaLES's definition (verified in their source). Reliable via cancellation; low
-      $\lambda$ = fast, reversible ET.
-      \begin{table}\footnotesize
-      \begin{tabular}{lr}
-        \toprule
-        couple & $\lambda_i$ (eV) \\
-        \midrule
-        ferrocene ox$\to$neu     & \good{0.085} \\
-        viologen ox1$\to$neu     & 0.39 \\
-        phenothiazine ox$\to$neu & 0.43 \\
-        TEMPO ox$\to$rad         & 0.96 \\
-        \bottomrule
-      \end{tabular}
-      \end{table}
-    \end{column}
-    \begin{column}{0.48\textwidth}
-      \begin{block}{Cross-check vs.\ D3TaLES computed $\lambda$}
-        MAD = \good{0.094 eV} ($n=3$ overlapping molecules)
-        \\[0.5ex]
-        \footnotesize e.g.\ TEMPO hole reorg: ours 0.97 vs 0.94 eV
-      \end{block}
-      \vspace{-0.5ex}
+    \begin{column}{0.42\textwidth}
       \footnotesize
-      Our $\lambda$ implementation is sound. Cross-points computed gas-only for efficiency;
-      geometry-source difference (SMD-opt vs D3TaLES gas-opt) explains the small residual.
+      \textbf{Inner-sphere} $\lambda_i$ --- solute geometry relaxation, \textbf{4-point (Nelsen)}:
+      \[\lambda_i=[E_O(q_R)\!-\!E_O(q_O)]+[E_R(q_O)\!-\!E_R(q_R)]\]
+      gas single points; \emph{identical} to D3TaLES. \good{Validated}.
+      \vspace{1.2ex}
+
+      \textbf{Outer-sphere} $\lambda_o$ --- solvent reorganization (Marcus/Born, \hi{Sharma Eq.\,13}):
+      \[\lambda_o=\frac{z^2e^2}{8\pi\varepsilon_0 r_\text{hyd}}\!\left(\frac{1}{\varepsilon_\text{op}}-\frac{1}{\varepsilon_r}\right)\]
+      MeCN ($\varepsilon_r{=}37.5,\ \varepsilon_\text{op}{=}1.81$); SASA $r_\text{hyd}$ proxy $\Rightarrow$
+      \hi{semi-quantitative} ($\sim$2$\times$).
+      \vspace{1.2ex}
+
+      $\lambda_\text{total}=\lambda_i+\lambda_o$: trust $\lambda_i$; read $\lambda_o$ as \emph{relative}.
+    \end{column}
+    \begin{column}{0.58\textwidth}
+      \begin{center}
+      \includegraphics[width=\linewidth]{d3tales_validation.png}
+      \end{center}
+      \vspace{-1.5ex}
+      \centering\footnotesize
+      Independently reproduce D3TaLES's SA \& inner-sphere $\lambda$:
+      \good{$R^2=1.0$} \ (SA $n{=}1695$; $\lambda$ $n{=}2636$; quinones \& imides highlighted).
+    \end{column}
+  \end{columns}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Candidates: SA vs.\ reorganization energy}
+  \begin{center}
+  \includegraphics[width=0.99\textwidth]{candidates_sa_reorg.png}
+  \end{center}
+  \vspace{-1.5ex}
+  \footnotesize
+  \begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}\footnotesize
+        \item one point per molecule (mean over its charge states); the six cluster tightly
+              ($\lambda_i\!\approx$0.45--0.54 eV --- similar across families).
+        \item \good{ammonium-NDI}: lowest $\lambda$ $\Rightarrow$ fastest ET; \hi{quinones} highest.
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}\footnotesize
+        \item gas $\to$ MeCN: $+\lambda_o$ lifts each point $\sim$0.5--0.6 eV (note per-panel y-zoom).
+        \item $\lambda_i$ validated (D3TaLES $R^2{=}1.0$); $\lambda_o$ Marcus/Born estimate
+              ($r_\text{hyd}$ caveat) --- read \emph{relative} trends.
+      \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
@@ -403,6 +426,18 @@
   \vspace{0.5ex}
   \scriptsize\textcolor{ink!70}{Caveats surfaced automatically: TEMPO tops anolyte only via its
   approximate edge-of-window reduction; viologen mid-pack (modest voltage + flagged dimerization).}
+\end{frame}
+
+% ---------------------------------------------------------------
+\begin{frame}{Current focus: six multi-electron starting candidates}
+  \begin{center}
+  \includegraphics[width=0.92\textwidth]{molecules_starting_candidates.png}
+  \end{center}
+  \vspace{-0.5ex}
+  \centering\footnotesize
+  From \texttt{Candidates.xlsx}: two \hi{viologens}, two \hi{imides} (PMDI, NDI), two
+  \hi{quinones} --- all \good{2-electron} (multi-charge) systems, grafted onto the Merrifield
+  benzylic site. The \emph{imide} family is new; all six now entering the validated pipeline.
 \end{frame}
 
 % ---------------------------------------------------------------

@@ -40,6 +40,18 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
   Never hard-code a GPU index or assume a GPU is free because it was free earlier — re-check
   immediately before each launch. Use `scripts/free_gpus.py` to pick free GPUs programmatically.
   If no GPU is free, wait or fall back to CPU; do not collide with a running job.
+- **This node is SHARED for CPU too — NEVER oversubscribe cores (this impacts other users).**
+  MLIP (UMA/fairchem/torch) and PySCF/xtb default to grabbing **ALL cores per process**, so N
+  parallel workers each spawn ~all-core thread pools, thrash the node (load ≫ ncores), starve
+  other users, AND slow our own job (CPU contention). This has happened — do not repeat it.
+  ALWAYS cap threads explicitly before launching any parallel batch: set `OMP_NUM_THREADS`,
+  `MKL_NUM_THREADS`, `OPENBLAS_NUM_THREADS` (torch honors `OMP_NUM_THREADS`) to a per-worker
+  slice, and size it so **(threads_per_worker × n_workers) stays well below `nproc`** — never
+  leave them unset. Check `/proc/loadavg` vs `nproc` immediately before launch: if load is
+  already ≳ `nproc`, the node is saturated — cut workers/threads, move to an idle peer node, or
+  wait; do not pile on. **GPUs are usually the free resource while CPU is contended**, so for
+  MLIP push work onto idle GPUs with a SMALL CPU thread cap (e.g. 2/worker) rather than many
+  CPU threads per worker. Same courtesy as the GPU rule above.
 - **Multi-node: fan out across the lambda cluster.** Nodes `lambda1,lambda2,lambda4` (lambda3
   is often down) share this NFS filesystem AND the same conda env, so a job on any node reads/
   writes the SAME `calcs/`,`library/`,`results/` paths. SSH is passwordless. Scan peers for

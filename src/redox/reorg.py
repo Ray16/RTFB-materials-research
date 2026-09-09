@@ -101,11 +101,24 @@ def lambda_for_couple(gid, O, R):
     E_O_at_R = json.loads(cO.read_text())["e_gas_eV"]
     E_R_at_O = json.loads(cR.read_text())["e_gas_eV"]
     lam = (E_O_at_R - E_O_at_O) + (E_R_at_O - E_R_at_R)     # eV
+    relax_ox = (E_O_at_R - E_O_at_O)                        # eV, each half-relaxation
+    relax_red = (E_R_at_O - E_R_at_R)
+    # Artifact guard: each half-relaxation is a distortion penalty (physically ~0.1-0.7 eV and
+    # >=0). lambda<0, a negative half, or a >1 eV half signals a broken/wrong-conformer geometry
+    # (see the D3TaLES validation). Flag it -> re-run that state with --torsion-scan.
+    flag = ""
+    if lam < 0:
+        flag = "negative_lambda"
+    elif min(relax_ox, relax_red) < -0.02:
+        flag = "negative_half"
+    elif max(relax_ox, relax_red) > 1.0:
+        flag = "large_half>1eV"
     return dict(id=gid, couple=f"{sO}->{sR}", q_ox=qO, q_red=qR,
                 lambda_i_eV=round(lam, 4), lambda_i_meV=round(lam * EV_MEV, 1),
                 lambda_i_kJmol=round(lam * EV_KJ, 2),
-                relax_ox_meV=round((E_O_at_R - E_O_at_O) * EV_MEV, 1),
-                relax_red_meV=round((E_R_at_O - E_R_at_R) * EV_MEV, 1))
+                relax_ox_meV=round(relax_ox * EV_MEV, 1),
+                relax_red_meV=round(relax_red * EV_MEV, 1),
+                flag=flag)
 
 
 def pd_ok(x):
@@ -196,6 +209,14 @@ def aggregate():
               f"{r.get('d3tales_type',''):>8s} {dfs} {ok:>4s}")
     print("\nlambda_i = inner-sphere reorganization energy (gas, 4-point Nelsen; identical to")
     print("D3TaLES's ReorganizationCalc). Lower = faster/more reversible ET. Must be >= 0.")
+    flagged = [r for r in rows if r.get("flag")]
+    if flagged:
+        print(f"\n[!] {len(flagged)} couple(s) flagged as likely broken/wrong-conformer geometry "
+              f"— re-run with `python -m redox.dft --only <id> --force --torsion-scan`:")
+        for r in flagged:
+            print(f"    {r['id']:22s} {r['couple']:12s} lam={r['lambda_i_eV']:.3f} "
+                  f"relax_ox={r['relax_ox_meV']:.0f}meV relax_red={r['relax_red_meV']:.0f}meV "
+                  f"[{r['flag']}]")
     if diffs:
         import statistics
         print(f"\nD3TaLES cross-check: n_matched={len(diffs)}  MAD={statistics.mean(diffs):.3f} eV"
@@ -206,7 +227,7 @@ def aggregate():
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "reorganization.csv"
     cols = ["id", "couple", "q_ox", "q_red", "lambda_i_eV", "lambda_i_meV",
-            "lambda_i_kJmol", "relax_ox_meV", "relax_red_meV",
+            "lambda_i_kJmol", "relax_ox_meV", "relax_red_meV", "flag",
             "d3tales_lambda_eV", "d3tales_type"]
     with out.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader()

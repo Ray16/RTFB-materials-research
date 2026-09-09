@@ -12,9 +12,12 @@ Answers three concrete questions and writes small, committable artifacts:
      the species D3TaLES's own README flags as implicit-solvent-unreliable (+2/-2),
      independently corroborating our viologen diagnosis. -> results/d3tales_dications.csv
 
-Potentials are ABSOLUTE (eV, vs the free electron); subtract a level-matched Fc
-absolute to get V vs Fc/Fc+. We only RANK within D3TaLES here (reference cancels), so
-no conversion is applied; conversion is a separate step when comparing to our numbers.
+D3TaLES potentials are on an ABSOLUTE scale (their source adds a hard-coded +4.42 V SHE
+reference), NOT vs Fc — and the ox and red columns sit on DIFFERENT effective references.
+So every candidate CSV we emit runs the raw potential columns through
+redox.d3tales_ingest.relabel_potentials: the raw column is renamed to *_D3TaLES_abs_V and a
+clearly-marked approximate *_vs_Fc_est_V column is added, so a raw "8.27" reduction value
+never sits unlabeled next to our own vs-Fc numbers.
 
   python scripts/analyze_d3tales.py
 """
@@ -23,6 +26,8 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+from redox.d3tales_ingest import relabel_potentials  # noqa: E402
 CSV = ROOT / "data" / "raw" / "validation" / "D3TaLES" / "d3tales_public.csv"
 OUT = ROOT / "results"
 
@@ -79,10 +84,13 @@ def main():
         sub = df[mask][keep].copy()
         if "sa_score" in sub:
             sub = sub.sort_values("sa_score")
-        sub.head(50).to_csv(OUT / f"d3tales_candidates_{fam}.csv", index=False)
+        # hygiene: relabel raw D3TaLES potentials as absolute + add approx vs-Fc estimate
+        sub = relabel_potentials(sub.head(50))
+        sub.to_csv(OUT / f"d3tales_candidates_{fam}.csv", index=False)
 
     # 3) dication cross-check (two aromatic N+) — README-flagged implicit-solvent-hard
     di = df[df["smiles"].astype(str).str.count(r"\[n\+\]") >= 2][keep].copy()
+    di = relabel_potentials(di)
     di.to_csv(OUT / "d3tales_dications.csv", index=False)
     print(f"  dications (>=2 [n+]): {len(di)}  -> results/d3tales_dications.csv")
 

@@ -1,0 +1,31 @@
+{
+  "_about": "Documented physical / environment FACTS for the redox-screening project. Single machine-readable source of truth. config/electrolyte.py loads this and exposes the names the pipeline imports. Edit values HERE, not in code.",
+  "solvent": {
+    "name": "acetonitrile",
+    "abbrev": "MeCN",
+    "model": "SMD",
+    "eps_r": 37.5,
+    "refractive_index": 1.344,
+    "eps_optical": 1.806,
+    "solvent_probe_radius_A": 2.2,
+    "_notes": "eps_r = static (relative) permittivity. eps_optical = n_D^2 (MeCN n_D = 1.344 at 20 C -> 1.806). Pekar factor (1/eps_optical - 1/eps_r) feeds the Marcus/Born outer-sphere reorganization energy, Sharma et al. PNAS 2021 Eq. 12-13. solvent_probe_radius_A = effective radius of one MeCN molecule (vdW volume ~45 A^3), used as the SASA probe when estimating the hydrodynamic radius r_hyd of a solute (roll a solvent-sized probe over the solute -> solvent-accessible surface -> equivalent-sphere radius)."
+  },
+  "counterion": "PF6-",
+  "electrochemical_window_V_vs_Fc": [-3.0, 2.0],
+  "anolyte_catholyte_divider_V": 0.0,
+  "reference": {
+    "she_abs_V": 4.44,
+    "fc_vs_she_V": 0.40,
+    "default_scale": "Fc/Fc+",
+    "fc_abs_computed_V": 4.434749378960987,
+    "fc_abs_ref_MeCN_V": {
+      "b3lyp": 4.63210987710688,
+      "b3lyp-d3": 4.66224854035885,
+      "wb97x-d3": 4.618265132412174
+    },
+    "_notes": "E_vs_Fc = E_abs - E_ref_abs. Prefer fc_abs_computed_V (our level-matched ferrocene). fc_abs_ref_MeCN_V are published OROP SI values for cross-check. Fc/Fc+ vs SCE in MeCN = +0.40 V (Pavlishchuk & Addison 2000), used to convert vs-SCE literature anchors."
+  },
+  "constants": {
+    "faraday_C_per_mol": 96485.33212
+  }
+}

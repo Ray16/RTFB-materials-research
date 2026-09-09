@@ -190,3 +190,21 @@ figures `solvation_parity.png` / `solvation_mae_summary.png`. n=100.
 - CAVEAT: experimental *neutral* solvation data in MeCN is genuinely scarce (MNSol has only 7);
   the water leg (n=24) carries the statistical weight for the neutral claim. MeCN's rich MNSol data
   is ionic (39 cations + 30 anions).
+
+## 19. Starting-candidate potentials are the INTRINSIC solvated model — call out ion pairing
+The starting-candidate batch (config/starting_candidates.py: ethyl viologen, PMDI, ammonium-NDI,
+methoxy-quinones) is computed as **bare solvated molecular ions in implicit MeCN** (no explicit
+PF6- / cation), i.e. the *intrinsic* molecular redox thermodynamics — consistent with Finding 5
+(continuum ion-pairing refuted) and the right baseline. But that baseline is NOT the same as the
+experimentally observed potential in a real PF6-/Li+ electrolyte, and the gap is largest for the
+**second reduction of the imides**:
+- **Ammonium-NDI:** literature (2024 JACS) shows cation (e.g. Li+) stabilization of NDI radical-
+  anion/dianion **compresses the two reduction waves** (brings E2 up toward E1). Our `ndi_ammonium`
+  keeps ONE tethered trimethylammonium on the non-graft imide N, so it *partially* captures that
+  "cation stabilizes the anion" effect **intramolecularly** — a feature, but it means its computed
+  E2 already includes some of the ion-pairing shift and should not be read as the ion-free value.
+- **Reporting rule:** label these E° as "intrinsic solvated (no explicit counterion)"; treat the
+  **first reduction / first oxidation as the more transferable number**, and the **second charging
+  event (the concentrated -2 / +2) as ion-pairing-sensitive** with a larger error bar (Finding 0/18:
+  concentrated charge is where continuum solvation is weakest). Ranking within the set still holds;
+  absolute E2 vs a specific electrolyte needs explicit-ion or calibration work, not more continuum.

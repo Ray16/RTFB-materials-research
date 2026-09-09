@@ -5,9 +5,12 @@ For each 1-electron event O + e- -> R (O = higher charge, R = one less):
     E_abs     = -dG / n                            [V]    (absolute, vs free electron)
     E_vs_Fc   = E_abs - (SHE_abs + Fc_vs_SHE)      [V]    (referenced to Fc/Fc+)
 
-G is approximated by the SMD-solvated electronic energy (thermal corrections deferred —
-see docs/PLAN.md). This is PROVISIONAL until the validation gate (§V) is passed; potentials
-are compared to measurement before any ranking is trusted.
+G = E_smd + G_thermal: the SMD-solvated electronic energy PLUS a GFN2-xTB RRHO thermal
+free-energy correction (dft._thermal_correction; g_thermal_eV per state, 0.0 if not computed
+for a state). We use xtb RRHO rather than the DFT Hessian because gpu4pyscf's open-shell
+(UKS) analytic Hessian is broken for radicals (FINDINGS.md #3-4). Absolute potentials remain
+PROVISIONAL until the validation gate (§V) is passed; compared to measurement before any
+ranking is trusted.
 
   python -m redox.redox            # writes results/redox_potentials.csv
 """
