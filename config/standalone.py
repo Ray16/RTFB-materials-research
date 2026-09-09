@@ -14,7 +14,10 @@ STANDALONE = [
     dict(
         id="ethylviologen_sa",
         name="ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",
-        family="pyridine-multi-e",
+        # standalone reference form (used as the "before functionalization" row of the 2x2 and
+        # as a validation ref, like its dimethyl counterpart methyl_viologen); NOT a screening
+        # candidate. Tagged 'validation' to keep the two standalone viologens consistent.
+        family="validation",
         smiles="CC[n+]1ccc(-c2cc[n+](CC)cc2)cc1",
         states=[("ox2", 2, 1, 0), ("ox1", 1, 2, -1), ("neu", 0, 1, -2)],
     ),

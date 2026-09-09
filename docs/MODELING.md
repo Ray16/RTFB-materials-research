@@ -3,6 +3,44 @@
 How we turn optimized structures into stability + redox-potential descriptors. This is
 the design we compute against; numbers/level-of-theory choices are flagged **[DECIDE]**.
 
+## 0. Candidate set: standalone (before) vs grafted (after functionalization)
+
+The screening targets **polymer-bound** redox-active materials, so every candidate is modeled
+as a **grafted model-compound**: the redox core carries its real functional substituent on one
+side and a **4-methylbenzyl group as a proxy for the tether to the monomer/backbone** (the
+"Merrifield handle") on the other. All six candidates are modeled this way, uniformly:
+
+| Candidate id | Class | Grafted form (modeled) | Standalone id (before functionalization) |
+|---|---|---|---|
+| `viologen` | viologen | N-(4-methylbenzyl)-N′-**methyl** bipyridinium | `methyl_viologen` (N,N′-dimethyl) |
+| `ethylviologen` | viologen | N-(4-methylbenzyl)-N′-**ethyl** bipyridinium | `ethylviologen_sa` (N,N′-diethyl) |
+| `pmdi` | imide | N-(4-methylbenzyl)-N′-methyl pyromellitic diimide | `pmdi_sa` (N,N′-dimethyl) |
+| `ndi_ammonium` | imide | N-(4-methylbenzyl)-N′-(ammoniopropyl) NDI | `ndi_ammonium_sa` |
+| `mophquinone` | quinone | 2-(4-benzyloxyphenyl)-1,4-benzoquinone | `mophquinone_sa` (2-(4-methoxyphenyl)-, = xlsx/D3TaLES) |
+| `dmophquinone` | quinone | 2-(5-benzyloxy-2-methoxyphenyl)-5-methoxy-quinone | `dmophquinone_sa` (all-methoxy, = xlsx/D3TaLES) |
+
+- **"Before functionalization" = standalone (`*_sa`, and `methyl_viologen`)** — the bare redox
+  core with a minimal cap (methyl, or the native methoxy for the quinones). These are NOT
+  screening candidates; they are the reference row of the standalone-vs-grafted 2×2 and double
+  as validation refs (the two quinone standalones are *exactly* the Candidates.xlsx / D3TaLES
+  molecules, enabling a direct reorg cross-check). Tagged `family="validation"` in the manifest.
+- **"After functionalization" = grafted** — the six ids above; these carry the SA/λ numbers
+  reported in the candidate figure and scorecard.
+
+**Naming convention in figures:** short class names ("methyl viologen", "ethyl viologen",
+"PMDI", "ammonium-NDI", "MeO-phenyl quinone", "(MeO)₂-phenyl quinone") label the *grafted*
+candidates; the grafted-model + 4-methylbenzyl-proxy convention is stated once in the caption.
+`Candidates.xlsx` gives these as neutral, mono-substituted schematics — the SMILES there encode
+the *substituent* (methyl / ethyl / methoxy), and the real modeled species is the charged,
+fully-substituted structure above.
+
+Why this is reasonable: the redox core dominates the inner-sphere λ, so a small cap faithfully
+reproduces the grafted unit's reorganization energy at low cost; the benzyl proxy best matches
+an aromatic/styrenic backbone. Caveats: grafted models are **asymmetric** (the two 1e steps
+become slightly inequivalent vs. the symmetric standalone), and the benzyl adds a rotatable
+bond → a real (small) conformational contribution to λ (see the torsion-scan check; grafting
+barely moves methyl viologen's λ, ±5 meV, but shifts ethyl viologen's λ(+1/0) by ~+54 meV).
+
 ## 1. States and the redox graph
 
 Each molecule is a set of redox **states**, each with explicit `(charge, mult)`
