@@ -16,11 +16,14 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
-from redox.plotstyle import set_pub_style, FAM_COLOR, OKABE_ITO
-set_pub_style()
+sys.path.insert(0, str(Path(__file__).resolve().parent))            # scripts/ for plot_style
+from plot_style import apply_style, FAM_COLOR, OKABE_ITO
+apply_style()
 
-BASE = Path(__file__).resolve().parents[1] / "results" / "d3tales_reorg_validation"
+ROOT = Path(__file__).resolve().parents[1]
+BASE = ROOT / "results" / "d3tales_reorg_validation"                 # input data
+FIGDIR = ROOT / "results" / "figures" / "reorg"                     # output figures
+FIGDIR.mkdir(parents=True, exist_ok=True)
 OURS_C, D3_C = OKABE_ITO["blue"], OKABE_ITO["vermillion"]
 WIN = 2.0  # eV display window; larger artifacts noted off-scale
 
@@ -30,7 +33,7 @@ for c in ["our_electron", "d3_electron", "our_hole", "d3_hole"]:
 
 
 # ---------- Fig 1: parity (ours vs D3TaLES) ----------
-fig, axes = plt.subplots(1, 2, figsize=(15, 7.6))
+fig, axes = plt.subplots(1, 2, figsize=(15, 7.6), layout="constrained")
 handles = None
 for ax, (co, cd, title) in zip(axes, [("our_electron", "d3_electron", "Electron reorg"),
                                       ("our_hole", "d3_hole", "Hole reorg")]):
@@ -58,12 +61,12 @@ for ax, (co, cd, title) in zip(axes, [("our_electron", "d3_electron", "Electron 
 # 'outside' placement reserves its own band so it never overlaps the axis labels
 fig.legend(handles, labels, loc="outside lower center", ncol=len(labels))
 fig.suptitle("Reorganization energy: ours vs D3TaLES  (matched protocol, B3LYP/6-31G*)")
-f1 = BASE / "reorg_parity_ours_vs_d3tales.png"
+f1 = FIGDIR / "reorg_parity_ours_vs_d3tales.png"
 fig.savefig(f1); plt.close(fig)
 
 
 # ---------- Fig 2: electron-vs-hole landscape ----------
-fig, ax = plt.subplots(figsize=(8.8, 8.4))
+fig, ax = plt.subplots(figsize=(8.8, 8.4), layout="constrained")
 o = df.dropna(subset=["our_electron", "our_hole"])
 d = df.dropna(subset=["d3_electron", "d3_hole"])
 ax.axhspan(1.5, WIN, color="0.94", zorder=0); ax.axvspan(1.5, WIN, color="0.94", zorder=0)
@@ -79,7 +82,7 @@ ax.set_title("Reorganization-energy landscape")
 ax.legend(loc="upper right")
 ax.text(0.04, 0.96, "shaded: implausible\n(> 1.5 eV)", transform=ax.transAxes, va="top",
         ha="left", color="0.4")
-f2 = BASE / "reorg_landscape_e_vs_h.png"
+f2 = FIGDIR / "reorg_landscape_e_vs_h.png"
 fig.savefig(f2); plt.close(fig)
 
 print(f"wrote {f1}")

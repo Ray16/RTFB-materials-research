@@ -125,7 +125,8 @@ def plot(rows):
     fig.text(0.5, 0.028, "one point per molecule (mean over its charge states); note the "
              "independent y-zoom per panel — solvation adds $\\sim$0.5--0.6 eV outer-sphere.",
              ha="center", fontsize=13, color="#666", style="italic")
-    out = RESULTS / "figures" / "candidates_sa_reorg.png"
+    out = RESULTS / "figures" / "candidates" / "candidates_sa_reorg.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
     print("wrote", out)
 

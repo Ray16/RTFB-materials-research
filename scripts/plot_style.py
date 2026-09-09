@@ -41,6 +41,14 @@ FAMILY_COLOR = {
     "validation":        "#4D4D4D",
 }
 
+# Okabe-Ito colorblind-safe palette (named), and the redox-family colors used by the
+# candidate / D3TaLES reorg figures. Consolidated here so every plot script shares one source.
+OKABE_ITO = {
+    "blue": "#0072B2", "orange": "#E69F00", "green": "#009E73", "vermillion": "#D55E00",
+    "skyblue": "#56B4E9", "reddishpurple": "#CC79A7", "yellow": "#F0E442", "black": "#000000",
+}
+FAM_COLOR = {"quinone": "#0072B2", "imide": "#009E73", "viologen": "#CC79A7"}
+
 
 def apply_style():
     plt.rcParams.update({

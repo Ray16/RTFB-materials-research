@@ -116,7 +116,8 @@ def plot(rows):
                       markersize=15, label=f) for f in ["viologen", "imide", "quinone"]]
     fig.legend(handles=handles, loc="upper center", ncol=3, frameon=False,
                bbox_to_anchor=(0.55, 1.0), fontsize=17)
-    out = RESULTS / "figures" / "candidates_2x2_standalone_grafted.png"
+    out = RESULTS / "figures" / "candidates" / "candidates_2x2_standalone_grafted.png"
+    out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
     print("wrote", out)
 

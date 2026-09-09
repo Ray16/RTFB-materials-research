@@ -11,71 +11,16 @@ and reruns never redo finished molecules. Errors are recorded, never fatal.
 from __future__ import annotations
 import argparse, json, traceback
 from pathlib import Path
-import numpy as np
 import pandas as pd
-from rdkit import Chem
-from rdkit.Chem import AllChem
 from rdkit import RDLogger
 RDLogger.DisableLog("rdApp.*")
-from pyscf import gto
-from pyscf.geomopt.geometric_solver import optimize
-from gpu4pyscf import dft
-from ase import Atoms
+
+from redox.nelsen import embed, gas_opt, four_point_lambda   # shared DFT 4-point machinery
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "results" / "d3tales_reorg_validation"
 CALC = BASE / "calc"
-HARTREE_EV = 27.211386245988
-XC, BASIS = "b3lyp", "6-31g*"
-
-
-def _embed(smiles):
-    m = Chem.AddHs(Chem.MolFromSmiles(smiles))
-    p = AllChem.ETKDGv3(); p.randomSeed = 0xC0FFEE
-    if AllChem.EmbedMolecule(m, p) != 0:
-        if AllChem.EmbedMolecule(m, AllChem.ETKDGv2()) != 0:
-            raise RuntimeError("embed failed")
-    AllChem.MMFFOptimizeMolecule(m)
-    c = m.GetConformer()
-    return Atoms(symbols=[a.GetSymbol() for a in m.GetAtoms()],
-                 positions=np.array([list(c.GetAtomPosition(i)) for i in range(m.GetNumAtoms())]))
-
-
-def _mol(atoms, charge, spin):
-    astr = "\n".join(f"{s} {p[0]} {p[1]} {p[2]}"
-                     for s, p in zip(atoms.get_chemical_symbols(), atoms.positions))
-    return gto.M(atom=astr, basis=BASIS, charge=charge, spin=spin, verbose=0)
-
-
-def _mf(mol):
-    # density_fit (RI-J): ~5x faster on GPU with IDENTICAL reorg energy -- the DF error cancels
-    # in same-molecule energy differences (verified: duroquinone lambda_e 0.512 == 0.512, 219s->44s).
-    mf = (dft.RKS if mol.spin == 0 else dft.UKS)(mol).density_fit()
-    mf.xc = XC; mf.conv_tol = 1e-9; mf.max_cycle = 300
-    return mf
-
-
-def _atoms(mol):
-    B = 0.52917721067
-    return Atoms(symbols=[mol.atom_symbol(i) for i in range(mol.natm)],
-                 positions=mol.atom_coords() * B)
-
-
-def _gas_opt(start, charge, spin):
-    mol_opt = optimize(_mf(_mol(start, charge, spin)), maxsteps=100)
-    at = _atoms(mol_opt)
-    return at, float(_mf(_mol(at, charge, spin)).kernel()) * HARTREE_EV
-
-
-def _e(atoms, charge, spin):
-    return float(_mf(_mol(atoms, charge, spin)).kernel()) * HARTREE_EV
-
-
-def _four_point(neu_at, E_O_at_O, ion_charge, ion_spin):
-    ion_at, E_R_at_R = _gas_opt(neu_at, ion_charge, ion_spin)
-    E_O_at_R = _e(ion_at, 0, 0)
-    E_R_at_O = _e(neu_at, ion_charge, ion_spin)
-    return (E_O_at_R - E_O_at_O) + (E_R_at_O - E_R_at_R)
+XC, BASIS = "b3lyp", "6-31g*"   # D3TaLES-matched protocol (RI-J on; ~5x faster, identical lambda)
 
 
 def process(row):
@@ -91,16 +36,16 @@ def process(row):
                n_atoms=int(row["n_atoms"]), n_rot=int(row["n_rot"]),
                our_electron=None, our_hole=None, status="ok", error="")
     try:
-        neu = _embed(row["smiles"])
-        neu_at, E_O_at_O = _gas_opt(neu, 0, 0)
+        neu = embed(row["smiles"])
+        neu_at, E_O_at_O = gas_opt(neu, 0, 0, XC, BASIS)
         if pd.notna(row["d3_electron"]):
             try:
-                rec["our_electron"] = round(_four_point(neu_at, E_O_at_O, -1, 1), 4)
+                rec["our_electron"] = round(four_point_lambda(neu_at, E_O_at_O, -1, 1, XC, BASIS), 4)
             except Exception as e:
                 rec["status"] = "partial"; rec["error"] += f"anion:{type(e).__name__} "
         if pd.notna(row["d3_hole"]):
             try:
-                rec["our_hole"] = round(_four_point(neu_at, E_O_at_O, +1, 1), 4)
+                rec["our_hole"] = round(four_point_lambda(neu_at, E_O_at_O, +1, 1, XC, BASIS), 4)
             except Exception as e:
                 rec["status"] = "partial"; rec["error"] += f"cation:{type(e).__name__} "
     except Exception as e:

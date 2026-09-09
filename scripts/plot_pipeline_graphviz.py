@@ -25,7 +25,8 @@ from plot_style import C  # noqa: E402  (reuse the house palette)
 import graphviz  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-FIGDIR = ROOT / "results" / "figures"
+FIGDIR = ROOT / "results" / "figures" / "pipeline"
+FIGDIR.mkdir(parents=True, exist_ok=True)
 
 # Palette (house style) -> Graphviz fills. Keep dark text on light fills.
 INK = "#111111"

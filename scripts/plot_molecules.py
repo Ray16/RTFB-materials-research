@@ -147,8 +147,8 @@ def _gallery(mols, title, out_name):
         axes[r][c].axis("off")
 
     fig.tight_layout(rect=[0, 0.0, 1, 0.975])
-    FIGDIR.mkdir(parents=True, exist_ok=True)
     out = FIGDIR / out_name
+    out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out)
     plt.close(fig)
     print(f"  -> {out}   ({n} molecules)")
@@ -163,10 +163,10 @@ def main():
 
     _gallery(candidates,
              "Candidate redox monomers  (benzylic-site decorations)",
-             "molecules_candidates.png")
+             "candidates/molecules_candidates.png")
     _gallery(validation,
              "Validation cores  (known E$^\\circ$ — the accuracy gate)",
-             "molecules_validation.png")
+             "validation/molecules_validation.png")
 
 
 if __name__ == "__main__":

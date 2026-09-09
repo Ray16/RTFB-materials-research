@@ -26,7 +26,8 @@ from plot_style import apply_style, C, grid_xy, grid_y  # noqa: E402
 import matplotlib.pyplot as plt   # noqa: E402
 import numpy as np                # noqa: E402
 
-FIG = ROOT / "results" / "figures"
+FIG = ROOT / "results" / "figures" / "validation"
+FIG.mkdir(parents=True, exist_ok=True)
 CSV = ROOT / "results" / "solvation_validation.csv"
 MN = ROOT / "data/raw/validation/MNSol/extracted/MNSolDatabase_v2012/MNSol_alldata.txt"
 

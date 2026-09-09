@@ -221,15 +221,17 @@ def main():
     print(f"redox rows: {len(redox_rows)}  (candidates: {n_cand})   "
           f"descriptor rows: {len(desc_rows)}")
 
+    (FIGDIR / "candidates").mkdir(parents=True, exist_ok=True)
+    (FIGDIR / "validation").mkdir(parents=True, exist_ok=True)
     fig = plot_landscape(redox_rows)
-    fig.savefig(FIGDIR / "redox_landscape.png")
+    fig.savefig(FIGDIR / "candidates" / "redox_landscape.png")
     plt.close(fig)
-    print(f"  -> {FIGDIR/'redox_landscape.png'}")
+    print(f"  -> {FIGDIR/'candidates'/'redox_landscape.png'}")
 
     fig = plot_structure_change(desc_rows, redox_rows)
-    fig.savefig(FIGDIR / "structure_change.png")
+    fig.savefig(FIGDIR / "validation" / "structure_change.png")
     plt.close(fig)
-    print(f"  -> {FIGDIR/'structure_change.png'}")
+    print(f"  -> {FIGDIR/'validation'/'structure_change.png'}")
 
 
 if __name__ == "__main__":

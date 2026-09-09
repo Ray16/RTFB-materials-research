@@ -24,7 +24,8 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np               # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-FIGDIR = ROOT / "results" / "figures"
+FIGDIR = ROOT / "results" / "figures" / "validation"
+FIGDIR.mkdir(parents=True, exist_ok=True)
 # DFT+SMD is the trusted level; fall back to UMA gas only if DFT is missing, and label it.
 E_COLS = [("E_vs_Fc_V", "DFT+SMD"), ("E_vs_Fc_gas_V", "UMA gas")]
 TARGET_BAND = 0.15  # V — typical MAE band for this protocol class; a visual guide, not a fit

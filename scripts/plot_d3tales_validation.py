@@ -21,7 +21,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 CSV = ROOT / "data" / "raw" / "validation" / "D3TaLES" / "d3tales_public.csv"
-OUT = ROOT / "results" / "figures" / "d3tales_validation.png"
+OUT = ROOT / "results" / "figures" / "validation" / "d3tales_validation.png"
+OUT.parent.mkdir(parents=True, exist_ok=True)
 
 FAMS = {
     "viologen": ["[n+]1ccc(cc1)-c1cc[n+]cc1", "c1cc[n]cc1-c1cc[n]cc1"],

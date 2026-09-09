@@ -20,7 +20,8 @@ from rdkit import RDLogger; RDLogger.DisableLog("rdApp.*")
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "library" / "manifest.csv"
-OUT = ROOT / "results" / "figures" / "molecules_starting_candidates.png"
+OUT = ROOT / "results" / "figures" / "candidates" / "molecules_starting_candidates.png"
+OUT.parent.mkdir(parents=True, exist_ok=True)
 
 # the six xlsx candidates, in order, as the ids we built (methylviologen -> viologen)
 ORDER = ["viologen", "ethylviologen", "pmdi", "ndi_ammonium", "mophquinone", "dmophquinone"]

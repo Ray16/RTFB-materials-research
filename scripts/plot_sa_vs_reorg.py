@@ -157,7 +157,7 @@ def plot(rows):
                       markersize=15, label=f) for f in FAM_ORDER]
     fig.legend(handles=handles, loc="upper center", ncol=5, frameon=False,
                bbox_to_anchor=(0.57, 1.0), fontsize=17, handletextpad=0.3, columnspacing=1.3)
-    out = RESULTS / "figures" / "sa_vs_reorg_2x2.png"
+    out = RESULTS / "figures" / "candidates" / "sa_vs_reorg_2x2.png"
     out.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
     print(f"wrote {out}")

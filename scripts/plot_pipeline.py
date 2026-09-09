@@ -19,7 +19,8 @@ import matplotlib.pyplot as plt          # noqa: E402
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
-FIGDIR = ROOT / "results" / "figures"
+FIGDIR = ROOT / "results" / "figures" / "pipeline"
+FIGDIR.mkdir(parents=True, exist_ok=True)
 
 TITLE_FS = 26
 STAGE_FS = 20      # stage title (bold)
