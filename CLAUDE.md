@@ -71,6 +71,66 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - Write job output to a log file so progress can be inspected without blocking.
 - Only run trivially fast, must-be-sequential commands in the foreground.
 
+## Submitting GPU jobs (check per-GPU first; one task per GPU)
+- **Check the SPECIFIC target GPU for OTHER users right before submitting to it.** Do not rely on
+  a whole-node summary or a check from a minute ago — the free set is volatile. For each candidate
+  `(host, GPU)`, immediately before launch confirm THAT GPU is free two ways:
+  1. util+mem: `nvidia-smi --query-gpu=index,utilization.gpu,memory.used --format=csv,noheader` —
+     the GPU must be ~0% util AND near-zero memory (treat **>~500 MiB or >~5% util as OCCUPIED**).
+  2. ownership: `nvidia-smi --query-compute-apps=gpu_bus_id,pid,used_memory --format=csv,noheader`
+     + `ps -o user= -p <pid>` — the GPU must have **no non-`rzhu` pid** on it.
+  If either check says occupied, **skip that GPU and pick another**; never submit onto a GPU
+  another user is on. Use `python scripts/free_gpus.py --hosts lambda1,lambda2,lambda4,...` to get
+  free `(host,idx)` slots programmatically (verify the real node list per the Killing section).
+- **One task per GPU — never stack our own jobs on a GPU (avoid SELF-contention).** Assign exactly
+  one worker per `(host, GPU)` via `CUDA_VISIBLE_DEVICES=<idx>`. Two of our processes on one GPU
+  thrash it (OOM, mutual slowdown) just like colliding with another user. Within a single launch,
+  track which GPUs you've already assigned so two workers can't grab the same index; a claim-based
+  fleet (one claim per GPU) enforces this automatically.
+- **Pair with the CPU-thread cap** (see Compute): each GPU worker still gets a SMALL thread cap
+  (`OMP_NUM_THREADS`/`MKL_NUM_THREADS`/`OPENBLAS_NUM_THREADS`, e.g. 2) so N GPU workers don't
+  oversubscribe cores.
+- **After launching, verify placement:** re-scan and confirm exactly one `rzhu` process landed on
+  each intended GPU and none doubled up or landed on an occupied GPU.
+- **This policy is ENFORCED in code (don't rely on remembering it) — `scripts/fleet/`:**
+  - `cluster.env` — single source of truth: `ALLOWED_HOSTS`, `RESERVED_HOSTS` (lambda3/9/13 —
+    never launch there), `UTIL_MAX`/`MEM_MAX`. Edit policy here, not in scripts.
+  - `gpu_probe.sh` — per-GPU `idx,util,mem,foreign_owners`; a GPU with ANY other-user process is
+    occupied even at 0% util / low mem (an idle-but-resident foreign context is still theirs).
+  - `free_gpus.py` — ownership- AND host-policy-aware free-slot picker (`--all`, `--all --list`,
+    `-n K` → `host idx` lines). Use it to choose targets; it already excludes foreign/reserved.
+  - `gpu_guard.sh` (sourced by workers) — `gpu_claim/gpu_release` (atomic NFS lock = one task per
+    GPU) + `gpu_free_of_others`; the worker refuses an occupied/claimed GPU and **auto-yields**
+    (kills its calc, releases claim) if a foreign job appears mid-run.
+  - `gpu_watchdog.sh [--dry-run] [--heal]` — cluster-wide enforcer: kills our co-resident jobs
+    (and any of ours on a reserved host), releases orphans, and (`--heal`) relaunches on free
+    ALLOWED GPUs. Run `--dry-run` first to preview. New fleet workers MUST source `gpu_guard.sh`.
+
+## Killing jobs (clean up fully — never leave stragglers)
+- **Discover the real footprint first.** A fanned-out fleet may run on MORE nodes than the
+  documented `lambda1,2,4` — find every host×GPU it actually touched via
+  `ls logs/fleet/<run>/worker_<host>_gpu*.log` (the filenames encode host+GPU); don't trust a
+  hard-coded node list. Audit each node's GPUs by mapping `gpu_bus_id -> {users}`:
+  `nvidia-smi --query-compute-apps=gpu_bus_id,pid,used_memory --format=csv,noheader` + `ps -o
+  user= -p <pid>`. A GPU is CONTENDED when it has one of our pids AND a non-`rzhu` pid.
+- **Kill the whole process group, not just the launcher.** Fleet workers are launched with
+  `setsid` (`bash scripts/fleet/<run>_worker.sh <gpu>`), so a worker and its Python child share
+  a pgid → `kill -TERM -<pgid>` kills both. Killing only the bash worker **orphans its Python
+  child**, which keeps holding the GPU. Kill the children too.
+- **`pkill -f` over SSH FOOTGUN:** `pkill -f <pattern>` on a remote host also matches the shell
+  running your ssh command (its cmdline contains the pattern), killing your own shell mid-script
+  before it finishes. ALWAYS use the bracket trick to avoid self-match:
+  `pkill -u rzhu -f '[d]3level_fleet_worker.sh'` and `pkill -u rzhu -f '[v]alidate_reorg...'`.
+- **Escalate then verify:** send `-TERM`, `sleep`, then `-KILL` any stragglers. **Always
+  double-check nothing remains** — re-scan each node by GPU ownership (compute-apps + `ps user=`),
+  NOT just by process name, and confirm zero `rzhu` processes remain on the GPUs you meant to
+  vacate. Do a final cluster-wide contention scan after every kill session.
+- **Release orphaned claims after killing** (claim-based fleets): a killed worker leaves a stuck
+  `logs/fleet/<run>/claims/<id>` dir, so that molecule is never retried. Release = `rmdir` claim
+  dirs whose `calc/<id>.json` lacks `"status":`, but EXCLUDE ids currently running on ANY live
+  node (gather `--only <id>` from `pgrep` on **each** live node first — releasing a live claim
+  causes duplicate work).
+
 ## Parallelization (always maximize)
 - The redox **states/molecules are independent** — treat every stage as embarrassingly
   parallel; never run them serially when they can fan out.
