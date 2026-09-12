@@ -16,32 +16,17 @@ ranking is trusted.
 """
 from __future__ import annotations
 import csv
-import importlib.util
-import json
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DFT = ROOT / "calcs" / "dft"
-UMA = ROOT / "calcs" / "uma"
-RESULTS = ROOT / "results"
+from redox.common import DFT, RESULTS, UMA, load_config, read_manifest, read_result
 
 
 def _cfg(name, attr):
-    spec = importlib.util.spec_from_file_location(name, ROOT / "config" / f"{name}.py")
-    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
-    return getattr(mod, attr)
+    return getattr(load_config(name), attr)
 
 
-def read_manifest():
-    with (ROOT / "library" / "manifest.csv").open() as f:
-        return list(csv.DictReader(f))
-
-
-def _energy(root: Path, gid, state, key):
-    p = root / gid / state / "result.json"
-    if not p.exists():
-        return None
-    return json.loads(p.read_text()).get(key)
+def _energy(root, gid, state, key):
+    r = read_result(gid, state, root=root)
+    return r.get(key) if r is not None else None
 
 
 def _fc_reference():

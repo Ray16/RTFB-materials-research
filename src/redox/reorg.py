@@ -27,18 +27,9 @@ from __future__ import annotations
 import argparse
 import csv
 import json
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DFT = ROOT / "calcs" / "dft"
-RESULTS = ROOT / "results"
-EV_KJ = 96.485
-EV_MEV = 1000.0
-
-
-def _res(gid, state):
-    p = DFT / gid / state / "result.json"
-    return json.loads(p.read_text()) if p.exists() else None
+from redox.common import DFT, EV_KJ, EV_MEV, RESULTS, ROOT
+from redox.common import read_result as _res
 
 
 def _couples(gid):

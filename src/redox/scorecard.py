@@ -29,14 +29,12 @@ Data model: candidate = molecule; couple-level properties are rolled up:
 """
 from __future__ import annotations
 import csv
-import importlib.util
 import json
 import statistics
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-RESULTS = ROOT / "results"
-UMA = ROOT / "calcs" / "uma"
+from redox.common import RESULTS, UMA
+from redox.common import load_config as _cfg
+from redox.common import to_float as _f
 
 # not real candidates: the Fc/Fc+ internal reference
 REFERENCE_IDS = {"ferrocene"}
@@ -74,25 +72,12 @@ def _min_spin_gap_eV(gid):
     return round(min(gaps), 4) if gaps else None
 
 
-def _cfg(mod):
-    spec = importlib.util.spec_from_file_location(mod, ROOT / "config" / f"{mod}.py")
-    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-    return m
-
-
 def _load(name):
     p = RESULTS / f"{name}.csv"
     if not p.exists():
         return []
     with p.open() as f:
         return list(csv.DictReader(f))
-
-
-def _f(x):
-    try:
-        return float(x)
-    except (TypeError, ValueError):
-        return None
 
 
 def build():

@@ -24,22 +24,14 @@ Per couple O + e- -> R (O = higher charge, R = one less):
 """
 from __future__ import annotations
 import csv
-import json
-from pathlib import Path
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parents[2]
-DFT = ROOT / "calcs" / "dft"
-RESULTS = ROOT / "results"
+from redox.common import DFT, RESULTS
+from redox.common import read_result as _res
 
 RMSD_MAX = 0.8          # A, heavy-atom; above this = dissociation / big rearrangement
 EA_MIN = 0.0            # eV; anion must be gas-phase bound
-
-
-def _res(gid, state):
-    p = DFT / gid / state / "result.json"
-    return json.loads(p.read_text()) if p.exists() else None
 
 
 def kabsch_rmsd_heavy(xyz_a: Path, xyz_b: Path):

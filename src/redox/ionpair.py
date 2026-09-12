@@ -21,27 +21,16 @@ Physics, not fitting: nothing here is scaled to experiment.
 """
 from __future__ import annotations
 import csv
-import importlib.util
 import json
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DFT = ROOT / "calcs" / "dft"
-RESULTS = ROOT / "results"
+from redox.common import DFT, RESULTS, load_config
+from redox.common import read_result as _read
+
 EXP = {"wave1 (MV2+/+.)": -0.45, "wave2 (MV+./0)": -0.88}   # V vs Fc, MeCN (see validation.py)
 
 
 def _cfg(mod, name):
-    spec = importlib.util.spec_from_file_location(mod, ROOT / "config" / f"{mod}.py")
-    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-    return getattr(m, name)
-
-
-def _read(gid, state):
-    p = DFT / gid / state / "result.json"
-    if not p.exists():
-        return None
-    return json.loads(p.read_text())
+    return getattr(load_config(mod), name)
 
 
 def _G(gid, state, use_thermal=True):

@@ -22,24 +22,10 @@ Applies the design decided earlier:
 """
 from __future__ import annotations
 import csv
-import importlib.util
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-RESULTS = ROOT / "results"
-
-
-def _cfg(mod):
-    spec = importlib.util.spec_from_file_location(mod, ROOT / "config" / f"{mod}.py")
-    m = importlib.util.module_from_spec(spec); spec.loader.exec_module(m)
-    return m
-
-
-def _f(x):
-    try:
-        return float(x)
-    except (TypeError, ValueError):
-        return None
+from redox.common import RESULTS
+from redox.common import load_config as _cfg
+from redox.common import to_float as _f
 
 
 def _load_candidates():

@@ -60,8 +60,11 @@ CUDA_TAG=cpu ./setup_env.sh
 Then activate and check:
 ```bash
 source $(conda info --base)/etc/profile.d/conda.sh && conda activate redox
-python scripts/check_env.py     # ENV OK; "cuda available: True" on GPU, False on CPU
+pip install -e . --no-deps       # editable install of the `redox` package (drops PYTHONPATH=src)
+python scripts/check_env.py      # ENV OK; "cuda available: True" on GPU, False on CPU
 ```
+`pip install -e .` is optional — every `python -m redox.*` command also works with a
+`PYTHONPATH=src` prefix. Use `--no-deps` so pip never re-resolves the CUDA-matched torch stack.
 
 UMA weights are gated — request access to `facebook/UMA` on HuggingFace, then
 `huggingface-cli login`. Adding a pipeline dependency? Update `requirements.txt` +

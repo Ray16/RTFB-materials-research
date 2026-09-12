@@ -19,13 +19,11 @@ Usage:
 """
 from __future__ import annotations
 import argparse
-import csv
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-LIBRARY = ROOT / "library"
-OUT = ROOT / "calcs" / "uma"
+from redox.common import LIBRARY, read_manifest
+from redox.common import UMA as OUT
 # uma-s-1p2p1 (newest UMA, v1.2.1) works in fairchem 2.21 via REGISTRATION: its checkpoint
 # is the same architecture as uma-s-1p2 (patched weights, ~0.5 kJ/mol apart), so we add a
 # registry entry pointing to uma-s-1p2p1.pt and load it through uma-s-1p2's compatible
@@ -54,11 +52,6 @@ def ensure_registered(model: str):
     tmp.write_text(json.dumps(d, indent=4))
     import os
     os.replace(tmp, reg)
-
-
-def read_manifest():
-    with (LIBRARY / "manifest.csv").open() as f:
-        return list(csv.DictReader(f))
 
 
 def make_calculator(model: str, device: str):

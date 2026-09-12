@@ -16,20 +16,15 @@ and redox generally wants a dispersion-corrected range-separated hybrid (wB97X-D
 """
 from __future__ import annotations
 import argparse
-import importlib.util
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-HARTREE_EV = 27.211386245988
+from redox.common import HARTREE_EV, ROOT, load_config, read_manifest
+from redox.common import write_xyz as _write_xyz
 
 
 def _electrolyte():
-    spec = importlib.util.spec_from_file_location(
-        "electrolyte", ROOT / "config" / "electrolyte.py")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+    return load_config("electrolyte")
 
 
 def _dft_module(backend: str):
@@ -322,20 +317,6 @@ def _mol_to_atoms(mol):
     syms = [mol.atom_symbol(i) for i in range(mol.natm)]
     coords = mol.atom_coords() * BOHR  # pyscf stores coords in Bohr
     return Atoms(symbols=syms, positions=coords)
-
-
-def _write_xyz(atoms, path: Path, comment: str = ""):
-    path.parent.mkdir(parents=True, exist_ok=True)
-    lines = [str(len(atoms)), comment]
-    for s, p in zip(atoms.get_chemical_symbols(), atoms.positions):
-        lines.append(f"{s} {p[0]:.8f} {p[1]:.8f} {p[2]:.8f}")
-    path.write_text("\n".join(lines) + "\n")
-
-
-def read_manifest():
-    import csv
-    with (ROOT / "library" / "manifest.csv").open() as f:
-        return list(csv.DictReader(f))
 
 
 def geom_for(gid: str, state: str) -> Path:

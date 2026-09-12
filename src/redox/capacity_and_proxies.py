@@ -20,11 +20,8 @@ Each axis is labelled by trust level so the Pareto scorecard treats it correctly
 from __future__ import annotations
 import csv
 import json
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DFT = ROOT / "calcs" / "dft"
-RESULTS = ROOT / "results"
+from redox.common import DFT, RESULTS, ROOT
 
 F_C_PER_MOL = 96485.0
 C_PER_MAH = 3.6

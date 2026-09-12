@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "redox"
+version = "0.1.0"
+description = "Computational screening of redox-active Merrifield-monomer candidates (E0, lambda, stability) in nonaqueous electrolyte."
+readme = "README.md"
+requires-python = ">=3.10"
+# NOTE: runtime dependencies are intentionally NOT pinned here. The env (torch/fairchem/
+# gpu4pyscf/xtb) is built by setup_env.sh with CUDA-matched wheels and listed in
+# requirements.txt; `pip install -e .` should only link the `redox` package, never re-resolve
+# those. Install into the `redox` conda env after setup_env.sh has run.
+dependencies = []
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

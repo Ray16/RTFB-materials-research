@@ -27,14 +27,9 @@ from __future__ import annotations
 import csv
 import json
 import math
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
-DFT = ROOT / "calcs" / "dft"
-RESULTS = ROOT / "results"
+from redox.common import DFT, EV_KJ, KT_EV, RESULTS
 
-EV_KJ = 96.485          # eV -> kJ/mol
-KT_EV = 0.0256926       # k_B * T at 298.15 K, in eV
 F_EV_PER_V = 1.0        # 1 electron: dG(eV) per volt is numerically 1
 
 

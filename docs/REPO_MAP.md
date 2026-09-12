@@ -3,7 +3,15 @@
 A one-screen guide to where things live. See `README.md` for the science, `CLAUDE.md` for
 operating rules, `docs/PLAN.md` for the phased plan, `docs/DATASETS.md` for external data.
 
-## `src/redox/` — reusable pipeline code (import as `redox.<module>`, needs `PYTHONPATH=src`)
+## `src/redox/` — reusable pipeline code (import as `redox.<module>`)
+
+Either `pip install -e .` once (editable install via `pyproject.toml`; recommended, then no
+env var needed) **or** prefix commands with `PYTHONPATH=src`.
+
+**Shared helpers**
+- `common.py` — repo paths (`ROOT`, `LIBRARY`, `UMA`, `DFT`, `RESULTS`), physical constants
+  (`HARTREE_EV`, `EV_KJ`, `KT_EV`, …), and the utilities every module used to re-implement:
+  `load_config`, `read_manifest`, `read_result`, `write_xyz`, `to_float`. Import from here.
 
 **Structure generation**
 - `build.py`, `build_validation.py`, `build_candidates.py`, `build_standalone.py` — SMILES → 3D
@@ -37,7 +45,10 @@ operating rules, `docs/PLAN.md` for the phased plan, `docs/DATASETS.md` for exte
     (resumable; `_launch_node_workers.sh` / `launch_reorg_validation.sh` for cluster fan-out) →
     `aggregate_d3tales_reorg.py`; figure via `scripts/plotting/plot_d3tales_reorg_compare.py`.
   - finalize chain: `wait_and_finalize.sh` → `finalize_after_dft.sh` → `set_fc_reference.py` +
-    `scripts/plotting/plot_results.py`; plus `add_thermal.py`, `probe_*`, `sample_dimer.py`, etc.
+    `scripts/plotting/plot_results.py`; env probes `probe_dft.py` / `probe_uma.py`.
+- `scripts/archive/` — **completed one-off experiment scripts** kept for provenance only (OROP
+  benchmark, dimer/microsolvation sampling, viologen re-opt, thermal-batch). Not part of the
+  live pipeline; see `scripts/archive/README.md`.
 
 ## `config/` — parameters (no logic)
 `electrolyte.py` + `project.json` (solvent/referencing), `validation.py`, `standalone.py`,
