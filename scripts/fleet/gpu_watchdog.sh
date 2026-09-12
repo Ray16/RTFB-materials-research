@@ -18,7 +18,7 @@ cd "$REPO" || exit 1
 # shellcheck disable=SC1091
 source scripts/fleet/cluster.env 2>/dev/null || true
 PY=/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python
-SSH=(ssh -o BatchMode=yes -o ConnectTimeout=6 -o StrictHostKeyChecking=no)
+SSH=(ssh -o BatchMode=yes -o ConnectTimeout=4 -o StrictHostKeyChecking=no)
 
 DRY=0; ONCE=0; HEAL=0; RUN=d3level
 while [ $# -gt 0 ]; do case "$1" in
@@ -42,11 +42,12 @@ enforce(){
   done
 }
 
-# ids currently running on ANY live node (so we never release a live molecule claim)
+# ids currently running on ANY live node (so we never release a live molecule claim). Only ALLOWED
+# hosts — we never have jobs on RESERVED (unusable) hosts, so skipping them avoids dead-host timeouts.
 active_ids(){
   local h
   { pgrep -u "$(id -un)" -af 'validate_reorg_worker_d3tales.py' 2>/dev/null
-    for h in $ALLOWED_HOSTS $RESERVED_HOSTS; do
+    for h in $ALLOWED_HOSTS; do
       "${SSH[@]}" "$h" "pgrep -u $(id -un) -af validate_reorg_worker_d3tales.py" 2>/dev/null
     done
   } | grep -oE -- '--only [A-Z0-9]+' | awk '{print $2}' | sort -u
@@ -99,6 +100,14 @@ heal(){
 
 cycle(){ enforce; release_orphans; heal; }
 
-log "watchdog start (dry=$DRY once=$ONCE heal=$HEAL run=$RUN interval=${WATCHDOG_INTERVAL:-45}s)"
+log "watchdog start (dry=$DRY once=$ONCE heal=$HEAL run=$RUN interval=${WATCHDOG_INTERVAL:-120}s)"
 if [ "$ONCE" -eq 1 ]; then cycle; exit 0; fi
-while true; do cycle; sleep "${WATCHDOG_INTERVAL:-45}"; done
+while true; do
+  cycle
+  # Auto-exit when there is nothing left to guard: sweep complete AND no workers of ours anywhere.
+  if [ "$(remaining)" -le 0 ] && [ -z "$(active_ids)" ]; then
+    log "sweep complete and no active workers -> watchdog exiting (nothing left to guard)"
+    exit 0
+  fi
+  sleep "${WATCHDOG_INTERVAL:-120}"
+done
