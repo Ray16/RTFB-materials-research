@@ -92,19 +92,22 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
   oversubscribe cores.
 - **After launching, verify placement:** re-scan and confirm exactly one `rzhu` process landed on
   each intended GPU and none doubled up or landed on an occupied GPU.
-- **This policy is ENFORCED in code (don't rely on remembering it) — `scripts/fleet/`:**
-  - `cluster.env` — single source of truth: `ALLOWED_HOSTS`, `RESERVED_HOSTS` (lambda3/9/13 —
-    never launch there), `UTIL_MAX`/`MEM_MAX`. Edit policy here, not in scripts.
-  - `gpu_probe.sh` — per-GPU `idx,util,mem,foreign_owners`; a GPU with ANY other-user process is
-    occupied even at 0% util / low mem (an idle-but-resident foreign context is still theirs).
-  - `free_gpus.py` — ownership- AND host-policy-aware free-slot picker (`--all`, `--all --list`,
-    `-n K` → `host idx` lines). Use it to choose targets; it already excludes foreign/reserved.
-  - `gpu_guard.sh` (sourced by workers) — `gpu_claim/gpu_release` (atomic NFS lock = one task per
-    GPU) + `gpu_free_of_others`; the worker refuses an occupied/claimed GPU and **auto-yields**
-    (kills its calc, releases claim) if a foreign job appears mid-run.
-  - `gpu_watchdog.sh [--dry-run] [--heal]` — cluster-wide enforcer: kills our co-resident jobs
-    (and any of ours on a reserved host), releases orphans, and (`--heal`) relaunches on free
-    ALLOWED GPUs. Run `--dry-run` first to preview. New fleet workers MUST source `gpu_guard.sh`.
+- **ALWAYS submit GPU work through the SYSTEM-WIDE reservation gate — `~/bin/gpu_reserve`**
+  (`/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve`). It is machine-/cluster-wide and NOT per-repo:
+  one tool + one shared NFS lock namespace (`~/.gpu_locks/<host>_gpu<idx>`) that EVERY session and
+  project coordinates through, so no two of our jobs — and no job of ours and another user's — ever
+  share a GPU. A GPU counts as free only if util/mem are low AND it has **zero resident compute
+  processes** (any user, including our own other sessions) AND it is not already reserved. Policy
+  (allowed/reserved hosts, thresholds) lives in `~/.config/gpu_reserve/config.env`.
+  - `gpu_reserve list` → free `host idx` slots cluster-wide; `gpu_reserve pick -n K` reserves K on
+    THIS host; `gpu_reserve run <idx> -- <cmd>` reserves, runs with `CUDA_VISIBLE_DEVICES`, releases;
+    `gpu_reserve status` / `gpu_reserve gc` inspect/clean reservations. Reservations are pinned to the
+    owner's pid+start-time (survives pid reuse) and auto-expire after `LOCK_TTL`.
+  - Long-lived workers reserve with `gpu_reserve acquire <idx> --pid $$ --label <run>` and
+    `gpu_reserve release <idx>` on a trap (see `scripts/fleet/d3level_fleet_worker.sh`). NEVER run
+    `CUDA_VISIBLE_DEVICES=X ...` directly — that bypasses the gate.
+  - This is submission-side PREVENTION (no background daemon). `scripts/fleet/gpu_watchdog.sh` (a
+    reactive killer) exists but is OFF by design; don't start it unless explicitly asked.
 
 ## Killing jobs (clean up fully — never leave stragglers)
 - **Discover the real footprint first.** A fanned-out fleet may run on MORE nodes than the
