@@ -57,5 +57,15 @@ paper/
 # re-create the raw JSONs with scripts/validate_reorg_worker.py)
 results/d3tales_reorg_validation/calc/
 
-# Calc backups (e.g. pre-torsion-scan snapshots)
-calcs/*.bak_pretscan/
+# Track-2 (our-pipeline) reorg sweep: bulk per-molecule calc JSONs + optimized geometries are
+# regenerable (scripts/validate_reorg_worker_prod.py); only comparison.csv is committed.
+results/d3tales_reorg_validation_prod/calc/
+results/d3tales_reorg_validation_prod/geom/
+
+# Calc backups (e.g. pre-torsion-scan snapshots) — at any depth
+*.bak_pretscan/
+
+# Per-state intermediate seeds (only the final opt.xyz + result.json are tracked)
+_seed_*.xyz
+_tseed_*.xyz
+_opt_*.xyz

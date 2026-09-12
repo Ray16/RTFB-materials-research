@@ -223,10 +223,9 @@ def main():
 
     (FIGDIR / "candidates").mkdir(parents=True, exist_ok=True)
     (FIGDIR / "validation").mkdir(parents=True, exist_ok=True)
-    fig = plot_landscape(redox_rows)
-    fig.savefig(FIGDIR / "candidates" / "redox_landscape.png")
-    plt.close(fig)
-    print(f"  -> {FIGDIR/'candidates'/'redox_landscape.png'}")
+    # (redox_landscape.png was removed — it plotted the old exploratory redox_groups set;
+    #  the current 6 candidates' potentials live in the scorecard/pareto outputs. plot_landscape()
+    #  is retained for reference but no longer emitted.)
 
     fig = plot_structure_change(desc_rows, redox_rows)
     fig.savefig(FIGDIR / "validation" / "structure_change.png")

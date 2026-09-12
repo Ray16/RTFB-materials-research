@@ -161,9 +161,8 @@ def main():
     print(f"molecules: {len(mols)}  (candidates: {len(candidates)}  "
           f"validation: {len(validation)})")
 
-    _gallery(candidates,
-             "Candidate redox monomers  (benzylic-site decorations)",
-             "candidates/molecules_candidates.png")
+    # (the old exploratory-set gallery `molecules_candidates.png` was removed — superseded by
+    #  plot_starting_candidates.py's molecules_starting_candidates.png for the current 6.)
     _gallery(validation,
              "Validation cores  (known E$^\\circ$ — the accuracy gate)",
              "validation/molecules_validation.png")

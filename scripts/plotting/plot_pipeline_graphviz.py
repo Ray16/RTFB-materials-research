@@ -105,7 +105,7 @@ def build():
           "E&#176; = &#8722;&#916;G/nF &#8722; E(Fc) &#183; vs Fc/Fc&#8314;",
           FILL_REDOX, C["good"])
     _node(g, "gate", "Validation gate: computed vs measured E&#176;",
-          "MAE 0.18 V &#183; within &#177;0.15 V band &#8594; trust the ranking",
+          "MAE 0.13 V (n=7 cores, max 0.20) &#8594; trust the ranking",
           FILL_GATE, "#C89A2B")
 
     # edges

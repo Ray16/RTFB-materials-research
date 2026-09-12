@@ -145,7 +145,7 @@ def main():
     gate_y = 0.095
     gw, gh = 0.72, 0.090
     card(ax, gate_y, "Validation gate:  computed  vs  measured E$^\\circ$",
-         "MAE 0.18 V · within $\\pm$0.15 V band  →  trust the ranking",
+         "MAE 0.13 V (n=7 cores, max 0.20)  →  trust the ranking",
          "#FDF0D5", "#C89A2B", w=gw, h=gh, title_fs=18.5, detail_fs=16)
     arrow(ax, ys[4] - CH / 2, gate_y + gh / 2)
 
