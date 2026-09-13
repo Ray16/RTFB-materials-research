@@ -8,9 +8,9 @@ By default the geometry is OPTIMIZED IN SOLVENT (SMD gradients, geomeTRIC): UMA 
 a gas-phase pre-optimizer and cannot see solvation, so the final structure/energy must be
 relaxed on the SMD potential-energy surface. Pass do_opt=False for a single-point only.
 
-Level of theory is PROVISIONAL (see docs/PLAN.md §9 [DECIDE] and the validation gate §V):
-default B3LYP/def2-SVP is a fast first pass; anions want diffuse functions (def2-SVPD)
-and redox generally wants a dispersion-corrected range-separated hybrid (wB97X-D).
+Level of theory (decided; see the module constants below and docs/PLAN.md §9): geometry
+optimized IN SMD at r2SCAN-D4/def2-SVP(D); energy at wB97M-V/def2-TZVP(D) (VV10 nonlocal
+dispersion) — a dispersion-corrected range-separated hybrid. Anions get the diffuse variant.
 
   python -m redox.dft --xyz calcs/uma/pyridinium/ox/relaxed.xyz --charge 1 --mult 1
 """
@@ -115,6 +115,40 @@ def _kernel_robust(mf):
     except Exception as exc:  # pragma: no cover - backend-dependent
         print(f"[warn] SOSCF fallback failed: {exc}", flush=True)
         return e, bool(mf.converged)
+
+
+def _orbital_diag(mf, nunpaired):
+    """Cheap QC from a converged mean-field: HOMO/LUMO (eV) and <S^2>.
+
+    For an ANION, homo_eV > 0 means the extra electron is UNBOUND (the gas-phase state is
+    unphysical, so a gas single point there is meaningless — score it in SMD instead). For an
+    open shell, spin_contam = <S^2> - S(S+1) flags a spin-contaminated / wrong-state SCF.
+    """
+    import numpy as np
+    def _cpu(a):
+        try:
+            return np.asarray(a.get())
+        except Exception:
+            return np.asarray(a)
+    out = {}
+    try:
+        mo_e, mo_o = _cpu(mf.mo_energy), _cpu(mf.mo_occ)
+        occ = mo_e[mo_o > 0]; vir = mo_e[mo_o == 0]
+        if occ.size:
+            out["homo_eV"] = float(occ.max()) * HARTREE_EV
+        if vir.size:
+            out["lumo_eV"] = float(vir.min()) * HARTREE_EV
+    except Exception:
+        pass
+    try:
+        ss = mf.spin_square()
+        s2 = float(ss[0] if isinstance(ss, (tuple, list)) else ss)
+        S = nunpaired / 2.0
+        out["s_squared"] = round(s2, 4)
+        out["spin_contam"] = round(s2 - S * (S + 1), 4)
+    except Exception:
+        pass
+    return out
 
 
 def _thermal_correction(atoms, charge, mult, xc=None, basis=None, disp=None,
@@ -233,7 +267,9 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             sp_nlc: str | None = SP_NLC,
             solvent: str | None = None, do_gas: bool = True, do_smd: bool = True,
             do_opt: bool = True, do_freq: bool = True, opt_out: Path | None = None,
-            max_opt_steps: int = 100, backend: str = "cpu") -> dict:
+            max_opt_steps: int = 100, constraints: str | None = None,
+            conv_params: dict | None = None, assert_convergence: bool = True,
+            backend: str = "cpu") -> dict:
     """Composite DFT+SMD: optimize geometry in solvent at (opt_xc/opt_basis), then score
     the energy at (sp_xc/sp_basis). Anions use the diffuse basis variant. Returns energies
     (Ha) in SMD solvent and (optionally) gas phase. backend='gpu' uses gpu4pyscf.
@@ -267,7 +303,16 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
     if do_opt:
         geomopt = _geomopt_fn(backend)
         mf_opt = _build_smd_mf(mol, opt_xc, solvent, backend, opt_disp, opt_nlc)
-        mol = geomopt(mf_opt, maxsteps=max_opt_steps)  # relaxed Mole (at opt basis)
+        # `constraints` (a geomeTRIC constraints file, e.g. frozen dihedrals) keeps a flexible
+        # anion in the neutral's conformer -> a conformer-matched inner-sphere lambda.
+        # `conv_params` (convergence_gmax/grms/energy...) + assert_convergence=False let a
+        # constrained opt stop at a loose-but-energy-converged geometry instead of oscillating.
+        _optkw = dict(maxsteps=max_opt_steps, assert_convergence=assert_convergence)
+        if constraints:
+            _optkw["constraints"] = constraints
+        if conv_params:
+            _optkw.update(conv_params)
+        mol = geomopt(mf_opt, **_optkw)  # relaxed Mole (at opt basis)
         opt_atoms = _mol_to_atoms(mol)
         if opt_out is not None:
             _write_xyz(opt_atoms, Path(opt_out),
@@ -295,6 +340,11 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             mfg.nlc = sp_nlc
         e_gas, conv_gas = _kernel_robust(mfg)
         out.update(e_gas_Ha=e_gas, e_gas_eV=e_gas * HARTREE_EV, converged_gas=conv_gas)
+        # QC: anion-bound check (gas HOMO > 0 => unbound) + spin contamination.
+        for k, v in _orbital_diag(mfg, nunpaired).items():
+            out[f"gas_{k}"] = v
+        if out.get("gas_homo_eV") is not None and q < 0:
+            out["anion_unbound"] = bool(out["gas_homo_eV"] > 0.0)
         if e_smd is not None:
             out["dG_solv_eV"] = (e_smd - e_gas) * HARTREE_EV
 

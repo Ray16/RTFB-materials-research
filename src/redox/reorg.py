@@ -67,9 +67,28 @@ def _cross_energy_gas(gid, species_state, q, m, at_geom_state, backend):
                     backend=backend)
     cache.parent.mkdir(parents=True, exist_ok=True)
     cache.write_text(json.dumps({"e_gas_eV": res.get("e_gas_eV"),
+                                 "gas_homo_eV": res.get("gas_homo_eV"),
+                                 "gas_s_squared": res.get("gas_s_squared"),
+                                 "anion_unbound": res.get("anion_unbound"),
                                  "species_state": species_state, "at": at_geom_state,
                                  "charge": q, "mult": m}, indent=2))
     return res.get("e_gas_eV")
+
+
+def _heavy_rmsd(p1, p2):
+    """Kabsch heavy-atom RMSD (A) between two opt.xyz geometries; None if unavailable."""
+    try:
+        import numpy as np
+        from ase.io import read
+        a1, a2 = read(str(p1)), read(str(p2))
+        m = np.array(a1.get_chemical_symbols()) != "H"
+        A = a1.positions[m] - a1.positions[m].mean(0)
+        B = a2.positions[m] - a2.positions[m].mean(0)
+        H = A.T @ B; U, S, Vt = np.linalg.svd(H)
+        d = np.sign(np.linalg.det(Vt.T @ U.T)); R = Vt.T @ np.diag([1, 1, d]) @ U.T
+        return float(np.sqrt(((A @ R.T - B) ** 2).sum(1).mean()))
+    except Exception:
+        return None
 
 
 def compute_group(gid, backend="gpu"):
@@ -94,14 +113,23 @@ def lambda_for_couple(gid, O, R):
     lam = (E_O_at_R - E_O_at_O) + (E_R_at_O - E_R_at_R)     # eV
     relax_ox = (E_O_at_R - E_O_at_O)                        # eV, each half-relaxation
     relax_red = (E_R_at_O - E_R_at_R)
-    # Artifact guard: each half-relaxation is a distortion penalty (physically ~0.1-0.7 eV and
-    # >=0). lambda<0, a negative half, or a >1 eV half signals a broken/wrong-conformer geometry
-    # (see the D3TaLES validation). Flag it -> re-run that state with --torsion-scan.
+    # QC guards (see the D3TaLES thiosuccinimide diagnosis): a valid inner-sphere lambda is >=0,
+    # each half is a small distortion penalty (~0.1-0.7 eV), the two states differ by only local
+    # inner-sphere modes (small heavy-atom RMSD), and a reduced state's gas anion must be BOUND.
+    #   - large RMSD  -> the two states optimized into different CONFORMERS (lambda contaminated)
+    #   - anion_unbound (gas HOMO>0) -> the gas cross-point energy is meaningless (score in SMD)
+    rmsd = _heavy_rmsd(DFT / gid / sO / "opt.xyz", DFT / gid / sR / "opt.xyz")
+    anion_homo = json.loads(cR.read_text()).get("gas_homo_eV")   # E_R at neutral geom (the anion)
+    anion_unbound = bool(json.loads(cR.read_text()).get("anion_unbound")) if qR < 0 else False
     flag = ""
     if lam < 0:
         flag = "negative_lambda"
     elif min(relax_ox, relax_red) < -0.02:
         flag = "negative_half"
+    elif rmsd is not None and rmsd > 0.40:
+        flag = "conformer_jump"
+    elif anion_unbound:
+        flag = "anion_unbound"
     elif max(relax_ox, relax_red) > 1.0:
         flag = "large_half>1eV"
     return dict(id=gid, couple=f"{sO}->{sR}", q_ox=qO, q_red=qR,
@@ -109,6 +137,8 @@ def lambda_for_couple(gid, O, R):
                 lambda_i_kJmol=round(lam * EV_KJ, 2),
                 relax_ox_meV=round(relax_ox * EV_MEV, 1),
                 relax_red_meV=round(relax_red * EV_MEV, 1),
+                rmsd_A=round(rmsd, 3) if rmsd is not None else "",
+                anion_homo_eV=round(anion_homo, 3) if anion_homo is not None else "",
                 flag=flag)
 
 
@@ -211,15 +241,17 @@ def aggregate():
     if diffs:
         import statistics
         print(f"\nD3TaLES cross-check: n_matched={len(diffs)}  MAD={statistics.mean(diffs):.3f} eV"
-              f"  (same 4-point formula; our geoms are SMD-opt vs D3TaLES gas-opt, hence not exact)")
+              f"  (same 4-point FORMULA, but different LEVEL: ours=wB97M-V/def2-TZVP SMD vs "
+              f"D3TaLES=IP-tuned LC-wHPBE/def2-svp gas — a functional+basis difference, see "
+              f"FINDINGS #10 & validate_reorg_worker_d3tales.py for the level-matched comparison)")
     else:
         print("\nD3TaLES cross-check: no exact-SMILES matches among current molecules "
               "(most of ours are functionalized; run bare cores for a direct comparison).")
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "reorganization.csv"
     cols = ["id", "couple", "q_ox", "q_red", "lambda_i_eV", "lambda_i_meV",
-            "lambda_i_kJmol", "relax_ox_meV", "relax_red_meV", "flag",
-            "d3tales_lambda_eV", "d3tales_type"]
+            "lambda_i_kJmol", "relax_ox_meV", "relax_red_meV", "rmsd_A",
+            "anion_homo_eV", "flag", "d3tales_lambda_eV", "d3tales_type"]
     with out.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader()
         for r in rows:

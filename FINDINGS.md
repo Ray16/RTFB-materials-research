@@ -90,13 +90,52 @@ to conformational flexibility), and test binding with **solvated EA (e_smd)**, n
   +0.49 eV (mildly stable) is consistent with MV⁺• being a persistent monomer, but the sign
   isn't firmly established. Report with a large error bar; lean on disproportionation.
 
-## 10. Reorganization energy λ: standard, reliable, and validatable against D3TaLES
-λ_i via the 4-point (Nelsen) scheme is IDENTICAL to D3TaLES's `ReorganizationCalc`
-(verified in their source). Reliable via cancellation. Validation reference = D3TaLES computed
-λ (28k molecules + SMILES): **hole column credible** (triphenylamine 0.096 eV ✓, phenothiazine
-0.48 eV ✓ from its butterfly→planar flattening), **electron column noisy** (negatives, 10 eV
-outliers — the same anion difficulty). Compute cross-points GAS-ONLY (`dft_smd(do_smd=False)`)
-— inner-sphere λ needs only the gas energy, so skipping the SMD SCF ~halves the cost.
+## 10. Reorganization energy λ: standard, reliable, validated by REPRODUCING D3TaLES at their level
+λ_i via the 4-point (Nelsen) scheme uses the same **formula** as D3TaLES's `ReorganizationCalc`,
+but their **level of theory is different** and must be matched to compare numbers:
+- **D3TaLES level = IP-tuned LC-ωHPBE / Def2SVP, gas** (Duke 2023; ω is tuned *per molecule* and
+  stored in the dump's `omega` column). Their Def2SVP has **no diffuse functions** → their
+  *electron* (anion) column is noisy (negatives, >3 eV outliers); their hole column is cleaner
+  except for poor donors (e.g. quinone cations).
+- **Our production level = ωB97M-V/def2-TZVP(D) on SMD-opt geoms, diffuse for anions** — a
+  *different functional + basis + phase*, chosen because it's more appropriate for our reductive
+  anolytes (diffuse functions are essential for anions).
+
+**Do-it-correctly validation (`validate_reorg_worker_d3tales.py`):** reproducing their EXACT level
+— `lc_wpbe` (= LC-ωHPBE) with *their* stored per-molecule ω + def2-svp, gas — matches their
+reported λ closely on clean entries (naphthoquinone electron 0.5807 vs 0.5825; duroquinone hole
+0.765 vs 0.777 & electron 0.546 vs 0.573). The disagreements are where **D3TaLES's own value is
+the outlier** (naphthoquinone hole 0.168, 80TFSO electron 1.055 — implausible). So:
+- The ~−0.24 eV offset our *production* λ shows vs D3TaLES is a **functional+basis difference, NOT
+  a solvent effect** — it is identical in our gas and SMD calcs, and it collapses when we match
+  their functional. (Superseded the earlier B3LYP/6-31G* "matched" run, which matched neither
+  their level nor ours and has been removed.)
+- For our screening we KEEP our level (diffuse-augmented, solvated) — it is the more correct
+  treatment for anions; matching D3TaLES is only for the cross-check.
+
+Compute cross-points GAS-ONLY (`dft_smd(do_smd=False)`) — inner-sphere λ needs only the gas
+energy, so skipping the SMD SCF ~halves the cost.
+
+**λ outliers = UNBOUND radical anions, not a bug (16/442, all thiosuccinimides).** A cluster of
+flexible imides (maleimide–thiol adducts, motif `N–C(=O)–CH₂–CH(S–R)–C(=O)`) gave λ = 1.5–4.1 eV.
+Diagnosis (QC now in the pipeline): the **vertical radical anion is UNBOUND** — the gas HOMO at the
+neutral geometry is **positive** (+0.07 to +1.14 eV; ⟨S²⟩≈0.75, so not spin contamination), so the
+`E_R_at_O` cross-point is a "neutral + free electron" energy, not a bound reduced state, and the
+4-point λ is ill-defined. **No recompute recipe rescues them:** conformer-matching (frozen rotatable
+dihedrals; RMSD 3.3→0.9 Å) leaves λ~4 (still uses the unbound point); SMD stabilizes <0.3 eV (not
+enough to bind, λ stays ~3.6); even conformer-matched **and** SMD together stays 3.1–3.9 eV. **D3TaLES
+gets the same** huge values independently (their gas def2-SVP), confirming it is a real low-EA
+electronic-structure limit, not our error. Correct treatment = **flag + exclude**, not fabricate a λ
+(these unbound anions are not viable reductions anyway). Scripts: `reorg_screen_unbound.py` (cheap
+vertical-anion HOMO screen), `reorg_recompute_guarded.py` (conformer-matched + SMD attempt),
+`finalize_reorg_qc.py` (writes `anion_unbound`/`reliable` into `comparison.csv`; parity figures plot
+the 426 reliable, annotate the 16 excluded).
+
+**Pipeline hardened so this can't pass silently again.** `dft_smd` now returns `gas_homo_eV`/
+`anion_unbound` (HOMO>0) and `gas_s_squared`/`spin_contam`, and accepts a geomeTRIC `constraints`
+file (frozen dihedrals → conformer-matched λ). `reorg.py` flags each couple `anion_unbound`,
+`conformer_jump` (heavy-atom RMSD>0.4 Å), `negative_lambda`, or `negative_half`, recording
+`rmsd_A`/`anion_homo_eV` in `results/reorganization.csv`.
 
 ## 11. Campaign design: multi-objective Pareto, built correctly
 Voltage + stability are necessary but not sufficient. Other axes and their computability:
