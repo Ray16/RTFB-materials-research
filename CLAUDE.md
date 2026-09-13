@@ -33,13 +33,11 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
 - One molecule = one stable ID; keep its calcs in a dir keyed by ID + redox state.
 - Do not assume specific hardware — **detect** available GPUs/CPUs at runtime (e.g.
   `torch.cuda.device_count()`, `os.cpu_count()`) and scale to what's present.
-- **This node is SHARED — never introduce GPU contention.** Before launching ANY GPU job,
-  check which GPUs are actually IDLE (`nvidia-smi --query-gpu=index,utilization.gpu,memory.used
-  --format=csv,noheader`) and pin `CUDA_VISIBLE_DEVICES` only to GPUs with ~0% util AND
-  near-zero used memory (treat >~500 MiB or >~5% util as OCCUPIED — someone else's job).
-  Never hard-code a GPU index or assume a GPU is free because it was free earlier — re-check
-  immediately before each launch. Use `scripts/free_gpus.py` to pick free GPUs programmatically.
-  If no GPU is free, wait or fall back to CPU; do not collide with a running job.
+- **This node is SHARED — never introduce GPU contention.** Submit ALL GPU work through the
+  system-wide reservation gate `~/bin/gpu_reserve` (full rules in the global `~/.claude/CLAUDE.md`):
+  it reserves a GPU only if it has zero resident processes and isn't already reserved, so we never
+  collide with another user or our own other sessions. **Never pin `CUDA_VISIBLE_DEVICES` by hand.**
+  If nothing is free, wait or fall back to CPU.
 - **This node is SHARED for CPU too — NEVER oversubscribe cores (this impacts other users).**
   MLIP (UMA/fairchem/torch) and PySCF/xtb default to grabbing **ALL cores per process**, so N
   parallel workers each spawn ~all-core thread pools, thrash the node (load ≫ ncores), starve
@@ -57,9 +55,9 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
   writes the SAME `calcs/`,`library/`,`results/` paths. SSH is passwordless. Scan peers for
   idle GPUs with `python scripts/free_gpus.py --hosts lambda1,lambda2,lambda4` (returns
   `host idx` slots, skips unreachable) and place one job per free (host,GPU). Run remote jobs
-  as `ssh <host> 'cd <repo> && source ~/miniforge3/etc/profile.d/conda.sh && conda activate
-  redox && CUDA_VISIBLE_DEVICES=<idx> python -m redox.dft --only <id> --backend gpu'`. GPU
-  DRIVERS are node-local — verify the env runs on a node (`check_env.py` on one of its GPUs)
+  through the reservation gate: `ssh <host> 'cd <repo> && source ~/miniforge3/etc/profile.d/conda.sh
+  && conda activate redox && gpu_reserve run <idx> -- python -m redox.dft --only <id> --backend gpu'`.
+  GPU DRIVERS are node-local — verify the env runs on a node (`check_env.py` on one of its GPUs)
   before trusting a batch there. For large embarrassingly-parallel sweeps, use the
   **lambda-fleet skill** (claim-based, resumable, self-healing fan-out). Same contention rule
   applies per node.
@@ -70,44 +68,6 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
   to know when it's done. Do not sit and wait for a job in the foreground.
 - Write job output to a log file so progress can be inspected without blocking.
 - Only run trivially fast, must-be-sequential commands in the foreground.
-
-## Submitting GPU jobs (check per-GPU first; one task per GPU)
-- **Check the SPECIFIC target GPU for OTHER users right before submitting to it.** Do not rely on
-  a whole-node summary or a check from a minute ago — the free set is volatile. For each candidate
-  `(host, GPU)`, immediately before launch confirm THAT GPU is free two ways:
-  1. util+mem: `nvidia-smi --query-gpu=index,utilization.gpu,memory.used --format=csv,noheader` —
-     the GPU must be ~0% util AND near-zero memory (treat **>~500 MiB or >~5% util as OCCUPIED**).
-  2. ownership: `nvidia-smi --query-compute-apps=gpu_bus_id,pid,used_memory --format=csv,noheader`
-     + `ps -o user= -p <pid>` — the GPU must have **no non-`rzhu` pid** on it.
-  If either check says occupied, **skip that GPU and pick another**; never submit onto a GPU
-  another user is on. Use `python scripts/free_gpus.py --hosts lambda1,lambda2,lambda4,...` to get
-  free `(host,idx)` slots programmatically (verify the real node list per the Killing section).
-- **One task per GPU — never stack our own jobs on a GPU (avoid SELF-contention).** Assign exactly
-  one worker per `(host, GPU)` via `CUDA_VISIBLE_DEVICES=<idx>`. Two of our processes on one GPU
-  thrash it (OOM, mutual slowdown) just like colliding with another user. Within a single launch,
-  track which GPUs you've already assigned so two workers can't grab the same index; a claim-based
-  fleet (one claim per GPU) enforces this automatically.
-- **Pair with the CPU-thread cap** (see Compute): each GPU worker still gets a SMALL thread cap
-  (`OMP_NUM_THREADS`/`MKL_NUM_THREADS`/`OPENBLAS_NUM_THREADS`, e.g. 2) so N GPU workers don't
-  oversubscribe cores.
-- **After launching, verify placement:** re-scan and confirm exactly one `rzhu` process landed on
-  each intended GPU and none doubled up or landed on an occupied GPU.
-- **ALWAYS submit GPU work through the SYSTEM-WIDE reservation gate — `~/bin/gpu_reserve`**
-  (`/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve`). It is machine-/cluster-wide and NOT per-repo:
-  one tool + one shared NFS lock namespace (`~/.gpu_locks/<host>_gpu<idx>`) that EVERY session and
-  project coordinates through, so no two of our jobs — and no job of ours and another user's — ever
-  share a GPU. A GPU counts as free only if util/mem are low AND it has **zero resident compute
-  processes** (any user, including our own other sessions) AND it is not already reserved. Policy
-  (allowed/reserved hosts, thresholds) lives in `~/.config/gpu_reserve/config.env`.
-  - `gpu_reserve list` → free `host idx` slots cluster-wide; `gpu_reserve pick -n K` reserves K on
-    THIS host; `gpu_reserve run <idx> -- <cmd>` reserves, runs with `CUDA_VISIBLE_DEVICES`, releases;
-    `gpu_reserve status` / `gpu_reserve gc` inspect/clean reservations. Reservations are pinned to the
-    owner's pid+start-time (survives pid reuse) and auto-expire after `LOCK_TTL`.
-  - Long-lived workers reserve with `gpu_reserve acquire <idx> --pid $$ --label <run>` and
-    `gpu_reserve release <idx>` on a trap (see `scripts/fleet/d3level_fleet_worker.sh`). NEVER run
-    `CUDA_VISIBLE_DEVICES=X ...` directly — that bypasses the gate.
-  - This is submission-side PREVENTION (no background daemon). `scripts/fleet/gpu_watchdog.sh` (a
-    reactive killer) exists but is OFF by design; don't start it unless explicitly asked.
 
 ## Killing jobs (clean up fully — never leave stragglers)
 - **Discover the real footprint first.** A fanned-out fleet may run on MORE nodes than the
