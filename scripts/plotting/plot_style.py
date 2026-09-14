@@ -88,6 +88,45 @@ def apply_style():
     })
 
 
+def parity_panel(ax, xs, ys, colors, lim=(0.0, 1.4), band=0.2, point_size=34,
+                 marginals=True, marg_color="#9AA3AD"):
+    """A polished parity (y-vs-x) panel shared by the reorg figures.
+
+    Fixes overplotting (translucent, edgeless points so the dense core reads as a gradient),
+    draws the y=x identity plus a shaded +/-`band` eV agreement envelope, and (optionally) adds
+    slim marginal histograms on top and right. Returns a stats dict (n, mad, median, r, frac_in_band).
+    Cosmetics only — no number is altered.
+    """
+    import numpy as np
+    lo, hi = lim
+    xs = np.asarray(xs, float); ys = np.asarray(ys, float)
+    # agreement envelope + identity
+    ax.fill_between([lo, hi], [lo - band, hi - band], [lo + band, hi + band],
+                    color="#B8C0C8", alpha=0.28, lw=0, zorder=1)
+    ax.plot([lo, hi], [lo, hi], color="#333333", lw=1.6, zorder=2)
+    ax.scatter(xs, ys, c=colors, s=point_size, alpha=0.62, edgecolors="none", zorder=3)
+    ax.set_xlim(lo, hi); ax.set_ylim(lo, hi); ax.set_aspect("equal")
+    ax.set_axisbelow(True)
+    ax.grid(True, color=C["grid"], lw=0.6, alpha=0.30)
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    # stats
+    d = ys - xs
+    out = dict(n=len(xs), mad=float(np.mean(np.abs(d))), median=float(np.median(np.abs(d))),
+               bias=float(np.mean(d)),
+               r=float(np.corrcoef(xs, ys)[0, 1]) if len(xs) > 2 else float("nan"),
+               frac_in_band=float(np.mean(np.abs(d) <= band)))
+    if marginals:
+        bins = np.linspace(lo, hi, 26)
+        axt = ax.inset_axes([0, 1.008, 1, 0.15]); axr = ax.inset_axes([1.008, 0, 0.15, 1])
+        axt.hist(xs, bins=bins, color=marg_color, alpha=0.85, lw=0)
+        axr.hist(ys, bins=bins, orientation="horizontal", color=marg_color, alpha=0.85, lw=0)
+        axt.set_xlim(lo, hi); axr.set_ylim(lo, hi)
+        for a in (axt, axr):
+            a.axis("off")
+    return out
+
+
 def grid_y(ax, alpha=0.4):
     ax.set_axisbelow(True)
     ax.grid(True, axis="y", color=C["grid"], lw=0.7, alpha=alpha)
