@@ -401,6 +401,29 @@ def aggregate():
                                orop_b3lyp=orop[s]["imp_dft"]))
     RES.mkdir(parents=True, exist_ok=True)
     pd.DataFrame(scf_rows).to_csv(RES / "scf_ground_state_check.csv", index=False)
+    # candidate set: the CURRENT production energy (active-protocol record / current lambda
+    # cross-point cache — not the value stored when the check ran) vs the lowest solution found
+    from redox.core.protocol import load_record
+    cand = []
+    for p in sorted(CAND_OUT.glob("*/*.json")):
+        r = json.loads(p.read_text())
+        if r["kind"] == "state":
+            rec = load_record(Path(r["xyz"]).parent, r["q"], r["mult"]) or {}
+            now = dict(gas=rec.get("e_gas_eV"), solv=rec.get("e_smd_eV"))
+        else:
+            c = Path(r["cache"])
+            now = dict(gas=json.loads(c.read_text()).get("e_gas_eV") if c.exists() else None)
+        for ph, b in r["phases"].items():
+            pe = now.get(ph)
+            cand.append(dict(id=r["id"], name=r["name"], kind=r["kind"], charge=r["q"],
+                             mult=r["mult"], phase=ph, n_guesses=len(b["guesses"]),
+                             n_converged=sum(1 for g in b["guesses"] if g.get("converged")),
+                             best_guess=b["best"] and b["best"]["guess"],
+                             production_minus_lowest_eV=(pe - b["best"]["e_Ha"] * HARTREE_EV
+                                                         if (b["best"] and pe is not None)
+                                                         else None),
+                             at_check_time_eV=b.get("production_minus_best_eV")))
+    pd.DataFrame(cand).to_csv(RES / "scf_candidates_check.csv", index=False)
     df = pd.DataFrame(e_rows)
     df.to_csv(RES / "level_crossing_Efc.csv", index=False)
     pd.set_option("display.width", 200)

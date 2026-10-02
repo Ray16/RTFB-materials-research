@@ -38,7 +38,7 @@ INCOMPLETE, never zero (FINDINGS #22).
 | **λ_het, λ_SE(d)** | (λ_O+λ_R)/2 + λ_o,1 ; λ_O+λ_R + 2λ_o,1(1−a/d) | — | derived | ⚠️ annotation | inherits λ_o limits; polymer site distance d not known |
 | **Capacity** | n F / mass on the contiguous path from the resting state, per electrode | — | bookkeeping | ✅ | counter-ion variants are scenario conventions |
 | **Spin ground state** | UMA multiplicity scan; DFT check when the gap is small | aq_benzyloxy dianion | UMA gap 0.19 eV vs DFT 0.81 eV | ⚠️ | UMA underestimates gaps; DFT-check every gap < 0.5 eV |
-| **SCF solution** | open shells: lowest of minao/atom/huckel | up-to-9-guess recompute of every candidate energy (63 states + 42 cross points) | all on the lowest solution found (≤0.003 meV) | ✅ | ferrocenium GAS SCF is 2.5 eV high (E° unaffected; never use Fc gas quantities) |
+| **SCF solution** | open shells: lowest of minao/atom/huckel | up-to-9-guess recompute of every candidate energy (64 state phases + 42 cross points) | 105/106 on the lowest solution found (≤0.0025 meV); ndi_ammonium red1 SMD unchecked (CPU-only size) | ✅ | ferrocenium GAS SCF is 2.5 eV high (E° unaffected; never use Fc gas quantities) |
 | **Thermal (RRHO)** | GFN2-xTB qRRHO at the DFT-SMD geometry | rotor cutoff 25/50/100 cm⁻¹ | see `results/thermal_sensitivity.csv` | ⚠️ | some states have imaginary xTB modes (flagged `thermal_qc`) |
 | **ΔG_solv (neutral)** | SMD | FreeSolv + MNSol (31 neutrals) | MAE 0.79 kcal/mol | ✅ | relative only for solubility; does not transfer monomer → polymer |
 | **SA score** | Ertl | — | proxy | ⚠️ filter | does not measure graftability |

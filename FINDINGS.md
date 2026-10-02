@@ -459,8 +459,10 @@ After the fix every candidate state energy equals an independent multi-guess rec
 
 **SCF ground state.** `scripts/validation/reference/scf_level_check.py` re-solved every state
 from up to 9 initial guesses (minao/atom/huckel + N±1 orbital-occupation guesses).
-Candidates: all 63 state phases and all 42 λ cross points that feed a ranked candidate are on the
-lowest solution found (except the provenance records above). Reference set (36 states):
+Candidates (`results/validation/scf_candidates_check.csv`, current records vs the lowest
+solution found): 105 of 106 phases — 63 of 64 state phases and all 42 λ cross points — agree to
+≤0.0025 meV. Unchecked: ndi_ammonium red1 in SMD (needs >32 GB GPU; production computed it on
+CPU in 12.5 h); its gas phase is on the lowest solution. Reference set (36 states):
 two wrong-state production SCFs — **ferrocenium gas phase 2.54 eV high** (E(Fc+)−E(Fc) 8.97 eV
 vs NIST evaluated IE 6.71 ± 0.08 eV, webbook.nist.gov CAS 102-54-5; the SMD energy used for E° is
 on the lowest solution, so the Fc reference 4.356 V is unaffected) and **OROP system 170

@@ -75,7 +75,8 @@ screening axis means and how far it can be trusted, `docs/DATASETS.md` for exter
     from several initial guesses (`--set reference` = anchors/Fc/OROP sample; `--set
     candidates` = every energy feeding a ranked candidate), (2) level crossing at OROP's
     B3LYP-D3/6-31G* (SMD and C-PCM) → `results/validation/{scf_ground_state_check,
-    level_crossing_Efc}.csv`.
+    level_crossing_Efc,scf_candidates_check}.csv`; `scf_check_phase.py` re-runs one phase in a
+    fresh process.
   - `audit/` — `recompute_axes.py`: independent from-raw recompute of every published axis
     (imports only `redox.core.protocol` + config) → `results/validation/audit_*.csv`.
 - `mining/` — D3TaLES family coverage + low-λ/low-SA candidate mining.
