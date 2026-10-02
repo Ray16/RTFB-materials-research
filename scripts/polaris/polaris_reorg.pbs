@@ -1,0 +1,24 @@
+#!/bin/bash
+#PBS -A FRAME-IDP
+#PBS -q small
+#PBS -l select=8:ncpus=64:ngpus=4
+#PBS -l walltime=03:00:00
+#PBS -l filesystems=home:grand
+#PBS -N redox_reorg
+#PBS -j oe
+#PBS -o /grand/FRAME-IDP/rzhu/redox_reorg/reorg_run.log
+
+# Production reorg recompute of the D3TaLES set at the EXACT pipeline level (SMD-opt r2SCAN +
+# gas wB97M-V single points). One MPI rank per A100 (4/node); the worker is sharded by rank and
+# resumable, so this can be resubmitted to continue. Defaults above (8 nodes x 4 = 32 A100, 3 h)
+# can be overridden at submit: qsub -l select=<N>:ncpus=64:ngpus=4 -l walltime=<hh:mm:ss> -q <q>.
+cd /grand/FRAME-IDP/rzhu/redox_reorg
+NRANKS_PER_NODE=4
+NNODES=$(wc -l < "$PBS_NODEFILE")
+NTOTRANKS=$(( NNODES * NRANKS_PER_NODE ))
+echo "=== $(date) nodes=$NNODES ranks=$NTOTRANKS ==="
+mpiexec -n "$NTOTRANKS" --ppn "$NRANKS_PER_NODE" \
+    --cpu-bind depth -d 16 \
+    /grand/FRAME-IDP/rzhu/redox_reorg/scripts/polaris/polaris_gpu_shard.sh
+echo "=== $(date) mpiexec returned; aggregating counts ==="
+ls /grand/FRAME-IDP/rzhu/redox_reorg/results/d3tales_reorg_validation_prod/calc/ 2>/dev/null | wc -l

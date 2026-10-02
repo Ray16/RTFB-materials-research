@@ -1,39 +1,106 @@
-id,name,family,event,q_ox,q_red,dG_smd_eV,g_thermal_ox_eV,g_thermal_red_eV,E_abs_V,E_vs_Fc_V,dG_gas_uma_eV,E_vs_Fc_gas_V,ref
-pyridinium,N-benzylpyridinium,pyridine,ox->red,1,0,-2.779,5.2188,5.1268,2.779,-1.656,-4.7178,0.283,Fc-level-matched(computed)
-cyanopyridinium,N-benzyl-4-cyanopyridinium,pyridine,ox->red,1,0,-3.5545,5.1255,5.0684,3.554,-0.88,-5.614,1.179,Fc-level-matched(computed)
-viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",pyridine-multi-e,ox2->ox1,2,1,-3.6692,7.8717,7.8593,3.669,-0.766,-8.5907,4.156,Fc-level-matched(computed)
-viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",pyridine-multi-e,ox1->neu,1,0,-3.1299,7.8593,7.7945,3.13,-1.305,-4.6585,0.224,Fc-level-matched(computed)
-phenothiazine,N-benzylphenothiazine,amine (p-type),ox->neu,1,0,-4.9767,7.0407,7.0457,4.977,0.542,-6.634,2.199,Fc-level-matched(computed)
-tempo,4-(benzyloxy)-TEMPO,nitroxide,ox->rad,1,0,-4.8815,9.445,9.4339,4.882,0.447,-6.7991,2.364,Fc-level-matched(computed)
-tempo,4-(benzyloxy)-TEMPO,nitroxide,rad->red,0,-1,-2.7637,9.4339,9.1688,2.764,-1.671,-0.4183,-4.016,Fc-level-matched(computed)
-anthraquinone,2-(benzyloxymethyl)anthraquinone,quinone (n-type),neu->red1,0,-1,-3.3366,7.8055,7.7497,3.337,-1.098,-1.5199,-2.915,Fc-level-matched(computed)
-anthraquinone,2-(benzyloxymethyl)anthraquinone,quinone (n-type),red1->red2,-1,-2,-2.5756,7.7497,7.4868,2.576,-1.859,2.5076,-6.942,Fc-level-matched(computed)
-ferrocene,ferrocene (internal reference),validation,ox->neu,1,0,-4.3555,3.4275,3.5068,4.355,-0.079,-6.4456,2.011,Fc-level-matched(computed)
-methyl_viologen,"methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",validation,ox2->ox1,2,1,-3.6797,5.2285,5.1901,3.68,-0.755,-8.8505,4.416,Fc-level-matched(computed)
-methyl_viologen,"methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",validation,ox1->neu,1,0,-3.0972,5.1901,5.1314,3.097,-1.338,-4.7218,0.287,Fc-level-matched(computed)
-tempo_parent,"TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",validation,ox->rad,1,0,-4.8106,6.017,6.0079,4.811,0.376,-6.8702,2.435,Fc-level-matched(computed)
-tempo_parent,"TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",validation,rad->red,0,-1,-2.5233,6.0079,5.9317,2.523,-1.911,-0.2685,-4.166,Fc-level-matched(computed)
-phenothiazine_parent,10H-phenothiazine,validation,ox->neu,1,0,-4.8909,3.6766,3.6559,4.891,0.456,-6.6494,2.215,Fc-level-matched(computed)
-anthraquinone_parent,"9,10-anthraquinone",validation,neu->red1,0,-1,-3.2739,3.695,3.6497,3.274,-1.161,-1.4814,-2.953,Fc-level-matched(computed)
-anthraquinone_parent,"9,10-anthraquinone",validation,red1->red2,-1,-2,-2.3831,3.6497,3.5777,2.383,-2.052,2.8981,-7.333,Fc-level-matched(computed)
-methylpyridinium,N-methylpyridinium,validation,ox->red,1,0,-2.7644,2.5786,2.465,2.764,-1.67,-4.908,0.473,Fc-level-matched(computed)
-ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",pyridine-multi-e,ox2->ox1,2,1,-3.6619,8.5938,8.5822,3.662,-0.773,-8.4942,4.059,Fc-level-matched(computed)
-ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",pyridine-multi-e,ox1->neu,1,0,-3.1405,8.5822,8.5158,3.141,-1.294,-4.6319,0.197,Fc-level-matched(computed)
-pmdi,N-benzyl-N'-methyl pyromellitic diimide,imide (n-type),neu->red1,0,-1,-3.3289,6.4472,6.3961,3.329,-1.106,-1.8266,-2.608,Fc-level-matched(computed)
-pmdi,N-benzyl-N'-methyl pyromellitic diimide,imide (n-type),red1->red2,-1,-2,-2.57,6.3961,6.2559,2.57,-1.865,2.0229,-6.458,Fc-level-matched(computed)
-ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),ox->red1,1,0,-3.5875,12.0259,11.9762,3.587,-0.847,-4.4757,0.041,Fc-level-matched(computed)
-ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red1->red2,0,-1,-3.2832,11.9762,11.9144,3.283,-1.152,-1.6457,-2.789,Fc-level-matched(computed)
-mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",quinone (n-type),neu->red1,0,-1,-3.9125,6.7565,6.7019,3.913,-0.522,-1.9766,-2.458,Fc-level-matched(computed)
-mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",quinone (n-type),red1->red2,-1,-2,-2.8619,6.7019,6.45,2.862,-1.573,2.5123,-6.947,Fc-level-matched(computed)
-dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",quinone (n-type),neu->red1,0,-1,-3.9427,8.3206,8.2596,3.943,-0.492,-1.9618,-2.473,Fc-level-matched(computed)
-dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",quinone (n-type),red1->red2,-1,-2,-2.8959,8.2596,7.9914,2.896,-1.539,2.3674,-6.802,Fc-level-matched(computed)
-ethylviologen_sa,"ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",validation,ox2->ox1,2,1,-3.6578,6.6833,6.6515,3.658,-0.777,-8.666,4.231,Fc-level-matched(computed)
-ethylviologen_sa,"ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",validation,ox1->neu,1,0,-3.0964,6.6515,6.5811,3.096,-1.338,-4.6714,0.237,Fc-level-matched(computed)
-pmdi_sa,"N,N'-dimethyl pyromellitic diimide",imide (n-type),neu->red1,0,-1,-3.3131,3.7855,3.731,3.313,-1.122,-1.8078,-2.627,Fc-level-matched(computed)
-pmdi_sa,"N,N'-dimethyl pyromellitic diimide",imide (n-type),red1->red2,-1,-2,-2.4368,3.731,3.6611,2.437,-1.998,2.2627,-6.697,Fc-level-matched(computed)
-ndi_ammonium_sa,N-methyl-N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),ox->red1,1,0,-3.5411,9.3329,9.29,3.541,-0.894,-4.7642,0.329,Fc-level-matched(computed)
-ndi_ammonium_sa,N-methyl-N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red1->red2,0,-1,-3.246,9.29,9.2362,3.246,-1.189,-1.3007,-3.134,Fc-level-matched(computed)
-mophquinone_sa,"2-(4-methoxyphenyl)-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),neu->red1,0,-1,-3.8717,4.096,4.0669,3.872,-0.563,-1.9854,-2.449,Fc-level-matched(computed)
-mophquinone_sa,"2-(4-methoxyphenyl)-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red1->red2,-1,-2,-2.6884,4.0669,3.9885,2.688,-1.746,2.7681,-7.203,Fc-level-matched(computed)
-dmophquinone_sa,"2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),neu->red1,0,-1,-3.8501,5.6438,5.602,3.85,-0.585,-1.9397,-2.495,Fc-level-matched(computed)
-dmophquinone_sa,"2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red1->red2,-1,-2,-2.7022,5.602,5.525,2.702,-1.733,2.5654,-7.0,Fc-level-matched(computed)
+id,name,family,event,q_ox,q_red,dG_smd_eV,g_thermal_ox_eV,g_thermal_red_eV,E_abs_V,E_vs_Fc_V,status,thermal_qc,dE_thermal_V,dG_gas_uma_eV,E_vs_Fc_gas_V,ref
+pyridinium,N-benzylpyridinium,pyridine,ox->red,1,0,-2.7942,5.2188,5.1268,2.794,-1.562,ok,ok,0.092,-4.7178,0.362,"Fc-level-matched(live,G)"
+cyanopyridinium,N-benzyl-4-cyanopyridinium,pyridine,ox->red,1,0,-3.5676,5.1255,5.0684,3.568,-0.788,ok,ok,0.0571,-5.614,1.258,"Fc-level-matched(live,G)"
+viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",pyridine-multi-e,ox2->ox1,2,1,-3.6762,7.8717,7.8593,3.676,-0.679,ok,ok,0.0124,-8.5907,4.235,"Fc-level-matched(live,G)"
+viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",pyridine-multi-e,ox1->neu,1,0,-3.1472,7.8593,7.7945,3.147,-1.209,ok,ok,0.0648,-4.6585,0.303,"Fc-level-matched(live,G)"
+phenothiazine,N-benzylphenothiazine,amine (p-type),ox->neu,1,0,-4.9905,7.0407,7.0457,4.991,0.635,ok,ok,-0.005,-6.634,2.278,"Fc-level-matched(live,G)"
+tempo,4-(benzyloxy)-TEMPO,nitroxide,ox->rad,1,0,-4.9006,9.445,9.4339,4.901,0.545,ok,imag_modes,0.0112,-6.7991,2.443,"Fc-level-matched(live,G)"
+tempo,4-(benzyloxy)-TEMPO,nitroxide,rad->red,0,-1,-2.6769,9.4339,9.1688,2.677,-1.679,ok,imag_modes,0.2651,-0.4183,-3.937,"Fc-level-matched(live,G)"
+anthraquinone,2-(benzyloxymethyl)anthraquinone,quinone (n-type),neu->red1,0,-1,-3.2628,7.8055,7.7497,3.263,-1.093,ok,ok,0.0559,-1.5199,-2.836,"Fc-level-matched(live,G)"
+anthraquinone,2-(benzyloxymethyl)anthraquinone,quinone (n-type),red1->red2,-1,-2,-2.5756,7.7497,7.4868,2.576,-1.78,ok,imag_modes,0.2629,2.5076,-6.863,"Fc-level-matched(live,G)"
+ferrocene,ferrocene (internal reference),validation,ox->neu,1,0,-4.3557,3.4275,3.5068,4.356,0.0,ok,ok,-0.0793,-6.4456,2.09,"Fc-level-matched(live,G)"
+methyl_viologen,"methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",validation,ox2->ox1,2,1,-3.6865,5.2285,5.1901,3.686,-0.669,ok,ok,0.0384,-8.8505,4.495,"Fc-level-matched(live,G)"
+methyl_viologen,"methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",validation,ox1->neu,1,0,-3.1143,5.1901,5.1314,3.114,-1.241,ok,ok,0.0586,-4.7218,0.366,"Fc-level-matched(live,G)"
+tempo_parent,"TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",validation,ox->rad,1,0,-4.8284,6.017,6.0079,4.828,0.473,ok,ok,0.0092,-6.8702,2.515,"Fc-level-matched(live,G)"
+tempo_parent,"TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",validation,rad->red,0,-1,-2.468,6.0079,5.9317,2.468,-1.888,ok,ok,0.0762,-0.2685,-4.087,"Fc-level-matched(live,G)"
+phenothiazine_parent,10H-phenothiazine,validation,ox->neu,1,0,-4.9109,3.6766,3.6559,4.911,0.555,ok,ok,0.0207,-6.6494,2.294,"Fc-level-matched(live,G)"
+anthraquinone_parent,"9,10-anthraquinone",validation,neu->red1,0,-1,-3.2297,3.695,3.6497,3.23,-1.126,ok,ok,0.0452,-1.4814,-2.874,"Fc-level-matched(live,G)"
+anthraquinone_parent,"9,10-anthraquinone",validation,red1->red2,-1,-2,-2.3831,3.6497,3.5777,2.383,-1.973,ok,ok,0.072,2.8981,-7.254,"Fc-level-matched(live,G)"
+methylpyridinium,N-methylpyridinium,validation,ox->red,1,0,-2.78,2.5786,2.465,2.78,-1.576,ok,ok,0.1136,-4.908,0.552,"Fc-level-matched(live,G)"
+ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",pyridine-multi-e,ox2->ox1,2,1,-3.6689,8.5938,8.5822,3.669,-0.687,ok,ok,0.0116,-8.4942,4.138,"Fc-level-matched(live,G)"
+ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",pyridine-multi-e,ox1->neu,1,0,-3.1566,8.5822,8.5158,3.157,-1.199,ok,ok,0.0664,-4.6319,0.276,"Fc-level-matched(live,G)"
+pmdi,N-benzyl-N'-methyl pyromellitic diimide,imide (n-type),neu->red1,0,-1,-3.2274,6.4472,6.3961,3.227,-1.128,ok,ok,0.051,-1.8266,-2.529,"Fc-level-matched(live,G)"
+pmdi,N-benzyl-N'-methyl pyromellitic diimide,imide (n-type),red1->red2,-1,-2,-2.5696,6.3961,6.2559,2.57,-1.786,ok,ok,0.1403,2.0229,-6.379,"Fc-level-matched(live,G)"
+ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),ox->red1,1,0,-3.6146,12.0259,11.9762,3.615,-0.741,ok,ok,0.0497,-4.4757,0.12,"Fc-level-matched(live,G)"
+ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red1->red2,0,-1,-3.1463,11.9762,11.9144,3.146,-1.209,ok,ok,0.0618,-1.6457,-2.71,"Fc-level-matched(live,G)"
+mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",quinone (n-type),neu->red1,0,-1,-3.8135,6.7565,6.7019,3.814,-0.542,ok,ok,0.0546,-1.9766,-2.379,"Fc-level-matched(live,G)"
+mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",quinone (n-type),red1->red2,-1,-2,-2.8618,6.7019,6.45,2.862,-1.494,ok,imag_modes,0.2518,2.5123,-6.868,"Fc-level-matched(live,G)"
+dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",quinone (n-type),neu->red1,0,-1,-3.8179,8.3206,8.2596,3.818,-0.538,ok,ok,0.061,-1.9618,-2.394,"Fc-level-matched(live,G)"
+dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",quinone (n-type),red1->red2,-1,-2,-2.8958,8.2596,7.9914,2.896,-1.46,ok,imag_modes,0.2682,2.3674,-6.723,"Fc-level-matched(live,G)"
+ethylviologen_sa,"ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",validation,ox2->ox1,2,1,-3.6646,6.6833,6.6515,3.665,-0.691,ok,ok,0.0318,-8.666,4.31,"Fc-level-matched(live,G)"
+ethylviologen_sa,"ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",validation,ox1->neu,1,0,-3.1127,6.6515,6.5811,3.113,-1.243,ok,ok,0.0705,-4.6714,0.316,"Fc-level-matched(live,G)"
+pmdi_sa,"N,N'-dimethyl pyromellitic diimide",imide (n-type),neu->red1,0,-1,-3.2174,3.7855,3.731,3.217,-1.138,ok,ok,0.0545,-1.8078,-2.548,"Fc-level-matched(live,G)"
+pmdi_sa,"N,N'-dimethyl pyromellitic diimide",imide (n-type),red1->red2,-1,-2,-2.4367,3.731,3.6611,2.437,-1.919,ok,ok,0.0699,2.2627,-6.618,"Fc-level-matched(live,G)"
+ndi_ammonium_sa,N-methyl-N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),ox->red1,1,0,-3.5673,9.3329,9.29,3.567,-0.788,ok,ok,0.0429,-4.7642,0.408,"Fc-level-matched(live,G)"
+ndi_ammonium_sa,N-methyl-N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red1->red2,0,-1,-3.1147,9.29,9.2362,3.115,-1.241,ok,ok,0.0537,-1.3007,-3.055,"Fc-level-matched(live,G)"
+mophquinone_sa,"2-(4-methoxyphenyl)-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),neu->red1,0,-1,-3.7815,4.096,4.0669,3.782,-0.574,ok,ok,0.0291,-1.9854,-2.37,"Fc-level-matched(live,G)"
+mophquinone_sa,"2-(4-methoxyphenyl)-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red1->red2,-1,-2,-2.6884,4.0669,3.9885,2.688,-1.667,ok,ok,0.0784,2.7681,-7.124,"Fc-level-matched(live,G)"
+dmophquinone_sa,"2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),neu->red1,0,-1,-3.731,5.6438,5.602,3.731,-0.625,ok,ok,0.0419,-1.9397,-2.416,"Fc-level-matched(live,G)"
+dmophquinone_sa,"2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red1->red2,-1,-2,-2.7021,5.602,5.525,2.702,-1.654,ok,ok,0.0769,2.5654,-6.921,"Fc-level-matched(live,G)"
+bisviologen,"N,N'-bis(benzyl)-4,4'-bipyridinium (bis-tethered viologen)",pyridine-multi-e,ox2->ox1,2,1,-3.6764,10.541,10.5436,3.676,-0.679,ok,ok,-0.0026,-8.3276,3.972,"Fc-level-matched(live,G)"
+bisviologen,"N,N'-bis(benzyl)-4,4'-bipyridinium (bis-tethered viologen)",pyridine-multi-e,ox1->neu,1,0,-3.1651,10.5436,10.4877,3.165,-1.191,ok,ok,0.056,-4.5883,0.233,"Fc-level-matched(live,G)"
+aq_benzyloxy,2-(benzyloxy)anthraquinone,quinone (n-type),neu->red1,0,-1,-3.2158,7.1199,7.0704,3.216,-1.14,ok,ok,0.0495,-1.4476,-2.908,"Fc-level-matched(live,G)"
+aq_benzyloxy,2-(benzyloxy)anthraquinone,quinone (n-type),red1->red2,-1,-2,-2.5859,7.0704,6.766,2.586,-1.77,ok,imag_modes,0.3045,2.6699,-7.026,"Fc-level-matched(live,G)"
+nq_benzyloxy,"2-(benzyloxy)-1,4-naphthoquinone (from lawsone)",quinone (n-type),neu->red1,0,-1,-3.5411,5.9418,5.9004,3.541,-0.815,ok,ok,0.0414,-1.7757,-2.58,"Fc-level-matched(live,G)"
+nq_benzyloxy,"2-(benzyloxy)-1,4-naphthoquinone (from lawsone)",quinone (n-type),red1->red2,-1,-2,-2.7509,5.9004,5.6632,2.751,-1.605,ok,imag_modes,0.2372,2.68,-7.036,"Fc-level-matched(live,G)"
+dtbc_phenol,"3,5-di-tert-butyl-2-(benzyloxy)phenol (mono-O-benzyl DTBC)",phenol (p-type),ox->neu,1,0,-5.398,11.0581,11.1161,5.398,1.042,ok,ok,-0.058,-7.2081,2.852,"Fc-level-matched(live,G)"
+aq_benzylamino,2-(benzylamino)anthraquinone (repaired 9-aminoanthracene route),quinone (n-type),neu->red1,0,-1,-3.1818,7.4376,7.2881,3.182,-1.174,ok,ok,0.1495,-1.3369,-3.019,"Fc-level-matched(live,G)"
+aq_benzylamino,2-(benzylamino)anthraquinone (repaired 9-aminoanthracene route),quinone (n-type),red1->red2,-1,-2,-2.3965,7.2881,7.1171,2.397,-1.959,ok,imag_modes,0.171,2.6424,-6.998,"Fc-level-matched(live,G)"
+aq_benzyloxy_sa,2-methoxyanthraquinone,quinone (n-type),neu->red1,0,-1,-3.2136,4.4421,4.3909,3.214,-1.142,ok,ok,0.0512,-1.466,-2.89,"Fc-level-matched(live,G)"
+aq_benzyloxy_sa,2-methoxyanthraquinone,quinone (n-type),red1->red2,-1,-2,-2.3657,4.3909,4.3091,2.366,-1.99,ok,ok,0.0818,2.8842,-7.24,"Fc-level-matched(live,G)"
+nq_benzyloxy_sa,"2-methoxy-1,4-naphthoquinone",quinone (n-type),neu->red1,0,-1,-3.2784,3.3019,3.2372,3.278,-1.077,ok,ok,0.0646,-1.5789,-2.777,"Fc-level-matched(live,G)"
+nq_benzyloxy_sa,"2-methoxy-1,4-naphthoquinone",quinone (n-type),red1->red2,-1,-2,-2.5785,3.2372,3.1719,2.578,-1.777,ok,ok,0.0654,2.8727,-7.228,"Fc-level-matched(live,G)"
+dtbc_phenol_sa,"3,5-di-tert-butyl-2-methoxyphenol",phenol (p-type),ox->neu,1,0,-5.4586,8.415,8.4647,5.459,1.103,ok,ok,-0.0498,-7.3583,3.003,"Fc-level-matched(live,G)"
+aq_benzylamino_sa,2-(methylamino)anthraquinone,quinone (n-type),neu->red1,0,-1,-3.1275,4.7532,4.6903,3.127,-1.228,ok,imag_modes,0.0629,-1.312,-3.044,"Fc-level-matched(live,G)"
+aq_benzylamino_sa,2-(methylamino)anthraquinone,quinone (n-type),red1->red2,-1,-2,-2.2367,4.6903,4.6198,2.237,-2.119,ok,imag_modes,0.0705,2.9308,-7.286,"Fc-level-matched(live,G)"
+bm_1_4_benzoquinone,"1,4-benzoquinone",validation,neu->red1,0,-1,-3.7778,1.4077,1.3891,3.778,-0.578,ok,ok,0.0186,-1.8468,-2.509,"Fc-level-matched(live,G)"
+bm_1_4_benzoquinone,"1,4-benzoquinone",validation,red1->red2,-1,-2,-2.6556,1.3891,1.3407,2.656,-1.7,ok,ok,0.0484,2.3951,-6.751,"Fc-level-matched(live,G)"
+bm_2_methyl_1_4_benzoquinone,"2-methyl-1,4-benzoquinone",validation,neu->red1,0,-1,-3.6942,2.0734,2.0512,3.694,-0.662,ok,ok,0.0222,-1.8114,-2.544,"Fc-level-matched(live,G)"
+bm_2_methyl_1_4_benzoquinone,"2-methyl-1,4-benzoquinone",validation,red1->red2,-1,-2,-2.6051,2.0512,1.9859,2.605,-1.751,ok,ok,0.0653,2.6934,-7.049,"Fc-level-matched(live,G)"
+bm_2_tert_butyl_1_4_benzoquinone,"2-tert-butyl-1,4-benzoquinone",validation,neu->red1,0,-1,-3.6844,4.2494,4.2265,3.684,-0.671,ok,ok,0.0229,-1.9056,-2.45,"Fc-level-matched(live,G)"
+bm_2_tert_butyl_1_4_benzoquinone,"2-tert-butyl-1,4-benzoquinone",validation,red1->red2,-1,-2,-2.5962,4.2265,4.15,2.596,-1.759,ok,ok,0.0765,3.0348,-7.391,"Fc-level-matched(live,G)"
+bm_2_fluoro_1_4_benzoquinone,"2-fluoro-1,4-benzoquinone",validation,neu->red1,0,-1,-3.918,1.1254,1.1044,3.918,-0.438,ok,ok,0.021,-2.0528,-2.303,"Fc-level-matched(live,G)"
+bm_2_fluoro_1_4_benzoquinone,"2-fluoro-1,4-benzoquinone",validation,red1->red2,-1,-2,-2.7738,1.1044,1.0594,2.774,-1.582,ok,ok,0.0449,2.3164,-6.672,"Fc-level-matched(live,G)"
+bm_1_hydroxy_9_10_anthraquinone,"1-hydroxy-9,10-anthraquinone",validation,neu->red1,0,-1,-3.4059,3.7434,3.6839,3.406,-0.95,ok,ok,0.0595,-1.7322,-2.623,"Fc-level-matched(live,G)"
+bm_1_hydroxy_9_10_anthraquinone,"1-hydroxy-9,10-anthraquinone",validation,red1->red2,-1,-2,-2.7339,3.6839,3.623,2.734,-1.622,ok,ok,0.0608,2.2817,-6.637,"Fc-level-matched(live,G)"
+bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,"1,4-dihydroxy-9,10-anthraquinone (quinizarin)",validation,neu->red1,0,-1,-3.5055,3.8378,3.7777,3.505,-0.85,ok,ok,0.0601,-1.8876,-2.468,"Fc-level-matched(live,G)"
+bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,"1,4-dihydroxy-9,10-anthraquinone (quinizarin)",validation,red1->red2,-1,-2,-2.8147,3.7777,3.6655,2.815,-1.541,ok,ok,0.1122,2.1599,-6.516,"Fc-level-matched(live,G)"
+bm_1_amino_9_10_anthraquinone,"1-amino-9,10-anthraquinone",validation,neu->red1,0,-1,-3.1692,4.0571,3.9967,3.169,-1.187,ok,imag_modes,0.0604,-1.4058,-2.95,"Fc-level-matched(live,G)"
+bm_1_amino_9_10_anthraquinone,"1-amino-9,10-anthraquinone",validation,red1->red2,-1,-2,-2.4142,3.9967,3.912,2.414,-1.942,ok,imag_modes,0.0847,2.7302,-7.086,"Fc-level-matched(live,G)"
+bm_1_4_diamino_9_10_anthraquinone,"1,4-diamino-9,10-anthraquinone",validation,neu->red1,0,-1,-3.0198,4.4603,4.3922,3.02,-1.336,ok,ok,0.068,-1.3178,-3.038,"Fc-level-matched(live,G)"
+bm_1_4_diamino_9_10_anthraquinone,"1,4-diamino-9,10-anthraquinone",validation,red1->red2,-1,-2,-2.3972,4.3922,4.347,2.397,-1.959,ok,ok,0.0452,2.5986,-6.954,"Fc-level-matched(live,G)"
+bm_1_amino_4_hydroxy_9_10_anthraquinone,"1-amino-4-hydroxy-9,10-anthraquinone",validation,neu->red1,0,-1,-3.2678,4.1289,4.0626,3.268,-1.088,ok,imag_modes,0.0664,-1.5994,-2.756,"Fc-level-matched(live,G)"
+bm_1_amino_4_hydroxy_9_10_anthraquinone,"1-amino-4-hydroxy-9,10-anthraquinone",validation,red1->red2,-1,-2,-2.6355,4.0626,3.9577,2.635,-1.72,ok,imag_modes,0.1049,2.3677,-6.723,"Fc-level-matched(live,G)"
+bm_1_4_naphthoquinone,"1,4-naphthoquinone",validation,neu->red1,0,-1,-3.549,2.5294,2.4997,3.549,-0.807,ok,ok,0.0297,-1.7368,-2.619,"Fc-level-matched(live,G)"
+bm_1_4_naphthoquinone,"1,4-naphthoquinone",validation,red1->red2,-1,-2,-2.5552,2.4997,2.438,2.555,-1.801,ok,ok,0.0616,2.9766,-7.332,"Fc-level-matched(live,G)"
+bm_1_2_naphthoquinone,"1,2-naphthoquinone",validation,neu->red1,0,-1,-3.6467,2.5059,2.4718,3.647,-0.709,ok,ok,0.034,-1.7774,-2.578,"Fc-level-matched(live,G)"
+bm_1_2_naphthoquinone,"1,2-naphthoquinone",validation,red1->red2,-1,-2,-2.5912,2.4718,2.4039,2.591,-1.765,ok,ok,0.0679,3.0815,-7.437,"Fc-level-matched(live,G)"
+bm_5_hydroxy_1_4_naphthoquinone_juglone,"5-hydroxy-1,4-naphthoquinone (juglone)",validation,neu->red1,0,-1,-3.7329,2.5986,2.5531,3.733,-0.623,ok,ok,0.0455,-2.013,-2.343,"Fc-level-matched(live,G)"
+bm_5_hydroxy_1_4_naphthoquinone_juglone,"5-hydroxy-1,4-naphthoquinone (juglone)",validation,red1->red2,-1,-2,-2.9496,2.5531,2.5057,2.95,-1.406,ok,ok,0.0474,2.3325,-6.688,"Fc-level-matched(live,G)"
+bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,"5,8-dihydroxy-1,4-naphthoquinone (naphthazarin)",validation,neu->red1,0,-1,-3.8409,2.6921,2.6439,3.841,-0.515,ok,ok,0.0482,-2.1815,-2.174,"Fc-level-matched(live,G)"
+bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,"5,8-dihydroxy-1,4-naphthoquinone (naphthazarin)",validation,red1->red2,-1,-2,-3.0548,2.6439,2.5123,3.055,-1.301,ok,ok,0.1316,2.195,-6.551,"Fc-level-matched(live,G)"
+bm_n_n_diisopropylpyromellitic_diimide,"N,N'-diisopropylpyromellitic diimide",validation,neu->red1,0,-1,-3.1795,6.6821,6.633,3.18,-1.176,ok,ok,0.0491,-1.7602,-2.596,"Fc-level-matched(live,G)"
+bm_n_n_diisopropylpyromellitic_diimide,"N,N'-diisopropylpyromellitic diimide",validation,red1->red2,-1,-2,-2.3974,6.633,6.5655,2.397,-1.958,ok,ok,0.0675,2.1265,-6.482,"Fc-level-matched(live,G)"
+bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,"N,N'-bis(2-methoxyethyl)pyromellitic diimide",validation,neu->red1,0,-1,-3.213,6.7588,6.7125,3.213,-1.143,ok,ok,0.0463,-1.7503,-2.605,"Fc-level-matched(live,G)"
+bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,"N,N'-bis(2-methoxyethyl)pyromellitic diimide",validation,red1->red2,-1,-2,-2.4185,6.7125,6.6463,2.418,-1.937,ok,ok,0.0662,2.0646,-6.42,"Fc-level-matched(live,G)"
+bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,"N,N'-bis[2-(2-methoxyethoxy)ethyl]pyromellitic diimide",validation,neu->red1,0,-1,-3.0801,9.7611,9.7135,3.08,-1.276,ok,ok,0.0475,-1.8467,-2.509,"Fc-level-matched(live,G)"
+bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,"N,N'-bis[2-(2-methoxyethoxy)ethyl]pyromellitic diimide",validation,red1->red2,-1,-2,-2.4112,9.7135,9.6595,2.411,-1.945,ok,ok,0.054,1.7605,-6.116,"Fc-level-matched(live,G)"
+bm_n_methylphthalimide,N-methylphthalimide,validation,neu->red1,0,-1,-2.6508,2.8127,2.7425,2.651,-1.705,ok,ok,0.0702,-0.8249,-3.531,"Fc-level-matched(live,G)"
+bm_n_isopropylphthalimide,N-isopropylphthalimide,validation,neu->red1,0,-1,-2.629,4.259,4.1917,2.629,-1.727,ok,ok,0.0673,-0.8376,-3.518,"Fc-level-matched(live,G)"
+bm_n_2_methoxyethyl_phthalimide,N-(2-methoxyethyl)phthalimide,validation,neu->red1,0,-1,-2.6819,4.3093,4.2248,2.682,-1.674,ok,ok,0.0845,-0.8813,-3.474,"Fc-level-matched(live,G)"
+bm_1_benzyl_1_methyl_4_4_bipyridinium,"1-benzyl-1'-methyl-4,4'-bipyridinium",validation,ox2->ox1,2,1,-3.6953,7.1742,7.1521,3.695,-0.66,ok,ok,0.0221,-8.6365,4.281,"Fc-level-matched(live,G)"
+bm_1_benzyl_1_methyl_4_4_bipyridinium,"1-benzyl-1'-methyl-4,4'-bipyridinium",validation,ox1->neu,1,0,-3.1497,7.1521,7.0879,3.15,-1.206,ok,ok,0.0642,-4.6838,0.328,"Fc-level-matched(live,G)"
+bm_tetramethyl_1_4_benzoquinone_duroquinone,"tetramethyl-1,4-benzoquinone (duroquinone)",validation,neu->red1,0,-1,-3.4636,4.2416,4.2134,3.464,-0.892,ok,ok,0.0282,-1.5784,-2.777,"Fc-level-matched(live,G)"
+bm_2_6_dimethoxy_1_4_benzoquinone,"2,6-dimethoxy-1,4-benzoquinone",validation,neu->red1,0,-1,-3.5478,2.9269,2.8581,3.548,-0.808,ok,ok,0.0688,-1.7628,-2.593,"Fc-level-matched(live,G)"
+bm_2_methoxy_1_4_benzoquinone,"2-methoxy-1,4-benzoquinone",validation,neu->red1,0,-1,-3.5148,2.1586,2.1064,3.515,-0.841,ok,ok,0.0522,-1.7354,-2.62,"Fc-level-matched(live,G)"
+bm_2_6_dimethyl_1_4_benzoquinone,"2,6-dimethyl-1,4-benzoquinone",validation,neu->red1,0,-1,-3.6123,2.7953,2.7676,3.612,-0.743,ok,ok,0.0277,-1.7495,-2.606,"Fc-level-matched(live,G)"
+bm_2_3_dimethyl_1_4_benzoquinone,"2,3-dimethyl-1,4-benzoquinone",validation,neu->red1,0,-1,-3.6223,2.8053,2.7841,3.622,-0.733,ok,ok,0.0212,-1.7351,-2.621,"Fc-level-matched(live,G)"
+bm_2_3_5_trimethyl_1_4_benzoquinone,"2,3,5-trimethyl-1,4-benzoquinone",validation,neu->red1,0,-1,-3.5368,3.491,3.4636,3.537,-0.819,ok,ok,0.0274,-1.6606,-2.695,"Fc-level-matched(live,G)"
+bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,"2,3,5,6-tetrachloro-1,4-benzoquinone (chloranil)",validation,neu->red1,0,-1,-4.3711,0.1599,0.1426,4.371,0.015,ok,ok,0.0173,-2.7758,-1.58,"Fc-level-matched(live,G)"
+bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,"2,3,5,6-tetrafluoro-1,4-benzoquinone (fluoranil)",validation,neu->red1,0,-1,-4.3561,0.4174,0.3851,4.356,0.0,ok,ok,0.0323,-2.6569,-1.699,"Fc-level-matched(live,G)"
+bm_2_5_dichloro_1_4_benzoquinone,"2,5-dichloro-1,4-benzoquinone",validation,neu->red1,0,-1,-4.1233,0.7675,0.7489,4.123,-0.232,ok,ok,0.0186,-2.4381,-1.918,"Fc-level-matched(live,G)"
+bm_2_chloro_1_4_benzoquinone,"2-chloro-1,4-benzoquinone",validation,neu->red1,0,-1,-3.9515,1.0596,1.042,3.951,-0.404,ok,ok,0.0176,-2.1379,-2.218,"Fc-level-matched(live,G)"
+bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,"2,3-dichloro-5,6-dicyano-1,4-benzoquinone (DDQ)",validation,neu->red1,0,-1,-4.9442,0.5772,0.5651,4.944,0.588,ok,ok,0.012,-3.6393,-0.716,"Fc-level-matched(live,G)"
+bm_2_3_dichloro_1_4_naphthoquinone,"2,3-dichloro-1,4-naphthoquinone",validation,neu->red1,0,-1,-3.841,1.9082,1.8807,3.841,-0.515,ok,ok,0.0275,-2.175,-2.181,"Fc-level-matched(live,G)"
+bm_9_10_phenanthrenequinone,"9,10-phenanthrenequinone",validation,neu->red1,0,-1,-3.5314,3.6673,3.6249,3.531,-0.824,ok,ok,0.0424,-1.7104,-2.645,"Fc-level-matched(live,G)"
+bm_10_methylphenothiazine,10-methylphenothiazine,validation,ox->neu,1,0,-5.0156,4.386,4.3783,5.016,0.66,ok,ok,0.0077,-6.7898,2.434,"Fc-level-matched(live,G)"

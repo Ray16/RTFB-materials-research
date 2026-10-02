@@ -1,108 +1,77 @@
 # TODO
 
-Living task tracker — updated as tasks complete or new ones appear. Strategic phased plan
-lives in `docs/PLAN.md`; this is the day-to-day worklist.
+Living worklist (strategic plan: `docs/PLAN.md`; axis status: `docs/DESIGN_AXES.md`).
+Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked. Previous list:
+`archive/docs/TODO_2026-08.md`.
 
-Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked
+## Data contracts (review round 2, 2026-09-29)
+- [x] Integrity gate: missing verdict = INCOMPLETE, not REJECTED (had rejected 4 candidates).
+- [x] Rename `reversible` -> `intact_bound` (`redox.properties.integrity`, `results/state_integrity.csv`).
+- [x] Fc/Fc+ reference: same G definition as molecules, computed LIVE at the active protocol.
+- [x] Uniform energy basis: `redox.core.protocol.ACTIVE_SP` (def2-TZVPD for all states + Fc);
+      protocol-addressed energy records (`calcs/dft/<id>/<state>/sp/<hash>.json`).
+- [x] Reorg cross-point caches protocol-addressed; `_cache_ok` checks xc/basis/NLC/convergence.
+- [x] `dft.run_batch` flags a result.json from another optimization protocol as STALE.
+- [x] Thermal gate: missing thermal -> INCOMPLETE (no silent 0); imag modes flagged.
+- [x] Explicit lambda conventions (lambda_O, lambda_R, sum, lambda_het, lambda_se); removed
+      the mixed `lambda_total`.
+- [x] Pareto: complete rows only on the primary front; per-row sigma columns.
+- [x] Contiguous per-pool capacity from the resting state; one scorecard row per pool.
+- [x] lambda_o: sign bug masked by abs() fixed; point-charge sphere test == Born; SCF check;
+      diffuse default; metadata; both geometries.
+- [x] Fail-fast finalize chain incl. stability + lambda_o + tests; pytest suite `tests/`.
+- [x] Uniform-basis SP campaign (pipeline states + cross points + OROP): 173 + 348 records, all
+      with proven provenance (2026-10-02).
+- [x] lambda_o v2 for all 21 candidate couples — now actually consolidated into `results/lambda_outer.csv`.
+- [~] Thermal-model sensitivity (sthr 25/50/100) -> `results/thermal_sensitivity.csv`.
+- [~] DFT spin check aq_benzylamino dianion triplet (CPU single point).
 
-## CURRENT STATE (handoff) — updated 2026-08-21
+## Accuracy of computable axes (before screening)
+- [~] E° offset: level crossing at OROP's own level (B3LYP-D3/6-31G*, C-PCM) shows our organic
+      absolute potentials agree with OROP's (~0.07 V) and the gap sits in the Fc reference
+      (ours 4.185 V vs OROP's tabulated 4.662 V) — FINDINGS #24. Remaining: why OROP's Fc number
+      is higher (SI Text S2 not accessed); the family-dependent E1 offset on the sourced
+      benchmark (quinones +0.31, imides +0.12 V). Until explained: rank within family only.
+- [ ] Per-family E° calibration once (above) is resolved; needs >=3 anchors per family
+      (imide family has 0 experimental anchors — add PMDI/NDI literature E°).
+- [x] Second-reduction accuracy: 8 sourced tier-A E2 (benzoquinones, 1,2-NQ, PMDIs): bias −0.07 V,
+      SD 0.18 V. Open: 1,2-naphthoquinone −0.46 V outlier; no anthraquinone E1/2 second wave yet.
+- [x] Disproportionation benchmark n=3 -> 10 sourced tier-A spacings: ΔG_disp over-estimated by
+      ~24 kJ/mol (FINDINGS #24). Next: explain the E1 offset (E2 is accurate).
+- [ ] Dianion lambda: gas-phase 4-point is ill-defined when the gas dianion is unbound
+      (HOMO>0) — score the 2nd reduction's lambda in SMD or flag as not computable.
+- [ ] Spin: DFT-check every state whose UMA gap < 0.5 eV (UMA underestimated 0.19 vs 0.81 eV).
+- [ ] lambda_o: validate PCM vs a trusted nonequilibrium implementation (Q-Chem/Gaussian) on
+      2-3 molecules; the point-charge sphere test only validates the operator path.
+- [ ] Conformer-matched core lambda for `conformer_jump` couples (tether rotation, not core).
+- [ ] Stability beyond disproportionation: per-family decomposition library (isodesmic dG).
+- [ ] Commit + push this round once the campaign lands (user go-ahead needed).
 
-### Latest session (thermal + ion-pair verdict + OROP benchmark)
-- **THERMAL free-energy corrections: DONE, whole table.** Uses **GFN2-xTB RRHO** (298.15 K)
-  via `dft._thermal_correction` (xtb installed; in setup_env.sh + check_env.py). We do NOT use
-  the DFT Hessian: **gpu4pyscf's UKS analytic Hessian is numerically BROKEN** in this version
-  (inflates open-shell frequencies ~2x → corrupt ZPE, e.g. 14.7 vs correct 6.4 eV). xtb thermal
-  is fast, correct for open+closed shell, method-transferable. G = E_smd + g_thermal everywhere.
-  Effect: viologen bare-ion MAE 0.429 → **0.372**.
-- **ION-PAIR (released-counterion PF6-) scheme: REFUTED** in implicit solvent. Even with a
-  correct singlet mv_ip2, waves/spacing are catastrophically wrong (spacing ~+11 V vs exp -0.43):
-  forming a neutral ion pair from two well-solvated ions costs a huge (~+6 eV), poorly-modeled
-  desolvation free energy that does NOT cancel between waves. See `src/redox/ionpair.py` CONCLUSION.
-  BEST viologen = 'bare ions + thermal' (MAE 0.372). Do not resurrect continuum ion-pairing.
-- **OROP experimental benchmark: DONE (11/14).** `scripts/run_orop_benchmark.py` → 
-  `results/orop_benchmark.csv`. Our **MAE 0.869 V** (≈ OROP raw implicit-DFT 0.821 on same
-  systems), **Spearman 0.89** (ranking reliable), **+0.77 V systematic bias** dominated by
-  charged species (radical anions +1.24, dication +1.07). De-biased MAE 0.48. Confirms the
-  ~0.5-0.9 V floor of pure-physics implicit DFT; the field closes the gap with a charge-dependent
-  ML/linear correction (OROP's "implicit+ML") — NOT more physics.
-- **NEXT (recommended):** charge-class linear calibration E_exp ≈ a·E_calc + b fit on OROP with a
-  held-out split → expected MAE ~0.3-0.5. Also: expand OROP subset (30-60, all charge classes)
-  and fix 3 SMD gradient-convergence failures (sys 107/109/115: "Nuclear gradients not converged").
+## Validation round 3 (2026-10-02) — FINDINGS #24
+- [x] Independent recompute audit of every published table (step 12 of finalize): 0 mismatches.
+- [x] SCF ground-state check of every candidate energy (up to 9 guesses); open shells now keep
+      the lowest of minao/atom/huckel.
+- [x] Provenance: records adopted from pre-RI-J result.json recomputed (7-12 meV); adoption
+      now requires recorded density-fitting / tolerance / guess-sweep provenance.
+- [x] Sourced MeCN E1/E2/spacing benchmark (42 literature rows, 33 new molecules computed).
+- [x] sigma_E / sigma_disp from grounded points only; Fc no longer counted as a validation point.
+- [ ] Explain the E1 offset (quinones +0.31 V, imides +0.12 V; E2 accurate) — continuum ion
+      pairing of the radical anion? Fc reference (gas IE 0.29 eV low vs NIST)? Do not fit it.
+- [ ] Ferrocenium gas-phase SCF (2.5 eV high; only an occupation guess finds the minimum):
+      recompute if any Fc gas quantity is ever needed.
+- [ ] Verify Pavlishchuk & Addison 2000 constants from the paper (SCE/Ag+ -> Fc); until then
+      values converted with them stay tier B.
+- [ ] Anchors without a verified source: phenothiazine (+0.26), anthraquinone (-1.28/-1.90),
+      N-methylpyridinium (-1.8) — `grounded=False`; find primary MeCN data or drop.
 
-### Earlier state
-
-- **Env is WORKING**: conda env `redox` = `torch 2.8.0+cu128` + `fairchem-core 2.21.0` +
-  pyscf 2.14 + **geometric 1.1.1** (geomeTRIC, in-solvent DFT optimizer). cu128 (CUDA 12.8)
-  runs on this node's 12.4 driver via CUDA minor-version forward-compat (8 GPUs).
-- Production model = **`uma-s-1p2p1`** (newest UMA), enabled via **registration** in
-  fairchem 2.21 (`uma.py::ensure_registered` clones uma-s-1p2 registry entry → 1p2p1).
-- **UMA spin/conformer scan (uma-s-1p2p1) RUNNING** on GPU1 → `calcs/uma/<id>/<state>/`
-  (log `calcs/uma/scan.log`). Scans conformers×multiplicities, picks lowest-E spin state,
-  records S-T gap. Verified states so far: pyridinium ox(m=1,ST 3.51eV)/red(m=2),
-  cyanopyridinium ox/red(m=2), viologen in progress.
-- **DFT now OPTIMIZES IN SOLVENT** (SMD gradients + geomeTRIC), not single-point — matches
-  the spec ("geometries optimized in solvent"). Writes `calcs/dft/<id>/<state>/opt.xyz`.
-  DFT reads the UMA-chosen multiplicity (`_uma_mult`), not the manifest hint.
-- **Referencing upgraded to level-matched ferrocene** (physics not fitting): redox.py
-  prefers `FC_ABS_COMPUTED_V` (our own Fc/Fc+ at our level) over the thermodynamic SHE+Fc
-  constant. OROP MeCN Fc refs stored in electrolyte.py for cross-check.
-- **§V gate re-benchmarked against OROP 313 (MeCN)**: raw implicit-DFT MAE≈0.50 V (bias
-  +0.31 V) — sub-0.15 V absolute from pure physics is not realistic. New gate judges
-  absolute (≤0.25 good after Fc referencing) AND ranking (Spearman ρ≥0.9) separately.
-
-## Now
-- [x] Confirm `uma-s-1p2p1` runs (registration verified; H2O cross-check matches lambda6).
-- [x] **DFT+SMD geometry OPTIMIZATION** wired into dft.py (geomeTRIC + SMD gradients).
-- [x] UMA spin/conformer scan with uma-s-1p2p1 (all states scanned).
-- [x] Full DFT+SMD-opt batch (18 states) → `redox.redox` solvated E° table
-      (`results/redox_potentials.csv`).
-- [x] Descriptors on DFT-opt geoms → `results/structure_descriptors.csv` (RMSD).
-- [x] Validation gate: **MAE 0.18 V, RMSE 0.25 V, mean signed −0.09 V** (n=8, 4/8 within ±0.15 V).
-- [x] **Publication figure set** (300 dpi, one panel/figure, 18 pt, no overlap):
-      `pipeline.png`, `validation.png`, `redox_landscape.png`, `structure_change.png`;
-      stale multi-panel figures pruned.
-- [x] **2D structure galleries** (`scripts/plot_molecules.py`, driven off manifest.csv):
-      `molecules_candidates.png` (6 monomers) + `molecules_validation.png` (6 cores).
-- [x] **Pipeline diagram rebuilt in Graphviz** (`scripts/plot_pipeline_graphviz.py`,
-      auto-layout, HTML records) → refreshed `pipeline.png`; graphviz registered in
-      requirements.txt + check_env.py (system `dot` verified present).
-
-## Next
-- [x] Parallel UMA runner (`scripts/run_uma.sh`, GPU fan-out) + full library relaxed.
-- [x] `docs/DATASETS.md` reviewed → top DBs identified (below); OROP + ReSolvedDB cloned.
-- [x] P2 validation set config (`config/validation.py`): 6 parent cores + ferrocene.
-- [x] **DFT+SMD geometry OPTIMIZATION** — done (geomeTRIC + SMD gradients in dft.py).
-- [ ] Run validation: parents → pipeline → compare to OROP experimental → MAE → §V gate.
-      Replace provisional exp anchors in validation.py with OROP values (physics, not fit).
-- [ ] Compute our own ferrocene Fc/Fc+ reference at our level → set FC_ABS_COMPUTED_V.
-- [ ] Ferrocene needs a metallocene geometry (RDKit can't embed) — special-case it.
-
-### Validation / HTS data sources (from docs/DATASETS.md)
-- [ ] **OROP/ROP313** — clone; experimental MeCN ox/red potentials → §V calibration anchor
-      (`E_exp = a·E_calc + b`). Verify license before redistributing.
-- [ ] **D3TaLES** — download no-login CC-BY MDF/Globus dump (DOI 10.18126/v5sj-6q93);
-      filter by motif SMARTS; pull MeCN oxidation/reduction potentials + λ + solubility.
-- [ ] **ReSolvedDB** — clone; 19,785 computed MeCN reduction potentials → computed cross-check.
-- [ ] **OMol25** — HTS candidate pool (HF-gated, aligns with UMA); derive potentials ourselves.
-
-## Soon
-- [ ] Add `xtb` (+ALPB MeCN) and `gpu4pyscf` to env (update requirements.txt + check_env.py).
-- [ ] xtb-ALPB solvated pre-opt for charged states (warm-start from UMA/ETKDG).
-- [ ] DFT+SMD(MeCN) geometry opt + frequencies → `G_solv`.
-- [ ] `src/redox/redox.py`: E° per 1e event, referenced to Fc/Fc⁺.
-- [ ] `src/redox/descriptors.py`: λ (4-point), RMSD, structural change, HOMO/LUMO, spin
-      density, connectivity/stability.
-- [ ] Calibration vs experiment/D3TaLES; report E° with error bars.
-
-## Decisions pending
-- [ ] Level of theory for DFT+SMD (match D3TaLES vs OMol-aligned range-separated hybrid).
-- [ ] Thermal corrections: full harmonic freq vs xtb vs electronic-only first pass.
-- [ ] UMA model size for production: `uma-s-1p2p1` vs `uma-m-1p1` (decide after P2 benchmark).
-
-## Done
-- [x] Repo scaffold + GitHub (`Ray16/RTFB-materials-research`).
-- [x] `config/redox_groups.py` (6 groups, 15 states) + `config/electrolyte.py` (MeCN/SMD/Fc).
-- [x] `build.py`: decorate Cl site, charge-aware conformer ensemble → `library/` + manifest.
-- [x] Design docs: `docs/MODELING.md`, `docs/PLAN.md` (with validation strategy).
-- [x] Reproducible env: `setup_env.sh` (GPU/CPU auto-detect), `requirements.txt`.
-- [x] HF auth + UMA gated access confirmed.
+## Repo hygiene (refactor 2026-10-02)
+- [x] `src/redox` split into subpackages `core/ build/ qm/ properties/ screening/ validation/`
+      (`redox.redox` -> `redox.properties.potentials`); `scripts/` regrouped (pipeline, analysis,
+      validation/{orop,solvation,reorg_d3tales,reorg_literature}, mining, plotting/<figure dir>);
+      obsolete launchers/GPU enforcers/dead modules -> `archive/` (see `archive/README.md`).
+- [x] `run_uma.sh` / `run_dft.sh` reserve GPUs via `gpu_reserve run` (no hand-pinned CUDA ids).
+- [ ] `plot_lambda_decomposition.py` still reads the preliminary Born λ_o
+      (`results/lambda_outer_merrifield_born.json`) while `results/lambda_outer.csv` (PCM v2) is
+      canonical — switch it to `lambda_outer.csv`.
+- [ ] `scripts/polaris/polaris_build_redox_env.sh` points at the expired `/eagle/FoundEpidem`
+      allocation — repoint to `/grand/FRAME-IDP` before the next Polaris run.

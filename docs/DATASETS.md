@@ -22,7 +22,7 @@ never committed; re-clone/re-download with the commands below).
 
 | Dataset | Local dir | State | Rows | Redox data |
 |---|---|---|---|---|
-| **OROP / ROP313** | `OROP/` | ✅ downloaded | 313 | **experimental** MeCN+DMF ox/red (V vs Fc) |
+| **ROP313** (`OROP/` clone) | `OROP/` | ✅ downloaded | 313 = **OROP 193 organic** + **OMROP 120 organometallic** | **experimental** MeCN+DMF ox/red. We validate on **OROP (organic, rows 1–193) only**; OMROP = metal complexes, out of scope |
 | **ReSolvedDB** | `ReSolvedDB/` | ✅ downloaded | 19,785 | computed reduction pot. (5 solvents incl. MeCN) |
 | **D3TaLES** (bulk CC-BY) | `D3TaLES/d3tales_public.csv` | ✅ downloaded (35 MB) | 35,729 | computed ox/red (implicit MeCN, ε=35.688), λ, HOMO/LUMO, SA |
 | **D3TaLES API** (code) | `D3TaLES_api/` | ✅ cloned | — | REST/processors/CV calculators (MIT) |
@@ -41,7 +41,7 @@ mkdir -p D3TaLES && curl -L -o D3TaLES/d3tales_public.csv \
   "https://data.materialsdatafacility.org/mdf_open/9bb8800f-9cda-4957-ad12-60ad2a381177/1.1/d3tales_public.csv"
 ```
 
-**D3TaLES utilization findings** (`scripts/analyze_d3tales.py` → `results/d3tales_*.csv`):
+**D3TaLES utilization findings** (`scripts/mining/analyze_d3tales.py` → `results/d3tales_*.csv`):
 - Potentials are **absolute** (eV): `solv_oxidation_potential` −0.49..3.58, `solv_reduction_potential`
   3.42..11.00 → subtract a level-matched Fc absolute for V vs Fc. Ranking cancels the reference.
 - Our-family coverage is **thin** (mostly ZINC drug-like neutrals): pyridinium 23, quinone 77,

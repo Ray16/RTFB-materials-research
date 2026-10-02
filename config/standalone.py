@@ -14,8 +14,8 @@ STANDALONE = [
     dict(
         id="ethylviologen_sa",
         name="ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",
-        # standalone reference form (used as the "before functionalization" row of the 2x2 and
-        # as a validation ref, like its dimethyl counterpart methyl_viologen); NOT a screening
+        # minimal capped analogue (the "methyl-capped" row of the 2x2; NOT the literal
+        # pre-grafting precursor -- see the module docstring); NOT a screening
         # candidate. Tagged 'validation' to keep the two standalone viologens consistent.
         family="validation",
         smiles="CC[n+]1ccc(-c2cc[n+](CC)cc2)cc1",
@@ -47,6 +47,39 @@ STANDALONE = [
         name="2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",
         family="quinone (n-type)",
         smiles="COC1=CC(=O)C(c2cc(OC)ccc2OC)=CC1=O",
+        states=[("neu", 0, 1, 0), ("red1", -1, 2, -1), ("red2", -2, 1, -2)],
+    ),
+    # --- batch 2: merrifield_multielectron_smiles.xlsx (see config/merrifield_multielectron.py)
+    # Same convention: the 4-methylbenzyl resin tether replaced by a plain methyl cap.
+    # The bis-tethered viologen's standalone analogue (both N capped with methyl) is
+    # N,N'-dimethyl bipyridinium = `methyl_viologen`, already in config/validation.py —
+    # NOT repeated here, the comparison reuses it.
+    dict(
+        id="aq_benzyloxy_sa",
+        name="2-methoxyanthraquinone",
+        family="quinone (n-type)",
+        smiles="COc1ccc2c(c1)C(=O)c1ccccc1C2=O",
+        states=[("neu", 0, 1, 0), ("red1", -1, 2, -1), ("red2", -2, 1, -2)],
+    ),
+    dict(
+        id="nq_benzyloxy_sa",
+        name="2-methoxy-1,4-naphthoquinone",
+        family="quinone (n-type)",
+        smiles="COC1=CC(=O)c2ccccc2C1=O",
+        states=[("neu", 0, 1, 0), ("red1", -1, 2, -1), ("red2", -2, 1, -2)],
+    ),
+    dict(
+        id="dtbc_phenol_sa",
+        name="3,5-di-tert-butyl-2-methoxyphenol",
+        family="phenol (p-type)",
+        smiles="Oc1cc(C(C)(C)C)cc(C(C)(C)C)c1OC",
+        states=[("neu", 0, 1, 0), ("ox", 1, 2, 1)],
+    ),
+    dict(
+        id="aq_benzylamino_sa",
+        name="2-(methylamino)anthraquinone",
+        family="quinone (n-type)",
+        smiles="CNc1ccc2c(c1)C(=O)c1ccccc1C2=O",
         states=[("neu", 0, 1, 0), ("red1", -1, 2, -1), ("red2", -2, 1, -2)],
     ),
 ]

@@ -1,7 +1,7 @@
 """Starting candidates — a focused set of promising MULTI-CHARGE (multi-electron) redox
 actives, grafted onto the Merrifield benzylic site exactly like config/redox_groups.py.
 
-Source: starting_candidates/Candidates.xlsx (literature non-aqueous flow-battery actives +
+Source: data/raw/candidates/Candidates.xlsx (literature non-aqueous flow-battery actives +
 two D3TaLES methoxy-quinone exemplars). Each core is expressed as a fragment carrying one
 [*:1] dummy at the polymer-tether site (the benzyl handle from SCAFFOLD attaches there);
 the other substituent site on the symmetric diimide/bipyridinium cores is capped with the

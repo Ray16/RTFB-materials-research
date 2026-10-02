@@ -110,7 +110,7 @@
       \textbf{Level of theory}
       \begin{itemize}\footnotesize
         \item opt: r$^2$SCAN/def2-SVP(D) + SMD
-        \item energy: $\omega$B97M-V/def2-TZVP
+        \item energy: $\omega$B97M-V/def2-TZVPD (all charges)
         \item referenced to level-matched Fc/Fc$^+$
       \end{itemize}
     \end{column}
@@ -128,21 +128,21 @@
 
 % ---------------------------------------------------------------
 \begin{frame}{How each axis is computed}
-  \footnotesize
+  \scriptsize
   \begin{table}
-  \renewcommand{\arraystretch}{1.15}
+  \renewcommand{\arraystretch}{1.05}
   \begin{tabular}{@{}p{2.5cm}p{5.4cm}p{3.5cm}@{}}
     \toprule
     \textbf{axis} & \textbf{method} & \textbf{validation / trust} \\
     \midrule
-    redox potential & DFT+SMD $\Delta G$; $\omega$B97M-V/def2-TZVP\,//\,r$^2$SCAN/def2-SVP(D);
-                      level-matched Fc ref & OROP exp: MAE 0.58 V, $\rho$ 0.95 \\
+    redox potential & DFT+SMD $\Delta G$; $\omega$B97M-V/def2-TZVPD\,//\,r$^2$SCAN/def2-SVP(D);
+                      live level-matched Fc & OROP: MAE 0.52 V; within-class $\rho=0.78/0.79$ \\
     thermal $G_\text{therm}$ & GFN2-xTB RRHO (298 K) & open-shell safe \\
     stability (disprop.) & $\Delta G_\text{disp}=F(E_\text{hi}-E_\text{lo})$ from state $G$'s
-                      & exp spacings: MAE 0.17 eV, $\rho$ 1.0 \\
+                      & 10 sourced spacings: $\rho$ 0.80, over-est.\ +23 kJ/mol \\
     stability (dimer.) & pimer cluster DFT+SMD $\Delta G$ & \bad{flagged} (+2 desolvation) \\
-    reorg.\ energy $\lambda$ & $\lambda_i$ 4-point (Nelsen), gas $+\ \lambda_o$ (Marcus/Born, Eq.\,13) & D3TaLES $\lambda_i$: \good{$R^2{=}1.0$} ($n{=}2636$) \\
-    reversibility & bond-graph change + solvated EA & catches dissoc.\ (CCl$_4$) \\
+    reorg.\ energy $\lambda$ & $\lambda_O+\lambda_R$ (Nelsen); molecular-cavity PCM $\lambda_o$ & D3TaLES: median $|\Delta|=0.09$ eV ($n=322$) \\
+    integrity gate & bond-graph change + solvated EA & necessary, not sufficient for reversibility \\
     capacity & $n\!\cdot\!F/\text{MW}$ (accessible $n$) & \good{exact} \\
     solubility & $\Delta G_\text{solv}=E_\text{SMD}-E_\text{gas}$ (neutral) & proxy (relative) \\
     synth.\ access. & RDKit SA\_Score & heuristic proxy \\
@@ -150,7 +150,7 @@
   \end{tabular}
   \end{table}
   \vspace{0.5ex}
-  \centering\footnotesize
+  \centering\scriptsize
   \textcolor{ink!70}{Geometries optimized in SMD(MeCN); conformers via RDKit + UMA pre-opt.}
 \end{frame}
 
@@ -158,22 +158,22 @@
 \begin{frame}{Redox potential: benchmarked vs.\ experiment (OROP)}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \textbf{Blind test on OROP MeCN potentials} ($n=36$):
+      \textbf{Production-protocol OROP benchmark} ($n=169$):
       \begin{table}\footnotesize
       \begin{tabular}{lcc}
         \toprule
          & ours & OROP impl.-DFT \\
         \midrule
-        MAE (V)        & 0.58 & 0.43 \\
-        signed bias    & $+0.46$ & --- \\
-        Spearman (all) & \good{0.95} & --- \\
+        MAE (V)        & 0.52 & 0.28 \\
+        signed bias    & $+0.49$ & --- \\
+        Spearman (all) & 0.92 & --- \\
         \bottomrule
       \end{tabular}
       \end{table}
       \vspace{1ex}
-      Absolute accuracy sits at the \hi{$\sim$0.5--0.9 V physics floor} of implicit-solvent
-      DFT --- the same for everyone. \good{Ranking}, not absolute potential, is the usable
-      output.
+      At OROP's own level our organic potentials match theirs ($\sim$0.07 V); the gap sits in
+      the Fc reference (4.19 vs 4.66 V). Sourced MeCN set: E1 bias $+0.26$ V, E2 $-0.07$ V.
+      \hi{Not calibrated away}.
     \end{column}
     \begin{column}{0.5\textwidth}
       \textbf{Ranking must be judged \emph{within} charge class}
@@ -182,15 +182,14 @@
         \toprule
         class & $n$ & MAE & Spearman \\
         \midrule
-        cations ($+1$)  & 21 & 0.44 & \good{0.885} \\
-        anions ($0$)    & 13 & 0.77 & \bad{0.489} \\
-        anions (filtered) & 8 & 0.53 & \good{0.952} \\
+        $+1/0$ couples & 118 & 0.48 & \good{0.79} \\
+        $0/-1$ couples & 49 & 0.60 & \good{0.78} \\
         \bottomrule
       \end{tabular}
       \end{table}
       \vspace{1ex}
-      \footnotesize Global 0.95 is inflated (charge classes separate). Cations rank well;
-      anions needed a fix $\rightarrow$ next slide.
+      \footnotesize Global correlation is inflated because charge classes separate.
+      Ranking is assessed within each class; the integrity gate removes category errors.
     \end{column}
   \end{columns}
 \end{frame}
@@ -199,8 +198,8 @@
 \begin{frame}{The anion ``failure'' was category errors, not bad physics}
   \begin{columns}[T]
     \begin{column}{0.54\textwidth}
-      The anion ranking collapse (Spearman 0.49) traced to a few molecules with
-      \bad{no reversible reduction}:
+      Some apparent anion failures are category errors: molecules with
+      \bad{no intact, bound reduced state}:
       \begin{table}\footnotesize
       \begin{tabular}{llc}
         \toprule
@@ -216,15 +215,15 @@
       scored against irreversible \emph{peak} potentials.
     \end{column}
     \begin{column}{0.46\textwidth}
-      \begin{block}{Reversibility screen}
+      \begin{block}{Integrity screen}
         Bound anion (solvated EA $>0$) \emph{and} intact (\hi{bond-graph unchanged}, not
         raw RMSD --- which is confounded by tether flexibility).
       \end{block}
       \vspace{-0.5ex}
       \begin{itemize}\footnotesize
         \item filtering $\rightarrow$ anion Spearman \bad{0.49}$\rightarrow$\good{0.95}
-        \item a \emph{required} screening criterion + a \emph{stability} signal
-        \item all 20 candidate couples: \good{reversible}
+        \item a required necessary-condition gate and stability signal
+        \item does \bad{not} test proton transfer, dimerization, or long-term cycling
       \end{itemize}
     \end{column}
   \end{columns}
@@ -235,15 +234,15 @@
   \begin{columns}[T]
     \begin{column}{0.54\textwidth}
       \textbf{Disproportionation} $2R \!\rightarrow\! R^{+}\!+R^{-}$ \\ (atom- \&
-      electron-conserving $\rightarrow$ \good{cancellation $\rightarrow$ reliable}):
+      electron-conserving; ranks well, $\rho$ 0.80, but \bad{over-estimated by $\sim$23 kJ/mol}):
       \begin{table}\footnotesize
       \begin{tabular}{lr}
         \toprule
         intermediate & $\Delta G_\text{disp}$ (kJ/mol) \\
         \midrule
-        TEMPO$^{\bullet}$          & \good{$+221$} \\
-        AQ semiquinone             & $+86$ \\
-        viologen MV$^{+\bullet}$   & $+52$ \\
+        TEMPO$^{\bullet}$          & \good{$+228$} \\
+        AQ semiquinone             & $+82$ \\
+        viologen MV$^{+\bullet}$   & $+55$ \\
         \bottomrule
       \end{tabular}
       \end{table}
@@ -259,37 +258,38 @@
       \end{block}
       \vspace{-0.5ex}
       \footnotesize $\Rightarrow$ use dimerization as a \hi{relative} ranking; lean on
-      disproportionation as the trustworthy axis.
+      disproportionation for \hi{ranking} (absolute values over-estimated, FINDINGS \#24).
     \end{column}
   \end{columns}
 \end{frame}
 
 % ---------------------------------------------------------------
-\begin{frame}{Kinetics: reorganization energy $\lambda=\lambda_i+\lambda_o$}
+\begin{frame}{Kinetics: inner- and outer-sphere reorganization}
   \begin{columns}[T]
-    \begin{column}{0.42\textwidth}
-      \footnotesize
+    \begin{column}{0.44\textwidth}
+      \scriptsize
       \textbf{Inner-sphere} $\lambda_i$ --- solute geometry relaxation, \textbf{4-point (Nelsen)}:
       \[\lambda_i=[E_O(q_R)\!-\!E_O(q_O)]+[E_R(q_O)\!-\!E_R(q_R)]\]
-      gas single points; \emph{identical} to D3TaLES. \good{Validated}.
-      \vspace{1.2ex}
+      gas single points; same four-point formula as D3TaLES. \good{Validated}.
+      \vspace{0.5ex}
 
       \textbf{Outer-sphere} $\lambda_o$ --- solvent reorganization (Marcus/Born, \hi{Sharma Eq.\,13}):
       \[\lambda_o=\frac{z^2e^2}{8\pi\varepsilon_0 r_\text{hyd}}\!\left(\frac{1}{\varepsilon_\text{op}}-\frac{1}{\varepsilon_r}\right)\]
-      MeCN ($\varepsilon_r{=}37.5,\ \varepsilon_\text{op}{=}1.81$); SASA $r_\text{hyd}$ proxy $\Rightarrow$
-      \hi{semi-quantitative} ($\sim$2$\times$).
-      \vspace{1.2ex}
+      MeCN ($\varepsilon_r{=}37.5,\ \varepsilon_\text{op}{=}1.81$); the production annotation
+      uses a molecular-cavity nonequilibrium PCM, with Born as a check.
+      \vspace{0.5ex}
 
-      $\lambda_\text{total}=\lambda_i+\lambda_o$: trust $\lambda_i$; read $\lambda_o$ as \emph{relative}.
+      Report conventions explicitly: $\lambda_\text{het}=(\lambda_O+\lambda_R)/2+\lambda_{o,1}$;
+      $\lambda_\text{SE}(d)=\lambda_O+\lambda_R+2\lambda_{o,1}(1-a/d)$.
     \end{column}
-    \begin{column}{0.58\textwidth}
+    \begin{column}{0.56\textwidth}
       \begin{center}
       \includegraphics[width=\linewidth]{d3tales_validation.png}
       \end{center}
       \vspace{-1.5ex}
       \centering\footnotesize
-      Independently reproduce D3TaLES's SA \& inner-sphere $\lambda$:
-      \good{$R^2=1.0$} \ (SA $n{=}1695$; $\lambda$ $n{=}2636$; quinones \& imides highlighted).
+      At D3TaLES's own level, inner-sphere $\lambda$ agrees to
+      \good{median $|\Delta|=0.09$ eV} ($n=322$).
     \end{column}
   \end{columns}
 \end{frame}
@@ -297,23 +297,23 @@
 % ---------------------------------------------------------------
 \begin{frame}{Candidates: SA vs.\ reorganization energy}
   \begin{center}
-  \includegraphics[width=0.72\textwidth]{candidates_2x2_standalone_grafted.png}
+  \includegraphics[height=0.55\textheight]{candidates_2x2_standalone_grafted.png}
   \end{center}
-  \vspace{-1.5ex}
+  \vspace{-2ex}
   \centering\scriptsize\textcolor{ink!70}{All six are \emph{grafted} model-compounds (redox core
   $+$ 4-methylbenzyl monomer proxy); short class names label them.}\par
   \vspace{0.4ex}
-  \footnotesize
+  \scriptsize
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
-      \begin{itemize}\footnotesize
+      \begin{itemize}\scriptsize
         \item one point per molecule (mean over its charge states); the six cluster tightly
               ($\lambda_i\!\approx$0.45--0.54 eV --- similar across families).
         \item \good{ammonium-NDI}: lowest $\lambda$ $\Rightarrow$ fastest ET; \hi{quinones} highest.
       \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
-      \begin{itemize}\footnotesize
+      \begin{itemize}\scriptsize
         \item gas $\to$ MeCN: $+\lambda_o$ lifts each point $\sim$0.5--0.6 eV (note per-panel y-zoom).
         \item $\lambda_i$ validated (D3TaLES $R^2{=}1.0$); $\lambda_o$ Marcus/Born estimate
               ($r_\text{hyd}$ caveat) --- read \emph{relative} trends.
@@ -327,7 +327,7 @@
   \begin{columns}[T]
     \begin{column}{0.62\textwidth}
       \begin{center}
-      \includegraphics[width=\linewidth]{candidates_2x2_standalone_grafted.png}
+      \includegraphics[height=0.68\textheight,width=\linewidth,keepaspectratio]{candidates_2x2_standalone_grafted.png}
       \end{center}
     \end{column}
     \begin{column}{0.38\textwidth}
@@ -350,10 +350,6 @@
       perturbation, so the cheap standalone $\lambda$ is a good predictor of the grafted value.
     \end{column}
   \end{columns}
-  \vspace{0.3ex}
-  \centering\scriptsize\textcolor{ink!70}{Standalone = ``before functionalization'' (methyl/
-  methoxy cap); grafted = ``after'' (Merrifield benzylic handle). One point per molecule (mean
-  over charge states).}
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -366,7 +362,7 @@
         \item xtb RRHO thermal (open-shell safe)
         \item disproportionation stability
         \item reorganization energy $\lambda$
-        \item reversibility as filter + stability signal
+        \item intact/bound state as a necessary-condition gate
         \item capacity ($n$, MW): exact
       \end{itemize}
     \end{column}
@@ -375,7 +371,7 @@
       \begin{itemize}\footnotesize
         \item continuum ion-pairing: \bad{refuted} (spacing off by $\sim$11 V)
         \item explicit microsolvation (4 MeCN): \bad{no gain} for viologen
-        \item absolute redox potential: capped $\sim$0.5 V
+        \item absolute redox offset: \bad{unresolved} (OROP vs in-house anchors)
         \item dimerization absolute: \bad{unreliable} ($+2$ desolvation)
         \item solubility / crossover: proxies only
       \end{itemize}
@@ -411,7 +407,8 @@
         \item objectives = \good{trustworthy} axes only
               (capacity, $\lambda$, disprop.\ stability, ranked potential)
         \item proxies (solubility, SA, crossover) = \hi{filters}, not axes
-        \item \textbf{reversibility} = hard pre-filter
+        \item \textbf{integrity} = hard necessary-condition pre-filter
+        \item missing applicable data = \textbf{INCOMPLETE}, never a favorable value
         \item split \textbf{anolyte / catholyte} (potential isn't ``more is better'')
         \item \textbf{$\sigma$-aware} domination (don't rank within error)
         \item read the front against the \emph{raw} axes --- no scalarized score (arbitrary
@@ -424,75 +421,66 @@
 % ---------------------------------------------------------------
 \begin{frame}{Applying it: candidate scorecard $\rightarrow$ shortlist}
   \footnotesize
-  $\sigma$-aware Pareto on the \hi{six grafted starting candidates} --- all fall in the
-  \textbf{anolyte} pool (2e reductions / viologen reductions), all reversible, none gated out:
+  $\sigma$-aware Pareto on the current rankable grafted set; rows missing an applicable
+  objective are \textbf{INCOMPLETE} and cannot enter or dominate the primary front:
   \begin{columns}[T]
-    \begin{column}{0.56\textwidth}
+    \begin{column}{0.61\textwidth}
       \begin{table}\scriptsize
       \renewcommand{\arraystretch}{1.1}
       \begin{tabular}{lrrrrc}
         \toprule
         id & E$_\text{an}$ & Cap & $\lambda$ & $\Delta G_\text{d}$ & Par. \\
         \midrule
-        pmdi                          & $-1.49$ & 160 & 0.46 & 73  & --- \\
-        \good{mophquinone}$^\star$    & $-1.05$ & 176 & 0.48 & 101 & \good{Y} \\
-        \good{viologen}$^\star$       & $-1.03$ & 194 & 0.47 & 52  & \good{Y} \\
-        ethylviologen                 & $-1.03$ & 185 & 0.49 & 50  & --- \\
-        dmophquinone                  & $-1.01$ & 147 & 0.54 & 101 & --- \\
-        ndi\_ammonium                 & $-1.00$ & 114 & 0.45 & 29  & --- \\
+        aq\_benzyloxy$^\star$         & $-1.46$ & 163 & 0.39 & 61 & \good{Y} \\
+        pmdi                          & $-1.46$ & 160 & 0.47 & 64 & --- \\
+        \good{mophquinone}$^\star$    & $-1.02$ & 176 & 0.52 & 92 & \good{Y} \\
+        dmophquinone                  & $-1.00$ & 147 & 0.57 & 89 & --- \\
+        \good{viologen}$^\dagger$     & $-0.94$ & 194 & 0.47 & 51 & TBA \\
+        aq\_benzylamino$^\ddagger$    & $-1.57$ & 164 & ---  & 76 & partial \\
         \bottomrule
       \end{tabular}
       \end{table}
       \scriptsize Ordered by primary axis (E$_\text{an}$). E$_\text{an}$ [V vs Fc], Cap
       [mAh/g], $\lambda$ [eV], $\Delta G_\text{d}$ (disprop.) [kJ/mol].
     \end{column}
-    \begin{column}{0.44\textwidth}
-      \scriptsize $^\star$ = Pareto-optimal ($\Rightarrow$ shortlist: \good{mophquinone},
-      \good{viologen}). No scalarized ``figure of merit'': it needs arbitrary weights, ignores
-      $\sigma$, and rescales with the candidate set. The front $+$ raw axes are the output.
+    \begin{column}{0.37\textwidth}
+      \scriptsize $^\star$ = primary-front under both salts; $^\dagger$ joins under TBAPF$_6$;
+      $^\ddagger$ is a partial front only (no QC-clean $\lambda$). The front and raw axes are
+      reported without an arbitrary scalar score.
       \vspace{1ex}
 
-      \hi{$\sigma$-aware matters}: \textbf{pmdi} has the \emph{best voltage}
-      ($-1.49$ V) yet is \emph{dropped} from the Pareto front --- its 0.44 V edge sits inside
-      $\sigma_E\!\approx\!0.8$ V, so it is $\sigma$-dominated by the higher-capacity /
-      more-stable mophquinone \& viologen.
+      \hi{Completeness matters}: a missing or QC-flagged $\lambda$ cannot make a candidate look
+      artificially fast. The row remains visible as a partial front, with its missing objective.
       \vspace{1ex}
 
       $\Rightarrow$ across this tight set voltage is \emph{non-discriminating}; \good{capacity
       $+$ disproportionation stability $+$ $\lambda$} drive the ranking.
     \end{column}
   \end{columns}
-  \vspace{0.5ex}
-  \scriptsize\textcolor{ink!70}{Caveats surfaced automatically: the quinones' larger $\Delta
-  G_\text{disp}$ (persistent semiquinone) offsets their lower capacity; viologen carries a
-  flagged dimerization mode ($\Delta G_\text{dim}$ from earlier). All six are anolyte-side.}
 \end{frame}
 
 % ---------------------------------------------------------------
 \begin{frame}{Current focus: six multi-electron starting candidates}
   \begin{center}
-  \includegraphics[width=0.92\textwidth]{molecules_starting_candidates.png}
+  \includegraphics[height=0.78\textheight]{before_after_grafting.png}
   \end{center}
-  \vspace{-0.5ex}
-  \centering\footnotesize
-  From \texttt{Candidates.xlsx}: two \hi{viologens}, two \hi{imides} (PMDI, NDI), two
-  \hi{quinones} --- all \good{2-electron} (multi-charge) systems, grafted onto the Merrifield
-  benzylic site. The \emph{imide} family is new; all six now entering the validated pipeline.
+  \vspace{-1ex}
+  \centering\scriptsize
+  Two \hi{viologens}, two \hi{imides}, and two \hi{quinones}: capped core (left) versus
+  Merrifield-grafted proxy (right).
 \end{frame}
 
 % ---------------------------------------------------------------
 \begin{frame}{Next steps}
-  \textbf{\textcolor{good}{Done}}: all axes computed \& validated; unified $\sigma$-tagged
-  scorecard; $\sigma$-aware Pareto engine; shortlist on the six grafted starting candidates
-  (\good{mophquinone}, \good{viologen} Pareto-optimal).
+  \textbf{\textcolor{good}{Done}}: protocol-addressed energies; unified $\sigma$-tagged
+  scorecard; integrity and completeness contracts; $\sigma$-aware Pareto engine.
   \vspace{1ex}
   \begin{enumerate}
-    \item \hi{\textbf{Scale up discovery}} --- run the tiered funnel on a larger design space
-          (functionalized variants + D3TaLES-mined pools), not just the current six.
-    \item \textbf{Harden for scale} --- SCF-robustness patch ($\sim$20\% of jobs hit gradient
-          non-convergence); needed before screening hundreds.
-    \item \textbf{Broaden benchmarks} --- more two-wave molecules for stability; more OROP for
-          the redox ranking, esp.\ per charge class.
+    \item \hi{\textbf{Resolve the E$^\circ$ offset}} --- cross-run in-house and OROP molecules;
+          audit OROP's thermodynamic cycle and reference convention before calibration.
+    \item \textbf{Broaden benchmarks} --- second reductions and at least ten two-wave molecules.
+    \item \textbf{Complete kinetics} --- conformer-matched core $\lambda$ for tether jumps and
+          solvated $\lambda$ where a gas dianion is unbound.
     \item \textbf{Polymer effects} --- backbone/tether constraints \& inter-monomer
           dimerization (where the \emph{relative} dimerization ranking becomes key).
     \item \textbf{Absolute accuracy} (if needed) --- same-charge referencing to remove the
@@ -507,10 +495,10 @@
     {\Large\textbf{\textcolor{ink}{Summary}}}\\[2ex]
     \begin{minipage}{0.85\textwidth}\centering
     We can \good{rank} redox candidates and screen \good{stability}, \good{kinetics}, and
-    \good{reversibility} on a physics-based footing --- with each axis \hi{honestly labelled}
+    \good{state integrity} on a physics-based footing --- with each axis \hi{honestly labelled}
     by how far we can trust it.\\[2ex]
     The $\sigma$-aware scorecard \& Pareto engine are built and applied.
-    Next: point the funnel at a larger design space.
+    Next: resolve absolute E$^\circ$ and close the incomplete kinetics rows before scaling.
     \end{minipage}
   \end{center}
   \vfill

@@ -1,7 +1,21 @@
-pool,id,family,E_V,n,capacity,lambda_eV,dG_disp_kJmol,SA,dGsolv,pareto_optimal
-anolyte,pmdi,imide (n-type),-1.486,2,160.3,0.464,73.2,2.24,-0.872,False
-anolyte,mophquinone,quinone (n-type),-1.047,2,176.2,0.484,101.4,2.04,-0.851,True
-anolyte,viologen,pyridine-multi-e,-1.035,2,193.9,0.471,52.0,2.55,-0.913,True
-anolyte,ethylviologen,pyridine-multi-e,-1.034,2,184.6,0.494,50.3,2.59,-0.9,False
-anolyte,dmophquinone,quinone (n-type),-1.015,2,147.1,0.538,101.0,2.3,-0.829,False
-anolyte,ndi_ammonium,imide (n-type),-0.999,2,113.9,0.453,29.4,2.63,-2.446,False
+scenario,capacity_def,pool,id,family,E_V,n,capacity,lambda_i_eV,lambda_qc,lambda_flags,lambda_o_pcm_eV,lambda_het_eV,lambda_se_contact_eV,dG_disp_kJmol,SA,dGsolv,pareto_optimal,partial_front,missing_objectives,dominated_by
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,aq_benzylamino,quinone (n-type),-1.567,2,151.7,,all_flagged,conformer_jump;conformer_jump+anion_unbound,,,,75.8,1.86,-0.919,False,True,kinetics,
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,pmdi,imide (n-type),-1.457,2,148.8,0.4654,partial,conformer_jump+anion_unbound,0.8673,1.1,1.3327,63.5,2.24,-0.879,False,False,,aq_benzyloxy
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,aq_benzyloxy,quinone (n-type),-1.455,2,151.3,0.391,partial,conformer_jump+anion_unbound,0.8689,1.0644,1.2599,60.8,1.81,-0.784,True,False,,
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,nq_benzyloxy,quinone (n-type),-1.21,2,176.2,,all_flagged,conformer_jump;conformer_jump+anion_unbound,,,,76.2,1.99,-0.701,False,True,kinetics,
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,mophquinone,quinone (n-type),-1.018,2,162.3,0.5235,partial,conformer_jump+anion_unbound,0.9482,1.21,1.4717,91.8,2.04,-0.856,True,False,,
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,dmophquinone,quinone (n-type),-0.999,2,137.3,0.5713,partial,anion_unbound,0.9026,1.1883,1.4739,89.0,2.3,-0.829,False,False,,pmdi;mophquinone;aq_benzyloxy
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,ndi_ammonium,imide (n-type),-0.975,2,85.4,0.3546,partial,conformer_jump,0.7949,0.9722,1.1495,45.2,2.63,-2.431,False,False,,viologen;pmdi;mophquinone;dmophquinone;aq_benzyloxy
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,viologen,pyridine-multi-e,-0.944,2,92.7,0.4694,ok,,0.8628,1.0975,1.3322,51.0,2.55,-0.892,False,False,,pmdi;mophquinone;dmophquinone;aq_benzyloxy
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,ethylviologen,pyridine-multi-e,-0.943,2,90.5,,all_flagged,conformer_jump,,,,49.4,2.59,-0.882,False,False,kinetics,viologen;pmdi;mophquinone;dmophquinone;aq_benzyloxy
+LiPF6,capacity_maxload_Li_mAh_g,anolyte,bisviologen,pyridine-multi-e,-0.935,2,78.8,0.5544,partial,conformer_jump,0.8092,1.0864,1.3636,49.3,2.34,-1.133,False,False,,viologen;pmdi;ndi_ammonium;mophquinone;dmophquinone;aq_benzyloxy
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,aq_benzylamino,quinone (n-type),-1.567,2,65.0,,all_flagged,conformer_jump;conformer_jump+anion_unbound,,,,75.8,1.86,-0.919,False,True,kinetics,
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,pmdi,imide (n-type),-1.457,2,64.5,0.4654,partial,conformer_jump+anion_unbound,0.8673,1.1,1.3327,63.5,2.24,-0.879,False,False,,aq_benzyloxy
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,aq_benzyloxy,quinone (n-type),-1.455,2,64.9,0.391,partial,conformer_jump+anion_unbound,0.8689,1.0644,1.2599,60.8,1.81,-0.784,True,False,,
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,nq_benzyloxy,quinone (n-type),-1.21,2,69.1,,all_flagged,conformer_jump;conformer_jump+anion_unbound,,,,76.2,1.99,-0.701,False,False,kinetics,viologen;ndi_ammonium;bisviologen
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,mophquinone,quinone (n-type),-1.018,2,66.9,0.5235,partial,conformer_jump+anion_unbound,0.9482,1.21,1.4717,91.8,2.04,-0.856,True,False,,
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,dmophquinone,quinone (n-type),-0.999,2,62.2,0.5713,partial,anion_unbound,0.9026,1.1883,1.4739,89.0,2.3,-0.829,False,False,,viologen;pmdi;mophquinone;aq_benzyloxy
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,ndi_ammonium,imide (n-type),-0.975,2,73.9,0.3546,partial,conformer_jump,0.7949,0.9722,1.1495,45.2,2.63,-2.431,False,False,,viologen;bisviologen
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,viologen,pyridine-multi-e,-0.944,2,92.7,0.4694,ok,,0.8628,1.0975,1.3322,51.0,2.55,-0.892,True,False,,
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,ethylviologen,pyridine-multi-e,-0.943,2,90.5,,all_flagged,conformer_jump,,,,49.4,2.59,-0.882,False,False,kinetics,viologen
+TBAPF6,capacity_maxload_TBA_mAh_g,anolyte,bisviologen,pyridine-multi-e,-0.935,2,78.8,0.5544,partial,conformer_jump,0.8092,1.0864,1.3636,49.3,2.34,-1.133,False,False,,viologen

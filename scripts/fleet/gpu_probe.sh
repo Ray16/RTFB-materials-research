@@ -5,8 +5,8 @@
 # compute process resident on that GPU (empty = nobody else). self_user defaults to the current
 # user, so over ssh it correctly evaluates as the remote user (same account on the shared NFS env).
 #
-# This is the single source of "is GPU X free of other users" used by free_gpus.py, gpu_guard.sh,
-# and gpu_watchdog.sh. A GPU with a foreign owner is NEVER free, regardless of util/mem (an idle-
+# This is the single source of "is GPU X free of other users" used by free_gpus.py (the old gpu_guard.sh / gpu_watchdog.sh
+# enforcers are archived; GPU claims now go through ~/bin/gpu_reserve). A GPU with a foreign owner is NEVER free, regardless of util/mem (an idle-
 # but-resident foreign job — e.g. 314 MiB at 0% — must not be treated as available).
 set -u
 self="${1:-$(id -un)}"

@@ -175,7 +175,7 @@ reference (ωB97M-V/def2-TZVPD):
 | Pre-opt (charged) | xtb GFN2 + ALPB(MeCN) |
 | Pre-opt (neutral) | UMA (gas) |
 | Opt + freq | ωB97X-D3(BJ) or B3LYP-D3 / def2-SVP(D) + SMD(MeCN) |
-| Energy single point | ωB97M-V or ωB97X-D3 / def2-TZVP(D) + SMD(MeCN) |
+| Energy single point | ωB97M-V / def2-TZVPD (uniform for all charge states + Fc; `redox.core.protocol.ACTIVE_SP`) + SMD(MeCN) |
 
 Open decision: match D3TaLES's exact protocol for direct comparison, or use a
 range-separated hybrid aligned with OMol. GPU acceleration via `gpu4pyscf` on the V100s.

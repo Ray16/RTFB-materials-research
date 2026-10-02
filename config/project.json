@@ -17,13 +17,13 @@
     "she_abs_V": 4.44,
     "fc_vs_she_V": 0.40,
     "default_scale": "Fc/Fc+",
-    "fc_abs_computed_V": 4.434749378960987,
+    "fc_abs_computed_V": 4.355714172408625,
     "fc_abs_ref_MeCN_V": {
       "b3lyp": 4.63210987710688,
       "b3lyp-d3": 4.66224854035885,
       "wb97x-d3": 4.618265132412174
     },
-    "_notes": "E_vs_Fc = E_abs - E_ref_abs. Prefer fc_abs_computed_V (our level-matched ferrocene). fc_abs_ref_MeCN_V are published OROP SI values for cross-check. Fc/Fc+ vs SCE in MeCN = +0.40 V (Pavlishchuk & Addison 2000), used to convert vs-SCE literature anchors."
+    "_notes": "E_vs_Fc = E_abs - E_ref_abs. Prefer fc_abs_computed_V (our level-matched ferrocene). fc_abs_ref_MeCN_V are published OROP SI values for cross-check. Literature conversion constants (Fc/Fc+ vs SCE ~+0.40 V or +0.38 V, Ag/Ag+ -> Fc) are UNVERIFIED (Pavlishchuk & Addison 2000 not accessed); values converted with them are tier B in config/benchmark_mecn.py. she_abs_V / fc_vs_she_V are not used by the pipeline."
   },
   "constants": {
     "faraday_C_per_mol": 96485.33212

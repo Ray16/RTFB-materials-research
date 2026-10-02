@@ -41,7 +41,7 @@ while read -r id; do
   if [ -f "$CALC/$id.json" ] && grep -q '"status":' "$CALC/$id.json" 2>/dev/null; then rmdir "$CLAIMS/$id" 2>/dev/null; continue; fi
   CUR_MOL="$id"
   log="$FLEET/mol_${id}.log"
-  CUDA_VISIBLE_DEVICES="$GPU" "$PY" scripts/validate_reorg_worker_d3tales.py --only "$id" --backend gpu > "$log" 2>&1
+  CUDA_VISIBLE_DEVICES="$GPU" "$PY" scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py --only "$id" --backend gpu > "$log" 2>&1
   if grep -q "DONE_MARKER" "$log" 2>/dev/null; then
     ran=$((ran+1)); fails=0
   else

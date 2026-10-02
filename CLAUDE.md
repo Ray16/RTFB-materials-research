@@ -56,7 +56,7 @@ Operating instructions for Claude Code in this repo. Project spec/background liv
   idle GPUs with `python scripts/free_gpus.py --hosts lambda1,lambda2,lambda4` (returns
   `host idx` slots, skips unreachable) and place one job per free (host,GPU). Run remote jobs
   through the reservation gate: `ssh <host> 'cd <repo> && source ~/miniforge3/etc/profile.d/conda.sh
-  && conda activate redox && gpu_reserve run <idx> -- python -m redox.dft --only <id> --backend gpu'`.
+  && conda activate redox && gpu_reserve run <idx> -- python -m redox.qm.dft --only <id> --backend gpu'`.
   GPU DRIVERS are node-local — verify the env runs on a node (`check_env.py` on one of its GPUs)
   before trusting a batch there. For large embarrassingly-parallel sweeps, use the
   **lambda-fleet skill** (claim-based, resumable, self-healing fan-out). Same contention rule

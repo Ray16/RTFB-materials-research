@@ -40,6 +40,8 @@ logs/
 # Ignore ALL dataset subdirs under validation/; small tracked pointers (README.md,
 # manifests) are files, not dirs, so the trailing-slash glob never matches them.
 data/raw/validation/*/
+# ...except our OWN small hand-curated literature tables (sourced, citable; not re-clonable)
+!data/raw/validation/two_wave_mecn/
 
 # slide QA renders (regenerable)
 slides/review/
@@ -54,11 +56,11 @@ results/solvation_validation.csv
 paper/
 
 # Regenerable per-molecule validation JSONs (summary comparison.csv + figures ARE committed;
-# re-create the raw JSONs with scripts/validate_reorg_worker.py)
+# re-create the raw JSONs with archive/scripts/validate_reorg_worker.py)
 results/d3tales_reorg_validation/calc/
 
 # Track-2 (our-pipeline) reorg sweep: bulk per-molecule calc JSONs + optimized geometries are
-# regenerable (scripts/validate_reorg_worker_prod.py); only comparison.csv is committed.
+# regenerable (scripts/validation/reorg_d3tales/validate_reorg_worker_prod.py); only comparison.csv is committed.
 results/d3tales_reorg_validation_prod/calc/
 results/d3tales_reorg_validation_prod/geom/
 
@@ -69,3 +71,17 @@ results/d3tales_reorg_validation_prod/geom/
 _seed_*.xyz
 _tseed_*.xyz
 _opt_*.xyz
+
+# LaTeX build artifacts (slides) and archived scratch
+*.aux
+*.nav
+*.out
+*.snm
+*.toc
+archive/tmp/
+archive/logs/
+
+# D3TaLES-level reorg sweep: per-molecule calc JSONs + geometries are regenerable
+# (scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py); comparison/figures committed.
+results/d3tales_reorg_validation_d3level/calc/
+results/d3tales_reorg_validation_d3level/geom/

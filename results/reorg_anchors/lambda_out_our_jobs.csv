@@ -1,0 +1,39 @@
+id,smiles,xyz,q1,m1,q2,m2,couple,family
+pyridinium_red_ox,Cc1ccc(C[n+]2ccccc2)cc1,calcs/dft/pyridinium/red/opt.xyz,0,1,1,0,red/ox,pyridine
+cyanopyridinium_red_ox,Cc1ccc(C[n+]2ccc(C#N)cc2)cc1,calcs/dft/cyanopyridinium/red/opt.xyz,0,1,1,0,red/ox,pyridine
+viologen_neu_ox1,Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1,calcs/dft/viologen/neu/opt.xyz,0,0,1,1,neu/ox1,pyridine-multi-e
+viologen_ox1_ox2,Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1,calcs/dft/viologen/ox1/opt.xyz,1,1,2,0,ox1/ox2,pyridine-multi-e
+phenothiazine_neu_ox,Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1,calcs/dft/phenothiazine/neu/opt.xyz,0,0,1,1,neu/ox,amine (p-type)
+tempo_red_rad,Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1,calcs/dft/tempo/red/opt.xyz,-1,0,0,1,red/rad,nitroxide
+tempo_rad_ox,Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1,calcs/dft/tempo/rad/opt.xyz,0,1,1,0,rad/ox,nitroxide
+anthraquinone_red2_red1,Cc1ccc(COCc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1,calcs/dft/anthraquinone/red2/opt.xyz,-2,0,-1,1,red2/red1,quinone (n-type)
+anthraquinone_red1_neu,Cc1ccc(COCc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1,calcs/dft/anthraquinone/red1/opt.xyz,-1,1,0,0,red1/neu,quinone (n-type)
+ferrocene_neu_ox,[Fe].c1ccc[cH-]1.c1ccc[cH-]1,calcs/dft/ferrocene/neu/opt.xyz,0,0,1,1,neu/ox,validation
+methyl_viologen_neu_ox1,C[n+]1ccc(-c2cc[n+](C)cc2)cc1,calcs/dft/methyl_viologen/neu/opt.xyz,0,0,1,1,neu/ox1,validation
+methyl_viologen_ox1_ox2,C[n+]1ccc(-c2cc[n+](C)cc2)cc1,calcs/dft/methyl_viologen/ox1/opt.xyz,1,1,2,0,ox1/ox2,validation
+tempo_parent_red_rad,CC1(C)CCCC(C)(C)N1[O],calcs/dft/tempo_parent/red/opt.xyz,-1,0,0,1,red/rad,validation
+tempo_parent_rad_ox,CC1(C)CCCC(C)(C)N1[O],calcs/dft/tempo_parent/rad/opt.xyz,0,1,1,0,rad/ox,validation
+phenothiazine_parent_neu_ox,c1ccc2c(c1)Nc1ccccc1S2,calcs/dft/phenothiazine_parent/neu/opt.xyz,0,0,1,1,neu/ox,validation
+anthraquinone_parent_red2_red1,O=C1c2ccccc2C(=O)c2ccccc21,calcs/dft/anthraquinone_parent/red2/opt.xyz,-2,0,-1,1,red2/red1,validation
+anthraquinone_parent_red1_neu,O=C1c2ccccc2C(=O)c2ccccc21,calcs/dft/anthraquinone_parent/red1/opt.xyz,-1,1,0,0,red1/neu,validation
+methylpyridinium_red_ox,C[n+]1ccccc1,calcs/dft/methylpyridinium/red/opt.xyz,0,1,1,0,red/ox,validation
+ethylviologen_neu_ox1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1,calcs/dft/ethylviologen/neu/opt.xyz,0,0,1,1,neu/ox1,pyridine-multi-e
+ethylviologen_ox1_ox2,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1,calcs/dft/ethylviologen/ox1/opt.xyz,1,1,2,0,ox1/ox2,pyridine-multi-e
+pmdi_red2_red1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C)c(=O)c4cc3c2=O)cc1,calcs/dft/pmdi/red2/opt.xyz,-2,0,-1,1,red2/red1,imide (n-type)
+pmdi_red1_neu,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C)c(=O)c4cc3c2=O)cc1,calcs/dft/pmdi/red1/opt.xyz,-1,1,0,0,red1/neu,imide (n-type)
+ndi_ammonium_red2_red1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCC[N+](C)(C)C)C4=O)cc1,calcs/dft/ndi_ammonium/red2/opt.xyz,-1,0,0,1,red2/red1,imide (n-type)
+ndi_ammonium_red1_ox,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCC[N+](C)(C)C)C4=O)cc1,calcs/dft/ndi_ammonium/red1/opt.xyz,0,1,1,0,red1/ox,imide (n-type)
+mophquinone_red2_red1,Cc1ccc(COc2ccc(C3=CC(=O)C=CC3=O)cc2)cc1,calcs/dft/mophquinone/red2/opt.xyz,-2,0,-1,1,red2/red1,quinone (n-type)
+mophquinone_red1_neu,Cc1ccc(COc2ccc(C3=CC(=O)C=CC3=O)cc2)cc1,calcs/dft/mophquinone/red1/opt.xyz,-1,1,0,0,red1/neu,quinone (n-type)
+dmophquinone_red2_red1,COC1=CC(=O)C(c2cc(OCc3ccc(C)cc3)ccc2OC)=CC1=O,calcs/dft/dmophquinone/red2/opt.xyz,-2,0,-1,1,red2/red1,quinone (n-type)
+dmophquinone_red1_neu,COC1=CC(=O)C(c2cc(OCc3ccc(C)cc3)ccc2OC)=CC1=O,calcs/dft/dmophquinone/red1/opt.xyz,-1,1,0,0,red1/neu,quinone (n-type)
+ethylviologen_sa_neu_ox1,CC[n+]1ccc(-c2cc[n+](CC)cc2)cc1,calcs/dft/ethylviologen_sa/neu/opt.xyz,0,0,1,1,neu/ox1,validation
+ethylviologen_sa_ox1_ox2,CC[n+]1ccc(-c2cc[n+](CC)cc2)cc1,calcs/dft/ethylviologen_sa/ox1/opt.xyz,1,1,2,0,ox1/ox2,validation
+pmdi_sa_red2_red1,Cn1c(=O)c2cc3c(=O)n(C)c(=O)c3cc2c1=O,calcs/dft/pmdi_sa/red2/opt.xyz,-2,0,-1,1,red2/red1,imide (n-type)
+pmdi_sa_red1_neu,Cn1c(=O)c2cc3c(=O)n(C)c(=O)c3cc2c1=O,calcs/dft/pmdi_sa/red1/opt.xyz,-1,1,0,0,red1/neu,imide (n-type)
+ndi_ammonium_sa_red2_red1,CN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCC[N+](C)(C)C)C3=O,calcs/dft/ndi_ammonium_sa/red2/opt.xyz,-1,0,0,1,red2/red1,imide (n-type)
+ndi_ammonium_sa_red1_ox,CN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCC[N+](C)(C)C)C3=O,calcs/dft/ndi_ammonium_sa/red1/opt.xyz,0,1,1,0,red1/ox,imide (n-type)
+mophquinone_sa_red2_red1,COc1ccc(C2=CC(=O)C=CC2=O)cc1,calcs/dft/mophquinone_sa/red2/opt.xyz,-2,0,-1,1,red2/red1,quinone (n-type)
+mophquinone_sa_red1_neu,COc1ccc(C2=CC(=O)C=CC2=O)cc1,calcs/dft/mophquinone_sa/red1/opt.xyz,-1,1,0,0,red1/neu,quinone (n-type)
+dmophquinone_sa_red2_red1,COC1=CC(=O)C(c2cc(OC)ccc2OC)=CC1=O,calcs/dft/dmophquinone_sa/red2/opt.xyz,-2,0,-1,1,red2/red1,quinone (n-type)
+dmophquinone_sa_red1_neu,COC1=CC(=O)C(c2cc(OC)ccc2OC)=CC1=O,calcs/dft/dmophquinone_sa/red1/opt.xyz,-1,1,0,0,red1/neu,quinone (n-type)

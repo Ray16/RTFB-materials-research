@@ -11,7 +11,7 @@ woven in, not deferred (§V). Status: **P0 mostly done**, env finishing.
 
 ## P1 — UMA online (gas-phase engine)
 - [ ] `huggingface-cli login`; accept `facebook/UMA` license. **← needs user token.**
-- [ ] `src/redox/uma.py`: FAIRChem ASE calculator (OMol task), sets **charge+spin** per
+- [ ] `src/redox/qm/uma.py`: FAIRChem ASE calculator (OMol task), sets **charge+spin** per
       state, BFGS geometry opt, writes relaxed geom + energy → `calcs/uma/<id>/<state>/`.
 - [ ] Smoke test: N-benzylpyridinium ox/red → first adiabatic ΔE; confirm charge/spin
       handling and no fragmentation.
@@ -31,8 +31,8 @@ woven in, not deferred (§V). Status: **P0 mostly done**, env finishing.
       `G_solv` → `calcs/dft/`. One job per GPU.
 
 ## P4 — Descriptors & redox potentials
-- [ ] `src/redox/redox.py`: assemble `G_solv`, E° per 1e event, reference to Fc/Fc⁺.
-- [ ] `src/redox/descriptors.py`: λ (4-point Marcus), RMSD + structural change, HOMO/LUMO,
+- [ ] `src/redox/properties/potentials.py`: assemble `G_solv`, E° per 1e event, reference to Fc/Fc⁺.
+- [ ] `src/redox/properties/descriptors.py`: λ (4-point Marcus), RMSD + structural change, HOMO/LUMO,
       IP/EA, spin-density localization, partial charges, connectivity/stability check.
 - [ ] Aggregate → `results/` tables + electronic-property distribution plots.
 
@@ -47,11 +47,12 @@ woven in, not deferred (§V). Status: **P0 mostly done**, env finishing.
 **This is a gate, not a footnote.** No production ranking (P5) is reported until the
 pipeline reproduces measured redox potentials within tolerance on the validation set.
 
-**What is physically achievable (calibrated against the OROP 313-system MeCN benchmark,
-`data/raw/validation/SI_data_redox_paper/`):** raw physics-based implicit-solvation DFT
-reproduces experiment with **MAE ≈ 0.50 V, RMSE ≈ 0.76 V, systematic bias ≈ +0.31 V**
-across 313 diverse MeCN redox couples — this is the *published* state of the art for a
-physics-only implicit pipeline. An ML correction layer (i.e. fitting) brings it to
+**What is physically achievable (calibrated against the Neugebauer/Liu ROP313 benchmark,
+`data/raw/validation/OROP/`):** raw physics-based implicit-solvation DFT reproduces
+experiment with **MAE ≈ 0.50 V, RMSE ≈ 0.76 V, systematic bias ≈ +0.31 V** across the
+published set — the state of the art for a physics-only implicit pipeline. NOMENCLATURE:
+**ROP313 = OROP (193 ORGANIC, MeCN+DMF, −2..+1) + OMROP (120 ORGANOMETALLIC metal
+complexes, −4..+3)**; our validation targets **OROP (organic, systems 1..193) only**. An ML correction layer (i.e. fitting) brings it to
 MAE ≈ 0.30 V. So a sub-0.15 V *absolute* target from pure physics is not realistic and the
 earlier thresholds are replaced. Two moves recover most of the accuracy without fitting:
 (i) reference to **ferrocene computed at the same level** (cancels the ~+0.3 V systematic

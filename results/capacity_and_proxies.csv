@@ -1,22 +1,65 @@
-id,n_electrons,MW,specific_capacity_mAh_g,SA_score,sa_species,dGsolv_neutral_eV
-anthraquinone,2,342.4,156.6,1.94,neutral,-0.825
-anthraquinone_parent,2,208.2,257.4,1.33,neutral,-0.535
-cyanopyridinium,1,209.3,128.1,2.31,inherently-charged (azinium; no neutral form),-0.8
-dmophquinone,2,364.4,147.1,2.3,neutral,-0.829
-dmophquinone_sa,2,274.3,195.4,2.33,neutral,-0.62
-ethylviologen,2,290.4,184.6,2.59,inherently-charged (azinium; no neutral form),-0.9
-ethylviologen_sa,2,214.3,250.1,2.89,inherently-charged (azinium; no neutral form),-0.724
-methyl_viologen,2,186.3,287.8,2.82,inherently-charged (azinium; no neutral form),-0.668
-methylpyridinium,1,94.1,284.7,2.53,inherently-charged (azinium; no neutral form),-0.33
-mophquinone,2,304.3,176.1,2.04,neutral,-0.851
-mophquinone_sa,2,214.2,250.2,2.07,neutral,-0.606
-ndi_ammonium,2,470.5,113.9,2.63,inherently-charged (azinium; no neutral form),-2.446
-ndi_ammonium_sa,2,380.4,140.9,2.69,inherently-charged (azinium; no neutral form),-2.027
-phenothiazine,1,303.4,88.3,1.84,neutral,-0.678
-phenothiazine_parent,1,199.3,134.5,1.94,neutral,-0.576
-pmdi,2,334.3,160.3,2.24,neutral,-0.872
-pmdi_sa,2,244.2,219.5,2.28,neutral,-0.707
-pyridinium,1,184.3,145.5,2.01,inherently-charged (azinium; no neutral form),-0.573
-tempo,2,276.4,193.9,2.48,neutral,-0.589
-tempo_parent,2,156.2,343.1,2.87,neutral,-0.321
-viologen,2,276.4,193.9,2.55,inherently-charged (azinium; no neutral form),-0.913
+id,n_electrons,MW,n_graft_sites,MW_repeat_unit,specific_capacity_mAh_g,SA_score,sa_species,dGsolv_neutral_eV
+anthraquinone,2,342.394,1,354.405,156.6,1.94,neutral,-0.825
+anthraquinone_parent,2,208.216,0,,257.4,1.33,neutral,-0.536
+aq_benzylamino,2,327.383,1,339.394,163.7,1.86,neutral,-0.919
+aq_benzylamino_sa,2,237.258,0,,225.9,1.88,neutral,-0.697
+aq_benzyloxy,2,328.367,1,340.378,163.2,1.81,neutral,-0.784
+aq_benzyloxy_sa,2,238.242,0,,225.0,1.69,neutral,-0.57
+bisviologen,2,366.508,2,390.53,146.3,2.34,inherently-charged (azinium; no neutral form),-1.133
+bm_10_methylphenothiazine,1,213.305,0,,125.6,1.87,neutral,-0.512
+bm_1_2_naphthoquinone,2,158.156,0,,338.9,2.04,neutral,-0.599
+bm_1_4_benzoquinone,2,108.096,0,,495.9,2.35,neutral,-0.427
+bm_1_4_diamino_9_10_anthraquinone,2,238.246,0,,225.0,2.09,neutral,-0.675
+bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,2,240.214,0,,223.1,1.98,neutral,-0.521
+bm_1_4_naphthoquinone,2,158.156,0,,338.9,1.93,neutral,-0.483
+bm_1_amino_4_hydroxy_9_10_anthraquinone,2,239.23,0,,224.1,2.03,neutral,-0.598
+bm_1_amino_9_10_anthraquinone,2,223.231,0,,240.1,1.86,neutral,-0.589
+bm_1_benzyl_1_methyl_4_4_bipyridinium,2,262.356,0,,204.3,2.51,inherently-charged (azinium; no neutral form),-0.88
+bm_1_hydroxy_9_10_anthraquinone,2,224.215,0,,239.1,1.79,neutral,-0.526
+bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,1,245.876,0,,109.0,2.59,neutral,-0.407
+bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,1,180.056,0,,148.9,3.37,neutral,-0.335
+bm_2_3_5_trimethyl_1_4_benzoquinone,1,150.177,0,,178.5,2.55,neutral,-0.403
+bm_2_3_dichloro_1_4_naphthoquinone,1,227.046,0,,118.0,2.04,neutral,-0.493
+bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,1,227.006,0,,118.1,3.11,neutral,-0.58
+bm_2_3_dimethyl_1_4_benzoquinone,1,136.15,0,,196.9,2.51,neutral,-0.403
+bm_2_5_dichloro_1_4_benzoquinone,1,176.986,0,,151.4,2.88,neutral,-0.442
+bm_2_6_dimethoxy_1_4_benzoquinone,1,168.148,0,,159.4,2.52,neutral,-0.473
+bm_2_6_dimethyl_1_4_benzoquinone,1,136.15,0,,196.9,2.49,neutral,-0.427
+bm_2_chloro_1_4_benzoquinone,1,142.541,0,,188.0,2.56,neutral,-0.442
+bm_2_fluoro_1_4_benzoquinone,2,126.086,0,,425.1,2.63,neutral,-0.421
+bm_2_methoxy_1_4_benzoquinone,1,138.122,0,,194.0,2.37,neutral,-0.496
+bm_2_methyl_1_4_benzoquinone,2,122.123,0,,438.9,2.44,neutral,-0.426
+bm_2_tert_butyl_1_4_benzoquinone,2,164.204,0,,326.4,2.66,neutral,-0.415
+bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,2,190.154,0,,281.9,2.43,neutral,-0.471
+bm_5_hydroxy_1_4_naphthoquinone_juglone,2,174.155,0,,307.8,2.28,neutral,-0.475
+bm_9_10_phenanthrenequinone,1,208.216,0,,128.7,1.48,neutral,-0.661
+bm_n_2_methoxyethyl_phthalimide,1,205.213,0,,130.6,1.68,neutral,-0.539
+bm_n_isopropylphthalimide,1,189.214,0,,141.6,1.76,neutral,-0.483
+bm_n_methylphthalimide,1,161.16,0,,166.3,1.62,neutral,-0.483
+bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,2,420.418,0,,127.5,2.57,neutral,-1.038
+bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,2,332.312,0,,161.3,2.4,neutral,-0.849
+bm_n_n_diisopropylpyromellitic_diimide,2,300.314,0,,178.5,2.46,neutral,-0.716
+bm_tetramethyl_1_4_benzoquinone_duroquinone,1,164.204,0,,163.2,2.25,neutral,-0.38
+cyanopyridinium,1,209.272,1,221.283,128.1,2.31,inherently-charged (azinium; no neutral form),-0.795
+dmophquinone,2,364.397,1,376.408,147.1,2.3,neutral,-0.829
+dmophquinone_sa,2,274.272,0,,195.4,2.33,neutral,-0.623
+dtbc_phenol,1,326.48,1,338.491,82.1,2.18,neutral,-0.594
+dtbc_phenol_sa,1,236.355,0,,113.4,2.28,neutral,-0.396
+ethylviologen,2,290.41,1,302.421,184.6,2.59,inherently-charged (azinium; no neutral form),-0.882
+ethylviologen_sa,2,214.312,0,,250.1,2.89,inherently-charged (azinium; no neutral form),-0.707
+methyl_viologen,2,186.258,0,,287.8,2.82,inherently-charged (azinium; no neutral form),-0.65
+methylpyridinium,1,94.137,0,,284.7,2.53,inherently-charged (azinium; no neutral form),-0.32
+mophquinone,2,304.345,1,316.356,176.1,2.04,neutral,-0.856
+mophquinone_sa,2,214.22,0,,250.2,2.07,neutral,-0.613
+ndi_ammonium,2,470.549,1,482.56,113.9,2.63,inherently-charged (azinium; no neutral form),-2.431
+ndi_ammonium_sa,2,380.424,0,,140.9,2.69,inherently-charged (azinium; no neutral form),-2.02
+nq_benzyloxy,2,278.307,1,290.318,192.6,1.99,neutral,-0.701
+nq_benzyloxy_sa,2,188.182,0,,284.8,2.01,neutral,-0.555
+phenothiazine,1,303.43,1,315.441,88.3,1.84,neutral,-0.671
+phenothiazine_parent,1,199.278,0,,134.5,1.94,neutral,-0.568
+pmdi,2,334.331,1,346.342,160.3,2.24,neutral,-0.879
+pmdi_sa,2,244.206,0,,219.5,2.28,neutral,-0.719
+pyridinium,1,184.262,1,196.273,145.5,2.01,inherently-charged (azinium; no neutral form),-0.56
+tempo,2,276.4,1,288.411,193.9,2.48,neutral,-0.592
+tempo_parent,2,156.249,0,,343.1,2.87,neutral,-0.326
+viologen,2,276.383,1,288.394,193.9,2.55,inherently-charged (azinium; no neutral form),-0.892

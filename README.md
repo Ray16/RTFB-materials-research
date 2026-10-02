@@ -32,7 +32,7 @@ optimizer.
 |------|--------|:--:|------|
 | 0 | RDKit ETKDGv3 ensemble → FF rank | no | conformer search → best seed |
 | 1 | **UMA** (charge+spin, fairchem) | no | fast gas-phase pre-opt + gas-phase descriptors, all states |
-| 2 | **DFT + SMD(MeCN)** — r2SCAN-D4/def2-SVP(D) opt // ωB97M-V/def2-TZVP(D) energy, RI-J (PySCF / gpu4pyscf) | **yes** | final solvated geometries → λ, RMSD, ΔG, E° |
+| 2 | **DFT + SMD(MeCN)** — r2SCAN-D4/def2-SVP(D) opt // ωB97M-V/def2-TZVPD energy (one diffuse basis for every charge state and Fc), RI-J (PySCF / gpu4pyscf) | **yes** | final solvated geometries → λ, RMSD, ΔG, E° |
 
 - Warm-starting Tier 2 from Tier 1 cuts DFT optimization steps sharply.
 - **Scaling tier:** if the library grows, insert **xtb + ALPB(MeCN)** solvated opt between
@@ -77,25 +77,41 @@ See [`docs/REPO_MAP.md`](./docs/REPO_MAP.md) for a full, up-to-date guide. In br
 ```
 data/raw/          monomer structures, D3TaLES exports (inputs)
 config/            redox-group defs, run params, electrolyte/referencing (+ project.json)
-src/redox/         pipeline modules: build/uma/dft/redox, reorg (+ solvated_reorg, nelsen),
-                   torsion_scan, descriptors, scorecard/pareto, stability
+src/redox/         the `redox` package: core/ (paths, energy protocol), build/ (3D structures),
+                   qm/ (UMA, DFT+SMD, single points), properties/ (E°, integrity, stability,
+                   λ), screening/ (scorecard, Pareto), validation/ (benchmarks, D3TaLES)
 library/           generated decorated monomers (XYZ) + manifest
 calcs/uma/         UMA pre-optimization outputs           (git-ignored, bulk)
 calcs/dft/         DFT + SMD optimization + energy outputs (git-ignored, bulk)
 results/           property tables (CSV) + figures/{candidates,validation,reorg,pipeline}/
-scripts/           entry points; scripts/plotting/ (all figures, one shared plot_style),
-                   scripts/diagnostics/ (one-off checks)
+scripts/           entry points: pipeline/ (production chain), analysis/ (candidate
+                   sensitivity), validation/{orop,solvation,reorg_d3tales,reorg_literature}/,
+                   mining/ (D3TaLES), fleet/, polaris/, plotting/{candidates,validation,reorg,
+                   pipeline}/ (mirrors results/figures/, one shared plot_style)
+tests/             data-contract tests (pytest)
+archive/           obsolete scripts/modules/outputs kept for provenance
 ```
 
 ## Pipeline
 
-1. `src/redox/build.py`  — decorate the site with redox groups → `library/`
-2. `src/redox/uma.py`    — UMA charge/spin pre-opt of every state → `calcs/uma/`
-3. `src/redox/dft.py`    — DFT+SMD geometry opt + gas/SMD energies → `calcs/dft/`
+1. `src/redox/build/`      — decorate the site with redox groups → `library/`
+2. `src/redox/qm/uma.py`    — UMA charge/spin pre-opt of every state → `calcs/uma/`
+3. `src/redox/qm/dft.py`    — DFT+SMD geometry optimization in solvent → `calcs/dft/<id>/<state>/`
    (RI-J default; optional `--torsion-scan` for floppy species)
-4. `src/redox/redox.py` · `reorg.py` · `descriptors.py` — E°, ΔG, and λ (inner-sphere λ_i by
-   Nelsen 4-point + outer-sphere λ_o by Born/Marcus) → `results/`
-5. `src/redox/scorecard.py` — unified scorecard + Pareto shortlist
+4. `src/redox/qm/sp.py`     — single points at the ONE active protocol (`redox.core.protocol`,
+   ωB97M-V/def2-TZVPD for every state + Fc) → protocol-addressed `sp/<hash>.json` records
+5. `src/redox/properties/` — `potentials` · `integrity` · `stability` · `reorg` · `lambda_outer`:
+   E° vs live Fc, charged-state integrity, ΔG_disp, λ_O/λ_R (Nelsen), λ_o (PCM/Born) → `results/`
+6. `src/redox/screening/` — `scorecard` → `pareto`: per-pool scorecard (contiguous path from the resting
+   state, INCOMPLETE propagation) and the σ-aware Pareto shortlist
 
-Reorganization energies are cross-checked against D3TaLES at matched level of theory (see
-`results/d3tales_reorg_validation/` and `scripts/validate_reorg_worker.py`).
+Everything after step 3 is regenerated, fail-fast and test-first, by
+`scripts/pipeline/finalize_after_dft.sh`. What each axis means and how accurate it is:
+`docs/DESIGN_AXES.md`.
+
+Reorganization energies are cross-checked against D3TaLES by reproducing **their exact level of
+theory** — IP-tuned LC-ωHPBE/def2-SVP gas, using their per-molecule tuned ω — via
+`scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py` (results in
+`results/d3tales_reorg_validation_d3level/`).
+Matching their level reproduces their λ; our production level (ωB97M-V/def2-TZVPD, SMD, uniform diffuse)
+differs by functional+basis, which is the more correct treatment for anions (see FINDINGS #10).

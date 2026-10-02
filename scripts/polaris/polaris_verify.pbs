@@ -1,0 +1,33 @@
+#!/bin/bash
+#PBS -A FRAME-IDP
+#PBS -q debug
+#PBS -l select=1:ncpus=64:ngpus=4
+#PBS -l walltime=00:25:00
+#PBS -l filesystems=home:grand
+#PBS -N redox_verify
+#PBS -j oe
+#PBS -o /grand/FRAME-IDP/rzhu/redox_reorg/verify.log
+
+set -e
+cd /grand/FRAME-IDP/rzhu/redox_reorg
+PY=/grand/FRAME-IDP/rzhu/env/redox/bin/python
+export OMP_NUM_THREADS=8 MKL_NUM_THREADS=8 OPENBLAS_NUM_THREADS=8
+export CUDA_VISIBLE_DEVICES=0
+
+echo "=== node $(hostname) ; $(date) ==="
+echo "=== 1) gpu4pyscf trivial DFT on A100 ==="
+$PY - <<'EOF'
+import cupy, gpu4pyscf
+print("cupy", cupy.__version__, "gpu4pyscf", gpu4pyscf.__version__)
+print("GPU:", cupy.cuda.runtime.getDeviceProperties(0)['name'].decode())
+from pyscf import gto
+from gpu4pyscf import dft
+m = gto.M(atom="O 0 0 0; H 0 0 0.96; H 0.93 0 -0.24", basis="def2-svp")
+mf = dft.RKS(m).density_fit(); mf.xc = "wb97m-v"    # the pipeline's energy functional
+print("E(H2O) wb97m-v/def2-svp =", mf.kernel())
+EOF
+
+echo "=== 2) one real molecule through the production worker (SMD opt + wB97M-V SP) ==="
+PYTHONPATH=/grand/FRAME-IDP/rzhu/redox_reorg/src $PY scripts/validation/reorg_d3tales/validate_reorg_worker_prod.py \
+    --source data/molecules.csv --offset 0 --stride 1 --limit 1 --backend gpu
+echo "=== VERIFY DONE $(date) ==="

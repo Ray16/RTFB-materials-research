@@ -19,7 +19,7 @@ export OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 XTB_THREADS=2
 export PYTHONPATH=src
 
 # (1) PREFLIGHT — a node that cannot run must NOT claim anything.
-if ! CUDA_VISIBLE_DEVICES="$GPU" "$PY" -c "import redox.dft, gpu4pyscf, cupy; cupy.cuda.runtime.getDeviceCount()" >/dev/null 2>&1; then
+if ! CUDA_VISIBLE_DEVICES="$GPU" "$PY" -c "import redox.qm.dft, gpu4pyscf, cupy; cupy.cuda.runtime.getDeviceCount()" >/dev/null 2>&1; then
   echo "$(hostname) gpu$GPU PREFLIGHT FAIL -> no-op"; exit 3
 fi
 
@@ -40,7 +40,7 @@ while read -r id; do
     continue
   fi
   log="$FLEET/mol_${id}.log"
-  CUDA_VISIBLE_DEVICES="$GPU" "$PY" scripts/validate_reorg_worker_prod.py --only "$id" --backend gpu \
+  CUDA_VISIBLE_DEVICES="$GPU" "$PY" scripts/validation/reorg_d3tales/validate_reorg_worker_prod.py --only "$id" --backend gpu \
       > "$log" 2>&1
   if grep -q "DONE_MARKER" "$log" 2>/dev/null; then
     ran=$((ran+1)); fails=0                             # keep the claim

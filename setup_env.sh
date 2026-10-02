@@ -49,7 +49,7 @@ conda run -n "$ENV_NAME" pip install "torch==2.8.0" --index-url "$TORCH_INDEX"
 conda run -n "$ENV_NAME" pip install -r "$HERE/requirements.txt"
 
 # 3a. xtb (GFN2-xTB) — provides the RRHO thermal free-energy corrections used by
-#     redox.dft._thermal_correction. Conda-forge binary (not a pip package). We use a
+#     redox.qm.dft._thermal_correction. Conda-forge binary (not a pip package). We use a
 #     semi-empirical Hessian for thermal because RRHO corrections are method-insensitive
 #     AND gpu4pyscf's UKS analytic Hessian is numerically broken for open-shell states.
 conda install -n "$ENV_NAME" -c conda-forge xtb -y

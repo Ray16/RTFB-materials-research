@@ -5,18 +5,26 @@ the identical pipeline (build -> UMA -> DFT+SMD -> redox).
 
 `exp_V_vs_Fc` on an event is the experimental potential (V vs Fc/Fc+ in MeCN). These are
 literature ANCHORS with citations and are marked provisional — the primary, consistently
-referenced experimental set is OROP/ROP313 (data/raw/validation/SI_data_redox_paper),
-matched to these molecules by structure. Verify/replace anchors against OROP + ReSolvedDB
-before using them to calibrate. Do NOT fit away discrepancies — diagnose the physics.
+referenced experimental set is the ORGANIC OROP subset (193 systems, H/C/N/O/S/halogens,
+MeCN+DMF, charges -2..+1). NOMENCLATURE (Neugebauer/Liu ROP313 paper): ROP313 = OROP (193
+organic) + OMROP (120 ORGANOMETALLIC, transition-metal complexes, charges -4..+3). Our
+pipeline validates against OROP ONLY (systems 1..193); the OMROP metal complexes are out
+of scope. The clone at data/raw/validation/OROP/ holds the full ROP313 CSV (313 rows) but
+only rows 1..193 are organic. Verify/replace these hand anchors against OROP experimental
+values; do NOT fit away discrepancies — diagnose the physics.
 
 Ferrocene is the internal reference (E° vs Fc/Fc+ = 0 by definition); it also needs a
 metallocene geometry that RDKit cannot embed, so it is flagged special (build separately).
 
-REFERENCE-FRAME AUDIT (2026-09): each anchor was checked against the established MeCN-vs-Fc
-window for its couple. TEMPO+/TEMPO (+0.24), phenothiazine+./PTZ (+0.26), 9,10-anthraquinone
-(-1.28/-1.90), and N-methylpyridinium (-1.8) all sit inside their vs-Fc windows -> correctly
-labeled. ONLY methyl viologen was wrong: -0.45/-0.88 are MeCN vs SCE, mislabeled vs Fc, now
-converted (see below). Remaining TODO: back every anchor with a primary MeCN CV citation.
+GROUNDING AUDIT (2026-10-02): every event now carries `grounded`. True only when the value
+was read in the primary source (quoted in the note); False otherwise. Only grounded events
+enter accuracy statistics / sigma derivation. Status: ferrocene (definition) and TEMPO
+(Gerken & Stahl 2015) grounded; methyl viologen absolute values depend on an unverified
+Ag/Ag+ -> Fc constant (its reference-free wave spacing is grounded, exp_dE12_V);
+10H-phenothiazine (+0.26), 9,10-anthraquinone (-1.28/-1.90) and N-methylpyridinium (-1.8)
+have NO verified primary citation. The sourced MeCN E1/E2 benchmark that supersedes these
+for quinones/imides/viologens is config/benchmark_mecn.py
+(data/raw/validation/two_wave_mecn/).
 """
 
 VALIDATION = [
@@ -26,30 +34,41 @@ VALIDATION = [
         smiles="[Fe].c1ccc[cH-]1.c1ccc[cH-]1",   # metallocene: needs special geometry
         special_geometry=True,
         states=[("neu", 0, 1, 0), ("ox", 1, 2, +1)],
-        events=[dict(event="ox->neu", exp_V_vs_Fc=0.00, note="defines the Fc/Fc+ scale")],
+        events=[dict(event="ox->neu", exp_V_vs_Fc=0.00,
+                     grounded=True,
+                     note="Defines the scale: E(Fc+/Fc) = 0 vs Fc/Fc+ by construction.")],
     ),
     dict(
         id="methyl_viologen",
+        family="pyridine-multi-e",
         name="methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",
         smiles="C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
         states=[("ox2", 2, 1, 0), ("ox1", 1, 2, -1), ("neu", 0, 1, -2)],
-        # CORRECTED 2026-09 (reference-frame audit): the prior -0.45/-0.88 were MeCN vs SCE
-        # (docs/PLAN.md states them "vs SCE"), MISLABELED here as vs Fc. They sit ~0.4 V above
-        # the established MeCN-vs-Fc viologen window (1st red ~-0.8, 2nd red ~-1.25), i.e. in the
-        # vs-SCE window. Converted to Fc via Pavlishchuk & Addison (Inorg. Chim. Acta 2000):
-        # Fc/Fc+ = +0.40 V vs SCE in MeCN  =>  E_vs_Fc = E_vs_SCE - 0.40.
-        # PROVISIONAL (+/-~0.05 V); replace with a primary MeCN CV vs Fc when available. The
-        # reference-free wave spacing (E1-E2 ~0.44 V) independently matches experiment and our
-        # computed ladder, so the shift is a referencing fix, not a fit to our numbers.
-        events=[dict(event="ox2->ox1", exp_V_vs_Fc=-0.85,
-                     note="MeCN vs SCE (-0.45) - 0.40 (Pavlishchuk-Addison); provisional"),
-                dict(event="ox1->neu", exp_V_vs_Fc=-1.28,
-                     note="MeCN vs SCE (-0.88) - 0.40 (Pavlishchuk-Addison); provisional")],
+        # GROUNDING AUDIT 2026-10-02. The previous -0.85/-1.28 V came from Bird & Kuhn's AQUEOUS
+        # MV2+/+. couple (-0.446 V vs NHE) treated as "~ -0.45 vs SCE" in MeCN — a wrong
+        # conversion that matched MeCN data only by coincidence. Primary MeCN source now:
+        # Cook et al., ChemElectroChem 2017 (doi 10.1002/celc.201600536, open copy PMC5467523),
+        # Table 1: E_a = -759 mV, E_b = -1179 mV vs Ag/Ag+ (10 mM, MeCN), 0.1 M TBAPF6, Pt, 0.1 V/s.
+        # The paper reports no Fc calibration, so the vs-Fc values need a literature Ag/Ag+ -> Fc
+        # constant we could not verify (-0.082 V, Pavlishchuk & Addison 2000 as transcribed
+        # secondarily) -> grounded=False for the absolute values. The text states "the second
+        # reduction is not as well behaved" -> E2 is not used. The wave spacing
+        # E_a - E_b = 0.420 V is reference-free and grounded (exp_dE12_V).
+        # N-benzyl-N'-methyl viologen (our grafted core) is measured DIRECTLY vs Fc at
+        # -0.785 / -1.204 V by Kim et al., Chem. Eur. J. 2022 (doi 10.1002/chem.202200149,
+        # PMC9310624; previously misattributed here to Cook 2017) — in config/benchmark_mecn.py.
+        exp_dE12_V=0.420, exp_dE12_note="Cook 2017 Table 1: -759 - (-1179) mV, reference-free",
+        events=[dict(event="ox2->ox1", exp_V_vs_Fc=-0.841, grounded=False,
+                     note="Cook 2017 Table 1 -0.759 V vs Ag/Ag+(10 mM) - 0.082 (UNVERIFIED "
+                          "secondary Ag/Ag+ -> Fc constant)"),
+                dict(event="ox1->neu", exp_V_vs_Fc=-1.261, grounded=False,
+                     note="Cook 2017 Table 1 -1.179 V vs Ag/Ag+ - 0.082 (unverified constant); "
+                          "source: second reduction 'not as well behaved' -> not used")],
     ),
     # --- Explicit PF6- ion-pair species for the viologen fix (released-counterion scheme,
     # docs/PLAN.md). Each keeps its NATURAL number of PF6- so every assembly is NEUTRAL
     # (best for continuum SMD); each reduction releases one free PF6-. E° is assembled from
-    # these by src/redox/ionpair.py as a cross-species reaction, NOT redox.py's adjacent-
+    # these by archive/src/redox/ionpair.py as a cross-species reaction, NOT redox.properties.potentials' adjacent-
     # charge pairing — so each species carries a SINGLE state (no auto-couples). The SMILES
     # formal charges only seed RDKit; the per-state (charge, mult) sets the actual DFT charge
     # (UMA re-scans spin). PF6- = F[P-](F)(F)(F)(F)F.
@@ -73,31 +92,52 @@ VALIDATION = [
     ),
     dict(
         id="tempo_parent",
+        family="nitroxide",
         name="TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",
         smiles="CC1(C)CCCC(C)(C)N1[O]",
         states=[("rad", 0, 2, 0), ("ox", 1, 1, +1), ("red", -1, 1, -1)],
-        events=[dict(event="ox->rad", exp_V_vs_Fc=+0.24, note="TEMPO+/TEMPO, approx verify")],
+        events=[dict(event="ox->rad", exp_V_vs_Fc=+0.249, grounded=True,
+                     note="Gerken & Stahl, ACS Cent. Sci. 2015 (doi 10.1021/acscentsci.5b00163, "
+                          "PMC4827547): 'reversible nitroxyl/oxoammonium redox process at "
+                          "E1/2 = 249 mV vs Fc/Fc+' in CH3CN (verified in text). Electrolyte "
+                          "0.5 M KPF6, not a tetraalkylammonium salt.")],
     ),
     dict(
         id="phenothiazine_parent",
+        family="amine (p-type)",
         name="10H-phenothiazine",
         smiles="c1ccc2c(c1)Nc1ccccc1S2",
         states=[("neu", 0, 1, 0), ("ox", 1, 2, +1)],
-        events=[dict(event="ox->neu", exp_V_vs_Fc=+0.26, note="PTZ+./PTZ, approx verify")],
+        events=[dict(event="ox->neu", exp_V_vs_Fc=+0.26, grounded=False,
+                     note="REF (verify): Connelly & Geiger, Chem. Rev. 1996, 96, 877 / Fu et al. "
+                          "JACS 2005, 127, 7227. SHAKY: N-H parent radical cation DEPROTONATES "
+                          "(chemically irreversible) -> +0.26 better describes an N-ALKYL "
+                          "phenothiazine; our candidate is N-benzyl (reversible), so anchor on "
+                          "N-methylphenothiazine instead.")],
     ),
     dict(
         id="anthraquinone_parent",
+        family="quinone (n-type)",
         name="9,10-anthraquinone",
         smiles="O=C1c2ccccc2C(=O)c2ccccc21",
         states=[("neu", 0, 1, 0), ("red1", -1, 2, -1), ("red2", -2, 1, -2)],
-        events=[dict(event="neu->red1", exp_V_vs_Fc=-1.28, note="AQ/AQ-. approx verify"),
-                dict(event="red1->red2", exp_V_vs_Fc=-1.90, note="approx verify")],
+        events=[dict(event="neu->red1", exp_V_vs_Fc=-1.28, grounded=False,
+                     note="REF (verify exact): Fu, Liu, Yu, Wang, Guo, JACS 2005, 127, 7227 "
+                          "(270 organics, MeCN redox potentials) or Connelly & Geiger, Chem. "
+                          "Rev. 1996, 96, 877. Standard aprotic AQ/AQ-. value; ~0.1 V uncertain."),
+                dict(event="red1->red2", exp_V_vs_Fc=-1.90, grounded=False,
+                     note="REF (verify exact): Fu et al. JACS 2005, 127, 7227. AQ-./AQ2-; ~0.1 V.")],
     ),
     dict(
         id="methylpyridinium",
+        family="pyridine",
         name="N-methylpyridinium",
         smiles="C[n+]1ccccc1",
         states=[("ox", 1, 1, 0), ("red", 0, 2, -1)],
-        events=[dict(event="ox->red", exp_V_vs_Fc=-1.8, note="hard to reduce, approx verify")],
+        events=[dict(event="ox->red", exp_V_vs_Fc=-1.8, grounded=False,
+                     note="WEAKEST, UNVERIFIED: reduction is IRREVERSIBLE near the MeCN cathodic "
+                          "limit -> -1.8 is an ESTIMATE (cf. Kosower pyridinyl radicals, JACS; "
+                          "or Fu et al. JACS 2005, 127, 7227). NOT among our candidate families "
+                          "(pyridine single-e) -> RECOMMEND drop or de-weight.")],
     ),
 ]

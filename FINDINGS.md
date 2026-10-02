@@ -23,12 +23,14 @@ labeled proxies or filters, never as trusted absolute numbers.**
 ---
 
 ## 1. Accuracy floor of implicit-solvent DFT redox potentials is ~0.5–0.9 V
+**Historical result; superseded by Findings 22–23 for the production protocol.**
 Our Tier-1 pipeline: OROP experimental benchmark MAE **0.58 V** (n=36), vs OROP's *own* raw
 implicit-DFT **0.43 V** on the same systems. This is the physics floor — the ~0.5 V "viologen
 error" that started this was never anomalous; it is the normal accuracy of the method for
 charged couples. **Ranking, not absolute potential, is the usable output.**
 
 ## 2. Ranking quality must be measured WITHIN charge class, not globally
+**Principle retained; numerical values superseded by Findings 22–23.**
 Global Spearman (0.95) is inflated because charge classes separate (cations high, anions low),
 so it "ranks" by charge, not chemistry. The honest metric is within-class:
 - cations (+1): Spearman **0.885** — trustworthy for catholyte screening.
@@ -47,7 +49,7 @@ Validated: viologen neu 5.13 eV vs ox1 5.21 eV (sane, consistent; matches the *c
 RKS ZPE). Effect on viologen: MAE 0.429 → **0.372**. Applied uniformly to the whole table.
 
 ## 5. NEGATIVE RESULT — released-counterion ion-pair scheme fails in implicit solvent
-`2 MV²⁺·2PF6⁻` style neutral-assembly scheme (redox.ionpair). Even with a correct singlet
+`2 MV²⁺·2PF6⁻` style neutral-assembly scheme (`archive/src/redox/ionpair.py`). Even with a correct singlet
 `mv_ip2`, waves/spacing are catastrophically wrong (spacing ~ +11 V vs exp −0.43). Cause:
 forming a neutral ion pair from two well-solvated ions costs a large (~+6 eV), poorly-modeled
 desolvation free energy that does NOT cancel between waves. **Do not resurrect continuum
@@ -61,6 +63,8 @@ potentials (at least cations); it is expensive and was dropped.** (It may still 
 +2 dimer desolvation — Finding 9 — the one place it could help, but not pursued.)
 
 ## 7. KEY — the anion "ranking failure" was category errors, not a method failure
+**Historical subset; the integrity lesson is retained, but current full-set metrics are in
+Findings 22–23.**
 The anion Spearman collapse (0.489) was driven by ~5 molecules that **have no reversible
 reduction**: CCl₄ and CH₂Br₂ (dissociative electron attachment — the radical anion breaks a
 C–X bond; CCl₄ neutral→anion heavy-atom RMSD = 3.4 Å), an unbound radical anion (EA_gas < 0),
@@ -97,7 +101,7 @@ but their **level of theory is different** and must be matched to compare number
   stored in the dump's `omega` column). Their Def2SVP has **no diffuse functions** → their
   *electron* (anion) column is noisy (negatives, >3 eV outliers); their hole column is cleaner
   except for poor donors (e.g. quinone cations).
-- **Our production level = ωB97M-V/def2-TZVP(D) on SMD-opt geoms, diffuse for anions** — a
+- **Our production level = ωB97M-V/def2-TZVPD on SMD-opt geoms (uniform diffuse basis since #22; previously diffuse for anions only)** — a
   *different functional + basis + phase*, chosen because it's more appropriate for our reductive
   anolytes (diffuse functions are essential for anions).
 
@@ -180,8 +184,12 @@ the redox chemistry is *local* to each pendant group. Implications:
   then consider backbone/tether effects.
 
 ## 15. Stability axis validated vs experiment (disproportionation = wave spacing)
+**SUPERSEDED by #24:** the 3 spacings below were uncited (MV from an aqueous couple, TEMPO's
+reduction approximate). Against 10 sourced tier-A spacings ΔG_disp is OVER-estimated by
+~24 kJ/mol (all errors positive); σ_disp is now 0.29 eV.
+
 dG_disp = F*(E_high - E_low) is validated directly against experimental two-wave spacings
-(redox.validate_stability): n=3 across families (MV 42, AQ 60, TEMPO 211 kJ/mol exp), MAE
+(redox.validation.stability): n=3 across families (MV 42, AQ 60, TEMPO 211 kJ/mol exp), MAE
 **16 kJ/mol (0.17 eV)**, Spearman **1.00**, small +bias (we slightly over-stabilise). So the
 disproportionation axis is trustworthy; its sigma is 0.17 eV. Broadening needs more molecules
 with two measured MeCN waves (a compute task).
@@ -247,3 +255,269 @@ experimentally observed potential in a real PF6-/Li+ electrolyte, and the gap is
   event (the concentrated -2 / +2) as ion-pairing-sensitive** with a larger error bar (Finding 0/18:
   concentrated charge is where continuum solvation is weakest). Ranking within the set still holds;
   absolute E2 vs a specific electrolyte needs explicit-ion or calibration work, not more continuum.
+
+## 20. QC-AUDIT — lambda quality flags were computed but never reached the scorecard
+An external review of the workflow raised eight issues; all eight were reproduced against the
+code. The three load-bearing ones and what was done:
+
+**(a) Flags computed, then dropped.** `redox.properties.reorg.lambda_for_couple` emits `flag`, `rmsd_A`
+and `anion_homo_eV`, but `redox.screening.scorecard` built its lambda map from `lambda_i_eV` alone and
+never read `flag`. The shipped `results/reorganization.csv` also predated those columns
+(`rmsd_A`/`anion_homo_eV` absent). Re-running the current QC over the candidate set flags
+**14 of 24 couples** — both ethylviologen couples, both ndi_ammonium, both mophquinone, and
+`pmdi/red1->red2`. So the previously reported lambda means and the Pareto front were resting
+on contaminated values. FIXED: flags now propagate; a flagged couple is excluded from the
+mean, and the scorecard carries `lambda_qc` / `n_lambda_flagged` / `lambda_flags` plus an
+unfiltered column for reference. Three of six starting candidates currently have NO QC-clean
+lambda (`all_flagged`) and are therefore withheld from the Pareto plane rather than ranked.
+
+**(b) The cache silently pinned the old protocol — the anion screen was DEAD CODE.**
+`_cross_energy_gas` accepted any cache containing `e_gas_eV`. All 48 candidate cross-point
+caches were written before the gas-HOMO/unbound-anion diagnostics existed, so
+`bool(d.get("anion_unbound"))` evaluated `bool(None)` -> `False` for **every** couple: the
+unbound-anion screen has never once fired on this set, and the cache would never regenerate
+because the `e_gas_eV` test kept passing. The 14 flags above are therefore a LOWER BOUND.
+FIXED: cache entries now carry `cache_schema`, a geometry content hash, charge/mult and the
+required diagnostic fields; `_cache_ok` rejects anything else and `stale_cross_points()` sizes
+a regeneration before running it. This matters most for the quinone dianions.
+
+**(c) The large RMSDs are TORSIONAL, not core distortion — the data is sound.** Cartesian
+heavy-atom RMSD reaches 2.6 A, which looks alarming, but in internal coordinates every flagged
+couple shows **max bond-length change <= 0.042 A** (textbook inner-sphere distortion) against
+**torsion changes of 70-180 deg**. So the DFT geometries/energies are fine; what is wrong is
+the lambda DEFINITION (independent global minimization charges a tether/ring rotation to
+lambda) and a whole-molecule RMSD test too blunt to tell the two apart. No electronic
+structure needs recomputing. Several torsion changes are exactly 180 deg, which for a 2-fold
+symmetric aryl ring is a symmetry-equivalent flip (physically the same conformer) — meaning
+the flag partly OVER-triggers. Outstanding: automorphism-aware RMSD, then core-only vs
+tether-only atom maps and a conformer-matched core lambda for ranking.
+
+**Two traps found while verifying, not in the original review:**
+- `build_candidates.py` embeds the pre-canonicalization RDKit mol but writes the CANONICAL
+  SMILES to the manifest, so **manifest-SMILES atom indices do not map to the stored xyz atom
+  order**. Any substructure match used to index into a geometry is silently scrambled. (Atom
+  ordering IS consistent BETWEEN states of a molecule — element sequence and bond graph match
+  exactly — so cross-state RMSD itself is valid.)
+- `finalize_after_dft.sh` and `run_uma.sh` `source ~/miniforge3/...`; on lambda5 `$HOME` is
+  `/homes/rzhu`, a DIFFERENT filesystem from the NFS repo home, so they cannot find the
+  `redox` env at all. Use `/nfs/lambda_stor_01/homes/rzhu/miniforge3`.
+
+**Lower-severity items confirmed:** spin multiplicity is taken from UMA with no DFT-level
+confirmation (real weakness, but bit nothing here — all six candidates have spin gaps
+0.41-1.32 eV, far above the 0.217 eV degeneracy threshold, so 0 of 6 are ambiguous);
+`lambda_eV` was named as if total but is inner-sphere only (renamed `lambda_i_eV`); the
+"before grafting" column is a methyl-capped analogue, not the literal precursor (relabelled
+"minimal capped analogue"); Ertl SA does not measure graftability — **all 6 of 6** grafted
+structures score LOWER than their capped analogue despite ~90 more Da, so dSA-on-grafting is
+meaningless as a synthetic-cost signal and a route-level graftability score is still needed;
+and `finalize_after_dft.sh` omits reorg/reversibility/capacity/scorecard/Pareto, which is
+exactly how stale tables coexisted with newer QC code.
+
+## 21. Batch-2 scope: dtbc_phenol is reported but NOT ranked (same rule as the metal-oxo rows)
+`config/merrifield_multielectron.py` adds five grafted candidates from
+`merrifield_multielectron_smiles.xlsx`. Two required repair and one is mechanistically out of
+scope for a Marcus/Nelsen treatment:
+- **dtbc_phenol** (`rankable=False`): the sheet grafts one catechol -OH as a benzyl ether then
+  claims the 2e catechol/o-quinone couple — impossible, that couple needs BOTH oxygens. What
+  remains is a 1e phenol oxidation, and even that is an **EC process** (ArOH-+ has pKa <~ -2 in
+  MeCN, so electron transfer is followed by O-H deprotonation). The Nelsen 4-point lambda_i
+  assumes one molecule on two adiabatic surfaces with NO bond made or broken; O-H cleavage
+  violates that exactly as M=O formation does for the excluded metal-oxo rows. Computed and
+  reported for completeness; excluded from the Pareto kinetics axis for consistency.
+- **aq_benzylamino**: the sheet's C9-NH2 tether is destroyed by the anthracene->anthraquinone
+  oxidation (C9 becomes the carbonyl), so it is modelled at C2. Checked for the obvious PCET
+  risk and it is CLEAN — N-H stays 1.004/1.010/1.013 A across neu/red1/red2 with the nearest
+  acceptor 4.7-6.0 A away, i.e. no intramolecular proton transfer. Residual risk is
+  intermolecular (a neighbouring AQ(2-) deprotonating the N-H), which is bimolecular and
+  invisible to a single-molecule model.
+- The five transition-metal rows are excluded; see the module docstring. Their "resin-attached"
+  SMILES are placeholders (Fe- and Mn-THPP both give the H2THPP FREE BASE, W gives WO2(acac)2,
+  Re gives methyltrioxorhenium), SMD has no element-specific parameters for them (the MNSOL CDS
+  term returns the same value to within 0.002 eV for Fe/Mn/Co/Mo/W on a fixed test geometry),
+  and the Mn/Mo/W/Re couples are catalytic oxo transfer, not outer-sphere.
+
+**Latent bug fixed in passing:** `redox.qm.dft` built every `gto.M` without an `ecp=`, so any
+element from Rb (Z>=37) up would have been run ALL-ELECTRON in a valence-only def2 basis
+(W: 74 electrons in the 40 AOs meant for 14) — it converges and returns a number rather than
+erroring. `_ecp_for()` now attaches the matching def2 ECP only when a heavy element is present,
+so all-light systems (every current molecule) are bit-for-bit unchanged.
+
+## 22. QC-AUDIT II — lessons converted into enforced data contracts (2026-09-29)
+A second external review plus our own audit of the computable axes. Every item below is now
+enforced in code and covered by `tests/test_contracts.py` (21 tests, step T of the finalize
+chain), not just documented.
+
+**Silent-failure bugs that were changing results**
+- **Missing data was scored as a negative.** The integrity gate looked up a verdict per couple
+  and treated "no row" as "not reversible": the four batch-2 quinone/viologen candidates
+  (textbook reversible 2e- anolytes) were REJECTED only because `reversibility.csv` predated
+  them. Missing now = INCOMPLETE everywhere (scorecard, Pareto, E°, dG_disp, integrity).
+- **Fc/Fc+ reference used a different free-energy definition.** Molecules used
+  G = E_smd + g_thermal; the Fc reference used E_smd only -> every E° shifted by -79 mV
+  (ferrocene read -0.079 V vs itself). The setter script regex-patched `electrolyte.py`,
+  where the value no longer lived, and printed "[patched]" while changing nothing. The
+  reference is now computed LIVE from the ferrocene states at the active protocol.
+- **Mixed basis in every redox ladder.** Neutral/cation states were scored at def2-TZVP and
+  anions at def2-TZVPD, so the diffuse freedom sat on one side of each reduction and each
+  disproportionation. Uniform def2-TZVPD (`redox.core.protocol.ACTIVE_SP`, incl. Fc) shifts every
+  first reduction (0 -> -1) by **-0.09 V (range -0.05 to -0.14 V, n=17)**, oxidations
+  (+1 -> 0) by +0.016 V, second reductions 0 (both sides were already diffuse), Fc by
+  +0.2 mV. So n-type E1 AND dG_disp (via E1 - E2) carried a systematic ~0.09 V error.
+- **The OROP benchmark was not measuring the production protocol.** 134/170 system pairs had
+  no thermal term (read as 0), and one pair had it on one side only (an error of eV). Backfilled
+  (`scripts/validation/orop/orop_backfill_thermal.py`), pairs without thermal are now excluded,
+  and the benchmark is re-scored at the same uniform protocol (`redox.qm.sp --orop`).
+- **PCM lambda_o had an inverted sign hidden by abs().** In PySCF q = K^-1 R v with
+  R = -f(eps), so the Pekar term is 1/2 dV.(q_op - q_s) >= 0; the code computed the negative
+  and took abs(). Magnitudes were right, but any real operator error would have been invisible.
+  Fixed; a negative value now raises; a genuine limiting-case test (unit point charge in a
+  single-atom cavity) reproduces analytic Born to <1e-5. The previous "sphere_sanity_check"
+  never ran PCM.
+- **UMA spin gaps are not reliable enough to set confidence.** aq_benzyloxy dianion S-T gap:
+  UMA 0.19 eV (flagged near-degenerate) vs DFT 0.81 eV (singlet confirmed). Spin confidence
+  now uses a DFT check (`calcs/spincheck/`) when present.
+
+**Definitions that were scientifically loose**
+- lambda_total added the 4-point sum (lambda_O + lambda_R, the inner term of a SELF-EXCHANGE
+  pair) to a 1-body (electrochemical) lambda_o — neither convention. Now reported explicitly:
+  lambda_O, lambda_R, their sum, lambda_het = (lambda_O+lambda_R)/2 + lambda_o,1 (electrode ET)
+  and lambda_se(d) = lambda_O+lambda_R + 2 lambda_o,1 (1 - a/d) (two-sphere self-exchange).
+- "reversible" over-claimed: bound + no bond-graph change is a necessary condition only.
+  Renamed `intact_bound` (`redox.properties.integrity`, `results/state_integrity.csv`).
+- Capacity counted every in-window couple independently and gave ambipolar molecules both
+  sides' electrons in either pool. Now: contiguous path from the declared resting state, one
+  scorecard row per electrode pool. Counter-ion capacities are scenario conventions.
+- Pareto compared only shared objectives, so a candidate with NO clean lambda could dominate
+  fully characterized ones (aq_benzylamino dominated aq_benzyloxy and pmdi). Rows missing a
+  primary objective are now INCOMPLETE: off the primary front and unable to dominate. The
+  front also used sigma_lambda = 0.10 eV while the benchmark gives 0.209 eV; it now uses each
+  row's own sigma columns.
+
+**Engineering contracts**
+- Energies are protocol-addressed records `calcs/dft/<id>/<state>/sp/<hash>.json`
+  (hash = geometry + charge + spin + xc/basis/NLC + solvent + SCF settings); `read_result`
+  returns only active-protocol energies and never falls back. Reorg cross-point caches are
+  hashed the same way and `_cache_ok` checks the level. `dft.run_batch` flags a result.json
+  from another optimization protocol as STALE instead of silently skipping it.
+- Missing thermal -> INCOMPLETE (never 0); xTB imaginary modes flagged (`thermal_qc`); thermal
+  contribution to each E° reported (`dE_thermal_V`); rotor-cutoff sensitivity in
+  `results/thermal_sensitivity.csv`.
+- `finalize_after_dft.sh` is fail-fast and now also regenerates dG_disp, its validation, and
+  lambda_o.
+
+**Effect on the shortlist.** Anolyte front (both salts): aq_benzyloxy, mophquinone; plus
+viologen under TBAPF6. aq_benzylamino and nq_benzyloxy are not dominated but INCOMPLETE (every
+lambda couple is QC-flagged: tether conformer jump / unbound gas dianion), so they are not
+ranked until a conformer-matched or SMD lambda exists.
+
+**Still open (not fixed by this round):** the E° offset disagreement between OROP and our
+anchors (see #23), second-reduction E° validation (1 OROP point), dG_disp validation (n=3),
+the gas-phase lambda of dianions (ill-defined when the gas dianion is unbound).
+
+## 23. OROP's +0.5 V E° offset is real; it sits mainly in the Fc reference (see #24)
+At the uniform production protocol, the completed OROP subset has a nearly one-sided positive
+error (about +0.5 V), while eight in-house events across five families have MAE 0.15 V and
+bias +0.13 V. This disagreement must be resolved before claiming absolute E° accuracy or
+fitting per-family corrections. Within-charge-class ranking remains useful.
+
+The tempting explanation that OROP uses arbitrary per-solvent experimental reference constants
+is **not established**. The repository's `raw_ferrocene-ref-values.txt` calls its entries
+"ferrocene simulated values used as reference": they are computed absolute Fc/Fc+ potentials
+for each functional/basis/solvent combination (for example B3LYP gives 3.28 V in water,
+4.63 V in MeCN, and 4.28 V in DMF). Solvent dependence is physically expected for an absolute
+potential. A few combinations are conspicuous outliers (up to 7.04 V), but those values alone
+do not show that OROP's experimental values, already tabulated versus Fc, are on inconsistent
+scales.
+
+The offset is therefore an **open diagnostic**, not a conclusion about OROP. The next checks
+are: read SI Text S2 for the exact thermodynamic cycle and standard-state/reference
+conventions; run 3--5 in-house anchors through the OROP geometry path; and run 3--5 OROP
+molecules through the full production conformer path. Those crossed calculations separate a
+reference/free-energy convention mismatch from geometry/conformer and protocol effects.
+
+## 24. VALIDATION ROUND 3 (2026-10-02) — every decision value re-derived, grounded, and checked
+Rule for this round: every reported number must trace to a computation in the repo or a source
+that was actually read (DOI + table/page). Results, all reproducible from files listed below:
+
+**Implementation is correct (independent recompute).** `scripts/validation/audit/recompute_axes.py`
+re-derives every published axis from raw energy records using only `redox.core.protocol` +
+config: **0 discrepancies in 3,391 checks over 9 tables** (`results/validation/audit_recompute.csv`;
+now step 12 of the fail-fast finalize chain). Before this round it found stale tables
+(ndi_ammonium inputs newer than the tables), the scorecard re-reading 0.1-rounded MW and
+half-λ values, an unchecked convergence rule for λ cross points, a truncated Faraday constant
+(96485.0; now N_A·e), and a single-label λ QC flag that let `conformer_jump` hide
+`anion_unbound` — all fixed.
+
+**Provenance bug in energies (fixed).** 37 anion states (21 pipeline + 16 OROP) optimized before
+RI-J became the SCF default (commit fcf05f8, 2026-09-08) were ADOPTED into active-protocol
+records that claim density fitting. For the candidates this was 7–12 meV per state
+(pmdi, dmophquinone, mophquinone, ndi_ammonium anions). Adoption now requires recorded
+density-fitting / tolerance / guess-sweep provenance (`redox.qm.sp._adoptable`,
+`redox.core.protocol.record_provenance_ok`); all 85 adopted records were recomputed.
+After the fix every candidate state energy equals an independent multi-guess recompute to
+≤0.003 meV. Effect on candidates: E1 +4–5 mV, λ_i +7–9 meV, ΔG_disp +0.7–1.0 kJ/mol.
+
+**SCF ground state.** `scripts/validation/reference/scf_level_check.py` re-solved every state
+from up to 9 initial guesses (minao/atom/huckel + N±1 orbital-occupation guesses).
+Candidates: all 63 state phases and all 42 λ cross points that feed a ranked candidate are on the
+lowest solution found (except the provenance records above). Reference set (36 states):
+two wrong-state production SCFs — **ferrocenium gas phase 2.54 eV high** (E(Fc+)−E(Fc) 8.97 eV
+vs NIST evaluated IE 6.71 ± 0.08 eV, webbook.nist.gov CAS 102-54-5; the SMD energy used for E° is
+on the lowest solution, so the Fc reference 4.356 V is unaffected) and **OROP system 170
+reduced state in SMD, 0.112 eV high**. Open-shell single points now keep the lowest of
+minao/atom/huckel (`redox.qm.dft._lowest_scf`). That sweep does NOT reach the Fc+ gas minimum
+(atom was still 0.93 eV high; only the occupation guess did): **do not use any gas-phase
+quantity of ferrocene** (its IP, ΔG_solv or λ).
+
+**E° against a sourced MeCN benchmark** (`config/benchmark_mecn.py` ←
+`data/raw/validation/two_wave_mecn/two_wave_mecn.csv`, 42 rows, every row with DOI + table;
+tier A = E°′/E1/2 reported vs Fc directly or with the authors' own calibration; tier B =
+half-peak potentials, water-containing electrolyte, or an unverified conversion constant;
+excluded = cathodic peaks / irreversible waves / unspecified stereo; 33 new molecules computed
+with the production protocol; `results/validation/benchmark_mecn.csv`). Tier A, computed −
+experimental:
+
+| couple | n | bias | SD | Spearman |
+|---|---|---|---|---|
+| E1 (0/−1), all | 24 | +0.26 V | 0.11 V | 0.97 |
+| E1, quinones | 18 | +0.31 V | 0.07 V | 0.92 |
+| E1, imides | 6 | +0.12 V | 0.10 V | 0.94 |
+| E2 (−1/−2) | 8 | −0.07 V | 0.18 V | 0.75 |
+| spacing E1−E2 (reference-free) | 9 | +0.25 V | 0.17 V | 0.80 |
+
+Reading: ranking within a family is strong; absolute E1 is systematically too positive
+(tight for quinones). The disproportionation over-estimate (ΔG_disp, tier A n=10: MAE
+23.4 kJ/mol, all errors positive, RMSE 0.29 eV) comes from E1, not E2 — E2 is close to
+experiment (1,2-naphthoquinone is a −0.46 V outlier). A Fc-reference error alone would shift
+E1 and E2 equally, so it is not the whole explanation. Nothing is corrected or fitted.
+
+**OROP offset (FINDINGS #23), level-crossing result.** At OROP's own level (B3LYP-D3/6-31G*,
+C-PCM ε=37.5; D3 damping not stated by OROP — zero damping assumed) our code gives an absolute
+Fc/Fc+ of 4.185 V vs OROP's tabulated 4.662 V, and E vs Fc for 11 OROP systems +0.43 V above
+OROP's own B3LYP values (+1/0: +0.38, n=8; 0/−1: +0.57, n=3), while the absolute organic
+potentials agree to ~0.07 V (e.g. system 1: 5.615 vs 5.684 V). So most of the OROP gap sits in
+the ferrocene reference, not the organics; why OROP's Fc number is higher is not established.
+Our Fc gas IE is low vs NIST at both levels (production 6.42 eV incl. xTB ΔZPE, B3LYP 6.19 eV),
+consistent with — not proof of — the level-matched Fc reference contributing a positive offset.
+`results/validation/{scf_ground_state_check,level_crossing_Efc}.csv`. Refreshed production OROP
+benchmark (all records re-verified, n=169): MAE 0.52 V, bias +0.49 V, Spearman 0.92;
+within class 0/−1 (n=49) 0.78, +1/0 (n=118) 0.79 (`results/orop_benchmark.csv`).
+
+**Grounded uncertainties now used in the scorecard.** σ_E = per-family RMSE over grounded
+points only (benchmark tier A + `grounded=True` anchors; Fc never counted — its 0 residual had
+flattered the pooled σ): quinone 0.298 V (was 0.118), imide 0.139 V (was pooled 0.178), viologen
+0.088 V (was 0.131). σ_disp 0.288 eV (was 0.183 from 3 uncited points). Anchor audit:
+methyl viologen's old values came from an aqueous couple (Bird & Kuhn) — replaced by Cook 2017
+(MeCN; absolute values need an unverified Ag/Ag+→Fc constant, spacing 0.420 V grounded);
+TEMPO +0.249 V verified (Gerken & Stahl 2015); phenothiazine, anthraquinone and
+N-methylpyridinium anchors have no verified source (`grounded=False`).
+
+**Outer-sphere λ_o.** `results/lambda_outer.csv` held only the legacy B3LYP/6-31G(d,p),
+non-SCF-checked values although the v2 (def2-SVPD, SCF-checked, both geometries) runs for all 21
+candidate couples existed; consolidated now (shifts −8 to −24 meV; aq_benzyloxy and bisviologen gain a
+λ_o). `redox.properties.lambda_outer.solvent_constants` imported `config.electrolyte` (never
+importable) and silently fell back to hard-coded constants; now loads the config and fails loudly.
+
+**Effect on the shortlist: none.** Pareto-optimal (LiPF6) aq_benzyloxy, mophquinone; (TBAPF6) the
+same + viologen — identical before and after every correction above. ndi_ammonium becomes a
+complete (dominated) candidate; nq_benzyloxy (no clean λ) leaves the TBAPF6 partial front.

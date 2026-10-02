@@ -1,4 +1,11 @@
-id,dG_exp_kJmol,dG_calc_kJmol,err_kJmol,approx,note
-methyl_viologen,41.5,54.2,12.7,False,"MV2+/+. and MV+./0, standard MeCN vs Fc"
-anthraquinone_parent,59.8,86.0,26.2,False,"AQ/AQ-. and AQ-./AQ2-, MeCN vs Fc"
-tempo_parent,211.3,220.7,9.4,True,TEMPO+/. (ox) and ./- (red); reduction approximate
+id,intermediate,dG_exp_kJmol,dG_calc_kJmol,err_kJmol,tier,source
+bm_1_4_benzoquinone,red1,78.2,108.3,30.1,A,"Wang H., Emanuelsson R., Banerjee A., Ahuja R., Stromme M.,  doi:10.1021/acs.jpcc.0c03632"
+bm_2_methyl_1_4_benzoquinone,red1,77.2,105.1,27.9,A,"Wang H., Emanuelsson R., Banerjee A., Ahuja R., Stromme M.,  doi:10.1021/acs.jpcc.0c03632"
+bm_2_tert_butyl_1_4_benzoquinone,red1,76.2,105.0,28.8,A,"Wang H., Emanuelsson R., Banerjee A., Ahuja R., Stromme M.,  doi:10.1021/acs.jpcc.0c03632"
+bm_2_fluoro_1_4_benzoquinone,red1,90.7,110.4,19.7,A,"Wang H., Emanuelsson R., Banerjee A., Ahuja R., Stromme M.,  doi:10.1021/acs.jpcc.0c03632"
+bm_1_2_naphthoquinone,red1,39.6,101.8,62.2,A,"Cabral R.G., Viegas G., Pacheco R., Sousa A.C., Robalo M.P.  doi:10.3390/molecules28031232"
+bm_n_n_diisopropylpyromellitic_diimide,red1,60.8,75.5,14.7,A,"Daub N., Janssen R.A.J., Hendriks K.H. 'Imide-Based Multiele doi:10.1021/acsaem.1c01490"
+bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,red1,58.9,76.7,17.8,A,"Daub N., Janssen R.A.J., Hendriks K.H. 'Imide-Based Multiele doi:10.1021/acsaem.1c01490"
+bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,red1,58.9,64.5,5.6,A,"Daub N., Janssen R.A.J., Hendriks K.H. 'Imide-Based Multiele doi:10.1021/acsaem.1c01490"
+bm_1_benzyl_1_methyl_4_4_bipyridinium,ox1,40.4,52.6,12.2,A,"Kim D., Sanford M.S., Vaid T.P., McNeil A.J. 'A Nonaqueous R doi:10.1002/chem.202200149"
+methyl_viologen,ox1,40.5,55.2,14.7,A,"Cook 2017 Table 1: -759 - (-1179) mV, reference-free"
