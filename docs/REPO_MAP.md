@@ -48,6 +48,11 @@ screening axis means and how far it can be trusted, `docs/DATASETS.md` for exter
 - `scorecard.py` — one row per (molecule, electrode pool): contiguous redox path from the
   resting state, explicit λ conventions (λ_het, λ_SE), INCOMPLETE propagation.
 - `pareto.py` — σ-aware Pareto front on complete rows only (incomplete rows cannot dominate).
+- `discovery.py` — systematic candidate identification: family patterns with a 2e⁻ rule backed
+  by measured two-wave data, Merrifield grafting as RDKit reactions (O-benzyl ether, N-benzyl
+  amine/imide, Menshutkin only when it completes a viologen, S-benzyl, benzyl ester) onto the
+  4-methylbenzyl tether proxy, stereo/element rules, capacity + SA computed like the scorecard.
+  `rediscover()` must regenerate every registered candidate (tested).
 
 **`validation/` — accuracy checks used by the pipeline**
 - `stability.py` — ΔG_disp vs experimental wave spacing → σ_disp.
@@ -79,7 +84,9 @@ screening axis means and how far it can be trusted, `docs/DATASETS.md` for exter
     fresh process.
   - `audit/` — `recompute_axes.py`: independent from-raw recompute of every published axis
     (imports only `redox.core.protocol` + config) → `results/validation/audit_*.csv`.
-- `mining/` — D3TaLES family coverage + low-λ/low-SA candidate mining.
+- `mining/` — D3TaLES family coverage + candidate mining; `identify_candidates.py` runs
+  `redox.screening.discovery` over D3TaLES → `results/discovery/` (pool, rediscovery check,
+  per-family pre-filter front).
 - `fleet/` — multi-node GPU fan-out, every worker through `~/bin/gpu_reserve`
   (`dft_launch.sh` = `redox.qm.dft --all` with one global shard numbering across nodes;
   `sp_fleet_worker.sh` = SP records + λ cross points (`CROSS_IDS`) + OROP SPs;

@@ -1,0 +1,17 @@
+id,name,config,families,multi_e,grafted_smiles,in_scorecard,MW,n_e_nominal,capacity_nominal_mAh_g,SA_grafted,sa_note,charge_resting,heavy_atoms
+ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",starting_candidates,viologen,True,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1,True,290.41,2,184.6,2.59,inherently-charged (azinium; no neutral form),2,22
+pmdi,N-benzyl-N'-methyl pyromellitic diimide,starting_candidates,bis-imide,True,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C)c(=O)c4cc3c2=O)cc1,True,334.331,2,160.3,2.24,neutral,0,25
+ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,starting_candidates,bis-imide,True,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCC[N+](C)(C)C)C4=O)cc1,True,470.549,2,113.9,2.63,inherently-charged (azinium; no neutral form),1,35
+mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",starting_candidates,p-quinone,True,Cc1ccc(COc2ccc(C3=CC(=O)C=CC3=O)cc2)cc1,True,304.345,2,176.1,2.04,neutral,0,23
+dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",starting_candidates,p-quinone,True,COC1=CC(=O)C(c2cc(OCc3ccc(C)cc3)ccc2OC)=CC1=O,True,364.397,2,147.1,2.3,neutral,0,27
+bisviologen,"N,N'-bis(benzyl)-4,4'-bipyridinium (bis-tethered viologen)",merrifield_multielectron,viologen,True,Cc1ccc(C[n+]2ccc(-c3cc[n+](Cc4ccc(C)cc4)cc3)cc2)cc1,True,366.508,2,146.3,2.34,inherently-charged (azinium; no neutral form),2,28
+aq_benzyloxy,2-(benzyloxy)anthraquinone,merrifield_multielectron,p-quinone,True,Cc1ccc(COc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1,True,328.367,2,163.2,1.81,neutral,0,25
+nq_benzyloxy,"2-(benzyloxy)-1,4-naphthoquinone (from lawsone)",merrifield_multielectron,p-quinone,True,Cc1ccc(COC2=CC(=O)c3ccccc3C2=O)cc1,True,278.307,2,192.6,1.99,neutral,0,21
+dtbc_phenol,"3,5-di-tert-butyl-2-(benzyloxy)phenol (mono-O-benzyl DTBC)",merrifield_multielectron,,False,Cc1ccc(COc2c(O)cc(C(C)(C)C)cc2C(C)(C)C)cc1,True,326.48,1,82.1,2.18,neutral,0,24
+aq_benzylamino,2-(benzylamino)anthraquinone (repaired 9-aminoanthracene route),merrifield_multielectron,p-quinone,True,Cc1ccc(CNc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1,True,327.383,2,163.7,1.86,neutral,0,25
+pyridinium,N-benzylpyridinium,redox_groups,pyridinium,False,Cc1ccc(C[n+]2ccccc2)cc1,False,184.262,1,145.5,2.01,inherently-charged (azinium; no neutral form),1,14
+cyanopyridinium,N-benzyl-4-cyanopyridinium,redox_groups,pyridinium,False,Cc1ccc(C[n+]2ccc(C#N)cc2)cc1,False,209.272,1,128.1,2.31,inherently-charged (azinium; no neutral form),1,16
+viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",redox_groups,viologen,True,Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1,True,276.383,2,193.9,2.55,inherently-charged (azinium; no neutral form),2,21
+phenothiazine,N-benzylphenothiazine,redox_groups,phenothiazine,False,Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1,False,303.43,1,88.3,1.84,neutral,0,22
+tempo,4-(benzyloxy)-TEMPO,redox_groups,nitroxide,False,Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1,False,276.4,1,97.0,2.48,neutral,0,20
+anthraquinone,2-(benzyloxymethyl)anthraquinone,redox_groups,p-quinone,True,Cc1ccc(COCc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1,False,342.394,2,156.6,1.94,neutral,0,26

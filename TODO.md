@@ -64,6 +64,18 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked. Previous
 - [ ] Anchors without a verified source: phenothiazine (+0.26), anthraquinone (-1.28/-1.90),
       N-methylpyridinium (-1.8) — `grounded=False`; find primary MeCN data or drop.
 
+## Candidate discovery (2026-10-06)
+- [x] `redox.screening.discovery` + `scripts/mining/identify_candidates.py`: rules regenerate
+      16/16 registered candidates; D3TaLES -> 113 new graftable 2e- quinones (107 p, 6 o);
+      0 graftable bis-imides (3 found, all N,N'-dialkyl), 0 viologens (none in D3TaLES).
+- [x] Figures `results/figures/candidates/discovery_*.png` (capacity vs SA, chemical-space PCA,
+      D3TaLES lambda; only physical D3TaLES lambda 0-1.5 eV is used — 58 of 113).
+- [ ] Stage 2: run the 8-molecule pre-filter front (`results/discovery/d3tales_prefilter_front.csv`)
+      through the full grafted pipeline; check halo-quinones (Cl/Br on the quinone ring) for
+      nucleophilic substitution — the grafting conditions themselves may attack them.
+- [ ] Design generators for bis-imides and viologens (not available from D3TaLES).
+- [ ] Validate a cheap stage-1 ranking (UMA/xTB) against our DFT before cutting deeper.
+
 ## Repo hygiene (refactor 2026-10-02)
 - [x] `src/redox` split into subpackages `core/ build/ qm/ properties/ screening/ validation/`
       (`redox.redox` -> `redox.properties.potentials`); `scripts/` regrouped (pipeline, analysis,

@@ -308,3 +308,20 @@ def test_lowest_scf_keeps_lowest_converged_guess():
     finally:
         dft._kernel_robust = orig
     assert post == "atom"                     # post() result belongs to the kept guess
+
+
+def test_discovery_rules_rediscover_every_current_candidate():
+    """The systematic identification rules (redox.screening.discovery), applied to the
+    precursor of each grafted candidate in the configs, must regenerate exactly that
+    candidate and classify its electron count like the config does."""
+    from redox.screening.discovery import rediscover
+    groups = [g for cfg in ("starting_candidates", "merrifield_multielectron", "redox_groups")
+              for g in common.load_config(cfg).GROUPS if "frag" in g]
+    rows = rediscover(groups, faraday=96485.33212)
+    assert rows and all(r["rediscovered"] for r in rows), [r["id"] for r in rows if not r["rediscovered"]]
+    multi = {r["id"]: r["multi_e"] for r in rows}
+    for gid in ("viologen", "ethylviologen", "bisviologen", "pmdi", "ndi_ammonium",
+                "mophquinone", "dmophquinone", "aq_benzyloxy", "nq_benzyloxy", "aq_benzylamino"):
+        assert multi[gid], gid
+    for gid in ("pyridinium", "phenothiazine", "tempo", "dtbc_phenol"):
+        assert not multi[gid], gid
