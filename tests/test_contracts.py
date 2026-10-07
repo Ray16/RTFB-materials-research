@@ -315,7 +315,8 @@ def test_discovery_rules_rediscover_every_current_candidate():
     precursor of each grafted candidate in the configs, must regenerate exactly that
     candidate and classify its electron count like the config does."""
     from redox.screening.discovery import rediscover
-    groups = [g for cfg in ("starting_candidates", "merrifield_multielectron", "redox_groups")
+    groups = [g for cfg in ("starting_candidates", "merrifield_multielectron", "redox_groups",
+                            "discovered_candidates")
               for g in common.load_config(cfg).GROUPS if "frag" in g]
     rows = rediscover(groups, faraday=96485.33212)
     assert rows and all(r["rediscovered"] for r in rows), [r["id"] for r in rows if not r["rediscovered"]]

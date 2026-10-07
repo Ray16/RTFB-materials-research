@@ -52,6 +52,7 @@ REFERENCE_IDS = {"ferrocene"}
 CANDIDATE_CONFIGS = [
     ("starting", "starting_candidates"),
     ("merrifield_multi", "merrifield_multielectron"),
+    ("discovered", "discovered_candidates"),     # growing registry (register_candidates.py)
 ]
 
 

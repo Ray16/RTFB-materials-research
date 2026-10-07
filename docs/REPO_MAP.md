@@ -97,6 +97,21 @@ screening axis means and how far it can be trusted, `docs/DATASETS.md` for exter
   (`candidates/`, `validation/`, `reorg/`, `pipeline/`); every `plot_*.py` uses
   `plotting/plot_style.py` `apply_style()`.
 
+## Adding candidates (the growing registry)
+1. `python scripts/mining/identify_candidates.py [--pubchem]` — systematic identification
+   (rules regenerate every registered candidate); writes `results/discovery/`. Already
+   registered molecules are marked `parent_in_library` and never resurface as new.
+2. Name the leads (real names from the PubChem parent) + chemistry flags in a
+   `data/raw/candidates/discovered_names_<date>.csv`, then
+   `python scripts/mining/register_candidates.py --from <front csv> --names <csv>` —
+   APPEND-ONLY into `config/discovered_candidates.py` (provenance recorded, idempotent).
+3. `python -m redox.build.candidates --config config/discovered_candidates.py` (library),
+   `scripts/pipeline/run_uma.sh`, then DFT with the registry protocol through the gate:
+   `DFT_ARGS="--nconf 3 --preopt alpb" scripts/fleet/dft_launch.sh <N> <i0> <gpus>` per node,
+   `sp_fleet_worker.sh` (SP records + λ cross points via `CROSS_IDS`), and finally
+   `scripts/pipeline/finalize_after_dft.sh` — the scorecard picks the batch up automatically
+   (`redox.screening.scorecard.CANDIDATE_CONFIGS`, batch "discovered").
+
 ## `tests/`
 `test_contracts.py` — thermodynamic identities, state ordering, protocol/cache invalidation,
 contiguous capacity, Pareto completeness/σ, PCM sign + Born limit.

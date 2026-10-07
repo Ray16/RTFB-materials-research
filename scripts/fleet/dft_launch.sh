@@ -6,6 +6,8 @@
 # skipped), so give each node a disjoint i-range of the same N:
 #   ssh lambda1 "bash .../dft_launch.sh 15 0 0 1 2 3 4 5 6"      # shards 0-6
 #   ssh lambda5 "bash .../dft_launch.sh 15 7 0 1 2 3 4 5 6 7"    # shards 7-14
+# DFT_ARGS passes extra redox.qm.dft options, e.g. the registry's run protocol:
+#   DFT_ARGS="--nconf 3 --preopt alpb"   (config/discovered_candidates.py RUN)
 # Logs: logs/fleet/dft/<host>_gpu<g>.log
 REPO=/nfs/lambda_stor_01/homes/rzhu/0_redox
 GR=/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve
@@ -23,7 +25,7 @@ N=$1; i=$2; shift 2; H=$(hostname -s); mkdir -p logs/fleet/dft
 for g in "$@"; do
   setsid nohup "$GR" run "$g" -- env OMP_NUM_THREADS="$THREADS" MKL_NUM_THREADS="$THREADS" \
     OPENBLAS_NUM_THREADS="$THREADS" PYTHONPATH="$REPO/src" LD_LIBRARY_PATH="$NVLIB${LD_LIBRARY_PATH:-}" \
-    "$PY" -m redox.qm.dft --all --shard "$N:$i" --backend gpu \
+    "$PY" -m redox.qm.dft --all --shard "$N:$i" --backend gpu ${DFT_ARGS:-} \
     > "logs/fleet/dft/${H}_gpu${g}.log" 2>&1 < /dev/null &
   i=$((i+1)); sleep 2
 done

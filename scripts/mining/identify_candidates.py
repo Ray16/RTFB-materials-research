@@ -30,7 +30,8 @@ from redox.screening.discovery import TETHER, describe, identify, rediscover  # 
 
 OUT = ROOT / "results" / "discovery"
 D3 = ROOT / "data" / "raw" / "validation" / "D3TaLES" / "d3tales_public.csv"
-CONFIGS = ("starting_candidates", "merrifield_multielectron", "redox_groups")
+CONFIGS = ("starting_candidates", "merrifield_multielectron", "redox_groups",
+           "discovered_candidates")
 
 
 def _front(df, cols_max=("capacity_nominal_mAh_g",), cols_min=("SA_grafted", "d3_electron_reorg_eV")):
