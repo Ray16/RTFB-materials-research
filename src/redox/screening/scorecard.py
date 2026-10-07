@@ -481,8 +481,13 @@ def build():
             dvals = [disp[(gid, c["sR"])] for c in acc[:-1] if (gid, c["sR"]) in disp] \
                 if pool == "anolyte" else \
                 [disp[(gid, c["sO"])] for c in acc[:-1] if (gid, c["sO"]) in disp]
+            # a path cut short by MISSING data (not by an inaccessible couple) gives only a
+            # lower bound on capacity and stability: INCOMPLETE, never a ranked candidate
+            truncated = stop.get(pool, "").startswith("INCOMPLETE")
             rows.append(dict(
-                base, status="candidate", role=pool, pool=pool,
+                base, status=("INCOMPLETE" if truncated else "candidate"),
+                **({"reason": f"path truncated by missing data: {stop[pool]}"} if truncated else {}),
+                role=pool, pool=pool,
                 resting_state=rest[0], path=" ; ".join(c["couple"] for c in acc),
                 path_stop=stop.get(pool, ""),
                 n_accessible=n_acc,

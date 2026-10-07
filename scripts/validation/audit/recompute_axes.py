@@ -274,7 +274,11 @@ def audit_potentials():
                 note="table row has no manifest couple")
     # couple sets: manifest (potentials) vs calcs/dft result.json charges (reorg/integrity/disp)
     for gid in sorted(manifest_groups()):
-        man = {k[1] for k in MY_E if k[0] == gid}
+        computed = {x["state"] for x in calc_states(gid)}
+        # a molecule still being computed publishes INCOMPLETE rows for its missing states;
+        # compare only couples whose two states both exist
+        man = {k[1] for k in MY_E if k[0] == gid
+               and set(k[1].split("->")) <= computed}
         cal = {f"{a['state']}->{b['state']}" for a, b in adjacent(calc_states(gid))}
         if cal and man != cal:
             add(T, gid, "couple_set_manifest_vs_calcs", ";".join(sorted(man)), ";".join(sorted(cal)),
@@ -285,8 +289,14 @@ def audit_potentials():
         if s is None:
             continue
         add("manifest", r["id"], f"{r['state']}:charge", r["charge"], s["charge"], "logic", digits=0)
-        add("manifest", r["id"], f"{r['state']}:mult", r["mult_hint"], s["mult"], "logic", digits=0,
-            note="manifest mult_hint vs result.json mult")
+        # the multiplicity is CHOSEN by the UMA spin scan (mult_hint is only a hint), so a
+        # difference is not an arithmetic error — but UMA under-estimates spin gaps, so it is
+        # a plausibility flag that calls for a DFT spin check
+        if int(float(r["mult_hint"])) != int(s["mult"]):
+            SAN.append(dict(id=r["id"], state=r["state"], check="mult_differs_from_hint",
+                            value=f"{r['mult_hint']}->{s['mult']}", threshold="",
+                            threshold_basis="UMA spin scan chose it; DFT-check (FINDINGS #22)",
+                            note="multiplicity chosen by UMA differs from the manifest hint"))
     return fc
 
 
@@ -570,7 +580,7 @@ def audit_capacity():
         add(T, gid, "n_graft_sites", p["n_graft_sites"], ng, digits=0)
         add(T, gid, "MW_repeat_unit", p["MW_repeat_unit"], (mw + ng * C_MASS) if ng else None, digits=4)
         add(T, gid, "specific_capacity_mAh_g", p["specific_capacity_mAh_g"],
-            n_all * F_TABLE_CAPACITY / (mw * C_PER_MAH) if mw else None, digits=1)
+            n_all * F_TABLE_CAPACITY / (mw * C_PER_MAH) if (mw and n_all) else None, digits=1)
         neu = [x for x in sts if x["charge"] == 0] or sorted(sts, key=lambda x: abs(x["charge"]))
         dgs = next((x["dG_solv"] for x in neu if x["dG_solv"] is not None), None)
         add(T, gid, "dGsolv_neutral_eV", p["dGsolv_neutral_eV"], dgs, digits=3)
@@ -584,7 +594,8 @@ def audit_capacity():
 # =========================================================== 5a. scorecard (independent)
 def candidate_meta():
     batches, flags, unrank = {}, {}, set()
-    for b, mod in (("starting", "starting_candidates"), ("merrifield_multi", "merrifield_multielectron")):
+    for b, mod in (("starting", "starting_candidates"), ("merrifield_multi", "merrifield_multielectron"),
+                   ("discovered", "discovered_candidates")):
         for g in cfg(mod).GROUPS:
             batches[g["id"]] = b
             if g.get("rankable") is False:
@@ -744,7 +755,9 @@ def my_scorecard(fc):
             dv = [MY_DISP[(gid, s)] * EV_KJMOL for s in inter if (gid, s) in MY_DISP]
             ct = cap_tab.get(gid, {})
             out[(gid, pool)] = dict(
-                status="candidate", rankable=(gid not in unrank), resting_state=rest[gid][0],
+                # missing-data truncation -> INCOMPLETE (only a lower bound), else candidate
+                status=("INCOMPLETE" if str(stop[pool]).startswith("INCOMPLETE") else "candidate"),
+                rankable=(gid not in unrank), resting_state=rest[gid][0],
                 path=" ; ".join(c["couple"] for c in acc), path_stop=stop[pool], n_accessible=n,
                 E_V=statistics.mean(c["Er"] for c in acc),
                 sigma_E_V=sigE,

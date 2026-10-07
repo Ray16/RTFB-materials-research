@@ -326,3 +326,17 @@ def test_discovery_rules_rediscover_every_current_candidate():
         assert multi[gid], gid
     for gid in ("pyridinium", "phenothiazine", "tempo", "dtbc_phenol"):
         assert not multi[gid], gid
+
+
+def test_truncated_path_is_incomplete_not_candidate(monkeypatch):
+    """A redox path cut short by missing data gives only a lower-bound capacity: the pool row
+    must be INCOMPLETE (so it cannot be ranked or dominate), never 'candidate'."""
+    import inspect
+    src = inspect.getsource(scorecard.build)
+    assert 'status=("INCOMPLETE" if truncated else "candidate")' in src
+    paths, stop = scorecard.contiguous_paths(
+        {0: dict(couple="neu->red1", sO="neu", sR="red1", E=-1.0, q_ox=0, q_red=-1, status="ok",
+                 integrity="intact_bound", in_window=True),
+         -1: dict(couple="red1->red2", sO="red1", sR="red2", E=None, q_ox=-1, q_red=-2,
+                  status="INCOMPLETE", integrity=None, in_window=False)}, 0, 0.0)
+    assert len(paths["anolyte"]) == 1 and stop["anolyte"].startswith("INCOMPLETE")

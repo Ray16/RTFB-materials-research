@@ -945,352 +945,336 @@ redox_potentials,bm_10_methylphenothiazine,ox->neu:g_thermal_red_eV,4.3783,4.378
 redox_potentials,bm_10_methylphenothiazine,ox->neu:E_abs_V,5.016,5.016,0,ok,exact,1e-06,
 redox_potentials,bm_10_methylphenothiazine,ox->neu:E_vs_Fc_V,0.66,0.66,0,ok,exact,1e-06,
 redox_potentials,bm_10_methylphenothiazine,ox->neu:dE_thermal_V,0.0077,0.0077,0,ok,exact,1e-06,
+redox_potentials,d3_05hfap,neu->red1:status,"INCOMPLETE:neu(no_energy),red1(no_energy)","INCOMPLETE:neu(no_energy),red1(no_energy)",,ok,logic,equal,
+redox_potentials,d3_05hfap,neu->red1:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_05hfap,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_05hfap,neu->red1:dG_smd_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,neu->red1:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,neu->red1:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,neu->red1:E_abs_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,neu->red1:E_vs_Fc_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,neu->red1:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,red1->red2:status,"INCOMPLETE:red1(no_energy),red2(no_energy)","INCOMPLETE:red1(no_energy),red2(no_energy)",,ok,logic,equal,
+redox_potentials,d3_05hfap,red1->red2:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_05hfap,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_05hfap,red1->red2:dG_smd_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,red1->red2:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,red1->red2:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,red1->red2:E_abs_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,red1->red2:E_vs_Fc_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05hfap,red1->red2:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80izcq,neu->red1:status,ok,ok,,ok,logic,equal,
+redox_potentials,d3_80izcq,neu->red1:thermal_qc,ok,ok,,ok,logic,equal,
+redox_potentials,d3_80izcq,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_80izcq,neu->red1:dG_smd_eV,-3.8759,-3.8759,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,neu->red1:g_thermal_ox_eV,8.9247,8.9247,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,neu->red1:g_thermal_red_eV,8.8416,8.8416,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,neu->red1:E_abs_V,3.876,3.876,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,neu->red1:E_vs_Fc_V,-0.48,-0.48,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,neu->red1:dE_thermal_V,0.0832,0.0832,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,red1->red2:status,ok,ok,,ok,logic,equal,
+redox_potentials,d3_80izcq,red1->red2:thermal_qc,ok,ok,,ok,logic,equal,
+redox_potentials,d3_80izcq,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_80izcq,red1->red2:dG_smd_eV,-1.055,-1.055,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,red1->red2:g_thermal_ox_eV,8.8416,8.8416,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,red1->red2:g_thermal_red_eV,8.6623,8.6623,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,red1->red2:E_abs_V,1.055,1.055,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,red1->red2:E_vs_Fc_V,-3.301,-3.301,0,ok,exact,1e-06,
+redox_potentials,d3_80izcq,red1->red2:dE_thermal_V,0.1792,0.1792,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,neu->red1:status,ok,ok,,ok,logic,equal,
+redox_potentials,d3_05stji,neu->red1:thermal_qc,imag_modes,imag_modes,,ok,logic,equal,
+redox_potentials,d3_05stji,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_05stji,neu->red1:dG_smd_eV,-3.3212,-3.3212,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,neu->red1:g_thermal_ox_eV,6.2771,6.2771,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,neu->red1:g_thermal_red_eV,6.189,6.189,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,neu->red1:E_abs_V,3.321,3.321,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,neu->red1:E_vs_Fc_V,-1.034,-1.034,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,neu->red1:dE_thermal_V,0.0881,0.0881,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,red1->red2:status,ok,ok,,ok,logic,equal,
+redox_potentials,d3_05stji,red1->red2:thermal_qc,imag_modes,imag_modes,,ok,logic,equal,
+redox_potentials,d3_05stji,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_05stji,red1->red2:dG_smd_eV,-2.5633,-2.5633,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,red1->red2:g_thermal_ox_eV,6.189,6.189,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,red1->red2:g_thermal_red_eV,5.9568,5.9568,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,red1->red2:E_abs_V,2.563,2.563,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,red1->red2:E_vs_Fc_V,-1.792,-1.792,0,ok,exact,1e-06,
+redox_potentials,d3_05stji,red1->red2:dE_thermal_V,0.2322,0.2322,0,ok,exact,1e-06,
+redox_potentials,d3_05clzk,neu->red1:status,ok,ok,,ok,logic,equal,
+redox_potentials,d3_05clzk,neu->red1:thermal_qc,ok,ok,,ok,logic,equal,
+redox_potentials,d3_05clzk,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_05clzk,neu->red1:dG_smd_eV,-3.6601,-3.6601,0,ok,exact,1e-06,
+redox_potentials,d3_05clzk,neu->red1:g_thermal_ox_eV,5.6315,5.6315,0,ok,exact,1e-06,
+redox_potentials,d3_05clzk,neu->red1:g_thermal_red_eV,5.5962,5.5962,0,ok,exact,1e-06,
+redox_potentials,d3_05clzk,neu->red1:E_abs_V,3.66,3.66,0,ok,exact,1e-06,
+redox_potentials,d3_05clzk,neu->red1:E_vs_Fc_V,-0.696,-0.696,0,ok,exact,1e-06,
+redox_potentials,d3_05clzk,neu->red1:dE_thermal_V,0.0353,0.0353,0,ok,exact,1e-06,
+redox_potentials,d3_05clzk,red1->red2:status,INCOMPLETE:red2(no_energy),INCOMPLETE:red2(no_energy),,ok,logic,equal,
+redox_potentials,d3_05clzk,red1->red2:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_05clzk,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_05clzk,red1->red2:dG_smd_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05clzk,red1->red2:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05clzk,red1->red2:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05clzk,red1->red2:E_abs_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05clzk,red1->red2:E_vs_Fc_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05clzk,red1->red2:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05hdcy,neu->red1:status,"INCOMPLETE:neu(no_energy),red1(no_energy)","INCOMPLETE:neu(no_energy),red1(no_energy)",,ok,logic,equal,molecule inputs newer than table
+redox_potentials,d3_05hdcy,neu->red1:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_05hdcy,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_05hdcy,neu->red1:dG_smd_eV,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_05hdcy,neu->red1:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hdcy,neu->red1:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hdcy,neu->red1:E_abs_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_05hdcy,neu->red1:E_vs_Fc_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_05hdcy,neu->red1:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_05hdcy,red1->red2:status,"INCOMPLETE:red1(no_energy),red2(no_energy)","INCOMPLETE:red1(no_energy),red2(no_energy)",,ok,logic,equal,molecule inputs newer than table
+redox_potentials,d3_05hdcy,red1->red2:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_05hdcy,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_05hdcy,red1->red2:dG_smd_eV,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_05hdcy,red1->red2:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hdcy,red1->red2:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_05hdcy,red1->red2:E_abs_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_05hdcy,red1->red2:E_vs_Fc_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_05hdcy,red1->red2:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80mnnp,neu->red1:status,"INCOMPLETE:neu(no_energy),red1(no_energy)","INCOMPLETE:neu(no_energy),red1(no_energy)",,ok,logic,equal,molecule inputs newer than table
+redox_potentials,d3_80mnnp,neu->red1:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_80mnnp,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_80mnnp,neu->red1:dG_smd_eV,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80mnnp,neu->red1:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80mnnp,neu->red1:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80mnnp,neu->red1:E_abs_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80mnnp,neu->red1:E_vs_Fc_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80mnnp,neu->red1:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80mnnp,red1->red2:status,INCOMPLETE:red1(no_energy),INCOMPLETE:red1(no_energy),,ok,logic,equal,molecule inputs newer than table
+redox_potentials,d3_80mnnp,red1->red2:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_80mnnp,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_80mnnp,red1->red2:dG_smd_eV,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80mnnp,red1->red2:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80mnnp,red1->red2:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80mnnp,red1->red2:E_abs_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80mnnp,red1->red2:E_vs_Fc_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80mnnp,red1->red2:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80txmo,neu->red1:status,ok,ok,,ok,logic,equal,
+redox_potentials,d3_80txmo,neu->red1:thermal_qc,ok,ok,,ok,logic,equal,
+redox_potentials,d3_80txmo,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_80txmo,neu->red1:dG_smd_eV,-3.3038,-3.3038,0,ok,exact,1e-06,
+redox_potentials,d3_80txmo,neu->red1:g_thermal_ox_eV,7.7495,7.7495,0,ok,exact,1e-06,
+redox_potentials,d3_80txmo,neu->red1:g_thermal_red_eV,7.6959,7.6959,0,ok,exact,1e-06,
+redox_potentials,d3_80txmo,neu->red1:E_abs_V,3.304,3.304,0,ok,exact,1e-06,
+redox_potentials,d3_80txmo,neu->red1:E_vs_Fc_V,-1.052,-1.052,0,ok,exact,1e-06,
+redox_potentials,d3_80txmo,neu->red1:dE_thermal_V,0.0536,0.0536,0,ok,exact,1e-06,
+redox_potentials,d3_80txmo,red1->red2:status,INCOMPLETE:red2(no_energy),INCOMPLETE:red2(no_energy),,ok,logic,equal,
+redox_potentials,d3_80txmo,red1->red2:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_80txmo,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_80txmo,red1->red2:dG_smd_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80txmo,red1->red2:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80txmo,red1->red2:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80txmo,red1->red2:E_abs_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80txmo,red1->red2:E_vs_Fc_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80txmo,red1->red2:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80fsak,neu->red1:status,INCOMPLETE:neu(no_energy),INCOMPLETE:neu(no_energy),,ok,logic,equal,molecule inputs newer than table
+redox_potentials,d3_80fsak,neu->red1:thermal_qc,,,,ok,logic,1e-06,
+redox_potentials,d3_80fsak,neu->red1:q_ox,0.0,0.0,0,ok,logic,1e-06,
+redox_potentials,d3_80fsak,neu->red1:dG_smd_eV,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80fsak,neu->red1:g_thermal_ox_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80fsak,neu->red1:g_thermal_red_eV,,,,ok,exact,1e-06,
+redox_potentials,d3_80fsak,neu->red1:E_abs_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80fsak,neu->red1:E_vs_Fc_V,,,,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80fsak,neu->red1:dE_thermal_V,,,,ok,exact,1e-06,
+redox_potentials,d3_80fsak,red1->red2:status,ok,ok,,ok,logic,equal,molecule inputs newer than table
+redox_potentials,d3_80fsak,red1->red2:thermal_qc,imag_modes,imag_modes,,ok,logic,equal,
+redox_potentials,d3_80fsak,red1->red2:q_ox,-1.0,-1.0,0,ok,logic,1e-06,
+redox_potentials,d3_80fsak,red1->red2:dG_smd_eV,-2.5789,-2.5789,0,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80fsak,red1->red2:g_thermal_ox_eV,6.6236,6.6236,0,ok,exact,1e-06,
+redox_potentials,d3_80fsak,red1->red2:g_thermal_red_eV,6.3914,6.3914,0,ok,exact,1e-06,
+redox_potentials,d3_80fsak,red1->red2:E_abs_V,2.579,2.579,0,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80fsak,red1->red2:E_vs_Fc_V,-1.777,-1.777,0,ok,exact,1e-06,molecule inputs newer than table
+redox_potentials,d3_80fsak,red1->red2:dE_thermal_V,0.2323,0.2323,0,ok,exact,1e-06,
 manifest,pyridinium,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,pyridinium,ox:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pyridinium,red:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,pyridinium,red:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,cyanopyridinium,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,cyanopyridinium,ox:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,cyanopyridinium,red:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,cyanopyridinium,red:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,viologen,ox2:charge,2.0,2.0,0,ok,logic,1e-06,
-manifest,viologen,ox2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,viologen,ox1:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,viologen,ox1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,viologen,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,viologen,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,phenothiazine,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,phenothiazine,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,phenothiazine,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,phenothiazine,ox:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,tempo,rad:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,tempo,rad:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,tempo,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,tempo,ox:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,tempo,red:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,tempo,red:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,anthraquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,anthraquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,anthraquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,anthraquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,anthraquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,anthraquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ferrocene,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,ferrocene,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ferrocene,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,ferrocene,ox:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,methyl_viologen,ox2:charge,2.0,2.0,0,ok,logic,1e-06,
-manifest,methyl_viologen,ox2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,methyl_viologen,ox1:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,methyl_viologen,ox1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,methyl_viologen,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,methyl_viologen,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,tempo_parent,rad:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,tempo_parent,rad:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,tempo_parent,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,tempo_parent,ox:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,tempo_parent,red:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,tempo_parent,red:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,phenothiazine_parent,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,phenothiazine_parent,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,phenothiazine_parent,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,phenothiazine_parent,ox:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,anthraquinone_parent,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,anthraquinone_parent,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,anthraquinone_parent,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,anthraquinone_parent,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,anthraquinone_parent,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,anthraquinone_parent,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,methylpyridinium,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,methylpyridinium,ox:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,methylpyridinium,red:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,methylpyridinium,red:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pf6,anion:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,pf6,anion:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mv_ip2,s0:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,mv_ip2,s0:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mv_ip1,s0:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,mv_ip1,s0:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ethylviologen,ox2:charge,2.0,2.0,0,ok,logic,1e-06,
-manifest,ethylviologen,ox2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ethylviologen,ox1:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,ethylviologen,ox1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ethylviologen,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,ethylviologen,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pmdi,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,pmdi,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pmdi,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,pmdi,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pmdi,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,pmdi,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ndi_ammonium,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,ndi_ammonium,ox:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ndi_ammonium,red1:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,ndi_ammonium,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ndi_ammonium,red2:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,ndi_ammonium,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mophquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,mophquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mophquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,mophquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mophquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,mophquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dmophquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,dmophquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dmophquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,dmophquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dmophquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,dmophquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ethylviologen_sa,ox2:charge,2.0,2.0,0,ok,logic,1e-06,
-manifest,ethylviologen_sa,ox2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ethylviologen_sa,ox1:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,ethylviologen_sa,ox1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ethylviologen_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,ethylviologen_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pmdi_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,pmdi_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pmdi_sa,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,pmdi_sa,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,pmdi_sa,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,pmdi_sa,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ndi_ammonium_sa,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,ndi_ammonium_sa,ox:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ndi_ammonium_sa,red1:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,ndi_ammonium_sa,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,ndi_ammonium_sa,red2:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,ndi_ammonium_sa,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mophquinone_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,mophquinone_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mophquinone_sa,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,mophquinone_sa,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,mophquinone_sa,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,mophquinone_sa,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dmophquinone_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,dmophquinone_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dmophquinone_sa,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,dmophquinone_sa,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dmophquinone_sa,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,dmophquinone_sa,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bisviologen,ox2:charge,2.0,2.0,0,ok,logic,1e-06,
-manifest,bisviologen,ox2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bisviologen,ox1:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,bisviologen,ox1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bisviologen,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bisviologen,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzyloxy,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,aq_benzyloxy,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzyloxy,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,aq_benzyloxy,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzyloxy,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,aq_benzyloxy,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,nq_benzyloxy,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,nq_benzyloxy,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,nq_benzyloxy,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,nq_benzyloxy,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,nq_benzyloxy,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,nq_benzyloxy,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dtbc_phenol,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,dtbc_phenol,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dtbc_phenol,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,dtbc_phenol,ox:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzylamino,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,aq_benzylamino,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzylamino,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,aq_benzylamino,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzylamino,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,aq_benzylamino,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzyloxy_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,aq_benzyloxy_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzyloxy_sa,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,aq_benzyloxy_sa,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzyloxy_sa,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,aq_benzyloxy_sa,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,nq_benzyloxy_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,nq_benzyloxy_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,nq_benzyloxy_sa,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,nq_benzyloxy_sa,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,nq_benzyloxy_sa,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,nq_benzyloxy_sa,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dtbc_phenol_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,dtbc_phenol_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,dtbc_phenol_sa,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,dtbc_phenol_sa,ox:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzylamino_sa,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,aq_benzylamino_sa,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzylamino_sa,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,aq_benzylamino_sa,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,aq_benzylamino_sa,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,aq_benzylamino_sa,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_benzoquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_4_benzoquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_methyl_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_methyl_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_methyl_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_methyl_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_methyl_1_4_benzoquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_2_methyl_1_4_benzoquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_tert_butyl_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_tert_butyl_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_tert_butyl_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_tert_butyl_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_tert_butyl_1_4_benzoquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_2_tert_butyl_1_4_benzoquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_fluoro_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_fluoro_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_fluoro_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_fluoro_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_fluoro_1_4_benzoquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_2_fluoro_1_4_benzoquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_hydroxy_9_10_anthraquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_hydroxy_9_10_anthraquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_hydroxy_9_10_anthraquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_hydroxy_9_10_anthraquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_hydroxy_9_10_anthraquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_hydroxy_9_10_anthraquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_amino_9_10_anthraquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_amino_9_10_anthraquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_amino_9_10_anthraquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_amino_9_10_anthraquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_amino_9_10_anthraquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_amino_9_10_anthraquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_diamino_9_10_anthraquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_4_diamino_9_10_anthraquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_diamino_9_10_anthraquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_4_diamino_9_10_anthraquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_diamino_9_10_anthraquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_4_diamino_9_10_anthraquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_amino_4_hydroxy_9_10_anthraquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_amino_4_hydroxy_9_10_anthraquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_amino_4_hydroxy_9_10_anthraquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_amino_4_hydroxy_9_10_anthraquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_amino_4_hydroxy_9_10_anthraquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_amino_4_hydroxy_9_10_anthraquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_naphthoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_4_naphthoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_naphthoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_4_naphthoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_4_naphthoquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_4_naphthoquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_2_naphthoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_2_naphthoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_2_naphthoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_1_2_naphthoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_2_naphthoquinone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_1_2_naphthoquinone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_5_hydroxy_1_4_naphthoquinone_juglone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_5_hydroxy_1_4_naphthoquinone_juglone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_5_hydroxy_1_4_naphthoquinone_juglone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_5_hydroxy_1_4_naphthoquinone_juglone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_5_hydroxy_1_4_naphthoquinone_juglone,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_5_hydroxy_1_4_naphthoquinone_juglone,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_diisopropylpyromellitic_diimide,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_n_n_diisopropylpyromellitic_diimide,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_diisopropylpyromellitic_diimide,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_n_n_diisopropylpyromellitic_diimide,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_diisopropylpyromellitic_diimide,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_n_n_diisopropylpyromellitic_diimide,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
-manifest,bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,red2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_methylphthalimide,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_n_methylphthalimide,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_methylphthalimide,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_n_methylphthalimide,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_isopropylphthalimide,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_n_isopropylphthalimide,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_isopropylphthalimide,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_n_isopropylphthalimide,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_2_methoxyethyl_phthalimide,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_n_2_methoxyethyl_phthalimide,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_n_2_methoxyethyl_phthalimide,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_n_2_methoxyethyl_phthalimide,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_benzyl_1_methyl_4_4_bipyridinium,ox2:charge,2.0,2.0,0,ok,logic,1e-06,
-manifest,bm_1_benzyl_1_methyl_4_4_bipyridinium,ox2:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_benzyl_1_methyl_4_4_bipyridinium,ox1:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,bm_1_benzyl_1_methyl_4_4_bipyridinium,ox1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_1_benzyl_1_methyl_4_4_bipyridinium,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_1_benzyl_1_methyl_4_4_bipyridinium,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_tetramethyl_1_4_benzoquinone_duroquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_tetramethyl_1_4_benzoquinone_duroquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_tetramethyl_1_4_benzoquinone_duroquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_tetramethyl_1_4_benzoquinone_duroquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_6_dimethoxy_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_6_dimethoxy_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_6_dimethoxy_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_6_dimethoxy_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_methoxy_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_methoxy_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_methoxy_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_methoxy_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_6_dimethyl_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_6_dimethyl_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_6_dimethyl_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_6_dimethyl_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_dimethyl_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_3_dimethyl_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_dimethyl_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_3_dimethyl_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_5_trimethyl_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_3_5_trimethyl_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_5_trimethyl_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_3_5_trimethyl_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_5_dichloro_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_5_dichloro_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_5_dichloro_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_5_dichloro_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_chloro_1_4_benzoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_chloro_1_4_benzoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_chloro_1_4_benzoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_chloro_1_4_benzoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_dichloro_1_4_naphthoquinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_2_3_dichloro_1_4_naphthoquinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_2_3_dichloro_1_4_naphthoquinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_2_3_dichloro_1_4_naphthoquinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_9_10_phenanthrenequinone,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_9_10_phenanthrenequinone,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_9_10_phenanthrenequinone,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
-manifest,bm_9_10_phenanthrenequinone,red1:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_10_methylphenothiazine,neu:charge,0.0,0.0,0,ok,logic,1e-06,
-manifest,bm_10_methylphenothiazine,neu:mult,1.0,1.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
 manifest,bm_10_methylphenothiazine,ox:charge,1.0,1.0,0,ok,logic,1e-06,
-manifest,bm_10_methylphenothiazine,ox:mult,2.0,2.0,0,ok,logic,1e-06,manifest mult_hint vs result.json mult
+manifest,d3_80izcq,neu:charge,0.0,0.0,0,ok,logic,1e-06,
+manifest,d3_80izcq,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
+manifest,d3_80izcq,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
+manifest,d3_05stji,neu:charge,0.0,0.0,0,ok,logic,1e-06,
+manifest,d3_05stji,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
+manifest,d3_05stji,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
+manifest,d3_05clzk,neu:charge,0.0,0.0,0,ok,logic,1e-06,
+manifest,d3_05clzk,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
+manifest,d3_80mnnp,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
+manifest,d3_80txmo,neu:charge,0.0,0.0,0,ok,logic,1e-06,
+manifest,d3_80txmo,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
+manifest,d3_80fsak,red1:charge,-1.0,-1.0,0,ok,logic,1e-06,
+manifest,d3_80fsak,red2:charge,-2.0,-2.0,0,ok,logic,1e-06,
 stability_disproportionation,anthraquinone,red1:dG_disp_eV,0.6872,0.6872,0,ok,exact,1e-06,
 stability_disproportionation,anthraquinone,red1:dG_disp_kJmol,66.3,66.3,0,ok,exact,1e-06,
 stability_disproportionation,anthraquinone,red1:logK_disp,-11.62,-11.62,0,ok,exact,1e-06,
@@ -1411,6 +1395,16 @@ stability_disproportionation,bm_n_n_diisopropylpyromellitic_diimide,red1:dG_disp
 stability_disproportionation,bm_n_n_diisopropylpyromellitic_diimide,red1:logK_disp,-13.22,-13.22,0,ok,exact,1e-06,
 stability_disproportionation,bm_n_n_diisopropylpyromellitic_diimide,red1:stable_vs_disprop,True,True,,ok,logic,equal,
 stability_disproportionation,bm_n_n_diisopropylpyromellitic_diimide,red1:dG_disp_vs_published_dE,0.7821,0.7830000000000004,0.0009,ok,cross_check,0.0015,F*(E_hi - E_lo) from redox_potentials.csv (3-dp potentials)
+stability_disproportionation,d3_05stji,red1:dG_disp_eV,0.7579,0.7579,0,ok,exact,1e-06,
+stability_disproportionation,d3_05stji,red1:dG_disp_kJmol,73.1,73.1,0,ok,exact,1e-06,
+stability_disproportionation,d3_05stji,red1:logK_disp,-12.81,-12.81,0,ok,exact,1e-06,
+stability_disproportionation,d3_05stji,red1:stable_vs_disprop,True,True,,ok,logic,equal,
+stability_disproportionation,d3_05stji,red1:dG_disp_vs_published_dE,0.7579,0.758,0.0001,ok,cross_check,0.0015,F*(E_hi - E_lo) from redox_potentials.csv (3-dp potentials)
+stability_disproportionation,d3_80izcq,red1:dG_disp_eV,2.8208,2.8208,0,ok,exact,1e-06,
+stability_disproportionation,d3_80izcq,red1:dG_disp_kJmol,272.2,272.2,0,ok,exact,1e-06,
+stability_disproportionation,d3_80izcq,red1:logK_disp,-47.68,-47.68,0,ok,exact,1e-06,
+stability_disproportionation,d3_80izcq,red1:stable_vs_disprop,True,True,,ok,logic,equal,
+stability_disproportionation,d3_80izcq,red1:dG_disp_vs_published_dE,2.8208,2.8209999999999997,0.0002,ok,cross_check,0.0015,F*(E_hi - E_lo) from redox_potentials.csv (3-dp potentials)
 stability_disproportionation,dmophquinone,red1:dG_disp_eV,0.9221,0.9221,0,ok,exact,1e-06,
 stability_disproportionation,dmophquinone,red1:dG_disp_kJmol,89.0,89.0,0,ok,exact,1e-06,
 stability_disproportionation,dmophquinone,red1:logK_disp,-15.59,-15.59,0,ok,exact,1e-06,
@@ -1636,6 +1630,24 @@ reorganization,cyanopyridinium,ox->red:rmsd_naive_A,0.156,0.156,0,ok,exact,1e-06
 reorganization,cyanopyridinium,ox->red:rmsd_A,0.156,0.156,0,ok,exact,1e-06,
 reorganization,cyanopyridinium,ox->red:anion_homo_eV,-5.809,-5.809,0,ok,exact,1e-06,
 reorganization,cyanopyridinium,ox->red:flag,,,,ok,logic,1e-06,
+reorganization,d3_05stji,neu->red1:lambda_i_eV,0.4565,0.4565,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:lambda_i_meV,456.5,456.5,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:lambda_i_kJmol,44.05,44.05,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:relax_ox_meV(lambda_O),304.046,304.046,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:relax_red_meV(lambda_R),152.487,152.487,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:rmsd_naive_A,0.246,0.246,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:rmsd_A,0.246,0.246,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:anion_homo_eV,-1.715,-1.715,0,ok,exact,1e-06,
+reorganization,d3_05stji,neu->red1:flag,,,,ok,logic,1e-06,
+reorganization,d3_05stji,red1->red2:lambda_i_eV,0.4762,0.4762,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:lambda_i_meV,476.2,476.2,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:lambda_i_kJmol,45.94,45.94,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:relax_ox_meV(lambda_O),200.284,200.284,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:relax_red_meV(lambda_R),275.88,275.88,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:rmsd_naive_A,0.404,0.404,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:rmsd_A,0.404,0.404,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:anion_homo_eV,2.644,2.644,0,ok,exact,1e-06,
+reorganization,d3_05stji,red1->red2:flag,conformer_jump+anion_unbound,conformer_jump+anion_unbound,,ok,logic,equal,
 reorganization,dmophquinone,neu->red1:lambda_i_eV,0.5713,0.5713,0,ok,exact,1e-06,
 reorganization,dmophquinone,neu->red1:lambda_i_meV,571.3,571.3,0,ok,exact,1e-06,
 reorganization,dmophquinone,neu->red1:lambda_i_kJmol,55.13,55.13,0,ok,exact,1e-06,
@@ -2119,6 +2131,20 @@ state_integrity,bm_tetramethyl_1_4_benzoquinone_duroquinone,neu->red1:EA_solv_eV
 state_integrity,bm_tetramethyl_1_4_benzoquinone_duroquinone,neu->red1:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
 state_integrity,cyanopyridinium,ox->red:EA_solv_eV,3.511,3.511,0,ok,exact,1e-06,
 state_integrity,cyanopyridinium,ox->red:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
+state_integrity,d3_05clzk,neu->red1:EA_solv_eV,3.625,3.625,0,ok,exact,1e-06,
+state_integrity,d3_05clzk,neu->red1:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
+state_integrity,d3_05stji,neu->red1:EA_solv_eV,3.233,3.233,0,ok,exact,1e-06,
+state_integrity,d3_05stji,neu->red1:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
+state_integrity,d3_05stji,red1->red2:EA_solv_eV,2.331,2.331,0,ok,exact,1e-06,
+state_integrity,d3_05stji,red1->red2:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
+state_integrity,d3_80fsak,red1->red2:EA_solv_eV,2.347,2.347,0,ok,exact,1e-06,
+state_integrity,d3_80fsak,red1->red2:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
+state_integrity,d3_80izcq,neu->red1:EA_solv_eV,3.793,3.793,0,ok,exact,1e-06,
+state_integrity,d3_80izcq,neu->red1:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
+state_integrity,d3_80izcq,red1->red2:EA_solv_eV,0.876,0.876,0,ok,exact,1e-06,
+state_integrity,d3_80izcq,red1->red2:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
+state_integrity,d3_80txmo,neu->red1:EA_solv_eV,3.25,3.25,0,ok,exact,1e-06,
+state_integrity,d3_80txmo,neu->red1:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
 state_integrity,dmophquinone,neu->red1:EA_solv_eV,3.757,3.757,0,ok,exact,1e-06,
 state_integrity,dmophquinone,neu->red1:verdict,intact_bound,intact_bound,,ok,logic,equal,bound part recomputed; d_bonds taken from the table
 state_integrity,dmophquinone,red1->red2:EA_solv_eV,2.628,2.628,0,ok,exact,1e-06,
@@ -2495,6 +2521,46 @@ capacity_and_proxies,cyanopyridinium,MW_repeat_unit,221.283,221.283,0,ok,exact,1
 capacity_and_proxies,cyanopyridinium,specific_capacity_mAh_g,128.1,128.1,0,ok,exact,1e-06,
 capacity_and_proxies,cyanopyridinium,dGsolv_neutral_eV,-0.795,-0.795,0,ok,exact,1e-06,
 capacity_and_proxies,cyanopyridinium,MW_smiles_vs_geometry,209.27200000000002,209.2720000000001,8.53e-14,ok,cross_check,0.01,RDKit MolWt(SMILES) vs atoms in ox/opt.xyz
+capacity_and_proxies,d3_05clzk,n_electrons(all adjacent couples),1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05clzk,MW,312.752,312.752,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05clzk,n_graft_sites,1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05clzk,MW_repeat_unit,324.763,324.763,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05clzk,specific_capacity_mAh_g,85.7,85.7,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05clzk,dGsolv_neutral_eV,-0.721,-0.721,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05clzk,MW_smiles_vs_geometry,312.75200000000007,312.7519999999998,2.84e-13,ok,cross_check,0.01,RDKit MolWt(SMILES) vs atoms in neu/opt.xyz
+capacity_and_proxies,d3_05stji,n_electrons(all adjacent couples),2.0,2.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05stji,MW,277.323,277.323,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05stji,n_graft_sites,1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05stji,MW_repeat_unit,289.334,289.334,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05stji,specific_capacity_mAh_g,193.3,193.3,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05stji,dGsolv_neutral_eV,-0.762,-0.762,0,ok,exact,1e-06,
+capacity_and_proxies,d3_05stji,MW_smiles_vs_geometry,277.323,277.3229999999997,2.84e-13,ok,cross_check,0.01,RDKit MolWt(SMILES) vs atoms in neu/opt.xyz
+capacity_and_proxies,d3_80fsak,n_electrons(all adjacent couples),1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80fsak,MW,292.334,292.334,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80fsak,n_graft_sites,1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80fsak,MW_repeat_unit,304.345,304.345,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80fsak,specific_capacity_mAh_g,91.7,91.7,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80fsak,dGsolv_neutral_eV,-2.377,-2.377,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80izcq,n_electrons(all adjacent couples),2.0,2.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80izcq,MW,346.426,346.426,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80izcq,n_graft_sites,1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80izcq,MW_repeat_unit,358.437,358.437,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80izcq,specific_capacity_mAh_g,154.7,154.7,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80izcq,dGsolv_neutral_eV,-0.998,-0.998,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80izcq,MW_smiles_vs_geometry,346.42600000000004,346.42599999999965,3.98e-13,ok,cross_check,0.01,RDKit MolWt(SMILES) vs atoms in neu/opt.xyz
+capacity_and_proxies,d3_80mnnp,n_electrons(all adjacent couples),0.0,0.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80mnnp,MW,357.203,357.203,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80mnnp,n_graft_sites,1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80mnnp,MW_repeat_unit,369.214,369.214,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80mnnp,specific_capacity_mAh_g,,,,ok,exact,1e-06,
+capacity_and_proxies,d3_80mnnp,dGsolv_neutral_eV,-7.239,-7.239,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80txmo,n_electrons(all adjacent couples),1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80txmo,MW,305.377,305.377,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80txmo,n_graft_sites,1.0,1.0,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80txmo,MW_repeat_unit,317.388,317.388,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80txmo,specific_capacity_mAh_g,87.8,87.8,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80txmo,dGsolv_neutral_eV,-0.813,-0.813,0,ok,exact,1e-06,
+capacity_and_proxies,d3_80txmo,MW_smiles_vs_geometry,305.37700000000007,305.3769999999996,4.55e-13,ok,cross_check,0.01,RDKit MolWt(SMILES) vs atoms in neu/opt.xyz
 capacity_and_proxies,dmophquinone,n_electrons(all adjacent couples),2.0,2.0,0,ok,exact,1e-06,
 capacity_and_proxies,dmophquinone,MW,364.397,364.397,0,ok,exact,1e-06,
 capacity_and_proxies,dmophquinone,n_graft_sites,1.0,1.0,0,ok,exact,1e-06,
@@ -2742,6 +2808,254 @@ scorecard,bisviologen,anolyte:sigma_disp_eV,0.288,0.288,0,ok,exact,1e-06,
 scorecard,bisviologen,anolyte:thermal_qc,ok,ok,,ok,logic,equal,
 scorecard,bisviologen,anolyte:SA_score,2.34,2.34,0,ok,trace,1e-06,
 scorecard,bisviologen,anolyte:dGsolv_proxy_eV,-1.133,-1.133,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:status,INCOMPLETE,INCOMPLETE,,ok,logic,equal,
+scorecard,d3_05clzk,anolyte:resting_state,neu,neu,,ok,logic,equal,
+scorecard,d3_05clzk,anolyte:path,neu->red1,neu->red1,,ok,logic,equal,
+scorecard,d3_05clzk,anolyte:path_stop,INCOMPLETE red1->red2: INCOMPLETE:red2(no_energy),INCOMPLETE red1->red2: INCOMPLETE:red2(no_energy),,ok,logic,equal,
+scorecard,d3_05clzk,anolyte:n_accessible,1.0,1.0,0,ok,logic,1e-06,
+scorecard,d3_05clzk,anolyte:E_V,-0.696,-0.696,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:sigma_E_V,0.298,0.298,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:specific_capacity_mAh_g,85.7,85.7,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:MW,312.8,312.8,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:MW_repeat_unit,324.8,324.8,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:capacity_repeat_mAh_g,82.5,82.5,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:capacity_maxload_Li_mAh_g,80.8,80.8,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:capacity_maxload_TBA_mAh_g,47.2,47.2,0,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_i_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_i_ox_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_i_red_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:sigma_lambda_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_qc,all_flagged,all_flagged,,ok,logic,equal,
+scorecard,d3_05clzk,anolyte:n_lambda_flagged,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_05clzk,anolyte:n_lambda_missing,1.0,1.0,0,ok,logic,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_flags,,,,ok,logic,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:dG_disp_kJmol,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:disp_applicable,False,False,,ok,logic,equal,
+scorecard,d3_05clzk,anolyte:sigma_disp_eV,,,,ok,exact,1e-06,
+scorecard,d3_05clzk,anolyte:thermal_qc,ok,ok,,ok,logic,equal,
+scorecard,d3_05clzk,anolyte:SA_score,2.11,2.11,0,ok,trace,1e-06,
+scorecard,d3_05clzk,anolyte:dGsolv_proxy_eV,-0.721,-0.721,0,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:status,INCOMPLETE,INCOMPLETE,,ok,logic,equal,
+scorecard,d3_05hdcy,-:resting_state,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:path,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:path_stop,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:n_accessible,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:E_V,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:sigma_E_V,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:specific_capacity_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:MW,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:MW_repeat_unit,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:capacity_repeat_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:capacity_maxload_Li_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:capacity_maxload_TBA_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:lambda_i_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:lambda_i_ox_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:lambda_i_red_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:sigma_lambda_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:lambda_qc,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:n_lambda_flagged,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:n_lambda_missing,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:lambda_flags,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_05hdcy,-:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:dG_disp_kJmol,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:disp_applicable,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:sigma_disp_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hdcy,-:thermal_qc,,,,ok,logic,1e-06,
+scorecard,d3_05hdcy,-:SA_score,,,,ok,trace,1e-06,
+scorecard,d3_05hdcy,-:dGsolv_proxy_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:status,INCOMPLETE,INCOMPLETE,,ok,logic,equal,
+scorecard,d3_05hfap,-:resting_state,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:path,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:path_stop,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:n_accessible,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_05hfap,-:E_V,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:sigma_E_V,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:specific_capacity_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:MW,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:MW_repeat_unit,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:capacity_repeat_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:capacity_maxload_Li_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:capacity_maxload_TBA_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:lambda_i_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:lambda_i_ox_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:lambda_i_red_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:sigma_lambda_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:lambda_qc,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:n_lambda_flagged,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:n_lambda_missing,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:lambda_flags,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_05hfap,-:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:dG_disp_kJmol,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:disp_applicable,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:sigma_disp_eV,,,,ok,exact,1e-06,
+scorecard,d3_05hfap,-:thermal_qc,,,,ok,logic,1e-06,
+scorecard,d3_05hfap,-:SA_score,,,,ok,trace,1e-06,
+scorecard,d3_05hfap,-:dGsolv_proxy_eV,,,,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:status,candidate,candidate,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:resting_state,neu,neu,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:path,neu->red1 ; red1->red2,neu->red1 ; red1->red2,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:path_stop,end of computed ladder,end of computed ladder,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:n_accessible,2.0,2.0,0,ok,logic,1e-06,
+scorecard,d3_05stji,anolyte:E_V,-1.413,-1.413,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:sigma_E_V,0.298,0.298,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:specific_capacity_mAh_g,193.3,193.3,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:MW,277.3,277.3,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:MW_repeat_unit,289.3,289.3,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:capacity_repeat_mAh_g,185.3,185.3,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:capacity_maxload_Li_mAh_g,176.8,176.8,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:capacity_maxload_TBA_mAh_g,69.2,69.2,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:lambda_i_eV,0.4565,0.4565,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:lambda_i_ox_eV,0.304,0.304,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:lambda_i_red_eV,0.1525,0.1525,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:sigma_lambda_eV,0.209,0.209,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:lambda_qc,partial,partial,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:n_lambda_flagged,1.0,1.0,0,ok,logic,1e-06,
+scorecard,d3_05stji,anolyte:n_lambda_missing,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_05stji,anolyte:lambda_flags,conformer_jump+anion_unbound,conformer_jump+anion_unbound,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_05stji,anolyte:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:dG_disp_kJmol,73.1,73.1,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:disp_applicable,True,True,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:sigma_disp_eV,0.288,0.288,0,ok,exact,1e-06,
+scorecard,d3_05stji,anolyte:thermal_qc,imag_modes,imag_modes,,ok,logic,equal,
+scorecard,d3_05stji,anolyte:SA_score,2.03,2.03,0,ok,trace,1e-06,
+scorecard,d3_05stji,anolyte:dGsolv_proxy_eV,-0.762,-0.762,0,ok,exact,1e-06,
+scorecard,d3_80fsak,-:status,INCOMPLETE,INCOMPLETE,,ok,logic,equal,
+scorecard,d3_80fsak,-:resting_state,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:path,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:path_stop,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:n_accessible,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_80fsak,-:E_V,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:sigma_E_V,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:specific_capacity_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:MW,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:MW_repeat_unit,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:capacity_repeat_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:capacity_maxload_Li_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:capacity_maxload_TBA_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:lambda_i_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:lambda_i_ox_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:lambda_i_red_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:sigma_lambda_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:lambda_qc,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:n_lambda_flagged,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:n_lambda_missing,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:lambda_flags,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_80fsak,-:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:dG_disp_kJmol,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:disp_applicable,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:sigma_disp_eV,,,,ok,exact,1e-06,
+scorecard,d3_80fsak,-:thermal_qc,,,,ok,logic,1e-06,
+scorecard,d3_80fsak,-:SA_score,,,,ok,trace,1e-06,
+scorecard,d3_80fsak,-:dGsolv_proxy_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:status,candidate,candidate,,ok,logic,equal,
+scorecard,d3_80izcq,anolyte:resting_state,neu,neu,,ok,logic,equal,
+scorecard,d3_80izcq,anolyte:path,neu->red1,neu->red1,,ok,logic,equal,
+scorecard,d3_80izcq,anolyte:path_stop,red1->red2 inaccessible (outside window),red1->red2 inaccessible (outside window),,ok,logic,equal,
+scorecard,d3_80izcq,anolyte:n_accessible,1.0,1.0,0,ok,logic,1e-06,
+scorecard,d3_80izcq,anolyte:E_V,-0.48,-0.48,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:sigma_E_V,0.298,0.298,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:specific_capacity_mAh_g,77.4,77.4,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:MW,346.4,346.4,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:MW_repeat_unit,358.4,358.4,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:capacity_repeat_mAh_g,74.8,74.8,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:capacity_maxload_Li_mAh_g,73.4,73.4,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:capacity_maxload_TBA_mAh_g,44.6,44.6,0,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_i_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_i_ox_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_i_red_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:sigma_lambda_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_qc,all_flagged,all_flagged,,ok,logic,equal,
+scorecard,d3_80izcq,anolyte:n_lambda_flagged,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_80izcq,anolyte:n_lambda_missing,1.0,1.0,0,ok,logic,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_flags,,,,ok,logic,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:dG_disp_kJmol,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:disp_applicable,False,False,,ok,logic,equal,
+scorecard,d3_80izcq,anolyte:sigma_disp_eV,,,,ok,exact,1e-06,
+scorecard,d3_80izcq,anolyte:thermal_qc,ok,ok,,ok,logic,equal,
+scorecard,d3_80izcq,anolyte:SA_score,2.4,2.4,0,ok,trace,1e-06,
+scorecard,d3_80izcq,anolyte:dGsolv_proxy_eV,-0.998,-0.998,0,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:status,INCOMPLETE,INCOMPLETE,,ok,logic,equal,
+scorecard,d3_80mnnp,-:resting_state,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:path,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:path_stop,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:n_accessible,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:E_V,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:sigma_E_V,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:specific_capacity_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:MW,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:MW_repeat_unit,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:capacity_repeat_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:capacity_maxload_Li_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:capacity_maxload_TBA_mAh_g,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:lambda_i_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:lambda_i_ox_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:lambda_i_red_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:sigma_lambda_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:lambda_qc,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:n_lambda_flagged,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:n_lambda_missing,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:lambda_flags,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_80mnnp,-:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:dG_disp_kJmol,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:disp_applicable,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:sigma_disp_eV,,,,ok,exact,1e-06,
+scorecard,d3_80mnnp,-:thermal_qc,,,,ok,logic,1e-06,
+scorecard,d3_80mnnp,-:SA_score,,,,ok,trace,1e-06,
+scorecard,d3_80mnnp,-:dGsolv_proxy_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:status,INCOMPLETE,INCOMPLETE,,ok,logic,equal,
+scorecard,d3_80txmo,anolyte:resting_state,neu,neu,,ok,logic,equal,
+scorecard,d3_80txmo,anolyte:path,neu->red1,neu->red1,,ok,logic,equal,
+scorecard,d3_80txmo,anolyte:path_stop,INCOMPLETE red1->red2: INCOMPLETE:red2(no_energy),INCOMPLETE red1->red2: INCOMPLETE:red2(no_energy),,ok,logic,equal,
+scorecard,d3_80txmo,anolyte:n_accessible,1.0,1.0,0,ok,logic,1e-06,
+scorecard,d3_80txmo,anolyte:E_V,-1.052,-1.052,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:sigma_E_V,0.298,0.298,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:specific_capacity_mAh_g,87.8,87.8,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:MW,305.4,305.4,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:MW_repeat_unit,317.4,317.4,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:capacity_repeat_mAh_g,84.4,84.4,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:capacity_maxload_Li_mAh_g,82.6,82.6,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:capacity_maxload_TBA_mAh_g,47.9,47.9,0,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_i_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_i_ox_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_i_red_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:sigma_lambda_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_qc,all_flagged,all_flagged,,ok,logic,equal,
+scorecard,d3_80txmo,anolyte:n_lambda_flagged,0.0,0.0,0,ok,logic,1e-06,
+scorecard,d3_80txmo,anolyte:n_lambda_missing,1.0,1.0,0,ok,logic,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_flags,,,,ok,logic,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_o_pcm_eV,,,,ok,trace,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:sigma_lambda_het_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:lambda_se_contact_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:dG_disp_kJmol,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:disp_applicable,False,False,,ok,logic,equal,
+scorecard,d3_80txmo,anolyte:sigma_disp_eV,,,,ok,exact,1e-06,
+scorecard,d3_80txmo,anolyte:thermal_qc,ok,ok,,ok,logic,equal,
+scorecard,d3_80txmo,anolyte:SA_score,2.25,2.25,0,ok,trace,1e-06,
+scorecard,d3_80txmo,anolyte:dGsolv_proxy_eV,-0.813,-0.813,0,ok,exact,1e-06,
 scorecard,dmophquinone,anolyte:status,candidate,candidate,,ok,logic,equal,
 scorecard,dmophquinone,anolyte:resting_state,neu,neu,,ok,logic,equal,
 scorecard,dmophquinone,anolyte:path,neu->red1 ; red1->red2,neu->red1 ; red1->red2,,ok,logic,equal,
@@ -2991,17 +3305,17 @@ scorecard,viologen,anolyte:thermal_qc,ok,ok,,ok,logic,equal,
 scorecard,viologen,anolyte:SA_score,2.55,2.55,0,ok,trace,1e-06,
 scorecard,viologen,anolyte:dGsolv_proxy_eV,-0.892,-0.892,0,ok,exact,1e-06,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
-pareto_shortlist,aq_benzylamino,LiPF6/anolyte:partial_front,True,True,,ok,logic,equal,
-pareto_shortlist,aq_benzylamino,LiPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,aq_benzylamino,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
+pareto_shortlist,aq_benzylamino,LiPF6/anolyte:dominated_by,d3_05stji,d3_05stji,,ok,logic,equal,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:missing_objectives,kinetics,kinetics,,ok,logic,equal,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:E_V_traces_scorecard,-1.567,-1.567,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:capacity_traces_scorecard,151.7,151.7,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:lambda_i_eV_traces_scorecard,,,,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,75.8,75.8,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
-pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:pareto_optimal,True,True,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:dominated_by,d3_05stji,d3_05stji,,ok,logic,equal,
 pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:E_V_traces_scorecard,-1.455,-1.455,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:capacity_traces_scorecard,151.3,151.3,0,ok,trace,1e-06,
@@ -3010,16 +3324,34 @@ pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,60.8,
 pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,bisviologen,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,bisviologen,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,bisviologen,LiPF6/anolyte:dominated_by,aq_benzyloxy;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,aq_benzyloxy;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,,ok,logic,equal,
+pareto_shortlist,bisviologen,LiPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,,ok,logic,equal,
 pareto_shortlist,bisviologen,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,bisviologen,LiPF6/anolyte:E_V_traces_scorecard,-0.935,-0.935,0,ok,trace,1e-06,
 pareto_shortlist,bisviologen,LiPF6/anolyte:capacity_traces_scorecard,78.8,78.8,0,ok,trace,1e-06,
 pareto_shortlist,bisviologen,LiPF6/anolyte:lambda_i_eV_traces_scorecard,0.5544,0.5544,0,ok,trace,1e-06,
 pareto_shortlist,bisviologen,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,49.3,49.3,0,ok,trace,1e-06,
 pareto_shortlist,bisviologen,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:pareto_optimal,True,True,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,d3_05stji,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:E_V_traces_scorecard,-1.413,-1.413,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:capacity_traces_scorecard,176.8,176.8,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:lambda_i_eV_traces_scorecard,0.4565,0.4565,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,73.1,73.1,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:dominated_by,aq_benzyloxy;bisviologen;d3_05stji;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,aq_benzyloxy;bisviologen;d3_05stji;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,,ok,logic,equal,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:missing_objectives,kinetics,kinetics,,ok,logic,equal,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:E_V_traces_scorecard,-0.48,-0.48,0,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:capacity_traces_scorecard,73.4,73.4,0,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:lambda_i_eV_traces_scorecard,,,,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,,,,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:n_traces_scorecard,1.0,1.0,0,ok,trace,1e-06,
 pareto_shortlist,dmophquinone,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,dmophquinone,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,dmophquinone,LiPF6/anolyte:dominated_by,aq_benzyloxy;mophquinone;pmdi,aq_benzyloxy;mophquinone;pmdi,,ok,logic,equal,
+pareto_shortlist,dmophquinone,LiPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji;mophquinone;pmdi,aq_benzyloxy;d3_05stji;mophquinone;pmdi,,ok,logic,equal,
 pareto_shortlist,dmophquinone,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,dmophquinone,LiPF6/anolyte:E_V_traces_scorecard,-0.999,-0.999,0,ok,trace,1e-06,
 pareto_shortlist,dmophquinone,LiPF6/anolyte:capacity_traces_scorecard,137.3,137.3,0,ok,trace,1e-06,
@@ -3028,16 +3360,16 @@ pareto_shortlist,dmophquinone,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,89.0,
 pareto_shortlist,dmophquinone,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,ethylviologen,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,ethylviologen,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,ethylviologen,LiPF6/anolyte:dominated_by,aq_benzyloxy;dmophquinone;mophquinone;pmdi;viologen,aq_benzyloxy;dmophquinone;mophquinone;pmdi;viologen,,ok,logic,equal,
+pareto_shortlist,ethylviologen,LiPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;pmdi;viologen,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;pmdi;viologen,,ok,logic,equal,
 pareto_shortlist,ethylviologen,LiPF6/anolyte:missing_objectives,kinetics,kinetics,,ok,logic,equal,
 pareto_shortlist,ethylviologen,LiPF6/anolyte:E_V_traces_scorecard,-0.943,-0.943,0,ok,trace,1e-06,
 pareto_shortlist,ethylviologen,LiPF6/anolyte:capacity_traces_scorecard,90.5,90.5,0,ok,trace,1e-06,
 pareto_shortlist,ethylviologen,LiPF6/anolyte:lambda_i_eV_traces_scorecard,,,,ok,trace,1e-06,
 pareto_shortlist,ethylviologen,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,49.4,49.4,0,ok,trace,1e-06,
 pareto_shortlist,ethylviologen,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
-pareto_shortlist,mophquinone,LiPF6/anolyte:pareto_optimal,True,True,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,mophquinone,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,mophquinone,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,mophquinone,LiPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,mophquinone,LiPF6/anolyte:dominated_by,d3_05stji,d3_05stji,,ok,logic,equal,
 pareto_shortlist,mophquinone,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,mophquinone,LiPF6/anolyte:E_V_traces_scorecard,-1.018,-1.018,0,ok,trace,1e-06,
 pareto_shortlist,mophquinone,LiPF6/anolyte:capacity_traces_scorecard,162.3,162.3,0,ok,trace,1e-06,
@@ -3046,7 +3378,7 @@ pareto_shortlist,mophquinone,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,91.8,9
 pareto_shortlist,mophquinone,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,ndi_ammonium,LiPF6/anolyte:dominated_by,aq_benzyloxy;dmophquinone;mophquinone;pmdi;viologen,aq_benzyloxy;dmophquinone;mophquinone;pmdi;viologen,,ok,logic,equal,
+pareto_shortlist,ndi_ammonium,LiPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;pmdi;viologen,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;pmdi;viologen,,ok,logic,equal,
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:E_V_traces_scorecard,-0.975,-0.975,0,ok,trace,1e-06,
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:capacity_traces_scorecard,85.4,85.4,0,ok,trace,1e-06,
@@ -3054,8 +3386,8 @@ pareto_shortlist,ndi_ammonium,LiPF6/anolyte:lambda_i_eV_traces_scorecard,0.3546,
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,45.2,45.2,0,ok,trace,1e-06,
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
-pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:partial_front,True,True,,ok,logic,equal,
-pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
+pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:dominated_by,d3_05stji,d3_05stji,,ok,logic,equal,
 pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:missing_objectives,kinetics,kinetics,,ok,logic,equal,
 pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:E_V_traces_scorecard,-1.21,-1.21,0,ok,trace,1e-06,
 pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:capacity_traces_scorecard,176.2,176.2,0,ok,trace,1e-06,
@@ -3064,7 +3396,7 @@ pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,76.2,
 pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,pmdi,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,pmdi,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,pmdi,LiPF6/anolyte:dominated_by,aq_benzyloxy,aq_benzyloxy,,ok,logic,equal,
+pareto_shortlist,pmdi,LiPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji,aq_benzyloxy;d3_05stji,,ok,logic,equal,
 pareto_shortlist,pmdi,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,pmdi,LiPF6/anolyte:E_V_traces_scorecard,-1.457,-1.457,0,ok,trace,1e-06,
 pareto_shortlist,pmdi,LiPF6/anolyte:capacity_traces_scorecard,148.8,148.8,0,ok,trace,1e-06,
@@ -3073,7 +3405,7 @@ pareto_shortlist,pmdi,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,63.5,63.5,0,o
 pareto_shortlist,pmdi,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,viologen,LiPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,viologen,LiPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,viologen,LiPF6/anolyte:dominated_by,aq_benzyloxy;dmophquinone;mophquinone;pmdi,aq_benzyloxy;dmophquinone;mophquinone;pmdi,,ok,logic,equal,
+pareto_shortlist,viologen,LiPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;pmdi,aq_benzyloxy;d3_05stji;dmophquinone;mophquinone;pmdi,,ok,logic,equal,
 pareto_shortlist,viologen,LiPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,viologen,LiPF6/anolyte:E_V_traces_scorecard,-0.944,-0.944,0,ok,trace,1e-06,
 pareto_shortlist,viologen,LiPF6/anolyte:capacity_traces_scorecard,92.7,92.7,0,ok,trace,1e-06,
@@ -3081,17 +3413,17 @@ pareto_shortlist,viologen,LiPF6/anolyte:lambda_i_eV_traces_scorecard,0.4694,0.46
 pareto_shortlist,viologen,LiPF6/anolyte:dG_disp_kJmol_traces_scorecard,51.0,51.0,0,ok,trace,1e-06,
 pareto_shortlist,viologen,LiPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
-pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:partial_front,True,True,,ok,logic,equal,
-pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
+pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:dominated_by,d3_05stji,d3_05stji,,ok,logic,equal,
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:missing_objectives,kinetics,kinetics,,ok,logic,equal,
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:E_V_traces_scorecard,-1.567,-1.567,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:capacity_traces_scorecard,65.0,65.0,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:lambda_i_eV_traces_scorecard,,,,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,75.8,75.8,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
-pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:pareto_optimal,True,True,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:dominated_by,d3_05stji,d3_05stji,,ok,logic,equal,
 pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:E_V_traces_scorecard,-1.455,-1.455,0,ok,trace,1e-06,
 pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:capacity_traces_scorecard,64.9,64.9,0,ok,trace,1e-06,
@@ -3107,9 +3439,27 @@ pareto_shortlist,bisviologen,TBAPF6/anolyte:capacity_traces_scorecard,78.8,78.8,
 pareto_shortlist,bisviologen,TBAPF6/anolyte:lambda_i_eV_traces_scorecard,0.5544,0.5544,0,ok,trace,1e-06,
 pareto_shortlist,bisviologen,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,49.3,49.3,0,ok,trace,1e-06,
 pareto_shortlist,bisviologen,TBAPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:pareto_optimal,True,True,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:E_V_traces_scorecard,-1.413,-1.413,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:capacity_traces_scorecard,69.2,69.2,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:lambda_i_eV_traces_scorecard,0.4565,0.4565,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,73.1,73.1,0,ok,trace,1e-06,
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:dominated_by,aq_benzyloxy;bisviologen;d3_05stji;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,aq_benzyloxy;bisviologen;d3_05stji;dmophquinone;mophquinone;ndi_ammonium;pmdi;viologen,,ok,logic,equal,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:missing_objectives,kinetics,kinetics,,ok,logic,equal,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:E_V_traces_scorecard,-0.48,-0.48,0,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:capacity_traces_scorecard,44.6,44.6,0,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:lambda_i_eV_traces_scorecard,,,,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,,,,ok,trace,1e-06,
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:n_traces_scorecard,1.0,1.0,0,ok,trace,1e-06,
 pareto_shortlist,dmophquinone,TBAPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,dmophquinone,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,dmophquinone,TBAPF6/anolyte:dominated_by,aq_benzyloxy;mophquinone;pmdi;viologen,aq_benzyloxy;mophquinone;pmdi;viologen,,ok,logic,equal,
+pareto_shortlist,dmophquinone,TBAPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji;mophquinone;pmdi;viologen,aq_benzyloxy;d3_05stji;mophquinone;pmdi;viologen,,ok,logic,equal,
 pareto_shortlist,dmophquinone,TBAPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,dmophquinone,TBAPF6/anolyte:E_V_traces_scorecard,-0.999,-0.999,0,ok,trace,1e-06,
 pareto_shortlist,dmophquinone,TBAPF6/anolyte:capacity_traces_scorecard,62.2,62.2,0,ok,trace,1e-06,
@@ -3125,9 +3475,9 @@ pareto_shortlist,ethylviologen,TBAPF6/anolyte:capacity_traces_scorecard,90.5,90.
 pareto_shortlist,ethylviologen,TBAPF6/anolyte:lambda_i_eV_traces_scorecard,,,,ok,trace,1e-06,
 pareto_shortlist,ethylviologen,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,49.4,49.4,0,ok,trace,1e-06,
 pareto_shortlist,ethylviologen,TBAPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
-pareto_shortlist,mophquinone,TBAPF6/anolyte:pareto_optimal,True,True,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
+pareto_shortlist,mophquinone,TBAPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,mophquinone,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,mophquinone,TBAPF6/anolyte:dominated_by,,,,ok,logic,1e-06,
+pareto_shortlist,mophquinone,TBAPF6/anolyte:dominated_by,d3_05stji,d3_05stji,,ok,logic,equal,
 pareto_shortlist,mophquinone,TBAPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,mophquinone,TBAPF6/anolyte:E_V_traces_scorecard,-1.018,-1.018,0,ok,trace,1e-06,
 pareto_shortlist,mophquinone,TBAPF6/anolyte:capacity_traces_scorecard,66.9,66.9,0,ok,trace,1e-06,
@@ -3145,7 +3495,7 @@ pareto_shortlist,ndi_ammonium,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,45.2
 pareto_shortlist,ndi_ammonium,TBAPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:dominated_by,bisviologen;ndi_ammonium;viologen,bisviologen;ndi_ammonium;viologen,,ok,logic,equal,
+pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:dominated_by,bisviologen;d3_05stji;ndi_ammonium;viologen,bisviologen;d3_05stji;ndi_ammonium;viologen,,ok,logic,equal,
 pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:missing_objectives,kinetics,kinetics,,ok,logic,equal,
 pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:E_V_traces_scorecard,-1.21,-1.21,0,ok,trace,1e-06,
 pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:capacity_traces_scorecard,69.1,69.1,0,ok,trace,1e-06,
@@ -3154,7 +3504,7 @@ pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,76.2
 pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
 pareto_shortlist,pmdi,TBAPF6/anolyte:pareto_optimal,False,False,,ok,logic,equal,front recomputed from PUBLISHED scorecard values
 pareto_shortlist,pmdi,TBAPF6/anolyte:partial_front,False,False,,ok,logic,equal,
-pareto_shortlist,pmdi,TBAPF6/anolyte:dominated_by,aq_benzyloxy,aq_benzyloxy,,ok,logic,equal,
+pareto_shortlist,pmdi,TBAPF6/anolyte:dominated_by,aq_benzyloxy;d3_05stji,aq_benzyloxy;d3_05stji,,ok,logic,equal,
 pareto_shortlist,pmdi,TBAPF6/anolyte:missing_objectives,,,,ok,logic,1e-06,
 pareto_shortlist,pmdi,TBAPF6/anolyte:E_V_traces_scorecard,-1.457,-1.457,0,ok,trace,1e-06,
 pareto_shortlist,pmdi,TBAPF6/anolyte:capacity_traces_scorecard,64.5,64.5,0,ok,trace,1e-06,
@@ -3170,22 +3520,32 @@ pareto_shortlist,viologen,TBAPF6/anolyte:capacity_traces_scorecard,92.7,92.7,0,o
 pareto_shortlist,viologen,TBAPF6/anolyte:lambda_i_eV_traces_scorecard,0.4694,0.4694,0,ok,trace,1e-06,
 pareto_shortlist,viologen,TBAPF6/anolyte:dG_disp_kJmol_traces_scorecard,51.0,51.0,0,ok,trace,1e-06,
 pareto_shortlist,viologen,TBAPF6/anolyte:n_traces_scorecard,2.0,2.0,0,ok,trace,1e-06,
+pareto_shortlist,d3_05hfap,INCOMPLETE_row_on_primary_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_05clzk,INCOMPLETE_row_on_primary_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_05hdcy,INCOMPLETE_row_on_primary_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_80mnnp,INCOMPLETE_row_on_primary_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_80txmo,INCOMPLETE_row_on_primary_front,False,False,,ok,logic,equal,
+pareto_shortlist,d3_80fsak,INCOMPLETE_row_on_primary_front,False,False,,ok,logic,equal,
 pareto_shortlist,aq_benzylamino,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
-pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],True,True,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,aq_benzyloxy,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,bisviologen,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,d3_05stji,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],True,True,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,d3_80izcq,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,dmophquinone,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,ethylviologen,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
-pareto_shortlist,mophquinone,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],True,True,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,mophquinone,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,ndi_ammonium,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,nq_benzyloxy,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,pmdi,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,viologen,LiPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,aq_benzylamino,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
-pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],True,True,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,aq_benzyloxy,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,bisviologen,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,d3_05stji,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],True,True,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,d3_80izcq,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,dmophquinone,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,ethylviologen,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
-pareto_shortlist,mophquinone,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],True,True,,ok,logic,equal,front recomputed end-to-end from raw records
+pareto_shortlist,mophquinone,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,ndi_ammonium,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,nq_benzyloxy,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
 pareto_shortlist,pmdi,TBAPF6/anolyte:pareto_optimal[from_recomputed_axes],False,False,,ok,logic,equal,front recomputed end-to-end from raw records
