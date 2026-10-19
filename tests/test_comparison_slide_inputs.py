@@ -17,9 +17,10 @@ def collection(tmp_path):
     source=slides/'redox_workflow.tex';source.write_text(r'\input{generated/candidate_comparison_collection.tex}')
     hashes={}
     for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png','candidate_structures.png','candidate_comparison_collection.tex'):
-        data=name.encode();(folder/name).write_bytes(data);hashes[name]=hashlib.sha256(data).hexdigest()
+        data=name.encode();relative=module.artifact_path(name);target=folder/relative
+        target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data);hashes[relative]=hashlib.sha256(data).hexdigest()
     (slides/'generated/candidate_comparison_collection.tex').write_bytes(b'candidate_comparison_collection.tex')
-    (folder/'manifest.json').write_text(json.dumps(dict(snapshot='snapshot-A',files=hashes)))
+    (folder/'metadata/manifest.json').write_text(json.dumps(dict(snapshot='snapshot-A',files=hashes)))
     return module,tmp_path,source,folder
 
 
@@ -37,6 +38,6 @@ def test_stale_figure_snapshot_cannot_publish_with_new_table(collection):
 
 def test_changed_figure_is_rejected_before_slide_build(collection):
     module,root,source,folder=collection
-    (folder/'redox_capacity.png').write_bytes(b'changed')
+    (folder/'plots/redox_capacity.png').write_bytes(b'changed')
     with pytest.raises(RuntimeError,match='differs from its checked collection'):
         module.comparison_collection_inputs(dict(snapshot_path='snapshot-A'),root,source)

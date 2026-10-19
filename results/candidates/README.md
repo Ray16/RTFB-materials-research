@@ -17,9 +17,9 @@ controls. These stable paths update with the active campaign exports.
 
 The [maintained comparison collection](figures/README.md) adds a searchable
 [all-candidate table and exact structures](figures/index.html), a
-[potential–capacity map](figures/redox_capacity.png), an
-[all-candidate comparison](figures/redox_ladders.pdf) and
-[family coverage](figures/coverage.png). One update command refreshes the same
+[potential–capacity map](figures/plots/redox_capacity.png), an
+[all-candidate comparison](figures/supplementary/redox_ladders.pdf) and
+[family coverage](figures/supplementary/coverage.png). One update command refreshes the same
 files from the audited feed as candidates and verified properties arrive.
 
 For the confirmed **functionalize vinyl monomer, then polymerize** route, the
@@ -45,8 +45,7 @@ Selected spin equilibria are explicit in the state sheet: the selected-surface
 native correction, effective correction used for G, equilibrium mixing term and
 alternative population are separate fields. Single-surface kinetic validation is
 withheld for mixed-spin states. Integrity must pass for every included component
-pair. The current batch has 26 complete potential pairs out of 36; consult the
-feed timestamp for any later updates.
+pair. Consult the timestamped feed for the current number of complete potential pairs.
 
 The checked free-parent benchmark now exposes a phenothiazine second-wave model
 error of +0.547 V. Two-electron window/accessible-capacity classifications for

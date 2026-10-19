@@ -20,6 +20,7 @@ LABELS=ROOT/'results/today_2026-10-11_verified_collection/candidate_display_name
 SLIDES=ROOT/'slides'
 sys.path.insert(0,str(ROOT/'scripts/plotting/candidates'))
 from verified_overlay import input_inventory_changed
+from collection_layout import artifact_path
 from redox.validation.provenance import scoped_spin_summary, input_changes_quarantined, calculation_gid
 
 
@@ -34,17 +35,17 @@ def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def comparison_collection_inputs(payload,root,source):
     """Bind the displayed current figures and include to one completed snapshot."""
     if r'\input{generated/candidate_comparison_collection.tex}' not in source.read_text():return {}
-    folder=root/'results/candidates/figures';manifest=folder/'manifest.json'
+    folder=root/'results/candidates/figures';manifest=folder/'metadata/manifest.json'
     metadata=json.loads(manifest.read_text())
     if metadata['snapshot']!=payload['snapshot_path']:
         raise RuntimeError('Comparison figures require an update from the displayed candidate snapshot')
     inputs={str(manifest):digest(manifest)}
     for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png','candidate_structures.png'):
-        path=folder/name;expected=metadata['files'][name]
+        path=folder/artifact_path(name);expected=metadata['files'][artifact_path(name)]
         if digest(path)!=expected:raise RuntimeError('Comparison figure differs from its checked collection: '+name)
         inputs[str(path)]=expected
     include=root/'slides/generated/candidate_comparison_collection.tex'
-    expected=metadata['files']['candidate_comparison_collection.tex']
+    expected=metadata['files']['metadata/candidate_comparison_collection.tex']
     if digest(include)!=expected:raise RuntimeError('Comparison slide include differs from the checked collection')
     inputs[str(include)]=expected
     return inputs

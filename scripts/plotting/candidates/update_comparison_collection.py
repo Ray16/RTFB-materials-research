@@ -20,6 +20,7 @@ from functools import lru_cache
 ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from verified_overlay import load
+from collection_layout import artifact_path,organize_stage
 
 ENERGY_FIELDS = ('E1_vs_Fc_V', 'E2_vs_Fc_V', 'wave_spacing_V',
                  'dG_disproportionation_kJ_mol', 'accessible_capacity_mAh_g',
@@ -84,6 +85,7 @@ def figures(rows, out, stamp, report):
     labels_path = ROOT/'results/today_2026-10-11_verified_collection/candidate_display_names.json'
     labels = json.loads(labels_path.read_text()) if labels_path.exists() else {}
     names = {r['id']: short_name(r, labels) for r in rows}
+    plt.rcdefaults()  # Do not inherit the historical overlay renderer's global style.
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 8,
         'axes.labelsize': 9, 'axes.titlesize': 9, 'xtick.labelsize': 7,
         'ytick.labelsize': 7, 'pdf.fonttype': 42, 'ps.fonttype': 42,
@@ -231,10 +233,15 @@ def main(argv=None):
     lock = (args.out/'.update.lock').open('a+')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     producers=[Path(__file__),Path(__file__).with_name('candidate_highlights.py'),
+        Path(__file__).with_name('collection_layout.py'),
         Path(__file__).with_name('candidate_structure_plate.py'),
+        Path(__file__).with_name('redox_state_schemes.py'),
         Path(__file__).with_name('comparison_browser.html'),Path(__file__).with_name('verified_overlay.py'),
         ROOT/'scripts/pipeline/update_verified_slides.py',ROOT/'results/discovery/vinyl_monomers/proposals.json']
     producer_sha256={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in producers}
+    old_manifest_path=args.out/'metadata/manifest.json'
+    if not old_manifest_path.exists():old_manifest_path=args.out/'manifest.json'
+    old_files=json.loads(old_manifest_path.read_text()).get('files',{}) if old_manifest_path.exists() else {}
     payload, raw, admitted = load(args.feed)
     if not payload or not raw:raise RuntimeError('No source-current audited candidate snapshot; collection preserved')
     _,_,comparison_admitted=load(args.feed,include_controls=True)
@@ -251,6 +258,8 @@ def main(argv=None):
         focused_figures(rows,report,matches,stage,names,colors)
         from candidate_structure_plate import structure_plate
         monomers=structure_plate(rows,report,names,vinyl_proposal,stage)
+        from redox_state_schemes import write_schemes
+        state_diagrams=write_schemes(rows,report,names,vinyl_proposal,stage,ROOT)
         (stage/'highlights.json').write_text(json.dumps(dict(report,matched_contrasts=matches),indent=2)+'\n')
         slide_frames=[]
         for title,filename,caption in [
@@ -263,7 +272,7 @@ def main(argv=None):
             ('Molecular structures: computed models and vinyl proposals','candidate_structures.png',
              'Top: computed capped-model descriptor leaders. Bottom: uncomputed vinyl monomers. Orange marks attachment; blue marks the vinyl group.')]:
             slide_frames.extend([r'\begin{frame}{'+title+'}',r'\centering',
-                r'\includegraphics[width=.97\linewidth,height=.72\textheight,keepaspectratio]{../results/candidates/figures/'+filename+'}',
+                r'\includegraphics[width=.97\linewidth,height=.72\textheight,keepaspectratio]{../results/candidates/figures/'+artifact_path(filename)+'}',
                 r'\par\smallskip\raggedright\scriptsize '+caption,
                 r'\vfill\tiny Audited model snapshot: '+stamp.replace('_',r'\_')+'.',r'\end{frame}'])
         (stage/'candidate_comparison_collection.tex').write_text('\n'.join(slide_frames)+'\n')
@@ -308,6 +317,16 @@ def main(argv=None):
             'Adjacent bars show nominal molecular capacity. Pending or excluded '
             'endpoints remain blank. The PDF uses readable supplementary pages; the '
             'PNG is an overview of the complete collection.\n\n'
+            '**Redox-state schemes.** Resting, one-electron-reduced and two-electron-reduced '
+            'forms of the three highlighted capped models and three vinyl-monomer proposals. '
+            'Each valence/resonance drawing preserves atoms, hydrogen count and covalent '
+            'connectivity, and matches the stated total charge and unpaired-electron '
+            'count. Radical/charge placement is illustrative, not a calculation of '
+            'spin or charge localization. M labels identify the selected computed spin '
+            'surface for capped models and proposed multiplicities for vinyl targets. '
+            'No proton transfer, demonstrated reversibility or polymer performance is '
+            'implied. Capped-model calculated potentials are included; vinyl potentials '
+            'remain pending.\n\n'
             '**Family coverage.** Candidate counts with source-current admitted '
             'potential calculations (blue) and pending/excluded calculations (hatched '
             'gray). Admission applies to the potential calculation, not to experimental '
@@ -332,26 +351,36 @@ def main(argv=None):
                 or comparison_after!=comparison_admitted
                 or any(hashlib.sha256(Path(p).read_bytes()).hexdigest()!=h for p,h in producer_sha256.items())):
             raise RuntimeError('Source changed during rendering; collection preserved, rerun update')
+        organize_stage(stage)
         manifest = dict(status='updated_verified_comparison_collection', as_of_Chicago=stamp,
             snapshot=snapshot, candidates=len(rows), original=sum(r['cohort']=='Original' for r in rows),
             additional=sum(r['cohort']=='Additional' for r in rows),
             admitted_potential_candidates=len(admitted), plotted_candidate_ids=points,
             interactive_plotly=interactive, structure_views=len(rows),
+            redox_state_depictions=state_diagrams['states'],
             producer_sha256=producer_sha256,
             publication_style=dict(width_inches=7.2,main_PNG_dpi=600,vector_formats=['pdf','svg'],
                 embedded_TrueType_fonts=True,grayscale_redundancy='numbered leader markers; pending hatching in coverage',
                 supplementary_rows_per_PDF_page=18),
             exact_graft_experimental_accuracy_validated=False,
-            files={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in stage.iterdir()})
-        (stage/'manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
+            files={p.relative_to(stage).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in stage.rglob('*') if p.is_file()})
+        (stage/'metadata/manifest.json').write_text(json.dumps(manifest, indent=2)+'\n')
         # Publish the manifest last so it always identifies the completed collection.
-        for path in sorted(stage.iterdir(), key=lambda p:p.name=='manifest.json'):
-            os.replace(path, args.out/path.name)
+        files=[p for p in stage.rglob('*') if p.is_file()]
+        for path in sorted(files,key=lambda p:(p.name=='manifest.json',p.name=='index.html',str(p))):
+            target=args.out/path.relative_to(stage);target.parent.mkdir(parents=True,exist_ok=True)
+            os.replace(path,target)
         slide_source=ROOT/'slides/generated/candidate_comparison_collection.tex'
         slide_source.parent.mkdir(parents=True,exist_ok=True)
         temporary=slide_source.with_name('.candidate_comparison_collection.tmp')
-        temporary.write_bytes((args.out/'candidate_comparison_collection.tex').read_bytes())
+        temporary.write_bytes((args.out/'metadata/candidate_comparison_collection.tex').read_bytes())
         temporary.replace(slide_source)
+        # Remove only obsolete generated flat files whose prior bytes are known.
+        for name,digest in old_files.items():
+            if '/' in name or artifact_path(name)==name:continue
+            old=args.out/name
+            if old.is_file() and hashlib.sha256(old.read_bytes()).hexdigest()==digest:old.unlink()
+        (args.out/'manifest.json').unlink(missing_ok=True)
     print(json.dumps({k:v for k,v in manifest.items() if k not in ('files','plotted_candidate_ids')}))
 
 

@@ -6,27 +6,46 @@ Open the local HTML from this collection folder; the interactive plot and table
 data are embedded. All candidates remain in the table, including unfinished
 calculations. Structure cards also show their proposed vinyl counterparts.
 
+The collection uses five folders, with this guide and the browser at the top level:
+
+| Folder | Contents |
+| --- | --- |
+| [plots/](plots/) | Three focused comparison plots, in PNG, PDF and SVG |
+| [structures/](structures/) | Molecular plates and oxidation-state drawings |
+| [supplementary/](supplementary/) | Complete candidate ladders and family coverage |
+| [data/](data/) | Candidate tables, structure records and selection details |
+| [metadata/](metadata/) | Captions, checksums, provenance and generated slide include |
+
 | Stable figure | What it compares |
 | --- | --- |
-| [Potential–capacity map](redox_capacity.png) · [PDF](redox_capacity.pdf) | Admitted first/second potentials and nominal molecular capacities |
-| [Synthesis tradeoff](synthesis_tradeoff.png) · [PDF](synthesis_tradeoff.pdf) | SA and nominal capacity, highlighting selected descriptor leaders |
-| [New candidate shifts](new_candidate_shifts.png) · [PDF](new_candidate_shifts.pdf) | Matched contrasts with lower potentials for both events, one per core |
-| [Molecular structures](candidate_structures.svg) · [PDF](candidate_structures.pdf) | Computed capped-model leaders and uncomputed vinyl-monomer pilot; attachment and vinyl group marked |
-| [All-candidate ladders](redox_ladders.png) · [PDF](redox_ladders.pdf) | Every candidate, with pending endpoints blank and nominal capacity alongside |
-| [Family coverage](coverage.png) · [PDF](coverage.pdf) | Admitted potential calculations and pending/excluded cases by family |
+| [Potential–capacity map](plots/redox_capacity.png) · [PDF](plots/redox_capacity.pdf) | Admitted first/second potentials and nominal molecular capacities |
+| [Synthesis tradeoff](plots/synthesis_tradeoff.png) · [PDF](plots/synthesis_tradeoff.pdf) | SA and nominal capacity, highlighting selected descriptor leaders |
+| [New candidate shifts](plots/new_candidate_shifts.png) · [PDF](plots/new_candidate_shifts.pdf) | Matched contrasts with lower potentials for both events, one per core |
+| [Molecular structures](structures/candidate_structures.svg) · [PDF](structures/candidate_structures.pdf) | Computed capped-model leaders and uncomputed vinyl-monomer pilot; attachment and vinyl group marked |
+| [Redox-state schemes](structures/redox_states.pdf) · [computed-model SVG](structures/redox_states_computed.svg) · [vinyl-proposal SVG](structures/redox_states_vinyl.svg) | Three redox states per molecule; charge, multiplicity and electron-transfer steps |
+| [All-candidate ladders](supplementary/redox_ladders.png) · [PDF](supplementary/redox_ladders.pdf) | Every candidate, with pending endpoints blank and nominal capacity alongside |
+| [Family coverage](supplementary/coverage.png) · [PDF](supplementary/coverage.pdf) | Admitted potential calculations and pending/excluded cases by family |
 
 The first three are the focused main views. The complete ladders and coverage are
-supplementary views. [Highlights and selection rules](highlights.json) distinguish
+supplementary views. [Highlights and selection rules](data/highlights.json) distinguish
 the partial potential–capacity front from the existing qualified primary Pareto
 policy. SA is an annotation; no missing kinetics or model uncertainty is filled
-to claim a complete front. [Figure captions](captions.md) state methods and scope.
+to claim a complete front. [Figure captions](metadata/captions.md) state methods and scope.
 
 The modeled structures are p-methylbenzyl-capped local graft models, not the
 vinyl-bearing monomers required for monomer-first polymerization. Computed
 descriptor leaders therefore do not establish polymer synthesis priorities.
 
-Download the complete [CSV](all_candidates.csv) or [JSON](all_candidates.json).
-The [manifest](manifest.json) records the audited input snapshot, candidate IDs,
+The redox-state companion uses illustrative formal resonance structures, checked
+for valence, molecular charge, unpaired-electron count and preservation of atoms,
+hydrogens and connectivity. Charges/radicals can be delocalized; these drawings
+are not calculated density maps or measured bond orders. Capped-model potentials
+are shown only where already admitted. Vinyl-state potentials and ground-spin
+assignments remain uncomputed; multiplicities there are proposals. Arrows denote
+the electron-count sequence, not demonstrated cycling reversibility.
+
+Download the complete [CSV](data/all_candidates.csv) or [JSON](data/all_candidates.json).
+The [manifest](metadata/manifest.json) records the audited input snapshot, candidate IDs,
 coverage and output checksums. These filenames are overwritten on each successful
 update. Earlier scientific snapshots stay in the existing immutable export archive.
 

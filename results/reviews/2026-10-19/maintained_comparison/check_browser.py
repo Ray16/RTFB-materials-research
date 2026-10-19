@@ -2,6 +2,7 @@
 import csv
 import hashlib
 import json
+import sys
 from pathlib import Path
 
 from playwright.sync_api import sync_playwright
@@ -11,8 +12,11 @@ from PIL import Image
 ROOT=Path(__file__).resolve().parents[4]
 OUT=Path(__file__).resolve().parent
 FIGURES=ROOT/'results/candidates/figures'
-manifest=json.loads((FIGURES/'manifest.json').read_text())
-records=json.loads((FIGURES/'all_candidates.json').read_text())
+sys.path.insert(0,str(ROOT/'scripts/plotting/candidates'))
+from collection_layout import artifact_path
+def artifact(name):return FIGURES/artifact_path(name)
+manifest=json.loads((artifact('manifest.json')).read_text())
+records=json.loads((artifact('all_candidates.json')).read_text())
 checks=[]
 
 
@@ -23,7 +27,7 @@ def check(name, passed):
 
 check('Every registered candidate appears exactly once',len(records)==manifest['candidates']==len({r['id'] for r in records}))
 check('Both cohorts retain their full counts',sum(r['cohort']=='Original' for r in records)==manifest['original'] and sum(r['cohort']=='Additional' for r in records)==manifest['additional'])
-with (FIGURES/'all_candidates.csv').open() as stream:
+with (artifact('all_candidates.csv')).open() as stream:
     csv_rows=list(csv.DictReader(stream))
 check('CSV and browser cover identical IDs',{r['id'] for r in csv_rows}=={r['id'] for r in records})
 for name,digest in manifest['files'].items():
@@ -31,14 +35,14 @@ for name,digest in manifest['files'].items():
 for name,digest in manifest['producer_sha256'].items():
     check('Unchanged figure producer/input '+name,hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest)
 for name in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts','coverage','candidate_structures'):
-    image=Image.open(FIGURES/f'{name}.png')
+    image=Image.open(artifact(f'{name}.png'))
     check(name+' PNG has 600-dpi metadata',min(image.info['dpi'])>599)
-    document=PdfReader(FIGURES/f'{name}.pdf')
+    document=PdfReader(artifact(f'{name}.pdf'))
     check(name+' vector PDF has double-column width',abs(float(document.pages[0].mediabox.width)-7.2*72)<.05)
     check(name+' PDF retains vector graphics',not list(document.pages[0].images))
-check('Supplementary PDF paginates every candidate',len(PdfReader(FIGURES/'redox_ladders.pdf').pages)==(len(records)+17)//18)
-highlights=json.loads((FIGURES/'highlights.json').read_text())
-plate=json.loads((FIGURES/'candidate_structures.json').read_text())
+check('Supplementary PDF paginates every candidate',len(PdfReader(artifact('redox_ladders.pdf')).pages)==(len(records)+17)//18)
+highlights=json.loads((artifact('highlights.json')).read_text())
+plate=json.loads((artifact('candidate_structures.json')).read_text())
 proposal=json.loads((ROOT/'results/discovery/vinyl_monomers/proposals.json').read_text())
 model_source={r['id']:r['exact_grafted_smiles'] for r in records}
 vinyl_source={r['id']:r['smiles'] for r in proposal['records']}
