@@ -1,0 +1,56 @@
+{
+  "status": "gas_UMA_state_verified",
+  "key": "hyp_cata_ndi_ethyl__red2",
+  "host": "lambda13",
+  "pid": 3888930,
+  "process_start": "52731430",
+  "CPU_affinity": [
+    4,
+    5
+  ],
+  "started": 1792409981.1457098,
+  "attempts": 1,
+  "solution_properties_validated": false,
+  "physical_gpu": "2",
+  "device": "NVIDIA H100 NVL",
+  "total_memory_bytes": 99949674496,
+  "model_identity": {
+    "model": "uma-s-1p2p1",
+    "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
+    "reference_sha256": {
+      "atom_refs": "8d6b57a33c6a139f80cd706f253a030bd9d93cbfb1bbe33fba066e23b7e8c29e",
+      "form_elem_refs": "6de4f5105106bbb31fdc04b3fa215c50d379f043f3b6527e287475a3c2255c75"
+    },
+    "loader_version": "2.21.0",
+    "registry_entry": {
+      "filename": "uma-s-1p2p1.pt",
+      "repo_id": "facebook/UMA",
+      "subfolder": "checkpoints",
+      "atom_refs": {
+        "subfolder": "references",
+        "filename": "iso_atom_elem_refs.yaml"
+      },
+      "form_elem_refs": {
+        "subfolder": "references",
+        "filename": "form_elem_refs.yaml"
+      }
+    },
+    "task_name": "omol"
+  },
+  "native_thread_caps": {
+    "OMP_NUM_THREADS": "2",
+    "OMP_THREAD_LIMIT": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2"
+  },
+  "result": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/cata_core_expansion_2026-10-19/uma/hyp_cata_ndi_ethyl/red2/result.json",
+  "result_sha256": "8afa687728c210f3361146e2c8218d92fb034eb51c621d19d765e3f07238b763",
+  "geometry_sha256": "508036c7e19391401bfb5778643b41cdd8fb78bf8218c4c314fe5dc8558e7794",
+  "chosen_mult": 1,
+  "spin_gap_eV": 0.2348,
+  "energy_eV": -36353.30121007407,
+  "peak_allocated_bytes": 1330609664,
+  "peak_reserved_bytes": 1350565888,
+  "finished": 1792410038.3327248
+}

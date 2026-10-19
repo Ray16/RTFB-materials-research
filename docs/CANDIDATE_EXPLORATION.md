@@ -18,9 +18,13 @@ and solution kinetics remain unvalidated. A larger voltage shift alone does not
 establish a better battery candidate.
 
 The source catalog and systematic pool below remain the basis for further
-exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts and
-alternative cata-annulated imide graphs remain preparation work, with no QM
-results implied. Source-parent measurements retain their own conditions and
+exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts remain preparation work. The
+[new cata-imide branch](../results/discovery/cata_core_expansion_2026-10-19/README.md)
+now has four curated parent graphs and two prepared exact grafts, with 214 checks
+and 18 verified initial conformers. All six gas UMA states passed
+their warm-start contracts and their workers are terminal. The cata-NDI dianion
+requires a DFT spin comparison. Shared registration and solution calculations
+remain the next stages; no new solution potential or kinetic result is implied. Source-parent measurements retain their own conditions and
 are never assigned to an exact graft.
 
 ## Earlier exploration checkpoints
