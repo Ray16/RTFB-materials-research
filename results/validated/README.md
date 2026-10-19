@@ -33,7 +33,7 @@ The current snapshot includes both new cata-imide ladders and gas-diagnostic QC.
 The repaired cata-ADI neutral uses a reviewed finer CDS derivative step with the
 original geometry and active energy unchanged. Per-record external qualification
 evidence is now fingerprinted, so a changed gradient artifact cannot hide behind
-an unchanged native-record JSON. The software suite passes 550 tests.
+an unchanged native-record JSON. The software suite passed 550 tests at that review.
 
 The current snapshot also exports computational-only lambda uncertainty evidence
 and guards its prior floor. See the [review](../validation/uncertainty_scope_2026-10-19/README.md).
@@ -44,3 +44,9 @@ and explicit hydrogen-check module. The [798-geometry hydrogen audit](../validat
 reconciles three changed quinone dianions with existing second-step integrity
 exclusions. Eight current numeric tables are byte-identical to the preceding
 published review; isolated UMA work does not promote new solution properties.
+
+Nine diaryl-viologen registrations and their live solution calculations are
+outside this as-of full-table snapshot. Its input inventory no longer matches
+the expanded manifest; this is recorded in [current.json](current.json). Use the
+[candidate feed](../candidates/README.md) for the 36 additional structures and
+current pending fields. A fresh full review follows stable scientific outputs.

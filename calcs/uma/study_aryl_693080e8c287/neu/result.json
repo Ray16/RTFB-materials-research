@@ -1,0 +1,96 @@
+{
+  "energy_eV": -55041.03828783322,
+  "chosen_mult": 1,
+  "mult_hint": 1,
+  "conf_idx": 9,
+  "fmax": 0.019168248400092125,
+  "n_steps": 132,
+  "converged": true,
+  "charge": 0,
+  "n_elec": 308,
+  "mults_scanned": [
+    1,
+    3
+  ],
+  "spin_gap_eV": 1.1012,
+  "per_mult_eV": {
+    "1": -55041.0383,
+    "3": -55039.9371
+  },
+  "n_conf": 10,
+  "id": "study_aryl_693080e8c287",
+  "state": "neu",
+  "model": "uma-s-1p2p1",
+  "n_e": -2,
+  "smiles": "Cc1ccc(COC(=O)c2cccc(-[n+]3ccc(-c4cc[n+](-c5cccc(C(=O)O)c5C(=O)O)cc4)cc3)c2C(=O)O)cc1",
+  "cache_schema": 1,
+  "model_identity": {
+    "model": "uma-s-1p2p1",
+    "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
+    "reference_sha256": {
+      "atom_refs": "8d6b57a33c6a139f80cd706f253a030bd9d93cbfb1bbe33fba066e23b7e8c29e",
+      "form_elem_refs": "6de4f5105106bbb31fdc04b3fa215c50d379f043f3b6527e287475a3c2255c75"
+    },
+    "loader_version": "2.21.0",
+    "registry_entry": {
+      "filename": "uma-s-1p2p1.pt",
+      "repo_id": "facebook/UMA",
+      "subfolder": "checkpoints",
+      "atom_refs": {
+        "subfolder": "references",
+        "filename": "iso_atom_elem_refs.yaml"
+      },
+      "form_elem_refs": {
+        "subfolder": "references",
+        "filename": "form_elem_refs.yaml"
+      }
+    },
+    "task_name": "omol"
+  },
+  "seed_identity": [
+    {
+      "name": "conf_00.xyz",
+      "sha256": "dadb6839832dafaf37a3e554c6d5d579ed68aca0bcc334f0209c93d5d2e35f09"
+    },
+    {
+      "name": "conf_01.xyz",
+      "sha256": "4e47d03f156ca381805808ce73b3a83ed9e8d3aaa466023ce6fd7594a674360c"
+    },
+    {
+      "name": "conf_02.xyz",
+      "sha256": "cfcd0b5b3928ae332d2386222d89ba36bbdbfaeee8950842a79aff21f0030e1a"
+    },
+    {
+      "name": "conf_03.xyz",
+      "sha256": "f41b3e08a9f93cfaf65b1752792814641bb1736c18e84846332fe96b0e9e674f"
+    },
+    {
+      "name": "conf_04.xyz",
+      "sha256": "5470c93f3100e451f38c7c332925494995aa946c88f3362d8440b320035299fd"
+    },
+    {
+      "name": "conf_05.xyz",
+      "sha256": "3e3d00924ea361ffdc80dc6f218b09aa07fe1c71ec87773d6f29f866b6e39e3f"
+    },
+    {
+      "name": "conf_06.xyz",
+      "sha256": "82b9e6b79a250dbc3c5a45f26edc03b19af351031965dc46fa15605a01d03187"
+    },
+    {
+      "name": "conf_07.xyz",
+      "sha256": "47208e9d53a0d93a6c9cff3ed7613ddcdbc8bd012319adfb3713a09c5c60fdf3"
+    },
+    {
+      "name": "conf_08.xyz",
+      "sha256": "99a0127479878a1848b2dd6601abd024cc291856c742f1559d1d7209e4c80390"
+    },
+    {
+      "name": "conf_09.xyz",
+      "sha256": "446359d6f6130b5c631e5d9405d158236269f59a100b33f2b6c3f4a176558c13"
+    }
+  ],
+  "geometry_sha256": "2cdf39124910aeba20a56e6e4d7b7da96b58cc5205bd79be915eb27a58833366",
+  "requested_fmax": 0.02,
+  "optimizer": "ASE BFGS",
+  "optimizer_step_limit": 300
+}

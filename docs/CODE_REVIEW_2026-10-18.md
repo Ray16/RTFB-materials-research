@@ -2,7 +2,7 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **550 tests**. The alternate-spin helper fix makes
+The full software suite passes **558 tests**. The alternate-spin helper fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
@@ -61,6 +61,15 @@ The [798-geometry audit](../results/validation/hydrogen_topology_2026-10-19/READ
 finds three quinone dianions with different H attachments. All three second steps
 are already excluded by existing bond-integrity gates; published usable capacities
 are unchanged. Metal/ion-pair connectivity warnings remain separately scoped.
+
+The new [state-completion receipt guard](../src/redox/workflows/checkpoints.py)
+checks the exact state, its saved report and every output hash before queue reuse.
+Five regressions cover changed/missing output, a changed report, an incorrect
+state key and marker-only evidence. The [27-state diaryl-viologen solution queue](../results/validation/aryl_solution_2026-10-19/README.md)
+uses this guard and source-bound state ownership on 18 verified GPU workers.
+The inherited multi-seed description has also been corrected: `--nconf 3` selects
+three FF geometries, with UMA used for initial multiplicity, rather than adding
+an extra UMA geometry. The numerical procedure was not changed during execution.
 
 ## Gas-reference solver correction and remaining forwarding
 
@@ -310,3 +319,8 @@ now labels the lambda scale as computational-model spread, exports counts and
 median discrepancy, and prevents sparse/zero-spread comparisons from tightening
 the prior. The current 0.209-eV scale and numeric property/selection tables are
 unchanged. This does not add experimental kinetic validation.
+
+The candidate exporter now reads modern per-state queues directly. It separates
+producer progress, surface completion, preserved failures and independent property
+admission, and refuses mismatched state reports. Three regressions pass; a legacy
+queue can no longer make the new campaign appear terminal or outside the queue.

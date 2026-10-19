@@ -1,0 +1,406 @@
+id,name,family,state,charge,mult_hint,n_e,n_conf,solv_preopt,smiles
+pyridinium,N-benzylpyridinium,pyridine,ox,1,1,0,2,1,Cc1ccc(C[n+]2ccccc2)cc1
+pyridinium,N-benzylpyridinium,pyridine,red,0,2,-1,2,0,Cc1ccc(C[n+]2ccccc2)cc1
+cyanopyridinium,N-benzyl-4-cyanopyridinium,pyridine,ox,1,1,0,4,1,Cc1ccc(C[n+]2ccc(C#N)cc2)cc1
+cyanopyridinium,N-benzyl-4-cyanopyridinium,pyridine,red,0,2,-1,4,0,Cc1ccc(C[n+]2ccc(C#N)cc2)cc1
+viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",pyridine-multi-e,ox2,2,1,0,10,1,Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1
+viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",pyridine-multi-e,ox1,1,2,-1,10,1,Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1
+viologen,"N-benzyl-N'-methyl-4,4'-bipyridinium (viologen)",pyridine-multi-e,neu,0,1,-2,10,0,Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1
+phenothiazine,N-benzylphenothiazine,amine (p-type),neu,0,1,0,5,0,Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1
+phenothiazine,N-benzylphenothiazine,amine (p-type),ox,1,2,1,5,1,Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1
+tempo,4-(benzyloxy)-TEMPO,nitroxide,rad,0,2,0,10,0,Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1
+tempo,4-(benzyloxy)-TEMPO,nitroxide,ox,1,1,1,10,1,Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1
+tempo,4-(benzyloxy)-TEMPO,nitroxide,red,-1,1,-1,10,1,Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1
+anthraquinone,2-(benzyloxymethyl)anthraquinone,quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COCc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+anthraquinone,2-(benzyloxymethyl)anthraquinone,quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COCc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+anthraquinone,2-(benzyloxymethyl)anthraquinone,quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COCc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+ferrocene,ferrocene (internal reference),validation,neu,0,1,0,1,,[Fe].c1ccc[cH-]1.c1ccc[cH-]1
+ferrocene,ferrocene (internal reference),validation,ox,1,2,1,1,,[Fe].c1ccc[cH-]1.c1ccc[cH-]1
+methyl_viologen,"methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",validation,ox2,2,1,0,6,,C[n+]1ccc(-c2cc[n+](C)cc2)cc1
+methyl_viologen,"methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",validation,ox1,1,2,-1,6,,C[n+]1ccc(-c2cc[n+](C)cc2)cc1
+methyl_viologen,"methyl viologen (N,N'-dimethyl-4,4'-bipyridinium)",validation,neu,0,1,-2,6,,C[n+]1ccc(-c2cc[n+](C)cc2)cc1
+tempo_parent,"TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",validation,rad,0,2,0,10,,CC1(C)CCCC(C)(C)N1[O]
+tempo_parent,"TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",validation,ox,1,1,1,10,,CC1(C)CCCC(C)(C)N1[O]
+tempo_parent,"TEMPO (2,2,6,6-tetramethylpiperidine-1-oxyl)",validation,red,-1,1,-1,10,,CC1(C)CCCC(C)(C)N1[O]
+phenothiazine_parent,10H-phenothiazine,validation,neu,0,1,0,1,,c1ccc2c(c1)Nc1ccccc1S2
+phenothiazine_parent,10H-phenothiazine,validation,ox,1,2,1,1,,c1ccc2c(c1)Nc1ccccc1S2
+anthraquinone_parent,"9,10-anthraquinone",validation,neu,0,1,0,1,,O=C1c2ccccc2C(=O)c2ccccc21
+anthraquinone_parent,"9,10-anthraquinone",validation,red1,-1,2,-1,1,,O=C1c2ccccc2C(=O)c2ccccc21
+anthraquinone_parent,"9,10-anthraquinone",validation,red2,-2,1,-2,1,,O=C1c2ccccc2C(=O)c2ccccc21
+methylpyridinium,N-methylpyridinium,validation,ox,1,1,0,1,,C[n+]1ccccc1
+methylpyridinium,N-methylpyridinium,validation,red,0,2,-1,1,,C[n+]1ccccc1
+pf6,hexafluorophosphate (free PF6- anion),validation,anion,-1,1,0,10,,F[P-](F)(F)(F)(F)F
+mv_ip2,"methyl viologen dication . 2 PF6- (ion pair, net 0)",validation,s0,0,1,0,10,,C[n+]1ccc(-c2cc[n+](C)cc2)cc1.F[P-](F)(F)(F)(F)F.F[P-](F)(F)(F)(F)F
+mv_ip1,"methyl viologen radical-cation . 1 PF6- (ion pair, net 0)",validation,s0,0,2,0,10,,C[n+]1ccc(-c2cc[n+](C)cc2)cc1.F[P-](F)(F)(F)(F)F
+ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",pyridine-multi-e,ox2,2,1,0,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",pyridine-multi-e,ox1,1,2,-1,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+ethylviologen,"N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen)",pyridine-multi-e,neu,0,1,-2,10,0,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+pmdi,N-benzyl-N'-methyl pyromellitic diimide,imide (n-type),neu,0,1,0,3,0,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C)c(=O)c4cc3c2=O)cc1
+pmdi,N-benzyl-N'-methyl pyromellitic diimide,imide (n-type),red1,-1,2,-1,3,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C)c(=O)c4cc3c2=O)cc1
+pmdi,N-benzyl-N'-methyl pyromellitic diimide,imide (n-type),red2,-2,1,-2,3,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C)c(=O)c4cc3c2=O)cc1
+ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),ox,1,1,0,10,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCC[N+](C)(C)C)C4=O)cc1
+ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red1,0,2,-1,10,0,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCC[N+](C)(C)C)C4=O)cc1
+ndi_ammonium,N-benzyl N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red2,-1,1,-2,10,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCC[N+](C)(C)C)C4=O)cc1
+mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COc2ccc(C3=CC(=O)C=CC3=O)cc2)cc1
+mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COc2ccc(C3=CC(=O)C=CC3=O)cc2)cc1
+mophquinone,"2-(4-benzyloxyphenyl)-1,4-benzoquinone",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COc2ccc(C3=CC(=O)C=CC3=O)cc2)cc1
+dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",quinone (n-type),neu,0,1,0,10,0,COC1=CC(=O)C(c2cc(OCc3ccc(C)cc3)ccc2OC)=CC1=O
+dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",quinone (n-type),red1,-1,2,-1,10,1,COC1=CC(=O)C(c2cc(OCc3ccc(C)cc3)ccc2OC)=CC1=O
+dmophquinone,"2-(2-methoxy-5-benzyloxyphenyl)-5-methoxy-1,4-benzoquinone",quinone (n-type),red2,-2,1,-2,10,1,COC1=CC(=O)C(c2cc(OCc3ccc(C)cc3)ccc2OC)=CC1=O
+ethylviologen_sa,"ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",validation,ox2,2,1,0,7,1,CC[n+]1ccc(-c2cc[n+](CC)cc2)cc1
+ethylviologen_sa,"ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",validation,ox1,1,2,-1,7,1,CC[n+]1ccc(-c2cc[n+](CC)cc2)cc1
+ethylviologen_sa,"ethyl viologen (N,N'-diethyl-4,4'-bipyridinium)",validation,neu,0,1,-2,7,0,CC[n+]1ccc(-c2cc[n+](CC)cc2)cc1
+pmdi_sa,"N,N'-dimethyl pyromellitic diimide",imide (n-type),neu,0,1,0,1,0,Cn1c(=O)c2cc3c(=O)n(C)c(=O)c3cc2c1=O
+pmdi_sa,"N,N'-dimethyl pyromellitic diimide",imide (n-type),red1,-1,2,-1,1,1,Cn1c(=O)c2cc3c(=O)n(C)c(=O)c3cc2c1=O
+pmdi_sa,"N,N'-dimethyl pyromellitic diimide",imide (n-type),red2,-2,1,-2,1,1,Cn1c(=O)c2cc3c(=O)n(C)c(=O)c3cc2c1=O
+ndi_ammonium_sa,N-methyl-N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),ox,1,1,0,10,1,CN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCC[N+](C)(C)C)C3=O
+ndi_ammonium_sa,N-methyl-N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red1,0,2,-1,10,0,CN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCC[N+](C)(C)C)C3=O
+ndi_ammonium_sa,N-methyl-N'-(3-trimethylammoniopropyl) naphthalene diimide,imide (n-type),red2,-1,1,-2,10,1,CN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCC[N+](C)(C)C)C3=O
+mophquinone_sa,"2-(4-methoxyphenyl)-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),neu,0,1,0,2,0,COc1ccc(C2=CC(=O)C=CC2=O)cc1
+mophquinone_sa,"2-(4-methoxyphenyl)-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red1,-1,2,-1,2,1,COc1ccc(C2=CC(=O)C=CC2=O)cc1
+mophquinone_sa,"2-(4-methoxyphenyl)-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red2,-2,1,-2,2,1,COc1ccc(C2=CC(=O)C=CC2=O)cc1
+dmophquinone_sa,"2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),neu,0,1,0,10,0,COC1=CC(=O)C(c2cc(OC)ccc2OC)=CC1=O
+dmophquinone_sa,"2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red1,-1,2,-1,10,1,COC1=CC(=O)C(c2cc(OC)ccc2OC)=CC1=O
+dmophquinone_sa,"2-(2,5-dimethoxyphenyl)-5-methoxy-1,4-benzoquinone (xlsx / D3TaLES)",quinone (n-type),red2,-2,1,-2,10,1,COC1=CC(=O)C(c2cc(OC)ccc2OC)=CC1=O
+bisviologen,"N,N'-bis(benzyl)-4,4'-bipyridinium (bis-tethered viologen)",pyridine-multi-e,ox2,2,1,0,10,1,Cc1ccc(C[n+]2ccc(-c3cc[n+](Cc4ccc(C)cc4)cc3)cc2)cc1
+bisviologen,"N,N'-bis(benzyl)-4,4'-bipyridinium (bis-tethered viologen)",pyridine-multi-e,ox1,1,2,-1,10,1,Cc1ccc(C[n+]2ccc(-c3cc[n+](Cc4ccc(C)cc4)cc3)cc2)cc1
+bisviologen,"N,N'-bis(benzyl)-4,4'-bipyridinium (bis-tethered viologen)",pyridine-multi-e,neu,0,1,-2,10,0,Cc1ccc(C[n+]2ccc(-c3cc[n+](Cc4ccc(C)cc4)cc3)cc2)cc1
+aq_benzyloxy,2-(benzyloxy)anthraquinone,quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+aq_benzyloxy,2-(benzyloxy)anthraquinone,quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+aq_benzyloxy,2-(benzyloxy)anthraquinone,quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+nq_benzyloxy,"2-(benzyloxy)-1,4-naphthoquinone (from lawsone)",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COC2=CC(=O)c3ccccc3C2=O)cc1
+nq_benzyloxy,"2-(benzyloxy)-1,4-naphthoquinone (from lawsone)",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COC2=CC(=O)c3ccccc3C2=O)cc1
+nq_benzyloxy,"2-(benzyloxy)-1,4-naphthoquinone (from lawsone)",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COC2=CC(=O)c3ccccc3C2=O)cc1
+dtbc_phenol,"3,5-di-tert-butyl-2-(benzyloxy)phenol (mono-O-benzyl DTBC)",phenol (p-type),neu,0,1,0,10,0,Cc1ccc(COc2c(O)cc(C(C)(C)C)cc2C(C)(C)C)cc1
+dtbc_phenol,"3,5-di-tert-butyl-2-(benzyloxy)phenol (mono-O-benzyl DTBC)",phenol (p-type),ox,1,2,1,10,1,Cc1ccc(COc2c(O)cc(C(C)(C)C)cc2C(C)(C)C)cc1
+aq_benzylamino,2-(benzylamino)anthraquinone (repaired 9-aminoanthracene route),quinone (n-type),neu,0,1,0,10,0,Cc1ccc(CNc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+aq_benzylamino,2-(benzylamino)anthraquinone (repaired 9-aminoanthracene route),quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(CNc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+aq_benzylamino,2-(benzylamino)anthraquinone (repaired 9-aminoanthracene route),quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(CNc2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1
+aq_benzyloxy_sa,2-methoxyanthraquinone,quinone (n-type),neu,0,1,0,2,0,COc1ccc2c(c1)C(=O)c1ccccc1C2=O
+aq_benzyloxy_sa,2-methoxyanthraquinone,quinone (n-type),red1,-1,2,-1,2,1,COc1ccc2c(c1)C(=O)c1ccccc1C2=O
+aq_benzyloxy_sa,2-methoxyanthraquinone,quinone (n-type),red2,-2,1,-2,2,1,COc1ccc2c(c1)C(=O)c1ccccc1C2=O
+nq_benzyloxy_sa,"2-methoxy-1,4-naphthoquinone",quinone (n-type),neu,0,1,0,9,0,COC1=CC(=O)c2ccccc2C1=O
+nq_benzyloxy_sa,"2-methoxy-1,4-naphthoquinone",quinone (n-type),red1,-1,2,-1,9,1,COC1=CC(=O)c2ccccc2C1=O
+nq_benzyloxy_sa,"2-methoxy-1,4-naphthoquinone",quinone (n-type),red2,-2,1,-2,9,1,COC1=CC(=O)c2ccccc2C1=O
+dtbc_phenol_sa,"3,5-di-tert-butyl-2-methoxyphenol",phenol (p-type),neu,0,1,0,9,0,COc1c(O)cc(C(C)(C)C)cc1C(C)(C)C
+dtbc_phenol_sa,"3,5-di-tert-butyl-2-methoxyphenol",phenol (p-type),ox,1,2,1,9,1,COc1c(O)cc(C(C)(C)C)cc1C(C)(C)C
+aq_benzylamino_sa,2-(methylamino)anthraquinone,quinone (n-type),neu,0,1,0,2,0,CNc1ccc2c(c1)C(=O)c1ccccc1C2=O
+aq_benzylamino_sa,2-(methylamino)anthraquinone,quinone (n-type),red1,-1,2,-1,2,1,CNc1ccc2c(c1)C(=O)c1ccccc1C2=O
+aq_benzylamino_sa,2-(methylamino)anthraquinone,quinone (n-type),red2,-2,1,-2,2,1,CNc1ccc2c(c1)C(=O)c1ccccc1C2=O
+bm_1_4_benzoquinone,"1,4-benzoquinone",validation,neu,0,1,0,1,,O=C1C=CC(=O)C=C1
+bm_1_4_benzoquinone,"1,4-benzoquinone",validation,red1,-1,2,-1,1,,O=C1C=CC(=O)C=C1
+bm_1_4_benzoquinone,"1,4-benzoquinone",validation,red2,-2,1,-2,1,,O=C1C=CC(=O)C=C1
+bm_2_methyl_1_4_benzoquinone,"2-methyl-1,4-benzoquinone",validation,neu,0,1,0,1,,CC1=CC(=O)C=CC1=O
+bm_2_methyl_1_4_benzoquinone,"2-methyl-1,4-benzoquinone",validation,red1,-1,2,-1,1,,CC1=CC(=O)C=CC1=O
+bm_2_methyl_1_4_benzoquinone,"2-methyl-1,4-benzoquinone",validation,red2,-2,1,-2,1,,CC1=CC(=O)C=CC1=O
+bm_2_tert_butyl_1_4_benzoquinone,"2-tert-butyl-1,4-benzoquinone",validation,neu,0,1,0,1,,CC(C)(C)C1=CC(=O)C=CC1=O
+bm_2_tert_butyl_1_4_benzoquinone,"2-tert-butyl-1,4-benzoquinone",validation,red1,-1,2,-1,1,,CC(C)(C)C1=CC(=O)C=CC1=O
+bm_2_tert_butyl_1_4_benzoquinone,"2-tert-butyl-1,4-benzoquinone",validation,red2,-2,1,-2,1,,CC(C)(C)C1=CC(=O)C=CC1=O
+bm_2_fluoro_1_4_benzoquinone,"2-fluoro-1,4-benzoquinone",validation,neu,0,1,0,1,,O=C1C=CC(=O)C(F)=C1
+bm_2_fluoro_1_4_benzoquinone,"2-fluoro-1,4-benzoquinone",validation,red1,-1,2,-1,1,,O=C1C=CC(=O)C(F)=C1
+bm_2_fluoro_1_4_benzoquinone,"2-fluoro-1,4-benzoquinone",validation,red2,-2,1,-2,1,,O=C1C=CC(=O)C(F)=C1
+bm_1_hydroxy_9_10_anthraquinone,"1-hydroxy-9,10-anthraquinone",validation,neu,0,1,0,1,,O=C1c2ccccc2C(=O)c2c(O)cccc21
+bm_1_hydroxy_9_10_anthraquinone,"1-hydroxy-9,10-anthraquinone",validation,red1,-1,2,-1,1,,O=C1c2ccccc2C(=O)c2c(O)cccc21
+bm_1_hydroxy_9_10_anthraquinone,"1-hydroxy-9,10-anthraquinone",validation,red2,-2,1,-2,1,,O=C1c2ccccc2C(=O)c2c(O)cccc21
+bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,"1,4-dihydroxy-9,10-anthraquinone (quinizarin)",validation,neu,0,1,0,1,,O=C1c2ccccc2C(=O)c2c(O)ccc(O)c21
+bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,"1,4-dihydroxy-9,10-anthraquinone (quinizarin)",validation,red1,-1,2,-1,1,,O=C1c2ccccc2C(=O)c2c(O)ccc(O)c21
+bm_1_4_dihydroxy_9_10_anthraquinone_quinizarin,"1,4-dihydroxy-9,10-anthraquinone (quinizarin)",validation,red2,-2,1,-2,1,,O=C1c2ccccc2C(=O)c2c(O)ccc(O)c21
+bm_1_amino_9_10_anthraquinone,"1-amino-9,10-anthraquinone",validation,neu,0,1,0,1,,Nc1cccc2c1C(=O)c1ccccc1C2=O
+bm_1_amino_9_10_anthraquinone,"1-amino-9,10-anthraquinone",validation,red1,-1,2,-1,1,,Nc1cccc2c1C(=O)c1ccccc1C2=O
+bm_1_amino_9_10_anthraquinone,"1-amino-9,10-anthraquinone",validation,red2,-2,1,-2,1,,Nc1cccc2c1C(=O)c1ccccc1C2=O
+bm_1_4_diamino_9_10_anthraquinone,"1,4-diamino-9,10-anthraquinone",validation,neu,0,1,0,1,,Nc1ccc(N)c2c1C(=O)c1ccccc1C2=O
+bm_1_4_diamino_9_10_anthraquinone,"1,4-diamino-9,10-anthraquinone",validation,red1,-1,2,-1,1,,Nc1ccc(N)c2c1C(=O)c1ccccc1C2=O
+bm_1_4_diamino_9_10_anthraquinone,"1,4-diamino-9,10-anthraquinone",validation,red2,-2,1,-2,1,,Nc1ccc(N)c2c1C(=O)c1ccccc1C2=O
+bm_1_amino_4_hydroxy_9_10_anthraquinone,"1-amino-4-hydroxy-9,10-anthraquinone",validation,neu,0,1,0,1,,Nc1ccc(O)c2c1C(=O)c1ccccc1C2=O
+bm_1_amino_4_hydroxy_9_10_anthraquinone,"1-amino-4-hydroxy-9,10-anthraquinone",validation,red1,-1,2,-1,1,,Nc1ccc(O)c2c1C(=O)c1ccccc1C2=O
+bm_1_amino_4_hydroxy_9_10_anthraquinone,"1-amino-4-hydroxy-9,10-anthraquinone",validation,red2,-2,1,-2,1,,Nc1ccc(O)c2c1C(=O)c1ccccc1C2=O
+bm_1_4_naphthoquinone,"1,4-naphthoquinone",validation,neu,0,1,0,1,,O=C1C=CC(=O)c2ccccc21
+bm_1_4_naphthoquinone,"1,4-naphthoquinone",validation,red1,-1,2,-1,1,,O=C1C=CC(=O)c2ccccc21
+bm_1_4_naphthoquinone,"1,4-naphthoquinone",validation,red2,-2,1,-2,1,,O=C1C=CC(=O)c2ccccc21
+bm_1_2_naphthoquinone,"1,2-naphthoquinone",validation,neu,0,1,0,1,,O=C1C=Cc2ccccc2C1=O
+bm_1_2_naphthoquinone,"1,2-naphthoquinone",validation,red1,-1,2,-1,1,,O=C1C=Cc2ccccc2C1=O
+bm_1_2_naphthoquinone,"1,2-naphthoquinone",validation,red2,-2,1,-2,1,,O=C1C=Cc2ccccc2C1=O
+bm_5_hydroxy_1_4_naphthoquinone_juglone,"5-hydroxy-1,4-naphthoquinone (juglone)",validation,neu,0,1,0,1,,O=C1C=CC(=O)c2c(O)cccc21
+bm_5_hydroxy_1_4_naphthoquinone_juglone,"5-hydroxy-1,4-naphthoquinone (juglone)",validation,red1,-1,2,-1,1,,O=C1C=CC(=O)c2c(O)cccc21
+bm_5_hydroxy_1_4_naphthoquinone_juglone,"5-hydroxy-1,4-naphthoquinone (juglone)",validation,red2,-2,1,-2,1,,O=C1C=CC(=O)c2c(O)cccc21
+bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,"5,8-dihydroxy-1,4-naphthoquinone (naphthazarin)",validation,neu,0,1,0,1,,O=C1C=CC(=O)c2c(O)ccc(O)c21
+bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,"5,8-dihydroxy-1,4-naphthoquinone (naphthazarin)",validation,red1,-1,2,-1,1,,O=C1C=CC(=O)c2c(O)ccc(O)c21
+bm_5_8_dihydroxy_1_4_naphthoquinone_naphthazarin,"5,8-dihydroxy-1,4-naphthoquinone (naphthazarin)",validation,red2,-2,1,-2,1,,O=C1C=CC(=O)c2c(O)ccc(O)c21
+bm_n_n_diisopropylpyromellitic_diimide,"N,N'-diisopropylpyromellitic diimide",validation,neu,0,1,0,10,,CC(C)n1c(=O)c2cc3c(=O)n(C(C)C)c(=O)c3cc2c1=O
+bm_n_n_diisopropylpyromellitic_diimide,"N,N'-diisopropylpyromellitic diimide",validation,red1,-1,2,-1,10,,CC(C)n1c(=O)c2cc3c(=O)n(C(C)C)c(=O)c3cc2c1=O
+bm_n_n_diisopropylpyromellitic_diimide,"N,N'-diisopropylpyromellitic diimide",validation,red2,-2,1,-2,10,,CC(C)n1c(=O)c2cc3c(=O)n(C(C)C)c(=O)c3cc2c1=O
+bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,"N,N'-bis(2-methoxyethyl)pyromellitic diimide",validation,neu,0,1,0,10,,COCCn1c(=O)c2cc3c(=O)n(CCOC)c(=O)c3cc2c1=O
+bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,"N,N'-bis(2-methoxyethyl)pyromellitic diimide",validation,red1,-1,2,-1,10,,COCCn1c(=O)c2cc3c(=O)n(CCOC)c(=O)c3cc2c1=O
+bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide,"N,N'-bis(2-methoxyethyl)pyromellitic diimide",validation,red2,-2,1,-2,10,,COCCn1c(=O)c2cc3c(=O)n(CCOC)c(=O)c3cc2c1=O
+bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,"N,N'-bis[2-(2-methoxyethoxy)ethyl]pyromellitic diimide",validation,neu,0,1,0,10,,COCCOCCn1c(=O)c2cc3c(=O)n(CCOCCOC)c(=O)c3cc2c1=O
+bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,"N,N'-bis[2-(2-methoxyethoxy)ethyl]pyromellitic diimide",validation,red1,-1,2,-1,10,,COCCOCCn1c(=O)c2cc3c(=O)n(CCOCCOC)c(=O)c3cc2c1=O
+bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide,"N,N'-bis[2-(2-methoxyethoxy)ethyl]pyromellitic diimide",validation,red2,-2,1,-2,10,,COCCOCCn1c(=O)c2cc3c(=O)n(CCOCCOC)c(=O)c3cc2c1=O
+bm_n_methylphthalimide,N-methylphthalimide,validation,neu,0,1,0,1,,CN1C(=O)c2ccccc2C1=O
+bm_n_methylphthalimide,N-methylphthalimide,validation,red1,-1,2,-1,1,,CN1C(=O)c2ccccc2C1=O
+bm_n_isopropylphthalimide,N-isopropylphthalimide,validation,neu,0,1,0,1,,CC(C)N1C(=O)c2ccccc2C1=O
+bm_n_isopropylphthalimide,N-isopropylphthalimide,validation,red1,-1,2,-1,1,,CC(C)N1C(=O)c2ccccc2C1=O
+bm_n_2_methoxyethyl_phthalimide,N-(2-methoxyethyl)phthalimide,validation,neu,0,1,0,10,,COCCN1C(=O)c2ccccc2C1=O
+bm_n_2_methoxyethyl_phthalimide,N-(2-methoxyethyl)phthalimide,validation,red1,-1,2,-1,10,,COCCN1C(=O)c2ccccc2C1=O
+bm_1_benzyl_1_methyl_4_4_bipyridinium,"1-benzyl-1'-methyl-4,4'-bipyridinium",validation,ox2,2,1,0,6,,C[n+]1ccc(-c2cc[n+](Cc3ccccc3)cc2)cc1
+bm_1_benzyl_1_methyl_4_4_bipyridinium,"1-benzyl-1'-methyl-4,4'-bipyridinium",validation,ox1,1,2,-1,6,,C[n+]1ccc(-c2cc[n+](Cc3ccccc3)cc2)cc1
+bm_1_benzyl_1_methyl_4_4_bipyridinium,"1-benzyl-1'-methyl-4,4'-bipyridinium",validation,neu,0,1,-2,6,,C[n+]1ccc(-c2cc[n+](Cc3ccccc3)cc2)cc1
+bm_tetramethyl_1_4_benzoquinone_duroquinone,"tetramethyl-1,4-benzoquinone (duroquinone)",validation,neu,0,1,0,1,,CC1=C(C)C(=O)C(C)=C(C)C1=O
+bm_tetramethyl_1_4_benzoquinone_duroquinone,"tetramethyl-1,4-benzoquinone (duroquinone)",validation,red1,-1,2,-1,1,,CC1=C(C)C(=O)C(C)=C(C)C1=O
+bm_2_6_dimethoxy_1_4_benzoquinone,"2,6-dimethoxy-1,4-benzoquinone",validation,neu,0,1,0,10,,COC1=CC(=O)C=C(OC)C1=O
+bm_2_6_dimethoxy_1_4_benzoquinone,"2,6-dimethoxy-1,4-benzoquinone",validation,red1,-1,2,-1,10,,COC1=CC(=O)C=C(OC)C1=O
+bm_2_methoxy_1_4_benzoquinone,"2-methoxy-1,4-benzoquinone",validation,neu,0,1,0,10,,COC1=CC(=O)C=CC1=O
+bm_2_methoxy_1_4_benzoquinone,"2-methoxy-1,4-benzoquinone",validation,red1,-1,2,-1,10,,COC1=CC(=O)C=CC1=O
+bm_2_6_dimethyl_1_4_benzoquinone,"2,6-dimethyl-1,4-benzoquinone",validation,neu,0,1,0,1,,CC1=CC(=O)C=C(C)C1=O
+bm_2_6_dimethyl_1_4_benzoquinone,"2,6-dimethyl-1,4-benzoquinone",validation,red1,-1,2,-1,1,,CC1=CC(=O)C=C(C)C1=O
+bm_2_3_dimethyl_1_4_benzoquinone,"2,3-dimethyl-1,4-benzoquinone",validation,neu,0,1,0,1,,CC1=C(C)C(=O)C=CC1=O
+bm_2_3_dimethyl_1_4_benzoquinone,"2,3-dimethyl-1,4-benzoquinone",validation,red1,-1,2,-1,1,,CC1=C(C)C(=O)C=CC1=O
+bm_2_3_5_trimethyl_1_4_benzoquinone,"2,3,5-trimethyl-1,4-benzoquinone",validation,neu,0,1,0,1,,CC1=CC(=O)C(C)=C(C)C1=O
+bm_2_3_5_trimethyl_1_4_benzoquinone,"2,3,5-trimethyl-1,4-benzoquinone",validation,red1,-1,2,-1,1,,CC1=CC(=O)C(C)=C(C)C1=O
+bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,"2,3,5,6-tetrachloro-1,4-benzoquinone (chloranil)",validation,neu,0,1,0,1,,O=C1C(Cl)=C(Cl)C(=O)C(Cl)=C1Cl
+bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil,"2,3,5,6-tetrachloro-1,4-benzoquinone (chloranil)",validation,red1,-1,2,-1,1,,O=C1C(Cl)=C(Cl)C(=O)C(Cl)=C1Cl
+bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,"2,3,5,6-tetrafluoro-1,4-benzoquinone (fluoranil)",validation,neu,0,1,0,1,,O=C1C(F)=C(F)C(=O)C(F)=C1F
+bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil,"2,3,5,6-tetrafluoro-1,4-benzoquinone (fluoranil)",validation,red1,-1,2,-1,1,,O=C1C(F)=C(F)C(=O)C(F)=C1F
+bm_2_5_dichloro_1_4_benzoquinone,"2,5-dichloro-1,4-benzoquinone",validation,neu,0,1,0,1,,O=C1C=C(Cl)C(=O)C=C1Cl
+bm_2_5_dichloro_1_4_benzoquinone,"2,5-dichloro-1,4-benzoquinone",validation,red1,-1,2,-1,1,,O=C1C=C(Cl)C(=O)C=C1Cl
+bm_2_chloro_1_4_benzoquinone,"2-chloro-1,4-benzoquinone",validation,neu,0,1,0,1,,O=C1C=CC(=O)C(Cl)=C1
+bm_2_chloro_1_4_benzoquinone,"2-chloro-1,4-benzoquinone",validation,red1,-1,2,-1,1,,O=C1C=CC(=O)C(Cl)=C1
+bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,"2,3-dichloro-5,6-dicyano-1,4-benzoquinone (DDQ)",validation,neu,0,1,0,1,,N#CC1=C(C#N)C(=O)C(Cl)=C(Cl)C1=O
+bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq,"2,3-dichloro-5,6-dicyano-1,4-benzoquinone (DDQ)",validation,red1,-1,2,-1,1,,N#CC1=C(C#N)C(=O)C(Cl)=C(Cl)C1=O
+bm_2_3_dichloro_1_4_naphthoquinone,"2,3-dichloro-1,4-naphthoquinone",validation,neu,0,1,0,1,,O=C1C(Cl)=C(Cl)C(=O)c2ccccc21
+bm_2_3_dichloro_1_4_naphthoquinone,"2,3-dichloro-1,4-naphthoquinone",validation,red1,-1,2,-1,1,,O=C1C(Cl)=C(Cl)C(=O)c2ccccc21
+bm_9_10_phenanthrenequinone,"9,10-phenanthrenequinone",validation,neu,0,1,0,1,,O=C1C(=O)c2ccccc2-c2ccccc21
+bm_9_10_phenanthrenequinone,"9,10-phenanthrenequinone",validation,red1,-1,2,-1,1,,O=C1C(=O)c2ccccc2-c2ccccc21
+bm_10_methylphenothiazine,10-methylphenothiazine,validation,neu,0,1,0,1,,CN1c2ccccc2Sc2ccccc21
+bm_10_methylphenothiazine,10-methylphenothiazine,validation,ox,1,2,1,1,,CN1c2ccccc2Sc2ccccc21
+d3_05hfap,"4-(benzylamino)-3-bromo-1,2-naphthoquinone",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(CNC2=C(Br)C(=O)C(=O)c3ccccc32)cc1
+d3_05hfap,"4-(benzylamino)-3-bromo-1,2-naphthoquinone",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(CNC2=C(Br)C(=O)C(=O)c3ccccc32)cc1
+d3_05hfap,"4-(benzylamino)-3-bromo-1,2-naphthoquinone",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(CNC2=C(Br)C(=O)C(=O)c3ccccc32)cc1
+d3_80izcq,"4-{2-[4-(benzyloxy)phenyl]propan-2-yl}-1,2-benzoquinone",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COc2ccc(C(C)(C)C3=CC(=O)C(=O)C=C3)cc2)cc1
+d3_80izcq,"4-{2-[4-(benzyloxy)phenyl]propan-2-yl}-1,2-benzoquinone",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COc2ccc(C(C)(C)C3=CC(=O)C(=O)C=C3)cc2)cc1
+d3_80izcq,"4-{2-[4-(benzyloxy)phenyl]propan-2-yl}-1,2-benzoquinone",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COc2ccc(C(C)(C)C3=CC(=O)C(=O)C=C3)cc2)cc1
+d3_05stji,"2-(benzylamino)-1,4-naphthoquinone",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(CNC2=CC(=O)c3ccccc3C2=O)cc1
+d3_05stji,"2-(benzylamino)-1,4-naphthoquinone",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(CNC2=CC(=O)c3ccccc3C2=O)cc1
+d3_05stji,"2-(benzylamino)-1,4-naphthoquinone",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(CNC2=CC(=O)c3ccccc3C2=O)cc1
+d3_05clzk,"2-(benzyloxy)-3-chloro-1,4-naphthoquinone",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COC2=C(Cl)C(=O)c3ccccc3C2=O)cc1
+d3_05clzk,"2-(benzyloxy)-3-chloro-1,4-naphthoquinone",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COC2=C(Cl)C(=O)c3ccccc3C2=O)cc1
+d3_05clzk,"2-(benzyloxy)-3-chloro-1,4-naphthoquinone",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COC2=C(Cl)C(=O)c3ccccc3C2=O)cc1
+d3_05hdcy,"8-(benzyloxy)-2-chloro-7-ethyl-6-methoxy-1,4-naphthoquinone",quinone (n-type),neu,0,1,0,10,0,CCc1c(OC)cc2c(c1OCc1ccc(C)cc1)C(=O)C(Cl)=CC2=O
+d3_05hdcy,"8-(benzyloxy)-2-chloro-7-ethyl-6-methoxy-1,4-naphthoquinone",quinone (n-type),red1,-1,2,-1,10,1,CCc1c(OC)cc2c(c1OCc1ccc(C)cc1)C(=O)C(Cl)=CC2=O
+d3_05hdcy,"8-(benzyloxy)-2-chloro-7-ethyl-6-methoxy-1,4-naphthoquinone",quinone (n-type),red2,-2,1,-2,10,1,CCc1c(OC)cc2c(c1OCc1ccc(C)cc1)C(=O)C(Cl)=CC2=O
+d3_80mnnp,"2-(benzyloxy)-3-bromo-1,4-naphthoquinone",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COC2=C(Br)C(=O)c3ccccc3C2=O)cc1
+d3_80mnnp,"2-(benzyloxy)-3-bromo-1,4-naphthoquinone",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COC2=C(Br)C(=O)c3ccccc3C2=O)cc1
+d3_80mnnp,"2-(benzyloxy)-3-bromo-1,4-naphthoquinone",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COC2=C(Br)C(=O)c3ccccc3C2=O)cc1
+d3_80txmo,"2-[benzyl(ethyl)amino]-1,4-naphthoquinone",quinone (n-type),neu,0,1,0,10,0,CCN(Cc1ccc(C)cc1)C1=CC(=O)c2ccccc2C1=O
+d3_80txmo,"2-[benzyl(ethyl)amino]-1,4-naphthoquinone",quinone (n-type),red1,-1,2,-1,10,1,CCN(Cc1ccc(C)cc1)C1=CC(=O)c2ccccc2C1=O
+d3_80txmo,"2-[benzyl(ethyl)amino]-1,4-naphthoquinone",quinone (n-type),red2,-2,1,-2,10,1,CCN(Cc1ccc(C)cc1)C1=CC(=O)c2ccccc2C1=O
+d3_80fsak,"2-(benzyloxy)-3-methyl-1,4-naphthoquinone (O-benzyl phthiocol)",quinone (n-type),neu,0,1,0,10,0,CC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80fsak,"2-(benzyloxy)-3-methyl-1,4-naphthoquinone (O-benzyl phthiocol)",quinone (n-type),red1,-1,2,-1,10,1,CC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80fsak,"2-(benzyloxy)-3-methyl-1,4-naphthoquinone (O-benzyl phthiocol)",quinone (n-type),red2,-2,1,-2,10,1,CC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+exp_viologen_methoxyethyl,"N-(4-methylbenzyl)-N'-(2-methoxyethyl)-4,4'-bipyridinium",pyridine-multi-e,ox2,2,1,0,10,1,COCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+exp_viologen_methoxyethyl,"N-(4-methylbenzyl)-N'-(2-methoxyethyl)-4,4'-bipyridinium",pyridine-multi-e,ox1,1,2,-1,10,1,COCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+exp_viologen_methoxyethyl,"N-(4-methylbenzyl)-N'-(2-methoxyethyl)-4,4'-bipyridinium",pyridine-multi-e,neu,0,1,-2,10,0,COCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+exp_phthalimide_control,N-(4-methylbenzyl)phthalimide,mono-imide (n-type),neu,0,1,0,3,0,Cc1ccc(CN2C(=O)c3ccccc3C2=O)cc1
+exp_phthalimide_control,N-(4-methylbenzyl)phthalimide,mono-imide (n-type),red1,-1,2,-1,3,1,Cc1ccc(CN2C(=O)c3ccccc3C2=O)cc1
+exp_aq_1oxy,"1-(4-methylbenzyloxy)anthracene-9,10-dione",quinone (n-type),neu,0,1,0,6,0,Cc1ccc(COc2cccc3c2C(=O)c2ccccc2C3=O)cc1
+exp_aq_1oxy,"1-(4-methylbenzyloxy)anthracene-9,10-dione",quinone (n-type),red1,-1,2,-1,6,1,Cc1ccc(COc2cccc3c2C(=O)c2ccccc2C3=O)cc1
+exp_aq_1oxy,"1-(4-methylbenzyloxy)anthracene-9,10-dione",quinone (n-type),red2,-2,1,-2,6,1,Cc1ccc(COc2cccc3c2C(=O)c2ccccc2C3=O)cc1
+exp_ndi_hexyl_pentyloxy,N-[5-(4-methylbenzyloxy)pentyl]-N'-n-hexyl naphthalene diimide,imide (n-type),neu,0,1,0,10,0,CCCCCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCCCCOCc1ccc(C)cc1)C3=O
+exp_ndi_hexyl_pentyloxy,N-[5-(4-methylbenzyloxy)pentyl]-N'-n-hexyl naphthalene diimide,imide (n-type),red1,-1,2,-1,10,1,CCCCCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCCCCOCc1ccc(C)cc1)C3=O
+exp_ndi_hexyl_pentyloxy,N-[5-(4-methylbenzyloxy)pentyl]-N'-n-hexyl naphthalene diimide,imide (n-type),red2,-2,1,-2,10,1,CCCCCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCCCCOCc1ccc(C)cc1)C3=O
+design_pmdi_ethyl,N-(4-methylbenzyl)-N'-ethyl pyromellitic diimide,imide (n-type),neu,0,1,0,7,0,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_ethyl,N-(4-methylbenzyl)-N'-ethyl pyromellitic diimide,imide (n-type),red1,-1,2,-1,7,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_ethyl,N-(4-methylbenzyl)-N'-ethyl pyromellitic diimide,imide (n-type),red2,-2,1,-2,7,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_methoxyethyl,N-(4-methylbenzyl)-N'-(2-methoxyethyl) pyromellitic diimide,imide (n-type),neu,0,1,0,10,0,COCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_methoxyethyl,N-(4-methylbenzyl)-N'-(2-methoxyethyl) pyromellitic diimide,imide (n-type),red1,-1,2,-1,10,1,COCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_methoxyethyl,N-(4-methylbenzyl)-N'-(2-methoxyethyl) pyromellitic diimide,imide (n-type),red2,-2,1,-2,10,1,COCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_methoxyethoxyethyl,N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl] pyromellitic diimide,imide (n-type),neu,0,1,0,10,0,COCCOCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_methoxyethoxyethyl,N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl] pyromellitic diimide,imide (n-type),red1,-1,2,-1,10,1,COCCOCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_methoxyethoxyethyl,N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl] pyromellitic diimide,imide (n-type),red2,-2,1,-2,10,1,COCCOCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+design_pmdi_isopropyl,N-(4-methylbenzyl)-N'-isopropyl pyromellitic diimide,imide (n-type),neu,0,1,0,10,0,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C(C)C)c(=O)c4cc3c2=O)cc1
+design_pmdi_isopropyl,N-(4-methylbenzyl)-N'-isopropyl pyromellitic diimide,imide (n-type),red1,-1,2,-1,10,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C(C)C)c(=O)c4cc3c2=O)cc1
+design_pmdi_isopropyl,N-(4-methylbenzyl)-N'-isopropyl pyromellitic diimide,imide (n-type),red2,-2,1,-2,10,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C(C)C)c(=O)c4cc3c2=O)cc1
+design_ndi_methyl,N-(4-methylbenzyl)-N'-methyl naphthalene diimide,imide (n-type),neu,0,1,0,2,0,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C)C4=O)cc1
+design_ndi_methyl,N-(4-methylbenzyl)-N'-methyl naphthalene diimide,imide (n-type),red1,-1,2,-1,2,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C)C4=O)cc1
+design_ndi_methyl,N-(4-methylbenzyl)-N'-methyl naphthalene diimide,imide (n-type),red2,-2,1,-2,2,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C)C4=O)cc1
+design_ndi_ethyl,N-(4-methylbenzyl)-N'-ethyl naphthalene diimide,imide (n-type),neu,0,1,0,4,0,CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_ethyl,N-(4-methylbenzyl)-N'-ethyl naphthalene diimide,imide (n-type),red1,-1,2,-1,4,1,CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_ethyl,N-(4-methylbenzyl)-N'-ethyl naphthalene diimide,imide (n-type),red2,-2,1,-2,4,1,CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_methoxyethyl,N-(4-methylbenzyl)-N'-(2-methoxyethyl) naphthalene diimide,imide (n-type),neu,0,1,0,10,0,COCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_methoxyethyl,N-(4-methylbenzyl)-N'-(2-methoxyethyl) naphthalene diimide,imide (n-type),red1,-1,2,-1,10,1,COCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_methoxyethyl,N-(4-methylbenzyl)-N'-(2-methoxyethyl) naphthalene diimide,imide (n-type),red2,-2,1,-2,10,1,COCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_methoxyethoxyethyl,N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl] naphthalene diimide,imide (n-type),neu,0,1,0,10,0,COCCOCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_methoxyethoxyethyl,N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl] naphthalene diimide,imide (n-type),red1,-1,2,-1,10,1,COCCOCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_methoxyethoxyethyl,N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl] naphthalene diimide,imide (n-type),red2,-2,1,-2,10,1,COCCOCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+design_ndi_isopropyl,N-(4-methylbenzyl)-N'-isopropyl naphthalene diimide,imide (n-type),neu,0,1,0,4,0,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C(C)C)C4=O)cc1
+design_ndi_isopropyl,N-(4-methylbenzyl)-N'-isopropyl naphthalene diimide,imide (n-type),red1,-1,2,-1,4,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C(C)C)C4=O)cc1
+design_ndi_isopropyl,N-(4-methylbenzyl)-N'-isopropyl naphthalene diimide,imide (n-type),red2,-2,1,-2,4,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C(C)C)C4=O)cc1
+d3_05ujsa,D3TaLES 05UJSA N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),neu,0,1,0,10,0,CCCCN(Cc1ccc(C)cc1)C1=C(Cl)C(=O)c2ccccc2C1=O
+d3_05ujsa,D3TaLES 05UJSA N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red1,-1,2,-1,10,1,CCCCN(Cc1ccc(C)cc1)C1=C(Cl)C(=O)c2ccccc2C1=O
+d3_05ujsa,D3TaLES 05UJSA N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red2,-2,1,-2,10,1,CCCCN(Cc1ccc(C)cc1)C1=C(Cl)C(=O)c2ccccc2C1=O
+d3_05lcla,D3TaLES 05LCLA benzyl ester (carboxylate) product (canonical structure supplied),quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COC(=O)CCSC2=CC(=O)C(=O)c3ccccc32)cc1
+d3_05lcla,D3TaLES 05LCLA benzyl ester (carboxylate) product (canonical structure supplied),quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COC(=O)CCSC2=CC(=O)C(=O)c3ccccc32)cc1
+d3_05lcla,D3TaLES 05LCLA benzyl ester (carboxylate) product (canonical structure supplied),quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COC(=O)CCSC2=CC(=O)C(=O)c3ccccc32)cc1
+d3_05mnmt,D3TaLES 05MNMT N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),neu,0,1,0,10,0,Cc1ccc(CNC2=C(Br)C(=O)c3ccccc3C2=O)cc1
+d3_05mnmt,D3TaLES 05MNMT N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(CNC2=C(Br)C(=O)c3ccccc3C2=O)cc1
+d3_05mnmt,D3TaLES 05MNMT N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(CNC2=C(Br)C(=O)c3ccccc3C2=O)cc1
+d3_05txcn,D3TaLES 05TXCN N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),neu,0,1,0,10,0,Cc1ccc(CNC2=C(Cl)C(=O)c3ccccc3C2=O)cc1
+d3_05txcn,D3TaLES 05TXCN N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(CNC2=C(Cl)C(=O)c3ccccc3C2=O)cc1
+d3_05txcn,D3TaLES 05TXCN N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(CNC2=C(Cl)C(=O)c3ccccc3C2=O)cc1
+d3_05czhi,"D3TaLES 05CZHI O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,7,0,Cc1ccc(COc2ccc(O)c3c2C(=O)C(Cl)=C(Cl)C3=O)cc1
+d3_05czhi,"D3TaLES 05CZHI O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,7,1,Cc1ccc(COc2ccc(O)c3c2C(=O)C(Cl)=C(Cl)C3=O)cc1
+d3_05czhi,"D3TaLES 05CZHI O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,7,1,Cc1ccc(COc2ccc(O)c3c2C(=O)C(Cl)=C(Cl)C3=O)cc1
+d3_80xwvs,D3TaLES 80XWVS N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),neu,0,1,0,10,0,Cc1ccc(CN(C)C2=CC(=O)c3ccncc3C2=O)cc1
+d3_80xwvs,D3TaLES 80XWVS N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(CN(C)C2=CC(=O)c3ccncc3C2=O)cc1
+d3_80xwvs,D3TaLES 80XWVS N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(CN(C)C2=CC(=O)c3ccncc3C2=O)cc1
+d3_80mdpm,D3TaLES 80MDPM N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),neu,0,1,0,10,0,Cc1ccc(CN(C)C2=C(Cl)C(=O)c3ccncc3C2=O)cc1
+d3_80mdpm,D3TaLES 80MDPM N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(CN(C)C2=C(Cl)C(=O)c3ccncc3C2=O)cc1
+d3_80mdpm,D3TaLES 80MDPM N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(CN(C)C2=C(Cl)C(=O)c3ccncc3C2=O)cc1
+d3_80necn,"D3TaLES 80NECN O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,10,0,Cc1ccc(COc2ccc3c(c2)C(=O)C=C(N(C)C)C3=O)cc1
+d3_80necn,"D3TaLES 80NECN O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,10,1,Cc1ccc(COc2ccc3c(c2)C(=O)C=C(N(C)C)C3=O)cc1
+d3_80necn,"D3TaLES 80NECN O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,10,1,Cc1ccc(COc2ccc3c(c2)C(=O)C=C(N(C)C)C3=O)cc1
+d3_80nopt,D3TaLES 80NOPT N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),neu,0,1,0,10,0,CCCCN(Cc1ccc(C)cc1)C1=CC(=O)c2ccccc2C1=O
+d3_80nopt,D3TaLES 80NOPT N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red1,-1,2,-1,10,1,CCCCN(Cc1ccc(C)cc1)C1=CC(=O)c2ccccc2C1=O
+d3_80nopt,D3TaLES 80NOPT N-benzyl (amine N-H) product (canonical structure supplied),quinone (n-type),red2,-2,1,-2,10,1,CCCCN(Cc1ccc(C)cc1)C1=CC(=O)c2ccccc2C1=O
+d3_80levd,"D3TaLES 80LEVD O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,10,0,CC(C)=CCC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80levd,"D3TaLES 80LEVD O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,10,1,CC(C)=CCC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80levd,"D3TaLES 80LEVD O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,10,1,CC(C)=CCC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80prff,"D3TaLES 80PRFF O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,7,0,Cc1ccc(COc2cccc3c2C(=O)C=CC3=O)cc1
+d3_80prff,"D3TaLES 80PRFF O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,7,1,Cc1ccc(COc2cccc3c2C(=O)C=CC3=O)cc1
+d3_80prff,"D3TaLES 80PRFF O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,7,1,Cc1ccc(COc2cccc3c2C(=O)C=CC3=O)cc1
+d3_80gkvh,"D3TaLES 80GKVH O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,10,0,CC(C)=CC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80gkvh,"D3TaLES 80GKVH O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,10,1,CC(C)=CC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80gkvh,"D3TaLES 80GKVH O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,10,1,CC(C)=CC1=C(OCc2ccc(C)cc2)C(=O)c2ccccc2C1=O
+d3_80gxwg,"D3TaLES 80GXWG O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,10,0,CC1=C(COCc2ccc(C)cc2)C(=O)c2ccc(C)cc2C1=O
+d3_80gxwg,"D3TaLES 80GXWG O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,10,1,CC1=C(COCc2ccc(C)cc2)C(=O)c2ccc(C)cc2C1=O
+d3_80gxwg,"D3TaLES 80GXWG O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,10,1,CC1=C(COCc2ccc(C)cc2)C(=O)c2ccc(C)cc2C1=O
+d3_80eeoz,"D3TaLES 80EEOZ O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,10,0,CC1=C(CCCOCc2ccc(C)cc2)C(=O)c2ccc(C)cc2C1=O
+d3_80eeoz,"D3TaLES 80EEOZ O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,10,1,CC1=C(CCCOCc2ccc(C)cc2)C(=O)c2ccc(C)cc2C1=O
+d3_80eeoz,"D3TaLES 80EEOZ O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,10,1,CC1=C(CCCOCc2ccc(C)cc2)C(=O)c2ccc(C)cc2C1=O
+d3_80tbwr,"D3TaLES 80TBWR O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),neu,0,1,0,10,0,CC1=C(CCOCc2ccc(C)cc2)C(=O)c2occc2C1=O
+d3_80tbwr,"D3TaLES 80TBWR O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red1,-1,2,-1,10,1,CC1=C(CCOCc2ccc(C)cc2)C(=O)c2occc2C1=O
+d3_80tbwr,"D3TaLES 80TBWR O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied)",quinone (n-type),red2,-2,1,-2,10,1,CC1=C(CCOCc2ccc(C)cc2)C(=O)c2occc2C1=O
+exp_pmdi_n_butyl,N-(4-methylbenzyl)-N'-butyl PMDI,imide (n-type),neu,0,1,0,10,0,CCCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_n_butyl,N-(4-methylbenzyl)-N'-butyl PMDI,imide (n-type),red1,-1,2,-1,10,1,CCCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_n_butyl,N-(4-methylbenzyl)-N'-butyl PMDI,imide (n-type),red2,-2,1,-2,10,1,CCCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_trioxyethyl,N-(4-methylbenzyl)-N'-2-[2-(2-methoxyethoxy)ethoxy]ethyl PMDI,imide (n-type),neu,0,1,0,10,0,COCCOCCOCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_trioxyethyl,N-(4-methylbenzyl)-N'-2-[2-(2-methoxyethoxy)ethoxy]ethyl PMDI,imide (n-type),red1,-1,2,-1,10,1,COCCOCCOCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_trioxyethyl,N-(4-methylbenzyl)-N'-2-[2-(2-methoxyethoxy)ethoxy]ethyl PMDI,imide (n-type),red2,-2,1,-2,10,1,COCCOCCOCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_ndi_n_butyl,N-(4-methylbenzyl)-N'-butyl NDI,imide (n-type),neu,0,1,0,10,0,CCCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+exp_ndi_n_butyl,N-(4-methylbenzyl)-N'-butyl NDI,imide (n-type),red1,-1,2,-1,10,1,CCCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+exp_ndi_n_butyl,N-(4-methylbenzyl)-N'-butyl NDI,imide (n-type),red2,-2,1,-2,10,1,CCCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+exp_ndi_trioxyethyl,N-(4-methylbenzyl)-N'-2-[2-(2-methoxyethoxy)ethoxy]ethyl NDI,imide (n-type),neu,0,1,0,10,0,COCCOCCOCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+exp_ndi_trioxyethyl,N-(4-methylbenzyl)-N'-2-[2-(2-methoxyethoxy)ethoxy]ethyl NDI,imide (n-type),red1,-1,2,-1,10,1,COCCOCCOCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+exp_ndi_trioxyethyl,N-(4-methylbenzyl)-N'-2-[2-(2-methoxyethoxy)ethoxy]ethyl NDI,imide (n-type),red2,-2,1,-2,10,1,COCCOCCOCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+exp_pmdi_pent2_r,N-(4-methylbenzyl)-N'-(R)-pentan-2-yl PMDI,imide (n-type),neu,0,1,0,10,0,CCC[C@@H](C)n1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_pent2_r,N-(4-methylbenzyl)-N'-(R)-pentan-2-yl PMDI,imide (n-type),red1,-1,2,-1,10,1,CCC[C@@H](C)n1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_pent2_r,N-(4-methylbenzyl)-N'-(R)-pentan-2-yl PMDI,imide (n-type),red2,-2,1,-2,10,1,CCC[C@@H](C)n1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_pent2_s,N-(4-methylbenzyl)-N'-(S)-pentan-2-yl PMDI,imide (n-type),neu,0,1,0,10,0,CCC[C@H](C)n1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_pent2_s,N-(4-methylbenzyl)-N'-(S)-pentan-2-yl PMDI,imide (n-type),red1,-1,2,-1,10,1,CCC[C@H](C)n1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_pmdi_pent2_s,N-(4-methylbenzyl)-N'-(S)-pentan-2-yl PMDI,imide (n-type),red2,-2,1,-2,10,1,CCC[C@H](C)n1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+exp_aq_2oxy_6methoxy,"2-(4-methylbenzyloxy)-6-methoxyanthracene-9,10-dione",quinone (n-type),neu,0,1,0,10,0,COc1ccc2c(c1)C(=O)c1ccc(OCc3ccc(C)cc3)cc1C2=O
+exp_aq_2oxy_6methoxy,"2-(4-methylbenzyloxy)-6-methoxyanthracene-9,10-dione",quinone (n-type),red1,-1,2,-1,10,1,COc1ccc2c(c1)C(=O)c1ccc(OCc3ccc(C)cc3)cc1C2=O
+exp_aq_2oxy_6methoxy,"2-(4-methylbenzyloxy)-6-methoxyanthracene-9,10-dione",quinone (n-type),red2,-2,1,-2,10,1,COc1ccc2c(c1)C(=O)c1ccc(OCc3ccc(C)cc3)cc1C2=O
+exp_bq_oxy_methoxy,"2-(4-methylbenzyloxy)-5-methoxy-1,4-benzoquinone",quinone (n-type),neu,0,1,0,10,0,COC1=CC(=O)C(OCc2ccc(C)cc2)=CC1=O
+exp_bq_oxy_methoxy,"2-(4-methylbenzyloxy)-5-methoxy-1,4-benzoquinone",quinone (n-type),red1,-1,2,-1,10,1,COC1=CC(=O)C(OCc2ccc(C)cc2)=CC1=O
+exp_bq_oxy_methoxy,"2-(4-methylbenzyloxy)-5-methoxy-1,4-benzoquinone",quinone (n-type),red2,-2,1,-2,10,1,COC1=CC(=O)C(OCc2ccc(C)cc2)=CC1=O
+exp_bq_oxy_trimethyl,"2-(4-methylbenzyloxy)-3,5,6-trimethyl-1,4-benzoquinone",quinone (n-type),neu,0,1,0,10,0,CC1=C(C)C(=O)C(OCc2ccc(C)cc2)=C(C)C1=O
+exp_bq_oxy_trimethyl,"2-(4-methylbenzyloxy)-3,5,6-trimethyl-1,4-benzoquinone",quinone (n-type),red1,-1,2,-1,10,1,CC1=C(C)C(=O)C(OCc2ccc(C)cc2)=C(C)C1=O
+exp_bq_oxy_trimethyl,"2-(4-methylbenzyloxy)-3,5,6-trimethyl-1,4-benzoquinone",quinone (n-type),red2,-2,1,-2,10,1,CC1=C(C)C(=O)C(OCc2ccc(C)cc2)=C(C)C1=O
+exp_viologen_methoxyethoxyethyl,"N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl]-4,4'-bipyridinium",pyridine-multi-e,ox2,2,1,0,10,1,COCCOCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+exp_viologen_methoxyethoxyethyl,"N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl]-4,4'-bipyridinium",pyridine-multi-e,ox1,1,2,-1,10,1,COCCOCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+exp_viologen_methoxyethoxyethyl,"N-(4-methylbenzyl)-N'-[2-(2-methoxyethoxy)ethyl]-4,4'-bipyridinium",pyridine-multi-e,neu,0,1,-2,10,0,COCCOCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+exp_naphthalimide_control,"N-(4-methylbenzyl)-1,8-naphthalimide",mono-imide (n-type),neu,0,1,0,1,0,Cc1ccc(CN2C(=O)c3cccc4cccc(c34)C2=O)cc1
+exp_naphthalimide_control,"N-(4-methylbenzyl)-1,8-naphthalimide",mono-imide (n-type),red1,-1,2,-1,1,1,Cc1ccc(CN2C(=O)c3cccc4cccc(c34)C2=O)cc1
+exp_ptz_37dimethoxy,"N-(4-methylbenzyl)-3,7-dimethoxyphenothiazine","phenothiazine (p-type, two-electron proposal)",neu,0,1,0,10,0,COc1ccc2c(c1)Sc1cc(OC)ccc1N2Cc1ccc(C)cc1
+exp_ptz_37dimethoxy,"N-(4-methylbenzyl)-3,7-dimethoxyphenothiazine","phenothiazine (p-type, two-electron proposal)",ox1,1,2,1,10,1,COc1ccc2c(c1)Sc1cc(OC)ccc1N2Cc1ccc(C)cc1
+exp_ptz_37dimethoxy,"N-(4-methylbenzyl)-3,7-dimethoxyphenothiazine","phenothiazine (p-type, two-electron proposal)",ox2,2,1,2,10,1,COc1ccc2c(c1)Sc1cc(OC)ccc1N2Cc1ccc(C)cc1
+hyp_pmdi_cyclopropyl,N-(4-methylbenzyl)-N'-cyclopropyl PMDI,imide (n-type),neu,0,1,0,10,0,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C5CC5)c(=O)c4cc3c2=O)cc1
+hyp_pmdi_cyclopropyl,N-(4-methylbenzyl)-N'-cyclopropyl PMDI,imide (n-type),red1,-1,2,-1,10,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C5CC5)c(=O)c4cc3c2=O)cc1
+hyp_pmdi_cyclopropyl,N-(4-methylbenzyl)-N'-cyclopropyl PMDI,imide (n-type),red2,-2,1,-2,10,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(C5CC5)c(=O)c4cc3c2=O)cc1
+hyp_pmdi_2fluoroethyl,N-(4-methylbenzyl)-N'-2fluoroethyl PMDI,imide (n-type),neu,0,1,0,10,0,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(CCF)c(=O)c4cc3c2=O)cc1
+hyp_pmdi_2fluoroethyl,N-(4-methylbenzyl)-N'-2fluoroethyl PMDI,imide (n-type),red1,-1,2,-1,10,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(CCF)c(=O)c4cc3c2=O)cc1
+hyp_pmdi_2fluoroethyl,N-(4-methylbenzyl)-N'-2fluoroethyl PMDI,imide (n-type),red2,-2,1,-2,10,1,Cc1ccc(Cn2c(=O)c3cc4c(=O)n(CCF)c(=O)c4cc3c2=O)cc1
+hyp_ndi_cyclopropyl,N-(4-methylbenzyl)-N'-cyclopropyl NDI,imide (n-type),neu,0,1,0,5,0,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C2CC2)C4=O)cc1
+hyp_ndi_cyclopropyl,N-(4-methylbenzyl)-N'-cyclopropyl NDI,imide (n-type),red1,-1,2,-1,5,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C2CC2)C4=O)cc1
+hyp_ndi_cyclopropyl,N-(4-methylbenzyl)-N'-cyclopropyl NDI,imide (n-type),red2,-2,1,-2,5,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(C2CC2)C4=O)cc1
+hyp_ndi_2fluoroethyl,N-(4-methylbenzyl)-N'-2fluoroethyl NDI,imide (n-type),neu,0,1,0,10,0,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCF)C4=O)cc1
+hyp_ndi_2fluoroethyl,N-(4-methylbenzyl)-N'-2fluoroethyl NDI,imide (n-type),red1,-1,2,-1,10,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCF)C4=O)cc1
+hyp_ndi_2fluoroethyl,N-(4-methylbenzyl)-N'-2fluoroethyl NDI,imide (n-type),red2,-2,1,-2,10,1,Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CCF)C4=O)cc1
+hyp_ptz_37dimethyl,"N-(4-methylbenzyl)-3,7-dimethylphenothiazine",amine (p-type),neu,0,1,0,6,0,Cc1ccc(CN2c3ccc(C)cc3Sc3cc(C)ccc32)cc1
+hyp_ptz_37dimethyl,"N-(4-methylbenzyl)-3,7-dimethylphenothiazine",amine (p-type),ox1,1,2,1,6,1,Cc1ccc(CN2c3ccc(C)cc3Sc3cc(C)ccc32)cc1
+hyp_ptz_37dimethyl,"N-(4-methylbenzyl)-3,7-dimethylphenothiazine",amine (p-type),ox2,2,1,2,6,1,Cc1ccc(CN2c3ccc(C)cc3Sc3cc(C)ccc32)cc1
+hyp_ptz_37difluoro,"N-(4-methylbenzyl)-3,7-difluorophenothiazine",amine (p-type),neu,0,1,0,5,0,Cc1ccc(CN2c3ccc(F)cc3Sc3cc(F)ccc32)cc1
+hyp_ptz_37difluoro,"N-(4-methylbenzyl)-3,7-difluorophenothiazine",amine (p-type),ox1,1,2,1,5,1,Cc1ccc(CN2c3ccc(F)cc3Sc3cc(F)ccc32)cc1
+hyp_ptz_37difluoro,"N-(4-methylbenzyl)-3,7-difluorophenothiazine",amine (p-type),ox2,2,1,2,5,1,Cc1ccc(CN2c3ccc(F)cc3Sc3cc(F)ccc32)cc1
+search_viologen_991d299c38be,viologen / direct_N / npropyl / H,pyridine-multi-e,ox2,2,1,0,10,1,CCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+search_viologen_991d299c38be,viologen / direct_N / npropyl / H,pyridine-multi-e,ox1,1,2,-1,10,1,CCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+search_viologen_991d299c38be,viologen / direct_N / npropyl / H,pyridine-multi-e,neu,0,1,-2,10,0,CCC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1
+search_viologen_1c2d9d5208a4,viologen / direct_N / ethyl / F,pyridine-multi-e,ox2,2,1,0,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(F)c2)cc1
+search_viologen_1c2d9d5208a4,viologen / direct_N / ethyl / F,pyridine-multi-e,ox1,1,2,-1,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(F)c2)cc1
+search_viologen_1c2d9d5208a4,viologen / direct_N / ethyl / F,pyridine-multi-e,neu,0,1,-2,10,0,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(F)c2)cc1
+search_viologen_e46c2caea23e,viologen / direct_N / ethyl / CN,pyridine-multi-e,ox2,2,1,0,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(C#N)c2)cc1
+search_viologen_e46c2caea23e,viologen / direct_N / ethyl / CN,pyridine-multi-e,ox1,1,2,-1,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(C#N)c2)cc1
+search_viologen_e46c2caea23e,viologen / direct_N / ethyl / CN,pyridine-multi-e,neu,0,1,-2,10,0,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(C#N)c2)cc1
+search_viologen_6ddf8e94b88f,viologen / ether_C2 / ethyl / H,pyridine-multi-e,ox2,2,1,0,10,1,CC[n+]1ccc(-c2cc[n+](CCOCc3ccc(C)cc3)cc2)cc1
+search_viologen_6ddf8e94b88f,viologen / ether_C2 / ethyl / H,pyridine-multi-e,ox1,1,2,-1,10,1,CC[n+]1ccc(-c2cc[n+](CCOCc3ccc(C)cc3)cc2)cc1
+search_viologen_6ddf8e94b88f,viologen / ether_C2 / ethyl / H,pyridine-multi-e,neu,0,1,-2,10,0,CC[n+]1ccc(-c2cc[n+](CCOCc3ccc(C)cc3)cc2)cc1
+search_pmdi_0fe159524740,pmdi / direct_N / npropyl / H,imide (n-type),neu,0,1,0,10,0,CCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+search_pmdi_0fe159524740,pmdi / direct_N / npropyl / H,imide (n-type),red1,-1,2,-1,10,1,CCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+search_pmdi_0fe159524740,pmdi / direct_N / npropyl / H,imide (n-type),red2,-2,1,-2,10,1,CCCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O
+search_pmdi_e5caac5870e1,pmdi / direct_N / ethyl / F,imide (n-type),neu,0,1,0,10,0,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(F)c2c1=O
+search_pmdi_e5caac5870e1,pmdi / direct_N / ethyl / F,imide (n-type),red1,-1,2,-1,10,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(F)c2c1=O
+search_pmdi_e5caac5870e1,pmdi / direct_N / ethyl / F,imide (n-type),red2,-2,1,-2,10,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(F)c2c1=O
+search_pmdi_1864c2c74267,pmdi / direct_N / ethyl / CN,imide (n-type),neu,0,1,0,8,0,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(C#N)c2c1=O
+search_pmdi_1864c2c74267,pmdi / direct_N / ethyl / CN,imide (n-type),red1,-1,2,-1,8,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(C#N)c2c1=O
+search_pmdi_1864c2c74267,pmdi / direct_N / ethyl / CN,imide (n-type),red2,-2,1,-2,8,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(C#N)c2c1=O
+search_pmdi_87840c94153a,pmdi / ether_C2 / ethyl / H,imide (n-type),neu,0,1,0,10,0,CCn1c(=O)c2cc3c(=O)n(CCOCc4ccc(C)cc4)c(=O)c3cc2c1=O
+search_pmdi_87840c94153a,pmdi / ether_C2 / ethyl / H,imide (n-type),red1,-1,2,-1,10,1,CCn1c(=O)c2cc3c(=O)n(CCOCc4ccc(C)cc4)c(=O)c3cc2c1=O
+search_pmdi_87840c94153a,pmdi / ether_C2 / ethyl / H,imide (n-type),red2,-2,1,-2,10,1,CCn1c(=O)c2cc3c(=O)n(CCOCc4ccc(C)cc4)c(=O)c3cc2c1=O
+search_ndi_dd8125d2de65,ndi / direct_N / npropyl / H,imide (n-type),neu,0,1,0,10,0,CCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_dd8125d2de65,ndi / direct_N / npropyl / H,imide (n-type),red1,-1,2,-1,10,1,CCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_dd8125d2de65,ndi / direct_N / npropyl / H,imide (n-type),red2,-2,1,-2,10,1,CCCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_d2ac23774405,ndi / direct_N / ethyl / F,imide (n-type),neu,0,1,0,6,0,CCN1C(=O)c2ccc3c4c(c(F)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_d2ac23774405,ndi / direct_N / ethyl / F,imide (n-type),red1,-1,2,-1,6,1,CCN1C(=O)c2ccc3c4c(c(F)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_d2ac23774405,ndi / direct_N / ethyl / F,imide (n-type),red2,-2,1,-2,6,1,CCN1C(=O)c2ccc3c4c(c(F)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_da4d3784d1e2,ndi / direct_N / ethyl / CN,imide (n-type),neu,0,1,0,7,0,CCN1C(=O)c2ccc3c4c(c(C#N)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_da4d3784d1e2,ndi / direct_N / ethyl / CN,imide (n-type),red1,-1,2,-1,7,1,CCN1C(=O)c2ccc3c4c(c(C#N)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_da4d3784d1e2,ndi / direct_N / ethyl / CN,imide (n-type),red2,-2,1,-2,7,1,CCN1C(=O)c2ccc3c4c(c(C#N)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_da0ff84e889c,ndi / ether_C2 / ethyl / H,imide (n-type),neu,0,1,0,10,0,CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCOCc1ccc(C)cc1)C3=O
+search_ndi_da0ff84e889c,ndi / ether_C2 / ethyl / H,imide (n-type),red1,-1,2,-1,10,1,CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCOCc1ccc(C)cc1)C3=O
+search_ndi_da0ff84e889c,ndi / ether_C2 / ethyl / H,imide (n-type),red2,-2,1,-2,10,1,CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCOCc1ccc(C)cc1)C3=O
+search_viologen_1ad45438b9e4,viologen / direct_N / ethyl / OMe,pyridine-multi-e,ox2,2,1,0,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(OC)c2)cc1
+search_viologen_1ad45438b9e4,viologen / direct_N / ethyl / OMe,pyridine-multi-e,ox1,1,2,-1,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(OC)c2)cc1
+search_viologen_1ad45438b9e4,viologen / direct_N / ethyl / OMe,pyridine-multi-e,neu,0,1,-2,10,0,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(OC)c2)cc1
+search_viologen_e1199c9f4288,viologen / direct_N / ethyl / Me,pyridine-multi-e,ox2,2,1,0,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(C)c2)cc1
+search_viologen_e1199c9f4288,viologen / direct_N / ethyl / Me,pyridine-multi-e,ox1,1,2,-1,10,1,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(C)c2)cc1
+search_viologen_e1199c9f4288,viologen / direct_N / ethyl / Me,pyridine-multi-e,neu,0,1,-2,10,0,CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)c(C)c2)cc1
+search_pmdi_6e49edb06a78,pmdi / direct_N / ethyl / OMe,imide (n-type),neu,0,1,0,10,0,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(OC)c2c1=O
+search_pmdi_6e49edb06a78,pmdi / direct_N / ethyl / OMe,imide (n-type),red1,-1,2,-1,10,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(OC)c2c1=O
+search_pmdi_6e49edb06a78,pmdi / direct_N / ethyl / OMe,imide (n-type),red2,-2,1,-2,10,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(OC)c2c1=O
+search_pmdi_6c8c35f7efd1,pmdi / direct_N / ethyl / Me,imide (n-type),neu,0,1,0,10,0,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(C)c2c1=O
+search_pmdi_6c8c35f7efd1,pmdi / direct_N / ethyl / Me,imide (n-type),red1,-1,2,-1,10,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(C)c2c1=O
+search_pmdi_6c8c35f7efd1,pmdi / direct_N / ethyl / Me,imide (n-type),red2,-2,1,-2,10,1,CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c(C)c2c1=O
+search_ndi_9b5f09730b83,ndi / direct_N / ethyl / OMe,imide (n-type),neu,0,1,0,8,0,CCN1C(=O)c2ccc3c4c(c(OC)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_9b5f09730b83,ndi / direct_N / ethyl / OMe,imide (n-type),red1,-1,2,-1,8,1,CCN1C(=O)c2ccc3c4c(c(OC)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_9b5f09730b83,ndi / direct_N / ethyl / OMe,imide (n-type),red2,-2,1,-2,8,1,CCN1C(=O)c2ccc3c4c(c(OC)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_573f69a7895b,ndi / direct_N / ethyl / Me,imide (n-type),neu,0,1,0,4,0,CCN1C(=O)c2ccc3c4c(c(C)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_573f69a7895b,ndi / direct_N / ethyl / Me,imide (n-type),red1,-1,2,-1,4,1,CCN1C(=O)c2ccc3c4c(c(C)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+search_ndi_573f69a7895b,ndi / direct_N / ethyl / Me,imide (n-type),red2,-2,1,-2,4,1,CCN1C(=O)c2ccc3c4c(c(C)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O
+bm_n_ethylphenothiazine,N-ethylphenothiazine,validation,neu,0,1,0,2,,CCN1c2ccccc2Sc2ccccc21
+bm_n_ethylphenothiazine,N-ethylphenothiazine,validation,ox1,1,2,1,2,,CCN1c2ccccc2Sc2ccccc21
+bm_n_ethylphenothiazine,N-ethylphenothiazine,validation,ox2,2,1,2,2,,CCN1c2ccccc2Sc2ccccc21
+bm_n_2_2_methoxyethoxy_ethyl_phenothiazine,N-(2-(2-methoxyethoxy)ethyl)phenothiazine,validation,neu,0,1,0,10,,COCCOCCN1c2ccccc2Sc2ccccc21
+bm_n_2_2_methoxyethoxy_ethyl_phenothiazine,N-(2-(2-methoxyethoxy)ethyl)phenothiazine,validation,ox1,1,2,1,10,,COCCOCCN1c2ccccc2Sc2ccccc21
+bm_n_2_2_methoxyethoxy_ethyl_phenothiazine,N-(2-(2-methoxyethoxy)ethyl)phenothiazine,validation,ox2,2,1,2,10,,COCCOCCN1c2ccccc2Sc2ccccc21
+bm_n_ethyl_3_7_dimethoxyphenothiazine,"N-ethyl-3,7-dimethoxyphenothiazine",validation,neu,0,1,0,7,,CCN1c2ccc(OC)cc2Sc2cc(OC)ccc21
+bm_n_ethyl_3_7_dimethoxyphenothiazine,"N-ethyl-3,7-dimethoxyphenothiazine",validation,ox1,1,2,1,7,,CCN1c2ccc(OC)cc2Sc2cc(OC)ccc21
+bm_n_ethyl_3_7_dimethoxyphenothiazine,"N-ethyl-3,7-dimethoxyphenothiazine",validation,ox2,2,1,2,7,,CCN1c2ccc(OC)cc2Sc2cc(OC)ccc21
+bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine,"3,7-dimethoxy-N-(2-(2-methoxyethoxy)ethyl)phenothiazine",validation,neu,0,1,0,10,,COCCOCCN1c2ccc(OC)cc2Sc2cc(OC)ccc21
+bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine,"3,7-dimethoxy-N-(2-(2-methoxyethoxy)ethyl)phenothiazine",validation,ox1,1,2,1,10,,COCCOCCN1c2ccc(OC)cc2Sc2cc(OC)ccc21
+bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine,"3,7-dimethoxy-N-(2-(2-methoxyethoxy)ethyl)phenothiazine",validation,ox2,2,1,2,10,,COCCOCCN1c2ccc(OC)cc2Sc2cc(OC)ccc21
+hyp_cata_ndi_ethyl,"N-(4-methylbenzyl)-N-ethyl 1,2,3,4-naphthalene diimide",imide (n-type),neu,0,1,0,10,0,CCn1c(=O)c2c3ccccc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O
+hyp_cata_ndi_ethyl,"N-(4-methylbenzyl)-N-ethyl 1,2,3,4-naphthalene diimide",imide (n-type),red1,-1,2,-1,10,1,CCn1c(=O)c2c3ccccc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O
+hyp_cata_ndi_ethyl,"N-(4-methylbenzyl)-N-ethyl 1,2,3,4-naphthalene diimide",imide (n-type),red2,-2,1,-2,10,1,CCn1c(=O)c2c3ccccc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O
+hyp_cata_adi_ethyl,"N-(4-methylbenzyl)-N-ethyl 1,2,3,4-anthracene diimide",imide (n-type),neu,0,1,0,8,0,CCn1c(=O)c2c3cc4ccccc4cc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O
+hyp_cata_adi_ethyl,"N-(4-methylbenzyl)-N-ethyl 1,2,3,4-anthracene diimide",imide (n-type),red1,-1,2,-1,8,1,CCn1c(=O)c2c3cc4ccccc4cc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O
+hyp_cata_adi_ethyl,"N-(4-methylbenzyl)-N-ethyl 1,2,3,4-anthracene diimide",imide (n-type),red2,-2,1,-2,8,1,CCn1c(=O)c2c3cc4ccccc4cc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O

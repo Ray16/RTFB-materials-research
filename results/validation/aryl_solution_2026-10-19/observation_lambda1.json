@@ -1,0 +1,365 @@
+{
+  "status": "actual_solution_queue_and_GPU_predictors_observed",
+  "host": "lambda1",
+  "workers": [
+    {
+      "gpu": 0,
+      "controller_pid": 3085707,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3086296,
+      "active_key": "study_aryl_0d7aa75989e9__neu",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3087359,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_0d7aa75989e9:neu",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-54527752-20db-dbfe-f13c-c14b1f7d3716",
+          "memory_MiB": "6298"
+        }
+      ],
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 1,
+      "controller_pid": 3085710,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3088015,
+      "active_key": "study_aryl_c285539322fa__ox2",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3088722,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_c285539322fa:ox2",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-acfb23c0-7163-580e-11cd-370e35867833",
+          "memory_MiB": "5250"
+        }
+      ],
+      "cpu_affinity": [
+        2,
+        3
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 2,
+      "controller_pid": 3085711,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3088933,
+      "active_key": "study_aryl_c285539322fa__neu",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3089337,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_c285539322fa:neu",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-7f3f747c-971a-4267-719f-e3d850db3f89",
+          "memory_MiB": "21952"
+        }
+      ],
+      "cpu_affinity": [
+        4,
+        5
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 3,
+      "controller_pid": 3085712,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3086677,
+      "active_key": "study_aryl_45a6c406cdc7__ox2",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3087360,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_45a6c406cdc7:ox2",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70",
+          "memory_MiB": "6626"
+        }
+      ],
+      "cpu_affinity": [
+        6,
+        7
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 4,
+      "controller_pid": 3085713,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3087539,
+      "active_key": "study_aryl_45a6c406cdc7__neu",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3088331,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_45a6c406cdc7:neu",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-87f454bb-e27d-5274-da01-09db9787f2b3",
+          "memory_MiB": "8330"
+        }
+      ],
+      "cpu_affinity": [
+        8,
+        9
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 5,
+      "controller_pid": 3085716,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3088498,
+      "active_key": "study_aryl_c285539322fa__ox1",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3089218,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_c285539322fa:ox1",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a",
+          "memory_MiB": "7186"
+        }
+      ],
+      "cpu_affinity": [
+        10,
+        11
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 6,
+      "controller_pid": 3085717,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3089328,
+      "active_key": "study_aryl_4602f4a856c7__ox2",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3089352,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_4602f4a856c7:ox2",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8",
+          "memory_MiB": "10390"
+        }
+      ],
+      "cpu_affinity": [
+        12,
+        13
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 7,
+      "controller_pid": 3085718,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3087098,
+      "active_key": "study_aryl_45a6c406cdc7__ox1",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3087793,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_45a6c406cdc7:ox1",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-4895a53e-f3e2-0f6e-fcc3-5632b9be64b6",
+          "memory_MiB": "7044"
+        }
+      ],
+      "cpu_affinity": [
+        14,
+        15
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    }
+  ],
+  "actual_GPU_workers": 8,
+  "global_states_started": 18,
+  "global_states_verified": 0,
+  "global_state_failures": 0,
+  "load_1m": 8.66455078125,
+  "checked": 1792427870.4633865,
+  "scientific_accuracy_validated": false
+}

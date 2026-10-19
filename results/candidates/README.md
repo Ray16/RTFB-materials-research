@@ -15,7 +15,7 @@ candidates. [latest.csv](latest.csv) contains just those additional candidates,
 and [comparisons.csv](comparisons.csv) contains shifts from matched exact-graft
 controls. These stable paths update with the active campaign exports.
 
-The active batch contains 27 additional candidates. The workbook and current
+The active batch contains 36 additional candidates. The workbook and current
 snapshot report which potential pairs are complete. Blank numeric fields are pending or excluded by
 field-specific QC. These are predictions for exact molecular structures; parent
 measurements are separate and exact-graft experimental accuracy is unvalidated.
@@ -33,7 +33,7 @@ Selected spin equilibria are explicit in the state sheet: the selected-surface
 native correction, effective correction used for G, equilibrium mixing term and
 alternative population are separate fields. Single-surface kinetic validation is
 withheld for mixed-spin states. Integrity must pass for every included component
-pair. The current batch has 26 complete potential pairs out of 27; consult the
+pair. The current batch has 26 complete potential pairs out of 36; consult the
 feed timestamp for any later updates.
 
 The checked free-parent benchmark now exposes a phenothiazine second-wave model
@@ -59,3 +59,7 @@ gives -0.984/-1.730 V and cata-ADI ethyl -0.811/-1.551 V vs Fc/Fc+ in MeCN.
 Nominal active-species capacities are 134.5 and 119.5 mAh/g, respectively.
 Gas relaxation descriptors retain conformer/unbound-anion QC and are not validated
 solution rates. The full property-table review passes 32,492 arithmetic checks.
+
+Nine newly registered [diaryl-viologen grafts](../validation/aryl_solution_2026-10-19/README.md)
+have 27 independently reviewed gas UMA states. Their source-bound solution
+calculations run separately; pending solution quantities remain blank.

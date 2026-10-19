@@ -595,3 +595,20 @@ checks 798 stored geometries and identifies three reduced quinones with changed
 H attachments; their second steps already fail the published bond-integrity gate.
 The new screen checks H attachments directly. Six new regressions bring the
 software suite to 550 passing tests, without changing earlier numeric properties.
+
+All 27 diaryl-viologen gas states have passed independent terminal review. The
+nine exact graphs are registered and their frozen conformer/UMA trees installed
+byte-identically, expanding the additional registry to 36 candidates. The
+[source-bound MeCN campaign](../results/validation/aryl_solution_2026-10-19/README.md)
+has 18 actual DFT GPU workers across lambda1/lambda11/lambda13 and 27 queued states.
+Five comparisons were declared before solution energies. New solution fields
+remain pending until independent physical and spin admission.
+
+The checkpoint guard adds five regression cases; 558 software tests pass. Every
+one of the previous inventory's 11,577 calculation files is unchanged. The earlier
+32,492-check full-table review is explicitly an as-of snapshot before these nine
+registrations, while the candidate feed supplies current field-specific coverage.
+
+The exporter now recognizes the native per-state queue, so new candidates show
+producer progress and pending independent admission rather than appearing outside
+the legacy queue. Three regression cases bring the full suite to 558 passing tests.

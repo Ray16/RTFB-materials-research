@@ -1,18 +1,18 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T11:05:28.262592-05:00",
+    "as_of_Chicago": "2026-10-19T11:34:39.450415-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_110528_262592",
-      "additional_candidates": 27,
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_113439_450415",
+      "additional_candidates": 36,
       "original39_with_native_potentials": 34,
       "complete_potential_pairs": 26,
-      "arithmetic_checks": 590,
+      "arithmetic_checks": 608,
       "arithmetic_discrepancies": 0,
       "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
       "inputs_current_during_collection": true
@@ -139,17 +139,31 @@
       "prepared_exact_graphs": 9,
       "declared_states": 27,
       "seed_state_checks": 270,
-      "registered_candidates": 0,
+      "registered_candidates": 9,
       "resource_pilot": "results/discovery/aryl_viologen_screen_2026-10-19/pilot_review.json",
       "resource_pilot_complete": true,
       "maximum_pilot_device_MiB": 1473,
       "screen_start_verification": "results/discovery/aryl_viologen_screen_2026-10-19/screen_start_verification.json",
       "screen_GPU_predictors_at_start_verification": 24,
       "actual_start_verification_time": 1792426019.6855278,
-      "state_records_verified": 22,
+      "state_records_verified": 27,
       "state_failures": 0,
       "solution_properties_computed": 0,
       "source_parent_measurements_inherited": false
+    },
+    "aryl_solution_campaign": {
+      "guide": "results/validation/aryl_solution_2026-10-19/README.md",
+      "plan": "results/validation/aryl_solution_2026-10-19/plan.json",
+      "actual_start_verification": "results/validation/aryl_solution_2026-10-19/start_verification.json",
+      "GPU_workers_at_verified_start": 18,
+      "declared_states": 27,
+      "state_attempt_reports": 18,
+      "native_surface_records_verified": 0,
+      "state_failures": 0,
+      "seed_description_correction": "results/validation/aryl_solution_2026-10-19/seed_description_correction.json",
+      "new_potential_pairs_admitted": 0,
+      "earlier_calculation_preservation": "results/validation/aryl_solution_2026-10-19/existing_property_preservation.json",
+      "new_experimental_accuracy_validated": false
     },
     "lambda_uncertainty_evidence": {
       "review": "results/validation/uncertainty_scope_2026-10-19/qualification.json",
@@ -210,24 +224,26 @@
       "independent_checks_each": 157
     },
     "global_review": {
-      "scope": "Full property tables include both cata ladders, selected spin equilibrium, reviewed derivative repair and gas-diagnostic exclusions; external record dependencies fingerprinted",
+      "scope": "As-of full property tables before nine diaryl-viologen registrations; both cata ladders and earlier field-specific QC included",
       "path": "results/reviews/2026-10-19/aryl_hydrogen_scope_tables/review_status.json",
       "status": "complete",
       "arithmetic_checks": 32492,
       "arithmetic_discrepancies": 0,
       "inputs_current_during_review": true,
-      "changed_inputs": [],
+      "changed_inputs_during_review": [],
       "scientific_accuracy_validated": false,
-      "live_inputs_match_current_manifest": true,
-      "new_cata_cases_outside_review_scope": false
+      "live_inputs_match_current_manifest": false,
+      "new_cata_cases_outside_review_scope": false,
+      "new_aryl_cases_outside_review_scope": true,
+      "current_candidate_coverage": "results/candidates/current.json"
     },
     "slides": {
-      "status": "checked_aryl_input_pilot_and_hydrogen_scope_pdf",
+      "status": "checked_registered_aryl_solution_launch_and_pending_properties_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/aryl_hydrogen_slides/slides_check.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_110528_262592",
-      "pdf_sha256": "0c8db59804a4ef8d5f899f81e6ce5fd77946e7eaf0a2d73d0c5381f212eeb177",
-      "pages": 49
+      "publisher": "results/reviews/2026-10-19/aryl_solution_slides/slides_check.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_113439_450415",
+      "pdf_sha256": "346b1ee3920e46085d0ec2c850e485d87368494e75fecebfc681020472cea9c7",
+      "pages": 50
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -262,10 +278,10 @@
       "solution_start_proof": "results/validation/cata_solution_2026-10-19/start_verification.json",
       "solution_outputs": "calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>"
     },
-    "software_tests_passed": 550,
-    "software_checks": "results/discovery/aryl_viologen_screen_2026-10-19/software_checks.log",
+    "software_tests_passed": 558,
+    "software_checks": "results/validation/aryl_solution_2026-10-19/software_checks.log",
     "remaining_work": [
-      "Complete diaryl-viologen screen, registration and solution-property calculations",
+      "Complete diaryl-viologen solution-property calculations and independent admission",
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
       "Broader experimental benchmark and exact-graft validation",
@@ -273,7 +289,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792426230.0919063,
+  "updated": 1792427868.6197083,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

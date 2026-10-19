@@ -2,8 +2,9 @@
 
 ## Current results: 2026-10-19
 
-The [candidate workbook](../results/candidates/latest.xlsx) contains 27 additional
-exact grafts: **26 have admitted native potential pairs**. The first family
+The [candidate workbook](../results/candidates/latest.xlsx) contains 36 additional
+exact grafts: **26 have admitted native potential pairs**. Nine diaryl-viologen
+designs are newly registered, with solution calculations in progress. The first family
 comparison panel and the OMe/Me panel have completed their computational stages;
 read the [matched comparisons](../results/candidates/comparisons.csv) for current
 values under the corrected thermal protocol and Fc reference. Completion of a
@@ -20,9 +21,11 @@ establish a better battery candidate.
 The source catalog and systematic pool below remain the basis for further
 exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts now have
 an [isolated computation campaign](../results/discovery/aryl_viologen_screen_2026-10-19/README.md):
-27 charge-state definitions and 270 seed/state checks pass, with a three-charge
-70-atom T4 memory pilot launched before the remaining gas screen. New solution
-properties are uncomputed; no source measurement is inherited. The
+all 27 gas UMA states passed independent terminal review after 270 seed/state
+input checks and the three-charge 70-atom T4 memory pilot. Their exact seed/result
+trees are installed without regeneration. The [MeCN campaign](../results/validation/aryl_solution_2026-10-19/README.md)
+has started 18 suitable GPU workers for 27 states and five predeclared comparisons.
+New solution properties are pending; no source measurement is inherited. The
 [new cata-imide branch](../results/discovery/cata_core_expansion_2026-10-19/README.md)
 now has four curated parent graphs and two prepared exact grafts, with 214 checks
 and 18 verified initial conformers. All six gas UMA states passed

@@ -1,0 +1,54 @@
+{
+  "status": "starting_reserved_command",
+  "host": "lambda1",
+  "gpu": 7,
+  "pid": 3085718,
+  "process_start": "467701765",
+  "interpreter": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+  ],
+  "started": 1792426841.8890774,
+  "scientific_outputs_verified": false,
+  "host_preflight": {
+    "online_cpus": 80,
+    "load_1m": 0.20556640625,
+    "available_RAM_bytes": 524895096832,
+    "minimum_RAM_GiB": 8
+  },
+  "gpu_preflight": {
+    "index": 7,
+    "uuid": "GPU-4895a53e-f3e2-0f6e-fcc3-5632b9be64b6",
+    "name": "Tesla V100-SXM2-32GB",
+    "memory_MiB": 32768.0,
+    "compute_capability": "7.0"
+  },
+  "cpu_affinity": [
+    14,
+    15
+  ],
+  "threads": 2,
+  "gate_argv": [
+    "/usr/bin/taskset",
+    "--cpu-list",
+    "14,15",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "7",
+    "--label",
+    "redox",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu7",
+    "--probe",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+  ]
+}

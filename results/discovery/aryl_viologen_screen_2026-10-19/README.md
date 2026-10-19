@@ -37,6 +37,11 @@ tests pass. The [stored-geometry audit](../../validation/hydrogen_topology_2026-
 separately checks current records and reconciles warnings with existing integrity
 exclusions. No earlier property was changed by this check.
 
-Registration, canonical seed adoption and solution QM are later stages. New
-potential, usable-capacity and kinetic fields remain uncomputed. The source's
+All 27 gas UMA states have now passed the [terminal independent review](uma_completion.json).
+All nine exact graphs are registered, with 27 library rows appended and the
+verified conformer/UMA trees [installed byte-identically](registration_prepared/adoption.json).
+The [solution campaign](../../validation/aryl_solution_2026-10-19/README.md)
+has begun on suitable reserved V100/H100 GPUs. Its three-seed DFT mode uses FF
+seeds and the UMA multiplicity; its actual seed selection is recorded separately.
+New potential, usable-capacity and kinetic fields remain uncomputed. The source's
 water/pH14/AgAgCl values are not MeCN/Fc labels for these exact grafts.

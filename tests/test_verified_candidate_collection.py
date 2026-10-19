@@ -11,6 +11,43 @@ def module():
  m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
 
 
+def state_queue(tmp_path, statuses):
+ import json
+ tasks=[dict(key=f'm__s{i}',id='m',state=f's{i}') for i in range(len(statuses))]
+ (tmp_path/'plan.json').write_text(json.dumps(dict(tasks=tasks)))
+ for task,status in zip(tasks,statuses):
+  if status is None:continue
+  path=tmp_path/'tasks'/task['key'];path.mkdir(parents=True)
+  (path/'status.json').write_text(json.dumps(dict(task=task,status=status)))
+ return tasks
+
+
+def test_native_state_queue_reports_pending_and_producer_progress_separately(tmp_path):
+ state_queue(tmp_path,['state_records_verified','computing',None])
+ progress,terminal=module().queue_progress(tmp_path)
+ assert not terminal
+ assert '1/3 surface records verified' in progress['m']
+ assert '1 producer reports in progress' in progress['m']
+ assert '1 queued/unresolved' in progress['m']
+ assert 'field-specific QC separate' in progress['m']
+
+
+def test_terminal_native_state_queue_does_not_hide_preserved_failures(tmp_path):
+ state_queue(tmp_path,['state_records_verified','failed_preserved'])
+ progress,terminal=module().queue_progress(tmp_path)
+ assert terminal and '1 failed/preserved' in progress['m']
+ assert '1/2 surface records verified' in progress['m']
+
+
+def test_native_queue_never_counts_a_mismatched_state_report_as_complete(tmp_path):
+ import json
+ tasks=state_queue(tmp_path,['state_records_verified'])
+ path=tmp_path/'tasks'/tasks[0]['key']/'status.json'
+ path.write_text(json.dumps(dict(task=dict(key='other__s0',id='other'),status='state_records_verified')))
+ progress,terminal=module().queue_progress(tmp_path)
+ assert not terminal and '0/1 surface records verified' in progress['m']
+
+
 def test_optional_state_QC_fields_survive_both_csv_and_workbook(tmp_path):
  import csv
  from openpyxl import load_workbook

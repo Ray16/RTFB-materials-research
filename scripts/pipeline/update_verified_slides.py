@@ -45,6 +45,8 @@ def number(value,digits=3):
 def candidate_label(row,labels):
     cata={'hyp_cata_ndi_ethyl':'Cata-NDI ethyl','hyp_cata_adi_ethyl':'Cata-ADI ethyl'}
     if row['id'] in cata:return cata[row['id']]
+    if row['id'].startswith('study_aryl_') and row.get('name'):
+        return row['name']
     if labels.get(row['id'],{}).get('short_name'):
         return labels[row['id']]['short_name']
     core=row.get('search_core')

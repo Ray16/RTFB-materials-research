@@ -1,0 +1,101 @@
+{
+  "status": "actual_solution_queue_and_GPU_predictors_observed",
+  "host": "lambda11",
+  "workers": [
+    {
+      "gpu": 0,
+      "controller_pid": 3452010,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3452179,
+      "active_key": "study_aryl_0d7aa75989e9__ox2",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3452309,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_0d7aa75989e9:ox2",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-57b48d7e-3c58-2ef3-973a-40bd65ca9ae5",
+          "memory_MiB": "6576"
+        }
+      ],
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    },
+    {
+      "gpu": 1,
+      "controller_pid": 3452011,
+      "status": "computing",
+      "controller_process_state": "sleeping",
+      "controller_descendant_names": [
+        "gpu_reserve",
+        "python",
+        "python"
+      ],
+      "queue_pid": 3452286,
+      "active_key": "study_aryl_0d7aa75989e9__ox1",
+      "error": null,
+      "actual_GPU_processes": [
+        {
+          "pid": 3452310,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "-m",
+            "redox.qm.dft",
+            "--only",
+            "study_aryl_0d7aa75989e9:ox1",
+            "--backend",
+            "gpu",
+            "--nthreads",
+            "2",
+            "--nconf",
+            "3",
+            "--no-freq"
+          ],
+          "uuid": "GPU-441f2978-2f6b-8b43-ab71-0f1a437aea09",
+          "memory_MiB": "28702"
+        }
+      ],
+      "cpu_affinity": [
+        2,
+        3
+      ],
+      "stage": "dft",
+      "state_status": "computing",
+      "controller_status": "starting_reserved_command",
+      "controller_error": null
+    }
+  ],
+  "actual_GPU_workers": 2,
+  "global_states_started": 18,
+  "global_states_verified": 0,
+  "global_state_failures": 0,
+  "load_1m": 2.25634765625,
+  "checked": 1792427870.7650588,
+  "scientific_accuracy_validated": false
+}

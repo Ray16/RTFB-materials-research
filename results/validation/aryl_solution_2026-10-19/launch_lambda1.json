@@ -1,0 +1,310 @@
+{
+  "status": "controllers_submitted_actual_predictors_pending",
+  "host": "lambda1",
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 0.13623046875,
+    "available_RAM_bytes": 524951474176,
+    "minimum_RAM_GiB": 256
+  },
+  "workers": [
+    {
+      "host": "lambda1",
+      "gpu": 0,
+      "device": {
+        "index": 0,
+        "uuid": "GPU-54527752-20db-dbfe-f13c-c14b1f7d3716",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "controller_pid": 3085707,
+      "process_start": "467701409",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "0",
+        "--cpus",
+        "0,1",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu0",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu0.log",
+      "submitted": 1792426838.287345
+    },
+    {
+      "host": "lambda1",
+      "gpu": 1,
+      "device": {
+        "index": 1,
+        "uuid": "GPU-acfb23c0-7163-580e-11cd-370e35867833",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        2,
+        3
+      ],
+      "controller_pid": 3085710,
+      "process_start": "467701460",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--cpus",
+        "2,3",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu1",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu1.log",
+      "submitted": 1792426838.7945178
+    },
+    {
+      "host": "lambda1",
+      "gpu": 2,
+      "device": {
+        "index": 2,
+        "uuid": "GPU-7f3f747c-971a-4267-719f-e3d850db3f89",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        4,
+        5
+      ],
+      "controller_pid": 3085711,
+      "process_start": "467701511",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "2",
+        "--cpus",
+        "4,5",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu2.log",
+      "submitted": 1792426839.3024857
+    },
+    {
+      "host": "lambda1",
+      "gpu": 3,
+      "device": {
+        "index": 3,
+        "uuid": "GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        6,
+        7
+      ],
+      "controller_pid": 3085712,
+      "process_start": "467701562",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "3",
+        "--cpus",
+        "6,7",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu3",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu3.log",
+      "submitted": 1792426839.8105915
+    },
+    {
+      "host": "lambda1",
+      "gpu": 4,
+      "device": {
+        "index": 4,
+        "uuid": "GPU-87f454bb-e27d-5274-da01-09db9787f2b3",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        8,
+        9
+      ],
+      "controller_pid": 3085713,
+      "process_start": "467701612",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "4",
+        "--cpus",
+        "8,9",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu4",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu4.log",
+      "submitted": 1792426840.3189945
+    },
+    {
+      "host": "lambda1",
+      "gpu": 5,
+      "device": {
+        "index": 5,
+        "uuid": "GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        10,
+        11
+      ],
+      "controller_pid": 3085716,
+      "process_start": "467701663",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "5",
+        "--cpus",
+        "10,11",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu5",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu5.log",
+      "submitted": 1792426840.8275256
+    },
+    {
+      "host": "lambda1",
+      "gpu": 6,
+      "device": {
+        "index": 6,
+        "uuid": "GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        12,
+        13
+      ],
+      "controller_pid": 3085717,
+      "process_start": "467701714",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "6",
+        "--cpus",
+        "12,13",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu6",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu6.log",
+      "submitted": 1792426841.3356214
+    },
+    {
+      "host": "lambda1",
+      "gpu": 7,
+      "device": {
+        "index": 7,
+        "uuid": "GPU-4895a53e-f3e2-0f6e-fcc3-5632b9be64b6",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        14,
+        15
+      ],
+      "controller_pid": 3085718,
+      "process_start": "467701765",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "7",
+        "--cpus",
+        "14,15",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/reserved_lambda1_gpu7",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/queue_worker.py"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/controller_lambda1_gpu7.log",
+      "submitted": 1792426841.8437748
+    }
+  ],
+  "source_plan": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/aryl_solution_2026-10-19/plan.json",
+  "created": 1792426838.279434
+}

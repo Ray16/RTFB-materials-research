@@ -120,6 +120,23 @@ def independent_state(gid,st,q,key,audit):
 
 
 def queue_progress(queue):
+ plan=coverage.safe_json(queue/'plan.json') or {};tasks=plan.get('tasks',[])
+ if tasks and all(isinstance(t,dict) and all(k in t for k in ('key','id','state')) for t in tasks):
+  # State queues publish surface records separately from spin/property admission.
+  counts={gid:dict(total=0,verified=0,failed=0,reported=0,queued=0) for gid in {t['id'] for t in tasks}}
+  for task in tasks:
+   c=counts[task['id']];c['total']+=1
+   report=coverage.safe_json(queue/'tasks'/task['key']/'status.json') or {}
+   matched=report.get('task',{}).get('key')==task['key'] and report.get('task',{}).get('id')==task['id']
+   status=report.get('status') if matched else None
+   if status=='state_records_verified':c['verified']+=1
+   elif status in ('failed_preserved','interrupted_preserving_outputs'):c['failed']+=1
+   elif status in ('preparing','computing'):c['reported']+=1
+   else:c['queued']+=1
+  progress={gid:(f"{c['verified']}/{c['total']} surface records verified; {c['failed']} failed/preserved; "
+                 f"{c['reported']} producer reports in progress; {c['queued']} queued/unresolved; field-specific QC separate")
+            for gid,c in counts.items()}
+  return progress,all(c['verified']+c['failed']==c['total'] for c in counts.values())
  data=coverage.safe_json(queue/'queue.json') or {};ids=data.get('ids',[])
  if data.get('jobs'):
   states={j['name']:coverage.safe_json(queue/'job_status'/f"{j['name']}.json") or {} for j in data['jobs']}
