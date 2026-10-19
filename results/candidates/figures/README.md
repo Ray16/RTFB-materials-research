@@ -1,15 +1,17 @@
 # Maintained candidate comparisons
 
-Open the [comparison browser](index.html) for all registered candidates, sortable
+Open the [comparison browser](index.html) for all candidate designs, sortable
 properties, exact structures, filters and comparisons of up to six structures.
-It is a standalone HTML file; the interactive plot is embedded when Plotly is
-available. All candidates remain in the table, including unfinished calculations.
+Open the local HTML from this collection folder; the interactive plot and table
+data are embedded. All candidates remain in the table, including unfinished
+calculations. Structure cards also show their proposed vinyl counterparts.
 
 | Stable figure | What it compares |
 | --- | --- |
 | [Potential–capacity map](redox_capacity.png) · [PDF](redox_capacity.pdf) | Admitted first/second potentials and nominal molecular capacities |
 | [Synthesis tradeoff](synthesis_tradeoff.png) · [PDF](synthesis_tradeoff.pdf) | SA and nominal capacity, highlighting selected descriptor leaders |
 | [New candidate shifts](new_candidate_shifts.png) · [PDF](new_candidate_shifts.pdf) | Matched contrasts with lower potentials for both events, one per core |
+| [Molecular structures](candidate_structures.svg) · [PDF](candidate_structures.pdf) | Computed capped-model leaders and uncomputed vinyl-monomer pilot; attachment and vinyl group marked |
 | [All-candidate ladders](redox_ladders.png) · [PDF](redox_ladders.pdf) | Every candidate, with pending endpoints blank and nominal capacity alongside |
 | [Family coverage](coverage.png) · [PDF](coverage.pdf) | Admitted potential calculations and pending/excluded cases by family |
 
@@ -28,17 +30,31 @@ The [manifest](manifest.json) records the audited input snapshot, candidate IDs,
 coverage and output checksums. These filenames are overwritten on each successful
 update. Earlier scientific snapshots stay in the existing immutable export archive.
 
+The focused potential plot contains eligible two-electron anolytes only, with
+three numbered candidates in consistent colors and other points in gray.
+Catholytes remain in the complete table and supplementary comparison. Legends
+are checked for collisions with axis text before export.
+
+Create the isolated figure environment from the project's `redox` environment
+(already prepared in this workspace). Visualization dependencies stay separate
+from the live scientific workers:
+
+```bash
+python -m venv --system-site-packages .venv-figures
+.venv-figures/bin/python -m pip install -r requirements-visualization.txt
+```
+
 To update from the current verified feed:
 
 ```bash
-python scripts/plotting/candidates/update_comparison_collection.py
+.venv-figures/bin/python scripts/plotting/candidates/update_comparison_collection.py
 ```
 
 To collect newly finished results and update this collection plus the existing
 historical comparison figures in one command:
 
 ```bash
-python scripts/pipeline/collect_verified_candidates.py \
+.venv-figures/bin/python scripts/pipeline/collect_verified_candidates.py \
   --out results/reviews/2026-10-18/verified_candidates \
   --queue results/validation/aryl_solution_2026-10-19 \
   --update-figures
@@ -46,9 +62,8 @@ python scripts/pipeline/collect_verified_candidates.py \
 
 Add `--watch` to refresh after each audited collection while the queue runs.
 These commands read existing scientific calculations; they submit no new jobs.
-Run them in the project's `redox` environment. Optional interactive plots use
-`requirements-visualization.txt`; static figures and the searchable table work
-without Plotly. The existing slide publisher's `--update-plots` option updates
+Plotly supplies the interactive plot and CairoSVG exports vector molecular
+structures. The existing slide publisher's `--update-plots` option updates
 this same collection through `update_candidate_overlays.py`.
 
 Potentials use the current corrected native protocol and matched Fc reference.

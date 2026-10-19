@@ -1,0 +1,55 @@
+{
+  "status": "graph_exact_vector_depictions",
+  "source_vinyl_snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576",
+  "structures": [
+    {
+      "id": "exp_bq_oxy_methoxy",
+      "smiles": "COC1=CC(=O)C(OCc2ccc(C)cc2)=CC1=O",
+      "label": "1  Methoxy BQ",
+      "scope": "computed_capped_local_model",
+      "row": 0,
+      "column": 0
+    },
+    {
+      "id": "exp_bq_oxy_trimethyl",
+      "smiles": "CC1=C(C)C(=O)C(OCc2ccc(C)cc2)=C(C)C1=O",
+      "label": "2  Trimethyl BQ",
+      "scope": "computed_capped_local_model",
+      "row": 0,
+      "column": 1
+    },
+    {
+      "id": "exp_aq_1oxy",
+      "smiles": "Cc1ccc(COc2cccc3c2C(=O)c2ccccc2C3=O)cc1",
+      "label": "3  1-O AQ",
+      "scope": "computed_capped_local_model",
+      "row": 0,
+      "column": 2
+    },
+    {
+      "id": "vm_design_ndi_ethyl",
+      "smiles": "C=Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CC)C4=O)cc1",
+      "label": "P1  NDI vinyl monomer",
+      "scope": "vinyl_proposal_uncomputed",
+      "row": 1,
+      "column": 0
+    },
+    {
+      "id": "vm_design_pmdi_ethyl",
+      "smiles": "C=Cc1ccc(Cn2c(=O)c3cc4c(=O)n(CC)c(=O)c4cc3c2=O)cc1",
+      "label": "P2  PMDI vinyl monomer",
+      "scope": "vinyl_proposal_uncomputed",
+      "row": 1,
+      "column": 1
+    },
+    {
+      "id": "vm_ethylviologen",
+      "smiles": "C=Cc1ccc(C[n+]2ccc(-c3cc[n+](CC)cc3)cc2)cc1",
+      "label": "P3  Viologen vinyl monomer",
+      "scope": "vinyl_proposal_uncomputed",
+      "row": 1,
+      "column": 2
+    }
+  ],
+  "computed_values_transferred_to_vinyl_proposals": false
+}

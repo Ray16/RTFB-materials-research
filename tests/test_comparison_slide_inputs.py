@@ -16,7 +16,7 @@ def collection(tmp_path):
     slides=tmp_path/'slides';(slides/'generated').mkdir(parents=True)
     source=slides/'redox_workflow.tex';source.write_text(r'\input{generated/candidate_comparison_collection.tex}')
     hashes={}
-    for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png','candidate_comparison_collection.tex'):
+    for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png','candidate_structures.png','candidate_comparison_collection.tex'):
         data=name.encode();(folder/name).write_bytes(data);hashes[name]=hashlib.sha256(data).hexdigest()
     (slides/'generated/candidate_comparison_collection.tex').write_bytes(b'candidate_comparison_collection.tex')
     (folder/'manifest.json').write_text(json.dumps(dict(snapshot='snapshot-A',files=hashes)))
@@ -26,7 +26,7 @@ def collection(tmp_path):
 def test_current_collection_binds_all_three_figures_and_the_include(collection):
     module,root,source,_=collection
     inputs=module.comparison_collection_inputs(dict(snapshot_path='snapshot-A'),root,source)
-    assert len(inputs)==5
+    assert len(inputs)==6
 
 
 def test_stale_figure_snapshot_cannot_publish_with_new_table(collection):

@@ -22,6 +22,11 @@ The [maintained comparison collection](figures/README.md) adds a searchable
 [family coverage](figures/coverage.png). One update command refreshes the same
 files from the audited feed as candidates and verified properties arrive.
 
+For the confirmed **functionalize vinyl monomer, then polymerize** route, the
+[vinyl-monomer proposals](../discovery/vinyl_monomers/README.md) are separate from
+the capped local models in these result tables. Their redox quantities remain
+blank until independently computed; no capped-model potential is transferred.
+
 The active batch contains 36 additional candidates. The workbook and current
 snapshot report which potential pairs are complete. Blank numeric fields are pending or excluded by
 field-specific QC. These are predictions for exact molecular structures; parent

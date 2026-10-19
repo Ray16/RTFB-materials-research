@@ -90,32 +90,30 @@ def figures(rows, out, stamp, report):
         'svg.fonttype': 'none', 'axes.spines.top': False, 'axes.spines.right': False,
         'savefig.bbox': None, 'font.weight': 'normal', 'axes.titleweight': 'normal',
         'axes.labelweight': 'normal'})
-    fig, axes = plt.subplots(1, 2, figsize=(7.2, 4.5), sharey=True)
-    fig.subplots_adjust(left=.1, right=.98, top=.9, bottom=.26, wspace=.15)
+    from candidate_highlights import LEAD_COLORS,lead_name,assert_clear_legend
+    selected={r['id']:r for r in rows}
+    anolytes=[selected[gid] for gid in report['eligible_ids']]
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.7), sharey=True, sharex=True)
+    fig.subplots_adjust(left=.1, right=.98, top=.79, bottom=.2, wspace=.12)
     plotted = {}
     for ax, field, title in zip(axes, ('E1_vs_Fc_V', 'E2_vs_Fc_V'), ('First event', 'Second event')):
-        plotted[field] = []
-        for family in families:
-            subset = [r for r in rows if r['family'] == family and finite(r.get(field))
-                      and finite(r.get('capacity_nominal_mAh_g'))]
-            plotted[field].extend(r['id'] for r in subset)
-            ax.scatter([r[field] for r in subset], [r['capacity_nominal_mAh_g'] for r in subset],
-                       facecolors=['none' if r.get('model_primary_admissible') is False else colors[family] for r in subset],
-                       marker=styles[family][2], s=28, alpha=.85,
-                       label=styles[family][0], edgecolors=colors[family], linewidths=.7)
+        plotted[field] = [r['id'] for r in anolytes]
+        ax.scatter([r[field] for r in anolytes],[r['capacity_nominal_mAh_g'] for r in anolytes],
+                   color='#c8cdd3',s=18,edgecolors='none',alpha=.7)
         ax.set(xlabel='Potential (V vs Fc/Fc⁺)', title=title)
-        ax.grid(alpha=.18)
-        for row in rows:
-            if row['id'] not in report['highlighted_ids']:continue
-            ax.scatter(row[field],row['capacity_nominal_mAh_g'],marker='*',s=85,color='#111',zorder=5)
-            ax.annotate(names[row['id']],(row[field],row['capacity_nominal_mAh_g']),
-                        xytext=(5,5),textcoords='offset points',fontsize=6.5)
+        ax.grid(axis='y',alpha=.15)
+        for i,gid in enumerate(report['highlighted_ids']):
+            row=selected[gid]
+            ax.scatter(row[field],row['capacity_nominal_mAh_g'],s=105,color=LEAD_COLORS[i],zorder=5)
+            ax.text(row[field],row['capacity_nominal_mAh_g'],str(i+1),ha='center',va='center',
+                    fontsize=7,color='white',zorder=6)
     axes[0].set_ylabel('Nominal capacity (mAh g⁻¹)')
-    for letter, ax in zip('ab', axes):ax.text(-.12, 1.08, letter, transform=ax.transAxes, fontweight='bold', fontsize=11)
-    handles = [Line2D([], [], color=colors[f], marker=styles[f][2], linestyle='', label=styles[f][0]) for f in families]
-    handles.append(Line2D([],[],color='#444',marker='o',markerfacecolor='none',linestyle='',label='Open: model selection hold'))
-    handles.append(Line2D([],[],color='#111',marker='*',linestyle='',label='Selected anolyte descriptor leaders'))
-    fig.legend(handles=handles, loc='lower center', bbox_to_anchor=(.5,.06), ncol=3, fontsize=7.5, frameon=False)
+    for letter, ax in zip('ab', axes):ax.text(-.1,1.07,letter,transform=ax.transAxes,fontweight='bold',fontsize=11)
+    handles=[Line2D([],[],color=LEAD_COLORS[i],marker='o',linestyle='',label=f'{i+1}  '+lead_name(gid,names))
+             for i,gid in enumerate(report['highlighted_ids'])]
+    legend=fig.legend(handles=handles,loc='upper center',bbox_to_anchor=(.54,.99),ncol=3,fontsize=8,frameon=False)
+    assert_clear_legend(fig,legend,axes)
+    fig.text(.1,.025,f'Gray: {len(anolytes)} eligible anolyte models. Numbered candidates are descriptor leaders, not synthesis recommendations.',fontsize=6.5)
     for suffix in ('png', 'pdf', 'svg'):fig.savefig(out/f'redox_capacity.{suffix}', dpi=600)
     plt.close(fig)
 
@@ -172,7 +170,7 @@ def figures(rows, out, stamp, report):
     return colors, names, plotted
 
 
-def browser(rows, colors, names, stamp, report):
+def browser(rows, colors, names, stamp, report, monomers):
     from rdkit import Chem
     from rdkit.Chem.Draw import rdMolDraw2D
     structures = {}
@@ -185,30 +183,39 @@ def browser(rows, colors, names, stamp, report):
     try:
         import plotly.graph_objects as go
         from plotly.subplots import make_subplots
-        fig = make_subplots(rows=1, cols=2, subplot_titles=['First event', 'Second event'])
+        from candidate_highlights import LEAD_COLORS,lead_name
+        eligible=[r for r in rows if r['id'] in report['eligible_ids']]
+        by_id={r['id']:r for r in rows}
+        series=[('Other anolytes','#c8cdd3',[r for r in eligible if r['id'] not in report['highlighted_ids']],None)]
+        series += [(f'{i+1} '+lead_name(gid,names),LEAD_COLORS[i],[by_id[gid]],str(i+1))
+                   for i,gid in enumerate(report['highlighted_ids'])]
+        fig = make_subplots(rows=1, cols=2, shared_yaxes=True,subplot_titles=['First event', 'Second event'])
         for column, field in enumerate(('E1_vs_Fc_V', 'E2_vs_Fc_V'), 1):
-            for family in sorted(colors):
-                subset = [r for r in rows if r['family'] == family and finite(r.get(field))]
+            for label,color,subset,number in series:
                 fig.add_trace(go.Scatter(x=[r[field] for r in subset],
-                    y=[r['capacity_nominal_mAh_g'] for r in subset], mode='markers',
-                    marker=dict(color=colors[family],
-                        size=[14 if r['id'] in report['highlighted_ids'] else 9 for r in subset],
-                        symbol=['star' if r['id'] in report['highlighted_ids'] else 'circle-open' if r.get('model_primary_admissible') is False else 'circle' for r in subset]), name=family,
-                    legendgroup=family, showlegend=column == 1,
+                    y=[r['capacity_nominal_mAh_g'] for r in subset],mode='markers+text' if number else 'markers',
+                    marker=dict(color=color,size=17 if number else 7),
+                    text=[number]*len(subset) if number else None,textposition='middle center',textfont=dict(color='white',size=10),
+                    name=label,legendgroup=label,showlegend=column == 1,
                     customdata=[[names[r['id']], r['id']] for r in subset],
                     hovertemplate='%{customdata[0]}<br>%{customdata[1]}<br>%{x:.3f} V<br>%{y:.1f} mAh/g<extra></extra>'), row=1, col=column)
-            fig.update_xaxes(title_text='V vs Fc/Fc⁺ in MeCN', row=1, col=column)
-            fig.update_yaxes(title_text='Nominal capacity (mAh/g)', row=1, col=column)
-        fig.update_layout(template='plotly_white', height=510, margin=dict(l=60, r=25, t=45, b=90),
-                          legend=dict(orientation='h', y=-.25), font=dict(family='system-ui'))
+            fig.update_xaxes(title_text='Potential (V vs Fc/Fc⁺)',showgrid=False,row=1,col=column)
+        fig.update_yaxes(title_text='Nominal capacity (mAh/g)',row=1,col=1)
+        fig.update_layout(template='plotly_white',height=460,margin=dict(l=60,r=25,t=100,b=55),
+                          legend=dict(orientation='h',y=1.28,x=.5,xanchor='center'),font=dict(family='system-ui',size=12))
         plot = fig.to_html(full_html=False, include_plotlyjs=True, div_id='redox-chart', config=dict(responsive=True))
         interactive = True
     except ImportError:
         plot = '<img src="redox_capacity.png" alt="Redox potentials versus nominal capacity" style="width:100%">'
         interactive = False
     table = []
+    from candidate_structure_plate import molecule_svg
     for row in rows:
         display = dict(row, short_name=names[row['id']], structure_svg=structures[row['id']])
+        monomer=monomers.get(row['id'])
+        if monomer:
+            display.update(vinyl_structure_svg=molecule_svg(monomer['smiles'],vinyl=True),
+                           vinyl_smiles=monomer['smiles'])
         table.append(display)
     data = json.dumps(table, allow_nan=False).replace('</', '<\\/')
     page = (ROOT/'scripts/plotting/candidates/comparison_browser.html').read_text()
@@ -224,8 +231,9 @@ def main(argv=None):
     lock = (args.out/'.update.lock').open('a+')
     fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
     producers=[Path(__file__),Path(__file__).with_name('candidate_highlights.py'),
+        Path(__file__).with_name('candidate_structure_plate.py'),
         Path(__file__).with_name('comparison_browser.html'),Path(__file__).with_name('verified_overlay.py'),
-        ROOT/'scripts/pipeline/update_verified_slides.py']
+        ROOT/'scripts/pipeline/update_verified_slides.py',ROOT/'results/discovery/vinyl_monomers/proposals.json']
     producer_sha256={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in producers}
     payload, raw, admitted = load(args.feed)
     if not payload or not raw:raise RuntimeError('No source-current audited candidate snapshot; collection preserved')
@@ -233,6 +241,7 @@ def main(argv=None):
     rows = comparison_rows(payload, raw, admitted)
     from candidate_highlights import highlights,matched_highlights,focused_figures
     report=highlights(rows);matches=matched_highlights(payload,comparison_admitted)
+    vinyl_proposal=json.loads((ROOT/'results/discovery/vinyl_monomers/proposals.json').read_text())
     stamp = payload['as_of_Chicago'];snapshot = payload['snapshot_path']
     with tempfile.TemporaryDirectory(prefix='.build-', dir=args.out) as temp:
         stage = Path(temp)
@@ -240,21 +249,25 @@ def main(argv=None):
         for row in comparison_admitted:
             if row['id'] not in names:names[row['id']]=short_name(row,{})
         focused_figures(rows,report,matches,stage,names,colors)
+        from candidate_structure_plate import structure_plate
+        monomers=structure_plate(rows,report,names,vinyl_proposal,stage)
         (stage/'highlights.json').write_text(json.dumps(dict(report,matched_contrasts=matches),indent=2)+'\n')
         slide_frames=[]
         for title,filename,caption in [
             ('Candidate descriptor leaders: potential and capacity','redox_capacity.png',
-             'Stars select anolyte descriptor leaders on a partial potential--capacity front. Kinetics and polymer validation remain pending.'),
+             'Numbers identify anolyte descriptor leaders on a partial potential--capacity front. Kinetics and polymer validation remain pending.'),
             ('Synthesis accessibility is a separate consideration','synthesis_tradeoff.png',
              'SA is a heuristic annotation. The computed methylbenzyl caps lack the vinyl group required for monomer-first polymerization.'),
             ('New candidate contrasts against matched controls','new_candidate_shifts.png',
-             'One contrast per core with the strongest potential decrease shared by both events. A shift does not establish polymer performance.')]:
+             'One contrast per core with the strongest potential decrease shared by both events. A shift does not establish polymer performance.'),
+            ('Molecular structures: computed models and vinyl proposals','candidate_structures.png',
+             'Top: computed capped-model descriptor leaders. Bottom: uncomputed vinyl monomers. Orange marks attachment; blue marks the vinyl group.')]:
             slide_frames.extend([r'\begin{frame}{'+title+'}',r'\centering',
                 r'\includegraphics[width=.97\linewidth,height=.72\textheight,keepaspectratio]{../results/candidates/figures/'+filename+'}',
                 r'\par\smallskip\raggedright\scriptsize '+caption,
                 r'\vfill\tiny Audited model snapshot: '+stamp.replace('_',r'\_')+'.',r'\end{frame}'])
         (stage/'candidate_comparison_collection.tex').write_text('\n'.join(slide_frames)+'\n')
-        page, interactive = browser(rows, colors, names, stamp, report)
+        page, interactive = browser(rows, colors, names, stamp, report, monomers)
         (stage/'index.html').write_text(page)
         (stage/'all_candidates.json').write_text(json.dumps(rows, indent=2, allow_nan=False)+'\n')
         (stage/'captions.md').write_text(
@@ -263,19 +276,19 @@ def main(argv=None):
             f'{len(admitted)} with admitted potential calculations.\n\n'
             '**Potential–capacity map.** First (a) and second (b) declared redox-event '
             'potentials versus Fc/Fc+ in MeCN and nominal gravimetric capacity of the '
-            'p-methylbenzyl-capped local graft model. Each point is a candidate; colors and shapes identify '
-            'families. Open symbols mark model-selection holds on qualified capacity. '
+            'p-methylbenzyl-capped local graft model. Only eligible two-electron anolytes '
+            'are shown; gray context points are subdued and three numbered leaders are colored. '
             'Nominal capacity follows the declared electron count and molecular mass, '
             'excluding counterions, electrolyte, solvent and polymer. Missing potential '
             'endpoints are omitted, not set to zero. Anolyte and catholyte roles must '
             'be assessed separately; no overall ranking or cell voltage follows.\n\n'
-            'Stars highlight the two highest nominal capacities and most negative first '
+            'Numbers identify the two highest nominal capacities and most negative first '
             'reduction on the partial anolyte potential–capacity front. This exact '
             'descriptor front omits kinetics and candidate-specific uncertainty; it '
             'does not replace the qualified primary Pareto policy.\n\n'
             '**Synthesis tradeoff.** Nominal molecular capacity versus heuristic SA. '
-            'Colored points lie on the partial potential–capacity front; stars identify '
-            'the same selected descriptor leaders. Gray points are other or pending '
+            'Numbered colored points identify the same selected descriptor leaders. '
+            'Gray points are other or pending '
             'designs. SA is an annotation, not a measured synthesis outcome or ranking '
             'objective. The model caps do not contain polymerizable vinyl groups.\n\n'
             '**New candidate shifts.** One matched contrast per core with the largest '
@@ -284,6 +297,11 @@ def main(argv=None):
             'bookkeeping. Both potentials are differences of exact local-model '
             'calculations under the same protocol. A favorable shift does not '
             'establish polymer synthesis, stability, loading or cycling performance.\n\n'
+            '**Molecular structures.** Row a depicts the three numbered capped-model leaders; '
+            'row b depicts the proposed vinyl-monomer pilot, whose quantum properties '
+            'are uncomputed. Orange bonds mark attachment to the redox center, while '
+            'blue shading marks the polymerizable vinyl group. Structures are drawn '
+            'directly from the recorded molecular graphs.\n\n'
             '**All-candidate ladders (supplementary comparison).** Circles and squares '
             'show first and second declared potential events. Lines connect endpoints '
             'for the same structure and do not represent measured reaction paths. '
@@ -321,7 +339,7 @@ def main(argv=None):
             interactive_plotly=interactive, structure_views=len(rows),
             producer_sha256=producer_sha256,
             publication_style=dict(width_inches=7.2,main_PNG_dpi=600,vector_formats=['pdf','svg'],
-                embedded_TrueType_fonts=True,grayscale_redundancy='family marker shapes and pending hatching',
+                embedded_TrueType_fonts=True,grayscale_redundancy='numbered leader markers; pending hatching in coverage',
                 supplementary_rows_per_PDF_page=18),
             exact_graft_experimental_accuracy_validated=False,
             files={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in stage.iterdir()})

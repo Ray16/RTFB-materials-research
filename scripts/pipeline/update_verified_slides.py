@@ -39,7 +39,7 @@ def comparison_collection_inputs(payload,root,source):
     if metadata['snapshot']!=payload['snapshot_path']:
         raise RuntimeError('Comparison figures require an update from the displayed candidate snapshot')
     inputs={str(manifest):digest(manifest)}
-    for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png'):
+    for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png','candidate_structures.png'):
         path=folder/name;expected=metadata['files'][name]
         if digest(path)!=expected:raise RuntimeError('Comparison figure differs from its checked collection: '+name)
         inputs[str(path)]=expected

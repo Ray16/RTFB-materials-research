@@ -28,7 +28,9 @@ with (FIGURES/'all_candidates.csv').open() as stream:
 check('CSV and browser cover identical IDs',{r['id'] for r in csv_rows}=={r['id'] for r in records})
 for name,digest in manifest['files'].items():
     check('Output checksum '+name,hashlib.sha256((FIGURES/name).read_bytes()).hexdigest()==digest)
-for name in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts','coverage'):
+for name,digest in manifest['producer_sha256'].items():
+    check('Unchanged figure producer/input '+name,hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest)
+for name in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts','coverage','candidate_structures'):
     image=Image.open(FIGURES/f'{name}.png')
     check(name+' PNG has 600-dpi metadata',min(image.info['dpi'])>599)
     document=PdfReader(FIGURES/f'{name}.pdf')
@@ -36,6 +38,14 @@ for name in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts','cover
     check(name+' PDF retains vector graphics',not list(document.pages[0].images))
 check('Supplementary PDF paginates every candidate',len(PdfReader(FIGURES/'redox_ladders.pdf').pages)==(len(records)+17)//18)
 highlights=json.loads((FIGURES/'highlights.json').read_text())
+plate=json.loads((FIGURES/'candidate_structures.json').read_text())
+proposal=json.loads((ROOT/'results/discovery/vinyl_monomers/proposals.json').read_text())
+model_source={r['id']:r['exact_grafted_smiles'] for r in records}
+vinyl_source={r['id']:r['smiles'] for r in proposal['records']}
+check('The molecular plate has three models and three vinyl proposals',len(plate['structures'])==6)
+for cell in plate['structures']:
+    source=model_source if cell['scope']=='computed_capped_local_model' else vinyl_source
+    check('Structure plate exact graph '+cell['id'],cell['smiles']==source[cell['id']])
 lookup={r['id']:r for r in records}
 eligible=[lookup[gid] for gid in highlights['eligible_ids']]
 front=set(highlights['partial_front_ids'])
@@ -56,7 +66,10 @@ with sync_playwright() as playwright:
     page.locator('#search').fill('hyp_cata_ndi_ethyl')
     check('Search finds the exact candidate',page.locator('#body tr').count()==1)
     page.locator('#body input').check()
-    check('Structure comparison renders an SVG',page.locator('#cards .card svg').count()==1)
+    check('Structure comparison renders an SVG',page.locator('#cards .card svg:visible').count()==1)
+    page.locator('#cards summary').filter(has_text='Proposed vinyl monomer').click()
+    check('Vinyl structure can be inspected separately',page.locator('#cards .card svg:visible').count()==2)
+    page.locator('#cards summary').filter(has_text='Proposed vinyl monomer').click()
     page.locator('#search').fill('')
     page.locator('#cohort').select_option('Additional')
     check('Additional cohort filter retains all new candidates',page.locator('#body tr').count()==manifest['additional'])
@@ -76,10 +89,10 @@ with sync_playwright() as playwright:
         plotted=page.evaluate("document.getElementById('redox-chart').data.map(t=>({axis:t.xaxis||'x',ids:t.customdata.map(r=>r[1]),x:t.x,y:t.y}))")
         for axis,key in [('x','E1_vs_Fc_V'),('x2','E2_vs_Fc_V')]:
             values={gid:(x,y) for t in plotted if t['axis']==axis for gid,x,y in zip(t['ids'],t['x'],t['y'])}
-            expected={r['id']:(r[key],r['capacity_nominal_mAh_g']) for r in records if r[key] is not None}
+            expected={r['id']:(r[key],r['capacity_nominal_mAh_g']) for r in records if r['id'] in highlights['eligible_ids']}
             check('Every plotted endpoint matches the audited table '+key,values==expected)
         page.locator('#redox-chart .scatterlayer .point').first.click(force=True)
-        check('Clicking a plot point opens the corresponding structure',page.locator('#cards .card svg').count()==1)
+        check('Clicking a plot point opens the corresponding structure',page.locator('#cards .card svg:visible').count()==1)
         page.locator('#clear').click()
     page.evaluate('window.scrollTo(0,0)')
     page.screenshot(path=str(OUT/'desktop.png'),full_page=False)

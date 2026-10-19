@@ -2,13 +2,15 @@
 
 Audited snapshot: 2026-10-19T12:22:05.478576-05:00. 75 registered exact grafts, 60 with admitted potential calculations.
 
-**Potential–capacity map.** First (a) and second (b) declared redox-event potentials versus Fc/Fc+ in MeCN and nominal gravimetric capacity of the p-methylbenzyl-capped local graft model. Each point is a candidate; colors and shapes identify families. Open symbols mark model-selection holds on qualified capacity. Nominal capacity follows the declared electron count and molecular mass, excluding counterions, electrolyte, solvent and polymer. Missing potential endpoints are omitted, not set to zero. Anolyte and catholyte roles must be assessed separately; no overall ranking or cell voltage follows.
+**Potential–capacity map.** First (a) and second (b) declared redox-event potentials versus Fc/Fc+ in MeCN and nominal gravimetric capacity of the p-methylbenzyl-capped local graft model. Only eligible two-electron anolytes are shown; gray context points are subdued and three numbered leaders are colored. Nominal capacity follows the declared electron count and molecular mass, excluding counterions, electrolyte, solvent and polymer. Missing potential endpoints are omitted, not set to zero. Anolyte and catholyte roles must be assessed separately; no overall ranking or cell voltage follows.
 
-Stars highlight the two highest nominal capacities and most negative first reduction on the partial anolyte potential–capacity front. This exact descriptor front omits kinetics and candidate-specific uncertainty; it does not replace the qualified primary Pareto policy.
+Numbers identify the two highest nominal capacities and most negative first reduction on the partial anolyte potential–capacity front. This exact descriptor front omits kinetics and candidate-specific uncertainty; it does not replace the qualified primary Pareto policy.
 
-**Synthesis tradeoff.** Nominal molecular capacity versus heuristic SA. Colored points lie on the partial potential–capacity front; stars identify the same selected descriptor leaders. Gray points are other or pending designs. SA is an annotation, not a measured synthesis outcome or ranking objective. The model caps do not contain polymerizable vinyl groups.
+**Synthesis tradeoff.** Nominal molecular capacity versus heuristic SA. Numbered colored points identify the same selected descriptor leaders. Gray points are other or pending designs. SA is an annotation, not a measured synthesis outcome or ranking objective. The model caps do not contain polymerizable vinyl groups.
 
 **New candidate shifts.** One matched contrast per core with the largest potential decrease shared by both redox events, among source-current two-electron anolyte calculations passing the available window/integrity bookkeeping. Both potentials are differences of exact local-model calculations under the same protocol. A favorable shift does not establish polymer synthesis, stability, loading or cycling performance.
+
+**Molecular structures.** Row a depicts the three numbered capped-model leaders; row b depicts the proposed vinyl-monomer pilot, whose quantum properties are uncomputed. Orange bonds mark attachment to the redox center, while blue shading marks the polymerizable vinyl group. Structures are drawn directly from the recorded molecular graphs.
 
 **All-candidate ladders (supplementary comparison).** Circles and squares show first and second declared potential events. Lines connect endpoints for the same structure and do not represent measured reaction paths. Adjacent bars show nominal molecular capacity. Pending or excluded endpoints remain blank. The PDF uses readable supplementary pages; the PNG is an overview of the complete collection.
 

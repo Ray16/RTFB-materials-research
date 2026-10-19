@@ -49,3 +49,18 @@ def test_matched_control_must_be_admitted_and_both_events_lower():
     assert len(m.matched_highlights(payload,[candidate,control]))==1
     candidate['E2_vs_Fc_V']=-1.9
     assert not m.matched_highlights(payload,[candidate,control])
+
+
+def test_legend_collision_with_axis_text_blocks_figure_publication():
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    import pytest
+    m=module();fig,ax=plt.subplots();ax.set_xlabel('Potential (V)')
+    line,=ax.plot([0,1],[0,1],label='Candidate')
+    fig.canvas.draw();box=ax.xaxis.label.get_window_extent(fig.canvas.get_renderer())
+    center=((box.x0+box.x1)/(2*fig.bbox.width),(box.y0+box.y1)/(2*fig.bbox.height))
+    legend=fig.legend(handles=[line],loc='center',bbox_to_anchor=center)
+    with pytest.raises(ValueError,match='Legend overlaps axis text'):
+        m.assert_clear_legend(fig,legend,[ax])
+    plt.close(fig)

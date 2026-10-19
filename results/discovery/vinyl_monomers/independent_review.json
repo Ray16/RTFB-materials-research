@@ -1,0 +1,2463 @@
+{
+  "status": "checked_vinyl_graph_and_descriptor_preparation",
+  "proposals": 76,
+  "checks": 611,
+  "failed_checks": 0,
+  "source_record_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576/original39.csv": "4ebcae6748da1bd9f564ad0e9b7bf6a98050f66da5f3df86af79c9d3f5e5776d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576/additional_candidates.csv": "c7f1fe3cb02ffe618e9072ccaec13630acd2eb14eadaecaf24ea995ea7a40506",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576/comparison_controls.csv": "a3aa6a5d6ebf5befb659643358b88c0383666440ea16a29357db4f48d2f1dd3b"
+  },
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_vinyl_monomers.py": "22b2ba02d2a0c447999674e6b5d290f5e395dbc830784d39d6df9b8b4e9823cb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/manifest.csv": "0a05e84ca02c0cb3b419a52669b087ef27ea57b09ecff42125d160cfe5ef46fe"
+  },
+  "quantum_properties_verified": false,
+  "polymerization_verified": false,
+  "details": [
+    {
+      "check": "All source designs and the comparison control covered exactly once",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_ethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_methoxyethoxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_pmdi_isopropyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_ethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_methoxyethoxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_design_ndi_isopropyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05ujsa synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05lcla synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05mnmt synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05txcn synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_05czhi synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80xwvs synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80mdpm synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80necn synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80nopt synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80levd synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80prff synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gkvh synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80gxwg synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80eeoz synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_d3_80tbwr synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_n_butyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_trioxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_n_butyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_trioxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_r synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_pmdi_pent2_s synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_1oxy synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_aq_2oxy_6methoxy synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_methoxy synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_bq_oxy_trimethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_viologen_methoxyethoxyethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_phthalimide_control synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_naphthalimide_control synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ptz_37dimethoxy synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_exp_ndi_hexyl_pentyloxy synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_cyclopropyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_pmdi_2fluoroethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_cyclopropyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ndi_2fluoroethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37dimethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_ptz_37difluoro synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_991d299c38be synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1c2d9d5208a4 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e46c2caea23e synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_6ddf8e94b88f synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_0fe159524740 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_e5caac5870e1 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_1864c2c74267 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_87840c94153a synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_dd8125d2de65 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_d2ac23774405 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da4d3784d1e2 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_da0ff84e889c synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_1ad45438b9e4 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_viologen_e1199c9f4288 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6e49edb06a78 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_pmdi_6c8c35f7efd1 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_9b5f09730b83 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_search_ndi_573f69a7895b synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_ndi_ethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_hyp_cata_adi_ethyl synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_0d7aa75989e9 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_45a6c406cdc7 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c285539322fa synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_4602f4a856c7 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_e2795f06393d synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_c88a8d5645d4 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_693080e8c287 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_9992bd3479e1 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_study_aryl_6f1ff24b8d40 synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen independent reaction restores source capped graph",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen one additional carbon and unchanged formal charge",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen monoisotopic mass increases by exactly C12",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen independent explicit-atom molecular mass",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen declared ladder preserved and not computed",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen independent nominal capacity",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen pending properties remain blank",
+      "passed": true
+    },
+    {
+      "check": "vm_ethylviologen synthetic and polymer validation remain false",
+      "passed": true
+    },
+    {
+      "check": "Unchanged producer/library /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_vinyl_monomers.py",
+      "passed": true
+    },
+    {
+      "check": "Unchanged producer/library /nfs/lambda_stor_01/homes/rzhu/0_redox/library/manifest.csv",
+      "passed": true
+    }
+  ]
+}

@@ -1,6 +1,25 @@
 """Descriptive tradeoff highlights; never replace the qualified primary Pareto policy."""
 import json
 import math
+import textwrap
+
+LEAD_COLORS=['#0072B2','#D55E00','#009E73']
+LEAD_NAMES={'exp_bq_oxy_methoxy':'Methoxy BQ','exp_bq_oxy_trimethyl':'Trimethyl BQ',
+            'exp_aq_1oxy':'1-O AQ'}
+
+
+def lead_name(gid,names):
+    return LEAD_NAMES.get(gid,textwrap.shorten(names[gid],width=20,placeholder='…'))
+
+
+def assert_clear_legend(fig,legend,axes):
+    """Fail publication if the legend collides with axis labels or panel titles."""
+    fig.canvas.draw();renderer=fig.canvas.get_renderer();box=legend.get_window_extent(renderer)
+    for ax in axes:
+        artists=[ax.xaxis.label,ax.yaxis.label,ax.title,*ax.get_xticklabels(),*ax.get_yticklabels()]
+        for artist in artists:
+            if artist.get_text() and box.overlaps(artist.get_window_extent(renderer)):
+                raise ValueError('Legend overlaps axis text: '+artist.get_text())
 
 
 def finite(value):
@@ -67,37 +86,40 @@ def matched_highlights(payload, admitted):
 def focused_figures(rows, report, matches, out, names, colors):
     import matplotlib.pyplot as plt
     by_id={r['id']:r for r in rows}
-    fig,ax=plt.subplots(figsize=(7.2,4.5))
+    from matplotlib.lines import Line2D
+    fig,ax=plt.subplots(figsize=(7.2,3.7))
     for row in rows:
         if not all(finite(row.get(k)) for k in ('SA_grafted','capacity_nominal_mAh_g')):continue
-        ax.scatter(row['SA_grafted'],row['capacity_nominal_mAh_g'],s=20,color='#bdc5cc',alpha=.6)
-    for gid in report['partial_front_ids']:
+        ax.scatter(row['SA_grafted'],row['capacity_nominal_mAh_g'],s=18,color='#c8cdd3',alpha=.65,edgecolors='none')
+    handles=[]
+    for i,gid in enumerate(report['highlighted_ids']):
         row=by_id[gid]
-        ax.scatter(row['SA_grafted'],row['capacity_nominal_mAh_g'],s=40,color=colors[row['family']],edgecolor='white',linewidth=.5)
-    for gid in report['highlighted_ids']:
-        row=by_id[gid]
-        ax.scatter(row['SA_grafted'],row['capacity_nominal_mAh_g'],s=100,marker='*',color='#111',zorder=5)
-        ax.annotate(names[gid],(row['SA_grafted'],row['capacity_nominal_mAh_g']),xytext=(7,7),textcoords='offset points',fontsize=7)
-    ax.set(xlabel='Synthetic accessibility score (lower is easier; heuristic)',ylabel='Nominal capacity (mAh g⁻¹)')
-    ax.grid(alpha=.15)
-    fig.subplots_adjust(left=.12,right=.97,top=.94,bottom=.2)
-    fig.text(.12,.06,'Colored: potential–capacity partial front. Stars: selected descriptor leaders.\nGray: other or pending designs. SA does not establish a polymer synthesis route.',fontsize=7)
+        ax.scatter(row['SA_grafted'],row['capacity_nominal_mAh_g'],s=105,color=LEAD_COLORS[i],zorder=5)
+        ax.text(row['SA_grafted'],row['capacity_nominal_mAh_g'],str(i+1),ha='center',va='center',fontsize=7,color='white',zorder=6)
+        handles.append(Line2D([],[],color=LEAD_COLORS[i],marker='o',linestyle='',label=f'{i+1}  '+lead_name(gid,names)))
+    ax.set(xlabel='Synthetic accessibility score',ylabel='Nominal capacity (mAh g⁻¹)')
+    ax.grid(axis='y',alpha=.15)
+    fig.subplots_adjust(left=.12,right=.97,top=.81,bottom=.2)
+    legend=fig.legend(handles=handles,loc='upper center',bbox_to_anchor=(.55,.99),ncol=3,frameon=False,fontsize=8)
+    assert_clear_legend(fig,legend,[ax])
+    fig.text(.12,.025,'Gray: other designs. Lower SA is a heuristic, not evidence of a polymer synthesis route.',fontsize=6.5)
     for suffix in ('pdf','svg','png'):fig.savefig(out/f'synthesis_tradeoff.{suffix}',dpi=600)
     plt.close(fig)
 
-    fig,ax=plt.subplots(figsize=(7.2,3.8))
+    fig,ax=plt.subplots(figsize=(7.2,2.9))
     labels=[]
     for i,match in enumerate(matches):
         ax.scatter(match['delta_E1_V'],i+.1,color='#0072B2',marker='o',s=40,label='First event' if i==0 else None)
         ax.scatter(match['delta_E2_V'],i-.1,color='#D55E00',marker='s',s=40,label='Second event' if i==0 else None)
-        label=names.get(match['id'],match['id'])+'\n− '+names.get(match['baseline'],match['baseline'])
+        label={'hyp_cata_ndi_ethyl':'Cata-NDI vs NDI','search_pmdi_87840c94153a':'PMDI ether vs PMDI',
+               'search_viologen_1ad45438b9e4':'OMe viologen vs ethyl'}.get(match['id'],names.get(match['id'],match['id']))
         labels.append(label)
     ax.set_yticks(range(len(labels)),labels,fontsize=8)
     ax.axvline(0,color='#777',linewidth=.8);ax.grid(axis='x',alpha=.15)
     ax.set_xlabel('Potential shift from matched control (V)')
-    if matches:ax.legend(frameon=False,fontsize=8,loc='best')
-    else:ax.text(.5,.5,'No eligible matched shifts',ha='center',transform=ax.transAxes)
-    fig.subplots_adjust(left=.42,right=.97,top=.95,bottom=.27)
-    fig.text(.08,.05,'One contrast per core with the strongest decrease shared by both events.\nComputed local graft models; a potential shift does not prove polymer performance.',fontsize=7)
+    legend=ax.legend(frameon=False,fontsize=8,loc='upper center',bbox_to_anchor=(.5,1.24),ncol=2) if matches else None
+    if not matches:ax.text(.5,.5,'No eligible matched shifts',ha='center',transform=ax.transAxes)
+    fig.subplots_adjust(left=.29,right=.97,top=.78,bottom=.24)
+    if legend:assert_clear_legend(fig,legend,[ax])
     for suffix in ('pdf','svg','png'):fig.savefig(out/f'new_candidate_shifts.{suffix}',dpi=600)
     plt.close(fig)
