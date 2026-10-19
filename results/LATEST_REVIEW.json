@@ -74,7 +74,8 @@
       "review": "results/validation/hexyl_finer_derivatives_2026-10-19/terminal_review.json",
       "status": "both_branches_terminal_failed_not_admitted",
       "running_workers": 0,
-      "primary_pair_pending": true
+      "primary_pair_pending": true,
+      "host_CDS_localization": "results/validation/hexyl_finer_derivatives_2026-10-19/cpu_cds_diagnosis/residual_attribution.json"
     },
     "experimental_expansion": {
       "review": "results/reviews/2026-10-19/ptz_benchmark_sources/source_review.json",
@@ -85,6 +86,11 @@
       "parent_panel": "results/validation/phenothiazine_parent_panel_2026-10-19/plan.json",
       "actual_GPU_start_proof": "results/validation/phenothiazine_parent_panel_2026-10-19/start_verification.json",
       "GPU_workers_started": 12,
+      "states_independently_reviewed": 3,
+      "partial_state_checks": 42,
+      "partial_state_failed_checks": 0,
+      "spin_and_complete_couple_checks_pending": true,
+      "partial_state_review": "results/validation/phenothiazine_parent_panel_2026-10-19/partial_review_current.json",
       "strict_source_conflicted_parent_not_scheduled": true
     },
     "source_frozen_refinement": {
@@ -117,6 +123,7 @@
       "pdf_sha256": "c7dbe28702f12c2bcf9e931c66f34c4b381b7319efc2cffec65f21e3d3553b18",
       "pages": 40
     },
+    "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "software_tests_passed": 456,
     "software_checks": "results/reviews/2026-10-19/software_checks_ptz_sources.log",
     "remaining_work": [
@@ -126,7 +133,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792397653.456826,
+  "updated": 1792398410.6431706,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

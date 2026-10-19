@@ -29,3 +29,10 @@ a value into the benchmark. The next step is independent physical/provenance and
 energy-difference review, followed by a fresh table/benchmark assessment against
 the matched Fc reference. No parent measurement is assigned to a grafted candidate.
 No new accuracy result has been claimed at launch.
+
+`review_completed.py` writes immutable partial reviews under `reviews/` and a
+`partial_review_current.json` pointer. It checks completed output hashes and uses
+the independent surface/partition reader to reconstruct each finished state's
+free energy. This is a read-only record review, not a repeat quantum calculation.
+Relevant alternative spin surfaces, adjacent-state completion and graph integrity
+remain separate gates before strict experimental scoring.

@@ -1,5 +1,5 @@
 {
-  "status": "computing",
+  "status": "state_records_verified",
   "task": {
     "key": "bm_n_ethyl_3_7_dimethoxyphenothiazine__neu",
     "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
@@ -36,20 +36,40 @@
   "started": 1792397549.5203645,
   "experimental_accuracy_validated": false,
   "primary_table_promotion": false,
-  "stage": "dft",
+  "stage": "native_thermal",
   "argv": [
     "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
     "-u",
     "-m",
-    "redox.qm.dft",
+    "redox.qm.sp",
     "--only",
     "bm_n_ethyl_3_7_dimethoxyphenothiazine:neu",
     "--backend",
-    "gpu",
-    "--nthreads",
-    "2",
-    "--nconf",
-    "3",
-    "--no-freq"
-  ]
+    "gpu"
+  ],
+  "readiness": [
+    {
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "state": "neu",
+      "charge": "0",
+      "status": "ready",
+      "issues": ""
+    }
+  ],
+  "thermal_eV": 6.903941613982527,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/opt.xyz": "a7215c410fe9b90923f4aac69a9a02ce98d99b3c02d7e4b8017d43c131f99d16",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/result.json": "8b89999e03505fe2198b122b6f89b30394075fb653ee8cea700d29633b2cb982",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/thermal_policy.json": "584404ca9c19a4e34508ff277bc0ffc12c7f599610be7ce549a9884c0b2b5769",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/sp/3d0c1daad76ffd07.json": "2a62126b26a1b377177ea3a9010c3f82721f8e7bf7a45f8d38fc21376d17dbba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/native_thermal/f0eea22ecdd6d5d1.json": "8a5047305f4486f78d173904497cac62185bce4229647d1d1dbf800c2d811cf8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/native_thermal/f0eea22ecdd6d5d1/hessian_cartesian.npy": "ed33c6f6155eb57fbad56eb7ce5eb8b5820a9fe28680484083b9d8443a5bfc39",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/native_thermal/f0eea22ecdd6d5d1/hessian_diagnostics.json": "00cd0a0aa38f44a5e76526ead66be6fedfc139d7daa38418f9c6cc27e7ca0fe6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/native_thermal/f0eea22ecdd6d5d1/mol.xyz": "a7215c410fe9b90923f4aac69a9a02ce98d99b3c02d7e4b8017d43c131f99d16",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/projected_thermal/ff71582a01c574a3.json": "b5d61c5b042c56a95587d9a9fca2dc04fbde4d555bbd863f777604ce646a5f54",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/projected_thermal/ff71582a01c574a3/owner.json": "6473df7d5011450c6d653ba07740740219082c5de47acd2ac4d09c8c10a2cc03",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/projected_thermal/ff71582a01c574a3/projected_hessian.npy": "fc6e46f513f0c0f4f0fead1e375638eb79fd6a51369b07f7cc9ae1785ffdd663",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/projected_thermal/ff71582a01c574a3/mol.xyz": "a7215c410fe9b90923f4aac69a9a02ce98d99b3c02d7e4b8017d43c131f99d16"
+  },
+  "finished": 1792398278.0488002
 }
