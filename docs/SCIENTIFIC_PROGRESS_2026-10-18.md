@@ -6,7 +6,7 @@ Use [LATEST_REVIEW.json](../results/LATEST_REVIEW.json) for current artifact pat
 and the [candidate workbook](../results/candidates/latest.xlsx) for exact grafts.
 **24 of 27 additional candidates have checked native potential pairs**, and 34
 original proposals have admitted native potentials. The last candidate export
-passes 576 arithmetic checks with zero discrepancies. Each snapshot has its own
+passes 577 arithmetic checks with zero discrepancies. Each snapshot has its own
 input identities; new reference-parent work is kept separate from graft results.
 
 The full software suite passes **540 tests**. The last full table snapshot passes
@@ -67,6 +67,23 @@ on six H100 NVL devices, with disjoint CPU pairs and unchanged scientific gates.
 Their solution quantities remain blank. The cata-NDI dianion requires a separate
 DFT spin comparison. The earlier full table review is an immutable pre-registration
 snapshot; the updated 27-design candidate feed passes 576 checks with stable inputs.
+
+Two [fresh gas-reference replays](../results/validation/acene_solver_replay_2026-10-19/README.md)
+pass 40 independent checks. Tetracene/pentacene four-point hole values are
+0.1114/0.0932 eV, within 0.0001 eV of the saved legacy values at their recorded
+precision. These are method-matched computational controls, not experimental
+solution rates; no other legacy record is retroactively certified.
+
+The first cata-NDI neutral passes 195 independent record checks. The cata-ADI
+neutral's default CDS step failed Hessian symmetry; a host-only component analysis
+localizes the asymmetry and a full finer-step replay passes the original gates.
+Its independent review passes 223 checks. The qualified unchanged-geometry cache
+is prepared, with admission waiting for the active molecule writers. The
+cata-NDI dianion's source-bound spin comparison has finished. Its prepared
+two-spin equilibrium (0.4041% triplet) passes 38 independent checks and awaits
+selection after the remaining molecule writer finishes. Both
+[campaigns](../results/validation/cata_cds_diagnosis_2026-10-19/README.md) preserve
+original failures and keep pending corrections separate from primary results.
 
 ## Earlier dated checkpoints
 

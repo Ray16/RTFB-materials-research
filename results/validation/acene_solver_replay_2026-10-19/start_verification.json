@@ -1,0 +1,70 @@
+{
+  "status": "two_actual_reference_starts_verified",
+  "actual_starts": 2,
+  "complete_state_records": 0,
+  "records": [
+    {
+      "key": "tetracene",
+      "gpu": 0,
+      "controller_pid": 3975675,
+      "status": "computing",
+      "stage": null,
+      "pid": 3978382,
+      "error": null,
+      "actual_predictors": [
+        {
+          "pid": 3978382,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/acene_solver_replay_2026-10-19/worker.py",
+            "--task",
+            "0"
+          ],
+          "resident": {
+            "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+            "used_memory_MiB": "1432"
+          },
+          "CPU_affinity": [
+            0,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "key": "pentacene",
+      "gpu": 6,
+      "controller_pid": 3975681,
+      "status": "computing",
+      "stage": null,
+      "pid": 3977395,
+      "error": null,
+      "actual_predictors": [
+        {
+          "pid": 3977395,
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/acene_solver_replay_2026-10-19/worker.py",
+            "--task",
+            "1"
+          ],
+          "resident": {
+            "uuid": "GPU-8defa300-1c9b-2d37-01ea-122e6fda2a88",
+            "used_memory_MiB": "6674"
+          },
+          "CPU_affinity": [
+            12,
+            13
+          ]
+        }
+      ]
+    }
+  ],
+  "host": "lambda13",
+  "load_1m": 8.5107421875,
+  "online_CPUs": 384,
+  "verified": 1792411458.732231,
+  "physical_admission_is_separate": true
+}

@@ -1,0 +1,214 @@
+{
+  "status": "two_actual_reference_replays_independently_checked",
+  "cases": [
+    {
+      "id": "tetracene",
+      "fresh_lambda_eV": 0.1114,
+      "fresh_unrounded_lambda_eV": 0.11142774582773987,
+      "legacy_serialized_lambda_eV": 0.1114,
+      "change_at_saved_precision_eV": 0.0,
+      "curated_computational_literature_eV": 0.114,
+      "difference_from_computational_literature_eV": -0.002600000000000005,
+      "literature_is_experimental": false,
+      "legacy_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reorg_anchors/inner_acene/calc/tetracene.json",
+      "fresh_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/acene_solver_replay_2026-10-19/calc/tetracene.json",
+      "fresh_record_sha256": "b69add61d85b3b6d0e06a9593e911280fbf06d87d62adae5d46d5768b9e5c538",
+      "true_minimum_Hessian_checked": false,
+      "preferred_spin_beyond_stated_model_verified": false
+    },
+    {
+      "id": "pentacene",
+      "fresh_lambda_eV": 0.0932,
+      "fresh_unrounded_lambda_eV": 0.09315295843063164,
+      "legacy_serialized_lambda_eV": 0.0931,
+      "change_at_saved_precision_eV": 0.00010000000000000286,
+      "curated_computational_literature_eV": 0.095,
+      "difference_from_computational_literature_eV": -0.001799999999999996,
+      "literature_is_experimental": false,
+      "legacy_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reorg_anchors/inner_acene/calc/pentacene.json",
+      "fresh_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/acene_solver_replay_2026-10-19/calc/pentacene.json",
+      "fresh_record_sha256": "1d33c4a5ed8296555f04e66be34345ab4e57c954ccace381bdd573264c9c3a22",
+      "true_minimum_Hessian_checked": false,
+      "preferred_spin_beyond_stated_model_verified": false
+    }
+  ],
+  "checks": 40,
+  "failed_checks": 0,
+  "details": [
+    {
+      "check": "producer /nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/acene_solver_replay_2026-10-19/worker.py",
+      "passed": true
+    },
+    {
+      "check": "producer /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/reorg_literature/validate_reorg_worker_inner_acene.py",
+      "passed": true
+    },
+    {
+      "check": "producer /nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/gas_reference.py",
+      "passed": true
+    },
+    {
+      "check": "producer /nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/io.py",
+      "passed": true
+    },
+    {
+      "check": "producer /nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py",
+      "passed": true
+    },
+    {
+      "check": "tetracene original bytes /nfs/lambda_stor_01/homes/rzhu/0_redox/results/reorg_anchors/oligoacene_inner.csv",
+      "passed": true
+    },
+    {
+      "check": "tetracene original bytes /nfs/lambda_stor_01/homes/rzhu/0_redox/results/reorg_anchors/inner_acene/calc/tetracene.json",
+      "passed": true
+    },
+    {
+      "check": "tetracene completed solver execution",
+      "passed": true
+    },
+    {
+      "check": "tetracene result hash",
+      "passed": true
+    },
+    {
+      "check": "tetracene finite four-point energies",
+      "passed": true
+    },
+    {
+      "check": "tetracene explicit convergence/full-response contract",
+      "passed": true
+    },
+    {
+      "check": "tetracene exact method and material",
+      "passed": true
+    },
+    {
+      "check": "tetracene unrounded energy identity",
+      "passed": true
+    },
+    {
+      "check": "tetracene serialized total",
+      "passed": true
+    },
+    {
+      "check": "tetracene serialized charged relaxation",
+      "passed": true
+    },
+    {
+      "check": "tetracene serialized neutral relaxation",
+      "passed": true
+    },
+    {
+      "check": "tetracene nonnegative directional relaxations",
+      "passed": true
+    },
+    {
+      "check": "tetracene neutral_geometry_A composition",
+      "passed": true
+    },
+    {
+      "check": "tetracene neutral_geometry_A graph",
+      "passed": true
+    },
+    {
+      "check": "tetracene ion_geometry_A composition",
+      "passed": true
+    },
+    {
+      "check": "tetracene ion_geometry_A graph",
+      "passed": true
+    },
+    {
+      "check": "tetracene charge/spin convention",
+      "passed": true
+    },
+    {
+      "check": "pentacene original bytes /nfs/lambda_stor_01/homes/rzhu/0_redox/results/reorg_anchors/oligoacene_inner.csv",
+      "passed": true
+    },
+    {
+      "check": "pentacene original bytes /nfs/lambda_stor_01/homes/rzhu/0_redox/results/reorg_anchors/inner_acene/calc/pentacene.json",
+      "passed": true
+    },
+    {
+      "check": "pentacene completed solver execution",
+      "passed": true
+    },
+    {
+      "check": "pentacene result hash",
+      "passed": true
+    },
+    {
+      "check": "pentacene finite four-point energies",
+      "passed": true
+    },
+    {
+      "check": "pentacene explicit convergence/full-response contract",
+      "passed": true
+    },
+    {
+      "check": "pentacene exact method and material",
+      "passed": true
+    },
+    {
+      "check": "pentacene unrounded energy identity",
+      "passed": true
+    },
+    {
+      "check": "pentacene serialized total",
+      "passed": true
+    },
+    {
+      "check": "pentacene serialized charged relaxation",
+      "passed": true
+    },
+    {
+      "check": "pentacene serialized neutral relaxation",
+      "passed": true
+    },
+    {
+      "check": "pentacene nonnegative directional relaxations",
+      "passed": true
+    },
+    {
+      "check": "pentacene neutral_geometry_A composition",
+      "passed": true
+    },
+    {
+      "check": "pentacene neutral_geometry_A graph",
+      "passed": true
+    },
+    {
+      "check": "pentacene ion_geometry_A composition",
+      "passed": true
+    },
+    {
+      "check": "pentacene ion_geometry_A graph",
+      "passed": true
+    },
+    {
+      "check": "pentacene charge/spin convention",
+      "passed": true
+    },
+    {
+      "check": "actual process termination",
+      "passed": true
+    }
+  ],
+  "actual_quantum_recomputed_cases": 2,
+  "legacy_records_modified": false,
+  "other_legacy_records_not_retroactively_certified": true,
+  "production_promotion": false,
+  "experimental_solution_kinetics_validated": false,
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 11.08251953125,
+    "available_RAM_bytes": 495417597952,
+    "minimum_RAM_GiB": 8
+  },
+  "CPU_affinity": [
+    4
+  ],
+  "reviewed": 1792411657.072195
+}

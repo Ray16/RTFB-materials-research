@@ -1,0 +1,14 @@
+/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py:154: UserWarning: using cupy as the tensor contraction engine.
+  warnings.warn(f'using {contract_engine} as the tensor contraction engine.')
+/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py:154: UserWarning: using cupy as the tensor contraction engine.
+  warnings.warn(f'using {contract_engine} as the tensor contraction engine.')
+Traceback (most recent call last):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_solution_2026-10-19/worker.py", line 111, in <module>
+    main()
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_solution_2026-10-19/worker.py", line 90, in main
+    _, thermal = ensure_native_thermal(task['id'], task['state'])
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py", line 255, in ensure_native_thermal
+    if not np.isfinite(mat).all() or asym>1e-6:raise RuntimeError('Native Hessian symmetry/finite-value failure')
+                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Native Hessian symmetry/finite-value failure

@@ -44,3 +44,12 @@ The preceding goal turn made progress: it published model-limited candidate
 exports, curated four source graphs and completed six reserved UMA states,
 pushed in commits `144cf51` and `1f8cfaa`. This epoch advances the two prepared
 structures into the shared registry and the same solution protocol as prior cases.
+
+The first cata-NDI neutral passed [195 independent record checks](first_completed_review/summary.json).
+The original cata-ADI neutral failed Hessian symmetry; its [component diagnosis
+and reviewed private repair](../cata_cds_diagnosis_2026-10-19/README.md) remain
+separate from the original run. [Follow-up observations](followup_start_verification.json)
+track the finer derivative and alternate-spin workers. Startup counts now retain
+the [immutable first-start receipt](first_actual_starts.json), while current live
+predictors, completed records and terminal failures are counted separately.
+The local navigation review resolves all 176 checked document links in 20 files.

@@ -1,18 +1,18 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T06:51:30.588734-05:00",
+    "as_of_Chicago": "2026-10-19T07:22:29.627012-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_065130_588734",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_072229_627012",
       "additional_candidates": 27,
       "original39_with_native_potentials": 34,
       "complete_potential_pairs": 24,
-      "arithmetic_checks": 576,
+      "arithmetic_checks": 577,
       "arithmetic_discrepancies": 0,
       "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
       "inputs_current_during_collection": true
@@ -105,6 +105,14 @@
       "confident_two_electron_window_capacity": false,
       "no_fitted_correction": true
     },
+    "gas_reference_actual_replays": {
+      "review": "results/validation/acene_solver_replay_2026-10-19/review.json",
+      "actual_quantum_cases": 2,
+      "independent_checks": 40,
+      "failed_checks": 0,
+      "legacy_values_modified": false,
+      "experimental_solution_kinetics_validated": false
+    },
     "selected_spin_ensemble": {
       "policy": "calcs/dft/search_pmdi_1864c2c74267/red2/spin_ensemble_policy.json",
       "proof": "results/validation/spin_ensemble_integration_2026-10-19/README.md",
@@ -160,11 +168,11 @@
       "new_cata_cases_outside_review_scope": true
     },
     "slides": {
-      "status": "checked_registered_cata_pending_snapshot_pdf",
+      "status": "checked_first_native_state_candidate_snapshot_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/cata_pending_slides_final/slides_check.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_065130_588734",
-      "pdf_sha256": "206cd9fef145538fa5e6742a40714b2500adba16e0a5f06020521de8808dab3d",
+      "publisher": "results/reviews/2026-10-19/cata_first_native_slides/slides_check.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_072229_627012",
+      "pdf_sha256": "40bd7d8fc8033dd6b739e5bad73315639b77c2cd44e3fc46faef567127cef7cc",
       "pages": 43
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
@@ -177,11 +185,21 @@
       "actual_start_proof": "results/discovery/cata_core_expansion_2026-10-19/uma_start_verification.json",
       "UMA_completion": "results/discovery/cata_core_expansion_2026-10-19/uma_completion.json",
       "complete_gas_UMA_states": 6,
-      "DFT_alternate_spin_required": [
+      "DFT_alternate_spin_required": [],
+      "DFT_alternate_spin_completed": [
         "hyp_cata_ndi_ethyl:red2"
       ],
+      "spin_ensemble_review": "results/validation/cata_spin_2026-10-19/ensemble_review.json",
+      "spin_selection_status": "waiting_for_molecule_writers",
+      "derivative_cache_adoption_status": "waiting_for_molecule_writers",
+      "original_epoch_completed_states": 3,
+      "original_epoch_failed_states": 1,
       "shared_registration_complete": true,
       "solution_potentials_completed": 0,
+      "first_completed_native_review": "results/validation/cata_solution_2026-10-19/first_completed_review/summary.json",
+      "derivative_diagnosis": "results/validation/cata_cds_diagnosis_2026-10-19/README.md",
+      "prepared_derivative_repair": "results/validation/cata_cds_diagnosis_2026-10-19/admission/preparation.json",
+      "spin_comparison": "results/validation/cata_spin_2026-10-19/plan.json",
       "solution_plan": "results/validation/cata_solution_2026-10-19/plan.json",
       "solution_start_proof": "results/validation/cata_solution_2026-10-19/start_verification.json",
       "solution_outputs": "calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>"
@@ -197,7 +215,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792410951.8630345,
+  "updated": 1792414118.046846,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

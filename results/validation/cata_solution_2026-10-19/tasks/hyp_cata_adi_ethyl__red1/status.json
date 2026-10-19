@@ -1,0 +1,53 @@
+{
+  "status": "computing",
+  "task": {
+    "key": "hyp_cata_adi_ethyl__red1",
+    "id": "hyp_cata_adi_ethyl",
+    "state": "red1",
+    "manifest_row": {
+      "id": "hyp_cata_adi_ethyl",
+      "name": "N-(4-methylbenzyl)-N-ethyl 1,2,3,4-anthracene diimide",
+      "family": "imide (n-type)",
+      "state": "red1",
+      "charge": "-1",
+      "mult_hint": "2",
+      "n_e": "-1",
+      "n_conf": "8",
+      "solv_preopt": "1",
+      "smiles": "CCn1c(=O)c2c3cc4ccccc4cc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_00.xyz": "c765bdecd4fcbb6e778014e5abc75604dc3fc4127590c42313602620df86f9c2",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_01.xyz": "81bde599cd32c3ba2faabe040e2abd4aa33fcb7de230be23ce8890176a5168cc",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_02.xyz": "ac34d69085aa4479a026940d582ee30c8c0fdf4e3d6e181aa5dc892d1be714d8",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_03.xyz": "a9a29c0055a1d77d7f1b0ed42a464ca82d49a37db7d9534ba2e0c23c4f62c27b",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_04.xyz": "7288419432becea1b51b129509f2137c551fbd17348dc62842a9caf97fd4cabd",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_05.xyz": "351761619159b0ea85fb5064bd51bce8f93c8205df0ceae6d24b5cb134aa3d0c",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_06.xyz": "8520eae23288ae2e70e1a3695c18f18d4f37f6db1d38a092c0accf47de6eb1c3",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_adi_ethyl/conformers/conf_07.xyz": "493b19115e4655e02aaf06ff078933b095a6a1ef84b95710b3005a47586d96ea",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/hyp_cata_adi_ethyl/red1/relaxed.xyz": "def9bfeb53e7f06272c99d34cfef2c3a8a629131532d4620c630e67b93bf7d89",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/hyp_cata_adi_ethyl/red1/result.json": "4e778633a7d2281291001a2f7c3c15de6cefe6ddacf7a9252effaf78a897dd7d"
+    }
+  },
+  "host": "lambda13",
+  "pid": 3928935,
+  "process_start": "52797779",
+  "cpu_affinity": [
+    8,
+    9
+  ],
+  "started": 1792410663.6356683,
+  "experimental_accuracy_validated": false,
+  "primary_table_promotion": false,
+  "stage": "native_thermal",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.qm.sp",
+    "--only",
+    "hyp_cata_adi_ethyl:red1",
+    "--backend",
+    "gpu"
+  ]
+}

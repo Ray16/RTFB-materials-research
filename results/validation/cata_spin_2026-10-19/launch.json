@@ -1,0 +1,53 @@
+{
+  "status": "one_spin_controller_submitted",
+  "resources": {
+    "online_cpus": 384,
+    "load_1m": 6.31494140625,
+    "available_RAM_bytes": 1584115666944,
+    "minimum_RAM_GiB": 64
+  },
+  "workers": [
+    {
+      "task": 0,
+      "key": "hyp_cata_ndi_ethyl__red2",
+      "host": "lambda13",
+      "gpu": 3,
+      "device": {
+        "index": 3,
+        "uuid": "GPU-31e42837-2afb-0b14-c287-66eabb51d40e",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpu_affinity": [
+        6,
+        7
+      ],
+      "controller_pid": 4037215,
+      "process_start": "52973459",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "3",
+        "--cpus",
+        "6,7",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_spin_2026-10-19/reserved_0",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_spin_2026-10-19/worker.py",
+        "--parent",
+        "0"
+      ],
+      "submitted": 1792412395.1786664
+    }
+  ],
+  "source_plan": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_spin_2026-10-19/plan.json",
+  "actual_starts_require_verification": true
+}

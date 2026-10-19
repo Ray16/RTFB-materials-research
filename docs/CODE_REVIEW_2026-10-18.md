@@ -31,7 +31,7 @@ records its calculations and independent reviews. All 12 primary states and
 now contribute to the matched, unfitted benchmark.
 
 The last full table snapshot passes **31,850 arithmetic checks**, and the additional
-candidate export passes **576 checks**, with zero discrepancies. These are scoped
+candidate export passes **577 checks**, with zero discrepancies. These are scoped
 snapshots; new parent calculations require a fresh assessment after their QC.
 [Current evidence](../results/LATEST_REVIEW.json) identifies the exact receipts,
 24/27 admitted additional potential pairs, source catalog and checked slide deck.

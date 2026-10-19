@@ -6,6 +6,9 @@ from redox.core.io import atomic_write_json
 base=Path(__file__).resolve().parent;launch=json.loads((base/'launch.json').read_text())
 raw=subprocess.check_output(['nvidia-smi','--query-compute-apps=gpu_uuid,pid,used_memory','--format=csv,noheader,nounits'],text=True,timeout=20)
 residents={int(r[1]):dict(uuid=r[0],used_memory_MiB=r[2]) for r in csv.reader(raw.splitlines(),skipinitialspace=True) if len(r)==3}
+first_path=base/'first_actual_starts.json'
+first=json.loads(first_path.read_text()) if first_path.exists() else {'records':[]}
+prior={r['key']:r for r in first['records']}
 records=[];observed_cpus=[];observed_GPUs=[]
 for worker in launch['workers']:
  p=base/'tasks'/worker['key']/'status.json';entry=dict(key=worker['key'],gpu=worker['gpu'],controller_pid=worker['controller_pid'])
@@ -33,9 +36,11 @@ for worker in launch['workers']:
    if predictors:
     assert sum(v['uuid']==worker['device']['uuid'] for v in residents.values())==len(predictors)==1
     observed_cpus.extend(worker['cpu_affinity']);observed_GPUs.append(worker['gpu'])
+ old=prior.get(worker['key'],{})
+ entry['previous_actual_start_documented']=bool(old.get('actual_predictors') and old.get('pid')==entry.get('pid'))
  assert entry.get('status')!='controller_missing',entry
  records.append(entry)
 assert len(observed_cpus)==len(set(observed_cpus)) and len(observed_GPUs)==len(set(observed_GPUs))
-started=sum(bool(r.get('actual_predictors') or r.get('completed_records')) for r in records)
-report=dict(status='six_actual_solution_starts_verified' if started==6 else 'partial_solution_start_verification',actual_starts=started,complete_state_records=sum(bool(r.get('completed_records')) for r in records),records=records,host='lambda13',load_1m=os.getloadavg()[0],online_CPUs=os.cpu_count(),verified=time.time(),physical_admission_is_separate=True)
+started=sum(bool(r.get('actual_predictors') or r.get('completed_records') or r.get('previous_actual_start_documented')) for r in records)
+report=dict(status='observed_solution_epoch_progress' if started==6 else 'partial_solution_start_verification',actual_starts=started,active_predictors=sum(bool(r.get('actual_predictors')) for r in records),terminal_failed_cases=sum(r.get('status')=='failed_preserved' for r in records),first_start_receipt=str(first_path),complete_state_records=sum(bool(r.get('completed_records')) for r in records),records=records,host='lambda13',load_1m=os.getloadavg()[0],online_CPUs=os.cpu_count(),verified=time.time(),physical_admission_is_separate=True)
 atomic_write_json(base/'start_verification.json',report);print(json.dumps(report))

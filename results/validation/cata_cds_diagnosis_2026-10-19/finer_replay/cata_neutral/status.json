@@ -1,0 +1,147 @@
+{
+  "status": "isolated_target_verified",
+  "task": {
+    "key": "cata_neutral",
+    "id": "hyp_cata_adi_ethyl",
+    "state": "neu",
+    "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/frozen_cata",
+    "charge": 0,
+    "mult": 1,
+    "control": false,
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/frozen_cata/opt.xyz": "c30bf2fb17065d028dbf9dd18407f8204e1842ee9a425c97aca6487cd6ee8199",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/frozen_cata/result.json": "24bdc00097873fff51548a28291e20befa5ff49b0b9ab07f38f7fe818230a821"
+    }
+  },
+  "host": "lambda13",
+  "pid": 4024068,
+  "process_start": "52955569",
+  "cpu_affinity": [
+    0,
+    1
+  ],
+  "started": 1792412229.9364784,
+  "protocol": {
+    "schema": 1,
+    "model": "solution geometry-level DFT Hessian",
+    "xc": "r2scan",
+    "disp": "d4",
+    "basis": "def2-svp",
+    "anion_basis": "def2-svpd",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "grid_level": 3,
+    "cphf_grid_level": 3,
+    "grid_response": true,
+    "conv_tol": 1e-12,
+    "conv_tol_grad": 1e-08,
+    "temperature_K": 298.15,
+    "rotor_cutoff_cm": 50,
+    "spin_partition": "unsplit ground spin multiplet",
+    "gradient_max_acceptance_Ha_Bohr": 0.00045,
+    "min_frequency_acceptance_cm": -5,
+    "finite_difference_step_Bohr": 0.0005,
+    "finite_difference_relative_acceptance": 0.01,
+    "max_spin_contamination": 0.1,
+    "df_batch_cap_GiB": 6,
+    "validated_pyscf_version": "2.14.0",
+    "validated_gpu4pyscf_version": "1.8.1"
+  },
+  "cds_step_Bohr": 1e-06,
+  "production_admission": false,
+  "raw_inputs_modified": false,
+  "native_standard_gates_passed": true,
+  "maximum_asymmetry": 7.107758825952715e-12,
+  "minimum_frequency_cm": 14.529713523384409,
+  "derivative_checks": [
+    {
+      "atom_index": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_error": 3.492824425522824e-06
+    },
+    {
+      "atom_index": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_error": 3.473623783822651e-06
+    },
+    {
+      "atom_index": 12,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_error": 2.4291087727712954e-05
+    },
+    {
+      "atom_index": 12,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_error": 2.1847192830210905e-05
+    }
+  ],
+  "thermal_eV": 9.786087214095366,
+  "worst_contact_indices": [
+    58,
+    62
+  ],
+  "maximum_coarse_CDS_asymmetry": 5.961283427069648e-06,
+  "worst_contact_checks": [
+    {
+      "column": 58,
+      "step_Bohr": 0.0005,
+      "relative_error": 4.304327034866004e-05
+    },
+    {
+      "column": 58,
+      "step_Bohr": 0.001,
+      "relative_error": 4.7430974476567315e-05
+    },
+    {
+      "column": 62,
+      "step_Bohr": 0.0005,
+      "relative_error": 0.00013382389564525217
+    },
+    {
+      "column": 62,
+      "step_Bohr": 0.001,
+      "relative_error": 0.00013964470849666674
+    }
+  ],
+  "finished": 1792412586.189947,
+  "evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/producer_source.py": "ba25603c6a5ed89d6953708fb203b48128bd3827572098543e21bfdaca62f570",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/coarse_CDS_hessian.npy": "40efb710e739e6840e5a50834e44901b2abb2384db58c309acc81f7f9896abe0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_58_0.0005_-1.npy": "ce4c7913a1ce5b78879b4702c65aa8f56b8e0238f4e12f9b6b7ca6e5e24b96df",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_58_0.0005_1.npy": "c510803225c07b9a425f7ecc45b78c55c9c9bc553a7b27d3088ffb38d0fa97b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_58_0.001_-1.npy": "5f7037dd26b3dc7e8a2da1dcca1b2d4cb9d4e2386a968bab273093f202b0ddc6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_58_0.001_1.npy": "3587471e66cba861ba2b4a4069d218e4f6e3c57f6dc04b9ed67f0c611f5e2cf4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_62_0.0005_-1.npy": "04771067aafbb98b793a4961299755802d2174b1fef1654e4952130047644ae1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_62_0.0005_1.npy": "a90d5832a74f4c0683a81c1132e1c69fbbe2510292e47a3aafd88e54a567d01f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_62_0.001_-1.npy": "31d5b9785360fa126ea5e1760f4179e4a243c7d949a54bf6b3a97ee3c573428e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/gradient_62_0.001_1.npy": "636d742ef924e484f4dc735fd471ec216e1be5fda5d38252e6fda82db33925bd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/opt.xyz": "c30bf2fb17065d028dbf9dd18407f8204e1842ee9a425c97aca6487cd6ee8199",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/result.json": "24bdc00097873fff51548a28291e20befa5ff49b0b9ab07f38f7fe818230a821",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee.json": "03cf1bb94defd0667ccdb14aa09e9ff2ddd841f1df17f06ca877384d0a8d760d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/producer_source.py": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/hessian_cartesian.npy": "997cd1004290aea227fb175f9944cc52d1a4eee2162230a8bb5277fd2b6f84d3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/hessian_diagnostics.json": "5e96f04b2366c69a4b2cfc56c52c126bfe07e00ded7d27b9354be58d2a6286b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/hessian": "69826e9e39b4af37645428ebb16f570841793959f9127f8ac5f07ad0fd4af2f6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/mol.xyz": "c30bf2fb17065d028dbf9dd18407f8204e1842ee9a425c97aca6487cd6ee8199",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/thermo_25.log": "f8e81e349b7d92b7a298fb4d54c045a06c745d9577c1966762f366531bf63907",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/thermo_50.log": "34a9d25faba14408f04d48172c84fb3b46f66e484a025d6e5d3c082f922d291a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/native_thermal/2d245a663438d6ee/thermo_100.log": "227bd98910bc850a68e44e796b6db32e4b911176b5bb154978de173a790e13d9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7.json": "c49da18c3880b2b735551b751d2e4ed082ccd0d0e839d620772f36abd34753ff",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/owner.json": "3f744a317f5b79ea8337cce4a42422b0a5d9f0f7ea9928cf6d3460fb78b49e64",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/projected_hessian.npy": "18a4709d48ac4ce65551459831376ff60f1f05d8ec01da1f1d913a755fa666af",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/hessian": "4eef8645305d2ec5510dd75f0580902deb148b8d60423a1de163ab30cf6b2374",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/mol.xyz": "c30bf2fb17065d028dbf9dd18407f8204e1842ee9a425c97aca6487cd6ee8199",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/record_producer.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/thermo_CLI_25.log": "fd9d1ff60d81045bc6898115e6ff5a3f38020d7486cba9e751fd4e787a34f6ba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/thermo_CLI_50.log": "c9c2038d0607b84e3bd767075b9e1da1a33ef906bc7a8f9ba42b096e2e5bdae8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_cds_diagnosis_2026-10-19/finer_replay/cata_neutral/work/projected_thermal/5528f843f1f121b7/thermo_CLI_100.log": "2d5f68ea96db5445938c6956ff7a4b98d0a57991d830a51d15ce960f904aa8ff"
+  }
+}

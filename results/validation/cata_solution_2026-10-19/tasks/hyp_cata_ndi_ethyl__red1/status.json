@@ -1,0 +1,81 @@
+{
+  "status": "state_records_verified",
+  "task": {
+    "key": "hyp_cata_ndi_ethyl__red1",
+    "id": "hyp_cata_ndi_ethyl",
+    "state": "red1",
+    "manifest_row": {
+      "id": "hyp_cata_ndi_ethyl",
+      "name": "N-(4-methylbenzyl)-N-ethyl 1,2,3,4-naphthalene diimide",
+      "family": "imide (n-type)",
+      "state": "red1",
+      "charge": "-1",
+      "mult_hint": "2",
+      "n_e": "-1",
+      "n_conf": "10",
+      "solv_preopt": "1",
+      "smiles": "CCn1c(=O)c2c3ccccc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_00.xyz": "566464e251b386d4fe3b28c0bdbca2903dc1ab9816fadf0d2a87a4c14777e86e",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_01.xyz": "4f8264ce25107fca8ff7c1379b0aacecde27ca273162126cc2ee2c7282ff43a3",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_02.xyz": "49b771c2b424edffd698a16b5aa5c7395858c49a639561b98dde749ece02878c",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_03.xyz": "aee93ff5abbb6b182e369b1ed53aade4a83009efe7d76335f139231c4dd1c367",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_04.xyz": "4b8d8f26faa72b49f0a26c4ed3fbe5e62233ac96b46176ba2ed99dde7be45d5b",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_05.xyz": "0ee142c14d40555a9cb21d3574b6e9dfbe4aa6c9d7208e16313cd23a3ca117cd",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_06.xyz": "fb7654943b2751b2097721c56709254d96a333a817f16320121ddf26dd51826e",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_07.xyz": "7946d90d6b61336d885dc10e040ac5ba6192af9ad9e866fd51196229d6a0f676",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_08.xyz": "fc2252578e483ed60ea4942e1548aeb9a53a794e5504e6198b29d8bd5a1b9fa8",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/hyp_cata_ndi_ethyl/conformers/conf_09.xyz": "bb2d1ed4706598e88d323533ebd711e1d1cd54b478132a03d97d7bba95c8b748",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/hyp_cata_ndi_ethyl/red1/relaxed.xyz": "538c1cb771810126fdaa0b0f087f78728db01e6d657c65fdb24b26ac32245688",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/hyp_cata_ndi_ethyl/red1/result.json": "2131b62b6d6e77c29a8a036efeaea8af8f1e8c79a0ff00b7506e417231d6623f"
+    }
+  },
+  "host": "lambda13",
+  "pid": 3926797,
+  "process_start": "52794527",
+  "cpu_affinity": [
+    2,
+    3
+  ],
+  "started": 1792410619.1620603,
+  "experimental_accuracy_validated": false,
+  "primary_table_promotion": false,
+  "stage": "native_thermal",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.qm.sp",
+    "--only",
+    "hyp_cata_ndi_ethyl:red1",
+    "--backend",
+    "gpu"
+  ],
+  "readiness": [
+    {
+      "id": "hyp_cata_ndi_ethyl",
+      "state": "red1",
+      "charge": "-1",
+      "status": "ready",
+      "issues": ""
+    }
+  ],
+  "ground_spin_selection_complete": false,
+  "thermal_eV": 8.51531684138273,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/opt.xyz": "9ea19108ee6d69c6c468e51e3d916a776a244f66d1539895126c4a41d1bd9482",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/result.json": "971cc47edd9258b20d6b205b30bb1b11a034f978a6f2d9eca8d638747d1081a9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/thermal_policy.json": "725316e7040461af2ffee627759f40c59cbc5c5f8a3bc608115dae4f5aae6dd2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/sp/d6a9c509b3b2488c.json": "ea186e54056dcf19ae03535b51e2ef0406279bc967018bd5fa82b167ad5c5a02",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/native_thermal/536349e568baea4a.json": "6cc6962a2feaeb4f749b01f30c4c2edc791c459658a456548fd39a6ed26b7b45",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/native_thermal/536349e568baea4a/hessian_cartesian.npy": "7d3831d10585bb4df98e10cd66bca334ddc21eaa0ef62018cfc6a6f9b8c5b9fb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/native_thermal/536349e568baea4a/hessian_diagnostics.json": "f2c1335a251837b498600c748fe53c6bdb858c7409c64f87a1732667e572871a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/native_thermal/536349e568baea4a/mol.xyz": "9ea19108ee6d69c6c468e51e3d916a776a244f66d1539895126c4a41d1bd9482",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/projected_thermal/81e57faea4e0f206.json": "0ec973f70293255806ba11f458e4dd02f910521e2fcc1b3e284a176dbbc24fa6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/projected_thermal/81e57faea4e0f206/owner.json": "bff123a61e22535ca8c729880d23496701d63483335e0ccea758b5bd46daebf2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/projected_thermal/81e57faea4e0f206/projected_hessian.npy": "c3c08b841113c8f1108eaebf243653423198f0414a6eacf42adccc55dd68d64e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red1/projected_thermal/81e57faea4e0f206/mol.xyz": "9ea19108ee6d69c6c468e51e3d916a776a244f66d1539895126c4a41d1bd9482"
+  },
+  "finished": 1792414321.4236639
+}

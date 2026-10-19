@@ -1,0 +1,81 @@
+{
+  "id": "hyp_cata_ndi_ethyl",
+  "state": "red2",
+  "status": "spin_gap_verified",
+  "chosen_identity": {
+    "id": "hyp_cata_ndi_ethyl",
+    "state": "red2",
+    "charge": -2,
+    "mult": 1,
+    "geometry_sha256": "c8fbfb8a45bf72c821d17a1ca6257af03897a43c095aa69fa60fea53c76d5bb1",
+    "smiles_sha256": "f8d45cb997dca08f6ab44c1614efae15d831b9063737db0ae636f76b28e7c7b3",
+    "sp_record_sha256": "e582f6bb29baa48fdc5386693080c8cd69c5fc15347cc49ea9cf0186e5b7b68e",
+    "protocol": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200
+    }
+  },
+  "chosen_mult": 1,
+  "alternative_mult": 3,
+  "near_gap_threshold_eV": 0.2,
+  "helper": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/spincheck/hyp_cata_ndi_ethyl/red2_m3",
+  "created": 1792412433.598905,
+  "host": "lambda13",
+  "pid": 4038864,
+  "electronic_gap_eV": 0.15866387922869762,
+  "thermochemical_gap_validated": true,
+  "thermochemical_gap_eV": 0.14149501693464117,
+  "native_dependencies": {
+    "chosen": "65e5c452bfb6ed26c63761e62bf3d449c929f59f38ba603236e828fdfb0e9901",
+    "alternative": "0c1a4f8a75babdc977a98bef9caca3a30c9476a3fb49df361391869931c76038"
+  },
+  "ensemble_free_energy_eV": -36351.369300478735,
+  "ensemble_correction_from_electronic_selected_eV": -0.00010403208580100909,
+  "alternative_population": 0.00404092356966602,
+  "single_surface_kinetics_validated": true,
+  "ensemble_primary_integration_pending": true,
+  "native_partition_protocol": {
+    "schema": 1,
+    "model": "projected internal-mode xTB6.7.1 qRRHO",
+    "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+    "masses": "installed xTB NIST isotopic-average atomic masses",
+    "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+    "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+    "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+    "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+    "frequency_scale": 1.0,
+    "temperature_K": 298.15,
+    "rotor_cutoffs_cm": [
+      25,
+      50,
+      100
+    ],
+    "primary_rotor_cutoff_cm": 50,
+    "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+    "zero_internal_frequency_policy": "refuse; no artificial floor",
+    "symmetry": "xTB symmetry detection for the exact input geometry",
+    "pressure": "same translation convention as installed xTB thermodyn"
+  },
+  "native_partition_dependencies": {
+    "chosen": "d8c294cf77bda877f079f24af6dcc2b7bd396900371c1a5537c5688070d7f83d",
+    "alternative": "982a1fecd5e90450a76a643cbafe035ad931c8260a75d415980ec47e573d13e7"
+  },
+  "native_partition_evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red2/projected_thermal/f8a3a195e67c1a89.json": "d8c294cf77bda877f079f24af6dcc2b7bd396900371c1a5537c5688070d7f83d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/spincheck/hyp_cata_ndi_ethyl/red2_m3/projected_thermal/cf9348822774db98.json": "982a1fecd5e90450a76a643cbafe035ad931c8260a75d415980ec47e573d13e7"
+  },
+  "native_dependency_paths": {
+    "chosen": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red2/native_thermal/5d1090bbb2f3d5f2.json",
+    "alternative": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/spincheck/hyp_cata_ndi_ethyl/red2_m3/native_thermal/442d189eee1b0320.json"
+  },
+  "finished": 1792413470.446442,
+  "experimental_accuracy_validated": false
+}
