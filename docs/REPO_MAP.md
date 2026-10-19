@@ -80,6 +80,9 @@ for operating rules, [Development](DEVELOPMENT.md) for supported commands, and t
 - `readiness.py` — all manifest states, including missing geometry, protocol/spin,
   molecular identity and selected thermal admission.
 - `spins.py` — source-addressed spin comparisons and promotion evidence.
+- `spin_ensemble.py` — bound two-spin equilibrium policies, component revalidation
+  and transactional selection; kinetics remain a separate gate. The independent
+  counterpart is `scripts/validation/audit/spin_ensemble.py`.
 - `provenance.py` — referenced evidence file discovery.
 - `orop.py` — external benchmark aggregation with current active energies and
   matched molecular/Fc thermal definitions. Historical/mismatched rows cannot

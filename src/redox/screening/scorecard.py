@@ -150,6 +150,12 @@ def _min_spin_gap_eV(gid):
         if (chosen is None or alt.get("charge") != chosen.get("charge")
                 or alt.get('mult')==chosen.get('mult')):
             continue
+        from redox.validation.spin_ensemble import admitted_ensemble
+        mixed = admitted_ensemble(chosen, DFT/gid/st)
+        if mixed is not None and str(rj.parent.resolve()) == mixed['helper']:
+            gaps[st] = mixed['gap_eV']
+            srcs[st] = 'equilibrium_spin_ensemble'
+            continue
         identity, report = snapshot(gid, st), read_comparison(gid, st)
         reason, admitted = helper_spin_report_admission(report, alt, identity)
         if identity is None or not admitted:

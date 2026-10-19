@@ -87,6 +87,12 @@ def read_result(gid: str, state: str, root: Path = DFT, raw: bool = False) -> di
 
 
 def apply_thermal_policy(r: dict, state_dir: Path) -> dict:
+    """Apply qualified native thermochemistry and an explicitly selected spin ensemble."""
+    from redox.validation.spin_ensemble import apply_selected_ensemble
+    return apply_selected_ensemble(_apply_single_surface_thermal_policy(r, state_dir), state_dir)
+
+
+def _apply_single_surface_thermal_policy(r: dict, state_dir: Path) -> dict:
     """Overlay the explicitly selected thermal definition without a legacy fallback."""
     r = dict(r)
     gid, state = Path(state_dir).parent.name, Path(state_dir).name

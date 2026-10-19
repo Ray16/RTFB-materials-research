@@ -11,6 +11,23 @@ def module():
  m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
 
 
+def test_optional_state_QC_fields_survive_both_csv_and_workbook(tmp_path):
+ import csv
+ from openpyxl import load_workbook
+ coverage=module().coverage
+ rows=[dict(id='ordinary',G=-10.),dict(id='ensemble',G=-11.,single_surface_kinetics_validated=False)]
+ csv_path=tmp_path/'states.csv';xlsx=tmp_path/'states.xlsx'
+ coverage.write_csv(csv_path,rows)
+ with csv_path.open() as stream:records=list(csv.DictReader(stream))
+ assert records[0]['single_surface_kinetics_validated']==''
+ assert records[1]['single_surface_kinetics_validated']=='False'
+ assert coverage.workbook(xlsx,{'States':rows},{})==6
+ sheet=load_workbook(xlsx)['States']
+ assert sheet.cell(1,3).value=='single_surface_kinetics_validated'
+ assert sheet.cell(2,3).value is None
+ assert sheet.cell(3,3).value is False
+
+
 @pytest.mark.parametrize('metadata', [None, {}, {'status':'hold_native_thermal_properties'}])
 def test_thermal_method_review_withdraws_derived_properties_but_preserves_descriptors(tmp_path, metadata):
  import json

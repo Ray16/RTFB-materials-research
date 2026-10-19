@@ -299,6 +299,8 @@ def lambda_for_couple(gid, O, R):
         reasons.append("anion_diagnostics_missing")
     if max(relax_ox, relax_red) > 1.0:
         reasons.append("large_half>1eV")
+    if any(r.get('spin_ensemble_status') == 'applied' for r in (own_O,own_R)):
+        reasons.append('spin_ensemble_kinetics_unvalidated')
     flag = "+".join(reasons)
     return dict(id=gid, couple=f"{sO}->{sR}", q_ox=qO, q_red=qR,
                 lambda_i_eV=round(lam, 4), lambda_i_meV=round(lam * EV_MEV, 1),

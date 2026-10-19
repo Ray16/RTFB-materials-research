@@ -69,6 +69,7 @@ def decision_input_paths(gids):
  for gid in gids:
   paths.update((UMA/gid).glob('*/result.json'))
   paths.update((DFT/gid).glob('*/spin_validation/*.json'))
+  paths.update((DFT/gid).glob('*/spin_ensemble_policy.json'))
   for helper in (DFT.parent/'spincheck'/gid).glob('*_m*'):
    for pattern in ('result.json','opt.xyz','thermal_policy.json','sp/*.json','native_thermal/*.json',
                    'native_thermal/*/hessian_cartesian.npy','native_thermal/*/hessian_diagnostics.json'):
@@ -119,6 +120,8 @@ def independent_state(gid,st,q,key,audit):
   partition=audit.native_partition_inputs(sd,raw)
   if partition is None:return None,'corrected internal partition pending',inputs
   inputs.update(partition['evidence_sha256'])
+  ensemble=audit.spin_ensemble_inputs(sd,raw)
+  if ensemble is not None:inputs.update(ensemble['evidence_sha256'])
   total=energy['e_smd_eV']+correction
   return total,'independently admitted native free energy',inputs
  except (OSError,ValueError,KeyError,TypeError):
@@ -151,6 +154,13 @@ def state_spin_evidence(gid,state):
  """Only a completed current comparison can admit a DFT alternate spin."""
  uma=coverage.safe_json(UMA/gid/state/'result.json') or {}
  chosen=read_result(gid,state)
+ from redox.validation.spin_ensemble import admitted_ensemble
+ mixed=admitted_ensemble(chosen,DFT/gid/state)
+ if mixed is not None:
+  return dict(spin_confidence='DFT_native_equilibrium_ensemble',spin_gap_eV=mixed['gap_eV'],
+              spin_gap_source='two qualified native spin surfaces; equilibrium partition',
+              spin_evidence_path=chosen['spin_ensemble_policy_path'],spin_primary_admissible=True,
+              single_surface_kinetics_validated=False)
  alternatives=[];pending=None
  if chosen and finite(chosen.get('e_smd_eV')):
   from redox.qm.dft import _opt_protocol_mismatch

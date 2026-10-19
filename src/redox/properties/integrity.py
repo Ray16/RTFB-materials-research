@@ -20,13 +20,14 @@ never as a stability verdict.
 """
 from __future__ import annotations
 import csv
+from pathlib import Path
 
 import numpy as np
 
 from redox.core.common import DFT, RESULTS, state_names, group_ids
 from redox.core.common import read_result as _res
 
-EA_MIN = 0.0            # eV; anion must be gas-phase bound
+EA_MIN = 0.0            # eV; positive solution electronic attachment is necessary
 
 
 def kabsch_rmsd_heavy(xyz_a: Path, xyz_b: Path):
@@ -84,6 +85,32 @@ def _couples(gid):
             if qO - qR == 1]
 
 
+def ensemble_integrity(rO,rR,xO,xR,qR):
+    """Require every included spin surface to pass the necessary-condition screen."""
+    from redox.validation.spin_ensemble import admitted_ensemble,POLICY_NAME
+    metadata=dict(ensemble_integrity_qc='not_applicable',ensemble_component_pairs=None,
+                  ensemble_min_EA_solv_eV=None,ensemble_max_d_bonds=None)
+    if not any((x.parent/POLICY_NAME).exists() for x in (xO,xR)):return metadata
+    sides=[]
+    for record,xyz in ((rO,xO),(rR,xR)):
+        if (xyz.parent/POLICY_NAME).exists():
+            checked=admitted_ensemble(record,xyz.parent)
+            if checked is None:
+                return dict(metadata,ensemble_integrity_qc='incomplete')
+            sides.append([(Path(c['directory'])/'opt.xyz',c['electronic_eV']) for c in checked['components']])
+        else:
+            energy=record.get('e_smd_eV')
+            if energy is None:return dict(metadata,ensemble_integrity_qc='incomplete')
+            sides.append([(xyz,energy)])
+    pairs=[(eo-er,connectivity_change(xo,xr)) for xo,eo in sides[0] for xr,er in sides[1]]
+    if any(bonds is None for _,bonds in pairs):
+        return dict(metadata,ensemble_integrity_qc='incomplete',ensemble_component_pairs=len(pairs))
+    minimum=min(e for e,_ in pairs);maximum=max(b for _,b in pairs)
+    qc='unbound' if qR<0 and minimum<=EA_MIN else ('bond_change' if maximum>0 else 'ok')
+    return dict(ensemble_integrity_qc=qc,ensemble_component_pairs=len(pairs),
+                ensemble_min_EA_solv_eV=round(minimum,3),ensemble_max_d_bonds=maximum)
+
+
 def assess(gid):
     rows = []
     for (sO, qO), (sR, qR) in _couples(gid):
@@ -100,11 +127,14 @@ def assess(gid):
             unbound = (qR < 0) and (ea_solv <= EA_MIN)     # anion product unbound in solution
             changed = (dbonds is None) or (dbonds > 0)     # any bond change = dissociation/ring-open
             verdict = "unbound" if unbound else ("bond_change" if changed else "intact_bound")
+        ensemble=ensemble_integrity(rO,rR,xO,xR,qR)
+        if ensemble['ensemble_integrity_qc'] not in ('not_applicable','ok'):
+            verdict=ensemble['ensemble_integrity_qc']
         rows.append(dict(id=gid, couple=f"{sO}->{sR}", q_ox=qO, q_red=qR,
                          EA_solv_eV=(round(ea_solv, 3) if ea_solv is not None else None),
                          d_bonds=dbonds,
                          rmsd_heavy_A=(round(rmsd, 3) if rmsd is not None else None),
-                         intact_bound=(verdict == "intact_bound"), verdict=verdict))
+                         intact_bound=(verdict == "intact_bound"), verdict=verdict,**ensemble))
     return rows
 
 
@@ -130,7 +160,8 @@ def main():
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "state_integrity.csv"
     cols = ["id", "couple", "q_ox", "q_red", "EA_solv_eV", "d_bonds", "rmsd_heavy_A",
-            "intact_bound", "verdict"]
+            "intact_bound", "verdict", "ensemble_integrity_qc", "ensemble_component_pairs",
+            "ensemble_min_EA_solv_eV", "ensemble_max_d_bonds"]
     with out.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
     print(f"wrote {out}")

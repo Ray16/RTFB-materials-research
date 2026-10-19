@@ -373,12 +373,41 @@ def native_partition_inputs(sd,raw):
     return _PARTITION_AUDIT.read_partition(sd/'native_thermal'/(address+'.json'),sd/'opt.xyz')
 
 
-def thermal_inputs(sd,raw):
+def native_single_thermal_inputs(sd,raw):
     value,nimag,definition=_surface_thermal_inputs(sd,raw)
     if definition!='native_solution_dft_qrrho_spin' or value is None:
         return value,nimag,definition
     partition=native_partition_inputs(sd,raw)
     return (partition['g_thermal_total_eV'],0,definition) if partition is not None else (None,None,definition)
+
+
+_ENSEMBLE_AUDIT=None
+
+
+def spin_ensemble_inputs(sd,raw):
+    """Independently replay a selected equilibrium policy without primary spin helpers."""
+    path=Path(sd)/'spin_ensemble_policy.json'
+    if not path.is_file():return None
+    global _ENSEMBLE_AUDIT
+    try:
+        if _ENSEMBLE_AUDIT is None:
+            spec=importlib.util.spec_from_file_location('independent_spin_ensemble',Path(__file__).with_name('spin_ensemble.py'))
+            _ENSEMBLE_AUDIT=importlib.util.module_from_spec(spec);spec.loader.exec_module(_ENSEMBLE_AUDIT)
+        result=_ENSEMBLE_AUDIT.read_ensemble(sd,json.loads(path.read_text()),root=ROOT,manifest=MANIFEST,
+            native_protocol=NATIVE_THERMAL_CONTRACT,surface_reader=native_single_thermal_inputs,
+            partition_reader=native_partition_inputs,spin_decision=spin_decision_ok)
+        if result is not None:
+            result['evidence_sha256'][str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
+        return result
+    except (OSError,ValueError,KeyError,TypeError):return None
+
+
+def thermal_inputs(sd,raw):
+    value,nimag,definition=native_single_thermal_inputs(sd,raw)
+    if not (Path(sd)/'spin_ensemble_policy.json').exists():return value,nimag,definition
+    if value is None or definition!='native_solution_dft_qrrho_spin':return None,None,definition
+    ensemble=spin_ensemble_inputs(sd,raw)
+    return (ensemble['effective_thermal_eV'],0,definition) if ensemble is not None else (None,None,definition)
 
 
 def spin_decision_ok(gid, st, raw):
@@ -420,6 +449,7 @@ def state(gid, st):
     g_th, n_imag, thermal_definition = thermal_inputs(sd, rj)
     d = dict(id=gid, state=st, charge=q, mult=m, dir=sd, rj=rj, rec=rec, raw_rec=raw,
              g_th=g_th, n_imag=n_imag, thermal_definition=thermal_definition,
+             spin_ensemble=spin_ensemble_inputs(sd,rj),
              e_smd=(fnum(rec.get("e_smd_eV")) if rec else None),
              e_gas=(fnum(rec.get("e_gas_eV")) if rec else None),
              dG_solv=(fnum(rec.get("dG_solv_eV")) if rec else None))
@@ -890,6 +920,8 @@ def audit_reorg():
             if unb: why.append("anion_unbound")
             if any(h is None for h in homos): why.append("anion_diagnostics_missing")
             if max(lam_O, lam_R) > 1.0: why.append("large_half>1eV")
+            if O.get('spin_ensemble') is not None or R.get('spin_ensemble') is not None:
+                why.append('spin_ensemble_kinetics_unvalidated')
             flag = "+".join(why)
             MY_LAM[key] = dict(lam=lam, lam_O=lam_O, lam_R=lam_R, flag=flag, rmsd=rm)
             stale = "molecule inputs newer than table" if mtime_inputs(gid) > t_table else ""
@@ -921,6 +953,42 @@ def audit_reorg():
 MY_INTEG = {}
 
 
+def independent_bond_changes(first,second):
+    """Rebuild distance graphs with vectorized distances, independently of integrity.py."""
+    from ase.data import atomic_numbers,covalent_radii
+    symbols,a=read_xyz(first);other,b=read_xyz(second)
+    if symbols!=other or not np.isfinite(a).all() or not np.isfinite(b).all():return None
+    radius=np.asarray([covalent_radii[atomic_numbers[s]] for s in symbols])
+    cutoff=(1.25*(radius[:,None]+radius[None,:]))**2
+    def edges(coordinates):
+        squared=np.sum((coordinates[:,None,:]-coordinates[None,:,:])**2,axis=2)
+        i,j=np.where(np.triu(squared<cutoff,1))
+        return set(zip(i.tolist(),j.tolist()))
+    return len(edges(a)^edges(b))
+
+
+def independent_ensemble_integrity(O,R):
+    result=dict(ensemble_integrity_qc='not_applicable',ensemble_component_pairs=None,
+                ensemble_min_EA_solv_eV=None,ensemble_max_d_bonds=None)
+    if not any((s['dir']/'spin_ensemble_policy.json').exists() for s in (O,R)):return result
+    sides=[]
+    for s in (O,R):
+        if (s['dir']/'spin_ensemble_policy.json').exists():
+            mixed=s.get('spin_ensemble')
+            if mixed is None:return dict(result,ensemble_integrity_qc='incomplete')
+            sides.append([(Path(c['directory'])/'opt.xyz',c['electronic_eV']) for c in mixed['components']])
+        else:
+            if s['e_smd'] is None:return dict(result,ensemble_integrity_qc='incomplete')
+            sides.append([(s['dir']/'opt.xyz',s['e_smd'])])
+    values=[(eo-er,independent_bond_changes(xo,xr)) for xo,eo in sides[0] for xr,er in sides[1]]
+    if any(v is None for _,v in values):
+        return dict(result,ensemble_integrity_qc='incomplete',ensemble_component_pairs=len(values))
+    energy=min(v for v,_ in values);changes=max(n for _,n in values)
+    verdict='unbound' if R['charge']<0 and energy<=0 else ('bond_change' if changes>0 else 'ok')
+    return dict(ensemble_integrity_qc=verdict,ensemble_component_pairs=len(values),
+                ensemble_min_EA_solv_eV=energy,ensemble_max_d_bonds=changes)
+
+
 def audit_integrity():
     T = "state_integrity"
     pub = {(r["id"], r["couple"]): r for r in read_csv(RES / "state_integrity.csv")}
@@ -936,7 +1004,7 @@ def audit_integrity():
             else:
                 ea = O["e_smd"] - R["e_smd"]
                 bound = not (R["charge"] < 0 and ea <= 0.0)
-            db = fnum(p.get("d_bonds")) if p else None      # bond graph: taken from table
+            db = independent_bond_changes(O['dir']/'opt.xyz',R['dir']/'opt.xyz')
             if bound is None:
                 verdict = "incomplete"
             elif not bound:
@@ -945,13 +1013,21 @@ def audit_integrity():
                 verdict = "bond_change"
             else:
                 verdict = "intact_bound"
+            ensemble=independent_ensemble_integrity(O,R)
+            if ensemble['ensemble_integrity_qc'] not in ('not_applicable','ok'):
+                verdict=ensemble['ensemble_integrity_qc']
             MY_INTEG[key] = verdict
             if p is None:
                 add(T, gid, f"{cp}:row_present", "", "present", "logic")
                 continue
             add(T, gid, f"{cp}:EA_solv_eV", p["EA_solv_eV"], ea, digits=3)
+            add(T, gid, f"{cp}:d_bonds", p.get('d_bonds'),db,'logic')
+            for field in ('ensemble_integrity_qc','ensemble_component_pairs','ensemble_max_d_bonds'):
+                add(T,gid,f'{cp}:{field}',p.get(field),ensemble[field],'logic')
+            add(T,gid,f'{cp}:ensemble_min_EA_solv_eV',p.get('ensemble_min_EA_solv_eV'),
+                ensemble['ensemble_min_EA_solv_eV'],digits=3)
             add(T, gid, f"{cp}:verdict", p["verdict"], verdict, "logic",
-                note="bound part recomputed; d_bonds taken from the table")
+                note="independently rebuilt binding and bond graphs, including every selected spin component")
     for key in pub:
         if key not in seen:
             add(T, key[0], f"{key[1]}:row_present", "present", "", "logic", note="unexpected row")
@@ -1125,6 +1201,9 @@ def my_spin_evidence(gid):
     for path in (DFT.parent/'spincheck'/gid).glob('*_m*/result.json'):
         st=path.parent.name.rsplit('_m',1)[0];alt=json.loads(path.read_text());chosen=state(gid,st)
         if chosen is None or alt.get('charge')!=chosen['charge'] or alt.get('mult')==chosen['mult']:continue
+        ensemble=chosen.get('spin_ensemble')
+        if ensemble is not None and Path(ensemble['helper']).resolve()==path.parent.resolve():
+            gaps[st]=ensemble['gap_eV'];sources[st]='equilibrium_spin_ensemble';continue
         sd=chosen['dir'];row=next((r for r in MANIFEST if r['id']==gid and r['state']==st),None)
         if row is None or chosen['rec'] is None:
             pending[st]='source_addressed_spin_report_pending';continue

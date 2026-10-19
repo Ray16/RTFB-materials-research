@@ -2,6 +2,13 @@
 
 ## Current priorities (2026-10-19)
 
+- [x] Integrate source-bound two-spin equilibrium in both readers and ranking gates;
+  transactional selection verified on CN-PMDI, with degeneracy counted once.
+- [x] Extend integrity to every selected spin component and independently rebuild
+  bond graphs. Keep mixed-spin kinetic descriptors withheld; 428 tests pass.
+- [~] Rebuild candidate/global exports and slides after equilibrium selection.
+
+
 Use [LATEST_REVIEW.json](results/LATEST_REVIEW.json) and the
 [candidate feed](results/candidates/current.json) for current counts. Sections
 below this checkpoint preserve historical worklists and superseded estimates.

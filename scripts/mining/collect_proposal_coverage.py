@@ -127,6 +127,8 @@ def collect(group,manifest,registered,sources,faraday):
       potential_status='native calculated/QC passed' if event else 'pending',
       integrity_status=assessment['verdict'] if assessment else 'pending',
       solvated_EA_eV=assessment['EA_solv_eV'] if assessment else None,
+      ensemble_integrity_status=assessment.get('ensemble_integrity_qc') if assessment else None,
+      ensemble_component_pairs=assessment.get('ensemble_component_pairs') if assessment else None,
       gas_Nelsen_sum_eV=gas['lambda_i_eV'] if gas else None,
       gas_Nelsen_flags=gas['flag'] if gas else None,
       gas_Nelsen_status=('flagged diagnostic' if gas['flag'] else 'QC-clean gas diagnostic') if gas else 'pending',
@@ -182,9 +184,17 @@ def collect(group,manifest,registered,sources,faraday):
  return row,states,couples
 
 
+def columns(rows):
+ """Preserve optional QC fields wherever they first appear in the snapshot."""
+ return list(dict.fromkeys(key for row in rows for key in row))
+
+
 def write_csv(path,rows):
- with path.open('w',newline='') as f:
-  w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+ from redox.core.io import atomic_text_writer
+ fields=columns(rows)
+ with atomic_text_writer(path,newline='') as f:
+  if fields:
+   w=csv.DictWriter(f,fieldnames=fields);w.writeheader();w.writerows(rows)
 
 
 def workbook(path,sheets,notes):
@@ -194,12 +204,12 @@ def workbook(path,sheets,notes):
  from openpyxl.comments import Comment
  wb=Workbook();wb.remove(wb.active)
  for name,rows in sheets.items():
-  ws=wb.create_sheet(name);ws.append(list(rows[0]))
-  for r in rows:ws.append([r[k] for k in rows[0]])
+  fields=columns(rows);ws=wb.create_sheet(name);ws.append(fields)
+  for r in rows:ws.append([r.get(k) for k in fields])
   ws.freeze_panes='E2';ws.auto_filter.ref=ws.dimensions
   ws.row_dimensions[1].height=42
   for cell in ws[1]:cell.font=Font(bold=True,color='FFFFFF');cell.fill=PatternFill('solid',fgColor='173F5F');cell.alignment=Alignment(wrap_text=True)
-  for i,key in enumerate(rows[0],1):
+  for i,key in enumerate(fields,1):
    ws.column_dimensions[get_column_letter(i)].width=35 if 'status' in key or 'stage' in key else (55 if any(x in key for x in ('smiles','source','notes','work')) else 22)
    ws.cell(1,i).comment=Comment(notes.get(key,'Snapshot exported from exact-structure pipeline records; blank means not computed/validated.'),'Source/QC')
   for row in ws.iter_rows(min_row=2):
@@ -216,8 +226,8 @@ def workbook(path,sheets,notes):
  for name,rows in sheets.items():
   ws=read[name];assert ws.max_row==len(rows)+1
   for i,r in enumerate(rows,2):
-   for j,key in enumerate(rows[0],1):
-    want=r[key];have=ws.cell(i,j).value
+   for j,key in enumerate(columns(rows),1):
+    want=r.get(key);have=ws.cell(i,j).value
     assert have==want or (want=='' and have is None) or (isinstance(want,float) and isinstance(have,(float,int)) and abs(have-want)<1e-10),(name,i,key,have,want)
     assert ws.cell(i,j).data_type!='e';count+=1
  return count

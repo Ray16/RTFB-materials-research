@@ -177,3 +177,18 @@ helpers are labelled `DFT_check_required`, which blocks primary Pareto ranking.
 A verified electronic gap close to zero still needs native spin thermochemistry;
 matching near-degenerate native free energies require ensemble integration.
 Numerical surface calculations remain distinct from primary spin admission.
+
+## Equilibrium spin selections
+
+`validation.spin_ensemble.prepare_policy(state_dir, helper_dir)` reads two existing,
+qualified native minima without launching calculations. `select_policy` applies a
+prepared policy under molecule/native/spin writer locks only when both the primary
+and independent readers agree. The selection file binds current component inputs;
+changed or invalid dependencies withhold the free energy rather than reverting to
+one spin surface. Original helper seed identity is preserved separately from the
+current selected minimum. Both component native terms already include spin degeneracy.
+
+Equilibrium potentials do not qualify single-surface kinetics. Reorganization
+values remain flagged diagnostics for selected mixtures, and integrity must pass
+for every component pair before potential-window capacity is counted. See the
+[implementation and evidence](../results/validation/spin_ensemble_integration_2026-10-19/README.md).

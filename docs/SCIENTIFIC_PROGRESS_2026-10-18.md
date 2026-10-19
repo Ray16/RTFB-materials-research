@@ -2,6 +2,17 @@
 
 ## Current checkpoint: 2026-10-19
 
+CN-PMDI now has a selected, source-bound two-spin equilibrium policy, verified by
+both real readers. The triplet population is 32.16% at 298.15 K; the mixture uses
+each component's native spin degeneracy once. Every included component pair passes
+solution binding and distance-graph integrity. Kinetic values remain flagged.
+Both ongoing methyl-NDI branches passed their source guards before the shared
+analysis hook changed. A follow-up export test caught first-row-only CSV/workbook
+schemas; both now retain all optional QC fields. The full suite passes **429 tests**.
+See the [equilibrium implementation and proof](../results/validation/spin_ensemble_integration_2026-10-19/README.md).
+Earlier paragraphs below preserve the preceding checkpoints.
+
+
 A later continuation independently reviewed and promoted the NDI methoxyethyl
 and NDI butyl radical minima: **157 checks each, zero failures**, with exact
 old-state archives, explicit optimizer convergence and unchanged physical gates.
