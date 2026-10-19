@@ -1,0 +1,29 @@
+.................................................................F...... [ 13%]
+........................................................................ [ 27%]
+........................................................................ [ 41%]
+........................................................................ [ 55%]
+........................................................................ [ 69%]
+........................................................................ [ 83%]
+........................................................................ [ 97%]
+...............                                                          [100%]
+=================================== FAILURES ===================================
+_________ test_sigma_uses_only_grounded_points_and_never_the_reference _________
+
+    def test_sigma_uses_only_grounded_points_and_never_the_reference():
+        """sigma_E must come from grounded experimental points only: the Fc reference (0 = 0 by
+        construction) and anchors with grounded=False must not enter the RMSE."""
+        rows = [dict(id="ferrocene", event="ox->neu", E_vs_Fc_V="0.0"),
+                dict(id="tempo_parent", event="ox->rad", E_vs_Fc_V="0.449"),       # grounded, +0.200
+                dict(id="phenothiazine_parent", event="ox->neu", E_vs_Fc_V="5.0")]  # ungrounded
+        pts = scorecard.experimental_e_points(rows)
+>       assert [(p["id"], p["event"]) for p in pts] == [("tempo_parent", "ox->rad")]   # once
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       AssertionError: assert [] == [('tempo_parent', 'ox->rad')]
+E         
+E         Right contains one more item: ('tempo_parent', 'ox->rad')
+E         Use -v to get more diff
+
+tests/test_contracts.py:244: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_contracts.py::test_sigma_uses_only_grounded_points_and_never_the_reference
+1 failed, 518 passed in 15.67s

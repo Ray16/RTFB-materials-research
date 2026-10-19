@@ -335,6 +335,7 @@ def experimental_e_points(redox_rows):
         residual of 0 that would flatter the RMSE).
     Returns [dict(id, event, family, exp, calc, res, n_sources, source)]; couples without a
     computed E_vs_Fc (INCOMPLETE) are skipped."""
+    from redox.validation.reference_admission import event_admission
     comp = {(r["id"], r["event"]): _f(r.get("E_vs_Fc_V")) for r in redox_rows}
     exp = {}
     for b in getattr(_cfg("benchmark_mecn"), "BENCHMARK", []):
@@ -358,6 +359,8 @@ def experimental_e_points(redox_rows):
     for (gid, event), d in exp.items():
         c = comp.get((gid, event))
         if c is None:
+            continue
+        if not event_admission(gid,event,c)[0]:
             continue
         x = sum(d["vals"]) / len(d["vals"])
         pts.append(dict(id=gid, event=event, family=d["family"], exp=x, calc=c, res=c - x,

@@ -9,8 +9,8 @@ original proposals have admitted native potentials. The last candidate export
 passes 572 arithmetic checks with zero discrepancies. Each snapshot has its own
 input identities; new reference-parent work is kept separate from graft results.
 
-The full software suite passes **514 tests**. The last full table snapshot passes
-30,455 arithmetic checks with stable inputs and zero discrepancies. This verifies
+The full software suite passes **529 tests**. The last full table snapshot passes
+30,884 arithmetic checks with stable inputs and zero discrepancies. This verifies
 record admission and arithmetic for that snapshot, not experimental accuracy.
 Native thermochemistry uses geometrically projected internal modes, the isolated
 xTB kernel and a matched Fc absolute reference of **4.3791959016 V**. CN-PMDI uses
@@ -22,14 +22,20 @@ irreversible second waves stay excluded; B(MEEO)EPT stays tier B because its tab
 and discussion disagree. The [12-state parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/README.md)
 records actual GPU starts, finished states and independent reviews separately.
 Alternate-spin checks and complete adjacent-state pairs are required before the
-new calculated values contribute to strict accuracy assessment. The
-[updated matched-parent snapshot](../results/reviews/2026-10-19/matched_parent_spin_checked/README.md)
-contains **eight potentials from five parents and four studies**, after both PMDI
-dianion spin checks passed (0.692 / 0.701 eV electronic gaps). RMSE is **0.1846 V**
-and MAE **0.1611 V**, with stated state-specific spin confidence and no fitted
-correction. Free EPT is **+0.537 V vs Fc**, compared with **+0.278 V** measured
-(error **+0.259 V**). The earlier seven-point review is historical. General
-calibration consumers must receive the same spin gate before global tables refresh.
+new calculated values contribute to strict accuracy assessment. The [updated matched-parent snapshot](../results/reviews/2026-10-19/full_matched_parent_checked/summary.json)
+contains **12 potentials from eight parents and four studies**, with state-specific
+spin qualification. RMSE is **0.2457 V**, MAE **0.2090 V**, with no fit. All 12 new
+primary states pass 168 independent record checks, and all 14 targeted spin
+comparisons have finished. The general benchmark and calibration consumers now
+use the completed-state gate, with a separate raw reconstruction in the audit.
+
+A substantial limitation remains: DMeOEPT's second wave is **1.202 V calculated
+versus 0.655 V measured**. Its reference-free charging gap is 0.953 versus 0.599 eV,
+mostly an electronic discrepancy (0.914 eV electronic, 0.039 eV thermal). The
+restricted energy reproduces within 5.2e-9 eV; four zero-spin unrestricted seeds
+recover it within 2.4e-7 eV. These tests find no lower sampled solution and do not
+explain the error. Confident two-electron phenothiazine window/capacity predictions
+remain provisional; exact-graft and kinetic performance are not validated.
 
 Both preserved hexyl-NDI radical geometries failed the finer-derivative checks.
 The [terminal review and host diagnostic](../results/validation/hexyl_finer_derivatives_2026-10-19/README.md)

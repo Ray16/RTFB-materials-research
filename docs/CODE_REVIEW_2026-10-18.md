@@ -2,7 +2,7 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **514 tests**. The latest additional fix makes
+The full software suite passes **529 tests**. The latest additional fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
@@ -29,7 +29,7 @@ The [parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/R
 records its calculations and independent partial reviews. Started calculations do
 not establish matching accuracy or the preferred spin surface.
 
-The last full table snapshot passes **30,455 arithmetic checks**, and the additional
+The last full table snapshot passes **30,884 arithmetic checks**, and the additional
 candidate export passes **572 checks**, with zero discrepancies. These are scoped
 snapshots; new parent calculations require a fresh assessment after their QC.
 [Current evidence](../results/LATEST_REVIEW.json) identifies the exact receipts,
@@ -52,10 +52,20 @@ cases pass; see the [qualification](../results/validation/gas_reference_contract
 
 The read-only inventory covers 482 saved reference records without complete new
 solver verification. This is insufficient evidence to certify them, not proof that
-their numerical values are wrong. Existing datasets are unchanged. The public
-`properties/nelsen.py` forwarding remains pending its active source epoch; its
-production consumer uses only `embed`. The source inventory and resolution are
+their numerical values are wrong. Existing datasets are unchanged. The public `properties/nelsen.py` API now forwards to the same strict solver
+after actual worker termination was verified; its Atoms/eV interface and embedding
+remain compatible. The source inventory and resolution are
 kept under [remaining solver review](../results/reviews/2026-10-19/remaining_solver_review/).
+
+## Experimental calibration admission
+
+The completed-state spin reader is now shared by collectors and calibration.
+Experimental tier A alone cannot admit a missing, stale or unresolved computed
+endpoint. The general scorer and uncertainty inputs require current native
+endpoints/reference and the stated spin gate; the independent audit reconstructs
+its own per-event test. New failure-path tests and a full 30,884-check global table
+review pass. The +0.547 V phenothiazine second-wave error remains in the statistics;
+poor model agreement is not filtered away.
 
 ## Earlier review checkpoints
 

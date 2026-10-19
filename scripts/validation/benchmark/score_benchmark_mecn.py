@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "src"))
 from redox.core.common import RESULTS, load_config  # noqa: E402
 from redox.screening.scorecard import _bench_family  # noqa: E402
+from redox.validation.reference_admission import event_admission  # noqa: E402
 
 OUT = RESULTS / "validation" / "benchmark_mecn.csv"
 
@@ -57,13 +58,19 @@ def main():
             if ev["kind"] == "E":
                 c = comp.get((b["id"], ev["event"]), {})
                 calc = _f(c.get("E_vs_Fc_V"))
+                allowed,reason=event_admission(b['id'],ev['event'],calc)
+                if ev['tier']=='excluded' or b.get('excluded'):
+                    allowed,reason=False,b.get('excluded') or ev['tier_reason']
+                if not allowed:calc=None
                 rows.append(dict(base, quantity=f"E[{ev['event']}]", exp_V=ev["exp_V_vs_Fc"],
-                                 calc_V=calc, status=c.get("status", "not computed"),
+                                 calc_V=calc, status=c.get("status", "not computed") if allowed else reason,
                                  err_V=(calc - ev["exp_V_vs_Fc"]) if calc is not None else None))
             else:   # wave spacing E1 - E2 from the two computed couples of the ladder
                 evs = [e["event"] for e in b["events"] if e["kind"] == "E" and e["source"] == ev["source"]]
                 e1 = _f(comp.get((b["id"], evs[0]), {}).get("E_vs_Fc_V")) if len(evs) > 0 else None
                 e2 = _f(comp.get((b["id"], evs[1]), {}).get("E_vs_Fc_V")) if len(evs) > 1 else None
+                if e1 is not None and not event_admission(b['id'],evs[0],e1)[0]:e1=None
+                if e2 is not None and not event_admission(b['id'],evs[1],e2)[0]:e2=None
                 calc = (e1 - e2) if None not in (e1, e2) else None
                 rows.append(dict(base, quantity="dE12", exp_V=ev["exp_V"], calc_V=calc,
                                  status="ok" if calc is not None else "INCOMPLETE",

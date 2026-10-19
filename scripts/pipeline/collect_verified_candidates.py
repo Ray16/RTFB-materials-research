@@ -139,73 +139,8 @@ def queue_progress(queue):
  return result,terminal
 
 
-def state_spin_evidence(gid,state):
- """Only a completed current comparison can admit a DFT alternate spin."""
- uma=coverage.safe_json(UMA/gid/state/'result.json') or {}
- chosen=read_result(gid,state)
- from redox.validation.spin_ensemble import admitted_ensemble
- mixed=admitted_ensemble(chosen,DFT/gid/state)
- if mixed is not None:
-  return dict(spin_confidence='DFT_native_equilibrium_ensemble',spin_gap_eV=mixed['gap_eV'],
-              spin_gap_source='two qualified native spin surfaces; equilibrium partition',
-              spin_evidence_path=chosen['spin_ensemble_policy_path'],spin_primary_admissible=True,
-              single_surface_kinetics_validated=False)
- alternatives=[];pending=None
- if chosen and finite(chosen.get('e_smd_eV')):
-  from redox.qm.dft import _opt_protocol_mismatch
-  from redox.validation.spins import read_comparison,snapshot
-  from redox.qm.native_thermal import cache_path
-  report=read_comparison(gid,state)
-  paths=list((DFT.parent/'spincheck'/gid).glob(state+'_m*/result.json'))
-  for path in paths:
-   alt=coverage.safe_json(path)
-   if not alt or alt.get('charge')!=chosen.get('charge') or alt.get('mult')==chosen.get('mult'):continue
-   reason,ok=helper_spin_report_admission(report,alt,snapshot(gid,state))
-   if not ok:pending=(reason,str(path));continue
-   if alt['mult']!=report.get('alternative_mult'):pending=('alternate_multiplicity_report_mismatch',str(path));continue
-   if _opt_protocol_mismatch(alt,alt['charge']):pending=('alternate_optimizer_protocol_mismatch',str(path));continue
-   sp=load_record(path.parent,alt['charge'],alt['mult'])
-   if sp is None:pending=('alternate_active_SP_pending',str(path));continue
-   if finite(sp.get('smd_spin_contam')) and abs(sp['smd_spin_contam'])>.1:
-    pending=('alternate_spin_contamination',str(path));continue
-   egap=sp['e_smd_eV']-chosen['e_smd_eV']
-   if not finite(report.get('electronic_gap_eV')) or abs(egap-report['electronic_gap_eV'])>1e-8:
-    pending=('alternate_energy_report_stale',str(path));continue
-   admitted=apply_thermal_policy(dict(alt,e_smd_eV=sp['e_smd_eV']),path.parent)
-   ga,qa=free_energy(admitted);gc,qc=free_energy(chosen)
-   same=(admitted.get('thermal_definition')=='native_solution_dft_qrrho_spin'==chosen.get('thermal_definition')
-          and bool(admitted.get('thermal_protocol_hash')) and bool(chosen.get('thermal_protocol_hash')))
-   deps=report.get('native_dependencies') or {}
-   if report.get('thermochemical_gap_validated'):
-    if not native_partition_dependencies_ok(report,chosen,admitted):
-     pending=('native_spin_partition_dependencies_stale',str(path));continue
-    cp=cache_path(DFT/gid/state,chosen['charge'],chosen['mult'])[0]
-    ap=cache_path(path.parent,alt['charge'],alt['mult'])[0]
-    if not (cp.exists() and ap.exists() and deps.get('chosen')==sha(cp) and deps.get('alternative')==sha(ap)):
-     pending=('native_spin_dependencies_stale',str(path));continue
-   if same and qa==qc=='ok' and ga is not None and gc is not None:
-    gap=ga-gc
-    if not report.get('thermochemical_gap_validated') or not finite(report.get('thermochemical_gap_eV')) or abs(gap-report['thermochemical_gap_eV'])>1e-8:
-     pending=('native_spin_report_pending_or_stale',str(path));continue
-    alternatives.append((gap,'DFT matching native free energy',str(path)))
-   else:alternatives.append((egap,'DFT active SMD electronic; thermal gap unresolved',str(path)))
- if alternatives:
-  gap,method,path=min(alternatives,key=lambda x:x[0])
-  confidence,admissible=qualify_DFT_spin_gap(gap,method=='DFT matching native free energy')
-  return dict(spin_confidence=confidence,spin_gap_eV=gap,spin_gap_source=method,
-              spin_evidence_path=path,spin_primary_admissible=admissible)
- if pending:
-  return dict(spin_confidence=pending[0],spin_gap_eV=None,spin_gap_source='current completed spin report required',
-              spin_evidence_path=pending[1],spin_primary_admissible=False)
- gap=uma.get('spin_gap_eV')
- if finite(gap):
-  return dict(spin_confidence='DFT_check_required' if gap<.5 else 'UMA_large_gap_preliminary',
-              spin_gap_eV=gap,spin_gap_source='UMA gas preoptimization; solution ground state not independently established',
-              spin_evidence_path=str(UMA/gid/state/'result.json'),spin_primary_admissible=gap>=.5)
- standard=uma.get('mults_scanned')==[2] and uma.get('chosen_mult')==2
- return dict(spin_confidence='standard_doublet_model' if standard else 'spin_evidence_pending',
-             spin_gap_eV=None,spin_gap_source='electron parity / no alternative scan' if standard else 'pending',
-             spin_evidence_path=str(UMA/gid/state/'result.json') if uma else None,spin_primary_admissible=standard)
+# Compatibility export; the reusable state reader is owned by validation.
+from redox.validation.spin_evidence import state_spin_evidence
 
 
 def apply_spin_gates(rows,states,couples):

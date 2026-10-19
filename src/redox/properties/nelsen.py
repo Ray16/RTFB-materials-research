@@ -1,9 +1,9 @@
 """Shared Nelsen 4-point inner-sphere reorganization-energy helpers (fresh-geometry variant).
 
-Used by the D3TaLES reorg validation worker and the SMILES diagnostics, which each need to
+The production D3TaLES worker imports the embedding helper; fresh-gas diagnostics can
 embed a molecule, gas-optimize a charge state, and assemble the 4-point lambda_i from single
-points at the two optimized geometries. Consolidated here so the DFT machinery lives in one
-place (previously copy-pasted across ~5 scripts).
+points at the two optimized geometries. Solver convergence is shared with the gas-reference
+workers through qm.gas_reference; this module retains the established Atoms/eV interface.
 
     lambda_i = [E_O(q_R) - E_O(q_O)] + [E_R(q_O) - E_R(q_R)]      (all in eV)
 
@@ -69,15 +69,16 @@ def atoms_of(m):
 
 def energy(atoms, charge, spin, xc, basis, backend="gpu", density_fit=True):
     """Single-point energy (eV) of (charge, spin) at the given geometry."""
-    return float(mean_field(mol(atoms, charge, spin, basis), xc, backend,
-                            density_fit).kernel()) * HARTREE_EV
+    from redox.qm.gas_reference import energy_Ha
+    return energy_Ha(mean_field(mol(atoms, charge, spin, basis), xc, backend,
+                                density_fit)) * HARTREE_EV
 
 
 def gas_opt(start, charge, spin, xc, basis, backend="gpu", density_fit=True, maxsteps=100):
     """Gas-phase geometry optimization; returns (optimized Atoms, energy_eV)."""
-    from pyscf.geomopt.geometric_solver import optimize
-    m_opt = optimize(mean_field(mol(start, charge, spin, basis), xc, backend, density_fit),
-                     maxsteps=maxsteps)
+    from redox.qm.gas_reference import optimized_molecule
+    m_opt = optimized_molecule(mean_field(mol(start, charge, spin, basis), xc, backend, density_fit),
+                               maxsteps=maxsteps)
     at = atoms_of(m_opt)
     return at, energy(at, charge, spin, xc, basis, backend, density_fit)
 

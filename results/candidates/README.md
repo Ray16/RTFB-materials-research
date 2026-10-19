@@ -35,3 +35,9 @@ alternative population are separate fields. Single-surface kinetic validation is
 withheld for mixed-spin states. Integrity must pass for every included component
 pair. The current batch has 24 complete potential pairs out of 25; consult the
 feed timestamp for any later updates.
+
+The checked free-parent benchmark now exposes a phenothiazine second-wave model
+error of +0.547 V. Two-electron window/accessible-capacity classifications for
+phenothiazine analogues are provisional; nominal electron/mass bookkeeping is
+unchanged. See the [model discrepancy](../reviews/2026-10-19/phenothiazine_checked_subset/README.md).
+No offset is fitted or inherited by an exact graft.

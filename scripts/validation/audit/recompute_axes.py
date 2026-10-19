@@ -1156,7 +1156,7 @@ def my_sigmas(fc):
     fam, allres = {}, []
     for k, (f, vals) in pts.items():
         r = MY_E.get(k)
-        if not r or r.get("E") is None:
+        if not r or r.get("E") is None or not my_event_spin_admissible(k[0],k[1],r['E']):
             continue
         res = round(r["E"], 3) - sum(vals) / len(vals)
         allres.append(res)
@@ -1178,7 +1178,7 @@ def my_sigmas(fc):
     return fam_s, pooled, s_lam, s_disp
 
 
-def my_spin_evidence(gid):
+def my_spin_evidence(gid,state_names=None):
     """Rebuild source identities and gaps independently; pending helpers never rank."""
     import fcntl
     from redox.core.protocol import record_path
@@ -1196,10 +1196,12 @@ def my_spin_evidence(gid):
         key = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()[:16]
         return directory/'native_thermal'/f'{key}.json'
     for path in (DFT.parent/'uma'/gid).glob('*/result.json'):
+        if state_names is not None and path.parent.name not in state_names:continue
         raw=json.loads(path.read_text());gap=fnum(raw.get('spin_gap_eV'))
         if gap is not None:gaps[path.parent.name]=abs(gap);sources[path.parent.name]='uma'
     for path in (DFT.parent/'spincheck'/gid).glob('*_m*/result.json'):
         st=path.parent.name.rsplit('_m',1)[0];alt=json.loads(path.read_text());chosen=state(gid,st)
+        if state_names is not None and st not in state_names:continue
         if chosen is None or alt.get('charge')!=chosen['charge'] or alt.get('mult')==chosen['mult']:continue
         ensemble=chosen.get('spin_ensemble')
         if ensemble is not None and Path(ensemble['helper']).resolve()==path.parent.resolve():
@@ -1265,6 +1267,31 @@ def my_spin_evidence(gid):
                 ('DFT_check_required' if source.startswith('uma:') and value<.5 else
                  ('low' if value<SCC.SPIN_GAP_LOW_EV else 'ok')))
     return value,source,confidence
+
+
+def my_event_spin_admissible(gid,event,calculated):
+    """Independent calibration gate; measured labels alone cannot qualify a state."""
+    try:
+        ox,red=event.split('->');left,right=state(gid,ox),state(gid,red);reference=fc_abs_live()
+        if (left is None or right is None or left['G'] is None or right['G'] is None
+                or reference is None or left['thermal_definition']!='native_solution_dft_qrrho_spin'
+                or right['thermal_definition']!=left['thermal_definition']):return False
+        value=float(calculated);fresh=left['G']-right['G']-reference
+        if isinstance(calculated,bool) or not math.isfinite(value):return False
+        if abs(value-fresh)>1e-8 and abs(value-round(fresh,3))>1e-6:return False
+        for name,record in ((ox,left),(red,right)):
+            value,source,confidence=my_spin_evidence(gid,{name})
+            if source.startswith('pending:') or confidence in ('wrong_ground_state','DFT_check_required'):return False
+            if record.get('spin_ensemble') is not None:continue
+            if value is None:
+                path=DFT.parent/'uma'/gid/name/'result.json'
+                raw=json.loads(path.read_text()) if path.exists() else {}
+                if not (raw.get('mults_scanned')==[2] and raw.get('chosen_mult')==2):return False
+            elif source.startswith('uma:') and value<.5:return False
+            elif source.startswith('dft_electronic') and value<=.2:return False
+            elif source.startswith('dft_free_energy') and value<=.1:return False
+        return True
+    except (OSError,ValueError,KeyError,TypeError):return False
 
 
 def scorecard_inner_lambdas(raw):

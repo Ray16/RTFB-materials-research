@@ -234,9 +234,11 @@ def test_born_scaling():
     assert born_lambda_outer(2.0, 37.5, 1.806) == pytest.approx(2 * born_lambda_outer(4.0, 37.5, 1.806))
 
 
-def test_sigma_uses_only_grounded_points_and_never_the_reference():
+def test_sigma_uses_only_grounded_points_and_never_the_reference(monkeypatch):
     """sigma_E must come from grounded experimental points only: the Fc reference (0 = 0 by
     construction) and anchors with grounded=False must not enter the RMSE."""
+    from redox.validation import reference_admission
+    monkeypatch.setattr(reference_admission,'event_admission',lambda *a:(True,'test computed model'))
     rows = [dict(id="ferrocene", event="ox->neu", E_vs_Fc_V="0.0"),
             dict(id="tempo_parent", event="ox->rad", E_vs_Fc_V="0.449"),       # grounded, +0.200
             dict(id="phenothiazine_parent", event="ox->neu", E_vs_Fc_V="5.0")]  # ungrounded

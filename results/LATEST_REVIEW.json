@@ -40,23 +40,23 @@
       "plan": "results/validation/benchmark_imide_spin_2026-10-19/plan.json",
       "held_older_second_wave_points": 0,
       "targeted_spin_checks_complete": true,
-      "general_consumer_gate_propagation_pending": true
+      "general_consumer_gate_propagation_pending": false
     },
     "matched_parent_validation": {
       "status": "checked_under_stated_spin_models",
-      "path": "results/reviews/2026-10-19/matched_parent_spin_checked/summary.json",
+      "path": "results/reviews/2026-10-19/full_matched_parent_checked/summary.json",
       "scope": "Selected exact free-parent calculations; not global tables or graft validation",
-      "potentials": 8,
-      "molecules": 5,
+      "potentials": 12,
+      "molecules": 8,
       "studies": 4,
       "stats": {
-        "n": 8,
-        "MAE": 0.16106250000000005,
-        "RMSE": 0.18463756727708477,
-        "bias": 0.08431249999999996,
-        "SD": 0.17560486030940528
+        "n": 12,
+        "MAE": 0.2090416666666667,
+        "RMSE": 0.24571566392885905,
+        "bias": 0.15787499999999996,
+        "SD": 0.19665846316994254
       },
-      "independent_checks": 24,
+      "independent_checks": 35,
       "exact_graft_accuracy_validated": false
     },
     "geometry_driver": {
@@ -91,6 +91,12 @@
         "results/validation/phenothiazine_spin_final_cation_2026-10-19/plan.json"
       ],
       "rule": "Keep plan-bound numerical producer files unchanged while these spin workers are active; primary and alternate surfaces retain separate source epochs."
+    },
+    "model_validation_limits": {
+      "phenothiazine_second_wave": "results/reviews/2026-10-19/phenothiazine_checked_subset/model_discrepancy.json",
+      "SCF_diagnostic": "results/validation/ptz_dication_scf_probe_2026-10-19/summary.json",
+      "confident_two_electron_window_capacity": false,
+      "no_fitted_correction": true
     },
     "selected_spin_ensemble": {
       "policy": "calcs/dft/search_pmdi_1864c2c74267/red2/spin_ensemble_policy.json",
@@ -135,10 +141,10 @@
       "independent_checks_each": 157
     },
     "global_review": {
-      "scope": "Static snapshot before the new parent panel; repeat after new states pass independent QC",
-      "path": "results/reviews/2026-10-19/ptz_source_tables/review_status.json",
+      "scope": "All table stages rebuilt after completed parent spin qualification and calibration gate propagation",
+      "path": "results/reviews/2026-10-19/reference_gate_tables/review_status.json",
       "status": "complete",
-      "arithmetic_checks": 30455,
+      "arithmetic_checks": 30884,
       "arithmetic_discrepancies": 0,
       "inputs_current_during_review": true,
       "changed_inputs": [],
@@ -147,24 +153,23 @@
     "slides": {
       "status": "checked",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/matched_parent_spin_checked/slides_check.json",
+      "publisher": "results/reviews/2026-10-19/full_matched_parent_checked/slides_check.json",
       "snapshot": null,
-      "pdf_sha256": "01fc6dbc4fc0cbc2fa71fe7d4177c4255f522ea1242c5fe4938fbc4a02656eb7",
+      "pdf_sha256": "07f4e759e3c051da0b3768d2bf538c93603d54e28e6ee132cdffb3095b3da2fb",
       "pages": 41
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
-    "software_tests_passed": 514,
-    "software_checks": "results/validation/gas_reference_contract_2026-10-19/software_checks_final.log",
+    "software_tests_passed": 529,
+    "software_checks": "results/validation/reference_admission_2026-10-19/software_checks.log",
     "remaining_work": [
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
       "Broader experimental benchmark and exact-graft validation",
-      "Benchmark spin-gate propagation to general scoring/uncertainty/audit",
-      "Gas Nelsen forwarding after the active source epoch"
+      "Resolve or bound phenothiazine second-wave model error"
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792404086.2149012,
+  "updated": 1792406876.4101236,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",
