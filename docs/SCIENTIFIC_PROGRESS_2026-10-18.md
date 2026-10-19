@@ -4,13 +4,13 @@
 
 Use [LATEST_REVIEW.json](../results/LATEST_REVIEW.json) for current artifact paths
 and the [candidate workbook](../results/candidates/latest.xlsx) for exact grafts.
-**24 of 27 additional candidates have checked native potential pairs**, and 34
+**26 of 27 additional candidates have checked native potential pairs**, and 34
 original proposals have admitted native potentials. The last candidate export
-passes 577 arithmetic checks with zero discrepancies. Each snapshot has its own
+passes 590 arithmetic checks with zero discrepancies. Each snapshot has its own
 input identities; new reference-parent work is kept separate from graft results.
 
-The full software suite passes **540 tests**. The last full table snapshot passes
-31,850 arithmetic checks with stable inputs and zero discrepancies. This verifies
+The full software suite passes **541 tests**. The last full table snapshot passes
+32,492 arithmetic checks with stable inputs and zero discrepancies. This verifies
 record admission and arithmetic for that snapshot, not experimental accuracy.
 Native thermochemistry uses geometrically projected internal modes, the isolated
 xTB kernel and a matched Fc absolute reference of **4.3791959016 V**. CN-PMDI uses

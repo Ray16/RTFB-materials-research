@@ -23,6 +23,13 @@ def verify(directory):
  energy=load_record(directory,0,1);assert energy is not None
  return dict(native_thermal_eV=correction,native_G_eV=energy['e_smd_eV']+correction,minimum_frequency_cm=min(thermal['frequencies_cm']),maximum_asymmetry=thermal['maximum_asymmetry'])
 receipt_path=out/'preparation.json'
+existing_adoption=out/'adoption.json'
+if existing_adoption.exists() and json.loads(existing_adoption.read_text()).get('status')=='reviewed_unchanged_geometry_cache_adopted':
+ previous=json.loads(existing_adoption.read_text());receipt=json.loads(receipt_path.read_text());verify(sd)
+ for name in ['opt.xyz','result.json']:assert sha(sd/name)==receipt['source_sha256'][name]
+ native_path,_=N.cache_path(sd,0,1);assert sha(native_path)==receipt['prepared_sha256'][str(native_path.relative_to(sd))]
+ assert all(sha(Path(previous['archive'])/p)==h for p,h in receipt['source_sha256'].items())
+ print('Previously adopted cache and original archive verified; no write needed');raise SystemExit(0)
 if not receipt_path.exists():
  old={str(p.relative_to(sd)):sha(p) for p in sd.rglob('*') if p.is_file()}
  assert sha(sd/'opt.xyz')==sha(source/'opt.xyz')

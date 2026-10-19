@@ -44,3 +44,9 @@ Run `curate.py` with the recorded redox interpreter and native thread caps to
 reconstruct the preparation. The [summary](summary.json) owns the check count.
 The source catalog's 2026-10-18 cata entry describes the earlier retrieval stage;
 this review completes its pending graph transcription.
+
+Both exact grafts now have admitted solution potential pairs; the current values
+and gas-diagnostic exclusions are in the [completed solution checkpoint](../../validation/cata_solution_2026-10-19/README.md).
+The preparation counts above remain immutable stage evidence. The source catalog
+records source retrieval/curation checkpoints; current computation status is
+authoritative in `results/LATEST_REVIEW.json` and the candidate feed.

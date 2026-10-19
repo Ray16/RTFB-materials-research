@@ -64,6 +64,16 @@ def snapshot_inputs(source):
                      and path.suffix in (".json", ".xyz", ".npy", ".py")
                      and not path.name.startswith(("_opt_", "_seed_", "_tseed_"))
                      and "_superseded" not in path.parts and not any(".bak" in part for part in path.parts))
+    # Per-record admission can depend on reviewed gradients/control artifacts
+    # outside calcs/. The record's own bytes do not change if that evidence does.
+    for record in tuple(paths):
+        if record.suffix == ".json" and CALCS in record.parents:
+            try:
+                paths.update(referenced_files(json.loads(record.read_text()), ROOT))
+            except (OSError, ValueError):
+                # The raw record remains fingerprinted; readers refuse malformed
+                # evidence. A later repair also changes that record's own hash.
+                continue
     paths.update(ROOT / stage.target for stage in STAGES if stage.target.endswith(".py"))
     paths.update(Path(source) / name for name in BENCHMARK_INPUTS)
     paths.update((ROOT / "data/raw/validation/OROP").glob("*.csv"))

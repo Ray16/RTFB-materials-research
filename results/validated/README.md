@@ -6,7 +6,7 @@ The earlier unprojected review remains preserved under
 `results/reviews/2026-10-18/post_finished_spin_reports/` and is superseded.
 
 The [current review](current/) contains the full property-table assembly and
-its independent arithmetic audit. It passed **31,850 checks, zero discrepancies**,
+its independent arithmetic audit. It passed **32,492 checks, zero discrepancies**,
 with unchanged inputs during the review and a second inventory check before
 publication. These are dated, immutable tables; later
 calculations may supersede individual fields.
@@ -29,7 +29,8 @@ selection limit. Calculated values remain recorded; affected window/capacity
 objectives cannot certify primary shortlist membership. See
 [`config/model_validation_limits.json`](../../config/model_validation_limits.json).
 
-Two cata-imide designs were registered after this immutable review. Their new
-state calculations are outside its scope; the [live epoch check](../validation/cata_solution_2026-10-19/prior_review_live_epoch_check.json)
-records the changed inputs. Follow the candidate feed for individually admitted
-fields until a later full review can be assembled from stable inputs.
+The current snapshot includes both new cata-imide ladders and gas-diagnostic QC.
+The repaired cata-ADI neutral uses a reviewed finer CDS derivative step with the
+original geometry and active energy unchanged. Per-record external qualification
+evidence is now fingerprinted, so a changed gradient artifact cannot hide behind
+an unchanged native-record JSON. The software suite passes 541 tests.

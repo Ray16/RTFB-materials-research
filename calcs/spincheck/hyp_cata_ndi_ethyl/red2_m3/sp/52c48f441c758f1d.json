@@ -1,0 +1,82 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "52c48f441c758f1d",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/spincheck/hyp_cata_ndi_ethyl/red2_m3/opt.xyz",
+  "geom_sha1": "2e5cfeaadeda01bb",
+  "charge": -2,
+  "mult": 3,
+  "id": "hyp_cata_ndi_ethyl",
+  "state": "red2_m3",
+  "source": "adopted:result.json",
+  "adopted_result_sha256": "0f5ef1d13d9a9f73cbaabc4ffc992ebbf6aaec4bdcc25fb3170900296bddd760",
+  "e_smd_Ha": -1336.193873972646,
+  "e_smd_eV": -36359.68760419268,
+  "converged_smd": true,
+  "e_gas_Ha": -1335.9455929830847,
+  "e_gas_eV": -36352.93153428819,
+  "converged_gas": true,
+  "gas_homo_eV": 1.0386623940153787,
+  "gas_lumo_eV": 4.341754391782336,
+  "gas_s_squared": 2.0256,
+  "gas_spin_contam": 0.0256,
+  "anion_unbound": true,
+  "dG_solv_eV": -6.756069904491593,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1336.1938739725842,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1336.1938739726402,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1336.193873972646,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1335.9455929830528,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1335.9455929830847,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1335.9455929829896,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -4.920806570030183,
+  "smd_lumo_eV": 0.14698190753704357,
+  "smd_s_squared": 2.0245,
+  "smd_spin_contam": 0.0245
+}

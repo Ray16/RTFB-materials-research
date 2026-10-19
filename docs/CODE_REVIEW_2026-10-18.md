@@ -2,7 +2,7 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **540 tests**. The latest additional fix makes
+The full software suite passes **541 tests**. The latest additional fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
@@ -30,11 +30,11 @@ records its calculations and independent reviews. All 12 primary states and
 14 targeted spin comparisons have finished; 12 potentials from eight parents
 now contribute to the matched, unfitted benchmark.
 
-The last full table snapshot passes **31,850 arithmetic checks**, and the additional
-candidate export passes **577 checks**, with zero discrepancies. These are scoped
+The last full table snapshot passes **32,492 arithmetic checks**, and the additional
+candidate export passes **590 checks**, with zero discrepancies. These are scoped
 snapshots; new parent calculations require a fresh assessment after their QC.
 [Current evidence](../results/LATEST_REVIEW.json) identifies the exact receipts,
-24/27 admitted additional potential pairs, source catalog and checked slide deck.
+26/27 admitted additional potential pairs, source catalog and checked slide deck.
 The new [model-selection policy](../config/model_validation_limits.json) scopes
 the observed phenothiazine second-oxidation failure independently of solver QC.
 It retains computed potentials and benchmark residuals, withholds qualified
@@ -74,6 +74,13 @@ endpoints/reference and the stated spin gate; the independent audit reconstructs
 its own per-event test. New failure-path tests and a full 30,884-check global table
 review pass. The +0.547 V phenothiazine second-wave error remains in the statistics;
 poor model agreement is not filtered away.
+
+The full-review inventory now also follows per-record external evidence. A native
+record can retain identical JSON while its saved qualification gradients change;
+those external bytes must participate in the input-freshness check. One regression
+case covers that failure mode, and the 541-test suite passes. Both new cata ladders,
+the reviewed derivative repair and the selected spin equilibrium participate in
+the current 32,492-check full table review.
 
 ## Earlier review checkpoints
 

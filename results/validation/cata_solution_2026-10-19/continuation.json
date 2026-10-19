@@ -1,29 +1,23 @@
 {
-  "status": "qualified_followups_prepared_original_epoch_still_running",
-  "updated": 1792414332.6912687,
+  "status": "both_cata_ladders_admitted_all_18_reserved_jobs_terminal",
+  "updated": 1792418056.600799,
   "source_freeze": "Do not edit the numerical source/control files bound by plan.json until all original epoch workers are verified terminal.",
   "next_actions": [
     {
-      "action": "Inspect actual original worker and child PIDs before treating an epoch as terminal",
-      "command": "python results/validation/cata_solution_2026-10-19/verify_starts.py on lambda13"
+      "action": "Do not restart completed cata state/cross-point epochs or reinterpret flagged gas sums as solution rates",
+      "evidence": "terminal_campaign.json and ../cata_cross_points_2026-10-19/review.json"
     },
     {
-      "action": "Admit unchanged-geometry cata-ADI neutral cache after molecule writers release",
-      "command": "python results/validation/cata_cds_diagnosis_2026-10-19/prepare_admission.py --adopt",
-      "gate": "Exclusive molecule/native/spin locks, byte-exact source/prepared hashes and both readers"
+      "action": "Continue the original correctness objective through scoped model/experimental and solution-kinetic validation",
+      "known_limits": [
+        "Phenothiazine second-wave model error remains in the benchmark and constrained in selection",
+        "Experimental exact-graft/solution-kinetic accuracy remains unvalidated",
+        "Other legacy reference files are not retroactively certified by the two actual acene replays"
+      ]
     },
     {
-      "action": "Select reviewed cata-NDI dianion two-spin equilibrium after its molecule writers release",
-      "command": "python results/validation/cata_spin_2026-10-19/prepare_ensemble.py",
-      "gate": "Existing spin_ensemble.select_policy handles locks, source bindings, both readers and rollback"
-    },
-    {
-      "action": "Refresh field-gated candidate workbook/slides as verified quantities arrive",
-      "entry": "scripts/pipeline/collect_verified_candidates.py and scripts/pipeline/update_verified_slides.py"
-    },
-    {
-      "action": "Run a new full table review only with stable inputs, then publish and push verified milestones",
-      "entry": "python -m redox.workflows.tables --out NEW_DIR"
+      "action": "Keep source-parent conditions separate and push each further verified milestone",
+      "publication": "results/candidates/README.md"
     }
   ],
   "preserve_staged_baseline": "results/reviews/2026-10-19/git_cached_before_checkpoint.patch",
@@ -32,5 +26,25 @@
     "Experimental exact-graft/solution-kinetic accuracy remains unvalidated",
     "Other legacy reference files are not retroactively certified by the two actual acene replays"
   ],
-  "previous_goal_turn_classification": "progress: registered two exact grafts, verified six actual solution starts and published checkpoint b44ba45"
+  "previous_goal_turn_classification": "progress: registered two exact grafts, verified six actual solution starts and published checkpoint b44ba45",
+  "new_potential_pairs": {
+    "hyp_cata_ndi_ethyl": [
+      -0.9839826733805239,
+      -1.7300939752021804
+    ],
+    "hyp_cata_adi_ethyl": [
+      -0.8108682480087737,
+      -1.5506296312814811
+    ]
+  },
+  "canonical_derivative_repair_adopted": true,
+  "cata_NDI_equilibrium_selected": true,
+  "all_current_cata_states_ready": 6,
+  "complete_additional_pairs": 26,
+  "additional_candidates": 27,
+  "full_review": "results/reviews/2026-10-19/cata_complete_tables",
+  "arithmetic_checks": 32492,
+  "candidate_export_checks": 590,
+  "software_tests": 541,
+  "active_scientific_jobs_in_this_campaign": 0
 }

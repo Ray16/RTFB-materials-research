@@ -35,3 +35,10 @@ with the independently reconstructed matrix. A [fully qualified cache](admission
 has been prepared with the original geometry, result metadata and active energy
 bytes unchanged. Canonical admission is [waiting for the other molecule writers](admission/adoption.json);
 the original failed state is still preserved. No canonical correction is claimed yet.
+
+The cache has now been [adopted](admission/adoption.json) after exclusive writer
+locks became available. Both readers accept the canonical correction; geometry,
+raw result metadata and active-energy bytes are unchanged. The original failed
+state is preserved in `admission/superseded_canonical/`, and the verified prepared
+snapshot remains retained byte-for-byte. Repeating the admission command verifies
+the existing adoption and archive without writing again.

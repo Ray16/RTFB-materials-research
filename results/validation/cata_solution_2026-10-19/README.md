@@ -53,3 +53,23 @@ track the finer derivative and alternate-spin workers. Startup counts now retain
 the [immutable first-start receipt](first_actual_starts.json), while current live
 predictors, completed records and terminal failures are counted separately.
 The local navigation review resolves all 176 checked document links in 20 files.
+
+## Completed current-state checkpoint
+
+Both cata ladders are now admitted. The cata-NDI two-spin policy is selected and
+the reviewed unchanged-geometry cata-ADI neutral cache is installed. All six
+current selected states pass native readiness. The original epoch still records
+its one failed default-derivative attempt; its complete archive and later repair
+remain separate. The current batch has 26/27 complete additional potential pairs,
+with 590 export checks and zero discrepancies. The new full table review passes
+32,492 checks with stable inputs.
+
+| Exact graft | E1 vs Fc (V) | E2 vs Fc (V) | Nominal capacity (mAh/g) |
+| --- | ---: | ---: | ---: |
+| Cata-NDI ethyl | -0.984 | -1.730 | 134.5 |
+| Cata-ADI ethyl | -0.811 | -1.551 | 119.5 |
+
+The [gas cross-point review](../cata_cross_points_2026-10-19/README.md) retains
+conformer/unbound-anion/spin kinetic exclusions. No solution rate is claimed.
+See the stable [candidate workbook](../../candidates/latest.xlsx) and current
+[full property tables](../../validated/README.md).

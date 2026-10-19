@@ -3,7 +3,7 @@
 ## Current results: 2026-10-19
 
 The [candidate workbook](../results/candidates/latest.xlsx) contains 27 additional
-exact grafts: **24 have admitted native potential pairs**. The first family
+exact grafts: **26 have admitted native potential pairs**. The first family
 comparison panel and the OMe/Me panel have completed their computational stages;
 read the [matched comparisons](../results/candidates/comparisons.csv) for current
 values under the corrected thermal protocol and Fc reference. Completion of a
@@ -23,10 +23,11 @@ exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts remain
 now has four curated parent graphs and two prepared exact grafts, with 214 checks
 and 18 verified initial conformers. All six gas UMA states passed
 their warm-start contracts and their workers are terminal. The cata-NDI dianion
-requires a DFT spin comparison. Both designs are now registered and their six solution-state calculations have
-been submitted. Actual starts and physical admission are recorded in the
-[solution campaign](../results/validation/cata_solution_2026-10-19/README.md);
-no new solution potential or kinetic result is implied. Source-parent measurements retain their own conditions and
+requires a DFT spin comparison. Both designs now have admitted native potential pairs, recorded in the
+[solution campaign](../results/validation/cata_solution_2026-10-19/README.md).
+Cata-NDI gives -0.984/-1.730 V and cata-ADI -0.811/-1.551 V vs Fc in MeCN.
+All gas-relaxation descriptors retain QC exclusions; solution kinetics remain
+unvalidated. Source-parent measurements retain their own conditions and
 are never assigned to an exact graft.
 
 ## Earlier exploration checkpoints

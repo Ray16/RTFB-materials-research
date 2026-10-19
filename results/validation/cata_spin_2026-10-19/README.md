@@ -21,3 +21,8 @@ a 0.4041% triplet population and a -0.000104032-eV equilibrium correction. An
 [Selection](selection_receipt.json) is waiting for the remaining molecule writer;
 the prepared model is not yet a primary correction. Component spin degeneracy is
 counted once. No experimental solution-rate validation is inferred.
+
+The [equilibrium policy is now selected](selection_receipt.json). Both primary
+and independent readers verified its free energy after molecule writers released
+their locks. Earlier preparation and comparison receipts remain stage evidence;
+solution kinetics are still unvalidated.

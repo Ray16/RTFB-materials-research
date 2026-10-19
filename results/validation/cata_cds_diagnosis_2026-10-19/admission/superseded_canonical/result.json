@@ -1,0 +1,88 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_adi_ethyl/neu/_seed_01.xyz",
+  "charge": 0,
+  "mult": 1,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "geometry_optimization_converged": true,
+  "optimization_SCF_converged": true,
+  "opt_gradient_grid_response": true,
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_adi_ethyl/neu/opt.xyz",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "46e5d0c2946c7cef",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -1489.6212144082388,
+  "e_smd_eV": -40534.658225480285,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1489.6212144082388,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -7.8806959333004505,
+  "smd_lumo_eV": -1.4329628438614566,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "gas_occupation_guesses": [],
+  "e_gas_Ha": -1489.5828845366646,
+  "e_gas_eV": -40533.61521654012,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1489.5828845366646,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -8.157914107027848,
+  "gas_lumo_eV": -1.6492168710673885,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "dG_solv_eV": -1.0430089401648288,
+  "id": "hyp_cata_adi_ethyl",
+  "state": "neu",
+  "n_e": 0,
+  "n_seeds": 3,
+  "seed_preopt": "alpb",
+  "winning_seed": 1,
+  "seed_e_smd_eV": [
+    -40534.6581,
+    -40534.6582,
+    -40534.6579
+  ],
+  "seed_spread_eV": 0.0003
+}

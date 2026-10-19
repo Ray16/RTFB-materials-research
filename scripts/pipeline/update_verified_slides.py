@@ -135,6 +135,59 @@ def expansion_leads_frame(rows,when):
     return pieces
 
 
+def core_topology_rows(payload,identifiers=('design_ndi_ethyl','hyp_cata_ndi_ethyl')):
+    rows=payload.get('original39',[])+payload.get('additional_candidates',[])+payload.get('comparison_controls',[])
+    by_id={r.get('registry_id') or r['id']:r for r in rows}
+    selected=[by_id.get(gid) for gid in identifiers]
+    if any(r is None or r.get('solution_potentials_status')!='verified native calculation'
+           or r.get('model_primary_admissible') is False
+           or any(type(r.get(k)) not in (int,float) or not math.isfinite(r[k])
+                  for k in ('E1_vs_Fc_V','E2_vs_Fc_V')) for r in selected):return []
+    return selected
+
+
+def core_topology_frame(payload,when):
+    selected=core_topology_rows(payload)
+    if not selected:return []
+    control,candidate=selected
+    pieces=[r'\begin{frame}{Core-topology contrast: cata-NDI and conventional NDI}',
+            r'\small\centering\renewcommand{\arraystretch}{1.25}',
+            r'\begin{tabular}{@{}lrrr@{}}\toprule',
+            r'Exact graft & $E_1$ & $E_2$ & Nominal capacity \\',
+            r'& \multicolumn{2}{c}{V vs Fc/Fc$^+$} & mAh/g \\ \midrule']
+    for row,label in zip(selected,('Conventional NDI / Et','Cata-NDI / Et')):
+        pieces.append(label+' & '+number(row['E1_vs_Fc_V'])+' & '+number(row['E2_vs_Fc_V'])+
+                      ' & '+number(row.get('capacity_nominal_mAh_g'),1)+r' \\')
+    pieces += [r'\bottomrule\end{tabular}\par\vspace{1.5ex}\raggedright',
+        r'\footnotesize Same N-ethyl cap and Merrifield N-graft anchor. This isolates the core-topology isomer contrast.',
+        r'\par\vspace{1ex}Candidate minus control: $\delta E_1='+number(candidate['E1_vs_Fc_V']-control['E1_vs_Fc_V'])+
+        r'$ V; $\delta E_2='+number(candidate['E2_vs_Fc_V']-control['E2_vs_Fc_V'])+r'$ V. The shared Fc reference cancels.',
+        r'\par\vspace{1ex}A more negative anolyte voltage is a lead for follow-up. Overall battery performance, exact synthesis, solubility and solution kinetics remain unvalidated.',
+        r'\par\vspace{1ex}\scriptsize Current calculated graft properties; CH$_2$Cl$_2$ source-parent measurements are separate.',
+        f'\\vfill\\scriptsize Audited snapshot: {when}.',r'\end{frame}']
+    return pieces
+
+
+def core_extension_frame(payload,when):
+    selected=core_topology_rows(payload,('hyp_cata_ndi_ethyl','hyp_cata_adi_ethyl'))
+    if not selected:return []
+    pieces=[r'\begin{frame}{Fused-ring extension: cata-NDI to cata-ADI}',
+            r'\small\centering\renewcommand{\arraystretch}{1.25}',
+            r'\begin{tabular}{@{}lrrr@{}}\toprule',
+            r'Exact graft & $E_1$ & $E_2$ & Nominal capacity \\',
+            r'& \multicolumn{2}{c}{V vs Fc/Fc$^+$} & mAh/g \\ \midrule']
+    for row,label in zip(selected,('Cata-NDI / Et','Cata-ADI / Et')):
+        pieces.append(label+' & '+number(row['E1_vs_Fc_V'])+' & '+number(row['E2_vs_Fc_V'])+
+                      ' & '+number(row.get('capacity_nominal_mAh_g'),1)+r' \\')
+    pieces += [r'\bottomrule\end{tabular}\par\vspace{1.5ex}\raggedright',
+        r'\footnotesize Same N-ethyl cap and Merrifield anchor. The added fused ring changes both core size and mass.',
+        r'\par\vspace{1ex}The voltage/capacity tradeoff is calculated at one solution protocol with field-specific geometry, derivative and spin checks.',
+        r'\par\vspace{1ex}The cata-ADI neutral required a reviewed finer CDS derivative step. Its original failed Hessian is preserved; acceptance limits and electronic methods are unchanged.',
+        r'\par\vspace{1ex}\scriptsize Exact-graft synthesis, solubility, durability and solution rates remain unvalidated.',
+        f'\\vfill\\scriptsize Audited snapshot: {when}.',r'\end{frame}']
+    return pieces
+
+
 def frames(payload,overlays=False):
     summary=payload['summary'];labels=json.loads(LABELS.read_text()) if LABELS.exists() else {}
     rows=[r for r in payload.get('original39',[])+payload.get('additional_candidates',payload.get('extra_NDI',[]))
@@ -179,6 +232,8 @@ def frames(payload,overlays=False):
             r'\par\vspace{1ex}Exact-graft measurements and synthesis routes are unverified. Parent results are not assigned to these structures.',
             f'\\vfill\\scriptsize Audited snapshot: {when}.',r'\end{frame}']
     pieces += expansion_leads_frame(rows,when)
+    pieces += core_topology_frame(payload,when)
+    pieces += core_extension_frame(payload,when)
     pieces += family_screening_frame(payload.get('additional_candidates',[]),when)
     pieces += paired_comparison_frame(payload.get('matched_comparisons',[]),when)
     for offset in range(0,len(rows),8):
@@ -269,6 +324,8 @@ def publish(payload,out,overlays=False):
     displayed.add('ferrocene')
     registry={r['id']:r.get('registry_id') or r['id'] for r in
               payload.get('original39',[])+payload.get('additional_candidates',[])+payload.get('comparison_controls',[])}
+    displayed.update(r.get('registry_id') or r['id'] for r in core_topology_rows(payload))
+    displayed.update(r.get('registry_id') or r['id'] for r in core_topology_rows(payload,('hyp_cata_ndi_ethyl','hyp_cata_adi_ethyl')))
     # Paired-shift frames can include a valid first wave from a partial ladder.
     for comparison in payload.get('matched_comparisons',[]):
         if comparison.get('core') in ('viologen','pmdi','ndi') and any(

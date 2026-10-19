@@ -1,0 +1,126 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_cata_ndi_ethyl/red2/opt.xyz",
+  "charge": -2,
+  "mult": 3,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svpd",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "geometry_optimization_converged": true,
+  "optimization_SCF_converged": true,
+  "opt_gradient_grid_response": true,
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/spincheck/hyp_cata_ndi_ethyl/red2_m3/opt.xyz",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "2e5cfeaadeda01bb",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -1336.193873972646,
+  "e_smd_eV": -36359.68760419268,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1336.1938739725842,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1336.1938739726402,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1336.193873972646,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -4.920806570030183,
+  "smd_lumo_eV": 0.14698190753704357,
+  "smd_s_squared": 2.0245,
+  "smd_spin_contam": 0.0245,
+  "gas_occupation_guesses": [],
+  "e_gas_Ha": -1335.9455929830847,
+  "e_gas_eV": -36352.93153428819,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1335.9455929830528,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1335.9455929830847,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1335.9455929829896,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": 1.0386623940153787,
+  "gas_lumo_eV": 4.341754391782336,
+  "gas_s_squared": 2.0256,
+  "gas_spin_contam": 0.0256,
+  "anion_unbound": true,
+  "dG_solv_eV": -6.756069904491593,
+  "id": "hyp_cata_ndi_ethyl",
+  "state": "red2_m3",
+  "parent_state": "red2",
+  "spin_source_identity": {
+    "id": "hyp_cata_ndi_ethyl",
+    "state": "red2",
+    "charge": -2,
+    "mult": 1,
+    "geometry_sha256": "c8fbfb8a45bf72c821d17a1ca6257af03897a43c095aa69fa60fea53c76d5bb1",
+    "smiles_sha256": "f8d45cb997dca08f6ab44c1614efae15d831b9063737db0ae636f76b28e7c7b3",
+    "sp_record_sha256": "e582f6bb29baa48fdc5386693080c8cd69c5fc15347cc49ea9cf0186e5b7b68e",
+    "protocol": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200
+    }
+  },
+  "spin_validation_status": "validated",
+  "g_thermal_eV": null,
+  "spin_validation_report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cata_spin_2026-10-19/comparisons/cases/hyp_cata_ndi_ethyl/red2/1792412433595689534/result.json"
+}
