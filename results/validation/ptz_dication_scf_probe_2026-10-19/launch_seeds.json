@@ -1,0 +1,170 @@
+{
+  "status": "seed_controllers_submitted",
+  "workers": [
+    {
+      "host": "lambda13",
+      "seed": 0,
+      "gpu": 0,
+      "device": {
+        "index": 0,
+        "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "CPU_affinity": [
+        0,
+        1
+      ],
+      "controller_pid": 3648630,
+      "process_start": "52288665",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "0",
+        "--cpus",
+        "0,1",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/reserved_seed_0",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/worker.py",
+        "--seed",
+        "0"
+      ],
+      "submitted": 1792405547.2386174
+    },
+    {
+      "host": "lambda13",
+      "seed": 1,
+      "gpu": 1,
+      "device": {
+        "index": 1,
+        "uuid": "GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "CPU_affinity": [
+        2,
+        3
+      ],
+      "controller_pid": 3648631,
+      "process_start": "52288666",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--cpus",
+        "2,3",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/reserved_seed_1",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/worker.py",
+        "--seed",
+        "1"
+      ],
+      "submitted": 1792405547.2427998
+    },
+    {
+      "host": "lambda13",
+      "seed": 2,
+      "gpu": 2,
+      "device": {
+        "index": 2,
+        "uuid": "GPU-5d07badb-4052-7045-bdc1-c0476709589b",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "controller_pid": 3648632,
+      "process_start": "52288666",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "2",
+        "--cpus",
+        "4,5",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/reserved_seed_2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/worker.py",
+        "--seed",
+        "2"
+      ],
+      "submitted": 1792405547.2466958
+    },
+    {
+      "host": "lambda13",
+      "seed": 3,
+      "gpu": 3,
+      "device": {
+        "index": 3,
+        "uuid": "GPU-31e42837-2afb-0b14-c287-66eabb51d40e",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "CPU_affinity": [
+        6,
+        7
+      ],
+      "controller_pid": 3648633,
+      "process_start": "52288667",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "3",
+        "--cpus",
+        "6,7",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/reserved_seed_3",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/worker.py",
+        "--seed",
+        "3"
+      ],
+      "submitted": 1792405547.2541175
+    }
+  ],
+  "resources": {
+    "online_cpus": 384,
+    "load_1m": 0.83544921875,
+    "available_RAM_bytes": 1589670514688,
+    "minimum_RAM_GiB": 64
+  },
+  "baseline_report_sha256": "027138286f1ccb736806b916cab90364ed432e8b969b69e1fdab986370ce057f",
+  "orbitals_sha256": "1796a7ed07e2a549a89aff1116b44ea50a0341c3c414f1122a5d6d1a8c2504d6",
+  "production_admission": false
+}

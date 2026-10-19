@@ -1,11 +1,12 @@
-% Source: results/reviews/2026-10-19/matched_parent_spin_checked/
+% Source: results/reviews/2026-10-19/full_matched_parent_final/
 \begin{frame}{Corrected parent benchmark with stated spin qualification}
-\small
-Eight potentials, five parents, four studies; corrected internal-mode thermochemistry.
+\footnotesize
+Twelve potentials, eight parents, four studies; corrected internal-mode thermochemistry.
 \medskip\par\centering
+\renewcommand{\arraystretch}{0.9}
 \begin{tabular}{lrrr}
 \toprule
-Parent & $E_1$ error & $E_2$ error & Spacing error \\
+Parent & $E_1$ error & $E_2$ error & Signed $E_1-E_2$ error \\
  & \multicolumn{3}{c}{calculated minus experimental (V)} \\
 \midrule
 Benzyl--methyl viologen & $+0.190$ & $-0.003$ & $+0.193$ \\
@@ -13,16 +14,19 @@ PMDI / isopropyl & $+0.149$ & $-0.103$ & $+0.252$ \\
 PMDI / methoxyethyl & $+0.085$ & $-0.201$ & $+0.286$ \\
 Dimethyl benzoquinone & $+0.2985$ & --- & --- \\
 N-ethylphenothiazine & $+0.259$ & excluded & --- \\
+MEEPT & $+0.248$ & excluded & --- \\
+DMeOEPT & $+0.193$ & $+0.547$ & $-0.354$ \\
+DMeOMEEPT & $+0.232$ & excluded & --- \\
 \bottomrule
 \end{tabular}\par\raggedright
 \medskip
-Potential RMSE: \textbf{0.185 V}; MAE: \textbf{0.161 V}. No fitted correction.
+Potential RMSE: \textbf{0.246 V}; MAE: \textbf{0.209 V}. No fitted correction.
 \begin{itemize}
-\item PMDI dianion alternatives are higher by 0.692 / 0.701 eV; their held
-second waves now pass the electronic spin gate with thermal uncertainty retained.
-\item Other states retain their stated DFT, UMA or standard-doublet confidence.
-This sparse, correlated parent set does not validate exact grafts or kinetics.
+\item DMeOEPT's second-wave error is +0.547 V. Two-electron phenothiazine
+window/capacity predictions remain provisional; no offset was fitted.
+\item State-specific spin confidence is retained. This sparse, correlated
+parent set does not establish exact-graft accuracy or kinetics.
 \end{itemize}
-\vfill\scriptsize Native Fc: 4.379196 V. Supporting salts are not explicitly modeled;
-the PMDI source salt assignment is ambiguous. Snapshot: 19 October 2026.
+\vfill\scriptsize Fc: 4.379196 V; salt effects not explicit, PMDI salt assignment ambiguous.
+Snapshot: 19 October 2026.
 \end{frame}

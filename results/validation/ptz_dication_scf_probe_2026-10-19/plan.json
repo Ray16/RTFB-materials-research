@@ -1,0 +1,37 @@
+{
+  "created": 1792405205.6871443,
+  "molecule": "N-ethyl-3,7-dimethoxyphenothiazine dication",
+  "charge": 2,
+  "mult": 1,
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "expected_RKS_eV": -33278.0379908533,
+  "source_geometry_sha256": "b85ed6918af9b7561d2099d7c7c6f142a1f179f1cc9d3fd44cad63ad50ec30d8",
+  "source_SP_sha256": "fa46af3beef7d5d57ea786cc610c81ead452fe910cc346742a3e5f3aab7cea52",
+  "production_admission": false,
+  "purpose": "Restricted reproduction and zero-net-spin unrestricted orbital seeds at fixed geometry; no fit or canonical replacement",
+  "seed_angles_radians": [
+    0.0,
+    0.2,
+    0.5,
+    0.8
+  ],
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_dication_scf_probe_2026-10-19/worker.py": "83c3786ad9d92f83918b62237446ef8d95939ed2444df354e5a3fc009bc0e347",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/electrolyte.py": "ad68419d8673d22ce7d785d4e38d40696609c22bad9496ac2ffac5d71f00d0c9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/project.json": "55f54f160cb9e751ed9ec01cf7f88782cd5727806d233549f47b78eb1d15f404"
+  }
+}
