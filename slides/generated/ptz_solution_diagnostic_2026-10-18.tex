@@ -2,6 +2,7 @@
 % results/validation/new_candidate_solution_relaxation_2026-10-18/diagnostic/result.json
 % results/validation/new_candidate_solution_relaxation_2026-10-18/ptz_first_couple_audit.json
 % result SHA256 41861d8981017535121d0c6de75f042fa8a702a2bc37cb4ac623c32dbecf395f
+% Current qualification: results/validation/ptz_basin_association_2026-10-19/descriptor_qualification.json
 \begin{frame}{PTZ first couple: solution relaxation diagnostic}
 \small
 Difluorophenothiazine graft: $\mathrm{ox1}(+1) + e^- \rightleftharpoons \mathrm{neu}(0)$ in MeCN.
@@ -16,13 +17,15 @@ Directional solution relaxation & 1.116 & 1.137 \\
 \bottomrule
 \end{tabular}\par\raggedright
 \medskip
-\begin{block}{Physical qualification remains incomplete}
-These are composite electronic descriptors at independently optimized minima.
-Conformer qualification is unresolved; minima are established at the geometry
-level, with active-protocol single-point energies. Primary solution $\lambda$
-and kinetic rates remain pending.
+\begin{block}{Local pairing checked; kinetic qualification remains incomplete}
+Reciprocal full-response optimizations return both selected local geometries
+(heavy-atom RMSDs below 0.0018~\AA). These are qualified composite electronic
+descriptors at geometry-level minima; active-SP stationarity, thermal activation,
+global conformer populations and polymer constraints remain unproven.
+Primary kinetic rates remain pending.
 \end{block}
 \footnotesize Native frozen-slow SMD response; no addition of a separate gas or outer-sphere term.
-\vfill\scriptsize Snapshot: 18 October 2026. Six SCF records; 99 independent checks passed.
+\vfill\scriptsize Updated 19 October 2026: six archived densities rechecked; 16 arithmetic checks
+and 10 reciprocal-geometry checks pass. Earlier 99-check audit preserved.
 Exact-graft experimental accuracy remains unvalidated.
 \end{frame}

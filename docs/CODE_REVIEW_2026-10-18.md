@@ -2,6 +2,17 @@
 
 ## Current corrections: 2026-10-19
 
+The solution-relaxation continuation separates bound implementation controls from
+individual-case verification and hardens both density-cache schemas. Six archived
+PTZ densities and 16 arithmetic checks pass. Both reciprocal optimizations return
+the selected local geometries (proper symmetry RMSDs 0.000135 / 0.00178 Å); all ten
+checks pass. The composite directional descriptor is locally qualified at
+1.1157 / 1.1373 eV, while active-SP stationarity, global ensembles, thermal barriers
+and experimental rates remain unvalidated. All **450 tests pass**. The first hexyl
+finer replay failed its 1% contact gate (56.9% error); its distinct plus geometry
+has a verified H100 start. No physical threshold changed.
+
+
 The maintained pipeline now binds energies, native partitions and equilibrium spin
 policies to their actual inputs; validates replacement states before atomic
 promotion with rollback; preserves optimizer convergence; and shares publication
@@ -15,7 +26,7 @@ surfaces can supply an explicit equilibrium free energy without claiming valid
 single-surface kinetics. Integrity checks include every participating component,
 and the independent audit now reconstructs distance bond graphs.
 
-All **436 software tests pass**. The current global tables pass **30,455 independent
+All **450 software tests pass**. The current global tables pass **30,455 independent
 checks**, and the 24/25 additional-candidate export passes **572 checks**, with zero
 discrepancies and stable inputs. [Current evidence](../results/LATEST_REVIEW.json)
 links the exact receipts and the checked PDF. Hexyl NDI's last native surface,

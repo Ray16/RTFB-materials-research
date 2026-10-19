@@ -2,6 +2,12 @@
 
 ## Current priorities (2026-10-19)
 
+- [x] Revalidate solution-cache density/energy identities and distinguish implementation
+  controls from per-case replay; 450 tests pass. The PTZ reciprocal controls pass
+  both local-basin checks; its directional electronic descriptor is qualified under
+  the composite model. Rates, thermal activation and global populations remain open.
+
+
 - [x] Integrate source-bound two-spin equilibrium in both readers and ranking gates;
   transactional selection verified on CN-PMDI, with degeneracy counted once.
 - [x] Extend integrity to every selected spin component and independently rebuild

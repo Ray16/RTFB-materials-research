@@ -87,7 +87,7 @@ def evaluate(pair,out,backend,cache_pool,cache_evidence=None):
         if review.get('failed_checks')!=0:raise ValueError('Cache review did not pass')
         reviewed=review.get('evidence_sha256') or {}
     if cache_pool:
-        for p in Path(cache_pool).glob('*.json'):
+        for p in Path(cache_pool).resolve().glob('*.json'):
             r=json.loads(p.read_text())
             if r.get('converged') is True:existing.append((p,r))
     def scf(state,at,reference=None,dm0=None):
@@ -167,7 +167,7 @@ def evaluate(pair,out,backend,cache_pool,cache_evidence=None):
         if state['charge']<0 and homo>0:flags.append('positive_solution_homo')
         spin=(state['mult']-1)/2;s2=record.get('s2')
         contamination=None if s2 is None else s2-spin*(spin+1)
-        if contamination is not None and contamination>.1:flags.append('spin_contamination')
+        if contamination is not None and abs(contamination)>.1:flags.append('spin_contamination')
         electronic.append(dict(state=state['name'],at=at['name'],solvent_response=response,
             solution_homo_eV=homo*HARTREE_EV,s2=s2,spin_contamination=contamination,flags=flags))
     finals={s['name']:scf(s,s) for s in states};directions=[]

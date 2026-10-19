@@ -9,7 +9,7 @@ archive=base/'LATEST_REVIEW_before_sync.json'
 if not archive.exists():archive.write_bytes(index.read_bytes())
 feed_path=ROOT/'results/candidates/current.json';feed=json.loads(feed_path.read_text());s=feed['summary']
 benchmark_path=ROOT/'results/reviews/2026-10-18/matched_parent_projected_checked/summary.json';benchmark=json.loads(benchmark_path.read_text())
-global_path=base/'publication_final_tables/review_status.json';global_review=json.loads(global_path.read_text());publication_path=global_path.parent/'publication.json';publication=json.loads(publication_path.read_text()) if publication_path.exists() else {}
+global_path=base/'solution_contract_tables/review_status.json';global_review=json.loads(global_path.read_text());publication_path=global_path.parent/'publication.json';publication=json.loads(publication_path.read_text()) if publication_path.exists() else {}
 slides_path=ROOT/'results/reviews/2026-10-18/slides_projected_publisher/status.json';slides=json.loads(slides_path.read_text())
 thermal_path=ROOT/'results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/summary.json';thermal=json.loads(thermal_path.read_text())
 geometry_path=ROOT/'results/validation/geometry_driver_full_response_2026-10-18/status.json';geometry=json.loads(geometry_path.read_text())
@@ -20,6 +20,7 @@ current=dict(as_of_Chicago=feed['as_of_Chicago'],scientific_validation_complete=
  native_Fc_absolute_V=benchmark['native_Fc_absolute_V'],
  matched_parent_validation=dict(path=str(benchmark_path.relative_to(ROOT)),scope=benchmark['scope'],potentials=benchmark['tier_A_potential_events'],molecules=benchmark['tier_A_potential_molecules'],studies=benchmark['tier_A_original_studies'],stats=benchmark['tier_A_potential_stats'],independent_checks=benchmark['arithmetic_checks'],exact_graft_accuracy_validated=False),
  geometry_driver=dict(path=str(geometry_path.relative_to(ROOT)),status=geometry['status'],full_grid_response=True,explicit_optimizer_and_SCF_convergence=True,actual_CPU_smoke=geometry['actual_cpu_smoke']),
+ solution_relaxation_model=dict(proof='results/validation/ptz_basin_association_2026-10-19/descriptor_qualification.json',cached_record_review='results/validation/solution_contract_review_2026-10-19/pilot_cache_review.json',directional_eV=[1.11572360556908,1.1373263830891207],symmetric_approximation_eV=1.1265249943291002,local_basin_model_qualified=True,active_SP_stationarity_proven=False,kinetics_validated=False,primary_promotion=False),
  selected_spin_ensemble=dict(policy='calcs/dft/search_pmdi_1864c2c74267/red2/spin_ensemble_policy.json',proof='results/validation/spin_ensemble_integration_2026-10-19/README.md',triplet_population=.32156872984784607,kinetics_validated=False),
  methyl_NDI_adoption='results/validation/ndi_methyl_adoption_2026-10-19/plus/adoption_receipt.json',
  last_candidate_refinement='results/validation/hexyl_finer_derivatives_2026-10-19/launch.json',
@@ -27,7 +28,7 @@ current=dict(as_of_Chicago=feed['as_of_Chicago'],scientific_validation_complete=
  radical_adoptions=dict(ndi_methoxyethyl='results/validation/ndi_radical_adoptions_2026-10-19/ndi_methoxyethyl/adoption_receipt.json',ndi_butyl='results/validation/ndi_radical_adoptions_2026-10-19/ndi_butyl/adoption_receipt.json',independent_checks_each=157),
  global_review=dict(path=str(global_path.relative_to(ROOT)),status=global_review['status'],arithmetic_checks=publication.get('arithmetic_checks'),arithmetic_discrepancies=global_review['arithmetic_discrepancies'],inputs_current_during_review=global_review.get('inputs_current'),changed_inputs=global_review.get('changed_inputs',[]),scientific_accuracy_validated=False),
  slides=dict(status=slides['status'],path='slides/redox_workflow.pdf',publisher=str(slides_path.relative_to(ROOT)),snapshot=slides.get('snapshot'),pdf_sha256=slides.get('pdf_sha256'),pages=slides.get('pages')),
- software_tests_passed=436,software_checks='results/reviews/2026-10-19/software_checks_publication_final.log',
+ software_tests_passed=450,software_checks='results/reviews/2026-10-19/software_checks_solution_final.log',
  remaining_work=['Hexyl NDI native minimum/thermochemistry','Solution reorganization and kinetic qualification','Broader experimental benchmark and exact-graft validation'])
 report=dict(schema=2,current=current,scientific_validation_complete=False,updated=time.time(),historical_metadata=str(archive.relative_to(ROOT)),progress_document='docs/SCIENTIFIC_PROGRESS_2026-10-18.md',discovery_source_catalog='config/discovery_sources.json',candidate_search='results/discovery/systematic_families_2026-10-18/summary.json',candidate_results_entry='results/candidates/README.md',thermal_publication_review='config/thermal_publication_review.json',note='Current scoped evidence is separate from broad scientific validation. Historical unprojected references and counts are preserved in historical_metadata; no parent measurement is assigned to an exact graft.')
 atomic_write_json(index,report)

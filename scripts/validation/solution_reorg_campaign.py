@@ -164,7 +164,11 @@ def scf(identity,geom_identity,backend,reference=None,refdm=None):
     if p.exists():
         old=json.loads(p.read_text())
         if old.get('key')==key and old.get('converged') is True:
-            return old,np.load(p.with_suffix('.npz'))['dm']
+            from redox.validation.solution_relaxation import verified_density
+            mol=molecule(identity,geom_identity)
+            density=verified_density(old,p,evidence=None,overlap=mol.intor('int1e_ovlp'),
+                                     electrons=mol.nelectron,mult=identity['mult'])
+            return old,density
         raise RuntimeError(f'Existing unverified cache: {p}')
     mol=molecule(identity,geom_identity)
     mf=solver.make_mf(mol,backend,ACTIVE_SP['xc'],ACTIVE_SP['nlc'])
@@ -194,13 +198,16 @@ def scf(identity,geom_identity,backend,reference=None,refdm=None):
     if rec['s2'] is not None:
         spin_quantum=(identity['mult']-1)/2
         rec['spin_contamination']=rec['s2']-spin_quantum*(spin_quantum+1)
-        if rec['spin_contamination']>.1:
+        if abs(rec['spin_contamination'])>.1:
             rec['electronic_state_flags'].append('spin_contamination')
     if refdm is None and identity['state']==geom_identity['state']:
         delta=rec['e_eV']-identity['e_smd_eV'];rec['native_production_replay_delta_eV']=delta
         if abs(delta)>1e-4:
             raise RuntimeError(f'Native SMD active-energy replay disagrees by{delta}eV')
-    np.savez_compressed(p.with_suffix('.npz'),dm=host_array(dm));atomic(p,rec)
+    np.savez_compressed(p.with_suffix('.npz'),dm=host_array(dm))
+    rec.update(density_artifact_sha256=sha(p.with_suffix('.npz')),
+               density_matrix_sha256=hashlib.sha256(host_array(dm).tobytes()).hexdigest())
+    atomic(p,rec)
     print(f'SMD_SCF_DONE {p.name}',flush=True)
     return rec,host_array(dm)
 

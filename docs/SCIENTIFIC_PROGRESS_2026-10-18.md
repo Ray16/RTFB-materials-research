@@ -2,6 +2,17 @@
 
 ## Current checkpoint: 2026-10-19, 02:03 Chicago
 
+The solution-relaxation continuation separates bound implementation controls from
+individual-case verification and hardens both density-cache schemas. Six archived
+PTZ densities and 16 arithmetic checks pass. Both reciprocal optimizations return
+the selected local geometries (proper symmetry RMSDs 0.000135 / 0.00178 Å); all ten
+checks pass. The composite directional descriptor is locally qualified at
+1.1157 / 1.1373 eV, while active-SP stationarity, global ensembles, thermal barriers
+and experimental rates remain unvalidated. All **450 tests pass**. The first hexyl
+finer replay failed its 1% contact gate (56.9% error); its distinct plus geometry
+has a verified H100 start. No physical threshold changed.
+
+
 **24 of 25 additional candidates have complete checked native potential pairs.**
 The export passes **572 arithmetic checks, zero discrepancies**, with stable inputs.
 There are also 34 original proposals with admitted native potentials. Use the
@@ -16,7 +27,7 @@ admitted at **−0.8255 / −1.4738 V vs Fc** after both minima passed 157 indep
 checks each. The lower electronic-energy plus branch was promoted, with full
 old-state preservation; its sub-meV conformer spread is not a resolved advantage.
 
-The full suite passes **436 software tests**. The current global review passes
+The full suite passes **450 software tests**. The current global review passes
 **30,455 independent checks with zero discrepancies**, stable inputs and another
 inventory check before publication. Its bond graphs are reconstructed independently.
 CSV/XLSX exports preserve optional QC fields; readiness uses actual active energies.
