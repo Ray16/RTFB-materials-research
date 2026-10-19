@@ -1,0 +1,148 @@
+{
+  "status": "controllers_submitted",
+  "workers": [
+    {
+      "host": "lambda1",
+      "gpu": 0,
+      "parent": 0,
+      "id": "bm_n_ethylphenothiazine",
+      "device": {
+        "index": 0,
+        "uuid": "GPU-54527752-20db-dbfe-f13c-c14b1f7d3716",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "controller_pid": 2079801,
+      "process_start": "464930059",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "0",
+        "--cpus",
+        "0,1",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_0",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/worker.py",
+        "--parent",
+        "0"
+      ],
+      "output": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_0",
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_0.log",
+      "submitted": 1792399124.7800016,
+      "actual_GPU_start_verified": false
+    },
+    {
+      "host": "lambda1",
+      "gpu": 1,
+      "parent": 1,
+      "id": "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+      "device": {
+        "index": 1,
+        "uuid": "GPU-acfb23c0-7163-580e-11cd-370e35867833",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        2,
+        3
+      ],
+      "controller_pid": 2079802,
+      "process_start": "464930059",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--cpus",
+        "2,3",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_1",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/worker.py",
+        "--parent",
+        "1"
+      ],
+      "output": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_1",
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_1.log",
+      "submitted": 1792399124.783384,
+      "actual_GPU_start_verified": false
+    },
+    {
+      "host": "lambda1",
+      "gpu": 2,
+      "parent": 2,
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "device": {
+        "index": 2,
+        "uuid": "GPU-7f3f747c-971a-4267-719f-e3d850db3f89",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpu_affinity": [
+        4,
+        5
+      ],
+      "controller_pid": 2079803,
+      "process_start": "464930059",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "2",
+        "--cpus",
+        "4,5",
+        "--threads",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/worker.py",
+        "--parent",
+        "2"
+      ],
+      "output": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_2",
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/lambda1_parent_2.log",
+      "submitted": 1792399124.786393,
+      "actual_GPU_start_verified": false
+    }
+  ],
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 2.59765625,
+    "available_RAM_bytes": 522792583168,
+    "minimum_RAM_GiB": 24
+  },
+  "current_ready_cases": 7,
+  "pending_primary_states": [
+    "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox1",
+    "bm_n_ethyl_3_7_dimethoxyphenothiazine__ox1",
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine__neu",
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox1",
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox2"
+  ]
+}

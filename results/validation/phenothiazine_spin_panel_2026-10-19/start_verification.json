@@ -1,0 +1,60 @@
+{
+  "status": "actual_spin_starts_verified",
+  "observed": 1792399192.3528197,
+  "host": "lambda1",
+  "workers": [
+    {
+      "id": "bm_n_ethylphenothiazine",
+      "gpu": 0,
+      "worker_pid": 2080433,
+      "controller_pid": 2079801,
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "resident": [
+        {
+          "pid": 2080433,
+          "memory_MiB": 2708.0
+        }
+      ],
+      "actual_quantum_start": true
+    },
+    {
+      "id": "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+      "gpu": 1,
+      "worker_pid": 2080871,
+      "controller_pid": 2079802,
+      "cpu_affinity": [
+        2,
+        3
+      ],
+      "resident": [
+        {
+          "pid": 2080871,
+          "memory_MiB": 3906.0
+        }
+      ],
+      "actual_quantum_start": true
+    },
+    {
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "gpu": 2,
+      "worker_pid": 2081222,
+      "controller_pid": 2079803,
+      "cpu_affinity": [
+        4,
+        5
+      ],
+      "resident": [
+        {
+          "pid": 2081222,
+          "memory_MiB": 3726.0
+        }
+      ],
+      "actual_quantum_start": true
+    }
+  ],
+  "load_1m": 4.6201171875,
+  "online_cpus": 80
+}

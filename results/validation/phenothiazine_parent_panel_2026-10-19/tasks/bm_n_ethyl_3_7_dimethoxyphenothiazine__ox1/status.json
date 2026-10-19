@@ -36,20 +36,15 @@
   "started": 1792397547.1321578,
   "experimental_accuracy_validated": false,
   "primary_table_promotion": false,
-  "stage": "dft",
+  "stage": "native_thermal",
   "argv": [
     "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
     "-u",
     "-m",
-    "redox.qm.dft",
+    "redox.qm.sp",
     "--only",
     "bm_n_ethyl_3_7_dimethoxyphenothiazine:ox1",
     "--backend",
-    "gpu",
-    "--nthreads",
-    "2",
-    "--nconf",
-    "3",
-    "--no-freq"
+    "gpu"
   ]
 }
