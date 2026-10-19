@@ -159,6 +159,13 @@ def _optimize_helper_minimum(mf):
   optimization_SCF_converged=True,opt_gradient_grid_response=True)
 
 
+def _install_helper_minimum(helper,selected,folder,q,m,expected_source_sha256):
+ """Install all three addressed caches using the qualified transaction helper."""
+ from redox.qm.native_thermal_repair import install_repaired_state,REPAIR_SOURCE_BYTES
+ snapshot=Path(folder)/'install_producer_source.py';snapshot.write_bytes(REPAIR_SOURCE_BYTES)
+ return install_repaired_state(helper,selected,folder,expected_source_sha256,snapshot,q,m)
+
+
 def _helper_native(gid,state,sd):
  """Resolve a real helper saddle using at most two conservative signed-mode branches."""
  import numpy as np
@@ -167,6 +174,7 @@ def _helper_native(gid,state,sd):
  from pyscf.hessian import thermo
  from redox.qm.dft import _build_smd_mf,_ecp_for,_free_gpu_pool
  from redox.qm.sp import ensure,_ENERGY_KEYS
+ source_sha256=sha(sd/'opt.xyz')
  try:return ensure_native_thermal(gid,state,state_dir=sd)[1]
  except RuntimeError as exc:
   if not ('not stationary' in str(exc) or 'not a minimum' in str(exc)):raise
@@ -204,16 +212,9 @@ def _helper_native(gid,state,sd):
   except Exception as exc:evidence.append(dict(branch=index,status='failed',error=repr(exc)))
   atomic_json(folder/'status.json',dict(branches=evidence,status='running'))
  if not successes:raise RuntimeError(f'Bounded helper minimum repair failed: {folder}')
- _,selected,th=min(successes,key=lambda x:x[0]);archive=folder/'superseded_helper';_archive_tree(sd,archive)
- for name in ['result.json','opt.xyz']:shutil.copy2(selected/name,sd/name)
- for name in ['sp','native_thermal']:
-  (sd/name).mkdir(exist_ok=True)
-  for source in (selected/name).iterdir():
-   target=sd/name/source.name
-   if target.exists():raise RuntimeError('Unexpected addressed helper collision; preserve both')
-   if source.is_dir():shutil.copytree(source,target)
-   else:shutil.copy2(source,target)
- select_policy(sd);atomic_json(folder/'status.json',dict(status='helper_minimum_verified',branches=evidence,selected=str(selected),archive=str(archive)))
+ _,selected,th=min(successes,key=lambda x:x[0])
+ archive=_install_helper_minimum(sd,selected,folder,q,m,source_sha256)
+ atomic_json(folder/'status.json',dict(status='helper_minimum_verified',branches=evidence,selected=str(selected),archive=str(archive)))
  assert load_native_thermal(sd,q,m)
  return th
 

@@ -9,7 +9,7 @@ original proposals have admitted native potentials. The last candidate export
 passes 572 arithmetic checks with zero discrepancies. Each snapshot has its own
 input identities; new reference-parent work is kept separate from graft results.
 
-The full software suite passes **461 tests**. The last full table snapshot passes
+The full software suite passes **466 tests**. The last full table snapshot passes
 30,455 arithmetic checks with stable inputs and zero discrepancies. This verifies
 record admission and arithmetic for that snapshot, not experimental accuracy.
 Native thermochemistry uses geometrically projected internal modes, the isolated

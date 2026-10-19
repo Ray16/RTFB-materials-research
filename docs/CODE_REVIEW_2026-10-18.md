@@ -2,14 +2,17 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **461 tests**. The latest additional fix makes
+The full software suite passes **466 tests**. The latest additional fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
 both failure paths, including preservation of existing helper files. The previous
 producer is retained in
 [the source-epoch record](../results/validation/spin_helper_convergence_2026-10-19/source_epoch.json).
-All primary parent workers passed their initial source guards before this change;
+Helper repair adoption also reuses the qualified transaction installer, carrying
+`projected_thermal` with the SP/native caches and preserving old bytes on failed
+validation or changed input. Five further regression cases cover that adapter.
+All primary parent workers passed their initial source guards before these changes;
 their geometry/energy/thermal numerical producers were unchanged.
 
 The maintained pipeline now binds energies, native partitions and equilibrium spin
