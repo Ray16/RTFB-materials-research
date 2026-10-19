@@ -1,9 +1,9 @@
 {
-  "path": "results/validation/phenothiazine_parent_panel_2026-10-19/reviews/1792399349962610398",
+  "path": "results/validation/phenothiazine_parent_panel_2026-10-19/reviews/1792401785255296803",
   "status": "partial_finished_state_review",
-  "observed": 1792399352.1821768,
-  "states_reviewed": 8,
-  "checks": 112,
+  "observed": 1792401787.9664097,
+  "states_reviewed": 12,
+  "checks": 168,
   "failed_checks": 0,
   "reviewed": [
     {
@@ -35,6 +35,13 @@
       "alternate_spin_ground_state_proven": false
     },
     {
+      "key": "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox1",
+      "G_eV": -34344.84957244021,
+      "thermal_eV": 7.707237007384518,
+      "primary_thermal_quality": "ok",
+      "alternate_spin_ground_state_proven": false
+    },
+    {
       "key": "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox2",
       "G_eV": -34338.87062102352,
       "thermal_eV": 7.74806014191991,
@@ -45,6 +52,13 @@
       "key": "bm_n_ethyl_3_7_dimethoxyphenothiazine__neu",
       "G_eV": -33281.23465917291,
       "thermal_eV": 6.9039416139825285,
+      "primary_thermal_quality": "ok",
+      "alternate_spin_ground_state_proven": false
+    },
+    {
+      "key": "bm_n_ethyl_3_7_dimethoxyphenothiazine__ox1",
+      "G_eV": -33276.60663573785,
+      "thermal_eV": 6.938482777719123,
       "primary_thermal_quality": "ok",
       "alternate_spin_ground_state_proven": false
     },
@@ -61,38 +75,31 @@
       "thermal_eV": 9.241330266490618,
       "primary_thermal_quality": "ok",
       "alternate_spin_ground_state_proven": false
-    }
-  ],
-  "pending": [
-    {
-      "key": "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox1",
-      "status": "computing",
-      "stage": "dft"
-    },
-    {
-      "key": "bm_n_ethyl_3_7_dimethoxyphenothiazine__ox1",
-      "status": "computing",
-      "stage": "native_thermal"
     },
     {
       "key": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox1",
-      "status": "computing",
-      "stage": "dft"
+      "G_eV": -40576.69543909015,
+      "thermal_eV": 9.264287094839153,
+      "primary_thermal_quality": "ok",
+      "alternate_spin_ground_state_proven": false
     },
     {
       "key": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox2",
-      "status": "computing",
-      "stage": "native_thermal"
+      "G_eV": -40571.06419309108,
+      "thermal_eV": 9.334651561171484,
+      "primary_thermal_quality": "ok",
+      "alternate_spin_ground_state_proven": false
     }
   ],
+  "pending": [],
   "CPU_affinity": [
     4,
     5
   ],
   "resources": {
     "online_cpus": 80,
-    "load_1m": 8.9072265625,
-    "available_RAM_bytes": 492436021248,
+    "load_1m": 5.81298828125,
+    "available_RAM_bytes": 489212968960,
     "minimum_RAM_GiB": 8
   },
   "experimental_accuracy_validated": false,

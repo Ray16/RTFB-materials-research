@@ -1,0 +1,54 @@
+{
+  "status": "comparisons_verified",
+  "id": "bm_n_n_diisopropylpyromellitic_diimide",
+  "host": "lambda1",
+  "pid": 2194334,
+  "process_start": "465153957",
+  "cpu_affinity": [
+    0,
+    1
+  ],
+  "started": 1792401365.7078981,
+  "cases": [
+    {
+      "id": "bm_n_n_diisopropylpyromellitic_diimide",
+      "state": "red2",
+      "status": "spin_gap_verified",
+      "chosen_identity": {
+        "id": "bm_n_n_diisopropylpyromellitic_diimide",
+        "state": "red2",
+        "charge": -2,
+        "mult": 1,
+        "geometry_sha256": "6d8a98d1cefe5fb7b3e9bebe9adee0be2b064a36e3796dc82c64b83bb78a8fc8",
+        "smiles_sha256": "1984e73cea3eafcfac10a52c1df86713b74c7d28b71894e145d2843ac75a1547",
+        "sp_record_sha256": "e250d73dd8847fc0b88ef0cc65c9aef28f68954e8372d06edba776fa5e1a5421",
+        "protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        }
+      },
+      "chosen_mult": 1,
+      "alternative_mult": 3,
+      "near_gap_threshold_eV": 0.2,
+      "helper": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/spincheck/bm_n_n_diisopropylpyromellitic_diimide/red2_m3",
+      "created": 1792401365.7309954,
+      "host": "lambda1",
+      "pid": 2194334,
+      "electronic_gap_eV": 0.6916241999388149,
+      "thermochemical_gap_validated": false,
+      "finished": 1792402074.0951695,
+      "experimental_accuracy_validated": false
+    }
+  ],
+  "experimental_accuracy_validated": false,
+  "state": "red2",
+  "finished": 1792402074.1065586
+}

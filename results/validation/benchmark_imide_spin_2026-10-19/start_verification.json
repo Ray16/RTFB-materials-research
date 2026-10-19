@@ -1,0 +1,43 @@
+{
+  "status": "actual_spin_starts_verified",
+  "observed": 1792401691.786574,
+  "host": "lambda1",
+  "workers": [
+    {
+      "id": "bm_n_n_diisopropylpyromellitic_diimide",
+      "gpu": 0,
+      "worker_pid": 2194334,
+      "controller_pid": 2193720,
+      "cpu_affinity": [
+        0,
+        1
+      ],
+      "resident": [
+        {
+          "pid": 2194334,
+          "memory_MiB": 16626.0
+        }
+      ],
+      "actual_quantum_start": true
+    },
+    {
+      "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+      "gpu": 2,
+      "worker_pid": 2194549,
+      "controller_pid": 2193724,
+      "cpu_affinity": [
+        4,
+        5
+      ],
+      "resident": [
+        {
+          "pid": 2194549,
+          "memory_MiB": 5154.0
+        }
+      ],
+      "actual_quantum_start": true
+    }
+  ],
+  "load_1m": 4.34375,
+  "online_cpus": 80
+}

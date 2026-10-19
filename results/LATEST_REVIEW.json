@@ -27,7 +27,22 @@
       "soft_internal_modes_retained": true
     },
     "native_Fc_absolute_V": 4.379195901594358,
+    "checked_catholyte_parent": {
+      "path": "results/reviews/2026-10-19/verified_catholyte_parent_addition/summary.json",
+      "parent": "N-ethylphenothiazine",
+      "event": "ox1->neu",
+      "computed_V_vs_Fc": 0.5373751950901351,
+      "experimental_V_vs_Fc": 0.278,
+      "error_V": 0.25937519509013507,
+      "exact_graft_accuracy_validated": false
+    },
+    "benchmark_spin_requalification": {
+      "plan": "results/validation/benchmark_imide_spin_2026-10-19/plan.json",
+      "held_older_second_wave_points": 2,
+      "aggregate_stats_update_pending": true
+    },
     "matched_parent_validation": {
+      "status": "historical_selected_spin_snapshot_pending_DFT_requalification",
       "path": "results/reviews/2026-10-18/matched_parent_projected_checked/summary.json",
       "scope": "Four selected experimental parent molecules; not a global table review or exact-graft validation",
       "potentials": 7,
@@ -68,6 +83,11 @@
       "actual_starts": "results/validation/phenothiazine_spin_panel_2026-10-19/start_verification.json",
       "ready_cases": 7,
       "workers_started": 3,
+      "additional_batches": [
+        "results/validation/phenothiazine_spin_panel_batch2_2026-10-19/plan.json",
+        "results/validation/benchmark_imide_spin_2026-10-19/plan.json",
+        "results/validation/phenothiazine_spin_followup_2026-10-19/plan.json"
+      ],
       "rule": "Keep plan-bound numerical producer files unchanged while these spin workers are active; primary and alternate surfaces retain separate source epochs."
     },
     "selected_spin_ensemble": {
@@ -93,8 +113,8 @@
       "parent_panel": "results/validation/phenothiazine_parent_panel_2026-10-19/plan.json",
       "actual_GPU_start_proof": "results/validation/phenothiazine_parent_panel_2026-10-19/start_verification.json",
       "GPU_workers_started": 12,
-      "states_independently_reviewed": 8,
-      "partial_state_checks": 112,
+      "states_independently_reviewed": 12,
+      "partial_state_checks": 168,
       "partial_state_failed_checks": 0,
       "spin_and_complete_couple_checks_pending": true,
       "partial_state_review": "results/validation/phenothiazine_parent_panel_2026-10-19/partial_review_current.json",
@@ -125,9 +145,9 @@
     "slides": {
       "status": "checked",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/ptz_benchmark_sources/slides_check.json",
+      "publisher": "results/reviews/2026-10-19/verified_catholyte_parent_addition/slides_check.json",
       "snapshot": null,
-      "pdf_sha256": "c7dbe28702f12c2bcf9e931c66f34c4b381b7319efc2cffec65f21e3d3553b18",
+      "pdf_sha256": "abce5c90eb430ef7d77f48a54c477efaf3aca1309919fb652fd7c15575baddc2",
       "pages": 40
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
@@ -140,7 +160,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792401786.4088926,
+  "updated": 1792402568.6865754,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

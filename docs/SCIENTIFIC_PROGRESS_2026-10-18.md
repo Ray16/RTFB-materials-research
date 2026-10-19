@@ -22,9 +22,12 @@ irreversible second waves stay excluded; B(MEEO)EPT stays tier B because its tab
 and discussion disagree. The [12-state parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/README.md)
 records actual GPU starts, finished states and independent reviews separately.
 Alternate-spin checks and complete adjacent-state pairs are required before the
-new calculated values contribute to strict accuracy assessment. The existing
-matched-parent benchmark remains seven potentials from four molecules and three
-studies, with RMSE **0.1714 V**; no fitted correction is applied.
+new calculated values contribute to strict accuracy assessment. The
+earlier seven-point matched-parent benchmark is now a historical selected-spin
+snapshot: two PMDI second waves require DFT spin checks. The first newly checked
+catholyte point, free EPT, is **+0.537 V vs Fc**, compared with **+0.278 V** measured
+(error **+0.259 V**). See the [checked addition](../results/reviews/2026-10-19/verified_catholyte_parent_addition/README.md).
+No correction is fitted and pooled statistics wait for the pending spin gates.
 
 Both preserved hexyl-NDI radical geometries failed the finer-derivative checks.
 The [terminal review and host diagnostic](../results/validation/hexyl_finer_derivatives_2026-10-19/README.md)

@@ -1,0 +1,133 @@
+{
+  "created": 1792399798.6458464,
+  "scope": "First ready spin states of the fourth experimental parent; disjoint from the existing batch",
+  "parents": [
+    {
+      "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+      "cases": [
+        {
+          "state": "neu",
+          "chosen_identity": {
+            "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+            "state": "neu",
+            "charge": 0,
+            "mult": 1,
+            "geometry_sha256": "e686a70679f59d99ef77f4afaaceb6c0a3491dc92e5bc88cda132539c51c9bc5",
+            "smiles_sha256": "11ab12f35a9eff29d49a43c90095a56b0d1eabd80418498db75201ff86435b9b",
+            "sp_record_sha256": "f39ba6fd5d4533a2f418c9c686d416c68e92dc23e71868323a02972941b8e7d5",
+            "protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            }
+          }
+        },
+        {
+          "state": "ox2",
+          "chosen_identity": {
+            "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+            "state": "ox2",
+            "charge": 2,
+            "mult": 1,
+            "geometry_sha256": "a86b3cdeb95c88acd4b67560be520e4a8cda703b65baff957980b5a40016ef3c",
+            "smiles_sha256": "11ab12f35a9eff29d49a43c90095a56b0d1eabd80418498db75201ff86435b9b",
+            "sp_record_sha256": "d1684ed573d0574e0d7816574ed86d4218e54e2d6cacda797408b07d07e93ebc",
+            "protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "pending_primary_states": [
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox1"
+  ],
+  "prior_batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_2026-10-19/plan.json",
+  "one_worker_per_ready_molecule": true,
+  "attempts_per_case": 1,
+  "current_code_commit": "5052795dc17fc1da23098e4167e7b230098e409d",
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/__main__.py": "680e25cdd52595003ea6f55ebab1533b2e1afbdc88a5ba71fbd3829c77ea92bc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/io.py": "4069a181d62207b31f186725b7cb277ccabf4cd2101e808060ed6f4ee354ed6a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/structures.py": "d8519c738236a2706b248adc3a941f49471d9f595093a777279c922b92c3cf62",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/validation.py": "ce24b7be7e8bdb56dacd55ceaf50e8cf900f3286b8a6cd5ef039e532aae5c329",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/candidates.py": "752e97081b9e7f343aa99ba579c24cd03ca178cb92fd670d6a079e89e839e467",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/standalone.py": "ba2396a8e525b49980b665ae917652ce0e8234fb7ad6e3067617438bfb63ac09",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/contracts.py": "d49e0b8536e28d8f0e8fe80da9bceb2be0ce81db575312499b66cbc52b55df1b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/manifest.py": "b17c1d416de7729bceab061c6086651b0e2e0c6f1c4649af1b117a8f05af99db",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/geometry.py": "7039b27875150a7e113a915e5fad54d194296f5f303033b68c3991ee6faa9336",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/uma.py": "f386d188d71a41df6a5b2c5bf55abe89ef94f3165a26fa876af058315a4a6ac4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/sp.py": "09c6cfdb66d818c37c76c6f6587d44c6c3c804d383729a4161fd9c96bef9ec10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/torsion_scan.py": "34688c3b5c7d2d5ae4f3f7f144a05017e8cf7a3c01db3b3b5876e8b3bab95770",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/nonequilibrium_pcm.py": "5943617598ad851d7237e1752236d3fda488fd51f02026dfacf4a9f11d0fae68",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/vibrations.py": "4596b96c01aa05cae425d9ca3e60a840c4b51725ece452d424f573492a6d152b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/thermal.py": "5368750d46bfb8d3442388407ec9d6f85288008cea1b3757212aa98f7265f44f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/nonequilibrium_smd.py": "2e97c4cf309275fe3900fcebb7e7cdcd169a96dca995b1ea30c897de97bf9c73",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal_repair.py": "417b5dbe76d299087f74bab80aa3277d4bf1f19593508e3acfafabcdf8108123",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/hessian_memory.py": "899c8d9da11e58bbac7f0d7c42bc0d8bdaafb608a4fdc36309c12bf5d5dee0db",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/qrrho.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/projected_thermal.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/xtb_kernel.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/potentials.py": "6ef9381edbf896bd97576785190d25e15221e7b40a099ad7a4c56632c4b13b04",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/integrity.py": "c1cfe01624ae03d20c8fa98406f3b25686e5ce28d302a448dfbaa488ab9e493f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/stability.py": "743b7df89936f933ce80f725badecffaa090cab31e910c21c33237395a492da2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/reorg.py": "2ea19abed1bd8959815ce6dabba5308a9dbe751e4683c4b0691be2e60543516b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/nelsen.py": "09880c3e78893114d397c293284780a7cb695664315807889f9416a8c6739b34",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/lambda_outer.py": "521a0c58d4b8dd10cbba4e0d96573224c28e60152bf5bf3b8ca8ad52510d5e00",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/solvated_reorg.py": "6ed43c974ec3c6e240413ea0e3b595fdbd9cf91a6a726b52da08f67e431b95bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/capacity_and_proxies.py": "456f7533edf751fca9294690459862fb81334a19e960f84ab103a49efdb49d28",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/solution_reorg.py": "c4f325a13b77c82d09ffee6357e7221592c198ac16b49890a63acc9140fc3131",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/scorecard.py": "603e6207141054bf09ba18932b1c1435433e376be7a58560c89bc75220ca9689",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/pareto.py": "ed1723483c435ed5e14f041d3fb02c7437acbe36e0281f3a6a477a4ff99ecefd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/discovery.py": "c41b1cd7e6301e6535e512ca3b33c8278edd4eb80fd1a18cebd769e3f8a89a50",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/expansion.py": "9057093ca7d42848b624efbdc23df77dbc6b04aac86d1c2568102f21a3cbf8de",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/family_search.py": "cc65e49f60f0ce9862d2de25c1e76c081a73a1d7af0cba481c8390596c8d1cb4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/source_audit.py": "9fb89036f4038434bdca28a4fbef978f0c7a0047b0f8345376ed92873411055b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/comparisons.py": "13ea981be894e5bb22b2d82b39c37629fe2e3806d30f2d2ea60bbba2f6deb471",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/stability.py": "133dad7451e9ec5799a00ad8c7f3f85f7d597b25d75100769b3c9e447542d700",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/readiness.py": "85eecef93551c015a9db5d4b9a178d38bc8b5d94b004c4231cc66f43575fcee1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/spins.py": "08f27882da6544051a485a9d276150e42d94c0b878f11bebeb19c289d47e0d3b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/provenance.py": "eadd6364553a81ed0385e58fce680ef301a5d7d044b58cf558bc22374ef53668",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/orop.py": "86f4983455e63aec96f104763b55503f9acc332fd72cce08491f7e8cb92c4ac7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/spin_evidence.py": "016984e7df13d01eae409fba303ac856d418341bf7e8c879b2a08ccd25385a71",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/spin_ensemble.py": "ed05c4e1e255c3d56e53c602d4a509b8953564696ec6e56475773f3dbd2936b8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/solution_relaxation.py": "5acf2b984801c39e74699206676ca403fae8f03dfed10e2956bade0c5f910c8f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/__init__.py": "b06596eb476861e86efad0ab4c1aa17122b89a6bc71ee49d48f8eda971b4409a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/tables.py": "0b55078f689baebacdbbb1701ab7a1e7a6d1dd042441ce665bd9c68c78bba304",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/resources.py": "99e3dc9522494b00cac53cb8ddae8cfa7e50b333141c1dd6a0c9c5e364ee941c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/gpu.py": "4d0c547cd710c8acca1434ce5fce2b001b92ffac3e83aeebf1e4bceebdc393eb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/launch.py": "5bfa06f7e42219ab68e5d0b8f1ac35f45a602bf1e325001ffe5db417a4a05457",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/revalidate_sp.py": "5a34d4daa62d11811b0c82147d0d689eeee0c218474e09fc3d730d79994383ae",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/publication.py": "455351ae4436afa976c102d9a9875918ba050944f34b9c6f01452b01e1721b36",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_spin_panel_batch2_2026-10-19/worker.py": "8aba607007cb0a06b55adda5592523a6781d141a9b74a14e88e43d9e889fd40f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/electrolyte.py": "ad68419d8673d22ce7d785d4e38d40696609c22bad9496ac2ffac5d71f00d0c9"
+  }
+}
