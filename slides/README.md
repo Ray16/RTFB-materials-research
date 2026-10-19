@@ -2,14 +2,14 @@
 
 Open [redox_workflow.pdf](redox_workflow.pdf).
 
-The first 11 slides present the background, monomer synthesis route, computational
+The first 13 slides present the background, post-grafting route, computational
 workflow, method, key candidate results and synthesis implications. Detailed
 methods, validation tables, supplementary molecular drawings and historical
 comparisons follow the **Backup** divider.
 
 The main story is generated from the same audited snapshot as the comparison
-figures. Numerical findings update with that feed; proposed vinyl monomers retain
-pending labels until their separate calculations and admission are complete.
+figures. Numerical findings update with that feed; polymer properties remain distinct from local molecular predictions. Earlier
+vinyl-monomer work is preserved as a superseded route exploration.
 
 Refresh the presentation and maintained figures:
 

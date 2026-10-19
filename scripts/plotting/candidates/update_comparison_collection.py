@@ -235,6 +235,9 @@ def main(argv=None):
     producers=[Path(__file__),Path(__file__).with_name('candidate_highlights.py'),
         Path(__file__).with_name('collection_layout.py'),
         Path(__file__).with_name('candidate_structure_plate.py'),
+        Path(__file__).with_name('core_topology_plate.py'),
+        Path(__file__).with_name('candidate_selection_overview.py'),
+        ROOT/'results/discovery/systematic_families_2026-10-18/summary.json',
         Path(__file__).with_name('redox_state_schemes.py'),
         Path(__file__).with_name('comparison_browser.html'),Path(__file__).with_name('verified_overlay.py'),
         ROOT/'scripts/pipeline/update_verified_slides.py',ROOT/'results/discovery/vinyl_monomers/proposals.json']
@@ -257,7 +260,11 @@ def main(argv=None):
             if row['id'] not in names:names[row['id']]=short_name(row,{})
         focused_figures(rows,report,matches,stage,names,colors)
         from candidate_structure_plate import structure_plate
-        monomers=structure_plate(rows,report,names,vinyl_proposal,stage)
+        monomers=structure_plate(rows,report,names,vinyl_proposal,stage,controls=comparison_admitted)
+        from core_topology_plate import core_topology_plate
+        core_topology_plate(rows,stage)
+        from candidate_selection_overview import selection_overview
+        selection_overview(payload,stage,ROOT)
         from redox_state_schemes import write_schemes
         state_diagrams=write_schemes(rows,report,names,vinyl_proposal,stage,ROOT)
         (stage/'highlights.json').write_text(json.dumps(dict(report,matched_contrasts=matches),indent=2)+'\n')
@@ -266,11 +273,11 @@ def main(argv=None):
             ('Candidate descriptor leaders: potential and capacity','redox_capacity.png',
              'Numbers identify anolyte descriptor leaders on a partial potential--capacity front. Kinetics and polymer validation remain pending.'),
             ('Synthesis accessibility is a separate consideration','synthesis_tradeoff.png',
-             'SA is a heuristic annotation. The computed methylbenzyl caps lack the vinyl group required for monomer-first polymerization.'),
+             'SA is a heuristic annotation. The local methylbenzyl caps model graft sites; precursor chemistry, loading and accessibility require separate review.'),
             ('New candidate contrasts against matched controls','new_candidate_shifts.png',
              'One contrast per core with the strongest potential decrease shared by both events. A shift does not establish polymer performance.'),
-            ('Molecular structures: computed models and vinyl proposals','candidate_structures.png',
-             'Top: computed capped-model descriptor leaders. Bottom: uncomputed vinyl monomers. Orange marks attachment; blue marks the vinyl group.')]:
+            ('Molecular structures: computed graft-site models','candidate_structures.png',
+             'Top: computed capped-model descriptor leaders. Bottom: representative capped graft-site controls. Orange marks attachment.')]:
             slide_frames.extend([r'\begin{frame}{'+title+'}',r'\centering',
                 r'\includegraphics[width=.97\linewidth,height=.72\textheight,keepaspectratio]{../results/candidates/figures/'+artifact_path(filename)+'}',
                 r'\par\smallskip\raggedright\scriptsize '+caption,
@@ -299,7 +306,7 @@ def main(argv=None):
             'Numbered colored points identify the same selected descriptor leaders. '
             'Gray points are other or pending '
             'designs. SA is an annotation, not a measured synthesis outcome or ranking '
-            'objective. The model caps do not contain polymerizable vinyl groups.\n\n'
+            'objective. The local caps do not describe polymer swelling, site loading or transport.\n\n'
             '**New candidate shifts.** One matched contrast per core with the largest '
             'potential decrease shared by both redox events, among source-current '
             'two-electron anolyte calculations passing the available window/integrity '
@@ -307,9 +314,8 @@ def main(argv=None):
             'calculations under the same protocol. A favorable shift does not '
             'establish polymer synthesis, stability, loading or cycling performance.\n\n'
             '**Molecular structures.** Row a depicts the three numbered capped-model leaders; '
-            'row b depicts the proposed vinyl-monomer pilot, whose quantum properties '
-            'are uncomputed. Orange bonds mark attachment to the redox center, while '
-            'blue shading marks the polymerizable vinyl group. Structures are drawn '
+            'row b depicts representative NDI, PMDI and viologen graft-site controls. '
+            'Orange bonds mark attachment to the redox center. Structures are drawn '
             'directly from the recorded molecular graphs.\n\n'
             '**All-candidate ladders (supplementary comparison).** Circles and squares '
             'show first and second declared potential events. Lines connect endpoints '
@@ -327,6 +333,7 @@ def main(argv=None):
             'No proton transfer, demonstrated reversibility or polymer performance is '
             'implied. Capped-model calculated potentials are included; vinyl potentials '
             'remain pending.\n\n'
+            '**NDI core-topology comparison.** Exact graphs of the conventional NDI and cata-NDI local graft models, with admitted potentials and nominal capacities. The difference isolates core topology at the same N-ethyl cap and benzyl attachment. Neither vinyl synthesis nor polymer performance is established.\n\n'
             '**Family coverage.** Candidate counts with source-current admitted '
             'potential calculations (blue) and pending/excluded calculations (hatched '
             'gray). Admission applies to the potential calculation, not to experimental '

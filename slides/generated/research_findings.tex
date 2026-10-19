@@ -1,10 +1,10 @@
 \begin{frame}[plain]\titlepage
-\begin{center}\large Molecular design $\rightarrow$ polymerizable redox centers\end{center}
+\begin{center}\large Molecular design $\rightarrow$ polymer-grafted redox centers\end{center}
 \end{frame}
 \begin{frame}{The target is a redox-active polymer for a flow battery}
 \begin{columns}[T]\begin{column}{.48\textwidth}
-\begin{block}{Research objective}Choose pendant redox centers that remain useful after monomer functionalization and polymerization.\end{block}
-\vspace{.8em}\large Which molecular advantages survive the route to the polymer?
+\begin{block}{Research objective}Choose pendant redox centers that remain useful after grafting onto the polymer.\end{block}
+\vspace{.8em}\large Which molecular advantages survive the grafted polymer environment?
 \end{column}\begin{column}{.48\textwidth}
 \begin{tikzpicture}[every node/.style={draw=teal,fill=soft,rounded corners,align=center,text width=2.5cm,minimum height=1.2cm,font=\small}]
 \node (a) {Redox potential\\Operating window};
@@ -15,22 +15,22 @@
 \end{column}\end{columns}
 \vfill\footnotesize Molecular screening supplies design hypotheses; polymer accessibility and cycling must be tested.
 \end{frame}
-\begin{frame}{Start with the monomer synthesis route}
+\begin{frame}{Post-functionalize the existing polymer}
 \centering
 \begin{tikzpicture}[node distance=.75cm,>=Latex]
-\node[draw=teal,fill=soft,rounded corners,text width=3.1cm,minimum height=1.5cm,align=center] (a) {Redox center\\+ \mbox{vinylbenzyl}\\handle};
-\node[right=of a,draw=teal,fill=soft,rounded corners,text width=3.1cm,minimum height=1.5cm,align=center] (b) {Functionalized\\vinyl monomer};
+\node[draw=teal,fill=soft,rounded corners,text width=3.1cm,minimum height=1.5cm,align=center] (a) {Preformed polymer\\with reactive sites};
+\node[right=of a,draw=teal,fill=soft,rounded corners,text width=3.1cm,minimum height=1.5cm,align=center] (b) {Attach \mbox{redox} groups\\at polymer sites};
 \node[right=of b,draw=teal,fill=soft,rounded corners,text width=3.1cm,minimum height=1.5cm,align=center] (c) {Polymer bearing\\redox centers};
 \draw[->,thick,teal] (a)--(b);\draw[->,thick,teal] (b)--(c);\end{tikzpicture}
 \vspace{1.2em}\begin{block}{The design question}
 Which center combines useful redox behavior with a workable route to the polymer?
 \end{block}
-\vspace{.5em}Potential and capacity guide screening; kinetics and synthesis guide the next tests.
+\vspace{.5em}Potential and molecular capacity guide screening; attachment and accessibility guide downselection.
 \end{frame}
 \begin{frame}{Workflow: from candidate families to synthesis controls}
 \centering
 \begin{tikzpicture}[node distance=.45cm,>=Latex,every node/.style={font=\small}]
-\node[draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (a) {Build exact\\molecular models};
+\node[draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (a) {Build local\\graft-site models};
 \node[right=of a,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (b) {Sample\\conformers};
 \node[right=of b,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (c) {Compute solution\\redox states};
 \node[right=of c,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (d) {Compare models\\and select\\controls};
@@ -39,9 +39,14 @@ Which center combines useful redox behavior with a workable route to the polymer
 \vspace{1em}\begin{columns}[T]\begin{column}{.47\textwidth}
 \textbf{Chemical space}\\Diimides; benzoquinones (BQ) and anthraquinones (AQ); viologens; positive-side controls.
 \end{column}\begin{column}{.47\textwidth}
-\textbf{Selection}\\Potential, nominal capacity, kinetic evidence and synthetic route.
+\textbf{Selection}\\Potential, nominal capacity, kinetic evidence and grafting feasibility.
 \end{column}\end{columns}
 \vfill\footnotesize Finished fields enter comparisons after their checks. Missing properties remain pending.
+\end{frame}
+\begin{frame}{Candidate expansion uses matched molecular changes}
+\centering
+\includegraphics[width=.98\linewidth,height=.77\textheight,keepaspectratio]{../results/candidates/figures/plots/candidate_selection_overview.pdf}
+\par\smallskip\footnotesize Current route: attach redox groups to a preformed polymer.
 \end{frame}
 \begin{frame}{Method: compare free energies of matched solution states}
 \centering\begin{tikzpicture}[node distance=1.2cm,>=Latex]
@@ -57,13 +62,21 @@ Which center combines useful redox behavior with a workable route to the polymer
 Redox potentials from $\Delta G$, referenced consistently to Fc/Fc$^+$.\\[.6em]
 Nominal capacity: $Q=\dfrac{nF}{3.6M}$.
 \end{column}\end{columns}
-\vfill\footnotesize Charge states preserve the declared molecular graph. Stationarity, derivatives, spin and reference consistency are checked separately.
+\vfill\footnotesize E1/E2 identify successive one-electron steps. Diagram: reductions. Geometry, spin and reference checks are retained.
 \end{frame}
+% Actual potentials from the audited 12-event parent snapshot.
+\begin{frame}{Validation: actual potentials and model errors}
+\centering
+\includegraphics[width=.98\linewidth,height=.71\textheight,keepaspectratio]{../results/figures/validation/matched_parent_validation.pdf}
+\par\smallskip\textcolor{teal}{\textbf{Observed MAE 0.21 V; RMSE 0.25 V. Largest error: +0.55 V.}}
+\par\smallskip\footnotesize Twelve free-parent potentials; exact-graft accuracy and kinetics remain unvalidated.
+\end{frame}
+
 \begin{frame}{Quinone models lead nominal capacity}
 \centering
 \includegraphics[width=.98\linewidth,height=.70\textheight,keepaspectratio]{../results/candidates/figures/plots/redox_capacity.pdf}
 \par\smallskip\raggedright\textcolor{teal}{\textbf{The two BQ models reach 207.5 and 198.3 mAh g$^{-1}$.}}
-\par\smallskip\footnotesize 75 designs; 61 checked ladders. Nominal capacity excludes polymer and counterions.
+\par\smallskip\footnotesize 75 designs; 62 checked ladders. Nominal capacity excludes polymer and counterions.
 \end{frame}
 \begin{frame}{Core topology changes NDI reduction potentials}
 \centering
@@ -71,35 +84,28 @@ Nominal capacity: $Q=\dfrac{nF}{3.6M}$.
 \par\smallskip\raggedright\textcolor{teal}{\textbf{NDI core topology shifts $E_1$ by -0.220 V and $E_2$ by -0.312 V.}}
 \par\smallskip\footnotesize Matched model differences in MeCN; voltage shifts alone do not establish battery performance.
 \end{frame}
-\begin{frame}{SA is a separate filter for candidate choice}
+\begin{frame}{Cata-NDI shifts potential without a nominal capacity penalty}
 \centering
-\includegraphics[width=.98\linewidth,height=.70\textheight,keepaspectratio]{../results/candidates/figures/plots/synthesis_tradeoff.pdf}
-\par\smallskip\raggedright\textcolor{teal}{\textbf{High capacity and low SA do not establish a polymerization route.}}
-\par\smallskip\footnotesize SA is heuristic; polymerization compatibility and redox retention remain untested.
+\includegraphics[width=.98\linewidth,height=.70\textheight,keepaspectratio]{../results/candidates/figures/structures/core_topology_comparison.pdf}
+\par\smallskip\raggedright\textcolor{teal}{\textbf{A core-isomer comparison worth discussing alongside the capacity leaders.}}
+\par\smallskip\footnotesize Local graft models; precursor availability, attachment and polymer behavior remain untested.
 \end{frame}
-\begin{frame}{Capacity leaders and the first monomer pilot differ}
+\begin{frame}{Capacity leaders and representative graft-site controls}
 \centering
 \includegraphics[width=.98\linewidth,height=.70\textheight,keepaspectratio]{../results/candidates/figures/structures/candidate_structures.pdf}
-\par\smallskip\raggedright\textcolor{teal}{\textbf{The pilot tests NDI, PMDI and viologen with the actual vinyl handle.}}
-\par\smallskip\footnotesize NDI: naphthalene diimide. PMDI: pyromellitic diimide. Vinyl potentials remain pending.
+\par\smallskip\raggedright\textcolor{teal}{\textbf{Quinones, diimides and viologens provide complementary graft-site hypotheses.}}
+\par\smallskip\footnotesize NDI: naphthalenediimide; PMDI: pyromellitic diimide. Polymer effects unvalidated.
 \end{frame}
-\begin{frame}{The vinyl group carries a small nominal capacity penalty}
-\centering\renewcommand{\arraystretch}{1.65}
-\begin{tabular}{@{}lrr@{}}\toprule
-Core & Capped model & Vinyl monomer \\
-& \multicolumn{2}{c}{Nominal capacity / mAh g$^{-1}$} \\ \midrule
-NDI / ethyl & 134.5 & 130.6 \\
-PMDI / ethyl & 153.9 & 148.7 \\
-Viologen / ethyl & 184.6 & 177.2 \\
-\bottomrule\end{tabular}
-\vspace{1em}\begin{block}{The larger open question is electronic}
-How much does the vinyl-bearing structure shift the redox potentials?
-\end{block}
-\footnotesize Same declared two-electron count; one added carbon. Stoichiometric capacities exclude counterions and polymer. Vinyl potentials remain pending.
+\begin{frame}{Downselection couples redox behavior with grafting feasibility}
+\begin{columns}[T]\begin{column}{.31\textwidth}\begin{block}{Attach}Precursor availability\\[.6em]Attachment selectivity\\[.6em]Redox-center retention\end{block}\end{column}
+\begin{column}{.31\textwidth}\begin{block}{Load}Degree of grafting\\[.6em]Accessible active sites\\[.6em]Counterion mass\end{block}\end{column}
+\begin{column}{.31\textwidth}\begin{block}{Operate}Swelling and electrolyte\\[.6em]Charge transport\\[.6em]Cycling stability\end{block}\end{column}\end{columns}
+\vspace{1em}\textcolor{teal}{\textbf{High nominal molecular capacity is a screening descriptor; usable polymer capacity depends on accessible grafted sites.}}
+\vfill\footnotesize Local benzyl-capped calculations do not include the full polymer environment.
 \end{frame}
 \begin{frame}{Three findings guide the next experiments}
 \begin{block}{Capacity}\textbf{Substituted BQ models lead the current nominal-capacity screen.}\end{block}
 \begin{block}{Voltage tuning}\textbf{NDI core topology provides a clear matched computational contrast.}\end{block}
-\begin{block}{Synthesis direction}\textbf{Compare exact vinyl NDI, PMDI and viologen before committing to polymer synthesis.}\end{block}
-\vfill\footnotesize Next decision: combine monomer redox properties, qualified kinetics and polymerization evidence. Solubility and cycling performance remain unmeasured for these exact targets.
+\begin{block}{Synthesis direction}\textbf{Review quinone, diimide and viologen precursors for post-grafting.}\end{block}
+\vfill\footnotesize Next decision: combine molecular redox properties with attachment feasibility, graft loading and accessible redox sites. Solubility and cycling performance remain unmeasured for these exact targets.
 \end{frame}

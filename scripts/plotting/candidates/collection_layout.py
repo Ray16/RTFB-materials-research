@@ -12,10 +12,10 @@ def artifact_path(name):
     if name in ('manifest.json','captions.md','candidate_comparison_collection.tex'):
         return 'metadata/'+name
     if suffix in ('.json','.csv'):return 'data/'+name
-    if stem in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts'):
+    if stem in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts','candidate_selection_overview'):
         return 'plots/'+name
     if stem in ('coverage','redox_ladders'):return 'supplementary/'+name
-    if stem=='candidate_structures' or stem.startswith('redox_states'):
+    if stem in ('candidate_structures','core_topology_comparison') or stem.startswith('redox_states'):
         return 'structures/'+name
     raise ValueError('Declare an output category before publishing: '+name)
 

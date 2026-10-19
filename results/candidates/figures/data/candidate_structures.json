@@ -1,6 +1,6 @@
 {
   "status": "graph_exact_vector_depictions",
-  "source_vinyl_snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576",
+  "current_route": "post-functionalization of a preformed polymer",
   "structures": [
     {
       "id": "exp_bq_oxy_methoxy",
@@ -27,26 +27,26 @@
       "column": 2
     },
     {
-      "id": "vm_design_ndi_ethyl",
-      "smiles": "C=Cc1ccc(CN2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(CC)C4=O)cc1",
-      "label": "P1  NDI vinyl monomer",
-      "scope": "vinyl_proposal_uncomputed",
+      "id": "design_ndi_ethyl",
+      "smiles": "CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O",
+      "label": "C1  NDI graft-site model",
+      "scope": "computed_capped_local_model",
       "row": 1,
       "column": 0
     },
     {
-      "id": "vm_design_pmdi_ethyl",
-      "smiles": "C=Cc1ccc(Cn2c(=O)c3cc4c(=O)n(CC)c(=O)c4cc3c2=O)cc1",
-      "label": "P2  PMDI vinyl monomer",
-      "scope": "vinyl_proposal_uncomputed",
+      "id": "design_pmdi_ethyl",
+      "smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O",
+      "label": "C2  PMDI graft-site model",
+      "scope": "computed_capped_local_model",
       "row": 1,
       "column": 1
     },
     {
-      "id": "vm_ethylviologen",
-      "smiles": "C=Cc1ccc(C[n+]2ccc(-c3cc[n+](CC)cc3)cc2)cc1",
-      "label": "P3  Viologen vinyl monomer",
-      "scope": "vinyl_proposal_uncomputed",
+      "id": "ethylviologen",
+      "smiles": "CC[n+]1ccc(-c2cc[n+](Cc3ccc(C)cc3)cc2)cc1",
+      "label": "C3  Viologen graft-site model",
+      "scope": "computed_capped_local_model",
       "row": 1,
       "column": 2
     }

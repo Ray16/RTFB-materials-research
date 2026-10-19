@@ -23,16 +23,19 @@ def talk(tmp_path):
     records=[dict(id='vm_'+gid,source_capped_id=source,capacity_nominal_mAh_g=capacity) for gid,source,capacity in
              [('design_ndi_ethyl','ndi',131.),('design_pmdi_ethyl','pmdi',149.),('ethylviologen','viologen',177.)]]
     (proposals/'proposals.json').write_text(json.dumps(dict(records=records)))
+    generated=tmp_path/'slides/generated';generated.mkdir(parents=True)
+    (generated/'matched_parent_validation_plot.tex').write_text(r'\begin{frame}{Validation}Plot\end{frame}')
     return module,tmp_path,dict(snapshot_path='audited-A',original39=rows,additional_candidates=[])
 
 
 def test_main_story_has_background_workflow_method_and_current_results(talk):
     module,root,payload=talk
     result=module.research_frames(payload,root)
-    assert result.count(r'\begin{frame}')==11
+    assert result.count(r'\begin{frame}')==13
     assert result.index('The target is a redox-active polymer')<result.index('Workflow:')<result.index('Method:')<result.index('Quinone models lead')
-    assert '205.0' in result and '135.0 & 131.0' in result
-    assert 'Vinyl potentials remain pending' in result
+    assert '205.0' in result and 'Preformed polymer' in result and 'at polymer sites' in result
+    assert 'vinyl' not in result.lower()
+    assert 'Degree of grafting' in result and 'preformed polymer' in result
     assert 'arithmetic checks' not in result and 'GPU' not in result
     payload['snapshot_path']='audited-B'
     with pytest.raises(RuntimeError,match='same audited snapshot'):module.research_frames(payload,root)

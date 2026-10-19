@@ -1,6 +1,11 @@
-# Vinyl monomers for functionalization before polymerization
+# Earlier vinyl-monomer exploration
 
-The confirmed synthesis route is **attach the redox center to a vinyl monomer,
+**Route corrected by the user on 19 October 2026:** redox groups will be attached
+to an already formed polymer. This folder preserves the earlier, superseded
+monomer-first exploration. Its structures and calculations are separate from the
+current graft-site models; they do not set the present synthesis priorities.
+
+The earlier working route was **attach the redox center to a vinyl monomer,
 then polymerize**. These isolated proposals replace the local model's para methyl
 cap with a terminal vinyl group. The target scaffold is pure para-substituted
 4-vinylbenzyl; other positional isomers require separate proposals.

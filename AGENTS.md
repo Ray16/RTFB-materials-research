@@ -26,6 +26,21 @@ physical validation separately.
 
 ## Candidate results and slides
 
+The confirmed synthesis route is post-functionalization: attach redox groups
+onto an already formed polymer, such as a Merrifield-type polymer with reactive
+benzyl sites (user correction, 2026-10-19). Existing 4-methylbenzyl structures are
+local graft-site models; they do not include the full polymer environment.
+Evaluate attachment feasibility, graft loading, swelling/accessibility, redox
+retention and transport. The earlier vinyl-monomer-before-polymerization route
+was superseded. Preserve its source-frozen calculations as a separate exploratory
+branch; do not present vinyl polymerization compatibility as the current route's
+main selection gate. Keep source-parent, capped-model, vinyl and polymer results
+separate.
+Keep a maintained collection of a few focused figures with stable filenames.
+Separate computed descriptor leaders from synthesis priorities. Molecular and
+redox-state diagrams must distinguish computed state assignments from proposed
+ladders; illustrative resonance forms do not establish charge/spin localization.
+
 Collect verified results for candidates that finish, with pending quantities
 blank and field-specific QC. Keep source-parent measurements separate from the
 properties of exact grafted structures. Update `slides/redox_workflow.tex` and

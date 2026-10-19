@@ -1,17 +1,17 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T12:22:05.478576-05:00",
+    "as_of_Chicago": "2026-10-19T18:29:30.930801-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_182930_930801",
       "additional_candidates": 36,
       "original39_with_native_potentials": 34,
-      "complete_potential_pairs": 27,
+      "complete_potential_pairs": 28,
       "arithmetic_checks": 613,
       "arithmetic_discrepancies": 0,
       "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
@@ -265,14 +265,14 @@
       "current_candidate_coverage": "results/candidates/current.json"
     },
     "slides": {
-      "status": "checked_research_story_with_backup",
+      "status": "checked_postgrafting_research_visualizations",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/research_presentation/slides/status.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_132736_549685",
-      "pdf_sha256": "c59c0e764012c7281359bf5fa9c5b5663d8ad04c5d383d7e3b07336e92452188",
-      "pages": 63,
-      "main_research_slides": 11,
-      "backup_slides": 52
+      "publisher": "results/reviews/2026-10-19/postgrafting_visualizations/slides/status.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_182930_930801",
+      "pdf_sha256": "1d5333d2e61902b1b4f545deea8db9072191902d104e1d139dc231a0b6d367b5",
+      "pages": 67,
+      "main_research_slides": 13,
+      "backup_slides": 54
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -313,13 +313,15 @@
       "manifest": "results/candidates/figures/metadata/manifest.json",
       "candidate_designs": 75,
       "admitted_potential_calculations": 60,
-      "scope": "Capped local-model designs; partial descriptor front, not complete kinetics or polymer synthesis ranking",
-      "synthesis_route": "functionalize vinyl monomer, then polymerize; vinyl targets require separate qualification",
+      "scope": "Local graft-site models; attachment feasibility, loading and polymer environment require separate assessment",
+      "synthesis_route": "post-functionalization of a preformed polymer",
       "vinyl_proposals": "results/discovery/vinyl_monomers/README.md",
-      "redox_state_schemes": "results/candidates/figures/structures/redox_states.pdf"
+      "redox_state_schemes": "results/candidates/figures/structures/redox_states.pdf",
+      "candidate_selection_overview": "results/candidates/figures/plots/candidate_selection_overview.pdf",
+      "parent_validation_plot": "results/figures/validation/matched_parent_validation.pdf"
     },
-    "software_tests_passed": 591,
-    "software_checks": "results/reviews/2026-10-19/research_presentation/software_checks.log",
+    "software_tests_passed": 595,
+    "software_checks": "results/reviews/2026-10-19/postgrafting_visualizations/software_checks.log",
     "remaining_work": [
       "Complete diaryl-viologen solution-property calculations and independent admission",
       "Hexyl NDI native minimum/thermochemistry",

@@ -22,10 +22,12 @@ The [maintained comparison collection](figures/README.md) adds a searchable
 [family coverage](figures/supplementary/coverage.png). One update command refreshes the same
 files from the audited feed as candidates and verified properties arrive.
 
-For the confirmed **functionalize vinyl monomer, then polymerize** route, the
-[vinyl-monomer proposals](../discovery/vinyl_monomers/README.md) are separate from
-the capped local models in these result tables. Their redox quantities remain
-blank until independently computed; no capped-model potential is transferred.
+The confirmed route is **attach redox groups to an existing polymer**. The
+capped models describe local graft sites; attachment chemistry, loading,
+swelling and accessible polymer capacity need separate assessment. See the
+[current route](../../docs/SYNTHESIS_ROUTE.md). The
+[earlier vinyl branch](../discovery/vinyl_monomers/README.md) remains a separate
+exploratory comparison and does not set current synthesis priorities.
 
 The active batch contains 36 additional candidates. The workbook and current
 snapshot report which potential pairs are complete. Blank numeric fields are pending or excluded by

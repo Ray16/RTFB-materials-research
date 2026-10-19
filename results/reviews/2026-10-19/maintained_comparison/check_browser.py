@@ -34,7 +34,7 @@ for name,digest in manifest['files'].items():
     check('Output checksum '+name,hashlib.sha256((FIGURES/name).read_bytes()).hexdigest()==digest)
 for name,digest in manifest['producer_sha256'].items():
     check('Unchanged figure producer/input '+name,hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest)
-for name in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts','coverage','candidate_structures'):
+for name in ('redox_capacity','synthesis_tradeoff','new_candidate_shifts','coverage','candidate_structures','core_topology_comparison','candidate_selection_overview'):
     image=Image.open(artifact(f'{name}.png'))
     check(name+' PNG has 600-dpi metadata',min(image.info['dpi'])>599)
     document=PdfReader(artifact(f'{name}.pdf'))
@@ -45,8 +45,10 @@ highlights=json.loads((artifact('highlights.json')).read_text())
 plate=json.loads((artifact('candidate_structures.json')).read_text())
 proposal=json.loads((ROOT/'results/discovery/vinyl_monomers/proposals.json').read_text())
 model_source={r['id']:r['exact_grafted_smiles'] for r in records}
+feed=json.loads((ROOT/'results/candidates/current.json').read_text())
+model_source.update({r['id']:r['exact_grafted_smiles'] for r in feed.get('comparison_controls',[])})
 vinyl_source={r['id']:r['smiles'] for r in proposal['records']}
-check('The molecular plate has three models and three vinyl proposals',len(plate['structures'])==6)
+check('The molecular plate has three leaders and three graft-site controls',len(plate['structures'])==6)
 for cell in plate['structures']:
     source=model_source if cell['scope']=='computed_capped_local_model' else vinyl_source
     check('Structure plate exact graph '+cell['id'],cell['smiles']==source[cell['id']])
@@ -71,9 +73,9 @@ with sync_playwright() as playwright:
     check('Search finds the exact candidate',page.locator('#body tr').count()==1)
     page.locator('#body input').check()
     check('Structure comparison renders an SVG',page.locator('#cards .card svg:visible').count()==1)
-    page.locator('#cards summary').filter(has_text='Proposed vinyl monomer').click()
+    page.locator('#cards summary').filter(has_text='Earlier vinyl proposal').click()
     check('Vinyl structure can be inspected separately',page.locator('#cards .card svg:visible').count()==2)
-    page.locator('#cards summary').filter(has_text='Proposed vinyl monomer').click()
+    page.locator('#cards summary').filter(has_text='Earlier vinyl proposal').click()
     page.locator('#search').fill('')
     page.locator('#cohort').select_option('Additional')
     check('Additional cohort filter retains all new candidates',page.locator('#body tr').count()==manifest['additional'])

@@ -41,7 +41,9 @@ def comparison_collection_inputs(payload,root,source):
     if metadata['snapshot']!=payload['snapshot_path']:
         raise RuntimeError('Comparison figures require an update from the displayed candidate snapshot')
     inputs={str(manifest):digest(manifest)}
-    for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png','candidate_structures.png'):
+    names=['redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png','candidate_structures.png']
+    if r'\input{generated/research_findings.tex}' in source.read_text():names.extend(['core_topology_comparison.pdf','core_topology_comparison.json','highlights.json','candidate_selection_overview.pdf','candidate_selection_overview.json'])
+    for name in names:
         path=folder/artifact_path(name);expected=metadata['files'][artifact_path(name)]
         if digest(path)!=expected:raise RuntimeError('Comparison figure differs from its checked collection: '+name)
         inputs[str(path)]=expected
@@ -49,6 +51,25 @@ def comparison_collection_inputs(payload,root,source):
     expected=metadata['files']['metadata/candidate_comparison_collection.tex']
     if digest(include)!=expected:raise RuntimeError('Comparison slide include differs from the checked collection')
     inputs[str(include)]=expected
+    return inputs
+
+
+def validation_figure_inputs(root,out):
+    """Bind the exact measured/calculated parent plot and table to their frozen CSV."""
+    path=root/'results/figures/validation/matched_parent_validation.json'
+    script=root/'scripts/plotting/validation/plot_matched_parent_validation.py'
+    metadata=json.loads(path.read_text()) if path.exists() else {}
+    current=bool(metadata) and all(Path(p).exists() and digest(p)==h for p,h in metadata.get('source_sha256',{}).items())
+    if not current:
+        with (out/'validation_figure.log').open('w') as log:
+            subprocess.run([sys.executable,str(script)],cwd=root,stdout=log,stderr=subprocess.STDOUT,check=True,timeout=120)
+        metadata=json.loads(path.read_text())
+    if metadata.get('status')!='checked_12_event_parent_visualization':raise RuntimeError('Parent benchmark plot requires checked data')
+    inputs={str(path):digest(path),**metadata['source_sha256']}
+    for name,expected in metadata['files'].items():
+        item=root/name
+        if digest(item)!=expected:raise RuntimeError('Parent benchmark figure/table changed: '+name)
+        inputs[str(item)]=expected
     return inputs
 
 
@@ -374,6 +395,7 @@ def publish(payload,out,overlays=False):
             proc=subprocess.run(argv,cwd=ROOT,stdout=output,stderr=subprocess.STDOUT,timeout=180)
         if proc.returncode:raise RuntimeError('Existing plot overlay update failed; previous PDF preserved')
     inputs.update(comparison_collection_inputs(payload,ROOT,source))
+    if r'\input{generated/research_findings.tex}' in source.read_text():inputs.update(validation_figure_inputs(ROOT,out))
     if r'\InputIfFileExists{generated/verified_candidates.tex}' not in source.read_text():
         raise RuntimeError('Verified-slide hook is missing; preserve user edits and inspect')
     generated=SLIDES/'generated';generated.mkdir(exist_ok=True)
@@ -388,6 +410,8 @@ def publish(payload,out,overlays=False):
         main_frames=len(re.findall(r'\\begin\{frame\}',main_content))
         for path in (ROOT/'scripts/plotting/candidates/research_presentation.py',
                      ROOT/'results/candidates/figures/data/highlights.json',
+                     ROOT/'results/candidates/figures/data/core_topology_comparison.json',
+                     ROOT/'results/candidates/figures/data/candidate_selection_overview.json',
                      ROOT/'results/discovery/vinyl_monomers/proposals.json'):
             inputs[str(path)]=digest(path)
     # Bind supporting TeX as well as the main story to the checked build.

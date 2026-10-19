@@ -4,7 +4,7 @@ Open the [comparison browser](index.html) for all candidate designs, sortable
 properties, exact structures, filters and comparisons of up to six structures.
 Open the local HTML from this collection folder; the interactive plot and table
 data are embedded. All candidates remain in the table, including unfinished
-calculations. Structure cards also show their proposed vinyl counterparts.
+calculations. Structure cards also show their earlier vinyl counterparts, clearly labeled as historical exploration.
 
 The collection uses five folders, with this guide and the browser at the top level:
 
@@ -18,13 +18,20 @@ The collection uses five folders, with this guide and the browser at the top lev
 
 | Stable figure | What it compares |
 | --- | --- |
+| [Candidate-selection overview](plots/candidate_selection_overview.pdf) | Enumeration, matched comparisons and literature additions; selection is separate from computational completion |
 | [Potential–capacity map](plots/redox_capacity.png) · [PDF](plots/redox_capacity.pdf) | Admitted first/second potentials and nominal molecular capacities |
 | [Synthesis tradeoff](plots/synthesis_tradeoff.png) · [PDF](plots/synthesis_tradeoff.pdf) | SA and nominal capacity, highlighting selected descriptor leaders |
 | [New candidate shifts](plots/new_candidate_shifts.png) · [PDF](plots/new_candidate_shifts.pdf) | Matched contrasts with lower potentials for both events, one per core |
-| [Molecular structures](structures/candidate_structures.svg) · [PDF](structures/candidate_structures.pdf) | Computed capped-model leaders and uncomputed vinyl-monomer pilot; attachment and vinyl group marked |
+| [NDI / Cata-NDI comparison](structures/core_topology_comparison.pdf) | Exact structures, potentials and nominal capacities for the core-isomer contrast |
+| [Molecular structures](structures/candidate_structures.svg) · [PDF](structures/candidate_structures.pdf) | Computed capped-model leaders and representative graft-site controls; attachment bonds marked |
 | [Redox-state schemes](structures/redox_states.pdf) · [computed-model SVG](structures/redox_states_computed.svg) · [vinyl-proposal SVG](structures/redox_states_vinyl.svg) | Three redox states per molecule; charge, multiplicity and electron-transfer steps |
 | [All-candidate ladders](supplementary/redox_ladders.png) · [PDF](supplementary/redox_ladders.pdf) | Every candidate, with pending endpoints blank and nominal capacity alongside |
 | [Family coverage](supplementary/coverage.png) · [PDF](supplementary/coverage.pdf) | Admitted potential calculations and pending/excluded cases by family |
+
+The [parent-validation figure](../../figures/validation/matched_parent_validation.pdf)
+shows measured and calculated potentials and their errors for 12 potentials from
+eight free parents. Its [actual values](../../figures/validation/matched_parent_validation.csv)
+remain separate from candidate-graft results.
 
 The first three are the focused main views. The complete ladders and coverage are
 supplementary views. [Highlights and selection rules](data/highlights.json) distinguish
@@ -32,9 +39,11 @@ the partial potential–capacity front from the existing qualified primary Paret
 policy. SA is an annotation; no missing kinetics or model uncertainty is filled
 to claim a complete front. [Figure captions](metadata/captions.md) state methods and scope.
 
-The modeled structures are p-methylbenzyl-capped local graft models, not the
-vinyl-bearing monomers required for monomer-first polymerization. Computed
-descriptor leaders therefore do not establish polymer synthesis priorities.
+The confirmed synthesis route is **post-functionalization of a preformed
+polymer**. The p-methylbenzyl-capped structures model local graft sites.
+Polymer loading, swelling, accessibility and transport remain outside these
+molecular predictions. The earlier vinyl branch is preserved as exploratory
+history. See the [current route](../../../docs/SYNTHESIS_ROUTE.md).
 
 The redox-state companion uses illustrative formal resonance structures, checked
 for valence, molecular charge, unpaired-electron count and preservation of atoms,
@@ -97,13 +106,9 @@ If scientific inputs change during rendering, the previous completed collection
 is preserved and the command asks for a fresh verified snapshot. It does not
 relax admission to fill a chart.
 
-For monomer-first polymerization, a chemical route assessment should accompany
-the plots. Conventional diimide and viologen branches are reasonable initial
-families; exact asymmetric precursor preparation and grafting remain to establish.
-Viologen reaction with 4-vinylbenzyl chloride has
-[published precedent](https://pubs.acs.org/doi/10.1021/acspolymersau.1c00036), and
-[styrene-functionalized NDI polymerization](https://www.mdpi.com/1422-0067/26/10/4807)
-supports the broader scaffold concept, not these exact structures or battery use.
-Quinones can [retard or inhibit radical polymerization](https://doi.org/10.1016/0014-3057(73)90026-8).
-The BQ models' high nominal capacities therefore do not make them automatic
-monomer synthesis priorities. These are chemical assessments, not verified routes.
+Candidate selection now requires a post-grafting route assessment: precursor
+availability, attachment selectivity, degree of grafting, redox retention and
+accessibility in the swollen polymer. Molecular SA scores and nominal capacities
+alone do not establish these properties. Vinyl-polymerization inhibition is no
+longer the main route constraint. Earlier vinyl-route source notes remain in
+[the historical exploration](../../discovery/vinyl_monomers/README.md).

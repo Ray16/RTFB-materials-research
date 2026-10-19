@@ -129,7 +129,7 @@ def write_schemes(rows,report,names,proposal,out,root):
             '<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="#596573"/></marker></defs>',
             '<rect width="1080" height="1050" fill="white"/>',
             '<g font-family="DejaVu Sans,Arial,sans-serif" fill="#202a35">',
-            '<text x="25" y="30" font-size="22" font-weight="bold">'+('Computed capped-model charge/spin ladders' if is_computed else 'Proposed vinyl-monomer ladders · uncomputed')+'</text>']
+            '<text x="25" y="30" font-size="22" font-weight="bold">'+('Computed capped-model charge/spin ladders' if is_computed else 'Earlier vinyl exploration · proposed ladders')+'</text>']
         for i,row in enumerate(group):
             forms=reduction_forms(row['smiles']);states=row['states']
             if isinstance(states,str):states=json.loads(states)
@@ -168,7 +168,7 @@ def write_schemes(rows,report,names,proposal,out,root):
                     depiction='one illustrative formal resonance representation, not calculated density',
                     evidence_sha256=evidence))
         parts.extend(['<text x="25" y="1017" font-size="16">Illustrative resonance forms; charge/spin may be delocalized. No proton transfer is implied.</text>',
-            '<text x="25" y="1040" font-size="16">'+('Potentials: calculated MeCN vs Fc/Fc+. Arrows show electron count, not demonstrated reversibility.' if is_computed else 'Vinyl-state properties and polymer performance are uncomputed. M is the proposed multiplicity.')+'</text>',
+            '<text x="25" y="1040" font-size="16">'+('Potentials: calculated MeCN vs Fc/Fc+. Arrows show electron count, not demonstrated reversibility.' if is_computed else 'Earlier route assumption. Vinyl-state potentials remain pending; M is proposed.')+'</text>',
             '</g></svg>'])
         svg='\n'.join(parts);(out/f'{prefix}.svg').write_text(svg)
         cairosvg.svg2pdf(bytestring=svg.encode(),write_to=str(out/f'{prefix}.pdf'))
