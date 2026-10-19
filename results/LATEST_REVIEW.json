@@ -1,14 +1,14 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T05:49:46.921559-05:00",
+    "as_of_Chicago": "2026-10-19T06:24:53.538237-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_054946_921559",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_062453_538237",
       "additional_candidates": 25,
       "original39_with_native_potentials": 34,
       "complete_potential_pairs": 24,
@@ -97,6 +97,11 @@
     "model_validation_limits": {
       "phenothiazine_second_wave": "results/reviews/2026-10-19/phenothiazine_checked_subset/model_discrepancy.json",
       "SCF_diagnostic": "results/validation/ptz_dication_scf_probe_2026-10-19/summary.json",
+      "gradient_diagnostic": "results/validation/ptz_active_gradient_2026-10-19/independent_review.json",
+      "selection_policy": "config/model_validation_limits.json",
+      "policy_enforced_in_scorecard_Pareto_and_exports": true,
+      "held_candidate_capacities": 3,
+      "additional_held_capacities": 2,
       "confident_two_electron_window_capacity": false,
       "no_fitted_correction": true
     },
@@ -119,14 +124,14 @@
       "source_doi": "10.1021/acs.chemmater.8b04770",
       "strict_target_potentials": 5,
       "strict_target_parents": 4,
-      "matching_calculations_pending": true,
+      "matching_calculations_pending": false,
       "parent_panel": "results/validation/phenothiazine_parent_panel_2026-10-19/plan.json",
       "actual_GPU_start_proof": "results/validation/phenothiazine_parent_panel_2026-10-19/start_verification.json",
       "GPU_workers_started": 12,
       "states_independently_reviewed": 12,
       "partial_state_checks": 168,
       "partial_state_failed_checks": 0,
-      "spin_and_complete_couple_checks_pending": true,
+      "spin_and_complete_couple_checks_pending": false,
       "partial_state_review": "results/validation/phenothiazine_parent_panel_2026-10-19/partial_review_current.json",
       "strict_source_conflicted_parent_not_scheduled": true
     },
@@ -143,26 +148,26 @@
       "independent_checks_each": 157
     },
     "global_review": {
-      "scope": "All table stages rebuilt after completed parent spin qualification and calibration gate propagation",
-      "path": "results/reviews/2026-10-19/reference_gate_tables/review_status.json",
+      "scope": "All table stages rebuilt with evidence-bound model-selection limits; failed experimental residuals retained",
+      "path": "results/reviews/2026-10-19/model_selection_tables_final/review_status.json",
       "status": "complete",
-      "arithmetic_checks": 30884,
+      "arithmetic_checks": 31850,
       "arithmetic_discrepancies": 0,
       "inputs_current_during_review": true,
       "changed_inputs": [],
       "scientific_accuracy_validated": false
     },
     "slides": {
-      "status": "checked",
+      "status": "checked_pdf_verified_against_model_limited_candidate_snapshot",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/full_matched_parent_final/slides_check.json",
-      "snapshot": null,
-      "pdf_sha256": "4c5015ddaedb58f54320cc605c28741beede93655655ba86729b792278bb70dc",
-      "pages": 41
+      "publisher": "results/reviews/2026-10-19/model_selection_slides/slides_check.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_062453_538237",
+      "pdf_sha256": "44596ebb38a49121e3f3397c8b28c2d7fe5a838bbfb3b298f95ab8824df0c48d",
+      "pages": 43
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
-    "software_tests_passed": 529,
-    "software_checks": "results/validation/reference_admission_2026-10-19/software_checks.log",
+    "software_tests_passed": 540,
+    "software_checks": "results/validation/model_selection_publication_2026-10-19/software_checks.log",
     "remaining_work": [
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
@@ -171,7 +176,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792407452.3077765,
+  "updated": 1792409222.2014372,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

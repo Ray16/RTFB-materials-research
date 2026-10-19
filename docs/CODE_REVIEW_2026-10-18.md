@@ -2,7 +2,7 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **529 tests**. The latest additional fix makes
+The full software suite passes **540 tests**. The latest additional fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
@@ -26,14 +26,22 @@ and binds experimental CSVs into table-review fingerprints. The new primary
 phenothiazine source supplies five strict target potentials from four parents;
 irreversible waves and conflicting values remain excluded from strict scoring.
 The [parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/README.md)
-records its calculations and independent partial reviews. Started calculations do
-not establish matching accuracy or the preferred spin surface.
+records its calculations and independent reviews. All 12 primary states and
+14 targeted spin comparisons have finished; 12 potentials from eight parents
+now contribute to the matched, unfitted benchmark.
 
-The last full table snapshot passes **30,884 arithmetic checks**, and the additional
+The last full table snapshot passes **31,850 arithmetic checks**, and the additional
 candidate export passes **572 checks**, with zero discrepancies. These are scoped
 snapshots; new parent calculations require a fresh assessment after their QC.
 [Current evidence](../results/LATEST_REVIEW.json) identifies the exact receipts,
 24/25 admitted additional potential pairs, source catalog and checked slide deck.
+The new [model-selection policy](../config/model_validation_limits.json) scopes
+the observed phenothiazine second-oxidation failure independently of solver QC.
+It retains computed potentials and benchmark residuals, withholds qualified
+accessible capacity, and prevents affected objectives from entering the primary
+Pareto front. Stale backing evidence or an unreviewed method cannot clear the
+limit. Eleven regression cases and the independent table reconstruction cover
+that behavior.
 Both remaining hexyl-NDI branches failed physical gates. Host-only diagnostics
 reproduce the problem in the SMD CDS term; neither geometry is admitted.
 Solution kinetics, broader experimental accuracy and exact-graft validation remain

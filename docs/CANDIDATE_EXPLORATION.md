@@ -1,5 +1,35 @@
 # Systematic candidate exploration
 
+## Current results: 2026-10-19
+
+The [candidate workbook](../results/candidates/latest.xlsx) contains 25 additional
+exact grafts: **24 have admitted native potential pairs**. The first family
+comparison panel and the OMe/Me panel have completed their computational stages;
+read the [matched comparisons](../results/candidates/comparisons.csv) for current
+values under the corrected thermal protocol and Fc reference. Completion of a
+pipeline is separate from each field's QC. The hexyl-NDI pair remains excluded
+because neither refined radical geometry passed its derivative gates.
+
+Three phenothiazine accessible capacities (two in the additional batch) are withheld by the evidence-bound
+[model-selection policy](../config/model_validation_limits.json). Their computed
+potentials and nominal capacities remain available as model estimates; the checked
+free-parent second-wave error is +0.547 V. Exact-graft experimental performance
+and solution kinetics remain unvalidated. A larger voltage shift alone does not
+establish a better battery candidate.
+
+The source catalog and systematic pool below remain the basis for further
+exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts and
+alternative cata-annulated imide graphs remain preparation work, with no QM
+results implied. Source-parent measurements retain their own conditions and
+are never assigned to an exact graft.
+
+## Earlier exploration checkpoints
+
+The following dated preparation and execution descriptions preserve their original
+counts and protocol. Their statements that calculations are pending are historical;
+use the current candidate feed for completed properties.
+
+
 Validation of existing properties and exploration run in parallel. The six new
 motifs already computing are a pilot. The broader search starts with viologens,
 PMDIs and NDIs, supported by multiple data sources and explicit enumeration.

@@ -41,3 +41,10 @@ error of +0.547 V. Two-electron window/accessible-capacity classifications for
 phenothiazine analogues are provisional; nominal electron/mass bookkeeping is
 unchanged. See the [model discrepancy](../reviews/2026-10-19/phenothiazine_checked_subset/README.md).
 No offset is fitted or inherited by an exact graft.
+
+The [selection policy](../../config/model_validation_limits.json) enforces that
+limit: affected qualified accessible capacities are blank, with the original
+values retained under `model_accessible_capacity_estimate_mAh_g`.
+`model_max_observed_error_V` refers to the reviewed free-parent residual; it is
+not a measurement or an error bound for an exact graft. These rows cannot enter
+the primary Pareto front on the affected objectives.

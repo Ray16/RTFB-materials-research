@@ -1,0 +1,40 @@
+{
+  "status": "active_gradient_and_finite_energy_checked",
+  "task": {
+    "state": "neu",
+    "charge": 0,
+    "mult": 1,
+    "guess": "minao",
+    "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/input_neu",
+    "expected_eV": -33288.13860078689,
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/input_neu/geometry.xyz": "a7215c410fe9b90923f4aac69a9a02ce98d99b3c02d7e4b8017d43c131f99d16",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/input_neu/selected_SP.json": "2a62126b26a1b377177ea3a9010c3f82721f8e7bf7a45f8d38fc21376d17dbba"
+    }
+  },
+  "host": "lambda13",
+  "pid": 3783876,
+  "process_start": "52542009",
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "started": 1792408115.2092447,
+  "production_admission": false,
+  "geometry_optimized": false,
+  "thermochemistry_recomputed": false,
+  "energy_Ha": -1223.3165300675996,
+  "energy_reproduction_difference_eV": 1.565058482810855e-08,
+  "max_gradient_Ha_Bohr": 0.015552607064061266,
+  "RMS_gradient_Ha_Bohr": 0.004511183355104287,
+  "checked_column": 42,
+  "analytic_component_Ha_Bohr": 0.015552607064061266,
+  "finite_energy_components_Ha": [
+    -1223.3165377617356,
+    -1223.316522207168
+  ],
+  "finite_energy_derivative_Ha_Bohr": 0.015554567653452978,
+  "finite_energy_absolute_error_Ha_Bohr": 1.960589391711287e-06,
+  "gradient_sha256": "5e90f4897c8b47c274211fad9c312a009c2964c9d1c7bc7514c94789854d569d",
+  "finished": 1792408246.387248
+}

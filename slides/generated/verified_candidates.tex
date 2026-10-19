@@ -14,7 +14,7 @@ Current geometry, spin evidence, active SMD energies and derivative-checked solu
 \footnotesize Predicted molecular properties; experimental accuracy for the exact grafts remains unvalidated.
 \par\vspace{1ex}\scriptsize Native frequency gate: $\nu_{\min}\geq-5$ cm$^{-1}$. Small negative modes within this tolerance remain flagged in the audit.
 \end{column}\end{columns}
-\vfill\scriptsize Data snapshot: 2026-10-19 05:49:46 (America/Chicago).
+\vfill\scriptsize Data snapshot: 2026-10-19 06:24:53 (America/Chicago).
 \end{frame}
 \begin{frame}{Candidate expansion: matched computational hypotheses}
 \small\centering\renewcommand{\arraystretch}{1.2}
@@ -31,7 +31,7 @@ PTZ 3,7-difluoro & 157.9 & 3/3 & 3/3 \\
 \footnotesize Nominal capacity assumes the declared two-electron ladder. Usable electrons require both potential-window and integrity gates.
 \par\vspace{1ex}UMA is a gas-phase preoptimizer. New solution potentials, disproportionation and solution kinetics remain pending until their separate checks pass.
 \par\vspace{1ex}Exact-graft measurements and synthesis routes are unverified. Parent results are not assigned to these structures.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New computational leads for experimental follow-up}
 \small\centering\renewcommand{\arraystretch}{1.25}
@@ -43,10 +43,10 @@ Ether-linked PMDI & -1.121 & -2.045 & 136.6 \\
 Ring-OMe viologen & -0.668 & -1.256 & 167.3 \\
 Cyclopropyl PMDI & -1.089 & -1.962 & 148.7 \\
 \bottomrule\end{tabular}\par\vspace{1ex}\raggedright
-\footnotesize Fluoro PTZ is the strongest positive-side voltage hypothesis. Ether-linked PMDI trades more negative reductions for added mass.
+\footnotesize Fluoro PTZ is a positive-side voltage hypothesis; its second wave and usable capacity remain provisional under the parent model limitation.
 \par\vspace{1ex}OMe viologen supplies a matched donor-ring contrast; compact PMDI retains useful nominal capacity. Small shifts are unresolved improvements.
 \par\vspace{1ex}This is a follow-up set, not a validated performance ranking. Exact-graft solubility, cycling durability, synthesis and solution kinetics remain unvalidated.
-\vfill\scriptsize Corrected native snapshot: 2026-10-19 05:49:46.
+\vfill\scriptsize Corrected native snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{Systematic family screening: comparison panels}
 \scriptsize\centering\renewcommand{\arraystretch}{1.1}
@@ -68,7 +68,7 @@ NDI & Ether linker & 3/3 & 3/3 \\
 \footnotesize Matched ethyl controls; all ring variants use the same selected site.
 \par\vspace{1ex}UMA is gas-phase screening. Solution potentials and usable electrons require DFT, thermal, spin and integrity QC.
 \par\vspace{1ex}Exact synthesis routes and experimental graft performance remain unverified.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{Systematic family screening: comparison panels}
 \scriptsize\centering\renewcommand{\arraystretch}{1.1}
@@ -84,7 +84,7 @@ NDI & Ring Me & 3/3 & 3/3 \\
 \footnotesize Matched ethyl controls; all ring variants use the same selected site.
 \par\vspace{1ex}UMA is gas-phase screening. Solution potentials and usable electrons require DFT, thermal, spin and integrity QC.
 \par\vspace{1ex}Exact synthesis routes and experimental graft performance remain unverified.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{Matched family comparisons: admitted potential shifts}
 \scriptsize\centering\renewcommand{\arraystretch}{1.15}
@@ -104,7 +104,7 @@ NDI & Ring F & 0.056 & 0.036 & 0.020 \\
 \bottomrule\end{tabular}\par\vspace{1ex}\raggedright
 \footnotesize Each shift requires an admitted candidate and control event under matched native thermochemistry. Pending events stay blank.
 \par\vspace{1ex}Positive potential shifts are more positive reductions; the shared Fc reference cancels. A shift alone does not establish improved battery performance.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{Matched family comparisons: admitted potential shifts}
 \scriptsize\centering\renewcommand{\arraystretch}{1.15}
@@ -122,15 +122,15 @@ NDI & Ring Me & -0.061 & -0.055 & -0.006 \\
 \bottomrule\end{tabular}\par\vspace{1ex}\raggedright
 \footnotesize Each shift requires an admitted candidate and control event under matched native thermochemistry. Pending events stay blank.
 \par\vspace{1ex}Positive potential shifts are more positive reductions; the shared Fc reference cancels. A shift alone does not establish improved battery performance.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
 \begin{tabular}{@{}p{4.7cm}rrrrr@{}}\toprule
 Candidate & $E_1$ & $E_2$ & $\Delta E$ & Nominal & Accessible \\
 & \multicolumn{3}{c}{V vs. Fc/Fc$^+$} & \multicolumn{2}{c}{mAh/g} \\ \midrule
-PTZ 3,7-dimethyl & 0.480 & 1.460 & 0.980 & 161.7 & 161.7 \\
-PTZ 3,7-difluoro & 0.689 & 1.696 & 1.008 & 157.9 & 157.9 \\
+PTZ 3,7-dimethyl & 0.480 & 1.460 & 0.980 & 161.7 & -- \\
+PTZ 3,7-difluoro & 0.689 & 1.696 & 1.008 & 157.9 & -- \\
 PMDI ether linker & -1.121 & -2.045 & 0.924 & 136.6 & 136.6 \\
 PMDI MEE cap & -1.114 & -1.968 & 0.854 & 126.9 & 126.9 \\
 PMDI propyl cap & -1.098 & -1.962 & 0.863 & 147.9 & 147.9 \\
@@ -139,9 +139,9 @@ PMDI ring Me & -1.088 & -1.959 & 0.871 & 147.9 & 147.9 \\
 PMDI (R)-pentan-2-yl & -1.087 & -1.966 & 0.879 & 137.3 & 137.3 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
@@ -158,9 +158,9 @@ PMDI ring OMe & -0.982 & -1.924 & 0.942 & 141.7 & 141.7 \\
 PMDI ring F & -0.918 & -1.813 & 0.895 & 146.3 & 146.3 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
@@ -177,9 +177,9 @@ NDI cyclopropyl & -0.754 & -1.394 & 0.640 & 130.6 & 130.6 \\
 NDI propyl cap & -0.753 & -1.413 & 0.660 & 130.0 & 130.0 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
@@ -196,9 +196,9 @@ NDI ring CN & -0.490 & -1.180 & 0.690 & 126.6 & 126.6 \\
 Phthalimide (1e control) & -1.642 & -- & -- & 106.7 & 106.7 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
@@ -206,7 +206,7 @@ Phthalimide (1e control) & -1.642 & -- & -- & 106.7 & 106.7 \\
 Candidate & $E_1$ & $E_2$ & $\Delta E$ & Nominal & Accessible \\
 & \multicolumn{3}{c}{V vs. Fc/Fc$^+$} & \multicolumn{2}{c}{mAh/g} \\ \midrule
 Naphthalimide (1e control) & -1.522 & -- & -- & 88.9 & 88.9 \\
-3,7-diOMe PTZ (2e proposal) & 0.345 & 1.279 & 0.934 & 147.5 & 147.5 \\
+3,7-diOMe PTZ (2e proposal) & 0.345 & 1.279 & 0.934 & 147.5 & -- \\
 Viologen ring OMe & -0.668 & -1.256 & 0.587 & 167.3 & 167.3 \\
 Viologen ring Me & -0.624 & -1.241 & 0.616 & 176.1 & 176.1 \\
 Viologen propyl cap & -0.614 & -1.219 & 0.605 & 176.1 & 176.1 \\
@@ -215,9 +215,9 @@ Viologen ether linker & -0.605 & -1.230 & 0.624 & 160.3 & 160.3 \\
 Viologen ME cap & -0.597 & -1.204 & 0.607 & 167.3 & 167.3 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
@@ -234,9 +234,9 @@ D3TaLES 80EEOZ & -0.984 & -2.006 & 1.022 & 153.8 & 153.8 \\
 D3TaLES 80XWVS & -0.923 & -1.895 & 0.973 & 183.4 & 183.4 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
@@ -253,9 +253,9 @@ BQ O tether / 3Me & -0.755 & -1.967 & 1.211 & 198.3 & 198.3 \\
 D3TaLES 80MDPM & -0.672 & -1.566 & 0.894 & 164.0 & 164.0 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{New candidate potentials with the matched native Fc reference}
 \scriptsize\renewcommand{\arraystretch}{1.25}\centering
@@ -266,9 +266,9 @@ BQ O tether / OMe & -0.565 & -1.766 & 1.201 & 207.5 & 207.5 \\
 D3TaLES 05CZHI & -0.406 & -1.313 & 0.906 & 147.6 & 73.8 \\
 \bottomrule\end{tabular}\par
 \vspace{1ex}\raggedright
-\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.
-\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.
-\vfill\scriptsize Audited snapshot: 2026-10-19 05:49:46.
+\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.
+\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.
+\vfill\scriptsize Audited snapshot: 2026-10-19 06:24:53.
 \end{frame}
 \begin{frame}{Reference and thermal validation completed}
 \begin{columns}[T]\begin{column}{0.48\textwidth}

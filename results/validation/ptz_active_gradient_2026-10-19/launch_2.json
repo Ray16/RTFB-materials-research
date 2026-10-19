@@ -1,0 +1,40 @@
+{
+  "host": "lambda13",
+  "task": 2,
+  "state": "ox2",
+  "gpu": 2,
+  "device": {
+    "index": 2,
+    "uuid": "GPU-5d07badb-4052-7045-bdc1-c0476709589b",
+    "name": "NVIDIA H100 NVL",
+    "memory_MiB": 95830.0,
+    "compute_capability": "9.0"
+  },
+  "CPU_affinity": [
+    4,
+    5
+  ],
+  "controller_pid": 3780516,
+  "process_start": "52537062",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "2",
+    "--cpus",
+    "4,5",
+    "--threads",
+    "2",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/reserved_2",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/worker.py",
+    "--task",
+    "2"
+  ],
+  "submitted": 1792408031.2087524
+}

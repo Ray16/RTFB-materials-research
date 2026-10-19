@@ -1,0 +1,62 @@
+{
+  "status": "local_quadratic_diagnostic_completed",
+  "states": [
+    {
+      "state": "neu",
+      "rigid_rank": 6,
+      "unscaled_max_step_A": 0.17730293057368632,
+      "local_trust_radius_A": 0.1,
+      "step_scale": 0.5640064700365482,
+      "estimated_electronic_change_eV": -0.07978297940431729,
+      "curvature_model": "r2SCAN-D4/SVP(D) native Hessian; active gradient; unit-mass Euclidean rigid exclusion",
+      "evidence_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/input_neu/geometry.xyz": "a7215c410fe9b90923f4aac69a9a02ce98d99b3c02d7e4b8017d43c131f99d16",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/neu/native_thermal/f0eea22ecdd6d5d1/hessian_cartesian.npy": "ed33c6f6155eb57fbad56eb7ce5eb8b5820a9fe28680484083b9d8443a5bfc39",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/neu/gradient_Ha_Bohr.npy": "5e90f4897c8b47c274211fad9c312a009c2964c9d1c7bc7514c94789854d569d"
+      }
+    },
+    {
+      "state": "ox1",
+      "rigid_rank": 6,
+      "unscaled_max_step_A": 0.06516815514463202,
+      "local_trust_radius_A": 0.1,
+      "step_scale": 1.0,
+      "estimated_electronic_change_eV": -0.0900110371958844,
+      "curvature_model": "r2SCAN-D4/SVP(D) native Hessian; active gradient; unit-mass Euclidean rigid exclusion",
+      "evidence_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/input_ox1/geometry.xyz": "e66cc2ceb530b38dd87c54ef7d3b4c7c905ca773accd0e4a57afa860a914edb9",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/ox1/native_thermal/d3921c493e904960/hessian_cartesian.npy": "3f589f1e93a408b7d5409b872227967f7317ca2ca75d00efe4d60a1bc2713dca",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/ox1/gradient_Ha_Bohr.npy": "3bc83e6ad296ddfecdd78e35071bdb9479a060999952e5a05222f69390a6ca4a"
+      }
+    },
+    {
+      "state": "ox2",
+      "rigid_rank": 6,
+      "unscaled_max_step_A": 0.07530275883463386,
+      "local_trust_radius_A": 0.1,
+      "step_scale": 1.0,
+      "estimated_electronic_change_eV": -0.10866744490656738,
+      "curvature_model": "r2SCAN-D4/SVP(D) native Hessian; active gradient; unit-mass Euclidean rigid exclusion",
+      "evidence_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/input_ox2/geometry.xyz": "b85ed6918af9b7561d2099d7c7c6f142a1f179f1cc9d3fd44cad63ad50ec30d8",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethyl_3_7_dimethoxyphenothiazine/ox2/native_thermal/4e480f2b90d51a76/hessian_cartesian.npy": "a54f08626ffad6b6cada3ca03f89d03cf2fadf16c50377d91ed49df02764a094",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_gradient_2026-10-19/ox2/gradient_Ha_Bohr.npy": "031be09c91f5d6ab6e16a92d80b4e1ad7a9853f1175b776e3749c533af21fed5"
+      }
+    }
+  ],
+  "estimated_charging_gap_change_eV": -0.008428349919115868,
+  "actual_active_minimum_found": false,
+  "energy_correction_applied": false,
+  "production_admission": false,
+  "caveat": "Different-level curvature and a local trust step are not an active-level minimization or a validated free-energy correction",
+  "CPU_affinity": [
+    4
+  ],
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 12.90234375,
+    "available_RAM_bytes": 495172030464,
+    "minimum_RAM_GiB": 8
+  },
+  "completed": 1792408462.9537668
+}

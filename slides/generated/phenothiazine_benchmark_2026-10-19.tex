@@ -26,3 +26,47 @@
   $\ddagger$ Table/discussion conflict; tier B. Attanayake et al., Chem. Mater. 2019,
   DOI: 10.1021/acs.chemmater.8b04770, Table 1. Parent evidence does not validate grafts.
 \end{frame}
+
+\begin{frame}{Phenothiazine model diagnosis: geometry sensitivity}
+  \small
+  \begin{center}
+  \begin{tabular}{lrrr}
+    \toprule
+    DMeOEPT state & Max. force & FD error & Local $\delta E$ estimate \\
+    & \multicolumn{2}{c}{Ha/Bohr} & eV \\
+    \midrule
+    Neutral & 0.01555 & $1.96\times10^{-6}$ & $-0.080$ \\
+    Radical cation & 0.01490 & $1.74\times10^{-6}$ & $-0.090$ \\
+    Dication & 0.01493 & $0.84\times10^{-6}$ & $-0.109$ \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item Three independent reserved H100 calculations reproduce selected energies;
+      the largest gradient component passes a cold finite-energy check.
+    \item The declared composite geometries are not stationary at the active level.
+      A local lower-level Hessian estimate shifts the charging gap by only $-0.0084$ eV.
+    \item This is neither an optimized free-energy result nor an error bound.
+      Functional, environment and geometry contributions remain unresolved.
+  \end{itemize}
+  \vfill\scriptsize wB97M-V/TZVPD/SMD forces at r2SCAN-D4 geometries; local trust
+  radius 0.1 \AA. No canonical energy, geometry or thermal term was replaced.
+\end{frame}
+
+\begin{frame}{Observed model limits qualify candidate selection}
+  \begin{block}{The second-oxidation prediction is provisional}
+    A checked free parent has a +0.547 V second-wave residual.
+    Phenothiazine +2/+1 catholyte paths therefore require further model validation.
+  \end{block}
+  \begin{itemize}
+    \item Retain calculated potentials and nominal electron/mass capacities.
+    \item Withhold qualified accessible capacity for three PTZ candidates;
+      retain the original window/path estimate as a separately labelled diagnostic.
+    \item Exclude affected voltage, capacity and stability objectives from primary
+      Pareto selection. First-wave-only paths and other molecular cores keep their QC.
+    \item Keep the poor-agreement point in the experimental benchmark. No offset fit
+      or parent measurement is assigned to an exact graft.
+  \end{itemize}
+  \vfill\scriptsize Evidence-bound model scope is independent of solver convergence,
+  derivative checks and arithmetic agreement. Exact-graft performance remains unvalidated.
+\end{frame}

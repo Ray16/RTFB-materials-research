@@ -9,8 +9,8 @@ original proposals have admitted native potentials. The last candidate export
 passes 572 arithmetic checks with zero discrepancies. Each snapshot has its own
 input identities; new reference-parent work is kept separate from graft results.
 
-The full software suite passes **529 tests**. The last full table snapshot passes
-30,884 arithmetic checks with stable inputs and zero discrepancies. This verifies
+The full software suite passes **540 tests**. The last full table snapshot passes
+31,850 arithmetic checks with stable inputs and zero discrepancies. This verifies
 record admission and arithmetic for that snapshot, not experimental accuracy.
 Native thermochemistry uses geometrically projected internal modes, the isolated
 xTB kernel and a matched Fc absolute reference of **4.3791959016 V**. CN-PMDI uses
@@ -21,8 +21,8 @@ four exact free parents in MeCN with the authors' ferrocene calibration. Three
 irreversible second waves stay excluded; B(MEEO)EPT stays tier B because its table
 and discussion disagree. The [12-state parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/README.md)
 records actual GPU starts, finished states and independent reviews separately.
-Alternate-spin checks and complete adjacent-state pairs are required before the
-new calculated values contribute to strict accuracy assessment. The [updated matched-parent snapshot](../results/reviews/2026-10-19/full_matched_parent_checked/summary.json)
+Completed alternate-spin checks and complete adjacent-state pairs admit the
+new calculated values to the strict accuracy assessment. The [updated matched-parent snapshot](../results/reviews/2026-10-19/full_matched_parent_final/summary.json)
 contains **12 potentials from eight parents and four studies**, with state-specific
 spin qualification. RMSE is **0.2457 V**, MAE **0.2090 V**, with no fit. All 12 new
 primary states pass 168 independent record checks, and all 14 targeted spin
@@ -36,6 +36,17 @@ restricted energy reproduces within 5.2e-9 eV; four zero-spin unrestricted seeds
 recover it within 2.4e-7 eV. These tests find no lower sampled solution and do not
 explain the error. Confident two-electron phenothiazine window/capacity predictions
 remain provisional; exact-graft and kinetic performance are not validated.
+The [model-selection policy](../config/model_validation_limits.json) now enforces
+this limit in scorecard/Pareto selection and candidate exports: three
+PTZ capacities (two in the additional batch) are withheld while calculated potentials, nominal capacity and
+separate model estimates remain available. The bad benchmark point remains included.
+
+Three [active-level gradient checks](../results/validation/ptz_active_gradient_2026-10-19/README.md)
+reproduce the selected energies and pass cold finite-energy checks below
+2e-6 Ha/Bohr. All three composite geometries are nonstationary at the active level
+(maximum force about 0.015 Ha/Bohr). A local quadratic sensitivity estimate changes
+the charging gap by -0.0084 eV, versus its +0.354-eV discrepancy; it is neither an
+active-level minimum nor a rigorous bound. No canonical correction was adopted.
 
 Both preserved hexyl-NDI radical geometries failed the finer-derivative checks.
 The [terminal review and host diagnostic](../results/validation/hexyl_finer_derivatives_2026-10-19/README.md)

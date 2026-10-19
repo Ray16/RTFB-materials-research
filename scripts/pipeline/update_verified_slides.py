@@ -126,7 +126,7 @@ def expansion_leads_frame(rows,when):
                       number(row.get('E2_vs_Fc_V'))+' & '+
                       number(row.get('capacity_nominal_mAh_g'),1)+r' \\')
     pieces += [r'\bottomrule\end{tabular}\par\vspace{1ex}\raggedright',
-               r'\footnotesize Fluoro PTZ is the strongest positive-side voltage hypothesis. Ether-linked PMDI trades more negative reductions for added mass.',
+               r'\footnotesize Fluoro PTZ is a positive-side voltage hypothesis; its second wave and usable capacity remain provisional under the parent model limitation.',
                r'\par\vspace{1ex}OMe viologen supplies a matched donor-ring contrast; compact PMDI retains useful nominal capacity. Small shifts are unresolved improvements.',
                r'\par\vspace{1ex}This is a follow-up set, not a validated performance ranking. Exact-graft solubility, cycling durability, synthesis and solution kinetics remain unvalidated.',
                f'\\vfill\\scriptsize Corrected native snapshot: {when}.',r'\end{frame}']
@@ -191,8 +191,8 @@ def frames(payload,overlays=False):
                 ('E1_vs_Fc_V',3),('E2_vs_Fc_V',3),('wave_spacing_V',3),
                 ('capacity_nominal_mAh_g',1),('accessible_capacity_mAh_g',1)))+r' \\')
         pieces += [r'\bottomrule\end{tabular}\par',r'\vspace{1ex}\raggedright',
-            r'\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the validated potential window and integrity path.',
-            r'\vspace{1ex}\scriptsize Solution kinetics and synthetic feasibility retain their separate validation gates.',
+               r'\footnotesize Active-species mass; no counterion/backbone correction. Accessible capacity uses the model window and integrity path; scoped model limits leave it blank.',
+            r'\vspace{1ex}\scriptsize Parent residuals do not validate exact grafts. Solution kinetics and synthetic feasibility require separate checks.',
             f'\\vfill\\scriptsize Audited snapshot: {when}.',r'\end{frame}']
     pieces += [r'\begin{frame}{Reference and thermal validation completed}',
         r'\begin{columns}[T]\begin{column}{0.48\textwidth}',

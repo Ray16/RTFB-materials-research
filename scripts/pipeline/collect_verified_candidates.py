@@ -440,7 +440,9 @@ def snapshot(out,queue):
  coverage.write_csv(dest/'independent_arithmetic_audit.csv',checks)
  notes=dict(snapshot_Chicago=now.isoformat(),phase='native MeCN free energies vs matched native Fc; gas Nelsen is separate diagnostic',
   capacity_nominal_mAh_g='Declared electrons and exact active-species mass; no counterion/backbone correction.',
-  accessible_capacity_mAh_g='Native potential window and integrity-contiguous path bookkeeping; kinetics assessed separately.',
+  accessible_capacity_mAh_g='Native potential window and integrity-contiguous path bookkeeping, withheld where a scoped model limitation applies; kinetics assessed separately.',
+  model_accessible_capacity_estimate_mAh_g='Original model window/path estimate retained for diagnosis; not qualified capacity when model_primary_admissible is false.',
+  model_max_observed_error_V='Largest reviewed free-parent residual for the scoped model limitation; never a measurement or error bound for an exact graft.',
   gas_Nelsen_sum_eV='Only QC-clean current-protocol four-point GAS diagnostic; never a validated solution rate or full solution reorganization energy.',
   empty_numeric_cells='Pending, flagged or not independently admissible. Never substituted parent/zero values.',
   experimental_accuracy='No exact graft has an experimentally validated property in this dataset.',
@@ -464,6 +466,7 @@ def snapshot(out,queue):
   original39_DFT_geometry_states=sum(s['dft_geometry_present'] for s in states if s['proposal_id'] in {r['id'] for r in rows}),
   arithmetic_checks=len(checks),arithmetic_discrepancies=sum(not r['passed'] for r in checks),
   workbook_cells_verified=cells,inputs_changed_during_snapshot=changing,queue_terminal=terminal,
+  additional_candidates_with_model_selection_hold=sum(r.get('model_primary_admissible') is False for r in extras),
   spin_input_gids=sorted(retained_gids),
   spin_input_paths=sorted({str(p) for gid in retained_gids for p in spin_by_gid[gid]}),
   spin_input_paths_by_gid={gid:sorted(str(p) for p in spin_by_gid[gid]) for gid in retained_gids},
