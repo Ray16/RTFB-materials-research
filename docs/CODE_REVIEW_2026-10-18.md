@@ -2,7 +2,7 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **466 tests**. The latest additional fix makes
+The full software suite passes **514 tests**. The latest additional fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
@@ -39,18 +39,23 @@ reproduce the problem in the SMD CDS term; neither geometry is admitted.
 Solution kinetics, broader experimental accuracy and exact-graft validation remain
 unfinished. User-staged archive changes remain separate and untouched.
 
-## Open solver-contract follow-up
+## Gas-reference solver correction and remaining forwarding
 
-A follow-up search found that `properties/nelsen.py` and three gas-reference
-workers still discard optimizer convergence, and several energy helpers accept a
-kernel value without checking SCF convergence. Production `properties/reorg.py`
-uses its own cached-state workflow; the maintained production D3TaLES worker
-imports only `nelsen.embed`. The gas reference outputs need their own evidence
-review and must not acquire current validation merely because the caller source
-is updated. The [source inventory](../results/reviews/2026-10-19/remaining_solver_review/findings.json)
-records the exact affected paths and pending correction. The active spin panel
-binds the existing package source epoch; qualify a separate implementation or
-wait for verified worker termination before changing its numerical sources.
+Three gas-reference workers now use a shared strict solver contract: finite SCF
+energies, optimizer and final-SCF convergence, and full grid-response gradients.
+They preserve incompatible/legacy caches, bind reuse to method and source identity,
+store all four energies and geometries, and fail incomplete CLI jobs. The generic
+GPU HOMO reader now transfers device arrays explicitly and withholds usable
+reorganization values for unknown or unbound anions. The acene protocol records
+its actual requested basis. An actual CPU solver control and 48 new regression
+cases pass; see the [qualification](../results/validation/gas_reference_contract_2026-10-19/README.md).
+
+The read-only inventory covers 482 saved reference records without complete new
+solver verification. This is insufficient evidence to certify them, not proof that
+their numerical values are wrong. Existing datasets are unchanged. The public
+`properties/nelsen.py` forwarding remains pending its active source epoch; its
+production consumer uses only `embed`. The source inventory and resolution are
+kept under [remaining solver review](../results/reviews/2026-10-19/remaining_solver_review/).
 
 ## Earlier review checkpoints
 

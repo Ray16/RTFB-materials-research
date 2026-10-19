@@ -1,0 +1,13 @@
+{
+  "status": "three_reference_workers_corrected_nelsen_forwarding_pending",
+  "fixed_solver": "src/redox/qm/gas_reference.py",
+  "corrected_workers": [
+    "scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py",
+    "scripts/validation/reorg_literature/validate_reorg_worker_generic.py",
+    "scripts/validation/reorg_literature/validate_reorg_worker_inner_acene.py"
+  ],
+  "proof": "results/validation/gas_reference_contract_2026-10-19/README.md",
+  "pending_public_module": "src/redox/properties/nelsen.py",
+  "pending_reason": "Active spin plans bind this source; its gas helper functions are not called by those workers",
+  "updated": 1792401361.7978935
+}

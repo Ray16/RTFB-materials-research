@@ -12,9 +12,10 @@ and the lambda is ill-defined -> flagged `anion_unbound` (do not trust the numbe
 same guard our production pipeline uses.
 
 RI-J density fitting + gpu4pyscf (DF error cancels in the 4-point energy differences).
-Resumable; one JSON per molecule under <base>/<tag>/calc/.
+Resumable for matching solver-qualified records; choose a fresh --tag for historical outputs.
+One JSON per molecule under <base>/<tag>/calc/.
 
-  gpu_reserve run <i> -- env OMP_NUM_THREADS=4 PYTHONPATH=src python \
+  python -m redox.workflows.gpu --gpu <i> --out logs/runs/gas_reference --threads 2 -- python \
      scripts/validation/reorg_literature/validate_reorg_worker_generic.py --source <csv> --couple electron \
      --basis 6-31g(d,p) --tag b3lyp_631gdp_electron --backend gpu
 """
@@ -23,6 +24,11 @@ import argparse
 import json
 import traceback
 from pathlib import Path
+
+from redox.core.io import atomic_write_json
+from redox.core.common import to_float
+from redox.qm.gas_reference import (energy_Ha, optimized_molecule, homo_eV,
+                                     verification, existing_result, record_guard)
 
 import pandas as pd
 from rdkit import Chem
@@ -67,22 +73,12 @@ def _mf(mol, backend):
 
 
 def _homo_eV(mf):
-    """HOMO (highest occupied MO) energy in eV from a converged mf; handles R/U."""
-    import numpy as np
-    e = mf.mo_energy; occ = mf.mo_occ
-    try:
-        e = np.asarray(e); occ = np.asarray(occ)
-        if e.ndim == 2:      # unrestricted: (2, nmo)
-            vals = [e[s][occ[s] > 0].max() for s in range(2) if (occ[s] > 0).any()]
-            return float(max(vals)) * HARTREE_EV
-        return float(e[occ > 0].max()) * HARTREE_EV
-    except Exception:
-        return None
+    return homo_eV(mf)
 
 
 def _E(atoms, charge, spin, backend, want_homo=False):
     mf = _mf(_mol(atoms, charge, spin), backend)
-    e = float(mf.kernel())
+    e = energy_Ha(mf)
     if want_homo:
         try:
             mf.mo_energy  # ensure populated
@@ -94,13 +90,12 @@ def _E(atoms, charge, spin, backend, want_homo=False):
 
 
 def _opt(atoms, charge, spin, backend):
-    from pyscf.geomopt.geometric_solver import optimize
-    m = optimize(_mf(_mol(atoms, charge, spin), backend), maxsteps=100)
+    m = optimized_molecule(_mf(_mol(atoms, charge, spin), backend), maxsteps=100)
     B = 0.52917721067
     return [(m.atom_symbol(i), tuple(m.atom_coords()[i] * B)) for i in range(m.natm)]
 
 
-def _four_point(g_neu, E_neu_neu, q, spin, backend):
+def _four_point(g_neu, E_neu_neu, q, spin, backend, *, return_evidence=False):
     """4-point lambda for neutral(0,0) <-> ion(q,spin). Returns (lam, relax_ion, relax_neu, ion_homo)."""
     g_ion = _opt(g_neu, q, spin, backend)
     E_ion_ion = _E(g_ion, q, spin, backend)
@@ -108,21 +103,33 @@ def _four_point(g_neu, E_neu_neu, q, spin, backend):
     E_neu_at_ion = _E(g_ion, 0, 0, backend)
     relax_ion = (E_ion_at_neu - E_ion_ion) * HARTREE_EV
     relax_neu = (E_neu_at_ion - E_neu_neu) * HARTREE_EV
-    return round(relax_ion + relax_neu, 4), round(relax_ion, 4), round(relax_neu, 4), ion_homo
+    values = (round(relax_ion + relax_neu, 4), round(relax_ion, 4), round(relax_neu, 4), ion_homo)
+    evidence = dict(energies_Ha=dict(neutral_at_neutral=E_neu_neu, ion_at_ion=E_ion_ion,
+                                   ion_at_neutral=E_ion_at_neu, neutral_at_ion=E_neu_at_ion),
+                    neutral_geometry_A=g_neu, ion_geometry_A=g_ion,
+                    ion_charge=q, ion_spin=spin, lambda_unrounded_eV=relax_ion+relax_neu)
+    return (*values, evidence) if return_evidence else values
 
 
 def process(row, couple, backend):
+    with record_guard(CALC / f"{row['id']}.json"):
+        return _process(row, couple, backend)
+
+
+def _process(row, couple, backend):
     gid = row["id"]
     out = CALC / f"{gid}.json"
-    if out.exists():
-        try:
-            if json.loads(out.read_text()).get("status") == "ok":
-                return "skip"
-        except Exception:
-            pass
+    identity = dict(id=str(gid),
+                    smiles=str(row["smiles"]),
+                    couple=couple,
+                    xc=XC, basis=BASIS,
+                    phase="gas", density_fit=True, conv_tol=1e-9, max_cycle=200,
+                    reference_eV=to_float(row.get(f"lit_{couple}_eV", row.get("lit_eV"))))
+    if existing_result(out, identity, __file__, required_fields=("our_lambda", "relax_ion", "relax_neu")) is not None:
+        return "skip"
     q, spin = (1, 1) if couple == "hole" else (-1, 1)
     rec = dict(id=gid, smiles=row["smiles"], couple=couple,
-               lit_eV=row.get(f"lit_{couple}_eV", row.get("lit_eV")),
+               lit_eV=to_float(row.get(f"lit_{couple}_eV", row.get("lit_eV"))),
                protocol=f"{XC}/{BASIS} gas 4-point ({couple})",
                our_lambda=None, relax_ion=None, relax_neu=None,
                ion_homo_eV=None, anion_unbound=None, status="ok", error="")
@@ -130,16 +137,24 @@ def process(row, couple, backend):
         atoms0 = _embed(row["smiles"])
         g_neu = _opt(atoms0, 0, 0, backend)
         E_neu_neu = _E(g_neu, 0, 0, backend)
-        lam, ri, rn, ion_homo = _four_point(g_neu, E_neu_neu, q, spin, backend)
+        lam, ri, rn, ion_homo, points = _four_point(g_neu, E_neu_neu, q, spin, backend, return_evidence=True)
+        rec["four_point_evidence"] = points
         rec.update(our_lambda=lam, relax_ion=ri, relax_neu=rn,
-                   ion_homo_eV=(round(ion_homo, 3) if ion_homo is not None else None))
+                   ion_homo_eV=ion_homo)
         if couple == "electron":
-            rec["anion_unbound"] = bool(ion_homo is not None and ion_homo > 0)
+            rec["anion_unbound"] = None if ion_homo is None else bool(ion_homo > 0)
+            if ion_homo is None or rec["anion_unbound"]:
+                rec["diagnostic_lambda_eV"] = rec["our_lambda"]
+                rec["our_lambda"] = None
+                rec["status"] = "binding_unverified" if ion_homo is None else "anion_unbound"
+                rec["error"] = "Radical-anion binding is unavailable or failed"
     except Exception as e:
         rec["status"] = "error"; rec["error"] = f"{type(e).__name__}: {e}"
         rec["trace"] = traceback.format_exc()[-800:]
     CALC.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(rec, indent=1))
+    if rec["status"] == "ok":
+        rec["solver_verification"] = verification(identity, __file__)
+    atomic_write_json(out, rec)
     return rec["status"]
 
 
@@ -152,7 +167,7 @@ def main():
     ap.add_argument("--basis", default="6-31g(d,p)")
     ap.add_argument("--tag", required=True, help="output subdir under results/reorg_anchors/electron/")
     ap.add_argument("--only", default=None)
-    ap.add_argument("--backend", default="gpu")
+    ap.add_argument("--backend", default="gpu", choices=["cpu", "gpu"])
     a = ap.parse_args()
     XC, BASIS = a.xc, a.basis
     CALC = ROOT / "results" / "reorg_anchors" / "electron" / a.tag / "calc"
@@ -160,12 +175,17 @@ def main():
     df = pd.read_csv(a.source)
     if a.only:
         df = df[df["id"] == a.only].reset_index(drop=True)
+    problems = 0
     for _, row in df.iterrows():
         st = process(row, a.couple, a.backend)
+        problems += st not in ("ok", "skip")
         r = json.loads((CALC / f"{row['id']}.json").read_text())
         ub = " UNBOUND-ANION!" if r.get("anion_unbound") else ""
         print(f"[{row['id']:16s}] {st:5s} our={r.get('our_lambda')} eV  lit={r.get('lit_eV')}  "
               f"ion_homo={r.get('ion_homo_eV')}eV{ub}  {r.get('error','')}", flush=True)
+
+    if problems:
+        raise SystemExit(f"{problems} reference records failed or remain unqualified")
 
 
 if __name__ == "__main__":

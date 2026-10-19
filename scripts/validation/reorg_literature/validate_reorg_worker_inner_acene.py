@@ -18,9 +18,9 @@ Level matched to the literature:
 
 RI-J density fitting + gpu4pyscf for speed (DF error cancels in the 4-point energy differences;
 verified elsewhere to leave lambda unchanged to <1 meV). Writes one JSON per molecule under
-results/reorg_anchors/inner_acene/calc/. Resumable (skips finished 'ok').
+results/reorg_anchors/inner_acene/calc/. Resumable for matching solver-qualified records; use a fresh --tag for historical outputs.
 
-  gpu_reserve run <idx> -- env PYTHONPATH=src python scripts/validation/reorg_literature/validate_reorg_worker_inner_acene.py \
+  python -m redox.workflows.gpu --gpu <idx> --out logs/runs/acene_reference --threads 2 -- python scripts/validation/reorg_literature/validate_reorg_worker_inner_acene.py \
       --source results/reorg_anchors/oligoacene_inner.csv --backend gpu
 """
 from __future__ import annotations
@@ -28,6 +28,11 @@ import argparse
 import json
 import traceback
 from pathlib import Path
+
+from redox.core.io import atomic_write_json
+from redox.core.common import to_float
+from redox.qm.gas_reference import (energy_Ha, optimized_molecule,
+                                     verification, existing_result, record_guard)
 
 import pandas as pd
 from rdkit import Chem
@@ -77,18 +82,17 @@ def _mf(mol, backend):
 
 
 def _opt(atoms, charge, spin, backend):
-    from pyscf.geomopt.geometric_solver import optimize
-    molopt = optimize(_mf(_mol(atoms, charge, spin), backend), maxsteps=100)
+    molopt = optimized_molecule(_mf(_mol(atoms, charge, spin), backend), maxsteps=100)
     BOHR = 0.52917721067
     return [(molopt.atom_symbol(i), tuple(molopt.atom_coords()[i] * BOHR))
             for i in range(molopt.natm)]
 
 
 def _E(atoms, charge, spin, backend):
-    return float(_mf(_mol(atoms, charge, spin), backend).kernel())
+    return energy_Ha(_mf(_mol(atoms, charge, spin), backend))
 
 
-def _hole_lambda(g_neu, E_neu_neu, backend):
+def _hole_lambda(g_neu, E_neu_neu, backend, *, return_evidence=False):
     """4-point inner-sphere hole lambda: neutral singlet <-> +1 cation doublet. eV."""
     g_cat = _opt(g_neu, 1, 1, backend)                 # optimize cation (doublet)
     E_cat_cat = _E(g_cat, 1, 1, backend)               # cation @ cation geom
@@ -97,32 +101,47 @@ def _hole_lambda(g_neu, E_neu_neu, backend):
     relax_cat = (E_cat_at_neu - E_cat_cat) * HARTREE_EV
     relax_neu = (E_neu_at_cat - E_neu_neu) * HARTREE_EV
     lam = relax_cat + relax_neu
-    return round(lam, 4), round(relax_cat, 4), round(relax_neu, 4)
+    values = (round(lam, 4), round(relax_cat, 4), round(relax_neu, 4))
+    evidence = dict(energies_Ha=dict(neutral_at_neutral=E_neu_neu, ion_at_ion=E_cat_cat,
+                                   ion_at_neutral=E_cat_at_neu, neutral_at_ion=E_neu_at_cat),
+                    neutral_geometry_A=g_neu, ion_geometry_A=g_cat,
+                    ion_charge=1, ion_spin=1, lambda_unrounded_eV=lam)
+    return (*values, evidence) if return_evidence else values
 
 
 def process(row, backend):
+    with record_guard(CALC / f"{row['id']}.json"):
+        return _process(row, backend)
+
+
+def _process(row, backend):
     gid = row["id"]
     out = CALC / f"{gid}.json"
-    if out.exists():
-        try:
-            if json.loads(out.read_text()).get("status") == "ok":
-                return "skip"
-        except Exception:
-            pass
-    rec = dict(id=gid, smiles=row["smiles"], lit_hole_eV=row.get("lit_hole_eV"),
-               protocol="B3LYP/6-31G(d,p) gas 4-point (hole, neutral<->cation)",
+    identity = dict(id=str(gid),
+                    smiles=str(row["smiles"]),
+                    couple="hole",
+                    xc=XC, basis=BASIS,
+                    phase="gas", density_fit=True, conv_tol=1e-9, max_cycle=200,
+                    reference_eV=to_float(row.get("lit_hole_eV")))
+    if existing_result(out, identity, __file__, required_fields=("our_hole", "relax_cat", "relax_neu")) is not None:
+        return "skip"
+    rec = dict(id=gid, smiles=row["smiles"], lit_hole_eV=to_float(row.get("lit_hole_eV")),
+               protocol=f"{XC}/{BASIS} gas 4-point (hole, neutral<->cation)",
                our_hole=None, relax_cat=None, relax_neu=None, status="ok", error="")
     try:
         atoms0 = _embed(row["smiles"])
         g_neu = _opt(atoms0, 0, 0, backend)
         E_neu_neu = _E(g_neu, 0, 0, backend)
-        lam, rc, rn = _hole_lambda(g_neu, E_neu_neu, backend)
+        lam, rc, rn, points = _hole_lambda(g_neu, E_neu_neu, backend, return_evidence=True)
+        rec["four_point_evidence"] = points
         rec["our_hole"], rec["relax_cat"], rec["relax_neu"] = lam, rc, rn
     except Exception as e:
         rec["status"] = "error"; rec["error"] = f"{type(e).__name__}: {e}"
         rec["trace"] = traceback.format_exc()[-800:]
     CALC.mkdir(parents=True, exist_ok=True)
-    out.write_text(json.dumps(rec, indent=1))
+    if rec["status"] == "ok":
+        rec["solver_verification"] = verification(identity, __file__)
+    atomic_write_json(out, rec)
     return rec["status"]
 
 
@@ -131,7 +150,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--source", default=str(ROOT / "results/reorg_anchors/oligoacene_inner.csv"))
     ap.add_argument("--only", default=None)
-    ap.add_argument("--backend", default="gpu")
+    ap.add_argument("--backend", default="gpu", choices=["cpu", "gpu"])
     ap.add_argument("--basis", default="6-31g(d,p)", help="pyscf basis, e.g. 6-31g(d,p) or 6-311g(d,p)")
     ap.add_argument("--tag", default=None, help="output subdir under inner_acene/ (default derived from basis)")
     a = ap.parse_args()
@@ -142,8 +161,10 @@ def main():
     df = pd.read_csv(a.source)
     if a.only:
         df = df[df["id"] == a.only].reset_index(drop=True)
+    problems = 0
     for _, row in df.iterrows():
         st = process(row, a.backend)
+        problems += st not in ("ok", "skip")
         r = json.loads((CALC / f"{row['id']}.json").read_text())
         lit = r.get("lit_hole_eV")
         diff = ""
@@ -153,6 +174,9 @@ def main():
             pass
         print(f"[{row['id']:11s}] {st:5s}  our_hole={r.get('our_hole')} eV  "
               f"lit={lit} eV  |diff|={diff}  {r.get('error','')}", flush=True)
+
+    if problems:
+        raise SystemExit(f"{problems} reference records failed or remain unqualified")
 
 
 if __name__ == "__main__":
