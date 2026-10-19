@@ -6,6 +6,7 @@ import hashlib
 import json
 import math
 import os
+import re
 from pathlib import Path
 import shutil
 import signal
@@ -34,7 +35,7 @@ def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 def comparison_collection_inputs(payload,root,source):
     """Bind the displayed current figures and include to one completed snapshot."""
-    if r'\input{generated/candidate_comparison_collection.tex}' not in source.read_text():return {}
+    if not any(hook in source.read_text() for hook in (r'\input{generated/candidate_comparison_collection.tex}',r'\input{generated/research_findings.tex}')):return {}
     folder=root/'results/candidates/figures';manifest=folder/'metadata/manifest.json'
     metadata=json.loads(manifest.read_text())
     if metadata['snapshot']!=payload['snapshot_path']:
@@ -378,6 +379,20 @@ def publish(payload,out,overlays=False):
     generated=SLIDES/'generated';generated.mkdir(exist_ok=True)
     include=generated/'verified_candidates.tex';temp=include.with_name('.verified_candidates.tmp')
     temp.write_text(content);temp.replace(include)
+    main_frames=None
+    if r'\input{generated/research_findings.tex}' in source.read_text():
+        from research_presentation import research_frames
+        main_content=research_frames(payload,ROOT)
+        main_include=generated/'research_findings.tex'
+        main_include.write_text(main_content)
+        main_frames=len(re.findall(r'\\begin\{frame\}',main_content))
+        for path in (ROOT/'scripts/plotting/candidates/research_presentation.py',
+                     ROOT/'results/candidates/figures/data/highlights.json',
+                     ROOT/'results/discovery/vinyl_monomers/proposals.json'):
+            inputs[str(path)]=digest(path)
+    # Bind supporting TeX as well as the main story to the checked build.
+    for path in list(generated.glob('*.tex'))+list((SLIDES/'backup').glob('*.tex')):
+        inputs[str(path)]=digest(path)
     build=out/'builds'/str(time.time_ns());build.mkdir(parents=True)
     argv=['pdflatex','-interaction=nonstopmode','-halt-on-error',f'-output-directory={build}',str(source)]
     for pass_number in (1,2):
@@ -391,12 +406,15 @@ def publish(payload,out,overlays=False):
     pages=len(document.pages)
     if pages<16 or 'New candidate potentials' not in text:
         raise RuntimeError('Built PDF is missing the generated result frames')
+    if main_frames is not None:
+        if document.pages[main_frames].extract_text().strip().splitlines()[0]!='Backup':
+            raise RuntimeError('Supporting slides must follow the main research story in Backup')
     if digest(source)!=source_hash or input_inventory_changed(summary) or any(not Path(p).exists() or digest(p)!=h for p,h in inputs.items()):
         return dict(status='source_changed_during_build',preserved_build=str(build))
     shutil.copy2(pdf,SLIDES/'.redox_workflow.checked.pdf')
     (SLIDES/'.redox_workflow.checked.pdf').replace(SLIDES/'redox_workflow.pdf')
     return dict(status='published_checked_pdf',snapshot=payload['snapshot_path'],candidate_ids=ids,
-                slides=str(SLIDES/'redox_workflow.pdf'),pages=pages,pdf_sha256=digest(SLIDES/'redox_workflow.pdf'),
+                slides=str(SLIDES/'redox_workflow.pdf'),main_research_slides=main_frames,backup_slides=(pages-main_frames if main_frames is not None else None),pages=pages,pdf_sha256=digest(SLIDES/'redox_workflow.pdf'),
                 source_sha256=source_hash,build=str(build),updated=time.time())
 
 
