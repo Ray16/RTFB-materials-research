@@ -1,13 +1,16 @@
 {
-  "status": "three_actual_private_optimization_starts_verified",
+  "status": "all_three_active_relaxations_completed_and_independently_reviewed",
   "next_actions": [
-    "Inspect the existing worker/controller PIDs and progress; never restart on an observation timeout",
-    "After all three finish, run review.py with native pools capped and CPU affinity assigned",
-    "Verify actual worker/controller termination before numerical source changes",
-    "Keep electronic-gap sensitivity separate from thermal/free-energy validation and canonical results",
-    "Push each completed verified milestone"
+    "Do not restart these completed three cases",
+    "Do not combine optimized electronic energies with old thermals as a new validated free energy",
+    "The local electronic geometry effect is insufficient; continue scoped environment/electronic-model and kinetic validation",
+    "Keep the outlier in benchmark statistics and preserve the selection limitation"
   ],
   "production_admission": false,
   "source_freeze": "Numerical producer/control paths bound in plan.json must remain unchanged during this epoch",
-  "updated": 1792418737.087344
+  "updated": 1792418737.087344,
+  "actual_electronic_gap_change_eV": -0.027134082973196527,
+  "independent_checks": 37,
+  "failed_checks": 0,
+  "active_workers": 0
 }

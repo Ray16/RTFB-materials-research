@@ -1,5 +1,5 @@
 {
-  "status": "optimizing",
+  "status": "active_level_stationary_geometry_verified",
   "task": {
     "state": "ox2",
     "charge": 2,
@@ -28,8 +28,27 @@
   "initial_energy_Ha": -1222.9453394995637,
   "initial_reproduction_difference_eV": -2.546585164964199e-10,
   "physical_gpu": "2",
-  "cycle": 7,
-  "last_energy_Ha": -1222.9493945046625,
-  "last_max_gradient_Ha_Bohr": 0.0010254054974446803,
-  "last_progress": 1792418768.8940418
+  "cycle": 33,
+  "last_energy_Ha": -1222.9494414071003,
+  "last_max_gradient_Ha_Bohr": 2.607694930389391e-06,
+  "last_progress": 1792419530.7190542,
+  "optimizer_final_energy_Ha": -1222.9494414071003,
+  "cold_reproduction_difference_eV": -1.2374305809311408e-11,
+  "optimized": true,
+  "geometry_optimization_converged": true,
+  "final_energy_Ha": -1222.9494414071007,
+  "electronic_relaxation_eV": -0.11161859033479686,
+  "final_max_gradient_Ha_Bohr": 2.6047774930746562e-06,
+  "FD_column": 6,
+  "finite_energy_Ha": [
+    -1222.94944132349,
+    -1222.9494413261286
+  ],
+  "FD_derivative_Ha_Bohr": -2.638671503518708e-06,
+  "FD_absolute_error_Ha_Bohr": 3.389401044405182e-08,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/ox2/relaxed.xyz": "aea7f1559f7d6741cd492e69fb80797a785c6cda4a863331cfa3fdaf8e9f6123",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/ox2/final_gradient_Ha_Bohr.npy": "8eb5f300f3148bdf26253fcc6b4668d43ba15236e44fa3905017d4766b43ccae"
+  },
+  "finished": 1792419621.3882372
 }

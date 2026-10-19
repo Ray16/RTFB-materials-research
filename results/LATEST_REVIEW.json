@@ -98,7 +98,9 @@
       "phenothiazine_second_wave": "results/reviews/2026-10-19/phenothiazine_checked_subset/model_discrepancy.json",
       "SCF_diagnostic": "results/validation/ptz_dication_scf_probe_2026-10-19/summary.json",
       "gradient_diagnostic": "results/validation/ptz_active_gradient_2026-10-19/independent_review.json",
-      "active_geometry_sensitivity": "results/validation/ptz_active_relaxation_2026-10-19/plan.json",
+      "active_geometry_sensitivity": "results/validation/ptz_active_relaxation_2026-10-19/independent_review.json",
+      "active_geometry_sensitivity_completed": true,
+      "active_electronic_gap_change_eV": -0.027134082973196527,
       "requirement_completion_audit": "results/reviews/2026-10-19/requirement_completion_audit/audit.json",
       "selection_policy": "config/model_validation_limits.json",
       "policy_enforced_in_scorecard_Pareto_and_exports": true,
@@ -170,12 +172,12 @@
       "new_cata_cases_outside_review_scope": false
     },
     "slides": {
-      "status": "checked_completed_cata_ladders_and_controlled_comparisons_pdf",
+      "status": "checked_active_geometry_diagnostic_and_unchanged_candidate_snapshot_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/cata_complete_slides/slides_check.json",
+      "publisher": "results/reviews/2026-10-19/ptz_relaxation_slides/slides_check.json",
       "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_083640_054609",
-      "pdf_sha256": "30154a4905fb481f7aa9dabaefc4aee91ede7f69bc3bbb23e3cb0a87dbd4d7cc",
-      "pages": 45
+      "pdf_sha256": "cbc2fdde97ef4a7360c0d28fbf87e19e91e3a0bc0552847e9b8d094b4446f016",
+      "pages": 46
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -220,7 +222,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792418784.5368974,
+  "updated": 1792422925.7472587,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

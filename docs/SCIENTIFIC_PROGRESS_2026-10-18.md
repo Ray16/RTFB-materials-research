@@ -88,9 +88,11 @@ original failures and keep pending corrections separate from primary results.
 The [requirement audit](../results/reviews/2026-10-19/requirement_completion_audit/audit.json)
 separates corrected software/record contracts and computed-candidate delivery from
 unresolved scientific accuracy. The [three-state active-geometry sensitivity](../results/validation/ptz_active_relaxation_2026-10-19/README.md)
-is now running privately at the same wB97M-V/TZVPD/SMD electronic level. It tests
-the actual charging-gap response to geometry relaxation; it does not recompute
-thermal corrections, prove Hessian minima or change published values.
+has finished at the same wB97M-V/TZVPD/SMD electronic level. Its 37-check
+independent review finds an electronic charging-gap change of -0.027134 eV,
+from 0.913645 to 0.886511 eV. The local electronic geometry effect does not remove
+the original discrepancy. No thermals were recomputed, Hessian minima proved or
+canonical values changed.
 
 ## Earlier dated checkpoints
 

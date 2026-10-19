@@ -70,3 +70,29 @@
   \vfill\scriptsize Evidence-bound model scope is independent of solver convergence,
   derivative checks and arithmetic agreement. Exact-graft performance remains unvalidated.
 \end{frame}
+
+\begin{frame}{Phenothiazine diagnosis: active-level relaxation}
+  \small
+  \begin{center}
+  \begin{tabular}{lrr}
+    \toprule
+    DMeOEPT state & Electronic relaxation & Final max. gradient \\
+    & eV & Ha/Bohr \\
+    \midrule
+Neutral & -0.1004 & 2.10e-06 \\
+Radical cation & -0.0925 & 3.44e-06 \\
+Dication & -0.1116 & 2.60e-06 \\
+    \bottomrule
+  \end{tabular}
+  \end{center}
+  \begin{itemize}
+    \item Actual wB97M-V/TZVPD/SMD relaxation changes the electronic charging gap
+      from 0.913645 to 0.886511 eV: $\delta=-0.027134$ eV.
+    \item Optimizer, cold-SCF, stationary-gradient, graph and finite-energy checks
+      pass. Independent review: 37 checks, zero failures.
+    \item This local electronic geometry effect is smaller than the original
+      0.354-eV free-energy-gap discrepancy. Other model contributions remain unresolved.
+  \end{itemize}
+  \vfill\scriptsize Private sensitivity: thermals were not recomputed and Hessian minima
+  were not proved. No canonical replacement or fitted correction; do not silently reuse old thermals.
+\end{frame}

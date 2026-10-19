@@ -30,3 +30,14 @@ this job does not recompute thermochemistry or establish a replacement potential
 The [requirement audit](../../reviews/2026-10-19/requirement_completion_audit/audit.json)
 records why the original goal remains active despite the passed software and
 arithmetic checks. The published candidate workbook/slides remain authoritative.
+
+The three cases have now finished and their actual worker/controller PIDs are
+[verified terminal](terminal_verification.json). The [independent review](independent_review.json)
+passes 37 checks. Electronic relaxation is -0.100424/-0.092454/-0.111619 eV for
+neutral/radical-cation/dication. The electronic gap changes from 0.913645 to
+0.886511 eV, a -0.027134-eV change, versus the previous -0.008428-eV local estimate.
+That local electronic effect does not remove the original model discrepancy.
+Thermal sensitivity, other geometrical basins and environment/electronic-model
+contributions remain unproved. The [preservation check](preservation_review.json)
+confirms the canonical parent geometries/SPs and candidate workbook were unchanged;
+the presentation is updated separately with this diagnostic result.

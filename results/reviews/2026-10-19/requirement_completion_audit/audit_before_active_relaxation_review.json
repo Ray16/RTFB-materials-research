@@ -1,0 +1,260 @@
+{
+  "status": "overall_completion_not_proven",
+  "requirements": [
+    {
+      "requirement": "Detailed code review and researcher/agent navigation",
+      "status": "verified_for_reviewed_scope",
+      "evidence": [
+        {
+          "path": "docs/CODE_REVIEW_2026-10-18.md",
+          "sha256": "40a134557c131dc8578b28fc05757af89e907cfdd525fa9f9f35ece9af8f2d5f"
+        },
+        {
+          "path": "docs/REPO_MAP.md",
+          "sha256": "a63306f62e65dbc5f5bdb42c10f6275d72948a1cc8a14595b288b74829097db7"
+        },
+        {
+          "path": "docs/DEVELOPMENT.md",
+          "sha256": "14d5f7dfc0d5843739279faf6c59cfe5f8eded6d2a884d442e6b42be3528af72"
+        },
+        {
+          "path": "docs/README.md",
+          "sha256": "022f58e4da893a65bca72b5e53889d656385d8df5e9f43ac12a1bf875fcde1c2"
+        },
+        {
+          "path": "results/validation/cata_solution_2026-10-19/navigation_review.json",
+          "sha256": "2778fda3355026ebbfb837eb0c85bc97fa104f74e5884f0ce93c193d90d54790"
+        }
+      ],
+      "scope": "The review identifies concrete defects, implementation boundaries and current entry points. The navigation check covers its stated 20 files, not every future document."
+    },
+    {
+      "requirement": "Source-bound SP adoption and actual solver settings",
+      "status": "verified_current_contract",
+      "evidence": [
+        {
+          "path": "src/redox/qm/sp.py",
+          "sha256": "09c6cfdb66d818c37c76c6f6587d44c6c3c804d383729a4161fd9c96bef9ec10"
+        },
+        {
+          "path": "src/redox/core/protocol.py",
+          "sha256": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf"
+        },
+        {
+          "path": "tests/test_refactoring.py",
+          "sha256": "aad915fd8e1809d61866cd8c10ef315825d6bef29f5782e0fcccc50381988f27"
+        },
+        {
+          "path": "tests/test_sp_revalidation.py",
+          "sha256": "c6fb30066ab58bdad15443b26bb4bb1406c6c4dba6f19800f2645d66c6818e7a"
+        }
+      ],
+      "scope": "Producer geometry, charge/spin, finite converged energies and full method identity gate reuse; unsupported settings are refused."
+    },
+    {
+      "requirement": "Shared manifest ownership and atomic record publication",
+      "status": "verified_current_contract",
+      "evidence": [
+        {
+          "path": "src/redox/build/manifest.py",
+          "sha256": "b17c1d416de7729bceab061c6086651b0e2e0c6f1c4649af1b117a8f05af99db"
+        },
+        {
+          "path": "src/redox/build/candidates.py",
+          "sha256": "752e97081b9e7f343aa99ba579c24cd03ca178cb92fd670d6a079e89e839e467"
+        },
+        {
+          "path": "src/redox/build/standalone.py",
+          "sha256": "ba2396a8e525b49980b665ae917652ce0e8234fb7ad6e3067617438bfb63ac09"
+        },
+        {
+          "path": "src/redox/build/validation.py",
+          "sha256": "ce24b7be7e8bdb56dacd55ceaf50e8cf900f3286b8a6cd5ef039e532aae5c329"
+        },
+        {
+          "path": "src/redox/core/io.py",
+          "sha256": "4069a181d62207b31f186725b7cb277ccabf4cd2101e808060ed6f4ee354ed6a"
+        }
+      ],
+      "scope": "All builders use the shared manifest lock; maintained record writers use atomic replacement."
+    },
+    {
+      "requirement": "Isolated review stages and complete dependency inventories",
+      "status": "verified_current_contract",
+      "evidence": [
+        {
+          "path": "src/redox/workflows/tables.py",
+          "sha256": "25f201419818bc77f37292705119c87ebb49eb59da291be21d7cb84ba6143ed0"
+        },
+        {
+          "path": "tests/test_table_record_dependencies.py",
+          "sha256": "501ba09aaeb1afaf3154719e5d7eff956daa856c354ad25f94e92c39d685fbbf"
+        },
+        {
+          "path": "results/reviews/2026-10-19/cata_complete_tables/review_status.json",
+          "sha256": "e868b6cb3650096c20837b4d2387a48c03debe54e60817faefbe2c51c6864301"
+        }
+      ],
+      "scope": "Separate stage interpreters and inventories cover per-record external qualification evidence; 32,492 checks pass with unchanged inputs."
+    },
+    {
+      "requirement": "Reservation-aware execution, launcher/environment corrections",
+      "status": "verified_reviewed_entrypoints",
+      "evidence": [
+        {
+          "path": "src/redox/workflows/gpu.py",
+          "sha256": "4d0c547cd710c8acca1434ce5fce2b001b92ffac3e83aeebf1e4bceebdc393eb"
+        },
+        {
+          "path": "src/redox/workflows/resources.py",
+          "sha256": "99e3dc9522494b00cac53cb8ddae8cfa7e50b333141c1dd6a0c9c5e364ee941c"
+        },
+        {
+          "path": "scripts/pipeline/finalize_after_dft.sh",
+          "sha256": "32c2ec8ad33e7d95d0a753b0608e447ebbf707e90f57e9484e76e33ca99261c5"
+        },
+        {
+          "path": "scripts/fleet/dft_launch.sh",
+          "sha256": "fcc4d5bc41581440dae5a500000a25410f01a272893bdccb3ddc62397c3ef6a5"
+        },
+        {
+          "path": "setup_env.sh",
+          "sha256": "5b0a0957e896ea3e4507e7b7556da71e01716b4c51d3e5431f45edfe35695e23"
+        },
+        {
+          "path": "requirements.txt",
+          "sha256": "fb4e6cde5094add7ad776408c9d83b43b6e4495f1ef6056df7a1915c80277469"
+        }
+      ],
+      "scope": "Finalization does not start quantum work; supported launch paths use the gate, CPU allocation, thread caps and memory/dependency checks. Actual campaign receipts verify execution separately from output QC."
+    },
+    {
+      "requirement": "Correct computed-property formulas, record admission and current exports",
+      "status": "verified_numerical_and_admission_scope",
+      "evidence": [
+        {
+          "path": "results/reviews/2026-10-19/cata_complete_tables/publication.json",
+          "sha256": "df20e3e64de936355c714b9f58b1cdf438b53956895fc3e292b30a69cbe30333"
+        },
+        {
+          "path": "results/validation/cata_solution_2026-10-19/final_export_check.json",
+          "sha256": "23c18c88ac04eb1a3ad4ef094c5a5568b7b577cabe2bb48a52e8cd1e66c391b8"
+        },
+        {
+          "path": "results/validation/cata_cross_points_2026-10-19/software_checks.log",
+          "sha256": "11c1a3dac904b7e652ee085d85ba1e26143c1142fed2be287aa7254ded2cf5bd"
+        }
+      ],
+      "scope": "541 software tests, full-table arithmetic review and 590 export checks pass. This is insufficient evidence for universal physical/experimental accuracy."
+    },
+    {
+      "requirement": "Validate computed properties against measurements and resolve known failures",
+      "status": "not_complete",
+      "evidence": [
+        {
+          "path": "results/reviews/2026-10-19/full_matched_parent_final/summary.json",
+          "sha256": "c217e948e5ec6a5cdefb5bfdb4a9cbe8a2e70f3cecab4d45ec58fb2fc8d30ae8"
+        },
+        {
+          "path": "results/reviews/2026-10-19/phenothiazine_checked_subset/model_discrepancy.json",
+          "sha256": "12a6b4022b1dddfbc12a959e3a39968d1dfe221403469354c86fdd723dcb4113"
+        },
+        {
+          "path": "config/model_validation_limits.json",
+          "sha256": "8151714efbfd88277aaa0f1761dad3acc375c07690a3af1ee5b93bc435e67975"
+        }
+      ],
+      "scope": "The unfitted 12-potential/8-parent/4-study assessment retains the +0.547-V second-wave error. Its scope is excluded from confident two-electron selection; the model failure is not resolved."
+    },
+    {
+      "requirement": "Validate gas references and solution reorganization/kinetics",
+      "status": "not_complete",
+      "evidence": [
+        {
+          "path": "results/validation/acene_solver_replay_2026-10-19/review.json",
+          "sha256": "f8ffcadbe819a0cc17007868bf284af973b046b89fc18a36fc11d8baef346f6a"
+        },
+        {
+          "path": "results/validation/gas_reference_contract_2026-10-19/legacy_inventory_summary.json",
+          "sha256": "942295a3a3c41503b65f080d75dfc1871ca02991c26ca441addd7665d3275eeb"
+        },
+        {
+          "path": "results/validation/cata_cross_points_2026-10-19/review.json",
+          "sha256": "c5540dca2a98d2063639bc8aaf16a1ac217cd44e044e26bb498d396792c5aed2"
+        },
+        {
+          "path": "results/validation/solution_contract_review_2026-10-19/README.md",
+          "sha256": "d065392efe90f14119bbd584ab0c6baaa30e79bf582e05ef2e46a5da542da7d6"
+        }
+      ],
+      "scope": "Two actual gas replays are checked. Other legacy records are not retroactively certified, and flagged gas sums cannot stand in for validated solution rates."
+    },
+    {
+      "requirement": "Systematic family exploration and complementary high-quality sources",
+      "status": "verified_prepared_and_computed_scope",
+      "evidence": [
+        {
+          "path": "config/family_search.py",
+          "sha256": "e2087c961f80c6906ceca0fbc7cd78b96d2701c44cb36d9a2d3c4f807411aa42"
+        },
+        {
+          "path": "config/discovery_sources.json",
+          "sha256": "adcc9947fcbf0cf19a6079f2f4d2d46a508f56f5963d8c0e0f3893ad9104d650"
+        },
+        {
+          "path": "results/discovery/systematic_families_2026-10-18/summary.json",
+          "sha256": "3221d2e7e69aa7cdfec399efa47434c8fe7e27772f736e0466901b30d9dbc336"
+        },
+        {
+          "path": "data/curated/discovery/cata_diimides_2024_graphs.json",
+          "sha256": "30fb01318c6dfa303e4c27cffa589812be0a04991892e0675870002aa652a78f"
+        }
+      ],
+      "scope": "The 837-structure declared pool, matched family contrasts and source/condition-separated curation extend beyond D3TaLES. This is not an exhaustive chemical universe."
+    },
+    {
+      "requirement": "Compute expanded candidates and preserve field-specific QC",
+      "status": "verified_current_batch_with_exclusion",
+      "evidence": [
+        {
+          "path": "results/validation/cata_solution_2026-10-19/final_export_check.json",
+          "sha256": "23c18c88ac04eb1a3ad4ef094c5a5568b7b577cabe2bb48a52e8cd1e66c391b8"
+        },
+        {
+          "path": "results/validation/cata_solution_2026-10-19/current_readiness.json",
+          "sha256": "b3ce18bd0e74f567aec63190302422e5c7c926223cdc7280afc45d0d1d92bd1c"
+        },
+        {
+          "path": "results/validation/hexyl_finer_derivatives_2026-10-19/terminal_review.json",
+          "sha256": "ede1363b1642a5fa999cdf805d6a0a3d2a6195b1fe29ddff658e1dff468a120a"
+        }
+      ],
+      "scope": "26 of 27 additional potential pairs are admitted. The excluded hexyl-NDI case failed both preserved refinements; no missing value is represented as a valid computed property."
+    },
+    {
+      "requirement": "Keep parent measurements separate and publish reviewable results",
+      "status": "verified_current_scope",
+      "evidence": [
+        {
+          "path": "results/candidates/README.md",
+          "sha256": "0736e3d9f57918ebda8eb1430317e5b2f429b04eaaa0bbd8e284e8df7c56f64c"
+        },
+        {
+          "path": "results/reviews/2026-10-19/cata_complete_slides/slides_check.json",
+          "sha256": "e83d2cdadb1d9515ec7a30fc0c9c03007f5ccb1587eab58a9ad2d34a8e0dc6a6"
+        },
+        {
+          "path": "results/reviews/2026-10-19/git_cached_before_checkpoint.patch",
+          "sha256": "1981380b8a131caaaeb903106b5c51ec19b3394c760fc112b50969cce933d358"
+        }
+      ],
+      "scope": "Current workbook/CSV/slides and pushed checkpoints preserve parent/exact-graft distinctions. Large raw artifacts remain on NFS with hashes; unrelated staged work is preserved."
+    }
+  ],
+  "objective_unchanged": true,
+  "goal_must_remain_active": true,
+  "previous_goal_turn_classification": "progress: two cata ladders, strict derivative repair, spin equilibrium and full reviewed publication pushed in 18621c0",
+  "next_action": "Measure the unresolved free-parent charging-gap sensitivity with three private active-level relaxations; do not change production or fit away the outlier.",
+  "next_plan": "results/validation/ptz_active_relaxation_2026-10-19/plan.json",
+  "reviewed": 1792418514.8882291
+}
