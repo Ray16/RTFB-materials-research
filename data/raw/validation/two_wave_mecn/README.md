@@ -1,11 +1,35 @@
 # two_wave_mecn — experimental 1st/2nd one-electron potentials in MeCN
 
-`two_wave_mecn.csv`: literature E1 (first one-electron wave) and E2 (second wave) for quinones,
+`two_wave_mecn.csv`: historical literature E1 (first one-electron wave) and E2 (second wave) for quinones,
 aromatic imides and viologens, measured in **acetonitrile with a tetraalkylammonium electrolyte**.
 Curated 2026-10 from primary papers that were actually opened (open-access full text, author
 manuscripts, or ACS SI files mirrored on acs.figshare.com). 37 rows: 21 have both waves, 3 are
 one-wave phthalimides, and 13 are first-wave-only quinones from one internally consistent set
 (Huynh et al. 2016).
+
+`phenothiazines_2019.csv`: five additional, exact free-parent phenothiazines from
+Attanayake et al., Chem. Mater. 2019, DOI
+[10.1021/acs.chemmater.8b04770](https://doi.org/10.1021/acs.chemmater.8b04770).
+Both files are loaded by `config/benchmark_mecn.py`. The new source contributes
+five strict potentials from four parents and one strict two-wave spacing before
+any matching calculations are available. These are experimental targets, not
+completed computational validation.
+
+The 2019 methods (p.4355) establish 1 mM analyte in 0.5 M TEATFSI/acetonitrile,
+26 °C, argon, and a ferrocene calibration before each measurement. Table 1
+(p.4356) reports mean anodic/cathodic peak potentials, with peak-current ratios
+and separations at 10 mV/s. EPT and MEEPT contribute first waves only;
+DMeOEPT contributes both waves; DMeOMEEPT contributes its first wave only.
+Their other second waves are excluded because chemical reversibility is not
+established. For B(MEEO)EPT, Table 1 gives 0.064/0.654 V, whereas the adjacent
+discussion gives 0.025/0.625 V. Both table values are retained as tier B with an
+explicit source-conflict flag, including the spacing. No value is silently
+selected as strict truth. Figure 1 (p.4354) fixes the exact substitution patterns.
+
+The older Kowalski et al. 2017 paper (DOI 10.1039/C7TA05883G) is not added:
+its Table 1 uses propylene carbonate/LiTFSI. Source download hashes and the
+curation review are recorded under
+`results/reviews/2026-10-19/ptz_benchmark_sources/`. Bulk PDFs stay in shared storage.
 
 ## Columns
 `E*_orig_V` and `ref_orig` hold the value and reference **exactly as the paper reports them**.
@@ -13,6 +37,11 @@ one-wave phthalimides, and 13 are first-wave-only quinones from one internally c
 reference. For viologens, `smiles_neutral` holds the **dication** (this is said in `notes`).
 `confidence`: high = E1/2 or E°' measured directly against internal Fc; medium = peak or half-peak
 potentials, or a conversion through a reference electrode; low = identity, solvent or wave is ambiguous.
+The 2019 file additionally records printed per-wave uncertainties (their statistical
+definition is not stated) and `wave1_limitation` / `wave2_limitation`. A source
+limitation demotes that wave to tier B; it cannot be removed by taking a spacing.
+For oxidation ladders, `couple` is `+1/0; +2/+1`; both events are expressed as
+reduction potentials, and the signed spacing remains E1 − E2 (negative here).
 
 ## Conversion rules (applied in this order)
 1. If the paper reports values vs Fc+/Fc (internal ferrocene), they are used as-is.
@@ -83,7 +112,8 @@ potentials, or a conversion through a reference electrode; low = identity, solve
   KPF6, NOT tetraalkylammonium) and Bingham et al., JACS 2026 (peaks 0.26/0.17 V vs Fc in
   0.1 M Bu4NClO4/MeCN with 0.8 M H2O -> midpoint 0.215 computed here). Both support the +0.24 anchor
   to within ~0.03 V. The config's citation "ACS Cent. Sci. 2015, 1, 234" is Gerken & Stahl.
-- Phenothiazines: no clean primary MeCN/TAA E1/2 vs Fc found. Rows are low confidence:
+- Earlier phenothiazine search (superseded by the 2019 source above for its exact parents):
+  rows for the following different parents remain low confidence:
   10-methylphenothiazine 0.75 V vs SCE (Mayther/Vullev JPCB 2023; an extrapolated neat-solvent value)
   -> 0.37 V vs Fc via secondary P&A constant; 0.34 V vs Fc for MePT and 0.23 V vs Fc for 10H-PTZ are
   secondary (Ishimatsu review 2025 quoting JEAC 2024, not seen). Both bracket the +0.26 anchor only

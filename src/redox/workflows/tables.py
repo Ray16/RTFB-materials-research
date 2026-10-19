@@ -68,6 +68,7 @@ def snapshot_inputs(source):
     paths.update(Path(source) / name for name in BENCHMARK_INPUTS)
     paths.update((ROOT / "data/raw/validation/OROP").glob("*.csv"))
     paths.update((ROOT / "data/raw/validation/OROP/features").glob("*.csv"))
+    paths.update((ROOT / "data/raw/validation/two_wave_mecn").glob("*.csv"))
     for directory in ("our_chunks", "our_chunks_v2"):
         paths.update((ROOT / "results/reorg_anchors" / directory).glob("chunk*_results.csv"))
     for certificate in (ROOT / "config").glob("native*.json"):

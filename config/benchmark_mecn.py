@@ -20,8 +20,9 @@ import csv
 import re
 from pathlib import Path
 
-_CSV = (Path(__file__).resolve().parents[1] / "data" / "raw" / "validation" / "two_wave_mecn"
-        / "two_wave_mecn.csv")
+_DATA = Path(__file__).resolve().parents[1] / "data" / "raw" / "validation" / "two_wave_mecn"
+_CSV = _DATA / "two_wave_mecn.csv"
+_SOURCES = (_CSV, _DATA / "phenothiazines_2019.csv")
 
 # Existing library ids for the same compound (same SMILES) — reuse their calculations, with
 # their existing state names: experimental couple label -> that id's event name.
@@ -63,6 +64,8 @@ def _tier(r: dict, wave: int) -> tuple[str, str]:
         return "excluded", "cathodic peak potential at 1000 mV/s (not an E1/2)"
     if wave == 2 and r.get("wave2_reversible", "").strip().lower() != "true":
         return "excluded", "second wave not reported as (quasi)reversible with an E1/2"
+    if limitation := r.get(f"wave{wave}_limitation", "").strip():
+        return "B", limitation
     if name.startswith(_EP2):
         return "B", "half-peak potential Ep/2 (source: Ep/2 offset from E1/2)"
     if "h2o" in r["electrolyte"].lower() or "water" in r["electrolyte"].lower():
@@ -101,6 +104,12 @@ def _layout(r: dict):
         return st, [("+2/+1", "ox2->ox1", e1, 1), ("+1/0", "ox1->neu", e2, 2)]
     if couple.startswith("+1/0"):   # oxidation of a neutral; multiplicities from e- parity
         odd = _n_electrons(smi) % 2
+        if "+2/+1" in couple and e2 is not None:
+            st = [("neu", 0, 2 if odd else 1, 0), ("ox1", 1, 1 if odd else 2, +1),
+                  ("ox2", 2, 2 if odd else 1, +2)]
+            return st, [("+1/0", "ox1->neu", e1, 1), ("+2/+1", "ox2->ox1", e2, 2)]
+        if e2 is not None:
+            raise ValueError(f"Second oxidation lacks a +2/+1 couple: {r['name']}")
         st = [("neu", 0, 2 if odd else 1, 0), ("ox", 1, 1 if odd else 2, +1)]
         return st, [("+1/0", "ox->neu", e1, 1)]
     # neutral quinone / imide: 0/-1 and -1/-2 (dianion assumed closed-shell singlet)
@@ -113,7 +122,7 @@ def load() -> list[dict]:
     events (one per source x wave, each with tier + reason + citation) and reference-free
     wave-spacing events (E1 - E2) where both waves of one source are usable."""
     by_name: dict[str, dict] = {}
-    for r in csv.DictReader(_CSV.open()):
+    for r in _source_rows():
         name = r["name"].strip()
         reuse = REUSE.get(name)
         states, waves = _layout(r)
@@ -145,6 +154,12 @@ def load() -> list[dict]:
                                       tier=sp_tier, tier_reason="E1 - E2, reference-free"
                                       + ("; " + "; ".join(endpoint_limits) if sp_tier == "B" else ""), **cite))
     return list(by_name.values())
+
+
+def _source_rows():
+    for path in _SOURCES:
+        with path.open(newline="") as handle:
+            yield from csv.DictReader(handle)
 
 
 BENCHMARK = load()

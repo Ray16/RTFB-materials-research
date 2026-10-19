@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "status": "source_curation_verified",
+  "updated": 1792397069.139714,
+  "source_receipts": "source_receipts.json",
+  "primary_parent_measurements_only": true,
+  "exact_grafted_properties_inferred": false,
+  "structure_source": "Figure 1 p.4354, visually checked against RDKit structures",
+  "methods_source": "Cyclic Voltammetry p.4355",
+  "numerical_source": "Table 1 p.4356, visually checked; adjacent discussion checked for conflicts",
+  "solvent": "acetonitrile",
+  "electrolyte": "0.5 M TEATFSI",
+  "temperature_K": 299.15,
+  "analyte_mM": 1,
+  "scan_rate_mV_s": 10,
+  "reference": "authors ferrocene calibration before each measurement (5 mM Fc)",
+  "potential_definition": "mean of anodic and cathodic peak potentials",
+  "table_uncertainties_definition": "not specified",
+  "new_parent_rows": 5,
+  "strict_target_potentials": 5,
+  "strict_target_parents": 4,
+  "strict_target_spacings": 1,
+  "excluded_second_waves": 3,
+  "conflicted_parent": "B(MEEO)EPT",
+  "conflicted_table_V": [
+    0.064,
+    0.654
+  ],
+  "conflicted_discussion_V": [
+    0.025,
+    0.625
+  ],
+  "conflict_resolution": "unresolved: both potentials and spacing tier B",
+  "excluded_other_source": {
+    "doi": "10.1039/C7TA05883G",
+    "reason": "Table 1 in propylene carbonate / LiTFSI; not MeCN"
+  },
+  "computed_new_target_potentials": 0,
+  "additional_experimental_accuracy_proven": false,
+  "checks": [
+    {
+      "check": "download_sha256",
+      "path": "data/raw/discovery_sources/2026-10-19/ptz_validation/kowalski_2017.pdf",
+      "ok": true
+    },
+    {
+      "check": "download_sha256",
+      "path": "data/raw/discovery_sources/2026-10-19/ptz_validation/attanayake_2019.pdf",
+      "ok": true
+    }
+  ],
+  "source_sha256": {
+    "config/benchmark_mecn.py": "3a6e7f4ea6c10b4fefe836405bdfeb6c99ffc417c48d867ee356aadeaf53b7eb",
+    "data/raw/validation/two_wave_mecn/phenothiazines_2019.csv": "4efdf83f40849ffe36610deb2e7e80a0b1f18d61912f487d01a149d40565fbd8"
+  },
+  "software_tests_passed": 456,
+  "software_checks": "results/reviews/2026-10-19/software_checks_ptz_sources.log"
+}
