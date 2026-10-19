@@ -1,0 +1,50 @@
+{
+  "status": "computing",
+  "task": {
+    "key": "bm_n_ethylphenothiazine__ox2",
+    "id": "bm_n_ethylphenothiazine",
+    "state": "ox2",
+    "manifest_row": {
+      "id": "bm_n_ethylphenothiazine",
+      "name": "N-ethylphenothiazine",
+      "family": "validation",
+      "state": "ox2",
+      "charge": "2",
+      "mult_hint": "1",
+      "n_e": "2",
+      "n_conf": "2",
+      "solv_preopt": "",
+      "smiles": "CCN1c2ccccc2Sc2ccccc21"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethylphenothiazine/conformers/conf_00.xyz": "9df17707936bf967e7b44dc57c6b4a5ce28daa37450b454cc22e2da6a1486d80",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethylphenothiazine/conformers/conf_01.xyz": "acc566cc04ae01736425cfca0006c0f9fbdc137dfcaa0d4c03b98b6771320d80"
+    }
+  },
+  "host": "lambda1",
+  "pid": 2002155,
+  "process_start": "464772735",
+  "cpu_affinity": [
+    4,
+    5
+  ],
+  "started": 1792397552.982981,
+  "experimental_accuracy_validated": false,
+  "primary_table_promotion": false,
+  "stage": "dft",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.qm.dft",
+    "--only",
+    "bm_n_ethylphenothiazine:ox2",
+    "--backend",
+    "gpu",
+    "--nthreads",
+    "2",
+    "--nconf",
+    "3",
+    "--no-freq"
+  ]
+}

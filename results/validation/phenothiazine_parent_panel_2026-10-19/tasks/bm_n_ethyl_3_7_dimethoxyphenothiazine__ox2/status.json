@@ -1,0 +1,55 @@
+{
+  "status": "computing",
+  "task": {
+    "key": "bm_n_ethyl_3_7_dimethoxyphenothiazine__ox2",
+    "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+    "state": "ox2",
+    "manifest_row": {
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "name": "N-ethyl-3,7-dimethoxyphenothiazine",
+      "family": "validation",
+      "state": "ox2",
+      "charge": "2",
+      "mult_hint": "1",
+      "n_e": "2",
+      "n_conf": "7",
+      "solv_preopt": "",
+      "smiles": "CCN1c2ccc(OC)cc2Sc2cc(OC)ccc21"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethyl_3_7_dimethoxyphenothiazine/conformers/conf_00.xyz": "4d72d53e2269141fb51dcea5d05e56ceb04d68a6bc82b305960f3e7a20673739",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethyl_3_7_dimethoxyphenothiazine/conformers/conf_01.xyz": "f71763f995ffb8e5c6e64a6acb767f4c3711b16775d4ec264c93865cbbd95a60",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethyl_3_7_dimethoxyphenothiazine/conformers/conf_02.xyz": "c53131dffe54d491180aee4c23b1a3ab25231b22ac9a726b37547944ec7c7fc1",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethyl_3_7_dimethoxyphenothiazine/conformers/conf_03.xyz": "a585937d60dd99ed76c38dc0283f7d4a58c6f1e3656accb85cf82da79d383828",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethyl_3_7_dimethoxyphenothiazine/conformers/conf_04.xyz": "908a5b1cfe21929a0a14035747a4201c98a2462b25d06b70c0cee02586c11691",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethyl_3_7_dimethoxyphenothiazine/conformers/conf_05.xyz": "0af4fc77f86b124a63d1ff703be3f95c17eda1f41c671d36bd15f7ec79fe9ff5",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_n_ethyl_3_7_dimethoxyphenothiazine/conformers/conf_06.xyz": "c7ce48c3bc11021199431a89635b1beecccb4501bc81a8398c53818909728c9f"
+    }
+  },
+  "host": "lambda2",
+  "pid": 1706808,
+  "process_start": "1319816498",
+  "cpu_affinity": [
+    4,
+    5
+  ],
+  "started": 1792397547.072769,
+  "experimental_accuracy_validated": false,
+  "primary_table_promotion": false,
+  "stage": "dft",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.qm.dft",
+    "--only",
+    "bm_n_ethyl_3_7_dimethoxyphenothiazine:ox2",
+    "--backend",
+    "gpu",
+    "--nthreads",
+    "2",
+    "--nconf",
+    "3",
+    "--no-freq"
+  ]
+}

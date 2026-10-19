@@ -81,7 +81,11 @@
       "source_doi": "10.1021/acs.chemmater.8b04770",
       "strict_target_potentials": 5,
       "strict_target_parents": 4,
-      "matching_calculations_pending": true
+      "matching_calculations_pending": true,
+      "parent_panel": "results/validation/phenothiazine_parent_panel_2026-10-19/plan.json",
+      "actual_GPU_start_proof": "results/validation/phenothiazine_parent_panel_2026-10-19/start_verification.json",
+      "GPU_workers_started": 12,
+      "strict_source_conflicted_parent_not_scheduled": true
     },
     "source_frozen_refinement": {
       "plan": "results/validation/hexyl_finer_derivatives_2026-10-19/plan.json",
@@ -96,6 +100,7 @@
       "independent_checks_each": 157
     },
     "global_review": {
+      "scope": "Static snapshot before the new parent panel; repeat after new states pass independent QC",
       "path": "results/reviews/2026-10-19/ptz_source_tables/review_status.json",
       "status": "complete",
       "arithmetic_checks": 30455,
@@ -121,7 +126,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792397406.6672432,
+  "updated": 1792397653.456826,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

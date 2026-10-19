@@ -1,0 +1,58 @@
+{
+  "status": "computing",
+  "task": {
+    "key": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine__ox1",
+    "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+    "state": "ox1",
+    "manifest_row": {
+      "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+      "name": "3,7-dimethoxy-N-(2-(2-methoxyethoxy)ethyl)phenothiazine",
+      "family": "validation",
+      "state": "ox1",
+      "charge": "1",
+      "mult_hint": "2",
+      "n_e": "1",
+      "n_conf": "10",
+      "solv_preopt": "",
+      "smiles": "COCCOCCN1c2ccc(OC)cc2Sc2cc(OC)ccc21"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_00.xyz": "69e615667c00065008b1c4a579330314b8adbf4a72d15b86ddde31c620691b1e",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_01.xyz": "cc5375c6f2d26072fd066ba8a41372e70d014b6c47a5cc79334a194f4d3f8155",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_02.xyz": "42e4efa92af81b38ccb418d1d14092968f3cd15c8df08f626108640c834535c7",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_03.xyz": "986e6943360d0ca667be2a3032a1e6d82feb39539359add084e2525624ccffb1",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_04.xyz": "f92925b4036fe7d03da5b90105a9d513fd866c2bb8aa5ccca014e0af6c378380",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_05.xyz": "30798d20ec5bbc04b8769a962e6fd7108428f85bba6bf9bcb41d1cd9e7a56118",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_06.xyz": "46ad6786556c4387f6a1f3dc2d4d6f19dcfa3e1d46797e63ad056fc5b5a4a461",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_07.xyz": "1af3488d74e69364bc65c1ed941f65658742d8fdc86d0a98d0284d5f1b849b46",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_08.xyz": "89b1751c1453a882c42bf8cb97c4291816cac982c806b3071154e0f183f29dcc",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/conformers/conf_09.xyz": "b19032287c397a2469d668b5bf1f4801d7140c58aa660c41084ed87df4e95e98"
+    }
+  },
+  "host": "lambda2",
+  "pid": 1707927,
+  "process_start": "1319816839",
+  "cpu_affinity": [
+    9,
+    10
+  ],
+  "started": 1792397550.256536,
+  "experimental_accuracy_validated": false,
+  "primary_table_promotion": false,
+  "stage": "dft",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.qm.dft",
+    "--only",
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine:ox1",
+    "--backend",
+    "gpu",
+    "--nthreads",
+    "2",
+    "--nconf",
+    "3",
+    "--no-freq"
+  ]
+}

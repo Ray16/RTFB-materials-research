@@ -1,0 +1,43 @@
+{
+  "host": "lambda1",
+  "gpu": 3,
+  "task": 3,
+  "cpu_affinity": [
+    6,
+    7
+  ],
+  "controller_pid": 1998327,
+  "process_start": "464771735",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "3",
+    "--cpus",
+    "6,7",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_parent_panel_2026-10-19/lambda1_task_3",
+    "--threads",
+    "2",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_parent_panel_2026-10-19/worker.py",
+    "--task",
+    "3"
+  ],
+  "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_parent_panel_2026-10-19/lambda1_task_3.log",
+  "output": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/phenothiazine_parent_panel_2026-10-19/lambda1_task_3",
+  "device": {
+    "index": 3,
+    "uuid": "GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70",
+    "name": "Tesla V100-SXM2-32GB",
+    "memory_MiB": 32768.0,
+    "compute_capability": "7.0"
+  },
+  "submitted": 1792397541.542112,
+  "actual_calculation_started": false,
+  "scientific_outputs_verified": false
+}
