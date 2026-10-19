@@ -1,0 +1,92 @@
+{
+  "status": "three_private_active_level_relaxations_prepared",
+  "tasks": [
+    {
+      "state": "neu",
+      "charge": 0,
+      "mult": 1,
+      "guess": "minao",
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_neu",
+      "expected_eV": -33288.13860078689,
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_neu/geometry.xyz": "a7215c410fe9b90923f4aac69a9a02ce98d99b3c02d7e4b8017d43c131f99d16",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_neu/selected_SP.json": "2a62126b26a1b377177ea3a9010c3f82721f8e7bf7a45f8d38fc21376d17dbba"
+      },
+      "smiles": "CCN1c2ccc(OC)cc2Sc2cc(OC)ccc21"
+    },
+    {
+      "state": "ox1",
+      "charge": 1,
+      "mult": 2,
+      "guess": "atom",
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_ox1",
+      "expected_eV": -33283.54511851557,
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_ox1/geometry.xyz": "e66cc2ceb530b38dd87c54ef7d3b4c7c905ca773accd0e4a57afa860a914edb9",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_ox1/selected_SP.json": "9365e94199a1fca4d7fab282f1ae02835416e5ba1b1e6edd9519ed670097b3f7"
+      },
+      "smiles": "CCN1c2ccc(OC)cc2Sc2cc(OC)ccc21"
+    },
+    {
+      "state": "ox2",
+      "charge": 2,
+      "mult": 1,
+      "guess": "minao",
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_ox2",
+      "expected_eV": -33278.0379908533,
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_ox2/geometry.xyz": "b85ed6918af9b7561d2099d7c7c6f142a1f179f1cc9d3fd44cad63ad50ec30d8",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/input_ox2/selected_SP.json": "fa46af3beef7d5d57ea786cc610c81ead452fe910cc346742a3e5f3aab7cea52"
+      },
+      "smiles": "CCN1c2ccc(OC)cc2Sc2cc(OC)ccc21"
+    }
+  ],
+  "electronic_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "SCF": {
+    "conv_tol": 1e-11,
+    "conv_tol_grad": 1e-08,
+    "max_cycle": 300
+  },
+  "optimizer": {
+    "maxsteps": 120,
+    "convergence_energy": 1e-08,
+    "convergence_grms": 3e-05,
+    "convergence_gmax": 5e-05,
+    "convergence_drms": 0.0001,
+    "convergence_dmax": 0.0002
+  },
+  "stationarity_max_Ha_Bohr": 0.00045,
+  "FD_step_Bohr": 0.0005,
+  "FD_absolute_acceptance_Ha_Bohr": 1e-05,
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_active_relaxation_2026-10-19/worker.py": "3f813fd6ca4fcbc52ee1d59bec6de5c7971aa9faa0cae0fcecdd643095f412b1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/uma.py": "f386d188d71a41df6a5b2c5bf55abe89ef94f3165a26fa876af058315a4a6ac4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/project.json": "55f54f160cb9e751ed9ec01cf7f88782cd5727806d233549f47b78eb1d15f404",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/electrolyte.py": "ad68419d8673d22ce7d785d4e38d40696609c22bad9496ac2ffac5d71f00d0c9"
+  },
+  "created": 1792418296.7445986,
+  "geometry_treatment_changed_for_sensitivity": true,
+  "same_electronic_level": true,
+  "thermal_recomputed": false,
+  "Hessian_minimum_proof": false,
+  "production_admission": false,
+  "scientific_scope": "Actual electronic charging-gap sensitivity to active-level relaxation; no fitted correction or replacement free energy",
+  "previous_local_quadratic_gap_estimate_eV": -0.008428349919115868,
+  "experimental_free_energy_gap_eV": 0.599,
+  "original_electronic_gap_eV": 0.9136453909450211,
+  "attempt_limit_per_state": 1
+}

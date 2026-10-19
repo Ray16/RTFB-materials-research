@@ -1,0 +1,64 @@
+{
+  "status": "three_actual_private_optimization_starts_verified",
+  "actual_starts": 3,
+  "records": [
+    {
+      "state": "neu",
+      "gpu": 0,
+      "controller_pid": 182310,
+      "status": "optimizing",
+      "pid": 184651,
+      "cycle": 5,
+      "error": null,
+      "actual_predictor": {
+        "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+        "memory_MiB": "12124"
+      },
+      "CPU_affinity": [
+        0,
+        1
+      ],
+      "actual_optimizer_progress": true
+    },
+    {
+      "state": "ox1",
+      "gpu": 1,
+      "controller_pid": 182311,
+      "status": "optimizing",
+      "pid": 186035,
+      "cycle": 2,
+      "error": null,
+      "actual_predictor": {
+        "uuid": "GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b",
+        "memory_MiB": "12086"
+      },
+      "CPU_affinity": [
+        2,
+        3
+      ],
+      "actual_optimizer_progress": true
+    },
+    {
+      "state": "ox2",
+      "gpu": 2,
+      "controller_pid": 182312,
+      "status": "optimizing",
+      "pid": 187699,
+      "cycle": 3,
+      "error": null,
+      "actual_predictor": {
+        "uuid": "GPU-5d07badb-4052-7045-bdc1-c0476709589b",
+        "memory_MiB": "47780"
+      },
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "actual_optimizer_progress": true
+    }
+  ],
+  "load_1m": 5.01513671875,
+  "online_CPUs": 384,
+  "verified": 1792418665.9766016,
+  "production_admission": false
+}

@@ -85,6 +85,13 @@ selection after the remaining molecule writer finishes. Both
 [campaigns](../results/validation/cata_cds_diagnosis_2026-10-19/README.md) preserve
 original failures and keep pending corrections separate from primary results.
 
+The [requirement audit](../results/reviews/2026-10-19/requirement_completion_audit/audit.json)
+separates corrected software/record contracts and computed-candidate delivery from
+unresolved scientific accuracy. The [three-state active-geometry sensitivity](../results/validation/ptz_active_relaxation_2026-10-19/README.md)
+is now running privately at the same wB97M-V/TZVPD/SMD electronic level. It tests
+the actual charging-gap response to geometry relaxation; it does not recompute
+thermal corrections, prove Hessian minima or change published values.
+
 ## Earlier dated checkpoints
 
 The following entries preserve the investigation and their original counts.
