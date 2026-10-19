@@ -2,7 +2,7 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **541 tests**. The latest additional fix makes
+The full software suite passes **544 tests**. The latest additional fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
@@ -289,3 +289,9 @@ existing provenance and need source-level review or recomputation where that pro
 cannot be recovered. That benchmark file is a historical input in this isolated
 review, not new native benchmark validation. Recheck benchmark/reference matching before regenerating it or using
 it as current calibration evidence.
+
+The [uncertainty evidence contract](../results/validation/uncertainty_scope_2026-10-19/README.md)
+now labels the lambda scale as computational-model spread, exports counts and
+median discrepancy, and prevents sparse/zero-spread comparisons from tightening
+the prior. The current 0.209-eV scale and numeric property/selection tables are
+unchanged. This does not add experimental kinetic validation.

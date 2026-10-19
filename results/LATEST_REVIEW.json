@@ -1,14 +1,14 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T08:36:40.054609-05:00",
+    "as_of_Chicago": "2026-10-19T10:22:35.307511-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_083640_054609",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_102235_307511",
       "additional_candidates": 27,
       "original39_with_native_potentials": 34,
       "complete_potential_pairs": 26,
@@ -109,6 +109,14 @@
       "confident_two_electron_window_capacity": false,
       "no_fitted_correction": true
     },
+    "lambda_uncertainty_evidence": {
+      "review": "results/validation/uncertainty_scope_2026-10-19/qualification.json",
+      "kind": "computational_model_discrepancy_scale_with_prior_floor",
+      "comparisons": 330,
+      "scale_eV": 0.209,
+      "median_residual_eV": -0.10011957586227505,
+      "empirical_solution_accuracy_validated": false
+    },
     "gas_reference_actual_replays": {
       "review": "results/validation/acene_solver_replay_2026-10-19/review.json",
       "actual_quantum_cases": 2,
@@ -161,7 +169,7 @@
     },
     "global_review": {
       "scope": "Full property tables include both cata ladders, selected spin equilibrium, reviewed derivative repair and gas-diagnostic exclusions; external record dependencies fingerprinted",
-      "path": "results/reviews/2026-10-19/cata_complete_tables/review_status.json",
+      "path": "results/reviews/2026-10-19/uncertainty_scope_tables/review_status.json",
       "status": "complete",
       "arithmetic_checks": 32492,
       "arithmetic_discrepancies": 0,
@@ -172,12 +180,12 @@
       "new_cata_cases_outside_review_scope": false
     },
     "slides": {
-      "status": "checked_active_geometry_diagnostic_and_unchanged_candidate_snapshot_pdf",
+      "status": "checked_uncertainty_evidence_scope_and_unchanged_candidate_values_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/ptz_relaxation_slides/slides_check.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_083640_054609",
-      "pdf_sha256": "cbc2fdde97ef4a7360c0d28fbf87e19e91e3a0bc0552847e9b8d094b4446f016",
-      "pages": 46
+      "publisher": "results/reviews/2026-10-19/uncertainty_scope_slides/slides_check.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_102235_307511",
+      "pdf_sha256": "17ef31054275539b415f5c6de8dd7518537fb65cf65a09ac6d135312d38a033c",
+      "pages": 47
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -212,8 +220,8 @@
       "solution_start_proof": "results/validation/cata_solution_2026-10-19/start_verification.json",
       "solution_outputs": "calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>"
     },
-    "software_tests_passed": 541,
-    "software_checks": "results/validation/cata_cross_points_2026-10-19/software_checks.log",
+    "software_tests_passed": 544,
+    "software_checks": "results/validation/uncertainty_scope_2026-10-19/software_checks.log",
     "remaining_work": [
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
@@ -222,7 +230,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792422925.7472587,
+  "updated": 1792424134.7358487,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

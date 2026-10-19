@@ -1,0 +1,35 @@
+{
+  "status": "primary_CV_conditions_rechecked",
+  "source_url": "https://xray.uky.edu/people/parkin/papers/426.pdf",
+  "source_DOI": "10.1021/acs.chemmater.8b04770",
+  "local_source": "data/raw/discovery_sources/2026-10-19/ptz_validation/attanayake_2019.pdf",
+  "local_sha256": "7d99b2658935ad2f79b2664cd043aeb9db93cb33412a0cf64a8e81e6ad36b94d",
+  "source_page": 4355,
+  "conditions": {
+    "solvent": "acetonitrile",
+    "supporting_electrolyte": "0.5 M TEATFSI",
+    "temperature_K": 299.15,
+    "active_material_mM": 1,
+    "Fc_calibration_mM": 5,
+    "reference": "separate Fc calibration before each measurement",
+    "quantity": "mean anodic/cathodic peak potential",
+    "iR_correction_percent": 100
+  },
+  "model_scope": {
+    "solvent": "SMD acetonitrile",
+    "explicit_supporting_electrolyte": false,
+    "temperature_K": 298.15
+  },
+  "inferences": {
+    "global_reference_offset_cannot_remove_charging_gap_error": true,
+    "electrolyte_or_ion_pairing_is_established_cause": false,
+    "source_does_not_directly_establish_cause_of_model_error": true
+  },
+  "remaining_hypotheses": [
+    "Specific electrolyte association/activity and continuum-environment limitations",
+    "Electronic-functional/state/correlation limitations",
+    "Thermal and conformer-ensemble contributions not recomputed for relaxed geometries"
+  ],
+  "canonical_values_or_benchmark_labels_changed": false,
+  "observed": 1792423198.5195491
+}

@@ -1170,7 +1170,8 @@ def my_sigmas(fc):
         a, b = fnum(r.get("our_smd_eV")), fnum(r.get("d3tales_eV"))
         if a is not None and b is not None and 0 <= a <= 2 and 0 <= b <= 2:
             lam.append(a - b)
-    s_lam = round(robust_sigma(lam), 3) if lam else SCC.SIGMA_LAMBDA_EV
+    s_lam = (max(SCC.SIGMA_LAMBDA_EV, round(robust_sigma(lam), 3))
+             if len(lam) >= SCC.MIN_LAMBDA_COMPARISON_POINTS else SCC.SIGMA_LAMBDA_EV)
     dres = [fnum(r.get("err_kJmol")) for r in read_csv(RES / "stability_validation.csv")
             if (r.get("tier") or "A") == "A"]
     dres = [x / EV_KJMOL for x in dres if x is not None]

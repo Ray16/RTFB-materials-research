@@ -96,3 +96,22 @@ Dication & -0.1116 & 2.60e-06 \\
   \vfill\scriptsize Private sensitivity: thermals were not recomputed and Hessian minima
   were not proved. No canonical replacement or fitted correction; do not silently reuse old thermals.
 \end{frame}
+
+\begin{frame}{Uncertainty evidence: computational spread and priors}
+  \begin{block}{The lambda scale does not validate solution kinetics}
+    Current scale: 0.209 eV from 330 selected computational-model residuals.
+    The median residual is $-0.100$ eV; no offset is fitted or applied.
+  \end{block}
+  \begin{itemize}
+    \item The source comparison has no convergence, binding or conformer-QC columns.
+      A value-range filter does not certify those properties.
+    \item At least two comparisons are required to estimate a spread. Sparse or
+      zero-spread comparisons cannot tighten the configured 0.10-eV prior floor.
+    \item Evidence type, counts, spread and location shift are exported explicitly.
+      Three regression cases pass; the full suite now passes 544 tests.
+    \item Current numeric property/scorecard/Pareto tables are unchanged.
+      Empirical solution-rate and exact-graft accuracy remain unvalidated.
+  \end{itemize}
+  \vfill\scriptsize Computational-reference discrepancy is separate from empirical
+  predictive error. Existing field-specific gas, spin and physical-QC exclusions remain active.
+\end{frame}

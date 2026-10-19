@@ -420,7 +420,8 @@ def derive_uncertainties(redox_rows):
       family_redox : per-family redox sigma (V) from validation residuals (>=2 anchors)
       pooled_redox : pooled validation RMSE (V) — used for a not-yet-validated family
       charge_redox : by-charge-class RMSE (V) from the OROP benchmark (deep fallback)
-      lambda       : reorg sigma (eV) = spread of our production lambda vs D3TaLES (0-2 eV subset)
+      lambda       : computational-model spread (0-2 eV subset), with a prior floor;
+                     not an experimentally calibrated solution-kinetic error
       disp         : disproportionation sigma (eV) from stability_validation residuals
     """
     sc = _cfg("scorecard_config")
@@ -444,9 +445,10 @@ def derive_uncertainties(redox_rows):
     charge_redox = {k: round(_rmse(v), 3) if len(v) >= sc.MIN_REDOX_CALIBRATION_POINTS
                    else sc.SIGMA_REDOX_V[k] for k, v in cls.items()}
 
-    # lambda: spread of our production lambda vs D3TaLES on the reliable 0-2 eV subset. Use a
-    # ROBUST scale (1.4826 x MAD) not RMSE: D3TaLES's diffuse-free def2-SVP leaves a heavy
-    # unbound-anion outlier tail (see reorg QC) that would otherwise inflate the sigma ~5x.
+    # Descriptive cross-model spread on the declared 0-2 eV comparison range.
+    # This CSV does not certify per-record convergence/binding/conformer QC.
+    # MAD removes a location shift; expose that shift separately, never as a fit.
+    # Computational agreement alone cannot tighten the configured prior.
     comp = RESULTS / "d3tales_reorg_validation_prod" / "comparison.csv"
     lam_res = []
     if comp.exists():
@@ -455,7 +457,10 @@ def derive_uncertainties(redox_rows):
                 a, b = _f(r.get("our_smd_eV")), _f(r.get("d3tales_eV"))
                 if a is not None and b is not None and 0 <= a <= 2 and 0 <= b <= 2:
                     lam_res.append(a - b)
-    sigma_lambda = round(_mad_sigma(lam_res), 3) if lam_res else sc.SIGMA_LAMBDA_EV
+    lambda_supported = len(lam_res) >= sc.MIN_LAMBDA_COMPARISON_POINTS
+    lambda_spread = _mad_sigma(lam_res) if lambda_supported else None
+    sigma_lambda = max(sc.SIGMA_LAMBDA_EV, round(lambda_spread, 3)) if lambda_supported else sc.SIGMA_LAMBDA_EV
+    lambda_bias = statistics.median(lam_res) if lam_res else None
 
     # disproportionation: stability_validation residuals (kJ/mol -> eV)
     KJ_EV = 1.0 / 96.485
@@ -466,6 +471,15 @@ def derive_uncertainties(redox_rows):
 
     return dict(family_redox=family_redox, pooled_redox=pooled_redox, charge_redox=charge_redox,
                 sigma_lambda=sigma_lambda, sigma_disp=sigma_disp,
+                lambda_uncertainty_kind='computational_model_discrepancy_scale_with_prior_floor',
+                lambda_empirical_solution_accuracy_validated=False,
+                lambda_comparison_events=len(lam_res),
+                minimum_lambda_comparison_events=sc.MIN_LAMBDA_COMPARISON_POINTS,
+                lambda_prior_floor_eV=sc.SIGMA_LAMBDA_EV,
+                lambda_comparison_spread_eV=lambda_spread,
+                lambda_comparison_median_residual_eV=lambda_bias,
+                lambda_calibration_status=('computational_reference_only' if lambda_supported else 'prior_limited'),
+                lambda_comparison_value_domain_eV=[0,2],
                 grounded_redox_events=experimental_e_points(redox_rows),
                 minimum_redox_events=sc.MIN_REDOX_CALIBRATION_POINTS,
                 charge_class_events={key: len(values) for key, values in cls.items()},

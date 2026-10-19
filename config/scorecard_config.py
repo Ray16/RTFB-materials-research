@@ -27,16 +27,17 @@ Trust levels:
 # (see redox.screening.scorecard.derive_family_sigma): per-family RMSE where we have >=2 anchors, else
 # the pooled validation RMSE (our overall demonstrated accuracy). Nothing is hard-coded, so
 # the uncertainty tightens automatically as config/validation.py grows.
-# NOTE: every SIGMA below is a FALLBACK only. The scorecard computes each uncertainty at run
+# The scorecard computes benchmark-derived scales at run
 # time from its benchmark file (redox.screening.scorecard.derive_uncertainties): redox from the OROP
 # benchmark + validation residuals, lambda from the D3TaLES comparison, disproportionation
-# from stability_validation. These constants are used ONLY if that benchmark file is absent,
-# so no reported uncertainty is a hand-set magic number.
+# from stability_validation. Constants are documented priors when evidence is sparse;
+# the computational lambda comparison cannot tighten its prior floor.
 SIGMA_REDOX_V = dict(cation=0.44, anion=0.53, multi=0.80)   # fallback; else OROP-derived
 # A single residual is a useful observation, not a calibrated population error.
 # Apply the same minimum to pooled, family and charge-class empirical RMSEs.
 MIN_REDOX_CALIBRATION_POINTS = 2
-SIGMA_LAMBDA_EV = 0.10        # fallback; else RMSE(our lambda - D3TaLES) on the 0-2 eV subset
+MIN_LAMBDA_COMPARISON_POINTS = 2
+SIGMA_LAMBDA_EV = 0.10        # prior/floor; larger robust computational-model spread may widen it
 SIGMA_DISP_EV = 0.17          # fallback; else RMSE of stability_validation residuals
 SIGMA_CAPACITY = 0.0          # exact (bookkeeping, no model error)
 
