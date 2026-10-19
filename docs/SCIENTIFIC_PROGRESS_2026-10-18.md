@@ -612,3 +612,41 @@ registrations, while the candidate feed supplies current field-specific coverage
 The exporter now recognizes the native per-state queue, so new candidates show
 producer progress and pending independent admission rather than appearing outside
 the legacy queue. Three regression cases bring the full suite to 558 passing tests.
+
+The first three diaryl-viologen native state records passed a separate
+[251-check review](../results/reviews/2026-10-19/aryl_first_native_state/summary.json).
+This is selected-state evidence; complete potential pairs require both endpoints
+and their independent spin/integrity checks.
+
+The unresolved hexyl-NDI case now has a [contact diagnosis](../results/validation/hexyl_conformer_search_2026-10-19/README.md):
+the installed host CDS force jumps at an expanded H/H solvent-sphere boundary,
+accounting for the old full FD residual magnitude to 0.01346%. The independent
+contact review passes 38 checks. Ten CPU ALPB conformers were screened, and two
+distinct starting conformers passed a separate 149-check preparation review.
+They are not native minima or replacements; energies and conformer scope remain
+necessary before adoption, and all primary hexyl fields stay pending.
+
+Five completed diaryl-viologen states now pass a
+[303-check independent review](../results/reviews/2026-10-19/aryl_native_progress_1209/summary.json)
+with no discrepancies. AV-3b's radical active-energy calculation exhausted the
+32-GB V100 class; two closed-shell native solvent Hessians also exhausted it.
+All remaining owned aryl V100 trees were stopped and preserved.
+The [bounded recovery](../results/validation/aryl_solution_2026-10-19/resource_routing/recovery_plan.json)
+retains all old evidence and the frozen numerical protocol, and waits for suitable
+free H100s under the shared reservation gate. This resource failure does not
+constitute a physical rejection. Fourteen targets cover the resource-stopped
+and remaining unstarted states; live H100 peers retain ownership.
+Completed geometry/SP stages resume without repeating the three-seed optimization.
+A separate original H100 state failed native Hessian symmetry and stays withheld.
+Two node-to-node SSH setup failures consumed no molecular attempts; sealed
+control-node checks now establish release of all 13 original V100 owners.
+
+Two [private native-level hexyl relaxations](../results/validation/hexyl_conformer_search_2026-10-19/native_seed_plan.json)
+have actually started on lambda2's two suitable free V100s. They use the reviewed
+different starting basins, strict convergence and the unchanged native physical
+gates. Active energies precede thermochemistry so failed derivatives do not erase
+the electronic comparison. Canonical adoption still requires independent basin,
+energy and partition assessment. Eight recovery regressions pass, including native
+stage preservation and changed-proof refusal; the full workspace suite passes
+572 tests. The checked slides distinguish selected-state completion,
+resource waiting and pending exact-graft properties.

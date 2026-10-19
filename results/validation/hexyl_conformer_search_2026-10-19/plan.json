@@ -1,0 +1,54 @@
+{
+  "status": "ten_ALPB_conformer_preparations_predeclared",
+  "id": "exp_ndi_hexyl_pentyloxy",
+  "state": "red1",
+  "charge": -1,
+  "mult": 2,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_conformer_search_2026-10-19/search.py": "f8b8e85ca306561efb8947b015716512e6faa9475198ac521adae6c5c39e13bc",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/smd.py": "1af82c3a1997abbe2db69db4dab71891a6a582f7e69154e7e046c04f40638f06",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/libsolvent.so": "467dc0969542482a0bab7c321d28e56a94af02f4b162b7d800f12ad986182b25",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/xtb": "271dd6cdd5da127a8e39919e7e32d924790fb346f0057b4183769ba8b3411887",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_00.xyz": "099996069dc831ae66aa471a8b9d170c31b05cf7e9729758a99e3fbc2c025022",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_01.xyz": "13cbfafce1d60a78b2944bb78f05b710e5dc6286e34a61027c72abb17e7e300d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_02.xyz": "57b73798679942f5f9fcf91cf479c6de668230ba647fed4b944454107607ff7f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_03.xyz": "9d3c7cff24a0f5f1887b3e69c1cf8a7be6497e3d984999cc91d030e136bac5ba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_04.xyz": "d59300de0df3ce87225646fe61608e009813612d82d3546191e48bdfb59acae3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_05.xyz": "8b65da1c26ee06745d9e34ce7c9e68830e15cdf1d8aae1c2e03007642312269c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_06.xyz": "f4063ba426a3e97ab212dc5bef106d022ca26d3dd064c74ff8f89576612b6a67",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_07.xyz": "14b93127c8bd9b1eab366013219a08bdd24d4447537c25de5c26ddd813b874ee",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_08.xyz": "477a31bcb2d438a7c9b0266d32c66c4943d74881c026e9905ccd0d1772f02074",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/exp_ndi_hexyl_pentyloxy/conformers/conf_09.xyz": "44ac6d618bc8ee40cd0363d516c319f8d4d04e757bba176c6fc3f1652130ac6e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_ndi_hexyl_pentyloxy/red1/opt.xyz": "b6813ece647a87db6dd0acbddfbf440f752567fe89a968b2726352f4a92f91cd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/frozen_minus/opt.xyz": "995dca7c789a1320695871df8bbc363a714fd415111b7391e4e1b4267afc3c10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/frozen_plus/opt.xyz": "13d35c5edbb39a482171794a71c1590385d591db68ca324687c211a3a6d73c96"
+  },
+  "method": "GFN2-xTB/ALPB(MeCN), --acc 1.0, standard --opt; then installed host SMD CDS only",
+  "distinct_basin_heuristic": {
+    "min_heavy_RMSD_A": 0.5,
+    "min_changed_acyclic_torsions": 2,
+    "torsion_change_deg": 60
+  },
+  "diagnostic_smoothness_heuristic": {
+    "coarse_step_Bohr": 0.0001,
+    "comparison_step_Bohr": 0.0005,
+    "max_CDS_asymmetry_Ha_Bohr2": 1e-06,
+    "max_CDS_step_difference_Ha_Bohr2": 1e-05
+  },
+  "selection": "At most two lowest ALPB-energy conformers satisfying graph, smoothness and distinct-basin heuristics, also distinct from each other",
+  "native_admission": false,
+  "native_thresholds_changed": false,
+  "canonical_outputs_modified": false,
+  "GPU_used": false,
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 33.2119140625,
+    "available_RAM_bytes": 497454616576,
+    "minimum_RAM_GiB": 8
+  },
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "created": 1792428310.0451965
+}

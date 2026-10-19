@@ -1,0 +1,82 @@
+{
+  "status": "state_records_verified",
+  "task": {
+    "key": "study_aryl_c88a8d5645d4__ox2",
+    "id": "study_aryl_c88a8d5645d4",
+    "state": "ox2",
+    "manifest_row": {
+      "id": "study_aryl_c88a8d5645d4",
+      "name": "AV-3e ester at aryl C2",
+      "family": "pyridine-multi-e",
+      "state": "ox2",
+      "charge": "2",
+      "mult_hint": "1",
+      "n_e": "0",
+      "n_conf": "10",
+      "solv_preopt": "1",
+      "smiles": "Cc1ccc(COC(=O)c2c(C(=O)O)cccc2-[n+]2ccc(-c3cc[n+](-c4cccc(C(=O)O)c4C(=O)O)cc3)cc2)cc1"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_00.xyz": "1443bed75e4f74b5f85d42338f16e29cd47e6382160760b33c4f8115a8d5c319",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_01.xyz": "41de3feb506464433f0f3abcb57c61d291049e666969a45e8a176d98ba5d9545",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_02.xyz": "9dd68487bb2856255f2011f5d64f6d1c2ec0f10839de61673c2db98ed133a5a4",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_03.xyz": "1e55e2fe145e72b669311728de766ca6c308b4ce962181029436d5de2c473c88",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_04.xyz": "3828e4b7c112f70045088172deac2ece367aac17845c9b93f701288ba8643162",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_05.xyz": "ba0596dddc50a5e472b6ed27b31b80516546fdfe2e8e5adb59dd00b84ce97a19",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_06.xyz": "7ea12767b86352c17cf9e1101796db0b2e805889b3d8e49ff3e61690983ea499",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_07.xyz": "0b4175e3305339584f04ab8e9a90b4a3c42e5df0b1f530d1df5126c212a26b29",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_08.xyz": "56d3d7a3ef0eaf29783950a3630825a640c197b9cbb23062a811bf382f58c427",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/library/study_aryl_c88a8d5645d4/conformers/conf_09.xyz": "30933e057267b116f4f2e16f579b6ac64fbc3c2a88af3a6a07ef4b3d73f833f1",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/study_aryl_c88a8d5645d4/ox2/result.json": "9ffaba780f1902ee8253f2c734789439657c9067e7f68cff221b6257249ccfec",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/study_aryl_c88a8d5645d4/ox2/relaxed.xyz": "5afd3035c4195e700c0ed4ab2c15db324b8ea7f3cca386a13d8ec1967ce24468"
+    }
+  },
+  "host": "lambda13",
+  "pid": 374144,
+  "process_start": "54437299",
+  "cpu_affinity": [
+    10,
+    11
+  ],
+  "started": 1792427038.9634035,
+  "experimental_accuracy_validated": false,
+  "primary_table_promotion": false,
+  "stage": "native_thermal",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.qm.sp",
+    "--only",
+    "study_aryl_c88a8d5645d4:ox2",
+    "--backend",
+    "gpu"
+  ],
+  "hydrogen_topology": "ok",
+  "readiness": [
+    {
+      "id": "study_aryl_c88a8d5645d4",
+      "state": "ox2",
+      "charge": "2",
+      "status": "ready",
+      "issues": ""
+    }
+  ],
+  "ground_spin_selection_complete": false,
+  "thermal_eV": 12.914327684740934,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/opt.xyz": "86461c7bdc078aeccea299dce9dfe1f5c479ea69be70cee8bcaac65b923a280b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/result.json": "bc4763f72142e0e8739efd517c32c28b721b6ff0405892d80f21ca515f8b61c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/thermal_policy.json": "4c702b75cf79932a2ae9518d89c70a1eacda18e663a28a405ca1be36104ff9eb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/sp/ddcac7ea289efc18.json": "f4ae9b088b6306d038a9cae287f86a329843879e04892e26081ff1643e90b948",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/native_thermal/559adb7e5bb9feba.json": "3b841098e9a415928697700646c25642231a09d4a83a6538ac6ba802d3c44fa8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/native_thermal/559adb7e5bb9feba/hessian_cartesian.npy": "35829668cd9e6d22530c331650bc8f1ef87bdd0983d9669b2027a741e1374d2c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/native_thermal/559adb7e5bb9feba/hessian_diagnostics.json": "348152fe533e8e13dbc4c3411b9466fd6f369ab8f396117e1c570736e8ce3472",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/native_thermal/559adb7e5bb9feba/mol.xyz": "86461c7bdc078aeccea299dce9dfe1f5c479ea69be70cee8bcaac65b923a280b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/projected_thermal/5eeaedce922f30f6.json": "f656d90df260d0d1c3cd718f6be465b5df208446641d7b5216bb5f31ea9dfe01",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/projected_thermal/5eeaedce922f30f6/owner.json": "164f5cf08a132e370f5877ed712e9214b150f3db16d4165afba14ab2f35c805f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/projected_thermal/5eeaedce922f30f6/projected_hessian.npy": "7a1a8f7f6586c15a536201d986ff393175ee570a2b76a76c034119aac6857e79",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/study_aryl_c88a8d5645d4/ox2/projected_thermal/5eeaedce922f30f6/mol.xyz": "86461c7bdc078aeccea299dce9dfe1f5c479ea69be70cee8bcaac65b923a280b"
+  },
+  "finished": 1792429126.194915
+}

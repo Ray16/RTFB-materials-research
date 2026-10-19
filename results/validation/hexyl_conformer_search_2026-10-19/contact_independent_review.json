@@ -1,0 +1,186 @@
+{
+  "status": "contact_gradient_jump_and_preserved_residual_independently_checked",
+  "checks": 38,
+  "failed_checks": 0,
+  "details": [
+    {
+      "check": "source /nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_conformer_search_2026-10-19/contact_sweep_refined.py",
+      "passed": true
+    },
+    {
+      "check": "source /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/smd.py",
+      "passed": true
+    },
+    {
+      "check": "source /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/libsolvent.so",
+      "passed": true
+    },
+    {
+      "check": "source /nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/frozen_minus/opt.xyz",
+      "passed": true
+    },
+    {
+      "check": "source /nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/frozen_plus/opt.xyz",
+      "passed": true
+    },
+    {
+      "check": "minus 0.0001 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "minus 0.0001 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-05 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-05 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-06 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-06 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-07 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-07 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-08 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-08 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-09 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-09 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-10 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "minus 1e-10 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "minus persistent limiting jump",
+      "passed": true
+    },
+    {
+      "check": "minus inverse-step curvature growth",
+      "passed": true
+    },
+    {
+      "check": "plus 0.0001 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "plus 0.0001 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-05 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-05 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-06 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-06 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-07 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-07 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-08 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-08 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-09 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-09 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-10 gradient jump",
+      "passed": true
+    },
+    {
+      "check": "plus 1e-10 curvature quotient",
+      "passed": true
+    },
+    {
+      "check": "plus persistent limiting jump",
+      "passed": true
+    },
+    {
+      "check": "plus inverse-step curvature growth",
+      "passed": true
+    },
+    {
+      "check": "contact jump accounts for preserved full FD residual scale",
+      "passed": true
+    }
+  ],
+  "branches": [
+    {
+      "branch": "minus",
+      "limiting_gradient_jump_norm_Ha_Bohr": 0.00021982987873149138,
+      "curvature_ratio_per_tenfold_step_shrink": [
+        9.999994756992164,
+        9.999999475698907,
+        9.999999947569925
+      ]
+    },
+    {
+      "branch": "plus",
+      "limiting_gradient_jump_norm_Ha_Bohr": 0.00021983067861628598,
+      "curvature_ratio_per_tenfold_step_shrink": [
+        9.999994770488497,
+        9.999999477048581,
+        9.999999947704787
+      ]
+    }
+  ],
+  "preserved_full_FD_residual_norm_Ha_Bohr2": 0.21980029623879568,
+  "predicted_jump_over_2h_Ha_Bohr2": 0.21982987873149137,
+  "relative_difference": 0.0001345880474317058,
+  "interpretation": "Persistent CDS force jump at the expanded H-sphere contact; crossing-contact curvature grows as 1/h. This is evidence for a non-smooth local cavity contribution, not permission to symmetrize or bypass native physical checks.",
+  "native_admission": false,
+  "canonical_values_changed": false,
+  "checked": 1792429082.6729012
+}

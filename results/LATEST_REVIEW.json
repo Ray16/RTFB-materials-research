@@ -1,18 +1,18 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T11:34:39.450415-05:00",
+    "as_of_Chicago": "2026-10-19T12:22:05.478576-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_113439_450415",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576",
       "additional_candidates": 36,
       "original39_with_native_potentials": 34,
       "complete_potential_pairs": 26,
-      "arithmetic_checks": 608,
+      "arithmetic_checks": 613,
       "arithmetic_discrepancies": 0,
       "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
       "inputs_current_during_collection": true
@@ -157,13 +157,30 @@
       "actual_start_verification": "results/validation/aryl_solution_2026-10-19/start_verification.json",
       "GPU_workers_at_verified_start": 18,
       "declared_states": 27,
-      "state_attempt_reports": 18,
-      "native_surface_records_verified": 0,
-      "state_failures": 0,
+      "state_attempt_reports": 26,
+      "native_surface_records_verified": 5,
+      "state_failures": 13,
       "seed_description_correction": "results/validation/aryl_solution_2026-10-19/seed_description_correction.json",
       "new_potential_pairs_admitted": 0,
       "earlier_calculation_preservation": "results/validation/aryl_solution_2026-10-19/existing_property_preservation.json",
-      "new_experimental_accuracy_validated": false
+      "new_experimental_accuracy_validated": false,
+      "independent_selected_state_review": "results/reviews/2026-10-19/aryl_native_progress_1209/summary.json",
+      "independently_reviewed_states": 5,
+      "independent_state_checks": 303,
+      "independent_failed_checks": 0,
+      "memory_routing_plan": "results/validation/aryl_solution_2026-10-19/resource_routing/recovery_plan.json",
+      "memory_dispatcher": "results/validation/aryl_solution_2026-10-19/resource_routing/dispatcher.json",
+      "resource_deferred_failures_are_not_physical_rejections": true,
+      "recovery_start_verification": "results/validation/aryl_solution_2026-10-19/resource_routing/recovery_start_verification.json",
+      "H100_recovery_workers_at_verified_start": 1,
+      "original_geometry_and_result_preserved_at_recovery_start": true,
+      "physical_holds": [
+        {
+          "key": "study_aryl_9992bd3479e1__ox2",
+          "stage": "native_thermal",
+          "reason": "RuntimeError('Native Hessian symmetry/finite-value failure')"
+        }
+      ]
     },
     "lambda_uncertainty_evidence": {
       "review": "results/validation/uncertainty_scope_2026-10-19/qualification.json",
@@ -238,12 +255,12 @@
       "current_candidate_coverage": "results/candidates/current.json"
     },
     "slides": {
-      "status": "checked_registered_aryl_solution_launch_and_pending_properties_pdf",
+      "status": "published_checked_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/aryl_solution_slides/slides_check.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_113439_450415",
-      "pdf_sha256": "346b1ee3920e46085d0ec2c850e485d87368494e75fecebfc681020472cea9c7",
-      "pages": 50
+      "publisher": "results/reviews/2026-10-19/aryl_memory_hexyl_slides/slides_check.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576",
+      "pdf_sha256": "416321cacb9a32eef707e9dc12d8d88dad9705a0ecbcf7aa013a1810252dedff",
+      "pages": 51
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -278,18 +295,29 @@
       "solution_start_proof": "results/validation/cata_solution_2026-10-19/start_verification.json",
       "solution_outputs": "calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>"
     },
-    "software_tests_passed": 558,
-    "software_checks": "results/validation/aryl_solution_2026-10-19/software_checks.log",
+    "software_tests_passed": 572,
+    "software_checks": "results/validation/aryl_solution_2026-10-19/resource_routing/software_checks_final.log",
     "remaining_work": [
       "Complete diaryl-viologen solution-property calculations and independent admission",
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
       "Broader experimental benchmark and exact-graft validation",
       "Resolve or bound phenothiazine second-wave model error"
-    ]
+    ],
+    "hexyl_distinct_conformers": {
+      "guide": "results/validation/hexyl_conformer_search_2026-10-19/README.md",
+      "contact_review_checks": 38,
+      "preparation_review_checks": 149,
+      "prepared_seeds": 2,
+      "actual_GPU_start_verification": "results/validation/hexyl_conformer_search_2026-10-19/native_start_verification.json",
+      "GPU_workers_at_verified_start": 2,
+      "native_plan": "results/validation/hexyl_conformer_search_2026-10-19/native_seed_plan.json",
+      "canonical_outputs_modified": false,
+      "energy_ordering_and_conformer_scope_pending": true
+    }
   },
   "scientific_validation_complete": false,
-  "updated": 1792427868.6197083,
+  "updated": 1792430961.7054815,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

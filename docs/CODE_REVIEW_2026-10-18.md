@@ -31,10 +31,10 @@ records its calculations and independent reviews. All 12 primary states and
 now contribute to the matched, unfitted benchmark.
 
 The last full table snapshot passes **32,492 arithmetic checks**, and the additional
-candidate export passes **590 checks**, with zero discrepancies. These are scoped
+candidate export passed **608 checks** at the registration checkpoint, with zero discrepancies. These are scoped
 snapshots; new parent calculations require a fresh assessment after their QC.
 [Current evidence](../results/LATEST_REVIEW.json) identifies the exact receipts,
-26/27 admitted additional potential pairs, source catalog and checked slide deck.
+26/36 admitted additional potential pairs at registration, source catalog and checked slide deck.
 The new [model-selection policy](../config/model_validation_limits.json) scopes
 the observed phenothiazine second-oxidation failure independently of solver QC.
 It retains computed potentials and benchmark residuals, withholds qualified
@@ -44,6 +44,12 @@ limit. Eleven regression cases and the independent table reconstruction cover
 that behavior.
 Both remaining hexyl-NDI branches failed physical gates. Host-only diagnostics
 reproduce the problem in the SMD CDS term; neither geometry is admitted.
+The [contact sweep and distinct-conformer preparation](../results/validation/hexyl_conformer_search_2026-10-19/README.md)
+now localizes the persistent force jump at an expanded H/H solvent-sphere contact.
+It explains the previous FD residual scale to 0.01346%; 38 independent checks pass.
+Two different ALPB starting conformers are prepared after a 149-check review.
+They remain unvalidated at the native level, and a merely passing higher-energy
+minimum cannot substitute for an unresolved lower state.
 Solution kinetics, broader experimental accuracy and exact-graft validation remain
 unfinished. User-staged archive changes remain separate and untouched.
 
@@ -324,3 +330,13 @@ The candidate exporter now reads modern per-state queues directly. It separates
 producer progress, surface completion, preserved failures and independent property
 admission, and refuses mismatched state reports. Three regressions pass; a legacy
 queue can no longer make the new campaign appear terminal or outside the queue.
+
+The diaryl-viologen memory recovery has eight additional regressions covering
+completed-state refusal, unreachable ownership, published-result refusal,
+byte-preserved partial archives, live-status refusal and geometry/energy preservation
+during a native-stage resume, plus changed ownership-proof/state refusal. The
+full workspace suite passes 572 tests. The dispatcher retains the frozen numerical producers, treats GPU
+contention separately from molecular attempts, and applies one bounded recovery
+attempt per target. Its pending H100 work is separate from actual calculation
+starts. Two isolated native hexyl conformer relaxations have verified GPU starts;
+neither start nor software success constitutes physical or experimental validation.

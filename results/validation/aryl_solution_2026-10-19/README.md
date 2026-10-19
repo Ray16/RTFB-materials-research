@@ -48,3 +48,44 @@ these nine graphs. The [current candidate feed](../../candidates/README.md)
 reports pending fields separately. A new full table review requires a stable
 inventory after the live calculations, rather than treating the earlier snapshot
 as validation of the new states.
+
+## First native review and memory-class recovery
+
+Five selected-state native records pass the independent
+[303-check review](../../reviews/2026-10-19/aryl_native_progress_1209/summary.json),
+with zero discrepancies. Complete potential pairs, ground-spin decisions and
+couple integrity remain separate. The current candidate export retains pending
+fields and the slides show these five checked states explicitly.
+
+The AV-3b radical exhausted a 32-GB V100 during active-energy scoring after
+optimization. Two closed-shell states also exhausted that class during native
+solvent-curvature Hessians. H100 observations exceeded 32 GB. All remaining aryl
+V100 trees were stopped with verified PID/start ownership; their logs, geometries
+and completed energies remain intact. These are resource deferrals, not physical
+rejections. The expanded [recovery plan](resource_routing/recovery_plan.json)
+routes 14 states to the observed H100 NVL memory class; five selected states are
+complete and live original H100 peers retain their claims. A separate original
+H100 state failed the native Hessian symmetry gate; it stays withheld and is not
+replayed as a resource failure.
+Its 12-hour dispatcher uses every free suitable local device up to the remaining
+target count, acquires each through the system gate, allocates disjoint CPU pairs
+and retains two native threads. Existing live peers retain their claims.
+
+Each recovery target has one bounded attempt. Before replay, an old owner must
+be reachable and verified terminal, with no corresponding predictor; completed
+state receipts are refused. Failed attempts and partial geometries are archived
+with byte checks before the unchanged three-seed producer runs. Existing complete
+three-seed geometry/SP stages are retained byte-identically; only the missing SP
+or native stage resumes, with partial Hessian work archived first. Reservation
+contention consumes no molecular attempt. Eight safeguard tests pass, including a
+native-stage resume that preserves geometry, energy and partial evidence, and
+sealed control-node ownership proofs that refuse changed evidence. Lambda13
+cannot SSH directly to the original V100 nodes; two such setup failures were
+archived before computation, and the authenticated control node verified all
+13 previous owners and predictors absent. Those proofs are bound to exact owner
+identities and old state-report hashes. The full workspace suite passes 572 tests.
+Dispatcher submission and waiting
+status are distinct from an actual recovery predictor start or native completion.
+The first [actual H100 recovery start](resource_routing/recovery_start_verification.json)
+resumes AV-3a's dication directly at native thermochemistry; original geometry and
+result bytes are unchanged. A native completion is not claimed by that receipt.

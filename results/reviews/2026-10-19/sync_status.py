@@ -10,7 +10,7 @@ if not archive.exists():archive.write_bytes(index.read_bytes())
 feed_path=ROOT/'results/candidates/current.json';feed=json.loads(feed_path.read_text());s=feed['summary']
 benchmark_path=ROOT/'results/reviews/2026-10-19/full_matched_parent_final/summary.json';benchmark=json.loads(benchmark_path.read_text())
 global_path=base/'aryl_hydrogen_scope_tables/review_status.json';global_review=json.loads(global_path.read_text());publication_path=global_path.parent/'publication.json';publication=json.loads(publication_path.read_text()) if publication_path.exists() else {}
-slides_path=ROOT/'results/reviews/2026-10-19/aryl_solution_slides/slides_check.json';slides=json.loads(slides_path.read_text())
+slides_path=ROOT/'results/reviews/2026-10-19/aryl_memory_hexyl_slides/slides_check.json';slides=json.loads(slides_path.read_text())
 thermal_path=ROOT/'results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/summary.json';thermal=json.loads(thermal_path.read_text())
 geometry_path=ROOT/'results/validation/geometry_driver_full_response_2026-10-18/status.json';geometry=json.loads(geometry_path.read_text())
 panel_review=json.loads((ROOT/'results/validation/phenothiazine_parent_panel_2026-10-19/partial_review_current.json').read_text())
@@ -59,8 +59,33 @@ current=dict(as_of_Chicago=feed['as_of_Chicago'],scientific_validation_complete=
  slides=dict(status=slides['status'],path='slides/redox_workflow.pdf',publisher=str(slides_path.relative_to(ROOT)),snapshot=slides.get('snapshot'),pdf_sha256=slides.get('pdf_sha256'),pages=slides.get('pages')),
  raw_candidate_refresh='results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json',
  next_candidate_batch=dict(guide='results/discovery/cata_core_expansion_2026-10-19/README.md',prepared_exact_grafts=2,source_graph_checks=214,verified_initial_conformers=18,UMA_launch='results/discovery/cata_core_expansion_2026-10-19/uma_launch.json',actual_start_proof='results/discovery/cata_core_expansion_2026-10-19/uma_start_verification.json',UMA_completion='results/discovery/cata_core_expansion_2026-10-19/uma_completion.json',complete_gas_UMA_states=6,DFT_alternate_spin_required=[],DFT_alternate_spin_completed=['hyp_cata_ndi_ethyl:red2'],spin_ensemble_review='results/validation/cata_spin_2026-10-19/ensemble_review.json',spin_selection_status=cata_spin_selection['status'],derivative_cache_adoption_status=cata_cache_adoption['status'],original_epoch_completed_states=sum(r['status']=='state_records_verified' for r in cata_epochs),original_epoch_failed_states=sum(r['status']=='failed_preserved' for r in cata_epochs),shared_registration_complete=True,solution_potential_pairs_completed=2,current_cata_native_states_ready=6,terminal_campaign='results/validation/cata_solution_2026-10-19/terminal_campaign.json',active_cata_scientific_jobs=0,gas_cross_point_review='results/validation/cata_cross_points_2026-10-19/review.json',first_completed_native_review='results/validation/cata_solution_2026-10-19/first_completed_review/summary.json',derivative_diagnosis='results/validation/cata_cds_diagnosis_2026-10-19/README.md',prepared_derivative_repair='results/validation/cata_cds_diagnosis_2026-10-19/admission/preparation.json',spin_comparison='results/validation/cata_spin_2026-10-19/plan.json',solution_plan='results/validation/cata_solution_2026-10-19/plan.json',solution_start_proof='results/validation/cata_solution_2026-10-19/start_verification.json',solution_outputs='calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>'),
- software_tests_passed=558,software_checks='results/validation/aryl_solution_2026-10-19/software_checks.log',
+ software_tests_passed=572,software_checks='results/validation/aryl_solution_2026-10-19/resource_routing/software_checks_final.log',
  remaining_work=['Complete diaryl-viologen solution-property calculations and independent admission','Hexyl NDI native minimum/thermochemistry','Solution reorganization and kinetic qualification','Broader experimental benchmark and exact-graft validation','Resolve or bound phenothiazine second-wave model error'])
+native_review_path=base/'aryl_native_progress_1209/summary.json'
+native_review=json.loads(native_review_path.read_text())
+current['aryl_solution_campaign'].update(
+    independent_selected_state_review=str(native_review_path.relative_to(ROOT)),
+    independently_reviewed_states=native_review['states_reviewed'],
+    independent_state_checks=native_review['checks'],independent_failed_checks=native_review['failed_checks'],
+    memory_routing_plan='results/validation/aryl_solution_2026-10-19/resource_routing/recovery_plan.json',
+    memory_dispatcher='results/validation/aryl_solution_2026-10-19/resource_routing/dispatcher.json',
+    resource_deferred_failures_are_not_physical_rejections=True)
+recovery_start=json.loads((solution_base/'resource_routing/recovery_start_verification.json').read_text())
+current['aryl_solution_campaign'].update(
+    recovery_start_verification='results/validation/aryl_solution_2026-10-19/resource_routing/recovery_start_verification.json',
+    H100_recovery_workers_at_verified_start=recovery_start['actual_GPU_workers'],
+    original_geometry_and_result_preserved_at_recovery_start=True,
+    physical_holds=[dict(key=r['task']['key'],stage=r.get('stage'),reason=r.get('error'))
+        for r in solution_states if r['status']=='failed_preserved'
+        and 'Native Hessian symmetry/finite-value failure' in r.get('error','')])
+hexyl_base=ROOT/'results/validation/hexyl_conformer_search_2026-10-19'
+hexyl_start=json.loads((hexyl_base/'native_start_verification.json').read_text())
+current['hexyl_distinct_conformers']=dict(guide=str((hexyl_base/'README.md').relative_to(ROOT)),
+    contact_review_checks=38,preparation_review_checks=149,prepared_seeds=2,
+    actual_GPU_start_verification=str((hexyl_base/'native_start_verification.json').relative_to(ROOT)),
+    GPU_workers_at_verified_start=hexyl_start['actual_GPU_workers'],
+    native_plan=str((hexyl_base/'native_seed_plan.json').relative_to(ROOT)),
+    canonical_outputs_modified=False,energy_ordering_and_conformer_scope_pending=True)
 report=dict(schema=2,current=current,scientific_validation_complete=False,updated=time.time(),historical_metadata=str(archive.relative_to(ROOT)),progress_document='docs/SCIENTIFIC_PROGRESS_2026-10-18.md',discovery_source_catalog='config/discovery_sources.json',candidate_search='results/discovery/systematic_families_2026-10-18/summary.json',candidate_results_entry='results/candidates/README.md',thermal_publication_review='config/thermal_publication_review.json',note='Current scoped evidence is separate from broad scientific validation. Historical unprojected references and counts are preserved in historical_metadata; no parent measurement is assigned to an exact graft.')
 atomic_write_json(index,report)
 quality=dict(status='corrected_thermal_protocol_field_specific_release',reason='Internal-mode partition and matched Fc correction integrated and independently qualified; pending physical fields remain blank.',registered_additional_candidates=s['additional_candidate_count'],original39_with_native_potentials=s['original39_native_potential_molecules'],complete_potential_pairs=s['paired_complete_potential_count'],primary_candidate_snapshot=feed['snapshot_path'],arithmetic_checks=s['arithmetic_checks'],arithmetic_discrepancies=0,mode_count_audit='results/validation/rigid_mode_thermal_2026-10-18/mode_count_audit.json',independent_projected_review=str(thermal_path.relative_to(ROOT)),scientific_validation_complete=False,updated=time.time())
