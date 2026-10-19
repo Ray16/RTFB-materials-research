@@ -1,0 +1,46 @@
+{
+  "status": "waiting_for_reciprocal_endpoint",
+  "endpoints": [
+    {
+      "target": "neu",
+      "status": "reciprocal_optimization_verified_pending_basin_review",
+      "proper_symmetry_RMSD_A": 0.00013475250566373072,
+      "reflection_symmetry_RMSD_A": 0.0015512841495998997,
+      "energy_difference_eV": -2.045992471123167e-06,
+      "graph_automorphisms": 4,
+      "basin_associated": true
+    },
+    {
+      "target": "ox1",
+      "status": "optimizing",
+      "basin_associated": false
+    }
+  ],
+  "checks": 5,
+  "failed_checks": 0,
+  "both_selected_local_basins_associated": false,
+  "criteria": {
+    "energy_eV": 0.001,
+    "heavy_RMSD_A": 0.05,
+    "gradient_Ha_Bohr": 0.00045
+  },
+  "global_conformer_ensemble_proven": false,
+  "active_SP_stationary_endpoints_proven": false,
+  "empirical_kinetics_validated": false,
+  "production_records_modified": false,
+  "evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/opt.xyz": "1bde6293c04e2332cedbf05d4e07f98ddf96d93ebfe1779bae57ce90d6e0e688",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/opt.xyz": "cd281e7868a8cdb06bc467873d4a7b5cf0e83608a68e60c4b7d171817a51b70c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/result.json": "f35fed4f73e53c914f83f875baf4e484d28640666758f08ebad6fd7a6c3b1d1c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/native_thermal/b1267954beb46042.json": "187a545c62bd0d4d0b52859a78bf185b9b4d38c4070596f1d68d0580a378e0e8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/projected_thermal/764ea10a5d55a064.json": "b2a957e582f91201a3656b37a2844c318fb1222c44a73f4c64ea1be8177b4fc1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/neu/status.json": "e74f37c7ed30c1fc699bd35b42267d3ab9999b439981fc95dc99d2e796a4f9e6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/neu/opt.xyz": "f4fed6cbc713d9677a6170952253317fee1099d0d151254172323a6ec5397459",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/neu/geometric_convergence.json": "7799b25d38159f1a0f8963ec9b703601c4ae70ba997b3167b4c5c733cf182e03",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/neu/final_gradient.npy": "cc9a83747bd315ab7be76abb0d2a7f88e632d0921819610a51a20e3e55c01368",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/neu/selected_endpoint_SCF.json": "51dbebd5354e9fdb01264ebf85167ffd60f3f00222e6da03c67e3d1906824d68",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/neu/reciprocal_final_SCF.json": "7d59fb564fcbbe814f78e09bb911daa39f93a44e685e3ea50cbacda1e50c30c2"
+  },
+  "source_sha256": "04b81fd17a9f227bed501d15bbd0ad30107ac43eba94ebc2910c8c35488cede2",
+  "reviewed": 1792395435.0492651
+}

@@ -1,0 +1,69 @@
+{
+  "created": 1792394917.4583385,
+  "workers": [
+    {
+      "id": "ptz_reciprocal_neu",
+      "host": "lambda2",
+      "gpu": 0,
+      "controller_pid": 1595491,
+      "resident_compute": [
+        {
+          "pid": 1596055,
+          "process_start": "1319523973",
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/worker.py",
+            "--target",
+            "neu"
+          ],
+          "cpu_affinity": [
+            4,
+            5
+          ],
+          "pools": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2"
+          },
+          "gpu_uuid": "GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074"
+        }
+      ],
+      "actual_GPU_start_verified": true
+    },
+    {
+      "id": "ptz_reciprocal_ox1",
+      "host": "lambda2",
+      "gpu": 1,
+      "controller_pid": 1595673,
+      "resident_compute": [
+        {
+          "pid": 1596273,
+          "process_start": "1319524073",
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/worker.py",
+            "--target",
+            "ox1"
+          ],
+          "cpu_affinity": [
+            7,
+            8
+          ],
+          "pools": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2"
+          },
+          "gpu_uuid": "GPU-099acaa2-a585-2324-846e-c57f056f80a7"
+        }
+      ],
+      "actual_GPU_start_verified": true
+    }
+  ]
+}

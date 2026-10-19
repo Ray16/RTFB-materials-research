@@ -1,0 +1,37 @@
+{
+  "created": 1792395765.0621836,
+  "workers": [
+    {
+      "id": "hexyl_fine_plus",
+      "host": "lambda13",
+      "gpu": 1,
+      "controller_pid": 3097802,
+      "resident_compute": [
+        {
+          "pid": 3098460,
+          "process_start": "51290642",
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+            "-u",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/worker.py",
+            "--task",
+            "1"
+          ],
+          "cpu_affinity": [
+            0,
+            1
+          ],
+          "pools": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2"
+          },
+          "gpu_uuid": "GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b"
+        }
+      ],
+      "actual_GPU_start_verified": true
+    }
+  ]
+}

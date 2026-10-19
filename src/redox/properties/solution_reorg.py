@@ -20,7 +20,7 @@ def directional_relaxation(e_initial_eq,e_final_at_initial_eq,e_final_neq,e_fina
 
 
 def summarize_relaxations(forward,reverse,*,endpoint_evidence,method_identity,
-                          independent_validation=True,equal_curvature_rtol=.05):
+                          independent_validation=False,implementation_validation=False,equal_curvature_rtol=.05):
     """Preserve directionality and separate numerical from physical evidence.
 
     A five percent directional tolerance is a stated diagnostic criterion for
@@ -39,7 +39,8 @@ def summarize_relaxations(forward,reverse,*,endpoint_evidence,method_identity,
     asymmetry=abs(totals[0]-totals[1])/average if average>0 else None
     flags=[]
     if any(x<0 for x in totals):flags.append('negative_relaxation')
-    if not independent_validation:flags.append('implementation_reference_unverified')
+    implementation_verified=bool(implementation_validation or independent_validation)
+    if not implementation_verified:flags.append('implementation_reference_unverified')
     if len(endpoint_evidence)!=2 or any(e.get('minimum_verified') is not True
                                        for e in endpoint_evidence):
         flags.append('endpoint_minimum_unverified')
@@ -54,6 +55,7 @@ def summarize_relaxations(forward,reverse,*,endpoint_evidence,method_identity,
         directional_relative_asymmetry=asymmetry,
         equal_curvature_diagnostic_tolerance=equal_curvature_rtol,
         physical_flags=flags,calculation_verified=bool(independent_validation),
+        implementation_reference_verified=implementation_verified,
         endpoint_model_verified=not any(f in flags for f in [
             'negative_relaxation','implementation_reference_unverified',
             'endpoint_minimum_unverified','conformer_ensemble_unresolved']),

@@ -30,10 +30,20 @@ def test_valid_model_is_still_not_experimentally_validated():
     r={'total_solution_relaxation_eV':.8}
     e=[dict(minimum_verified=True,conformer_policy='same_basin')]*2
     summary=summarize_relaxations(r,r,endpoint_evidence=e,
-                                 method_identity={'solvent_model':'SMD'})
+                                 method_identity={'solvent_model':'SMD'},independent_validation=True)
     assert summary['endpoint_model_verified']
     assert not summary['empirical_accuracy_validated']
     assert summary['self_exchange_infinite_separation_eV']==1.6
+
+
+def test_implementation_control_is_not_an_independent_replay_of_each_case():
+    r={'total_solution_relaxation_eV':.8}
+    e=[dict(minimum_verified=True,conformer_policy='same_basin')]*2
+    unchecked=summarize_relaxations(r,r,endpoint_evidence=e,method_identity={'solvent_model':'SMD'})
+    assert not unchecked['calculation_verified'] and not unchecked['endpoint_model_verified']
+    controlled=summarize_relaxations(r,r,endpoint_evidence=e,method_identity={'solvent_model':'SMD'},implementation_validation=True)
+    assert controlled['implementation_reference_verified'] and controlled['endpoint_model_verified']
+    assert not controlled['calculation_verified']
 
 
 def test_nonfinite_energies_and_negative_relaxations_fail_quality():

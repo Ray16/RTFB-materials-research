@@ -54,9 +54,12 @@ def release_solver_memory(backend):
         _free_gpu_pool()
 
 
-def evaluate(pair,out,backend,cache_pool):
+def evaluate(pair,out,backend,cache_pool,cache_evidence=None):
     out.mkdir(parents=True,exist_ok=True)
     states=pair['states'];constants=smd_dielectrics()
+    from redox.validation.solution_relaxation import verified_implementation_controls
+    implementation=verified_implementation_controls(pair.get('implementation_controls'),
+        ROOT/'src/redox/qm/nonequilibrium_smd.py',backend=backend)
     if len(states)!=2 or states[0]['charge']-states[1]['charge']!=1:
         raise ValueError('pair must specify oxidized then reduced adjacent electronic states')
     if any(s['charge']!=int(s['charge']) or s['mult']<1 for s in states):raise ValueError('invalid charge/multiplicity')
@@ -71,34 +74,45 @@ def evaluate(pair,out,backend,cache_pool):
     identity=dict(pair=pair,input_sha256={s['geometry']:sha(s['geometry']) for s in states},
         method=dict(ACTIVE_SP,solvent_model='native_SMD_frozen_slow',**constants,sasa_ng=590),
         source_sha256={str(p):sha(p) for p in [Path(__file__),ROOT/'src/redox/qm/nonequilibrium_smd.py',
-            ROOT/'scripts/validation/physical_reorg.py']})
+            ROOT/'scripts/validation/physical_reorg.py',ROOT/'src/redox/properties/solution_reorg.py',
+            ROOT/'src/redox/validation/solution_relaxation.py']})
     atomic(out/'identity.json',identity)
     # Existing complete records can be used only on the same geometry, species,
     # uniform production protocol and native SMD static/optical constants.
+    from redox.validation.solution_relaxation import scf_cache_matches,verified_density
     existing=[]
+    reviewed={}
+    if cache_evidence:
+        review=json.loads(Path(cache_evidence).read_text())
+        if review.get('failed_checks')!=0:raise ValueError('Cache review did not pass')
+        reviewed=review.get('evidence_sha256') or {}
     if cache_pool:
         for p in Path(cache_pool).glob('*.json'):
-            r=json.loads(p.read_text());k=r.get('key',{});method=k.get('method',{})
-            if (r.get('converged') is True and np.isfinite([r.get('e_Ha',np.nan),r.get('e_eV',np.nan)]).all()
-                and method==identity['method']):
-                existing.append((p,r))
+            r=json.loads(p.read_text())
+            if r.get('converged') is True:existing.append((p,r))
     def scf(state,at,reference=None,dm0=None):
         geometry=Path(at['geometry']);content=geometry.read_bytes()
         if sha(geometry)!=identity['input_sha256'][str(geometry)]:raise RuntimeError('Pair input changed before SCF')
+        def checked_density(path,record):
+            mol=mol_at(state,geometry,ACTIVE_SP['basis'])
+            return verified_density(record,path,evidence=reviewed,overlap=mol.intor('int1e_ovlp'),
+                                    electrons=mol.nelectron,mult=state['mult'])
         for path,r in existing:
-            k=r['key'];species=k['identity'];g=k['geometry'];ref=k['reference']
-            if (species['charge']!=state['charge'] or species['mult']!=state['mult']
-                or g['geom_sha1']!=hashlib.sha1(content).hexdigest()[:16]):continue
-            if (reference is None)!=(ref is None):continue
-            if dm0 is not None and k.get('refdm_sha256')!=hashlib.sha256(host_array(dm0).tobytes()).hexdigest():continue
-            return dict(r,reused_from=str(path)),np.load(path.with_suffix('.npz'))['dm']
+            if not scf_cache_matches(r,state=state,geometry_sha256=sha(geometry),
+                    geometry_sha1=hashlib.sha1(content).hexdigest()[:16],method=identity['method'],
+                    reference_density_sha256=sha_bytes(dm0) if dm0 is not None else None,
+                    numerical_sources={str(p.relative_to(ROOT)):sha(p) for p in
+                        [ROOT/'src/redox/qm/nonequilibrium_smd.py',ROOT/'scripts/validation/physical_reorg.py']}):continue
+            try:density=checked_density(path,r)
+            except (OSError,ValueError,KeyError):continue  # retain unverifiable legacy data; compute fresh
+            return dict(r,reused_from=str(path)),density
         key=dict(state=state,geometry_sha256=sha(geometry),reference=reference,
                  reference_density_sha256=sha_bytes(dm0) if dm0 is not None else None,identity=identity)
         digest=hashlib.sha256(json.dumps(key,sort_keys=True).encode()).hexdigest()[:20]
         path=out/f'scf_{digest}.json'
         if path.exists():
             r=json.loads(path.read_text())
-            if r.get('key')==key and r.get('converged') is True:return r,np.load(path.with_suffix('.npz'))['dm']
+            if r.get('key')==key and r.get('converged') is True:return r,checked_density(path,r)
             raise RuntimeError(f'Existing unverified cache: {path}')
         mol=mol_at(state,geometry,ACTIVE_SP['basis'])
         mf=solver.make_mf(mol,backend,ACTIVE_SP['xc'],ACTIVE_SP['nlc'])
@@ -112,7 +126,10 @@ def evaluate(pair,out,backend,cache_pool):
         r=dict(key=key,e_Ha=e,e_eV=e*HARTREE_EV,converged=True,scf_guesses=guesses,
             cds_Ha=float(mf.with_solvent.get_cds()),electron_trace=trace,s2=spin.get('s2'),mo_energy_Ha=orbitals)
         density=host_array(dm)
-        np.savez_compressed(path.with_suffix('.npz'),dm=density);atomic(path,r)
+        np.savez_compressed(path.with_suffix('.npz'),dm=density)
+        r.update(density_artifact_sha256=sha(path.with_suffix('.npz')),
+                 density_matrix_sha256=hashlib.sha256(density.tobytes()).hexdigest())
+        atomic(path,r)
         del mf,best,dm
         release_solver_memory(backend)
         return r,density
@@ -164,13 +181,14 @@ def evaluate(pair,out,backend,cache_pool):
         row.update(initial=initial['name'],final=final['name']);directions.append(row)
     for s in states:
         if sha(s['geometry'])!=identity['input_sha256'][s['geometry']]:raise RuntimeError('Pair input changed')
-    summary=summarize_relaxations(*directions,endpoint_evidence=endpoint,method_identity=identity['method'])
+    summary=summarize_relaxations(*directions,endpoint_evidence=endpoint,method_identity=identity['method'],
+        implementation_validation=implementation['implementation_reference_verified'])
     summary['qualification_convention']='composite active-SP energies at geometry-level solution minima'
     summary['active_SP_stationary_endpoints_proven']=False
     flags=sorted({flag for e in electronic for flag in e['flags']})
     if flags:summary['physical_flags'].extend(flags);summary['endpoint_model_verified']=False
     atomic(out/'result.json',dict(identity=identity,directional=directions,endpoint_evidence=endpoint,
-        electronic_state_evidence=electronic,summary=summary,
+        electronic_state_evidence=electronic,summary=summary,implementation_evidence=implementation,
         validation_status='paired_conformer_sensitivity',polymer_constraint_proven=False))
 
 
@@ -180,6 +198,7 @@ def sha_bytes(array):return hashlib.sha256(host_array(array).tobytes()).hexdiges
 def main():
     p=argparse.ArgumentParser();p.add_argument('--pair',type=Path,required=True)
     p.add_argument('--out',type=Path,required=True);p.add_argument('--cache-pool',type=Path)
+    p.add_argument('--cache-evidence',type=Path,help='source-bound independent review for legacy cache JSON/density pairs')
     p.add_argument('--backend',choices=['cpu','gpu'],default='gpu');p.add_argument('--dry-run',action='store_true')
     a=p.parse_args();pair=json.loads(a.pair.read_text())
     if a.dry_run:
@@ -192,7 +211,7 @@ def main():
     a.out.mkdir(parents=True,exist_ok=True);claim=a.out/'claim';claim.mkdir()
     atomic(claim/'owner.json',dict(host=os.uname().nodename,pid=os.getpid(),
         process_start=Path('/proc/self/stat').read_text().split()[21]))
-    try:evaluate(pair,a.out,a.backend,a.cache_pool)
+    try:evaluate(pair,a.out,a.backend,a.cache_pool,a.cache_evidence)
     finally:(claim/'owner.json').unlink();claim.rmdir()
 
 

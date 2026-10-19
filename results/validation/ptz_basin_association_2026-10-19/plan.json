@@ -1,0 +1,46 @@
+{
+  "tasks": [
+    {
+      "id": "hyp_ptz_37difluoro",
+      "target": "neu",
+      "charge": 0,
+      "mult": 1,
+      "smiles": "Cc1ccc(CN2c3ccc(F)cc3Sc3cc(F)ccc32)cc1",
+      "selected_geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/opt.xyz",
+      "opposite_geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/opt.xyz",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/opt.xyz": "1bde6293c04e2332cedbf05d4e07f98ddf96d93ebfe1779bae57ce90d6e0e688",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/opt.xyz": "cd281e7868a8cdb06bc467873d4a7b5cf0e83608a68e60c4b7d171817a51b70c",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/result.json": "f35fed4f73e53c914f83f875baf4e484d28640666758f08ebad6fd7a6c3b1d1c",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/native_thermal/b1267954beb46042.json": "187a545c62bd0d4d0b52859a78bf185b9b4d38c4070596f1d68d0580a378e0e8",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/projected_thermal/764ea10a5d55a064.json": "b2a957e582f91201a3656b37a2844c318fb1222c44a73f4c64ea1be8177b4fc1"
+      }
+    },
+    {
+      "id": "hyp_ptz_37difluoro",
+      "target": "ox1",
+      "charge": 1,
+      "mult": 2,
+      "smiles": "Cc1ccc(CN2c3ccc(F)cc3Sc3cc(F)ccc32)cc1",
+      "selected_geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/opt.xyz",
+      "opposite_geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/opt.xyz",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/opt.xyz": "cd281e7868a8cdb06bc467873d4a7b5cf0e83608a68e60c4b7d171817a51b70c",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/neu/opt.xyz": "1bde6293c04e2332cedbf05d4e07f98ddf96d93ebfe1779bae57ce90d6e0e688",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/result.json": "7e60e67878fd020a08f2fc3e4eb56f8e0b1098e75b4cd56cd609655123b4b326",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/native_thermal/e1b95168f1cbb8f7.json": "fa0a73453fcf3cb70a700782eb681ec9bacb8b675d1e93814b2afe6b5a5c5b19",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/hyp_ptz_37difluoro/ox1/projected_thermal/9c250c5f8cffdbdb.json": "34b2f768945b887d8f62c23dd56ec854e7b1ec9527be13dbd5f26134ee06a3ed"
+      }
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_basin_association_2026-10-19/worker.py": "294ff1e35e234a2911168c96d7390a20fe7bf39ef35afe8a48d29f843b16bdc2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad"
+  },
+  "model": "reciprocal local-basin association at native geometry-level SMD Hamiltonian",
+  "maximum_steps": 120,
+  "production_records_modified": false,
+  "created": 1792394537.00312
+}

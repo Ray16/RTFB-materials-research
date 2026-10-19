@@ -84,6 +84,8 @@ for operating rules, [Development](DEVELOPMENT.md) for supported commands, and t
   and transactional selection; kinetics remain a separate gate. The independent
   counterpart is `scripts/validation/audit/spin_ensemble.py`.
 - `provenance.py` — referenced evidence file discovery.
+- `solution_relaxation.py` — bound implementation controls and validated electronic
+  density-cache reuse; separate from physical endpoint and kinetic qualification.
 - `orop.py` — external benchmark aggregation with current active energies and
   matched molecular/Fc thermal definitions. Historical/mismatched rows cannot
   calibrate the current scorecard.

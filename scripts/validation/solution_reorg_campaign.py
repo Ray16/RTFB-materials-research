@@ -250,7 +250,7 @@ def run(plan,backend,limit):
                 thermal_qc=i['thermal_qc'],stationary_gradient_pass=f['stationary_gradient_pass'],
                 gradient_max_Ha_Bohr=f['gradient_max_atomic_norm_Ha_Bohr']) for i,f in zip(identities,force_evidence)]
             summary=summarize_relaxations(*directions,endpoint_evidence=evidence,
-                                         method_identity=plan['method'])
+                                         method_identity=plan['method'],implementation_validation=True)
             state_flags=sorted({flag for e in electronic_evidence for flag in e['flags']})
             if state_flags:
                 summary['physical_flags'].extend(state_flags);summary['endpoint_model_verified']=False

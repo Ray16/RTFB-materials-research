@@ -200,3 +200,19 @@ Watch deadlines use `workflows.publication.watch_deadline`: the default closes a
 midnight/DST. The collector additionally honors its selected queue's terminal state.
 CSV and workbook snapshots retain the union of optional QC fields, including
 single-surface kinetic flags and explicit ensemble correction/population columns.
+
+## Electronic solution-relaxation evidence
+
+Implementation controls and individual calculation checks are separate. The
+solution summary defaults to unverified; producers explicitly attach bound
+CPU/independent-hcore and backend controls. An implementation control alone does
+not certify each target or a kinetic rate. Qualification reviews use a new `--out`
+path so older reports remain immutable.
+
+The paired runner accepts both documented cache schemas. Use `--cache-evidence`
+with a source-bound review when reusing legacy JSON/NPZ pairs without their own
+density hashes. Reuse checks method, geometry, species and frozen reference density,
+then array integrity, AO shape, symmetry, electron trace, units and spin diagnostics.
+Unverified pool entries are preserved and skipped; bad local caches are refused.
+Fresh records carry density artifact and matrix hashes. Source-independent caching
+must never replace an actual Hamiltonian/geometry/response match.

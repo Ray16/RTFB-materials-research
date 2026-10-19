@@ -17,12 +17,21 @@ from redox.core.common import ROOT,DFT,read_manifest
 from redox.core.protocol import geom_sha1
 from redox.properties.solution_reorg import summarize_relaxations
 from redox.qm.native_thermal import load_native_thermal,cache_path
+from redox.validation.solution_relaxation import verified_implementation_controls
+from redox.core.io import atomic_write_json
 
 OUT=ROOT/'results/validation/physical_reorg_2026-10-11'
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--limit',type=int,default=4);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--limit',type=int,default=4)
+    p.add_argument('--out',type=Path,help='new derived review path; existing outputs are preserved')
+    a=p.parse_args()
+    target=a.out or OUT/'native_smd_qualification_review.json'
+    if target.exists():p.error('choose a new --out; existing qualification reviews are preserved')
+    controls=[OUT/'native_smd_independent_reference.json',OUT/'native_smd_gpu_reference.json']
+    implementation=verified_implementation_controls({str(f):hashlib.sha256(f.read_bytes()).hexdigest() for f in controls},
+        ROOT/'src/redox/qm/nonequilibrium_smd.py',backend='gpu')
     queue=json.loads((OUT/'native_smd_queue.json').read_text())
     manifest={r['id']:r for r in read_manifest()}
     cases=[]
@@ -31,6 +40,8 @@ def main():
         if not source.exists():
             cases.append(dict(id=c['id'],status='pending'));continue
         record=json.loads(source.read_text());stale=[];evidence=[]
+        if record.get('code_sha256',{}).get('src/redox/qm/nonequilibrium_smd.py')!=implementation['module_sha256']:
+            cases.append(dict(id=c['id'],status='implementation_source_stale'));continue
         mol=Chem.MolFromSmiles(manifest[c['id']]['smiles'])
         rotors=mol.GetSubstructMatches(Lipinski.RotatableBondSmarts)
         for i in c['states']:
@@ -53,7 +64,7 @@ def main():
                 else:state['minimum_evidence_status']='pending_derivative_checked_solution_Hessian'
             evidence.append(state)
         summary=summarize_relaxations(*record['directional'],endpoint_evidence=evidence,
-                                     method_identity=record['method'])
+                                     method_identity=record['method'],implementation_validation=True)
         flags={f for e in record['electronic_state_evidence'] for f in e['flags']}
         if flags:summary['physical_flags']+=sorted(flags);summary['endpoint_model_verified']=False
         if stale:summary['physical_flags'].append('source_geometry_stale');summary['endpoint_model_verified']=False
@@ -76,8 +87,9 @@ def main():
     result=dict(cases=cases,expected_cases=min(a.limit,len(queue['cases'])),
         endpoint_models_qualified=sum(c.get('summary',{}).get('endpoint_model_verified',False) for c in cases),
         symmetric_models_qualified=sum(c.get('summary',{}).get('symmetric_Marcus_approximation_qualified',False) for c in cases),
-        production_promotion=False)
-    (OUT/'native_smd_qualification_review.json').write_text(json.dumps(result,indent=2))
+        production_promotion=False,implementation_evidence=implementation,
+        per_case_independent_replay_not_inferred_from_controls=True)
+    atomic_write_json(target,result)
     print(json.dumps(result))
 
 

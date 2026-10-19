@@ -1,5 +1,5 @@
 {
-  "status": "qualifying",
+  "status": "failed_preserved",
   "task": {
     "key": "minus",
     "id": "exp_ndi_hexyl_pentyloxy",
@@ -23,5 +23,8 @@
   "process_start": "50975947",
   "started": 1792392423.4705548,
   "production_admission": false,
-  "canonical_modified": false
+  "canonical_modified": false,
+  "error": "AssertionError()",
+  "traceback": "Traceback (most recent call last):\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/worker.py\", line 19, in <module>\n    runpy.run_path(str(base/'qualify.py'),run_name='__main__')\n  File \"<frozen runpy>\", line 291, in run_path\n  File \"<frozen runpy>\", line 98, in _run_module_code\n  File \"<frozen runpy>\", line 88, in _run_code\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/qualify.py\", line 86, in <module>\n    if __name__=='__main__':main()\n                            ^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/hexyl_finer_derivatives_2026-10-19/qualify.py\", line 73, in main\n    numerical=(gradients[1]-gradients[0])/(2*step);error=float(np.linalg.norm(numerical-matrix[column])/np.linalg.norm(numerical));report['worst_contact_checks'].append(dict(column=int(column),step_Bohr=step,relative_error=error));save();assert error<=.01\n                                                                                                                                                                                                                                                     ^^^^^^^^^^\nAssertionError\n",
+  "finished": 1792394329.8325
 }
