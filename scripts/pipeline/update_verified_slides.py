@@ -43,6 +43,8 @@ def number(value,digits=3):
 
 
 def candidate_label(row,labels):
+    cata={'hyp_cata_ndi_ethyl':'Cata-NDI ethyl','hyp_cata_adi_ethyl':'Cata-ADI ethyl'}
+    if row['id'] in cata:return cata[row['id']]
     if labels.get(row['id'],{}).get('short_name'):
         return labels[row['id']]['short_name']
     core=row.get('search_core')
@@ -161,12 +163,13 @@ def frames(payload,overlays=False):
     hypotheses=[row for row in payload.get('additional_candidates',[]) if row['id'].startswith('hyp_')]
     if hypotheses:
         pieces += [r'\begin{frame}{Candidate expansion: matched computational hypotheses}',
-            r'\small\centering\renewcommand{\arraystretch}{1.2}',
+            r'\scriptsize\centering\renewcommand{\arraystretch}{1.1}',
             r'\begin{tabular}{@{}p{4.8cm}rrr@{}}\toprule',
             r'Design & Nominal capacity & UMA states & Native states \\',
             r'& mAh/g & completed & admitted \\ \midrule']
         for row in hypotheses:
             label=row['id'].replace('hyp_pmdi_','PMDI / ').replace('hyp_ndi_','NDI / ').replace('hyp_ptz_37','PTZ 3,7-')
+            if row['id'].startswith('hyp_cata_'):label=candidate_label(row,labels)
             pieces.append(tex(label)+' & '+number(row.get('capacity_nominal_mAh_g'),1)+' & '+
                 str(row.get('uma_gas_verified_states',0))+'/'+str(row['declared_states'])+' & '+
                 str(row.get('native_solution_ready_states',0))+'/'+str(row['declared_states'])+r' \\')

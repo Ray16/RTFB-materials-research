@@ -28,3 +28,8 @@ The current review also applies the evidence-bound phenothiazine second-oxidatio
 selection limit. Calculated values remain recorded; affected window/capacity
 objectives cannot certify primary shortlist membership. See
 [`config/model_validation_limits.json`](../../config/model_validation_limits.json).
+
+Two cata-imide designs were registered after this immutable review. Their new
+state calculations are outside its scope; the [live epoch check](../validation/cata_solution_2026-10-19/prior_review_live_epoch_check.json)
+records the changed inputs. Follow the candidate feed for individually admitted
+fields until a later full review can be assembled from stable inputs.

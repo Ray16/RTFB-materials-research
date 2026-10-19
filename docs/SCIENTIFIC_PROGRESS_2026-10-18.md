@@ -4,9 +4,9 @@
 
 Use [LATEST_REVIEW.json](../results/LATEST_REVIEW.json) for current artifact paths
 and the [candidate workbook](../results/candidates/latest.xlsx) for exact grafts.
-**24 of 25 additional candidates have checked native potential pairs**, and 34
+**24 of 27 additional candidates have checked native potential pairs**, and 34
 original proposals have admitted native potentials. The last candidate export
-passes 572 arithmetic checks with zero discrepancies. Each snapshot has its own
+passes 576 arithmetic checks with zero discrepancies. Each snapshot has its own
 input identities; new reference-parent work is kept separate from graft results.
 
 The full software suite passes **540 tests**. The last full table snapshot passes
@@ -59,6 +59,14 @@ checks (1.1157 / 1.1373 eV directions). Active-SP stationarity, global conformer
 ensembles, thermal barriers and experimental rates remain unvalidated. Broader
 experimental coverage, exact-graft performance and kinetic qualification are the
 remaining scientific tasks; software and arithmetic checks do not replace them.
+
+The [new cata-imide solution campaign](../results/validation/cata_solution_2026-10-19/README.md)
+registers two further exact grafts and reuses all six verified UMA states after
+byte-matching canonical conformers. Six actual DFT predictors have been observed
+on six H100 NVL devices, with disjoint CPU pairs and unchanged scientific gates.
+Their solution quantities remain blank. The cata-NDI dianion requires a separate
+DFT spin comparison. The earlier full table review is an immutable pre-registration
+snapshot; the updated 27-design candidate feed passes 576 checks with stable inputs.
 
 ## Earlier dated checkpoints
 

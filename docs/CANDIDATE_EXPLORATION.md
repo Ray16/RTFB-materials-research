@@ -2,7 +2,7 @@
 
 ## Current results: 2026-10-19
 
-The [candidate workbook](../results/candidates/latest.xlsx) contains 25 additional
+The [candidate workbook](../results/candidates/latest.xlsx) contains 27 additional
 exact grafts: **24 have admitted native potential pairs**. The first family
 comparison panel and the OMe/Me panel have completed their computational stages;
 read the [matched comparisons](../results/candidates/comparisons.csv) for current
@@ -23,8 +23,10 @@ exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts remain
 now has four curated parent graphs and two prepared exact grafts, with 214 checks
 and 18 verified initial conformers. All six gas UMA states passed
 their warm-start contracts and their workers are terminal. The cata-NDI dianion
-requires a DFT spin comparison. Shared registration and solution calculations
-remain the next stages; no new solution potential or kinetic result is implied. Source-parent measurements retain their own conditions and
+requires a DFT spin comparison. Both designs are now registered and their six solution-state calculations have
+been submitted. Actual starts and physical admission are recorded in the
+[solution campaign](../results/validation/cata_solution_2026-10-19/README.md);
+no new solution potential or kinetic result is implied. Source-parent measurements retain their own conditions and
 are never assigned to an exact graft.
 
 ## Earlier exploration checkpoints
@@ -132,7 +134,7 @@ are preserved in `data/raw/discovery_sources/2026-10-18/`.
 | [RedDB](https://www.nature.com/articles/s41597-022-01832-2) | Additional structures; downloaded v2 table with 15,882 reaction records | Aqueous two-proton/two-electron chemistry and predicted aqueous solubility require their own scope. They cannot replace MeCN sequential electron-transfer labels. |
 | [Aryl-viologen study](https://doi.org/10.1021/acsaem.5c02255), [raw data](https://zenodo.org/records/17671488) | Seven named parent structures curated; nine source-directed O-grafted hypotheses prepared | Aqueous pH14/AgAgCl data remain separate from MeCN/Fc. Raw archive CC-BY-4.0; supporting-information record CC-BY-NC-4.0. Exact-graft synthesis, speciation and performance remain unverified. |
 | [NDI ion-pairing study](https://doi.org/10.1021/jacs.3c11176) | Five parent components, nine salts, 12 MeCN formal potentials, nine solubilities and seven diffusion/rate records | The earlier `.s003` record has coordinates. The newly retrieved [main SI, `.s001`](https://acs.figshare.com/articles/25208990), contains measured tables. [Curation and 82 checks](../results/discovery/ndi_electrolyte_2026-10-18/README.md) preserve electrolyte/aggregation conditions; these are not bare-ion calibration labels. |
-| [Cata diimides](https://doi.org/10.3762/bjoc.20.155) | Four compounds and eight half-wave potentials; alternative naphthalene/anthracene diimide cores | [Source rows](../data/curated/discovery/cata_diimides_2024.json) are in CH2Cl2/Fc, distinct from MeCN. Exact graph transcription is pending. Original literature comparison rows were not counted again. |
+| [Cata diimides](https://doi.org/10.3762/bjoc.20.155) | Four compounds and eight half-wave potentials; alternative naphthalene/anthracene diimide cores | [Source rows](../data/curated/discovery/cata_diimides_2024.json) are in CH2Cl2/Fc, distinct from MeCN. [Four source graphs](../data/curated/discovery/cata_diimides_2024_graphs.json) are now curated and two graft hypotheses registered. Original literature comparison rows were not counted again. |
 | [ORedOx159](https://github.com/ANRMoMoPlasm/ORedOx159) | Additional computational benchmark structures and energies | Computational PBE0 reference; not an experimental battery dataset. Repository inspected, data not imported. |
 
 The earlier [coverage audit](../results/discovery/systematic_families_2026-10-18/source_coverage.json)

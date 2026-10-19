@@ -19,8 +19,9 @@ closed-shell, formula, symmetry and bond-distance checks pass. Generated
 
 [Proposals](proposals.json), [drawings](prepared_grafts.png) and the
 [isolated build receipt](embedding_receipt.json) preserve exact identities and
-initial conformer ensembles. The shared candidate registry and manifest are
-unchanged. Mixed N-ethyl/N-graft precursor isolation, selectivity and exact-graft
+initial conformer ensembles. At the isolated-build checkpoint, the shared candidate registry and manifest
+were unchanged. Both designs are now registered; see the
+[solution campaign](../../validation/cata_solution_2026-10-19/README.md). Mixed N-ethyl/N-graft precursor isolation, selectivity and exact-graft
 performance remain unverified. The declared two-electron ladders are hypotheses.
 
 The [actual-start verification](uma_start_verification.json) separates resident
@@ -28,8 +29,8 @@ predictors and completed records from submitted controllers. The
 [six-state UMA plan](uma_plan.json) and [launch record](uma_launch.json) track
 gas preoptimization separately from source curation and solution properties.
 The [completion review](uma_completion.json) verifies all six gas UMA states and
-terminal workers, including memory headroom. No shared registration or solution
-DFT calculation has occurred. The cata-NDI dianion has a 0.2348-eV UMA spin gap,
+terminal workers, including memory headroom. At that checkpoint, no shared registration or solution
+DFT calculation had occurred. The solution campaign now records the later starts. The cata-NDI dianion has a 0.2348-eV UMA spin gap,
 requiring a subsequent DFT alternate-spin comparison. Each task uses all initial conformers and the parity-consistent spin scan,
 one reserved GPU, two assigned CPUs and capped native pools. One actual attempt
 is permitted; failures preserve their outputs. Existing verified case records

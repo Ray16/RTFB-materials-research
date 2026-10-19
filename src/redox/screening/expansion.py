@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from datetime import date
 import fcntl
 import hashlib
 import json
@@ -132,7 +133,7 @@ def register(output, config=None):
             before = hashlib.sha256(original).hexdigest()
             archive = output / "config_before" / f"{before}.py"
             archive.parent.mkdir(exist_ok=True); archive.write_bytes(original)
-            addition = "\n\n# Matched-comparison hypotheses registered 2026-10-18; exact-graft properties remain pending.\nGROUPS += " + pprint.pformat(pending, sort_dicts=False, width=100) + "\n"
+            addition = f"\n\n# Matched-comparison hypotheses registered {date.today().isoformat()}; exact-graft properties remain pending.\nGROUPS += " + pprint.pformat(pending, sort_dicts=False, width=100) + "\n"
             if config.read_bytes() != original:
                 raise RuntimeError("Candidate registry changed during preparation")
             with atomic_text_writer(config) as stream:

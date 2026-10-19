@@ -1,18 +1,18 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T06:24:53.538237-05:00",
+    "as_of_Chicago": "2026-10-19T06:51:30.588734-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_062453_538237",
-      "additional_candidates": 25,
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_065130_588734",
+      "additional_candidates": 27,
       "original39_with_native_potentials": 34,
       "complete_potential_pairs": 24,
-      "arithmetic_checks": 572,
+      "arithmetic_checks": 576,
       "arithmetic_discrepancies": 0,
       "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
       "inputs_current_during_collection": true
@@ -155,14 +155,16 @@
       "arithmetic_discrepancies": 0,
       "inputs_current_during_review": true,
       "changed_inputs": [],
-      "scientific_accuracy_validated": false
+      "scientific_accuracy_validated": false,
+      "live_inputs_match_current_manifest": false,
+      "new_cata_cases_outside_review_scope": true
     },
     "slides": {
-      "status": "checked_pdf_verified_against_model_limited_candidate_snapshot",
+      "status": "checked_registered_cata_pending_snapshot_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/model_selection_slides/slides_check.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_062453_538237",
-      "pdf_sha256": "44596ebb38a49121e3f3397c8b28c2d7fe5a838bbfb3b298f95ab8824df0c48d",
+      "publisher": "results/reviews/2026-10-19/cata_pending_slides_final/slides_check.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_065130_588734",
+      "pdf_sha256": "206cd9fef145538fa5e6742a40714b2500adba16e0a5f06020521de8808dab3d",
       "pages": 43
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
@@ -178,12 +180,16 @@
       "DFT_alternate_spin_required": [
         "hyp_cata_ndi_ethyl:red2"
       ],
-      "shared_registration_complete": false,
-      "solution_potentials_completed": 0
+      "shared_registration_complete": true,
+      "solution_potentials_completed": 0,
+      "solution_plan": "results/validation/cata_solution_2026-10-19/plan.json",
+      "solution_start_proof": "results/validation/cata_solution_2026-10-19/start_verification.json",
+      "solution_outputs": "calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>"
     },
     "software_tests_passed": 540,
-    "software_checks": "results/validation/model_selection_publication_2026-10-19/software_checks.log",
+    "software_checks": "results/validation/cata_solution_2026-10-19/software_checks.log",
     "remaining_work": [
+      "Complete cata-imide solution states and source-bound DFT spin qualification",
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
       "Broader experimental benchmark and exact-graft validation",
@@ -191,7 +197,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792410197.2525556,
+  "updated": 1792410951.8630345,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

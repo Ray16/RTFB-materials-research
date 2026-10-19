@@ -1399,3 +1399,64 @@ GROUPS += [{'id': 'search_viologen_1ad45438b9e4',
   'comparison_contrast': 'ring_Me',
   'hypothesis': 'Measure ring_Me on ndi against the unchanged ethyl graft; no performance '
                 'improvement assumed.'}]
+
+
+# Matched-comparison hypotheses registered 2026-10-19; exact-graft properties remain pending.
+GROUPS += [{'id': 'hyp_cata_ndi_ethyl',
+  'name': 'N-(4-methylbenzyl)-N-ethyl 1,2,3,4-naphthalene diimide',
+  'family': 'imide (n-type)',
+  'frag': 'CCn1c(=O)c2c3ccccc3c3c(=O)n([*:1])c(=O)c3c2c1=O',
+  'states': [['neu', 0, 1, 0], ['red1', -1, 2, -1], ['red2', -2, 1, -2]],
+  'hypothesis': 'Test cata vs conventional NDI as a core-topology isomer pair with the same '
+                'formula, ethyl cap and N-graft anchor.',
+  'comparison_baseline': 'design_ndi_ethyl',
+  'provenance': {'type': 'source-directed alternative imide core',
+                 'publication': 'https://doi.org/10.3762/bjoc.20.155',
+                 'source_parent': '7-Ph',
+                 'exact_grafted_experiment': False,
+                 'parent_metrics_inherited': False,
+                 'production_qm': False,
+                 'route_status': 'Source parents are bis-phenyl/bis-hexyl. Mixed N-ethyl/N-graft '
+                                 'precursor isolation and selectivity are unverified.',
+                 'registered': '2026-10-19',
+                 'source': 'https://doi.org/10.3762/bjoc.20.155'},
+  'exact_grafted_smiles': 'CCn1c(=O)c2c3ccccc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O',
+  'inchikey': 'NANYKQXYZMYUQE-UHFFFAOYSA-N',
+  'formula': 'C24H18N2O4',
+  'total_atoms_including_H': 48,
+  'MW': 398.41800000000023,
+  'precursor_smiles': 'CCn1c(=O)c2c3ccccc3c3c(=O)[nH]c(=O)c3c2c1=O',
+  'chemistry_notes': 'Test cata vs conventional NDI as a core-topology isomer pair with the same '
+                     'formula, ethyl cap and N-graft anchor. Source parents are '
+                     'bis-phenyl/bis-hexyl. Mixed N-ethyl/N-graft precursor isolation and '
+                     'selectivity are unverified. Parent measurements are in CH2Cl2 and are not '
+                     'exact-graft or MeCN labels.'},
+ {'id': 'hyp_cata_adi_ethyl',
+  'name': 'N-(4-methylbenzyl)-N-ethyl 1,2,3,4-anthracene diimide',
+  'family': 'imide (n-type)',
+  'frag': 'CCn1c(=O)c2c3cc4ccccc4cc3c3c(=O)n([*:1])c(=O)c3c2c1=O',
+  'states': [['neu', 0, 1, 0], ['red1', -1, 2, -1], ['red2', -2, 1, -2]],
+  'hypothesis': 'Test adding one fused benzene to the cata-NDI core, with the same ethyl cap and '
+                'N-graft anchor; core size changes explicitly.',
+  'comparison_baseline': 'hyp_cata_ndi_ethyl',
+  'provenance': {'type': 'source-directed alternative imide core',
+                 'publication': 'https://doi.org/10.3762/bjoc.20.155',
+                 'source_parent': '8-Ph',
+                 'exact_grafted_experiment': False,
+                 'parent_metrics_inherited': False,
+                 'production_qm': False,
+                 'route_status': 'Source parents are bis-phenyl/bis-hexyl. Mixed N-ethyl/N-graft '
+                                 'precursor isolation and selectivity are unverified.',
+                 'registered': '2026-10-19',
+                 'source': 'https://doi.org/10.3762/bjoc.20.155'},
+  'exact_grafted_smiles': 'CCn1c(=O)c2c3cc4ccccc4cc3c3c(=O)n(Cc4ccc(C)cc4)c(=O)c3c2c1=O',
+  'inchikey': 'LKTOOBTUSSFQCC-UHFFFAOYSA-N',
+  'formula': 'C28H20N2O4',
+  'total_atoms_including_H': 54,
+  'MW': 448.47800000000024,
+  'precursor_smiles': 'CCn1c(=O)c2c3cc4ccccc4cc3c3c(=O)[nH]c(=O)c3c2c1=O',
+  'chemistry_notes': 'Test adding one fused benzene to the cata-NDI core, with the same ethyl cap '
+                     'and N-graft anchor; core size changes explicitly. Source parents are '
+                     'bis-phenyl/bis-hexyl. Mixed N-ethyl/N-graft precursor isolation and '
+                     'selectivity are unverified. Parent measurements are in CH2Cl2 and are not '
+                     'exact-graft or MeCN labels.'}]
