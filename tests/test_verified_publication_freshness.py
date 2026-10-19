@@ -84,6 +84,23 @@ def test_additional_cohort_can_contain_non_ndi_candidates(feed):
     assert [row['id'] for row in admitted] == ['mol']
 
 
+def test_optional_control_points_are_withdrawn_when_their_own_evidence_changes(feed):
+    module,path,_,evidence,summary=feed
+    payload=json.loads(path.read_text())
+    control=module.ROOT/'calcs/dft/control/neu/result.json'
+    control.parent.mkdir(parents=True);control.write_text('{}')
+    summary['admitted_input_sha256'][str(control)]=hashlib.sha256(control.read_bytes()).hexdigest()
+    summary['spin_input_gids'].append('control')
+    summary['spin_input_paths_by_gid']={'mol':[str(evidence)],'control':[]}
+    payload['summary']=summary
+    payload['comparison_controls']=[dict(id='control',registry_id='control',solution_potentials_status='verified native calculation')]
+    path.write_text(json.dumps(payload))
+    assert [r['id'] for r in module.load(path)[2]]==['mol']
+    assert {r['id'] for r in module.load(path,include_controls=True)[2]}=={'mol','control'}
+    control.write_text('{"changed":true}')
+    assert [r['id'] for r in module.load(path,include_controls=True)[2]]==['mol']
+
+
 def test_external_control_dependencies_are_discovered(tmp_path):
     from redox.validation.provenance import referenced_files
     proof = tmp_path / 'proof/status.json'; proof.parent.mkdir(); proof.write_text('{}')

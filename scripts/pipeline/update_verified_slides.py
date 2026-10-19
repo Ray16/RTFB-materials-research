@@ -31,6 +31,25 @@ def save(path,value):
 def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def comparison_collection_inputs(payload,root,source):
+    """Bind the displayed current figures and include to one completed snapshot."""
+    if r'\input{generated/candidate_comparison_collection.tex}' not in source.read_text():return {}
+    folder=root/'results/candidates/figures';manifest=folder/'manifest.json'
+    metadata=json.loads(manifest.read_text())
+    if metadata['snapshot']!=payload['snapshot_path']:
+        raise RuntimeError('Comparison figures require an update from the displayed candidate snapshot')
+    inputs={str(manifest):digest(manifest)}
+    for name in ('redox_capacity.png','synthesis_tradeoff.png','new_candidate_shifts.png'):
+        path=folder/name;expected=metadata['files'][name]
+        if digest(path)!=expected:raise RuntimeError('Comparison figure differs from its checked collection: '+name)
+        inputs[str(path)]=expected
+    include=root/'slides/generated/candidate_comparison_collection.tex'
+    expected=metadata['files']['candidate_comparison_collection.tex']
+    if digest(include)!=expected:raise RuntimeError('Comparison slide include differs from the checked collection')
+    inputs[str(include)]=expected
+    return inputs
+
+
 def tex(value):
     mapping={'&':r'\&','%':r'\%','$':r'\$','#':r'\#','_':r'\_',
              '{':r'\{','}':r'\}','~':r'\textasciitilde{}','^':r'\textasciicircum{}',
@@ -352,6 +371,7 @@ def publish(payload,out,overlays=False):
         with (out/'overlay.log').open('w') as output:
             proc=subprocess.run(argv,cwd=ROOT,stdout=output,stderr=subprocess.STDOUT,timeout=180)
         if proc.returncode:raise RuntimeError('Existing plot overlay update failed; previous PDF preserved')
+    inputs.update(comparison_collection_inputs(payload,ROOT,source))
     if r'\InputIfFileExists{generated/verified_candidates.tex}' not in source.read_text():
         raise RuntimeError('Verified-slide hook is missing; preserve user edits and inspect')
     generated=SLIDES/'generated';generated.mkdir(exist_ok=True)

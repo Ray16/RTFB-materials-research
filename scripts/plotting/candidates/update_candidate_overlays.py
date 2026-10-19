@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Add the expansion to the three existing comparison figures, preserving prior points."""
+"""Update the maintained current collection and existing historical comparison figures."""
 import argparse
 import hashlib
 import json
@@ -20,6 +20,8 @@ def main():
     import plot_discovery as discovery
     leads.main(a.feed)
     discovery.main(a.feed)
+    import update_comparison_collection
+    update_comparison_collection.main(['--feed',str(a.feed)])
     payload=json.loads(a.feed.read_text())
     files=[ROOT/'results/figures/candidates'/name for name in [
         'leads_vs_existing_E1_disp.png','leads_vs_existing_lambda_cap.png','discovery_capacity_vs_sa.png']]

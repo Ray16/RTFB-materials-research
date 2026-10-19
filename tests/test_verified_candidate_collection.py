@@ -48,6 +48,30 @@ def test_native_queue_never_counts_a_mismatched_state_report_as_complete(tmp_pat
  assert not terminal and '0/1 surface records verified' in progress['m']
 
 
+def test_resource_deferral_is_pending_work_not_a_terminal_scientific_failure(tmp_path):
+ import json
+ tasks=state_queue(tmp_path,['failed_preserved',None])
+ (tmp_path/'failures').mkdir()
+ for task in tasks:
+  (tmp_path/'failures'/f"{task['key']}.json").write_text(json.dumps(dict(
+   key=task['key'],status='deferred_to_validated_large_memory_class',scientific_rejection=False)))
+ progress,terminal=module().queue_progress(tmp_path)
+ assert not terminal and '2 resource-deferred' in progress['m']
+ assert '0 failed/preserved' in progress['m']
+
+
+def test_resource_marker_cannot_hide_a_new_computing_or_verified_report(tmp_path):
+ import json
+ tasks=state_queue(tmp_path,['computing','state_records_verified'])
+ (tmp_path/'failures').mkdir()
+ for task in tasks:
+  (tmp_path/'failures'/f"{task['key']}.json").write_text(json.dumps(dict(
+   key=task['key'],status='deferred_to_validated_large_memory_class',scientific_rejection=False)))
+ progress,terminal=module().queue_progress(tmp_path)
+ assert not terminal and '0 resource-deferred' in progress['m']
+ assert '1 producer reports in progress' in progress['m'] and '1/2 surface records verified' in progress['m']
+
+
 def test_optional_state_QC_fields_survive_both_csv_and_workbook(tmp_path):
  import csv
  from openpyxl import load_workbook

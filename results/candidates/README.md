@@ -15,6 +15,13 @@ candidates. [latest.csv](latest.csv) contains just those additional candidates,
 and [comparisons.csv](comparisons.csv) contains shifts from matched exact-graft
 controls. These stable paths update with the active campaign exports.
 
+The [maintained comparison collection](figures/README.md) adds a searchable
+[all-candidate table and exact structures](figures/index.html), a
+[potential–capacity map](figures/redox_capacity.png), an
+[all-candidate comparison](figures/redox_ladders.pdf) and
+[family coverage](figures/coverage.png). One update command refreshes the same
+files from the audited feed as candidates and verified properties arrive.
+
 The active batch contains 36 additional candidates. The workbook and current
 snapshot report which potential pairs are complete. Blank numeric fields are pending or excluded by
 field-specific QC. These are predictions for exact molecular structures; parent

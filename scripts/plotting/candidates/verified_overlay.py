@@ -38,13 +38,14 @@ def snapshot_inputs_current(summary):
     except OSError:return False
 
 
-def load(feed=None):
+def load(feed=None, include_controls=False):
     path=Path(feed) if feed else DEFAULT_FEED if DEFAULT_FEED.exists() else LEGACY_FEED
     if not path.exists():return None,[],[]
     payload=json.loads(path.read_text());summary=payload['summary']
     if summary.get('arithmetic_discrepancies')!=0 or not input_changes_quarantined(summary):
         return payload,[],[]
     rows=payload['original39']+payload.get('additional_candidates',payload.get('extra_NDI',[]))
+    if include_controls:rows=rows+payload.get('comparison_controls',[])
     quarantined=set(summary.get('quarantined_input_gids',[]))
     display_gids={(r.get('registry_id') or r['id']) for r in rows
                   if r.get('solution_potentials_status')=='verified native calculation'

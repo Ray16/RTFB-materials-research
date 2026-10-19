@@ -1,0 +1,75 @@
+# Maintained candidate comparisons
+
+Open the [comparison browser](index.html) for all registered candidates, sortable
+properties, exact structures, filters and comparisons of up to six structures.
+It is a standalone HTML file; the interactive plot is embedded when Plotly is
+available. All candidates remain in the table, including unfinished calculations.
+
+| Stable figure | What it compares |
+| --- | --- |
+| [Potential–capacity map](redox_capacity.png) · [PDF](redox_capacity.pdf) | Admitted first/second potentials and nominal molecular capacities |
+| [Synthesis tradeoff](synthesis_tradeoff.png) · [PDF](synthesis_tradeoff.pdf) | SA and nominal capacity, highlighting selected descriptor leaders |
+| [New candidate shifts](new_candidate_shifts.png) · [PDF](new_candidate_shifts.pdf) | Matched contrasts with lower potentials for both events, one per core |
+| [All-candidate ladders](redox_ladders.png) · [PDF](redox_ladders.pdf) | Every candidate, with pending endpoints blank and nominal capacity alongside |
+| [Family coverage](coverage.png) · [PDF](coverage.pdf) | Admitted potential calculations and pending/excluded cases by family |
+
+The first three are the focused main views. The complete ladders and coverage are
+supplementary views. [Highlights and selection rules](highlights.json) distinguish
+the partial potential–capacity front from the existing qualified primary Pareto
+policy. SA is an annotation; no missing kinetics or model uncertainty is filled
+to claim a complete front. [Figure captions](captions.md) state methods and scope.
+
+The modeled structures are p-methylbenzyl-capped local graft models, not the
+vinyl-bearing monomers required for monomer-first polymerization. Computed
+descriptor leaders therefore do not establish polymer synthesis priorities.
+
+Download the complete [CSV](all_candidates.csv) or [JSON](all_candidates.json).
+The [manifest](manifest.json) records the audited input snapshot, candidate IDs,
+coverage and output checksums. These filenames are overwritten on each successful
+update. Earlier scientific snapshots stay in the existing immutable export archive.
+
+To update from the current verified feed:
+
+```bash
+python scripts/plotting/candidates/update_comparison_collection.py
+```
+
+To collect newly finished results and update this collection plus the existing
+historical comparison figures in one command:
+
+```bash
+python scripts/pipeline/collect_verified_candidates.py \
+  --out results/reviews/2026-10-18/verified_candidates \
+  --queue results/validation/aryl_solution_2026-10-19 \
+  --update-figures
+```
+
+Add `--watch` to refresh after each audited collection while the queue runs.
+These commands read existing scientific calculations; they submit no new jobs.
+Run them in the project's `redox` environment. Optional interactive plots use
+`requirements-visualization.txt`; static figures and the searchable table work
+without Plotly. The existing slide publisher's `--update-plots` option updates
+this same collection through `update_candidate_overlays.py`.
+
+Potentials use the current corrected native protocol and matched Fc reference.
+Nominal capacity excludes solvent, supporting electrolyte, counterions and polymer.
+Model window capacity is separately gated and remains provisional. Reorganization
+fields stay blank when solution-level qualification is missing; gas descriptors
+are not substituted. Source-parent measurements are separate from exact grafts.
+These comparisons establish neither measured solubility and durability nor
+experimental superiority. An admitted calculation is not complete scientific validation.
+
+If scientific inputs change during rendering, the previous completed collection
+is preserved and the command asks for a fresh verified snapshot. It does not
+relax admission to fill a chart.
+
+For monomer-first polymerization, a chemical route assessment should accompany
+the plots. Conventional diimide and viologen branches are reasonable initial
+families; exact asymmetric precursor preparation and grafting remain to establish.
+Viologen reaction with 4-vinylbenzyl chloride has
+[published precedent](https://pubs.acs.org/doi/10.1021/acspolymersau.1c00036), and
+[styrene-functionalized NDI polymerization](https://www.mdpi.com/1422-0067/26/10/4807)
+supports the broader scaffold concept, not these exact structures or battery use.
+Quinones can [retard or inhibit radical polymerization](https://doi.org/10.1016/0014-3057(73)90026-8).
+The BQ models' high nominal capacities therefore do not make them automatic
+monomer synthesis priorities. These are chemical assessments, not verified routes.

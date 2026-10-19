@@ -6,7 +6,7 @@ Timestamped immutable CSV/XLSX snapshots and an atomic latest.json feed reports/
 No quantum jobs, parent-property substitutions or production-table writes.
 """
 from __future__ import annotations
-import argparse,csv,fcntl,hashlib,importlib.util,json,math,os,signal,shutil,socket,sys,time
+import argparse,csv,fcntl,hashlib,importlib.util,json,math,os,signal,shutil,socket,subprocess,sys,time
 from pathlib import Path
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -123,18 +123,23 @@ def queue_progress(queue):
  plan=coverage.safe_json(queue/'plan.json') or {};tasks=plan.get('tasks',[])
  if tasks and all(isinstance(t,dict) and all(k in t for k in ('key','id','state')) for t in tasks):
   # State queues publish surface records separately from spin/property admission.
-  counts={gid:dict(total=0,verified=0,failed=0,reported=0,queued=0) for gid in {t['id'] for t in tasks}}
+  counts={gid:dict(total=0,verified=0,failed=0,reported=0,queued=0,deferred=0) for gid in {t['id'] for t in tasks}}
   for task in tasks:
    c=counts[task['id']];c['total']+=1
    report=coverage.safe_json(queue/'tasks'/task['key']/'status.json') or {}
    matched=report.get('task',{}).get('key')==task['key'] and report.get('task',{}).get('id')==task['id']
    status=report.get('status') if matched else None
+   failure=coverage.safe_json(queue/'failures'/f"{task['key']}.json") or {}
+   deferred=(failure.get('key')==task['key'] and failure.get('scientific_rejection') is False
+             and failure.get('status')=='deferred_to_validated_large_memory_class')
    if status=='state_records_verified':c['verified']+=1
-   elif status in ('failed_preserved','interrupted_preserving_outputs'):c['failed']+=1
    elif status in ('preparing','computing'):c['reported']+=1
+   elif deferred:c['deferred']+=1
+   elif status in ('failed_preserved','interrupted_preserving_outputs'):c['failed']+=1
    else:c['queued']+=1
   progress={gid:(f"{c['verified']}/{c['total']} surface records verified; {c['failed']} failed/preserved; "
-                 f"{c['reported']} producer reports in progress; {c['queued']} queued/unresolved; field-specific QC separate")
+                 f"{c['reported']} producer reports in progress; {c['queued']} queued/unresolved; "
+                 f"{c['deferred']} resource-deferred; field-specific QC separate")
             for gid,c in counts.items()}
   return progress,all(c['verified']+c['failed']==c['total'] for c in counts.values())
  data=coverage.safe_json(queue/'queue.json') or {};ids=data.get('ids',[])
@@ -511,6 +516,7 @@ def main():
  ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--out',required=True,type=Path)
  ap.add_argument('--queue',type=Path,default=ROOT/'results/validation/candidate_fleet_today_2026-10-11')
  ap.add_argument('--watch',action='store_true');ap.add_argument('--interval-seconds',type=int,default=120)
+ ap.add_argument('--update-figures',action='store_true',help='refresh the maintained comparison collection after each audited snapshot')
  ap.add_argument('--max-hours',type=float,help='optional watch duration spanning midnight')
  a=ap.parse_args();out=a.out.resolve();out.mkdir(parents=True,exist_ok=True)
  if a.interval_seconds<30:ap.error('interval must be at least30seconds')
@@ -529,6 +535,9 @@ def main():
    summary,dest=snapshot(out,a.queue.resolve());status.update(snapshots=status['snapshots']+1,last_snapshot=str(dest),
        last_summary=summary,status='watching' if a.watch else 'complete');save_atomic(out/'watch_status.json',status)
    print(json.dumps({k:summary[k] for k in ('as_of_Chicago','original39_native_potential_molecules','arithmetic_discrepancies','queue_terminal')}),flush=True)
+   if a.update_figures:
+    subprocess.run([sys.executable,str(ROOT/'scripts/plotting/candidates/update_candidate_overlays.py'),
+        '--feed',str(out/'latest.json'),'--status',str(out/'figure_status.json')],check=True,cwd=ROOT)
    if not a.watch or summary['queue_terminal'] or datetime.now(ZoneInfo('America/Chicago'))>=deadline:break
    time.sleep(min(a.interval_seconds,max(0,(deadline-datetime.now(ZoneInfo('America/Chicago'))).total_seconds())))
   status['status']='complete';save_atomic(out/'watch_status.json',status)

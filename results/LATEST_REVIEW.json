@@ -159,7 +159,7 @@
       "declared_states": 27,
       "state_attempt_reports": 26,
       "native_surface_records_verified": 5,
-      "state_failures": 13,
+      "state_failures": 14,
       "seed_description_correction": "results/validation/aryl_solution_2026-10-19/seed_description_correction.json",
       "new_potential_pairs_admitted": 0,
       "earlier_calculation_preservation": "results/validation/aryl_solution_2026-10-19/existing_property_preservation.json",
@@ -175,6 +175,16 @@
       "H100_recovery_workers_at_verified_start": 1,
       "original_geometry_and_result_preserved_at_recovery_start": true,
       "physical_holds": [
+        {
+          "key": "study_aryl_0d7aa75989e9__ox2",
+          "stage": "native_thermal",
+          "reason": "RuntimeError('Native Hessian symmetry/finite-value failure')"
+        },
+        {
+          "key": "study_aryl_4602f4a856c7__ox1",
+          "stage": "native_thermal",
+          "reason": "RuntimeError('Native Hessian symmetry/finite-value failure')"
+        },
         {
           "key": "study_aryl_9992bd3479e1__ox2",
           "stage": "native_thermal",
@@ -255,12 +265,12 @@
       "current_candidate_coverage": "results/candidates/current.json"
     },
     "slides": {
-      "status": "published_checked_pdf",
+      "status": "checked_maintained_candidate_collection_and_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/aryl_memory_hexyl_slides/slides_check.json",
+      "publisher": "results/reviews/2026-10-19/maintained_comparison/slides_check.json",
       "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_122205_478576",
-      "pdf_sha256": "416321cacb9a32eef707e9dc12d8d88dad9705a0ecbcf7aa013a1810252dedff",
-      "pages": 51
+      "pdf_sha256": "54027dfc864539dfbcc2ecdfac4e5e7079498012666a1553bf38157870e8ac87",
+      "pages": 57
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -295,8 +305,17 @@
       "solution_start_proof": "results/validation/cata_solution_2026-10-19/start_verification.json",
       "solution_outputs": "calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>"
     },
-    "software_tests_passed": 572,
-    "software_checks": "results/validation/aryl_solution_2026-10-19/resource_routing/software_checks_final.log",
+    "candidate_figure_collection": {
+      "guide": "results/candidates/figures/README.md",
+      "browser": "results/candidates/figures/index.html",
+      "manifest": "results/candidates/figures/manifest.json",
+      "candidate_designs": 75,
+      "admitted_potential_calculations": 60,
+      "scope": "Capped local-model designs; partial descriptor front, not complete kinetics or polymer synthesis ranking",
+      "synthesis_route": "functionalize vinyl monomer, then polymerize; vinyl targets require separate qualification"
+    },
+    "software_tests_passed": 581,
+    "software_checks": "results/validation/aryl_solution_2026-10-19/comparison_software_checks.log",
     "remaining_work": [
       "Complete diaryl-viologen solution-property calculations and independent admission",
       "Hexyl NDI native minimum/thermochemistry",
@@ -317,7 +336,7 @@
     }
   },
   "scientific_validation_complete": false,
-  "updated": 1792430961.7054815,
+  "updated": 1792431666.8472645,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",
