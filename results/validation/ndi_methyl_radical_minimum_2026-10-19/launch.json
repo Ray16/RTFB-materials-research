@@ -1,0 +1,76 @@
+{
+  "workers": [
+    {
+      "id": "ndi_methyl_minus",
+      "host": "lambda13",
+      "gpu": 0,
+      "controller_pid": 2660789,
+      "process_start": "50517700",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "0",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ndi_methyl_radical_minimum_2026-10-19/lambda13_ndi_methyl_minus",
+        "--threads",
+        "2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ndi_methyl_radical_minimum_2026-10-19/branch.py",
+        "--branch",
+        "minus"
+      ],
+      "resources": {
+        "gpu": {
+          "index": 0,
+          "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+          "name": "NVIDIA H100 NVL",
+          "memory_MiB": 95830.0,
+          "compute_capability": "9.0"
+        }
+      },
+      "submitted": 1792387837.5868554,
+      "scientific_outputs_verified": false
+    },
+    {
+      "id": "ndi_methyl_plus",
+      "host": "lambda13",
+      "gpu": 1,
+      "controller_pid": 2660936,
+      "process_start": "50517801",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ndi_methyl_radical_minimum_2026-10-19/lambda13_ndi_methyl_plus",
+        "--threads",
+        "2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ndi_methyl_radical_minimum_2026-10-19/branch.py",
+        "--branch",
+        "plus"
+      ],
+      "resources": {
+        "gpu": {
+          "index": 1,
+          "uuid": "GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b",
+          "name": "NVIDIA H100 NVL",
+          "memory_MiB": 95830.0,
+          "compute_capability": "9.0"
+        }
+      },
+      "submitted": 1792387838.595694,
+      "scientific_outputs_verified": false
+    }
+  ]
+}

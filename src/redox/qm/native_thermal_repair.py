@@ -36,6 +36,58 @@ def promotion_metadata(record,canonical,archive,expected_source_sha256,producer_
  return updated
 
 
+def install_repaired_state(canonical,selected,base,expected_source_sha256,producer_snapshot,q,m):
+ """Validate a complete private replacement, then install with rollback.
+
+ The caller holds the molecule/native writer locks. Preserve all old addressed
+ records and cross-point history; their geometry checks determine current use.
+ """
+ canonical,selected,base=map(Path,(canonical,selected,base))
+ digest=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+ if digest(canonical/'opt.xyz')!=expected_source_sha256:
+  raise RuntimeError('Canonical source changed during bounded repair')
+ archive=base/'superseded_canonical';install=base/'install_state'
+ if archive.exists() or install.exists():raise FileExistsError('Repair promotion paths already exist')
+ old={str(p.relative_to(canonical)):digest(p) for p in canonical.rglob('*') if p.is_file()}
+ shutil.copytree(canonical,install)
+ for name in ('sp','native_thermal','projected_thermal'):
+  source=selected/name
+  if not source.is_dir():raise RuntimeError(f'Repaired state lacks {name}')
+  target=install/name;target.mkdir(exist_ok=True)
+  for path in source.iterdir():
+   if path.suffix=='.lock':continue
+   destination=target/path.name
+   if destination.exists():raise RuntimeError('Replacement addressed cache unexpectedly already exists')
+   if path.is_dir():shutil.copytree(path,destination)
+   else:shutil.copy2(path,destination)
+ shutil.copy2(selected/'opt.xyz',install/'opt.xyz')
+ # Verify the original geometry now, then bind its future archive location.
+ replacement=promotion_metadata(json.loads((selected/'result.json').read_text()),canonical,
+                                canonical,expected_source_sha256,producer_snapshot)
+ replacement.update(minimum_repair_source=str(archive/'opt.xyz'),
+                    legacy_thermal_archive=str(archive/'result.json'))
+ atomic_write_json(install/'result.json',replacement)
+ select_policy(install)
+ def verify(directory):
+  if not load_native_thermal(directory,q,m) or not load_record(directory,q,m):
+   raise RuntimeError('Complete repaired state failed native partition or active-energy admission')
+ verify(install)
+ current={str(p.relative_to(canonical)):digest(p) for p in canonical.rglob('*') if p.is_file()}
+ if current!=old:raise RuntimeError('Canonical files changed before repair promotion')
+ if canonical.stat().st_dev!=base.stat().st_dev:raise RuntimeError('Atomic repair requires one filesystem')
+ atomic_write_json(base/'SHA256.json',old)
+ os.replace(canonical,archive)
+ try:
+  os.replace(install,canonical)
+  verify(canonical)
+  if any(digest(archive/p)!=h for p,h in old.items()):raise RuntimeError('Archived state changed')
+ except BaseException:
+  if canonical.exists():os.replace(canonical,base/'failed_install_preserved')
+  os.replace(archive,canonical)
+  raise
+ return archive
+
+
 @contextmanager
 def promotion_guard(gid):
  """Acquire the motif lock or verify the same local runner's live inherited ownership."""
@@ -72,7 +124,7 @@ def repair_minimum(gid,state,reason):
  from ase.io import read,write
  from pyscf import gto
  from pyscf.hessian import thermo
- from pyscf.geomopt.geometric_solver import optimize
+ from pyscf.geomopt.geometric_solver import kernel
  from redox.qm.dft import _build_smd_mf,_ecp_for,_free_gpu_pool
  from redox.qm.sp import ensure as ensure_sp,_ENERGY_KEYS
  sd=DFT/gid/state;raw=json.loads((sd/'result.json').read_text());q,m=raw['charge'],raw['mult']
@@ -109,20 +161,23 @@ def repair_minimum(gid,state,reason):
   try:
    prior=next((folder/f'branch_{sign}'/'opt.xyz' for folder in reversed(previous)
                if (folder/f'branch_{sign}'/'opt.xyz').exists()),None)
-   if prior is not None:
-    # Only a geometry checkpoint is reused. SCF/Hessian/SP/graph are revalidated below.
-    shutil.copy2(prior,work/'opt.xyz');record['resumed_geometry_checkpoint']=str(prior)
-   else:
-    seed=atoms.copy();seed.positions+=delta;write(work/'seed.xyz',seed)
-    _,mf=build(seed.positions);mf.kernel()
-    if not mf.converged:raise RuntimeError('Repair SCF unconverged')
-    grad=mf.nuc_grad_method();grad.grid_response=True
-    finalmol=optimize(grad.as_scanner(),maxsteps=120,assert_convergence=True,
-        convergence_energy=1e-8,convergence_grms=3e-5,convergence_gmax=5e-5,convergence_drms=1e-4,convergence_dmax=2e-4)
-    final=atoms.copy();final.positions=finalmol.atom_coords(unit='Angstrom');write(work/'opt.xyz',final)
-    del mf,grad;_free_gpu_pool()
+   seed=read(prior) if prior is not None else atoms.copy()
+   if prior is not None:record['resumed_geometry_checkpoint']=str(prior)
+   else:seed.positions+=delta
+   write(work/'seed.xyz',seed)
+   _,mf=build(seed.positions);mf.kernel()
+   if not mf.converged:raise RuntimeError('Repair SCF unconverged')
+   grad=mf.nuc_grad_method();grad.grid_response=True;scanner=grad.as_scanner()
+   converged,finalmol=kernel(scanner,maxsteps=120,assert_convergence=True,
+       convergence_energy=1e-8,convergence_grms=3e-5,convergence_gmax=5e-5,convergence_drms=1e-4,convergence_dmax=2e-4)
+   record.update(geometry_optimization_converged=bool(converged),optimization_SCF_converged=bool(scanner.converged))
+   if not (converged and scanner.converged):raise RuntimeError('Repair optimizer did not converge')
+   final=atoms.copy();final.positions=finalmol.atom_coords(unit='Angstrom');write(work/'opt.xyz',final)
+   del mf,grad,scanner;_free_gpu_pool()
    if smiles_to_xyz_map(row['smiles'],work/'opt.xyz') is None:raise RuntimeError('Repair changes declared molecular connectivity')
-   trial=dict(raw,optimized=True,g_thermal_eV=None,n_imag=None,minimum_repair_source=str(sd/'opt.xyz'),minimum_repair_source_sha256=source_sha)
+   trial=dict(raw,optimized=True,geometry_optimization_converged=True,optimization_SCF_converged=True,
+              opt_gradient_grid_response=True,g_thermal_eV=None,n_imag=None,
+              minimum_repair_source=str(sd/'opt.xyz'),minimum_repair_source_sha256=source_sha)
    # Old energies refer to the original geometry and must never be adoptable.
    for key in _ENERGY_KEYS:trial[key]=None
    (work/'result.json').write_text(json.dumps(trial,indent=2))
@@ -142,26 +197,6 @@ def repair_minimum(gid,state,reason):
  if not good:status['status']='repair_failed';save();raise RuntimeError(f'Bounded minimum repair failed; evidence {base}')
  _,selected,thermal=min(good,key=lambda x:x[0])
  with promotion_guard(gid):
-  if hashlib.sha256((sd/'opt.xyz').read_bytes()).hexdigest()!=source_sha:raise RuntimeError('Canonical source changed during bounded repair')
-  archive=base/'superseded_canonical';shutil.copytree(sd,archive)
-  reorg=DFT/gid/'reorg'
-  if reorg.exists():shutil.copytree(reorg,base/'superseded_reorg')
-  sums={str(p.relative_to(base)):hashlib.sha256(p.read_bytes()).hexdigest() for folder in [archive,base/'superseded_reorg'] if folder.exists() for p in folder.rglob('*') if p.is_file()}
-  (base/'SHA256.json').write_text(json.dumps(sums,indent=2))
-  assert all(hashlib.sha256((base/k).read_bytes()).hexdigest()==v for k,v in sums.items())
-  # Archive first; retire only geometry-specific canonical files after the verified replacement is ready.
-  replacement=promotion_metadata(json.loads((selected/'result.json').read_text()),sd,archive,source_sha,base/'repair_producer_source.py')
-  shutil.copy2(selected/'opt.xyz',sd/'opt.xyz')
-  atomic_write_json(sd/'result.json',replacement)
-  for name in ['native_thermal','sp']:
-   for src in (selected/name).iterdir():
-    dst=sd/name/src.name
-    if dst.exists():raise RuntimeError('Replacement addressed cache unexpectedly already exists')
-    if src.is_dir():shutil.copytree(src,dst)
-    else:shutil.copy2(src,dst)
-  if reorg.exists():
-   for old in reorg.glob('*.json'):old.unlink()
-  select_policy(sd)
-  assert load_native_thermal(sd,q,m) and load_record(sd,q,m)
+  archive=install_repaired_state(sd,selected,base,source_sha,base/'repair_producer_source.py',q,m)
  status.update(status='verified_minimum_promoted',selected=str(selected),new_geometry_sha256=hashlib.sha256((sd/'opt.xyz').read_bytes()).hexdigest(),archive=str(archive),finished=time.time());save()
  return 'repaired_minimum',thermal

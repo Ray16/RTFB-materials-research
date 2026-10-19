@@ -2,6 +2,18 @@
 
 ## Current checkpoint: 2026-10-19
 
+A later continuation independently reviewed and promoted the NDI methoxyethyl
+and NDI butyl radical minima: **157 checks each, zero failures**, with exact
+old-state archives, explicit optimizer convergence and unchanged physical gates.
+The generic repair helper now carries corrected partition caches through a
+validated atomic directory replacement and rolls back failed installations.
+Its geometry optimizer also preserves convergence, including checkpoint resumes.
+The full software suite passes **395 tests**. Two signed-mode searches for the
+methyl-NDI radical have verified H100 starts with separate CPU sets; pending
+results retain their QC gates. A fresh broad review and candidate export follow
+the two promotions. The earlier checkpoint below remains a dated record.
+
+
 The corrected native thermochemistry is integrated into the producer, primary
 reader and independent audit. Explicit internal modes exclude rigid motions and
 retain the genuine 0.391 cm⁻¹ soft mode that the first projected CLI replay lost.

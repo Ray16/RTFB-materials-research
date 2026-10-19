@@ -1,0 +1,41 @@
+{
+  "id": "search_ndi_573f69a7895b",
+  "state": "red1",
+  "charge": -1,
+  "mult": 2,
+  "smiles": "CCN1C(=O)c2ccc3c4c(c(C)cc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O",
+  "source_state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/search_ndi_573f69a7895b/red1",
+  "source_hessian": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/candidate_property_continuation_2026-10-18/NDI_Me_radical/work/native_thermal/4932cfe17c4f7e66/hessian_cartesian.npy",
+  "source_minimum_frequency_cm": -61.38337362301003,
+  "seed_max_displacement_A": 0.1,
+  "mode_index": 0,
+  "seed_sha256": {
+    "minus": "430e63041262e3a4f63f14e835a983bf583f6e73455415cc91466cf2ba38d74e",
+    "plus": "4d258a2c6e37caae5de67eb9a43f1b37e6b34dc9a2ce8156a855785374fa9ac5"
+  },
+  "inputs_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/search_ndi_573f69a7895b/red1/opt.xyz": "7e0aea912f8e59fbe84efdfeb299b744db08f2b1009b00e3d12ee0f1071387bb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/search_ndi_573f69a7895b/red1/result.json": "149f97812cf550f08babd26f7a99d05f3b4fb003842070dbc9c558721f46a6c8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/candidate_property_continuation_2026-10-18/NDI_Me_radical/work/opt.xyz": "7e0aea912f8e59fbe84efdfeb299b744db08f2b1009b00e3d12ee0f1071387bb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/candidate_property_continuation_2026-10-18/NDI_Me_radical/work/result.json": "149f97812cf550f08babd26f7a99d05f3b4fb003842070dbc9c558721f46a6c8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/candidate_property_continuation_2026-10-18/NDI_Me_radical/work/native_thermal/4932cfe17c4f7e66/hessian_cartesian.npy": "da386ba4c9e76379f198106055e48fab9519142ad3804cf4a8353ebb00061579"
+  },
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ndi_methyl_radical_minimum_2026-10-19/branch.py": "0b109b84e59df737b9b9a8d872ad485f6aacdffd243897eb1fee79aa986f32de",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ndi_methyl_radical_minimum_2026-10-19/qualify.py": "ba25603c6a5ed89d6953708fb203b48128bd3827572098543e21bfdaca62f570",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/sp.py": "09c6cfdb66d818c37c76c6f6587d44c6c3c804d383729a4161fd9c96bef9ec10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/hessian_memory.py": "899c8d9da11e58bbac7f0d7c42bc0d8bdaafb608a4fdc36309c12bf5d5dee0db",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "c712b40f42656a4ea9a95195ca01619c7cb7857342b6b96173b826afaab070ea",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/qrrho.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/xtb_kernel.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/projected_thermal.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af"
+  },
+  "maximum_signed_branches": 2,
+  "maximum_optimizer_steps_per_branch": 120,
+  "production_admission": false,
+  "scientific_thresholds_unchanged": true,
+  "created": 1792387753.7787464
+}

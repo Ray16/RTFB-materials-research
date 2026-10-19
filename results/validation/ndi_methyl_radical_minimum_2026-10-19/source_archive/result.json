@@ -1,0 +1,108 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/search_ndi_573f69a7895b/red1/_seed_00.xyz",
+  "charge": -1,
+  "mult": 2,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svpd",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/search_ndi_573f69a7895b/red1/opt.xyz",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "2f9bcb252554f592",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -1375.4364662031567,
+  "e_smd_eV": -37427.53293867091,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1375.4364662031276,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1375.4364662031057,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1375.4364662031567,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -5.604822829186483,
+  "smd_lumo_eV": -0.8587652696504955,
+  "smd_s_squared": 0.7802,
+  "smd_spin_contam": 0.0302,
+  "gas_occupation_guesses": [],
+  "e_gas_Ha": -1375.3567322104227,
+  "e_gas_eV": -37425.363266197695,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1375.3567322103981,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1375.3567322104227,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1375.3567322101471,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -2.867520758583389,
+  "gas_lumo_eV": 1.8755891529778905,
+  "gas_s_squared": 0.7808,
+  "gas_spin_contam": 0.0308,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.1696724732186823,
+  "id": "search_ndi_573f69a7895b",
+  "state": "red1",
+  "n_e": -1,
+  "n_seeds": 3,
+  "seed_preopt": "alpb",
+  "winning_seed": 0,
+  "seed_e_smd_eV": [
+    -37427.5329,
+    -37427.5304,
+    -37427.5324
+  ],
+  "seed_spread_eV": 0.0026
+}

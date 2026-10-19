@@ -2,6 +2,17 @@
 
 ## Current corrections: 2026-10-19
 
+The generic native repair path also omitted `projected_thermal` when promoting a
+replacement and changed canonical geometry before final admission. It now prepares
+and validates the complete replacement, retains old addressed histories, swaps
+state directories with rollback, and preserves every archived byte. Repair
+optimization uses the kernel convergence result and reoptimizes resumed checkpoints
+rather than declaring them converged. Four promotion regression cases cover the
+complete partition, pre-install refusal and post-install rollback. The full suite
+now passes **395 tests**. Two private NDI radical minima independently pass 157
+checks each and have been promoted with original-state archives.
+
+
 Native thermochemistry previously included rigid-motion modes. The corrected
 internal-mode partition is integrated into the producer and both primary readers,
 with 232 cases passing 6,961 independent checks. The installed xTB thermodynamic

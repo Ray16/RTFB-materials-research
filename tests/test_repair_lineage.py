@@ -1,5 +1,7 @@
 """Canonical replacement must preserve the actual original source and SP identity."""
 import hashlib
+import json
+from pathlib import Path
 
 import pytest
 
@@ -63,3 +65,51 @@ def test_source_resolution_never_falls_back_to_directory_names_or_missing_hashes
 def test_malformed_source_metadata_cannot_crash_status_collection(tmp_path):
     assert repair_source([],tmp_path)['repair_source_status']=='unverified'
     assert repair_source(None,tmp_path)['repair_source_geometry'] is None
+
+
+@pytest.fixture
+def repair_installation(tmp_path,monkeypatch):
+    canonical=tmp_path/'canonical';selected=tmp_path/'selected';base=tmp_path/'review'
+    for folder in (canonical,selected,base):folder.mkdir()
+    for folder,tag in ((canonical,'old'),(selected,'new')):
+        (folder/'opt.xyz').write_text(tag+' geometry')
+        (folder/'result.json').write_text(json.dumps({'charge':-1,'mult':2}))
+        for cache in ('sp','native_thermal','projected_thermal'):
+            (folder/cache).mkdir();(folder/cache/(tag+'.json')).write_text(tag)
+    (canonical/'unrelated_history.txt').write_text('preserve')
+    snapshot=base/'producer.py';snapshot.write_bytes(repair.REPAIR_SOURCE_BYTES)
+    original={str(p.relative_to(canonical)):p.read_bytes() for p in canonical.rglob('*') if p.is_file()}
+    expected=hashlib.sha256((canonical/'opt.xyz').read_bytes()).hexdigest()
+    monkeypatch.setattr(repair,'select_policy',lambda folder:None)
+    def admitted(folder,q,m):
+        return all((Path(folder)/cache/'new.json').is_file() for cache in ('sp','native_thermal','projected_thermal'))
+    monkeypatch.setattr(repair,'load_native_thermal',admitted)
+    monkeypatch.setattr(repair,'load_record',admitted)
+    return canonical,selected,base,expected,snapshot,original
+
+
+def test_complete_partition_and_old_history_survive_atomic_promotion(repair_installation):
+    canonical,selected,base,expected,snapshot,original=repair_installation
+    archive=repair.install_repaired_state(canonical,selected,base,expected,snapshot,-1,2)
+    assert archive==base/'superseded_canonical'
+    assert {str(p.relative_to(archive)):p.read_bytes() for p in archive.rglob('*') if p.is_file()}==original
+    assert (canonical/'projected_thermal/new.json').read_text()=='new'
+    assert (canonical/'projected_thermal/old.json').read_text()=='old'
+    assert (canonical/'unrelated_history.txt').read_text()=='preserve'
+    metadata=json.loads((canonical/'result.json').read_text())
+    assert metadata['minimum_repair_source']==str(archive/'opt.xyz')
+
+
+@pytest.mark.parametrize('failure',['missing_partition','stage_validation','post_install_validation'])
+def test_failed_promotion_keeps_all_canonical_bytes(repair_installation,monkeypatch,failure):
+    canonical,selected,base,expected,snapshot,original=repair_installation
+    if failure=='missing_partition':
+        import shutil
+        shutil.rmtree(selected/'projected_thermal')
+    else:
+        monkeypatch.setattr(repair,'load_native_thermal',lambda folder,q,m:
+                            False if failure=='stage_validation' or Path(folder)==canonical else True)
+    with pytest.raises(RuntimeError):
+        repair.install_repaired_state(canonical,selected,base,expected,snapshot,-1,2)
+    assert {str(p.relative_to(canonical)):p.read_bytes() for p in canonical.rglob('*') if p.is_file()}==original
+    if failure=='post_install_validation':assert (base/'failed_install_preserved').is_dir()
