@@ -6,7 +6,7 @@ The earlier unprojected review remains preserved under
 `results/reviews/2026-10-18/post_finished_spin_reports/` and is superseded.
 
 The [current review](current/) contains the full property-table assembly and
-its independent arithmetic audit. It passed **30,455 checks, zero discrepancies**,
+its independent arithmetic audit. It passed **31,850 checks, zero discrepancies**,
 with unchanged inputs during the review and a second inventory check before
 publication. These are dated, immutable tables; later
 calculations may supersede individual fields.
@@ -23,3 +23,8 @@ does not establish experimental accuracy or validate solution kinetics.
 For the actively computed additional candidates, use the more frequently refreshed
 [candidate results](../candidates/README.md). Earlier root-level CSVs and prior
 review snapshots remain historical evidence.
+
+The current review also applies the evidence-bound phenothiazine second-oxidation
+selection limit. Calculated values remain recorded; affected window/capacity
+objectives cannot certify primary shortlist membership. See
+[`config/model_validation_limits.json`](../../config/model_validation_limits.json).

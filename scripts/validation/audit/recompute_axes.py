@@ -1305,6 +1305,31 @@ def scorecard_inner_lambdas(raw):
     ))
 
 
+def my_model_selection(gid,pool):
+    """Independent reading of the model-review scope and evidence; no primary gate import."""
+    from rdkit import Chem
+    rows=[r for r in MANIFEST if r['id']==gid]
+    molecule=Chem.MolFromSmiles(rows[0]['smiles']);charges={int(r['charge']) for r in rows}
+    policy=json.loads((ROOT/'config/model_validation_limits.json').read_text())
+    if policy.get('schema')!=1:raise ValueError('Invalid model review')
+    result=dict(model_primary_admissible=True,model_validation_status='no_scoped_limitation',
+                model_validation_evidence=None,model_max_observed_error_V=None)
+    for rule in policy['rules']:
+        query=Chem.MolFromSmiles(rule['core_smiles'])
+        if (pool!=rule['role'] or not {rule['oxidized_charge'],rule['reduced_charge']}<=charges
+                or not molecule.HasSubstructMatch(query)):continue
+        evidence=ROOT/rule['evidence_path']
+        if not evidence.exists() or hashlib.sha256(evidence.read_bytes()).hexdigest()!=rule['evidence_sha256']:
+            reason='model_review_evidence_stale'
+        elif rule['tested_energy_protocol']!=ACTIVE_SP:reason='model_protocol_revalidation_required'
+        elif rule['status']=='limitation_observed':reason=rule['id']+'_unqualified'
+        else:reason='unrecognized_model_review_status'
+        result.update(model_primary_admissible=False,model_validation_status=reason,
+                      model_validation_evidence=rule['evidence_path'],model_max_observed_error_V=rule['observed_potential_error_V'])
+        break
+    return result
+
+
 def my_scorecard(fc):
     batches, unrank = candidate_meta()
     wlo, whi = ELE.WINDOW_V_VS_FC
@@ -1420,6 +1445,7 @@ def my_scorecard(fc):
                 status=("INCOMPLETE" if str(stop[pool]).startswith("INCOMPLETE") else "candidate"),
                 min_spin_gap_eV=spin_gap,spin_gap_source=spin_source,spin_confidence=spin_confidence,
                 rankable=(gid not in unrank), resting_state=rest[gid][0],
+                **my_model_selection(gid,pool),model_predicted_n_accessible=n,
                 path=" ; ".join(c["couple"] for c in acc), path_stop=stop[pool], n_accessible=n,
                 E_V=statistics.mean(c["Er"] for c in acc),
                 sigma_E_V=pool_sigma,
@@ -1445,6 +1471,9 @@ def my_scorecard(fc):
 
 
 SC_FIELDS = [  # (column, digits, check_type)
+    ('model_primary_admissible',None,'logic'),('model_validation_status',None,'logic'),
+    ('model_validation_evidence',None,'logic'),('model_max_observed_error_V',3,'trace'),
+    ('model_predicted_n_accessible',0,'logic'),
     ('min_spin_gap_eV',4,'exact'),('spin_gap_source',None,'logic'),('spin_confidence',None,'logic'),
     ("status", None, "logic"), ("resting_state", None, "logic"), ("path", None, "logic"),
     ("path_stop", None, "logic"), ("n_accessible", 0, "logic"), ("E_V", 3, "exact"),
@@ -1492,16 +1521,18 @@ def audit_scorecard(fc):
 # ============================================================== 5b. Pareto (independent)
 def objectives(row, pool, cap_key):
     o, miss = {}, []
+    model_valid=row.get('model_primary_admissible',True) not in (False,'False')
+    if not model_valid:miss.append('model_validation')
     if row.get('spin_confidence') in ('DFT_check_required','wrong_ground_state'):miss.append('spin_state')
     E = fnum(row.get("E_V"))
     thermal_valid = row.get("thermal_qc", "ok") == "ok"
-    if E is None or not thermal_valid: miss.append("voltage")
+    if E is None or not thermal_valid or not model_valid: miss.append("voltage")
     else: o["voltage"] = (-E if pool == "anolyte" else E, fnum(row.get("sigma_E_V")) or 0.0)
     cap = fnum(row.get(cap_key))
-    if cap is None: miss.append("capacity")
+    if cap is None or not model_valid: miss.append("capacity")
     else: o["capacity"] = (cap, 0.0)
     dg = fnum(row.get("dG_disp_kJmol"))
-    if dg is not None and thermal_valid:
+    if dg is not None and thermal_valid and model_valid:
         o["stability"] = (dg, (fnum(row.get("sigma_disp_eV")) or SCC.SIGMA_DISP_EV) * EV_KJMOL)
     elif str(row.get("disp_applicable")) == "True":
         miss.append("stability")

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "rules": [
+    {
+      "id": "phenothiazine_second_oxidation",
+      "core_smiles": "N1c2ccccc2Sc2ccccc21",
+      "oxidized_charge": 2,
+      "reduced_charge": 1,
+      "role": "catholyte",
+      "status": "limitation_observed",
+      "tested_energy_protocol": {
+        "schema": 1,
+        "xc": "wb97m-v",
+        "basis": "def2-tzvpd",
+        "disp": null,
+        "nlc": "vv10",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "conv_tol": 1e-09,
+        "max_cycle": 200
+      },
+      "observed_potential_error_V": 0.547,
+      "reason": "A checked free-parent second-wave residual of +0.547 V leaves two-electron window/capacity selection unqualified; calculated model estimates remain available.",
+      "evidence_path": "results/reviews/2026-10-19/phenothiazine_checked_subset/model_discrepancy.json",
+      "evidence_sha256": "12a6b4022b1dddfbc12a959e3a39968d1dfe221403469354c86fdd723dcb4113"
+    }
+  ]
+}

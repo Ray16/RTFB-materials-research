@@ -52,20 +52,22 @@ def _objectives(cand, pool, sc, cap_key="specific_capacity_mAh_g"):
     `missing` lists PRIMARY objectives that are absent. Stability is NOT APPLICABLE (not
     missing) for a 1-electron path: there is no intermediate to disproportionate."""
     o, missing = {}, []
+    model_ready=cand.get('model_primary_admissible',True) not in (False,'False')
+    if not model_ready:missing.append('model_validation')
     if cand.get('spin_confidence') in ('DFT_check_required','wrong_ground_state'):missing.append('spin_state')
     thermal_valid = cand.get("thermal_qc", "ok") == "ok"
     E = _f(cand.get("E_V"))
-    if E is not None and thermal_valid:
+    if E is not None and thermal_valid and model_ready:
         o["voltage"] = ((-E if pool == "anolyte" else E), _f(cand["sigma_E_V"]) or 0.0)
     else:
         missing.append("voltage")
     cap = _f(cand.get(cap_key))
-    if cap is not None:
+    if cap is not None and model_ready:
         o["capacity"] = (cap, sc.SIGMA_CAPACITY)               # bookkeeping on the path
     else:
         missing.append("capacity")
     dg = _f(cand.get("dG_disp_kJmol"))
-    if dg is not None and thermal_valid:
+    if dg is not None and thermal_valid and model_ready:
         o["stability"] = (dg, (_f(cand.get("sigma_disp_eV")) or sc.SIGMA_DISP_EV) * 96.485)
     elif str(cand.get("disp_applicable")) == "True":
         missing.append("stability")
@@ -139,6 +141,7 @@ def run_pool(pool, cands, sc, cap_key="specific_capacity_mAh_g", scenario=""):
                         lambda_i_eV=_f(c["lambda_i_eV"]),
                         lambda_qc=c.get("lambda_qc", ""),
                         lambda_flags=c.get("lambda_flags", ""),
+                        model_validation_status=c.get('model_validation_status',''),
                         dG_disp_kJmol=_f(c["dG_disp_kJmol"]),
                         SA=_f(c["SA_score"]), dGsolv=_f(c["dGsolv_proxy_eV"]),
                         pareto_optimal=(c["id"] in front)))
@@ -202,7 +205,7 @@ def _write(all_rows):
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "pareto_shortlist.csv"
     cols = ["scenario", "capacity_def", "pool", "id", "family", "E_V", "n", "capacity",
-            "lambda_i_eV", "lambda_qc", "lambda_flags", "lambda_o_pcm_eV", "lambda_het_eV",
+            "lambda_i_eV", "lambda_qc", "lambda_flags", "model_validation_status", "lambda_o_pcm_eV", "lambda_het_eV",
             "lambda_se_contact_eV", "dG_disp_kJmol", "SA", "dGsolv", "pareto_optimal",
             "partial_front", "missing_objectives", "dominated_by"]
     with out.open("w", newline="") as f:

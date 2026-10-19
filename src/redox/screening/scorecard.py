@@ -500,6 +500,12 @@ def build():
     batches, chem_flags = _candidate_batches(), _candidate_chem_flags()
     unrankable = _unrankable_ids()
     resting = _resting_states()
+    from redox.core.common import read_manifest
+    from redox.validation.model_limits import selection_admission
+    declared={}
+    for row in read_manifest():
+        entry=declared.setdefault(row['id'],dict(smiles=row['smiles'],charges=[]))
+        entry['charges'].append(int(row['charge']))
 
     # couples by molecule (scoped to the current screening candidates)
     by_mol = {}
@@ -550,6 +556,8 @@ def build():
             if not acc:
                 continue
             n_acc = len(acc)
+            definition=declared[gid]
+            model_review=selection_admission(definition['smiles'],definition['charges'],pool)
             Es = [c["E"] for c in acc]
             # --- capacity (bookkeeping on the contiguous path; counter-ion variants are
             # scenario conventions, not exact physics: whether supporting ions count in a
@@ -586,11 +594,13 @@ def build():
             truncated = stop.get(pool, "").startswith("INCOMPLETE")
             rows.append(dict(
                 base, status=("INCOMPLETE" if truncated else "candidate"),
+                **model_review,
                 **({"reason": f"path truncated by missing data: {stop[pool]}"} if truncated else {}),
                 role=pool, pool=pool,
                 resting_state=rest[0], path=" ; ".join(c["couple"] for c in acc),
                 path_stop=stop.get(pool, ""),
                 n_accessible=n_acc,
+                model_predicted_n_accessible=n_acc,
                 min_spin_gap_eV=spin_gap, spin_gap_source=spin_src,
                 spin_confidence=("wrong_ground_state" if (spin_gap is not None and spin_src.startswith('dft_')
                                                          and spin_gap < -1e-4)
@@ -631,6 +641,8 @@ def build():
     RESULTS.mkdir(exist_ok=True)
     atomic_write_json(RESULTS / "uncertainty_evidence.json", unc)
     cols = ["id", "name", "family", "batch", "chem_flag", "rankable", "status", "role", "pool",
+            "model_primary_admissible", "model_validation_status", "model_validation_evidence",
+            "model_max_observed_error_V", "model_predicted_n_accessible",
             "resting_state", "path", "path_stop", "n_accessible", "E_V", "E_anolyte_V",
             "E_catholyte_V", "sigma_E_V", "specific_capacity_mAh_g", "MW",
             "MW_repeat_unit", "capacity_repeat_mAh_g", "capacity_maxload_Li_mAh_g",

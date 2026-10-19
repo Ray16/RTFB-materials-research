@@ -79,6 +79,8 @@ def validation_source_paths():
  paths.update((ROOT/'scripts/validation/audit').glob('*.py'))
  for p in (ROOT/'config').glob('native*.json'):
   paths.update(referenced_files(coverage.safe_json(p) or {},ROOT))
+ model_review=ROOT/'config/model_validation_limits.json'
+ if model_review.is_file():paths.update(referenced_files(coverage.safe_json(model_review) or {},ROOT))
  return {p for p in paths if p.is_file()}
 
 
@@ -223,6 +225,21 @@ def apply_thermal_publication_hold(rows, states, couples, reference, path=None):
  reference.update(reference_native_Fc_absolute_V=None,thermal_publication_status=reason,
                   thermal_publication_review=str(path),thermal_publication_review_sha256=sha(path) if path.is_file() else None)
  return True
+
+
+def apply_model_selection_gates(rows,review_path=None):
+ """Retain calculated surfaces but withhold unqualified decision-level capacity."""
+ from redox.validation.model_limits import selection_admission
+ for row in rows:
+  declared=json.loads(row['states'])
+  role='catholyte' if any(state[3]>0 for state in declared) else 'anolyte'
+  review=selection_admission(row['exact_grafted_smiles'],[state[1] for state in declared],role,
+                             review_path=review_path)
+  row.update(review)
+  row['model_accessible_capacity_estimate_mAh_g']=row.get('accessible_capacity_mAh_g')
+  if not review['model_primary_admissible']:
+   row['accessible_capacity_mAh_g']=None
+   row['accessible_capacity_status']='provisional model window/path estimate; '+review['model_validation_status']
 
 
 def raw_audit_and_quarantine(rows,states,couples,audit,reference=None,frozen_inputs=None,input_inventory=None,
@@ -409,6 +426,7 @@ def snapshot(out,queue):
   allrows,states,couples,audit,reference,frozen,(initial_paths,decision_paths),input_owners,initial_source_paths)
  retained_gids=gids-set(reference.get('changed_input_gids',[]))
  apply_thermal_publication_hold(allrows,states,couples,reference)
+ apply_model_selection_gates(allrows)
  comparisons=paired_potential_shifts(allrows)
  progress,terminal=queue_progress(queue)
  for r in allrows:

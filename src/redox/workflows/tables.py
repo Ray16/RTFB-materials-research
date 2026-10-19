@@ -73,6 +73,9 @@ def snapshot_inputs(source):
         paths.update((ROOT / "results/reorg_anchors" / directory).glob("chunk*_results.csv"))
     for certificate in (ROOT / "config").glob("native*.json"):
         paths.update(referenced_files(json.loads(certificate.read_text()), ROOT))
+    model_review=ROOT/'config/model_validation_limits.json'
+    if model_review.is_file():
+        paths.update(referenced_files(json.loads(model_review.read_text()),ROOT))
     partition_certificate=ROOT/'config/projected_thermal_validation.json'
     if partition_certificate.is_file():
         paths.update(referenced_files(json.loads(partition_certificate.read_text()),ROOT))
