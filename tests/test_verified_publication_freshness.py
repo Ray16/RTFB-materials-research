@@ -8,6 +8,23 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def test_shared_inventory_includes_selected_equilibrium_and_its_bound_artifacts(tmp_path,monkeypatch):
+    from redox.validation.provenance import spin_decision_paths
+    spec=importlib.util.spec_from_file_location('ensemble_inventory_overlay',ROOT/'scripts/plotting/candidates/verified_overlay.py')
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    monkeypatch.setattr(module,'ROOT',tmp_path)
+    component=tmp_path/'calcs/spincheck/mol/red2_m3/native_thermal/hessian.npy'
+    component.parent.mkdir(parents=True);component.write_bytes(b'qualified array')
+    policy=tmp_path/'calcs/dft/mol/red2/spin_ensemble_policy.json';policy.parent.mkdir(parents=True)
+    policy.write_text(json.dumps({'evidence_sha256':{str(component):hashlib.sha256(component.read_bytes()).hexdigest()}}))
+    paths=spin_decision_paths(tmp_path,['mol'])
+    assert {policy,component}<=paths
+    summary=dict(spin_input_gids=['mol'],spin_input_paths=sorted(str(p) for p in paths),source_sha256={})
+    assert not module.input_inventory_changed(summary)
+    policy.unlink()
+    assert module.input_inventory_changed(summary)
+
+
 @pytest.fixture
 def feed(tmp_path, monkeypatch):
     spec = importlib.util.spec_from_file_location('publication_freshness', ROOT / 'scripts/plotting/candidates/verified_overlay.py')

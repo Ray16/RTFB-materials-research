@@ -13,8 +13,6 @@ import socket
 import subprocess
 import sys
 import time
-from datetime import datetime
-from zoneinfo import ZoneInfo
 
 ROOT=Path(__file__).resolve().parents[2]
 FEED=ROOT/'results/candidates/current.json'
@@ -42,6 +40,21 @@ def tex(value):
 
 def number(value,digits=3):
     return f'{value:.{digits}f}' if type(value) in (int,float) and math.isfinite(value) else '--'
+
+
+def candidate_label(row,labels):
+    if labels.get(row['id'],{}).get('short_name'):
+        return labels[row['id']]['short_name']
+    core=row.get('search_core')
+    if core:
+        family='Viologen' if core=='viologen' else core.upper()
+        contrast=row.get('search_contrast') or ''
+        detail=(row.get('search_cap','cap').replace('npropyl','propyl')+' cap'
+                if contrast=='cap_length' else contrast.replace('ring_','ring-').replace('linker_C2','ether linker'))
+        return family+' '+detail
+    for prefix,family in [('hyp_ndi_','NDI'),('hyp_pmdi_','PMDI'),('hyp_ptz_37','PTZ 3,7-')]:
+        if row['id'].startswith(prefix):return family+('' if family.endswith('-') else ' ')+row['id'][len(prefix):].replace('2fluoro','2-fluoro')
+    return row['id']
 
 
 def family_screening_frame(rows,when):
@@ -173,7 +186,7 @@ def frames(payload,overlays=False):
             r'Candidate & $E_1$ & $E_2$ & $\Delta E$ & Nominal & Accessible \\',
             r'& \multicolumn{3}{c}{V vs. Fc/Fc$^+$} & \multicolumn{2}{c}{mAh/g} \\ \midrule']
         for r in chunk:
-            label=labels.get(r['id'],{}).get('short_name',r['id'])
+            label=candidate_label(r,labels)
             pieces.append(tex(label)+' & '+' & '.join(number(r.get(k),d) for k,d in (
                 ('E1_vs_Fc_V',3),('E2_vs_Fc_V',3),('wave_spacing_V',3),
                 ('capacity_nominal_mAh_g',1),('accessible_capacity_mAh_g',1)))+r' \\')
@@ -221,7 +234,7 @@ def frames(payload,overlays=False):
         for gid in review['findings']['practical_shortlist']:
             if gid not in current:continue
             r=current[gid]
-            label=labels.get(gid,{}).get('short_name',gid)
+            label=candidate_label(r,labels)
             pieces.append(tex(label)+' & '+number(r.get('E1_vs_Fc_V'))+' & '+number(r.get('E2_vs_Fc_V'))+' & '+number(r.get('accessible_capacity_mAh_g'),1)+r' \\')
         pieces += [r'\bottomrule\end{tabular}\par',r'\vspace{1ex}\raggedright',
                    r'\footnotesize Compact AQ/diimide/viologen branches plus a conditional high-capacity BQ branch. Capacity is active-species bookkeeping.',
@@ -313,10 +326,9 @@ def main():
     a=ap.parse_args();out=a.out.resolve();out.mkdir(parents=True,exist_ok=True)
     lock=(out/'publisher.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     status=dict(host=socket.gethostname(),pid=os.getpid(),cpu_affinity=sorted(os.sched_getaffinity(0)),started=time.time())
-    deadline=datetime(2026,10,11,23,55,tzinfo=ZoneInfo('America/Chicago')).timestamp()
-    if a.max_hours is not None:
-        if a.max_hours<=0:ap.error('max-hours must be positive')
-        deadline=time.time()+a.max_hours*3600
+    from redox.workflows.publication import watch_deadline
+    try:deadline=watch_deadline(a.max_hours)
+    except ValueError as exc:ap.error(str(exc))
     last=None
     def interrupted(signum,frame):raise KeyboardInterrupt(f'signal {signum}')
     signal.signal(signal.SIGTERM,interrupted)

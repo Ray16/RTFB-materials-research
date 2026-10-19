@@ -1,6 +1,27 @@
 """Existing file dependencies named in immutable validation evidence."""
 from pathlib import Path
 import hashlib
+import json
+
+
+def spin_decision_paths(root,gids,*,strict=False):
+    """One dependency inventory for collectors, slide publishers and overlays."""
+    root=Path(root);paths=set()
+    for gid in gids:
+        paths.update((root/'calcs/uma'/gid).glob('*/result.json'))
+        paths.update((root/'calcs/dft'/gid).glob('*/spin_validation/*.json'))
+        paths.update((root/'calcs/dft'/gid).glob('*/spin_ensemble_policy.json'))
+        for helper in (root/'calcs/spincheck'/gid).glob('*_m*'):
+            for pattern in ('result.json','opt.xyz','thermal_policy.json','sp/*.json','native_thermal/*.json',
+                            'native_thermal/*/hessian_cartesian.npy','native_thermal/*/hessian_diagnostics.json'):
+                paths.update(helper.glob(pattern))
+    paths={p for p in paths if p.is_file()}
+    for path in list(paths):
+        if path.suffix=='.json':
+            try:paths.update(referenced_files(json.loads(path.read_text()),root))
+            except (OSError,ValueError):
+                if strict:raise
+    return paths
 
 
 def calculation_gid(path, root):

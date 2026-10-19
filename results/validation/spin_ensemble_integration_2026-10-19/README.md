@@ -27,12 +27,13 @@ writer locks and agreement between both real readers. Invalid selections restore
 the exact previous policy bytes and retain failed candidates. The selected file
 is `calcs/dft/search_pmdi_1864c2c74267/red2/spin_ensemble_policy.json`.
 
-The full software suite passes **429 tests**. Integrity checks now cover every
+The full software suite passes **436 tests**. Integrity checks now cover every
 included spin-component pair; both CN-PMDI pairs are bound with unchanged bond
 graphs. Gas relaxation remains a flagged diagnostic, and solution kinetics stay
 unvalidated. The global audit independently rebuilds distance graphs instead of
-copying bond-change counts from the generated table. Fresh candidate/global
-exports and slides are required before the new second potential is released.
+copying bond-change counts from the generated table. The current checked candidate export and slides include the equilibrium second
+potential. The bound 25/50/100 cm⁻¹ diagnostic changes that potential by only
+2.70 mV; 50 cm⁻¹ remains primary without fitting.
 
 Raw arrays remain on shared storage, referenced by the policy and review hashes.
 Historical reports and raw component records are preserved without relabeling.

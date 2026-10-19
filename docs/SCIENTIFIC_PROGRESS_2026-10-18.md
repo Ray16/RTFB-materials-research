@@ -1,5 +1,46 @@
 # Property correctness and candidate expansion
 
+## Current checkpoint: 2026-10-19, 02:03 Chicago
+
+**24 of 25 additional candidates have complete checked native potential pairs.**
+The export passes **572 arithmetic checks, zero discrepancies**, with stable inputs.
+There are also 34 original proposals with admitted native potentials. Use the
+[candidate workbook](../results/candidates/latest.xlsx) and
+[current feed](../results/candidates/current.json) for the exact structures and QC.
+
+CN-PMDI now uses a source-bound two-spin equilibrium: **32.16% triplet population**
+and E2 **−1.7666 V vs Fc**. Each component includes spin degeneracy once; both
+included component pairs pass solution binding and independently checked bond
+integrity. Its solution kinetics remain unvalidated. Ring-methyl NDI is also
+admitted at **−0.8255 / −1.4738 V vs Fc** after both minima passed 157 independent
+checks each. The lower electronic-energy plus branch was promoted, with full
+old-state preservation; its sub-meV conformer spread is not a resolved advantage.
+
+The full suite passes **436 software tests**. The current global review passes
+**30,455 independent checks with zero discrepancies**, stable inputs and another
+inventory check before publication. Its bond graphs are reconstructed independently.
+CSV/XLSX exports preserve optional QC fields; readiness uses actual active energies.
+Publication dependency inventories and daily watch windows are shared. The checked
+39-page PDF includes the new values and retains historical labels on older figures.
+
+Hexyl NDI is the remaining incomplete additional candidate. Both old branches
+failed coarse Hessian symmetry and their original worker is terminal. Two preserved
+geometries are prepared for the independently qualified finer derivative setting;
+one has a verified H100 start and the second is pending suitable capacity. Physical
+thresholds remain unchanged. Consult its [live manifest](../results/validation/hexyl_finer_derivatives_2026-10-19/launch.json).
+
+The matched-parent benchmark remains limited to seven potentials, four molecules
+and three studies (RMSE **0.1714 V**). Solution reorganization/kinetics, broader
+experimental anchors and exact-graft performance remain separate unresolved gates.
+This computational checkpoint does not establish experimental battery performance.
+
+## Earlier dated checkpoints
+
+The following entries preserve the investigation and their original counts.
+Earlier unprojected thermal values and old Fc references are superseded; the
+[current result index](../results/LATEST_REVIEW.json) owns the latest status.
+
+
 ## Current checkpoint: 2026-10-19
 
 CN-PMDI now has a selected, source-bound two-spin equilibrium policy, verified by

@@ -2,6 +2,33 @@
 
 ## Current corrections: 2026-10-19
 
+The maintained pipeline now binds energies, native partitions and equilibrium spin
+policies to their actual inputs; validates replacement states before atomic
+promotion with rollback; preserves optimizer convergence; and shares publication
+dependency discovery. Optional QC fields survive CSV and workbook export. Readiness
+uses active energies rather than synthetic placeholders, and slide watch windows
+use the current day. Numerical source snapshots preserve ongoing calculations.
+
+Native thermochemistry excludes rigid motions while retaining genuine soft modes.
+The installed xTB kernel runs in an isolated CPU process. Two qualified spin
+surfaces can supply an explicit equilibrium free energy without claiming valid
+single-surface kinetics. Integrity checks include every participating component,
+and the independent audit now reconstructs distance bond graphs.
+
+All **436 software tests pass**. The current global tables pass **30,455 independent
+checks**, and the 24/25 additional-candidate export passes **572 checks**, with zero
+discrepancies and stable inputs. [Current evidence](../results/LATEST_REVIEW.json)
+links the exact receipts and the checked PDF. Hexyl NDI's last native surface,
+solution kinetics and broader experimental accuracy remain unfinished. User-staged
+archive changes have been preserved separately from these commits.
+
+## Earlier review checkpoints
+
+The dated material below retains the original findings, investigations and counts.
+
+
+## Current corrections: 2026-10-19
+
 CN-PMDI now has a selected, source-bound two-spin equilibrium policy, verified by
 both real readers. The triplet population is 32.16% at 298.15 K; the mixture uses
 each component's native spin degeneracy once. Every included component pair passes

@@ -8,7 +8,7 @@ No quantum jobs, parent-property substitutions or production-table writes.
 from __future__ import annotations
 import argparse,csv,fcntl,hashlib,importlib.util,json,math,os,signal,shutil,socket,sys,time
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime
 from zoneinfo import ZoneInfo
 ROOT=Path(__file__).resolve().parents[2];sys.path.insert(0,str(ROOT/'src'))
 sys.path.insert(0,str(ROOT/'scripts/mining'))
@@ -65,19 +65,8 @@ def comparison_control_groups(rows,registered):
 
 def decision_input_paths(gids):
  """Include spin evidence whose mutation can withdraw an otherwise clean surface."""
- paths=set()
- for gid in gids:
-  paths.update((UMA/gid).glob('*/result.json'))
-  paths.update((DFT/gid).glob('*/spin_validation/*.json'))
-  paths.update((DFT/gid).glob('*/spin_ensemble_policy.json'))
-  for helper in (DFT.parent/'spincheck'/gid).glob('*_m*'):
-   for pattern in ('result.json','opt.xyz','thermal_policy.json','sp/*.json','native_thermal/*.json',
-                   'native_thermal/*/hessian_cartesian.npy','native_thermal/*/hessian_diagnostics.json'):
-    paths.update(helper.glob(pattern))
- paths={p for p in paths if p.is_file()}
- for p in list(paths):
-  if p.suffix=='.json':paths.update(referenced_files(coverage.safe_json(p) or {},ROOT))
- return paths
+ from redox.validation.provenance import spin_decision_paths
+ return spin_decision_paths(ROOT,gids)
 
 
 def validation_source_paths():
@@ -504,6 +493,10 @@ def snapshot(out,queue):
   experimental_accuracy='No exact graft has an experimentally validated property in this dataset.',
   paired_shifts='Candidate minus declared exact-graft control, same charge/electron ladder and snapshot. Each event requires two admitted values; no surface/parent substitution or improvement claim.',
   spin_qc='UMA gaps<0.5eV require DFT alternatives; DFT electronic gaps within0.2eV require matching native spin thermals; native gaps within0.1eV require spin-ensemble evaluation. Raw surfaces remain diagnostics; far positive electronic gaps retain explicit thermal uncertainty.',
+  native_g_thermal_eV='Corrected native partition of the selected single spin surface, before any equilibrium mixing correction.',
+  effective_g_thermal_eV='Native term added to the selected active SMD energy; includes an admitted equilibrium spin correction when selected.',
+  spin_ensemble_correction_eV='Equilibrium G minus selected-surface G. Component spin degeneracy is included once, not multiplied again.',
+  spin_ensemble_alternative_population='Alternative-spin equilibrium population at 298.15 K under the selected two-spin model; this does not validate kinetics.',
   workbook='Immutable snapshot of independently audited external pipeline records, no spreadsheet formulas.')
  sheets={'Original39':rows,'States':states,'Couples':couples}
  if extras:sheets['Additional']=extras
@@ -549,10 +542,10 @@ def main():
  a=ap.parse_args();out=a.out.resolve();out.mkdir(parents=True,exist_ok=True)
  if a.interval_seconds<30:ap.error('interval must be at least30seconds')
  lock=(out/'collector.lock').open('a+');fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
- now=datetime.now(ZoneInfo('America/Chicago'));deadline=now.replace(hour=23,minute=55,second=0,microsecond=0)
- if a.max_hours is not None:
-  if a.max_hours<=0:ap.error('max-hours must be positive')
-  deadline=now+timedelta(hours=a.max_hours)
+ from redox.workflows.publication import watch_deadline
+ now=datetime.now(ZoneInfo('America/Chicago'))
+ try:deadline=datetime.fromtimestamp(watch_deadline(a.max_hours,now=now),ZoneInfo('America/Chicago'))
+ except ValueError as exc:ap.error(str(exc))
  status=dict(status='collecting',host=socket.gethostname(),pid=os.getpid(),
   process_start=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19],
   affinity=sorted(os.sched_getaffinity(0)),threads=1,deadline_Chicago=deadline.isoformat(),snapshots=0,quantum_jobs_submitted=0)

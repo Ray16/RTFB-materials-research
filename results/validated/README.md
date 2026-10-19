@@ -6,7 +6,7 @@ The earlier unprojected review remains preserved under
 `results/reviews/2026-10-18/post_finished_spin_reports/` and is superseded.
 
 The [current review](current/) contains the full property-table assembly and
-its independent arithmetic audit. It passed **29,129 checks, zero discrepancies**,
+its independent arithmetic audit. It passed **30,455 checks, zero discrepancies**,
 with unchanged inputs during the review and a second inventory check before
 publication. These are dated, immutable tables; later
 calculations may supersede individual fields.

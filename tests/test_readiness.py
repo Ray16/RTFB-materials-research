@@ -46,6 +46,25 @@ def test_never_computed_state_is_incomplete(tmp_path):
     assert "missing_geometry" in rows[0]["issues"]
 
 
+def test_readiness_uses_the_actual_active_energy_for_bound_ensemble_policy(tmp_path,monkeypatch):
+    from redox.validation import readiness
+    from redox.qm import dft
+    sd=tmp_path/'m/neu';sd.mkdir(parents=True)
+    (sd/'opt.xyz').write_text('2\n\nH 0 0 0\nH 0 0 .74\n')
+    (sd/'result.json').write_text(json.dumps(dict(charge=0,mult=1)))
+    monkeypatch.setattr(dft,'_opt_protocol_mismatch',lambda *args:'')
+    monkeypatch.setattr(readiness,'load_record',lambda *args:dict(e_smd_eV=-11.))
+    observed=[]
+    def selected(record,directory):
+        observed.append(record['e_smd_eV'])
+        return dict(record,g_thermal_eV=1. if record['e_smd_eV']==-11. else None,n_imag=0,
+                    thermal_definition='native_solution_dft_qrrho_spin',
+                    thermal_qc='ok' if record['e_smd_eV']==-11. else 'stale_or_invalid_spin_ensemble')
+    monkeypatch.setattr(readiness,'apply_thermal_policy',selected)
+    row,=readiness.inspect_states([dict(id='m',state='neu',charge=0)],root=tmp_path)
+    assert row['status']=='ready' and observed==[-11.]
+
+
 def test_partial_lambda_cannot_be_a_complete_objective():
     sc = common.load_config("scorecard_config")
     row = dict(E_V=-1, sigma_E_V=.2, specific_capacity_mAh_g=100,

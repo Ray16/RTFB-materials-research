@@ -192,3 +192,11 @@ Equilibrium potentials do not qualify single-surface kinetics. Reorganization
 values remain flagged diagnostics for selected mixtures, and integrity must pass
 for every component pair before potential-window capacity is counted. See the
 [implementation and evidence](../results/validation/spin_ensemble_integration_2026-10-19/README.md).
+
+Publication dependency discovery is shared in `validation.provenance.spin_decision_paths`;
+collectors and overlays must use that inventory when adding a new state policy.
+Watch deadlines use `workflows.publication.watch_deadline`: the default closes at
+23:55 Chicago on the current day, while `--max-hours` uses elapsed hours across
+midnight/DST. The collector additionally honors its selected queue's terminal state.
+CSV and workbook snapshots retain the union of optional QC fields, including
+single-surface kinetic flags and explicit ensemble correction/population columns.

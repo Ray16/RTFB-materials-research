@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[3]
 sys.path.insert(0,str(ROOT/'src'))
 from redox.validation.provenance import (referenced_files, calculation_gid,
-                                         scoped_spin_summary, input_changes_quarantined)
+                                         scoped_spin_summary, input_changes_quarantined,spin_decision_paths)
 DEFAULT_FEED=ROOT/'results/candidates/current.json'
 LEGACY_FEED=ROOT/'results/today_2026-10-11_verified_collection/latest.json'
 
@@ -18,19 +18,8 @@ def finite(x):return isinstance(x,(int,float)) and not isinstance(x,bool) and ma
 
 def input_inventory_changed(summary):
     if 'spin_input_gids' not in summary or 'spin_input_paths' not in summary:return True
-    current=set()
-    for gid in summary['spin_input_gids']:
-        current.update((ROOT/'calcs/uma'/gid).glob('*/result.json'))
-        current.update((ROOT/'calcs/dft'/gid).glob('*/spin_validation/*.json'))
-        for helper in (ROOT/'calcs/spincheck'/gid).glob('*_m*'):
-            for pattern in ('result.json','opt.xyz','thermal_policy.json','sp/*.json','native_thermal/*.json',
-                            'native_thermal/*/hessian_cartesian.npy','native_thermal/*/hessian_diagnostics.json'):
-                current.update(helper.glob(pattern))
-    current={p for p in current if p.is_file()}
-    for p in list(current):
-        if p.suffix=='.json':
-            try:current.update(referenced_files(json.loads(p.read_text()),ROOT))
-            except (OSError,ValueError):return True
+    try:current=spin_decision_paths(ROOT,summary['spin_input_gids'],strict=True)
+    except (OSError,ValueError):return True
     if {str(p) for p in current}!=set(summary['spin_input_paths']):return True
     source_files=set((ROOT/'src/redox').rglob('*.py'))|set((ROOT/'config').glob('*.py'))|set((ROOT/'config').glob('*.json'))
     expected={p for p in summary.get('source_sha256',{}) if Path(p).is_relative_to(ROOT/'src/redox') or Path(p).parent==ROOT/'config'}

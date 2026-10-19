@@ -1,18 +1,18 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T00:38:00.450031-05:00",
+    "as_of_Chicago": "2026-10-19T02:03:44.273426-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_003800_450031",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_020344_273426",
       "additional_candidates": 25,
       "original39_with_native_potentials": 34,
-      "complete_potential_pairs": 22,
-      "arithmetic_checks": 565,
+      "complete_potential_pairs": 24,
+      "arithmetic_checks": 572,
       "arithmetic_discrepancies": 0,
       "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
       "inputs_current_during_collection": true
@@ -50,11 +50,19 @@
       "explicit_optimizer_and_SCF_convergence": true,
       "actual_CPU_smoke": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/geometry_driver_full_response_2026-10-18/cpu_water_smoke/result.json"
     },
+    "selected_spin_ensemble": {
+      "policy": "calcs/dft/search_pmdi_1864c2c74267/red2/spin_ensemble_policy.json",
+      "proof": "results/validation/spin_ensemble_integration_2026-10-19/README.md",
+      "triplet_population": 0.32156872984784607,
+      "kinetics_validated": false
+    },
+    "methyl_NDI_adoption": "results/validation/ndi_methyl_adoption_2026-10-19/plus/adoption_receipt.json",
+    "last_candidate_refinement": "results/validation/hexyl_finer_derivatives_2026-10-19/launch.json",
     "source_frozen_refinement": {
-      "plan": "results/validation/ndi_methyl_radical_minimum_2026-10-19/source_plus.json",
-      "launch": "results/validation/ndi_methyl_radical_minimum_2026-10-19/launch.json",
-      "actual_start_verification": "results/validation/ndi_methyl_radical_minimum_2026-10-19/start_verification.json",
-      "rule": "Do not edit the plan-bound numerical producers until both future derivative qualification checks have passed or their workers are verified terminal."
+      "plan": "results/validation/hexyl_finer_derivatives_2026-10-19/plan.json",
+      "launch": "results/validation/hexyl_finer_derivatives_2026-10-19/launch.json",
+      "actual_start_verification": "results/validation/hexyl_finer_derivatives_2026-10-19/start_verification.json",
+      "rule": "Do not edit the plan-bound numerical producers until the pending derivative qualifications pass their source guards or their workers are verified terminal."
     },
     "radical_adoptions": {
       "ndi_methoxyethyl": "results/validation/ndi_radical_adoptions_2026-10-19/ndi_methoxyethyl/adoption_receipt.json",
@@ -62,9 +70,9 @@
       "independent_checks_each": 157
     },
     "global_review": {
-      "path": "results/reviews/2026-10-19/atomic_repair_adoptions_tables/review_status.json",
+      "path": "results/reviews/2026-10-19/publication_final_tables/review_status.json",
       "status": "complete",
-      "arithmetic_checks": 29129,
+      "arithmetic_checks": 30455,
       "arithmetic_discrepancies": 0,
       "inputs_current_during_review": true,
       "changed_inputs": [],
@@ -74,22 +82,20 @@
       "status": "published_checked_pdf",
       "path": "slides/redox_workflow.pdf",
       "publisher": "results/reviews/2026-10-18/slides_projected_publisher/status.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_003800_450031",
-      "pdf_sha256": "1dfb42bf3f2edee37aea713452a864d949fddc156302ea14f797e845a721467c",
-      "pages": 38
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_020344_273426",
+      "pdf_sha256": "7839f191cb3c27956fc12a4028c925a7b72b5b3b61c6e0a6f34826a5448f361a",
+      "pages": 39
     },
-    "software_tests_passed": 395,
-    "software_checks": "results/reviews/2026-10-19/software_checks_atomic_repair.log",
+    "software_tests_passed": 436,
+    "software_checks": "results/reviews/2026-10-19/software_checks_publication_final.log",
     "remaining_work": [
       "Hexyl NDI native minimum/thermochemistry",
-      "CN-PMDI near-spin ensemble admission",
-      "Methyl NDI radical minimum refinement",
       "Solution reorganization and kinetic qualification",
       "Broader experimental benchmark and exact-graft validation"
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792388501.8013086,
+  "updated": 1792393713.1891835,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

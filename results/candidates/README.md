@@ -28,3 +28,10 @@ geometry, energy and native-thermal records live in
 `calcs/uma/<candidate_id>/<state>/`.
 
 The checked slide deck is [slides/redox_workflow.pdf](../../slides/redox_workflow.pdf).
+
+Selected spin equilibria are explicit in the state sheet: the selected-surface
+native correction, effective correction used for G, equilibrium mixing term and
+alternative population are separate fields. Single-surface kinetic validation is
+withheld for mixed-spin states. Integrity must pass for every included component
+pair. The current batch has 24 complete potential pairs out of 25; consult the
+feed timestamp for any later updates.

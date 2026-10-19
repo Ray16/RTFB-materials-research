@@ -47,10 +47,14 @@ def inspect_states(rows=None, root=DFT):
                 rec = load_record(sd, q, m)
                 if rec is None:
                     issues.append("missing_or_invalid_active_sp")
-                G, tq = free_energy(apply_thermal_policy(dict(r, e_smd_eV=0.0), sd))
+                # Ensemble policies bind the actual component energy. A synthetic
+                # zero is suitable only when no active SP exists (already blocked).
+                probe_energy=rec['e_smd_eV'] if rec is not None else 0.0
+                G, tq = free_energy(apply_thermal_policy(dict(r, e_smd_eV=probe_energy), sd))
                 if G is None:
                     issues.append(tq if tq in ("missing_validated_native_thermal", "invalid_thermal_policy",
-                                              "wrong_spin", "stale_spin_decision")
+                                              "wrong_spin", "stale_spin_decision",
+                                              "stale_or_invalid_spin_ensemble", "spin_ensemble_component_unqualified")
                                   else "missing_thermal")
                 elif tq == "imag_modes":
                     issues.append("imaginary_thermal_modes")

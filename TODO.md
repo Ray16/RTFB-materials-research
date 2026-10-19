@@ -6,7 +6,8 @@
   transactional selection verified on CN-PMDI, with degeneracy counted once.
 - [x] Extend integrity to every selected spin component and independently rebuild
   bond graphs. Keep mixed-spin kinetic descriptors withheld; 428 tests pass.
-- [~] Rebuild candidate/global exports and slides after equilibrium selection.
+- [x] Rebuild and check equilibrium/candidate exports and the 39-page slide PDF;
+  436 software tests, 30,455 global checks and 572 candidate checks pass.
 
 
 Use [LATEST_REVIEW.json](results/LATEST_REVIEW.json) and the
@@ -22,15 +23,14 @@ below this checkpoint preserve historical worklists and superseded estimates.
   The full suite now passes 395 tests.
 - [x] Independently review and promote the NDI methoxyethyl and NDI butyl radical
   minima (157 checks each, zero failures), preserving exact original-state archives.
-- [x] Complete corrected potential pairs for 22 of 25 registered new candidates;
-  555 export arithmetic checks pass with zero discrepancies at the 00:15 checkpoint.
+- [x] Complete corrected potential pairs for 24 of 25 registered new candidates;
+  572 export arithmetic checks pass with zero discrepancies in the current snapshot.
 - [x] Finish a stable corrected global property-table review, refresh slides and
   synchronize the result index with verified snapshots.
-- [ ] Resolve the remaining hexyl-NDI native surface, CN-PMDI near-spin ensemble,
-  and methyl-NDI radical minimum. Two source-frozen methyl-NDI searches have verified
-  H100 starts. CN-PMDI's independent equilibrium diagnostic gives a 32.2% triplet
-  population: integrate the ensemble into both primary readers before admission.
-  Preserve failed branches and all superseded bytes.
+- [~] Finish hexyl NDI's native surface under unchanged physical gates. Both prior
+  coarse-Hessian failures are preserved; one qualified finer-step H100 replay is
+  verified running and the second input waits for suitable free capacity. CN-PMDI's
+  equilibrium and ring-methyl NDI's reviewed minimum are now admitted.
 - [ ] Broaden matched experimental anchors across viologen, PMDI/NDI, quinone and
   positive-electrode families. Track solvent/reference/structure identity and
   quantify potential, wave-spacing and conformer uncertainty. Seven potentials
