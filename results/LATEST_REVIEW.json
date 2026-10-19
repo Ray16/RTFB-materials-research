@@ -70,12 +70,25 @@
       "kinetics_validated": false
     },
     "methyl_NDI_adoption": "results/validation/ndi_methyl_adoption_2026-10-19/plus/adoption_receipt.json",
-    "last_candidate_refinement": "results/validation/hexyl_finer_derivatives_2026-10-19/launch.json",
+    "last_candidate_refinement": {
+      "review": "results/validation/hexyl_finer_derivatives_2026-10-19/terminal_review.json",
+      "status": "both_branches_terminal_failed_not_admitted",
+      "running_workers": 0,
+      "primary_pair_pending": true
+    },
+    "experimental_expansion": {
+      "review": "results/reviews/2026-10-19/ptz_benchmark_sources/source_review.json",
+      "source_doi": "10.1021/acs.chemmater.8b04770",
+      "strict_target_potentials": 5,
+      "strict_target_parents": 4,
+      "matching_calculations_pending": true
+    },
     "source_frozen_refinement": {
       "plan": "results/validation/hexyl_finer_derivatives_2026-10-19/plan.json",
       "launch": "results/validation/hexyl_finer_derivatives_2026-10-19/launch.json",
       "actual_start_verification": "results/validation/hexyl_finer_derivatives_2026-10-19/start_verification.json",
-      "rule": "Do not edit the plan-bound numerical producers until the pending derivative qualifications pass their source guards or their workers are verified terminal."
+      "terminal_review": "results/validation/hexyl_finer_derivatives_2026-10-19/terminal_review.json",
+      "rule": "Both workers verified terminal; failed qualification evidence remains frozen and cannot enter production."
     },
     "radical_adoptions": {
       "ndi_methoxyethyl": "results/validation/ndi_radical_adoptions_2026-10-19/ndi_methoxyethyl/adoption_receipt.json",
@@ -83,7 +96,7 @@
       "independent_checks_each": 157
     },
     "global_review": {
-      "path": "results/reviews/2026-10-19/solution_contract_tables/review_status.json",
+      "path": "results/reviews/2026-10-19/ptz_source_tables/review_status.json",
       "status": "complete",
       "arithmetic_checks": 30455,
       "arithmetic_discrepancies": 0,
@@ -92,15 +105,15 @@
       "scientific_accuracy_validated": false
     },
     "slides": {
-      "status": "published_checked_pdf",
+      "status": "checked",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-18/slides_projected_publisher/status.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_024647_582995",
-      "pdf_sha256": "5e1020b60d47c3b43941281514cc3ab7df148ed28839de6017ff2383cdec6860",
-      "pages": 39
+      "publisher": "results/reviews/2026-10-19/ptz_benchmark_sources/slides_check.json",
+      "snapshot": null,
+      "pdf_sha256": "c7dbe28702f12c2bcf9e931c66f34c4b381b7319efc2cffec65f21e3d3553b18",
+      "pages": 40
     },
-    "software_tests_passed": 450,
-    "software_checks": "results/reviews/2026-10-19/software_checks_solution_final.log",
+    "software_tests_passed": 456,
+    "software_checks": "results/reviews/2026-10-19/software_checks_ptz_sources.log",
     "remaining_work": [
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
@@ -108,7 +121,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792396279.6475534,
+  "updated": 1792397406.6672432,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",
