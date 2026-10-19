@@ -18,6 +18,17 @@ blank. Capped-model values are not transferred. The declared charge ladder is a
 proposal to test, not a spin or thermodynamic result for the vinyl target.
 No shared manifest, configuration, conformer or canonical calculation is changed.
 
+The [isolated initial pilot](pilot/preparation.json) contains three explicit
+vinyl targets and nine declared state/seed sets. Its generated conformers pass
+81 geometry/hydrogen-topology seed checks. These are starting inputs; neither
+ML relaxation nor solution quantum properties are implied by that preparation.
+
+The [bounded solution pilot](pilot/README.md) has now started. Six actual DFT
+workers were independently verified on reserved H100 GPUs; nine charge-state
+calculations are queued. Results remain unpublished until state, spin and
+complete-couple checks admit them. See the timestamped launch and observation
+records for the recorded startup state.
+
 The initial modeling and route-review controls are the vinyl counterparts of
 conventional NDI ethyl, PMDI ethyl and ethyl viologen. They provide established
 core families against which more exploratory cata-imides and substituted viologens
