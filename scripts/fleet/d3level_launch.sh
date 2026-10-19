@@ -1,11 +1,6 @@
-#!/bin/bash
-# d3level_launch.sh <gpu>... — start one detached D3TaLES-level worker per GPU on THIS node.
-REPO=/nfs/lambda_stor_01/homes/rzhu/0_redox
-cd "$REPO" || exit 1
-H=$(hostname); mkdir -p logs/fleet/d3level
-for g in "$@"; do
-  setsid nohup bash scripts/fleet/d3level_fleet_worker.sh "$g" \
-      > "logs/fleet/d3level/worker_${H}_gpu${g}.log" 2>&1 < /dev/null &
-  sleep 4
-done
-echo "launched $# d3level workers on $H (gpus: $*)"
+#!/usr/bin/env bash
+# Retired campaign launcher; original source is kept as non-executable history.
+printf '%s\n' 'This historical campaign entry point is retired: it lacks the current resource/ownership contract.' >&2
+printf '%s\n' 'Use python -m redox.workflows.gpu for a preflighted single command, or the candidate workflow.' >&2
+printf '%s\n' 'See scripts/README.md and scripts/legacy/fleet/ for migration context.' >&2
+exit 2

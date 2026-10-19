@@ -33,6 +33,9 @@ Trust levels:
 # from stability_validation. These constants are used ONLY if that benchmark file is absent,
 # so no reported uncertainty is a hand-set magic number.
 SIGMA_REDOX_V = dict(cation=0.44, anion=0.53, multi=0.80)   # fallback; else OROP-derived
+# A single residual is a useful observation, not a calibrated population error.
+# Apply the same minimum to pooled, family and charge-class empirical RMSEs.
+MIN_REDOX_CALIBRATION_POINTS = 2
 SIGMA_LAMBDA_EV = 0.10        # fallback; else RMSE(our lambda - D3TaLES) on the 0-2 eV subset
 SIGMA_DISP_EV = 0.17          # fallback; else RMSE of stability_validation residuals
 SIGMA_CAPACITY = 0.0          # exact (bookkeeping, no model error)
@@ -68,9 +71,9 @@ KCAL_PER_MOL_EV = 0.0433641   # eV per kcal/mol
 SPIN_GAP_LOW_EV = 5.0 * KCAL_PER_MOL_EV
 
 TRUST = dict(
-    redox_potential="validated",     # ranking within class; absolute carries the sigma above
-    reorganization="validated",
-    disproportionation="validated",
+    redox_potential="calibration-dependent",
+    reorganization="gas-diagnostic",  # solution kinetics needs its separate physical gate
+    disproportionation="validation-dependent",
     capacity="exact",
     reorganization_outer="proxy",    # continuum lambda_o: ranking only (sigma above)
     solubility="proxy",
@@ -79,19 +82,22 @@ TRUST = dict(
 )
 
 
-def sigma_redox(q_ox, q_red, family=None, family_sigma=None, pooled_sigma=None):
+def sigma_redox(q_ox, q_red, family=None, family_sigma=None, pooled_sigma=None,
+                charge_sigma=None):
     """Redox-potential sigma (V) for a couple, in priority order:
       1. the per-FAMILY RMSE measured from our validation residuals (family_sigma), if present;
       2. the POOLED validation RMSE (pooled_sigma) — our overall demonstrated accuracy — for a
          family we have not directly validated (e.g. imide, until an imide anchor is added);
-      3. only if we have NO validation at all, the conservative OROP by-charge-class prior.
+      3. with insufficient matched validation, the declared charge-class prior
+         (or a sufficiently populated current charge-class benchmark).
     family_sigma / pooled_sigma are computed at run time (redox.screening.scorecard.derive_family_sigma),
     so nothing here is hard-coded and the uncertainty tightens as the validation set grows."""
     if family_sigma and family in family_sigma:
         return family_sigma[family]
     if pooled_sigma is not None:
         return pooled_sigma
+    priors = dict(SIGMA_REDOX_V, **(charge_sigma or {}))
     if abs(int(q_ox)) >= 2 or abs(int(q_red)) >= 2:
-        return SIGMA_REDOX_V["multi"]
+        return priors["multi"]
     # a couple that produces/consumes an anion (min charge < 0) is a reduction couple
-    return SIGMA_REDOX_V["anion"] if min(int(q_ox), int(q_red)) < 0 else SIGMA_REDOX_V["cation"]
+    return priors["anion"] if min(int(q_ox), int(q_red)) < 0 else priors["cation"]

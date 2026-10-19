@@ -1,0 +1,89 @@
+{
+  "schema": 2,
+  "current": {
+    "as_of_Chicago": "2026-10-19T00:21:03.626186-05:00",
+    "scientific_validation_complete": false,
+    "candidate_results": {
+      "guide": "results/candidates/README.md",
+      "workbook": "results/candidates/latest.xlsx",
+      "additional_csv": "results/candidates/latest.csv",
+      "matched_comparisons": "results/candidates/comparisons.csv",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_002103_626186",
+      "additional_candidates": 25,
+      "complete_potential_pairs": 22,
+      "arithmetic_checks": 555,
+      "arithmetic_discrepancies": 0,
+      "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
+      "inputs_current_during_collection": true
+    },
+    "thermal_projection_review": {
+      "guide": "results/validation/rigid_mode_thermal_2026-10-18/README.md",
+      "status": "corrected_protocol_integrated_and_independently_admitted",
+      "qualified_cases": 232,
+      "independent_checks": 6961,
+      "independent_failed_checks": 0,
+      "producer_and_both_primary_readers_integrated": true,
+      "soft_internal_modes_retained": true
+    },
+    "native_Fc_absolute_V": 4.379195901594358,
+    "matched_parent_validation": {
+      "path": "results/reviews/2026-10-18/matched_parent_projected_checked/summary.json",
+      "scope": "Four selected experimental parent molecules; not a global table review or exact-graft validation",
+      "potentials": 7,
+      "molecules": 4,
+      "studies": 3,
+      "stats": {
+        "n": 7,
+        "MAE": 0.14707142857142858,
+        "RMSE": 0.17140063760508178,
+        "bias": 0.05935714285714285,
+        "SD": 0.1736780340855156
+      },
+      "independent_checks": 171,
+      "exact_graft_accuracy_validated": false
+    },
+    "geometry_driver": {
+      "path": "results/validation/geometry_driver_full_response_2026-10-18/status.json",
+      "status": "activated_and_implementation_verified",
+      "full_grid_response": true,
+      "explicit_optimizer_and_SCF_convergence": true,
+      "actual_CPU_smoke": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/geometry_driver_full_response_2026-10-18/cpu_water_smoke/result.json"
+    },
+    "global_review": {
+      "path": "results/reviews/2026-10-19/corrected_geometry_driver_tables/review_status.json",
+      "status": "complete",
+      "arithmetic_checks": 28967,
+      "arithmetic_discrepancies": 0,
+      "inputs_current_during_review": true,
+      "changed_inputs": [],
+      "scientific_accuracy_validated": false
+    },
+    "slides": {
+      "status": "published_checked_pdf",
+      "path": "slides/redox_workflow.pdf",
+      "publisher": "results/reviews/2026-10-18/slides_projected_publisher/status.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_002103_626186",
+      "pdf_sha256": "e5c8a044f3521b811b34ce6d2f714997a81f00ee2937a738bf4ee9295c93e588",
+      "pages": 38
+    },
+    "software_tests_passed": 391,
+    "software_checks": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/software_checks_geometry_driver_final.log",
+    "remaining_work": [
+      "Hexyl NDI native minimum/thermochemistry",
+      "CN-PMDI near-spin ensemble admission",
+      "Methyl NDI radical minimum refinement",
+      "Independent review and promotion of two private NDI radical minima",
+      "Solution reorganization and kinetic qualification",
+      "Broader experimental benchmark and exact-graft validation"
+    ]
+  },
+  "scientific_validation_complete": false,
+  "updated": 1792387546.0875971,
+  "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
+  "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
+  "discovery_source_catalog": "config/discovery_sources.json",
+  "candidate_search": "results/discovery/systematic_families_2026-10-18/summary.json",
+  "candidate_results_entry": "results/candidates/README.md",
+  "thermal_publication_review": "config/thermal_publication_review.json",
+  "note": "Current scoped evidence is separate from broad scientific validation. Historical unprojected references and counts are preserved in historical_metadata; no parent measurement is assigned to an exact graft."
+}

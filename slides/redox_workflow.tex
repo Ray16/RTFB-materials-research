@@ -35,7 +35,7 @@
     \bfseries\insertframetitle%
   \end{beamercolorbox}%
 }
-\setbeamertemplate{footline}{\hfill\scriptsize\textcolor{ink!60}{\insertframenumber}\hspace{2ex}\vspace{1ex}}
+\setbeamertemplate{footline}{\hspace{2ex}\scriptsize\textcolor{bad}{Current values: verified result frames. Earlier numeric snapshots are historical.}\hfill\textcolor{ink!60}{\insertframenumber}\hspace{2ex}\vspace{1ex}}
 
 \newcommand{\good}[1]{\textcolor{good}{\textbf{#1}}}
 \newcommand{\bad}[1]{\textcolor{bad}{\textbf{#1}}}
@@ -52,6 +52,24 @@
 \begin{frame}[plain]
   \titlepage
   \begin{center}\small\textcolor{ink!70}{Redox potential $\cdot$ Stability $\cdot$ Kinetics $\cdot$ Capacity}\end{center}
+\end{frame}
+
+\begin{frame}{Thermal corrections recomputed and independently checked}
+  \begin{block}{Current native thermochemistry}
+    Rigid translation and rotation are excluded geometrically; genuine soft internal
+    modes are retained. The thermodynamic kernel runs in an isolated CPU process.
+    The matched Fc reference is now 4.379196 V.
+  \end{block}
+  \begin{itemize}
+    \item 232 implementation cases pass 6,961 independent checks; both partition
+      readers agree for 236 current records (3,787 checks, zero discrepancies).
+    \item The software suite passes 391 tests. Seven matched parent potentials
+      across four molecules have RMSE 0.171 V; exact-graft accuracy remains unvalidated.
+    \item Generated verified-result frames use corrected values and field-specific QC.
+      Earlier numeric snapshots and comparison figures retain their historical scope.
+  \end{itemize}
+  \vfill\scriptsize Corrected global tables pass 28,967 arithmetic checks with stable
+  inputs and zero discrepancies. Kinetics and remaining physical checks are unresolved.
 \end{frame}
 
 % ---------------------------------------------------------------
@@ -77,8 +95,8 @@
     \end{column}
     \begin{column}{0.42\textwidth}
       \begin{block}{Guiding principle}
-        Energy \emph{differences} with error cancellation compute \good{reliably};
-        \emph{absolute} charged-species solvation does \bad{not}.
+        Test energy differences against matched references, charge-state controls,
+        and experiment. Error cancellation must be demonstrated.
         \\[1ex]
         Build objectives on the cancellation-friendly quantities; treat the rest as
         labelled proxies or filters.
@@ -98,7 +116,7 @@
     \node[box] (a) {RDKit\\conformers};
     \node[box,right=of a] (b) {UMA\\gas pre-opt\\(charge, spin)};
     \node[box,right=of b] (c) {DFT+SMD\\geom.\ opt\\(MeCN)};
-    \node[box,right=of c] (d) {GFN2-xTB\\RRHO\\thermal};
+    \node[box,right=of c] (d) {Solution DFT\\Hessian\\qRRHO + spin};
     \node[box,right=of d,fill=teal!15] (e) {$G = E_\text{SMD}$\\$+\,G_\text{therm}$};
     \draw[arr] (a)--(b); \draw[arr] (b)--(c); \draw[arr] (c)--(d); \draw[arr] (d)--(e);
   \end{tikzpicture}
@@ -109,18 +127,19 @@
       \footnotesize
       \textbf{Level of theory}
       \begin{itemize}\footnotesize
-        \item opt: r$^2$SCAN/def2-SVP(D) + SMD
+        \item opt: r$^2$SCAN-D4/def2-SVP(D) + SMD
         \item energy: $\omega$B97M-V/def2-TZVPD (all charges)
         \item referenced to level-matched Fc/Fc$^+$
       \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
       \footnotesize
-      \textbf{Two hard-won fixes}
+      \textbf{Checks before export}
       \begin{itemize}\footnotesize
-        \item gpu4pyscf open-shell Hessian is \bad{broken}
-              $\rightarrow$ thermal from \hi{GFN2-xTB} RRHO
-        \item cross-points gas-only (\texttt{do\_smd=False}), $\sim$2$\times$ cheaper
+        \item Full grid response and matching CPHF grids;
+              finite-gradient checks for RKS, UKS and Fc
+        \item Current geometry/spin; matched native Fc thermal definition;
+              incomplete properties withheld
       \end{itemize}
     \end{column}
   \end{columns}
@@ -136,14 +155,14 @@
     \textbf{axis} & \textbf{method} & \textbf{validation / trust} \\
     \midrule
     redox potential & DFT+SMD $\Delta G$; $\omega$B97M-V/def2-TZVPD\,//\,r$^2$SCAN/def2-SVP(D);
-                      live level-matched Fc & OROP: MAE 0.52 V; within-class $\rho=0.78/0.79$ \\
-    thermal $G_\text{therm}$ & GFN2-xTB RRHO (298 K) & open-shell safe \\
+                      live level-matched Fc & Matched native Fc; 7 parent events, observed RMSE 0.171 V \\
+    thermal $G_\text{therm}$ & Solution DFT Hessian, projected internal-mode qRRHO + explicit spin (298 K) & Independent derivative and minimum checks \\
     stability (disprop.) & $\Delta G_\text{disp}=F(E_\text{hi}-E_\text{lo})$ from state $G$'s
-                      & 10 sourced spacings: $\rho$ 0.80, over-est.\ +23 kJ/mol \\
+                      & Same thermal definition across all three states \\
     stability (dimer.) & pimer cluster DFT+SMD $\Delta G$ & \bad{flagged} (+2 desolvation) \\
-    reorg.\ energy $\lambda$ & $\lambda_O+\lambda_R$ (Nelsen); molecular-cavity PCM $\lambda_o$ & D3TaLES: median $|\Delta|=0.09$ eV ($n=322$) \\
+    reorg.\ energy $\lambda$ & Gas Nelsen diagnostic; native SMD frozen-slow directional relaxation & Minimum, conformer and experimental controls required \\
     integrity gate & bond-graph change + solvated EA & necessary, not sufficient for reversibility \\
-    capacity & $n\!\cdot\!F/\text{MW}$ (accessible $n$) & \good{exact} \\
+    capacity & $nF/(3.6\,\text{MW})$ in mAh/g (active species) & Stoichiometry; accessible $n$ requires validated potentials \\
     solubility & $\Delta G_\text{solv}=E_\text{SMD}-E_\text{gas}$ (neutral) & proxy (relative) \\
     synth.\ access. & RDKit SA\_Score & heuristic proxy \\
     \bottomrule
@@ -155,7 +174,24 @@
 \end{frame}
 
 % ---------------------------------------------------------------
-\begin{frame}{Redox potential: benchmarked vs.\ experiment (OROP)}
+\InputIfFileExists{generated/verified_candidates.tex}{}{}
+\input{generated/ptz_solution_diagnostic_2026-10-18.tex}
+\input{generated/matched_parent_benchmark_2026-10-18.tex}
+\input{generated/diaryl_viologen_preparation_2026-10-18.tex}
+
+\appendix
+\setbeamertemplate{footline}{\hspace{2ex}\scriptsize\textcolor{ink!70}{Historical snapshot: superseded reference/thermals; current validation does not transfer}\hfill\textcolor{ink!60}{\insertframenumber}\hspace{2ex}\vspace{1ex}}
+\begin{frame}{Earlier exploratory results: historical context}
+  \begin{block}{Superseded reference and thermal treatment}
+    The following figures and benchmark summaries retain the earlier calculation
+    snapshot. They are not the updated candidate results or the current validation verdict.
+  \end{block}
+  \vspace{1ex}
+  Current results use repaired Fc geometries, uniform solution DFT thermochemistry,
+  addressed caches and field-specific validation gates.
+\end{frame}
+
+\begin{frame}{Historical redox benchmark (OROP)}
   \begin{columns}[T]
     \begin{column}{0.5\textwidth}
       \textbf{Production-protocol OROP benchmark} ($n=169$):
@@ -492,13 +528,14 @@
 \begin{frame}[plain]
   \vfill
   \begin{center}
-    {\Large\textbf{\textcolor{ink}{Summary}}}\\[2ex]
+    {\Large\textbf{\textcolor{ink}{Historical summary}}}\\[2ex]
     \begin{minipage}{0.85\textwidth}\centering
     We can \good{rank} redox candidates and screen \good{stability}, \good{kinetics}, and
     \good{state integrity} on a physics-based footing --- with each axis \hi{honestly labelled}
     by how far we can trust it.\\[2ex]
     The $\sigma$-aware scorecard \& Pareto engine are built and applied.
     Next: resolve absolute E$^\circ$ and close the incomplete kinetics rows before scaling.
+    \\[1ex]\scriptsize Historical snapshot; current candidate and property validation remains separate.
     \end{minipage}
   \end{center}
   \vfill

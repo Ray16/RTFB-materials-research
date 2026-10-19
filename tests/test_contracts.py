@@ -37,7 +37,8 @@ def _write_record(sd: Path, q, m, e_smd, e_gas=None, converged=True):
     rp.parent.mkdir(parents=True, exist_ok=True)
     rp.write_text(json.dumps(dict(e_smd_eV=e_smd, e_gas_eV=e_gas if e_gas is not None else e_smd,
                                   converged_smd=converged, converged_gas=converged,
-                                  protocol_hash=rp.stem)))
+                                  protocol_hash=rp.stem, protocol=protocol.ACTIVE_SP,
+                                  geom_sha1=protocol.geom_sha1(sd / "opt.xyz"), charge=q, mult=m)))
     return rp
 
 
@@ -93,7 +94,7 @@ def test_reorg_cache_rejects_other_level():
     from redox.properties.reorg import _cache_ok, CACHE_SCHEMA
     d = dict(e_gas_eV=-1.0, cache_schema=CACHE_SCHEMA, gas_homo_eV=-5, anion_unbound=False,
              charge=0, mult=1, geom_sha1="abc", sp_xc="wb97m-v", sp_basis="def2-tzvpd",
-             sp_nlc="vv10", sp_disp=None, converged_gas=True)
+             sp_nlc="vv10", sp_disp=None, converged_gas=True, protocol=protocol.ACTIVE_SP)
     assert _cache_ok(d, 0, 1, "abc")
     assert not _cache_ok(dict(d, sp_basis="def2-tzvp"), 0, 1, "abc")      # basis changed
     assert not _cache_ok(dict(d, sp_xc="b3lyp"), 0, 1, "abc")             # functional changed
@@ -111,7 +112,7 @@ def test_free_energy_never_substitutes_zero_thermal():
 def test_disproportionation_equals_wave_spacing(monkeypatch):
     # G ladder: neu (0) -> red1 (-1) -> red2 (-2); E_k = -(G_R - G_O)
     G = {"neu": -10.0, "red1": -13.2, "red2": -15.9}
-    monkeypatch.setattr(stability, "G", lambda gid, s: G[s])
+    monkeypatch.setattr(stability, "read_result", lambda gid,s,**kw:dict(e_smd_eV=G[s],g_thermal_eV=0,n_imag=0))
     monkeypatch.setattr(stability, "_states_by_charge",
                         lambda gid: [("neu", 0), ("red1", -1), ("red2", -2)])
     (row,) = stability.disproportionation("x")
@@ -243,7 +244,14 @@ def test_sigma_uses_only_grounded_points_and_never_the_reference():
     assert [(p["id"], p["event"]) for p in pts] == [("tempo_parent", "ox->rad")]   # once
     assert pts[0]["res"] == pytest.approx(0.200)   # 0.449 - 0.249 (Gerken & Stahl 2015)
     _, pooled = scorecard.derive_family_sigma(rows)
-    assert pooled == pytest.approx(0.200)
+    assert pooled is None  # one residual cannot replace the declared class prior
+
+
+def test_pooled_error_requires_multiple_grounded_events(monkeypatch):
+    monkeypatch.setattr(scorecard, "experimental_e_points", lambda rows: [
+        dict(family="quinone", res=.2), dict(family="quinone", res=.4)])
+    family, pooled = scorecard.derive_family_sigma([])
+    assert family["quinone"] == pooled == pytest.approx(math.sqrt(.1), abs=.0005)
 
 
 def test_reorg_cache_requires_explicit_convergence():
@@ -252,7 +260,7 @@ def test_reorg_cache_requires_explicit_convergence():
     from redox.core.protocol import ACTIVE_SP
     d = dict(e_gas_eV=-1.0, sp_xc=ACTIVE_SP["xc"], sp_basis=ACTIVE_SP["basis"],
              sp_nlc=ACTIVE_SP["nlc"], sp_disp=ACTIVE_SP["disp"], cache_schema=reorg.CACHE_SCHEMA,
-             charge=0, mult=1, geom_sha1="g", **{k: None for k in reorg.REQUIRED_DIAG})
+             charge=0, mult=1, geom_sha1="g", protocol=ACTIVE_SP, **{k: None for k in reorg.REQUIRED_DIAG})
     assert not reorg._cache_ok(dict(d), 0, 1, "g")            # flag missing
     assert reorg._cache_ok(dict(d, converged_gas=True), 0, 1, "g")
 
@@ -268,16 +276,19 @@ def test_adopted_record_needs_density_fit_provenance():
     from redox.qm.sp import _adoptable
     res = dict(optimized=True, sp_xc=P["xc"], sp_basis=P["basis"], sp_nlc=P["nlc"],
                sp_disp=P["disp"], solvent=P["solvent"], converged_smd=True, converged_gas=True,
-               e_smd_eV=-1.0, e_gas_eV=-1.0, mult=2)
-    assert not _adoptable(res)                                         # no provenance
+               e_smd_eV=-1.0, e_gas_eV=-1.0, mult=2, charge=0,
+               energy_protocol=P, energy_geom_sha1="geometry")
+    identity = dict(charge=0, mult=2, geom_hash="geometry")
+    assert not _adoptable(res, **identity)                            # no solver provenance
     assert not _adoptable(dict(res, density_fit=True, conv_tol=P["conv_tol"],
-                               scf_guesses=["minao"]))                  # open shell, no sweep
+                               scf_guesses=["minao"]), **identity)     # open shell, no sweep
     assert _adoptable(dict(res, density_fit=True, conv_tol=P["conv_tol"],
-                           scf_guesses=["minao", "atom", "huckel"]))
+                           scf_guesses=["minao", "atom", "huckel"]), **identity)
 
 
-def test_lowest_scf_keeps_lowest_converged_guess():
+def test_lowest_scf_keeps_lowest_converged_guess(monkeypatch):
     from redox.qm import dft
+    monkeypatch.setattr(dft, "_free_gpu_pool", lambda: None)
 
     class FakeMF:
         E = {"minao": -1.0, "atom": -1.5, "huckel": -9.0}

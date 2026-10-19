@@ -32,7 +32,7 @@ woven in, not deferred (§V). Status: **P0 mostly done**, env finishing.
 
 ## P4 — Descriptors & redox potentials
 - [ ] `src/redox/properties/potentials.py`: assemble `G_solv`, E° per 1e event, reference to Fc/Fc⁺.
-- [ ] `src/redox/properties/descriptors.py`: λ (4-point Marcus), RMSD + structural change, HOMO/LUMO,
+- [ ] (descriptors module archived 2026-10-06; λ + couple RMSD live in `redox.properties.reorg`) λ (4-point Marcus), RMSD + structural change, HOMO/LUMO,
       IP/EA, spin-density localization, partial charges, connectivity/stability check.
 - [ ] Aggregate → `results/` tables + electronic-property distribution plots.
 

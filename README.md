@@ -1,10 +1,60 @@
-# Redox-active Merrifield monomers
+# Redox flow battery property pipeline
 
 Computational screening of redox-active functional groups grafted onto the Cl site of the
 Merrifield-resin (chloromethyl-polystyrene) monomer, targeting **stability** and **redox
 potential** in a nonaqueous electrolyte.
 
+**Current correctness review:** rigid-motion contamination in native thermochemistry
+has been corrected and independently checked. Current candidate exports use the
+corrected thermal partition and matched Fc reference, with field-specific QC.
+Earlier unprojected numerical tables are historical; broader scientific validation
+remains incomplete. See the [correction evidence and status](results/validation/rigid_mode_thermal_2026-10-18/README.md).
+
 Operating instructions for Claude Code: [`CLAUDE.md`](./CLAUDE.md).
+
+## Start here
+
+This repository contains reusable property calculations, candidate definitions, and
+saved scientific evidence. Merrifield-grafted redox molecules are the current
+screening application.
+
+| Task | Start with |
+| --- | --- |
+| Navigate the code and outputs | [Repository map](docs/REPO_MAP.md) |
+| Develop or debug the pipeline | [Development guide](docs/DEVELOPMENT.md) |
+| Find current guidance and historical reports | [Documentation index](docs/README.md) |
+| Understand each property and its QC | [Design axes](docs/DESIGN_AXES.md) |
+| Review defects and refactoring decisions | [Code review](docs/CODE_REVIEW_2026-10-18.md) |
+| Inspect the scientific continuation | [Correctness and expansion](docs/SCIENTIFIC_PROGRESS_2026-10-18.md) |
+| Open the latest new-candidate results | [Candidate results](results/candidates/README.md) — workbook, CSV and matched comparisons |
+| Inspect the completed full-property arithmetic review | [Reviewed property tables](results/validated/README.md) |
+| Explore redox families and complementary datasets | [Candidate exploration](docs/CANDIDATE_EXPLORATION.md) |
+| Choose an operational entry point | [Script guide](scripts/README.md) |
+
+Agents should read [AGENTS.md](AGENTS.md) before changing or running the pipeline.
+For checked tables, follow the snapshot in [LATEST_REVIEW.json](results/LATEST_REVIEW.json).
+Root-level CSV exports may predate the current protocol. Individual module CLIs
+still use those root paths by default; the isolated review workflow produces a
+consistent export and records whether its inputs stayed unchanged.
+For a first inspection, these commands read existing records:
+
+```bash
+PYTHONPATH=src python -m pytest -q
+PYTHONPATH=src python -m redox --help
+PYTHONPATH=src python -m redox status
+PYTHONPATH=src python -m redox energy-audit
+```
+
+To rebuild tables in a fresh directory and run the independent arithmetic audit:
+
+```bash
+PYTHONPATH=src python -m redox review --out results/reviews/my_review
+```
+
+This writes an isolated review with stage logs and `review_status.json`. It performs
+no quantum calculations and does not promote its tables to published results.
+After an editable install, `redox --help` provides the same commands. Existing
+`python -m redox.SUBPACKAGE.MODULE` entry points continue to work.
 
 ## System
 
@@ -42,15 +92,16 @@ optimizer.
 
 ## Setup
 
-`setup_env.sh` creates the `redox` env, installs pinned deps, and verifies. It
+`setup_env.sh` creates the `redox` env, pins the validated QM libraries, and verifies. It
 auto-detects GPU vs CPU; override with `CUDA_TAG`.
 
-**GPU machine** (auto-detected → `cu124`):
+**GPU machine** (auto-detected → `cu128`, requires a compatible driver):
 ```bash
 ./setup_env.sh
 ```
-If your driver's CUDA version (`nvidia-smi`, top-right) is **below 12.4**, pick the
-matching PyTorch wheel tag instead, e.g. `CUDA_TAG=cu118 ./setup_env.sh`.
+Check the driver's supported CUDA version with `nvidia-smi` before installation.
+`CUDA_TAG` must identify a compatible PyTorch 2.8 wheel. The recorded working
+environment and native thermal version requirements are in the development guide.
 
 **CPU-only machine** (auto-detected when no `nvidia-smi`, or force it):
 ```bash
@@ -81,18 +132,29 @@ src/redox/         the `redox` package: core/ (paths, energy protocol), build/ (
                    qm/ (UMA, DFT+SMD, single points), properties/ (E°, integrity, stability,
                    λ), screening/ (scorecard, Pareto), validation/ (benchmarks, D3TaLES)
 library/           generated decorated monomers (XYZ) + manifest
-calcs/uma/         UMA pre-optimization outputs           (git-ignored, bulk)
-calcs/dft/         DFT + SMD optimization + energy outputs (git-ignored, bulk)
+calcs/uma/         UMA pre-optimization evidence
+calcs/dft/         DFT + SMD geometry, addressed energies and thermal evidence
 results/           property tables (CSV) + figures/{candidates,validation,reorg,pipeline}/
 scripts/           entry points: pipeline/ (production chain), analysis/ (candidate
                    sensitivity), validation/{orop,solvation,reorg_d3tales,reorg_literature}/,
                    mining/ (D3TaLES), fleet/, polaris/, plotting/{candidates,validation,reorg,
                    pipeline}/ (mirrors results/figures/, one shared plot_style)
 tests/             data-contract tests (pytest)
-archive/           obsolete scripts/modules/outputs kept for provenance
+archive/           historical location; empty in the reviewed working tree
 ```
 
 ## Pipeline
+
+New motifs can be added to `config/custom_candidates.py` and run with
+`scripts/pipeline/run_motifs.py` (plan by default; `--execute --gpu INDEX` runs each compute
+stage through the reservation gate). Input validation, a new-motif embedding test, a cached
+integration run, and audited table/workbook exports are documented in
+[`docs/VALIDATION_REVIEW_2026-10-10.md`](./docs/VALIDATION_REVIEW_2026-10-10.md).
+The reviewed snapshot is `results/review_2026-10-10_final/`; remaining physical QC flags
+and incomplete states are explicit. New candidate proposals live under `results/discovery/`.
+The latest continuation is identified by `results/LATEST_REVIEW.json`; physical repairs,
+live jobs and new-motif pilots are tracked in
+[`docs/PARALLEL_PROGRESS_2026-10-10.md`](./docs/PARALLEL_PROGRESS_2026-10-10.md).
 
 1. `src/redox/build/`      — decorate the site with redox groups → `library/`
 2. `src/redox/qm/uma.py`    — UMA charge/spin pre-opt of every state → `calcs/uma/`
@@ -105,8 +167,10 @@ archive/           obsolete scripts/modules/outputs kept for provenance
 6. `src/redox/screening/` — `scorecard` → `pareto`: per-pool scorecard (contiguous path from the resting
    state, INCOMPLETE propagation) and the σ-aware Pareto shortlist
 
-Everything after step 3 is regenerated, fail-fast and test-first, by
-`scripts/pipeline/finalize_after_dft.sh`. What each axis means and how accurate it is:
+After calculations and QC, derived tables can be rebuilt in isolation with
+`redox.workflows.tables`. `scripts/pipeline/finalize_after_dft.sh` is the explicit
+publication chain: it consumes saved cross points and writes canonical results
+and figures. It no longer starts quantum calculations. What each axis means and how accurate it is:
 `docs/DESIGN_AXES.md`.
 
 Reorganization energies are cross-checked against D3TaLES by reproducing **their exact level of

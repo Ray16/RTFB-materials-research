@@ -36,9 +36,16 @@ def decorate(scaffold_smi: str, frag_smi: str) -> Chem.Mol:
     frag = Chem.MolFromSmiles(frag_smi)
     if scaffold is None or frag is None:
         raise ValueError(f"bad SMILES: {scaffold_smi!r} / {frag_smi!r}")
+    for name, part in (("scaffold", scaffold), ("fragment", frag)):
+        dummies = [a for a in part.GetAtoms() if a.GetAtomicNum() == 0]
+        if (len(dummies) != 1 or dummies[0].GetAtomMapNum() != 1
+                or dummies[0].GetDegree() != 1 or len(Chem.GetMolFrags(part)) != 1):
+            raise ValueError(f"{name} must be connected and have exactly one terminal [*:1]")
     combined = Chem.CombineMols(scaffold, frag)
     mol = Chem.molzip(combined)          # joins the two [*:1] dummies into a bond
     Chem.SanitizeMol(mol)
+    if any(a.GetAtomicNum() == 0 for a in mol.GetAtoms()) or len(Chem.GetMolFrags(mol)) != 1:
+        raise ValueError("grafting did not produce one connected, dummy-free molecule")
     return mol
 
 

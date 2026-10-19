@@ -1,16 +1,19 @@
 """The 'free' scorecard axes — computed with no new DFT, to complete the candidate picture.
 
-  - CAPACITY: n accessible 1e- redox events, molecular weight, and specific capacity
-      C_spec = n * F / MW  [mAh/g]   (F = N_A*e = 96485.33212 C/mol; 1 mAh = 3.6 C)
-    Exact bookkeeping (n from the resolved redox couples; MW from the formula).
+  - NOMINAL CAPACITY: n declared adjacent-charge 1e- events and molecular weight.
+      C_spec = n * F / (3.6 * MW) [mAh/g] (F = N_A*e; 1 mAh = 3.6 C).
+    Exact arithmetic; potential-window, integrity, kinetics and device utilization
+    are assessed separately. Counterions are excluded from this active-species mass.
   - SYNTHETIC ACCESSIBILITY: RDKit SA_Score (1 = easy ... 10 = hard). A cheap heuristic PROXY
-    for synthesizability/cost, not a cost model. The scorer is deterministic, so correctness is
-    all in the INPUT: `_sa_prep` sanitizes, rejects dummy-atom fragments, and neutralizes where
+    for synthesizability/cost, not a cost model. The deterministic input checks ensure
+    the heuristic is applied to the intended graph: `_sa_prep` sanitizes, rejects dummy-atom fragments, and neutralizes where
     chemically valid; inherently-charged aziniums (no neutral form) are scored as-is and flagged
     in the `sa_species` column.
-  - SOLUBILITY PROXY: implicit solvation free energy dG_solv = E_SMD - E_gas of the NEUTRAL
-    state (the usual solubility-limiting form). More negative = better solvated. RELATIVE
-    within a family only — absolute log S needs the solid/lattice term (not computed).
+  - SOLVATION DESCRIPTOR: legacy dG_solv field = E_SMD - E_gas of a charge-zero
+    state, with both electronic energies at the solution geometry. It has no phase
+    thermal, lattice, counterion, concentration or polymer contribution. A charge-zero
+    cycled viologen is not its resting dication salt. Gas-boundness, spin selection and
+    geometry evidence require field-specific QC; no actual solubility is validated.
 
 Each axis is labelled by trust level so the Pareto scorecard treats it correctly
 (capacity = trusted objective; SA + solubility = proxy filters).
@@ -21,7 +24,7 @@ from __future__ import annotations
 import csv
 import json
 
-from redox.core.common import DFT, RESULTS, ROOT, group_ids
+from redox.core.common import DFT, RESULTS, ROOT, group_ids, read_manifest
 
 from scipy.constants import N_A as _NA, e as _E
 F_C_PER_MOL = _NA * _E          # Faraday constant, exact in the 2019 SI (96485.33212 C/mol)
@@ -100,15 +103,14 @@ def _states(gid):
 
 
 def _n_events(states):
-    """Number of adjacent-charge 1e- couples (accessible electrons)."""
+    """Number of declared adjacent-charge couples; accessibility is assessed separately."""
     qs = sorted({q for _, q, _ in states})
     return sum(1 for a, b in zip(qs, qs[1:]) if b - a == 1)
 
 
 def _dG_solv_neutral(states):
-    """dG_solv of the neutral (charge 0) state; fall back to least-|charge| state."""
-    cand = [r for s, q, r in states if q == 0] or \
-           [r for s, q, r in sorted(states, key=lambda x: abs(x[1]))]
+    """Solvation of an actual charge-zero state; absent when no neutral was calculated."""
+    cand = [r for s, q, r in states if q == 0]
     for r in cand:
         v = r.get("dG_solv_eV")
         if isinstance(v, (int, float)):
@@ -122,14 +124,15 @@ def main():
     sascorer = _sascorer()
     smi = _manifest_smiles()
 
-    gids = group_ids()
+    declared = {}
+    for row in read_manifest():
+        declared.setdefault(row["id"], []).append((row["state"], int(row["charge"]), {}))
+    gids = sorted(smi)
     rows = []
     for gid in gids:
         if gid in SKIP:
             continue
         states = _states(gid)
-        if not states:
-            continue
         s = smi.get(gid)
         mol = Chem.MolFromSmiles(s) if s else None
         if mol is None or "." in (s or ""):
@@ -139,7 +142,7 @@ def main():
         # CH3-Ar -> -[CH2-CH(Ar)]- adds exactly one C per graft site. Exact bookkeeping.
         n_graft = len(mol.GetSubstructMatches(_TOLYL_PROXY))
         mw_rep = mw + n_graft * C_MASS if n_graft else None
-        n = _n_events(states)
+        n = _n_events(declared.get(gid, []))
         cspec = n * F_C_PER_MOL / (mw * C_PER_MAH) if mw else None   # mAh/g
         sa_mol, sa_q, sa_note = _sa_prep(s)  # hardened input prep (neutralize/guard/flag)
         if sa_mol is None:
@@ -165,8 +168,9 @@ def main():
         dg = f"{r['dGsolv_neutral_eV']:.3f}" if r["dGsolv_neutral_eV"] is not None else "n/a"
         print(f"{r['id']:22s} {r['n_electrons']:2d} {r['MW']:7.1f} {cs:>12s} "
               f"{r['SA_score']:5.2f} {dg:>14s}")
-    print("\nTrust: capacity = EXACT (objective). SA = heuristic proxy. dGsolv = RELATIVE "
-          "solubility proxy (neutral; absolute logS needs the solid-state term).")
+    print("\nTrust: capacity = nominal arithmetic; accessibility assessed separately. "
+          "SA = heuristic. dGsolv = fixed-geometry electronic solvation descriptor; "
+          "actual concentration and polymer solubility are unvalidated.")
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "capacity_and_proxies.csv"
     cols = ["id", "n_electrons", "MW", "n_graft_sites", "MW_repeat_unit",

@@ -1,0 +1,162 @@
+{
+  "created": 1792358817.8780692,
+  "discovery_source_sha256": "c41b1cd7e6301e6535e512ca3b33c8278edd4eb80fd1a18cebd769e3f8a89a50",
+  "sources": {
+    "ReSolvedData.csv": {
+      "source_sha256": "92c21adc207c34f89e683a0520d0ed4e27366b2e69808c7b4c518e36dad2c9cd",
+      "unique_structures": 19785,
+      "recognized_families": {
+        "nitroxide": 313,
+        "p-quinone": 52,
+        "mono-imide": 27,
+        "o-quinone": 18
+      },
+      "strict_both_zero_unique_structures": 0,
+      "strict_both_zero_families": {},
+      "linked_imide_examples": []
+    },
+    "RedDBv2_reaction.tab": {
+      "source_sha256": "dd0731f8b55c5b78040a5ebb86762181b24463b7e0823b8a0b4dd45100c5d1ff",
+      "unique_structures": 30628,
+      "recognized_families": {
+        "p-quinone": 360,
+        "mono-imide": 560,
+        "multiple-imide-unvalidated": 253
+      },
+      "strict_both_zero_unique_structures": 8927,
+      "strict_both_zero_families": {
+        "p-quinone": 40,
+        "mono-imide": 43,
+        "multiple-imide-unvalidated": 12
+      },
+      "linked_imide_examples": [
+        {
+          "smiles": "O=C(O)c1ccc2c(c1C(=O)O)C(=O)N(N1C(=O)c3c(C(=O)O)c(C(=O)O)c(C(=O)O)c(C(=O)O)c3C1=O)C2=O",
+          "observations": [
+            {
+              "reaction_id": "15221",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C(O)c1cc2c(cc1C(=O)O)C(=O)N(N1C(=O)c3c(C(=O)O)ccc(C(=O)O)c3C1=O)C2=O",
+          "observations": [
+            {
+              "reaction_id": "15262",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C(O)c1cccc2c1C(=O)N(N1C(=O)c3ccc(C(=O)O)c(C(=O)O)c3C1=O)C2=O",
+          "observations": [
+            {
+              "reaction_id": "15289",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C1c2ccccc2C(=O)N1N1C(=O)c2ccccc2C1=O",
+          "observations": [
+            {
+              "reaction_id": "15312",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C1c2c(F)ccc(F)c2C(=O)N1N1C(=O)c2c(F)c(F)c(F)c(F)c2C1=O",
+          "observations": [
+            {
+              "reaction_id": "15323",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C1c2cc(F)c(F)cc2C(=O)N1N1C(=O)c2c(F)c(F)c(F)c(F)c2C1=O",
+          "observations": [
+            {
+              "reaction_id": "15327",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C1c2cc(F)c(F)c(F)c2C(=O)N1N1C(=O)c2c(F)cc(F)c(F)c2C1=O",
+          "observations": [
+            {
+              "reaction_id": "15330",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C1c2cc(F)c(F)cc2C(=O)N1N1C(=O)c2cc(F)c(F)cc2C1=O",
+          "observations": [
+            {
+              "reaction_id": "15400",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "Nc1ccc2c(c1)C(=O)N(N1C(=O)c3cc(N)cc(N)c3C1=O)C2=O",
+          "observations": [
+            {
+              "reaction_id": "15432",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "Nc1cc2c(c(N)c1N)C(=O)N(N1C(=O)c3ccccc3C1=O)C2=O",
+          "observations": [
+            {
+              "reaction_id": "15442",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C1c2ccc(O)cc2C(=O)N1N1C(=O)c2cc(O)c(O)cc2C1=O",
+          "observations": [
+            {
+              "reaction_id": "15508",
+              "role": "reactant"
+            }
+          ]
+        },
+        {
+          "smiles": "O=C1c2ccccc2C(=O)N1N1C(=O)c2c(S(=O)(=O)O)ccc(S(=O)(=O)O)c2C1=O",
+          "observations": [
+            {
+              "reaction_id": "15630",
+              "role": "reactant"
+            }
+          ]
+        }
+      ]
+    },
+    "D3TaLES": {
+      "source_sha256": "9da30e460026985cc699f945870ee2c909a342558ef7850d0f54686822d1781e",
+      "unique_structures": 35697,
+      "recognized_families": {
+        "phenothiazine": 23,
+        "p-quinone": 355,
+        "o-quinone": 50,
+        "pyridinium": 23,
+        "mono-imide": 66,
+        "nitroxide": 21,
+        "bis-imide": 2,
+        "multiple-imide-unvalidated": 1
+      },
+      "strict_both_zero_unique_structures": 0,
+      "strict_both_zero_families": {},
+      "linked_imide_examples": []
+    }
+  },
+  "scope": "Structural recognition only; PMDI/NDI core recognition does not establish exact-structure experimental behavior. No labels, candidates or calculations admitted."
+}

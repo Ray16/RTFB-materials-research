@@ -1,0 +1,22 @@
+{
+  "status": "activated_and_implementation_verified",
+  "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py",
+  "source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "candidate_sha256": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+  "issues": [
+    "MF-to-geomeTRIC route uses the installed default grid_response=False",
+    "optimize() returns a molecule while discarding kernel geometry-convergence status"
+  ],
+  "activation_constraint": "Four ongoing signed-mode refinements will recheck the frozen original dft.py source at their qualification stage. Activate only after those checks are past or their processes end; do not invalidate live work.",
+  "existing_native_admission": "Published native properties independently require full-response stationary gradients and qualified minima; this staged driver fix improves initial geometry generation.",
+  "created": 1792384746.7856803,
+  "activated": 1792386951.7399333,
+  "source_archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/geometry_driver_full_response_2026-10-18/pre_activation_producers",
+  "software_tests_passed": 391,
+  "software_test_log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/software_checks_geometry_driver_final.log",
+  "software_test_log_sha256": "9261edea7d4ee15431278922a9d370aedfc5c3b66a7a27ba88557b27aabb1fff",
+  "actual_cpu_smoke": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/geometry_driver_full_response_2026-10-18/cpu_water_smoke/result.json",
+  "actual_gpu_qualification_performed": false,
+  "scientific_battery_properties_validated": false,
+  "verified": 1792387098.8056655
+}

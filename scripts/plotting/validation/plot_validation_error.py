@@ -26,8 +26,8 @@ import numpy as np               # noqa: E402
 ROOT = Path(__file__).resolve().parents[3]
 FIGDIR = ROOT / "results" / "figures" / "validation"
 FIGDIR.mkdir(parents=True, exist_ok=True)
-# DFT+SMD is the trusted level; fall back to UMA gas only if DFT is missing, and label it.
-E_COLS = [("E_vs_Fc_V", "DFT+SMD"), ("E_vs_Fc_gas_V", "UMA gas")]
+# Solvent experimental accuracy cannot be assessed with a gas-phase fallback.
+E_COLS = [("E_vs_Fc_V", "DFT+SMD")]
 TARGET_BAND = 0.15  # V — typical MAE band for this protocol class; a visual guide, not a fit
 
 
@@ -82,10 +82,13 @@ def main():
     print(f"\n  {'id':22s} {'event':12s} {'exp':>7s} {'comp':>7s} {'error':>7s}  src")
     for e in val:
         rid = e["id"]
+        if rid=='ferrocene':continue  # scale-defining zero is not an accuracy measurement
         for ev in e.get("events", []):
+            if ev.get('grounded') is not True:continue
             row = by.get((rid, ev["event"]))
             if not row:
                 continue
+            if row.get('thermal_qc')!='ok' or row.get('status')!='ok':continue
             comp, src = _pick(row)
             if comp is None:
                 continue

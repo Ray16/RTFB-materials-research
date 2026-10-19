@@ -17,7 +17,7 @@ explicit charge + spin multiplicity; ion spin comes from MNSol's geometry header
 
   python scripts/validation/solvation/validate_solvation.py --build-freesolv 24
   python scripts/validation/solvation/validate_solvation.py --build-mnsol acetonitrile
-  CUDA_VISIBLE_DEVICES=3 python scripts/validation/solvation/validate_solvation.py --run <refset.csv> --shard 4:0
+  python -m redox.workflows.gpu --gpu 3 --out logs/runs/solvation -- python scripts/validation/solvation/validate_solvation.py --run <refset.csv> --shard 4:0
   python scripts/validation/solvation/validate_solvation.py --report
 """
 from __future__ import annotations

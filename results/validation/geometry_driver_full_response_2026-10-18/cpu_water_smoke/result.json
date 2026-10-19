@@ -1,0 +1,62 @@
+{
+  "status": "actual_cpu_geometry_driver_passed",
+  "result": {
+    "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/geometry_driver_full_response_2026-10-18/cpu_water_smoke/seed.xyz",
+    "charge": 0,
+    "mult": 1,
+    "solvent": "acetonitrile",
+    "optimized": true,
+    "backend": "cpu",
+    "opt_xc": "r2scan",
+    "opt_basis": "def2-svp",
+    "opt_disp": "d4",
+    "opt_nlc": null,
+    "sp_xc": "wb97m-v",
+    "sp_basis": "def2-tzvpd",
+    "sp_disp": null,
+    "sp_nlc": "vv10",
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "geometry_optimization_converged": true,
+    "optimization_SCF_converged": true,
+    "opt_gradient_grid_response": true,
+    "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/geometry_driver_full_response_2026-10-18/cpu_water_smoke/opt.xyz",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200,
+    "scf_guesses": [
+      "minao"
+    ],
+    "energy_protocol": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200
+    },
+    "energy_geom_sha1": "7c6606b60f4a1842",
+    "software": {
+      "pyscf": "2.14.0",
+      "gpu4pyscf": "1.8.1"
+    }
+  },
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 10.68798828125,
+    "available_RAM_bytes": 481641054208,
+    "minimum_RAM_GiB": 8
+  },
+  "affinity": [
+    0
+  ],
+  "started": 1792386994.4388726,
+  "finished": 1792387005.2385747,
+  "dft_sha256": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+  "GPU_jobs_submitted": 0,
+  "scientific_battery_properties_validated": false
+}

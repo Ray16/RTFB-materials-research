@@ -30,6 +30,7 @@ threshold is `heuristic` or `computed` (e.g. a Born estimate from the geometry).
 from __future__ import annotations
 
 import csv
+import hashlib
 import importlib.util
 import json
 import math
@@ -108,6 +109,300 @@ def calc_ids():
 
 _STATE_CACHE = {}
 
+# An independent copy of the documented, derivative-checked thermal contract.
+# Do not import the production thermal reader or free-energy arithmetic here.
+NATIVE_THERMAL_CONTRACT = dict(schema=1, model='solution geometry-level DFT Hessian', xc='r2scan',
+    disp='d4', basis='def2-svp', anion_basis='def2-svpd', solvent='acetonitrile', solvent_model='SMD',
+    density_fit=True, grid_level=3, cphf_grid_level=3, grid_response=True, conv_tol=1e-12,
+    conv_tol_grad=1e-8, temperature_K=298.15, rotor_cutoff_cm=50,
+    spin_partition='unsplit ground spin multiplet', gradient_max_acceptance_Ha_Bohr=.00045,
+    min_frequency_acceptance_cm=-5, finite_difference_step_Bohr=.0005,
+    finite_difference_relative_acceptance=.01, max_spin_contamination=.1, df_batch_cap_GiB=6,
+    validated_pyscf_version='2.14.0', validated_gpu4pyscf_version='1.8.1')
+NATIVE_CERTIFICATE = ROOT / 'config/native_thermal_validation.json'
+
+
+def native_execution_budget_ok(record):
+    """Independently verify an optional execution override, retaining legacy admission."""
+    budget = record.get('execution_memory')
+    if budget is None:
+        return True
+    try:
+        if (budget.get('qualification_only') or budget.get('scientific_model_changed') is not False
+                or budget.get('protocol_default_cap_GiB') != 6):
+            return False
+        if budget.get('cap_GiB') == 6:
+            return budget.get('qualification_sha256') is None
+        cap=budget.get('cap_GiB')
+        if cap not in (16,24):
+            return False
+        path='config/native_hessian_memory_16_validation.json' if cap==16 else 'config/native_hessian_memory_validation.json'
+        policy=('six-GiB integral batches; sixteen-GiB unrestricted response workspace' if cap==16
+                else 'six-GiB integral batches; qualified larger unrestricted response workspace')
+        certificate = json.loads((ROOT/path).read_text())
+        seal = certificate.pop('content_sha256')
+        if (budget.get('qualification_sha256') != seal
+                or hashlib.sha256(json.dumps(certificate,sort_keys=True,separators=(',',':')).encode()).hexdigest() != seal
+                or certificate.get('protocol') != NATIVE_THERMAL_CONTRACT
+                or certificate.get('status') != 'execution_budget_qualified'
+                or certificate.get('caps_GiB') != [cap]
+                or certificate.get('scientific_model_changed') is not False
+                or certificate.get('allocation_policy') != policy
+                or budget.get('allocation_policy') != certificate.get('allocation_policy')
+                or certificate.get('software') != record.get('software')):
+            return False
+        controls = certificate.get('controls', [])
+        if len(controls) != 2 or {c.get('mult') for c in controls} != {1,2}:
+            return False
+        for control in controls:
+            if not control.get('native_gates_passed'):
+                return False
+            for name in ('relative_matrix_error','maximum_matrix_difference','maximum_thermal_difference_eV'):
+                value = fnum(control.get(name))
+                if value is None or not 0 <= value <= 1e-6:
+                    return False
+            for name, digest in control['evidence_sha256'].items():
+                if hashlib.sha256((ROOT/name).read_bytes()).hexdigest() != digest:
+                    return False
+        return True
+    except (OSError,ValueError,KeyError,TypeError):
+        return False
+
+
+
+def native_execution_derivatives_ok(record,natm):
+    """Independently reject unqualified numerical CDS changes or missing contact probes."""
+    settings=record.get('execution_derivatives')
+    if settings is None:return True
+    try:
+        step=settings.get('cds_step_Bohr')
+        if step not in (1e-5,1e-6):return False
+        filename='native_cds_step_validation.json' if step==1e-5 else 'native_cds_step_1e6_validation.json'
+        certificate=json.loads((ROOT/'config'/filename).read_text())
+        seal=certificate.pop('content_sha256')
+        if (hashlib.sha256(json.dumps(certificate,sort_keys=True,separators=(',',':')).encode()).hexdigest()!=seal
+                or settings.get('qualification_sha256')!=seal
+                or certificate.get('status')!='execution_derivatives_qualified'
+                or certificate.get('protocol')!=NATIVE_THERMAL_CONTRACT
+                or certificate.get('cds_step_Bohr')!=step
+                or certificate.get('library_default_cds_step_Bohr')!=1e-4
+                or certificate.get('scientific_model_changed') is not False
+                or certificate.get('software')!=record.get('software')
+                or certificate.get('worst_contact_validation')!=dict(steps_Bohr=[.0005,.001],relative_acceptance=.01,symmetry_acceptance=1e-6)
+                or settings.get('qualification_only') is not False
+                or settings.get('scientific_model_changed') is not False
+                or settings.get('source_geometry_sha256')!=record['identity']['geometry_sha256']):return False
+        controls=certificate.get('controls',[])
+        if len(controls)!=2 or {c.get('mult') for c in controls}!={1,2}:return False
+        for control in controls:
+            if control.get('native_gates_passed') is not True:return False
+            for name in ('relative_matrix_error','maximum_matrix_difference','maximum_thermal_difference_eV'):
+                value=fnum(control.get(name))
+                if value is None or not 0<=value<=1e-6:return False
+            evidence=control.get('evidence_sha256')
+            if not isinstance(evidence,dict) or not evidence:return False
+            for name,digest in evidence.items():
+                if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:return False
+        if step==1e-6:
+            evidence=certificate.get('qualification_evidence_sha256')
+            if certificate.get('target_native_gates_passed') is not True or not isinstance(evidence,dict) or not evidence:return False
+            for name,digest in evidence.items():
+                if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:return False
+        indices=settings.get('worst_contact_indices')
+        if (not isinstance(indices,list) or len(indices)!=2
+                or any(type(i) is not int or not 0<=i<3*natm for i in indices)):return False
+        checks=settings.get('worst_contact_checks',[])
+        if not {(i,s) for i in indices for s in (.0005,.001)}<={(c.get('column'),c.get('step_Bohr')) for c in checks}:return False
+        if any(fnum(c.get('relative_error')) is None or not 0<=c['relative_error']<=.01 for c in checks):return False
+        evidence=settings.get('target_evidence_sha256')
+        if not isinstance(evidence,dict) or not evidence:return False
+        for name,digest in evidence.items():
+            if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:return False
+        return True
+    except (OSError,ValueError,KeyError,TypeError,AttributeError):return False
+
+
+def native_execution_pcm_ok(record):
+    """Independently validate exact-tensor host memory execution provenance."""
+    settings=record.get('execution_pcm_curvature')
+    if settings is None:return True
+    try:
+        certificate=json.loads((ROOT/'config/native_pcm_curvature_memory_validation.json').read_text())
+        seal=certificate.pop('content_sha256')
+        if (hashlib.sha256(json.dumps(certificate,sort_keys=True,separators=(',',':')).encode()).hexdigest()!=seal
+                or certificate.get('status')!='execution_pcm_curvature_qualified'
+                or certificate.get('protocol')!=NATIVE_THERMAL_CONTRACT
+                or certificate.get('software')!=record.get('software')
+                or certificate.get('mode')!='host_analytic_tensors_atom_block_transfer'
+                or certificate.get('scientific_model_changed') is not False or certificate.get('surface_grid_changed') is not False
+                or settings.get('qualification_only') is not False or settings.get('production_admission') is not True
+                or settings.get('scientific_model_changed') is not False or settings.get('surface_grid_changed') is not False
+                or settings.get('mode')!=certificate.get('mode') or settings.get('qualification_sha256')!=seal
+                or settings.get('source_geometry_sha256')!=record['identity']['geometry_sha256']):return False
+        controls=certificate.get('controls',[])
+        if len(controls)!=2 or {c.get('mult') for c in controls}!={1,2}:return False
+        for c in controls:
+            if c.get('native_gates_passed') is not True:return False
+            for name in ('relative_matrix_error','maximum_matrix_difference','maximum_thermal_difference_eV'):
+                value=fnum(c.get(name))
+                if value is None or not 0<=value<=1e-6:return False
+            evidence=c.get('evidence_sha256')
+            if not isinstance(evidence,dict) or not evidence:return False
+            for name,digest in evidence.items():
+                if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:return False
+        if hashlib.sha256((ROOT/certificate['isolated_proof_relative_path']).read_bytes()).hexdigest()!=certificate['isolated_proof_sha256']:return False
+        for name in ('adapter_sha256','cpu_pcm_library_sha256','gpu_pcm_library_sha256','isolated_proof_sha256'):
+            if settings.get(name)!=certificate.get(name):return False
+        evidence=settings.get('target_evidence_sha256')
+        if not isinstance(evidence,dict) or not evidence:return False
+        for name,digest in evidence.items():
+            if hashlib.sha256((ROOT/name).read_bytes()).hexdigest()!=digest:return False
+        return True
+    except (OSError,ValueError,KeyError,TypeError,AttributeError):return False
+
+def _surface_thermal_inputs(sd, raw):
+    """Independently admit the selected thermal record and recheck its arithmetic."""
+    definition = 'legacy_gfn2_gas_rrho'
+    policy = sd / 'thermal_policy.json'
+    try:
+        if policy.exists():
+            selected = json.loads(policy.read_text())
+            definition = selected['thermal_definition']
+        if definition == 'legacy_gfn2_gas_rrho':
+            return fnum(raw.get('g_thermal_eV')), raw.get('n_imag'), definition
+        if definition != 'native_solution_dft_qrrho_spin':
+            return None, None, definition
+        if selected.get('native_protocol') != NATIVE_THERMAL_CONTRACT:
+            return None, None, definition
+        q, m = int(raw['charge']), int(raw['mult'])
+        ident = dict(geometry_sha256=hashlib.sha256((sd/'opt.xyz').read_bytes()).hexdigest(),
+                     charge=q, mult=m, protocol=NATIVE_THERMAL_CONTRACT)
+        key = hashlib.sha256(json.dumps(ident, sort_keys=True).encode()).hexdigest()[:16]
+        record = json.loads((sd/'native_thermal'/f'{key}.json').read_text())
+        if record.get('identity') != ident or record.get('status') != 'derivative_checked_solution_thermal':
+            return None, None, definition
+        if not native_execution_budget_ok(record) or not native_execution_pcm_ok(record):
+            return None, None, definition
+        if any(record.get(k) is not True for k in ('converged','stationary_minimum','grid_response')):
+            return None, None, definition
+        lines = (sd/'opt.xyz').read_text().splitlines(); nat = int(lines[0])
+        if not native_execution_derivatives_ok(record,nat):
+            return None, None, definition
+        symbols = [line.split()[0] for line in lines[2:2+nat]]
+        coords = np.array([[float(x) for x in line.split()[1:4]] for line in lines[2:2+nat]])
+        linear = np.linalg.matrix_rank(coords-coords.mean(axis=0), tol=1e-7) <= 1
+        frequencies = record.get('frequencies_cm', [])
+        if len(frequencies) != 3*nat-(5 if linear else 6) or any(fnum(v) is None for v in frequencies):
+            return None, None, definition
+        if min(frequencies) < -5:
+            return None, None, definition
+        for name, limit in (('gradient_max',.00045), ('maximum_asymmetry',1e-6)):
+            value = fnum(record.get(name))
+            if value is None or not 0 <= value <= limit:
+                return None, None, definition
+        checks = record.get('derivative_checks', [])
+        oxygen = next((i for i,s in enumerate(symbols) if s=='O'),
+                      next((i for i,s in enumerate(symbols) if s=='Fe'), nat-1))
+        required = {(i,axis,step) for i,axis in ((0,1),(oxygen,2)) for step in (.0005,.001)}
+        observed = {(c.get('atom_index'),c.get('axis'),c.get('step_Bohr')) for c in checks}
+        if not required <= observed or any(fnum(c.get('relative_error')) is None or
+                                           not 0 <= c['relative_error'] <= .01 for c in checks):
+            return None, None, definition
+        diagnostics = record.get('smd_spin_diagnostics', {})
+        if any(fnum(diagnostics.get(k)) is None for k in ('spin_contam','homo_eV','s_squared')):
+            return None, None, definition
+        if abs(diagnostics['spin_contam']) > .1:
+            return None, None, definition
+        if record.get('software') != {'pyscf':'2.14.0','gpu4pyscf':'1.8.1'}:
+            return None, None, definition
+        proof = record.get('implementation_controls', [])
+        expected = ['analytic_full_response_verified','uks_full_response_verified','fine_response_implementation_verified']
+        if [p.get('status') for p in proof] != expected:
+            return None, None, definition
+        certificate = json.loads(NATIVE_CERTIFICATE.read_text())
+        certificate_hash = certificate.pop('certificate_content_sha256')
+        if (hashlib.sha256(json.dumps(certificate,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+                != certificate_hash or certificate.get('schema') != 1
+                or certificate.get('native_protocol') != NATIVE_THERMAL_CONTRACT
+                or certificate.get('software') != record['software']):
+            return None, None, definition
+        controls = certificate.get('controls', [])
+        if [c.get('admission_status') for c in controls] != expected:
+            return None, None, definition
+        for evidence, control in zip(proof, controls):
+            if evidence['sha256'] != control['source_sha256'] or control.get('software') != record['software']:
+                return None, None, definition
+            error = fnum(control.get('relative_full_matrix_error'))
+            if error is None or not 0 <= error < .01:
+                return None, None, definition
+            if evidence['status'] == 'fine_response_implementation_verified':
+                if (control.get('fine_response_implementation_verified') is not True
+                        or evidence.get('relative_full_matrix_error') != error):
+                    return None, None, definition
+            path = Path(evidence['path'])
+            if path.exists() and (hashlib.sha256(path.read_bytes()).hexdigest() != evidence['sha256']
+                                 or json.loads(path.read_text()).get('status') != control['source_status']):
+                return None, None, definition
+        nuclear = fnum(record.get('g_nuclear_qrrho_eV'))
+        spin = fnum(record.get('g_spin_partition_eV')); total = fnum(record.get('g_thermal_total_eV'))
+        # k_B from the exact SI constants converted to eV; unsplit spin multiplicity.
+        expected_spin = -(1.380649e-23/1.602176634e-19)*298.15*math.log(m)
+        if None in (nuclear,spin,total) or abs(spin-expected_spin)>1e-8 or abs(total-nuclear-spin)>1e-8:
+            return None, None, definition
+        at50 = fnum((record.get('nuclear_by_cutoff_eV') or {}).get('50'))
+        if at50 is None or abs(nuclear-at50)>1e-8:
+            return None, None, definition
+        return total, 0, definition
+    except (OSError,ValueError,KeyError,TypeError):
+        return None, None, definition
+
+
+_PARTITION_AUDIT=None
+
+
+def native_partition_inputs(sd,raw):
+    """Use the independent internal-mode reader, never the producer loader."""
+    global _PARTITION_AUDIT
+    if _PARTITION_AUDIT is None:
+        spec=importlib.util.spec_from_file_location('independent_native_partition',Path(__file__).with_name('native_partition.py'))
+        _PARTITION_AUDIT=importlib.util.module_from_spec(spec);spec.loader.exec_module(_PARTITION_AUDIT)
+    q,m=int(raw['charge']),int(raw['mult'])
+    ident=dict(geometry_sha256=hashlib.sha256((sd/'opt.xyz').read_bytes()).hexdigest(),
+               charge=q,mult=m,protocol=NATIVE_THERMAL_CONTRACT)
+    address=hashlib.sha256(json.dumps(ident,sort_keys=True).encode()).hexdigest()[:16]
+    return _PARTITION_AUDIT.read_partition(sd/'native_thermal'/(address+'.json'),sd/'opt.xyz')
+
+
+def thermal_inputs(sd,raw):
+    value,nimag,definition=_surface_thermal_inputs(sd,raw)
+    if definition!='native_solution_dft_qrrho_spin' or value is None:
+        return value,nimag,definition
+    partition=native_partition_inputs(sd,raw)
+    return (partition['g_thermal_total_eV'],0,definition) if partition is not None else (None,None,definition)
+
+
+def spin_decision_ok(gid, st, raw):
+    """Re-derive desired spin from the validated override or recorded UMA choice."""
+    row = next((r for r in MANIFEST if r['id']==gid and r['state']==st), None)
+    if row is None:
+        return True
+    try:
+        override_path=ROOT/'config/spin_overrides.json'
+        override=(json.loads(override_path.read_text()).get(gid,{}).get(st)
+                  if override_path.exists() else None)
+        if override is not None:
+            if (override.get('protocol') != ACTIVE_SP or override.get('charge') != int(row['charge'])
+                    or override.get('smiles_sha256') != hashlib.sha256(row['smiles'].encode()).hexdigest()):
+                return False
+            desired=int(override['mult'])
+        else:
+            uma=DFT.parent/'uma'/gid/st/'result.json'
+            desired=(json.loads(uma.read_text()).get('chosen_mult') if uma.exists() else None)
+            if desired is None:desired=int(row.get('mult_hint') or row.get('mult') or 1)
+        return raw.get('mult') == desired
+    except (OSError,ValueError,KeyError,TypeError):
+        return False
+
 
 def state(gid, st):
     """Raw state info: geometry/thermal from result.json + ACTIVE energy record."""
@@ -122,12 +417,14 @@ def state(gid, st):
     q, m = int(rj["charge"]), int(rj["mult"])
     rec = load_record(sd, q, m)                                  # converged only
     raw = load_record(sd, q, m, require_converged=False)          # for sanity
+    g_th, n_imag, thermal_definition = thermal_inputs(sd, rj)
     d = dict(id=gid, state=st, charge=q, mult=m, dir=sd, rj=rj, rec=rec, raw_rec=raw,
-             g_th=fnum(rj.get("g_thermal_eV")), n_imag=rj.get("n_imag"),
+             g_th=g_th, n_imag=n_imag, thermal_definition=thermal_definition,
              e_smd=(fnum(rec.get("e_smd_eV")) if rec else None),
              e_gas=(fnum(rec.get("e_gas_eV")) if rec else None),
              dG_solv=(fnum(rec.get("dG_solv_eV")) if rec else None))
-    d["G"] = (d["e_smd"] + d["g_th"]) if (d["e_smd"] is not None and d["g_th"] is not None) else None
+    d["G"] = (d["e_smd"] + d["g_th"]) if (d["e_smd"] is not None and d["g_th"] is not None
+                                                 and spin_decision_ok(gid,st,rj)) else None
     _STATE_CACHE[k] = d
     return d
 
@@ -197,12 +494,15 @@ def G_and_tq(s):
         return None, "no_energy"
     if s["g_th"] is None:
         return None, "no_thermal"
+    if s["G"] is None:
+        return None, "wrong_spin"
     return s["G"], None
 
 
 def fc_abs_live():
     o, n = state("ferrocene", "ox"), state("ferrocene", "neu")
-    if o is None or n is None or o["G"] is None or n["G"] is None:
+    if (o is None or n is None or o["G"] is None or n["G"] is None
+            or o['n_imag'] or n['n_imag'] or o['thermal_definition'] != n['thermal_definition']):
         return None
     return o["G"] - n["G"]
 
@@ -242,11 +542,19 @@ def audit_potentials():
             imag = any(x is not None and x["g_th"] is not None and (x["n_imag"] or 0) > 0
                        for x in (O, R))
             tqc = "imag_modes" if imag else ("ok" if not miss else "")
+            if not miss and len({O['thermal_definition'], R['thermal_definition'],
+                                  state('ferrocene','ox')['thermal_definition']}) != 1:
+                tqc = 'thermal_definition_mismatch'
+            unvalidated = not miss and tqc != 'ok'
+            if unvalidated:status='THERMAL_UNVALIDATED'
             r = dict(status=status, thermal_qc=tqc)
             if not miss:
                 r.update(dG=GR - GO, gO=O["g_th"], gR=R["g_th"], E_abs=GO - GR,
                          E=(GO - GR) - fc if fc is not None else None,
                          dEth=-(R["g_th"] - O["g_th"]))
+                if unvalidated:
+                    for quantity in ('dG','E_abs','E'):
+                        r[quantity+'_estimate']=r[quantity];r[quantity]=None
             MY_E[key] = dict(r, q_ox=qO, q_red=qR, sO=sO, sR=sR)
             p = pub.get(key)
             stale = (" | molecule inputs newer than table" if mtime_inputs(gid) > t_table else "")
@@ -262,6 +570,29 @@ def audit_potentials():
             add(T, gid, f"{ev}:E_abs_V", p.get("E_abs_V"), r.get("E_abs"), digits=3, note=stale.strip(" |"))
             add(T, gid, f"{ev}:E_vs_Fc_V", p.get("E_vs_Fc_V"), r.get("E"), digits=3, note=stale.strip(" |"))
             add(T, gid, f"{ev}:dE_thermal_V", p.get("dE_thermal_V"), r.get("dEth"), digits=4)
+            for pubkey,quantity,digits in [('dG_smd_eV_estimate','dG_estimate',4),('E_abs_V_estimate','E_abs_estimate',3),
+                                      ('E_vs_Fc_V_estimate','E_estimate',3)]:
+                add(T,gid,f'{ev}:{pubkey}',p.get(pubkey),r.get(quantity),digits=digits)
+            # Gas ML electronic differences are a separate diagnostic. They must use
+            # the same model and a gas ML Fc reference, never the SMD/DFT free energy.
+            ur=[]
+            for ug,us in ((gid,sO),(gid,sR),('ferrocene','ox'),('ferrocene','neu')):
+                up=DFT.parent/'uma'/ug/us/'result.json'
+                ur.append(json.loads(up.read_text()) if up.exists() else None)
+            valid=all(u and u.get('converged') is True and u.get('charge')==q
+                      and fnum(u.get('energy_eV')) is not None for u,q in zip(ur,(qO,qR,1,0)))
+            delta,value=None,None
+            gas_status='INCOMPLETE_UMA_gas_diagnostic'
+            if valid:
+                models={u.get('model') for u in ur}
+                if None in models or len(models)!=1:gas_status='model_mismatch'
+                else:
+                    delta=ur[1]['energy_eV']-ur[0]['energy_eV']
+                    value=-delta-(ur[2]['energy_eV']-ur[3]['energy_eV'])
+                    gas_status='UMA_gas_electronic_vs_UMA_Fc('+next(iter(models))+');not_MeCN_G'
+            add(T,gid,f'{ev}:dE_gas_uma_eV',p.get('dE_gas_uma_eV'),delta,digits=4)
+            add(T,gid,f'{ev}:E_vs_Fc_gas_V',p.get('E_vs_Fc_gas_V'),value,digits=3)
+            add(T,gid,f'{ev}:gas_diagnostic_qc',p.get('gas_diagnostic_qc'),gas_status,'logic')
             if miss and fnum(p.get("E_vs_Fc_V")) is not None:
                 add(T, gid, f"{ev}:incomplete_has_no_E", "E reported", "blank", "logic",
                     note="INCOMPLETE couple must not carry an E°")
@@ -300,6 +631,75 @@ def audit_potentials():
     return fc
 
 
+def audit_orop():
+    """Independently reconstruct benchmark admission, including pending rows.
+
+    Read the external experimental CSV and raw state/thermal evidence directly;
+    do not import the production benchmark or its matching helper.
+    """
+    table = "orop_benchmark"
+    dataset = ROOT / "data/raw/validation/OROP"
+    with (dataset / "implicit_solvation_results.csv").open(encoding="utf-8-sig") as stream:
+        source_rows = [{key.strip(): value for key, value in row.items()} for row in csv.DictReader(stream)]
+    features = np.loadtxt(dataset / "features/feature_input_implicit_OROP_B3LYP-D3.csv",
+                          skiprows=2, delimiter=",", ndmin=2)
+    calc = ROOT / "calcs/orop"
+    expected_systems = {int(path.name) for path in calc.iterdir() if path.is_dir() and path.name.isdigit()}
+    published = {int(row["sys"]): row for row in read_csv(RES / "orop_benchmark.csv")}
+    for system in sorted(expected_systems | set(published)):
+        row = published.get(system)
+        if system not in expected_systems or row is None:
+            add(table, system, "row_present", "present" if row else "",
+                "present" if system in expected_systems else "", "logic")
+            continue
+        charge = int(features[system - 1, 3])
+        exp = float(source_rows[system - 1]["exp. redox pot. [V]"])
+        original = float(source_rows[system - 1]["implicit solvation redox pot. [V]"])
+        values, definitions, imaginary = [], [], []
+        for name, wanted_charge in (("ox", charge), ("red", charge - 1)):
+            directory = calc / str(system) / name
+            energy = None; definition = None; nimag = None
+            try:
+                raw = json.loads((directory / "result.json").read_text())
+                want = dict(opt_xc="r2scan", opt_basis="def2-svpd" if wanted_charge < 0 else "def2-svp",
+                            opt_disp="d4", solvent="acetonitrile")
+                geometry_ok = (raw.get("charge") == wanted_charge and raw.get("optimized") is True
+                               and all(str(raw.get(key)).lower() == value for key, value in want.items()))
+                record = load_record(directory, raw["charge"], raw["mult"]) if geometry_ok else None
+                if record is not None:
+                    correction, nimag, definition = thermal_inputs(directory, raw)
+                    if correction is not None:
+                        energy = record["e_smd_eV"] + correction
+            except (OSError, ValueError, KeyError, TypeError):
+                pass
+            values.append(energy); definitions.append(definition); imaginary.append(nimag)
+        fo, fn = state("ferrocene", "ox"), state("ferrocene", "neu")
+        fc = fc_abs_live()
+        reference_definition = fo['thermal_definition'] if fo else None
+        all_definitions = definitions + [reference_definition, fn['thermal_definition'] if fn else None]
+        complete = (all(value is not None for value in values) and fc is not None
+                    and not any(imaginary) and fo is not None and fn is not None)
+        status = "INCOMPLETE" if not complete else (
+            "ok" if len(set(all_definitions)) == 1 else "thermal_definition_mismatch")
+        potential = -(values[1] - values[0]) - fc if status == "ok" else None
+        molecular_definition = definitions[0] if definitions[0] == definitions[1] else "mismatch"
+        for key, expected, digits in (("exp", exp, None), ("charge_ox", charge, None),
+                                      ("calc", potential, 3),
+                                      ("err", potential - exp if potential is not None else None, 3),
+                                      ("imp_dft", original, 3), ("err_impdft", original - exp, 3),
+                                      ("reference_abs_V", fc, None)):
+            add(table, system, key, row.get(key), expected, digits=digits)
+        add(table, system, "status", row.get("status"), status, "logic")
+        add(table, system, "thermal_definition", row.get("thermal_definition"), molecular_definition, "logic")
+        add(table, system, "reference_thermal_definition", row.get("reference_thermal_definition"), reference_definition, "logic")
+        add(table, system, "calibration_eligible", row.get("calibration_eligible"), str(status == "ok"), "logic")
+        try:
+            same_protocol = json.loads(row.get("energy_protocol", "")) == ACTIVE_SP
+        except (ValueError, TypeError):
+            same_protocol = False
+        add(table, system, "energy_protocol", str(same_protocol), "True", "logic")
+
+
 # =================================================================== 2. disproportionation
 MY_DISP = {}   # (id, intermediate) -> dG eV
 
@@ -329,15 +729,26 @@ def audit_disp():
                 E1 = hi["G"] - s["G"]
                 E2 = s["G"] - lo["G"]
                 dG = E1 - E2
-                MY_DISP[key] = dG
+                mismatch=len({x['thermal_definition'] for x in (hi,s,lo)})!=1
+                valid=not any(x['n_imag'] for x in (hi,s,lo)) and not mismatch
+                if valid:MY_DISP[key] = dG
                 if p is None:
                     add(T, gid, f"{s['state']}:row_present", "", "present", "logic")
                     continue
-                add(T, gid, f"{s['state']}:dG_disp_eV", p["dG_disp_eV"], dG, digits=4)
-                add(T, gid, f"{s['state']}:dG_disp_kJmol", p["dG_disp_kJmol"], dG * EV_KJMOL, digits=1)
+                add(T,gid,f"{s['state']}:status",p.get('status'),'ok' if valid else 'THERMAL_UNVALIDATED','logic')
+                add(T,gid,f"{s['state']}:thermal_qc",p.get('thermal_qc'),
+                    'thermal_definition_mismatch' if mismatch else ('ok' if valid else 'imag_modes'),'logic')
+                add(T, gid, f"{s['state']}:dG_disp_eV", p["dG_disp_eV"], dG if valid else None, digits=4)
+                add(T, gid, f"{s['state']}:dG_disp_kJmol", p["dG_disp_kJmol"], dG * EV_KJMOL if valid else None, digits=1)
                 add(T, gid, f"{s['state']}:logK_disp", p["logK_disp"],
-                    -dG / (KT_EV_298 * math.log(10)), digits=2)
-                add(T, gid, f"{s['state']}:stable_vs_disprop", p["stable_vs_disprop"], bool(dG > 0), "logic")
+                    -dG / (KT_EV_298 * math.log(10)) if valid else None, digits=2)
+                add(T, gid, f"{s['state']}:stable_vs_disprop", p["stable_vs_disprop"], bool(dG > 0) if valid else '', "logic")
+                add(T,gid,f"{s['state']}:dG_disp_eV_estimate",p.get('dG_disp_eV_estimate'),dG if not valid else None,digits=4)
+                add(T,gid,f"{s['state']}:dG_disp_kJmol_estimate",p.get('dG_disp_kJmol_estimate'),dG*EV_KJMOL if not valid else None,digits=1)
+                add(T,gid,f"{s['state']}:logK_disp_estimate",p.get('logK_disp_estimate'),
+                    -dG/(KT_EV_298*math.log(10)) if not valid else None,digits=2)
+                add(T,gid,f"{s['state']}:stable_vs_disprop_estimate",p.get('stable_vs_disprop_estimate'),
+                    bool(dG>0) if not valid else '', 'logic')
                 # cross-check vs the published E° table (3-dp rounding on each potential)
                 e_hi = pot.get((gid, f"{hi['state']}->{s['state']}"))
                 e_lo = pot.get((gid, f"{s['state']}->{lo['state']}"))
@@ -407,12 +818,13 @@ def cross_path(gid, species, at, q, m):
 def cross_valid(d, q, m, ghash):
     """Validity of a cross-point cache under the active protocol (own re-statement)."""
     why = []
-    if d.get("e_gas_eV") is None: why.append("no e_gas")
+    if fnum(d.get("e_gas_eV")) is None: why.append("no finite e_gas")
+    if d.get("protocol") != ACTIVE_SP: why.append("protocol provenance")
     if (d.get("sp_xc") or "").lower() != ACTIVE_SP["xc"]: why.append("xc")
     if (d.get("sp_basis") or "").lower() != ACTIVE_SP["basis"]: why.append("basis")
     if (d.get("sp_nlc") or None) != ACTIVE_SP["nlc"] or (d.get("sp_disp") or None) != ACTIVE_SP["disp"]:
         why.append("nlc/disp")
-    if d.get("converged_gas") is False: why.append("converged_gas=False")
+    if d.get("converged_gas") is not True: why.append("convergence unverified")
     if int(d.get("cache_schema", 1)) != 3: why.append("schema")
     if any(k not in d for k in ("gas_homo_eV", "anion_unbound")): why.append("diag")
     if int(d.get("charge", -999)) != q or int(d.get("mult", -999)) != m: why.append("charge/mult")
@@ -465,13 +877,18 @@ def audit_reorg():
             rn = rmsd_naive(gO, gR)
             rs = rmsd_sym(gO, gR, O["charge"])
             rm = rs if rs is not None else rn
-            unb = bool(dR.get("anion_unbound")) if R["charge"] < 0 else False
+            anion_records = [rec for q, rec in ((O["charge"], O["rec"]), (R["charge"], R["rec"]),
+                                                (O["charge"], dO), (R["charge"], dR)) if q < 0]
+            homos = [fnum(rec.get("gas_homo_eV")) for rec in anion_records]
+            unb = any(rec.get("anion_unbound") is True for rec in anion_records) or any(
+                h is not None and h > 0 for h in homos)
             why = []   # every failed check, '+'-joined (redox.properties.reorg contract)
             if lam < 0: why.append("negative_lambda")
             if min(lam_O, lam_R) < -0.02: why.append("negative_half")
             if rm is None: why.append("rmsd_unavailable")
             elif rm > 0.40: why.append("conformer_jump")
             if unb: why.append("anion_unbound")
+            if any(h is None for h in homos): why.append("anion_diagnostics_missing")
             if max(lam_O, lam_R) > 1.0: why.append("large_half>1eV")
             flag = "+".join(why)
             MY_LAM[key] = dict(lam=lam, lam_O=lam_O, lam_R=lam_R, flag=flag, rmsd=rm)
@@ -486,7 +903,8 @@ def audit_reorg():
             add(T, gid, f"{cp}:relax_red_meV(lambda_R)", p["relax_red_meV"], lam_R * 1000, digits=3)
             add(T, gid, f"{cp}:rmsd_naive_A", p["rmsd_naive_A"], rn, digits=3)
             add(T, gid, f"{cp}:rmsd_A", p["rmsd_A"], rm, digits=3)
-            add(T, gid, f"{cp}:anion_homo_eV", p["anion_homo_eV"], fnum(dR.get("gas_homo_eV")), digits=3)
+            add(T, gid, f"{cp}:anion_homo_eV", p["anion_homo_eV"],
+                max((h for h in homos if h is not None), default=None), digits=3)
             add(T, gid, f"{cp}:flag", p["flag"], flag, "logic", note=stale)
             # QC gap check: the own-geometry ANION record can itself be gas-unbound (HOMO>0)
             own_homo = fnum(R["rec"].get("gas_homo_eV"))
@@ -557,6 +975,20 @@ def mw_from_xyz(p):
     return sum(pt.GetAtomicWeight(s) for s in sym)
 
 
+def scorecard_masses(smi):
+    """Reconstruct the documented four-decimal mass inputs to the scorecard.
+
+    The capacity table rounds masses to four decimals before serialization.
+    Applying a second display rounding directly to the raw floating sum can
+    cross a decimal tie (402.4500000000002 versus serialized 402.45).
+    Independently reproduce that interface without reading its mass values.
+    """
+    mass, sites = mw_from_smiles(smi)
+    if mass is None:
+        return None, None
+    return round(mass, 4), round(mass + sites * C_MASS, 4) if sites else None
+
+
 MY_MW = {}
 
 
@@ -573,7 +1005,7 @@ def audit_capacity():
         mw, ng = mw_from_smiles(s) if s else (None, 0)
         MY_MW[gid] = (mw, ng)
         sts = calc_states(gid)
-        qs = sorted({x["charge"] for x in sts})
+        qs = sorted({int(row["charge"]) for row in MANIFEST if row["id"] == gid})
         n_all = sum(1 for a, b in zip(qs, qs[1:]) if b - a == 1)
         add(T, gid, "n_electrons(all adjacent couples)", p["n_electrons"], n_all, digits=0)
         add(T, gid, "MW", p["MW"], mw, digits=4)
@@ -581,7 +1013,7 @@ def audit_capacity():
         add(T, gid, "MW_repeat_unit", p["MW_repeat_unit"], (mw + ng * C_MASS) if ng else None, digits=4)
         add(T, gid, "specific_capacity_mAh_g", p["specific_capacity_mAh_g"],
             n_all * F_TABLE_CAPACITY / (mw * C_PER_MAH) if (mw and n_all) else None, digits=1)
-        neu = [x for x in sts if x["charge"] == 0] or sorted(sts, key=lambda x: abs(x["charge"]))
+        neu = [x for x in sts if x["charge"] == 0]
         dgs = next((x["dG_solv"] for x in neu if x["dG_solv"] is not None), None)
         add(T, gid, "dGsolv_neutral_eV", p["dGsolv_neutral_eV"], dgs, digits=3)
         # SMILES formula vs the stored resting-state geometry (H count / atoms)
@@ -595,7 +1027,7 @@ def audit_capacity():
 def candidate_meta():
     batches, flags, unrank = {}, {}, set()
     for b, mod in (("starting", "starting_candidates"), ("merrifield_multi", "merrifield_multielectron"),
-                   ("discovered", "discovered_candidates")):
+                   ("discovered", "discovered_candidates"), ("custom", "custom_candidates")):
         for g in cfg(mod).GROUPS:
             batches[g["id"]] = b
             if g.get("rankable") is False:
@@ -654,8 +1086,9 @@ def my_sigmas(fc):
         allres.append(res)
         if f:
             fam.setdefault(f, []).append(res)
-    fam_s = {f: round(rmse(v), 3) for f, v in fam.items() if len(v) >= 2}
-    pooled = round(rmse(allres), 3) if allres else None
+    minimum = SCC.MIN_REDOX_CALIBRATION_POINTS
+    fam_s = {f: round(rmse(v), 3) for f, v in fam.items() if len(v) >= minimum}
+    pooled = round(rmse(allres), 3) if len(allres) >= minimum else None
     lam = []
     for r in read_csv(RES / "d3tales_reorg_validation_prod" / "comparison.csv"):
         a, b = fnum(r.get("our_smd_eV")), fnum(r.get("d3tales_eV"))
@@ -669,11 +1102,126 @@ def my_sigmas(fc):
     return fam_s, pooled, s_lam, s_disp
 
 
+def my_spin_evidence(gid):
+    """Rebuild source identities and gaps independently; pending helpers never rank."""
+    import fcntl
+    from redox.core.protocol import record_path
+    lock=ROOT/'logs/pipeline_locks'/f'{gid}_spincheck.lock'
+    try:
+        with lock.open('r') as stream:
+            try:fcntl.flock(stream,fcntl.LOCK_SH|fcntl.LOCK_NB)
+            except BlockingIOError:return None,'pending:active_spin_comparison','DFT_check_required'
+    except FileNotFoundError:pass
+    gaps, sources, pending = {}, {}, {}
+    digest = lambda p: hashlib.sha256(Path(p).read_bytes()).hexdigest()
+    def native_path(directory, charge, mult):
+        identity = dict(geometry_sha256=digest(directory/'opt.xyz'), charge=charge,
+                        mult=mult, protocol=NATIVE_THERMAL_CONTRACT)
+        key = hashlib.sha256(json.dumps(identity, sort_keys=True).encode()).hexdigest()[:16]
+        return directory/'native_thermal'/f'{key}.json'
+    for path in (DFT.parent/'uma'/gid).glob('*/result.json'):
+        raw=json.loads(path.read_text());gap=fnum(raw.get('spin_gap_eV'))
+        if gap is not None:gaps[path.parent.name]=abs(gap);sources[path.parent.name]='uma'
+    for path in (DFT.parent/'spincheck'/gid).glob('*_m*/result.json'):
+        st=path.parent.name.rsplit('_m',1)[0];alt=json.loads(path.read_text());chosen=state(gid,st)
+        if chosen is None or alt.get('charge')!=chosen['charge'] or alt.get('mult')==chosen['mult']:continue
+        sd=chosen['dir'];row=next((r for r in MANIFEST if r['id']==gid and r['state']==st),None)
+        if row is None or chosen['rec'] is None:
+            pending[st]='source_addressed_spin_report_pending';continue
+        identity=dict(id=gid,state=st,charge=chosen['charge'],mult=chosen['mult'],
+            geometry_sha256=digest(sd/'opt.xyz'),smiles_sha256=hashlib.sha256(row['smiles'].encode()).hexdigest(),
+            sp_record_sha256=digest(record_path(sd,chosen['charge'],chosen['mult'])),protocol=ACTIVE_SP)
+        address=hashlib.sha256(json.dumps(identity,sort_keys=True).encode()).hexdigest()[:16]
+        report_path=sd/'spin_validation'/f'{address}.json'
+        report=json.loads(report_path.read_text()) if report_path.exists() else None
+        if not report or report.get('chosen_identity')!=identity or report.get('status') not in ('spin_gap_verified','lower_spin_promoted'):
+            pending[st]='source_addressed_spin_report_pending';continue
+        if alt.get('spin_validation_status') not in (None,'validated'):
+            pending[st]='alternate_spin_validation_pending';continue
+        if report.get('ensemble_primary_integration_pending'):
+            pending[st]='spin_ensemble_integration_pending';continue
+        expected=dict(opt_xc='r2scan',opt_basis='def2-svpd' if alt['charge']<0 else 'def2-svp',
+                      opt_disp='d4',solvent=ELE.SOLVENT['name'])
+        if (alt['mult']!=report.get('alternative_mult') or not alt.get('optimized') or
+                any(str(alt.get(k)).lower()!=str(v).lower() for k,v in expected.items())):
+            pending[st]='alternate_protocol_or_multiplicity_mismatch';continue
+        record=load_record(path.parent,int(alt['charge']),int(alt['mult']))
+        if record is None or chosen['e_smd'] is None:
+            pending[st]='alternate_active_SP_pending';continue
+        gap=record['e_smd_eV']-chosen['e_smd'];reported=fnum(report.get('electronic_gap_eV'))
+        contamination=fnum(record.get('smd_spin_contam'))
+        if reported is None or abs(gap-reported)>1e-8 or (contamination is not None and abs(contamination)>.1):
+            pending[st]='alternate_energy_or_spin_report_stale';continue
+        gt, ni, definition=thermal_inputs(path.parent,alt)
+        matching=(definition==chosen['thermal_definition']=='native_solution_dft_qrrho_spin')
+        if report.get('thermochemical_gap_validated'):
+            selected_partition=native_partition_inputs(sd,chosen['rj'])
+            alternate_partition=native_partition_inputs(path.parent,alt)
+            partition_dependencies=report.get('native_partition_dependencies') or {}
+            if (selected_partition is None or alternate_partition is None
+                    or report.get('native_partition_protocol')!=selected_partition['protocol']
+                    or alternate_partition['protocol']!=selected_partition['protocol']
+                    or partition_dependencies.get('chosen')!=selected_partition['sha256']
+                    or partition_dependencies.get('alternative')!=alternate_partition['sha256']):
+                pending[st]='native_spin_partition_dependencies_stale';continue
+            cp=native_path(sd,chosen['charge'],chosen['mult']);ap=native_path(path.parent,alt['charge'],alt['mult'])
+            deps=report.get('native_dependencies') or {}
+            if not cp.exists() or not ap.exists() or deps.get('chosen')!=digest(cp) or deps.get('alternative')!=digest(ap):
+                pending[st]='native_spin_dependencies_stale';continue
+        native=(matching and gt is not None and chosen['G'] is not None and ni==0)
+        if native:
+            gap+=gt-chosen['g_th'];reported=fnum(report.get('thermochemical_gap_eV'))
+            if not report.get('thermochemical_gap_validated') or reported is None or abs(gap-reported)>1e-8:
+                pending[st]='native_spin_report_pending_or_stale';continue
+            source='dft_free_energy'
+        else:source='dft_electronic(thermal_unvalidated)'
+        if native and abs(gap)<=.1:pending[st]='spin_ensemble_required'
+        elif not native and abs(gap)<=.2:pending[st]='matching_native_spin_thermals_required'
+        gaps[st]=gap;sources[st]=source
+    if pending:
+        st=min(pending);return None,f'pending:{pending[st]}:{st}','DFT_check_required'
+    if not gaps:return None,'','ok'
+    st=min(gaps,key=gaps.get);value=round(gaps[st],4);source=sources[st]+':'+st
+    confidence=('wrong_ground_state' if source.startswith('dft_') and value<-1e-4 else
+                ('DFT_check_required' if source.startswith('uma:') and value<.5 else
+                 ('low' if value<SCC.SPIN_GAP_LOW_EV else 'ok')))
+    return value,source,confidence
+
+
+def scorecard_inner_lambdas(raw):
+    """Reconstruct serialized per-couple inputs, then the scorecard's mean."""
+    if not raw:
+        return None, None, None
+    return tuple(round(statistics.mean(values), 4) for values in (
+        [round(r["lam"], 4) for r in raw],
+        [round(r["lam_O"] * 1000, 3) / 1000 for r in raw],
+        [round(r["lam_R"] * 1000, 3) / 1000 for r in raw],
+    ))
+
+
 def my_scorecard(fc):
     batches, unrank = candidate_meta()
     wlo, whi = ELE.WINDOW_V_VS_FC
     div = ELE.ANOLYTE_CATHOLYTE_DIVIDER_V
     fam_s, pooled, s_lam, s_disp = my_sigmas(fc)
+    # Independently reconstruct the current charge-class fallback rather than
+    # borrowing the production calibration admission or sigma selector.
+    errors = {"cation": [], "anion": [], "multi": []}
+    reference_definition = state("ferrocene", "ox")["thermal_definition"]
+    for row in read_csv(RES / "orop_benchmark.csv"):
+        try:
+            eligible = (row.get("status") == "ok" and row.get("calibration_eligible") == "True"
+                        and json.loads(row["energy_protocol"]) == ACTIVE_SP
+                        and row.get("thermal_definition") == row.get("reference_thermal_definition") == reference_definition
+                        and fc is not None and abs(float(row["reference_abs_V"]) - fc) < 1e-8)
+            error, charge = fnum(row.get("err")), fnum(row.get("charge_ox"))
+        except (ValueError, TypeError, KeyError):
+            eligible = False; error = charge = None
+        if eligible and error is not None and charge is not None and fnum(row.get("calc")) is not None:
+            kind = "multi" if charge >= 2 or charge < 0 else ("cation" if charge >= 1 else "anion")
+            errors[kind].append(error)
+    charge_prior = {kind: round(rmse(values), 3) if len(values) >= SCC.MIN_REDOX_CALIBRATION_POINTS
+                    else SCC.SIGMA_REDOX_V[kind] for kind, values in errors.items()}
     rest = {r["id"]: (r["state"], int(r["charge"])) for r in MANIFEST if str(r.get("n_e")) == "0"}
     lam_o = {}
     for r in read_csv(RES / "lambda_outer.csv"):
@@ -725,13 +1273,18 @@ def my_scorecard(fc):
             out[(gid, "")] = dict(status=("INCOMPLETE" if any(v.startswith("INCOMPLETE") for v in stop.values())
                                           else "REJECTED"), n_accessible=0)
             continue
-        mw, ng = mw_from_smiles(next(r["smiles"] for r in MANIFEST if r["id"] == gid))
-        mw_rep = mw + ng * C_MASS if ng else None
+        mw, mw_rep = scorecard_masses(next(r["smiles"] for r in MANIFEST if r["id"] == gid))
         fam = fam_of.get(gid)
         sigE = fam_s.get(fam, pooled)
+        spin_gap,spin_source,spin_confidence=my_spin_evidence(gid)
         for pool, acc in paths.items():
             if not acc:
                 continue
+            pool_sigma = sigE
+            if pool_sigma is None:
+                pool_sigma = max(charge_prior["multi" if max(abs(c["q_ox"]), abs(c["q_red"])) >= 2
+                                               else ("anion" if min(c["q_ox"], c["q_red"]) < 0 else "cation")]
+                                 for c in acc)
             n = len(acc)
             capf = lambda mass: n * FARADAY / (mass * C_PER_MAH) if mass else None  # noqa: E731
             qs = {q for c in acc for q in (c["q_ox"], c["q_red"])}
@@ -741,11 +1294,13 @@ def my_scorecard(fc):
             flagged = [c for c in acc if c["lam"] and c["lam"]["flag"]]
             missing = [c for c in acc if not c["lam"]]
             mean = lambda xs: statistics.mean(xs) if xs else None  # noqa: E731
-            lam4 = mean([c["lam"]["lam"] for c in clean])
-            lO = mean([c["lam"]["lam_O"] for c in clean])
-            lR = mean([c["lam"]["lam_R"] for c in clean])
+            # The scorecard consumes the independently audited reorganization
+            # CSV: totals are serialized to 4 decimals in eV, halves to 3 in meV.
+            # Reconstruct those published inputs from raw energies before its
+            # mean, rather than compare against a differently rounded raw mean.
+            lam4, lO, lR = scorecard_inner_lambdas([c["lam"] for c in clean])
             los = [c["lo"][0] for c in clean if c["lo"] and c["lo"][0]]
-            lo1 = mean(los)
+            lo1 = round(mean(los), 4) if los else None
             lam_het = lam4 / 2 + lo1 if (lam4 is not None and lo1) else None
             lam_se = lam4 + lo1 if (lam4 is not None and lo1) else None  # 2*lo1*(1-a/2a)
             if pool == "anolyte":
@@ -757,10 +1312,11 @@ def my_scorecard(fc):
             out[(gid, pool)] = dict(
                 # missing-data truncation -> INCOMPLETE (only a lower bound), else candidate
                 status=("INCOMPLETE" if str(stop[pool]).startswith("INCOMPLETE") else "candidate"),
+                min_spin_gap_eV=spin_gap,spin_gap_source=spin_source,spin_confidence=spin_confidence,
                 rankable=(gid not in unrank), resting_state=rest[gid][0],
                 path=" ; ".join(c["couple"] for c in acc), path_stop=stop[pool], n_accessible=n,
                 E_V=statistics.mean(c["Er"] for c in acc),
-                sigma_E_V=sigE,
+                sigma_E_V=pool_sigma,
                 specific_capacity_mAh_g=capf(mw), MW=mw, MW_repeat_unit=mw_rep,
                 capacity_repeat_mAh_g=capf(mw_rep),
                 capacity_maxload_Li_mAh_g=capf(mw_rep + maxload(m_cat["Li"])) if mw_rep else None,
@@ -783,6 +1339,7 @@ def my_scorecard(fc):
 
 
 SC_FIELDS = [  # (column, digits, check_type)
+    ('min_spin_gap_eV',4,'exact'),('spin_gap_source',None,'logic'),('spin_confidence',None,'logic'),
     ("status", None, "logic"), ("resting_state", None, "logic"), ("path", None, "logic"),
     ("path_stop", None, "logic"), ("n_accessible", 0, "logic"), ("E_V", 3, "exact"),
     ("sigma_E_V", 3, "exact"), ("specific_capacity_mAh_g", 1, "exact"), ("MW", 1, "exact"),
@@ -829,19 +1386,21 @@ def audit_scorecard(fc):
 # ============================================================== 5b. Pareto (independent)
 def objectives(row, pool, cap_key):
     o, miss = {}, []
+    if row.get('spin_confidence') in ('DFT_check_required','wrong_ground_state'):miss.append('spin_state')
     E = fnum(row.get("E_V"))
-    if E is None: miss.append("voltage")
+    thermal_valid = row.get("thermal_qc", "ok") == "ok"
+    if E is None or not thermal_valid: miss.append("voltage")
     else: o["voltage"] = (-E if pool == "anolyte" else E, fnum(row.get("sigma_E_V")) or 0.0)
     cap = fnum(row.get(cap_key))
     if cap is None: miss.append("capacity")
     else: o["capacity"] = (cap, 0.0)
     dg = fnum(row.get("dG_disp_kJmol"))
-    if dg is not None:
+    if dg is not None and thermal_valid:
         o["stability"] = (dg, (fnum(row.get("sigma_disp_eV")) or SCC.SIGMA_DISP_EV) * EV_KJMOL)
     elif str(row.get("disp_applicable")) == "True":
         miss.append("stability")
     lam = fnum(row.get("lambda_i_eV"))
-    if lam is None: miss.append("kinetics")
+    if lam is None or row.get("lambda_qc", "ok") != "ok": miss.append("kinetics")
     else: o["kinetics"] = (-lam, fnum(row.get("sigma_lambda_eV")) or SCC.SIGMA_LAMBDA_EV)
     return o, miss
 
@@ -927,6 +1486,76 @@ def audit_pareto(mine_sc):
 
 
 # ============================================================================== sanity
+def audit_multielectron():
+    """Independently check consecutive reductions from the declared resting state."""
+    pub = {r["id"]: r for r in read_csv(RES / "multielectron_stability.csv")}
+    mine = {}
+    factor = 8.314462618 * 298.15 / 96485.33212 * math.log(10)
+    for gid, states in manifest_groups().items():
+        rest = [r for r in states if str(r.get("n_e")) == "0"]
+        if len(rest) != 1:
+            continue
+        q0 = int(rest[0]["charge"])
+        rows = {r["q_ox"]: (event, r) for (g, event), r in MY_E.items()
+                if g == gid and r.get("E") is not None}
+        if q0 not in rows or q0 - 1 not in rows:
+            continue
+        ev1, r1 = rows[q0]; ev2, r2 = rows[q0 - 1]
+        if r1["sR"] != r2["sO"]:
+            continue
+        E1, E2 = round(r1["E"], 3), round(r2["E"], 3)
+        delta = round(E1 - E2, 3)
+        lo, hi = ELE.WINDOW_V_VS_FC
+        in1, in2 = lo <= E1 <= hi, lo <= E2 <= hi
+        mine[gid] = dict(first_event=ev1, second_event=ev2, E1_vs_Fc_V=E1,
+                         E2_vs_Fc_V=E2, dE12_V=delta, logK_comp=round(delta / factor, 1),
+                         E1_in_window=str(in1), E2_in_window=str(in2),
+                         usable_electrons=2 if in1 and in2 else (1 if in1 else 0))
+    for gid in sorted(set(pub) | set(mine)):
+        p, m = pub.get(gid), mine.get(gid)
+        if p is None or m is None:
+            add("multielectron_stability", gid, "row_present", "present" if p else "",
+                "present" if m else "", "logic")
+        else:
+            for key, value in m.items():
+                add("multielectron_stability", gid, key, p.get(key), value,
+                    "logic" if isinstance(value, str) else "exact")
+
+
+def audit_workbook():
+    """Trace every exported table cell and detect spreadsheet error cells."""
+    path = RES / "Candidates_computed.xlsx"
+    if not path.exists():
+        add("workbook", "all", "file_present", "", "present", "logic")
+        return
+    import openpyxl
+    book = openpyxl.load_workbook(path, data_only=False, read_only=True)
+    for name in ("scorecard", "pareto_shortlist", "redox_potentials", "reorganization"):
+        if name not in book.sheetnames:
+            add("workbook", name, "sheet_present", "", "present", "logic")
+            continue
+        cells = book[name].iter_rows(values_only=True)
+        header = next(cells)
+        data = list(cells); source = read_csv(RES / f"{name}.csv")
+        add("workbook", name, "row_count", len(data), len(source), "trace")
+        for index, (row, expected) in enumerate(zip(data, source), start=2):
+            for column, cell in zip(header, row):
+                raw = expected.get(column, "")
+                numeric = fnum(raw)
+                if numeric is not None and not isinstance(cell, bool):
+                    add("workbook", name, f"{index}:{column}", cell, numeric, "trace", tol=1e-9)
+                else:
+                    add("workbook", name, f"{index}:{column}", "" if cell is None else str(cell), raw, "logic")
+    errors = []
+    for sheet in book:
+        for row in sheet:
+            for cell in row:
+                if cell.data_type == "e":
+                    errors.append(f"{sheet.title}!{cell.coordinate}")
+    add("workbook", "all", "error_cells", ";".join(errors), "", "logic")
+    book.close()
+
+
 SAN = []
 
 
@@ -1048,13 +1677,16 @@ def sanity():
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     fc = audit_potentials()
+    audit_orop()
     print(f"[fc] live Fc_abs = {fc:.6f} V (config record {ELE.FC_ABS_COMPUTED_V:.6f})")
     audit_disp()
+    audit_multielectron()
     audit_reorg()
     audit_integrity()
     audit_capacity()
     mine_sc = audit_scorecard(fc)
     audit_pareto(mine_sc)
+    audit_workbook()
     sanity()
     cols = ["table", "id", "key", "published", "recomputed", "abs_diff", "verdict",
             "check_type", "tol", "note"]

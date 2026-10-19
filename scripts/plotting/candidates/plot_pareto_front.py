@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 """Visualize the sigma-aware multi-objective Pareto front (redox.screening.pareto), per capacity/salt
-scenario (config CAPACITY_SCENARIOS). Three complementary views, PNG only:
+scenario (config CAPACITY_SCENARIOS). Two complementary views, PNG only:
 
   1. pareto_parallel_coords.png   one vertical axis per objective (up = better), one line per
                                   candidate; axes min-max scaled FOR DISPLAY ONLY (raw range
                                   printed at each axis end); sigma whiskers on front members.
-  2. pareto_scatter_matrix_<scenario>.png   every objective pair with sigma error bars.
-  3. pareto_dominance_heatmap.png candidate x objective, coloured by within-pool rank, raw
+  2. pareto_dominance_heatmap.png candidate x objective, coloured by within-pool rank, raw
                                   values annotated, plus who dominates each off-front candidate.
 
-Encoding shared by all three: each candidate has ONE fixed colour (Okabe-Ito, colour-blind
+Encoding shared by both: each candidate has ONE fixed colour (Okabe-Ito, colour-blind
 safe); front = filled marker / solid line, dominated = hollow marker / dashed line. A single
 legend replaces per-point text labels (no overlaps).
 
@@ -188,53 +187,6 @@ def parallel_coords(data, cmap):
 
 
 # ---------------------------------------------------------------- 2. scatter matrix
-def scatter_matrix(data, cmap):
-    paths = []
-    n = len(AXES)
-    for s, rows in data.items():
-        fig, axs = plt.subplots(n - 1, n - 1, figsize=(5.8 * (n - 1), 5.4 * (n - 1)))
-        for i in range(1, n):
-            for j in range(n - 1):
-                ax = axs[i - 1, j]
-                if j >= i:
-                    ax.axis("off"); continue
-                kx, lx, ux, _ = AXES[j]; ky, ly, uy, _ = AXES[i]
-                for r in sorted(rows, key=lambda r: r["front"]):
-                    vx, vy = r["raw"][kx], r["raw"][ky]
-                    if vx is None or vy is None:
-                        continue
-                    col = cmap[r["id"]]
-                    ax.errorbar(vx, vy, xerr=r["sig"][kx] or None, yerr=r["sig"][ky] or None,
-                                fmt="o", ms=14, mfc=col if r["front"] else "white", mec=col,
-                                mew=2.4, ecolor=col, elinewidth=1.4, capsize=4,
-                                alpha=1.0 if r["front"] else 0.9,
-                                zorder=3 if r["front"] else 2)
-                if SIGN[kx] < 0:
-                    ax.invert_xaxis()
-                if SIGN[ky] < 0:
-                    ax.invert_yaxis()
-                if i == n - 1:
-                    ax.set_xlabel(f"{lx}\n({ux})", fontsize=FS_LABEL)
-                if j == 0:
-                    ax.set_ylabel(f"{ly}\n({uy})", fontsize=FS_LABEL)
-                ax.grid(True, color=ps.C["grid"], lw=0.6, alpha=0.45)
-                ax.set_axisbelow(True)
-                _style_axes(ax)
-        front_ids = sorted(r["id"] for r in rows if r["front"])
-        leg_ax = axs[0, n - 2]
-        leg_ax.legend(handles=_legend_handles(sorted(cmap), cmap), loc="center",
-                      frameon=False, fontsize=FS_LEG, title=f"{s}\nfront: {', '.join(front_ids)}",
-                      title_fontsize=FS_LEG + 1)
-        fig.suptitle(f"Pairwise objectives — {s}  (axes oriented so up/right = better; "
-                     f"bars = σ)", fontsize=FS_TITLE, y=1.0)
-        fig.tight_layout(rect=(0, 0, 1, 0.97))
-        p = OUT / f"pareto_scatter_matrix_{s}.png"
-        fig.savefig(p, dpi=300, bbox_inches="tight"); plt.close(fig)
-        paths.append(p)
-    return paths
-
-
-# ---------------------------------------------------------------- 3. dominance heatmap
 def dominance_heatmap(data, cmap):
     scen = list(data)
     fig, axs = plt.subplots(len(scen), 1, figsize=(15.5, 7.6 * len(scen)),
@@ -292,7 +244,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     data = load()
     cmap = _palette(data)
-    for p in [parallel_coords(data, cmap), *scatter_matrix(data, cmap),
+    for p in [parallel_coords(data, cmap),
               dominance_heatmap(data, cmap)]:
         print(f"wrote {p}")
 

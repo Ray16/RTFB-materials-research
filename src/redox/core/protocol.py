@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 from pathlib import Path
 
 SP_SCHEMA = 1
@@ -91,11 +92,24 @@ def load_record(state_dir: Path, charge: int, mult: int, proto: dict = ACTIVE_SP
     p = record_path(state_dir, charge, mult, proto)
     if p is None or not p.exists():
         return None
-    rec = json.loads(p.read_text())
+    try:
+        rec = json.loads(p.read_text())
+    except (OSError, ValueError):
+        return None
+    if not isinstance(rec, dict):
+        return None
+    if (rec.get("protocol") != proto or rec.get("protocol_hash") != p.stem
+            or rec.get("geom_sha1") != geom_sha1(Path(state_dir) / "opt.xyz")
+            or rec.get("charge") != charge or rec.get("mult") != mult):
+        return None
     if not record_provenance_ok(rec, proto):
         return None
-    if require_converged and not (rec.get("converged_smd") and rec.get("converged_gas")):
+    if require_converged and not (rec.get("converged_smd") is True
+                                  and rec.get("converged_gas") is True):
         return None
+    for key in ("e_smd_eV", "e_gas_eV"):
+        if type(rec.get(key)) not in (int, float) or not math.isfinite(rec[key]):
+            return None
     return rec
 
 

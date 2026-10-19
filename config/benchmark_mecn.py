@@ -57,6 +57,8 @@ def _ref_is_primary(conversion: str) -> bool:
 
 def _tier(r: dict, wave: int) -> tuple[str, str]:
     name = r["name"].strip()
+    if wave == 2 and name == "2-fluoro-1,4-benzoquinone" and "0c03632" in r["doi"]:
+        return "B", "source Table S1 inconsistent: E1/E2 imply 0.94 V, printed spacing is 0.86 V"
     if name.startswith(_EPC_ONLY):
         return "excluded", "cathodic peak potential at 1000 mV/s (not an E1/2)"
     if wave == 2 and r.get("wave2_reversible", "").strip().lower() != "true":
@@ -133,10 +135,15 @@ def load() -> list[dict]:
                                       tier_reason=why, **cite))
         if 1 in tiers and 2 in tiers and "excluded" not in tiers.values():
             ev1 = [e for e in ent["events"] if e["kind"] == "E" and e["source"] == r["source"]]
-            sp_tier = "B" if "half-peak" in ev1[0]["tier_reason"] else "A"
+            # Reference conversion cancels in E1-E2. Other endpoint limitations (water,
+            # ambiguous source values, peak definitions, low curator confidence) do not.
+            endpoint_limits = [e["tier_reason"] for e in ev1 if e["tier"] != "A"]
+            sp_tier = ("A" if all("unverified literature conversion constant" in reason
+                                  for reason in endpoint_limits) else "B")
             ent["events"].append(dict(event="dE12", kind="spacing",
                                       exp_V=_f(r["E1_vs_Fc_V"]) - _f(r["E2_vs_Fc_V"]),
-                                      tier=sp_tier, tier_reason="E1 - E2, reference-free", **cite))
+                                      tier=sp_tier, tier_reason="E1 - E2, reference-free"
+                                      + ("; " + "; ".join(endpoint_limits) if sp_tier == "B" else ""), **cite))
     return list(by_name.values())
 
 

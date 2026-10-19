@@ -125,5 +125,6 @@ Per-couple detail: `redox_potentials.csv` (`status`, `thermal_qc`, `dE_thermal_V
   TBAPF₆. Not dominated but INCOMPLETE (no QC-clean λ): **aq_benzylamino, nq_benzyloxy**.
 
 Figures (`results/figures/candidates/`): `pareto_parallel_coords.png` (incomplete rows dotted),
-`pareto_scatter_matrix_{LiPF6,TBAPF6}.png`, `pareto_dominance_heatmap.png`,
-`merrifield_summary.png`, `candidate_E_redox_landscape.png`.
+`pareto_dominance_heatmap.png`, `merrifield_summary.png`, `candidate_E_redox_landscape.png`,
+`leads_vs_existing_{E1_disp,lambda_cap}.png` (discovered leads vs registered candidates),
+`discovery_capacity_vs_sa.png` (identified pool vs registered candidates).

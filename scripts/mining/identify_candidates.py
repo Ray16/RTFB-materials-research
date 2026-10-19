@@ -31,7 +31,13 @@ from redox.screening.discovery import TETHER, describe, identify, rediscover  # 
 OUT = ROOT / "results" / "discovery"
 D3 = ROOT / "data" / "raw" / "validation" / "D3TaLES" / "d3tales_public.csv"
 CONFIGS = ("starting_candidates", "merrifield_multielectron", "redox_groups",
-           "discovered_candidates")
+           "discovered_candidates", "custom_candidates")
+
+
+def declared_electrons(group):
+    """Nominal bookkeeping follows declared adjacent charges, before accessibility QC."""
+    charges = sorted({int(state[1]) for state in group["states"]})
+    return sum(b - a == 1 for a, b in zip(charges, charges[1:]))
 
 
 def _front(df, cols_max=("capacity_nominal_mAh_g",), cols_min=("SA_grafted", "d3_electron_reorg_eV")):
@@ -68,15 +74,21 @@ def pubchem_names(smiles):
 
 
 def main():
+    global OUT
     import argparse
     ap = argparse.ArgumentParser()
     ap.add_argument("--pubchem", action="store_true",
                     help="name the pre-filter front via PubChem (sends parent SMILES only)")
+    ap.add_argument("--out", type=Path, default=OUT, help="output directory (must be new)")
+    ap.add_argument("--scorecard", type=Path, default=ROOT / "results/scorecard.csv")
     a = ap.parse_args()
+    OUT = a.out.resolve()
+    if OUT.exists():
+        ap.error("choose a new output directory to preserve previous discovery runs")
     OUT.mkdir(parents=True, exist_ok=True)
     F = load_config("electrolyte").FARADAY
     groups = [dict(g, config=c) for c in CONFIGS for g in load_config(c).GROUPS if "frag" in g]
-    sc = {r["id"] for r in csv.DictReader(open(ROOT / "results" / "scorecard.csv"))}
+    sc = {r["id"] for r in csv.DictReader(open(a.scorecard))}
 
     redisc = pd.DataFrame(rediscover(groups, F))
     redisc.to_csv(OUT / "rediscovery_check.csv", index=False)
@@ -84,7 +96,7 @@ def main():
 
     cur = []
     for g, r in zip(groups, redisc.to_dict("records")):
-        n_e = 2 if r["multi_e"] else 1
+        n_e = declared_electrons(g)
         cur.append(dict(id=g["id"], name=g["name"], config=g["config"], families=r["families"],
                         multi_e=r["multi_e"], grafted_smiles=r["target"], in_scorecard=g["id"] in sc,
                         **describe(r["target"], n_e, F)))
@@ -100,8 +112,10 @@ def main():
                      usecols=["_id", "smiles", "groundState_charge", "sa_score",
                               "electron_reorganization_energy", "hole_reorganization_energy",
                               "solv_reduction_potential", "solv_oxidation_potential"])
-    d3 = d3[d3.groundState_charge == 0]
+    # Charged precursors can be essential (e.g. monoquaternized bipyridines).
+    # Keep their source charge instead of discarding them before family matching.
     recs = [dict(source="D3TaLES", source_id=r["_id"], smiles=r["smiles"],
+                 source_ground_state_charge=r["groundState_charge"],
                  d3_sa_score=r["sa_score"], d3_electron_reorg_eV=r["electron_reorganization_energy"],
                  d3_hole_reorg_eV=r["hole_reorganization_energy"],
                  d3_solv_reduction_potential_raw=r["solv_reduction_potential"],
@@ -123,7 +137,8 @@ def main():
         ).reset_index().to_csv(OUT / "d3tales_pool_status_counts.csv", index=False)
     pool[pool.status != "ring-N graft not forming a viologen"].to_csv(
         OUT / "d3tales_pool.csv", index=False)
-    ok = pool[(pool.status == "ok") & ~pool.parent_in_library.astype(bool)]
+    ok = pool[(pool.status == "ok") & ~pool.parent_in_library.astype(bool)
+              & ~pool.grafted_in_library.fillna(False).astype(bool)]
     print(f"status ok, new: {ok.source_id.nunique()} molecules; D3TaLES lambda usable for "
           f"{ok[ok.d3_lambda_valid].source_id.nunique()} (rest outside [0, 1.5] eV or missing)")
     okv = ok[ok.d3_lambda_valid]

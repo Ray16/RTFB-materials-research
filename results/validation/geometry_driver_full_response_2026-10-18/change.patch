@@ -1,0 +1,29 @@
+--- a/src/redox/qm/dft.py
++++ b/src/redox/qm/dft.py
+@@ -41,7 +41,7 @@
+ def _geomopt_fn(backend: str):
+     """geomeTRIC driver. pyscf's is backend-agnostic and drives a gpu4pyscf mean-field too
+     (gpu4pyscf ships no geometric_solver of its own, only an ase_solver)."""
+-    from pyscf.geomopt.geometric_solver import optimize as fn
++    from pyscf.geomopt.geometric_solver import kernel as fn
+     return fn
+ 
+ 
+@@ -416,7 +416,16 @@
+             _optkw["constraints"] = constraints
+         if conv_params:
+             _optkw.update(conv_params)
+-        mol = geomopt(mf_opt, **_optkw)  # relaxed Mole (at opt basis)
++        gradient = mf_opt.nuc_grad_method()
++        gradient.grid_response = True
++        scanner = gradient.as_scanner()
++        converged, mol = geomopt(scanner, **_optkw)
++        out.update(optimized=bool(converged and scanner.converged),
++                   geometry_optimization_converged=bool(converged),
++                   optimization_SCF_converged=bool(scanner.converged),
++                   opt_gradient_grid_response=True)
++        if assert_convergence and not out["optimized"]:
++            raise RuntimeError("Geometry optimization did not converge; preserve the trajectory before resuming")
+         opt_atoms = _mol_to_atoms(mol)
+         if opt_out is not None:
+             _write_xyz(opt_atoms, Path(opt_out),

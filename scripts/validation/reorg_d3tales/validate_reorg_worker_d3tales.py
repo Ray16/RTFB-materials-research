@@ -16,7 +16,7 @@ Match details (from Duke et al. 2023 + the D3TaLES README):
 RI-J density fitting + gpu4pyscf (the range-separated exchange is far too slow otherwise).
 Writes one JSON per molecule under results/d3tales_reorg_validation_d3level/calc/. Resumable.
 
-  CUDA_VISIBLE_DEVICES=<i> PYTHONPATH=src python scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py \
+  python -m redox.workflows.gpu --gpu <i> --out logs/runs/d3level -- python scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py \
       --source results/d3tales_reorg_validation_d3level/molecules.csv --only 80JNKV
 """
 from __future__ import annotations

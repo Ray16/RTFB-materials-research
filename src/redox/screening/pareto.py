@@ -52,8 +52,10 @@ def _objectives(cand, pool, sc, cap_key="specific_capacity_mAh_g"):
     `missing` lists PRIMARY objectives that are absent. Stability is NOT APPLICABLE (not
     missing) for a 1-electron path: there is no intermediate to disproportionate."""
     o, missing = {}, []
+    if cand.get('spin_confidence') in ('DFT_check_required','wrong_ground_state'):missing.append('spin_state')
+    thermal_valid = cand.get("thermal_qc", "ok") == "ok"
     E = _f(cand.get("E_V"))
-    if E is not None:
+    if E is not None and thermal_valid:
         o["voltage"] = ((-E if pool == "anolyte" else E), _f(cand["sigma_E_V"]) or 0.0)
     else:
         missing.append("voltage")
@@ -63,14 +65,14 @@ def _objectives(cand, pool, sc, cap_key="specific_capacity_mAh_g"):
     else:
         missing.append("capacity")
     dg = _f(cand.get("dG_disp_kJmol"))
-    if dg is not None:
+    if dg is not None and thermal_valid:
         o["stability"] = (dg, (_f(cand.get("sigma_disp_eV")) or sc.SIGMA_DISP_EV) * 96.485)
     elif str(cand.get("disp_applicable")) == "True":
         missing.append("stability")
     # Only QC-clean inner-sphere lambda is admitted. A row whose couples were all flagged or
     # not computed carries no kinetics value and is therefore INCOMPLETE, not "unranked".
     lam = _f(cand.get("lambda_i_eV"))
-    if lam is not None:
+    if lam is not None and cand.get("lambda_qc", "ok") == "ok":
         o["kinetics"] = (-lam, _f(cand.get("sigma_lambda_eV")) or sc.SIGMA_LAMBDA_EV)
     else:
         missing.append("kinetics")

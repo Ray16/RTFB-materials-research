@@ -22,6 +22,7 @@ from pathlib import Path
 
 from redox.core.common import HARTREE_EV, ROOT, load_config, read_manifest
 from redox.core.common import write_xyz as _write_xyz
+from redox.core.io import atomic_write_json
 
 
 def _electrolyte():
@@ -40,7 +41,7 @@ def _dft_module(backend: str):
 def _geomopt_fn(backend: str):
     """geomeTRIC driver. pyscf's is backend-agnostic and drives a gpu4pyscf mean-field too
     (gpu4pyscf ships no geometric_solver of its own, only an ase_solver)."""
-    from pyscf.geomopt.geometric_solver import optimize as fn
+    from pyscf.geomopt.geometric_solver import kernel as fn
     return fn
 
 
@@ -105,7 +106,7 @@ def _build_smd_mf(mol, xc, solvent, backend="cpu", disp=None, nlc=None):
     return mf
 
 
-def _kernel_robust(mf):
+def _kernel_robust(mf, dm0=None):
     """Run SCF; if it doesn't converge, retry with escalating stabilizers.
 
     Only the fallbacks fire on hard cases (e.g. open-shell metal cations in SMD);
@@ -115,7 +116,7 @@ def _kernel_robust(mf):
     """
     mf.max_cycle = 200
     mf.conv_tol = 1e-9
-    e = float(mf.kernel())
+    e = float(mf.kernel() if dm0 is None else mf.kernel(dm0=dm0))
     if bool(mf.converged):
         return e, True
     # (1) level shift + damping, restarted from the current density
@@ -132,6 +133,10 @@ def _kernel_robust(mf):
         mf.damp = 0.0
         mf2 = mf.newton()
         e = float(mf2.kernel(dm0=dm))
+        # Callers immediately inspect density/orbitals on mf; keep them on the same
+        # SCF solution as the returned Newton energy, rather than an earlier guess.
+        for name in ('mo_coeff', 'mo_occ', 'mo_energy', 'e_tot', 'converged'):
+            setattr(mf, name, getattr(mf2, name))
         return e, bool(mf2.converged)
     except Exception as exc:  # pragma: no cover - backend-dependent
         print(f"[warn] SOSCF fallback failed: {exc}", flush=True)
@@ -153,22 +158,65 @@ def _free_gpu_pool():
         pass
 
 
-def _lowest_scf(make_mf, guesses, post=None):
+def _lowest_scf(make_mf, guesses, post=None, initial_densities=None):
     """Run `make_mf()` from each initial guess; return (e, converged, post_result, per_guess)
     for the lowest CONVERGED energy (falls back to the first guess if none converged).
     `post(mf)` (e.g. orbital diagnostics) is evaluated right after each solve so no SCF object
     outlives its guess — holding two UKS objects at once ran a V100-32GB out of memory."""
     best, per = None, []
-    for g in guesses:
+    densities = initial_densities or {}
+    for g in tuple(guesses) + tuple(densities):
         mf = make_mf()
-        mf.init_guess = g
-        e, conv = _kernel_robust(mf)
+        if g not in densities:
+            mf.init_guess = g
+        e, conv = _kernel_robust(mf, dm0=densities[g]) if g in densities else _kernel_robust(mf)
         per.append(dict(guess=g, e_Ha=e, converged=conv))
         if best is None or (conv and (not best[1] or e < best[0])):
             best = (e, conv, post(mf) if post else None)
         del mf
         _free_gpu_pool()
     return best[0], best[1], best[2], per
+
+
+def _metal_doublet_phase_seeds(mol, xc, backend, disp=None, nlc=None, solvent=None):
+    """N+1 closed-shell orbital-removal seeds for known Fe doublet SCF trapping.
+
+    Fc+ gas and SMD minao/atom/huckel can all miss the minimum. The reference is recomputed
+    in the exact current geometry/basis; no density from a different geometry is used.
+    Organics never enter this extra reference calculation.
+    """
+    import numpy as np
+    dft = _dft_module(backend)
+    parent = mol.copy(); parent.charge = mol.charge - 1; parent.spin = 0; parent.build()
+    if solvent is None:
+        reference = dft.RKS(parent).density_fit(); reference.xc = xc
+        if disp: reference.disp = disp
+        if nlc: reference.nlc = nlc
+    else:
+        reference = _build_smd_mf(parent, xc, solvent, backend, disp, nlc)
+    _, converged = _kernel_robust(reference)
+    if not converged:
+        raise RuntimeError("Fe doublet occupation reference did not converge")
+    C, occ = reference.mo_coeff, reference.mo_occ
+    host_occ = np.asarray(occ.get() if hasattr(occ, 'get') else occ)
+    nocc = int((host_occ > 0).sum())
+    target = dft.UKS(mol).density_fit()
+    seeds = {}
+    for k in range(min(2, nocc)):
+        oa = host_occ / 2; ob = oa.copy(); ob[nocc - 1 - k] = 0
+        if backend == "gpu":
+            import cupy
+            oa, ob = cupy.asarray(oa), cupy.asarray(ob)
+        dm = target.make_rdm1((C, C), (oa, ob))
+        seeds[f"rm{k}"] = np.asarray(dm.get() if hasattr(dm, 'get') else dm)
+    del reference, target, C, occ
+    _free_gpu_pool()
+    return seeds
+
+
+def _metal_doublet_gas_seeds(mol, xc, backend, disp=None, nlc=None):
+    """Compatibility wrapper for the existing gas occupation-guess policy."""
+    return _metal_doublet_phase_seeds(mol, xc, backend, disp, nlc)
 
 
 def _orbital_diag(mf, nunpaired):
@@ -368,7 +416,16 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             _optkw["constraints"] = constraints
         if conv_params:
             _optkw.update(conv_params)
-        mol = geomopt(mf_opt, **_optkw)  # relaxed Mole (at opt basis)
+        gradient = mf_opt.nuc_grad_method()
+        gradient.grid_response = True
+        scanner = gradient.as_scanner()
+        converged, mol = geomopt(scanner, **_optkw)
+        out.update(optimized=bool(converged and scanner.converged),
+                   geometry_optimization_converged=bool(converged),
+                   optimization_SCF_converged=bool(scanner.converged),
+                   opt_gradient_grid_response=True)
+        if assert_convergence and not out["optimized"]:
+            raise RuntimeError("Geometry optimization did not converge; preserve the trajectory before resuming")
         opt_atoms = _mol_to_atoms(mol)
         if opt_out is not None:
             _write_xyz(opt_atoms, Path(opt_out),
@@ -384,14 +441,25 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
     guesses = OPEN_SHELL_GUESSES if nunpaired else ("minao",)
     # provenance of the energy: what an adopter must match (redox.qm.sp._adoptable)
     from redox.core.protocol import software_versions
-    out.update(density_fit=True, conv_tol=1e-9, scf_guesses=list(guesses),
+    from redox.core.protocol import geom_sha1
+    scored_path = Path(opt_out) if do_opt and opt_out is not None else (Path(xyz_path) if not do_opt else None)
+    out.update(density_fit=True, conv_tol=1e-9, max_cycle=200, scf_guesses=list(guesses),
+               energy_protocol=dict(_SP, xc=sp_xc, basis=sbas, disp=sp_disp,
+                                    nlc=sp_nlc, solvent=solvent),
+               energy_geom_sha1=geom_sha1(scored_path) if scored_path is not None else None,
                software=software_versions())
     e_smd = None
     if do_smd:
-        e_smd, conv_smd, _, per = _lowest_scf(
-            lambda: _build_smd_mf(mol_sp, sp_xc, solvent, backend, sp_disp, sp_nlc), guesses)
+        smd_seeds = (_metal_doublet_phase_seeds(mol_sp, sp_xc, backend, sp_disp, sp_nlc, solvent)
+                     if nunpaired == 1 and 'Fe' in atoms.get_chemical_symbols() else {})
+        e_smd, conv_smd, diag_smd, per = _lowest_scf(
+            lambda: _build_smd_mf(mol_sp, sp_xc, solvent, backend, sp_disp, sp_nlc), guesses,
+            post=lambda m: _orbital_diag(m, nunpaired), initial_densities=smd_seeds)
+        out['smd_occupation_guesses'] = list(smd_seeds)
         out.update(e_smd_Ha=e_smd, e_smd_eV=e_smd * HARTREE_EV, converged_smd=conv_smd,
                    scf_guess_energies_smd=per)
+        for k,v in (diag_smd or {}).items():
+            out[f'smd_{k}']=v
 
     if do_gas:
         KS = dft.RKS if nunpaired == 0 else dft.UKS
@@ -403,8 +471,11 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             if sp_nlc:
                 m.nlc = sp_nlc
             return m
+        gas_seeds = (_metal_doublet_gas_seeds(mol_sp, sp_xc, backend, sp_disp, sp_nlc)
+                     if nunpaired == 1 and 'Fe' in atoms.get_chemical_symbols() else {})
         e_gas, conv_gas, diag, per = _lowest_scf(_gas_mf, guesses,
-                                                 post=lambda m: _orbital_diag(m, nunpaired))
+                        post=lambda m: _orbital_diag(m, nunpaired), initial_densities=gas_seeds)
+        out['gas_occupation_guesses'] = list(gas_seeds)
         out.update(e_gas_Ha=e_gas, e_gas_eV=e_gas * HARTREE_EV, converged_gas=conv_gas,
                    scf_guess_energies_gas=per)
         # QC: anion-bound check (gas HOMO > 0 => unbound) + spin contamination.
@@ -443,7 +514,18 @@ def geom_for(gid: str, state: str) -> Path:
 
 
 def _uma_mult(gid: str, state: str, fallback: int) -> int:
-    """Use the spin multiplicity UMA actually chose (spin scan), not the manifest hint."""
+    """Use a verified DFT spin decision when present, then the UMA preliminary scan."""
+    overrides=ROOT/'config/spin_overrides.json'
+    if overrides.exists():
+        entry=json.loads(overrides.read_text()).get(gid,{}).get(state)
+        if entry:
+            import hashlib
+            row=next((r for r in read_manifest() if r['id']==gid and r['state']==state),None)
+            if (row is None or int(row['charge'])!=entry['charge']
+                    or hashlib.sha256(row['smiles'].encode()).hexdigest()!=entry['smiles_sha256']
+                    or entry['protocol']!=_SP):
+                raise RuntimeError(f'{gid}/{state}: DFT spin decision needs revalidation after input/protocol change')
+            return int(entry['mult'])
     uj = ROOT / "calcs" / "uma" / gid / state / "result.json"
     if uj.exists():
         try:
@@ -481,24 +563,38 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
     import shutil
     from ase.io import read as ase_read
     outroot = ROOT / "calcs" / "dft"
+    failures = 0
     for r in rows:
         gid, st = r["id"], r["state"]
         outdir = outroot / gid / st
         rj = outdir / "result.json"
         if rj.exists() and not force:
-            stale = _opt_protocol_mismatch(json.loads(rj.read_text()), int(r["charge"]))
+            cached = json.loads(rj.read_text())
+            fallback_mult = int(r.get("mult_hint") or r.get("mult") or 1)
+            desired_mult = _uma_mult(gid, st, fallback_mult)
+            stale = _opt_protocol_mismatch(cached, int(r["charge"]))
+            if cached.get("mult") != desired_mult:
+                stale += f"; multiplicity {cached.get('mult')} != verified desired {desired_mult}"
             if stale:
+                failures += 1
                 # never silently accept a geometry from a different optimization protocol,
                 # and never silently overwrite it either: needs an explicit --force.
                 print(f"[STALE] {gid}/{st}: result.json optimized at a different protocol "
                       f"({stale}); keeping it — rerun with --force to replace", flush=True)
             else:
+                old = json.loads(rj.read_text())
+                if (not (outdir / "opt.xyz").exists() or old.get("charge") != int(r["charge"])
+                        or old.get("converged_smd") is not True
+                        or (do_freq and old.get("g_thermal_eV") is None)):
+                    print(f"[INCOMPLETE] {gid}/{st}: inspect cached geometry/SCF/thermal output", flush=True)
+                    failures += 1
                 print(f"[skip] {gid}/{st}", flush=True)
             continue
         q = int(r["charge"])
         seeds = conformer_seeds(gid, st, nconf) if do_opt else [geom_for(gid, st)]
         seeds = [s for s in seeds if s and s.exists()]
         if not seeds:
+            failures += 1
             print(f"[miss] {gid}/{st} no geometry", flush=True); continue
         if do_opt and torsion_scan:
             outdir.mkdir(parents=True, exist_ok=True)
@@ -526,7 +622,7 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
                               opt_out=opt_tmp, backend=backend)
                 e = res.get("e_smd_eV")
                 seed_es.append(e)
-                if e is not None and (best is None or e < best[0]):
+                if e is not None and res.get("converged_smd") is True and (best is None or e < best[0]):
                     best = (e, si, res, opt_tmp if opt_tmp.exists() else seed_tmp)
             except Exception as e:
                 print(f"[warn] {gid}/{st} seed {si} failed: {type(e).__name__}: "
@@ -534,6 +630,7 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
                 seed_es.append(None)
                 continue
         if best is None:
+            failures += 1
             print(f"[fail] {gid}/{st}: all {len(seeds)} seeds failed", flush=True); continue
         e_best, si_best, res, optpath = best
         # thermal (RRHO) only on the winning conformer
@@ -551,16 +648,19 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
                    seed_e_smd_eV=[round(x, 4) if x is not None else None for x in seed_es],
                    seed_spread_eV=(round(max(valid_es) - min(valid_es), 4)
                                    if len(valid_es) > 1 else 0.0))
-        rj.write_text(json.dumps(res, indent=2))
+        atomic_write_json(rj, res)
         for f in outdir.glob("_seed_*.xyz"):
             f.unlink()
         for f in outdir.glob("_opt_*.xyz"):
             f.unlink()
         gth = res.get("g_thermal_eV")
+        if do_freq and gth is None:
+            failures += 1
         gth_s = f"{gth:+.3f}" if isinstance(gth, (int, float)) else "n/a"
         print(f"[done] {gid}/{st} E_smd={e_best:.3f} eV (winner {si_best}/{len(seeds)}, "
               f"spread {res['seed_spread_eV']:.3f} eV) Gtherm={gth_s} "
               f"conv={res.get('converged_smd')} ({res['sp_xc']}/{res['sp_basis']})", flush=True)
+    return failures
 
 
 def main():
@@ -602,12 +702,16 @@ def main():
         if args.only:
             gid, _, st = args.only.partition(":")
             rows = [r for r in rows if r["id"] == gid and (not st or r["state"] == st)]
+            if not rows:
+                ap.error(f"no states match --only {args.only!r}")
         if args.shard:
             n, i = (int(x) for x in args.shard.split(":"))
             rows = [r for k, r in enumerate(rows) if k % n == i]
-        run_batch(rows, args.force, do_opt=not args.no_opt,
+        failures = run_batch(rows, args.force, do_opt=not args.no_opt,
                   do_freq=not args.no_freq, backend=args.backend,
                   nconf=args.nconf, preopt=args.preopt, torsion_scan=args.torsion_scan)
+        if failures:
+            raise SystemExit(1)
         return
 
     res = dft_smd(Path(args.xyz), args.charge, args.mult,
@@ -616,7 +720,7 @@ def main():
     print(json.dumps(res, indent=2))
     if args.out:
         Path(args.out).parent.mkdir(parents=True, exist_ok=True)
-        Path(args.out).write_text(json.dumps(res, indent=2))
+        atomic_write_json(Path(args.out), res)
 
 
 if __name__ == "__main__":

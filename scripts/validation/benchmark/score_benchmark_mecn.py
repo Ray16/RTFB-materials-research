@@ -27,19 +27,21 @@ OUT = RESULTS / "validation" / "benchmark_mecn.csv"
 def _f(x):
     try:
         v = float(x)
-        return None if math.isnan(v) else v
+        return v if math.isfinite(v) else None
     except (TypeError, ValueError):
         return None
 
 
 def stats(res):
+    if any(isinstance(r, bool) or not math.isfinite(r) for r in res):
+        raise ValueError("Benchmark residuals must be finite numerical values")
     n = len(res)
     if not n:
-        return dict(n=0)
+        return dict(n=0, MAE=None, RMSE=None, bias=None, SD=None)
     mae = sum(abs(r) for r in res) / n
     rmse = math.sqrt(sum(r * r for r in res) / n)
     bias = sum(res) / n
-    sd = math.sqrt(sum((r - bias) ** 2 for r in res) / (n - 1)) if n > 1 else float("nan")
+    sd = math.sqrt(sum((r - bias) ** 2 for r in res) / (n - 1)) if n > 1 else None
     return dict(n=n, MAE=mae, RMSE=rmse, bias=bias, SD=sd)
 
 
@@ -82,8 +84,9 @@ def main():
         for tier in ("A", "B"):
             s = stats([r["err_V"] for r in scored if sel(r) and r["tier"] == tier])
             if s["n"]:
+                sd = f"{s['SD']:.3f}" if s["SD"] is not None else "pending"
                 print(f"  {qty:30s} tier {tier}: n={s['n']:2d}  MAE={s['MAE']:.3f}  "
-                      f"RMSE={s['RMSE']:.3f}  bias={s['bias']:+.3f}  SD={s['SD']:.3f} V")
+                      f"RMSE={s['RMSE']:.3f}  bias={s['bias']:+.3f}  SD={sd} V")
         for fam in sorted({r["family"] for r in scored if sel(r) and r["tier"] == "A"} - {None}):
             s = stats([r["err_V"] for r in scored if sel(r) and r["tier"] == "A" and r["family"] == fam])
             print(f"      tier A {fam:22s} n={s['n']:2d}  MAE={s['MAE']:.3f}  bias={s['bias']:+.3f} V")

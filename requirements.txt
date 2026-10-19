@@ -6,7 +6,7 @@ torch==2.8.0
 fairchem-core==2.21.0
 ase
 rdkit
-pyscf
+pyscf==2.14.0  # native thermal implementation certificate
 geometric  # geomeTRIC — in-solvent DFT geometry optimizer driven by pyscf
 # gpu4pyscf-cuda12x + cutensor-cu12 (GPU DFT+SMD backend) are CUDA-tagged like torch, so
 # they are installed by setup_env.sh step 3b (not here) to keep pip's resolver from pulling
@@ -22,3 +22,4 @@ jupyter
 huggingface_hub
 openpyxl  # read data/raw/candidates/Candidates.xlsx (pandas .read_excel engine)
 pytest  # data-contract tests: PYTHONPATH=src python -m pytest -q tests
+psutil  # shared-node CPU allocation and process ownership

@@ -14,9 +14,10 @@ Recipe (per molecule):
   reference conformer = the NEUTRAL 'neu' optimized geometry.
   For every non-neu state S: re-optimize S starting FROM the neu geometry with all rotatable-bond
   dihedrals FROZEN (geomeTRIC $freeze), giving S_cf in the neu conformer. neu itself is the ref.
-  Then recompute each adjacent-charge couple's 4-point lambda using the cf geometries, in GAS and
-  in SMD (SMD also rescues an unbound gas anion). Report raw vs cf vs cf+smd + RMSDs; pick best
-  (cf+smd if available, else cf-gas, else raw).
+  Then recompute each adjacent-charge couple's four-point distortion energies using the cf
+  geometries in gas and equilibrium SMD. These are diagnostics: gas unbound states remain
+  invalid, and equilibrium SMD mixes geometric and solvent response rather than establishing
+  a validated inner-only or nonequilibrium reorganization energy. No automatic "best" value.
 
   gpu_reserve run <idx> -- env OMP_NUM_THREADS=2 PYTHONPATH=src \
       python scripts/analysis/reorg_conformer_matched.py --only aq_benzylamino --backend gpu
@@ -31,7 +32,8 @@ RDLogger.DisableLog("rdApp.*")
 
 import redox.qm.dft as D
 from redox.properties.reorg import _couples
-from redox.core.common import DFT, read_manifest, read_result as _res
+from redox.core.common import DFT, read_manifest, read_result as _res, smiles_to_xyz_map
+from redox.core.protocol import geom_sha1
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "results" / "reorg_cf"
@@ -51,9 +53,15 @@ def heavy_rmsd(p1, p2):
     return float(np.sqrt(((A @ R.T - B) ** 2).sum(1).mean()))
 
 
-def rotatable_dihedral_constraints(smiles, out_path):
-    """geomeTRIC $freeze locking every rotatable-bond dihedral (1-indexed, AddHs order == xyz)."""
-    m = Chem.AddHs(Chem.MolFromSmiles(smiles))
+def rotatable_dihedral_constraints(smiles, out_path, xyz_path):
+    """Freeze heavy-atom torsions using the actual stored XYZ order, not canonical SMILES."""
+    m = Chem.MolFromSmiles(smiles)
+    mapping = smiles_to_xyz_map(smiles, xyz_path)
+    if mapping is None:
+        raise ValueError("cannot map canonical SMILES to the stored reference geometry")
+    xyz = ase_read(str(xyz_path))
+    heavy = [i for i, sym in enumerate(xyz.get_chemical_symbols()) if sym != "H"]
+    mapped_xyz = [heavy[i] for i in mapping]
     patt = Chem.MolFromSmarts("[!$(*#*)&!D1]-!@[!$(*#*)&!D1]")
     lines, seen = ["$freeze"], set()
     for a, b in m.GetSubstructMatches(patt):
@@ -66,7 +74,8 @@ def rotatable_dihedral_constraints(smiles, out_path):
         if quad in seen:
             continue
         seen.add(quad)
-        lines.append(f"dihedral {quad[0]+1} {quad[1]+1} {quad[2]+1} {quad[3]+1}")
+        actual = [mapped_xyz[i] + 1 for i in quad]
+        lines.append("dihedral " + " ".join(map(str, actual)))
     out_path.write_text("\n".join(lines) + "\n")
     return len(lines) - 1
 
@@ -74,15 +83,19 @@ def rotatable_dihedral_constraints(smiles, out_path):
 # energy single points, memoized on (charge, mult, geom-path)
 _CACHE = {}
 def _e(kind, geom, q, m, bk):
-    key = (kind, str(geom), q, m)
+    key = (kind, str(geom), geom_sha1(geom), q, m)
     if key in _CACHE:
         return _CACHE[key]
     if kind == "gas":
         r = D.dft_smd(geom, q, m, do_opt=False, do_gas=True, do_smd=False, do_freq=False, backend=bk)
         v = r.get("e_gas_eV"); diag = (r.get("gas_homo_eV"), bool(r.get("anion_unbound")))
+        converged = r.get("converged_gas")
     else:
         r = D.dft_smd(geom, q, m, do_opt=False, do_gas=False, do_smd=True, do_freq=False, backend=bk)
         v = r.get("e_smd_eV"); diag = (None, None)
+        converged = r.get("converged_smd")
+    if converged is not True or v is None or not np.isfinite(v):
+        raise RuntimeError(f"invalid {kind} SCF for {geom}")
     _CACHE[key] = (v, diag)
     return v, diag
 
@@ -104,7 +117,7 @@ def process(gid, backend):
         return dict(id=gid, status="error", error="no neu/opt.xyz reference")
     smiles = _smiles_for(gid)
     cfile = OUT / f"{gid}.freeze"
-    n_frozen = rotatable_dihedral_constraints(smiles, cfile)
+    n_frozen = rotatable_dihedral_constraints(smiles, cfile, neu_geom)
 
     # collect all distinct states across couples; neu is the frozen reference (geom as-is)
     states = {}
@@ -127,7 +140,7 @@ def process(gid, backend):
         cf_geom[st] = outg
         rmsd_cf[st] = round(heavy_rmsd(neu_geom, outg), 3)
 
-    rec = dict(id=gid, status="ok", smiles=smiles, n_frozen_dih=n_frozen,
+    rec = dict(id=gid, status="ok", validation_status="diagnostic_only", smiles=smiles, n_frozen_dih=n_frozen,
                rmsd_neu_state_raw=rmsd_raw, rmsd_neu_state_cf=rmsd_cf, couples=[])
     for (sO, qO, mO), (sR, qR, mR) in couples:
         gO, gR = cf_geom[sO], cf_geom[sR]
@@ -145,9 +158,9 @@ def process(gid, backend):
             c["lambda_cf_smd_eV"] = round((sOR - sOO) + (sRO - sRR), 4)
         except Exception as e:
             c["lambda_cf_smd_eV"] = None; c["smd_err"] = f"{type(e).__name__}: {e}"
-        c["lambda_best_eV"], c["by"] = (
-            (c["lambda_cf_smd_eV"], "cf+smd") if c.get("lambda_cf_smd_eV") is not None
-            else (c.get("lambda_cf_gas_eV"), "cf_gas"))
+        # Equilibrium SMD four-point values mix geometry and solvent response. They are
+        # diagnostics until a nonequilibrium separation is validated; never choose as "best".
+        c["lambda_best_eV"], c["by"] = None, "diagnostic_only"
         rec["couples"].append(c)
     (OUT / f"{gid}.json").write_text(json.dumps(rec, indent=1))
     return rec

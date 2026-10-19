@@ -99,10 +99,13 @@ def collect(gid, reorg, pots, cap, roles):
         role = roles.get(gid, {}).get(r["event"])
         if role == "lambda_electron":
             d["E_first_reduction_V_vs_Fc"] = _f(r["E_vs_Fc_V"])
+            d['E_first_reduction_qc']=r.get('status','')
         elif role == "lambda_hole":
             d["E_first_oxidation_V_vs_Fc"] = _f(r["E_vs_Fc_V"])
+            d['E_first_oxidation_qc']=r.get('status','')
         elif role == "lambda_e2":
             d["E_second_reduction_V_vs_Fc"] = _f(r["E_vs_Fc_V"])
+            d['E_second_reduction_qc']=r.get('status','')
     for r in cap:
         if r["id"] == gid:
             d["SA_score"] = _f(r["SA_score"])
@@ -121,6 +124,7 @@ FIELDS = ["SA_score",
           "lambda_electron_rmsd_A", "lambda_e2_rmsd_A", "lambda_hole_rmsd_A",
           "E_first_reduction_V_vs_Fc", "E_second_reduction_V_vs_Fc",
           "E_first_oxidation_V_vs_Fc", "n_electrons", "MW",
+          "E_first_reduction_qc","E_second_reduction_qc","E_first_oxidation_qc",
           "specific_capacity_mAh_g", "dGsolv_neutral_eV"]
 
 
@@ -150,7 +154,13 @@ def main():
                          **{f"{k}_standalone": s.get(k) for k in FIELDS},
                          **{f"{k}_grafted": g.get(k) for k in FIELDS}))
 
-    df.to_excel(XLSX_OUT, index=False)
+    with pd.ExcelWriter(XLSX_OUT) as writer:
+        df.to_excel(writer, sheet_name="Starting candidates", index=False)
+        # Registry-driven tables include newly supplied motifs without positional ROW_MAP edits.
+        for name in ("scorecard", "pareto_shortlist", "redox_potentials", "reorganization"):
+            path = RESULTS / f"{name}.csv"
+            if path.exists():
+                pd.read_csv(path).to_excel(writer, sheet_name=name, index=False)
     pd.DataFrame(flat).to_csv(CSV_OUT, index=False)
     print(f"[xlsx] {XLSX_OUT.relative_to(ROOT)}  ({len(df)} rows, "
           f"{len(df.columns)} cols)")

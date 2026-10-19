@@ -14,7 +14,7 @@ Writes one JSON per molecule (+ opt geometries) under results/d3tales_reorg_vali
 -> a NEW tree; it NEVER touches the B3LYP results in results/d3tales_reorg_validation/.
 Resumable: a molecule with a finished JSON is skipped, so fleet shards/reruns never redo work.
 
-  CUDA_VISIBLE_DEVICES=<idx> PYTHONPATH=src python scripts/validation/reorg_d3tales/validate_reorg_worker_prod.py \
+  python -m redox.workflows.gpu --gpu <idx> --out logs/runs/reorg -- python scripts/validation/reorg_d3tales/validate_reorg_worker_prod.py \
       --source results/d3tales_reorg_validation/molecules.csv --offset 0 --stride 24 --backend gpu
 """
 from __future__ import annotations

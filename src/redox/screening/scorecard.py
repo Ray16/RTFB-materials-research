@@ -36,11 +36,13 @@ REORGANIZATION ENERGY — explicit conventions (Nelsen 4-point, gas, QC-clean co
 from __future__ import annotations
 import csv
 import json
+import math
 import statistics
 
-from redox.core.common import RESULTS, UMA
+from redox.core.common import RESULTS, UMA, DFT
 from redox.core.common import load_config as _cfg
 from redox.core.common import to_float as _f
+from redox.core.io import atomic_write_json
 
 # not real candidates: the Fc/Fc+ internal reference
 REFERENCE_IDS = {"ferrocene"}
@@ -53,6 +55,7 @@ CANDIDATE_CONFIGS = [
     ("starting", "starting_candidates"),
     ("merrifield_multi", "merrifield_multielectron"),
     ("discovered", "discovered_candidates"),     # growing registry (register_candidates.py)
+    ("custom", "custom_candidates"),
 ]
 
 
@@ -79,8 +82,16 @@ def _candidate_chem_flags():
     out = {}
     for _, mod in CANDIDATE_CONFIGS:
         for g in _cfg(mod).GROUPS:
-            if g.get("flag"):
-                out[g["id"]] = g["flag"]
+            notes = [g[key] for key in ('flag', 'chemistry_notes') if g.get(key)]
+            provenance = g.get('provenance') or {}
+            if provenance.get('route_status'):
+                notes.append('Attachment route: ' + provenance['route_status'])
+            if provenance.get('source'):
+                notes.append('Source: ' + provenance['source'])
+            if provenance.get('exact_grafted_experiment') is False:
+                notes.append('Exact grafted structure has no verified experimental measurement')
+            if notes:
+                out[g['id']] = '; '.join(dict.fromkeys(notes))
     return out
 
 
@@ -113,8 +124,16 @@ def _min_spin_gap_eV(gid):
     the pre-optimizer and can badly underestimate gaps (aq_benzyloxy dianion S-T: UMA 0.19 eV,
     DFT 0.81 eV). None when no state had an alternative multiplicity. A small value means
     the spin ground state is near-degenerate -> lower-confidence potentials."""
-    from redox.core.common import free_energy, read_result
-    gaps, srcs = {}, {}
+    from redox.core.common import free_energy, read_result, apply_thermal_policy
+    from redox.core.protocol import load_record
+    from redox.qm.dft import _opt_protocol_mismatch
+    from redox.qm.native_thermal import cache_path
+    from redox.validation.spins import snapshot, read_comparison, sha
+    from redox.validation.spin_evidence import (helper_spin_report_admission,
+                                               qualify_DFT_spin_gap, spin_comparison_running)
+    if spin_comparison_running(gid):
+        return None, 'pending:active_spin_comparison'
+    gaps, srcs, pending = {}, {}, {}
     gdir = UMA / gid
     if gdir.is_dir():
         for rj in gdir.glob("*/result.json"):
@@ -127,14 +146,70 @@ def _min_spin_gap_eV(gid):
     for rj in (SPINCHECK / gid).glob("*_m*/result.json"):
         st = rj.parent.name.rsplit("_m", 1)[0]
         alt = json.loads(rj.read_text())
-        Galt = (alt.get("e_smd_eV") + alt["g_thermal_eV"]
-                if alt.get("e_smd_eV") is not None and alt.get("g_thermal_eV") is not None else None)
-        chosen = read_result(gid, st, raw=True)
-        Gch = (chosen["e_smd_eV"] + chosen["g_thermal_eV"]
-               if chosen and chosen.get("g_thermal_eV") is not None else None)
-        if Galt is not None and Gch is not None:
-            gaps[st] = Galt - Gch            # signed: < 0 would mean the WRONG ground state
-            srcs[st] = "dft"
+        chosen = read_result(gid, st)
+        if (chosen is None or alt.get("charge") != chosen.get("charge")
+                or alt.get('mult')==chosen.get('mult')):
+            continue
+        identity, report = snapshot(gid, st), read_comparison(gid, st)
+        reason, admitted = helper_spin_report_admission(report, alt, identity)
+        if identity is None or not admitted:
+            pending[st] = reason
+            continue
+        if (alt['mult'] != report.get('alternative_mult')
+                or _opt_protocol_mismatch(alt, alt['charge'])):
+            pending[st] = 'alternate_protocol_or_multiplicity_mismatch'
+            continue
+        record = load_record(rj.parent, int(alt["charge"]), int(alt["mult"]))
+        if record is None or chosen.get("e_smd_eV") is None:
+            pending[st] = 'alternate_active_SP_pending'
+            continue
+        electronic_gap = record['e_smd_eV'] - chosen['e_smd_eV']
+        recorded_gap = _f(report.get('electronic_gap_eV'))
+        contamination = _f(record.get('smd_spin_contam'))
+        if (recorded_gap is None or not math.isfinite(recorded_gap) or abs(electronic_gap-recorded_gap)>1e-8
+                or (contamination is not None and abs(contamination)>.1)):
+            pending[st] = 'alternate_energy_or_spin_report_stale'
+            continue
+        alt = apply_thermal_policy(dict(alt, e_smd_eV=record['e_smd_eV']), rj.parent)
+        Galt, qalt = free_energy(alt)
+        Gch, qch = free_energy(chosen)
+        matching_definition = (alt.get('thermal_definition') == 'native_solution_dft_qrrho_spin'
+                               == chosen.get('thermal_definition')
+                               and bool(alt.get('thermal_protocol_hash'))
+                               and bool(chosen.get('thermal_protocol_hash')))
+        if report.get('thermochemical_gap_validated'):
+            from redox.validation.spin_evidence import native_partition_dependencies_ok
+            if not native_partition_dependencies_ok(report,chosen,alt):
+                pending[st] = 'native_spin_partition_dependencies_stale'
+                continue
+            chosen_cache = cache_path(DFT / gid / st, chosen['charge'], chosen['mult'])[0]
+            alternate_cache = cache_path(rj.parent, alt['charge'], alt['mult'])[0]
+            dependencies = report.get('native_dependencies') or {}
+            if (not chosen_cache.exists() or not alternate_cache.exists()
+                    or dependencies.get('chosen') != sha(chosen_cache)
+                    or dependencies.get('alternative') != sha(alternate_cache)):
+                pending[st] = 'native_spin_dependencies_stale'
+                continue
+        if Galt is not None and Gch is not None and qalt == qch == "ok" and matching_definition:
+            gap = Galt-Gch
+            recorded = _f(report.get('thermochemical_gap_eV'))
+            if (not report.get('thermochemical_gap_validated') or recorded is None
+                    or not math.isfinite(recorded) or abs(gap-recorded)>1e-8):
+                pending[st] = 'native_spin_report_pending_or_stale'
+                continue
+            gaps[st] = Galt - Gch
+            srcs[st] = "dft_free_energy"
+        else:
+            # A deep-imaginary RRHO term cannot establish spin thermodynamics. The
+            # level-matched electronic gap remains useful and is explicitly labelled.
+            gaps[st] = electronic_gap
+            srcs[st] = "dft_electronic(thermal_unvalidated)"
+        confidence, admitted = qualify_DFT_spin_gap(gaps[st], matching_definition and qalt == qch == 'ok')
+        if not admitted and confidence != 'wrong_ground_state':
+            pending[st] = confidence
+    if pending:
+        st = min(pending)
+        return None, f'pending:{pending[st]}:{st}'
     if not gaps:
         return None, ""
     st = min(gaps, key=lambda k: gaps[k])
@@ -287,7 +362,8 @@ def experimental_e_points(redox_rows):
 def derive_family_sigma(redox_rows):
     """Per-family redox sigma (V) + pooled sigma = RMSE of computed - experimental over the
     GROUNDED experimental points (experimental_e_points). RMSE keeps any systematic bias in the
-    sigma. A family with <2 points is omitted (callers fall back to the pooled RMSE).
+    sigma. Empirical pooled/family RMSE requires the configured minimum number
+    of matched events; otherwise callers retain charge-class priors.
     Returns (family_sigma, pooled_sigma)."""
     import math
     pts = experimental_e_points(redox_rows)
@@ -299,8 +375,9 @@ def derive_family_sigma(redox_rows):
     def _rmse(xs):
         return math.sqrt(sum(x * x for x in xs) / len(xs))
 
-    pooled = round(_rmse([p["res"] for p in pts]), 3) if pts else None
-    family_sigma = {f: round(_rmse(xs), 3) for f, xs in by_fam.items() if len(xs) >= 2}
+    minimum = _cfg("scorecard_config").MIN_REDOX_CALIBRATION_POINTS
+    pooled = round(_rmse([p["res"] for p in pts]), 3) if len(pts) >= minimum else None
+    family_sigma = {f: round(_rmse(xs), 3) for f, xs in by_fam.items() if len(xs) >= minimum}
     return family_sigma, pooled
 
 
@@ -326,9 +403,11 @@ def _mad_sigma(xs):
 
 
 def derive_uncertainties(redox_rows):
-    """ALL model uncertainties, COMPUTED from benchmark result files at build time — nothing
-    hard-coded, each tightens as its benchmark grows. Each falls back to the documented prior
-    in config/scorecard_config only if its benchmark file is missing. Returns a dict:
+    """Use sufficiently populated matched benchmarks, otherwise documented priors.
+
+    Residual-derived values describe their available validation set. They do not
+    establish exact-graft experimental accuracy. Return evidence counts with the
+    uncertainty values so sparse calibration remains visible. Returns a dict:
       family_redox : per-family redox sigma (V) from validation residuals (>=2 anchors)
       pooled_redox : pooled validation RMSE (V) — used for a not-yet-validated family
       charge_redox : by-charge-class RMSE (V) from the OROP benchmark (deep fallback)
@@ -339,14 +418,22 @@ def derive_uncertainties(redox_rows):
     family_redox, pooled_redox = derive_family_sigma(redox_rows)
 
     # by-charge-class prior, derived from the OROP benchmark rather than hard-coded
+    from redox.validation.orop import calibration_row_ok
+    from redox.properties.potentials import fc_live, thermal_definition
+    from redox.core.common import read_result
+    live_reference = fc_live()
+    reference_definition = thermal_definition(read_result("ferrocene", "ox"))
     cls = {"cation": [], "anion": [], "multi": []}
     for r in _load("orop_benchmark"):
+        if not calibration_row_ok(r, live_reference, reference_definition):
+            continue
         e, q = _f(r.get("err")), _f(r.get("charge_ox"))
         if e is None or q is None:
             continue
         k = "multi" if (q >= 2 or q < 0) else ("cation" if q >= 1 else "anion")
         cls[k].append(e)
-    charge_redox = {k: round(_rmse(v), 3) for k, v in cls.items() if v} or dict(sc.SIGMA_REDOX_V)
+    charge_redox = {k: round(_rmse(v), 3) if len(v) >= sc.MIN_REDOX_CALIBRATION_POINTS
+                   else sc.SIGMA_REDOX_V[k] for k, v in cls.items()}
 
     # lambda: spread of our production lambda vs D3TaLES on the reliable 0-2 eV subset. Use a
     # ROBUST scale (1.4826 x MAD) not RMSE: D3TaLES's diffuse-free def2-SVP leaves a heavy
@@ -369,7 +456,11 @@ def derive_uncertainties(redox_rows):
     sigma_disp = round(_rmse(disp_res), 3) if disp_res else sc.SIGMA_DISP_EV
 
     return dict(family_redox=family_redox, pooled_redox=pooled_redox, charge_redox=charge_redox,
-                sigma_lambda=sigma_lambda, sigma_disp=sigma_disp)
+                sigma_lambda=sigma_lambda, sigma_disp=sigma_disp,
+                grounded_redox_events=experimental_e_points(redox_rows),
+                minimum_redox_events=sc.MIN_REDOX_CALIBRATION_POINTS,
+                charge_class_events={key: len(values) for key, values in cls.items()},
+                redox_calibration_status="empirical_residuals_available" if pooled_redox is not None else "prior_limited")
 
 
 def build():
@@ -421,7 +512,7 @@ def build():
             lam_o=lam_o.get((r["id"], frozenset((sO, sR)))),
             sigma_E=sc.sigma_redox(qo, qr, family=r["family"],
                                    family_sigma=unc["family_redox"],
-                                   pooled_sigma=unc["pooled_redox"]),
+                                   pooled_sigma=unc["pooled_redox"], charge_sigma=unc["charge_redox"]),
         )
 
     rows = []
@@ -492,8 +583,11 @@ def build():
                 path_stop=stop.get(pool, ""),
                 n_accessible=n_acc,
                 min_spin_gap_eV=spin_gap, spin_gap_source=spin_src,
-                spin_confidence=("low" if (spin_gap is not None and spin_gap < sc.SPIN_GAP_LOW_EV)
-                                 else "ok"),
+                spin_confidence=("wrong_ground_state" if (spin_gap is not None and spin_src.startswith('dft_')
+                                                         and spin_gap < -1e-4)
+                                 else ("DFT_check_required" if (spin_src.startswith('pending:') or
+                                      (spin_gap is not None and spin_src.startswith('uma:') and spin_gap < .5))
+                                 else ("low" if spin_gap is not None and spin_gap < sc.SPIN_GAP_LOW_EV else "ok"))),
                 thermal_qc=("imag_modes" if any(c["thermal_qc"] == "imag_modes" for c in acc)
                             else "ok"),
                 E_V=round(statistics.mean(Es), 3),
@@ -526,6 +620,7 @@ def build():
 
     # --- write ---
     RESULTS.mkdir(exist_ok=True)
+    atomic_write_json(RESULTS / "uncertainty_evidence.json", unc)
     cols = ["id", "name", "family", "batch", "chem_flag", "rankable", "status", "role", "pool",
             "resting_state", "path", "path_stop", "n_accessible", "E_V", "E_anolyte_V",
             "E_catholyte_V", "sigma_E_V", "specific_capacity_mAh_g", "MW",
@@ -569,8 +664,8 @@ def build():
     for r in inc:
         print(f"INCOMPLETE {r['id']}: {r.get('reason','')}")
     print(f"\n{len(cands)} candidate pool-rows, {len(rej)} rejected, {len(inc)} incomplete. "
-          f"sigma + trust per axis attached "
-          f"(config/scorecard_config.py). Window {wlo}..{whi} V vs Fc.")
+          f"uncertainty values and evidence recorded in uncertainty_evidence.json. "
+          f"Window {wlo}..{whi} V vs Fc.")
     print(f"wrote {out}")
     return rows
 

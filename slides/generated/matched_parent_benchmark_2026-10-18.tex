@@ -1,0 +1,29 @@
+% Checked scoped benchmark: results/reviews/2026-10-18/matched_parent_validation_final/summary.json
+% Frozen input manifest: results/reviews/2026-10-18/matched_parent_validation_final/input_inventory.json
+% Summary SHA256 437fa289bcf7d0a3b4ec20449d63916a354027f42a16ea9532564db8b9bb4b67
+\begin{frame}{Matched MeCN parent benchmarks: current native model}
+\footnotesize
+Seven potentials, four molecules, three original studies; 171 independent checks.
+\medskip\par\centering
+\begin{tabular}{lrrr}
+\toprule
+Parent molecule & $E_1$ error & $E_2$ error & Wave-spacing error \\
+ & \multicolumn{3}{c}{calculated minus experimental (V)} \\
+\midrule
+Benzyl--methyl viologen & $+0.197$ & $+0.038$ & $+0.159$ \\
+PMDI / isopropyl & $+0.166$ & $-0.105$ & $+0.271$ \\
+PMDI / methoxyethyl & $+0.112$ & $-0.216$ & $+0.328$ \\
+Dimethyl benzoquinone & $+0.3085$ & --- & --- \\
+\bottomrule
+\end{tabular}\par\raggedright
+\medskip
+Observed potential RMSE: \textbf{0.183 V}; MAE: 0.163 V.
+\begin{block}{Wave spacing still needs model validation}
+All three spacings are overestimated. Fc cancels. Electronic gaps exceed
+experiment; PMDI thermal terms widen them further. No correction was fitted.
+\end{block}
+\footnotesize Matched 25--100 cm$^{-1}$ cutoff scan: potential span $\leq$0.036 V; separation bias persists.
+\vfill\scriptsize Snapshot: 18 October 2026. Sparse, correlated parent evidence;
+exact-graft accuracy remains unvalidated. Supporting-electrolyte effects are not
+explicitly modeled; the PMDI source leaves the salt assignment ambiguous.
+\end{frame}

@@ -40,6 +40,8 @@ FAMILIES = {
                   "two quasi-reversible waves, spacing 0.41 V (1,2-naphthoquinone, tier A)"),
     "bis-imide": (None, 2, True,
                   "two waves, spacing 0.61-0.64 V (PMDIs, tier A) / 0.44 V (NDI)"),
+    "multiple-imide-unvalidated": (None, None, False,
+                  "multiple imide groups outside recognized PMDI/NDI cores; two-wave behavior unestablished"),
     "mono-imide": ("O=[#6;R](c)[#7;R][#6;R](=O)c", 1, False,
                    "single reversible wave only (N-alkyl phthalimides, Daub 2021)"),
     "viologen": ("[n+;R]1ccc(-c2cc[n+]cc2)cc1", 2, True,
@@ -50,6 +52,10 @@ FAMILIES = {
 }
 _PAT = {k: Chem.MolFromSmarts(v[0]) for k, v in FAMILIES.items() if v[0]}
 _IMIDE = _PAT["mono-imide"]
+_TWO_WAVE_IMIDE_CORES = tuple(Chem.MolFromSmarts(pattern) for pattern in (
+    "[#7]1[#6](=O)c2cc3[#6](=O)[#7][#6](=O)c3cc2[#6]1=O",  # PMDI
+    "[#7]1[#6](=O)c2ccc3c4c(ccc(c24)[#6]1=O)[#6](=O)[#7][#6]3=O",  # NDI
+))
 _PYRIDINE_N = Chem.MolFromSmarts("[nX2;H0;+0]")    # Menshutkin-graftable pyridine N
 
 # Merrifield attachment chemistry: nucleophile + ArCH2Cl -> ArCH2-Nu. Reactant atom [*:9]
@@ -76,8 +82,14 @@ ALLOWED = {1, 5, 6, 7, 8, 9, 15, 16, 17, 35}   # H B C N O F P S Cl Br
 
 def families(mol) -> list[str]:
     out = [k for k, p in _PAT.items() if mol.HasSubstructMatch(p)]
-    if "mono-imide" in out and len(mol.GetSubstructMatches(_IMIDE)) >= 2:
-        out = [f for f in out if f != "mono-imide"] + ["bis-imide"]
+    if "mono-imide" in out:
+        if any(mol.HasSubstructMatch(core) for core in _TWO_WAVE_IMIDE_CORES):
+            out = [f for f in out if f != "mono-imide"] + ["bis-imide"]
+        elif len({match[3] for match in mol.GetSubstructMatches(_IMIDE)}) >= 2:
+            # Counting imide nitrogens alone also finds separate phthalimide
+            # units (including N–N linked structures). PMDI/NDI measurements do
+            # not establish their electron count or two-wave stability.
+            out = [f for f in out if f != "mono-imide"] + ["multiple-imide-unvalidated"]
     if "viologen" in out:                       # a bipyridinium is not a lone pyridinium
         out = [f for f in out if f != "pyridinium"]
     return out
@@ -109,14 +121,14 @@ def _unassigned_stereo(mol) -> int:
     return n + n_db
 
 
-def describe(grafted_smiles: str, n_e: int, faraday: float) -> dict:
+def describe(grafted_smiles: str, n_e: int | None, faraday: float) -> dict:
     from redox.properties.capacity_and_proxies import _sa_prep, _sascorer
     m = Chem.MolFromSmiles(grafted_smiles)
     mw = Descriptors.MolWt(m)
     sa_mol, _, sa_note = _sa_prep(grafted_smiles)
     sa = _sascorer().calculateScore(sa_mol) if sa_mol is not None else None
     return dict(MW=round(mw, 3), n_e_nominal=n_e,
-                capacity_nominal_mAh_g=round(n_e * faraday / (3.6 * mw), 1),
+                capacity_nominal_mAh_g=(round(n_e * faraday / (3.6 * mw), 1) if n_e is not None else None),
                 SA_grafted=round(sa, 2) if sa is not None else None, sa_note=sa_note,
                 charge_resting=Chem.GetFormalCharge(m), heavy_atoms=m.GetNumHeavyAtoms())
 
@@ -137,6 +149,11 @@ def identify(records, faraday: float, known_inchikeys=frozenset()) -> list[dict]
         base = dict(rec, parent_smiles=Chem.MolToSmiles(m), parent_families="+".join(fams),
                     parent_in_library=parent_key in known_inchikeys)
         bad_el = sorted({a.GetSymbol() for a in m.GetAtoms() if a.GetAtomicNum() not in ALLOWED})
+        if len(Chem.GetMolFrags(m)) != 1:
+            rows.append(dict(base, status="multiple fragments; salt/mixture needs explicit curation",
+                             grafted_smiles=None, graft=None, families="+".join(fams),
+                             multi_e=any(FAMILIES[f][2] for f in fams)))
+            continue
         grafts = graft_products(m)
         if not grafts:
             if fams:
@@ -150,7 +167,7 @@ def identify(records, faraday: float, known_inchikeys=frozenset()) -> list[dict]
             if not gf:
                 continue
             multi = [f for f in gf if FAMILIES[f][2]]
-            n_e = max(FAMILIES[f][1] for f in gf)
+            n_e = max((FAMILIES[f][1] for f in gf if FAMILIES[f][1] is not None), default=None)
             # N-alkylating a ring N only builds a validated motif when it completes a
             # viologen (every registered Menshutkin graft does); elsewhere it turns the core
             # into an azinium cation (1e- pyridinium, or an unvalidated cationic quinone).
@@ -158,6 +175,7 @@ def identify(records, faraday: float, known_inchikeys=frozenset()) -> list[dict]
             status = ("element not allowed: " + ",".join(bad_el) if bad_el else
                       "unassigned stereo" if _unassigned_stereo(g) else
                       "ring-N graft not forming a viologen" if menshutkin_off else
+                      "multiple imide groups; redox core requires validation" if not multi and n_e is None else
                       "1e- family" if not multi else "ok")
             rows.append(dict(base, grafted_smiles=gsmi, graft=chem, status=status,
                              families="+".join(gf), multi_e=bool(multi),

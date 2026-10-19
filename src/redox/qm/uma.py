@@ -19,8 +19,13 @@ Usage:
 """
 from __future__ import annotations
 import argparse
+import hashlib
+import importlib.metadata
 import json
+import math
+import os
 from pathlib import Path
+import tempfile
 
 from redox.core.common import LIBRARY, read_manifest
 from redox.core.common import UMA as OUT
@@ -31,6 +36,102 @@ from redox.core.common import UMA as OUT
 # HydraModel kwargs.) ensure_registered() does this idempotently. torch 2.8+cu128 runs on
 # the 12.4 driver via CUDA minor-version compat.
 DEFAULT_MODEL = "uma-s-1p2p1"
+CACHE_SCHEMA = 1
+
+
+def file_sha256(path):
+    digest = hashlib.sha256()
+    with Path(path).open('rb') as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b''):
+            digest.update(block)
+    return digest.hexdigest()
+
+
+def model_identity(model):
+    """Fingerprint locally cached weights, atomic references and loader version.
+
+    No checkpoint download or model/GPU initialization is needed for a resume check.
+    The same registry entry and HF cache used by the installed loader are inspected.
+    """
+    from huggingface_hub import hf_hub_download
+    dist = importlib.metadata.distribution('fairchem-core')
+    registry = Path(dist.locate_file('fairchem/core/calculate/pretrained_models.json'))
+    entries = json.loads(registry.read_text())
+    entry = entries.get(model)
+    if entry is None and model == DEFAULT_MODEL and 'uma-s-1p2' in entries:
+        entry = dict(entries['uma-s-1p2'], filename='uma-s-1p2p1.pt')
+    if entry is None:
+        raise RuntimeError(f'{model}: model registry entry is unavailable')
+    cache = os.environ.get('FAIRCHEM_CACHE_DIR', str(Path.home() / '.cache/fairchem'))
+    def local_file(record):
+        return Path(hf_hub_download(repo_id=entry['repo_id'], filename=record['filename'],
+                    subfolder=record.get('subfolder'), revision=entry.get('revision'),
+                    cache_dir=cache, local_files_only=True))
+    checkpoint = local_file(entry)
+    references = {key: file_sha256(local_file(entry[key]))
+                  for key in ('atom_refs', 'form_elem_refs') if entry.get(key)}
+    return dict(model=model, checkpoint_sha256=file_sha256(checkpoint),
+                reference_sha256=references, loader_version=dist.version,
+                registry_entry=entry, task_name='omol')
+
+
+def seed_identity(conf_paths):
+    """Ordered ensemble identity; changing any seed invalidates automatic reuse."""
+    return [{'name': Path(p).name, 'sha256': file_sha256(p)} for p in conf_paths]
+
+
+def geometry_checks(smiles, path, charge, mult):
+    """Independent input-graph/composition/stereo checks on an optimized XYZ."""
+    from rdkit import Chem
+    from rdkit.Chem import rdDetermineBonds
+    from redox.core.common import _skeleton, geometry_stereo_status
+    lines = Path(path).read_text().splitlines()
+    plain = '\n'.join(lines[:2] + [' '.join(line.split()[:4]) for line in lines[2:]]) + '\n'
+    actual = Chem.MolFromXYZBlock(plain)
+    declared = Chem.AddHs(Chem.MolFromSmiles(smiles))
+    if actual is None or declared is None:
+        return {'geometry_unreadable': True}
+    rdDetermineBonds.DetermineConnectivity(actual, charge=0)
+    expected = _skeleton(Chem.RemoveHs(declared))
+    observed = _skeleton(Chem.RemoveHs(actual, sanitize=False))
+    electrons = sum(a.GetAtomicNum() for a in actual.GetAtoms()) - charge
+    errors = dict(composition_mismatch=sorted(a.GetAtomicNum() for a in actual.GetAtoms()) !=
+                      sorted(a.GetAtomicNum() for a in declared.GetAtoms()),
+                  connectivity_mismatch=not (observed.HasSubstructMatch(expected) and expected.HasSubstructMatch(observed)),
+                  spin_parity_mismatch=mult < 1 or electrons < mult - 1 or (electrons - (mult - 1)) % 2 != 0)
+    stereo = geometry_stereo_status(smiles, path)
+    errors['stereochemistry_mismatch'] = stereo not in ('ok', 'not_applicable')
+    return {key: value for key, value in errors.items() if value}
+
+
+def cache_errors(record, row, xyz, conf_paths, identity, requested_fmax):
+    """Return explicit reasons an existing warm start cannot be reused."""
+    hint = int(row.get('mult_hint') or row.get('mult') or 1)
+    wanted = dict(cache_schema=CACHE_SCHEMA, model_identity=identity, model=identity['model'],
+                  seed_identity=seed_identity(conf_paths), smiles=row['smiles'],
+                  charge=int(row['charge']), mult_hint=hint, n_e=int(row['n_e']),
+                  id=row['id'], state=row['state'])
+    errors = [key + '_mismatch_or_missing' for key, value in wanted.items() if record.get(key) != value]
+    for key in ('energy_eV', 'fmax'):
+        if type(record.get(key)) not in (int, float) or not math.isfinite(record[key]):
+            errors.append(key + '_invalid')
+    if record.get('converged') is not True or not isinstance(record.get('fmax'), (int, float)) or record['fmax'] > requested_fmax:
+        errors.append('convergence_requirement_not_met')
+    if not Path(xyz).exists():
+        return errors + ['missing_geometry']
+    if record.get('geometry_sha256') != file_sha256(xyz):
+        errors.append('geometry_changed_or_unfingerprinted')
+    from rdkit import Chem
+    mol = Chem.AddHs(Chem.MolFromSmiles(row['smiles']))
+    electrons = sum(a.GetAtomicNum() for a in mol.GetAtoms()) - int(row['charge'])
+    mults = candidate_mults(electrons, hint)
+    if record.get('n_elec') != electrons or record.get('mults_scanned') != mults or record.get('chosen_mult') not in mults:
+        errors.append('electron_or_spin_scan_identity_mismatch')
+    if record.get('n_conf') != len(conf_paths) or type(record.get('conf_idx')) is not int or not 0 <= record['conf_idx'] < len(conf_paths):
+        errors.append('conformer_selection_mismatch')
+    if not errors:
+        errors.extend(geometry_checks(row['smiles'], xyz, int(row['charge']), record['chosen_mult']))
+    return errors
 
 
 def ensure_registered(model: str):
@@ -101,10 +202,14 @@ def relax_state_scan(calc, conf_paths, charge: int, mult_hint: int, fmax: float,
     for m in mults:
         for ci, atoms in enumerate(confs):
             e, fm, ns, a = relax_one(calc, atoms, charge, m, fmax, steps)
+            if not math.isfinite(e) or not math.isfinite(fm) or fm > fmax:
+                continue  # an unconverged low energy cannot win the spin/conformer scan
             if m not in per_mult_best or e < per_mult_best[m]:
                 per_mult_best[m] = e
             if best is None or e < best[0]:
                 best = (e, m, ci, a, fm, ns)
+    if best is None or set(per_mult_best) != set(mults):
+        raise RuntimeError('UMA scan lacks a converged conformer for every requested multiplicity')
     e, m, ci, a, fm, ns = best
     others = sorted(v for k, v in per_mult_best.items() if k != m)
     spin_gap = round(others[0] - e, 4) if others else None
@@ -118,7 +223,7 @@ def relax_state_scan(calc, conf_paths, charge: int, mult_hint: int, fmax: float,
 def write_xyz(atoms, path: Path, comment: str):
     from ase.io import write
     path.parent.mkdir(parents=True, exist_ok=True)
-    write(str(path), atoms, comment=comment)
+    write(str(path), atoms, format='xyz', comment=comment)
 
 
 def main():
@@ -133,6 +238,8 @@ def main():
                     help="'n:i' — process only rows where index%%n==i (for GPU fan-out)")
     ap.add_argument("--force", action="store_true", help="recompute even if result exists")
     args = ap.parse_args()
+    if not math.isfinite(args.fmax) or args.fmax <= 0 or args.steps < 1:
+        ap.error('fmax must be finite and positive; steps must be positive')
 
     rows = read_manifest()
     if args.only:
@@ -142,22 +249,33 @@ def main():
             raise SystemExit(f"no states match --only {args.only!r}")
     if args.shard:
         n, i = (int(x) for x in args.shard.split(":"))
+        if n < 1 or not 0 <= i < n:
+            ap.error('shard requires n>=1 and 0<=i<n')
         rows = [r for k, r in enumerate(rows) if k % n == i]
 
-    calc = None  # lazily built so --only/resume listing is cheap and import errors surface late
+    calc = None  # resume fingerprints local files without initializing the model
+    identity = None
     for r in rows:
         gid, st = r["id"], r["state"]
         outdir = OUT / gid / st
         res_json = outdir / "result.json"
-        if res_json.exists() and not args.force:
-            print(f"[skip] {gid}/{st} (done)")
-            continue
         conf_paths = sorted((LIBRARY / gid / "conformers").glob("conf_*.xyz"))
         if not conf_paths:
-            print(f"[miss] {gid}/{st}: no conformer ensemble (run build.py)"); continue
+            raise RuntimeError(f"{gid}/{st}: no conformer ensemble (run the candidate builder)")
+        if res_json.exists() and not args.force:
+            if identity is None:
+                identity = model_identity(args.model)
+            old = json.loads(res_json.read_text())
+            errors = cache_errors(old, r, outdir / 'relaxed.xyz', conf_paths, identity, args.fmax)
+            if errors:
+                raise RuntimeError(f"{gid}/{st}: UMA cache is unverifiable/stale ({'; '.join(errors)}); "
+                                   'preserved for review, not automatically replaced')
+            print(f"[skip] {gid}/{st} (done)")
+            continue
         if calc is None:
             print(f"[load] {args.model} on {args.device}")
             calc = make_calculator(args.model, args.device)
+            identity = model_identity(args.model)
         mult_hint = int(r.get("mult_hint") or r.get("mult") or 1)
         print(f"[run ] {gid}/{st} q={r['charge']} scan {len(conf_paths)} confs x mults ...",
               flush=True)
@@ -167,13 +285,27 @@ def main():
         write_xyz(atoms, outdir / "relaxed.xyz",
                   comment=f"{gid}/{st} q={r['charge']} m={res['chosen_mult']} "
                           f"E={res['energy_eV']:.6f}eV conf={res['conf_idx']} model={args.model}")
+        problems = geometry_checks(r['smiles'], outdir / 'relaxed.xyz', int(r['charge']), res['chosen_mult'])
+        if problems:
+            raise RuntimeError(f'{gid}/{st}: optimized UMA geometry violates input identity: {problems}')
         res.update(id=gid, state=st, model=args.model,
-                   n_e=int(r["n_e"]), smiles=r["smiles"])
-        res_json.write_text(json.dumps(res, indent=2))
+                   n_e=int(r["n_e"]), smiles=r["smiles"], cache_schema=CACHE_SCHEMA,
+                   model_identity=identity, seed_identity=seed_identity(conf_paths),
+                   geometry_sha256=file_sha256(outdir / 'relaxed.xyz'),
+                   requested_fmax=args.fmax, optimizer='ASE BFGS', optimizer_step_limit=args.steps)
+        with tempfile.NamedTemporaryFile(mode='w',dir=outdir,prefix='.result-',suffix='.tmp',delete=False) as stream:
+            staged=Path(stream.name)
+            json.dump(res,stream,indent=2)
+        try:
+            staged.replace(res_json)
+        finally:
+            staged.unlink(missing_ok=True)
         flag = " <-- mult != hint" if res["chosen_mult"] != mult_hint else ""
         print(f"[done] {gid}/{st} E={res['energy_eV']:.4f} mult={res['chosen_mult']} "
               f"(hint {mult_hint}){flag} S-T gap={res['spin_gap_eV']} conf={res['conf_idx']} "
               f"conv={res['converged']}")
+        if not res["converged"]:
+            raise RuntimeError(f"{gid}/{st}: UMA relaxation did not converge")
 
 
 if __name__ == "__main__":

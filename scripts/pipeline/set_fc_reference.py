@@ -11,6 +11,7 @@ The reference uses the SAME free energy as every molecule (G = E_smd + g_thermal
 an electronic-only reference shifts every E_vs_Fc by the Fc/Fc+ thermal difference (-0.08 V).
 """
 import argparse
+import fcntl
 import json
 import re
 from pathlib import Path
@@ -25,8 +26,8 @@ def g_solv(state):
     import sys
     sys.path.insert(0, str(ROOT / "src"))
     from redox.core.common import free_energy, read_result
-    G, _ = free_energy(read_result("ferrocene", state))
-    if G is None:
+    G, qc = free_energy(read_result("ferrocene", state))
+    if G is None or qc != "ok":
         raise SystemExit(f"ferrocene/{state} lacks an active-protocol energy or thermal term "
                          f"(run: python -m redox.qm.sp --only ferrocene)")
     return G
@@ -36,6 +37,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
+
+    import sys
+    sys.path.insert(0, str(ROOT / "src"))
+    from redox.properties.potentials import fc_live
+    if fc_live() is None:
+        raise SystemExit("Fc states must have complete, valid corrections at one thermal definition")
 
     g_ox = g_solv("ox")     # Fc+  (higher charge)
     g_neu = g_solv("neu")   # Fc   (reduced)
@@ -57,13 +64,16 @@ def main():
         return
 
     # in-place edit of the one value (keeps the hand-formatted JSON intact)
-    txt = PROJECT.read_text()
-    old = json.loads(txt)["reference"].get("fc_abs_computed_V")
-    new, n = re.subn(r'("fc_abs_computed_V"\s*:\s*)(null|[0-9.eE+-]+)',
-                     lambda m: m.group(1) + repr(fc_abs), txt, count=1)
-    if n != 1:
-        raise SystemExit(f"could not find reference.fc_abs_computed_V in {PROJECT}")
-    PROJECT.write_text(new)
+    from redox.core.io import atomic_text_writer
+    with (PROJECT.parent/'.project_reference.lock').open('a+') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX)
+        txt = PROJECT.read_text()
+        old = json.loads(txt)["reference"].get("fc_abs_computed_V")
+        new, n = re.subn(r'("fc_abs_computed_V"\s*:\s*)(null|[0-9.eE+-]+)',
+                         lambda m: m.group(1) + repr(fc_abs), txt, count=1)
+        if n != 1:
+            raise SystemExit(f"could not find reference.fc_abs_computed_V in {PROJECT}")
+        with atomic_text_writer(PROJECT) as stream:stream.write(new)
     print(f"[patched] {PROJECT} reference.fc_abs_computed_V: {old} -> {fc_abs:.4f}")
 
 if __name__ == "__main__":

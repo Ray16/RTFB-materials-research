@@ -6,11 +6,11 @@ library + manifest, so they run the identical UMA -> DFT+SMD -> reorg pipeline. 
   python -m redox.build.standalone --only aq_benzyloxy_sa,nq_benzyloxy_sa
 """
 from __future__ import annotations
-import csv
 import importlib.util
 from pathlib import Path
 
 from rdkit import Chem
+from redox.build.manifest import COLS, locked_manifest, read_rows, write_rows
 
 from redox.build.structures import conformer_ensemble, to_xyz, unassigned_stereo, radius_of_gyration
 
@@ -18,9 +18,6 @@ ROOT = Path(__file__).resolve().parents[3]
 CONFIG = ROOT / "config" / "standalone.py"
 LIBRARY = ROOT / "library"
 MANIFEST = LIBRARY / "manifest.csv"
-COLS = ["id", "name", "family", "state", "charge", "mult_hint", "n_e", "n_conf",
-        "solv_preopt", "smiles"]
-
 
 def _load():
     spec = importlib.util.spec_from_file_location("standalone", CONFIG)
@@ -29,10 +26,7 @@ def _load():
 
 
 def _rows():
-    if not MANIFEST.exists():
-        return []
-    with MANIFEST.open() as f:
-        return list(csv.DictReader(f))
+    return read_rows(MANIFEST)
 
 
 def build_one(mol_def):
@@ -76,6 +70,11 @@ def main():
         missing = want - {m["id"] for m in mols}
         if missing:
             raise SystemExit(f"no standalone entry for: {sorted(missing)}")
+    with locked_manifest(MANIFEST):
+        _build_selected(mols)
+
+
+def _build_selected(mols):
     existing = _rows()
     new_rows = []
     for md in mols:
@@ -87,10 +86,7 @@ def main():
             print(f"      {label:5s} q={charge:+d} mult_hint={mult} n_e={n_e:+d}")
     rebuilt = {md["id"] for md in mols}
     kept = [r for r in existing if r["id"] not in rebuilt]
-    with MANIFEST.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=COLS); w.writeheader()
-        for r in kept + new_rows:
-            w.writerow({c: r.get(c, "") for c in COLS})
+    write_rows(MANIFEST, kept + new_rows)
     print(f"\n[manifest] {len(new_rows)} standalone states written; now {len(kept)+len(new_rows)} rows")
 
 

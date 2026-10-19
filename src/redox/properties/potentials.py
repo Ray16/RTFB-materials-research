@@ -3,13 +3,13 @@
 For each 1-electron event O + e- -> R (O = higher charge, R = one less):
     dG        = G(R) - G(O)                       [eV]   (electron free energy in ref)
     E_abs     = -dG / n                            [V]    (absolute, vs free electron)
-    E_vs_Fc   = E_abs - (SHE_abs + Fc_vs_SHE)      [V]    (referenced to Fc/Fc+)
+    E_vs_Fc   = E_abs - live_G(Fc+)+live_G(Fc)    [V]    (referenced to Fc/Fc+)
 
-G = E_smd + G_thermal: the SMD-solvated electronic energy PLUS a GFN2-xTB RRHO thermal
-free-energy correction (dft._thermal_correction; g_thermal_eV per state). A state missing
-either term makes the couple INCOMPLETE (status column) — no electronic-only fallback. E_smd is
-the ACTIVE-protocol energy (redox.core.protocol: uniform def2-TZVPD) via common.read_result. We use xtb RRHO rather than the DFT Hessian because gpu4pyscf's open-shell
-(UKS) analytic Hessian is broken for radicals (FINDINGS.md #3-4). Absolute potentials remain
+G = E_smd + G_thermal using one explicitly matched thermal definition for the molecule
+and both Fc states. Legacy gas-GFN2 corrections retain their QC; the independently checked
+native solution DFT route is being adopted with geometry-addressed records. A state missing
+either term makes the couple INCOMPLETE — no electronic-only fallback. E_smd is
+the ACTIVE-protocol energy (uniform def2-TZVPD) via common.read_result. Absolute potentials remain
 PROVISIONAL until the validation gate (§V) is passed; compared to measurement before any
 ranking is trusted.
 
@@ -33,17 +33,40 @@ def _cfg(name, attr):
     return getattr(load_config(name), attr)
 
 
-def _energy(root, gid, state, key):
-    r = read_result(gid, state, root=root)
-    return r.get(key) if r is not None else None
+def uma_gas_diagnostic(gid,sO,sR,qO,qR):
+    """Electronic gas-phase comparison at one UMA model and a gas UMA Fc reference.
+
+    This is a preoptimization diagnostic, never a solvated free-energy prediction.
+    Subtracting the solvated DFT Fc reference here would mix phase and Hamiltonian.
+    """
+    records=[read_result(gid,sO,root=UMA),read_result(gid,sR,root=UMA),
+             read_result('ferrocene','ox',root=UMA),read_result('ferrocene','neu',root=UMA)]
+    for record,q in zip(records,(qO,qR,1,0)):
+        if (record is None or record.get('converged') is not True or record.get('charge')!=q
+                or not isinstance(record.get('energy_eV'),(int,float)) or not math.isfinite(record['energy_eV'])):
+            return None,None,'INCOMPLETE_UMA_gas_diagnostic'
+    models={r.get('model') for r in records}
+    if None in models or len(models)!=1:return None,None,'model_mismatch'
+    ox,red,fc_ox,fc_neu=records
+    delta=red['energy_eV']-ox['energy_eV'];reference=fc_ox['energy_eV']-fc_neu['energy_eV']
+    return delta,-delta-reference,'UMA_gas_electronic_vs_UMA_Fc('+next(iter(models))+');not_MeCN_G'
+
+
+def thermal_definition(record):
+    """Identity of the thermal model, independent of each state's geometry address."""
+    return record.get("thermal_definition", "legacy_gfn2_gas_rrho") if record else None
 
 
 def fc_live():
     """Fc+/Fc absolute potential (V) from the ferrocene states at the ACTIVE protocol with the
     SAME free-energy definition as every molecule (G = E_smd + g_thermal). None if incomplete."""
-    Gox, _ = free_energy(read_result("ferrocene", "ox"))
-    Gneu, _ = free_energy(read_result("ferrocene", "neu"))
-    return (Gox - Gneu) if (Gox is not None and Gneu is not None) else None
+    ox, neu = read_result("ferrocene", "ox"), read_result("ferrocene", "neu")
+    Gox, qox = free_energy(ox)
+    Gneu, qneu = free_energy(neu)
+    if (Gox is None or Gneu is None or qox != "ok" or qneu != "ok"
+            or thermal_definition(ox) != thermal_definition(neu)):
+        return None
+    return Gox - Gneu
 
 
 def _fc_reference():
@@ -63,11 +86,12 @@ def _fc_reference():
                   f"{fc:.4f} V — run scripts/pipeline/set_fc_reference.py to sync the record",
                   flush=True)
         return fc, "Fc-level-matched(live,G)"
-    raise SystemExit("ferrocene has no active-protocol free energy (run: python -m redox.qm.sp "
-                     "--only ferrocene) — refusing to reference E° to a mismatched constant")
+    raise SystemExit("ferrocene lacks a complete, thermally valid pair at one thermal definition; "
+                     "repair its geometry, active single points and matched thermal records "
+                     "before exporting referenced potentials")
 
 
-def _multielectron_summary(events, window):
+def _multielectron_summary(events, window, resting_charges=None):
     """Per-molecule multi-electron stability gate from the 1e reduction potentials.
 
     Pure post-processing of the E_vs_Fc already computed for each 1e step -- NO extra QM.
@@ -87,6 +111,9 @@ def _multielectron_summary(events, window):
     1e oxidation) have no dE12 and are skipped.
     """
     win_lo, win_hi = window
+    if resting_charges is None:
+        resting_charges = {r["id"]: int(r["charge"]) for r in read_manifest()
+                           if str(r.get("n_e")) == "0"}
     # group 1e events by molecule, in reduction order (descending oxidized-state charge)
     by_id = {}
     for r in events:
@@ -96,8 +123,14 @@ def _multielectron_summary(events, window):
         by_id[r["id"]]["ev"].append(r)
     rows = []
     for gid, g in by_id.items():
-        ev = sorted(g["ev"], key=lambda r: -r["q_ox"])   # most-oxidized step first
-        if len(ev) < 2:
+        q0 = resting_charges.get(gid)
+        if q0 is None:
+            continue
+        # Two reductions from the as-prepared state. Oxidation on the catholyte side
+        # must not be counted as an extra anolyte electron for ambipolar molecules.
+        by_q = {r["q_ox"]: r for r in g["ev"]}
+        ev = [by_q[q] for q in (q0, q0 - 1) if q in by_q]
+        if len(ev) < 2 or ev[0]["event"].split("->")[1] != ev[1]["event"].split("->")[0]:
             continue
         E1 = ev[0]["E_vs_Fc_V"]          # first reduction (less negative)
         E2 = ev[1]["E_vs_Fc_V"]          # second reduction (more negative, normally)
@@ -125,6 +158,7 @@ def _multielectron_summary(events, window):
 
 def main():
     e_ref_abs, ref_source = _fc_reference()
+    ref_definition = thermal_definition(read_result("ferrocene", "ox"))
     print(f"[ref] Fc/Fc+ absolute reference = {e_ref_abs:.3f} V  ({ref_source})")
 
     rows = read_manifest()
@@ -149,39 +183,49 @@ def main():
             g_smd_R = rR.get("e_smd_eV") if rR else None
             gth_O = rO.get("g_thermal_eV") if rO else None
             gth_R = rR.get("g_thermal_eV") if rR else None
-            e_uma_O = _energy(UMA, gid, sO, "energy_eV")
-            e_uma_R = _energy(UMA, gid, sR, "energy_eV")
+            delta_uma,reference_uma,gas_qc=uma_gas_diagnostic(gid,sO,sR,qO,qR)
 
             row = dict(id=gid, name=g["name"], family=g["family"],
                        event=f"{sO}->{sR}", q_ox=qO, q_red=qR, ref=ref_source)
             miss = [s for s, r_, G_ in ((sO, rO, GO), (sR, rR, GR)) if G_ is None]
+            spin_qc = {sO: tqO, sR: tqR}
             row["status"] = ("ok" if not miss else
                              "INCOMPLETE:" + ",".join(
-                                 f"{s}({'no_energy' if (read_result(gid, s) or {}).get('e_smd_eV') is None else 'no_thermal'})"
+                                 f"{s}({spin_qc[s] if spin_qc[s] in ('wrong_spin','stale_spin_decision') else ('no_energy' if (read_result(gid, s) or {}).get('e_smd_eV') is None else 'no_thermal')})"
                                  for s in miss))
             row["thermal_qc"] = ("imag_modes" if "imag_modes" in (tqO, tqR) else
                                  ("ok" if not miss else ""))
+            definitions = {thermal_definition(rO), thermal_definition(rR), ref_definition}
+            if not miss and len(definitions) != 1:
+                row["thermal_qc"] = "thermal_definition_mismatch"
+            unvalidated=not miss and row['thermal_qc'] != 'ok'
+            if unvalidated:row['status']='THERMAL_UNVALIDATED'
             if GO is not None and GR is not None:
                 # thermal contribution to E (sensitivity of E° to the RRHO model)
                 row["dE_thermal_V"] = round(-(gth_R - gth_O), 4)
                 dG = GR - GO
                 E_abs = -dG
-                row.update(dG_smd_eV=round(dG, 4),
+                row.update(g_thermal_ox_eV=round(gth_O,4),g_thermal_red_eV=round(gth_R,4))
+                values=dict(dG_smd_eV=round(dG, 4),
                            g_thermal_ox_eV=round(gth_O, 4),
                            g_thermal_red_eV=round(gth_R, 4),
                            E_abs_V=round(E_abs, 3),
                            E_vs_Fc_V=round(E_abs - e_ref_abs, 3))
-            if e_uma_O is not None and e_uma_R is not None:
-                dG_gas = e_uma_R - e_uma_O
-                row.update(dG_gas_uma_eV=round(dG_gas, 4),
-                           E_vs_Fc_gas_V=round(-dG_gas - e_ref_abs, 3))
+                if unvalidated:
+                    row.update({key+'_estimate':value for key,value in values.items()
+                                if key not in ('g_thermal_ox_eV','g_thermal_red_eV')})
+                else:row.update(values)
+            row['gas_diagnostic_qc']=gas_qc
+            if delta_uma is not None:
+                row.update(dE_gas_uma_eV=round(delta_uma,4),E_vs_Fc_gas_V=round(reference_uma,3))
             out.append(row)
 
     RESULTS.mkdir(exist_ok=True)
     cols = ["id", "name", "family", "event", "q_ox", "q_red",
             "dG_smd_eV", "g_thermal_ox_eV", "g_thermal_red_eV",
             "E_abs_V", "E_vs_Fc_V", "status", "thermal_qc", "dE_thermal_V",
-            "dG_gas_uma_eV", "E_vs_Fc_gas_V", "ref"]
+            "dG_smd_eV_estimate","E_abs_V_estimate","E_vs_Fc_V_estimate",
+            "dE_gas_uma_eV", "E_vs_Fc_gas_V", "gas_diagnostic_qc", "ref"]
     outfile = RESULTS / "redox_potentials.csv"
     with outfile.open("w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=cols); w.writeheader()

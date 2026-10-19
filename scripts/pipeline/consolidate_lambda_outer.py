@@ -37,7 +37,7 @@ def main():
                              # convergence NOT checked) — labelled so, never silently merged.
                              method=(f"{r['xc']}/{r['basis']}" if r.get("xc")
                                      else "b3lyp/6-31g(d,p) (legacy)"),
-                             scf_checked=bool(r.get("scf_converged")),
+                             scf_checked=str(r.get("scf_converged", "")).strip().lower() == "true",
                              geom_source=r.get("geom_source", "")))
     cols = ["id", "couple", "lambda_o_born_eV", "lambda_o_pcm_eV",
             "pcm_over_born", "sasa_radius_A", "solvent", "method", "scf_checked", "geom_source"]

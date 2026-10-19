@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-# Reproducible setup for the `redox` conda environment.
+# Bootstrap the `redox` conda environment; validated native-QM versions are pinned.
+# See docs/DEVELOPMENT.md for the recorded working environment and validation gates.
 #
 #   ./setup_env.sh [ENV_NAME]
 #
 # IMPORTANT — CUDA build: torch must match your GPU driver's CUDA version. Check it with
-#   nvidia-smi        # top-right "CUDA Version:", e.g. 12.4
-# then set CUDA_TAG to the matching PyTorch wheel tag (cu121 / cu124 / cu126 / ...), or
+#   nvidia-smi        # top-right "CUDA Version:"
+# then set CUDA_TAG to a compatible PyTorch 2.8 wheel tag, or
 # "cpu" for a CPU-only box. Installing a torch newer than your driver -> torch.cuda is False.
 #
-#   CUDA_TAG=cu124 ./setup_env.sh          # default
+#   CUDA_TAG=cu128 ./setup_env.sh          # default on GPU hosts
 #   CUDA_TAG=cpu   ./setup_env.sh          # CPU-only
 set -euo pipefail
 
@@ -17,12 +18,12 @@ PY_VER="${PY_VER:-3.11}"
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # Auto-detect GPU vs CPU unless CUDA_TAG is set explicitly.
-#   GPU present -> cu124 (works with driver CUDA >= 12.4; override for older drivers).
+#   GPU present -> cu128 (requires a CUDA-12.8-capable driver).
 #   No nvidia-smi -> cpu.
 if [ -z "${CUDA_TAG:-}" ]; then
   if command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi >/dev/null 2>&1; then
     CUDA_TAG="cu128"
-    echo ">> GPU detected -> CUDA_TAG=$CUDA_TAG (override if your driver's CUDA < 12.4)"
+    echo ">> GPU detected -> CUDA_TAG=$CUDA_TAG (requires a CUDA-12.8-capable driver)"
   else
     CUDA_TAG="cpu"
     echo ">> no GPU detected -> CUDA_TAG=cpu"
@@ -48,17 +49,16 @@ conda run -n "$ENV_NAME" pip install "torch==2.8.0" --index-url "$TORCH_INDEX"
 #    step leaves the CUDA build from step 2 untouched.
 conda run -n "$ENV_NAME" pip install -r "$HERE/requirements.txt"
 
-# 3a. xtb (GFN2-xTB) — provides the RRHO thermal free-energy corrections used by
-#     redox.qm.dft._thermal_correction. Conda-forge binary (not a pip package). We use a
-#     semi-empirical Hessian for thermal because RRHO corrections are method-insensitive
-#     AND gpu4pyscf's UKS analytic Hessian is numerically broken for open-shell states.
+# 3a. xtb provides legacy GFN2 thermal corrections and qRRHO integration for the
+#     independently derivative-checked native solution Hessian. These are distinct
+#     thermal models; the selected policy determines which record can be admitted.
 conda install -n "$ENV_NAME" -c conda-forge xtb -y
 
 # 3b. GPU DFT backend (gpu4pyscf) — CUDA-tagged wheel, like torch. Only for cu12x GPUs;
 #     hugely faster DFT+SMD than CPU pyscf. Skipped on CPU-only boxes.
 case "$CUDA_TAG" in
   cu12*)
-    conda run -n "$ENV_NAME" pip install gpu4pyscf-cuda12x cutensor-cu12
+    conda run -n "$ENV_NAME" pip install gpu4pyscf-cuda12x==1.8.1 cutensor-cu12==2.7.0
     # The gpu4pyscf install can drag in CUDA-13 nvidia-* wheels (unsuffixed metapackages),
     # whose cu13/ headers+libs shadow the cu12 ones and break nvrtc on pre-Ada GPUs (e.g.
     # V100/sm_70 — CUDA 13 dropped Volta). Remove any nvidia-* that is NOT the -cu12 build

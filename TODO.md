@@ -1,5 +1,74 @@
 # TODO
 
+## Current priorities (2026-10-19)
+
+Use [LATEST_REVIEW.json](results/LATEST_REVIEW.json) and the
+[candidate feed](results/candidates/current.json) for current counts. Sections
+below this checkpoint preserve historical worklists and superseded estimates.
+
+- [x] Integrate independently qualified internal-mode thermochemistry, including
+  genuine soft modes, into the producer and both primary readers; correct matched Fc.
+- [x] Correct the geometry driver's grid response and optimizer-convergence reporting;
+  391 software tests and an actual CPU geometry optimization pass.
+- [x] Complete corrected potential pairs for 22 of 25 registered new candidates;
+  555 export arithmetic checks pass with zero discrepancies at the 00:15 checkpoint.
+- [x] Finish a stable corrected global property-table review, refresh slides and
+  synchronize the result index with verified snapshots.
+- [ ] Resolve the remaining hexyl-NDI native surface, CN-PMDI near-spin ensemble,
+  and methyl-NDI radical minimum. Independently review and promote the two completed
+  private NDI radical minima; preserve failed branches and all superseded bytes.
+- [ ] Broaden matched experimental anchors across viologen, PMDI/NDI, quinone and
+  positive-electrode families. Track solvent/reference/structure identity and
+  quantify potential, wave-spacing and conformer uncertainty. Seven potentials
+  from four parent molecules do not establish exact-graft accuracy.
+- [ ] Qualify solution reorganization and kinetic descriptors with controlled solvent
+  response and conformer matching; keep gas relaxation diagnostics separate.
+- [ ] Assess synthesis, tether stability, charge-state-dependent chemical degradation,
+  solubility/swelling and transport for the shortlisted exact structures. Choose
+  targeted experimental tests where computation cannot establish performance.
+- [ ] Continue balanced candidate exploration using complementary curated sources,
+  exact-graph deduplication and matched substitutions. Use uncertainty and chemical
+  diversity to select the next batch rather than only nominal voltage/capacity.
+- [ ] Finish reproducibility: document a small end-to-end example, record the
+  validated environment, and publish one source-consistent set of tables, figures,
+  slides and field-specific QC. Keep reusable workflows in the package and dated
+  scientific evidence separate from supported entry points.
+
+## Validation and discovery continuation (2026-10-10)
+
+2026-10-11 continuation:
+- [x] Recover and verify Fc+ gas ground branch; production occupation seeds prevent repeat error.
+- [x] Replace `d3_80izcq/red2` triplet with1.757eV-lower singlet; archive every old file, retain triplet helper and verified spin override.
+- [x] Complete3 nonequilibrium solution controls; preserve clear total/inner conventions and diagnostic status.
+- [x] Complete AQ local/linker-fixed controls; validate GFN2-ALPB minima by mode following for2 targeted states.
+- [x] Correct mixed gas/SMD reference diagnostics and charged-as-neutral solvation fallback.
+- [x] Gate unstable RRHO standard properties; retain estimates separately. New checkpoint:10,223 checks, zero discrepancies.
+- [x] Register2 new motifs and verify5 converged, chemically intact UMA warm-start states.
+- [~] Full conservative-gradient solution Hessian; integration-grid response defect diagnosed, numerical reference running.
+- [~] Complete all remaining UMA<0.5eV DFT spin checks; electronic margins for3 original singlets verified.
+- [ ] Validate transferable thermal protocol, restore corrected d3_80izcq G/cross records and regenerate final tables.
+- [x] Preserve original results; regenerate a reviewed snapshot in `results/review_2026-10-10_final/`.
+- [x] Independent audit expanded to multi-electron summary and workbook: 8,306 checks, zero discrepancies.
+- [x] Exclude partial kinetics from complete Pareto objectives; require consecutive reductions from resting state.
+- [x] Validate new motif attachments, stereo, charge/spin parity and ladders; prevent ID collisions and unsafe rebuilds.
+- [x] Automate motif-to-audited-table execution with reservations, writer locks, CPU caps/affinity and stage logs.
+- [x] 48 contract tests, real new-motif embedding/resume test, cached viologen integration run; environment verified.
+- [x] Check Wang SI Table S1: demote ambiguous fluoro-benzoquinone E2/spacing to tier B.
+- [x] Refresh discovery without duplicate grafted molecules: 104 new quinones, ten preliminary-front molecules.
+- [x] Generate nine uncomputed PMDI/NDI proposals with validated grafting and state definitions.
+- [ ] Repair 11 incomplete declared states; retain the 15 imaginary-mode thermal review flags until resolved.
+- [ ] Compute solution/conformer-matched reorganization for flagged steps; DFT spin checks for small UMA gaps.
+- [ ] Review grafting chemistry of the 19 next proposals, then register selected motifs and run production QM.
+
+Details, scientific limits, commands and artifact links: `docs/VALIDATION_REVIEW_2026-10-10.md`.
+Parallel continuation: `docs/PARALLEL_PROGRESS_2026-10-10.md`.
+- [x] Recover ten missing SP records by proven adoption; source geometries/results unchanged.
+- [~] Reserved lambda1 repair: one missing DFT state and 28 cross points; bounded finalizer will audit a new snapshot.
+- [x] Chemical identity, unit and SCF-selection audit; flag decomposed `mv_ip1/s0` helper INVALID.
+- [x] Fix full cross-cache provenance, all-leg anion QC, radical/torsion mapping and thermal cache/reference contracts; 58 tests pass.
+- [x] Parallel curated expansion: 39 proposals (38 connectivities), 156 independent descriptor checks pass, all structures embed and build-check.
+- [ ] Close remaining thermal/spin/solution-lambda physical validation limits before claiming every metric is validated.
+
 Living worklist (strategic plan: `docs/PLAN.md`; axis status: `docs/DESIGN_AXES.md`).
 Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked. Previous list:
 `archive/docs/TODO_2026-08.md`.
@@ -68,8 +137,8 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked. Previous
 - [x] `redox.screening.discovery` + `scripts/mining/identify_candidates.py`: rules regenerate
       16/16 registered candidates; D3TaLES -> 113 new graftable 2e- quinones (107 p, 6 o);
       0 graftable bis-imides (3 found, all N,N'-dialkyl), 0 viologens (none in D3TaLES).
-- [x] Figures `results/figures/candidates/discovery_*.png` (capacity vs SA, chemical-space PCA,
-      D3TaLES lambda; only physical D3TaLES lambda 0-1.5 eV is used — 58 of 113).
+- [x] Figure `results/figures/candidates/discovery_capacity_vs_sa.png` (pool vs registered
+      candidates on identical axes); only physical D3TaLES lambda (0-1.5 eV) is used.
 - [ ] Stage 2: run the 8-molecule pre-filter front (`results/discovery/d3tales_prefilter_front.csv`)
       through the full grafted pipeline; check halo-quinones (Cl/Br on the quinone ring) for
       nucleophilic substitution — the grafting conditions themselves may attack them.
@@ -82,8 +151,7 @@ Legend: `[ ]` todo · `[~]` in progress · `[x]` done · `[!]` blocked. Previous
       validation/{orop,solvation,reorg_d3tales,reorg_literature}, mining, plotting/<figure dir>);
       obsolete launchers/GPU enforcers/dead modules -> `archive/` (see `archive/README.md`).
 - [x] `run_uma.sh` / `run_dft.sh` reserve GPUs via `gpu_reserve run` (no hand-pinned CUDA ids).
-- [ ] `plot_lambda_decomposition.py` still reads the preliminary Born λ_o
-      (`results/lambda_outer_merrifield_born.json`) while `results/lambda_outer.csv` (PCM v2) is
-      canonical — switch it to `lambda_outer.csv`.
+- [x] `plot_lambda_decomposition.py` (preliminary Born λ_o) archived 2026-10-06 with the other
+      one-off figures (archive/README.md); λ_o in the scorecard is the PCM v2 table.
 - [ ] `scripts/polaris/polaris_build_redox_env.sh` points at the expired `/eagle/FoundEpidem`
       allocation — repoint to `/grand/FRAME-IDP` before the next Polaris run.

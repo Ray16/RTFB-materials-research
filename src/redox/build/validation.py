@@ -13,12 +13,12 @@ itself a validation check (should land near the OROP MeCN B3LYP value ~4.63 V).
 """
 from __future__ import annotations
 import argparse
-import csv
 import importlib.util
 import math
 from pathlib import Path
 
 from rdkit import Chem
+from redox.build.manifest import COLS, locked_manifest, read_rows, write_rows
 
 from redox.build.structures import conformer_ensemble, to_xyz, unassigned_stereo
 
@@ -101,14 +101,8 @@ def _conf_to_xyz(molH, conf_id, comment):
 
 
 def read_manifest_rows():
-    if not MANIFEST.exists():
-        return []
-    with MANIFEST.open() as f:
-        return list(csv.DictReader(f))
+    return read_rows(MANIFEST)
 
-
-COLS = ["id", "name", "family", "state", "charge", "mult_hint",
-        "n_e", "n_conf", "solv_preopt", "smiles"]
 
 
 def main():
@@ -124,8 +118,12 @@ def main():
         if not cores:
             raise SystemExit(f"no validation core matches --only {args.only!r}")
 
+    with locked_manifest(MANIFEST):
+        _build_selected(cores)
+
+
+def _build_selected(cores):
     existing = read_manifest_rows()
-    have_ids = {r["id"] for r in existing}
     new_rows = []
     for core in cores:
         gid = core["id"]
@@ -144,11 +142,7 @@ def main():
     rebuilt_ids = {c["id"] for c in cores}
     kept = [r for r in existing if r["id"] not in rebuilt_ids]
     all_rows = kept + new_rows
-    with MANIFEST.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=COLS)
-        w.writeheader()
-        for r in all_rows:
-            w.writerow({c: r.get(c, "") for c in COLS})
+    write_rows(MANIFEST, all_rows)
     print(f"[manifest] {len(new_rows)} validation states written; "
           f"manifest now {len(all_rows)} rows -> {MANIFEST}")
 

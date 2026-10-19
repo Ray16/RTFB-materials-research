@@ -40,6 +40,8 @@ logs/
 # Ignore ALL dataset subdirs under validation/; small tracked pointers (README.md,
 # manifests) are files, not dirs, so the trailing-slash glob never matches them.
 data/raw/validation/*/
+# Downloaded discovery datasets/papers: commit curated records and source pointers.
+data/raw/discovery_sources/*/
 # ...except our OWN small hand-curated literature tables (sourced, citable; not re-clonable)
 !data/raw/validation/two_wave_mecn/
 

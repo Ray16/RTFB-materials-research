@@ -13,6 +13,7 @@ from __future__ import annotations
 import csv
 import importlib.util
 import json
+import math
 from pathlib import Path
 from types import ModuleType
 
@@ -54,7 +55,8 @@ def read_manifest() -> list[dict]:
 # result.json — see read_result.
 ENERGY_KEYS = ("e_smd_Ha", "e_smd_eV", "converged_smd", "e_gas_Ha", "e_gas_eV",
                "converged_gas", "gas_homo_eV", "gas_lumo_eV", "gas_s_squared",
-               "gas_spin_contam", "anion_unbound", "dG_solv_eV")
+               "gas_spin_contam", "anion_unbound", "dG_solv_eV",
+               "smd_homo_eV", "smd_lumo_eV", "smd_s_squared", "smd_spin_contam")
 
 
 def read_result(gid: str, state: str, root: Path = DFT, raw: bool = False) -> dict | None:
@@ -81,6 +83,60 @@ def read_result(gid: str, state: str, root: Path = DFT, raw: bool = False) -> di
         r[k] = rec.get(k) if rec else None
     r["sp_status"] = "ok" if rec else "missing"
     r["sp_protocol_hash"] = rec.get("protocol_hash") if rec else None
+    return apply_thermal_policy(r, p.parent)
+
+
+def apply_thermal_policy(r: dict, state_dir: Path) -> dict:
+    """Overlay the explicitly selected thermal definition without a legacy fallback."""
+    r = dict(r)
+    gid, state = Path(state_dir).parent.name, Path(state_dir).name
+    row = next((row for row in read_manifest() if row['id']==gid and row['state']==state), None)
+    r['geometry_spin_qc'] = 'ok'
+    if row is not None:
+        from redox.qm.dft import _uma_mult
+        try:
+            desired = _uma_mult(gid, state, int(row.get('mult_hint') or row.get('mult') or 1))
+            r['desired_mult'] = desired
+            if r.get('mult') != desired:
+                r['geometry_spin_qc'] = 'wrong_spin'
+        except RuntimeError:
+            r['geometry_spin_qc'] = 'stale_spin_decision'
+    r["legacy_g_thermal_eV"] = r.get("g_thermal_eV")
+    r["legacy_n_imag"] = r.get("n_imag")
+    policy = Path(state_dir) / "thermal_policy.json"
+    definition = "legacy_gfn2_gas_rrho"
+    selected_protocol = None
+    if policy.exists():
+        try:
+            selected = json.loads(policy.read_text())
+            definition = selected["thermal_definition"]
+            selected_protocol = selected.get("native_protocol")
+        except (OSError, ValueError, KeyError, TypeError):
+            definition = "invalid_policy"
+    r["thermal_definition"] = definition
+    r["thermal_protocol_hash"] = None
+    if definition == "legacy_gfn2_gas_rrho":
+        r["thermal_qc"] = "imag_modes" if (r.get("n_imag") or 0) > 0 else "ok"
+        return r
+    r["g_thermal_eV"] = None
+    r["n_imag"] = None
+    r["thermal_qc"] = "missing_validated_native_thermal"
+    if definition != "native_solution_dft_qrrho_spin":
+        r["thermal_qc"] = "invalid_thermal_policy"
+        return r
+    from redox.qm.native_thermal import load_native_thermal, cache_path, NATIVE_THERMAL
+    if selected_protocol != NATIVE_THERMAL:
+        r["thermal_qc"] = "stale_native_thermal_policy"
+        return r
+    record = load_native_thermal(state_dir, int(r["charge"]), int(r["mult"]))
+    if record is not None:
+        r.update(g_thermal_eV=record["g_thermal_total_eV"], n_imag=0,
+                 freq_min_cm=min(record["frequencies_cm"]), thermal_qc="ok",
+                 thermal_method="solution DFT projected internal-mode qRRHO plus explicit spin partition",
+                 thermal_protocol_hash=record["thermal_partition_address"],
+                 thermal_partition_protocol=record["thermal_partition_protocol"],
+                 thermal_postprocessing_path=record["thermal_postprocessing_path"],
+                 native_thermal_record=record)
     return r
 
 
@@ -94,12 +150,20 @@ def free_energy(r: dict | None):
     point had imaginary modes; value kept but flagged for sensitivity review)."""
     if r is None:
         return None, "missing"
+    if r.get('geometry_spin_qc', 'ok') != 'ok':
+        return None, r['geometry_spin_qc']
+    if r.get("thermal_definition") == "native_solution_dft_qrrho_spin" and r.get("thermal_qc") != "ok":
+        return None, r.get("thermal_qc", "missing_validated_native_thermal")
+    if r.get("thermal_qc") == "invalid_thermal_policy":
+        return None, "invalid_thermal_policy"
     e, g = r.get("e_smd_eV"), r.get("g_thermal_eV")
     if g is None:
         return None, "missing"
-    if e is None:
-        return None, "ok"
     qc = "imag_modes" if (r.get("n_imag") or 0) > 0 else "ok"
+    if not isinstance(g, (int, float)) or not math.isfinite(g):
+        return None, "missing"
+    if not isinstance(e, (int, float)) or not math.isfinite(e):
+        return None, qc
     return e + g, qc
 
 
@@ -135,78 +199,13 @@ def write_xyz(atoms, path: Path, comment: str = "") -> None:
 def to_float(x):
     """Best-effort float; None on empty/None/non-numeric input."""
     try:
-        return float(x)
+        value = float(x)
+        return value if math.isfinite(value) else None
     except (TypeError, ValueError):
         return None
 
-# --- SMILES <-> stored-geometry atom mapping -------------------------------------------------
-# WHY THIS EXISTS: build_candidates.py embeds the mol returned by decorate() but records
-# Chem.MolToSmiles(mol) -- the CANONICAL SMILES -- in the manifest. Canonicalization reorders
-# atoms, so for every GRAFTED candidate the manifest-SMILES atom indices do NOT correspond to
-# the atom order in library/*.xyz or calcs/dft/*/opt.xyz. Standalone entries (built from a
-# direct SMILES) happen to round-trip to identity, so anything that indexes a geometry by
-# SMILES index silently works on the standalones and is scrambled on the grafted molecules --
-# which are the actual screening candidates. Always go through this mapper.
-#
-# Bond ORDERS cannot be perceived reliably from geometry for charged aromatics (RDKit's
-# DetermineBonds fails on viologen dications and radical anions), but CONNECTIVITY can, so the
-# match is done on the element+connectivity skeleton with charges and bond orders stripped.
-
-def _skeleton(mol):
-    """Element + connectivity only: no formal charges, no explicit-H counts, no bond orders."""
-    from rdkit import Chem
-    rw = Chem.RWMol(mol)
-    for a in rw.GetAtoms():
-        a.SetFormalCharge(0); a.SetNumExplicitHs(0); a.SetNoImplicit(True); a.SetIsAromatic(False)
-    for b in rw.GetBonds():
-        b.SetBondType(Chem.BondType.SINGLE); b.SetIsAromatic(False)
-    return rw.GetMol()
-
-
-def smiles_to_xyz_map(smiles: str, xyz_path):
-    """Heavy-atom index in `smiles` -> heavy-atom index in the geometry at `xyz_path`.
-
-    Returns a tuple m where m[i] is the xyz index of SMILES heavy atom i, or None if the
-    geometry cannot be read / matched. Verified to map all 12 current candidate molecules.
-    """
-    from rdkit import Chem
-    from rdkit.Chem import rdDetermineBonds
-    try:
-        ref = Chem.MolFromXYZFile(str(xyz_path))
-        if ref is None:
-            return None
-        rdDetermineBonds.DetermineConnectivity(ref, charge=0)
-        ref = _skeleton(Chem.RemoveHs(ref, sanitize=False))
-        q = Chem.MolFromSmiles(smiles)
-        if q is None:
-            return None
-        return ref.GetSubstructMatch(_skeleton(Chem.RemoveHs(q)), useChirality=False) or None
-    except Exception:
-        return None
-
-
-def redox_core_xyz_indices(smiles: str, xyz_path, tether_smarts="[CH3]c1ccc([CH2])cc1"):
-    """xyz heavy-atom indices of the REDOX CORE, i.e. ring atoms outside the Merrifield
-    benzyl tether plus the exocyclic atoms double-bonded to them (quinone / imide C=O).
-
-    Acyclic substituents (N-methyl, N-ethyl, ammoniopropyl, methoxy) are EXCLUDED: they are
-    conformational degrees of freedom, not redox-active, and letting them into an RMSD is
-    what makes a whole-molecule test too blunt to separate a tether rotation from a genuine
-    inner-sphere distortion. Returns (core_idx, tether_idx) as sorted lists of xyz indices.
-    """
-    from rdkit import Chem
-    m = smiles_to_xyz_map(smiles, xyz_path)
-    if m is None:
-        return None, None
-    q = Chem.RemoveHs(Chem.MolFromSmiles(smiles))
-    teth = set(q.GetSubstructMatch(Chem.MolFromSmarts(tether_smarts)))
-    ri = q.GetRingInfo()
-    ring = {i for i in range(q.GetNumAtoms()) if ri.NumAtomRings(i) > 0}
-    core = ring - teth
-    for a in list(core):
-        for b in q.GetAtomWithIdx(a).GetBonds():
-            if b.GetBondType() == Chem.BondType.DOUBLE:
-                o = b.GetOtherAtomIdx(a)
-                if o not in ring:
-                    core.add(o)
-    return sorted(m[i] for i in core), sorted(m[i] for i in teth)
+# Compatibility exports for established analysis scripts. New geometry checks belong
+# in redox.build.geometry; keeping these names avoids changing historical callers.
+from redox.build.geometry import (  # noqa: E402,F401
+    _skeleton, smiles_to_xyz_map, geometry_stereo_status, redox_core_xyz_indices,
+)

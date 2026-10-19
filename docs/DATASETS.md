@@ -41,7 +41,9 @@ mkdir -p D3TaLES && curl -L -o D3TaLES/d3tales_public.csv \
   "https://data.materialsdatafacility.org/mdf_open/9bb8800f-9cda-4957-ad12-60ad2a381177/1.1/d3tales_public.csv"
 ```
 
-**D3TaLES utilization findings** (`scripts/mining/analyze_d3tales.py` → `results/d3tales_*.csv`):
+**D3TaLES utilization findings** (ARCHIVED 2026-10-06: `archive/scripts/mining/analyze_d3tales.py` →
+`archive/results/d3tales_*.csv`; superseded by `scripts/mining/identify_candidates.py` →
+`results/discovery/`, whose family patterns are broader and validated by rediscovery):
 - Potentials are **absolute** (eV): `solv_oxidation_potential` −0.49..3.58, `solv_reduction_potential`
   3.42..11.00 → subtract a level-matched Fc absolute for V vs Fc. Ranking cancels the reference.
 - Our-family coverage is **thin** (mostly ZINC drug-like neutrals): pyridinium 23, quinone 77,

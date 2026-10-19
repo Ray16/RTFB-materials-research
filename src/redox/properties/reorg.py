@@ -8,19 +8,20 @@ where E_X(q_Y) is the energy of species X (its own charge+spin) evaluated at the
 geometry of species Y. Two of the four points are already stored (each state's own energy);
 the two CROSS points E_O(q_R) and E_R(q_O) are extra single points at the other geometry.
 
-Why it computes reliably: all four points are the SAME molecule at two geometries, so basis-
-set/functional error cancels strongly (same reasoning as the stability Delta-Gs). lambda_i is
-by construction >= 0 (both brackets are distortion penalties); a negative value flags a broken
-geometry pairing, wrong charge/spin, or atom-order mismatch.
+All four points must use the same molecule, atom ordering and active electronic protocol.
+These SMD geometries are not gas-surface minima, so nonnegative gas distortion energies
+are a QC requirement, not a mathematical guarantee. A negative value can indicate a
+geometry/surface mismatch, wrong charge/spin, atom-order mismatch or unresolved SCF state.
 
-Convention: computed GAS-PHASE (the inner/geometric part; the outer/solvent part is a separate
-Marcus-continuum term). Uses the stored gas single-point level (wb97m-v/def2-tzvp) on the
-SMD-optimized geometries, so it is consistent with the rest of the pipeline.
+Convention: GAS-PHASE diagnostic at the stored active protocol (wb97m-v/def2-TZVPD),
+evaluated on SMD-optimized geometries. The reported value is the sum of two directional
+penalties, not their mean. A validated frozen-slow solution total is a separate quantity;
+do not add a solvent term to that total a second time.
 
-Low lambda_i => fast, reversible electron transfer (good). Large geometric reorganization also
-tends to correlate with fragility, so it doubles as a stability signal.
+A QC-clean gas sum does not establish a solution rate, reversibility or decomposition
+stability. These require conformer, solvent, electronic-coupling and reaction-path evidence.
 
-  PYTHONPATH=src CUDA_VISIBLE_DEVICES=0 python -m redox.properties.reorg --only viologen --backend gpu
+  gpu_reserve run 0 --label redox-reorg -- env PYTHONPATH=src python -m redox.properties.reorg --only viologen --backend gpu
   PYTHONPATH=src python -m redox.properties.reorg --aggregate
 """
 from __future__ import annotations
@@ -28,10 +29,12 @@ import argparse
 import csv
 import hashlib
 import json
+import math
 
 from redox.core.common import DFT, EV_KJ, EV_MEV, RESULTS, ROOT, state_names, group_ids
 from redox.core.common import read_result as _res
 from redox.core.protocol import ACTIVE_SP, protocol_hash
+from redox.core.io import atomic_write_json
 
 # --- cross-point cache validity -------------------------------------------------------------
 # A cache entry used to be accepted on the sole basis of containing `e_gas_eV`. That silently
@@ -59,7 +62,11 @@ def _cache_ok(d, q, m, geom_hash, proto=ACTIVE_SP):
     """True if a cached cross-point entry is reusable under the current protocol: same schema,
     level of theory (xc + basis + NLC/dispersion), charge/mult, geometry, diagnostics, and a
     converged SCF."""
-    if not isinstance(d, dict) or d.get("e_gas_eV") is None:
+    if not isinstance(d, dict) or not geom_hash or d.get("e_gas_eV") is None:
+        return False
+    if not isinstance(d["e_gas_eV"], (int, float)) or not math.isfinite(d["e_gas_eV"]):
+        return False
+    if d.get("protocol") != proto:
         return False
     if (d.get("sp_xc") or "").lower() != proto["xc"] or (d.get("sp_basis") or "").lower() != proto["basis"]:
         return False
@@ -67,13 +74,13 @@ def _cache_ok(d, q, m, geom_hash, proto=ACTIVE_SP):
         return False
     if d.get("converged_gas") is not True:      # missing flag = unverified = not usable
         return False
-    if int(d.get("cache_schema", 1)) != CACHE_SCHEMA:
+    if d.get("cache_schema") != CACHE_SCHEMA:
         return False
     if any(k not in d for k in REQUIRED_DIAG):
         return False
-    if int(d.get("charge", -999)) != int(q) or int(d.get("mult", -999)) != int(m):
+    if d.get("charge") != q or d.get("mult") != m:
         return False
-    if geom_hash is not None and d.get("geom_sha1") != geom_hash:
+    if d.get("geom_sha1") != geom_hash:
         return False
     return True
 
@@ -123,7 +130,8 @@ def _cross_energy_gas(gid, species_state, q, m, at_geom_state, backend):
     if legacy.exists():
         try:
             d = json.loads(legacy.read_text())
-            if ((d.get("sp_xc") or "").lower() == ACTIVE_SP["xc"]
+            if (d.get("protocol") == ACTIVE_SP
+                    and (d.get("sp_xc") or "").lower() == ACTIVE_SP["xc"]
                     and (d.get("sp_basis") or "").lower() == ACTIVE_SP["basis"]
                     and d.get("geom_sha1") == ghash and d.get("e_gas_eV") is not None
                     and d.get("converged_gas") is True
@@ -133,7 +141,7 @@ def _cross_energy_gas(gid, species_state, q, m, at_geom_state, backend):
                          sp_disp=ACTIVE_SP["disp"], protocol=ACTIVE_SP,
                          adopted_from=legacy.name)
                 cache.parent.mkdir(parents=True, exist_ok=True)
-                cache.write_text(json.dumps(d, indent=2))
+                atomic_write_json(cache, d)
                 return float(d["e_gas_eV"])
         except Exception:
             pass
@@ -141,8 +149,10 @@ def _cross_energy_gas(gid, species_state, q, m, at_geom_state, backend):
     # gas single point only (inner-sphere lambda needs the gas energy; skip the SMD SCF)
     res = D.dft_smd(geom, q, m, do_opt=False, do_gas=True, do_smd=False, do_freq=False,
                     backend=backend)
+    if _geom_hash(geom) != ghash:
+        raise RuntimeError(f"{gid}/{at_geom_state}: geometry changed during cross-point evaluation")
     cache.parent.mkdir(parents=True, exist_ok=True)
-    cache.write_text(json.dumps({"cache_schema": CACHE_SCHEMA,
+    atomic_write_json(cache, {"cache_schema": CACHE_SCHEMA,
                                  "e_gas_eV": res.get("e_gas_eV"),
                                  "gas_homo_eV": res.get("gas_homo_eV"),
                                  "gas_s_squared": res.get("gas_s_squared"),
@@ -153,8 +163,7 @@ def _cross_energy_gas(gid, species_state, q, m, at_geom_state, backend):
                                  "sp_xc": res.get("sp_xc"), "sp_basis": res.get("sp_basis"),
                                  "sp_nlc": res.get("sp_nlc"), "sp_disp": res.get("sp_disp"),
                                  "converged_gas": res.get("converged_gas"),
-                                 "protocol": ACTIVE_SP},
-                                indent=2))
+                                 "protocol": ACTIVE_SP})
     return res.get("e_gas_eV")
 
 
@@ -229,6 +238,9 @@ def compute_group(gid, backend="gpu"):
         # two cross points (the two own-geometry points are already stored)
         _cross_energy_gas(gid, sO, qO, mO, sR, backend)   # E_O at geom_R
         _cross_energy_gas(gid, sR, qR, mR, sO, backend)   # E_R at geom_O
+    pending = stale_cross_points(gid)
+    if pending:
+        raise RuntimeError(f"{gid}: {len(pending)} cross points remain missing or invalid")
     print(f"[reorg] {gid} cross points done", flush=True)
 
 
@@ -236,8 +248,9 @@ def lambda_for_couple(gid, O, R):
     (sO, qO, mO), (sR, qR, mR) = O, R
     # own-geometry points: ACTIVE-protocol records; cross points: protocol-addressed caches.
     # All four at one level -> each half is a single-basis surface difference.
-    E_O_at_O = _res(gid, sO)["e_gas_eV"]
-    E_R_at_R = _res(gid, sR)["e_gas_eV"]
+    own_O, own_R = _res(gid, sO), _res(gid, sR)
+    E_O_at_O = own_O["e_gas_eV"]
+    E_R_at_R = own_R["e_gas_eV"]
     cO = _cache_path(gid, sO, sR, qO, mO)
     cR = _cache_path(gid, sR, sO, qR, mR)
     if E_O_at_O is None or E_R_at_R is None or not (cO.exists() and cR.exists()):
@@ -245,8 +258,9 @@ def lambda_for_couple(gid, O, R):
     for c, q_, m_, at in ((cO, qO, mO, sR), (cR, qR, mR, sO)):
         if not _cache_ok(json.loads(c.read_text()), q_, m_, _geom_hash(DFT / gid / at / "opt.xyz")):
             return None
-    E_O_at_R = json.loads(cO.read_text())["e_gas_eV"]
-    E_R_at_O = json.loads(cR.read_text())["e_gas_eV"]
+    cross_O, cross_R = json.loads(cO.read_text()), json.loads(cR.read_text())
+    E_O_at_R = cross_O["e_gas_eV"]
+    E_R_at_O = cross_R["e_gas_eV"]
     lam = (E_O_at_R - E_O_at_O) + (E_R_at_O - E_R_at_R)     # eV
     relax_ox = (E_O_at_R - E_O_at_O)                        # eV, each half-relaxation
     relax_red = (E_R_at_O - E_R_at_R)
@@ -260,8 +274,13 @@ def lambda_for_couple(gid, O, R):
     # Prefer the automorphism-aware value; fall back to plain Kabsch if perception fails.
     rmsd_sym = _sym_heavy_rmsd(gO, gR, charge=qO)
     rmsd = rmsd_sym if rmsd_sym is not None else rmsd_naive
-    anion_homo = json.loads(cR.read_text()).get("gas_homo_eV")   # E_R at neutral geom (the anion)
-    anion_unbound = bool(json.loads(cR.read_text()).get("anion_unbound")) if qR < 0 else False
+    # Every anionic gas leg must be bound, including own geometry and oxidized anions.
+    anion_legs = [r for q, r in ((qO, own_O), (qR, own_R), (qO, cross_O), (qR, cross_R)) if q < 0]
+    homos = [r.get("gas_homo_eV") for r in anion_legs
+             if isinstance(r.get("gas_homo_eV"), (int, float)) and math.isfinite(r["gas_homo_eV"])]
+    anion_homo = max(homos) if homos else None
+    anion_unbound = any(r.get("anion_unbound") is True for r in anion_legs) or any(h > 0 for h in homos)
+    diagnostics_missing = len(homos) != len(anion_legs)
     # Record EVERY failed check ('+'-joined): a single precedence-ordered label let
     # conformer_jump hide anion_unbound, so a couple looked rescuable by a conformer-matched
     # recompute when its gas cross point is ill-defined regardless of conformer.
@@ -276,6 +295,8 @@ def lambda_for_couple(gid, O, R):
         reasons.append("conformer_jump")
     if anion_unbound:
         reasons.append("anion_unbound")
+    if diagnostics_missing:
+        reasons.append("anion_diagnostics_missing")
     if max(relax_ox, relax_red) > 1.0:
         reasons.append("large_half>1eV")
     flag = "+".join(reasons)
@@ -378,7 +399,7 @@ def aggregate():
         print(f"{r['id']:22s} {r['couple']:12s} {r['lambda_i_eV']:9.3f} {d3s} "
               f"{r.get('d3tales_type',''):>8s} {dfs} {ok:>4s}")
     print("\nlambda_i = inner-sphere reorganization energy (gas, 4-point Nelsen; identical to")
-    print("D3TaLES's ReorganizationCalc). Lower = faster/more reversible ET. Must be >= 0.")
+    print("D3TaLES's ReorganizationCalc). QC requires nonnegative penalties; solution rates and reversibility require separate validation.")
     flagged = [r for r in rows if r.get("flag")]
     if flagged:
         print(f"\n[!] {len(flagged)} couple(s) flagged as likely broken/wrong-conformer geometry "
@@ -441,6 +462,7 @@ def main():
             n, i = (int(x) for x in a.shard.split(":"))
             gids = [g for k, g in enumerate(gids) if k % n == i]
         print(f"[reorg] refreshing cross points for {len(gids)} groups")
+        failures = 0
         for gid in gids:
             if not stale_cross_points(gid):
                 print(f"[skip] {gid} (cache current)")
@@ -448,7 +470,10 @@ def main():
             try:
                 compute_group(gid, a.backend)
             except Exception as exc:
+                failures += 1
                 print(f"[fail] {gid}: {exc}", flush=True)
+        if failures:
+            raise SystemExit(1)
     elif a.aggregate:
         aggregate()
     else:

@@ -1,0 +1,80 @@
+{
+  "status": "execution_budget_qualified",
+  "schema": 1,
+  "protocol": {
+    "schema": 1,
+    "model": "solution geometry-level DFT Hessian",
+    "xc": "r2scan",
+    "disp": "d4",
+    "basis": "def2-svp",
+    "anion_basis": "def2-svpd",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "grid_level": 3,
+    "cphf_grid_level": 3,
+    "grid_response": true,
+    "conv_tol": 1e-12,
+    "conv_tol_grad": 1e-08,
+    "temperature_K": 298.15,
+    "rotor_cutoff_cm": 50,
+    "spin_partition": "unsplit ground spin multiplet",
+    "gradient_max_acceptance_Ha_Bohr": 0.00045,
+    "min_frequency_acceptance_cm": -5,
+    "finite_difference_step_Bohr": 0.0005,
+    "finite_difference_relative_acceptance": 0.01,
+    "max_spin_contamination": 0.1,
+    "df_batch_cap_GiB": 6,
+    "validated_pyscf_version": "2.14.0",
+    "validated_gpu4pyscf_version": "1.8.1"
+  },
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "caps_GiB": [
+    24
+  ],
+  "scientific_model_changed": false,
+  "controls": [
+    {
+      "status": "control_verified",
+      "state": "neu",
+      "mult": 1,
+      "relative_matrix_error": 1.8112757187219518e-11,
+      "maximum_matrix_difference": 2.268329968302396e-11,
+      "maximum_thermal_difference_eV": 5.115740719929818e-09,
+      "native_gates_passed": true,
+      "evidence_sha256": {
+        "calcs/dft/exp_naphthalimide_control/neu/native_thermal/a8f2238c92b89356.json": "f74a8662833539b7f4ed432f76a3823c31c8396bbdf8c6cb830137fd8b5864e9",
+        "calcs/dft/exp_naphthalimide_control/neu/native_thermal/a8f2238c92b89356/hessian_cartesian.npy": "5379152da4268e8f51487224e86000cd0d468d791e5934f92a641a7965e01caa",
+        "calcs/dft/exp_naphthalimide_control/neu/opt.xyz": "cac5e1edb889c8cebb9d29f1c86300cbf6fdd2d71b2c4baab451721660ba0be2",
+        "results/validation/resume_campaign_2026-10-12/memory_controls/neu/native_thermal/a8f2238c92b89356.json": "22de62c0412c0f2b0820c04006e7e87baf5d2899cf317a8caa8f06e83bd9e530",
+        "results/validation/resume_campaign_2026-10-12/memory_controls/neu/native_thermal/a8f2238c92b89356/hessian_cartesian.npy": "bc29a5d5c2e4f1bb9e7158ee5ffef686f7e080886b06c7056bbb09b5e762a19a",
+        "results/validation/resume_campaign_2026-10-12/memory_controls/neu/opt.xyz": "cac5e1edb889c8cebb9d29f1c86300cbf6fdd2d71b2c4baab451721660ba0be2"
+      },
+      "finished": 1791859083.3148592
+    },
+    {
+      "status": "control_verified",
+      "state": "red1",
+      "mult": 2,
+      "relative_matrix_error": 3.857362025427221e-11,
+      "maximum_matrix_difference": 3.177325069714243e-11,
+      "maximum_thermal_difference_eV": 2.9388305122779457e-09,
+      "native_gates_passed": true,
+      "evidence_sha256": {
+        "calcs/dft/exp_naphthalimide_control/red1/native_thermal/939bf3ad3a419663.json": "2458b4f24f8eb5b1e3d7162ca337d6766a854605e92fbae8fdc3cc1ecb81d365",
+        "calcs/dft/exp_naphthalimide_control/red1/native_thermal/939bf3ad3a419663/hessian_cartesian.npy": "d90a5209f0d2b8180a1701bff5b5380d09c0e98838dff0c1cc67b7708467a47f",
+        "calcs/dft/exp_naphthalimide_control/red1/opt.xyz": "e20801093c840686aeedc7b8a1bf6091bbaf58cddad5b45bcf71978a4302eb57",
+        "results/validation/resume_campaign_2026-10-12/memory_controls/red1/native_thermal/939bf3ad3a419663.json": "cfe37c5992e9f678802b44cb72f42af29e40b00cca5377e626467ac62c17085d",
+        "results/validation/resume_campaign_2026-10-12/memory_controls/red1/native_thermal/939bf3ad3a419663/hessian_cartesian.npy": "84a8353453de37b69afdc5d13bf4b40ccb6d4b47f43a79b7b27d83c9ca271bce",
+        "results/validation/resume_campaign_2026-10-12/memory_controls/red1/opt.xyz": "e20801093c840686aeedc7b8a1bf6091bbaf58cddad5b45bcf71978a4302eb57"
+      },
+      "finished": 1791859723.3622994
+    }
+  ],
+  "created": 1791859724.0108814,
+  "allocation_policy": "six-GiB integral batches; qualified larger unrestricted response workspace",
+  "content_sha256": "1fbba94cf38aecc7d13ae1fd24940da1ae9efb844ca27bc9612c26fe8d77dd68"
+}
