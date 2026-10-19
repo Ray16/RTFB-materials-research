@@ -1,8 +1,8 @@
 {
   "status": "scoped_benchmark_gate_active_global_propagation_pending",
-  "observed": 1792402568.545023,
+  "observed": 1792403142.7172003,
   "actual_evidence": "results/reviews/2026-10-19/first_catholyte_parent_checked/states.json",
-  "held_PMDI_second_waves": 2,
+  "held_PMDI_second_waves": 0,
   "existing_table_snapshot": "results/reviews/2026-10-19/ptz_source_tables",
   "affected_consumers": [
     "scripts/validation/benchmark/score_benchmark_mecn.py",
@@ -11,5 +11,7 @@
   ],
   "issue": "These general consumers select tier-A measured labels and nonmissing computed potentials without the scoped completed-spin gate. Keep prior pooled calibration provisional; propagate the gate before publishing refreshed global uncertainty/ranking tables.",
   "source_barrier": "scorecard.py is bound by active spin plans; a separately qualified epoch is required before its change",
-  "current_checked_addition": "results/reviews/2026-10-19/verified_catholyte_parent_addition/summary.json"
+  "current_checked_addition": "results/reviews/2026-10-19/verified_catholyte_parent_addition/summary.json",
+  "PMDI_checks_completed": true,
+  "current_scoped_benchmark": "results/reviews/2026-10-19/matched_parent_spin_checked/summary.json"
 }

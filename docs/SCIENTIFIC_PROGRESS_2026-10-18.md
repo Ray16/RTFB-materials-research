@@ -23,11 +23,13 @@ and discussion disagree. The [12-state parent panel](../results/validation/pheno
 records actual GPU starts, finished states and independent reviews separately.
 Alternate-spin checks and complete adjacent-state pairs are required before the
 new calculated values contribute to strict accuracy assessment. The
-earlier seven-point matched-parent benchmark is now a historical selected-spin
-snapshot: two PMDI second waves require DFT spin checks. The first newly checked
-catholyte point, free EPT, is **+0.537 V vs Fc**, compared with **+0.278 V** measured
-(error **+0.259 V**). See the [checked addition](../results/reviews/2026-10-19/verified_catholyte_parent_addition/README.md).
-No correction is fitted and pooled statistics wait for the pending spin gates.
+[updated matched-parent snapshot](../results/reviews/2026-10-19/matched_parent_spin_checked/README.md)
+contains **eight potentials from five parents and four studies**, after both PMDI
+dianion spin checks passed (0.692 / 0.701 eV electronic gaps). RMSE is **0.1846 V**
+and MAE **0.1611 V**, with stated state-specific spin confidence and no fitted
+correction. Free EPT is **+0.537 V vs Fc**, compared with **+0.278 V** measured
+(error **+0.259 V**). The earlier seven-point review is historical. General
+calibration consumers must receive the same spin gate before global tables refresh.
 
 Both preserved hexyl-NDI radical geometries failed the finer-derivative checks.
 The [terminal review and host diagnostic](../results/validation/hexyl_finer_derivatives_2026-10-19/README.md)

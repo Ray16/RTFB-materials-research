@@ -38,24 +38,25 @@
     },
     "benchmark_spin_requalification": {
       "plan": "results/validation/benchmark_imide_spin_2026-10-19/plan.json",
-      "held_older_second_wave_points": 2,
-      "aggregate_stats_update_pending": true
+      "held_older_second_wave_points": 0,
+      "targeted_spin_checks_complete": true,
+      "general_consumer_gate_propagation_pending": true
     },
     "matched_parent_validation": {
-      "status": "historical_selected_spin_snapshot_pending_DFT_requalification",
-      "path": "results/reviews/2026-10-18/matched_parent_projected_checked/summary.json",
-      "scope": "Four selected experimental parent molecules; not a global table review or exact-graft validation",
-      "potentials": 7,
-      "molecules": 4,
-      "studies": 3,
+      "status": "checked_under_stated_spin_models",
+      "path": "results/reviews/2026-10-19/matched_parent_spin_checked/summary.json",
+      "scope": "Selected exact free-parent calculations; not global tables or graft validation",
+      "potentials": 8,
+      "molecules": 5,
+      "studies": 4,
       "stats": {
-        "n": 7,
-        "MAE": 0.14707142857142858,
-        "RMSE": 0.17140063760508178,
-        "bias": 0.05935714285714285,
-        "SD": 0.1736780340855156
+        "n": 8,
+        "MAE": 0.16106250000000005,
+        "RMSE": 0.18463756727708477,
+        "bias": 0.08431249999999996,
+        "SD": 0.17560486030940528
       },
-      "independent_checks": 171,
+      "independent_checks": 24,
       "exact_graft_accuracy_validated": false
     },
     "geometry_driver": {
@@ -86,7 +87,8 @@
       "additional_batches": [
         "results/validation/phenothiazine_spin_panel_batch2_2026-10-19/plan.json",
         "results/validation/benchmark_imide_spin_2026-10-19/plan.json",
-        "results/validation/phenothiazine_spin_followup_2026-10-19/plan.json"
+        "results/validation/phenothiazine_spin_followup_2026-10-19/plan.json",
+        "results/validation/phenothiazine_spin_final_cation_2026-10-19/plan.json"
       ],
       "rule": "Keep plan-bound numerical producer files unchanged while these spin workers are active; primary and alternate surfaces retain separate source epochs."
     },
@@ -145,10 +147,10 @@
     "slides": {
       "status": "checked",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/verified_catholyte_parent_addition/slides_check.json",
+      "publisher": "results/reviews/2026-10-19/matched_parent_spin_checked/slides_check.json",
       "snapshot": null,
-      "pdf_sha256": "abce5c90eb430ef7d77f48a54c477efaf3aca1309919fb652fd7c15575baddc2",
-      "pages": 40
+      "pdf_sha256": "01fc6dbc4fc0cbc2fa71fe7d4177c4255f522ea1242c5fe4938fbc4a02656eb7",
+      "pages": 41
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "software_tests_passed": 514,
@@ -156,11 +158,13 @@
     "remaining_work": [
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
-      "Broader experimental benchmark and exact-graft validation"
+      "Broader experimental benchmark and exact-graft validation",
+      "Benchmark spin-gate propagation to general scoring/uncertainty/audit",
+      "Gas Nelsen forwarding after the active source epoch"
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792402568.6865754,
+  "updated": 1792404086.2149012,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

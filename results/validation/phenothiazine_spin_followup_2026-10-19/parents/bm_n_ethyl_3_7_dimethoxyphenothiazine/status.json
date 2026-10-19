@@ -1,5 +1,5 @@
 {
-  "status": "computing",
+  "status": "comparisons_verified",
   "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
   "host": "lambda1",
   "pid": 2239917,
@@ -9,7 +9,46 @@
     3
   ],
   "started": 1792402307.381322,
-  "cases": [],
+  "cases": [
+    {
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "state": "ox1",
+      "status": "spin_gap_verified",
+      "chosen_identity": {
+        "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+        "state": "ox1",
+        "charge": 1,
+        "mult": 2,
+        "geometry_sha256": "e66cc2ceb530b38dd87c54ef7d3b4c7c905ca773accd0e4a57afa860a914edb9",
+        "smiles_sha256": "6b4f59a7abf20e7b461356df8b0aa084e499f830029c949b47b65613999860da",
+        "sp_record_sha256": "9365e94199a1fca4d7fab282f1ae02835416e5ba1b1e6edd9519ed670097b3f7",
+        "protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        }
+      },
+      "chosen_mult": 2,
+      "alternative_mult": 4,
+      "near_gap_threshold_eV": 0.2,
+      "helper": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/spincheck/bm_n_ethyl_3_7_dimethoxyphenothiazine/ox1_m4",
+      "created": 1792402307.401899,
+      "host": "lambda1",
+      "pid": 2239917,
+      "electronic_gap_eV": 3.966623283318768,
+      "thermochemical_gap_validated": false,
+      "finished": 1792403435.8970225,
+      "experimental_accuracy_validated": false
+    }
+  ],
   "experimental_accuracy_validated": false,
-  "state": "ox1"
+  "state": "ox1",
+  "finished": 1792403435.909341
 }
