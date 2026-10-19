@@ -146,13 +146,25 @@ def _archive_tree(source,destination):
  atomic_json(destination.parent/(destination.name+'_SHA256.json'),sums)
 
 
+def _optimize_helper_minimum(mf):
+ """Keep the optimizer's convergence flag as well as the final SCF result."""
+ from redox.qm.dft import _geomopt_fn
+ grad=mf.nuc_grad_method();grad.grid_response=True;scanner=grad.as_scanner()
+ converged,mol=_geomopt_fn('gpu')(scanner,maxsteps=120,assert_convergence=True,
+  convergence_energy=1e-8,convergence_grms=3e-5,convergence_gmax=5e-5,
+  convergence_drms=1e-4,convergence_dmax=2e-4)
+ if not converged or not scanner.converged:
+  raise RuntimeError('Helper minimum optimization or final SCF did not converge; preserve trajectory')
+ return mol,dict(optimized=True,geometry_optimization_converged=True,
+  optimization_SCF_converged=True,opt_gradient_grid_response=True)
+
+
 def _helper_native(gid,state,sd):
  """Resolve a real helper saddle using at most two conservative signed-mode branches."""
  import numpy as np
  from ase.io import read,write
  from pyscf import gto
  from pyscf.hessian import thermo
- from pyscf.geomopt.geometric_solver import optimize
  from redox.qm.dft import _build_smd_mf,_ecp_for,_free_gpu_pool
  from redox.qm.sp import ensure,_ENERGY_KEYS
  try:return ensure_native_thermal(gid,state,state_dir=sd)[1]
@@ -176,11 +188,13 @@ def _helper_native(gid,state,sd):
   try:
    _,mf=build(atoms.positions+delta);mf.kernel()
    if not mf.converged:raise RuntimeError('Helper refinement SCF failed')
-   grad=mf.nuc_grad_method();grad.grid_response=True
-   mol=optimize(grad.as_scanner(),maxsteps=120,assert_convergence=True,convergence_energy=1e-8,convergence_grms=3e-5,convergence_gmax=5e-5,convergence_drms=1e-4,convergence_dmax=2e-4)
-   final=atoms.copy();final.positions=mol.atom_coords(unit='Angstrom');write(work/'opt.xyz',final);del mf,grad;_free_gpu_pool()
+   mol,optimization=_optimize_helper_minimum(mf)
+   final=atoms.copy();final.positions=mol.atom_coords(unit='Angstrom');write(work/'opt.xyz',final);del mf;_free_gpu_pool()
    if smiles_to_xyz_map(declared(gid,state)['smiles'],work/'opt.xyz') is None:raise RuntimeError('Helper refinement changes chemistry')
-   r=dict(raw,optimized=True,g_thermal_eV=None)
+   r=dict(raw,**optimization,g_thermal_eV=None)
+   r.update(opt_out=str(work/'opt.xyz'),refinement_source_geometry_sha256=sha(sd/'opt.xyz'),
+    refinement_source_result_sha256=sha(sd/'result.json'),refinement_producer_sha256=sha(__file__))
+   for key in ('energy_geom_sha1','energy_protocol'):r.pop(key,None)
    for key in _ENERGY_KEYS:r[key]=None
    atomic_json(work/'result.json',r);th=ensure_native_thermal(gid,state,state_dir=work)[1]
    _,energy=ensure(gid,state,work,q,m,backend='gpu')

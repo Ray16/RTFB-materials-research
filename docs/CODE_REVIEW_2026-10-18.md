@@ -1,37 +1,40 @@
 # Code review and refactoring
 
-## Current corrections: 2026-10-19
+## Current checkpoint: 2026-10-19
 
-The solution-relaxation continuation separates bound implementation controls from
-individual-case verification and hardens both density-cache schemas. Six archived
-PTZ densities and 16 arithmetic checks pass. Both reciprocal optimizations return
-the selected local geometries (proper symmetry RMSDs 0.000135 / 0.00178 Å); all ten
-checks pass. The composite directional descriptor is locally qualified at
-1.1157 / 1.1373 eV, while active-SP stationarity, global ensembles, thermal barriers
-and experimental rates remain unvalidated. All **450 tests pass**. The first hexyl
-finer replay failed its 1% contact gate (56.9% error); its distinct plus geometry
-has a verified H100 start. No physical threshold changed.
-
+The full software suite passes **461 tests**. The latest additional fix makes
+alternate-spin helper repairs retain both optimizer and final-SCF convergence,
+refuse replacement geometries on either failure, and clear inherited direct-energy
+producer declarations. Five regression cases cover successful convergence and
+both failure paths, including preservation of existing helper files. The previous
+producer is retained in
+[the source-epoch record](../results/validation/spin_helper_convergence_2026-10-19/source_epoch.json).
+All primary parent workers passed their initial source guards before this change;
+their geometry/energy/thermal numerical producers were unchanged.
 
 The maintained pipeline now binds energies, native partitions and equilibrium spin
-policies to their actual inputs; validates replacement states before atomic
-promotion with rollback; preserves optimizer convergence; and shares publication
-dependency discovery. Optional QC fields survive CSV and workbook export. Readiness
-uses active energies rather than synthetic placeholders, and slide watch windows
-use the current day. Numerical source snapshots preserve ongoing calculations.
+policies to actual inputs, validates complete replacements before atomic promotion,
+and preserves optimizer convergence and original records. Both density-cache
+schemas require explicit provenance. Shared publication inventories, CSV/workbook
+schemas and readiness checks preserve missing fields and field-specific QC.
 
-Native thermochemistry excludes rigid motions while retaining genuine soft modes.
-The installed xTB kernel runs in an isolated CPU process. Two qualified spin
-surfaces can supply an explicit equilibrium free energy without claiming valid
-single-surface kinetics. Integrity checks include every participating component,
-and the independent audit now reconstructs distance bond graphs.
+The strict experimental loader now supports positive-electrode oxidation ladders
+and binds experimental CSVs into table-review fingerprints. The new primary
+phenothiazine source supplies five strict target potentials from four parents;
+irreversible waves and conflicting values remain excluded from strict scoring.
+The [parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/README.md)
+records its calculations and independent partial reviews. Started calculations do
+not establish matching accuracy or the preferred spin surface.
 
-All **450 software tests pass**. The current global tables pass **30,455 independent
-checks**, and the 24/25 additional-candidate export passes **572 checks**, with zero
-discrepancies and stable inputs. [Current evidence](../results/LATEST_REVIEW.json)
-links the exact receipts and the checked PDF. Hexyl NDI's last native surface,
-solution kinetics and broader experimental accuracy remain unfinished. User-staged
-archive changes have been preserved separately from these commits.
+The last full table snapshot passes **30,455 arithmetic checks**, and the additional
+candidate export passes **572 checks**, with zero discrepancies. These are scoped
+snapshots; new parent calculations require a fresh assessment after their QC.
+[Current evidence](../results/LATEST_REVIEW.json) identifies the exact receipts,
+24/25 admitted additional potential pairs, source catalog and checked slide deck.
+Both remaining hexyl-NDI branches failed physical gates. Host-only diagnostics
+reproduce the problem in the SMD CDS term; neither geometry is admitted.
+Solution kinetics, broader experimental accuracy and exact-graft validation remain
+unfinished. User-staged archive changes remain separate and untouched.
 
 ## Earlier review checkpoints
 

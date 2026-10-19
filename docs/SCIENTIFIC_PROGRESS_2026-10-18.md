@@ -1,49 +1,42 @@
 # Property correctness and candidate expansion
 
-## Current checkpoint: 2026-10-19, 02:03 Chicago
+## Current checkpoint: 2026-10-19
 
-The solution-relaxation continuation separates bound implementation controls from
-individual-case verification and hardens both density-cache schemas. Six archived
-PTZ densities and 16 arithmetic checks pass. Both reciprocal optimizations return
-the selected local geometries (proper symmetry RMSDs 0.000135 / 0.00178 Å); all ten
-checks pass. The composite directional descriptor is locally qualified at
-1.1157 / 1.1373 eV, while active-SP stationarity, global ensembles, thermal barriers
-and experimental rates remain unvalidated. All **450 tests pass**. The first hexyl
-finer replay failed its 1% contact gate (56.9% error); its distinct plus geometry
-has a verified H100 start. No physical threshold changed.
+Use [LATEST_REVIEW.json](../results/LATEST_REVIEW.json) for current artifact paths
+and the [candidate workbook](../results/candidates/latest.xlsx) for exact grafts.
+**24 of 25 additional candidates have checked native potential pairs**, and 34
+original proposals have admitted native potentials. The last candidate export
+passes 572 arithmetic checks with zero discrepancies. Each snapshot has its own
+input identities; new reference-parent work is kept separate from graft results.
 
+The full software suite passes **461 tests**. The last full table snapshot passes
+30,455 arithmetic checks with stable inputs and zero discrepancies. This verifies
+record admission and arithmetic for that snapshot, not experimental accuracy.
+Native thermochemistry uses geometrically projected internal modes, the isolated
+xTB kernel and a matched Fc absolute reference of **4.3791959016 V**. CN-PMDI uses
+its qualified two-spin equilibrium; its kinetics remain unvalidated.
 
-**24 of 25 additional candidates have complete checked native potential pairs.**
-The export passes **572 arithmetic checks, zero discrepancies**, with stable inputs.
-There are also 34 original proposals with admitted native potentials. Use the
-[candidate workbook](../results/candidates/latest.xlsx) and
-[current feed](../results/candidates/current.json) for the exact structures and QC.
+Primary-source phenothiazine curation adds five strict experimental targets from
+four exact free parents in MeCN with the authors' ferrocene calibration. Three
+irreversible second waves stay excluded; B(MEEO)EPT stays tier B because its table
+and discussion disagree. The [12-state parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/README.md)
+records actual GPU starts, finished states and independent reviews separately.
+Alternate-spin checks and complete adjacent-state pairs are required before the
+new calculated values contribute to strict accuracy assessment. The existing
+matched-parent benchmark remains seven potentials from four molecules and three
+studies, with RMSE **0.1714 V**; no fitted correction is applied.
 
-CN-PMDI now uses a source-bound two-spin equilibrium: **32.16% triplet population**
-and E2 **−1.7666 V vs Fc**. Each component includes spin degeneracy once; both
-included component pairs pass solution binding and independently checked bond
-integrity. Its solution kinetics remain unvalidated. Ring-methyl NDI is also
-admitted at **−0.8255 / −1.4738 V vs Fc** after both minima passed 157 independent
-checks each. The lower electronic-energy plus branch was promoted, with full
-old-state preservation; its sub-meV conformer spread is not a resolved advantage.
+Both preserved hexyl-NDI radical geometries failed the finer-derivative checks.
+The [terminal review and host diagnostic](../results/validation/hexyl_finer_derivatives_2026-10-19/README.md)
+localize the failures to the SMD CDS derivative evaluation. Neither branch is
+admitted. No physical threshold was relaxed and no unchanged quantum retry is
+scheduled.
 
-The full suite passes **450 software tests**. The current global review passes
-**30,455 independent checks with zero discrepancies**, stable inputs and another
-inventory check before publication. Its bond graphs are reconstructed independently.
-CSV/XLSX exports preserve optional QC fields; readiness uses actual active energies.
-Publication dependency inventories and daily watch windows are shared. The checked
-39-page PDF includes the new values and retains historical labels on older figures.
-
-Hexyl NDI is the remaining incomplete additional candidate. Both old branches
-failed coarse Hessian symmetry and their original worker is terminal. Two preserved
-geometries are prepared for the independently qualified finer derivative setting;
-one has a verified H100 start and the second is pending suitable capacity. Physical
-thresholds remain unchanged. Consult its [live manifest](../results/validation/hexyl_finer_derivatives_2026-10-19/launch.json).
-
-The matched-parent benchmark remains limited to seven potentials, four molecules
-and three studies (RMSE **0.1714 V**). Solution reorganization/kinetics, broader
-experimental anchors and exact-graft performance remain separate unresolved gates.
-This computational checkpoint does not establish experimental battery performance.
+The PTZ solution-relaxation descriptor has passed its reciprocal local-geometry
+checks (1.1157 / 1.1373 eV directions). Active-SP stationarity, global conformer
+ensembles, thermal barriers and experimental rates remain unvalidated. Broader
+experimental coverage, exact-graft performance and kinetic qualification are the
+remaining scientific tasks; software and arithmetic checks do not replace them.
 
 ## Earlier dated checkpoints
 

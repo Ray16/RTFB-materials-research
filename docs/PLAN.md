@@ -1,5 +1,11 @@
 # Plan — next steps
 
+> Historical planning document. The unchecked setup tasks, approximate reference
+> values and proposed calibration below describe the original design, not the
+> current workflow. Start with [the development guide](DEVELOPMENT.md),
+> [current scientific progress](SCIENTIFIC_PROGRESS_2026-10-18.md) and
+> [the authoritative result index](../results/LATEST_REVIEW.json).
+
 Phased plan for Stage 1 (decorate Cl site → stability + redox potential). Validation is
 woven in, not deferred (§V). Status: **P0 mostly done**, env finishing.
 

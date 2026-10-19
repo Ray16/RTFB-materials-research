@@ -11,7 +11,8 @@ ownership. [AGENTS.md](../AGENTS.md) contains the current operating instructions
 | [Code review and refactoring](CODE_REVIEW_2026-10-18.md) | Defects, corrections and remaining work |
 | [Property correctness and expansion](SCIENTIFIC_PROGRESS_2026-10-18.md) | Audits, live validation, completed/new hypotheses and calculation gates |
 | [Systematic candidate exploration](CANDIDATE_EXPLORATION.md) | Family search space, complementary datasets and selection rules |
-| [Matched parent validation](../results/validation/benchmark_native_2026-10-18/README.md) | Current native-model experimental comparisons, frozen inputs and residual limits |
+| [Matched parent validation](../results/LATEST_REVIEW.json) | Exact current benchmark snapshot, reference, statistics and limits |
+| [New catholyte parent panel](../results/validation/phenothiazine_parent_panel_2026-10-19/README.md) | Primary experimental phenothiazines, live calculations and independent partial reviews |
 | [Derivative qualification](../results/validation/cds_finer_step_2026-10-18/README.md) | Sealed finer-derivative setting; target-specific physical evidence remains required |
 | [Matched candidate comparisons](../results/discovery/family_comparisons_2026-10-18/README.md) | Family contrasts, explicit controls and admitted potential shifts |
 | [Design axes](DESIGN_AXES.md) | Physical definitions, conventions and limits of screening properties |

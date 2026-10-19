@@ -39,11 +39,16 @@ consistent export and records whether its inputs stayed unchanged.
 For a first inspection, these commands read existing records:
 
 ```bash
+export OMP_NUM_THREADS=1 OMP_THREAD_LIMIT=1 OPENBLAS_NUM_THREADS=1
+export MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
 PYTHONPATH=src python -m pytest -q
 PYTHONPATH=src python -m redox --help
 PYTHONPATH=src python -m redox status
 PYTHONPATH=src python -m redox energy-audit
 ```
+
+These caps keep local inspection within a small CPU budget. GPU launchers assign
+their own disjoint CPU sets and native thread limits.
 
 To rebuild tables in a fresh directory and run the independent arithmetic audit:
 
@@ -62,7 +67,9 @@ After an editable install, `redox --help` provides the same commands. Existing
   site with redox-active groups (pyridine-derived / multi-electron systems, and others).
 - **Electrolyte:** acetonitrile (ε ≈ 37.5), **SMD** implicit solvation, **PF₆⁻** counterion.
 - **Redox potential:** `E° = −ΔG° / (nF)` (n = electrons transferred).
-- **Reference dataset:** D3TaLES — https://d3tales.as.uky.edu/database/
+- **Reference data:** primary experimental MeCN/Fc measurements, D3TaLES and
+  complementary computed collections; see the [source catalog](config/discovery_sources.json)
+  and [experimental benchmark](data/raw/validation/two_wave_mecn/README.md).
 
 ### Descriptors
 Reaction free energy · reorganization energy (λ) · structural RMSD between redox states ·
@@ -150,11 +157,10 @@ New motifs can be added to `config/custom_candidates.py` and run with
 stage through the reservation gate). Input validation, a new-motif embedding test, a cached
 integration run, and audited table/workbook exports are documented in
 [`docs/VALIDATION_REVIEW_2026-10-10.md`](./docs/VALIDATION_REVIEW_2026-10-10.md).
-The reviewed snapshot is `results/review_2026-10-10_final/`; remaining physical QC flags
-and incomplete states are explicit. New candidate proposals live under `results/discovery/`.
-The latest continuation is identified by `results/LATEST_REVIEW.json`; physical repairs,
-live jobs and new-motif pilots are tracked in
-[`docs/PARALLEL_PROGRESS_2026-10-10.md`](./docs/PARALLEL_PROGRESS_2026-10-10.md).
+That integration snapshot is historical. New candidate proposals live under
+`results/discovery/`. Current repairs, calculations and evidence are identified by
+[`results/LATEST_REVIEW.json`](results/LATEST_REVIEW.json) and
+the [scientific progress guide](docs/SCIENTIFIC_PROGRESS_2026-10-18.md).
 
 1. `src/redox/build/`      — decorate the site with redox groups → `library/`
 2. `src/redox/qm/uma.py`    — UMA charge/spin pre-opt of every state → `calcs/uma/`
@@ -162,9 +168,11 @@ live jobs and new-motif pilots are tracked in
    (RI-J default; optional `--torsion-scan` for floppy species)
 4. `src/redox/qm/sp.py`     — single points at the ONE active protocol (`redox.core.protocol`,
    ωB97M-V/def2-TZVPD for every state + Fc) → protocol-addressed `sp/<hash>.json` records
-5. `src/redox/properties/` — `potentials` · `integrity` · `stability` · `reorg` · `lambda_outer`:
+5. `src/redox/qm/native_thermal.py` — derivative-checked solution thermochemistry,
+   with rigid motions excluded and explicit spin treatment; failed fields stay blank.
+6. `src/redox/properties/` — `potentials` · `integrity` · `stability` · `reorg` · `lambda_outer`:
    E° vs live Fc, charged-state integrity, ΔG_disp, λ_O/λ_R (Nelsen), λ_o (PCM/Born) → `results/`
-6. `src/redox/screening/` — `scorecard` → `pareto`: per-pool scorecard (contiguous path from the resting
+7. `src/redox/screening/` — `scorecard` → `pareto`: per-pool scorecard (contiguous path from the resting
    state, INCOMPLETE propagation) and the σ-aware Pareto shortlist
 
 After calculations and QC, derived tables can be rebuilt in isolation with
