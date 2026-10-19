@@ -2,7 +2,7 @@
 
 ## Current checkpoint: 2026-10-19
 
-The full software suite passes **544 tests**. The latest additional fix makes
+The full software suite passes **550 tests**. The alternate-spin helper fix makes
 alternate-spin helper repairs retain both optimizer and final-SCF convergence,
 refuse replacement geometries on either failure, and clear inherited direct-energy
 producer declarations. Five regression cases cover successful convergence and
@@ -53,6 +53,14 @@ increase the private WB charging gap by 0.067671 and 0.021550 eV, respectively.
 This sampled method sensitivity does not resolve the phenothiazine second-wave
 error. The installed NLC energy/gradient selection branches show no parameter
 selection defect. Canonical properties and the model-selection hold are retained.
+
+The new [explicit hydrogen matcher](../src/redox/validation/protonation.py)
+distinguishes proton-transferred structures from the same heavy-atom skeleton;
+six regression cases pass. It gates the isolated diaryl-viologen warm starts.
+The [798-geometry audit](../results/validation/hydrogen_topology_2026-10-19/README.md)
+finds three quinone dianions with different H attachments. All three second steps
+are already excluded by existing bond-integrity gates; published usable capacities
+are unchanged. Metal/ion-pair connectivity warnings remain separately scoped.
 
 ## Gas-reference solver correction and remaining forwarding
 

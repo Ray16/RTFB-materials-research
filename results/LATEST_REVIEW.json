@@ -1,14 +1,14 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T10:22:35.307511-05:00",
+    "as_of_Chicago": "2026-10-19T11:05:28.262592-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_102235_307511",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_110528_262592",
       "additional_candidates": 27,
       "original39_with_native_potentials": 34,
       "complete_potential_pairs": 26,
@@ -125,6 +125,32 @@
       "method_selected_for_production": false,
       "second_wave_error_resolved": false
     },
+    "hydrogen_topology_review": {
+      "guide": "results/validation/hydrogen_topology_2026-10-19/README.md",
+      "geometries_screened": 798,
+      "DFT_hydrogen_mismatch_cases": 3,
+      "all_changed_second_steps_already_excluded_by_integrity": true,
+      "coordination_and_ion_pair_graphs_separately_scoped": true,
+      "current_numeric_properties_changed": false
+    },
+    "aryl_viologen_screen": {
+      "guide": "results/discovery/aryl_viologen_screen_2026-10-19/README.md",
+      "plan": "results/discovery/aryl_viologen_screen_2026-10-19/uma_plan.json",
+      "prepared_exact_graphs": 9,
+      "declared_states": 27,
+      "seed_state_checks": 270,
+      "registered_candidates": 0,
+      "resource_pilot": "results/discovery/aryl_viologen_screen_2026-10-19/pilot_review.json",
+      "resource_pilot_complete": true,
+      "maximum_pilot_device_MiB": 1473,
+      "screen_start_verification": "results/discovery/aryl_viologen_screen_2026-10-19/screen_start_verification.json",
+      "screen_GPU_predictors_at_start_verification": 24,
+      "actual_start_verification_time": 1792426019.6855278,
+      "state_records_verified": 22,
+      "state_failures": 0,
+      "solution_properties_computed": 0,
+      "source_parent_measurements_inherited": false
+    },
     "lambda_uncertainty_evidence": {
       "review": "results/validation/uncertainty_scope_2026-10-19/qualification.json",
       "kind": "computational_model_discrepancy_scale_with_prior_floor",
@@ -185,7 +211,7 @@
     },
     "global_review": {
       "scope": "Full property tables include both cata ladders, selected spin equilibrium, reviewed derivative repair and gas-diagnostic exclusions; external record dependencies fingerprinted",
-      "path": "results/reviews/2026-10-19/uncertainty_scope_tables/review_status.json",
+      "path": "results/reviews/2026-10-19/aryl_hydrogen_scope_tables/review_status.json",
       "status": "complete",
       "arithmetic_checks": 32492,
       "arithmetic_discrepancies": 0,
@@ -196,12 +222,12 @@
       "new_cata_cases_outside_review_scope": false
     },
     "slides": {
-      "status": "checked_fixed_geometry_method_sensitivity_and_unchanged_candidate_values_pdf",
+      "status": "checked_aryl_input_pilot_and_hydrogen_scope_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/ptz_method_sensitivity_slides/slides_check.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_102235_307511",
-      "pdf_sha256": "f6f7db9484827bd4195f2220197f4268754afe33e859c8b7982000b365481d3e",
-      "pages": 48
+      "publisher": "results/reviews/2026-10-19/aryl_hydrogen_slides/slides_check.json",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_110528_262592",
+      "pdf_sha256": "0c8db59804a4ef8d5f899f81e6ce5fd77946e7eaf0a2d73d0c5381f212eeb177",
+      "pages": 49
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -236,9 +262,10 @@
       "solution_start_proof": "results/validation/cata_solution_2026-10-19/start_verification.json",
       "solution_outputs": "calcs/dft/<hyp_cata_ndi_ethyl|hyp_cata_adi_ethyl>/<state>"
     },
-    "software_tests_passed": 544,
-    "software_checks": "results/validation/uncertainty_scope_2026-10-19/software_checks.log",
+    "software_tests_passed": 550,
+    "software_checks": "results/discovery/aryl_viologen_screen_2026-10-19/software_checks.log",
     "remaining_work": [
+      "Complete diaryl-viologen screen, registration and solution-property calculations",
       "Hexyl NDI native minimum/thermochemistry",
       "Solution reorganization and kinetic qualification",
       "Broader experimental benchmark and exact-graft validation",
@@ -246,7 +273,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792424996.4663467,
+  "updated": 1792426230.0919063,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

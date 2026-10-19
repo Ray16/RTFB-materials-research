@@ -582,3 +582,16 @@ The sampled alternatives raise the gap and do not explain the positive second-wa
 residual. No replacement free-energy prediction, method selection or fitted
 correction follows; the model selection hold remains. The installed energy and
 gradient NLC-selection branches were checked and no parameter-selection bug was found.
+
+The [diaryl-viologen campaign](../results/discovery/aryl_viologen_screen_2026-10-19/README.md)
+advances all nine previously curated O-grafts into an isolated gas UMA screen.
+Its 27 charge-state definitions and 270 seed/state checks pass. A three-charge,
+70-atom T4 resource pilot started before the remaining screen. Acid/phenol
+stoichiometry is explicit; equilibrium speciation, source aqueous conditions and
+exact graft synthesis remain separate from MeCN predictions.
+
+An [explicit hydrogen-connectivity audit](../results/validation/hydrogen_topology_2026-10-19/README.md)
+checks 798 stored geometries and identifies three reduced quinones with changed
+H attachments; their second steps already fail the published bond-integrity gate.
+The new screen checks H attachments directly. Six new regressions bring the
+software suite to 550 passing tests, without changing earlier numeric properties.

@@ -18,12 +18,16 @@ and solution kinetics remain unvalidated. A larger voltage shift alone does not
 establish a better battery candidate.
 
 The source catalog and systematic pool below remain the basis for further
-exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts remain preparation work. The
+exploration beyond D3TaLES. The nine source-directed aryl-viologen grafts now have
+an [isolated computation campaign](../results/discovery/aryl_viologen_screen_2026-10-19/README.md):
+27 charge-state definitions and 270 seed/state checks pass, with a three-charge
+70-atom T4 memory pilot launched before the remaining gas screen. New solution
+properties are uncomputed; no source measurement is inherited. The
 [new cata-imide branch](../results/discovery/cata_core_expansion_2026-10-19/README.md)
 now has four curated parent graphs and two prepared exact grafts, with 214 checks
 and 18 verified initial conformers. All six gas UMA states passed
-their warm-start contracts and their workers are terminal. The cata-NDI dianion
-requires a DFT spin comparison. Both designs now have admitted native potential pairs, recorded in the
+their warm-start contracts and their workers are terminal. The cata-NDI dianion's
+DFT spin comparison and selected equilibrium policy are complete. Both designs now have admitted native potential pairs, recorded in the
 [solution campaign](../results/validation/cata_solution_2026-10-19/README.md).
 Cata-NDI gives -0.984/-1.730 V and cata-ADI -0.811/-1.551 V vs Fc in MeCN.
 All gas-relaxation descriptors retain QC exclusions; solution kinetics remain
@@ -192,10 +196,12 @@ retains both N–aryl bonds and explores O-attachment through carboxyl or phenol
 handles. This is a source-directed design choice, not a transfer of the parent's
 alkaline performance. The isolated acid/phenol graphs and explicit dichloride
 salts are preserved separately; pH14 speciation is not inferred. All nine exact
-mono-O-grafts regenerate through existing rules. Only nominal descriptors are
-computed: no registration or QM has occurred. Polyfunctional precursors require
-site-selectivity/monoattachment review, and the 70-atom maximum requires a new
-UMA memory pilot before screening beyond the earlier qualification scope.
+mono-O-grafts regenerate through existing rules. The original preparation computed
+only nominal descriptors. The separate current campaign screens these frozen
+acid/phenol graphs in an isolated library; registration and solution QM remain
+later stages. Polyfunctional precursors still require site-selectivity,
+monoattachment and equilibrium-speciation review. The 70-atom maximum is the
+subject of the new resource pilot, with explicit hydrogen attachments checked.
 
 1. Curate structures and condition metadata from each source, preserving original
    values and provenance. Do not silently discard salt components; curating the

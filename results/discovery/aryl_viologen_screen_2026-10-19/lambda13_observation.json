@@ -1,0 +1,77 @@
+{
+  "status": "actual_UMA_processes_observed",
+  "host": "lambda13",
+  "records": [
+    {
+      "key": "study_aryl_9992bd3479e1__neu",
+      "gpu": 0,
+      "stage": "screen",
+      "status": "computing",
+      "pid": 331307,
+      "error": null,
+      "actual_predictor": {
+        "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+        "memory_MiB": "2396"
+      }
+    },
+    {
+      "key": "study_aryl_6f1ff24b8d40__ox2",
+      "gpu": 1,
+      "stage": "screen",
+      "status": "gas_UMA_state_and_hydrogen_topology_verified",
+      "pid": 331667,
+      "error": null
+    },
+    {
+      "key": "study_aryl_6f1ff24b8d40__ox1",
+      "gpu": 2,
+      "stage": "screen",
+      "status": "gas_UMA_state_and_hydrogen_topology_verified",
+      "pid": 331326,
+      "error": null
+    },
+    {
+      "key": "study_aryl_6f1ff24b8d40__neu",
+      "gpu": 3,
+      "stage": "screen",
+      "status": "computing",
+      "pid": 331327,
+      "error": null,
+      "actual_predictor": {
+        "uuid": "GPU-31e42837-2afb-0b14-c287-66eabb51d40e",
+        "memory_MiB": "2354"
+      }
+    }
+  ],
+  "gates": [
+    {
+      "pid": 330487,
+      "same_start": true,
+      "state": "S",
+      "terminal": false
+    },
+    {
+      "pid": 330586,
+      "same_start": false,
+      "state": null,
+      "terminal": true
+    },
+    {
+      "pid": 330605,
+      "same_start": false,
+      "state": null,
+      "terminal": true
+    },
+    {
+      "pid": 330624,
+      "same_start": true,
+      "state": "S",
+      "terminal": false
+    }
+  ],
+  "active_predictors": 2,
+  "completed": 2,
+  "failed": 0,
+  "load_1m": 6.599609375,
+  "checked": 1792426141.4355724
+}
