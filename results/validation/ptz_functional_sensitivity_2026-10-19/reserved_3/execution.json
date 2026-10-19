@@ -1,0 +1,61 @@
+{
+  "status": "process_completed",
+  "host": "lambda13",
+  "gpu": 3,
+  "pid": 292329,
+  "process_start": "54192821",
+  "interpreter": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_functional_sensitivity_2026-10-19/worker.py",
+    "--tasks",
+    "3"
+  ],
+  "started": 1792424588.832673,
+  "scientific_outputs_verified": false,
+  "host_preflight": {
+    "online_cpus": 384,
+    "load_1m": 6.1220703125,
+    "available_RAM_bytes": 1587148853248,
+    "minimum_RAM_GiB": 8
+  },
+  "gpu_preflight": {
+    "index": 3,
+    "uuid": "GPU-31e42837-2afb-0b14-c287-66eabb51d40e",
+    "name": "NVIDIA H100 NVL",
+    "memory_MiB": 95830.0,
+    "compute_capability": "9.0"
+  },
+  "cpu_affinity": [
+    6,
+    7
+  ],
+  "threads": 2,
+  "gate_argv": [
+    "/usr/bin/taskset",
+    "--cpu-list",
+    "6,7",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "3",
+    "--label",
+    "redox",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_functional_sensitivity_2026-10-19/reserved_3",
+    "--probe",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ptz_functional_sensitivity_2026-10-19/worker.py",
+    "--tasks",
+    "3"
+  ],
+  "gate_pid": 296253,
+  "returncode": 0,
+  "finished": 1792424762.4212444
+}

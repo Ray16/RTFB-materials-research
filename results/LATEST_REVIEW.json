@@ -109,6 +109,22 @@
       "confident_two_electron_window_capacity": false,
       "no_fitted_correction": true
     },
+    "phenothiazine_method_sensitivity": {
+      "review": "results/validation/ptz_functional_sensitivity_2026-10-19/independent_review.json",
+      "terminal": "results/validation/ptz_functional_sensitivity_2026-10-19/terminal_verification.json",
+      "points_completed": 9,
+      "independent_checks": 71,
+      "failed_checks": 0,
+      "electronic_gaps_eV": {
+        "wb97mv": 0.8865113361966012,
+        "pbe0_d4": 0.9541828077988809,
+        "b3lyp_d4": 0.9080608780856895
+      },
+      "fixed_geometries": true,
+      "thermal_computed": false,
+      "method_selected_for_production": false,
+      "second_wave_error_resolved": false
+    },
     "lambda_uncertainty_evidence": {
       "review": "results/validation/uncertainty_scope_2026-10-19/qualification.json",
       "kind": "computational_model_discrepancy_scale_with_prior_floor",
@@ -180,12 +196,12 @@
       "new_cata_cases_outside_review_scope": false
     },
     "slides": {
-      "status": "checked_uncertainty_evidence_scope_and_unchanged_candidate_values_pdf",
+      "status": "checked_fixed_geometry_method_sensitivity_and_unchanged_candidate_values_pdf",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/uncertainty_scope_slides/slides_check.json",
+      "publisher": "results/reviews/2026-10-19/ptz_method_sensitivity_slides/slides_check.json",
       "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_102235_307511",
-      "pdf_sha256": "17ef31054275539b415f5c6de8dd7518537fb65cf65a09ac6d135312d38a033c",
-      "pages": 47
+      "pdf_sha256": "f6f7db9484827bd4195f2220197f4268754afe33e859c8b7982000b365481d3e",
+      "pages": 48
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -230,7 +246,7 @@
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792424134.7358487,
+  "updated": 1792424996.4663467,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",

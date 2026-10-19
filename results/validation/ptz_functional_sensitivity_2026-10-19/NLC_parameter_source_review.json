@@ -1,0 +1,33 @@
+{
+  "status": "NLC_parameter_selection_source_checked_no_production_bug_identified",
+  "WB_is_intrinsically_NLC": true,
+  "WB_coefficients": [
+    [
+      [
+        6.0,
+        0.01
+      ],
+      1
+    ]
+  ],
+  "generic_VV10_coefficients": [
+    [
+      [
+        5.9,
+        0.0093
+      ],
+      1
+    ]
+  ],
+  "energy_and_gradient_prioritize_NLC_containing_xc": true,
+  "UKS_gradient_uses_shared_RKS_NLC_routine": true,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/rks.py": "34b36e22458b13dda3a122582b54f613341b0a2680ba3b95df393098be22261a",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/uks.py": "ae31aaf9c85c3cd1408f15b272a24c011e041dbf7e4be89d05476c534a01a0b1",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/grad/rks.py": "e3d34f44dc63c5b262b37781bca1555fcdb53b7f3bc53ac8988da7dc6593b043",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/grad/uks.py": "4da7cfbbc489ea9fb7643d46c0edb4af1264c3e00dbbaedbdd099a099615d7ba"
+  },
+  "canonical_protocol_changed": false,
+  "interpretation": "Different standalone VV10 coefficients do not imply a production error: installed energy and gradient branches select the NLC-containing XC functional before the explicit nlc fallback.",
+  "observed": 1792424515.579831
+}

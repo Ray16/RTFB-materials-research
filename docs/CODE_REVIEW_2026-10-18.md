@@ -47,6 +47,13 @@ reproduce the problem in the SMD CDS term; neither geometry is admitted.
 Solution kinetics, broader experimental accuracy and exact-graft validation remain
 unfinished. User-staged archive changes remain separate and untouched.
 
+The [fixed-geometry functional diagnostic](../results/validation/ptz_functional_sensitivity_2026-10-19/README.md)
+has completed all nine points with 71 independent checks. PBE0-D4 and B3LYP-D4
+increase the private WB charging gap by 0.067671 and 0.021550 eV, respectively.
+This sampled method sensitivity does not resolve the phenothiazine second-wave
+error. The installed NLC energy/gradient selection branches show no parameter
+selection defect. Canonical properties and the model-selection hold are retained.
+
 ## Gas-reference solver correction and remaining forwarding
 
 Three gas-reference workers now use a shared strict solver contract: finite SCF

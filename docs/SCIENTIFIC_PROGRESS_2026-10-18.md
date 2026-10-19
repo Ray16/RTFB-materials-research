@@ -572,3 +572,13 @@ now labels the lambda scale as computational-model spread, exports counts and
 median discrepancy, and prevents sparse/zero-spread comparisons from tightening
 the prior. The current 0.209-eV scale and numeric property/selection tables are
 unchanged. This does not add experimental kinetic validation.
+
+The [predeclared electronic-method comparison](../results/validation/ptz_functional_sensitivity_2026-10-19/README.md)
+has now finished all nine points using eight reserved H100 workers. At the same
+three private WB-relaxed DMeOEPT geometries, the electronic charging gaps are
+0.886511 eV (wB97M-V), 0.954183 eV (PBE0-D4) and 0.908061 eV (B3LYP-D4).
+All 71 independent checks pass and the original workers/controllers are terminal.
+The sampled alternatives raise the gap and do not explain the positive second-wave
+residual. No replacement free-energy prediction, method selection or fitted
+correction follows; the model selection hold remains. The installed energy and
+gradient NLC-selection branches were checked and no parameter-selection bug was found.
