@@ -39,6 +39,19 @@ reproduce the problem in the SMD CDS term; neither geometry is admitted.
 Solution kinetics, broader experimental accuracy and exact-graft validation remain
 unfinished. User-staged archive changes remain separate and untouched.
 
+## Open solver-contract follow-up
+
+A follow-up search found that `properties/nelsen.py` and three gas-reference
+workers still discard optimizer convergence, and several energy helpers accept a
+kernel value without checking SCF convergence. Production `properties/reorg.py`
+uses its own cached-state workflow; the maintained production D3TaLES worker
+imports only `nelsen.embed`. The gas reference outputs need their own evidence
+review and must not acquire current validation merely because the caller source
+is updated. The [source inventory](../results/reviews/2026-10-19/remaining_solver_review/findings.json)
+records the exact affected paths and pending correction. The active spin panel
+binds the existing package source epoch; qualify a separate implementation or
+wait for verified worker termination before changing its numerical sources.
+
 ## Earlier review checkpoints
 
 The dated material below retains the original findings, investigations and counts.

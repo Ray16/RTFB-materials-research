@@ -1,0 +1,18 @@
+{
+  "observed": 1792399635.920063,
+  "status": "confirmed_source_gaps_not_yet_corrected",
+  "paths": {
+    "src/redox/properties/nelsen.py": "09880c3e78893114d397c293284780a7cb695664315807889f9416a8c6739b34",
+    "scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py": "6158f391d18880f3a566bb8528ac73ec60690a0b302a01e567dd7ab82a6e317a",
+    "scripts/validation/reorg_literature/validate_reorg_worker_inner_acene.py": "5031618ca1f7262851387dd3c088d7ebd25c27a6d84431850c2658923d86ea50",
+    "scripts/validation/reorg_literature/validate_reorg_worker_generic.py": "de1332e323c79c30ba468dc13633a070f9e19206b84a45971155f709f03c4351"
+  },
+  "findings": [
+    "Nelsen energy() accepts a kernel energy without checking SCF convergence or finite value",
+    "Nelsen gas_opt() and the three reference-worker geometry functions use optimize() without retaining optimizer convergence",
+    "D3TaLES matched and inner-acene reference _E() paths accept kernel energies without an explicit convergence check"
+  ],
+  "consumer_scope": "Production reorganization imports only nelsen.embed; these additional routines serve fresh gas reference diagnostics. Existing reference outputs need their own convergence/source audit; no legacy result is retrospectively certified.",
+  "source_freeze": "The active spin panel binds src/redox/properties/nelsen.py. Preserve that source epoch until the current workers are verified terminal, or validate a separately frozen implementation before a controlled change.",
+  "next_action": "Replace the shared gas solver contract, add failure-path tests and qualify affected reference paths; determine which historical outputs lack recoverable evidence before any recomputation."
+}
