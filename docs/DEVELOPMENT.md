@@ -149,6 +149,13 @@ explicit non-strict calls retain `optimized=False` when convergence fails.
 Historical geometry metadata is not retroactively relabeled. Primary native
 properties continue to require their independent stationarity and minimum checks.
 
+Generic native minimum repairs prepare a complete replacement before changing
+canonical files. Promotion includes `sp`, `native_thermal` and `projected_thermal`,
+retains old addressed history, checks admission before and after installation and
+rolls back failed installs. Checkpoint resumes rerun the bounded optimizer and
+record convergence. Raw cross-point history remains preserved and its geometry
+addresses prevent stale use after a minimum changes.
+
 `scripts/validation/audit/recompute_axes.py` independently reimplements the
 arithmetic and thermal admission. Keep this intentional duplication independent
 of production property/ranking helpers. Reusing a production formula in its own

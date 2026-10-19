@@ -10,8 +10,11 @@ validated atomic directory replacement and rolls back failed installations.
 Its geometry optimizer also preserves convergence, including checkpoint resumes.
 The full software suite passes **395 tests**. Two signed-mode searches for the
 methyl-NDI radical have verified H100 starts with separate CPU sets; pending
-results retain their QC gates. A fresh broad review and candidate export follow
-the two promotions. The earlier checkpoint below remains a dated record.
+results retain their QC gates. The post-promotion global review passes **29,129
+checks with zero discrepancies**, stable inputs and a second inventory check
+before publication. The **00:38 Chicago** candidate snapshot has 34 original
+proposals with checked native potentials and 22/25 new potential pairs; all
+**565 arithmetic checks pass**. The earlier checkpoint below remains dated history.
 
 
 The corrected native thermochemistry is integrated into the producer, primary

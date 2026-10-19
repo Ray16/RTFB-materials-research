@@ -1,17 +1,18 @@
 {
   "schema": 2,
   "current": {
-    "as_of_Chicago": "2026-10-19T00:21:03.626186-05:00",
+    "as_of_Chicago": "2026-10-19T00:38:00.450031-05:00",
     "scientific_validation_complete": false,
     "candidate_results": {
       "guide": "results/candidates/README.md",
       "workbook": "results/candidates/latest.xlsx",
       "additional_csv": "results/candidates/latest.csv",
       "matched_comparisons": "results/candidates/comparisons.csv",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_002103_626186",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_003800_450031",
       "additional_candidates": 25,
+      "original39_with_native_potentials": 34,
       "complete_potential_pairs": 22,
-      "arithmetic_checks": 555,
+      "arithmetic_checks": 565,
       "arithmetic_discrepancies": 0,
       "publication_status": "corrected internal-mode thermochemistry; field-specific QC",
       "inputs_current_during_collection": true
@@ -49,10 +50,21 @@
       "explicit_optimizer_and_SCF_convergence": true,
       "actual_CPU_smoke": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/geometry_driver_full_response_2026-10-18/cpu_water_smoke/result.json"
     },
+    "source_frozen_refinement": {
+      "plan": "results/validation/ndi_methyl_radical_minimum_2026-10-19/source_plus.json",
+      "launch": "results/validation/ndi_methyl_radical_minimum_2026-10-19/launch.json",
+      "actual_start_verification": "results/validation/ndi_methyl_radical_minimum_2026-10-19/start_verification.json",
+      "rule": "Do not edit the plan-bound numerical producers until both future derivative qualification checks have passed or their workers are verified terminal."
+    },
+    "radical_adoptions": {
+      "ndi_methoxyethyl": "results/validation/ndi_radical_adoptions_2026-10-19/ndi_methoxyethyl/adoption_receipt.json",
+      "ndi_butyl": "results/validation/ndi_radical_adoptions_2026-10-19/ndi_butyl/adoption_receipt.json",
+      "independent_checks_each": 157
+    },
     "global_review": {
-      "path": "results/reviews/2026-10-19/corrected_geometry_driver_tables/review_status.json",
+      "path": "results/reviews/2026-10-19/atomic_repair_adoptions_tables/review_status.json",
       "status": "complete",
-      "arithmetic_checks": 28967,
+      "arithmetic_checks": 29129,
       "arithmetic_discrepancies": 0,
       "inputs_current_during_review": true,
       "changed_inputs": [],
@@ -62,23 +74,22 @@
       "status": "published_checked_pdf",
       "path": "slides/redox_workflow.pdf",
       "publisher": "results/reviews/2026-10-18/slides_projected_publisher/status.json",
-      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_002103_626186",
-      "pdf_sha256": "e5c8a044f3521b811b34ce6d2f714997a81f00ee2937a738bf4ee9295c93e588",
+      "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_003800_450031",
+      "pdf_sha256": "1dfb42bf3f2edee37aea713452a864d949fddc156302ea14f797e845a721467c",
       "pages": 38
     },
-    "software_tests_passed": 391,
-    "software_checks": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/software_checks_geometry_driver_final.log",
+    "software_tests_passed": 395,
+    "software_checks": "results/reviews/2026-10-19/software_checks_atomic_repair.log",
     "remaining_work": [
       "Hexyl NDI native minimum/thermochemistry",
       "CN-PMDI near-spin ensemble admission",
       "Methyl NDI radical minimum refinement",
-      "Independent review and promotion of two private NDI radical minima",
       "Solution reorganization and kinetic qualification",
       "Broader experimental benchmark and exact-graft validation"
     ]
   },
   "scientific_validation_complete": false,
-  "updated": 1792387546.0875971,
+  "updated": 1792388501.8013086,
   "historical_metadata": "results/reviews/2026-10-19/LATEST_REVIEW_before_sync.json",
   "progress_document": "docs/SCIENTIFIC_PROGRESS_2026-10-18.md",
   "discovery_source_catalog": "config/discovery_sources.json",
