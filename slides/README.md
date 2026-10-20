@@ -9,6 +9,10 @@ workflow, method, key candidate results and synthesis implications. Detailed
 methods, validation tables, supplementary molecular drawings and historical
 comparisons follow the **Backup** divider.
 
+The workflow now screens precursor/attachment feasibility before full redox
+properties, then compares dimers, trimers and stacking. BQ/AQ synthesis holds
+remain explicit in the main story.
+
 The initial grafting-reference checkpoint is in Backup, immediately after the
 divider. Its dated values and plot are frozen with the submission review; the
 [grafting visual report](../results/grafting/index.html) continues updating as

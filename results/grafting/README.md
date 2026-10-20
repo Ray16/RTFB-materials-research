@@ -2,6 +2,10 @@
 
 All result categories: [results index](../README.md).
 
+For demonstrated attachment routes, experimental conditions, evidence limits
+and requirements for future molecule design, see
+[practical grafting](../../docs/PRACTICAL_GRAFTING.md).
+
 **Open the [visual results browser](index.html)** for the maintained ΔG ranking,
 reaction schemes, coverage and all 75 exact molecular structures. The same files
 refresh as qualified calculations finish; reload the browser to see updates.

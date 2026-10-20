@@ -19,14 +19,26 @@
       "plan": "results/grafting/campaigns/2026-10-19_mecn_reference/plan.json",
       "start_verification": "results/grafting/campaigns/2026-10-19_mecn_reference/start_verification.json",
       "raw_root": "calcs/grafting/2026-10-19_mecn_reference",
-      "synthesis_assessment": "results/grafting/selection_assessment.json"
+      "synthesis_assessment": "results/grafting/selection_assessment.json",
+      "route_evidence": "results/grafting/route_evidence.json",
+      "prospective_screen": "results/grafting/route_screen.json",
+      "practical_route_guide": "docs/PRACTICAL_GRAFTING.md"
     },
     "polymer_models": {
       "guide": "results/polymer_models/README.md",
-      "current": "results/polymer_models/current.csv",
-      "status": "results/polymer_models/status.json",
-      "scope": "Covalent oligomer/site-cooperativity inventory; interchain and whole-bead models distinct",
-      "calculation_state": "graph_inventory_prepared; interaction energies pending"
+      "current": "results/polymer_models/interaction_checked.json",
+      "status": "results/polymer_models/interaction_status.json",
+      "scope": "Neutral covalent dimer/trimer and separate-segment electronic interaction pilot; graph inventory retained separately",
+      "calculation_state": "Finite 27-case neutral interaction-method pilot; see interaction_status for completed DFT and resource dependencies",
+      "browser": "results/polymer_models/index.html",
+      "interaction_results": "results/polymer_models/interaction_checked.json",
+      "interaction_status": "results/polymer_models/interaction_status.json",
+      "plan": "results/polymer_models/campaigns/2026-10-19_pi_stacking/plan.json",
+      "raw_root": "calcs/polymer_models/2026-10-19_pi_stacking",
+      "raw_electronic_collection": "results/polymer_models/interaction_results.json",
+      "structural_review": "results/polymer_models/interaction_review.json",
+      "graph_inventory": "results/polymer_models/current.csv",
+      "graph_inventory_status": "results/polymer_models/status.json"
     },
     "candidates": {
       "guide": "results/candidates/README.md",

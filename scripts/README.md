@@ -32,3 +32,17 @@ For a single reviewed validation command use `redox.workflows.gpu --gpu INDEX
 the validated 32-GB-class devices for the full molecular workflow. GPU library
 probes happen inside the reservation. New scientific results still need their
 domain-specific validation checks after execution.
+
+For new candidate evaluations, start with
+[`pipeline/screen_grafting_routes.py`](pipeline/screen_grafting_routes.py) and the
+[route evidence](../results/grafting/README.md) before launching full redox work.
+The active polymer interaction pilot is documented at
+[results/polymer_models/README.md](../results/polymer_models/README.md):
+`prepare_pi_stacking.py` builds conformer ensembles, `stage_polymer_conformers.py`
+publishes checked warm starts, `run_pi_stacking.py` manages the finite reserved
+queue, and `collect_pi_stacking.py` collects stationary electronic records.
+`validation/review_polymer_interactions.py` supplies the independent structural
+gate; `plotting/polymer_models/update_interaction_figures.py` maintains its plots
+and three-dimensional browser. Existing campaign plans must be inspected before
+any restart; preparation/submission actions are deliberately distinct from
+read-only result collection.

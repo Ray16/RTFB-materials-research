@@ -26,6 +26,19 @@ physical validation separately.
 
 ## Candidate results and slides
 
+For a newly introduced candidate, screen the precursor and attachment route before
+launching its full redox-property campaign. Record the reaction class, defined
+conditions, precursor access, selectivity, redox-core retention and source/evidence
+in `results/grafting/route_evidence.json`; run the prospective route gate in
+`scripts/pipeline/screen_grafting_routes.py`. Use proceed/hold/exclude decisions.
+Design future molecules as exact precursor/product pairs with the attachment
+atom and new bond specified. Apply `docs/PRACTICAL_GRAFTING.md`; distinguish
+exact-support demonstrations, molecular analogues and proposed reactions.
+Do not equate a graph attachment, SA score or base-free reference deltaG with easy
+grafting. Strongly unfavorable actual-condition routes should not enter the synthesis
+shortlist. Preserve existing results. Explicitly scoped method controls may be
+studied without implying synthesis eligibility.
+
 Maintain `results/README.md` as the single human entry point and `results/INDEX.json`
 as its machine-readable counterpart. Every new result category or campaign must
 record its stable current outputs, status/QC, raw calculation location and source

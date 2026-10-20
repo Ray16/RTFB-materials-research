@@ -30,10 +30,10 @@ Which center combines useful redox behavior with a workable route to the polymer
 \begin{frame}{Workflow: from candidate families to synthesis controls}
 \centering
 \begin{tikzpicture}[node distance=.45cm,>=Latex,every node/.style={font=\small}]
-\node[draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (a) {Build local\\graft-site models};
-\node[right=of a,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (b) {Sample\\conformers};
-\node[right=of b,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (c) {Compute solution\\redox states};
-\node[right=of c,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (d) {Compare models\\and select\\controls};
+\node[draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (a) {Screen precursor\\and attachment\\route};
+\node[right=of a,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (b) {Assess grafting\\under defined\\conditions};
+\node[right=of b,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (c) {Compute solution\\redox properties};
+\node[right=of c,draw=teal,fill=soft,rounded corners,text width=2.65cm,minimum height=1.6cm,align=center] (d) {Compare dimers,\\trimers and\\stacking};
 \draw[->,thick,teal] (a)--(b);\draw[->,thick,teal] (b)--(c);\draw[->,thick,teal] (c)--(d);
 \end{tikzpicture}
 \vspace{1em}\begin{columns}[T]\begin{column}{.47\textwidth}
@@ -41,7 +41,7 @@ Which center combines useful redox behavior with a workable route to the polymer
 \end{column}\begin{column}{.47\textwidth}
 \textbf{Selection}\\Potential, nominal capacity, kinetic evidence and grafting feasibility.
 \end{column}\end{columns}
-\vfill\footnotesize Finished fields enter comparisons after their checks. Missing properties remain pending.
+\vfill\footnotesize New candidates advance after a reviewed grafting route. Unknown routes stay on hold; method controls remain separate.
 \end{frame}
 \begin{frame}{Candidate expansion uses matched molecular changes}
 \centering
