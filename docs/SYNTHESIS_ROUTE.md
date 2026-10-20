@@ -54,6 +54,14 @@ Geometric contacts and electronic energies do not by themselves establish an
 electron-transfer rate; coupling and charged-state behavior require separate
 evaluation. Whole-bead contacts remain beyond the current molecular models.
 
+Post-grafting loading and spacing may be heterogeneous and remain unmeasured.
+Separate parent reactive-handle density from graft conversion; compare occupancy
+and conformational scenarios without assigning experimental probabilities. Current
+fully occupied oligomers are dense local controls. An unoccupied modeled benzyl-
+chloride site is distinct from a repeat unit lacking a chloromethyl handle.
+Use matched, padded-backbone controls to assess adjacent and separated motifs;
+sequence spacing does not determine their three-dimensional separation.
+
 Run `scripts/pipeline/screen_grafting_routes.py` to produce the prospective
 [route screen](../results/grafting/route_screen.json) from the evidence file.
 At its initial checkpoint no exact-candidate route is automatically certified:

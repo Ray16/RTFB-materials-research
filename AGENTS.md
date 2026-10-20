@@ -35,6 +35,12 @@ geometry alone is not an interaction-strength measurement. Prefer weak unwanted
 intersite/segment interactions. Verify the intended open polymer backbone and
 graft-site connectivity in both drawings and actual XYZ structures; distinguish
 motif interactions, backbone/cap contributions, deformation and electronic coupling.
+Actual graft loading and spacing are unknown and may be uneven. Treat fully
+occupied short oligomers as dense local scenarios, not a representative grafting
+pattern. Distinguish reactive-handle density, graft conversion, sequence spacing
+and spatial contacts; keep unreacted benzyl chloride and unfunctionalized styrene
+units chemically distinct. Report conditional occupancy/spacing sensitivity rather
+than inventing an experimental loading or probability distribution.
 
 ## Candidate results and slides
 

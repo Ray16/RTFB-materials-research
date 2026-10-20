@@ -42,6 +42,40 @@ Simply subtracting two capped monomer energies from a covalent dimer would not
 give a balanced interaction quantity. Conformation, backbone contributions,
 solvent treatment and electronic coupling must remain separate in interpretation.
 
+## Unknown graft loading and spacing
+
+Actual post-grafting occupancy and spacing are unknown and may be uneven. The
+fully occupied short-chain calculations are dense local scenarios, not an average
+polymer realization or a rigorous upper bound on interaction strength. Grafting
+reference/base-assisted deltaG alone does not determine conversion or site spacing.
+
+Treat the fraction of repeat units bearing reactive handles separately from the
+fraction of those handles converted to motifs. At a fixed loading, evenly spaced,
+independent and clustered occupancy patterns are different hypotheses. Assign no
+experimental probabilities to these scenarios without evidence. Backbone sequence
+separation also differs from spatial motif separation: chain conformations and
+interchain contacts must be sampled independently.
+
+The current `decorate_sites` builder leaves **benzyl chloride** at an unoccupied
+potential graft site. It does not create a plain styrene unit lacking that handle.
+Those chemical identities, and any blocked or hydrolyzed sites, need separate
+definitions in a future loading/spacing panel. Existing prepared single-site
+controls are two-repeat graphs; separated two-motif patterns have not yet been
+computed by the current pilot.
+
+The next useful panel compares adjacent and separated pairs on the same padded
+backbone, with both motifs, either motif alone and neither motif. Keep site
+positions, end caps, backbone stereochemistry, chemistry and solvent matched.
+Use multiple conformers and report energies/nonadditivity by occupancy pattern;
+do not infer actual stacking populations or electron-transfer rates. Electronic
+coupling and relevant charged states require their own later qualification.
+
+The deliverable is an interaction-versus-spacing/loading sensitivity map. A
+conclusion that persists across patterns is more useful for selection than one
+depending on a guessed grafting pattern. Nominal parent-polymer site capacity,
+when available, can constrain the parameter range; it cannot establish conversion
+or the spatial distribution of the grafts.
+
 The original finite DFT pilot attempted 27 cases: 17 structurally reviewed
 stationary structures and 10 preserved failures; its original queue is terminal.
 It includes monomers, covalent dimers and trimers, and two separate-segment
