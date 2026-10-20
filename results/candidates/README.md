@@ -1,5 +1,7 @@
 # Candidate results
 
+All result categories: [results index](../README.md).
+
 **Corrected thermal protocol admitted (2026-10-19).** Current exports require
 explicit internal-mode thermochemistry and a consistently corrected Fc reference.
 The implementation is integrated into the producer and both primary readers;

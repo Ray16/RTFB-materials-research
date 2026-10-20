@@ -1,0 +1,61 @@
+{
+  "schema": 2,
+  "guide": "results/README.md",
+  "synthesis_route": "post-functionalization of a preformed polymer",
+  "entries": {
+    "grafting": {
+      "guide": "results/grafting/README.md",
+      "current": "results/grafting/current.csv",
+      "status": "results/grafting/status.json",
+      "scope": "75 balanced local grafting reference reactions; MeCN; base-dependent contribution separate",
+      "reaction_identities": "results/grafting/reactions.json",
+      "components": "results/grafting/species.json",
+      "calculation_state": "prepared_not_submitted; no qualified reaction deltaG yet"
+    },
+    "polymer_models": {
+      "guide": "results/polymer_models/README.md",
+      "current": "results/polymer_models/current.csv",
+      "status": "results/polymer_models/status.json",
+      "scope": "Covalent oligomer/site-cooperativity inventory; interchain and whole-bead models distinct",
+      "calculation_state": "graph_inventory_prepared; interaction energies pending"
+    },
+    "candidates": {
+      "guide": "results/candidates/README.md",
+      "current": "results/candidates/latest.xlsx",
+      "snapshot": "results/candidates/current.json",
+      "raw_root": "calcs/dft",
+      "raw_pattern": "calcs/dft/<candidate_id>/<state>/",
+      "warm_start_root": "calcs/uma",
+      "warm_start_pattern": "calcs/uma/<candidate_id>/<state>/"
+    },
+    "figures": {
+      "guide": "results/candidates/figures/README.md",
+      "current": "results/candidates/figures/index.html",
+      "manifest": "results/candidates/figures/metadata/manifest.json"
+    },
+    "validation": {
+      "guide": "results/validation/README.md",
+      "current": "results/figures/validation/matched_parent_validation.pdf",
+      "actual_values": "results/figures/validation/matched_parent_validation.csv",
+      "checks": "results/reviews/2026-10-19/full_matched_parent_final/summary.json",
+      "source_conditions": "results/reviews/2026-10-19/full_matched_parent_final/comparisons.csv"
+    },
+    "slides": {
+      "guide": "slides/README.md",
+      "current": "slides/redox_workflow.pdf"
+    },
+    "discovery": {
+      "guide": "results/discovery/README.md",
+      "current": "results/discovery/systematic_families_2026-10-18/summary.json",
+      "sources": "config/discovery_sources.json",
+      "computed_results": "results/candidates/current.json"
+    },
+    "property_tables": {
+      "guide": "results/validated/README.md",
+      "snapshot": "results/validated/current.json",
+      "scope": "Dated arithmetic-review cohort; active candidate feed may contain later calculations"
+    }
+  },
+  "detailed_evidence": "results/LATEST_REVIEW.json",
+  "maintenance": "Update stable outputs, category status and provenance together; preserve dated evidence. Completion counts belong to each category status or active snapshot."
+}

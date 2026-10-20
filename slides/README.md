@@ -1,5 +1,7 @@
 # Research presentation
 
+All result categories: [results index](../results/README.md).
+
 Open [redox_workflow.pdf](redox_workflow.pdf).
 
 The first 13 slides present the background, post-grafting route, computational

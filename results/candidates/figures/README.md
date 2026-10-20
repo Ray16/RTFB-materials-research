@@ -1,5 +1,7 @@
 # Maintained candidate comparisons
 
+All result categories: [results index](../../README.md).
+
 Open the [comparison browser](index.html) for all candidate designs, sortable
 properties, exact structures, filters and comparisons of up to six structures.
 Open the local HTML from this collection folder; the interactive plot and table

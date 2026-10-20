@@ -1,5 +1,8 @@
 # Redox flow battery property pipeline
 
+**Current results:** [results/README.md](results/README.md) indexes grafting free
+energies, polymer models, candidate tables, validation figures and the slide deck.
+
 Computational screening of redox-active functional groups grafted onto the Cl site of the
 Merrifield-resin (chloromethyl-polystyrene) monomer, targeting **stability** and **redox
 potential** in a nonaqueous electrolyte.

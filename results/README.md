@@ -1,0 +1,50 @@
+# Results index
+
+Use these stable paths. Completed quantities carry field-specific QC; blank values
+are pending or excluded. Raw calculations and earlier source snapshots are retained.
+
+| Result | Main entry | Current data |
+| --- | --- | --- |
+| Grafting free energies for all 75 candidates | [Grafting](grafting/README.md) | [Current table](grafting/current.csv) · [Status](grafting/status.json) |
+| Polymer-fragment and interaction models | [Polymer models](polymer_models/README.md) | [Model inventory](polymer_models/current.csv) · [Status](polymer_models/status.json) |
+| Candidate redox properties and comparisons | [Candidates](candidates/README.md) | [Workbook](candidates/latest.xlsx) · [All candidates](candidates/figures/data/all_candidates.csv) |
+| Maintained figures and molecular structures | [Figure guide](candidates/figures/README.md) | [Comparison browser](candidates/figures/index.html) |
+| Measured/calculated redox validation | [Validation guide](validation/README.md) | [Figure](figures/validation/matched_parent_validation.pdf) · [Actual values](figures/validation/matched_parent_validation.csv) |
+| Candidate search, selection and source datasets | [Discovery guide](discovery/README.md) | [Search inventory](discovery/systematic_families_2026-10-18/summary.json) · [Source catalog](../config/discovery_sources.json) |
+| Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
+| Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
+| Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
+
+The current synthesis route is grafting redox groups onto a preformed polymer.
+See [the route definition](../docs/SYNTHESIS_ROUTE.md). The earlier vinyl-monomer
+exploration is preserved separately under [vinyl_monomers](discovery/vinyl_monomers/README.md).
+
+## Calculation records and provenance
+
+Paths below are relative to the project root,
+`/nfs/lambda_stor_01/homes/rzhu/0_redox` (also `/homes/rzhu/0_redox`).
+
+| Record | Location |
+| --- | --- |
+| Candidate solution geometries, energies and thermal QC | `calcs/dft/<candidate_id>/<state>/` |
+| Gas-phase UMA warm starts and descriptors | `calcs/uma/<candidate_id>/<state>/` |
+| Exact active candidate snapshot and immutable export paths | [results/candidates/current.json](candidates/current.json) |
+| Figure input snapshot, generated files and checksums | [results/candidates/figures/metadata/manifest.json](candidates/figures/metadata/manifest.json) |
+| Experimental benchmark sources and conditions | [data/raw/validation/two_wave_mecn/README.md](../data/raw/validation/two_wave_mecn/README.md) |
+| Scoped validation campaigns and their records | [results/validation/](validation/README.md) |
+| Immutable table exports, checks and publication evidence | `results/reviews/`; follow [LATEST_REVIEW.json](LATEST_REVIEW.json) to the relevant scope |
+| Grafting components and reaction identities | [results/grafting/species.json](grafting/species.json) · [reactions.json](grafting/reactions.json); calculation campaign is not yet submitted |
+| Oligomer graphs, occupancy and stereochemistry | [results/polymer_models/current.csv](polymer_models/current.csv); quantum calculations are pending |
+
+The category status files own completion counts. A prepared structure is not a
+computed result; an arithmetic check does not establish experimental accuracy.
+Use the active candidate feed for current candidate coverage. The full-table
+review is a dated cohort and can lag newly added structures.
+
+## Updating results
+
+Publish updates to the same current filenames, and keep earlier source snapshots
+and evidence. Update the category guide/status and this index when a new result
+type is added. Include the exact identities, method/solvent, pending quantities,
+QC, raw paths and source manifest. Existing figure and slide refresh commands are
+in their guides above. Root-level legacy CSV files are not the current entry point.

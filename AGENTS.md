@@ -26,6 +26,14 @@ physical validation separately.
 
 ## Candidate results and slides
 
+Maintain `results/README.md` as the single human entry point and `results/INDEX.json`
+as its machine-readable counterpart. Every new result category or campaign must
+record its stable current outputs, status/QC, raw calculation location and source
+snapshot or manifest. Update these pointers when publishing results, rather than
+making readers search dated directories. Keep immutable evidence and historical
+outputs at their original locations; label prepared, pending and verified results
+explicitly. Check local index links before committing an update.
+
 The confirmed synthesis route is post-functionalization: attach redox groups
 onto an already formed polymer, such as a Merrifield-type polymer with reactive
 benzyl sites (user correction, 2026-10-19). Existing 4-methylbenzyl structures are
