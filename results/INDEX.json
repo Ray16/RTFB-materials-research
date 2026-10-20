@@ -114,7 +114,25 @@
       "guide": "results/discovery/README.md",
       "current": "results/discovery/systematic_families_2026-10-18/summary.json",
       "sources": "config/discovery_sources.json",
-      "computed_results": "results/candidates/current.json"
+      "computed_results": "results/candidates/current.json",
+      "evaluation_loop": {
+        "guide": "docs/CANDIDATE_EXPANSION_LOOP.md",
+        "plan": "config/candidate_expansion_plan.json",
+        "current": "results/discovery/expansion/current.json",
+        "status": "results/discovery/expansion/status.json",
+        "browser": "results/discovery/expansion/index.html",
+        "design_ledger": "results/discovery/expansion/designs.csv",
+        "matched_effects": "results/discovery/expansion/comparisons.csv",
+        "figure": "results/discovery/expansion/matched_design_effects.pdf",
+        "figure_manifest": "results/discovery/expansion/report_manifest.json",
+        "publication_snapshots": "results/discovery/expansion/snapshots",
+        "raw_roots": [
+          "calcs/dft",
+          "calcs/grafting",
+          "calcs/polymer_models"
+        ],
+        "scope": "Existing exact-graft evaluator joined to systematic designs; matched effects and route admission stay separate; no new QM or automatic ranking"
+      }
     },
     "property_tables": {
       "guide": "results/validated/README.md",

@@ -1,5 +1,12 @@
 # Systematic candidate exploration
 
+Use the [integrated expansion/evaluation report](../results/discovery/expansion/index.html)
+for current coverage and matched effects, and the
+[connected workflow](CANDIDATE_EXPANSION_LOOP.md) for prospective design rules.
+The report joins exact graphs to the existing evaluator without transferring
+parent properties, hiding missing fields or overriding the route gate. The dated
+records below preserve the rationale and history of the individual branches.
+
 ## Current results: 2026-10-19
 
 The [candidate workbook](../results/candidates/latest.xlsx) contains 36 additional

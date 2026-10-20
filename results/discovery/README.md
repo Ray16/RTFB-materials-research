@@ -5,8 +5,15 @@ and [comparison browser](../candidates/figures/index.html) for current computed
 properties. The records here explain how structures were selected; enumeration
 and source curation do not imply completed calculations.
 
+Open the [integrated design/evaluation report](expansion/index.html) for systematic
+coverage, declared controls, matched effects and candidate-level review actions.
+The [workflow guide](../../docs/CANDIDATE_EXPANSION_LOOP.md) explains how existing
+evaluation outputs feed the next design question. The report preserves the source
+feed's date; collecting a new view is not a new quantum calculation or route approval.
+
 | Search or comparison | Location |
 | --- | --- |
+| Integrated expansion and evaluation | [Report](expansion/index.html) · [Status](expansion/status.json) · [Design ledger](expansion/designs.csv) · [Matched-effects figure](expansion/matched_design_effects.pdf) |
 | Search strategy and selection rationale | [Exploration guide](../../docs/CANDIDATE_EXPLORATION.md) |
 | Enumerated NDI, PMDI and viologen search space | [Search summary](systematic_families_2026-10-18/summary.json) |
 | Matched family comparisons | [Comparison definitions and provenance](family_comparisons_2026-10-18/README.md); current numerical shifts are in [comparisons.csv](../candidates/comparisons.csv) |

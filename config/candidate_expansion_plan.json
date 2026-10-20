@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "strategy": "Route-aware matched comparisons with family coverage; evaluation feeds the next design question",
+  "pool": "results/discovery/systematic_families_2026-10-18/structures.json",
+  "feed": "results/candidates/current.json",
+  "route_evidence": "results/grafting/route_evidence.json",
+  "selection_assessment": "results/grafting/selection_assessment.json",
+  "grafting": "results/grafting/current.json",
+  "base_assisted": "results/grafting/base_assisted/current.json",
+  "polymer": "results/polymer_models/interaction_checked.json",
+  "spacing": "results/polymer_models/campaigns/2026-10-20_spacing_pilot/current.json",
+  "axes": {
+    "cap_length": "Change cap length against the same core and graft anchor",
+    "ring_F": "One F at the declared matched ring site",
+    "ring_CN": "One CN at the declared matched ring site",
+    "ring_OMe": "One OMe at the same site used for F/CN",
+    "ring_Me": "One Me at the same site used for F/CN",
+    "linker_C2": "Change to the two-carbon ether graft anchor",
+    "cap_topology": "Cyclopropyl versus isopropyl; formula also changes, so not a pure rigidity test",
+    "cap_fluorination": "Terminal ethyl H replaced by F; cap change, not core-ring substitution",
+    "phenothiazine_substitution": "3,7-ring substitution against dimethoxy; second wave is a stress test",
+    "core_topology": "Declared core comparison; inspect all accompanying structural changes"
+  },
+  "contrast_overrides": {
+    "hyp_pmdi_cyclopropyl": "cap_topology",
+    "hyp_ndi_cyclopropyl": "cap_topology",
+    "hyp_pmdi_2fluoroethyl": "cap_fluorination",
+    "hyp_ndi_2fluoroethyl": "cap_fluorination",
+    "hyp_ptz_37dimethyl": "phenothiazine_substitution",
+    "hyp_ptz_37difluoro": "phenothiazine_substitution",
+    "hyp_cata_ndi_ethyl": "core_topology",
+    "hyp_cata_adi_ethyl": "core_topology"
+  },
+  "prospective_rules": [
+    "Declare exact precursor, product, attachment atom, baseline, design axis and hypothesis before a new batch",
+    "Deduplicate exact stereochemical graphs and retain every generation recipe",
+    "Run the existing route gate before any new full redox campaign; explicitly scoped method controls are separate",
+    "Select within declared family/axis cells with common controls; do not substitute another positional isomer silently",
+    "Evaluate all selected cases with the same field-specific QC; retain failures and missing fields",
+    "Report matched effects and uncertainty before choosing another axis; never rank by voltage shift alone",
+    "Keep base-assisted grafting, capped-site redox and polymer-neighbor quantities distinct"
+  ],
+  "future_axes": [
+    {"axis": "BQ_AQ_substitution", "status": "planned_not_enumerated", "question": "Extend exact precursor/product enumeration to BQ/AQ with selective handles"},
+    {"axis": "steric_shielding", "status": "planned_not_selected", "question": "Does shielding reduce unwanted motif association without obstructing grafting?"},
+    {"axis": "spacing_sensitivity", "status": "method_control_prepared_quantum_pending", "question": "How does a neighboring graft change local nonadditivity and conditional grafting G?"}
+  ]
+}
