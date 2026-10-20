@@ -147,7 +147,7 @@ h1{font-size:30px}a{color:#0072B2}.muted{color:#627080}input{padding:12px;width:
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:18px;margin-top:24px}
 article{background:white;border:1px solid #dbe2e8;border-radius:9px;padding:18px;overflow-wrap:anywhere}article img{width:100%;height:185px;object-fit:contain}
 h3{font-size:16px}details{font-size:13px}code{font-size:11px}@media(max-width:750px){.plots{display:block}}
-</style><h1>Grafting free energies</h1><p><a href="../README.md">All results</a> · <a href="README.md">Methods and scope</a> · <a href="current.csv">Download table</a> · <a href="status.json">Status and provenance</a></p>
+</style><h1>Grafting free energies</h1><p><a href="../README.md">All results</a> · <a href="README.md">Methods and scope</a> · <a href="current.csv">Download table</a> · <a href="status.json">Status and provenance</a> · <a href="base_assisted/index.html">Base-assisted pilot</a></p>
 '''
     page += f"<p><strong>{status['completed_grafting_deltaG']}/75 reference reaction ΔG values qualified.</strong> "
     page += f"{status['qualified_components']}/{status['expected_new_components']} new components qualified. Reload this page to see collected updates.</p>"

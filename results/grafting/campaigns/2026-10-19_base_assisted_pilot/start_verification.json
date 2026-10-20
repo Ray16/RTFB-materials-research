@@ -1,0 +1,249 @@
+{
+  "checked": 1792469756.0808454,
+  "hosts": [
+    {
+      "host": "lambda13",
+      "checked": 1792469756.0700114,
+      "load_1m": 10.09765625,
+      "online_cpus": 384,
+      "CPU_overlap": false,
+      "workers": [
+        {
+          "worker": {
+            "host": "lambda13",
+            "pid": 1705995,
+            "process_start": "58698820",
+            "cpus": [
+              2,
+              3
+            ],
+            "gpu": 1,
+            "status": "computing",
+            "started": 1792469678.3393629,
+            "items": [],
+            "active_key": "dipea_chloride_pair"
+          },
+          "live": true,
+          "actual_cpus": [
+            2,
+            3
+          ],
+          "native_thread_limits": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "visible_gpu": "1",
+          "gate_parent_matches": true,
+          "gpu_processes": [
+            {
+              "pid": 1705995,
+              "memory_MiB": 2194
+            }
+          ],
+          "own_gpu_resident": true,
+          "verified": true
+        },
+        {
+          "worker": {
+            "host": "lambda13",
+            "pid": 1705998,
+            "process_start": "58698821",
+            "cpus": [
+              4,
+              5
+            ],
+            "gpu": 2,
+            "status": "computing",
+            "started": 1792469678.170887,
+            "items": [],
+            "active_key": "dipea_neutral"
+          },
+          "live": true,
+          "actual_cpus": [
+            4,
+            5
+          ],
+          "native_thread_limits": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "visible_gpu": "2",
+          "gate_parent_matches": true,
+          "gpu_processes": [
+            {
+              "pid": 1705998,
+              "memory_MiB": 3586
+            }
+          ],
+          "own_gpu_resident": true,
+          "verified": true
+        },
+        {
+          "worker": {
+            "host": "lambda13",
+            "pid": 1705999,
+            "process_start": "58698821",
+            "cpus": [
+              6,
+              7
+            ],
+            "gpu": 3,
+            "status": "computing",
+            "started": 1792469678.2602441,
+            "items": [],
+            "active_key": "dipea_protonated"
+          },
+          "live": true,
+          "actual_cpus": [
+            6,
+            7
+          ],
+          "native_thread_limits": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "visible_gpu": "3",
+          "gate_parent_matches": true,
+          "gpu_processes": [
+            {
+              "pid": 1705999,
+              "memory_MiB": 3752
+            }
+          ],
+          "own_gpu_resident": true,
+          "verified": true
+        },
+        {
+          "worker": {
+            "host": "lambda13",
+            "pid": 1706017,
+            "process_start": "58698821",
+            "cpus": [
+              8,
+              9
+            ],
+            "gpu": 4,
+            "status": "computing",
+            "started": 1792469677.9270873,
+            "items": [],
+            "active_key": "dbu_neutral"
+          },
+          "live": true,
+          "actual_cpus": [
+            8,
+            9
+          ],
+          "native_thread_limits": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "visible_gpu": "4",
+          "gate_parent_matches": true,
+          "gpu_processes": [
+            {
+              "pid": 1706017,
+              "memory_MiB": 2470
+            }
+          ],
+          "own_gpu_resident": true,
+          "verified": true
+        },
+        {
+          "worker": {
+            "host": "lambda13",
+            "pid": 1706016,
+            "process_start": "58698821",
+            "cpus": [
+              12,
+              13
+            ],
+            "gpu": 6,
+            "status": "computing",
+            "started": 1792469678.0923507,
+            "items": [],
+            "active_key": "dbu_chloride_pair"
+          },
+          "live": true,
+          "actual_cpus": [
+            12,
+            13
+          ],
+          "native_thread_limits": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "visible_gpu": "6",
+          "gate_parent_matches": true,
+          "gpu_processes": [
+            {
+              "pid": 1706016,
+              "memory_MiB": 6302
+            }
+          ],
+          "own_gpu_resident": true,
+          "verified": true
+        },
+        {
+          "worker": {
+            "host": "lambda13",
+            "pid": 1706018,
+            "process_start": "58698821",
+            "cpus": [
+              14,
+              15
+            ],
+            "gpu": 7,
+            "status": "computing",
+            "started": 1792469678.0079527,
+            "items": [],
+            "active_key": "dbu_protonated"
+          },
+          "live": true,
+          "actual_cpus": [
+            14,
+            15
+          ],
+          "native_thread_limits": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "visible_gpu": "7",
+          "gate_parent_matches": true,
+          "gpu_processes": [
+            {
+              "pid": 1706018,
+              "memory_MiB": 2500
+            }
+          ],
+          "own_gpu_resident": true,
+          "verified": true
+        }
+      ]
+    }
+  ],
+  "verified_GPU_workers": 6
+}

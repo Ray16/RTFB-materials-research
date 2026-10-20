@@ -6,6 +6,10 @@ For demonstrated attachment routes, experimental conditions, evidence limits
 and requirements for future molecule design, see
 [practical grafting](../../docs/PRACTICAL_GRAFTING.md).
 
+The separate [DBU/DIPEA pilot](base_assisted/index.html) evaluates base-assisted
+thermodynamic corrections and chloride ion-pair sensitivity. It retains the
+reference results below and does not automatically clear candidates for synthesis.
+
 **Open the [visual results browser](index.html)** for the maintained ΔG ranking,
 reaction schemes, coverage and all 75 exact molecular structures. The same files
 refresh as qualified calculations finish; reload the browser to see updates.

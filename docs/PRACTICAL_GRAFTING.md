@@ -123,3 +123,10 @@ reviews remain separate. The [route screen](../results/grafting/route_screen.jso
 requires precursor access, selectivity, defined conditions, a balanced route and
 redox-core retention before admission. The
 [synthesis-route guide](SYNTHESIS_ROUTE.md) records the prospective evaluation order.
+
+A separately authorized [DBU/DIPEA pilot](../results/grafting/base_assisted/README.md)
+now evaluates proton capture and chloride contact-pair sensitivity in matched
+MeCN calculations. These bases have attachment precedents in other solvents and
+with different handles. Their use for the exact BQ/AQ phenolic designs remains
+proposed. Results and status are separate from the original reference campaign;
+favorable thermodynamics alone will not remove synthesis holds.

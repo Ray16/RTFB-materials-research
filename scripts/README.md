@@ -46,3 +46,8 @@ gate; `plotting/polymer_models/update_interaction_figures.py` maintains its plot
 and three-dimensional browser. Existing campaign plans must be inspected before
 any restart; preparation/submission actions are deliberately distinct from
 read-only result collection.
+
+The finite base-assisted sensitivity pilot uses
+[`pipeline/base_assisted_grafting.py`](pipeline/base_assisted_grafting.py). Its
+`collect` action verifies completed components and refreshes the maintained
+[DBU/DIPEA comparison](../results/grafting/base_assisted/index.html).
