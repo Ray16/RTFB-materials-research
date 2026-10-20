@@ -39,6 +39,12 @@ need further qualified calculations. There are 72 unique precursor graphs and
 three shared references. See the status file for subsequent progress. The
 reference-reaction columns and any future base-coupled columns are distinct.
 
+**Synthesis selection:** the highlighted BQ/AQ designs are [on hold](selection_assessment.json)
+until a realistic attachment route is assessed. Their favorable redox descriptors
+do not override unresolved grafting feasibility. A route that remains strongly
+unfavorable under defined experimental conditions should be excluded. Current
+HCl-reference values alone do not establish the base-assisted reaction energy.
+
 ## Submitted calculation campaign
 
 The [frozen campaign plan](campaigns/2026-10-19_mecn_reference/plan.json) contains

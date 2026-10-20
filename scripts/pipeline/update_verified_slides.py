@@ -414,6 +414,8 @@ def publish(payload,out,overlays=False):
                      ROOT/'results/candidates/figures/data/candidate_selection_overview.json',
                      ROOT/'results/discovery/vinyl_monomers/proposals.json'):
             inputs[str(path)]=digest(path)
+    assessment=ROOT/'results/grafting/selection_assessment.json'
+    if assessment.exists():inputs[str(assessment)]=digest(assessment)
     # Bind supporting TeX as well as the main story to the checked build.
     for path in list(generated.glob('*.tex'))+list((SLIDES/'backup').glob('*.tex')):
         inputs[str(path)]=digest(path)

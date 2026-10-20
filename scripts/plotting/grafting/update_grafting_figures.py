@@ -47,6 +47,9 @@ def main():
     feed = json.loads((OUT/'current.json').read_text())
     rows, status = feed['candidates'], feed['status']
     inventory = json.loads((OUT/'reactions.json').read_text())['reactions']
+    assessment_path = OUT/'selection_assessment.json'
+    assessment = json.loads(assessment_path.read_text()) if assessment_path.exists() else {}
+    synthesis = assessment.get('candidates', {})
     plt.rcParams.update({'font.family':'DejaVu Sans', 'font.size':9, 'axes.labelsize':10,
                          'axes.spines.top':False, 'axes.spines.right':False,
                          'svg.fonttype':'none', 'pdf.fonttype':42})
@@ -126,9 +129,12 @@ def main():
         structure(r['product_smiles'], product)
         value = r['deltaG_reference_kJ_mol']
         value_text = f'{value:+.1f} kJ mol⁻¹' if value is not None else 'ΔG pending'
-        cards.append('<article data-search="'+html.escape(r['id']+' '+r['name']+' '+r['family']+' '+r['status'], quote=True)+'">'
+        decision = synthesis.get(r['id'], {})
+        on_hold = decision.get('status') == 'on_hold'
+        selection_text = '<p class="hold"><strong>Synthesis selection: ON HOLD</strong><br>Base-assisted grafting remains unassessed.</p>' if on_hold else ''
+        cards.append('<article data-search="'+html.escape(r['id']+' '+r['name']+' '+r['family']+' '+r['status']+' '+decision.get('status','unassessed'), quote=True)+'">'
             '<h3>'+html.escape(r['id'])+'</h3><img loading="lazy" alt="Exact graft-site product structure" src="structures/'+html.escape(product.name)+'">'
-            '<p>'+html.escape(r['name'])+'</p><strong>'+value_text+'</strong><p class="muted">'+html.escape(r['status'])+'</p>'
+            '<p>'+html.escape(r['name'])+'</p><strong>'+value_text+'</strong><p class="muted">'+html.escape(r['status'])+'</p>'+selection_text+
             '<details><summary>Reaction and QC</summary><p>'+html.escape(LABELS[r['reaction_class']])+'</p>'
             '<p>Missing: '+html.escape(r['missing_components'] or 'none')+'</p><p>Held: '+html.escape(r['failed_components'] or 'none')+'</p>'
             '<p>Product records: <code>'+html.escape(r['product_state_path'])+'</code></p></details></article>')
@@ -136,6 +142,7 @@ def main():
 <title>Grafting free energies</title><style>
 body{font:16px/1.5 system-ui,sans-serif;color:#203040;margin:30px auto;max-width:1250px;padding:0 20px;background:#f8fafb}
 h1{font-size:30px}a{color:#0072B2}.muted{color:#627080}input{padding:12px;width:min(95%,600px);font:inherit;border:1px solid #bbc8d0;border-radius:6px}
+.hold{background:#fff4df;border-left:4px solid #b87500;padding:10px}
 .plots{display:grid;grid-template-columns:2fr 1fr;gap:20px;align-items:center}.plots img,.scheme{width:100%}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:18px;margin-top:24px}
 article{background:white;border:1px solid #dbe2e8;border-radius:9px;padding:18px;overflow-wrap:anywhere}article img{width:100%;height:185px;object-fit:contain}
@@ -146,6 +153,9 @@ h3{font-size:16px}details{font-size:13px}code{font-size:11px}@media(max-width:75
     page += f"{status['qualified_components']}/{status['expected_new_components']} new components qualified. Reload this page to see collected updates.</p>"
     page += '<p>Acetonitrile, 298.15 K. N–H/O–H reactions retain HCl explicitly; N quaternization retains chloride. '
     page += 'Compare the two reaction classes separately. Base capture is pending. These local-site predictions do not establish grafting rates, yields or polymer performance.</p>'
+    if synthesis:
+        page += '<p class="hold"><strong>BQ/AQ capacity leaders are on hold for synthesis selection.</strong> High nominal capacity does not establish a workable grafting route. '
+        page += 'A route that remains strongly unfavorable under defined experimental conditions must be excluded. <a href="selection_assessment.json">Selection assessment</a></p>'
     page += '<div class="plots"><a href="figures/deltaG_ranking.pdf"><img src="figures/deltaG_ranking.png" alt="Reference grafting free energies; pending until qualified"></a>'
     page += '<a href="figures/coverage.pdf"><img src="figures/coverage.png" alt="Qualified, pending and QC-held reaction counts"></a></div>'
     page += '<a href="figures/reaction_schemes.pdf"><img class="scheme" src="figures/reaction_schemes.png" alt="Three balanced attachment reaction schemes"></a>'
@@ -155,6 +165,7 @@ h3{font-size:16px}details{font-size:13px}code{font-size:11px}@media(max-width:75
     artifacts = sorted([*FIG.glob('*.pdf'), *FIG.glob('*.png'), *FIG.glob('*.svg'), *structures.glob('*.svg')])
     atomic = dict(source_current_sha256=hashlib.sha256((OUT/'current.json').read_bytes()).hexdigest(),
                   figure_producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+                  synthesis_assessment_sha256=hashlib.sha256(assessment_path.read_bytes()).hexdigest() if assessment_path.exists() else None,
                   qualified_reactions=status['completed_grafting_deltaG'],
                   outputs={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in artifacts})
     (FIG/'manifest.json').write_text(json.dumps(atomic, indent=2)+'\n')
