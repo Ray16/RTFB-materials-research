@@ -108,10 +108,13 @@ For a specified soluble base, a consistent thermodynamic cycle can add the
 free energy of `B + HCl → BH+ + Cl−`. For a preformed potassium nucleophile,
 compute the salt reaction with a defined ionic/phase convention instead.
 Explicit ion-pair and solvent sensitivity are needed before interpreting small
-differences. No new condition-specific free energies were computed in this review.
+differences. The literature review itself computed no condition-specific energies;
+the separate DBU/DIPEA pilot below subsequently completed those calculations.
 
-Keep the highlighted BQ/AQ designs **on hold**, rather than declaring the whole
-quinone family ungraftable. The accessible sources reviewed here did not
+Retain the highlighted BQ designs and AQ-1-O as **base required**. The completed
+MeCN pilot gives favorable base-assisted thermodynamics for DBU and DIPEA in both
+ionic models. Positive HCl-reference values alone must not exclude them.
+AQ-2-O/6-OMe remains unresolved because of precursor QC. The accessible sources reviewed here did not
 establish a practical route for those exact phenolic precursors. Prioritize
 review of the close viologen precedent, the imide-anion route, and a separately
 registered AQ-carboxylate alternative. None is automatically admitted to synthesis
@@ -125,8 +128,10 @@ redox-core retention before admission. The
 [synthesis-route guide](SYNTHESIS_ROUTE.md) records the prospective evaluation order.
 
 A separately authorized [DBU/DIPEA pilot](../results/grafting/base_assisted/README.md)
-now evaluates proton capture and chloride contact-pair sensitivity in matched
-MeCN calculations. These bases have attachment precedents in other solvents and
+completed all six new components for proton capture and chloride contact-pair
+sensitivity in matched MeCN calculations. Five candidates have corrected values;
+one lacks a qualified upstream precursor. These bases have attachment precedents in other solvents and
 with different handles. Their use for the exact BQ/AQ phenolic designs remains
 proposed. Results and status are separate from the original reference campaign;
-favorable thermodynamics alone will not remove synthesis holds.
+favorable thermodynamics supports continued evaluation, while selectivity, competing
+reactions and experimental yield remain to be established.

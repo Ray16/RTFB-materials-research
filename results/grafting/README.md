@@ -6,9 +6,12 @@ For demonstrated attachment routes, experimental conditions, evidence limits
 and requirements for future molecule design, see
 [practical grafting](../../docs/PRACTICAL_GRAFTING.md).
 
-The separate [DBU/DIPEA pilot](base_assisted/index.html) evaluates base-assisted
-thermodynamic corrections and chloride ion-pair sensitivity. It retains the
-reference results below and does not automatically clear candidates for synthesis.
+The completed [DBU/DIPEA pilot](base_assisted/index.html) evaluates base-assisted
+thermodynamic corrections and chloride ion-pair sensitivity. All six new components
+passed QC, supplying corrected values for five of six selected candidates.
+Both BQ designs and AQ-1-O have favorable modeled base-assisted reactions:
+**base required; retained for evaluation**. AQ-2-O/6-OMe lacks a qualified precursor.
+The pilot retains the reference results below; selectivity and yield remain untested.
 
 **Open the [visual results browser](index.html)** for the maintained ΔG ranking,
 reaction schemes, coverage and all 75 exact molecular structures. The same files
@@ -30,10 +33,10 @@ The balanced reference reactions depend on the attachment chemistry:
 
 The complete atom/charge-balanced schemes and exact molecular identities are in
 [reactions.json](reactions.json); shared reagents are in [species.json](species.json).
-The neutral HCl reference is explicit. A base was not specified, so the free-energy
-contribution for HCl capture/proton transfer is kept separate and pending. A common
-base correction can later be applied to the N–H/O–H reactions under a defined
-chemical model. Ionic strength, ion pairing and counterion exchange are additional
+The neutral HCl reference is explicit. Base capture is excluded from these reference
+columns and reported separately in the completed DBU/DIPEA pilot for its selected
+panel. The remaining candidates have no assigned base-assisted result. Ionic
+strength, ion pairing and counterion exchange are additional
 assumptions; cross-reaction-class rankings must retain these limitations.
 
 The reference reactions have two reactant and two product solute species, so the
@@ -45,13 +48,16 @@ internal-mode thermochemistry. A missing thermal correction is never zero-filled
 At preparation, 67 existing product free energies can be reused; eight products
 need further qualified calculations. There are 72 unique precursor graphs and
 three shared references. See the status file for subsequent progress. The
-reference-reaction columns and any future base-coupled columns are distinct.
+reference-reaction columns and the separate base-coupled results are distinct.
 
-**Synthesis selection:** the highlighted BQ/AQ designs are [on hold](selection_assessment.json)
-until a realistic attachment route is assessed. Their favorable redox descriptors
-do not override unresolved grafting feasibility. A route that remains strongly
-unfavorable under defined experimental conditions should be excluded. Current
-HCl-reference values alone do not establish the base-assisted reaction energy.
+**Selection:** [base required; retain both BQ designs and AQ-1-O](selection_assessment.json).
+Do not exclude them because their HCl-reference values are positive. In MeCN at
+298.15 K, separated-ion DBU values are -45.1/-46.7 kJ/mol for the two BQ designs
+and -39.9 kJ/mol for AQ-1-O; DIPEA values are -13.3/-14.9 and -8.1 kJ/mol.
+The contact-pair models are also favorable. These are local-site predictions;
+precursor access, attachment selectivity, competing chemistry and yield still need
+review. AQ-2-O/6-OMe remains unresolved because of precursor QC. No experimentally
+validated numerical grafting cutoff is established or imposed by this assessment.
 
 ## Submitted calculation campaign
 

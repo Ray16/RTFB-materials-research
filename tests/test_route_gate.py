@@ -45,3 +45,14 @@ def test_unreviewed_attachment_class_is_not_submitted():
     result=gate.screen(dict(id='candidate',frag='[*:1]CC'),{}, {})
     assert result['route_status']=='exclude_unreviewed_attachment'
     assert not result['proceed_to_feasibility_model']
+
+
+def test_base_required_retains_candidate_without_skipping_route_evidence():
+    row=dict(id='candidate',frag='[*:1]Oc1ccccc1',deltaG_reference_kJ_mol=58)
+    assessment={'candidates':{'candidate':{'status':'base_required'}}}
+    result=gate.screen(row,{},assessment)
+    assert result['proceed_to_feasibility_model']
+    assert not result['proceed_to_full_redox']
+    assert any('Base required; retained' in reason for reason in result['reasons'])
+    # Positive HCl-reference energy cannot veto a separately reviewed base route.
+    assert gate.screen(row,{'candidate':reviewed()},assessment)['proceed_to_full_redox']

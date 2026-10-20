@@ -4,6 +4,14 @@ Open the maintained [comparison and status](index.html). The
 [vector figure](figures/base_comparison.pdf) and [structured results](current.json)
 refresh after each qualified component finishes. Pending quantities remain blank.
 
+**Completed:** all six new components passed QC, with no failed components.
+Five candidates have all four base-assisted values (DBU/DIPEA; ions/contact pair).
+AQ-2-O/6-OMe remains unresolved because its upstream precursor failed QC.
+The two BQ designs and AQ-1-O are **base required; retained for evaluation**.
+Their positive HCl-reference values are not a reason to exclude them.
+The [selection-update checks](../../reviews/2026-10-20/base_required_selection/summary.json)
+record the independent arithmetic review, source hashes and checked slide revision.
+
 This authorized finite pilot compares **DBU and DIPEA in MeCN at 298.15 K** on
 the two highlighted BQ ether designs, two AQ ether designs, and NDI/PMDI ethyl
 controls. Five reference reactions were qualified at preparation; the AQ
@@ -37,8 +45,9 @@ The base precedents involve AQ-carboxylate/DBU in NMP and
 ferrocene-carboxylate/DIPEA in DMF; applying them to these exact phenolic motifs
 in MeCN is a proposed test. Competing base alkylation, quinone side reactions,
 polymer diffusion and attachment selectivity remain unresolved. Contact-pair
-entropy and conformer sampling are approximate. A favorable correction alone
-does not remove the BQ/AQ synthesis holds. See
+entropy and conformer sampling are approximate. Favorable modeled base-assisted
+reactions support retaining these candidates; experimental selectivity and yield
+are separate requirements. See
 [practical chemistry and sources](../../../docs/PRACTICAL_GRAFTING.md).
 
 The frozen [plan](../campaigns/2026-10-19_base_assisted_pilot/plan.json) records

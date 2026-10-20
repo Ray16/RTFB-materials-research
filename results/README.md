@@ -19,6 +19,11 @@ The current synthesis route is grafting redox groups onto a preformed polymer.
 See [the route definition](../docs/SYNTHESIS_ROUTE.md). The earlier vinyl-monomer
 exploration is preserved separately under [vinyl_monomers](discovery/vinyl_monomers/README.md).
 
+The [completed DBU/DIPEA pilot](grafting/base_assisted/index.html) supports retaining
+both BQ designs and AQ-1-O as **base required**. Their modeled base-assisted
+reactions are favorable; positive HCl-reference values alone do not exclude them.
+Selectivity and yield remain untested. See the [current selection assessment](grafting/selection_assessment.json).
+
 ## Calculation records and provenance
 
 Paths below are relative to the project root,

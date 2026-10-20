@@ -60,6 +60,7 @@ def main():
 <p><a href="../index.html">Grafting reference results</a> · <a href="../../../docs/PRACTICAL_GRAFTING.md">Practical chemistry</a></p>
 <h1>Base-assisted grafting pilot</h1><p><b>{status['components_qualified']}/6 components qualified</b>; {status['failures']} preserved failures. Reload for updates.</p>
 <p class="note">Exploratory MeCN thermodynamics. No candidate is cleared for synthesis by this pilot. Reaction barriers, competing base alkylation, salt precipitation and experimental yields remain unestablished.</p>
+<p><b>Base required; BQ candidates retained for evaluation.</b> Both BQ designs and AQ-1-O have favorable modeled DBU/DIPEA reactions. Positive HCl-reference values alone do not exclude them. AQ-2-O/6-OMe remains unresolved because of precursor QC.</p>
 <p>Each base is modeled as the neutral reagent, protonated ion and chloride contact pair. Connected endpoints show two ionic models, not statistical error bars. The HCl-reference results remain separate.</p>
 <img src="figures/base_comparison.svg" alt="Reference and base-assisted grafting energies, with uncomputed values omitted">
 <p><a href="figures/base_comparison.pdf">Vector PDF</a> · <a href="current.json">Data and source receipts</a> · <a href="status.json">Status</a></p>

@@ -19,6 +19,11 @@ def research_frames(payload,root):
     assessment_path=Path(root)/'results/grafting/selection_assessment.json'
     assessment=json.loads(assessment_path.read_text()) if assessment_path.exists() else {}
     bq_hold=any(v.get('status')=='on_hold' for key,v in assessment.get('candidates',{}).items() if key.startswith('exp_bq_'))
+    bq_ids=('exp_bq_oxy_methoxy','exp_bq_oxy_trimethyl')
+    bq_decisions=[assessment.get('candidates',{}).get(key,{}) for key in bq_ids]
+    bq_base=all(v.get('status')=='base_required' and v.get('thermodynamic_status')=='favorable_base_assisted_model' for v in bq_decisions)
+    base_note=('Base required; BQ retained. DBU: '+ '/'.join(number(v['base_assisted_deltaG_kJ_mol']['dbu']['free_ions_kJ_mol']) for v in bq_decisions)
+               +r' kJ mol$^{-1}$ (MeCN model); selectivity and yield untested.') if bq_base else None
     capacities=[rows[gid]['capacity_nominal_mAh_g'] for gid in highlights['highlighted_ids']]
     ndi=next((r for r in highlights['matched_contrasts'] if r['core']=='ndi'),None)
     topology_contrast=ndi is not None and ndi['id']=='hyp_cata_ndi_ethyl' and ndi['baseline']=='design_ndi_ethyl'
@@ -90,7 +95,7 @@ def research_frames(payload,root):
 
     figure(capacity_title,'plots/redox_capacity.pdf',
            ('The two BQ models reach '+number(capacities[0])+r' and '+number(capacities[1])+r' mAh g$^{-1}$.' if quinone_leaders else 'The highlighted models span '+number(min(capacities))+'--'+number(max(capacities))+r' mAh g$^{-1}$.'),
-           ('BQ/AQ synthesis selection is on hold pending a base-assisted grafting assessment.' if bq_hold else str(manifest['candidates'])+' designs; '+str(manifest['admitted_potential_candidates'])+' checked ladders. Nominal capacity excludes polymer and counterions.'))
+           (base_note if bq_base else 'BQ/AQ synthesis selection is on hold pending a base-assisted grafting assessment.' if bq_hold else str(manifest['candidates'])+' designs; '+str(manifest['admitted_potential_candidates'])+' checked ladders. Nominal capacity excludes polymer and counterions.'))
     shift_insight='Matched contrasts separate core changes from substituent changes.'
     if ndi is not None:
         shift_insight=(r'NDI core topology shifts' if topology_contrast else r'The highlighted NDI contrast shifts')+r' $E_1$ by '+number(ndi['delta_E1_V'],3)+r' V and $E_2$ by '+number(ndi['delta_E2_V'],3)+' V.'
@@ -108,7 +113,7 @@ def research_frames(payload,root):
                'High capacity and low SA do not establish a workable grafting route.',
                'SA is heuristic; attachment selectivity and site accessibility require testing.')
     figure('Capacity leaders and representative graft-site controls','structures/candidate_structures.pdf',
-           ('BQ/AQ remain descriptor leaders; synthesis selection is on hold.' if bq_hold else 'Quinones, diimides and viologens provide complementary graft-site hypotheses.'),
+           ('Base required; BQ candidates retained for evaluation.' if bq_base else 'BQ/AQ remain descriptor leaders; synthesis selection is on hold.' if bq_hold else 'Quinones, diimides and viologens provide complementary graft-site hypotheses.'),
            'NDI: naphthalenediimide; PMDI: pyromellitic diimide. Polymer effects unvalidated.')
 
     pieces.extend([r'\begin{frame}{Downselection couples redox behavior with grafting feasibility}',
@@ -120,6 +125,6 @@ def research_frames(payload,root):
                    r'\begin{frame}{Three findings guide the next experiments}',
                    r'\begin{block}{Capacity}\textbf{'+('Substituted BQ models lead the current nominal-capacity screen.' if quinone_leaders else 'The highlighted designs expose the nominal capacity tradeoff.')+r'}\end{block}',
                    r'\begin{block}{Voltage tuning}\textbf{'+('NDI core topology provides a clear matched computational contrast.' if topology_contrast else 'Matched contrasts identify molecular changes for follow-up.')+r'}\end{block}',
-                   r'\begin{block}{Synthesis direction}\textbf{'+('BQ/AQ are on hold pending a defined, credible grafting route.' if bq_hold else 'Review quinone, diimide and viologen precursors for post-grafting.')+r'}\end{block}',
+                   r'\begin{block}{Synthesis direction}\textbf{'+('Base required: retain BQ candidates and test selective attachment.' if bq_base else 'BQ/AQ are on hold pending a defined, credible grafting route.' if bq_hold else 'Review quinone, diimide and viologen precursors for post-grafting.')+r'}\end{block}',
                    r'\vfill\footnotesize Next decision: combine molecular redox properties with attachment feasibility, graft loading and accessible redox sites. Solubility and cycling performance remain unmeasured for these exact targets.',r'\end{frame}'])
     return '\n'.join(pieces)+'\n'

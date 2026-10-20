@@ -1,7 +1,7 @@
 {
   "status": {
-    "updated_unix": 1792469674.9593518,
-    "status": "running",
+    "updated_unix": 1792470837.250964,
+    "status": "finished_with_QC_holds",
     "candidate_reactions": 75,
     "balanced_reactions": 75,
     "unique_precursors": 72,
@@ -11,11 +11,9 @@
     "completed_grafting_deltaG": 67,
     "qualified_components": 75,
     "expected_new_components": 83,
-    "preserved_component_failures": 7,
+    "preserved_component_failures": 8,
     "invalidated_receipts": [],
-    "active_claims": [
-      "product_study_aryl_693080e8c287"
-    ],
+    "active_claims": [],
     "worker_reports": 10,
     "workers_reported_computing": 1,
     "claim_liveness": "Claim presence is not proof of a live process; inspect start_verification.json",
@@ -1635,9 +1633,9 @@
       "deltaG_reference_kJ_mol": null,
       "deltaG_with_base_kJ_mol": null,
       "base_correction_required": true,
-      "status": "pending_components",
+      "status": "held_failed_component_QC",
       "missing_components": "product_study_aryl_693080e8c287",
-      "failed_components": "",
+      "failed_components": "product_study_aryl_693080e8c287",
       "atom_balanced": true,
       "charge_balanced": true,
       "product_state_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/product_study_aryl_693080e8c287/rest",

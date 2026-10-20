@@ -10,8 +10,9 @@ methods, validation tables, supplementary molecular drawings and historical
 comparisons follow the **Backup** divider.
 
 The workflow now screens precursor/attachment feasibility before full redox
-properties, then compares dimers, trimers and stacking. BQ/AQ synthesis holds
-remain explicit in the main story.
+properties, then compares dimers, trimers and stacking. The main story retains
+the BQ candidates as **base required**, reflecting favorable modeled DBU/DIPEA
+thermodynamics. Attachment selectivity and yield remain untested.
 
 The initial grafting-reference checkpoint is in Backup, immediately after the
 divider. Its dated values and plot are frozen with the submission review; the

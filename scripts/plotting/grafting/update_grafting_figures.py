@@ -130,8 +130,8 @@ def main():
         value = r['deltaG_reference_kJ_mol']
         value_text = f'{value:+.1f} kJ mol⁻¹' if value is not None else 'ΔG pending'
         decision = synthesis.get(r['id'], {})
-        on_hold = decision.get('status') == 'on_hold'
-        selection_text = '<p class="hold"><strong>Synthesis selection: ON HOLD</strong><br>Base-assisted grafting remains unassessed.</p>' if on_hold else ''
+        selection_text = ('<p class="hold"><strong>'+html.escape(decision.get('display_label', decision.get('status', 'Route review required')))
+                          +'</strong><br>'+html.escape(decision.get('reason', ''))+'</p>') if decision else ''
         cards.append('<article data-search="'+html.escape(r['id']+' '+r['name']+' '+r['family']+' '+r['status']+' '+decision.get('status','unassessed'), quote=True)+'">'
             '<h3>'+html.escape(r['id'])+'</h3><img loading="lazy" alt="Exact graft-site product structure" src="structures/'+html.escape(product.name)+'">'
             '<p>'+html.escape(r['name'])+'</p><strong>'+value_text+'</strong><p class="muted">'+html.escape(r['status'])+'</p>'+selection_text+
@@ -152,10 +152,11 @@ h3{font-size:16px}details{font-size:13px}code{font-size:11px}@media(max-width:75
     page += f"<p><strong>{status['completed_grafting_deltaG']}/75 reference reaction ΔG values qualified.</strong> "
     page += f"{status['qualified_components']}/{status['expected_new_components']} new components qualified. Reload this page to see collected updates.</p>"
     page += '<p>Acetonitrile, 298.15 K. N–H/O–H reactions retain HCl explicitly; N quaternization retains chloride. '
-    page += 'Compare the two reaction classes separately. Base capture is pending. These local-site predictions do not establish grafting rates, yields or polymer performance.</p>'
+    page += 'Compare the two reaction classes separately. The completed <a href="base_assisted/index.html">DBU/DIPEA pilot</a> reports base capture separately. These local-site predictions do not establish grafting rates, yields or polymer performance.</p>'
     if synthesis:
-        page += '<p class="hold"><strong>BQ/AQ capacity leaders are on hold for synthesis selection.</strong> High nominal capacity does not establish a workable grafting route. '
-        page += 'A route that remains strongly unfavorable under defined experimental conditions must be excluded. <a href="selection_assessment.json">Selection assessment</a></p>'
+        page += '<p class="hold"><strong>Base required; BQ candidates retained for evaluation.</strong> The modeled DBU/DIPEA routes are favorable for both BQ designs and AQ-1-O. '
+        page += 'AQ-2-O/6-OMe remains unresolved because of precursor QC. Positive HCl-reference values alone do not exclude a candidate. '
+        page += 'Attachment selectivity, redox retention and yield still need review. <a href="selection_assessment.json">Selection assessment</a></p>'
     page += '<div class="plots"><a href="figures/deltaG_ranking.pdf"><img src="figures/deltaG_ranking.png" alt="Reference grafting free energies; pending until qualified"></a>'
     page += '<a href="figures/coverage.pdf"><img src="figures/coverage.png" alt="Qualified, pending and QC-held reaction counts"></a></div>'
     page += '<a href="figures/reaction_schemes.pdf"><img class="scheme" src="figures/reaction_schemes.png" alt="Three balanced attachment reaction schemes"></a>'

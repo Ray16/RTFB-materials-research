@@ -1,0 +1,36 @@
+{
+  "status": "failed_preserved",
+  "task": {
+    "key": "gp_f7d7e996507d",
+    "id": "gp_f7d7e996507d",
+    "state": "rest",
+    "role": "grafting_precursor",
+    "atoms": 29,
+    "manifest_row": {
+      "id": "gp_f7d7e996507d",
+      "name": "gp_f7d7e996507d",
+      "family": "grafting_component",
+      "state": "rest",
+      "charge": 0,
+      "mult_hint": 1,
+      "n_e": 0,
+      "n_conf": 1,
+      "solv_preopt": 0,
+      "smiles": "CN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)NC3=O"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_f7d7e996507d/conformers/conf_00.xyz": "f293a12d239af89048be81fb829a28b437102260db4bf21366cc19df63596584",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_f7d7e996507d/rest.xyz": "f293a12d239af89048be81fb829a28b437102260db4bf21366cc19df63596584"
+    },
+    "atom": false,
+    "preopt": "alpb"
+  },
+  "started": 1792461023.3672686,
+  "host": "lambda11",
+  "pid": 3900991,
+  "stage": "native_thermal",
+  "primary_candidate_promotion": false,
+  "error": "RuntimeError('Native Hessian symmetry/finite-value failure')",
+  "traceback": "Traceback (most recent call last):\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py\", line 224, in run_state\n    native.ensure_native_thermal(task['id'], task['state'], state_dir=sd, memory_cap_gib=24)\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py\", line 255, in ensure_native_thermal\n    if not np.isfinite(mat).all() or asym>1e-6:raise RuntimeError('Native Hessian symmetry/finite-value failure')\n                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Native Hessian symmetry/finite-value failure\n",
+  "finished": 1792461258.9133856
+}

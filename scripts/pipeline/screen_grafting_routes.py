@@ -27,9 +27,14 @@ def screen(row, evidence, assessment):
         return result
     reviewed = evidence.get(row['id'], {})
     result['evidence'] = reviewed
-    hold = assessment.get('candidates', {}).get(row['id'], {}).get('status') == 'on_hold'
+    decision = assessment.get('candidates', {}).get(row['id'], {})
+    hold = decision.get('status') == 'on_hold'
     if hold:
         result['reasons'].append('Synthesis selection on hold; realistic base-assisted route unresolved')
+    elif decision.get('status') == 'base_required':
+        result['reasons'].append('Base required; retained for evaluation with favorable modeled base-assisted deltaG')
+    elif decision.get('status') == 'component_qc_pending':
+        result['reasons'].append('Grafting component QC pending; retained for evaluation')
     required = ('exact_precursor_access_reviewed', 'attachment_selectivity_reviewed',
                 'conditions_defined', 'balanced_route_reviewed', 'redox_core_retention_reviewed')
     missing = [key for key in required if reviewed.get(key) is not True]

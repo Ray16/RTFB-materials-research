@@ -1,0 +1,38 @@
+{
+  "status": "failed_preserved",
+  "task": {
+    "key": "gp_6d112f4ef27c",
+    "id": "gp_6d112f4ef27c",
+    "state": "rest",
+    "role": "grafting_precursor",
+    "atoms": 34,
+    "manifest_row": {
+      "id": "gp_6d112f4ef27c",
+      "name": "gp_6d112f4ef27c",
+      "family": "grafting_component",
+      "state": "rest",
+      "charge": 0,
+      "mult_hint": 1,
+      "n_e": 0,
+      "n_conf": 3,
+      "solv_preopt": 0,
+      "smiles": "CC1=C(CCCO)C(=O)c2ccc(C)cc2C1=O"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_6d112f4ef27c/conformers/conf_00.xyz": "f588613a12a157761880bcf3229bd33e372b03a3ba832d9e482a14af98c22c1a",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_6d112f4ef27c/conformers/conf_01.xyz": "73d3172bca69e2ed5614ae895f284e843805d13caf7369b457c35fd55f550573",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_6d112f4ef27c/conformers/conf_02.xyz": "50f4d09874d76f295e697ba4b45458f27585d0b8fb30956660b3afe3aadc454b",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_6d112f4ef27c/rest.xyz": "f588613a12a157761880bcf3229bd33e372b03a3ba832d9e482a14af98c22c1a"
+    },
+    "atom": false,
+    "preopt": "alpb"
+  },
+  "started": 1792461573.562465,
+  "host": "lambda13",
+  "pid": 1340517,
+  "stage": "native_thermal",
+  "primary_candidate_promotion": false,
+  "error": "RuntimeError('Source DFT geometry is not a minimum of its own solution surface')",
+  "traceback": "Traceback (most recent call last):\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py\", line 224, in run_state\n    native.ensure_native_thermal(task['id'], task['state'], state_dir=sd, memory_cap_gib=24)\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py\", line 274, in ensure_native_thermal\n    if min(frequencies)<-5:raise RuntimeError('Source DFT geometry is not a minimum of its own solution surface')\n                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Source DFT geometry is not a minimum of its own solution surface\n",
+  "finished": 1792462127.4783714
+}

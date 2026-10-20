@@ -1,41 +1,126 @@
 {
-  "schema": 1,
-  "updated_unix": 1792461858.820868,
-  "criterion": "A synthesis shortlist requires a credible attachment route as well as suitable redox properties. Exclude routes that remain strongly unfavorable under defined experimental conditions.",
-  "reference_reaction_scope": "NH/OH model produces HCl without a base; this is not yet the experimental base-assisted reaction.",
+  "schema": 2,
+  "updated_unix": 1792529923.3617315,
+  "criterion": "Retain candidates with favorable modeled base-assisted grafting. Positive HCl-reference deltaG alone does not exclude a candidate. Experimental synthesis selection additionally requires a credible precursor, selective attachment and redox-core retention.",
+  "reference_reaction_scope": "NH/OH reference produces neutral HCl. The completed DBU/DIPEA pilot separately models base consumption and separated ions or a chloride contact pair in MeCN at 298.15 K.",
   "other_candidates_status": "Attachment feasibility unassessed; a nonpositive reference deltaG does not confer automatic synthesis eligibility.",
   "candidates": {
     "exp_bq_oxy_methoxy": {
-      "status": "on_hold",
+      "status": "base_required",
       "eligible_for_synthesis_shortlist": false,
       "descriptor_results_retained": true,
-      "reason": "Positive HCl-reference grafting deltaG, or unresolved component QC; base-assisted route has not been evaluated.",
+      "reason": "DBU and DIPEA make the modeled reaction favorable. Include base explicitly; the positive HCl reference is not an exclusion criterion.",
       "deltaG_reference_kJ_mol_at_assessment": 57.63446054516755,
-      "reconsider_when": "Defined base/counterion grafting reaction is assessed with QC and uncertainty, or an exact, credible experimental attachment route is established."
+      "display_label": "Base required; retained for evaluation",
+      "candidate_pool_status": "retained",
+      "eligible_for_evaluation": true,
+      "exclude_on_HCl_reference": false,
+      "thermodynamic_status": "favorable_base_assisted_model",
+      "base_assisted_deltaG_kJ_mol": {
+        "dbu": {
+          "free_ions_kJ_mol": -45.142440881706186,
+          "contact_pair_kJ_mol": -49.9388236495108
+        },
+        "dipea": {
+          "free_ions_kJ_mol": -13.340974407114864,
+          "contact_pair_kJ_mol": -18.50804220854858
+        }
+      },
+      "remaining_route_checks": [
+        "Exact precursor access",
+        "Attachment selectivity and competing reactions",
+        "Redox-core retention",
+        "Experimental grafting yield and polymer accessibility"
+      ]
     },
     "exp_bq_oxy_trimethyl": {
-      "status": "on_hold",
+      "status": "base_required",
       "eligible_for_synthesis_shortlist": false,
       "descriptor_results_retained": true,
-      "reason": "Positive HCl-reference grafting deltaG, or unresolved component QC; base-assisted route has not been evaluated.",
+      "reason": "DBU and DIPEA make the modeled reaction favorable. Include base explicitly; the positive HCl reference is not an exclusion criterion.",
       "deltaG_reference_kJ_mol_at_assessment": 56.03066081132074,
-      "reconsider_when": "Defined base/counterion grafting reaction is assessed with QC and uncertainty, or an exact, credible experimental attachment route is established."
+      "display_label": "Base required; retained for evaluation",
+      "candidate_pool_status": "retained",
+      "eligible_for_evaluation": true,
+      "exclude_on_HCl_reference": false,
+      "thermodynamic_status": "favorable_base_assisted_model",
+      "base_assisted_deltaG_kJ_mol": {
+        "dbu": {
+          "free_ions_kJ_mol": -46.74624061555299,
+          "contact_pair_kJ_mol": -51.54262338335761
+        },
+        "dipea": {
+          "free_ions_kJ_mol": -14.94477414096167,
+          "contact_pair_kJ_mol": -20.111841942395387
+        }
+      },
+      "remaining_route_checks": [
+        "Exact precursor access",
+        "Attachment selectivity and competing reactions",
+        "Redox-core retention",
+        "Experimental grafting yield and polymer accessibility"
+      ]
     },
     "exp_aq_1oxy": {
-      "status": "on_hold",
+      "status": "base_required",
       "eligible_for_synthesis_shortlist": false,
       "descriptor_results_retained": true,
-      "reason": "Positive HCl-reference grafting deltaG, or unresolved component QC; base-assisted route has not been evaluated.",
+      "reason": "DBU and DIPEA make the modeled reaction favorable. Include base explicitly; the positive HCl reference is not an exclusion criterion.",
       "deltaG_reference_kJ_mol_at_assessment": 62.854579764785775,
-      "reconsider_when": "Defined base/counterion grafting reaction is assessed with QC and uncertainty, or an exact, credible experimental attachment route is established."
+      "display_label": "Base required; retained for evaluation",
+      "candidate_pool_status": "retained",
+      "eligible_for_evaluation": true,
+      "exclude_on_HCl_reference": false,
+      "thermodynamic_status": "favorable_base_assisted_model",
+      "base_assisted_deltaG_kJ_mol": {
+        "dbu": {
+          "free_ions_kJ_mol": -39.92232166208796,
+          "contact_pair_kJ_mol": -44.718704429892576
+        },
+        "dipea": {
+          "free_ions_kJ_mol": -8.120855187496637,
+          "contact_pair_kJ_mol": -13.287922988930355
+        }
+      },
+      "remaining_route_checks": [
+        "Exact precursor access",
+        "Attachment selectivity and competing reactions",
+        "Redox-core retention",
+        "Experimental grafting yield and polymer accessibility"
+      ]
     },
     "exp_aq_2oxy_6methoxy": {
-      "status": "on_hold",
+      "status": "component_qc_pending",
       "eligible_for_synthesis_shortlist": false,
       "descriptor_results_retained": true,
-      "reason": "Positive HCl-reference grafting deltaG, or unresolved component QC; base-assisted route has not been evaluated.",
+      "reason": "A precursor component failed QC; no qualified base-assisted deltaG is available. This is unresolved, not evidence of an unfavorable reaction.",
       "deltaG_reference_kJ_mol_at_assessment": null,
-      "reconsider_when": "Defined base/counterion grafting reaction is assessed with QC and uncertainty, or an exact, credible experimental attachment route is established."
+      "display_label": "Grafting component QC pending; retained for evaluation",
+      "candidate_pool_status": "retained",
+      "eligible_for_evaluation": true,
+      "exclude_on_HCl_reference": false,
+      "thermodynamic_status": "unresolved_component_QC",
+      "base_assisted_deltaG_kJ_mol": {
+        "dbu": {
+          "free_ions_kJ_mol": null,
+          "contact_pair_kJ_mol": null
+        },
+        "dipea": {
+          "free_ions_kJ_mol": null,
+          "contact_pair_kJ_mol": null
+        }
+      },
+      "remaining_route_checks": [
+        "Exact precursor access",
+        "Attachment selectivity and competing reactions",
+        "Redox-core retention",
+        "Experimental grafting yield and polymer accessibility"
+      ]
     }
-  }
+  },
+  "base_assisted_source": {
+    "path": "results/grafting/base_assisted/current.json",
+    "sha256": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20"
+  },
+  "selection_threshold": "No experimentally validated numerical cutoff. Negative modeled deltaG supports evaluation; it does not establish rate, yield or selectivity."
 }

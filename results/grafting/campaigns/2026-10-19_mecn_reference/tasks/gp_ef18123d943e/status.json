@@ -1,0 +1,38 @@
+{
+  "status": "failed_preserved",
+  "task": {
+    "key": "gp_ef18123d943e",
+    "id": "gp_ef18123d943e",
+    "state": "rest",
+    "role": "grafting_precursor",
+    "atoms": 29,
+    "manifest_row": {
+      "id": "gp_ef18123d943e",
+      "name": "gp_ef18123d943e",
+      "family": "grafting_component",
+      "state": "rest",
+      "charge": 0,
+      "mult_hint": 1,
+      "n_e": 0,
+      "n_conf": 3,
+      "solv_preopt": 0,
+      "smiles": "COc1ccc2c(c1)C(=O)c1ccc(O)cc1C2=O"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_ef18123d943e/conformers/conf_00.xyz": "30e138919ddb112a0b140d2a9ab7822331a664f44ea10b423ccbcea0eab19568",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_ef18123d943e/conformers/conf_01.xyz": "1dac8e58a609deedf0251b49401feb2950051f5cade65eb1b38daf3e300ef20d",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_ef18123d943e/conformers/conf_02.xyz": "fc2a9da5cd5eefd46467b89ec1119dcb645bf1a5a658f9c1d93e376f99af11ee",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_ef18123d943e/rest.xyz": "30e138919ddb112a0b140d2a9ab7822331a664f44ea10b423ccbcea0eab19568"
+    },
+    "atom": false,
+    "preopt": "alpb"
+  },
+  "started": 1792460898.8375306,
+  "host": "lambda13",
+  "pid": 1340371,
+  "stage": "native_thermal",
+  "primary_candidate_promotion": false,
+  "error": "RuntimeError('Native Hessian symmetry/finite-value failure')",
+  "traceback": "Traceback (most recent call last):\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py\", line 224, in run_state\n    native.ensure_native_thermal(task['id'], task['state'], state_dir=sd, memory_cap_gib=24)\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py\", line 255, in ensure_native_thermal\n    if not np.isfinite(mat).all() or asym>1e-6:raise RuntimeError('Native Hessian symmetry/finite-value failure')\n                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: Native Hessian symmetry/finite-value failure\n",
+  "finished": 1792461197.4709282
+}

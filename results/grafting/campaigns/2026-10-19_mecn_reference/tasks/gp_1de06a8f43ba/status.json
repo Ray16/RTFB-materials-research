@@ -1,0 +1,61 @@
+{
+  "status": "state_records_verified",
+  "task": {
+    "key": "gp_1de06a8f43ba",
+    "id": "gp_1de06a8f43ba",
+    "state": "rest",
+    "role": "grafting_precursor",
+    "atoms": 39,
+    "manifest_row": {
+      "id": "gp_1de06a8f43ba",
+      "name": "gp_1de06a8f43ba",
+      "family": "grafting_component",
+      "state": "rest",
+      "charge": 0,
+      "mult_hint": 1,
+      "n_e": 0,
+      "n_conf": 3,
+      "solv_preopt": 0,
+      "smiles": "CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CCO)C3=O"
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_1de06a8f43ba/conformers/conf_00.xyz": "5b11e182b201413a2dca80b146ff3b5c606a3e5d83e8c4794fbc62b6a141fda3",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_1de06a8f43ba/conformers/conf_01.xyz": "89a7565c1a36131cec40a0673d811b0321e6388e3b9c96215d1c32a58509a725",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_1de06a8f43ba/conformers/conf_02.xyz": "57648cfa81199eb5e53709bcf17244a9a74976c1ef477292e719722305e16b39",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/library/gp_1de06a8f43ba/rest.xyz": "5b11e182b201413a2dca80b146ff3b5c606a3e5d83e8c4794fbc62b6a141fda3"
+    },
+    "atom": false,
+    "preopt": "alpb"
+  },
+  "started": 1792462267.7391288,
+  "host": "lambda13",
+  "pid": 1340351,
+  "stage": "native_thermal",
+  "primary_candidate_promotion": false,
+  "G_eV": -32107.71071443198,
+  "readiness": [
+    {
+      "id": "gp_1de06a8f43ba",
+      "state": "rest",
+      "charge": 0,
+      "status": "ready",
+      "issues": ""
+    }
+  ],
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_1de06a8f43ba/rest",
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/native_thermal/36df30037e3f6e2f/hessian_cartesian.npy": "85bce5c05d08774354763bcbbe5c5aaa835f73891040ff3bad480d73894f01a2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/native_thermal/36df30037e3f6e2f/hessian_diagnostics.json": "894283e86f061d30f5b827fa9b1c9d511570900023122b114fbff62c04289187",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/native_thermal/36df30037e3f6e2f/mol.xyz": "b72ec698bda9ed226493153f761bfa2e7bb04f3415946e56bb448c741059ce3a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/native_thermal/36df30037e3f6e2f.json": "7f4b24d786975ce0b1e29d0500563b1071524cfbf224ef52d0d217254027e5c0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/opt.xyz": "b72ec698bda9ed226493153f761bfa2e7bb04f3415946e56bb448c741059ce3a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/projected_thermal/aafa6025d31a6206/mol.xyz": "b72ec698bda9ed226493153f761bfa2e7bb04f3415946e56bb448c741059ce3a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/projected_thermal/aafa6025d31a6206/owner.json": "43b86568392e0bbc36c4f095fbcb3f78f2de5bb6e4f39a77d95d3144703ddc0b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/projected_thermal/aafa6025d31a6206/projected_hessian.npy": "a6424200decbb518f483b6fa131baf590b1855f46cc6befa8b236511ae34eafd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/projected_thermal/aafa6025d31a6206.json": "11e269448c8c8f56e43099327451d46655faf4d6db60010a1e1a649e6643fa31",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/result.json": "922a443ea2ec59e69e55b7eb5196a7e6715daa94fba2db5079a9b4abfd298f10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/sp/ed0aac0a9ef753e6.json": "6e69347ff57632be9206ea86901ae4d2507711d18017933203b075a1b1553687",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/gp_1de06a8f43ba/rest/thermal_policy.json": "aa08c9b1c9c841db713f0eb4de11736193bcc3a13cc377f451adefac015f28d7"
+  },
+  "finished": 1792462885.471283
+}

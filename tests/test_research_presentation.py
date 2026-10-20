@@ -49,3 +49,17 @@ def test_a_new_leader_cannot_inherit_a_quinone_or_topology_claim(talk):
     assert 'The two BQ models reach' not in result
     assert 'Substituted BQ models lead' not in result
     assert 'NDI core topology provides' not in result
+
+
+def test_completed_base_route_replaces_stale_bq_hold(talk):
+    module,root,payload=talk
+    folder=root/'results/grafting';folder.mkdir(parents=True)
+    decisions={key:dict(status='base_required',thermodynamic_status='favorable_base_assisted_model',
+                       base_assisted_deltaG_kJ_mol={'dbu':{'free_ions_kJ_mol':value}})
+               for key,value in [('exp_bq_oxy_methoxy',-45.1),('exp_bq_oxy_trimethyl',-46.7)]}
+    (folder/'selection_assessment.json').write_text(json.dumps({'candidates':decisions}))
+    result=module.research_frames(payload,root)
+    assert 'Base required; BQ candidates retained for evaluation.' in result
+    assert '-45.1/-46.7' in result
+    assert 'selectivity and yield untested' in result
+    assert 'on hold' not in result.lower().replace('unknown routes stay on hold','')
