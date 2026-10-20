@@ -1,0 +1,335 @@
+{
+  "host": "lambda13",
+  "status": "submitted_actual_start_verification_pending",
+  "created": 1792460209.0268576,
+  "resources": {
+    "online_cpus": 384,
+    "load_1m": 3.11865234375,
+    "available_RAM_bytes": 1597375254528,
+    "minimum_RAM_GiB": 256
+  },
+  "plan": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/plan.json",
+  "plan_sha256": "2225922caa2bb12f01c7d105064eb5604e8251d4977c9c09228a918d8da9e084",
+  "workers": [
+    {
+      "gpu": 0,
+      "device": {
+        "index": 0,
+        "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        0,
+        1
+      ],
+      "gate_pid": 1338810,
+      "process_start": "57754846",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "0",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu0",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu0.log",
+      "submitted": 1792460209.0513139
+    },
+    {
+      "gpu": 1,
+      "device": {
+        "index": 1,
+        "uuid": "GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        2,
+        3
+      ],
+      "gate_pid": 1338912,
+      "process_start": "57754897",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "2,3",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "1",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu1",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu1.log",
+      "submitted": 1792460209.563543
+    },
+    {
+      "gpu": 2,
+      "device": {
+        "index": 2,
+        "uuid": "GPU-5d07badb-4052-7045-bdc1-c0476709589b",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        4,
+        5
+      ],
+      "gate_pid": 1338933,
+      "process_start": "57754949",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "4,5",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "2",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu2",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu2.log",
+      "submitted": 1792460210.0771937
+    },
+    {
+      "gpu": 3,
+      "device": {
+        "index": 3,
+        "uuid": "GPU-31e42837-2afb-0b14-c287-66eabb51d40e",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        6,
+        7
+      ],
+      "gate_pid": 1338952,
+      "process_start": "57755000",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "6,7",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "3",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu3",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu3.log",
+      "submitted": 1792460210.5909822
+    },
+    {
+      "gpu": 4,
+      "device": {
+        "index": 4,
+        "uuid": "GPU-7313cbc9-b64b-7359-3d2e-e9e6c1b6ef52",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        8,
+        9
+      ],
+      "gate_pid": 1338971,
+      "process_start": "57755052",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "8,9",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "4",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu4",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu4.log",
+      "submitted": 1792460211.1043167
+    },
+    {
+      "gpu": 5,
+      "device": {
+        "index": 5,
+        "uuid": "GPU-7b939bee-465f-2aad-2acd-8cec35064a53",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        10,
+        11
+      ],
+      "gate_pid": 1338997,
+      "process_start": "57755105",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "10,11",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "5",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu5",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu5.log",
+      "submitted": 1792460211.6421242
+    },
+    {
+      "gpu": 6,
+      "device": {
+        "index": 6,
+        "uuid": "GPU-8defa300-1c9b-2d37-01ea-122e6fda2a88",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        12,
+        13
+      ],
+      "gate_pid": 1339018,
+      "process_start": "57755157",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "12,13",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "6",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu6",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu6.log",
+      "submitted": 1792460212.156675
+    },
+    {
+      "gpu": 7,
+      "device": {
+        "index": 7,
+        "uuid": "GPU-93801177-43f6-555f-d319-913daa719ad4",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        14,
+        15
+      ],
+      "gate_pid": 1339039,
+      "process_start": "57755208",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "14,15",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "7",
+        "--label",
+        "redox-grafting",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/reserved_lambda13_gpu7",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/grafting_campaign.py",
+        "worker"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/controller_lambda13_gpu7.log",
+      "submitted": 1792460212.6713731
+    }
+  ]
+}

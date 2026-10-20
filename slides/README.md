@@ -9,6 +9,11 @@ workflow, method, key candidate results and synthesis implications. Detailed
 methods, validation tables, supplementary molecular drawings and historical
 comparisons follow the **Backup** divider.
 
+The initial grafting-reference checkpoint is in Backup, immediately after the
+divider. Its dated values and plot are frozen with the submission review; the
+[grafting visual report](../results/grafting/index.html) continues updating as
+the finite calculation queue finishes.
+
 The main story is generated from the same audited snapshot as the comparison
 figures. Numerical findings update with that feed; polymer properties remain distinct from local molecular predictions. Earlier
 vinyl-monomer work is preserved as a superseded route exploration.

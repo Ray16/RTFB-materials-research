@@ -5,7 +5,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 
 | Result | Main entry | Current data |
 | --- | --- | --- |
-| Grafting free energies for all 75 candidates | [Grafting](grafting/README.md) | [Current table](grafting/current.csv) · [Status](grafting/status.json) |
+| Grafting free energies for all 75 candidates | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |
 | Polymer-fragment and interaction models | [Polymer models](polymer_models/README.md) | [Model inventory](polymer_models/current.csv) · [Status](polymer_models/status.json) |
 | Candidate redox properties and comparisons | [Candidates](candidates/README.md) | [Workbook](candidates/latest.xlsx) · [All candidates](candidates/figures/data/all_candidates.csv) |
 | Maintained figures and molecular structures | [Figure guide](candidates/figures/README.md) | [Comparison browser](candidates/figures/index.html) |
@@ -33,7 +33,7 @@ Paths below are relative to the project root,
 | Experimental benchmark sources and conditions | [data/raw/validation/two_wave_mecn/README.md](../data/raw/validation/two_wave_mecn/README.md) |
 | Scoped validation campaigns and their records | [results/validation/](validation/README.md) |
 | Immutable table exports, checks and publication evidence | `results/reviews/`; follow [LATEST_REVIEW.json](LATEST_REVIEW.json) to the relevant scope |
-| Grafting components and reaction identities | [results/grafting/species.json](grafting/species.json) · [reactions.json](grafting/reactions.json); calculation campaign is not yet submitted |
+| Grafting components and reaction identities | [results/grafting/species.json](grafting/species.json) · [reactions.json](grafting/reactions.json); [submitted campaign](grafting/campaigns/2026-10-19_mecn_reference/plan.json) with raw root `calcs/grafting/2026-10-19_mecn_reference/` |
 | Oligomer graphs, occupancy and stereochemistry | [results/polymer_models/current.csv](polymer_models/current.csv); quantum calculations are pending |
 
 The category status files own completion counts. A prepared structure is not a

@@ -265,14 +265,21 @@
       "current_candidate_coverage": "results/candidates/current.json"
     },
     "slides": {
-      "status": "checked_postgrafting_research_visualizations",
+      "status": "checked_grafting_backup_checkpoint",
       "path": "slides/redox_workflow.pdf",
-      "publisher": "results/reviews/2026-10-19/postgrafting_visualizations/slides/status.json",
+      "publisher": "results/reviews/2026-10-19/grafting_submission/slide_checks.json",
       "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_182930_930801",
-      "pdf_sha256": "1d5333d2e61902b1b4f545deea8db9072191902d104e1d139dc231a0b6d367b5",
-      "pages": 67,
+      "pdf_sha256": "883f92485ea64ec500bdbe3807974033d8ea1ed1a6daeb7e83c00a9f5f1d682f",
+      "pages": 69,
       "main_research_slides": 13,
-      "backup_slides": 54
+      "backup_slides": 56,
+      "grafting_checkpoint": "results/reviews/2026-10-19/grafting_submission/slide_checks.json",
+      "grafting_pages": [
+        15,
+        16
+      ],
+      "grafting_reference_reactions_at_checkpoint": 10,
+      "historical_candidate_publisher": "results/reviews/2026-10-19/postgrafting_visualizations/slides/status.json"
     },
     "raw_candidate_refresh": "results/reviews/2026-10-19/post_parent_registration_candidates/coverage_summary.json",
     "next_candidate_batch": {
@@ -339,6 +346,15 @@
       "native_plan": "results/validation/hexyl_conformer_search_2026-10-19/native_seed_plan.json",
       "canonical_outputs_modified": false,
       "energy_ordering_and_conformer_scope_pending": true
+    },
+    "grafting_reference": {
+      "guide": "results/grafting/README.md",
+      "browser": "results/grafting/index.html",
+      "status": "results/grafting/status.json",
+      "plan": "results/grafting/campaigns/2026-10-19_mecn_reference/plan.json",
+      "actual_starts": "results/grafting/campaigns/2026-10-19_mecn_reference/start_verification.json",
+      "first_results_review": "results/reviews/2026-10-19/grafting_submission/first_result_audit.json",
+      "scope": "Capped-site reference \u0394G; base contribution, kinetics and exact-polymer validation separate"
     }
   },
   "scientific_validation_complete": false,
