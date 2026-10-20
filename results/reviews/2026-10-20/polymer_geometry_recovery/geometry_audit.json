@@ -1,0 +1,2120 @@
+{
+  "scope": "Composition, connectivity, stereochemistry, bond lengths, severe clashes and core contacts; not a Hessian or rate validation",
+  "solvent": "SMD acetonitrile (DFT); ALPB acetonitrile (xTB seeds)",
+  "geometric_screen_heuristics": {
+    "covalent_bond_radius_ratio": [
+      0.65,
+      1.35
+    ],
+    "severe_nonbonded_vdw_ratio_below": 0.55,
+    "exclude_graph_distances_at_most": 2
+  },
+  "starting_geometries": 27,
+  "completed_DFT_geometries": 17,
+  "flagged": [],
+  "failed_optimizer_final_coordinates": "Not preserved by the original driver; temporary directories verified absent. Checked original seeds are available for bounded reruns.",
+  "results": [
+    {
+      "key": "exp_phthalimide_control__n1__stereo0__monomer",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n1__stereo0__monomer/input.xyz",
+      "xyz_sha256": "7335b42035775cedef1f618a26bd4b2328d74ffa214fd5a1d022da90c42079b1",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 1,
+      "atoms": 35,
+      "bond_length_range_A": [
+        1.0787126925590675,
+        1.531201498673417
+      ],
+      "covalent_bond_ratio_range": [
+        0.8515599792064362,
+        1.021248818785627
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n1__stereo0__monomer",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n1__stereo0__monomer/rest/opt.xyz",
+      "xyz_sha256": "1d7b1a6bd73032268c6a01c21769581a7bbce7425bb0bcafb7a2d5931a1306ad",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 1,
+      "atoms": 35,
+      "bond_length_range_A": [
+        1.0936943097320335,
+        1.5310455505280876
+      ],
+      "covalent_bond_ratio_range": [
+        0.8552299893156384,
+        1.031158850692951
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__segments__parallel__parallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__segments__parallel__parallel/input.xyz",
+      "xyz_sha256": "96d9bf647cf938445f7c951977d19f6af9f592f797264dc232a3978d1526323c",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 70,
+      "bond_length_range_A": [
+        1.078506137528764,
+        1.53101510398438
+      ],
+      "covalent_bond_ratio_range": [
+        0.8509615077498235,
+        1.0231470022576408
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.33907485594161,
+          "interplane_angle_deg": 8.097122847770104,
+          "plane_separation_A": 3.0837379173343025,
+          "lateral_offset_A": 3.05256139375761,
+          "nearest_core_atom_A": 3.179802850117334,
+          "core_planarity_rms_A": [
+            0.009786217308679665,
+            0.01643976777187219
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__segments__parallel__parallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__segments__parallel__parallel/rest/opt.xyz",
+      "xyz_sha256": "994822cd8a42547649e36a4092f7a07a0d387179e01a68e09084cc85b0830ab4",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 70,
+      "bond_length_range_A": [
+        1.0936268020320414,
+        1.5314807621731674
+      ],
+      "covalent_bond_ratio_range": [
+        0.8546329525293158,
+        1.0321985238473692
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.806628897642374,
+          "interplane_angle_deg": 2.8719913845389686,
+          "plane_separation_A": 3.3783455772373197,
+          "lateral_offset_A": 1.7541963188671437,
+          "nearest_core_atom_A": 3.375139200259736,
+          "core_planarity_rms_A": [
+            0.004784207251803831,
+            0.010390427559866936
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__segments__antiparallel__antiparallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__segments__antiparallel__antiparallel/input.xyz",
+      "xyz_sha256": "e4ae08e80133d78df795ea761de1c4bb14ff94ef033d43377d1e36f0ef300054",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 70,
+      "bond_length_range_A": [
+        1.0783883171502777,
+        1.5311307334785416
+      ],
+      "covalent_bond_ratio_range": [
+        0.8507282343993605,
+        1.0214274527574694
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.2893530905384507,
+          "interplane_angle_deg": 2.731959499109782,
+          "plane_separation_A": 3.2632555676187627,
+          "lateral_offset_A": 0.4135297506105255,
+          "nearest_core_atom_A": 3.2122344230411017,
+          "core_planarity_rms_A": [
+            0.00287015037800621,
+            0.016806662872554983
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__segments__antiparallel__antiparallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__segments__antiparallel__antiparallel/rest/opt.xyz",
+      "xyz_sha256": "d659eefd8ff6ccbfaf1c2a61cd501204d0207d81513255ed557ae298ab08f14f",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 70,
+      "bond_length_range_A": [
+        1.092952235348477,
+        1.531034570820015
+      ],
+      "covalent_bond_ratio_range": [
+        0.8553323825660122,
+        1.0312091619702588
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.437507703224175,
+          "interplane_angle_deg": 4.121332355052521,
+          "plane_separation_A": 3.412299109911796,
+          "lateral_offset_A": 0.415540604779732,
+          "nearest_core_atom_A": 3.292474253087036,
+          "core_planarity_rms_A": [
+            0.007354198863880042,
+            0.008351608775775286
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n2__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n2__stereo0__open/input.xyz",
+      "xyz_sha256": "d5a4c8b2aae277a2f82f81799cd84657a86116f46eb721dd9df2a94f6fe36b81",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 68,
+      "bond_length_range_A": [
+        1.0788050609455164,
+        1.5427923701721213
+      ],
+      "covalent_bond_ratio_range": [
+        0.8512711870010395,
+        1.0240502213427187
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 5.891988901564421,
+          "interplane_angle_deg": 83.9113324869896,
+          "plane_separation_A": 2.430345862791088,
+          "lateral_offset_A": 5.3673971534974525,
+          "nearest_core_atom_A": 3.678249238606464,
+          "core_planarity_rms_A": [
+            0.0021078576631935225,
+            0.005575213328202516
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n2__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n2__stereo0__open/rest/opt.xyz",
+      "xyz_sha256": "e522664308eace863e802d20d923ea736f3752d751f94252824c4140dc38e2fd",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 68,
+      "bond_length_range_A": [
+        1.09280382559213,
+        1.5420658910178642
+      ],
+      "covalent_bond_ratio_range": [
+        0.8544631590622656,
+        1.0336711623096106
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.134475206573094,
+          "interplane_angle_deg": 14.124943490094525,
+          "plane_separation_A": 3.382434632813947,
+          "lateral_offset_A": 2.3776082916469665,
+          "nearest_core_atom_A": 3.2261419743674318,
+          "core_planarity_rms_A": [
+            0.011672886124870161,
+            0.00906575176073492
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n2__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n2__stereo0__stacked/input.xyz",
+      "xyz_sha256": "b084b931f0d4e35efb178a0de882fb49326370832b4295a563e41a45369e64ed",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 68,
+      "bond_length_range_A": [
+        1.0785977055449851,
+        1.5382619628313672
+      ],
+      "covalent_bond_ratio_range": [
+        0.8513632950461058,
+        1.0249058826667516
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.209797135359184,
+          "interplane_angle_deg": 16.9874537005819,
+          "plane_separation_A": 3.273623585798854,
+          "lateral_offset_A": 2.646843504890277,
+          "nearest_core_atom_A": 3.1534511439790904,
+          "core_planarity_rms_A": [
+            0.008231962946716487,
+            0.002695842329483969
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n2__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n2__stereo0__stacked/rest/opt.xyz",
+      "xyz_sha256": "b068a94ef39947e057239e86c0a5fcd105aabd148161bde4dee76bf4b5097a45",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 68,
+      "bond_length_range_A": [
+        1.0932689462577019,
+        1.54390929702775
+      ],
+      "covalent_bond_ratio_range": [
+        0.854517986672826,
+        1.0335865048485335
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.133657061122759,
+          "interplane_angle_deg": 14.739658045875967,
+          "plane_separation_A": 3.3785803821257314,
+          "lateral_offset_A": 2.3816622977418924,
+          "nearest_core_atom_A": 3.216478083561739,
+          "core_planarity_rms_A": [
+            0.009240822931250687,
+            0.011676977348804969
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n3__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n3__stereo0__open/input.xyz",
+      "xyz_sha256": "a1f6770f01c5cf0f29218db4552446229ddbb1a588e6da672caa03626377d3f6",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 101,
+      "bond_length_range_A": [
+        1.0782283349584099,
+        1.5383064345353368
+      ],
+      "covalent_bond_ratio_range": [
+        0.8507229606432539,
+        1.024669731641471
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.895065672790242,
+          "interplane_angle_deg": 20.70775282884932,
+          "plane_separation_A": 3.317243602076829,
+          "lateral_offset_A": 3.5996614876137634,
+          "nearest_core_atom_A": 3.4432154781484305,
+          "core_planarity_rms_A": [
+            0.009791734221556506,
+            0.003694303630975849
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 10.0550439627174,
+          "interplane_angle_deg": 45.03630668481442,
+          "plane_separation_A": 5.841102026256714,
+          "lateral_offset_A": 8.18446309852023,
+          "nearest_core_atom_A": 7.341349979848595,
+          "core_planarity_rms_A": [
+            0.009791734221556506,
+            0.0016803226501652792
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 5.8117315558818055,
+          "interplane_angle_deg": 48.156662798479076,
+          "plane_separation_A": 3.5416418389194657,
+          "lateral_offset_A": 4.607927599523185,
+          "nearest_core_atom_A": 4.0123877733267435,
+          "core_planarity_rms_A": [
+            0.003694303630975849,
+            0.0016803226501652792
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n3__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n3__stereo0__open/rest/opt.xyz",
+      "xyz_sha256": "71820bee6ee63cd64169c57e65dabebf6c875215e3e01a5d166027f9ff080f56",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 101,
+      "bond_length_range_A": [
+        1.0934002131755864,
+        1.542818324208001
+      ],
+      "covalent_bond_ratio_range": [
+        0.8550356292813057,
+        1.0338203734738063
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 5.310679991525417,
+          "interplane_angle_deg": 23.281863621672624,
+          "plane_separation_A": 3.5560789623190425,
+          "lateral_offset_A": 3.9443154521590085,
+          "nearest_core_atom_A": 3.6276774455718637,
+          "core_planarity_rms_A": [
+            0.01657904022840774,
+            0.02097717951986844
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 10.873695364083481,
+          "interplane_angle_deg": 42.06186033942249,
+          "plane_separation_A": 6.698610262150671,
+          "lateral_offset_A": 8.56538799043571,
+          "nearest_core_atom_A": 8.049000965728927,
+          "core_planarity_rms_A": [
+            0.01657904022840774,
+            0.0017865189951822603
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 6.089873530781501,
+          "interplane_angle_deg": 33.80477857436408,
+          "plane_separation_A": 3.8805378594268296,
+          "lateral_offset_A": 4.6933980805455,
+          "nearest_core_atom_A": 4.017498816632181,
+          "core_planarity_rms_A": [
+            0.02097717951986844,
+            0.0017865189951822603
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n3__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n3__stereo0__stacked/input.xyz",
+      "xyz_sha256": "c3b46b2d22bd1ba80d684301c7f763a77ed656374b4ca5a7e36e2b3763f0ed14",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 101,
+      "bond_length_range_A": [
+        1.0783612603420483,
+        1.5392072326458506
+      ],
+      "covalent_bond_ratio_range": [
+        0.8506142026312074,
+        1.0242943106804223
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.691829151215901,
+          "interplane_angle_deg": 17.380180566354227,
+          "plane_separation_A": 3.281119869745762,
+          "lateral_offset_A": 3.3537312332026366,
+          "nearest_core_atom_A": 3.3960948081997993,
+          "core_planarity_rms_A": [
+            0.011446674657116743,
+            0.009662410005649383
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 10.017758773195865,
+          "interplane_angle_deg": 52.73808026680388,
+          "plane_separation_A": 5.4968672035715915,
+          "lateral_offset_A": 8.37495921090018,
+          "nearest_core_atom_A": 7.638103669739363,
+          "core_planarity_rms_A": [
+            0.011446674657116743,
+            0.002530739168382446
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 5.58401002387345,
+          "interplane_angle_deg": 35.72683981417105,
+          "plane_separation_A": 3.065049281766446,
+          "lateral_offset_A": 4.667616184634525,
+          "nearest_core_atom_A": 3.687324617186085,
+          "core_planarity_rms_A": [
+            0.009662410005649383,
+            0.002530739168382446
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n3__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n3__stereo0__stacked/rest/opt.xyz",
+      "xyz_sha256": "fc3da81662577f4d5e2ef59531138a8772d4f5c616e5021d6401ca4b2b1e1017",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 101,
+      "bond_length_range_A": [
+        1.0931542058712043,
+        1.5450558343054426
+      ],
+      "covalent_bond_ratio_range": [
+        0.8544613147854099,
+        1.0340876013971119
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 5.333164555881906,
+          "interplane_angle_deg": 24.171561457804977,
+          "plane_separation_A": 3.601086972748498,
+          "lateral_offset_A": 3.933804366617143,
+          "nearest_core_atom_A": 3.6800681203856187,
+          "core_planarity_rms_A": [
+            0.021182126562127285,
+            0.014156119119829067
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 9.003354655281827,
+          "interplane_angle_deg": 38.91631579252581,
+          "plane_separation_A": 6.437923431939362,
+          "lateral_offset_A": 6.2939285770710045,
+          "nearest_core_atom_A": 7.392303947453474,
+          "core_planarity_rms_A": [
+            0.021182126562127285,
+            0.01164845870879775
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 4.165625539763902,
+          "interplane_angle_deg": 15.906841153525257,
+          "plane_separation_A": 3.402910164082156,
+          "lateral_offset_A": 2.402631589053897,
+          "nearest_core_atom_A": 3.260987913913909,
+          "core_planarity_rms_A": [
+            0.014156119119829067,
+            0.01164845870879775
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n3__stereo1__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n3__stereo1__open/input.xyz",
+      "xyz_sha256": "4d72432c15db7383ed16cd3a42165427729110ef030d382534ad2b35bc5a7d2d",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 101,
+      "bond_length_range_A": [
+        1.0773399470035414,
+        1.5439003858962876
+      ],
+      "covalent_bond_ratio_range": [
+        0.8511068011852938,
+        1.0270003619404284
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 5.100506161948099,
+          "interplane_angle_deg": 17.779880920251486,
+          "plane_separation_A": 3.1051321404275516,
+          "lateral_offset_A": 4.046395618146394,
+          "nearest_core_atom_A": 3.4139850170798387,
+          "core_planarity_rms_A": [
+            0.005895411508548125,
+            0.004959714181754052
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 10.309651085630843,
+          "interplane_angle_deg": 49.0146870807452,
+          "plane_separation_A": 5.375042347816216,
+          "lateral_offset_A": 8.79760338198032,
+          "nearest_core_atom_A": 8.017636339063742,
+          "core_planarity_rms_A": [
+            0.005895411508548125,
+            0.002377518202209645
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 5.447125658163711,
+          "interplane_angle_deg": 31.268765652297716,
+          "plane_separation_A": 3.2373332116131883,
+          "lateral_offset_A": 4.380736423572147,
+          "nearest_core_atom_A": 3.4761720138890624,
+          "core_planarity_rms_A": [
+            0.004959714181754052,
+            0.002377518202209645
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n3__stereo1__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n3__stereo1__stacked/input.xyz",
+      "xyz_sha256": "29c168eb05440c28e468a8229e115e562790f893e43742bffc8748c1a5c67b52",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 101,
+      "bond_length_range_A": [
+        1.0773346500400387,
+        1.5443245778123555
+      ],
+      "covalent_bond_ratio_range": [
+        0.8512066588878673,
+        1.0271605824257124
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.243281165441182,
+          "interplane_angle_deg": 14.124283101966757,
+          "plane_separation_A": 3.237528499862549,
+          "lateral_offset_A": 2.742962679579442,
+          "nearest_core_atom_A": 3.1507653489598235,
+          "core_planarity_rms_A": [
+            0.007958787753558462,
+            0.0044161540021511805
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 9.445867374518352,
+          "interplane_angle_deg": 52.64044277298744,
+          "plane_separation_A": 5.455153854888538,
+          "lateral_offset_A": 7.711401096849064,
+          "nearest_core_atom_A": 7.211666756657864,
+          "core_planarity_rms_A": [
+            0.007958787753558462,
+            0.004717045743147669
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 5.419797409910445,
+          "interplane_angle_deg": 38.55177928848071,
+          "plane_separation_A": 3.267164401567424,
+          "lateral_offset_A": 4.324331247441915,
+          "nearest_core_atom_A": 3.5051981975695248,
+          "core_planarity_rms_A": [
+            0.0044161540021511805,
+            0.004717045743147669
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "exp_phthalimide_control__n3__stereo1__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n3__stereo1__stacked/rest/opt.xyz",
+      "xyz_sha256": "2c8fc8e6285201f922ffd13d38a71ce0040f1274b0456e0438a3a43ce660716b",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 101,
+      "bond_length_range_A": [
+        1.0923837960499687,
+        1.5507785555030886
+      ],
+      "covalent_bond_ratio_range": [
+        0.8541845812218702,
+        1.0341370869956799
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.268576230886476,
+          "interplane_angle_deg": 17.6270913142906,
+          "plane_separation_A": 3.400452249281378,
+          "lateral_offset_A": 2.580245635447565,
+          "nearest_core_atom_A": 3.254748706808523,
+          "core_planarity_rms_A": [
+            0.012241426822588015,
+            0.005138982024350789
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 9.4023884525677,
+          "interplane_angle_deg": 50.492301257493345,
+          "plane_separation_A": 6.029345902290326,
+          "lateral_offset_A": 7.2147000355879864,
+          "nearest_core_atom_A": 7.450572035151113,
+          "core_planarity_rms_A": [
+            0.012241426822588015,
+            0.004940724651060377
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 5.310438935621486,
+          "interplane_angle_deg": 32.8689528048484,
+          "plane_separation_A": 3.3869214683873388,
+          "lateral_offset_A": 4.090174159610029,
+          "nearest_core_atom_A": 3.6116843163690966,
+          "core_planarity_rms_A": [
+            0.005138982024350789,
+            0.004940724651060377
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n1__stereo0__monomer",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n1__stereo0__monomer/input.xyz",
+      "xyz_sha256": "55911f4d2cd64179bbf1ea9abfea557bbff20a67e54453664cda97e1f75cfd59",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 1,
+      "atoms": 45,
+      "bond_length_range_A": [
+        1.07814076892157,
+        1.531241553764085
+      ],
+      "covalent_bond_ratio_range": [
+        0.8489749949189609,
+        1.0208549502812303
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n1__stereo0__monomer",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n1__stereo0__monomer/rest/opt.xyz",
+      "xyz_sha256": "66ad2755530da33162bafbd3c98dc480612f4b9f5fcf30391e640625226d4421",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 1,
+      "atoms": 45,
+      "bond_length_range_A": [
+        1.093398744166471,
+        1.5310934079406044
+      ],
+      "covalent_bond_ratio_range": [
+        0.8541771343949947,
+        1.031112039483481
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__segments__parallel__parallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__segments__parallel__parallel/input.xyz",
+      "xyz_sha256": "3099599e751a7f192e9f68226b6b8470ac0ebc61641ab5e9bc96911f034fff0a",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 90,
+      "bond_length_range_A": [
+        1.0778967817970238,
+        1.5312089461748069
+      ],
+      "covalent_bond_ratio_range": [
+        0.8477931180597678,
+        1.0222538380142852
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.7028484168926825,
+          "interplane_angle_deg": 19.16916404057701,
+          "plane_separation_A": 2.933888724761559,
+          "lateral_offset_A": 3.6754700628609402,
+          "nearest_core_atom_A": 3.1327747118681306,
+          "core_planarity_rms_A": [
+            0.013453538926199311,
+            0.018970136832562205
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__segments__antiparallel__antiparallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__segments__antiparallel__antiparallel/input.xyz",
+      "xyz_sha256": "35eafd821ea1d5096f79cddb06ae559327a6ca22620f1ef6c86129e8f9f3863d",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 90,
+      "bond_length_range_A": [
+        1.0780603043054677,
+        1.5312616788741047
+      ],
+      "covalent_bond_ratio_range": [
+        0.8477756290469437,
+        1.0231732377704426
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.588198930162354,
+          "interplane_angle_deg": 15.821937453361743,
+          "plane_separation_A": 2.93361300763548,
+          "lateral_offset_A": 3.5278157752602213,
+          "nearest_core_atom_A": 3.069011535858339,
+          "core_planarity_rms_A": [
+            0.01087407820876172,
+            0.011980700825653447
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__segments__antiparallel__antiparallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__segments__antiparallel__antiparallel/rest/opt.xyz",
+      "xyz_sha256": "9034d0c6a28c4582e326b3acf037f18132db17633b078f40f9f30f880e96465c",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 90,
+      "bond_length_range_A": [
+        1.0929762868627597,
+        1.5311677266532733
+      ],
+      "covalent_bond_ratio_range": [
+        0.8533277327217463,
+        1.0313363535539044
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.586465039094101,
+          "interplane_angle_deg": 39.37636212242383,
+          "plane_separation_A": 3.321468290676453,
+          "lateral_offset_A": 3.1628325831228077,
+          "nearest_core_atom_A": 3.481894067985915,
+          "core_planarity_rms_A": [
+            0.01760311884061295,
+            0.012821549850696525
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n2__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n2__stereo0__open/input.xyz",
+      "xyz_sha256": "b156d3e743546d229b5864af9bc8fc2aa77052b1a450425ced060cb7846a296d",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 88,
+      "bond_length_range_A": [
+        1.0777285144088593,
+        1.5358494193736498
+      ],
+      "covalent_bond_ratio_range": [
+        0.8480319325745915,
+        1.0244019781374942
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.713011991911752,
+          "interplane_angle_deg": 6.497453897532595,
+          "plane_separation_A": 2.9076112948440738,
+          "lateral_offset_A": 3.709215360962362,
+          "nearest_core_atom_A": 3.2245115088557474,
+          "core_planarity_rms_A": [
+            0.01753564050492166,
+            0.04438902187322794
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n2__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n2__stereo0__open/rest/opt.xyz",
+      "xyz_sha256": "ca2603fe083cdb2a054a200c1beafb8924bda092168d6fad5fad35d7247d33ef",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 88,
+      "bond_length_range_A": [
+        1.0926973446415016,
+        1.5379869419937504
+      ],
+      "covalent_bond_ratio_range": [
+        0.8530069936749789,
+        1.033441194062037
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.903392618903042,
+          "interplane_angle_deg": 5.617229256263622,
+          "plane_separation_A": 3.2457015502586875,
+          "lateral_offset_A": 2.1683854325177294,
+          "nearest_core_atom_A": 3.210257163749917,
+          "core_planarity_rms_A": [
+            0.04703806661246859,
+            0.05688420506792601
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n2__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n2__stereo0__stacked/input.xyz",
+      "xyz_sha256": "1cdf572ec942ea7c796f2e9a57ffc380fed2c8fcd2ad94e3621a7ad70d3706f0",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 88,
+      "bond_length_range_A": [
+        1.0833058107175635,
+        1.5504452194522358
+      ],
+      "covalent_bond_ratio_range": [
+        0.855694810000911,
+        1.0269197760877502
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.398022009369497,
+          "interplane_angle_deg": 2.7560427103220495,
+          "plane_separation_A": 3.3710613093397837,
+          "lateral_offset_A": 2.8246315235037036,
+          "nearest_core_atom_A": 3.3384459745782644,
+          "core_planarity_rms_A": [
+            0.03174438658637226,
+            0.0699305338186989
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n2__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n2__stereo0__stacked/rest/opt.xyz",
+      "xyz_sha256": "f0628ee9112db1e0d1f1a0474ed0d23158f54057a0f397b73dc6ca82d7701dc9",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 88,
+      "bond_length_range_A": [
+        1.0928684188644016,
+        1.5385738163495233
+      ],
+      "covalent_bond_ratio_range": [
+        0.8530959341461234,
+        1.0334114386360487
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.956045212538176,
+          "interplane_angle_deg": 5.832221807857269,
+          "plane_separation_A": 3.255302866263376,
+          "lateral_offset_A": 2.247953952496285,
+          "nearest_core_atom_A": 3.224205248341576,
+          "core_planarity_rms_A": [
+            0.05041997348674595,
+            0.055460405123810085
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n3__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n3__stereo0__open/input.xyz",
+      "xyz_sha256": "a22ebbaad92e44ad5b29e465d6feae731a2f50a19374da079754fe4f2f749099",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 131,
+      "bond_length_range_A": [
+        1.077849099061234,
+        1.545538583107899
+      ],
+      "covalent_bond_ratio_range": [
+        0.8476870428250177,
+        1.0257847165379546
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 8.837727217422161,
+          "interplane_angle_deg": 68.48921514307423,
+          "plane_separation_A": 4.175644562837136,
+          "lateral_offset_A": 7.789057379067965,
+          "nearest_core_atom_A": 4.98721709612888,
+          "core_planarity_rms_A": [
+            0.01815642636991172,
+            0.008327214953208126
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 6.902358407911053,
+          "interplane_angle_deg": 86.52762600057663,
+          "plane_separation_A": 2.8899627786022557,
+          "lateral_offset_A": 6.26822676117847,
+          "nearest_core_atom_A": 3.6628426530929246,
+          "core_planarity_rms_A": [
+            0.01815642636991172,
+            0.004906468145837708
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 13.46733992684173,
+          "interplane_angle_deg": 20.94334510620373,
+          "plane_separation_A": 10.54435552000841,
+          "lateral_offset_A": 8.377697259556088,
+          "nearest_core_atom_A": 10.957518893475108,
+          "core_planarity_rms_A": [
+            0.008327214953208126,
+            0.004906468145837708
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n3__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n3__stereo0__stacked/input.xyz",
+      "xyz_sha256": "f39cbe4913b71c2349f2762ec140c35b13c5d7b96373cd69f79c2198c06a7e86",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 131,
+      "bond_length_range_A": [
+        1.077788554144332,
+        1.5454431165782267
+      ],
+      "covalent_bond_ratio_range": [
+        0.8472822504140477,
+        1.023588309183101
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.38956489588135,
+          "interplane_angle_deg": 4.762307254577121,
+          "plane_separation_A": 2.976705484128858,
+          "lateral_offset_A": 3.2260664028985864,
+          "nearest_core_atom_A": 2.9973468772985434,
+          "core_planarity_rms_A": [
+            0.048104658779798,
+            0.018564263557164618
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 8.229104160344363,
+          "interplane_angle_deg": 56.10479641104785,
+          "plane_separation_A": 7.128449352511419,
+          "lateral_offset_A": 4.111370222988492,
+          "nearest_core_atom_A": 6.542103443639767,
+          "core_planarity_rms_A": [
+            0.048104658779798,
+            0.014736839720991447
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 4.97092661668345,
+          "interplane_angle_deg": 54.44649328148511,
+          "plane_separation_A": 3.535397727061908,
+          "lateral_offset_A": 3.494434766873959,
+          "nearest_core_atom_A": 3.336497593386534,
+          "core_planarity_rms_A": [
+            0.018564263557164618,
+            0.014736839720991447
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n3__stereo1__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n3__stereo1__open/input.xyz",
+      "xyz_sha256": "fec83ceb9d7b9343407ca52484ca114706ab201af0ff98f4a02e45ea3f6c273a",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 131,
+      "bond_length_range_A": [
+        1.0782068029096197,
+        1.5421695427272282
+      ],
+      "covalent_bond_ratio_range": [
+        0.8479472526131129,
+        1.024197060526357
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 10.507480859005067,
+          "interplane_angle_deg": 15.11952314838766,
+          "plane_separation_A": 0.38941089744681673,
+          "lateral_offset_A": 10.500262527923173,
+          "nearest_core_atom_A": 5.723522586021436,
+          "core_planarity_rms_A": [
+            0.019003055459604665,
+            0.002621656026713156
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 6.994442952337387,
+          "interplane_angle_deg": 89.94258112381868,
+          "plane_separation_A": 2.8277137322402726,
+          "lateral_offset_A": 6.397364087028495,
+          "nearest_core_atom_A": 3.6788452257105813,
+          "core_planarity_rms_A": [
+            0.019003055459604665,
+            0.00772847251598878
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 11.127192258276457,
+          "interplane_angle_deg": 85.79822024835752,
+          "plane_separation_A": 7.562418236153884,
+          "lateral_offset_A": 8.162367179570808,
+          "nearest_core_atom_A": 8.572058838784962,
+          "core_planarity_rms_A": [
+            0.002621656026713156,
+            0.00772847251598878
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n3__stereo1__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n3__stereo1__stacked/input.xyz",
+      "xyz_sha256": "54518f3e1f2c332ccc79d5b24b54c9793da986d5917096969d88aa8c829a13a7",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 131,
+      "bond_length_range_A": [
+        1.0775483657634661,
+        1.5400785679853168
+      ],
+      "covalent_bond_ratio_range": [
+        0.847496108141214,
+        1.0234217521367914
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.337168678127465,
+          "interplane_angle_deg": 3.8239491851534937,
+          "plane_separation_A": 3.0180010507064043,
+          "lateral_offset_A": 3.1149160182041804,
+          "nearest_core_atom_A": 2.9630508011843038,
+          "core_planarity_rms_A": [
+            0.032452176332438055,
+            0.031006119630027456
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 8.353356406829125,
+          "interplane_angle_deg": 58.5298583472759,
+          "plane_separation_A": 7.062404836294288,
+          "lateral_offset_A": 4.461053820320961,
+          "nearest_core_atom_A": 6.325485501888119,
+          "core_planarity_rms_A": [
+            0.032452176332438055,
+            0.010008644252382655
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 5.25794339645844,
+          "interplane_angle_deg": 61.01766670465404,
+          "plane_separation_A": 3.4225796440476586,
+          "lateral_offset_A": 3.991480595031313,
+          "nearest_core_atom_A": 3.448444424769001,
+          "core_planarity_rms_A": [
+            0.031006119630027456,
+            0.010008644252382655
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_pmdi_ethyl__n3__stereo1__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n3__stereo1__stacked/rest/opt.xyz",
+      "xyz_sha256": "9cd960d516c56e560e02da2c61668a0e518e3ffef2ab24f4c39dd1dbf4a8aabc",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 131,
+      "bond_length_range_A": [
+        1.0922649341003814,
+        1.5451155592127281
+      ],
+      "covalent_bond_ratio_range": [
+        0.8537817629853125,
+        1.0334522197760712
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.435571726004294,
+          "interplane_angle_deg": 6.445132816802602,
+          "plane_separation_A": 3.2198775779634734,
+          "lateral_offset_A": 3.0506859752286517,
+          "nearest_core_atom_A": 3.186707625553839,
+          "core_planarity_rms_A": [
+            0.04778129307615371,
+            0.07766024478412434
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 7.1560242541255805,
+          "interplane_angle_deg": 47.146839653972094,
+          "plane_separation_A": 6.545889465468488,
+          "lateral_offset_A": 2.8913689199931314,
+          "nearest_core_atom_A": 4.641546526980867,
+          "core_planarity_rms_A": [
+            0.04778129307615371,
+            0.08461110484478374
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 4.320935106579744,
+          "interplane_angle_deg": 47.503490821459785,
+          "plane_separation_A": 3.408338638185803,
+          "lateral_offset_A": 2.655881759928903,
+          "nearest_core_atom_A": 3.0303781871711424,
+          "core_planarity_rms_A": [
+            0.07766024478412434,
+            0.08461110484478374
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n1__stereo0__monomer",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n1__stereo0__monomer/input.xyz",
+      "xyz_sha256": "e6e566c843859a8cd24e05771aa43eeb6f155fef43a7566af66219269cc6ec60",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 1,
+      "atoms": 51,
+      "bond_length_range_A": [
+        1.0794430426772672,
+        1.5311048447564866
+      ],
+      "covalent_bond_ratio_range": [
+        0.8559334044939994,
+        1.0204420972798158
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n1__stereo0__monomer",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n1__stereo0__monomer/rest/opt.xyz",
+      "xyz_sha256": "9800f343f083a371ad27d7fa42ce32a438d9b140fc8fe9dc5a4f9e83e1d84ed8",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 1,
+      "atoms": 51,
+      "bond_length_range_A": [
+        1.0927290802971725,
+        1.5310910750330935
+      ],
+      "covalent_bond_ratio_range": [
+        0.8602047140465979,
+        1.031171465979211
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__segments__parallel__parallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__segments__parallel__parallel/input.xyz",
+      "xyz_sha256": "f5c4ea1d025538addf06b6fa71b33b09793c849998bf780a58f1ad6a526fd6a2",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 102,
+      "bond_length_range_A": [
+        1.0794953661551758,
+        1.530977349033229
+      ],
+      "covalent_bond_ratio_range": [
+        0.8539965098024387,
+        1.0216014520479002
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.5554884383646135,
+          "interplane_angle_deg": 0.27973730378106443,
+          "plane_separation_A": 3.0936155289563616,
+          "lateral_offset_A": 3.3439524325375376,
+          "nearest_core_atom_A": 3.092435355089715,
+          "core_planarity_rms_A": [
+            0.025158023271711596,
+            0.02925448589969245
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__segments__antiparallel__antiparallel",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__segments__antiparallel__antiparallel/input.xyz",
+      "xyz_sha256": "f748b3bfbf09434db287a00192bb938aadab458ebedbd8aeb7f056aa6e2759f9",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "not_applicable",
+      "fragments": 2,
+      "atoms": 102,
+      "bond_length_range_A": [
+        1.0793121194130424,
+        1.531139496468654
+      ],
+      "covalent_bond_ratio_range": [
+        0.8542381653219863,
+        1.0210696524975502
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.3675152860355055,
+          "interplane_angle_deg": 4.345673195468116,
+          "plane_separation_A": 3.139408385396611,
+          "lateral_offset_A": 3.036330805998458,
+          "nearest_core_atom_A": 3.088510229165548,
+          "core_planarity_rms_A": [
+            0.04606367068568366,
+            0.051550219151014084
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n2__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n2__stereo0__open/input.xyz",
+      "xyz_sha256": "2efdf96f89189fbb300bfa54abc82633d4c76462cbc49758705658aa76832fce",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 100,
+      "bond_length_range_A": [
+        1.0791047816837673,
+        1.5364387028909443
+      ],
+      "covalent_bond_ratio_range": [
+        0.8548431555448375,
+        1.024201421428476
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 5.074174413363884,
+          "interplane_angle_deg": 11.114499259323019,
+          "plane_separation_A": 3.2453467913692733,
+          "lateral_offset_A": 3.900637150644222,
+          "nearest_core_atom_A": 3.1915373038939756,
+          "core_planarity_rms_A": [
+            0.06276157315989273,
+            0.038270695749837484
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n2__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n2__stereo0__open/rest/opt.xyz",
+      "xyz_sha256": "f0a1f91941c9389e00fee20642585c07986b393259643d2dda482d782fadd695",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 100,
+      "bond_length_range_A": [
+        1.0925830519713082,
+        1.5416760364204558
+      ],
+      "covalent_bond_ratio_range": [
+        0.8599081018538958,
+        1.0332633524532953
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.7346719420133,
+          "interplane_angle_deg": 1.5527415656256653,
+          "plane_separation_A": 3.337498794156174,
+          "lateral_offset_A": 3.35830615005453,
+          "nearest_core_atom_A": 3.3430450989430507,
+          "core_planarity_rms_A": [
+            0.03326461221690181,
+            0.03482837126748866
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n2__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n2__stereo0__stacked/input.xyz",
+      "xyz_sha256": "2fa135d76bc8560e78586a01e992ce501d9413aba2491ddf73e63abccbd95c6c",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 100,
+      "bond_length_range_A": [
+        1.077635997058466,
+        1.5349880050095395
+      ],
+      "covalent_bond_ratio_range": [
+        0.8545489796009607,
+        1.0245718902304652
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.9752173259157537,
+          "interplane_angle_deg": 2.701776268182007,
+          "plane_separation_A": 3.2159644361976323,
+          "lateral_offset_A": 2.336648354668036,
+          "nearest_core_atom_A": 3.1241080113868684,
+          "core_planarity_rms_A": [
+            0.03955181234940078,
+            0.04512265007665844
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n2__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n2__stereo0__stacked/rest/opt.xyz",
+      "xyz_sha256": "1f0d4b0a5c59a5b140653523c865d0650b53752477674becb17aa0182cf73224",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 100,
+      "bond_length_range_A": [
+        1.0919271033790285,
+        1.53815706685224
+      ],
+      "covalent_bond_ratio_range": [
+        0.859339895888457,
+        1.0335744052719722
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.9711658910146443,
+          "interplane_angle_deg": 3.7213168505877903,
+          "plane_separation_A": 3.308841211834622,
+          "lateral_offset_A": 2.195843429942792,
+          "nearest_core_atom_A": 3.2438093220574187,
+          "core_planarity_rms_A": [
+            0.04107082546743875,
+            0.04345226982911939
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n3__stereo0__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n3__stereo0__open/input.xyz",
+      "xyz_sha256": "0eacbe867776fb57de95e41e7ff79a6724680d3e74a565340d2062ba67a48a11",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 149,
+      "bond_length_range_A": [
+        1.0786896861058224,
+        1.5444621240261547
+      ],
+      "covalent_bond_ratio_range": [
+        0.8552536335585417,
+        1.023184239403619
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 6.977675131580651,
+          "interplane_angle_deg": 47.25315773097817,
+          "plane_separation_A": 3.861446316027292,
+          "lateral_offset_A": 5.811814053315738,
+          "nearest_core_atom_A": 3.8899157677411673,
+          "core_planarity_rms_A": [
+            0.051731869345872504,
+            0.020233875456883158
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 7.220227416011832,
+          "interplane_angle_deg": 61.50770694768834,
+          "plane_separation_A": 2.9390637580196293,
+          "lateral_offset_A": 6.594966881283364,
+          "nearest_core_atom_A": 3.789697968394392,
+          "core_planarity_rms_A": [
+            0.051731869345872504,
+            0.010540160100198412
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 13.492045709201992,
+          "interplane_angle_deg": 88.3976060836568,
+          "plane_separation_A": 8.5383842536533,
+          "lateral_offset_A": 10.446592351391972,
+          "nearest_core_atom_A": 9.968317925594855,
+          "core_planarity_rms_A": [
+            0.020233875456883158,
+            0.010540160100198412
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n3__stereo0__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n3__stereo0__stacked/input.xyz",
+      "xyz_sha256": "17650aba9f08933ce6ee4b2feead5b0284d7fd2c306f991f4b3f14ce04cbae09",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 149,
+      "bond_length_range_A": [
+        1.0769771193278732,
+        1.5494277011618731
+      ],
+      "covalent_bond_ratio_range": [
+        0.854624803269888,
+        1.0261995149625451
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 6.722077605366462,
+          "interplane_angle_deg": 50.80168685995954,
+          "plane_separation_A": 2.9440135014483975,
+          "lateral_offset_A": 6.043104486591214,
+          "nearest_core_atom_A": 3.511995670698716,
+          "core_planarity_rms_A": [
+            0.03319552750553882,
+            0.04745519434880229
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 9.165895565723293,
+          "interplane_angle_deg": 51.20612770668848,
+          "plane_separation_A": 5.7507090497930164,
+          "lateral_offset_A": 7.137435600156027,
+          "nearest_core_atom_A": 5.497963395028908,
+          "core_planarity_rms_A": [
+            0.03319552750553882,
+            0.03319223515199253
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 3.7664820735430675,
+          "interplane_angle_deg": 2.9810745337510403,
+          "plane_separation_A": 3.171881365323694,
+          "lateral_offset_A": 2.031146428653923,
+          "nearest_core_atom_A": 3.036964977309052,
+          "core_planarity_rms_A": [
+            0.04745519434880229,
+            0.03319223515199253
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n3__stereo1__open",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n3__stereo1__open/input.xyz",
+      "xyz_sha256": "5a3bbbc1161cc89d60dba82219bf6ea435d74341f8b7f08335c4ccd15082478a",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 149,
+      "bond_length_range_A": [
+        1.0790275938166103,
+        1.542918702111085
+      ],
+      "covalent_bond_ratio_range": [
+        0.8555694601779141,
+        1.0253702472944513
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 7.531144528014674,
+          "interplane_angle_deg": 58.66751243925311,
+          "plane_separation_A": 2.9758943854801374,
+          "lateral_offset_A": 6.918250538128347,
+          "nearest_core_atom_A": 3.7824429747799813,
+          "core_planarity_rms_A": [
+            0.011949697199565337,
+            0.020331320361695254
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 8.073748803977459,
+          "interplane_angle_deg": 82.85162953216751,
+          "plane_separation_A": 3.8452175087004457,
+          "lateral_offset_A": 7.09927616454741,
+          "nearest_core_atom_A": 4.033748510200409,
+          "core_planarity_rms_A": [
+            0.011949697199565337,
+            0.04593496525171316
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 11.106514071004778,
+          "interplane_angle_deg": 25.47117842812319,
+          "plane_separation_A": 10.481359424768852,
+          "lateral_offset_A": 3.673657498765539,
+          "nearest_core_atom_A": 9.645676587554965,
+          "core_planarity_rms_A": [
+            0.020331320361695254,
+            0.04593496525171316
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n3__stereo1__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n3__stereo1__stacked/input.xyz",
+      "xyz_sha256": "a9cc995c525edefda7ee7263f18bd3a57e323b9cfa7ab6060eb297e45124c3c5",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 149,
+      "bond_length_range_A": [
+        1.0791237157234763,
+        1.5395826384290152
+      ],
+      "covalent_bond_ratio_range": [
+        0.8543101483845319,
+        1.0230639591293385
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.802713952524646,
+          "interplane_angle_deg": 2.39434840350885,
+          "plane_separation_A": 3.1903243519489193,
+          "lateral_offset_A": 2.0694114946253017,
+          "nearest_core_atom_A": 3.124951485490025,
+          "core_planarity_rms_A": [
+            0.04723186908794152,
+            0.06384200489199658
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 7.5689233110479055,
+          "interplane_angle_deg": 18.156006154793893,
+          "plane_separation_A": 6.9564455415876365,
+          "lateral_offset_A": 2.982694338253567,
+          "nearest_core_atom_A": 6.360118232164317,
+          "core_planarity_rms_A": [
+            0.04723186908794152,
+            0.07574964990124815
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 3.7875097469733707,
+          "interplane_angle_deg": 15.853387150577426,
+          "plane_separation_A": 3.6047747455007766,
+          "lateral_offset_A": 1.1622517445106708,
+          "nearest_core_atom_A": 3.1295264105036806,
+          "core_planarity_rms_A": [
+            0.06384200489199658,
+            0.07574964990124815
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "starting_geometry"
+    },
+    {
+      "key": "design_ndi_ethyl__n3__stereo1__stacked",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n3__stereo1__stacked/rest/opt.xyz",
+      "xyz_sha256": "ceb9ef3b2a9b317333bcc182f709c2ea82c9a0fcfabfe3d2391be2728b02f1d1",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 149,
+      "bond_length_range_A": [
+        1.0924198139418675,
+        1.5456345749053095
+      ],
+      "covalent_bond_ratio_range": [
+        0.8594816282623171,
+        1.0333102698847136
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.8934801586220975,
+          "interplane_angle_deg": 2.5566904339351195,
+          "plane_separation_A": 3.2843807942545222,
+          "lateral_offset_A": 2.090940110073932,
+          "nearest_core_atom_A": 3.23671421902332,
+          "core_planarity_rms_A": [
+            0.021350180788009834,
+            0.07649957062437157
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 7.814567441469696,
+          "interplane_angle_deg": 21.939011010430185,
+          "plane_separation_A": 7.331933512639981,
+          "lateral_offset_A": 2.7037409756677824,
+          "nearest_core_atom_A": 6.578524106146816,
+          "core_planarity_rms_A": [
+            0.021350180788009834,
+            0.0684276848528935
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 3.971439775170428,
+          "interplane_angle_deg": 19.996100240970087,
+          "plane_separation_A": 3.833533007957624,
+          "lateral_offset_A": 1.0374770188804723,
+          "nearest_core_atom_A": 3.2192911864044658,
+          "core_planarity_rms_A": [
+            0.07649957062437157,
+            0.0684276848528935
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false,
+      "stage": "completed_DFT_geometry"
+    }
+  ]
+}

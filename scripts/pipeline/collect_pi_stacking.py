@@ -2,6 +2,7 @@
 """Collect stationary electronic structures without substituting them for deltaG."""
 import csv
 import fcntl
+import hashlib
 import io
 import json
 import math
@@ -17,6 +18,42 @@ BASE=ROOT/'results/polymer_models/campaigns/2026-10-19_pi_stacking'
 OUT=ROOT/'results/polymer_models'
 
 
+def recovery_records(parent_plan, original_records):
+    """Merge only source-bound reruns of failed slots; never overwrite a success."""
+    pointer=OUT/'recovery_campaigns.json'
+    if not pointer.exists():return {},[],[],[]
+    registry=json.loads(pointer.read_text())
+    if registry['parent_campaign']!=str(BASE.relative_to(ROOT)):
+        raise ValueError('Recovery parent does not match the displayed campaign')
+    expected={t['key']:t for t in parent_plan['tasks']}
+    fields=('candidate_id','model_key','model_type','repeats','stereoisomer','target','smiles','fragment','atoms','charge','mult')
+    records={};invalid=[];active=[];campaigns=[]
+    for entry in registry['campaigns']:
+        campaign=ROOT/entry['path'];plan_path=campaign/'plan.json'
+        if hashlib.sha256(plan_path.read_bytes()).hexdigest()!=entry['plan_sha256']:
+            raise ValueError('Recovery plan changed after registration')
+        plan=json.loads(plan_path.read_text())
+        if (plan['parent_campaign']!=registry['parent_campaign']
+                or plan['electronic_protocol']!=parent_plan['electronic_protocol']
+                or plan['solvent']!=parent_plan['solvent']):
+            raise ValueError('Recovery cannot mix a different parent, solvent or molecular protocol')
+        for receipt in (campaign/'done').glob('*.json'):
+            try:
+                record=verify_state_checkpoint(receipt);task=record['task'];key=task['key']
+                if key in original_records:raise ValueError('Recovery cannot overwrite a verified original slot')
+                if key not in expected or any(task[k]!=expected[key][k] for k in fields):
+                    raise ValueError('Recovery task identity differs from the original slot')
+                if key in records:raise ValueError('Multiple recovery results for the same slot require review')
+                if not math.isfinite(record['E_smd_eV']):raise ValueError('Nonfinite recovery energy')
+                records[key]=dict(record,recovery_campaign=entry['path'])
+            except (OSError,KeyError,ValueError) as exc:invalid.append(dict(receipt=str(receipt),error=repr(exc)))
+        active += [campaign.name+'/'+p.name for p in (campaign/'claims').iterdir() if p.is_dir()]
+        campaigns.append(dict(path=entry['path'],raw_root=plan['raw_root'],
+                              attempted=len(list((campaign/'tasks').glob('*/status.json'))),
+                              failed=len(list((campaign/'failures').glob('*.json')))))
+    return records,invalid,active,campaigns
+
+
 def collect():
     with (OUT/'.collection.lock').open('a+') as lock:
         try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -29,6 +66,8 @@ def collect():
                 if not math.isfinite(record['E_smd_eV']):raise ValueError('Nonfinite energy')
                 records[record['task']['key']]=record
             except (OSError,KeyError,ValueError) as exc:invalid.append(dict(receipt=str(receipt),error=repr(exc)))
+        recovered,recovery_invalid,recovery_active,recovery_campaigns=recovery_records(plan,records)
+        records.update(recovered);invalid.extend(recovery_invalid)
         rows=[];by_model={}
         for task in plan['tasks']:
             ready=BASE/'live_inputs'/task['key']/'task.json'
@@ -38,6 +77,7 @@ def collect():
                      E_smd_eV=record['E_smd_eV'] if record else None,
                      deltaG_kJ_mol=None,Hessian_minimum_tested=False,
                      final_xyz=str(Path(record['state_dir'])/'opt.xyz') if record else None,
+                     recovery_campaign=record.get('recovery_campaign') if record else None,
                      contact_metrics=record['contact_metrics'] if record else None,
                      stacked_pairs=record['stacked_pairs'] if record else None)
             rows.append(row);by_model.setdefault(task['model_key'],{})[task['target']]=row
@@ -72,8 +112,10 @@ def collect():
             expected_DFT_cases=len(rows),stationary_electronic_cases=len(records),
             sampled_stack_open_comparisons=sum(f['stacked_minus_open_deltaE_kJ_mol'] is not None for f in folding),
             electronic_association_comparisons=sum(f['association_deltaE_kJ_mol'] is not None for f in associations),
-            failures=len(list((BASE/'failures').glob('*.json'))),invalid_receipts=invalid,
-            active_claims=[p.name for p in (BASE/'claims').iterdir() if p.is_dir()],
+            failures=sum(r['stage']=='failed_preserved' for r in rows),invalid_receipts=invalid,
+            preserved_original_failures=len(list((BASE/'failures').glob('*.json'))),
+            recovered_electronic_cases=len(recovered),recovery_campaigns=recovery_campaigns,
+            active_claims=[p.name for p in (BASE/'claims').iterdir() if p.is_dir()]+recovery_active,
             memory_pilot=json.loads(pilot.read_text())['status'] if pilot.exists() else 'awaiting_free_H100',
             completed_interaction_free_energies=0,charged_state_interactions_computed=False,
             whole_bead_interactions_modeled=False,raw_root=plan['raw_root'],campaign=str(BASE.relative_to(ROOT)),

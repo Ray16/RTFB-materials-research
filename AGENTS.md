@@ -24,6 +24,12 @@ fleet within these constraints. Keep scientific protocols and validation gates
 consistent across nodes; report actual starts, completed records and unresolved
 physical validation separately.
 
+Checkpoint long scientific calculations on durable shared storage. Save geometry
+evaluations, optimizer-returned coordinates, numerical settings and ownership so
+interruption or nonconvergence does not erase progress. Checkpoints are unqualified
+until the normal convergence and physical QC pass. Keep oligomer construction,
+optimization, energy evaluation and follow-up analysis in the versioned pipeline.
+
 ## Candidate results and slides
 
 For a newly introduced candidate, screen the precursor and attachment route before

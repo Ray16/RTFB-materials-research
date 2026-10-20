@@ -41,7 +41,7 @@
       "current": "results/polymer_models/interaction_checked.json",
       "status": "results/polymer_models/interaction_status.json",
       "scope": "Neutral covalent dimer/trimer and separate-segment electronic interaction pilot; graph inventory retained separately",
-      "calculation_state": "Finite 27-case neutral interaction-method pilot; see interaction_status for completed DFT and resource dependencies",
+      "calculation_state": "17 original checked structures retained; ten 100-step nonconvergences assigned to a separate checkpointed recovery campaign. See interaction_status for starts and admitted results.",
       "browser": "results/polymer_models/index.html",
       "interaction_results": "results/polymer_models/interaction_checked.json",
       "interaction_status": "results/polymer_models/interaction_status.json",
@@ -52,7 +52,11 @@
       "graph_inventory": "results/polymer_models/current.csv",
       "graph_inventory_status": "results/polymer_models/status.json",
       "selection_objective": "Prefer weak intersite/segment interactions; strong persistent pi stacking and undesired electron transfer are risks, not objectives to maximize",
-      "model_sizes": "Monomers, covalent dimers and trimers, plus pairs of separate monomer segments; no tetramers"
+      "model_sizes": "Monomers, covalent dimers and trimers, plus pairs of separate monomer segments; no tetramers",
+      "geometry_audit": "results/reviews/2026-10-20/polymer_geometry_recovery/geometry_audit.json",
+      "recovery_registry": "results/polymer_models/recovery_campaigns.json",
+      "recovery_plan": "results/polymer_models/campaigns/2026-10-20_geometry_recovery/plan.json",
+      "recovery_raw_root": "calcs/polymer_models/2026-10-20_geometry_recovery"
     },
     "candidates": {
       "guide": "results/candidates/README.md",

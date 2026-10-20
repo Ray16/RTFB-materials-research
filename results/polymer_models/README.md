@@ -20,6 +20,56 @@ stationary structures and 10 preserved failures, with no active queue claims.
 It includes monomers, covalent dimers and trimers, and two separate-segment
 complexes per motif. No tetramers were prepared or computed in this pilot.
 Interaction free energies, charged-state coupling and redox shifts remain unfinished.
+The [bounded geometry recovery](campaigns/2026-10-20_geometry_recovery/plan.json)
+retries only those ten unconverged cases; original outputs remain unchanged.
+Its current results join the original slots only after receipt and structural QC.
+Follow [interaction status](interaction_status.json) for actual recovery progress.
+
+## Reproducible pipeline and checkpoints
+
+| Stage | Versioned implementation | Recorded outputs and checks |
+| --- | --- | --- |
+| Build H-capped polystyrene chains and attach exact motifs | `src/redox/build/oligomers.py` | Repeat count, site occupancy, exact SMILES and backbone stereoisomers; current pilot uses 1–3 repeats |
+| Generate open/stacked poses and conformer ensembles | `scripts/pipeline/prepare_pi_stacking.py`, `src/redox/build/polymer_contacts.py` | Unbiased/open/parallel/slipped/antiparallel seeds, then unconstrained GFN2-xTB/ALPB(MeCN); ring-core atom mapping retained |
+| Stage immutable warm starts | `scripts/pipeline/stage_polymer_conformers.py` | Connectivity, stereochemistry, input XYZ and source hashes; separate-segment pairs retain two intact molecular graphs |
+| Optimize and evaluate energy | `scripts/pipeline/run_pi_stacking.py`, `src/redox/qm/dft.py`, `src/redox/qm/sp.py` | r2SCAN-D4/SVP/SMD(MeCN) geometry; active wB97M-V/TZVPD/SMD electronic energy; independent solution gradient |
+| Save optimization progress | `src/redox/workflows/geometry_checkpoints.py` | Per-evaluation XYZ trajectory, energies, gradients, SCF convergence and latest coordinates on NFS; trial evaluations are explicitly unqualified |
+| Audit physical geometry | `scripts/validation/audit_polymer_geometries.py`, `scripts/validation/review_polymer_interactions.py` | Composition, bond-length plausibility, severe clashes, full connectivity, stereochemistry, core contacts and active SP provenance |
+| Recover nonconvergence | `scripts/pipeline/recover_pi_stacking.py` | Separate frozen ten-case campaign; 400-step budget and tighter geometry SCF (1e-11), unchanged physical acceptance criteria; optimizer-returned coordinates saved even without convergence |
+| Collect and compare | `scripts/pipeline/collect_pi_stacking.py` | Reuse verified successes; admit only identity-matched recovery receipts; same-composition folding and atom-balanced segment association remain distinct |
+| Present results | `scripts/plotting/polymer_models/update_interaction_figures.py` | Maintained 3D viewer and energy comparisons; weak interactions are the design objective |
+
+The [geometry audit](../reviews/2026-10-20/polymer_geometry_recovery/geometry_audit.json)
+checked all 27 starts and 17 completed DFT geometries without flagged sanity issues.
+All ten original failures exhausted 100 optimizer steps. Their final temporary
+coordinates were not saved by the earlier runner and were no longer recoverable;
+the new attempts therefore use the preserved, checked original seeds. The driver
+now checkpoints in future runs as well as in recovery. Checkpoints preserve
+restart coordinates; convergence, topology, spin and physical QC still control
+whether a result can be used. No Hessian, conformer-population or rate claim is
+made from an unconverged checkpoint.
+
+The recovery raw root is `calcs/polymer_models/2026-10-20_geometry_recovery/`.
+Each case has `rest/geometry_checkpoints/evaluated_trajectory.xyz`,
+`evaluations.jsonl`, `last_evaluated.xyz` and `latest.json`; after optimizer return,
+`optimizer_returned.xyz` and its convergence record are retained. The NFS campaign
+folder owns queue claims, failed attempts, logs, ownership and completion receipts.
+The [recovery registry](recovery_campaigns.json) binds the frozen plan; the collector
+refuses a changed solvent/method, a different stereoisomer or replacement of an
+already verified original case.
+
+Read-only review and collection (these commands submit no GPU calculations):
+
+```bash
+PYTHONPATH=src python scripts/validation/audit_polymer_geometries.py --out /tmp/polymer_geometry_audit.json
+PYTHONPATH=src python scripts/pipeline/collect_pi_stacking.py
+```
+
+The campaign preparation, launch and worker entrypoints are deliberately separate.
+Do not rerun an existing preparation or clear a failed attempt in place. Inspect
+its ownership, input hashes, last checkpoint and error before planning a bounded
+continuation. Launch recovery through `recover_pi_stacking.py launch --role queue_large`
+only after node preflight; the entrypoint uses the system GPU reservation gate.
 
 The prepared inventory contains explicitly hydrogen-capped polystyrene fragments
 with one, two or three repeat units. Backbone stereochemical alternatives are

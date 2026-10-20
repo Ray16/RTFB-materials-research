@@ -1,0 +1,145 @@
+{
+  "task": {
+    "key": "design_ndi_ethyl__n3__stereo1__stacked",
+    "candidate_id": "design_ndi_ethyl",
+    "model_key": "design_ndi_ethyl__n3__stereo1",
+    "model_type": "covalent_oligomer",
+    "repeats": 3,
+    "stereoisomer": 1,
+    "target": "stacked",
+    "smiles": "CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(CC[C@@H](C[C@H](C)c2ccc(CN4C(=O)c5ccc6c7c(ccc(c57)C4=O)C(=O)N(CC)C6=O)cc2)c2ccc(CN4C(=O)c5ccc6c7c(ccc(c57)C4=O)C(=O)N(CC)C6=O)cc2)cc1)C3=O",
+    "fragment": "[*:1]N1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(CC)C3=O",
+    "atoms": 149,
+    "charge": 0,
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n3__stereo1__stacked/input.xyz",
+    "pi_groups": [
+      [
+        19,
+        17,
+        10,
+        11,
+        12,
+        13,
+        14,
+        5,
+        6,
+        7,
+        8,
+        9,
+        91,
+        3,
+        2,
+        15
+      ],
+      [
+        36,
+        37,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        51,
+        53,
+        56
+      ],
+      [
+        65,
+        66,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        80,
+        82,
+        85
+      ]
+    ],
+    "seed_stage": "converged_topology_checked_xTB_ALPB",
+    "input_stereochemistry_QC": "ok",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n3__stereo1__stacked/input.xyz": "a9cc995c525edefda7ee7263f18bd3a57e323b9cfa7ab6060eb297e45124c3c5",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_ndi_ethyl__n3__stereo1/ensemble.json": "2eabb750ac4aa4f1e65a505a9e5d35ddaae9689fae15ca03f55eb59da830b0f6",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_ndi_ethyl__n3__stereo1/slipped_0/xtbopt.xyz": "a9cc995c525edefda7ee7263f18bd3a57e323b9cfa7ab6060eb297e45124c3c5"
+    }
+  },
+  "status": "state_records_verified",
+  "stage": "dft_geometry",
+  "started": 1792482756.702386,
+  "host": "lambda13",
+  "pid": 1743602,
+  "free_energy_computed": false,
+  "minimum_Hessian_tested": false,
+  "synthesis_admission": false,
+  "E_smd_eV": -112209.17514897283,
+  "gradient_max_Ha_Bohr": 8.656683159119754e-05,
+  "contact_metrics": [
+    {
+      "site_i": 1,
+      "site_j": 2,
+      "centroid_distance_A": 3.8934801586220975,
+      "interplane_angle_deg": 2.5566904339351195,
+      "plane_separation_A": 3.2843807942545222,
+      "lateral_offset_A": 2.090940110073932,
+      "nearest_core_atom_A": 3.23671421902332,
+      "core_planarity_rms_A": [
+        0.021350180788009834,
+        0.07649957062437157
+      ],
+      "stack_geometry": true
+    },
+    {
+      "site_i": 1,
+      "site_j": 3,
+      "centroid_distance_A": 7.814567441469696,
+      "interplane_angle_deg": 21.939011010430185,
+      "plane_separation_A": 7.331933512639981,
+      "lateral_offset_A": 2.7037409756677824,
+      "nearest_core_atom_A": 6.578524106146816,
+      "core_planarity_rms_A": [
+        0.021350180788009834,
+        0.0684276848528935
+      ],
+      "stack_geometry": false
+    },
+    {
+      "site_i": 2,
+      "site_j": 3,
+      "centroid_distance_A": 3.971439775170428,
+      "interplane_angle_deg": 19.996100240970087,
+      "plane_separation_A": 3.833533007957624,
+      "lateral_offset_A": 1.0374770188804723,
+      "nearest_core_atom_A": 3.2192911864044658,
+      "core_planarity_rms_A": [
+        0.07649957062437157,
+        0.0684276848528935
+      ],
+      "stack_geometry": true
+    }
+  ],
+  "stacked_pairs": 2,
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n3__stereo1__stacked/rest",
+  "topology_QC": "ok",
+  "observed_peak_GPU_MiB": 70302,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n3__stereo1__stacked/rest/opt.xyz": "ceb9ef3b2a9b317333bcc182f709c2ea82c9a0fcfabfe3d2391be2728b02f1d1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n3__stereo1__stacked/rest/result.json": "8aa5ea34a501da16caa1127d55fede0776da76ddf723046e73ef4f6d36ba170d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n3__stereo1__stacked/rest/sp/23d042e477e5b9d2.json": "49a4d0bea238764fccf72e52865dde181042fc23a7232c0dfb9106ec53aabfe6"
+  },
+  "finished": 1792510721.425225
+}

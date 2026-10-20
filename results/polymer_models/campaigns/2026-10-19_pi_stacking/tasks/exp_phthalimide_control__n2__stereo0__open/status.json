@@ -1,0 +1,85 @@
+{
+  "task": {
+    "key": "exp_phthalimide_control__n2__stereo0__open",
+    "candidate_id": "exp_phthalimide_control",
+    "model_key": "exp_phthalimide_control__n2__stereo0",
+    "model_type": "covalent_oligomer",
+    "repeats": 2,
+    "stereoisomer": 0,
+    "target": "open",
+    "smiles": "C[C@@H](CCc1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "atoms": 68,
+    "charge": 0,
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n2__stereo0__open/input.xyz",
+    "pi_groups": [
+      [
+        9,
+        10,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      [
+        27,
+        28,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36
+      ]
+    ],
+    "seed_stage": "converged_topology_checked_xTB_ALPB",
+    "input_stereochemistry_QC": "ok",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n2__stereo0__open/input.xyz": "d5a4c8b2aae277a2f82f81799cd84657a86116f46eb721dd9df2a94f6fe36b81",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/exp_phthalimide_control__n2__stereo0/ensemble.json": "89d2263d30cb31326276aba7df0bcbe81c0f340fb1abdcffd5e023b3c0128f4e",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/exp_phthalimide_control__n2__stereo0/antiparallel_1/xtbopt.xyz": "d5a4c8b2aae277a2f82f81799cd84657a86116f46eb721dd9df2a94f6fe36b81"
+    }
+  },
+  "status": "state_records_verified",
+  "stage": "dft_geometry",
+  "started": 1792470163.3648818,
+  "host": "lambda13",
+  "pid": 1738400,
+  "free_energy_computed": false,
+  "minimum_Hessian_tested": false,
+  "synthesis_admission": false,
+  "E_smd_eV": -46887.268485610024,
+  "gradient_max_Ha_Bohr": 7.427962434870429e-05,
+  "contact_metrics": [
+    {
+      "site_i": 1,
+      "site_j": 2,
+      "centroid_distance_A": 4.134475206573094,
+      "interplane_angle_deg": 14.124943490094525,
+      "plane_separation_A": 3.382434632813947,
+      "lateral_offset_A": 2.3776082916469665,
+      "nearest_core_atom_A": 3.2261419743674318,
+      "core_planarity_rms_A": [
+        0.011672886124870161,
+        0.00906575176073492
+      ],
+      "stack_geometry": true
+    }
+  ],
+  "stacked_pairs": 1,
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n2__stereo0__open/rest",
+  "topology_QC": "ok",
+  "observed_peak_GPU_MiB": 68400,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n2__stereo0__open/rest/opt.xyz": "e522664308eace863e802d20d923ea736f3752d751f94252824c4140dc38e2fd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n2__stereo0__open/rest/result.json": "842f0b359a482d1b642d73850052e24dcd290121e979c9dbd3a1aabe2eb46037",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n2__stereo0__open/rest/sp/7e2ba9e505832e2a.json": "9635a1faca6d8b7916fd998a5fd12e3d39d4a4d3e0afddfd6334a3a7ab3b579e"
+  },
+  "finished": 1792471533.0036662
+}

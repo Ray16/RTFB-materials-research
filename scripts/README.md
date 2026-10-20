@@ -47,6 +47,14 @@ and three-dimensional browser. Existing campaign plans must be inspected before
 any restart; preparation/submission actions are deliberately distinct from
 read-only result collection.
 
+Oligomer construction, solvent-specific optimization, durable checkpoints, energy
+evaluation, physical geometry checks and recovery are mapped together in the
+[polymer pipeline guide](../results/polymer_models/README.md#reproducible-pipeline-and-checkpoints).
+`pipeline/recover_pi_stacking.py` handles the separate ten-case convergence
+recovery. `validation/audit_polymer_geometries.py` reviews bond geometry and severe
+clashes alongside the existing topology/stereochemistry gates. Evaluated trial
+geometries are saved without claiming convergence or a physical minimum.
+
 The finite base-assisted sensitivity pilot uses
 [`pipeline/base_assisted_grafting.py`](pipeline/base_assisted_grafting.py). Its
 `collect` action verifies completed components and refreshes the maintained

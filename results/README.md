@@ -28,6 +28,11 @@ The [oligomer screen](polymer_models/README.md) targets weak intersite/segment
 interaction. Strong persistent stacking and undesired intersite electron transfer
 are design concerns. Its monomer/dimer/trimer pilot has no tetramers; neutral
 electronic energies do not yet establish interaction free energies or transfer rates.
+The [geometry audit](reviews/2026-10-20/polymer_geometry_recovery/geometry_audit.json)
+found no flagged sanity issues in 27 starts and 17 completed DFT structures.
+A separate [checkpointed ten-case recovery](polymer_models/campaigns/2026-10-20_geometry_recovery/plan.json)
+addresses the original 100-step nonconvergences; use the current interaction status
+for actual progress. All DFT geometry/energy work uses SMD acetonitrile.
 
 ## Calculation records and provenance
 

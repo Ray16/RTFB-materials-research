@@ -186,9 +186,11 @@ def calculate(task,plan,pilot=False):
                 atomic_write_json(directory/'energy_and_gradient.json',dict(result=result,gradient_max_Ha_Bohr=gmax,
                     geometry='starting geometry only; resource qualification, not physical minimum'))
             else:
+                from redox.workflows.geometry_checkpoints import checkpoint_callback
                 result=dft_smd(Path(task['input_xyz']),0,1,do_opt=True,do_freq=False,backend='gpu',
                     opt_out=sd/'opt.xyz',conv_params=dict(convergence_gmax=1e-4,convergence_grms=6e-5,
-                    convergence_energy=1e-7,convergence_dmax=.002,convergence_drms=.001))
+                    convergence_energy=1e-7,convergence_dmax=.002,convergence_drms=.001,
+                    callback=checkpoint_callback(sd/'geometry_checkpoints')))
                 result.update(id=task['key'],state='rest',n_e=0)
                 atomic_write_json(sd/'result.json',result)
                 topology=hydrogen_topology_status(task['smiles'],sd/'opt.xyz')
