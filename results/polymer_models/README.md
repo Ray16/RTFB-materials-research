@@ -2,6 +2,13 @@
 
 All result categories: [results index](../README.md).
 
+The [polymer spacing framework](../../docs/POLYMER_SPACING.md) provides configurable
+motifs, reactive sites, occupancy patterns and matched controls. Open its
+[exact structures and conditional-grafting report](campaigns/2026-10-20_spacing_pilot/index.html)
+or [stable current pointer](spacing_current.json). The first panel has six graphs
+and twelve qualified warm starts; quantum results remain pending. It evaluates
+electronic nonadditivity and conditional grafting ΔG as separate dimensions.
+
 **Open the [rotatable 3D interaction report](index.html)** for the current pilot.
 The [figure overview](summary.html) shows exact model construction, checked 3D
 geometries and key electronic-energy results, with PNG, PDF and SVG downloads.
@@ -56,19 +63,19 @@ experimental probabilities to these scenarios without evidence. Backbone sequenc
 separation also differs from spatial motif separation: chain conformations and
 interchain contacts must be sampled independently.
 
-The current `decorate_sites` builder leaves **benzyl chloride** at an unoccupied
-potential graft site. It does not create a plain styrene unit lacking that handle.
-Those chemical identities, and any blocked or hydrolyzed sites, need separate
-definitions in a future loading/spacing panel. Existing prepared single-site
-controls are two-repeat graphs; separated two-motif patterns have not yet been
-computed by the current pilot.
+The original `decorate_sites` builder leaves **benzyl chloride** at an unoccupied
+potential graft site. The new `polymer_cases` builder distinguishes plain styrene,
+unoccupied benzyl-chloride handles and grafted sites. Blocked or hydrolyzed handles
+would require additional explicit chemistry. The original single-site controls
+are two-repeat graphs; the new spacing panel is a separate five-repeat campaign.
 
-The next useful panel compares adjacent and separated pairs on the same padded
-backbone, with both motifs, either motif alone and neither motif. Keep site
-positions, end caps, backbone stereochemistry, chemistry and solvent matched.
-Use multiple conformers and report energies/nonadditivity by occupancy pattern;
-do not infer actual stacking populations or electron-transfer rates. Electronic
-coupling and relevant charged states require their own later qualification.
+The prepared spacing panel compares pairs 2–3 and 2–4 on a common padded backbone,
+with both motifs, either motif alone and neither motif. End caps, mapped backbone
+stereochemistry and solvent are matched. Its electronic ΔΔE includes conformational
+response; qualified native G is required for the separate ΔΔG neighbor penalty
+and conditional first/second grafting ΔG. No experimental stacking population or
+electron-transfer rate is inferred. Electronic coupling and relevant charged
+states require their own later qualification.
 
 The deliverable is an interaction-versus-spacing/loading sensitivity map. A
 conclusion that persists across patterns is more useful for selection than one

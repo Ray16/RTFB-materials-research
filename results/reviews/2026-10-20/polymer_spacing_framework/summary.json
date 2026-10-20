@@ -1,0 +1,504 @@
+{
+  "checked_at": 1792535497.1449769,
+  "status": "framework_and_prepared_inputs_verified",
+  "tests": "29 passed: polymer cases, cycles, admission and existing topology tests",
+  "lint": "Ruff E/F numerical code and tests; F report script passed",
+  "exact_graph_rebuild_matches": true,
+  "graph_cases": 6,
+  "qualified_warm_starts": 12,
+  "all_stage_hashes_verified": true,
+  "shared_reagent_terms": "qualified_shared_terms",
+  "svg_count": 6,
+  "drawing_review": "Adjacent-pair SVG visually checked; CoordGen avoids pendant-ring overlap; purple open backbone",
+  "previous_campaigns": [
+    {
+      "campaign": "2026-10-20_geometry_recovery",
+      "live_sources_unchanged": true
+    },
+    {
+      "campaign": "2026-10-20_frozen_fragments",
+      "live_sources_unchanged": true
+    }
+  ],
+  "prepared_geometry_reviews": [
+    {
+      "key": "occ_2__pose0",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2__pose0/input.xyz": "25ab670180ba3bc0bea36927ec2a2eb2fb3ac3db1315946271652170e3e8fc53",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2/ensemble.json": "77177527696f071dff254996cc83be57afd98b8bf839bf9b147464bd9b44dc8d"
+      },
+      "geometry_review": {
+        "key": "occ_2__pose0",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2__pose0/input.xyz",
+        "xyz_sha256": "25ab670180ba3bc0bea36927ec2a2eb2fb3ac3db1315946271652170e3e8fc53",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 105,
+        "bond_length_range_A": [
+          1.0788569566446573,
+          1.8134353055606587
+        ],
+        "covalent_bond_ratio_range": [
+          0.8515721859914684,
+          1.02424476079096
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_2__pose1",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2__pose1/input.xyz": "0016655167c460ece9d8bee08fd4324a92f3e2ae8626ebf51d8393197c99f962",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2/ensemble.json": "77177527696f071dff254996cc83be57afd98b8bf839bf9b147464bd9b44dc8d"
+      },
+      "geometry_review": {
+        "key": "occ_2__pose1",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2__pose1/input.xyz",
+        "xyz_sha256": "0016655167c460ece9d8bee08fd4324a92f3e2ae8626ebf51d8393197c99f962",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 105,
+        "bond_length_range_A": [
+          1.077805938634799,
+          1.8138572758732974
+        ],
+        "covalent_bond_ratio_range": [
+          0.8514288990051057,
+          1.026122436981732
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_2_3__pose0",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_3__pose0/input.xyz": "a4d34f370e694fe9421b0e7dad5bfc0a6ecbe84bcbddfc86aa0be6e632b3b9ae",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2_3/ensemble.json": "78600b3bf253225609e76acb8c0530f55b836e3c1734aad7456a488a4ff84996"
+      },
+      "geometry_review": {
+        "key": "occ_2_3__pose0",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_3__pose0/input.xyz",
+        "xyz_sha256": "a4d34f370e694fe9421b0e7dad5bfc0a6ecbe84bcbddfc86aa0be6e632b3b9ae",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 119,
+        "bond_length_range_A": [
+          1.0784649307326577,
+          1.81294030225622
+        ],
+        "covalent_bond_ratio_range": [
+          0.8512303153113143,
+          1.025525349124205
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [
+          {
+            "site_i": 1,
+            "site_j": 2,
+            "centroid_distance_A": 4.427688645121139,
+            "interplane_angle_deg": 18.19357818098887,
+            "plane_separation_A": 3.29784979001892,
+            "lateral_offset_A": 2.954422701748487,
+            "nearest_core_atom_A": 3.221992110402575,
+            "core_planarity_rms_A": [
+              0.010136061984722567,
+              0.0014445203891932854
+            ],
+            "stack_geometry": true
+          }
+        ],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_2_3__pose1",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_3__pose1/input.xyz": "7c4fc005fbf6536c7c6a6041f82f9493f74884c6a93c01aadc5d5919739f9d6c",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2_3/ensemble.json": "78600b3bf253225609e76acb8c0530f55b836e3c1734aad7456a488a4ff84996"
+      },
+      "geometry_review": {
+        "key": "occ_2_3__pose1",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_3__pose1/input.xyz",
+        "xyz_sha256": "7c4fc005fbf6536c7c6a6041f82f9493f74884c6a93c01aadc5d5919739f9d6c",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 119,
+        "bond_length_range_A": [
+          1.0783351904086265,
+          1.8064555919417868
+        ],
+        "covalent_bond_ratio_range": [
+          0.8513115883566944,
+          1.025045990872492
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [
+          {
+            "site_i": 1,
+            "site_j": 2,
+            "centroid_distance_A": 16.36305762110504,
+            "interplane_angle_deg": 82.82032090439132,
+            "plane_separation_A": 5.488600597217443,
+            "lateral_offset_A": 15.415087356088126,
+            "nearest_core_atom_A": 12.509313977365581,
+            "core_planarity_rms_A": [
+              0.002863522316793296,
+              0.003181084081139214
+            ],
+            "stack_geometry": false
+          }
+        ],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_2_4__pose0",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_4__pose0/input.xyz": "aef3697da8ae1b375154ba9d558d8a24fa46717eaa4b164c861012406c58c761",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2_4/ensemble.json": "9f9b5c72a0fcdbec0261bdfd4efa6badc629dd25487c4d25394bc0fe82bd1efc"
+      },
+      "geometry_review": {
+        "key": "occ_2_4__pose0",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_4__pose0/input.xyz",
+        "xyz_sha256": "aef3697da8ae1b375154ba9d558d8a24fa46717eaa4b164c861012406c58c761",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 119,
+        "bond_length_range_A": [
+          1.0787642566101479,
+          1.813187067568923
+        ],
+        "covalent_bond_ratio_range": [
+          0.8513374486737224,
+          1.0241015382580243
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [
+          {
+            "site_i": 1,
+            "site_j": 2,
+            "centroid_distance_A": 20.368504709481204,
+            "interplane_angle_deg": 58.644561844810255,
+            "plane_separation_A": 9.790996417671412,
+            "lateral_offset_A": 17.860917480614024,
+            "nearest_core_atom_A": 16.258235143651387,
+            "core_planarity_rms_A": [
+              0.0028048938629299503,
+              0.003785155296809239
+            ],
+            "stack_geometry": false
+          }
+        ],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_2_4__pose1",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_4__pose1/input.xyz": "02b72bbf13c2cdf87ca37a1286b59fbc4921ad5406795cbac3dc7abf495994f9",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2_4/ensemble.json": "9f9b5c72a0fcdbec0261bdfd4efa6badc629dd25487c4d25394bc0fe82bd1efc"
+      },
+      "geometry_review": {
+        "key": "occ_2_4__pose1",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_4__pose1/input.xyz",
+        "xyz_sha256": "02b72bbf13c2cdf87ca37a1286b59fbc4921ad5406795cbac3dc7abf495994f9",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 119,
+        "bond_length_range_A": [
+          1.07798303732724,
+          1.8118071388678334
+        ],
+        "covalent_bond_ratio_range": [
+          0.8506577778901765,
+          1.0253221863963926
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [
+          {
+            "site_i": 1,
+            "site_j": 2,
+            "centroid_distance_A": 4.670000550090778,
+            "interplane_angle_deg": 8.863429922602654,
+            "plane_separation_A": 3.1727236676337274,
+            "lateral_offset_A": 3.426766648997997,
+            "nearest_core_atom_A": 3.2582201095842076,
+            "core_planarity_rms_A": [
+              0.004662472056747413,
+              0.004477169358670802
+            ],
+            "stack_geometry": true
+          }
+        ],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_3__pose0",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_3__pose0/input.xyz": "95a40c3ea70b91da8aae2c7dbdd4026be3526225c562cb735f8597f1beeaa065",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_3/ensemble.json": "026828141fc3bba03f9e5e289bce6419c5fc5cca75a07219b74d1f5dd77ec0a6"
+      },
+      "geometry_review": {
+        "key": "occ_3__pose0",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_3__pose0/input.xyz",
+        "xyz_sha256": "95a40c3ea70b91da8aae2c7dbdd4026be3526225c562cb735f8597f1beeaa065",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 105,
+        "bond_length_range_A": [
+          1.078748387648985,
+          1.814812051193652
+        ],
+        "covalent_bond_ratio_range": [
+          0.8514253906916649,
+          1.0233929983366699
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_3__pose1",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_3__pose1/input.xyz": "fd53eee3c63beedf060a7eb07fb2b4ebf956ca68a9877095ce7b609a6f963fb2",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_3/ensemble.json": "026828141fc3bba03f9e5e289bce6419c5fc5cca75a07219b74d1f5dd77ec0a6"
+      },
+      "geometry_review": {
+        "key": "occ_3__pose1",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_3__pose1/input.xyz",
+        "xyz_sha256": "fd53eee3c63beedf060a7eb07fb2b4ebf956ca68a9877095ce7b609a6f963fb2",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 105,
+        "bond_length_range_A": [
+          1.0786054055430545,
+          1.8120953935326147
+        ],
+        "covalent_bond_ratio_range": [
+          0.8512741432686507,
+          1.0259236619740715
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_4__pose0",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_4__pose0/input.xyz": "9808eb5f10bd54fbbbbcf7d7d2d17aa6bd1401cd21a3b49a0e14d04d6fc352fe",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_4/ensemble.json": "5092a55323b35231621a0dbba7232f7734db751eb0a4b5b765cd36ec851aca4b"
+      },
+      "geometry_review": {
+        "key": "occ_4__pose0",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_4__pose0/input.xyz",
+        "xyz_sha256": "9808eb5f10bd54fbbbbcf7d7d2d17aa6bd1401cd21a3b49a0e14d04d6fc352fe",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 105,
+        "bond_length_range_A": [
+          1.0787508908636614,
+          1.8101902196516029
+        ],
+        "covalent_bond_ratio_range": [
+          0.851492380239776,
+          1.023699343531136
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_4__pose1",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_4__pose1/input.xyz": "102945251ade4eb5abcc926b6f7c114e3c3eafac6c54416f8a5fda54fc2bfc38",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_4/ensemble.json": "5092a55323b35231621a0dbba7232f7734db751eb0a4b5b765cd36ec851aca4b"
+      },
+      "geometry_review": {
+        "key": "occ_4__pose1",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_4__pose1/input.xyz",
+        "xyz_sha256": "102945251ade4eb5abcc926b6f7c114e3c3eafac6c54416f8a5fda54fc2bfc38",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 105,
+        "bond_length_range_A": [
+          1.0787320094085944,
+          1.8129348638004583
+        ],
+        "covalent_bond_ratio_range": [
+          0.8514595087389268,
+          1.025857486995319
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_none__pose0",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_none__pose0/input.xyz": "6b66c7afcc63f7bd5c1b5ef9f1c7a12544a6c0f5497a487b7ffe3309f74c550c",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_none/ensemble.json": "6e047594ddeed9d9950980aa5eb0ba10de3cca3f2ceef8c2998d01532bf1d691"
+      },
+      "geometry_review": {
+        "key": "occ_none__pose0",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_none__pose0/input.xyz",
+        "xyz_sha256": "6b66c7afcc63f7bd5c1b5ef9f1c7a12544a6c0f5497a487b7ffe3309f74c550c",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 91,
+        "bond_length_range_A": [
+          1.0788611168519522,
+          1.8133875875603263
+        ],
+        "covalent_bond_ratio_range": [
+          0.9084114098484813,
+          1.0240610197116353
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    },
+    {
+      "key": "occ_none__pose1",
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_none__pose1/input.xyz": "1715bb8065d4d1c0009b12d2fff76e4d667314ddf5e9db8538f10316b1234804",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_none/ensemble.json": "6e047594ddeed9d9950980aa5eb0ba10de3cca3f2ceef8c2998d01532bf1d691"
+      },
+      "geometry_review": {
+        "key": "occ_none__pose1",
+        "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_none__pose1/input.xyz",
+        "xyz_sha256": "1715bb8065d4d1c0009b12d2fff76e4d667314ddf5e9db8538f10316b1234804",
+        "status": "geometry_sanity_pass",
+        "issues": [],
+        "topology": "ok",
+        "stereochemistry": "ok",
+        "fragments": 1,
+        "atoms": 91,
+        "bond_length_range_A": [
+          1.07886843310665,
+          1.8131831888231489
+        ],
+        "covalent_bond_ratio_range": [
+          0.9086252483372299,
+          1.0239248528816696
+        ],
+        "severe_nonbonded_overlaps": [],
+        "contact_metrics": [],
+        "Hessian_minimum_proven": false,
+        "electron_transfer_computed": false
+      }
+    }
+  ],
+  "source_plan": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/plan.json",
+  "source_plan_sha256": "5c629eb31f36a423ddd1b6130502a7c210504be77721438e7dbfb1bd3cacb441",
+  "coordinator_snapshot": {
+    "host": "lambda2",
+    "pid": 1614854,
+    "process_start": "1333598813",
+    "started": 1792535368.3421109,
+    "deadline": 1792708168.3421116,
+    "status": "energy_awaiting_resource_pilot",
+    "detail": {
+      "updated": 1792535368.3591733,
+      "graph_cases": 6,
+      "DFT_tasks": 12,
+      "completed_DFT": 0,
+      "completed_native_G": 0,
+      "energy_sampling_terminal": false,
+      "invalid_receipts": [],
+      "active_claims": {
+        "energy": [],
+        "thermal": []
+      },
+      "failures": {
+        "energy": 0,
+        "thermal": 0
+      },
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_spacing_pilot",
+      "source_plan_sha256": "5c629eb31f36a423ddd1b6130502a7c210504be77721438e7dbfb1bd3cacb441",
+      "physical_scope": "Conditional molecular proxy; no experimental occupancy weights, whole-bead free energy or electron-transfer rate"
+    }
+  },
+  "calculation_status": {
+    "updated": 1792535368.3591733,
+    "graph_cases": 6,
+    "DFT_tasks": 12,
+    "completed_DFT": 0,
+    "completed_native_G": 0,
+    "energy_sampling_terminal": false,
+    "invalid_receipts": [],
+    "active_claims": {
+      "energy": [],
+      "thermal": []
+    },
+    "failures": {
+      "energy": 0,
+      "thermal": 0
+    },
+    "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_spacing_pilot",
+    "source_plan_sha256": "5c629eb31f36a423ddd1b6130502a7c210504be77721438e7dbfb1bd3cacb441",
+    "physical_scope": "Conditional molecular proxy; no experimental occupancy weights, whole-bead free energy or electron-transfer rate"
+  },
+  "limits": [
+    "Initial phthalimide method control",
+    "No experimental occupancy weights",
+    "Native G requires an independent pilot and thermal QC",
+    "No pure motif pair energy, coupling, yield or rate"
+  ],
+  "local_links_checked": 86,
+  "local_links_missing": [],
+  "environment_manifest": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/environment.json"
+}

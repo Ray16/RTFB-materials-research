@@ -7,6 +7,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | --- | --- | --- |
 | Grafting free energies for all 75 candidates | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |
 | Polymer-fragment and interaction models | [3D interaction report](polymer_models/index.html) | [Method/records](polymer_models/README.md) · [Interaction status](polymer_models/interaction_status.json) · [Graph inventory](polymer_models/current.csv) |
+| Graft spacing and conditional grafting framework | [Exact occupancy cases and report](polymer_models/campaigns/2026-10-20_spacing_pilot/index.html) | [Reproduction guide](../docs/POLYMER_SPACING.md) · [Current pointer](polymer_models/spacing_current.json) · [Calculation status](polymer_models/campaigns/2026-10-20_spacing_pilot/status.json) |
 | Candidate redox properties and comparisons | [Candidates](candidates/README.md) | [Workbook](candidates/latest.xlsx) · [All candidates](candidates/figures/data/all_candidates.csv) |
 | Maintained figures and molecular structures | [Figure guide](candidates/figures/README.md) | [Comparison browser](candidates/figures/index.html) |
 | Measured/calculated redox validation | [Validation guide](validation/README.md) | [Figure](figures/validation/matched_parent_validation.pdf) · [Actual values](figures/validation/matched_parent_validation.csv) |
@@ -37,6 +38,13 @@ found no flagged sanity issues in 27 starts and 17 completed DFT structures.
 A separate [checkpointed ten-case recovery](polymer_models/campaigns/2026-10-20_geometry_recovery/plan.json)
 addresses the original 100-step nonconvergences; use the current interaction status
 for actual progress. All DFT geometry/energy work uses SMD acetonitrile.
+
+The [configurable spacing framework](../docs/POLYMER_SPACING.md) now builds matched
+adjacent/separated occupancy controls and keeps electronic nonadditivity separate
+from conditional grafting ΔG. Its first phthalimide method-control panel has six
+graphs and twelve qualified xTB warm starts, frozen for quantum evaluation.
+Spacing DFT and native G are pending the resource-gated calculation stages;
+prepared structures do not establish physical interaction strength or feasibility.
 
 ## Calculation records and provenance
 

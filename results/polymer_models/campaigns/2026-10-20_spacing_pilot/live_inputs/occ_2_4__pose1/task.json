@@ -1,0 +1,93 @@
+{
+  "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+  "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+  "repeat_units": 5,
+  "reactive_sites": [
+    2,
+    3,
+    4
+  ],
+  "occupied_sites": [
+    2,
+    4
+  ],
+  "site_states": [
+    "styrene",
+    "grafted",
+    "benzyl_chloride",
+    "grafted",
+    "styrene"
+  ],
+  "backbone_stereo_tags": [
+    "CW",
+    "CW",
+    "CW",
+    "CW"
+  ],
+  "backbone_stereo_fingerprint": [
+    [
+      2,
+      -1
+    ],
+    [
+      4,
+      -1
+    ],
+    [
+      6,
+      -1
+    ],
+    [
+      8,
+      -1
+    ]
+  ],
+  "backbone_carbon_count": 10,
+  "backbone_CC_bonds": 9,
+  "chain_ends": 2,
+  "atoms": 119,
+  "charge": 0,
+  "model_loading_per_repeat": 0.4,
+  "model_conversion_per_reactive_site": 0.6666666666666666,
+  "graph_sha256": "3d9738f5273e88472ce9340bb680dc2d42e8862c01559442999f19a8d7b982f4",
+  "key": "occ_2_4__pose1",
+  "candidate_id": "exp_phthalimide_control",
+  "model_key": "occ_2_4",
+  "model_type": "covalent_oligomer",
+  "repeats": 5,
+  "stereoisomer": "common_mapped_backbone",
+  "target": "pose1",
+  "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+  "pi_groups": [
+    [
+      21,
+      22,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30
+    ],
+    [
+      47,
+      48,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56
+    ]
+  ],
+  "mult": 1,
+  "role": "interaction_method_control; not synthesis admission",
+  "active_basis_functions": 2940,
+  "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_4__pose1/input.xyz",
+  "input_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_4__pose1/input.xyz": "02b72bbf13c2cdf87ca37a1286b59fbc4921ad5406795cbac3dc7abf495994f9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2_4/ensemble.json": "9f9b5c72a0fcdbec0261bdfd4efa6badc629dd25487c4d25394bc0fe82bd1efc"
+  }
+}
