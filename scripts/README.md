@@ -55,6 +55,15 @@ recovery. `validation/audit_polymer_geometries.py` reviews bond geometry and sev
 clashes alongside the existing topology/stereochemistry gates. Evaluated trial
 geometries are saved without claiming convergence or a physical minimum.
 
+`validation/check_oligomer_topology.py` independently checks the open styrene
+backbone and actual XYZ connectivity; the check is also enforced during conformer
+preparation. `plotting/polymer_models/oligomer_summary.py` maintains the exact
+construction, checked geometry and energy figures at
+[`results/polymer_models/summary.html`](../results/polymer_models/summary.html).
+`pipeline/polymer_fragment_interactions.py` implements fixed-geometry intact-
+fragment SPs and the interaction/deformation energy cycle in the same SMD(MeCN)
+electronic protocol. These quantities are not pure redox-core interaction energies.
+
 The finite base-assisted sensitivity pilot uses
 [`pipeline/base_assisted_grafting.py`](pipeline/base_assisted_grafting.py). Its
 `collect` action verifies completed components and refreshes the maintained

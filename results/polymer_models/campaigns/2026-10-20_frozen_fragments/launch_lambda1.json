@@ -1,0 +1,235 @@
+{
+  "host": "lambda1",
+  "created": 1792531919.8663414,
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 0.376953125,
+    "available_RAM_bytes": 524772442112,
+    "minimum_RAM_GiB": 192
+  },
+  "plan_sha256": "16bd8b266925595b6a30b14b24f6aae86922412ffe4929e68cdc5225761e4de4",
+  "workers": [
+    {
+      "gpu": 1,
+      "device": {
+        "index": 1,
+        "uuid": "GPU-acfb23c0-7163-580e-11cd-370e35867833",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpus": [
+        0,
+        1
+      ],
+      "gate_pid": 525252,
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "1",
+        "--label",
+        "redox-frozen-fragments",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/reserved_lambda1_gpu1",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_fragment_interactions.py",
+        "worker"
+      ]
+    },
+    {
+      "gpu": 2,
+      "device": {
+        "index": 2,
+        "uuid": "GPU-7f3f747c-971a-4267-719f-e3d850db3f89",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpus": [
+        2,
+        3
+      ],
+      "gate_pid": 525388,
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "2,3",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "2",
+        "--label",
+        "redox-frozen-fragments",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/reserved_lambda1_gpu2",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_fragment_interactions.py",
+        "worker"
+      ]
+    },
+    {
+      "gpu": 3,
+      "device": {
+        "index": 3,
+        "uuid": "GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpus": [
+        4,
+        5
+      ],
+      "gate_pid": 525531,
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "4,5",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "3",
+        "--label",
+        "redox-frozen-fragments",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/reserved_lambda1_gpu3",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_fragment_interactions.py",
+        "worker"
+      ]
+    },
+    {
+      "gpu": 4,
+      "device": {
+        "index": 4,
+        "uuid": "GPU-87f454bb-e27d-5274-da01-09db9787f2b3",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpus": [
+        6,
+        7
+      ],
+      "gate_pid": 525715,
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "6,7",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "4",
+        "--label",
+        "redox-frozen-fragments",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/reserved_lambda1_gpu4",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_fragment_interactions.py",
+        "worker"
+      ]
+    },
+    {
+      "gpu": 5,
+      "device": {
+        "index": 5,
+        "uuid": "GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpus": [
+        16,
+        17
+      ],
+      "gate_pid": 525935,
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "16,17",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "5",
+        "--label",
+        "redox-frozen-fragments",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/reserved_lambda1_gpu5",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_fragment_interactions.py",
+        "worker"
+      ]
+    },
+    {
+      "gpu": 6,
+      "device": {
+        "index": 6,
+        "uuid": "GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "cpus": [
+        18,
+        19
+      ],
+      "gate_pid": 526126,
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "18,19",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "6",
+        "--label",
+        "redox-frozen-fragments",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/reserved_lambda1_gpu6",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_fragment_interactions.py",
+        "worker"
+      ]
+    }
+  ]
+}

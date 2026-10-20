@@ -16,6 +16,7 @@ import numpy as np
 from rdkit import Chem
 
 from redox.build.oligomers import decorate_sites
+from redox.build.oligomer_topology import chain_topology
 from redox.build.polymer_contacts import starting_ensemble, enantiomer_representatives, contact_metrics, plane
 from redox.build.structures import to_xyz
 from redox.core.common import ROOT, HARTREE_EV
@@ -158,6 +159,7 @@ def main():
         for n in (1,2,3):
             variants=enantiomer_representatives(decorate_sites(row['frag'],n,range(1,n+1)))
             for i,smi in enumerate(variants):
+                chain_topology(smi,n)
                 cases.append(dict(key=key+f'__n{n}__stereo{i}',candidate_id=key,smiles=smi,
                                   fragment=row['frag'],repeats=n,stereoisomer=i,model_type='covalent_oligomer'))
     atomic_write_json(BASE/'cases.json',dict(cases=cases,scope='Neutral method controls, not new synthesis nominations'))

@@ -3,6 +3,15 @@
 All result categories: [results index](../README.md).
 
 **Open the [rotatable 3D interaction report](index.html)** for the current pilot.
+The [figure overview](summary.html) shows exact model construction, checked 3D
+geometries and key electronic-energy results, with PNG, PDF and SVG downloads.
+The [independent numerical review](screening_review.json) reconstructs the
+reported energy differences and distinguishes final contact classes from the
+starting pose labels.
+The [connectivity review](model_topology.json) independently checks the open
+backbone and para graft sites against all 27 starting XYZs and 17 completed DFT
+XYZs. The construction drawing highlights that backbone in purple. A trimer has
+six backbone carbons, five C–C bonds and two ends; it is not a cyclic triangle.
 [Interaction progress](interaction_status.json) and [reviewed results](interaction_checked.json)
 are separate from the [559-graph inventory](current.csv) and its [status](status.json).
 
@@ -15,8 +24,26 @@ rates; the existing neutral electronic-energy pilot has not computed those rates
 No numerical interaction cutoff is validated. Preserve the current results as
 method controls, without treating stacking as a candidate advantage.
 
-The current finite DFT pilot attempted 27 cases: 17 structurally reviewed
-stationary structures and 10 preserved failures, with no active queue claims.
+The central question is **interaction strength between nearby motifs**, rather
+than the occurrence of a stacked geometry. The current separate-segment
+association energies include both full-segment interactions and deformation.
+The [six-fragment SP campaign](campaigns/2026-10-20_frozen_fragments/plan.json)
+separates these terms at the existing checked pair coordinates, retaining all
+original atoms and adding no caps. Its [current decomposition](interaction_decomposition.json)
+now has six qualified SPs and three checked decompositions, with no failed SPs.
+Frozen interaction energies are -55.25/-44.30 kJ/mol for the two phthalimide
+starting poses and -50.87 kJ/mol for the PMDI antiparallel start; deformation costs
+are +0.56/+0.49/+0.38 kJ/mol. See the [decomposition figure](figures/fragment_decomposition.pdf).
+These are still full-segment, SMD electronic
+energies without BSSE correction; they do not isolate only the redox cores.
+
+For a covalent chain, the matched two-site cycle below measures site nonadditivity.
+Simply subtracting two capped monomer energies from a covalent dimer would not
+give a balanced interaction quantity. Conformation, backbone contributions,
+solvent treatment and electronic coupling must remain separate in interpretation.
+
+The original finite DFT pilot attempted 27 cases: 17 structurally reviewed
+stationary structures and 10 preserved failures; its original queue is terminal.
 It includes monomers, covalent dimers and trimers, and two separate-segment
 complexes per motif. No tetramers were prepared or computed in this pilot.
 Interaction free energies, charged-state coupling and redox shifts remain unfinished.
@@ -30,6 +57,7 @@ Follow [interaction status](interaction_status.json) for actual recovery progres
 | Stage | Versioned implementation | Recorded outputs and checks |
 | --- | --- | --- |
 | Build H-capped polystyrene chains and attach exact motifs | `src/redox/build/oligomers.py` | Repeat count, site occupancy, exact SMILES and backbone stereoisomers; current pilot uses 1–3 repeats |
+| Independently check backbone connectivity | `src/redox/build/oligomer_topology.py`, `scripts/validation/check_oligomer_topology.py` | Open 2n-carbon backbone, n alternating para graft sites and two chain ends; match full graphs to actual XYZ coordinates; enforced during preparation |
 | Generate open/stacked poses and conformer ensembles | `scripts/pipeline/prepare_pi_stacking.py`, `src/redox/build/polymer_contacts.py` | Unbiased/open/parallel/slipped/antiparallel seeds, then unconstrained GFN2-xTB/ALPB(MeCN); ring-core atom mapping retained |
 | Stage immutable warm starts | `scripts/pipeline/stage_polymer_conformers.py` | Connectivity, stereochemistry, input XYZ and source hashes; separate-segment pairs retain two intact molecular graphs |
 | Optimize and evaluate energy | `scripts/pipeline/run_pi_stacking.py`, `src/redox/qm/dft.py`, `src/redox/qm/sp.py` | r2SCAN-D4/SVP/SMD(MeCN) geometry; active wB97M-V/TZVPD/SMD electronic energy; independent solution gradient |
@@ -37,7 +65,8 @@ Follow [interaction status](interaction_status.json) for actual recovery progres
 | Audit physical geometry | `scripts/validation/audit_polymer_geometries.py`, `scripts/validation/review_polymer_interactions.py` | Composition, bond-length plausibility, severe clashes, full connectivity, stereochemistry, core contacts and active SP provenance |
 | Recover nonconvergence | `scripts/pipeline/recover_pi_stacking.py` | Separate frozen ten-case campaign; 400-step budget and tighter geometry SCF (1e-11), unchanged physical acceptance criteria; optimizer-returned coordinates saved even without convergence |
 | Collect and compare | `scripts/pipeline/collect_pi_stacking.py` | Reuse verified successes; admit only identity-matched recovery receipts; same-composition folding and atom-balanced segment association remain distinct |
-| Present results | `scripts/plotting/polymer_models/update_interaction_figures.py` | Maintained 3D viewer and energy comparisons; weak interactions are the design objective |
+| Separate interaction from deformation | `scripts/pipeline/polymer_fragment_interactions.py` | Six fixed-coordinate monomer SPs extracted from three intact segment pairs, without cutting bonds or adding caps; checked energy-cycle closure |
+| Present results | `scripts/plotting/polymer_models/update_interaction_figures.py`, `scripts/plotting/polymer_models/oligomer_summary.py` | Maintained 3D viewer, exact construction, explicit linear backbone and electronic-energy figures; automatically refreshed by the collector |
 
 The [geometry audit](../reviews/2026-10-20/polymer_geometry_recovery/geometry_audit.json)
 checked all 27 starts and 17 completed DFT geometries without flagged sanity issues.

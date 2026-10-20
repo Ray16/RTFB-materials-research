@@ -78,7 +78,7 @@ def main():
 <script src="assets/plotly.min.js"></script><style>
 body{font:16px/1.5 system-ui,sans-serif;max-width:1200px;margin:30px auto;padding:0 20px;color:#203040;background:#f8fafb}
 a{color:#0072B2}select{font:inherit;max-width:100%;padding:10px}#viewer{height:600px;width:100%;background:white}#metrics{overflow-wrap:anywhere}.plots{display:grid;grid-template-columns:1fr 1fr;gap:20px}.plots img{width:100%}.note{padding:14px;background:#fff4df;border-left:4px solid #b87500} @media(max-width:700px){.plots{display:block}#viewer{height:450px}}
-</style><h1>Polymer-site interactions</h1><p><a href="../README.md">All results</a> · <a href="README.md">Models and scope</a> · <a href="interaction_status.json">Current status</a></p>'''
+</style><h1>Polymer-site interactions</h1><p><a href="../README.md">All results</a> · <a href="README.md">Models and scope</a> · <a href="summary.html">Model construction and key results</a> · <a href="interaction_status.json">Current status</a></p>'''
     page+=f"<p><strong>{status['stationary_electronic_cases']}/{status['expected_DFT_cases']} stationary DFT electronic structures collected.</strong> Neutral NDI, PMDI and phthalimide controls; monomer, dimer, trimer and two-segment models.</p>"
     page+=f"<p>{status.get('prepared_DFT_inputs',0)}/27 DFT inputs ready. Large-model memory qualification: {html.escape(status['memory_pilot'])}.</p>"
     page+='<p class="note">These are method controls, not synthesis-shortlist admissions. Prepared and xTB views are previews. Electronic ΔE is distinct from interaction ΔG and does not establish an equilibrium stacking population or poor polymer performance.</p>'
@@ -100,6 +100,7 @@ document.getElementById('metrics').textContent=m.metrics.map(p=>'Sites '+p.site_
 Plotly.react('viewer',traces,{margin:{l:0,r:0,t:0,b:0},showlegend:false,scene:{aspectmode:'data',xaxis:{visible:false},yaxis:{visible:false},zaxis:{visible:false},camera:{eye:{x:1.5,y:1.5,z:1.1}}}},{responsive:true,displaylogo:false});}
 select.addEventListener('change',render);select.value=String(Math.max(0,models.findIndex(m=>m.label.includes('2 centers')&&m.label.endsWith('stacked'))));render();</script></html>'''
     temp=OUT/'index.html.tmp';temp.write_text(page);temp.replace(OUT/'index.html')
+    subprocess.run([sys.executable,str(ROOT/'scripts/plotting/polymer_models/oligomer_summary.py')],check=True)
     manifest=dict(source_sha256=hashlib.sha256((OUT/'interaction_checked.json').read_bytes()).hexdigest(),
                   producer_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),viewable_models=len(models),
                   browser_sha256=hashlib.sha256((OUT/'index.html').read_bytes()).hexdigest(),

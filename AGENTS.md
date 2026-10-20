@@ -30,6 +30,12 @@ interruption or nonconvergence does not erase progress. Checkpoints are unqualif
 until the normal convergence and physical QC pass. Keep oligomer construction,
 optimization, energy evaluation and follow-up analysis in the versioned pipeline.
 
+For oligomers, quantify how strongly neighboring motifs interact; stacking
+geometry alone is not an interaction-strength measurement. Prefer weak unwanted
+intersite/segment interactions. Verify the intended open polymer backbone and
+graft-site connectivity in both drawings and actual XYZ structures; distinguish
+motif interactions, backbone/cap contributions, deformation and electronic coupling.
+
 ## Candidate results and slides
 
 For a newly introduced candidate, screen the precursor and attachment route before
