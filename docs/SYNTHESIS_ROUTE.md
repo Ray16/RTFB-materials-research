@@ -18,9 +18,11 @@ Grafting feasibility is a selection gate. If a balanced reaction remains strongl
 unfavorable under defined experimental conditions, that route should not enter
 the synthesis shortlist regardless of capacity or potential. Positive free
 energies for the current neutral HCl-producing reference do not yet quantify a
-base-assisted experimental reaction. The highlighted BQ/AQ designs are therefore
-on hold for synthesis selection while that route is unresolved. Their computed
-redox descriptors remain available, separately labeled. A near-zero reference
+base-assisted experimental reaction. The completed DBU/DIPEA pilot gives favorable
+modeled reactions for both highlighted BQ designs and AQ-1-O: **base required;
+retained for evaluation**. AQ-2-O/6-OMe has unresolved precursor QC. Attachment
+selectivity and yield remain untested. Their computed redox descriptors remain
+available, separately labeled. A near-zero reference
 value for another candidate does not establish a feasible or selective route.
 The current decisions are in
 [the synthesis assessment](../results/grafting/selection_assessment.json).
@@ -43,6 +45,14 @@ of transfer to our structures, see [practical grafting](PRACTICAL_GRAFTING.md).
    in redox behavior. Include open/stacked conformers, backbone stereochemistry
    and separate-segment contacts. Charged states need their own spin and ionic-
    environment models.
+
+The oligomer selection objective is **weak interaction between redox sites and
+polymer segments** (user clarification, 2026-10-20). Persistent strong pi stacking
+and undesired intersite electron transfer are risks. Strongly negative modeled
+association energies are concerns to investigate, not benefits to maximize.
+Geometric contacts and electronic energies do not by themselves establish an
+electron-transfer rate; coupling and charged-state behavior require separate
+evaluation. Whole-bead contacts remain beyond the current molecular models.
 
 Run `scripts/pipeline/screen_grafting_routes.py` to produce the prospective
 [route screen](../results/grafting/route_screen.json) from the evidence file.

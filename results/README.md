@@ -24,6 +24,11 @@ both BQ designs and AQ-1-O as **base required**. Their modeled base-assisted
 reactions are favorable; positive HCl-reference values alone do not exclude them.
 Selectivity and yield remain untested. See the [current selection assessment](grafting/selection_assessment.json).
 
+The [oligomer screen](polymer_models/README.md) targets weak intersite/segment
+interaction. Strong persistent stacking and undesired intersite electron transfer
+are design concerns. Its monomer/dimer/trimer pilot has no tetramers; neutral
+electronic energies do not yet establish interaction free energies or transfer rates.
+
 ## Calculation records and provenance
 
 Paths below are relative to the project root,

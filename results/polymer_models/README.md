@@ -6,6 +6,21 @@ All result categories: [results index](../README.md).
 [Interaction progress](interaction_status.json) and [reviewed results](interaction_checked.json)
 are separate from the [559-graph inventory](current.csv) and its [status](status.json).
 
+**Screening objective (user clarification, 2026-10-20): prefer weakly interacting
+redox sites and polymer segments.** Strong persistent pi stacking and undesired
+intersite electron transfer are design risks. A more negative association or
+folding energy is a warning to investigate, not a selection benefit. Track
+stacking propensity separately from electronic coupling and electron-transfer
+rates; the existing neutral electronic-energy pilot has not computed those rates.
+No numerical interaction cutoff is validated. Preserve the current results as
+method controls, without treating stacking as a candidate advantage.
+
+The current finite DFT pilot attempted 27 cases: 17 structurally reviewed
+stationary structures and 10 preserved failures, with no active queue claims.
+It includes monomers, covalent dimers and trimers, and two separate-segment
+complexes per motif. No tetramers were prepared or computed in this pilot.
+Interaction free energies, charged-state coupling and redox shifts remain unfinished.
+
 The prepared inventory contains explicitly hydrogen-capped polystyrene fragments
 with one, two or three repeat units. Backbone stereochemical alternatives are
 enumerated; existing pendant stereochemistry is retained. These are covalent
