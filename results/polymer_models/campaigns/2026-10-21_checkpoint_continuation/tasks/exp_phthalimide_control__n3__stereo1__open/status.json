@@ -1,0 +1,133 @@
+{
+  "task": {
+    "key": "exp_phthalimide_control__n3__stereo1__open",
+    "candidate_id": "exp_phthalimide_control",
+    "model_key": "exp_phthalimide_control__n3__stereo1",
+    "model_type": "covalent_oligomer",
+    "repeats": 3,
+    "stereoisomer": 1,
+    "target": "open",
+    "smiles": "C[C@@H](C[C@H](CCc1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "atoms": 101,
+    "charge": 0,
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/live_inputs/exp_phthalimide_control__n3__stereo1__open/input.xyz",
+    "pi_groups": [
+      [
+        11,
+        12,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      [
+        29,
+        30,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      [
+        47,
+        48,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    ],
+    "seed_stage": "converged_topology_checked_xTB_ALPB",
+    "input_stereochemistry_QC": "ok",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/exp_phthalimide_control__n3__stereo1__open/rest/geometry_checkpoints/optimizer_returned.xyz": "1b49a9e5f96514ef8dc96fe0db5e3dfdfa8f0b01c2f938bb4a53f337aff9a606",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/live_inputs/exp_phthalimide_control__n3__stereo1__open/task.json": "ac1c79b1e3ab35940559d47b089aef065e84c2c6ba46e6aaf703ddf9e2517eed",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/live_inputs/exp_phthalimide_control__n3__stereo1__open/input.xyz": "1b49a9e5f96514ef8dc96fe0db5e3dfdfa8f0b01c2f938bb4a53f337aff9a606"
+    },
+    "recovery_of": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/exp_phthalimide_control__n3__stereo1__open",
+    "checkpoint_continuation_of": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/exp_phthalimide_control__n3__stereo1__open/rest/geometry_checkpoints/optimizer_returned.xyz"
+  },
+  "status": "state_records_verified",
+  "stage": "dft_geometry",
+  "started": 1792565118.9432933,
+  "host": "lambda13",
+  "pid": 379097,
+  "free_energy_computed": false,
+  "minimum_Hessian_tested": false,
+  "synthesis_admission": false,
+  "E_smd_eV": -70314.86417143205,
+  "gradient_max_Ha_Bohr": 7.307882074204713e-05,
+  "contact_metrics": [
+    {
+      "site_i": 1,
+      "site_j": 2,
+      "centroid_distance_A": 4.251363887407255,
+      "interplane_angle_deg": 17.896983131487644,
+      "plane_separation_A": 3.3968555816812973,
+      "lateral_offset_A": 2.5564559570528766,
+      "nearest_core_atom_A": 3.2353620420541636,
+      "core_planarity_rms_A": [
+        0.01090305925150085,
+        0.0055484688535121325
+      ],
+      "stack_geometry": true
+    },
+    {
+      "site_i": 1,
+      "site_j": 3,
+      "centroid_distance_A": 9.378007019647814,
+      "interplane_angle_deg": 51.62452104752674,
+      "plane_separation_A": 6.01140598586646,
+      "lateral_offset_A": 7.1979173191731345,
+      "nearest_core_atom_A": 7.446063779427838,
+      "core_planarity_rms_A": [
+        0.01090305925150085,
+        0.004538144110394114
+      ],
+      "stack_geometry": false
+    },
+    {
+      "site_i": 2,
+      "site_j": 3,
+      "centroid_distance_A": 5.28568477405537,
+      "interplane_angle_deg": 33.72800754282618,
+      "plane_separation_A": 3.409454340518524,
+      "lateral_offset_A": 4.039069772930416,
+      "nearest_core_atom_A": 3.6192389972142465,
+      "core_planarity_rms_A": [
+        0.0055484688535121325,
+        0.004538144110394114
+      ],
+      "stack_geometry": false
+    }
+  ],
+  "stacked_pairs": 1,
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest",
+  "topology_QC": "ok",
+  "observed_peak_GPU_MiB": 78188,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/opt.xyz": "831dc275f803f944e98502712026556a083b4c297fb7e734581ce59ecb21ddde",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/result.json": "d57a3fdb51489d8fad15503071b80e662b1d983625a7b4b12e60f8c460a5e4d0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/geometry_checkpoints/last_evaluated.xyz": "16a8d44f8359444e766bf6e146ec97e29f60376399de776f2a68d488025d3b14",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/geometry_checkpoints/evaluated_trajectory.xyz": "e07bb87525fb74276b24a7679d8f94baa72e90a4035e764de4d6cf477e524484",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/geometry_checkpoints/latest.json": "8460ad504bfd8ca557d0f7efdbf7a924c58e48269286768b68f5b7902cd419fd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/geometry_checkpoints/optimizer_returned.xyz": "18a8194ae783fd848fe9575bc2fa1d09f8cbb35e30cdc07a2f84d1ab69b06216",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/geometry_checkpoints/optimizer_returned.json": "3dc05b6f0602150dbcd5a786cd620f02e9a48858c42c0fd0e7eec0b07670b897",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation/exp_phthalimide_control__n3__stereo1__open/rest/sp/d8085e7bb18f1754.json": "828a74b87a5e5fabb80ba59f07f59ba5b654bd7c80dd158f2be49b2aafa89f9d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/tasks/exp_phthalimide_control__n3__stereo1__open/geometry_review.json": "e5f9f63828257e0f608cc0802436c2a950bed7cc5ba80b1a55db450405939df2"
+  },
+  "finished": 1792583821.4472232,
+  "geometry_sanity_review": "passed"
+}

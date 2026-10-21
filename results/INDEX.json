@@ -41,7 +41,7 @@
       "current": "results/polymer_models/interaction_checked.json",
       "status": "results/polymer_models/interaction_status.json",
       "scope": "Neutral covalent dimer/trimer and separate-segment electronic interaction pilot; graph inventory retained separately",
-      "calculation_state": "23 checked electronic structures; six recovery successes; three original recoveries active at continuation preparation; one exhausted trimer assigned a checkpoint continuation. See live status.",
+      "calculation_state": "25/27 checked electronic structures; eight recovery successes including the phthalimide checkpoint; two PMDI checkpoint continuations submitted. Native G pending; see live status.",
       "browser": "results/polymer_models/index.html",
       "interaction_results": "results/polymer_models/interaction_checked.json",
       "interaction_status": "results/polymer_models/interaction_status.json",
@@ -69,29 +69,46 @@
       "model_topology": "results/polymer_models/model_topology.json",
       "fragment_decomposition_figure": "results/polymer_models/figures/fragment_decomposition.pdf",
       "fragment_campaign_status": "Complete: six frozen-fragment SPs qualified; three electronic interaction/deformation cycles close. Full segments, BSSE uncorrected.",
-      "topology_validation": "Open linear backbones and para sites checked against 27 initial and 17 completed XYZ graphs; no trimer ring closure",
+      "topology_validation": "Open linear backbones and para sites checked against 27 initial and 25 completed XYZ graphs; no trimer ring closure",
       "spacing_framework": {
         "schema": 1,
         "guide": "docs/POLYMER_SPACING.md",
         "config": "config/polymer_spacing_pilot.json",
-        "campaign": "results/polymer_models/campaigns/2026-10-21_spacing_continuation",
-        "plan": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/plan.json",
-        "current": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/current.json",
-        "status": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/status.json",
-        "browser": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/index.html",
-        "coordinator": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/coordinator.json",
-        "raw_root": "calcs/polymer_models/2026-10-21_spacing_continuation",
-        "state": "Source-preserving continuation; numerical memory pilot reviewed, full DFT and native G pending. Use coordinator and status for actual starts.",
+        "campaign": "results/polymer_models/campaigns/2026-10-21_spacing_memory_resume",
+        "plan": "results/polymer_models/campaigns/2026-10-21_spacing_memory_resume/plan.json",
+        "current": "results/polymer_models/campaigns/2026-10-21_spacing_memory_resume/current.json",
+        "status": "results/polymer_models/campaigns/2026-10-21_spacing_memory_resume/status.json",
+        "browser": "results/polymer_models/campaigns/2026-10-21_spacing_memory_resume/index.html",
+        "coordinator": "results/polymer_models/campaigns/2026-10-21_spacing_memory_resume/replay_coordinator.json",
+        "raw_root": "calcs/polymer_models/2026-10-21_spacing_memory_resume",
+        "state": "11 verified electronic conformers / 6 graphs; one preserved alternate-conformer OOM. Native G pending. Two full native Hessian replays gate a fresh thermal resource pilot.",
         "scope": "Neutral phthalimide method control; adjacent vs one-spacer site nonadditivity and conditional DBU-assisted grafting G; no synthesis admission",
-        "original_campaign": "results/polymer_models/campaigns/2026-10-20_spacing_pilot"
+        "original_campaign": "results/polymer_models/campaigns/2026-10-20_spacing_pilot",
+        "previous_campaign": "results/polymer_models/campaigns/2026-10-21_spacing_continuation",
+        "energy_cohort_campaign": "results/polymer_models/campaigns/2026-10-21_spacing_continuation",
+        "resume_review": "results/reviews/2026-10-21/polymer_resume/summary.json"
       },
       "checkpoint_continuation": {
         "plan": "results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/plan.json",
         "coordinator": "results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/coordinator.json",
         "raw_root": "calcs/polymer_models/2026-10-21_checkpoint_continuation",
-        "scope": "One checked saved trimer checkpoint; bounded optimizer reset, tighter SCF, unchanged physical gates"
+        "scope": "One checked saved trimer checkpoint; bounded optimizer reset, tighter SCF, unchanged physical gates",
+        "state": "Verified electronic receipt and physical geometry QC; Hessian untested",
+        "receipt": "results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/done/exp_phthalimide_control__n3__stereo1__open.json"
       },
-      "continuation_review": "results/reviews/2026-10-21/polymer_continuation/summary.json"
+      "continuation_review": "results/reviews/2026-10-21/polymer_resume/summary.json",
+      "remaining_checkpoint_continuations": [
+        {
+          "plan": "results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_open/plan.json",
+          "raw_root": "calcs/polymer_models/2026-10-21_checkpoint_pmdi_open",
+          "scope": "One audited saved trimer; fresh Cartesian optimizer, tighter SCF, bounded 200 steps; unchanged acceptance"
+        },
+        {
+          "plan": "results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_stacked/plan.json",
+          "raw_root": "calcs/polymer_models/2026-10-21_checkpoint_pmdi_stacked",
+          "scope": "One audited saved trimer; fresh Cartesian optimizer, tighter SCF, bounded 200 steps; unchanged acceptance"
+        }
+      ]
     },
     "candidates": {
       "guide": "results/candidates/README.md",

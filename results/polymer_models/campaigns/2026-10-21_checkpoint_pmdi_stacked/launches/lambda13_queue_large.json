@@ -1,0 +1,62 @@
+{
+  "host": "lambda13",
+  "role": "queue_large",
+  "status": "submitted_actual_starts_pending",
+  "created": 1792615810.1882336,
+  "resources": {
+    "online_cpus": 384,
+    "load_1m": 5.02783203125,
+    "available_RAM_bytes": 1574434590720,
+    "minimum_RAM_GiB": 32
+  },
+  "workers": [
+    {
+      "gpu": 4,
+      "device": {
+        "index": 4,
+        "uuid": "GPU-7313cbc9-b64b-7359-3d2e-e9e6c1b6ef52",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        6,
+        7
+      ],
+      "gate_pid": 1966862,
+      "process_start": "73314961",
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "6,7",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "4",
+        "--label",
+        "redox-pi-stacking",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_stacked/reserved_lambda13_gpu4_queue_large",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/resume_remaining_trimers.py",
+        "worker",
+        "--role",
+        "queue_large"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_stacked/controller_lambda13_gpu4_queue_large.log"
+    }
+  ],
+  "plan_sha256": "6a7ee6b83712d1800a9100d28cd14d78fa091193847f2160cdd9801d199ac00f",
+  "latest_resources": {
+    "online_cpus": 384,
+    "load_1m": 5.02783203125,
+    "available_RAM_bytes": 1574434590720,
+    "minimum_RAM_GiB": 32
+  }
+}

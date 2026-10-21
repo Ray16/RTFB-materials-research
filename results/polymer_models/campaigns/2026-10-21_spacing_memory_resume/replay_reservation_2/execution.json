@@ -1,0 +1,60 @@
+{
+  "status": "starting_reserved_command",
+  "host": "lambda13",
+  "gpu": 3,
+  "pid": 1961320,
+  "process_start": "73301743",
+  "interpreter": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/resume_polymer_thermal.py",
+    "replay",
+    "--mult",
+    "2"
+  ],
+  "started": 1792615678.0554256,
+  "scientific_outputs_verified": false,
+  "host_preflight": {
+    "online_cpus": 384,
+    "load_1m": 7.7421875,
+    "available_RAM_bytes": 1571737182208,
+    "minimum_RAM_GiB": 8
+  },
+  "gpu_preflight": {
+    "index": 3,
+    "uuid": "GPU-31e42837-2afb-0b14-c287-66eabb51d40e",
+    "name": "NVIDIA H100 NVL",
+    "memory_MiB": 95830.0,
+    "compute_capability": "9.0"
+  },
+  "cpu_affinity": [
+    2,
+    3
+  ],
+  "threads": 2,
+  "gate_argv": [
+    "/usr/bin/taskset",
+    "--cpu-list",
+    "2,3",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "3",
+    "--label",
+    "redox",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_memory_resume/replay_reservation_2",
+    "--probe",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/resume_polymer_thermal.py",
+    "replay",
+    "--mult",
+    "2"
+  ]
+}

@@ -2,6 +2,23 @@
 
 All result categories: [results index](../README.md).
 
+The [latest resume review](../reviews/2026-10-21/polymer_resume/summary.json)
+records 25/27 structurally checked electronic oligomers, including the completed
+phthalimide checkpoint continuation. Two exhausted PMDI trimers have separate
+bounded checkpoint continuations; their original attempts remain intact.
+The six-graph spacing panel has eleven checked conformers and one preserved
+memory failure. Electronic nonadditivity is −1.55 kJ/mol (adjacent) and −5.07 kJ/mol
+(one spacer), including conformational response. This limited sampling does not
+establish a general distance dependence or isolate redox-core pair binding.
+
+The first native-G pilot failed in a large solvent-tensor contraction. A
+[separate memory continuation](campaigns/2026-10-21_spacing_memory_resume/index.html)
+preserves that failure and all energy receipts. Full singlet and radical Hessian
+replays gate atom-block area contractions and the already qualified host-memory
+curvature adapter. The largest model must then pass the ordinary native-G pilot
+before expansion; CPU, GPU and measured host RAM constrain parallelism. Native G,
+conditional grafting G and Hessian-minimum claims remain pending.
+
 The [21 October continuation review](../reviews/2026-10-21/polymer_continuation/summary.json)
 records the resumed fourth task. The original spacing pilot completed both SCFs
 and its gradient, then exceeded the original 80-GiB guard. Its 89,062-MiB observed
@@ -16,14 +33,14 @@ The one exhausted phthalimide trimer has a separate
 its saved optimizer-returned geometry passes topology/stereo/clash checks. The
 bounded 200-step restart uses a fresh Cartesian optimizer and tighter geometry
 SCF (1e-12, gradient tolerance 1e-8), with the same acceptance criteria. Original
-attempts and other live recoveries are retained. Neither continuation is a
-completed result until its normal receipt and physical QC pass.
+attempts are retained. This checkpoint continuation now has a verified electronic
+receipt and physical geometry QC; its Hessian minimum has not been tested.
 
 The [polymer spacing framework](../../docs/POLYMER_SPACING.md) provides configurable
 motifs, reactive sites, occupancy patterns and matched controls. Open its
-[exact structures and conditional-grafting report](campaigns/2026-10-21_spacing_continuation/index.html)
+[exact structures and conditional-grafting report](campaigns/2026-10-21_spacing_memory_resume/index.html)
 or [stable current pointer](spacing_current.json). The first panel has six graphs
-and twelve qualified warm starts; quantum results remain pending. It evaluates
+and twelve qualified warm starts; eleven electronic conformers now qualify. It evaluates
 electronic nonadditivity and conditional grafting ΔG as separate dimensions.
 
 **Open the [rotatable 3D interaction report](index.html)** for the current pilot.
@@ -33,7 +50,7 @@ The [independent numerical review](screening_review.json) reconstructs the
 reported energy differences and distinguishes final contact classes from the
 starting pose labels.
 The [connectivity review](model_topology.json) independently checks the open
-backbone and para graft sites against all 27 starting XYZs and 17 completed DFT
+backbone and para graft sites against all 27 starting XYZs and 25 completed DFT
 XYZs. The construction drawing highlights that backbone in purple. A trimer has
 six backbone carbons, five C–C bonds and two ends; it is not a cyclic triangle.
 [Interaction progress](interaction_status.json) and [reviewed results](interaction_checked.json)

@@ -43,8 +43,16 @@ The [configurable spacing framework](../docs/POLYMER_SPACING.md) now builds matc
 adjacent/separated occupancy controls and keeps electronic nonadditivity separate
 from conditional grafting ΔG. Its first phthalimide method-control panel has six
 graphs and twelve qualified xTB warm starts, frozen for quantum evaluation.
-Spacing DFT and native G are pending the resource-gated calculation stages;
-prepared structures do not establish physical interaction strength or feasibility.
+The spacing panel now has 11 checked electronic conformers covering all six graphs;
+one alternate conformer failed with GPU memory exhaustion. Sampled electronic
+nonadditivity is −1.55 kJ/mol for adjacent grafts and −5.07 kJ/mol with one spacer.
+These include conformational response and do not establish a spacing trend or a
+pure motif binding energy. Native G remains blank: the first thermal pilot ran out
+of memory. The [memory continuation](polymer_models/campaigns/2026-10-21_spacing_memory_resume/index.html)
+reuses the electronic receipts and requires full singlet/radical Hessian replays
+before a fresh large-model thermal pilot. See the [resume review](reviews/2026-10-21/polymer_resume/summary.json).
+The earlier oligomer panel has 25/27 checked structures; two saved PMDI trimer
+checkpoints are undergoing bounded optimizer resets.
 
 ## Calculation records and provenance
 
@@ -61,7 +69,7 @@ Paths below are relative to the project root,
 | Scoped validation campaigns and their records | [results/validation/](validation/README.md) |
 | Immutable table exports, checks and publication evidence | `results/reviews/`; follow [LATEST_REVIEW.json](LATEST_REVIEW.json) to the relevant scope |
 | Grafting components and reaction identities | [results/grafting/species.json](grafting/species.json) · [reactions.json](grafting/reactions.json); [submitted campaign](grafting/campaigns/2026-10-19_mecn_reference/plan.json) with raw root `calcs/grafting/2026-10-19_mecn_reference/` |
-| Oligomer graphs, occupancy and stereochemistry | [results/polymer_models/current.csv](polymer_models/current.csv); quantum calculations are pending |
+| Oligomer graphs, occupancy and stereochemistry | [results/polymer_models/current.csv](polymer_models/current.csv); checked quantum outputs: [interaction status](polymer_models/interaction_status.json) and [spacing pointer](polymer_models/spacing_current.json) |
 
 The category status files own completion counts. A prepared structure is not a
 computed result; an arithmetic check does not establish experimental accuracy.
