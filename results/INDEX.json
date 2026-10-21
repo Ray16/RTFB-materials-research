@@ -41,7 +41,7 @@
       "current": "results/polymer_models/interaction_checked.json",
       "status": "results/polymer_models/interaction_status.json",
       "scope": "Neutral covalent dimer/trimer and separate-segment electronic interaction pilot; graph inventory retained separately",
-      "calculation_state": "17 original checked structures retained; ten 100-step nonconvergences assigned to a separate checkpointed recovery campaign. See interaction_status for starts and admitted results.",
+      "calculation_state": "23 checked electronic structures; six recovery successes; three original recoveries active at continuation preparation; one exhausted trimer assigned a checkpoint continuation. See live status.",
       "browser": "results/polymer_models/index.html",
       "interaction_results": "results/polymer_models/interaction_checked.json",
       "interaction_status": "results/polymer_models/interaction_status.json",
@@ -52,7 +52,7 @@
       "graph_inventory": "results/polymer_models/current.csv",
       "graph_inventory_status": "results/polymer_models/status.json",
       "selection_objective": "Prefer weak intersite/segment interactions; strong persistent pi stacking and undesired electron transfer are risks, not objectives to maximize",
-      "model_sizes": "Monomers, covalent dimers and trimers, plus pairs of separate monomer segments; no tetramers",
+      "model_sizes": "Original checked electronic pilot: monomers, covalent dimers/trimers and separate monomer pairs; separate five-repeat spacing panel prepared, quantum results pending",
       "geometry_audit": "results/reviews/2026-10-20/polymer_geometry_recovery/geometry_audit.json",
       "recovery_registry": "results/polymer_models/recovery_campaigns.json",
       "recovery_plan": "results/polymer_models/campaigns/2026-10-20_geometry_recovery/plan.json",
@@ -74,16 +74,24 @@
         "schema": 1,
         "guide": "docs/POLYMER_SPACING.md",
         "config": "config/polymer_spacing_pilot.json",
-        "campaign": "results/polymer_models/campaigns/2026-10-20_spacing_pilot",
-        "plan": "results/polymer_models/campaigns/2026-10-20_spacing_pilot/plan.json",
-        "current": "results/polymer_models/campaigns/2026-10-20_spacing_pilot/current.json",
-        "status": "results/polymer_models/campaigns/2026-10-20_spacing_pilot/status.json",
-        "browser": "results/polymer_models/campaigns/2026-10-20_spacing_pilot/index.html",
-        "coordinator": "results/polymer_models/campaigns/2026-10-20_spacing_pilot/coordinator.json",
-        "raw_root": "calcs/polymer_models/2026-10-20_spacing_pilot",
-        "state": "Prepared and frozen: six matched graphs, twelve conformers; coordinator awaiting a suitable GPU for the energy memory pilot; zero completed spacing DFT or native G values",
-        "scope": "Neutral phthalimide method control; adjacent vs one-spacer site nonadditivity and conditional DBU-assisted grafting G; no synthesis admission"
-      }
+        "campaign": "results/polymer_models/campaigns/2026-10-21_spacing_continuation",
+        "plan": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/plan.json",
+        "current": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/current.json",
+        "status": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/status.json",
+        "browser": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/index.html",
+        "coordinator": "results/polymer_models/campaigns/2026-10-21_spacing_continuation/coordinator.json",
+        "raw_root": "calcs/polymer_models/2026-10-21_spacing_continuation",
+        "state": "Source-preserving continuation; numerical memory pilot reviewed, full DFT and native G pending. Use coordinator and status for actual starts.",
+        "scope": "Neutral phthalimide method control; adjacent vs one-spacer site nonadditivity and conditional DBU-assisted grafting G; no synthesis admission",
+        "original_campaign": "results/polymer_models/campaigns/2026-10-20_spacing_pilot"
+      },
+      "checkpoint_continuation": {
+        "plan": "results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/plan.json",
+        "coordinator": "results/polymer_models/campaigns/2026-10-21_checkpoint_continuation/coordinator.json",
+        "raw_root": "calcs/polymer_models/2026-10-21_checkpoint_continuation",
+        "scope": "One checked saved trimer checkpoint; bounded optimizer reset, tighter SCF, unchanged physical gates"
+      },
+      "continuation_review": "results/reviews/2026-10-21/polymer_continuation/summary.json"
     },
     "candidates": {
       "guide": "results/candidates/README.md",
@@ -141,5 +149,6 @@
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",
-  "maintenance": "Update stable outputs, category status and provenance together; preserve dated evidence. Completion counts belong to each category status or active snapshot."
+  "maintenance": "Update stable outputs, category status and provenance together; preserve dated evidence. Completion counts belong to each category status or active snapshot.",
+  "deferred_repository_refactor": "docs/PROJECT_WORK_ORDER.md"
 }

@@ -1,0 +1,56 @@
+{
+  "host": "lambda13",
+  "stage": "energy",
+  "role": "pilot",
+  "workers": [
+    {
+      "gpu": 2,
+      "device": {
+        "index": 2,
+        "uuid": "GPU-5d07badb-4052-7045-bdc1-c0476709589b",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "cpus": [
+        0,
+        1
+      ],
+      "gate_pid": 3672674,
+      "argv": [
+        "taskset",
+        "--cpu-list",
+        "0,1",
+        "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+        "run",
+        "2",
+        "--label",
+        "redox-polymer-framework",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/energy/reserved_lambda13_gpu2_pilot",
+        "--probe",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_polymer_spacing.py",
+        "worker",
+        "--campaign",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot",
+        "--stage",
+        "energy",
+        "--pilot"
+      ]
+    }
+  ],
+  "plan_sha256": "5c629eb31f36a423ddd1b6130502a7c210504be77721438e7dbfb1bd3cacb441",
+  "latest_resources": {
+    "online_cpus": 384,
+    "load_1m": 14.7685546875,
+    "available_RAM_bytes": 1293811601408,
+    "minimum_RAM_GiB": 32
+  }
+}

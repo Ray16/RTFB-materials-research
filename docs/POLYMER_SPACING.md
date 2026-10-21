@@ -6,7 +6,7 @@ thermochemistry passes QC, the free energy of adding a motif with another motif
 already present. It does not assign experimental occupancy probabilities.
 
 The [current panel](../results/polymer_models/spacing_current.json) points to the
-[exact structures and results](../results/polymer_models/campaigns/2026-10-20_spacing_pilot/index.html).
+[exact structures and results](../results/polymer_models/campaigns/2026-10-21_spacing_continuation/index.html).
 Raw calculations remain under the campaign's `raw_root` on shared storage.
 
 ## Model definition

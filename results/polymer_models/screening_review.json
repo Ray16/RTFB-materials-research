@@ -1,6 +1,6 @@
 {
   "status": "checked_electronic_screen",
-  "completed_structures": 17,
+  "completed_structures": 23,
   "folding": [
     {
       "model_key": "exp_phthalimide_control__n2__stereo0",
@@ -85,12 +85,18 @@
       "candidate_id": "design_pmdi_ethyl",
       "repeats": 3,
       "stereoisomer": 1,
-      "stacked_minus_open_deltaE_kJ_mol": null,
-      "status": "pending",
+      "stacked_minus_open_deltaE_kJ_mol": -22.27517441190852,
+      "status": "sampled_stationary_conformer_comparison",
       "reference": "Same composition, charge, spin and backbone stereochemistry",
       "conformational_population_qualified": false,
       "deltaG_kJ_mol": null,
-      "structurally_reviewed": false
+      "structurally_reviewed": true,
+      "open_start_final_stacked_pairs": 0,
+      "stacked_start_final_stacked_pairs": 1,
+      "heavy_atom_best_RMSD_A": 4.395534697896972,
+      "distinct_open_stack_endpoints": true,
+      "sampled_conformer_deltaE_kJ_mol": -22.27517441190852,
+      "interpretation": "Matched open/stacked electronic screen"
     },
     {
       "model_key": "design_ndi_ethyl__n2__stereo0",
@@ -127,12 +133,18 @@
       "candidate_id": "design_ndi_ethyl",
       "repeats": 3,
       "stereoisomer": 1,
-      "stacked_minus_open_deltaE_kJ_mol": null,
-      "status": "pending",
+      "stacked_minus_open_deltaE_kJ_mol": -69.42279793934132,
+      "status": "sampled_stationary_conformer_comparison",
       "reference": "Same composition, charge, spin and backbone stereochemistry",
       "conformational_population_qualified": false,
       "deltaG_kJ_mol": null,
-      "structurally_reviewed": false
+      "structurally_reviewed": true,
+      "open_start_final_stacked_pairs": 0,
+      "stacked_start_final_stacked_pairs": 2,
+      "heavy_atom_best_RMSD_A": 4.870354002920192,
+      "distinct_open_stack_endpoints": true,
+      "sampled_conformer_deltaE_kJ_mol": -69.42279793934132,
+      "interpretation": "Matched open/stacked electronic screen"
     }
   ],
   "association": [
@@ -202,14 +214,32 @@
       "model_key": "design_pmdi_ethyl__segments__parallel",
       "candidate_id": "design_pmdi_ethyl",
       "orientation": "parallel",
-      "association_deltaE_kJ_mol": null,
-      "status": "pending",
+      "association_deltaE_kJ_mol": -56.15879127301487,
+      "status": "relaxed_electronic_association_screen",
       "atom_balanced": true,
       "includes_monomer_deformation": true,
       "BSSE_corrected": false,
       "deltaG_kJ_mol": null,
       "association_entropy_qualified": false,
-      "structurally_reviewed": false
+      "structurally_reviewed": true,
+      "final_stacked_pairs": 1,
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.5450211259478515,
+          "interplane_angle_deg": 21.507405244777345,
+          "plane_separation_A": 3.189184878980358,
+          "lateral_offset_A": 3.2382583039336614,
+          "nearest_core_atom_A": 3.3090365833476136,
+          "core_planarity_rms_A": [
+            0.025337320925743326,
+            0.0299888751196012
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "interpretation": "Attractive electronic screen; BSSE, association entropy and coupling/rates unqualified"
     },
     {
       "model_key": "design_pmdi_ethyl__segments__antiparallel",
@@ -246,27 +276,63 @@
       "model_key": "design_ndi_ethyl__segments__parallel",
       "candidate_id": "design_ndi_ethyl",
       "orientation": "parallel",
-      "association_deltaE_kJ_mol": null,
-      "status": "pending",
+      "association_deltaE_kJ_mol": -97.09051170476181,
+      "status": "relaxed_electronic_association_screen",
       "atom_balanced": true,
       "includes_monomer_deformation": true,
       "BSSE_corrected": false,
       "deltaG_kJ_mol": null,
       "association_entropy_qualified": false,
-      "structurally_reviewed": false
+      "structurally_reviewed": true,
+      "final_stacked_pairs": 1,
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.9091835351625925,
+          "interplane_angle_deg": 1.7879963113663728,
+          "plane_separation_A": 3.3192561965125416,
+          "lateral_offset_A": 2.0650070734744226,
+          "nearest_core_atom_A": 3.299815126299124,
+          "core_planarity_rms_A": [
+            0.01947371433408271,
+            0.010697037434112466
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "interpretation": "Attractive electronic screen; BSSE, association entropy and coupling/rates unqualified"
     },
     {
       "model_key": "design_ndi_ethyl__segments__antiparallel",
       "candidate_id": "design_ndi_ethyl",
       "orientation": "antiparallel",
-      "association_deltaE_kJ_mol": null,
-      "status": "pending",
+      "association_deltaE_kJ_mol": -82.73887231804612,
+      "status": "relaxed_electronic_association_screen",
       "atom_balanced": true,
       "includes_monomer_deformation": true,
       "BSSE_corrected": false,
       "deltaG_kJ_mol": null,
       "association_entropy_qualified": false,
-      "structurally_reviewed": false
+      "structurally_reviewed": true,
+      "final_stacked_pairs": 1,
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.403946424783828,
+          "interplane_angle_deg": 1.3369567496923729,
+          "plane_separation_A": 3.278925862447978,
+          "lateral_offset_A": 0.9140549498626376,
+          "nearest_core_atom_A": 3.2302556192208463,
+          "core_planarity_rms_A": [
+            0.024809887740250978,
+            0.03789434217591167
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "interpretation": "Attractive electronic screen; BSSE, association entropy and coupling/rates unqualified"
     }
   ],
   "source_sha256": {
@@ -297,6 +363,9 @@
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n1__stereo0__monomer/rest/opt.xyz": "66ad2755530da33162bafbd3c98dc480612f4b9f5fcf30391e640625226d4421",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n1__stereo0__monomer/rest/result.json": "0bbf88a18180d92f426f361df4e1ffa241e9b46a816e85b0d1909eb1eb49cf50",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_pmdi_ethyl__n1__stereo0__monomer.json": "c3c72b33f6d8864311a8032257e0053f4100198116d953bb708f22ff849ef086",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/opt.xyz": "af6dc10b5d0afc1aa70d86f058ecdded67c07f83636618655c19d1fd82006020",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/result.json": "f1ee6e73fe9b963ac9e5455ee560838949623b2bbd89b724af39a752528b042e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/done/design_pmdi_ethyl__segments__parallel__parallel.json": "68e3e52010393e58c52fa4ed49d2ef2af31f8f34bf60470d18bf6f69b50ed4f6",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__segments__antiparallel__antiparallel/rest/opt.xyz": "9034d0c6a28c4582e326b3acf037f18132db17633b078f40f9f30f880e96465c",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__segments__antiparallel__antiparallel/rest/result.json": "e879c8cb3f4ae9c85d73a53e4b761c93cebe018e750bc2a0f358300ea7844172",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_pmdi_ethyl__segments__antiparallel__antiparallel.json": "a5bf6a874953a34f6133058b51ac7f54f0beb33aad3a5476c39d89986fae154c",
@@ -306,18 +375,33 @@
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n2__stereo0__stacked/rest/opt.xyz": "f0628ee9112db1e0d1f1a0474ed0d23158f54057a0f397b73dc6ca82d7701dc9",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n2__stereo0__stacked/rest/result.json": "3220997e48a307ce1bad5a23280f8a477f008e925d794c19354c5803906c1c69",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_pmdi_ethyl__n2__stereo0__stacked.json": "b82e4e26ce160e5bca561a1b8d3bb3dc57260cca677068f2c9cee9552528d0c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo1__open/rest/opt.xyz": "51af237f72ca7e62c9cb796ac41210e74fa3b50423e7017d3cc2ab2111da76ac",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo1__open/rest/result.json": "ffbbfc6f9debbb79390d25c4d594e8aa0356c981a7f8f9bfd8161c950773930a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/done/design_pmdi_ethyl__n3__stereo1__open.json": "9fb66536c7c61c017a63fcfdc77a85c1e28626681ec36887a971eaad0a144d4a",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n3__stereo1__stacked/rest/opt.xyz": "9cd960d516c56e560e02da2c61668a0e518e3ffef2ab24f4c39dd1dbf4a8aabc",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n3__stereo1__stacked/rest/result.json": "6d5f3ac021b8714fc8a4d3c2247bd64905d46af9155c4e64e9c7dbd8828c16a3",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_pmdi_ethyl__n3__stereo1__stacked.json": "97a04ed30b5d197c3aac050b5c6468e282e53684840465e0292001a517294729",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n1__stereo0__monomer/rest/opt.xyz": "9800f343f083a371ad27d7fa42ce32a438d9b140fc8fe9dc5a4f9e83e1d84ed8",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n1__stereo0__monomer/rest/result.json": "ae2fcbaa0f12a5a2b917bea85b46d8ca7f45495ba2c0937e6a9171a18aa3a5cd",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_ndi_ethyl__n1__stereo0__monomer.json": "83a4e188eb296689bf4bf417655cb2a85f4263c6a5339d8d3af43b1ec719e026",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__parallel__parallel/rest/opt.xyz": "f18c17c0c64f625691fb8542219f2962ef587a1e629aeefcc77b6c6c93170966",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__parallel__parallel/rest/result.json": "2adb67dab6ab7fe812cd7c2145f5033830174a07c00e24a20ef4b8cd6f86aa3b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/done/design_ndi_ethyl__segments__parallel__parallel.json": "ba2a9114b09caa47d95fdb426fe508a607a96693a43df5a0dc097c6d204ca6ba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__antiparallel__antiparallel/rest/opt.xyz": "c08986459f971179b05c58634d0f4a150d781b0ab1c2f1d480eba82672342576",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__antiparallel__antiparallel/rest/result.json": "0d4810b064ec3952c5b839e3a32739c2be325418819b38b298a98d5d57862456",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/done/design_ndi_ethyl__segments__antiparallel__antiparallel.json": "af7850a5239f07012576f4d210b21b25900b8e940594b4d09380970acab585fc",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n2__stereo0__open/rest/opt.xyz": "f0a1f91941c9389e00fee20642585c07986b393259643d2dda482d782fadd695",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n2__stereo0__open/rest/result.json": "8be9e4f47e6c7b4b05c5f2a551e292cfaf1ea23e5f2f53cd2568f371267c1614",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_ndi_ethyl__n2__stereo0__open.json": "419e8ae20fc61cfc9f2ba65a3028f28629c4fbfac287fc704a3fbfec1e4ff9a5",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n2__stereo0__stacked/rest/opt.xyz": "1f0d4b0a5c59a5b140653523c865d0650b53752477674becb17aa0182cf73224",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n2__stereo0__stacked/rest/result.json": "9c60601054550b464ffbb0d4590e0366b69e0c81b87309f099672794b958505a",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_ndi_ethyl__n2__stereo0__stacked.json": "204cd596ae9ece1f3672daf880312531d1c600f2b5ef5d1a090778d0556f63d9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo0__open/rest/opt.xyz": "bbe2637ec34d92e543da0210a1a62e02e567b0a6d314b32aa4fc7ea831134eec",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo0__open/rest/result.json": "c53f988d697f6017432936d07f720bd5c06add8a7a4eb43c8c194b566729ff50",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/done/design_ndi_ethyl__n3__stereo0__open.json": "024ce3c48d6d57ecb4c703375f0d3ed0e276f9b2a43ba2c808b8715d3fbbf09b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo1__open/rest/opt.xyz": "4bbbec3c9500e41d52029b2024a8ad0be9d72d251dca8ce28cd5de9aae5eb43b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo1__open/rest/result.json": "f71d1cda71f42a1273e266a73ba2dc408440529cf6f182f301621b046c370648",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/done/design_ndi_ethyl__n3__stereo1__open.json": "b6c1ca01c2ed108df10cd9ee43cdeb0f2ff7c2e46eb3ae93b201c2d595f299e9",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n3__stereo1__stacked/rest/opt.xyz": "ceb9ef3b2a9b317333bcc182f709c2ea82c9a0fcfabfe3d2391be2728b02f1d1",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_ndi_ethyl__n3__stereo1__stacked/rest/result.json": "8aa5ea34a501da16caa1127d55fede0776da76ddf723046e73ef4f6d36ba170d",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_ndi_ethyl__n3__stereo1__stacked.json": "33b0993796cb1ae3a6d24bfd8b0153df4b09b8943d3f2a85420131c8f055382f"
@@ -328,5 +412,5 @@
     "Association includes cap/backbone contacts and monomer deformation; not a pure redox-core pair energy",
     "No validated rejection cutoff or electron-transfer coupling/rate"
   ],
-  "input_sha256": "3508e72c87179635c5b8822aecfce695fa49f253720a1e52577bb5449670b795"
+  "input_sha256": "448a4a4f6589818f43eb1d59d8fd98fbe2af0c85e8059143c2f3639ae5ef71aa"
 }

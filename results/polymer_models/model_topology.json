@@ -2,7 +2,7 @@
   "status": "checked",
   "models": 27,
   "starting_XYZ_checked": 27,
-  "completed_DFT_XYZ_checked": 17,
+  "completed_DFT_XYZ_checked": 23,
   "scope": "Open 2n-carbon chain, alternating phenyl sites, para benzyl linkers, fragment count and complete XYZ connectivity; not a free-energy/minimum test",
   "results": [
     {
@@ -1131,6 +1131,69 @@
       "xyz_sha256": "3099599e751a7f192e9f68226b6b8470ac0ebc61641ab5e9bc96911f034fff0a"
     },
     {
+      "key": "design_pmdi_ethyl__segments__parallel__parallel",
+      "stage": "completed_DFT",
+      "graph_topology": [
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 1,
+          "backbone_atoms": [
+            0,
+            1
+          ],
+          "backbone_carbon_count": 2,
+          "backbone_CC_bonds": 1,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 1,
+              "phenyl_atoms": [
+                2,
+                3,
+                4,
+                5,
+                25,
+                26
+              ],
+              "benzyl_atom": 6
+            }
+          ]
+        },
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 1,
+          "backbone_atoms": [
+            0,
+            1
+          ],
+          "backbone_carbon_count": 2,
+          "backbone_CC_bonds": 1,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 1,
+              "phenyl_atoms": [
+                2,
+                3,
+                4,
+                5,
+                25,
+                26
+              ],
+              "benzyl_atom": 6
+            }
+          ]
+        }
+      ],
+      "actual_XYZ_matches_full_graph": true,
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/opt.xyz",
+      "xyz_sha256": "af6dc10b5d0afc1aa70d86f058ecdded67c07f83636618655c19d1fd82006020"
+    },
+    {
       "key": "design_pmdi_ethyl__segments__antiparallel__antiparallel",
       "stage": "starting",
       "graph_topology": [
@@ -1659,6 +1722,72 @@
       "xyz_sha256": "fec83ceb9d7b9343407ca52484ca114706ab201af0ff98f4a02e45ea3f6c273a"
     },
     {
+      "key": "design_pmdi_ethyl__n3__stereo1__open",
+      "stage": "completed_DFT",
+      "graph_topology": [
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 3,
+          "backbone_atoms": [
+            21,
+            20,
+            19,
+            18,
+            17,
+            16
+          ],
+          "backbone_carbon_count": 6,
+          "backbone_CC_bonds": 5,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 20,
+              "phenyl_atoms": [
+                22,
+                23,
+                24,
+                25,
+                45,
+                46
+              ],
+              "benzyl_atom": 26
+            },
+            {
+              "backbone_position": 4,
+              "backbone_atom": 18,
+              "phenyl_atoms": [
+                47,
+                48,
+                49,
+                50,
+                70,
+                71
+              ],
+              "benzyl_atom": 51
+            },
+            {
+              "backbone_position": 6,
+              "backbone_atom": 16,
+              "phenyl_atoms": [
+                12,
+                13,
+                14,
+                15,
+                72,
+                73
+              ],
+              "benzyl_atom": 11
+            }
+          ]
+        }
+      ],
+      "actual_XYZ_matches_full_graph": true,
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo1__open/rest/opt.xyz",
+      "xyz_sha256": "51af237f72ca7e62c9cb796ac41210e74fa3b50423e7017d3cc2ab2111da76ac"
+    },
+    {
       "key": "design_pmdi_ethyl__n3__stereo1__stacked",
       "stage": "starting",
       "graph_topology": [
@@ -1926,6 +2055,69 @@
       "xyz_sha256": "f5c4ea1d025538addf06b6fa71b33b09793c849998bf780a58f1ad6a526fd6a2"
     },
     {
+      "key": "design_ndi_ethyl__segments__parallel__parallel",
+      "stage": "completed_DFT",
+      "graph_topology": [
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 1,
+          "backbone_atoms": [
+            0,
+            1
+          ],
+          "backbone_carbon_count": 2,
+          "backbone_CC_bonds": 1,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 1,
+              "phenyl_atoms": [
+                2,
+                3,
+                4,
+                5,
+                29,
+                30
+              ],
+              "benzyl_atom": 6
+            }
+          ]
+        },
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 1,
+          "backbone_atoms": [
+            0,
+            1
+          ],
+          "backbone_carbon_count": 2,
+          "backbone_CC_bonds": 1,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 1,
+              "phenyl_atoms": [
+                2,
+                3,
+                4,
+                5,
+                29,
+                30
+              ],
+              "benzyl_atom": 6
+            }
+          ]
+        }
+      ],
+      "actual_XYZ_matches_full_graph": true,
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__parallel__parallel/rest/opt.xyz",
+      "xyz_sha256": "f18c17c0c64f625691fb8542219f2962ef587a1e629aeefcc77b6c6c93170966"
+    },
+    {
       "key": "design_ndi_ethyl__segments__antiparallel__antiparallel",
       "stage": "starting",
       "graph_topology": [
@@ -1987,6 +2179,69 @@
       "actual_XYZ_matches_full_graph": true,
       "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__segments__antiparallel__antiparallel/input.xyz",
       "xyz_sha256": "f748b3bfbf09434db287a00192bb938aadab458ebedbd8aeb7f056aa6e2759f9"
+    },
+    {
+      "key": "design_ndi_ethyl__segments__antiparallel__antiparallel",
+      "stage": "completed_DFT",
+      "graph_topology": [
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 1,
+          "backbone_atoms": [
+            0,
+            1
+          ],
+          "backbone_carbon_count": 2,
+          "backbone_CC_bonds": 1,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 1,
+              "phenyl_atoms": [
+                2,
+                3,
+                4,
+                5,
+                29,
+                30
+              ],
+              "benzyl_atom": 6
+            }
+          ]
+        },
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 1,
+          "backbone_atoms": [
+            0,
+            1
+          ],
+          "backbone_carbon_count": 2,
+          "backbone_CC_bonds": 1,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 1,
+              "phenyl_atoms": [
+                2,
+                3,
+                4,
+                5,
+                29,
+                30
+              ],
+              "benzyl_atom": 6
+            }
+          ]
+        }
+      ],
+      "actual_XYZ_matches_full_graph": true,
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__antiparallel__antiparallel/rest/opt.xyz",
+      "xyz_sha256": "c08986459f971179b05c58634d0f4a150d781b0ab1c2f1d480eba82672342576"
     },
     {
       "key": "design_ndi_ethyl__n2__stereo0__open",
@@ -2259,6 +2514,72 @@
       "xyz_sha256": "0eacbe867776fb57de95e41e7ff79a6724680d3e74a565340d2062ba67a48a11"
     },
     {
+      "key": "design_ndi_ethyl__n3__stereo0__open",
+      "stage": "completed_DFT",
+      "graph_topology": [
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 3,
+          "backbone_atoms": [
+            30,
+            29,
+            28,
+            27,
+            26,
+            25
+          ],
+          "backbone_carbon_count": 6,
+          "backbone_CC_bonds": 5,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 29,
+              "phenyl_atoms": [
+                31,
+                32,
+                33,
+                34,
+                58,
+                59
+              ],
+              "benzyl_atom": 35
+            },
+            {
+              "backbone_position": 4,
+              "backbone_atom": 27,
+              "phenyl_atoms": [
+                60,
+                61,
+                62,
+                63,
+                87,
+                88
+              ],
+              "benzyl_atom": 64
+            },
+            {
+              "backbone_position": 6,
+              "backbone_atom": 25,
+              "phenyl_atoms": [
+                21,
+                22,
+                23,
+                24,
+                89,
+                90
+              ],
+              "benzyl_atom": 20
+            }
+          ]
+        }
+      ],
+      "actual_XYZ_matches_full_graph": true,
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo0__open/rest/opt.xyz",
+      "xyz_sha256": "bbe2637ec34d92e543da0210a1a62e02e567b0a6d314b32aa4fc7ea831134eec"
+    },
+    {
       "key": "design_ndi_ethyl__n3__stereo0__stacked",
       "stage": "starting",
       "graph_topology": [
@@ -2389,6 +2710,72 @@
       "actual_XYZ_matches_full_graph": true,
       "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_ndi_ethyl__n3__stereo1__open/input.xyz",
       "xyz_sha256": "5a3bbbc1161cc89d60dba82219bf6ea435d74341f8b7f08335c4ccd15082478a"
+    },
+    {
+      "key": "design_ndi_ethyl__n3__stereo1__open",
+      "stage": "completed_DFT",
+      "graph_topology": [
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 3,
+          "backbone_atoms": [
+            30,
+            29,
+            28,
+            27,
+            26,
+            25
+          ],
+          "backbone_carbon_count": 6,
+          "backbone_CC_bonds": 5,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 29,
+              "phenyl_atoms": [
+                31,
+                32,
+                33,
+                34,
+                58,
+                59
+              ],
+              "benzyl_atom": 35
+            },
+            {
+              "backbone_position": 4,
+              "backbone_atom": 27,
+              "phenyl_atoms": [
+                60,
+                61,
+                62,
+                63,
+                87,
+                88
+              ],
+              "benzyl_atom": 64
+            },
+            {
+              "backbone_position": 6,
+              "backbone_atom": 25,
+              "phenyl_atoms": [
+                21,
+                22,
+                23,
+                24,
+                89,
+                90
+              ],
+              "benzyl_atom": 20
+            }
+          ]
+        }
+      ],
+      "actual_XYZ_matches_full_graph": true,
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo1__open/rest/opt.xyz",
+      "xyz_sha256": "4bbbec3c9500e41d52029b2024a8ad0be9d72d251dca8ce28cd5de9aae5eb43b"
     },
     {
       "key": "design_ndi_ethyl__n3__stereo1__stacked",

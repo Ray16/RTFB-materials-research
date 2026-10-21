@@ -2,9 +2,26 @@
 
 All result categories: [results index](../README.md).
 
+The [21 October continuation review](../reviews/2026-10-21/polymer_continuation/summary.json)
+records the resumed fourth task. The original spacing pilot completed both SCFs
+and its gradient, then exceeded the original 80-GiB guard. Its 89,062-MiB observed
+peak leaves 6,768 MiB on the measured 95,830-MiB device. A separate
+[spacing continuation](campaigns/2026-10-21_spacing_continuation/plan.json)
+reuses that numerical resource evidence with at least 4 GiB headroom and separates
+geometry-solver and active-SP lifetimes; the molecular protocol and physical
+acceptance gates are unchanged. Follow [current spacing outputs](spacing_current.json).
+
+The one exhausted phthalimide trimer has a separate
+[checkpoint continuation](campaigns/2026-10-21_checkpoint_continuation/plan.json):
+its saved optimizer-returned geometry passes topology/stereo/clash checks. The
+bounded 200-step restart uses a fresh Cartesian optimizer and tighter geometry
+SCF (1e-12, gradient tolerance 1e-8), with the same acceptance criteria. Original
+attempts and other live recoveries are retained. Neither continuation is a
+completed result until its normal receipt and physical QC pass.
+
 The [polymer spacing framework](../../docs/POLYMER_SPACING.md) provides configurable
 motifs, reactive sites, occupancy patterns and matched controls. Open its
-[exact structures and conditional-grafting report](campaigns/2026-10-20_spacing_pilot/index.html)
+[exact structures and conditional-grafting report](campaigns/2026-10-21_spacing_continuation/index.html)
 or [stable current pointer](spacing_current.json). The first panel has six graphs
 and twelve qualified warm starts; quantum results remain pending. It evaluates
 electronic nonadditivity and conditional grafting ΔG as separate dimensions.

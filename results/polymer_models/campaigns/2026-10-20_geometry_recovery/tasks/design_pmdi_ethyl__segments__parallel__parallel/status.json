@@ -1,0 +1,97 @@
+{
+  "task": {
+    "key": "design_pmdi_ethyl__segments__parallel__parallel",
+    "candidate_id": "design_pmdi_ethyl",
+    "model_key": "design_pmdi_ethyl__segments__parallel",
+    "model_type": "two_nonbonded_segments",
+    "repeats": 2,
+    "stereoisomer": "two achiral segments",
+    "target": "parallel",
+    "smiles": "CCc1ccc(Cn2c(=O)c3cc4c(=O)n(CC)c(=O)c4cc3c2=O)cc1.CCc1ccc(Cn2c(=O)c3cc4c(=O)n(CC)c(=O)c4cc3c2=O)cc1",
+    "fragment": "[*:1]n1c(=O)c2cc3c(=O)n(CC)c(=O)c3cc2c1=O",
+    "atoms": 90,
+    "charge": 0,
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/live_inputs/design_pmdi_ethyl__segments__parallel__parallel/input.xyz",
+    "pi_groups": [
+      [
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        15,
+        18,
+        20,
+        21,
+        22,
+        23
+      ],
+      [
+        52,
+        53,
+        55,
+        56,
+        57,
+        58,
+        60,
+        63,
+        65,
+        66,
+        67,
+        68
+      ]
+    ],
+    "seed_stage": "converged_topology_checked_xTB_ALPB",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/live_inputs/design_pmdi_ethyl__segments__parallel__parallel/input.xyz": "3099599e751a7f192e9f68226b6b8470ac0ebc61641ab5e9bc96911f034fff0a",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__segments__parallel__parallel/task.json": "3f9453c41157b8ebb0ca1d4aa9609f2d8c89a238088f023ffea71133931c5dea"
+    },
+    "recovery_of": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/design_pmdi_ethyl__segments__parallel__parallel"
+  },
+  "status": "state_records_verified",
+  "stage": "dft_geometry",
+  "started": 1792530862.5319016,
+  "host": "lambda13",
+  "pid": 3411249,
+  "free_energy_computed": false,
+  "minimum_Hessian_tested": false,
+  "synthesis_admission": false,
+  "E_smd_eV": -66486.13161610762,
+  "gradient_max_Ha_Bohr": 2.0817766724780183e-05,
+  "contact_metrics": [
+    {
+      "site_i": 1,
+      "site_j": 2,
+      "centroid_distance_A": 4.5450211259478515,
+      "interplane_angle_deg": 21.507405244777345,
+      "plane_separation_A": 3.189184878980358,
+      "lateral_offset_A": 3.2382583039336614,
+      "nearest_core_atom_A": 3.3090365833476136,
+      "core_planarity_rms_A": [
+        0.025337320925743326,
+        0.0299888751196012
+      ],
+      "stack_geometry": true
+    }
+  ],
+  "stacked_pairs": 1,
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest",
+  "topology_QC": "ok",
+  "observed_peak_GPU_MiB": 92440,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/opt.xyz": "af6dc10b5d0afc1aa70d86f058ecdded67c07f83636618655c19d1fd82006020",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/result.json": "f1ee6e73fe9b963ac9e5455ee560838949623b2bbd89b724af39a752528b042e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/geometry_checkpoints/last_evaluated.xyz": "e3b574522045a37c9534c137fe41c7572481e2c536637091f9e3e9f172bdb999",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/geometry_checkpoints/evaluated_trajectory.xyz": "e34cf9f7ef1fe9c30ae062fcbe6ea007317f2ba45fe05969fb5b5a3383b80198",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/geometry_checkpoints/latest.json": "568ec64e77f47a51331074f57cdf676904b83dd804fa41773ef80b8b6cf524cc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/geometry_checkpoints/optimizer_returned.xyz": "2cff0dc993a1ef1612cf25d0b376b3ccf45df82d42c540246390de95d544c29b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/geometry_checkpoints/optimizer_returned.json": "3dc05b6f0602150dbcd5a786cd620f02e9a48858c42c0fd0e7eec0b07670b897",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/sp/77bc9faf4b3f3a27.json": "ca5c5d390c469e178752d365eb7d9b4f6601f50cf456f330fc7636ee57196439",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_geometry_recovery/tasks/design_pmdi_ethyl__segments__parallel__parallel/geometry_review.json": "f31dc391f25471f9bb51a9dbbe1f1ded89055879bbd6a4ee5ef1f8704085d46d"
+  },
+  "finished": 1792534072.1914115,
+  "geometry_sanity_review": "passed"
+}

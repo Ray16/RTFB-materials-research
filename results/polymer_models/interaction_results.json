@@ -1,32 +1,33 @@
 {
   "status": {
-    "updated": 1792530999.0076146,
+    "updated": 1792563449.6733773,
     "scope": "Neutral interaction-method controls; no synthesis admission",
     "expected_DFT_cases": 27,
-    "stationary_electronic_cases": 17,
-    "sampled_stack_open_comparisons": 1,
-    "electronic_association_comparisons": 3,
-    "failures": 10,
+    "stationary_electronic_cases": 23,
+    "sampled_stack_open_comparisons": 3,
+    "electronic_association_comparisons": 6,
+    "failures": 4,
     "invalid_receipts": [],
     "preserved_original_failures": 10,
-    "recovered_electronic_cases": 0,
+    "recovered_electronic_cases": 6,
     "recovery_campaigns": [
       {
         "path": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
         "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery",
-        "attempted": 8,
+        "attempted": 10,
+        "failed": 1
+      },
+      {
+        "path": "results/polymer_models/campaigns/2026-10-21_checkpoint_continuation",
+        "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation",
+        "attempted": 0,
         "failed": 0
       }
     ],
     "active_claims": [
-      "2026-10-20_geometry_recovery/exp_phthalimide_control__n3__stereo1__open",
-      "2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel",
       "2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo0__open",
       "2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo0__stacked",
-      "2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo1__open",
-      "2026-10-20_geometry_recovery/design_ndi_ethyl__segments__parallel__parallel",
-      "2026-10-20_geometry_recovery/design_ndi_ethyl__segments__antiparallel__antiparallel",
-      "2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo0__open"
+      "2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo0__stacked"
     ],
     "memory_pilot": "memory_pilot_passed",
     "completed_interaction_free_energies": 0,
@@ -849,14 +850,29 @@
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/preparation.json": "28b2a1651ad6c5f589886e31c409d613396eb34c37885fcc002c6475bed23057",
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/resolved_inputs/design_pmdi_ethyl__segments__parallel__parallel/input.xyz": "3099599e751a7f192e9f68226b6b8470ac0ebc61641ab5e9bc96911f034fff0a"
       },
-      "stage": "failed_preserved",
-      "E_smd_eV": null,
+      "stage": "stationary_DFT_electronic_structure",
+      "E_smd_eV": -66486.13161610762,
       "deltaG_kJ_mol": null,
       "Hessian_minimum_tested": false,
-      "final_xyz": null,
-      "recovery_campaign": null,
-      "contact_metrics": null,
-      "stacked_pairs": null
+      "final_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__segments__parallel__parallel/rest/opt.xyz",
+      "recovery_campaign": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 4.5450211259478515,
+          "interplane_angle_deg": 21.507405244777345,
+          "plane_separation_A": 3.189184878980358,
+          "lateral_offset_A": 3.2382583039336614,
+          "nearest_core_atom_A": 3.3090365833476136,
+          "core_planarity_rms_A": [
+            0.025337320925743326,
+            0.0299888751196012
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "stacked_pairs": 1
     },
     {
       "key": "design_pmdi_ethyl__segments__antiparallel__antiparallel",
@@ -1301,14 +1317,57 @@
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_pmdi_ethyl__n3__stereo1/ensemble.json": "bd7b18869672711674081c798552849b4ed30db44afb2b6f21394280e408720d",
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_pmdi_ethyl__n3__stereo1/open_0/xtbopt.xyz": "fec83ceb9d7b9343407ca52484ca114706ab201af0ff98f4a02e45ea3f6c273a"
       },
-      "stage": "failed_preserved",
-      "E_smd_eV": null,
+      "stage": "stationary_DFT_electronic_structure",
+      "E_smd_eV": -99664.62482536068,
       "deltaG_kJ_mol": null,
       "Hessian_minimum_tested": false,
-      "final_xyz": null,
-      "recovery_campaign": null,
-      "contact_metrics": null,
-      "stacked_pairs": null
+      "final_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo1__open/rest/opt.xyz",
+      "recovery_campaign": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 7.960681624740203,
+          "interplane_angle_deg": 44.69968975696726,
+          "plane_separation_A": 1.9651447174834569,
+          "lateral_offset_A": 7.7143151458715495,
+          "nearest_core_atom_A": 4.175934488325017,
+          "core_planarity_rms_A": [
+            0.024104055005304624,
+            0.019479097296001
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 6.85702935683106,
+          "interplane_angle_deg": 82.17160975330701,
+          "plane_separation_A": 3.31942271916341,
+          "lateral_offset_A": 6.000023700948587,
+          "nearest_core_atom_A": 3.8282241517405757,
+          "core_planarity_rms_A": [
+            0.024104055005304624,
+            0.017178108617585907
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 6.099665497252023,
+          "interplane_angle_deg": 61.71931740630139,
+          "plane_separation_A": 4.339366380172246,
+          "lateral_offset_A": 4.286702531899967,
+          "nearest_core_atom_A": 3.943649408393774,
+          "core_planarity_rms_A": [
+            0.019479097296001,
+            0.017178108617585907
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "stacked_pairs": 0
     },
     {
       "key": "design_pmdi_ethyl__n3__stereo1__stacked",
@@ -1537,14 +1596,29 @@
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/preparation.json": "28b2a1651ad6c5f589886e31c409d613396eb34c37885fcc002c6475bed23057",
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/resolved_inputs/design_ndi_ethyl__segments__parallel__parallel/input.xyz": "f5c4ea1d025538addf06b6fa71b33b09793c849998bf780a58f1ad6a526fd6a2"
       },
-      "stage": "failed_preserved",
-      "E_smd_eV": null,
+      "stage": "stationary_DFT_electronic_structure",
+      "E_smd_eV": -74849.04209727158,
       "deltaG_kJ_mol": null,
       "Hessian_minimum_tested": false,
-      "final_xyz": null,
-      "recovery_campaign": null,
-      "contact_metrics": null,
-      "stacked_pairs": null
+      "final_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__parallel__parallel/rest/opt.xyz",
+      "recovery_campaign": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.9091835351625925,
+          "interplane_angle_deg": 1.7879963113663728,
+          "plane_separation_A": 3.3192561965125416,
+          "lateral_offset_A": 2.0650070734744226,
+          "nearest_core_atom_A": 3.299815126299124,
+          "core_planarity_rms_A": [
+            0.01947371433408271,
+            0.010697037434112466
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "stacked_pairs": 1
     },
     {
       "key": "design_ndi_ethyl__segments__antiparallel__antiparallel",
@@ -1605,14 +1679,29 @@
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/preparation.json": "28b2a1651ad6c5f589886e31c409d613396eb34c37885fcc002c6475bed23057",
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/resolved_inputs/design_ndi_ethyl__segments__antiparallel__antiparallel/input.xyz": "f748b3bfbf09434db287a00192bb938aadab458ebedbd8aeb7f056aa6e2759f9"
       },
-      "stage": "failed_preserved",
-      "E_smd_eV": null,
+      "stage": "stationary_DFT_electronic_structure",
+      "E_smd_eV": -74848.89335249896,
       "deltaG_kJ_mol": null,
       "Hessian_minimum_tested": false,
-      "final_xyz": null,
-      "recovery_campaign": null,
-      "contact_metrics": null,
-      "stacked_pairs": null
+      "final_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__segments__antiparallel__antiparallel/rest/opt.xyz",
+      "recovery_campaign": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.403946424783828,
+          "interplane_angle_deg": 1.3369567496923729,
+          "plane_separation_A": 3.278925862447978,
+          "lateral_offset_A": 0.9140549498626376,
+          "nearest_core_atom_A": 3.2302556192208463,
+          "core_planarity_rms_A": [
+            0.024809887740250978,
+            0.03789434217591167
+          ],
+          "stack_geometry": true
+        }
+      ],
+      "stacked_pairs": 1
     },
     {
       "key": "design_ndi_ethyl__n2__stereo0__open",
@@ -1860,14 +1949,57 @@
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_ndi_ethyl__n3__stereo0/ensemble.json": "9d5208236eb986dc2ccb7d65c358b23552fdf06fe9a95de577e9f7d34f5b652e",
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_ndi_ethyl__n3__stereo0/open_0/xtbopt.xyz": "0eacbe867776fb57de95e41e7ff79a6724680d3e74a565340d2062ba67a48a11"
       },
-      "stage": "failed_preserved",
-      "E_smd_eV": null,
+      "stage": "stationary_DFT_electronic_structure",
+      "E_smd_eV": -112208.66759094638,
       "deltaG_kJ_mol": null,
       "Hessian_minimum_tested": false,
-      "final_xyz": null,
-      "recovery_campaign": null,
-      "contact_metrics": null,
-      "stacked_pairs": null
+      "final_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo0__open/rest/opt.xyz",
+      "recovery_campaign": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 3.7573122362798506,
+          "interplane_angle_deg": 2.8147041245161435,
+          "plane_separation_A": 3.275599181149695,
+          "lateral_offset_A": 1.8406100198982236,
+          "nearest_core_atom_A": 3.234584442858831,
+          "core_planarity_rms_A": [
+            0.04834276581151759,
+            0.027619035141028023
+          ],
+          "stack_geometry": true
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 6.29218452030497,
+          "interplane_angle_deg": 63.41275264912222,
+          "plane_separation_A": 4.506725483763149,
+          "lateral_offset_A": 4.391014854400439,
+          "nearest_core_atom_A": 3.540571778543443,
+          "core_planarity_rms_A": [
+            0.04834276581151759,
+            0.018661019841704297
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 9.670653920485641,
+          "interplane_angle_deg": 64.9240225628582,
+          "plane_separation_A": 7.7100174170458615,
+          "lateral_offset_A": 5.837566160537605,
+          "nearest_core_atom_A": 6.835497762707194,
+          "core_planarity_rms_A": [
+            0.027619035141028023,
+            0.018661019841704297
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "stacked_pairs": 1
     },
     {
       "key": "design_ndi_ethyl__n3__stereo0__stacked",
@@ -2034,14 +2166,57 @@
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_ndi_ethyl__n3__stereo1/ensemble.json": "2eabb750ac4aa4f1e65a505a9e5d35ddaae9689fae15ca03f55eb59da830b0f6",
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_ndi_ethyl__n3__stereo1/open_0/xtbopt.xyz": "5a3bbbc1161cc89d60dba82219bf6ea435d74341f8b7f08335c4ccd15082478a"
       },
-      "stage": "failed_preserved",
-      "E_smd_eV": null,
+      "stage": "stationary_DFT_electronic_structure",
+      "E_smd_eV": -112208.45562989796,
       "deltaG_kJ_mol": null,
       "Hessian_minimum_tested": false,
-      "final_xyz": null,
-      "recovery_campaign": null,
-      "contact_metrics": null,
-      "stacked_pairs": null
+      "final_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_ndi_ethyl__n3__stereo1__open/rest/opt.xyz",
+      "recovery_campaign": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 7.630012629809359,
+          "interplane_angle_deg": 72.2375057093349,
+          "plane_separation_A": 3.7237034401331535,
+          "lateral_offset_A": 6.6596640621724195,
+          "nearest_core_atom_A": 3.9112842545588276,
+          "core_planarity_rms_A": [
+            0.011910077356656664,
+            0.018392128931863434
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 7.476660440171077,
+          "interplane_angle_deg": 61.56187493768758,
+          "plane_separation_A": 3.10871978790955,
+          "lateral_offset_A": 6.799728863556162,
+          "nearest_core_atom_A": 3.8012972405255194,
+          "core_planarity_rms_A": [
+            0.011910077356656664,
+            0.04425618128906481
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 9.80692361848747,
+          "interplane_angle_deg": 66.44314956259919,
+          "plane_separation_A": 8.2008604370943,
+          "lateral_offset_A": 5.377884244770321,
+          "nearest_core_atom_A": 7.086566207599917,
+          "core_planarity_rms_A": [
+            0.018392128931863434,
+            0.04425618128906481
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "stacked_pairs": 0
     },
     {
       "key": "design_ndi_ethyl__n3__stereo1__stacked",
@@ -2235,8 +2410,8 @@
       "candidate_id": "design_pmdi_ethyl",
       "repeats": 3,
       "stereoisomer": 1,
-      "stacked_minus_open_deltaE_kJ_mol": null,
-      "status": "pending",
+      "stacked_minus_open_deltaE_kJ_mol": -22.27517441190852,
+      "status": "sampled_stationary_conformer_comparison",
       "reference": "Same composition, charge, spin and backbone stereochemistry",
       "conformational_population_qualified": false,
       "deltaG_kJ_mol": null
@@ -2268,8 +2443,8 @@
       "candidate_id": "design_ndi_ethyl",
       "repeats": 3,
       "stereoisomer": 1,
-      "stacked_minus_open_deltaE_kJ_mol": null,
-      "status": "pending",
+      "stacked_minus_open_deltaE_kJ_mol": -69.42279793934132,
+      "status": "sampled_stationary_conformer_comparison",
       "reference": "Same composition, charge, spin and backbone stereochemistry",
       "conformational_population_qualified": false,
       "deltaG_kJ_mol": null
@@ -2304,8 +2479,8 @@
       "model_key": "design_pmdi_ethyl__segments__parallel",
       "candidate_id": "design_pmdi_ethyl",
       "orientation": "parallel",
-      "association_deltaE_kJ_mol": null,
-      "status": "pending",
+      "association_deltaE_kJ_mol": -56.15879127301487,
+      "status": "relaxed_electronic_association_screen",
       "atom_balanced": true,
       "includes_monomer_deformation": true,
       "BSSE_corrected": false,
@@ -2328,8 +2503,8 @@
       "model_key": "design_ndi_ethyl__segments__parallel",
       "candidate_id": "design_ndi_ethyl",
       "orientation": "parallel",
-      "association_deltaE_kJ_mol": null,
-      "status": "pending",
+      "association_deltaE_kJ_mol": -97.09051170476181,
+      "status": "relaxed_electronic_association_screen",
       "atom_balanced": true,
       "includes_monomer_deformation": true,
       "BSSE_corrected": false,
@@ -2340,8 +2515,8 @@
       "model_key": "design_ndi_ethyl__segments__antiparallel",
       "candidate_id": "design_ndi_ethyl",
       "orientation": "antiparallel",
-      "association_deltaE_kJ_mol": null,
-      "status": "pending",
+      "association_deltaE_kJ_mol": -82.73887231804612,
+      "status": "relaxed_electronic_association_screen",
       "atom_balanced": true,
       "includes_monomer_deformation": true,
       "BSSE_corrected": false,
