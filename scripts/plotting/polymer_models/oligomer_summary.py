@@ -197,7 +197,8 @@ def results_figure(feed,reviewed):
     ax.scatter(vals,range(len(vals)),color='#D55E00',s=75,zorder=3)
     ax.set_yticks(range(len(vals)),labels);ax.invert_yaxis();ax.axvline(0,color='.6',lw=1)
     for i,v in enumerate(vals):ax.annotate(f'{v:.1f}',(v,i),xytext=(0,11),textcoords='offset points',ha='center',fontsize=11)
-    ax.set_xlim(-65,5);ax.set_ylim(len(vals)-.5,-.7);ax.set_xlabel('Electronic association ΔE (kJ/mol)');ax.set_title('A  Separate segments',loc='left',fontweight='bold')
+    span=max(1.,max([0.]+vals)-min([0.]+vals))
+    ax.set_xlim(min(-65,min([0.]+vals)-.12*span),max(5,max([0.]+vals)+.12*span));ax.set_ylim(len(vals)-.5,-.7);ax.set_xlabel('Electronic association ΔE (kJ/mol)');ax.set_title('A  Separate segments',loc='left',fontweight='bold')
     ax.grid(axis='x',alpha=.15);ax.set_axisbelow(True)
     ax=fig.add_subplot(gs[0,1]);fold=[r for r in reviewed['folding'] if r['stacked_minus_open_deltaE_kJ_mol'] is not None]
     if fold:
