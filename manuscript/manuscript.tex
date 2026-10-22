@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,xcolor,hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setlength{\emergencystretch}{2em}
+\newcommand{\pending}[1]{\par\smallskip\noindent\textcolor{red!65!black}{\textbf{Draft completion item:} #1}\par\smallskip}
+\newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
+\title{A Route-Aware Computational Framework for Redox Motif Selection on Preformed Polymers}
+\author{Working draft: authorship and affiliations to be confirmed}
+\date{Evidence snapshot: 21 October 2026}
+\begin{document}
+\maketitle
+\begin{center}\small\textbf{Internal working draft.} Pending calculations and validation are identified explicitly.\end{center}
+
+\begin{abstract}
+Selecting redox groups for a preformed polymer requires separate assessments of molecular electrochemistry, attachment chemistry and interactions between nearby grafts. We develop a computational framework that connects exact precursor/product identities, acetonitrile solution-state calculations, defined base-assisted grafting reactions and matched finite-polymer occupancy scenarios. A systematic search generates 1,593 design recipes corresponding to 837 distinct exact designs, alongside a historical 75-candidate evaluation cohort. In the present retrospective benchmark snapshot, 38 of 39 sourced potentials from 30 free molecules are admitted, giving a mean absolute error of 0.248 V and a root-mean-square error of 0.281 V; no offset is fitted and all admitted outliers are retained. Two benzoquinone grafting reactions with positive hydrogen-chloride-reference free energies become favorable in the modeled DBU- and DIPEA-assisted routes, supporting their retention for further route evaluation. Open-chain oligomer models and balanced occupancy cycles distinguish electronic nonadditivity from conditional grafting free energy. A separate million-task control and a real molecular interruption/recovery experiment test execution and provenance. These results establish components of an auditable screening workflow. Completion of polymer thermochemistry, representative sensitivity controls and exact-route assessment remains necessary before drawing synthesis or polymer-performance conclusions.
+\end{abstract}
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=5mm, every node/.style={draw,rounded corners,align=center,font=\small,minimum height=10mm},>=Latex]
+\node (identity) {Exact precursor\\and graft graph};
+\node[right=of identity] (route) {Defined route\\and base};
+\node[right=of route] (redox) {Matched redox\\states and reference};
+\node[right=of redox] (polymer) {Open-chain\\occupancy scenarios};
+\node[below=8mm of redox] (qc) {Physical QC, provenance and independent reconstruction};
+\draw[->] (identity)--(route);\draw[->] (route)--(redox);\draw[->] (redox)--(polymer);
+\draw[->] (identity.south) |- (qc.west);
+\draw[->] (polymer.south) -- ++(0,-4mm) -| (qc.north);
+\end{tikzpicture}
+\caption{Working graphical abstract. Molecular redox properties, route-dependent grafting thermodynamics and neighboring-site effects are separate outputs linked by exact chemical identity. Execution correctness is evaluated independently of experimental accuracy. The diagram describes the framework and does not imply that every calculation or validation component is complete.}
+\label{fig:workflow}
+\end{figure}
+
+\section{Introduction}
+Redox-active groups tethered to insoluble polymers offer a way to separate charge-storage capacity from the concentration of circulating molecular mediators. Kim and co-workers demonstrated a nonaqueous redox-matched flow battery using functionalized polymer beads and soluble mediators.\cite{kim2022} That architecture motivates a design problem involving an already formed polymer: a proposed motif must be accessible as a precursor, attach at a reactive polymer site, retain useful redox properties and operate within a local graft environment.
+
+Molecular descriptors address only part of this problem. A calculated potential for a free parent compound does not establish the potential of an exact graft, and a favorable local attachment energy does not establish a practical synthesis. Neighboring grafts introduce an additional dimension because their conformations, association and electrostatic environment can differ from those of an isolated capped-site model. Reactive-handle density, chemical conversion, sequence spacing and spatial contact also describe different aspects of a polymer. Without measured loading or sequence information, assigning a single representative grafting pattern would introduce an unsupported assumption.
+
+We therefore examine a framework in which these questions are connected through exact molecular identity while retaining separate validation criteria. The framework combines systematic design enumeration, matched solution-state redox calculations, atom- and charge-balanced grafting reactions, and conditional finite-polymer scenarios (Figure~\ref{fig:workflow}). The intended contribution is a reproducible computational decision process, rather than a prediction of an experimentally optimized bead material. This working draft presents verified results and identifies the calculations and sensitivity analyses still required to complete that contribution.
+
+\section{Methods}
+\subsection{Molecular identity, candidate generation and attachment routes}
+The current synthesis model is post-functionalization of a preformed polymer bearing reactive benzyl chloride sites. A 4-methylbenzyl chloride fragment provides a local capped-site reference. Its grafted products are molecular models of a polymer attachment site; they do not contain the full support, crosslinks or an experimentally measured graft distribution. Earlier vinyl-monomer explorations are kept as a separate historical branch and are not the principal route-selection model.
+
+Systematic designs vary declared viologen, pyromellitic-diimide and naphthalene-diimide cores, attachment linkers, terminal substituents and individual ring substitutions. Exact stereochemical graphs and precursor/product pairs are deduplicated, while every generating recipe is retained. Charge states and multiplicity hints are checked for electron-count consistency. A declared redox ladder remains a computational hypothesis until its states pass the appropriate property-specific checks. Molecular weight and nominal gravimetric capacity, $Q=nF/(3.6M)$, are bookkeeping descriptors; they do not establish accessible electron count, polymer capacity or synthetic feasibility.
+
+A prospective route gate requires documented precursor access, attachment selectivity, defined reaction conditions, a balanced route, redox-core retention and source evidence. It distinguishes proceed, hold and exclusion decisions. Family-level precedents are retained with their scope and are not automatically promoted to exact-candidate synthesis evidence. Historical calculated properties and explicitly scoped method controls remain available even when a prospective synthesis decision is unresolved.
+
+\subsection{Electronic structure and solution free energies}
+Geometry-level and native-Hessian calculations use r$^2$SCAN with D4 dispersion and SMD acetonitrile \cite{r2scan2020,d42019,smd2009}. The geometry-level basis is def2-SVP for neutral and cationic states and def2-SVPD for anions. Active electronic energies use $\omega$B97M-V/def2-TZVPD on the selected geometry, with the same solvent model.\cite{wb97mv2016,def22005,diffuse2010} PySCF 2.14.0 and GPU4PySCF 1.8.1 are the validated implementations for the present native-thermal protocol.\cite{pyscf2020,gpu4pyscf2024} Supporting electrolyte ions are not implicitly introduced into these bare-solute calculations. Explicit ion-pair models are identified separately.
+
+The reported molecular free-energy model is
+\begin{equation}
+G = E_{\mathrm{SMD}}^{\omega\mathrm{B97M-V}} + G_{\mathrm{nuclear}}^{\mathrm{qRRHO}} - RT\ln(2S+1).
+\end{equation}
+The nuclear partition uses the solution geometry-level DFT Hessian. Rigid translations and rotations are excluded by a mass-weighted geometric projection, rather than by deleting all frequencies below a numerical threshold. The qualified xTB 6.7.1 thermodynamic kernel processes the explicit internal-mode list, with the symmetry number for the exact geometry and a primary rotor cutoff of 50 cm$^{-1}$. Cutoffs of 25 and 100 cm$^{-1}$ provide sensitivity estimates. This use of the thermodynamic kernel does not substitute a semiempirical Hessian for a DFT Hessian. The spin factor assumes an unsplit ground multiplet; unresolved state ordering remains a separate admission issue.
+
+Native admission requires a conservative solution-gradient maximum no larger than $4.5\times10^{-4}$ hartree bohr$^{-1}$, Hessian asymmetry no larger than $10^{-6}$ in the stored atomic-unit matrix, and a lowest internal frequency no smaller than $-5$ cm$^{-1}$. Finite-gradient Hessian checks at 0.0005 and 0.001 bohr must meet a 1\% relative-error threshold. Full integration-grid response, finite numerical values and spin diagnostics are checked separately. SCF convergence alone is insufficient for thermodynamic admission. Missing thermal or electronic quantities remain missing.
+
+\subsection{Redox reference and retrospective accuracy assessment}
+For a one-electron oxidized/reduced pair, potentials are calculated from $G_{\mathrm{ox}}-G_{\mathrm{red}}$ and referenced to a matched ferrocene/ferrocenium calculation. The experimental comparison uses exact free-parent identities and documented acetonitrile measurements with direct or source-defined reference conversion. Lower-tier measurements and excluded events are retained in the source catalog.
+
+The frozen retrospective panel contains 39 potential endpoints from 30 molecules. It includes all currently sourced strict endpoints and is not a held-out test set. Independent reviewers reconstruct state free energies, the reference and potential differences from backing records. Statistics use unrounded calculated potentials, retaining family, redox-step and original-study labels. Molecule- and study-cluster bootstrap summaries use 2,000 replicates and seed 20261021; intervals require at least five clusters. These summaries describe this panel and are not calibrated prediction intervals for new structures. No fitted offset or outlier removal is used.
+
+\subsection{Defined grafting reactions and standard states}
+For an N--H or O--H precursor, the local reference reaction is
+\begin{equation}
+\mathrm{RCl + HNu \rightarrow RNu + HCl}.
+\end{equation}
+Pyridyl quaternization is treated as a distinct reaction class with the appropriate precursor and chloride charge. The neutral-substitution reference is not interpreted as the actual free energy of a synthesis that includes a base. For a defined base $\mathrm{B}$, we additionally evaluate
+\begin{align}
+\mathrm{RCl + HNu + B} &\mathrm{\rightarrow RNu + BH^+ + Cl^-},\\
+\mathrm{RCl + HNu + B} &\mathrm{\rightarrow RNu + [BH^+\cdots Cl^-]}.
+\end{align}
+The separated-ion and contact-pair representations are alternative thermodynamic models, rather than an assumed equilibrium population or a precipitation model. Each reaction is checked for atom and charge balance.
+
+The native thermal translation convention is ideal-gas 1 atm. Reaction sums are converted to a 1 M solute standard state by adding $\Delta nRT\ln(RTc^\circ/p^\circ)$. The correction cancels for the neutral reference and separated-ion routes and is approximately $-7.93$ \kj\ for the contact-pair route at 298.15 K. The DBU/DIPEA pilot computes each neutral base, protonated base and protonated-base/chloride contact pair. Three geometry seeds are evaluated per new species, and thermochemistry is applied to the selected electronic-energy minimum. Reused component values retain their original source hashes. The difference between paired and separated representations is a model sensitivity, not an uncertainty interval.
+
+\subsection{Finite-polymer construction and conditional occupancy cycles}
+Oligomer construction preserves an open carbon backbone, the intended graft bond and declared stereochemistry. Monomers, dimers and trimers are included in the original interaction panel; no tetramers are included. GFN2-xTB/ALPB(acetonitrile) warm starts provide conformational seeds for subsequent DFT evaluation.\cite{gfn22019,alpb2021} Starting pose labels do not determine the final contact class. XYZ audits independently inspect composition, bonding, stereochemistry and severe clashes.
+
+The matched spacing control uses a five-repeat backbone with reactive sites 2, 3 and 4 and plain styrene end-padding units at positions 1 and 5. The six occupancy graphs are empty, singly grafted at sites 2, 3 or 4, and doubly grafted at 2/3 or 2/4. Unreacted benzyl chloride and unfunctionalized styrene units remain chemically distinct. Two warm-start conformers per graph give twelve electronic calculations. Fully occupied short oligomers represent dense local scenarios; these calculations assign no experimental loading distribution or occupancy probability.
+
+The neighboring-site free-energy nonadditivity is
+\begin{equation}
+\Delta\Delta G_{ij}=G_{ij}+G_{00}-G_i-G_j.
+\label{eq:nonadditivity}
+\end{equation}
+This quantity is also the difference between grafting the second site in the presence and absence of the first graft when the same reagent and byproduct terms are used. It includes changes in the backbone, conformation and solvent response and is not a pure pendant-core pair interaction. Electronic $\Delta\Delta E$ and thermodynamic $\Delta\Delta G$ are kept separate. An absolute conditional grafting free energy additionally includes the defined base and byproduct terms.
+
+For separate, intact molecular segments, frozen-fragment energies distinguish interaction from deformation:
+\begin{align}
+E_{\mathrm{int}} &= E_{AB}-E_A^{AB}-E_B^{AB},\\
+E_{\mathrm{def}} &= (E_A^{AB}-E_A^0)+(E_B^{AB}-E_B^0).
+\end{align}
+Their sum equals the segment association energy referenced to relaxed isolated segments. This partition avoids cutting covalent bonds or adding new caps. It nevertheless contains the full segments, is not counterpoise corrected, and does not establish an association free energy or electronic coupling.
+
+\subsection{Execution, checkpointing and numerical controls}
+Streaming tasks carry exact inputs, stage settings and content hashes. Node-local disk indices deduplicate inputs while immutable chunks and recipe lineage reside on shared storage. CPU workers claim chunks atomically and checkpoint completed task outputs. Recovery verifies host, process identifier and process-start identity; file age alone is insufficient. Quantum calculations retain independent GPU reservations, node preflight, disjoint CPU sets and capped native libraries. Geometry evaluations and optimizer-returned coordinates are saved on durable storage and remain unqualified until the ordinary physical checks pass.
+
+Bounded-memory solvent contractions and finer solvent-derivative steps are treated as numerical implementations requiring separate replay evidence. Singlet and radical controls compare complete Hessians and thermal quantities. A saved Hessian may be reconstructed by replacing only an identified additive solvent component after equivalence to full recomputation is established; native SCF, stationarity, derivative and minimum gates still apply. These execution checks do not establish experimental accuracy of the chosen density functional or solvent model.
+
+\section{Results}
+\subsection{Systematic designs and redox calibration address different populations}
+The systematic family search produces 1,593 recipes corresponding to 837 distinct exact designs. The historical evaluation cohort contains 75 candidates. These are different populations: enumeration does not imply completed quantum properties, synthesis eligibility or an expanded experimental validation set. The current prospective evidence registry contains family-level sources but no exact-candidate route entries. Accordingly, it does not establish a prospective synthesis shortlist.
+
+At the frozen manuscript snapshot, 38 of 39 retrospective benchmark potentials are admitted across all 30 molecules and seven original studies (Figure~\ref{fig:benchmark}). The mean absolute error is 0.248 V, the root-mean-square error is 0.281 V and the signed bias is $+0.200$ V. The largest admitted absolute error is 0.547 V. An independent review records 109 arithmetic checks with no discrepancies. The remaining endpoint is a second reduction of a pyromellitic-diimide derivative.
+
+Errors vary across the available families and redox steps. The first-step subset has a mean absolute error of 0.266 V over 30 endpoints, whereas the eight admitted second-step endpoints have a mean absolute error of 0.182 V. This difference is descriptive of unequal, partially paired subsets and does not establish greater general accuracy for second reductions. Aromatic imides contribute eight admitted endpoints from six molecules but only one original study. The panel therefore cannot validate all imide substitutions or transfer its accuracy to exact grafted structures; an NDI-specific external anchor remains outstanding.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-21/benchmark.pdf}
+\caption{Retrospective exact-free-parent benchmark in acetonitrile. Thirty-eight of thirty-nine frozen potential endpoints are admitted; the pending endpoint is not imputed. Points retain all admitted outliers. Family labels and redox-step markers distinguish coverage from aggregate accuracy. Potentials are referenced to the matched ferrocene couple. The figure is an immutable draft snapshot, not an experimental validation of grafted polymers.}
+\label{fig:benchmark}
+\end{figure}
+
+\subsection{Base-assisted thermodynamics changes the interpretation of benzoquinone attachment}
+The local grafting reference cohort contains 75 atom- and charge-balanced reactions, of which 67 have qualified reference free energies. Eight remain held by component or product QC. In the separate DBU/DIPEA pilot, all six newly calculated base-related species qualify. Five candidates have all four modeled base-assisted values, giving twenty values in total. The sixth candidate retains missing values because its upstream reference precursor is unresolved.
+
+The two oxygen-linked benzoquinone designs have positive HCl-reference reaction free energies of $+57.63$ and $+56.03$ \kj. Including DBU in the separated-ion model gives $-45.14$ and $-46.75$ \kj; the corresponding DIPEA values are $-13.34$ and $-14.94$ \kj. Contact-pair values are $-49.94$ and $-51.54$ \kj\ with DBU and $-18.51$ and $-20.11$ \kj\ with DIPEA (Figure~\ref{fig:grafting}). The reaction standard-state correction is included in the paired values. Thus the positive neutral reference does not justify discarding these candidates under the separately modeled base-assisted routes.
+
+These results support a ``base required; retained for evaluation'' designation. They do not demonstrate a selective experimental reaction of the exact benzoquinone precursor with a crosslinked resin in MeCN. Base alkylation, redox-core side reactions, salt behavior and polymer accessibility remain separate questions. The computed base-assisted sign is therefore one dimension of route assessment, rather than a synthesis-yield prediction.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-21/grafting.pdf}
+\caption{Defined base-assisted grafting sensitivity. Qualified HCl-reference reactions are combined with computed DBU/DIPEA protonation and chloride-pairing terms at 298.15 K in SMD MeCN. Five candidates have complete comparisons; the unresolved candidate remains blank. Ion-pair alternatives include the appropriate reaction standard-state correction and do not imply a measured ion-pair population.}
+\label{fig:grafting}
+\end{figure}
+
+\subsection{Open-chain construction permits conditional neighboring-site comparisons}
+Twenty-five of the original twenty-seven electronic oligomer cases currently pass geometry and active-energy checks. The two unresolved cases are PMDI trimers and remain outside completed comparisons. Construction and XYZ audits verify the intended open-chain topology. A trimer contains six backbone carbons, five backbone C--C bonds and two chain ends, rather than a triangular or cyclic backbone (Figure~\ref{fig:construction}). Proximity of pendant rings does not change that covalent connectivity.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-21/construction.pdf}
+\caption{Exact finite-polymer construction used in the interaction controls. The highlighted open backbone distinguishes covalent connectivity from spatial contacts among pendant groups. Monomer, dimer and trimer models are dense local scenarios and do not represent an experimentally measured sequence or graft-loading distribution.}
+\label{fig:construction}
+\end{figure}
+
+For the six-graph spacing control, all twelve electronic conformers qualify. Recovering the alternate empty-backbone conformer changes the selected electronic nonadditivities from the earlier incomplete-panel values of $-1.55$ and $-5.07$ \kj\ to $-10.98$ and $-14.50$ \kj\ for adjacent and one-spacer grafts, respectively. The change arises from the reference conformer within the same declared sampling set. It demonstrates why a matched empty-backbone reference is necessary; it does not establish a universal distance trend.
+
+Two of the six selected-geometry native free energies qualify at this snapshot. The remaining four are being evaluated. Consequently, Equation~\ref{eq:nonadditivity} has not yet yielded admitted spacing-dependent free-energy penalties or absolute conditional grafting free energies. These quantities remain unreported numerically rather than being replaced by electronic energies or borrowed thermal corrections.
+\pending{Complete the four selected native partitions, independently reconstruct both conditional cycles, and resolve the two trimer slots. Add representative redox-core and conformational sensitivity before making general polymer-design claims.}
+
+The intact-segment decomposition is complete for three sampled pairs using six frozen-fragment single-point calculations (Figure~\ref{fig:decomposition}). Its partition separates interactions at the complex geometry from deformation relative to relaxed fragments. The resulting quantities remain electronic, uncorrected for basis-set superposition error and inclusive of backbone and cap contributions. No electron-transfer rate follows from their magnitude.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-21/decomposition.pdf}
+\caption{Electronic interaction/deformation partition for three intact segment pairs. Frozen fragments retain the complex geometry without bond cutting or new caps. The partition closes the association-energy cycle but is not a pure pendant-core interaction, a counterpoise-corrected energy or an association free energy.}
+\label{fig:decomposition}
+\end{figure}
+
+\subsection{Numerical diagnostics prevent unqualified polymer results from entering the analysis}
+The unresolved calculations expose distinct numerical issues. In the open PMDI trimer, a legacy solvent cavitation--dispersion--solvent-structure (CDS) force component disagrees with total-energy finite differences by approximately $1.81\times10^{-4}$ hartree bohr$^{-1}$ at the tested coordinate on both integration grids. This discrepancy is not resolved by electronic-grid refinement. Conservative CDS energy derivatives reproduce the tested total-energy differences; their step consistency is checked before use in a continuation.
+
+For the largest spacing Hessian, the original CDS finite-difference step produces a total asymmetry of $2.06\times10^{-6}$, exceeding the fixed $10^{-6}$ admission threshold. A separately qualified finer step reduces this to $2.05\times10^{-8}$. Additive reconstruction replays complete singlet and radical recomputations with maximum matrix differences of $1.34\times10^{-11}$ and $2.83\times10^{-9}$ atomic units, and thermal differences below $1.2\times10^{-8}$ eV. The recovered target then passes the ordinary native gates, with a lowest internal frequency of $+7.23$ cm$^{-1}$. These are execution-equivalence results, not a relaxation of physical QC or a high-level validation of grafting energetics.
+
+\subsection{Execution tests establish bounded scheduling and checkpoint recovery}
+A synthetic control packs one million distinct tasks into one thousand chunks in 75.9 s with a measured preparation peak RSS of 67.2 MiB. Eight workers on two hosts execute the synthetic tasks over a 9.58 s span, excluding packing and startup. Independent arithmetic checks find zero discrepancies. This timing characterizes scheduling and storage, not chemical enumeration, conformer search or DFT throughput.
+
+Separately, all 837 molecular descriptor outputs agree with serial definitions. In the shared-filesystem recovery experiment, 32 real design recipes deduplicate to 17 exact molecular tasks. A worker on one host exits abruptly after four checkpointed tasks; owner verification on that host precedes recovery. A second host completes the remaining thirteen tasks without repeating the four checked tasks. All resumed outputs match uninterrupted execution and a separate serial replay. This experiment qualifies descriptor-stage recovery. It does not yet qualify end-to-end quantum interruption/restart or million-molecule quantum execution.
+\pending{Add controlled concurrency curves, a fresh-checkout small example and selected conformer/quantum stage adapters. Keep stage-specific throughput separate from scientific accuracy.}
+
+\section{Discussion}
+The strongest current result is the need to preserve separate decision dimensions. A favorable molecular redox descriptor does not supply an attachment route. A positive HCl-reference reaction does not determine a base-assisted reaction with different species and stoichiometry. A stacked configuration establishes a geometry, whereas its association strength requires an energy definition and its electron-transfer behavior requires additional electronic and dynamical information. Exact graph and state identities make these quantities comparable without treating them as interchangeable evidence.
+
+The base-assisted example also limits the usefulness of a universal grafting cutoff. A negative standard reaction free energy describes a thermodynamic preference within the specified model and conditions. It does not bound an activation barrier or account automatically for conversion-dependent polymer accessibility, precipitation or competing chemistry. Candidate prioritization should therefore require a defined route and a conclusion that survives relevant method, conformer and ion-pair sensitivity. The present pilot supports retention of the two benzoquinones, but representative validation of grafting free energies remains incomplete.
+
+For neighboring grafts, the matched occupancy cycle provides a useful way to formulate unknown loading as conditional scenarios. It avoids assigning an unsupported sequence distribution while allowing a later experimental loading estimate to identify relevant scenarios. The observed reference-conformer effect is substantial relative to the initial electronic comparison, indicating that conformational treatment is a scientific requirement. A selected minimum is not a full conformational ensemble, and rotor-cutoff variation does not quantify that missing ensemble uncertainty.
+
+Weak unwanted association is a design objective for the current motif screen, but electronic coupling and charge transport require an operating context. The bead-battery literature discusses self-exchange among tethered groups as a possible route for charge propagation.\cite{kim2022} Suppressing all coupling would therefore not be a universal materials objective. The current neutral models quantify only specified association or nonadditivity quantities. They cannot determine whether a contact promotes useful intrabead transport, charge trapping or undesired transfer, and they do not model interactions between entire swollen beads.
+
+The retrospective redox benchmark provides an external accuracy scale for its exact free molecules, with a nonzero systematic bias and limited study coverage in several families. Its error statistics cannot be transferred directly to a reaction free energy, an unbenchmarked NDI derivative or a polymer environment. Further method tuning would require a declared calibration set and a separate untouched molecule/study test set. The scheduling results address a different limitation: they show that exact task identity and checked partial work can survive parallel execution, while leaving the scientific cost and validation of expensive stages explicit.
+
+\section{Conclusions}
+The framework connects exact candidate design to distinct redox, attachment and neighboring-site assessments. Verified examples show that defining the base-assisted reaction changes the thermodynamic interpretation of two benzoquinone candidates, that the empty-backbone conformer materially affects electronic occupancy cycles, and that numerical and execution checks prevent incomplete outputs from acquiring qualified properties. The present draft does not establish an optimized grafted polymer. Completion of the outstanding thermochemistry, external and sensitivity controls, and reproducible release will determine the final scope of the in silico paper.
+
+\section*{Data and code availability}
+The draft evidence snapshot records source and artifact hashes under \path{manuscript/evidence/2026-10-21/}. Versioned pipeline code and curated result metadata are maintained in the project repository. Bulk quantum records remain on durable shared storage with recorded locations and hashes. A public archival release, accessible calculation subset and final reproduction package remain to be prepared before submission.
+
+\section*{Author contributions, funding and competing interests}
+These statements require confirmation by the authors and are intentionally not inferred in this working draft.
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\end{document}

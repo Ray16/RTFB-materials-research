@@ -14,6 +14,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-21/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 
