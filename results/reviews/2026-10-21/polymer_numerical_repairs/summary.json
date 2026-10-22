@@ -1,0 +1,57 @@
+{
+  "status": "numerical_execution_controls_passed_large_thermal_pending",
+  "checks": {
+    "focused_tests_passed": 79,
+    "full_native_replay_multiplicities": [
+      1,
+      2
+    ],
+    "largest_thermal_replay_difference_eV": 1.6217986065214518e-08,
+    "same_geometry_singlepoint_replay_maximum_energy_difference_eV": 8.731149137020111e-11
+  },
+  "scope": "Execution equivalence to frozen prior numerical controls; no new experimental validation or completed polymer free-energy claim",
+  "remaining": [
+    "Large-model native thermochemistry and physical QC",
+    "Two original PMDI trimer recoveries",
+    "Matched selected-conformer independent cycle validation"
+  ],
+  "evidence": {
+    "results/polymer_models/campaigns/2026-10-21_spacing_bounded_pcm/plan.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_spacing_bounded_pcm/plan.json",
+      "sha256": "3c94a52b3406f54378d668fc2524723fb22c33a73800b20dcaeeb72d6f1817b4"
+    },
+    "results/polymer_models/campaigns/2026-10-21_spacing_bounded_pcm/replay_qualification.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_spacing_bounded_pcm/replay_qualification.json",
+      "sha256": "5ec7c801217f17e39493a342c11e90bfa701b3b1a7ca8d08b728912cf60aef17"
+    },
+    "results/polymer_models/campaigns/2026-10-21_spacing_bounded_pcm/controls/1/status.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_spacing_bounded_pcm/controls/1/status.json",
+      "sha256": "b4d708626fdd892d55e9a9176999acfd4c223602c8747cf7a661b9fc49767762"
+    },
+    "results/polymer_models/campaigns/2026-10-21_spacing_bounded_pcm/controls/2/status.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_spacing_bounded_pcm/controls/2/status.json",
+      "sha256": "babd333ec1c908c8d3507c1982f2fbceec72f5d69a44ec3ee18c8ac1cac0c374"
+    },
+    "results/polymer_models/campaigns/2026-10-21_spacing_singlepoint_repair/plan.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_spacing_singlepoint_repair/plan.json",
+      "sha256": "09eca2d761ca7b0959cb0e9206d7dbc520ad3cea2742a0a6b07a9bcf0c0114f5"
+    },
+    "results/polymer_models/campaigns/2026-10-21_spacing_singlepoint_repair/summary.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_spacing_singlepoint_repair/summary.json",
+      "sha256": "d37110b4b81390eb9931307bd3a18776d8b1a743bcb0e8018387796a4a8e4741"
+    },
+    "results/polymer_models/campaigns/2026-10-21_spacing_singlepoint_repair/energy/done/occ_none__pose1.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_spacing_singlepoint_repair/energy/done/occ_none__pose1.json",
+      "sha256": "1c8965c19e6486b8081680eab509893d0ffc292989670f9c01c501416fb3c757"
+    },
+    "results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_stacked_scf/plan.json": {
+      "snapshot": "results/reviews/2026-10-21/polymer_numerical_repairs/evidence/2026-10-21_checkpoint_pmdi_stacked_scf/plan.json",
+      "sha256": "bbba483eaa49fcffcf8435b601c8e3236a30459863ec495348e6e5a90c382f36"
+    }
+  },
+  "raw_roots": [
+    "calcs/polymer_models/2026-10-21_spacing_bounded_pcm",
+    "calcs/polymer_models/2026-10-21_spacing_singlepoint_repair",
+    "calcs/polymer_models/2026-10-21_checkpoint_pmdi_stacked_scf"
+  ]
+}

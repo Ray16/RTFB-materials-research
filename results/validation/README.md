@@ -23,3 +23,5 @@ Individual campaign directories retain plans, ownership/launch records, logs,
 raw replay artifacts and independent reviews. Their dated counts describe that
 campaign. Current candidate calculations live in `calcs/dft/<id>/<state>/` from
 the project root; follow a review's manifest for isolated alternatives and repairs.
+
+The [polymer numerical execution checkpoint](../reviews/2026-10-21/polymer_numerical_repairs/README.md) records 79 focused regression tests and full singlet/radical Hessian replays. Large-model thermal results remain pending; execution equivalence does not establish experimental accuracy.
