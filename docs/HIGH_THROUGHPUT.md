@@ -136,6 +136,8 @@ linear speedup. Actual useful workers, thread caps and memory are recorded.
 The [small CPU example](../examples/publication_smoke/README.md) runs a declared
 32-recipe subset through exact deduplication, descriptor replay and the route gate,
 then regenerates a checked scientific figure from frozen data. It submits no
-quantum work. Local execution passes; a clean-checkout reproduction is the next
-release check. Full quantum dependencies and raw calculation reproduction remain
-separate requirements.
+quantum work. The [clean-checkout reproduction](../results/validation/fresh_checkout_2026-10-22/README.md)
+now passes in a newly installed CPU environment: no inherited system/user packages,
+all seventeen exact designs checked, and identical figure data and RGB pixels.
+Full quantum dependencies, public archival packaging and raw calculation reproduction
+remain separate requirements.

@@ -8,7 +8,8 @@ scientific table and compares the plotted numerical data. It submits no quantum
 jobs and requires no CUDA, model weights, raw quantum files or private credentials.
 
 Use Python 3.11 or later with RDKit, NumPy, SciPy, psutil and Matplotlib. Install
-the tested direct dependencies with `python -m pip install -r examples/publication_smoke/requirements-cpu.txt`. The exact
+the tested direct dependencies with `python -m pip install -r examples/publication_smoke/requirements-cpu.txt`,
+or use `requirements-cpu.lock.txt` to pin the complete runtime dependency set. The exact
 tested versions and interpreters are recorded in the execution summary. A separate
 plotting interpreter may be supplied when those packages live in two environments.
 The full quantum environment remains documented separately in `setup_env.sh` and
@@ -30,3 +31,10 @@ their energies or establish their external accuracy. The molecular subset is an
 execution example and carries no synthesis recommendation.
 
 For a separate plotting environment, append `--plot-python /path/to/python`.
+
+The [clean-checkout test](../../results/validation/fresh_checkout_2026-10-22/README.md)
+passes in a newly installed CPU-only environment with system and user packages
+disabled. It reproduces all example results and the figure's numerical data and
+RGB pixels. For a sparse checkout, include `src`, `config`, `scripts`, `examples`,
+`manuscript/evidence/2026-10-22` and `results/figures/polymer_models`. The full
+quantum/CUDA environment and raw calculation reproduction remain separate work.

@@ -7,6 +7,34 @@
   "CPU_affinity": [
     1
   ],
-  "status": "waiting_all_suitable_GPUs_occupied_or_contention",
-  "updated": 1792648048.5693629
+  "status": "worker_started",
+  "launch": {
+    "host": "lambda13",
+    "pid": "3263526",
+    "argv": [
+      "env",
+      "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+      "OMP_NUM_THREADS=1",
+      "OMP_THREAD_LIMIT=1",
+      "MKL_NUM_THREADS=1",
+      "OPENBLAS_NUM_THREADS=1",
+      "NUMEXPR_NUM_THREADS=1",
+      "XTB_THREADS=1",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-m",
+      "redox.workflows.gpu",
+      "--gpu",
+      "1",
+      "--threads",
+      "2",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_resume_2026-10-22/execution/1792648788168999838",
+      "--",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/resume_benchmark_spin.py",
+      "worker"
+    ],
+    "execution": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_resume_2026-10-22/execution/1792648788168999838",
+    "started": 1792648788.1855288
+  }
 }
