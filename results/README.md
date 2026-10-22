@@ -90,3 +90,5 @@ and evidence. Update the category guide/status and this index when a new result
 type is added. Include the exact identities, method/solvent, pending quantities,
 QC, raw paths and source manifest. Existing figure and slide refresh commands are
 in their guides above. Root-level legacy CSV files are not the current entry point.
+
+The [controlled CPU concurrency experiment](validation/cpu_concurrency_2026-10-22/README.md) checks 15 real descriptor executions with one to eight workers, including a two-host condition. All 12,555 molecular comparisons match serial definitions; launch overhead limits the speedup of this small library. The [shared route-stage launcher](validation/route_launcher_2026-10-22/README.md) also passes its 837-design execution. A [small CPU reproduction example](../examples/publication_smoke/README.md) is available, with local execution checked and clean-checkout qualification pending.

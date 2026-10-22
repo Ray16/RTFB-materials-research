@@ -1,0 +1,380 @@
+{
+  "status": "running",
+  "completed": 15,
+  "expected": 15,
+  "latest": {
+    "condition": "one_host_8",
+    "repeat": 1,
+    "hosts": {
+      "lambda2": 8
+    },
+    "requested_workers": 8,
+    "observed_workers": 8,
+    "workers_executing_chunks": 8,
+    "tasks": 837,
+    "input_recipes": 1593,
+    "chunks": 105,
+    "preparation_seconds": 3.3861284255981445,
+    "launch_to_observed_completion_seconds": 2.4974589347839355,
+    "worker_timestamp_span_seconds": 1.2192177772521973,
+    "largest_worker_peak_RSS_KiB": 183856,
+    "serial_discrepancies": 0,
+    "workers": [
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088362,
+          "process_start": "1344925092",
+          "nonce": "098211153a95422a980c23de2d1e1572",
+          "cpus": [
+            4
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648631.8288424,
+          "completed_chunks": [
+            "chunk_00000030",
+            "chunk_00000031",
+            "chunk_00000032",
+            "chunk_00000033",
+            "chunk_00000034",
+            "chunk_00000035",
+            "chunk_00000036",
+            "chunk_00000037",
+            "chunk_00000038",
+            "chunk_00000039",
+            "chunk_00000040",
+            "chunk_00000041",
+            "chunk_00000042",
+            "chunk_00000043",
+            "chunk_00000044",
+            "chunk_00000045",
+            "chunk_00000046",
+            "chunk_00000047",
+            "chunk_00000049",
+            "chunk_00000050",
+            "chunk_00000052",
+            "chunk_00000054",
+            "chunk_00000056",
+            "chunk_00000058",
+            "chunk_00000060",
+            "chunk_00000063",
+            "chunk_00000064",
+            "chunk_00000018",
+            "chunk_00000025"
+          ],
+          "active_chunk": "chunk_00000025",
+          "finished": 1792648633.0102797,
+          "peak_RSS_KiB": 183588,
+          "user_cpu_seconds": 1.032646,
+          "system_cpu_seconds": 0.276954
+        }
+      },
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088366,
+          "process_start": "1344925093",
+          "nonce": "bec2d9b7adc94e6abbc6add729df3529",
+          "cpus": [
+            9
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648632.6558166,
+          "completed_chunks": [
+            "chunk_00000088",
+            "chunk_00000094",
+            "chunk_00000097",
+            "chunk_00000100",
+            "chunk_00000016",
+            "chunk_00000023"
+          ],
+          "active_chunk": "chunk_00000023",
+          "finished": 1792648632.9909034,
+          "peak_RSS_KiB": 183500,
+          "user_cpu_seconds": 0.893108,
+          "system_cpu_seconds": 0.23022299999999998
+        }
+      },
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088370,
+          "process_start": "1344925095",
+          "nonce": "49106ce531344a1889322d1c662ebddd",
+          "cpus": [
+            5
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648631.9796398,
+          "completed_chunks": [
+            "chunk_00000065",
+            "chunk_00000066",
+            "chunk_00000067",
+            "chunk_00000068",
+            "chunk_00000069",
+            "chunk_00000070",
+            "chunk_00000071",
+            "chunk_00000072",
+            "chunk_00000073",
+            "chunk_00000075",
+            "chunk_00000077",
+            "chunk_00000079",
+            "chunk_00000081",
+            "chunk_00000083",
+            "chunk_00000085",
+            "chunk_00000087",
+            "chunk_00000090",
+            "chunk_00000092",
+            "chunk_00000095",
+            "chunk_00000098",
+            "chunk_00000011",
+            "chunk_00000017",
+            "chunk_00000024"
+          ],
+          "active_chunk": "chunk_00000024",
+          "finished": 1792648633.0186253,
+          "peak_RSS_KiB": 183856,
+          "user_cpu_seconds": 0.969513,
+          "system_cpu_seconds": 0.316494
+        }
+      },
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088374,
+          "process_start": "1344925097",
+          "nonce": "5790441d1f1a445ca210a993a1baeb51",
+          "cpus": [
+            7
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648632.302606,
+          "completed_chunks": [
+            "chunk_00000074",
+            "chunk_00000076",
+            "chunk_00000078",
+            "chunk_00000080",
+            "chunk_00000082",
+            "chunk_00000084",
+            "chunk_00000086",
+            "chunk_00000089",
+            "chunk_00000091",
+            "chunk_00000093",
+            "chunk_00000096",
+            "chunk_00000099",
+            "chunk_00000012",
+            "chunk_00000020",
+            "chunk_00000027"
+          ],
+          "active_chunk": "chunk_00000027",
+          "finished": 1792648633.0183175,
+          "peak_RSS_KiB": 183516,
+          "user_cpu_seconds": 0.880284,
+          "system_cpu_seconds": 0.277984
+        }
+      },
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088378,
+          "process_start": "1344925099",
+          "nonce": "db5f7aa05c3b4f1ead81c1f789473de4",
+          "cpus": [
+            10
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648632.8184597,
+          "completed_chunks": [
+            "chunk_00000061",
+            "chunk_00000015",
+            "chunk_00000022",
+            "chunk_00000028"
+          ],
+          "active_chunk": "chunk_00000028",
+          "finished": 1792648633.0282938,
+          "peak_RSS_KiB": 183436,
+          "user_cpu_seconds": 0.809256,
+          "system_cpu_seconds": 0.199264
+        }
+      },
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088382,
+          "process_start": "1344925100",
+          "nonce": "78730416e0cd4a8ca9ca01e03204fd7f",
+          "cpus": [
+            11
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648632.979651,
+          "completed_chunks": [
+            "chunk_00000029"
+          ],
+          "active_chunk": "chunk_00000029",
+          "finished": 1792648633.0480602,
+          "peak_RSS_KiB": 183764,
+          "user_cpu_seconds": 0.7154079999999999,
+          "system_cpu_seconds": 0.23038499999999998
+        }
+      },
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088386,
+          "process_start": "1344925103",
+          "nonce": "1eafde9ebb694cbeb33a6db17bbf7acd",
+          "cpus": [
+            8
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648632.4818935,
+          "completed_chunks": [
+            "chunk_00000048",
+            "chunk_00000051",
+            "chunk_00000053",
+            "chunk_00000055",
+            "chunk_00000057",
+            "chunk_00000059",
+            "chunk_00000062",
+            "chunk_00000014",
+            "chunk_00000019",
+            "chunk_00000026"
+          ],
+          "active_chunk": "chunk_00000026",
+          "finished": 1792648633.0172565,
+          "peak_RSS_KiB": 183604,
+          "user_cpu_seconds": 0.906013,
+          "system_cpu_seconds": 0.261737
+        }
+      },
+      {
+        "owner": {
+          "host": "lambda2",
+          "pid": 1088390,
+          "process_start": "1344925104",
+          "nonce": "3271e32617be4568ab5aee247f514f2c",
+          "cpus": [
+            6
+          ],
+          "executor_sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+          "thread_caps": {
+            "OMP_NUM_THREADS": "1",
+            "OMP_THREAD_LIMIT": "1",
+            "MKL_NUM_THREADS": "1",
+            "OPENBLAS_NUM_THREADS": "1",
+            "NUMEXPR_NUM_THREADS": "1",
+            "XTB_THREADS": "1"
+          }
+        },
+        "status": {
+          "status": "worker_finished",
+          "started": 1792648632.1462631,
+          "completed_chunks": [
+            "chunk_00000101",
+            "chunk_00000102",
+            "chunk_00000103",
+            "chunk_00000104",
+            "chunk_00000000",
+            "chunk_00000001",
+            "chunk_00000002",
+            "chunk_00000003",
+            "chunk_00000004",
+            "chunk_00000005",
+            "chunk_00000006",
+            "chunk_00000007",
+            "chunk_00000008",
+            "chunk_00000009",
+            "chunk_00000010",
+            "chunk_00000013",
+            "chunk_00000021"
+          ],
+          "active_chunk": "chunk_00000021",
+          "finished": 1792648632.9902573,
+          "peak_RSS_KiB": 183164,
+          "user_cpu_seconds": 0.9372079999999999,
+          "system_cpu_seconds": 0.30181199999999997
+        }
+      }
+    ],
+    "raw_campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-22_concurrency/one_host_8_r1",
+    "manifest_sha256": "dad652870cdd9927a600bd383e91949b56892447822857cba48c7f8d96cef7e9"
+  }
+}

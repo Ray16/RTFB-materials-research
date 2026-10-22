@@ -18,8 +18,22 @@ from redox.core.io import atomic_write_json
 from redox.workflows import chunked
 
 
+def module_for_stage(plan):
+    """Only explicitly registered, in-process CPU stages may use this launcher."""
+    modules = {
+        "descriptors": "redox.screening.streaming_search",
+        "scheduler_control": "redox.screening.streaming_search",
+        "exact_routes": "redox.screening.route_stage",
+    }
+    try:
+        return modules[plan["stage"]["name"]]
+    except KeyError as error:
+        raise ValueError("Stage has no registered CPU worker; quantum jobs require their GPU workflow") from error
+
+
 def launch(campaign, hosts, out):
     plan = chunked.read_plan(campaign, require_current=True)
+    module = module_for_stage(plan)
     out = Path(out).resolve()
     out.mkdir(parents=True, exist_ok=False)
     helper = (
@@ -30,6 +44,8 @@ def launch(campaign, hosts, out):
         campaign=str(Path(campaign).resolve()),
         manifest_sha256=plan["manifest_sha256"],
         executor_sha256=chunked.file_hash(__file__),
+        stage=plan["stage"]["name"],
+        worker_module=module,
         requested_hosts=hosts,
         workers=[],
         started=time.time(),
@@ -125,7 +141,7 @@ def launch(campaign, hosts, out):
                 sys.executable,
                 "-u",
                 "-m",
-                "redox.screening.streaming_search",
+                module,
                 "worker",
                 "--campaign",
                 str(Path(campaign).resolve()),

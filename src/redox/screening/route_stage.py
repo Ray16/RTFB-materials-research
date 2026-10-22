@@ -9,6 +9,7 @@ from contextlib import contextmanager
 from functools import cache
 import importlib.util
 import json
+import os
 from pathlib import Path
 import sqlite3
 import tempfile
@@ -172,7 +173,13 @@ def main():
     parser.add_argument("--evidence", type=Path, default=ROOT / "results/grafting/route_evidence.json")
     parser.add_argument("--assessment", type=Path, default=ROOT / "results/grafting/selection_assessment.json")
     parser.add_argument("--chunk-size", type=int, default=64)
+    parser.add_argument("--checkpoint-every", type=int, default=100,
+                        help="Completed tasks per durable checkpoint; compatible with the shared CPU launcher")
     args = parser.parse_args()
+    from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity
+    with allocation_guard():
+        host_capacity(1)
+        os.sched_setaffinity(0, cpu_allocation(1))
     if args.action == "prepare":
         if args.descriptors is None:
             parser.error("--descriptors is required")
@@ -185,7 +192,7 @@ def main():
         for group in ("source_sha256", "input_sha256"):
             if any(queue.file_hash(p) != h for p, h in plan["stage"]["protocol"][group].items()):
                 raise ValueError("Frozen route source or input changed")
-        queue.run_worker(args.campaign, screen, checkpoint_every=args.chunk_size)
+        queue.run_worker(args.campaign, screen, checkpoint_every=args.checkpoint_every)
     else:
         print(json.dumps(verify(args.campaign)))
 

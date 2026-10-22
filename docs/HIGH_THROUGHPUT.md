@@ -104,9 +104,10 @@ PYTHONPATH=src python -m redox.screening.streaming_search verify \
 Use `prepare-control --count 1000000` for synthetic storage/scheduling controls.
 The CPU concurrency in these commands is an explicit benchmark condition; it is
 not a GPU worker limit. Shared-filesystem interrupted-worker recovery is checked on real molecular
-descriptors. Controlled concurrency curves and selected-subset conformer/quantum
-adapters remain open
-before the entire high-throughput workflow is qualified.
+descriptors. Repeated real-descriptor concurrency measurements now cover one,
+two, four and eight workers on one host and eight across two hosts. Selected-subset
+conformer/quantum adapters and quantum restart equivalence remain open before the
+entire high-throughput workflow is qualified.
 
 ## Exact route successor stage
 
@@ -117,3 +118,24 @@ The [actual 837-design execution](../results/validation/exact_routes_2026-10-22/
 uses two disjoint CPU workers. All designs remain held for exact-route evidence;
 no quantum campaign is launched. NDJSON route catalogs spill to node-local disk.
 See [reproduction and scope](../results/validation/exact_routes_2026-10-22/README.md).
+
+The shared CPU launcher now dispatches registered descriptor, control and exact-route
+stages, refusing quantum stages. An [actual successor launch](../results/validation/route_launcher_2026-10-22/summary.json)
+checks all 837 designs through that entry point with two disjoint CPU workers.
+
+## Controlled concurrency and a small reproduction example
+
+The [repeated experiment](../results/validation/cpu_concurrency_2026-10-22/README.md)
+checks fifteen executions of all 837 designs against serial definitions. Median
+launch-to-observed completion decreases from 4.436 s with one worker to 2.497 s
+with eight on one host; eight across two hosts takes 2.585 s. Preflight, SSH,
+scorer initialization and actual work are included, while preparation is separate.
+This small library shows diminishing returns and does not justify extrapolating
+linear speedup. Actual useful workers, thread caps and memory are recorded.
+
+The [small CPU example](../examples/publication_smoke/README.md) runs a declared
+32-recipe subset through exact deduplication, descriptor replay and the route gate,
+then regenerates a checked scientific figure from frozen data. It submits no
+quantum work. Local execution passes; a clean-checkout reproduction is the next
+release check. Full quantum dependencies and raw calculation reproduction remain
+separate requirements.
