@@ -47,7 +47,7 @@ require a new panel version rather than silently changing this denominator.
 
 The latest independent review admits 38/39 potentials from 30 parents and seven
 original studies. All 22 native-completion molecule jobs are terminal; one
-endpoint still requires its source-addressed alternate-spin check. The
+endpoint still requires its source-addressed alternate-spin check. Its first attempt ran out of GPU memory after the optimizer converged. The [checkpoint continuation](../results/validation/publication_benchmark/spin_resume_2026-10-22/plan.json) preserves that geometry and requires a larger-memory device; the physical gates and active energy protocol remain unchanged. The
 [current analysis](../results/validation/publication_benchmark/current.json) uses
 unrounded values and reports event-weighted errors, molecule-weighted MAE,
 family/wave coverage, signed two-wave spacings and all outliers. Study and molecule
@@ -109,7 +109,7 @@ documents the bounded-memory Hessian and single-point controls. These establish
 execution equivalence within the stated models. They do not supply an independent
 high-level benchmark of grafting free energies or motif interaction strength.
 
-## Before manuscript preparation
+## Before manuscript submission
 
 Close the ongoing polymer calculations and inspect actual physical QC. Complete
 or explicitly resolve the benchmark panel, then run representative grafting and

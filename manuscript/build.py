@@ -24,7 +24,8 @@ def main():
     with allocation_guard():
         host_capacity(1)
         os.sched_setaffinity(0, cpu_allocation(1))
-    manifest = PAPER / "evidence/2026-10-21/manifest.json"
+    pointer = PAPER / "evidence/current.json"
+    manifest = ROOT / json.loads(pointer.read_text())["manifest"]
     evidence = json.loads(manifest.read_text())
     for path, expected in evidence["snapshot_sha256"].items():
         if sha(ROOT / path) != expected:
@@ -36,7 +37,7 @@ def main():
         if shutil.which(program) is None:
             raise RuntimeError(f"Missing manuscript build program: {program}")
     source = {str(p.relative_to(ROOT)): sha(p) for p in
-              (PAPER / "manuscript.tex", PAPER / "references.bib", PAPER / "check_claims.py", Path(__file__), manifest)}
+              (PAPER / "manuscript.tex", PAPER / "references.bib", PAPER / "check_claims.py", Path(__file__), manifest, pointer)}
     temporary = Path(tempfile.mkdtemp(prefix="redox_manuscript_"))
     env = dict(os.environ, BIBINPUTS=str(PAPER) + os.pathsep + os.environ.get("BIBINPUTS", ""))
     command = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "-output-directory=" + str(temporary), "manuscript.tex"]

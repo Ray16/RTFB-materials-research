@@ -4,7 +4,7 @@ All result categories: [results index](../results/README.md).
 
 Open [redox_workflow.pdf](redox_workflow.pdf).
 
-The first 13 slides present the background, post-grafting route, computational
+The first 15 slides present the background, post-grafting route, computational
 workflow, method, key candidate results and synthesis implications. Detailed
 methods, validation tables, supplementary molecular drawings and historical
 comparisons follow the **Backup** divider.
@@ -41,3 +41,5 @@ The current benchmark slide uses the [expanded retrospective panel](../results/v
 The checked [figure](../results/figures/validation/retrospective_redox_benchmark.pdf)
 retains all admitted outliers and the pending endpoint. Earlier validation subsets
 in Backup are historical snapshots.
+
+Two current result slides use the frozen [22 October manuscript evidence](../manuscript/evidence/2026-10-22/manifest.json): all six selected native spacing free energies, the two conditional cycles, and the scoped external DBU capture-term discrepancy. They preserve the earlier source epochs.

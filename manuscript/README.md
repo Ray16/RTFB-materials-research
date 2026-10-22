@@ -6,15 +6,16 @@ The [early-review notes](review_notes.md) identify questions for a colleague.
 This is a local working draft, with no Overleaf project configured.
 
 The draft contains Introduction, Methods, verified Results, Discussion and
-Conclusions, with citations and five figures including a working graphical
-abstract. It uses a frozen [evidence snapshot](evidence/2026-10-21/manifest.json)
+Conclusions, with citations and six figures including a working graphical
+abstract. It uses a frozen [evidence snapshot](evidence/2026-10-22/manifest.json)
 so live calculation updates cannot silently change a figure while leaving its
 caption and text unchanged. Figures are under `results/figures/manuscript/`;
 the original maintained figures and raw data remain at their existing locations.
 
 The current paper is methods-focused. It reports 38/39 admitted free-molecule
 potentials, defined DBU/DIPEA grafting comparisons and conditional finite-polymer
-models. Pending trimer, thermal, method-sensitivity, external-validation and
+models. All six selected spacing free energies and both conditional cycles are
+checked. Pending trimer, spin, method-sensitivity, external-validation and
 release work is marked in the manuscript. These labels must be resolved before
 submission. Authorship, affiliations, funding and competing-interest statements
 are awaiting author confirmation.
@@ -34,8 +35,8 @@ results requires a new evidence snapshot and an intentional text/figure update.
 ## Overleaf upload
 
 The [self-contained ZIP](overleaf_upload.zip) contains `main.tex`, the bibliography
-and all four external figure PDFs. The working graphical abstract is drawn by
-LaTeX. The exported project compiles to the same 12-page text as the checked
+and all five external figure PDFs. The working graphical abstract is drawn by
+LaTeX. The exported project compiles to the same 13-page text as the checked
 draft; every archive member is hash-verified in [overleaf_export.json](overleaf_export.json).
 No Overleaf project has been created or connected yet.
 

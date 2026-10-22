@@ -39,13 +39,14 @@ def main():
         raise ValueError("Draft PDF differs from its checked build")
     if any(sha(ROOT / path) != expected for path, expected in built["source_sha256"].items()):
         raise ValueError("Draft source changed after its checked build")
-    snapshot = json.loads((PAPER / "evidence/2026-10-21/manifest.json").read_text())
+    pointer = json.loads((PAPER / "evidence/current.json").read_text())
+    snapshot = json.loads((ROOT / pointer["manifest"]).read_text())
     if any(sha(ROOT / path) != expected for path, expected in snapshot["snapshot_sha256"].items()):
         raise ValueError("Frozen draft evidence changed")
     destination.mkdir()
     (destination / "figures").mkdir()
     text = (PAPER / "manuscript.tex").read_text()
-    source_prefix = "../results/figures/manuscript/2026-10-21/"
+    source_prefix = "../" + pointer["figures"] + "/"
     figures = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", text)
     for figure in figures:
         if not figure.startswith(source_prefix):

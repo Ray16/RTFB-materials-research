@@ -11,8 +11,8 @@ identity and field-specific validation keep those dimensions connected without
 promoting one type of evidence into another.
 
 The most concrete current examples are the base-assisted sign change for two BQ
-grafting reactions and the effect of the empty-backbone conformer on neighboring-
-site electronic nonadditivity. The experimental benchmark supplies a measured
+grafting reactions and the completed neighboring-site conditional free energies and their conformational
+reference sensitivity. The experimental benchmark supplies a measured
 accuracy scale for exact free molecules. The execution controls support
 reproducibility and scaling components; they do not establish chemical accuracy.
 
@@ -22,7 +22,7 @@ reproducibility and scaling components; they do not establish chemical accuracy.
 | Do the chemical examples show consequential selection changes across a useful range of motifs? | Two BQ routes and a phthalimide spacing control are informative but do not yet support broad polymer design rules. |
 | Are the external benchmark and sensitivity analyses sufficient for the claims? | Free-parent potential errors do not calibrate grafting or interaction free energies. |
 | Is the balance between chemical results and numerical/execution validation appropriate? | Some implementation diagnostics may fit better in supporting information. |
-| Which additional result would most improve the paper's scientific impact? | Priorities include complete conditional free energies, representative redox-core/environment sensitivity and independent grafting/interaction validation. |
+| Which additional result would most improve the paper's scientific impact? | Priorities include representative redox-core/environment sensitivity and independent grafting/interaction validation. |
 
 The immediate remaining work is to finish and review the polymer calculations,
 resolve the last frozen redox endpoint, strengthen representative method and
