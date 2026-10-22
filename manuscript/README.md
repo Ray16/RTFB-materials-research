@@ -30,3 +30,17 @@ It checks the frozen evidence, independently reconstructs the reported benchmark
 and reaction-cycle arithmetic, compiles citations and cross-references, and
 writes [build_check.json](build_check.json). Regeneration after new scientific
 results requires a new evidence snapshot and an intentional text/figure update.
+
+## Overleaf upload
+
+The [self-contained ZIP](overleaf_upload.zip) contains `main.tex`, the bibliography
+and all four external figure PDFs. The working graphical abstract is drawn by
+LaTeX. The exported project compiles to the same 12-page text as the checked
+draft; every archive member is hash-verified in [overleaf_export.json](overleaf_export.json).
+No Overleaf project has been created or connected yet.
+
+In Overleaf, choose **New Project → Upload project** and upload this ZIP. Set
+`main.tex` as the main document if it is not detected automatically.
+Once a Git connection is configured, fetch and merge collaborators’ changes
+before editing and again before pushing. The isolated local export lives outside
+the computational repository so its Overleaf Git history can remain separate.
