@@ -31,6 +31,32 @@ def audit():
             or len({r["id"] for r in rows}) != benchmark["admitted_molecules"]
             or len({r["doi"] for r in rows}) != benchmark["original_studies"]):
         raise ValueError("Manuscript coverage mismatch")
+    bias = load("reference_bias.json")
+    if bias["primary_potentials_modified"] or bias["external_validation_claimed"]:
+        raise ValueError("Diagnostic offsets replaced the primary benchmark")
+    cv_checks = 0
+    for model in bias["cross_validation"]:
+        residuals = []
+        for index, row in enumerate(rows):
+            label = model["holdout"]
+            members = [j for j, other in enumerate(rows)
+                       if (j != index if label == "endpoint" else other[label] != row[label])
+                       and (model["model"] == "constant_offset"
+                            or targets[keys[j]]["wave"] == targets[keys[index]]["wave"])]
+            if not members:
+                continue
+            offset = math.fsum(errors[j] for j in members) / len(members)
+            residuals.append(errors[index] - offset)
+        checked = dict(MAE_V=math.fsum(abs(e) for e in residuals)/len(residuals),
+                       RMSE_V=math.sqrt(math.fsum(e*e for e in residuals)/len(residuals)),
+                       bias_V=math.fsum(residuals)/len(residuals))
+        if any(abs(checked[k]-model["metrics"][k]) > 1e-12 for k in checked):
+            raise ValueError("Grouped offset diagnostic does not reconstruct")
+        cv_checks += 1
+    for interval in bias["uncertainty"]:
+        primary = next(r for r in benchmark["uncertainty"] if r["cluster"] == interval["cluster"])
+        if interval["intervals"] != primary["intervals"]:
+            raise ValueError("Printed bootstrap interval differs from primary evidence")
     base = load("base_assisted.json")
     base_values = 0
     for candidate in base["candidates"]:
@@ -94,6 +120,23 @@ def audit():
     fresh = load("fresh_checkout.json")
     if not fresh["figure_CSV_exact_match"] or not fresh["figure_RGB_pixels_exact_match"] or fresh["serial_discrepancies"]:
         raise ValueError("Fresh-checkout example did not reproduce the checked results")
+    transfer = load("proton_transfer.json")
+    components = {r["id"]: r["G_eV"] for r in transfer["states"]}
+    references = load("proton_transfer_sources.json")
+    for row, anchor in zip(transfer["comparisons"], references["comparisons"]):
+        if row["base"] != anchor["base"]:
+            raise ValueError("Relative-basicity source identity mismatch")
+        key = row["base"]
+        dg = (components[key+"_protonated"] + components["dbu_neutral"]
+              - components[key+"_neutral"] - components["dbu_protonated"]) * 96.48533212331002
+        external = .00831446261815324 * 298.15 * math.log(10) * (
+            anchor["reference"]["pKaH_MeCN"]-anchor["source"]["pKaH_MeCN"])
+        if abs(dg-row["DFT_deltaG_kJ_mol"]) > 1e-6 or abs(external-row["external_deltaG_kJ_mol"]) > 1e-9:
+            raise ValueError("Relative-basicity comparison does not reconstruct")
+    restart = load("quantum_restart.json")
+    for control in restart["controls"]:
+        if any(control["differences"][key] > tolerance for key, tolerance in restart["tolerances"].items()):
+            raise ValueError("Quantum restart exceeds its predeclared tolerance")
     return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
                 base_assisted_values=base_values, qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
@@ -103,6 +146,8 @@ def audit():
                 checked_concurrency_runs=len(concurrency["runs"]), fresh_checkout_designs=fresh["exact_designs"],
                 source_energy_conversion_kJ_mol_per_eV=96.485,
                 maximum_SI_conversion_difference_kJ_mol=max(conversion_differences),
+                checked_offset_models=cv_checks, relative_basicity_controls=len(transfer["comparisons"]),
+                quantum_restart_controls=len(restart["controls"]),
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

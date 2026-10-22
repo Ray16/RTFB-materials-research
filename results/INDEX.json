@@ -114,7 +114,8 @@
           "raw_root": "calcs/polymer_models/2026-10-21_checkpoint_pmdi_stacked",
           "scope": "One audited saved trimer; fresh Cartesian optimizer, tighter SCF, bounded 200 steps; unchanged acceptance"
         }
-      ]
+      ],
+      "spacing_construction_figure": "results/figures/polymer_models/spacing_construction.pdf"
     },
     "candidates": {
       "guide": "results/candidates/README.md",
@@ -222,7 +223,15 @@
       "small_reproduction_example": "examples/publication_smoke/README.md",
       "local_example_check": "results/validation/release_and_concurrency_2026-10-22/local_smoke.json",
       "fresh_checkout_check": "results/validation/fresh_checkout_2026-10-22/summary.json",
-      "benchmark_spin_completion": "results/validation/publication_benchmark/spin_resume_2026-10-22/status.json"
+      "benchmark_spin_completion": "results/validation/publication_benchmark/spin_resume_2026-10-22/status.json",
+      "reference_bias": "results/validation/reference_bias_2026-10-22/summary.json",
+      "reference_bias_guide": "results/validation/reference_bias_2026-10-22/README.md",
+      "relative_basicity": "results/reviews/2026-10-22/proton_transfer/summary.json",
+      "relative_basicity_guide": "results/validation/proton_transfer_2026-10-22/README.md",
+      "quantum_restart": "results/validation/quantum_restart_2026-10-22/summary.json",
+      "quantum_restart_guide": "results/validation/quantum_restart_2026-10-22/README.md",
+      "conformer_revision": "results/validation/conformer_revision_2026-10-22/README.md",
+      "stacked_force_diagnostic": "results/validation/stacked_force_plateau_2026-10-22/README.md"
     },
     "manuscript": {
       "guide": "manuscript/README.md",
@@ -230,14 +239,17 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-22_benchmark_complete/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-22_review_revision/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "14-page working draft; all 39 retrospective potentials; six native spacing free energies; checked CPU concurrency and fresh-environment reproduction; quantitative graft/polymer validation and quantum release remain open",
+      "scope": "12-page revised working draft plus 8-page SI; 39 primary endpoints; grouped bias diagnostics and relative-basicity controls; end-to-end decisions, conformer/basis sensitivity and public raw-state release remain open",
       "source_commit": "46b39c3",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
-      "overleaf_status": "upload_package_checked_project_not_yet_connected"
+      "overleaf_status": "upload_package_checked_project_not_yet_connected",
+      "supporting_information": "manuscript/supporting_information.pdf",
+      "revision_ledger": "manuscript/revision_plan.md",
+      "visual_review": "manuscript/visual_review.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

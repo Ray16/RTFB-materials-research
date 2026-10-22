@@ -1,0 +1,59 @@
+{
+  "status": "state_records_verified",
+  "task": {
+    "key": "pyridine_protonated",
+    "id": "pyridine_protonated",
+    "state": "rest",
+    "role": "base_method_control_not_synthesis_admission",
+    "atoms": 12,
+    "manifest_row": {
+      "id": "pyridine_protonated",
+      "name": "pyridine_protonated",
+      "family": "proton_transfer_method_control",
+      "state": "rest",
+      "charge": 1,
+      "mult_hint": 1,
+      "n_e": 0,
+      "n_conf": 1,
+      "solv_preopt": 1,
+      "smiles": "c1cc[nH+]cc1"
+    },
+    "atom": false,
+    "preopt": "alpb",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/library/pyridine_protonated/rest.xyz": "081387036c1a8238b582fc898fa1bb82d03be5c45a349886c712b4dfb8101c2a",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/library/pyridine_protonated/conformers/conf_00.xyz": "081387036c1a8238b582fc898fa1bb82d03be5c45a349886c712b4dfb8101c2a"
+    }
+  },
+  "started": 1792651943.1284704,
+  "host": "lambda13",
+  "pid": 3359624,
+  "stage": "native_thermal",
+  "primary_candidate_promotion": false,
+  "G_eV": -6766.469802186846,
+  "readiness": [
+    {
+      "id": "pyridine_protonated",
+      "state": "rest",
+      "charge": 1,
+      "status": "ready",
+      "issues": ""
+    }
+  ],
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/proton_transfer_2026-10-22/pyridine_protonated/rest",
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/native_thermal/5f346b7108263f61/hessian_cartesian.npy": "08ada9abc4488f98178579881c4c40a144e6ea85933bdccc0cd19a9356809740",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/native_thermal/5f346b7108263f61/hessian_diagnostics.json": "9300b23d03d17af282ddd6676ea9cdc9d97dce0040d2b6db7dcd6a1737025794",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/native_thermal/5f346b7108263f61/mol.xyz": "c4f8758d720f5894bcc24a4663a7366542f3653b9e794006281e9d3f6d0f0c3a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/native_thermal/5f346b7108263f61.json": "72452e28c30cada9170116437fe11f63ecf306d2af76f58a26c8c9a99bce3a4a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/opt.xyz": "c4f8758d720f5894bcc24a4663a7366542f3653b9e794006281e9d3f6d0f0c3a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/projected_thermal/ac8995dc894d288a/mol.xyz": "c4f8758d720f5894bcc24a4663a7366542f3653b9e794006281e9d3f6d0f0c3a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/projected_thermal/ac8995dc894d288a/owner.json": "6e4be4effa9e98c20bdbe4fddbc96fc8c995ef583343cc2e9fbcb832f8372570",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/projected_thermal/ac8995dc894d288a/projected_hessian.npy": "4517fb604208a4104a86f7a641cf28106da1f7f82762d20c753b59fd97bbba75",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/projected_thermal/ac8995dc894d288a.json": "fbda22dfc89a9a2b4834a8777f47ff800611609a5aacd86090dc2d83a9b6853a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/result.json": "cffd109f94cc56ba517bcb7092f69fbc05e29153c484571312c79998ebfc1fd2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/sp/67a00f52cce58b08.json": "c3b12071903de12c967b92ec8cd80d626de49941c4d9c16229b161773df97356",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/proton_transfer_2026-10-22/workspace/calcs/dft/pyridine_protonated/rest/thermal_policy.json": "b5a27632b290378ac92274580c2c798f6c65badd5db4be6194b4dd5547c4d180"
+  },
+  "finished": 1792652100.1847162
+}

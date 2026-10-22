@@ -6,6 +6,7 @@ Each SCF is checkpointed on shared storage before the next displacement.
 """
 
 import argparse
+from contextlib import nullcontext
 import json
 import os
 from pathlib import Path
@@ -48,7 +49,17 @@ def main():
     parser.add_argument("--grid-level", type=int, choices=(3, 5), required=True)
     parser.add_argument("--probe", type=parse_probe, action="append", default=[])
     parser.add_argument("--reuse", type=Path)
+    parser.add_argument("--steps", type=float, nargs="+", default=[.0005, .001])
+    parser.add_argument("--baseline-repeats", type=int, default=1)
+    parser.add_argument("--top-components", type=int, default=1)
+    parser.add_argument("--omit-reference-axis", action="store_true")
+    parser.add_argument("--conservative-cds", action="store_true",
+                        help="Use the independently qualified adaptive CDS energy derivative")
     args = parser.parse_args()
+    if (not all(np.isfinite(h) and h > 0 for h in args.steps)
+            or len(set(args.steps)) != len(args.steps)
+            or args.baseline_repeats < 1 or args.top_components < 1):
+        parser.error("Distinct positive derivative steps and positive repeat/component counts required")
     from redox.workflows.resources import verify_gate_owner
 
     verify_gate_owner()
@@ -75,7 +86,7 @@ def main():
         conv_tol_grad=1e-8,
         charge=0,
         mult=1,
-        steps_Bohr=[0.0005, 0.001],
+        steps_Bohr=args.steps,
     )
     state = dict(
         status="computing",
@@ -92,6 +103,21 @@ def main():
         started=time.time(),
     )
     atomic_write_json(args.out / "status.json", state)
+    (args.out / "producer_source.py").write_bytes(Path(__file__).read_bytes())
+    force_context = None
+    if args.conservative_cds:
+        from redox.core.common import ROOT
+        from redox.workflows import polymer_campaign as api
+        force_path = ROOT / "scripts/pipeline/resume_polymer_forces_adaptive.py"
+        module = api.load_module("diagnostic_adaptive_CDS", force_path)
+        force_context = module.adaptive_forces
+        settings["CDS_gradient"] = "adaptive_energy_derivative_tolerance_1e-6"
+        state["force_producer_sha256"] = {str(p): file_hash(p) for p in
+            [force_path, ROOT / "scripts/pipeline/resume_polymer_forces.py", ROOT / "src/redox/qm/cds_finite.py"]}
+    if args.top_components > 3 * len(atoms):
+        raise ValueError("More force probes than Cartesian components")
+    state["diagnostic_controls"] = dict(baseline_repeats=args.baseline_repeats,
+        top_components=args.top_components, omit_reference_axis=args.omit_reference_axis)
     baseline = None
     reuse_ready = False
     if any(atom >= len(atoms) for atom, _ in args.probe):
@@ -151,7 +177,9 @@ def main():
         if gradient:
             method = mf.nuc_grad_method()
             method.grid_response = True
-            raw_gradient = method.kernel()
+            context = force_context(args.out / (name + "_cds.jsonl")) if force_context else nullcontext()
+            with context:
+                raw_gradient = method.kernel()
             grad = np.asarray(
                 raw_gradient.get() if hasattr(raw_gradient, "get") else raw_gradient
             )
@@ -170,6 +198,13 @@ def main():
 
     try:
         energy, baseline, gradient = solve(coordinates, "baseline", True)
+        repeats = []
+        for repeat in range(1, args.baseline_repeats):
+            again, _, repeated_gradient = solve(coordinates, "baseline_repeat" + str(repeat), True)
+            repeats.append(dict(repeat=repeat, energy_difference_Ha=again-energy,
+                maximum_gradient_difference_Ha_Bohr=float(np.max(abs(repeated_gradient-gradient)))))
+        state["baseline_repeat_checks"] = repeats
+        atomic_write_json(args.out / "status.json", state)
         if args.reuse:
             previous = reusable_record(args.reuse, "baseline", coordinates)
             if (
@@ -185,7 +220,9 @@ def main():
         worst = tuple(
             int(x) for x in np.unravel_index(abs(gradient).argmax(), gradient.shape)
         )
-        axes = list(dict.fromkeys([worst, (0, 1), *args.probe]))
+        top = [tuple(map(int, np.unravel_index(index, gradient.shape)))
+               for index in np.argsort(abs(gradient).ravel())[-args.top_components:][::-1]]
+        axes = list(dict.fromkeys([*top, *([] if args.omit_reference_axis else [(0, 1)]), *args.probe]))
         differences = []
         for atom, axis in axes:
             for step in settings["steps_Bohr"]:

@@ -1,0 +1,65 @@
+{
+  "status": "process_completed",
+  "host": "lambda1",
+  "gpu": 6,
+  "pid": 2830543,
+  "process_start": "490147908",
+  "interpreter": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/quantum_restart_equivalence.py",
+    "worker",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22",
+    "--key",
+    "formaldehyde__resumed"
+  ],
+  "started": 1792651303.3348386,
+  "scientific_outputs_verified": false,
+  "host_preflight": {
+    "online_cpus": 80,
+    "load_1m": 7.5,
+    "available_RAM_bytes": 288022900736,
+    "minimum_RAM_GiB": 8
+  },
+  "gpu_preflight": {
+    "index": 6,
+    "uuid": "GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8",
+    "name": "Tesla V100-SXM2-32GB",
+    "memory_MiB": 32768.0,
+    "compute_capability": "7.0"
+  },
+  "cpu_affinity": [
+    0,
+    1
+  ],
+  "threads": 2,
+  "gate_argv": [
+    "/usr/bin/taskset",
+    "--cpu-list",
+    "0,1",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "6",
+    "--label",
+    "redox",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/execution/formaldehyde__resumed_1792651303261585188",
+    "--probe",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/quantum_restart_equivalence.py",
+    "worker",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22",
+    "--key",
+    "formaldehyde__resumed"
+  ],
+  "gate_pid": 2830769,
+  "returncode": 0,
+  "finished": 1792651332.7018392
+}

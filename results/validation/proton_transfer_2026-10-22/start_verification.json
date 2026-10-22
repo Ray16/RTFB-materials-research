@@ -1,0 +1,103 @@
+{
+  "status": "four_actual_GPU_component_workers_verified",
+  "checked": 1792652038.903898,
+  "workers": [
+    {
+      "pid": 3359623,
+      "process_start": "76924899",
+      "cpus": [
+        2,
+        3
+      ],
+      "gpu": "0",
+      "caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "residency": [
+        [
+          "3359623",
+          "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+          "2024 MiB"
+        ]
+      ]
+    },
+    {
+      "pid": 3359624,
+      "process_start": "76924899",
+      "cpus": [
+        6,
+        7
+      ],
+      "gpu": "3",
+      "caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "residency": [
+        [
+          "3359624",
+          "GPU-31e42837-2afb-0b14-c287-66eabb51d40e",
+          "1226 MiB"
+        ]
+      ]
+    },
+    {
+      "pid": 3359625,
+      "process_start": "76924900",
+      "cpus": [
+        4,
+        5
+      ],
+      "gpu": "2",
+      "caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "residency": [
+        [
+          "3359625",
+          "GPU-5d07badb-4052-7045-bdc1-c0476709589b",
+          "3096 MiB"
+        ]
+      ]
+    },
+    {
+      "pid": 3359769,
+      "process_start": "76925543",
+      "cpus": [
+        8,
+        9
+      ],
+      "gpu": "4",
+      "caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "residency": [
+        [
+          "3359769",
+          "GPU-7313cbc9-b64b-7359-3d2e-e9e6c1b6ef52",
+          "4462 MiB"
+        ]
+      ]
+    }
+  ],
+  "scientific_complete": false
+}

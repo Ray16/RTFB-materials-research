@@ -44,6 +44,10 @@ def main():
         "acid_base.json": "results/validation/acid_base_external_2026-10-22/comparison.json",
         "cpu_concurrency.json": "results/validation/cpu_concurrency_2026-10-22/summary.json",
         "fresh_checkout.json": "results/validation/fresh_checkout_2026-10-22/summary.json",
+        "reference_bias.json": "results/validation/reference_bias_2026-10-22/summary.json",
+        "proton_transfer.json": "results/reviews/2026-10-22/proton_transfer/summary.json",
+        "proton_transfer_sources.json": "results/validation/proton_transfer_2026-10-22/reference_snapshot.json",
+        "quantum_restart.json": "results/validation/quantum_restart_2026-10-22/summary.json",
         "benchmark_points.csv": "results/figures/validation/retrospective_redox_benchmark.csv",
     }
     plots = {
@@ -53,6 +57,8 @@ def main():
         "decomposition.pdf": "results/polymer_models/figures/fragment_decomposition.pdf",
         "conditional_grafting.pdf": "results/figures/polymer_models/conditional_grafting.pdf",
         "cpu_concurrency.pdf": "results/figures/validation/cpu_descriptor_concurrency.pdf",
+        "reference_bias.pdf": "results/figures/validation/reference_bias.pdf",
+        "spacing_construction.pdf": "results/figures/polymer_models/spacing_construction.pdf",
     }
     mapping = {evidence / name: ROOT / source for name, source in sources.items()}
     mapping.update({figures / name: ROOT / source for name, source in plots.items()})

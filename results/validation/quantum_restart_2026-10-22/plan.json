@@ -1,0 +1,131 @@
+{
+  "tasks": [
+    {
+      "key": "formaldehyde__baseline",
+      "case": "formaldehyde",
+      "phase": "baseline",
+      "charge": 0,
+      "mult": 1,
+      "smiles": "C=O",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/formaldehyde.xyz",
+      "depends_on": null
+    },
+    {
+      "key": "formaldehyde__interrupted",
+      "case": "formaldehyde",
+      "phase": "interrupted",
+      "charge": 0,
+      "mult": 1,
+      "smiles": "C=O",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/formaldehyde.xyz",
+      "depends_on": null
+    },
+    {
+      "key": "formaldehyde__resumed",
+      "case": "formaldehyde",
+      "phase": "resumed",
+      "charge": 0,
+      "mult": 1,
+      "smiles": "C=O",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/formaldehyde.xyz",
+      "depends_on": "formaldehyde__interrupted"
+    },
+    {
+      "key": "methyl_radical__baseline",
+      "case": "methyl_radical",
+      "phase": "baseline",
+      "charge": 0,
+      "mult": 2,
+      "smiles": "[CH3]",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/methyl_radical.xyz",
+      "depends_on": null
+    },
+    {
+      "key": "methyl_radical__interrupted",
+      "case": "methyl_radical",
+      "phase": "interrupted",
+      "charge": 0,
+      "mult": 2,
+      "smiles": "[CH3]",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/methyl_radical.xyz",
+      "depends_on": null
+    },
+    {
+      "key": "methyl_radical__resumed",
+      "case": "methyl_radical",
+      "phase": "resumed",
+      "charge": 0,
+      "mult": 2,
+      "smiles": "[CH3]",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/methyl_radical.xyz",
+      "depends_on": "methyl_radical__interrupted"
+    }
+  ],
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/quantum_restart/quantum_restart_2026-10-22",
+  "role": "Singlet and radical execution method controls; no candidate registration or synthesis admission",
+  "optimizer": {
+    "convergence_energy": 1e-08,
+    "convergence_grms": 3e-05,
+    "convergence_gmax": 5e-05,
+    "convergence_drms": 0.0001,
+    "convergence_dmax": 0.0002
+  },
+  "tolerances": {
+    "energy_eV": 1e-05,
+    "free_energy_eV": 0.0001,
+    "aligned_RMSD_Angstrom": 0.001,
+    "frequency_cm": 0.5
+  },
+  "interrupt_after_evaluations": 3,
+  "expected_interrupt_returncode": 87,
+  "native_memory_cap_GiB": 6,
+  "minimum_GPU_MiB": 31744,
+  "actual_attempts_per_task": 1,
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/electrolyte.py": "ad68419d8673d22ce7d785d4e38d40696609c22bad9496ac2ffac5d71f00d0c9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/native_cds_step_1e6_validation.json": "2ab9e21cb2c126e82814023ceddcfada741837dfc8d1df216e695a50dd2eabd6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/native_cds_step_validation.json": "db411b03ba0ec8c14583c8f4a9e63d3f84df21b487f3fe768d3a5ca172946b9f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/native_hessian_memory_16_validation.json": "54fc468a2720ec5d3f58ebc27c430b1f228f1f6f838a538b38866ea04ac6caf8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/native_hessian_memory_validation.json": "88ffeda05f181710c8be187e6412d6ada5905dfe0c41054669ce42a8d5b8e932",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/native_pcm_curvature_memory_validation.json": "01ed05e926f414f7545deb787c9edf4f742366e0245d2d3cc3b60ee4212a61dd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/native_thermal_validation.json": "b9596f6a655261d7effd6b76ab92d2e602f888f899e5aaebe53b031ea40ffcc1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/project.json": "55f54f160cb9e751ed9ec01cf7f88782cd5727806d233549f47b78eb1d15f404",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/projected_thermal_validation.json": "05d8e9afcf839bb1187a1bb46f935326b89777eb3609c1bc085042dafe6dd448",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/quantum_restart_equivalence.py": "0702a656cd225ae4ae16c241f3eeba7ca6888650b396309526c00503a021d434",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/geometry.py": "7039b27875150a7e113a915e5fad54d194296f5f303033b68c3991ee6faa9336",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/io.py": "4069a181d62207b31f186725b7cb277ccabf4cd2101e808060ed6f4ee354ed6a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/cds_finite.py": "0357b0d0af126312c035be2d15b6fb4b102bde7d31d9acd267270f2d808a3656",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/compact_smd.py": "a7c99affc59c5d83d833d3e0b2a8b6bc67fe725006f3864b3efb2eb8ffc092c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/gas_reference.py": "d1c25803d368c01e9b44a12eb22bcc89ba8e4a32063657d0d566067f6de0f910",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/hessian_memory.py": "899c8d9da11e58bbac7f0d7c42bc0d8bdaafb608a4fdc36309c12bf5d5dee0db",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/hessian_resume.py": "b90f48c10d55f9874fdfd2056ae9d8f8ea563737bd49751abfb5217fc8c7ed11",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal_repair.py": "417b5dbe76d299087f74bab80aa3277d4bf1f19593508e3acfafabcdf8108123",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/nonequilibrium_pcm.py": "5943617598ad851d7237e1752236d3fda488fd51f02026dfacf4a9f11d0fae68",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/nonequilibrium_smd.py": "2e97c4cf309275fe3900fcebb7e7cdcd169a96dca995b1ea30c897de97bf9c73",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/pcm_bounded.py": "637e17ff04e9ca0910cb01a4813e4be0a9d8b16a728c67fbffece36feb8f23f7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/projected_thermal.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/qrrho.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/sp.py": "09c6cfdb66d818c37c76c6f6587d44c6c3c804d383729a4161fd9c96bef9ec10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/stable_geometry_scf.py": "eb7ad5fdba74938c3913aa696e26e9237d1bedb413c5ad9685ae61726442a363",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/thermal.py": "5368750d46bfb8d3442388407ec9d6f85288008cea1b3757212aa98f7265f44f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/torsion_scan.py": "34688c3b5c7d2d5ae4f3f7f144a05017e8cf7a3c01db3b3b5876e8b3bab95770",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/uma.py": "f386d188d71a41df6a5b2c5bf55abe89ef94f3165a26fa876af058315a4a6ac4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/vibrations.py": "4596b96c01aa05cae425d9ca3e60a840c4b51725ece452d424f573492a6d152b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/xtb_kernel.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/protonation.py": "6753a714db0548e251bbba4c1b631d413fb41bdc6db770353c816249f145442e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/readiness.py": "85eecef93551c015a9db5d4b9a178d38bc8b5d94b004c4231cc66f43575fcee1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/spin_ensemble.py": "ed05c4e1e255c3d56e53c602d4a509b8953564696ec6e56475773f3dbd2936b8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/geometry_checkpoints.py": "2493d41cd7a3ca7a6a2229092f4133fe944ade75e0fd052a2100f4f50ee3e84a"
+  },
+  "input_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/formaldehyde.xyz": "dfa8da00666e721f7bd21d437fcf661f6a59bec85430433c9301095a4d3de0f3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/methyl_radical.xyz": "010f1972fa83392827459533f1d127393a2ae9076dc8f97657aeff7cdc440ffa"
+  },
+  "interpretation": "Checkpoint coordinates remain unqualified; resumed optimization and all native gates must pass",
+  "prelaunch_revision": "Complete numeric dependencies sealed before any GPU control was submitted"
+}

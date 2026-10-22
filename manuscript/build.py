@@ -5,6 +5,7 @@ import hashlib
 import json
 import os
 from pathlib import Path
+import re
 import shutil
 import subprocess
 import tempfile
@@ -37,32 +38,38 @@ def main():
         if shutil.which(program) is None:
             raise RuntimeError(f"Missing manuscript build program: {program}")
     source = {str(p.relative_to(ROOT)): sha(p) for p in
-              (PAPER / "manuscript.tex", PAPER / "references.bib", PAPER / "check_claims.py", Path(__file__), manifest, pointer)}
+              (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "check_claims.py", Path(__file__), manifest, pointer)}
     temporary = Path(tempfile.mkdtemp(prefix="redox_manuscript_"))
     env = dict(os.environ, BIBINPUTS=str(PAPER) + os.pathsep + os.environ.get("BIBINPUTS", ""))
-    command = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "-output-directory=" + str(temporary), "manuscript.tex"]
-    for index in range(3):
-        with (temporary / f"latex_pass{index + 1}.log").open("w") as log:
-            subprocess.run(command, cwd=PAPER, env=env, stdout=log, stderr=subprocess.STDOUT, check=True)
-        if index == 0:
-            with (temporary / "bibtex.log").open("w") as log:
-                subprocess.run(["bibtex", "manuscript"], cwd=temporary, env=env,
-                               stdout=log, stderr=subprocess.STDOUT, check=True)
-    log = (temporary / "manuscript.log").read_text()
-    if "undefined references" in log or "undefined citations" in log or "There were undefined" in log:
-        raise RuntimeError("Unresolved manuscript citations or references")
+    documents = {}
+    from pypdf import PdfReader
+    for name in ("manuscript", "supporting_information"):
+        command = ["pdflatex", "-interaction=nonstopmode", "-halt-on-error", "-output-directory=" + str(temporary), name + ".tex"]
+        for index in range(3):
+            with (temporary / f"{name}_pass{index + 1}.log").open("w") as log:
+                subprocess.run(command, cwd=PAPER, env=env, stdout=log, stderr=subprocess.STDOUT, check=True)
+            if index == 0:
+                with (temporary / (name + "_bibtex.log")).open("w") as log:
+                    subprocess.run(["bibtex", name], cwd=temporary, env=env,
+                                   stdout=log, stderr=subprocess.STDOUT, check=True)
+        log = (temporary / (name + ".log")).read_text()
+        if "undefined references" in log or "undefined citations" in log or "There were undefined" in log:
+            raise RuntimeError("Unresolved citations or references in " + name)
+        pdf = PAPER / (name + ".pdf")
+        shutil.copyfile(temporary / pdf.name, pdf)
+        reader = PdfReader(pdf)
+        documents[name] = dict(pages=len(reader.pages), pdf_sha256=sha(pdf),
+            overfull_boxes=re.findall(r"Overfull \\[hv]box[^\n]*", log))
     if any(sha(ROOT / p) != expected for p, expected in source.items()):
         raise ValueError("Manuscript source changed during build")
-    shutil.copyfile(temporary / "manuscript.pdf", PAPER / "manuscript.pdf")
-    from pypdf import PdfReader
-
     reader = PdfReader(PAPER / "manuscript.pdf")
     text = "\n".join(page.extract_text() for page in reader.pages)
-    if "Working draft" not in text or "Draft completion item" not in text or "DBU" not in text:
+    if "Working draft" not in text or "DBU" not in text or "submission requirements" not in text:
         raise RuntimeError("Draft labels, pending analyses or results absent from built PDF")
     report = dict(status="draft_built_with_frozen_evidence", checked_UTC=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                   pages=len(reader.pages), source_sha256=source, pdf_sha256=sha(PAPER / "manuscript.pdf"),
-                  build_logs=str(temporary), submission_ready=False, visual_review="pending")
+                  build_logs=str(temporary), submission_ready=False, documents=documents,
+                  visual_review="pending; record separately in visual_review.json, bound to these PDF hashes")
     (PAPER / "claim_check.json").write_text(json.dumps(claims, indent=2) + "\n")
     (PAPER / "build_check.json").write_text(json.dumps(report, indent=2) + "\n")
     print(json.dumps(report))

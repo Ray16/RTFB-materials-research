@@ -1,18 +1,30 @@
 {
   "status": "draft_built_with_frozen_evidence",
-  "checked_UTC": "2026-10-22T06:17:51Z",
-  "pages": 14,
+  "checked_UTC": "2026-10-22T17:09:30Z",
+  "pages": 12,
   "source_sha256": {
-    "manuscript/manuscript.tex": "0f88cc255a6066f7b1dc3e9e91d702d86bab4753d502bb41ba3608207fbbf90f",
-    "manuscript/references.bib": "490bbc2be4ab20461f76c7cd6f872d707100fc532f5f1290aff2fe370722c4fa",
-    "manuscript/check_claims.py": "e62cf7e288fee19a895def67771938bc40aab6aefcd32b54bf9851a2e365c02c",
-    "manuscript/build.py": "90c8ba6c686c00a21f57cf093637287e8d438f753fa2ddf8e817758b7c5586e7",
-    "manuscript/evidence/2026-10-22_benchmark_complete/manifest.json": "9c34a6e5dc1b798eff5e05d89a06c769fb9c7ef37f8e7a17eaca362e32988070",
-    "manuscript/evidence/current.json": "e177e4f418e9c5dda1d46dd2b40acf58e080bd34cb46d643de9c447d7c30d7cc"
+    "manuscript/manuscript.tex": "034c3ffcf6e3dacc4bec1371b704b5b2386d49489165e96ff8d331f8a6775fd2",
+    "manuscript/supporting_information.tex": "f5ef760dc1c1f81305a8b884e76d172982fc96cf7e2c3783632c8bf401d335a5",
+    "manuscript/references.bib": "e545cd167d5000889ae1d88123461c25cdf7e5a992f1380a0562897705055987",
+    "manuscript/check_claims.py": "30f4e891a7cdf0fb15ef74e29365cbd554c5a4dd6f0266d7a1215f96f9cd5d61",
+    "manuscript/build.py": "29e01e6e55b056dc5ddee8fa9cf033cb7c5be8f4147adc854a9e1b852212d9a9",
+    "manuscript/evidence/2026-10-22_review_revision/manifest.json": "6e9bff834cbf283028ac3b1b91dccd88f0c101a5f80ac53378890c1f00260e87",
+    "manuscript/evidence/current.json": "c7306f7ddc2cc3c5d53de64420c8195dd07a8dd5ccf9a3f69214014a168bbefc"
   },
-  "pdf_sha256": "700ec54930d579a583bdaf1d8f4ebf382e198eac53f1aa5699b091878f2b3af8",
-  "build_logs": "/tmp/redox_manuscript_d1ufvfqt",
+  "pdf_sha256": "c3d3f0eeb41a37276437d124696639880fd705ab0c3e96e269278b5bd282314d",
+  "build_logs": "/tmp/redox_manuscript_42knmecr",
   "submission_ready": false,
-  "visual_review": "All 14 rendered pages checked; benchmark slide and new concurrency results reviewed; no unresolved references or overflow; pending notes kept together",
-  "visual_review_directory": "/tmp/redox_manuscript_benchmark39_final_review"
+  "documents": {
+    "manuscript": {
+      "pages": 12,
+      "pdf_sha256": "c3d3f0eeb41a37276437d124696639880fd705ab0c3e96e269278b5bd282314d",
+      "overfull_boxes": []
+    },
+    "supporting_information": {
+      "pages": 8,
+      "pdf_sha256": "f0ecaa744866cce2bc8348f33c635636b8fbffaf5961801513dbb7d7900509c1",
+      "overfull_boxes": []
+    }
+  },
+  "visual_review": "pending; record separately in visual_review.json, bound to these PDF hashes"
 }

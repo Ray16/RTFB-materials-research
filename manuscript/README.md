@@ -1,47 +1,9 @@
-# Working in silico manuscript
+# Working manuscript and colleague-review revision
 
-Open [manuscript.pdf](manuscript.pdf). Edit [manuscript.tex](manuscript.tex);
-the [outline](outline.md) records the intended argument and remaining analyses.
-The [early-review notes](review_notes.md) identify questions for a colleague.
-This is a local working draft, with no Overleaf project configured.
+Open [the main paper](manuscript.pdf) (12 pages) and [Supporting Information](supporting_information.pdf) (8 pages). [revision_plan.md](revision_plan.md) tracks every major/minor comment and unresolved science. Sources are [manuscript.tex](manuscript.tex), [supporting_information.tex](supporting_information.tex) and [references.bib](references.bib). No Overleaf project is connected.
 
-The draft contains Introduction, Methods, verified Results, Discussion and
-Conclusions, with citations and seven figures including a working graphical
-abstract. It uses a frozen [evidence snapshot](evidence/2026-10-22_benchmark_complete/manifest.json)
-so live calculation updates cannot silently change a figure while leaving its
-caption and text unchanged. Figures are under `results/figures/manuscript/`;
-the original maintained figures and raw data remain at their existing locations.
+The new [immutable evidence epoch](evidence/2026-10-22_review_revision/manifest.json) preserves the 39-endpoint primary benchmark, grouped offset diagnostics, base capture and two relative-basicity controls, six selected spacing G values and bounded execution/restart evidence. Polymer results remain methods demonstrations in the SI while broader conformer searches, DFT re-ranking, ensemble G and exact-candidate end-to-end decisions are incomplete. Basis sensitivity, public release and author statements also remain open. A workflow diagram is not yet the final chemical graphical abstract.
 
-The current paper is methods-focused. It reports 39/39 admitted free-molecule
-potentials, defined DBU/DIPEA grafting comparisons and conditional finite-polymer
-models. All six selected spacing free energies and both conditional cycles are
-checked. Pending trimer, method-sensitivity, external-validation and
-release work is marked in the manuscript. These labels must be resolved before
-submission. Authorship, affiliations, funding and competing-interest statements
-are awaiting author confirmation.
+Build from the repository root with all six native thread caps set to one and `PYTHONPATH=src .venv-figures/bin/python manuscript/build.py`. Both documents are compiled; evidence hashes, independent numerical reconstruction, citations/references and compiler overfull-box messages are checked. [build_check.json](build_check.json) is compiler-produced. [visual_review.json](visual_review.json) is a separate dated visual assessment bound to the two PDF hashes; it is never inserted into the compiler report. Do not edit an existing evidence epoch to refresh results.
 
-Build using the existing figure environment, with native thread pools capped at one:
-
-```bash
-PYTHONPATH=src .venv-figures/bin/python manuscript/build.py
-```
-
-The build requires `pdflatex`, `bibtex`, `pypdf` and the project resource helper.
-It checks the frozen evidence, independently reconstructs the reported benchmark
-and reaction-cycle arithmetic, compiles citations and cross-references, and
-writes [build_check.json](build_check.json). Regeneration after new scientific
-results requires a new evidence snapshot and an intentional text/figure update.
-
-## Overleaf upload
-
-The [self-contained ZIP](overleaf_upload.zip) contains `main.tex`, the bibliography
-and all six external figure PDFs. The working graphical abstract is drawn by
-LaTeX. The exported project compiles to the same 14-page text as the checked
-draft; every archive member is hash-verified in [overleaf_export.json](overleaf_export.json).
-No Overleaf project has been created or connected yet.
-
-In Overleaf, choose **New Project → Upload project** and upload this ZIP. Set
-`main.tex` as the main document if it is not detected automatically.
-Once a Git connection is configured, fetch and merge collaborators’ changes
-before editing and again before pushing. The isolated local export lives outside
-the computational repository so its Overleaf Git history can remain separate.
+The [self-contained ZIP](overleaf_upload.zip) contains main.tex, supporting_information.tex, bibliography and all external PDFs. Both exported documents compile with text identical to the checked local versions; [overleaf_export.json](overleaf_export.json) records member hashes. In Overleaf, upload this ZIP as a new project and select main.tex. Once connected through Git, pull/merge immediately before editing and again before pushing; preserve collaborators' edits. No upload or project creation is claimed here.

@@ -1,0 +1,72 @@
+{
+  "status": "components_complete",
+  "components_qualified": 4,
+  "components_expected": 4,
+  "comparisons": [
+    {
+      "base": "pyridine",
+      "source": {
+        "CAS": "110-86-1",
+        "name": "Pyridine",
+        "pKaH_MeCN": 12.53,
+        "smiles": "c1ccncc1",
+        "source_urls": [
+          "//dx.doi.org/10.1021/jo048252w"
+        ],
+        "exact_graph": "c1ccncc1"
+      },
+      "reference": {
+        "CAS": "6674-22-2",
+        "name": "DBU",
+        "pKaH_MeCN": 24.31,
+        "smiles": "C1CCN2CCCN=C2CC1",
+        "source_urls": [
+          "//dx.doi.org/10.1021/jo048252w"
+        ],
+        "exact_graph": "C1CCC2=NCCCN2CC1"
+      },
+      "reaction": "B + DBUH+ -> BH+ + DBU",
+      "delta_n_solutes": 0,
+      "external_deltaG_kJ_mol": 67.24035193986535,
+      "source_condition_qualification": "Author-revised MeCN relative scale; exact source temperature/activity review remains open",
+      "DFT_deltaG_kJ_mol": 71.81510643441982,
+      "DFT_minus_external_kJ_mol": 4.574754494554469
+    },
+    {
+      "base": "triethylamine",
+      "source": {
+        "CAS": "121-44-8",
+        "name": "Triethylamine",
+        "pKaH_MeCN": 18.83,
+        "smiles": "CCN(CC)CC",
+        "source_urls": [
+          "//dx.doi.org/10.1021/jo048252w"
+        ],
+        "exact_graph": "CCN(CC)CC"
+      },
+      "reference": {
+        "CAS": "6674-22-2",
+        "name": "DBU",
+        "pKaH_MeCN": 24.31,
+        "smiles": "C1CCN2CCCN=C2CC1",
+        "source_urls": [
+          "//dx.doi.org/10.1021/jo048252w"
+        ],
+        "exact_graph": "C1CCC2=NCCCN2CC1"
+      },
+      "reaction": "B + DBUH+ -> BH+ + DBU",
+      "delta_n_solutes": 0,
+      "external_deltaG_kJ_mol": 31.279892073893222,
+      "source_condition_qualification": "Author-revised MeCN relative scale; exact source temperature/activity review remains open",
+      "DFT_deltaG_kJ_mol": 32.6837578411105,
+      "DFT_minus_external_kJ_mol": 1.403865767217276
+    }
+  ],
+  "source_plan_sha256": "687a35cb90921e33be71f2662158fe1171ae53f01382df75a6cfa59d45548749",
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/proton_transfer_2026-10-22",
+  "temperature_K": 298.15,
+  "solvent": "acetonitrile",
+  "interpretation": "Relative basicity check only; not calibrated full grafting, ion pairing, activation barriers or yield",
+  "source_conditions_fully_qualified": false,
+  "full_grafting_accuracy_validated": false
+}
