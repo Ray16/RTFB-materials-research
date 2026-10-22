@@ -3,6 +3,7 @@
 import csv
 import json
 import math
+import statistics as descriptive
 from pathlib import Path
 
 
@@ -78,12 +79,28 @@ def audit():
         expected = -.00831446261815324 * acid["temperature_K"] * math.log(10) * (row["reference"]["pKaH_MeCN"] - acid["acid_anchor"]["pKa_MeCN"])
         if abs(expected - row["external_capture_kJ_mol"]) > 1e-10:
             raise ValueError("External acid-capture conversion mismatch")
+    concurrency = load("cpu_concurrency.json")
+    if concurrency["run_count"] != len(concurrency["runs"]) or concurrency["serial_discrepancies"]:
+        raise ValueError("Concurrency experiment count or independent comparison differs")
+    for condition in concurrency["conditions"]:
+        runs = [r for r in concurrency["runs"] if r["condition"] == condition["condition"]]
+        if len(runs) != condition["repeats"]:
+            raise ValueError("Concurrency repeat count differs")
+        for key in ("launch_to_observed_completion_seconds", "workers_executing_chunks"):
+            values = [r[key] for r in runs]
+            expected = dict(median=descriptive.median(values), minimum=min(values), maximum=max(values))
+            if expected != condition[key]:
+                raise ValueError("Concurrency summary does not reconstruct from actual runs")
+    fresh = load("fresh_checkout.json")
+    if not fresh["figure_CSV_exact_match"] or not fresh["figure_RGB_pixels_exact_match"] or fresh["serial_discrepancies"]:
+        raise ValueError("Fresh-checkout example did not reproduce the checked results")
     return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
                 base_assisted_values=base_values, qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
                 spacing_graphs=len(cases), exact_route_entries=len(load("route_evidence.json")["candidates"]),
                 exact_routes_checked=routes["completed"], route_decisions=routes["counts"],
                 acid_base_scope=acid["status"], conditional_native_cycles=len(polymer["cycles"]),
+                checked_concurrency_runs=len(concurrency["runs"]), fresh_checkout_designs=fresh["exact_designs"],
                 source_energy_conversion_kJ_mol_per_eV=96.485,
                 maximum_SI_conversion_difference_kJ_mol=max(conversion_differences),
                 experimental_accuracy_inferred=False, submission_ready=False)

@@ -1,27 +1,27 @@
 {
   "schema": 1,
   "panel_sha256": "7ba2a8ef12388da6c9481c8e012256432ddfca0b25a06ed6baac0adcbc4388df",
-  "status": "incomplete_benchmark",
+  "status": "complete_descriptive_benchmark",
   "target_events": 39,
-  "admitted_events": 38,
-  "pending_events": 1,
+  "admitted_events": 39,
+  "pending_events": 0,
   "target_molecules": 30,
   "admitted_molecules": 30,
   "original_studies": 7,
   "metrics": {
-    "n": 38,
-    "MAE_V": 0.2479272830722724,
-    "RMSE_V": 0.2808709855676237,
-    "bias_V": 0.20012314095111194,
+    "n": 39,
+    "MAE_V": 0.2469676364897687,
+    "RMSE_V": 0.27928820236442414,
+    "bias_V": 0.18959431512275965,
     "maximum_absolute_error_V": 0.5469170401181327
   },
-  "molecule_macro_MAE_V": 0.2596257277295719,
+  "molecule_macro_MAE_V": 0.2628222580765682,
   "by_family": {
     "aromatic imide": {
-      "n": 8,
-      "MAE_V": 0.1509945643193714,
-      "RMSE_V": 0.1669053676478771,
-      "bias_V": 0.07493721496688519,
+      "n": 9,
+      "MAE_V": 0.15760639787884426,
+      "RMSE_V": 0.17229493864166606,
+      "bias_V": 0.04322185037560603,
       "maximum_absolute_error_V": 0.23597456034316555,
       "molecules": 6,
       "original_studies": 1
@@ -74,19 +74,19 @@
       "original_studies": 7
     },
     "2": {
-      "n": 8,
-      "MAE_V": 0.18189946755252276,
-      "RMSE_V": 0.2779300867473589,
-      "bias_V": -0.045170207522989586,
+      "n": 9,
+      "MAE_V": 0.1850774229749788,
+      "RMSE_V": 0.27126693780022304,
+      "bias_V": -0.06354030294872709,
       "maximum_absolute_error_V": 0.5469170401181327,
-      "molecules": 8,
+      "molecules": 9,
       "original_studies": 5
     }
   },
   "coverage_by_family": {
     "aromatic imide": {
       "target_events": 9,
-      "admitted_events": 8
+      "admitted_events": 9
     },
     "nitroxide": {
       "target_events": 1,
@@ -111,7 +111,7 @@
     "10.1002/chem.202200149": 2,
     "10.1021/jacs.6b05797": 13,
     "10.1021/acs.chemmater.8b04770": 5,
-    "10.1021/acsaem.1c01490": 8,
+    "10.1021/acsaem.1c01490": 9,
     "10.1021/acscentsci.5b00163": 1
   },
   "signed_wave_spacings": [
@@ -164,6 +164,14 @@
       "error_V": -0.35408950665639716
     },
     {
+      "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+      "doi": "10.1021/acsaem.1c01490",
+      "source": "Daub N., Janssen R.A.J., Hendriks K.H. 'Imide-Based Multielectron Anolytes as High-Performance Materials in Nonaqueous Redox Flow Batteries' ACS Appl. Energy Mater. 2021, 4, 9248-9257",
+      "calc_V": 0.8392103118894738,
+      "exp_V": 0.6100000000000001,
+      "error_V": 0.22921031188947372
+    },
+    {
       "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
       "doi": "10.1021/acsaem.1c01490",
       "source": "Daub N., Janssen R.A.J., Hendriks K.H. 'Imide-Based Multielectron Anolytes as High-Performance Materials in Nonaqueous Redox Flow Batteries' ACS Appl. Energy Mater. 2021, 4, 9248-9257",
@@ -186,16 +194,16 @@
       "independent_cluster_count": 30,
       "intervals": {
         "MAE_V": [
-          0.2127351848348704,
-          0.28647829291119065
+          0.21267700351200627,
+          0.28571395138297057
         ],
         "RMSE_V": [
-          0.2467304423573624,
-          0.3143399996477425
+          0.24528540375843697,
+          0.31302220361853383
         ],
         "bias_V": [
-          0.14171033140517614,
-          0.2624643289363656
+          0.1279590662469796,
+          0.25715761017014427
         ]
       },
       "status": "panel_resampling_only",
@@ -207,16 +215,16 @@
       "independent_cluster_count": 7,
       "intervals": {
         "MAE_V": [
-          0.1752415663643153,
+          0.17787701482731644,
           0.30605769932818233
         ],
         "RMSE_V": [
-          0.21108943283964784,
+          0.2110430757138122,
           0.3252098494371217
         ],
         "bias_V": [
-          0.07058254774208855,
-          0.285768498549768
+          0.053219525559998905,
+          0.2849424671648501
         ]
       },
       "status": "panel_resampling_only",
@@ -663,6 +671,25 @@
       "error_V": 0.2163224752218229
     },
     {
+      "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+      "name": "N,N'-bis[2-(2-methoxyethoxy)ethyl]pyromellitic diimide",
+      "parent_smiles": "COCCOCCn1c(=O)c2cc3c(=O)n(CCOCCOC)c(=O)c3cc2c1=O",
+      "family": "aromatic imide",
+      "source_family": "aromatic imide (pyromellitic diimide)",
+      "event": "red1->red2",
+      "wave": 2,
+      "exp_V": -1.84,
+      "tier": "A",
+      "source": "Daub N., Janssen R.A.J., Hendriks K.H. 'Imide-Based Multielectron Anolytes as High-Performance Materials in Nonaqueous Redox Flow Batteries' ACS Appl. Energy Mater. 2021, 4, 9248-9257",
+      "doi": "10.1021/acsaem.1c01490",
+      "where": "SI Table S1 (E1/2 vs Fc/Fc+); SI p.S10 methods; SI via acs.figshare.com 16684876",
+      "source_limitation": "E deg' / E1/2 vs Fc (direct or authors' own calibration)",
+      "excluded_molecule": null,
+      "calc_V": -2.0505010663546273,
+      "serialized_calc_V": -2.051,
+      "error_V": -0.21050106635462718
+    },
+    {
       "id": "bm_9_10_phenanthrenequinone",
       "name": "9,10-phenanthrenequinone",
       "parent_smiles": "O=C1C(=O)c2ccccc2-c2ccccc21",
@@ -948,25 +975,7 @@
       "error_V": -0.003346329385472968
     }
   ],
-  "pending": [
-    {
-      "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
-      "name": "N,N'-bis[2-(2-methoxyethoxy)ethyl]pyromellitic diimide",
-      "parent_smiles": "COCCOCCn1c(=O)c2cc3c(=O)n(CCOCCOC)c(=O)c3cc2c1=O",
-      "family": "aromatic imide",
-      "source_family": "aromatic imide (pyromellitic diimide)",
-      "event": "red1->red2",
-      "wave": 2,
-      "exp_V": -1.84,
-      "tier": "A",
-      "source": "Daub N., Janssen R.A.J., Hendriks K.H. 'Imide-Based Multielectron Anolytes as High-Performance Materials in Nonaqueous Redox Flow Batteries' ACS Appl. Energy Mater. 2021, 4, 9248-9257",
-      "doi": "10.1021/acsaem.1c01490",
-      "where": "SI Table S1 (E1/2 vs Fc/Fc+); SI p.S10 methods; SI via acs.figshare.com 16684876",
-      "source_limitation": "E deg' / E1/2 vs Fc (direct or authors' own calibration)",
-      "excluded_molecule": null,
-      "status": "pending endpoint/spin/reference qualification"
-    }
-  ],
+  "pending": [],
   "fitted_correction": false,
   "held_out_from_model_development": false,
   "exact_graft_accuracy_validated": false,
@@ -978,10 +987,10 @@
     "No empirical correction, outlier removal or acceptance threshold chosen from these errors"
   ],
   "review_snapshot_sha256": {
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-21/publication_benchmark_latest/summary.json": "78ae13d1908316b3ad23b15884e7670ed0f9945a8bbc678032aec2475b83e8bf",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-21/publication_benchmark_latest/checks.json": "d0120742167cb9c43cbfafda2812b4abfeeb1bd272e4f09b561139221967301c",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-21/publication_benchmark_latest/comparisons.csv": "fe86db9b6e0b7ea1bae522cc761dab5bc7ca9f3f3bf87b0c0297a115b8171718",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-21/publication_benchmark_latest/input_inventory.json": "c8dc3f9a5a8d20e168ae4ac9f3c758008282a0f281a282da0a2bafc8d91d0657",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-21/publication_benchmark_latest/states.json": "9e8440c7276ec60b6e7c1ff723e10e592c159d0b5b080318b23d96cfa79750b8"
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-22/publication_benchmark_complete/summary.json": "99301c9628e9f32966fff43e2de5f53557c4e887c114e93f0059f54e6e6b7722",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-22/publication_benchmark_complete/checks.json": "d8b03a86968ca77e12450402f036cb5e72348986e42d38853375ce9e8c048cb4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-22/publication_benchmark_complete/comparisons.csv": "73a2a941d0c7972fcc548bf02e009096cac5c01243152e78417d4d54efaccd72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-22/publication_benchmark_complete/input_inventory.json": "cc5e37ab94b51f5f45a055fee2544ad790ee776ceb6d93ffa6cd2270a00c7d58",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-22/publication_benchmark_complete/states.json": "591407ea86f03c862c4d1c26e27653d9d844c149009352188765d47f037419e0"
   }
 }

@@ -11,7 +11,7 @@ defines what must be demonstrated before each requirement can close.
 | Observed compute environment | [Package versions](compute_environment.json); not a portable lock |
 | Fixed retrospective experimental panel | [39 endpoints, 30 molecules](../validation/publication_benchmark/panel_v1.json) |
 | Independent benchmark coverage and errors | [Current analysis](../validation/publication_benchmark/current.json) |
-| Missing native benchmark states | [Frozen completion plan](../validation/publication_benchmark/native_completion_2026-10-21/plan.json) |
+| Completed native benchmark campaign | [Frozen completion plan](../validation/publication_benchmark/native_completion_2026-10-21/plan.json) |
 | Verified benchmark worker starts | [Resource and process checks](../validation/publication_benchmark/native_completion_2026-10-21/start_verification.json) |
 | Polymer physical/cycle validation | [Independent report](../polymer_models/workflow_validation.json) |
 
@@ -24,3 +24,5 @@ campaign's `done/` directory. Failed attempts and partial outputs are preserved.
 Regenerate a fresh independent benchmark review after calculations finish, then
 revalidate its evidence before using the numbers in a manuscript. Current
 reports are scoped snapshots and can lag ongoing calculations.
+
+The fixed retrospective panel now has 39/39 admitted endpoints and 111 independent arithmetic checks with no discrepancies. The [latest publication checkpoint](../reviews/2026-10-22/benchmark_complete_publication/summary.json) records the completed electronic-spin comparison, revised 14-page draft and checked presentation. Broader grafting/interaction validation and the complete quantum release remain open.

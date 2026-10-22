@@ -25,10 +25,14 @@ def main():
     figures = ROOT / "results/figures/manuscript" / args.name
     if evidence.exists() or figures.exists():
         raise RuntimeError("An existing evidence epoch is immutable")
+    current_benchmark = json.loads((ROOT / "results/validation/publication_benchmark/current.json").read_text())
+    reviews = [Path(p) for p in current_benchmark["review_snapshot_sha256"] if Path(p).name == "summary.json"]
+    if len(reviews) != 1:
+        raise ValueError("Expected the unique independent review behind the current benchmark")
     sources = {
         "benchmark.json": "results/validation/publication_benchmark/current.json",
         "benchmark_panel.json": "results/validation/publication_benchmark/panel_v1.json",
-        "benchmark_review.json": "results/reviews/2026-10-21/publication_benchmark_native_complete/summary.json",
+        "benchmark_review.json": str(reviews[0].relative_to(ROOT)),
         "base_assisted.json": "results/grafting/base_assisted/current.json",
         "grafting_status.json": "results/grafting/status.json",
         "polymer_validation.json": "results/reviews/2026-10-22/spacing_native_complete/validation.json",
@@ -38,6 +42,8 @@ def main():
         "route_evidence.json": "results/grafting/route_evidence.json",
         "exact_routes.json": "results/validation/exact_routes_2026-10-22/summary.json",
         "acid_base.json": "results/validation/acid_base_external_2026-10-22/comparison.json",
+        "cpu_concurrency.json": "results/validation/cpu_concurrency_2026-10-22/summary.json",
+        "fresh_checkout.json": "results/validation/fresh_checkout_2026-10-22/summary.json",
         "benchmark_points.csv": "results/figures/validation/retrospective_redox_benchmark.csv",
     }
     plots = {
@@ -46,6 +52,7 @@ def main():
         "construction.pdf": "results/polymer_models/figures/model_construction.pdf",
         "decomposition.pdf": "results/polymer_models/figures/fragment_decomposition.pdf",
         "conditional_grafting.pdf": "results/figures/polymer_models/conditional_grafting.pdf",
+        "cpu_concurrency.pdf": "results/figures/validation/cpu_descriptor_concurrency.pdf",
     }
     mapping = {evidence / name: ROOT / source for name, source in sources.items()}
     mapping.update({figures / name: ROOT / source for name, source in plots.items()})

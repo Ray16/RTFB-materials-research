@@ -200,7 +200,7 @@
       "requirements": "docs/PUBLICATION_READINESS.md",
       "benchmark_panel": "results/validation/publication_benchmark/panel_v1.json",
       "benchmark_current": "results/validation/publication_benchmark/current.json",
-      "benchmark_source_review": "results/reviews/2026-10-21/publication_benchmark_latest/summary.json",
+      "benchmark_source_review": "results/reviews/2026-10-22/publication_benchmark_complete/summary.json",
       "native_plan": "results/validation/publication_benchmark/native_completion_2026-10-21/plan.json",
       "start_verification": "results/validation/publication_benchmark/native_completion_2026-10-21/start_verification.json",
       "raw_root": "calcs/dft",
@@ -221,7 +221,8 @@
       "shared_route_launcher": "results/validation/route_launcher_2026-10-22/summary.json",
       "small_reproduction_example": "examples/publication_smoke/README.md",
       "local_example_check": "results/validation/release_and_concurrency_2026-10-22/local_smoke.json",
-      "fresh_checkout_check": "results/validation/fresh_checkout_2026-10-22/summary.json"
+      "fresh_checkout_check": "results/validation/fresh_checkout_2026-10-22/summary.json",
+      "benchmark_spin_completion": "results/validation/publication_benchmark/spin_resume_2026-10-22/status.json"
     },
     "manuscript": {
       "guide": "manuscript/README.md",
@@ -229,11 +230,11 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-22/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-22_benchmark_complete/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "13-page working draft; 38/39 potentials; all six native spacing free energies and two conditional cycles; external term discrepancy scoped; not submission-ready",
-      "source_commit": "4d48109",
+      "scope": "14-page working draft; all 39 retrospective potentials; six native spacing free energies; checked CPU concurrency and fresh-environment reproduction; quantitative graft/polymer validation and quantum release remain open",
+      "source_commit": "46b39c3",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected"

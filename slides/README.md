@@ -37,9 +37,9 @@ The earlier detailed deck is preserved in
 [archive/2026-10-19_detailed/](archive/2026-10-19_detailed/README.md).
 
 The current benchmark slide uses the [expanded retrospective panel](../results/validation/publication_benchmark/current.json):
-38/39 admitted potentials across 30 exact free molecules and seven studies.
+39/39 admitted potentials across 30 exact free molecules and seven studies.
 The checked [figure](../results/figures/validation/retrospective_redox_benchmark.pdf)
-retains all admitted outliers and the pending endpoint. Earlier validation subsets
+retains all admitted outliers; the fixed panel is complete. Earlier validation subsets
 in Backup are historical snapshots.
 
 Two current result slides use the frozen [22 October manuscript evidence](../manuscript/evidence/2026-10-22/manifest.json): all six selected native spacing free energies, the two conditional cycles, and the scoped external DBU capture-term discrepancy. They preserve the earlier source epochs.

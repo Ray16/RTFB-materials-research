@@ -1,0 +1,70 @@
+{
+  "scope": "Primary-source practical route review; family analogues are not exact-candidate feasibility passes",
+  "sources": [
+    {
+      "url": "https://pubs.rsc.org/en/content/articlehtml/2019/ra/c9ra01131e",
+      "evidence": "Post-functionalization of chloromethylated polystyrene with potassium phthalimide in DMF at 70 C",
+      "limit": "Solution-polymer precedent; crosslinked-bead access, MeCN behavior and exact diimide precursor routes unestablished",
+      "id": "phthalimide_polystyrene_2019",
+      "conditions": {
+        "reactive_form": "potassium phthalimide",
+        "solvent": "DMF",
+        "temperature_C": 70,
+        "time_h": 6,
+        "equivalents_per_chloride": 1.5
+      },
+      "support": "soluble poly(4-chloromethylstyrene)",
+      "reported_result": "Approximately complete substitution by 1H NMR"
+    },
+    {
+      "url": "https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.202200149",
+      "evidence": "Viologen-functionalized Merrifield resin prepared from a monoalkyl bipyridinium precursor in refluxing MeCN",
+      "limit": "Related viologen substitution; exact candidate, ion pairing and counterion model remain candidate-specific",
+      "id": "viologen_merrifield_2022",
+      "conditions": {
+        "reactive_form": "1-methyl-4,4-bipyridinium iodide",
+        "solvent": "MeCN",
+        "temperature": "reflux",
+        "time_h": 48,
+        "base": "none required for pyridyl quaternization",
+        "counterions": "initial Cl/I; subsequent PF6 exchange"
+      },
+      "support": "crosslinked Merrifield beads",
+      "reported_result": "Covalent bead functionalization; approximate 75% conversion assumption consistent with parts of elemental analysis, not exact yield"
+    },
+    {
+      "id": "aq_carboxylate_polystyrene_2011",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/pat.1968",
+      "experimental_source_url": "https://waseda.repo.nii.ac.jp/record/19599/files/Honbun-5904.pdf",
+      "experimental_source_location": "coauthor Choi thesis p.51; institutional primary-source search extract",
+      "evidence": "AQ-2-carboxylic acid attached to chloromethylated polystyrene through a benzyl ester",
+      "conditions": {
+        "reactive_form": "anthraquinone-2-carboxylic acid",
+        "solvent": "NMP",
+        "base": "DBU",
+        "temperature_C": 70,
+        "time_h": 24
+      },
+      "reported_result": "80% isolated polymer mass yield; not site conversion",
+      "limit": "New linker graph; not our phenolic AQ models; soluble precursor polymer differs from crosslinked beads"
+    },
+    {
+      "id": "phenolic_merrifield_2010",
+      "url": "https://link.springer.com/article/10.1007/s12039-010-0023-x",
+      "evidence": "Vanillin attached to Merrifield resin before aldehyde reduction",
+      "access": "publisher abstract verified; detailed graft conditions not extracted from publisher full text",
+      "limit": "Phenolic class analogue only; no exact BQ/AQ precursor feasibility or MeCN conditions established"
+    },
+    {
+      "id": "hmds_support_side_reaction_2001",
+      "url": "https://www.sciencedirect.com/science/article/abs/pii/S0040403901009947",
+      "evidence": "HMDS bases can convert chloromethyl polystyrene into aminomethyl resin in attempted alkoxide chemistry",
+      "access": "primary publisher abstract",
+      "limit": "Evidence of competing support chemistry; not a quantified side-reaction model for every base or motif"
+    }
+  ],
+  "candidates": {},
+  "note": "No exact route is automatically certified by a family analogue. Reviewed candidate evidence is added separately. Interaction-method controls may be investigated without being synthesis-shortlist admissions.",
+  "reviewed_date": "2026-10-19",
+  "guide": "docs/PRACTICAL_GRAFTING.md"
+}

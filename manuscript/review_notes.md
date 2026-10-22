@@ -25,7 +25,7 @@ reproducibility and scaling components; they do not establish chemical accuracy.
 | Which additional result would most improve the paper's scientific impact? | Priorities include representative redox-core/environment sensitivity and independent grafting/interaction validation. |
 
 The immediate remaining work is to finish and review the polymer calculations,
-resolve the last frozen redox endpoint, strengthen representative method and
+retain the completed 39-endpoint benchmark and strengthen representative method and
 conformer controls, and complete the reproducible release. Experimental grafting,
 loading, swelling and transport validation remain future work. Authorship,
 affiliations and venue have not been assigned.

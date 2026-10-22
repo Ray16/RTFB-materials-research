@@ -45,9 +45,14 @@ and their reasons. The panel is retrospective; it is not a held-out validation s
 Its contents are fixed before completing the additional calculations. New sources
 require a new panel version rather than silently changing this denominator.
 
-The latest independent review admits 38/39 potentials from 30 parents and seven
-original studies. All 22 native-completion molecule jobs are terminal; one
-endpoint still requires its source-addressed alternate-spin check. Its first attempt ran out of GPU memory after the optimizer converged. The [checkpoint continuation](../results/validation/publication_benchmark/spin_resume_2026-10-22/plan.json) preserves that geometry and requires a larger-memory device; the physical gates and active energy protocol remain unchanged. The
+The latest independent review admits 39/39 potentials from 30 parents and seven
+original studies. All 22 native-completion molecule jobs are terminal, and the final
+electronic-spin hold is resolved. After a GPU-memory failure, the
+[checkpoint continuation](../results/validation/publication_benchmark/spin_resume_2026-10-22/status.json)
+reused the real converged geometry and passed the unchanged source-addressed
+comparison. Its alternative triplet is 0.707 eV higher electronically; the
+alternative thermal gap remains uncomputed. The independent review records
+111 checks, no discrepancies and all 39 endpoints. The
 [current analysis](../results/validation/publication_benchmark/current.json) uses
 unrounded values and reports event-weighted errors, molecule-weighted MAE,
 family/wave coverage, signed two-wave spacings and all outliers. Study and molecule

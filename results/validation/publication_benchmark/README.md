@@ -7,13 +7,12 @@ source values remain in its source catalog. This is not a held-out test set.
 
 The [current analysis](current.json) reports unrounded residuals, event- and
 molecule-weighted errors, family/wave coverage, signed wave spacings, outliers,
-and molecule/study cluster resampling. The current independent review admits 38/39 endpoints from 30 molecules and seven
-original studies: MAE 0.248 V, RMSE 0.281 V and signed bias +0.200 V. One PMDI
-second reduction remains pending. Both molecule and study cluster intervals are
+and molecule/study cluster resampling. The current independent review admits 39/39 endpoints from 30 molecules and seven
+original studies: MAE 0.247 V, RMSE 0.279 V and signed bias +0.190 V. All fixed endpoints are admitted. The last PMDI electronic-spin comparison passes with its alternative triplet 0.707 eV above the selected singlet; the alternative thermal spin gap remains uncomputed. Both molecule and study cluster intervals are
 reported as descriptive resampling of this retrospective panel. No model
 correction or outlier removal is fitted.
 
-The [latest independent review](../../reviews/2026-10-21/publication_benchmark_latest/summary.json)
+The [latest independent review](../../reviews/2026-10-22/publication_benchmark_complete/summary.json)
 and [reproduction guide](../../../docs/PUBLICATION_READINESS.md) distinguish
 execution correctness, source quality, physical state QC and prediction accuracy.
 The [native completion plan](native_completion_2026-10-21/plan.json) contains
