@@ -6,6 +6,7 @@ Each SCF is checkpointed on shared storage before the next displacement.
 """
 
 import argparse
+import json
 import os
 from pathlib import Path
 import socket
@@ -17,11 +18,36 @@ from redox.core.io import atomic_write_json
 from redox.workflows.chunked import file_hash
 
 
+def parse_probe(value):
+    atom, axis = map(int, value.split(":"))
+    if atom < 0 or axis not in (0, 1, 2):
+        raise argparse.ArgumentTypeError("Use a nonnegative atom and axis 0, 1 or 2")
+    return atom, axis
+
+
+def reusable_record(parent, name, coordinates):
+    path = parent / (name + ".json")
+    if not path.exists():
+        return None
+    record = json.loads(path.read_text())
+    if (
+        record.get("SCF_converged") is not True
+        or not np.isfinite(record.get("E_Ha", np.nan))
+        or not np.array_equal(np.asarray(record["coordinates_Bohr"]), coordinates)
+    ):
+        raise ValueError(
+            "Previous diagnostic evaluation has different coordinates or QC"
+        )
+    return dict(record, reused_from=str(path.resolve()), reused_sha256=file_hash(path))
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--xyz", type=Path, required=True)
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--grid-level", type=int, choices=(3, 5), required=True)
+    parser.add_argument("--probe", type=parse_probe, action="append", default=[])
+    parser.add_argument("--reuse", type=Path)
     args = parser.parse_args()
     from redox.workflows.resources import verify_gate_owner
 
@@ -67,8 +93,34 @@ def main():
     )
     atomic_write_json(args.out / "status.json", state)
     baseline = None
+    reuse_ready = False
+    if any(atom >= len(atoms) for atom, _ in args.probe):
+        raise ValueError("Probe atom outside this geometry")
+    if args.reuse:
+        parent = json.loads((args.reuse / "status.json").read_text())
+        if (
+            parent["status"] != "diagnostic_complete_no_promotion"
+            or parent["settings"] != settings
+            or parent["source_geometry_sha256"] != state["source_geometry_sha256"]
+        ):
+            raise ValueError("Previous diagnostic protocol or geometry differs")
+        state["parent_status_sha256"] = file_hash(args.reuse / "status.json")
+    state["requested_probes"] = args.probe
 
     def solve(position, name, gradient=False):
+        if reuse_ready and not gradient:
+            previous = reusable_record(args.reuse, name, position)
+            if previous:
+                atomic_write_json(args.out / (name + ".json"), previous)
+                state["evaluations"].append(
+                    dict(
+                        name=name,
+                        file_sha256=file_hash(args.out / (name + ".json")),
+                        reused=True,
+                    )
+                )
+                atomic_write_json(args.out / "status.json", state)
+                return previous["E_Ha"], None, None
         mol = gto.M(
             atom=list(zip(symbols, position.tolist())),
             unit="Bohr",
@@ -117,11 +169,23 @@ def main():
         return record["E_Ha"], density, grad
 
     try:
-        _, baseline, gradient = solve(coordinates, "baseline", True)
+        energy, baseline, gradient = solve(coordinates, "baseline", True)
+        if args.reuse:
+            previous = reusable_record(args.reuse, "baseline", coordinates)
+            if (
+                abs(previous["E_Ha"] - energy) > 1e-8
+                or np.max(abs(np.asarray(previous["gradient_Ha_Bohr"]) - gradient))
+                > 1e-8
+            ):
+                raise ValueError(
+                    "Fresh baseline does not replay the previous SCF/gradient"
+                )
+            reuse_ready = True
+            state["baseline_replayed"] = True
         worst = tuple(
             int(x) for x in np.unravel_index(abs(gradient).argmax(), gradient.shape)
         )
-        axes = list(dict.fromkeys([worst, (0, 1)]))
+        axes = list(dict.fromkeys([worst, (0, 1), *args.probe]))
         differences = []
         for atom, axis in axes:
             for step in settings["steps_Bohr"]:

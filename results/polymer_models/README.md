@@ -2,22 +2,29 @@
 
 All result categories: [results index](../README.md).
 
-The [latest resume review](../reviews/2026-10-21/polymer_resume/summary.json)
-records 25/27 structurally checked electronic oligomers, including the completed
-phthalimide checkpoint continuation. Two exhausted PMDI trimers have separate
-bounded checkpoint continuations; their original attempts remain intact.
-The six-graph spacing panel has eleven checked conformers and one preserved
-memory failure. Electronic nonadditivity is −1.55 kJ/mol (adjacent) and −5.07 kJ/mol
-(one spacer), including conformational response. This limited sampling does not
-establish a general distance dependence or isolate redox-core pair binding.
+The [independent workflow check](workflow_validation.json) currently admits 25/27
+original electronic oligomer structures, all 12 spacing conformers and 2/6
+selected-geometry native free energies. Two PMDI trimer attempts exhausted their
+optimization budgets; all evaluations and optimizer-returned coordinates remain
+on shared storage. Their topology checks pass, but physical convergence remains
+required.
 
-The first native-G pilot failed in a large solvent-tensor contraction. A
-[separate memory continuation](campaigns/2026-10-21_spacing_memory_resume/index.html)
-preserves that failure and all energy receipts. Full singlet and radical Hessian
-replays gate atom-block area contractions and the already qualified host-memory
-curvature adapter. The largest model must then pass the ordinary native-G pilot
-before expansion; CPU, GPU and measured host RAM constrain parallelism. Native G,
-conditional grafting G and Hessian-minimum claims remain pending.
+The [solvent-derivative review](../validation/polymer_CDS_recovery_2026-10-21/README.md)
+isolates two separate numerical problems. A legacy CDS geometry-force component
+for the open trimer disagrees with energy differences on both electronic grids;
+a conservative, two-step checked derivative restart is running. The spacing
+Hessian's small asymmetry comes from the default CDS finite-difference step.
+Replacing that additive component with a qualified finer step replays full
+singlet/radical recomputations. The [new continuation](campaigns/2026-10-21_spacing_cds_recovery/plan.json)
+still requires every ordinary stationarity, symmetry, minimum and derivative gate.
+See [live completion status](completion/status.json); no threshold was relaxed.
+
+Including the recovered twelfth electronic conformer changes the selected
+nonadditivity to −10.98 kJ/mol (adjacent) and −14.50 kJ/mol (one spacer). These
+include backbone, solvent and conformational response. Earlier −1.55/−5.07 values
+belong to the incomplete eleven-conformer snapshot. Neither comparison establishes
+a general distance trend or pure redox-core binding. Free-energy cycles remain
+blank until the selected geometries' thermochemistry qualifies.
 
 The [21 October continuation review](../reviews/2026-10-21/polymer_continuation/summary.json)
 records the resumed fourth task. The original spacing pilot completed both SCFs
@@ -40,7 +47,7 @@ The [polymer spacing framework](../../docs/POLYMER_SPACING.md) provides configur
 motifs, reactive sites, occupancy patterns and matched controls. Open its
 [exact structures and conditional-grafting report](campaigns/2026-10-21_spacing_memory_resume/index.html)
 or [stable current pointer](spacing_current.json). The first panel has six graphs
-and twelve qualified warm starts; eleven electronic conformers now qualify. It evaluates
+and twelve qualified warm starts; all twelve electronic conformers now qualify. It evaluates
 electronic nonadditivity and conditional grafting ΔG as separate dimensions.
 
 **Open the [rotatable 3D interaction report](index.html)** for the current pilot.

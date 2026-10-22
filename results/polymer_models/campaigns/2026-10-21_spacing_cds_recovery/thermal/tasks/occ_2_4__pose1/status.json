@@ -1,0 +1,133 @@
+{
+  "task": {
+    "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+    "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [
+      2,
+      4
+    ],
+    "site_states": [
+      "styrene",
+      "grafted",
+      "benzyl_chloride",
+      "grafted",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CW",
+      "CW",
+      "CW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        -1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        -1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 119,
+    "charge": 0,
+    "model_loading_per_repeat": 0.4,
+    "model_conversion_per_reactive_site": 0.6666666666666666,
+    "graph_sha256": "3d9738f5273e88472ce9340bb680dc2d42e8862c01559442999f19a8d7b982f4",
+    "key": "occ_2_4__pose1",
+    "candidate_id": "exp_phthalimide_control",
+    "model_key": "occ_2_4",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "common_mapped_backbone",
+    "target": "pose1",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "pi_groups": [
+      [
+        21,
+        22,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      [
+        47,
+        48,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    ],
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "active_basis_functions": 2940
+  },
+  "status": "state_records_verified",
+  "stage": "native_thermal",
+  "owner": {
+    "host": "lambda13",
+    "pid": 2921480,
+    "process_start": "75806325",
+    "gpu": "4",
+    "cpus": [
+      6,
+      7
+    ]
+  },
+  "started": 1792640729.3475392,
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest",
+  "G_eV": -85718.5838565313,
+  "E_smd_eV": -85742.72611846344,
+  "thermal_QC": "ok",
+  "thermal_definition": "native_solution_dft_qrrho_spin",
+  "finished": 1792641447.0073555,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/opt.xyz": "a003630d0b3ac892822e58b6be7521ea6c48f391af5a35271034abd5b8755683",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/result.json": "836d394505ae5ccc28cedf0b352b094dd9ce5c458fea8fb45c546b37719680f7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/thermal_policy.json": "1b2f707f1d2e07864bdac8313e6aee31ab87cbe175d4fe847277bb0c61be1342",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/solvent_memory_execution.json": "d4af47c63f9201ac26936b65e25e2274197520816bac3c3e38fdcc686bca2bdb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/sp/e7e914aa3e82c8f8.json": "be80763ecac05a413485f415fc0ab5648df9c3b8944e3c94a247f7b569eaf3a5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/native_thermal/f9ef4b3bf4e52fcc.json": "b95cb39c92ebf483eb756f83460f4e0eba98f02250432a069ecd159f5a325d68",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/native_thermal/f9ef4b3bf4e52fcc/hessian_cartesian.npy": "7eeed7347423ed89e91f83bce5703ba540007ae7f75dde1a78087bbbd3af3bea",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/native_thermal/f9ef4b3bf4e52fcc/hessian_diagnostics.json": "e5c747d91366de200d82ac8bc3172b236b6eec97976c52fb7a559e75531c6dae",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/native_thermal/f9ef4b3bf4e52fcc/mol.xyz": "a003630d0b3ac892822e58b6be7521ea6c48f391af5a35271034abd5b8755683",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_123_0.0005_-1.npy": "ed0a82e4c0c7c400586a81374fedc73be7e91b957e1e9901ede5fdf2ee301ac3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/progress.json": "8df145711c4accdb03632afc91d087a39ec51e6f1ec7444ef96f75c8295ce35a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_123_0.0005_1.npy": "87c0e2a9ad76c4dee059ba6d0ef2195b0eda4be02986bf57609bf4bea93bf031",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_123_0.001_-1.npy": "855fe64cf0fc75fdda21383226196cab6d3f96ded8f32a77dd17872ef4ea4df0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_123_0.001_1.npy": "31c82cc1bd8a3cf23b8d4084e2db9f0f14e0f8408a56ea4c5f20261f9ec11879",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_125_0.0005_-1.npy": "2416c9daa86fbcbfdb17215dbc682694e03b3f0b98d8e377c88c0814df0b277f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_125_0.0005_1.npy": "f8210344ecc91824999ec3d22bc2dffc50ceeb84ae3637bf099e0f2d94aa2347",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_125_0.001_-1.npy": "12366e717b56105a17e6ca44f748d0337a1b1909b5342b1e65c9f86f28d47584",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/CDS_worst_column_checks/gradient_125_0.001_1.npy": "4038a08238e13a741aaa174ffee5e1e1c503dd700e5f6673a2fe8949a5e380ba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/projected_thermal/95d09d9d0e77a69b.json": "cf428f7884e2ec2780c098c5feacf8a76954b30e5645e85634699171c4a2cb00",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/projected_thermal/95d09d9d0e77a69b/owner.json": "1b6b819bfaeab8e9361e8e6a35b1cc90ffb781e2ec5d60d93161d783327bbeef",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/projected_thermal/95d09d9d0e77a69b/projected_hessian.npy": "2981c3532c61ffa79e4e9cd341e50e0e1e505b4ac6fa38cfd18d0bdb33bbde20",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/projected_thermal/95d09d9d0e77a69b/mol.xyz": "a003630d0b3ac892822e58b6be7521ea6c48f391af5a35271034abd5b8755683"
+  }
+}

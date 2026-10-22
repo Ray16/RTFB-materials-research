@@ -1,0 +1,33 @@
+{
+  "host": "lambda13",
+  "pid": "2974029",
+  "gpu": 1,
+  "argv": [
+    "env",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "MKL_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "XTB_THREADS=1",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "1",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive/execution/attempt_1_1792642096046030600",
+    "--threads",
+    "2",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/resume_polymer_forces_adaptive.py",
+    "worker",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive"
+  ],
+  "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive/launch_1.log",
+  "execution": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive/execution/attempt_1_1792642096046030600",
+  "started": 1792642096.0656126
+}

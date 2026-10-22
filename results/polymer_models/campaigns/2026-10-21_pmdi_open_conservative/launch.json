@@ -1,0 +1,32 @@
+{
+  "host": "lambda13",
+  "gpu": 5,
+  "pid": "2929802",
+  "argv": [
+    "env",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "MKL_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "XTB_THREADS=1",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "5",
+    "--threads",
+    "2",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_pmdi_open_conservative/execution/open",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/resume_polymer_forces.py",
+    "worker",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_pmdi_open_conservative"
+  ],
+  "started": 1792640913.460124,
+  "dependency_preflight": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/lambda13_preflight.json"
+}

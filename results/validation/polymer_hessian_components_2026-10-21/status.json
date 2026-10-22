@@ -1,0 +1,93 @@
+{
+  "status": "component_diagnostic_complete_no_admission",
+  "started": 1792636064.660029,
+  "protocol": {
+    "solvent": "acetonitrile",
+    "CDS_steps_Bohr": [
+      0.0001,
+      1e-05,
+      1e-06
+    ]
+  },
+  "source_hessian_sha256": "b76d66dac605bbf50a10cf161a4f1ea2e446c59a4744301148cadce86a6e8328",
+  "source_geometry_sha256": "a003630d0b3ac892822e58b6be7521ea6c48f391af5a35271034abd5b8755683",
+  "producer_sha256": "4a555945c677fc876241ada3a4cddd687d67bc4c3503a2c16fd4f6b45c7a50c1",
+  "software": {
+    "pyscf": "2.14.0"
+  },
+  "original": {
+    "maximum_asymmetry": 2.0638896743273294e-06,
+    "relative_asymmetry": 5.91281587845973e-07,
+    "worst_indices": [
+      123,
+      125
+    ]
+  },
+  "controls": [
+    {
+      "state": "results/validation/cds_finer_step_2026-10-18/exp_naphthalimide_control__neu/work",
+      "baseline": "results/validation/cds_finer_step_2026-10-18/exp_naphthalimide_control__neu/coarse_CDS_hessian.npy",
+      "baseline_sha256": "c652064c352ee50c9ad483a895a712a36df49fcc36eb7bbbe6d1037ef185dcc4",
+      "geometry_sha256": "cac5e1edb889c8cebb9d29f1c86300cbf6fdd2d71b2c4baab451721660ba0be2",
+      "maximum_difference": 0.0
+    },
+    {
+      "state": "results/validation/cds_finer_step_2026-10-18/exp_naphthalimide_control__red1/work",
+      "baseline": "results/validation/cds_finer_step_2026-10-18/exp_naphthalimide_control__red1/coarse_CDS_hessian.npy",
+      "baseline_sha256": "95216c9686dc4f5de1d5675b269ef5638d83978425ef9dab8aa27b756a6905f2",
+      "geometry_sha256": "e20801093c840686aeedc7b8a1bf6091bbaf58cddad5b45bcf71978a4302eb57",
+      "maximum_difference": 0.0
+    }
+  ],
+  "components": {
+    "0.0001": {
+      "maximum_asymmetry": 2.0638896834786463e-06,
+      "relative_asymmetry": 0.00036861803595843244,
+      "worst_indices": [
+        123,
+        125
+      ],
+      "sha256": "cffd6270fe51b675ff0af6cdee633d5630c11ebdabc3c11c54da5e436784ae52"
+    },
+    "1e-05": {
+      "maximum_asymmetry": 2.045048158594298e-08,
+      "relative_asymmetry": 3.645517302611638e-06,
+      "worst_indices": [
+        123,
+        125
+      ],
+      "sha256": "baf5db5c41f590ecb1fb9169c9285db51fa355c13c24c9f77e76ba695c02d657"
+    },
+    "1e-06": {
+      "maximum_asymmetry": 1.4705914979686041e-09,
+      "relative_asymmetry": 2.628605872697433e-07,
+      "worst_indices": [
+        123,
+        311
+      ],
+      "sha256": "632591e832265f3a6b8d62ff7e485adbdd4178e622b5cd76bc42da9aacf0c00a"
+    }
+  },
+  "replacements": {
+    "1e-05": {
+      "maximum_asymmetry": 2.0450472433541922e-08,
+      "relative_asymmetry": 5.846613359030112e-09,
+      "worst_indices": [
+        123,
+        125
+      ],
+      "sha256": "7eeed7347423ed89e91f83bce5703ba540007ae7f75dde1a78087bbbd3af3bea"
+    },
+    "1e-06": {
+      "maximum_asymmetry": 1.4705827944272443e-09,
+      "relative_asymmetry": 4.215687768904543e-10,
+      "worst_indices": [
+        123,
+        311
+      ],
+      "sha256": "47e10357f48ad44a12f9b5865f5dfd66abf0f52d41088325812fb6af857494b2"
+    }
+  },
+  "physical_QC_promoted": false,
+  "finished": 1792636241.609324
+}

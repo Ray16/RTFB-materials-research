@@ -1,0 +1,39 @@
+{
+  "status": "two_full_recomputation_replays_passed",
+  "CDS_step_Bohr": 1e-05,
+  "qualification_sha256": "e45758db5c7dc930d5ed8aae9dbd6a0e76cb568068dfd51fabf15324f849dbb9",
+  "controls": [
+    {
+      "mult": 1,
+      "state": "neu",
+      "maximum_matrix_difference": 1.333244625811858e-11,
+      "relative_matrix_error": 1.4222335607687685e-11,
+      "maximum_thermal_difference_eV": 1.1879333072783993e-09,
+      "same_symmetry_number_used_for_difference_only": 1,
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_naphthalimide_control/neu/native_thermal/a8f2238c92b89356/hessian_cartesian.npy": "5379152da4268e8f51487224e86000cd0d468d791e5934f92a641a7965e01caa",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/resume_campaign_2026-10-12/physical_campaign/cds_qualification/exp_naphthalimide_control__neu/work/native_thermal/a8f2238c92b89356/hessian_cartesian.npy": "b97d03b3df4578665718330c1636deba83464cddfc8cde4394deb7e7e872e36d",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/polymer_hessian_components_2026-10-21/control_0.npy": "c652064c352ee50c9ad483a895a712a36df49fcc36eb7bbbe6d1037ef185dcc4",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_naphthalimide_control/neu/opt.xyz": "cac5e1edb889c8cebb9d29f1c86300cbf6fdd2d71b2c4baab451721660ba0be2"
+      }
+    },
+    {
+      "mult": 2,
+      "state": "red1",
+      "maximum_matrix_difference": 2.8273045016291576e-09,
+      "relative_matrix_error": 5.199662749475794e-09,
+      "maximum_thermal_difference_eV": 1.18376703994727e-08,
+      "same_symmetry_number_used_for_difference_only": 1,
+      "input_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_naphthalimide_control/red1/native_thermal/939bf3ad3a419663/hessian_cartesian.npy": "d90a5209f0d2b8180a1701bff5b5380d09c0e98838dff0c1cc67b7708467a47f",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/resume_campaign_2026-10-12/physical_campaign/cds_qualification/exp_naphthalimide_control__red1/work/native_thermal/939bf3ad3a419663/hessian_cartesian.npy": "6e66ed6176fe6faa98de81987ad61bec8b444485dd92f909c0dac65e9713333b",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/polymer_hessian_components_2026-10-21/control_1.npy": "95216c9686dc4f5de1d5675b269ef5638d83978425ef9dab8aa27b756a6905f2",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_naphthalimide_control/red1/opt.xyz": "e20801093c840686aeedc7b8a1bf6091bbaf58cddad5b45bcf71978a4302eb57"
+      }
+    }
+  ],
+  "producer_sha256": "1e359794ac3510b01140bce75a93b9e0b7ab278da780a20808fce4730e8e9b96",
+  "component_helper_sha256": "4a555945c677fc876241ada3a4cddd687d67bc4c3503a2c16fd4f6b45c7a50c1",
+  "scientific_model_changed": false,
+  "thresholds_changed": false
+}

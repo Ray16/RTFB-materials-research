@@ -8,6 +8,7 @@ own native Hessian, implementation replay evidence and field-specific QC.
 
 import argparse
 from collections import Counter, defaultdict
+import hashlib
 import json
 import math
 from pathlib import Path
@@ -21,6 +22,35 @@ from redox.core.protocol import load_record
 from redox.qm.native_thermal import load_native_thermal, cache_path
 from redox.workflows import polymer_campaign as api
 from redox.workflows.checkpoints import verify_state_checkpoint
+
+_CPU_BINDING = None
+VALIDATOR_SOURCE_BYTES = Path(__file__).read_bytes()
+VALIDATOR_SOURCE_SHA256 = hashlib.sha256(VALIDATOR_SOURCE_BYTES).hexdigest()
+
+
+def bind_validation_cpu():
+    """Retain this validator's allocation across calls and its owned CPU client.
+
+    A cached thermochemistry subprocess inherits the parent's assigned CPU. It
+    must not be mistaken for a newly conflicting worker on a subsequent review.
+    """
+    import os
+    from redox.workflows.resources import (
+        allocation_guard,
+        host_capacity,
+        cpu_allocation,
+    )
+
+    global _CPU_BINDING
+    with allocation_guard():
+        host_capacity(1)
+        if _CPU_BINDING is not None and _CPU_BINDING[0] == os.getpid():
+            if tuple(sorted(os.sched_getaffinity(0))) != _CPU_BINDING[1]:
+                raise RuntimeError("Validator CPU affinity changed after allocation")
+            return
+        cpus = cpu_allocation(1)
+        os.sched_setaffinity(0, cpus)
+        _CPU_BINDING = (os.getpid(), tuple(sorted(cpus)))
 
 
 def finite(value):
@@ -125,13 +155,34 @@ def thermal_check(report):
     ):
         raise ValueError("Bounded PCM execution evidence missing or wrong scope")
     module = ROOT / "src/redox/qm/pcm_bounded.py"
+    driver = ROOT / "scripts/pipeline/resume_bounded_polymer_thermal.py"
+    if execution.get("driver_sha256") != api.digest(driver):
+        raise ValueError("Bounded derivative driver or execution mode differs")
+    if (
+        execution.get("mode")
+        == "cached_fused_PCM_Hessian_with_qualified_CDS_replacement"
+    ):
+        from redox.qm.hessian_resume import verify_reconstruction_record
+
+        verify_reconstruction_record(raw, state / "opt.xyz")
+    elif execution.get("mode") != "fused_diagonal_and_CPU_primitive_surface_blocks":
+        raise ValueError("Unreviewed bounded derivative execution mode")
+    derivative = raw.get("execution_derivatives") or {}
+    for field, target in [
+        ("execution_helper_sha256", ROOT / "src/redox/qm/hessian_resume.py"),
+        ("finite_CDS_module_sha256", ROOT / "src/redox/qm/cds_finite.py"),
+    ]:
+        if field in derivative and derivative[field] != api.digest(target):
+            raise ValueError("Finer-CDS execution source changed")
     if execution["adapter_sha256"] != api.digest(module) or execution[
         "source_geometry_sha256"
     ] != api.digest(state / "opt.xyz"):
         raise ValueError("Bounded execution source or geometry mismatch")
     api.verify_sources(execution["replay_evidence_sha256"])
+    multiplicities = set()
     for name in execution["replay_evidence_sha256"]:
         replay = json.loads(Path(name).read_text())
+        multiplicities.add(replay.get("mult"))
         if (
             replay["status"] != "full_native_replay_passed"
             or not replay["native_gates_passed"]
@@ -139,9 +190,12 @@ def thermal_check(report):
             raise ValueError("Implementation replay failed")
         api.verify_sources(replay["evidence_sha256"])
         if any(
-            not finite(value) or value > 1e-6 for value in replay["errors"].values()
+            not finite(value) or not 0 <= value <= 1e-6
+            for value in replay["errors"].values()
         ):
             raise ValueError("Implementation replay exceeds its fixed tolerance")
+    if multiplicities != {1, 2}:
+        raise ValueError("Both singlet and radical full-Hessian replays are required")
     api.verify_sources(
         {
             str(ROOT / name): value
@@ -165,16 +219,7 @@ def thermal_check(report):
 
 
 def validate(campaign, out, require_complete=False):
-    from redox.workflows.resources import (
-        allocation_guard,
-        host_capacity,
-        cpu_allocation,
-    )
-    import os
-
-    with allocation_guard():
-        host_capacity(1)
-        os.sched_setaffinity(0, cpu_allocation(1))
+    bind_validation_cpu()
     plan = api.read_plan(campaign)
     api.verify_sources(plan["producer_sha256"])
     api.verify_sources(plan["input_sha256"])
@@ -201,9 +246,30 @@ def validate(campaign, out, require_complete=False):
         / "results/polymer_models/campaigns/2026-10-21_spacing_extra_thermal"
         / "thermal/done"
     )
-    for receipt in extra_thermal.glob("*.json"):
-        report = verify_state_checkpoint(receipt)
-        thermal[report["task"]["key"]] = report
+    campaigns = [extra_thermal.parent.parent]
+    registry = ROOT / "results/polymer_models/thermal_continuations.json"
+    if registry.exists():
+        campaigns += [
+            ROOT / path for path in json.loads(registry.read_text())["campaigns"]
+        ]
+    for extra_campaign in campaigns:
+        if not (extra_campaign / "plan.json").exists():
+            continue
+        extra_plan = api.read_plan(extra_campaign)
+        api.verify_sources(extra_plan["producer_sha256"])
+        api.verify_sources(extra_plan["input_sha256"])
+        extra_records, extra_invalid = api.admitted_records(extra_campaign, "thermal")
+        invalid += extra_invalid
+        expected_tasks = {t["key"]: t for t in plan["tasks"]}
+        for key, report in extra_records.items():
+            expected = expected_tasks.get(key)
+            if expected is None or any(
+                report["task"].get(k) != v for k, v in expected.items()
+            ):
+                raise ValueError(
+                    "Extra thermal receipt differs from the original exact task"
+                )
+            thermal[key] = report
     if invalid:
         raise ValueError(f"Invalid receipts: {invalid}")
     constants, reagents = references(campaign, plan)
@@ -331,6 +397,13 @@ def validate(campaign, out, require_complete=False):
         and len(energy) == len(plan["tasks"])
         and ready_G == len(cases)
     )
+    source_directory = Path(out).parent / "validator_sources"
+    source_directory.mkdir(exist_ok=True)
+    source_snapshot = source_directory / (VALIDATOR_SOURCE_SHA256 + ".py")
+    if not source_snapshot.exists():
+        source_snapshot.write_bytes(VALIDATOR_SOURCE_BYTES)
+    if api.digest(source_snapshot) != VALIDATOR_SOURCE_SHA256:
+        raise ValueError("Validator source snapshot changed")
     result = dict(
         status="finite_workflow_validated"
         if complete
@@ -354,7 +427,8 @@ def validate(campaign, out, require_complete=False):
             "Nonadditivity includes backbone/solvent response; no pure-core binding",
             "Rotor-cutoff variation is sensitivity, not a confidence interval",
         ],
-        validator_sha256=api.digest(__file__),
+        validator_sha256=VALIDATOR_SOURCE_SHA256,
+        validator_source_snapshot=str(source_snapshot),
     )
     atomic_write_json(out, result)
     print(

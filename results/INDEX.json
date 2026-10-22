@@ -137,6 +137,20 @@
         "raw_root": "calcs/validation/polymer_gradient_diagnostic_2026-10-21",
         "state": "Localized grid3 force-energy discrepancy; no geometry promotion",
         "source_snapshot": "results/validation/polymer_gradient_diagnostic_2026-10-21/driver_source.py"
+      },
+      "polymer_CDS_repair": {
+        "guide": "results/validation/polymer_CDS_recovery_2026-10-21/README.md",
+        "summary": "results/validation/polymer_CDS_recovery_2026-10-21/summary.json",
+        "native_plan": "results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/plan.json",
+        "force_plan": "results/polymer_models/campaigns/2026-10-21_pmdi_open_conservative/plan.json",
+        "current": "results/polymer_models/workflow_validation.json",
+        "live_status": "results/polymer_models/completion/status.json",
+        "scope": "Qualified numerical controls; target electronic and native free-energy calculations in progress; unchanged physical thresholds",
+        "force_plans": [
+          "results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive/plan.json",
+          "results/polymer_models/campaigns/2026-10-21_pmdi_stacked_adaptive/plan.json"
+        ],
+        "parallel_starts": "results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/parallel_start_verification.json"
       }
     },
     "slides": {
@@ -179,13 +193,15 @@
       "requirements": "docs/PUBLICATION_READINESS.md",
       "benchmark_panel": "results/validation/publication_benchmark/panel_v1.json",
       "benchmark_current": "results/validation/publication_benchmark/current.json",
-      "benchmark_source_review": "results/reviews/2026-10-21/publication_benchmark_coverage/summary.json",
+      "benchmark_source_review": "results/reviews/2026-10-21/publication_benchmark_latest/summary.json",
       "native_plan": "results/validation/publication_benchmark/native_completion_2026-10-21/plan.json",
       "start_verification": "results/validation/publication_benchmark/native_completion_2026-10-21/start_verification.json",
       "raw_root": "calcs/dft",
       "scope": "Exact-parent benchmark and pipeline qualification; no polymer experimental accuracy claim",
       "scalability_guide": "docs/HIGH_THROUGHPUT.md",
-      "scalability_evidence": "results/validation/scalability_2026-10-21/summary.json"
+      "scalability_evidence": "results/validation/scalability_2026-10-21/summary.json",
+      "expanded_benchmark_figure": "results/figures/validation/retrospective_redox_benchmark.pdf",
+      "shared_restart_evidence": "results/validation/shared_restart_2026-10-21/summary.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

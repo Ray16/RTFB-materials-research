@@ -1,5 +1,6 @@
 """Insight-led main talk, refreshed from the same audited feed as the backup tables."""
 import json
+import hashlib
 import math
 from pathlib import Path
 
@@ -7,6 +8,21 @@ from pathlib import Path
 def number(value,digits=1):
     if type(value) not in (int,float) or not math.isfinite(value):return 'pending'
     return f'{value:.{digits}f}'
+
+
+def benchmark_frame(root):
+    root = Path(root)
+    include = root / 'slides/generated/retrospective_redox_benchmark.tex'
+    metadata = root / 'results/figures/validation/retrospective_redox_benchmark.json'
+    if include.exists() or metadata.exists():
+        record = json.loads(metadata.read_text())
+        if record['status'] != 'checked_retrospective_snapshot':
+            raise ValueError('Expanded benchmark figure is not checked')
+        for path, expected in record['output_sha256'].items():
+            if hashlib.sha256((root / path).read_bytes()).hexdigest() != expected:
+                raise ValueError('Expanded benchmark figure artifact changed')
+        return include.read_text()
+    return (root / 'slides/generated/matched_parent_validation_plot.tex').read_text()
 
 
 def research_frames(payload,root):
@@ -85,7 +101,7 @@ def research_frames(payload,root):
 
     method_position=next(i for i,piece in enumerate(pieces) if piece.startswith(r'\begin{frame}{Method:'))
     pieces[method_position:method_position]=[r'\begin{frame}{Candidate expansion uses matched molecular changes}',r'\centering',r'\includegraphics[width=.98\linewidth,height=.77\textheight,keepaspectratio]{../results/candidates/figures/plots/candidate_selection_overview.pdf}',r'\par\smallskip\footnotesize Current route: attach redox groups to a preformed polymer.',r'\end{frame}']
-    pieces.append((Path(root)/'slides/generated/matched_parent_validation_plot.tex').read_text())
+    pieces.append(benchmark_frame(root))
 
     def figure(title,name,insight,note):
         pieces.extend([r'\begin{frame}{'+title+'}',r'\centering',

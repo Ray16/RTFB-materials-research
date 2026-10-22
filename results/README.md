@@ -7,7 +7,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | --- | --- | --- |
 | Grafting free energies for all 75 candidates | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |
 | Polymer-fragment and interaction models | [3D interaction report](polymer_models/index.html) | [Method/records](polymer_models/README.md) · [Interaction status](polymer_models/interaction_status.json) · [Graph inventory](polymer_models/current.csv) |
-| Graft spacing and conditional grafting framework | [Exact occupancy cases and report](polymer_models/campaigns/2026-10-21_spacing_continuation/index.html) | [Reproduction guide](../docs/POLYMER_SPACING.md) · [Current pointer](polymer_models/spacing_current.json) · [Calculation status](polymer_models/campaigns/2026-10-21_spacing_continuation/status.json) |
+| Graft spacing and conditional grafting framework | [Exact occupancy cases and report](polymer_models/campaigns/2026-10-21_spacing_continuation/index.html) | [Reproduction guide](../docs/POLYMER_SPACING.md) · [Current pointer](polymer_models/spacing_current.json) · [Independent validation](polymer_models/workflow_validation.json) |
 | Candidate redox properties and comparisons | [Candidates](candidates/README.md) | [Workbook](candidates/latest.xlsx) · [All candidates](candidates/figures/data/all_candidates.csv) |
 | Maintained figures and molecular structures | [Figure guide](candidates/figures/README.md) | [Comparison browser](candidates/figures/index.html) |
 | Measured/calculated redox validation | [Validation guide](validation/README.md) | [Figure](figures/validation/matched_parent_validation.pdf) · [Actual values](figures/validation/matched_parent_validation.csv) |
@@ -44,16 +44,21 @@ The [configurable spacing framework](../docs/POLYMER_SPACING.md) now builds matc
 adjacent/separated occupancy controls and keeps electronic nonadditivity separate
 from conditional grafting ΔG. Its first phthalimide method-control panel has six
 graphs and twelve qualified xTB warm starts, frozen for quantum evaluation.
-The spacing panel now has 11 checked electronic conformers covering all six graphs;
-one alternate conformer failed with GPU memory exhaustion. Sampled electronic
-nonadditivity is −1.55 kJ/mol for adjacent grafts and −5.07 kJ/mol with one spacer.
-These include conformational response and do not establish a spacing trend or a
-pure motif binding energy. Native G remains blank: the first thermal pilot ran out
-of memory. The [memory continuation](polymer_models/campaigns/2026-10-21_spacing_memory_resume/index.html)
-reuses the electronic receipts and requires full singlet/radical Hessian replays
-before a fresh large-model thermal pilot. See the [resume review](reviews/2026-10-21/polymer_resume/summary.json).
-The earlier oligomer panel has 25/27 checked structures; two saved PMDI trimer
-checkpoints are undergoing bounded optimizer resets.
+The spacing panel now has all 12 checked electronic conformers. Including the
+recovered alternate empty-backbone conformer changes selected electronic
+nonadditivity to −10.98 kJ/mol (adjacent) and −14.50 kJ/mol (one spacer). These
+include conformational response and do not isolate motif binding. Two of six
+selected-geometry native free energies qualify; four more calculations are running.
+The [numerical repair review](validation/polymer_CDS_recovery_2026-10-21/README.md)
+records the independent force/Hessian diagnostics, qualified control replays and
+source-frozen restarts. The ordinary physical thresholds remain unchanged.
+Follow [independent workflow validation](polymer_models/workflow_validation.json)
+and [live completion status](polymer_models/completion/status.json).
+
+The [retrospective benchmark](validation/publication_benchmark/current.json)
+now admits 38/39 sourced potentials from 30 exact free molecules across seven
+studies (MAE 0.248 V, RMSE 0.281 V). All outliers remain. This quantifies free-parent
+accuracy and does not validate exact grafted structures or polymers.
 
 ## Calculation records and provenance
 

@@ -1,0 +1,31 @@
+{
+  "host": "lambda13",
+  "gpu": 4,
+  "argv": [
+    "env",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "MKL_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "XTB_THREADS=1",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "4",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/execution/cached_pilot",
+    "--threads",
+    "2",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/resume_polymer_cds.py",
+    "cached-pilot"
+  ],
+  "pid": "2921003",
+  "started": 1792640718.2552392,
+  "preflight": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/lambda13_preflight.json",
+  "stdout": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/cached_pilot_launcher.log"
+}

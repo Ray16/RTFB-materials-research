@@ -35,3 +35,9 @@ Edit the main-story generator at
 [redox_workflow.tex](redox_workflow.tex); supporting source is in [backup/](backup/).
 The earlier detailed deck is preserved in
 [archive/2026-10-19_detailed/](archive/2026-10-19_detailed/README.md).
+
+The current benchmark slide uses the [expanded retrospective panel](../results/validation/publication_benchmark/current.json):
+38/39 admitted potentials across 30 exact free molecules and seven studies.
+The checked [figure](../results/figures/validation/retrospective_redox_benchmark.pdf)
+retains all admitted outliers and the pending endpoint. Earlier validation subsets
+in Backup are historical snapshots.

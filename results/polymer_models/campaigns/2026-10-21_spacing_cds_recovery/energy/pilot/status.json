@@ -1,0 +1,123 @@
+{
+  "task": {
+    "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+    "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [
+      2,
+      3
+    ],
+    "site_states": [
+      "styrene",
+      "grafted",
+      "grafted",
+      "benzyl_chloride",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CW",
+      "CW",
+      "CW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        -1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        -1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 119,
+    "charge": 0,
+    "model_loading_per_repeat": 0.4,
+    "model_conversion_per_reactive_site": 0.6666666666666666,
+    "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+    "key": "occ_2_3__pose0",
+    "candidate_id": "exp_phthalimide_control",
+    "model_key": "occ_2_3",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "common_mapped_backbone",
+    "target": "pose0",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "pi_groups": [
+      [
+        29,
+        30,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ],
+      [
+        47,
+        48,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ]
+    ],
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "active_basis_functions": 2940,
+    "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_3__pose0/input.xyz",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_2_3__pose0/input.xyz": "a4d34f370e694fe9421b0e7dad5bfc0a6ecbe84bcbddfc86aa0be6e632b3b9ae",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/ensembles/occ_2_3/ensemble.json": "78600b3bf253225609e76acb8c0530f55b836e3c1734aad7456a488a4ff84996"
+    }
+  },
+  "status": "memory_pilot_passed",
+  "stage": "memory_pilot",
+  "started": 1792537861.6648407,
+  "host": "lambda13",
+  "pid": 3673188,
+  "free_energy_computed": false,
+  "minimum_Hessian_tested": false,
+  "synthesis_admission": false,
+  "observed_peak_GPU_MiB": 89062,
+  "error": "RuntimeError('Large-model memory pilot exceeds admitted safety budget')",
+  "traceback": "Traceback (most recent call last):\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py\", line 211, in calculate\n    raise RuntimeError('Large-model memory pilot exceeds admitted safety budget')\nRuntimeError: Large-model memory pilot exceeds admitted safety budget\n",
+  "finished": 1792539475.2493732,
+  "prior_guard_status": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/energy/pilot/status.json",
+  "numerical_review": {
+    "numerical_pilot_completed": true,
+    "observed_peak_GPU_MiB": 89062,
+    "device_memory_MiB": 95830.0,
+    "available_headroom_MiB": 6768.0,
+    "required_headroom_MiB": 4096,
+    "maximum_memory_pilot_MiB": 91734.0,
+    "minimum_device_MiB": 95830.0,
+    "qualification_scope": "Neutral energy/gradient execution only; no minimum or Hessian claim"
+  },
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/energy/pilot/energy_and_gradient.json": "0ca283392f5f42312f9ec5e3b6ecd24bf36bab802730e2f8406aa1f981da7689",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/energy/pilot/status.json": "00a3e759d19eac3e859a171714841406b5e9e97aab011dcd145ce3f15433ef4e"
+  },
+  "scope": "Numerical resource qualification only; geometry remains unoptimized"
+}
