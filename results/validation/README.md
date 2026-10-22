@@ -25,3 +25,11 @@ campaign. Current candidate calculations live in `calcs/dft/<id>/<state>/` from
 the project root; follow a review's manifest for isolated alternatives and repairs.
 
 The [polymer numerical execution checkpoint](../reviews/2026-10-21/polymer_numerical_repairs/README.md) records 79 focused regression tests and full singlet/radical Hessian replays. Large-model thermal results remain pending; execution equivalence does not establish experimental accuracy.
+
+The [frozen publication benchmark](publication_benchmark/README.md) expands the
+coverage denominator to all 39 currently sourced strict endpoints from 30 exact
+parents. Its current 12 admitted endpoints retain the same eight molecules and
+all outliers; unrounded residuals, family/wave errors and cluster dependence are
+reported explicitly. Native completion is running separately from experimental
+accuracy assessment. Follow the [publication preparation guide](../publication_readiness/README.md)
+for the remaining evidence requirements.

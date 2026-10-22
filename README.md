@@ -3,9 +3,11 @@
 **Current results:** [results/README.md](results/README.md) indexes grafting free
 energies, polymer models, candidate tables, validation figures and the slide deck.
 
-Computational screening of redox-active functional groups grafted onto the Cl site of the
-Merrifield-resin (chloromethyl-polystyrene) monomer, targeting **stability** and **redox
-potential** in a nonaqueous electrolyte.
+Computational screening of redox-active groups for post-functionalization of
+preformed Merrifield-type chloromethyl-polystyrene, targeting **stability** and
+**redox potential** in a nonaqueous electrolyte. Capped benzyl structures model
+individual graft sites; explicit finite oligomers probe the local polymer
+environment. These model levels are reported separately.
 
 **Current correctness review:** rigid-motion contamination in native thermochemistry
 has been corrected and independently checked. Current candidate exports use the
@@ -25,6 +27,7 @@ screening application.
 | --- | --- |
 | Navigate the code and outputs | [Repository map](docs/REPO_MAP.md) |
 | Develop or debug the pipeline | [Development guide](docs/DEVELOPMENT.md) |
+| Check publication preparation and benchmark scope | [Publication readiness](docs/PUBLICATION_READINESS.md) |
 | Find current guidance and historical reports | [Documentation index](docs/README.md) |
 | Understand each property and its QC | [Design axes](docs/DESIGN_AXES.md) |
 | Review defects and refactoring decisions | [Code review](docs/CODE_REVIEW_2026-10-18.md) |
@@ -66,9 +69,12 @@ After an editable install, `redox --help` provides the same commands. Existing
 
 ## System
 
-- **Scaffold:** Merrifield monomer (chloromethyl-polystyrene); decorate the benzylic Cl
-  site with redox-active groups (pyridine-derived / multi-electron systems, and others).
-- **Electrolyte:** acetonitrile (ε ≈ 37.5), **SMD** implicit solvation, **PF₆⁻** counterion.
+- **Scaffold:** preformed chloromethyl-polystyrene; replace reactive benzylic Cl
+  with a specified redox-group attachment. Capped site and finite-chain models
+  have distinct scopes.
+- **Medium:** acetonitrile (ε ≈ 37.5), **SMD** implicit solvation. The nominal
+  screening counterion is **PF₆⁻**; bare-ion quantum calculations do not include
+  it explicitly. Defined grafting byproduct/ion-pair models are separate.
 - **Redox potential:** `E° = −ΔG° / (nF)` (n = electrons transferred).
 - **Reference data:** primary experimental MeCN/Fc measurements, D3TaLES and
   complementary computed collections; see the [source catalog](config/discovery_sources.json)

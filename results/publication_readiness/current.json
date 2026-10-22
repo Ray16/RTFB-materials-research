@@ -1,0 +1,56 @@
+{
+  "schema": 1,
+  "kind": "work_plan_and_current_evidence_not_release_certificate",
+  "status": "not_publication_ready",
+  "requirements": [
+    {
+      "id": "software_correctness",
+      "status": "verified_current_regressions",
+      "completion_evidence_required": "Fresh full regression and separate figure dependency test; independent arithmetic and negative QC tests",
+      "current_evidence": "results/publication_readiness/software_checks.json"
+    },
+    {
+      "id": "real_restart_equivalence",
+      "status": "pending",
+      "completion_evidence_required": "Compare real interrupted/resumed and uninterrupted small systems with identical settings; preserve source/geometry ownership",
+      "current_evidence": null
+    },
+    {
+      "id": "experimental_redox_benchmark",
+      "status": "in_progress",
+      "completion_evidence_required": "Resolve all 39 frozen endpoints as admitted or scientifically justified QC exclusions; retain family/wave coverage and all outliers",
+      "current_evidence": "results/validation/publication_benchmark/current.json"
+    },
+    {
+      "id": "grafting_method_validation",
+      "status": "pending",
+      "completion_evidence_required": "Representative balanced-route method and conformer sensitivity, explicit base/byproducts/standard states; no kinetic/yield inference",
+      "current_evidence": "results/grafting/README.md"
+    },
+    {
+      "id": "polymer_workflow",
+      "status": "in_progress",
+      "completion_evidence_required": "Close physical QC, selected-conformer native G and independently reconstructed conditional cycles",
+      "current_evidence": "results/polymer_models/workflow_validation.json"
+    },
+    {
+      "id": "decision_sensitivity",
+      "status": "pending",
+      "completion_evidence_required": "Representative redox motifs, conformers and spacing cases; identify unresolved rankings and separate interaction from electronic coupling",
+      "current_evidence": "docs/POLYMER_SPACING.md"
+    },
+    {
+      "id": "reproducible_release",
+      "status": "in_progress",
+      "completion_evidence_required": "Fresh-checkout small example, environment/dependency records, source/input/output hashes and admitted figure regeneration",
+      "current_evidence": "docs/PUBLICATION_READINESS.md"
+    },
+    {
+      "id": "repository_consolidation",
+      "status": "deferred_by_work_order",
+      "completion_evidence_required": "Review the four scientific tasks before figure/script consolidation and reversible archival",
+      "current_evidence": "docs/PROJECT_WORK_ORDER.md"
+    }
+  ],
+  "experimental_polymer_validation_claimed": false
+}

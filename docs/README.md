@@ -8,6 +8,7 @@ ownership. [AGENTS.md](../AGENTS.md) contains the current operating instructions
 | --- | --- |
 | [Repository map](REPO_MAP.md) | Package, script, input and result locations |
 | [Development guide](DEVELOPMENT.md) | Local development, workflow boundaries and validation |
+| [Publication readiness](PUBLICATION_READINESS.md) | Required evidence, frozen benchmark panel, reproducibility and remaining work |
 | [Code review and refactoring](CODE_REVIEW_2026-10-18.md) | Defects, corrections and remaining work |
 | [Property correctness and expansion](SCIENTIFIC_PROGRESS_2026-10-18.md) | Audits, live validation, completed/new hypotheses and calculation gates |
 | [Systematic candidate exploration](CANDIDATE_EXPLORATION.md) | Family search space, complementary datasets and selection rules |
