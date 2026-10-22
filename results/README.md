@@ -14,7 +14,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
-| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-22_review_revision/manifest.json) |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-22_review_checked/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 
@@ -52,7 +52,7 @@ sensitivity retains the signs but does not measure conformational uncertainty.
 The [independent cycle review](polymer_models/workflow_validation.json) includes
 DBU-assisted conditional grafting values and checks atom/charge balance and cycle
 closure. The original oligomer panel is 26/27 checked structures; the final trimer
-is still computing. Full workflow closure and broader motif sensitivity remain open.
+returned optimizer convergence but failed final force/energy derivative validation and remains excluded. Broader motif sensitivity, conformer sampling and full workflow closure remain open.
 Follow [live completion status](polymer_models/completion/status.json).
 
 The [retrospective benchmark](validation/publication_benchmark/current.json)
@@ -93,3 +93,5 @@ in their guides above. Root-level legacy CSV files are not the current entry poi
 The [controlled CPU concurrency experiment](validation/cpu_concurrency_2026-10-22/README.md) checks 15 real descriptor executions with one to eight workers, including a two-host condition. All 12,555 molecular comparisons match serial definitions; launch overhead limits the speedup of this small library. The [shared route-stage launcher](validation/route_launcher_2026-10-22/README.md) also passes its 837-design execution. A [small CPU reproduction example](../examples/publication_smoke/README.md) is available, with [clean-checkout and fresh-environment reproduction checked](validation/fresh_checkout_2026-10-22/README.md).
 
 The colleague-review revision has a [comment-by-comment ledger](../manuscript/revision_plan.md), a [rebuilt main paper](../manuscript/manuscript.pdf) and [separate SI](../manuscript/supporting_information.pdf). New checks include [grouped bias/reference diagnostics](validation/reference_bias_2026-10-22/README.md), [relative-basicity controls](validation/proton_transfer_2026-10-22/README.md) and [actual singlet/doublet quantum restart equivalence](validation/quantum_restart_2026-10-22/README.md). [Broader conformer pilots](validation/conformer_revision_2026-10-22/README.md) are active; DFT re-ranking and ensemble G remain pending. The [exact five-repeat phthalimide drawing](figures/polymer_models/spacing_construction.pdf) corresponds to the occupancy cycles. These checks do not make the project submission-ready.
+
+A [standard-library cached-state example](../examples/cached_thermochemistry/README.md) now reconstructs one PMDI potential and two grafting sums after relocation, with no original NFS reads or scientific-package imports. [Recorded conda artifacts and pip versions](../environments/README.md) improve environment reproducibility, while full path portability, fresh GPU restoration and a public DOI remain open. All [five neutral-SVPD sensitivity controls](validation/neutral_basis_2026-10-22/README.md) are independently checked; use the independent review for completed quantities and leave pending fields unresolved.

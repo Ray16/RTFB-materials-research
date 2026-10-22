@@ -1,0 +1,130 @@
+{
+  "tasks": [
+    {
+      "key": "bm_1_4_benzoquinone",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_1_4_benzoquinone.xyz",
+      "input_sha256": "af8a6c9f96fd4afed124d0edbb5e58b183bec4702cb85313c33ac4d73081eafd",
+      "smiles": "O=C1C=CC(=O)C=C1",
+      "role": "basis_method_control",
+      "primary": {
+        "E_eV": -10380.984497864369,
+        "thermal_eV": 1.5100907612681966,
+        "G_eV": -10379.4744071031,
+        "geometry_sha256": "af8a6c9f96fd4afed124d0edbb5e58b183bec4702cb85313c33ac4d73081eafd",
+        "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_1_4_benzoquinone/neu"
+      }
+    },
+    {
+      "key": "bm_1_2_naphthoquinone",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_1_2_naphthoquinone.xyz",
+      "input_sha256": "ab89aacfdacef3decbb7119547dcc75d031b04e0dc01529b482ef2b7ea085dcd",
+      "smiles": "O=C1C=Cc2ccccc2C1=O",
+      "role": "basis_method_control",
+      "primary": {
+        "E_eV": -14562.189142656393,
+        "thermal_eV": 2.6766080961445913,
+        "G_eV": -14559.512534560248,
+        "geometry_sha256": "ab89aacfdacef3decbb7119547dcc75d031b04e0dc01529b482ef2b7ea085dcd",
+        "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_1_2_naphthoquinone/neu"
+      }
+    },
+    {
+      "key": "bm_9_10_phenanthrenequinone",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_9_10_phenanthrenequinone.xyz",
+      "input_sha256": "2900725437f9f2b6ca1f0df9073a9a5fcfde80763de98686ee46ad05fe372bb3",
+      "smiles": "O=C1C(=O)c2ccccc2-c2ccccc21",
+      "role": "basis_method_control",
+      "primary": {
+        "E_eV": -18743.458074848953,
+        "thermal_eV": 3.89776020593331,
+        "G_eV": -18739.56031464302,
+        "geometry_sha256": "2900725437f9f2b6ca1f0df9073a9a5fcfde80763de98686ee46ad05fe372bb3",
+        "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_9_10_phenanthrenequinone/neu"
+      }
+    },
+    {
+      "key": "bm_n_methylphthalimide",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_n_methylphthalimide.xyz",
+      "input_sha256": "4441de1b4723ad27c67d77493dacab69348c949787f02d046af463aa9543b100",
+      "smiles": "CN1C(=O)c2ccccc2C1=O",
+      "role": "basis_method_control",
+      "primary": {
+        "E_eV": -15033.105468767337,
+        "thermal_eV": 2.9467055524955486,
+        "G_eV": -15030.158763214842,
+        "geometry_sha256": "4441de1b4723ad27c67d77493dacab69348c949787f02d046af463aa9543b100",
+        "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_methylphthalimide/neu"
+      }
+    },
+    {
+      "key": "bm_n_n_diisopropylpyromellitic_diimide",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_n_n_diisopropylpyromellitic_diimide.xyz",
+      "input_sha256": "4fc1680a2972ee12624d95c16db2ed42a2948dccf54f2680fae40ff6d84654e8",
+      "smiles": "CC(C)n1c(=O)c2cc3c(=O)n(C(C)C)c(=O)c3cc2c1=O",
+      "role": "basis_method_control",
+      "primary": {
+        "E_eV": -28025.07389474727,
+        "thermal_eV": 6.858251162718897,
+        "G_eV": -28018.215643584554,
+        "geometry_sha256": "4fc1680a2972ee12624d95c16db2ed42a2948dccf54f2680fae40ff6d84654e8",
+        "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_n_diisopropylpyromellitic_diimide/neu"
+      }
+    }
+  ],
+  "settings": {
+    "xc": "r2scan",
+    "disp": "d4",
+    "basis": "def2-svpd",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "grid_level": 3,
+    "grid_response": true,
+    "conv_tol": 1e-12,
+    "conv_tol_grad": 1e-08,
+    "force_acceptance_Ha_Bohr": 0.00045,
+    "Hessian_asymmetry_acceptance": 1e-06,
+    "Hessian_column_relative_acceptance": 0.01,
+    "min_frequency_cm": -5,
+    "temperature_K": 298.15
+  },
+  "optimizer": {
+    "convergence_energy": 1e-08,
+    "convergence_grms": 3e-05,
+    "convergence_gmax": 5e-05,
+    "convergence_drms": 0.0001,
+    "convergence_dmax": 0.0002
+  },
+  "minimum_GPU_MiB": 31744,
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/neutral_basis_2026-10-22",
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/neutral_basis_sensitivity.py": "574ecd0593fb1badc2e8118cf641c74e70701dc9ead555294111dd7c112e801b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/uma.py": "f386d188d71a41df6a5b2c5bf55abe89ef94f3165a26fa876af058315a4a6ac4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/sp.py": "09c6cfdb66d818c37c76c6f6587d44c6c3c804d383729a4161fd9c96bef9ec10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/torsion_scan.py": "34688c3b5c7d2d5ae4f3f7f144a05017e8cf7a3c01db3b3b5876e8b3bab95770",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/nonequilibrium_pcm.py": "5943617598ad851d7237e1752236d3fda488fd51f02026dfacf4a9f11d0fae68",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/vibrations.py": "4596b96c01aa05cae425d9ca3e60a840c4b51725ece452d424f573492a6d152b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/thermal.py": "5368750d46bfb8d3442388407ec9d6f85288008cea1b3757212aa98f7265f44f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/nonequilibrium_smd.py": "2e97c4cf309275fe3900fcebb7e7cdcd169a96dca995b1ea30c897de97bf9c73",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal_repair.py": "417b5dbe76d299087f74bab80aa3277d4bf1f19593508e3acfafabcdf8108123",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/hessian_memory.py": "899c8d9da11e58bbac7f0d7c42bc0d8bdaafb608a4fdc36309c12bf5d5dee0db",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/qrrho.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/projected_thermal.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/xtb_kernel.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/gas_reference.py": "d1c25803d368c01e9b44a12eb22bcc89ba8e4a32063657d0d566067f6de0f910",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/pcm_bounded.py": "637e17ff04e9ca0910cb01a4813e4be0a9d8b16a728c67fbffece36feb8f23f7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/stable_geometry_scf.py": "eb7ad5fdba74938c3913aa696e26e9237d1bedb413c5ad9685ae61726442a363",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/compact_smd.py": "a7c99affc59c5d83d833d3e0b2a8b6bc67fe725006f3864b3efb2eb8ffc092c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/cds_finite.py": "0357b0d0af126312c035be2d15b6fb4b102bde7d31d9acd267270f2d808a3656",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/hessian_resume.py": "b90f48c10d55f9874fdfd2056ae9d8f8ea563737bd49751abfb5217fc8c7ed11",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/io.py": "4069a181d62207b31f186725b7cb277ccabf4cd2101e808060ed6f4ee354ed6a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/geometry_checkpoints.py": "2493d41cd7a3ca7a6a2229092f4133fe944ade75e0fd052a2100f4f50ee3e84a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/projected_thermal_validation.json": "05d8e9afcf839bb1187a1bb46f935326b89777eb3609c1bc085042dafe6dd448"
+  },
+  "comparisons": "Neutral reoptimization plus SVPD Hessian; original anion and Fc fixed. Separate nuclear and geometry/SP effects. Not primary admission."
+}

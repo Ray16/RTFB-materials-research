@@ -1,0 +1,53 @@
+{
+  "host": "lambda11",
+  "launches": [
+    {
+      "key": "bm_n_methylphthalimide",
+      "gpu": 0,
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "0",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/execution/bm_n_methylphthalimide",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/neutral_basis_sensitivity.py",
+        "--campaign",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22",
+        "--task",
+        "bm_n_methylphthalimide"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_n_methylphthalimide_launch.log",
+      "pid": 2950787,
+      "process_start": "1349032586",
+      "started": 1792689751.2935977
+    },
+    {
+      "key": "bm_n_n_diisopropylpyromellitic_diimide",
+      "gpu": 1,
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/execution/bm_n_n_diisopropylpyromellitic_diimide",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/neutral_basis_sensitivity.py",
+        "--campaign",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22",
+        "--task",
+        "bm_n_n_diisopropylpyromellitic_diimide"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_n_n_diisopropylpyromellitic_diimide_launch.log",
+      "pid": 2950788,
+      "process_start": "1349032587",
+      "started": 1792689751.295785
+    }
+  ]
+}

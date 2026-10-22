@@ -1,0 +1,131 @@
+{
+  "frequencies_cm": [
+    2923.246482318158
+  ],
+  "rigid_rank": 5,
+  "internal_mode_count": 1,
+  "retained_soft_mode_indices": [],
+  "imaginary_noise_mode_indices": [],
+  "nuclear_by_cutoff_eV": {
+    "25": -0.30612856683118106,
+    "50": -0.30612856630834995,
+    "100": -0.3061285579430629
+  },
+  "rotational_constants_cm": [
+    10.283514478779276,
+    10.283514479197487,
+    0.0
+  ],
+  "average_moment_SI": 1.8147257129501613e-47,
+  "atomic_masses_amu": [
+    35.45293758,
+    1.00794075
+  ],
+  "status": "projected_internal_qrrho_checked",
+  "identity": {
+    "geometry_sha256": "de05f66481f21eaba5542e5c7da4552e90f2dbfb424a637297675dabe334bc7f",
+    "raw_native_sha256": "717f7c01966b15bb95fa413e56ed56e6af79c456316e66d733aa2cf5df2e4c8a",
+    "Cartesian_Hessian_sha256": "242928c5c5b62e4269202514c37ae799912486fd8af624abe9a708f1644d7cba",
+    "charge": 0,
+    "mult": 1,
+    "protocol": {
+      "schema": 1,
+      "model": "projected internal-mode xTB6.7.1 qRRHO",
+      "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+      "masses": "installed xTB NIST isotopic-average atomic masses",
+      "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+      "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+      "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+      "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+      "frequency_scale": 1.0,
+      "temperature_K": 298.15,
+      "rotor_cutoffs_cm": [
+        25,
+        50,
+        100
+      ],
+      "primary_rotor_cutoff_cm": 50,
+      "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+      "zero_internal_frequency_policy": "refuse; no artificial floor",
+      "symmetry": "xTB symmetry detection for the exact input geometry",
+      "pressure": "same translation convention as installed xTB thermodyn"
+    }
+  },
+  "implementation_certificate_sha256": "440722342b2f325d63ba7983fc90fa6ce5daf7ca9c936d836309133b55e1ff09",
+  "symmetry_number": 1,
+  "CLI_comparisons": [
+    {
+      "cutoff_cm": 25,
+      "CLI_retained_modes": 1,
+      "reference": "exact serialized Cartesian Hessian and CLI mode filter",
+      "explicit_filtered_kernel_eV": -0.306128566867539,
+      "CLI_eV": -0.3061285716298926,
+      "absolute_difference_eV": 4.7623536225671614e-09
+    },
+    {
+      "cutoff_cm": 50,
+      "CLI_retained_modes": 1,
+      "reference": "exact serialized Cartesian Hessian and CLI mode filter",
+      "explicit_filtered_kernel_eV": -0.30612856634470786,
+      "CLI_eV": -0.3061285711128763,
+      "absolute_difference_eV": 4.768168415658636e-09
+    },
+    {
+      "cutoff_cm": 100,
+      "CLI_retained_modes": 1,
+      "reference": "exact serialized Cartesian Hessian and CLI mode filter",
+      "explicit_filtered_kernel_eV": -0.3061285579794208,
+      "CLI_eV": -0.3061285627589807,
+      "absolute_difference_eV": 4.779559914513953e-09
+    }
+  ],
+  "g_nuclear_qrrho_eV": -0.30612856630834995,
+  "g_spin_partition_eV": -0.0,
+  "g_thermal_total_eV": -0.30612856630834995,
+  "native_source_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/native_thermal/d491520838a23d0c.json",
+  "native_source_hessian": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/native_thermal/d491520838a23d0c/hessian_cartesian.npy",
+  "postprocessing_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65.json",
+  "owner": {
+    "host": "lambda11",
+    "pid": 3901094,
+    "process_start": "1326071630",
+    "cpu_affinity": [
+      2,
+      3
+    ],
+    "started": 1792460162.0645592
+  },
+  "finished": 1792460162.2998433,
+  "kernel_execution": {
+    "pid": 3901803,
+    "host": "lambda11",
+    "process_start": "1326073666",
+    "cpu_affinity": [
+      2,
+      3
+    ],
+    "interpreter": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "source_sha256": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+    "thread_limits": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_THREAD_LIMIT": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    }
+  },
+  "producer_hash_convention": "source snapshots at module import; kernel source verified by subprocess replies",
+  "artifacts_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/owner.json": "6a6062f50188bfc4920bf9807ad48c74094d01dc3cc9a772609a61f3555a0345",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/projected_hessian.npy": "97fd56eb5339ea151373fe5c92644a7edbd291e745745a7e0327dd05907eb43a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/hessian": "36da3bbd7e83a0432d6e89836da6434c7df66b531bcf02d9e77e413cff9d379b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/mol.xyz": "de05f66481f21eaba5542e5c7da4552e90f2dbfb424a637297675dabe334bc7f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/record_producer.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/thermo_CLI_25.log": "ed45100a0475936f1534a91258152aae5a9dec48631fee3ba2b5345cc6ee6afb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/thermo_CLI_50.log": "75e81144f35f8924a3d32cdfc2ba45d8dc06fa8c5efd691c2d7a3e03a159283f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/projected_thermal/c5d687e58f6c5c65/thermo_CLI_100.log": "dc0dd66a6ef36f4c945e1244ddf8c3cdc8213b1b839b42302cb30a00d889c7e8"
+  }
+}

@@ -52,7 +52,7 @@ conda run -n "$ENV_NAME" pip install -r "$HERE/requirements.txt"
 # 3a. xtb provides legacy GFN2 thermal corrections and qRRHO integration for the
 #     independently derivative-checked native solution Hessian. These are distinct
 #     thermal models; the selected policy determines which record can be admitted.
-conda install -n "$ENV_NAME" -c conda-forge xtb -y
+conda install -n "$ENV_NAME" -c conda-forge "xtb=6.7.1=gfortran_ha02e54d_5" -y
 
 # 3b. GPU DFT backend (gpu4pyscf) — CUDA-tagged wheel, like torch. Only for cu12x GPUs;
 #     hugely faster DFT+SMD than CPU pyscf. Skipped on CPU-only boxes.

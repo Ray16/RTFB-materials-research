@@ -48,6 +48,12 @@ def main():
         "proton_transfer.json": "results/reviews/2026-10-22/proton_transfer/summary.json",
         "proton_transfer_sources.json": "results/validation/proton_transfer_2026-10-22/reference_snapshot.json",
         "quantum_restart.json": "results/validation/quantum_restart_2026-10-22/summary.json",
+        "neutral_basis.json": "results/reviews/2026-10-22/neutral_basis_complete/summary.json",
+        "exact_case_join.json": "results/reviews/2026-10-22/end_to_end_initial_join/summary.json",
+        "cached_reproduction.json": "results/validation/cached_thermochemistry_2026-10-22/reconstruction.json",
+        "cached_states_manifest.json": "examples/cached_thermochemistry/data/manifest.json",
+        "saved_trimer_QC.json": "calcs/validation/saved_trimer_final_2026-10-22/status.json",
+        "saved_trimer_fine_steps.json": "calcs/validation/saved_trimer_small_steps_2026-10-22/status.json",
         "benchmark_points.csv": "results/figures/validation/retrospective_redox_benchmark.csv",
     }
     plots = {

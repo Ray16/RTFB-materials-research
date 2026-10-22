@@ -1,0 +1,36 @@
+{
+  "role": "Refine a failed coarse energy derivative check; no geometry/Hessian promotion",
+  "geometry_sha256": "87b7b2b65cc271fec63d2976384c8c8f51f5cc8d4eff332aef3697e9765f8c47",
+  "raw_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/saved_trimer_small_steps_2026-10-22",
+  "command": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/polymer_gradient_diagnostic.py",
+    "--xyz",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/saved_trimer_small_steps_2026-10-22/input.xyz",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/saved_trimer_small_steps_2026-10-22",
+    "--grid-level",
+    "3",
+    "--steps",
+    ".0001",
+    ".00001",
+    ".000005",
+    "--baseline-repeats",
+    "3",
+    "--top-components",
+    "2",
+    "--omit-reference-axis",
+    "--conservative-cds"
+  ],
+  "acceptance": {
+    "analytic_vs_finite_absolute_error_Ha_Bohr": 1e-06,
+    "finest_pair_derivative_difference_Ha_Bohr": 1e-06,
+    "finest_steps_Bohr": [
+      1e-05,
+      5e-06
+    ],
+    "maximum_repeat_energy_spread_Ha": 1e-12
+  },
+  "original_coarse_check": "calcs/validation/saved_trimer_final_2026-10-22/force_energy_check/summary.json",
+  "minimum_GPU_MiB": 81920
+}

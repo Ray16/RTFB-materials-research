@@ -1,0 +1,122 @@
+{
+  "id": "hydrogen_chloride",
+  "state": "rest",
+  "status": "derivative_checked_solution_thermal",
+  "identity": {
+    "geometry_sha256": "de05f66481f21eaba5542e5c7da4552e90f2dbfb424a637297675dabe334bc7f",
+    "charge": 0,
+    "mult": 1,
+    "protocol": {
+      "schema": 1,
+      "model": "solution geometry-level DFT Hessian",
+      "xc": "r2scan",
+      "disp": "d4",
+      "basis": "def2-svp",
+      "anion_basis": "def2-svpd",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "grid_level": 3,
+      "cphf_grid_level": 3,
+      "grid_response": true,
+      "conv_tol": 1e-12,
+      "conv_tol_grad": 1e-08,
+      "temperature_K": 298.15,
+      "rotor_cutoff_cm": 50,
+      "spin_partition": "unsplit ground spin multiplet",
+      "gradient_max_acceptance_Ha_Bohr": 0.00045,
+      "min_frequency_acceptance_cm": -5,
+      "finite_difference_step_Bohr": 0.0005,
+      "finite_difference_relative_acceptance": 0.01,
+      "max_spin_contamination": 0.1,
+      "df_batch_cap_GiB": 6,
+      "validated_pyscf_version": "2.14.0",
+      "validated_gpu4pyscf_version": "1.8.1"
+    }
+  },
+  "converged": true,
+  "stationary_minimum": true,
+  "grid_response": true,
+  "smd_spin_diagnostics": {
+    "homo_eV": -7.854679658417158,
+    "lumo_eV": 1.0162622845053213,
+    "s_squared": 0.0,
+    "spin_contam": 0.0
+  },
+  "gradient_max": 1.1669682625214668e-08,
+  "frequencies_cm": [
+    2923.1662961935544
+  ],
+  "derivative_checks": [
+    {
+      "atom_index": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_error": 1.8330657201278892e-07
+    },
+    {
+      "atom_index": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_error": 7.778427492080125e-07
+    },
+    {
+      "atom_index": 1,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_error": 1.8212659471735968e-07
+    },
+    {
+      "atom_index": 1,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_error": 7.77771348752653e-07
+    }
+  ],
+  "maximum_asymmetry": 1.6653345369377348e-16,
+  "g_nuclear_qrrho_eV": -0.3061285710584535,
+  "g_spin_partition_eV": -0.0,
+  "g_thermal_total_eV": -0.3061285710584535,
+  "nuclear_by_cutoff_eV": {
+    "25": -0.30612857157546985,
+    "50": -0.3061285710584535,
+    "100": -0.3061285627045579
+  },
+  "implementation_controls": [
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/analytic_full_response_aq_reference/status.json",
+      "sha256": "680f316ec2f8b0b47fa1bd8356792cce59eef1b054c86fae3799b0facb550b3e",
+      "status": "analytic_full_response_verified"
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/uks_bq_full_response_control/status.json",
+      "sha256": "1a85a8a9b37ceb2368c6fdd807524c8ad7ee257f6e7a7978a07f37d91426d55c",
+      "status": "uks_full_response_verified"
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/status.json",
+      "sha256": "0d3843f23a938fe99b97d75fe0733bc134c471d345048b3a8a413a7807e35056",
+      "status": "fine_response_implementation_verified",
+      "relative_full_matrix_error": 1.9751602629739155e-05
+    }
+  ],
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "host": "lambda11",
+  "wall_s": 10.766588926315308,
+  "source_producer_sha256": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+  "source_producer_snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/hydrogen_chloride/rest/native_thermal/d491520838a23d0c/producer_source.py",
+  "producer_hash_convention": "source snapshot at module import",
+  "execution_memory": {
+    "cap_GiB": 24,
+    "protocol_default_cap_GiB": 6,
+    "qualification_sha256": "1fbba94cf38aecc7d13ae1fd24940da1ae9efb844ca27bc9612c26fe8d77dd68",
+    "qualification_only": false,
+    "scientific_model_changed": false,
+    "allocation_policy": "six-GiB integral batches; qualified larger unrestricted response workspace"
+  },
+  "experimental_accuracy_validated": false,
+  "legacy_production_modified": false
+}

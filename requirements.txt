@@ -4,16 +4,16 @@
 # that setup_env.sh installed from the CUDA-specific index.
 torch==2.8.0
 fairchem-core==2.21.0
-ase
-rdkit
+ase==3.29.0
+rdkit==2026.3.5
 pyscf==2.14.0  # native thermal implementation certificate
-geometric  # geomeTRIC — in-solvent DFT geometry optimizer driven by pyscf
+geometric==1.1.1  # geomeTRIC — in-solvent DFT geometry optimizer driven by pyscf
 # gpu4pyscf-cuda12x + cutensor-cu12 (GPU DFT+SMD backend) are CUDA-tagged like torch, so
 # they are installed by setup_env.sh step 3b (not here) to keep pip's resolver from pulling
 # a mismatched CUDA build. On a GPU node the pipeline uses them via `redox.dft --backend gpu`.
 pandas
-numpy
-scipy
+numpy==2.2.6
+scipy==1.17.1
 matplotlib
 adjustText  # non-overlapping point labels for publication figures (scripts/plotting/plot_sa_vs_reorg.py)
 graphviz  # python binding for the pipeline flowchart; needs the system `dot` binary

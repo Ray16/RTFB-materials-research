@@ -83,8 +83,6 @@ def main():
     fig.suptitle(f'Exact free molecules: {len(rows)}/{report["target_events"]} potentials · {report["admitted_molecules"]} molecules · {report["original_studies"]} studies', y=.98, fontsize=10)
     handles = [Line2D([], [], marker=markers[w], color="black", linestyle="", label=f"Redox step {w}", markersize=5) for w in (1, 2)]
     fig.legend(handles=handles, loc="upper center", bbox_to_anchor=(.5, .92), ncol=2, frameon=False, fontsize=7)
-    fig.text(.09, .10, f'Retrospective MeCN panel; {report["pending_events"]} pending. All admitted outliers retained; no fitted correction.', fontsize=7)
-    fig.text(.09, .045, 'Matched free-parent accuracy only; grafted structures, polymers and kinetics remain unvalidated.', fontsize=7)
     args.out.mkdir(parents=True, exist_ok=True)
     stem = args.out / "retrospective_redox_benchmark"
     outputs = []

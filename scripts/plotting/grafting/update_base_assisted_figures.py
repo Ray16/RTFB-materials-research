@@ -43,8 +43,6 @@ def main():
             Line2D([],[],marker='o',color='#444444',ls='none',label='Separated ions'),
             Line2D([],[],marker='s',color='#444444',ls='none',label='Contact pair')]
     fig.legend(handles=legend,loc='lower center',ncol=3,frameon=False,fontsize=8,bbox_to_anchor=(.5,.01))
-    subtitle=f"{status['components_qualified']}/6 new components qualified · pending values are omitted"
-    ax.text(0,1.02,subtitle,transform=ax.transAxes,fontsize=7,color='#666666')
     fig.tight_layout(rect=(0,.15,1,1))
     for ext in ('pdf','svg','png'):fig.savefig(figdir/f'base_comparison.{ext}',dpi=300,bbox_inches='tight',metadata={'Creator':'redox pipeline'} if ext=='pdf' else None)
     plt.close(fig)

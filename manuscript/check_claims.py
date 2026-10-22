@@ -137,6 +137,31 @@ def audit():
     for control in restart["controls"]:
         if any(control["differences"][key] > tolerance for key, tolerance in restart["tolerances"].items()):
             raise ValueError("Quantum restart exceeds its predeclared tolerance")
+    basis = load("neutral_basis.json")
+    if basis["checked"] != 5 or basis["pending"] or basis["primary_values_modified"]:
+        raise ValueError("Neutral basis panel is incomplete or modified primary values")
+    for row in basis["rows"]:
+        if abs(row["delta_thermal_eV"] + row["delta_geometry_SP_eV"]
+               - row["delta_first_reduction_V_holding_anion_and_Fc_fixed"]) > 1e-8:
+            raise ValueError("Basis sensitivity components do not close")
+    exact = load("exact_case_join.json")
+    for row in exact["cases"]:
+        g = row["state_G_eV"]
+        if (abs(g["neu"] - g["red1"] - exact["Fc_absolute_V"] - row["E1_V_vs_Fc"]) > 1e-9
+                or abs(g["red1"] - g["red2"] - exact["Fc_absolute_V"] - row["E2_V_vs_Fc"]) > 1e-9
+                or row["route"]["proceed_to_full_redox"] or row["end_to_end_complete"]):
+            raise ValueError("Exact-case values or pending route status changed")
+    cached = load("cached_states_manifest.json")
+    states = {row["id"]: row["checked_G_eV"] for row in cached["states"]}
+    reproduced = load("cached_reproduction.json")
+    p = cached["potential"]
+    potential = states[p["oxidized"]] - states[p["reduced"]] - states[p["reference_oxidized"]] + states[p["reference_reduced"]]
+    if abs(potential - reproduced["PMDI_first_reduction_V_vs_Fc"]) > 1e-9:
+        raise ValueError("Cached example potential changed")
+    for recipe, value in zip(cached["reactions"], reproduced["reactions"]):
+        dg = math.fsum(states[key] * nu for key, nu in recipe["coefficients"].items())
+        if abs(dg - value["deltaG_eV"]) > 1e-9:
+            raise ValueError("Cached example grafting sum changed")
     return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
                 base_assisted_values=base_values, qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
@@ -148,6 +173,7 @@ def audit():
                 maximum_SI_conversion_difference_kJ_mol=max(conversion_differences),
                 checked_offset_models=cv_checks, relative_basicity_controls=len(transfer["comparisons"]),
                 quantum_restart_controls=len(restart["controls"]),
+                neutral_basis_controls=basis["checked"], exact_cases_with_explicit_holds=len(exact["cases"]),
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

@@ -1,0 +1,99 @@
+{
+  "host": "lambda13",
+  "launches": [
+    {
+      "key": "saved_trimer",
+      "gpu": 0,
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "0",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/saved_trimer_final_2026-10-22/execution/saved_trimer",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/finish_saved_trimer.py",
+        "--plan",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/saved_trimer_final_2026-10-22/plan.json"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/saved_trimer_final_2026-10-22/saved_trimer_launch.log",
+      "pid": 236500,
+      "process_start": "80709060",
+      "started": 1792689751.186199
+    },
+    {
+      "key": "bm_1_4_benzoquinone",
+      "gpu": 1,
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/execution/bm_1_4_benzoquinone",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/neutral_basis_sensitivity.py",
+        "--campaign",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22",
+        "--task",
+        "bm_1_4_benzoquinone"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_1_4_benzoquinone_launch.log",
+      "pid": 236501,
+      "process_start": "80709060",
+      "started": 1792689751.1888785
+    },
+    {
+      "key": "bm_1_2_naphthoquinone",
+      "gpu": 2,
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/execution/bm_1_2_naphthoquinone",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/neutral_basis_sensitivity.py",
+        "--campaign",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22",
+        "--task",
+        "bm_1_2_naphthoquinone"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_1_2_naphthoquinone_launch.log",
+      "pid": 236502,
+      "process_start": "80709061",
+      "started": 1792689751.1911993
+    },
+    {
+      "key": "bm_9_10_phenanthrenequinone",
+      "gpu": 3,
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "3",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/execution/bm_9_10_phenanthrenequinone",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/neutral_basis_sensitivity.py",
+        "--campaign",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22",
+        "--task",
+        "bm_9_10_phenanthrenequinone"
+      ],
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/neutral_basis_2026-10-22/bm_9_10_phenanthrenequinone_launch.log",
+      "pid": 236503,
+      "process_start": "80709061",
+      "started": 1792689751.193677
+    }
+  ]
+}
