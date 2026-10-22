@@ -1,17 +1,17 @@
 {
   "status": "all_collected_tests_covered_across_declared_environments",
-  "checked": 1792632379.748288,
+  "checked": 1792635275.236202,
   "runs": [
     {
       "kind": "compute",
-      "tests": 721,
+      "tests": 733,
       "failures": 0,
       "errors": 0,
       "skipped": 1,
-      "junit": "results/publication_readiness/compute_tests.xml",
-      "junit_sha256": "a4ee8ad587cf1c7c19eaed371b75665e03bd2c195c9c4faeba4a2cd4d7885302",
-      "log": "results/publication_readiness/compute_tests.log",
-      "log_sha256": "b9151ce5f1c01783fd78850853978bd45c385d9e07f2c5e529ef5d4f03f9ea62"
+      "junit": "results/validation/scalability_2026-10-21/software_tests.xml",
+      "junit_sha256": "5bf6201fb087c4b1848e6ab893bacef0c0515fb7c638c84c38963b37ca317041",
+      "log": "results/validation/scalability_2026-10-21/software_tests.log",
+      "log_sha256": "c5ff615b737d7fd5e3064224dfbb930be31aba555c18d180dec3be1dbeda62dd"
     },
     {
       "kind": "figure",
@@ -55,8 +55,6 @@
     "config/thermal_publication_review.json": "5c4a6adbf967553eca4f5579ed992eb7d7ff5447c7cfe2032e79b36f6d39a9e6",
     "config/validation.py": "de8d5ef78cf6851a20ea8a6a13f2d0f2034504ae3a1bca694e8a7bf58807eb80",
     "pyproject.toml": "d820ccd4b81504b0d5037019041475a1c03900b1a9fa0b95b3cb649a55f356cf",
-    "scripts/pipeline/launch_native_benchmark.py": "6e75b1387fcd43a61714cf4bd342714c3e58186cd06f403005d38b7ab6530ae3",
-    "scripts/validation/benchmark/publication_benchmark.py": "a2bca6fa12dc02534f70240dc095eedc93e57e029aa0f723646d3d03a6c99cb3",
     "src/redox/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/redox/__main__.py": "680e25cdd52595003ea6f55ebab1533b2e1afbdc88a5ba71fbd3829c77ea92bc",
     "src/redox/build/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
@@ -114,6 +112,7 @@
     "src/redox/screening/pareto.py": "d28af8b7fb264711f5e9468958d40213ae1a0cd3c51ff348e07aa033e65792f8",
     "src/redox/screening/scorecard.py": "edd2866d06dd0fc3ba84b5c638511b13d10743b43e32f7cad47c729e18d32220",
     "src/redox/screening/source_audit.py": "9fb89036f4038434bdca28a4fbef978f0c7a0047b0f8345376ed92873411055b",
+    "src/redox/screening/streaming_search.py": "994a2fbf4c4a447f66fb83b855772758225d04a2d4206204f0cc75a636d30833",
     "src/redox/validation/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
     "src/redox/validation/benchmark_panel.py": "0dac63e1a99ea0bcf9366a6e36c15ee565af6f00c0567ef0ce5d24b2acc502ad",
     "src/redox/validation/model_limits.py": "6b7dfbe87ab9073cda74f91f0286ba62f8e43b4c782915a89c46c53d665e7397",
@@ -130,6 +129,8 @@
     "src/redox/workflows/__init__.py": "b06596eb476861e86efad0ab4c1aa17122b89a6bc71ee49d48f8eda971b4409a",
     "src/redox/workflows/benchmark_native.py": "61b990bf2b54dcf3ed9ff05159f299d7ce642188c9c858a684dad774221f7a94",
     "src/redox/workflows/checkpoints.py": "2bf4c61e06e7de77dcc941dfbf48da556851df540e24e53e4934b5682ee2faf3",
+    "src/redox/workflows/chunked.py": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+    "src/redox/workflows/cpu_chunks.py": "6ed48703087973a0938cf1797e2add94aa6268f6ec7b3382c9ace6e7646c6e56",
     "src/redox/workflows/geometry_checkpoints.py": "2493d41cd7a3ca7a6a2229092f4133fe944ade75e0fd052a2100f4f50ee3e84a",
     "src/redox/workflows/gpu.py": "4d0c547cd710c8acca1434ce5fce2b001b92ffac3e83aeebf1e4bceebdc393eb",
     "src/redox/workflows/launch.py": "5bfa06f7e42219ab68e5d0b8f1ac35f45a602bf1e325001ffe5db417a4a05457",
@@ -151,6 +152,7 @@
     "tests/test_candidate_highlights.py": "fcd522db2e8f6d724a594de78f631f15aaf672d07709531948662a7d893b02bb",
     "tests/test_candidate_track.py": "b1f97edd768f87283422b82d3b8e9c40fecf4f2472aa6e732c375efbcc5a2ce4",
     "tests/test_cds_execution_validation.py": "e188a26ae2f9fa967b3ff2bb7e45ad8d326d41f121eabe18ea543d81f24e502e",
+    "tests/test_chunked.py": "a00e3a663869ceb4f3fda4f6e3aadb12f717f505e0b90bd485ea514c9dad9e14",
     "tests/test_collection_layout.py": "779f2a1a3218c40c251d98dbcbec678561409d08d5b76bac339f871fd32df0ec",
     "tests/test_compact_smd.py": "5f9f170f2e3000e5e5312961ea9e1a602535d49d714d380f9356f40dcef87991",
     "tests/test_comparison_collection.py": "3de7642f08fcf86dda5e1101d36326306ce5b295599b42645352df04b56597b5",

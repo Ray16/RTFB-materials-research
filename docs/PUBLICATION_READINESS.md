@@ -16,12 +16,17 @@ evidence appropriate to each claim. Publication readiness is not yet established
 | Polymer interaction analysis | Verified open-chain geometry; independent cycle arithmetic; qualified selected-geometry free energies; separation of segment interaction, deformation and electronic coupling; motif and spacing sensitivity |
 | Decision reliability | Identify conclusions that survive conformer, numerical, method and environment sensitivity; leave smaller differences unresolved rather than treating them as robust rankings |
 | Reproducible release | Reproduction commands, source/input/output hashes, environment records, accessible small examples, and figures regenerated from the same admitted data |
+| High-throughput parallelization | Streaming inputs, exact deduplication, chunked distributed scheduling, bounded memory/file counts, measured throughput and verified interruption/recovery on molecular inputs |
 | Repository consolidation | Finish and review the four scientific tasks first, then perform the requested figure/script organization and archival with resolvable historical provenance |
 
 An observed prediction error is a result, including a large error. It does not
 automatically fail an entire computational paper. It does constrain which
 families, properties and selection decisions the paper can support. A numerical
 check passing does not establish experimental accuracy.
+
+The [high-throughput execution contract](HIGH_THROUGHPUT.md) records the user's
+million-molecule requirement. Existing small-campaign parallelism is not a scale
+qualification; stage-specific throughput and recovery need separate measurements.
 
 ```mermaid
 flowchart LR

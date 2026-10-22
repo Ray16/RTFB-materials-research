@@ -33,3 +33,11 @@ all outliers; unrounded residuals, family/wave errors and cluster dependence are
 reported explicitly. Native completion is running separately from experimental
 accuracy assessment. Follow the [publication preparation guide](../publication_readiness/README.md)
 for the remaining evidence requirements.
+
+The [streaming execution audit](scalability_2026-10-21/README.md) verifies one
+million synthetic tasks across eight workers and all 837 real descriptor
+comparisons, with zero discrepancies. This measures orchestration/bookkeeping,
+not redox accuracy or DFT throughput. The
+[PMDI trimer force diagnostic](polymer_gradient_diagnostic_2026-10-21/summary.json)
+finds a localized force/energy discrepancy at grid level 3; its correction and
+same-component grid comparison remain open. No geometry is promoted by that diagnostic.

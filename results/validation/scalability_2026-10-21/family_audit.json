@@ -1,0 +1,157 @@
+{
+  "status": "verified_execution_control",
+  "checked_tasks": 837,
+  "discrepancies": 0,
+  "error_examples": [],
+  "stage": {
+    "name": "descriptors",
+    "quality_scope": "bookkeeping_descriptors_only",
+    "protocol": {
+      "schema": 1,
+      "handler": "descriptors",
+      "source_sha256": "994a2fbf4c4a447f66fb83b855772758225d04a2d4206204f0cc75a636d30833",
+      "model_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/rdkit/Contrib/SA_Score/fpscores.pkl.gz": "10dcef9340c873e7b987924461b0af5365eb8dd96be607203debe8ddf80c1e73",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/rdkit/Contrib/SA_Score/sascorer.py": "8c191920cb9d011994e5f77a0b54924d20d92967052bf6f6903f6f40c0a6e3a2"
+      },
+      "software": {
+        "rdkit": "2026.3.5",
+        "numpy": "2.2.6",
+        "scipy": "1.17.1"
+      },
+      "dependency_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/discovery.py": "c41b1cd7e6301e6535e512ca3b33c8278edd4eb80fd1a18cebd769e3f8a89a50",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/contracts.py": "d49e0b8536e28d8f0e8fe80da9bceb2be0ce81db575312499b66cbc52b55df1b",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/screening/family_search.py": "cc65e49f60f0ce9862d2de25c1e76c081a73a1d7af0cba481c8390596c8d1cb4",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/structures.py": "d8519c738236a2706b248adc3a941f49471d9f595093a777279c922b92c3cf62",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/capacity_and_proxies.py": "456f7533edf751fca9294690459862fb81334a19e960f84ab103a49efdb49d28",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/family_search.py": "e2087c961f80c6906ceca0fbc7cd78b96d2701c44cb36d9a2d3c4f807411aa42",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/electrolyte.py": "ad68419d8673d22ce7d785d4e38d40696609c22bad9496ac2ffac5d71f00d0c9",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/project.json": "55f54f160cb9e751ed9ec01cf7f88782cd5727806d233549f47b78eb1d15f404"
+      }
+    }
+  },
+  "worker_count": 4,
+  "workers": [
+    {
+      "owner": {
+        "host": "lambda1",
+        "pid": 2458318,
+        "process_start": "488425363",
+        "nonce": "8cdfb1faea2f4ed5bb8375de018a7f04",
+        "cpus": [
+          0
+        ],
+        "executor_sha256": "6f118456995920f653b2c9d1cdf03e23f04f345cf2450dfc4394f0a51d81f367"
+      },
+      "status": {
+        "status": "worker_finished",
+        "started": 1792634078.7241697,
+        "completed_chunks": [
+          "chunk_00000004",
+          "chunk_00000005",
+          "chunk_00000006",
+          "chunk_00000007",
+          "chunk_00000012",
+          "chunk_00000000",
+          "chunk_00000002"
+        ],
+        "active_chunk": "chunk_00000002",
+        "finished": 1792634079.4313753
+      }
+    },
+    {
+      "owner": {
+        "host": "lambda1",
+        "pid": 2458321,
+        "process_start": "488425365",
+        "nonce": "4f857d7671304aa2bcb09a1f1e5bf4f1",
+        "cpus": [
+          1
+        ],
+        "executor_sha256": "6f118456995920f653b2c9d1cdf03e23f04f345cf2450dfc4394f0a51d81f367"
+      },
+      "status": {
+        "status": "worker_finished",
+        "started": 1792634078.8252883,
+        "completed_chunks": [
+          "chunk_00000008",
+          "chunk_00000009",
+          "chunk_00000010",
+          "chunk_00000011",
+          "chunk_00000013",
+          "chunk_00000001",
+          "chunk_00000003"
+        ],
+        "active_chunk": "chunk_00000003",
+        "finished": 1792634079.431659
+      }
+    },
+    {
+      "owner": {
+        "host": "lambda2",
+        "pid": 387163,
+        "process_start": "1343469871",
+        "nonce": "0a33376dca4c48fa88faa200252f4f78",
+        "cpus": [
+          36
+        ],
+        "executor_sha256": "6f118456995920f653b2c9d1cdf03e23f04f345cf2450dfc4394f0a51d81f367"
+      },
+      "status": {
+        "status": "worker_finished",
+        "started": 1792634079.957439,
+        "completed_chunks": [],
+        "finished": 1792634079.9626534
+      }
+    },
+    {
+      "owner": {
+        "host": "lambda2",
+        "pid": 387159,
+        "process_start": "1343469869",
+        "nonce": "74960ea941c745bea2a9d04529f48eca",
+        "cpus": [
+          37
+        ],
+        "executor_sha256": "6f118456995920f653b2c9d1cdf03e23f04f345cf2450dfc4394f0a51d81f367"
+      },
+      "status": {
+        "status": "worker_finished",
+        "started": 1792634080.259471,
+        "completed_chunks": [],
+        "finished": 1792634080.263368
+      }
+    }
+  ],
+  "chunks": 14,
+  "input_records": 1593,
+  "duplicate_recipes": 756,
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family",
+  "raw_file_count": 74,
+  "raw_bytes": 2217198,
+  "plan_sha256": "192b9a9f54cb46d00aa45d7e3e5887e5377830aca0eb96d4e30077406e5469be",
+  "result_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000000.jsonl": "ae9cda79a0c903c6f514b18bdf0ad95e593d490f0b2f1540fa368a9a89318d1d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000001.jsonl": "40b63d53e3e84867cf96914762de9b40a8eddaa0cc418867b2d76c055f46ff60",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000002.jsonl": "a97f355a904fdf10c2355f201ca0507ac9fce5bd2a9ad1fb987161e6768a3677",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000003.jsonl": "f1cd2167c4c1a1834f1653e0c386767d2ab67ee7970da2e06e68d6e0031c35a6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000004.jsonl": "0f08470e51b069e8dd075306105b3bf648832364b8b6230fdb0038a58fc81592",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000005.jsonl": "98d7a34bb54a00f51df9000ba8d4de9982916791183c55c4dd011debbf357a55",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000006.jsonl": "d35bb077f1145569d94987a6481823eddb3ec047c8f65554673c4df8fb9c78bb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000007.jsonl": "2b542b50db8db7a7da4265f847222d492d9368808134ff3cc14514ced01d84b6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000008.jsonl": "a9cb6eff95803800150686808943d79e4327da74901ae6a6491116cdfb62bc6a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000009.jsonl": "ba5e9649dfce083c77070a5654eb04e8370a7bcfec1f45233504766b95555f0d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000010.jsonl": "921549246baefcc1f288d4393e2da24aa25f6052ce985a0a07f06e8a7db938c6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000011.jsonl": "09f779d8e765bd1fb37bf02fa73dda2ab8877fed6728eb7d94408b1e1b7efbf9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000012.jsonl": "45218a3e853cd52b1136e345e762df05cecfde1e08bb8ee02103cfafb360e0b9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family/results/chunk_00000013.jsonl": "f5d44782781b58bdcf9261800578fdf8d8f38cd842afd986922d7159448b67fb"
+  },
+  "reference_sha256": null,
+  "serial_reference_mode": "existing_serial_definition_on_exact_inputs",
+  "validator_sha256": "fe2ef4ebdd8607ac905ca2d18916b9ae5b0f45df00b2d36cef745bb2d0032af5",
+  "checked_at": 1792634934.537836,
+  "audit_seconds": 2.1301584243774414,
+  "scientific_prediction_accuracy_validated": false,
+  "scope": "Exact serial/parallel bookkeeping descriptor equivalence; no redox or route validation"
+}

@@ -50,6 +50,12 @@
       "status": "deferred_by_work_order",
       "completion_evidence_required": "Review the four scientific tasks before figure/script consolidation and reversible archival",
       "current_evidence": "docs/PROJECT_WORK_ORDER.md"
+    },
+    {
+      "id": "high_throughput_parallelization",
+      "status": "components_validated_full_workflow_in_progress",
+      "completion_evidence_required": "Stream and deduplicate million-scale inputs; chunked multi-node work allocation with bounded memory/file usage; measure stage throughput; prove serial/parallel equivalence and interruption/recovery",
+      "current_evidence": "results/validation/scalability_2026-10-21/summary.json"
     }
   ],
   "experimental_polymer_validation_claimed": false

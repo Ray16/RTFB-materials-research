@@ -130,7 +130,14 @@
       "actual_values": "results/figures/validation/matched_parent_validation.csv",
       "checks": "results/reviews/2026-10-19/full_matched_parent_final/summary.json",
       "source_conditions": "results/reviews/2026-10-19/full_matched_parent_final/comparisons.csv",
-      "numerical_execution_checkpoint": "results/reviews/2026-10-21/polymer_numerical_repairs/summary.json"
+      "numerical_execution_checkpoint": "results/reviews/2026-10-21/polymer_numerical_repairs/summary.json",
+      "polymer_force_diagnostic": {
+        "summary": "results/validation/polymer_gradient_diagnostic_2026-10-21/summary.json",
+        "plan": "results/validation/polymer_gradient_diagnostic_2026-10-21/plan.json",
+        "raw_root": "calcs/validation/polymer_gradient_diagnostic_2026-10-21",
+        "state": "Localized grid3 force-energy discrepancy; no geometry promotion",
+        "source_snapshot": "results/validation/polymer_gradient_diagnostic_2026-10-21/driver_source.py"
+      }
     },
     "slides": {
       "guide": "slides/README.md",
@@ -176,7 +183,9 @@
       "native_plan": "results/validation/publication_benchmark/native_completion_2026-10-21/plan.json",
       "start_verification": "results/validation/publication_benchmark/native_completion_2026-10-21/start_verification.json",
       "raw_root": "calcs/dft",
-      "scope": "Exact-parent benchmark and pipeline qualification; no polymer experimental accuracy claim"
+      "scope": "Exact-parent benchmark and pipeline qualification; no polymer experimental accuracy claim",
+      "scalability_guide": "docs/HIGH_THROUGHPUT.md",
+      "scalability_evidence": "results/validation/scalability_2026-10-21/summary.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",
