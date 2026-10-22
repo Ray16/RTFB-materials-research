@@ -45,8 +45,9 @@ and their reasons. The panel is retrospective; it is not a held-out validation s
 Its contents are fixed before completing the additional calculations. New sources
 require a new panel version rather than silently changing this denominator.
 
-The [independent coverage audit](../results/reviews/2026-10-21/publication_benchmark_coverage/summary.json)
-admits 12 potentials from eight parents and leaves 27 potentials pending. The
+The latest independent review admits 38/39 potentials from 30 parents and seven
+original studies. All 22 native-completion molecule jobs are terminal; one
+endpoint still requires its source-addressed alternate-spin check. The
 [current analysis](../results/validation/publication_benchmark/current.json) uses
 unrounded values and reports event-weighted errors, molecule-weighted MAE,
 family/wave coverage, signed two-wave spacings and all outliers. Study and molecule
@@ -80,8 +81,8 @@ it before manuscript use because active calculations can change its backing inpu
 
 The [native completion plan](../results/validation/publication_benchmark/native_completion_2026-10-21/plan.json)
 prepares 48 missing native states in 22 molecule jobs, using existing checked
-geometries and active energies. One pre-existing partial BQ native attempt is
-held for inspection. This is a benchmark method-control campaign, not synthesis
+geometries and active energies. The separately held BQ record was already qualified but unselected; its thermal
+policy was restored without a Hessian rerun. This is a benchmark method-control campaign, not synthesis
 eligibility. Completed thermal surfaces remain separate from spin admission and
 experimental agreement. Failed attempts retain their outputs and require review;
 no retry deletes an invalid addressed cache.
@@ -95,7 +96,9 @@ still use the system reservation gate, node preflight, disjoint CPU allocations
 and all suitable free GPUs that the remaining workload can use.
 
 The [polymer validation](../results/polymer_models/workflow_validation.json)
-currently has 12 electronic conformers, with native free energies still pending.
+has 12 electronic conformers and all six selected native free energies. Two
+independent neighboring-site/conditional-grafting cycles now close; the original
+oligomer panel is 26/27 checked structures.
 The recovered unoccupied alternative changes the selected conformer; it therefore
 requires its own Hessian instead of borrowing the other geometry's thermal term.
 The phthalimide spacing panel is a method control. Broad redox-motif/polymer

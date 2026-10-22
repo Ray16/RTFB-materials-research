@@ -6,7 +6,7 @@ thermochemistry passes QC, the free energy of adding a motif with another motif
 already present. It does not assign experimental occupancy probabilities.
 
 The [current panel](../results/polymer_models/spacing_current.json) points to the
-[exact structures and results](../results/polymer_models/campaigns/2026-10-21_spacing_continuation/index.html).
+[exact structures and results](../results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/index.html).
 Raw calculations remain under the campaign's `raw_root` on shared storage.
 
 ## Model definition
@@ -180,3 +180,16 @@ Targeted validation:
 ```bash
 "$REDOX_PY" -m pytest -q tests/test_polymer_cases.py tests/test_polymer_campaign.py tests/test_polymer_campaign_admission.py tests/test_oligomer_topology.py
 ```
+
+## Checked native-thermal checkpoint
+
+The [independent review](../results/reviews/2026-10-22/spacing_native_complete/summary.json)
+checks all twelve electronic conformers and all six selected native free energies.
+The [figure and data](../results/figures/polymer_models/conditional_grafting.pdf)
+report ΔΔG = −5.15 kJ/mol (adjacent) and −11.23 kJ/mol (one spacer).
+Their rotor-cutoff ranges are −5.15 to −4.66 and −12.14 to −11.23 kJ/mol; these
+are sensitivity ranges, not statistical intervals. The full selected conformer
+cycles balance atoms/charge and agree with conditional DBU grafting differences.
+These phthalimide controls establish the implemented workflow for the stated
+scenarios. The original oligomer panel and broader redox-core, conformation and
+end-effect sensitivity still require review before general design conclusions.

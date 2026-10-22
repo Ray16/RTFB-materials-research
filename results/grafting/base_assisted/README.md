@@ -58,5 +58,9 @@ failures and component receipts live in the campaign directory. The queue makes
 one actual attempt per species and preserves existing outputs.
 
 Entrypoint: `scripts/pipeline/base_assisted_grafting.py`; use `collect` to verify
-receipts and refresh the report without launching calculations. Broad autonomous
-work remains paused; this pilot is a separate, explicitly authorized finite batch.
+receipts and refresh the report without launching calculations. This pilot remains a finite batch; subsequent validation runs are recorded separately.
+
+A [scoped external acid-capture check](../../validation/acid_base_external_2026-10-22/README.md)
+compares the DBU free-ion term with author-tabulated MeCN pKa values. A
+fixed-reference hybrid sensitivity retains both BQ signs. It does not calibrate
+the full reaction, and no exact DIPEA anchor was substituted from a related amine.

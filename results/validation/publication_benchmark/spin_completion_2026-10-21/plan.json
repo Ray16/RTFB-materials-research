@@ -1,0 +1,49 @@
+{
+  "role": "Retrospective exact-parent method control; no synthesis admission",
+  "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+  "state": "red2",
+  "chosen_identity": {
+    "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+    "state": "red2",
+    "charge": -2,
+    "mult": 1,
+    "geometry_sha256": "2456afcc3763fea1d0f66619ca7657c91435308356859d9a7052bdbb2a851ff7",
+    "smiles_sha256": "2cc767adcacaac7d0049d1b8721c485971653084c4e1ead67e2a306080879f4c",
+    "sp_record_sha256": "34d5fcb23fb91f77c33a11453daa4e28e61e7ab6b57954c4619fe311381e2547",
+    "protocol": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200
+    }
+  },
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/complete_benchmark_spin.py": "d41410a21d5f5dd3803e6e1d7635c99f8c38a60c80fa324e34e20acd3a7c7d1f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/spins.py": "08f27882da6544051a485a9d276150e42d94c0b878f11bebeb19c289d47e0d3b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/spin_evidence.py": "7234d559b7204cb9b67203a7e2c0b3de87a52d6347a342550e0ef9d9ad596d39",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/sp.py": "09c6cfdb66d818c37c76c6f6587d44c6c3c804d383729a4161fd9c96bef9ec10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal.py": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/projected_thermal.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/qrrho.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/native_thermal_repair.py": "417b5dbe76d299087f74bab80aa3277d4bf1f19593508e3acfafabcdf8108123",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/geometry_checkpoints.py": "2493d41cd7a3ca7a6a2229092f4133fe944ade75e0fd052a2100f4f50ee3e84a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf"
+  },
+  "input_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_completion_2026-10-21/chosen_snapshot/opt.xyz": "2456afcc3763fea1d0f66619ca7657c91435308356859d9a7052bdbb2a851ff7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_completion_2026-10-21/chosen_snapshot/result.json": "034d9708368aed8dffd4643bfe2f76c8c24946ea0b543d6d8d8a08125d949fc9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_completion_2026-10-21/chosen_snapshot/active_SP.json": "34d5fcb23fb91f77c33a11453daa4e28e61e7ab6b57954c4619fe311381e2547",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_completion_2026-10-21/chosen_snapshot/manifest_row.json": "85bfb41f7c950679711a23b8e509620d3d32803b8d9545f797454f6a7d289fba"
+  },
+  "numerical_settings": "Unchanged source-addressed alternate-spin implementation",
+  "durable_geometry_checkpoints": true,
+  "native_gates_unchanged": true
+}

@@ -68,12 +68,124 @@
     "recovery_of": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/design_pmdi_ethyl__n3__stereo0__open",
     "checkpoint_continuation_of": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-20_geometry_recovery/design_pmdi_ethyl__n3__stereo0__open/rest/geometry_checkpoints/optimizer_returned.xyz"
   },
-  "status": "computing",
+  "status": "state_records_verified",
   "stage": "dft_geometry",
   "started": 1792642156.574489,
   "host": "lambda13",
   "pid": 2975047,
   "free_energy_computed": false,
   "minimum_Hessian_tested": false,
-  "synthesis_admission": false
+  "synthesis_admission": false,
+  "E_smd_eV": -99664.55298287107,
+  "gradient_max_Ha_Bohr": 6.591218985513465e-05,
+  "contact_metrics": [
+    {
+      "site_i": 1,
+      "site_j": 2,
+      "centroid_distance_A": 8.439192303822399,
+      "interplane_angle_deg": 71.95164367194383,
+      "plane_separation_A": 4.205369273337995,
+      "lateral_offset_A": 7.316750372655873,
+      "nearest_core_atom_A": 4.77668646165294,
+      "core_planarity_rms_A": [
+        0.013781423045600238,
+        0.07517239862594942
+      ],
+      "stack_geometry": false
+    },
+    {
+      "site_i": 1,
+      "site_j": 3,
+      "centroid_distance_A": 6.988546321363256,
+      "interplane_angle_deg": 87.66740794533693,
+      "plane_separation_A": 3.096639205633483,
+      "lateral_offset_A": 6.2650303523585205,
+      "nearest_core_atom_A": 3.8299047494939287,
+      "core_planarity_rms_A": [
+        0.013781423045600238,
+        0.0034721982406946427
+      ],
+      "stack_geometry": false
+    },
+    {
+      "site_i": 2,
+      "site_j": 3,
+      "centroid_distance_A": 13.286528280225728,
+      "interplane_angle_deg": 29.042271755140813,
+      "plane_separation_A": 10.936207490041998,
+      "lateral_offset_A": 7.545276633496437,
+      "nearest_core_atom_A": 11.340370468610491,
+      "core_planarity_rms_A": [
+        0.07517239862594942,
+        0.0034721982406946427
+      ],
+      "stack_geometry": false
+    }
+  ],
+  "stacked_pairs": 0,
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest",
+  "topology_QC": "ok",
+  "observed_peak_GPU_MiB": 64398,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/opt.xyz": "bb94d86afa0119361cd7ba83a73a3a4ac2c21bea4d98f1a0b49eb99adc7cf566",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/result.json": "8c07ab7a9b2c17fa97196de349ad4246f32cb66989cff123902ed67ef1a086d2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/geometry_checkpoints/last_evaluated.xyz": "ec4c2e51c886c095d7146f8fb0031167051e94871e325135952f487965f21e92",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/geometry_checkpoints/evaluated_trajectory.xyz": "4a0e618adf00317718f19e0c89f5efef1768b74b4df5f4d5b7debe6a071c9078",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/geometry_checkpoints/latest.json": "3803bd3b4b7c281b1d39dc43d0a0d3f0e7506369d02d31f31570ce2bb9599bc5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/geometry_checkpoints/optimizer_returned.xyz": "d78a82534bd483708c8f67ae53c3da1f9d8be29c7798ace587b408d8050ea4f2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/geometry_checkpoints/optimizer_returned.json": "3dc05b6f0602150dbcd5a786cd620f02e9a48858c42c0fd0e7eec0b07670b897",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/sp/416a567afcb4d377.json": "0ca428444dffcb8f1a5f7253a625d5490277cd31121641b4c6081728f05bcfdc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive/tasks/design_pmdi_ethyl__n3__stereo0__open/geometry_review.json": "b5868ff454dfff8f1a3246fec46cd722c0ecfe599fd44d3688b07deea126775d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/baseline.json": "a1474e50686b7c65f20d25d8a9cccab4cdf0af3b8955443fc68b5b6768770661",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom126_axis1_h0.0005_sign-1.json": "5e65612d86b3f8183c4bcd71d22770bc1d6520c6a1a6250afd5865a8b66e6c44",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom126_axis1_h0.0005_sign1.json": "cca97ea654733b5af9d0d96044a68af444cef657a2e9ca48c3df5198ac173e22",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom126_axis1_h0.001_sign-1.json": "b27936b8602f569abeb9c4d5186d8b8869e60ae9e7997040905f1f1ce7449b42",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom126_axis1_h0.001_sign1.json": "504b05264037c8965a64f591fa7341a84061a02cc21a0c7ba138bda2a99c9494",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom7_axis1_h0.0005_sign-1.json": "47362f8bb0e27294844a217cf5a9a932b9d1dc4eed01a487acdc60a3bfa68918",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom7_axis1_h0.0005_sign1.json": "ea6eca3278113d512382d1033303ce575c8fcb9b0494074ef67543cc5c6a2dad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom7_axis1_h0.001_sign-1.json": "feafa91e0a32b9fcc2a9a686911ed5397fbf798cf48306a6652ad9bf7af07ab2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/atom7_axis1_h0.001_sign1.json": "62a849dbb278d335d11acdb46b6886bcaef967e8e7dd30a09746d210f0e5d148",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/energy_gradient_check/summary.json": "b14ac4c6db09e30cfc6ccdcc47127f50dd2a7e51020e6549d4b36586165accde"
+  },
+  "finished": 1792644144.3316712,
+  "geometry_sanity_review": "passed",
+  "conservative_force_energy_check": {
+    "geometry_sha256": "bb94d86afa0119361cd7ba83a73a3a4ac2c21bea4d98f1a0b49eb99adc7cf566",
+    "checks": [
+      {
+        "atom": 126,
+        "axis": 1,
+        "step_Bohr": 0.0005,
+        "analytic": 6.55361335517011e-05,
+        "numerical": 6.509617378469557e-05,
+        "absolute_error": 4.3995976700553566e-07
+      },
+      {
+        "atom": 126,
+        "axis": 1,
+        "step_Bohr": 0.001,
+        "analytic": 6.55361335517011e-05,
+        "numerical": 6.503910299215931e-05,
+        "absolute_error": 4.970305595417869e-07
+      },
+      {
+        "atom": 7,
+        "axis": 1,
+        "step_Bohr": 0.0005,
+        "analytic": -6.590008143902591e-05,
+        "numerical": -6.547770681208931e-05,
+        "absolute_error": 4.223746269365995e-07
+      },
+      {
+        "atom": 7,
+        "axis": 1,
+        "step_Bohr": 0.001,
+        "analytic": -6.590008143902591e-05,
+        "numerical": -6.545383257616777e-05,
+        "absolute_error": 4.462488628581389e-07
+      }
+    ],
+    "passed": true,
+    "acceptance_Ha_Bohr": 1e-06
+  }
 }

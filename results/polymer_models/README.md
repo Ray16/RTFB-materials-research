@@ -2,17 +2,26 @@
 
 All result categories: [results index](../README.md).
 
-The [independent workflow check](workflow_validation.json) currently admits 25/27
-original electronic oligomer structures, all 12 spacing conformers and 2/6
-selected-geometry native free energies. Two PMDI trimer attempts exhausted their
-optimization budgets; all evaluations and optimizer-returned coordinates remain
-on shared storage. Their topology checks pass, but physical convergence remains
-required.
+The [independent workflow check](workflow_validation.json) now admits 26/27
+original electronic oligomer structures, all 12 spacing conformers and all six
+selected-geometry native free energies. The corrected open PMDI trimer passes
+optimizer, topology, active-energy and final energy-versus-force checks. The
+remaining stacked PMDI trimer is computing; its historical failures remain intact.
+
+The [conditional-grafting figure](../figures/polymer_models/conditional_grafting.pdf)
+and [actual values](../figures/polymer_models/conditional_grafting.csv) report
+ΔΔG = −5.15 kJ/mol (adjacent) and −11.23 kJ/mol (one spacer) for the neutral
+phthalimide method control. Independent atom/charge balance and both conditional
+DBU reaction cycles pass. The 25/50/100 cm−1 rotor-cutoff ranges are −5.15 to
+−4.66 and −12.14 to −11.23 kJ/mol. These are cutoff sensitivities, not confidence
+intervals or a conformational ensemble. Negative nonadditivity can make a second
+attachment favorable while remaining a concern for unwanted association; it is
+not a selection benefit by itself or a pure pendant-core interaction.
 
 The [solvent-derivative review](../validation/polymer_CDS_recovery_2026-10-21/README.md)
 isolates two separate numerical problems. A legacy CDS geometry-force component
 for the open trimer disagrees with energy differences on both electronic grids;
-a conservative, two-step checked derivative restart is running. The spacing
+the conservative, adaptively step-checked restart now passes final energy/force checks. The spacing
 Hessian's small asymmetry comes from the default CDS finite-difference step.
 Replacing that additive component with a qualified finer step replays full
 singlet/radical recomputations. The [new continuation](campaigns/2026-10-21_spacing_cds_recovery/plan.json)
@@ -23,8 +32,8 @@ Including the recovered twelfth electronic conformer changes the selected
 nonadditivity to −10.98 kJ/mol (adjacent) and −14.50 kJ/mol (one spacer). These
 include backbone, solvent and conformational response. Earlier −1.55/−5.07 values
 belong to the incomplete eleven-conformer snapshot. Neither comparison establishes
-a general distance trend or pure redox-core binding. Free-energy cycles remain
-blank until the selected geometries' thermochemistry qualifies.
+a general distance trend or pure redox-core binding. Both free-energy cycles now qualify at the selected geometries; broader motif
+and conformational sensitivity remain unresolved.
 
 The [21 October continuation review](../reviews/2026-10-21/polymer_continuation/summary.json)
 records the resumed fourth task. The original spacing pilot completed both SCFs
@@ -45,7 +54,7 @@ receipt and physical geometry QC; its Hessian minimum has not been tested.
 
 The [polymer spacing framework](../../docs/POLYMER_SPACING.md) provides configurable
 motifs, reactive sites, occupancy patterns and matched controls. Open its
-[exact structures and conditional-grafting report](campaigns/2026-10-21_spacing_memory_resume/index.html)
+[exact structures and conditional-grafting report](campaigns/2026-10-21_spacing_cds_recovery/index.html)
 or [stable current pointer](spacing_current.json). The first panel has six graphs
 and twelve qualified warm starts; all twelve electronic conformers now qualify. It evaluates
 electronic nonadditivity and conditional grafting ΔG as separate dimensions.
@@ -57,7 +66,7 @@ The [independent numerical review](screening_review.json) reconstructs the
 reported energy differences and distinguishes final contact classes from the
 starting pose labels.
 The [connectivity review](model_topology.json) independently checks the open
-backbone and para graft sites against all 27 starting XYZs and 25 completed DFT
+backbone and para graft sites against all 27 starting XYZs and 26 completed DFT
 XYZs. The construction drawing highlights that backbone in purple. A trimer has
 six backbone carbons, five C–C bonds and two ends; it is not a cyclic triangle.
 [Interaction progress](interaction_status.json) and [reviewed results](interaction_checked.json)

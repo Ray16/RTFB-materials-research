@@ -2,7 +2,7 @@
   "status": "checked",
   "models": 27,
   "starting_XYZ_checked": 27,
-  "completed_DFT_XYZ_checked": 25,
+  "completed_DFT_XYZ_checked": 26,
   "scope": "Open 2n-carbon chain, alternating phenyl sites, para benzyl linkers, fragment count and complete XYZ connectivity; not a free-energy/minimum test",
   "results": [
     {
@@ -1654,6 +1654,72 @@
       "actual_XYZ_matches_full_graph": true,
       "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n3__stereo0__open/input.xyz",
       "xyz_sha256": "a22ebbaad92e44ad5b29e465d6feae731a2f50a19374da079754fe4f2f749099"
+    },
+    {
+      "key": "design_pmdi_ethyl__n3__stereo0__open",
+      "stage": "completed_DFT",
+      "graph_topology": [
+        {
+          "topology": "open_linear_chain",
+          "repeat_units": 3,
+          "backbone_atoms": [
+            21,
+            20,
+            19,
+            18,
+            17,
+            16
+          ],
+          "backbone_carbon_count": 6,
+          "backbone_CC_bonds": 5,
+          "chain_ends": 2,
+          "backbone_ring_closure": false,
+          "para_graft_sites": [
+            {
+              "backbone_position": 2,
+              "backbone_atom": 20,
+              "phenyl_atoms": [
+                22,
+                23,
+                24,
+                25,
+                45,
+                46
+              ],
+              "benzyl_atom": 26
+            },
+            {
+              "backbone_position": 4,
+              "backbone_atom": 18,
+              "phenyl_atoms": [
+                47,
+                48,
+                49,
+                50,
+                70,
+                71
+              ],
+              "benzyl_atom": 51
+            },
+            {
+              "backbone_position": 6,
+              "backbone_atom": 16,
+              "phenyl_atoms": [
+                12,
+                13,
+                14,
+                15,
+                72,
+                73
+              ],
+              "benzyl_atom": 11
+            }
+          ]
+        }
+      ],
+      "actual_XYZ_matches_full_graph": true,
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/opt.xyz",
+      "xyz_sha256": "bb94d86afa0119361cd7ba83a73a3a4ac2c21bea4d98f1a0b49eb99adc7cf566"
     },
     {
       "key": "design_pmdi_ethyl__n3__stereo0__stacked",

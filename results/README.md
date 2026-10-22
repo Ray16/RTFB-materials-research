@@ -7,7 +7,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | --- | --- | --- |
 | Grafting free energies for all 75 candidates | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |
 | Polymer-fragment and interaction models | [3D interaction report](polymer_models/index.html) | [Method/records](polymer_models/README.md) · [Interaction status](polymer_models/interaction_status.json) · [Graph inventory](polymer_models/current.csv) |
-| Graft spacing and conditional grafting framework | [Exact occupancy cases and report](polymer_models/campaigns/2026-10-21_spacing_continuation/index.html) | [Reproduction guide](../docs/POLYMER_SPACING.md) · [Current pointer](polymer_models/spacing_current.json) · [Independent validation](polymer_models/workflow_validation.json) |
+| Graft spacing and conditional grafting framework | [Exact occupancy cases and report](polymer_models/campaigns/2026-10-21_spacing_cds_recovery/index.html) | [Reproduction guide](../docs/POLYMER_SPACING.md) · [Current pointer](polymer_models/spacing_current.json) · [Independent validation](polymer_models/workflow_validation.json) |
 | Candidate redox properties and comparisons | [Candidates](candidates/README.md) | [Workbook](candidates/latest.xlsx) · [All candidates](candidates/figures/data/all_candidates.csv) |
 | Maintained figures and molecular structures | [Figure guide](candidates/figures/README.md) | [Comparison browser](candidates/figures/index.html) |
 | Measured/calculated redox validation | [Validation guide](validation/README.md) | [Figure](figures/validation/matched_parent_validation.pdf) · [Actual values](figures/validation/matched_parent_validation.csv) |
@@ -45,16 +45,16 @@ The [configurable spacing framework](../docs/POLYMER_SPACING.md) now builds matc
 adjacent/separated occupancy controls and keeps electronic nonadditivity separate
 from conditional grafting ΔG. Its first phthalimide method-control panel has six
 graphs and twelve qualified xTB warm starts, frozen for quantum evaluation.
-The spacing panel now has all 12 checked electronic conformers. Including the
-recovered alternate empty-backbone conformer changes selected electronic
-nonadditivity to −10.98 kJ/mol (adjacent) and −14.50 kJ/mol (one spacer). These
-include conformational response and do not isolate motif binding. Two of six
-selected-geometry native free energies qualify; four more calculations are running.
-The [numerical repair review](validation/polymer_CDS_recovery_2026-10-21/README.md)
-records the independent force/Hessian diagnostics, qualified control replays and
-source-frozen restarts. The ordinary physical thresholds remain unchanged.
-Follow [independent workflow validation](polymer_models/workflow_validation.json)
-and [live completion status](polymer_models/completion/status.json).
+The spacing panel has all 12 checked electronic conformers and all six selected
+native free energies. The [conditional-grafting figure](figures/polymer_models/conditional_grafting.pdf)
+shows neighboring-site ΔΔG of −5.15 kJ/mol (adjacent) and −11.23 kJ/mol (one spacer).
+These include backbone, solvent and conformational response. Rotor-cutoff
+sensitivity retains the signs but does not measure conformational uncertainty.
+The [independent cycle review](polymer_models/workflow_validation.json) includes
+DBU-assisted conditional grafting values and checks atom/charge balance and cycle
+closure. The original oligomer panel is 26/27 checked structures; the final trimer
+is still computing. Full workflow closure and broader motif sensitivity remain open.
+Follow [live completion status](polymer_models/completion/status.json).
 
 The [retrospective benchmark](validation/publication_benchmark/current.json)
 now admits 38/39 sourced potentials from 30 exact free molecules across seven

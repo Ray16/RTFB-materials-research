@@ -103,6 +103,17 @@ PYTHONPATH=src python -m redox.screening.streaming_search verify \
 
 Use `prepare-control --count 1000000` for synthetic storage/scheduling controls.
 The CPU concurrency in these commands is an explicit benchmark condition; it is
-not a GPU worker limit. Multi-node interrupted-worker recovery, controlled
-concurrency curves and selected-subset conformer/quantum adapters remain open
+not a GPU worker limit. Shared-filesystem interrupted-worker recovery is checked on real molecular
+descriptors. Controlled concurrency curves and selected-subset conformer/quantum
+adapters remain open
 before the entire high-throughput workflow is qualified.
+
+## Exact route successor stage
+
+`redox.screening.route_stage` connects completed descriptor chunks to the
+prospective route gate. `redox.build.attachment_identity` records the exact
+precursor/product and mapped new bond, and checks the balanced local reaction.
+The [actual 837-design execution](../results/validation/exact_routes_2026-10-22/summary.json)
+uses two disjoint CPU workers. All designs remain held for exact-route evidence;
+no quantum campaign is launched. NDJSON route catalogs spill to node-local disk.
+See [reproduction and scope](../results/validation/exact_routes_2026-10-22/README.md).

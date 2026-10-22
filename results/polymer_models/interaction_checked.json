@@ -1,15 +1,15 @@
 {
   "status": {
-    "updated": 1792615682.7827759,
+    "updated": 1792644474.3935642,
     "scope": "Neutral interaction-method controls; no synthesis admission",
     "expected_DFT_cases": 27,
-    "stationary_electronic_cases": 25,
+    "stationary_electronic_cases": 26,
     "sampled_stack_open_comparisons": 3,
     "electronic_association_comparisons": 6,
-    "failures": 2,
+    "failures": 1,
     "invalid_receipts": [],
     "preserved_original_failures": 10,
-    "recovered_electronic_cases": 8,
+    "recovered_electronic_cases": 9,
     "recovery_campaigns": [
       {
         "path": "results/polymer_models/campaigns/2026-10-20_geometry_recovery",
@@ -22,6 +22,42 @@
         "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_continuation",
         "attempted": 1,
         "failed": 0
+      },
+      {
+        "path": "results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_open",
+        "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_pmdi_open",
+        "attempted": 1,
+        "failed": 1
+      },
+      {
+        "path": "results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_stacked",
+        "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_pmdi_stacked",
+        "attempted": 1,
+        "failed": 1
+      },
+      {
+        "path": "results/polymer_models/campaigns/2026-10-21_checkpoint_pmdi_stacked_scf",
+        "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_checkpoint_pmdi_stacked_scf",
+        "attempted": 1,
+        "failed": 1
+      },
+      {
+        "path": "results/polymer_models/campaigns/2026-10-21_pmdi_open_conservative",
+        "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_conservative",
+        "attempted": 1,
+        "failed": 1
+      },
+      {
+        "path": "results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive",
+        "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive",
+        "attempted": 1,
+        "failed": 0
+      },
+      {
+        "path": "results/polymer_models/campaigns/2026-10-21_pmdi_stacked_adaptive",
+        "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_stacked_adaptive",
+        "attempted": 0,
+        "failed": 0
       }
     ],
     "active_claims": [],
@@ -33,7 +69,7 @@
     "campaign": "results/polymer_models/campaigns/2026-10-19_pi_stacking",
     "viewer": "results/polymer_models/index.html",
     "property_scope": "Resting-state electronic folding/association screen; not deltaG or population",
-    "structurally_reviewed_DFT_cases": 25,
+    "structurally_reviewed_DFT_cases": 26,
     "structural_holds": [],
     "prepared_DFT_inputs": 27
   },
@@ -1279,14 +1315,62 @@
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_pmdi_ethyl__n3__stereo0/ensemble.json": "e60acb84d4c16b9d2ef71957ef91cd448e33652a8d302329c9c341d16eb041a4",
         "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/seeds/design_pmdi_ethyl__n3__stereo0/open_0/xtbopt.xyz": "a22ebbaad92e44ad5b29e465d6feae731a2f50a19374da079754fe4f2f749099"
       },
-      "stage": "failed_preserved",
-      "E_smd_eV": null,
+      "stage": "stationary_DFT_electronic_structure",
+      "E_smd_eV": -99664.55298287107,
       "deltaG_kJ_mol": null,
       "Hessian_minimum_tested": false,
-      "final_xyz": null,
-      "recovery_campaign": null,
-      "contact_metrics": null,
-      "stacked_pairs": null
+      "final_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_pmdi_open_adaptive/design_pmdi_ethyl__n3__stereo0__open/rest/opt.xyz",
+      "recovery_campaign": "results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive",
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 8.439192303822399,
+          "interplane_angle_deg": 71.95164367194383,
+          "plane_separation_A": 4.205369273337995,
+          "lateral_offset_A": 7.316750372655873,
+          "nearest_core_atom_A": 4.77668646165294,
+          "core_planarity_rms_A": [
+            0.013781423045600238,
+            0.07517239862594942
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 1,
+          "site_j": 3,
+          "centroid_distance_A": 6.988546321363256,
+          "interplane_angle_deg": 87.66740794533693,
+          "plane_separation_A": 3.096639205633483,
+          "lateral_offset_A": 6.2650303523585205,
+          "nearest_core_atom_A": 3.8299047494939287,
+          "core_planarity_rms_A": [
+            0.013781423045600238,
+            0.0034721982406946427
+          ],
+          "stack_geometry": false
+        },
+        {
+          "site_i": 2,
+          "site_j": 3,
+          "centroid_distance_A": 13.286528280225728,
+          "interplane_angle_deg": 29.042271755140813,
+          "plane_separation_A": 10.936207490041998,
+          "lateral_offset_A": 7.545276633496437,
+          "nearest_core_atom_A": 11.340370468610491,
+          "core_planarity_rms_A": [
+            0.07517239862594942,
+            0.0034721982406946427
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "stacked_pairs": 0,
+      "structural_review": {
+        "stereo": "ok",
+        "topology": "ok",
+        "issues": []
+      }
     },
     {
       "key": "design_pmdi_ethyl__n3__stereo0__stacked",
@@ -2750,7 +2834,7 @@
     }
   ],
   "review": {
-    "raw_source_sha256": "649596e1c51ddfb8afe4c594d23eaf900ed6fbe58d25ee4260a4d28ae6d070ef",
+    "raw_source_sha256": "bbe8ef4e7909a91c090451e3ad6ff9a49bb7800a15b7901c9b65ed5abed5b685",
     "review_source_sha256": "881a5cc4f3d9a0b8dfa8eab9fc9a0d4f067a580587ea8d4ca00918032ee536ec",
     "scope": "Connectivity, backbone stereochemistry, declared charge/spin, active SP and independently recomputed geometric contacts; not Hessian minima or free energies"
   }

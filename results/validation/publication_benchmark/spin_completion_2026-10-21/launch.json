@@ -1,0 +1,30 @@
+{
+  "host": "lambda1",
+  "gpu": 4,
+  "pid": "2691606",
+  "argv": [
+    "env",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "MKL_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "XTB_THREADS=1",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "4",
+    "--threads",
+    "2",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_completion_2026-10-21/execution",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/complete_benchmark_spin.py",
+    "worker"
+  ],
+  "started": 1792644721.6494994,
+  "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_benchmark/spin_completion_2026-10-21/launcher.log"
+}
