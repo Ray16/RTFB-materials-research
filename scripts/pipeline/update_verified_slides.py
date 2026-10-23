@@ -354,6 +354,31 @@ def frames(payload,overlays=False):
     return '\n'.join(pieces)+'\n',[r['id'] for r in rows]
 
 
+def declared_main_story(source):
+    """Count the actual main TeX inputs, including preserved manual additions.
+
+    Paths follow the build's slides working directory. This handles ordinary
+    literal frames and inputs; the PDF divider check remains authoritative if
+    overlays or other TeX macros produce a different number of pages.
+    """
+    source=Path(source);text=source.read_text()
+    if r'\begin{document}' not in text or r'\appendix' not in text:
+        raise RuntimeError('Main/Backup source boundary is not declared')
+    body=text.split(r'\begin{document}',1)[1].split(r'\appendix',1)[0]
+    dependencies={}
+    def count(content,stack):
+        content=re.sub(r'(?<!\\)%[^\n]*','',content)
+        total=len(re.findall(r'\\begin\{frame\}',content))
+        for name in re.findall(r'\\(?:input|include)\{([^}]+)\}',content):
+            path=(source.parent/name).resolve()
+            if not path.suffix:path=path.with_suffix('.tex')
+            if path in stack:raise RuntimeError('Cyclic main-story TeX input')
+            dependencies[str(path)]=digest(path)
+            total+=count(path.read_text(),stack|{path})
+        return total
+    return count(body,{source.resolve()}),dependencies
+
+
 def publish(payload,out,overlays=False):
     summary=payload['summary']
     if summary.get('arithmetic_discrepancies')!=0 or not input_changes_quarantined(summary):
@@ -407,7 +432,8 @@ def publish(payload,out,overlays=False):
         main_content=research_frames(payload,ROOT)
         main_include=generated/'research_findings.tex'
         main_include.write_text(main_content)
-        main_frames=len(re.findall(r'\\begin\{frame\}',main_content))
+        main_frames,main_dependencies=declared_main_story(source)
+        inputs.update(main_dependencies)
         for path in (ROOT/'scripts/plotting/candidates/research_presentation.py',
                      ROOT/'results/candidates/figures/data/highlights.json',
                      ROOT/'results/candidates/figures/data/core_topology_comparison.json',

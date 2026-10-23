@@ -104,7 +104,10 @@ def cpu_allocation(threads, requested=None):
             continue
         except psutil.AccessDenied as exc:
             raise RuntimeError("Cannot verify shared CPU allocations") from exc
-        if 0 < len(affinity) <= 8:
+        # CPU-only scientific workers can own more than eight cores. Respect
+        # every binding narrower than this launcher's allowed mask, retaining
+        # the small-mask safeguard for already restricted launcher contexts.
+        if 0 < len(affinity) and (len(affinity) <= 8 or len(affinity) < len(permitted)):
             busy.update(affinity)
     selected = sorted(permitted - busy)[:threads] if requested is None else sorted(set(requested))
     if len(selected) != threads or not set(selected) <= permitted or set(selected) & busy:

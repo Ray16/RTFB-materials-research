@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import subprocess
 import time
 
 ROOT=Path(__file__).resolve().parents[3]
@@ -29,6 +30,7 @@ def main():
                 source_fields='admitted native potentials/dispersion; QC-clean gas diagnostic; exact-graph capacity/SA',
                 previous_points_preserved=True,historical_thermal_reference_labelled=True,
                 figures={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in files})
+    subprocess.run([sys.executable,str(ROOT/'scripts/pipeline/publish_candidate_decisions.py'),'--feed',str(a.feed),'--comparison-already-updated'],check=True,cwd=ROOT)
     a.status.parent.mkdir(parents=True,exist_ok=True);a.status.write_text(json.dumps(status,indent=2)+'\n')
 
 

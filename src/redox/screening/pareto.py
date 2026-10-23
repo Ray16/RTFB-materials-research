@@ -44,6 +44,18 @@ def _load_candidates():
 PRIMARY = ("voltage", "capacity", "stability", "kinetics")
 
 
+def decision_front(candidates, policy, objectives, *, pool=None):
+    """Full-axes successor; uses the admitted axis records as its objectives.
+
+    The original run_pool remains a reproducible molecular descriptor analysis.
+    Material capacity, route and polymer evidence cannot be imported into that
+    analysis merely by assigning a candidate-level eligibility flag.
+    """
+    from redox.screening.feasibility import pareto_after_feasibility
+
+    return pareto_after_feasibility(candidates, policy, objectives, pool=pool)
+
+
 def _objectives(cand, pool, sc, cap_key="specific_capacity_mAh_g"):
     """Return ({name: (value_higher_is_better, sigma)}, missing) for one pool row.
 

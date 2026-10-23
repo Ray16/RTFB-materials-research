@@ -1,0 +1,21 @@
+{
+  "host": "lambda2",
+  "pid": 3965838,
+  "process_start": "1353588981",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/sample_polymer_conformers.py",
+    "--input",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_sampling_2026-10-23/inputs/all_same__occ_2/input.xyz",
+    "--case",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_sampling_2026-10-23/inputs/all_same__occ_2/case.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_conformer_revision/all_same__occ_2",
+    "--threads",
+    "14",
+    "--max-hours",
+    "48"
+  ],
+  "started": 1792735269.842905,
+  "scope": "First remaining graph search validates 14-core outer parallelism and serial BLAS before expanding the rest."
+}

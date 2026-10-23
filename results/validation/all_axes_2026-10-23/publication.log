@@ -1,0 +1,86 @@
+{
+  "status": "checked",
+  "scope": "Selected exact free-parent calculations; not global tables or graft validation",
+  "selected_ids": [
+    "bm_1_2_naphthoquinone",
+    "bm_1_4_benzoquinone",
+    "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+    "bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil",
+    "bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil",
+    "bm_2_3_5_trimethyl_1_4_benzoquinone",
+    "bm_2_3_dichloro_1_4_naphthoquinone",
+    "bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq",
+    "bm_2_3_dimethyl_1_4_benzoquinone",
+    "bm_2_5_dichloro_1_4_benzoquinone",
+    "bm_2_6_dimethoxy_1_4_benzoquinone",
+    "bm_2_6_dimethyl_1_4_benzoquinone",
+    "bm_2_chloro_1_4_benzoquinone",
+    "bm_2_fluoro_1_4_benzoquinone",
+    "bm_2_methoxy_1_4_benzoquinone",
+    "bm_2_methyl_1_4_benzoquinone",
+    "bm_2_tert_butyl_1_4_benzoquinone",
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+    "bm_9_10_phenanthrenequinone",
+    "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+    "bm_n_2_methoxyethyl_phthalimide",
+    "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+    "bm_n_ethylphenothiazine",
+    "bm_n_isopropylphthalimide",
+    "bm_n_methylphthalimide",
+    "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+    "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+    "bm_n_n_diisopropylpyromellitic_diimide",
+    "bm_tetramethyl_1_4_benzoquinone_duroquinone",
+    "tempo_parent"
+  ],
+  "native_Fc_absolute_V": 4.379195901594358,
+  "arithmetic_checks": 111,
+  "arithmetic_discrepancies": 0,
+  "changed_inputs": [],
+  "tier_A_potential_events": 39,
+  "tier_A_potential_molecules": 30,
+  "requested_tier_A_potentials": 39,
+  "pending_tier_A_potentials": 0,
+  "tier_A_original_studies": 7,
+  "tier_A_potential_stats": {
+    "n": 39,
+    "MAE": 0.24697435897435896,
+    "RMSE": 0.2792870961059284,
+    "bias": 0.18958974358974362,
+    "SD": 0.20775893393276712
+  },
+  "potential_serialization_decimals": 3,
+  "quantum_SCF_repeated": false,
+  "fitted_correction": false,
+  "exact_graft_accuracy_validated": false,
+  "scientific_accuracy_fully_validated": false,
+  "spin_model_limits": "State-specific electronic/native/UMA confidence is retained in rows; electronic-only alternatives retain thermal uncertainty",
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 21.56689453125,
+    "available_RAM_bytes": 512842768384,
+    "minimum_RAM_GiB": 8
+  },
+  "cpu_affinity": [
+    18,
+    19
+  ],
+  "completed": 1792743790.9559715
+}
+{"as_of_Chicago": "2026-10-23T03:26:56.484627-05:00", "original39_native_potential_molecules": 34, "arithmetic_discrepancies": 0, "queue_terminal": true}
+{"status": "all_axes_decision_ledger_checked", "profile_id": "all_axes_preformed_polymer_v1", "input_candidate_as_of": "2026-10-23T03:26:56.484627-05:00", "policy_fully_numeric_targets_declared": false, "unset_numeric_cutoffs": ["capacity", "charge_transfer", "motif_association", "neighbor_coupling"], "exact_products": 879, "decisions": {"pending": 878, "comparison_control": 1}, "eligible_ids": [], "rule": "All required axes must pass. No weighted average, compensation or missing-as-zero rule. Pareto comparison follows admission.", "quantum_jobs_submitted": 0, "created": 1792744021.62523, "interpretation": "Pending denotes incomplete criteria/evidence, not demonstrated poor chemistry. No full decision front exists unless all required axes pass."}
+{"status": "updated_verified_comparison_collection", "as_of_Chicago": "2026-10-23T03:26:56.484627-05:00", "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261023_032656_484627", "candidates": 75, "original": 39, "additional": 36, "admitted_potential_candidates": 62, "interactive_plotly": true, "structure_views": 75, "redox_state_depictions": 18, "producer_sha256": {"/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/update_comparison_collection.py": "a5cef754818ace38a77aeab74e888f4426f65fec3a0b0fa505bf0f550124113c", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/candidate_highlights.py": "5ea9a3b040c79cde50307afdb9a12303750d03a23c046f214ab8df5c1a5529ad", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/collection_layout.py": "36a40a1208ca9498341a210ef101330215a5f1c004a6aa07869e541def0da0be", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/candidate_structure_plate.py": "cbf59483a9ba4cde16589567e1d9695e08b942478d43c7f289ca28ba72233213", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/core_topology_plate.py": "b9d7957c12d4d279f90c5505e8d6ba30c981aa7f76cd0c52ad841f4cacd467ef", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/candidate_selection_overview.py": "20dad3bd5a11e93d167b63b45dc580dbe554e6397400624753f668eba55c059f", "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/systematic_families_2026-10-18/summary.json": "3221d2e7e69aa7cdfec399efa47434c8fe7e27772f736e0466901b30d9dbc336", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/redox_state_schemes.py": "04b1af85a7f0be3c1c05f58d58cfe32295dfac5d6512837de01d3283a213689c", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/comparison_browser.html": "9e985411f3d3fc3b3ca8b0c7a5520dac78322ad5220b27e600f9de3cb6a9481b", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/candidates/verified_overlay.py": "7ac6447e389f635e1d9c1dfeb0eacefdfa4cf0959eb2fcd8dd680acbdd05800b", "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/update_verified_slides.py": "dd7f395563279c381b2bf837c973227ba155eb47cfcd8dc893ff8198b06ce968", "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/vinyl_monomers/proposals.json": "db0ce784cd3a4f061ba7c7243d7809e468341dd706c318d4d89668e3abef9080"}, "publication_style": {"width_inches": 7.2, "main_PNG_dpi": 600, "vector_formats": ["pdf", "svg"], "embedded_TrueType_fonts": true, "grayscale_redundancy": "numbered leader markers; pending hatching in coverage", "supplementary_rows_per_PDF_page": 18}, "exact_graft_experimental_accuracy_validated": false}
+{"plotted": 56, "descriptor_front": 8, "all_axes_eligible": 0}
+Traceback (most recent call last):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/publish_candidate_decisions.py", line 92, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/publish_candidate_decisions.py", line 80, in main
+    outputs={str(p.relative_to(ROOT)):sha(p) for p in out.rglob('*') if p.is_file()}
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/publish_candidate_decisions.py", line 80, in <dictcomp>
+    outputs={str(p.relative_to(ROOT)):sha(p) for p in out.rglob('*') if p.is_file()}
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/pathlib.py", line 730, in relative_to
+    raise ValueError("{!r} is not in the subpath of {!r}"
+ValueError: 'results/selection/all_axes_2026-10-23_published/decision_fronts.json' is not in the subpath of '/nfs/lambda_stor_01/homes/rzhu/0_redox' OR one path is relative and the other is absolute.

@@ -65,7 +65,7 @@ step 8 "capacity, SA score, solubility proxy"
 python -m redox.properties.capacity_and_proxies
 
 
-step 10 "scorecard (per-pool contiguous paths; INCOMPLETE propagation) -> Pareto"
+step 10 "molecular scorecard and descriptor Pareto (full-candidate admission follows)"
 python -m redox.screening.scorecard
 python -m redox.screening.pareto
 
@@ -84,5 +84,8 @@ python scripts/plotting/candidates/plot_leads_vs_existing.py
 
 step 12 "independent audit: every published number re-derived from raw records"
 python scripts/validation/audit/recompute_axes.py
+
+step 13 "source-current candidate evidence and ALL-axis decision admission"
+python scripts/pipeline/publish_candidate_decisions.py
 
 echo; echo "== finalization complete =="

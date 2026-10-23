@@ -48,5 +48,17 @@ preserved and their scientific limits remain visible.
 
 The stacked-trimer optimizer returned convergence and an active SP, then a later library call crashed. Separate fixed/fine final-force checks failed, so the case remains excluded. Its obsolete finite-panel monitors have stopped; the two broader CREST searches continue independently. Its small-step force diagnostic is complete. They remain distinct from the completed six-state spacing
 panel. The two-spin quantum interruption experiment has completed and passed an
-independent reconstruction of its four final thermal partitions. The four relative-basicity components and both balanced transfer sums have passed independent reconstruction. The two empty-backbone CREST pilots are running; DFT re-ranking and ensemble G remain pending.
+independent reconstruction of its four final thermal partitions. The four relative-basicity components and both balanced transfer sums have passed independent reconstruction. The two original empty-backbone pilots remain live. Twelve full-parallel searches now cover all six occupancy graphs at two configurations, including two reference repeats; actual starts and disjoint CPU sets are verified. DFT re-ranking and ensemble G remain pending.
 These execution checks belong in the SI and do not substitute for M1/M4.
+
+## All-axis requirement and focused expansion, 23 October
+
+The user's clarified rule is conjunctive acceptance on every required axis before
+Pareto comparison. The new source-current delivery stage implements this with
+identity, model-scope, context and interval checks. Supporting proxies do not
+supply missing properties. The current profile still has four undeclared
+application cutoffs and incomplete physical evidence, so 878 candidate designs
+remain pending and one comparison control is separate. The eight-model molecular
+descriptor front is explicitly not a full material shortlist. The 34-slot focused
+expansion plan is predeclared comparison coverage, not 34 additional molecules.
+These improvements do not close the end-to-end or polymer-convergence comments.

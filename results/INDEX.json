@@ -41,7 +41,7 @@
       "current": "results/polymer_models/interaction_checked.json",
       "status": "results/polymer_models/interaction_status.json",
       "scope": "Neutral covalent dimer/trimer and separate-segment electronic interaction pilot; graph inventory retained separately",
-      "calculation_state": "26/27 original electronic cases checked; final trimer failed fixed/fine force validation and remains excluded. Spacing 12/12 electronic poses and 6/6 selected G checked; two broader CPU CREST pilots active.",
+      "calculation_state": "26/27 original electronic cases checked; final trimer failed fixed/fine force validation and remains excluded. Spacing 12/12 electronic poses and 6/6 selected G checked; twelve expanded CPU CREST searches and two earlier reference pilots active at the recorded observation.",
       "browser": "results/polymer_models/index.html",
       "interaction_results": "results/polymer_models/interaction_checked.json",
       "interaction_status": "results/polymer_models/interaction_status.json",
@@ -81,7 +81,7 @@
         "browser": "results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/index.html",
         "coordinator": "results/polymer_models/campaigns/2026-10-21_spacing_cds_recovery/coordinator.json",
         "raw_root": "calcs/polymer_models/2026-10-21_spacing_cds_recovery",
-        "state": "12/12 checked electronic conformers; 6/6 selected native free energies and two independently reconstructed conditional cycles. Original oligomer panel 26/27; one trimer still computing.",
+        "state": "12/12 checked electronic conformers; 6/6 selected native free energies and two independently reconstructed conditional cycles. Original oligomer panel 26/27; final trimer excluded after failed force validation. Expanded sampling/DFT ensembles pending.",
         "scope": "Neutral phthalimide method control; adjacent vs one-spacer site nonadditivity and conditional DBU-assisted grafting G; no synthesis admission",
         "original_campaign": "results/polymer_models/campaigns/2026-10-20_spacing_pilot",
         "previous_campaign": "results/polymer_models/campaigns/2026-10-21_spacing_memory_resume",
@@ -115,7 +115,8 @@
           "scope": "One audited saved trimer; fresh Cartesian optimizer, tighter SCF, bounded 200 steps; unchanged acceptance"
         }
       ],
-      "spacing_construction_figure": "results/figures/polymer_models/spacing_construction.pdf"
+      "spacing_construction_figure": "results/figures/polymer_models/spacing_construction.pdf",
+      "expanded_conformer_searches": "results/validation/conformer_sampling_2026-10-23/README.md"
     },
     "candidates": {
       "guide": "results/candidates/README.md",
@@ -152,7 +153,7 @@
         "force_plan": "results/polymer_models/campaigns/2026-10-21_pmdi_open_conservative/plan.json",
         "current": "results/polymer_models/workflow_validation.json",
         "live_status": "results/polymer_models/completion/status.json",
-        "scope": "12/12 electronic conformers and 6/6 selected native free energies; two checked conditional cycles. Original oligomer 26/27; one trimer running. Broader motif sensitivity pending.",
+        "scope": "12/12 electronic conformers and 6/6 selected native free energies; two checked conditional cycles. Original oligomer 26/27; final trimer excluded after failed force validation. Broader motif/conformer sensitivity pending.",
         "force_plans": [
           "results/polymer_models/campaigns/2026-10-21_pmdi_open_adaptive/plan.json",
           "results/polymer_models/campaigns/2026-10-21_pmdi_stacked_adaptive/plan.json"
@@ -163,7 +164,9 @@
     },
     "slides": {
       "guide": "slides/README.md",
-      "current": "slides/redox_workflow.pdf"
+      "current": "slides/redox_workflow.pdf",
+      "checked_refresh": "results/reviews/2026-10-23/presentation_refresh_v2/status.json",
+      "visual_review": "results/reviews/2026-10-23/presentation_refresh_v2/visual_review.json"
     },
     "discovery": {
       "guide": "results/discovery/README.md",
@@ -187,7 +190,8 @@
           "calcs/polymer_models"
         ],
         "scope": "Existing exact-graft evaluator joined to systematic designs; matched effects and route admission stay separate; no new QM or automatic ranking"
-      }
+      },
+      "targeted_expansion_plan": "config/targeted_expansion_2026-10-23.json"
     },
     "property_tables": {
       "guide": "results/validated/README.md",
@@ -201,7 +205,7 @@
       "requirements": "docs/PUBLICATION_READINESS.md",
       "benchmark_panel": "results/validation/publication_benchmark/panel_v1.json",
       "benchmark_current": "results/validation/publication_benchmark/current.json",
-      "benchmark_source_review": "results/reviews/2026-10-22/publication_benchmark_complete/summary.json",
+      "benchmark_source_review": "results/reviews/2026-10-23/publication_pipeline_20261023_082248_271010/summary.json",
       "native_plan": "results/validation/publication_benchmark/native_completion_2026-10-21/plan.json",
       "start_verification": "results/validation/publication_benchmark/native_completion_2026-10-21/start_verification.json",
       "raw_root": "calcs/dft",
@@ -241,7 +245,9 @@
       "neutral_basis_complete_review": "results/reviews/2026-10-22/neutral_basis_complete/summary.json",
       "exact_selected_case_join": "results/reviews/2026-10-22/end_to_end_initial_join/summary.json",
       "saved_trimer_fine_check": "results/validation/saved_trimer_small_steps_2026-10-22/README.md",
-      "cached_example_committed_checkout": "results/validation/cached_thermochemistry_2026-10-22/fresh_git_archive.json"
+      "cached_example_committed_checkout": "results/validation/cached_thermochemistry_2026-10-22/fresh_git_archive.json",
+      "all_axes_decisions": "results/selection/current.json",
+      "targeted_coverage_plan": "docs/TARGETED_CANDIDATE_EXPANSION.md"
     },
     "manuscript": {
       "guide": "manuscript/README.md",
@@ -260,6 +266,22 @@
       "supporting_information": "manuscript/supporting_information.pdf",
       "revision_ledger": "manuscript/revision_plan.md",
       "visual_review": "manuscript/visual_review.json"
+    },
+    "candidate_decisions": {
+      "guide": "results/selection/README.md",
+      "current": "results/selection/current.json",
+      "policy": "config/candidate_feasibility.json",
+      "descriptor_front": "results/figures/selection/descriptor_pareto.pdf",
+      "evidence_matrix": "results/figures/selection/candidate_axis_matrix.pdf",
+      "workflow": "docs/ALL_AXES_SELECTION.md",
+      "verification": "results/validation/all_axes_2026-10-23/README.md",
+      "scope": "All required axes must pass before a decision-qualified front; 878 pending candidate designs and one control; no synthesis shortlist.",
+      "raw_roots": [
+        "calcs/dft",
+        "calcs/grafting",
+        "calcs/polymer_models"
+      ],
+      "independent_review": "results/reviews/2026-10-23/all_axes_current_release/summary.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/update_verified_slides.py", line 476, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/update_verified_slides.py", line 467, in main
+    result=publish(payload,out,a.update_plots);status.update(result);save(out/'status.json',status)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/update_verified_slides.py", line 437, in publish
+    raise RuntimeError('Supporting slides must follow the main research story in Backup')
+RuntimeError: Supporting slides must follow the main research story in Backup
