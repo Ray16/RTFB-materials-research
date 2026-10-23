@@ -98,12 +98,19 @@ def replay(root):
     claims = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(claims)
     paper = claims.audit()
+    auxiliary = None
+    if "auxiliary" in data:
+        spec = importlib.util.spec_from_file_location("auxiliary_replay", local(root, "code/scripts/release/review_package_auxiliary.py"))
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        auxiliary = module.replay_auxiliary(root, data, g, load, local)
     return dict(status="primary_cached_results_reproduced_offline", raw_states=len(state), benchmark_endpoints=len(errors),
         benchmark_metrics=metrics, reference_reactions=sum(r["name"].startswith("reference:") for r in data["reactions"]),
         base_assisted_values=sum(not r["name"].startswith("reference:") for r in data["reactions"]),
         finite_graph_partitions=len(partitions), finite_cycles=cycles,
         relative_basicity_controls=len(relative["comparisons"]), frozen_manuscript_claims_replayed=True,
         all_axis_eligible=paper["decision_followup"]["all_axis_eligible"],
+        auxiliary_scientific_records=auxiliary,
         all_reaction_sums_atom_charge_balanced=True, PMDI_first_reduction_V_vs_Fc=cached["PMDI_first_reduction_V_vs_Fc"],
         original_cluster_paths_opened=False, quantum_calculations_run=False, nuclear_partition_reintegrated=False,
         independent_physical_QC_reestablished=False, experimental_accuracy_inferred=False)

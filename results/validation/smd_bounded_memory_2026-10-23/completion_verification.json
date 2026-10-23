@@ -1,0 +1,49 @@
+{
+  "status": "both_spin_controls_and_execution_witnesses_verified",
+  "checked": 1792774851.496564,
+  "controls": [
+    {
+      "mult": 1,
+      "worker_pid": 172027,
+      "process_start": "89093039",
+      "CPU_affinity": [
+        158,
+        159
+      ],
+      "GPU": "0",
+      "finished": 1792773677.8469553,
+      "differences": {
+        "maximum_energy_difference_eV": 2.7284841053187847e-12,
+        "geometry_level_energy_difference_Ha": 1.4210854715202004e-13,
+        "maximum_coordinate_difference_A": 0.0,
+        "maximum_gradient_difference": 4.985768742304941e-14,
+        "maximum_Hessian_difference": 6.670275443099172e-12
+      }
+    },
+    {
+      "mult": 2,
+      "worker_pid": 173623,
+      "process_start": "89095945",
+      "CPU_affinity": [
+        160,
+        161
+      ],
+      "GPU": "1",
+      "finished": 1792773700.277044,
+      "differences": {
+        "maximum_energy_difference_eV": 9.094947017729282e-13,
+        "geometry_level_energy_difference_Ha": 7.105427357601002e-15,
+        "maximum_coordinate_difference_A": 0.0,
+        "maximum_gradient_difference": 5.093148125467906e-15,
+        "maximum_Hessian_difference": 8.975042931069765e-13
+      }
+    }
+  ],
+  "evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/1/status.json": "c8273b1ffa2a8a8f5322d88489d6a4d463fa67c1a770312aa04353ee00d59f96",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/status.json": "24d9124adb97fc00b0338f9ea5cf8db9745e9d942fde28d8475e245f84575ff1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/1/compact/execution/status.json": "0644c54e0914948bdf55ea2c7b3c5524618df9a0f5c92105acbeed3231d8dead",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/execution/status.json": "aef1d1c84930acd9b5d1be58f4ae3344f0056d72b781df6d45f52f7afb10d9ee"
+  },
+  "larger_case_memory_qualified": false
+}

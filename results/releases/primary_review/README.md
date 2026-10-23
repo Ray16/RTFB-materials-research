@@ -1,21 +1,28 @@
-# Portable primary-result review package
+# Portable scientific-result review package
 
-[Current status and archive hash](current.json) identify a 32 MB prepared archive
-on shared storage, containing 234 raw states and a source snapshot. It is not
-yet a public DOI deposition or the complete auxiliary SI raw-state release.
+[Current status and archive hash](current.json) identify an approximately 32 MiB
+prepared archive on shared storage with 243 thermochemical states, 26 accepted
+electronic oligomer models and six frozen-fragment single points. The earlier
+primary package remains preserved. No public DOI deposition is claimed.
 
-The relocated standard-library replay reconstructs all 39 primary benchmark
-endpoints, 67 reference grafting reactions, 20 base-assisted values, two
-relative-basicity controls and the twelve-state finite polymer partition.
-It also replays frozen manuscript claim checks. A separate NumPy/ASE CPU
-check reconstructs 233 Cartesian-Hessian projections and nuclear partitions.
-An audit hook rejects access to the original checkout/calculation paths.
-Corrupt bytes, a coherently rehashed wrong thermal identity, an unbalanced
-reaction and an escaping path are rejected.
+The relocated standard-library replay reconstructs all 39 benchmark endpoints,
+67 reference grafting reactions, 20 base-assisted values, two relative-basicity
+controls, the twelve-state finite polymer partition, five neutral-basis
+sensitivities and two restart energy comparisons. It also reconstructs three
+interaction/deformation partitions from raw electronic records and checks frozen
+fragment coordinates against their archived complex. Electronic-only records
+remain explicitly without free energies; the failed stacked trimer is excluded.
 
-The package includes original record bytes, frequencies, geometries, Hessians,
-source code, explicit environment records and an internal README. Extraction
-can be followed by:
+An optional NumPy/ASE CPU check reconstructs 242 Cartesian-Hessian mode sets and
+nuclear partitions, plus both restart geometry/frequency comparisons. Original
+checkout/calculation opens are blocked. Seven negative cases reject corrupt
+bytes, wrong thermal identity, unbalanced reactions, external paths, promotion
+of an alternative-basis certificate, wrong electronic spin and promotion of an
+electronic energy to a free energy. These are numerical/cached-record checks,
+not fresh SCF or repeated original physical qualification.
+
+The archive includes raw geometries, frequencies, Hessians, energy records, source
+code, explicit environments and an internal README. Run after extraction:
 
 ```bash
 python3 -I -S PACKAGE/code/scripts/release/reproduce_review_package.py PACKAGE
@@ -23,20 +30,16 @@ python3 -I -S PACKAGE/code/scripts/release/reproduce_review_package.py PACKAGE
 
 With NumPy/ASE and all six native thread caps set to one, use
 `PACKAGE/code/scripts/release/review_package_hessians.py PACKAGE` for the
-optional numerical reconstruction. This does not rerun SCF or repeat every
-original stationarity, spin or finite-difference gate.
-
-The [qualification records](../../validation/release_package_2026-10-23/qualified_v2/summary.json) and
-[archive member hashes](../../validation/release_package_2026-10-23/archive_check.json)
-are separate from the source package. Every one of the archive's 2,234 files
-matches its source SHA-256. The package remains frozen; later evidence needs
-a new package.
+optional numerical check. [Qualification records](../../validation/release_package_2026-10-23/qualified_v5/summary.json)
+and [all 2,498 archive-member hashes](../../validation/release_package_2026-10-23/archive_check_scientific_v5.json)
+are separate from the frozen package.
 
 Recreate with `scripts/release/prepare_review_package.py --out NEW_DIRECTORY`
-in the original checked scientific environment. The Git source commit and
-release-tool overlay hashes are explicit in the package manifest. Use
-`scripts/validation/review_release_package.py` to repeat relocation and
-negative checks. The repository's MIT code license is included. Data-deposition
-licensing and author metadata still require confirmation before deposition.
-No accessible polymer capacity, new physical QC or experimental accuracy is
-established by an offline reproduction.
+in the original scientific environment. A Git commit plus exact producer/test
+overlay hashes defines the code. `scripts/validation/review_release_package.py`
+repeats relocation and adverse-input checks.
+
+Execution/numerical diagnostic artifact closure, fresh GPU restoration, data
+deposition licensing, author metadata and public deposition remain open. The
+repository's MIT code license is included. No new material performance, physical
+admission or experimental accuracy follows from this review package.

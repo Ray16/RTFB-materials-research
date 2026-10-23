@@ -26,7 +26,8 @@ def main():
     base = Path(tempfile.mkdtemp(prefix="redox_review_relocation_"))
     relocated = base / "package"
     shutil.copytree(source, relocated)
-    original = str(Path(__file__).resolve().parents[2])
+    original = json.loads((source / "package_manifest.json").read_text()).get(
+        "original_checkout_root", str(Path(__file__).resolve().parents[2]))
     bootstrap = '''import os,runpy,sys
 forbidden=sys.argv[1]
 def guard(event,args):
@@ -55,7 +56,10 @@ runpy.run_path(sys.argv[0],run_name="__main__")
     if positive.returncode:
         raise ValueError("Relocated offline replay failed; see arithmetic.log")
     negatives = []
-    for case in ("changed_bytes", "rehashed_thermal_identity", "rehashed_unbalanced_reaction", "external_path"):
+    cases = ["changed_bytes", "rehashed_thermal_identity", "rehashed_unbalanced_reaction", "external_path"]
+    if "auxiliary" in json.loads((relocated / "data/manifest.json").read_text()):
+        cases += ["rehashed_basis_promotion", "rehashed_electronic_spin", "rehashed_electronic_G_promotion"]
+    for case in cases:
         folder = base / case / "package"
         shutil.copytree(relocated, folder)
         data_path = folder / "data/manifest.json"
@@ -76,9 +80,29 @@ runpy.run_path(sys.argv[0],run_name="__main__")
         elif case == "rehashed_unbalanced_reaction":
             coefficients = data["reactions"][0]["coefficients"]
             coefficients[next(iter(coefficients))] += 1
-        else:
+        elif case == "external_path":
             package["files_sha256"]["../outside-package"] = "0" * 64
-        if case in ("rehashed_thermal_identity", "rehashed_unbalanced_reaction"):
+        elif case == "rehashed_basis_promotion":
+            row = next(r for r in data["states"] if r["partition_kind"] == "projected_DFT_alternative_basis_control")
+            native_file = folder / "data" / row["files"]["native"]
+            native = json.loads(native_file.read_text())
+            native["primary_native_certificate_claimed"] = True
+            native_file.write_text(json.dumps(native))
+            partition_file = folder / "data" / row["files"]["partition"]
+            partition = json.loads(partition_file.read_text())
+            partition["identity"]["raw_native_sha256"] = sha(native_file)
+            partition_file.write_text(json.dumps(partition))
+            for role, file in (("native", native_file), ("partition", partition_file)):
+                relative = row["files"][role]
+                data["files_sha256"][relative] = sha(file)
+                package["files_sha256"]["data/" + relative] = sha(file)
+        else:
+            row = data["auxiliary"]["electronic"]["records"][0]
+            if case == "rehashed_electronic_spin":
+                row["mult"] = 3
+            else:
+                row["free_energy_available"] = True
+        if case not in ("changed_bytes", "external_path"):
             data_path.write_text(json.dumps(data))
             package["files_sha256"]["data/manifest.json"] = sha(data_path)
         package_path.write_text(json.dumps(package))
@@ -86,7 +110,9 @@ runpy.run_path(sys.argv[0],run_name="__main__")
         if failed.returncode == 0:
             raise ValueError("Negative package test accepted: " + case)
         expected = {"changed_bytes":"artifact differs", "rehashed_thermal_identity":"Thermal identity mismatch",
-            "rehashed_unbalanced_reaction":"balance fails", "external_path":"escapes root"}[case]
+            "rehashed_unbalanced_reaction":"balance fails", "external_path":"escapes root",
+            "rehashed_basis_promotion":"Alternative basis scope", "rehashed_electronic_spin":"Electronic-only geometry/energy identity or scope differs",
+            "rehashed_electronic_G_promotion":"Electronic-only geometry/energy identity or scope differs"}[case]
         if expected not in failed.stderr:
             raise ValueError("Negative test failed for an unrelated reason: " + case)
         negatives.append(dict(case=case, rejected=True, expected_failure=expected))

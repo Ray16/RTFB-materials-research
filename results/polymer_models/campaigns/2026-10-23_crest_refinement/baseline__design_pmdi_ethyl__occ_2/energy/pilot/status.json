@@ -96,12 +96,16 @@
       "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2/live_inputs/baseline__design_pmdi_ethyl__occ_2__pose0/geometry_review.json": "836dc18c6478387f057d67b22ee3572906e2ad660d861c6701a8f8a3d3156531"
     }
   },
-  "status": "computing",
+  "status": "failed_preserved",
   "stage": "memory_pilot",
   "started": 1792763753.2468562,
   "host": "lambda13",
   "pid": 3747921,
   "free_energy_computed": false,
   "minimum_Hessian_tested": false,
-  "synthesis_admission": false
+  "synthesis_admission": false,
+  "observed_peak_GPU_MiB": 91146,
+  "error": "RuntimeError('Large-model memory pilot exceeds admitted safety budget')",
+  "traceback": "Traceback (most recent call last):\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py\", line 211, in calculate\n    raise RuntimeError('Large-model memory pilot exceeds admitted safety budget')\nRuntimeError: Large-model memory pilot exceeds admitted safety budget\n",
+  "finished": 1792771902.6542425
 }

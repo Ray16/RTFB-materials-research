@@ -7,6 +7,7 @@ before reconstructing benchmark, route and finite-conformer arithmetic.
 import argparse
 import hashlib
 import io
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -52,8 +53,10 @@ def main():
     if args.out.exists():
         raise ValueError("Preserve the existing package; choose a new output directory")
     code_ref = subprocess.check_output(["git", "rev-parse", args.code_ref], cwd=ROOT, text=True).strip()
-    producer_paths = [Path(__file__).parent / name for name in
-        ("prepare_review_package.py", "reproduce_review_package.py", "review_package_hessians.py")]
+    producer_paths = [ROOT / path for path in (
+        "scripts/release/prepare_review_package.py", "scripts/release/reproduce_review_package.py",
+        "scripts/release/review_package_hessians.py", "scripts/release/review_package_auxiliary.py",
+        "scripts/validation/review_release_package.py", "tests/test_review_package_auxiliary.py")]
     producer_hashes = {str(p): digest(p) for p in producer_paths}
     pointer_path = ROOT / "manuscript/evidence/current.json"
     pointer = json.loads(pointer_path.read_text())
@@ -64,14 +67,14 @@ def main():
     sources = {str(pointer_path): digest(pointer_path), str(epoch / "manifest.json"): digest(epoch / "manifest.json")}
     load = lambda name: json.loads((epoch / name).read_text())
     catalog, aliases = {}, {}
-    def state(alias, directory, smiles, expected):
+    def state(alias, directory, smiles, expected, alternative_surface=None):
         directory = Path(directory).resolve()
         key = "s_" + hashlib.sha256(str(directory).encode()).hexdigest()[:20]
         if key in catalog:
             if abs(catalog[key]["expected_G_eV"] - expected) > 1e-8:
                 raise ValueError("Conflicting checked G values for one source geometry")
         else:
-            catalog[key] = dict(id=key, source=directory, smiles=smiles, expected_G_eV=expected, aliases=[])
+            catalog[key] = dict(id=key, source=directory, smiles=smiles, expected_G_eV=expected, aliases=[], alternative_surface=alternative_surface)
         if alias in aliases and aliases[alias] != key:
             raise ValueError("Conflicting state alias")
         aliases[alias] = key
@@ -155,8 +158,19 @@ def main():
         state("polymer:" + row["key"], row["state_dir"], cases[graph]["smiles"], row["G_eV"])
     for row in load("proton_transfer.json")["states"]:
         receipt("relative_basicity:" + row["id"], Path(row["source_receipt"]))
+    spec = importlib.util.spec_from_file_location("auxiliary_export", Path(__file__).with_name("review_package_auxiliary.py"))
+    auxiliary = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(auxiliary)
+    auxiliary_data = auxiliary.add_auxiliary_states(ROOT, load, state, sources, digest)
     # First inventory and verify every source; no bulk output exists on failure.
     files, exported = {}, []
+    def artifact(path):
+        path = Path(path)
+        h = digest(path)
+        sources[str(path)] = h
+        relative = "objects/" + h[:2] + "/" + h + path.suffix
+        files[relative] = dict(source=path, sha256=h, bytes=path.stat().st_size)
+        return relative
     for item in catalog.values():
         sd = item["source"]
         raw = json.loads((sd / "result.json").read_text())
@@ -169,6 +183,17 @@ def main():
             partition = json.loads((sd / "monatomic_thermal.json").read_text())
             thermal, kind = partition["G_thermal_eV"], "monatomic"
             paths["partition"] = sd / "monatomic_thermal.json"
+        elif item["alternative_surface"]:
+            from redox.workflows import polymer_campaign as api
+            independent = api.load_module("basis_export_partition", ROOT / "scripts/validation/audit/native_partition.py")
+            native_path = Path(item["alternative_surface"])
+            auxiliary.validate_alternative_surface(json.loads(native_path.read_text()))
+            partition = independent.read_partition(native_path, sd / "opt.xyz")
+            if partition is None:
+                raise ValueError("Alternative basis partition failed independent reconstruction")
+            paths.update(native=native_path, partition=Path(partition["path"]),
+                hessian=native_path.with_suffix("") / "hessian_cartesian.npy")
+            thermal, kind = partition["g_thermal_total_eV"], "projected_DFT_alternative_basis_control"
         else:
             native = load_native_thermal(sd, q, mult)
             if native is None:
@@ -185,13 +210,11 @@ def main():
             raise ValueError("Current raw G differs from frozen evidence: " + str(sd))
         roles = {}
         for role, path in paths.items():
-            h = digest(path)
-            sources[str(path)] = h
-            relative = "objects/" + h[:2] + "/" + h + path.suffix
-            files[relative] = dict(source=path, sha256=h, bytes=path.stat().st_size)
-            roles[role] = relative
+            roles[role] = artifact(path)
         exported.append(dict(id=item["id"], aliases=item["aliases"], smiles=item["smiles"], charge=q, mult=mult,
             partition_kind=kind, files=roles, checked_G_eV=total, original_state_directory=str(sd)))
+    auxiliary_data["proof_files"] = [artifact(path) for path in auxiliary_data.pop("proof_sources")]
+    auxiliary_data["electronic"] = auxiliary.electronic_inventory(ROOT, load, artifact, digest)
     size = sum(r["bytes"] for r in files.values())
     if size > args.max_GiB * 2**30 or shutil.disk_usage(next(p for p in args.out.parents if p.exists())).free < 2 * size + 2**30:
         raise ValueError("Package inventory exceeds the declared disk budget")
@@ -212,9 +235,8 @@ def main():
     archive = subprocess.check_output(["git", "archive", code_ref, *src_paths], cwd=ROOT)
     extract_source(archive, args.out / "code")
     overlays = {}
-    for name in ("prepare_review_package.py", "reproduce_review_package.py", "review_package_hessians.py"):
-        source = Path(__file__).parent / name
-        target = args.out / "code/scripts/release" / name
+    for source in producer_paths:
+        target = args.out / "code" / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, target)
         overlays[str(target.relative_to(args.out))] = digest(target)
@@ -222,7 +244,7 @@ def main():
         reference_oxidized=aliases["benchmark:ferrocene:ox"], reference_reduced=aliases["benchmark:ferrocene:neu"])
     data_manifest = dict(schema=1, temperature_K=298.15, states=exported, potential=potential, reactions=reactions,
         source_energy_conversion_kJ_mol_per_eV=96.485, SI_energy_conversion_kJ_mol_per_eV=96.48533212331002,
-        aliases=aliases, files_sha256={p:r["sha256"] for p,r in files.items()})
+        aliases=aliases, auxiliary=auxiliary_data, files_sha256={p:r["sha256"] for p,r in files.items()})
     (args.out / "data/manifest.json").write_text(json.dumps(data_manifest, indent=2) + "\n")
     (args.out / "README.md").write_text(
         "# Primary redox-polymer review package\n\n"
@@ -231,7 +253,9 @@ def main():
         "The offline replay checks all packaged bytes, state/geometry identities, "
         "atom/charge-balanced sums, 39 benchmark endpoints, 67 reference reactions, "
         "20 base-assisted values, two relative-basicity controls and the twelve-state "
-        "finite polymer partition. It also replays the frozen manuscript claim checks. "
+        "finite polymer partition. Additional records support five alternative-basis "
+        "controls, two interrupted/resumed comparisons, 26 stationary electronic models "
+        "and six frozen-fragment energies. It also replays frozen manuscript claim checks. "
         "Original absolute paths are descriptive provenance and are never opened.\n\n"
         "With NumPy and ASE installed, an additional CPU check reconstructs modes and "
         "nuclear sums from the raw Hessians:\n\n"
@@ -243,19 +267,20 @@ def main():
         "addressed by content hash. `data/manifest.json` joins aliases and defines sums. "
         "`package_manifest.json` binds every packaged file. Recorded conda/pip versions "
         "are in `code/environments/`; the full CUDA environment is not freshly qualified.\n\n"
-        "This is a prepared review package, not a DOI deposition or complete SI raw-state "
-        "release. Auxiliary basis/restart and electronic-decomposition raw records remain "
-        "release work. Broader conformer convergence, exact PMDI occupancy and material "
+        "This is a prepared scientific-record review package, not a DOI deposition. "
+        "Execution/numerical diagnostic artifact closure and a fresh GPU restoration "
+        "remain separate checks. Broader conformer convergence, exact PMDI occupancy and material "
         "performance remain unresolved. Code uses the existing MIT license; a deposition "
         "license for data and author metadata require confirmation before public release.\n")
     if any(digest(p) != h for p, h in producer_hashes.items()):
         raise ValueError("Release producer changed during preparation")
-    info = dict(schema=1, status="prepared_pending_offline_replay", prepared=time.time(), code_commit=code_ref,
+    info = dict(schema=1, status="prepared_pending_offline_replay", prepared=time.time(), code_commit=code_ref, original_checkout_root=str(ROOT),
         code_overlays_sha256=overlays, evidence_epoch="code/" + str(epoch.relative_to(ROOT)),
         raw_states=len(exported), benchmark_endpoints=39, reference_reactions=len(complete), base_assisted_values=len(reactions)-len(complete),
-        finite_native_states=12, raw_objects=len(files), raw_object_bytes=size,
+        finite_native_states=12, alternative_basis_states=len(auxiliary_data["basis"]), restart_states=len(auxiliary_data["restart"]),
+        electronic_only_records=len(auxiliary_data["electronic"]["records"]), raw_objects=len(files), raw_object_bytes=size,
         original_sources_sha256=sources, producer_sha256=producer_hashes, code_license="MIT", data_deposition_license=None, public_archive_deposited=False,
-        scope="Portable primary cached-result records; GPU rerun/environment qualification and complete SI auxiliary raw-state release remain separate.",
+        scope="Portable primary and auxiliary scientific records; GPU rerun/environment qualification and execution/numerical diagnostic artifact closure remain separate.",
         files_sha256={str(p.relative_to(args.out)):digest(p) for p in args.out.rglob("*") if p.is_file()})
     (args.out / "package_manifest.json").write_text(json.dumps(info, indent=2) + "\n")
     print(json.dumps({k:info[k] for k in ("status","raw_states","reference_reactions","base_assisted_values","raw_objects","raw_object_bytes")}))

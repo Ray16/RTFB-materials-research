@@ -114,8 +114,9 @@ material candidate is admitted; broader sampling and exact PMDI occupancy
 calculations remain separate work.
 
 
-The [portable primary-result package](releases/primary_review/README.md) contains
-234 raw states and replays the main benchmark, grafting and finite-polymer
-quantities after relocation. Its optional CPU check reconstructs 233 Hessian
-partitions. The 32 MB archive and all member hashes are verified; public
-deposition, complete auxiliary SI coverage and full GPU restoration remain open.
+The [portable scientific-result package](releases/primary_review/README.md) now
+contains 243 thermochemical states and 32 electronic-only records. It replays
+primary and auxiliary SI quantities after relocation; 242 Hessian partitions
+and both restart geometry comparisons pass CPU reconstruction. All 2,498
+archive files are verified. Public deposition, diagnostic artifact closure and
+full GPU restoration remain open.

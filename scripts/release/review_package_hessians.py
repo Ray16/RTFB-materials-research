@@ -27,7 +27,7 @@ def main():
     equations = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(equations)
     manifest = json.loads((root / "data/manifest.json").read_text())
-    checked = []
+    checked, geometries, frequencies = [], {}, {}
     for row in manifest["states"]:
         if row["partition_kind"] == "monatomic":
             continue
@@ -70,7 +70,27 @@ def main():
                 raise ValueError("Archived nuclear partition differs")
             thermal_errors[str(cutoff)] = difference
         checked.append(dict(id=row["id"], frequency_max_error_cm=error, nuclear_errors_eV=thermal_errors))
+        geometries[row["id"]] = xyz
+        frequencies[row["id"]] = modes
+    restart_checks = []
+    if "auxiliary" in manifest:
+        package = json.loads((root / "package_manifest.json").read_text())
+        epoch = reader.local(root, package["evidence_epoch"])
+        controls = json.loads((epoch / "quantum_restart.json").read_text())
+        for control in controls["controls"]:
+            a, b = [manifest["aliases"]["restart:" + control["case"] + "__" + phase] for phase in ("baseline", "resumed")]
+            x, y = geometries[a], geometries[b]
+            x, y = x-x.mean(axis=0), y-y.mean(axis=0)
+            u, _, vt = np.linalg.svd(x.T @ y)
+            rotation = u @ np.diag([1, 1, np.linalg.det(u @ vt)]) @ vt
+            rmsd = float(np.sqrt(np.mean(np.sum((x @ rotation-y)**2, axis=1))))
+            difference = float(np.max(abs(np.sort(frequencies[a])-np.sort(frequencies[b]))))
+            if (abs(rmsd-control["differences"]["aligned_RMSD_Angstrom"]) > 1e-8
+                    or abs(difference-control["differences"]["frequency_cm"]) > 1e-8):
+                raise ValueError("Archived restart geometry/frequency comparison differs")
+            restart_checks.append(dict(case=control["case"], aligned_RMSD_Angstrom=rmsd, frequency_cm=difference))
     result = dict(status="packaged_Hessians_modes_and_nuclear_sums_reconstructed", checked=len(checked), states=checked,
+        restart_geometry_frequency_checks=restart_checks,
         original_cluster_paths_opened=False, quantum_calculations_run=False, xTB_library_loaded=False,
         original_physical_QC_repeated=False, experimental_accuracy_inferred=False)
     if args.out:

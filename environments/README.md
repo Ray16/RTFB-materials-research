@@ -9,11 +9,17 @@ The bootstrap `setup_env.sh` now pins xTB 6.7.1 and its exact build, and pins th
 For an immediately portable example requiring only standard Python, use `examples/cached_thermochemistry/reproduce.py`. It reconstructs a potential and two grafting sums from ten cached state records without importing any of the quantum packages or accessing the original paths.
 
 
-The [primary review package](../results/releases/primary_review/README.md) now
-provides a relocated standard-library replay of 234 raw states, all primary
-benchmark and grafting sums, relative-basicity controls and the twelve-state
-polymer partition. An optional CPU NumPy/ASE check reconstructs 233 Hessian
-mode sets and nuclear sums without loading libxtb or opening original
-calculation paths. Recorded environment locks are included. This is cached
-result/numerical reproduction; fresh GPU installation and primary deployment
-portability remain separate qualification requirements.
+The [scientific review package](../results/releases/primary_review/README.md)
+provides a relocated standard-library replay of 243 thermochemical states and
+32 electronic-only records, including primary and auxiliary SI quantities. Its
+optional CPU check reconstructs 242 Hessian mode sets and nuclear sums, plus
+restart geometry/frequency comparisons. It loads no libxtb and opens no original
+calculation paths. Explicit environment locks are included; a fresh GPU
+installation and portable primary deployment still need qualification.
+
+
+GPU4PySCF's import name is `gpu4pyscf`, while the installed distributions are
+`gpu4pyscf-cuda12x==1.8.1` and `gpu4pyscf-libxc-cuda12x==0.8.1`. Both are already
+in the pip lock. A failed metadata lookup for the import name does not imply
+an editable or unrecorded installation; runtime checks inside reservations
+still verify the imported implementation.

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<string>", line 10, in <module>
+  File "/usr/lib/python3.10/runpy.py", line 289, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File "/usr/lib/python3.10/runpy.py", line 96, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/tmp/redox_review_relocation_r020pgyl/rehashed_basis_promotion/package/code/scripts/release/reproduce_review_package.py", line 133, in <module>
+    main()
+  File "/tmp/redox_review_relocation_r020pgyl/rehashed_basis_promotion/package/code/scripts/release/reproduce_review_package.py", line 124, in main
+    result = replay(args.package)
+  File "/tmp/redox_review_relocation_r020pgyl/rehashed_basis_promotion/package/code/scripts/release/reproduce_review_package.py", line 106, in replay
+    auxiliary = module.replay_auxiliary(root, data, g, load, local)
+  File "/tmp/redox_review_relocation_r020pgyl/rehashed_basis_promotion/package/code/scripts/release/review_package_auxiliary.py", line 124, in replay_auxiliary
+    validate_alternative_surface(surface)
+  File "/tmp/redox_review_relocation_r020pgyl/rehashed_basis_promotion/package/code/scripts/release/review_package_auxiliary.py", line 17, in validate_alternative_surface
+    raise ValueError("Alternative basis scope or original physical gates differ")
+ValueError: Alternative basis scope or original physical gates differ

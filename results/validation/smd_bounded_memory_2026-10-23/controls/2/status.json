@@ -1,0 +1,101 @@
+{
+  "status": "full_original_compact_equivalence_passed",
+  "mult": 2,
+  "host": "lambda13",
+  "pid": 173623,
+  "process_start": "89095945",
+  "CPU_affinity": [
+    160,
+    161
+  ],
+  "GPU": "1",
+  "started": 1792773640.4372652,
+  "arms": {
+    "original": {
+      "E_smd_eV": -1083.443726013816,
+      "E_gas_eV": -1083.48710436219,
+      "geometry_level_E_Ha": -39.77870784055236,
+      "coordinates_A": [
+        [
+          -7.7e-07,
+          -1.4e-07,
+          0.0
+        ],
+        [
+          1.09217718,
+          3.1e-07,
+          0.0
+        ],
+        [
+          -0.54608799,
+          0.94584562,
+          -0.0
+        ],
+        [
+          -0.54608842,
+          -0.94584579,
+          -0.0
+        ]
+      ]
+    },
+    "compact": {
+      "E_smd_eV": -1083.4437260138156,
+      "E_gas_eV": -1083.4871043621908,
+      "geometry_level_E_Ha": -39.778707840552364,
+      "coordinates_A": [
+        [
+          -7.7e-07,
+          -1.4e-07,
+          -0.0
+        ],
+        [
+          1.09217718,
+          3.1e-07,
+          0.0
+        ],
+        [
+          -0.54608799,
+          0.94584562,
+          0.0
+        ],
+        [
+          -0.54608842,
+          -0.94584579,
+          0.0
+        ]
+      ]
+    }
+  },
+  "differences": {
+    "maximum_energy_difference_eV": 9.094947017729282e-13,
+    "geometry_level_energy_difference_Ha": 7.105427357601002e-15,
+    "maximum_coordinate_difference_A": 0.0,
+    "maximum_gradient_difference": 5.093148125467906e-15,
+    "maximum_Hessian_difference": 8.975042931069765e-13
+  },
+  "evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/input.xyz": "26dc2bc689c7c00b5f6dd4a6e07d15efea4b63768b7b814d35e385897f12f031",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/original/opt.xyz": "4167bbb014d7d1639e17e02ec224a925e85b7312819ed2f60abc3c423484b63b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/original/gradient.npy": "3f59725f7ef218fe390c95072c7e4364e492dcb8afa4c4609848a123b52ac18a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/original/hessian.npy": "05826386831ac33421db4a2ef8bcf66f5f18833ee86ffa113fe554a0c9d14e8f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/original/energy.json": "83a8bacab501e42d1566944c5c56e3c088caf5e84637196fadce036d3175cb3e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/opt.xyz": "e6d67b38cea4ef226ff5a35a272b2b598e15ffd0894e1fc81d8652a8f0fad788",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/gradient.npy": "c401c260cd00c0442e70c6e140fa0a7a196538c506d3438b64488d72d27a5ff0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/hessian.npy": "12410118d12d878b6b4e75473fd4514751c69370e8cee05f222ca94aea474701",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/energy.json": "f064c009c32b8c5d893e4fceff23e060f9b2d038c8c45fa2e9ecdfd2d7ac3a74",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/execution/build_execution/original_build.py": "e2d08236dcb24a29eaa7da62864a34e8c0f803b74fc62d9712fb8201957445b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/execution/build_execution/compact_build.py": "e44cb0d127d686ddd3c262ef822d7eec0fba2f646eb2b45757ccd34c75569eb9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/execution/build_execution/original_composite.py": "0e98a7954ba501874febfc7fbc1c0d89e2b21fb8fac984b5a0c2ba3e8b874709",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2/compact/execution/build_execution/released_geometry_driver.py": "3f32fc6ea22a0897882d35189d58af7b8513c90000187a1bb62ea0439c7c2cd1"
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_bounded_smd_execution.py": "41ebc8b25c2c8f82a01fcd22842ac63c4ec2354306432342b150670b849d5815",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_bounded_execution.py": "91d538dcd16a525c76ba33fbdb217ec72cc1eae312f603b41535ba0751fd9f6c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_memory_execution.py": "fbed5df20bb50a715b0ccaf2d5cc7cf4fa6dc9f4b7f93881eb41136f7715c765",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/bounded_qualifier_mult2.py": "2a2f3a558001e4bbe371f159e7d078b60abb55d747b51615f2da78bcd051637e"
+  },
+  "scientific_model_changed": false,
+  "finished": 1792773700.277044,
+  "control_body_change": "Adapter path only; quantum models and acceptance thresholds unchanged"
+}

@@ -9,8 +9,16 @@
   ],
   "stage": "energy",
   "pilot": true,
-  "status": "computing",
-  "items": [],
+  "status": "stopped_preserving_outputs",
+  "items": [
+    {
+      "key": "baseline__design_pmdi_ethyl__occ_2_3__pose0",
+      "status": "failed_preserved",
+      "error": "CUDARuntimeError('cudaErrorMemoryAllocation: out of memory')"
+    }
+  ],
   "started": 1792767458.464092,
-  "active_key": "baseline__design_pmdi_ethyl__occ_2_3__pose0"
+  "active_key": "baseline__design_pmdi_ethyl__occ_2_3__pose0",
+  "error": "CUDARuntimeError('cudaErrorMemoryAllocation: out of memory')",
+  "finished": 1792772682.9139853
 }

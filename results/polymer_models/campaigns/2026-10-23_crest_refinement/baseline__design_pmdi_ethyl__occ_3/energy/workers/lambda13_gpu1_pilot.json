@@ -9,8 +9,16 @@
   ],
   "stage": "energy",
   "pilot": true,
-  "status": "computing",
-  "items": [],
+  "status": "stopped_preserving_outputs",
+  "items": [
+    {
+      "key": "baseline__design_pmdi_ethyl__occ_3__pose0",
+      "status": "failed_preserved",
+      "error": "RuntimeError('Large-model memory pilot exceeds admitted safety budget')"
+    }
+  ],
   "started": 1792763818.808048,
-  "active_key": "baseline__design_pmdi_ethyl__occ_3__pose0"
+  "active_key": "baseline__design_pmdi_ethyl__occ_3__pose0",
+  "error": "RuntimeError('Large-model memory pilot exceeds admitted safety budget')",
+  "finished": 1792771621.5862849
 }

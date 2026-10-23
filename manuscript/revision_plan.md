@@ -145,3 +145,24 @@ files match their source hashes. This substantially advances M7 but does not
 close the auxiliary SI raw-state coverage, fresh GPU deployment, data license,
 author metadata or public DOI deposition. The manuscript's immutable evidence
 and checked PDFs are unchanged during this release-preparation pass.
+
+
+## Auxiliary scientific records and memory recovery, 23 October
+
+The review package now includes five alternative-basis states, four completed
+restart states, 26 accepted electronic oligomers and six frozen fragments.
+Offline replay reconstructs basis shifts and electronic decomposition; CPU
+checks reconstruct 242 mode sets and both restart geometry/frequency
+comparisons. Seven adverse-input checks preserve scope and identity. This
+closes the named basis/restart/decomposition scientific-record gap in the
+prepared package, but diagnostic artifact closure, GPU restoration, data license,
+author metadata and public deposition remain release work.
+
+The three PMDI resource pilots did not yield accepted occupancy free energies.
+Two completed fixed-geometry evaluations but exceeded the unchanged 80 GiB
+safety budget. The largest compact-build branch later exhausted memory in a
+solvent-response product. A bounded workspace and algebraically equivalent
+vector contraction pass both spin controls without changing the solvent grid,
+basis, precision or physical gates. Three new same-model branches are prepared;
+currently suitable H100 devices are occupied. These implementation controls do
+not establish larger-system memory fitness or close M1/M4.

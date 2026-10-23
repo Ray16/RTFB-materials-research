@@ -1,20 +1,20 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 869,
+    "passed": 883,
     "skipped": 1,
-    "report": "results/validation/release_package_2026-10-23/software_tests.xml"
+    "report": "results/validation/smd_bounded_memory_2026-10-23/software_tests.xml"
   },
   "figure_environment": {
     "passed": 1,
     "report": "results/validation/crest_refinement_2026-10-23/figure_dependency_check.xml"
   },
   "report_sha256": {
-    "results/validation/release_package_2026-10-23/software_tests.xml": "076a57b1e80195365a4a7dfdec15200dd94bc915f0794df092ad620f06b7484c",
+    "results/validation/smd_bounded_memory_2026-10-23/software_tests.xml": "37751603bf606862e5e1ba3d229a7a86d32bc58c4792c382b164533528f92e6e",
     "results/validation/crest_refinement_2026-10-23/figure_dependency_check.xml": "74c7b26f98b9db7681f53917c4c6cc51503872700cd96f6148369df284848a7a",
     "results/reviews/2026-10-23/manuscript_all_axes_revision/final_epoch_checks.xml": "6ce0c40fd58f7a7e916f2573980e6e4f9260d6dfdacae6a4631191bf0502c6e6"
   },
-  "integration": "Regressions and package path guards pass. A relocated 234-state primary bundle reconstructs all primary benchmark and grafting results and finite polymer cycles; 233 Hessian modes/nuclear partitions independently replay on CPU. No SCF rerun, new physical admission or public deposition inferred.",
+  "integration": "Primary and SI cached record replay, 242 Hessian reconstructions, seven adverse-input cases and bounded-execution algebra/reference-continuity tests pass. Both spin execution controls pass; larger PMDI pilots await suitable free resources. Scientific gates remain unchanged.",
   "experimental_accuracy_inferred": false,
   "final_epoch_checks": {
     "passed": 7,

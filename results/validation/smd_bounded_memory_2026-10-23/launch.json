@@ -1,0 +1,55 @@
+{
+  "host": "lambda13",
+  "launches": [
+    {
+      "mult": 1,
+      "gpu": 0,
+      "pid": 169477,
+      "process_start": "89089557",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "0",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/reserved_gpu0_spin1",
+        "--threads",
+        "2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_bounded_smd_execution.py",
+        "--mult",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/1"
+      ],
+      "started": 1792773556.154184
+    },
+    {
+      "mult": 2,
+      "gpu": 1,
+      "pid": 169592,
+      "process_start": "89089658",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/reserved_gpu1_spin2",
+        "--threads",
+        "2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_bounded_smd_execution.py",
+        "--mult",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23/controls/2"
+      ],
+      "started": 1792773557.1615632
+    }
+  ]
+}

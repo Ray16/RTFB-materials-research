@@ -1,0 +1,49 @@
+{
+  "host": "lambda13",
+  "capacity": {
+    "online_cpus": 384,
+    "load_1m": 197.14599609375,
+    "available_RAM_bytes": 1574870937600,
+    "minimum_RAM_GiB": 32
+  },
+  "versions": {
+    "pyscf": "2.14.0",
+    "ase": "3.29.0",
+    "numpy": "2.2.6",
+    "geometric": "1.1.1",
+    "gpu4pyscf": "1.8.1"
+  },
+  "suitable_devices": [
+    [
+      0,
+      {
+        "index": 0,
+        "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      }
+    ],
+    [
+      1,
+      {
+        "index": 1,
+        "uuid": "GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      }
+    ]
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_bounded_execution.py": "91d538dcd16a525c76ba33fbdb217ec72cc1eae312f603b41535ba0751fd9f6c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_memory_execution.py": "d5130bd5ae33560322fea44eab55991e9304b51101f2f428524870cf76e8a4f8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_bounded_smd_execution.py": "41ebc8b25c2c8f82a01fcd22842ac63c4ec2354306432342b150670b849d5815",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_memory_execution.py": "fbed5df20bb50a715b0ccaf2d5cc7cf4fa6dc9f4b7f93881eb41136f7715c765",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/gpu.py": "4d0c547cd710c8acca1434ce5fce2b001b92ffac3e83aeebf1e4bceebdc393eb",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/__init__.py": "3fd60bfb141d3315d7a2536dfa47df904b6d4a5ba1679f3ec4df85fa6c9c41a0"
+  },
+  "expected_tasks": 2,
+  "expected_outputs": "Two full original-versus-bounded energy/geometry/gradient/Hessian controls; no large-case admission",
+  "started": 1792773556.1470218
+}
