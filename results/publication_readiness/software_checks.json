@@ -1,20 +1,20 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 862,
+    "passed": 869,
     "skipped": 1,
-    "report": "results/reviews/2026-10-23/manuscript_all_axes_revision/software_tests.xml"
+    "report": "results/validation/release_package_2026-10-23/software_tests.xml"
   },
   "figure_environment": {
     "passed": 1,
     "report": "results/validation/crest_refinement_2026-10-23/figure_dependency_check.xml"
   },
   "report_sha256": {
-    "results/reviews/2026-10-23/manuscript_all_axes_revision/software_tests.xml": "5d0bdd98bb9fb7f10c8845e6b3ddbf9ed8eed31a86dffe6d4eb98523b9f879d8",
+    "results/validation/release_package_2026-10-23/software_tests.xml": "076a57b1e80195365a4a7dfdec15200dd94bc915f0794df092ad620f06b7484c",
     "results/validation/crest_refinement_2026-10-23/figure_dependency_check.xml": "74c7b26f98b9db7681f53917c4c6cc51503872700cd96f6148369df284848a7a",
     "results/reviews/2026-10-23/manuscript_all_axes_revision/final_epoch_checks.xml": "6ce0c40fd58f7a7e916f2573980e6e4f9260d6dfdacae6a4631191bf0502c6e6"
   },
-  "integration": "Full regressions, final-epoch numerical and all-axis anti-promotion checks pass. The 14-page manuscript and 10-page SI compile from unchanged frozen evidence; chemical input graphs and compact rendering checked. No uncomputed material property is admitted.",
+  "integration": "Regressions and package path guards pass. A relocated 234-state primary bundle reconstructs all primary benchmark and grafting results and finite polymer cycles; 233 Hessian modes/nuclear partitions independently replay on CPU. No SCF rerun, new physical admission or public deposition inferred.",
   "experimental_accuracy_inferred": false,
   "final_epoch_checks": {
     "passed": 7,

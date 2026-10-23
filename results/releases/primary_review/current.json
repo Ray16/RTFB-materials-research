@@ -1,0 +1,40 @@
+{
+  "status": "primary_cached_review_package_portability_checked_public_deposition_pending",
+  "prepared_package": "calcs/releases/2026-10-23_primary_review_v2",
+  "compressed_archive": "calcs/releases/2026-10-23_primary_review_v2.tar.zst",
+  "compressed_bytes": 33264190,
+  "archive_sha256": "4ded821ea83d8c370d186e293d0aeec2a5a69955118501f2316ec82ad388c82e",
+  "package_manifest_sha256": "0a739087c9d245bf8afe51b5939364c845c97db6fa2ddd466e3cf66f5fc7f670",
+  "code_snapshot_commit": "1afc99ff56f383f2b273835956fdca280a973716",
+  "raw_states": 234,
+  "raw_objects": 1597,
+  "primary_coverage": {
+    "benchmark_endpoints": 39,
+    "reference_reactions": 67,
+    "base_assisted_values": 20,
+    "relative_basicity_controls": 2,
+    "finite_graph_partitions": 6,
+    "finite_native_states": 12
+  },
+  "CPU_Hessian_states": 233,
+  "maximum_frequency_reconstruction_error_cm": 2.408007127030487e-10,
+  "maximum_nuclear_reconstruction_error_eV": 7.858602657506708e-12,
+  "offline_replay": "results/validation/release_package_2026-10-23/qualified_v2/summary.json",
+  "archive_verification": "results/validation/release_package_2026-10-23/archive_check.json",
+  "public_DOI_created": false,
+  "public_archive_deposited": false,
+  "remaining_release_work": [
+    "Auxiliary basis/restart and electronic-decomposition raw-state closure",
+    "Fresh installation of the full GPU environment and portable primary deployment",
+    "Data deposition license, author metadata and public deposition"
+  ],
+  "scientific_qualification_extended": false,
+  "source_sha256": {
+    "calcs/releases/2026-10-23_primary_review_v2/package_manifest.json": "0a739087c9d245bf8afe51b5939364c845c97db6fa2ddd466e3cf66f5fc7f670",
+    "results/validation/release_package_2026-10-23/qualified_v2/summary.json": "1deb67e11faf784b7dae8387ee653ea8ed56b4b8dae5649135ca06ed02098618",
+    "results/validation/release_package_2026-10-23/qualified_v2/arithmetic.json": "e4e078dee4bf8f9af2010265eb47d937586d78c7014560d52718c466bbd0367d",
+    "results/validation/release_package_2026-10-23/qualified_v2/hessians.json": "54733c3d11c4006d41951517cc532384dd259b31731d1d8885c4a1a728f9cbd3",
+    "results/validation/release_package_2026-10-23/archive_check.json": "2d91688783a6ec726d7e714a3ecbffd8b74e2cda3e04ef3946cea7679035da25"
+  },
+  "checked": 1792771639.0454366
+}

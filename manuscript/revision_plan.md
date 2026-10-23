@@ -131,3 +131,17 @@ occupancy results and the remaining chemical evidence. M4 remains incomplete
 without wider conformer/configuration convergence. The final graphical abstract,
 public raw-state deposition and author declarations remain open. No submission
 readiness is inferred from a successful build.
+
+
+## Portable primary raw-state package, 23 October
+
+A source-bound 234-state package now reproduces 39 benchmark endpoints, 67
+reference reactions, 20 base-assisted values, two relative-basicity controls
+and the twelve-state finite polymer partition after relocation. The standard
+library replay runs from `/` with original checkout/calculation opens blocked;
+four corrupt/misbound/path-escape cases are rejected. An optional CPU check
+reconstructs 233 Hessian mode sets and nuclear partitions. All 2,234 archived
+files match their source hashes. This substantially advances M7 but does not
+close the auxiliary SI raw-state coverage, fresh GPU deployment, data license,
+author metadata or public DOI deposition. The manuscript's immutable evidence
+and checked PDFs are unchanged during this release-preparation pass.

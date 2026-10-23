@@ -112,3 +112,10 @@ paper has 14 pages and the SI 10. The [compact PMDI construction](figures/polyme
 prepared graph while making chemical labels legible at manuscript size. No full
 material candidate is admitted; broader sampling and exact PMDI occupancy
 calculations remain separate work.
+
+
+The [portable primary-result package](releases/primary_review/README.md) contains
+234 raw states and replays the main benchmark, grafting and finite-polymer
+quantities after relocation. Its optional CPU check reconstructs 233 Hessian
+partitions. The 32 MB archive and all member hashes are verified; public
+deposition, complete auxiliary SI coverage and full GPU restoration remain open.
