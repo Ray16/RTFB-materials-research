@@ -16,8 +16,8 @@ revision, not by a proposed calculation or a running job.
 | M5: geometry/Hessian basis imbalance | Five matched neutral-SVPD controls independently reconstruct, giving -11.7 to -35.1 mV shifts with the existing anion/Fc fixed. The main paper and SI now report geometry, nuclear-partition and resulting potential changes separately. Keep primary source-frozen records unchanged. Alternative-basis controls must pass their physical checks and cannot inherit the original certificate by relabeling. | Five-control sensitivity checked and reported; full basis convergence not claimed |
 | M6: Methods/QC precision | State exactly two tested Hessian columns and both displacement sizes; explain |nu| for tolerated -5..0 cm^-1 modes, unscaled frequencies, spin-contamination threshold 0.1, actual force values and xTB symmetry detection. Remove the unsupported adjective “conservative” for the 4.5e-4 force threshold. Cite qRRHO and program/method papers. | Exact gate description included; further physics controls remain separate |
 | M7: portable/public reproduction | A fresh isolated CPU environment now reproduces graphs, route holds and a figure; that earlier example did not reproduce a potential or grafting G from raw states. A relocated standard-library example now reconstructs a potential and both HCl-reference/DBU grafting sums from ten hashed raw states. Explicit conda artifacts and pip versions are recorded; xTB/build and core scientific dependencies are pinned. Portable primary paths, fresh GPU installation and a full raw-state/public DOI release remain open. Prepare a reviewable public archive and deposition metadata; a DOI/public deposition is not yet created. Retain strict integrity checks for primary scientific admission. | Partly implemented; full release open |
-| M8: literature context | Verify each DOI and source. Add computational electrochemistry/reference, high-throughput design, redox-polymer, workflow/provenance and missing method literature where it supports a specific argument. Do not turn remembered references into unverified citations. | Expanded to 28 checked cited references, including the exact precursor patent; further relevant context in progress |
-| M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 14 and 10 pages, respectively |
+| M8: literature context | Verify each DOI and source. Add computational electrochemistry/reference, high-throughput design, redox-polymer, workflow/provenance and missing method literature where it supports a specific argument. Do not turn remembered references into unverified citations. | Expanded to 29 checked cited references, including the exact precursor patent; further relevant context in progress |
+| M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 14 and 11 pages, respectively |
 | Remaining endpoint | The fixed panel now has 39/39 endpoints; the last triplet alternative is 0.707 eV above the selected singlet electronically. Independent reconstruction: 111 checks, zero discrepancies. Alternative-spin thermochemistry remains explicitly unresolved. | Calculation/reconstruction resolved; latest draft updated |
 
 The end-to-end examples and adequate conformer evidence are required before
@@ -166,3 +166,11 @@ vector contraction pass both spin controls without changing the solvent grid,
 basis, precision or physical gates. Three new same-model branches are prepared;
 currently suitable H100 devices are occupied. These implementation controls do
 not establish larger-system memory fitness or close M1/M4.
+
+
+The subsequent immutable epoch `2026-10-23_reference_origin_review` audits the
+reported DIPEA MeCN pKaH of 18.6. The author-posted primary source gives a
+specific PCM-estimate note alongside a conflicting generic experimental label.
+It is therefore excluded from independent measured validation. Model-to-model
+sensitivity is reported separately; primary grafting sums and all-axis decisions
+are unchanged. The paper and SI are rebuilt and visually checked at 14/11 pages.

@@ -2,7 +2,7 @@
 
 Provisional title: **A route-aware computational framework for redox motif selection on preformed polymers**.
 This is a methods-focused in silico paper. The evidence snapshot is
-[23 October 2026](evidence/2026-10-23_all_axes_checked/manifest.json); incomplete physical analyses
+[23 October 2026](evidence/2026-10-23_reference_origin_review/manifest.json); incomplete physical analyses
 remain explicit. Authorship, venue and submission timing are undecided.
 
 The central question is how to combine exact molecular identity, defined-condition

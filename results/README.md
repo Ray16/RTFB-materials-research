@@ -14,7 +14,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
-| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-23_all_axes_checked/manifest.json) |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-23_reference_origin_review/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 
@@ -108,7 +108,7 @@ The [segment-deformation audit](reviews/2026-10-23/segment_deformation_audit_v2/
 The October 23 manuscript revision adds conjunctive admission across all required
 axes, an exact PMDI precursor/route/capacity assessment and all twelve inherited
 phthalimide native free energies in a finite two-pose partition. The checked
-paper has 14 pages and the SI 10. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
+paper has 14 pages and the SI 11. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
 prepared graph while making chemical labels legible at manuscript size. No full
 material candidate is admitted; broader sampling and exact PMDI occupancy
 calculations remain separate work.
@@ -120,3 +120,7 @@ primary and auxiliary SI quantities after relocation; 242 Hessian partitions
 and both restart geometry comparisons pass CPU reconstruction. All 2,498
 archive files are verified. Public deposition, diagnostic artifact closure and
 full GPU restoration remain open.
+
+The [DIPEA reference-origin audit](validation/dipea_reference_origin_2026-10-23_checked/README.md) excludes the reported MeCN pKaH 18.6 from independent measured validation because its specific source note identifies a PCM estimate while another table gives a generic experimental label. The current manuscript records this conflict. Primary reaction energies and candidate decisions are unchanged.
+
+The [32 GB solvent-workspace qualification](validation/smd_workspace_32GB_2026-10-23/README.md) records passed small spin controls, completed 115-atom single-point SCF checkpoints and the subsequent preserved gradient allocation failure. The separate bounded-gradient control also passes. Large-geometry optimization and native thermochemistry on this hardware remain unqualified.

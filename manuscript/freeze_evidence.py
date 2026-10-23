@@ -63,6 +63,7 @@ def main():
         "all_axes_summary.json": "results/selection/all_axes_2026-10-23_capacity_release/summary.json",
         "all_axes_decisions.json": "results/selection/all_axes_2026-10-23_capacity_release/decisions.json",
         "segment_relaxation.json": "results/reviews/2026-10-23/segment_deformation_audit_v2/summary.json",
+        "basicity_reference_origin.json": "results/validation/dipea_reference_origin_2026-10-23_checked/summary.json",
     }
     plots = {
         "benchmark.pdf": "results/figures/validation/retrospective_redox_benchmark.pdf",

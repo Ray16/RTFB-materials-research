@@ -101,6 +101,23 @@ def audit_decision_followup(load):
         if abs(math.fsum(f["deformation_kJ_mol"] for f in pair["fragments"])
                - pair["deformation_kJ_mol_CODATA"]) > 1e-6:
             raise ValueError("Signed fragment deformation does not close")
+    origin = None
+    try:
+        origin = load("basicity_reference_origin.json")
+    except FileNotFoundError:
+        pass  # Earlier immutable epochs predate this source-origin review.
+    if origin is not None:
+        if (origin["independent_experimental_pKaH_MeCN"] is not None
+                or origin["source_role"]["independent_experimental_origin_eligible"]
+                or origin["source"]["origin_class"] != "computed_PCM_estimate"
+                or origin["primary_grafting_results_modified"] or origin["candidate_decisions_modified"]):
+            raise ValueError("Computed DIPEA source was promoted to experimental validation")
+        capture = -.00831446261815324*298.15*math.log(10)*(origin["source"]["reported_value"]-load("acid_base.json")["acid_anchor"]["pKa_MeCN"])
+        if abs(capture-origin["computed_literature_capture_kJ_mol"]) > 1e-10:
+            raise ValueError("DIPEA model sensitivity capture does not reconstruct")
+        for row in origin["candidate_model_sensitivities"]:
+            if abs(row["reference_deltaG_kJ_mol"]+capture-row["fixed_reference_plus_computed_literature_capture_kJ_mol"]) > 1e-9 or row["calibrated_full_route_prediction"]:
+                raise ValueError("DIPEA sensitivity changed or acquired a calibration claim")
     return dict(finite_native_G=len(states), finite_graph_partitions=len(partitions),
                 finite_cycles=len(baseline["cycles"]), capacity_graphs=len(graph_bounds),
                 capacity_compositions=len(combinations),

@@ -1,0 +1,38 @@
+{
+  "host": "lambda2",
+  "gpu": 0,
+  "device": {
+    "index": 0,
+    "uuid": "GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074",
+    "name": "Tesla V100-SXM2-32GB",
+    "memory_MiB": 32768.0,
+    "compute_capability": "7.0"
+  },
+  "capacity": {
+    "online_cpus": 80,
+    "load_1m": 17.01123046875,
+    "available_RAM_bytes": 510986801152,
+    "minimum_RAM_GiB": 128
+  },
+  "pid": 917908,
+  "process_start": "1357900461",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "0",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_workspace_32GB_2026-10-23/reserved_large_pilot_gpu0",
+    "--threads",
+    "2",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_polymer_workspace.py",
+    "pilot",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_workspace_32GB_2026-10-23/pilot_occ_2"
+  ],
+  "started": 1792778384.6429133,
+  "scope": "Single resource/numeric-continuity pilot; wider fan-out waits on measured fit"
+}

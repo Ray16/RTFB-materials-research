@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("manuscript_claims", ROOT / "manuscript/check_claims.py")
 CLAIMS = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(CLAIMS)
-EPOCH = ROOT / "manuscript/evidence/2026-10-23_all_axes_checked"
+EPOCH = ROOT / "manuscript/evidence/2026-10-23_reference_origin_review"
 
 
 def load(name):
@@ -58,3 +58,13 @@ def test_build_accepts_line_wrapped_draft_labels():
 def test_build_still_requires_pending_labels():
     with pytest.raises(RuntimeError, match="Draft labels"):
         manuscript_builder().check_draft_labels("Working draft\nDBU\nready for publication")
+
+
+def test_paper_reconstruction_rejects_computed_reference_promoted_to_experiment():
+    def changed(name):
+        value = load(name)
+        if name == "basicity_reference_origin.json":
+            value["independent_experimental_pKaH_MeCN"] = 18.6
+        return value
+    with pytest.raises(ValueError, match="promoted to experimental"):
+        CLAIMS.audit_decision_followup(changed)

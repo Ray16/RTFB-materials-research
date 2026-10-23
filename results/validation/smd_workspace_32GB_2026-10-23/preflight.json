@@ -1,0 +1,50 @@
+{
+  "host": "lambda2",
+  "capacity": {
+    "online_cpus": 80,
+    "load_1m": 18.55419921875,
+    "available_RAM_bytes": 403851153408,
+    "minimum_RAM_GiB": 32
+  },
+  "versions": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf-cuda12x": "1.8.1",
+    "ase": "3.29.0",
+    "numpy": "2.2.6",
+    "geometric": "1.1.1"
+  },
+  "devices": [
+    [
+      2,
+      {
+        "index": 2,
+        "uuid": "GPU-891d8452-4937-16a3-d9a7-36baf0370c9a",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      }
+    ],
+    [
+      3,
+      {
+        "index": 3,
+        "uuid": "GPU-a282ce96-9ef7-08f7-f0c4-c17407a0bae9",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      }
+    ]
+  ],
+  "workspace_GiB": 28,
+  "expected_controls": 2,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_workspace_execution.py": "b3fd380b2a521f215dec7b732b355952363a3f2f9e28fd0bfa8c3d193e06bd3f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_bounded_execution.py": "91d538dcd16a525c76ba33fbdb217ec72cc1eae312f603b41535ba0751fd9f6c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_memory_execution.py": "d5130bd5ae33560322fea44eab55991e9304b51101f2f428524870cf76e8a4f8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_workspace.py": "8a92054e0eb5ec23abbe840bc750d77e99d4d89574438b261ddbb0c15602b685",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_memory_execution.py": "fbed5df20bb50a715b0ccaf2d5cc7cf4fa6dc9f4b7f93881eb41136f7715c765",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/gpu.py": "4d0c547cd710c8acca1434ce5fce2b001b92ffac3e83aeebf1e4bceebdc393eb"
+  },
+  "scientific_model_changed": false,
+  "started": 1792777618.5203726
+}
