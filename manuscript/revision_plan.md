@@ -62,3 +62,24 @@ remain pending and one comparison control is separate. The eight-model molecular
 descriptor front is explicitly not a full material shortlist. The 34-slot focused
 expansion plan is predeclared comparison coverage, not 34 additional molecules.
 These improvements do not close the end-to-end or polymer-convergence comments.
+
+## Conformer thermochemistry follow-up, 23 October
+
+A finite partition implementation and an all-pose native thermal adapter now
+reconstruct the six inherited spacing G records against their active electronic
+and projected nuclear/spin parents. The other six original poses are requested
+in a new source-bound campaign; a reserved 119-atom native pilot has actually
+started. This quantifies the two-pose baseline while wider CREST searches run.
+All six original pairs have heavy-atom RMSDs above 3 Å. Duplicate grouping uses
+complete-link geometry/energy checks with cutoff sensitivity; search hit counts
+never become statistical weights. Neither two-pose sampling nor a running job
+closes M4. The main manuscript and its immutable evidence remain unchanged until
+new physical results are independently checked.
+
+The read-only segment-deformation audit resolves the numerical part of m5. The
+small +0.38–0.56 kJ/mol totals are signed reference differences, and two include
+cancellation between negative and positive fragment contributions. Pair relaxation
+is 0.25–0.70 Å over 57–93 logged optimizer steps. The next SI revision must report
+the individual terms and avoid calling the total a positive-definite strain
+penalty. This remains a sampled, two-level electronic decomposition, with no
+global monomer minimum or Hessian-minimum claim.

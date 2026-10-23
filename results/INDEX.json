@@ -116,7 +116,19 @@
         }
       ],
       "spacing_construction_figure": "results/figures/polymer_models/spacing_construction.pdf",
-      "expanded_conformer_searches": "results/validation/conformer_sampling_2026-10-23/README.md"
+      "expanded_conformer_searches": "results/validation/conformer_sampling_2026-10-23/README.md",
+      "all_pose_native_baseline": {
+        "guide": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/README.md",
+        "plan": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/plan.json",
+        "current": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/current.json",
+        "coordinator": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/coordinator.json",
+        "actual_start_verification": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/start_verification.json",
+        "raw_root": "calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2",
+        "scope": "Both original phthalimide DFT poses per occupancy graph; six inherited native G plus six requested; not conformer convergence",
+        "method": "docs/CONFORMER_ENSEMBLES.md"
+      },
+      "segment_deformation_audit": "results/reviews/2026-10-23/segment_deformation_audit_v2/summary.json",
+      "signed_deformation_figure": "results/figures/polymer_models/segment_deformation_components.pdf"
     },
     "candidates": {
       "guide": "results/candidates/README.md",
@@ -165,8 +177,8 @@
     "slides": {
       "guide": "slides/README.md",
       "current": "slides/redox_workflow.pdf",
-      "checked_refresh": "results/reviews/2026-10-23/presentation_refresh_v2/status.json",
-      "visual_review": "results/reviews/2026-10-23/presentation_refresh_v2/visual_review.json"
+      "checked_refresh": "results/reviews/2026-10-23/presentation_ensemble_refresh/status.json",
+      "visual_review": "results/reviews/2026-10-23/presentation_ensemble_refresh/visual_review.json"
     },
     "discovery": {
       "guide": "results/discovery/README.md",
@@ -281,7 +293,7 @@
         "calcs/grafting",
         "calcs/polymer_models"
       ],
-      "independent_review": "results/reviews/2026-10-23/all_axes_current_release/summary.json"
+      "independent_review": "results/reviews/2026-10-23/all_axes_ensemble_code_release/summary.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

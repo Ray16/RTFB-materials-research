@@ -1,6 +1,6 @@
 # Figure captions
 
-Audited snapshot: 2026-10-23T03:26:56.484627-05:00. 75 registered exact grafts, 62 with admitted potential calculations.
+Audited snapshot: 2026-10-23T05:33:27.705929-05:00. 75 registered exact grafts, 62 with admitted potential calculations.
 
 **Potential–capacity map.** First (a) and second (b) declared redox-event potentials versus Fc/Fc+ in MeCN and nominal gravimetric capacity of the p-methylbenzyl-capped local graft model. Only eligible two-electron anolytes are shown; gray context points are subdued and three numbered leaders are colored. Nominal capacity follows the declared electron count and molecular mass, excluding counterions, electrolyte, solvent and polymer. Missing potential endpoints are omitted, not set to zero. Anolyte and catholyte roles must be assessed separately; no overall ranking or cell voltage follows.
 
