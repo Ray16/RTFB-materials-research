@@ -19,6 +19,14 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def check_draft_labels(text):
+    # pdfLaTeX may hyphenate a required word at a physical line boundary.
+    joined = re.sub(r"(?<=[A-Za-z])-\s*\n\s*(?=[A-Za-z])", "", text)
+    joined = re.sub(r"\s+", " ", joined)
+    if any(label not in joined for label in ("Working draft", "DBU", "submission requirements")):
+        raise RuntimeError("Draft labels, pending analyses or results absent from built PDF")
+
+
 def main():
     from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity
 
@@ -55,17 +63,18 @@ def main():
         log = (temporary / (name + ".log")).read_text()
         if "undefined references" in log or "undefined citations" in log or "There were undefined" in log:
             raise RuntimeError("Unresolved citations or references in " + name)
-        pdf = PAPER / (name + ".pdf")
-        shutil.copyfile(temporary / pdf.name, pdf)
+        pdf = temporary / (name + ".pdf")
         reader = PdfReader(pdf)
         documents[name] = dict(pages=len(reader.pages), pdf_sha256=sha(pdf),
             overfull_boxes=re.findall(r"Overfull \\[hv]box[^\n]*", log))
     if any(sha(ROOT / p) != expected for p, expected in source.items()):
         raise ValueError("Manuscript source changed during build")
-    reader = PdfReader(PAPER / "manuscript.pdf")
+    reader = PdfReader(temporary / "manuscript.pdf")
     text = "\n".join(page.extract_text() for page in reader.pages)
-    if "Working draft" not in text or "DBU" not in text or "submission requirements" not in text:
-        raise RuntimeError("Draft labels, pending analyses or results absent from built PDF")
+    check_draft_labels(text)
+    # Publish only after both documents and all source/label checks have passed.
+    for name in documents:
+        shutil.copyfile(temporary / (name + ".pdf"), PAPER / (name + ".pdf"))
     report = dict(status="draft_built_with_frozen_evidence", checked_UTC=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                   pages=len(reader.pages), source_sha256=source, pdf_sha256=sha(PAPER / "manuscript.pdf"),
                   build_logs=str(temporary), submission_ready=False, documents=documents,

@@ -1,0 +1,54 @@
+{
+  "status": "exact_prepared_candidate_graphs_drawn",
+  "layout": "compact_three_columns",
+  "candidate_id": "design_pmdi_ethyl",
+  "enumerated_aliases": [
+    "search_pmdi_77642a20bc89"
+  ],
+  "cases": [
+    {
+      "occupied_sites": [],
+      "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_sampling_2026-10-23/reference_repeats/all_same/case.json",
+      "backbone_carbons": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2
+    },
+    {
+      "occupied_sites": [
+        2
+      ],
+      "smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc([C@@H](C[C@H](C[C@H](CCc5ccccc5)c5ccc(CCl)cc5)c5ccc(CCl)cc5)C[C@@H](C)c5ccccc5)cc4)c(=O)c3cc2c1=O",
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2/case.json",
+      "backbone_carbons": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2
+    },
+    {
+      "occupied_sites": [
+        2,
+        3
+      ],
+      "smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc([C@@H](C[C@H](CCc5ccccc5)c5ccc(CCl)cc5)C[C@@H](C[C@@H](C)c5ccccc5)c5ccc(Cn6c(=O)c7cc8c(=O)n(CC)c(=O)c8cc7c6=O)cc5)cc4)c(=O)c3cc2c1=O",
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/case.json",
+      "backbone_carbons": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/plotting/polymer_models/plot_candidate_occupancy_construction.py": "e06105503fce3379f5acb21df7bbc8a9592730d9483d7d976bad17d773c23990",
+    "results/validation/pmdi_occupancy_2026-10-23/plan.json": "234850385888ebb0a0e092200769d52a9bdd7e0b35e246f9456c3bca7b550969",
+    "results/validation/pmdi_occupancy_2026-10-23/input_validation.json": "a8d89628ed513e2ef66137df8afec919ef56c8f5dde021926234c45ff36ccd6c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_sampling_2026-10-23/reference_repeats/all_same/case.json": "66bf0c298c8d38076b0ff0add3760bac6072ec5f0de3cac08b1177f0a47294a0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2/case.json": "f7f27ba02fcb1c12287f2bcba4b85ebdbb3f7917e1c2daa893298fdf7b233670",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_3/case.json": "a5ce0eb665bdc58fe03b2bfc31bf229684374e502031ebbfd231d10c397500dd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/case.json": "9a7b375a9689004d6e05f04cc9bb0d65af8bbb3005262763688a5bcb1079d4e7"
+  },
+  "output_sha256": {
+    "results/figures/polymer_models/pmdi_occupancy_construction_compact.svg": "e91f65ebea3f8e6f2355e0d076870f600998be7d5a2ed26b2bc589b11f98aa2f",
+    "results/figures/polymer_models/pmdi_occupancy_construction_compact.pdf": "48d7a598a869b338ac659eba0367d16f59ee24f59d07cad22a08f8722501561f",
+    "results/figures/polymer_models/pmdi_occupancy_construction_compact.png": "372097fe95268381a6c44dcc01388e33bd88a9b61cbc8c6f41f75e4551f35d0a"
+  },
+  "caption": "Exact five-repeat PMDI feasibility models. Blue marks the open backbone and purple the grafted PMDI cores; numbers identify repeat units. Sites 1 and 5 are styrene padding and unoccupied sites 2\u20134 retain benzyl chloride. A separate site-3 single-graft search is also prepared. These are graph drawings, not DFT minima, representative 3D conformations, measured loading or validated synthesis."
+}

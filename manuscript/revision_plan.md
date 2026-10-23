@@ -16,8 +16,8 @@ revision, not by a proposed calculation or a running job.
 | M5: geometry/Hessian basis imbalance | Five matched neutral-SVPD controls independently reconstruct, giving -11.7 to -35.1 mV shifts with the existing anion/Fc fixed. The main paper and SI now report geometry, nuclear-partition and resulting potential changes separately. Keep primary source-frozen records unchanged. Alternative-basis controls must pass their physical checks and cannot inherit the original certificate by relabeling. | Five-control sensitivity checked and reported; full basis convergence not claimed |
 | M6: Methods/QC precision | State exactly two tested Hessian columns and both displacement sizes; explain |nu| for tolerated -5..0 cm^-1 modes, unscaled frequencies, spin-contamination threshold 0.1, actual force values and xTB symmetry detection. Remove the unsupported adjective “conservative” for the 4.5e-4 force threshold. Cite qRRHO and program/method papers. | Exact gate description included; further physics controls remain separate |
 | M7: portable/public reproduction | A fresh isolated CPU environment now reproduces graphs, route holds and a figure; that earlier example did not reproduce a potential or grafting G from raw states. A relocated standard-library example now reconstructs a potential and both HCl-reference/DBU grafting sums from ten hashed raw states. Explicit conda artifacts and pip versions are recorded; xTB/build and core scientific dependencies are pinned. Portable primary paths, fresh GPU installation and a full raw-state/public DOI release remain open. Prepare a reviewable public archive and deposition metadata; a DOI/public deposition is not yet created. Retain strict integrity checks for primary scientific admission. | Partly implemented; full release open |
-| M8: literature context | Verify each DOI and source. Add computational electrochemistry/reference, high-throughput design, redox-polymer, workflow/provenance and missing method literature where it supports a specific argument. Do not turn remembered references into unverified citations. | Expanded from 14 to 27 verified cited references; further relevant context in progress |
-| M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 12 and 10 pages, respectively |
+| M8: literature context | Verify each DOI and source. Add computational electrochemistry/reference, high-throughput design, redox-polymer, workflow/provenance and missing method literature where it supports a specific argument. Do not turn remembered references into unverified citations. | Expanded to 28 checked cited references, including the exact precursor patent; further relevant context in progress |
+| M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 14 and 10 pages, respectively |
 | Remaining endpoint | The fixed panel now has 39/39 endpoints; the last triplet alternative is 0.707 eV above the selected singlet electronically. Independent reconstruction: 111 checks, zero discrepancies. Alternative-spin thermochemistry remains explicitly unresolved. | Calculation/reconstruction resolved; latest draft updated |
 
 The end-to-end examples and adequate conformer evidence are required before
@@ -117,3 +117,17 @@ The final twelve-state audit, exact construction and capacity figures, updated
 The primary manuscript and immutable evidence have not been silently replaced.
 M1 and M4 remain open until the corresponding physical evidence and manuscript
 revision are complete.
+
+
+## Manuscript integration, 23 October
+
+A new immutable epoch (`2026-10-23_all_axes_checked`) incorporates the twelve
+finite-partition records and independent review, exact PMDI precursor source,
+composition bounds and all-axis ledger. The 14-page main paper now explains the
+limited three-core coverage, conjunctive admission and the exact PMDI pending
+decision; the 10-page SI reports the finite partition and signed fragment
+deformation audit. M1 remains incomplete without accepted exact-candidate
+occupancy results and the remaining chemical evidence. M4 remains incomplete
+without wider conformer/configuration convergence. The final graphical abstract,
+public raw-state deposition and author declarations remain open. No submission
+readiness is inferred from a successful build.

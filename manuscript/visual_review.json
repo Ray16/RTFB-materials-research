@@ -1,11 +1,11 @@
 {
-  "checked_UTC": "2026-10-22T17:51:25Z",
-  "review_type": "assistant_rendered_page_review_separate_from_compiler_output",
+  "checked_UTC": "2026-10-23T15:38:30Z",
+  "review_type": "assistant rendered-page inspection separate from compiler report",
   "documents": {
-    "manuscript": "570d913df568c5a400181081b24c3676a5bb5224669cba2b330a879248697768",
-    "supporting_information": "56b0807b0bc83ce3dbc90dc0ef6a993d5b16c30c893b0c4153476bcfc81b0350"
+    "manuscript": "e87fe4ce6363dde885e374482428dcf3739b291a8231a418b2d84145f7c30e0c",
+    "supporting_information": "b15651e01e7f56aaf66ec501d86b842e3ddc8ef18e05712357613b8fcabb6d45"
   },
-  "pages_reviewed": {
+  "contact_sheets_reviewed": {
     "manuscript": [
       1,
       2,
@@ -18,7 +18,9 @@
       9,
       10,
       11,
-      12
+      12,
+      13,
+      14
     ],
     "supporting_information": [
       1,
@@ -33,7 +35,28 @@
       10
     ]
   },
-  "renders": "calcs/manuscript_review/2026-10-22_review_checked_v2",
-  "findings": "All main and SI pages checked in six page sheets; final glossary placement checked separately. No clipping, missing symbols or compiler overfull boxes. Exact-case/neutral-basis tables and corrected model drawing are present. Final chemical graphical abstract remains open.",
-  "submission_ready": false
+  "detail_pages_reviewed": {
+    "manuscript": [
+      1,
+      9,
+      10
+    ],
+    "supporting_information": [
+      3,
+      4,
+      7
+    ]
+  },
+  "findings": [
+    "New PMDI text and capacity plot are legible and preserve their conditional scope.",
+    "Compact PMDI topology plate is readable in color and grayscale; exact declared graph and stereo are checked by the plot producer.",
+    "Tables, captions, formulas and reference pages fit within margins; compiler overfull-box lists are empty.",
+    "Finite ensembles and supporting capacity bounds remain distinct from all-axis material admission."
+  ],
+  "remaining_submission_items": [
+    "Converged wider ensembles and exact PMDI occupancy assessment",
+    "Final chemical graphical abstract",
+    "Public raw-state release and author declarations"
+  ],
+  "build_sha256": "180497a9b46f000a3d1fa628e6b6a33bb45b1ff80092e8aa453f13fda5e8ecfc"
 }

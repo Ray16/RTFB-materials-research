@@ -55,6 +55,14 @@ def main():
         "saved_trimer_QC.json": "calcs/validation/saved_trimer_final_2026-10-22/status.json",
         "saved_trimer_fine_steps.json": "calcs/validation/saved_trimer_small_steps_2026-10-22/status.json",
         "benchmark_points.csv": "results/figures/validation/retrospective_redox_benchmark.csv",
+        "finite_ensemble.json": "results/reviews/2026-10-23/baseline_native_complete/summary.json",
+        "finite_ensemble_states.json": "results/reviews/2026-10-23/baseline_native_complete/current_snapshot.json",
+        "pmdi_capacity.json": "results/validation/pmdi_occupancy_2026-10-23/capacity_scenarios.json",
+        "pmdi_precursor_review.json": "results/reviews/2026-10-23/pmdi_precursor_access/summary.json",
+        "all_axes_policy.json": "config/candidate_feasibility.json",
+        "all_axes_summary.json": "results/selection/all_axes_2026-10-23_capacity_release/summary.json",
+        "all_axes_decisions.json": "results/selection/all_axes_2026-10-23_capacity_release/decisions.json",
+        "segment_relaxation.json": "results/reviews/2026-10-23/segment_deformation_audit_v2/summary.json",
     }
     plots = {
         "benchmark.pdf": "results/figures/validation/retrospective_redox_benchmark.pdf",
@@ -65,6 +73,10 @@ def main():
         "cpu_concurrency.pdf": "results/figures/validation/cpu_descriptor_concurrency.pdf",
         "reference_bias.pdf": "results/figures/validation/reference_bias.pdf",
         "spacing_construction.pdf": "results/figures/polymer_models/spacing_construction.pdf",
+        "finite_ensemble.pdf": "results/figures/polymer_models/conditional_ensemble_baseline.pdf",
+        "pmdi_capacity.pdf": "results/figures/polymer_models/pmdi_capacity_bounds.pdf",
+        "pmdi_construction.pdf": "results/figures/polymer_models/pmdi_occupancy_construction_compact.pdf",
+        "deformation_components.pdf": "results/figures/polymer_models/segment_deformation_components.pdf",
     }
     mapping = {evidence / name: ROOT / source for name, source in sources.items()}
     mapping.update({figures / name: ROOT / source for name, source in plots.items()})

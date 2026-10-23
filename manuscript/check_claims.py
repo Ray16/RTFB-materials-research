@@ -4,7 +4,108 @@ import csv
 import json
 import math
 import statistics as descriptive
+from collections import Counter
 from pathlib import Path
+
+
+def audit_decision_followup(load):
+    """Recompute finite partitions, capacity bounds and decision counts independently."""
+    baseline = load("finite_ensemble.json")
+    states = {r["key"]: r for r in baseline["states"]}
+    if len(states) != 12 or baseline["checked_native_G"] != 12 or baseline["pending_keys"]:
+        raise ValueError("Incomplete twelve-state finite baseline")
+    conversion = 1.602176634e-19 * 6.02214076e23 / 1000
+    rt = 8.31446261815324e-3 * 298.15 / conversion
+    partitions = {}
+    for pair in baseline["finite_pairs"]:
+        result = {}
+        for cutoff in ("25", "50", "100"):
+            energies = [states[k]["G_by_rotor_cutoff_eV"][cutoff] for k in pair["conformer_keys"]]
+            minimum = min(energies)
+            g = minimum - rt * math.log(math.fsum(math.exp(-(e-minimum)/rt) for e in energies))
+            if abs(g-pair["independent_G_eV_by_rotor_cutoff_cm"][cutoff]) > 1e-8:
+                raise ValueError("Finite conformer partition does not reconstruct")
+            result[cutoff] = g
+        partitions[pair["graph_key"]] = result
+    for row in baseline["cycles"]:
+        i, j = row["sites"]
+        for cutoff in ("25", "50", "100"):
+            dg = math.fsum((partitions[f"occ_{i}_{j}"][cutoff], partitions["occ_none"][cutoff],
+                           -partitions[f"occ_{i}"][cutoff], -partitions[f"occ_{j}"][cutoff])) * conversion
+            if abs(dg-row["deltaDeltaG_kJ_mol_by_rotor_cutoff_cm"][cutoff]) > 1e-6:
+                raise ValueError("Finite ensemble occupancy cycle does not reconstruct")
+        for terms in row["conditional_DBU_grafting"].values():
+            for second, first in (("graft_j_given_i_kJ_mol", "graft_j_on_empty_kJ_mol"),
+                                  ("graft_i_given_j_kJ_mol", "graft_i_on_empty_kJ_mol")):
+                if abs(terms[second]-terms[first]-row["deltaDeltaG_kJ_mol_by_rotor_cutoff_cm"]["50"]) > 1e-6:
+                    raise ValueError("Finite conditional grafting does not close")
+    capacity = load("pmdi_capacity.json")
+    if capacity["accessible_capacity_established"] or capacity["experimental_loading_inferred"]:
+        raise ValueError("Composition bounds were promoted to material performance")
+    weights = dict(C=12.011, H=1.008, N=14.007, O=15.999, Cl=35.453)
+    faraday = conversion * 1000
+    graph_bounds = {}
+    for graph in capacity["exact_graphs_at_handle_density_0_6"]:
+        grafts = len(graph["occupied_sites"])
+        atoms = dict(C=43+12*grafts, H=45+7*grafts, Cl=3-grafts, N=2*grafts, O=4*grafts)
+        formula = "".join(k+(str(v) if v != 1 else "") for k, v in atoms.items() if v)
+        mass = math.fsum(weights[k]*v for k, v in atoms.items())
+        if graph["formula"] != formula or abs(mass-graph["mass_g_mol"]) > 1e-8:
+            raise ValueError("Exact occupancy mass does not reconstruct")
+        for n, label in ((1, "one_e"), (2, "two_e")):
+            expected = grafts*n*faraday/(3.6*mass)
+            if abs(expected-graph[label+"_upper_bound_mAh_g"]) > 1e-8:
+                raise ValueError("Capacity upper bound does not reconstruct")
+        graph_bounds[tuple(graph["occupied_sites"])] = graph["two_e_upper_bound_mAh_g"]
+    combinations = set()
+    for row in capacity["composition_grid"]:
+        n, h, g = (row[k] for k in ("repeat_units", "reactive_handles", "grafts"))
+        if not 0 <= g <= h <= n or (n, h, g) in combinations:
+            raise ValueError("Invalid composition grid")
+        combinations.add((n, h, g))
+        # Independently sum atomic compositions; do not import the producer's mass model.
+        atoms = dict(C=8*n+h+12*g, H=8*n+h+2+7*g, Cl=h-g, N=2*g, O=4*g)
+        mass = math.fsum(weights[k]*v for k, v in atoms.items())
+        for electrons in (1, 2):
+            result = row[f"{electrons}e"]
+            expected = g*electrons*faraday/(3.6*mass)
+            if (abs(result["mass_g_mol"]-mass) > 1e-8
+                    or abs(result["capacity_upper_bound_mAh_g"]-expected) > 1e-8):
+                raise ValueError("Composition capacity grid does not reconstruct")
+    summary = load("all_axes_summary.json")
+    decisions = load("all_axes_decisions.json")["candidates"]
+    required = [r["id"] for r in load("all_axes_policy.json")["required_axes"]]
+    if len({r["product_key"] for r in decisions}) != len(decisions) or len(decisions) != summary["exact_products"]:
+        raise ValueError("Decision identities or counts differ")
+    if dict(Counter(r["status"] for r in decisions)) != summary["decisions"]:
+        raise ValueError("Decision status counts differ")
+    eligible = []
+    for row in decisions:
+        axes = {r["axis"]: r["status"] for r in row["axes"]}
+        if set(axes) != set(required) or len(row["axes"]) != len(required):
+            raise ValueError("Required decision axes differ")
+        passed = all(axes[k] == "pass" for k in required)
+        if row["all_required_axes_pass"] != passed or row["eligible_for_Pareto"] != passed:
+            raise ValueError("Candidate bypassed all-axis admission")
+        if passed:
+            eligible.append(row["id"])
+    if sorted(eligible) != sorted(summary["eligible_ids"]):
+        raise ValueError("Eligible candidate counts differ")
+    precursor = load("pmdi_precursor_review.json")
+    route = precursor["prospective_route_decision"]
+    if (not route["evidence"]["exact_precursor_access_reviewed"] or route["route_status"] != "hold"
+            or route["proceed_to_full_redox"] or precursor["exact_polymer_grafting_demonstrated"]):
+        raise ValueError("Precursor access was confused with a completed attachment route")
+    deformation = load("segment_relaxation.json")
+    for pair in deformation["pairs"]:
+        if abs(math.fsum(f["deformation_kJ_mol"] for f in pair["fragments"])
+               - pair["deformation_kJ_mol_CODATA"]) > 1e-6:
+            raise ValueError("Signed fragment deformation does not close")
+    return dict(finite_native_G=len(states), finite_graph_partitions=len(partitions),
+                finite_cycles=len(baseline["cycles"]), capacity_graphs=len(graph_bounds),
+                capacity_compositions=len(combinations),
+                all_axis_graphs=len(decisions), all_axis_eligible=len(eligible),
+                all_axis_status_counts=summary["decisions"], signed_deformation_pairs=len(deformation["pairs"]))
 
 
 def audit():
@@ -162,6 +263,7 @@ def audit():
         dg = math.fsum(states[key] * nu for key, nu in recipe["coefficients"].items())
         if abs(dg - value["deltaG_eV"]) > 1e-9:
             raise ValueError("Cached example grafting sum changed")
+    added = audit_decision_followup(load) if (folder / "finite_ensemble.json").exists() else None
     return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
                 base_assisted_values=base_values, qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
@@ -174,6 +276,7 @@ def audit():
                 checked_offset_models=cv_checks, relative_basicity_controls=len(transfer["comparisons"]),
                 quantum_restart_controls=len(restart["controls"]),
                 neutral_basis_controls=basis["checked"], exact_cases_with_explicit_holds=len(exact["cases"]),
+                decision_followup=added,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 
