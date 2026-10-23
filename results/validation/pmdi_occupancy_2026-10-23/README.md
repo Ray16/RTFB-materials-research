@@ -63,3 +63,13 @@ statement does not describe these recovery branches.
 The later [32 GB gradient recovery](../smd_gradient_workspace_32GB_2026-10-23/README.md) passes the exact site-2 point and sampled energy derivatives. A [full geometry/energy branch](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB/README.md) has started on lambda2. The candidate-only observer linked above is historical during this controlled handoff; its exact PID was verified and stopped without stopping scientific workers. The wider-search observer and all fifteen source searches remain live at the recorded check. The other occupied baseline components and thermal stages remain pending. This continuation does not change the current all-axis decision.
 
 The candidate observer has now resumed with its original deadline. It follows the [site-3 post-pilot branch](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md), skips held claims before launching, and leaves the site-2 V100 and 139-atom resource branches explicitly separate in the registry. [Runtime ownership](../smd_gradient_workspace_64GB_2026-10-23/startup_verification.json) verifies the parallel H100 jobs and their disjoint resources. The earlier observer-stop paragraph describes the handoff, not its current state.
+
+All three exact occupied graphs entered full optimization branches; their later states are distinguished below. The
+139-atom resource point passed at 39,206 MiB. The site-2 external energy branch
+has a declared native target: the observer verifies a completed stationary
+electronic parent before registering separate thermochemistry. It preserves
+the original energy record and does not fill G during preparation. The
+[shared execution guide](../../../docs/POLYMER_WORKSPACE_EXECUTION.md) describes
+this reusable continuation and its field-specific gates.
+
+Latest continuation checkpoint: site 3 has checked E and a separate running native-thermal resource pilot on lambda1; site 2 has stopped after failing the final total-force energy-difference check. The original two-graft full optimizer stopped at an XC workspace allocation after 23 evaluated frames. The [checked checkpoint successor](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/README.md) is registered for lambda13 but has no scientific worker yet because all its GPUs are occupied. The observer retains its original deadline and suppresses duplicate claims. No native G, completed PMDI cycle, conformer convergence or all-axis admission is inferred.

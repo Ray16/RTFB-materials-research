@@ -6,7 +6,7 @@ numerical model, optimizer settings and physical checks. It follows a separately
 [launch.json](launch.json), [preflight.json](preflight.json),
 [startup_verification.json](startup_verification.json) and
 [workspace_energy_status.json](workspace_energy_status.json) distinguish the
-actual running optimizer from a completed electronic result.
+original optimizer from a completed electronic result.
 
 One task starts on a reserved lambda2 V100 with two disjoint CPU cores and all
 native thread limits set to two. The measured conservative density-fitting
@@ -31,3 +31,5 @@ at the recorded live-process check.
 The candidate observer subsequently resumed with the post-pilot site-3 branch.
 This site-2 execution remains a separate, explicitly recorded continuation; its
 physical outputs must pass before native-G handoff.
+
+The optimizer has now stopped: the independent final total-force check fails at 0.001 Bohr (about 1.92e-5 Ha/Bohr error), although both 0.0005 Bohr components agree within 1.11e-8 Ha/Bohr. The optimized geometry, active SP and all 59 evaluated checkpoints are retained. The workflow is unaccepted despite its earlier generic state record; the failed outer workflow status prevents native handoff. This step dependence requires numerical-surface diagnosis, not a relaxed tolerance. No E or G is published into the candidate cycle.

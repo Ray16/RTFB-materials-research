@@ -2,7 +2,7 @@
 
 Provisional title: **A route-aware computational framework for redox motif selection on preformed polymers**.
 This is a methods-focused in silico paper. The evidence snapshot is
-[23 October 2026](evidence/2026-10-23_TOC_release_revision/manifest.json); incomplete physical analyses
+[23 October 2026](evidence/2026-10-23_thermal_cutoff_revision/manifest.json); incomplete physical analyses
 remain explicit. Authorship, venue and submission timing are undecided.
 
 The central question is how to combine exact molecular identity, defined-condition
@@ -57,3 +57,5 @@ frozen snapshot also records the preceding reviewer package inventory and
 replay receipts. Public source-code visibility is verified separately from
 public raw-data deposition. Neither cached replay nor figure preparation closes
 the pending native polymer and broader-conformer requirements.
+
+The current SI reports rotor-cutoff sensitivity across all 39 benchmark endpoints and 87 completed grafting models, using fixed archived state records. Independent arithmetic and figure checks pass. This diagnostic does not close route selectivity, conformer convergence or material-property gaps.

@@ -1,0 +1,24 @@
+{
+  "host": "lambda1",
+  "pid": 1034960,
+  "process_start": "504525066",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--gpu",
+    "0",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/reserved_gradient_check",
+    "--threads",
+    "2",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_xc_checkpoint.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100"
+  ],
+  "started": 1792795074.8552938,
+  "full_workflow_qualified": false
+}

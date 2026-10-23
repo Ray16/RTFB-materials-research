@@ -108,7 +108,7 @@ The [segment-deformation audit](reviews/2026-10-23/segment_deformation_audit_v2/
 The October 23 manuscript revision adds conjunctive admission across all required
 axes, an exact PMDI precursor/route/capacity assessment and all twelve inherited
 phthalimide native free energies in a finite two-pose partition. The checked
-paper has 15 pages, including its TOC page, and the SI 11. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
+paper has 15 pages, including its TOC page, and the SI 12. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
 prepared graph while making chemical labels legible at manuscript size. No full
 material candidate is admitted; broader sampling and exact PMDI occupancy
 calculations remain separate work.
@@ -130,3 +130,11 @@ The [large 115-atom gradient recovery](validation/smd_gradient_workspace_32GB_20
 A separate [chemical TOC graphic](figures/publication/README.md) is prepared from exact precursor/product identities, with EPS and 600 dpi color TIFF exports. It is visually checked in color and grayscale and inserted on the checked manuscript's final page; author review remains pending.
 
 The [current manuscript revision](../manuscript/README.md) adds explicit reviewer-package scope and the integrated TOC. Its frozen counts are independently cross-checked against the archived inventory. The [site-3 post-pilot continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md) resolves a force-directory collision without moving the original pilot. The [64 GB profile campaign](validation/smd_gradient_workspace_64GB_2026-10-23/README.md) has passed both small spin controls and started the separate 139-atom resource requalification. Native polymer G remains pending.
+
+The original [two-graft 139-atom full continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/README.md) passed a 39,206 MiB point qualification but later stopped at an XC-gradient workspace allocation. Its raw trajectory is preserved. The [workspace execution workflow](../docs/POLYMER_WORKSPACE_EXECUTION.md) supports fresh full-calculation storage and checked-energy handoff to native thermochemistry. Site 3 now has checked electronic energy and a separate active native-thermal pilot; site 2 stopped after failing the final total-force energy-difference check. G remains pending until the normal thermal checks pass.
+
+The checked v5 archive is now uploaded as an [unpublished draft release](releases/primary_review/draft_release.json). Remote downloads of all three assets match local checksums. It precedes current polymer calculations and does not constitute public deposition or a DOI.
+
+The [rotor-cutoff sensitivity audit](validation/thermal_cutoff_sensitivity_2026-10-23/README.md) independently reconstructs all 39 benchmark endpoints and 87 completed grafting reaction models at three fixed-geometry settings. Its [two-panel figure](figures/validation/thermal_cutoff_sensitivity.pdf) is included in the current SI. Maximum spans are 25.43 mV and 4.46 kJ/mol, with no nominal reaction sign changes; no missing chemical criterion is inferred to pass.
+
+The [XC temporary-lifetime controls and checkpoint check](validation/xc_workspace_lifetime_2026-10-23/README.md) pass both small spin controls and sampled total-energy derivatives at the preserved 139-atom checkpoint. A [fresh full continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/README.md) is registered for the H100 node; its actual worker start remains separate from preparation. The [site-3 native-thermal pilot](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_surface_budget/README.md) is running on a V100 using the measured-cavity host forecast and unchanged scientific checks. Neither branch supplies a qualified G yet.

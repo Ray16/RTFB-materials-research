@@ -1,0 +1,59 @@
+{
+  "host": "lambda1",
+  "launches": [
+    {
+      "mult": 1,
+      "gpu": 1,
+      "pid": 1024448,
+      "process_start": "504484637",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/reserved_gpu1_spin1",
+        "--threads",
+        "2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_xc_workspace.py",
+        "--mult",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/controls/1",
+        "--workspace-GiB",
+        "64"
+      ],
+      "started": 1792794670.562117
+    },
+    {
+      "mult": 2,
+      "gpu": 2,
+      "pid": 1024535,
+      "process_start": "504484687",
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.gpu",
+        "--gpu",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/reserved_gpu2_spin2",
+        "--threads",
+        "2",
+        "--",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_xc_workspace.py",
+        "--mult",
+        "2",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/controls/2",
+        "--workspace-GiB",
+        "64"
+      ],
+      "started": 1792794671.0660195
+    }
+  ]
+}

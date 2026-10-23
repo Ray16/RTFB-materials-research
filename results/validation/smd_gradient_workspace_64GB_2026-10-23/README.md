@@ -26,3 +26,14 @@ which reuses the original tensor inventory, energy/gradient and continuity
 checks with the separately controlled bounded-gradient adapter. All original
 139-atom failed outputs remain at their source locations. New raw outputs:
 `calcs/validation/smd_gradient_workspace_64GB_2026-10-23/`.
+
+The 139-atom resource point subsequently passed: both hybrid SCFs converged and
+peak device memory was 39,206 MiB. The [full continuation](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/README.md)
+now optimizes the same graph in fresh storage. Resource-point success does not
+qualify its final geometry or native G.
+
+The full optimizer subsequently stopped after 23 evaluated geometries at a
+separate XC-gradient allocation. The final batch-lifetime recovery and checked
+checkpoint derivative test are documented in the
+[XC workspace guide](../xc_workspace_lifetime_2026-10-23/README.md).
+The previous point remains a passed resource result; it is not a final minimum.

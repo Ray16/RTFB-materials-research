@@ -1,9 +1,9 @@
 {
-  "checked_UTC": "2026-10-23T20:35:40Z",
+  "checked_UTC": "2026-10-23T23:35:44Z",
   "review_type": "assistant rendered-page inspection separate from compiler report",
   "documents": {
-    "manuscript": "71677f6b7d6988d6a58aa9d0fde9b4b262f44e34e169df7327997f3a8a8e464c",
-    "supporting_information": "9fa59b5e2e68b61809d0122f320a18d9856b0f04e0dfb7465607939166139bba"
+    "manuscript": "6ad91d8f331baef8920bed6e8275163309f1f455345d3dc356ff4a2ca1439df5",
+    "supporting_information": "9edfb6b0af1ebc6df67b655a9bc676514d8c350262b1007abc2b0fbe0ea8f3ae"
   },
   "contact_sheets_reviewed": {
     "manuscript": [
@@ -34,28 +34,34 @@
       8,
       9,
       10,
-      11
+      11,
+      12
     ]
   },
   "detail_pages_reviewed": {
     "manuscript": [
+      7,
+      8,
       11,
       15
     ],
     "supporting_information": [
-      10
+      2,
+      3,
+      11
     ]
   },
   "findings": [
-    "All final pages inspected in contact sheets; no visible clipping, overlaps or overflowing captions.",
-    "Main page 11 accurately distinguishes public source-code availability, a locally prepared cached reviewer bundle and pending public raw-state deposition.",
-    "SI page 10 describes checked package coverage and its earlier numerical epoch without claiming fresh physical validation.",
-    "The final TOC page displays the exact chemical artwork at 3.25 by 1.75 inches; atom labels and decision text are legible."
+    "All 15 main and 12 SI pages inspected in rendered contact sheets; no visible clipping, overlaps or overflowing captions.",
+    "Main pages 7\u20138 report the fixed-geometry rotor-cutoff sensitivity without treating it as chemical validation or an uncertainty interval.",
+    "SI pages 2\u20133 show all three benchmark metrics, the fixed-geometry scope and the two-panel cutoff figure with legible labels. Color and grayscale figure exports were inspected.",
+    "Main page 11 distinguishes public code, locally checked raw-state reproduction and pending public deposition. SI page 11 explicitly labels the GitHub staging release unpublished.",
+    "The final TOC page displays the exact chemical artwork at 3.25 by 1.75 inches; atom labels and the all-criteria requirement are legible."
   ],
   "remaining_submission_items": [
     "Complete exact-candidate occupancy and broader conformer assessment",
     "Public raw-data deposition, full GPU restoration and final package scope",
     "Author metadata, declarations and artwork approval"
   ],
-  "build_sha256": "b0d511360ad6fb99392cc2d2b8e4a778a029ffae1b9e9d3bcfb46acdf0109e61"
+  "build_sha256": "2f82dbb30ccc013ab94c27da990c567838af9c086ab821a057cc2e59808718f3"
 }

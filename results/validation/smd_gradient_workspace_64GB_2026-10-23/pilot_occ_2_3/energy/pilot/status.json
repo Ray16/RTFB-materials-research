@@ -114,12 +114,18 @@
       "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_gradient_workspace_64GB_2026-10-23/pilot_occ_2_3/live_inputs/baseline__design_pmdi_ethyl__occ_2_3__pose0/input.xyz": "267460a6951b07d6235a8d65183f0fe74c3952da48ecfcb2ecc1027e1f9236be"
     }
   },
-  "status": "computing",
+  "status": "memory_pilot_passed",
   "stage": "memory_pilot",
   "started": 1792787207.294321,
   "host": "lambda13",
   "pid": 1058362,
   "free_energy_computed": false,
   "minimum_Hessian_tested": false,
-  "synthesis_admission": false
+  "synthesis_admission": false,
+  "observed_peak_GPU_MiB": 39206,
+  "qualified_scope": "Neutral RKS energies and gradients up to this case; no Hessian qualification",
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_gradient_workspace_64GB_2026-10-23/pilot_occ_2_3/energy/pilot/energy_and_gradient.json": "50fcd18fff6385d1566c37dd212962bed6397b130ca3b826589bc51970ddc7bf"
+  },
+  "finished": 1792789186.9202673
 }

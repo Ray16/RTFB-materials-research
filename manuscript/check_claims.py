@@ -66,9 +66,76 @@ def audit_reviewer_package(load):
     if (frequency_error != current["maximum_frequency_reconstruction_error_cm"]
             or nuclear_error != current["maximum_nuclear_reconstruction_error_eV"]):
         raise ValueError("Reviewer package reconstruction errors differ")
+    try:
+        draft = load("review_package_draft.json")
+    except FileNotFoundError:
+        draft = None
+    if draft is not None:
+        assets = {r["name"]: r for r in draft["assets"]}
+        archive = Path(current["compressed_archive"]).name
+        if (draft["draft"] is not True or draft["published_at"] is not None
+                or draft["public_raw_archive_deposited"] or draft["DOI_created"]
+                or assets[archive]["sha256"] != current["archive_sha256"]
+                or assets[archive]["bytes"] != current["compressed_bytes"]
+                or assets["package_manifest.json"]["sha256"] != current["package_manifest_sha256"]):
+            raise ValueError("Reviewer archive draft status or asset identity differs")
     return dict(raw_states=len(states), electronic_only_records=len(electronic),
                 archive_files=len(package["files_sha256"]) + 1, Hessian_states=len(actual_hessians),
                 negative_checks=len(negative), public_deposition=False, full_GPU_restoration=False)
+
+
+def audit_thermal_settings(load):
+    """Recompute published cutoff aggregates; retain the primary 50 cm^-1 values."""
+    try:
+        result = load("thermal_cutoff_sensitivity.json")
+    except FileNotFoundError:
+        return None
+    if (result["quantum_calculations_run"] or result["primary_results_modified"]
+            or result["experimental_accuracy_inferred"] or result["candidate_prediction_intervals_established"]
+            or result["settings"]["cutoffs_cm"] != [25, 50, 100]
+            or result["settings"]["primary_cutoff_cm"] != 50):
+        raise ValueError("Cutoff scenarios were promoted beyond thermal-setting sensitivity")
+    rows = result["benchmark"]["endpoints"]
+    original = {(r["id"], r["event"]): r for r in load("benchmark.json")["outliers"]}
+    if len(rows) != len(original) or {(r["id"], r["event"]) for r in rows} != set(original):
+        raise ValueError("Cutoff benchmark coverage or identity differs")
+    for row in rows:
+        source = original[(row["id"], row["event"])]
+        if (row["exp_V"] != source["exp_V"] or abs(row["E_by_cutoff_V"]["50"]-source["calc_V"]) > 1e-9
+                or row["wave"] != (1 if "neu" in row["event"].split("->") else 2)):
+            raise ValueError("Primary benchmark or wave labels changed in cutoff analysis")
+        span = 1000*(max(row["E_by_cutoff_V"].values())-min(row["E_by_cutoff_V"].values()))
+        if abs(span-row["range_mV"]) > 1e-9:
+            raise ValueError("Endpoint cutoff span differs")
+    for key in ("25", "50", "100"):
+        errors = [r["E_by_cutoff_V"][key]-r["exp_V"] for r in rows]
+        computed = dict(MAE_V=math.fsum(abs(v) for v in errors)/len(errors),
+            RMSE_V=math.sqrt(math.fsum(v*v for v in errors)/len(errors)), bias_V=math.fsum(errors)/len(errors))
+        if any(abs(value-result["benchmark"]["metrics_by_cutoff"][key][name]) > 1e-12 for name,value in computed.items()):
+            raise ValueError("Cutoff benchmark statistics do not reconstruct")
+    largest = max(r["range_mV"] for r in rows)
+    if abs(largest-result["benchmark"]["max_endpoint_range_mV"]) > 1e-9:
+        raise ValueError("Maximum cutoff benchmark span differs")
+    reactions = result["grafting"]["reactions"]
+    if len({r["name"] for r in reactions}) != 87 or len(reactions) != 87:
+        raise ValueError("Expected the 67 reference and 20 base-assisted cutoff reactions")
+    for row in reactions:
+        values = row["SI_deltaG_by_cutoff_kJ_mol"].values()
+        if abs(max(values)-min(values)-row["range_kJ_mol"]) > 1e-9:
+            raise ValueError("Reaction cutoff span differs")
+    crossing = [r["name"] for r in reactions if min(r["SI_deltaG_by_cutoff_kJ_mol"].values()) < 0 < max(r["SI_deltaG_by_cutoff_kJ_mol"].values())]
+    max_reaction = max(r["range_kJ_mol"] for r in reactions)
+    if crossing != result["grafting"]["zero_crossings"] or abs(max_reaction-result["grafting"]["max_range_kJ_mol"]) > 1e-9:
+        raise ValueError("Cutoff reaction sign/range inventory differs")
+    review = load("thermal_cutoff_review.json")
+    if (review["status"] != "thermal_cutoff_full_state_reconstruction_checked"
+            or review["potential_sums"] != 3*len(rows) or review["reaction_sums"] != 3*len(reactions)
+            or review["maximum_potential_reconstruction_error_V"] > 1e-8
+            or review["maximum_reaction_reconstruction_error_kJ_mol"] > 1e-6):
+        raise ValueError("Independent thermal-cutoff source review differs")
+    return dict(benchmark_endpoints=len(rows), reaction_models=len(reactions),
+                maximum_endpoint_span_mV=largest, maximum_reaction_span_kJ_mol=max_reaction,
+                reaction_sign_crossings=len(crossing), prediction_intervals_established=False)
 
 
 def audit_decision_followup(load):
@@ -345,6 +412,10 @@ def audit():
             raise ValueError("Cached example grafting sum changed")
     added = audit_decision_followup(load) if (folder / "finite_ensemble.json").exists() else None
     release = audit_reviewer_package(load)
+    cutoff = audit_thermal_settings(load)
+    if cutoff is not None:
+        if hashlib.sha256((folder / "thermal_cutoff_sensitivity.json").read_bytes()).hexdigest() != load("thermal_cutoff_review.json")["result_sha256"]:
+            raise ValueError("Frozen thermal-cutoff result differs from its independent source review")
     if release is not None:
         package = load("review_package_manifest.json")
         current = load("review_package.json")
@@ -367,6 +438,7 @@ def audit():
                 neutral_basis_controls=basis["checked"], exact_cases_with_explicit_holds=len(exact["cases"]),
                 decision_followup=added,
                 reviewer_package=release,
+                thermal_cutoff_sensitivity=cutoff,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

@@ -162,7 +162,9 @@
         "bounded_execution_controls": "results/validation/smd_bounded_memory_2026-10-23/README.md"
       },
       "retired_legacy_sampling_review": "results/validation/conformer_sampling_2026-10-23/legacy_pilot_retirement.json",
-      "PMDI_site3_postpilot_continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md"
+      "PMDI_site3_postpilot_continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md",
+      "PMDI_two_graft_workspace": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/README.md",
+      "workspace_execution_guide": "docs/POLYMER_WORKSPACE_EXECUTION.md"
     },
     "candidates": {
       "guide": "results/candidates/README.md",
@@ -305,8 +307,9 @@
       "dipea_reference_origin": "results/validation/dipea_reference_origin_2026-10-23_checked/summary.json",
       "dipea_reference_origin_guide": "results/validation/dipea_reference_origin_2026-10-23_checked/README.md",
       "PMDI_workspace_energy_continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB/README.md",
-      "reviewer_package_frozen_coverage": "manuscript/evidence/2026-10-23_TOC_release_revision/review_package.json",
-      "public_code_visibility": "results/releases/primary_review/github_visibility_2026-10-23.json"
+      "reviewer_package_frozen_coverage": "manuscript/evidence/2026-10-23_thermal_cutoff_revision/review_package.json",
+      "public_code_visibility": "results/releases/primary_review/github_visibility_2026-10-23.json",
+      "draft_review_package": "results/releases/primary_review/draft_release.json"
     },
     "manuscript": {
       "guide": "manuscript/README.md",
@@ -314,17 +317,17 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-23_TOC_release_revision/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-23_thermal_cutoff_revision/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "14-page main and 10-page SI; focused coverage, all-axis admission, exact PMDI pending decision and capacity bounds, twelve-state finite phthalimide partition, 39 primary endpoints. Broader sampling, PMDI occupancy and public raw-state release remain open.",
-      "source_commit": "8f7281c",
+      "scope": "15-page main including TOC and 12-page SI; all-axis admission, exact PMDI pending decision, finite phthalimide partitions and fixed-geometry rotor-cutoff sensitivities. Broader sampling, PMDI occupancy, public raw-state release and full GPU restoration remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
       "supporting_information": "manuscript/supporting_information.pdf",
       "revision_ledger": "manuscript/revision_plan.md",
-      "visual_review": "manuscript/visual_review.json"
+      "visual_review": "manuscript/visual_review.json",
+      "version_provenance": "Source hashes are recorded by build_check.json; publication commit is given in repository history."
     },
     "candidate_decisions": {
       "guide": "results/selection/README.md",
@@ -341,6 +344,25 @@
         "calcs/polymer_models"
       ],
       "independent_review": "results/reviews/2026-10-23/all_axes_capacity_release/summary.json"
+    },
+    "thermal_cutoff_sensitivity": {
+      "guide": "results/validation/thermal_cutoff_sensitivity_2026-10-23/README.md",
+      "current": "results/validation/thermal_cutoff_sensitivity_2026-10-23/summary.json",
+      "independent_review": "results/validation/thermal_cutoff_sensitivity_2026-10-23/independent_review.json",
+      "figure": "results/figures/validation/thermal_cutoff_sensitivity.pdf",
+      "figure_manifest": "results/figures/validation/thermal_cutoff_sensitivity.json",
+      "scope": "39 benchmark endpoints and 87 reaction models; fixed geometry/electronic energy/Hessian/spin; settings sensitivity, not a candidate prediction interval",
+      "raw_root": "calcs/releases/2026-10-23_scientific_review_v5"
+    },
+    "XC_workspace_recovery": {
+      "guide": "results/validation/xc_workspace_lifetime_2026-10-23/README.md",
+      "current": "results/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/gradient_qualification.json",
+      "independent_review": "results/validation/xc_workspace_lifetime_2026-10-23/independent_checkpoint_review.json",
+      "native_controls": "results/validation/xc_workspace_lifetime_28GiB_2026-10-23/README.md",
+      "two_graft_continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/README.md",
+      "site3_native_pilot": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_surface_budget/README.md",
+      "scope": "Checked small implementation controls and sampled 139-atom checkpoint derivatives; full optimizer/native G and ensemble convergence remain pending",
+      "raw_root": "calcs/validation/xc_workspace_lifetime_2026-10-23"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

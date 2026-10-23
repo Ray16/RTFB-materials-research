@@ -11,6 +11,8 @@ import os
 from pathlib import Path
 import signal
 import socket
+import subprocess
+import sys
 import time
 
 from redox.core.common import ROOT
@@ -21,6 +23,8 @@ from redox.workflows import polymer_campaign as api
 from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity
 
 REFERENCE = ROOT / "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2"
+WORKSPACE_DRIVER = ROOT / "scripts/pipeline/workspace_polymer_campaign.py"
+XC_WORKSPACE_DRIVER = ROOT / "scripts/pipeline/xc_workspace_campaign.py"
 
 
 def same_model(parent, replacement):
@@ -47,8 +51,79 @@ def resolved_declaration(base, declaration):
         same_model(original_plan, new_plan)
         api.verify_sources(new_plan["producer_sha256"])
         api.verify_sources(new_plan["input_sha256"])
-        cases.append(dict(case, campaign=str(target), recovered_from=str(parent), recovery_scope=new_plan["recovery_scope"]))
+        cases.append(dict(case, campaign=str(target), recovered_from=str(parent),
+            recovery_scope=new_plan["recovery_scope"], execution_hosts=replacement.get("hosts")))
     return dict(declaration, cases=cases)
+
+
+def reconcile_external_energy(base):
+    """Register native work only after an external electronic parent is checked.
+
+    The source calculation and any existing target are preserved. Creating a
+    thermal workflow does not create a native result or repeat an optimization.
+    """
+    registry_path = base / "baseline_recoveries.json"
+    if not registry_path.exists():
+        return []
+    events = []
+    with registry_path.with_suffix(".lock").open("a+") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        registry = json.loads(registry_path.read_text())
+        external = registry.get("external_continuations", {})
+        for key, item in list(external.items()):
+            if not item.get("native_target"):
+                continue
+            source = Path(item["campaign"])
+            source = source if source.is_absolute() else ROOT / source
+            workflow = source / "workspace_energy_status.json"
+            if not workflow.exists() or json.loads(workflow.read_text()).get("status") != "stationary_electronic_case_checked_native_G_pending":
+                continue
+            target = Path(item["native_target"])
+            target = target if target.is_absolute() else ROOT / target
+            controls = Path(item["native_controls"])
+            controls = controls if controls.is_absolute() else ROOT / controls
+            execution_driver = Path(item.get("native_execution_driver", str(WORKSPACE_DRIVER))).resolve()
+            if execution_driver not in (WORKSPACE_DRIVER, XC_WORKSPACE_DRIVER):
+                raise ValueError("Unregistered native handoff execution driver")
+            module = api.load_module("candidate_native_handoff", WORKSPACE_DRIVER)
+            if not target.exists():
+                if execution_driver == WORKSPACE_DRIVER:
+                    module.prepare_native(source.resolve(), target.resolve(), controls.resolve(),
+                        item["native_workspace_GiB"], item["native_minimum_GPU_MiB"])
+                else:
+                    subprocess.run([sys.executable, str(execution_driver), "prepare-native", "--source", str(source.resolve()),
+                        "--out", str(target.resolve()), "--controls", str(controls.resolve()),
+                        "--workspace-GiB", str(item["native_workspace_GiB"]),
+                        "--minimum-GPU-MiB", str(item["native_minimum_GPU_MiB"])], check=True)
+            original, new = api.read_plan(source), api.read_plan(target)
+            same_model(original, new)
+            if (new.get("source_campaign") != str(source.resolve())
+                    or not new.get("inherited_energy_only")
+                    or new.get("execution_driver") != str(execution_driver)):
+                raise ValueError("Existing native target belongs to a different handoff")
+            api.verify_sources(new["producer_sha256"])
+            api.verify_sources(new["input_sha256"])
+            records, invalid = api.admitted_records(target, "energy")
+            if invalid or len(records) != 1 or next(iter(records.values()))["task"]["model_key"] != key:
+                raise ValueError("Native handoff lacks its exact checked electronic parent")
+            history = base / "baseline_observer_history"
+            history.mkdir(exist_ok=True)
+            previous = history / f"registry_before_native_handoff_{time.time_ns()}.json"
+            previous.write_bytes(registry_path.read_bytes())
+            registry.setdefault("overrides", {})[key] = dict(campaign=str(target.resolve()),
+                reason="Exact checked electronic parent reused; separate native-thermal resource and physical qualification pending")
+            if item.get("native_hosts"):
+                registry["overrides"][key]["hosts"] = item["native_hosts"]
+            external.pop(key)
+            registry.update(previous_registry=str(previous), updated=time.time())
+            atomic_write_json(registry_path, registry)
+            events.append(dict(key=key, source=str(source.resolve()), target=str(target.resolve()),
+                registered=time.time(), repeated_optimization=False, native_G_computed_by_handoff=False))
+    if events:
+        with (base / "native_handoff_events.jsonl").open("a") as stream:
+            for event in events:
+                stream.write(json.dumps(event) + "\n")
+    return events
 
 
 def collect(base, declaration, driver):
@@ -124,7 +199,8 @@ def main():
     orchestration_path = ROOT / "scripts/pipeline/coordinate_crest_refinement.py"
     driver = api.load_module("candidate_baseline_QM", driver_path)
     orchestration = api.load_module("candidate_baseline_launch_control", orchestration_path)
-    sources = {str(p): api.digest(p) for p in (Path(__file__).resolve(), driver_path, orchestration_path, base / "baseline_plan.json")}
+    sources = {str(p): api.digest(p) for p in (Path(__file__).resolve(), driver_path, orchestration_path,
+        WORKSPACE_DRIVER, XC_WORKSPACE_DRIVER, base / "baseline_plan.json")}
     with allocation_guard():
         host_capacity(1)
         os.sched_setaffinity(0, cpu_allocation(1))
@@ -149,6 +225,7 @@ def main():
         try:
             while time.time() < owner["deadline"]:
                 api.verify_sources(sources)
+                reconcile_external_energy(base)
                 active = resolved_declaration(base, declaration)
                 for case in active["cases"]:
                     campaign = Path(case["campaign"])
@@ -173,9 +250,9 @@ def main():
                         orchestration.DRIVER = Path(api.read_plan(campaign).get("execution_driver", original_driver))
                         try:
                             if pilot.get("status") in ("memory_pilot_passed", "thermal_pilot_passed"):
-                                orchestration.launch(campaign, stage, False, args.hosts.split(","), shared)
+                                orchestration.launch(campaign, stage, False, case.get("execution_hosts") or args.hosts.split(","), shared)
                             elif not any((campaign / stage / "launches").glob("*_pilot.json")):
-                                orchestration.launch(campaign, stage, True, args.hosts.split(","), shared)
+                                orchestration.launch(campaign, stage, True, case.get("execution_hosts") or args.hosts.split(","), shared)
                         finally:
                             orchestration.DRIVER = original_driver
                 current = collect(base, active, driver)

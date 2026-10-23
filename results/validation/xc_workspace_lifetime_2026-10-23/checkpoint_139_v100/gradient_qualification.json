@@ -1,0 +1,93 @@
+{
+  "host": "lambda1",
+  "pid": 1035333,
+  "process_start": "504525255",
+  "status": "fixed_geometry_gradient_and_sampled_derivatives_passed",
+  "started": 1792795078.779709,
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "GPU": "0",
+  "full_large_geometry_workflow_qualified": false,
+  "native_Hessian_qualified": false,
+  "free_energy_computed": false,
+  "synthesis_admission": false,
+  "checks": {
+    "geometry_sha256": "c76cb1468e69f35f184e02a4f862ea5f0a626f6c675cf20371d95d57410d5a5f",
+    "checks": [
+      {
+        "atom": 28,
+        "axis": 2,
+        "step_Bohr": 0.0005,
+        "analytic": 0.0008052583055464932,
+        "numerical": 0.0008052361408772413,
+        "absolute_error": 2.2164669251888147e-08
+      },
+      {
+        "atom": 28,
+        "axis": 2,
+        "step_Bohr": 0.001,
+        "analytic": 0.0008052583055464932,
+        "numerical": 0.0008051317763602128,
+        "absolute_error": 1.2652918628033166e-07
+      },
+      {
+        "atom": 10,
+        "axis": 1,
+        "step_Bohr": 0.0005,
+        "analytic": -0.0008427091000761963,
+        "numerical": -0.0008427105058217421,
+        "absolute_error": 1.4057455457929663e-09
+      },
+      {
+        "atom": 10,
+        "axis": 1,
+        "step_Bohr": 0.001,
+        "analytic": -0.0008427091000761963,
+        "numerical": -0.000842715053295251,
+        "absolute_error": 5.9532190546576075e-09
+      }
+    ],
+    "passed": true,
+    "acceptance_Ha_Bohr": 1e-06
+  },
+  "gradient_max_Ha_Bohr": 0.0008427091000761963,
+  "previous_gradient_max_difference": 8.071445591973161e-09,
+  "sampled_components": 2,
+  "displacement_steps_Bohr": [
+    0.0005,
+    0.001
+  ],
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/calculation.log": "330b55cff4197f3f96ca69cd6d69114fe9f31adb27388c4d6b07492501aa09a5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0_SCF.jsonl": "ca0d6b3d15df7e3ed07d2bb32b4645d846892eba8efdf70cd0d577ecb5623e72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0_CDS.evaluations/000000/input.xyz": "851a865d6f0b7e3d0c1e3411e43cf9702ac9068d1f39aeb9bd4dacd0e4cd1e5b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0_CDS.evaluations/000000/status.json": "6abe7d0340a5defbcee7ca854b6d41f83945edfaf89a774f932448e7cfe9621a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0_CDS.evaluations/000000/gradient_Ha_Bohr.npy": "dba829291a789ad0c3149400860473303b28219a535b097cee5021696663ed5f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0_CDS.evaluations/000000/component_checks.json": "5d8029684f51b6cf4543ee10299bdd2c355fbada307a8805853de89832a97bfd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/bounded_gradient_solver.py": "199d93eb081f85dcca0e2bbb25200e221c8e445e219d8af4665dadfb603421c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/original_RKS_XC_response.py": "41f6995f5d35346e8c2ef41b715659f3503b83a33dd3dfb67252c7129b05254a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/released_RKS_XC_response.py": "3bba43b57fe18fc6c065f96f4f3fb91b8aea69d152c97fa6b5cd29dab94056b2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/XC_workspace_trace.jsonl": "f4b540e7a045bb74e04f224a778ddb00d4f5b6331d54d6b5db95149bef9b567b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/status.json": "dc22679f80f86f7a4606c669904876733d621fc1d31e5f32a0895a1920a417c2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/bounded/status.json": "26dfc7697024ef146ac10c536aeec27aa26563a307e8249bc0bc627480e5ace1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/bounded/build_execution/original_build.py": "e2d08236dcb24a29eaa7da62864a34e8c0f803b74fc62d9712fb8201957445b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/bounded/build_execution/compact_build.py": "e44cb0d127d686ddd3c262ef822d7eec0fba2f646eb2b45757ccd34c75569eb9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/bounded/build_execution/original_composite.py": "0e98a7954ba501874febfc7fbc1c0d89e2b21fb8fac984b5a0c2ba3e8b874709",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/bounded/build_execution/released_geometry_driver.py": "3f32fc6ea22a0897882d35189d58af7b8513c90000187a1bb62ea0439c7c2cd1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/execution/bounded/build_execution/status.json": "068d2e314de277931a105d83e5b29234dedd87444c033df1d6b989f16ba5015f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/baseline.json": "bde0e5229c05ddf5805c435e16ae05015c10775c4b6358fb82852d0e2f1e63cf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.0005_sign-1.json": "a971c33405dc6208e05c54dad4e9fefe02f8242fb60e12cbea20a92af7c1f828",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.0005_sign1.json": "abb075dd1465ad4acbee246945932a04905ea81d8698dfc621627bab6d91fb2d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.001_sign-1.json": "d446a74c415c71fe133e5c9106214773534312482215919964c5b24b7a249c8e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.001_sign1.json": "723b9309680eee12279b0305a31ed8d5764789de86b5d4e3cf0483901424817e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.0005_sign-1.json": "ff45ff8102f317db9f8e39a177a30cf939740272ac5b34ccbb4b73a7915d50c1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.0005_sign1.json": "f7350b00d5240b7071a5ba6483c215c8b3fcf4f0d8bd6865a2e74bb484e942e0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.001_sign-1.json": "b2b3bb76dae8ab54c4a7a3c4422b872c936c9935e7ef834e05a73173f551ff59",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.001_sign1.json": "a6b6a2a72211b1203b6abec2e6bd46d81ac60566088894ab1092aa3e0a63c87c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/summary.json": "86b0b193353fae4d5c26811d883ae5812c5cfdfa6171855f68690f496f149421"
+  },
+  "finished": 1792795783.2472212,
+  "observed_peak_GPU_MiB": 27808
+}

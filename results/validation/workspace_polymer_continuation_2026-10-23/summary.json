@@ -1,0 +1,43 @@
+{
+  "status": "checked_execution_and_thermal_sensitivity_milestone_physical_polymer_results_pending",
+  "checked_UTC": "2026-10-23T23:39:49Z",
+  "software_tests": {
+    "passed": 929,
+    "skipped": 1,
+    "optional_render_test_passed_separately": 1
+  },
+  "manuscript": {
+    "main_pages": 15,
+    "SI_pages": 12,
+    "main_pdf_sha256": "6ad91d8f331baef8920bed6e8275163309f1f455345d3dc356ff4a2ca1439df5",
+    "SI_pdf_sha256": "9edfb6b0af1ebc6df67b655a9bc676514d8c350262b1007abc2b0fbe0ea8f3ae",
+    "visual_review_sha256": "4302fd1e9bd729cfd35e8095404984b857a469cf196fe00bc0c057d794593978",
+    "export_sha256": "76715b819c49920c414504760dfaedfee6866262338d0f4650be526b9338f55e"
+  },
+  "scientific_status": {
+    "all_axis_eligible_candidates": 0,
+    "benchmark_endpoints": 39,
+    "cutoff_reaction_models": 87,
+    "cutoff_independent_potential_sums": 117,
+    "cutoff_independent_reaction_sums": 261,
+    "PMDI_site2": "Unaccepted: final force/total-energy differences fail at 0.001 Bohr; checkpoints preserved",
+    "PMDI_site3": "Checked E; native-thermal pilot actually running on lambda1; no accepted G",
+    "PMDI_pair": "Checkpoint derivatives checked; full successor registered for occupied H100 node; no scientific start at this checkpoint",
+    "broader_conformer_convergence": false,
+    "public_raw_state_deposition": false,
+    "v5_repository_release": "Unpublished draft; downloaded assets match local bytes"
+  },
+  "source_sha256": {
+    "results/validation/thermal_cutoff_sensitivity_2026-10-23/summary.json": "5e74676fa8292e48a48416e662f079f9b512509910992475da8149c15e961b96",
+    "results/validation/thermal_cutoff_sensitivity_2026-10-23/independent_review.json": "258e90782b956828fa011c780305fa7ec2f976f4d321ab2e64b16f939b86d65e",
+    "results/validation/xc_workspace_lifetime_2026-10-23/independent_checkpoint_review.json": "a8fe334e8df602abada02f761df0c0a98389f2083a1d8baa56caefac08b5ed76",
+    "results/releases/primary_review/draft_release.json": "dcbf51df9c1a688bb4dd5e23d853df37aad941538d27636008d521f4699cef70"
+  },
+  "limits": [
+    "No failed or incomplete field is converted to a pass",
+    "No threshold is chosen to manufacture eligible candidates",
+    "No full hybrid/native qualification inferred from a geometry-gradient diagnostic",
+    "No whole-polymer capacity, loading distribution or electron-transfer rate inferred",
+    "M1/M4, public deposition, fresh GPU restoration and final author metadata remain open"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "status": "independent_fixed_geometry_derivatives_reconstructed",
+  "checked": 1792797252.7101452,
+  "atoms": 139,
+  "sampled_components": 2,
+  "displaced_SCF_points": 8,
+  "checks": [
+    {
+      "atom": 28,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "analytic": 0.0008052583055464932,
+      "numerical": 0.0008052361408772413,
+      "absolute_error": 2.2164669251888147e-08
+    },
+    {
+      "atom": 28,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "analytic": 0.0008052583055464932,
+      "numerical": 0.0008051317763602128,
+      "absolute_error": 1.2652918628033166e-07
+    },
+    {
+      "atom": 10,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "analytic": -0.0008427091000761963,
+      "numerical": -0.0008427105058217421,
+      "absolute_error": 1.4057455457929663e-09
+    },
+    {
+      "atom": 10,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "analytic": -0.0008427091000761963,
+      "numerical": -0.000842715053295251,
+      "absolute_error": 5.9532190546576075e-09
+    }
+  ],
+  "maximum_error_Ha_Bohr": 1.2652918628033166e-07,
+  "gradient_max_reference_difference_Ha_Bohr": 8.071445591973161e-09,
+  "observed_peak_GPU_MiB": 27808,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/gradient_qualification.json": "c93306881d64df6b1e34642b49cbff8acc78b6af0fd940be874d6d0b1b82e70f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/baseline.json": "bde0e5229c05ddf5805c435e16ae05015c10775c4b6358fb82852d0e2f1e63cf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.0005_sign-1.json": "a971c33405dc6208e05c54dad4e9fefe02f8242fb60e12cbea20a92af7c1f828",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.0005_sign1.json": "abb075dd1465ad4acbee246945932a04905ea81d8698dfc621627bab6d91fb2d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.001_sign-1.json": "d446a74c415c71fe133e5c9106214773534312482215919964c5b24b7a249c8e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom28_axis2_h0.001_sign1.json": "723b9309680eee12279b0305a31ed8d5764789de86b5d4e3cf0483901424817e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.0005_sign-1.json": "ff45ff8102f317db9f8e39a177a30cf939740272ac5b34ccbb4b73a7915d50c1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.0005_sign1.json": "f7350b00d5240b7071a5ba6483c215c8b3fcf4f0d8bd6865a2e74bb484e942e0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.001_sign-1.json": "b2b3bb76dae8ab54c4a7a3c4422b872c936c9935e7ef834e05a73173f551ff59",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/energy_force_check/atom10_axis1_h0.001_sign1.json": "a6b6a2a72211b1203b6abec2e6bd46d81ac60566088894ab1092aa3e0a63c87c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/check_polymer_gradient_recovery.py": "264efd1155590ccd88ca6fac1701e0ce3f3744f8478eb9dc7f24fd4d808f5a15",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/plan.json": "c01007e0d3c94abf4f1d471d6f68e3700b8b19518458d45b81c238e4afbd2334"
+  },
+  "scope": "Fixed geometry, two components, two steps; no minimum, Hessian, ensemble G or candidate admission"
+}

@@ -72,6 +72,10 @@ def main():
         "review_package_hessians.json": "results/validation/release_package_2026-10-23/qualified_v5/hessians.json",
         "TOC_artwork.json": "results/figures/publication/graphical_abstract_2026-10-23_v2.json",
         "TOC_artwork_check.json": "results/figures/publication/graphical_abstract_check.json",
+        "thermal_cutoff_sensitivity.json": "results/validation/thermal_cutoff_sensitivity_2026-10-23/summary.json",
+        "thermal_cutoff_review.json": "results/validation/thermal_cutoff_sensitivity_2026-10-23/independent_review.json",
+        "thermal_cutoff_figure.json": "results/figures/validation/thermal_cutoff_sensitivity_v2.json",
+        "review_package_draft.json": "results/releases/primary_review/draft_release.json",
     }
     plots = {
         "benchmark.pdf": "results/figures/validation/retrospective_redox_benchmark.pdf",
@@ -87,6 +91,7 @@ def main():
         "pmdi_construction.pdf": "results/figures/polymer_models/pmdi_occupancy_construction_compact.pdf",
         "deformation_components.pdf": "results/figures/polymer_models/segment_deformation_components.pdf",
         "graphical_abstract.pdf": "results/figures/publication/graphical_abstract.pdf",
+        "thermal_cutoff.pdf": "results/figures/validation/thermal_cutoff_sensitivity.pdf",
     }
     mapping = {evidence / name: ROOT / source for name, source in sources.items()}
     mapping.update({figures / name: ROOT / source for name, source in plots.items()})

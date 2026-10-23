@@ -43,3 +43,11 @@ Execution/numerical diagnostic artifact closure, fresh GPU restoration, data
 deposition licensing, author metadata and public deposition remain open. The
 repository's MIT code license is included. No new material performance, physical
 admission or experimental accuracy follows from this review package.
+
+A [GitHub draft release](draft_release.json) now holds the checked v5 archive,
+package manifest and checksum file. All three assets were downloaded again and
+verified byte-for-byte. The draft requires repository-maintainer access and is
+not a public raw-data deposition or DOI. Its numerical epoch remains
+`2026-10-23_all_axes_checked`; current polymer work and subsequent manuscript
+changes are outside that snapshot. Data-reuse terms, author metadata and the
+final publication snapshot remain unresolved.
