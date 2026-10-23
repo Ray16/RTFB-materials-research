@@ -2,7 +2,7 @@
 
 Provisional title: **A route-aware computational framework for redox motif selection on preformed polymers**.
 This is a methods-focused in silico paper. The evidence snapshot is
-[23 October 2026](evidence/2026-10-23_reference_origin_review/manifest.json); incomplete physical analyses
+[23 October 2026](evidence/2026-10-23_TOC_release_revision/manifest.json); incomplete physical analyses
 remain explicit. Authorship, venue and submission timing are undecided.
 
 The central question is how to combine exact molecular identity, defined-condition
@@ -12,11 +12,11 @@ Supporting model results remain distinct from experimental synthesis or whole-be
 | Section | Argument and evidence | Remaining work |
 | --- | --- | --- |
 | Introduction | Preformed functionalized beads provide a relevant experimental architecture; computational selection must connect molecular redox properties to attachment and local environment | Expand targeted context and novelty comparison |
-| Methods | Exact precursor/product pairs; field-specific QC; matched Fc reference; base/byproduct and standard-state bookkeeping; open-chain occupancy controls; chunked scheduling and provenance | Small CPU release example checked in a fresh environment; selected quantum restart equivalence remains |
+| Methods | Exact precursor/product pairs; field-specific QC; matched Fc reference; base/byproduct and standard-state bookkeeping; open-chain occupancy controls; chunked scheduling and provenance | Cached CPU replay and two quantum restart controls checked; full GPU restoration and public raw-state deposition remain |
 | Results: expansion and calibration | 1,593 recipes / 837 exact designs, distinct from the historical 75-candidate evaluation; 39/39 benchmark potentials from 30 molecules, seven studies | NDI-specific external anchor and broader external coverage |
-| Results: grafting | Two BQ HCl-reference reactions change sign under modeled DBU/DIPEA conditions; five candidates / 20 base-assisted values, one held candidate | Representative method/conformer sensitivity and exact-route review |
+| Results: grafting | Fixed per-base shifts across five candidates / 20 base-assisted values; source-reviewed proton-transfer and model-sensitivity limits | Representative method/conformer sensitivity and exact-route review |
 | Results: polymer | Exact open backbone, dense and partial occupancy scenarios; interaction/deformation separation; selected reference conformer changes electronic nonadditivity | All twelve inherited native free energies and finite two-pose partitions checked; broader sampling and exact PMDI occupancy remain |
-| Results: execution | Million-task scheduling control, 837 real descriptor comparisons, real shared-filesystem crash/restart with 17 molecular tasks | Controlled CPU concurrency and clean-checkout reproduction checked; selected conformer/quantum adapters remain |
+| Results: execution | Million-task scheduling control, 837 real descriptor comparisons, real shared-filesystem crash/restart with 17 molecular tasks | Concurrency, restart and offline scientific-package replay checked; full GPU restoration and remaining execution artifacts remain |
 | Discussion | Different selection dimensions, limits of transfer from free parents, conformer and ion-pair uncertainty, distinction between association and charge transport | Reassess decisions after pending physical checks |
 
 ```mermaid
@@ -51,3 +51,9 @@ partition is reported as a method control and keeps undiscovered-conformer
 uncertainty separate from rotor sensitivity. Signed fragment-deformation terms
 and saved relaxation are incorporated into the SI. The graphical abstract and
 public raw-state release remain separate submission requirements.
+
+The chemical TOC artwork is inserted on the final manuscript page. The present
+frozen snapshot also records the preceding reviewer package inventory and
+replay receipts. Public source-code visibility is verified separately from
+public raw-data deposition. Neither cached replay nor figure preparation closes
+the pending native polymer and broader-conformer requirements.

@@ -27,3 +27,7 @@ history and all earlier H100 attempts are preserved. The other two occupied
 baseline components and subsequent thermal qualification still need continuation;
 the independent wider-search observer and all fifteen CPU searches remain active
 at the recorded live-process check.
+
+The candidate observer subsequently resumed with the post-pilot site-3 branch.
+This site-2 execution remains a separate, explicitly recorded continuation; its
+physical outputs must pass before native-G handoff.

@@ -1,11 +1,74 @@
 """Independently reconstruct the numerical statements in the frozen paper snapshot."""
 
 import csv
+import hashlib
 import json
 import math
 import statistics as descriptive
 from collections import Counter
 from pathlib import Path
+
+
+def audit_reviewer_package(load):
+    """Check release coverage against its frozen inventory and replay receipts."""
+    try:
+        current = load("review_package.json")
+    except FileNotFoundError:
+        return None  # Earlier immutable epochs predate this packaging report.
+    package = load("review_package_manifest.json")
+    data = load("review_package_data.json")
+    replay = load("review_package_replay.json")
+    arithmetic = load("review_package_arithmetic.json")
+    hessians = load("review_package_hessians.json")
+    states = {r["id"]: r for r in data["states"]}
+    expected_hessians = {k for k, v in states.items() if v["partition_kind"] != "monatomic"}
+    actual_hessians = {r["id"] for r in hessians["states"]}
+    electronic = data["auxiliary"]["electronic"]["records"]
+    if (len(states) != len(data["states"]) or len(states) != package["raw_states"]
+            or len(states) != current["raw_states"] or len(states) != arithmetic["raw_states"]
+            or len(electronic) != package["electronic_only_records"]
+            or "package_manifest.json" in package["files_sha256"]
+            or len(package["files_sha256"]) + 1 != current["archive_files"]):
+        raise ValueError("Reviewer package inventory counts differ")
+    if (actual_hessians != expected_hessians or len(actual_hessians) != len(hessians["states"])
+            or len(actual_hessians) != hessians["checked"]
+            or len(actual_hessians) != current["CPU_Hessian_states"]):
+        raise ValueError("Reviewer package Hessian coverage differs")
+    if (replay["package_manifest_sha256"] != current["package_manifest_sha256"]
+            or replay["arithmetic_interpreter"] != "/usr/bin/python3 -I -S"
+            or not replay["original_checkout_and_calculation_opens_blocked_by_audit_hook"]
+            or not replay["optional_Hessian_reconstruction"]
+            or current["public_archive_deposited"] != package["public_archive_deposited"]
+            or current["public_archive_deposited"] != replay["code_and_dataset_publicly_deposited"]
+            or current["public_DOI_created"] or replay["full_GPU_environment_restored"]):
+        raise ValueError("Reviewer package replay/public-deposition scope differs")
+    if (arithmetic["original_cluster_paths_opened"] or arithmetic["quantum_calculations_run"]
+            or arithmetic["independent_physical_QC_reestablished"] or arithmetic["experimental_accuracy_inferred"]
+            or hessians["original_cluster_paths_opened"] or hessians["quantum_calculations_run"]
+            or hessians["xTB_library_loaded"] or hessians["original_physical_QC_repeated"]
+            or hessians["experimental_accuracy_inferred"]):
+        raise ValueError("Cached replay was promoted to fresh physical or experimental validation")
+    coverage = current["primary_coverage"]
+    for key in ("benchmark_endpoints", "reference_reactions", "base_assisted_values",
+                "relative_basicity_controls", "finite_graph_partitions"):
+        if arithmetic[key] != coverage[key]:
+            raise ValueError("Reviewer package primary replay coverage differs")
+    for key in ("benchmark_endpoints", "reference_reactions", "base_assisted_values"):
+        if package[key] != coverage[key]:
+            raise ValueError("Reviewer package manuscript inventory differs")
+    if arithmetic["auxiliary_scientific_records"] != current["auxiliary_coverage"]:
+        raise ValueError("Reviewer package auxiliary replay coverage differs")
+    negative = replay["negative_checks"]
+    if len(negative) != current["negative_checks"] or len({r["case"] for r in negative}) != len(negative) or not all(r["rejected"] for r in negative):
+        raise ValueError("Reviewer package negative checks differ")
+    frequency_error = max(r["frequency_max_error_cm"] for r in hessians["states"])
+    nuclear_error = max(abs(x) for r in hessians["states"] for x in r["nuclear_errors_eV"].values())
+    if (frequency_error != current["maximum_frequency_reconstruction_error_cm"]
+            or nuclear_error != current["maximum_nuclear_reconstruction_error_eV"]):
+        raise ValueError("Reviewer package reconstruction errors differ")
+    return dict(raw_states=len(states), electronic_only_records=len(electronic),
+                archive_files=len(package["files_sha256"]) + 1, Hessian_states=len(actual_hessians),
+                negative_checks=len(negative), public_deposition=False, full_GPU_restoration=False)
 
 
 def audit_decision_followup(load):
@@ -281,6 +344,15 @@ def audit():
         if abs(dg - value["deltaG_eV"]) > 1e-9:
             raise ValueError("Cached example grafting sum changed")
     added = audit_decision_followup(load) if (folder / "finite_ensemble.json").exists() else None
+    release = audit_reviewer_package(load)
+    if release is not None:
+        package = load("review_package_manifest.json")
+        current = load("review_package.json")
+        digest = lambda name: hashlib.sha256((folder / name).read_bytes()).hexdigest()
+        if (digest("review_package_manifest.json") != current["package_manifest_sha256"]
+                or digest("review_package_data.json") != package["files_sha256"]["data/manifest.json"]
+                or package["code_commit"] != current["code_snapshot_commit"]):
+            raise ValueError("Frozen reviewer inventory differs from the tested package")
     return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
                 base_assisted_values=base_values, qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
@@ -294,6 +366,7 @@ def audit():
                 quantum_restart_controls=len(restart["controls"]),
                 neutral_basis_controls=basis["checked"], exact_cases_with_explicit_holds=len(exact["cases"]),
                 decision_followup=added,
+                reviewer_package=release,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

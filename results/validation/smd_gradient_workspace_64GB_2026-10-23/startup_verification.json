@@ -1,0 +1,53 @@
+{
+  "host": "lambda13",
+  "checked": 1792787661.380527,
+  "workers": [
+    {
+      "pid": 1040772,
+      "start": "90431512",
+      "cpus": [
+        158,
+        159
+      ],
+      "stage": "site3_full_energy",
+      "same_process_live": true,
+      "CPU_affinity": [
+        158,
+        159
+      ],
+      "native_thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "GPU_visibility": "1"
+    },
+    {
+      "pid": 1058362,
+      "start": "90453028",
+      "cpus": [
+        160,
+        161
+      ],
+      "stage": "139_atom_resource_pilot",
+      "same_process_live": true,
+      "CPU_affinity": [
+        160,
+        161
+      ],
+      "native_thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "GPU_visibility": "2"
+    }
+  ],
+  "resident_GPU_processes": "1040772, GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 22892 MiB\n1058362, GPU-5d07badb-4052-7045-bdc1-c0476709589b, 33442 MiB\n"
+}

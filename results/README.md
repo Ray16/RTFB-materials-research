@@ -14,7 +14,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
-| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-23_reference_origin_review/manifest.json) |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-23_TOC_release_revision/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 
@@ -108,7 +108,7 @@ The [segment-deformation audit](reviews/2026-10-23/segment_deformation_audit_v2/
 The October 23 manuscript revision adds conjunctive admission across all required
 axes, an exact PMDI precursor/route/capacity assessment and all twelve inherited
 phthalimide native free energies in a finite two-pose partition. The checked
-paper has 14 pages and the SI 11. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
+paper has 15 pages, including its TOC page, and the SI 11. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
 prepared graph while making chemical labels legible at manuscript size. No full
 material candidate is admitted; broader sampling and exact PMDI occupancy
 calculations remain separate work.
@@ -125,6 +125,8 @@ The [DIPEA reference-origin audit](validation/dipea_reference_origin_2026-10-23_
 
 The [32 GB solvent-workspace qualification](validation/smd_workspace_32GB_2026-10-23/README.md) records passed small spin controls, completed 115-atom single-point SCF checkpoints and the subsequent preserved gradient allocation failure. The separate bounded-gradient control also passes. Large-geometry optimization and native thermochemistry on this hardware remain unqualified.
 
-The [large 115-atom gradient recovery](validation/smd_gradient_workspace_32GB_2026-10-23/README.md) now passes four sampled total-energy derivative checks on a 32 GB V100, with 20,304 MiB peak GPU memory. Its same-model [full geometry/energy continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB/README.md) has an actual reserved optimizer start; native G and ensemble convergence remain pending. The candidate-only observer was stopped for the documented handoff, while fifteen CPU searches and the independent wider-search observer continue.
+The [large 115-atom gradient recovery](validation/smd_gradient_workspace_32GB_2026-10-23/README.md) now passes four sampled total-energy derivative checks on a 32 GB V100, with 20,304 MiB peak GPU memory. Its same-model [full geometry/energy continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB/README.md) has an actual reserved optimizer start; native G and ensemble convergence remain pending. The candidate-only observer resumed after the documented handoff; active claims suppress duplicate workers. The independent wider-search observer and source searches continue.
 
-A separate [chemical TOC graphic](figures/publication/README.md) is prepared from exact precursor/product identities, with EPS and 600 dpi color TIFF exports. It is visually checked in color and grayscale; author review and insertion in the manuscript remain pending.
+A separate [chemical TOC graphic](figures/publication/README.md) is prepared from exact precursor/product identities, with EPS and 600 dpi color TIFF exports. It is visually checked in color and grayscale and inserted on the checked manuscript's final page; author review remains pending.
+
+The [current manuscript revision](../manuscript/README.md) adds explicit reviewer-package scope and the integrated TOC. Its frozen counts are independently cross-checked against the archived inventory. The [site-3 post-pilot continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md) resolves a force-directory collision without moving the original pilot. The [64 GB profile campaign](validation/smd_gradient_workspace_64GB_2026-10-23/README.md) has passed both small spin controls and started the separate 139-atom resource requalification. Native polymer G remains pending.

@@ -64,6 +64,14 @@ def main():
         "all_axes_decisions.json": "results/selection/all_axes_2026-10-23_capacity_release/decisions.json",
         "segment_relaxation.json": "results/reviews/2026-10-23/segment_deformation_audit_v2/summary.json",
         "basicity_reference_origin.json": "results/validation/dipea_reference_origin_2026-10-23_checked/summary.json",
+        "review_package.json": "results/releases/primary_review/current.json",
+        "review_package_manifest.json": "results/releases/primary_review/package_manifest.json",
+        "review_package_data.json": "calcs/releases/2026-10-23_scientific_review_v5/data/manifest.json",
+        "review_package_replay.json": "results/validation/release_package_2026-10-23/qualified_v5/summary.json",
+        "review_package_arithmetic.json": "results/validation/release_package_2026-10-23/qualified_v5/arithmetic.json",
+        "review_package_hessians.json": "results/validation/release_package_2026-10-23/qualified_v5/hessians.json",
+        "TOC_artwork.json": "results/figures/publication/graphical_abstract_2026-10-23_v2.json",
+        "TOC_artwork_check.json": "results/figures/publication/graphical_abstract_check.json",
     }
     plots = {
         "benchmark.pdf": "results/figures/validation/retrospective_redox_benchmark.pdf",
@@ -78,6 +86,7 @@ def main():
         "pmdi_capacity.pdf": "results/figures/polymer_models/pmdi_capacity_bounds.pdf",
         "pmdi_construction.pdf": "results/figures/polymer_models/pmdi_occupancy_construction_compact.pdf",
         "deformation_components.pdf": "results/figures/polymer_models/segment_deformation_components.pdf",
+        "graphical_abstract.pdf": "results/figures/publication/graphical_abstract.pdf",
     }
     mapping = {evidence / name: ROOT / source for name, source in sources.items()}
     mapping.update({figures / name: ROOT / source for name, source in plots.items()})

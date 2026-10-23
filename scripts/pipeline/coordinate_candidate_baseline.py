@@ -154,6 +154,11 @@ def main():
                     campaign = Path(case["campaign"])
                     report = driver.collect(campaign)
                     for stage in ("energy", "thermal"):
+                        # A claim may be live or its ownership may be unresolved.
+                        # Do not start extra workers just to discover the same
+                        # claimed single task. Stale-owner recovery is separate.
+                        if any((campaign / stage / "claims").iterdir()):
+                            continue
                         if any((campaign / stage / "failures").glob("*.json")):
                             continue
                         if stage == "thermal" and (report["checked_energy"] != 1 or report["checked_native_G"] == 1):

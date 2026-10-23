@@ -5,8 +5,8 @@
       "reason": "Both spin controls passed; bounded transient workspace and equivalent solvent matrix-vector contraction; original safety budget and scientific model retained"
     },
     "baseline__design_pmdi_ethyl__occ_3": {
-      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_bounded_smd_v2",
-      "reason": "Both spin controls passed; bounded transient workspace and equivalent solvent matrix-vector contraction; original safety budget and scientific model retained"
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot",
+      "reason": "Original resource pilot passed; full worker failed before calculation because pilot force-evaluation directory already existed; reuse checked profile with fresh full-calculation storage"
     },
     "baseline__design_pmdi_ethyl__occ_2_3": {
       "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_bounded_smd_v2",
@@ -14,6 +14,18 @@
     }
   },
   "qualification": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23",
-  "previous_registry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/baseline_observer_history/recoveries_before_bounded_1792774248905029060.json",
-  "updated": 1792774248.9072196
+  "previous_registry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/baseline_observer_history/recoveries_before_postpilot_2026-10-23.json",
+  "updated": 1792787417.861301,
+  "external_continuations": {
+    "baseline__design_pmdi_ethyl__occ_2": {
+      "campaign": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB",
+      "stage": "energy",
+      "primary_registry_override": false
+    },
+    "baseline__design_pmdi_ethyl__occ_2_3": {
+      "campaign": "results/validation/smd_gradient_workspace_64GB_2026-10-23/pilot_occ_2_3",
+      "stage": "resource_pilot",
+      "primary_registry_override": false
+    }
+  }
 }

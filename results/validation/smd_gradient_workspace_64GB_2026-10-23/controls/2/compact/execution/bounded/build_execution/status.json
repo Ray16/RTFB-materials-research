@@ -1,0 +1,62 @@
+{
+  "status": "execution_adapter_finished_requires_control_and_physical_review",
+  "started": 1792787059.2526863,
+  "builds": [
+    {
+      "atoms": 4,
+      "surface_points": 1214,
+      "persistent_matrix_bytes": 35385672,
+      "elapsed_seconds": 0.058208465576171875
+    },
+    {
+      "atoms": 4,
+      "surface_points": 1212,
+      "persistent_matrix_bytes": 35269200,
+      "elapsed_seconds": 0.056714534759521484
+    },
+    {
+      "atoms": 4,
+      "surface_points": 1212,
+      "persistent_matrix_bytes": 35269200,
+      "elapsed_seconds": 0.05536532402038574
+    },
+    {
+      "atoms": 4,
+      "surface_points": 1212,
+      "persistent_matrix_bytes": 35269200,
+      "elapsed_seconds": 0.05776023864746094
+    },
+    {
+      "atoms": 4,
+      "surface_points": 1212,
+      "persistent_matrix_bytes": 35269200,
+      "elapsed_seconds": 0.2696683406829834
+    },
+    {
+      "atoms": 4,
+      "surface_points": 1212,
+      "persistent_matrix_bytes": 35269200,
+      "elapsed_seconds": 0.05750083923339844
+    },
+    {
+      "atoms": 4,
+      "surface_points": 1212,
+      "persistent_matrix_bytes": 35269200,
+      "elapsed_seconds": 0.05889534950256348
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_memory_execution.py": "d5130bd5ae33560322fea44eab55991e9304b51101f2f428524870cf76e8a4f8",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/smd.py": "1af82c3a1997abbe2db69db4dab71891a6a582f7e69154e7e046c04f40638f06",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422"
+  },
+  "scientific_model_changed": false,
+  "surface_grid_changed": false,
+  "precision_changed": false,
+  "transformations": [
+    "Release DA scratch before K assembly",
+    "Reuse DAS storage for K and release its alias after LU",
+    "Release unused geometry scanner/SCF before the larger SP"
+  ],
+  "finished": 1792787083.1247654
+}

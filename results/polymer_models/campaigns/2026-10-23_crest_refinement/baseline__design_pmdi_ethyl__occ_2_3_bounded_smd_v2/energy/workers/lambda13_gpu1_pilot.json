@@ -1,0 +1,24 @@
+{
+  "host": "lambda13",
+  "pid": 441584,
+  "process_start": "89437917",
+  "gpu": 1,
+  "cpus": [
+    200,
+    201
+  ],
+  "stage": "energy",
+  "pilot": true,
+  "status": "stopped_preserving_outputs",
+  "items": [
+    {
+      "key": "baseline__design_pmdi_ethyl__occ_2_3__pose0",
+      "status": "failed_preserved",
+      "error": "CUDARuntimeError('cudaErrorMemoryAllocation: out of memory')"
+    }
+  ],
+  "started": 1792777046.081909,
+  "active_key": "baseline__design_pmdi_ethyl__occ_2_3__pose0",
+  "error": "CUDARuntimeError('cudaErrorMemoryAllocation: out of memory')",
+  "finished": 1792778613.432957
+}

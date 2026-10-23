@@ -54,10 +54,12 @@ The [bounded-workspace successor](../smd_bounded_memory_2026-10-23/README.md)
 passes full original-versus-modified spin controls. Its same-model three-case
 recovery registry keeps the original 80 GiB budget and all physical gates.
 Available larger-case fixed-geometry energies/gradients must also agree with
-the preserved references. New large pilots await a free suitable H100.
+the preserved references. The two 115-atom bounded pilots subsequently passed. Their first full workers stopped before optimization because the pilot force-evaluation directory already existed; the 139-atom pilot still failed allocation. The fresh post-pilot and 64 GiB profile branches below preserve those outcomes.
 Raw recovery locations are given by each current branch's `plan.json` under
 `calcs/polymer_models/2026-10-23_crest_refinement/`; the earlier generic raw-path
 statement does not describe these recovery branches.
 
 
 The later [32 GB gradient recovery](../smd_gradient_workspace_32GB_2026-10-23/README.md) passes the exact site-2 point and sampled energy derivatives. A [full geometry/energy branch](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB/README.md) has started on lambda2. The candidate-only observer linked above is historical during this controlled handoff; its exact PID was verified and stopped without stopping scientific workers. The wider-search observer and all fifteen source searches remain live at the recorded check. The other occupied baseline components and thermal stages remain pending. This continuation does not change the current all-axis decision.
+
+The candidate observer has now resumed with its original deadline. It follows the [site-3 post-pilot branch](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md), skips held claims before launching, and leaves the site-2 V100 and 139-atom resource branches explicitly separate in the registry. [Runtime ownership](../smd_gradient_workspace_64GB_2026-10-23/startup_verification.json) verifies the parallel H100 jobs and their disjoint resources. The earlier observer-stop paragraph describes the handoff, not its current state.
