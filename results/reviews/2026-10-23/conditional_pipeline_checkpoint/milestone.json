@@ -1,0 +1,53 @@
+{
+  "status": "finite_baseline_verified_exact_candidate_followup_running",
+  "checked": 1792768744.0137987,
+  "baseline_native_free_energies": 12,
+  "finite_graph_partitions": 6,
+  "adjacent_deltaDeltaG_kJ_mol": -5.1692373578,
+  "one_spacer_deltaDeltaG_kJ_mol": -11.392731394,
+  "broader_conformer_convergence": false,
+  "exact_PMDI_route": "hold: attachment selectivity and core retention unreviewed",
+  "candidate_occupancy_G_qualified": 0,
+  "capacity_scope": "Conditional composition upper bounds only",
+  "all_axis_eligible_candidates": 0,
+  "full_software_suite": "855 passed, 1 optional-dependency skip; skipped figure check separately passed",
+  "scientific_limits": [
+    "No measured polymer capacity or experimentally inferred graft distribution",
+    "No PMDI polymer-occupancy free energy admitted",
+    "Large execution-memory recovery remains a resource pilot",
+    "M1/M4 and public raw-state archive remain open; no submission-readiness claim"
+  ],
+  "raw_locations": [
+    "calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal",
+    "calcs/polymer_models/2026-10-23_conformer_revision",
+    "calcs/polymer_models/pmdi_occupancy_2026-10-23",
+    "calcs/polymer_models/2026-10-23_crest_refinement",
+    "calcs/literature/2026-10-23_precursor_access/EP0010440B1.pdf"
+  ],
+  "producer_hashes": {
+    "scripts/pipeline/collect_candidate_decisions.py": "bb9dcc1b8da94d7da5b38c2dc3f28ad7047d96b3d8d1f1b9995338ae739ca411",
+    "scripts/pipeline/coordinate_candidate_baseline.py": "0997818bcf7f2c758eefbd79207c327a8a2641a446212d838ba9e7d4ca6a4361",
+    "scripts/pipeline/coordinate_crest_refinement.py": "19c2a4e37c423f36f7f625af187b0facb8b56c6dae872164b092fa83d60c8ba2",
+    "scripts/pipeline/evaluate_polymer_capacity.py": "ffbea3c7b8c09c8275683a70d46994c46a40decb5e6acc8163f510c2da6b3552",
+    "scripts/pipeline/launch_candidate_occupancy.py": "1251eba5aec1cc32dcbff68bcf6c7c5c7df60971174d619c2aed59621d570283",
+    "scripts/pipeline/prepare_candidate_baseline.py": "96c01b6072166d525d39169afe4f0707ece6c9fbb3560b638dc4d8414f7c9777",
+    "scripts/pipeline/prepare_candidate_occupancy_searches.py": "9f887ff7774e8873af49fc83278615cdc6a54e9bed05ff61f7b08e796a5854f8",
+    "scripts/pipeline/prepare_crest_refinement.py": "378b895e60275d70df4cfc823c9bb496133c5dafb718e0c64d3129db335c4c6e",
+    "scripts/pipeline/prepare_smd_memory_recovery.py": "89bc1dca661b7f79acf2d5f1583a674531f61d0c1f55544207a5d989755ab4a2",
+    "scripts/pipeline/refine_polymer_conformers.py": "dfe3aa5d63a1136b4d6ec7974854d468aff0f4eeb95bad60abee8b7f14bd79ba",
+    "scripts/pipeline/run_smd_memory_recovery.py": "0aee7cdbd0b49481e89c2ad469accca7717177a2efa1e5bbf477e5d1937b18f3",
+    "scripts/pipeline/smd_memory_execution.py": "d5130bd5ae33560322fea44eab55991e9304b51101f2f428524870cf76e8a4f8",
+    "scripts/plotting/polymer_models/plot_candidate_occupancy_construction.py": "30c9b4233aaa3310d9d482489b2a7824cdc552f0f1fc35354533bd8d16a8617e",
+    "scripts/plotting/polymer_models/plot_conditional_ensemble_baseline.py": "de8110f32ec4f80e93423e07c34619a23f704e66b0e220ad19381962d6670434",
+    "scripts/plotting/polymer_models/plot_polymer_capacity_bounds.py": "41421741edc8896d35cf83a4cf29c9291227c1b4babfa25598b41cdddd287239",
+    "scripts/validation/qualify_smd_memory_execution.py": "fbed5df20bb50a715b0ccaf2d5cc7cf4fa6dc9f4b7f93881eb41136f7715c765",
+    "scripts/validation/review_baseline_conformer_thermals.py": "43094ec37f610a31cf76e3137ceb4b43885ea1b1e51234661ad5a2d7b2ee0fab",
+    "scripts/validation/review_candidate_occupancy_inputs.py": "ac268bbfee3230eac43ae2bdd3c6e68c5906aa2e206d7c8c594ca9bffe519759",
+    "scripts/validation/review_pmdi_precursor_access.py": "f5a4673bfb3d83836ffd03f774701f56e50408dedfa0a544b5aedf91109c7679",
+    "src/redox/properties/polymer_capacity.py": "c8dca4cb211925c482b3d45d86836871d85a55ac2d38ef8738b931cc1a7fcb7a",
+    "tests/test_candidate_baseline_identity.py": "eaf688427c03c6937f470eacd2da22b70f6aa8ad875bf0578d2279b9c4d40d1c",
+    "tests/test_crest_refinement.py": "1a43a21738a29e4ddb015ec091203bf518816ae6d13a182e843fa4010869186c",
+    "tests/test_polymer_capacity.py": "ddb88570d53b7c66d87078379c32c3174a5a3d86e0bec2c235c6e535cff280e3",
+    "tests/test_smd_memory_execution.py": "b1b600b17cc9682ba76dbd7c4d711a203fc231afef0507956cc58ec2e8fd7a5a"
+  }
+}

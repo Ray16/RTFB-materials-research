@@ -27636,7 +27636,7 @@
       "reference_grafting_deltaG_kJ_mol": -3.7942589599646452,
       "reference_grafting_status": "qualified_reference_reaction",
       "base_models": null,
-      "checked_polymer_models": 8,
+      "checked_polymer_models": 9,
       "polymer_model_keys": [
         "exp_phthalimide_control__n1__stereo0__monomer",
         "exp_phthalimide_control__segments__parallel__parallel",
@@ -27645,6 +27645,7 @@
         "exp_phthalimide_control__n2__stereo0__stacked",
         "exp_phthalimide_control__n3__stereo0__open",
         "exp_phthalimide_control__n3__stereo0__stacked",
+        "exp_phthalimide_control__n3__stereo1__open",
         "exp_phthalimide_control__n3__stereo1__stacked"
       ],
       "polymer_scope": "Exact attachment-fragment method controls; not capped-site redox or whole-polymer properties",
@@ -51014,13 +51015,16 @@
           "contact_pair_kJ_mol": -66.0917163609018
         }
       },
-      "checked_polymer_models": 6,
+      "checked_polymer_models": 9,
       "polymer_model_keys": [
         "design_ndi_ethyl__n1__stereo0__monomer",
         "design_ndi_ethyl__segments__parallel__parallel",
         "design_ndi_ethyl__segments__antiparallel__antiparallel",
         "design_ndi_ethyl__n2__stereo0__open",
         "design_ndi_ethyl__n2__stereo0__stacked",
+        "design_ndi_ethyl__n3__stereo0__open",
+        "design_ndi_ethyl__n3__stereo0__stacked",
+        "design_ndi_ethyl__n3__stereo1__open",
         "design_ndi_ethyl__n3__stereo1__stacked"
       ],
       "polymer_scope": "Exact attachment-fragment method controls; not capped-site redox or whole-polymer properties",
@@ -77356,8 +77360,8 @@
     "physical_scope": "Conditional molecular proxy; no experimental occupancy weights, whole-bead free energy or electron-transfer rate"
   },
   "provenance": {
-    "created_UTC": "20261020_234615_967951",
-    "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951",
+    "created_UTC": "20261021_213915_306825",
+    "snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825",
     "source_candidate_snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-18/verified_candidates/snapshots/20261019_182930_930801",
     "input_sha256": {
       "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/systematic_families_2026-10-18/structures.json": "17c8a9acbe62a81b902c8cc1bed443c43fec22f85d4e391b26b6f3a6952545ba",
@@ -77366,18 +77370,18 @@
       "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/selection_assessment.json": "4e70b0ccbc2a4764f4fc2df15147c495a952d8ec361cecaa0f4a8250575d8663",
       "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/current.json": "8142b966cd9b62053c07cb1ef090bf32616fd13c428c039d986945f3122b1de0",
       "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/base_assisted/current.json": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/interaction_checked.json": "8f5a4767d909c102eee62312952a7f472cbec163413bcd3d1c5e95c5b3ea610c",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/interaction_checked.json": "18b0c20693737337b8aeb1c40938509aa19313b2eacb5f75e74e0b72b6ee2177",
       "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/current.json": "46a58b477e6e03f2dc08c457f4d73d69e69d8e6d43c8f668e5aa898047f838b8"
     },
     "frozen_input_sha256": {
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/pool.json": "17c8a9acbe62a81b902c8cc1bed443c43fec22f85d4e391b26b6f3a6952545ba",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/feed.json": "96b3f0950e86cdd0d407e8c65984a8666af9adfa39c87fe290589daf7051c37f",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/route_evidence.json": "191a012de88858afcda2377e67bd34281a4fbca964f0c543b10dfdabb1e074d2",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/selection_assessment.json": "4e70b0ccbc2a4764f4fc2df15147c495a952d8ec361cecaa0f4a8250575d8663",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/grafting.json": "8142b966cd9b62053c07cb1ef090bf32616fd13c428c039d986945f3122b1de0",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/base_assisted.json": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/polymer.json": "8f5a4767d909c102eee62312952a7f472cbec163413bcd3d1c5e95c5b3ea610c",
-      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261020_234615_967951/sources/spacing.json": "46a58b477e6e03f2dc08c457f4d73d69e69d8e6d43c8f668e5aa898047f838b8"
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/pool.json": "17c8a9acbe62a81b902c8cc1bed443c43fec22f85d4e391b26b6f3a6952545ba",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/feed.json": "96b3f0950e86cdd0d407e8c65984a8666af9adfa39c87fe290589daf7051c37f",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/route_evidence.json": "191a012de88858afcda2377e67bd34281a4fbca964f0c543b10dfdabb1e074d2",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/selection_assessment.json": "4e70b0ccbc2a4764f4fc2df15147c495a952d8ec361cecaa0f4a8250575d8663",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/grafting.json": "8142b966cd9b62053c07cb1ef090bf32616fd13c428c039d986945f3122b1de0",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/base_assisted.json": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/polymer.json": "18b0c20693737337b8aeb1c40938509aa19313b2eacb5f75e74e0b72b6ee2177",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/expansion/snapshots/20261021_213915_306825/sources/spacing.json": "46a58b477e6e03f2dc08c457f4d73d69e69d8e6d43c8f668e5aa898047f838b8"
     },
     "plan_sha256": "bbb13266c1cf4b78c558d0cdf496cebbb508085f64e920a2b38b3be53d83dc59",
     "producer_sha256": {

@@ -40,6 +40,13 @@ The AQ paper reports reversible charge storage in its attached quinone system;
 this supports investigating that linker, without establishing our potentials or
 long-term operation in the proposed bead-based flow battery.
 
+An exact precursor-access update on 23 October identified mono-N-ethyl/NH PMDI
+in [EP0010440B1, Example 19](https://patents.google.com/patent/EP0010440B1/en).
+The [identity review](../results/reviews/2026-10-23/pmdi_precursor_access/summary.json)
+binds that reported compound to the configured precursor. This is a patent
+report, not an independent preparation or a Merrifield grafting demonstration.
+The exact PMDI route still needs selectivity and redox-core-retention evidence.
+
 ## What “easy to graft” must include
 
 **Attachment and selectivity.** Review the exact precursor and attachment atom.
@@ -135,3 +142,10 @@ with different handles. Their use for the exact BQ/AQ phenolic designs remains
 proposed. Results and status are separate from the original reference campaign;
 favorable thermodynamics supports continued evaluation, while selectivity, competing
 reactions and experimental yield remain to be established.
+
+The later proton-transfer validation qualifies the base-assisted interpretation:
+the DBU capture term differs from the revised MeCN pKa estimate by 22.8 kJ/mol,
+and an exact DIPEA pKa anchor remains unavailable. HCl cancels from the full
+balanced route, so the discrepancy is not a validated full-reaction correction.
+DIPEA-driven sign changes remain conditional. A fixed base representation adds
+the same term to each reaction and cannot change its within-base ranking.

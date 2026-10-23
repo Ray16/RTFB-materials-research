@@ -29,11 +29,30 @@ def collect(policy_path,out,receipts_path=None,feed_path=None):
         assessment=ROOT/'results/grafting/selection_assessment.json',bases=ROOT/'results/grafting/base_assisted/current.json',
         polymer=ROOT/'results/polymer_models/interaction_checked.json',
         spacing=ROOT/'results/reviews/2026-10-22/spacing_native_complete/validation.json')
+    registry=ROOT/'results/polymer_models/candidate_occupancy/current.json'
+    if registry.exists():paths['candidate_polymer_models']=registry
     if receipts_path:paths['axis_receipts']=receipts_path
     blobs={k:p.read_bytes() for k,p in paths.items()};data={k:json.loads(v) for k,v in blobs.items()}
     snapshots=out/'source_snapshot';snapshots.mkdir()
     for key,blob in blobs.items():(snapshots/(key+'.json')).write_bytes(blob)
     source={str(path.resolve()):hashlib.sha256(blobs[key]).hexdigest() for key,path in paths.items()}
+    capacity_scenarios={}
+    for index,item in enumerate(data.get('candidate_polymer_models',{}).get('campaigns',[])):
+        path=Path(item['capacity_scenarios']);path=path if path.is_absolute() else ROOT/path
+        content=path.read_bytes();report=json.loads(content)
+        if report['candidate_id']!=item['candidate_id']:raise ValueError('Capacity scenario candidate identity differs')
+        key=report['exact_capped_product_key']
+        if key in capacity_scenarios:raise ValueError('Duplicate candidate capacity-scenario publication')
+        for backing,h in report['source_sha256'].items():
+            if sha(backing)!=h:raise ValueError('Capacity scenario evidence changed')
+            source[backing]=h
+            producer=Path(backing)
+            if producer.suffix=='.py' and producer.is_relative_to(ROOT):
+                captured=snapshots/'producers'/producer.relative_to(ROOT)
+                captured.parent.mkdir(parents=True,exist_ok=True);captured.write_bytes(producer.read_bytes())
+        source[str(path.resolve())]=hashlib.sha256(content).hexdigest()
+        (snapshots/f'capacity_scenarios_{index}.json').write_bytes(content)
+        capacity_scenarios[key]=(report,path)
     for path in (Path(__file__),ROOT/'src/redox/screening/feasibility.py',ROOT/'src/redox/screening/expansion_review.py',
         ROOT/'src/redox/build/attachment_identity.py',ROOT/'scripts/pipeline/screen_grafting_routes.py'):
         source[str(path)]=sha(path)
@@ -88,6 +107,14 @@ def collect(policy_path,out,receipts_path=None,feed_path=None):
                 'partial',observations,'feed',available=any(finite(row.get(k)) for k in ('E1_vs_Fc_V','E2_vs_Fc_V')))
             entry('capacity','Only molecular nominal/path estimates exist; material loading, counterion and backbone mass scenarios are not qualified',
                 'partial',[dict(scope='capped_molecule_only',nominal_mAh_g=row.get('capacity_nominal_mAh_g'),molecular_path_mAh_g=row.get('accessible_capacity_mAh_g'))],'feed',available=finite(row.get('capacity_nominal_mAh_g')))
+            if key in capacity_scenarios:
+                report,path=capacity_scenarios[key]
+                evidence['capacity']['reason']='Composition upper bounds are checked; actual loading, utilization and operating capacity remain unresolved'
+                evidence['capacity']['observations'].append(dict(scope='conditional_H_capped_linear_fragment_upper_bound',
+                    mass_convention=report['mass_convention'],electron_budget_scope=report['electron_budget_scope'],
+                    composition_grid=report['composition_grid'],accessible_capacity_established=False))
+                evidence['capacity']['sources'].append(dict(path=str(path.resolve()),sha256=source[str(path.resolve())]))
+                evidence['capacity']['supporting_data_available']=True
             entry('state_stability','State QC/disproportionation does not establish all required chemical-stability criteria',
                 'partial',[dict(native_states=row.get('native_solution_ready_states'),disproportionation_kJ_mol=row.get('dG_disproportionation_kJ_mol'),
                     disproportionation_scope=row.get('disproportionation_status'))],'feed',available=bool(row.get('native_solution_ready_states')) or finite(row.get('dG_disproportionation_kJ_mol')))

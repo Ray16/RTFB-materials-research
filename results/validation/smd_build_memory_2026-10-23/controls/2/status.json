@@ -1,0 +1,98 @@
+{
+  "status": "full_original_compact_equivalence_passed",
+  "mult": 2,
+  "host": "lambda13",
+  "pid": 3909367,
+  "process_start": "88349599",
+  "CPU_affinity": [
+    202,
+    203
+  ],
+  "GPU": "3",
+  "started": 1792766192.2343228,
+  "arms": {
+    "original": {
+      "E_smd_eV": -1083.443726013813,
+      "E_gas_eV": -1083.4871043621915,
+      "geometry_level_E_Ha": -39.77870784055236,
+      "coordinates_A": [
+        [
+          -7.7e-07,
+          -1.4e-07,
+          0.0
+        ],
+        [
+          1.09217718,
+          3.1e-07,
+          0.0
+        ],
+        [
+          -0.54608799,
+          0.94584562,
+          -0.0
+        ],
+        [
+          -0.54608842,
+          -0.94584579,
+          0.0
+        ]
+      ]
+    },
+    "compact": {
+      "E_smd_eV": -1083.4437260138145,
+      "E_gas_eV": -1083.4871043621918,
+      "geometry_level_E_Ha": -39.77870784055228,
+      "coordinates_A": [
+        [
+          -7.7e-07,
+          -1.4e-07,
+          0.0
+        ],
+        [
+          1.09217718,
+          3.1e-07,
+          -0.0
+        ],
+        [
+          -0.54608799,
+          0.94584562,
+          0.0
+        ],
+        [
+          -0.54608842,
+          -0.94584579,
+          0.0
+        ]
+      ]
+    }
+  },
+  "differences": {
+    "maximum_energy_difference_eV": 1.5916157281026244e-12,
+    "geometry_level_energy_difference_Ha": 7.815970093361102e-14,
+    "maximum_coordinate_difference_A": 0.0,
+    "maximum_gradient_difference": 4.265685027426969e-15,
+    "maximum_Hessian_difference": 9.025002967177898e-13
+  },
+  "evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/input.xyz": "26dc2bc689c7c00b5f6dd4a6e07d15efea4b63768b7b814d35e385897f12f031",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/original/opt.xyz": "862a2feb032a28625e996210a8aeb8101916963def1431ec5cbd4593b998d9c6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/original/gradient.npy": "ba8bdbd7c85e9bb12dbf5ef5393fb86e5a11e49a60585464c497abb91acbc54d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/original/hessian.npy": "ceeabddb6b8ff63cf7b95c03deb06d4b85f83598348c19c89e1a1cb9b9ffeeae",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/original/energy.json": "2759625b9093c967fcb10e0ed99eb690191c759e62d4df3f1b8ec231934e6eb7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/opt.xyz": "6d0fb39be7de6da30d6233e42e180ceeb55b74152bbe860caa099e3906114f5c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/gradient.npy": "ee22894bd8c2c24406447aab53e6dcf25e7d4b3eab5d562e28a44398dfc0debf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/hessian.npy": "bc689332529381e310ef028a4c172ad13e0b82fb72000b9f7b34b1e4894de80a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/energy.json": "12262fd6ec2995dfc05ee1bb96d7323ef444f1ca6de7b89a354a7960a1f7f5c2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/execution/original_build.py": "e2d08236dcb24a29eaa7da62864a34e8c0f803b74fc62d9712fb8201957445b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/execution/compact_build.py": "e44cb0d127d686ddd3c262ef822d7eec0fba2f646eb2b45757ccd34c75569eb9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/execution/original_composite.py": "0e98a7954ba501874febfc7fbc1c0d89e2b21fb8fac984b5a0c2ba3e8b874709",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_build_memory_2026-10-23/controls/2/compact/execution/released_geometry_driver.py": "3f32fc6ea22a0897882d35189d58af7b8513c90000187a1bb62ea0439c7c2cd1"
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_memory_execution.py": "fbed5df20bb50a715b0ccaf2d5cc7cf4fa6dc9f4b7f93881eb41136f7715c765",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_memory_execution.py": "d5130bd5ae33560322fea44eab55991e9304b51101f2f428524870cf76e8a4f8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422"
+  },
+  "scientific_model_changed": false,
+  "finished": 1792766929.2351055
+}

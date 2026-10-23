@@ -1,0 +1,22 @@
+{
+  "host": "lambda13",
+  "pid": 3984484,
+  "process_start": "88461641",
+  "status": "launch_observation_completed_outputs_preserved",
+  "stage": "energy",
+  "role": "pilot",
+  "started": 1792767277.0688002,
+  "resource_observations": [
+    {
+      "gpu": 5,
+      "status": "identity_temporarily_unverified",
+      "error": "TimeoutExpired(['nvidia-smi', '--id=5', '--query-gpu=index,uuid,name,memory.total,compute_cap', '--format=csv,noheader,nounits'], 15)"
+    },
+    {
+      "gpu": 6,
+      "status": "identity_temporarily_unverified",
+      "error": "TimeoutExpired(['nvidia-smi', '--id=6', '--query-gpu=index,uuid,name,memory.total,compute_cap', '--format=csv,noheader,nounits'], 15)"
+    }
+  ],
+  "finished": 1792767370.395883
+}

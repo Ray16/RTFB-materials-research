@@ -1,16 +1,12 @@
 {
-  "status": "expanded_conformer_searches_running_original_trimer_QC_unresolved",
-  "updated": 1792751496.0907702,
+  "status": "two_pose_baseline_checked_broader_sampling_and_candidate_followup_running",
+  "updated": 1792764567.9389534,
   "original_checked": 26,
   "original_expected": 27,
   "spacing_conformers": 12,
   "native_G": 6,
   "original_finite_monitor": "stopped after terminal original work; ownership audit in results/validation/saved_trimer_final_2026-10-22/monitor_stop.json",
   "original_final_case": "Optimizer converged and SP saved; final fixed/fine energy-derivative validation failed. Not admitted.",
-  "active_CPU_sampling_pilots": [
-    "calcs/polymer_models/2026-10-22_crest_all_same",
-    "calcs/polymer_models/2026-10-22_crest_alternating"
-  ],
   "broader_sampling_complete": false,
   "ensemble_G_complete": false,
   "expanded_CPU_sampling_searches": 12,
@@ -22,7 +18,7 @@
     "results/validation/conformer_sampling_2026-10-23/progress_lambda13_02.json"
   ],
   "observed_live_expanded_searches": 12,
-  "additional_earlier_reference_pilots": 2,
+  "additional_earlier_reference_pilots": 0,
   "new_DFT_reranking_jobs_submitted": 0,
   "baseline_pose_ensemble": {
     "current": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/current.json",
@@ -31,6 +27,18 @@
     "expected_native_G": 12,
     "pilot_start": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/start_verification.json",
     "coordinator": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/coordinator.json",
-    "scope": "Finite two-pose baseline; wider sampling and ensemble convergence remain pending"
-  }
+    "scope": "Finite two-pose baseline; wider sampling and ensemble convergence remain pending",
+    "status": "12/12 native G checked; finite two-pose baseline complete",
+    "independent_review": "results/reviews/2026-10-23/baseline_native_complete/summary.json"
+  },
+  "retired_CPU_sampling_pilots": [
+    "calcs/polymer_models/2026-10-22_crest_all_same",
+    "calcs/polymer_models/2026-10-22_crest_alternating"
+  ],
+  "legacy_pilot_retirement_review": "results/validation/conformer_sampling_2026-10-23/legacy_pilot_retirement.json",
+  "native_G_scope": "Six originally selected poses; all-pose baseline is reported separately",
+  "all_pose_native_G": 12,
+  "two_pose_ensemble_G_complete": true,
+  "candidate_CPU_sampling_searches": 3,
+  "candidate_baseline_followup": "results/validation/pmdi_occupancy_2026-10-23/baseline_coordinator.json"
 }

@@ -61,6 +61,16 @@
       "evidence": "HMDS bases can convert chloromethyl polystyrene into aminomethyl resin in attempted alkoxide chemistry",
       "access": "primary publisher abstract",
       "limit": "Evidence of competing support chemistry; not a quantified side-reaction model for every base or motif"
+    },
+    {
+      "id": "pmdi_monoethyl_precursor_EP0010440B1",
+      "url": "https://patents.google.com/patent/EP0010440B1/en",
+      "pdf_url": "https://patentimages.storage.googleapis.com/7d/d9/01/f1d8b360fe2b79/EP0010440B1.pdf",
+      "source_type": "granted_primary_patent",
+      "publication_date": "1983-01-26",
+      "location": "Example 19, printed page 10; generic scaffold on printed page 3",
+      "evidence": "Reports isolated mono-N-ethyl/NH pyromellitic diimide with an NMR assignment.",
+      "limit": "Precursor access only; neither exact Merrifield grafting nor current availability or independent replication established."
     }
   ],
   "candidates": {
@@ -81,7 +91,7 @@
         "heavy_atom_mapping": true,
         "model_scope": "4-methylbenzyl local site on a preformed polymer"
       },
-      "exact_precursor_access_reviewed": false,
+      "exact_precursor_access_reviewed": true,
       "attachment_selectivity_reviewed": false,
       "conditions_defined": true,
       "balanced_route_reviewed": true,
@@ -94,19 +104,22 @@
         "temperature_K": 298.15
       },
       "source_urls": [
-        "https://pubs.rsc.org/en/content/articlehtml/2019/ra/c9ra01131e"
+        "https://pubs.rsc.org/en/content/articlehtml/2019/ra/c9ra01131e",
+        "https://patents.google.com/patent/EP0010440B1/en"
       ],
-      "evidence_scope": "Exact-candidate assessment of a proposed imide N-benzylation. Source is a phthalimide/soluble-polymer class analogue, not an exact PMDI/NDI or MeCN bead demonstration.",
+      "evidence_scope": "Exact precursor-access report plus an imide/soluble-polymer attachment analogue; MeCN bead attachment remains proposed.",
       "exact_support_demonstration": false,
-      "source_class": "family_analogue_only",
+      "source_class": "exact_precursor_report_and_family_attachment_analogue",
       "candidate_route_status": "hold",
-      "precursor_access": "Selective preparation/access of the exact mono-N-ethyl, mono-NH diimide has not been source-verified.",
+      "precursor_access": "Exact mono-N-ethyl/NH PMDI reported in EP0010440B1, Example 19; source identity reviewed against the mapped precursor.",
       "attachment_selectivity": "Mapped graph identifies the intended N-C bond; competing chemistry and product selectivity have not been experimentally established.",
       "redox_core_retention": "Graph retains the diimide core; experimental redox retention/stability and graft loading are unverified.",
       "conditions_scope": "Computational standard-state route definition, not a proposed executable synthesis protocol or measured conditions.",
-      "assessment_date": "2026-10-22",
+      "assessment_date": "2026-10-23",
       "source_identity_review": "results/reviews/2026-10-22/end_to_end_selection/identity.json",
-      "synthesis_admission": false
+      "synthesis_admission": false,
+      "precursor_access_evidence_scope": "Primary patent report; no independent preparation or raw-spectrum reanalysis.",
+      "precursor_access_review": "results/reviews/2026-10-23/pmdi_precursor_access/summary.json"
     },
     "design_ndi_ethyl": {
       "route_binding": {
@@ -154,6 +167,6 @@
     }
   },
   "note": "Exact entries include explicitly unresolved assessments. Only all required exact evidence can produce a prospective synthesis pass; a family analogue does not.",
-  "reviewed_date": "2026-10-22",
+  "reviewed_date": "2026-10-23",
   "guide": "docs/PRACTICAL_GRAFTING.md"
 }

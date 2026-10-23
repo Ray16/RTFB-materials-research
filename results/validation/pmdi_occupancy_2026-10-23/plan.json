@@ -1,0 +1,48 @@
+{
+  "candidate_id": "design_pmdi_ethyl",
+  "exact_capped_product_key": "YPRQKNJFGRGANA-UHFFFAOYSA-N",
+  "enumerated_aliases": [
+    "search_pmdi_77642a20bc89"
+  ],
+  "tasks": [
+    {
+      "key": "design_pmdi_ethyl__occ_2",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2/input.xyz",
+      "case": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2/case.json",
+      "raw_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2"
+    },
+    {
+      "key": "design_pmdi_ethyl__occ_3",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_3/input.xyz",
+      "case": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_3/case.json",
+      "raw_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_3"
+    },
+    {
+      "key": "design_pmdi_ethyl__occ_2_3",
+      "input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/input.xyz",
+      "case": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/case.json",
+      "raw_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3"
+    }
+  ],
+  "common_empty_reference": {
+    "case_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_sampling_2026-10-23/reference_repeats/all_same/case.json",
+    "graph_smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+    "broader_search": "calcs/polymer_models/2026-10-23_conformer_revision/all_same__occ_none__parallel_repeat",
+    "baseline_native_campaign": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2",
+    "scope": "Same empty graph only; no transfer of occupied phthalimide energies or uncomputed ensemble G"
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_candidate_occupancy_searches.py": "9f887ff7774e8873af49fc83278615cdc6a54e9bed05ff61f7b08e796a5854f8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/systematic_families_2026-10-18/structures.json": "17c8a9acbe62a81b902c8cc1bed443c43fec22f85d4e391b26b6f3a6952545ba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/candidate_snapshot.json": "4a650d7da139cc4a4ea34e10dd3c53f9a0e6e1210c63b57c2cdd28709d2b912b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/route_snapshot.json": "968c455591d5d3fbf33c1ad82b20e6a288e5b679e66353e5699619c85592fdd5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_sampling_2026-10-23/reference_repeats/all_same/case.json": "66bf0c298c8d38076b0ff0add3760bac6072ec5f0de3cac08b1177f0a47294a0"
+  },
+  "created": 1792758127.9203317,
+  "source_feed_as_of": "2026-10-23T05:33:27.705929-05:00",
+  "precursor_access_reviewed": true,
+  "prospective_route_status": "hold",
+  "full_redox_campaign_submitted": false,
+  "synthesis_admission": false,
+  "scope": "Three adjacent-site occupancy graphs for one exact enumerated PMDI design; common empty component identified separately"
+}

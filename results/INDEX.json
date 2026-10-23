@@ -34,14 +34,15 @@
         "calculation_state": "Complete: 6/6 components qualified, 20 base-assisted values across five candidates; one precursor QC unresolved",
         "selection": "Both BQ designs and AQ-1-O retained as base required; modeled thermodynamics favorable, selectivity/yield untested",
         "selection_review": "results/reviews/2026-10-20/base_required_selection/summary.json"
-      }
+      },
+      "exact_precursor_access_review": "results/reviews/2026-10-23/pmdi_precursor_access/summary.json"
     },
     "polymer_models": {
       "guide": "results/polymer_models/README.md",
       "current": "results/polymer_models/interaction_checked.json",
       "status": "results/polymer_models/interaction_status.json",
       "scope": "Neutral covalent dimer/trimer and separate-segment electronic interaction pilot; graph inventory retained separately",
-      "calculation_state": "26/27 original electronic cases checked; final trimer failed fixed/fine force validation and remains excluded. Spacing 12/12 electronic poses and 6/6 selected G checked; twelve expanded CPU CREST searches and two earlier reference pilots active at the recorded observation.",
+      "calculation_state": "26/27 original electronic cases checked; final trimer excluded after failed force checks. All 12 original spacing poses now have checked native G and six finite two-pose partitions; broader conformer convergence remains open.",
       "browser": "results/polymer_models/index.html",
       "interaction_results": "results/polymer_models/interaction_checked.json",
       "interaction_status": "results/polymer_models/interaction_status.json",
@@ -125,10 +126,41 @@
         "actual_start_verification": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/start_verification.json",
         "raw_root": "calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2",
         "scope": "Both original phthalimide DFT poses per occupancy graph; six inherited native G plus six requested; not conformer convergence",
-        "method": "docs/CONFORMER_ENSEMBLES.md"
+        "method": "docs/CONFORMER_ENSEMBLES.md",
+        "status": "12/12 native G and six finite pairs independently reconstructed",
+        "independent_review": "results/reviews/2026-10-23/baseline_native_complete/summary.json",
+        "figure": "results/figures/polymer_models/conditional_ensemble_baseline.pdf",
+        "initial_coordinator": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/coordinator.json",
+        "continuation": "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/continuation_status.json"
       },
       "segment_deformation_audit": "results/reviews/2026-10-23/segment_deformation_audit_v2/summary.json",
-      "signed_deformation_figure": "results/figures/polymer_models/segment_deformation_components.pdf"
+      "signed_deformation_figure": "results/figures/polymer_models/segment_deformation_components.pdf",
+      "conformer_refinement": {
+        "guide": "results/polymer_models/campaigns/2026-10-23_crest_refinement/README.md",
+        "request": "results/polymer_models/campaigns/2026-10-23_crest_refinement/request.json",
+        "current": "results/polymer_models/campaigns/2026-10-23_crest_refinement/current.json",
+        "status": "results/polymer_models/campaigns/2026-10-23_crest_refinement/coordinator.json",
+        "preparation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/preparation_status.json",
+        "raw_root": "calcs/polymer_models/2026-10-23_crest_refinement",
+        "scope": "Final-CREST sources only; frozen DFT start counts and native counts are reported separately"
+      },
+      "candidate_occupancy": {
+        "current": "results/polymer_models/candidate_occupancy/current.json",
+        "guide": "results/validation/pmdi_occupancy_2026-10-23/README.md",
+        "source_plan": "results/validation/pmdi_occupancy_2026-10-23/plan.json",
+        "source_start_verification": "results/validation/pmdi_occupancy_2026-10-23/progress_01.json",
+        "baseline_plan": "results/validation/pmdi_occupancy_2026-10-23/baseline_plan.json",
+        "baseline_current": "results/validation/pmdi_occupancy_2026-10-23/baseline_current.json",
+        "baseline_observer": "results/validation/pmdi_occupancy_2026-10-23/baseline_coordinator.json",
+        "capacity_bounds": "results/validation/pmdi_occupancy_2026-10-23/capacity_scenarios.json",
+        "construction_figure": "results/figures/polymer_models/pmdi_occupancy_construction.pdf",
+        "capacity_figure": "results/figures/polymer_models/pmdi_capacity_bounds.pdf",
+        "raw_root": "calcs/polymer_models/pmdi_occupancy_2026-10-23",
+        "scope": "One exact enumerated PMDI design; polymer feasibility and capacity bounds, no synthesis admission",
+        "memory_recovery_registry": "results/validation/pmdi_occupancy_2026-10-23/baseline_recoveries.json",
+        "execution_controls": "results/validation/smd_build_memory_2026-10-23/README.md"
+      },
+      "retired_legacy_sampling_review": "results/validation/conformer_sampling_2026-10-23/legacy_pilot_retirement.json"
     },
     "candidates": {
       "guide": "results/candidates/README.md",
@@ -177,8 +209,8 @@
     "slides": {
       "guide": "slides/README.md",
       "current": "slides/redox_workflow.pdf",
-      "checked_refresh": "results/reviews/2026-10-23/presentation_ensemble_refresh/status.json",
-      "visual_review": "results/reviews/2026-10-23/presentation_ensemble_refresh/visual_review.json"
+      "checked_refresh": "results/reviews/2026-10-23/presentation_capacity_refresh/status.json",
+      "visual_review": "results/reviews/2026-10-23/presentation_capacity_refresh/visual_review.json"
     },
     "discovery": {
       "guide": "results/discovery/README.md",
@@ -293,7 +325,7 @@
         "calcs/grafting",
         "calcs/polymer_models"
       ],
-      "independent_review": "results/reviews/2026-10-23/all_axes_ensemble_code_release/summary.json"
+      "independent_review": "results/reviews/2026-10-23/all_axes_capacity_release/summary.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

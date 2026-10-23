@@ -1,0 +1,118 @@
+{
+  "task": {
+    "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccccc1",
+    "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1006]([CH2:1005][C@H:1004](c2ccc(CCl)cc2)[CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [
+      3
+    ],
+    "site_states": [
+      "styrene",
+      "benzyl_chloride",
+      "grafted",
+      "benzyl_chloride",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CW",
+      "CW",
+      "CW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        -1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        -1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 105,
+    "charge": 0,
+    "model_loading_per_repeat": 0.2,
+    "model_conversion_per_reactive_site": 0.3333333333333333,
+    "graph_sha256": "05e15236a8fddef061e770b1dc97484f212b174873f48ba6c2d56fd5637b1ede",
+    "key": "occ_3__pose1",
+    "candidate_id": "exp_phthalimide_control",
+    "model_key": "occ_3",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "common_mapped_backbone",
+    "target": "pose1",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "pi_groups": [
+      [
+        29,
+        30,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38
+      ]
+    ],
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "active_basis_functions": 2537,
+    "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_continuation/live_inputs/occ_3__pose1/input.xyz",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_continuation/live_inputs/occ_3__pose1/input.xyz": "fd53eee3c63beedf060a7eb07fb2b4ebf956ca68a9877095ce7b609a6f963fb2",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_spacing_pilot/live_inputs/occ_3__pose1/task.json": "376ce1ed5787a13b4f8133c4810c62251f5f8da2578b5618c9f7581d2d398e2e"
+    }
+  },
+  "status": "state_records_verified",
+  "stage": "native_thermal",
+  "started": 1792755438.9412284,
+  "parent_energy_state": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/energy/tasks/occ_3__pose1/status.json",
+  "G_eV": -84296.22491760053,
+  "E_smd_eV": -84317.63526166129,
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest",
+  "thermal_QC": "ok",
+  "thermal_definition": "native_solution_dft_qrrho_spin",
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/opt.xyz": "7c95a325209053575c842f29ca8b3a655e6a6710582d7d4ec01c065660f48002",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/result.json": "1b28ba67bf24ed733c9060e2e906e2ee4e9402e377b3b6b263968fa92a952ec8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/thermal_policy.json": "21ae22399d50229ff1540dcd9958803c15d947b7b9db18b7cb352dd3c32b6224",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/solvent_memory_execution.json": "077409a75ffcedad99106333d628f38d9b6f3045376f31823ae43c9c4e5d1ba9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/coarse_CDS_for_validation.npy": "770818ee3112817ebe067b5daecbf73724f65fc42f4e5f286f20fac14d3211a2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/sp/7b45544db23ebf35.json": "4df8ae896c2804b044405ba52a59e6b41cb502c9ce0d78497efb48bd85c49096",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/native_thermal/c3723c595a440073.json": "b7f4fce30f89503c80aad0356fbb0bf5cf0225fe1793a501e289ebd34cf45454",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/native_thermal/c3723c595a440073/hessian_cartesian.npy": "1c063d540f61ac632e23f6fe1adb7943b026c1ca7df3e0b7ff6af0498733ec00",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/native_thermal/c3723c595a440073/hessian_diagnostics.json": "baf3f4d7307d0e42860337b391f0bbf5a23bdd1721f41f4e53eb7ed76acfdad2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/native_thermal/c3723c595a440073/mol.xyz": "7c95a325209053575c842f29ca8b3a655e6a6710582d7d4ec01c065660f48002",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_47_0.0005_-1.npy": "b3d5681ba29db6246f3c9a6048ce3f924568e8384111f83995d4e21fc4ab5956",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/progress.json": "cc446ae11aea5e6c13e50da1d6e523b04bc4e25777e3289bef6e7e68e1f1ef6a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_47_0.0005_1.npy": "4dbf523971089a410e5747e945d2de316822ee652dce5ac3231636b0d94882e6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_47_0.001_-1.npy": "bbfb9b7a9f695c3a91c28493832fbe1a8ed43da65226ddfdc30bf053d9dc8c4d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_47_0.001_1.npy": "dd29b6db8c9da69714d698e51651570affa499b7e63217744979ccdcdd319b91",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_233_0.0005_-1.npy": "13ed7610adfbd76c39bad6a7c1bbeabb703d438060150db4d1cb005cb6d3b0dd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_233_0.0005_1.npy": "25dd526c84860706d229ea90494f2dc98dce29496ff58035d8f7a0bfb3fa18d7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_233_0.001_-1.npy": "16b6d7a223280eaca40c42822ebdc2e7e479f347e1466d1534956ffeddc2255b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/CDS_worst_column_checks/gradient_233_0.001_1.npy": "563b2d30493111e47b10882a5bcc83160275df2b5e2e3a639c12c4525a122561",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/projected_thermal/799e1b64b473da35.json": "f91f3590d8136f87d9601f1c66d7fa925fa4020e13ba8fe85346320acdcb1436",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/projected_thermal/799e1b64b473da35/owner.json": "728883c856551f17d851abed6ac92d1180de6109e8f8eed89b3b4b6b914dcc5e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/projected_thermal/799e1b64b473da35/projected_hessian.npy": "8c674606aa6619cc863a65e1c33551a0268cbc756a8bd00f52f30bacb3d8fcdb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_baseline_two_pose_ensemble_v2/thermal/occ_3__pose1/rest/projected_thermal/799e1b64b473da35/mol.xyz": "7c95a325209053575c842f29ca8b3a655e6a6710582d7d4ec01c065660f48002"
+  },
+  "finished": 1792757844.745552
+}

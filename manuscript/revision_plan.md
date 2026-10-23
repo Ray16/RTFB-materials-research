@@ -9,10 +9,10 @@ revision, not by a proposed calculation or a running job.
 
 | Comment | Current evidence and required revision | Status |
 | --- | --- | --- |
-| M1: no end-to-end decision | Exact enumerated PMDI and NDI matches now have freshly checked six-state redox/Fc reconstruction, grafting hashes and two mapped route assessments (both hold). This is a partial join; complete missing route and occupancy assessments. Present a decision table showing which evidence changes priority or leaves synthesis on hold. Method controls must not manufacture synthesis eligibility. | Open; highest scientific priority |
+| M1: no end-to-end decision | Exact enumerated PMDI and NDI matches now have freshly checked six-state redox/Fc reconstruction, grafting hashes and two mapped route assessments (both hold). Exact PMDI precursor access is now source-checked and three occupancy searches/resource pilots have started, but selectivity, core retention and occupancy free energies remain unresolved. This is a partial join; complete the missing assessments. Present a decision table showing which evidence changes priority or leaves synthesis on hold. Method controls must not manufacture synthesis eligibility. | Open; highest scientific priority |
 | M2: benchmark bias/reference | Keep all 39 unfitted endpoints primary. Report the existing molecule-cluster intervals, qualify the seven unequal study clusters, and add endpoint-, molecule- and study-held-out offset analyses, including redox-step-specific models. Compare Fc-independent spacings and multiple organic-reference diagnostics. Verify the Fc literature's methods and conventions. Discuss the orbital/Jahn–Teller limitation without assigning an unvalidated correction. | Analysis checked and included; reference attribution remains conditional |
 | M3: constant base shift | State explicitly that a fixed base representation adds the same constant to each reference reaction and cannot change within-base rankings. An exact-graph MeCN table check now gives DBU pKaH 24.31 and HCl 10.30, a 22.81 kJ/mol discrepancy for the capture term. This does not uniquely locate the error because HCl cancels in the full cycle. DIPEA remains conditional; do not transfer DBU's discrepancy as a DIPEA correction. Four additional component calculations test two HCl/Cl-free relative-basicity reactions. | Two relative controls independently checked and included; source/speciation qualification open |
-| M4: conformer/tacticity sensitivity | All six selected phthalimide G values now pass, giving -5.15/-11.23 kJ/mol, but this does not establish sampling convergence. Document seed 20261020, 4 embeds, 2 xTB seeds and 2 DFT poses per graph. Add broader conformer search, distinct backbone stereochemical scenarios, DFT re-ranking and a defined ensemble treatment. Predeclare convergence criteria. Until demonstrated, retain the result as a finite method-control example, not a spacing design rule. | Open; highest scientific priority |
+| M4: conformer/tacticity sensitivity | All twelve inherited phthalimide pose G values now pass independent reconstruction; the finite two-pose ensemble gives -5.17/-11.39 kJ/mol, but this does not establish sampling convergence. Document seed 20261020, 4 embeds, 2 xTB seeds and 2 DFT poses per graph. Add broader conformer search, distinct backbone stereochemical scenarios, DFT re-ranking and a defined ensemble treatment. Predeclare convergence criteria. Until demonstrated, retain the result as a finite method-control example, not a spacing design rule. | Open; highest scientific priority |
 | M5: geometry/Hessian basis imbalance | Five matched neutral-SVPD controls independently reconstruct, giving -11.7 to -35.1 mV shifts with the existing anion/Fc fixed. The main paper and SI now report geometry, nuclear-partition and resulting potential changes separately. Keep primary source-frozen records unchanged. Alternative-basis controls must pass their physical checks and cannot inherit the original certificate by relabeling. | Five-control sensitivity checked and reported; full basis convergence not claimed |
 | M6: Methods/QC precision | State exactly two tested Hessian columns and both displacement sizes; explain |nu| for tolerated -5..0 cm^-1 modes, unscaled frequencies, spin-contamination threshold 0.1, actual force values and xTB symmetry detection. Remove the unsupported adjective “conservative” for the 4.5e-4 force threshold. Cite qRRHO and program/method papers. | Exact gate description included; further physics controls remain separate |
 | M7: portable/public reproduction | A fresh isolated CPU environment now reproduces graphs, route holds and a figure; that earlier example did not reproduce a potential or grafting G from raw states. A relocated standard-library example now reconstructs a potential and both HCl-reference/DBU grafting sums from ten hashed raw states. Explicit conda artifacts and pip versions are recorded; xTB/build and core scientific dependencies are pinned. Portable primary paths, fresh GPU installation and a full raw-state/public DOI release remain open. Prepare a reviewable public archive and deposition metadata; a DOI/public deposition is not yet created. Retain strict integrity checks for primary scientific admission. | Partly implemented; full release open |
@@ -48,7 +48,7 @@ preserved and their scientific limits remain visible.
 
 The stacked-trimer optimizer returned convergence and an active SP, then a later library call crashed. Separate fixed/fine final-force checks failed, so the case remains excluded. Its obsolete finite-panel monitors have stopped; the two broader CREST searches continue independently. Its small-step force diagnostic is complete. They remain distinct from the completed six-state spacing
 panel. The two-spin quantum interruption experiment has completed and passed an
-independent reconstruction of its four final thermal partitions. The four relative-basicity components and both balanced transfer sums have passed independent reconstruction. The two original empty-backbone pilots remain live. Twelve full-parallel searches now cover all six occupancy graphs at two configurations, including two reference repeats; actual starts and disjoint CPU sets are verified. DFT re-ranking and ensemble G remain pending.
+independent reconstruction of its four final thermal partitions. The four relative-basicity components and both balanced transfer sums have passed independent reconstruction. The two original low-thread empty-backbone pilots have been retired with their raw checkpoints preserved; twelve full-parallel searches cover all six occupancy graphs at two configurations. Actual starts and disjoint CPU sets are verified. Broader DFT re-ranking and converged ensemble G remain pending.
 These execution checks belong in the SI and do not substitute for M1/M4.
 
 ## All-axis requirement and focused expansion, 23 October
@@ -67,9 +67,12 @@ These improvements do not close the end-to-end or polymer-convergence comments.
 
 A finite partition implementation and an all-pose native thermal adapter now
 reconstruct the six inherited spacing G records against their active electronic
-and projected nuclear/spin parents. The other six original poses are requested
-in a new source-bound campaign; a reserved 119-atom native pilot has actually
-started. This quantifies the two-pose baseline while wider CREST searches run.
+and projected nuclear/spin parents. All twelve original pose free energies are now complete and independently
+reconstructed. The finite two-pose ensemble gives adjacent/one-spacer
+nonadditivity of -5.17/-11.39 kJ/mol at the primary rotor cutoff. Prescribed
+25/50/100 cm^-1 cutoffs give -5.13/-5.17/-4.64 and -12.34/-11.39/-11.69 kJ/mol,
+respectively. This quantifies the inherited finite baseline while wider CREST
+searches run; it does not bound the error from undiscovered conformers.
 All six original pairs have heavy-atom RMSDs above 3 Å. Duplicate grouping uses
 complete-link geometry/energy checks with cutoff sensitivity; search hit counts
 never become statistical weights. Neither two-pose sampling nor a running job
@@ -83,3 +86,34 @@ is 0.25–0.70 Å over 57–93 logged optimizer steps. The next SI revision must
 the individual terms and avoid calling the total a positive-definite strain
 penalty. This remains a sampled, two-level electronic decomposition, with no
 global monomer minimum or Hessian-minimum claim.
+
+
+## Exact PMDI follow-through and material-capacity bounds, 23 October
+
+The mono-N-ethyl/NH PMDI precursor now has an exact primary-source identity
+check (EP0010440B1, Example 19, printed page 10). This closes precursor access
+for this design only. Attachment selectivity and redox-core retention remain
+unresolved, so the prospective route remains on hold and full synthesis
+admission is false. Three exact five-repeat PMDI occupancy graphs have passed
+connectivity, stereochemistry and starting-geometry review, and entered CREST
+searches. Separate one-minimum DFT resource pilots are running; no PMDI
+occupancy free energy is yet qualified. The largest initial pilot exhausted
+GPU memory; its failed record is preserved. A temporary-buffer allocation change
+passed original-versus-modified energy, geometry, gradient and Hessian controls
+for both spin classes. The same-model larger-system recovery remains a resource
+pilot, not a completed scientific result.
+
+A composition model now independently matches the masses of all eight exact
+occupancy graphs. At three reactive handles per five repeats, one/two/three
+grafts give two-electron capacity ceilings of 61.2/98.9/124.5 mAh/g under the
+declared neutral linear-fragment convention. These are conditional upper bounds,
+not measured capacity or evidence of a complete redox path in the polymer.
+Actual loading, accessible utilization and the application target remain
+unresolved. The all-axis ledger retains these as supporting observations,
+without converting the capacity axis or any candidate into a pass.
+
+The final twelve-state audit, exact construction and capacity figures, updated
+72-page research deck and software checks are maintained with the results.
+The primary manuscript and immutable evidence have not been silently replaced.
+M1 and M4 remain open until the corresponding physical evidence and manuscript
+revision are complete.

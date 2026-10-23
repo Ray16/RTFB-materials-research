@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_candidate_baseline.py", line 150, in <module>
+    main()
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_candidate_baseline.py", line 139, in main
+    time.sleep(30)
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_candidate_baseline.py", line 109, in stop
+    raise KeyboardInterrupt(f"signal {signum}; scientific workers preserved")
+KeyboardInterrupt: signal 15; scientific workers preserved

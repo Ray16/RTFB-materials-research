@@ -1,0 +1,131 @@
+{
+  "status": "exact_candidate_occupancy_inputs_checked",
+  "candidate_id": "design_pmdi_ethyl",
+  "enumerated_aliases": [
+    "search_pmdi_77642a20bc89"
+  ],
+  "route_binding": {
+    "product_smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O",
+    "precursor_smiles": "CCn1c(=O)c2cc3c(=O)[nH]c(=O)c3cc2c1=O",
+    "site_smiles": "Cc1ccc(CCl)cc1",
+    "reaction_class": "NH_OH_substitution",
+    "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][n:1020]2[c:1018](=[O:1019])[c:1017]3[cH:1016][c:1015]4[c:1013](=[O:1014])[n:1012]([CH2:1011][CH3:1010])[c:1027](=[O:1028])[c:1026]4[cH:1025][c:1024]3[c:1022]2=[O:1023])[cH:1008][cH:1009]1",
+    "mapped_precursor_smiles": "[CH3:1010][CH2:1011][n:1012]1[c:1013](=[O:1014])[c:1015]2[cH:1016][c:1017]3[c:1018](=[O:1019])[nH:1020][c:1022](=[O:1023])[c:1024]3[cH:1025][c:1026]2[c:1027]1=[O:1028]",
+    "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+    "new_bond_atom_maps": [
+      1006,
+      1020
+    ],
+    "leaving_atom_map": 9001,
+    "heavy_atom_mapping": true,
+    "model_scope": "4-methylbenzyl local site on a preformed polymer"
+  },
+  "precursor_access_reviewed": true,
+  "prospective_route_status": "hold",
+  "geometry_reviews": [
+    {
+      "key": "design_pmdi_ethyl__occ_2",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2/input.xyz",
+      "xyz_sha256": "8fc2651daa0278ebec7bf99605a07512f9f6296dcaf47d1906f1defd34bcd9c6",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 115,
+      "bond_length_range_A": [
+        1.08327038631221,
+        1.7755259218260357
+      ],
+      "covalent_bond_ratio_range": [
+        0.8559975475593729,
+        1.02819869410468
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false
+    },
+    {
+      "key": "design_pmdi_ethyl__occ_3",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_3/input.xyz",
+      "xyz_sha256": "e7c8fb75093ffe6a06a01a2a508300766bda9a5a71a1cdef31119efecaa98550",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 115,
+      "bond_length_range_A": [
+        1.0836327176404725,
+        1.7748185540035355
+      ],
+      "covalent_bond_ratio_range": [
+        0.8557345911420113,
+        1.0275933907747965
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false
+    },
+    {
+      "key": "design_pmdi_ethyl__occ_2_3",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/input.xyz",
+      "xyz_sha256": "267460a6951b07d6235a8d65183f0fe74c3952da48ecfcb2ecc1027e1f9236be",
+      "status": "geometry_sanity_pass",
+      "issues": [],
+      "topology": "ok",
+      "stereochemistry": "ok",
+      "fragments": 1,
+      "atoms": 139,
+      "bond_length_range_A": [
+        1.0832227847857643,
+        1.7756790049758857
+      ],
+      "covalent_bond_ratio_range": [
+        0.8557640458357078,
+        1.028240855637778
+      ],
+      "severe_nonbonded_overlaps": [],
+      "contact_metrics": [
+        {
+          "site_i": 1,
+          "site_j": 2,
+          "centroid_distance_A": 15.41691783877036,
+          "interplane_angle_deg": 81.63784794195455,
+          "plane_separation_A": 7.9777225788471515,
+          "lateral_offset_A": 13.192319663438576,
+          "nearest_core_atom_A": 12.024640195325247,
+          "core_planarity_rms_A": [
+            0.017358554735348565,
+            0.005787498611532346
+          ],
+          "stack_geometry": false
+        }
+      ],
+      "Hessian_minimum_proven": false,
+      "electron_transfer_computed": false
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_candidate_occupancy_searches.py": "9f887ff7774e8873af49fc83278615cdc6a54e9bed05ff61f7b08e796a5854f8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/systematic_families_2026-10-18/structures.json": "17c8a9acbe62a81b902c8cc1bed443c43fec22f85d4e391b26b6f3a6952545ba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/candidate_snapshot.json": "4a650d7da139cc4a4ea34e10dd3c53f9a0e6e1210c63b57c2cdd28709d2b912b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/route_snapshot.json": "968c455591d5d3fbf33c1ad82b20e6a288e5b679e66353e5699619c85592fdd5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_sampling_2026-10-23/reference_repeats/all_same/case.json": "66bf0c298c8d38076b0ff0add3760bac6072ec5f0de3cac08b1177f0a47294a0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2/case.json": "f7f27ba02fcb1c12287f2bcba4b85ebdbb3f7917e1c2daa893298fdf7b233670",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2/input.xyz": "8fc2651daa0278ebec7bf99605a07512f9f6296dcaf47d1906f1defd34bcd9c6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_3/case.json": "a5ce0eb665bdc58fe03b2bfc31bf229684374e502031ebbfd231d10c397500dd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_3/input.xyz": "e7c8fb75093ffe6a06a01a2a508300766bda9a5a71a1cdef31119efecaa98550",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/case.json": "9a7b375a9689004d6e05f04cc9bb0d65af8bbb3005262763688a5bcb1079d4e7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/input.xyz": "267460a6951b07d6235a8d65183f0fe74c3952da48ecfcb2ecc1027e1f9236be",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_candidate_occupancy_inputs.py": "ac268bbfee3230eac43ae2bdd3c6e68c5906aa2e206d7c8c594ca9bffe519759",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/plan.json": "234850385888ebb0a0e092200769d52a9bdd7e0b35e246f9456c3bca7b550969",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/audit_polymer_geometries.py": "1994a574b9fb767f242d8cddd689d4b8395e483e1a504377575e6afa541b7399"
+  },
+  "full_redox_admission": false,
+  "synthesis_admission": false,
+  "minimum_Hessian_proven": false,
+  "energies_computed": false
+}

@@ -1,7 +1,7 @@
 {
-  "status": "pending_native_conformer_G",
+  "status": "finite_two_pose_partitions_complete",
   "expected_DFT_poses": 12,
-  "checked_native_G": 6,
+  "checked_native_G": 12,
   "invalid_receipts": [],
   "cases": [
     {
@@ -60,7 +60,8 @@
         {
           "key": "occ_none__pose0",
           "E_eV": -82892.64358813016,
-          "G_eV": null
+          "G_eV": -82873.92895921702,
+          "thermal_receipt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/thermal/done/occ_none__pose0.json"
         },
         {
           "key": "occ_none__pose1",
@@ -81,25 +82,85 @@
       ],
       "partitions_by_duplicate_RMSD_A": {
         "0.05": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -82874.0297116254,
+          "minimum_G_eV": -82874.0291974899,
+          "configurational_lowering_kJ_mol": 0.049606533181237866,
+          "conditional_populations": [
+            0.9801878421261763,
+            0.01981215787382365
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_none__pose1",
             "occ_none__pose0"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_none__pose1"
+            ],
+            [
+              "occ_none__pose0"
+            ]
+          ],
+          "minimum_E_eV": -82892.7413102421,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.1": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -82874.0297116254,
+          "minimum_G_eV": -82874.0291974899,
+          "configurational_lowering_kJ_mol": 0.049606533181237866,
+          "conditional_populations": [
+            0.9801878421261763,
+            0.01981215787382365
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_none__pose1",
             "occ_none__pose0"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_none__pose1"
+            ],
+            [
+              "occ_none__pose0"
+            ]
+          ],
+          "minimum_E_eV": -82892.7413102421,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.2": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -82874.0297116254,
+          "minimum_G_eV": -82874.0291974899,
+          "configurational_lowering_kJ_mol": 0.049606533181237866,
+          "conditional_populations": [
+            0.9801878421261763,
+            0.01981215787382365
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_none__pose1",
             "occ_none__pose0"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_none__pose1"
+            ],
+            [
+              "occ_none__pose0"
+            ]
+          ],
+          "minimum_E_eV": -82892.7413102421,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         }
       }
     },
@@ -167,7 +228,8 @@
         {
           "key": "occ_2__pose1",
           "E_eV": -84317.51985281977,
-          "G_eV": null
+          "G_eV": -84296.1127118919,
+          "thermal_receipt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/thermal/done/occ_2__pose1.json"
         }
       ],
       "heavy_atom_RMSD_A": [
@@ -182,25 +244,85 @@
       ],
       "partitions_by_duplicate_RMSD_A": {
         "0.05": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.24108599374,
+          "minimum_G_eV": -84296.24091168925,
+          "configurational_lowering_kJ_mol": 0.016817826177884777,
+          "conditional_populations": [
+            0.9932387263156371,
+            0.00676127368436281
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2__pose0",
             "occ_2__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2__pose0"
+            ],
+            [
+              "occ_2__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.66309564355,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.1": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.24108599374,
+          "minimum_G_eV": -84296.24091168925,
+          "configurational_lowering_kJ_mol": 0.016817826177884777,
+          "conditional_populations": [
+            0.9932387263156371,
+            0.00676127368436281
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2__pose0",
             "occ_2__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2__pose0"
+            ],
+            [
+              "occ_2__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.66309564355,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.2": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.24108599374,
+          "minimum_G_eV": -84296.24091168925,
+          "configurational_lowering_kJ_mol": 0.016817826177884777,
+          "conditional_populations": [
+            0.9932387263156371,
+            0.00676127368436281
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2__pose0",
             "occ_2__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2__pose0"
+            ],
+            [
+              "occ_2__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.66309564355,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         }
       }
     },
@@ -268,7 +390,8 @@
         {
           "key": "occ_3__pose1",
           "E_eV": -84317.63526166129,
-          "G_eV": null
+          "G_eV": -84296.22491760053,
+          "thermal_receipt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/thermal/done/occ_3__pose1.json"
         }
       ],
       "heavy_atom_RMSD_A": [
@@ -283,25 +406,85 @@
       ],
       "partitions_by_duplicate_RMSD_A": {
         "0.05": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.33344550765,
+          "minimum_G_eV": -84296.33306662508,
+          "configurational_lowering_kJ_mol": 0.03655661118115731,
+          "conditional_populations": [
+            0.9853614302823522,
+            0.014638569717647796
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_3__pose0",
             "occ_3__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_3__pose0"
+            ],
+            [
+              "occ_3__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.71909756404,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.1": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.33344550765,
+          "minimum_G_eV": -84296.33306662508,
+          "configurational_lowering_kJ_mol": 0.03655661118115731,
+          "conditional_populations": [
+            0.9853614302823522,
+            0.014638569717647796
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_3__pose0",
             "occ_3__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_3__pose0"
+            ],
+            [
+              "occ_3__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.71909756404,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.2": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.33344550765,
+          "minimum_G_eV": -84296.33306662508,
+          "configurational_lowering_kJ_mol": 0.03655661118115731,
+          "conditional_populations": [
+            0.9853614302823522,
+            0.014638569717647796
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_3__pose0",
             "occ_3__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_3__pose0"
+            ],
+            [
+              "occ_3__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.71909756404,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         }
       }
     },
@@ -369,7 +552,8 @@
         {
           "key": "occ_4__pose1",
           "E_eV": -84317.49641388594,
-          "G_eV": null
+          "G_eV": -84296.09656874403,
+          "thermal_receipt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/thermal/done/occ_4__pose1.json"
         }
       ],
       "heavy_atom_RMSD_A": [
@@ -384,25 +568,85 @@
       ],
       "partitions_by_duplicate_RMSD_A": {
         "0.05": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.25585197215,
+          "minimum_G_eV": -84296.25579975598,
+          "configurational_lowering_kJ_mol": 0.0050380952842090845,
+          "conditional_populations": [
+            0.9979697190724314,
+            0.0020302809275685287
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_4__pose0",
             "occ_4__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_4__pose0"
+            ],
+            [
+              "occ_4__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.65409151933,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.1": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.25585197215,
+          "minimum_G_eV": -84296.25579975598,
+          "configurational_lowering_kJ_mol": 0.0050380952842090845,
+          "conditional_populations": [
+            0.9979697190724314,
+            0.0020302809275685287
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_4__pose0",
             "occ_4__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_4__pose0"
+            ],
+            [
+              "occ_4__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.65409151933,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.2": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -84296.25585197215,
+          "minimum_G_eV": -84296.25579975598,
+          "configurational_lowering_kJ_mol": 0.0050380952842090845,
+          "conditional_populations": [
+            0.9979697190724314,
+            0.0020302809275685287
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_4__pose0",
             "occ_4__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_4__pose0"
+            ],
+            [
+              "occ_4__pose1"
+            ]
+          ],
+          "minimum_E_eV": -84317.65409151933,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         }
       }
     },
@@ -471,7 +715,8 @@
         {
           "key": "occ_2_3__pose1",
           "E_eV": -85742.57719258814,
-          "G_eV": null
+          "G_eV": -85718.4749066802,
+          "thermal_receipt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/thermal/done/occ_2_3__pose1.json"
         }
       ],
       "heavy_atom_RMSD_A": [
@@ -486,25 +731,85 @@
       ],
       "partitions_by_duplicate_RMSD_A": {
         "0.05": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -85718.59839524589,
+          "minimum_G_eV": -85718.59818428564,
+          "configurational_lowering_kJ_mol": 0.020354570015677562,
+          "conditional_populations": [
+            0.9918226766604986,
+            0.008177323339501377
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2_3__pose0",
             "occ_2_3__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2_3__pose0"
+            ],
+            [
+              "occ_2_3__pose1"
+            ]
+          ],
+          "minimum_E_eV": -85742.75470640796,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.1": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -85718.59839524589,
+          "minimum_G_eV": -85718.59818428564,
+          "configurational_lowering_kJ_mol": 0.020354570015677562,
+          "conditional_populations": [
+            0.9918226766604986,
+            0.008177323339501377
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2_3__pose0",
             "occ_2_3__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2_3__pose0"
+            ],
+            [
+              "occ_2_3__pose1"
+            ]
+          ],
+          "minimum_E_eV": -85742.75470640796,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.2": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -85718.59839524589,
+          "minimum_G_eV": -85718.59818428564,
+          "configurational_lowering_kJ_mol": 0.020354570015677562,
+          "conditional_populations": [
+            0.9918226766604986,
+            0.008177323339501377
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2_3__pose0",
             "occ_2_3__pose1"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2_3__pose0"
+            ],
+            [
+              "occ_2_3__pose1"
+            ]
+          ],
+          "minimum_E_eV": -85742.75470640796,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         }
       }
     },
@@ -567,7 +872,8 @@
         {
           "key": "occ_2_4__pose0",
           "E_eV": -85742.59535518973,
-          "G_eV": null
+          "G_eV": -85718.51067606335,
+          "thermal_receipt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/thermal/done/occ_2_4__pose0.json"
         },
         {
           "key": "occ_2_4__pose1",
@@ -588,25 +894,85 @@
       ],
       "partitions_by_duplicate_RMSD_A": {
         "0.05": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -85718.58530368078,
+          "minimum_G_eV": -85718.5838565313,
+          "configurational_lowering_kJ_mol": 0.13962869827216265,
+          "conditional_populations": [
+            0.9452313351620439,
+            0.05476866483795619
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2_4__pose1",
             "occ_2_4__pose0"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2_4__pose1"
+            ],
+            [
+              "occ_2_4__pose0"
+            ]
+          ],
+          "minimum_E_eV": -85742.72611846344,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.1": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -85718.58530368078,
+          "minimum_G_eV": -85718.5838565313,
+          "configurational_lowering_kJ_mol": 0.13962869827216265,
+          "conditional_populations": [
+            0.9452313351620439,
+            0.05476866483795619
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2_4__pose1",
             "occ_2_4__pose0"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2_4__pose1"
+            ],
+            [
+              "occ_2_4__pose0"
+            ]
+          ],
+          "minimum_E_eV": -85742.72611846344,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         },
         "0.2": {
-          "status": "pending_native_G",
-          "missing_keys": [
+          "G_eV": -85718.58530368078,
+          "minimum_G_eV": -85718.5838565313,
+          "configurational_lowering_kJ_mol": 0.13962869827216265,
+          "conditional_populations": [
+            0.9452313351620439,
+            0.05476866483795619
+          ],
+          "temperature_K": 298.15,
+          "unique_minima": 2,
+          "status": "finite_set_partition_computed",
+          "representative_keys": [
+            "occ_2_4__pose1",
             "occ_2_4__pose0"
           ],
-          "G_eV": null
+          "duplicate_groups": [
+            [
+              "occ_2_4__pose1"
+            ],
+            [
+              "occ_2_4__pose0"
+            ]
+          ],
+          "minimum_E_eV": -85742.72611846344,
+          "search_hits_are_weights": false,
+          "scope": "Conditional finite conformer set; not a globally complete ensemble"
         }
       }
     }
@@ -618,9 +984,9 @@
         3
       ],
       "deltaDeltaG_kJ_mol_by_duplicate_RMSD_A": {
-        "0.05": null,
-        "0.1": null,
-        "0.2": null
+        "0.05": -5.1692373577768995,
+        "0.1": -5.1692373577768995,
+        "0.2": -5.1692373577768995
       }
     },
     {
@@ -629,9 +995,9 @@
         4
       ],
       "deltaDeltaG_kJ_mol_by_duplicate_RMSD_A": {
-        "0.05": null,
-        "0.1": null,
-        "0.2": null
+        "0.05": -11.392731393966935,
+        "0.1": -11.392731393966935,
+        "0.2": -11.392731393966935
       }
     }
   ],
@@ -665,5 +1031,5 @@
   "new_synthesis_candidates_admitted": 0,
   "scope": "Two-pose phthalimide control only; no pure motif binding, atactic population or intersite ET rate",
   "source_plan_sha256": "88f91797206e0f865d3b48b486dc416a90e23ed4d8a08995c0499e5d883fae84",
-  "updated": 1792751119.0334568
+  "updated": 1792759886.2131681
 }

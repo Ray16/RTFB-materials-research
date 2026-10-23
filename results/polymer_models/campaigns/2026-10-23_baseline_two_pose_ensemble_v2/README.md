@@ -24,4 +24,12 @@ The corrected successor excludes completed thermal states from pilot selection;
 its actual pilot is the missing `occ_2_4__pose0`. No QM job was launched from the
 earlier preparation.
 
+The completed panel now has all twelve native free energies and six finite
+two-pose partitions. The [independent reconstruction](../../../reviews/2026-10-23/baseline_native_complete/summary.json)
+also checks the balanced cycles and 25/50/100 cm⁻¹ rotor sensitivity. The old
+coordinator stopped after a transient device-identity query timed out following
+four successful worker starts. Scientific jobs continued and finished without
+restarting. [Continuation observation](continuation_status.json) records that
+separately from the original monitor failure. Broader sampling remains open.
+
 See [the ensemble method and limits](../../../../docs/CONFORMER_ENSEMBLES.md).

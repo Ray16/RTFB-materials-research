@@ -1,0 +1,126 @@
+{
+  "task": {
+    "smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc([C@@H](C[C@H](CCc5ccccc5)c5ccc(CCl)cc5)C[C@@H](C[C@@H](C)c5ccccc5)c5ccc(Cn6c(=O)c7cc8c(=O)n(CC)c(=O)c8cc7c6=O)cc5)cc4)c(=O)c3cc2c1=O",
+    "mapped_smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc([C@H:1004]([CH2:1003][C@H:1002](c5ccccc5)[CH3:1001])[CH2:1005][C@@H:1006](c5ccc(Cn6c(=O)c7cc8c(=O)n(CC)c(=O)c8cc7c6=O)cc5)[CH2:1007][C@@H:1008](c5ccc(CCl)cc5)[CH2:1009][CH2:1010]c5ccccc5)cc4)c(=O)c3cc2c1=O",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [
+      2,
+      3
+    ],
+    "site_states": [
+      "styrene",
+      "grafted",
+      "grafted",
+      "benzyl_chloride",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CW",
+      "CW",
+      "CW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        -1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        -1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 139,
+    "charge": 0,
+    "model_loading_per_repeat": 0.4,
+    "model_conversion_per_reactive_site": 0.6666666666666666,
+    "graph_sha256": "7b86863fa5442620968706b6785749ebf56df6455286f4838191877c4fbb7571",
+    "key": "baseline__design_pmdi_ethyl__occ_2_3__pose0",
+    "mult": 1,
+    "motif_id": "design_pmdi_ethyl",
+    "fragment": "[*:1]n1c(=O)c2cc3c(=O)n(CC)c(=O)c3cc2c1=O",
+    "source_capped_product_key": "YPRQKNJFGRGANA-UHFFFAOYSA-N",
+    "initial_embedding_seed": 20261023,
+    "embedded": 2,
+    "converged_MMFF": 2,
+    "initial_MMFF_energy_kcal_mol": 37.59315212315755,
+    "role": "Exact-candidate occupancy feasibility model; no synthesis admission",
+    "model_key": "baseline__design_pmdi_ethyl__occ_2_3",
+    "candidate_id": "design_pmdi_ethyl",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "all_same",
+    "target": "validated_MMFF_start_baseline",
+    "pi_groups": [
+      [
+        10,
+        8,
+        7,
+        6,
+        5,
+        3,
+        2,
+        78,
+        77,
+        76,
+        75,
+        73
+      ],
+      [
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        59,
+        62,
+        64,
+        65,
+        66,
+        67
+      ]
+    ],
+    "active_basis_functions": 3524,
+    "search_rank": 1,
+    "source_conformer_index": null,
+    "source_GFN2_energy_Ha": null,
+    "starting_geometry_source_role": "validated_MMFF_baseline; broad_CREST_concurrent",
+    "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3/live_inputs/baseline__design_pmdi_ethyl__occ_2_3__pose0/input.xyz",
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3/live_inputs/baseline__design_pmdi_ethyl__occ_2_3__pose0/input.xyz": "267460a6951b07d6235a8d65183f0fe74c3952da48ecfcb2ecc1027e1f9236be",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/input.xyz": "267460a6951b07d6235a8d65183f0fe74c3952da48ecfcb2ecc1027e1f9236be",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/design_pmdi_ethyl__occ_2_3/case.json": "9a7b375a9689004d6e05f04cc9bb0d65af8bbb3005262763688a5bcb1079d4e7",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/input_validation.json": "a8d89628ed513e2ef66137df8afec919ef56c8f5dde021926234c45ff36ccd6c",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3/live_inputs/baseline__design_pmdi_ethyl__occ_2_3__pose0/geometry_review.json": "bb3d37e6949428bdf289441c7fb1efc9ac20ff85947ffd9d33ca1b42fb42b396"
+    }
+  },
+  "status": "failed_preserved",
+  "stage": "memory_pilot",
+  "started": 1792763952.2768087,
+  "host": "lambda13",
+  "pid": 3756346,
+  "free_energy_computed": false,
+  "minimum_Hessian_tested": false,
+  "synthesis_admission": false,
+  "error": "CUDARuntimeError('cudaErrorMemoryAllocation: out of memory')",
+  "traceback": "Traceback (most recent call last):\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py\", line 183, in calculate\n    result=dft_smd(Path(task['input_xyz']),0,1,do_opt=False,do_freq=False,backend='gpu')\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/polymer_campaign.py\", line 454, in evaluate\n    return original_dft(*args, **kwargs)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py\", line 455, in dft_smd\n    e_smd, conv_smd, diag_smd, per = _lowest_scf(\n                                     ^^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py\", line 172, in _lowest_scf\n    e, conv = _kernel_robust(mf, dm0=densities[g]) if g in densities else _kernel_robust(mf)\n                                                                          ^^^^^^^^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py\", line 119, in _kernel_robust\n    e = float(mf.kernel() if dm0 is None else mf.kernel(dm0=dm0))\n              ^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/scf/hf.py\", line 390, in scf\n    _kernel(mf, mf.conv_tol, mf.conv_tol_grad,\n  File \"/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/scf/hf.py\", line 248, in _kernel\n    vhf = mf.get_veff(mol, dm)\n          ^^^^^^^^^^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/_attach_solvent.py\", line 87, in get_veff\n    with_solvent.e, with_solvent.v = with_solvent.kernel(dm)\n                                     ^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/pcm.py\", line 616, in kernel\n    self.e, self.v = self._get_vind(dm)\n                     ^^^^^^^^^^^^^^^^^^\n  File \"/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/pcm.py\", line 622, in _get_vind\n    self.build()\n  File \"/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/smd.py\", line 414, in build\n    K = S - f_epsilon/(2.0*np.pi) * DAS\n            ~~~~~~~~~~~~~~~~~~~~~~^~~~~\n  File \"cupy/_core/core.pyx\", line 1566, in cupy._core.core._ndarray_base.__mul__\n  File \"cupy/_core/_kernel.pyx\", line 1374, in cupy._core._kernel.ufunc.__call__\n  File \"cupy/_core/_kernel.pyx\", line 657, in cupy._core._kernel._get_out_args_from_optionals\n  File \"cupy/_core/core.pyx\", line 3250, in cupy._core.core._ndarray_init\n  File \"cupy/_core/core.pyx\", line 300, in cupy._core.core._ndarray_base._init_fast\n  File \"cupy/cuda/memory.pyx\", line 904, in cupy.cuda.memory.alloc\n  File \"/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cupy_helper.py\", line 1223, in malloc\n    return cuda_malloc(size)\n           ^^^^^^^^^^^^^^^^^\n  File \"cupy/cuda/memory.pyx\", line 769, in cupy.cuda.memory._malloc\n  File \"cupy/cuda/memory.pyx\", line 770, in cupy.cuda.memory._malloc\n  File \"cupy/cuda/memory.pyx\", line 119, in cupy.cuda.memory.Memory.__init__\n  File \"cupy_backends/cuda/api/runtime.pyx\", line 520, in cupy_backends.cuda.api.runtime.malloc\n  File \"cupy_backends/cuda/api/runtime.pyx\", line 146, in cupy_backends.cuda.api.runtime.check_status\ncupy_backends.cuda.api.runtime.CUDARuntimeError: cudaErrorMemoryAllocation: out of memory\n",
+  "observed_peak_GPU_MiB": 92848,
+  "finished": 1792764697.1918588
+}

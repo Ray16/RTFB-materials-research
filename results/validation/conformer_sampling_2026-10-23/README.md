@@ -50,3 +50,11 @@ Producers: `prepare_conformer_revision.py`, `sample_polymer_conformers.py` and
 long calculations, validates every output conformer, owns its child process group
 and refuses incomplete XYZ frames. The shared CPU allocator now respects existing
 scientific workers with more than eight assigned cores.
+
+The two earlier two-core pilots were subsequently retired after their repetitive
+warning logs reached about 108 GiB. Parent/predictor ownership was verified and
+normal termination handlers preserved all raw trajectories and checkpoints;
+[the retirement record](legacy_pilot_retirement.json) confirms both handles ended.
+The twelve corrected source searches remain separate. Their final outputs feed
+the [DFT/native continuation](../../polymer_models/campaigns/2026-10-23_crest_refinement/README.md),
+with missing quantities retained explicitly until normal physical admission.
