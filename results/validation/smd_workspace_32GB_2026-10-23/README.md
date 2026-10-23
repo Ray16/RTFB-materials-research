@@ -28,4 +28,6 @@ Producers: [workspace adapter](../../../scripts/pipeline/smd_workspace_execution
 [fixed-geometry resource pilot](../../../scripts/validation/qualify_polymer_workspace.py),
 [bounded-gradient adapter](../../../scripts/pipeline/smd_gradient_workspace.py).
 The control receipts bind their exact source and installed-library hashes.
-The large-gradient recovery and full optimization/thermal qualification remain open.
+The [large-gradient successor](../smd_gradient_workspace_32GB_2026-10-23/README.md)
+now passes its fixed-point and sampled derivative checks. Full optimization,
+native thermochemistry and conformer convergence remain open.

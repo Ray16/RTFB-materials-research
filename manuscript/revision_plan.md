@@ -174,3 +174,13 @@ specific PCM-estimate note alongside a conflicting generic experimental label.
 It is therefore excluded from independent measured validation. Model-to-model
 sensitivity is reported separately; primary grafting sums and all-axis decisions
 are unchanged. The paper and SI are rebuilt and visually checked at 14/11 pages.
+
+
+A separate chemical TOC composition is now prepared from the exact PMDI
+precursor and capped-product graphs, with the recorded charge ladder and an
+explicitly schematic neighbor cartoon. EPS rendering, 600 dpi RGB TIFF size,
+color/grayscale and small-format legibility are checked. Author review and
+last-page insertion remain pending; the current paper/Overleaf export is unchanged.
+The large 115-atom derivative recovery now passes four sampled total-energy
+checks on a 32 GB V100; full geometry optimization is running separately. This
+resource check supplies neither native G nor conformer convergence for M1/M4.

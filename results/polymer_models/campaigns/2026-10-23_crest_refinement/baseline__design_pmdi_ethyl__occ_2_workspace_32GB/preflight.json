@@ -1,0 +1,27 @@
+{
+  "host": "lambda2",
+  "capacity": {
+    "online_cpus": 80,
+    "load_1m": 23.83203125,
+    "available_RAM_bytes": 469331841024,
+    "minimum_RAM_GiB": 203.58070321008563
+  },
+  "CPU_candidate": [
+    3,
+    4
+  ],
+  "device": {
+    "index": 0,
+    "uuid": "GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074",
+    "name": "Tesla V100-SXM2-32GB",
+    "memory_MiB": 32768.0,
+    "compute_capability": "7.0"
+  },
+  "versions": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "host_required_bytes": 218593115596,
+  "checked": 1792785111.3734088,
+  "plan_sha256": "bd813c0d3adbad1e51615193a47c2aac37a9cf87c76136bd567354a0d2b97b00"
+}

@@ -58,3 +58,6 @@ the preserved references. New large pilots await a free suitable H100.
 Raw recovery locations are given by each current branch's `plan.json` under
 `calcs/polymer_models/2026-10-23_crest_refinement/`; the earlier generic raw-path
 statement does not describe these recovery branches.
+
+
+The later [32 GB gradient recovery](../smd_gradient_workspace_32GB_2026-10-23/README.md) passes the exact site-2 point and sampled energy derivatives. A [full geometry/energy branch](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB/README.md) has started on lambda2. The candidate-only observer linked above is historical during this controlled handoff; its exact PID was verified and stopped without stopping scientific workers. The wider-search observer and all fifteen source searches remain live at the recorded check. The other occupied baseline components and thermal stages remain pending. This continuation does not change the current all-axis decision.
