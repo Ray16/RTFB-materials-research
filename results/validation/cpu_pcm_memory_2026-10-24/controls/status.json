@@ -1,0 +1,56 @@
+{
+  "status": "two_spin_CPU_PCM_multitile_contractions_passed",
+  "started": 1792827535.9203732,
+  "host": "lambda0",
+  "pid": 615631,
+  "process_start": "1362814129",
+  "maximum_matrix_error_tolerance": 1e-10,
+  "cases": [
+    {
+      "mult": 1,
+      "errors": {
+        "potential": 0.0,
+        "matrix": 2.42861286636753e-16
+      },
+      "tiles": {
+        "potential": 4,
+        "matrix": 4
+      },
+      "maximum_tile_points": 400
+    },
+    {
+      "mult": 2,
+      "errors": {
+        "potential": 0.0,
+        "matrix": 2.0816681711721685e-16
+      },
+      "tiles": {
+        "potential": 4,
+        "matrix": 4
+      },
+      "maximum_tile_points": 400
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_cpu_pcm_memory.py": "59b3b3f80293ab90052cad66804521443d7f829f65fb5b235511a4d6fb59c502",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/cpu_pcm_memory.py": "90fbf8c88b3cddc3fde159baab0b6ec02fc64d46cd33339421bf982a313dfa53",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/CPU_quantum_2026-10-23/status.json": "17178419c13d9b59832e33435e24cd83bd92a91f584c1ecf97784014c7f19e93",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/CPU_quantum_2026-10-23/geometry_mult1.h5": "6abfc7af4ef392e57d2f527f3ab312231719db4d1c8191829aea5c465df4c884",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/CPU_quantum_2026-10-23/geometry_mult2.h5": "f060536583baa079d49b418894d2e2c75c6008f932db801800af8536e6b8a8a4"
+  },
+  "physical_model_changed": false,
+  "large_case_qualified": false,
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult1_original.npz": "b7f8ff6715821679d4cf75a119c808e922715439ad19a9d2d42911852787c6d3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult1_bounded.npz": "e28eba601e21f84058e7ff770af06f7e9639adc746814f1ebc20ed07b4b78264",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult2_original.npz": "647341ecc1544a19c2117ac46ce3173d0658ac6a241759dddc76b51c59ff24db",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult2_bounded.npz": "e43c41e27943cbe41f0bbab5ac7eaebc0017eaa50d98fabc0693e408034ea390",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult1_bounded/get_v_unmodified_source.py": "bf288b9e1278a84064830b9e0fa576e088a06535ffdfcfb3a681e8b2133ba44c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult1_bounded/get_vmat_unmodified_source.py": "d9ba9d902db10be6b4240d83ccd8bcc4e334b628ba4c26c892426d79930f76aa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult1_bounded/status.json": "6e640945b013c91c8db862d51197321e9d38abf91047bff48c812ef6a0a22087",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult2_bounded/get_v_unmodified_source.py": "bf288b9e1278a84064830b9e0fa576e088a06535ffdfcfb3a681e8b2133ba44c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult2_bounded/get_vmat_unmodified_source.py": "d9ba9d902db10be6b4240d83ccd8bcc4e334b628ba4c26c892426d79930f76aa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cpu_pcm_memory_2026-10-24/controls/mult2_bounded/status.json": "ab7e8f205dd28556b01e95ab3a41130f2a56e683b1665698fd935db12d86ec0c"
+  },
+  "finished": 1792827537.938863
+}

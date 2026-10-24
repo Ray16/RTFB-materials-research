@@ -14,6 +14,13 @@ nine backbone C–C bonds and two ends in every actual XYZ and drawing. An ident
 empty backbone is identified as a shared component; occupied phthalimide energies
 are never transferred to PMDI.
 
+The [site-3 native component](../../reviews/2026-10-24/pmdi_site3_native/README.md)
+now passes independent Hessian/nuclear-partition reconstruction. The
+[split execution follow-up](../pmdi_split_execution_2026-10-24/README.md)
+advances the two-graft geometry independently of its active-energy resource
+pilot. The matched PMDI cycle and conformer convergence remain incomplete;
+this partial result does not admit the candidate on all axes.
+
 - [Frozen source-search plan](plan.json), [candidate snapshot](candidate_snapshot.json) and [route snapshot](route_snapshot.json).
 - [Exact identity and geometry input review](input_validation.json).
 - [Actual source-search starts](progress_01.json): three 14-core CPU searches in ALPB acetonitrile.
@@ -72,6 +79,12 @@ the original energy record and does not fill G during preparation. The
 [shared execution guide](../../../docs/POLYMER_WORKSPACE_EXECUTION.md) describes
 this reusable continuation and its field-specific gates.
 
-Latest continuation checkpoint: site 3 has checked E and a separate running native-thermal resource pilot on lambda1; site 2 has stopped after failing the final total-force energy-difference check. The original two-graft full optimizer stopped at an XC workspace allocation after 23 evaluated frames. The [checked checkpoint successor](../../polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/README.md) is registered for lambda13 but has no scientific worker yet because all its GPUs are occupied. The observer retains its original deadline and suppresses duplicate claims. No native G, completed PMDI cycle, conformer convergence or all-axis admission is inferred.
+The earlier full two-graft continuations preserve their checkpoints and failed
+or interrupted attempts. Their source-checked restart geometry feeds the
+separate staged execution above. Site 2 has checked electronic energy under its
+named fine-step force policy and an active native calculation. Site 3 has a
+checked native G. Follow the [current components](baseline_current.json) for
+ordinary admitted records; the separate geometry stage supplies no E/G receipt
+until its downstream stages finish normally.
 
 The site-2 coarse failure is now explained by a quantitative CDS component audit, followed by a passed 15-SCF fine-step test. A separately named four-step force-validation policy qualifies the saved electronic state without rewriting the failed workflow or changing the absolute tolerance. The observer is directed to that new electronic source for normal native thermochemistry; original geometry, active energy and all Hessian gates are retained. This is an explicitly recorded numerical-validation refinement, not a silent original-gate pass or a material endorsement.

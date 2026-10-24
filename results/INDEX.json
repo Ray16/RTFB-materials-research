@@ -455,6 +455,42 @@
       "source_snapshot": "results/validation/uma_v100_2026-10-24/source_snapshot.json",
       "status": "V100_execution_verified_legacy_current_composition_difference_localized",
       "scope": "Ten states/40 frames; legacy default retained. Diagnostic behavior override is ineligible for production. DFT/Hessian qualification is separate."
+    },
+    "exact_PMDI_native_component": {
+      "guide": "results/reviews/2026-10-24/pmdi_site3_native/README.md",
+      "current": "results/reviews/2026-10-24/pmdi_site3_native/summary.json",
+      "raw_root": "calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature",
+      "source_snapshot": "results/reviews/2026-10-24/pmdi_site3_native/summary.json",
+      "status": "one_component_independently_reconstructed_matched_cycle_pending",
+      "scope": "One 115-atom exact site-3 native G; no complete cycle, converged ensemble or candidate admission"
+    },
+    "split_polymer_execution": {
+      "guide": "results/validation/pmdi_split_execution_2026-10-24/README.md",
+      "current": "results/validation/pmdi_split_execution_2026-10-24/plan.json",
+      "geometry": "results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/geometry/status.json",
+      "geometry_start": "results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/startup_verification.json",
+      "raw_root": "calcs/polymer_models/2026-10-24_split_execution",
+      "source_snapshot": "results/validation/pmdi_split_execution_2026-10-24/plan.json",
+      "status": "geometry_point_passed_optimizer_running_CPU_initial_bound_stop_and_bounded_successor_started",
+      "scope": "Independent geometry/active-energy stages; no missing E or G supplied by resource points",
+      "CPU_current": "results/validation/cpu_pcm_memory_2026-10-24/large_point/electronic/status.json"
+    },
+    "spacing_control_spatial_conformers": {
+      "figure": "results/figures/polymer_models/spacing_conformers.pdf",
+      "current": "results/figures/polymer_models/spacing_conformers.json",
+      "source_snapshot": "results/reviews/2026-10-23/baseline_native_complete/summary.json",
+      "raw_root": "calcs/polymer_models",
+      "status": "four_accepted_finite_control_conformers_mapped_and_rendered",
+      "scope": "Saved XYZ contacts and within-graph G differences; no isolated motif binding, converged ensemble or coupling claim"
+    },
+    "CPU_PCM_budget_controls": {
+      "guide": "results/validation/cpu_pcm_memory_2026-10-24/README.md",
+      "current": "results/validation/cpu_pcm_memory_2026-10-24/controls/status.json",
+      "large_point": "results/validation/cpu_pcm_memory_2026-10-24/large_point/electronic/status.json",
+      "source_snapshot": "results/validation/cpu_pcm_memory_2026-10-24/large_point/plan.json",
+      "raw_root": "results/validation/cpu_pcm_memory_2026-10-24",
+      "status": "two_spin_multitile_matrix_controls_passed_large_resource_equivalence_pending",
+      "scope": "Only PCM memory setting differs; no large energy or native G supplied by matrix controls"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

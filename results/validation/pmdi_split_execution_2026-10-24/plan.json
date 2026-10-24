@@ -1,0 +1,198 @@
+{
+  "task": {
+    "smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc([C@@H](C[C@H](CCc5ccccc5)c5ccc(CCl)cc5)C[C@@H](C[C@@H](C)c5ccccc5)c5ccc(Cn6c(=O)c7cc8c(=O)n(CC)c(=O)c8cc7c6=O)cc5)cc4)c(=O)c3cc2c1=O",
+    "mapped_smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc([C@H:1004]([CH2:1003][C@H:1002](c5ccccc5)[CH3:1001])[CH2:1005][C@@H:1006](c5ccc(Cn6c(=O)c7cc8c(=O)n(CC)c(=O)c8cc7c6=O)cc5)[CH2:1007][C@@H:1008](c5ccc(CCl)cc5)[CH2:1009][CH2:1010]c5ccccc5)cc4)c(=O)c3cc2c1=O",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [
+      2,
+      3
+    ],
+    "site_states": [
+      "styrene",
+      "grafted",
+      "grafted",
+      "benzyl_chloride",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CW",
+      "CW",
+      "CW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        -1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        -1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 139,
+    "charge": 0,
+    "model_loading_per_repeat": 0.4,
+    "model_conversion_per_reactive_site": 0.6666666666666666,
+    "graph_sha256": "7b86863fa5442620968706b6785749ebf56df6455286f4838191877c4fbb7571",
+    "key": "baseline__design_pmdi_ethyl__occ_2_3__pose0",
+    "mult": 1,
+    "motif_id": "design_pmdi_ethyl",
+    "fragment": "[*:1]n1c(=O)c2cc3c(=O)n(CC)c(=O)c3cc2c1=O",
+    "source_capped_product_key": "YPRQKNJFGRGANA-UHFFFAOYSA-N",
+    "initial_embedding_seed": 20261023,
+    "embedded": 2,
+    "converged_MMFF": 2,
+    "initial_MMFF_energy_kcal_mol": 37.59315212315755,
+    "role": "Exact-candidate occupancy feasibility model; no synthesis admission",
+    "model_key": "baseline__design_pmdi_ethyl__occ_2_3",
+    "candidate_id": "design_pmdi_ethyl",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "all_same",
+    "target": "validated_MMFF_start_baseline",
+    "pi_groups": [
+      [
+        10,
+        8,
+        7,
+        6,
+        5,
+        3,
+        2,
+        78,
+        77,
+        76,
+        75,
+        73
+      ],
+      [
+        51,
+        52,
+        54,
+        55,
+        56,
+        57,
+        59,
+        62,
+        64,
+        65,
+        66,
+        67
+      ]
+    ],
+    "active_basis_functions": 3524,
+    "search_rank": 1,
+    "source_conformer_index": null,
+    "source_GFN2_energy_Ha": null,
+    "starting_geometry_source_role": "validated_MMFF_baseline; broad_CREST_concurrent"
+  },
+  "quantum_settings": {
+    "max_opt_steps": 400,
+    "geometry_SCF_conv_tol": 1e-11
+  },
+  "solvent": "acetonitrile",
+  "geometry_input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_split_execution_2026-10-24/geometry_input.xyz",
+  "electronic_input": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_split_execution_2026-10-24/electronic_input.xyz",
+  "geometry_reference": {
+    "evaluation": 23,
+    "energy_Ha": -3865.520654463978,
+    "gradient_max_Ha_Bohr": 0.00017701067206289233,
+    "SCF_converged": true,
+    "optimizer_acceptance": "not established by evaluation callback",
+    "solution_geometry_qualified": false,
+    "updated": 1792803497.0433784
+  },
+  "electronic_reference": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/energy/pilot/energy_and_gradient.json",
+  "input_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0/rest/geometry_checkpoints/evaluated_trajectory.xyz": "0a79d5f96c95ee9c7eff59a8857e08a5f2b01527ab4cd3821f5aeef072dbf5fc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0/rest/geometry_checkpoints/evaluations.jsonl": "f0e7e56faad4ebbcface56151f987006d8cd89d34b490b1171512221b3a49c96",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/plan.json": "33afa8fc6b5d7b22f7bd63c1d5d8d9726abc0d1183a5203e16b991696b6c472f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/plan.json": "d25f827e007180d5e16fe97a650a6744e9ccdef57400ea0467b456631666f93b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/CPU_quantum_2026-10-23/comparison.json": "17178419c13d9b59832e33435e24cd83bd92a91f584c1ecf97784014c7f19e93",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/energy/pilot/status.json": "06e1c82acefcd4aa472408bda3c42fb83e7bb746189aa70f6eff5b3d42feaf3d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/energy/pilot/energy_and_gradient.json": "50fcd18fff6385d1566c37dd212962bed6397b130ca3b826589bc51970ddc7bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_split_execution_2026-10-24/geometry_input.xyz": "1b76207cf2a851e5c7b1eefbf6ba3eaeaaf535211add80b29e7b64b50088e176",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_split_execution_2026-10-24/electronic_input.xyz": "267460a6951b07d6235a8d65183f0fe74c3952da48ecfcb2ecc1027e1f9236be",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/live_inputs/baseline__design_pmdi_ethyl__occ_2_3__pose0/input.xyz": "267460a6951b07d6235a8d65183f0fe74c3952da48ecfcb2ecc1027e1f9236be"
+  },
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/1/status.json": "cf1dc80666f1d9945dc4aa5c8d5feff8de7b8bed52d3771b15d9e4545ace66b2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/1/compact/execution/first_derivatives.json": "978b1fee47cd41c1bbd7300b4bf0192cfaf87cc6d7a3b2929d8247288248fccc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_workspace.py": "8a92054e0eb5ec23abbe840bc750d77e99d4d89574438b261ddbb0c15602b685",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_switch_curvature_workspace.py": "80e717daaaf4ee0794e30177675ec5b78d142b0a3172b4e8eca5d17bbc91570c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_memory_execution.py": "fbed5df20bb50a715b0ccaf2d5cc7cf4fa6dc9f4b7f93881eb41136f7715c765",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_workspace_execution.py": "b3fd380b2a521f215dec7b732b355952363a3f2f9e28fd0bfa8c3d193e06bd3f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/workspace_qualifier_28GiB_mult1.py": "47dc1279301856c8ed110aa2407db322e75a3940e4a3da88c4ef1602050ac3e1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_switch_curvature_workspace.py": "f6eb5e5bb1d9d736c936fdbfaeaafdc5086584bdaecac88266d0a8743e21c9cb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/pcm_first_derivative_blocks.py": "ba6b34e78a5c5dd87cbc3bbcbc05311b5efc2f9dd09fc70d4e1e1be32a172a2c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/pcm_switch_curvature_blocks.py": "9650c7d7ab8efc5ad8918487f2260656f344fa6d2ad993e2f70defd56c609820",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/2/status.json": "cb12ed7a522083b1e455bcb857a18be5c960c6e290b6890d4c062d4092ed9a5d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/2/compact/execution/first_derivatives.json": "82b8bf41c288f6e8a38abcf93e7e038ca64a5b3d1505ecf864b42618938d018d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/workspace_qualifier_28GiB_mult2.py": "47dc1279301856c8ed110aa2407db322e75a3940e4a3da88c4ef1602050ac3e1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/1/compact/execution/contracted_R.json": "b0e1105afc37de92e042447c723d294b9400f04fb623b8593ce11f010f678e07",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/2/compact/execution/contracted_R.json": "1932c7e4c43f41d34ccdbdf175e9253ece3716bde994fafc2317ba9e3e09aa71",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/1/compact/execution/switch_curvature.json": "711e04427e3bc03c3708dc1c2bed2af4b09ed28cf31fb995fadf2944da502b8a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/residency_guards/1/owner.json": "fb9662eec075cb803efca8974969dc28f8eb69f2581b293b5758d1cb592735ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/residency_guards/1/state.json": "8348f62b7e2349e8fa687a4c6f6b1fcb7c8fa635f86cae60b406650fb9a339d3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_first_response_workspace_v2.py": "4397958e44f362e900758737fcedff553d3223df9e9d8e625bcf8c0bda301621",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py": "4cb4c1d9e31f24b857205cd239db1077d251c116a1d604b07cedb845047cd484",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py": "1a7e7b630754c18a780ac3778bd42986187791bf49e639e3dd0f2ce0212fd32f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/controls/2/compact/execution/switch_curvature.json": "1c89d6dbec4a7c98dceb11a37920fb6c84af4805f27ddb8730abcd829ddf7817",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/residency_guards/2/owner.json": "8fe1896b443e2ac6826d00e554ebbbb5680b16f6c1fc1e1fc297d8250c656c6d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pcm_switch_curvature_guarded_2026-10-23/residency_guards/2/state.json": "7d2ce6f7d64c0ac026f056fe054663ede8b1d5d22fef00be35b5bb9ffc0cd58c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_cpu_quantum.py": "5f447ce5ed5af6dc8b12f8a83d14501d49c15d2e74bc46d96d1db95c7dfb76a2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/cpu_quantum_execution.py": "59a0475fda25b64b69e2e89876909759af853cefcf2c0926d9bdae68983ddab8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_split_polymer.py": "4c6fb5bb09f7af28bc42b6e46044b203b54f93d1b7775bf59e311df5a1fdcb4e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/resume_polymer_forces_adaptive.py": "a032fdb3ffb79a6d84a6f3cd4bc8bb16827c15d2b638632fc3f1ba3038709b18"
+  },
+  "source_owners": [
+    {
+      "host": "lambda13",
+      "owners": [
+        {
+          "pid": 1925616,
+          "start": "91761471",
+          "same_process_live": false
+        }
+      ],
+      "matching_processes": []
+    }
+  ],
+  "prepared": 1792820178.4471552,
+  "geometry": {
+    "workspace_GiB": 28,
+    "minimum_GPU_MiB": 32768,
+    "maximum_peak_GPU_MiB": 31744,
+    "minimum_host_RAM_GiB": 144,
+    "energy_tolerance_Ha": 1e-07,
+    "gradient_max_tolerance_Ha_Bohr": 1e-06
+  },
+  "electronic": {
+    "library_memory_MiB": 196608,
+    "maximum_RSS_GiB": 300,
+    "minimum_host_RAM_GiB": 400,
+    "maximum_scratch_GiB": 1024,
+    "minimum_free_scratch_GiB": 64,
+    "energy_tolerance_eV": 1e-05
+  },
+  "optimized_geometry_qualified": false,
+  "G_qualified": false
+}

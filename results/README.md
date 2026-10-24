@@ -3,7 +3,7 @@
 Use these stable paths. Completed quantities carry field-specific QC; blank values
 are pending or excluded. Raw calculations and earlier source snapshots are retained.
 
-The [current polymer execution update](validation/pcm_switch_curvature_guarded_2026-10-23/README.md) separates passed response controls from pending native G. Both exact 115-atom response tests and independent replays pass; no PMDI native G is yet accepted. The two-graft worker was stopped after a confirmed shared-device audit, with its 23 evaluated checkpoints preserved. A subsequent delayed foreign attachment was caught by the live guard; a fresh continuation is registered for an exclusively available suitable device. [Finite residency guards](validation/gpu_exclusivity_2026-10-23/README.md) now protect subsequent workers. These execution results do not admit a full-axis candidate.
+The [independent exact-PMDI review](reviews/2026-10-24/pmdi_site3_native/README.md) verifies the site-3 native free-energy component. The matched occupancy cycle and broader conformer convergence remain incomplete. The [separate geometry/energy execution branch](validation/pmdi_split_execution_2026-10-24/README.md) has a passed 139-atom V100 geometry reference point, an actual full optimizer start and a running CPU active-energy reference pilot. These stages preserve their own checkpoints and qualification gates; they do not admit a full-axis candidate.
 
 | Result | Main entry | Current data |
 | --- | --- | --- |
@@ -20,6 +20,7 @@ The [current polymer execution update](validation/pcm_switch_curvature_guarded_2
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 | V100 inference compatibility and loader behavior | [V100 guide](validation/uma_v100_2026-10-24/README.md) | [Current status](validation/uma_v100_2026-10-24/summary.json) · [Unaltered comparison](validation/uma_v100_2026-10-24/reference_comparison.json) · [Composition diagnostic](validation/uma_v100_2026-10-24/composition_comparison.json) |
+| Accepted spacing-control conformers | [Actual molecular geometries](figures/polymer_models/spacing_conformers.pdf) | [Coordinates, contact metrics and source hashes](figures/polymer_models/spacing_conformers.json) |
 
 The current synthesis route is grafting redox groups onto a preformed polymer.
 See [the route definition](../docs/SYNTHESIS_ROUTE.md). The earlier vinyl-monomer
@@ -97,11 +98,13 @@ The [controlled CPU concurrency experiment](validation/cpu_concurrency_2026-10-2
 
 The colleague-review revision has a [comment-by-comment ledger](../manuscript/revision_plan.md), a [rebuilt main paper](../manuscript/manuscript.pdf) and [separate SI](../manuscript/supporting_information.pdf). New checks include [grouped bias/reference diagnostics](validation/reference_bias_2026-10-22/README.md), [relative-basicity controls](validation/proton_transfer_2026-10-22/README.md) and [actual singlet/doublet quantum restart equivalence](validation/quantum_restart_2026-10-22/README.md). [Broader conformer pilots](validation/conformer_revision_2026-10-22/README.md) are active; DFT re-ranking and ensemble G remain pending. The [exact five-repeat phthalimide drawing](figures/polymer_models/spacing_construction.pdf) corresponds to the occupancy cycles. These checks do not make the project submission-ready.
 
-A [standard-library cached-state example](../examples/cached_thermochemistry/README.md) now reconstructs one PMDI potential and two grafting sums after relocation, with no original NFS reads or scientific-package imports. [Recorded conda artifacts and pip versions](../environments/README.md) improve environment reproducibility, while full path portability, fresh GPU restoration and a public DOI remain open. All [five neutral-SVPD sensitivity controls](validation/neutral_basis_2026-10-22/README.md) are independently checked; use the independent review for completed quantities and leave pending fields unresolved.
+A [standard-library cached-state example](../examples/cached_thermochemistry/README.md) now reconstructs one PMDI potential and two grafting sums after relocation, with no original NFS reads or scientific-package imports. [Recorded conda artifacts and pip versions](../environments/README.md) improve environment reproducibility, while full path portability and a public DOI remain open; the later scoped fresh-GPU controls are indexed below. All [five neutral-SVPD sensitivity controls](validation/neutral_basis_2026-10-22/README.md) are independently checked; use the independent review for completed quantities and leave pending fields unresolved.
 
 The [all-axis decision publication](selection/README.md) now follows normal candidate finalization and figure updates. The fresh candidate reconstruction has 628 independent checks with no discrepancies. A [descriptor Pareto figure](figures/selection/descriptor_pareto.pdf) shows eight joint descriptor-front models; the [decision matrix](figures/selection/candidate_axis_matrix.pdf) separates supporting results from full-axis acceptance. No candidate is yet qualified on all required axes. The [targeted expansion plan](../docs/TARGETED_CANDIDATE_EXPANSION.md) defines 34 comparison slots, not newly enumerated molecules. [Twelve expanded CREST searches](validation/conformer_sampling_2026-10-23/README.md) have actual metadynamics starts; DFT and ensemble follow-up remain pending.
 
 The [all-pose native baseline](polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2/README.md) now has twelve checked G values and six independently reconstructed finite two-pose partitions. Adjacent/one-spacer nonadditivities are −5.17/−11.39 kJ/mol at the primary rotor cutoff; the [baseline figure](figures/polymer_models/conditional_ensemble_baseline.pdf) shows the prescribed cutoff sensitivity. [Broader search-to-DFT continuation](polymer_models/campaigns/2026-10-23_crest_refinement/README.md) remains active. Two older warning-heavy pilots were retired with all checkpoints preserved. Finite two-pose completion does not establish adequate conformer sampling.
+
+The [actual finite-control conformers](figures/polymer_models/spacing_conformers.pdf) show close and separated cores for both sequence spacings. Within those two-pose sets, close-contact conformers have lower G by 11.9 and 7.1 kJ/mol for adjacent and one-spacer graphs. These differences include the entire chain and solvent; they do not isolate motif binding or prove converged populations. The plotted backbone follows the exact checked XYZ connectivity and uses proper rotations without reflection or coordinate rescaling.
 
 The [exact PMDI candidate follow-up](validation/pmdi_occupancy_2026-10-23/README.md) links one enumerated design to reviewed precursor access, three checked polymer graphs, active source searches and a separate initial DFT baseline. The [construction drawing](figures/polymer_models/pmdi_occupancy_construction.pdf) shows the actual open graph. [Composition capacity bounds](figures/polymer_models/pmdi_capacity_bounds.pdf) include scaffold and residual-chloride mass; they are not measured accessible capacities or inferred loading distributions. These bounds enter the all-axis ledger as supporting scenario evidence, without a capacity pass or synthesis admission.
 
@@ -111,7 +114,7 @@ The [segment-deformation audit](reviews/2026-10-23/segment_deformation_audit_v2/
 The October 23 manuscript revision adds conjunctive admission across all required
 axes, an exact PMDI precursor/route/capacity assessment and all twelve inherited
 phthalimide native free energies in a finite two-pose partition. The checked
-paper has 15 pages, including its TOC page, and the SI 12. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
+paper has 15 pages, including its TOC page, and the SI 13. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
 prepared graph while making chemical labels legible at manuscript size. No full
 material candidate is admitted; broader sampling and exact PMDI occupancy
 calculations remain separate work.
@@ -122,40 +125,17 @@ contains 243 thermochemical states and 32 electronic-only records. It replays
 primary and auxiliary SI quantities after relocation; 242 Hessian partitions
 and both restart geometry comparisons pass CPU reconstruction. All 2,498
 archive files are verified. Public deposition, diagnostic artifact closure and
-full GPU restoration remain open.
+broader deployment portability remain open; scoped fresh-GPU controls are indexed below.
 
 The [DIPEA reference-origin audit](validation/dipea_reference_origin_2026-10-23_checked/README.md) excludes the reported MeCN pKaH 18.6 from independent measured validation because its specific source note identifies a PCM estimate while another table gives a generic experimental label. The current manuscript records this conflict. Primary reaction energies and candidate decisions are unchanged.
 
-The [32 GB solvent-workspace qualification](validation/smd_workspace_32GB_2026-10-23/README.md) records passed small spin controls, completed 115-atom single-point SCF checkpoints and the subsequent preserved gradient allocation failure. The separate bounded-gradient control also passes. Large-geometry optimization and native thermochemistry on this hardware remain unqualified.
-
-The [large 115-atom gradient recovery](validation/smd_gradient_workspace_32GB_2026-10-23/README.md) now passes four sampled total-energy derivative checks on a 32 GB V100, with 20,304 MiB peak GPU memory. Its same-model [full geometry/energy continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB/README.md) has an actual reserved optimizer start; native G and ensemble convergence remain pending. The candidate-only observer resumed after the documented handoff; active claims suppress duplicate workers. The independent wider-search observer and source searches continue.
+The [solvent-workspace controls](validation/pcm_switch_curvature_guarded_2026-10-23/README.md), [site-2 fine-step force qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_fine_force_qualified/README.md) and [execution workflow](../docs/POLYMER_WORKSPACE_EXECUTION.md) retain the numerical evidence and prior failed attempts. The current [site-3 free-energy review](reviews/2026-10-24/pmdi_site3_native/README.md) and [split geometry/energy branch](validation/pmdi_split_execution_2026-10-24/README.md) own the latest scientific and execution status. Historical control success alone does not supply a missing large-state energy or G.
 
 A separate [chemical TOC graphic](figures/publication/README.md) is prepared from exact precursor/product identities, with EPS and 600 dpi color TIFF exports. It is visually checked in color and grayscale and inserted on the checked manuscript's final page; author review remains pending.
-
-The [current manuscript revision](../manuscript/README.md) adds explicit reviewer-package scope and the integrated TOC. Its frozen counts are independently cross-checked against the archived inventory. The [site-3 post-pilot continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md) resolves a force-directory collision without moving the original pilot. The [64 GB profile campaign](validation/smd_gradient_workspace_64GB_2026-10-23/README.md) has passed both small spin controls and started the separate 139-atom resource requalification. Native polymer G remains pending.
-
-The original [two-graft 139-atom full continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/README.md) passed a 39,206 MiB point qualification but later stopped at an XC-gradient workspace allocation. Its raw trajectory is preserved. The [workspace execution workflow](../docs/POLYMER_WORKSPACE_EXECUTION.md) supports fresh full-calculation storage and checked-energy handoff to native thermochemistry. Site 3 now has checked electronic energy and a separate active native-thermal pilot; site 2 stopped after failing the final total-force energy-difference check. G remains pending until the normal thermal checks pass.
 
 The checked v5 archive is now uploaded as an [unpublished draft release](releases/primary_review/draft_release.json). Remote downloads of all three assets match local checksums. It precedes current polymer calculations and does not constitute public deposition or a DOI.
 
 The [rotor-cutoff sensitivity audit](validation/thermal_cutoff_sensitivity_2026-10-23/README.md) independently reconstructs all 39 benchmark endpoints and 87 completed grafting reaction models at three fixed-geometry settings. Its [two-panel figure](figures/validation/thermal_cutoff_sensitivity.pdf) is included in the current SI. Maximum spans are 25.43 mV and 4.46 kJ/mol, with no nominal reaction sign changes; no missing chemical criterion is inferred to pass.
-
-The [XC temporary-lifetime controls and checkpoint check](validation/xc_workspace_lifetime_2026-10-23/README.md) pass both small spin controls and sampled total-energy derivatives at the preserved 139-atom checkpoint. A [fresh full continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/README.md) is registered for the H100 node; its actual worker start remains separate from preparation. The [site-3 native-thermal pilot](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_surface_budget/README.md) is running on a V100 using the measured-cavity host forecast and unchanged scientific checks. Neither branch supplies a qualified G yet.
-
-The [site-2 PMDI surface audit](validation/pmdi_site2_CDS_surface_2026-10-23/README.md)
-quantitatively attributes its failed coarse-step force comparison to the legacy
-SMD CDS term. Independent replay checks 29 energy/coordinate samples; the
-[diagnostic figure](figures/validation/pmdi_site2_CDS_surface.pdf) separates this
-term from the remaining discrepancy. A [separate full quantum fine-step test](validation/pmdi_site2_fine_force_2026-10-23/README.md)
-has an actual reserved V100 start and durable evaluations. The original state
-remains unaccepted; no native G, conformer convergence or all-axis pass follows
-from the component audit.
-
-The site-2 full quantum fine-step diagnostic has now passed all 15 evaluations and independent replay. A [separate electronic qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_fine_force_qualified/README.md) records the named four-step validation policy and unchanged tolerance while preserving the original failed workflow. Its saved E can now enter the ordinary native-thermal handoff; no native G, ensemble convergence or synthesis admission is inferred.
-
-The site-3 V100 native pilot has now failed in the analytic PCM Hessian response, with its raw records preserved and no accepted G. A [fresh H100 native qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_H100/README.md) is registered through the existing observer. The separate site-2 native V100 pilot remains active; no large-native hardware qualification is inferred from small spin or fixed-gradient controls.
-
-The [host switch-curvature qualification](validation/pcm_switch_curvature_guarded_2026-10-23/README.md) addresses a later 43.37 GiB allocation that response-only tests do not cover. Both guarded full spin/Hessian controls pass. Fresh native pilots retain all physical gates and an explicit measured-peak/device-headroom policy; their G values are still pending. The [context revision](../manuscript/README.md) adds a checked aqueous NDI association reference without changing the MeCN evidence epoch.
 
 The [fresh quantum deployment](validation/gpu_environment_restore_2026-10-23/README.md) now reproduces both complete spin controls with independent Hessian/partition replay. A separate compatibility profile fixes fourteen recorded CUDA dependency conflicts while retaining method-package versions and the xTB hash. The [manuscript](../manuscript/manuscript.pdf) integrates this checked result and frames the chemical findings without execution-history narration. Exact-candidate occupancy, broader conformer convergence and public deposition remain open.
 

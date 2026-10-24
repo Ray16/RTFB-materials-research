@@ -1,0 +1,30 @@
+{
+  "status": "CPU_PCM_budget_finished_requires_numerical_review",
+  "started": 1792827537.5684776,
+  "PCM_memory_MiB": 0.001,
+  "molecule_DF_budget_changed": false,
+  "integral_or_contraction_equations_changed": false,
+  "minimum_tile_points": 400,
+  "builds": [
+    {
+      "atoms": 4,
+      "nao": 29,
+      "original_PCM_memory_MiB": 8192,
+      "PCM_memory_MiB": 0.001,
+      "molecule_memory_MiB": 8192
+    }
+  ],
+  "tiles": {
+    "potential": 4,
+    "matrix": 4
+  },
+  "maximum_tile_points": 400,
+  "maximum_integral_tensor_bytes": 2691200,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/cpu_pcm_memory.py": "90fbf8c88b3cddc3fde159baab0b6ec02fc64d46cd33339421bf982a313dfa53",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/pcm.py": "97bb24fb2e607745c444c36b6c3e649ffca66f808ec2965137a871061b3b9fed",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/df/incore.py": "365b7cb23c9a70722a6c862e65f6fa8d3338fe3d991739223701b82a67d1e457",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422"
+  },
+  "finished": 1792827537.928406
+}

@@ -19,5 +19,7 @@ The observer places this case only on a suitable exclusive GPU with sufficient
 shared RAM/CPU capacity. Live residency guards protect subsequent work. The
 source-3 response data and both full controls are indexed from
 [the qualification guide](../../../../validation/pcm_switch_curvature_guarded_2026-10-23/README.md).
-Native G, the matched PMDI cycle, conformer convergence and candidate eligibility
-remain pending at preparation. Raw storage and source hashes are in the plan.
+The [independent completed-state review](../../../../reviews/2026-10-24/pmdi_site3_native/README.md)
+now reconstructs this native G, including its projected Hessian and nuclear/spin
+partition. The matched PMDI cycle, conformer convergence and candidate eligibility
+remain incomplete. Raw storage and source hashes are in the plan.

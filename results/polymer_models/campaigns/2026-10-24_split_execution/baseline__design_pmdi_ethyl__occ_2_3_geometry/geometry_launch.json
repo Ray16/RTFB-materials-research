@@ -1,0 +1,67 @@
+{
+  "host": "lambda2",
+  "pid": 2306226,
+  "process_start": "1362514690",
+  "GPU": 1,
+  "CPU_affinity": [
+    19,
+    20
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "19,20",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "1",
+    "--label",
+    "redox-two-graft-GPU-geometry",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/host_guard",
+    "--maximum-rss-gib",
+    "192",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/optimize_polymer_geometry.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry"
+  ],
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 33.26513671875,
+    "available_RAM_bytes": 436670963712,
+    "minimum_RAM_GiB": 385.0089190006256
+  },
+  "concurrent_native": {
+    "pid": 1816786,
+    "process_start": "1360855639",
+    "budget_bytes": 230781423872,
+    "current_RSS_bytes": 62194380800,
+    "additional_reserved_bytes": 168587043072
+  },
+  "geometry_maximum_RSS_GiB": 192,
+  "free_headroom_GiB": 32,
+  "CPU_search_growth_reserve_GiB": 4,
+  "started": 1792824526.9327185,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/optimize_polymer_geometry.py": "610a9569d88796f205577a1295c18870835a881d74d8c9286a206178c0eee44d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py": "77f6e51a995f7c299f10330075c02a0d375f303d99786f80296da54c5d6a35d2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/plan.json": "a1bcc9d3762c99883c0b88b32b07f827eaec58ef33b45fe3dfea549d39130070"
+  }
+}

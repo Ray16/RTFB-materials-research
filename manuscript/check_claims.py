@@ -9,6 +9,56 @@ from collections import Counter
 from pathlib import Path
 
 
+def audit_spatial_conformers(load):
+    """Recompute frozen centroid distances and within-graph free-energy gaps."""
+    try:
+        figure = load('spacing_conformers.json')
+    except FileNotFoundError:
+        return None
+    baseline = {row['key']:row for row in load('finite_ensemble.json')['states']}
+    expected = {f'occ_{sites}__pose{pose}' for sites in ('2_3','2_4') for pose in (0,1)}
+    rows = figure['states']
+    if (len(rows) != 4 or {r['key'] for r in rows} != expected
+            or figure['conformer_convergence_established'] or figure['electronic_coupling_computed']
+            or not figure['proper_rotation_only']):
+        raise ValueError('Spatial figure coverage, mapping or physical scope changed')
+    distances, gaps = {}, {}
+    factor = 1.602176634e-19 * 6.02214076e23 / 1000
+    for row in rows:
+        if row['graph'] != row['key'].split('__')[0]:
+            raise ValueError('Spatial graph identity changed')
+        rotation = row['coordinate_rotation']
+        if (len(rotation) != 3 or any(len(r) != 3 for r in rotation)
+                or any(not math.isfinite(v) for r in rotation for v in r)):
+            raise ValueError('Invalid spatial-view rotation')
+        determinant = (rotation[0][0]*(rotation[1][1]*rotation[2][2]-rotation[1][2]*rotation[2][1])
+            - rotation[0][1]*(rotation[1][0]*rotation[2][2]-rotation[1][2]*rotation[2][0])
+            + rotation[0][2]*(rotation[1][0]*rotation[2][1]-rotation[1][1]*rotation[2][0]))
+        if (abs(determinant-1) > 1e-10 or any(abs(sum(rotation[i][k]*rotation[j][k] for k in range(3))
+                -(1 if i == j else 0)) > 1e-10 for i in range(3) for j in range(3))):
+            raise ValueError('The spatial view must be a proper rotation, without reflection or rescaling')
+        if abs(row['G_eV']-baseline[row['key']]['G_eV']) > 1e-9:
+            raise ValueError('Spatial figure uses another native free-energy parent')
+        cores = row['core_coordinates_A']
+        if len(cores) != 2 or any(len(c) < 5 for c in cores):
+            raise ValueError('Two complete conjugated core coordinate groups required')
+        if any(len(p) != 3 or not all(math.isfinite(x) for x in p) for c in cores for p in c):
+            raise ValueError('Invalid core coordinates')
+        centroids = [[math.fsum(p[j] for p in c)/len(c) for j in range(3)] for c in cores]
+        distance = math.dist(*centroids)
+        if abs(distance-row['contact']['centroid_distance_A']) > 1e-9:
+            raise ValueError('Spatial centroid distance does not reconstruct')
+        minimum = min(r['G_eV'] for r in rows if r['graph'] == row['graph'])
+        delta = (row['G_eV']-minimum)*factor
+        if abs(delta-row['deltaG_conformer_kJ_mol']) > 1e-9:
+            raise ValueError('Within-graph conformer free-energy gap does not reconstruct')
+        distances[row['key']] = distance
+        gaps[row['key']] = delta
+    return dict(checked_conformers=4, centroid_distances_A=distances,
+        within_graph_deltaG_kJ_mol=gaps, isolated_motif_binding_inferred=False,
+        converged_ensemble_inferred=False, electron_transfer_inferred=False)
+
+
 def audit_quantum_deployment(load):
     """Reconstruct deployment comparisons without using a positive status alone."""
     try:
@@ -467,6 +517,7 @@ def audit():
     release = audit_reviewer_package(load)
     cutoff = audit_thermal_settings(load)
     deployment = audit_quantum_deployment(load)
+    spatial = audit_spatial_conformers(load)
     if cutoff is not None:
         if hashlib.sha256((folder / "thermal_cutoff_sensitivity.json").read_bytes()).hexdigest() != load("thermal_cutoff_review.json")["result_sha256"]:
             raise ValueError("Frozen thermal-cutoff result differs from its independent source review")
@@ -494,6 +545,7 @@ def audit():
                 reviewer_package=release,
                 thermal_cutoff_sensitivity=cutoff,
                 quantum_environment=deployment,
+                spatial_conformers=spatial,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 
