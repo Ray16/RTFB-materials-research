@@ -1,0 +1,48 @@
+{
+  "status": "fixed_density_response_matrices_independently_reconstructed",
+  "checked": 1792802863.5242665,
+  "atoms": 115,
+  "response_shape": [
+    115,
+    3,
+    1150,
+    231
+  ],
+  "checks": [
+    {
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_error": 1.0357008970720184e-06
+    },
+    {
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_error": 4.1427457216749916e-06
+    },
+    {
+      "atom": 4,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_error": 1.1584237580392479e-07
+    },
+    {
+      "atom": 4,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_error": 4.63419495436481e-07
+    }
+  ],
+  "maximum_relative_error": 4.1427457216749916e-06,
+  "observed_peak_GPU_MiB": 31224,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_site3_PCM_response_v2_2026-10-23/plan.json": "4b1995ed6f8a8cf0c5629d1ef6fed0609b5c574a6bf207e23ae61bf38c6939ce",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_site3_PCM_response_v2_2026-10-23/status.json": "8275214def8ec8e9095325e8f0e5777ffe8cdbe67c217679e9bfdca13b1bd810",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_pcm_first_response.py": "273e45c5d7a0803705c9e8ce5b34150281a375a4d1a4eced53c65b3400bf19d9"
+  },
+  "qualified_native_Hessian": false,
+  "qualified_G": false,
+  "candidate_admission": false,
+  "scope": "Fixed-density PCM response/resource qualification only; no full-Hessian minimum or free energy"
+}

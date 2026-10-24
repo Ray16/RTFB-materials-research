@@ -1,0 +1,91 @@
+{
+  "status": "response_resource_and_sampled_derivatives_passed",
+  "started": 1792802445.2729611,
+  "host": "lambda1",
+  "pid": 1199424,
+  "process_start": "505261950",
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "GPU": "1",
+  "native_Hessian_qualified": false,
+  "G_computed": false,
+  "candidate_admission": false,
+  "completed_response_checks": 4,
+  "checks": [
+    {
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_error": 1.0357008970720186e-06,
+      "analytic_norm": 0.12618398272863685,
+      "numeric_norm": 0.12618406479330047
+    },
+    {
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_error": 4.1427457216749916e-06,
+      "analytic_norm": 0.12618398272863685,
+      "numeric_norm": 0.12618431090260546
+    },
+    {
+      "atom": 4,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_error": 1.1584237580392463e-07,
+      "analytic_norm": 0.7706289871959116,
+      "numeric_norm": 0.7706289069595531
+    },
+    {
+      "atom": 4,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_error": 4.634194954364803e-07,
+      "analytic_norm": 0.7706289871959116,
+      "numeric_norm": 0.7706286662079196
+    }
+  ],
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/calculation.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/baseline_SCF.h5": "858dac73c4b9713358ea507a0dc3eaa6a81b9fbf2d5f7ffe26c711d471bb0962",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/SCF_recovery.jsonl": "ee551f0c68cd8af7d6007e759f11047b38282a54ec715b0146f2477158dd2dac",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/baseline.json": "8ee78e91b752c56cd4e8ef2cf02991de390bbe8c6083ce71c943d5ce6b7f7b63",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/analytic_response_MO_occ.npy": "fdd649e55c4beae20dbda9ea3845f83b46565ec3e72cdbf8b451c04f873a8eaf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.0005_sign-1.npy": "955d21c29c2eb0460ff5f42795e2b6501ad03a1bd28192cf65056c62565c3c5a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.0005_sign-1.json": "bdfd28d2b4a198845c0bf99882ca085bffb9609119424c628cb8251ff3e347c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.0005_sign1.npy": "35c49aba3b531e53216c91870fa17156e203dda04d8539d218bd5448340c8d29",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.0005_sign1.json": "63f29d688994adcad5ec16f8ab13a06c6f004de57f50845d876f318fda43ce1e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/response_checks.json": "aa48b4bc66f0270b1cc90431554c93fe3ec6df65ec009ad4b3a03aa821cfb5de",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.001_sign-1.npy": "94a4b2b5e42d918730564e423be7dcc9dc2f2865a72c7453589ca52425707ddd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.001_sign-1.json": "bc4a31442a00aaa78afda26e8a5ac57b6d9acb9c4411a8d40dc63ddd48fee1f5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.001_sign1.npy": "b6db83928f6b7f33371125153f1bf5218e090ff6988842c8b7762887e1e4eeb7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom0_axis1_h0.001_sign1.json": "92b7acbbd999a05d7158fc5cf5ead472752d0798fa9a8f05ae334b38c62b7cf7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.0005_sign-1.npy": "97252b04147779c59a0cd1ccab525f53108506e0e0d13f89215e8a6a400a96f3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.0005_sign-1.json": "ca6421c20afedd13aad0d8506fcb38cf3b29050139414f8621610b4ad8f4ad19",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.0005_sign1.npy": "b943595e31cab6548a0a733723b80925a8a3815cebc5d5b69f0f4745d523dc4d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.0005_sign1.json": "1d9afbeae8eb733ff1f25fac4a8685392cf290b41cf35fcaced412054fbca948",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.001_sign-1.npy": "d135a0cbdf8b58749d5faab85ce0fdc1aa1514fddefff4966f8acd37e1b5ad1f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.001_sign-1.json": "784702f6e33bdb974b34df7a9f32f007b79c615a99b169ce3a0eff51685d4f32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.001_sign1.npy": "2f00b097c5b1eef3a3ee05ed4627bf749ce4b7fd862b8fbdc49ab883daa3f973",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/atom4_axis2_h0.001_sign1.json": "64f526f0f8aff54492177d2fae3cb0203f6d725d2d31455825a0aa5f5a0cf7ca",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/bounded_gradient_solver.py": "199d93eb081f85dcca0e2bbb25200e221c8e445e219d8af4665dadfb603421c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/original_RKS_XC_response.py": "41f6995f5d35346e8c2ef41b715659f3503b83a33dd3dfb67252c7129b05254a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/released_RKS_XC_response.py": "3bba43b57fe18fc6c065f96f4f3fb91b8aea69d152c97fa6b5cd29dab94056b2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/first_derivatives.json": "dab1acf54bac9d888752cbf88405455d3520e5d59fbd41a60f2773bfecae18b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/contracted_get_dqsym_dx_fix_vgrids.py": "9227df0e50e0b91c0ca5e1985799c379f6d91fd6e7eda1b5674161de1a84c558",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/contracted_get_dqsym_dx_fix_K_R.py": "7e53156af76dfe67e0bee3828f4385ce468480e6ab9620c0fb3dcfff05f5b515",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/contracted_analytical_hess_solver.py": "11c330e889f6c2ecb4bf51a13d75a7615c8973c13efc91412b904b851e4ee492",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/contracted_R.json": "e76adf5860f255acb1ea8ebb2e4e92a60b46517b4df22671d0d6fff999ca4eef",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/status.json": "367e4a4f25f9c269bfbd3f9b772c3324991794c02f527f1bccad392c73953cba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/bounded/status.json": "504313f2c59828ae8a1cd1ca65d407c006f2adee0909a641636191c98b5eca02",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/bounded/build_execution/original_build.py": "e2d08236dcb24a29eaa7da62864a34e8c0f803b74fc62d9712fb8201957445b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/bounded/build_execution/compact_build.py": "e44cb0d127d686ddd3c262ef822d7eec0fba2f646eb2b45757ccd34c75569eb9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/bounded/build_execution/original_composite.py": "0e98a7954ba501874febfc7fbc1c0d89e2b21fb8fac984b5a0c2ba3e8b874709",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/bounded/build_execution/released_geometry_driver.py": "3f32fc6ea22a0897882d35189d58af7b8513c90000187a1bb62ea0439c7c2cd1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23/execution/bounded/build_execution/status.json": "b7cfbf2039975cfcb3cd19c958fc0ea46e116ca00a96cf5caacb9ccdeb9451b5"
+  },
+  "finished": 1792802741.0646813,
+  "observed_peak_GPU_MiB": 31224
+}

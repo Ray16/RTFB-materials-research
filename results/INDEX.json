@@ -359,8 +359,8 @@
       "current": "results/validation/xc_workspace_lifetime_2026-10-23/checkpoint_139_v100/gradient_qualification.json",
       "independent_review": "results/validation/xc_workspace_lifetime_2026-10-23/independent_checkpoint_review.json",
       "native_controls": "results/validation/xc_workspace_lifetime_28GiB_2026-10-23/README.md",
-      "two_graft_continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/README.md",
-      "site3_native_pilot": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_H100/README.md",
+      "two_graft_continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_exclusive_second_resume/README.md",
+      "site3_native_pilot": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature/README.md",
       "scope": "Checked small implementation controls and sampled 139-atom checkpoint derivatives; full optimizer/native G and ensemble convergence remain pending",
       "raw_root": "calcs/validation/xc_workspace_lifetime_2026-10-23",
       "prior_site3_V100_failure": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_H100/prior_V100_failure.json"
@@ -382,6 +382,43 @@
       "native_guide": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_xc_surface_budget/README.md",
       "native_startup_verification": "results/validation/pmdi_site2_fine_force_2026-10-23/native_startup_verification.json",
       "preparation_affinity_check": "results/validation/pmdi_site2_fine_force_2026-10-23/preparation_affinity_integration.json"
+    },
+    "PCM_first_response": {
+      "guide": "results/validation/pcm_first_response_workspace_v2_2026-10-23/README.md",
+      "current": "results/validation/pmdi_site3_PCM_response_v2_2026-10-23/status.json",
+      "independent_review": "results/validation/pmdi_site3_PCM_response_v2_2026-10-23/independent_review.json",
+      "large_test_guide": "results/validation/pmdi_site3_PCM_response_v2_2026-10-23/README.md",
+      "native_guide": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature/README.md",
+      "raw_root": "calcs/validation/pmdi_site3_PCM_response_v2_2026-10-23",
+      "scope": "Both full spin controls and exact-geometry fixed-density response matrices independently checked; full native resource/minimum/G and candidate acceptance remain pending.",
+      "site2_independent_review": "results/validation/pmdi_site2_PCM_response_v2_2026-10-23/independent_review.json"
+    },
+    "GPU_exclusivity": {
+      "guide": "results/validation/gpu_exclusivity_2026-10-23/README.md",
+      "incident": "results/validation/pcm_first_response_workspace_v2_2026-10-23/device_exclusivity_recovery.json",
+      "continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_exclusive_second_resume/README.md",
+      "scope": "Verified owned-worker stop after shared-device audit; finite CPU-only guards inspect actual residency and preserve foreign jobs. Checkpoint continuation remains unqualified.",
+      "watchers": [
+        "results/validation/gpu_exclusivity_2026-10-23/launch_lambda1.json",
+        "results/validation/gpu_exclusivity_2026-10-23/launch_lambda1_production.json",
+        "results/validation/gpu_exclusivity_2026-10-23/launch_lambda2.json",
+        "results/validation/gpu_exclusivity_2026-10-23/launch_lambda13.json"
+      ],
+      "second_interruption": "results/validation/gpu_exclusivity_2026-10-23/second_residency_interruption.json"
+    },
+    "NDI_association_context": {
+      "current": "results/literature/context_2026-10-23/NDI_self_association.json",
+      "scope": "Verified primary aqueous NDI association context; no MeCN benchmark endpoint or exact-route evidence added",
+      "raw_root": "calcs/literature/2026-10-23_context"
+    },
+    "PCM_switch_curvature": {
+      "guide": "results/validation/pcm_switch_curvature_guarded_2026-10-23/README.md",
+      "controls": "results/validation/pcm_switch_curvature_guarded_2026-10-23/launch.json",
+      "allocation_bound": "results/validation/pcm_first_response_workspace_v2_2026-10-23/native_allocation_bound.json",
+      "site2_native": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_switch_curvature/README.md",
+      "site3_native": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature/README.md",
+      "scope": "Guarded full spin/Hessian equivalence passed; later switch tensors tiled to host with live bounded-native bindings and solute checkpoints. Full native resource/minimum/G remains pending.",
+      "raw_root": "calcs/polymer_models/2026-10-23_crest_refinement"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

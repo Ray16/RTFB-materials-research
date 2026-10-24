@@ -3,9 +3,11 @@
 Use these stable paths. Completed quantities carry field-specific QC; blank values
 are pending or excluded. Raw calculations and earlier source snapshots are retained.
 
+The [current polymer execution update](validation/pcm_switch_curvature_guarded_2026-10-23/README.md) separates passed response controls from pending native G. Both exact 115-atom response tests and independent replays pass; no PMDI native G is yet accepted. The two-graft worker was stopped after a confirmed shared-device audit, with its 23 evaluated checkpoints preserved. A subsequent delayed foreign attachment was caught by the live guard; a fresh continuation is registered for an exclusively available suitable device. [Finite residency guards](validation/gpu_exclusivity_2026-10-23/README.md) now protect subsequent workers. These execution results do not admit a full-axis candidate.
+
 | Result | Main entry | Current data |
 | --- | --- | --- |
-| Grafting free energies for all 75 candidates | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |
+| Grafting thermochemistry: 75 reaction models | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |
 | Polymer-fragment and interaction models | [3D interaction report](polymer_models/index.html) | [Method/records](polymer_models/README.md) · [Interaction status](polymer_models/interaction_status.json) · [Graph inventory](polymer_models/current.csv) |
 | Graft spacing and conditional grafting framework | [Exact occupancy cases and report](polymer_models/campaigns/2026-10-21_spacing_cds_recovery/index.html) | [Reproduction guide](../docs/POLYMER_SPACING.md) · [Current pointer](polymer_models/spacing_current.json) · [Independent validation](polymer_models/workflow_validation.json) |
 | Candidate redox properties and comparisons | [Candidates](candidates/README.md) | [Workbook](candidates/latest.xlsx) · [All candidates](candidates/figures/data/all_candidates.csv) |
@@ -14,7 +16,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
-| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-23_TOC_release_revision/manifest.json) |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-23_thermal_cutoff_revision/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 
@@ -151,3 +153,5 @@ from the component audit.
 The site-2 full quantum fine-step diagnostic has now passed all 15 evaluations and independent replay. A [separate electronic qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_fine_force_qualified/README.md) records the named four-step validation policy and unchanged tolerance while preserving the original failed workflow. Its saved E can now enter the ordinary native-thermal handoff; no native G, ensemble convergence or synthesis admission is inferred.
 
 The site-3 V100 native pilot has now failed in the analytic PCM Hessian response, with its raw records preserved and no accepted G. A [fresh H100 native qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_H100/README.md) is registered through the existing observer. The separate site-2 native V100 pilot remains active; no large-native hardware qualification is inferred from small spin or fixed-gradient controls.
+
+The [host switch-curvature qualification](validation/pcm_switch_curvature_guarded_2026-10-23/README.md) addresses a later 43.37 GiB allocation that response-only tests do not cover. Both guarded full spin/Hessian controls pass. Fresh native pilots retain all physical gates and an explicit measured-peak/device-headroom policy; their G values are still pending. The [context revision](../manuscript/README.md) adds a checked aqueous NDI association reference without changing the MeCN evidence epoch.

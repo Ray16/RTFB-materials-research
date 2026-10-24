@@ -23,3 +23,5 @@ Small result records live here; raw calculation storage is specified by the
 plan. The source baseline remains a one-start control, independent from the
 three broader PMDI CREST source searches. Neither baseline preparation nor
 successful resource qualification admits this candidate for synthesis.
+
+The optimizer subsequently started on an H100 and saved 23 complete evaluated checkpoints. A delayed foreign CUDA process was found on that device; only this owned worker was stopped. Its partial trajectory and peer process were preserved. The [exclusive continuation](../baseline__design_pmdi_ethyl__occ_2_3_exclusive_resume/README.md) uses the selected evaluated frame as an unqualified warm start. No source E or G was admitted from the interrupted run.

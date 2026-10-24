@@ -1,0 +1,29 @@
+{
+  "overrides": {
+    "baseline__design_pmdi_ethyl__occ_2": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_xc_surface_budget",
+      "reason": "Exact checked electronic parent reused; separate native-thermal resource and physical qualification pending",
+      "hosts": [
+        "lambda2"
+      ]
+    },
+    "baseline__design_pmdi_ethyl__occ_3": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_H100",
+      "hosts": [
+        "lambda13"
+      ],
+      "reason": "V100 native Hessian PCM response exhausted memory; original failure preserved; fresh H100 native resource/physical qualification with unchanged parent and scientific gates"
+    },
+    "baseline__design_pmdi_ethyl__occ_2_3": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume",
+      "hosts": [
+        "lambda13"
+      ],
+      "reason": "Failed XC workspace trajectory preserved; controlled AO-batch lifetime adapter and independently checked evaluated checkpoint used for normal full re-optimization"
+    }
+  },
+  "qualification": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23",
+  "previous_registry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/baseline_observer_history/registry_before_native_H100_1792801056561141684.json",
+  "updated": 1792801056.562689,
+  "external_continuations": {}
+}

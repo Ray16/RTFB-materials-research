@@ -1,0 +1,19 @@
+{
+  "status": "owned_conflicting_worker_stopped_checkpoints_preserved",
+  "checked": 1792806577.5356586,
+  "host": "lambda2",
+  "pid": 1719289,
+  "process_start": "1360500772",
+  "n_surface_points": 24454,
+  "atoms": 115,
+  "two_required_dense_tensor_bytes": 46570197600,
+  "two_required_dense_tensor_GiB": 43.37187632918358,
+  "physical_device_MiB": 32768,
+  "source_function": "gpu4pyscf.solvent.hessian.pcm.get_d2F_d2A",
+  "reason": "Two explicit float64 device zeros([ngrids,natom,natom,3,3]) allocations exceed the device even before other storage",
+  "baseline_geometry_unchanged": true,
+  "scientific_QC_failure_inferred": false,
+  "G_qualified": false,
+  "stopped": true,
+  "descendants_checked": 0
+}

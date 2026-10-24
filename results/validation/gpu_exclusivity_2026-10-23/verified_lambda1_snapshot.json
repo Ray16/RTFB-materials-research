@@ -1,0 +1,63 @@
+{
+  "checked": 1792810161.642156,
+  "host": "lambda1",
+  "live_observers": [
+    {
+      "name": "lambda1",
+      "pid": 1252296,
+      "process_start": "505572997",
+      "CPU_affinity": [
+        0
+      ],
+      "native_thread_caps": {
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "XTB_THREADS": "1"
+      },
+      "last_audit": {
+        "checked": 1792810159.5556226,
+        "host": "lambda1",
+        "live_workers": [],
+        "events": [],
+        "unresolved": [],
+        "scientific_outputs_qualified": false
+      }
+    },
+    {
+      "name": "lambda1_production",
+      "pid": 1290169,
+      "process_start": "505810454",
+      "CPU_affinity": [
+        1
+      ],
+      "native_thread_caps": {
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "XTB_THREADS": "1"
+      },
+      "last_audit": {
+        "checked": 1792810157.104294,
+        "host": "lambda1",
+        "live_workers": [
+          {
+            "manifest": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature/thermal/workers/lambda1_gpu0_pilot.json",
+            "pid": 1303220,
+            "process_start": "505864231",
+            "gpu": 0,
+            "GPU_residency_observed": true,
+            "conflicting_PIDs": []
+          }
+        ],
+        "events": [],
+        "unresolved": [],
+        "scientific_outputs_qualified": false
+      }
+    }
+  ]
+}

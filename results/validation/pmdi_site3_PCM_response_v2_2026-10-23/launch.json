@@ -1,0 +1,37 @@
+{
+  "host": "lambda1",
+  "pid": 1199214,
+  "process_start": "505261871",
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "1",
+    "--label",
+    "redox_PCM_first_response_115",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "redox.workflows.gpu",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_site3_PCM_response_v2_2026-10-23/reserved_gpu1",
+    "--probe",
+    "--",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_pcm_first_response_v2.py",
+    "run",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_site3_PCM_response_v2_2026-10-23"
+  ],
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "GPU": 1,
+  "started": 1792802442.9001737,
+  "plan_sha256": "4b1995ed6f8a8cf0c5629d1ef6fed0609b5c574a6bf207e23ae61bf38c6939ce",
+  "launcher_sha256": "e007b8d5e11253d30575684152b20812a3e743b7debb9f848b387e5e9e9e8277"
+}

@@ -1,9 +1,9 @@
 {
-  "checked_UTC": "2026-10-23T23:35:44Z",
+  "checked_UTC": "2026-10-24T00:55:20Z",
   "review_type": "assistant rendered-page inspection separate from compiler report",
   "documents": {
-    "manuscript": "6ad91d8f331baef8920bed6e8275163309f1f455345d3dc356ff4a2ca1439df5",
-    "supporting_information": "9edfb6b0af1ebc6df67b655a9bc676514d8c350262b1007abc2b0fbe0ea8f3ae"
+    "manuscript": "db4ca398fae0c9bffce7819fc8b2288c35a95571884b2fa5b9caca11b6fac364",
+    "supporting_information": "b30d9e5dba49483803e0deb1effbbaa8d3f302dd9770ac0747b16e1a37cdad5d"
   },
   "contact_sheets_reviewed": {
     "manuscript": [
@@ -40,28 +40,23 @@
   },
   "detail_pages_reviewed": {
     "manuscript": [
-      7,
-      8,
-      11,
+      2,
+      12,
       15
     ],
-    "supporting_information": [
-      2,
-      3,
-      11
-    ]
+    "supporting_information": []
   },
   "findings": [
-    "All 15 main and 12 SI pages inspected in rendered contact sheets; no visible clipping, overlaps or overflowing captions.",
-    "Main pages 7\u20138 report the fixed-geometry rotor-cutoff sensitivity without treating it as chemical validation or an uncertainty interval.",
-    "SI pages 2\u20133 show all three benchmark metrics, the fixed-geometry scope and the two-panel cutoff figure with legible labels. Color and grayscale figure exports were inspected.",
-    "Main page 11 distinguishes public code, locally checked raw-state reproduction and pending public deposition. SI page 11 explicitly labels the GitHub staging release unpublished.",
-    "The final TOC page displays the exact chemical artwork at 3.25 by 1.75 inches; atom labels and the all-criteria requirement are legible."
+    "All main/SI pages inspected in newly rendered contact sheets; no visible clipping or overlapping captions.",
+    "Main page 2 adds verified aqueous NDI self-association/dimerization context and retains the declared focused scope. No aqueous potential is added to the MeCN benchmark.",
+    "The new reference on page 12 has checked title, four authors, diacritic, year, volume, article number and DOI.",
+    "The final TOC artwork remains legible at its original dimensions.",
+    "The numerical evidence epoch and source-frozen counts are unchanged; subsequent PMDI resource/response work remains outside this manuscript snapshot."
   ],
   "remaining_submission_items": [
     "Complete exact-candidate occupancy and broader conformer assessment",
     "Public raw-data deposition, full GPU restoration and final package scope",
     "Author metadata, declarations and artwork approval"
   ],
-  "build_sha256": "2f82dbb30ccc013ab94c27da990c567838af9c086ab821a057cc2e59808718f3"
+  "build_sha256": "fd95280e819e034d93bb7b096b35a8bfdb307982130753fbd7814ef2387b56e1"
 }

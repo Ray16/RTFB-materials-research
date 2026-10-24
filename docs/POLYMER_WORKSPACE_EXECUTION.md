@@ -101,3 +101,15 @@ original receipt/source and records both paths and hashes. It changes no plan,
 scientific result or running worker. Both current single-site native campaigns
 have these checked aliases. Integrating this step into the shared preparation
 driver remains deferred while that producer is source-pinned by live native jobs.
+
+## Bounded first response and exclusive continuation
+
+The new `first_response_polymer_campaign.py` profile requires both full spin controls and an independently reconstructed fixed-density response test for the exact saved geometry. It composes bounded rectangles from the unchanged installed pairwise primitive with contracted Hessian R applications. It materializes imported parent aliases automatically. Complete native resource, Hessian, minimum and partition gates remain separate; the response component is not a G certificate. The isolated response test uses its declared physical device ceiling, while the native pilot retains its own stricter resource criterion.
+
+`watch_gpu_exclusivity.py` adds finite CPU-only post-launch residency audits to the shared allocation gate. Delayed foreign residency stops only the owned matching PID/start/campaign, leaving peers, claims and reservations untouched. Candidate phases with interrupted workers remain held until an explicit fresh continuation is prepared. `prepare_exclusive_checkpoint_resume.py` verifies termination, preserves the old trajectory, rechecks checkpoint connectivity/stereochemistry and binds a live residency observer. Its warm-start coordinates remain unqualified; previous same-graph resource evidence is not relabeled as an exact-checkpoint energy calculation. All final gates repeat normally.
+
+## Later switch curvature and full-native qualification
+
+`switch_curvature_polymer_campaign.py` additionally uses unchanged all-atom primitive evaluations in grid tiles and host-backed switch tensors. Native curvature bindings are refreshed at execution time so the later certified bounded-native context is honored. Full guarded spin/Hessian controls must exercise host storage, live bindings and a durable solute-component checkpoint. The declared native measured-peak ceiling is separate from the workspace estimate and preserves at least one GiB above it in the minimum physical device class. This resource limit is not a relaxation of native physical criteria.
+
+A passed response-only test cannot qualify later arrays: the exact site-3 geometry requires 43.37 GiB for its two dense switch tensors. Their host-backed successor still needs a complete large native pilot. Partial solute checkpoints remain unqualified until full assembly and normal checks finish.

@@ -96,3 +96,13 @@ def test_preparation_child_can_escape_observers_occupied_single_CPU(handoff, mon
         assert os.sched_getaffinity(0) == {cpus[0]}
     finally:
         os.sched_setaffinity(0, original)
+
+
+@pytest.mark.parametrize('status,expected',[
+    ('computing',False),('no_unclaimed_unattempted_phase_work',False),
+    ('stopped_preserving_outputs',True)])
+def test_interrupted_worker_requires_explicit_recovery_instead_of_blind_retry(handoff,tmp_path,status,expected):
+    m,*_=handoff
+    folder=tmp_path/'campaign/energy/workers';folder.mkdir(parents=True)
+    (folder/'worker.json').write_text(json.dumps(dict(status=status)))
+    assert m.phase_has_interrupted_worker(tmp_path/'campaign','energy') is expected

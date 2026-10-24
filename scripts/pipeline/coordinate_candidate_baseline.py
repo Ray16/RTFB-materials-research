@@ -38,6 +38,12 @@ def preparation_command(command):
     return ["taskset", "--cpu-list", ",".join(map(str, PREPARATION_AFFINITY)), *command]
 
 
+def phase_has_interrupted_worker(campaign, stage):
+    """Preserve partial work until an explicit fresh recovery is prepared."""
+    return any(json.loads(path.read_text()).get("status") == "stopped_preserving_outputs"
+               for path in (campaign / stage / "workers").glob("*.json"))
+
+
 def same_model(parent, replacement):
     for field in ("quantum_settings", "thermochemistry", "solvent"):
         if parent[field] != replacement[field]:
@@ -249,6 +255,8 @@ def main():
                         if any((campaign / stage / "claims").iterdir()):
                             continue
                         if any((campaign / stage / "failures").glob("*.json")):
+                            continue
+                        if phase_has_interrupted_worker(campaign, stage):
                             continue
                         if stage == "thermal" and (report["checked_energy"] != 1 or report["checked_native_G"] == 1):
                             continue
