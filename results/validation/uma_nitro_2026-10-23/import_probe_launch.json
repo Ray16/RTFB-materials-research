@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "19,20",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "2",
+    "--label",
+    "redox-Nitro-import-probe",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "LD_LIBRARY_PATH=/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-23/.venv/bin/python",
+    "/tmp/redox_probe_nitro_imports.py"
+  ],
+  "CPU_affinity": [
+    19,
+    20
+  ],
+  "GPU": 2,
+  "returncode": 0,
+  "checked": 1792817742.621911
+}
