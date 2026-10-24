@@ -1,0 +1,24 @@
+{
+  "status": "streamed_PCM_finished_requires_full_replay_and_physical_QC",
+  "started": 1792867984.5736394,
+  "switch_contractions": 4,
+  "switch_primitive_calls": 160,
+  "maximum_switch_tile_bytes": 73728,
+  "diagonal_contractions": 2,
+  "offdiagonal_primitive_calls": 64,
+  "offdiagonal_cache_hits": 0,
+  "offdiagonal_block_requests": 64,
+  "maximum_offdiagonal_primitive_bytes": 79281216,
+  "peak_GPU_block_cache_bytes": 133331040,
+  "precision": "float64",
+  "surface_grid_changed": false,
+  "atoms_omitted": false,
+  "full_spin_replay_required": true,
+  "large_resource_qualification_required": true,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/streamed_pcm_execution.py": "74c873653486aace4ab40e77d5e90b149e4095e281c1225025158b2af9abc52c",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py": "4cb4c1d9e31f24b857205cd239db1077d251c116a1d604b07cedb845047cd484",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/pcm_switch_curvature_blocks.py": "9650c7d7ab8efc5ad8918487f2260656f344fa6d2ad993e2f70defd56c609820"
+  },
+  "finished": 1792867997.902825
+}

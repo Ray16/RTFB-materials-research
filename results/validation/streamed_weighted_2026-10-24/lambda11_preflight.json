@@ -1,0 +1,20 @@
+{
+  "host": "lambda11",
+  "python": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+  "ok": true,
+  "errors": [],
+  "online_cpus": 48,
+  "load": 0.08154296875,
+  "affinity": [
+    47
+  ],
+  "available_ram_mib": 120297.4453125,
+  "modules": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1",
+    "cupy": "14.1.1",
+    "scipy": "1.17.1",
+    "ase": "3.29.0"
+  },
+  "stderr": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py:154: UserWarning: using cupy as the tensor contraction engine.\n  warnings.warn(f'using {contract_engine} as the tensor contraction engine.')"
+}

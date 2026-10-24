@@ -205,6 +205,42 @@
         "raw_root": "calcs/validation/pmdi_pair_PCM_response_v2_2026-10-24",
         "scope": "SCF baseline preserved; analytic-response contraction allocation failed; no native G or geometry failure inferred",
         "failure_review": "results/validation/pmdi_pair_PCM_response_v2_2026-10-24/failure_review.json"
+      },
+      "weighted_native_response": {
+        "guide": "results/validation/streamed_weighted_2026-10-24/README.md",
+        "current": "results/validation/pmdi_pair_weighted_response_2026-10-24/status.json",
+        "controls": "results/validation/streamed_weighted_2026-10-24/summary.json",
+        "plan": "results/validation/pmdi_pair_weighted_response_2026-10-24/plan.json",
+        "source_manifest": "results/validation/pmdi_pair_weighted_response_2026-10-24/launch.json",
+        "raw_root": "calcs/validation/pmdi_pair_weighted_response_2026-10-24",
+        "scope": "Full spin/Hessian controls and exact 139-atom response pass; pure-solute workspace controls pass; fresh full native state running, G pending",
+        "independent_review": "results/validation/pmdi_pair_weighted_response_2026-10-24/independent_review.json",
+        "native_plan": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/plan.json",
+        "native_status": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json",
+        "native_startup": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/startup_verification.json",
+        "historical_failed_full_native": "results/polymer_models/campaigns/2026-10-24_weighted_native/baseline__design_pmdi_ethyl__occ_2_3/failure_review.json",
+        "native_guide": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/README.md",
+        "solute_workspace_controls": "results/validation/solute_workspace_2026-10-24/summary.json",
+        "solute_workspace_guide": "results/validation/solute_workspace_2026-10-24/README.md",
+        "publication_observer": "results/reviews/2026-10-24/pmdi_pair_native_solute_followup/observer.json"
+      },
+      "CREST_V100_geometry": {
+        "guide": "results/polymer_models/campaigns/2026-10-24_CREST_geometry/alternating__occ_none__conf001/README.md",
+        "plan": "results/polymer_models/campaigns/2026-10-24_CREST_geometry/alternating__occ_none__conf001/plan.json",
+        "status": "results/polymer_models/campaigns/2026-10-24_CREST_geometry/alternating__occ_none__conf001/geometry/status.json",
+        "source_manifest": "results/polymer_models/campaigns/2026-10-24_CREST_geometry/alternating__occ_none__conf001/launch.json",
+        "raw_root": "calcs/polymer_models/2026-10-24_CREST_geometry",
+        "scope": "First exact final-CREST start in separate geometry optimization; no completed broader DFT reranking or native ensemble"
+      },
+      "CREST_second_configuration_point": {
+        "guide": "results/polymer_models/campaigns/2026-10-24_CREST_V100/all_same__occ_none_point80/README.md",
+        "plan": "results/polymer_models/campaigns/2026-10-24_CREST_V100/all_same__occ_none_point80/plan.json",
+        "status": "results/polymer_models/campaigns/2026-10-24_CREST_V100/all_same__occ_none_point80/resource_point/status.json",
+        "source_manifest": "results/polymer_models/campaigns/2026-10-24_CREST_V100/all_same__occ_none_point80/launch.json",
+        "startup": "results/polymer_models/campaigns/2026-10-24_CREST_V100/all_same__occ_none_point80/startup_verification.json",
+        "inventory": "calcs/validation/CREST_all_same_inventory_2026-10-24/status.json",
+        "raw_root": "calcs/validation/2026-10-24_CREST_V100/all_same__occ_none_point80",
+        "scope": "Second completed low-level backbone configuration; bounded fixed-input energy/gradient test running; no ensemble G"
       }
     },
     "candidates": {
@@ -483,7 +519,7 @@
       "status": "installed_legacy_replayed_V100_model_behavior_diagnosed_redox_Nitro_pending",
       "raw_root": "calcs/uma_nitro_validation/2026-10-23",
       "source_snapshot": "results/validation/uma_nitro_2026-10-23/panel/plan.json",
-      "scope": "Pinned inference-engine validation with unchanged UMA weights and OMol task; production default unchanged"
+      "scope": "Historical inference-engine diagnostic; current default policy is entries.uma_default. Actual redox-panel H100 parity/timing remains pending."
     },
     "CPU_electronic_fallback_controls": {
       "guide": "results/validation/CPU_quantum_2026-10-23/README.md",
@@ -502,26 +538,28 @@
       "raw_root": "calcs/uma_nitro_validation",
       "source_snapshot": "results/validation/uma_v100_2026-10-24/source_snapshot.json",
       "status": "V100_execution_verified_legacy_current_composition_difference_localized",
-      "scope": "Ten states/40 frames; legacy default retained. Diagnostic behavior override is ineligible for production. DFT/Hessian qualification is separate."
+      "scope": "Ten-state/40-frame diagnostic profile. Current public CLI uses tested legacy V100 fallback; behavior override is ineligible for production; DFT/Hessians separate."
     },
     "exact_PMDI_native_component": {
       "guide": "results/reviews/2026-10-24/pmdi_site3_native/README.md",
       "current": "results/reviews/2026-10-24/pmdi_site3_native/summary.json",
       "raw_root": "calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature",
       "source_snapshot": "results/reviews/2026-10-24/pmdi_site3_native/summary.json",
-      "status": "one_component_independently_reconstructed_matched_cycle_pending",
-      "scope": "One 115-atom exact site-3 native G; no complete cycle, converged ensemble or candidate admission"
+      "status": "two_single_site_components_independently_reconstructed_pair_G_and_cycle_pending",
+      "scope": "Two 115-atom exact single-site native G values; pair G, matched cycle, broader ensemble and candidate admission pending",
+      "additional_component": "results/reviews/2026-10-24/pmdi_site2_native/summary.json"
     },
     "split_polymer_execution": {
       "guide": "results/validation/pmdi_split_execution_2026-10-24/README.md",
       "current": "results/validation/pmdi_split_execution_2026-10-24/plan.json",
-      "geometry": "results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/geometry/status.json",
+      "geometry": "results/polymer_models/campaigns/2026-10-24_geometry_finish/baseline__design_pmdi_ethyl__occ_2_3/geometry/status.json",
       "geometry_start": "results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/startup_verification.json",
       "raw_root": "calcs/polymer_models/2026-10-24_split_execution",
       "source_snapshot": "results/validation/pmdi_split_execution_2026-10-24/plan.json",
-      "status": "geometry_point_passed_optimizer_running_CPU_initial_bound_stop_and_bounded_successor_started",
+      "status": "paired_stationary_geometry_and_canonical_GPU_energy_checked_CPU_reference_and_native_G_pending",
       "scope": "Independent geometry/active-energy stages; no missing E or G supplied by resource points",
-      "CPU_current": "results/validation/cpu_pcm_memory_2026-10-24/large_point/electronic/status.json"
+      "CPU_current": "results/validation/cpu_pcm_memory_2026-10-24/large_point/electronic/status.json",
+      "historical_geometry_attempt": "results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/geometry/status.json"
     },
     "spacing_control_spatial_conformers": {
       "figure": "results/figures/polymer_models/spacing_conformers.pdf",
@@ -560,12 +598,13 @@
     "streamed_V100_PCM": {
       "guide": "results/validation/streamed_PCM_2026-10-24/README.md",
       "current": "results/validation/streamed_PCM_2026-10-24/replay_qualification.json",
-      "status": "Two full spin/Hessian controls pass; large native polymer pilot running, G pending",
+      "status": "Both full spin/Hessian controls and independently reviewed 115-atom site-2 native G complete; paired-state variant separately qualified",
       "plan": "results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/plan.json",
       "source_manifest": "results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/launch.json",
       "startup": "results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/startup_verification.json",
       "raw_root": "calcs/polymer_models/2026-10-24_streamed_native",
-      "scope": "Execution equivalence/resource qualification; unchanged SMD MeCN model and physical gates; no new cycle or synthesis admission"
+      "scope": "Execution equivalence/resource qualification; unchanged SMD MeCN model and physical gates; no new cycle or synthesis admission",
+      "independent_review": "results/reviews/2026-10-24/pmdi_site2_native/summary.json"
     },
     "uma_default": {
       "guide": "results/validation/uma_current_2026-10-24/README.md",

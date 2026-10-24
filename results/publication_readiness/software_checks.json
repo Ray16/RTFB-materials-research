@@ -1,25 +1,21 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 1095,
-    "skipped": 2,
-    "report": "results/validation/uma_current_2026-10-24/regression_with_GPU_handoff.xml"
+    "passed": 1125,
+    "skipped": 1,
+    "report": "results/validation/solute_workspace_2026-10-24/regression.xml"
   },
   "separately_verified_skips": {
-    "two_CPU_affinity": {
-      "passed": 1,
-      "report": "results/validation/uma_current_2026-10-24/two_CPU_test.xml"
-    },
     "figure_environment": {
       "passed": 1,
-      "report": "results/validation/uma_current_2026-10-24/figure_dependency_test.xml"
+      "report": "results/validation/solute_workspace_2026-10-24/figure_test.xml"
     }
   },
   "report_sha256": {
-    "results/validation/uma_current_2026-10-24/regression_with_GPU_handoff.xml": "d15cdcd5d9877e31c5fb84d66054d0a1c8afd505633edb66938a1189b8323ca4",
-    "results/validation/uma_current_2026-10-24/two_CPU_test.xml": "34eb0736f05aaa5c668c3838db766586db5f7f0d5baab353e912f78d5b6fef99",
-    "results/validation/uma_current_2026-10-24/figure_dependency_test.xml": "d10ded59468e5574fdf30e5eb6cb3bf2fd26790cca551d3d775291b7d5ccc4e9"
+    "results/validation/solute_workspace_2026-10-24/regression.xml": "6223f3c908018602998b8b4252bac2db58c3c0596d8b5a569b7dcd168395b9dc",
+    "results/validation/solute_workspace_2026-10-24/figure_test.xml": "e2fd2e69dbf56f308867c9ae66e0e95bf30cd710b61835308c1f0965c554f03b"
   },
-  "integration": "Current public dispatch, explicit state-cache changes and V100 10-state/40-frame E/F comparison pass. Both full spin/Hessian GC-lifecycle controls pass. Site-2 and site-3 native G reconstruct independently; returned pair geometry passes final force checks and is in the canonical GPU active-energy stage. H100 current-FP32/Nitro parity, matched PMDI cycle, broader convergence and public deposition remain pending.",
-  "experimental_accuracy_inferred": false
+  "integration": "Current UMA dispatch and tested V100 fallback; 139-atom stationary geometry/canonical energies and independent response; full spin/Hessian controls for weighted response and exact pure-solute matrix storage pass. Fresh pair native state, wider conformer ensembles, H100 parity/timing and public deposition remain pending.",
+  "experimental_accuracy_inferred": false,
+  "checked": 1792868224.0339336
 }
