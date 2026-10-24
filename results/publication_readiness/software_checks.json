@@ -1,25 +1,25 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 1038,
+    "passed": 1046,
     "skipped": 2,
-    "report": "results/publication_readiness/checks_2026-10-24/full_suite.xml"
+    "report": "results/reviews/2026-10-24/pmdi_alkylation_context/regression_tests.xml"
   },
   "separately_verified_skips": {
     "two_CPU_affinity": {
       "passed": 1,
-      "report": "results/publication_readiness/checks_2026-10-24/two_CPU_affinity.xml"
+      "report": "results/reviews/2026-10-24/pmdi_alkylation_context/two_CPU_test.xml"
     },
     "figure_environment": {
       "passed": 1,
-      "report": "results/publication_readiness/checks_2026-10-24/figure_dependency_corrected.xml"
+      "report": "results/reviews/2026-10-24/pmdi_alkylation_context/figure_dependency_test.xml"
     }
   },
   "report_sha256": {
-    "results/publication_readiness/checks_2026-10-24/full_suite.xml": "5449198b470b0a7d578c2c705fe7090b8403112b91a20bbdef12ee39f6da129b",
-    "results/publication_readiness/checks_2026-10-24/two_CPU_affinity.xml": "4bdd69b1f468a5f5b2936f1147003d36882b74a04871f3d7cd561b32abbc08b6",
-    "results/publication_readiness/checks_2026-10-24/figure_dependency_corrected.xml": "e943184d9bc7f71e5403b29525b236a6b4cb444709abf31e4b57b8a7401ddad8"
+    "results/reviews/2026-10-24/pmdi_alkylation_context/regression_tests.xml": "e263f61b9ab195c8594597994b911497443326ba16e2fa78b1a8f0a5f85d58b3",
+    "results/reviews/2026-10-24/pmdi_alkylation_context/two_CPU_test.xml": "dd5b859275c107512b0af14efe11f88f42f0384c2604af00bd0cc935f7e94512",
+    "results/reviews/2026-10-24/pmdi_alkylation_context/figure_dependency_test.xml": "7a268bc57f6df29c3ff2af3cc9f90619a813e43779acf6989b75fd39848229dd"
   },
-  "integration": "109 selected polymer checks and 46 manuscript/handoff checks passed. Exact site-3 native G and four spatial-control claims reconstruct independently; cached geometry rendering reproduces pixels with original calculation paths blocked. Two CPU PCM multi-tile controls pass. Large reference-point equivalence, full PMDI cycle and broader sampling remain incomplete.",
+  "integration": "The new owned-worker RAM guard passes two subprocess checks, including stale PID refusal and preserved stop checkpoints. All 75 route outcomes are unchanged after the new molecular PMDI class source. Both documents compile; the large V100 hybrid reference point, exact PMDI cycle and broader conformer convergence remain pending.",
   "experimental_accuracy_inferred": false
 }

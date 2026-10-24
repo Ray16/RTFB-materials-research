@@ -1,0 +1,42 @@
+{
+  "owner": {
+    "host": "lambda2",
+    "pid": 2771723,
+    "process_start": "1364150735",
+    "CPU_affinity": [
+      4
+    ],
+    "target": {
+      "host": "lambda2",
+      "pid": 2306433,
+      "process_start": "1362514811",
+      "GPU": 1,
+      "CPU_affinity": [
+        19,
+        20
+      ],
+      "started": 1792824528.2475684,
+      "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+      "foreign_processes_signaled": false
+    },
+    "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry",
+    "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/optimize_polymer_geometry.py",
+    "started": 1792840887.5756755,
+    "deadline": 1793013687.5756762,
+    "maximum_RSS_bytes": 68719476736,
+    "minimum_free_RAM_bytes": 34359738368,
+    "foreign_processes_signaled": false,
+    "scientific_settings_changed": false
+  },
+  "state": {
+    "checked": 1792841453.1625547,
+    "RSS_bytes": 1249832960,
+    "free_RAM_bytes": 272986443776,
+    "maximum_RSS_bytes": 68719476736,
+    "minimum_free_RAM_bytes": 34359738368,
+    "target_PID": 2306433,
+    "status": "owned_worker_within_memory_bound"
+  },
+  "checked": 1792841457.654486,
+  "scope": "Startup/resource accounting only; geometry not yet qualified"
+}

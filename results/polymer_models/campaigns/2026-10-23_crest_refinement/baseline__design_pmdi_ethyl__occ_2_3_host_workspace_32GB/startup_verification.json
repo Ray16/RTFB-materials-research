@@ -1,0 +1,74 @@
+{
+  "pid": 2772780,
+  "CPU_affinity": [
+    5,
+    21
+  ],
+  "RSS_bytes": 164311150592,
+  "caps": {
+    "OMP_NUM_THREADS": "2",
+    "OMP_THREAD_LIMIT": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2",
+    "XTB_THREADS": "2",
+    "CUDA_VISIBLE_DEVICES": "0"
+  },
+  "command": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/host_guard",
+    "--maximum-rss-gib",
+    "283",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_host_workspace.py",
+    "pilot",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB"
+  ],
+  "checked": 1792841127.2261393,
+  "host": "lambda2",
+  "process_start": "1364154738",
+  "GPU_residents": "2772780, GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074, 23896 MiB\n2306433, GPU-099acaa2-a585-2324-846e-c57f056f80a7, 22528 MiB\n",
+  "status": "actual_139_atom_reference_point_started_final_energy_and_gradient_pending",
+  "shape_inventory": {
+    "status": "energy_gradient_resource_pilot_running",
+    "host": "lambda2",
+    "pid": 2772780,
+    "process_start": "1364154738",
+    "CPU_affinity": [
+      5,
+      21
+    ],
+    "GPU": "0",
+    "started": 1792840927.7571244,
+    "free_energy_computed": false,
+    "optimized_geometry_qualified": false,
+    "native_Hessian_qualified": false,
+    "synthesis_admission": false,
+    "DF_tensor_shapes": [
+      {
+        "shape": [
+          7139,
+          2857371
+        ],
+        "bytes": 163190172552
+      },
+      {
+        "shape": [
+          3018,
+          2834461
+        ],
+        "bytes": 68435226384
+      }
+    ],
+    "host_required_bytes": 303720282499,
+    "available_host_RAM_bytes": 509565796352
+  },
+  "new_free_energy_claimed": false
+}

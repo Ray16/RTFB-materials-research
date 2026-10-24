@@ -71,6 +71,22 @@
       "location": "Example 19, printed page 10; generic scaffold on printed page 3",
       "evidence": "Reports isolated mono-N-ethyl/NH pyromellitic diimide with an NMR assignment.",
       "limit": "Precursor access only; neither exact Merrifield grafting nor current availability or independent replication established."
+    },
+    {
+      "id": "pmdi_N_alkylation_Hamilton_1998",
+      "url": "https://doi.org/10.1071/C97214",
+      "publisher_url": "https://connectsci.au/ch/article-abstract/51/5/441/146332/N-Alkylation-of-Pyromellitic-Diimide-Solid-State",
+      "doi": "10.1071/C97214",
+      "evidence": "Molecular PMDI N-alkylation with CsF; N,N-diethyl product characterized in a donor-acceptor cocrystal.",
+      "evidence_scope": "Publisher abstract and title; full experimental text not accessed",
+      "support": "Molecular PMDI reaction class",
+      "conditions": {
+        "base": "CsF",
+        "solvent": null,
+        "temperature": null,
+        "electrophile_scope_extracted": false
+      },
+      "limit": "Does not demonstrate the mono-N-ethyl/benzyl chloride pair, DBU/MeCN conditions, crosslinked beads, exact selectivity or retained electrochemical performance."
     }
   ],
   "candidates": {
@@ -105,9 +121,10 @@
       },
       "source_urls": [
         "https://pubs.rsc.org/en/content/articlehtml/2019/ra/c9ra01131e",
-        "https://patents.google.com/patent/EP0010440B1/en"
+        "https://patents.google.com/patent/EP0010440B1/en",
+        "https://doi.org/10.1071/C97214"
       ],
-      "evidence_scope": "Exact precursor-access report plus an imide/soluble-polymer attachment analogue; MeCN bead attachment remains proposed.",
+      "evidence_scope": "Exact precursor-access report, molecular PMDI N-alkylation and imide/soluble-polymer attachment analogues; DBU/MeCN bead attachment remains proposed.",
       "exact_support_demonstration": false,
       "source_class": "exact_precursor_report_and_family_attachment_analogue",
       "candidate_route_status": "hold",
@@ -119,7 +136,12 @@
       "source_identity_review": "results/reviews/2026-10-22/end_to_end_selection/identity.json",
       "synthesis_admission": false,
       "precursor_access_evidence_scope": "Primary patent report; no independent preparation or raw-spectrum reanalysis.",
-      "precursor_access_review": "results/reviews/2026-10-23/pmdi_precursor_access/summary.json"
+      "precursor_access_review": "results/reviews/2026-10-23/pmdi_precursor_access/summary.json",
+      "attachment_class_sources": [
+        "pmdi_N_alkylation_Hamilton_1998",
+        "phthalimide_polystyrene_2019"
+      ],
+      "attachment_class_evidence_review": "results/reviews/2026-10-24/pmdi_alkylation_context/summary.json"
     },
     "design_ndi_ethyl": {
       "route_binding": {

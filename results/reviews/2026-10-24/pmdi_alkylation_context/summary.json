@@ -1,0 +1,50 @@
+{
+  "status": "primary_reaction_class_context_verified_exact_route_remains_hold",
+  "checked": 1792841111.1582112,
+  "candidate_id": "design_pmdi_ethyl",
+  "source": {
+    "id": "pmdi_N_alkylation_Hamilton_1998",
+    "url": "https://doi.org/10.1071/C97214",
+    "publisher_url": "https://connectsci.au/ch/article-abstract/51/5/441/146332/N-Alkylation-of-Pyromellitic-Diimide-Solid-State",
+    "doi": "10.1071/C97214",
+    "evidence": "Molecular PMDI N-alkylation with CsF; N,N-diethyl product characterized in a donor-acceptor cocrystal.",
+    "evidence_scope": "Publisher abstract and title; full experimental text not accessed",
+    "support": "Molecular PMDI reaction class",
+    "conditions": {
+      "base": "CsF",
+      "solvent": null,
+      "temperature": null,
+      "electrophile_scope_extracted": false
+    },
+    "limit": "Does not demonstrate the mono-N-ethyl/benzyl chloride pair, DBU/MeCN conditions, crosslinked beads, exact selectivity or retained electrochemical performance."
+  },
+  "metadata_snapshot": "results/reviews/2026-10-24/pmdi_alkylation_context/crossref.json",
+  "metadata_sha256": "7f7c4ba265830b22409927517a77eb43dd41e8682f1db5c5d1ea98ca954de2aa",
+  "route_registry_before_sha256": "9cc47befc9d8c3dcf1037073a7ffa5c6e0cdd27299a4209a308771e1c24a3668",
+  "route_registry_after_sha256": "fdee5508f3e254237e6112389109045e1bfa741d304ee24a9e18d7d487034569",
+  "full_experimental_procedures_accessed": false,
+  "attachment_selectivity_pass_added": false,
+  "redox_core_retention_pass_added": false,
+  "scientific_values_changed": false,
+  "route_gate_rows_checked": 75,
+  "route_gate_decisions_unchanged": true,
+  "exact_route_holds": [
+    {
+      "id": "design_pmdi_ethyl",
+      "missing_route_evidence": [
+        "attachment_selectivity_reviewed",
+        "redox_core_retention_reviewed"
+      ],
+      "route_status": "hold"
+    },
+    {
+      "id": "design_ndi_ethyl",
+      "missing_route_evidence": [
+        "exact_precursor_access_reviewed",
+        "attachment_selectivity_reviewed",
+        "redox_core_retention_reviewed"
+      ],
+      "route_status": "hold"
+    }
+  ]
+}

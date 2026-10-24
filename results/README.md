@@ -5,6 +5,8 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 
 The [independent exact-PMDI review](reviews/2026-10-24/pmdi_site3_native/README.md) verifies the site-3 native free-energy component. The matched occupancy cycle and broader conformer convergence remain incomplete. The [separate geometry/energy execution branch](validation/pmdi_split_execution_2026-10-24/README.md) has a passed 139-atom V100 geometry reference point, an actual full optimizer start and a running CPU active-energy reference pilot. These stages preserve their own checkpoints and qualification gates; they do not admit a full-axis candidate.
 
+The [full 139-atom V100 hybrid-energy reference point](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/README.md) is running alongside the separately checked geometry stage. A guarded joint host-memory budget permits this overlap. Final point equivalence, optimized electronic energy and native G remain separate qualifications.
+
 | Result | Main entry | Current data |
 | --- | --- | --- |
 | Grafting thermochemistry: 75 reaction models | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |
@@ -22,6 +24,8 @@ The [independent exact-PMDI review](reviews/2026-10-24/pmdi_site3_native/README.
 | V100 inference compatibility and loader behavior | [V100 guide](validation/uma_v100_2026-10-24/README.md) | [Current status](validation/uma_v100_2026-10-24/summary.json) · [Unaltered comparison](validation/uma_v100_2026-10-24/reference_comparison.json) · [Composition diagnostic](validation/uma_v100_2026-10-24/composition_comparison.json) |
 | Streamed V100 solvent-Hessian execution | [Method and running polymer recovery](validation/streamed_PCM_2026-10-24/README.md) | [Full spin replays](validation/streamed_PCM_2026-10-24/replay_qualification.json) · [Large-case start](polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/startup_verification.json) |
 | Accepted spacing-control conformers | [Actual molecular geometries](figures/polymer_models/spacing_conformers.pdf) | [Coordinates, contact metrics and source hashes](figures/polymer_models/spacing_conformers.json) |
+
+The [PMDI attachment-class review](reviews/2026-10-24/pmdi_alkylation_context/README.md) adds primary molecular N-alkylation context. It preserves the exact-route hold and all 75 route outcomes.
 
 The current synthesis route is grafting redox groups onto a preformed polymer.
 See [the route definition](../docs/SYNTHESIS_ROUTE.md). The earlier vinyl-monomer

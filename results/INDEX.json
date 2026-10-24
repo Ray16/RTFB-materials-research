@@ -35,7 +35,8 @@
         "selection": "Both BQ designs and AQ-1-O retained as base required; modeled thermodynamics favorable, selectivity/yield untested",
         "selection_review": "results/reviews/2026-10-20/base_required_selection/summary.json"
       },
-      "exact_precursor_access_review": "results/reviews/2026-10-23/pmdi_precursor_access/summary.json"
+      "exact_precursor_access_review": "results/reviews/2026-10-23/pmdi_precursor_access/summary.json",
+      "exact_attachment_class_review": "results/reviews/2026-10-24/pmdi_alkylation_context/summary.json"
     },
     "polymer_models": {
       "guide": "results/polymer_models/README.md",
@@ -164,7 +165,15 @@
       "retired_legacy_sampling_review": "results/validation/conformer_sampling_2026-10-23/legacy_pilot_retirement.json",
       "PMDI_site3_postpilot_continuation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_postpilot/README.md",
       "PMDI_two_graft_workspace": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_workspace_64GB/README.md",
-      "workspace_execution_guide": "docs/POLYMER_WORKSPACE_EXECUTION.md"
+      "workspace_execution_guide": "docs/POLYMER_WORKSPACE_EXECUTION.md",
+      "V100_hybrid_reference_point": {
+        "plan": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/plan.json",
+        "status": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/footprint_qualification.json",
+        "startup": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/startup_verification.json",
+        "guide": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/README.md",
+        "raw_root": "calcs/validation/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB",
+        "calculation_state": "Running 139-atom full/range-separated DF and hybrid energy/reference-point pilot; no admitted optimized energy or G"
+      }
     },
     "candidates": {
       "guide": "results/candidates/README.md",
