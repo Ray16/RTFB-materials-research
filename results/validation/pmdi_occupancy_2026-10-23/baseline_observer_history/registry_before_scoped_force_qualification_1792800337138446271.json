@@ -1,0 +1,40 @@
+{
+  "overrides": {
+    "baseline__design_pmdi_ethyl__occ_2": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_bounded_smd_v2",
+      "reason": "Both spin controls passed; bounded transient workspace and equivalent solvent matrix-vector contraction; original safety budget and scientific model retained"
+    },
+    "baseline__design_pmdi_ethyl__occ_3": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_surface_budget",
+      "hosts": [
+        "lambda1"
+      ],
+      "reason": "Checked electronic parent reused; controlled XC lifetime adapter, measured-cavity host forecast, and separate V100 native-thermal resource/physical pilot"
+    },
+    "baseline__design_pmdi_ethyl__occ_2_3": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume",
+      "hosts": [
+        "lambda13"
+      ],
+      "reason": "Failed XC workspace trajectory preserved; controlled AO-batch lifetime adapter and independently checked evaluated checkpoint used for normal full re-optimization"
+    }
+  },
+  "qualification": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23",
+  "previous_registry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/baseline_observer_history/registry_before_XC_resume_1792797934716190015.json",
+  "updated": 1792797934.7183807,
+  "external_continuations": {
+    "baseline__design_pmdi_ethyl__occ_2": {
+      "campaign": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_workspace_32GB",
+      "stage": "energy",
+      "primary_registry_override": false,
+      "native_target": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_xc_surface_budget",
+      "native_controls": "results/validation/xc_workspace_lifetime_28GiB_2026-10-23",
+      "native_workspace_GiB": 28,
+      "native_minimum_GPU_MiB": 31744,
+      "native_execution_driver": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/xc_workspace_campaign.py",
+      "native_hosts": [
+        "lambda2"
+      ]
+    }
+  }
+}

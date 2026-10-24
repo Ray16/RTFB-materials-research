@@ -25,6 +25,17 @@ from redox.workflows.resources import allocation_guard, cpu_allocation, host_cap
 REFERENCE = ROOT / "results/polymer_models/campaigns/2026-10-23_baseline_two_pose_ensemble_v2"
 WORKSPACE_DRIVER = ROOT / "scripts/pipeline/workspace_polymer_campaign.py"
 XC_WORKSPACE_DRIVER = ROOT / "scripts/pipeline/xc_workspace_campaign.py"
+PREPARATION_AFFINITY = tuple(sorted(os.sched_getaffinity(0)))
+
+
+def preparation_command(command):
+    """Let the preparation CLI allocate separately from the pinned observer.
+
+    The CLI's normal allocation guard then selects/pins its own free CPU. A
+    child confined to its observer parent's one occupied CPU cannot do that.
+    Scientific worker affinities and thread limits are unchanged.
+    """
+    return ["taskset", "--cpu-list", ",".join(map(str, PREPARATION_AFFINITY)), *command]
 
 
 def same_model(parent, replacement):
@@ -91,10 +102,10 @@ def reconcile_external_energy(base):
                     module.prepare_native(source.resolve(), target.resolve(), controls.resolve(),
                         item["native_workspace_GiB"], item["native_minimum_GPU_MiB"])
                 else:
-                    subprocess.run([sys.executable, str(execution_driver), "prepare-native", "--source", str(source.resolve()),
+                    subprocess.run(preparation_command([sys.executable, str(execution_driver), "prepare-native", "--source", str(source.resolve()),
                         "--out", str(target.resolve()), "--controls", str(controls.resolve()),
                         "--workspace-GiB", str(item["native_workspace_GiB"]),
-                        "--minimum-GPU-MiB", str(item["native_minimum_GPU_MiB"])], check=True)
+                        "--minimum-GPU-MiB", str(item["native_minimum_GPU_MiB"])]), check=True)
             original, new = api.read_plan(source), api.read_plan(target)
             same_model(original, new)
             if (new.get("source_campaign") != str(source.resolve())
@@ -215,8 +226,9 @@ def main():
             history = base / "baseline_observer_history"
             history.mkdir(exist_ok=True)
             (history / (str(time.time_ns()) + ".json")).write_bytes(path.read_bytes())
+        deadline = old["deadline"] if path.exists() and args.resume_observer else time.time() + args.max_hours * 3600
         owner = dict(host=socket.gethostname(), pid=os.getpid(), process_start=Path("/proc/self/stat").read_text().rsplit(")", 1)[1].split()[19],
-            started=time.time(), deadline=time.time() + args.max_hours * 3600, source_sha256=sources,
+            started=time.time(), deadline=deadline, source_sha256=sources,
             CPU_affinity=sorted(os.sched_getaffinity(0)), status="observing_submitted_energy_pilots")
         def stop(signum, frame):
             raise KeyboardInterrupt(f"signal {signum}; scientific workers preserved")

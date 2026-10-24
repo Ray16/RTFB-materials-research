@@ -1,7 +1,10 @@
 """The observer must wait for checked energy and preserve handoff identities."""
 import importlib.util
 import json
+import os
 from pathlib import Path
+import subprocess
+import sys
 from types import SimpleNamespace
 
 import pytest
@@ -75,3 +78,21 @@ def test_existing_target_with_changed_quantum_model_is_preserved_and_refused(han
         m.reconcile_external_energy(base)
     assert not calls and json.loads((target / "plan.json").read_text()) == wrong
     assert (base / "baseline_recoveries.json").read_bytes() == before
+
+
+def test_preparation_child_can_escape_observers_occupied_single_CPU(handoff, monkeypatch):
+    m, *_ = handoff
+    original = os.sched_getaffinity(0)
+    if len(original) < 2:
+        pytest.skip("Two permitted CPUs required for the actual affinity regression")
+    cpus = sorted(original)[:2]
+    monkeypatch.setattr(m, "PREPARATION_AFFINITY", tuple(cpus))
+    try:
+        os.sched_setaffinity(0, [cpus[0]])
+        command = m.preparation_command([sys.executable, "-c",
+            "import json,os;print(json.dumps(sorted(os.sched_getaffinity(0))))"])
+        observed = json.loads(subprocess.check_output(command, text=True))
+        assert observed == cpus
+        assert os.sched_getaffinity(0) == {cpus[0]}
+    finally:
+        os.sched_setaffinity(0, original)

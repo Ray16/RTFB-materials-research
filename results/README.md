@@ -138,3 +138,14 @@ The checked v5 archive is now uploaded as an [unpublished draft release](release
 The [rotor-cutoff sensitivity audit](validation/thermal_cutoff_sensitivity_2026-10-23/README.md) independently reconstructs all 39 benchmark endpoints and 87 completed grafting reaction models at three fixed-geometry settings. Its [two-panel figure](figures/validation/thermal_cutoff_sensitivity.pdf) is included in the current SI. Maximum spans are 25.43 mV and 4.46 kJ/mol, with no nominal reaction sign changes; no missing chemical criterion is inferred to pass.
 
 The [XC temporary-lifetime controls and checkpoint check](validation/xc_workspace_lifetime_2026-10-23/README.md) pass both small spin controls and sampled total-energy derivatives at the preserved 139-atom checkpoint. A [fresh full continuation](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume/README.md) is registered for the H100 node; its actual worker start remains separate from preparation. The [site-3 native-thermal pilot](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_surface_budget/README.md) is running on a V100 using the measured-cavity host forecast and unchanged scientific checks. Neither branch supplies a qualified G yet.
+
+The [site-2 PMDI surface audit](validation/pmdi_site2_CDS_surface_2026-10-23/README.md)
+quantitatively attributes its failed coarse-step force comparison to the legacy
+SMD CDS term. Independent replay checks 29 energy/coordinate samples; the
+[diagnostic figure](figures/validation/pmdi_site2_CDS_surface.pdf) separates this
+term from the remaining discrepancy. A [separate full quantum fine-step test](validation/pmdi_site2_fine_force_2026-10-23/README.md)
+has an actual reserved V100 start and durable evaluations. The original state
+remains unaccepted; no native G, conformer convergence or all-axis pass follows
+from the component audit.
+
+The site-2 full quantum fine-step diagnostic has now passed all 15 evaluations and independent replay. A [separate electronic qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_fine_force_qualified/README.md) records the named four-step validation policy and unchanged tolerance while preserving the original failed workflow. Its saved E can now enter the ordinary native-thermal handoff; no native G, ensemble convergence or synthesis admission is inferred.

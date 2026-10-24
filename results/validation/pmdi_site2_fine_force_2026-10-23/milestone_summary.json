@@ -1,0 +1,54 @@
+{
+  "status": "CDS_attribution_and_fine_force_refinement_checked_native_G_pending",
+  "checked_UTC": "2026-10-24T00:13:38Z",
+  "software_tests": {
+    "passed": 948,
+    "skipped": 1,
+    "skip": "Optional cairosvg rendering dependency absent in quantum environment; rendering regression passed separately at preceding milestone"
+  },
+  "scientific_evidence": {
+    "CDS_coordinates": 29,
+    "CDS_derivative_pairs": 14,
+    "full_fine_SCF_evaluations": 15,
+    "maximum_full_force_error_Ha_Bohr": 2.416209516203159e-07,
+    "unchanged_force_error_bound_Ha_Bohr": 1e-06,
+    "original_coarse_failure_preserved": true,
+    "force_validation_policy": "CDS_explained_step_converged_total_force_v1",
+    "native_G_accepted": 0,
+    "all_axis_candidates_admitted": 0
+  },
+  "candidate_components": [
+    {
+      "key": "baseline__design_pmdi_ethyl__occ_2",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_xc_surface_budget",
+      "checked_energy": 1,
+      "checked_native_G": 0,
+      "E_eV": -94100.9107068346,
+      "G_eV": null
+    },
+    {
+      "key": "baseline__design_pmdi_ethyl__occ_3",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_surface_budget",
+      "checked_energy": 1,
+      "checked_native_G": 0,
+      "E_eV": -94100.82627312276,
+      "G_eV": null
+    },
+    {
+      "key": "baseline__design_pmdi_ethyl__occ_2_3",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume",
+      "checked_energy": 0,
+      "checked_native_G": 0,
+      "E_eV": null,
+      "G_eV": null
+    }
+  ],
+  "raw_root": "calcs/validation/pmdi_site2_fine_force_2026-10-23",
+  "limits": [
+    "Separate force-validation refinement; original workflow remains failed",
+    "No new geometry or hybrid energy calculation is claimed by the qualification capsule",
+    "Native Hessian/G, adjacent two-graft energy and broader conformer convergence remain pending",
+    "All required application criteria must pass; no full-axis candidate is admitted",
+    "Current manuscript evidence epoch is unchanged; this follow-up is explicitly outside it"
+  ]
+}

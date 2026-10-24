@@ -1,0 +1,82 @@
+{
+  "status": "fine_step_diagnostic_independently_reviewed",
+  "checked": 1792800118.9600697,
+  "diagnostic_criteria_passed": true,
+  "baseline_energy_spread_Ha": 1.8189894035458565e-12,
+  "maximum_repeated_gradient_difference_Ha_Bohr": 2.8922604589087797e-10,
+  "checks": [
+    {
+      "atom": 29,
+      "axis": 1,
+      "step_Bohr": 0.0001,
+      "numeric": 5.5697455536574125e-05,
+      "analytic": 5.568181918842621e-05,
+      "error_Ha_Bohr": 1.563634814791444e-08
+    },
+    {
+      "atom": 29,
+      "axis": 1,
+      "step_Bohr": 5e-05,
+      "numeric": 5.577931005973369e-05,
+      "analytic": 5.568181918842621e-05,
+      "error_Ha_Bohr": 9.749087130747798e-08
+    },
+    {
+      "atom": 29,
+      "axis": 1,
+      "step_Bohr": 1e-05,
+      "numeric": 5.56610757485032e-05,
+      "analytic": 5.568181918842621e-05,
+      "error_Ha_Bohr": 2.0743439923009467e-08
+    },
+    {
+      "atom": 100,
+      "axis": 1,
+      "step_Bohr": 0.0001,
+      "numeric": -5.497440724866465e-05,
+      "analytic": -5.5055656916173714e-05,
+      "error_Ha_Bohr": 8.124966750906683e-08
+    },
+    {
+      "atom": 100,
+      "axis": 1,
+      "step_Bohr": 5e-05,
+      "numeric": -5.50835466128774e-05,
+      "analytic": -5.5055656916173714e-05,
+      "error_Ha_Bohr": 2.788969670368456e-08
+    },
+    {
+      "atom": 100,
+      "axis": 1,
+      "step_Bohr": 1e-05,
+      "numeric": -5.529727786779403e-05,
+      "analytic": -5.5055656916173714e-05,
+      "error_Ha_Bohr": 2.416209516203159e-07
+    }
+  ],
+  "finest_pair_checks": [
+    {
+      "atom": 29,
+      "axis": 1,
+      "difference_Ha_Bohr": 1.1823431123048745e-07
+    },
+    {
+      "atom": 100,
+      "axis": 1,
+      "difference_Ha_Bohr": 2.1373125491663136e-07
+    }
+  ],
+  "maximum_total_derivative_error_Ha_Bohr": 2.416209516203159e-07,
+  "maximum_finest_pair_difference_Ha_Bohr": 2.1373125491663136e-07,
+  "derivative_criteria_passed": true,
+  "observed_peak_GPU_MiB": 19792,
+  "SCF_evaluations": 15,
+  "production_admission_changed": false,
+  "original_coarse_check_replaced": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_site2_fine_force_2026-10-23/plan.json": "69c56305a10b4891f7a5a63555d2acf466a7edcf506564a67699109b7ee092e5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_site2_fine_force_2026-10-23/status.json": "212542802ec9a2501b7423058c8bdd3f9df8a15333a5b679eabee1ce4c1b78d4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_polymer_gradient_profile.py": "0c269b133aa88abefce90491b1e51d3246f08a77cfa3996db0c955c2f08aafad"
+  },
+  "scope": "Fine-step derivative convergence only; original state, native Hessian, G and candidate decision remain unaccepted"
+}

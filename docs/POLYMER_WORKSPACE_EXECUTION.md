@@ -80,3 +80,24 @@ from an external continuation. It only adopts a native target after exact-task,
 model and completed-parent checks pass. Existing live/unresolved claims suppress
 duplicate workers. Source-pin checks remain active for both drivers and the
 observer. Running producers must not be edited to retrofit a recovery.
+
+## Explained coarse-step force failures
+
+`qualify_saved_polymer_energy.py` creates a separate, source-bound energy capsule only when the coarse discrepancy is quantitatively attributed to the same CDS energy term and a predeclared independent full-quantum refinement passes. Both original components require four accepted displacements (0.0005, 0.0001, 0.00005 and 0.00001 bohr), with unchanged 1e-6 Ha/bohr error tolerance. Baseline repeatability and finest-step consistency add checks. The original failed 0.001-bohr result is retained explicitly. Changed geometry, unexplained residuals, missing coverage or failed fine checks cannot be rescued by this procedure.
+
+The capsule changes the force-validation procedure, not the saved geometry or electronic Hamiltonian. Its receipt names this policy; it makes no Hessian-minimum or G claim. Native thermochemistry retains the existing separate physical gates and output storage. Historical primary evidence is unchanged.
+
+Preparation subprocesses recover the observer's initial permitted CPU mask before
+their normal allocation guard selects a separate free CPU. This avoids trapping
+the child on its pinned parent's occupied CPU; scientific workers keep their
+own fixed allocations. Resuming a candidate observer retains its recorded
+finite deadline exactly, rather than extending the observation window.
+
+For an imported energy receipt, run
+`materialize_imported_energy_parent.py NATIVE_CAMPAIGN` after preparation to make
+the native report's canonical parent path resolvable. It copies the already
+checked report byte-for-byte, refuses conflicting destinations, retains the
+original receipt/source and records both paths and hashes. It changes no plan,
+scientific result or running worker. Both current single-site native campaigns
+have these checked aliases. Integrating this step into the shared preparation
+driver remains deferred while that producer is source-pinned by live native jobs.
