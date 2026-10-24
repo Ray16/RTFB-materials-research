@@ -16,7 +16,7 @@ The [independent exact-PMDI review](reviews/2026-10-24/pmdi_site3_native/README.
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
-| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-23_deployment_revision/manifest.json) |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-24_spatial_revision/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 | V100 inference compatibility and loader behavior | [V100 guide](validation/uma_v100_2026-10-24/README.md) | [Current status](validation/uma_v100_2026-10-24/summary.json) · [Unaltered comparison](validation/uma_v100_2026-10-24/reference_comparison.json) · [Composition diagnostic](validation/uma_v100_2026-10-24/composition_comparison.json) |
@@ -111,10 +111,10 @@ The [exact PMDI candidate follow-up](validation/pmdi_occupancy_2026-10-23/README
 The [segment-deformation audit](reviews/2026-10-23/segment_deformation_audit_v2/README.md) reconstructs all three small totals and checks actual relaxation. The [individual-term figure](figures/polymer_models/segment_deformation_components.pdf) shows opposing fragment contributions in two pairs. These are signed differences from a sampled monomer reference, rather than positive-definite strain penalties.
 
 
-The October 23 manuscript revision adds conjunctive admission across all required
+The current manuscript includes conjunctive admission across all required
 axes, an exact PMDI precursor/route/capacity assessment and all twelve inherited
 phthalimide native free energies in a finite two-pose partition. The checked
-paper has 15 pages, including its TOC page, and the SI 13. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
+paper has 17 pages, including its TOC page, and the SI 13. The [compact PMDI construction](figures/polymer_models/pmdi_occupancy_construction_compact.pdf) preserves the
 prepared graph while making chemical labels legible at manuscript size. No full
 material candidate is admitted; broader sampling and exact PMDI occupancy
 calculations remain separate work.

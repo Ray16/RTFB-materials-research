@@ -1,0 +1,26 @@
+{
+  "host": "lambda2",
+  "pid": 2485090,
+  "process_start": "1363124162",
+  "CPU_affinity": [
+    21
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "21",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/.venv-figures/bin/python",
+    "scripts/pipeline/update_verified_slides.py",
+    "--out",
+    "results/reviews/2026-10-24/polymer_spatial_slides"
+  ],
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 22.0029296875,
+    "available_RAM_bytes": 443830996992,
+    "minimum_RAM_GiB": 8
+  },
+  "started": 1792830621.6473322,
+  "returncode": 0,
+  "finished": 1792830623.7473495
+}

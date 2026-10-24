@@ -1,0 +1,19 @@
+[
+  {
+    "label": "two_CPU_affinity",
+    "returncode": 0,
+    "CPU_affinity": [
+      21,
+      22
+    ],
+    "test": "tests/test_candidate_native_handoff.py::test_preparation_child_can_escape_observers_occupied_single_CPU"
+  },
+  {
+    "label": "figure_dependency",
+    "returncode": 0,
+    "CPU_affinity": [
+      21
+    ],
+    "test": "tests/test_core_topology_plate.py::test_withdrawn_potential_is_blank_in_graph_plate_and_comparison"
+  }
+]

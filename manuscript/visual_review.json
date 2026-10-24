@@ -1,9 +1,9 @@
 {
-  "checked_UTC": "2026-10-24T03:30:27Z",
+  "checked_UTC": "2026-10-24T09:35:45Z",
   "review_type": "assistant rendered-page inspection separate from compiler report",
   "documents": {
-    "manuscript": "b7c5a52fa5de55f45959f3967bd7bbea22d67ed733dd605b957e1da1d6b54fe2",
-    "supporting_information": "9de983ac6572416c9754709ad57a255c1a509d870486c9f7ec348cd20be6ec41"
+    "manuscript": "fb906b39971017f23597a70c54ca7ef60c705c41eaf0607d1c72e8a25d588e0e",
+    "supporting_information": "21b291b6fa16f8dfc9ea9d9e08a8214d57b2f12835b719d13c1846952730ac13"
   },
   "contact_sheets_reviewed": {
     "manuscript": [
@@ -21,7 +21,9 @@
       12,
       13,
       14,
-      15
+      15,
+      16,
+      17
     ],
     "supporting_information": [
       1,
@@ -41,24 +43,23 @@
   },
   "detail_pages_reviewed": {
     "manuscript": [
+      3,
       11
     ],
-    "supporting_information": [
-      7,
-      12
-    ]
+    "supporting_information": []
   },
   "findings": [
-    "All final main/SI pages inspected in rendered contact sheets; no visible clipping, figure overlap or broken captions.",
-    "The abstract, introduction and conclusions present the chemical question and quantitative findings; editorial completion notes are absent from the conclusions and SI.",
-    "Main page 11 states the separately tested compatible deployment and retains the unresolved public-data DOI.",
-    "SI page 7 retains finite-conformer limitations as scientific prose; SI page 12 gives the fresh-deployment method, tolerances and scope.",
-    "The numerical snapshot incorporates checked deployment evidence while retaining all earlier scientific values and exclusions."
+    "All final main and SI pages inspected in rendered contact sheets; no visible clipping, figure overlap or broken captions.",
+    "Main Figure 6 preserves open-backbone connectivity, occupied-site labels and proper coordinate views; contact distances and within-graph G differences remain readable.",
+    "Discussion follows the spatial figure and distinguishes whole-chain conformer differences, conditional grafting and uncomputed electronic coupling.",
+    "SI page 7 specifies atom mapping, centroid/plane definitions, view handedness and the finite two-conformer comparison.",
+    "No running resource point or single PMDI component is presented as a complete candidate cycle.",
+    "Final Methods page states the inspected default only_dfj=False and Coulomb/exchange fitting; the protocol and numerical values are unchanged."
   ],
   "remaining_submission_items": [
-    "Accepted exact-candidate occupancy and broader conformer convergence",
+    "Complete exact-candidate occupancy cycle and broader conformer/configuration convergence",
     "Exact-route selectivity/core retention and material-level evidence",
-    "Public raw-data deposition, general path portability and final author/deposition metadata"
+    "Public raw-data deposition, broader portability and final author/deposition metadata"
   ],
-  "build_sha256": "0c241e91b787ab935564d307c6d0a008fef5bb9b1c0b259c867cc04ea4824929"
+  "build_sha256": "70827545de2834df3bc30bfb9299589d2580f8cd846f0898880944fbba0668e3"
 }

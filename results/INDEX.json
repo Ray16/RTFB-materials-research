@@ -317,10 +317,10 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-23_thermal_cutoff_revision/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-24_spatial_revision/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "15-page main including TOC and 12-page SI; all-axis admission, exact PMDI pending decision, finite phthalimide partitions and fixed-geometry rotor-cutoff sensitivities. Broader sampling, PMDI occupancy, public raw-state release and full GPU restoration remain open.",
+      "scope": "17-page main including TOC and 13-page SI; actual accepted spatial controls and finite conformer G differences. Matched exact PMDI cycle, broader convergence, route/material evidence and public raw-state deposition remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
@@ -491,6 +491,21 @@
       "raw_root": "results/validation/cpu_pcm_memory_2026-10-24",
       "status": "two_spin_multitile_matrix_controls_passed_large_resource_equivalence_pending",
       "scope": "Only PCM memory setting differs; no large energy or native G supplied by matrix controls"
+    },
+    "source_current_candidate_refresh": {
+      "current": "results/candidates/current.json",
+      "review": "results/reviews/2026-10-24/candidate_source_refresh/promotion.json",
+      "source_snapshot": "results/reviews/2026-10-24/candidate_source_refresh/latest.json",
+      "raw_root": "calcs/dft",
+      "status": "628_arithmetic_checks_zero_discrepancies_candidate_rows_unchanged",
+      "scope": "Source inventory and current pointers refreshed; no new quantum calculation or eligibility"
+    },
+    "checked_research_slides": {
+      "current": "slides/current.json",
+      "pdf": "slides/redox_workflow.pdf",
+      "status": "73_pages_checked_16_main_57_backup",
+      "source_snapshot": "manuscript/evidence/2026-10-24_spatial_revision/manifest.json",
+      "scope": "Frozen spatial-control example added; candidate values unchanged"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

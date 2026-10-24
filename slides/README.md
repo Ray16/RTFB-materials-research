@@ -4,8 +4,8 @@ All result categories: [results index](../results/README.md).
 
 Open [redox_workflow.pdf](redox_workflow.pdf).
 
-The first 15 slides present the background, post-grafting route, computational
-workflow, method, key candidate results and synthesis implications. Detailed
+The main story presents the background, post-grafting route, computational
+workflow, method, key candidate results, polymer controls and synthesis implications. Detailed
 methods, validation tables, supplementary molecular drawings and historical
 comparisons follow the **Backup** divider.
 
@@ -42,4 +42,10 @@ The checked [figure](../results/figures/validation/retrospective_redox_benchmark
 retains all admitted outliers; the fixed panel is complete. Earlier validation subsets
 in Backup are historical snapshots.
 
-Two current result slides use the frozen [22 October manuscript evidence](../manuscript/evidence/2026-10-22/manifest.json): all six selected native spacing free energies, the two conditional cycles, and the scoped external DBU capture-term discrepancy. They preserve the earlier source epochs.
+The polymer slides include all twelve finite-baseline native G values and their
+two-pose partitions. The [24 October spatial evidence](../manuscript/evidence/2026-10-24_spatial_revision/manifest.json)
+adds a one-spacer example with both close and separated cores. Its 7.1 kJ/mol
+within-graph G difference includes the whole chain and solvent. Broader
+convergence, isolated motif binding and electronic coupling remain unqualified.
+The quantitative DBU capture-term discrepancy retains its separate scope and
+earlier source evidence.

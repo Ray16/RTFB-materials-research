@@ -98,7 +98,7 @@ optimizer.
 |------|--------|:--:|------|
 | 0 | RDKit ETKDGv3 ensemble → FF rank | no | conformer search → best seed |
 | 1 | **UMA** (charge+spin, fairchem) | no | fast gas-phase pre-opt + gas-phase descriptors, all states |
-| 2 | **DFT + SMD(MeCN)** — r2SCAN-D4/def2-SVP(D) opt // ωB97M-V/def2-TZVPD energy (one diffuse basis for every charge state and Fc), RI-J (PySCF / gpu4pyscf) | **yes** | final solvated geometries → λ, RMSD, ΔG, E° |
+| 2 | **DFT + SMD(MeCN)** — r2SCAN-D4/def2-SVP(D) opt // ωB97M-V/def2-TZVPD energy (one diffuse basis for every charge state and Fc), density fitting of Coulomb and hybrid exchange (PySCF / GPU4PySCF) | **yes** | final solvated geometries → λ, RMSD, ΔG, E° |
 
 - Warm-starting Tier 2 from Tier 1 cuts DFT optimization steps sharply.
 - **Scaling tier:** if the library grows, insert **xtb + ALPB(MeCN)** solvated opt between
@@ -183,7 +183,7 @@ the [scientific progress guide](docs/SCIENTIFIC_PROGRESS_2026-10-18.md).
 1. `src/redox/build/`      — decorate the site with redox groups → `library/`
 2. `src/redox/qm/uma.py`    — UMA charge/spin pre-opt of every state → `calcs/uma/`
 3. `src/redox/qm/dft.py`    — DFT+SMD geometry optimization in solvent → `calcs/dft/<id>/<state>/`
-   (RI-J default; optional `--torsion-scan` for floppy species)
+   (density fitting enabled; optional `--torsion-scan` for floppy species)
 4. `src/redox/qm/sp.py`     — single points at the ONE active protocol (`redox.core.protocol`,
    ωB97M-V/def2-TZVPD for every state + Fc) → protocol-addressed `sp/<hash>.json` records
 5. `src/redox/qm/native_thermal.py` — derivative-checked solution thermochemistry,
