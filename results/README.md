@@ -149,3 +149,5 @@ remains unaccepted; no native G, conformer convergence or all-axis pass follows
 from the component audit.
 
 The site-2 full quantum fine-step diagnostic has now passed all 15 evaluations and independent replay. A [separate electronic qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_fine_force_qualified/README.md) records the named four-step validation policy and unchanged tolerance while preserving the original failed workflow. Its saved E can now enter the ordinary native-thermal handoff; no native G, ensemble convergence or synthesis admission is inferred.
+
+The site-3 V100 native pilot has now failed in the analytic PCM Hessian response, with its raw records preserved and no accepted G. A [fresh H100 native qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_H100/README.md) is registered through the existing observer. The separate site-2 native V100 pilot remains active; no large-native hardware qualification is inferred from small spin or fixed-gradient controls.

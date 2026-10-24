@@ -5,7 +5,7 @@ and connectivity checks. The [energy receipt](energy/done/baseline__design_pmdi_
 points to that original report without recomputation or a fabricated thermal
 correction. [plan.json](plan.json) preserves task, model, geometry and source hashes.
 
-A normal native-thermal resource pilot is running on a reserved V100 GPU on
+A normal native-thermal resource pilot was launched on a reserved V100 GPU on
 lambda1 with two disjoint CPU cores and all native thread caps equal to two.
 The checked execution controls are indexed in
 [the control guide](../../../../validation/xc_workspace_lifetime_28GiB_2026-10-23/README.md).
@@ -18,3 +18,5 @@ checks, physical mode checks and nuclear/spin partition reconstruction remain
 required. A resource pilot or checked electronic energy cannot fill the missing
 G field. Broader conformer sampling and candidate route/coupling/accessibility
 requirements remain independent.
+
+The V100 pilot subsequently failed in the analytic PCM Hessian response with a device-memory allocation error. Its checkpoints and failure records are preserved; no G was accepted. A [fresh H100 qualification](../baseline__design_pmdi_ethyl__occ_3_native_xc_H100/README.md) retains the same electronic parent and physical gates in separate storage.

@@ -8,11 +8,11 @@
       ]
     },
     "baseline__design_pmdi_ethyl__occ_3": {
-      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_surface_budget",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_xc_H100",
       "hosts": [
-        "lambda1"
+        "lambda13"
       ],
-      "reason": "Checked electronic parent reused; controlled XC lifetime adapter, measured-cavity host forecast, and separate V100 native-thermal resource/physical pilot"
+      "reason": "V100 native Hessian PCM response exhausted memory; original failure preserved; fresh H100 native resource/physical qualification with unchanged parent and scientific gates"
     },
     "baseline__design_pmdi_ethyl__occ_2_3": {
       "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_xc_checkpoint_resume",
@@ -23,7 +23,7 @@
     }
   },
   "qualification": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23",
-  "previous_registry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/baseline_observer_history/registry_before_native_handoff_1792800579144546082.json",
-  "updated": 1792800579.1466823,
+  "previous_registry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/baseline_observer_history/registry_before_native_H100_1792801056561141684.json",
+  "updated": 1792801056.562689,
   "external_continuations": {}
 }
