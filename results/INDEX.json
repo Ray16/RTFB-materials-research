@@ -189,7 +189,7 @@
         "guide": "results/polymer_models/campaigns/2026-10-24_GPU_electronic/baseline__design_pmdi_ethyl__occ_2_3/README.md",
         "source_manifest": "results/polymer_models/campaigns/2026-10-24_GPU_electronic/baseline__design_pmdi_ethyl__occ_2_3/launch.json",
         "raw_root": "calcs/polymer_models/2026-10-24_GPU_electronic",
-        "scope": "Running canonical optimized-state GPU SP; no native G or matched cycle yet"
+        "scope": "Canonical optimized-state GPU gas/SMD energies complete; native G and matched cycle pending"
       },
       "CREST_V100_inventory": {
         "guide": "results/validation/conformer_inventory_2026-10-24/README.md",
@@ -197,6 +197,14 @@
         "current": "results/reviews/2026-10-24/crest_empty_V100_point/summary.json",
         "raw_root": "calcs/validation/conformer_inventory_2026-10-24",
         "scope": "Final low-level search and bounded fixed-input resource point; DFT re-ranking/native ensemble not complete"
+      },
+      "pair_native_response": {
+        "plan": "results/validation/pmdi_pair_PCM_response_v2_2026-10-24/plan.json",
+        "status": "results/validation/pmdi_pair_PCM_response_v2_2026-10-24/status.json",
+        "source_manifest": "results/validation/pmdi_pair_PCM_response_v2_2026-10-24/launch.json",
+        "raw_root": "calcs/validation/pmdi_pair_PCM_response_v2_2026-10-24",
+        "scope": "SCF baseline preserved; analytic-response contraction allocation failed; no native G or geometry failure inferred",
+        "failure_review": "results/validation/pmdi_pair_PCM_response_v2_2026-10-24/failure_review.json"
       }
     },
     "candidates": {
