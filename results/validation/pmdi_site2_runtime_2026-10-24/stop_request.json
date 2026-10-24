@@ -1,0 +1,38 @@
+{
+  "status": "owned_runtime_stall_stop_requested",
+  "host": "lambda2",
+  "pid": 1816786,
+  "process_start": "1360855639",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/switch_curvature_polymer_campaign.py",
+    "worker",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_switch_curvature",
+    "--stage",
+    "thermal",
+    "--pilot"
+  ],
+  "checked": 1792838791.1402209,
+  "CPU_times": {
+    "user": 8303.97,
+    "system": 22525.74,
+    "children_user": 0.0,
+    "children_system": 0.01,
+    "iowait": 0.0
+  },
+  "RSS_bytes": 67856404480,
+  "last_checkpoint_time": 1792815399.5219636,
+  "last_checkpoint_age_seconds": 23391.618680000305,
+  "GPU_telemetry": "0, 18120, 0",
+  "evidence": "Repeated samples show almost all CPU in kernel mode, no file I/O/page-fault progress, idle GPU and no native outputs after the saved solute Hessian; exact stack inspection denied by OS.",
+  "scientific_minimum_or_geometry_failure_inferred": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_switch_curvature/workspace_execution/baseline__design_pmdi_ethyl__occ_2__pose0_native/solute_component_000.npy": "3d53677bfe5918a122eacdc01d455c7a2985408841d4931567e5b1fdaadeb165",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_switch_curvature/workspace_execution/baseline__design_pmdi_ethyl__occ_2__pose0_native/solute_component_000.json": "224a402874f5037dfd9a527d52ca534c1a2b4429b016941c0998a67b892abccc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_switch_curvature/plan.json": "c9cda30b8857bb30255442f6298fc70f2191de2111b7a7e3a6b48fe18dc634b5"
+  },
+  "checkpoint_qualified_as_full_Hessian": false,
+  "foreign_processes_signaled": false
+}

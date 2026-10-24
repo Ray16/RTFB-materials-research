@@ -20,6 +20,7 @@ The [independent exact-PMDI review](reviews/2026-10-24/pmdi_site3_native/README.
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 | V100 inference compatibility and loader behavior | [V100 guide](validation/uma_v100_2026-10-24/README.md) | [Current status](validation/uma_v100_2026-10-24/summary.json) · [Unaltered comparison](validation/uma_v100_2026-10-24/reference_comparison.json) · [Composition diagnostic](validation/uma_v100_2026-10-24/composition_comparison.json) |
+| Streamed V100 solvent-Hessian execution | [Method and running polymer recovery](validation/streamed_PCM_2026-10-24/README.md) | [Full spin replays](validation/streamed_PCM_2026-10-24/replay_qualification.json) · [Large-case start](polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/startup_verification.json) |
 | Accepted spacing-control conformers | [Actual molecular geometries](figures/polymer_models/spacing_conformers.pdf) | [Coordinates, contact metrics and source hashes](figures/polymer_models/spacing_conformers.json) |
 
 The current synthesis route is grafting redox groups onto a preformed polymer.

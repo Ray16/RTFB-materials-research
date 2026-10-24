@@ -1,0 +1,43 @@
+{
+  "pid": 1831594,
+  "CPU_affinity": [
+    2,
+    3
+  ],
+  "RSS_GiB": 1.0533409118652344,
+  "status": "actual_scientific_start_verified_not_native_G_qualification",
+  "caps": {
+    "OMP_NUM_THREADS": "2",
+    "OMP_THREAD_LIMIT": "2",
+    "MKL_NUM_THREADS": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2",
+    "XTB_THREADS": "2",
+    "CUDA_VISIBLE_DEVICES": "0"
+  },
+  "command": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/host_guard",
+    "--maximum-rss-gib",
+    "80",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/checkpoint_scf_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/SCF_checkpoints",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_streamed_native.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2"
+  ],
+  "host": "lambda1",
+  "checked": 1792840135.9533055,
+  "GPU_residents": "1831594, GPU-54527752-20db-dbfe-f13c-c14b1f7d3716, 14714 MiB\n1829275, GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a, 17724 MiB\n",
+  "source_start": "509026450",
+  "checkpoint_settings": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/SCF_checkpoints/SCF_0000/settings.json"
+}
