@@ -1,0 +1,44 @@
+{
+  "status": "fresh_environment_installed_GPU_qualification_pending",
+  "owner": {
+    "host": "lambda2",
+    "pid": 1896766,
+    "process_start": "1361156501",
+    "CPU_affinity": [
+      19
+    ],
+    "thread_caps": {
+      "OMP_NUM_THREADS": "1",
+      "OMP_THREAD_LIMIT": "1",
+      "MKL_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "XTB_THREADS": "1"
+    }
+  },
+  "started": 1792810945.283215,
+  "prefix": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment",
+  "source_checkout": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source",
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 18.36181640625,
+    "available_RAM_bytes": 455320268800,
+    "minimum_RAM_GiB": 8
+  },
+  "original_environment_modified": false,
+  "GPU_calculation_performed": false,
+  "restoration_producer_sha256": "b3b1a0f5e912c06b5f1a49ca42ac6cae9dabc8ecb971725504c6fdc14a1c46df",
+  "source_commit": "67be41b058e76655384f2579bb8cba69707e638c",
+  "source_archive_sha256": "cfdb49fbb6ebceb776272e646df6775d62ccebbdc0d0ed6ceca5fc1dd478d42b",
+  "pip_lock_sha256": "8c3d455be3877144c7b837b2de99ee91f53da19bf2630558174b0907c0e5f0e7",
+  "recorded_pip_lock_sha256": "978d22842c3f619726b8556b2ddf9698200e8fe64e2d89384283005dcb6390cc",
+  "selected_pip_lock": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/selected-pip.lock.txt",
+  "selected_lock_differs_from_recorded": true,
+  "third_party_distributions": 235,
+  "local_distribution": "redox==0.1.0 from source_commit",
+  "updated": 1792811285.9287798,
+  "libxtb_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+  "artifact_records": 235,
+  "dependency_check_passed": true,
+  "finished": 1792811286.8296912
+}

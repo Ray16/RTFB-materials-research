@@ -1,0 +1,66 @@
+{
+  "host": "lambda2",
+  "gate_pid": 1908546,
+  "gate_process_start": "1361207871",
+  "GPU": 2,
+  "CPU_affinity": [
+    19,
+    20
+  ],
+  "device": {
+    "index": 2,
+    "uuid": "GPU-891d8452-4937-16a3-d9a7-36baf0370c9a",
+    "name": "Tesla V100-SXM2-32GB",
+    "memory_MiB": 32768.0,
+    "compute_capability": "7.0"
+  },
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "19,20",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "2",
+    "--label",
+    "redox-fresh-env-formaldehyde",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONNOUSERSITE=1",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/src",
+    "LD_LIBRARY_PATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/bin/python",
+    "-s",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/gpu_environment_restore_2026-10-23/guards/formaldehyde",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py",
+    "worker",
+    "--restoration",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/quantum_controls",
+    "--case",
+    "formaldehyde"
+  ],
+  "started": 1792811458.7383823,
+  "host_capacity": {
+    "online_cpus": 80,
+    "load_1m": 18.86083984375,
+    "available_RAM_bytes": 455217168384,
+    "minimum_RAM_GiB": 32
+  },
+  "existing_host_promises_bytes": 230781423872,
+  "preflight_sha256": "33841544917b627160e506fe5a842ae01ec930eba5acecf3e412ad83c2693403",
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/launch_restored_quantum.py": "d54d37fa9d00cbefd877ecfc686f2dc8842694453953d5a0887fe6c98c51608a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/watch_gpu_exclusivity.py": "0df107e3c1ffa83a21e629912873f8bcf3df9b98085c1fa3e476e427652ee7b4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py": "5f77620a9b308cbf3c6e98b91f3c0ecf882d19380e7d85d7205c47ae614af7ae"
+  }
+}

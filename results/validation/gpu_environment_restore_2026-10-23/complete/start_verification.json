@@ -1,0 +1,56 @@
+{
+  "checked": 1792811850.5803947,
+  "workers": [
+    {
+      "case": "formaldehyde",
+      "owner": {
+        "host": "lambda2",
+        "pid": 1923222,
+        "process_start": "1361242263",
+        "GPU": 2,
+        "CPU_affinity": [
+          19,
+          20
+        ],
+        "started": 1792811802.7437975,
+        "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py",
+        "foreign_processes_signaled": false,
+        "finished": 1792811840.2176166,
+        "guard_stopped": true
+      },
+      "owner_live": false,
+      "residency": {
+        "checked": 1792811839.6305833,
+        "foreign_resident_PIDs": [],
+        "own_residency_observed": true,
+        "GPU": 2
+      }
+    },
+    {
+      "case": "methyl_radical",
+      "owner": {
+        "host": "lambda2",
+        "pid": 1923331,
+        "process_start": "1361242313",
+        "GPU": 3,
+        "CPU_affinity": [
+          21,
+          22
+        ],
+        "started": 1792811803.2346497,
+        "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py",
+        "foreign_processes_signaled": false,
+        "finished": 1792811840.7873976,
+        "guard_stopped": true
+      },
+      "owner_live": false,
+      "residency": {
+        "checked": 1792811839.7822263,
+        "foreign_resident_PIDs": [],
+        "own_residency_observed": true,
+        "GPU": 3
+      }
+    }
+  ],
+  "complete_quantum_results_not_inferred": true
+}

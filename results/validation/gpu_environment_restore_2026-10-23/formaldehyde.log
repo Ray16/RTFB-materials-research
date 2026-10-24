@@ -1,0 +1,155 @@
+/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py:154: UserWarning: using cupy as the tensor contraction engine.
+  warnings.warn(f'using {contract_engine} as the tensor contraction engine.')
+geometric-optimize called with the following command line:
+/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py worker --restoration /nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/quantum_controls --case formaldehyde
+
+                                        [91m())))))))))))))))/[0m                     
+                                    [91m())))))))))))))))))))))))),[0m                
+                                [91m*)))))))))))))))))))))))))))))))))[0m             
+                        [94m#,[0m    [91m()))))))))/[0m                [91m.)))))))))),[0m          
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m.))))))))*[0m        
+                      [94m*%%%%%%,[0m  [91m))[0m              [93m..[0m              [91m,))))))).[0m      
+                        [94m*%%%%%%,[0m         [93m***************/.[0m        [91m.)))))))[0m     
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m/*********************.[0m       [91m)))))))[0m    
+              [94m.%%%%%%#[0m      [94m*%%%%%%,[0m  [93m*******/,[0m     [93m**********,[0m      [91m.))))))[0m   
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**[0m              [93m********[0m      [91m.))))))[0m  
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m,******[0m      [91m/)))))[0m  
+        [94m%%%%%%[0m      [94m.%%%%%%#[0m      [94m*%%%%%%,[0m    [92m,/////.[0m       [93m******[0m      [91m))))))[0m 
+      [94m#%[0m      [94m%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////,[0m      [93m*****/[0m     [91m,)))))[0m 
+    [94m#%%[0m  [94m%%%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+  [94m#%%%%.[0m      [94m%%%%%#[0m      [94m/%%%%%%*[0m      [94m#%%%%%%[0m   [92m/////)[0m     [93m******[0m      [91m))))),[0m
+    [94m#%%%%##%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+      [94m##[0m     [94m%%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////.[0m      [93m*****/[0m     [91m,)))))[0m 
+        [94m#%%%%#[0m      [94m/%%%%%%/[0m      [94m(%%%%%%[0m      [92m/)/)//[0m       [93m******[0m      [91m))))))[0m 
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m*******[0m      [91m))))))[0m  
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**.[0m             [93m/*******[0m      [91m.))))))[0m  
+              [94m*%%%%%%/[0m      [94m(%%%%%%[0m   [93m********/*..,*/*********[0m       [91m*))))))[0m   
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m*********************/[0m        [91m)))))))[0m    
+                        [94m*%%%%%%,[0m         [93m,**************/[0m         [91m,))))))/[0m     
+                      [94m(%%%%%%[0m   [91m()[0m                              [91m))))))))[0m       
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m,)))))))),[0m        
+                        [94m#,[0m    [91m())))))))))[0m                [91m,)))))))))).[0m          
+                                 [91m()))))))))))))))))))))))))))))))/[0m             
+                                    [91m())))))))))))))))))))))))).[0m                
+                                         [91m())))))))))))))),[0m                     
+
+-=# [1;94m geomeTRIC started. Version: 1.1.1 [0m #=-
+Current date and time: 2026-10-23 22:11:02
+#========================================================#
+#| [92m    Arguments passed to driver run_optimizer():     [0m |#
+#========================================================#
+convergence_dmax          0.0002 
+convergence_drms          0.0001 
+convergence_energy        1e-08 
+convergence_gmax          5e-05 
+convergence_grms          3e-05 
+customengine              <pyscf.geomopt.geometric_solver.PySCFEngine object at 0x7ff893ba29d0> 
+input                     /tmp/tmpoexfgtu9/7be5d357-f587-4bdd-abef-6bcddcc69e24 
+logIni                    /nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/pyscf/geomopt/log.ini 
+maxiter                   120 
+----------------------------------------------------------
+Custom engine selected.
+Bonds will be generated from interatomic distances less than 1.20 times sum of covalent radii
+12 internal coordinates being used (instead of 12 Cartesians)
+Internal coordinate system (atoms numbered from 1):
+Distance 1-2
+Distance 1-3
+Distance 1-4
+Angle 2-1-4
+Angle 3-1-4
+Out-of-Plane 1-2-3-4
+Translation-X 1-4
+Translation-Y 1-4
+Translation-Z 1-4
+Rotation-A 1-4
+Rotation-B 1-4
+Rotation-C 1-4
+<class 'geometric.internal.Distance'> : 3
+<class 'geometric.internal.Angle'> : 2
+<class 'geometric.internal.OutOfPlane'> : 1
+<class 'geometric.internal.TranslationX'> : 1
+<class 'geometric.internal.TranslationY'> : 1
+<class 'geometric.internal.TranslationZ'> : 1
+<class 'geometric.internal.RotationA'> : 1
+<class 'geometric.internal.RotationB'> : 1
+<class 'geometric.internal.RotationC'> : 1
+> ===== Optimization Info: ====
+> Job type: Energy minimization
+> Maximum number of optimization cycles: 120
+> Initial / maximum trust radius (Angstrom): 0.100 / 0.300
+> Convergence Criteria:
+> Will converge when all 5 criteria are reached:
+>  |Delta-E| < 1.00e-08
+>  RMS-Grad  < 3.00e-05
+>  Max-Grad  < 5.00e-05
+>  RMS-Disp  < 1.00e-04
+>  Max-Disp  < 2.00e-04
+> === End Optimization Info ===
+Step    0 : Gradient = 1.066e-01/1.579e-01 (rms/max) Energy = -114.3213189628
+Hessian Eigenvalues: 4.50000e-02 5.00000e-02 5.00000e-02 ... 3.03360e-01 3.66412e-01 5.50214e-01
+Step    1 : Displace = [0m9.199e-02[0m/[0m1.311e-01[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m2.847e-02[0m/[0m4.333e-02[0m (rms/max) E (change) = -114.3492304237 ([0m-2.791e-02[0m) Quality = [0m1.021[0m
+Hessian Eigenvalues: 4.50004e-02 5.00000e-02 5.00000e-02 ... 3.04992e-01 3.64628e-01 5.41287e-01
+Step    2 : Displace = [0m8.250e-02[0m/[0m1.026e-01[0m (rms/max) Trust = 1.414e-01 ([92m+[0m) Grad = [0m5.693e-02[0m/[0m8.133e-02[0m (rms/max) E (change) = -114.3440537072 ([91m+5.177e-03[0m) Quality = [91m-1.051[0m
+[93mRejecting step - quality is lower than -1.0[0m
+Hessian Eigenvalues: 4.50004e-02 5.00000e-02 5.00000e-02 ... 3.04992e-01 3.64628e-01 5.41287e-01
+Step    3 : Displace = [0m3.990e-02[0m/[0m4.958e-02[0m (rms/max) Trust = 4.125e-02 ([1;91mx[0m) Grad = [0m1.705e-02[0m/[0m2.398e-02[0m (rms/max) E (change) = -114.3504627957 ([0m-1.232e-03[0m) Quality = [0m0.329[0m
+Hessian Eigenvalues: 4.50022e-02 5.00000e-02 5.00000e-02 ... 3.47643e-01 4.03489e-01 7.32380e-01
+Step    4 : Displace = [0m1.850e-02[0m/[0m2.101e-02[0m (rms/max) Trust = 4.125e-02 (=) Grad = [0m1.149e-03[0m/[0m1.581e-03[0m (rms/max) E (change) = -114.3511254173 ([0m-6.626e-04[0m) Quality = [0m0.971[0m
+Hessian Eigenvalues: 4.50167e-02 4.99999e-02 5.00000e-02 ... 3.46896e-01 3.93552e-01 7.84291e-01
+Step    5 : Displace = [0m2.050e-03[0m/[0m2.472e-03[0m (rms/max) Trust = 5.833e-02 ([92m+[0m) Grad = [0m5.668e-04[0m/[0m9.511e-04[0m (rms/max) E (change) = -114.3511284135 ([0m-2.996e-06[0m) Quality = [0m0.579[0m
+Hessian Eigenvalues: 4.99644e-02 5.00000e-02 5.00000e-02 ... 3.46240e-01 4.38041e-01 7.81295e-01
+Step    6 : Displace = [0m2.419e-03[0m/[0m3.937e-03[0m (rms/max) Trust = 5.833e-02 (=) Grad = [0m9.370e-04[0m/[0m1.243e-03[0m (rms/max) E (change) = -114.3511264513 ([91m+1.962e-06[0m) Quality = [91m-0.494[0m
+Hessian Eigenvalues: 4.99606e-02 5.00000e-02 5.00000e-02 ... 3.46936e-01 4.06218e-01 7.97576e-01
+Step    7 : Displace = [0m1.226e-03[0m/[0m1.637e-03[0m (rms/max) Trust = 1.209e-03 ([91m-[0m) Grad = [0m2.199e-04[0m/[0m3.716e-04[0m (rms/max) E (change) = -114.3511301791 ([0m-3.728e-06[0m) Quality = [0m0.949[0m
+Hessian Eigenvalues: 4.99605e-02 5.00000e-02 5.00000e-02 ... 3.45485e-01 4.47243e-01 8.60429e-01
+Step    8 : Displace = [0m4.391e-04[0m/[0m6.566e-04[0m (rms/max) Trust = 1.710e-03 ([92m+[0m) Grad = [0m8.570e-05[0m/[0m1.333e-04[0m (rms/max) E (change) = -114.3511303794 ([0m-2.002e-07[0m) Quality = [0m0.706[0m
+Hessian Eigenvalues: 4.96562e-02 5.00000e-02 5.00000e-02 ... 3.47274e-01 5.13208e-01 8.90027e-01
+Step    9 : Displace = [0m1.168e-04[0m/[92m1.385e-04[0m (rms/max) Trust = 1.710e-03 (=) Grad = [92m5.061e-06[0m/[92m6.593e-06[0m (rms/max) E (change) = -114.3511304058 ([0m-2.641e-08[0m) Quality = [0m1.011[0m
+Hessian Eigenvalues: 4.68478e-02 5.00000e-02 5.00000e-02 ... 3.46671e-01 5.38904e-01 8.97349e-01
+Step   10 : Displace = [92m6.017e-06[0m/[92m9.994e-06[0m (rms/max) Trust = 2.419e-03 ([92m+[0m) Grad = [92m5.332e-06[0m/[92m5.906e-06[0m (rms/max) E (change) = -114.3511304076 ([92m-1.852e-09[0m) Quality = [0m1.864[0m
+Hessian Eigenvalues: 4.68478e-02 5.00000e-02 5.00000e-02 ... 3.46671e-01 5.38904e-01 8.97349e-01
+Converged! =D
+
+    #==========================================================================#
+    #| If this code has benefited your research, please support us by citing: |#
+    #|                                                                        |#
+    #| Wang, L.-P.; Song, C.C. (2016) "Geometry optimization made simple with |#
+    #| translation and rotation coordinates", J. Chem, Phys. 144, 214108.     |#
+    #| http://dx.doi.org/10.1063/1.4952956                                    |#
+    #==========================================================================#
+    Time elapsed since start of run_optimizer: 37.956 seconds
+Traceback (most recent call last):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78, in <module>
+    main()
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70, in main
+    runpy.run_path(str(args.program),run_name='__main__')
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py", line 232, in <module>
+    main()
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py", line 227, in main
+    result = worker(args.restoration.resolve(), args.campaign.resolve(), args.case)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py", line 131, in worker
+    module.run_task(campaign, case + '__baseline')
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/scripts/validation/quantum_restart_equivalence.py", line 134, in run_task
+    native.ensure_native_thermal(task['case'],'rest',state_dir=sd,memory_cap_gib=6)
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/src/redox/qm/native_thermal.py", line 298, in ensure_native_thermal
+    ensure_projected_thermal(p,sd/'opt.xyz')
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/src/redox/qm/projected_thermal.py", line 163, in ensure_projected_thermal
+    proof = certificate()
+            ^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/src/redox/qm/projected_thermal.py", line 64, in certificate
+    if sha(ROOT / path) != digest:
+       ^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/src/redox/qm/projected_thermal.py", line 48, in sha
+    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                          ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/pathlib.py", line 1050, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/summary.json'

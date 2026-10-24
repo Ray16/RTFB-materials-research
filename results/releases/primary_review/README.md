@@ -51,3 +51,5 @@ not a public raw-data deposition or DOI. Its numerical epoch remains
 `2026-10-23_all_axes_checked`; current polymer work and subsequent manuscript
 changes are outside that snapshot. Data-reuse terms, author metadata and the
 final publication snapshot remain unresolved.
+
+A [separate fresh compatible quantum deployment](../../validation/gpu_environment_restore_2026-10-23/README.md) is now independently checked for two complete spin controls. It is outside the v5 archive and does not alter that frozen package, create a DOI or establish general platform portability.

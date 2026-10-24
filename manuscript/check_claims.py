@@ -9,6 +9,59 @@ from collections import Counter
 from pathlib import Path
 
 
+def audit_quantum_deployment(load):
+    """Reconstruct deployment comparisons without using a positive status alone."""
+    try:
+        report = load('quantum_environment.json')
+    except FileNotFoundError:
+        return None
+    states = load('quantum_environment_states.json')['states']
+    changes = load('quantum_environment_compatibility.json')['third_party_changes']
+    if (report['status'] != 'fresh_compatible_GPU_deployment_independently_checked'
+            or report['original_environment_modified'] or report['method_packages_changed']
+            or report['full_portability_claimed'] or len(changes) != 14
+            or report['compatible_CUDA_runtime_changes'] != len(changes)
+            or report['libxtb_sha256'] != 'c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853'
+            or any(not r['name'].startswith('nvidia-') or not r['name'].endswith('-cu12')
+                or r['recorded'] == r['replacement'] for r in changes)):
+        raise ValueError('Deployment profile identity or qualification scope changed')
+    expected = {'formaldehyde': 1, 'methyl_radical': 2}
+    if len(states) != 2 or {r['case'] for r in states} != set(expected):
+        raise ValueError('Both deployment spin controls are required')
+    comparisons = {r['case']: r for r in report['controls']}
+    for row in states:
+        case = row['case']
+        old, new = row['original'], row['fresh']
+        if (old['mult'] != expected[case] or new['mult'] != expected[case]
+                or old['symbols'] != new['symbols']
+                or sorted(old['symbols']) != sorted(['C','H','H','O'] if case == 'formaldehyde' else ['C','H','H','H'])
+                or any(r['status'] != 'normal_primary_electronic_and_native_admission_passed' for r in (old, new))):
+            raise ValueError('Deployment control identity/admission changed')
+        for state in (old, new):
+            if (len(state['coordinates_A']) != len(state['symbols'])
+                    or any(len(x) != 3 or not all(math.isfinite(v) for v in x) for x in state['coordinates_A'])
+                    or len(state['thermal']['frequencies_cm']) != 3*len(state['symbols'])-6
+                    or not all(math.isfinite(v) for v in state['thermal']['frequencies_cm'])):
+                raise ValueError('Deployment geometry or mode inventory is incomplete')
+            spin = -8.617333262145e-5 * 298.15 * math.log(state['mult'])
+            G = state['energy']['e_smd_eV'] + state['thermal']['nuclear_by_cutoff_eV']['50'] + spin
+            if not math.isfinite(G) or abs(G - state['G_eV']) > 1e-9:
+                raise ValueError('Deployment free-energy reconstruction failed')
+        errors = dict(energy_eV=max(abs(old['energy'][k]-new['energy'][k]) for k in ('e_smd_eV','e_gas_eV')),
+            free_energy_eV=abs(old['G_eV']-new['G_eV']),
+            frequency_cm=max(abs(a-b) for a,b in zip(sorted(old['thermal']['frequencies_cm']), sorted(new['thermal']['frequencies_cm']))))
+        direct_rms = math.sqrt(sum(sum((a-b)**2 for a,b in zip(x,y))
+            for x,y in zip(old['coordinates_A'],new['coordinates_A'])) / len(old['symbols']))
+        if direct_rms > report['tolerances']['aligned_RMSD_Angstrom']:
+            raise ValueError('Deployment direct-coordinate bound failed')
+        if any(not math.isfinite(v) or v > report['tolerances'][k] for k,v in errors.items()):
+            raise ValueError('Deployment comparison exceeds the declared bounds')
+        if any(abs(v-comparisons[case]['differences'][k]) > 1e-9 for k,v in errors.items()):
+            raise ValueError('Deployment reported comparison does not reconstruct')
+    return dict(controls=2, external_distributions=report['external_distributions'],
+        compatible_CUDA_runtime_changes=len(changes), universal_portability_claimed=False)
+
+
 def audit_reviewer_package(load):
     """Check release coverage against its frozen inventory and replay receipts."""
     try:
@@ -413,6 +466,7 @@ def audit():
     added = audit_decision_followup(load) if (folder / "finite_ensemble.json").exists() else None
     release = audit_reviewer_package(load)
     cutoff = audit_thermal_settings(load)
+    deployment = audit_quantum_deployment(load)
     if cutoff is not None:
         if hashlib.sha256((folder / "thermal_cutoff_sensitivity.json").read_bytes()).hexdigest() != load("thermal_cutoff_review.json")["result_sha256"]:
             raise ValueError("Frozen thermal-cutoff result differs from its independent source review")
@@ -439,6 +493,7 @@ def audit():
                 decision_followup=added,
                 reviewer_package=release,
                 thermal_cutoff_sensitivity=cutoff,
+                quantum_environment=deployment,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

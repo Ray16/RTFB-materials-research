@@ -76,6 +76,12 @@ def main():
         "thermal_cutoff_review.json": "results/validation/thermal_cutoff_sensitivity_2026-10-23/independent_review.json",
         "thermal_cutoff_figure.json": "results/figures/validation/thermal_cutoff_sensitivity_v2.json",
         "review_package_draft.json": "results/releases/primary_review/draft_release.json",
+        "quantum_environment.json": "results/validation/gpu_environment_restore_2026-10-23/checked/summary.json",
+        "quantum_environment_states.json": "results/validation/gpu_environment_restore_2026-10-23/checked/states.json",
+        "quantum_environment_compatibility.json": "results/validation/gpu_environment_restore_2026-10-23/compatibility_plan.json",
+        "quantum_environment_review_source.py": "scripts/validation/publish_quantum_deployment.py",
+        "quantum_environment_install_source.py": "scripts/release/restore_quantum_environment.py",
+        "quantum_environment_certificate_source.py": "scripts/release/certificate_closure.py",
     }
     plots = {
         "benchmark.pdf": "results/figures/validation/retrospective_redox_benchmark.pdf",

@@ -23,7 +23,8 @@ def check_draft_labels(text):
     # pdfLaTeX may hyphenate a required word at a physical line boundary.
     joined = re.sub(r"(?<=[A-Za-z])-\s*\n\s*(?=[A-Za-z])", "", text)
     joined = re.sub(r"\s+", " ", joined)
-    if any(label not in joined for label in ("Working draft", "DBU", "submission requirements")):
+    if (any(label not in joined for label in ("Working draft", "DBU"))
+            or re.search(r"\bready for publication\b", joined, re.IGNORECASE)):
         raise RuntimeError("Draft labels, pending analyses or results absent from built PDF")
 
 

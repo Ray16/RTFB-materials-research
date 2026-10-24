@@ -24,6 +24,31 @@ def test_checked_followup_reconstructs():
     assert result["all_axis_eligible"] == 0
 
 
+def deployment_load(name):
+    return json.loads((ROOT / 'manuscript/evidence/2026-10-23_deployment_revision' / name).read_text())
+
+
+def test_fresh_deployment_claims_reconstruct():
+    assert CLAIMS.audit_quantum_deployment(deployment_load)['controls'] == 2
+
+
+@pytest.mark.parametrize('filename,mutate,error', [
+    ('quantum_environment.json', lambda x: x.update(full_portability_claimed=True), 'qualification scope'),
+    ('quantum_environment_states.json', lambda x: x['states'][0]['fresh'].update(G_eV=0), 'free-energy reconstruction'),
+    ('quantum_environment_states.json', lambda x: x['states'][0]['fresh']['thermal']['frequencies_cm'].pop(), 'mode inventory'),
+    ('quantum_environment_states.json', lambda x: x['states'].pop(), 'Both deployment'),
+    ('quantum_environment_compatibility.json', lambda x: x['third_party_changes'][0].update(name='numpy'), 'qualification scope'),
+])
+def test_fresh_deployment_cannot_be_promoted_or_misbound(filename, mutate, error):
+    def changed(name):
+        value = deployment_load(name)
+        if name == filename:
+            mutate(value)
+        return value
+    with pytest.raises(ValueError, match=error):
+        CLAIMS.audit_quantum_deployment(changed)
+
+
 @pytest.mark.parametrize("filename,mutate,error", [
     ("pmdi_capacity.json", lambda x: x["exact_graphs_at_handle_density_0_6"][1].update(
         two_e_upper_bound_mAh_g=153.9), "Capacity upper bound"),
@@ -53,6 +78,10 @@ def manuscript_builder():
 
 def test_build_accepts_line_wrapped_draft_labels():
     manuscript_builder().check_draft_labels("Working draft\nDBU\nremain sub-\nmission\nrequirements")
+
+
+def test_scientific_conclusion_does_not_need_editorial_task_language():
+    manuscript_builder().check_draft_labels("Working draft\nDBU\nFinite conformer sampling limits material inference.")
 
 
 def test_build_still_requires_pending_labels():

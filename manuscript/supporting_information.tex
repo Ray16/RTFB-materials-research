@@ -62,7 +62,7 @@ Cutoff / cm$^{-1}$ & MAE & RMSE & Bias\\\midrule
 \end{tabular}\end{table}
 For the 67 completed HCl-reference and 20 base-assisted reactions, the largest cutoff span is 4.46 kJ mol$^{-1}$ and no nominal reaction sign changes. At each fixed cutoff, the contribution of a specified base/byproduct model remains identical across its five candidates. Variant reaction values use the exact SI eV-to-molar-energy factor; original source-conversion arithmetic is retained without replacement. Figure~\ref{fig:rotor-sensitivity} displays these ranges. Independent reconstruction from the full archived state sums checks 117 potential evaluations and 261 reaction sums. This analysis does not test missing conformers, ion speciation, electronic-structure accuracy or attachment selectivity.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_thermal_cutoff_revision/thermal_cutoff.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_deployment_revision/thermal_cutoff.pdf}
 \caption{Nuclear rotor-cutoff sensitivity at fixed geometry and electronic structure. Panel a: potential shifts relative to 50 cm$^{-1}$, ordered by decreasing range over the three cutoffs; the dashed line denotes the primary convention. Panel b: 67 HCl-reference and ten DBU/ten DIPEA reaction-model ranges; horizontal marks are medians. Shared components make reaction values correlated. The ranges are settings scenarios, not confidence or candidate prediction intervals.}
 \label{fig:rotor-sensitivity}
 \end{figure}
@@ -102,7 +102,7 @@ All eight occupancy graphs at $n=5,h=3$ reproduce the analytic masses. Positiona
 
 Three exact PMDI inputs, occupied at sites 2, 3 or both 2 and 3, contain 115, 115 and 139 atoms, respectively. They preserve the open ten-carbon backbone, two plain-styrene padding units and any residual benzyl chlorides (Figure~\ref{fig:pmdiconstruction}). Initial structures use seed 20261023, 32 distance-geometry embeddings and up to 2,000 MMFF steps; the best converged initial structure seeds each subsequent search. Connectivity, declared stereochemistry and geometry sanity are checked before calculation. These prepared inputs and running searches are not accepted minima or occupancy free energies. The common empty reference has the same exact graph and configuration as the phthalimide empty control; no occupied phthalimide energy is substituted for a PMDI energy.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_thermal_cutoff_revision/pmdi_construction.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_deployment_revision/pmdi_construction.pdf}
 \caption{Exact PMDI-ethyl occupancy inputs. Blue highlights the open backbone and purple the diimide cores. Panels show the empty chain, site 2 and sites 2/3; the separate site-3 reference is also prepared. Numbers label repeats. These two-dimensional drawings preserve connectivity and declared stereochemistry, not optimized spatial contact.}
 \label{fig:pmdiconstruction}\end{figure}
 
@@ -115,13 +115,13 @@ For methoxy and trimethyl BQ, this gives $+10.26/+8.66$ \kj\ compared with the a
 Twenty-six of the original twenty-seven electronic oligomer cases currently pass geometry and active-energy checks. The open PMDI trimer has recovered and passed independent force checks. The stacked-start PMDI trimer returned optimizer convergence and saved active energies, but a later GPU-library call terminated abnormally. Separate final-force checks disagree with finite energy differences and remain unresolved, including a subsequent finer-step diagnostic. This case stays outside completed comparisons; no minimum or free energy is inferred from optimizer convergence alone. Construction and XYZ audits verify the intended open-chain topology. A trimer contains six backbone carbons, five backbone C--C bonds and two chain ends, rather than a triangular or cyclic backbone (Figure~\ref{fig:construction}). Proximity of pendant rings does not change that covalent connectivity.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_thermal_cutoff_revision/construction.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_deployment_revision/construction.pdf}
 \caption{Exact finite-polymer construction used in the interaction controls. The highlighted open backbone distinguishes covalent connectivity from spatial contacts among pendant groups. Monomer, dimer and trimer models are dense local scenarios and do not represent an experimentally measured sequence or graft-loading distribution.}
 \label{fig:construction}
 \end{figure}
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_thermal_cutoff_revision/spacing_construction.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_deployment_revision/spacing_construction.pdf}
 \caption{Exact five-repeat phthalimide graphs used in the occupancy cycles. Blue highlights the open ten-carbon backbone. Sites 1 and 5 are plain styrene padding; unoccupied reactive sites retain benzyl chloride. Numbers label repeat positions, and stereobonds retain the declared configuration. These are connectivity drawings, not sampled spatial conformations. Single-occupancy reference graphs are included in the evidence.}
 \label{fig:spacingconstruction}\end{figure}
 For the six-graph spacing control, all twelve electronic conformers qualify. The selected electronic nonadditivities are $-10.98$ and $-14.50$ \kj\ for adjacent and one-spacer grafts, respectively. These refer to a matched empty-backbone minimum within the declared, limited sampling set. It demonstrates why a matched empty-backbone reference is necessary; it does not establish a universal distance trend.
@@ -137,16 +137,16 @@ The primary adjacent and one-spacer finite-set $\Delta\Delta G$ values are $-5.1
 For DBU and separated ions, the finite-partition free energy of grafting onto an empty backbone is $-110.86$ \kj\ at site 3 and $-103.37$ \kj\ at site 4. With site 2 already grafted, the values become $-116.02$ and $-114.76$ \kj. The contact-pair alternatives are $-115.65$ to $-120.82$ \kj\ for site 3 and $-108.17$ to $-119.56$ \kj\ for site 4. Both attachment orders close the same nonadditivity cycle. The base/byproduct contribution cancels from this conditional difference, as does the common empty-chain term when comparing the two spacing cycles. Conformer response in the occupied graphs remains relevant. More favorable subsequent attachment is not automatically desirable when weak unwanted neighboring-site interaction is the objective.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_thermal_cutoff_revision/finite_ensemble.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_deployment_revision/finite_ensemble.pdf}
 \caption{Finite-set phthalimide occupancy control in MeCN at 298.15 K. Panel (a) distinguishes lowest sampled electronic-energy cycles from two-pose free-energy partitions; whiskers vary only the rotor cutoff. Panel (b) shows the configurational lowering within each known two-pose set. Twelve native records pass their checks, but these two-pose sets do not establish converged conformer ensembles or a general spacing trend.}
 \label{fig:conditional}
 \end{figure}
-\pending{Complete broader conformer sampling, multiple backbone configurations, DFT re-ranking and exact-motif occupancy assessment before making polymer-design claims. The failed final stacked-trimer force check remains excluded and is not required as a headline result.}
+The finite conformer sets do not establish convergence with respect to broader sampling or backbone configuration. Consequently, these conditional-cycle values cannot establish a general spacing design rule or the behavior of an exact redox motif. The final stacked-trimer structure is excluded because it failed the final force check.
 
 The intact-segment decomposition is complete for three sampled pairs using six frozen-fragment single-point calculations (Figure~\ref{fig:decomposition}). Its partition separates interactions at the complex geometry from deformation relative to relaxed fragments. The interaction energies are $-55.25$, $-44.30$ and $-50.87$ \kj, with deformation terms $+0.56$, $+0.49$ and $+0.38$ \kj, respectively. A saved-coordinate audit shows 57--93 optimization steps and heavy-atom input-to-final RMSDs of 0.25--0.70 \AA\ for the complexes, so small deformation sums do not imply negligible structural relaxation. Two totals also contain cancellation: the parallel phthalimide fragments contribute $-0.68$ and $+1.24$ \kj, and the PMDI fragments contribute $+1.00$ and $-0.62$ \kj. These signed differences refer to one sampled independently optimized monomer at a distinct geometry level; they are not positive-definite strain penalties. Global isolated-monomer minima and Hessian minima are unestablished. The resulting quantities remain electronic, uncorrected for basis-set superposition error and inclusive of backbone and cap contributions. No electron-transfer rate follows from their magnitude.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_thermal_cutoff_revision/decomposition.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_deployment_revision/decomposition.pdf}
 \caption{Electronic interaction/deformation partition for three intact segment pairs. Frozen fragments retain the complex geometry without bond cutting or new caps. The partition closes the association-energy cycle but is not a pure pendant-core interaction, a counterpoise-corrected energy or an association free energy.}
 \label{fig:decomposition}
 \end{figure}
@@ -165,11 +165,11 @@ A seeded randomized concurrency experiment executes the same 837 exact designs f
 A separate sparse Git checkout and newly installed Python 3.11 CPU environment reproduce the declared 32-recipe / 17-design example with system and user site packages disabled. The project loads from that checkout and scientific dependencies load from the new environment. Serial descriptor replay, exact-route holds and the regenerated conditional-grafting table all match; rendered RGB pixels of the figure are identical. This qualifies a small CPU reproduction using curated scientific data. It does not recompute the underlying quantum energies or qualify the complete CUDA environment.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_thermal_cutoff_revision/cpu_concurrency.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-23_deployment_revision/cpu_concurrency.pdf}
 \caption{Measured CPU descriptor concurrency for the same 837 exact designs. Three randomized repeats per condition retain every result. Ranges are observed minima and maxima, not confidence intervals. Launch, preflight and scorer overhead are included; preparation is separate. Requested workers and workers executing at least one chunk are distinct. This shared-node, small-library experiment does not measure million-molecule chemistry or quantum throughput.}
 \label{fig:concurrency}
 \end{figure}
-\pending{Complete conformer-stage adapters, broader quantum recovery controls and accessible archival packaging. Keep stage-specific throughput separate from scientific accuracy.}
+These throughput measurements apply to the measured descriptor and scheduling stages. They neither quantify full quantum-campaign throughput nor establish recovery for arbitrary flexible-polymer calculations.
 
 
 \subsection{Actual quantum interruption and recovery}
@@ -180,6 +180,11 @@ A locally prepared reviewer package contains 243 thermochemical state records an
 The package represents the preceding numerical evidence epoch, \path{2026-10-23_all_axes_checked}; the subsequent DIPEA source-origin review, thermal-cutoff analysis and TOC artwork are frozen separately in the present manuscript snapshot. An unpublished repository draft now stages the earlier package; downloaded assets match the recorded checksums. Package replay establishes numerical traceability within these scopes, rather than new electronic-structure calculations, experimental accuracy or broader conformer convergence. No public DOI or deposition is claimed. Full GPU installation/restoration, remaining execution-diagnostic records and final deposition metadata remain open.
 
 \Needspace{19\baselineskip}
+\subsection{Fresh quantum-environment reproduction}
+A separate CUDA 12.8 compatibility profile retains the recorded molecular-method packages and xTB build while changing fourteen CUDA runtime distributions to satisfy the exact requirements of Torch 2.8.0+cu128. The historical runtime inventory remains separate. All 235 external distributions were installed into a fresh prefix, the project was installed from an archived source checkout, and the dependency check passed. Retrieved package artifacts carry SHA-256 identities; the conda artifact lock and all certificate backing files are retained. The fresh xTB library is byte-identical to the qualified thermodynamic build.
+
+Formaldehyde (singlet) and methyl radical (doublet) were independently optimized and evaluated with the active electronic-energy, native Hessian and projected-partition procedures in the fresh environment. Both passed the normal physical checks and the predeclared original-versus-fresh comparison bounds: $10^{-5}$ eV for electronic energy, $10^{-4}$ eV for free energy, $10^{-3}$ \AA\ for aligned RMSD and 0.5 cm$^{-1}$ for internal frequencies. A separate replay reconstructed both saved Hessian mode sets and all three rotor-cutoff partitions. Package imports, shared-library locations and the thermodynamic helper interpreter were checked against the fresh prefix; the original environment was not modified. These controls establish reproduction on the tested Linux/CUDA host. They do not establish unrestricted device coverage, eliminate external cluster-reservation configuration or extend polymer conformer validation. The deployment evidence is separate from the earlier cached reviewer-package epoch.
+
 \section{Evidence terminology}
 \begin{table}[H]\centering\small
 \caption{Terms used in evidence files and their interpretation.}

@@ -1,0 +1,121 @@
+/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py:154: UserWarning: using cupy as the tensor contraction engine.
+  warnings.warn(f'using {contract_engine} as the tensor contraction engine.')
+geometric-optimize called with the following command line:
+/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_restored_quantum.py worker --restoration /nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/quantum_controls_complete --case formaldehyde
+
+                                        [91m())))))))))))))))/[0m                     
+                                    [91m())))))))))))))))))))))))),[0m                
+                                [91m*)))))))))))))))))))))))))))))))))[0m             
+                        [94m#,[0m    [91m()))))))))/[0m                [91m.)))))))))),[0m          
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m.))))))))*[0m        
+                      [94m*%%%%%%,[0m  [91m))[0m              [93m..[0m              [91m,))))))).[0m      
+                        [94m*%%%%%%,[0m         [93m***************/.[0m        [91m.)))))))[0m     
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m/*********************.[0m       [91m)))))))[0m    
+              [94m.%%%%%%#[0m      [94m*%%%%%%,[0m  [93m*******/,[0m     [93m**********,[0m      [91m.))))))[0m   
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**[0m              [93m********[0m      [91m.))))))[0m  
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m,******[0m      [91m/)))))[0m  
+        [94m%%%%%%[0m      [94m.%%%%%%#[0m      [94m*%%%%%%,[0m    [92m,/////.[0m       [93m******[0m      [91m))))))[0m 
+      [94m#%[0m      [94m%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////,[0m      [93m*****/[0m     [91m,)))))[0m 
+    [94m#%%[0m  [94m%%%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+  [94m#%%%%.[0m      [94m%%%%%#[0m      [94m/%%%%%%*[0m      [94m#%%%%%%[0m   [92m/////)[0m     [93m******[0m      [91m))))),[0m
+    [94m#%%%%##%[0m  [94m%%%#[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m  [92m///////.[0m     [93m/*****[0m      [91m))))).[0m
+      [94m##[0m     [94m%%%[0m      [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [92m////////.[0m      [93m*****/[0m     [91m,)))))[0m 
+        [94m#%%%%#[0m      [94m/%%%%%%/[0m      [94m(%%%%%%[0m      [92m/)/)//[0m       [93m******[0m      [91m))))))[0m 
+          [94m##[0m      [94m.%%%%%%/[0m      [94m(%%%%%%,[0m                  [93m*******[0m      [91m))))))[0m  
+                [94m.%%%%%%/[0m      [94m*%%%%%%,[0m  [93m**.[0m             [93m/*******[0m      [91m.))))))[0m  
+              [94m*%%%%%%/[0m      [94m(%%%%%%[0m   [93m********/*..,*/*********[0m       [91m*))))))[0m   
+                [94m#%%/[0m      [94m(%%%%%%,[0m    [93m*********************/[0m        [91m)))))))[0m    
+                        [94m*%%%%%%,[0m         [93m,**************/[0m         [91m,))))))/[0m     
+                      [94m(%%%%%%[0m   [91m()[0m                              [91m))))))))[0m       
+                      [94m#%%%%,[0m  [91m())))))[0m                        [91m,)))))))),[0m        
+                        [94m#,[0m    [91m())))))))))[0m                [91m,)))))))))).[0m          
+                                 [91m()))))))))))))))))))))))))))))))/[0m             
+                                    [91m())))))))))))))))))))))))).[0m                
+                                         [91m())))))))))))))),[0m                     
+
+-=# [1;94m geomeTRIC started. Version: 1.1.1 [0m #=-
+Current date and time: 2026-10-23 22:16:44
+#========================================================#
+#| [92m    Arguments passed to driver run_optimizer():     [0m |#
+#========================================================#
+convergence_dmax          0.0002 
+convergence_drms          0.0001 
+convergence_energy        1e-08 
+convergence_gmax          5e-05 
+convergence_grms          3e-05 
+customengine              <pyscf.geomopt.geometric_solver.PySCFEngine object at 0x7fd11e1002d0> 
+input                     /tmp/tmpz715_wkl/2c14f847-75af-4591-8f5b-1440a916cde6 
+logIni                    /nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/pyscf/geomopt/log.ini 
+maxiter                   120 
+----------------------------------------------------------
+Custom engine selected.
+Bonds will be generated from interatomic distances less than 1.20 times sum of covalent radii
+12 internal coordinates being used (instead of 12 Cartesians)
+Internal coordinate system (atoms numbered from 1):
+Distance 1-2
+Distance 1-3
+Distance 1-4
+Angle 2-1-4
+Angle 3-1-4
+Out-of-Plane 1-2-3-4
+Translation-X 1-4
+Translation-Y 1-4
+Translation-Z 1-4
+Rotation-A 1-4
+Rotation-B 1-4
+Rotation-C 1-4
+<class 'geometric.internal.Distance'> : 3
+<class 'geometric.internal.Angle'> : 2
+<class 'geometric.internal.OutOfPlane'> : 1
+<class 'geometric.internal.TranslationX'> : 1
+<class 'geometric.internal.TranslationY'> : 1
+<class 'geometric.internal.TranslationZ'> : 1
+<class 'geometric.internal.RotationA'> : 1
+<class 'geometric.internal.RotationB'> : 1
+<class 'geometric.internal.RotationC'> : 1
+> ===== Optimization Info: ====
+> Job type: Energy minimization
+> Maximum number of optimization cycles: 120
+> Initial / maximum trust radius (Angstrom): 0.100 / 0.300
+> Convergence Criteria:
+> Will converge when all 5 criteria are reached:
+>  |Delta-E| < 1.00e-08
+>  RMS-Grad  < 3.00e-05
+>  Max-Grad  < 5.00e-05
+>  RMS-Disp  < 1.00e-04
+>  Max-Disp  < 2.00e-04
+> === End Optimization Info ===
+Step    0 : Gradient = 1.066e-01/1.579e-01 (rms/max) Energy = -114.3213189628
+Hessian Eigenvalues: 4.50000e-02 5.00000e-02 5.00000e-02 ... 3.03360e-01 3.66412e-01 5.50214e-01
+Step    1 : Displace = [0m9.199e-02[0m/[0m1.311e-01[0m (rms/max) Trust = 1.000e-01 (=) Grad = [0m2.847e-02[0m/[0m4.333e-02[0m (rms/max) E (change) = -114.3492304237 ([0m-2.791e-02[0m) Quality = [0m1.021[0m
+Hessian Eigenvalues: 4.50004e-02 5.00000e-02 5.00000e-02 ... 3.04992e-01 3.64628e-01 5.41287e-01
+Step    2 : Displace = [0m8.250e-02[0m/[0m1.026e-01[0m (rms/max) Trust = 1.414e-01 ([92m+[0m) Grad = [0m5.693e-02[0m/[0m8.133e-02[0m (rms/max) E (change) = -114.3440537072 ([91m+5.177e-03[0m) Quality = [91m-1.051[0m
+[93mRejecting step - quality is lower than -1.0[0m
+Hessian Eigenvalues: 4.50004e-02 5.00000e-02 5.00000e-02 ... 3.04992e-01 3.64628e-01 5.41287e-01
+Step    3 : Displace = [0m3.990e-02[0m/[0m4.958e-02[0m (rms/max) Trust = 4.125e-02 ([1;91mx[0m) Grad = [0m1.705e-02[0m/[0m2.398e-02[0m (rms/max) E (change) = -114.3504627957 ([0m-1.232e-03[0m) Quality = [0m0.329[0m
+Hessian Eigenvalues: 4.50022e-02 5.00000e-02 5.00000e-02 ... 3.47643e-01 4.03489e-01 7.32380e-01
+Step    4 : Displace = [0m1.850e-02[0m/[0m2.101e-02[0m (rms/max) Trust = 4.125e-02 (=) Grad = [0m1.149e-03[0m/[0m1.581e-03[0m (rms/max) E (change) = -114.3511254173 ([0m-6.626e-04[0m) Quality = [0m0.971[0m
+Hessian Eigenvalues: 4.50167e-02 4.99999e-02 5.00000e-02 ... 3.46896e-01 3.93552e-01 7.84291e-01
+Step    5 : Displace = [0m2.050e-03[0m/[0m2.472e-03[0m (rms/max) Trust = 5.833e-02 ([92m+[0m) Grad = [0m5.668e-04[0m/[0m9.511e-04[0m (rms/max) E (change) = -114.3511284135 ([0m-2.996e-06[0m) Quality = [0m0.579[0m
+Hessian Eigenvalues: 4.99644e-02 5.00000e-02 5.00000e-02 ... 3.46240e-01 4.38041e-01 7.81295e-01
+Step    6 : Displace = [0m2.419e-03[0m/[0m3.937e-03[0m (rms/max) Trust = 5.833e-02 (=) Grad = [0m9.370e-04[0m/[0m1.243e-03[0m (rms/max) E (change) = -114.3511264513 ([91m+1.962e-06[0m) Quality = [91m-0.494[0m
+Hessian Eigenvalues: 4.99606e-02 5.00000e-02 5.00000e-02 ... 3.46936e-01 4.06218e-01 7.97576e-01
+Step    7 : Displace = [0m1.226e-03[0m/[0m1.637e-03[0m (rms/max) Trust = 1.209e-03 ([91m-[0m) Grad = [0m2.199e-04[0m/[0m3.716e-04[0m (rms/max) E (change) = -114.3511301791 ([0m-3.728e-06[0m) Quality = [0m0.949[0m
+Hessian Eigenvalues: 4.99605e-02 5.00000e-02 5.00000e-02 ... 3.45485e-01 4.47243e-01 8.60429e-01
+Step    8 : Displace = [0m4.391e-04[0m/[0m6.566e-04[0m (rms/max) Trust = 1.710e-03 ([92m+[0m) Grad = [0m8.570e-05[0m/[0m1.333e-04[0m (rms/max) E (change) = -114.3511303794 ([0m-2.002e-07[0m) Quality = [0m0.706[0m
+Hessian Eigenvalues: 4.96562e-02 5.00000e-02 5.00000e-02 ... 3.47274e-01 5.13208e-01 8.90027e-01
+Step    9 : Displace = [0m1.168e-04[0m/[92m1.385e-04[0m (rms/max) Trust = 1.710e-03 (=) Grad = [92m5.061e-06[0m/[92m6.593e-06[0m (rms/max) E (change) = -114.3511304058 ([0m-2.641e-08[0m) Quality = [0m1.011[0m
+Hessian Eigenvalues: 4.68478e-02 5.00000e-02 5.00000e-02 ... 3.46671e-01 5.38904e-01 8.97349e-01
+Step   10 : Displace = [92m6.017e-06[0m/[92m9.994e-06[0m (rms/max) Trust = 2.419e-03 ([92m+[0m) Grad = [92m5.332e-06[0m/[92m5.906e-06[0m (rms/max) E (change) = -114.3511304076 ([92m-1.852e-09[0m) Quality = [0m1.864[0m
+Hessian Eigenvalues: 4.68478e-02 5.00000e-02 5.00000e-02 ... 3.46671e-01 5.38904e-01 8.97349e-01
+Converged! =D
+
+    #==========================================================================#
+    #| If this code has benefited your research, please support us by citing: |#
+    #|                                                                        |#
+    #| Wang, L.-P.; Song, C.C. (2016) "Geometry optimization made simple with |#
+    #| translation and rotation coordinates", J. Chem, Phys. 144, 214108.     |#
+    #| http://dx.doi.org/10.1063/1.4952956                                    |#
+    #==========================================================================#
+    Time elapsed since start of run_optimizer: 12.177 seconds
+{"checked": 1792811803.1236985, "prefix": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment", "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source", "source_commit": "67be41b058e76655384f2579bb8cba69707e638c", "versions": {"rdkit": {"version": "2026.3.5", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}, "numpy": {"version": "2.2.6", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}, "scipy": {"version": "1.17.1", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}, "ase": {"version": "3.29.0", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}, "geometric": {"version": "1.1.1", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}, "pyscf": {"version": "2.14.0", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}, "gpu4pyscf-cuda12x": {"version": "1.8.1", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}, "torch": {"version": "2.8.0+cu128", "location": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages"}}, "module_origins": {"rdkit": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/rdkit/__init__.py", "numpy": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/numpy/__init__.py", "scipy": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/scipy/__init__.py", "ase": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/ase/__init__.py", "geometric": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/geometric/__init__.py", "pyscf": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/pyscf/__init__.py", "gpu4pyscf": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/gpu4pyscf/__init__.py", "torch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/torch/__init__.py", "cupy": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/python3.11/site-packages/cupy/__init__.py"}, "selected_pip_lock_sha256": "8c3d455be3877144c7b837b2de99ee91f53da19bf2630558174b0907c0e5f0e7", "all_distribution_versions": {"absl-py": "2.5.0", "adjusttext": "1.4.0", "aiohappyeyeballs": "2.7.1", "aiohttp": "3.14.3", "aiohttp-cors": "0.8.1", "aiosignal": "1.4.0", "annotated-doc": "0.0.5", "annotated-types": "0.8.0", "antlr4-python3-runtime": "4.9.3", "anyio": "4.14.2", "argon2-cffi": "25.1.0", "argon2-cffi-bindings": "25.1.0", "arrow": "1.4.0", "ase": "3.29.0", "ase-db-backends": "0.11.0", "asttokens": "3.0.2", "async-lru": "2.3.0", "attrs": "26.1.0", "babel": "2.18.0", "beautifulsoup4": "4.15.0", "bleach": "6.4.0", "certifi": "2026.7.22", "cffi": "2.1.1", "charset-normalizer": "3.5.1", "click": "8.4.2", "cloudpickle": "3.1.2", "clusterscope": "0.0.18", "colorful": "0.5.8", "comm": "0.2.3", "contourpy": "1.3.3", "cryptography": "50.0.0", "cuda-bindings": "13.3.1", "cuda-pathfinder": "1.6.1", "cuda-toolkit": "13.0.3.0", "cupy-cuda12x": "14.1.1", "cutensor-cu12": "2.7.0", "cycler": "0.12.1", "debugpy": "1.8.21", "defusedxml": "0.7.1", "distlib": "0.4.3", "e3nn": "0.6.0", "et-xmlfile": "2.0.0", "executing": "2.2.1", "fairchem-core": "2.21.0", "fastapi": "0.141.1", "fastjsonschema": "2.22.2", "filelock": "3.32.3", "fonttools": "4.63.0", "fqdn": "1.5.1", "frozenlist": "1.8.0", "fsspec": "2026.7.0", "geometric": "1.1.1", "google-api-core": "2.34.0", "google-auth": "2.56.3", "googleapis-common-protos": "1.75.1", "gpu4pyscf-cuda12x": "1.8.1", "gpu4pyscf-libxc-cuda12x": "0.8.1", "graphviz": "0.21", "grpcio": "1.83.0", "h11": "0.16.0", "h5py": "3.16.0", "hf-xet": "1.6.0", "httpcore": "1.0.9", "httptools": "0.8.0", "httpx": "0.28.1", "huggingface-hub": "1.28.0", "hydra-core": "1.3.5", "idna": "3.19", "iniconfig": "2.3.0", "ipykernel": "7.3.0", "ipython": "9.16.1", "ipython-pygments-lexers": "1.1.1", "ipywidgets": "8.1.9", "isoduration": "20.11.0", "jedi": "0.20.0", "jinja2": "3.1.6", "json5": "0.15.0", "jsonpointer": "3.1.1", "jsonschema": "4.26.0", "jsonschema-specifications": "2025.9.1", "jupyter": "1.1.1", "jupyter-builder": "1.2.2", "jupyter-client": "8.9.1", "jupyter-console": "6.6.3", "jupyter-core": "5.9.1", "jupyter-events": "0.12.1", "jupyter-lsp": "2.3.1", "jupyter-server": "2.20.0", "jupyter-server-terminals": "0.5.4", "jupyterlab": "4.6.3", "jupyterlab-pygments": "0.3.0", "jupyterlab-server": "2.28.0", "jupyterlab-widgets": "3.0.17", "kiwisolver": "1.5.0", "lark": "1.3.1", "llvmlite": "0.49.0", "lmdb": "1.7.3", "markdown": "3.10.3", "markupsafe": "3.0.3", "matplotlib": "3.11.1", "matplotlib-inline": "0.2.2", "mistune": "3.3.4", "mmh3": "5.2.1", "monty": "2026.7.16", "mpmath": "1.3.0", "msgpack": "1.2.1", "multidict": "6.7.1", "mypy-extensions": "1.1.0", "nbclient": "0.11.0", "nbconvert": "7.17.1", "nbformat": "5.11.1", "nest-asyncio2": "1.7.2", "networkx": "3.6.1", "notebook": "7.6.2", "notebook-shim": "0.2.4", "numba": "0.67.0", "numpy": "2.2.6", "nvidia-cublas-cu12": "12.8.4.1", "nvidia-cuda-cupti-cu12": "12.8.90", "nvidia-cuda-nvrtc-cu12": "12.8.93", "nvidia-cuda-runtime-cu12": "12.8.90", "nvidia-cudnn-cu12": "9.10.2.21", "nvidia-cufft-cu12": "11.3.3.83", "nvidia-cufile-cu12": "1.13.1.3", "nvidia-curand-cu12": "10.3.9.90", "nvidia-cusolver-cu12": "11.7.3.90", "nvidia-cusparse-cu12": "12.5.8.93", "nvidia-cusparselt-cu12": "0.7.1", "nvidia-nccl-cu12": "2.27.3", "nvidia-nvjitlink-cu12": "12.8.93", "nvidia-nvtx-cu12": "12.8.90", "omegaconf": "2.3.1", "opencensus": "0.11.4", "opencensus-context": "0.1.3", "openpyxl": "3.1.5", "opentelemetry-api": "1.44.0", "opentelemetry-exporter-prometheus": "0.65b0", "opentelemetry-proto": "1.44.0", "opentelemetry-sdk": "1.44.0", "opentelemetry-semantic-conventions": "0.65b0", "opt-einsum": "3.4.0", "opt-einsum-fx": "0.1.4", "orjson": "3.12.0", "overrides": "7.7.0", "pandas": "3.0.5", "pandocfilters": "1.5.1", "parso": "0.8.7", "pdfminer-six": "20260107", "pdfplumber": "0.11.10", "pexpect": "4.9.0", "pillow": "12.3.0", "platformdirs": "4.11.3", "pluggy": "1.6.0", "prometheus-client": "0.26.0", "prompt-toolkit": "3.0.53", "propcache": "0.5.2", "proto-plus": "1.28.3", "protobuf": "7.35.1", "psutil": "7.2.2", "psycopg2-binary": "2.9.12", "ptyprocess": "0.7.0", "pure-eval": "0.2.3", "py-spy": "0.4.2", "pyasn1": "0.6.4", "pyasn1-modules": "0.4.2", "pycparser": "3.0", "pydantic": "2.13.4", "pydantic-core": "2.46.4", "pygments": "2.21.0", "pymysql": "1.2.0", "pyparsing": "3.3.2", "pypdf": "6.18.0", "pypdfium2": "5.13.0", "pyre-extensions": "0.0.32", "pyscf": "2.14.0", "pyscf-dispersion": "1.5.0", "pytest": "9.1.1", "python-dateutil": "2.9.0.post0", "python-discovery": "1.5.2", "python-dotenv": "1.2.3", "python-json-logger": "4.2.0", "pyyaml": "6.0.3", "pyzmq": "27.1.0", "ray": "2.57.0", "ray-haproxy": "2.8.25", "rdkit": "2026.3.5", "redox": "0.1.0", "referencing": "0.37.0", "requests": "2.34.2", "rfc3339-validator": "0.1.4", "rfc3986-validator": "0.1.1", "rfc3987-syntax": "1.1.0", "rpds-py": "2026.6.3", "ruamel-yaml": "0.19.1", "scipy": "1.17.1", "send2trash": "2.1.0", "sentry-sdk": "2.68.0", "setuptools": "80.10.2", "six": "1.17.0", "smart-open": "8.0.1", "soupsieve": "2.9.2", "stack-data": "0.6.3", "starlette": "1.6.0", "submitit": "1.5.4", "sympy": "1.14.0", "tabulate": "0.10.0", "tensorboard": "2.21.0", "tensorboard-data-server": "0.7.2", "terminado": "0.18.1", "tinycss2": "1.5.1", "torch": "2.8.0+cu128", "torchtnt": "0.2.4", "tornado": "6.5.8", "tqdm": "4.70.0", "traitlets": "5.16.1", "triton": "3.4.0", "typing-extensions": "4.16.0", "typing-inspect": "0.9.0", "typing-inspection": "0.4.4", "tzdata": "2026.3", "uri-template": "1.3.0", "urllib3": "2.7.0", "uvicorn": "0.52.4", "uvloop": "0.22.1", "virtualenv": "21.7.4", "wandb": "0.28.2", "watchfiles": "1.2.0", "wcwidth": "0.8.2", "webcolors": "25.10.0", "webencodings": "0.6.1", "websocket-client": "1.9.0", "websockets": "17.0.1", "werkzeug": "3.1.8", "widgetsnbextension": "4.0.16", "wrapt": "2.3.0", "yarl": "1.24.5"}, "libxtb": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/lib/libxtb.so.6.7.1", "libxtb_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853", "xtb": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/bin/xtb", "xtb_sha256": "271dd6cdd5da127a8e39919e7e32d924790fb346f0057b4183769ba8b3411887", "qualification_driver_sha256": "5f77620a9b308cbf3c6e98b91f3c0ecf882d19380e7d85d7205c47ae614af7ae", "restoration_status_sha256": "2b40d419321b031fd6263864301e15dc58db448eded87a450981dcf0a600bea6", "user_site_disabled": true, "source_archive_sha256": "cfdb49fbb6ebceb776272e646df6775d62ccebbdc0d0ed6ceca5fc1dd478d42b", "status": "fresh_quantum_control_and_normal_native_admission_passed", "case": "formaldehyde", "kernel_execution": {"pid": 1924787, "host": "lambda2", "process_start": "1361245970", "cpu_affinity": [19, 20], "interpreter": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/environment/bin/python", "source_sha256": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90", "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853", "thread_limits": {"OMP_NUM_THREADS": "1", "OMP_THREAD_LIMIT": "1", "OPENBLAS_NUM_THREADS": "1", "MKL_NUM_THREADS": "1", "NUMEXPR_NUM_THREADS": "1"}}, "library_binding": "explicit byte-identical fresh-prefix xTB paths", "original_environment_shared_library_loaded": false, "finished": 1792811840.2150893}
