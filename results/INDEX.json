@@ -428,6 +428,22 @@
       "raw_root": "calcs/release_validation/2026-10-23_gpu_environment_compatible",
       "source_snapshot": "manuscript/evidence/2026-10-23_deployment_revision/manifest.json",
       "scope": "Fresh compatible Linux/CUDA profile, two rigid quantum controls; broader portability and public deposition separate"
+    },
+    "UMA_Nitro_validation": {
+      "guide": "results/validation/uma_nitro_2026-10-23/README.md",
+      "current": "results/validation/uma_nitro_2026-10-23/summary.json",
+      "status": "installed_legacy_reproduced_actual_Nitro_pending",
+      "raw_root": "calcs/uma_nitro_validation/2026-10-23",
+      "source_snapshot": "results/validation/uma_nitro_2026-10-23/panel/plan.json",
+      "scope": "Pinned inference-engine validation with unchanged UMA weights and OMol task; production default unchanged"
+    },
+    "CPU_electronic_fallback_controls": {
+      "guide": "results/validation/CPU_quantum_2026-10-23/README.md",
+      "current": "results/validation/CPU_quantum_2026-10-23/comparison.json",
+      "status": "two_spin_energy_gradient_equivalence_checked_large_polymer_pending",
+      "raw_root": "calcs/validation/CPU_quantum_2026-10-23",
+      "source_snapshot": "results/validation/CPU_quantum_2026-10-23/source_snapshot.json",
+      "scope": "CPU/GPU numeric parity at the same quantum model; no full-polymer resource or free-energy qualification"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",
