@@ -181,8 +181,8 @@ That integration snapshot is historical. New candidate proposals live under
 the [scientific progress guide](docs/SCIENTIFIC_PROGRESS_2026-10-18.md).
 
 1. `src/redox/build/`      — decorate the site with redox groups → `library/`
-2. `src/redox/qm/uma.py`    — UMA charge/spin pre-opt of every state → `calcs/uma/`
-3. `src/redox/qm/dft.py`    — DFT+SMD geometry optimization in solvent → `calcs/dft/<id>/<state>/`
+2. `redox uma` — the [current default](docs/UMA_BACKENDS.md) prefers Nitro, with an explicit V100 fallback; caches retain model and execution identities.
+3. `redox dft` — DFT+SMD geometry optimization in solvent using the selected warm-start provenance → `calcs/dft/<id>/<state>/`
    (density fitting enabled; optional `--torsion-scan` for floppy species)
 4. `src/redox/qm/sp.py`     — single points at the ONE active protocol (`redox.core.protocol`,
    ωB97M-V/def2-TZVPD for every state + Fc) → protocol-addressed `sp/<hash>.json` records

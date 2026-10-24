@@ -7,6 +7,8 @@ The [independent exact-PMDI review](reviews/2026-10-24/pmdi_site3_native/README.
 
 The [full 139-atom V100 hybrid-energy reference point](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/README.md) is running alongside the separately checked geometry stage. A guarded joint host-memory budget permits this overlap. Final point equivalence, optimized electronic energy and native G remain separate qualifications.
 
+The [current UMA entry point](validation/uma_current_2026-10-24/README.md) now prefers Nitro and has a tested V100 fallback. The [site-2 PMDI native component](reviews/2026-10-24/pmdi_site2_native/README.md) independently reconstructs, bringing the singly occupied PMDI components to two; the matched two-graft cycle remains pending.
+
 | Result | Main entry | Current data |
 | --- | --- | --- |
 | Grafting thermochemistry: 75 reaction models | [Visual report and structures](grafting/index.html) | [Method/records](grafting/README.md) · [Status](grafting/status.json) · [Table](grafting/current.csv) |

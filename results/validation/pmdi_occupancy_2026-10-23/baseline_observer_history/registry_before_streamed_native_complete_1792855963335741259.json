@@ -1,0 +1,30 @@
+{
+  "overrides": {
+    "baseline__design_pmdi_ethyl__occ_2": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_native_switch_curvature",
+      "hosts": [
+        "lambda2"
+      ],
+      "reason": "Full spin/Hessian and audited-residency controls passed; fresh native resource/minimum/partition pilot with host switch curvature, live bounded-native bindings and explicit device headroom. Previous incomplete attempts retained."
+    },
+    "baseline__design_pmdi_ethyl__occ_3": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature",
+      "hosts": [
+        "lambda1",
+        "lambda13"
+      ],
+      "reason": "Full spin/Hessian and audited-residency controls passed; fresh native resource/minimum/partition pilot with host switch curvature, live bounded-native bindings and explicit device headroom. Previous incomplete attempts retained."
+    },
+    "baseline__design_pmdi_ethyl__occ_2_3": {
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_exclusive_second_resume",
+      "hosts": [
+        "lambda13"
+      ],
+      "reason": "Second delayed foreign attachment detected and own worker stopped by guard. Fresh original evaluation-23 continuation, same scientific settings and host allowance; actual start only on an exclusively free suitable device."
+    }
+  },
+  "qualification": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smd_bounded_memory_2026-10-23",
+  "previous_registry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/pmdi_occupancy_2026-10-23/baseline_observer_history/registry_before_second_exclusive_checkpoint_1792810117197925449.json",
+  "updated": 1792810117.1994429,
+  "external_continuations": {}
+}

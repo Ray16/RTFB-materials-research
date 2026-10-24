@@ -1,25 +1,25 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 1046,
+    "passed": 1095,
     "skipped": 2,
-    "report": "results/reviews/2026-10-24/pmdi_alkylation_context/regression_tests.xml"
+    "report": "results/validation/uma_current_2026-10-24/regression_with_GPU_handoff.xml"
   },
   "separately_verified_skips": {
     "two_CPU_affinity": {
       "passed": 1,
-      "report": "results/reviews/2026-10-24/pmdi_alkylation_context/two_CPU_test.xml"
+      "report": "results/validation/uma_current_2026-10-24/two_CPU_test.xml"
     },
     "figure_environment": {
       "passed": 1,
-      "report": "results/reviews/2026-10-24/pmdi_alkylation_context/figure_dependency_test.xml"
+      "report": "results/validation/uma_current_2026-10-24/figure_dependency_test.xml"
     }
   },
   "report_sha256": {
-    "results/reviews/2026-10-24/pmdi_alkylation_context/regression_tests.xml": "e263f61b9ab195c8594597994b911497443326ba16e2fa78b1a8f0a5f85d58b3",
-    "results/reviews/2026-10-24/pmdi_alkylation_context/two_CPU_test.xml": "dd5b859275c107512b0af14efe11f88f42f0384c2604af00bd0cc935f7e94512",
-    "results/reviews/2026-10-24/pmdi_alkylation_context/figure_dependency_test.xml": "7a268bc57f6df29c3ff2af3cc9f90619a813e43779acf6989b75fd39848229dd"
+    "results/validation/uma_current_2026-10-24/regression_with_GPU_handoff.xml": "d15cdcd5d9877e31c5fb84d66054d0a1c8afd505633edb66938a1189b8323ca4",
+    "results/validation/uma_current_2026-10-24/two_CPU_test.xml": "34eb0736f05aaa5c668c3838db766586db5f7f0d5baab353e912f78d5b6fef99",
+    "results/validation/uma_current_2026-10-24/figure_dependency_test.xml": "d10ded59468e5574fdf30e5eb6cb3bf2fd26790cca551d3d775291b7d5ccc4e9"
   },
-  "integration": "The new owned-worker RAM guard passes two subprocess checks, including stale PID refusal and preserved stop checkpoints. All 75 route outcomes are unchanged after the new molecular PMDI class source. Both documents compile; the large V100 hybrid reference point, exact PMDI cycle and broader conformer convergence remain pending.",
+  "integration": "Current public dispatch, explicit state-cache changes and V100 10-state/40-frame E/F comparison pass. Both full spin/Hessian GC-lifecycle controls pass. Site-2 and site-3 native G reconstruct independently; returned pair geometry passes final force checks and is in the canonical GPU active-energy stage. H100 current-FP32/Nitro parity, matched PMDI cycle, broader convergence and public deposition remain pending.",
   "experimental_accuracy_inferred": false
 }

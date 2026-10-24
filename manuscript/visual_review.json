@@ -1,9 +1,9 @@
 {
-  "checked_UTC": "2026-10-24T11:36:56Z",
+  "checked_UTC": "2026-10-24T17:34:15Z",
   "review_type": "assistant rendered-page inspection separate from compiler report",
   "documents": {
-    "manuscript": "887a660eddaae0facc5f7d15c458e5d9653a652dadf52bab8b8be4ea19b3ea11",
-    "supporting_information": "30b2d375a95ebab4ef1fbb19ffc84dfec7cb2d8e69107d07655e008679a285ec"
+    "manuscript": "b739e06b7c974b5631a6a3615c7839c28a283b2a8609508069ce8e8b1f1837e1",
+    "supporting_information": "4374fb2d7163a19a9ec87bc2f2011cebf4914f0757178fb1e75988375a387649"
   },
   "contact_sheets_reviewed": {
     "manuscript": [
@@ -38,30 +38,28 @@
       10,
       11,
       12,
-      13
+      13,
+      14
     ]
   },
   "detail_pages_reviewed": {
-    "manuscript": [
-      9,
-      16
-    ],
+    "manuscript": [],
     "supporting_information": [
-      4,
-      13
+      12,
+      14
     ]
   },
   "findings": [
-    "All main and SI pages inspected in rendered contact sheets; no visible clipping or figure/caption overlap.",
-    "Main page 9 distinguishes molecular CsF N-alkylation from the exact proposed DBU/MeCN polymer route; route remains pending.",
-    "Reference 31 metadata and DOI match the publisher and Crossref; no missing citations or overfull boxes.",
-    "No current resource pilot is presented as a completed energy, native free energy or full candidate cycle.",
-    "Final SI caption states that complete matched occupancy cycles are unavailable, without implying that every individual native component is uncomputed."
+    "All final main and SI pages reviewed in contact sheets; no clipping or figure/caption overlap.",
+    "Main extracted text is identical to the preceding checked revision.",
+    "SI Section 8.2 explains default routing, fixed electronic-state calculators, source/cache identities and DFT/SMD thermochemistry scope.",
+    "The software documentation citation and URL render correctly; both documents have zero unresolved references and overfull boxes.",
+    "No Nitro speedup, completed exact PMDI cycle or broader conformer convergence is claimed."
   ],
   "remaining_submission_items": [
-    "Exact-candidate matched occupancy thermochemistry and broader conformer/configuration convergence",
-    "Exact-route selectivity/core retention and material-level evidence",
+    "Matched exact-candidate occupancy thermochemistry and broader conformer/configuration convergence",
+    "Exact-route selectivity/core retention and material evidence",
     "Public raw-state deposition, broader portability and final metadata"
   ],
-  "build_sha256": "c4da758deb7f721a610111c776fe9f9b4553d1502732d80b869e258a401cf20f"
+  "build_sha256": "d80b55135e37adf3fca2a0eaebf216813bdc9a9d67964d2019a4dbe4f27dc910"
 }

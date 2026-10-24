@@ -1,6 +1,6 @@
 {
   "status": "installed_legacy_replayed_V100_composition_semantics_diagnosed_redox_Nitro_pending",
-  "checked": 1792824146.8540454,
+  "checked": 1792857443.8531034,
   "model": "uma-s-1p2p1",
   "task": "omol",
   "cases": 10,
@@ -9,7 +9,7 @@
   "maximum_legacy_energy_error_eV": 6.09918060945347e-07,
   "Nitro_GPU_execution_verified": false,
   "Nitro_speedup_measured": false,
-  "default_pipeline_switched": false,
+  "default_pipeline_switched": true,
   "model_identity": {
     "model": "uma-s-1p2p1",
     "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
@@ -43,5 +43,11 @@
   ],
   "original_DFT_environment_modified": false,
   "V100_current_FP32_executed": true,
-  "V100_review": "results/validation/uma_v100_2026-10-24/summary.json"
+  "V100_review": "results/validation/uma_v100_2026-10-24/summary.json",
+  "current_default_entrypoint": "redox uma",
+  "default_requested_backend": "nitro",
+  "current_V100_fallback": "legacy FairChem 2.21/Torch 2.8",
+  "default_policy": "config/uma_execution.json",
+  "default_validation": "results/validation/uma_current_2026-10-24/legacy_comparison.json",
+  "H100_comparison_dispatch": "results/validation/uma_current_2026-10-24/H100_pair_quiet/status.json"
 }

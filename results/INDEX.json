@@ -172,7 +172,31 @@
         "startup": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/startup_verification.json",
         "guide": "results/polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB/README.md",
         "raw_root": "calcs/validation/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_3_host_workspace_32GB",
-        "calculation_state": "Running 139-atom full/range-separated DF and hybrid energy/reference-point pilot; no admitted optimized energy or G"
+        "calculation_state": "Independent fixed-input review passed, including gas/SMD agreement to 2.60e-8 eV versus preserved large-device reference; no optimized minimum or G",
+        "independent_review": "results/reviews/2026-10-24/pmdi_pair_V100_point/summary.json"
+      },
+      "exact_PMDI_site2_native_review": "results/reviews/2026-10-24/pmdi_site2_native/summary.json",
+      "returned_geometry_force_recovery": {
+        "plan": "results/polymer_models/campaigns/2026-10-24_geometry_finish/baseline__design_pmdi_ethyl__occ_2_3/plan.json",
+        "status": "results/polymer_models/campaigns/2026-10-24_geometry_finish/baseline__design_pmdi_ethyl__occ_2_3/geometry/status.json",
+        "source_manifest": "results/polymer_models/campaigns/2026-10-24_geometry_finish/baseline__design_pmdi_ethyl__occ_2_3/launch.json",
+        "raw_root": "calcs/polymer_models/2026-10-24_geometry_finish",
+        "scope": "Completed unchanged graph/stationarity/total-energy derivative checks on exact saved optimizer output; no repeated optimization"
+      },
+      "current_GPU_electronic_stage": {
+        "plan": "results/polymer_models/campaigns/2026-10-24_GPU_electronic/baseline__design_pmdi_ethyl__occ_2_3/plan.json",
+        "status": "results/polymer_models/campaigns/2026-10-24_GPU_electronic/baseline__design_pmdi_ethyl__occ_2_3/energy/tasks/baseline__design_pmdi_ethyl__occ_2_3__pose0/status.json",
+        "guide": "results/polymer_models/campaigns/2026-10-24_GPU_electronic/baseline__design_pmdi_ethyl__occ_2_3/README.md",
+        "source_manifest": "results/polymer_models/campaigns/2026-10-24_GPU_electronic/baseline__design_pmdi_ethyl__occ_2_3/launch.json",
+        "raw_root": "calcs/polymer_models/2026-10-24_GPU_electronic",
+        "scope": "Running canonical optimized-state GPU SP; no native G or matched cycle yet"
+      },
+      "CREST_V100_inventory": {
+        "guide": "results/validation/conformer_inventory_2026-10-24/README.md",
+        "source_manifest": "results/validation/conformer_inventory_2026-10-24/recovery_01/launch.json",
+        "current": "results/reviews/2026-10-24/crest_empty_V100_point/summary.json",
+        "raw_root": "calcs/validation/conformer_inventory_2026-10-24",
+        "scope": "Final low-level search and bounded fixed-input resource point; DFT re-ranking/native ensemble not complete"
       }
     },
     "candidates": {
@@ -230,7 +254,10 @@
       "guide": "slides/README.md",
       "current": "slides/redox_workflow.pdf",
       "checked_refresh": "results/reviews/2026-10-23/presentation_capacity_refresh/status.json",
-      "visual_review": "results/reviews/2026-10-23/presentation_capacity_refresh/visual_review.json"
+      "visual_review": "results/reviews/2026-10-23/presentation_capacity_refresh/visual_review.json",
+      "review": "results/reviews/2026-10-24/UMA_default_slides/visual_review.json",
+      "status": "results/reviews/2026-10-24/UMA_default_slides/status.json",
+      "pdf_sha256": "5596b52c65922e369f9b61cdd2c96566b12ad0b6a3d5b61eebc709903f521632"
     },
     "discovery": {
       "guide": "results/discovery/README.md",
@@ -336,7 +363,11 @@
       "supporting_information": "manuscript/supporting_information.pdf",
       "revision_ledger": "manuscript/revision_plan.md",
       "visual_review": "manuscript/visual_review.json",
-      "version_provenance": "Source hashes are recorded by build_check.json; publication commit is given in repository history."
+      "version_provenance": "Source hashes are recorded by build_check.json; publication commit is given in repository history.",
+      "documents": {
+        "main_pages": 17,
+        "SI_pages": 14
+      }
     },
     "candidate_decisions": {
       "guide": "results/selection/README.md",
@@ -512,9 +543,11 @@
     "checked_research_slides": {
       "current": "slides/current.json",
       "pdf": "slides/redox_workflow.pdf",
-      "status": "73_pages_checked_16_main_57_backup",
+      "status": "results/reviews/2026-10-24/UMA_default_slides/status.json",
       "source_snapshot": "manuscript/evidence/2026-10-24_spatial_revision/manifest.json",
-      "scope": "Frozen spatial-control example added; candidate values unchanged"
+      "scope": "Frozen spatial-control example added; candidate values unchanged",
+      "review": "results/reviews/2026-10-24/UMA_default_slides/visual_review.json",
+      "pdf_sha256": "5596b52c65922e369f9b61cdd2c96566b12ad0b6a3d5b61eebc709903f521632"
     },
     "streamed_V100_PCM": {
       "guide": "results/validation/streamed_PCM_2026-10-24/README.md",
@@ -525,6 +558,15 @@
       "startup": "results/polymer_models/campaigns/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/startup_verification.json",
       "raw_root": "calcs/polymer_models/2026-10-24_streamed_native",
       "scope": "Execution equivalence/resource qualification; unchanged SMD MeCN model and physical gates; no new cycle or synthesis admission"
+    },
+    "uma_default": {
+      "guide": "results/validation/uma_current_2026-10-24/README.md",
+      "current": "results/validation/uma_current_2026-10-24/summary.json",
+      "status": "results/validation/uma_current_2026-10-24/H100_pair_quiet/status.json",
+      "policy": "config/uma_execution.json",
+      "source_manifest": "results/validation/uma_current_2026-10-24/legacy_launch.json",
+      "raw_root": "calcs/uma_nitro_validation/2026-10-24_current_dispatch_legacy",
+      "scope": "Current default requested backend and tested V100 fallback; H100 current-FP32/Nitro comparison pending; no solution free energy from UMA"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

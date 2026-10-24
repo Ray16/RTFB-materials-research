@@ -15,7 +15,8 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-redox = "redox.__main__:main"
+redox = "redox.current:main"
+redox-uma = "redox.qm.uma_current:main"
 
 [tool.setuptools]
 package-dir = {"" = "src"}

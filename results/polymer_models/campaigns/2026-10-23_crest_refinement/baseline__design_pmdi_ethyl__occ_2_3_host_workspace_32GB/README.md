@@ -4,8 +4,10 @@ The [plan](plan.json) retains the exact starting geometry and quantum settings
 of the completed large-device reference. The
 [actual scientific start](startup_verification.json) is verified on lambda2
 GPU 0, a 32 GiB V100, with disjoint CPUs 5 and 21 and native thread caps of two.
-The [live footprint record](footprint_qualification.json) is running; no final
-energy, optimized minimum or free energy is admitted from this start.
+The [completed footprint record](footprint_qualification.json) and independent
+review pass. Both gas/SMD energies agree with the preserved large-device point
+within 2.60e-8 eV; the maximum-gradient difference is 6.38e-13 hartree/bohr.
+This remains a starting-geometry resource check, not an optimized minimum or G.
 
 The full- and range-separated screened DF arrays require 163,190,172,552 and
 68,435,226,384 bytes. The original inventory rule adds 20% plus 24 GiB, requiring
