@@ -432,7 +432,7 @@
     "UMA_Nitro_validation": {
       "guide": "results/validation/uma_nitro_2026-10-23/README.md",
       "current": "results/validation/uma_nitro_2026-10-23/summary.json",
-      "status": "installed_legacy_reproduced_actual_Nitro_pending",
+      "status": "installed_legacy_replayed_V100_model_behavior_diagnosed_redox_Nitro_pending",
       "raw_root": "calcs/uma_nitro_validation/2026-10-23",
       "source_snapshot": "results/validation/uma_nitro_2026-10-23/panel/plan.json",
       "scope": "Pinned inference-engine validation with unchanged UMA weights and OMol task; production default unchanged"
@@ -444,6 +444,17 @@
       "raw_root": "calcs/validation/CPU_quantum_2026-10-23",
       "source_snapshot": "results/validation/CPU_quantum_2026-10-23/source_snapshot.json",
       "scope": "CPU/GPU numeric parity at the same quantum model; no full-polymer resource or free-energy qualification"
+    },
+    "UMA_V100_compatibility": {
+      "guide": "results/validation/uma_v100_2026-10-24/README.md",
+      "current": "results/validation/uma_v100_2026-10-24/summary.json",
+      "comparison": "results/validation/uma_v100_2026-10-24/reference_comparison.json",
+      "diagnostic": "results/validation/uma_v100_2026-10-24/composition_comparison.json",
+      "profile": "environments/uma_v100/runtime.json",
+      "raw_root": "calcs/uma_nitro_validation",
+      "source_snapshot": "results/validation/uma_v100_2026-10-24/source_snapshot.json",
+      "status": "V100_execution_verified_legacy_current_composition_difference_localized",
+      "scope": "Ten states/40 frames; legacy default retained. Diagnostic behavior override is ineligible for production. DFT/Hessian qualification is separate."
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

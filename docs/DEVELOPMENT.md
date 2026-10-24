@@ -61,6 +61,15 @@ local checkpoint bytes without downloading. Verify the expected model hash befor
 launch; a missing node-local checkpoint is an environment failure, not a failed
 molecular calculation. `--only` in the builder accepts exact comma-separated IDs.
 
+V100 uses the [retained CUDA12 UMA profile](../environments/uma_v100/runtime.json).
+Actual inference and the newer-loader composition-averaging difference are
+documented in the [V100 qualification](../results/validation/uma_v100_2026-10-24/README.md).
+Check the Torch wheel's `sm_70` support as well as driver compatibility. The
+separate CUDA13 Nitro prefix omits Volta support; turning Nitro off does not
+repair that wheel. The diagnostic historical-averaging override is never a
+production profile. Keep UMA cache namespaces and explicit charge/spin identities
+separate across a loader-behavior migration.
+
 Repair-source paths in older `result.json` files can refer to the replaced
 canonical geometry. `status --include-lineage` resolves an original geometry only
 when its bytes match the recorded SHA-256, using the explicitly named archive.

@@ -1,0 +1,53 @@
+{
+  "host": "lambda2",
+  "pid": 2282535,
+  "process_start": "1362433885",
+  "GPU": 1,
+  "CPU_affinity": [
+    19,
+    20
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "19,20",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "1",
+    "--label",
+    "redox-UMA-composition-ablation",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "HF_HUB_OFFLINE=1",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "LD_LIBRARY_PATH=/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib",
+    "/nfs/lambda_stor_01/homes/rzhu/.cache/metag-environments/uma-nitro-20261023-645af7d/venv/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_v100_2026-10-24/composition_ablation_01/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/diagnose_uma_composition.py",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_nitro_2026-10-23/panel",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-24_composition_ablation_01"
+  ],
+  "resources": {
+    "online_cpus": 80,
+    "load_1m": 19.21728515625,
+    "available_RAM_bytes": 447913947136,
+    "minimum_RAM_GiB": 16
+  },
+  "started": 1792823718.8786082,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/diagnose_uma_composition.py": "56c12a965a980ed9d3d36060a6adfb1e48e7fb4a980886f1a50f6a5084ba18f4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_uma_v100.py": "4378e690e18e12022c7b24863ca843ad835c5bbad5d2ae7285d476410c3c128f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/uma_model_identity.py": "e5ee6cbfd6b9b27023dc30dcb80298b5c55d4e5daf26c248ffa66902fb658071"
+  }
+}

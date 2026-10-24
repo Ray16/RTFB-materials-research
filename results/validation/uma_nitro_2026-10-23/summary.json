@@ -1,6 +1,6 @@
 {
-  "status": "installed_and_legacy_replayed_actual_Nitro_validation_pending",
-  "checked": 1792816921.332483,
+  "status": "installed_legacy_replayed_V100_composition_semantics_diagnosed_redox_Nitro_pending",
+  "checked": 1792824146.8540454,
   "model": "uma-s-1p2p1",
   "task": "omol",
   "cases": 10,
@@ -37,9 +37,11 @@
   "source_snapshot": "results/validation/uma_nitro_2026-10-23/panel/plan.json",
   "environment": "environments/uma_nitro/uv.lock",
   "missing_qualification": [
-    "Current-release FP32 reference versus legacy points",
-    "Actual Nitro on supported, exclusively reserved hardware",
+    "Official current FP32 versus actual Nitro on supported exclusively reserved hardware for the exact redox panel",
+    "Explicit migration of the changed UMA composition-averaging behavior and separate caches",
     "Energy/force, state-contract, invariance and matched-device timing review"
   ],
-  "original_DFT_environment_modified": false
+  "original_DFT_environment_modified": false,
+  "V100_current_FP32_executed": true,
+  "V100_review": "results/validation/uma_v100_2026-10-24/summary.json"
 }

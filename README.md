@@ -119,6 +119,15 @@ Check the driver's supported CUDA version with `nvidia-smi` before installation.
 `CUDA_TAG` must identify a compatible PyTorch 2.8 wheel. The recorded working
 environment and native thermal version requirements are in the development guide.
 
+**V100 support:** retain the CUDA12 production profile. The
+[actual V100 UMA tests and version diagnosis](results/validation/uma_v100_2026-10-24/README.md)
+cover ten states and forty geometries, including charged, high-spin and 139-atom
+inputs. The separate CUDA13 Nitro environment cannot run on V100; its Torch wheel
+omits `sm_70`. Updated CUDA12 standard inference runs on V100, but its changed
+composition-averaging behavior requires an explicit migration of UMA diagnostics
+and warm-start caches. [The recorded profile](environments/uma_v100/runtime.json)
+keeps this separate from DFT/Hessian qualification.
+
 **CPU-only machine** (auto-detected when no `nvidia-smi`, or force it):
 ```bash
 CUDA_TAG=cpu ./setup_env.sh

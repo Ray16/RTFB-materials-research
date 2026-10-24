@@ -1,0 +1,15 @@
+{
+  "profile": "legacy_V100_production",
+  "fairchem_core": "2.21.0",
+  "torch": "2.8.0+cu128",
+  "model": "uma-s-1p2p1",
+  "task": "omol",
+  "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
+  "Nitro": false,
+  "required_wheel_architecture_for_V100": "sm_70",
+  "qualification": "results/validation/uma_v100_2026-10-24/summary.json",
+  "guide": "results/validation/uma_v100_2026-10-24/README.md",
+  "canonical_Nitro_prefix_shared_with_this_profile": false,
+  "newer_CUDA12_profile": "runtime tested; official current-model composition averaging differs from legacy; explicit migration pending",
+  "scope": "Gas-phase UMA warm starts and diagnostics; DFT and native thermal resources/QC remain stage specific"
+}

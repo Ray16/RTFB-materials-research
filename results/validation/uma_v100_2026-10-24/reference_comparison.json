@@ -1,0 +1,671 @@
+{
+  "status": "numerical_comparison_failed",
+  "all_energy_and_force_checks_pass": false,
+  "cases": 10,
+  "frames": 40,
+  "passed_cases": 3,
+  "diagnostic_only": false,
+  "production_migration_qualified": false,
+  "scope": "Frozen fixed-geometry energy/force comparison; optimizer, thermochemistry and speedup require separate checks",
+  "maximum_energy_error_eV": 0.027435715863248333,
+  "maximum_force_error_eV_A": 0.1381826400756836,
+  "comparisons": [
+    {
+      "id": "design_pmdi_ethyl__neu",
+      "charge": 0,
+      "mult": 1,
+      "atoms": 42,
+      "energy_tolerance_eV": 0.004200000000000001,
+      "maximum_energy_error_eV": 0.0005768987939518411,
+      "maximum_force_RMSE_eV_A": 0.0005389022090009373,
+      "maximum_force_error_eV_A": 0.0017515086801722646,
+      "passed": true,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": -0.0005738541949540377,
+          "energy_error_eV": 0.0005738541949540377,
+          "force_RMSE_eV_A": 0.0005388540889664673,
+          "force_max_eV_A": 0.0016926764510571957,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": -0.0005768987939518411,
+          "energy_error_eV": 0.0005768987939518411,
+          "force_RMSE_eV_A": 0.0005376398201661818,
+          "force_max_eV_A": 0.0017210692167282104,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": -0.0005740341730415821,
+          "energy_error_eV": 0.0005740341730415821,
+          "force_RMSE_eV_A": 0.0005389022090009373,
+          "force_max_eV_A": 0.0016936962492763996,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": -0.0005735392369388137,
+          "energy_error_eV": 0.0005735392369388137,
+          "force_RMSE_eV_A": 0.0005388119290852816,
+          "force_max_eV_A": 0.0017515086801722646,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "design_pmdi_ethyl__red1",
+      "charge": -1,
+      "mult": 2,
+      "atoms": 42,
+      "energy_tolerance_eV": 0.004200000000000001,
+      "maximum_energy_error_eV": 0.0008232412692450453,
+      "maximum_force_RMSE_eV_A": 0.002793052361164055,
+      "maximum_force_error_eV_A": 0.010476931929588318,
+      "passed": false,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": 0.0007938751296023838,
+          "energy_error_eV": 0.0007938751296023838,
+          "force_RMSE_eV_A": 0.0027714876924502764,
+          "force_max_eV_A": 0.010102385422214866,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": 0.0008232412692450453,
+          "energy_error_eV": 0.0008232412692450453,
+          "force_RMSE_eV_A": 0.002793052361164055,
+          "force_max_eV_A": 0.010476931929588318,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": 0.0007939451243146323,
+          "energy_error_eV": 0.0007939451243146323,
+          "force_RMSE_eV_A": 0.0027715651624399436,
+          "force_max_eV_A": 0.010102885542437434,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": 0.0007942050870042294,
+          "energy_error_eV": 0.0007942050870042294,
+          "force_RMSE_eV_A": 0.002771481833876106,
+          "force_max_eV_A": 0.010102005675435066,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "design_pmdi_ethyl__red2",
+      "charge": -2,
+      "mult": 1,
+      "atoms": 42,
+      "energy_tolerance_eV": 0.004200000000000001,
+      "maximum_energy_error_eV": 0.016301504143484635,
+      "maximum_force_RMSE_eV_A": 0.0040502902875861075,
+      "maximum_force_error_eV_A": 0.014745771419256926,
+      "passed": false,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": -0.016233380640187534,
+          "energy_error_eV": 0.016233380640187534,
+          "force_RMSE_eV_A": 0.004050234895579844,
+          "force_max_eV_A": 0.013965982245281339,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": -0.016301504143484635,
+          "energy_error_eV": 0.016301504143484635,
+          "force_RMSE_eV_A": 0.004045170579653793,
+          "force_max_eV_A": 0.01379898190498352,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": -0.01623170586390188,
+          "energy_error_eV": 0.01623170586390188,
+          "force_RMSE_eV_A": 0.004049902566442504,
+          "force_max_eV_A": 0.013963203877210617,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": -0.016234135542617878,
+          "energy_error_eV": 0.016234135542617878,
+          "force_RMSE_eV_A": 0.0040502902875861075,
+          "force_max_eV_A": 0.014745771419256926,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "design_ndi_ethyl__neu",
+      "charge": 0,
+      "mult": 1,
+      "atoms": 48,
+      "energy_tolerance_eV": 0.0048000000000000004,
+      "maximum_energy_error_eV": 0.0011433239706093445,
+      "maximum_force_RMSE_eV_A": 0.0006897075430888467,
+      "maximum_force_error_eV_A": 0.0025184022961184382,
+      "passed": true,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": 0.0011161075672134757,
+          "energy_error_eV": 0.0011161075672134757,
+          "force_RMSE_eV_A": 0.0006822687923297077,
+          "force_max_eV_A": 0.0025184022961184382,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": 0.0011433239706093445,
+          "energy_error_eV": 0.0011433239706093445,
+          "force_RMSE_eV_A": 0.0006897075430888467,
+          "force_max_eV_A": 0.0023895278573036194,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": 0.0011155426400364377,
+          "energy_error_eV": 0.0011155426400364377,
+          "force_RMSE_eV_A": 0.0006822298734805433,
+          "force_max_eV_A": 0.0025178274954669178,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": 0.0011146827237098478,
+          "energy_error_eV": 0.0011146827237098478,
+          "force_RMSE_eV_A": 0.0006822239828561384,
+          "force_max_eV_A": 0.002226525917649269,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "design_ndi_ethyl__red1",
+      "charge": -1,
+      "mult": 2,
+      "atoms": 48,
+      "energy_tolerance_eV": 0.0048000000000000004,
+      "maximum_energy_error_eV": 0.0007526405752287246,
+      "maximum_force_RMSE_eV_A": 0.004278638400983934,
+      "maximum_force_error_eV_A": 0.013308041961863637,
+      "passed": false,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": -0.0007275438983924687,
+          "energy_error_eV": 0.0007275438983924687,
+          "force_RMSE_eV_A": 0.0042424131157087755,
+          "force_max_eV_A": 0.01260145497508347,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": -0.0007526405752287246,
+          "energy_error_eV": 0.0007526405752287246,
+          "force_RMSE_eV_A": 0.004278638400983934,
+          "force_max_eV_A": 0.012794692069292068,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": -0.0007253241856233217,
+          "energy_error_eV": 0.0007253241856233217,
+          "force_RMSE_eV_A": 0.004242305300399976,
+          "force_max_eV_A": 0.012600815447513014,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": -0.0007269639972946607,
+          "energy_error_eV": 0.0007269639972946607,
+          "force_RMSE_eV_A": 0.004242394023109305,
+          "force_max_eV_A": 0.013308041961863637,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "design_ndi_ethyl__red2",
+      "charge": -2,
+      "mult": 1,
+      "atoms": 48,
+      "energy_tolerance_eV": 0.0048000000000000004,
+      "maximum_energy_error_eV": 0.01686276250256924,
+      "maximum_force_RMSE_eV_A": 0.007650611630904918,
+      "maximum_force_error_eV_A": 0.028927970677614212,
+      "passed": false,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": -0.016861572657944635,
+          "energy_error_eV": 0.016861572657944635,
+          "force_RMSE_eV_A": 0.007650548304387555,
+          "force_max_eV_A": 0.02890348667278886,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": -0.01682791210623691,
+          "energy_error_eV": 0.01682791210623691,
+          "force_RMSE_eV_A": 0.007631868315518509,
+          "force_max_eV_A": 0.028927970677614212,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": -0.01686276250256924,
+          "energy_error_eV": 0.01686276250256924,
+          "force_RMSE_eV_A": 0.007650602066146772,
+          "force_max_eV_A": 0.028902991791255772,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": -0.016862427546584513,
+          "energy_error_eV": 0.016862427546584513,
+          "force_RMSE_eV_A": 0.007650611630904918,
+          "force_max_eV_A": 0.024394303254666738,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "viologen__ox2",
+      "charge": 2,
+      "mult": 1,
+      "atoms": 41,
+      "energy_tolerance_eV": 0.0041,
+      "maximum_energy_error_eV": 0.0037189137474342715,
+      "maximum_force_RMSE_eV_A": 0.0021076977285626377,
+      "maximum_force_error_eV_A": 0.01260497560724616,
+      "passed": false,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": 0.003718638781720074,
+          "energy_error_eV": 0.003718638781720074,
+          "force_RMSE_eV_A": 0.002107642620413664,
+          "force_max_eV_A": 0.01260401587933302,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": 0.003593380330130458,
+          "energy_error_eV": 0.003593380330130458,
+          "force_RMSE_eV_A": 0.00206636146728929,
+          "force_max_eV_A": 0.012200236320495605,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": 0.0037189137474342715,
+          "energy_error_eV": 0.0037189137474342715,
+          "force_RMSE_eV_A": 0.002107657373287631,
+          "force_max_eV_A": 0.01260497560724616,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": 0.0037170939904171973,
+          "energy_error_eV": 0.0037170939904171973,
+          "force_RMSE_eV_A": 0.0021076977285626377,
+          "force_max_eV_A": 0.0117870825342834,
+          "checks": {
+            "energy": true,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "viologen__ox1",
+      "charge": 1,
+      "mult": 2,
+      "atoms": 41,
+      "energy_tolerance_eV": 0.0041,
+      "maximum_energy_error_eV": 0.014555067340552341,
+      "maximum_force_RMSE_eV_A": 0.005988252859123223,
+      "maximum_force_error_eV_A": 0.024383839685469866,
+      "passed": false,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": 0.014555067340552341,
+          "energy_error_eV": 0.014555067340552341,
+          "force_RMSE_eV_A": 0.005670486010625122,
+          "force_max_eV_A": 0.022129395976662636,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": 0.014519517037115293,
+          "energy_error_eV": 0.014519517037115293,
+          "force_RMSE_eV_A": 0.005988252859123223,
+          "force_max_eV_A": 0.023302249610424042,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": 0.014554357429005904,
+          "energy_error_eV": 0.014554357429005904,
+          "force_RMSE_eV_A": 0.005670906736334088,
+          "force_max_eV_A": 0.022130356170237064,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": 0.01455483736936003,
+          "energy_error_eV": 0.01455483736936003,
+          "force_RMSE_eV_A": 0.005670896334691448,
+          "force_max_eV_A": 0.024383839685469866,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        }
+      ]
+    },
+    {
+      "id": "PMDI_five_repeat_two_grafts",
+      "charge": 0,
+      "mult": 1,
+      "atoms": 139,
+      "energy_tolerance_eV": 0.013900000000000001,
+      "maximum_energy_error_eV": 0.001423886904376559,
+      "maximum_force_RMSE_eV_A": 0.00020091529655473123,
+      "maximum_force_error_eV_A": 0.0007983595132827759,
+      "passed": true,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": -0.001413730758940801,
+          "energy_error_eV": 0.001413730758940801,
+          "force_RMSE_eV_A": 0.00020082397635196047,
+          "force_max_eV_A": 0.0007980614900588989,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": -0.001423886904376559,
+          "energy_error_eV": 0.001423886904376559,
+          "force_RMSE_eV_A": 0.00020091529655473123,
+          "force_max_eV_A": 0.0007927492260932922,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": -0.0014238344156183302,
+          "energy_error_eV": 0.0014238344156183302,
+          "force_RMSE_eV_A": 0.0002008278303211177,
+          "force_max_eV_A": 0.0007983595132827759,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": -0.0014165728789521381,
+          "energy_error_eV": 0.0014165728789521381,
+          "force_RMSE_eV_A": 0.00020079294566031572,
+          "force_max_eV_A": 0.0007653534412384033,
+          "checks": {
+            "energy": true,
+            "force_RMSE": true,
+            "force_max": true
+          },
+          "passed": true
+        }
+      ]
+    },
+    {
+      "id": "PMDI_fixed_geometry_triplet",
+      "charge": 0,
+      "mult": 3,
+      "atoms": 42,
+      "energy_tolerance_eV": 0.004200000000000001,
+      "maximum_energy_error_eV": 0.027435715863248333,
+      "maximum_force_RMSE_eV_A": 0.02894793625193591,
+      "maximum_force_error_eV_A": 0.1381826400756836,
+      "passed": false,
+      "frames": [
+        {
+          "frame": 0,
+          "signed_energy_difference_eV": -0.027434271050879033,
+          "energy_error_eV": 0.027434271050879033,
+          "force_RMSE_eV_A": 0.02894793625193591,
+          "force_max_eV_A": 0.1156153678894043,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 1,
+          "signed_energy_difference_eV": -0.027203696510696318,
+          "energy_error_eV": 0.027203696510696318,
+          "force_RMSE_eV_A": 0.027977068525124403,
+          "force_max_eV_A": 0.10938358306884766,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 2,
+          "signed_energy_difference_eV": -0.027435715863248333,
+          "energy_error_eV": 0.027435715863248333,
+          "force_RMSE_eV_A": 0.028947810521934025,
+          "force_max_eV_A": 0.11561298370361328,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        },
+        {
+          "frame": 3,
+          "signed_energy_difference_eV": -0.027433561142970575,
+          "energy_error_eV": 0.027433561142970575,
+          "force_RMSE_eV_A": 0.028947816729605114,
+          "force_max_eV_A": 0.1381826400756836,
+          "checks": {
+            "energy": false,
+            "force_RMSE": false,
+            "force_max": false
+          },
+          "passed": false
+        }
+      ]
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_nitro_2026-10-23/panel/plan.json": "75bf39f032ac8e7d8da696ed668f6d661033afc38c27001a783714705c7fdaca",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_nitro_2026-10-23/legacy_points.json": "c8d2f168d04bb4127d329a763ec011f393314a962427148fcf1af3d6630e7bf9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-24_v100_reference_02/status.json": "823df148691ae234a85d0baff8d25f3b13a5f904d530b06ec9bedb5aeb3407a5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_uma_points.py": "55b606bfd55ab9de3fde7238324624472222c8076d00708c12666706bce4df8b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/uma_parity.py": "62c7aed3f0cb44af0e7a16279b602b60b9a33124e416f7fcced9033c1d11a422"
+  }
+}
