@@ -1,0 +1,146 @@
+{
+  "status": "state_records_verified",
+  "owner": {
+    "host": "lambda1",
+    "pid": 3483922,
+    "process_start": "516544597"
+  },
+  "task": {
+    "smiles": "C[C@H](C[C@@H](C[C@H](C[C@@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+    "mapped_smiles": "ClCc1ccc([C@@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [],
+    "site_states": [
+      "styrene",
+      "benzyl_chloride",
+      "benzyl_chloride",
+      "benzyl_chloride",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CCW",
+      "CW",
+      "CCW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 91,
+    "charge": 0,
+    "model_loading_per_repeat": 0.0,
+    "model_conversion_per_reactive_site": 0.0,
+    "graph_sha256": "7926e35bea6f148b3834523aebcb7d4e41a93e132b9509a920c137f780d19378",
+    "role": "interaction_method_control; not synthesis admission",
+    "ETKDG_seed": 20261022,
+    "configuration_label": "alternating",
+    "seed_source": "ETKDG/MMFF 20261022",
+    "mult": 1,
+    "key": "alternating__occ_none__conf018",
+    "initial_geometry_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_revision_2026-10-22/alternating/input.xyz",
+    "initial_geometry_source_sha256": "cc946ce3b8185b20ee49f7740b868add80e878d8b40214ffaabd0c68804bf7c8",
+    "model_key": "alternating__occ_none",
+    "candidate_id": "exp_phthalimide_control",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "alternating",
+    "target": "final_CREST_index_17",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "pi_groups": [],
+    "active_basis_functions": 2134,
+    "search_rank": 18,
+    "source_conformer_index": 17,
+    "source_GFN2_energy_Ha": -128.75238587,
+    "starting_geometry_source_role": "final_CREST_conformer",
+    "source_reference_key": null
+  },
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest",
+  "started": 1792915270.6853824,
+  "geometry_parent": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_geometry_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest",
+  "GPU_resource_qualification": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-24_CREST_V100/alternating__occ_none_point80",
+  "native_G_computed": false,
+  "E_smd_eV": -82892.86015757726,
+  "observed_peak_GPU_MiB": 20752,
+  "physical_QC": "passed",
+  "physical_QC_source": "Exact-byte inherited stationary geometry and independent total-energy derivatives",
+  "topology_QC": "ok",
+  "gradient_max_Ha_Bohr": 1.878192242969843e-05,
+  "conservative_total_force_check": {
+    "geometry_sha256": "3f905b0386ee238fef6443fb0cf2667e96c95857fe4eb81fd7845c4a945f15e6",
+    "checks": [
+      {
+        "atom": 28,
+        "axis": 0,
+        "step_Bohr": 0.0005,
+        "analytic": 1.2365575909135777e-05,
+        "numerical": 1.236185198649764e-05,
+        "absolute_error": 3.7239226381366453e-09
+      },
+      {
+        "atom": 28,
+        "axis": 0,
+        "step_Bohr": 0.001,
+        "analytic": 1.2365575909135777e-05,
+        "numerical": 1.2355712897260673e-05,
+        "absolute_error": 9.863011875103911e-09
+      },
+      {
+        "atom": 20,
+        "axis": 0,
+        "step_Bohr": 0.0005,
+        "analytic": -1.878192242969843e-05,
+        "numerical": -1.8765149434329942e-05,
+        "absolute_error": 1.6772995368487253e-08
+      },
+      {
+        "atom": 20,
+        "axis": 0,
+        "step_Bohr": 0.001,
+        "analytic": -1.878192242969843e-05,
+        "numerical": -1.8701484805205837e-05,
+        "absolute_error": 8.043762449259223e-08
+      }
+    ],
+    "passed": true,
+    "acceptance_Ha_Bohr": 1e-06
+  },
+  "output_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/opt.xyz": "3f905b0386ee238fef6443fb0cf2667e96c95857fe4eb81fd7845c4a945f15e6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/result.json": "562a7c40eb9f510feff3999b86bc9ce6d5e3585b572490e407c1103de99fd170",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/geometry_parent.json": "9981de8a8a39e9ca611f7afaf71ab353371bd126a517b3014668a5ee5a66112b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/first_derivatives.json": "f88e4516060cdd90cb38ebb93e70ee22f24a847dd82a59dd0c25ada24791c310",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/status.json": "6ed7212bb62cbb0b1b34fb8cf7cdb9607100c49f6d35c45a61ee786719552bd3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/GC_execution.json": "4ec2f41132e4d7cb78b94ae3e89c22801af12aa53d0b1e306671eb8d16008baa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/switch_curvature.json": "1e0b403c180fceec0edd14a15db630a6056778f8df33fa384f57f511670e6597",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/contracted_R.json": "79fca2843138059e7d33aff0058637ba99179b4af1b161539f2c714a1534db29",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/bounded/status.json": "8427ff68e7c7c146b3171cfdb11615270de8f88cb3f00e5d9113c1fdd5342ae2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/bounded/build_execution/status.json": "16957876f50d138f6c59493d410015f3b797230b21746430051459b6460b35de",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/SCF_checkpoints/000/progress.json": "3effce778eced240b6fe3fcb13a92b4ce718da9b70231cf2d5063671a50ecf00",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/execution/SCF_checkpoints/001/progress.json": "5e8741f94fe67ec53645170123e97779d67f2409c8a0ce9250d57be618b6a8cd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_electronic_batch/alternating__occ_none__conf018/energy/alternating__occ_none__conf018/rest/sp/f743da86549bc774.json": "c0b0d6b03cba6da9d7d86b25902246793e43a8edfb60ef6b6a8fa29788b28132"
+  },
+  "finished": 1792916203.5465205
+}

@@ -1,0 +1,52 @@
+{
+  "status": "gate_started_scientific_start_pending",
+  "owner": {
+    "host": "lambda2",
+    "pid": 971797,
+    "process_start": "1371557046"
+  },
+  "GPU": 5,
+  "CPU_affinity": [
+    0,
+    2
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "0,2",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "5",
+    "--label",
+    "redox-conformer-geometry-batch",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_electronic/all_same__occ_none__conf001/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_electronic/all_same__occ_none__conf001/host_guard",
+    "--maximum-rss-gib",
+    "80",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/finish_polymer_electronic_gpu.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_electronic/all_same__occ_none__conf001"
+  ],
+  "started": 1792914950.59058,
+  "attempt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_electronic/all_same__occ_none__conf001/dispatch_attempts/1792914950487394872",
+  "available_RAM_bytes": 496581926912,
+  "remaining_other_promises_bytes": 112046895104.0,
+  "plan_sha256": "2e22313ed8a55f97745829ac99aebd6e35c6215d9ed86d4de56ffb435b34113e"
+}

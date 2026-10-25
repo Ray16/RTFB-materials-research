@@ -1,0 +1,20 @@
+{
+  "host": "lambda2",
+  "pid": 472382,
+  "process_start": "1370985607",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py",
+    "coordinate",
+    "--batch",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_empty_geometry_batch",
+    "--hosts",
+    "lambda1,lambda2,lambda11",
+    "--max-hours",
+    "48",
+    "--stage-root",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-23_crest_refinement"
+  ],
+  "started": 1792909236.3052347,
+  "scope": "CPU dispatcher; scientific starts counted from individual guarded workers"
+}

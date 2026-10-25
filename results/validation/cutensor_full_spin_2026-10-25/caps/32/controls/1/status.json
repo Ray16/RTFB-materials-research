@@ -1,0 +1,177 @@
+{
+  "status": "full_original_compact_equivalence_passed",
+  "mult": 1,
+  "host": "lambda5",
+  "pid": 210350,
+  "process_start": "679512670",
+  "CPU_affinity": [
+    4,
+    5
+  ],
+  "GPU": "2",
+  "started": 1792914553.6757183,
+  "arms": {
+    "original": {
+      "E_smd_eV": -3116.061936935445,
+      "E_gas_eV": -3115.929862819937,
+      "geometry_level_E_Ha": -114.35113077553606,
+      "coordinates_A": [
+        [
+          -0.00357463,
+          -2.48e-05,
+          0.0
+        ],
+        [
+          1.20204708,
+          5.377e-05,
+          -0.0
+        ],
+        [
+          -0.60422155,
+          0.94582633,
+          -0.0
+        ],
+        [
+          -0.6042509,
+          -0.9458553,
+          0.0
+        ]
+      ]
+    },
+    "compact": {
+      "E_smd_eV": -3116.061936935443,
+      "E_gas_eV": -3115.9298628199367,
+      "geometry_level_E_Ha": -114.351130775536,
+      "coordinates_A": [
+        [
+          -0.00357463,
+          -2.48e-05,
+          0.0
+        ],
+        [
+          1.20204708,
+          5.377e-05,
+          -0.0
+        ],
+        [
+          -0.60422155,
+          0.94582633,
+          0.0
+        ],
+        [
+          -0.6042509,
+          -0.9458553,
+          0.0
+        ]
+      ]
+    }
+  },
+  "differences": {
+    "maximum_energy_difference_eV": 1.8189894035458565e-12,
+    "geometry_level_energy_difference_Ha": 5.684341886080802e-14,
+    "maximum_coordinate_difference_A": 0.0,
+    "maximum_gradient_difference": 1.771673086015113e-14,
+    "maximum_Hessian_difference": 1.5194068225810042e-11
+  },
+  "evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/input.xyz": "ef77aa58c2eac5ad7a1b9daa62c8e67dc167a4624b7d24070a343a9c91cff08a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/original/opt.xyz": "6386c84c85c33ec171ab19537461e903f3c09a48ddbeee97d61146310fe45d94",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/original/gradient.npy": "0b9187be821117d82feaba8eb16f0b9b14c4ce4c7f7a31a74acb137858ae92a7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/original/hessian.npy": "c8ad1a75cab54d461197e469821b795c67f15148fc9022e28e79dcffff01833a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/original/energy.json": "090979bc1fc3084ca0ddf4e6c09daa5d9e71c9e204d2bd97defb39dea59a8698",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/opt.xyz": "f0ccb43eaed1f0dd67d8f57d827808cfde5c9c6deff51402aefe8024026561bd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/gradient.npy": "3759cef3bf3e6bc8da68d7d46db583d01198c2a5ff96cbababae1e3fdc8d3678",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/hessian.npy": "5bf96ba548e808a16d2a9512604d44d16d66ebe116805462823ad31fb72ce85c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/energy.json": "5e3f1ecf1f8dc55e8f6736d4ea4c88e931995b735b647f8e822c505730c6929a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/bounded_gradient_solver.py": "199d93eb081f85dcca0e2bbb25200e221c8e445e219d8af4665dadfb603421c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/original_RKS_XC_response.py": "41f6995f5d35346e8c2ef41b715659f3503b83a33dd3dfb67252c7129b05254a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/released_RKS_XC_response.py": "3bba43b57fe18fc6c065f96f4f3fb91b8aea69d152c97fa6b5cd29dab94056b2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/first_derivatives.json": "7c14ee52bdab788ef2226b66c5b21ae7d78da88e11b418616c29134ee47359ac",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/contracted_get_dqsym_dx_fix_vgrids.py": "9227df0e50e0b91c0ca5e1985799c379f6d91fd6e7eda1b5674161de1a84c558",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/contracted_get_dqsym_dx_fix_K_R.py": "7e53156af76dfe67e0bee3828f4385ce468480e6ab9620c0fb3dcfff05f5b515",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/contracted_analytical_hess_solver.py": "11c330e889f6c2ecb4bf51a13d75a7615c8973c13efc91412b904b851e4ee492",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/vectorized_switch_primitive.py": "2390aa3551d2033b9aac69f3c6a207cf8378bc030a424e31c704a21420298a25",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/weighted_get_dqsym_dx_fix_vgrids.py": "79efd74cd9473221c0459d2ec3658b341d7df727cfcf8cb7422bb1a18095fe43",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/weighted_analytical_hess_solver.py": "86c7de93a54333c2a5c44ddba2bdf4b2eeb551f413ae5eed8058961c0021ea9f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rhf_bounded_get_veff.py": "c3584965526d41f48be8e6295778c2bf7a5e9d5d7d9d6bd6d86905f9cdb5f771",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/uhf_bounded_get_veff.py": "0427f93001fa0631fbc79af411ee2c4cdd43ef28fac97f3eddc2ee08f4c6d9aa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/occupied_capped_get_veff.py": "f0f79e659ea3420c0c39baee5edab25367f8634207b6f45cb64afd57233bf33b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/XC_workspace_trace.jsonl": "89f00a9ccdeda394cffb68e0676f447fb0edb8f1df62745c416322bf18820642",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/DF_stage.json": "921957f2d9e4306f1edf96026f2502d846442f2a8952f75bb617a689dbfef145",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_partial_hess_elec_0.npy": "0ca1958e59a1c951d62b98ee78e0df92046b1a008cee80af487050e46a1a94fd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_partial_hess_elec_state_identity.json": "92d467b3e42a18db5d7068f392d2ee32e796dd7bcf1ac0105a5ea61ba5f020e7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/DF_derivative_progress.json": "6743080ef2afa5f971b7652f87c643006e45188c53d4ecc107460453a9d09958",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/occupied_progress.json": "fd7ac9a6926be3b0c0730a3f6445da957346948f1453fa972301856a179399e5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_make_h1_0.npy": "e542fdd551e709d77596e2e6d89aadf7a7742b0ef52041ad130ca9793f44d749",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_make_h1_state_identity.json": "75922a2bb4fc64d26670c1c86971125e5551c3c156a99f21394713687cb7914b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/solute_component.npy": "bbcd08a73c66347b3292d12b09b42a07fa85df6dfa172a1c79050282e5d39bdd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/solute_component.json": "cf0b86266f72a459810502a49f19c62f697e6486838d528713315df2e525c5aa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_001_000032.npy": "90adac85c9f56cf7b29be9905992ed232d9f14c9ec2e85904235e34f5fc89776",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/stream_progress.json": "b86da7918fff163a905135b6a7028ca871de245550321fdbc9bd490b7e9ab183",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_001_001272.npy": "f529d21ec6062f1c44b3454b7815aa0a7ed82061a653837e464c50bfa26037f4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_002_000032.npy": "b759a3e3379dae46d5be08f90f6d24d3208066ad0bb6911520997b55bb99c9a6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_002_001272.npy": "f74de4c1b831d1f39c08d708db534d16e20003122728030a7897fe33c858fd0b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_003_000032.npy": "7f8be8f71ead8016d1b56a3a891ea3f118c4ab3c2a32ffa2da4d0402975c81ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_003_001272.npy": "b0c4825d0ec7736f7ef1ab08aa75d4ef23fbe2532d125b6b46a4085b27f76488",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_004_000032.npy": "be6761d1222868f5ffa259f9d30fa9820c9869d6b11c7b5613fc0a7742fd47df",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/switch_004_001272.npy": "51a127f944f241c531f6368595d4a902b945a3da495e24da3b8aa54c080f86d1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/occupied_workspace.json": "076b60d38feea5a36222c2be164157b0da6601370a49e633429049f8cc825730",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/DF_derivative_workspace.json": "9ec4035e6f4724888b2be59085321f51d32fdaf8aad6b5c266bcd56bb4943361",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/solute_workspace.json": "89f2024c99b559428175c64fde360cce73a5110daedde2ccd505721ccd59a5e3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/weighted_response.json": "b3ad3c003e98f9c81358070742df36e9f4ae6ddab96cc234fc74ca98574204b3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/streamed_PCM.json": "7db2a17a61ec143757b04b9c55d19b5af16df0568e28a6128a18c8ff5d2045fa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/contracted_R.json": "78f586e74f241ed633e37353469b243cb78fdc1df3f2f5539f0ab1baa41f3289",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/bounded/build_execution/original_build.py": "e2d08236dcb24a29eaa7da62864a34e8c0f803b74fc62d9712fb8201957445b0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/bounded/build_execution/compact_build.py": "e44cb0d127d686ddd3c262ef822d7eec0fba2f646eb2b45757ccd34c75569eb9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/bounded/build_execution/original_composite.py": "0e98a7954ba501874febfc7fbc1c0d89e2b21fb8fac984b5a0c2ba3e8b874709",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/bounded/build_execution/released_geometry_driver.py": "3f32fc6ea22a0897882d35189d58af7b8513c90000187a1bb62ea0439c7c2cd1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/SCF_checkpoints/000/progress.json": "6ff8112197c014c62566bb977a23199c1b81d9205651f7ba4af087b12a5577b4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/SCF_checkpoints/000/SCF.h5": "8f9db61f1e2194113962eec4ce18794fd5faec145ef6330e87fa3ee12985abfc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/SCF_checkpoints/001/progress.json": "cfc3ded125cf46d8f739a13dca4e7426a1029644d1923bbf2d392d097381130f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/SCF_checkpoints/001/SCF.h5": "fb5fbf98f38b8ec6f944c4af8662f6845498b88e58b052977c92ed3da2ea1eba"
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_workspace.py": "8a92054e0eb5ec23abbe840bc750d77e99d4d89574438b261ddbb0c15602b685",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/df_occupied_workspace.py": "912c611188590925126058106ad7b233445e56721c6d1d2ede2be1f5aa07b347",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_memory_execution.py": "fbed5df20bb50a715b0ccaf2d5cc7cf4fa6dc9f4b7f93881eb41136f7715c765",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_workspace_execution.py": "b3fd380b2a521f215dec7b732b355952363a3f2f9e28fd0bfa8c3d193e06bd3f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/workspace_qualifier_28GiB_mult1.py": "fe6e2fa5a7c887b67d0badd2ffbf61675bc30aac36e87721332045a16a6d7a53",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_weighted_response.py": "73c21d52a2831600458254611f00e19995210ad3d96c3c317d0d5eb84b09c4ca",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py": "4cb4c1d9e31f24b857205cd239db1077d251c116a1d604b07cedb845047cd484",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/weighted_response.json": "b3ad3c003e98f9c81358070742df36e9f4ae6ddab96cc234fc74ca98574204b3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/streamed_pcm_execution.py": "74c873653486aace4ab40e77d5e90b149e4095e281c1225025158b2af9abc52c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/pcm_switch_curvature_blocks.py": "9650c7d7ab8efc5ad8918487f2260656f344fa6d2ad993e2f70defd56c609820",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/streamed_PCM.json": "7db2a17a61ec143757b04b9c55d19b5af16df0568e28a6128a18c8ff5d2045fa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_first_response_workspace_v2.py": "4397958e44f362e900758737fcedff553d3223df9e9d8e625bcf8c0bda301621",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smd_first_response_workspace.py": "f35a9a58301b79b85b0b7f15ccefb37311ef49be597022c46e2a85cf2a1aeb32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/contracted_R.json": "78f586e74f241ed633e37353469b243cb78fdc1df3f2f5539f0ab1baa41f3289",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/pcm_solute_workspace.py": "1f107480f894aa4e621bc65f79cc1635c178065fd2e5d5555918856434aa7d5f",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rks.py": "cdf0dfdc9e0c21dad0eaab0e33d415bcf20f2db8373a608983b471ac93b31df2",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/uks.py": "ad231a0c3ba76fcda03e4863d0f686117d31188b9ec13d0297f890bd18ebf990",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/solute_workspace.json": "89f2024c99b559428175c64fde360cce73a5110daedde2ccd505721ccd59a5e3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/DF_derivative_workspace.json": "9ec4035e6f4724888b2be59085321f51d32fdaf8aad6b5c266bcd56bb4943361",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/df_derivative_workspace.py": "873d2162d9020890365ab5ce05e7623cd1c72001ccecda4cdf3655d23a17b1e7",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py": "45ef4f502fcc8a13de662c995b7dbf7be70f9f89c1e17f4f877b339b08c43b43",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/uhf.py": "e4f8e50be108fee472b4832c6ab849cd0620d8abae21c26b84bcef0b2193a3d0",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_partial_hess_elec_0.npy": "0ca1958e59a1c951d62b98ee78e0df92046b1a008cee80af487050e46a1a94fd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_make_h1_0.npy": "e542fdd551e709d77596e2e6d89aadf7a7742b0ef52041ad130ca9793f44d749",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/occupied_workspace.json": "076b60d38feea5a36222c2be164157b0da6601370a49e633429049f8cc825730",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_partial_hess_elec_state_identity.json": "92d467b3e42a18db5d7068f392d2ee32e796dd7bcf1ac0105a5ea61ba5f020e7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/cutensor_full_spin_2026-10-25/caps/32/controls/1/compact/execution/rks_make_h1_state_identity.json": "75922a2bb4fc64d26670c1c86971125e5551c3c156a99f21394713687cb7914b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_df_occupied_workspace.py": "0a852b03c8b66abe066066bfefbc3294cfbb7a576e1fc830aacd505d6e7d9ba2"
+  },
+  "scientific_model_changed": false,
+  "finished": 1792914609.2790208,
+  "execution_workspace_GiB": 28.0,
+  "control_body_change": "Execution adapter path and workspace argument only; quantum models and acceptance thresholds unchanged",
+  "streamed_weighted_checks_passed": true,
+  "solute_workspace_checks_passed": true,
+  "DF_derivative_checks_passed": true,
+  "occupied_block_checks_passed": true,
+  "occupied_cap": 32,
+  "observed_peak_GPU_MiB": 782,
+  "qualification_scope": "Four-atom full replay only; full molecular workflow retains the 32-GiB device requirement",
+  "large_resource_qualified": false,
+  "native_G_production_qualified": false
+}

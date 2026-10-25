@@ -1,9 +1,9 @@
 {
-  "checked_UTC": "2026-10-24T17:34:15Z",
+  "checked_UTC": "2026-10-25T09:50:26.827673+00:00",
   "review_type": "assistant rendered-page inspection separate from compiler report",
   "documents": {
-    "manuscript": "b739e06b7c974b5631a6a3615c7839c28a283b2a8609508069ce8e8b1f1837e1",
-    "supporting_information": "4374fb2d7163a19a9ec87bc2f2011cebf4914f0757178fb1e75988375a387649"
+    "manuscript": "76398036b6fc669a817691a6ddf9c60e4d6b32e8d5478147417c2b688e38a16d",
+    "supporting_information": "e6199f30dd84ffb84765c305c12384abdf4341690c708511eb9d67553037a707"
   },
   "contact_sheets_reviewed": {
     "manuscript": [
@@ -39,27 +39,29 @@
       11,
       12,
       13,
-      14
+      14,
+      15
     ]
   },
   "detail_pages_reviewed": {
-    "manuscript": [],
+    "manuscript": [
+      1,
+      10
+    ],
     "supporting_information": [
-      12,
-      14
+      5
     ]
   },
   "findings": [
-    "All final main and SI pages reviewed in contact sheets; no clipping or figure/caption overlap.",
-    "Main extracted text is identical to the preceding checked revision.",
-    "SI Section 8.2 explains default routing, fixed electronic-state calculators, source/cache identities and DFT/SMD thermochemistry scope.",
-    "The software documentation citation and URL render correctly; both documents have zero unresolved references and overfull boxes.",
-    "No Nitro speedup, completed exact PMDI cycle or broader conformer convergence is claimed."
+    "All final main and SI pages render without clipping or figure/caption overlap.",
+    "New first-site PMDI context penalties and six-row rotor-sensitivity table are legible; exact open-chain model and residual chloride sites remain explicit.",
+    "No complete paired-state free energy, converged conformer ensemble or material eligibility is claimed.",
+    "Compiler reports zero overfull boxes and resolved references in both documents."
   ],
   "remaining_submission_items": [
-    "Matched exact-candidate occupancy thermochemistry and broader conformer/configuration convergence",
-    "Exact-route selectivity/core retention and material evidence",
-    "Public raw-state deposition, broader portability and final metadata"
+    "Exact-candidate neighbor free energy and broader conformer/configuration convergence",
+    "Route selectivity/core retention and usable material properties",
+    "Public raw-state deposition and final author/data metadata"
   ],
-  "build_sha256": "d80b55135e37adf3fca2a0eaebf216813bdc9a9d67964d2019a4dbe4f27dc910"
+  "build_sha256": "2a4aac9c3c7c835cf16fcd56602b41f83f5c88ba2993ec409c9bcbbf445c4b49"
 }

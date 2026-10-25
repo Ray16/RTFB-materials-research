@@ -1,0 +1,21 @@
+{
+  "status": "preserved_native_failure_diagnosed_to_orbital_response",
+  "checked": 1792922345.9689784,
+  "error": "Krylov subspace iterations diverge",
+  "source_status": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json",
+  "SCF_energy_Ha": -3865.520740797464,
+  "occupied_orbitals": 285,
+  "virtual_orbitals": 1134,
+  "HOMO_LUMO_gap_Ha": 0.07491766411593254,
+  "HOMO_LUMO_gap_eV": 2.038613494905835,
+  "MO_energy_all_finite": true,
+  "memory_allocation_stage_passed": true,
+  "preserved_unqualified_components": [
+    "pure-solute partial electronic Hessian",
+    "first-order MO perturbation H1"
+  ],
+  "full_Hessian_qualified": false,
+  "G_available": false,
+  "scientific_interpretation": "The response solver failed after finite-gap converged SCF and derivative intermediates; the cause is not yet assigned to physical instability or numerical conditioning.",
+  "next_test": "Isolate fixed-orbital response using saved MOs/H1; verify true equation residual and small complete-spin controls before any native resubmission. Do not weaken convergence or infer a minimum from intermediates."
+}

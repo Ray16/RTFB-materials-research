@@ -1,0 +1,52 @@
+{
+  "status": "gate_started_scientific_start_pending",
+  "owner": {
+    "host": "lambda1",
+    "pid": 3945431,
+    "process_start": "517173431"
+  },
+  "GPU": 0,
+  "CPU_affinity": [
+    8,
+    9
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "8,9",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "0",
+    "--label",
+    "redox-conformer-geometry-batch",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf019/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf019/host_guard",
+    "--maximum-rss-gib",
+    "80.0",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/finish_polymer_electronic_gpu.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf019"
+  ],
+  "started": 1792921558.6002183,
+  "attempt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf019/dispatch_attempts/1792921558497680784",
+  "available_RAM_bytes": 262100725760,
+  "remaining_other_promises_bytes": 52589498368.0,
+  "plan_sha256": "7990241d1ed5cec6f91c64c97d063b207f3c1b0b6e444f7402d15de2dc1bea93"
+}

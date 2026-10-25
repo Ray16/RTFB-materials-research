@@ -1,0 +1,51 @@
+{
+  "status": "verified_first_site_and_software_milestone_remaining_physics_pending",
+  "checked": 1792922082.0268006,
+  "benchmark": "39/39 retrospective endpoints retained",
+  "first_site_review": "results/reviews/2026-10-25/pmdi_first_site_grafting_checked/summary.json",
+  "first_site_polymer_minus_local_kJ_mol": [
+    5.344179018502119,
+    6.1106482288306925
+  ],
+  "paired_native": {
+    "status": "streamed_native_pilot_failed_preserved",
+    "owner": {
+      "host": "lambda2",
+      "pid": 1330860,
+      "process_start": "1371976565"
+    },
+    "unqualified_checkpoints_present": {
+      "rks_partial_hess_elec_0.npy": true,
+      "rks_make_h1_0.npy": true
+    },
+    "G_available": false,
+    "error": "RuntimeError('Krylov subspace iterations diverge')",
+    "finished": 1792922227.0248559
+  },
+  "broader_geometry_reports": {
+    "geometry_stage_failed_preserved": 14,
+    "GPU_geometry_stage_running": 3,
+    "stationary_geometry_checked_active_parent_and_native_minimum_pending": 8
+  },
+  "broader_electronic_dispatch_report": {
+    "checked_electronic": 6,
+    "running": 2,
+    "last_update": 1792922069.3328738
+  },
+  "new_geometry_dispatch_held": true,
+  "repair_retry": "results/polymer_models/campaigns/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/startup_verification.json",
+  "tests": "results/publication_readiness/software_checks.json",
+  "manuscript": "manuscript/evidence/2026-10-25_first_graft_checked/manifest.json",
+  "paper_pages": 17,
+  "SI_pages": 15,
+  "slides": 74,
+  "submission_ready": false,
+  "repository_wide_refactor": "deferred until scientific task 4 is addressed",
+  "remaining": [
+    "Paired native G and matched neighboring-graft cycle",
+    "Conformer and configuration convergence; resolve force-consistency failures without loosening gates",
+    "Exact-route selectivity/core retention and usable material properties",
+    "Own H100 Nitro parity/timing measurement",
+    "Updated raw-state public archive and author/data metadata"
+  ]
+}

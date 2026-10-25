@@ -23,6 +23,15 @@ def test_checked_binding_returns_graph_key_not_pose_key(component):
     assert module.component_binding(review, energy, thermal) == 'pair'
 
 
+def test_equivalent_runtime_variants_cannot_silently_replace_different_science(component):
+    module, review, energy, thermal = component
+    old = deepcopy(review['states'][0]); new = deepcopy(old)
+    module.equivalent_component(old, new)
+    new['G_eV'] += .01
+    with pytest.raises(ValueError, match='scientific comparison'):
+        module.equivalent_component(old, new)
+
+
 @pytest.mark.parametrize('change', ['unchecked', 'wrong_site', 'wrong_state', 'nan_G', 'wrong_energy'])
 def test_wrong_or_unchecked_native_component_cannot_reach_registry(component, change):
     module, review, energy, thermal = component

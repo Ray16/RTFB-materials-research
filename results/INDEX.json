@@ -137,13 +137,13 @@
       "segment_deformation_audit": "results/reviews/2026-10-23/segment_deformation_audit_v2/summary.json",
       "signed_deformation_figure": "results/figures/polymer_models/segment_deformation_components.pdf",
       "conformer_refinement": {
-        "guide": "results/polymer_models/campaigns/2026-10-23_crest_refinement/README.md",
-        "request": "results/polymer_models/campaigns/2026-10-23_crest_refinement/request.json",
-        "current": "results/polymer_models/campaigns/2026-10-23_crest_refinement/current.json",
-        "status": "results/polymer_models/campaigns/2026-10-23_crest_refinement/coordinator.json",
-        "preparation": "results/polymer_models/campaigns/2026-10-23_crest_refinement/preparation_status.json",
-        "raw_root": "calcs/polymer_models/2026-10-23_crest_refinement",
-        "scope": "Final-CREST sources only; frozen DFT start counts and native counts are reported separately"
+        "guide": "results/polymer_models/campaigns/2026-10-25_empty_geometry_batch/README.md",
+        "geometry_plan": "results/polymer_models/campaigns/2026-10-25_empty_geometry_batch/batch.json",
+        "electronic_plan": "results/polymer_models/campaigns/2026-10-25_empty_electronic_batch/batch.json",
+        "dispatch_hold": "results/polymer_models/campaigns/2026-10-25_empty_geometry_batch/dispatch_hold.json",
+        "status": "new_geometry_dispatch_held_after_force_failures_existing_workers_and_dependency_checked_energies_continue",
+        "raw_root": "calcs/polymer_models/2026-10-25_empty_geometry_batch",
+        "sampling_convergence_verified": false
       },
       "candidate_occupancy": {
         "current": "results/polymer_models/candidate_occupancy/current.json",
@@ -213,16 +213,17 @@
         "plan": "results/validation/pmdi_pair_weighted_response_2026-10-24/plan.json",
         "source_manifest": "results/validation/pmdi_pair_weighted_response_2026-10-24/launch.json",
         "raw_root": "calcs/validation/pmdi_pair_weighted_response_2026-10-24",
-        "scope": "Full spin/Hessian controls and exact 139-atom response pass; pure-solute workspace controls pass; fresh full native state running, G pending",
+        "scope": "Full spin/Hessian controls and exact response pass; compatible V100 runtime checkpointed partial Hessian and H1, then orbital-response Krylov solve diverged; no native G published",
         "independent_review": "results/validation/pmdi_pair_weighted_response_2026-10-24/independent_review.json",
-        "native_plan": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/plan.json",
-        "native_status": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json",
-        "native_startup": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/startup_verification.json",
+        "native_plan": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/plan.json",
+        "native_status": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json",
+        "native_startup": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/startup_verification.json",
         "historical_failed_full_native": "results/polymer_models/campaigns/2026-10-24_weighted_native/baseline__design_pmdi_ethyl__occ_2_3/failure_review.json",
-        "native_guide": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/README.md",
+        "native_guide": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/README.md",
         "solute_workspace_controls": "results/validation/solute_workspace_2026-10-24/summary.json",
         "solute_workspace_guide": "results/validation/solute_workspace_2026-10-24/README.md",
-        "publication_observer": "results/reviews/2026-10-24/pmdi_pair_native_solute_followup/observer.json"
+        "publication_observer": "results/reviews/2026-10-25/pmdi_pair_native_cutensor22_followup/observer.json",
+        "prior_solute_allocation_failure": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json"
       },
       "CREST_V100_geometry": {
         "guide": "results/polymer_models/campaigns/2026-10-24_CREST_geometry/alternating__occ_none__conf001/README.md",
@@ -241,6 +242,17 @@
         "inventory": "calcs/validation/CREST_all_same_inventory_2026-10-24/status.json",
         "raw_root": "calcs/validation/2026-10-24_CREST_V100/all_same__occ_none_point80",
         "scope": "Second completed low-level backbone configuration; bounded fixed-input energy/gradient test running; no ensemble G"
+      },
+      "first_site_grafting": {
+        "guide": "results/reviews/2026-10-25/pmdi_first_site_grafting_checked/README.md",
+        "current": "results/reviews/2026-10-25/pmdi_first_site_grafting_checked/summary.json",
+        "status": "two_balanced_first_site_reactions_checked_finite_sampled_minima",
+        "raw_roots": [
+          "calcs/polymer_models/2026-10-24_streamed_native",
+          "calcs/polymer_models/2026-10-23_crest_refinement"
+        ],
+        "manifest": "manuscript/evidence/2026-10-25_first_graft_checked/manifest.json",
+        "neighbor_free_energy": null
       }
     },
     "candidates": {
@@ -397,10 +409,10 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-24_spatial_revision/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-25_first_graft_checked/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "17-page main including TOC and 13-page SI; actual accepted spatial controls and finite conformer G differences. Matched exact PMDI cycle, broader convergence, route/material evidence and public raw-state deposition remain open.",
+      "scope": "17-page main including TOC and 15-page SI; checked exact-PMDI first-site polymer-context penalties and finite spatial controls. Neighboring-graft cycle, broader convergence, route/material evidence and public raw-state deposition remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
@@ -410,7 +422,7 @@
       "version_provenance": "Source hashes are recorded by build_check.json; publication commit is given in repository history.",
       "documents": {
         "main_pages": 17,
-        "SI_pages": 14
+        "SI_pages": 15
       }
     },
     "candidate_decisions": {
@@ -590,7 +602,7 @@
       "current": "slides/current.json",
       "pdf": "slides/redox_workflow.pdf",
       "status": "results/reviews/2026-10-24/UMA_default_slides/status.json",
-      "source_snapshot": "manuscript/evidence/2026-10-24_spatial_revision/manifest.json",
+      "source_snapshot": "manuscript/evidence/2026-10-25_first_graft_checked/manifest.json",
       "scope": "Frozen spatial-control example added; candidate values unchanged",
       "review": "results/reviews/2026-10-24/UMA_default_slides/visual_review.json",
       "pdf_sha256": "5596b52c65922e369f9b61cdd2c96566b12ad0b6a3d5b61eebc709903f521632"
@@ -614,6 +626,13 @@
       "source_manifest": "results/validation/uma_current_2026-10-24/legacy_launch.json",
       "raw_root": "calcs/uma_nitro_validation/2026-10-24_current_dispatch_legacy",
       "scope": "Current default requested backend and tested V100 fallback; H100 current-FP32/Nitro comparison pending; no solution free energy from UMA"
+    },
+    "tensor_runtime_controls": {
+      "guide": "results/validation/DF_occupied_workspace_2026-10-25/README.md",
+      "current": "results/validation/cutensor22_full_spin_2026-10-25/comparison.json",
+      "runtime": "environments/cutensor22/runtime.json",
+      "raw_root": "calcs/runtime_profiles/cutensor22_2026-10-25",
+      "status": "two_spin_full_controls_passed_large_native_response_diverged_G_pending"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

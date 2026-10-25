@@ -1,21 +1,21 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 1125,
+    "passed": 1158,
     "skipped": 1,
-    "report": "results/validation/solute_workspace_2026-10-24/regression.xml"
+    "report": "results/publication_readiness/checks_2026-10-25/full_suite.xml"
   },
   "separately_verified_skips": {
     "figure_environment": {
       "passed": 1,
-      "report": "results/validation/solute_workspace_2026-10-24/figure_test.xml"
+      "report": "results/publication_readiness/checks_2026-10-25/figure_dependency.xml"
     }
   },
   "report_sha256": {
-    "results/validation/solute_workspace_2026-10-24/regression.xml": "6223f3c908018602998b8b4252bac2db58c3c0596d8b5a569b7dcd168395b9dc",
-    "results/validation/solute_workspace_2026-10-24/figure_test.xml": "e2fd2e69dbf56f308867c9ae66e0e95bf30cd710b61835308c1f0965c554f03b"
+    "results/publication_readiness/checks_2026-10-25/full_suite.xml": "08c62f5d723a9c5619227b56507626763ec694bbe1925e14e386c02a18b11a72",
+    "results/publication_readiness/checks_2026-10-25/figure_dependency.xml": "7354b3db9c5b0baf6f0f04d8540ab14dd270d7c6c3b6637cbb58a619c0e77c90"
   },
-  "integration": "Current UMA dispatch and tested V100 fallback; 139-atom stationary geometry/canonical energies and independent response; full spin/Hessian controls for weighted response and exact pure-solute matrix storage pass. Fresh pair native state, wider conformer ensembles, H100 parity/timing and public deposition remain pending.",
+  "integration": "Balanced first-site PMDI reactions and cutoff reconstruction; dependency-gated geometry/electronic batches; occupied-orbital and auxiliary workspace controls; explicit tensor-runtime qualification and publisher identity checks. Paired native free energy, conformer convergence, H100 Nitro timing and public deposition remain pending.",
   "experimental_accuracy_inferred": false,
-  "checked": 1792868224.0339336
+  "checked": 1792921941.5724452
 }

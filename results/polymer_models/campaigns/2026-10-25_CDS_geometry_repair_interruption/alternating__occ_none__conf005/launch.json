@@ -1,0 +1,52 @@
+{
+  "status": "gate_started_scientific_start_pending",
+  "owner": {
+    "host": "lambda1",
+    "pid": 3958146,
+    "process_start": "517201101"
+  },
+  "GPU": 3,
+  "CPU_affinity": [
+    2,
+    3
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "3",
+    "--label",
+    "redox-conformer-geometry-batch",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/host_guard",
+    "--maximum-rss-gib",
+    "16",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/repair_geometry_energy_consistency.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005"
+  ],
+  "started": 1792921835.2997694,
+  "attempt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/dispatch_attempts/1792921835196499080",
+  "available_RAM_bytes": 177828052992,
+  "remaining_other_promises_bytes": 55517765632.0,
+  "plan_sha256": "de812b9bc1684fb64583c4c437cb4710a137e5082781b022799a33cd2b883d58"
+}

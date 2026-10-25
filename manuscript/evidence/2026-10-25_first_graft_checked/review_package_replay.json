@@ -1,0 +1,53 @@
+{
+  "status": "relocated_primary_package_checked",
+  "checked": 1792772839.2595263,
+  "package": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/releases/2026-10-23_scientific_review_v5",
+  "package_manifest_sha256": "c7cbd4add26829670527232c3a2b9d8e45e738c8fc1977244356dbdc032cabf6",
+  "relocated": "/tmp/redox_review_relocation_r020pgyl/package",
+  "cwd": "/",
+  "arithmetic_interpreter": "/usr/bin/python3 -I -S",
+  "original_checkout_and_calculation_opens_blocked_by_audit_hook": true,
+  "negative_checks": [
+    {
+      "case": "changed_bytes",
+      "rejected": true,
+      "expected_failure": "artifact differs"
+    },
+    {
+      "case": "rehashed_thermal_identity",
+      "rejected": true,
+      "expected_failure": "Thermal identity mismatch"
+    },
+    {
+      "case": "rehashed_unbalanced_reaction",
+      "rejected": true,
+      "expected_failure": "balance fails"
+    },
+    {
+      "case": "external_path",
+      "rejected": true,
+      "expected_failure": "escapes root"
+    },
+    {
+      "case": "rehashed_basis_promotion",
+      "rejected": true,
+      "expected_failure": "Alternative basis scope"
+    },
+    {
+      "case": "rehashed_electronic_spin",
+      "rejected": true,
+      "expected_failure": "Electronic-only geometry/energy identity or scope differs"
+    },
+    {
+      "case": "rehashed_electronic_G_promotion",
+      "rejected": true,
+      "expected_failure": "Electronic-only geometry/energy identity or scope differs"
+    }
+  ],
+  "optional_Hessian_reconstruction": true,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_release_package.py": "69ae172531bbd504e41aba448793ae53315f8b433eaef48bdc0080808cfb02e5"
+  },
+  "code_and_dataset_publicly_deposited": false,
+  "full_GPU_environment_restored": false
+}

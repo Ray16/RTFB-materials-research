@@ -1,0 +1,52 @@
+{
+  "status": "gate_started_scientific_start_pending",
+  "owner": {
+    "host": "lambda2",
+    "pid": 1310388,
+    "process_start": "1371951359"
+  },
+  "GPU": 0,
+  "CPU_affinity": [
+    0,
+    2
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "0,2",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "0",
+    "--label",
+    "redox-conformer-geometry-batch",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf002/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf002/host_guard",
+    "--maximum-rss-gib",
+    "80.0",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/finish_polymer_electronic_gpu.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf002"
+  ],
+  "started": 1792918893.7192101,
+  "attempt": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_electronic_interruption_recovery/alternating__occ_none__conf002/dispatch_attempts/1792918893616659934",
+  "available_RAM_bytes": 511954829312,
+  "remaining_other_promises_bytes": 31994540032.0,
+  "plan_sha256": "75228f8aa795b2dd0ae8dee8993b56fd4420cdefa90bce8dbaa1369553cf4f46"
+}

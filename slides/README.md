@@ -11,11 +11,9 @@ comparisons follow the **Backup** divider.
 
 The workflow now screens precursor/attachment feasibility before full redox
 properties, then compares dimers, trimers and stacking. The main story retains
-the BQ candidates as **base required**, reflecting favorable modeled DBU/DIPEA
-thermodynamics. Attachment selectivity and yield remain untested.
+the BQ candidates as **base required** under conditional base-assisted models. DBU capture differs from the MeCN pKa anchor; DIPEA lacks an exact checked experimental anchor. Attachment selectivity and yield remain untested.
 
-The initial grafting-reference checkpoint is in Backup, immediately after the
-divider. Its dated values and plot are frozen with the submission review; the
+The current 74-page deck has 16 main slides and 58 backup pages. New first-site PMDI grafting results appear on page 19, after the polymer-capacity bounds. The initial grafting-reference checkpoint follows later in Backup. Its dated values and plot are frozen with the submission review; the
 [grafting visual report](../results/grafting/index.html) continues updating as
 the finite calculation queue finishes.
 

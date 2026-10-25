@@ -38,6 +38,13 @@ def component_binding(review, energy, thermal):
     return thermal['task']['model_key']
 
 
+def equivalent_component(old, new):
+    if (old['key'] != new['key'] or old['occupied_sites'] != new['occupied_sites']
+            or not all(math.isfinite(row[name]) for row in (old, new) for name in ('E_eV', 'G_eV'))
+            or any(abs(old[name] - new[name]) > 1e-8 for name in ('E_eV', 'G_eV'))):
+        raise ValueError('A different completed component requires scientific comparison before replacement')
+
+
 def publish(base, campaign, review_path):
     review = json.loads(review_path.read_text())
     api.verify_sources(review['source_sha256'])
@@ -56,12 +63,37 @@ def publish(base, campaign, review_path):
     coordinator.same_model(api.read_plan(Path(cases[0]['campaign'])), plan)
     api.verify_sources(plan['producer_sha256'])
     api.verify_sources(plan['input_sha256'])
+    if plan.get('runtime_profile'):
+        runtime = json.loads((campaign / 'tensor_runtime/status.json').read_text())
+        profile_path = Path(plan['runtime_profile']); profile = json.loads(profile_path.read_text())
+        native_owner = json.loads((campaign / 'streamed_native/status.json').read_text())['owner']
+        worker = ROOT / 'scripts/fleet/tensor_runtime_worker.py'
+        if (runtime['status'] != 'task_returned_under_checked_cutensor_runtime'
+                or runtime['engine'] != 'cutensor' or runtime['profile_sha256'] != api.digest(profile_path)
+                or runtime['versions'] != profile['versions'] or runtime['library_sha256'] != profile['library_sha256']
+                or runtime['source_sha256'] != api.digest(worker) or runtime['pid'] != native_owner['pid']
+                or runtime['program'] != plan['execution_driver'] or runtime['total_GPU_bytes'] < 32 * 2**30):
+            raise ValueError('Completed native result lacks its declared actual contraction runtime')
     if not plan.get('recovery_scope'):
         raise ValueError('A recoverable model scope is required by the cycle collector')
     registry_path = base / 'baseline_recoveries.json'
     with registry_path.with_suffix('.lock').open('a+') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX)
         registry = json.loads(registry_path.read_text())
+        existing = registry.get('overrides', {}).get(key, {})
+        if existing.get('independent_review') and existing.get('campaign') != str(campaign):
+            previous_path = Path(existing['independent_review'])
+            if api.digest(previous_path) != existing['independent_review_sha256']:
+                raise ValueError('The previously published component review changed')
+            previous = json.loads(previous_path.read_text())
+            api.verify_sources(previous['source_sha256'])
+            equivalent_component(previous['states'][0], review['states'][0])
+            if api.digest(Path(previous['states'][0]['state_dir']) / 'opt.xyz') != api.digest(Path(review['states'][0]['state_dir']) / 'opt.xyz'):
+                raise ValueError('Separate completed components use different geometries')
+            return dict(status='equivalent_native_component_verified_existing_publication_retained',
+                key=key, campaign=str(campaign), existing_campaign=existing['campaign'],
+                independent_review=str(review_path), registry=str(registry_path),
+                conformer_convergence_established=False, synthesis_admission=False)
         history = base / 'baseline_observer_history'
         history.mkdir(exist_ok=True)
         archived = history / f'registry_before_checked_native_publication_{time.time_ns()}.json'
@@ -105,6 +137,9 @@ def main():
             path = campaign / 'streamed_native/status.json'
             row = json.loads(path.read_text()) if path.exists() else {}
             status = row.get('status', '')
+            runtime_path = campaign / 'tensor_runtime/status.json'
+            if not row and runtime_path.exists() and json.loads(runtime_path.read_text()).get('status') == 'runtime_or_task_failed_preserved':
+                raise ValueError('Declared contraction runtime failed before the native stage; outputs and registry preserved')
             if status == 'streamed_native_case_passed_independent_review_pending' and 'finished' in row:
                 identity = row['owner']
                 if identity['host'].split('.')[0] != socket.gethostname().split('.')[0]:

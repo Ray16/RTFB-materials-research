@@ -1,0 +1,87 @@
+{
+  "status": "geometry_stage_failed_preserved",
+  "task": {
+    "smiles": "C[C@H](C[C@@H](C[C@H](C[C@@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+    "mapped_smiles": "ClCc1ccc([C@@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [],
+    "site_states": [
+      "styrene",
+      "benzyl_chloride",
+      "benzyl_chloride",
+      "benzyl_chloride",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CCW",
+      "CW",
+      "CCW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 91,
+    "charge": 0,
+    "model_loading_per_repeat": 0.0,
+    "model_conversion_per_reactive_site": 0.0,
+    "graph_sha256": "7926e35bea6f148b3834523aebcb7d4e41a93e132b9509a920c137f780d19378",
+    "role": "interaction_method_control; not synthesis admission",
+    "ETKDG_seed": 20261022,
+    "configuration_label": "alternating",
+    "seed_source": "ETKDG/MMFF 20261022",
+    "mult": 1,
+    "key": "alternating__occ_none__conf004",
+    "initial_geometry_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_revision_2026-10-22/alternating/input.xyz",
+    "initial_geometry_source_sha256": "cc946ce3b8185b20ee49f7740b868add80e878d8b40214ffaabd0c68804bf7c8",
+    "model_key": "alternating__occ_none",
+    "candidate_id": "exp_phthalimide_control",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "alternating",
+    "target": "final_CREST_index_3",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "pi_groups": [],
+    "active_basis_functions": 2134,
+    "search_rank": 4,
+    "source_conformer_index": 3,
+    "source_GFN2_energy_Ha": -128.75263534,
+    "starting_geometry_source_role": "final_CREST_conformer",
+    "source_reference_key": null
+  },
+  "owner": {
+    "host": "lambda2",
+    "pid": 473464,
+    "process_start": "1370986797"
+  },
+  "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_empty_geometry_batch/alternating__occ_none__conf004/energy/alternating__occ_none__conf004/rest",
+  "started": 1792909248.7029033,
+  "active_electronic_energy_computed": false,
+  "native_Hessian_qualified": false,
+  "G_computed": false,
+  "error": "KeyboardInterrupt('Owned geometry stop; checkpoints preserved')",
+  "finished": 1792917818.4662642
+}

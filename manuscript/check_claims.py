@@ -9,6 +9,75 @@ from collections import Counter
 from pathlib import Path
 
 
+def audit_first_site_grafting(load):
+    """Reconstruct exact-candidate site and capped/polymer differences offline."""
+    try:
+        report = load('pmdi_first_site_grafting.json')
+    except FileNotFoundError:
+        return None
+    pair = load('pmdi_pair_electronic.json')
+    if (report['status'] != 'available_first_site_grafting_independently_reconstructed'
+            or report['solvent'] != 'acetonitrile' or report['temperature_K'] != 298.15
+            or report['base'] != 'DBU' or report['synthesis_admission']
+            or report['conformer_convergence_established'] or report['paired_G_eV'] is not None
+            or report['neighbor_deltaDeltaG_kJ_mol'] is not None):
+        raise ValueError('First-site evidence scope or missing neighboring G changed')
+    factor = 1.602176634e-19 * 6.02214076e23 / 1000
+    if report['candidate_id'] != 'design_pmdi_ethyl' or abs(report['conversion_kJ_mol_per_eV'] - factor) > 1e-12:
+        raise ValueError('Exact-candidate identity or energy conversion changed')
+    correction = -.00831446261815324 * 298.15 * math.log(.08205736608096 * 298.15)
+    if abs(correction - report['contact_pair_standard_state_correction_kJ_mol']) > 1e-10:
+        raise ValueError('The contact-pair standard-state correction does not reconstruct')
+    sites = {row['site']: row for row in report['singles']}
+    if len(report['singles']) != 2 or set(sites) != {2, 3}:
+        raise ValueError('Exactly the two declared single-site graphs are required')
+    if any(row['task']['candidate_id'] != report['candidate_id'] for row in sites.values()):
+        raise ValueError('First-site components belong to another exact candidate')
+    results = {}; placement = {}
+    for cutoff in ('25', '50', '100'):
+        g = {name: row['G_by_cutoff_eV'][cutoff] for name, row in report['reagent_states'].items()}
+        constants = dict(free_ions=g['protonated'] + g['chloride'] - g['base'] - g['precursor'],
+            contact_pair=g['pair'] - g['base'] - g['precursor'] + correction / factor)
+        empty = report['empty_reference']['G_by_cutoff_eV'][cutoff]
+        cap = report['local_capped_reference']['G_by_cutoff_eV'][cutoff]
+        for name, value in constants.items():
+            if abs(value - report['shared_constant_eV_by_cutoff'][cutoff][name]) > 1e-8:
+                raise ValueError('The shared first-graft reagent term does not reconstruct')
+        for site, row in sites.items():
+            product = row['state_G_by_cutoff_eV'][cutoff]
+            target = row['by_cutoff'][cutoff]
+            relative = (product + g['local'] - empty - cap) * factor
+            if abs(relative - target['polymer_minus_capped_kJ_mol']) > 1e-7:
+                raise ValueError('Base-canceling local/polymer grafting difference does not reconstruct')
+            for name, value in constants.items():
+                first = (product - empty + value) * factor
+                local = (cap - g['local'] + value) * factor
+                if (not math.isfinite(first) or abs(first - target['first_graft_kJ_mol'][name]) > 1e-7
+                        or abs(local - target['capped_graft_kJ_mol'][name]) > 1e-7
+                        or abs(first - local - relative) > 1e-7):
+                    raise ValueError('The first-site/capped reaction sums or closure differ')
+            if not all(v['atom_balanced'] and v['charge_balanced'] for v in row['balances'].values()):
+                raise ValueError('A first-site reaction lacks checked atom/charge balance')
+            if cutoff == '50':
+                results[str(site)] = dict(first_graft_kJ_mol=target['first_graft_kJ_mol'],
+                    polymer_minus_capped_kJ_mol=relative)
+        placement[cutoff] = (sites[2]['state_G_by_cutoff_eV'][cutoff] - sites[3]['state_G_by_cutoff_eV'][cutoff]) * factor
+    deltaE = (sites[2]['E_eV'] - sites[3]['E_eV']) * factor
+    if (abs(deltaE - report['placement']['site2_minus_site3_deltaE_kJ_mol']) > 1e-7
+            or abs(placement['50'] - report['placement']['site2_minus_site3_deltaG_kJ_mol']) > 1e-7):
+        raise ValueError('Site-placement energy/free-energy differences do not reconstruct')
+    if (pair['status'] != 'state_records_verified' or pair['physical_QC'] != 'passed'
+            or pair['task']['occupied_sites'] != [2, 3]
+            or pair['task']['candidate_id'] != report['candidate_id']):
+        raise ValueError('The paired electronic reference is not qualified within scope')
+    cycle = (pair['E_smd_eV'] + report['empty_reference']['E_eV'] - sites[2]['E_eV'] - sites[3]['E_eV']) * factor
+    if abs(cycle - report['electronic_neighbor_cycle_kJ_mol']) > 1e-7:
+        raise ValueError('The separate electronic neighboring-site cycle does not reconstruct')
+    return dict(checked_first_site_reactions=4, sites=results, placement_deltaE_kJ_mol=deltaE,
+        placement_deltaG_by_cutoff_kJ_mol=placement, paired_native_G_available=False,
+        base_term_cancels_from_local_polymer_difference=True)
+
+
 def audit_spatial_conformers(load):
     """Recompute frozen centroid distances and within-graph free-energy gaps."""
     try:
@@ -518,6 +587,7 @@ def audit():
     cutoff = audit_thermal_settings(load)
     deployment = audit_quantum_deployment(load)
     spatial = audit_spatial_conformers(load)
+    first_site = audit_first_site_grafting(load)
     if cutoff is not None:
         if hashlib.sha256((folder / "thermal_cutoff_sensitivity.json").read_bytes()).hexdigest() != load("thermal_cutoff_review.json")["result_sha256"]:
             raise ValueError("Frozen thermal-cutoff result differs from its independent source review")
@@ -546,6 +616,7 @@ def audit():
                 thermal_cutoff_sensitivity=cutoff,
                 quantum_environment=deployment,
                 spatial_conformers=spatial,
+                first_site_grafting=first_site,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

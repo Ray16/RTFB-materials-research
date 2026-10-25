@@ -1,0 +1,53 @@
+{
+  "host": "lambda5",
+  "gate_pid": 52891,
+  "process_start": "679120825",
+  "GPU": 1,
+  "CPU_affinity": [
+    2,
+    3
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "1",
+    "--label",
+    "redox-isolated-DF-derivative-memory-probe",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "MKL_NUM_THREADS=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/DF_occupied_large_2026-10-25/cap32_checked/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/DF_occupied_large_2026-10-25/cap32_checked/host_guard",
+    "--maximum-rss-gib",
+    "64",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_occupied_df_probe.py",
+    "run",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/DF_occupied_large_2026-10-25/cap32_checked"
+  ],
+  "started": 1792910628.4988153,
+  "capacity": {
+    "online_cpus": 32,
+    "load_1m": 1.80712890625,
+    "available_RAM_bytes": 783952056320,
+    "minimum_RAM_GiB": 192
+  },
+  "scope": "Restored fixed-solvated-orbital DF potential derivative only; no SCF or full Hessian",
+  "source_plan_sha256": "be875d1272faf2023fe69d4b913416888d4171c86a939a97bc1bd2dc822d4124"
+}
