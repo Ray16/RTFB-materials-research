@@ -1,21 +1,22 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 1158,
+    "passed": 1168,
     "skipped": 1,
-    "report": "results/publication_readiness/checks_2026-10-25/full_suite.xml"
+    "report": "results/publication_readiness/checks_2026-10-25_response/full_suite.xml"
   },
   "separately_verified_skips": {
     "figure_environment": {
       "passed": 1,
-      "report": "results/publication_readiness/checks_2026-10-25/figure_dependency.xml"
+      "report": "results/publication_readiness/checks_2026-10-25_response/figure_dependency.xml"
     }
   },
   "report_sha256": {
-    "results/publication_readiness/checks_2026-10-25/full_suite.xml": "08c62f5d723a9c5619227b56507626763ec694bbe1925e14e386c02a18b11a72",
-    "results/publication_readiness/checks_2026-10-25/figure_dependency.xml": "7354b3db9c5b0baf6f0f04d8540ab14dd270d7c6c3b6637cbb58a619c0e77c90"
+    "results/publication_readiness/checks_2026-10-25_response/full_suite.xml": "02e1d5dcba8ba5fe7ce79995a11f7d087ba5f9ecfae4396c50c1ff9880b589a2",
+    "results/publication_readiness/checks_2026-10-25_response/figure_dependency.xml": "61bc23b2bb589c4c7e2bb960e553962a1c77a0dbdf8c961772f534ab736b0c08"
   },
-  "integration": "Balanced first-site PMDI reactions and cutoff reconstruction; dependency-gated geometry/electronic batches; occupied-orbital and auxiliary workspace controls; explicit tensor-runtime qualification and publisher identity checks. Paired native free energy, conformer convergence, H100 Nitro timing and public deposition remain pending.",
+  "integration": "Residual solver and stopped-checkpoint selection tests; full spin/Hessian controls and large first-atom response; raw first-site relocated replay. Full paired G, contact-minimum treatment, ensemble convergence and public deposition remain pending.",
+  "test_harness_note": "Initial stdin-driven invocation prevented multiprocessing spawn; retained as stdin_harness_failure.xml. Standard pytest entry point passed all tests.",
   "experimental_accuracy_inferred": false,
-  "checked": 1792921941.5724452
+  "checked": 1792947985.599885
 }

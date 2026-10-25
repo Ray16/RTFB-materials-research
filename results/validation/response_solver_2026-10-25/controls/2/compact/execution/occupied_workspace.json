@@ -1,0 +1,26 @@
+{
+  "status": "occupied_block_execution_finished_requires_replay_and_physical_checks",
+  "started": 1792944921.0782158,
+  "occupied_cap": 32,
+  "batches": [],
+  "checkpoints": [
+    {
+      "stage": "uks_partial_hess_elec",
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/response_solver_2026-10-25/controls/2/compact/execution/uks_partial_hess_elec_state_identity.json",
+      "sha256": "8c052bdef6aa27d15146d6b9a218cdc33d2f71914ccae907229f04fc5da4d315"
+    },
+    {
+      "stage": "uks_make_h1",
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/response_solver_2026-10-25/controls/2/compact/execution/uks_make_h1_state_identity.json",
+      "sha256": "3a0ec50214f9a900db587a73c043ec7015c1ab687fc81d806c96f75baf1a189f"
+    }
+  ],
+  "precision": "float64",
+  "equations_changed": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/df_occupied_workspace.py": "912c611188590925126058106ad7b233445e56721c6d1d2ede2be1f5aa07b347",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/df_derivative_workspace.py": "873d2162d9020890365ab5ce05e7623cd1c72001ccecda4cdf3655d23a17b1e7",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py": "45ef4f502fcc8a13de662c995b7dbf7be70f9f89c1e17f4f877b339b08c43b43"
+  },
+  "finished": 1792944971.325918
+}

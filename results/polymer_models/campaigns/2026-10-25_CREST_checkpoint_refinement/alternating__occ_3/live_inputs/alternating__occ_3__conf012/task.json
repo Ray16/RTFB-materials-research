@@ -1,0 +1,91 @@
+{
+  "smiles": "C[C@H](C[C@@H](C[C@H](C[C@@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccccc1",
+  "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1006]([CH2:1005][C@@H:1004](c2ccc(CCl)cc2)[CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1007][C@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+  "repeat_units": 5,
+  "reactive_sites": [
+    2,
+    3,
+    4
+  ],
+  "occupied_sites": [
+    3
+  ],
+  "site_states": [
+    "styrene",
+    "benzyl_chloride",
+    "grafted",
+    "benzyl_chloride",
+    "styrene"
+  ],
+  "backbone_stereo_tags": [
+    "CW",
+    "CCW",
+    "CW",
+    "CCW"
+  ],
+  "backbone_stereo_fingerprint": [
+    [
+      2,
+      -1
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      6,
+      -1
+    ],
+    [
+      8,
+      1
+    ]
+  ],
+  "backbone_carbon_count": 10,
+  "backbone_CC_bonds": 9,
+  "chain_ends": 2,
+  "atoms": 105,
+  "charge": 0,
+  "model_loading_per_repeat": 0.2,
+  "model_conversion_per_reactive_site": 0.3333333333333333,
+  "graph_sha256": "d00347b969740f5c441e56c4c90e4ef5be233f268314a50c90d92e90b013a8ab",
+  "key": "alternating__occ_3__conf012",
+  "mult": 1,
+  "role": "interaction_method_control; not synthesis admission",
+  "initial_embedding_seed": 20261023,
+  "embedded": 16,
+  "converged_MMFF": 16,
+  "initial_MMFF_energy_kcal_mol": 129.66666819674387,
+  "model_key": "alternating__occ_3",
+  "candidate_id": "exp_phthalimide_control",
+  "model_type": "covalent_oligomer",
+  "repeats": 5,
+  "stereoisomer": "alternating",
+  "target": "checkpoint_CREST_index_17",
+  "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+  "pi_groups": [
+    [
+      29,
+      30,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38
+    ]
+  ],
+  "active_basis_functions": 2537,
+  "search_rank": 12,
+  "source_conformer_index": 17,
+  "source_GFN2_energy_Ha": -154.47714181,
+  "starting_geometry_source_role": "interrupted_CREST_checkpoint_warm_start",
+  "source_reference_key": null,
+  "input_xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_checkpoint_refinement/alternating__occ_3/live_inputs/alternating__occ_3__conf012/input.xyz",
+  "input_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_checkpoint_refinement/alternating__occ_3/live_inputs/alternating__occ_3__conf012/input.xyz": "e59346d881db3d6cf2fb41741bf137a9c3788c17cd46c41d7084f3e2468a37b7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_checkpoint_refinement/checkpoint_inputs/alternating__occ_3/conf_00017.xyz": "e59346d881db3d6cf2fb41741bf137a9c3788c17cd46c41d7084f3e2468a37b7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_CREST_checkpoint_refinement/alternating__occ_3/live_inputs/alternating__occ_3__conf012/geometry_review.json": "901324187361c95b269f030b6ed439341b80ab58d8b6e373b7c8a4e6a76b017d"
+  }
+}

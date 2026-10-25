@@ -1,0 +1,44 @@
+{
+  "status": "full_native_replay_passed",
+  "mult": 1,
+  "host": "lambda13",
+  "pid": 2435809,
+  "process_start": "74557558",
+  "cpus": [
+    0,
+    1
+  ],
+  "gpu": "2",
+  "started": 1792628268.3156319,
+  "GPU_primitive_maximum_difference": 1.4210854715202004e-14,
+  "native_gates_passed": true,
+  "errors": {
+    "relative_matrix_error": 3.0372632335183194e-10,
+    "maximum_matrix_difference": 3.699024420100727e-10,
+    "maximum_thermal_difference_eV": 7.156594428181506e-09
+  },
+  "metrics": {
+    "area_calls": 2,
+    "maximum_area_block_bytes": 21072672,
+    "diagonal_contractions": 2,
+    "host_curvature": {
+      "adapter_sha256": "637e17ff04e9ca0910cb01a4813e4be0a9d8b16a728c67fbffece36feb8f23f7",
+      "uploaded_blocks": 5776,
+      "maximum_uploaded_block_bytes": 7746048,
+      "primitive_calls": 741,
+      "peak_cached_host_bytes": 8542195776,
+      "calls": [
+        {
+          "n_surface_points": 7702,
+          "projected_conservative_host_peak_bytes": 145981149248
+        }
+      ]
+    }
+  },
+  "evidence_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_bounded_pcm/controls/1/native_thermal/a8f2238c92b89356.json": "04cf5666d90fea550c8bb37986b1b3b547959fab11d96ca12f1e0d2d3ba0b91c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_bounded_pcm/controls/1/native_thermal/a8f2238c92b89356/hessian_cartesian.npy": "b84609c3cfbdd5b4ccb93c2dd77796442fa94b08e6729be2fc0395a1e97e009e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/resume_campaign_2026-10-12/physical_campaign/pcm_memory/exp_naphthalimide_control__neu/work/native_thermal/a8f2238c92b89356.json": "a24dbacd6e594755264d3a00c434fa7791599bdc7ff6eed35a13a4071e511fa3"
+  },
+  "finished": 1792628980.3113198
+}

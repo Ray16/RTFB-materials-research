@@ -1,0 +1,45 @@
+{
+  "status": "response_equations_solved_full_physical_QC_separate",
+  "started": 1792944904.3855026,
+  "equations_changed": false,
+  "level_shift_added": false,
+  "calls": [
+    {
+      "algorithm": "SciPy restarted GMRES, unchanged I+A equation",
+      "requested_absolute_tolerance": 4e-06,
+      "solver_absolute_target": 4e-08,
+      "true_residual_norm": 1.2178871788319917e-08,
+      "maximum_absolute_residual": 2.3099483159594314e-09,
+      "rhs_norm": 1.0136649021774395,
+      "solver_info": 0,
+      "operator_evaluations": 13,
+      "iterations": 11,
+      "residual_history": [
+        0.6061052013785259,
+        0.1736057712275016,
+        0.03504982105366493,
+        0.007976732882424252,
+        0.0010160925627993743,
+        0.00015164182393993426,
+        2.0249729428744757e-05,
+        3.7527038565776063e-06,
+        6.174645274276775e-07,
+        1.0274640246168353e-07,
+        1.2014692301280026e-08
+      ],
+      "shape": [
+        12,
+        304
+      ],
+      "precision": "float64",
+      "level_shift_added": false,
+      "checked": 1792944931.3461418
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py": "cae2a9c53cbea8779efac59a5c155e381e009c932299f8056c66807ab624346d",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py": "1a7e7b630754c18a780ac3778bd42986187791bf49e639e3dd0f2ce0212fd32f",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/uhf.py": "a11d4068de5aefcaec12a4b3a27bd8a4a9e5c8e67ceec25a82435fa0a6e5d64d"
+  },
+  "finished": 1792944934.7793543
+}

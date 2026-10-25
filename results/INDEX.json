@@ -141,9 +141,13 @@
         "geometry_plan": "results/polymer_models/campaigns/2026-10-25_empty_geometry_batch/batch.json",
         "electronic_plan": "results/polymer_models/campaigns/2026-10-25_empty_electronic_batch/batch.json",
         "dispatch_hold": "results/polymer_models/campaigns/2026-10-25_empty_geometry_batch/dispatch_hold.json",
-        "status": "new_geometry_dispatch_held_after_force_failures_existing_workers_and_dependency_checked_energies_continue",
+        "status": "unattempted_same_configuration_starts_running_alternating_force_failures_excluded",
         "raw_root": "calcs/polymer_models/2026-10-25_empty_geometry_batch",
-        "sampling_convergence_verified": false
+        "sampling_convergence_verified": false,
+        "continuation_plan": "results/polymer_models/campaigns/2026-10-25_all_same_unattempted_geometry/batch.json",
+        "actual_start_verification": "results/polymer_models/campaigns/2026-10-25_all_same_unattempted_geometry/startup_verification.json",
+        "contact_diagnostic": "results/validation/CDS_contact_2026-10-25/alternating_conf005.json",
+        "checkpoint_warm_starts": "results/polymer_models/campaigns/2026-10-25_CREST_checkpoint_refinement/preparation_status.json"
       },
       "candidate_occupancy": {
         "current": "results/polymer_models/candidate_occupancy/current.json",
@@ -213,17 +217,18 @@
         "plan": "results/validation/pmdi_pair_weighted_response_2026-10-24/plan.json",
         "source_manifest": "results/validation/pmdi_pair_weighted_response_2026-10-24/launch.json",
         "raw_root": "calcs/validation/pmdi_pair_weighted_response_2026-10-24",
-        "scope": "Full spin/Hessian controls and exact response pass; compatible V100 runtime checkpointed partial Hessian and H1, then orbital-response Krylov solve diverged; no native G published",
+        "scope": "Full spin replays and actual first-atom residual pass; new complete native attempt running; G and matched cycle pending",
         "independent_review": "results/validation/pmdi_pair_weighted_response_2026-10-24/independent_review.json",
-        "native_plan": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/plan.json",
-        "native_status": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json",
-        "native_startup": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/startup_verification.json",
+        "native_plan": "results/polymer_models/campaigns/2026-10-25_residual_native/baseline__design_pmdi_ethyl__occ_2_3/plan.json",
+        "native_status": "results/polymer_models/campaigns/2026-10-25_residual_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json",
+        "native_startup": "results/polymer_models/campaigns/2026-10-25_residual_native/baseline__design_pmdi_ethyl__occ_2_3/startup_verification.json",
         "historical_failed_full_native": "results/polymer_models/campaigns/2026-10-24_weighted_native/baseline__design_pmdi_ethyl__occ_2_3/failure_review.json",
-        "native_guide": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/README.md",
+        "native_guide": "results/polymer_models/campaigns/2026-10-25_residual_native/baseline__design_pmdi_ethyl__occ_2_3/README.md",
         "solute_workspace_controls": "results/validation/solute_workspace_2026-10-24/summary.json",
         "solute_workspace_guide": "results/validation/solute_workspace_2026-10-24/README.md",
-        "publication_observer": "results/reviews/2026-10-25/pmdi_pair_native_cutensor22_followup/observer.json",
-        "prior_solute_allocation_failure": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json"
+        "publication_observer": "results/reviews/2026-10-25/pmdi_pair_native_residual_followup/observer.json",
+        "prior_solute_allocation_failure": "results/polymer_models/campaigns/2026-10-24_solute_workspace_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json",
+        "prior_Krylov_failure": "results/polymer_models/campaigns/2026-10-25_cutensor22_native/baseline__design_pmdi_ethyl__occ_2_3/streamed_native/status.json"
       },
       "CREST_V100_geometry": {
         "guide": "results/polymer_models/campaigns/2026-10-24_CREST_geometry/alternating__occ_none__conf001/README.md",
@@ -251,8 +256,10 @@
           "calcs/polymer_models/2026-10-24_streamed_native",
           "calcs/polymer_models/2026-10-23_crest_refinement"
         ],
-        "manifest": "manuscript/evidence/2026-10-25_first_graft_checked/manifest.json",
-        "neighbor_free_energy": null
+        "manifest": "manuscript/evidence/2026-10-25_polymer_penalty_figure/manifest.json",
+        "neighbor_free_energy": null,
+        "figure": "results/figures/polymer_models/pmdi_first_graft.pdf",
+        "figure_data": "results/figures/polymer_models/pmdi_first_graft.json"
       }
     },
     "candidates": {
@@ -409,10 +416,10 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-25_first_graft_checked/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-25_polymer_penalty_figure/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "17-page main including TOC and 15-page SI; checked exact-PMDI first-site polymer-context penalties and finite spatial controls. Neighboring-graft cycle, broader convergence, route/material evidence and public raw-state deposition remain open.",
+      "scope": "17-page main and 15-page SI; main first-site PMDI polymer-context figure. Paired thermochemistry, conformer/contact-model convergence, route/material evidence and public deposition remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
@@ -633,6 +640,29 @@
       "runtime": "environments/cutensor22/runtime.json",
       "raw_root": "calcs/runtime_profiles/cutensor22_2026-10-25",
       "status": "two_spin_full_controls_passed_large_native_response_diverged_G_pending"
+    },
+    "residual_response_controls": {
+      "guide": "results/validation/response_solver_2026-10-25/README.md",
+      "current": "results/validation/response_solver_2026-10-25/comparison.json",
+      "raw_root": "calcs/validation/response_solver_2026-10-25",
+      "status": "full_spin_and_large_first_atom_response_checked_no_full_G"
+    },
+    "first_site_raw_addendum": {
+      "guide": "results/releases/first_site/README.md",
+      "current": "results/releases/first_site/current.json",
+      "raw_root": "calcs/releases/2026-10-25_first_site_addendum_checked",
+      "status": "relocated_arithmetic_checked_public_deposition_pending"
+    },
+    "CDS_contact_diagnostic": {
+      "guide": "results/validation/CDS_contact_2026-10-25/README.md",
+      "current": "results/validation/CDS_contact_2026-10-25/alternating_conf005.json",
+      "raw_geometry": "calcs/polymer_models/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/energy/alternating__occ_none__conf005/rest/opt.xyz",
+      "status": "component_kink_measured_replacement_treatment_not_qualified"
+    },
+    "review_release_set": {
+      "current": "results/releases/current.json",
+      "guide": "results/releases/first_site/README.md",
+      "status": "two_complementary_local_bundles_checked_public_deposition_pending"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

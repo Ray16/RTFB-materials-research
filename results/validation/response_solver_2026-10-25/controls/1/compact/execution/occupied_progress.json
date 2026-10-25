@@ -1,0 +1,29 @@
+{
+  "status": "occupied_block_execution_active_unqualified",
+  "started": 1792944904.220343,
+  "occupied_cap": 32,
+  "batches": [
+    {
+      "checked": 1792944924.9864347,
+      "batch": 0,
+      "begin": 0,
+      "end": 8,
+      "size": 8,
+      "total": 8
+    }
+  ],
+  "checkpoints": [
+    {
+      "stage": "rks_partial_hess_elec",
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/response_solver_2026-10-25/controls/1/compact/execution/rks_partial_hess_elec_state_identity.json",
+      "sha256": "d514dd2f8f1113105d8a1de4e01d694754fcd90b4a4d8fc8bf60251319a89825"
+    }
+  ],
+  "precision": "float64",
+  "equations_changed": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/df_occupied_workspace.py": "912c611188590925126058106ad7b233445e56721c6d1d2ede2be1f5aa07b347",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/df_derivative_workspace.py": "873d2162d9020890365ab5ce05e7623cd1c72001ccecda4cdf3655d23a17b1e7",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py": "45ef4f502fcc8a13de662c995b7dbf7be70f9f89c1e17f4f877b339b08c43b43"
+  }
+}
