@@ -1,0 +1,52 @@
+{
+  "status": "experimental_smooth_CDS_context_finished_QC_separate",
+  "profile": {
+    "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+    "solvent": "acetonitrile",
+    "electrostatic_model": "SMD",
+    "electrostatic_surface_points": 590,
+    "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+    "CDS_points_per_sphere": 2030,
+    "supported_elements": [
+      "C",
+      "H",
+      "N",
+      "O",
+      "Cl"
+    ],
+    "scientific_model_changed": true,
+    "primary_candidate_admission": false,
+    "implementation_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_cds_control.py": "b9b687cce8bff54dd0fa2ce2dd7f62a457fca98a994386f87400e52337fbe4b5",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/smd_experiment.py": "c19c5e8826dd1fa3437a6224f9fcfded95ce709069f3e33b66f878a34f3c621d",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/grad/smd_experiment.py": "5ef6e57f0945b2190d5efd2b49f7da529a23f68d3ccd92fc6861d8851bd40070"
+    }
+  },
+  "profile_id": "479ecf83a47b86976b235b879088f27dcd2515e5ab8200f93e3b98dca5756356",
+  "component_evidence": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smooth_CDS_2026-10-25/pilot/summary.json": "b76f084e6a59c04feb7a54e63ab1df659d55c5d0a7f46b2eb01188ec8297eceb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smooth_CDS_2026-10-25/pilot/independent_review.json": "a2fba05af1f68ac74cd420875b012912259f267d8a9789cb2913452566ca1df9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smooth_cds.py": "6ac8a5659079a23a8d50320898f508c9f0ff148ae3b3e26b6723308574deb71f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/pmdi_first_site_grafting_checked/summary.json": "07ff7f10d6f111d14f0b97afdf202c343dc5213e4ac9bf0ebb0bc87ebba129bb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/CDS_contact_2026-10-25/alternating_conf005.json": "575683851ea96596acdc4f16ec92c4a0ad43e7f1f18504efad93977c8de37b99",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/smd.py": "287d43f251a16c50791f35fcf43eba12b92bd2b5aa0b3c739a8e3eb465c0ccfc",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/smd_experiment.py": "c19c5e8826dd1fa3437a6224f9fcfded95ce709069f3e33b66f878a34f3c621d",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/grad/smd_experiment.py": "5ef6e57f0945b2190d5efd2b49f7da529a23f68d3ccd92fc6861d8851bd40070",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/energy/alternating__occ_none__conf005/rest/opt.xyz": "63d261687916041e56e9c2ea6213ebd046dd454d924a47f26703e1d9e083e606",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_16aa455cb6d2/rest/opt.xyz": "01e7823fbda7b6cbf3f3b20490d4b5949e929ae32ca2cd9abb3e442e8ca30869",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/merrifield_local_chloride/rest/opt.xyz": "a4db19e0cf2bcffc231070edff3be4eb03eff3abad847999787518b3662857e6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/chloride/rest/opt.xyz": "f4cf65f4e14ef93332eb3949ce16cf25aea2a16450b2e92123e0ea4134058aa9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_neutral/rest/opt.xyz": "1aa91da990fca77b47d22810f3ab1d17362fcf984918e450dd2171acb966e4f9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_protonated/rest/opt.xyz": "d2f2434161efd0e8b71f502da9f5b9a2a942356b35f787743cf82d68a14ccdca",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_chloride_pair/rest/opt.xyz": "ca1307db928dbe53022de318b2de13a50edacd6395e4a2b205172d73b396eeac",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_extra_thermal/thermal/occ_none__pose1/rest/opt.xyz": "737f6546a0c6e62ac962ec01be5ba693453d651edba7e26e73cb884a38fcd380",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/design_pmdi_ethyl/neu/opt.xyz": "7280f76f5e5b85b115181929fca6b3fbb5916dd86028df9a5325a8e1a3abfc9b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/thermal/baseline__design_pmdi_ethyl__occ_2__pose0/rest/opt.xyz": "794467949799326a943f1434802ea48af97c052622f35061e1f04a4a3a317604",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature/thermal/baseline__design_pmdi_ethyl__occ_3__pose0/rest/opt.xyz": "fe912c560a247ef49ff5a44b76587cac49355188b45fdf6416a5ab0915893e8f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_smooth_cds.py": "35ccbe46d57b44d9339b4f0886624e5536a8f1edc9f60e277aaf338bb0c5d54e",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libsolvent.so": "6b5ac2a3e60e71c71f905c9506ddac773ae3ffa2582d0ee7c6915520d2f53bdf"
+  },
+  "energy_calls": 103,
+  "gradient_calls": 79,
+  "primary_candidate_admission": false
+}

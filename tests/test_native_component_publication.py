@@ -23,6 +23,13 @@ def test_checked_binding_returns_graph_key_not_pose_key(component):
     assert module.component_binding(review, energy, thermal) == 'pair'
 
 
+@pytest.mark.parametrize('capacity,expected',[(34072559616,True),(80*2**30,True),
+    (16*2**30,False),(30*2**30,False),(float('nan'),False)])
+def test_CUDA_usable_memory_matches_validated_device_class(component,capacity,expected):
+    module,_,_,_=component
+    assert module.full_class_cuda_memory(capacity) is expected
+
+
 def test_equivalent_runtime_variants_cannot_silently_replace_different_science(component):
     module, review, energy, thermal = component
     old = deepcopy(review['states'][0]); new = deepcopy(old)

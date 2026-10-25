@@ -45,6 +45,15 @@ def equivalent_component(old, new):
         raise ValueError('A different completed component requires scientific comparison before replacement')
 
 
+def full_class_cuda_memory(value):
+    """Match the existing 32-GB-class policy, allowing CUDA's reserved memory.
+
+    V100 32 GB boards report about 31.73 GiB usable. The allocation/peak gates
+    remain separate; this matches resources.gpu_suitability's 31-GiB floor.
+    """
+    return type(value) is int and value >= 31 * 2**30
+
+
 def publish(base, campaign, review_path):
     review = json.loads(review_path.read_text())
     api.verify_sources(review['source_sha256'])
@@ -72,7 +81,7 @@ def publish(base, campaign, review_path):
                 or runtime['engine'] != 'cutensor' or runtime['profile_sha256'] != api.digest(profile_path)
                 or runtime['versions'] != profile['versions'] or runtime['library_sha256'] != profile['library_sha256']
                 or runtime['source_sha256'] != api.digest(worker) or runtime['pid'] != native_owner['pid']
-                or runtime['program'] != plan['execution_driver'] or runtime['total_GPU_bytes'] < 32 * 2**30):
+                or runtime['program'] != plan['execution_driver'] or not full_class_cuda_memory(runtime['total_GPU_bytes'])):
             raise ValueError('Completed native result lacks its declared actual contraction runtime')
     if not plan.get('recovery_scope'):
         raise ValueError('A recoverable model scope is required by the cycle collector')

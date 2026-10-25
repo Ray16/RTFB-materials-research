@@ -7,7 +7,7 @@ The [checked first-site PMDI analysis](reviews/2026-10-25/pmdi_first_site_grafti
 
 The 139-atom paired PMDI model has checked stationary coordinates and canonical optimized-state gas/SMD energies. The [residual-checked response controls](validation/response_solver_2026-10-25/README.md) now pass complete singlet/doublet Hessian comparisons and an actual fixed-state first-atom solvent-response test. A [new full native attempt](polymer_models/campaigns/2026-10-25_residual_native/baseline__design_pmdi_ethyl__occ_2_3/README.md) is running; paired G and the neighboring-site free-energy cycle remain pending.
 
-The [broader conformer refinement](polymer_models/campaigns/2026-10-25_empty_geometry_batch/README.md) has ten checked new energy records and additional running geometries. Thirteen previously unattempted same-configuration starts continue under all original gates. Failed alternating starts remain excluded: a [CPU contact scan](validation/CDS_contact_2026-10-25/README.md) identifies a kink in the legacy CDS component, so another optimizer retry alone does not resolve harmonic thermochemistry. Six stopped CREST searches now supply [120 checked warm starts](polymer_models/campaigns/2026-10-25_CREST_checkpoint_refinement/README.md), with two additional cases still unprepared. No broader ensemble convergence is claimed.
+The [input-diversity audit](validation/conformer_seed_diversity_2026-10-25/README.md) now supplies 240 separated starts across twelve graph/configuration sets. A [separate smooth-solvent-area model](validation/smooth_model_qualification_2026-10-25/README.md) passes four complete small quantum controls and a 91-atom geometry pilot. The [forty-case empty-backbone refinement](polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/README.md) has actual scientific starts independently verified. These experimental-model geometries remain separate from the primary model; no broader ensemble convergence or polymer G is inferred.
 
 The [first-site raw-state addendum](releases/first_site/README.md) contains thirteen states and passes relocated standard-library replay of one potential and seven balanced comparisons. It complements the older reviewer package; public deposition remains pending. The [current UMA entry point](validation/uma_current_2026-10-24/README.md) prefers Nitro where supported, with a tested V100 fallback; final MeCN DFT/native thermochemistry retains its established method.
 
@@ -22,7 +22,7 @@ The [first-site raw-state addendum](releases/first_site/README.md) contains thir
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
-| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-25_polymer_penalty_figure/manifest.json) |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-25_reference_diagnostic/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 | V100 inference compatibility and loader behavior | [V100 guide](validation/uma_v100_2026-10-24/README.md) | [Current status](validation/uma_v100_2026-10-24/summary.json) · [Unaltered comparison](validation/uma_v100_2026-10-24/reference_comparison.json) · [Composition diagnostic](validation/uma_v100_2026-10-24/composition_comparison.json) |
@@ -73,6 +73,8 @@ The [retrospective benchmark](validation/publication_benchmark/current.json)
 now admits 39/39 sourced potentials from 30 exact free molecules across seven
 studies (MAE 0.247 V, RMSE 0.279 V). All outliers remain. This quantifies free-parent
 accuracy and does not validate exact grafted structures or polymers.
+
+The [fixed-geometry Fc functional controls](validation/fc_functional_sensitivity_2026-10-25/README.md) reproduce the original-functional reference energies and show that reference-only B3LYP/PBE0 substitutions worsen the benchmark bias. Six raw electronic records and independently reconstructed counterfactuals are included in the current manuscript evidence; no alternative absolute potential is assigned.
 
 ## Calculation records and provenance
 

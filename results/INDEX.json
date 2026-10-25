@@ -416,10 +416,10 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-25_polymer_penalty_figure/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-25_reference_diagnostic/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "17-page main and 15-page SI; main first-site PMDI polymer-context figure. Paired thermochemistry, conformer/contact-model convergence, route/material evidence and public deposition remain open.",
+      "scope": "17-page article and 17-page SI; checked first-site PMDI, fixed-geometry Fc diagnostic and separately scoped solvent-surface controls. Paired G, broader ensemble, route/material evidence and public deposition remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
@@ -429,7 +429,7 @@
       "version_provenance": "Source hashes are recorded by build_check.json; publication commit is given in repository history.",
       "documents": {
         "main_pages": 17,
-        "SI_pages": 15
+        "SI_pages": 17
       }
     },
     "candidate_decisions": {
@@ -566,7 +566,9 @@
       "source_snapshot": "results/reviews/2026-10-24/pmdi_site3_native/summary.json",
       "status": "two_single_site_components_independently_reconstructed_pair_G_and_cycle_pending",
       "scope": "Two 115-atom exact single-site native G values; pair G, matched cycle, broader ensemble and candidate admission pending",
-      "additional_component": "results/reviews/2026-10-24/pmdi_site2_native/summary.json"
+      "additional_component": "results/reviews/2026-10-24/pmdi_site2_native/summary.json",
+      "paired_completion_observer": "results/reviews/2026-10-25/pmdi_pair_native_residual_cuda_class_followup",
+      "observer_memory_class_review": "results/reviews/2026-10-25/native_observer_cuda_memory/restart.json"
     },
     "split_polymer_execution": {
       "guide": "results/validation/pmdi_split_execution_2026-10-24/README.md",
@@ -663,6 +665,52 @@
       "current": "results/releases/current.json",
       "guide": "results/releases/first_site/README.md",
       "status": "two_complementary_local_bundles_checked_public_deposition_pending"
+    },
+    "Fc_functional_controls": {
+      "guide": "results/validation/fc_functional_sensitivity_2026-10-25/README.md",
+      "current": "results/validation/fc_functional_sensitivity_2026-10-25/independent_review.json",
+      "plan": "results/validation/fc_functional_sensitivity_2026-10-25/campaign.json",
+      "raw_root": "calcs/validation/fc_functional_sensitivity_2026-10-25",
+      "source_snapshot": "manuscript/evidence/2026-10-25_reference_diagnostic/manifest.json",
+      "status": "six_electronic_controls_checked_primary_reference_unchanged",
+      "scope": "Fixed solution geometries; gas/SMD electronic gaps and reference-only counterfactuals; no alternative thermochemical potential"
+    },
+    "smooth_CDS_model_controls": {
+      "guide": "results/validation/smooth_model_qualification_2026-10-25/README.md",
+      "current": "results/validation/smooth_model_qualification_2026-10-25/qualification.json",
+      "component_checks": "results/validation/smooth_CDS_2026-10-25/pilot/summary.json",
+      "full_component_gradients": "results/validation/smooth_CDS_2026-10-25/full_gradient_panel/summary.json",
+      "quantum_CHO": "results/validation/smooth_quantum_2026-10-25/independent_review.json",
+      "quantum_NCl": "results/validation/smooth_quantum_NCl_2026-10-25/independent_review.json",
+      "raw_roots": [
+        "calcs/validation/smooth_quantum_2026-10-25",
+        "calcs/validation/smooth_quantum_NCl_2026-10-25"
+      ],
+      "source_snapshot": "manuscript/evidence/2026-10-25_reference_diagnostic/manifest.json",
+      "figure": "results/figures/validation/CDS_surface_smoothness.pdf",
+      "figure_manifest": "results/figures/validation/CDS_surface_smoothness.json",
+      "status": "neutral_small_quantum_and_component_controls_checked_not_polymer_G",
+      "scope": "Distinct experimental surface model; primary benchmark/grafting unchanged; charged and polymer G unqualified"
+    },
+    "conformer_input_diversity": {
+      "guide": "results/validation/conformer_seed_diversity_2026-10-25/README.md",
+      "current": "results/validation/conformer_seed_diversity_2026-10-25/diverse_inputs_checked.json",
+      "inherited_audit": "results/validation/conformer_seed_diversity_2026-10-25/summary.json",
+      "raw_root": "results/polymer_models/campaigns/2026-10-25_diverse_conformer_inputs",
+      "source_snapshot": "results/polymer_models/campaigns/2026-10-25_diverse_conformer_inputs/request.json",
+      "status": "240_separated_input_geometries_checked_no_converged_ensemble",
+      "scope": "Twelve graph/configuration input sets; stopped searches explicitly identified; no search-hit statistical weights"
+    },
+    "smooth_geometry_refinement": {
+      "guide": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/README.md",
+      "current": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/start_snapshot.json",
+      "plan": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/batch.json",
+      "pilot": "results/reviews/2026-10-25/smooth_geometry_pilot/summary.json",
+      "actual_start": "results/reviews/2026-10-25/smooth_batch_actual_start/summary.json",
+      "raw_root": "calcs/polymer_models/2026-10-25_smooth_empty_geometry_batch",
+      "status": "forty_geometry_tasks_prepared_seventeen_actual_starts_verified",
+      "scope": "Distinct smooth-model geometry refinement; no active energy/native G or primary candidate admission",
+      "live_dispatch": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/dispatch.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",
