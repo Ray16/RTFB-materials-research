@@ -703,14 +703,41 @@
     },
     "smooth_geometry_refinement": {
       "guide": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/README.md",
-      "current": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/start_snapshot.json",
+      "current": "results/reviews/2026-10-25/smooth_followup_checkpoint/summary.json",
       "plan": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/batch.json",
       "pilot": "results/reviews/2026-10-25/smooth_geometry_pilot/summary.json",
       "actual_start": "results/reviews/2026-10-25/smooth_batch_actual_start/summary.json",
       "raw_root": "calcs/polymer_models/2026-10-25_smooth_empty_geometry_batch",
-      "status": "forty_geometry_tasks_prepared_seventeen_actual_starts_verified",
+      "status": "expanded_geometry_calculations_running_completed_geometries_independently_reviewed",
       "scope": "Distinct smooth-model geometry refinement; no active energy/native G or primary candidate admission",
-      "live_dispatch": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/dispatch.json"
+      "live_dispatch": "results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/dispatch.json",
+      "independent_stage_observer": "results/reviews/2026-10-25/smooth_stage_followup/status.json"
+    },
+    "smooth_occupied_resource_pilots": {
+      "guide": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_geometry_pilots/README.md",
+      "current": "results/reviews/2026-10-25/smooth_followup_checkpoint/summary.json",
+      "plan": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_geometry_pilots/batch.json",
+      "raw_root": "calcs/polymer_models/2026-10-25_smooth_occupied_geometry_pilots",
+      "source_snapshot": "results/reviews/2026-10-25/smooth_followup_checkpoint/2026-10-25_smooth_occupied_geometry_pilots_dispatch_snapshot.json",
+      "status": "ten_graph_configuration_resource_pilots_prepared_actual_starts_checked",
+      "scope": "Neutral phthalimide alternate-model geometry/resource pilots; no active energy/native G transfer"
+    },
+    "smooth_hybrid_energy_stage": {
+      "guide": "results/polymer_models/campaigns/2026-10-25_smooth_energy_point80/README.md",
+      "current": "results/reviews/2026-10-25/smooth_followup_checkpoint/summary.json",
+      "plan": "results/polymer_models/campaigns/2026-10-25_smooth_energy_point80/batch.json",
+      "raw_root": "calcs/polymer_models/2026-10-25_smooth_energy_point80",
+      "source_snapshot": "results/polymer_models/campaigns/2026-10-25_smooth_energy_point80/all_same__occ_none__conf001/plan.json",
+      "status": "measured_RAM_class_pilot_prepared_first_32_GiB_guard_failure_preserved_no_accepted_energy",
+      "scope": "Fresh hybrid energies on independently checked alternate-model geometry; native G and ensemble separate"
+    },
+    "smooth_independent_stage_reviews": {
+      "guide": "results/reviews/2026-10-25/smooth_followup_checkpoint/README.md",
+      "current": "results/reviews/2026-10-25/smooth_followup_checkpoint/summary.json",
+      "source_snapshot": "results/reviews/2026-10-25/smooth_followup_checkpoint/actual_processes.json",
+      "raw_root": "calcs/polymer_models/2026-10-25_smooth_empty_geometry_batch",
+      "status": "completed_stage_reviews_and_live_scientific_processes_independently_checked",
+      "scope": "Graph/stereochemistry/force and runtime evidence; no free-energy or convergence inference"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

@@ -1,0 +1,24 @@
+{
+  "status": "measured_RAM_class_alternate_energy_pilot_prepared",
+  "stage": "electronic",
+  "entries": [
+    {
+      "key": "all_same__occ_none__conf001",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_energy_point80/all_same__occ_none__conf001",
+      "plan_sha256": "e379cd1c26d74e85fd9a5872d86ba0fe5f68ecfbc1f4e55459ed5f96d4e273ab"
+    }
+  ],
+  "worker": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py",
+  "maximum_RSS_GiB": 80,
+  "minimum_free_RAM_GiB": 32,
+  "minimum_GPU_MiB": 32768,
+  "primary_candidate_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_bounded.py": "4df1c1e23ff37b1a49f6c92c8a66158d2f6bc9e8eeb1bd4358d81d27a143b02f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_pilot.py": "22a87473276153b797171d3585a3609c8a894fb3fa22bb41a481a5ee226b1fbd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py": "fb46fe0754fd6e1e216e2673ebd426d517c3d67bdbafa65df77d26a85ab61237",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy.py": "1d2cdf2d4b1dbebb028f0cfd0f4945e3aac4e908473787f2ed1b64ea761f10ba",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd"
+  }
+}
