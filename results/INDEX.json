@@ -416,10 +416,10 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-25_reference_diagnostic/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-25_neighbor_cycle/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "17-page article and 17-page SI; checked first-site PMDI, fixed-geometry Fc diagnostic and separately scoped solvent-surface controls. Paired G, broader ensemble, route/material evidence and public deposition remain open.",
+      "scope": "18-page article and 18-page SI; exact PMDI finite matched native cycle, geometry and isolated cached-control replay. Ensemble convergence, material evidence and public deposition remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
@@ -428,8 +428,8 @@
       "visual_review": "manuscript/visual_review.json",
       "version_provenance": "Source hashes are recorded by build_check.json; publication commit is given in repository history.",
       "documents": {
-        "main_pages": 17,
-        "SI_pages": 17
+        "main_pages": 18,
+        "SI_pages": 18
       }
     },
     "candidate_decisions": {
@@ -560,15 +560,17 @@
       "scope": "Ten-state/40-frame diagnostic profile. Current public CLI uses tested legacy V100 fallback; behavior override is ineligible for production; DFT/Hessians separate."
     },
     "exact_PMDI_native_component": {
-      "guide": "results/reviews/2026-10-24/pmdi_site3_native/README.md",
-      "current": "results/reviews/2026-10-24/pmdi_site3_native/summary.json",
+      "guide": "results/reviews/2026-10-25/pmdi_neighbor_cycle_checked/README.md",
+      "current": "results/reviews/2026-10-25/pmdi_neighbor_cycle_checked/summary.json",
       "raw_root": "calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature",
       "source_snapshot": "results/reviews/2026-10-24/pmdi_site3_native/summary.json",
-      "status": "two_single_site_components_independently_reconstructed_pair_G_and_cycle_pending",
-      "scope": "Two 115-atom exact single-site native G values; pair G, matched cycle, broader ensemble and candidate admission pending",
+      "status": "three_occupied_native_components_and_matched_finite_cycle_independently_checked",
+      "scope": "One native minimum per occupancy graph; four-state nonadditivity complete, broader sampling/coupling/material eligibility open",
       "additional_component": "results/reviews/2026-10-24/pmdi_site2_native/summary.json",
-      "paired_completion_observer": "results/reviews/2026-10-25/pmdi_pair_native_residual_cuda_class_followup",
-      "observer_memory_class_review": "results/reviews/2026-10-25/native_observer_cuda_memory/restart.json"
+      "observer_memory_class_review": "results/reviews/2026-10-25/native_observer_cuda_memory/restart.json",
+      "paired_native_review": "results/reviews/2026-10-25/pmdi_pair_native_residual_cuda_class_followup/component/summary.json",
+      "paired_native_publication": "results/reviews/2026-10-25/pmdi_pair_native_published/publication.json",
+      "historical_observer_handoff": "results/reviews/2026-10-25/pmdi_pair_native_residual_cuda_class_followup"
     },
     "split_polymer_execution": {
       "guide": "results/validation/pmdi_split_execution_2026-10-24/README.md",
@@ -577,7 +579,7 @@
       "geometry_start": "results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/startup_verification.json",
       "raw_root": "calcs/polymer_models/2026-10-24_split_execution",
       "source_snapshot": "results/validation/pmdi_split_execution_2026-10-24/plan.json",
-      "status": "paired_stationary_geometry_and_canonical_GPU_energy_checked_CPU_reference_and_native_G_pending",
+      "status": "paired_stationary_geometry_canonical_GPU_energy_and_native_G_checked_full_CPU_reference_pending",
       "scope": "Independent geometry/active-energy stages; no missing E or G supplied by resource points",
       "CPU_current": "results/validation/cpu_pcm_memory_2026-10-24/large_point/electronic/status.json",
       "historical_geometry_attempt": "results/polymer_models/campaigns/2026-10-24_split_execution/baseline__design_pmdi_ethyl__occ_2_3_geometry/geometry/status.json"
@@ -608,13 +610,17 @@
       "scope": "Source inventory and current pointers refreshed; no new quantum calculation or eligibility"
     },
     "checked_research_slides": {
-      "current": "slides/current.json",
+      "current": "slides/redox_workflow.pdf",
       "pdf": "slides/redox_workflow.pdf",
-      "status": "results/reviews/2026-10-24/UMA_default_slides/status.json",
-      "source_snapshot": "manuscript/evidence/2026-10-25_first_graft_checked/manifest.json",
+      "status": "compiled_and_visually_checked_with_complete_finite_PMDI_cycle",
+      "source_snapshot": "results/reviews/2026-10-25/pmdi_neighbor_slides/status.json",
       "scope": "Frozen spatial-control example added; candidate values unchanged",
       "review": "results/reviews/2026-10-24/UMA_default_slides/visual_review.json",
-      "pdf_sha256": "5596b52c65922e369f9b61cdd2c96566b12ad0b6a3d5b61eebc709903f521632"
+      "pdf_sha256": "5596b52c65922e369f9b61cdd2c96566b12ad0b6a3d5b61eebc709903f521632",
+      "visual_review": "results/reviews/2026-10-25/pmdi_neighbor_slides/visual_review.json",
+      "pages": 76,
+      "main_pages": 17,
+      "backup_pages": 59
     },
     "streamed_V100_PCM": {
       "guide": "results/validation/streamed_PCM_2026-10-24/README.md",
@@ -728,8 +734,9 @@
       "plan": "results/polymer_models/campaigns/2026-10-25_smooth_energy_point80/batch.json",
       "raw_root": "calcs/polymer_models/2026-10-25_smooth_energy_point80",
       "source_snapshot": "results/polymer_models/campaigns/2026-10-25_smooth_energy_point80/all_same__occ_none__conf001/plan.json",
-      "status": "measured_RAM_class_pilot_prepared_first_32_GiB_guard_failure_preserved_no_accepted_energy",
-      "scope": "Fresh hybrid energies on independently checked alternate-model geometry; native G and ensemble separate"
+      "status": "80_GiB_hybrid_resource_point_independently_checked_first_guard_failure_preserved",
+      "scope": "Fresh hybrid energies on independently checked alternate-model geometry; native G and ensemble separate",
+      "independent_review": "results/reviews/2026-10-25/smooth_energy_point80_followup/checked/2026-10-25_smooth_energy_point80__all_same__occ_none__conf001.json"
     },
     "smooth_independent_stage_reviews": {
       "guide": "results/reviews/2026-10-25/smooth_followup_checkpoint/README.md",
@@ -738,6 +745,56 @@
       "raw_root": "calcs/polymer_models/2026-10-25_smooth_empty_geometry_batch",
       "status": "completed_stage_reviews_and_live_scientific_processes_independently_checked",
       "scope": "Graph/stereochemistry/force and runtime evidence; no free-energy or convergence inference"
+    },
+    "PMDI_neighbor_cycle": {
+      "guide": "results/reviews/2026-10-25/pmdi_neighbor_cycle_checked/README.md",
+      "current": "results/reviews/2026-10-25/pmdi_neighbor_cycle_checked/summary.json",
+      "raw_root": "calcs/polymer_models/2026-10-25_residual_native",
+      "source_snapshot": "manuscript/evidence/2026-10-25_neighbor_cycle/manifest.json",
+      "figure": "results/figures/polymer_models/pmdi_neighbor_grafting.pdf",
+      "actual_geometry": "results/figures/polymer_models/pmdi_neighbor_geometry.pdf",
+      "status": "four_matched_native_states_checked_one_minimum_per_graph",
+      "scope": "Conditional neutral-chain grafting nonadditivity; no isolated binding, coupling or ensemble convergence"
+    },
+    "numerical_control_raw_addendum": {
+      "guide": "results/releases/controls/README.md",
+      "current": "results/releases/controls/current.json",
+      "raw_root": "calcs/releases/2026-10-25_numerical_control_addendum_checked",
+      "source_snapshot": "results/releases/controls/relocation.json",
+      "public_CPU_example": "examples/control_replay/README.md",
+      "status": "archive_and_extracted_CPU_replays_checked_formal_deposition_pending"
+    },
+    "GPU_import_isolation": {
+      "guide": "results/validation/GPU_import_isolation_2026-10-25/README.md",
+      "current": "results/validation/GPU_import_isolation_2026-10-25/reserved_probe.json",
+      "safe_CPU_check": "results/validation/GPU_import_isolation_2026-10-25/CPU_preflight_lambda2_final.json",
+      "source_snapshot": "results/validation/GPU_import_isolation_2026-10-25/CPU_safe_restarts.json",
+      "raw_root": "results/validation/GPU_import_isolation_2026-10-25",
+      "status": "GPU_import_residency_confirmed_CPU_preflights_defer_GPU_imports_to_reservations"
+    },
+    "smooth_empty_hybrid_batch": {
+      "guide": "results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/README.md",
+      "current": "results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/dispatch.json",
+      "plan": "results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/batch.json",
+      "raw_root": "calcs/polymer_models/2026-10-25_smooth_empty_electronic_batch",
+      "source_snapshot": "results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/batch.json",
+      "status": "forty_declared_one_identical_checked_reference_39_fresh_energies_dependency_gated",
+      "scope": "Distinct smooth-surface model; fresh matched geometry/SP records, native G still separate"
+    },
+    "occupied_conformer_expansion": {
+      "current": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/manifest.json",
+      "source_snapshot": "results/reviews/2026-10-25/neighbor_publication_milestone/occupied_expansion_snapshot.json",
+      "raw_root": "calcs/polymer_models",
+      "raw_prefix": "2026-10-25_smooth_occupied_expansion_checked__",
+      "status": "eight_reviewed_occupied_classes_152_remaining_geometry_inputs_prepared",
+      "scope": "Nineteen fresh starts plus the exact completed pilot per graph; no search-hit weights or native G transfer"
+    },
+    "smooth_RAM_recovery": {
+      "current": "results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery/batch.json",
+      "source_snapshot": "results/reviews/2026-10-25/neighbor_publication_milestone/workflow_progress_snapshot.json",
+      "raw_root": "calcs/polymer_models",
+      "status": "two_prospective_128_GiB_RSS_recovery_experiments_prepared_after_80_GiB_exceedances",
+      "scope": "Same exact geometry/equations; larger host-memory ceiling, all numerical and physical checks retained"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

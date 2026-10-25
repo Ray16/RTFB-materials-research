@@ -2,11 +2,16 @@
 
 All result categories: [results index](../README.md).
 
+The [exact PMDI finite neighbor cycle](../reviews/2026-10-25/pmdi_neighbor_cycle_checked/README.md) is now complete: four matched native states give ΔΔG = −1.86 kJ/mol for one minimum per occupancy graph. The paired cores are 16.30 Angstrom apart. The [conditional-energy plot](../figures/polymer_models/pmdi_neighbor_grafting.pdf) and [actual geometry](../figures/polymer_models/pmdi_neighbor_geometry.pdf) distinguish this whole-chain response from isolated binding or coupling.
+
+The current phthalimide finite **two-pose** partitions give −5.17/−11.39 kJ/mol; all twelve native states are independently checked. Broader conformer/configuration convergence remains open. The following selected-pose values retain their original historical scope.
+
+
 The [independent workflow check](workflow_validation.json) now admits 26/27
 original electronic oligomer structures, all 12 spacing conformers and all six
 selected-geometry native free energies. The corrected open PMDI trimer passes
 optimizer, topology, active-energy and final energy-versus-force checks. The
-remaining stacked PMDI trimer is computing; its historical failures remain intact.
+remaining stacked-start PMDI trimer is excluded after failed independent force checks; its historical failures remain intact.
 
 The [conditional-grafting figure](../figures/polymer_models/conditional_grafting.pdf)
 and [actual values](../figures/polymer_models/conditional_grafting.csv) report

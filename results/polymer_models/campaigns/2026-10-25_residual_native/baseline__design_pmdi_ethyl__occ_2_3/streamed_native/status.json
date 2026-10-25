@@ -1,5 +1,5 @@
 {
-  "status": "streamed_native_resource_and_physical_pilot_running",
+  "status": "streamed_native_case_passed_independent_review_pending",
   "owner": {
     "host": "lambda2",
     "pid": 2317039,
@@ -7,7 +7,7 @@
   },
   "started": 1792946432.2955167,
   "source_energy_state": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-24_GPU_electronic/baseline__design_pmdi_ethyl__occ_2_3/energy/baseline__design_pmdi_ethyl__occ_2_3__pose0/rest",
-  "native_G_qualified": false,
+  "native_G_qualified": true,
   "control_evidence": {
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/response_solver_2026-10-25/comparison.json": "48c9c1854ffa4a11cd6158e3037808281cdd94beda460ef914b49c267288df71",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/qualify_smd_workspace.py": "8a92054e0eb5ec23abbe840bc750d77e99d4d89574438b261ddbb0c15602b685",
@@ -393,5 +393,8 @@
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/response_solver_2026-10-25/large_first_atom_solvated/residency_guard/owner.json": "7211583628472ab657adcc5f0717d64c5a630cef1c760c8cf3d4cf378112c2cf",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/response_solver_2026-10-25/large_first_atom_solvated/residency_guard/state.json": "faa9673004cd35eb29da0d3acb101048c85755dcebbbf28a055bca56dbca4093"
   },
-  "host_RSS_limit_GiB": 80
+  "host_RSS_limit_GiB": 80,
+  "observed_peak_GPU_MiB": 31484,
+  "G_eV": -105281.37967105348,
+  "finished": 1792965544.404665
 }

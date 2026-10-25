@@ -1,0 +1,33 @@
+{
+  "host": "lambda5",
+  "gate_pid": 2304148,
+  "CPU_affinity": [
+    0,
+    1
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "0,1",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "1",
+    "--label",
+    "redox-regressions-imports-reserved",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "MKL_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "--junitxml=/nfs/lambda_stor_01/homes/rzhu/0_redox/results/publication_readiness/checks_2026-10-25_neighbor/full_suite.xml"
+  ],
+  "started": 1792968285.966282,
+  "scope": "Regression suite; GPU reservation contains possible library-import contexts, no quantum benchmark inferred"
+}

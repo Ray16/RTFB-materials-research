@@ -47,3 +47,5 @@ within-graph G difference includes the whole chain and solvent. Broader
 convergence, isolated motif binding and electronic coupling remain unqualified.
 The quantitative DBU capture-term discrepancy retains its separate scope and
 earlier source evidence.
+
+The 25 October neighbor-cycle revision contains 76 pages (17 main and 59 backup). The PMDI matched finite cycle and actual separated-core geometry are included; [the build record](../results/reviews/2026-10-25/pmdi_neighbor_slides/status.json) and [separate rendered review](../results/reviews/2026-10-25/pmdi_neighbor_slides/visual_review.json) bind the checked PDF. Ensemble convergence and material eligibility remain open.

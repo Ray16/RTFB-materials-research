@@ -9,6 +9,102 @@ from collections import Counter
 from pathlib import Path
 
 
+def audit_neighbor_cycle(load):
+    try:
+        row=load('neighbor_cycle.json')
+    except FileNotFoundError:
+        return None
+    if (row['status']!='exact_candidate_neighbor_grafting_cycle_independently_reconstructed'
+            or row['conformers_per_graph']!=1
+            or any(row[k] for k in ('conformer_convergence_established','synthesis_admission',
+                                   'isolated_motif_interaction_computed','electronic_coupling_computed',
+                                   'graft_loading_distribution_inferred'))
+            or set(row['states'])!={'empty','site2','site3','pair'}):
+        raise ValueError('Finite matched cycle scope or four-state coverage changed')
+    states=row['states'];first=load('pmdi_first_site_grafting.json')
+    if row['candidate_id']!=first['candidate_id'] or states['empty']['smiles']!=first['empty_reference']['smiles']:
+        raise ValueError('Neighbor cycle and first-site exact identities differ')
+    if states['pair']['task']['occupied_sites']!=[2,3]:
+        raise ValueError('Neighbor cycle must use the declared adjacent sequence sites')
+    for site in (2,3):
+        task=states['site'+str(site)]['task']
+        if (task['occupied_sites']!=[site] or task['candidate_id']!=states['pair']['task']['candidate_id']
+                or task['backbone_stereo_fingerprint']!=states['pair']['task']['backbone_stereo_fingerprint']):
+            raise ValueError('Matched occupancy/backbone/candidate identity differs')
+    factor=96.48533212331002
+    if abs(row['conversion_kJ_mol_per_eV']-factor)>1e-12:
+        raise ValueError('Neighbor cycle conversion changed')
+    for state in states.values():
+        if (not math.isfinite(state['G_eV']) or not math.isfinite(state['E_eV']) or not math.isfinite(state['minimum_frequency_cm'])
+                or state['minimum_frequency_cm']<-5
+                or abs(state['G_eV']-state['G_by_cutoff_eV']['50'])>1e-8):
+            raise ValueError('Neighbor state lacks finite matched primary thermochemistry')
+    for cutoff in ('25','50','100'):
+        values={name:s['G_by_cutoff_eV'][cutoff] for name,s in states.items()}
+        if not all(math.isfinite(v) for v in values.values()):raise ValueError('Nonfinite neighbor state G')
+        recorded=row['by_cutoff'][cutoff]
+        if any(abs(values[k]-recorded['state_G_eV'][k])>1e-8 for k in values):
+            raise ValueError('Cutoff-specific state join differs')
+        g0,g2,g3,g23=(values[k] for k in ('empty','site2','site3','pair'))
+        delta=math.fsum([g23,g0,-g2,-g3])*factor
+        if abs(delta-recorded['deltaDeltaG_kJ_mol'])>1e-7:
+            raise ValueError('Neighbor nonadditivity does not reconstruct')
+        for name,constant in row['shared_reagent_constants_eV'][cutoff].items():
+            expected=dict(graft_2_on_empty_kJ_mol=math.fsum([g2,-g0,constant])*factor,
+                graft_3_on_empty_kJ_mol=math.fsum([g3,-g0,constant])*factor,
+                graft_2_given_3_kJ_mol=math.fsum([g23,-g3,constant])*factor,
+                graft_3_given_2_kJ_mol=math.fsum([g23,-g2,constant])*factor,
+                direct_double_graft_kJ_mol=math.fsum([g23,-g0,2*constant])*factor,
+                deltaDeltaG_kJ_mol=delta)
+            if any(not math.isfinite(recorded['models'][name][k])
+                   or abs(v-recorded['models'][name][k])>1e-7 for k,v in expected.items()):
+                raise ValueError('Conditional/direct neighboring-graft reaction does not reconstruct')
+    if abs(row['deltaDeltaG_kJ_mol']-row['by_cutoff']['50']['deltaDeltaG_kJ_mol'])>1e-8:
+        raise ValueError('Primary neighboring-graft value differs')
+    electronic=math.fsum([states['pair']['E_eV'],states['empty']['E_eV'],-states['site2']['E_eV'],-states['site3']['E_eV']])*factor
+    if not math.isfinite(row['electronic_deltaDeltaE_kJ_mol']) or abs(electronic-row['electronic_deltaDeltaE_kJ_mol'])>1e-7:
+        raise ValueError('Electronic neighbor cycle differs')
+    return dict(matched_states=4,cutoffs=3,ionic_representations=2,
+        deltaDeltaG_kJ_mol=row['deltaDeltaG_kJ_mol'],conformer_convergence_inferred=False,
+        isolated_binding_or_coupling_inferred=False)
+
+
+def audit_control_addendum(load):
+    try:
+        current=load('control_addendum.json')
+    except FileNotFoundError:
+        return None
+    proof=load('control_archive_relocation.json');full=load('control_full_replay.json')
+    if (proof['status']!='archive_inventory_and_two_extracted_replays_checked'
+            or (proof['raw_quantum_control_states'],proof['Fc_electronic_records'],proof['raw_SCF_evaluations'],
+                proof['baseline_evaluations'],proof['displaced_evaluations'])!=(8,6,392,8,384)
+            or full['quantum_states_reconstructed']!=8 or len(full['states'])!=8
+            or proof['archive_sha256']!=current['archive_sha256']
+            or proof['polymer_G_qualification_inferred'] or full['polymer_G_qualified']
+            or full['quantum_calculations_run'] or full['CUDA_or_xTB_loaded']):
+        raise ValueError('Control addendum coverage, archive identity or cached-only scope differs')
+    for mode,row in proof['isolated_replays'].items():
+        if (row['original_project_open_attempts'] or row['forbidden_quantum_modules_loaded']
+                or row['validator_sha256']!=proof['validator_sha256']
+                or (mode=='full' and row['numpy_version']!='2.2.6')
+                or (mode=='electronic' and row['numpy_version'] is not None)):
+            raise ValueError('Control replay did not retain isolated declared dependencies')
+    if (full['files_verified']!=len(load('control_example_manifest.json')['files_sha256'])
+            or proof['isolated_replays']['full']['example_manifest_sha256']!=current['CPU_example_manifest_sha256']):
+        raise ValueError('Control replay belongs to another raw example inventory')
+    for state in full['states']:
+        values=[state['frequency_max_error_cm'],state['maximum_force_error_Ha_Bohr'],
+                state['maximum_Hessian_column_relative_error'],*state['nuclear_errors_eV'].values()]
+        if (not all(math.isfinite(v) and v>=0 for v in values)
+                or state['frequency_max_error_cm']>1e-5 or state['maximum_force_error_Ha_Bohr']>1e-6
+                or state['maximum_Hessian_column_relative_error']>.01
+                or any(v>1e-8 for v in state['nuclear_errors_eV'].values())):
+            raise ValueError('Relocated cached numerical control exceeds its declared tolerance')
+    return dict(raw_quantum_records=8,Fc_electronic_records=6,total_SCF_evaluations=392,
+                baseline_evaluations=8,displaced_evaluations=384,original_project_reads_blocked=True,
+                fresh_quantum_or_polymer_G_inferred=False)
+
+
 def audit_fc_functional_controls(load):
     """Rebuild electronic-only reference diagnostics from six stored states."""
     try:
@@ -709,6 +805,8 @@ def audit():
     first_site = audit_first_site_grafting(load)
     surface = audit_surface_controls(load)
     fc_functional = audit_fc_functional_controls(load)
+    neighbor = audit_neighbor_cycle(load)
+    controls_addendum = audit_control_addendum(load)
     if cutoff is not None:
         if hashlib.sha256((folder / "thermal_cutoff_sensitivity.json").read_bytes()).hexdigest() != load("thermal_cutoff_review.json")["result_sha256"]:
             raise ValueError("Frozen thermal-cutoff result differs from its independent source review")
@@ -740,6 +838,8 @@ def audit():
                 first_site_grafting=first_site,
                 surface_controls=surface,
                 Fc_functional_controls=fc_functional,
+                neighbor_cycle=neighbor,
+                control_addendum=controls_addendum,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

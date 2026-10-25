@@ -14,12 +14,7 @@ nine backbone C–C bonds and two ends in every actual XYZ and drawing. An ident
 empty backbone is identified as a shared component; occupied phthalimide energies
 are never transferred to PMDI.
 
-The [site-3 native component](../../reviews/2026-10-24/pmdi_site3_native/README.md)
-now passes independent Hessian/nuclear-partition reconstruction. The
-[split execution follow-up](../pmdi_split_execution_2026-10-24/README.md)
-advances the two-graft geometry independently of its active-energy resource
-pilot. The matched PMDI cycle and conformer convergence remain incomplete;
-this partial result does not admit the candidate on all axes.
+All three occupied baseline states now pass independent native reconstruction. Together with the exact shared empty state, the [matched finite cycle](../../reviews/2026-10-25/pmdi_neighbor_cycle_checked/README.md) gives ΔΔG = −1.86 kJ/mol at the primary cutoff. The [current baseline](baseline_current.json) and [recovery registry](baseline_recoveries.json) identify the completed components. Each graph contributes one minimum; broader conformer/configuration convergence, coupling and material eligibility remain open. Historical execution notes below retain the earlier pending states and interrupted attempts.
 
 - [Frozen source-search plan](plan.json), [candidate snapshot](candidate_snapshot.json) and [route snapshot](route_snapshot.json).
 - [Exact identity and geometry input review](input_validation.json).

@@ -1,22 +1,23 @@
 {
   "status": "current_regressions_verified",
   "full_suite": {
-    "passed": 1208,
+    "passed": 1251,
     "skipped": 1,
-    "report": "results/publication_readiness/checks_2026-10-25_RAM_followup/full_suite.xml"
+    "report": "results/publication_readiness/checks_2026-10-25_neighbor/full_suite.xml"
   },
   "separately_verified_skips": {
     "figure_environment": {
       "passed": 1,
-      "report": "results/publication_readiness/checks_2026-10-25_RAM_followup/figure_dependency.xml"
+      "report": "results/publication_readiness/checks_2026-10-25_neighbor/figure_dependency.xml"
     }
   },
   "report_sha256": {
-    "results/publication_readiness/checks_2026-10-25_RAM_followup/full_suite.xml": "77545b305a47742af268a15599144fd8c5d88d621e23d91cad6a23dc9a949a58",
-    "results/publication_readiness/checks_2026-10-25_RAM_followup/figure_dependency.xml": "226d951921575fcad5dfec6797e8f3084c4a2377f6f01ad63750d635ff38aded"
+    "results/publication_readiness/checks_2026-10-25_neighbor/full_suite.xml": "e6c67709cf4948b0b85941e01617e7d05efa7767c6f51879924d2aaae73947cf",
+    "results/publication_readiness/checks_2026-10-25_neighbor/figure_dependency.xml": "618f5d66193d3b14a4a51d9e3289fc98e5933412cfedec556ec5737dc5f5c43f"
   },
-  "integration": "Alternate energy scope gates, prospective occupied-graph pilots, independent completed-stage reviews and an explicit measured-hybrid-RAM restart. The 32 GiB guard failure is preserved; the 80 GiB branch has no accepted energy until review. Paired native G, ensemble convergence and public deposition remain pending.",
+  "integration": "Matched four-state PMDI native cycle; cached raw control replay and negative mutations; same-model resource-class transfer; CPU-safe dependency probes. Regression imports ran under an isolated GPU reservation; no quantum benchmark is inferred from test throughput.",
   "test_harness_note": "An earlier stdin/spawn harness failure remains at results/publication_readiness/checks_2026-10-25_response/stdin_harness_failure.xml. The current run uses the standard pytest entry point.",
   "experimental_accuracy_inferred": false,
-  "checked": 1792961955.8090916
+  "checked": 1792970047.2392974,
+  "subsequent_preparation_checks": "Preparation-only occupied-class expansion and RAM-recovery additions compile, verify exact inputs and produce explicit pending plans. No numerical producer/equation changed after the regression run."
 }

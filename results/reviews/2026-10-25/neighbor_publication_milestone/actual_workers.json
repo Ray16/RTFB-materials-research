@@ -1,0 +1,211 @@
+{
+  "status": "actual_scientific_processes_and_exclusive_residency_checked",
+  "checked": 1792970286.4313338,
+  "reports": [
+    {
+      "host": "lambda1",
+      "workers": [
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf018/experimental_energy/status.json",
+          "owner": {
+            "host": "lambda1",
+            "pid": 1466300,
+            "process_start": "522004501"
+          },
+          "CPU_affinity": [
+            6,
+            7
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf018/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf018/host_guard --maximum-rss-gib 80.0 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf018/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf018 "
+        },
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf017/experimental_energy/status.json",
+          "owner": {
+            "host": "lambda1",
+            "pid": 1465852,
+            "process_start": "522004301"
+          },
+          "CPU_affinity": [
+            4,
+            5
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf017/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf017/host_guard --maximum-rss-gib 80.0 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf017/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf017 "
+        }
+      ],
+      "GPU_residency_csv": "1465852, GPU-7f3f747c-971a-4267-719f-e3d850db3f89, 16876\n1466300, GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70, 16872\n",
+      "load": [
+        3.70654296875,
+        6.0595703125,
+        8.18701171875
+      ],
+      "online_CPUs": 80
+    },
+    {
+      "host": "lambda2",
+      "workers": [
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery/alternating__occ_3__conf001/geometry/status.json",
+          "owner": {
+            "host": "lambda2",
+            "pid": 3543448,
+            "process_start": "1376729819"
+          },
+          "CPU_affinity": [
+            12,
+            13
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery/alternating__occ_3__conf001/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery/alternating__occ_3__conf001/host_guard --maximum-rss-gib 32 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery/alternating__occ_3__conf001/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_smooth_geometry.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery/alternating__occ_3__conf001 "
+        },
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf009/experimental_energy/status.json",
+          "owner": {
+            "host": "lambda2",
+            "pid": 3787511,
+            "process_start": "1377003221"
+          },
+          "CPU_affinity": [
+            6,
+            7
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf009/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf009/host_guard --maximum-rss-gib 80.0 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf009/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf009 "
+        },
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf015/experimental_energy/status.json",
+          "owner": {
+            "host": "lambda2",
+            "pid": 3810024,
+            "process_start": "1377038825"
+          },
+          "CPU_affinity": [
+            5,
+            8
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf015/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf015/host_guard --maximum-rss-gib 80.0 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf015/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf015 "
+        },
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf014/experimental_energy/status.json",
+          "owner": {
+            "host": "lambda2",
+            "pid": 3809521,
+            "process_start": "1377038611"
+          },
+          "CPU_affinity": [
+            2,
+            4
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf014/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf014/host_guard --maximum-rss-gib 80.0 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf014/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf014 "
+        },
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf016/experimental_energy/status.json",
+          "owner": {
+            "host": "lambda2",
+            "pid": 3810837,
+            "process_start": "1377039060"
+          },
+          "CPU_affinity": [
+            9,
+            14
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf016/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf016/host_guard --maximum-rss-gib 80.0 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf016/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/alternating__occ_none__conf016 "
+        }
+      ],
+      "GPU_residency_csv": "3809521, GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074, 8980\n3787511, GPU-099acaa2-a585-2324-846e-c57f056f80a7, 1876\n3810024, GPU-891d8452-4937-16a3-d9a7-36baf0370c9a, 1228\n3543448, GPU-2c4c6bf7-dfe7-0a42-db3a-43d3e97c5dd7, 14598\n3810837, GPU-fab99e67-e6e2-56bb-e07d-ea240da3e84a, 1222\n",
+      "load": [
+        13.67578125,
+        14.32275390625,
+        14.13134765625
+      ],
+      "online_CPUs": 80
+    },
+    {
+      "host": "lambda11",
+      "workers": [
+        {
+          "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/alternating__occ_none__conf013/geometry/status.json",
+          "owner": {
+            "host": "lambda11",
+            "pid": 3043970,
+            "process_start": "1376500479"
+          },
+          "CPU_affinity": [
+            0,
+            1
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "argv": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/alternating__occ_none__conf013/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/alternating__occ_none__conf013/host_guard --maximum-rss-gib 32 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/alternating__occ_none__conf013/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_smooth_geometry.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_geometry_batch/alternating__occ_none__conf013 "
+        }
+      ],
+      "GPU_residency_csv": "3043970, GPU-57b48d7e-3c58-2ef3-973a-40bd65ca9ae5, 1896\n",
+      "load": [
+        1.5234375,
+        1.408203125,
+        1.53125
+      ],
+      "online_CPUs": 48
+    }
+  ],
+  "completed_native_G_inferred": false
+}

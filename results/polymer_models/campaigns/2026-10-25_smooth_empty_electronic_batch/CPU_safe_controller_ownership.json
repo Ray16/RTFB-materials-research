@@ -1,0 +1,21 @@
+{
+  "host": "lambda2",
+  "pid": 3447417,
+  "process_start": "1376619884",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_cpu_preflight.py",
+    "--controller",
+    "coordinate_smooth_electronic_batch.py",
+    "coordinate",
+    "--batch",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch",
+    "--hosts",
+    "lambda1,lambda2,lambda11,lambda13",
+    "--max-hours",
+    "24",
+    "--resume"
+  ],
+  "started": 1792965578.971571,
+  "GPU_imports_deferred_until_reserved_worker": true
+}

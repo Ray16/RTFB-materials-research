@@ -1,0 +1,48 @@
+{
+  "status": "residency_interrupted_geometry_restarts_prepared",
+  "stage": "geometry",
+  "entries": [
+    {
+      "key": "all_same__occ_4__conf001",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery/all_same__occ_4__conf001",
+      "plan_sha256": "abfb32efaddc7319da93dee5687431395d9faaa2a09153764cb62385d8cd49ee"
+    },
+    {
+      "key": "alternating__occ_3__conf001",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery/alternating__occ_3__conf001",
+      "plan_sha256": "c4d9ed0b4d836ff5360e148c5b618b41f7f9ef63b36af9a32c6f1969d7ef17bc"
+    }
+  ],
+  "worker": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_smooth_geometry.py",
+  "maximum_RSS_GiB": 32,
+  "minimum_free_RAM_GiB": 32,
+  "minimum_GPU_MiB": 32768,
+  "experimental_model": {
+    "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+    "solvent": "acetonitrile",
+    "electrostatic_model": "SMD",
+    "electrostatic_surface_points": 590,
+    "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+    "CDS_points_per_sphere": 2030,
+    "supported_elements": [
+      "C",
+      "H",
+      "N",
+      "O",
+      "Cl"
+    ],
+    "scientific_model_changed": true,
+    "primary_candidate_admission": false
+  },
+  "primary_candidate_admission": false,
+  "quantum_results_transferred": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_resident_recovery.py": "4cd23dc524ed249895594f88943610169ad232715f978b4e4731dc36491dc89f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_smooth_geometry.py": "5d3a3e1e76f74e8fbc6c85ffbbbd94f7a59d840e5ebb67859a74e27f6e3f40d4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_geometry.py": "9f2929968f8e96124e9737b7ae2ebde885f91e24617861841d2b4969f21d6641",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/preflight_cpu_dependencies.py": "5c0d95d45fab639b3803ad9602d01a10aa24638abbdd9988dcf10fc5b68bcc95",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_cpu_preflight.py": "28ddc2ebaa4a150c0b846f3a9a21d5abdb7a791ddfe392e2ef8a25bcdcdd46ce",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd"
+  }
+}

@@ -1,9 +1,9 @@
 {
-  "checked_UTC": "2026-10-25T20:10:59.433978+00:00",
-  "review_type": "assistant rendered-page inspection, separate from compiler report",
+  "checked_UTC": "2026-10-25T23:14:07.144852+00:00",
+  "review_type": "assistant rendered-page inspection; separate from compiler checks",
   "documents": {
-    "manuscript": "cb323c4beb083fe8ec7c7b33c9e925be1bdeb9d396c359448193ee5bdffc592d",
-    "supporting_information": "06cc50505cf7942c715cb129dd98607d7195478e9dcca51ba95300509c0eaf1c"
+    "manuscript": "e0bf69d53d1e89534d62d65707c40254b441e44749f6ced5b81563b95583eb41",
+    "supporting_information": "0d88009b4796d36b43f1e5b055eb2cf8b37d348b1ffd03d2291133b105f6feab"
   },
   "contact_sheets_reviewed": {
     "manuscript": [
@@ -23,7 +23,8 @@
       14,
       15,
       16,
-      17
+      17,
+      18
     ],
     "supporting_information": [
       1,
@@ -42,23 +43,26 @@
       14,
       15,
       16,
-      17
+      17,
+      18
     ]
   },
   "detail_pages_reviewed": {
+    "manuscript": [
+      10,
+      11
+    ],
     "supporting_information": [
-      2,
-      12,
-      13
+      7,
+      8
     ]
   },
   "findings": [
-    "All 17 article and 17 SI pages inspected without clipping or figure/caption overlap.",
-    "The fixed-geometry Fc table and explanatory text retain electronic-only scope and show the adverse reference-only shifts.",
-    "The CDS curvature plot and four-control table are legible; experimental-model controls do not establish polymer G or candidate admission.",
-    "Both documents have zero compiler overfull boxes and resolved references."
+    "All 18 article and 18 SI pages inspected without clipping or figure/caption overlap.",
+    "The exact PMDI cycle, its two conditional attachment orders, rotor-cutoff settings and one-minimum scope agree with the independently reconstructed data.",
+    "The actual paired geometry shows separated cores; caption and text distinguish sequence adjacency from contact, binding and coupling.",
+    "Compiler checks report zero overfull boxes and resolved references."
   ],
-  "build_sha256": "67667765d464e6b3f493d62bba48e9703c5d03f36f483a001925e21ad3b2fdec",
-  "rendered_pages": "calcs/validation/reference_diagnostic_milestone_2026-10-25/rendered",
+  "build_sha256": "493a69dcbe557787a9ca9e58af2950a8b7a8e23a9665a08be5ce1208e7d7280f",
   "submission_ready": false
 }
