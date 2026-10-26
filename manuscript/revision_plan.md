@@ -36,12 +36,17 @@ Hessian/mode/nuclear reconstruction, enabling the forty-state continuation.
 The occupied 105-atom hybrid point also passes independent checkpoint/resource
 review and feeds a separate native pilot. Neither result closes ensemble
 convergence. A new frozen methyl-capped phthalimide control supplies the first
-direct local interaction triplet (−24.76 kJ/mol in MeCN; −37.16 in gas), with
-the remaining pose/cap inputs running and basis-superposition checks pending.
+direct local interaction triplet (−24.76 kJ/mol in MeCN; −37.16 in gas).
+All twelve pose/cap interaction triplets now reconstruct from 36 independently
+reviewed electronic states; the second close pose is −26.22 kJ/mol in MeCN at
+the central cap length, and the separated poses are near zero. Basis-superposition
+checks and broader conformer sampling remain pending.
 This metric includes caps and continuum response and remains distinct from
 whole-chain ΔΔG, pure π binding and electron-transfer coupling. It is not yet
 integrated as a chemical finding in the immutable manuscript epoch. See
 [the local interaction record](../results/reviews/2026-10-26/local_motif_interactions/README.md).
+The [complete local-panel review](../results/reviews/2026-10-26/local_motif_complete/README.md)
+preserves the earlier partial snapshot and the full checked replay.
 
 The [paired-cycle raw addendum](../results/releases/neighbor_cycle/README.md)
 closes the latest local archive-coverage gap: fourteen cached states and balanced
