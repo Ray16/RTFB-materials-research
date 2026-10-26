@@ -901,9 +901,10 @@
       "raw_root": "calcs/releases/2026-10-26_manuscript_review_bundle_v2",
       "archive": "calcs/releases/2026-10-26_manuscript_review_bundle_v2.tar.zst",
       "replay": "results/releases/manuscript_bundle_v2/stdlib_replay.json",
-      "status": "prior_epoch_replays_checked_new_TEMPO_state_addendum_pending",
+      "status": "prior_bundle_and_separate_TEMPO_addendum_checked_consolidation_pending",
       "scope": "Prior source/evidence plus four overlapping raw-state archives; newer TEMPO local-graft states not yet included",
-      "previous": "results/releases/manuscript_bundle/current.json"
+      "previous": "results/releases/manuscript_bundle/current.json",
+      "tempo_addendum": "results/releases/tempo_addendum/current.json"
     },
     "xtb_prefix_binding": {
       "guide": "results/validation/xtb_prefix_binding_2026-10-26_v3/README.md",
@@ -991,6 +992,15 @@
       "figure": "results/figures/grafting/tempo_exact_route.pdf",
       "status": "route_pass_local_potential_checked_material_pending",
       "scope": "Existing exact local graft; NaH source precedent and one MeCN model potential, no grafting free energy or intersite interaction"
+    },
+    "tempo_raw_addendum": {
+      "guide": "results/releases/tempo_addendum/README.md",
+      "current": "results/releases/tempo_addendum/current.json",
+      "source_snapshot": "results/grafting/tempo_exact_support_2026-10-26/native_potential_review.json",
+      "raw_root": "calcs/releases/2026-10-26_tempo_raw_addendum_v2",
+      "archive": "calcs/releases/2026-10-26_tempo_raw_addendum_v2.tar.zst",
+      "status": "four_state_archive_and_two_relocated_replays_checked",
+      "scope": "TEMPO/Fc cached states, arithmetic and four Hessians; physical QM checks not rerun, no public DOI"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

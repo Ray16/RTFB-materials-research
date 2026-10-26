@@ -5,6 +5,9 @@
 [Registry history](registry_reconciliation.json) · [Historical selection registry](historical_registry_reconciliation.json) · [Tests](tests_publication.xml) ·
 [Precursor and graft drawing](../../figures/grafting/tempo_exact_route.png)
 
+The [raw-state addendum](../../releases/tempo_addendum/README.md) separately
+reconstructs the four-state potential and Hessian partitions after relocation.
+
 The existing `tempo` local graft corresponds to 4-hydroxy-TEMPO attached through
 its 4-oxygen to the modeled benzyl carbon. Its precursor matches PubChem CID
 137994. [US6441243B1, Example A4](https://patents.google.com/patent/US6441243B1/en)

@@ -5,7 +5,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 
 The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v3/README.md) passes scoped kernel and CLI checks in the original and restored environments while retaining the qualified hashes. Full native/projected production requalification and broader path portability remain open.
 
-The [consolidated reviewer bundle](releases/manuscript_bundle_v2/README.md) gathers the prior manuscript source snapshot and four overlapping raw-state packages. It does not yet include the newly reported TEMPO local-graft states. Isolated standard-library and locked NumPy replays pass after extraction; an updated raw-state bundle, public data licensing, author metadata and DOI deposition remain open.
+The [consolidated reviewer bundle](releases/manuscript_bundle_v2/README.md) gathers the prior manuscript source snapshot and four overlapping raw-state packages. A separate [TEMPO addendum](releases/tempo_addendum/README.md) now covers the newer local-graft result. Isolated replays pass after extraction; a consolidated successor, public data licensing, author metadata and DOI deposition remain open.
 
 The [relocated xTB kernel probe](validation/xtb_relocated_bundle_probe_2026-10-26/README.md) reproduces the qualified kernel values using the extracted bundle and an external xTB prefix. It uses the existing Python environment and does not qualify a full production deployment.
 
