@@ -20,6 +20,17 @@ revision, not by a proposed calculation or a running job.
 | M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 18 (including the TOC page) and 18 pages, respectively |
 | Remaining endpoint | The fixed panel now has 39/39 endpoints; the last triplet alternative is 0.707 eV above the selected singlet electronically. Independent reconstruction: 111 checks, zero discrepancies. Alternative-spin thermochemistry remains explicitly unresolved. | Calculation/reconstruction resolved; latest draft updated |
 
+The broader-conformer continuation now has declared refinement coverage for all
+240 separated starts across twelve graph/configuration sets. The last two
+occupied geometry resource classes passed their independent reviews. Separate
+occupied hybrid-energy pilots and an empty-chain native pilot are still physical
+validation steps, not finished ensembles. A source-bound continuation requires
+the native pilot's independent review and each exact electronic parent before
+launching additional native states; its dependency/resource checks and the native
+bookkeeping pass 34 focused tests. This leaves M4 open and does not change the
+checked manuscript's finite-sample claims. See
+[the current follow-up checkpoint](../results/reviews/2026-10-26/conformer_followup_milestone/README.md).
+
 The end-to-end examples and adequate conformer evidence are required before
 claiming a complete selection framework. The open PMDI trimer slots and an NDI
 external anchor need not become headline claims. Existing calculations remain

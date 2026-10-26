@@ -87,3 +87,39 @@ to suitable free GPUs. This is a resource bound, not a molecular accuracy claim.
 finite baseline. `coordinate_conformer_thermals.py` gives a bounded continuation
 after the pilot was submitted. It preserves failures and never relaxes the
 physical gates or retries an invalid state automatically.
+
+## Distinct smooth-surface continuation
+
+The separately identified smooth-surface MeCN model is tested as an independent
+protocol; it is not substituted into the primary-model reaction cycles. The
+current refinement declaration covers twenty separated starts for each of twelve
+graph/configuration sets (240 total). Geometry, hybrid electronic energy and
+native thermochemistry are separately checked stages. Each stage retains the
+exact source geometry and model identity. Occupied graphs require their own
+hybrid and native resource pilots before expansion.
+
+`scripts/pipeline/smooth_polymer_native.py` writes full baseline and displaced
+SCF/gradient records, the native Hessian and the nuclear partition at three rotor
+cutoffs. Its finite-difference panel includes the protocol's two columns plus
+the two largest-force coordinates, with duplicates removed, at both declared
+steps. It uses the geometry's xTB-detected rotational symmetry number. A separate
+CPU reviewer reconstructs the column errors, internal modes and nuclear sums.
+These checks establish a state within the named model, not a complete ensemble
+or predictive solvation accuracy.
+
+`prepare_smooth_native_batch.py` transfers only a checked execution class to
+other exact-parent states of the same constitution, basis, charge/spin, model,
+settings and runtime. `coordinate_smooth_native_batch.py` waits for the independent
+native pilot before declaring the cohort. It then waits for each electronic
+review before preparing a new native state. An electronic RAM-recovery option
+must refer to the same geometry; no energy or thermal term is borrowed. Only an
+identical completed reference is reused. Actual failures and uncertain ownership
+remain preserved; resource contention does not create a scientific retry.
+
+The current native execution bound is 80 GiB host RSS plus 32 GiB free-RAM
+headroom and a GPU-peak limit of 31,744 MiB on a minimum 32-GB-class card.
+This differs from the historical baseline adapter's allocation policy above.
+Until its large-state pilot passes, the new bound remains prospective and cannot
+certify other conformers. CPU-only dependency probes defer GPU-library imports
+to the reserved worker. Available GPUs, disjoint CPU slots and remaining host
+memory promises jointly determine concurrency.
