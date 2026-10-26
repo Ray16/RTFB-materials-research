@@ -23,7 +23,9 @@ QC and implementation evidence appear only in backup.
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/visual_review.json)
   add the separate held AQ proposal to slide 6. The [latest build](../results/reviews/2026-10-26/colleague_workflow_empty_range/build_check.json)
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_empty_range/visual_review.json)
-  add the alternative-model empty-chain range to slide 15.
+  add the alternative-model empty-chain range to slide 15. The [latest build](../results/reviews/2026-10-26/colleague_workflow_empty_set/build_check.json)
+  and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_empty_set/visual_review.json)
+  clarify that the four geometries are distinct under the checked comparison.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 

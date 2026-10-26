@@ -25,8 +25,10 @@ cover expansion; slides 7–10 cover validation. Keep those sections if time is 
 Numerical answers to likely questions:
 
 - Four checked empty-chain free energies span 7.19 kJ/mol at the 50 cm⁻¹
-  cutoff in the separate smooth-solvent model. This is not a grafting-cycle
-  uncertainty or an ensemble, and should not be mixed with the primary model.
+  cutoff in the separate smooth-solvent model. Their pairwise heavy-atom RMSDs
+  are 2.01–4.27 Å; the four-state finite partition lowers the minimum by
+  1.81 kJ/mol. This is not a grafting-cycle uncertainty or a converged ensemble,
+  and should not be mixed with the primary model.
 
 - A separate AQ-2-carboxylate graft has a source-linked precursor and mapped
   attachment, but remains on route hold with no computed redox properties. It

@@ -49,6 +49,10 @@ Four checked empty-chain native records in the alternate smooth-surface model
 now span 7.19 kJ/mol at the 50 cm^-1 rotor cutoff. This is a geometry sensitivity
 within one configuration, not a completed ensemble, grafting-cycle uncertainty
 or a result to mix with the primary-model cycle. See the [range diagnostic](../results/validation/empty_chain_native_range_2026-10-26/README.md).
+The four geometries pass graph/stereochemistry checks and are separated by
+2.01--4.27 Å heavy-atom RMSD; a finite-set partition lowers the minimum by
+1.81 kJ/mol. This does not satisfy the 10-versus-20 sampling criterion. See the
+[finite-set analysis](../results/validation/empty_chain_finite_set_2026-10-26/README.md).
 The [complete local-panel review](../results/reviews/2026-10-26/local_motif_complete/README.md)
 preserves the earlier partial snapshot and the full checked replay.
 
