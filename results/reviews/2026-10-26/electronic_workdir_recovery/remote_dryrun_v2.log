@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_capacity_preflight_v2.py", line 68, in <module>
+    main()
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_capacity_preflight_v2.py", line 64, in main
+    module.main()
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_electronic_batch.py", line 176, in main
+    print(json.dumps(placement.launch_local(args.batch.resolve(),args.campaign.resolve(),args.gpu)))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_capacity.py", line 34, in launch_local
+    
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/resources.py", line 47, in gpu_suitability
+    result = subprocess.run(
+             ^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['nvidia-smi', '--id=-9999', '--query-gpu=index,uuid,name,memory.total,compute_cap', '--format=csv,noheader,nounits']' returned non-zero exit status 6.

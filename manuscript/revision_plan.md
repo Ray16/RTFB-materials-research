@@ -58,6 +58,8 @@ The occupied site-2 native pilot was independently reviewed, and its
 have been resumed with dependency and reservation checks. Twelve prior intents
 were subsequently verified as unstarted and reopened. These are process and input records, not
 completed ensemble data.
+The electronic adapter's remote working-directory failure has since been
+reproduced and corrected; see the [placement recovery](../results/reviews/2026-10-26/electronic_workdir_recovery/README.md).
 The [complete local-panel review](../results/reviews/2026-10-26/local_motif_complete/README.md)
 preserves the earlier partial snapshot and the full checked replay.
 

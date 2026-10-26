@@ -22,3 +22,7 @@ inventory files, not this frozen snapshot, are authoritative for later progress.
 This is ownership and scheduling recovery only. It establishes no new quantum
 result, conformer convergence or candidate eligibility. Eleven focused tests
 cover attempt-artifact rejection, remote-query handling and inventory behavior.
+
+Two later placement responses became uncertain; the subsequent
+[remote working-directory recovery](../electronic_workdir_recovery/README.md)
+records their inspection and the corrected entry point.
