@@ -1,0 +1,41 @@
+{
+  "status": "consolidated_bundle_relocated_stdlib_replays_checked",
+  "checked": 1793058691.1518118,
+  "archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/releases/2026-10-26_manuscript_review_bundle_v3_final.tar.zst",
+  "archive_sha256": "58b4cbe315bcb922bdc5604dd00b8e23047b7fbbbf50d339b6f0362d28b8c48d",
+  "bundle_manifest_sha256": "a326d347f1338297ea442899217150fe7eeacf82bcd2db8e142fdbf09c0cbf94",
+  "source_commit": "74dbd4e32181ad6ae710f5b16c44dc96aac96b16",
+  "nested_packages": [
+    "first_site",
+    "neighbor_cycle",
+    "numerical_controls",
+    "primary_review",
+    "tempo_addendum"
+  ],
+  "replayed_stages": [
+    "primary",
+    "first_site",
+    "controls",
+    "neighbor",
+    "tempo",
+    "manuscript"
+  ],
+  "neighbor_states": 14,
+  "neighbor_balanced_reactions": 14,
+  "neighbor_deltaDeltaG_kJ_mol": -1.8616197516972124,
+  "tempo_states": 4,
+  "tempo_oxidation_V_vs_Fc": 0.5787750407544081,
+  "current_evidence_files": 141,
+  "projected_certificate_closure": {
+    "candidate_manifest_sha256": "0a05e84ca02c0cb3b419a52669b087ef27ea57b09ecff42125d160cfe5ef46fe",
+    "projected_certificate_sha256": "05d8e9afcf839bb1187a1bb46f935326b89777eb3609c1bc085042dafe6dd448",
+    "projected_certificate_dependencies": 9
+  },
+  "original_checkout_reads_blocked": true,
+  "scientific_packages_required": false,
+  "quantum_calculations_repeated": false,
+  "full_native_reintegration_inferred": false,
+  "public_archive_deposited": false,
+  "experimental_accuracy_inferred": false,
+  "validator_sha256": "c0cd56036142af79b001c809aa0c17364c96d87fc907743e65604d0aeaecf7a8"
+}
