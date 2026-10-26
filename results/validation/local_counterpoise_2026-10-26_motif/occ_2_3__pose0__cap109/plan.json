@@ -1,0 +1,55 @@
+{
+  "task": {
+    "key": "occ_2_3__pose0__cap109",
+    "atoms": 38,
+    "charge": 0,
+    "mult": 1,
+    "role": "frozen_local_motif_gas_counterpoise"
+  },
+  "settings": {
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "nlc": "vv10",
+    "density_fit": true,
+    "only_dfj": false,
+    "grid_level": 3,
+    "nlc_grid_level": 3,
+    "small_rho_cutoff": 0.0,
+    "SCF_conv_tol": 1e-10,
+    "SCF_conv_tol_grad": 1e-07,
+    "SCF_max_cycle": 200,
+    "medium": "gas",
+    "quadrature": "One CPU-generated full-real-complex grid for every term",
+    "auxiliary_space": "One default PySCF full-real-complex RI-JK auxiliary molecule for every term"
+  },
+  "input_geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif/occ_2_3__pose0__cap109/geometry.json",
+  "input_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif/occ_2_3__pose0__cap109/geometry.json": "51401ea8d530502ecbeeedebafba06f9ccf591a34dddcb22f206bb44985202c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/counterpoise_control/independent_review.json": "43707ff4a0f377cac978202cff1959ccc0fe4deca0a20385ee66aed03dc63b12",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/local_motif_construction/summary.json": "54c03bd5e6c258f06b69fa8451094538172cc9db59f4c22f95c7b56966e58711",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_local_motif_fragments/manifest.json": "8fa8695ed3b78421ef010d851d39aa2006fb31487d2fda60fe50e8b07d73902c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_local_motif_fragments/occ_2_3__pose0__cap109/A.xyz": "fa9f425ac4d65bc8fbee765e627427193b77b47d25c28bd0ed9985cf93b0d6e1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_local_motif_fragments/occ_2_3__pose0__cap109/B.xyz": "6d820399f027480decc62402bf29d8538d62a3ca8eff9fa935487388366ca1ed",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_local_motif_fragments/occ_2_3__pose0__cap109/AB.xyz": "bfb7ea8098751a19d25b9c156bc255d19967e82aaba31e0d090c8059b4c87b7f"
+  },
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_local_counterpoise.py": "43fd80718ad4da4921132e0406d560c0dead2f7cebfe04793880f4d601fe5ef3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/local_counterpoise.py": "84c2e9a1a781e9f53aa6b6bd7a8e6d133e00c4e88b8f72d8add1bd25583dffb2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/local_motif_energy.py": "334ec616455852170abba9501dbd9dd18e56ceca5a04206f47247597735122d6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py": "d748caad31e9c6295a006eef9d56036c2d9c0a25b5f06d7a156652cb55752078",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py": "070cb6517a50fe7d8a0245b0fbaf01aaefcd86ddfa14890a052faaebb0d3c26a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py": "77f6e51a995f7c299f10330075c02a0d375f303d99786f80296da54c5d6a35d2"
+  },
+  "runtime_profile": "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+  "execution_driver": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_local_counterpoise.py",
+  "maximum_host_RSS_GiB": 32,
+  "minimum_GPU_MiB": 32768,
+  "maximum_GPU_MiB": 30720,
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/local_motif_counterpoise/local_counterpoise_2026-10-26_motif/occ_2_3__pose0__cap109",
+  "control_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/counterpoise_control/independent_review.json",
+  "source_construction_key": "occ_2_3__pose0__cap109",
+  "primary_candidate_admission": false,
+  "solvent_counterpoise_computed": false
+}

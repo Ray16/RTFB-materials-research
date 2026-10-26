@@ -316,11 +316,11 @@
     "slides": {
       "guide": "slides/README.md",
       "current": "slides/redox_workflow.pdf",
-      "checked_refresh": "results/reviews/2026-10-26/colleague_workflow/build_check.json",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow/visual_review.json",
-      "review": "results/reviews/2026-10-26/colleague_workflow/visual_review.json",
-      "status": "results/reviews/2026-10-26/colleague_workflow/build_check.json",
-      "pdf_sha256": "68e50d8d9b79f684a136a146bd0e6df30d80a49563756df61e08ac42082cf2d8",
+      "checked_refresh": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
+      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
+      "status": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json",
+      "pdf_sha256": "c38d224303a9cbd4d5657297efaef76934bc37186531333e859cf7e7da805ec8",
       "historical_reviews": [
         "results/reviews/2026-10-23/presentation_capacity_refresh/status.json",
         "results/reviews/2026-10-23/presentation_capacity_refresh/visual_review.json",
@@ -422,10 +422,10 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-26_native_replay/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-26_dipea_nmr/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "18-page article and 18-page SI; exact PMDI finite cycle and independent relocated raw-Hessian/nuclear replay. Ensemble convergence, material evidence and public deposition remain open.",
+      "scope": "18-page article and 19-page SI; includes the checked DIPEA salt NMR estimate and finite PMDI cycle. Ensemble convergence, material evidence and public deposition remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
@@ -435,7 +435,7 @@
       "version_provenance": "Source hashes are recorded by build_check.json; publication commit is given in repository history.",
       "documents": {
         "main_pages": 18,
-        "SI_pages": 18
+        "SI_pages": 19
       }
     },
     "candidate_decisions": {
@@ -618,16 +618,16 @@
     "checked_research_slides": {
       "current": "slides/redox_workflow.pdf",
       "pdf": "slides/redox_workflow.pdf",
-      "status": "focused_workflow_presentation_compiler_and_assistant_visual_review_checked",
+      "status": "focused_deck_checked_with_DIPEA_experimental_source",
       "source_snapshot": "results/reviews/2026-10-26/colleague_workflow/evidence.json",
       "scope": "Focused candidate-expansion and property-validation presentation; finite PMDI example with scientific limits",
-      "review": "results/reviews/2026-10-26/colleague_workflow/visual_review.json",
-      "pdf_sha256": "68e50d8d9b79f684a136a146bd0e6df30d80a49563756df61e08ac42082cf2d8",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow/visual_review.json",
+      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
+      "pdf_sha256": "c38d224303a9cbd4d5657297efaef76934bc37186531333e859cf7e7da805ec8",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
       "pages": 23,
       "main_pages": 16,
       "backup_pages": 7,
-      "previous_deck": "slides/archive/2026-10-26_before_focused_workflow/redox_workflow.pdf"
+      "previous_deck": "slides/archive/2026-10-26_before_dipea_nmr/redox_workflow.pdf"
     },
     "streamed_V100_PCM": {
       "guide": "results/validation/streamed_PCM_2026-10-24/README.md",
@@ -851,13 +851,33 @@
       "current": "slides/colleague_workflow.pdf",
       "maintained_deck": "slides/redox_workflow.pdf",
       "source_snapshot": "results/reviews/2026-10-26/colleague_workflow/evidence.json",
-      "compiler_checks": "results/reviews/2026-10-26/colleague_workflow/build_check.json",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow/visual_review.json",
+      "compiler_checks": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
       "speaker_notes": "slides/colleague_speaker_notes.md",
       "brief": "slides/colleague_brief.md",
       "raw_root": "calcs/validation/2026-10-26_colleague_workflow",
-      "status": "focused_workflow_presentation_compiler_and_assistant_visual_review_checked",
-      "scope": "Checked candidate expansion and property-validation evidence; no new quantum jobs or material admission"
+      "status": "focused_deck_checked_with_DIPEA_experimental_source",
+      "scope": "Checked candidate expansion and property-validation evidence; no new quantum jobs or material admission",
+      "dipea_evidence": "results/validation/dipea_experimental_anchor_2026-10-26/summary.json"
+    },
+    "dipea_experimental_anchor": {
+      "guide": "results/validation/dipea_experimental_anchor_2026-10-26/README.md",
+      "current": "results/validation/dipea_experimental_anchor_2026-10-26/summary.json",
+      "source_snapshot": "manuscript/evidence/2026-10-26_dipea_nmr/dipea_experimental_anchor.json",
+      "raw_root": "calcs/literature/2026-10-26_dipea_experiment",
+      "status": "experimental_salt_NMR_estimate_checked_conditional_cross_source_comparison",
+      "scope": "DIPEAH hexafluorophosphate pKa estimate; chloride, activity and exact temperature matching and full grafting accuracy remain unresolved."
+    },
+    "gas_counterpoise_control": {
+      "guide": "results/reviews/2026-10-26/counterpoise_control/README.md",
+      "current": "results/reviews/2026-10-26/counterpoise_control/independent_review.json",
+      "source_snapshot": "results/validation/local_counterpoise_2026-10-26/water_dimer/plan.json",
+      "prepared_point": "results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/plan.json",
+      "raw_root": "calcs/validation/local_counterpoise_2026-10-26/water_dimer",
+      "status": "water_dimer_CPU_GPU_control_checked_motif_point_prepared_not_started",
+      "scope": "Gas electronic counterpoise implementation; no solvent correction, association G, coupling or candidate admission",
+      "point_geometry_review": "results/reviews/2026-10-26/counterpoise_control/prepared_motif_geometry_v2.json",
+      "previous_unsubmitted_point": "results/validation/local_counterpoise_2026-10-26_motif/occ_2_3__pose0__cap109/superseded_unsubmitted_resource_plan.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

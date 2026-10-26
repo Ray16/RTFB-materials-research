@@ -1,0 +1,62 @@
+{
+  "status": "gate_started_scientific_start_pending",
+  "owner": {
+    "host": "lambda5",
+    "pid": 3374663,
+    "process_start": "687266120"
+  },
+  "actual_device": {
+    "index": 1,
+    "uuid": "GPU-dcdde577-b12c-0300-479b-b9a813016461",
+    "name": "Tesla T4",
+    "memory_MiB": 15360.0,
+    "compute_capability": "7.5"
+  },
+  "CPU_affinity": [
+    2,
+    3
+  ],
+  "argv": [
+    "taskset",
+    "--cpu-list",
+    "2,3",
+    "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+    "run",
+    "1",
+    "--label",
+    "redox-local-motif-electronic-resource-pilot",
+    "--",
+    "env",
+    "OMP_NUM_THREADS=2",
+    "OMP_THREAD_LIMIT=2",
+    "OPENBLAS_NUM_THREADS=2",
+    "MKL_NUM_THREADS=2",
+    "NUMEXPR_NUM_THREADS=2",
+    "XTB_THREADS=2",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "LD_LIBRARY_PATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cutensor/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/nccl/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cudnn/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cusparselt/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/nvtx/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/curand/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cufile/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/nvjitlink/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cusparse/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cusolver/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cufft/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cuda_runtime/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cuda_nvrtc/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cuda_cupti/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/nvidia/cublas/lib:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+    "--guard-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26/water_dimer/residency_guard",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26/water_dimer/host_guard",
+    "--maximum-rss-gib",
+    "32",
+    "--minimum-free-gib",
+    "32",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+    "--profile",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26/water_dimer/tensor_runtime",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_local_counterpoise.py",
+    "run",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26/water_dimer"
+  ],
+  "plan_sha256": "1ebab44ed866845dfe4b9e6ea01b099517c10ca53c0db51305a73f943989962c",
+  "preflight_sha256": "56ed7e4bd3a6a51373d963dadd0d711856779f7ee92e46f40375d46e4945975d",
+  "started": 1792992081.3566313
+}

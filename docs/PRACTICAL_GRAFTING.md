@@ -144,8 +144,10 @@ favorable thermodynamics supports continued evaluation, while selectivity, compe
 reactions and experimental yield remain to be established.
 
 The later proton-transfer validation qualifies the base-assisted interpretation:
-the DBU capture term differs from the revised MeCN pKa estimate by 22.8 kJ/mol,
-and an exact DIPEA pKa anchor remains unavailable. HCl cancels from the full
+the DBU capture term differs from the revised MeCN pKa estimate by 22.8 kJ/mol.
+A separate [DIPEAH hexafluorophosphate NMR estimate](../results/validation/dipea_experimental_anchor_2026-10-26/README.md)
+reports pKa 18.7 in MeCN; its counterion and activity conventions differ from
+the modeled separated-chloride reaction. HCl cancels from the full
 balanced route, so the discrepancy is not a validated full-reaction correction.
 DIPEA-driven sign changes remain conditional. A fixed base representation adds
 the same term to each reaction and cannot change its within-base ranking.

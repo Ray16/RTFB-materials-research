@@ -15,6 +15,9 @@ QC and implementation evidence appear only in backup.
   and [supporting evidence](generated/colleague_backup.tex).
 - [Presentation evidence](../results/reviews/2026-10-26/colleague_workflow/README.md)
   contains frozen inputs, independent numerical checks, build and separate visual review.
+- The [DIPEA NMR source revision](../results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json)
+  and its [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json)
+  bind the current slide 12 to the independently checked salt estimate.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 
@@ -38,7 +41,8 @@ Set PYTHONPATH=src. Run the following scripts with their --help options:
 2. `scripts/plotting/presentation/plot_colleague_workflow.py` with the same figure
    environment, the checked evidence and `results/figures/presentation` output.
 3. `scripts/presentations/build_colleague_workflow.py` with pypdf and pdflatex,
-   a new build directory and the checked evidence.
+   a new build directory, the checked evidence and `--dipea-evidence` pointing
+   to the checked DIPEA experimental-anchor summary.
 4. `scripts/presentations/render_colleague_workflow.py` with Pillow and Ghostscript,
    followed by separate visual inspection.
 

@@ -3,6 +3,8 @@
 Use these stable paths. Completed quantities carry field-specific QC; blank values
 are pending or excluded. Raw calculations and earlier source snapshots are retained.
 
+The [gas counterpoise control](reviews/2026-10-26/counterpoise_control/README.md) now passes an independent CPU/GPU, common-grid and auxiliary-basis review. The close phthalimide motif point is prepared but has not started; no solvent correction or experimental interaction accuracy is inferred from the small control.
+
 The [native conformer controller recovery](reviews/2026-10-26/native_inventory_recovery/README.md) preserves the four checked free energies and uses per-host GPU inventory checks that distinguish timeouts from verified availability. The recorded snapshot had no available devices; live dispatcher and inventory records show current status. This controller is not evidence of completed sampling or a converged ensemble.
 
 The [frozen local-motif panel](reviews/2026-10-26/local_motif_complete/README.md) now reconstructs all 12 interaction triplets from 36 independently reviewed electronic states. Close phthalimide control poses are approximately −25 to −26 kJ/mol in the MeCN model; separated poses are near zero. Basis-superposition correction, broader conformer sampling, association free energies and electronic coupling remain open.
@@ -28,7 +30,7 @@ The [first-site raw-state addendum](releases/first_site/README.md) contains thir
 | Publication preparation and benchmark completion | [Readiness guide](publication_readiness/README.md) | [Requirements](publication_readiness/current.json) · [Frozen benchmark](validation/publication_benchmark/README.md) |
 | Candidate search, selection and source datasets | [Design/evaluation report](discovery/expansion/index.html) | [Discovery guide](discovery/README.md) · [Matched effects](discovery/expansion/matched_design_effects.pdf) · [Search inventory](discovery/systematic_families_2026-10-18/summary.json) |
 | Full property-table arithmetic review | [Reviewed tables](validated/README.md) | [Dated review pointer](validated/current.json); later candidates use the active candidate feed |
-| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-26_native_replay/manifest.json) |
+| Working in silico manuscript | [Draft PDF](../manuscript/manuscript.pdf) | [Source and build](../manuscript/README.md) · [Early review questions](../manuscript/review_notes.md) · [Frozen evidence](../manuscript/evidence/2026-10-26_dipea_nmr/manifest.json) |
 | Research presentation | [Slides](../slides/README.md) | [Checked PDF](../slides/redox_workflow.pdf) |
 | Detailed validation/provenance index | [Latest review](LATEST_REVIEW.json) | [Machine-readable result index](INDEX.json) |
 | V100 inference compatibility and loader behavior | [V100 guide](validation/uma_v100_2026-10-24/README.md) | [Current status](validation/uma_v100_2026-10-24/summary.json) · [Unaltered comparison](validation/uma_v100_2026-10-24/reference_comparison.json) · [Composition diagnostic](validation/uma_v100_2026-10-24/composition_comparison.json) |
@@ -43,7 +45,7 @@ See [the route definition](../docs/SYNTHESIS_ROUTE.md). The earlier vinyl-monome
 exploration is preserved separately under [vinyl_monomers](discovery/vinyl_monomers/README.md).
 
 The [completed DBU/DIPEA pilot](grafting/base_assisted/index.html) supports retaining
-both BQ designs and AQ-1-O as **base required**. These signs are conditional on the computed base term; the DBU capture check differs from the MeCN pKa scale, and DIPEA lacks an exact checked anchor. positive HCl-reference values alone do not exclude them.
+both BQ designs and AQ-1-O as **base required**. These signs are conditional on the computed base term; the DBU capture check differs from the MeCN pKa scale. An [NMR estimate for DIPEAH hexafluorophosphate](validation/dipea_experimental_anchor_2026-10-26/README.md) provides a separate experimental comparison with unmatched counterion and activity conditions. Positive HCl-reference values alone do not exclude these candidates.
 Selectivity and yield remain untested. See the [current selection assessment](grafting/selection_assessment.json).
 
 The [oligomer screen](polymer_models/README.md) targets weak intersite/segment
@@ -145,7 +147,7 @@ and both restart geometry comparisons pass CPU reconstruction. All 2,498
 archive files are verified. Public deposition, diagnostic artifact closure and
 broader deployment portability remain open; scoped fresh-GPU controls are indexed below.
 
-The [DIPEA reference-origin audit](validation/dipea_reference_origin_2026-10-23_checked/README.md) excludes the reported MeCN pKaH 18.6 from independent measured validation because its specific source note identifies a PCM estimate while another table gives a generic experimental label. The current manuscript records this conflict. Primary reaction energies and candidate decisions are unchanged.
+The [DIPEA reference-origin audit](validation/dipea_reference_origin_2026-10-23_checked/README.md) classifies the older pKaH 18.6 value as a PCM estimate despite a conflicting generic table label. A later [independent NMR salt estimate](validation/dipea_experimental_anchor_2026-10-26/README.md) reports 18.7 in MeCN. The two sources retain distinct provenance. Primary reaction energies and candidate decisions are unchanged.
 
 The [solvent-workspace controls](validation/pcm_switch_curvature_guarded_2026-10-23/README.md), [site-2 fine-step force qualification](polymer_models/campaigns/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_2_fine_force_qualified/README.md) and [execution workflow](../docs/POLYMER_WORKSPACE_EXECUTION.md) retain the numerical evidence and prior failed attempts. The current [site-3 free-energy review](reviews/2026-10-24/pmdi_site3_native/README.md) and [split geometry/energy branch](validation/pmdi_split_execution_2026-10-24/README.md) own the latest scientific and execution status. Historical control success alone does not supply a missing large-state energy or G.
 

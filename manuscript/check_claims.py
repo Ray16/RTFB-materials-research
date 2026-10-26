@@ -757,6 +757,43 @@ def audit():
                 if abs(value - candidate["reference_deltaG_kJ_mol"] - base["corrections"][name][mode]) > 1e-7:
                     raise ValueError("Manuscript base-assisted cycle mismatch")
                 base_values += 1
+    dipea_experiment = None
+    if (folder / "dipea_experimental_anchor.json").exists():
+        anchor = load("dipea_experimental_anchor.json")
+        c = anchor["comparison"]
+        if (anchor["status"] != "primary_DIPEA_salt_NMR_estimate_source_checked_conditional_comparison"
+                or anchor["source"]["doi"] != "10.1039/d3sc02611f"
+                or anchor["source"]["counterion"] != "hexafluorophosphate"
+                or anchor["source"]["reported_pKa"] != 18.7
+                or anchor["calibrated_full_route_prediction"]
+                or anchor["primary_grafting_results_modified"] or anchor["candidate_decisions_modified"]):
+            raise ValueError("DIPEA experimental-source identity or scope changed")
+        acid = load("acid_base.json")
+        old = load("basicity_reference_origin.json")
+        factor = 8.31446261815324*acid["temperature_K"]*math.log(10)/1000
+        nmr = anchor["source"]["reported_pKa"]
+        hcl = acid["acid_anchor"]["pKa_MeCN"]
+        dbu = next(r["reference"]["pKaH_MeCN"] for r in acid["rows"] if r["base"] == "dbu")
+        dft = base["corrections"]["dipea"]["free_ions_kJ_mol"]
+        reference = -factor*(nmr-hcl)
+        relative = factor*(dbu-nmr)
+        expected = dict(RTln10_kJ_mol=factor,pKa_implied_capture_kJ_mol=reference,
+            DFT_separated_ion_capture_kJ_mol=dft,DFT_minus_pKa_implied_capture_kJ_mol=dft-reference,
+            pKa_implied_DIPEA_DBU_transfer_kJ_mol=relative,
+            DFT_minus_pKa_implied_relative_kJ_mol=old["DFT_relative_DIPEA_DBU_transfer_kJ_mol"]-relative)
+        if any(abs(c[k]-value)>1e-9 for k,value in expected.items()):
+            raise ValueError("DIPEA experimental comparison does not reconstruct")
+        frozen = {r["id"]:r for r in base["candidates"]}
+        for row in anchor["candidate_hybrid_sensitivities"]:
+            original=frozen[row["id"]]
+            if row["hybrid_is_calibrated_reaction_prediction"]:raise ValueError("Hybrid sensitivity was promoted to a prediction")
+            if original["reference_deltaG_kJ_mol"] is None:
+                if row["hybrid_capture_sensitivity_kJ_mol"] is not None:raise ValueError("Missing grafting value was filled")
+            elif abs(row["hybrid_capture_sensitivity_kJ_mol"]-original["reference_deltaG_kJ_mol"]-reference)>1e-9:
+                raise ValueError("DIPEA hybrid sensitivity does not reconstruct")
+        dipea_experiment=dict(source_pKa=nmr,capture_difference_kJ_mol=dft-reference,
+            relative_difference_kJ_mol=old["DFT_relative_DIPEA_DBU_transfer_kJ_mol"]-relative,
+            exact_chloride_experimental_match=False,hybrid_is_calibrated_prediction=False)
     polymer = load("polymer_validation.json")
     cases = {r["key"]: r for r in polymer["cases"]}
     conversion_differences = []
@@ -884,7 +921,8 @@ def audit():
             raise ValueError("Frozen reviewer inventory differs from the tested package")
     return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
-                base_assisted_values=base_values, qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
+                base_assisted_values=base_values, dipea_experimental_anchor=dipea_experiment,
+                qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
                 spacing_graphs=len(cases), exact_route_entries=len(load("route_evidence.json")["candidates"]),
                 exact_routes_checked=routes["completed"], route_decisions=routes["counts"],
                 acid_base_scope=acid["status"], conditional_native_cycles=len(polymer["cycles"]),

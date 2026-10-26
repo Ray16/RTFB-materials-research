@@ -1,0 +1,25 @@
+{
+  "host": "lambda5",
+  "GPU": 1,
+  "argv": [
+    "env",
+    "-u",
+    "LD_LIBRARY_PATH",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_local_counterpoise.py",
+    "launch",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26/water_dimer",
+    "--gpu",
+    "1",
+    "--preflight",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26/lambda5_preflight.json"
+  ],
+  "checked": 1792992078.6491418
+}

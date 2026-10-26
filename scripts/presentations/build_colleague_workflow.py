@@ -18,16 +18,22 @@ ROOT=Path(__file__).resolve().parents[2]
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def build(evidence,work,review):
+def build(evidence,work,review,dipea_evidence):
     if work.exists():raise FileExistsError('Use a new build directory to preserve previous logs')
     d=json.loads(evidence.read_text())
     for p,h in d['source_sha256'].items():
         if sha(ROOT/p)!=h:raise ValueError('Changed evidence source: '+p)
+    anchor=json.loads(dipea_evidence.read_text())
+    if (anchor['status']!='primary_DIPEA_salt_NMR_estimate_source_checked_conditional_comparison'
+            or anchor['source']['reported_pKa']!=18.7 or anchor['source']['counterion']!='hexafluorophosphate'
+            or anchor['calibrated_full_route_prediction']):raise ValueError('Unqualified DIPEA source')
+    for path,expected in anchor['source_sha256'].items():
+        if sha(path)!=expected:raise ValueError('Changed DIPEA evidence source: '+path)
     m=d['benchmark']['metrics']
     values=ROOT/'slides/generated/colleague_values.tex'
     values.write_text('%% Generated from the checked discussion evidence.\n'+
-        '\\newcommand{\\BenchmarkMAE}{%.3f}\n\\newcommand{\\BenchmarkRMSE}{%.3f}\n'%(m['MAE_V'],m['RMSE_V']))
-    inputs=[evidence,values,Path(__file__).resolve(),ROOT/'slides/redox_workflow.tex',
+        '\\newcommand{\\BenchmarkMAE}{%.3f}\n\\newcommand{\\BenchmarkRMSE}{%.3f}\n\\newcommand{\\DIPEApKa}{%.1f}\n'%(m['MAE_V'],m['RMSE_V'],anchor['source']['reported_pKa']))
+    inputs=[evidence,dipea_evidence,values,Path(__file__).resolve(),ROOT/'slides/redox_workflow.tex',
         ROOT/'slides/generated/colleague_story.tex',ROOT/'slides/generated/colleague_backup.tex',
         ROOT/'results/figures/presentation/figures.json',
         ROOT/'results/figures/polymer_models/pmdi_neighbor_geometry.pdf']
@@ -81,5 +87,6 @@ def build(evidence,work,review):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--evidence',type=Path,required=True)
+    p.add_argument('--dipea-evidence',type=Path,required=True)
     p.add_argument('--work',type=Path,required=True);p.add_argument('--review',type=Path,required=True);a=p.parse_args()
-    build(a.evidence.resolve(),a.work.resolve(),a.review.resolve())
+    build(a.evidence.resolve(),a.work.resolve(),a.review.resolve(),a.dipea_evidence.resolve())

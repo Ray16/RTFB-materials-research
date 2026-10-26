@@ -67,7 +67,10 @@ def main():
         "The source and frozen computational evidence are maintained in the 0_redox project. "
         "Do not replace collaborators' edits with a fresh export: fetch and merge before each edit and push.\n")
     outputs = {str(p.relative_to(destination)): sha(p) for p in destination.rglob("*") if p.is_file()}
-    temporary = Path(tempfile.mkdtemp(prefix="redox_overleaf_build_"))
+    build_root = Path(os.environ.get("REDOX_OVERLEAF_BUILD_ROOT",
+                                    ROOT / "calcs/validation/overleaf_builds")).expanduser().resolve()
+    build_root.mkdir(parents=True, exist_ok=True)
+    temporary = Path(tempfile.mkdtemp(prefix="redox_overleaf_build_", dir=build_root))
     environment = dict(os.environ, BIBINPUTS=str(destination) + os.pathsep + os.environ.get("BIBINPUTS", ""))
     from pypdf import PdfReader
     exported_documents = {}

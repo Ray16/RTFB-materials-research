@@ -48,7 +48,12 @@ def main():
             raise RuntimeError(f"Missing manuscript build program: {program}")
     source = {str(p.relative_to(ROOT)): sha(p) for p in
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "check_claims.py", Path(__file__), manifest, pointer)}
-    temporary = Path(tempfile.mkdtemp(prefix="redox_manuscript_"))
+    # Keep compiler logs on durable project storage rather than node-local /tmp.
+    # The root can be configured for an independently relocated checkout.
+    build_root = Path(os.environ.get("REDOX_MANUSCRIPT_BUILD_ROOT",
+                                    ROOT / "calcs/validation/manuscript_builds")).expanduser().resolve()
+    build_root.mkdir(parents=True, exist_ok=True)
+    temporary = Path(tempfile.mkdtemp(prefix="redox_manuscript_", dir=build_root))
     env = dict(os.environ, BIBINPUTS=str(PAPER) + os.pathsep + os.environ.get("BIBINPUTS", ""))
     documents = {}
     from pypdf import PdfReader

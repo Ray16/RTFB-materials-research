@@ -44,6 +44,13 @@ candidate prediction intervals. Geometry, spin, electronic-energy identity,
 native-Hessian checks and independent arithmetic address numerical consistency.
 Experimental accuracy and model robustness require separate evidence.
 
+A later [DIPEAH hexafluorophosphate NMR estimate](../results/validation/dipea_experimental_anchor_2026-10-26/README.md)
+reports pKa 18.7 in MeCN. A conditional DIPEA/DBU proton-transfer comparison
+gives +31.80 kJ/mol computed and +32.02 kJ/mol from the pKa values. The
+counterion, activities and temperature conventions are not demonstrated to
+match the modeled chloride system. Replacing a single HCl capture term is a
+sensitivity rather than a validated correction to the full grafting reaction.
+
 The framework now has a finite exact-PMDI example linking redox, precursor
 access, grafting and an occupancy cycle. At the primary setting, first-site
 DBU/separated-ion attachment is −97.72/−96.96 kJ/mol at two positions. The

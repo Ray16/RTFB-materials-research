@@ -1,73 +1,65 @@
 {
-  "status": "rendered_manuscript_and_SI_visually_reviewed",
-  "checked_UTC": "2026-10-26T01:39:48Z",
-  "reviewer": "assistant visual inspection",
+  "status": "assistant_rendered_visual_review_checked",
+  "checked_UTC": "2026-10-26T20:51:31Z",
+  "reviewer": "Codex assistant",
   "documents": {
     "manuscript": {
-      "pages": 18,
-      "pdf_sha256": "c8e160730ba5c50561e0d4762456a0f88c04e939b9ce6d7516cd5b70c3460c80",
-      "overfull_boxes": []
+      "pdf_sha256": "6fe9cf8d5d7206c6abc53504a034a1ee57b27e92088452d0a8a118f5bd00287e",
+      "pages_reviewed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ]
     },
     "supporting_information": {
-      "pages": 18,
-      "pdf_sha256": "118119152ab2d5b1451e0157e2cc710709eb8784bb39a0bcc55aa77d9c7c3245",
-      "overfull_boxes": []
+      "pdf_sha256": "e32066c29b945f2f4e669cb5ce2de1bee6f25bc7edaf6531614afe9a738d7d1b",
+      "pages_reviewed": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19
+      ]
     }
   },
-  "contact_sheets_reviewed": true,
-  "pages_reviewed_via_contact_sheets": {
-    "manuscript": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18
-    ],
-    "supporting_information": [
-      1,
-      2,
-      3,
-      4,
-      5,
-      6,
-      7,
-      8,
-      9,
-      10,
-      11,
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18
-    ]
+  "method": "Reviewed full-document contact sheets, enlarged revised DIPEA pages, and final bibliography pages after correcting Mn capitalization. PDF text comparison confirmed only those bibliography pages changed in the final build.",
+  "rendered_images": {
+    "calcs/validation/2026-10-26_dipea_paper_visual/manuscript_contact.png": "66ad5a270ad84207f2697236eb19d6ba148a8fc7bfb952c7e9bd4c8d891ee873",
+    "calcs/validation/2026-10-26_dipea_paper_visual/supporting_information_contact.png": "90d2867cc7d16fd348c21174f11b2e582eb9b161aa23cdf2deabdb0c99d03f67",
+    "calcs/validation/2026-10-26_dipea_paper_visual/manuscript_09.png": "ceaafe2d3b6e236b41f6199c1b0d2cc9d153ba164baf31d238feb80d15630d13",
+    "calcs/validation/2026-10-26_dipea_paper_visual/supporting_information_08.png": "3c4c47c24fb3bd71b57f0c354e4623d5ddf299cc57ee188a661a38e834dbb40f",
+    "calcs/validation/2026-10-26_dipea_paper_visual_v2/manuscript_16.png": "50918875966d7046278c13f9058095a9f2447140d0070b18ba4e85e2fbf83180",
+    "calcs/validation/2026-10-26_dipea_paper_visual_v2/supporting_information_19.png": "fb2e0e5c439052b62b5015f0040221be9426a4156998d3fbfa70cf721327cb0f"
   },
-  "full_resolution_pages_reviewed": {
-    "manuscript": [
-      14
-    ],
-    "supporting_information": [
-      16
-    ]
-  },
-  "findings": "Reproducibility paragraphs are legible with normal margins and no clipping, overlaps or isolated headings. Both 18-page documents retain the checked chemical figures and finite-sample scope; no new ensemble result or public DOI is implied.",
-  "unchanged_figure_PDFs": 19,
-  "render_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_native_publication/rendered_v2/render_record.json",
-  "render_record_sha256": "33fda2efaa48fb0b719903866afdee0fd690000dcbdebeb27d5fb8df64c0a78e",
-  "author_scientific_approval_inferred": false
+  "issues": [],
+  "scope": "Page layout, clipping, caption flow and legibility; human collaborator and journal review remain outstanding."
 }

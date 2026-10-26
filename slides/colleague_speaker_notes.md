@@ -40,6 +40,11 @@ Numerical answers to likely questions:
   **24.31/10.30**. The computed capture term differs by **22.81 kJ/mol**.
   HCl cancels from the full reaction cycle, so this discrepancy cannot simply
   be added to every complete grafting reaction as a validated correction.
+- Cook et al. report an NMR pKa estimate of **18.7** in MeCN for the DIPEAH
+  hexafluorophosphate salt (DOI 10.1039/D3SC02611F). The conditional cross-source
+  DIPEA/DBU transfer comparison is +31.80 kJ/mol computed versus +32.02 kJ/mol
+  inferred from the pKa values. The salt and chloride/activity conditions are
+  not matched; this does not establish a correction to the complete grafting G.
 - PMDI rotor-cutoff neighbor values at 25/50/100 cm⁻¹ are
   **−1.07/−1.86/−1.82 kJ/mol**. The sampled phthalimide two-pose adjacent/spacer
   results are **−5.17/−11.39 kJ/mol**, under a different exact model. Neither
