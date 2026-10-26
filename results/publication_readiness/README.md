@@ -5,6 +5,11 @@ incomplete. The [requirements and current evidence](current.json) are a work pla
 not a release certificate. The [readiness guide](../../docs/PUBLICATION_READINESS.md)
 defines what must be demonstrated before each requirement can close.
 
+The [consolidated local reviewer bundle](../releases/manuscript_bundle/README.md)
+now combines the source/evidence snapshot and four overlapping raw-state
+packages, with relocated standard-library and locked NumPy replays. It is not
+a public archival deposit; data licensing, author metadata and DOI remain open.
+
 | Evidence | Location |
 | --- | --- |
 | Fresh software checks | [Test records](software_checks.json) |
