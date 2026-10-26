@@ -329,3 +329,5 @@ Six finished Fc single-point controls at fixed solution geometries independently
 ## Completed PMDI finite neighbor cycle
 
 The 139-atom paired state and both single-site states now pass normal native admission and independent mode/nuclear reconstruction. Together with the declared shared empty reference, they give −1.07/−1.86/−1.82 kJ/mol at 25/50/100 cm^-1. The actual paired minimum has 16.30 Angstrom core separation, so the paper makes no intrinsic stacking/coupling claim. This supplies the missing baseline calculation and a source-linked PMDI example, while broader conformer ensembles remain M4’s central open requirement. The new raw control addendum passes extracted, isolated CPU replay; bulk public deposition/DOI and final metadata remain open under M7.
+
+The [finite empty-chain subset analysis](../results/validation/empty_chain_subset_sensitivity_2026-10-26/README.md) quantifies within-set sensitivity in the alternate acetonitrile model. It does not close occupied-state ensemble convergence or enter the primary PMDI cycle.

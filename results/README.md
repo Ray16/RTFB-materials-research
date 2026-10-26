@@ -7,6 +7,8 @@ The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v
 
 The [consolidated reviewer bundle](releases/manuscript_bundle_v3/README.md) gathers the current manuscript source and five overlapping raw-state packages, including the TEMPO addendum. Isolated arithmetic and Hessian replays pass after extraction; public data licensing, author metadata, DOI deposition and wider deployment portability remain open.
 
+A [finite-set subset analysis](validation/empty_chain_subset_sensitivity_2026-10-26/README.md) quantifies how the checked empty-chain partition changes when known conformers are omitted. It is an alternate-model sampling diagnostic, not an occupied-state interaction result.
+
 The [relocated xTB kernel probe](validation/xtb_relocated_bundle_probe_2026-10-26/README.md) reproduces the qualified kernel values using the extracted bundle and an external xTB prefix. It uses the existing Python environment and does not qualify a full production deployment.
 
 An [anthraquinone carboxylate graft proposal](discovery/aq_carboxylate_2026-10-26/README.md) adds a source-linked exact precursor and mapped local product. Its route is held and its redox properties remain uncomputed.
