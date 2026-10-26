@@ -1,0 +1,92 @@
+#!/usr/bin/env python
+"""Build the focused deck, recording compiler checks separately from visual review."""
+import argparse
+import hashlib
+import json
+import os
+from pathlib import Path
+import re
+import shutil
+import subprocess
+import time
+
+from pypdf import PdfReader
+
+ROOT=Path(__file__).resolve().parents[2]
+
+
+def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+
+
+def build(evidence,work,review,dipea_evidence):
+    if work.exists():raise FileExistsError('Use a new build directory to preserve previous logs')
+    d=json.loads(evidence.read_text())
+    for p,h in d['source_sha256'].items():
+        if sha(ROOT/p)!=h:raise ValueError('Changed evidence source: '+p)
+    anchor=json.loads(dipea_evidence.read_text())
+    if (anchor['status']!='primary_DIPEA_salt_NMR_estimate_source_checked_conditional_comparison'
+            or anchor['source']['reported_pKa']!=18.7 or anchor['source']['counterion']!='hexafluorophosphate'
+            or anchor['calibrated_full_route_prediction']):raise ValueError('Unqualified DIPEA source')
+    for path,expected in anchor['source_sha256'].items():
+        if sha(path)!=expected:raise ValueError('Changed DIPEA evidence source: '+path)
+    m=d['benchmark']['metrics']
+    values=ROOT/'slides/generated/colleague_values.tex'
+    values.write_text('%% Generated from the checked discussion evidence.\n'+
+        '\\newcommand{\\BenchmarkMAE}{%.3f}\n\\newcommand{\\BenchmarkRMSE}{%.3f}\n\\newcommand{\\DIPEApKa}{%.1f}\n'%(m['MAE_V'],m['RMSE_V'],anchor['source']['reported_pKa']))
+    inputs=[evidence,dipea_evidence,values,Path(__file__).resolve(),ROOT/'slides/redox_workflow.tex',
+        ROOT/'slides/generated/colleague_story.tex',ROOT/'slides/generated/colleague_backup.tex',
+        ROOT/'results/figures/presentation/figures.json',
+        ROOT/'results/figures/polymer_models/pmdi_neighbor_geometry.pdf']
+    epoch=ROOT/'manuscript/evidence/2026-10-26_native_replay'
+    progress_paths=[epoch/n for n in ['polymer_validation.json','finite_ensemble.json','review_package.json']]
+    progress=[json.loads(p.read_text()) for p in progress_paths]
+    assert progress[0]['qualified_native_G']==progress[0]['expected_graphs']==6
+    assert progress[1]['checked_native_G']==progress[1]['expected_native_G']==12
+    assert len(progress[1]['finite_pairs'])==6
+    assert progress[2]['raw_states']==243 and progress[2]['CPU_Hessian_states']==242
+    inputs.extend(progress_paths)
+    figures=json.loads((ROOT/'results/figures/presentation/figures.json').read_text())
+    plotter=ROOT/'scripts/plotting/presentation/plot_colleague_workflow.py'
+    if sha(plotter)!=figures['producer_sha256']:raise ValueError('Changed figure producer')
+    inputs.append(plotter)
+    for p,h in figures['outputs'].items():
+        if sha(p)!=h:raise ValueError('Changed presentation figure: '+p)
+        inputs.append(Path(p).resolve())
+    assert figures['evidence_sha256']==sha(evidence)
+    frozen={str(p.relative_to(ROOT)):sha(p) for p in inputs}
+    work.mkdir(parents=True);env={**os.environ,'SOURCE_DATE_EPOCH':'1793037600','FORCE_SOURCE_DATE':'1'}
+    logs=[]
+    for n in [1,2]:
+        log=work/f'pass{n}.log';logs.append(log)
+        with log.open('w') as stream:
+            subprocess.run(['pdflatex','-interaction=nonstopmode','-halt-on-error','-file-line-error',
+                '-recorder','-output-directory',str(work), 'redox_workflow.tex'],cwd=ROOT/'slides',
+                stdout=stream,stderr=subprocess.STDOUT,env=env,check=True,timeout=180)
+    log=logs[-1].read_text();overfull=re.findall(r'Overfull[^\n]*',log)
+    unresolved=[line for line in log.splitlines() if any(k in line for k in ['undefined references','Undefined control sequence','LaTeX Error','Missing character:'])]
+    if overfull or unresolved:raise ValueError(dict(overfull=overfull,unresolved=unresolved))
+    pdf=work/'redox_workflow.pdf';reader=PdfReader(str(pdf));texts=[p.extract_text() or '' for p in reader.pages]
+    if len(reader.pages)!=23:raise ValueError('Expected 16 focused slides and 7 backup slides')
+    if '39 / 39' not in texts[7]:raise ValueError('Benchmark slide missing expected coverage')
+    for p,h in frozen.items():
+        if sha(ROOT/p)!=h:raise ValueError('Build input changed: '+p)
+    for name in ['redox_workflow.pdf','colleague_workflow.pdf']:
+        shutil.copy2(pdf,ROOT/'slides'/name)
+    row=dict(status='focused_deck_compiler_checked_visual_review_pending',checked=time.time(),
+        pages=len(texts),main_slides=16,backup_slides=7,source_sha256=frozen,
+        pdf_sha256=sha(pdf),build_directory=str(work),compiler='pdflatex',passes=2,
+        overfull_boxes=overfull,unresolved_errors=unresolved,visual_review_performed=False,
+        additional_claim_checks=dict(selected_spacing_G=6,finite_pose_G=12,
+            finite_pairs=6,reviewer_package_states=243,reviewer_package_Hessians=242),
+        quantum_jobs_submitted=0,scientific_evidence_modified=False)
+    review.mkdir(parents=True,exist_ok=True)
+    (review/'build_check.json').write_text(json.dumps(row,indent=2)+'\n')
+    (review/'slide_text.json').write_text(json.dumps(texts,indent=2)+'\n')
+    print(json.dumps({k:v for k,v in row.items() if k!='source_sha256'},indent=2))
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--evidence',type=Path,required=True)
+    p.add_argument('--dipea-evidence',type=Path,required=True)
+    p.add_argument('--work',type=Path,required=True);p.add_argument('--review',type=Path,required=True);a=p.parse_args()
+    build(a.evidence.resolve(),a.work.resolve(),a.review.resolve(),a.dipea_evidence.resolve())

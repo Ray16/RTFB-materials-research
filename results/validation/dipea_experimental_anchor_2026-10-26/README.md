@@ -1,5 +1,9 @@
 # Experimental DIPEA salt pKa and base-transfer sensitivity
 
+**Additional primary evidence:** A separate 2021 UV study reports
+[log Kᴴ = 18.64(1) in MeCN at 25 °C](../dipea_uv_anchor_2026-10-26/README.md).
+Its indicator calibration and the NMR salt experiment remain distinct sources.
+
 [Source-bound assessment](summary.json) · [Focused arithmetic and source tests](tests.xml) ·
 [Prior 18.6 source-origin audit](../dipea_reference_origin_2026-10-23_checked/README.md)
 

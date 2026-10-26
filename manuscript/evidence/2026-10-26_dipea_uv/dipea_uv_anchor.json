@@ -1,0 +1,98 @@
+{
+  "status": "primary_DIPEA_UV_protonation_constant_source_checked_conditional_comparison",
+  "source": {
+    "doi": "10.1039/d1ra04738h",
+    "article_url": "https://doi.org/10.1039/D1RA04738H",
+    "title": "Protonation and anion-binding properties of aromatic sulfonylurea derivatives",
+    "publication": "RSC Advances 2021, 11, 23992\u201324000",
+    "measured_quantity": "log K^H for DIPEA protonation",
+    "reported_value": 18.64,
+    "reported_notation": "18.64(1)",
+    "solvent": "acetonitrile",
+    "temperature_C": 25.0,
+    "temperature_variation_C": 0.1,
+    "technique": "spectrophotometric titration with bromocresol green",
+    "fixed_indicator_logK_values": [
+      18.5,
+      11.0
+    ],
+    "measurement_locator": "Supporting Information Figure S51, printed and PDF page 43",
+    "comparison_conditions_fully_matched": false
+  },
+  "independent_NMR_salt_estimate_pKa": 18.7,
+  "comparison": {
+    "temperature_K": 298.15,
+    "HCl_pKa": 10.3,
+    "DBUH_pKa": 24.31,
+    "RTln10_kJ_mol": 5.708009502535258,
+    "DFT_capture_kJ_mol": -70.97543495228241,
+    "pKa_implied_capture_kJ_mol": -47.60479925114405,
+    "DFT_minus_pKa_implied_capture_kJ_mol": -23.37063570113836,
+    "DFT_relative_base_transfer_kJ_mol": 31.80157594247036,
+    "pKa_implied_relative_base_transfer_kJ_mol": 32.36441387937491,
+    "DFT_minus_pKa_implied_relative_kJ_mol": -0.5628379369045469,
+    "relative_reaction": "DIPEA + DBUH+ -> DIPEAH+ + DBU"
+  },
+  "candidate_hybrid_sensitivities": [
+    {
+      "id": "design_pmdi_ethyl",
+      "reference_deltaG_kJ_mol": -0.2915699601324377,
+      "all_DFT_DIPEA_kJ_mol": -71.26700491241485,
+      "hybrid_capture_sensitivity_kJ_mol": -47.896369211276486,
+      "calibrated_reaction_prediction": false
+    },
+    {
+      "id": "design_ndi_ethyl",
+      "reference_deltaG_kJ_mol": 10.050786392814334,
+      "all_DFT_DIPEA_kJ_mol": -60.92464855946808,
+      "hybrid_capture_sensitivity_kJ_mol": -37.55401285832971,
+      "calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_aq_1oxy",
+      "reference_deltaG_kJ_mol": 62.854579764785775,
+      "all_DFT_DIPEA_kJ_mol": -8.120855187496637,
+      "hybrid_capture_sensitivity_kJ_mol": 15.249780513641724,
+      "calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_aq_2oxy_6methoxy",
+      "reference_deltaG_kJ_mol": null,
+      "all_DFT_DIPEA_kJ_mol": null,
+      "hybrid_capture_sensitivity_kJ_mol": null,
+      "calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_bq_oxy_methoxy",
+      "reference_deltaG_kJ_mol": 57.63446054516755,
+      "all_DFT_DIPEA_kJ_mol": -13.340974407114864,
+      "hybrid_capture_sensitivity_kJ_mol": 10.029661294023498,
+      "calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_bq_oxy_trimethyl",
+      "reference_deltaG_kJ_mol": 56.03066081132074,
+      "all_DFT_DIPEA_kJ_mol": -14.94477414096167,
+      "hybrid_capture_sensitivity_kJ_mol": 8.425861560176692,
+      "calibrated_reaction_prediction": false
+    }
+  ],
+  "limitations": [
+    "Measured protonation constant is anchored to a bromocresol-green indicator scale.",
+    "Exact activity and ionic-association conventions are not established to match the separate HCl and DBU sources.",
+    "The 2024 NMR estimate uses a PF6 salt and MeCN-d3; neither measurement directly observes chloride pairing.",
+    "HCl cancels from the full all-DFT reaction; hybrid substitutions change error cancellation and do not calibrate the whole route."
+  ],
+  "calibrated_full_route_prediction": false,
+  "primary_grafting_results_modified": false,
+  "candidate_decisions_modified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/literature/2026-10-26_dipea_experiment/rsc_adv_2021_europepmc.xml": "d4b8db3e8f530850f9758a1101d4d801e7d1b84c0e4f666c283758c9dc843343",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/literature/2026-10-26_dipea_experiment/rsc_adv_2021_si.pdf": "2d8ea44c7cc73ed76276223aeea3c63a7da6150e585f27bb6642dc9820405e8f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-26_dipea_nmr/base_assisted.json": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-26_dipea_nmr/acid_base.json": "a22eccae18a1c62c605b5052a94b5d4057202263f44725d4a28cc497fa281a2c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-26_dipea_nmr/basicity_reference_origin.json": "e645c9c85b2e5f7aa9523421a9992da89c82054da160f71363daa0ef0b8cb547",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-26_dipea_nmr/dipea_experimental_anchor.json": "5aae0db20513e817e1acad0e649fdf7821e90eb7561c8e6f100caef48e5bc5f2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/assess_dipea_uv_anchor.py": "4bf55a86849f7914d6a1744cc0c47536ad12ff80eab7b2f1e7891af6f4b97d6d"
+  }
+}

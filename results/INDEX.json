@@ -316,11 +316,11 @@
     "slides": {
       "guide": "slides/README.md",
       "current": "slides/redox_workflow.pdf",
-      "checked_refresh": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
-      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
-      "status": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json",
-      "pdf_sha256": "c38d224303a9cbd4d5657297efaef76934bc37186531333e859cf7e7da805ec8",
+      "checked_refresh": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
+      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
+      "status": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json",
+      "pdf_sha256": "7ac636c6a6ecfb6ae33d9b0c5fedfdee902143f99bf7a86cc593b6ed3d5bf067",
       "historical_reviews": [
         "results/reviews/2026-10-23/presentation_capacity_refresh/status.json",
         "results/reviews/2026-10-23/presentation_capacity_refresh/visual_review.json",
@@ -422,10 +422,10 @@
       "source": "manuscript/manuscript.tex",
       "outline": "manuscript/outline.md",
       "review_notes": "manuscript/review_notes.md",
-      "evidence": "manuscript/evidence/2026-10-26_dipea_nmr/manifest.json",
+      "evidence": "manuscript/evidence/2026-10-26_dipea_uv/manifest.json",
       "build_check": "manuscript/build_check.json",
       "status": "working_draft_with_explicit_pending_analyses",
-      "scope": "18-page article and 19-page SI; includes the checked DIPEA salt NMR estimate and finite PMDI cycle. Ensemble convergence, material evidence and public deposition remain open.",
+      "scope": "Working article and SI; includes DIPEA UV and NMR experimental estimates and finite PMDI cycle. Ensemble convergence, material evidence and public deposition remain open.",
       "overleaf_package": "manuscript/overleaf_upload.zip",
       "overleaf_export_check": "manuscript/overleaf_export.json",
       "overleaf_status": "upload_package_checked_project_not_yet_connected",
@@ -618,16 +618,16 @@
     "checked_research_slides": {
       "current": "slides/redox_workflow.pdf",
       "pdf": "slides/redox_workflow.pdf",
-      "status": "focused_deck_checked_with_DIPEA_experimental_source",
+      "status": "focused_deck_checked_with_DIPEA_UV_and_NMR_sources",
       "source_snapshot": "results/reviews/2026-10-26/colleague_workflow/evidence.json",
       "scope": "Focused candidate-expansion and property-validation presentation; finite PMDI example with scientific limits",
-      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
-      "pdf_sha256": "c38d224303a9cbd4d5657297efaef76934bc37186531333e859cf7e7da805ec8",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
+      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
+      "pdf_sha256": "7ac636c6a6ecfb6ae33d9b0c5fedfdee902143f99bf7a86cc593b6ed3d5bf067",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
       "pages": 23,
       "main_pages": 16,
       "backup_pages": 7,
-      "previous_deck": "slides/archive/2026-10-26_before_dipea_nmr/redox_workflow.pdf"
+      "previous_deck": "slides/archive/2026-10-26_before_dipea_uv/redox_workflow.pdf"
     },
     "streamed_V100_PCM": {
       "guide": "results/validation/streamed_PCM_2026-10-24/README.md",
@@ -851,14 +851,15 @@
       "current": "slides/colleague_workflow.pdf",
       "maintained_deck": "slides/redox_workflow.pdf",
       "source_snapshot": "results/reviews/2026-10-26/colleague_workflow/evidence.json",
-      "compiler_checks": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json",
+      "compiler_checks": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
       "speaker_notes": "slides/colleague_speaker_notes.md",
       "brief": "slides/colleague_brief.md",
       "raw_root": "calcs/validation/2026-10-26_colleague_workflow",
-      "status": "focused_deck_checked_with_DIPEA_experimental_source",
+      "status": "focused_deck_checked_with_DIPEA_UV_and_NMR_sources",
       "scope": "Checked candidate expansion and property-validation evidence; no new quantum jobs or material admission",
-      "dipea_evidence": "results/validation/dipea_experimental_anchor_2026-10-26/summary.json"
+      "dipea_evidence": "results/validation/dipea_experimental_anchor_2026-10-26/summary.json",
+      "dipea_uv_evidence": "results/validation/dipea_uv_anchor_2026-10-26/summary.json"
     },
     "dipea_experimental_anchor": {
       "guide": "results/validation/dipea_experimental_anchor_2026-10-26/README.md",
@@ -874,10 +875,21 @@
       "source_snapshot": "results/validation/local_counterpoise_2026-10-26/water_dimer/plan.json",
       "prepared_point": "results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/plan.json",
       "raw_root": "calcs/validation/local_counterpoise_2026-10-26/water_dimer",
-      "status": "water_dimer_CPU_GPU_control_checked_motif_point_prepared_not_started",
+      "status": "small_gas_control_checked_motif_coordinator_live_check_actual_scientific_start",
       "scope": "Gas electronic counterpoise implementation; no solvent correction, association G, coupling or candidate admission",
       "point_geometry_review": "results/reviews/2026-10-26/counterpoise_control/prepared_motif_geometry_v2.json",
-      "previous_unsubmitted_point": "results/validation/local_counterpoise_2026-10-26_motif/occ_2_3__pose0__cap109/superseded_unsubmitted_resource_plan.json"
+      "previous_unsubmitted_point": "results/validation/local_counterpoise_2026-10-26_motif/occ_2_3__pose0__cap109/superseded_unsubmitted_resource_plan.json",
+      "live_coordinator": "results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/coordinator.json",
+      "coordinator_source": "scripts/pipeline/coordinate_counterpoise_point.py"
+    },
+    "dipea_uv_anchor": {
+      "guide": "results/validation/dipea_uv_anchor_2026-10-26/README.md",
+      "current": "results/validation/dipea_uv_anchor_2026-10-26/summary.json",
+      "independent_review": "results/validation/dipea_uv_anchor_2026-10-26/independent_review.json",
+      "source_snapshot": "manuscript/evidence/2026-10-26_dipea_uv/dipea_uv_anchor.json",
+      "raw_root": "calcs/literature/2026-10-26_dipea_experiment",
+      "status": "25C_spectrophotometric_protonation_constant_and_NMR_context_source_checked",
+      "scope": "Cross-source DIPEA base-transfer and capture sensitivities; chloride, activity conventions and complete grafting validation remain unresolved."
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

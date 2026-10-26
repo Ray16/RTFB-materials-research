@@ -50,6 +50,10 @@ gives +31.80 kJ/mol computed and +32.02 kJ/mol from the pKa values. The
 counterion, activities and temperature conventions are not demonstrated to
 match the modeled chloride system. Replacing a single HCl capture term is a
 sensitivity rather than a validated correction to the full grafting reaction.
+An independent [spectrophotometric measurement](../results/validation/dipea_uv_anchor_2026-10-26/README.md)
+reports log Kᴴ = 18.64(1) in MeCN at 25 °C. With the same separate DBU scale,
+the implied relative transfer is +32.36 kJ/mol; indicator calibration and
+activity conventions still limit the comparison.
 
 The framework now has a finite exact-PMDI example linking redox, precursor
 access, grafting and an occupancy cycle. At the primary setting, first-site

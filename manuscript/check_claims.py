@@ -794,6 +794,44 @@ def audit():
         dipea_experiment=dict(source_pKa=nmr,capture_difference_kJ_mol=dft-reference,
             relative_difference_kJ_mol=old["DFT_relative_DIPEA_DBU_transfer_kJ_mol"]-relative,
             exact_chloride_experimental_match=False,hybrid_is_calibrated_prediction=False)
+    dipea_uv = None
+    if (folder / "dipea_uv_anchor.json").exists():
+        uv = load("dipea_uv_anchor.json"); reviewed = load("dipea_uv_review.json")
+        if (uv["status"] != "primary_DIPEA_UV_protonation_constant_source_checked_conditional_comparison"
+                or uv["source"]["doi"] != "10.1039/d1ra04738h"
+                or uv["source"]["reported_value"] != 18.64
+                or uv["source"]["reported_notation"] != "18.64(1)"
+                or uv["source"]["temperature_C"] != 25.0
+                or reviewed["status"] != "independent_UV_source_and_comparison_review_checked"
+                or reviewed["UV_reported_logKH"] != "18.64(1)"
+                or uv["calibrated_full_route_prediction"] or uv["candidate_decisions_modified"]):
+            raise ValueError("DIPEA UV source identity or scope changed")
+        sources=[h for path,h in reviewed["source_sha256"].items() if Path(path).name == "summary.json"]
+        if len(sources)!=1 or hashlib.sha256((folder/"dipea_uv_anchor.json").read_bytes()).hexdigest()!=sources[0]:
+            raise ValueError("Frozen UV assessment differs from its independent source review")
+        acid = load("acid_base.json"); old = load("basicity_reference_origin.json");c=uv["comparison"]
+        factor=8.31446261815324*acid["temperature_K"]*math.log(10)/1000
+        hcl=acid["acid_anchor"]["pKa_MeCN"]
+        dbu=next(r["reference"]["pKaH_MeCN"] for r in acid["rows"] if r["base"]=="dbu")
+        value=uv["source"]["reported_value"]
+        capture=-factor*(value-hcl);relative=factor*(dbu-value)
+        dft=base["corrections"]["dipea"]["free_ions_kJ_mol"]
+        expected=dict(pKa_implied_capture_kJ_mol=capture,DFT_capture_kJ_mol=dft,
+            DFT_minus_pKa_implied_capture_kJ_mol=dft-capture,
+            pKa_implied_relative_base_transfer_kJ_mol=relative,
+            DFT_minus_pKa_implied_relative_kJ_mol=old["DFT_relative_DIPEA_DBU_transfer_kJ_mol"]-relative)
+        if any(abs(c[k]-v)>1e-9 for k,v in expected.items()):raise ValueError("DIPEA UV comparison does not reconstruct")
+        frozen={r["id"]:r for r in base["candidates"]}
+        for row in uv["candidate_hybrid_sensitivities"]:
+            original=frozen[row["id"]]
+            if row["calibrated_reaction_prediction"]:raise ValueError("UV hybrid sensitivity was promoted to a prediction")
+            if original["reference_deltaG_kJ_mol"] is None:
+                if row["hybrid_capture_sensitivity_kJ_mol"] is not None:raise ValueError("Missing UV sensitivity was filled")
+            elif abs(row["hybrid_capture_sensitivity_kJ_mol"]-original["reference_deltaG_kJ_mol"]-capture)>1e-9:
+                raise ValueError("DIPEA UV hybrid sensitivity does not reconstruct")
+        dipea_uv=dict(source_logKH=value,capture_difference_kJ_mol=dft-capture,
+            relative_difference_kJ_mol=old["DFT_relative_DIPEA_DBU_transfer_kJ_mol"]-relative,
+            matching_activity_conventions_established=False,hybrid_is_calibrated_prediction=False)
     polymer = load("polymer_validation.json")
     cases = {r["key"]: r for r in polymer["cases"]}
     conversion_differences = []
@@ -921,7 +959,7 @@ def audit():
             raise ValueError("Frozen reviewer inventory differs from the tested package")
     return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
-                base_assisted_values=base_values, dipea_experimental_anchor=dipea_experiment,
+                base_assisted_values=base_values, dipea_experimental_anchor=dipea_experiment, dipea_uv_anchor=dipea_uv,
                 qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),
                 spacing_graphs=len(cases), exact_route_entries=len(load("route_evidence.json")["candidates"]),
                 exact_routes_checked=routes["completed"], route_decisions=routes["counts"],

@@ -45,6 +45,10 @@ Numerical answers to likely questions:
   DIPEA/DBU transfer comparison is +31.80 kJ/mol computed versus +32.02 kJ/mol
   inferred from the pKa values. The salt and chloride/activity conditions are
   not matched; this does not establish a correction to the complete grafting G.
+- Barišić et al. independently report **log Kᴴ = 18.64(1)** for DIPEA in
+  MeCN at 25 °C using bromocresol green (DOI 10.1039/D1RA04738H, SI Fig. S51).
+  Combining it with the separate DBU scale gives +32.36 kJ/mol versus +31.80
+  computed. Indicator, salt and activity conventions remain important.
 - PMDI rotor-cutoff neighbor values at 25/50/100 cm⁻¹ are
   **−1.07/−1.86/−1.82 kJ/mol**. The sampled phthalimide two-pose adjacent/spacer
   results are **−5.17/−11.39 kJ/mol**, under a different exact model. Neither

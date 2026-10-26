@@ -25,4 +25,4 @@ Regenerate a fresh independent benchmark review after calculations finish, then
 revalidate its evidence before using the numbers in a manuscript. Current
 reports are scoped snapshots and can lag ongoing calculations.
 
-The fixed retrospective panel now has 39/39 admitted endpoints and 111 independent arithmetic checks with no discrepancies. The [latest publication checkpoint](../reviews/2026-10-22/benchmark_complete_publication/summary.json) records the completed electronic-spin comparison, revised 14-page draft and checked presentation. Broader grafting/interaction validation and the complete quantum release remain open.
+The fixed retrospective panel has 39/39 admitted endpoints and 111 independent arithmetic checks with no discrepancies. The [22 October publication checkpoint](../reviews/2026-10-22/benchmark_complete_publication/summary.json) preserves its earlier 14-page draft. The [current manuscript](../../manuscript/README.md) includes the finite PMDI cycle and the later DIPEA UV/NMR source checks. Broader grafting/interaction validation and the complete public quantum release remain open.

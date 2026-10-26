@@ -3,7 +3,9 @@
 [Independent CPU/GPU review](independent_review.json) · [Focused tests](tests_v2.xml) ·
 [Water-dimer control](../../../validation/local_counterpoise_2026-10-26/water_dimer/plan.json) ·
 [Prepared close-motif case](../../../validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/plan.json) ·
-[Independent geometry review](prepared_motif_geometry_v2.json)
+[Independent geometry review](prepared_motif_geometry_v2.json) ·
+[Coordinator tests](coordinator_tests.xml) · [Coordinator snapshot](coordinator_snapshot.json) ·
+[Live coordinator](../../../validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/coordinator.json)
 
 Five gas-phase water-dimer terms were computed on the same full-complex
 quadrature and auxiliary basis. All CPU terms used the 226-function full
@@ -24,12 +26,17 @@ the real build path and source restoration; installed packages are unchanged.
 The 38-atom close phthalimide control has been prepared from the exact reviewed
 fragment coordinates. Its independent geometry check verifies 168 electrons in
 the complex, 84 for either ghost monomer and 1,026 full/ghost AO functions.
-No scientific job has started for this case. Its guarded launcher requires a
+At the last recorded snapshot, no scientific job had started for this case.
+Its guarded launcher requires a
 32-GB-class GPU, checked both before launch and inside the reserved worker, and
 retains the ordinary reservation, CPU, host-memory and residency checks. The
 earlier unsubmitted plan is preserved with its source and a supersession record.
 The exact plan and the independently checked small control are
 required before launch; unavailable devices do not consume a scientific attempt.
+The source-bound coordinator monitors the allowed hosts and checks a CPU-safe
+node preflight before reservation. An uncertain launch is preserved for review
+rather than retried. Use the live coordinator and actual worker records to
+distinguish waiting from a scientific start.
 
 Raw control calculations remain in
 `calcs/validation/local_counterpoise_2026-10-26/water_dimer/` and

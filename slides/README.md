@@ -17,7 +17,9 @@ QC and implementation evidence appear only in backup.
   contains frozen inputs, independent numerical checks, build and separate visual review.
 - The [DIPEA NMR source revision](../results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json)
   and its [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json)
-  bind the current slide 12 to the independently checked salt estimate.
+  preserve the earlier salt-only presentation. The [current build](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json)
+  and [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json)
+  bind slide 12 to both checked experimental sources.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 
@@ -42,7 +44,8 @@ Set PYTHONPATH=src. Run the following scripts with their --help options:
    environment, the checked evidence and `results/figures/presentation` output.
 3. `scripts/presentations/build_colleague_workflow.py` with pypdf and pdflatex,
    a new build directory, the checked evidence and `--dipea-evidence` pointing
-   to the checked DIPEA experimental-anchor summary.
+   to the checked DIPEA NMR summary, plus `--dipea-uv-evidence` pointing to
+   the checked DIPEA UV summary.
 4. `scripts/presentations/render_colleague_workflow.py` with Pillow and Ghostscript,
    followed by separate visual inspection.
 
