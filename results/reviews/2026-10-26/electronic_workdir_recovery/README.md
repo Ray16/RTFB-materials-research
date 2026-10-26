@@ -28,3 +28,6 @@ The scientific worker, geometry, model, numerical settings, reservation gate
 and physical QC were not changed. Fourteen focused adapter, inventory and
 recovery tests passed. This is a placement fix, not evidence of a completed
 polymer calculation; current batch dispatch files give live status.
+
+Two later atomic reservation refusals were independently checked and reopened
+by the [gate-contention recovery](../occupied_gate_contention_recovery/README.md).

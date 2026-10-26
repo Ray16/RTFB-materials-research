@@ -1,0 +1,64 @@
+{
+  "status": "gate_contention_recovered_controllers_live_at_snapshot",
+  "checked": 1793057134.3023162,
+  "gate_refusals_reopened": 2,
+  "scientific_attempts_for_those_refusals": 0,
+  "cases": [
+    {
+      "key": "alternating__occ_2__conf002",
+      "archive": "results/reviews/2026-10-26/occupied_gate_contention_recovery/alternating__occ_2__conf002",
+      "audit_sha256": "8642395c178acd95735558a79edfb90174c9347840648bce0fdd0f21b3b443eb",
+      "original_gate_log_sha256": "bb4fad5a21dcad13bdf249179198f4f26ebf406ca3a95a9b2e4fb01fb8af40f5"
+    },
+    {
+      "key": "alternating__occ_2__conf001",
+      "archive": "results/reviews/2026-10-26/occupied_gate_contention_recovery/alternating__occ_2__conf001",
+      "audit_sha256": "7d19f0bf903a686923f05b190b3e33c6b86e3ced3e4f3c2b72d2fead3dca319a",
+      "original_gate_log_sha256": "0eb64ba0b7f6f00e0669b82ec0a46dba8bb1b388ec2e3c93b2646c5952cac150"
+    }
+  ],
+  "controllers": [
+    {
+      "label": "electronic_0",
+      "pid": 2351583,
+      "process_start": "1385769962",
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_electronic_followup_checked/2026-10-26_occupied_site2_electronic_followup_checked__2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2",
+      "status": "alternate_electronic_batch_in_progress",
+      "entries_by_status": {
+        "pending": 6,
+        "upstream_pending": 13
+      }
+    },
+    {
+      "label": "electronic_1",
+      "pid": 2351584,
+      "process_start": "1385769962",
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_electronic_followup_checked/2026-10-26_occupied_site2_electronic_followup_checked__2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2",
+      "status": "alternate_electronic_batch_in_progress",
+      "entries_by_status": {
+        "pending": 19
+      }
+    },
+    {
+      "label": "electronic_2",
+      "pid": 2351585,
+      "process_start": "1385769962",
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_electronic_followup_checked/2026-10-26_occupied_site2_electronic_followup_checked__pilot_electronic_states",
+      "status": "alternate_electronic_batch_in_progress",
+      "entries_by_status": {
+        "checked_identical_reference": 1,
+        "pending": 1
+      }
+    }
+  ],
+  "scientific_running_at_snapshot": 0,
+  "transition_audit_sha256": "cc06df38fc19d803ffa7317dff058020e3f30f804a76b2cd22928f065514710d",
+  "source_sha256": {
+    "scripts/pipeline/coordinate_with_capacity_preflight_v3.py": "3cc78c5d178f0abbc3e5c0fd503517bfce4e1af4b2eebfc16f615b4d0366384f",
+    "scripts/pipeline/coordinate_electronic_inventory_resilient_v3.py": "66f73d9f7933b10e3d374a1c770f3d34be42f5c1126b6e0eed5f6494cc1dabb1",
+    "scripts/pipeline/transition_electronic_gate_recovery.py": "aee031ab4bea311dd135aafdc156591c1f4b3cbe3e5400583b8a1e9f086fc221",
+    "tests/test_electronic_gate_contention.py": "60205b108888ecb21e114cd5f0844f114bf1d8e9ade76ec7763ae42ff9823473",
+    "results/reviews/2026-10-26/occupied_gate_contention_recovery/tests_final.xml": "e62ebe03ded029a1878254439ed42afc47ab3a43f343345b1895f0e8e98e755b"
+  },
+  "scope": "Only exact gate refusals with verified dead owners and no worker/raw output are reopened; other stopped/ambiguous attempts remain held."
+}

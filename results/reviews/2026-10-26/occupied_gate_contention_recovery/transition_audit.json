@@ -1,0 +1,85 @@
+{
+  "status": "idle_controllers_retired_gate_refusals_preserved",
+  "checked": 1793057063.4858263,
+  "launch_manifest": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_electronic_workdir_restart/launch.json",
+  "launch_manifest_sha256": "941a47001095c809862b856baa943cbd7bc1f43edc26acd6fa25b5a614f3359c",
+  "live_controllers": [
+    {
+      "pid": 1814466,
+      "start": "1385346859"
+    },
+    {
+      "pid": 1814470,
+      "start": "1385346859"
+    }
+  ],
+  "terminal_controllers": [
+    {
+      "pid": 1814473,
+      "start": "1385346859"
+    }
+  ],
+  "stopped_gate_refusals": [
+    {
+      "key": "alternating__occ_2__conf002",
+      "owner": {
+        "host": "lambda13",
+        "pid": 415547,
+        "process_start": "117190690"
+      },
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_electronic_followup_checked/2026-10-26_occupied_site2_electronic_followup_checked__2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf002/dispatch_attempts/1793054567479840488/worker.log",
+      "log_sha256": "bb4fad5a21dcad13bdf249179198f4f26ebf406ca3a95a9b2e4fb01fb8af40f5"
+    },
+    {
+      "key": "alternating__occ_2__conf001",
+      "owner": {
+        "host": "lambda13",
+        "pid": 399744,
+        "process_start": "117179610"
+      },
+      "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_electronic_followup_checked/2026-10-26_occupied_site2_electronic_followup_checked__pilot_electronic_states/alternating__occ_2__conf001/dispatch_attempts/1793054456678909624/worker.log",
+      "log_sha256": "0eb64ba0b7f6f00e0669b82ec0a46dba8bb1b388ec2e3c93b2646c5952cac150"
+    }
+  ],
+  "hosts": {
+    "lambda0": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda1": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda11": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda12": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda13": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda2": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda4": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda5": {
+      "matches": [],
+      "old_pid_starts": {}
+    },
+    "lambda6": {
+      "matches": [],
+      "old_pid_starts": {}
+    }
+  },
+  "gate_status_sha256": "f3e1de5fcc959bfbb32f021df124384f75ee2e9e5b3b0544f2c1818ef08eb73a",
+  "scientific_workers_stopped": 0,
+  "finished": 1793057063.5911677
+}
