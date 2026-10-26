@@ -1,0 +1,122 @@
+{
+  "status": "checked_empty_chain_free_energy_range_not_ensemble",
+  "configuration": "all_same",
+  "graph_sha256": "d491da6b2fecf508575878eae2f7f20b980d6c1c652a126a026b57a72eab0c2f",
+  "method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+  "solvent": "acetonitrile",
+  "records": [
+    {
+      "key": "all_same__occ_none__conf001",
+      "search_rank": 1,
+      "G_by_cutoff_eV": {
+        "25": -82874.07522831204,
+        "50": -82873.93719438344,
+        "100": -82873.84011162758
+      },
+      "minimum_frequency_cm": 9.965554396632726,
+      "review": {
+        "path": "results/reviews/2026-10-26/smooth_native_resource_witness/review.json",
+        "sha256": "d916a06e1eb52332daada7ae014412011af56da4fde21d6a7cca299efc6e32fa"
+      }
+    },
+    {
+      "key": "all_same__occ_none__conf002",
+      "search_rank": 2,
+      "G_by_cutoff_eV": {
+        "25": -82874.15769309578,
+        "50": -82874.01175640034,
+        "100": -82873.91699068235
+      },
+      "minimum_frequency_cm": 11.747126589466195,
+      "review": {
+        "path": "results/polymer_models/campaigns/2026-10-26_smooth_empty_native_batch/all_same__occ_none__conf002/independent_native_review.json",
+        "sha256": "713d2e4ee7294dda05c2d0ddefeb834f38b17f5df790e84c1aa6266278630f61"
+      }
+    },
+    {
+      "key": "all_same__occ_none__conf003",
+      "search_rank": 3,
+      "G_by_cutoff_eV": {
+        "25": -82874.1178388675,
+        "50": -82873.98750232058,
+        "100": -82873.88451876577
+      },
+      "minimum_frequency_cm": 15.770132412426493,
+      "review": {
+        "path": "results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf003/independent_native_review.json",
+        "sha256": "a8ed714446f0e64b6cd8b9e86b8898af881d512e947275bd381a387a1141b331"
+      }
+    },
+    {
+      "key": "all_same__occ_none__conf004",
+      "search_rank": 4,
+      "G_by_cutoff_eV": {
+        "25": -82874.1290057916,
+        "50": -82873.99998084268,
+        "100": -82873.89588548765
+      },
+      "minimum_frequency_cm": 13.188054708054747,
+      "review": {
+        "path": "results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf004/independent_native_review.json",
+        "sha256": "411e6130b437b95c8e7826ef1e3aefc6c5879806c86f5c279cfd6e61267e8c9c"
+      }
+    }
+  ],
+  "by_rotor_cutoff_cm": {
+    "25": {
+      "range_kJ_mol": 7.956642047967525,
+      "relative_to_lowest_kJ_mol": [
+        7.956642047967525,
+        0.0,
+        3.8453484519473635,
+        2.767904071226354
+      ],
+      "running_minimum_eV": [
+        -82874.07522831204,
+        -82874.15769309578,
+        -82874.15769309578,
+        -82874.15769309578
+      ]
+    },
+    "50": {
+      "range_kJ_mol": 7.194140964733067,
+      "relative_to_lowest_kJ_mol": [
+        7.194140964733067,
+        0.0,
+        2.3401629412410063,
+        1.1361685922259082
+      ],
+      "running_minimum_eV": [
+        -82873.93719438344,
+        -82874.01175640034,
+        -82874.01175640034,
+        -82874.01175640034
+      ]
+    },
+    "100": {
+      "range_kJ_mol": 7.417701133156833,
+      "relative_to_lowest_kJ_mol": [
+        7.417701133156833,
+        0.0,
+        3.1330636559120473,
+        2.036341719882271
+      ],
+      "running_minimum_eV": [
+        -82873.84011162758,
+        -82873.91699068235,
+        -82873.91699068235,
+        -82873.91699068235
+      ]
+    }
+  },
+  "conversion_kJ_mol_per_eV": 96.48533212331002,
+  "comparison": "within same empty graph and alternate model",
+  "finite_ensemble_calculated": false,
+  "graph_duplicate_review_performed": false,
+  "wider_sampling_converged": false,
+  "polymer_cycle_or_binding_inferred": false,
+  "primary_model_cache_modified": false,
+  "quantum_jobs_submitted": 0,
+  "manifest_sha256": "8725740548f58fdc751bdd243b6d799e09651d02cddae7f840db47ee389a940b",
+  "producer_sha256": "ae74fe19d784e54fd8af5f7535148446bcfd407ccce73b37349af219cf2951c7"
+}

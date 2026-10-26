@@ -45,6 +45,10 @@ This metric includes caps and continuum response and remains distinct from
 whole-chain ΔΔG, pure π binding and electron-transfer coupling. It is not yet
 integrated as a chemical finding in the immutable manuscript epoch. See
 [the local interaction record](../results/reviews/2026-10-26/local_motif_interactions/README.md).
+Four checked empty-chain native records in the alternate smooth-surface model
+now span 7.19 kJ/mol at the 50 cm^-1 rotor cutoff. This is a geometry sensitivity
+within one configuration, not a completed ensemble, grafting-cycle uncertainty
+or a result to mix with the primary-model cycle. See the [range diagnostic](../results/validation/empty_chain_native_range_2026-10-26/README.md).
 The [complete local-panel review](../results/reviews/2026-10-26/local_motif_complete/README.md)
 preserves the earlier partial snapshot and the full checked replay.
 

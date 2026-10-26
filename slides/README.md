@@ -21,7 +21,9 @@ QC and implementation evidence appear only in backup.
   and [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json)
   bind slide 12 to both checked experimental sources. The [current build](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/build_check.json)
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/visual_review.json)
-  add the separate held AQ proposal to slide 6.
+  add the separate held AQ proposal to slide 6. The [latest build](../results/reviews/2026-10-26/colleague_workflow_empty_range/build_check.json)
+  and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_empty_range/visual_review.json)
+  add the alternative-model empty-chain range to slide 15.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 
