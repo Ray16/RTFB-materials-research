@@ -25,5 +25,6 @@ redox-specific FP32/Nitro comparison is running as a separate resource waiter;
 its numerical qualification remains pending. The V100 fallback comparison
 and the H100 Nitro pair have different scopes. Solution DFT, alternative-spin
 checks, native thermochemistry and comparison with the peak-based experimental
-proxies are still required. A production dispatcher for this isolated campaign
-has not yet been started.
+proxies are still required. A [neutral-state resource-pilot coordinator](../../reviews/2026-10-26/nitro_pair_independent_observer/README.md)
+is live and gated on independent Nitro parity. Fan-out to the other states and
+the solution DFT handoff remain to be implemented after the pilot is reviewed.

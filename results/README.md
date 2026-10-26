@@ -19,7 +19,7 @@ A subsequent [remote working-directory fix](reviews/2026-10-26/electronic_workdi
 
 A [source-checked NDI experimental challenge](validation/ndi_external_challenge_2026-10-26/README.md) records an exact free molecule and quasi-reversible MeCN peak data. Its calculated states remain pending and it is not included in the frozen benchmark metrics.
 
-The challenge now has [ten checked starting geometries](validation/ndi_external_control_seeds_2026-10-26/README.md), a separate state manifest and an [isolated UMA adapter](validation/ndi_external_uma_2026-10-26_v2/README.md). Its production dispatcher and state-specific quantum results remain pending.
+The challenge now has [ten checked starting geometries](validation/ndi_external_control_seeds_2026-10-26/README.md), a separate state manifest and an [isolated UMA adapter](validation/ndi_external_uma_2026-10-26_v2/README.md). A neutral-state resource pilot is gated on independent Nitro parity; state-specific quantum results remain pending.
 
 The [gas counterpoise control](reviews/2026-10-26/counterpoise_control/README.md) now passes an independent CPU/GPU, common-grid and auxiliary-basis review. The close phthalimide motif point is prepared; its live coordinator records whether a scientific worker has actually started. No solvent correction or experimental interaction accuracy is inferred from the small control.
 

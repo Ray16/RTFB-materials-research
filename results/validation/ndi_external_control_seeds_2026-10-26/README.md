@@ -16,7 +16,7 @@ byte-for-byte under the recorded RDKit version.
 The input layout uses `conformers/conf_*.xyz` and a separate three-state manifest
 matching the project input schema. The manifest has **not** been merged into the
 project library. An [isolated UMA adapter](../ndi_external_uma_2026-10-26_v2/README.md)
-is now staged; a production dispatcher and DFT handoff remain pending. Charge and
+and parity-gated neutral-state pilot are in place; broader dispatch and DFT handoff remain pending. Charge and
 multiplicity entries are proposed starting hints, not calculated state assignments.
 
 These are neutral-graph, gas-phase force-field seeds. They are not charged-state

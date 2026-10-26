@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="24" time="0.450" timestamp="2026-10-26T17:48:03.073154-05:00" hostname="lambda2"><testcase classname="tests.test_observe_nitro_pair_review" name="test_fixed_pair_is_recomputed_without_claiming_optimizer_qualification" time="0.005" /><testcase classname="tests.test_observe_nitro_pair_review" name="test_incomplete_or_mixed_evidence_is_rejected[wrong_gpu]" time="0.002" /><testcase classname="tests.test_observe_nitro_pair_review" name="test_incomplete_or_mixed_evidence_is_rejected[not_nitro]" time="0.003" /><testcase classname="tests.test_observe_nitro_pair_review" name="test_incomplete_or_mixed_evidence_is_rejected[foreign_gpu]" time="0.005" /><testcase classname="tests.test_observe_nitro_pair_review" name="test_incomplete_or_mixed_evidence_is_rejected[unverified_reference]" time="0.002" /><testcase classname="tests.test_observe_nitro_pair_review" name="test_incomplete_or_mixed_evidence_is_rejected[wrong_guard]" time="0.002" /><testcase classname="tests.test_observe_nitro_pair_review" name="test_incomplete_or_mixed_evidence_is_rejected[observer_error]" time="0.003" /><testcase classname="tests.test_observe_nitro_pair_review" name="test_incomplete_or_mixed_evidence_is_rejected[diagnostic]" time="0.002" /><testcase classname="tests.test_external_uma_pilot_dispatch" name="test_absent_parity_evidence_cannot_launch" time="0.001" /><testcase classname="tests.test_external_uma_pilot_dispatch" name="test_rejects_diagnostic_or_mismatched_parity" time="0.002" /><testcase classname="tests.test_external_uma_pilot_dispatch" name="test_gpu_memory_parser_counts_only_owned_process_and_rejects_invalid" time="0.000" /><testcase classname="tests.test_external_uma_pilot_dispatch" name="test_qualified_device_is_source_bound" time="0.002"><failure message="RuntimeError: Source or input changed: /tmp/pytest-of-rzhu/pytest-1009/test_qualified_device_is_sourc0/nitro/status.json">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1009/test_qualified_device_is_sourc0')
+
+    def test_qualified_device_is_source_bound(tmp_path):
+        nitro = tmp_path/'nitro'; nitro.mkdir()
+        source = nitro/'status.json'
+        source.write_text(json.dumps({'mode':'nitro','device_name':'NVIDIA H100 NVL','capability':[9,0]}))
+        record = dict(status='independent_fixed_device_pair_passed',all_energy_and_force_checks_pass=True,
+                      actual_nitro_and_reference_modes_checked=True,same_device_checked=True,
+                      exclusive_residency_checked=True,diagnostic_only=False,
+                      source_sha256={str(source):pilot.api.digest(source)})
+        review=tmp_path/'independent_review.json';review.write_text(json.dumps(record))
+        (tmp_path/'status.json').write_text(json.dumps(dict(status='independent_fixed_device_pair_passed',
+            review=str(review),review_sha256=pilot.api.digest(review))))
+        assert pilot.qualified_parity_device(tmp_path)=={'name':'NVIDIA H100 NVL','capability':(9,0)}
+        source.write_text('{}')
+&gt;       with pytest.raises(ValueError): pilot.qualified_parity_device(tmp_path)
+                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_external_uma_pilot_dispatch.py:64: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+scripts/pipeline/coordinate_external_uma_pilot.py:53: in qualified_parity_device
+    if not parity_ready(observer):
+           ^^^^^^^^^^^^^^^^^^^^^^
+scripts/pipeline/coordinate_external_uma_pilot.py:42: in parity_ready
+    api.verify_sources(review['source_sha256'])
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mapping = {'/tmp/pytest-of-rzhu/pytest-1009/test_qualified_device_is_sourc0/nitro/status.json': '8acced4a7f817a6a902b70b220679de252ffe0613a5445c26fc6f36325c67083'}
+
+    def verify_sources(mapping):
+        for path, expected in mapping.items():
+            if digest(path) != expected:
+&gt;               raise RuntimeError(f"Source or input changed: {path}")
+E               RuntimeError: Source or input changed: /tmp/pytest-of-rzhu/pytest-1009/test_qualified_device_is_sourc0/nitro/status.json
+
+src/redox/workflows/polymer_campaign.py:29: RuntimeError</failure></testcase><testcase classname="tests.test_review_external_uma_pilot" name="test_pilot_review_accepts_only_sampled_owned_resource_record" time="0.006" /><testcase classname="tests.test_review_external_uma_pilot" name="test_pilot_review_fails_closed[foreign]" time="0.004" /><testcase classname="tests.test_review_external_uma_pilot" name="test_pilot_review_fails_closed[missing_samples]" time="0.004" /><testcase classname="tests.test_review_external_uma_pilot" name="test_pilot_review_fails_closed[wrong_gpu]" time="0.004" /><testcase classname="tests.test_review_external_uma_pilot" name="test_pilot_review_fails_closed[model_error]" time="0.004" /><testcase classname="tests.test_uma_external_control" name="test_staging_isolated_and_changed_seed_is_rejected" time="0.011" /><testcase classname="tests.test_uma_external_control" name="test_library_context_restores_state_even_after_failure" time="0.001" /><testcase classname="tests.test_uma_external_control" name="test_worker_uses_only_isolated_manifest_and_persists_receipt" time="0.012" /><testcase classname="tests.test_uma_external_control" name="test_worker_preserves_scientific_failure_and_refuses_retry" time="0.013" /><testcase classname="tests.test_uma_external_control" name="test_worker_refuses_wrong_interpreter_without_replacing_guard" time="0.008" /><testcase classname="tests.test_uma_pair_cpu_preflight" name="test_only_canonical_helper_is_replaced" time="0.000" /><testcase classname="tests.test_uma_pair_cpu_preflight" name="test_process_local_patch_is_restored_on_failure" time="0.001" /></testsuite></testsuites>

@@ -28,9 +28,9 @@ Ten graph-checked [force-field starting geometries](../results/validation/ndi_ex
 are prepared for the exact source molecule; the state-specific calculations
 remain pending.
 An isolated [UMA control adapter](../results/validation/ndi_external_uma_2026-10-26_v2/README.md)
-is now prepared and tested without a GPU. Its production dispatcher and all
-state-specific results remain pending; the fixed-device Nitro parity wait was
-resumed separately.
+is now prepared and tested without a GPU. A neutral-state resource pilot is
+gated on independent fixed-device Nitro parity; all state-specific results and
+the broader dispatch remain pending.
 
 The broader-conformer continuation now has declared refinement coverage for all
 240 separated starts across twelve graph/configuration sets. The last two

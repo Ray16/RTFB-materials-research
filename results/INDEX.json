@@ -648,7 +648,9 @@
       "source_manifest": "results/validation/uma_current_2026-10-24/legacy_launch.json",
       "raw_root": "calcs/uma_nitro_validation/2026-10-24_current_dispatch_legacy",
       "scope": "Current default requested backend and tested V100 fallback; H100 current-FP32/Nitro comparison pending; no solution free energy from UMA",
-      "startup_review": "results/reviews/2026-10-26/ndi_uma_adapter/summary.json"
+      "startup_review": "results/reviews/2026-10-26/ndi_uma_adapter/summary.json",
+      "independent_observer": "results/validation/uma_current_2026-10-24/H100_pair_independent_observer_2026-10-26_v2/status.json",
+      "observer_review": "results/reviews/2026-10-26/nitro_pair_independent_observer/summary.json"
     },
     "tensor_runtime_controls": {
       "guide": "results/validation/DF_occupied_workspace_2026-10-25/README.md",
@@ -976,8 +978,10 @@
       "current": "results/validation/ndi_external_uma_2026-10-26_v2/plan.json",
       "source_snapshot": "results/reviews/2026-10-26/ndi_uma_adapter/summary.json",
       "raw_root": "results/validation/ndi_external_uma_2026-10-26_v2",
-      "status": "UMA_control_adapter_staged_no_scientific_start",
-      "scope": "Exact source-matched free molecule; isolated UMA input, parity and DFT pending"
+      "status": "neutral_resource_pilot_waiting_for_independent_Nitro_parity",
+      "scope": "Exact source-matched free molecule; isolated UMA input, parity and DFT pending",
+      "pilot_status": "results/validation/ndi_external_uma_2026-10-26_v2/pilot_dispatch_v3/status.json",
+      "pilot_review": "results/reviews/2026-10-26/nitro_pair_independent_observer/summary.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",
