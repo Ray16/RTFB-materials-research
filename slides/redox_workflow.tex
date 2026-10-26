@@ -5,9 +5,10 @@
 \usepackage{lmodern}
 \usepackage{booktabs}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
 \usepackage{xcolor}
 \usepackage{graphicx}
+\usepackage{amsmath}
 \graphicspath{{../results/figures/}{../results/figures/candidates/}{../results/figures/validation/}{../results/figures/reorg/}{../results/figures/pipeline/}{figures/}}
 
 % --- clean modern theme built on defaults ---
@@ -42,60 +43,18 @@
 \newcommand{\hi}[1]{\textcolor{amber}{\textbf{#1}}}
 
 \title{\textbf{Choosing Redox Centers for Polymer Flow Batteries}}
-\subtitle{Findings from molecular screening and the next synthesis controls}
+\subtitle{Candidate expansion, validation and polymer context}
 \author{RTFB Materials Research}
-\date{\today}
+\date{26 October 2026}
 
+
+\newcommand{\takeaway}[1]{\par\vfill\begin{beamercolorbox}[wd=\linewidth,sep=1.5mm]{block body}\small\textcolor{teal}{\textbf{#1}}\end{beamercolorbox}}
+\newcommand{\source}[1]{\par\vspace{1mm}{\tiny\color{ink!65}#1}}
+\newcommand{\figdir}{../results/figures/presentation/}
+\input{generated/colleague_values.tex}
 \begin{document}
-\input{generated/research_findings.tex}
-\input{generated/pmdi_neighbor_2026-10-25.tex}
-\input{generated/polymer_conditional_2026-10-23.tex}
-\input{generated/polymer_spatial_2026-10-24.tex}
-
-% Main story retains BQ candidates as base required; selectivity/yield remain untested.
-% Main narrative ends here; all supporting evidence follows in backup.
+\input{generated/colleague_story.tex}
 \appendix
-\section{Backup}
-\setcounter{framenumber}{0}
-\setbeamertemplate{footline}{\hspace{2ex}\scriptsize\textcolor{ink!60}{Backup}\hfill B\insertframenumber\hspace{2ex}\vspace{1ex}}
-\begin{frame}[plain]
-\centering\Huge\textcolor{ink}{Backup}
-\par\vspace{1em}\large Methods, validation and detailed comparisons
-\end{frame}
-\subsection{Methods and current evidence}
-\input{generated/polymer_capacity_scenarios_2026-10-23.tex}
-\input{generated/pmdi_first_graft_2026-10-25.tex}
-\input{generated/pmdi_neighbor_geometry_2026-10-25.tex}
-\input{generated/grafting_reference_2026-10-19.tex}
-% The expanded benchmark appears in the main story; earlier parent subsets below retain their dated scope.
-\begin{frame}{SA and nominal capacity: a supplementary comparison}
-\centering\includegraphics[width=.94\linewidth,height=.76\textheight,keepaspectratio]{../results/candidates/figures/plots/synthesis_tradeoff.pdf}
-\par\smallskip\footnotesize SA is a molecular heuristic; attachment selectivity and polymer accessibility require independent review.
-\end{frame}
-
-\input{backup/methods.tex}
-\InputIfFileExists{generated/verified_candidates.tex}{}{}
-\input{generated/ptz_solution_diagnostic_2026-10-18.tex}
-\input{generated/matched_parent_benchmark_2026-10-18.tex}
-\input{generated/matched_parent_spin_checked_2026-10-19.tex}
-\input{generated/phenothiazine_benchmark_2026-10-19.tex}
-\input{generated/ptz_method_sensitivity_2026-10-19.tex}
-\input{generated/aryl_hydrogen_qualification_2026-10-19.tex}
-\input{generated/aryl_registered_2026-10-19.tex}
-\input{generated/hexyl_contact_progress_2026-10-19.tex}
-\input{generated/diaryl_viologen_preparation_2026-10-18.tex}
-
-
-\begin{frame}{Family coverage across the complete candidate set}
-\centering\includegraphics[width=.94\linewidth,height=.78\textheight,keepaspectratio]{../results/candidates/figures/supplementary/coverage.pdf}
-\end{frame}
-\begin{frame}{Formal redox-state drawings: computed capped models}
-\centering\includegraphics[page=1,width=.98\linewidth,height=.78\textheight,keepaspectratio]{../results/candidates/figures/structures/redox_states.pdf}
-\end{frame}
-\begin{frame}{Earlier exploration: vinyl-monomer redox drawings}
-\centering\includegraphics[page=2,width=.98\linewidth,height=.78\textheight,keepaspectratio]{../results/candidates/figures/structures/redox_states.pdf}
-\end{frame}
-\subsection{Historical exploratory results}
-\input{backup/earlier_vinyl_comparison.tex}
-\input{backup/historical.tex}
+\setbeamertemplate{footline}{\hspace{2ex}\scriptsize\textcolor{ink!60}{Supporting evidence}\hfill\insertframenumber\hspace{2ex}\vspace{1ex}}
+\input{generated/colleague_backup.tex}
 \end{document}

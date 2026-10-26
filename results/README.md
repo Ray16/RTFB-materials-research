@@ -3,6 +3,8 @@
 Use these stable paths. Completed quantities carry field-specific QC; blank values
 are pending or excluded. Raw calculations and earlier source snapshots are retained.
 
+For the colleague discussion, use the [focused workflow presentation](../slides/colleague_workflow.pdf): 16 main slides on candidate expansion, validation and the linked PMDI example, with seven supporting slides. The [scientific brief](../slides/colleague_brief.md), [speaker notes](../slides/colleague_speaker_notes.md) and [source-bound evidence](reviews/2026-10-26/colleague_workflow/README.md) distinguish the 837-design library, evaluated cohort and planned comparisons. The former detailed deck is archived; the manuscript and scientific calculations are unchanged by this presentation revision.
+
 The [checked first-site PMDI analysis](reviews/2026-10-25/pmdi_first_site_grafting_checked/README.md) now combines the two independently reconstructed single-site polymer free energies with balanced DBU-assisted grafting reactions. In these sampled minima, polymer attachment is +5.34/+6.11 kJ/mol less favorable than the capped local model; common base/precursor terms cancel. Absolute reaction signs remain conditional on the base/speciation model, and no full-axis candidate is admitted.
 
 The [complete finite PMDI neighbor cycle](reviews/2026-10-25/pmdi_neighbor_cycle_checked/README.md) now has four matched native free energies and independently reconstructed conditional DBU grafting reactions. Its primary nonadditivity is −1.86 kJ/mol; the paired cores are 16.30 Angstrom apart. This closes the missing sampled-baseline calculation while leaving conformer ensembles, close-contact interactions and electronic coupling unresolved.

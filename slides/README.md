@@ -1,51 +1,47 @@
-# Research presentation
+# Focused workflow presentation
 
-All result categories: [results index](../results/README.md).
+Open [colleague_workflow.pdf](colleague_workflow.pdf), also maintained as
+[redox_workflow.pdf](redox_workflow.pdf). The deck has **16 main slides and
+7 supporting slides**, intended for an approximately 20-minute discussion.
 
-Open [redox_workflow.pdf](redox_workflow.pdf).
+The narrative connects systematic candidate expansion, matched design effects,
+validation of computed properties, defined-route grafting and the finite PMDI
+neighbor example. Each slide has one purpose and a take-home claim. Detailed
+QC and implementation evidence appear only in backup.
 
-The main story presents the background, post-grafting route, computational
-workflow, method, key candidate results, polymer controls and synthesis implications. Detailed
-methods, validation tables, supplementary molecular drawings and historical
-comparisons follow the **Backup** divider.
+- [Speaker notes](colleague_speaker_notes.md) explain each slide and likely questions.
+- [Scientific brief](colleague_brief.md) records the current findings and limits.
+- [Editable source](redox_workflow.tex) uses the [main story](generated/colleague_story.tex)
+  and [supporting evidence](generated/colleague_backup.tex).
+- [Presentation evidence](../results/reviews/2026-10-26/colleague_workflow/README.md)
+  contains frozen inputs, independent numerical checks, build and separate visual review.
+- [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
+  produces the maintained [presentation figures](../results/figures/presentation/).
 
-The workflow now screens precursor/attachment feasibility before full redox
-properties, then compares dimers, trimers and stacking. The main story retains
-the BQ candidates as **base required** under conditional base-assisted models. DBU capture differs from the MeCN pKa anchor; DIPEA lacks an exact checked experimental anchor. Attachment selectivity and yield remain untested.
+The previous 76-page deck remains in
+[the earlier-deck archive](archive/2026-10-26_before_focused_workflow/README.md).
+Historical scientific records and manuscript evidence are unchanged.
 
-The current 74-page deck has 16 main slides and 58 backup pages. New first-site PMDI grafting results appear on page 19, after the polymer-capacity bounds. The initial grafting-reference checkpoint follows later in Backup. Its dated values and plot are frozen with the submission review; the
-[grafting visual report](../results/grafting/index.html) continues updating as
-the finite calculation queue finishes.
+The expansion denominators are deliberately separate: 837 enumerated designs,
+75 evaluated-cohort candidates and 34 future comparison slots. The evaluated
+cohort overlaps 33 enumerated graphs, of which 32 have both computed potentials.
+The 34-slot plan has generated zero new exact molecules. The benchmark has
+39/39 exact-parent MeCN endpoints; it does not validate exact-graft or polymer
+accuracy. No candidate currently passes every required material-selection axis.
 
-The main story is generated from the same audited snapshot as the comparison
-figures. Numerical findings update with that feed; polymer properties remain distinct from local molecular predictions. Earlier
-vinyl-monomer work is preserved as a superseded route exploration.
+For reproduction, use one CPU and set OMP_NUM_THREADS, OMP_THREAD_LIMIT,
+MKL_NUM_THREADS, OPENBLAS_NUM_THREADS, NUMEXPR_NUM_THREADS and XTB_THREADS to 1.
+Set PYTHONPATH=src. Run the following scripts with their --help options:
 
-Refresh the presentation and maintained figures:
+1. `scripts/presentations/collect_colleague_evidence.py` with the figure environment,
+   writing a new evidence directory (existing snapshots are never overwritten).
+2. `scripts/plotting/presentation/plot_colleague_workflow.py` with the same figure
+   environment, the checked evidence and `results/figures/presentation` output.
+3. `scripts/presentations/build_colleague_workflow.py` with pypdf and pdflatex,
+   a new build directory and the checked evidence.
+4. `scripts/presentations/render_colleague_workflow.py` with Pillow and Ghostscript,
+   followed by separate visual inspection.
 
-```bash
-PYTHONPATH=src .venv-figures/bin/python scripts/pipeline/update_verified_slides.py \
-  --out results/reviews/2026-10-19/research_presentation/slides --update-plots
-```
-
-Edit the main-story generator at
-`scripts/plotting/candidates/research_presentation.py`. The slide wrapper is
-[redox_workflow.tex](redox_workflow.tex); supporting source is in [backup/](backup/).
-The earlier detailed deck is preserved in
-[archive/2026-10-19_detailed/](archive/2026-10-19_detailed/README.md).
-
-The current benchmark slide uses the [expanded retrospective panel](../results/validation/publication_benchmark/current.json):
-39/39 admitted potentials across 30 exact free molecules and seven studies.
-The checked [figure](../results/figures/validation/retrospective_redox_benchmark.pdf)
-retains all admitted outliers; the fixed panel is complete. Earlier validation subsets
-in Backup are historical snapshots.
-
-The polymer slides include all twelve finite-baseline native G values and their
-two-pose partitions. The [24 October spatial evidence](../manuscript/evidence/2026-10-24_spatial_revision/manifest.json)
-adds a one-spacer example with both close and separated cores. Its 7.1 kJ/mol
-within-graph G difference includes the whole chain and solvent. Broader
-convergence, isolated motif binding and electronic coupling remain unqualified.
-The quantitative DBU capture-term discrepancy retains its separate scope and
-earlier source evidence.
-
-The 25 October neighbor-cycle revision contains 76 pages (17 main and 59 backup). The PMDI matched finite cycle and actual separated-core geometry are included; [the build record](../results/reviews/2026-10-25/pmdi_neighbor_slides/status.json) and [separate rendered review](../results/reviews/2026-10-25/pmdi_neighbor_slides/visual_review.json) bind the checked PDF. Ensemble convergence and material eligibility remain open.
+The figure environment is `.venv-figures/bin/python`; the project redox interpreter
+supplies pypdf and Pillow. Respect shared-node CPU allocation. No script launches
+quantum calculations. Compiler checks and visual-review records remain separate.
