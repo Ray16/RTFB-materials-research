@@ -1,0 +1,35 @@
+{
+  "status": "superseded_unguarded_exec_adapter_draft",
+  "checked": 1793054156.5922735,
+  "NDI_campaign": "results/validation/ndi_external_uma_2026-10-26/plan.json",
+  "NDI_states": 3,
+  "NDI_scientific_starts": 0,
+  "adapter_test_scope": "Mocked isolated manifest and output, failure preservation, context restoration and ungated refusal; no real UMA execution.",
+  "pair_waiter": {
+    "pid": 1982920,
+    "process_start": "1385466758",
+    "live_at_check": true,
+    "status_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_current_2026-10-24/H100_pair_cpu_preflight_2026-10-26/status.json",
+    "preflight_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_current_2026-10-24/H100_pair_cpu_preflight_2026-10-26/lambda13_preflight.json",
+    "preflight_sha256": "99adc66bbe36cb0d895c6cd3619a3851d6fd0a6e8da1a0727252eaae0127a7d8",
+    "preflight_GPU_imports_blocked": true,
+    "actual_scientific_starts_at_check": 0,
+    "preflight_frozen_copy": "results/reviews/2026-10-26/ndi_uma_adapter/preflight_snapshot.json"
+  },
+  "previous_pair_status": "results/validation/uma_current_2026-10-24/H100_pair_quiet/status.json",
+  "previous_pair_terminal_reason": "finite resource wait ended with zero validation starts",
+  "fixed_device_parity_qualified": false,
+  "production_dispatch_started": false,
+  "source_sha256": {
+    "scripts/pipeline/uma_external_control.py": "dea2a5bf7ab59f14513462c5caacd7afde8d5732cd32c7946aa8190d927d8368",
+    "scripts/validation/wait_uma_pair_cpu_preflight.py": "9ccc80350d813598fa99e40c158910fd5830c3c24934e2a495fa803726a038cb",
+    "scripts/validation/wait_uma_pair.py": "bd3d770368b43097d43382a08e156f1b4182992c013fa2faaa92562fb4490842",
+    "scripts/fleet/preflight_cpu_dependencies.py": "5c0d95d45fab639b3803ad9602d01a10aa24638abbdd9988dcf10fc5b68bcc95",
+    "results/validation/ndi_external_uma_2026-10-26/plan.json": "433d9596123caee1d620d3322f113e0f1c5fdab42362e0f408c282c688ca449e",
+    "results/reviews/2026-10-26/ndi_uma_adapter/tests.xml": "24703e83efa9b36ff48c35fa6465a13959f4ca74595a5a04d0ba8d46bccc2888",
+    "results/reviews/2026-10-26/ndi_uma_adapter/ungated_probe.log": "3d2ded3b9374ce539c60c0b5fc40bb372837486da69c706c2d2df3d196b4f89f"
+  },
+  "scope": "Finite time-bound CPU coordinator status; no new numerical parity or redox accuracy result.",
+  "historical_adapter_copy": "calcs/validation/2026-10-26_ndi_external_control_seeds_v2/uma_adapter_v1.py",
+  "superseded_by": "results/reviews/2026-10-26/ndi_uma_adapter/summary.json"
+}

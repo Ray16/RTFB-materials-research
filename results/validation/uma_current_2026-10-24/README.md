@@ -19,8 +19,9 @@ forty geometries: maximum differences are 2.35e-6 eV and 1.74e-6 eV/Å.
 [entry-point tests](entrypoint_tests.xml) retain the evidence. This validates
 the fallback integration, not Nitro execution on V100 or a Nitro speedup.
 
-The [fixed-device official FP32/Nitro experiment](H100_pair_quiet/status.json) has a
-finite, ownership-checked dispatcher waiting for a compatible free H100.
+The previous [fixed-device official FP32/Nitro waiter](H100_pair_quiet/status.json)
+ended its finite window with no validation start. A [new CPU-preflight waiter](../../reviews/2026-10-26/ndi_uma_adapter/README.md)
+has been started for the same frozen comparison and is tracked separately.
 Reservation contention consumes no scientific attempt. The comparison uses the
 original frozen ten-state/four-frame bounds and checks actual inference modes.
 A started failure remains for review rather than being repeatedly resampled.

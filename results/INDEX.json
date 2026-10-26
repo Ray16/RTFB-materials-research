@@ -643,11 +643,12 @@
     "uma_default": {
       "guide": "results/validation/uma_current_2026-10-24/README.md",
       "current": "results/validation/uma_current_2026-10-24/summary.json",
-      "status": "results/validation/uma_current_2026-10-24/H100_pair_quiet/status.json",
+      "status": "results/validation/uma_current_2026-10-24/H100_pair_cpu_preflight_2026-10-26/status.json",
       "policy": "config/uma_execution.json",
       "source_manifest": "results/validation/uma_current_2026-10-24/legacy_launch.json",
       "raw_root": "calcs/uma_nitro_validation/2026-10-24_current_dispatch_legacy",
-      "scope": "Current default requested backend and tested V100 fallback; H100 current-FP32/Nitro comparison pending; no solution free energy from UMA"
+      "scope": "Current default requested backend and tested V100 fallback; H100 current-FP32/Nitro comparison pending; no solution free energy from UMA",
+      "startup_review": "results/reviews/2026-10-26/ndi_uma_adapter/summary.json"
     },
     "tensor_runtime_controls": {
       "guide": "results/validation/DF_occupied_workspace_2026-10-25/README.md",
@@ -969,6 +970,14 @@
       "raw_root": "calcs/validation/2026-10-26_ndi_external_control_seeds_v2",
       "status": "ten_neutral_starting_geometries_not_quantum_qualified",
       "scope": "External free-molecule method control; state-specific quantum calculations and execution adapter pending"
+    },
+    "ndi_external_uma": {
+      "guide": "results/validation/ndi_external_uma_2026-10-26_v2/README.md",
+      "current": "results/validation/ndi_external_uma_2026-10-26_v2/plan.json",
+      "source_snapshot": "results/reviews/2026-10-26/ndi_uma_adapter/summary.json",
+      "raw_root": "results/validation/ndi_external_uma_2026-10-26_v2",
+      "status": "UMA_control_adapter_staged_no_scientific_start",
+      "scope": "Exact source-matched free molecule; isolated UMA input, parity and DFT pending"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",
