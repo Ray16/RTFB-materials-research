@@ -21,6 +21,10 @@ independently; Figure 5A was also inspected for the solution voltammogram. The
 graph is absent from the checked project molecular manifest and the 837-design
 search space. That is a project-local identity check, not a novelty claim.
 
+[Ten checked starting geometries](../ndi_external_control_seeds_2026-10-26/README.md)
+are now prepared; they are force-field inputs and do not change the experimental
+or benchmark status below.
+
 This is a **free-molecule method control**, not a proposed pre-polymerization
 synthesis route or a model of a Merrifield graft. Its charge/spin states are
 proposals, and no computed potentials are available. It is not added to the

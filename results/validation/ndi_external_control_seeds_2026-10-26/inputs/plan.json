@@ -1,0 +1,136 @@
+{
+  "status": "neutral_external_control_seed_geometries_prepared_not_quantum_qualified",
+  "challenge": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/ndi_external_challenge_2026-10-26/summary.json",
+  "challenge_sha256": "9173d7c68231eb47b72b87188a62c11b523c0e901252769c04b9ca98286da155",
+  "producer_sha256": "25a36d4b3c7dd9934934d57eac59379b51003ab33673c7fa299059fd4e2b2f88",
+  "source_smiles": "C=Cc1ccc(N2C(=O)c3ccc4c5c(ccc(c35)C2=O)C(=O)N(c2ccc(C=C)cc2)C4=O)cc1",
+  "inchikey": "SPERKVAFJZCDEH-UHFFFAOYSA-N",
+  "rdkit_version": "2026.03.5",
+  "method": "ETKDGv3 followed by MMFF94 optimization; neutral molecular graph only",
+  "seed": 20261026,
+  "requested_embeddings": 32,
+  "embedded": 18,
+  "mmff_converged": 18,
+  "optimization_iterations": 2000,
+  "embedding_prune_A": 0.1,
+  "post_optimization_heavy_rmsd_A": 0.15,
+  "proposed_manifest": "manifest.csv",
+  "proposed_manifest_sha256": "b22e2a5fc9594c2443f7ecbdd2d38c2f9abeda8ad720f4ed4dffc42e61e229d0",
+  "manifest_scope": "Separate method-control input only; not merged into the project library or synthesis candidate registry.",
+  "selected": 10,
+  "requested_selected": 10,
+  "entries": [
+    {
+      "rank": 1,
+      "conformer_id": 15,
+      "path": "conformers/conf_001.xyz",
+      "sha256": "4b9bcf53b28155b5f83451e43b5710bb55ad4bf63b43d8cbd8bc4b1216af11a3",
+      "mmff_energy_kcal_mol": 121.3333844627458,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 2,
+      "conformer_id": 14,
+      "path": "conformers/conf_002.xyz",
+      "sha256": "840deec9cb2660aaaebf30bf6c53533f2fb2c7029a31681262fd444cba4c8e2f",
+      "mmff_energy_kcal_mol": 121.37736063422753,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 3,
+      "conformer_id": 1,
+      "path": "conformers/conf_003.xyz",
+      "sha256": "529ea9266e56de7429cfbd8207954e0bf6b82d5dc5024c7cd054b0872ba95caa",
+      "mmff_energy_kcal_mol": 121.37743878081626,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 4,
+      "conformer_id": 7,
+      "path": "conformers/conf_004.xyz",
+      "sha256": "8210f2f7ea7b7adfd38a0962c97b4ee2dd6d4afde82b646005d4cfa10d618955",
+      "mmff_energy_kcal_mol": 121.40809183717266,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 5,
+      "conformer_id": 2,
+      "path": "conformers/conf_005.xyz",
+      "sha256": "0b120a2fac5eed6859a2a53cb6e16b9dff0f589958220a64b5cabd3c69dca3c7",
+      "mmff_energy_kcal_mol": 121.40809248810578,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 6,
+      "conformer_id": 9,
+      "path": "conformers/conf_006.xyz",
+      "sha256": "915ecd8912751e95cdb090efb31f6b4ac931347d76d65e3e0037e37192f461f3",
+      "mmff_energy_kcal_mol": 121.40811806725002,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 7,
+      "conformer_id": 8,
+      "path": "conformers/conf_007.xyz",
+      "sha256": "3358f0bc5de7f5376e60c3606232b010d2199b4cc80b40eec18d11cd7410465f",
+      "mmff_energy_kcal_mol": 121.40811817643663,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 8,
+      "conformer_id": 11,
+      "path": "conformers/conf_008.xyz",
+      "sha256": "7ab70cf3298b2aa36d20c82460f08d83d5941d2fac6befb9438f62652c3a47b4",
+      "mmff_energy_kcal_mol": 121.45285753190026,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 9,
+      "conformer_id": 5,
+      "path": "conformers/conf_009.xyz",
+      "sha256": "4d121ce17338091cdd89990d6f68c9d6543c14712b71d5d18974b759b0e7183a",
+      "mmff_energy_kcal_mol": 121.45288539590257,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    },
+    {
+      "rank": 10,
+      "conformer_id": 6,
+      "path": "conformers/conf_010.xyz",
+      "sha256": "a03062a2de19672889f5e5fed3bfe8c4435fed721629c0f49929e69e05dedf74",
+      "mmff_energy_kcal_mol": 121.48281579484785,
+      "topology": "ok",
+      "stereochemistry": "not_applicable"
+    }
+  ],
+  "proposed_state_labels": [
+    {
+      "label": "neutral",
+      "charge": 0,
+      "multiplicity": 1
+    },
+    {
+      "label": "reduced_1",
+      "charge": -1,
+      "multiplicity": 2
+    },
+    {
+      "label": "reduced_2",
+      "charge": -2,
+      "multiplicity": 1
+    }
+  ],
+  "downstream": "Nitro where supported or validated V100 fallback for warm starts, then state-specific solution DFT and native thermal QC",
+  "charged_state_minima_computed": false,
+  "quantum_jobs_submitted": 0,
+  "experimental_accuracy_inferred": false,
+  "limitations": "Finite force-field seeds only; no solvent, redox potential, population or conformer convergence established."
+}

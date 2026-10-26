@@ -19,6 +19,8 @@ A subsequent [remote working-directory fix](reviews/2026-10-26/electronic_workdi
 
 A [source-checked NDI experimental challenge](validation/ndi_external_challenge_2026-10-26/README.md) records an exact free molecule and quasi-reversible MeCN peak data. Its calculated states remain pending and it is not included in the frozen benchmark metrics.
 
+The challenge now has [ten checked starting geometries](validation/ndi_external_control_seeds_2026-10-26/README.md) and a separate proposed state manifest. State-specific quantum results and integration with the execution pipeline remain pending.
+
 The [gas counterpoise control](reviews/2026-10-26/counterpoise_control/README.md) now passes an independent CPU/GPU, common-grid and auxiliary-basis review. The close phthalimide motif point is prepared; its live coordinator records whether a scientific worker has actually started. No solvent correction or experimental interaction accuracy is inferred from the small control.
 
 The [native conformer controller recovery](reviews/2026-10-26/native_inventory_recovery/README.md) preserves the four checked free energies and uses per-host GPU inventory checks that distinguish timeouts from verified availability. The recorded snapshot had no available devices; live dispatcher and inventory records show current status. This controller is not evidence of completed sampling or a converged ensemble.

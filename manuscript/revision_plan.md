@@ -24,6 +24,9 @@ An [external NDI measurement](../results/validation/ndi_external_challenge_2026-
 has been source-checked in MeCN, with an exact proposed molecular graph and
 explicit quasi-reversible peak limitations. Its states have not been computed;
 it is not in the fixed benchmark and does not yet establish NDI accuracy.
+Ten graph-checked [force-field starting geometries](../results/validation/ndi_external_control_seeds_2026-10-26/README.md)
+are prepared for the exact source molecule; the state-specific calculations and
+execution adapter remain pending.
 
 The broader-conformer continuation now has declared refinement coverage for all
 240 separated starts across twelve graph/configuration sets. The last two
