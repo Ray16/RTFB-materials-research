@@ -7,6 +7,8 @@ The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v
 
 The [consolidated manuscript reviewer bundle](releases/manuscript_bundle_v2/README.md) gathers the source snapshot used for the current manuscript evidence and four overlapping raw-state packages. Isolated standard-library and locked NumPy replays pass after extraction; public data licensing, author metadata and DOI deposition remain open.
 
+The [relocated xTB kernel probe](validation/xtb_relocated_bundle_probe_2026-10-26/README.md) reproduces the qualified kernel values using the extracted bundle and an external xTB prefix. It uses the existing Python environment and does not qualify a full production deployment.
+
 The [gas counterpoise control](reviews/2026-10-26/counterpoise_control/README.md) now passes an independent CPU/GPU, common-grid and auxiliary-basis review. The close phthalimide motif point is prepared; its live coordinator records whether a scientific worker has actually started. No solvent correction or experimental interaction accuracy is inferred from the small control.
 
 The [native conformer controller recovery](reviews/2026-10-26/native_inventory_recovery/README.md) preserves the four checked free energies and uses per-host GPU inventory checks that distinguish timeouts from verified availability. The recorded snapshot had no available devices; live dispatcher and inventory records show current status. This controller is not evidence of completed sampling or a converged ensemble.
