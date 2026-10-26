@@ -27,3 +27,9 @@ The [complete finite PMDI cycle](../results/reviews/2026-10-25/pmdi_neighbor_cyc
 The [complete PMDI raw-cycle package](../results/releases/neighbor_cycle/README.md) now reconstructs fourteen cached states, fourteen balanced comparisons and the conditional cycle at three rotor cutoffs after extraction with original reads blocked. Its separate locked NumPy mode reconstructs thirteen molecular Hessian/nuclear partitions and monatomic translation. Fourteen integration checks and the manuscript claim checks pass. This numerical reproduction is included in the current paper/SI; public deposition and broader conformer convergence remain open.
 
 A later [explicit xTB-prefix entry point](../results/validation/xtb_prefix_binding_2026-10-26_v3/README.md) passes scoped kernel and command-line relocation checks. It does not alter the paper's qualified results; its native/projected production modes and broader deployment portability remain to be requalified.
+
+The [TEMPO exact-support case](../results/grafting/tempo_exact_support_2026-10-26/README.md)
+is included in the current article and SI. Its route passes and its computed local
+oxidation potential is source-bound, while material selection remains pending.
+The existing reviewer bundle predates this case; its newly used raw TEMPO states
+must be included in a successor package before deposition.

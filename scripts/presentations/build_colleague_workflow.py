@@ -18,7 +18,21 @@ ROOT=Path(__file__).resolve().parents[2]
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def build(evidence,work,review,dipea_evidence,dipea_uv_evidence):
+def validate_tempo(tempo_evidence):
+    tempo=json.loads(tempo_evidence.read_text())
+    if (tempo['status']!='TEMPO_exact_support_route_pass_local_potential_checked_material_pending'
+            or tempo['prospective_route_status']!='proceed' or tempo['all_axis_status']!='pending'
+            or len(tempo['pending_axes'])!=9 or tempo['actual_route_deltaG_computed']
+            or abs(tempo['modeled_oxidation_V_vs_Fc']['50']-.5787750407616841)>1e-9):
+        raise ValueError('Unqualified TEMPO route or local potential')
+    for name,expected in tempo['source_artifact_sha256'].items():
+        if sha(tempo_evidence.parent/name)!=expected:raise ValueError('Changed TEMPO evidence: '+name)
+    figure=ROOT/tempo['figure_pdf']
+    if sha(figure)!=tempo['figure_pdf_sha256']:raise ValueError('Changed TEMPO figure')
+    return tempo,figure
+
+
+def build(evidence,work,review,dipea_evidence,dipea_uv_evidence,tempo_evidence):
     if work.exists():raise FileExistsError('Use a new build directory to preserve previous logs')
     d=json.loads(evidence.read_text())
     for p,h in d['source_sha256'].items():
@@ -35,11 +49,12 @@ def build(evidence,work,review,dipea_evidence,dipea_uv_evidence):
             or uv['calibrated_full_route_prediction']):raise ValueError('Unqualified DIPEA UV source')
     for path,expected in uv['source_sha256'].items():
         if sha(path)!=expected:raise ValueError('Changed DIPEA UV evidence source: '+path)
+    tempo,tempo_figure=validate_tempo(tempo_evidence)
     m=d['benchmark']['metrics']
     values=ROOT/'slides/generated/colleague_values.tex'
     values.write_text('%% Generated from the checked discussion evidence.\n'+
         '\\newcommand{\\BenchmarkMAE}{%.3f}\n\\newcommand{\\BenchmarkRMSE}{%.3f}\n\\newcommand{\\DIPEApKa}{%.1f}\n\\newcommand{\\DIPEAUV}{%.2f}\n'%(m['MAE_V'],m['RMSE_V'],anchor['source']['reported_pKa'],uv['source']['reported_value']))
-    inputs=[evidence,dipea_evidence,dipea_uv_evidence,values,Path(__file__).resolve(),ROOT/'slides/redox_workflow.tex',
+    inputs=[evidence,dipea_evidence,dipea_uv_evidence,tempo_evidence,tempo_figure,values,Path(__file__).resolve(),ROOT/'slides/redox_workflow.tex',
         ROOT/'slides/generated/colleague_story.tex',ROOT/'slides/generated/colleague_backup.tex',
         ROOT/'results/figures/presentation/figures.json',
         ROOT/'results/figures/polymer_models/pmdi_neighbor_geometry.pdf']
@@ -95,5 +110,6 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--evidence',type=Path,required=True)
     p.add_argument('--dipea-evidence',type=Path,required=True)
     p.add_argument('--dipea-uv-evidence',type=Path,required=True)
+    p.add_argument('--tempo-evidence',type=Path,required=True)
     p.add_argument('--work',type=Path,required=True);p.add_argument('--review',type=Path,required=True);a=p.parse_args()
-    build(a.evidence.resolve(),a.work.resolve(),a.review.resolve(),a.dipea_evidence.resolve(),a.dipea_uv_evidence.resolve())
+    build(a.evidence.resolve(),a.work.resolve(),a.review.resolve(),a.dipea_evidence.resolve(),a.dipea_uv_evidence.resolve(),a.tempo_evidence.resolve())

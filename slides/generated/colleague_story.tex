@@ -145,18 +145,20 @@ Neighbor cycle & $-1.86$ kJ/mol\\\bottomrule
 \source{$\Delta\Delta G=G_{11}+G_{00}-G_{10}-G_{01}$. Native Hessians and all four state sums independently reconstructed.}
 \end{frame}
 
-\begin{frame}{Since the reviewed draft, key gaps became checked results}
-\begin{columns}[T]
-\begin{column}{.46\textwidth}
-\begin{block}{Measured benchmark}{\LARGE\bfseries39 / 39}\par\small Was 38 / 39. Bias and sensitivity analyses added.\end{block}
-\begin{block}{Exact PMDI cycle}{\LARGE\bfseries$-1.86$ kJ/mol}\par\small Four-state native cycle now complete.\end{block}
+\begin{frame}{TEMPO: a route can pass while the material decision waits}
+\begin{columns}[c]
+\begin{column}{.60\textwidth}
+\centering\includegraphics[width=\linewidth]{../results/figures/grafting/tempo_exact_route.pdf}
+\par\smallskip\small Precursor \hspace{2.4cm} local graft model
+\par\smallskip 4-O attachment on a preformed Merrifield-type support.
 \end{column}
-\begin{column}{.46\textwidth}
-\begin{block}{Spacing baseline}{\LARGE\bfseries6 / 6 selected $G$}\par\small Was 2 / 6. All 12 pose $G$ now available.\end{block}
-\begin{block}{Portable raw replay}{\LARGE\bfseries14-state addendum}\par\small Native Hessians and cycles replay after relocation.\end{block}
+\begin{column}{.36\textwidth}
+\textbf{Route screen}\par\large\color{good}Proceed\color{ink}\par\medskip
+\textbf{Local MeCN model}\par\large $+0.579$ V vs Fc/Fc$^+$\par\medskip
+\textbf{Material decision}\par\large\color{amber}Pending\color{ink}\par\small 9 required axes unresolved.
 \end{column}\end{columns}
-\takeaway{Progress is in the completeness and defensibility of the evidence. Broader conformer convergence remains the main scientific gap.}
-\source{Four distinct empty-chain geometries have checked $G$ values spanning 7.19 kJ/mol in an alternate model; the set is not converged.}
+\takeaway{A documented attachment and a computed potential are useful, but neither establishes all-axis feasibility.}
+\source{US6441243B1, Example A4: 4-hydroxy-TEMPO on Merrifield resin. Local model is not the measured bead; grafting $\Delta G$ and interactions remain uncomputed.}
 \end{frame}
 
 \begin{frame}{Next: convert molecular leaders into defensible material choices}

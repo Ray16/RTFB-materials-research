@@ -28,7 +28,9 @@ QC and implementation evidence appear only in backup.
   clarify that the four geometries are distinct under the checked comparison.
   The [latest build](../results/reviews/2026-10-26/colleague_workflow_ndi_challenge/build_check.json)
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_ndi_challenge/visual_review.json)
-  note the sourced, uncomputed NDI challenge on slide 8.
+  note the sourced, uncomputed NDI challenge on slide 8. The [current build](../results/reviews/2026-10-26/colleague_workflow_tempo_exact_support_v2/build_check.json)
+  and [visual review](../results/reviews/2026-10-26/colleague_workflow_tempo_exact_support_v2/visual_review.json)
+  replace slide 15 with the source-supported TEMPO route and pending material decision.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 
@@ -58,7 +60,8 @@ Set PYTHONPATH=src. Run the following scripts with their --help options:
 3. `scripts/presentations/build_colleague_workflow.py` with pypdf and pdflatex,
    a new build directory, the checked evidence and `--dipea-evidence` pointing
    to the checked DIPEA NMR summary, plus `--dipea-uv-evidence` pointing to
-   the checked DIPEA UV summary.
+   the checked DIPEA UV summary and `--tempo-evidence` pointing to the TEMPO
+   route and potential summary.
 4. `scripts/presentations/render_colleague_workflow.py` with Pillow and Ghostscript,
    followed by separate visual inspection.
 

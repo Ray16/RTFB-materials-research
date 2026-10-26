@@ -76,7 +76,7 @@ Cutoff / cm$^{-1}$ & MAE & RMSE & Bias\\\midrule
 \end{tabular}\end{table}
 For the 67 completed HCl-reference and 20 base-assisted reactions, the largest cutoff span is 4.46 kJ mol$^{-1}$ and no nominal reaction sign changes. At each fixed cutoff, the contribution of a specified base/byproduct model remains identical across its five candidates. Variant reaction values use the exact SI eV-to-molar-energy factor; original source-conversion arithmetic is retained without replacement. Figure~\ref{fig:rotor-sensitivity} displays these ranges. Independent reconstruction from the full archived state sums checks 117 potential evaluations and 261 reaction sums. This analysis does not test missing conformers, ion speciation, electronic-structure accuracy or attachment selectivity.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/thermal_cutoff.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/thermal_cutoff.pdf}
 \caption{Nuclear rotor-cutoff sensitivity at fixed geometry and electronic structure. Panel a: potential shifts relative to 50 cm$^{-1}$, ordered by decreasing range over the three cutoffs; the dashed line denotes the primary convention. Panel b: 67 HCl-reference and ten DBU/ten DIPEA reaction-model ranges; horizontal marks are medians. Shared components make reaction values correlated. The ranges are settings scenarios, not confidence or candidate prediction intervals.}
 \label{fig:rotor-sensitivity}
 \end{figure}
@@ -104,6 +104,16 @@ PMDI-ethyl & -1.076 & -1.977 & -0.29 & -103.07 & Hold\\
 NDI-ethyl & -0.764 & -1.418 & +10.05 & -92.73 & Hold\\\bottomrule
 \end{tabular}\end{table}
 Favorable model thermodynamics therefore do not override the route gate. These records identify the missing evidence and avoid duplicate full-redox jobs, and link PMDI enumeration through molecular, route and finite occupancy calculations. They do not establish material eligibility or a converged polymer ensemble.
+
+\subsection{Source-supported TEMPO attachment and local oxidation model}
+The 4-hydroxy-TEMPO precursor is attached through its hydroxyl oxygen to the benzyl site in the local model (Figure~\ref{fig:tempo-route}). The source reports this attachment to preformed Merrifield resin with NaH in DMF or THF and a washed-product N-oxyl content of 0.9 mmol g$^{-1}$.\cite{sommerlade2002tempo} The reported starting chloride density is referenced to the starting resin mass, so the two values do not directly determine conversion. The overall sodium-hydride stoichiometry is atom- and charge-balanced, with one nitroxide radical on each side; ion pairing and reaction free energy are not calculated.
+
+For the exact local graft, the nitroxide/oxoammonium potential relative to the matched computed Fc/Fc$^+$ reference is $+0.576$, $+0.579$ and $+0.579$ V for rotor cutoffs of 25, 50 and 100 cm$^{-1}$, respectively. The active solution electronic energies and four native thermal partitions were independently reconstructed. This is not an experimental potential for the graft, and the source reports catalytic use rather than battery cycling. Route evidence permits further evaluation; missing operating criteria, actual-condition grafting thermodynamics, intersite interactions and accessibility keep the material decision pending.
+\begin{figure}[htbp]\centering
+\includegraphics[width=0.92\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/tempo_exact_route.pdf}
+\caption{4-Hydroxy-TEMPO and the capped local graft-site model. Highlighting identifies the precursor oxygen and the new oxygen--benzyl carbon bond. The drawing is a local molecular model, not a whole resin bead.}
+\label{fig:tempo-route}\end{figure}
+
 \subsection{Composition bounds and exact occupancy inputs}
 For neutral N--H/O--H substitution, the H-capped linear-fragment mass is
 \begin{equation}
@@ -115,13 +125,13 @@ where $n$ is repeat count, $h$ is the number of original reactive handles and $g
 All eight occupancy graphs at $n=5,h=3$ reproduce the analytic masses. Positional isomers with the same graft count have the same composition ceiling; their accessibility and interaction energies need not agree. The broader composition grid contains 21 $(h,g)$ cases with one- and two-electron assumptions. No application target is fitted to these values, and the capacity dimension remains unresolved in the decision ledger.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/pmdi_capacity.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/pmdi_capacity.pdf}
 \caption{Composition-dependent PMDI capacity ceilings. The neutral H-capped fragment has five repeats; panel (a) fixes three reactive handles and varies conversion, while panel (b) varies handle density at full conversion. One- and two-electron budgets are assumptions. Residual chlorides and scaffold mass are retained. The dotted capped-molecule descriptor excludes the polymer scaffold; none of these curves establishes accessible material capacity.}
 \label{fig:capacity}\end{figure}
 
 Three exact PMDI inputs, occupied at sites 2, 3 or both 2 and 3, contain 115, 115 and 139 atoms, respectively. They preserve the open ten-carbon backbone, two plain-styrene padding units and any residual benzyl chlorides (Figure~\ref{fig:pmdiconstruction}). Initial structures use seed 20261023, 32 distance-geometry embeddings and up to 2,000 MMFF steps; the best converged initial structure seeds each subsequent search. Connectivity, declared stereochemistry and geometry sanity are checked before calculation. Starting-structure and search records alone do not establish occupancy thermodynamics; each resulting state requires separate active-energy and native-Hessian qualification. The common empty reference has the same exact graph and configuration as the phthalimide empty control; no occupied phthalimide energy is substituted for a PMDI energy.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/pmdi_construction.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/pmdi_construction.pdf}
 \caption{Exact PMDI-ethyl occupancy inputs. Blue highlights the open backbone and purple the diimide cores. Panels show the empty chain, site 2 and sites 2/3; the separate site-3 reference is also prepared. Numbers label repeats. These two-dimensional drawings preserve connectivity and declared stereochemistry, not optimized spatial contact.}
 \label{fig:pmdiconstruction}\end{figure}
 
@@ -161,7 +171,7 @@ At the primary setting, DBU/separated-ion attachment at site 2 is $-97.72$ \kj\ 
 
 The accepted paired geometry has core centroids 16.30~\AA\ apart and a 69.0$^\circ$ interplane angle (Figure~\ref{fig:pmdineighborgeometry}). The finite result includes backbone, conformational and solvent response; it is not an estimate of intrinsic close-contact core binding or electronic coupling. No loading distribution, atactic ensemble or preferred experimental graft site is inferred.
 \begin{figure}[htbp]\centering
-\includegraphics[width=.95\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/pmdi_neighbor_geometry.pdf}
+\includegraphics[width=.95\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/pmdi_neighbor_geometry.pdf}
 \caption{Actual paired PMDI minimum used in the matched cycle. A proper rotation makes both conjugated cores visible while preserving the saved XYZ coordinates. Blue highlights the open backbone; numbers mark repeats 2 and 3. Orange and magenta mark the PMDI cores, and green marks the remaining chloride at reactive site 4. Repeats 1 and 5 are plain-styrene padding. Hydrogens are omitted and bond lines follow the checked covalent graph. The dashed line joins core centroids; the stated distance is three-dimensional.}
 \label{fig:pmdineighborgeometry}\end{figure}
 
@@ -175,13 +185,13 @@ With pKa(HCl)=10.30, the 18.64 value instead implies $-47.60$ \kj\ for the separ
 Twenty-six of the original twenty-seven electronic oligomer cases currently pass geometry and active-energy checks. The open PMDI trimer has recovered and passed independent force checks. The stacked-start PMDI trimer returned optimizer convergence and saved active energies, but a later GPU-library call terminated abnormally. Separate final-force checks disagree with finite energy differences and remain unresolved, including a subsequent finer-step diagnostic. This case stays outside completed comparisons; no minimum or free energy is inferred from optimizer convergence alone. Construction and XYZ audits verify the intended open-chain topology. A trimer contains six backbone carbons, five backbone C--C bonds and two chain ends, rather than a triangular or cyclic backbone (Figure~\ref{fig:construction}). Proximity of pendant rings does not change that covalent connectivity.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/construction.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/construction.pdf}
 \caption{Exact finite-polymer construction used in the interaction controls. The highlighted open backbone distinguishes covalent connectivity from spatial contacts among pendant groups. Monomer, dimer and trimer models are dense local scenarios and do not represent an experimentally measured sequence or graft-loading distribution.}
 \label{fig:construction}
 \end{figure}
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/spacing_construction.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/spacing_construction.pdf}
 \caption{Exact five-repeat phthalimide graphs used in the occupancy cycles. Blue highlights the open ten-carbon backbone. Sites 1 and 5 are plain styrene padding; unoccupied reactive sites retain benzyl chloride. Numbers label repeat positions, and stereobonds retain the declared configuration. These are connectivity drawings, not sampled spatial conformations. Single-occupancy reference graphs are included in the evidence.}
 \label{fig:spacingconstruction}\end{figure}
 For the six-graph spacing control, all twelve electronic conformers qualify. The selected electronic nonadditivities are $-10.98$ and $-14.50$ \kj\ for adjacent and one-spacer grafts, respectively. These refer to a matched empty-backbone minimum within the declared, limited sampling set. It demonstrates why a matched empty-backbone reference is necessary; it does not establish a universal distance trend.
@@ -199,7 +209,7 @@ The primary adjacent and one-spacer finite-set $\Delta\Delta G$ values are $-5.1
 For DBU and separated ions, the finite-partition free energy of grafting onto an empty backbone is $-110.86$ \kj\ at site 3 and $-103.37$ \kj\ at site 4. With site 2 already grafted, the values become $-116.02$ and $-114.76$ \kj. The contact-pair alternatives are $-115.65$ to $-120.82$ \kj\ for site 3 and $-108.17$ to $-119.56$ \kj\ for site 4. Both attachment orders close the same nonadditivity cycle. The base/byproduct contribution cancels from this conditional difference, as does the common empty-chain term when comparing the two spacing cycles. Conformer response in the occupied graphs remains relevant. More favorable subsequent attachment is not automatically desirable when weak unwanted neighboring-site interaction is the objective.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/finite_ensemble.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/finite_ensemble.pdf}
 \caption{Finite-set phthalimide occupancy control in MeCN at 298.15 K. Panel (a) distinguishes lowest sampled electronic-energy cycles from two-pose free-energy partitions; whiskers vary only the rotor cutoff. Panel (b) shows the configurational lowering within each known two-pose set. Twelve native records pass their checks, but these two-pose sets do not establish converged conformer ensembles or a general spacing trend.}
 \label{fig:conditional}
 \end{figure}
@@ -208,7 +218,7 @@ The finite conformer sets do not establish convergence with respect to broader s
 The intact-segment decomposition is complete for three sampled pairs using six frozen-fragment single-point calculations (Figure~\ref{fig:decomposition}). Its partition separates interactions at the complex geometry from deformation relative to relaxed fragments. The interaction energies are $-55.25$, $-44.30$ and $-50.87$ \kj, with deformation terms $+0.56$, $+0.49$ and $+0.38$ \kj, respectively. A saved-coordinate audit shows 57--93 optimization steps and heavy-atom input-to-final RMSDs of 0.25--0.70 \AA\ for the complexes, so small deformation sums do not imply negligible structural relaxation. Two totals also contain cancellation: the parallel phthalimide fragments contribute $-0.68$ and $+1.24$ \kj, and the PMDI fragments contribute $+1.00$ and $-0.62$ \kj. These signed differences refer to one sampled independently optimized monomer at a distinct geometry level; they are not positive-definite strain penalties. Global isolated-monomer minima and Hessian minima are unestablished. The resulting quantities remain electronic, uncorrected for basis-set superposition error and inclusive of backbone and cap contributions. No electron-transfer rate follows from their magnitude.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/decomposition.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/decomposition.pdf}
 \caption{Electronic interaction/deformation partition for three intact segment pairs. Frozen fragments retain the complex geometry without bond cutting or new caps. The partition closes the association-energy cycle but is not a pure pendant-core interaction, a counterpoise-corrected energy or an association free energy.}
 \label{fig:decomposition}
 \end{figure}
@@ -235,7 +245,7 @@ Ammonia & $1.98\times10^{-7}$ & 0.0003 & 1127.5\\
 Chloromethyl radical & $1.32\times10^{-7}$ & 0.2793 & 190.3\\
 \bottomrule\end{tabular}\end{table}
 \begin{figure}[htbp]\centering
-\includegraphics[width=.58\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/CDS_surface_smoothness.pdf}
+\includegraphics[width=.58\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/CDS_surface_smoothness.pdf}
 \caption{Radial finite-difference curvature of the CDS component at the tested carbon contact. The legacy estimate does not converge as the displacement shrinks, whereas the separate smooth control approaches a plateau. No full electronic Hessian or thermochemical result is inferred from this component scan.}
 \label{fig:cdssmooth}\end{figure}
 
@@ -248,7 +258,7 @@ A seeded randomized concurrency experiment executes the same 837 exact designs f
 A separate sparse Git checkout and newly installed Python 3.11 CPU environment reproduce the declared 32-recipe / 17-design example with system and user site packages disabled. The project loads from that checkout and scientific dependencies load from the new environment. Serial descriptor replay, exact-route holds and the regenerated conditional-grafting table all match; rendered RGB pixels of the figure are identical. This qualifies a small CPU reproduction using curated scientific data. It does not recompute the underlying quantum energies or qualify the complete CUDA environment.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_dipea_uv/cpu_concurrency.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-26_tempo_exact_support/cpu_concurrency.pdf}
 \caption{Measured CPU descriptor concurrency for the same 837 exact designs. Three randomized repeats per condition retain every result. Ranges are observed minima and maxima, not confidence intervals. Launch, preflight and scorer overhead are included; preparation is separate. Requested workers and workers executing at least one chunk are distinct. This shared-node, small-library experiment does not measure million-molecule chemistry or quantum throughput.}
 \label{fig:concurrency}
 \end{figure}

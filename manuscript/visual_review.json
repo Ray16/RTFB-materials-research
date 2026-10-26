@@ -1,10 +1,10 @@
 {
   "status": "assistant_rendered_visual_review_checked",
-  "checked_UTC": "2026-10-26T21:06:49Z",
+  "checked_UTC": "2026-10-26T23:17:25Z",
   "reviewer": "Codex assistant",
   "documents": {
     "manuscript": {
-      "pdf_sha256": "73389d56975cd8148954286ccd62a5a831dc42f067d2613c933bee49feeba5d3",
+      "pdf_sha256": "017a56ae7cf8a73d51d621c57d8754de210402114713139ec59cd6046e29df19",
       "pages_reviewed": [
         1,
         2,
@@ -24,10 +24,14 @@
         16,
         17,
         18
+      ],
+      "detail_pages": [
+        7,
+        14
       ]
     },
     "supporting_information": {
-      "pdf_sha256": "6207555cca4c793abfcfb2fc6e2de95d23eb5785f3b08ab41c53de3323041842",
+      "pdf_sha256": "f90641942406df9950a9c072445a4a9d1eccb4bce42aee0dd1e4de831bd378c6",
       "pages_reviewed": [
         1,
         2,
@@ -48,19 +52,14 @@
         17,
         18,
         19
+      ],
+      "detail_pages": [
+        4,
+        5
       ]
     }
   },
-  "method": "Reviewed full-document contact sheets and enlarged source comparison, page breaks and bibliographic pages.",
-  "rendered_images": {
-    "calcs/validation/2026-10-26_dipea_uv_visual/manuscript_contact.png": "4a32fdad3dba49bd86a0a870279a35ff12021ff7fed9a323006f58a3e19dc533",
-    "calcs/validation/2026-10-26_dipea_uv_visual/supporting_information_contact.png": "cd6a2fe7013c83bf80fb07c61b08c0187ef905346b4502a015335ca22df7efc8",
-    "calcs/validation/2026-10-26_dipea_uv_visual/manuscript_09.png": "ab83710a682642029751395b5d887232eed0ad6231a86b4eae640570d15b4924",
-    "calcs/validation/2026-10-26_dipea_uv_visual/manuscript_17.png": "3d45387859ff2854c72395e40cadbe04e93d5e919c458b6dcb52789d08eaab81",
-    "calcs/validation/2026-10-26_dipea_uv_visual/supporting_information_08.png": "2bf01cd148cd3dc48f92b4a49a819cc40382e692e87a82cc058832d9f64cde6a",
-    "calcs/validation/2026-10-26_dipea_uv_visual/supporting_information_09.png": "a0db332ec238dd6428904e026fce835c6b124bffe955f48c531eb5f97e0cb0a9",
-    "calcs/validation/2026-10-26_dipea_uv_visual/supporting_information_19.png": "be6281941b35638618dc6454010c13adbe87cb956488c302c4b6fd707d13c911"
-  },
-  "issues": [],
-  "scope": "Page layout, clipping, caption flow and legibility; human collaborator and journal review remain outstanding."
+  "method": "Ghostscript 40 dpi full-document montages and 100 dpi detailed changed pages; final rebuild text compared to previously reviewed render",
+  "findings": "No clipping, overlaps, missing figures, or obvious pagination errors; final data-availability paragraph inspected.",
+  "scope": "Visual layout check, not an independent scientific or author review."
 }

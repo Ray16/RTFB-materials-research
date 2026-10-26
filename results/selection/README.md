@@ -4,6 +4,11 @@ Use [current.json](current.json) for the current publication, its immutable inpu
 snapshot and machine-readable decision/front records. The
 [selection specification](../../docs/ALL_AXES_SELECTION.md) defines the rule.
 
+The later [TEMPO exact-case assessment](../grafting/tempo_exact_support_2026-10-26/README.md)
+uses the same conjunctive policy but is not part of the frozen 879-graph ledger.
+Its route passes and its overall material decision remains pending. The source
+registry used by the historical ledger is preserved in the linked reconciliation.
+
 | Output | Scope |
 | --- | --- |
 | [Descriptor Pareto figure](../figures/selection/descriptor_pareto.pdf) | 56 qualified-for-display molecular models; eight members of the joint E1/E2/nominal-capacity descriptor set |

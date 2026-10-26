@@ -40,6 +40,13 @@ The AQ paper reports reversible charge storage in its attached quinone system;
 this supports investigating that linker, without establishing our potentials or
 long-term operation in the proposed bead-based flow battery.
 
+For the existing TEMPO local graft, [US6441243B1, Example A4](https://patents.google.com/patent/US6441243B1/en)
+reports attachment of 4-hydroxy-TEMPO to Merrifield resin using NaH in DMF or
+THF, with N-oxyl content reported for the washed product. The [exact route and
+material assessment](../results/grafting/tempo_exact_support_2026-10-26/README.md)
+permits further evaluation, while reaction free energy, bead-specific loading,
+electrochemical cycling and neighboring-motif interactions remain unresolved.
+
 An exact precursor-access update on 23 October identified mono-N-ethyl/NH PMDI
 in [EP0010440B1, Example 19](https://patents.google.com/patent/EP0010440B1/en).
 The [identity review](../results/reviews/2026-10-23/pmdi_precursor_access/summary.json)

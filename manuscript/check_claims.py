@@ -697,6 +697,43 @@ def audit_decision_followup(load):
                 all_axis_status_counts=summary["decisions"], signed_deformation_pairs=len(deformation["pairs"]))
 
 
+def audit_tempo_exact_support(load):
+    try:
+        route=load('tempo_route.json')
+    except FileNotFoundError:
+        return None
+    screen=load('tempo_route_screen.json');native=load('tempo_native_potential.json')
+    decision=load('tempo_decision.json');summary=load('tempo_summary.json')
+    if (route['candidate']['id']!='tempo' or screen['candidates'][0]['route_status']!='proceed'
+            or screen['candidates'][0]['evidence']!=route['evidence']
+            or not all(route['NaH_overall'][key] for key in ('atom_balanced','charge_balanced','radical_electrons_balanced'))
+            or route['NaH_overall']['radical_electrons']!=1
+            or native['product_smiles']!=route['candidate']['product_smiles']
+            or native['experimental_exact_graft_potential_claimed']
+            or native['free_energy_of_grafting_computed'] or native['all_axis_eligibility']):
+        raise ValueError('TEMPO route, identity or scientific scope differs')
+    states=native['states'];expected={'tempo__rad':(0,2),'tempo__ox':(1,1),'ferrocene__neu':(0,1),'ferrocene__ox':(1,2)}
+    if set(states)!=set(expected):raise ValueError('TEMPO/Fc state coverage differs')
+    for key,(charge,mult) in expected.items():
+        s=states[key]
+        if (s['charge'],s['multiplicity'])!=(charge,mult) or abs(s['G_eV']-s['active_E_smd_eV']-s['native_thermal_eV'])>1e-8:
+            raise ValueError('TEMPO state free-energy reconstruction differs')
+    values={}
+    for cutoff in ('25','50','100'):
+        values[cutoff]=math.fsum((states['tempo__ox']['G_by_cutoff_eV'][cutoff],
+            -states['tempo__rad']['G_by_cutoff_eV'][cutoff],-states['ferrocene__ox']['G_by_cutoff_eV'][cutoff],
+            states['ferrocene__neu']['G_by_cutoff_eV'][cutoff]))
+        if abs(values[cutoff]-native['potential_V_vs_Fc_by_rotor_cutoff'][cutoff])>1e-9:
+            raise ValueError('TEMPO/Fc potential arithmetic differs')
+    result=decision['decision']
+    if (result['status']!='pending' or result['all_required_axes_pass'] or len(result['pending_axes'])!=9
+            or next(a for a in result['axes'] if a['axis']=='attachment_route')['status']!='pass'
+            or summary['actual_route_deltaG_computed'] or summary['exact_graft_experimental_potential_known']):
+        raise ValueError('TEMPO all-axis decision or uncertainty scope differs')
+    return dict(route='proceed',potential_V_vs_Fc_by_cutoff=values,material_decision='pending',
+                pending_axes=len(result['pending_axes']),new_quantum_jobs=0)
+
+
 def audit():
     root = Path(__file__).resolve().parents[1]
     pointer = json.loads((root / "manuscript/evidence/current.json").read_text())
@@ -981,6 +1018,7 @@ def audit():
                 neighbor_cycle=neighbor,
                 control_addendum=controls_addendum,
                 neighbor_archive=neighbor_archive,
+                tempo_exact_support=audit_tempo_exact_support(load),
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

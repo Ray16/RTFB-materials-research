@@ -24,3 +24,7 @@ This one proposal does not complete the predeclared shielding-by-linker matrix,
 and is not a material shortlist. No experimentally measured conversion or
 candidate performance is inferred from the graph or the literature precedent.
 The pre-mapping prototype is retained as `candidates.json` for traceability.
+
+The route registry has since been extended with TEMPO. This snapshot's original
+registry hash is preserved and reconciled in the [append-only registry audit](../../grafting/tempo_exact_support_2026-10-26/registry_reconciliation.json);
+the AQ entry itself is unchanged.

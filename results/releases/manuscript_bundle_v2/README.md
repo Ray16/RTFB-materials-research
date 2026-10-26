@@ -9,6 +9,10 @@ projected-thermal certificate to the earlier source and four overlapping raw-sta
 packages. The candidate manifest and certificate dependencies were checked after
 extraction. The earlier bundle remains available as a historical snapshot.
 
+This bundle predates the [TEMPO exact-support assessment](../../grafting/tempo_exact_support_2026-10-26/README.md)
+and does not contain the newly used TEMPO local-graft state records. A successor
+raw-state package is needed for the current manuscript before deposition.
+
 The archive was extracted outside the original checkout. Standard-library replays
 of five stages passed with reads from the original project blocked. In an isolated
 NumPy 2.2.6 environment, 13 neighbor Hessian mode sets and the monatomic partition,

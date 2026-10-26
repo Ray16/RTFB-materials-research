@@ -17,6 +17,12 @@ polymer attachment precedent, an exact precursor/product graph and a mapped bond
 its route is held and it has no new redox calculations. It is not assigned to a
 shielding/linker comparison slot until a matched panel is defined and reviewed.
 
+An existing oxidation-active [TEMPO local graft](../results/grafting/tempo_exact_support_2026-10-26/README.md)
+now has an exact-support attachment precedent and a checked local-model
+oxidation potential. Its route screen passes, but its material decision remains
+pending. It is reused historical chemistry, not a newly enumerated product or a
+completed shielding/linker matrix.
+
 | Component | Design question | Planned coverage |
 | --- | --- | --- |
 | Core breadth | Does the route-aware screen behave consistently across different redox chemistry? | Viologen, PMDI, NDI, BQ, AQ, phenothiazine and TEMPO |

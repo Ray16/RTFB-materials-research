@@ -5,11 +5,13 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 
 The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v3/README.md) passes scoped kernel and CLI checks in the original and restored environments while retaining the qualified hashes. Full native/projected production requalification and broader path portability remain open.
 
-The [consolidated manuscript reviewer bundle](releases/manuscript_bundle_v2/README.md) gathers the source snapshot used for the current manuscript evidence and four overlapping raw-state packages. Isolated standard-library and locked NumPy replays pass after extraction; public data licensing, author metadata and DOI deposition remain open.
+The [consolidated reviewer bundle](releases/manuscript_bundle_v2/README.md) gathers the prior manuscript source snapshot and four overlapping raw-state packages. It does not yet include the newly reported TEMPO local-graft states. Isolated standard-library and locked NumPy replays pass after extraction; an updated raw-state bundle, public data licensing, author metadata and DOI deposition remain open.
 
 The [relocated xTB kernel probe](validation/xtb_relocated_bundle_probe_2026-10-26/README.md) reproduces the qualified kernel values using the extracted bundle and an external xTB prefix. It uses the existing Python environment and does not qualify a full production deployment.
 
 An [anthraquinone carboxylate graft proposal](discovery/aq_carboxylate_2026-10-26/README.md) adds a source-linked exact precursor and mapped local product. Its route is held and its redox properties remain uncomputed.
+
+The existing [TEMPO local graft](grafting/tempo_exact_support_2026-10-26/README.md) has a reported Merrifield-resin attachment precedent and an independently reconstructed local-model oxidation potential. Its route passes the prospective screen, but the material decision remains pending on nine axes.
 
 The [empty-chain finite-set analysis](validation/empty_chain_finite_set_2026-10-26/README.md) compares four checked geometries and free energies within one alternate solvent model and backbone configuration. It is not a converged ensemble or a grafting-cycle result.
 

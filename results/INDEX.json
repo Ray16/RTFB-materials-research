@@ -901,8 +901,8 @@
       "raw_root": "calcs/releases/2026-10-26_manuscript_review_bundle_v2",
       "archive": "calcs/releases/2026-10-26_manuscript_review_bundle_v2.tar.zst",
       "replay": "results/releases/manuscript_bundle_v2/stdlib_replay.json",
-      "status": "v2_source_closure_and_isolated_replays_checked_public_deposition_pending",
-      "scope": "Current source/evidence plus four overlapping raw-state archives; no physical-QC rerun or conformer convergence",
+      "status": "prior_epoch_replays_checked_new_TEMPO_state_addendum_pending",
+      "scope": "Prior source/evidence plus four overlapping raw-state archives; newer TEMPO local-graft states not yet included",
       "previous": "results/releases/manuscript_bundle/current.json"
     },
     "xtb_prefix_binding": {
@@ -982,6 +982,15 @@
       "scope": "Exact source-matched free molecule; isolated UMA input, parity and DFT pending",
       "pilot_status": "results/validation/ndi_external_uma_2026-10-26_v2/pilot_dispatch_v3/status.json",
       "pilot_review": "results/reviews/2026-10-26/nitro_pair_independent_observer/summary.json"
+    },
+    "tempo_exact_support": {
+      "guide": "results/grafting/tempo_exact_support_2026-10-26/README.md",
+      "current": "results/grafting/tempo_exact_support_2026-10-26/summary.json",
+      "source_snapshot": "manuscript/evidence/2026-10-26_tempo_exact_support/manifest.json",
+      "raw_root": "calcs/literature/2026-10-26_tempo_route",
+      "figure": "results/figures/grafting/tempo_exact_route.pdf",
+      "status": "route_pass_local_potential_checked_material_pending",
+      "scope": "Existing exact local graft; NaH source precedent and one MeCN model potential, no grafting free energy or intersite interaction"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

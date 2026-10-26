@@ -6,6 +6,11 @@ For demonstrated attachment routes, experimental conditions, evidence limits
 and requirements for future molecule design, see
 [practical grafting](../../docs/PRACTICAL_GRAFTING.md).
 
+The existing [TEMPO local graft](tempo_exact_support_2026-10-26/README.md) has a
+source-supported Merrifield attachment and a checked local-model oxidation
+potential. The route screen permits further evaluation; its NaH-route free
+energy and full material decision remain unresolved.
+
 The completed [DBU/DIPEA pilot](base_assisted/index.html) evaluates base-assisted
 thermodynamic corrections and chloride ion-pair sensitivity. All six new components
 passed QC, supplying corrected values for five of six selected candidates.
