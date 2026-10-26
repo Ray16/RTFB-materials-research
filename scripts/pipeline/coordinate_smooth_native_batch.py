@@ -30,6 +30,10 @@ def cpu_preflight(helper, batch, host, profile):
     old = "helper = ROOT.parent / '.codex-personal/skills/lambda-fleet/scripts/preflight_node.py'"
     if body.count(old) != 1: raise ValueError('CPU-only dependency template changed')
     body = body.replace(old, "helper = ROOT / 'scripts/fleet/preflight_cpu_dependencies.py'", 1)
+    if body.count("'65536'") != 1:raise ValueError('Native RAM preflight template changed')
+    body = body.replace("'65536'", "str(int((json.loads((batch/'batch.json').read_text())['maximum_RSS_GiB']+32)*1024))", 1)
+    body = body.replace("if path.exists() and time.time() - path.stat().st_mtime < 600:",
+        "if path.exists() and time.time() - path.stat().st_mtime < 600 and json.loads(path.read_text()).get('ok'):", 1)
     scope = {}; exec(compile(body, str(SCRIPT), 'exec'), dict(vars(helper)), scope)
     return scope['preflight'](batch, host, profile)
 
@@ -42,6 +46,12 @@ def native_placement(profile):
     if body.count(old) != 1 or body.count(anchor) != 1:
         raise ValueError('Deferred native placement template changed')
     body = body.replace(old, "manifest.get('stage') == 'native'", 1)
+    capacity = "        capacity = host_capacity(2, minimum_ram_gib=bound + 32)"
+    if body.count(capacity) != 1:raise ValueError('Native host-capacity template changed')
+    body = body.replace(capacity, """        try:
+            capacity = host_capacity(2, minimum_ram_gib=bound + 32)
+        except RuntimeError as error:
+            return dict(status='resource_capacity_unavailable', host=host, reason=str(error))""", 1)
     inserted = """        if plan.get('runtime_profile') != str(_PROFILE):
             raise ValueError('Unexpected native runtime profile')
         argv.insert(argv.index('env')+1, 'LD_LIBRARY_PATH='+_profile['library_path'])

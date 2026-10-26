@@ -16,8 +16,8 @@ hashes, distinct raw namespaces and ten occupied-class resource reviews.
 [Independent review of the additional geometries](../remaining_occupied_geometry/status.json)
 keeps failed or unfinished calculations outside accepted results.
 
-Separate [single-graft](../../../polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single/batch.json)
-and [double-graft](../../../polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair/batch.json)
+Separate [single-graft](../../../polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single_capacity/batch.json)
+and [double-graft](../../../polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair_capacity/batch.json)
 hybrid-energy pilots measure their own resource requirements. Their prospective
 256-GiB host ceiling is a bound, not measured resource evidence. They use the
 same independently checked exact geometry for gas and MeCN calculations; no
@@ -35,8 +35,8 @@ The existing reference may be reused only for the identical geometry; the other
 39 states require new Hessians and native free energies. Electronic RAM-recovery
 options remain attached to the same exact geometry.
 
-The new native driver and dependency/resource checks pass 34 focused tests;
-the [test report](native_dependency_tests.xml) records the cases. Negative cases
+The new native driver and dependency/resource checks pass 38 focused tests;
+the [test report](native_capacity_tests.xml) records the cases. Negative cases
 include NaN/infinite or inconsistent free energies, a mismatched model, state,
 basis, runtime or parent geometry, incomplete electronic review, resource-bound
 violations and inappropriate promotion to primary results. This is separate from
@@ -48,6 +48,27 @@ each plan. Launch/CPU-affinity recovery records are under
 inherited the launcher's narrow affinity and were rejected before any scientific
 attempt; separate attempts corrected the startup mask so every child allocates
 its own CPU slot. Original logs and ownership records remain intact.
+
+The occupied energy placement also exposed a RAM-preflight mismatch before any
+scientific attempt: the dependency probe required 64 GiB, although these pilots
+require their 256-GiB ceiling plus 32 GiB headroom. The 128-GiB node therefore
+rejected placement before an attempt directory or worker existed. All four
+intended hosts were inspected; only the declared read-only observer matched.
+[The recovery](occupied_capacity_recovery.json) preserves the original dispatch
+and intent records, applies the actual bound during CPU preflight, and treats a
+late capacity shortage as contention before spawning. The native continuation
+uses its own 80+32 GiB requirement. Only its CPU controller was replaced; the
+live native quantum worker and every physical input remain unchanged.
+
+The same placement adapter now serves the empty-chain electronic stages.
+[Five unstarted cases](empty_energy_capacity_recovery.json) were inspected on all
+four submission hosts before their intent records were archived and reopened.
+The two 80-GiB cases' earlier RPC cause remains unattributed; no attempt directory,
+scientific stage, GPU guard or matching producer existed. The three 128-GiB RAM
+experiments also require more memory than the 128-GiB node can supply with
+headroom. Thirty-five checked electronic records and the three original
+80-GiB scientific failures remain intact. Only the verified CPU controllers were
+replaced; each physical worker and exact-coordinate energy input is unchanged.
 
 All these stages use the separately identified smooth-surface MeCN model. They
 cannot replace primary-model PMDI or phthalimide records. Broader ensemble

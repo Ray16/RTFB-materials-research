@@ -1,10 +1,10 @@
 {
   "status": "source_bound_progress_snapshot_not_scientific_completion",
-  "checked": 1792976017.1325686,
+  "checked": 1792977241.1171014,
   "sources": [
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/dispatch.json",
-      "sha256": "dbb814f43756da14f35d5cba2e2e2a2d50320480e7230028fd6c04e2f5a55e6f",
+      "sha256": "72a838788383366b05075ba7bab883186a175127da135ca800c5326ca6ba2d03",
       "observed": {
         "status": "alternate_electronic_batch_in_progress",
         "owner": {
@@ -33,7 +33,7 @@
         ],
         "native_G_computed": false,
         "primary_candidate_admission": false,
-        "updated": 1792975951.0643857,
+        "updated": 1792977160.8437624,
         "entries": [
           {
             "key": "all_same__occ_none__conf001",
@@ -389,16 +389,16 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery/dispatch.json",
-      "sha256": "e3bda57c38ed520af21acf0c32bb6f1d419fb606f14d785709455017df4b5fa3",
+      "sha256": "ad2843662179d2faa06897656bb406212f0d75d5718df71d8c85b5dcbfe2d315",
       "observed": {
         "status": "alternate_electronic_batch_in_progress",
         "owner": {
           "host": "lambda2",
-          "pid": 3902265,
-          "process_start": "1377197359"
+          "pid": 587983,
+          "process_start": "1377782440"
         },
-        "started": 1792971354.190381,
-        "deadline": 1793057754.1903813,
+        "started": 1792977204.730675,
+        "deadline": 1793063604.7306752,
         "source_sha256": {
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_RAM_recovery.py": "833a6d6aaa0360031a48a10e0bce840e689718385b908c20e8bd0c8c6a250d89",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_electronic_batch.py": "ff9dfa3c5f6d7ed4b73fd194e5c6dc56120cb080eae94f0927dda9090b11f54d",
@@ -409,24 +409,25 @@
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_energy_point80_followup/checked/2026-10-25_smooth_energy_point80__all_same__occ_none__conf001.json": "bc3b4cd1a34b70cbd506ca434763e7e340caf9fa470c2145aff61f4b351cc8e2",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_capacity_preflight.py": "4577aeba33ecc1c159a0f2f887978b761b9973f8f0bf8b9393e233a4d71436b4",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery/batch.json": "a50a3bdd6f6fd204d7197bfe41abe002949a5f18ad84b94af0aa9e7ec975f8e6"
         },
         "CPU_affinity": [
-          12
+          39
         ],
         "native_G_computed": false,
         "primary_candidate_admission": false,
-        "updated": 1792976002.6178975,
+        "updated": 1792977230.267719,
         "entries": [
           {
             "key": "alternating__occ_none__conf010",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery/alternating__occ_none__conf010",
-            "status": "submission_ownership_unverified_preserved"
+            "status": "pending"
           },
           {
             "key": "alternating__occ_none__conf012",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery/alternating__occ_none__conf012",
-            "status": "submission_ownership_unverified_preserved"
+            "status": "pending"
           }
         ],
         "checked_electronic": 0,
@@ -437,16 +438,16 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery_extra/dispatch.json",
-      "sha256": "b641178fe97fccee799219f1107dfa5a4260748ac5b4f120682c8b8eb6df427f",
+      "sha256": "d9b8c95fe838546ff153039e60a81486b935aacb9ef47c63693ae8e9665ed1bb",
       "observed": {
         "status": "alternate_electronic_batch_in_progress",
         "owner": {
           "host": "lambda2",
-          "pid": 4154805,
-          "process_start": "1377380787"
+          "pid": 587996,
+          "process_start": "1377782451"
         },
-        "started": 1792973188.1768115,
-        "deadline": 1793059588.176812,
+        "started": 1792977204.9027119,
+        "deadline": 1793063604.9027126,
         "source_sha256": {
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_RAM_recovery.py": "833a6d6aaa0360031a48a10e0bce840e689718385b908c20e8bd0c8c6a250d89",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_electronic_batch.py": "ff9dfa3c5f6d7ed4b73fd194e5c6dc56120cb080eae94f0927dda9090b11f54d",
@@ -457,14 +458,15 @@
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_energy_point80_followup/checked/2026-10-25_smooth_energy_point80__all_same__occ_none__conf001.json": "bc3b4cd1a34b70cbd506ca434763e7e340caf9fa470c2145aff61f4b351cc8e2",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_capacity_preflight.py": "4577aeba33ecc1c159a0f2f887978b761b9973f8f0bf8b9393e233a4d71436b4",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery_extra/batch.json": "28a59320db28f19352d3f0896194368e60840f2a6ae5761cfe0910886147fea2"
         },
         "CPU_affinity": [
-          3
+          40
         ],
         "native_G_computed": false,
         "primary_candidate_admission": false,
-        "updated": 1792976005.5036798,
+        "updated": 1792977228.881766,
         "entries": [
           {
             "key": "alternating__occ_none__conf013",
@@ -479,81 +481,21 @@
       }
     },
     {
-      "path": "results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single/dispatch.json",
-      "sha256": "da6cc82c399c60aa0a334ac89e1b7d3e127d07314d91963108be4393f8a12e16",
-      "observed": {
-        "status": "experimental_energy_pilot_waiting_for_free_capacity",
-        "owner": {
-          "host": "lambda2",
-          "pid": 262428,
-          "process_start": "1377598788"
-        },
-        "started": 1792975369.3325622,
-        "deadline": 1793061769.3325627,
-        "scientific_starts": 0,
-        "source_sha256": {
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_occupied_energy_pilot.py": "a573f6eccb844433f5502a6e1189de6c3f309f3bdad05e57cb2012e171056431",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy.py": "1d2cdf2d4b1dbebb028f0cfd0f4945e3aac4e908473787f2ed1b64ea761f10ba",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py": "fb46fe0754fd6e1e216e2673ebd426d517c3d67bdbafa65df77d26a85ab61237",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_safe.py": "2a444a8f82b0195ae8a9d9d6ad010c8ac0e12e9831485e7e49cc5b2389e65473",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_pilot.py": "22a87473276153b797171d3585a3609c8a894fb3fa22bb41a481a5ee226b1fbd",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/preflight_cpu_dependencies.py": "5c0d95d45fab639b3803ad9602d01a10aa24638abbdd9988dcf10fc5b68bcc95",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single/batch.json": "f7ecaefe1fba160f16fa153dd8142b541e57f95311de980763a9dfa0fa265b7f"
-        },
-        "CPU_affinity": [
-          32
-        ],
-        "updated": 1792975989.7820208
-      }
-    },
-    {
-      "path": "results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair/dispatch.json",
-      "sha256": "132354b40fa7cd86cdfba62042f279e2f4a10ac6a94389a49d2ef71ef3a72f8f",
-      "observed": {
-        "status": "experimental_energy_pilot_waiting_for_free_capacity",
-        "owner": {
-          "host": "lambda2",
-          "pid": 267167,
-          "process_start": "1377601782"
-        },
-        "started": 1792975398.7031758,
-        "deadline": 1793061798.7031763,
-        "scientific_starts": 0,
-        "source_sha256": {
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_occupied_energy_pilot.py": "a573f6eccb844433f5502a6e1189de6c3f309f3bdad05e57cb2012e171056431",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy.py": "1d2cdf2d4b1dbebb028f0cfd0f4945e3aac4e908473787f2ed1b64ea761f10ba",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py": "fb46fe0754fd6e1e216e2673ebd426d517c3d67bdbafa65df77d26a85ab61237",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_safe.py": "2a444a8f82b0195ae8a9d9d6ad010c8ac0e12e9831485e7e49cc5b2389e65473",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_pilot.py": "22a87473276153b797171d3585a3609c8a894fb3fa22bb41a481a5ee226b1fbd",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/preflight_cpu_dependencies.py": "5c0d95d45fab639b3803ad9602d01a10aa24638abbdd9988dcf10fc5b68bcc95",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair/batch.json": "5d85daa81c847033e3066bd47fe83dc6af5ae0688b058cbd59b13f406cbcb47a"
-        },
-        "CPU_affinity": [
-          37
-        ],
-        "updated": 1792975986.1300967
-      }
-    },
-    {
       "path": "results/polymer_models/campaigns/2026-10-26_smooth_native_followup/request_status.json",
-      "sha256": "7513c42874292bb17859b94ad9fd3e266b8dcba4c8740e4917ceaef1df1bc471",
+      "sha256": "b6ebc3d18ea928a7123148cd42dee7b21691b121d781c85bfd656681a2b2438f",
       "observed": {
         "status": "waiting_for_independently_checked_native_resource_pilot",
         "owner": {
           "host": "lambda2",
-          "pid": 338946,
-          "process_start": "1377641226"
+          "pid": 516988,
+          "process_start": "1377743968"
         },
-        "started": 1792975792.51771,
-        "deadline": 1793062192.5177104,
-        "request_sha256": "4646acb8a7f62d3521e1cd9a72a9efde0e9c265281d151d3424a729fcb48fc32",
+        "started": 1792976819.9804103,
+        "deadline": 1793063219.9804108,
+        "request_sha256": "910686a70c7a0775ce56de7443f27955d4e214ed963063c9e6b2202c230a2954",
         "source_sha256": {
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_native_batch.py": "f921c853174481f864a36ca068b1b95c1a11edf47f39e2420e18d14bfe201253",
-          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_native_batch.py": "7cb55518560cc5acb77e95d5bbb6e3e2b99422d70a15acc811f6fa7b235a8646",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_native_batch.py": "153af857fede6410b03fed5327939f0094bdaa9083fc1cbb15defadff581aab2",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_native.py": "32d925908a8bb62a0988ae97ad16304664901aa350a6374e1353185aec679305",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_pilot.py": "22a87473276153b797171d3585a3609c8a894fb3fa22bb41a481a5ee226b1fbd",
           "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
@@ -567,7 +509,7 @@
         },
         "primary_candidate_admission": false,
         "scientific_starts": 0,
-        "updated": 1792976002.621033
+        "updated": 1792977240.219705
       }
     },
     {
@@ -588,7 +530,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2_3/dispatch.json",
-      "sha256": "a3e71010a8846f0cf1c675fff1346f52ca44171dc7736e8a2338483703b6e7fd",
+      "sha256": "d87b92e384cc9d9f3297184625f0946b2f5298805b58ce6881d46199f3118c9c",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -611,7 +553,7 @@
           1
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976004.8003879,
+        "updated": 1792977222.7701848,
         "entries": [
           {
             "key": "all_same__occ_2_3__conf002",
@@ -626,17 +568,17 @@
           {
             "key": "all_same__occ_2_3__conf004",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2_3/all_same__occ_2_3__conf004",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "all_same__occ_2_3__conf005",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2_3/all_same__occ_2_3__conf005",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "all_same__occ_2_3__conf006",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2_3/all_same__occ_2_3__conf006",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "all_same__occ_2_3__conf007",
@@ -711,7 +653,7 @@
         ],
         "checked_geometries": 0,
         "checked_electronic": 0,
-        "running": 2,
+        "running": 5,
         "preserved_failures": 0,
         "consecutive_host_failures": {},
         "scientific_energies_or_G_supplied": false
@@ -719,7 +661,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2_4/dispatch.json",
-      "sha256": "c8cb7652dfd2638dfa28add2d496220cdfa52c697cbaee5dd41faae17838e71c",
+      "sha256": "09a9c10531eb2329e1b8e75b0c00f943a48566f6171aa835c594b64accde84ed",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -742,7 +684,7 @@
           2
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976001.1625328,
+        "updated": 1792977222.6839604,
         "entries": [
           {
             "key": "all_same__occ_2_4__conf002",
@@ -850,7 +792,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2/dispatch.json",
-      "sha256": "7c8660a938f2e0456805588a2428ff5d1fa0e299092b0f5f808e11f634b94d38",
+      "sha256": "510ef8b04adc2cd39fd5e9846886cc1d173d56d1783e1d41d3d49da0343643a8",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -873,12 +815,12 @@
           4
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976001.158613,
+        "updated": 1792977222.556058,
         "entries": [
           {
             "key": "all_same__occ_2__conf002",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_2/all_same__occ_2__conf002",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "all_same__occ_2__conf003",
@@ -973,7 +915,7 @@
         ],
         "checked_geometries": 0,
         "checked_electronic": 0,
-        "running": 0,
+        "running": 1,
         "preserved_failures": 0,
         "consecutive_host_failures": {},
         "scientific_energies_or_G_supplied": false
@@ -981,7 +923,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__all_same__occ_3/dispatch.json",
-      "sha256": "9600736996ef45232e0bcd9819969158043d635efa39348b0c44468352504246",
+      "sha256": "40fb4cfebf903241dd566c4720023d7b9b5a8ca0290b7073c91111a0ee153a78",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -1004,7 +946,7 @@
           5
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976001.1626294,
+        "updated": 1792977222.6382391,
         "entries": [
           {
             "key": "all_same__occ_3__conf002",
@@ -1112,7 +1054,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2_3/dispatch.json",
-      "sha256": "e40d24ec37eb0c8136826901e0ea2f40b2a68995a3fda6c29c976255e2a895f9",
+      "sha256": "a9cb55ecfcfb3a4821d26208e3eff80a096e24521c61b0ae4eb572d6d47343cb",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -1135,7 +1077,7 @@
           7
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976001.2435112,
+        "updated": 1792977222.7700868,
         "entries": [
           {
             "key": "alternating__occ_2_3__conf002",
@@ -1150,7 +1092,7 @@
           {
             "key": "alternating__occ_2_3__conf004",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2_3/alternating__occ_2_3__conf004",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "alternating__occ_2_3__conf005",
@@ -1235,7 +1177,7 @@
         ],
         "checked_geometries": 0,
         "checked_electronic": 0,
-        "running": 2,
+        "running": 3,
         "preserved_failures": 0,
         "consecutive_host_failures": {},
         "scientific_energies_or_G_supplied": false
@@ -1243,7 +1185,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2_4/dispatch.json",
-      "sha256": "34bd51175c0c6fc27c3dfc32f8f6637c609b0062b605e8e8f238f2e7600b9ade",
+      "sha256": "00e66e0b696a1829e4c8ac8cba0abc51f7c8b9bc0c93bc351fa0864be984747b",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -1266,7 +1208,7 @@
           6
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976001.20189,
+        "updated": 1792977222.6069183,
         "entries": [
           {
             "key": "alternating__occ_2_4__conf002",
@@ -1374,7 +1316,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/dispatch.json",
-      "sha256": "3cc96cb1effcaad068b94dcb9febffe12490c2f4fc950d35e2c424fd2e6cb5a6",
+      "sha256": "01e9f846bf05fd31e4281ab55c8b710807348350544ec9b75b366611fe89c5fb",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -1397,7 +1339,7 @@
           8
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976001.3985178,
+        "updated": 1792977222.7835977,
         "entries": [
           {
             "key": "alternating__occ_2__conf002",
@@ -1422,7 +1364,7 @@
           {
             "key": "alternating__occ_2__conf006",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf006",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf007",
@@ -1432,7 +1374,7 @@
           {
             "key": "alternating__occ_2__conf008",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf008",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf009",
@@ -1442,7 +1384,7 @@
           {
             "key": "alternating__occ_2__conf010",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf010",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf011",
@@ -1452,12 +1394,12 @@
           {
             "key": "alternating__occ_2__conf012",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf012",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf013",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf013",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf014",
@@ -1467,12 +1409,12 @@
           {
             "key": "alternating__occ_2__conf015",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf015",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf016",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf016",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf017",
@@ -1487,7 +1429,7 @@
           {
             "key": "alternating__occ_2__conf019",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf019",
-            "status": "running"
+            "status": "checked_geometry"
           },
           {
             "key": "alternating__occ_2__conf020",
@@ -1495,20 +1437,21 @@
             "status": "pending"
           }
         ],
-        "checked_geometries": 8,
+        "checked_geometries": 16,
         "checked_electronic": 0,
-        "running": 10,
+        "running": 2,
         "preserved_failures": 0,
         "consecutive_host_failures": {
           "lambda2": 0,
-          "lambda1": 0
+          "lambda1": 0,
+          "lambda11": 0
         },
         "scientific_energies_or_G_supplied": false
       }
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_4/dispatch.json",
-      "sha256": "710f68b7240443d6fc5a2b05490413edd8a5cbe4d9331ff4230bff89caf617b7",
+      "sha256": "92fac6070b775a733d87d12cc4a2b397b3708257311d9f644b756652d39fde03",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -1531,7 +1474,7 @@
           9
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976004.8422806,
+        "updated": 1792977222.6582346,
         "entries": [
           {
             "key": "alternating__occ_4__conf002",
@@ -1639,7 +1582,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-26_smooth_remaining_occupied_expansion/batches/2026-10-26_smooth_remaining_occupied_expansion__all_same__occ_4/dispatch.json",
-      "sha256": "e7e3890698f946783027bf6baf754ab4f42d70f8d13e04a909ef59dd8a59100b",
+      "sha256": "c6dee95046a045cbfdc559a799f0f06a3a5c3eec7b98cbf1e60713a97fe2821b",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -1662,7 +1605,7 @@
           35
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976004.827627,
+        "updated": 1792977222.7130284,
         "entries": [
           {
             "key": "all_same__occ_4__conf002",
@@ -1672,17 +1615,17 @@
           {
             "key": "all_same__occ_4__conf003",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_remaining_occupied_expansion/batches/2026-10-26_smooth_remaining_occupied_expansion__all_same__occ_4/all_same__occ_4__conf003",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "all_same__occ_4__conf004",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_remaining_occupied_expansion/batches/2026-10-26_smooth_remaining_occupied_expansion__all_same__occ_4/all_same__occ_4__conf004",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "all_same__occ_4__conf005",
             "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_remaining_occupied_expansion/batches/2026-10-26_smooth_remaining_occupied_expansion__all_same__occ_4/all_same__occ_4__conf005",
-            "status": "pending"
+            "status": "running"
           },
           {
             "key": "all_same__occ_4__conf006",
@@ -1762,7 +1705,7 @@
         ],
         "checked_geometries": 0,
         "checked_electronic": 0,
-        "running": 1,
+        "running": 4,
         "preserved_failures": 0,
         "consecutive_host_failures": {},
         "scientific_energies_or_G_supplied": false
@@ -1770,7 +1713,7 @@
     },
     {
       "path": "results/polymer_models/campaigns/2026-10-26_smooth_remaining_occupied_expansion/batches/2026-10-26_smooth_remaining_occupied_expansion__alternating__occ_3/dispatch.json",
-      "sha256": "61015fa2786e42c70812e0593842f177fed2d116a2adba8eb9eea2b62234b6e4",
+      "sha256": "fe6120587ae7e2118ca3c2bb40d154c5ed76762189b5a2f0ef55120d9ea4521a",
       "observed": {
         "owner": {
           "host": "lambda2",
@@ -1793,7 +1736,7 @@
           36
         ],
         "status": "geometry_batch_in_progress",
-        "updated": 1792976004.8223407,
+        "updated": 1792977222.6327813,
         "entries": [
           {
             "key": "alternating__occ_3__conf002",
@@ -1901,7 +1844,7 @@
     },
     {
       "path": "results/reviews/2026-10-25/smooth_occupied_expansion_review/status.json",
-      "sha256": "f81e3fd323a42f639316a0e0e640984f894ccb9dc162fe67a5b61f42b8587cb0",
+      "sha256": "d161234ee345a1096cfbfedba7b658d73328c7e6731e84f7db1a9616bff957e3",
       "observed": {
         "status": "CPU_independent_stage_reviews_in_progress",
         "started": 1792972165.135818,
@@ -1985,17 +1928,73 @@
             "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf003.json",
             "report_sha256": "0f762fc730f88f96f8c2d0eccbe547f8d958f53542e96482e3d41ad167cc51b6",
             "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf016": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf016",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf016.json",
+            "report_sha256": "afb8fcf7627fe496f88ac5ca3249021f142acb6aeddba583ff82c0dd86354c1d",
+            "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf019": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf019",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf019.json",
+            "report_sha256": "8de10bc20309621e38fd5f3f36b3cfde478413b19c84ffc34c7442896e128304",
+            "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf008": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf008",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf008.json",
+            "report_sha256": "80db2e427359aad36e31d68b9a96f215e027a4943c1665f516753a8834ba5b6c",
+            "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf010": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf010",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf010.json",
+            "report_sha256": "196e1cab4eab5d121fa69248105c46f1758a8e689df52819c0dcc60042bbbdce",
+            "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf015": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf015",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf015.json",
+            "report_sha256": "19b4c54accd7164812b044546db570f398aeb09d81c3352a5b87954b97dc757f",
+            "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf006": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf006",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf006.json",
+            "report_sha256": "7e92ceb7726110fc207451122f84e63ad69adc95c1158114435b02554bfd5f0f",
+            "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf013": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf013",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf013.json",
+            "report_sha256": "fa7c97ca8a15dd40d161041de515f78cb42c896744a84b9c5247291144399cd8",
+            "native_G_qualified": false
+          },
+          "2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf012": {
+            "status": "independent_stage_review_passed",
+            "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2/alternating__occ_2__conf012",
+            "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_occupied_expansion_review/checked/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_2__alternating__occ_2__conf012.json",
+            "report_sha256": "899c88f5a9c68df6f39a4aa0e517f5b41932e251845264b67cd215ab9f1344ae",
+            "native_G_qualified": false
           }
         },
-        "updated": 1792976003.210498,
+        "updated": 1792977227.1654184,
         "declared_stages": 152,
-        "pending_stages": 144,
-        "independent_reviews_passed": 8
+        "pending_stages": 136,
+        "independent_reviews_passed": 16
       }
     },
     {
       "path": "results/reviews/2026-10-26/remaining_occupied_geometry/status.json",
-      "sha256": "367b01da1cf436e00a0b1b042b3666f01ac9184371758df1d16e6f3ad4cc7d1e",
+      "sha256": "2d55ae600c3a56cb18cb870d286462153fccd354a0de1c803f870cf1ba6846bf",
       "observed": {
         "status": "CPU_independent_stage_reviews_in_progress",
         "started": 1792975398.2114089,
@@ -2018,7 +2017,7 @@
         "quantum_jobs_submitted": 0,
         "native_G_qualification_inferred": false,
         "reviewed": {},
-        "updated": 1792976013.4865568,
+        "updated": 1792977229.0429394,
         "declared_stages": 38,
         "pending_stages": 38,
         "independent_reviews_passed": 0
@@ -2026,7 +2025,7 @@
     },
     {
       "path": "results/reviews/2026-10-26/smooth_native_pilot/status.json",
-      "sha256": "e7fd30432461432e74d7d58bdc38a4586c95cb9dba42f61a9b24c34696569874",
+      "sha256": "4b82d18229f63f5c4954f8a60a35929b4089b1523ac8cd6aa57548ff19516b18",
       "observed": {
         "status": "waiting_for_completed_alternate_native_pilot",
         "started": 1792974733.5556483,
@@ -2046,13 +2045,13 @@
         },
         "quantum_jobs_submitted": 0,
         "primary_candidate_admission": false,
-        "updated": 1792976009.1350102,
+        "updated": 1792977239.6753955,
         "observed_native_status": "experimental_native_resource_and_physical_pilot_running"
       }
     },
     {
       "path": "results/reviews/2026-10-26/occupied_electronic_pilots/status.json",
-      "sha256": "253838780d03d9e19cc6c291a56b22ef1e0d9d0a58b4481f1ba3c864c689baf7",
+      "sha256": "0c4b0ebe093f4c4961d17668fcd3af7f0b5bb3e3fb0b5c6588d60a13927e475d",
       "observed": {
         "status": "CPU_independent_stage_reviews_in_progress",
         "started": 1792975398.32372,
@@ -2075,10 +2074,76 @@
         "quantum_jobs_submitted": 0,
         "native_G_qualification_inferred": false,
         "reviewed": {},
-        "updated": 1792976013.6407564,
+        "updated": 1792977229.2681718,
         "declared_stages": 2,
         "pending_stages": 2,
         "independent_reviews_passed": 0
+      }
+    },
+    {
+      "path": "results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single_capacity/dispatch.json",
+      "sha256": "9a7231886c2d508160b5280b06b8ef4f37a7d2b3577fd76f148d0efaf7ea3872",
+      "observed": {
+        "status": "experimental_energy_pilot_waiting_for_free_capacity",
+        "owner": {
+          "host": "lambda2",
+          "pid": 503132,
+          "process_start": "1377734044"
+        },
+        "started": 1792976720.7172306,
+        "deadline": 1793063120.717231,
+        "scientific_starts": 0,
+        "source_sha256": {
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_occupied_energy_pilot.py": "a573f6eccb844433f5502a6e1189de6c3f309f3bdad05e57cb2012e171056431",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy.py": "1d2cdf2d4b1dbebb028f0cfd0f4945e3aac4e908473787f2ed1b64ea761f10ba",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py": "fb46fe0754fd6e1e216e2673ebd426d517c3d67bdbafa65df77d26a85ab61237",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_safe.py": "2a444a8f82b0195ae8a9d9d6ad010c8ac0e12e9831485e7e49cc5b2389e65473",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_pilot.py": "22a87473276153b797171d3585a3609c8a894fb3fa22bb41a481a5ee226b1fbd",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/preflight_cpu_dependencies.py": "5c0d95d45fab639b3803ad9602d01a10aa24638abbdd9988dcf10fc5b68bcc95",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single/batch.json": "f7ecaefe1fba160f16fa153dd8142b541e57f95311de980763a9dfa0fa265b7f",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/conformer_followup_milestone/occupied_energy_absence.json": "4de4049b03190da481698a1a6905b19c6eac99be5814cdc2604b0f542a09aca2",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_capacity.py": "7d20a2612d813f2c7b630fb1c743030834119f612230b7f4d744687c96f695b4",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single_capacity/batch.json": "cabc5f3c75a881a012b0bb7b715f0d002449efc2d322f9f89f799a114fadeb40"
+        },
+        "CPU_affinity": [
+          32
+        ],
+        "updated": 1792977207.6440911
+      }
+    },
+    {
+      "path": "results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair_capacity/dispatch.json",
+      "sha256": "1e0e5a07b631d3e9cfac0a89955ef62bfc753f591691643191c3bf395b228a09",
+      "observed": {
+        "status": "experimental_energy_pilot_waiting_for_free_capacity",
+        "owner": {
+          "host": "lambda2",
+          "pid": 503133,
+          "process_start": "1377734045"
+        },
+        "started": 1792976720.8646355,
+        "deadline": 1793063120.864636,
+        "scientific_starts": 0,
+        "source_sha256": {
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_occupied_energy_pilot.py": "a573f6eccb844433f5502a6e1189de6c3f309f3bdad05e57cb2012e171056431",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy.py": "1d2cdf2d4b1dbebb028f0cfd0f4945e3aac4e908473787f2ed1b64ea761f10ba",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_energy_bounded.py": "fb46fe0754fd6e1e216e2673ebd426d517c3d67bdbafa65df77d26a85ab61237",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_safe.py": "2a444a8f82b0195ae8a9d9d6ad010c8ac0e12e9831485e7e49cc5b2389e65473",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_pilot.py": "22a87473276153b797171d3585a3609c8a894fb3fa22bb41a481a5ee226b1fbd",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/preflight_cpu_dependencies.py": "5c0d95d45fab639b3803ad9602d01a10aa24638abbdd9988dcf10fc5b68bcc95",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair/batch.json": "5d85daa81c847033e3066bd47fe83dc6af5ae0688b058cbd59b13f406cbcb47a",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/conformer_followup_milestone/occupied_energy_absence.json": "4de4049b03190da481698a1a6905b19c6eac99be5814cdc2604b0f542a09aca2",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_capacity.py": "7d20a2612d813f2c7b630fb1c743030834119f612230b7f4d744687c96f695b4",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair_capacity/batch.json": "a4f3a455cf0c647af1a385785186e5aebd526802ceb534304977602a6638cb0f"
+        },
+        "CPU_affinity": [
+          37
+        ],
+        "updated": 1792977207.6547234
       }
     }
   ]

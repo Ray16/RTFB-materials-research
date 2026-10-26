@@ -1,0 +1,99 @@
+{
+  "status": "five_verified_unstarted_energy_cases_reopened_with_actual_RAM_preflight",
+  "checked": 1792977204.5398932,
+  "records": [
+    {
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch",
+      "old_owner": {
+        "host": "lambda2",
+        "pid": 3447417,
+        "process_start": "1376619884"
+      },
+      "new_owner": {
+        "host": "lambda2",
+        "pid": 587954,
+        "process_start": "1377782429",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_capacity_preflight.py",
+          "coordinate",
+          "--batch",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch",
+          "--max-hours",
+          "24",
+          "--resume"
+        ],
+        "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_followup_launch/2026-10-25_smooth_empty_electronic_batch_capacity.log",
+        "started": 1792977204.316591
+      },
+      "reopened_unstarted": [
+        "alternating__occ_none__conf019",
+        "alternating__occ_none__conf020"
+      ],
+      "history": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/capacity_transition/1792977204304845581"
+    },
+    {
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery",
+      "old_owner": {
+        "host": "lambda2",
+        "pid": 3902265,
+        "process_start": "1377197359"
+      },
+      "new_owner": {
+        "host": "lambda2",
+        "pid": 587983,
+        "process_start": "1377782440",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_capacity_preflight.py",
+          "coordinate",
+          "--batch",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery",
+          "--max-hours",
+          "24",
+          "--resume"
+        ],
+        "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_followup_launch/2026-10-25_smooth_empty_RAM_recovery_capacity.log",
+        "started": 1792977204.4275596
+      },
+      "reopened_unstarted": [
+        "alternating__occ_none__conf010",
+        "alternating__occ_none__conf012"
+      ],
+      "history": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery/capacity_transition/1792977204418967738"
+    },
+    {
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery_extra",
+      "old_owner": {
+        "host": "lambda2",
+        "pid": 4154805,
+        "process_start": "1377380787"
+      },
+      "new_owner": {
+        "host": "lambda2",
+        "pid": 587996,
+        "process_start": "1377782451",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_with_capacity_preflight.py",
+          "coordinate",
+          "--batch",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery_extra",
+          "--max-hours",
+          "24",
+          "--resume"
+        ],
+        "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_followup_launch/2026-10-25_smooth_empty_RAM_recovery_extra_capacity.log",
+        "started": 1792977204.5385473
+      },
+      "reopened_unstarted": [
+        "alternating__occ_none__conf013"
+      ],
+      "history": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_RAM_recovery_extra/capacity_transition/1792977204529810065"
+    }
+  ],
+  "actual_scientific_attempts_repeated": 0,
+  "completed_records_preserved": 35,
+  "previous_80GiB_scientific_failures_preserved": 3,
+  "original_RPC_cause_for_two_80GiB_unstarted_cases_unattributed": true
+}

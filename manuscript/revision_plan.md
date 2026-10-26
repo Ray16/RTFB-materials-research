@@ -27,9 +27,18 @@ occupied hybrid-energy pilots and an empty-chain native pilot are still physical
 validation steps, not finished ensembles. A source-bound continuation requires
 the native pilot's independent review and each exact electronic parent before
 launching additional native states; its dependency/resource checks and the native
-bookkeeping pass 34 focused tests. This leaves M4 open and does not change the
+bookkeeping pass 38 focused tests. This leaves M4 open and does not change the
 checked manuscript's finite-sample claims. See
 [the current follow-up checkpoint](../results/reviews/2026-10-26/conformer_followup_milestone/README.md).
+
+The [paired-cycle raw addendum](../results/releases/neighbor_cycle/README.md)
+closes the latest local archive-coverage gap: fourteen cached states and balanced
+comparisons reproduce the complete exact-PMDI cycle at all three rotor cutoffs
+after extraction with original checkout reads blocked. Seven nominal/adverse-input
+checks pass. This extends the earlier thirteen-state first-site artifact without
+altering it. It does not close public deposition, nuclear reintegration for the
+new archive, general cluster-path portability or conformer convergence; the main
+manuscript's chemical numbers and scientific scope are unchanged.
 
 The end-to-end examples and adequate conformer evidence are required before
 claiming a complete selection framework. The open PMDI trimer slots and an NDI

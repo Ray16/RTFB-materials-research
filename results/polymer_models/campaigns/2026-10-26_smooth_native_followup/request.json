@@ -1,6 +1,6 @@
 {
   "status": "native_cohort_requested_pending_independent_resource_pilot",
-  "created": 1792975792.2693338,
+  "created": 1792976819.6848314,
   "output_batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_native_batch",
   "native_reference": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_native_pilot_checked/all_same__occ_none__conf001",
   "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/smooth_native_pilot/independent_review.json",
@@ -11,7 +11,7 @@
   ],
   "source_sha256": {
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/prepare_smooth_native_batch.py": "f921c853174481f864a36ca068b1b95c1a11edf47f39e2420e18d14bfe201253",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_native_batch.py": "7cb55518560cc5acb77e95d5bbb6e3e2b99422d70a15acc811f6fa7b235a8646",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_native_batch.py": "153af857fede6410b03fed5327939f0094bdaa9083fc1cbb15defadff581aab2",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_native.py": "32d925908a8bb62a0988ae97ad16304664901aa350a6374e1353185aec679305",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_pilot.py": "22a87473276153b797171d3585a3609c8a894fb3fa22bb41a481a5ee226b1fbd",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_geometry_batch.py": "5e20140fe9ffcb5c72b705a85ddef1c2b56d8af32cba60f45ccb4e341df13f56",
@@ -27,5 +27,8 @@
   "expected_fresh_states": 39,
   "configuration_weights_assigned": false,
   "primary_candidate_admission": false,
-  "scope": "Exact-parent native free energies for twenty empty-chain starts at each configuration; no completed ensemble or legacy-model substitution"
+  "scope": "Exact-parent native free energies for twenty empty-chain starts at each configuration; no completed ensemble or legacy-model substitution",
+  "previous_request_sha256": "4646acb8a7f62d3521e1cd9a72a9efde0e9c265281d151d3424a729fcb48fc32",
+  "previous_request": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_native_followup/request_history/1792976819672091317/request.json",
+  "revision_reason": "RAM preflight now uses native RSS bound plus headroom; insufficient host capacity returns contention before any Popen. Existing scientific worker unchanged."
 }

@@ -1,0 +1,48 @@
+{
+  "status": "unstarted_energy_placement_recovered_with_actual_RAM_preflight",
+  "records": [
+    {
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single_capacity",
+      "owner": {
+        "host": "lambda2",
+        "pid": 503132,
+        "process_start": "1377734044",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_capacity.py",
+          "wait",
+          "--batch",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single_capacity",
+          "--max-hours",
+          "24"
+        ],
+        "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_followup_launch/energy_single_capacity.log",
+        "started": 1792976720.4718382
+      },
+      "preserved_intent": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single/all_same__occ_2__conf001/placement_history/1792976720451316129_unstarted_intent.json"
+    },
+    {
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair_capacity",
+      "owner": {
+        "host": "lambda2",
+        "pid": 503133,
+        "process_start": "1377734045",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/dispatch_smooth_energy_capacity.py",
+          "wait",
+          "--batch",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair_capacity",
+          "--max-hours",
+          "24"
+        ],
+        "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_followup_launch/energy_pair_capacity.log",
+        "started": 1792976720.4832888
+      },
+      "preserved_intent": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair/all_same__occ_2_4__conf001/placement_history/1792976720477142097_unstarted_intent.json"
+    }
+  ],
+  "scientific_attempts_repeated": 0,
+  "physical_worker_or_geometry_changed": false,
+  "reason": "A 256-GiB RSS pilot plus 32-GiB headroom cannot fit on the 128-GiB node; the previous CPU import preflight requested only 64 GiB. All intended hosts show no scientific/RPC owner and no attempt directory was created."
+}
