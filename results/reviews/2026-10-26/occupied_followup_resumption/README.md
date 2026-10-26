@@ -25,6 +25,9 @@ resource and reservation gates pass. A live coordinator or prepared entry is not
 finished calculation. The dispatcher and inventory records under each batch are
 live; [summary.json](summary.json) is an immutable as-of snapshot.
 
+The twelve held intents were subsequently checked and reopened; see the
+[ownership reconciliation](../occupied_intent_reconciliation/README.md).
+
 This is a phthalimide-control continuation in the alternative smooth-surface
 MeCN model. It does not close the conformer sampling review comment, establish
 the full polymer cycle, or change primary-model candidate values. Bulk worker

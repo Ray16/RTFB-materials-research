@@ -55,8 +55,8 @@ The four geometries pass graph/stereochemistry checks and are separated by
 [finite-set analysis](../results/validation/empty_chain_finite_set_2026-10-26/README.md).
 The occupied site-2 native pilot was independently reviewed, and its
 [follow-up coordinators](../results/reviews/2026-10-26/occupied_followup_resumption/README.md)
-have been resumed with dependency and reservation checks. Prior unresolved
-submission intents remain held. These are process and input records, not
+have been resumed with dependency and reservation checks. Twelve prior intents
+were subsequently verified as unstarted and reopened. These are process and input records, not
 completed ensemble data.
 The [complete local-panel review](../results/reviews/2026-10-26/local_motif_complete/README.md)
 preserves the earlier partial snapshot and the full checked replay.
