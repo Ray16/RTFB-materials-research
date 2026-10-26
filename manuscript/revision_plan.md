@@ -53,6 +53,11 @@ The four geometries pass graph/stereochemistry checks and are separated by
 2.01--4.27 Å heavy-atom RMSD; a finite-set partition lowers the minimum by
 1.81 kJ/mol. This does not satisfy the 10-versus-20 sampling criterion. See the
 [finite-set analysis](../results/validation/empty_chain_finite_set_2026-10-26/README.md).
+The occupied site-2 native pilot was independently reviewed, and its
+[follow-up coordinators](../results/reviews/2026-10-26/occupied_followup_resumption/README.md)
+have been resumed with dependency and reservation checks. Prior unresolved
+submission intents remain held. These are process and input records, not
+completed ensemble data.
 The [complete local-panel review](../results/reviews/2026-10-26/local_motif_complete/README.md)
 preserves the earlier partial snapshot and the full checked replay.
 

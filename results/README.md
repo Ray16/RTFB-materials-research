@@ -13,6 +13,8 @@ An [anthraquinone carboxylate graft proposal](discovery/aq_carboxylate_2026-10-2
 
 The [empty-chain finite-set analysis](validation/empty_chain_finite_set_2026-10-26/README.md) compares four checked geometries and free energies within one alternate solvent model and backbone configuration. It is not a converged ensemble or a grafting-cycle result.
 
+The [occupied-chain follow-up](reviews/2026-10-26/occupied_followup_resumption/README.md) records the checked pilot, declared successor states and live-controller startup snapshot. Finished scientific states and unresolved earlier submission intents are tracked separately.
+
 The [gas counterpoise control](reviews/2026-10-26/counterpoise_control/README.md) now passes an independent CPU/GPU, common-grid and auxiliary-basis review. The close phthalimide motif point is prepared; its live coordinator records whether a scientific worker has actually started. No solvent correction or experimental interaction accuracy is inferred from the small control.
 
 The [native conformer controller recovery](reviews/2026-10-26/native_inventory_recovery/README.md) preserves the four checked free energies and uses per-host GPU inventory checks that distinguish timeouts from verified availability. The recorded snapshot had no available devices; live dispatcher and inventory records show current status. This controller is not evidence of completed sampling or a converged ensemble.
