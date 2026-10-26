@@ -16,6 +16,7 @@ feed's date; collecting a new view is not a new quantum calculation or route app
 | Integrated expansion and evaluation | [Report](expansion/index.html) · [Status](expansion/status.json) · [Design ledger](expansion/designs.csv) · [Matched-effects figure](expansion/matched_design_effects.pdf) |
 | Search strategy and selection rationale | [Exploration guide](../../docs/CANDIDATE_EXPLORATION.md) |
 | Enumerated NDI, PMDI and viologen search space | [Search summary](systematic_families_2026-10-18/summary.json) |
+| Exact anthraquinone carboxylate proposal | [Precursor, mapped graft and held route](aq_carboxylate_2026-10-26/README.md) |
 | Matched family comparisons | [Comparison definitions and provenance](family_comparisons_2026-10-18/README.md); current numerical shifts are in [comparisons.csv](../candidates/comparisons.csv) |
 | Complementary sources beyond D3TaLES | [Source catalog](../../config/discovery_sources.json) |
 | Cata-imide source graphs and exact proposals | [Cata-core curation](cata_core_expansion_2026-10-19/README.md) |

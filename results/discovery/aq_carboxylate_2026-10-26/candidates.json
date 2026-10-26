@@ -1,0 +1,26 @@
+[
+  {
+    "id": "aq2_carboxylate_capped",
+    "name": "AQ-2-carboxylate benzyl ester capped-site proposal",
+    "frag": "O=C(O[*:1])c1ccc2c(c1)C(=O)c1ccccc1C2=O",
+    "precursor_inchikey": "ASDLSKCKYGVMAI-UHFFFAOYSA-N",
+    "product_inchikey": "JCIGVHDQPQIQQC-UHFFFAOYSA-N",
+    "product_formula": "C23H16O4",
+    "product_molecular_weight": 356.37700000000007,
+    "mapped_attachment": "fragment dummy :1 bonds the carboxylate oxygen to the capped-site benzyl carbon",
+    "reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "O=C(O)c1ccc2c(c1)C(=O)c1ccccc1C2=O",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(COC(=O)c2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  }
+]

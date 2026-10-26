@@ -19,7 +19,9 @@ QC and implementation evidence appear only in backup.
   and its [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json)
   preserve the earlier salt-only presentation. The [current build](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json)
   and [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json)
-  bind slide 12 to both checked experimental sources.
+  bind slide 12 to both checked experimental sources. The [current build](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/build_check.json)
+  and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/visual_review.json)
+  add the separate held AQ proposal to slide 6.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 
@@ -33,6 +35,10 @@ cohort overlaps 33 enumerated graphs, of which 32 have both computed potentials.
 The 34-slot plan has generated zero new exact molecules. The benchmark has
 39/39 exact-parent MeCN endpoints; it does not validate exact-graft or polymer
 accuracy. No candidate currently passes every required material-selection axis.
+
+Separately from that 34-slot plan, one [AQ-2-carboxylate graft proposal](../results/discovery/aq_carboxylate_2026-10-26/README.md)
+has been mapped and route-screened. Its route is held and its redox properties
+are not computed; the current deck's 837 count refers to the original library.
 
 For reproduction, use one CPU and set OMP_NUM_THREADS, OMP_THREAD_LIMIT,
 MKL_NUM_THREADS, OPENBLAS_NUM_THREADS, NUMEXPR_NUM_THREADS and XTB_THREADS to 1.

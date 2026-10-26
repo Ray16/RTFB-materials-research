@@ -103,6 +103,12 @@ descriptor front is explicitly not a full material shortlist. The 34-slot focuse
 expansion plan is predeclared comparison coverage, not 34 additional molecules.
 These improvements do not close the end-to-end or polymer-convergence comments.
 
+A separate exact AQ-2-carboxylate capped-site proposal has now been constructed
+and route-screened against a soluble-polymer literature precedent. It remains
+on hold with no new redox calculations, and does not complete the matched
+34-slot plan or establish an all-axis decision. The source-linked graph and
+gate are recorded in [the proposal](../results/discovery/aq_carboxylate_2026-10-26/README.md).
+
 ## Conformer thermochemistry follow-up, 23 October
 
 A finite partition implementation and an all-pose native thermal adapter now

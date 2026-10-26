@@ -24,6 +24,10 @@ cover expansion; slides 7–10 cover validation. Keep those sections if time is 
 
 Numerical answers to likely questions:
 
+- A separate AQ-2-carboxylate graft has a source-linked precursor and mapped
+  attachment, but remains on route hold with no computed redox properties. It
+  is not counted among the 837 earlier designs or the 34 unfilled comparison slots.
+
 - The evaluation feed is dated **24 October**, while the exact PMDI result and
   reproducibility addendum were checked on **25–26 October**. The deck does not
   pretend they are one simultaneous live campaign snapshot.

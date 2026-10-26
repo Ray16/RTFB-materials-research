@@ -186,6 +186,45 @@
       "assessment_date": "2026-10-22",
       "source_identity_review": "results/reviews/2026-10-22/end_to_end_selection/identity.json",
       "synthesis_admission": false
+    },
+    "aq2_carboxylate_capped": {
+      "route_binding": {
+        "product_smiles": "Cc1ccc(COC(=O)c2ccc3c(c2)C(=O)c2ccccc2C3=O)cc1",
+        "precursor_smiles": "O=C(O)c1ccc2c(c1)C(=O)c1ccccc1C2=O",
+        "site_smiles": "Cc1ccc(CCl)cc1",
+        "reaction_class": "NH_OH_substitution",
+        "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][O:1012][C:1011](=[O:1010])[c:1014]2[cH:1015][cH:1016][c:1017]3[c:1018]([cH:1019]2)[C:1020](=[O:1021])[c:1022]2[cH:1023][cH:1024][cH:1025][cH:1026][c:1027]2[C:1028]3=[O:1029])[cH:1008][cH:1009]1",
+        "mapped_precursor_smiles": "[O:1010]=[C:1011]([OH:1012])[c:1014]1[cH:1015][cH:1016][c:1017]2[c:1018]([cH:1019]1)[C:1020](=[O:1021])[c:1022]1[cH:1023][cH:1024][cH:1025][cH:1026][c:1027]1[C:1028]2=[O:1029]",
+        "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+        "new_bond_atom_maps": [
+          1006,
+          1012
+        ],
+        "leaving_atom_map": 9001,
+        "heavy_atom_mapping": true,
+        "model_scope": "4-methylbenzyl local site on a preformed polymer"
+      },
+      "exact_design_key": "15b1d509f1e7dce03334857e1e7bb45adf3c367756d86e172ba68de3c7a4beab",
+      "exact_precursor_access_reviewed": true,
+      "attachment_selectivity_reviewed": false,
+      "conditions_defined": true,
+      "balanced_route_reviewed": false,
+      "redox_core_retention_reviewed": false,
+      "conditions": {
+        "solvent": "NMP (literature soluble polymer route)",
+        "reactive_form": "anthraquinone-2-carboxylic acid with DBU",
+        "base": "DBU",
+        "counterions": "DBUH+ and Cl- proposed for bookkeeping; speciation unverified",
+        "temperature": "70 C (source report)",
+        "time": "24 h (source report)"
+      },
+      "source_urls": [
+        "https://onlinelibrary.wiley.com/doi/abs/10.1002/pat.1968",
+        "https://waseda.repo.nii.ac.jp/record/19599/files/Honbun-5904.pdf",
+        "https://pubchem.ncbi.nlm.nih.gov/compound/67030"
+      ],
+      "evidence_scope": "The reported acid and carboxylate ester connectivity on soluble poly(4-chloromethylstyrene) are source supported. The 4-methylbenzyl fragment is a model of this connection, not an isolated product or a demonstrated crosslinked bead reaction.",
+      "unresolved": "Capped-site selectivity and redox-core retention under the selected conditions, ion speciation and a balanced actual-condition reaction, crosslinked bead access, electrochemical performance and unwanted local interactions. Precursor identity is source checked; current commercial availability is not established."
     }
   },
   "note": "Exact entries include explicitly unresolved assessments. Only all required exact evidence can produce a prospective synthesis pass; a family analogue does not.",

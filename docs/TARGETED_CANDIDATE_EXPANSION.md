@@ -11,6 +11,12 @@ deduplication**. It has generated zero additional exact molecules and submitted
 zero new candidate quantum jobs. Existing matching compounds can fill slots;
 they are reused evidence, not newly discovered structures.
 
+Separately, one [AQ-2-carboxylate local graft proposal](../results/discovery/aq_carboxylate_2026-10-26/README.md)
+has now been built and screened against the route gate. It has a primary-source
+polymer attachment precedent, an exact precursor/product graph and a mapped bond;
+its route is held and it has no new redox calculations. It is not assigned to a
+shielding/linker comparison slot until a matched panel is defined and reviewed.
+
 | Component | Design question | Planned coverage |
 | --- | --- | --- |
 | Core breadth | Does the route-aware screen behave consistently across different redox chemistry? | Viologen, PMDI, NDI, BQ, AQ, phenothiazine and TEMPO |
