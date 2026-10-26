@@ -1,0 +1,40 @@
+{
+  "status": "metadata_only_CPU_verification_cache_rejected_strict_dispatch_restored",
+  "checked": 1792985757.0090523,
+  "stopped_CPU_owner": {
+    "host": "lambda2",
+    "pid": 1928679,
+    "process_start": "1378629352",
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_native_verification_epoch.py",
+      "coordinate",
+      "--batch",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_native_complete_inputs",
+      "--max-hours",
+      "24",
+      "--resume"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_local_motif/native_verification_epoch.log",
+    "started": 1792985673.5474174
+  },
+  "new_CPU_owner": {
+    "host": "lambda2",
+    "pid": 1939342,
+    "process_start": "1378637698",
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_native_batch.py",
+      "coordinate",
+      "--batch",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_native_complete_inputs",
+      "--max-hours",
+      "24",
+      "--resume"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_local_motif/native_strict_restored.log",
+    "started": 1792985757.0074675
+  },
+  "scientific_workers_signaled": false,
+  "reason": "Mutation tests show same-size fast writes can preserve all available timestamp metadata; metadata-based reuse is insufficient"
+}

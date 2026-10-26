@@ -1,0 +1,24 @@
+{
+  "status": "rejected_not_an_active_pipeline_component",
+  "checked": 1792985829.841429,
+  "files": [
+    {
+      "original": "scripts/fleet/verification_epoch.py",
+      "archived": "archive/2026-10-26_rejected_verification_cache/verification_epoch.py",
+      "sha256": "436e1d6fa72867d9e0aeaa0cfaaa21a4e5914588bcd299767f1ffb3a15291c3b"
+    },
+    {
+      "original": "scripts/pipeline/coordinate_native_verification_epoch.py",
+      "archived": "archive/2026-10-26_rejected_verification_cache/coordinate_native_verification_epoch.py",
+      "sha256": "c4c41ea344cb33131bef31be9a92d6e7a844143a2c26225aac8b06f284374f2b"
+    },
+    {
+      "original": "tests/test_verification_epoch.py",
+      "archived": "archive/2026-10-26_rejected_verification_cache/rejected_mutation_checks.py",
+      "sha256": "4f4372776d20b328e659a9e161fc8c59c663dafcb99963a7fcb5ab10245f4bcd"
+    }
+  ],
+  "reason": "Two mutation checks demonstrate timestamp-based verification reuse is not sufficient on the tested filesystem",
+  "strict_controller_restored": true,
+  "scientific_workers_changed": false
+}

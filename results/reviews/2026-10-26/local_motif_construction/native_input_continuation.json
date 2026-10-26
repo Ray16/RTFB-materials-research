@@ -1,0 +1,30 @@
+{
+  "status": "native_case_paths_preserved_additional_energy_recovery_attached",
+  "checked": 1792984970.341325,
+  "old_CPU_owner": {
+    "host": "lambda2",
+    "pid": 516988,
+    "process_start": "1377743968"
+  },
+  "new_CPU_owner": {
+    "host": "lambda2",
+    "pid": 1817025,
+    "process_start": "1378559031",
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_native_batch.py",
+      "coordinate",
+      "--batch",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_native_complete_inputs",
+      "--max-hours",
+      "24"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_local_motif/native_complete_controller.log",
+    "started": 1792984970.3386924
+  },
+  "old_batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_native_batch",
+  "new_batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_native_complete_inputs",
+  "additional_electronic_recovery": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_RAM_recovery_conf019",
+  "scientific_workers_signaled": false,
+  "native_cases_recomputed": 0
+}

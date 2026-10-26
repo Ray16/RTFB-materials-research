@@ -1,0 +1,35 @@
+{
+  "status": "CPU_independent_stage_reviews_in_progress",
+  "started": 1792975398.32372,
+  "deadline": 1793061798.3237205,
+  "owner": {
+    "host": "lambda2",
+    "pid": 267168,
+    "process_start": "1377601782"
+  },
+  "CPU_affinity": [
+    34
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/observe_smooth_followup.py": "b11974c4275a57b7d11b37edd7d2fcff89f7765551541710f83f752782194b13",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_smooth_geometry.py": "dec901870ae9892eff3ec5532e5cf4afa13e78be2d075ff1e33f0af284c58c46",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_smooth_polymer_energy.py": "b8903cc9fcf0243076b5d32954a73cd36085fca3f8435ccebb79dcc2a108d36c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single/all_same__occ_2__conf001/plan.json": "0fe1a59be370e661a8718bd3784c0012f3b66b61747a7a871088445014e0d738",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_pair/all_same__occ_2_4__conf001/plan.json": "6ff76162fc98b039e8415ff4a620ba22bce5c1d1d58c2bd749834262680c3374"
+  },
+  "quantum_jobs_submitted": 0,
+  "native_G_qualification_inferred": false,
+  "reviewed": {
+    "2026-10-26_smooth_occupied_SP_single__all_same__occ_2__conf001": {
+      "status": "independent_stage_review_passed",
+      "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_occupied_SP_single/all_same__occ_2__conf001",
+      "report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/occupied_electronic_pilots/checked/2026-10-26_smooth_occupied_SP_single__all_same__occ_2__conf001.json",
+      "report_sha256": "0368d10afe8b5f5fb1f11b2c540583494c6242da847b303b8969cc44df00a8b7",
+      "native_G_qualified": false
+    }
+  },
+  "updated": 1792990722.658323,
+  "declared_stages": 2,
+  "pending_stages": 1,
+  "independent_reviews_passed": 1
+}

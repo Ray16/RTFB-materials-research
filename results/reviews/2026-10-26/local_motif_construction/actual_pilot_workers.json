@@ -1,0 +1,92 @@
+{
+  "status": "two_local_energy_scientific_starts_and_residency_checked",
+  "host": "lambda5",
+  "checked": 1792982531.2118292,
+  "workers": [
+    {
+      "key": "A",
+      "owner": {
+        "host": "lambda5",
+        "pid": 2828389,
+        "process_start": "686268802"
+      },
+      "CPU_affinity": [
+        0,
+        1
+      ],
+      "caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "GPU_UUID": "GPU-4c483fe3-cf7b-b7c5-1813-0742ef6042bd",
+      "GPU_MiB": 2362,
+      "state": "frozen_local_energy_resource_pilot_running",
+      "host_guard": {
+        "pid": 2828389,
+        "process_start": 1792982108.02,
+        "host": "lambda5",
+        "CPU_affinity": [
+          0,
+          1
+        ],
+        "started": 1792982108.720569,
+        "maximum_RSS_GiB": 32.0,
+        "minimum_free_GiB": 32.0,
+        "peak_RSS_bytes": 1230311424,
+        "status": "running",
+        "signal_target": "this owned process only",
+        "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+        "RSS_bytes": 1230311424,
+        "free_RAM_bytes": 744275795968,
+        "checked": 1792982529.9346304
+      }
+    },
+    {
+      "key": "AB",
+      "owner": {
+        "host": "lambda5",
+        "pid": 2829062,
+        "process_start": "686269050"
+      },
+      "CPU_affinity": [
+        2,
+        3
+      ],
+      "caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "GPU_UUID": "GPU-de13a1ad-9e81-e1f9-0ec5-c29c54c020a6",
+      "GPU_MiB": 11394,
+      "state": "frozen_local_energy_resource_pilot_running",
+      "host_guard": {
+        "pid": 2829062,
+        "process_start": 1792982110.5,
+        "host": "lambda5",
+        "CPU_affinity": [
+          2,
+          3
+        ],
+        "started": 1792982111.1817937,
+        "maximum_RSS_GiB": 32.0,
+        "minimum_free_GiB": 32.0,
+        "peak_RSS_bytes": 1170051072,
+        "status": "running",
+        "signal_target": "this owned process only",
+        "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+        "RSS_bytes": 1170051072,
+        "free_RAM_bytes": 735133749248,
+        "checked": 1792982526.647985
+      }
+    }
+  ],
+  "energetic_qualification_inferred": false
+}

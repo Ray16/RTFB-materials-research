@@ -31,6 +31,18 @@ bookkeeping pass 38 focused tests. This leaves M4 open and does not change the
 checked manuscript's finite-sample claims. See
 [the current follow-up checkpoint](../results/reviews/2026-10-26/conformer_followup_milestone/README.md).
 
+The separate smooth-surface 91-atom native pilot now passes independent full
+Hessian/mode/nuclear reconstruction, enabling the forty-state continuation.
+The occupied 105-atom hybrid point also passes independent checkpoint/resource
+review and feeds a separate native pilot. Neither result closes ensemble
+convergence. A new frozen methyl-capped phthalimide control supplies the first
+direct local interaction triplet (−24.76 kJ/mol in MeCN; −37.16 in gas), with
+the remaining pose/cap inputs running and basis-superposition checks pending.
+This metric includes caps and continuum response and remains distinct from
+whole-chain ΔΔG, pure π binding and electron-transfer coupling. It is not yet
+integrated as a chemical finding in the immutable manuscript epoch. See
+[the local interaction record](../results/reviews/2026-10-26/local_motif_interactions/README.md).
+
 The [paired-cycle raw addendum](../results/releases/neighbor_cycle/README.md)
 closes the latest local archive-coverage gap: fourteen cached states and balanced
 comparisons reproduce the complete exact-PMDI cycle at all three rotor cutoffs
