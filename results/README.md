@@ -3,6 +3,8 @@
 Use these stable paths. Completed quantities carry field-specific QC; blank values
 are pending or excluded. Raw calculations and earlier source snapshots are retained.
 
+The [native conformer controller recovery](reviews/2026-10-26/native_inventory_recovery/README.md) preserves the four checked free energies and uses per-host GPU inventory checks that distinguish timeouts from verified availability. The recorded snapshot had no available devices; live dispatcher and inventory records show current status. This controller is not evidence of completed sampling or a converged ensemble.
+
 The [frozen local-motif panel](reviews/2026-10-26/local_motif_complete/README.md) now reconstructs all 12 interaction triplets from 36 independently reviewed electronic states. Close phthalimide control poses are approximately −25 to −26 kJ/mol in the MeCN model; separated poses are near zero. Basis-superposition correction, broader conformer sampling, association free energies and electronic coupling remain open.
 
 For the colleague discussion, use the [focused workflow presentation](../slides/colleague_workflow.pdf): 16 main slides on candidate expansion, validation and the linked PMDI example, with seven supporting slides. The [scientific brief](../slides/colleague_brief.md), [speaker notes](../slides/colleague_speaker_notes.md) and [source-bound evidence](reviews/2026-10-26/colleague_workflow/README.md) distinguish the 837-design library, evaluated cohort and planned comparisons. The former detailed deck is archived; the manuscript and scientific calculations are unchanged by this presentation revision.

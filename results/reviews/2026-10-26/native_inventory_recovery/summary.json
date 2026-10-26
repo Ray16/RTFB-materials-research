@@ -1,0 +1,37 @@
+{
+  "status": "resilient_native_controller_running_scientific_results_pending",
+  "checked": 1793047173.5262895,
+  "owner": {
+    "host": "lambda2",
+    "pid": 1310418,
+    "process_start": "1384765509"
+  },
+  "CPU_affinity": [
+    2
+  ],
+  "inventory_verified_hosts": [
+    "lambda0",
+    "lambda1",
+    "lambda2",
+    "lambda4",
+    "lambda5",
+    "lambda6",
+    "lambda11",
+    "lambda12",
+    "lambda13"
+  ],
+  "inventory_unverified_hosts": [],
+  "available_slots_at_snapshot": [],
+  "checked_native_at_snapshot": 4,
+  "running_scientific_workers_at_snapshot": 0,
+  "scope": "Per-host availability adapter only; original scientific producer, electronic states, solver and QC unchanged; live statuses may change.",
+  "sources": {
+    "scripts/pipeline/coordinate_native_inventory_resilient.py": "57d20c8f917cd066572598bf70262c2660f01d4774491258833b070e7377f1d4",
+    "tests/test_resilient_native_inventory.py": "35cf309589a08995b6b6d8eaa508fd70aabeed2dc640aa5ea496155e2ac7dee3",
+    "scripts/pipeline/coordinate_smooth_native_batch.py": "153af857fede6410b03fed5327939f0094bdaa9083fc1cbb15defadff581aab2",
+    "results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/batch.json": "c05d1c87352b0fb774af70f5da33c381ae14d4763e318c149f29f48712dc60db",
+    "results/reviews/2026-10-26/native_inventory_recovery/inventory_snapshot.json": "26ec48215733badd761b65bd52284cb0ec8a1f3a88aa883df0807110b031d97d",
+    "results/reviews/2026-10-26/native_inventory_recovery/dispatch_snapshot.json": "fb694c658aa5c8741a06e19337a1afe6fa6967c69c66f75a5e6d60ad70975eb2",
+    "results/reviews/2026-10-26/native_inventory_recovery/tests.xml": "16fb5c5493abf96e41de78e1c9b171ebc84fce0bfbae15bb8906bf81d2fa573a"
+  }
+}
