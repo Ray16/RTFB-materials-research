@@ -17,6 +17,8 @@ polymer attachment precedent, an exact precursor/product graph and a mapped bond
 its route is held and it has no new redox calculations. It is not assigned to a
 shielding/linker comparison slot until a matched panel is defined and reviewed.
 
+A separate [amino-TEMPO local graft proposal](../results/discovery/tempo_amino_2026-10-26/README.md) compares an N-linked attachment handle with the existing O-linked model. Its route is held; it is not a matched shielding or linker-rigidity comparison, and has no calculated properties.
+
 An existing oxidation-active [TEMPO local graft](../results/grafting/tempo_exact_support_2026-10-26/README.md)
 now has an exact-support attachment precedent and a checked local-model
 oxidation potential. Its route screen passes, but its material decision remains

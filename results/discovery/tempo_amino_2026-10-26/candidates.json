@@ -1,0 +1,57 @@
+[
+  {
+    "id": "amino_tempo_capped",
+    "name": "4-amino-TEMPO N-benzyl capped-site proposal",
+    "frag": "CC1(C)CC(N[*:1])CC(C)(C)N1[O]",
+    "precursor_inchikey": "XUXUHDYTLNCYQQ-UHFFFAOYSA-N",
+    "product_inchikey": "CXZNRAXNUPQDND-UHFFFAOYSA-N",
+    "product_formula": "C17H27N2O",
+    "product_molecular_weight": 275.416,
+    "proposed_charge_spin_states": [
+      [
+        "rad",
+        0,
+        2,
+        0
+      ],
+      [
+        "ox",
+        1,
+        1,
+        1
+      ]
+    ],
+    "state_assignment_scope": "proposed states; physical spin and redox properties unverified",
+    "exact_design_key": "0838d0ccfe1200c7646dd73d4f0203e15e5c5b4a11db233359ff6fd7ff565b4e",
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CNC2CC(C)(C)N([O])C(C)(C)C2)cc1",
+      "precursor_smiles": "CC1(C)CC(N)CC(C)(C)N1[O]",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][NH:1015][CH:1014]2[CH2:1013][C:1011]([CH3:1010])([CH3:1012])[N:1021]([O:1022])[C:1018]([CH3:1019])([CH3:1020])[CH2:1017]2)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[CH3:1010][C:1011]1([CH3:1012])[CH2:1013][CH:1014]([NH2:1015])[CH2:1017][C:1018]([CH3:1019])([CH3:1020])[N:1021]1[O:1022]",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1015
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "CC1(C)CC(N)CC(C)(C)N1[O]",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CNC2CC(C)(C)N([O])C(C)(C)C2)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  }
+]
