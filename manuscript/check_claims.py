@@ -734,6 +734,37 @@ def audit_tempo_exact_support(load):
                 pending_axes=len(result['pending_axes']),new_quantum_jobs=0)
 
 
+def audit_tempo_archive(load,digest):
+    try:
+        archive=load('tempo_archive.json')
+    except FileNotFoundError:
+        return None
+    relocation=load('tempo_archive_relocation.json');package=load('tempo_archive_manifest.json')
+    if (archive['status']!='TEMPO_raw_archive_and_two_relocated_replays_checked'
+            or relocation['status']!='TEMPO_archive_and_two_relocated_replays_checked'
+            or archive['raw_states']!=4 or archive['Hessians_reconstructed']!=4
+            or relocation['archive_sha256']!=archive['archive_sha256']
+            or digest('tempo_archive_manifest.json')!=archive['package_manifest_sha256']
+            or relocation['package_manifest_sha256']!=archive['package_manifest_sha256']
+            or len(package['states'])!=4 or archive['public_archive_deposited'] or archive['public_DOI_created']):
+        raise ValueError('TEMPO raw archive coverage or scope differs')
+    for key in ('stdlib_isolation','native_isolation'):
+        isolation=relocation[key]
+        if (not isolation['isolated_python'] or isolation['original_project_open_attempts']
+                or isolation['forbidden_modules_loaded']):
+            raise ValueError('TEMPO relocated replay isolation differs')
+    native=relocation['native_result']
+    if (not native['nuclear_partition_reintegrated'] or native['native_reconstruction']['Hessians_reconstructed']!=4
+            or native['experimental_accuracy_inferred'] or native['grafting_deltaG_computed']
+            or native['material_eligibility_inferred']):
+        raise ValueError('TEMPO Hessian replay or interpretation differs')
+    expected=load('tempo_native_potential.json')['potential_V_vs_Fc_by_rotor_cutoff']
+    if any(abs(native['oxidation_V_vs_Fc_by_cutoff'][c]-expected[c])>1e-9 for c in ('25','50','100')):
+        raise ValueError('TEMPO archived potential differs from manuscript evidence')
+    return dict(raw_states=4,Hessians_reconstructed=4,original_project_reads_blocked=True,
+                quantum_calculations_repeated=False,public_archive_deposited=False)
+
+
 def audit():
     root = Path(__file__).resolve().parents[1]
     pointer = json.loads((root / "manuscript/evidence/current.json").read_text())
@@ -1019,6 +1050,7 @@ def audit():
                 control_addendum=controls_addendum,
                 neighbor_archive=neighbor_archive,
                 tempo_exact_support=audit_tempo_exact_support(load),
+                tempo_archive=audit_tempo_archive(load,lambda name:hashlib.sha256((folder/name).read_bytes()).hexdigest()),
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

@@ -8,8 +8,8 @@ revision, not by a proposed calculation or a running job.
 The separate [TEMPO exact-support assessment](../results/grafting/tempo_exact_support_2026-10-26/README.md)
 adds a source-supported attachment and independently reconstructed local-model
 oxidation potential. Its route passes, but nine required material axes remain
-pending. The new TEMPO raw states are not yet included in the consolidated
-reviewer archive and must be added before public deposition.
+pending. A separately checked TEMPO raw-state addendum is now available; it
+still needs inclusion in the consolidated reviewer archive before deposition.
 
 ## Major comments and submission requirements
 

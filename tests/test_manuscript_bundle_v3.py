@@ -34,7 +34,7 @@ def test_current_epoch_must_be_included_and_match_committed_bytes(monkeypatch,tm
 def test_v3_declares_five_distinct_packages_and_current_tempo_epoch():
     config=json.loads((ROOT/'config/manuscript_reviewer_bundle_v3.json').read_text())
     assert {p['id'] for p in config['packages']}=={'primary_review','first_site','numerical_controls','neighbor_cycle','tempo_addendum'}
-    assert 'manuscript/evidence/2026-10-26_tempo_exact_support' in config['source_paths']
+    assert 'manuscript/evidence/2026-10-26_tempo_raw_replay' in config['source_paths']
     assert config['data_license'] is None and config['author_metadata'] is None
 
 

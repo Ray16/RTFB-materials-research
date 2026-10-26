@@ -1,10 +1,10 @@
 {
   "status": "assistant_rendered_visual_review_checked",
-  "checked_UTC": "2026-10-26T23:17:25Z",
+  "checked_UTC": "2026-10-26T23:39:56Z",
   "reviewer": "Codex assistant",
   "documents": {
     "manuscript": {
-      "pdf_sha256": "017a56ae7cf8a73d51d621c57d8754de210402114713139ec59cd6046e29df19",
+      "pdf_sha256": "386fcf425a4433c1cccb15775b65cde3269574bf169ce6640ecc9c4ca1cffc36",
       "pages_reviewed": [
         1,
         2,
@@ -26,12 +26,11 @@
         18
       ],
       "detail_pages": [
-        7,
         14
       ]
     },
     "supporting_information": {
-      "pdf_sha256": "f90641942406df9950a9c072445a4a9d1eccb4bce42aee0dd1e4de831bd378c6",
+      "pdf_sha256": "e77bd2c87569bbb0014b617405a598773fe62a21a4e2972d82c572b71fef0b37",
       "pages_reviewed": [
         1,
         2,
@@ -54,12 +53,13 @@
         19
       ],
       "detail_pages": [
-        4,
-        5
+        17,
+        18,
+        19
       ]
     }
   },
-  "method": "Ghostscript 40 dpi full-document montages and 100 dpi detailed changed pages; final rebuild text compared to previously reviewed render",
-  "findings": "No clipping, overlaps, missing figures, or obvious pagination errors; final data-availability paragraph inspected.",
-  "scope": "Visual layout check, not an independent scientific or author review."
+  "method": "100 dpi inspection of changed pages plus text comparison to previously reviewed full-document render",
+  "findings": "No clipping, overlaps, missing figures or obvious pagination errors on changed pages.",
+  "scope": "Visual layout check, not independent scientific or author review."
 }

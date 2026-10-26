@@ -31,5 +31,5 @@ A later [explicit xTB-prefix entry point](../results/validation/xtb_prefix_bindi
 The [TEMPO exact-support case](../results/grafting/tempo_exact_support_2026-10-26/README.md)
 is included in the current article and SI. Its route passes and its computed local
 oxidation potential is source-bound, while material selection remains pending.
-The existing reviewer bundle predates this case; its newly used raw TEMPO states
-must be included in a successor package before deposition.
+A separate [raw-state addendum](../results/releases/tempo_addendum/README.md)
+has passed relocated replay; a consolidated successor remains pending.
