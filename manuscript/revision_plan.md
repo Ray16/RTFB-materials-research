@@ -20,6 +20,11 @@ revision, not by a proposed calculation or a running job.
 | M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 18 (including the TOC page) and 18 pages, respectively |
 | Remaining endpoint | The fixed panel now has 39/39 endpoints; the last triplet alternative is 0.707 eV above the selected singlet electronically. Independent reconstruction: 111 checks, zero discrepancies. Alternative-spin thermochemistry remains explicitly unresolved. | Calculation/reconstruction resolved; latest draft updated |
 
+An [external NDI measurement](../results/validation/ndi_external_challenge_2026-10-26/README.md)
+has been source-checked in MeCN, with an exact proposed molecular graph and
+explicit quasi-reversible peak limitations. Its states have not been computed;
+it is not in the fixed benchmark and does not yet establish NDI accuracy.
+
 The broader-conformer continuation now has declared refinement coverage for all
 240 separated starts across twelve graph/configuration sets. The last two
 occupied geometry resource classes passed their independent reviews. Separate

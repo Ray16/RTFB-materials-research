@@ -12,6 +12,10 @@ original studies: MAE 0.247 V, RMSE 0.279 V and signed bias +0.190 V. All fixed 
 reported as descriptive resampling of this retrospective panel. No model
 correction or outlier removal is fitted.
 
+An additional [NDI experimental challenge](../ndi_external_challenge_2026-10-26/README.md)
+has been identified separately. Its quasi-reversible peak midpoints are proxies,
+its calculated states are pending, and it has not been added to this fixed panel.
+
 The [latest independent review](../../reviews/2026-10-22/publication_benchmark_complete/summary.json)
 and [reproduction guide](../../../docs/PUBLICATION_READINESS.md) distinguish
 execution correctness, source quality, physical state QC and prediction accuracy.

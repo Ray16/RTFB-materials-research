@@ -24,6 +24,12 @@ cover expansion; slides 7–10 cover validation. Keep those sections if time is 
 
 Numerical answers to likely questions:
 
+- An exact NDI–styrene free molecule has source-reported MeCN voltammetry
+  versus Fc/Fc⁺, but its states have not been computed. Its quasi-reversible
+  peak midpoints are tentative proxies and are not included in the 39-endpoint
+  benchmark or claimed as formal potentials. This is a method control, not a
+  proposed synthesis route for the preformed polymer.
+
 - Four checked empty-chain free energies span 7.19 kJ/mol at the 50 cm⁻¹
   cutoff in the separate smooth-solvent model. Their pairwise heavy-atom RMSDs
   are 2.01–4.27 Å; the four-state finite partition lowers the minimum by
