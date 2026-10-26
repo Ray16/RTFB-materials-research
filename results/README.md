@@ -3,7 +3,9 @@
 Use these stable paths. Completed quantities carry field-specific QC; blank values
 are pending or excluded. Raw calculations and earlier source snapshots are retained.
 
-The [consolidated manuscript reviewer bundle](releases/manuscript_bundle/README.md) gathers the current committed source/evidence and four overlapping raw-state packages. Isolated standard-library and locked NumPy replays pass after extraction; public data licensing, author metadata and DOI deposition remain open.
+The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v3/README.md) passes scoped kernel and CLI checks in the original and restored environments while retaining the qualified hashes. Full native/projected production requalification and broader path portability remain open.
+
+The [consolidated manuscript reviewer bundle](releases/manuscript_bundle/README.md) gathers the source snapshot used for the current manuscript evidence and four overlapping raw-state packages. Isolated standard-library and locked NumPy replays pass after extraction; public data licensing, author metadata and DOI deposition remain open.
 
 The [gas counterpoise control](reviews/2026-10-26/counterpoise_control/README.md) now passes an independent CPU/GPU, common-grid and auxiliary-basis review. The close phthalimide motif point is prepared; its live coordinator records whether a scientific worker has actually started. No solvent correction or experimental interaction accuracy is inferred from the small control.
 

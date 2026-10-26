@@ -900,6 +900,16 @@
       "replay": "results/releases/manuscript_bundle/stdlib_replay.json",
       "status": "consolidated_local_bundle_and_isolated_replays_checked_public_deposition_pending",
       "scope": "Current source/evidence plus four overlapping raw-state archives; no physical-QC rerun or conformer convergence"
+    },
+    "xtb_prefix_binding": {
+      "guide": "results/validation/xtb_prefix_binding_2026-10-26_v3/README.md",
+      "current": "results/validation/xtb_prefix_binding_2026-10-26_v3/summary.json",
+      "source_snapshot": "results/validation/xtb_prefix_binding_2026-10-26_v3/fresh_python.json",
+      "raw_root": "calcs/validation/2026-10-26_xtb_path_binding_v3",
+      "entrypoint": "scripts/pipeline/run_portable_thermal.py",
+      "status": "qualified_kernel_and_CLI_relocation_checked_production_modes_not_requalified",
+      "scope": "Explicit process-local qualified xTB prefix; no new GPU calculation or full platform portability claim",
+      "previous_review": "results/validation/xtb_prefix_binding_2026-10-26_v2/superseded_review.json"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

@@ -5,14 +5,15 @@
   "requirements": [
     {
       "id": "software_correctness",
-      "status": "full_CPU_regression_passed_15_skips_passed_separately_later_coordinator_tests_checked",
+      "status": "full_CPU_regression_passed_15_skips_passed_separately_later_component_tests_checked",
       "completion_evidence_required": "Fresh full regression and separate figure dependency test; independent arithmetic and negative QC tests",
       "current_evidence": "results/validation/dipea_uv_anchor_2026-10-26/full_regression_summary.json",
       "supplementary_skips": [
         "results/validation/dipea_uv_anchor_2026-10-26/neighbor_replay_tests.xml",
         "results/validation/dipea_uv_anchor_2026-10-26/figure_dependency_test.xml"
       ],
-      "later_coordinator_tests": "results/reviews/2026-10-26/counterpoise_control/coordinator_tests.xml"
+      "later_coordinator_tests": "results/reviews/2026-10-26/counterpoise_control/coordinator_tests.xml",
+      "later_xtb_binding_tests": "results/validation/xtb_prefix_binding_2026-10-26_v3/tests.xml"
     },
     {
       "id": "real_restart_equivalence",
@@ -65,7 +66,8 @@
       "completion_evidence_required": "Fresh-checkout small example, environment/dependency records, source/input/output hashes and admitted figure regeneration",
       "current_evidence": "results/releases/manuscript_bundle/current.json",
       "first_site_addendum": "results/releases/first_site/current.json",
-      "neighbor_cycle_addendum": "results/releases/neighbor_cycle/current.json"
+      "neighbor_cycle_addendum": "results/releases/neighbor_cycle/current.json",
+      "xtb_prefix_binding": "results/validation/xtb_prefix_binding_2026-10-26_v3/summary.json"
     },
     {
       "id": "repository_consolidation",
