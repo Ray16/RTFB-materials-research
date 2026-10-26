@@ -1,0 +1,51 @@
+{
+  "status": "validated_components_full_scalability_qualification_incomplete",
+  "synthetic_tasks": 1000000,
+  "scientific_throughput_validated": false,
+  "remaining": [
+    "Actual shared-filesystem interrupted-worker recovery experiment",
+    "Controlled concurrency/saturation measurements and per-worker peak memory",
+    "Adapters for conformer/quantum selected subsets; retain route and physical QC gates"
+  ],
+  "million": {
+    "tasks": 1000000,
+    "discrepancies": 0,
+    "chunks": 1000,
+    "worker_processes": 8,
+    "workers_executing_chunks": 8,
+    "participating_hosts": [
+      "lambda1",
+      "lambda2"
+    ],
+    "worker_execution_span_seconds": 9.58170747756958,
+    "execution_tasks_per_second": 104365.53217064524,
+    "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_million_control",
+    "raw_file_count": 4030,
+    "raw_bytes": 875596777,
+    "audit": "results/validation/scalability_2026-10-21/million_audit.json",
+    "preparation_seconds": 75.90490674972534,
+    "preparation_peak_RSS_KiB": 68792
+  },
+  "family": {
+    "tasks": 837,
+    "discrepancies": 0,
+    "chunks": 14,
+    "worker_processes": 4,
+    "workers_executing_chunks": 2,
+    "participating_hosts": [
+      "lambda1"
+    ],
+    "worker_execution_span_seconds": 0.7074892520904541,
+    "execution_tasks_per_second": 1183.0568415376968,
+    "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/scale_validation/2026-10-21_real_family",
+    "raw_file_count": 74,
+    "raw_bytes": 2217198,
+    "audit": "results/validation/scalability_2026-10-21/family_audit.json"
+  },
+  "source_sha256": {
+    "src/redox/workflows/chunked.py": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+    "src/redox/screening/streaming_search.py": "994a2fbf4c4a447f66fb83b855772758225d04a2d4206204f0cc75a636d30833",
+    "src/redox/workflows/cpu_chunks.py": "6ed48703087973a0938cf1797e2add94aa6268f6ec7b3382c9ace6e7646c6e56",
+    "scripts/validation/audit_chunk_benchmark.py": "fe2ef4ebdd8607ac905ca2d18916b9ae5b0f45df00b2d36cef745bb2d0032af5"
+  }
+}

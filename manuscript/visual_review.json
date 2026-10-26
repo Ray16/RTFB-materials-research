@@ -1,11 +1,21 @@
 {
-  "checked_UTC": "2026-10-25T23:14:07.144852+00:00",
-  "review_type": "assistant rendered-page inspection; separate from compiler checks",
+  "status": "rendered_manuscript_and_SI_visually_reviewed",
+  "checked_UTC": "2026-10-26T01:39:48Z",
+  "reviewer": "assistant visual inspection",
   "documents": {
-    "manuscript": "e0bf69d53d1e89534d62d65707c40254b441e44749f6ced5b81563b95583eb41",
-    "supporting_information": "0d88009b4796d36b43f1e5b055eb2cf8b37d348b1ffd03d2291133b105f6feab"
+    "manuscript": {
+      "pages": 18,
+      "pdf_sha256": "c8e160730ba5c50561e0d4762456a0f88c04e939b9ce6d7516cd5b70c3460c80",
+      "overfull_boxes": []
+    },
+    "supporting_information": {
+      "pages": 18,
+      "pdf_sha256": "118119152ab2d5b1451e0157e2cc710709eb8784bb39a0bcc55aa77d9c7c3245",
+      "overfull_boxes": []
+    }
   },
-  "contact_sheets_reviewed": {
+  "contact_sheets_reviewed": true,
+  "pages_reviewed_via_contact_sheets": {
     "manuscript": [
       1,
       2,
@@ -47,22 +57,17 @@
       18
     ]
   },
-  "detail_pages_reviewed": {
+  "full_resolution_pages_reviewed": {
     "manuscript": [
-      10,
-      11
+      14
     ],
     "supporting_information": [
-      7,
-      8
+      16
     ]
   },
-  "findings": [
-    "All 18 article and 18 SI pages inspected without clipping or figure/caption overlap.",
-    "The exact PMDI cycle, its two conditional attachment orders, rotor-cutoff settings and one-minimum scope agree with the independently reconstructed data.",
-    "The actual paired geometry shows separated cores; caption and text distinguish sequence adjacency from contact, binding and coupling.",
-    "Compiler checks report zero overfull boxes and resolved references."
-  ],
-  "build_sha256": "493a69dcbe557787a9ca9e58af2950a8b7a8e23a9665a08be5ce1208e7d7280f",
-  "submission_ready": false
+  "findings": "Reproducibility paragraphs are legible with normal margins and no clipping, overlaps or isolated headings. Both 18-page documents retain the checked chemical figures and finite-sample scope; no new ensemble result or public DOI is implied.",
+  "unchanged_figure_PDFs": 19,
+  "render_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_native_publication/rendered_v2/render_record.json",
+  "render_record_sha256": "33fda2efaa48fb0b719903866afdee0fd690000dcbdebeb27d5fb8df64c0a78e",
+  "author_scientific_approval_inferred": false
 }

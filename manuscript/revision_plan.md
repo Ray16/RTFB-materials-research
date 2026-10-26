@@ -35,10 +35,13 @@ The [paired-cycle raw addendum](../results/releases/neighbor_cycle/README.md)
 closes the latest local archive-coverage gap: fourteen cached states and balanced
 comparisons reproduce the complete exact-PMDI cycle at all three rotor cutoffs
 after extraction with original checkout reads blocked. Seven nominal/adverse-input
-checks pass. This extends the earlier thirteen-state first-site artifact without
-altering it. It does not close public deposition, nuclear reintegration for the
-new archive, general cluster-path portability or conformer convergence; the main
-manuscript's chemical numbers and scientific scope are unchanged.
+checks initially passed. The extended package now also reconstructs thirteen
+molecular Hessian mode sets and nuclear sums at three cutoffs, plus monatomic
+chloride translation, in the locked fresh NumPy environment. Fourteen nominal
+and adverse-input checks pass. This extends the earlier thirteen-state first-site
+artifact without altering it. Public deposition, general cluster-path portability
+and conformer convergence remain open. The revised manuscript and SI report the
+new reproducibility evidence without changing the chemical numbers or scope.
 
 The end-to-end examples and adequate conformer evidence are required before
 claiming a complete selection framework. The open PMDI trimer slots and an NDI

@@ -9,6 +9,61 @@ from collections import Counter
 from pathlib import Path
 
 
+def audit_neighbor_archive(load):
+    try:current=load('neighbor_archive.json')
+    except FileNotFoundError:return None
+    proof=load('neighbor_archive_relocation.json');manifest=load('neighbor_archive_manifest.json')
+    if (proof['status']!='neighbor_archive_inventory_and_two_relocated_replays_checked'
+            or current['archive_sha256']!=proof['archive_sha256']
+            or current['package_manifest_sha256']!=proof['package_manifest_sha256']
+            or proof['archive_regular_files']!=len(manifest['files_sha256'])+1
+            or len(manifest['states'])!=14 or len(manifest['reactions'])!=14
+            or proof['raw_states']!=14 or proof['balanced_reactions']!=14
+            or not proof['nuclear_partition_reintegrated']
+            or proof['public_archive_deposited'] or proof['conformer_convergence_established']):
+        raise ValueError('Raw neighbor archive coverage, identity or scope differs')
+    for key in ('conformer_convergence_established','synthesis_admission',
+                'isolated_motif_interaction_computed','electronic_coupling_computed'):
+        if manifest[key] or proof['arithmetic'][key]:raise ValueError('Neighbor replay scope was promoted')
+    for mode,key in [('stdlib','isolation'),('native','native_isolation')]:
+        row=proof[key]
+        if (row['attempted_original_reads'] or row['forbidden_modules_loaded'] or not row['isolated_python']
+                or (mode=='stdlib' and (not row['site_imports_disabled'] or row['numpy_version'] is not None))
+                or (mode=='native' and row['numpy_version']!='2.2.6')):
+            raise ValueError('Neighbor replay lacks isolated declared dependencies')
+    native=proof['native_reconstruction'];states={r['id']:r for r in manifest['states']}
+    expected={r['id'] for r in manifest['states'] if r['partition_kind']!='monatomic'}
+    if (len(states)!=14 or native['Hessians_reconstructed']!=13 or native['monatomic_partitions_recomputed']!=1
+            or len(native['states'])!=13 or {r['id'] for r in native['states']}!=expected
+            or native['xTB_library_loaded'] or native['original_stationarity_spin_and_displaced_SCF_QC_repeated']):
+        raise ValueError('Native archive reconstruction coverage differs')
+    for row in native['states']:
+        errors=[row['frequency_max_error_cm'],*row['nuclear_errors_eV'].values()]
+        if (set(row['nuclear_errors_eV'])!={'25','50','100'}
+                or not all(math.isfinite(v) and v>=0 for v in errors)
+                or errors[0]>1e-5 or max(errors[1:])>1e-8):
+            raise ValueError('Neighbor Hessian/nuclear replay exceeds its tolerances')
+    if (len(native['monatomic_states'])!=1 or native['monatomic_states'][0]['id']!='chloride'
+            or not 0<=native['monatomic_states'][0]['nuclear_error_eV']<=1e-8):
+        raise ValueError('Monatomic replay differs')
+    source=load('neighbor_cycle.json')
+    for alias,name in [('polymer_pair','pair'),('empty','empty'),('site2','site2'),('site3','site3')]:
+        value=states[alias]['checked_G_eV']
+        if not math.isfinite(value) or abs(value-source['states'][name]['G_eV'])>1e-8:
+            raise ValueError('Archived exact chain state differs from paper cycle')
+    for cutoff in ('25','50','100'):
+        values=proof['arithmetic']['by_cutoff'][cutoff];expected=source['by_cutoff'][cutoff]
+        if not math.isfinite(values['deltaDeltaG_kJ_mol']) or abs(values['deltaDeltaG_kJ_mol']-expected['deltaDeltaG_kJ_mol'])>1e-6:
+            raise ValueError('Archived neighbor cycle differs')
+        for mode,rows in values['models'].items():
+            for name,value in rows.items():
+                if not math.isfinite(value) or abs(value-expected['models'][mode][name])>1e-6:
+                    raise ValueError('Archived conditional reaction differs')
+    return dict(raw_states=14,balanced_reactions=14,Hessians_reconstructed=13,
+        monatomic_partitions_recomputed=1,original_project_reads_blocked=True,
+        independent_nuclear_reconstruction=True,original_quantum_QC_repeated=False)
+
+
 def audit_neighbor_cycle(load):
     try:
         row=load('neighbor_cycle.json')
@@ -807,6 +862,15 @@ def audit():
     fc_functional = audit_fc_functional_controls(load)
     neighbor = audit_neighbor_cycle(load)
     controls_addendum = audit_control_addendum(load)
+    neighbor_archive = audit_neighbor_archive(load)
+    if neighbor_archive is not None:
+        if hashlib.sha256((folder/'neighbor_archive_manifest.json').read_bytes()).hexdigest()!=load('neighbor_archive.json')['package_manifest_sha256']:
+            raise ValueError('Frozen neighbor manifest differs from the extracted package')
+        import xml.etree.ElementTree as ET
+        suites=list(ET.parse(folder/'neighbor_archive_tests.xml').getroot().iter('testsuite'))
+        totals=[sum(int(s.get(k,'0')) for s in suites)
+                for k in ('tests','failures','errors','skipped')]
+        if totals!=[14,0,0,0]:raise ValueError('Neighbor archive integration checks did not all pass')
     if cutoff is not None:
         if hashlib.sha256((folder / "thermal_cutoff_sensitivity.json").read_bytes()).hexdigest() != load("thermal_cutoff_review.json")["result_sha256"]:
             raise ValueError("Frozen thermal-cutoff result differs from its independent source review")
@@ -840,6 +904,7 @@ def audit():
                 Fc_functional_controls=fc_functional,
                 neighbor_cycle=neighbor,
                 control_addendum=controls_addendum,
+                neighbor_archive=neighbor_archive,
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

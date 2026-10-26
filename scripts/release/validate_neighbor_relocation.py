@@ -16,7 +16,7 @@ import time
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def worker(package,out,forbidden):
+def worker(package,out,forbidden,full_native=False,expected_prefix=None):
     blocked=[]
     def audit(event,args):
         if event=='open' and isinstance(args[0],(str,bytes)):
@@ -24,18 +24,28 @@ def worker(package,out,forbidden):
             if path.is_relative_to(forbidden):
                 blocked.append(str(path));raise RuntimeError('Original project reads are forbidden')
     sys.addaudithook(audit)
-    result=out/'arithmetic.json';sys.argv=[str(package/'reproduce.py'),'--data',str(package),'--out',str(result)]
+    result=out/('native_arithmetic.json' if full_native else 'arithmetic.json')
+    sys.argv=[str(package/'reproduce.py'),'--data',str(package),'--out',str(result)]
+    if full_native:sys.argv.append('--full-native')
     runpy.run_path(str(package/'reproduce.py'),run_name='__main__')
-    loaded=[n for n in sys.modules if n.split('.')[0] in {'numpy','redox','pyscf','gpu4pyscf','cupy','torch','ase'}]
+    forbidden_modules={'redox','pyscf','gpu4pyscf','cupy','torch','ase'}
+    if not full_native:forbidden_modules.add('numpy')
+    loaded=[n for n in sys.modules if n.split('.')[0] in forbidden_modules]
     if blocked or loaded:raise RuntimeError('Replay attempted original reads or loaded scientific/production packages')
-    (out/'isolation.json').write_text(json.dumps(dict(status='stdlib_neighbor_replay_passed_original_reads_blocked',
+    numpy=sys.modules.get('numpy')
+    if full_native and (numpy is None or numpy.__version__!='2.2.6' or Path(sys.prefix).resolve()!=expected_prefix
+            or not Path(numpy.__file__).resolve().is_relative_to(expected_prefix)):
+        raise RuntimeError('Native replay did not use the declared fresh locked NumPy environment')
+    isolation=out/('native_isolation.json' if full_native else 'isolation.json')
+    isolation.write_text(json.dumps(dict(status='native_neighbor_replay_passed_original_reads_blocked' if full_native else 'stdlib_neighbor_replay_passed_original_reads_blocked',
         checked=time.time(),attempted_original_reads=blocked,forbidden_modules_loaded=loaded,
         site_imports_disabled=bool(sys.flags.no_site),isolated_python=bool(sys.flags.isolated),
+        numpy_version=None if numpy is None else numpy.__version__,numpy_location=None if numpy is None else numpy.__file__,
         interpreter=sys.executable,CPU_affinity=sorted(os.sched_getaffinity(0)),
         result_sha256=sha(result),validator_sha256=sha(__file__)),indent=2)+'\n')
 
 
-def validate(source,archive,out,python):
+def validate(source,archive,out,python,fresh_python=None):
     root=Path(__file__).resolve().parents[2]
     if out.is_relative_to(root):raise ValueError('Extract outside the original checkout')
     from redox.workflows.resources import allocation_guard,cpu_allocation,host_capacity
@@ -72,23 +82,33 @@ def validate(source,archive,out,python):
     result=json.loads((out/'arithmetic.json').read_text());isolation=json.loads((out/'isolation.json').read_text())
     if result['states']!=14 or result['balanced_reactions']!=14 or not isolation['site_imports_disabled'] or not isolation['isolated_python']:
         raise ValueError('Relocated replay did not meet its declared scope')
-    proof=dict(status='neighbor_archive_inventory_and_relocated_stdlib_replay_checked',checked=time.time(),
+    native=None;native_isolation=None
+    if fresh_python:
+        args=[str(fresh_python),'-B','-I',str(helper),'--worker','--full-native','--package',str(extracted/source.name),
+            '--out',str(out),'--forbid-root',str(root),'--expected-prefix',str(fresh_python.parent.parent)]
+        with (out/'native_replay.log').open('x') as log:subprocess.run(args,cwd=out,env=env,stdout=log,stderr=subprocess.STDOUT,check=True)
+        native=json.loads((out/'native_arithmetic.json').read_text());native_isolation=json.loads((out/'native_isolation.json').read_text())
+        if (native['native_reconstruction']['Hessians_reconstructed']!=13
+                or native['native_reconstruction']['monatomic_partitions_recomputed']!=1
+                or not native_isolation['isolated_python']):raise ValueError('Incomplete native reconstruction')
+    proof=dict(status='neighbor_archive_inventory_and_two_relocated_replays_checked' if native else 'neighbor_archive_inventory_and_relocated_stdlib_replay_checked',checked=time.time(),
         archive=str(archive),archive_sha256=sha(archive),archive_bytes=archive.stat().st_size,
         archive_regular_files=len(members),package_manifest_sha256=sha(source/'manifest.json'),
         raw_states=14,balanced_reactions=14,rotor_cutoffs_cm=[25,50,100],isolation=isolation,
         arithmetic=result,validator_sha256=sha(__file__),public_archive_deposited=False,
-        nuclear_partition_reintegrated=False,conformer_convergence_established=False)
+        nuclear_partition_reintegrated=bool(native),conformer_convergence_established=False)
+    if native:proof.update(native_reconstruction=native['native_reconstruction'],native_isolation=native_isolation)
     (out/'validation.json').write_text(json.dumps(proof,indent=2)+'\n');return proof
 
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--worker',action='store_true')
-    for name in ('package','archive','out','forbid-root','stdlib-python'):p.add_argument('--'+name,type=Path)
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--worker',action='store_true');p.add_argument('--full-native',action='store_true')
+    for name in ('package','archive','out','forbid-root','stdlib-python','fresh-python','expected-prefix'):p.add_argument('--'+name,type=Path)
     a=p.parse_args()
-    if a.worker:worker(a.package.resolve(),a.out.resolve(),a.forbid_root.resolve())
+    if a.worker:worker(a.package.resolve(),a.out.resolve(),a.forbid_root.resolve(),a.full_native,a.expected_prefix.resolve() if a.expected_prefix else None)
     else:
         if not all([a.package,a.archive,a.out]):p.error('Supply package, archive and out')
-        result=validate(a.package.resolve(),a.archive.resolve(),a.out.resolve(),a.stdlib_python or Path(sys.executable))
+        result=validate(a.package.resolve(),a.archive.resolve(),a.out.resolve(),a.stdlib_python or Path(sys.executable),a.fresh_python)
         print(json.dumps({k:result[k] for k in ['status','archive_regular_files','raw_states','balanced_reactions']}))
 
 

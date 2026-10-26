@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 """Extend the checked first-site raw package with the completed PMDI pair."""
 import argparse
+import ast
 import json
 import os
 from pathlib import Path
@@ -45,6 +46,15 @@ def prepare(first_site,source,out):
     shutil.move(out/'README.md',out/'first_site_README.md')
     copy(ROOT/'examples/neighbor_cycle_replay/reproduce.py',out/'reproduce.py')
     copy(Path(__file__).resolve(),out/'prepare_neighbor_source.py');copy(source,out/'neighbor_source.json')
+    derived={}
+    for script,function,filename,imports in [
+        (ROOT/'scripts/validation/review_smooth_quantum.py','projected_modes','projected_modes.py','import numpy as np'),
+        (ROOT/'scripts/validation/audit/native_partition.py','nuclear_equations','nuclear_equations.py','import math\nimport numpy as np')]:
+        text=script.read_text();tree=ast.parse(text)
+        node=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==function)
+        (out/filename).write_text('"""Frozen independent CPU replay function; source recorded in manifest."""\n'+imports+'\n\n'+ast.get_source_segment(text,node)+'\n')
+        sources[str(script)]=api.digest(script);derived[filename]=dict(source=str(script),source_sha256=api.digest(script),function=function)
+    copy(ROOT/'examples/control_replay/requirements-cpu.lock.txt',out/'requirements-cpu.lock.txt')
     files={}
     for role,p in paths.items():
         target=out/'polymer_pair'/(role+p.suffix);copy(p,target);files[role]=str(target.relative_to(out))
@@ -66,8 +76,9 @@ def prepare(first_site,source,out):
         original['reactions'].append(dict(name='direct_double_'+mode,coefficients=coefficients,
             delta_n_solutes=sum(coefficients.values()),source_kJ_mol=report['by_cutoff']['50']['models'][mode]['direct_double_graft_kJ_mol']))
     original.update(neighbor_source='neighbor_source.json',source_sha256={**original['source_sha256'],**sources},
+        derived_native_replay_functions=derived,
         conformer_convergence_established=False,synthesis_admission=False,isolated_motif_interaction_computed=False,
-        electronic_coupling_computed=False,scope='Finite exact-PMDI native neighbor cycle and conditional DBU grafting; cached arithmetic, not independent nuclear integration or predictive validation')
+        electronic_coupling_computed=False,scope='Finite exact-PMDI native neighbor cycle and conditional DBU grafting; optional independent cached Hessian/nuclear reconstruction, not new SCF or predictive validation')
     (out/'README.md').write_text('''# Exact-PMDI neighbor-cycle raw addendum
 
 Run from any directory with standard Python and no site packages:
@@ -84,6 +95,21 @@ never opens the original cluster paths. It does not run QM, reintegrate nuclear
 terms, establish converged ensembles, isolate motif binding or calculate coupling.
 This extends the immutable first-site package without changing it. The archive
 is locally prepared; public data licensing, author metadata and DOI remain open.
+''')
+    with (out/'README.md').open('a') as stream:
+        stream.write('''
+For independent mode and nuclear reconstruction, use a fresh Python 3.11 Linux
+x86_64 venv, install the hash-locked NumPy wheel, and run:
+
+`python -m pip install --require-hashes -r /path/to/package/requirements-cpu.lock.txt`
+
+`python -B -I /path/to/package/reproduce.py --data /path/to/package --full-native`
+
+This mode reconstructs thirteen Cartesian Hessian projections, their nuclear sums
+at three cutoffs and the monatomic translation term. It uses packaged independent
+equations rather than xTB or a quantum library. It does not repeat original SCF,
+stationarity, spin or displaced-gradient validation. Default standard-library
+mode retains the cached-arithmetic scope described above.
 ''')
     original['files_sha256']={str(p.relative_to(out)):api.digest(p) for p in out.rglob('*') if p.is_file() and p!=out/'manifest.json'}
     api.verify_sources(sources);atomic_write_json(out/'manifest.json',original)

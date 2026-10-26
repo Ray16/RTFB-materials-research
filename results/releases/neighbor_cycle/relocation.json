@@ -1,11 +1,11 @@
 {
-  "status": "neighbor_archive_inventory_and_relocated_stdlib_replay_checked",
-  "checked": 1792976548.0636237,
-  "archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/releases/2026-10-26_neighbor_cycle_addendum_checked.tar.zst",
-  "archive_sha256": "5602361e2f08c2acca1be370c0ac3e4f6f6ace0a93451f469f4304cae44e488b",
-  "archive_bytes": 3948123,
-  "archive_regular_files": 94,
-  "package_manifest_sha256": "18d948aa8c4a0a1a783a615151d12060cb7e8d334f70fd20cda7a1e184b1b09a",
+  "status": "neighbor_archive_inventory_and_two_relocated_replays_checked",
+  "checked": 1792977897.0298665,
+  "archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/releases/2026-10-26_neighbor_cycle_native_replay.tar.zst",
+  "archive_sha256": "727c4f019111ce74fb2febaf4111c658821aaf62e1d1c22199fab55678da21b8",
+  "archive_bytes": 3952657,
+  "archive_regular_files": 97,
+  "package_manifest_sha256": "b2f2737f62f7d197360675a89fa750cd3ceb6129404497d2e5df98b51310135b",
   "raw_states": 14,
   "balanced_reactions": 14,
   "rotor_cutoffs_cm": [
@@ -15,17 +15,19 @@
   ],
   "isolation": {
     "status": "stdlib_neighbor_replay_passed_original_reads_blocked",
-    "checked": 1792976548.0508137,
+    "checked": 1792977896.4938335,
     "attempted_original_reads": [],
     "forbidden_modules_loaded": [],
     "site_imports_disabled": true,
     "isolated_python": true,
+    "numpy_version": null,
+    "numpy_location": null,
     "interpreter": "/usr/bin/python3",
     "CPU_affinity": [
-      32
+      12
     ],
     "result_sha256": "d5303522243a1a46d191567b50b1effe1b2fa90779ee0e137511537690479ed1",
-    "validator_sha256": "66690071d65d4bcd39d7cf9a94939d72d5d3b1c92bf270d8a1b7732644260740"
+    "validator_sha256": "9f1175679c9ceae407017057d3f36b2fe80ff207851ded914045751052bfb31a"
   },
   "arithmetic": {
     "status": "portable_exact_PMDI_neighbor_cycle_reconstructed",
@@ -98,8 +100,183 @@
     "isolated_motif_interaction_computed": false,
     "electronic_coupling_computed": false
   },
-  "validator_sha256": "66690071d65d4bcd39d7cf9a94939d72d5d3b1c92bf270d8a1b7732644260740",
+  "validator_sha256": "9f1175679c9ceae407017057d3f36b2fe80ff207851ded914045751052bfb31a",
   "public_archive_deposited": false,
-  "nuclear_partition_reintegrated": false,
-  "conformer_convergence_established": false
+  "nuclear_partition_reintegrated": true,
+  "conformer_convergence_established": false,
+  "native_reconstruction": {
+    "status": "raw_neighbor_Hessians_modes_and_nuclear_sums_independently_reconstructed",
+    "Hessians_reconstructed": 13,
+    "monatomic_partitions_recomputed": 1,
+    "states": [
+      {
+        "id": "precursor",
+        "internal_modes": 72,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 6.23856521997368e-12,
+        "nuclear_errors_eV": {
+          "25": 4.440892098500626e-16,
+          "50": 1.7763568394002505e-15,
+          "100": 0.0
+        }
+      },
+      {
+        "id": "local",
+        "internal_modes": 48,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 1.432454155292362e-11,
+        "nuclear_errors_eV": {
+          "25": 1.3322676295501878e-15,
+          "50": 1.3322676295501878e-15,
+          "100": 4.440892098500626e-16
+        }
+      },
+      {
+        "id": "base",
+        "internal_modes": 75,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 1.878674993349705e-11,
+        "nuclear_errors_eV": {
+          "25": 5.329070518200751e-15,
+          "50": 5.329070518200751e-15,
+          "100": 1.7763568394002505e-15
+        }
+      },
+      {
+        "id": "protonated",
+        "internal_modes": 78,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 3.434763584664324e-11,
+        "nuclear_errors_eV": {
+          "25": 1.5987211554602254e-14,
+          "50": 1.4210854715202004e-14,
+          "100": 7.993605777301127e-15
+        }
+      },
+      {
+        "id": "pair",
+        "internal_modes": 81,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 7.247535904753022e-12,
+        "nuclear_errors_eV": {
+          "25": 8.881784197001252e-16,
+          "50": 0.0,
+          "100": 8.881784197001252e-16
+        }
+      },
+      {
+        "id": "empty",
+        "internal_modes": 267,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 2.9320545991140534e-11,
+        "nuclear_errors_eV": {
+          "25": 3.197442310920451e-14,
+          "50": 4.263256414560601e-14,
+          "100": 4.618527782440651e-14
+        }
+      },
+      {
+        "id": "capped",
+        "internal_modes": 120,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 1.729461018840084e-11,
+        "nuclear_errors_eV": {
+          "25": 0.0,
+          "50": 1.7763568394002505e-14,
+          "100": 2.220446049250313e-14
+        }
+      },
+      {
+        "id": "site2",
+        "internal_modes": 339,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 2.2870594307278225e-11,
+        "nuclear_errors_eV": {
+          "25": 6.039613253960852e-14,
+          "50": 9.237055564881302e-14,
+          "100": 9.947598300641403e-14
+        }
+      },
+      {
+        "id": "site3",
+        "internal_modes": 339,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 3.0535574069290305e-11,
+        "nuclear_errors_eV": {
+          "25": 3.907985046680551e-14,
+          "50": 7.105427357601002e-15,
+          "100": 1.4210854715202004e-14
+        }
+      },
+      {
+        "id": "fc_neutral",
+        "internal_modes": 57,
+        "symmetry_number": 10,
+        "frequency_max_error_cm": 9.821476965043985e-11,
+        "nuclear_errors_eV": {
+          "25": 3.375077994860476e-14,
+          "50": 3.9968028886505635e-14,
+          "100": 5.3290705182007514e-14
+        }
+      },
+      {
+        "id": "fc_oxidized",
+        "internal_modes": 57,
+        "symmetry_number": 2,
+        "frequency_max_error_cm": 4.387601393318619e-12,
+        "nuclear_errors_eV": {
+          "25": 8.881784197001252e-16,
+          "50": 3.1086244689504383e-15,
+          "100": 3.1086244689504383e-15
+        }
+      },
+      {
+        "id": "capped_reduced",
+        "internal_modes": 120,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 1.972111363102158e-11,
+        "nuclear_errors_eV": {
+          "25": 7.993605777301127e-15,
+          "50": 7.993605777301127e-15,
+          "100": 5.329070518200751e-15
+        }
+      },
+      {
+        "id": "polymer_pair",
+        "internal_modes": 411,
+        "symmetry_number": 1,
+        "frequency_max_error_cm": 4.7900350352847454e-11,
+        "nuclear_errors_eV": {
+          "25": 3.552713678800501e-14,
+          "50": 1.0658141036401503e-14,
+          "100": 1.4210854715202004e-14
+        }
+      }
+    ],
+    "monatomic_states": [
+      {
+        "id": "chloride",
+        "nuclear_error_eV": 5.551115123125783e-17
+      }
+    ],
+    "numpy_version": "2.2.6",
+    "original_stationarity_spin_and_displaced_SCF_QC_repeated": false,
+    "xTB_library_loaded": false
+  },
+  "native_isolation": {
+    "status": "native_neighbor_replay_passed_original_reads_blocked",
+    "checked": 1792977897.0065708,
+    "attempted_original_reads": [],
+    "forbidden_modules_loaded": [],
+    "site_imports_disabled": false,
+    "isolated_python": true,
+    "numpy_version": "2.2.6",
+    "numpy_location": "/nfs/lambda_stor_01/homes/rzhu/0_redox_control_reproduction_2026-10-25/venv/lib/python3.11/site-packages/numpy/__init__.py",
+    "interpreter": "/nfs/lambda_stor_01/homes/rzhu/0_redox_control_reproduction_2026-10-25/venv/bin/python",
+    "CPU_affinity": [
+      12
+    ],
+    "result_sha256": "b410cdc71b8f468494d5987028078056ea315d31796203b0596db0f9d29be1be",
+    "validator_sha256": "9f1175679c9ceae407017057d3f36b2fe80ff207851ded914045751052bfb31a"
+  }
 }
