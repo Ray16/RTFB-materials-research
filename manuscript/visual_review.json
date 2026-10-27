@@ -1,65 +1,20 @@
 {
-  "status": "assistant_rendered_visual_review_checked",
-  "checked_UTC": "2026-10-27T00:01:37Z",
-  "reviewer": "Codex assistant",
+  "status": "changed_pages_visually_checked",
+  "checked": 1793068057.115483,
   "documents": {
     "manuscript": {
-      "pdf_sha256": "cf7aabcaba9f724f7ff146ee688ca786f37c4549e63f0088d252a665e5df4213",
-      "pages_reviewed": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19
-      ],
-      "detail_pages": [
-        12
+      "pdf_sha256": "981e57d120dae88dbcea20de5ba141698f40af7dab46110f8156c183214f9328",
+      "reviewed_pages": [
+        15
       ]
     },
     "supporting_information": {
-      "pdf_sha256": "87abe96c2b42d0cddfba51589c84643e84d2d8c16e2ec80bfd6bfa0884b0b9ca",
-      "pages_reviewed": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20
-      ],
-      "detail_pages": [
-        12
+      "pdf_sha256": "35e4efaf469314ab20986e152f3782506628d9e71382c505cf86bbde1003f99c",
+      "reviewed_pages": [
+        18
       ]
     }
   },
-  "method": "Thumbnail inspection of every page and detailed inspection of changed pages; final rebuild has identical extracted page text and rendered pixels to the inspected build",
-  "findings": "No clipping, overlaps, missing figures or obvious pagination errors observed.",
-  "scope": "Visual layout check, not independent scientific or author review."
+  "findings": "Data/code availability and the relocated-partition SI paragraph are legible, with no clipping or overlaps on the reviewed pages. Build reports no overfull boxes. Other pages retain the existing figure bytes; this is a targeted review.",
+  "renders": "calcs/validation/2026-10-26_portability_paper_visual"
 }

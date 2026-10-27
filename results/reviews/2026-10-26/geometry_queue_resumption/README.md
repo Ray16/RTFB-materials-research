@@ -24,3 +24,5 @@ The [launch verification](launch_verification.json) records nine live dispatcher
 A subsequent [ownership reconciliation](../geometry_intent_reconciliation/README.md) verified all twelve unresolved intents as unstarted using process checks across every permitted host, archived their original records and reopened them. The launch snapshot above remains unchanged as a historical record.
 
 The [latest recovery verification](../geometry_timeout_reconciliation/verification.json) includes three later remote timeouts and their separately audited recovery: nine live controllers, 77 independently checked geometries and 113 pending inputs, with disjoint CPU allocations and no unresolved ownership at the recorded time.
+
+The [current bounded-placement adapter](../geometry_bounded_recovery/README.md) replaces the nine CPU controllers after three repeated placement timeouts. Its latest verification again records 77 checked geometries and 113 pending inputs, with no unresolved ownership holds, while preserving each previous attempt and source revision.

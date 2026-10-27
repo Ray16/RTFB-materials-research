@@ -9,6 +9,32 @@ from collections import Counter
 from pathlib import Path
 
 
+def audit_projected_portability(load, folder):
+    if not (folder / "projected_portability.json").exists():
+        return None
+    data = load("projected_portability.json")
+    if (data["status"] != "relocated_projected_partitions_and_physical_guards_independently_checked"
+            or {r["id"] for r in data["controls"]} != {"formaldehyde", "methyl_radical"}
+            or len(data["controls"]) != 2 or data["negative_controls"] != 10
+            or data["original_checkout_file_accesses"] != 0 or data["xtb_CLI_executions"] != 6
+            or data["quantum_calculations_run"] or data["native_Hessian_execution_requalified"]
+            or data["general_platform_portability_inferred"]):
+        raise ValueError("Projected relocation scope changed")
+    for row in data["controls"]:
+        if (row["maximum_frequency_difference_cm"] != 0
+                or row["nuclear_difference_eV_by_cutoff"] != {"25": 0., "50": 0., "100": 0.}):
+            raise ValueError("Exact relocated partition agreement changed")
+    negative = load("projected_portability_adverse.json")
+    if len(negative["checks"]) != 10 or not all(c["rejected"] for c in negative["checks"]):
+        raise ValueError("Relocated physical guards failed")
+    import xml.etree.ElementTree as ET
+    suites = list(ET.parse(folder / "projected_portability_tests.xml").getroot().iter("testsuite"))
+    if [sum(int(s.get(k, "0")) for s in suites) for k in ("tests", "failures", "errors", "skipped")] != [22, 0, 0, 0]:
+        raise ValueError("Relocation tests incomplete")
+    return dict(controls=2, negative_controls=10, original_checkout_file_accesses=0,
+                native_GPU_Hessian_execution_requalified=False)
+
+
 def audit_neighbor_archive(load):
     try:current=load('neighbor_archive.json')
     except FileNotFoundError:return None
@@ -1095,6 +1121,7 @@ def audit():
                 tempo_exact_support=audit_tempo_exact_support(load),
                 tempo_archive=audit_tempo_archive(load,lambda name:hashlib.sha256((folder/name).read_bytes()).hexdigest()),
                 local_motif=audit_local_motif(load),
+                projected_partition_relocation=audit_projected_portability(load, folder),
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 
