@@ -1,0 +1,46 @@
+{
+  "status": "water_ghost_control_passed_large_ghost_pilot_prepared_not_started",
+  "water_control": {
+    "status": "water_ghost_energy_and_orbital_stationarity_checked",
+    "passed": true,
+    "role": "A_ghost",
+    "energy_Ha": -76.43347845360117,
+    "reference_energy_Ha": -76.43347845360117,
+    "energy_error_Ha": 0.0,
+    "orbital_gradient_norm_au": 1.9068529131699183e-08,
+    "orbital_gradient_threshold_au": 1e-07,
+    "electrons": 10,
+    "basis_functions": 116,
+    "ghost_centers": 3,
+    "auxiliary_functions": 226,
+    "seconds": 15.859338283538818,
+    "source_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/summary.json": "27fadde0577ad148393520233819ca6a1b4ce8b8e809a90e9874b7ef3f529f54",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/A_ghost/energy.json": "bbabad856d9555e003022acfa212772d4ca6e124c3cabb4031db726d850b6dd7",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/A_ghost/SCF.h5": "9b7ef2ab11f6a6d521588292eeb53a4ce39bdada6d1bd7333647d564b4f10135",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/grid_coordinates_AU.npy": "4fe1cb4c8bada89d3e7fd48af92495d6422efd60dbc211638906af706a25c47f",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/grid_weights.npy": "67e8577c683d8f90aa3781690d6e4d076d1f5ee85365bfe73f0e2912e6606b37",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/local_counterpoise.py": "84c2e9a1a781e9f53aa6b6bd7a8e6d133e00c4e88b8f72d8add1bd25583dffb2",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/run_cpu_counterpoise_reference.py": "53c527a0d1cd6bad60807c1956c516fa91e40d58dd3ae303a9a693df013ee8ec",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/counterpoise_control/independent_review.json": "43707ff4a0f377cac978202cff1959ccc0fe4deca0a20385ee66aed03dc63b12",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/check_cpu_counterpoise_ghost_control.py": "af5f28792befd6f32851fe2b891911d834a4220aa5fa9854740655a04b5f2786"
+    },
+    "scope": "CPU water-dimer ghost-basis state only; no large-motif qualification"
+  },
+  "large_ghost_basis_functions": 1026,
+  "large_ghost_electrons": 84,
+  "large_ghost_centers": 19,
+  "gate": "Do not start until the matching A-own checkpoint review and independent orbital stationarity pass.",
+  "full_counterpoise_computed": false,
+  "large_ghost_resource_qualified": false,
+  "source_sha256": {
+    "scripts/validation/check_cpu_counterpoise_ghost_control.py": "af5f28792befd6f32851fe2b891911d834a4220aa5fa9854740655a04b5f2786",
+    "scripts/pipeline/counterpoise_cpu_ghost_pilot.py": "e43bc460480133041c5760c6043ff4a07d9447f9e23cb3eebd7ee6fde0490e72",
+    "scripts/pipeline/coordinate_counterpoise_cpu_ghost.py": "8448845421f5fcb6e29c83eed5855e18e444be11eb6adf6fcfc0cac98cea8779",
+    "tests/test_cpu_counterpoise_ghost_control.py": "d760edf84bed400447292e7add3f9d982af05ee046b64c3ab1489a7912daaaf6",
+    "tests/test_counterpoise_cpu_ghost_pilot.py": "2a5d4bdc0157f3543fcd772fc24a10e47901bab15d417ea7982310a0f63978c9",
+    "tests/test_coordinate_counterpoise_cpu_ghost.py": "e9f8297b12a0fe68c1579596982ce45308e65e7dc7986399231bb20a0bfe1cd2",
+    "results/reviews/2026-10-26/counterpoise_cpu_pilot/ghost_water_check.json": "bcfee0ed3fe0f19cc9ec3765b2cec3a996c3650474c59187194917f1b72ee3f1",
+    "results/reviews/2026-10-26/counterpoise_cpu_pilot/ghost_followup_tests_final.xml": "1605eca293fba8022794f6884e699097b25a92c35ef66a4c03b17f6abd4ceb98"
+  }
+}
