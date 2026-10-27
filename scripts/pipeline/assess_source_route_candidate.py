@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+"""Apply the all-axis policy to one exact, route-held candidate."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+
+from redox.screening.feasibility import assess_candidate
+
+
+def assess(candidate_path,gate_path,policy_path):
+    rows=json.loads(candidate_path.read_text());screen=json.loads(gate_path.read_text())['candidates']
+    policy=json.loads(policy_path.read_text())
+    if len(rows)!=1 or len(screen)!=1:raise ValueError('Exactly one candidate and route decision required')
+    row=rows[0];route=screen[0]
+    if (row['id']!=route['id'] or route['route_status']!='hold' or route['proceed_to_full_redox']
+            or route['evidence'].get('exact_design_key')!=row['exact_design_key']
+            or route['evidence'].get('route_binding')!=row['route_binding']):
+        raise ValueError('Route evidence does not bind the held exact candidate')
+    rule=next(a for a in policy['required_axes'] if a['id']=='attachment_route')
+    axis=dict(product_key=row['product_inchikey'],scope=rule['scope'],status='partial',
+              reason='Candidate route has unresolved evidence requirements')
+    decision=assess_candidate(dict(id=row['id'],product_key=row['product_inchikey'],role='candidate',
+                                   axes={'attachment_route':axis}),policy)
+    if decision['status']!='pending' or decision['all_required_axes_pass']:
+        raise ValueError('Partial route evidence cannot establish material eligibility')
+    sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+    return dict(status='source_route_candidate_all_axis_pending',decision=decision,
+                source_sha256={str(p):sha(p) for p in (candidate_path,gate_path,policy_path,Path(__file__).resolve())},
+                quantum_jobs_submitted=0,primary_decision_ledger_modified=False)
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__)
+    for name in ('candidate','gate','policy','out'):p.add_argument('--'+name,type=Path,required=True)
+    a=p.parse_args();result=assess(a.candidate.resolve(),a.gate.resolve(),a.policy.resolve())
+    with a.out.open('x') as stream:json.dump(result,stream,indent=2);stream.write('\n')
+    print(json.dumps(dict(status=result['decision']['status'],pending_axes=len(result['decision']['pending_axes']))))

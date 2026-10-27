@@ -22,6 +22,8 @@ A separate [amino-TEMPO local graft proposal](../results/discovery/tempo_amino_2
 
 A [source-reported hydroxyethyl PMDI precursor](../results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) provides a separate exact O-graft proposal. It retains a competing imide N–H, and selective attachment remains unverified; it does not validate the ethyl-capped linker matrix precursors.
 
+A [hydroxyethyl phenothiazine source precursor](../results/discovery/ptz_hydroxyethyl_source_2026-10-26/README.md) now supplies a distinct O-linked oxidation-active graph proposal. Its exact graft route and properties remain unresolved; it does not complete the matched shielding/linker panel.
+
 An existing oxidation-active [TEMPO local graft](../results/grafting/tempo_exact_support_2026-10-26/README.md)
 now has an exact-support attachment precedent and a checked local-model
 oxidation potential. Its route screen passes, but its material decision remains

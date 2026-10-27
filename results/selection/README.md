@@ -8,6 +8,8 @@ The separate [PMDI linker matrix](../discovery/pmdi_linker_matrix_2026-10-26/REA
 
 The separate [hydroxyethyl PMDI source control](../discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) applies the same policy to a proposed O-graft with a competing imide N–H; its route remains held.
 
+The separate [hydroxyethyl phenothiazine proposal](../discovery/ptz_hydroxyethyl_source_2026-10-26/README.md) applies the same policy to a held exact graft outside the frozen ledger.
+
 The later [TEMPO exact-case assessment](../grafting/tempo_exact_support_2026-10-26/README.md)
 uses the same conjunctive policy but is not part of the frozen 879-graph ledger.
 Its route passes and its overall material decision remains pending. The source

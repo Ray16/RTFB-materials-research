@@ -337,3 +337,5 @@ The [proposed PMDI linker matrix](../results/discovery/pmdi_linker_matrix_2026-1
 A [source-reported hydroxyethyl PMDI precursor](../results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) has been mapped to a distinct proposed O-graft. Its competing imide N–H leaves route selectivity unresolved, and no candidate performance is added to the paper.
 
 A [CPU counterpoise pilot](../results/reviews/2026-10-26/counterpoise_cpu_pilot/README.md) for a separate one-spacer contact has started. Its small water-dimer checkpoint restart was verified after correcting the shared auxiliary-basis setup. This is not a full motif counterpoise result and does not close the sampling or interaction comment.
+
+A [source-reported hydroxyethyl phenothiazine precursor](../results/discovery/ptz_hydroxyethyl_source_2026-10-26/README.md) adds an oxidation-active O-graft proposal, but route and all-axis decisions remain pending. No new measured or computed candidate performance is claimed in the paper.

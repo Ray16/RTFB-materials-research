@@ -470,6 +470,39 @@
       ],
       "evidence_scope": "US4320129A Preparation 4 reports isolation of named N-(2-hydroxyethyl)pyromellitic diimide, represented here as C12H8N2O5 with one alcohol and one imide N-H. US6441243B1 Example A4 is a distinct O-linked TEMPO bead example; it does not establish this PMDI graft.",
       "limitations": "A single patent preparation is not independent replication or evidence of present procurement. Alcohol and imide N-H can compete; exact O-selectivity, grafting conditions, base effects, redox retention and bead accessibility remain unresolved."
+    },
+    "source_ptz_hydroxyethyl_ed5a333777f2": {
+      "route_binding": {
+        "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3ccccc32)cc1",
+        "precursor_smiles": "OCCN1c2ccccc2Sc2ccccc21",
+        "site_smiles": "Cc1ccc(CCl)cc1",
+        "reaction_class": "NH_OH_substitution",
+        "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][O:1026][CH2:1025][CH2:1024][N:1023]2[c:1013]3[cH:1012][cH:1011][cH:1010][cH:1015][c:1014]3[S:1016][c:1017]3[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]32)[cH:1008][cH:1009]1",
+        "mapped_precursor_smiles": "[cH:1010]1[cH:1011][cH:1012][c:1013]2[c:1014]([cH:1015]1)[S:1016][c:1017]1[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]1[N:1023]2[CH2:1024][CH2:1025][OH:1026]",
+        "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+        "new_bond_atom_maps": [
+          1006,
+          1026
+        ],
+        "leaving_atom_map": 9001,
+        "heavy_atom_mapping": true,
+        "model_scope": "4-methylbenzyl local site on a preformed polymer"
+      },
+      "exact_design_key": "1daf305ef34dc1affe2e192d030a168c162e6d54583706c7712a4acefd0f27ab",
+      "reaction_class": "NH_OH_substitution",
+      "exact_precursor_access_reviewed": true,
+      "attachment_selectivity_reviewed": false,
+      "conditions_defined": false,
+      "balanced_route_reviewed": false,
+      "redox_core_retention_reviewed": false,
+      "conditions": {},
+      "source_urls": [
+        "https://api.mountainscholar.org/server/api/core/bitstreams/afbf9593-a8d1-4410-9c5a-c9f0b9fe441a/content",
+        "https://pubchem.ncbi.nlm.nih.gov/compound/352306",
+        "https://patents.google.com/patent/US6441243B1/en"
+      ],
+      "evidence_scope": "Persson, 2012 thesis, printed page 7 and Figure 1.4, reports isolation and proton NMR for 2-(10H-phenothiazin-10-yl)ethanol; PubChem CID 352306 matches the graph. TEMPO bead attachment is a different precursor and does not establish this graft.",
+      "limitations": "A single thesis preparation is not independent replication or current procurement. Exact conditions and selectivity for O-linkage on a preformed bead, redox-core retention, base/ion speciation and accessibility remain unresolved."
     }
   },
   "note": "Exact entries include explicitly unresolved assessments. Only all required exact evidence can produce a prospective synthesis pass; a family analogue does not.",

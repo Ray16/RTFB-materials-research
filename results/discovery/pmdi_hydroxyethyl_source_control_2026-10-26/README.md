@@ -9,3 +9,5 @@ The proposed capped-site product attaches the alcohol oxygen to a benzyl carbon 
 The practical route screen remains **hold** and the all-axis decision is **pending**. Exact O-selectivity, conditions, redox retention, reaction thermodynamics, properties, interaction and accessibility are unresolved. No quantum jobs were submitted. This exact product is absent from the previously frozen 879-graph ledger and has not been inserted into it.
 
 Reproduce with fresh output names: `PYTHONPATH=src python scripts/pipeline/prepare_pmdi_hydroxyethyl_control.py --out NEW_CANDIDATE.json`, followed by `scripts/pipeline/screen_grafting_routes.py` and `scripts/pipeline/assess_pmdi_hydroxyethyl_control.py`. The [plotting script](../../../scripts/plotting/candidates/plot_pmdi_hydroxyethyl_control.py) draws the mapped precursor and product.
+
+The route registry was later extended with the [phenothiazine source proposal](../ptz_hydroxyethyl_source_2026-10-26/README.md). Its [append-only reconciliation](../ptz_hydroxyethyl_source_2026-10-26/registry_reconciliation.json) preserves the registry version used by this control and confirms that the earlier entries were unchanged.
