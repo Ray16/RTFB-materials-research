@@ -9,6 +9,8 @@ The [consolidated reviewer bundle](releases/manuscript_bundle_v3/README.md) gath
 
 A [finite-set subset analysis](validation/empty_chain_subset_sensitivity_2026-10-26/README.md) quantifies how the checked empty-chain partition changes when known conformers are omitted. It is an alternate-model sampling diagnostic, not an occupied-state interaction result.
 
+The [local-motif raw-state addendum](releases/local_motif/README.md) replays the new paper interaction panel after extraction; a successor consolidated manuscript bundle is still required.
+
 The [relocated xTB kernel probe](validation/xtb_relocated_bundle_probe_2026-10-26/README.md) reproduces the qualified kernel values using the extracted bundle and an external xTB prefix. It uses the existing Python environment and does not qualify a full production deployment.
 
 An [anthraquinone carboxylate graft proposal](discovery/aq_carboxylate_2026-10-26/README.md) adds a source-linked exact precursor and mapped local product. Its route is held and its redox properties remain uncomputed.
