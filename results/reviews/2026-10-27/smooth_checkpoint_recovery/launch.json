@@ -1,0 +1,53 @@
+{
+  "status": "checkpoint_recovery_controller_and_independent_observer_spawned",
+  "records": [
+    {
+      "role": "controller",
+      "owner": {
+        "host": "lambda2",
+        "pid": 3120384,
+        "process_start": "1392043415"
+      },
+      "CPU_affinity": [
+        23
+      ],
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/coordinate_smooth_checkpoint_recovery.py",
+        "coordinate",
+        "--batch",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-27_smooth_checkpoint_recovery",
+        "--hosts",
+        "lambda0,lambda1,lambda11,lambda12,lambda13,lambda2,lambda4,lambda5,lambda6",
+        "--max-hours",
+        "24"
+      ],
+      "started": 1793119814.1796439
+    },
+    {
+      "role": "observer",
+      "owner": {
+        "host": "lambda2",
+        "pid": 3120385,
+        "process_start": "1392043415"
+      },
+      "CPU_affinity": [
+        24
+      ],
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/observe_smooth_followup.py",
+        "--geometry-batch",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-27_smooth_checkpoint_recovery",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-27/smooth_checkpoint_recovery/independent_reviews",
+        "--max-hours",
+        "24"
+      ],
+      "started": 1793119814.186412
+    }
+  ],
+  "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-27_smooth_checkpoint_recovery",
+  "batch_sha256": "72a5147a06e1f16cc72a392f900ba50e881db9bb433c500e0c96f8916d97c3e6",
+  "scientific_start_inferred": false
+}
