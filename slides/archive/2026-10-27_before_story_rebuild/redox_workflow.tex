@@ -1,0 +1,60 @@
+\documentclass[aspectratio=169,11pt]{beamer}
+
+% --- pdflatex-compatible, self-contained (no fontspec/metropolis) ---
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,calc}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\graphicspath{{../results/figures/}{../results/figures/candidates/}{../results/figures/validation/}{../results/figures/reorg/}{../results/figures/pipeline/}{figures/}}
+
+% --- clean modern theme built on defaults ---
+\usetheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{itemize items}[circle]
+
+\definecolor{ink}{HTML}{15304A}      % deep blue
+\definecolor{teal}{HTML}{0E7C86}     % accent
+\definecolor{amber}{HTML}{E08A1E}    % highlight
+\definecolor{good}{HTML}{2E7D32}     % green
+\definecolor{bad}{HTML}{C0392B}      % red
+\definecolor{soft}{HTML}{F2F5F7}
+
+\setbeamercolor{frametitle}{fg=white,bg=ink}
+\setbeamercolor{title}{fg=ink}
+\setbeamercolor{structure}{fg=teal}
+\setbeamercolor{block title}{fg=white,bg=teal}
+\setbeamercolor{block body}{bg=soft}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamertemplate{frametitle}{%
+  \nointerlineskip
+  \begin{beamercolorbox}[wd=\paperwidth,ht=3.2ex,dp=1.2ex,leftskip=0.35cm,rightskip=0.35cm]{frametitle}%
+    \bfseries\insertframetitle%
+  \end{beamercolorbox}%
+}
+\setbeamertemplate{footline}{\hspace{2ex}\scriptsize\textcolor{ink!60}{RTFB Materials Research}\hfill\insertframenumber\hspace{2ex}\vspace{1ex}}
+
+\newcommand{\good}[1]{\textcolor{good}{\textbf{#1}}}
+\newcommand{\bad}[1]{\textcolor{bad}{\textbf{#1}}}
+\newcommand{\hi}[1]{\textcolor{amber}{\textbf{#1}}}
+
+\title{\textbf{Choosing Redox Centers for Polymer Flow Batteries}}
+\subtitle{Candidate expansion, validation and polymer context}
+\author{RTFB Materials Research}
+\date{26 October 2026}
+
+
+\newcommand{\takeaway}[1]{\par\vfill\begin{beamercolorbox}[wd=\linewidth,sep=1.5mm]{block body}\small\textcolor{teal}{\textbf{#1}}\end{beamercolorbox}}
+\newcommand{\source}[1]{\par\vspace{1mm}{\tiny\color{ink!65}#1}}
+\newcommand{\figdir}{../results/figures/presentation/}
+\input{generated/colleague_values.tex}
+\begin{document}
+\input{generated/colleague_story.tex}
+\appendix
+\setbeamertemplate{footline}{\hspace{2ex}\scriptsize\textcolor{ink!60}{Supporting evidence}\hfill\insertframenumber\hspace{2ex}\vspace{1ex}}
+\input{generated/colleague_backup.tex}
+\end{document}

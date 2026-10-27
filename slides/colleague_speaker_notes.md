@@ -1,88 +1,35 @@
-# Speaker notes for the focused workflow presentation
+# Speaker notes: molecular design to grafted polymers
 
-Suggested length: 18–22 minutes, with backup used only for questions. Slides 3–6
-cover expansion; slides 7–10 cover validation. Keep those sections if time is short.
+1. Motivation: introduce the molecular-to-material question. The displayed PMDI chain is an actual computed structure, not an assumed bead population.
 
-| Slide | Purpose | What to say |
-| --- | --- | --- |
-| 1 | Establish the scientific question | “We are selecting groups for an existing polymer. A good free molecule is a starting point; we need its advantages to survive grafting and nearby occupied sites.” |
-| 2 | Show how the components work together | “We preserve exact precursor/product identity and the attachment bond. We review the route before an expensive new redox campaign. Different calculations then contribute evidence to the same design decision.” |
-| 3 | Define the expansion denominator | “837 is the enumerated graph library, not a count of completed quantum campaigns. There are 1,593 recipes because several recipes can produce the same graph. The evaluated cohort overlaps 33 graphs; 32 have both potentials.” |
-| 4 | Make a design axis concrete | “These are actual calculated PMDI structures, not generic sketches. The ethyl cap and graft-site model are held fixed while the declared ring substitution changes. Each has its own precursor graph.” |
-| 5 | Show a result from systematic expansion | “The circles and squares are first and second potential shifts relative to a matched baseline. Ring electronics gives a larger tuning range than these cap changes. More positive or negative is not automatically better; it depends on the electrode and operating window.” |
-| 6 | Explain the next expansion scientifically | “A large three-core library does not solve core diversity. The next plan deliberately compares seven cores and two polymer-relevant design factors. The 34 entries are comparison slots, not 34 validated candidates; partial PMDI, anthraquinone and phenothiazine graph panels are still route-held. Shielding and constraints can also hinder grafting or favor persistent contacts.” |
-| 7 | Define what ‘validated’ means | “We separate arithmetic/numerical consistency, comparison against experiment, and sensitivity to model choices. A correct sum or converged SCF is necessary but cannot establish chemical accuracy.” |
-| 8 | State the measured accuracy honestly | “All 39 endpoints now finish. The primary MAE is about a quarter volt, with no fitted offset and all outliers retained. This is a retrospective free-parent MeCN benchmark. It does not calibrate exact grafts or polymer association, and it has no NDI endpoint.” |
-| 9 | Explain the bias diagnosis | “Every first-step error is positive, but the second-step mean is slightly negative. Held-out offset diagnostics show structure in the error. We retain the unfitted benchmark; fitting a constant does not prove Fc is the cause, and a shared shift cannot fix step spacings.” |
-| 10 | Quantify specific robustness checks | “We tested the geometry/Hessian basis imbalance on five neutral partners. We also varied the rotor cutoff. These shifts are tens of millivolts, but they are settings sensitivities, not confidence intervals or bounds on missing conformers.” |
-| 11 | Prevent the Pareto plot becoming a synthesis claim | “The rings mark eight leaders in three molecular descriptors. The color shows the second potential, which is also part of the dominance comparison. None is currently all-axis eligible. Nominal molecular capacity omits real loading and accessibility.” |
-| 12 | Explain the base-assisted result | “A fixed base model adds the same term to every eligible reference reaction, so ranks do not change. BQ should not be rejected because a different HCl-reference reaction is positive. The capture-term pKa discrepancy and uncertain speciation keep the absolute signs conditional, especially for DIPEA.” |
-| 13 | Demonstrate an exact end-to-end case | “The same PMDI identity now connects redox, exact precursor access, a defined base-assisted reaction and polymer occupancy. This is a concrete worked example. It still does not establish selective attachment, redox-core retention or synthesis eligibility.” |
-| 14 | Define the polymer observable precisely | “The four-state cycle asks how the modeled cost of attaching one group changes when another is present. The sampled PMDI pair is separated by 16.3 Å. A small cycle value in this structure says nothing by itself about isolated binding, charge-state coupling or all conformers.” |
-| 15 | Quantify sampled local motif contacts | “The close phthalimide poses are about −24.8 and −26.2 kJ/mol in the MeCN electronic model; the separated poses are near zero. Cap-length bars are not confidence intervals. These four frozen capped-fragment poses do not establish populations, free energies, basis-set correction or electronic coupling.” |
-| 16 | Show how route and material decisions differ | “An exact 4-hydroxy-TEMPO attachment to Merrifield resin is reported in a patent. Our capped local model gives +0.579 V versus computed Fc in MeCN, and the route gate permits evaluation. Nine material axes remain pending; the patent's reported N-oxyl content is not our bead's conversion or a cycling result.” |
-| 17 | Turn the discussion into concrete next decisions | “We should agree on application criteria, prioritize exact route-feasible designs that fill chemistry gaps, and establish sufficient conformer evidence before drawing polymer spacing rules. Those steps turn descriptor leaders into a defensible material shortlist.” |
+2. Motivation: larger carriers motivate size-selective separation. The cartoon is conceptual; the two cited demonstrations are context, not validation of this proposed resin.
 
-Numerical answers to likely questions:
+3. Question: require useful redox behavior, a feasible attachment and weak unwanted intersite interactions. Avoid a compensating weighted score.
 
-- An exact NDI–styrene free molecule has source-reported MeCN voltammetry
-  versus Fc/Fc⁺, but its states have not been computed. Its quasi-reversible
-  peak midpoints are tentative proxies and are not included in the 39-endpoint
-  benchmark or claimed as formal potentials. This is a method control, not a
-  proposed synthesis route for the preformed polymer.
+4. Pipeline: define exact precursor/product and polymer graphs, screen new routes, generate RDKit conformers and use UMA for gas-phase warm starts. DFT in MeCN supplies the reported redox, grafting and neighbor quantities. Nitro qualification remains open; do not describe the standard V100 fallback as Nitro.
 
-- Four checked empty-chain free energies span 7.19 kJ/mol at the 50 cm⁻¹
-  cutoff in the separate smooth-solvent model. Their pairwise heavy-atom RMSDs
-  are 2.01–4.27 Å; the four-state finite partition lowers the minimum by
-  1.81 kJ/mol. This is not a grafting-cycle uncertainty or a converged ensemble,
-  and should not be mixed with the primary model.
+5. Expansion: 837 designs are enumerated, not all computed. The evaluated 75-candidate cohort is distinct; 60 have both potentials. Coverage is strongest in three reduction-active cores.
 
-- A separate AQ-2-carboxylate graft has a source-linked precursor and mapped
-  attachment, but remains on route hold with no computed redox properties. It
-  is not counted among the 837 earlier designs or a completed set of 34 validated comparison candidates.
+6. Molecular result: the shown PMDI ring-F and ring-CN shifts are +0.158 and +0.177 V. Cap and ether-linker shifts are −0.022 and −0.045 V. These are paired model differences, not externally validated improvements.
 
-- The evaluation feed is dated **24 October**, while the exact PMDI result and
-  reproducibility addendum were checked on **25–26 October**. The deck does not
-  pretend they are one simultaneous live campaign snapshot.
-- The 879-graph decision ledger contains **878 pending candidate designs and
-  one comparison control**. The control is already represented in the graph
-  library; do not add it again to the union count.
-- The 75-candidate cohort has **62 candidates with at least one native-calculation
-  potential** and **60 with both**. This does not mean every candidate has every
-  material property.
-- Unfitted benchmark MAE/RMSE/bias: **0.24697/0.27929/+0.18959 V**.
-  Molecule-held-out one-offset MAE/RMSE: **0.15833/0.21084 V**; step-offset:
-  **0.10605/0.16605 V**. These are internal diagnostic estimates.
-- DBU/HCl experimental MeCN pKa values in the checked source analysis are
-  **24.31/10.30**. The computed capture term differs by **22.81 kJ/mol**.
-  HCl cancels from the full reaction cycle, so this discrepancy cannot simply
-  be added to every complete grafting reaction as a validated correction.
-- Cook et al. report an NMR pKa estimate of **18.7** in MeCN for the DIPEAH
-  hexafluorophosphate salt (DOI 10.1039/D3SC02611F). The conditional cross-source
-  DIPEA/DBU transfer comparison is +31.80 kJ/mol computed versus +32.02 kJ/mol
-  inferred from the pKa values. The salt and chloride/activity conditions are
-  not matched; this does not establish a correction to the complete grafting G.
-- Barišić et al. independently report **log Kᴴ = 18.64(1)** for DIPEA in
-  MeCN at 25 °C using bromocresol green (DOI 10.1039/D1RA04738H, SI Fig. S51).
-  Combining it with the separate DBU scale gives +32.36 kJ/mol versus +31.80
-  computed. Indicator, salt and activity conventions remain important.
-- PMDI rotor-cutoff neighbor values at 25/50/100 cm⁻¹ are
-  **−1.07/−1.86/−1.82 kJ/mol**. The sampled phthalimide two-pose adjacent/spacer
-  results are **−5.17/−11.39 kJ/mol**, under a different exact model. Neither
-  panel establishes conformer convergence.
-- Native thermochemistry uses DFT Hessian modes. xTB serves as the qRRHO
-  integrator; it does not supply an xTB Hessian to those free energies.
-- Nitro is installed and preferred by the public entry point where supported.
-  Actual redox-panel Nitro parity and matched-device speedup remain unqualified.
-  Standard V100 inference is separately tested. Do not claim a Nitro speedup.
+7. Validation result: primary unfitted MAE is 0.247 V and RMSE 0.279 V for 39 endpoints. The panel is retrospective and quinone-heavy, with no NDI endpoint. Do not interpret MAE as a per-candidate confidence interval.
 
-For detailed questions, use the seven backup slides. The full historical deck
-is preserved in [the earlier-deck archive](archive/2026-10-26_before_focused_workflow/README.md).
+8. Grafting result: BQ-OMe changes from +57.6 to −45.1 kJ/mol and BQ-Me3 from +56.0 to −46.7 under the computed DBU separated-ion route. The shared base offset leaves ranks unchanged. The experimental MeCN pKa comparison shows an approximately 23 kJ/mol discrepancy; thermodynamic signs and synthetic feasibility remain conditional.
 
-Sources: [checked discussion evidence](../results/reviews/2026-10-26/colleague_workflow/evidence.json),
-[review response ledger](../manuscript/revision_plan.md),
-[candidate expansion plan](../docs/TARGETED_CANDIDATE_EXPANSION.md),
-[benchmark](../results/validation/reference_bias_2026-10-22/README.md),
-[basis controls](../results/validation/neutral_basis_2026-10-22/README.md),
-[PMDI cycle](../results/reviews/2026-10-25/pmdi_neighbor_cycle_checked/README.md),
-[raw replay](../results/releases/neighbor_cycle/README.md).
+9. Polymer method: explain G00, G10, G01 and G11 on matched open backbones before showing their balanced difference. Cl marks a reactive benzyl-chloride handle, not ordinary styrene. No experimental loading distribution is inferred.
+
+10. PMDI result: the finite cycle is −1.86 kJ/mol with 16.30 Å core separation. First-site polymer penalties are +5.34 and +6.11 kJ/mol relative to the local capped model. This is whole-chain nonadditivity from one minimum per graph, not pure motif binding or global ensemble convergence.
+
+11. Interaction result: close phthalimide control poses are approximately −25 to −26 kJ/mol in MeCN; separated poses are near zero. The plot uses frozen capped fragments. The cap-length variation is not a statistical confidence interval. No BSSE correction, association G or electronic coupling is established.
+
+12. Selection: eight models lie on the molecular three-objective descriptor front, whose projection is shown. None has demonstrated every material requirement. Nominal molecular capacity is not usable polymer capacity.
+
+13. Closing: tune redox chemistry systematically, evaluate a defined reaction and test local polymer contexts. Broader chemistry and complete occupied-state evidence are next scientific requirements.
+
+14. Backup: first/second-step errors differ. Offset statistics are molecule-held-out internal diagnostics, not replacements for unfitted primary statistics.
+
+15. Backup: distinguish experimental property accuracy, internal numerical consistency and model/sampling robustness.
+
+16. Backup: the alternate-model empty-backbone 10-to-20 diagnostic passes for one configuration. This does not complete all occupied graph/configuration comparisons or validate global sampling.
+
+17. Backup: raw-state packages and scoped relocation replay exist; public deposition and full material assessment remain open. UMA installation and numerical qualification are separate.
