@@ -1,0 +1,284 @@
+[
+  {
+    "id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "name": "phenothiazine / flexible / H",
+    "frag": "c1ccc2c(c1)Sc1ccccc1N2CCO[*:1]",
+    "family": "phenothiazine p-type",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "design_factors": {
+      "linker": "flexible",
+      "substituent": "H"
+    },
+    "precursor_inchikey": "FMENRHNHBUWRMN-UHFFFAOYSA-N",
+    "product_inchikey": "MIEFFEUTWMADPT-UHFFFAOYSA-N",
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3ccccc32)cc1",
+    "product_formula": "C22H21NOS",
+    "product_molecular_weight": 347.4830000000002,
+    "product_rotatable_bonds": 5,
+    "precursor_stereocenters": [],
+    "exact_design_key": "1daf305ef34dc1affe2e192d030a168c162e6d54583706c7712a4acefd0f27ab",
+    "route_binding": {
+      "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3ccccc32)cc1",
+      "precursor_smiles": "OCCN1c2ccccc2Sc2ccccc21",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][O:1026][CH2:1025][CH2:1024][N:1023]2[c:1013]3[cH:1012][cH:1011][cH:1010][cH:1015][c:1014]3[S:1016][c:1017]3[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[cH:1010]1[cH:1011][cH:1012][c:1013]2[c:1014]([cH:1015]1)[S:1016][c:1017]1[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]1[N:1023]2[CH2:1024][CH2:1025][OH:1026]",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1026
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "OCCN1c2ccccc2Sc2ccccc21",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3ccccc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    },
+    "origin": "reused_source_proposal",
+    "properties_computed": false,
+    "synthesis_eligibility_established": false,
+    "state_scope": "One oxidation is a proposal; no reversible behavior or usable capacity inferred"
+  },
+  {
+    "id": "hyp_ptz_linker_1f07638aa01d",
+    "name": "phenothiazine / flexible / 3_7_dimethoxy",
+    "frag": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2CCO[*:1]",
+    "family": "phenothiazine p-type",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "design_factors": {
+      "linker": "flexible",
+      "substituent": "3_7_dimethoxy"
+    },
+    "precursor_inchikey": "PYOJUNISOBRHNZ-UHFFFAOYSA-N",
+    "product_inchikey": "ZMUOTWFEQIAZGH-UHFFFAOYSA-N",
+    "product_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2CCOCc1ccc(C)cc1",
+    "product_formula": "C24H25NO3S",
+    "product_molecular_weight": 407.5350000000002,
+    "product_rotatable_bonds": 7,
+    "precursor_stereocenters": [],
+    "exact_design_key": "71311a3708550437a50f81a27929d8d63bdf25e85d76f21177b5e7deefdef10f",
+    "route_binding": {
+      "product_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2CCOCc1ccc(C)cc1",
+      "precursor_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2CCO",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][O:1030][CH2:1029][CH2:1028][N:1027]2[c:1015]3[cH:1014][cH:1013][c:1012]([O:1011][CH3:1010])[cH:1017][c:1016]3[S:1018][c:1019]3[cH:1020][c:1021]([O:1022][CH3:1023])[cH:1024][cH:1025][c:1026]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[CH3:1010][O:1011][c:1012]1[cH:1013][cH:1014][c:1015]2[c:1016]([cH:1017]1)[S:1018][c:1019]1[cH:1020][c:1021]([O:1022][CH3:1023])[cH:1024][cH:1025][c:1026]1[N:1027]2[CH2:1028][CH2:1029][OH:1030]",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1030
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2CCO",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2CCOCc1ccc(C)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    },
+    "origin": "new_exact_graph",
+    "properties_computed": false,
+    "synthesis_eligibility_established": false,
+    "state_scope": "One oxidation is a proposal; no reversible behavior or usable capacity inferred"
+  },
+  {
+    "id": "hyp_ptz_linker_3e8adba58e62",
+    "name": "phenothiazine / cyclic / H",
+    "frag": "c1ccc2c(c1)Sc1ccccc1N2[C@@H]1C[C@@H]1O[*:1]",
+    "family": "phenothiazine p-type",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "design_factors": {
+      "linker": "cyclic",
+      "substituent": "H"
+    },
+    "precursor_inchikey": "AEESRRGWYVQYEC-OLZOCXBDSA-N",
+    "product_inchikey": "HYTRTEOLZCQEDL-RTWAWAEBSA-N",
+    "product_smiles": "Cc1ccc(CO[C@H]2C[C@H]2N2c3ccccc3Sc3ccccc32)cc1",
+    "product_formula": "C23H21NOS",
+    "product_molecular_weight": 359.49400000000014,
+    "product_rotatable_bonds": 4,
+    "precursor_stereocenters": [
+      [
+        1,
+        "S"
+      ],
+      [
+        3,
+        "R"
+      ]
+    ],
+    "exact_design_key": "59f8c2d6f8cb3d959fff0ca896c20ca054cc04d811c7832db7f42d3c070e46b3",
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CO[C@H]2C[C@H]2N2c3ccccc3Sc3ccccc32)cc1",
+      "precursor_smiles": "O[C@H]1C[C@H]1N1c2ccccc2Sc2ccccc21",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][O:1027][C@@H:1026]2[C@H:1024]([N:1023]3[c:1013]4[cH:1012][cH:1011][cH:1010][cH:1015][c:1014]4[S:1016][c:1017]4[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]43)[CH2:1025]2)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[cH:1010]1[cH:1011][cH:1012][c:1013]2[c:1014]([cH:1015]1)[S:1016][c:1017]1[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]1[N:1023]2[C@@H:1024]1[CH2:1025][C@@H:1026]1[OH:1027]",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1027
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "O[C@H]1C[C@H]1N1c2ccccc2Sc2ccccc21",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CO[C@H]2C[C@H]2N2c3ccccc3Sc3ccccc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    },
+    "origin": "new_exact_graph",
+    "properties_computed": false,
+    "synthesis_eligibility_established": false,
+    "state_scope": "One oxidation is a proposal; no reversible behavior or usable capacity inferred"
+  },
+  {
+    "id": "hyp_ptz_linker_0ca99d4e2fb7",
+    "name": "phenothiazine / cyclic / 3_7_dimethoxy",
+    "frag": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2[C@@H]1C[C@@H]1O[*:1]",
+    "family": "phenothiazine p-type",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "design_factors": {
+      "linker": "cyclic",
+      "substituent": "3_7_dimethoxy"
+    },
+    "precursor_inchikey": "IHZZLMSYLNNDKF-CABCVRRESA-N",
+    "product_inchikey": "AUDYHIDHMQRQKM-PKTZIBPZSA-N",
+    "product_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2[C@@H]1C[C@@H]1OCc1ccc(C)cc1",
+    "product_formula": "C25H25NO3S",
+    "product_molecular_weight": 419.54600000000016,
+    "product_rotatable_bonds": 6,
+    "precursor_stereocenters": [
+      [
+        18,
+        "R"
+      ],
+      [
+        20,
+        "S"
+      ]
+    ],
+    "exact_design_key": "f87d9d5154dda1e47ba27a8a924d2c0e27edeb9eacd63233c50f48f4253a573b",
+    "route_binding": {
+      "product_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2[C@@H]1C[C@@H]1OCc1ccc(C)cc1",
+      "precursor_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2[C@@H]1C[C@@H]1O",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][O:1031][C@@H:1030]2[C@H:1028]([N:1027]3[c:1015]4[cH:1014][cH:1013][c:1012]([O:1011][CH3:1010])[cH:1017][c:1016]4[S:1018][c:1019]4[cH:1020][c:1021]([O:1022][CH3:1023])[cH:1024][cH:1025][c:1026]43)[CH2:1029]2)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[CH3:1010][O:1011][c:1012]1[cH:1013][cH:1014][c:1015]2[c:1016]([cH:1017]1)[S:1018][c:1019]1[cH:1020][c:1021]([O:1022][CH3:1023])[cH:1024][cH:1025][c:1026]1[N:1027]2[C@@H:1028]1[CH2:1029][C@@H:1030]1[OH:1031]",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1031
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2[C@@H]1C[C@@H]1O",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "COc1ccc2c(c1)Sc1cc(OC)ccc1N2[C@@H]1C[C@@H]1OCc1ccc(C)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    },
+    "origin": "new_exact_graph",
+    "properties_computed": false,
+    "synthesis_eligibility_established": false,
+    "state_scope": "One oxidation is a proposal; no reversible behavior or usable capacity inferred"
+  }
+]

@@ -339,3 +339,5 @@ A [source-reported hydroxyethyl PMDI precursor](../results/discovery/pmdi_hydrox
 A [CPU counterpoise pilot](../results/reviews/2026-10-26/counterpoise_cpu_pilot/README.md) for a separate one-spacer contact has started. Its small water-dimer checkpoint restart was verified after correcting the shared auxiliary-basis setup. This is not a full motif counterpoise result and does not close the sampling or interaction comment.
 
 A [source-reported hydroxyethyl phenothiazine precursor](../results/discovery/ptz_hydroxyethyl_source_2026-10-26/README.md) adds an oxidation-active O-graft proposal, but route and all-axis decisions remain pending. No new measured or computed candidate performance is claimed in the paper.
+
+A [phenothiazine linker/substitution matrix](../results/discovery/phenothiazine_linker_matrix_2026-10-26/README.md) adds three proposed oxidation-active graphs beside the prior source-backed baseline. All routes and all-axis decisions remain pending; no performance or shielding claim is added to the paper.

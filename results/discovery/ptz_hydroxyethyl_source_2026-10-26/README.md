@@ -18,3 +18,5 @@ python scripts/pipeline/assess_source_route_candidate.py --candidate NEW_CANDIDA
 ```
 
 The [plotting script](../../../scripts/plotting/candidates/plot_source_precursor_route.py) draws the stored mapped product and attachment bond.
+
+The route registry was later extended with the [phenothiazine linker matrix](../phenothiazine_linker_matrix_2026-10-26/README.md). Its [append-only reconciliation](../phenothiazine_linker_matrix_2026-10-26/registry_reconciliation.json) preserves this precursor assessment and the earlier registry entries.
