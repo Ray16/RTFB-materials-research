@@ -1,11 +1,13 @@
 # Results index
 
+The [current review disposition](../manuscript/review_status.md) lists every major/minor comment and remaining work. The [bibliography audit](validation/bibliography_2026-10-26/README.md) checks 48 citation identities, including every experimental benchmark study; the [native-QC table](validation/spacing_native_qc_2026-10-26/README.md) reports actual values for the twelve original spacing conformers. Neither closes the open conformer/occupancy or public-deposition requirements.
+
 Use these stable paths. Completed quantities carry field-specific QC; blank values
 are pending or excluded. Raw calculations and earlier source snapshots are retained.
 
 The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v3/README.md) passes scoped kernel and CLI checks in the original and restored environments while retaining the qualified hashes. Full native/projected production requalification and broader path portability remain open.
 
-The [consolidated reviewer bundle](releases/manuscript_bundle_v4/README.md) gathers the current manuscript source and six overlapping raw-state packages, including the local-motif panel. Isolated arithmetic and Hessian replays pass after extraction; public data licensing, author metadata, DOI deposition and wider deployment portability remain open.
+The [consolidated reviewer bundle](releases/manuscript_bundle_v4/README.md) gathers the frozen local-motif manuscript source and six overlapping raw-state packages, including the local-motif panel. Isolated arithmetic and Hessian replays pass after extraction; public data licensing, author metadata, DOI deposition and wider deployment portability remain open.
 
 The [relocated projected-partition check](validation/relocated_projected_2026-10-26/README.md) recomputes saved singlet and doublet partitions with explicit source/xTB prefixes. Frequencies and all three rotor-cutoff nuclear terms match exactly; process-tree tracing finds no original-checkout file access, and ten altered physical records are rejected. Native GPU portability remains separate.
 

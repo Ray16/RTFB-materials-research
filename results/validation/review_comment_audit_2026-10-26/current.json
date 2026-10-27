@@ -1,0 +1,224 @@
+{
+  "status": "current_review_disposition_with_explicit_open_work",
+  "checked": 1793074050.5314617,
+  "requirements": [
+    {
+      "comment": "M1",
+      "status": "partial",
+      "requirement": "At least one exact design across enumeration, molecular response, route, grafting and occupancy, with a material decision.",
+      "current_disposition": "Exact PMDI finite cycle reported; converged ensembles and complete material/route criteria remain open.",
+      "evidence": [
+        "manuscript/manuscript.tex",
+        "manuscript/claim_check.json"
+      ]
+    },
+    {
+      "comment": "M2",
+      "status": "addressed_in_current_scope",
+      "requirement": "Unfitted errors, bootstrap intervals, held-out offset diagnostics and reference diagnosis.",
+      "current_disposition": "39 endpoints and diagnostic controls reported; reference-error attribution and external NDI accuracy remain explicitly limited.",
+      "evidence": [
+        "manuscript/claim_check.json",
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "M3",
+      "status": "addressed_in_current_scope",
+      "requirement": "Per-base shift and external MeCN proton-transfer validation with speciation limits.",
+      "current_disposition": "DBU/HCl and two DIPEA source estimates checked; full-route signs remain conditional.",
+      "evidence": [
+        "manuscript/manuscript.tex",
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "M4",
+      "status": "open",
+      "requirement": "Broader conformer/tacticity searches, stable DFT ranking and ensemble free energies.",
+      "current_disposition": "Expanded geometries and downstream evaluations are incomplete; original two-pose results remain finite controls.",
+      "evidence": [
+        "results/reviews/2026-10-26/conformer_followup_milestone/README.md",
+        "results/reviews/2026-10-26/geometry_bounded_recovery/README.md"
+      ]
+    },
+    {
+      "comment": "M5",
+      "status": "addressed_in_current_scope",
+      "requirement": "Five matched basis-sensitivity controls with separate nuclear and geometry effects.",
+      "current_disposition": "Five controls reported; no complete basis-convergence claim.",
+      "evidence": [
+        "manuscript/claim_check.json",
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "M6",
+      "status": "addressed_in_current_scope",
+      "requirement": "Exact QC behavior, sampled Hessian columns, frequency/spin policy and actual polymer gradients.",
+      "current_disposition": "Methods and twelve-pose SI table report these values; Nitro preference is distinguished from pending parity.",
+      "evidence": [
+        "manuscript/manuscript.tex",
+        "manuscript/supporting_information.tex",
+        "results/validation/spacing_native_qc_2026-10-26/summary.json"
+      ]
+    },
+    {
+      "comment": "M7",
+      "status": "partial",
+      "requirement": "Public raw-state archive, locked environment, portable cached example and deployment.",
+      "current_disposition": "Local raw-state replays and scoped fresh/relocated checks pass; public DOI, final metadata and wider configuration portability remain open.",
+      "evidence": [
+        "results/releases/current.json",
+        "results/validation/relocated_projected_2026-10-26/summary_verified.json"
+      ]
+    },
+    {
+      "comment": "M8",
+      "status": "addressed_in_current_scope",
+      "requirement": "Verified literature context and missing method/software citations.",
+      "current_disposition": "48 references; 43 DOI identities and five non-DOI sources checked. All seven experimental benchmark studies are cited, and source-specific locations/reference handling are tabulated.",
+      "evidence": [
+        "manuscript/references_status.json",
+        "results/validation/bibliography_2026-10-26/checked_final/summary.json",
+        "results/validation/benchmark_source_inventory_2026-10-26/current.json"
+      ]
+    },
+    {
+      "comment": "M9",
+      "status": "revised_final_science_pending",
+      "requirement": "Chemical narrative, concise abstract and limitations, diagnostics moved to SI.",
+      "current_disposition": "Current article and separate SI are revised; final narrative depends on open physical results.",
+      "evidence": [
+        "manuscript/manuscript.tex",
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "remaining_endpoint",
+      "status": "addressed_in_current_scope",
+      "requirement": "Resolve the 39th PMDI reduction endpoint or freeze at 38.",
+      "current_disposition": "39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit.",
+      "evidence": [
+        "manuscript/claim_check.json"
+      ]
+    },
+    {
+      "comment": "m1",
+      "status": "addressed_in_current_scope",
+      "requirement": "Current counts and hash-bound manuscript evidence.",
+      "current_disposition": "Current immutable epoch and separately built PDFs replace stale reporting.",
+      "evidence": [
+        "manuscript/evidence/current.json",
+        "manuscript/build_check.json"
+      ]
+    },
+    {
+      "comment": "m2",
+      "status": "addressed_in_current_scope",
+      "requirement": "Report bootstrap intervals and seven-study limitation.",
+      "current_disposition": "Molecule/study intervals and their weak calibration are explicit.",
+      "evidence": [
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "m3",
+      "status": "addressed_in_current_scope",
+      "requirement": "Show the actual phthalimide five-repeat model.",
+      "current_disposition": "Actual conformers and exact occupancy construction appear in main/SI figures.",
+      "evidence": [
+        "manuscript/manuscript.tex",
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "m4",
+      "status": "addressed_in_current_scope",
+      "requirement": "Relate the two 75-member cohorts and 72 precursors.",
+      "current_disposition": "Main text states the exact identity relationship.",
+      "evidence": [
+        "manuscript/manuscript.tex"
+      ]
+    },
+    {
+      "comment": "m5",
+      "status": "addressed_in_current_scope",
+      "requirement": "Audit relaxation and small deformation sums.",
+      "current_disposition": "SI reports signed fragment terms, cancellations, 57\u201393 steps and 0.25\u20130.70 \u00c5 relaxation.",
+      "evidence": [
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "m6",
+      "status": "partial",
+      "requirement": "Use exact SI/CODATA energy conversion.",
+      "current_disposition": "New SI analyses use the exact factor; the central historical compatibility constant still needs a controlled migration.",
+      "evidence": [
+        "src/redox/core/common.py",
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "m7",
+      "status": "addressed_in_current_scope",
+      "requirement": "Separate compiler checks from manual visual review.",
+      "current_disposition": "Build emits compiler facts and requests a separate PDF-hash-bound visual record.",
+      "evidence": [
+        "manuscript/build.py",
+        "manuscript/visual_review.json"
+      ]
+    },
+    {
+      "comment": "m8",
+      "status": "addressed_in_current_scope",
+      "requirement": "Chemical TOC figure and clean figures/captions.",
+      "current_disposition": "Current chemical artwork and exact models replace status banners; no extra author-approval gate is inferred.",
+      "evidence": [
+        "manuscript/manuscript.tex",
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "m9",
+      "status": "addressed_in_current_scope",
+      "requirement": "Replace or define implementation jargon.",
+      "current_disposition": "Remaining evidence/decision terms are defined in an SI table.",
+      "evidence": [
+        "manuscript/supporting_information.tex"
+      ]
+    },
+    {
+      "comment": "m10",
+      "status": "addressed_in_current_scope",
+      "requirement": "Seed, sampling counts, configuration and symmetry detection.",
+      "current_disposition": "Initial seed/counts, one-configuration scope and xTB symmetry detection are explicit.",
+      "evidence": [
+        "manuscript/manuscript.tex"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "manuscript/manuscript.tex": "ec74c4f9210be03b11090fa15cee043fe94d4e6146edbfa5d0091ae8044437fc",
+    "manuscript/claim_check.json": "bc97715202d4abc011fe88230c64c1cbe52d38bd13c70ff3b01e5a1825e3bc0b",
+    "manuscript/supporting_information.tex": "77a89aa98048a73483ceb153ed6ddf84a830e4f7b94bb9594033a33e6559a761",
+    "results/reviews/2026-10-26/conformer_followup_milestone/README.md": "9d5b354bb22711e10cd53e6f0acb0c175cf5233c0363f49a88dd96067991f444",
+    "results/reviews/2026-10-26/geometry_bounded_recovery/README.md": "7af0699decc55256ca977c039b3a85775a34566c5f5c1ae78101dc726af35c82",
+    "results/validation/spacing_native_qc_2026-10-26/summary.json": "71d9e9fdbde20d4a3e409b35ec305f32a42b99ad941292a4ee10f07787e66459",
+    "results/releases/current.json": "a1af41e48648c905dfb8e2dd91f9f923488759f7ea2f33a7f5183f440d4d5e44",
+    "results/validation/relocated_projected_2026-10-26/summary_verified.json": "666061197eb1b8d5b1ec5e6e345801bf94b2f5d81fb0a52180da271588fc8f63",
+    "manuscript/references_status.json": "b1beceb691c12343167b87f2bda8840026b134170fa07efddd946860d140c594",
+    "results/validation/bibliography_2026-10-26/checked_final/summary.json": "c80be615dce45bbbe9f2eeedef76bdb48525fcefedda78ba4c0bc9c1f3a983cd",
+    "results/validation/benchmark_source_inventory_2026-10-26/current.json": "03ae89692d8f6c81b9083b0f48216773e7543646661fecb229b7e59cbe0173af",
+    "manuscript/evidence/current.json": "57de94f079d4db6c98db5ef6d93027223549e8fdd9a23886b8e60da0f10f2c1b",
+    "manuscript/build_check.json": "a9c1d9d178b84e22e8cbd34c124f84a524ebfb3a3be342bde6d5005fa6a7677d",
+    "src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "manuscript/build.py": "af9a5f812dcc7d575bc9836440c514333a91adbcd1ca0180558b861bb951bcf6",
+    "manuscript/visual_review.json": "00e3e1ab0c729a7b00d7325b853b067a4d90485af126f4172a94632b6a2c9b82"
+  },
+  "all_comments_resolved": false,
+  "submission_ready": false,
+  "scope": "A current point-by-point reporting and evidence audit. Addressed_in_current_scope does not certify every physical model or complete the project.",
+  "visual_review_is_targeted": true
+}

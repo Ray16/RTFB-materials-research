@@ -35,6 +35,55 @@ def audit_projected_portability(load, folder):
                 native_GPU_Hessian_execution_requalified=False)
 
 
+def audit_spacing_qc_and_bibliography(load, folder):
+    if not (folder / "spacing_native_QC.json").exists():
+        return None
+    qc = load("spacing_native_QC.json")
+    rows = qc["rows"]
+    expected = {c["key"] for graph in load("finite_ensemble_states.json")["cases"] for c in graph["conformers"]}
+    if len(rows) != 12 or {r["key"] for r in rows} != expected:
+        raise ValueError("Physical-QC table does not cover all twelve exact poses")
+    for row in rows:
+        values = [row["maximum_gradient_Ha_Bohr"], row["maximum_Hessian_asymmetry"], row["lowest_projected_internal_frequency_cm"], row["largest_sampled_column_relative_error"]]
+        if (not all(math.isfinite(v) for v in values) or not 0 <= values[0] <= .00045
+                or not 0 <= values[1] <= 1e-6 or values[2] < -5 or not 0 <= values[3] <= .01):
+            raise ValueError("Reported spacing physical checks failed")
+    gradients = [r["maximum_gradient_Ha_Bohr"] for r in rows]
+    if qc["maximum_gradient_range_Ha_Bohr"] != [min(gradients), max(gradients)]:
+        raise ValueError("Gradient range does not reconstruct")
+    current = (folder / "bibliography_current_audit.json").exists()
+    bibliography = load("bibliography_current_audit.json" if current else "bibliography_audit.json")
+    checks = bibliography["checks"]
+    non_doi = load("bibliography_non_DOI_review.json")["records"]
+    total, doi_total = (48, 43) if current else (42, 37)
+    if (len(checks) != total or sum(r["status"] == "metadata_matches" for r in checks) != doi_total
+            or {r["key"] for r in checks if r["status"] == "non_DOI_source_requires_direct_review"} != {r["key"] for r in non_doi}
+            or len(non_doi) != 5):
+        raise ValueError("Bibliography identity coverage changed")
+    source_studies = None
+    if current:
+        import unicodedata
+        frozen_bib = (folder / "bibliography_current_source.bib").read_text()
+        current_bib = Path(__file__).with_name("references.bib").read_text()
+        if unicodedata.normalize("NFC", frozen_bib) != unicodedata.normalize("NFC", current_bib):
+            raise ValueError("Bibliography changed beyond canonical Unicode normalization")
+        inventory = load("benchmark_source_inventory.json")
+        endpoint_rows = load("benchmark.json")["outliers"]
+        expected_counts = {doi: sum(row["doi"] == doi for row in endpoint_rows) for doi in {row["doi"] for row in endpoint_rows}}
+        if ({r["doi"]: r["endpoints"] for r in inventory["studies"]} != expected_counts
+                or inventory["total_endpoints"] != 39 or len(inventory["studies"]) != 7):
+            raise ValueError("Seven-study benchmark inventory does not reconstruct")
+        by_key = {r["key"]: r for r in checks}
+        for study in inventory["studies"]:
+            row = by_key[study["citation_key"]]
+            if row["status"] != "metadata_matches" or row["citation"]["doi"].lower() != study["doi"].lower():
+                raise ValueError("Benchmark primary source is not in the checked bibliography")
+        source_studies = 7
+    return dict(spacing_QC_rows=12, maximum_gradient_range_Ha_Bohr=[min(gradients), max(gradients)],
+                bibliography_entries=total, DOI_identity_matches=doi_total, non_DOI_sources_reviewed=5,
+                experimental_studies_cited=source_studies)
+
+
 def audit_neighbor_archive(load):
     try:current=load('neighbor_archive.json')
     except FileNotFoundError:return None
@@ -1122,6 +1171,7 @@ def audit():
                 tempo_archive=audit_tempo_archive(load,lambda name:hashlib.sha256((folder/name).read_bytes()).hexdigest()),
                 local_motif=audit_local_motif(load),
                 projected_partition_relocation=audit_projected_portability(load, folder),
+                spacing_QC_and_bibliography=audit_spacing_qc_and_bibliography(load, folder),
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

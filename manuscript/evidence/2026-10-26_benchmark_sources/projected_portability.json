@@ -1,0 +1,83 @@
+{
+  "status": "relocated_projected_partitions_and_physical_guards_independently_checked",
+  "checked": 1793067550.2735229,
+  "controls": [
+    {
+      "id": "formaldehyde",
+      "maximum_frequency_difference_cm": 0.0,
+      "nuclear_difference_eV_by_cutoff": {
+        "25": 0.0,
+        "50": 0.0,
+        "100": 0.0
+      },
+      "partition_sha256": "e985ad5b9faadf68ee74454a9828caf2ea1aaf122d59dc71885d9a1ba5eb8fa6",
+      "native_record_sha256": "ddf80fbea93258ec7bc489fc3194f7f655f8a2e3fb5759af825fc2024736f249",
+      "symmetry_number": 2
+    },
+    {
+      "id": "methyl_radical",
+      "maximum_frequency_difference_cm": 0.0,
+      "nuclear_difference_eV_by_cutoff": {
+        "25": 0.0,
+        "50": 0.0,
+        "100": 0.0
+      },
+      "partition_sha256": "a20dee3d4d5d1121a1852f9dc22de47b7f090870de7c167a54dfaef2244bc7ec",
+      "native_record_sha256": "2b12c7b9a1e500905c9274daeb5476f9b9ae9c2f475363267d6f1e6d0d5d9593",
+      "symmetry_number": 6
+    }
+  ],
+  "immutable_staged_files": 179,
+  "negative_controls": 10,
+  "traced_file_syscall_lines": 47499,
+  "original_checkout_file_accesses": 0,
+  "original_root_directory_metadata_calls": 2,
+  "xtb_CLI_executions": 6,
+  "qualified_library_open_calls": 10,
+  "trace_sha256": "5b5a76dc19b68dac5af16b47310e562ee98f6e37742939df9c94bbcdba09bc10",
+  "runtime": {
+    "prefix": "/nfs/lambda_stor_01/homes/rzhu/0_redox_qualified_xtb_prefix_2026-10-26",
+    "library": "/nfs/lambda_stor_01/homes/rzhu/0_redox_qualified_xtb_prefix_2026-10-26/lib/libxtb.so.6.7.1",
+    "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+    "binary": "/nfs/lambda_stor_01/homes/rzhu/0_redox_qualified_xtb_prefix_2026-10-26/bin/xtb",
+    "binary_sha256": "271dd6cdd5da127a8e39919e7e32d924790fb346f0057b4183769ba8b3411887"
+  },
+  "relocation": {
+    "original_source_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source",
+    "relocated_source_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace",
+    "native_reader_source_sha256": "9d69ef97cb114daf024b5fbe5f749d29c5294fc72682a35894795afdb48af60f",
+    "relocation_module_sha256": "32c68f713f8323c625f120752823bb26b4fc2b672092f716326921f01f36606d",
+    "controls": {
+      "results/validation/physical_thermal_spin_2026-10-10/analytic_full_response_aq_reference/status.json": {
+        "original_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/results/validation/physical_thermal_spin_2026-10-10/analytic_full_response_aq_reference/status.json",
+        "relocated_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/results/validation/physical_thermal_spin_2026-10-10/analytic_full_response_aq_reference/status.json",
+        "sha256": "680f316ec2f8b0b47fa1bd8356792cce59eef1b054c86fae3799b0facb550b3e",
+        "metadata_unchanged_except_declared_prefix": true
+      },
+      "results/validation/physical_thermal_spin_2026-10-10/uks_bq_full_response_control/status.json": {
+        "original_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/results/validation/physical_thermal_spin_2026-10-10/uks_bq_full_response_control/status.json",
+        "relocated_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/results/validation/physical_thermal_spin_2026-10-10/uks_bq_full_response_control/status.json",
+        "sha256": "1a85a8a9b37ceb2368c6fdd807524c8ad7ee257f6e7a7978a07f37d91426d55c",
+        "metadata_unchanged_except_declared_prefix": true
+      },
+      "results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/status.json": {
+        "original_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-23_gpu_environment_compatible/source/results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/status.json",
+        "relocated_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/status.json",
+        "sha256": "0d3843f23a938fe99b97d75fe0733bc134c471d345048b3a8a413a7807e35056",
+        "metadata_unchanged_except_declared_prefix": true
+      }
+    },
+    "physical_checks_changed": false
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/input_manifest.json": "e1ce50f17aecc394d2fe1687138e37ebdd0c4b2a738f8896022d702c4733d8b4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/child_file_access.log": "5b5a76dc19b68dac5af16b47310e562ee98f6e37742939df9c94bbcdba09bc10",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/partition_run/run.json": "303fb04b53d4f2c383a6e48d51c614fa76c28f4af156188bfcf9f16c352697ef",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/partition_run/runtime_binding.json": "2e432314c108b7318c051f62d656232ef6c162f6e78e86522098bb36b155da00",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox_projected_relocation_2026-10-26_strace/adverse_inputs.json": "8204268822786c2e92a5dd34a86d1a114f68f728f27e2e61ba7aa84f0b4cc6f6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_relocated_projected.py": "08131219ed9bfb63b48e9b86cd4b8cc990f6f4f86110e15db0bf4f6b7e3ac7ee"
+  },
+  "quantum_calculations_run": false,
+  "native_Hessian_execution_requalified": false,
+  "general_platform_portability_inferred": false
+}

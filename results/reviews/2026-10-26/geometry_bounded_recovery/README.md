@@ -25,3 +25,5 @@ replacement launches and controller logs remain under
 writing live status in its original batch; remote phases appear in each case's
 `placement_checks/` directory when placement is attempted. This is execution
 recovery, not an energy or ensemble result.
+
+The [runtime placement audit](runtime_resource_waits.json) now records 72 actual returned resource waits. They returned in 0.010–10.674 seconds without scientific attempts: host allocation contention and a changed reservation snapshot remain normal queue waits. No new ownership hold is inferred from these returned calls.
