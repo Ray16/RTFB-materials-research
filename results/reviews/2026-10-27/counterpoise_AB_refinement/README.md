@@ -19,3 +19,5 @@ The full gas counterpoise interaction remains unqualified until all five terms
 have matching independent stationarity evidence. This does not supply a MeCN
 correction, association free energy or polymer ensemble. Raw refinement outputs
 are in `calcs/local_motif_counterpoise/cpu_one_spacer_AB_polish_2026-10-27/`.
+
+The [explicit collection manifest](collection_manifest.json) joins the new AB attempt with the four already checked fragment terms; its [finite collector](collection_launch.json) waits for the independent AB check and then reuses the original five-term admission gates. Its live result is `calcs/validation/2026-10-27_full_counterpoise_checked_collection/status.json`. Preparing this handoff does not supply a counterpoise energy.

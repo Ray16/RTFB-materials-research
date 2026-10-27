@@ -1,0 +1,60 @@
+{
+  "status": "first_case_Nitro_repeatability_failure_independently_reconstructed",
+  "checked": 1793142991.6825864,
+  "case_id": "design_pmdi_ethyl__neu",
+  "atoms": 42,
+  "modes": {
+    "reference": {
+      "calls": 29,
+      "exact_frame_repeats": 8,
+      "initial_to_final_energy_error_eV": 1.3548051356337965e-06,
+      "initial_to_final_force_error_eV_A": 1.6801059246063232e-06,
+      "energy_tolerance_eV": 0.00042,
+      "force_tolerance_eV_A": 0.0001,
+      "repeat_gate_passed": true,
+      "maximum_later_pair_force_difference_eV_A": 3.129884134978056e-06,
+      "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
+      "GPU": "5",
+      "host": "lambda13",
+      "device_name": "NVIDIA H100 NVL",
+      "source_paths": [
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/reference/evaluation_diagnostics.json",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/reference/repeat_diagnostic.json",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/reference/status.json"
+      ]
+    },
+    "nitro": {
+      "calls": 29,
+      "exact_frame_repeats": 8,
+      "initial_to_final_energy_error_eV": 3.978974564233795e-05,
+      "initial_to_final_force_error_eV_A": 0.00019571417942643166,
+      "energy_tolerance_eV": 0.00042,
+      "force_tolerance_eV_A": 0.0001,
+      "repeat_gate_passed": false,
+      "maximum_later_pair_force_difference_eV_A": 0.0002391355810686946,
+      "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
+      "GPU": "5",
+      "host": "lambda13",
+      "device_name": "NVIDIA H100 NVL",
+      "source_paths": [
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/nitro/evaluation_diagnostics.json",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/nitro/repeat_diagnostic.json",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/nitro/status.json"
+      ]
+    }
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_nitro_2026-10-23/panel/plan.json": "75bf39f032ac8e7d8da696ed668f6d661033afc38c27001a783714705c7fdaca",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/status.json": "fad64367e950a35206ec121e07d3887648dfda271d966aff14c0829841ddf49d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_uma_repeat_failure.py": "a4612c6531eccb91bba7677ae635791b5095ece391f1ebe0f5ac800657933629",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/reference/evaluation_diagnostics.json": "e65bf0c641c5f42cd6215f6864122ced2ccf0fd14d5bef56bb71c91e99052cd7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/reference/repeat_diagnostic.json": "3829a6273d2077ab017e338fc63d32f5385d574e2d11c47fb5129ea99a7dc85d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/reference/status.json": "3c02a5ec72eeb26cff3f1667802bd4f0e14cb187744aae6d1d8cd22ac94d271e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/nitro/evaluation_diagnostics.json": "201e213589768ce16da50614a57933bc181d397d00b73faf188010f0bd6c6125",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/nitro/repeat_diagnostic.json": "57ae4f17eafdb66734989f0f23591fc3354fde2e9de242af8b0ad583c6fcd864",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_ieee_intermediates/attempt_001/nitro/status.json": "06cb38e293bb7baa2bc1bfa293f0ce0a9001a6310db97f78559194fffb92dc07"
+  },
+  "production_calculator_qualified": false,
+  "full_panel_qualified": false,
+  "scope": "Retained first-case stability failure under declared repeat thresholds. Does not establish the implementation cause or qualify altered tolerances."
+}

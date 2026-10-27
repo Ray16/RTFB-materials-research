@@ -1,0 +1,1704 @@
+{
+  "status": "finite_checked_empty_conformer_set_not_converged",
+  "manifest_sha256": "e081f0276718881fa42cc6b9bcdf4cc5384da517370429210fa7e62766277f50",
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/analyze_empty_conformer_set.py": "a1037b2121a09de3ec82d37255aadf810e21991534d3b6aca0082a367ca0b22b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/summarize_checked_empty_conformers.py": "ae74fe19d784e54fd8af5f7535148446bcfd407ccce73b37349af219cf2951c7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_conformer_thermals.py": "dce939388dafe90f85b1a717f419ad9ed3500227ae063e6133d1a04415e00efc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/conformer_ensemble.py": "7f5d1b5e7a0a0ef4e1ccf99726e2e27eb00376666cd7a9a07deccfa284851768"
+  },
+  "inputs": {
+    "all_same__occ_none__conf001": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_smooth_native_pilot_checked/all_same__occ_none__conf001/geometry.xyz",
+      "geometry_sha256": "3ab4d9b040f12cf443ad4159f608ace114fb35bb3511133c3cc8273ee680a901",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_energy_point80_followup/checked/2026-10-25_smooth_energy_point80__all_same__occ_none__conf001.json",
+      "electronic_review_sha256": "bc3b4cd1a34b70cbd506ca434763e7e340caf9fa470c2145aff61f4b351cc8e2",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/smooth_native_resource_witness/review.json",
+      "native_review_sha256": "d916a06e1eb52332daada7ae014412011af56da4fde21d6a7cca299efc6e32fa"
+    },
+    "all_same__occ_none__conf002": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_smooth_empty_native_batch/all_same__occ_none__conf002/geometry.xyz",
+      "geometry_sha256": "a78269e4eb74c1466d0347c8b224eff6b29227d319272c00ab1cb47636374e58",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf002/independent_energy_review.json",
+      "electronic_review_sha256": "26afe535c23910648e1de49afc39c923042ec8d0d3c440a5bd331e83aae48d5d",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_smooth_empty_native_batch/all_same__occ_none__conf002/independent_native_review.json",
+      "native_review_sha256": "713d2e4ee7294dda05c2d0ddefeb834f38b17f5df790e84c1aa6266278630f61"
+    },
+    "all_same__occ_none__conf003": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf003/geometry.xyz",
+      "geometry_sha256": "b303746008319d56e8e359673ee935189f2c4cad8f96ba53a043317293bc844f",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf003/independent_energy_review.json",
+      "electronic_review_sha256": "01b9de142ec431c54c5c59b99a30b18998f395c295d100e17eaa4bdbdf067b49",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf003/independent_native_review.json",
+      "native_review_sha256": "a8ed714446f0e64b6cd8b9e86b8898af881d512e947275bd381a387a1141b331"
+    },
+    "all_same__occ_none__conf004": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf004/geometry.xyz",
+      "geometry_sha256": "b27460c2505d281f7e08f1d2c49b5106a68eccf4c41fed9f01252407d47679d8",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf004/independent_energy_review.json",
+      "electronic_review_sha256": "ba3e67f30d20e0ad79d0653b7d6d9eadba761b2437cf955d070aee92ddad03bb",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf004/independent_native_review.json",
+      "native_review_sha256": "411e6130b437b95c8e7826ef1e3aefc6c5879806c86f5c279cfd6e61267e8c9c"
+    },
+    "all_same__occ_none__conf005": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf005/geometry.xyz",
+      "geometry_sha256": "056df8fdc6dff5bdb7ef083b6068721711d4a2ccaf247a0c29217b09f4b5dfd9",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf005/independent_energy_review.json",
+      "electronic_review_sha256": "0e66e5464dc5cb3db8a5a338b2fb3d1d7c0fb7c6f2d0b38303cd5ca06d092123",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf005/independent_native_review.json",
+      "native_review_sha256": "09a7cf10b504be1f648cd6fe3e5dfc5e2c308d4cb4301e99d54fa1f69cf1f363"
+    },
+    "all_same__occ_none__conf006": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf006/geometry.xyz",
+      "geometry_sha256": "ba12cec9ae649be3bebbc9d5bc216a2a0358b8a2f08d0081449209859dd06e5c",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf006/independent_energy_review.json",
+      "electronic_review_sha256": "189627ddc1feee83dfe224c1b506f9e1c121ab51c9ff56713c97d781271c3f04",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf006/independent_native_review.json",
+      "native_review_sha256": "cbbba771a0f831dc0ef60f87b5495deecaac88459a4e2af36d30b90400ace26e"
+    },
+    "all_same__occ_none__conf007": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf007/geometry.xyz",
+      "geometry_sha256": "c251611f8ad7d754105896b884561bace9ba7124535b9a3e9daf9eeb07f4a350",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf007/independent_energy_review.json",
+      "electronic_review_sha256": "26aa0fdce1fb837c1f26cf94015417848fe5018acf78ba154c24d9690e2a4d55",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf007/independent_native_review.json",
+      "native_review_sha256": "7265e2aedd26f31733b7bf26635a81a7a08938a596299dc2a47a26ca46b294a7"
+    },
+    "all_same__occ_none__conf008": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf008/geometry.xyz",
+      "geometry_sha256": "80b6770d0c87729384debfa5752391986d031c4c881a6618976e49e122508ffe",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf008/independent_energy_review.json",
+      "electronic_review_sha256": "25f1c0e995ad3817372a10307229c0371ae9f505343419c3d3c9a8c72b88d4ee",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf008/independent_native_review.json",
+      "native_review_sha256": "f49f5c77b823e51c35be6c161f9112932fc35f1a03dde2bd8e84633ba5d9541f"
+    },
+    "all_same__occ_none__conf009": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf009/geometry.xyz",
+      "geometry_sha256": "95c46bc04ab27cad794d443d09ef44fb1ee930a3e25e57b08551dc202dc68bd9",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf009/independent_energy_review.json",
+      "electronic_review_sha256": "9dc2e5110a54d2da5f098dadf25f06a42dc98557efde5a7d251dd95f7b51678a",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf009/independent_native_review.json",
+      "native_review_sha256": "334c9dd7f94dc0287b196acb3fe5ee1f4a3c9d5982e679c8e857871d082abdb6"
+    },
+    "all_same__occ_none__conf010": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf010/geometry.xyz",
+      "geometry_sha256": "df74918becfa4e5ed957fc14dfaedd44f592caa46f88cabbfb42326d0b51186f",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf010/independent_energy_review.json",
+      "electronic_review_sha256": "39f23494d085e8b01b444b93f28d91c151647995d542b843a555ab91cf976aee",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf010/independent_native_review.json",
+      "native_review_sha256": "e4bf4f34d05dc20183bdef11a5188b87759f20f633ade5d2f65fc7df31c28860"
+    },
+    "all_same__occ_none__conf011": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf011/geometry.xyz",
+      "geometry_sha256": "258983fb9a57375c54476504db074ad37d5f43d367ec3fab9f877155f58e53c2",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf011/independent_energy_review.json",
+      "electronic_review_sha256": "e14a90dacf373a0b51f816c2159a0017554c947d3539c62bc7b4a5362946c292",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf011/independent_native_review.json",
+      "native_review_sha256": "511079739f0e31512465dfa3d6b3222a51bf0461e5e4d7e3e4102407ee3791e1"
+    },
+    "all_same__occ_none__conf012": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf012/geometry.xyz",
+      "geometry_sha256": "62580121cddeb61a9ce9f74ac7d8ae15d70128d0225a396bd8797b1fc39aeab6",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf012/independent_energy_review.json",
+      "electronic_review_sha256": "a6c9c62046baef6f329d66a3da745ce055865c21617d21c1211c161647fe0cb9",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf012/independent_native_review.json",
+      "native_review_sha256": "7956c4bff6f803c8820b746c7bfbec378a9c25ff670acc636d3f652d8771d9f3"
+    },
+    "all_same__occ_none__conf013": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf013/geometry.xyz",
+      "geometry_sha256": "c4b880e4f8d18bcc9b90eba70ec8cfe57e5643bc6bd03252d672005120562d0a",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf013/independent_energy_review.json",
+      "electronic_review_sha256": "435179d3e6f186cd0a0d078f1200e9dd62f0c21909a82067e0a3e59eef9a23af",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf013/independent_native_review.json",
+      "native_review_sha256": "2f6af8f8bd5ad421d2e5d3cce49208b085a33de03bf90d923783f37ea9558b12"
+    },
+    "all_same__occ_none__conf014": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf014/geometry.xyz",
+      "geometry_sha256": "959afa1203eb905c65d7a603fcb94448884cd151c68ce5eeff3454c6b1322573",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf014/independent_energy_review.json",
+      "electronic_review_sha256": "31ea3ed3ae19af0e4590284bf2e160048c2ff37bcb307adc4edea746f9a76092",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf014/independent_native_review.json",
+      "native_review_sha256": "29ec8b023a9563b04f49ebebd3d843bb8de5ff3b8ff9216fdd96fccb7fffef69"
+    },
+    "all_same__occ_none__conf015": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf015/geometry.xyz",
+      "geometry_sha256": "f6df449db037726be2dcb3990912c949fee45c8d372bc9c1f8c5c7cb7c71e342",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf015/independent_energy_review.json",
+      "electronic_review_sha256": "fb522d59d3e15feb6a2945c3e23b5a8e685fbf040870f3c9ecad6e3caadd98ab",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf015/independent_native_review.json",
+      "native_review_sha256": "8ceedc3de4e8a62be1e1beb644367089ade3765cb9556426c65c86186e04b146"
+    },
+    "all_same__occ_none__conf016": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf016/geometry.xyz",
+      "geometry_sha256": "e325e695ab8e7cc5119b718078da2fe5dbdb46f0dc5f3a3158744c4e15a3dc1e",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf016/independent_energy_review.json",
+      "electronic_review_sha256": "252e32e97a6e3f72a819b038c0cb108a33d2ff2bf51a883a6bfbad8a71cb66fa",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf016/independent_native_review.json",
+      "native_review_sha256": "2a6df45ee836ece037381adebcb32e69d2a6e4e8c9f425f87440f89fdc998f79"
+    },
+    "all_same__occ_none__conf017": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf017/geometry.xyz",
+      "geometry_sha256": "110a3f871806e1ca7f5081b36bbc80ce95a73a6a3ef13b837bf4be18f8910b57",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf017/independent_energy_review.json",
+      "electronic_review_sha256": "197bc99c247efa95bec7c42fbb00a0433232bf0dd077515936a7f5b2ffbb1464",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf017/independent_native_review.json",
+      "native_review_sha256": "c3f19172ffc45c4c22a3d12a89a0f419c416adfcd627a9d230cd4d264126d17a"
+    },
+    "all_same__occ_none__conf018": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf018/geometry.xyz",
+      "geometry_sha256": "a4c1ca6188c3131af9f4cce55b793f2a45db1da3b7472246e2742853d41ffc19",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf018/independent_energy_review.json",
+      "electronic_review_sha256": "5d2980e86fdb25ed2183444bdd678258e2dd1314cbce22ccc32bb7e95ba9d626",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf018/independent_native_review.json",
+      "native_review_sha256": "0e8ace160b82e2277b8eb980a747d28adb358b08c1a45544d1c0eed3b69eb3a7"
+    },
+    "all_same__occ_none__conf019": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf019/geometry.xyz",
+      "geometry_sha256": "7e5a9fe44c3bd41e294fc6cb497977ddf57473e9bb4a00df40c5e8ed218bdad6",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf019/independent_energy_review.json",
+      "electronic_review_sha256": "b55bbebdeab271f5e44158d0c446eb069c9d184efa01f0b38f7aee39343be9e6",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf019/independent_native_review.json",
+      "native_review_sha256": "edbfec47b89f30126cac201e0d0acb4fedef269a77c417d0f44635f9a7b987fe"
+    },
+    "all_same__occ_none__conf020": {
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf020/geometry.xyz",
+      "geometry_sha256": "52364ebd27a0e7a59a889c1f6c56d626455aaad3a2179a1ee4ce9a448f9a6a1b",
+      "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_empty_electronic_batch/all_same__occ_none__conf020/independent_energy_review.json",
+      "electronic_review_sha256": "e123c1475804e9a7503ea64d0acf6ca3ec9785d66b83863f27ecb102079ee13d",
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_native_final_state_witness_batch/all_same__occ_none__conf020/independent_native_review.json",
+      "native_review_sha256": "e0cb195a7d2e2fbf7beecf2102bdd9f1ea366613c1340bb0d0267a43b05f396c"
+    }
+  },
+  "keys": [
+    "all_same__occ_none__conf001",
+    "all_same__occ_none__conf002",
+    "all_same__occ_none__conf003",
+    "all_same__occ_none__conf004",
+    "all_same__occ_none__conf005",
+    "all_same__occ_none__conf006",
+    "all_same__occ_none__conf007",
+    "all_same__occ_none__conf008",
+    "all_same__occ_none__conf009",
+    "all_same__occ_none__conf010",
+    "all_same__occ_none__conf011",
+    "all_same__occ_none__conf012",
+    "all_same__occ_none__conf013",
+    "all_same__occ_none__conf014",
+    "all_same__occ_none__conf015",
+    "all_same__occ_none__conf016",
+    "all_same__occ_none__conf017",
+    "all_same__occ_none__conf018",
+    "all_same__occ_none__conf019",
+    "all_same__occ_none__conf020"
+  ],
+  "rmsd_A": [
+    [
+      0.0,
+      4.143234694321826,
+      2.7402994317091998,
+      3.4046153831265684,
+      3.180898803099363,
+      2.6922221251404017,
+      3.0707484478202,
+      2.6497664479337377,
+      3.413586195398637,
+      3.1274878073948194,
+      2.7180462823375717,
+      3.205063737732521,
+      3.2590806754114965,
+      3.647492982947594,
+      3.1801521186908066,
+      3.1447840618083016,
+      3.196984991438452,
+      3.67850551169647,
+      3.221392527311879,
+      2.691142185926242
+    ],
+    [
+      4.143234694321826,
+      0.0,
+      4.271163595243517,
+      3.973469663678619,
+      3.803692628362501,
+      4.21204184561039,
+      4.408836069767224,
+      4.164951877301079,
+      3.9664071748786074,
+      4.4785702334709825,
+      4.240963551249549,
+      3.819359437245729,
+      4.5180032640029815,
+      4.044015544709798,
+      3.733278616933638,
+      3.688453634619125,
+      4.512330902591394,
+      3.6664412193307183,
+      4.508545085870432,
+      4.2260445944980125
+    ],
+    [
+      2.7402994317091998,
+      4.271163595243517,
+      0.0,
+      2.0095102683365633,
+      1.793684735354831,
+      1.3571127210640574,
+      1.2656417932353536,
+      0.7994991400891134,
+      1.810908691443917,
+      1.5165445363560617,
+      0.6648655090867427,
+      1.6776943650875107,
+      1.4281750292768005,
+      1.7710250495814772,
+      1.0779446320426,
+      1.3821900263008804,
+      1.3003144341217396,
+      2.347954680024078,
+      1.5922506602916662,
+      1.4966459913917645
+    ],
+    [
+      3.4046153831265684,
+      3.973469663678619,
+      2.0095102683365633,
+      0.0,
+      1.2354315725235192,
+      2.7162547068795915,
+      2.047292979294677,
+      1.8530580167690633,
+      0.7896271482052737,
+      1.1031252574791983,
+      1.9741770649620642,
+      1.552472005237096,
+      1.2903905894671501,
+      1.0984741526508404,
+      1.5746412439135264,
+      1.3220906643936363,
+      1.3877339372317594,
+      1.3211126700255746,
+      2.027017411223854,
+      2.6367533165387327
+    ],
+    [
+      3.180898803099363,
+      3.803692628362501,
+      1.793684735354831,
+      1.2354315725235192,
+      0.0,
+      1.979558788428463,
+      1.9576846704213307,
+      1.6075241631197428,
+      1.3766256894718603,
+      1.3056793989716184,
+      1.7378525277975165,
+      0.7827946853668932,
+      1.4671508616309263,
+      1.5033438946881694,
+      1.591732455131039,
+      1.3986013473064713,
+      1.5266920881428065,
+      1.7445837681375957,
+      1.3365435943636232,
+      1.887808671242211
+    ],
+    [
+      2.6922221251404017,
+      4.21204184561039,
+      1.3571127210640574,
+      2.7162547068795915,
+      1.979558788428463,
+      0.0,
+      1.5699091923220856,
+      1.5256913445195979,
+      2.565656488475846,
+      2.2539676866060465,
+      1.451348683350583,
+      1.8153926652807058,
+      2.2074333587828043,
+      2.5195036232636983,
+      1.9176138559565703,
+      2.08717168208195,
+      2.134303394919935,
+      2.928415371474129,
+      1.4176387563423036,
+      0.6644861717440737
+    ],
+    [
+      3.0707484478202,
+      4.408836069767224,
+      1.2656417932353536,
+      2.047292979294677,
+      1.9576846704213307,
+      1.5699091923220856,
+      0.0,
+      1.4249764070294493,
+      1.9868344275887941,
+      1.7787751960180234,
+      1.4009044796126378,
+      1.938009484696752,
+      1.7690405518999917,
+      1.9092963472093725,
+      1.5087952366859954,
+      1.615074841060233,
+      1.6810698030670852,
+      2.4756519887824497,
+      1.7081043147576194,
+      1.6684252076572175
+    ],
+    [
+      2.6497664479337377,
+      4.164951877301079,
+      0.7994991400891134,
+      1.8530580167690633,
+      1.6075241631197428,
+      1.5256913445195979,
+      1.4249764070294493,
+      0.0,
+      1.88509438253477,
+      1.3347469914604393,
+      0.5248165436252527,
+      1.7119572600404467,
+      1.495735367622842,
+      1.8552557424522957,
+      1.2672948412862657,
+      1.075486781057777,
+      1.5110447489968895,
+      2.1325381337324263,
+      1.604444374762081,
+      1.4026100240142625
+    ],
+    [
+      3.413586195398637,
+      3.9664071748786074,
+      1.810908691443917,
+      0.7896271482052737,
+      1.3766256894718603,
+      2.565656488475846,
+      1.9868344275887941,
+      1.88509438253477,
+      0.0,
+      1.2869157319924376,
+      1.9267301928283138,
+      1.253046119750693,
+      1.1704812320116171,
+      0.7058331333368731,
+      1.3187293035193444,
+      1.4648148963819096,
+      1.1052868646448741,
+      1.6179322367712754,
+      1.9416886613332456,
+      2.6060285931701928
+    ],
+    [
+      3.1274878073948194,
+      4.4785702334709825,
+      1.5165445363560617,
+      1.1031252574791983,
+      1.3056793989716184,
+      2.2539676866060465,
+      1.7787751960180234,
+      1.3347469914604393,
+      1.2869157319924376,
+      0.0,
+      1.4100754685477972,
+      1.5462714638533865,
+      0.655799460692207,
+      1.5357301161077654,
+      1.6898314678721766,
+      1.4981142557405878,
+      0.7847677274550909,
+      1.8312201529376355,
+      1.4234292799975345,
+      2.1188089340142846
+    ],
+    [
+      2.7180462823375717,
+      4.240963551249549,
+      0.6648655090867427,
+      1.9741770649620642,
+      1.7378525277975165,
+      1.451348683350583,
+      1.4009044796126378,
+      0.5248165436252527,
+      1.9267301928283138,
+      1.4100754685477972,
+      0.0,
+      1.7635697531139003,
+      1.4088472965046774,
+      1.8899737203839058,
+      1.2851930294859224,
+      1.258299595962002,
+      1.4283182007884834,
+      2.2432456895203283,
+      1.5205986675343586,
+      1.2869681707911635
+    ],
+    [
+      3.205063737732521,
+      3.819359437245729,
+      1.6776943650875107,
+      1.552472005237096,
+      0.7827946853668932,
+      1.8153926652807058,
+      1.938009484696752,
+      1.7119572600404467,
+      1.253046119750693,
+      1.5462714638533865,
+      1.7635697531139003,
+      0.0,
+      1.4650901949675417,
+      1.3571895128401714,
+      1.4695088543420438,
+      1.620535300321191,
+      1.39523643689466,
+      2.0361482662752413,
+      1.2592544361081235,
+      1.8707220476826945
+    ],
+    [
+      3.2590806754114965,
+      4.5180032640029815,
+      1.4281750292768005,
+      1.2903905894671501,
+      1.4671508616309263,
+      2.2074333587828043,
+      1.7690405518999917,
+      1.495735367622842,
+      1.1704812320116171,
+      0.655799460692207,
+      1.4088472965046774,
+      1.4650901949675417,
+      0.0,
+      1.3989912124600337,
+      1.5779179164996706,
+      1.6341619084375727,
+      0.5249473317008042,
+      1.9842108016783346,
+      1.2991368028627066,
+      2.1308450323393076
+    ],
+    [
+      3.647492982947594,
+      4.044015544709798,
+      1.7710250495814772,
+      1.0984741526508404,
+      1.5033438946881694,
+      2.5195036232636983,
+      1.9092963472093725,
+      1.8552557424522957,
+      0.7058331333368731,
+      1.5357301161077654,
+      1.8899737203839058,
+      1.3571895128401714,
+      1.3989912124600337,
+      0.0,
+      1.0968855299015385,
+      1.3000942933727337,
+      1.3483232861416092,
+      1.7911272137367797,
+      2.0005818822944264,
+      2.558561444366509
+    ],
+    [
+      3.1801521186908066,
+      3.733278616933638,
+      1.0779446320426,
+      1.5746412439135264,
+      1.591732455131039,
+      1.9176138559565703,
+      1.5087952366859954,
+      1.2672948412862657,
+      1.3187293035193444,
+      1.6898314678721766,
+      1.2851930294859224,
+      1.4695088543420438,
+      1.5779179164996706,
+      1.0968855299015385,
+      0.0,
+      0.806101485820037,
+      1.5099158036108349,
+      1.9749723449523344,
+      1.9153162694197787,
+      2.0114186083316508
+    ],
+    [
+      3.1447840618083016,
+      3.688453634619125,
+      1.3821900263008804,
+      1.3220906643936363,
+      1.3986013473064713,
+      2.08717168208195,
+      1.615074841060233,
+      1.075486781057777,
+      1.4648148963819096,
+      1.4981142557405878,
+      1.258299595962002,
+      1.620535300321191,
+      1.6341619084375727,
+      1.3000942933727337,
+      0.806101485820037,
+      0.0,
+      1.6959760595234497,
+      1.6995119332115314,
+      1.9422182046695877,
+      1.9761879130830011
+    ],
+    [
+      3.196984991438452,
+      4.512330902591394,
+      1.3003144341217396,
+      1.3877339372317594,
+      1.5266920881428065,
+      2.134303394919935,
+      1.6810698030670852,
+      1.5110447489968895,
+      1.1052868646448741,
+      0.7847677274550909,
+      1.4283182007884834,
+      1.39523643689466,
+      0.5249473317008042,
+      1.3483232861416092,
+      1.5099158036108349,
+      1.6959760595234497,
+      0.0,
+      2.0919460321547265,
+      1.3957246135409795,
+      2.1526604500469446
+    ],
+    [
+      3.67850551169647,
+      3.6664412193307183,
+      2.347954680024078,
+      1.3211126700255746,
+      1.7445837681375957,
+      2.928415371474129,
+      2.4756519887824497,
+      2.1325381337324263,
+      1.6179322367712754,
+      1.8312201529376355,
+      2.2432456895203283,
+      2.0361482662752413,
+      1.9842108016783346,
+      1.7911272137367797,
+      1.9749723449523344,
+      1.6995119332115314,
+      2.0919460321547265,
+      0.0,
+      2.508081315564188,
+      2.8330598166176566
+    ],
+    [
+      3.221392527311879,
+      4.508545085870432,
+      1.5922506602916662,
+      2.027017411223854,
+      1.3365435943636232,
+      1.4176387563423036,
+      1.7081043147576194,
+      1.604444374762081,
+      1.9416886613332456,
+      1.4234292799975345,
+      1.5205986675343586,
+      1.2592544361081235,
+      1.2991368028627066,
+      2.0005818822944264,
+      1.9153162694197787,
+      1.9422182046695877,
+      1.3957246135409795,
+      2.508081315564188,
+      0.0,
+      1.2951196189882181
+    ],
+    [
+      2.691142185926242,
+      4.2260445944980125,
+      1.4966459913917645,
+      2.6367533165387327,
+      1.887808671242211,
+      0.6644861717440737,
+      1.6684252076572175,
+      1.4026100240142625,
+      2.6060285931701928,
+      2.1188089340142846,
+      1.2869681707911635,
+      1.8707220476826945,
+      2.1308450323393076,
+      2.558561444366509,
+      2.0114186083316508,
+      1.9761879130830011,
+      2.1526604500469446,
+      2.8330598166176566,
+      1.2951196189882181,
+      0.0
+    ]
+  ],
+  "geometry_check": "declared graph and stereochemistry checked before symmetry-aware heavy-atom alignment",
+  "maximum_alignment_matches": 10000,
+  "energy_duplicate_tolerance_kJ_mol": 0.2,
+  "partitions_by_rmsd_cutoff_A": {
+    "0.05": {
+      "25": {
+        "G_eV": -82874.1911118333,
+        "minimum_G_eV": -82874.15769309578,
+        "configurational_lowering_kJ_mol": 3.2244179877765586,
+        "conditional_populations": [
+          0.04905144890810587,
+          0.043775980201622065,
+          0.05286281467872072,
+          0.022058454642420594,
+          0.272336849192055,
+          0.05773384823827453,
+          0.03260727771760555,
+          0.08916421596462568,
+          0.009166769712949776,
+          0.07750041207901237,
+          0.017575910551655784,
+          0.026770278033651895,
+          0.10368379058305646,
+          0.02481925796087901,
+          0.03180561763118188,
+          0.01007233469102345,
+          0.024774817600006476,
+          0.015153898063325342,
+          0.028091838805106833,
+          0.010994184744720751
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      },
+      "50": {
+        "G_eV": -82874.05864302932,
+        "minimum_G_eV": -82874.01175640034,
+        "configurational_lowering_kJ_mol": 4.523871968422853,
+        "conditional_populations": [
+          0.07077999041744963,
+          0.04664649824864673,
+          0.0719232751626269,
+          0.029942211482398836,
+          0.16123225222186163,
+          0.06272968561420149,
+          0.041824960184084624,
+          0.10195388866405253,
+          0.014720949821168729,
+          0.07694438492742657,
+          0.018677134400411625,
+          0.028380911331185525,
+          0.1129729521946269,
+          0.02379312928028999,
+          0.03478822179899391,
+          0.017376379087776624,
+          0.033562376832829345,
+          0.017014553562759497,
+          0.025883194037588136,
+          0.008853050729620789
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      },
+      "100": {
+        "G_eV": -82873.95872049568,
+        "minimum_G_eV": -82873.91699068235,
+        "configurational_lowering_kJ_mol": 4.026314897507238,
+        "conditional_populations": [
+          0.06879266181207831,
+          0.031681347257765856,
+          0.07470182695796916,
+          0.03234288277317951,
+          0.1970698327941429,
+          0.055684092109924775,
+          0.043725903073594787,
+          0.08666994352765023,
+          0.015174992229898775,
+          0.07859570634260199,
+          0.016450439177769165,
+          0.02202363287940351,
+          0.12434956185053501,
+          0.015897674749097427,
+          0.0293843925967124,
+          0.016048706196664396,
+          0.0367858375573872,
+          0.016050014139357437,
+          0.028682855339503554,
+          0.00988769663476353
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      }
+    },
+    "0.1": {
+      "25": {
+        "G_eV": -82874.1911118333,
+        "minimum_G_eV": -82874.15769309578,
+        "configurational_lowering_kJ_mol": 3.2244179877765586,
+        "conditional_populations": [
+          0.04905144890810587,
+          0.043775980201622065,
+          0.05286281467872072,
+          0.022058454642420594,
+          0.272336849192055,
+          0.05773384823827453,
+          0.03260727771760555,
+          0.08916421596462568,
+          0.009166769712949776,
+          0.07750041207901237,
+          0.017575910551655784,
+          0.026770278033651895,
+          0.10368379058305646,
+          0.02481925796087901,
+          0.03180561763118188,
+          0.01007233469102345,
+          0.024774817600006476,
+          0.015153898063325342,
+          0.028091838805106833,
+          0.010994184744720751
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      },
+      "50": {
+        "G_eV": -82874.05864302932,
+        "minimum_G_eV": -82874.01175640034,
+        "configurational_lowering_kJ_mol": 4.523871968422853,
+        "conditional_populations": [
+          0.07077999041744963,
+          0.04664649824864673,
+          0.0719232751626269,
+          0.029942211482398836,
+          0.16123225222186163,
+          0.06272968561420149,
+          0.041824960184084624,
+          0.10195388866405253,
+          0.014720949821168729,
+          0.07694438492742657,
+          0.018677134400411625,
+          0.028380911331185525,
+          0.1129729521946269,
+          0.02379312928028999,
+          0.03478822179899391,
+          0.017376379087776624,
+          0.033562376832829345,
+          0.017014553562759497,
+          0.025883194037588136,
+          0.008853050729620789
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      },
+      "100": {
+        "G_eV": -82873.95872049568,
+        "minimum_G_eV": -82873.91699068235,
+        "configurational_lowering_kJ_mol": 4.026314897507238,
+        "conditional_populations": [
+          0.06879266181207831,
+          0.031681347257765856,
+          0.07470182695796916,
+          0.03234288277317951,
+          0.1970698327941429,
+          0.055684092109924775,
+          0.043725903073594787,
+          0.08666994352765023,
+          0.015174992229898775,
+          0.07859570634260199,
+          0.016450439177769165,
+          0.02202363287940351,
+          0.12434956185053501,
+          0.015897674749097427,
+          0.0293843925967124,
+          0.016048706196664396,
+          0.0367858375573872,
+          0.016050014139357437,
+          0.028682855339503554,
+          0.00988769663476353
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      }
+    },
+    "0.2": {
+      "25": {
+        "G_eV": -82874.1911118333,
+        "minimum_G_eV": -82874.15769309578,
+        "configurational_lowering_kJ_mol": 3.2244179877765586,
+        "conditional_populations": [
+          0.04905144890810587,
+          0.043775980201622065,
+          0.05286281467872072,
+          0.022058454642420594,
+          0.272336849192055,
+          0.05773384823827453,
+          0.03260727771760555,
+          0.08916421596462568,
+          0.009166769712949776,
+          0.07750041207901237,
+          0.017575910551655784,
+          0.026770278033651895,
+          0.10368379058305646,
+          0.02481925796087901,
+          0.03180561763118188,
+          0.01007233469102345,
+          0.024774817600006476,
+          0.015153898063325342,
+          0.028091838805106833,
+          0.010994184744720751
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      },
+      "50": {
+        "G_eV": -82874.05864302932,
+        "minimum_G_eV": -82874.01175640034,
+        "configurational_lowering_kJ_mol": 4.523871968422853,
+        "conditional_populations": [
+          0.07077999041744963,
+          0.04664649824864673,
+          0.0719232751626269,
+          0.029942211482398836,
+          0.16123225222186163,
+          0.06272968561420149,
+          0.041824960184084624,
+          0.10195388866405253,
+          0.014720949821168729,
+          0.07694438492742657,
+          0.018677134400411625,
+          0.028380911331185525,
+          0.1129729521946269,
+          0.02379312928028999,
+          0.03478822179899391,
+          0.017376379087776624,
+          0.033562376832829345,
+          0.017014553562759497,
+          0.025883194037588136,
+          0.008853050729620789
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      },
+      "100": {
+        "G_eV": -82873.95872049568,
+        "minimum_G_eV": -82873.91699068235,
+        "configurational_lowering_kJ_mol": 4.026314897507238,
+        "conditional_populations": [
+          0.06879266181207831,
+          0.031681347257765856,
+          0.07470182695796916,
+          0.03234288277317951,
+          0.1970698327941429,
+          0.055684092109924775,
+          0.043725903073594787,
+          0.08666994352765023,
+          0.015174992229898775,
+          0.07859570634260199,
+          0.016450439177769165,
+          0.02202363287940351,
+          0.12434956185053501,
+          0.015897674749097427,
+          0.0293843925967124,
+          0.016048706196664396,
+          0.0367858375573872,
+          0.016050014139357437,
+          0.028682855339503554,
+          0.00988769663476353
+        ],
+        "temperature_K": 298.15,
+        "unique_minima": 20,
+        "status": "finite_set_partition_computed",
+        "representative_keys": [
+          "all_same__occ_none__conf006",
+          "all_same__occ_none__conf007",
+          "all_same__occ_none__conf005",
+          "all_same__occ_none__conf019",
+          "all_same__occ_none__conf002",
+          "all_same__occ_none__conf003",
+          "all_same__occ_none__conf012",
+          "all_same__occ_none__conf004",
+          "all_same__occ_none__conf020",
+          "all_same__occ_none__conf010",
+          "all_same__occ_none__conf013",
+          "all_same__occ_none__conf015",
+          "all_same__occ_none__conf017",
+          "all_same__occ_none__conf009",
+          "all_same__occ_none__conf008",
+          "all_same__occ_none__conf011",
+          "all_same__occ_none__conf016",
+          "all_same__occ_none__conf014",
+          "all_same__occ_none__conf018",
+          "all_same__occ_none__conf001"
+        ],
+        "duplicate_groups": [
+          [
+            "all_same__occ_none__conf006"
+          ],
+          [
+            "all_same__occ_none__conf007"
+          ],
+          [
+            "all_same__occ_none__conf005"
+          ],
+          [
+            "all_same__occ_none__conf019"
+          ],
+          [
+            "all_same__occ_none__conf002"
+          ],
+          [
+            "all_same__occ_none__conf003"
+          ],
+          [
+            "all_same__occ_none__conf012"
+          ],
+          [
+            "all_same__occ_none__conf004"
+          ],
+          [
+            "all_same__occ_none__conf020"
+          ],
+          [
+            "all_same__occ_none__conf010"
+          ],
+          [
+            "all_same__occ_none__conf013"
+          ],
+          [
+            "all_same__occ_none__conf015"
+          ],
+          [
+            "all_same__occ_none__conf017"
+          ],
+          [
+            "all_same__occ_none__conf009"
+          ],
+          [
+            "all_same__occ_none__conf008"
+          ],
+          [
+            "all_same__occ_none__conf011"
+          ],
+          [
+            "all_same__occ_none__conf016"
+          ],
+          [
+            "all_same__occ_none__conf014"
+          ],
+          [
+            "all_same__occ_none__conf018"
+          ],
+          [
+            "all_same__occ_none__conf001"
+          ]
+        ],
+        "minimum_E_eV": -82892.76403029937,
+        "search_hits_are_weights": false,
+        "scope": "Conditional finite conformer set; not a globally complete ensemble"
+      }
+    }
+  },
+  "scope": "Finite empty-chain set in one configuration and alternate acetonitrile model; no experimental loading or grafting-cycle inference",
+  "converged_ensemble": false,
+  "physical_QC_repeated": false,
+  "quantum_jobs_submitted": 0
+}

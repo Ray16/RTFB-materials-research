@@ -1,0 +1,22 @@
+{
+  "owner": {
+    "host": "lambda2",
+    "pid": 3148535,
+    "process_start": "1392077761"
+  },
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/collect_counterpoise_when_checked.py",
+    "--manifest",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-27/counterpoise_AB_refinement/collection_manifest.json",
+    "--observer",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-27_AB_polish_review",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-27_full_counterpoise_checked_collection",
+    "--max-hours",
+    "24"
+  ],
+  "started": 1793120157.638415,
+  "manifest_sha256": "4ef47fad320396d7de890163ea94be22cfb5249ddc98702b345526994c181cbd",
+  "scope": "Wait for independent AB refinement, then use all five existing physical checks"
+}

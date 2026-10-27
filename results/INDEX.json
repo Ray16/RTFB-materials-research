@@ -1219,7 +1219,9 @@
       "source_snapshot": "results/reviews/2026-10-27/counterpoise_AB_refinement/observer_launch.json",
       "raw_root": "calcs/local_motif_counterpoise/cpu_one_spacer_AB_polish_2026-10-27",
       "live_review": "calcs/validation/2026-10-27_AB_polish_review/status.json",
-      "scope": "Tighter SCF checkpoint refinement; unchanged independent orbital-gradient gate, full gas counterpoise still unqualified"
+      "scope": "Tighter SCF checkpoint refinement; unchanged independent orbital-gradient gate, full gas counterpoise still unqualified",
+      "collection_manifest": "results/reviews/2026-10-27/counterpoise_AB_refinement/collection_manifest.json",
+      "live_collection": "calcs/validation/2026-10-27_full_counterpoise_checked_collection/status.json"
     },
     "uma_repeat_failure": {
       "guide": "results/validation/uma_repeat_diagnostic_2026-10-27/README.md",
@@ -1230,11 +1232,11 @@
     },
     "uma_intermediate_precision_control": {
       "guide": "results/validation/uma_repeat_fp32_control_2026-10-27/README.md",
-      "current": "results/validation/uma_repeat_fp32_control_2026-10-27/launch.json",
+      "current": "results/validation/uma_repeat_fp32_control_2026-10-27/control_binding.json",
       "source_snapshot": "results/validation/uma_repeat_diagnostic_2026-10-27/independent_review.json",
       "live_status": "results/validation/uma_repeat_fp32_control_2026-10-27/dispatch/status.json",
       "raw_root": "calcs/uma_nitro_validation",
-      "scope": "One finite same-device first-case diagnostic, explicit intermediate precision switches; no production or full-panel qualification"
+      "scope": "All ten FP16-off switches observed; force repeatability still fails. Separate internal IEEE-matmul diagnostic pending; no production qualification."
     },
     "smooth_geometry_checkpoint_recovery": {
       "guide": "results/reviews/2026-10-27/smooth_checkpoint_recovery/README.md",
@@ -1243,6 +1245,22 @@
       "live_status": "results/polymer_models/campaigns/2026-10-27_smooth_checkpoint_recovery/dispatch.json",
       "raw_root": "calcs/polymer_models/2026-10-27_smooth_checkpoint_recovery",
       "scope": "Four same-model isolated restarts of stopped I/O/residency failures; no ensemble qualification"
+    },
+    "uma_strict_matmul_diagnostic": {
+      "guide": "results/validation/uma_repeat_ieee_control_2026-10-27/README.md",
+      "current": "results/validation/uma_repeat_ieee_control_2026-10-27/independent_review.json",
+      "source_snapshot": "results/validation/uma_repeat_ieee_control_2026-10-27/launch.json",
+      "raw_root": "calcs/uma_nitro_validation/2026-10-27_ieee_intermediates",
+      "status": "reference_repeat_pass_Nitro_repeat_failure",
+      "scope": "Internal strict-matmul first-case control, not an official default profile or production qualification"
+    },
+    "empty_backbone_twenty_state_diagnostic": {
+      "guide": "results/validation/empty_chain_twenty_2026-10-27/README.md",
+      "current": "results/validation/empty_chain_twenty_2026-10-27/comparison.json",
+      "source_snapshot": "results/validation/empty_chain_twenty_2026-10-27/manifest_20.json",
+      "raw_root": "calcs/polymer_models",
+      "status": "one_configuration_batch_stability_checked_wider_cycles_pending",
+      "scope": "First 10 versus 20 checked empty-backbone states in alternate MeCN model; no global convergence or polymer-cycle claim"
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",
