@@ -27,3 +27,5 @@ an editable or unrecorded installation; runtime checks inside reservations
 still verify the imported implementation.
 
 `quantum-cuda128-artifacts.lock.txt` pins the 235 retrieved external artifacts by direct URL and SHA-256. Install the local project separately from its recorded source checkout. The archived source also needs every hash-required certificate backing file; `scripts/release/certificate_closure.py` validates this closure before calculation. Explicit process-local xTB path bindings retain the qualified hash. The public raw-state release and cluster-independent configuration remain separate from these tests.
+
+The [relocated projected-partition check](../results/validation/relocated_projected_2026-10-26/README.md) now recomputes both saved spin-control partitions through an explicit source-prefix and xTB-prefix entry point. All three rotor-cutoff nuclear terms and internal modes match exactly. A process-tree file trace shows no original-checkout file access, and ten altered physical inputs are rejected. This qualifies the tested CPU postprocessing path; it does not requalify native GPU Hessian execution or every project path.
