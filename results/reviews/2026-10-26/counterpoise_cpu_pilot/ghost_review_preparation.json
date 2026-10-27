@@ -1,0 +1,33 @@
+{
+  "status": "ghost_review_and_stationarity_prepared_small_control_passed_large_ghost_pending",
+  "water_control": {
+    "energy_Ha": -76.43347845360117,
+    "reference_energy_Ha": -76.43347845360117,
+    "energy_error_Ha": 0.0,
+    "checkpoint_energy_error_Ha": 0.0,
+    "orbital_gradient_norm_au": 1.9068529148011248e-08,
+    "orbital_gradient_threshold_au": 1e-07,
+    "electrons": 10,
+    "basis_functions": 116,
+    "ghost_centers": 3,
+    "auxiliary_functions": 226,
+    "status": "exact_ghost_stationarity_evaluator_water_control_passed",
+    "evaluator_sha256": "64973aff153e1d1518752f92f68fda01846dcc74f56da02570e20c2ee837d8d0",
+    "prior_control_sha256": "bcfee0ed3fe0f19cc9ec3765b2cec3a996c3650474c59187194917f1b72ee3f1",
+    "scope": "Small water-dimer control only; large ghost state uncomputed"
+  },
+  "large_ghost_review_complete": false,
+  "large_ghost_stationarity_complete": false,
+  "full_counterpoise_computed": false,
+  "source_sha256": {
+    "scripts/validation/review_counterpoise_cpu_ghost.py": "c78e1b58f624e9cbb35b4d01b4553f9ee43cf9a7544c1564d2f29e5f7c54a330",
+    "scripts/validation/check_cpu_counterpoise_ghost_stationarity.py": "64973aff153e1d1518752f92f68fda01846dcc74f56da02570e20c2ee837d8d0",
+    "scripts/pipeline/coordinate_counterpoise_ghost_review.py": "210ff219f0e31453d3509781d1697a086ba16572ed73915511a2218345462862",
+    "tests/test_review_counterpoise_cpu_ghost.py": "7609b5ac7bd38d8c85e558a063f5dda33f0b710b1e325f7be181b0fe477a4f82",
+    "tests/test_cpu_counterpoise_ghost_stationarity.py": "ba1d2276cd8d2d6c453252d295c6469679ddcf9ebbba44f323c2afaeee9aa88d",
+    "tests/test_coordinate_counterpoise_ghost_review.py": "f2e53215d95c1eed7caef5a20d14bfa2eb6a53b4f1f6f246992c1ae73bb0d065",
+    "results/reviews/2026-10-26/counterpoise_cpu_pilot/ghost_stationarity_water_check_v2.json": "50aa327aefe5bca7d4a6d425a58c6210aaeb4c5c1e341a1a7504015c1bd017c5",
+    "results/reviews/2026-10-26/counterpoise_cpu_pilot/ghost_review_tests_final.xml": "fe52f953b4238957bd20ab94cec5aa7ab0c4f860dded26a98240a4637c6bf7a0"
+  },
+  "scope": "Small water test validates the exact evaluator; no large-state or polymer interaction conclusion."
+}
