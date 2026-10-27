@@ -1053,12 +1053,15 @@
     },
     "cpu_counterpoise_one_spacer_pilot": {
       "guide": "results/reviews/2026-10-26/counterpoise_cpu_pilot/README.md",
-      "current": "results/reviews/2026-10-26/counterpoise_cpu_pilot/launch_verification.json",
+      "current": "results/reviews/2026-10-26/counterpoise_cpu_pilot/watcher_launch_verification.json",
       "source_snapshot": "results/validation/local_counterpoise_2026-10-26_cpu_one_spacer/campaign.json",
       "raw_root": "calcs/local_motif_counterpoise/cpu_one_spacer_2026-10-26",
-      "status": "CPU_pilot_process_observed_unqualified_at_launch_snapshot",
+      "status": "CPU_pilot_checkpointed_and_review_watcher_live_at_snapshot_unqualified",
       "scope": "CPU-only gas A-own resource pilot; no full counterpoise, solution interaction or material claim",
-      "restart_control": "results/reviews/2026-10-26/counterpoise_cpu_pilot/summary.json"
+      "restart_control": "results/reviews/2026-10-26/counterpoise_cpu_pilot/summary.json",
+      "pilot_start": "results/reviews/2026-10-26/counterpoise_cpu_pilot/launch_verification.json",
+      "watcher_raw_root": "calcs/validation/2026-10-26_cpu_counterpoise_pilot_followup",
+      "watcher_status": "calcs/validation/2026-10-26_cpu_counterpoise_pilot_followup/status.json"
     },
     "ptz_hydroxyethyl_source_candidate": {
       "guide": "results/discovery/ptz_hydroxyethyl_source_2026-10-26/README.md",
