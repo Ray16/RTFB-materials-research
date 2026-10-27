@@ -765,6 +765,49 @@ def audit_tempo_archive(load,digest):
                 quantum_calculations_repeated=False,public_archive_deposited=False)
 
 
+def audit_local_motif(load):
+    try:
+        panel = load('local_motif_panel.json')
+    except FileNotFoundError:
+        return None
+    if (panel['status'] != 'all_twelve_frozen_local_interaction_triplets_independently_reconstructed'
+            or panel['completed_triplets'] != 12 or panel['declared_triplets'] != 12
+            or panel['checked_electronic_geometries'] != 36 or len(panel['states']) != 12
+            or any(panel[key] for key in ('free_energies_computed', 'electronic_coupling_computed',
+                                          'conformer_convergence_established', 'basis_superposition_correction_computed'))):
+        raise ValueError('Local-motif panel scope differs')
+    rows = {}
+    for row in panel['states']:
+        key = (row['parent_key'], round(row['cap_length_A'], 2))
+        if key in rows or row['missing_states']:
+            raise ValueError('Duplicate or incomplete local-motif triplet')
+        if row['free_energy_computed'] or row['basis_superposition_correction_computed']:
+            raise ValueError('Local-motif result was promoted beyond electronic energy')
+        for medium in ('gas', 'acetonitrile'):
+            e = row['exact_state_energies_eV']
+            actual = (e['AB'][medium]-e['A'][medium]-e['B'][medium])*96.48533212331002
+            if not math.isfinite(actual) or abs(actual-row['interaction_energy_kJ_mol_by_medium'][medium]) > 1e-7:
+                raise ValueError('Local-motif interaction does not reconstruct')
+        rows[key] = row
+    parents = ('occ_2_3__pose0', 'occ_2_3__pose1', 'occ_2_4__pose0', 'occ_2_4__pose1')
+    if set(rows) != {(p, c) for p in parents for c in (1.07, 1.09, 1.11)}:
+        raise ValueError('Local-motif coverage differs')
+    central = {p: rows[p, 1.09]['interaction_energy_kJ_mol_by_medium']['acetonitrile'] for p in parents}
+    for parent, expected in zip(parents, (-24.7615, 0.0477, 0.0613, -26.2196)):
+        if abs(central[parent]-expected) > 0.0001:
+            raise ValueError('Local-motif manuscript result differs')
+    expected_ranges = ((-24.81, -24.71), (0.047, 0.049), (0.060, 0.062), (-26.24, -26.20))
+    for parent, (expected_min, expected_max) in zip(parents, expected_ranges):
+        values = [rows[parent, c]['interaction_energy_kJ_mol_by_medium']['acetonitrile']
+                  for c in (1.07, 1.09, 1.11)]
+        tolerance = 0.0051 if expected_min < 0 else 0.00051
+        if abs(min(values)-expected_min) > tolerance or abs(max(values)-expected_max) > tolerance:
+            raise ValueError('Local-motif cap sensitivity differs from manuscript')
+    return dict(triplets=12, electronic_geometries=36, central_mECN_kJ_mol=central,
+                free_energy_computed=False, electronic_coupling_computed=False,
+                basis_superposition_correction_computed=False)
+
+
 def audit():
     root = Path(__file__).resolve().parents[1]
     pointer = json.loads((root / "manuscript/evidence/current.json").read_text())
@@ -1051,6 +1094,7 @@ def audit():
                 neighbor_archive=neighbor_archive,
                 tempo_exact_support=audit_tempo_exact_support(load),
                 tempo_archive=audit_tempo_archive(load,lambda name:hashlib.sha256((folder/name).read_bytes()).hexdigest()),
+                local_motif=audit_local_motif(load),
                 experimental_accuracy_inferred=False, submission_ready=False)
 
 

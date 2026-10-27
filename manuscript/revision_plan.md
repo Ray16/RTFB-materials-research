@@ -23,7 +23,7 @@ replayed consolidated reviewer archive; public deposition remains open.
 | M6: Methods/QC precision | State exactly two tested Hessian columns and both displacement sizes; explain |nu| for tolerated -5..0 cm^-1 modes, unscaled frequencies, spin-contamination threshold 0.1, actual force values and xTB symmetry detection. Remove the unsupported adjective “conservative” for the 4.5e-4 force threshold. Cite qRRHO and program/method papers. | Exact gate description included; further physics controls remain separate |
 | M7: portable/public reproduction | The local reviewer bundle includes 243 thermochemical states and 32 electronic-only records. Relocated offline arithmetic, 242 Hessian reconstructions and seven negative checks pass; the current snapshot freezes and reconciles these inventories. Public code visibility is verified and environment artifacts are pinned. A separate fresh compatible GPU environment now reproduces two complete spin controls and independent Hessian partitions. Public raw-state deposition/DOI, final metadata, remaining diagnostic closure and broader path portability remain open. | Locally prepared and checked; public/fresh-deployment requirements open |
 | M8: literature context | Verify each DOI and source. Add computational electrochemistry/reference, high-throughput design, redox-polymer, workflow/provenance and missing method literature where it supports a specific argument. Do not turn remembered references into unverified citations. | Bibliography now has 36 entries, including the exact precursor patent and both primary DIPEA experimental sources; further relevant context in progress |
-| M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 18 (including the TOC page) and 18 pages, respectively |
+| M9: cohesion and hedging | Lead with the chemical decision enabled by the identity-linked framework. Move synthetic scheduling, concurrency, restart and numerical-repair detail to a separately built SI. Consolidate limitations, define unfamiliar terms and reduce implementation vocabulary in the main article. | Main and separate SI built; 19 (including the TOC page) and 20 pages, respectively |
 | Remaining endpoint | The fixed panel now has 39/39 endpoints; the last triplet alternative is 0.707 eV above the selected singlet electronically. Independent reconstruction: 111 checks, zero discrepancies. Alternative-spin thermochemistry remains explicitly unresolved. | Calculation/reconstruction resolved; latest draft updated |
 
 An [external NDI measurement](../results/validation/ndi_external_challenge_2026-10-26/README.md)
@@ -60,8 +60,8 @@ reviewed electronic states; the second close pose is −26.22 kJ/mol in MeCN at
 the central cap length, and the separated poses are near zero. Basis-superposition
 checks and broader conformer sampling remain pending.
 This metric includes caps and continuum response and remains distinct from
-whole-chain ΔΔG, pure π binding and electron-transfer coupling. It is not yet
-integrated as a chemical finding in the immutable manuscript epoch. See
+whole-chain ΔΔG, pure π binding and electron-transfer coupling. The current
+manuscript and SI now report the complete frozen local panel with these limits. See
 [the local interaction record](../results/reviews/2026-10-26/local_motif_interactions/README.md).
 Four checked empty-chain native records in the alternate smooth-surface model
 now span 7.19 kJ/mol at the 50 cm^-1 rotor cutoff. This is a geometry sensitivity

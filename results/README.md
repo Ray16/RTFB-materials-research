@@ -5,7 +5,7 @@ are pending or excluded. Raw calculations and earlier source snapshots are retai
 
 The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v3/README.md) passes scoped kernel and CLI checks in the original and restored environments while retaining the qualified hashes. Full native/projected production requalification and broader path portability remain open.
 
-The [consolidated reviewer bundle](releases/manuscript_bundle_v3/README.md) gathers the current manuscript source and five overlapping raw-state packages, including the TEMPO addendum. Isolated arithmetic and Hessian replays pass after extraction; public data licensing, author metadata, DOI deposition and wider deployment portability remain open.
+The [consolidated reviewer bundle](releases/manuscript_bundle_v3/README.md) gathers an earlier manuscript source epoch and five overlapping raw-state packages, including the TEMPO addendum. Its isolated arithmetic and Hessian replays pass after extraction. The current paper adds the local-motif panel and requires a successor bundle; public data licensing, author metadata, DOI deposition and wider deployment portability remain open.
 
 A [finite-set subset analysis](validation/empty_chain_subset_sensitivity_2026-10-26/README.md) quantifies how the checked empty-chain partition changes when known conformers are omitted. It is an alternate-model sampling diagnostic, not an occupied-state interaction result.
 

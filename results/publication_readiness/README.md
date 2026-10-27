@@ -6,9 +6,9 @@ not a release certificate. The [readiness guide](../../docs/PUBLICATION_READINES
 defines what must be demonstrated before each requirement can close.
 
 The [consolidated local reviewer bundle](../releases/manuscript_bundle_v3/README.md)
-combines the current source/evidence snapshot and five overlapping raw-state
-packages, with relocated arithmetic and Hessian replays. It is not a public
-archival deposit; data licensing, author metadata and DOI remain open.
+combines an earlier source/evidence snapshot and five overlapping raw-state
+packages, with relocated arithmetic and Hessian replays. The latest manuscript
+epoch requires a successor. Data licensing, author metadata and DOI remain open.
 
 | Evidence | Location |
 | --- | --- |
