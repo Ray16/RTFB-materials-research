@@ -18,3 +18,5 @@ queue contract.
 
 Existing per-case intent, launch and scientific records remain authoritative;
 these checks alone do not assert that a worker has started or completed.
+
+The [launch verification](launch_verification.json) records nine live dispatchers and a separate live independent reviewer. At that snapshot the nine batches had 58 checked geometries, 101 pending inputs and 12 unresolved ownership cases. No GPU slot was available in the verified inventory; no new scientific start was established. Live batch status is in each audited batch directory; controller and observer launch records and logs are under `calcs/validation/2026-10-26_geometry_queue_recovery/`.

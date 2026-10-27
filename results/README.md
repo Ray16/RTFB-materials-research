@@ -35,6 +35,8 @@ The challenge now has [ten checked starting geometries](validation/ndi_external_
 
 The [gas counterpoise control](reviews/2026-10-26/counterpoise_control/README.md) now passes an independent CPU/GPU, common-grid and auxiliary-basis review. The close phthalimide motif point is prepared; its live coordinator records whether a scientific worker has actually started. No solvent correction or experimental interaction accuracy is inferred from the small control.
 
+The [occupied-conformer geometry recovery](reviews/2026-10-26/geometry_queue_resumption/README.md) records nine resumed dispatchers and a separate independent reviewer. Its [launch snapshot](reviews/2026-10-26/geometry_queue_resumption/launch_verification.json) distinguishes checked geometries, pending inputs and unresolved ownership; it does not establish new electronic energies or ensemble free energies.
+
 The [native conformer controller recovery](reviews/2026-10-26/native_inventory_recovery/README.md) preserves the four checked free energies and uses per-host GPU inventory checks that distinguish timeouts from verified availability. The recorded snapshot had no available devices; live dispatcher and inventory records show current status. This controller is not evidence of completed sampling or a converged ensemble.
 
 The [frozen local-motif panel](reviews/2026-10-26/local_motif_complete/README.md) now reconstructs all 12 interaction triplets from 36 independently reviewed electronic states. Close phthalimide control poses are approximately −25 to −26 kJ/mol in the MeCN model; separated poses are near zero. Basis-superposition correction, broader conformer sampling, association free energies and electronic coupling remain open.
