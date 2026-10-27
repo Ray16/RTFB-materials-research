@@ -8,6 +8,8 @@ The separate [PMDI linker matrix](../discovery/pmdi_linker_matrix_2026-10-26/REA
 
 The separate [hydroxyethyl PMDI source control](../discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) applies the same policy to a proposed O-graft with a competing imide N–H; its route remains held.
 
+The separate [anthraquinone carboxylate matrix](../discovery/anthraquinone_carboxylate_matrix_2026-10-26/README.md) applies the same policy to four route-held graph hypotheses outside the frozen ledger.
+
 The separate [phenothiazine linker matrix](../discovery/phenothiazine_linker_matrix_2026-10-26/README.md) applies the same policy to four route-held graph hypotheses outside the frozen ledger.
 
 The separate [hydroxyethyl phenothiazine proposal](../discovery/ptz_hydroxyethyl_source_2026-10-26/README.md) applies the same policy to a held exact graft outside the frozen ledger.

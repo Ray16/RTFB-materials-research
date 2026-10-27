@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "predeclared_design_hypotheses_not_evaluated",
+  "core": "anthraquinone",
+  "anchors": {
+    "direct": "O=C(O[*:1])",
+    "cyclic": "O=C(O[*:1])[C@H]1C[C@H]1"
+  },
+  "substitution_cores": {
+    "H": "c1ccc2c(c1)C(=O)c1ccccc1C2=O",
+    "Me": "c1cc(C)c2c(c1)C(=O)c1ccccc1C2=O"
+  },
+  "states": [["neutral", 0, 1, 0], ["reduced", -1, 2, -1]],
+  "reference_sources": [
+    "https://doi.org/10.1002/pat.1968",
+    "https://waseda.repo.nii.ac.jp/record/19599/files/Honbun-5904.pdf"
+  ],
+  "scope": "All products are proposed benzyl esters. Ring methyl and the cyclic spacer change electronics and topology as well as sterics; one reduction is a hypothesis, not demonstrated reversible operation."
+}

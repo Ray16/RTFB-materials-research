@@ -341,3 +341,5 @@ A [CPU counterpoise pilot](../results/reviews/2026-10-26/counterpoise_cpu_pilot/
 A [source-reported hydroxyethyl phenothiazine precursor](../results/discovery/ptz_hydroxyethyl_source_2026-10-26/README.md) adds an oxidation-active O-graft proposal, but route and all-axis decisions remain pending. No new measured or computed candidate performance is claimed in the paper.
 
 A [phenothiazine linker/substitution matrix](../results/discovery/phenothiazine_linker_matrix_2026-10-26/README.md) adds three proposed oxidation-active graphs beside the prior source-backed baseline. All routes and all-axis decisions remain pending; no performance or shielding claim is added to the paper.
+
+An [anthraquinone carboxylate matrix](../results/discovery/anthraquinone_carboxylate_matrix_2026-10-26/README.md) adds three proposed graphs beside the earlier literature-linked baseline. All routes and all-axis decisions remain pending; conjugation and linker effects are not presented as established performance in the paper.

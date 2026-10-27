@@ -22,6 +22,8 @@ A separate [amino-TEMPO local graft proposal](../results/discovery/tempo_amino_2
 
 A [source-reported hydroxyethyl PMDI precursor](../results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) provides a separate exact O-graft proposal. It retains a competing imide N–H, and selective attachment remains unverified; it does not validate the ethyl-capped linker matrix precursors.
 
+An [anthraquinone carboxylate matrix](../results/discovery/anthraquinone_carboxylate_matrix_2026-10-26/README.md) prepares four exact graph hypotheses, reusing the literature-linked baseline and adding three proposals. All routes remain held, and spacer conjugation, methyl electronics and candidate properties remain unverified.
+
 A [phenothiazine linker/substitution matrix](../results/discovery/phenothiazine_linker_matrix_2026-10-26/README.md) now prepares four exact oxidation-active graph hypotheses, reusing the source-backed baseline and adding three proposals. All routes remain held; methoxy electronics, shielding, linker reach and candidate properties remain unverified.
 
 A [hydroxyethyl phenothiazine source precursor](../results/discovery/ptz_hydroxyethyl_source_2026-10-26/README.md) now supplies a distinct O-linked oxidation-active graph proposal. Its exact graft route and properties remain unresolved; it does not complete the matched shielding/linker panel.

@@ -29,8 +29,9 @@ QC and implementation evidence appear only in backup.
   The [latest build](../results/reviews/2026-10-26/colleague_workflow_ndi_challenge/build_check.json)
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_ndi_challenge/visual_review.json)
   note the sourced, uncomputed NDI challenge on slide 8. The earlier [TEMPO build](../results/reviews/2026-10-26/colleague_workflow_tempo_exact_support_v2/build_check.json)
-  established the source-supported route example. The [current build](../results/reviews/2026-10-26/colleague_workflow_local_contact_v2/build_check.json)
-  and [visual review](../results/reviews/2026-10-26/colleague_workflow_local_contact_v2/visual_review.json) add a focused local-contact result as slide 15; TEMPO is now slide 16.
+  established the source-supported route example. The [local-contact build](../results/reviews/2026-10-26/colleague_workflow_local_contact_v2/build_check.json)
+  added a focused contact result as slide 15. The [current build](../results/reviews/2026-10-26/colleague_workflow_aq_matrix/build_check.json)
+  and [visual review](../results/reviews/2026-10-26/colleague_workflow_aq_matrix/visual_review.json) update the route-held AQ design status on slide 6; TEMPO remains slide 16.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 
@@ -41,7 +42,7 @@ Historical scientific records and manuscript evidence are unchanged.
 The expansion denominators are deliberately separate: 837 enumerated designs,
 75 evaluated-cohort candidates and 34 future comparison slots. The evaluated
 cohort overlaps 33 enumerated graphs, of which 32 have both computed potentials.
-Partial PMDI and phenothiazine matrices now contain mapped proposals, but the 34-slot plan is not complete and their new routes are held. The benchmark has
+Partial PMDI, anthraquinone and phenothiazine matrices now contain mapped proposals, but the 34-slot plan is not complete and their new routes are held. The benchmark has
 39/39 exact-parent MeCN endpoints; it does not validate exact-graft or polymer
 accuracy. No candidate currently passes every required material-selection axis.
 

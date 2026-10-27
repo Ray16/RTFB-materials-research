@@ -21,7 +21,7 @@ constitutes a completed 837-molecule quantum campaign.
 
 The expansion is a **34-slot comparison plan**: seven cores × baseline/shielded ×
 flexible/constrained linker, plus six electronic contrasts for BQ, AQ and
-phenothiazine. Partial PMDI and phenothiazine matrices now contain mapped
+phenothiazine. Partial PMDI, anthraquinone and phenothiazine matrices now contain mapped
 proposals, but their routes are held and the full comparison plan is incomplete.
 A separate positive attachment control is proposed. Exact structures, route
 evidence and deduplication precede new expensive calculations. Shielding and

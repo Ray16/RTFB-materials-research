@@ -20,3 +20,5 @@ python scripts/pipeline/assess_matched_route_panel.py --matrix NEW_MATRIX.json -
 ```
 
 The [plotting script](../../../scripts/plotting/candidates/plot_phenothiazine_linker_matrix.py) draws the stored exact product graphs.
+
+The route registry was later extended with the [anthraquinone carboxylate matrix](../anthraquinone_carboxylate_matrix_2026-10-26/README.md). Its [append-only reconciliation](../anthraquinone_carboxylate_matrix_2026-10-26/registry_reconciliation.json) preserves this matrix and the earlier registry entries.

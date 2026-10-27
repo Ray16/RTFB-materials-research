@@ -80,6 +80,35 @@ def validate_local_contacts():
     return values,[panel,metadata,figure,plotter]
 
 
+def check_aq_panel(summary,matrix,gate,decisions):
+    rows=matrix['candidates'];routes={x['id']:x for x in gate['candidates']};outcomes={x['id']:x for x in decisions['decisions']}
+    if (summary['status']!='four_exact_anthraquinone_graphs_route_held_material_pending'
+            or summary['exact_graphs']!=4 or summary['reused_source_proposals']!=1
+            or summary['new_exact_graphs_relative_to_declared_inputs']!=3 or summary['quantum_jobs_submitted']!=0
+            or summary['route_counts']!={'hold':4} or summary['all_axis_status_counts']!={'pending':4}
+            or len(rows)!=4 or len(gate['candidates'])!=4 or len(decisions['decisions'])!=4
+            or len(routes)!=4 or len(outcomes)!=4 or len({r['id'] for r in rows})!=4):
+        raise ValueError('AQ panel coverage or scope differs')
+    for row in rows:
+        route=routes.get(row['id']);decision=outcomes.get(row['id'])
+        if (not route or not decision or route['route_status']!='hold' or route['proceed_to_full_redox']
+                or route['evidence'].get('exact_design_key')!=row['exact_design_key']
+                or route['evidence'].get('route_binding')!=row['route_binding']
+                or decision['status']!='pending' or row['properties_computed'] or row['synthesis_eligibility_established']):
+            raise ValueError('AQ route or material state differs from exact design')
+    return True
+
+
+def validate_aq_panel():
+    root=ROOT/'results/discovery/anthraquinone_carboxylate_matrix_2026-10-26'
+    paths=[root/'summary.json',root/'matrix.json',root/'route_screen.json',root/'all_axis_decisions.json']
+    summary,matrix,gate,decisions=[json.loads(path.read_text()) for path in paths]
+    for path,digest in summary['source_sha256'].items():
+        if sha(ROOT/path)!=digest:raise ValueError('Changed AQ design source: '+path)
+    check_aq_panel(summary,matrix,gate,decisions)
+    return paths
+
+
 def build(evidence,work,review,dipea_evidence,dipea_uv_evidence,tempo_evidence):
     if work.exists():raise FileExistsError('Use a new build directory to preserve previous logs')
     d=json.loads(evidence.read_text())
@@ -99,6 +128,7 @@ def build(evidence,work,review,dipea_evidence,dipea_uv_evidence,tempo_evidence):
         if sha(path)!=expected:raise ValueError('Changed DIPEA UV evidence source: '+path)
     tempo,tempo_figure=validate_tempo(tempo_evidence)
     contact_values,contact_inputs=validate_local_contacts()
+    aq_inputs=validate_aq_panel()
     m=d['benchmark']['metrics']
     values=ROOT/'slides/generated/colleague_values.tex'
     values.write_text('%% Generated from the checked discussion evidence.\n'+
@@ -106,7 +136,7 @@ def build(evidence,work,review,dipea_evidence,dipea_uv_evidence,tempo_evidence):
     inputs=[evidence,dipea_evidence,dipea_uv_evidence,tempo_evidence,tempo_figure,values,Path(__file__).resolve(),ROOT/'slides/redox_workflow.tex',
         ROOT/'slides/generated/colleague_story.tex',ROOT/'slides/generated/colleague_backup.tex',
         ROOT/'results/figures/presentation/figures.json',
-        ROOT/'results/figures/polymer_models/pmdi_neighbor_geometry.pdf',*contact_inputs]
+        ROOT/'results/figures/polymer_models/pmdi_neighbor_geometry.pdf',*contact_inputs,*aq_inputs]
     epoch=ROOT/'manuscript/evidence/2026-10-26_native_replay'
     progress_paths=[epoch/n for n in ['polymer_validation.json','finite_ensemble.json','review_package.json']]
     progress=[json.loads(p.read_text()) for p in progress_paths]
@@ -148,7 +178,7 @@ def build(evidence,work,review,dipea_evidence,dipea_uv_evidence,tempo_evidence):
         pdf_sha256=sha(pdf),build_directory=str(work),compiler='pdflatex',passes=2,
         overfull_boxes=overfull,unresolved_errors=unresolved,visual_review_performed=False,
         additional_claim_checks=dict(selected_spacing_G=6,finite_pose_G=12,
-            finite_pairs=6,reviewer_package_states=243,reviewer_package_Hessians=242,local_contact_triplets=12),
+            finite_pairs=6,reviewer_package_states=243,reviewer_package_Hessians=242,local_contact_triplets=12,aq_graphs_route_held=4),
         quantum_jobs_submitted=0,scientific_evidence_modified=False)
     review.mkdir(parents=True,exist_ok=True)
     (review/'build_check.json').write_text(json.dumps(row,indent=2)+'\n')
