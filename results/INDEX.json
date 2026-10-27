@@ -1056,7 +1056,7 @@
       "current": "results/reviews/2026-10-26/counterpoise_cpu_pilot/watcher_launch_verification.json",
       "source_snapshot": "results/validation/local_counterpoise_2026-10-26_cpu_one_spacer/campaign.json",
       "raw_root": "calcs/local_motif_counterpoise/cpu_one_spacer_2026-10-26",
-      "status": "CPU_pilot_checkpointed_review_and_stationarity_continuations_waiting_unqualified",
+      "status": "CPU_own_pilot_checkpointed_gated_stationarity_and_ghost_continuations_waiting",
       "scope": "CPU-only gas A-own resource pilot; no full counterpoise, solution interaction or material claim",
       "restart_control": "results/reviews/2026-10-26/counterpoise_cpu_pilot/summary.json",
       "pilot_start": "results/reviews/2026-10-26/counterpoise_cpu_pilot/launch_verification.json",
@@ -1071,7 +1071,10 @@
       "ghost_water_control": "results/reviews/2026-10-26/counterpoise_cpu_pilot/ghost_water_check.json",
       "ghost_preparation": "results/reviews/2026-10-26/counterpoise_cpu_pilot/ghost_preparation.json",
       "ghost_program": "scripts/pipeline/counterpoise_cpu_ghost_pilot.py",
-      "ghost_continuation": "scripts/pipeline/coordinate_counterpoise_cpu_ghost.py"
+      "ghost_continuation": "scripts/pipeline/coordinate_counterpoise_cpu_ghost.py",
+      "ghost_followup_launch": "results/reviews/2026-10-26/counterpoise_cpu_pilot/ghost_followup_launch.json",
+      "ghost_followup_raw_root": "calcs/validation/2026-10-26_cpu_counterpoise_ghost_followup",
+      "ghost_followup_status": "calcs/validation/2026-10-26_cpu_counterpoise_ghost_followup/status.json"
     },
     "ptz_hydroxyethyl_source_candidate": {
       "guide": "results/discovery/ptz_hydroxyethyl_source_2026-10-26/README.md",
