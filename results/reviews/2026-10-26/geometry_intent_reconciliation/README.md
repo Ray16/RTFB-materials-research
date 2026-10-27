@@ -17,3 +17,5 @@ adapter; see [the test report](tests.xml).
 Live queue status remains in the original batches linked by the
 [recovery audit](../geometry_queue_resumption/preflight_audit.json). This repairs
 execution bookkeeping and does not qualify energies, free energies or ensembles.
+
+The [post-recovery snapshot](post_recovery_snapshot.json) preserves three newer placement timeouts separately from the twelve original intents. Their [subsequent reconciliation](../geometry_timeout_reconciliation/README.md) returns the live queue to 77 checked geometries and 113 pending inputs, without unresolved ownership holds at that later snapshot.
