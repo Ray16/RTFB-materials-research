@@ -9,7 +9,7 @@ The [consolidated reviewer bundle](releases/manuscript_bundle_v4/README.md) gath
 
 An [adjacent-contact counterpoise recovery](reviews/2026-10-26/counterpoise_residency_recovery/README.md) preserves a pre-science GPU residency interruption; its independently checked identical retry is waiting for a suitable device.
 
-A [CPU counterpoise resource pilot](reviews/2026-10-26/counterpoise_cpu_pilot/README.md) has a converged, checkpoint-reviewed A-own term for a distinct one-spacer contact; its independent gradient is running, and one term cannot establish an interaction.
+A [CPU counterpoise resource pilot](reviews/2026-10-26/counterpoise_cpu_pilot/README.md) has a checkpoint- and orbital-stationarity-checked A-own term for a distinct one-spacer contact. The ghost-basis pilot is running; one term cannot establish an interaction.
 
 A [finite-set subset analysis](validation/empty_chain_subset_sensitivity_2026-10-26/README.md) quantifies how the checked empty-chain partition changes when known conformers are omitted. It is an alternate-model sampling diagnostic, not an occupied-state interaction result.
 

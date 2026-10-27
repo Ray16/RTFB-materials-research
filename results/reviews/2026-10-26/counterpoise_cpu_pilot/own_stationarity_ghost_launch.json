@@ -1,0 +1,38 @@
+{
+  "status": "own_orbital_stationarity_checked_ghost_pilot_observed_unqualified",
+  "checked": 1793064588.087155,
+  "own_orbital_gradient_norm_au": 8.428447232103173e-08,
+  "own_orbital_gradient_threshold_au": 1e-07,
+  "own_energy_reconstruction_error_Ha": 0.0,
+  "own_stationarity_sha256": "4d356e186e73388acc00bcabdcf0b9f33c714ce353b461b0d30937bed2ebf11a",
+  "ghost_owner": {
+    "host": "lambda2",
+    "pid": 3221975,
+    "process_start": "1386517171"
+  },
+  "ghost_CPU_affinity": [
+    3,
+    9,
+    10,
+    11,
+    12,
+    14,
+    15,
+    16
+  ],
+  "ghost_thread_caps": {
+    "OMP_NUM_THREADS": "8",
+    "OMP_THREAD_LIMIT": "8",
+    "OPENBLAS_NUM_THREADS": "8",
+    "MKL_NUM_THREADS": "8",
+    "NUMEXPR_NUM_THREADS": "8",
+    "XTB_THREADS": "8"
+  },
+  "ghost_CPU_percent_two_second_sample": 600.5,
+  "ghost_RSS_bytes_sample": 3006791680,
+  "ghost_launch_sha256": "2af65e97ed6d137eac7b07528f655754569c3e0de56b205e00bdde7c46a9e106",
+  "ghost_SCF_checkpoint_present": false,
+  "ghost_qualified": false,
+  "full_counterpoise_computed": false,
+  "scope": "One gas A-own term passes its checkpoint and orbital gradient checks; separate A-ghost resource pilot is running, not a full interaction."
+}
