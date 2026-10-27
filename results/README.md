@@ -7,6 +7,8 @@ The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v
 
 The [consolidated reviewer bundle](releases/manuscript_bundle_v4/README.md) gathers the current manuscript source and six overlapping raw-state packages, including the local-motif panel. Isolated arithmetic and Hessian replays pass after extraction; public data licensing, author metadata, DOI deposition and wider deployment portability remain open.
 
+An [adjacent-contact counterpoise recovery](reviews/2026-10-26/counterpoise_residency_recovery/README.md) preserves a pre-science GPU residency interruption and prepares an independently checked identical retry.
+
 A [CPU counterpoise resource pilot](reviews/2026-10-26/counterpoise_cpu_pilot/README.md) has started for a distinct one-spacer contact; its one term cannot establish a counterpoise interaction.
 
 A [finite-set subset analysis](validation/empty_chain_subset_sensitivity_2026-10-26/README.md) quantifies how the checked empty-chain partition changes when known conformers are omitted. It is an alternate-model sampling diagnostic, not an occupied-state interaction result.
