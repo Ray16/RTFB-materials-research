@@ -1,0 +1,37 @@
+{
+  "status": "four_exact_graphs_route_held_all_axis_pending",
+  "exact_graphs": 4,
+  "reused_from_systematic_library": 2,
+  "new_exact_graphs": 2,
+  "new_synthesis_candidates_eligible": 0,
+  "route_counts": {
+    "hold": 4
+  },
+  "all_axis_status_counts": {
+    "pending": 4
+  },
+  "quantum_jobs_submitted": 0,
+  "rdkit_version": "2026.03.5",
+  "source_sha256": {
+    "scripts/pipeline/prepare_pmdi_linker_matrix.py": "d9eb39c96ad141bcb71304f3618d57dfb5fd719d0a33a4b200c3172a4640e53d",
+    "scripts/pipeline/assess_pmdi_linker_matrix.py": "5e217f9781d7abbded016d95a374953bd67e1914f9461c821b71a228d8fae744",
+    "scripts/pipeline/screen_grafting_routes.py": "896eca7ab18ca5f4793bd6f71559709c27ac36f2018a2a19f4ef11081b0ee2fc",
+    "scripts/plotting/candidates/plot_pmdi_linker_matrix.py": "04225be1e876bf294319fc284141ef126138e92dec59b174e195c6fc3841669c",
+    "tests/test_pmdi_linker_matrix.py": "5cd72094aa8aa547144baa24d5b913eac8ca7bda6b794db2d5774d0390137c84",
+    "config/family_search.py": "e2087c961f80c6906ceca0fbc7cd78b96d2701c44cb36d9a2d3c4f807411aa42",
+    "config/candidate_feasibility.json": "7627ca89bbd7cebe2f52e7a89fe08e5418a2519264984a80bcad6494990edb27",
+    "results/discovery/systematic_families_2026-10-18/structures.json": "17c8a9acbe62a81b902c8cc1bed443c43fec22f85d4e391b26b6f3a6952545ba",
+    "results/discovery/pmdi_linker_matrix_2026-10-26/matrix.json": "d7a46de1ffcc6ff0bc3be5f2f6f28016447c63783bc4b9e2081c24fa02d8f8e0",
+    "results/discovery/pmdi_linker_matrix_2026-10-26/route_screen.json": "01846b3d577956448c8418150bfe886930644f72971052079ab8f49f449bdf2d",
+    "results/discovery/pmdi_linker_matrix_2026-10-26/all_axis_decisions.json": "433459b5ef4706ec11c0e8b79f84c2a0b5afda0a4b91a74e6fff750a3c4e5149",
+    "results/discovery/pmdi_linker_matrix_2026-10-26/tests_final.xml": "9585c5e3a186e89daa0158f5bbdfd04045e50304b5b6457f34fa58e149a6033a",
+    "results/grafting/route_evidence.json": "8b6b4313bc9a310531b16c6ab2fecfa87566576f6c7672e18a068502fbde2e90",
+    "results/figures/candidates/pmdi_linker_matrix.svg": "332815be06ec65998ee747a8421c044145600ab62d1312518c6e15508c9d5ea5",
+    "results/figures/candidates/pmdi_linker_matrix.png": "5cb4ddff6c1bbee76ba7cdb352b4d129f91f555b065605c74819f54333359642",
+    "results/selection/campaigns/20261024_UMA_default/decisions.json": "56611a8d5168583b36a4f274e34fe1b7e17af7c324a81a54e07d142aa7dd267c",
+    "results/discovery/pmdi_linker_matrix_2026-10-26/ledger_identity_check.json": "59984890322f4e520001b095d0c5d9a2ad0e4eb07630646d093516eb3cc9b594",
+    "results/discovery/pmdi_linker_matrix_2026-10-26/tests_verified.xml": "e2078371d83a48ffc8bb93a7f95f8ac14be188ded311baada2ada522fc321d10"
+  },
+  "scope": "One PMDI 2x2 design hypothesis comparing flexible versus one defined cyclopropyl stereoisomer and H versus edge methyl; methyl shielding and linker reach are unverified.",
+  "limits": "Different mass and bond topology; precursor access, actual O-alkylation conditions, selectivity, redox properties, grafting thermodynamics and polymer interaction/coupling are unverified. Not a completed synthesis shortlist."
+}

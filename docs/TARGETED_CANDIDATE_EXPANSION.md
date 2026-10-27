@@ -6,10 +6,11 @@ expansion should fill chemical and polymer-design gaps while connecting every
 structure to the same all-axis evaluator.
 
 The predeclared [comparison plan](../config/targeted_expansion_2026-10-23.json)
-contains **34 design slots before exact-graph construction, route review and
-deduplication**. It has generated zero additional exact molecules and submitted
-zero new candidate quantum jobs. Existing matching compounds can fill slots;
-they are reused evidence, not newly discovered structures.
+contains **34 predeclared design slots**, originally specified before exact-graph
+construction and route review. A later [PMDI matrix](../results/discovery/pmdi_linker_matrix_2026-10-26/README.md)
+prepares four exact graph hypotheses, two reused and two new; shielding and
+route evidence remain unresolved, and formal coverage of the 34 slots is not
+yet established. Existing graphs are not counted as new molecules.
 
 Separately, one [AQ-2-carboxylate local graft proposal](../results/discovery/aq_carboxylate_2026-10-26/README.md)
 has now been built and screened against the route gate. It has a primary-source
