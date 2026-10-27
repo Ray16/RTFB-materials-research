@@ -1,6 +1,6 @@
 # Colleague discussion: candidate expansion and validation
 
-Use [the focused presentation](colleague_workflow.pdf): 16 main slides for an
+Use [the focused presentation](colleague_workflow.pdf): 17 main slides for an
 approximately 20-minute discussion, followed by supporting evidence. The maintained
 [workflow deck](redox_workflow.pdf) contains the same presentation.
 
@@ -19,13 +19,13 @@ at least one reported native-calculation potential and 60 have both. All
 reconstruct from the unrounded feed. Neither this overlap nor enumeration
 constitutes a completed 837-molecule quantum campaign.
 
-The next expansion is a **34-slot comparison plan**, with zero additional exact
-molecules generated under that plan: seven cores × baseline/shielded ×
+The expansion is a **34-slot comparison plan**: seven cores × baseline/shielded ×
 flexible/constrained linker, plus six electronic contrasts for BQ, AQ and
-phenothiazine. A separate positive attachment control is proposed. This is a
-testable design plan; exact structures, route evidence and deduplication precede
-new expensive calculations. Steric shielding and rigidification are competing
-design choices, not assumed improvements.
+phenothiazine. Partial PMDI and phenothiazine matrices now contain mapped
+proposals, but their routes are held and the full comparison plan is incomplete.
+A separate positive attachment control is proposed. Exact structures, route
+evidence and deduplication precede new expensive calculations. Shielding and
+rigidification are testable tradeoffs, not assumed improvements.
 
 The completed experimental redox benchmark contains **39 endpoints, 30 exact
 free molecules and seven studies in MeCN**. Primary unfitted MAE/RMSE are
@@ -62,6 +62,12 @@ neighbor nonadditivity is **−1.86 kJ/mol** in a sampled structure with **16.30
 core separation. This is a whole-chain conditional grafting quantity, not
 isolated motif binding or electronic coupling. Selectivity, redox retention,
 broader conformer convergence and material-level criteria remain unresolved.
+
+The four sampled phthalimide capped-fragment poses add a distinct local
+electronic comparison: close adjacent and one-spacer poses are approximately
+−24.8 and −26.2 kJ/mol in the MeCN model, while separated poses are near zero.
+These uncorrected frozen-pose values include cap and continuum response; they
+are not association free energies, populations or electronic couplings.
 
 Since the frozen 21 October draft, the benchmark progressed from 38/39 to 39/39;
 the spacing baseline now has all 12 pose free energies and six finite two-pose

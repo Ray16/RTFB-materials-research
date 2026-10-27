@@ -10,7 +10,7 @@ cover expansion; slides 7–10 cover validation. Keep those sections if time is 
 | 3 | Define the expansion denominator | “837 is the enumerated graph library, not a count of completed quantum campaigns. There are 1,593 recipes because several recipes can produce the same graph. The evaluated cohort overlaps 33 graphs; 32 have both potentials.” |
 | 4 | Make a design axis concrete | “These are actual calculated PMDI structures, not generic sketches. The ethyl cap and graft-site model are held fixed while the declared ring substitution changes. Each has its own precursor graph.” |
 | 5 | Show a result from systematic expansion | “The circles and squares are first and second potential shifts relative to a matched baseline. Ring electronics gives a larger tuning range than these cap changes. More positive or negative is not automatically better; it depends on the electrode and operating window.” |
-| 6 | Explain the next expansion scientifically | “A large three-core library does not solve core diversity. The next plan deliberately compares seven cores and two polymer-relevant design factors. The 34 entries are slots, not new completed molecules. Shielding and constraints can also hinder grafting or favor persistent contacts.” |
+| 6 | Explain the next expansion scientifically | “A large three-core library does not solve core diversity. The next plan deliberately compares seven cores and two polymer-relevant design factors. The 34 entries are comparison slots, not 34 validated candidates; partial PMDI and phenothiazine graph panels are still route-held. Shielding and constraints can also hinder grafting or favor persistent contacts.” |
 | 7 | Define what ‘validated’ means | “We separate arithmetic/numerical consistency, comparison against experiment, and sensitivity to model choices. A correct sum or converged SCF is necessary but cannot establish chemical accuracy.” |
 | 8 | State the measured accuracy honestly | “All 39 endpoints now finish. The primary MAE is about a quarter volt, with no fitted offset and all outliers retained. This is a retrospective free-parent MeCN benchmark. It does not calibrate exact grafts or polymer association, and it has no NDI endpoint.” |
 | 9 | Explain the bias diagnosis | “Every first-step error is positive, but the second-step mean is slightly negative. Held-out offset diagnostics show structure in the error. We retain the unfitted benchmark; fitting a constant does not prove Fc is the cause, and a shared shift cannot fix step spacings.” |
@@ -19,8 +19,9 @@ cover expansion; slides 7–10 cover validation. Keep those sections if time is 
 | 12 | Explain the base-assisted result | “A fixed base model adds the same term to every eligible reference reaction, so ranks do not change. BQ should not be rejected because a different HCl-reference reaction is positive. The capture-term pKa discrepancy and uncertain speciation keep the absolute signs conditional, especially for DIPEA.” |
 | 13 | Demonstrate an exact end-to-end case | “The same PMDI identity now connects redox, exact precursor access, a defined base-assisted reaction and polymer occupancy. This is a concrete worked example. It still does not establish selective attachment, redox-core retention or synthesis eligibility.” |
 | 14 | Define the polymer observable precisely | “The four-state cycle asks how the modeled cost of attaching one group changes when another is present. The sampled PMDI pair is separated by 16.3 Å. A small cycle value in this structure says nothing by itself about isolated binding, charge-state coupling or all conformers.” |
-| 15 | Show how route and material decisions differ | “An exact 4-hydroxy-TEMPO attachment to Merrifield resin is reported in a patent. Our capped local model gives +0.579 V versus computed Fc in MeCN, and the route gate permits evaluation. Nine material axes remain pending; the patent's reported N-oxyl content is not our bead's conversion or a cycling result.” |
-| 16 | Turn the discussion into concrete next decisions | “We should agree on application criteria, prioritize exact route-feasible designs that fill chemistry gaps, and establish sufficient conformer evidence before drawing polymer spacing rules. Those steps turn descriptor leaders into a defensible material shortlist.” |
+| 15 | Quantify sampled local motif contacts | “The close phthalimide poses are about −24.8 and −26.2 kJ/mol in the MeCN electronic model; the separated poses are near zero. Cap-length bars are not confidence intervals. These four frozen capped-fragment poses do not establish populations, free energies, basis-set correction or electronic coupling.” |
+| 16 | Show how route and material decisions differ | “An exact 4-hydroxy-TEMPO attachment to Merrifield resin is reported in a patent. Our capped local model gives +0.579 V versus computed Fc in MeCN, and the route gate permits evaluation. Nine material axes remain pending; the patent's reported N-oxyl content is not our bead's conversion or a cycling result.” |
+| 17 | Turn the discussion into concrete next decisions | “We should agree on application criteria, prioritize exact route-feasible designs that fill chemistry gaps, and establish sufficient conformer evidence before drawing polymer spacing rules. Those steps turn descriptor leaders into a defensible material shortlist.” |
 
 Numerical answers to likely questions:
 
@@ -38,7 +39,7 @@ Numerical answers to likely questions:
 
 - A separate AQ-2-carboxylate graft has a source-linked precursor and mapped
   attachment, but remains on route hold with no computed redox properties. It
-  is not counted among the 837 earlier designs or the 34 unfilled comparison slots.
+  is not counted among the 837 earlier designs or a completed set of 34 validated comparison candidates.
 
 - The evaluation feed is dated **24 October**, while the exact PMDI result and
   reproducibility addendum were checked on **25–26 October**. The deck does not

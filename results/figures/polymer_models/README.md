@@ -25,3 +25,5 @@ PYTHONPATH=src python scripts/plotting/polymer_models/plot_spacing_conformers.py
 Apply the documented one-thread native pool caps. Original-source regeneration
 uses `--review results/reviews/2026-10-23/baseline_native_complete/summary.json`.
 The manuscript's frozen figure copies preserve their own evidence epoch.
+
+The [local motif contact plot](local_motif_contacts.pdf) shows the four checked phthalimide capped-fragment electronic interactions versus sampled core separation. Cap-length ranges are not uncertainty intervals; basis-superposition correction and conformer convergence remain open. See the [source and checks](../../reviews/2026-10-26/local_motif_contact_figure/README.md).

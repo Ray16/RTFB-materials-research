@@ -1,7 +1,7 @@
 # Focused workflow presentation
 
 Open [colleague_workflow.pdf](colleague_workflow.pdf), also maintained as
-[redox_workflow.pdf](redox_workflow.pdf). The deck has **16 main slides and
+[redox_workflow.pdf](redox_workflow.pdf). The deck has **17 main slides and
 7 supporting slides**, intended for an approximately 20-minute discussion.
 
 The narrative connects systematic candidate expansion, matched design effects,
@@ -14,12 +14,12 @@ QC and implementation evidence appear only in backup.
 - [Editable source](redox_workflow.tex) uses the [main story](generated/colleague_story.tex)
   and [supporting evidence](generated/colleague_backup.tex).
 - [Presentation evidence](../results/reviews/2026-10-26/colleague_workflow/README.md)
-  contains frozen inputs, independent numerical checks, build and separate visual review.
+  contains the original frozen discussion inputs and independent numerical checks. The current build and visual review are linked below.
 - The [DIPEA NMR source revision](../results/reviews/2026-10-26/colleague_workflow_dipea_nmr/build_check.json)
   and its [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_nmr/visual_review.json)
-  preserve the earlier salt-only presentation. The [current build](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json)
+  preserve the earlier salt-only presentation. The [DIPEA revision build](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json)
   and [visual check](../results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json)
-  bind slide 12 to both checked experimental sources. The [current build](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/build_check.json)
+  bind slide 12 to both checked experimental sources. The [AQ-proposal build](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/build_check.json)
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_aq_proposal/visual_review.json)
   add the separate held AQ proposal to slide 6. The [latest build](../results/reviews/2026-10-26/colleague_workflow_empty_range/build_check.json)
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_empty_range/visual_review.json)
@@ -28,9 +28,9 @@ QC and implementation evidence appear only in backup.
   clarify that the four geometries are distinct under the checked comparison.
   The [latest build](../results/reviews/2026-10-26/colleague_workflow_ndi_challenge/build_check.json)
   and [changed-slide review](../results/reviews/2026-10-26/colleague_workflow_ndi_challenge/visual_review.json)
-  note the sourced, uncomputed NDI challenge on slide 8. The [current build](../results/reviews/2026-10-26/colleague_workflow_tempo_exact_support_v2/build_check.json)
-  and [visual review](../results/reviews/2026-10-26/colleague_workflow_tempo_exact_support_v2/visual_review.json)
-  replace slide 15 with the source-supported TEMPO route and pending material decision.
+  note the sourced, uncomputed NDI challenge on slide 8. The earlier [TEMPO build](../results/reviews/2026-10-26/colleague_workflow_tempo_exact_support_v2/build_check.json)
+  established the source-supported route example. The [current build](../results/reviews/2026-10-26/colleague_workflow_local_contact_v2/build_check.json)
+  and [visual review](../results/reviews/2026-10-26/colleague_workflow_local_contact_v2/visual_review.json) add a focused local-contact result as slide 15; TEMPO is now slide 16.
 - [Plotting code](../scripts/plotting/presentation/plot_colleague_workflow.py)
   produces the maintained [presentation figures](../results/figures/presentation/).
 
@@ -41,7 +41,7 @@ Historical scientific records and manuscript evidence are unchanged.
 The expansion denominators are deliberately separate: 837 enumerated designs,
 75 evaluated-cohort candidates and 34 future comparison slots. The evaluated
 cohort overlaps 33 enumerated graphs, of which 32 have both computed potentials.
-The 34-slot plan has generated zero new exact molecules. The benchmark has
+Partial PMDI and phenothiazine matrices now contain mapped proposals, but the 34-slot plan is not complete and their new routes are held. The benchmark has
 39/39 exact-parent MeCN endpoints; it does not validate exact-graft or polymer
 accuracy. No candidate currently passes every required material-selection axis.
 

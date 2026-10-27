@@ -69,7 +69,7 @@ Shielded & $\square$ & $\square$\\\bottomrule\end{tabular}
 \par\medskip\small Four slots per core: 28.\\Six extra electronic contrasts: 34 total.
 \end{column}\end{columns}
 \takeaway{Test shielding and linker constraints as tradeoffs: reduced association can cost attachment access or capacity.}
-\source{34 planned slots, not 34 generated molecules. One separate AQ-carboxylate graft is mapped; its route is held and properties are uncomputed.}
+\source{34 planned slots, not 34 validated candidates. Partial PMDI and phenothiazine graph panels are mapped but route-held and uncomputed.}
 \end{frame}
 
 \begin{frame}{Validation has three distinct jobs}
@@ -143,6 +143,20 @@ Neighbor cycle & $-1.86$ kJ/mol\\\bottomrule
 \end{column}\end{columns}
 \takeaway{This is whole-chain nonadditivity, not isolated motif binding or electronic coupling. Conformer convergence is still open.}
 \source{$\Delta\Delta G=G_{11}+G_{00}-G_{10}-G_{01}$. Native Hessians and all four state sums independently reconstructed.}
+\end{frame}
+
+\begin{frame}{Close motifs can interact even with a spacer}
+\begin{columns}[c]
+\begin{column}{.61\textwidth}
+\centering\includegraphics[width=\linewidth,height=4.6cm,keepaspectratio]{../results/figures/polymer_models/local_motif_contacts.pdf}
+\end{column}
+\begin{column}{.35\textwidth}
+\textbf{Close poses}\par\large $\LocalAdjacent$ / $\LocalSpacer$ kJ/mol\par\medskip
+\textbf{Separated poses}\par\large approximately zero\par\medskip
+\small Adjacent and one-spacer phthalimide controls.\par\smallskip $E_{\mathrm{int}}=E_{AB}-E_A-E_B$.
+\end{column}\end{columns}
+\takeaway{A spacer can still permit an attractive close contact; weak unwanted intersite interaction remains a design goal.}
+\source{Four frozen capped-fragment poses; MeCN electronic energies. Cap-length ranges are not uncertainty intervals. No basis-superposition correction, populations, binding free energy or electronic coupling is established.}
 \end{frame}
 
 \begin{frame}{TEMPO: a route can pass while the material decision waits}

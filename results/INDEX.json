@@ -316,11 +316,11 @@
     "slides": {
       "guide": "slides/README.md",
       "current": "slides/redox_workflow.pdf",
-      "checked_refresh": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
-      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
-      "status": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json",
-      "pdf_sha256": "7ac636c6a6ecfb6ae33d9b0c5fedfdee902143f99bf7a86cc593b6ed3d5bf067",
+      "checked_refresh": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/build_check.json",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/visual_review.json",
+      "review": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/visual_review.json",
+      "status": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/build_check.json",
+      "pdf_sha256": "c1de10b806f32a277c915f8d358d5c05653e90fe6559e928285547bd9991c3e6",
       "historical_reviews": [
         "results/reviews/2026-10-23/presentation_capacity_refresh/status.json",
         "results/reviews/2026-10-23/presentation_capacity_refresh/visual_review.json",
@@ -618,16 +618,16 @@
     "checked_research_slides": {
       "current": "slides/redox_workflow.pdf",
       "pdf": "slides/redox_workflow.pdf",
-      "status": "focused_deck_checked_with_DIPEA_UV_and_NMR_sources",
+      "status": "focused_deck_local_contact_checked",
       "source_snapshot": "results/reviews/2026-10-26/colleague_workflow/evidence.json",
-      "scope": "Focused candidate-expansion and property-validation presentation; finite PMDI example with scientific limits",
-      "review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
-      "pdf_sha256": "7ac636c6a6ecfb6ae33d9b0c5fedfdee902143f99bf7a86cc593b6ed3d5bf067",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
-      "pages": 23,
-      "main_pages": 16,
+      "scope": "Focused candidate expansion, property validation, finite PMDI cycle and sampled local motif interactions",
+      "review": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/visual_review.json",
+      "pdf_sha256": "c1de10b806f32a277c915f8d358d5c05653e90fe6559e928285547bd9991c3e6",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/visual_review.json",
+      "pages": 24,
+      "main_pages": 17,
       "backup_pages": 7,
-      "previous_deck": "slides/archive/2026-10-26_before_dipea_uv/redox_workflow.pdf"
+      "previous_deck": "slides/backup/colleague_before_local_contact_2026-10-26.pdf"
     },
     "streamed_V100_PCM": {
       "guide": "results/validation/streamed_PCM_2026-10-24/README.md",
@@ -850,19 +850,20 @@
       "replay": "calcs/validation/2026-10-26_local_motif/full_triplets_independent_replay_20261026.json"
     },
     "colleague_workflow_presentation": {
-      "guide": "results/reviews/2026-10-26/colleague_workflow/README.md",
+      "guide": "slides/README.md",
       "current": "slides/colleague_workflow.pdf",
       "maintained_deck": "slides/redox_workflow.pdf",
       "source_snapshot": "results/reviews/2026-10-26/colleague_workflow/evidence.json",
-      "compiler_checks": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/build_check.json",
-      "visual_review": "results/reviews/2026-10-26/colleague_workflow_dipea_uv/visual_review.json",
+      "compiler_checks": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/build_check.json",
+      "visual_review": "results/reviews/2026-10-26/colleague_workflow_local_contact_v2/visual_review.json",
       "speaker_notes": "slides/colleague_speaker_notes.md",
       "brief": "slides/colleague_brief.md",
-      "raw_root": "calcs/validation/2026-10-26_colleague_workflow",
-      "status": "focused_deck_checked_with_DIPEA_UV_and_NMR_sources",
-      "scope": "Checked candidate expansion and property-validation evidence; no new quantum jobs or material admission",
+      "raw_root": "calcs/validation/2026-10-26_colleague_local_contact_build_v2",
+      "status": "focused_deck_local_contact_checked",
+      "scope": "Source-bound local interaction slide added; no new quantum jobs or material admission",
       "dipea_evidence": "results/validation/dipea_experimental_anchor_2026-10-26/summary.json",
-      "dipea_uv_evidence": "results/validation/dipea_uv_anchor_2026-10-26/summary.json"
+      "dipea_uv_evidence": "results/validation/dipea_uv_anchor_2026-10-26/summary.json",
+      "local_contact_figure": "results/figures/polymer_models/local_motif_contacts.pdf"
     },
     "dipea_experimental_anchor": {
       "guide": "results/validation/dipea_experimental_anchor_2026-10-26/README.md",
@@ -1129,6 +1130,15 @@
       "figure": "results/figures/candidates/phenothiazine_linker_matrix.svg",
       "status": "four_exact_phenothiazine_graphs_route_held_material_pending",
       "scope": "One phenothiazine 2x2 hypothesis panel comparing flexible versus one explicit cyclic stereoisomer and H versus 3,7-dimethoxy."
+    },
+    "local_motif_contact_figure": {
+      "guide": "results/reviews/2026-10-26/local_motif_contact_figure/README.md",
+      "current": "results/reviews/2026-10-26/local_motif_contact_figure/summary.json",
+      "source_snapshot": "results/reviews/2026-10-26/local_motif_complete/summary.json",
+      "raw_root": "calcs/local_motif_interactions",
+      "figure": "results/figures/polymer_models/local_motif_contacts.pdf",
+      "status": "checked_local_motif_contact_figure",
+      "scope": "Four frozen phthalimide local electronic interactions in the MeCN model; cap-length ranges are not statistical uncertainty."
     }
   },
   "detailed_evidence": "results/LATEST_REVIEW.json",

@@ -4,6 +4,8 @@ All result categories: [results index](../README.md).
 
 The [exact PMDI finite neighbor cycle](../reviews/2026-10-25/pmdi_neighbor_cycle_checked/README.md) is now complete: four matched native states give ΔΔG = −1.86 kJ/mol for one minimum per occupancy graph. The paired cores are 16.30 Angstrom apart. The [conditional-energy plot](../figures/polymer_models/pmdi_neighbor_grafting.pdf) and [actual geometry](../figures/polymer_models/pmdi_neighbor_geometry.pdf) distinguish this whole-chain response from isolated binding or coupling.
 
+The [local contact plot](../figures/polymer_models/local_motif_contacts.pdf) shows four sampled phthalimide capped-fragment electronic interactions versus core separation in the MeCN model. It is not an association free energy or an experimentally established population.
+
 The current phthalimide finite **two-pose** partitions give −5.17/−11.39 kJ/mol; all twelve native states are independently checked. Broader conformer/configuration convergence remains open. The following selected-pose values retain their original historical scope.
 
 
