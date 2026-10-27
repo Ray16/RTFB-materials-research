@@ -21,3 +21,5 @@ A separate [water ghost-basis control](ghost_water_check.json) reproduces its so
 The [ghost continuation launch](ghost_followup_launch.json) is live and waiting for the A-own stationarity result. It will start only the A-ghost resource pilot, using the identical saved grid, matched numerical environment and a sampled host-memory guard. The larger ghost pilot has not started, and its resource suitability and stationarity remain unverified.
 
 The [ghost review and stationarity preparation](ghost_review_preparation.json) includes the exact large-ghost evaluator tested against the small water control and [gating tests](ghost_review_tests_final.xml). The larger ghost calculation has not started; the independent checkpoint review, gradient and full interaction remain pending.
+
+The [ghost review follow-up](ghost_review_followup_launch.json) is live and waits for the gated ghost pilot. It will check a completed ghost checkpoint before launching the independent orbital-gradient calculation. The large ghost term, gradient and full interaction remain pending.
