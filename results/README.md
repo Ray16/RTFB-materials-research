@@ -1,5 +1,7 @@
 # Results index
 
+The [latest occupied-state continuation](reviews/2026-10-27/native_site2_recovery/README.md) repairs the geometry-review handoff and reconciles 25 unstarted native placements; three native workers have been observed on separate GPUs. The [counterpoise AB refinement](reviews/2026-10-27/counterpoise_AB_refinement/README.md) preserves a failed independent orbital-gradient check and refines the exact checkpoint under tighter SCF targets. The [Nitro repeatability diagnostic](validation/uma_repeat_diagnostic_2026-10-27/README.md) reproduces a first-case force-repeatability failure; its separate precision control does not change production qualification. These remain distinct from accepted chemical results.
+
 The [current review disposition](../manuscript/review_status.md) lists every major/minor comment and remaining work. The [bibliography audit](validation/bibliography_2026-10-26/README.md) checks 48 citation identities, including every experimental benchmark study; the [native-QC table](validation/spacing_native_qc_2026-10-26/README.md) reports actual values for the twelve original spacing conformers. Neither closes the open conformer/occupancy or public-deposition requirements.
 
 Use these stable paths. Completed quantities carry field-specific QC; blank values

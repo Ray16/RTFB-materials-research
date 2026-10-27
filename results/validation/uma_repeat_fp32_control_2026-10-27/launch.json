@@ -1,0 +1,26 @@
+{
+  "owner": {
+    "host": "lambda2",
+    "pid": 3085669,
+    "process_start": "1391978608"
+  },
+  "CPU_affinity": [
+    15
+  ],
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/wait_uma_repeat_fp32_control.py",
+    "--campaign",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_nitro_2026-10-23/panel",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/uma_repeat_fp32_control_2026-10-27/dispatch",
+    "--raw-out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-27_fp32_intermediates",
+    "--max-hours",
+    "24",
+    "--quiet-seconds",
+    "0"
+  ],
+  "started": 1793119166.1123729,
+  "scope": "One first-case precision diagnostic; no threshold or production profile change"
+}
