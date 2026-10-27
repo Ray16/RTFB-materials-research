@@ -20,6 +20,8 @@ shielding/linker comparison slot until a matched panel is defined and reviewed.
 
 A separate [amino-TEMPO local graft proposal](../results/discovery/tempo_amino_2026-10-26/README.md) compares an N-linked attachment handle with the existing O-linked model. Its route is held; it is not a matched shielding or linker-rigidity comparison, and has no calculated properties.
 
+A [source-reported hydroxyethyl PMDI precursor](../results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) provides a separate exact O-graft proposal. It retains a competing imide N–H, and selective attachment remains unverified; it does not validate the ethyl-capped linker matrix precursors.
+
 An existing oxidation-active [TEMPO local graft](../results/grafting/tempo_exact_support_2026-10-26/README.md)
 now has an exact-support attachment precedent and a checked local-model
 oxidation potential. Its route screen passes, but its material decision remains

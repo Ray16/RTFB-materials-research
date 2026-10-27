@@ -1,0 +1,32 @@
+{
+  "status": "source_reported_precursor_route_held_material_pending",
+  "candidate_id": "source_pmdi_hydroxyethyl_nh_d2082ff91b54",
+  "precursor_inchikey": "HOUHMLHIFBPDGF-UHFFFAOYSA-N",
+  "product_inchikey": "QDTMNFJIHNIBOH-UHFFFAOYSA-N",
+  "route_status": "hold",
+  "material_decision": "pending",
+  "pending_axes": 10,
+  "candidate_in_frozen_ledger": false,
+  "quantum_jobs_submitted": 0,
+  "source_sha256": {
+    "scripts/pipeline/prepare_pmdi_hydroxyethyl_control.py": "eca374ea57542c8e9cb8fd0c6111aba1b8d9bc890072f8ab0760fbb89e27c1ef",
+    "scripts/pipeline/assess_pmdi_hydroxyethyl_control.py": "ac9ac55c257083d859bce389fd04f0ebff8ec5894269b48aaff7428e9f83c50f",
+    "scripts/pipeline/screen_grafting_routes.py": "896eca7ab18ca5f4793bd6f71559709c27ac36f2018a2a19f4ef11081b0ee2fc",
+    "scripts/plotting/candidates/plot_pmdi_hydroxyethyl_control.py": "410387faf899bdb25ee5a18f5c5daa091f2f50d41506d99a2bf0a033692cb6eb",
+    "tests/test_pmdi_hydroxyethyl_control.py": "644e7444266e21abef99037fc4f7707514b662801e105af7d69585bd9809adb2",
+    "config/family_search.py": "e2087c961f80c6906ceca0fbc7cd78b96d2701c44cb36d9a2d3c4f807411aa42",
+    "config/candidate_feasibility.json": "7627ca89bbd7cebe2f52e7a89fe08e5418a2519264984a80bcad6494990edb27",
+    "results/grafting/route_evidence.json": "a805e939d3bbd679f017eb1bdb1d4eadfc5e5884d52a0b45b84d780463df5287",
+    "results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/candidates.json": "13500c0669eaf706adb2ef0892b9a3622291e3648d522af565bb92a4998b130f",
+    "results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/source_review.json": "1c78ab466510ae44d350f3bc2130eb3d643c6d0ba2741525897e605a1c090f7d",
+    "results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/route_screen.json": "a973509bd622d02008d7e9ae2b389e8589b363fe28500096547553fa6fa4f488",
+    "results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/all_axis_decision.json": "18b691625f01b84172b16c3a9f32565874cd4139cdebe1288ea009730be84e60",
+    "results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/tests_verified.xml": "cf859b290178af2304ad9f30f6f2696ce6a9c8ecf9575ffb335d13ff8fd954a5",
+    "results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/ledger_identity_check.json": "6cb654c5abf1c9b19454fce63204ee7a586c015608a7cb573cfa699d4b74d702",
+    "results/selection/campaigns/20261024_UMA_default/decisions.json": "56611a8d5168583b36a4f274e34fe1b7e17af7c324a81a54e07d142aa7dd267c",
+    "results/figures/candidates/pmdi_hydroxyethyl_source_control.svg": "d4789c1b6607676a7581fe72fbe1f57d7a6c7d1e1b658b21dfe7fc93e98bece7",
+    "results/figures/candidates/pmdi_hydroxyethyl_source_control.png": "ae4ceedf68938522e53d7a0ad87806f8de3b05253ecb2ececb8a8793cfea7c85"
+  },
+  "scope": "A source-reported mono(hydroxyethyl) PMDI precursor with an additional imide N-H; proposed capped-site O-graft only.",
+  "limits": "No verified selective grafting conditions, thermodynamic route, redox properties or polymer performance; one patent report does not establish independent replication or procurement."
+}

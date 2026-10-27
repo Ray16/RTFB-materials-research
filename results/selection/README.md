@@ -6,6 +6,8 @@ snapshot and machine-readable decision/front records. The
 
 The separate [PMDI linker matrix](../discovery/pmdi_linker_matrix_2026-10-26/README.md) applies the same conjunctive policy to four route-held graph hypotheses. Its two new products are not included in the frozen 879-graph ledger.
 
+The separate [hydroxyethyl PMDI source control](../discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) applies the same policy to a proposed O-graft with a competing imide N–H; its route remains held.
+
 The later [TEMPO exact-case assessment](../grafting/tempo_exact_support_2026-10-26/README.md)
 uses the same conjunctive policy but is not part of the frozen 879-graph ledger.
 Its route passes and its overall material decision remains pending. The source

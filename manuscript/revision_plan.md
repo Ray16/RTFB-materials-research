@@ -333,3 +333,5 @@ The 139-atom paired state and both single-site states now pass normal native adm
 The [finite empty-chain subset analysis](../results/validation/empty_chain_subset_sensitivity_2026-10-26/README.md) quantifies within-set sensitivity in the alternate acetonitrile model. It does not close occupied-state ensemble convergence or enter the primary PMDI cycle.
 
 The [proposed PMDI linker matrix](../results/discovery/pmdi_linker_matrix_2026-10-26/README.md) now binds four exact graphs to route and all-axis gates. Two already occur in the frozen library and two are new; all remain pending and no new candidate performance is claimed in the paper. Methyl shielding and cyclic-precursor access are hypotheses requiring evaluation.
+
+A [source-reported hydroxyethyl PMDI precursor](../results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) has been mapped to a distinct proposed O-graft. Its competing imide N–H leaves route selectivity unresolved, and no candidate performance is added to the paper.

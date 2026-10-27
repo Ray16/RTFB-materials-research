@@ -1,0 +1,100 @@
+{
+  "status": "source_precursor_control_all_axis_pending",
+  "decision": {
+    "id": "source_pmdi_hydroxyethyl_nh_d2082ff91b54",
+    "product_key": "QDTMNFJIHNIBOH-UHFFFAOYSA-N",
+    "profile_id": "all_axes_preformed_polymer_v1",
+    "policy_sha256": "156d56107895ff7287e770edab74533c476988f4a96993fd5b6a78f0bec50291",
+    "required_axis_ids": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "status": "pending",
+    "all_required_axes_pass": false,
+    "eligible_for_Pareto": false,
+    "failed_axes": [],
+    "pending_axes": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "axes": [
+      {
+        "axis": "redox_window",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "capacity",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "state_stability",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "charge_transfer",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "attachment_route",
+        "status": "pending",
+        "reason": "Precursor isolation reported; attachment selectivity and conditions unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "grafting_thermodynamics",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "motif_association",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "neighbor_coupling",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "occupancy_sensitivity",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "accessibility",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      }
+    ],
+    "inference_scope": "Conditional computational shortlist within explicitly declared model/scenario coverage; no experimental material-performance guarantee.",
+    "experimental_performance_established": false
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/candidates.json": "13500c0669eaf706adb2ef0892b9a3622291e3648d522af565bb92a4998b130f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/route_screen.json": "a973509bd622d02008d7e9ae2b389e8589b363fe28500096547553fa6fa4f488",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/candidate_feasibility.json": "7627ca89bbd7cebe2f52e7a89fe08e5418a2519264984a80bcad6494990edb27",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/assess_pmdi_hydroxyethyl_control.py": "ac9ac55c257083d859bce389fd04f0ebff8ec5894269b48aaff7428e9f83c50f"
+  },
+  "quantum_jobs_submitted": 0,
+  "primary_decision_ledger_modified": false
+}

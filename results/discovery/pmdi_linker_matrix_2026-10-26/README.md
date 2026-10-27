@@ -20,3 +20,5 @@ python scripts/pipeline/assess_pmdi_linker_matrix.py --matrix NEW_MATRIX.json --
 ```
 
 The [plotting script](../../../scripts/plotting/candidates/plot_pmdi_linker_matrix.py) draws the stored exact product graphs.
+
+The route registry was later extended with the [hydroxyethyl PMDI source control](../pmdi_hydroxyethyl_source_control_2026-10-26/README.md). Its [append-only reconciliation](../pmdi_hydroxyethyl_source_control_2026-10-26/registry_reconciliation.json) preserves the registry version used by this matrix and confirms that its four entries were unchanged.
