@@ -335,3 +335,5 @@ The [finite empty-chain subset analysis](../results/validation/empty_chain_subse
 The [proposed PMDI linker matrix](../results/discovery/pmdi_linker_matrix_2026-10-26/README.md) now binds four exact graphs to route and all-axis gates. Two already occur in the frozen library and two are new; all remain pending and no new candidate performance is claimed in the paper. Methyl shielding and cyclic-precursor access are hypotheses requiring evaluation.
 
 A [source-reported hydroxyethyl PMDI precursor](../results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/README.md) has been mapped to a distinct proposed O-graft. Its competing imide N–H leaves route selectivity unresolved, and no candidate performance is added to the paper.
+
+A [CPU counterpoise pilot](../results/reviews/2026-10-26/counterpoise_cpu_pilot/README.md) for a separate one-spacer contact is prepared. Its small water-dimer checkpoint restart was verified after correcting the shared auxiliary-basis setup. This is not a full motif counterpoise result and does not close the sampling or interaction comment.
