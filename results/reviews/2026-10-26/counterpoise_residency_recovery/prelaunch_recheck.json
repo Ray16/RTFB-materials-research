@@ -1,0 +1,52 @@
+{
+  "status": "foreign_residency_pre_science_stop_recovery_reviewed",
+  "foreign_processes_signaled": false,
+  "own_residency_observed": false,
+  "scientific_starts": 0,
+  "sampled_host_RSS_bytes": 243773440,
+  "sampled_available_RAM_bytes": 1543104008192,
+  "explanation": "Residency guard recorded a foreign process; the inner SIGTERM handler emitted a misleading host-RAM message. No sampled RAM bound breach was recorded.",
+  "scope": "Only a proven pre-science interruption is recoverable; unknown or partially started attempts remain held.",
+  "checked": 1793063978.4725387,
+  "case": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109",
+  "original_gate_owner": {
+    "host": "lambda13",
+    "pid": 1305626,
+    "process_start": "117906303"
+  },
+  "original_worker_owner": {
+    "host": "lambda13",
+    "pid": 1306259,
+    "process_start": "117906731",
+    "GPU": 6,
+    "CPU_affinity": [
+      0,
+      1
+    ],
+    "started": 1793061728.1121147,
+    "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+    "foreign_processes_signaled": false,
+    "finished": 1793061737.8476014,
+    "guard_stopped": true
+  },
+  "original_coordinator_owner": {
+    "host": "lambda2",
+    "pid": 1458363,
+    "process_start": "1384988508"
+  },
+  "all_original_owners_stopped": true,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/coordinator.json": "a962b436d4c71839a8fd693cccbd4581e99b62b2965c8a6c663c5569a65d2b72",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/launch.json": "5cde8209942d9a245c886100422953e4399ab1268d76127a6bcdf137d8ddd04f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/host_guard/status.json": "76b9a53a8b7550778d77fb71f972eb57dc1b9d0148145aa66777cb5bb496d68c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/residency_guard/owner.json": "a1b53d2865bc11d70444d9e2e70a2eb7517290f212206581291d6d34da25571c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/residency_guard/state.json": "834ef225a2befea16b8f93edc2d356d42229e71fca26bf4f80e25acbbac0ca26",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/residency_guard/interruption.json": "b359bffc6a7fbfbbf078b4b550d65e799cfd06eaa7999291134a3507fc13d6f2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/tensor_runtime/status.json": "8d79e534a6b9f0df0f23725fec7f5c7d4c95ea1caa27d555d68c0e5db8797e8b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/worker.log": "c6eeac138afb0d6d1ada6b190aa445c61fecd44bd0a1c74954d77f10c9a52436",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/local_counterpoise_2026-10-26_motif_v2/occ_2_3__pose0__cap109/plan.json": "378d77af10d3c68b900fdb69cb7e4871898fdf9b0bee8d388fe68c2d85041b67",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_counterpoise_residency_stop.py": "b9569701274deb9be4e99f6f4ba2977cccf0b42a34b4875b5d3f26c6f609c4ca"
+  },
+  "primary_candidate_admission": false,
+  "solvent_counterpoise_computed": false
+}

@@ -7,7 +7,7 @@ The [explicit xTB-prefix entry point](validation/xtb_prefix_binding_2026-10-26_v
 
 The [consolidated reviewer bundle](releases/manuscript_bundle_v4/README.md) gathers the current manuscript source and six overlapping raw-state packages, including the local-motif panel. Isolated arithmetic and Hessian replays pass after extraction; public data licensing, author metadata, DOI deposition and wider deployment portability remain open.
 
-An [adjacent-contact counterpoise recovery](reviews/2026-10-26/counterpoise_residency_recovery/README.md) preserves a pre-science GPU residency interruption and prepares an independently checked identical retry.
+An [adjacent-contact counterpoise recovery](reviews/2026-10-26/counterpoise_residency_recovery/README.md) preserves a pre-science GPU residency interruption; its independently checked identical retry is waiting for a suitable device.
 
 A [CPU counterpoise resource pilot](reviews/2026-10-26/counterpoise_cpu_pilot/README.md) has started for a distinct one-spacer contact; its one term cannot establish a counterpoise interaction.
 
