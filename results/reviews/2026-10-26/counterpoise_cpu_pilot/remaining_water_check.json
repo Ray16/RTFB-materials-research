@@ -1,0 +1,65 @@
+{
+  "status": "remaining_water_counterpoise_terms_stationary",
+  "passed": true,
+  "terms": [
+    {
+      "role": "AB",
+      "energy_Ha": -152.86966954121814,
+      "reference_energy_Ha": -152.86966954121814,
+      "energy_error_Ha": 0.0,
+      "checkpoint_energy_error_Ha": 0.0,
+      "orbital_gradient_norm_au": 3.47363661216602e-08,
+      "orbital_gradient_threshold_au": 1e-07,
+      "electrons": 20,
+      "basis_functions": 116,
+      "ghost_centers": 0,
+      "auxiliary_functions": 226,
+      "passed": true
+    },
+    {
+      "role": "B_own",
+      "energy_Ha": -76.43344714191767,
+      "reference_energy_Ha": -76.43344714191767,
+      "energy_error_Ha": 0.0,
+      "checkpoint_energy_error_Ha": 0.0,
+      "orbital_gradient_norm_au": 1.8602110540710343e-08,
+      "orbital_gradient_threshold_au": 1e-07,
+      "electrons": 10,
+      "basis_functions": 58,
+      "ghost_centers": 0,
+      "auxiliary_functions": 226,
+      "passed": true
+    },
+    {
+      "role": "B_ghost",
+      "energy_Ha": -76.43351115123062,
+      "reference_energy_Ha": -76.43351115123062,
+      "energy_error_Ha": 0.0,
+      "checkpoint_energy_error_Ha": 0.0,
+      "orbital_gradient_norm_au": 1.847844284656062e-08,
+      "orbital_gradient_threshold_au": 1e-07,
+      "electrons": 10,
+      "basis_functions": 116,
+      "ghost_centers": 3,
+      "auxiliary_functions": 226,
+      "passed": true
+    }
+  ],
+  "seconds": 39.02487826347351,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/summary.json": "27fadde0577ad148393520233819ca6a1b4ce8b8e809a90e9874b7ef3f529f54",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/grid_coordinates_AU.npy": "4fe1cb4c8bada89d3e7fd48af92495d6422efd60dbc211638906af706a25c47f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/grid_weights.npy": "67e8577c683d8f90aa3781690d6e4d076d1f5ee85365bfe73f0e2912e6606b37",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/local_counterpoise.py": "84c2e9a1a781e9f53aa6b6bd7a8e6d133e00c4e88b8f72d8add1bd25583dffb2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/run_cpu_counterpoise_reference.py": "53c527a0d1cd6bad60807c1956c516fa91e40d58dd3ae303a9a693df013ee8ec",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-26/counterpoise_control/independent_review.json": "43707ff4a0f377cac978202cff1959ccc0fe4deca0a20385ee66aed03dc63b12",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/check_counterpoise_remaining_terms.py": "015f514fef4ba998f770ad4340c5ff16a7ed71d273f2ba6c123c49c4dd979f8b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/AB/energy.json": "4f9669a77db41e79cb5342cc077247e05f185c3354377db886f514f3fab71bdb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/AB/SCF.h5": "49da5abcc5e4db8875c37a6920937fa17fb6f0a592c91e77ed53380644445f99",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/B_own/energy.json": "12e281e3b4b325badcccfa3217cc02dd90c36d36a4635f7a631716c83699fb14",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/B_own/SCF.h5": "ac620f94cc67d1f11337e2b4b85513c7b27000853bf371523457bf285eb6ff5b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/B_ghost/energy.json": "45c47073e31b0ce2242ef86cf219e6f7ac7ad45f5cb2b726b2ed5a9ee3ab3bfb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/2026-10-26_counterpoise/CPU_fixed_auxiliary_factory/B_ghost/SCF.h5": "9aaee8a0d1d1955b778daf65b88cf79c84e24f22ce2612215124839e2ee81b79"
+  },
+  "scope": "Three water-dimer electronic terms; no large-motif resource or polymer qualification"
+}

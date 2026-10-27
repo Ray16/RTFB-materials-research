@@ -1,0 +1,37 @@
+{
+  "status": "remaining_CPU_terms_workflow_prepared_water_control_passed_large_terms_pending",
+  "water_control_roles": [
+    "AB",
+    "B_own",
+    "B_ghost"
+  ],
+  "water_control_max_gradient_norm_au": 3.47363661216602e-08,
+  "remaining_roles": [
+    "AB",
+    "B_own",
+    "B_ghost"
+  ],
+  "gate": "Exact A-own and A-ghost checkpoint reviews and orbital stationarity must pass before remaining terms start.",
+  "resource_scope": "Per-term sampled 32 GiB RSS guard; CPU and future peak memory reservations limit parallel placement.",
+  "full_counterpoise_computed": false,
+  "solvent_counterpoise_computed": false,
+  "source_sha256": {
+    "scripts/validation/check_counterpoise_remaining_terms.py": "015f514fef4ba998f770ad4340c5ff16a7ed71d273f2ba6c123c49c4dd979f8b",
+    "scripts/pipeline/counterpoise_cpu_remaining.py": "35e1dbd69f82b0f03bf76158fd54ee7153e8c6bd6e212050223a0e2aba6de777",
+    "scripts/pipeline/coordinate_counterpoise_remaining.py": "29aa388b41526e5e9942c117173b1731965e366e630628f75892c96751cab0db",
+    "scripts/validation/review_counterpoise_cpu_remaining.py": "a27eb4d7347239231f1b153b803478c24a790320ebc55269d0fdf0abe7dd906e",
+    "scripts/validation/check_counterpoise_remaining_stationarity.py": "0ba43ce10aea647cb04591202049f7d53a2fd012ed5399c45be7b532cf464d0c",
+    "scripts/validation/collect_counterpoise_cpu_terms.py": "828880e4b398c7946ddadf86991ab0d3c52963e44c4a1c0a49b00c080058a15d",
+    "scripts/pipeline/coordinate_counterpoise_remaining_review.py": "8458b9ba0a437888b0cef0a872ee886ab896254448859568c702e4dd1e87309f",
+    "tests/test_counterpoise_remaining_terms.py": "b6b144111eb4eb3d18424516ecd14c2c1087f11c60518eb070481cfa5b308920",
+    "tests/test_counterpoise_cpu_remaining.py": "98fb74bd764aa6f7867a2a932cdf11f70b22ce884bb8189a5fa24a10eb84fbf7",
+    "tests/test_coordinate_counterpoise_remaining.py": "5a0de9c91e6d87e6615f8a9701d2b18ad717f62d265375fa92d16d38eaf73761",
+    "tests/test_review_counterpoise_cpu_remaining.py": "9c81740b868ea73cda49c3a83297e2e33d8b2d8556ad13f6b14be2ff3415665f",
+    "tests/test_counterpoise_remaining_stationarity.py": "9c49619cb633d06b7c99fa38d245971e5a0373f938c67222fede39744e8794bf",
+    "tests/test_collect_counterpoise_cpu_terms.py": "bf1816210b8799d8ccef1c5741636e28d728e7db9d1b3a3b3c559192b809ce1c",
+    "tests/test_coordinate_counterpoise_remaining_review.py": "fb3c8ba6d3d984b32390cea1aa8325b56c45175d977cfaf9ec84ba8a7b4fc907",
+    "results/reviews/2026-10-26/counterpoise_cpu_pilot/remaining_water_check.json": "a66ec4edda63c8e10f13361e11fb8505222f7473db03c23113a05d1f0efa9f16",
+    "results/reviews/2026-10-26/counterpoise_cpu_pilot/complete_workflow_tests_final.xml": "95f5e8504aed9b4221d2d89bbef26dae33d1cda59594099305516e8ccd43987b"
+  },
+  "scope": "Prepared gas-only frozen-fragment workflow; no large-term or material result yet."
+}
