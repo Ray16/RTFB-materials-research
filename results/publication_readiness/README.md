@@ -5,10 +5,10 @@ incomplete. The [requirements and current evidence](current.json) are a work pla
 not a release certificate. The [readiness guide](../../docs/PUBLICATION_READINESS.md)
 defines what must be demonstrated before each requirement can close.
 
-The [consolidated local reviewer bundle](../releases/manuscript_bundle_v3/README.md)
-combines an earlier source/evidence snapshot and five overlapping raw-state
-packages, with relocated arithmetic and Hessian replays. The latest manuscript
-epoch requires a successor. Data licensing, author metadata and DOI remain open.
+The [consolidated local reviewer bundle](../releases/manuscript_bundle_v4/README.md)
+combines the current source/evidence snapshot and six overlapping raw-state
+packages, with relocated arithmetic and Hessian replays. Public data licensing,
+author metadata, DOI deposition and wider portability remain open.
 
 | Evidence | Location |
 | --- | --- |

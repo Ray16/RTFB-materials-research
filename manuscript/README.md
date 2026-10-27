@@ -32,7 +32,7 @@ The [TEMPO exact-support case](../results/grafting/tempo_exact_support_2026-10-2
 is included in the current article and SI. Its route passes and its computed local
 oxidation potential is source-bound, while material selection remains pending.
 A separate [raw-state addendum](../results/releases/tempo_addendum/README.md)
-has passed relocated replay. The prior consolidated bundle precedes the newer
-local-motif manuscript epoch; an updated bundle remains pending.
+has passed relocated replay. The [current consolidated bundle](../results/releases/manuscript_bundle_v4/README.md)
+includes it and the local-motif panel.
 
 The current draft reports the [twelve frozen local-motif interaction triplets](../results/reviews/2026-10-26/local_motif_complete/README.md). These are uncorrected electronic values for sampled capped fragments, not binding free energies or electronic couplings. Wider conformer sampling remains open.
