@@ -40,7 +40,7 @@ def read_plan(campaign):
     return json.loads((Path(campaign) / "plan.json").read_text())
 
 
-def reaction_terms(campaign, motif_id, base, overrides=None):
+def reaction_terms(campaign, motif_id, base, overrides=None, *, reference_directory=None, base_directory=None):
     """Freeze shared reagent G terms, leaving missing references explicitly blank.
 
     The contact-pair reaction has delta-n=-1; separated ions have delta-n=0.
@@ -50,7 +50,8 @@ def reaction_terms(campaign, motif_id, base, overrides=None):
     from rdkit import Chem
     from redox.build.grafting import precursor
 
-    inventory = json.loads((ROOT / "results/grafting/reactions.json").read_text())
+    inventory_path = ROOT / "results/grafting/reactions.json"
+    inventory = json.loads(inventory_path.read_text()) if inventory_path.exists() else {"reactions": []}
     case_spec = json.loads((Path(campaign) / "cases.json").read_text())
     exact_precursor, exact_class = precursor(case_spec["fragment"])
     exact_smiles = Chem.MolToSmiles(exact_precursor)
@@ -68,10 +69,9 @@ def reaction_terms(campaign, motif_id, base, overrides=None):
         precursor_id = None
     if reaction_class != "NH_OH_substitution":
         raise ValueError("This backend requires a neutral N-H/O-H grafting route")
-    reference = ROOT / "results/grafting/campaigns/2026-10-19_mecn_reference/done"
-    bases = ROOT / "results/grafting/campaigns/2026-10-19_base_assisted_pilot/done"
-    base_tasks = json.loads((bases.parent / "plan.json").read_text())["tasks"]
-    base_smiles = {task["id"]: task["manifest_row"]["smiles"] for task in base_tasks}
+    reference = Path(reference_directory) if reference_directory else ROOT / "results/grafting/references/molecular"
+    bases = Path(base_directory) if base_directory else ROOT / "results/grafting/references/bases"
+    base_smiles = json.loads((ROOT / "config/grafting_references.json").read_text())["base_smiles"]
     if f"{base}_neutral" not in base_smiles:
         raise ValueError("Select a qualified DBU/DIPEA base reference")
     expected_smiles = {

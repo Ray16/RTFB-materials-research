@@ -21,6 +21,7 @@ import time
 
 from redox.core.common import ROOT
 from redox.core.io import atomic_write_json
+from redox.workflows.environment import worker_environment
 from redox.workflows.resources import (GATE, allocation_guard, cpu_allocation, free_slots,
                                        gpu_suitability, host_capacity, verify_gate_owner)
 

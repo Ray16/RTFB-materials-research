@@ -21,13 +21,14 @@ def test_current_commands_preserve_shards_cpus_and_GPU_gate(module,tmp_path):
         assert job[-2:]==['--only','design_pmdi_ethyl']
 
 
-def test_public_commands_are_updated_only_during_dispatch(monkeypatch):
-    original=current.original.COMMANDS
-    def inspect(argv):
-        assert current.original.COMMANDS['uma'][0]=='redox.qm.uma_current'
-        assert current.original.COMMANDS['launch'][0]=='redox.workflows.launch_current'
-        assert current.original.COMMANDS['dft'][1]==('--stage','dft')
-        return 17
-    monkeypatch.setattr(current.original,'main',inspect)
-    assert current.main(['uma'])==17
-    assert current.original.COMMANDS is original
+def test_module_console_and_compatibility_commands_share_one_registry(monkeypatch):
+    from redox import cli, __main__
+    import sys
+    calls = []
+    previous = sys.argv
+    registry = dict(cli.COMMANDS)
+    monkeypatch.setattr(cli.runpy, "run_module", lambda module, **kw: calls.append((module, sys.argv[:])))
+    for entrypoint in (cli.main, current.main, __main__.main):
+        assert entrypoint(["dft", "--help"]) == 0
+        assert sys.argv is previous and cli.COMMANDS == registry
+    assert calls == [("redox.qm.uma_current", ["redox.qm.uma_current", "--stage", "dft", "--help"])] * 3

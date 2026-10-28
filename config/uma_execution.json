@@ -1,6 +1,7 @@
 {
   "schema": 1,
-  "preferred_backend": "nitro",
+  "backend_selection": "stock_default_nitro_on_cc8to12",
+  "backend_selection_note": "The backend is chosen from the reserved GPU's compute capability (see redox.qm.uma_current.select_backend), not from this file: stock/legacy by default, Nitro only on a capability 8.x-12.x card (e.g. H100). Nitro also stays blocked by qualification_file until repeatability passes.",
   "model": "uma-s-1p2p1",
   "task": "omol",
   "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
@@ -8,7 +9,13 @@
     "atom_refs": "8d6b57a33c6a139f80cd706f253a030bd9d93cbfb1bbe33fba066e23b7e8c29e",
     "form_elem_refs": "6de4f5105106bbb31fdc04b3fa215c50d379f043f3b6527e287475a3c2255c75"
   },
-  "nitro_compute_capability_major": [8, 9, 10, 11, 12],
+  "nitro_compute_capability_major": [
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
   "fallback_V100": "legacy",
   "nitro_python": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-23/.venv/bin/python",
   "legacy_python": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
@@ -18,5 +25,6 @@
   "legacy_output": "calcs/uma",
   "default_entrypoint": "python -m redox.qm.uma_current",
   "scope": "Gas-phase warm starts and diagnostics. DFT/SMD energies and native DFT Hessians retain their existing protocols.",
-  "qualification": "Shared Nitro runtime tested; redox-specific current-FP32/Nitro numerical comparison pending. Official current loader semantics are distinct from legacy."
+  "qualification": "Retained H100 force-repeatability failures; see qualification_file. Production Nitro is blocked until source-bound validation passes.",
+  "qualification_file": "config/uma_nitro_qualification.json"
 }

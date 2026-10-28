@@ -1,5 +1,0 @@
-# Retrospective reference/bias diagnostics
-
-[summary.json](summary.json) retains the unmodified 39-endpoint benchmark and reports held-out offsets, independently replayed bootstrap intervals, paired step spacings and organic-reference cancellation. [points.csv](points.csv) contains unrounded values. Molecule-held-out MAE/RMSE are 0.158/0.211 V for one offset and 0.106/0.166 V for step-specific offsets. These are post hoc internal diagnostics, not prospective external validation or a replacement primary benchmark.
-
-Run `scripts/validation/benchmark/analyze_reference_bias.py --review results/reviews/2026-10-22/publication_benchmark_complete --out NEW_DIRECTORY` with the project interpreter, PYTHONPATH=src and all native thread caps set to one. Plot with `scripts/plotting/validation/plot_reference_bias.py --analysis NEW_DIRECTORY`. Backing quantum records remain in `calcs/dft`; source hashes are in the summary. No QM jobs are launched by these analyses. A common Fc shift cannot correct paired step spacings. The stored alternative Fc values use different methods; the limiting orbital factor is a sensitivity, not an applied correction.

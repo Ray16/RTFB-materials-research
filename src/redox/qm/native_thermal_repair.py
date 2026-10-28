@@ -101,7 +101,7 @@ def promotion_guard(gid):
    if pid<=0 or not proc.exists() or (proc/'stat').read_text().split()[21]!=start:
     raise RuntimeError('Another writer owns the motif; promotion refused')
    command=(proc/'cmdline').read_bytes().replace(b'\0',b' ').decode()
-   if 'scripts/pipeline/run_motifs.py' not in command:raise RuntimeError('Unverified parent motif lock owner')
+   if not any(entry in command for entry in ('scripts/pipeline/run_motifs.py', 'redox.workflows.motifs', 'redox motifs')):raise RuntimeError('Unverified parent motif lock owner')
    inode=path.stat().st_ino
    owned=False
    for fd in (proc/'fd').iterdir():

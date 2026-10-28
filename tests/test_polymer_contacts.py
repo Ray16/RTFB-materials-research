@@ -39,7 +39,7 @@ def test_perpendicular_cores_are_not_parallel_stacks():
 
 @pytest.mark.parametrize('candidate',['design_ndi_ethyl','design_pmdi_ethyl','exp_phthalimide_control','exp_bq_oxy_methoxy'])
 def test_pi_cores_belong_to_pendants_not_backbone(candidate):
-    feed=json.loads((ROOT/'results/candidates/current.json').read_text())
+    feed=json.loads((ROOT/'tests/fixtures/motifs.json').read_text())
     row=next(r for r in feed['original39']+feed['additional_candidates'] if r['id']==candidate)
     variants=decorate_sites(row['frag'],3,(1,2,3))
     mol=Chem.AddHs(Chem.MolFromSmiles(variants[0]));groups=pi_core_groups(mol,row['frag'])

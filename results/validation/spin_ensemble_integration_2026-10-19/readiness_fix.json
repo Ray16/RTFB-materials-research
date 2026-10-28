@@ -1,8 +1,0 @@
-{
-  "status": "actual_active_energy_used_for_readiness",
-  "failure": "A synthetic zero energy invalidated a correctly source-bound ensemble policy in the readiness-only probe",
-  "correction": "Use the loaded active-SP energy when present; retain explicit missing-SP blocking",
-  "regression_test": "tests/test_readiness.py::test_readiness_uses_the_actual_active_energy_for_bound_ensemble_policy",
-  "CN_PMDI_states_ready_after_fix": 3,
-  "previous_published_exports_preserved": true
-}

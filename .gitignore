@@ -26,65 +26,21 @@ hf_cache/
 .venv/
 env/
 
-# Scratch & OS
+# Scratch, runtime locks & OS
 scratch/
 tmp/
 logs/
+*.lock
 .DS_Store
 
 # Secrets — never commit tokens
 *.token
 .env
 
-# Cloned external validation datasets (re-clone via docs/DATASETS.md; don't bloat repo).
-# Ignore ALL dataset subdirs under validation/; small tracked pointers (README.md,
-# manifests) are files, not dirs, so the trailing-slash glob never matches them.
-data/raw/validation/*/
-# Downloaded discovery datasets/papers: commit curated records and source pointers.
-data/raw/discovery_sources/*/
-# ...except our OWN small hand-curated literature tables (sourced, citable; not re-clonable)
-!data/raw/validation/two_wave_mecn/
+# Transient test / migration reports under validation/ (the committed Nitro
+# evidence under validation/nitro_prior/ and validation/nitro_environment.json
+# are .json and are kept explicitly).
+validation/*.xml
 
-# slide QA renders (regenerable)
-slides/review/
-
-# MNSol is licensed / non-redistributable — keep MNSol-derived PER-MOLECULE values out of
-# git (aggregate figures + stats are fine; the raw value table is not). Scripts regenerate
-# these from the gitignored MNSol download.
+# Licensed / non-redistributable curated data (re-create via docs/DATASETS.md)
 data/raw/validation/solvation_refset_acetonitrile.csv
-results/solvation_validation.csv
-
-# Copyrighted reference papers (reference only, not for redistribution)
-paper/
-
-# Regenerable per-molecule validation JSONs (summary comparison.csv + figures ARE committed;
-# re-create the raw JSONs with archive/scripts/validate_reorg_worker.py)
-results/d3tales_reorg_validation/calc/
-
-# Track-2 (our-pipeline) reorg sweep: bulk per-molecule calc JSONs + optimized geometries are
-# regenerable (scripts/validation/reorg_d3tales/validate_reorg_worker_prod.py); only comparison.csv is committed.
-results/d3tales_reorg_validation_prod/calc/
-results/d3tales_reorg_validation_prod/geom/
-
-# Calc backups (e.g. pre-torsion-scan snapshots) — at any depth
-*.bak_pretscan/
-
-# Per-state intermediate seeds (only the final opt.xyz + result.json are tracked)
-_seed_*.xyz
-_tseed_*.xyz
-_opt_*.xyz
-
-# LaTeX build artifacts (slides) and archived scratch
-*.aux
-*.nav
-*.out
-*.snm
-*.toc
-archive/tmp/
-archive/logs/
-.venv-figures/
-
-# D3TaLES-level reorg sweep: per-molecule calc JSONs + geometries are regenerable
-# (scripts/validation/reorg_d3tales/validate_reorg_worker_d3tales.py); comparison/figures committed.
-results/d3tales_reorg_validation_d3level/calc/
-results/d3tales_reorg_validation_d3level/geom/

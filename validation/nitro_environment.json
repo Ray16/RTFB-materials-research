@@ -1,0 +1,100 @@
+{
+  "policy": {
+    "schema": 1,
+    "preferred_backend": "nitro",
+    "model": "uma-s-1p2p1",
+    "task": "omol",
+    "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
+    "reference_sha256": {
+      "atom_refs": "8d6b57a33c6a139f80cd706f253a030bd9d93cbfb1bbe33fba066e23b7e8c29e",
+      "form_elem_refs": "6de4f5105106bbb31fdc04b3fa215c50d379f043f3b6527e287475a3c2255c75"
+    },
+    "nitro_compute_capability_major": [
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "fallback_V100": "legacy",
+    "nitro_python": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-23/.venv/bin/python",
+    "legacy_python": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "nitro_library_path": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib",
+    "fairchem_cache": "/nfs/lambda_stor_01/homes/rzhu/.cache/fairchem",
+    "nitro_output": "calcs/uma_profiles/nitro",
+    "legacy_output": "calcs/uma",
+    "default_entrypoint": "python -m redox.qm.uma_current",
+    "scope": "Gas-phase warm starts and diagnostics. DFT/SMD energies and native DFT Hessians retain their existing protocols.",
+    "qualification": "Retained H100 force-repeatability failures; see qualification_file. Production Nitro is blocked until source-bound validation passes.",
+    "qualification_file": "config/uma_nitro_qualification.json"
+  },
+  "environments": {
+    "legacy": {
+      "python": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "prefix": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox",
+      "versions": {
+        "fairchem-core": "2.21.0",
+        "torch": "2.8.0+cu128",
+        "ase": "3.29.0",
+        "triton": "3.4.0",
+        "nvidia-cutlass-dsl": null,
+        "cuda-python": null
+      },
+      "installation_source": {},
+      "nitro_executor_exists": false
+    },
+    "nitro": {
+      "python": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-23/.venv/bin/python",
+      "prefix": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-23/.venv",
+      "versions": {
+        "fairchem-core": "2.24.1.dev4+g645af7d0",
+        "torch": "2.13.0",
+        "ase": "3.29.0",
+        "triton": "3.7.1",
+        "nvidia-cutlass-dsl": "4.7.1",
+        "cuda-python": "13.4.4"
+      },
+      "installation_source": {
+        "url": "https://github.com/facebookresearch/fairchem.git",
+        "vcs_info": {
+          "vcs": "git",
+          "commit_id": "645af7d03e91138ef07e51de387316c9e2e152dc",
+          "requested_revision": "645af7d03e91138ef07e51de387316c9e2e152dc"
+        },
+        "subdirectory": "packages/fairchem-core"
+      },
+      "nitro_executor_exists": true,
+      "executor_sha256": "0ab179e4da1eb0bdc5e92934a939d830c97429b0e15f530db482cc44f88de588"
+    }
+  },
+  "errors": [],
+  "cuda_context_created": false,
+  "production_qualified": false,
+  "local_model_identity": {
+    "model": "uma-s-1p2p1",
+    "checkpoint_sha256": "b2673b85037b075674c25f55c34ffe1ff1e15db924be977b10a184765df0d5ce",
+    "reference_sha256": {
+      "atom_refs": "8d6b57a33c6a139f80cd706f253a030bd9d93cbfb1bbe33fba066e23b7e8c29e",
+      "form_elem_refs": "6de4f5105106bbb31fdc04b3fa215c50d379f043f3b6527e287475a3c2255c75"
+    },
+    "loader_version": "2.24.1.dev4+g645af7d0",
+    "registry_entry": {
+      "filename": "uma-s-1p2p1.pt",
+      "repo_id": "facebook/UMA",
+      "subfolder": "checkpoints",
+      "atom_refs": {
+        "subfolder": "references",
+        "filename": "iso_atom_elem_refs.yaml"
+      },
+      "form_elem_refs": {
+        "subfolder": "references",
+        "filename": "form_elem_refs.yaml"
+      }
+    },
+    "task_name": "omol",
+    "registry_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma_nitro_validation/2026-10-23/.venv/lib/python3.11/site-packages/fairchem/core/calculate/pretrained_models.json",
+    "registry_sha256": "ada86d66fd97dc436705cc6d7c50ca577c3559d6a460827fbb9a75d092c924e7"
+  },
+  "configuration_ok": true,
+  "status": "configuration_verified_numerical_qualification_pending"
+}

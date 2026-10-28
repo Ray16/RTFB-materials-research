@@ -19,9 +19,12 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+import time
 
 from redox.core.common import ROOT, RESULTS, CALCS
 from redox.core.io import atomic_write_json
+from redox.core.hashing import sha256_file
+from redox.workflows.environment import worker_environment
 
 
 @dataclass(frozen=True)
@@ -30,6 +33,8 @@ class TableStage:
     target: str
     method: str = "main"
     paths: tuple[tuple[str, str], ...] = (("RESULTS", "."),)
+    arguments: tuple[tuple[str, str], ...] = ()
+    dependencies: tuple[str, ...] = ()
 
 
 STAGES = (
@@ -38,19 +43,23 @@ STAGES = (
     TableStage("reorganization", "redox.properties.reorg", "aggregate"),
     TableStage("integrity", "redox.properties.integrity"),
     TableStage("stability", "redox.properties.stability"),
-    TableStage("stability_validation", "redox.validation.stability"),
+    TableStage("stability_validation", "redox.validation.stability", dependencies=("stability",)),
     TableStage("capacity", "redox.properties.capacity_and_proxies"),
-    TableStage("outer_sphere", "scripts/pipeline/consolidate_lambda_outer.py",
-               paths=(("OUT", "lambda_outer.csv"),)),
-    TableStage("benchmark", "scripts/validation/benchmark/score_benchmark_mecn.py",
-               paths=(("RESULTS", "."), ("OUT", "validation/benchmark_mecn.csv"))),
-    TableStage("scorecard", "redox.screening.scorecard", "build"),
-    TableStage("pareto", "redox.screening.pareto"),
-    TableStage("workbook", "scripts/pipeline/fill_candidates_xlsx.py",
-               paths=(("RESULTS", "."), ("XLSX_OUT", "Candidates_computed.xlsx"),
-                      ("CSV_OUT", "starting_candidates_summary.csv"))),
+    TableStage("outer_sphere", "redox.reports.outer_sphere", paths=(),
+               arguments=(("output", "lambda_outer.csv"),)),
+    TableStage("benchmark", "redox.reports.benchmark", paths=(),
+               arguments=(("results", "."), ("output", "validation/benchmark_mecn.csv")),
+               dependencies=("potentials",)),
+    TableStage("scorecard", "redox.screening.scorecard", "build",
+               dependencies=("potentials", "orop_benchmark", "reorganization", "integrity",
+                             "stability_validation", "capacity", "outer_sphere", "benchmark")),
+    TableStage("pareto", "redox.screening.pareto", dependencies=("scorecard",)),
+    TableStage("workbook", "redox.reports.workbook", paths=(),
+               arguments=(("results", "."), ("xlsx_output", "Candidates_computed.xlsx"),
+                          ("csv_output", "starting_candidates_summary.csv")),
+               dependencies=("pareto",)),
     TableStage("audit", "scripts/validation/audit/recompute_axes.py",
-               paths=(("RES", "."), ("OUT", "validation"))),
+               paths=(("RES", "."), ("OUT", "validation")), dependencies=("workbook",)),
 )
 BENCHMARK_INPUTS = ("orop_benchmark.csv", "d3tales_reorg_validation_prod/comparison.csv")
 
@@ -92,7 +101,7 @@ def snapshot_inputs(source):
     paths.update((ROOT/'scripts/validation/audit').glob('*.py'))
     for directory in (ROOT/'calcs').glob('**/projected_thermal'):
         paths.update(p for p in directory.rglob('*') if p.is_file() and p.suffix!='.lock')
-    return {str(path): hashlib.sha256(path.read_bytes()).hexdigest() for path in paths if path.is_file()}
+    return {str(path): sha256_file(path) for path in paths if path.is_file()}
 
 
 def _load_stage(stage: TableStage):
@@ -109,7 +118,7 @@ def _execute_stage(stage: TableStage, destination: Path):
     module = _load_stage(stage)
     for attribute, relative in stage.paths:
         setattr(module, attribute, destination / relative)
-    result = getattr(module, stage.method)()
+    result = getattr(module, stage.method)(**{key: destination / value for key, value in stage.arguments})
     if stage.name == "audit":
         atomic_write_json(destination / "stages/audit_result.json",
                           {"arithmetic_discrepancies": int(result)})
@@ -117,15 +126,28 @@ def _execute_stage(stage: TableStage, destination: Path):
     return 0
 
 
-def review_tables(destination: Path, *, source: Path = RESULTS) -> dict:
+def review_tables(destination: Path, *, source: Path = RESULTS, workers: int = 1) -> dict:
     """Run CPU table stages, preserve existing reviews, and record every failure."""
+    if type(workers) is not int or workers < 1:
+        raise ValueError("workers must be a positive integer")
+    cpu_sets = None
+    if workers > 1:
+        from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity
+        from redox.workflows.stages import validate_graph
+        validate_graph(STAGES)
+        if shutil.which("taskset") is None:
+            raise RuntimeError("Parallel review requires taskset for disjoint CPU affinity")
+        with allocation_guard():
+            host_capacity(workers, minimum_ram_gib=2 * workers)
+            cpu_sets = cpu_allocation(workers)
     destination = Path(destination).resolve()
     destination.mkdir(parents=True, exist_ok=False)
     logs = destination / "stages"
     logs.mkdir()
     report = dict(status="running", arithmetic_discrepancies=None,
                   scientific_accuracy_validated=False, quantum_jobs_submitted=0,
-                  copied_benchmark_inputs=[], benchmark_input_sha256={}, stages=[])
+                  copied_benchmark_inputs=[], benchmark_input_sha256={}, stages=[],
+                  workers=workers, cpu_affinity=cpu_sets)
     status_path = destination / "review_status.json"
     atomic_write_json(status_path, report)
     try:
@@ -140,32 +162,55 @@ def review_tables(destination: Path, *, source: Path = RESULTS) -> dict:
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(path, target)
                 report["copied_benchmark_inputs"].append(name)
-                report["benchmark_input_sha256"][name] = hashlib.sha256(target.read_bytes()).hexdigest()
-        env = dict(os.environ)
-        env["PYTHONPATH"] = os.pathsep.join(filter(None, (str(ROOT / "src"), env.get("PYTHONPATH"))))
-        for key in ("OMP_NUM_THREADS", "OMP_THREAD_LIMIT", "MKL_NUM_THREADS",
-                    "OPENBLAS_NUM_THREADS", "NUMEXPR_NUM_THREADS"):
-            env[key] = "1"
-        for stage in STAGES:
+                report["benchmark_input_sha256"][name] = sha256_file(target)
+        env = worker_environment(ROOT)
+        entries = {}
+
+        def started(stage):
             log = logs / f"{stage.name}.log"
-            entry = dict(stage=stage.name, log=str(log), status="running")
+            entry = dict(stage=stage.name, log=str(log), status="running", started=time.time())
+            entries[stage.name] = entry
             report["stages"].append(entry)
             atomic_write_json(status_path, report)
             print(f"[tables] {stage.name}: {log}", flush=True)
-            with log.open("w") as stream:
-                proc = subprocess.run(
-                    [sys.executable, "-m", "redox.workflows.tables", "--out", str(destination),
-                     "--stage", stage.name], cwd=ROOT, env=env,
-                    stdout=stream, stderr=subprocess.STDOUT,
-                )
-            entry.update(returncode=proc.returncode, status="failed" if proc.returncode else "complete")
+
+        def run(stage, slot):
+            command = [sys.executable, "-m", "redox.workflows.tables", "--out", str(destination),
+                       "--stage", stage.name]
+            if cpu_sets is not None:
+                command = ["taskset", "--cpu-list", str(cpu_sets[slot]), *command]
+            with (logs / f"{stage.name}.log").open("w") as stream:
+                proc = subprocess.run(command, cwd=ROOT, env=env,
+                                      stdout=stream, stderr=subprocess.STDOUT)
+            return proc.returncode
+
+        def finished(stage, returncode):
+            entry = entries[stage.name]
+            entry.update(returncode=returncode, status="failed" if returncode else "complete",
+                         elapsed_seconds=time.time() - entry["started"])
             if stage.name == "audit" and (logs / "audit_result.json").exists():
                 report.update(json.loads((logs / "audit_result.json").read_text()))
-            if proc.returncode:
+            if returncode:
                 report.update(status="failed", failed_stage=stage.name)
-                break
+            atomic_write_json(status_path, report)
+
+        if workers == 1:
+            # Keep exact historical stage ordering and support isolated stage tests.
+            for stage in STAGES:
+                started(stage)
+                code = run(stage, 0)
+                finished(stage, code)
+                if code:
+                    break
+            else:
+                report["status"] = "complete"
         else:
-            report["status"] = "complete"
+            from redox.workflows.stages import execute_graph
+            execution = execute_graph(STAGES, run, workers=workers,
+                                      started=started, finished=finished)
+            report["stage_execution"] = execution
+            if not execution["failed"]:
+                report["status"] = "complete"
         # A failed audit can coincide with a live calculation publishing new
         # input. Preserve both facts: do not hide its discrepancies, and do not
         # leave input freshness unknown merely because a stage returned nonzero.
@@ -186,13 +231,14 @@ def review_tables(destination: Path, *, source: Path = RESULTS) -> dict:
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--out", type=Path, required=True)
+    parser.add_argument("--workers", type=int, default=1, help="concurrent independent CPU table stages; default 1")
     parser.add_argument("--stage", choices=[stage.name for stage in STAGES], help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
     if args.stage:
         stage = next(stage for stage in STAGES if stage.name == args.stage)
         return _execute_stage(stage, args.out.resolve())
     try:
-        report = review_tables(args.out)
+        report = review_tables(args.out, workers=args.workers)
     except FileExistsError:
         parser.error("choose a new output directory; existing reviews are preserved")
     print(f"[tables] {report['status']}: {args.out.resolve() / 'review_status.json'}")

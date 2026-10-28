@@ -1,4 +1,11 @@
-"""Current UMA entry point: prefer Nitro, with an explicit V100 legacy fallback.
+"""Current UMA entry point: stock (legacy) backend by default; Nitro only on a
+Nitro-capable GPU (CUDA compute capability 8.x-12.x, e.g. an H100).
+
+The backend is chosen from the *actual* reserved GPU's architecture, not from a
+config preference: a V100 (cc 7.0) or any non-capable card runs the deterministic
+stock calculator, and only an H100-class card routes to Nitro. Nitro additionally
+stays blocked by the production-qualification gate until its force repeatability
+passes (see redox.qm.uma_policy).
 
 Frozen replay modules and caches remain untouched. The dispatcher recreates a
 fixed-state calculator when composition, charge or multiplicity changes, and
@@ -24,12 +31,20 @@ POLICY = ROOT/'config/uma_execution.json'
 
 
 def select_backend(capability, require_nitro=False):
-    major, minor = capability
+    """Stock backend by default; Nitro only on a Nitro-capable (cc 8.x-12.x) GPU.
+
+    Nitro's fused kernels require CUDA compute capability 8.x-12.x (Ampere/Hopper/
+    Blackwell). On this cluster that means an H100. Every other card - V100 (7.0),
+    T4 (7.5), ... - uses the deterministic stock calculator. ``require_nitro`` forces
+    Nitro and raises if the actual GPU cannot run it.
+    """
+    major, _ = capability
     if major in (8,9,10,11,12):
         return 'nitro'
-    if (major,minor) == (7,0) and not require_nitro:
-        return 'legacy'
-    raise RuntimeError('No qualified architecture profile; Nitro requires capability 8.x–12.x, with a separate V100 fallback')
+    if require_nitro:
+        raise RuntimeError('Nitro requires CUDA compute capability 8.x-12.x '
+                           '(Ampere/Hopper/Blackwell, e.g. an H100); this GPU cannot run it')
+    return 'legacy'
 
 
 def state_aware_calculator(factory, actual_mode, checkpoint_root=None):
@@ -113,6 +128,9 @@ def nitro_state_directory(group, state, policy):
         return None
     if not record_path.is_file():
         raise RuntimeError(f'{group}/{state}: partial Nitro warm start is preserved, not replaced by a fallback')
+    from redox.qm.uma_policy import require_production_qualification
+    if 'qualification_file' in policy:
+        require_production_qualification(policy)
     record = json.loads(record_path.read_text())
     if (record.get('converged') is not True or record.get('id') != group or record.get('state') != state
             or record.get('model_identity',{}).get('checkpoint_sha256') != policy['checkpoint_sha256']
@@ -165,6 +183,9 @@ def run_dft(arguments, policy, require_nitro=False):
 
 
 def run_uma(arguments, profile, policy):
+    if profile == "nitro":
+        from redox.qm.uma_policy import require_production_qualification
+        require_production_qualification(policy)
     from redox.qm import uma
     original_factory, original_identity, original_scan, original_out = uma.make_calculator, uma.model_identity, uma.relax_state_scan, uma.OUT
     calculators = []
@@ -222,7 +243,8 @@ def main():
     parser.add_argument('--require-nitro',action='store_true')
     parser.add_argument('--show-policy',action='store_true')
     args,remaining=parser.parse_known_args()
-    policy=json.loads(POLICY.read_text())
+    from redox.qm.uma_policy import load_policy
+    policy=load_policy(POLICY)
     if args.show_policy:
         print(json.dumps(policy,indent=2));return
     if args.stage == 'dft':
@@ -249,7 +271,7 @@ def main():
         if profile == 'nitro':environment['LD_LIBRARY_PATH']=policy['nitro_library_path']+os.pathsep+environment.get('LD_LIBRARY_PATH','')
         os.execve(python,[python,'-m','redox.qm.uma_current',*sys.argv[1:]],environment)
     os.environ['FAIRCHEM_CACHE_DIR']=policy['fairchem_cache']
-    print(f'[UMA] preferred=nitro actual={profile}',flush=True)
+    print(f'[UMA] device_cc={major}.{minor} backend={profile} (stock default; Nitro on cc 8.x-12.x)',flush=True)
     run_uma(remaining,profile,policy)
 
 

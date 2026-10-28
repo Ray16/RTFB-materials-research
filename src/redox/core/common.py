@@ -47,7 +47,10 @@ def load_config(name: str) -> ModuleType:
 
 def read_manifest() -> list[dict]:
     """Rows of `library/manifest.csv` as a list of dicts (build.py's output)."""
-    with (LIBRARY / "manifest.csv").open() as f:
+    path = LIBRARY / "manifest.csv"
+    if not path.exists():
+        return []
+    with path.open() as f:
         return list(csv.DictReader(f))
 
 

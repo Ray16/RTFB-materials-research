@@ -1,5 +1,0 @@
-# Step-dependent force diagnostic of an unqualified trimer checkpoint
-
-The evaluation-42 geometry is fixed and hash-verified. Nineteen SMD SCF/gradient evaluations include three identical-geometry repeats and two coordinates at four displacement sizes. Repeats change energy by zero and gradients by less than 2e-10 Ha/bohr. At 0.001/0.0005 bohr the analytic-vs-energy-derivative differences are about 1.24e-4/1.12e-4 Ha/bohr; at 1e-5 bohr they fall below 8.6e-8 for both sampled axes. This diagnoses deterministic displacement sensitivity, not random SCF noise. No production gate was relaxed, and this diagnostic does not qualify the checkpoint or replace its active optimizer.
-
-Raw records: `calcs/polymer_models/2026-10-22_stacked_force_plateau/`. Input identity, requested steps and launch ownership are in [plan.json](plan.json) and [start_verification.json](start_verification.json). Producer: `scripts/validation/polymer_gradient_diagnostic.py`, preserving the original defaults unless flags explicitly request this diagnostic. The original stacked trimer later reached optimizer convergence; its separate final energy/force QC remains authoritative.

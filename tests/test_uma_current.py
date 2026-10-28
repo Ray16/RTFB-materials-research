@@ -84,14 +84,19 @@ def test_false_nitro_fallback_is_rejected_after_evaluation():
 
 
 @pytest.mark.parametrize('capability',[(8,0),(8,9),(9,0),(10,0),(12,0)])
-def test_supported_architecture_prefers_actual_nitro(capability):
+def test_nitro_capable_architecture_selects_nitro(capability):
     assert current.select_backend(capability)=='nitro'
 
 
-def test_V100_fallback_is_explicit_and_strict_nitro_cannot_fall_back():
-    assert current.select_backend((7,0))=='legacy'
+@pytest.mark.parametrize('capability',[(7,0),(7,5),(6,1)])
+def test_stock_is_the_default_on_every_non_nitro_capable_card(capability):
+    # Stock by default: V100 (7.0), T4 (7.5) and anything below cc 8 use legacy.
+    assert current.select_backend(capability)=='legacy'
+
+
+def test_require_nitro_cannot_fall_back_on_a_non_capable_card():
     with pytest.raises(RuntimeError):current.select_backend((7,0),require_nitro=True)
-    with pytest.raises(RuntimeError):current.select_backend((7,5))
+    with pytest.raises(RuntimeError):current.select_backend((7,5),require_nitro=True)
 
 
 def test_partial_preferred_cache_never_silently_selects_legacy(tmp_path,monkeypatch):

@@ -15,7 +15,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-redox = "redox.current:main"
+redox = "redox.cli:main"
 redox-uma = "redox.qm.uma_current:main"
 
 [tool.setuptools]
@@ -23,3 +23,9 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+# Run the suite against THIS folder's src, independent of where an editable
+# `redox` install happens to point. Keeps the clean tree self-contained.
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -7,8 +7,8 @@ from redox.core.common import ROOT
 
 
 def module():
-    path=ROOT/'results/validation/resume_campaign_2026-10-12/physical_campaign/diagnostic_metadata.py'
-    spec=importlib.util.spec_from_file_location('diagnostic_metadata_test',path);m=importlib.util.module_from_spec(spec);spec.loader.exec_module(m);return m
+    from redox.core import metadata
+    return metadata
 
 
 def test_planned_allocation_shapes_and_metrics_roundtrip_as_plain_json():

@@ -21,6 +21,7 @@ import time
 
 from redox.core.common import ROOT
 from redox.core.io import atomic_write_json
+from redox.workflows.environment import worker_environment
 from redox.workflows.resources import free_slots, gpu_suitability, cpu_allocation, host_capacity
 
 
@@ -41,7 +42,9 @@ def commands(module, gpus, destination, *, threads=2, shard_count=None, shard_st
     return jobs
 
 
-def main(argv=None):
+def main(argv=None, *, command_builder=None, report_metadata=None):
+    """Run a launch policy without changing module globals."""
+    command_builder = commands if command_builder is None else command_builder
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--module", choices=("dft", "uma"), required=True)
     parser.add_argument("--out", type=Path, required=True)
@@ -81,7 +84,7 @@ def main(argv=None):
         capacity = host_capacity(len(gpus) * args.threads, minimum_ram_gib=8 * len(gpus))
         cpus = cpu_allocation(len(gpus) * args.threads)
         cpu_sets = [cpus[offset:offset + args.threads] for offset in range(0, len(cpus), args.threads)]
-        jobs = commands(args.module, gpus, destination, threads=args.threads,
+        jobs = command_builder(args.module, gpus, destination, threads=args.threads,
                         shard_count=args.shard_count, shard_start=args.shard_start, extra=extra,
                         cpu_sets=cpu_sets)
     except (ValueError, RuntimeError) as exc:
@@ -90,6 +93,8 @@ def main(argv=None):
                   host_preflight=capacity, cpu_sets=cpu_sets,
                   scientifically_verified=False, suitable_gpus=[info for _, info in suitable],
                   rejected_gpus=rejected, argv=jobs, workers=[])
+    if report_metadata is not None:
+        report.update(report_metadata())
     if not args.execute:
         print(json.dumps(report, indent=2))
         return 0
@@ -106,10 +111,7 @@ def main(argv=None):
     try:
         report["status"] = "running"
         atomic_write_json(status, report)
-        env = dict(os.environ, PYTHONPATH=str(ROOT / "src"))
-        for key in ("OMP_NUM_THREADS", "OMP_THREAD_LIMIT", "MKL_NUM_THREADS",
-                    "OPENBLAS_NUM_THREADS", "NUMEXPR_NUM_THREADS"):
-            env[key] = "1"
+        env = worker_environment(ROOT)
         for gpu, command in zip(gpus, jobs):
             with (destination / f"gpu_{gpu}.log").open("w") as log:
                 child = subprocess.Popen(command, cwd=ROOT, env=env, stdout=log,

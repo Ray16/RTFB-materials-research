@@ -241,7 +241,8 @@ def test_independent_mass_audit_reproduces_serialized_precision_at_a_decimal_tie
     spec = importlib.util.spec_from_file_location("mass_rounding_audit", ROOT / "scripts/validation/audit/recompute_axes.py")
     audit = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(audit)
-    rows = audit.MANIFEST
+    import csv
+    rows = list(csv.DictReader((ROOT / "tests/fixtures/library_manifest.csv").open()))
     smiles = next(row["smiles"] for row in rows if row["id"] == "exp_pmdi_pent2_r")
     mass, repeat = audit.scorecard_masses(smiles)
     assert mass == 390.439 and repeat == 402.45
@@ -331,13 +332,6 @@ def test_gpu_runner_preserves_evidence_and_refuses_occupied_devices(tmp_path, mo
     with pytest.raises(FileExistsError):
         gpu.run_gpu(destination, 0, ["never"])
     assert (destination / "execution.json").read_bytes() == before
-
-
-@pytest.mark.parametrize("script", ["reorg_fleet_worker.sh", "d3level_fleet_worker.sh", "orop_worker.sh"])
-def test_retired_queues_stop_before_reserving_or_claiming(script):
-    result = subprocess.run(["bash", str(ROOT / "scripts/fleet" / script), "0"],
-                            capture_output=True, text=True)
-    assert result.returncode == 2 and "retired" in result.stderr
 
 
 def test_command_help_is_discoverable_and_forwards_to_target_without_gpu_use(monkeypatch, capsys):

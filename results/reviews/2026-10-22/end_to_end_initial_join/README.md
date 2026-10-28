@@ -1,3 +1,0 @@
-# Exact PMDI/NDI evidence join: partial assessment
-
-[summary.json](summary.json) freshly reconstructs six redox-state free energies and the matched Fc reference for two exact enumerated/historical matches. It verifies grafting source hashes and exact mapped route bindings. The recorded PMDI and NDI assessments remain **hold**: precursor access, selectivity and experimental redox retention are unverified, and exact-motif matched occupancy free energies remain blank. This joins existing evidence without a new full-redox campaign or a fabricated synthesis pass. It is not a completed end-to-end example. Producer: `scripts/validation/review_end_to_end_cases.py`.

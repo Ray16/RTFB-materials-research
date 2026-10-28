@@ -77,7 +77,7 @@ def test_grafting_a_site_without_a_handle_is_rejected():
 )
 def test_the_same_panel_applies_to_N_and_O_grafted_motif_families(motif_id):
     root = Path(__file__).resolve().parents[1]
-    feed = json.loads((root / "results/candidates/current.json").read_text())
+    feed = json.loads((root / "tests/fixtures/motifs.json").read_text())
     row = next(
         row
         for row in feed["original39"] + feed["additional_candidates"]
