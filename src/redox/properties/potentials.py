@@ -191,7 +191,7 @@ def main():
             spin_qc = {sO: tqO, sR: tqR}
             row["status"] = ("ok" if not miss else
                              "INCOMPLETE:" + ",".join(
-                                 f"{s}({spin_qc[s] if spin_qc[s] in ('wrong_spin','stale_spin_decision') else ('no_energy' if (read_result(gid, s) or {}).get('e_smd_eV') is None else 'no_thermal')})"
+                                 f"{s}({spin_qc[s] if spin_qc[s] in ('wrong_spin','stale_spin_decision') else ('no_energy' if ({sO: rO, sR: rR}.get(s) or {}).get('e_smd_eV') is None else 'no_thermal')})"
                                  for s in miss))
             row["thermal_qc"] = ("imag_modes" if "imag_modes" in (tqO, tqR) else
                                  ("ok" if not miss else ""))

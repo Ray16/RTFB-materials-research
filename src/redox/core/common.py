@@ -45,13 +45,31 @@ def load_config(name: str) -> ModuleType:
     return mod
 
 
+_MANIFEST_CACHE: dict = {}
+
+
 def read_manifest() -> list[dict]:
-    """Rows of `library/manifest.csv` as a list of dicts (build.py's output)."""
+    """Rows of `library/manifest.csv` as a list of dicts (build.py's output).
+
+    Cached per (path, mtime, size): the many per-state callers (read_result,
+    spins, scorecard, ...) would otherwise re-open and re-parse the CSV over NFS
+    on every call. A fresh write (new mtime/size) invalidates the entry, so the
+    returned rows always match the file on disk. Treat the result as read-only;
+    callers iterate it and never mutate the shared rows.
+    """
     path = LIBRARY / "manifest.csv"
-    if not path.exists():
+    try:
+        st = path.stat()
+    except FileNotFoundError:
         return []
-    with path.open() as f:
-        return list(csv.DictReader(f))
+    key = (str(path), st.st_mtime_ns, st.st_size)
+    rows = _MANIFEST_CACHE.get(key)
+    if rows is None:
+        with path.open() as f:
+            rows = list(csv.DictReader(f))
+        _MANIFEST_CACHE.clear()  # retain only the current manifest version
+        _MANIFEST_CACHE[key] = rows
+    return rows
 
 
 # energy fields that come ONLY from the active-protocol record (redox.core.protocol), never from

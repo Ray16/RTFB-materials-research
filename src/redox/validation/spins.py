@@ -16,9 +16,10 @@ NEAR_GAP_EV=.2
 
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 def atomic_json(path,data):
- path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
- tmp=path.with_name(f'.{path.name}.{os.getpid()}.{time.time_ns()}.tmp')
- tmp.write_text(json.dumps(data,indent=2));tmp.replace(path)
+ # Use the shared writer: fsync + allow_nan=False, matching the atomic_write_json
+ # already used elsewhere in this module (never silently emit invalid NaN JSON).
+ from redox.core.io import atomic_write_json
+ atomic_write_json(path,data)
 def declared(gid,state):return next(r for r in read_manifest() if r['id']==gid and r['state']==state)
 def snapshot(gid,state):
  sd=DFT/gid/state;p=sd/'result.json'

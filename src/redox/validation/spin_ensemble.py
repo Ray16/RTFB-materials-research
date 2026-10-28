@@ -16,7 +16,10 @@ POLICY_NAME = "spin_ensemble_policy.json"
 
 
 def digest(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    # Bounded-memory hashing: evidence includes large Hessian .npy artifacts, so
+    # stream the file rather than reading it whole into RAM on a shared node.
+    from redox.core.hashing import sha256_file
+    return sha256_file(path)
 
 
 def equilibrium(chosen_G, alternative_G, temperature_K=TEMPERATURE_K):

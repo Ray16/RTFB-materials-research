@@ -101,6 +101,21 @@ def test_qualification_boolean_alone_cannot_admit_nitro(tmp_path, monkeypatch):
             'checkpoint_sha256': 'a', 'reference_sha256': {}})
 
 
+def test_read_manifest_cache_never_serves_stale_rows(tmp_path, monkeypatch):
+    from redox.core import common
+    library = tmp_path / 'library'; library.mkdir()
+    monkeypatch.setattr(common, 'LIBRARY', library)
+    manifest = library / 'manifest.csv'
+    manifest.write_text('id,state\nm,neu\n')
+    assert common.read_manifest() == [{'id': 'm', 'state': 'neu'}]
+    assert common.read_manifest() == [{'id': 'm', 'state': 'neu'}]  # cached, still correct
+    # A rewrite (different size/mtime) must invalidate the cache, not serve stale rows.
+    manifest.write_text('id,state\nm,neu\nm,red1\n')
+    assert common.read_manifest() == [{'id': 'm', 'state': 'neu'}, {'id': 'm', 'state': 'red1'}]
+    manifest.unlink()
+    assert common.read_manifest() == []
+
+
 def test_config_check_failure_cannot_claim_runtime_ready(monkeypatch):
     from redox.validation import uma_environment
     monkeypatch.setattr(uma_environment.subprocess, 'run', lambda *a, **kw: (_ for _ in ()).throw(FileNotFoundError('python')))
