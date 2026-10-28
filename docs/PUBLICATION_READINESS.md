@@ -16,6 +16,11 @@ the refactored checkout or establish that an archived controller is still alive.
 Existing files must be preserved, and source paths/hashes must be reconciled
 explicitly before a campaign is resumed.
 
+The maintained [native-state CPU replay](../validation/publication_native_replay_2026-10-28/README.md)
+now reconstructs sixty retained states and verifies 12,386 source bindings after
+explicit relocation. This closes a scoped post-refactor evidence-reading gap;
+it does not complete missing occupancy states or qualify current GPU execution.
+
 ## Scientific acceptance
 
 | Reviewer item | Evidence available | Requirement still to close |
