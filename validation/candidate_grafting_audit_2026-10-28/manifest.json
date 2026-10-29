@@ -1,0 +1,48 @@
+{
+  "scope": "Read-only replay and prospective route screening; no new QM",
+  "sources": {
+    "gate": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/screen_grafting_routes.py",
+      "sha256": "896eca7ab18ca5f4793bd6f71559709c27ac36f2018a2a19f4ef11081b0ee2fc"
+    },
+    "candidate_feed": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/candidates/current.json",
+      "sha256": "686317704425d5945c5b6e253538843b5eb8fafc4a490a7fc4e5b70710914ea7"
+    },
+    "route_evidence": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/route_evidence.json",
+      "sha256": "0581fa3797a373b1ce5a96acc9ea8feb512c2d36b4e4f84bf91fc411b1ebd7eb"
+    },
+    "assessment": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/selection_assessment.json",
+      "sha256": "4e70b0ccbc2a4764f4fc2df15147c495a952d8ec361cecaa0f4a8250575d8663"
+    },
+    "cached_example": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/cached_thermochemistry/reproduce.py",
+      "sha256": "c91c27e8636f666a427bafed89a7f21f0ccb5f2b07d7a2b07e61e7900506ad8e"
+    },
+    "aq_panel": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/discovery/anthraquinone_carboxylate_matrix_2026-10-26/candidates.json",
+      "sha256": "be69670fa8f2663d0de843916bad013fb40315bce49ee19ad5457d8f36348222"
+    },
+    "pmdi_panel": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/discovery/pmdi_linker_matrix_2026-10-26/candidates.json",
+      "sha256": "698e8f48f7e698fb45304d3b6197bc2b9436fa72cf7c68a69089412fdd28e954"
+    },
+    "pmdi_cycle": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/reviews/2026-10-25/pmdi_neighbor_cycle_checked/summary.json",
+      "sha256": "1e8460060d362533246b4a47ed847e481971207db615304071914e1207a2b9cd"
+    },
+    "local_interaction": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/reviews/2026-10-26/local_motif_interactions/summary.json",
+      "sha256": "7f1aaef6d3621097732e254985f036cf338f3e2efd79d4486f7013c009ce9da5"
+    }
+  },
+  "outputs": [
+    "default_gate.json",
+    "aq_gate.json",
+    "pmdi_gate.json",
+    "cached_replay.json"
+  ],
+  "limitations": "Hashes bind inputs read; gate does not verify raw quantum outputs or validate experimental chemistry."
+}
