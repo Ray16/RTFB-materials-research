@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "name": "systematic",
+      "path": "results/discovery/systematic_families_2026-10-18/structures.json",
+      "role": "enumerated"
+    },
+    {
+      "name": "original39",
+      "path": "results/candidates/current.json",
+      "section": "original39",
+      "role": "evaluated_candidate"
+    },
+    {
+      "name": "additional_candidates",
+      "path": "results/candidates/current.json",
+      "section": "additional_candidates",
+      "role": "evaluated_candidate"
+    },
+    {
+      "name": "comparison_controls",
+      "path": "results/candidates/current.json",
+      "section": "comparison_controls",
+      "role": "comparison_control"
+    },
+    {
+      "name": "aq_carboxylate_2026-10-26",
+      "path": "results/discovery/aq_carboxylate_2026-10-26/candidates_mapped.json",
+      "role": "proposal"
+    },
+    {
+      "name": "pmdi_linker_matrix_2026-10-26",
+      "path": "results/discovery/pmdi_linker_matrix_2026-10-26/candidates.json",
+      "role": "proposal"
+    },
+    {
+      "name": "tempo_amino_2026-10-26",
+      "path": "results/discovery/tempo_amino_2026-10-26/candidates.json",
+      "role": "proposal"
+    },
+    {
+      "name": "pmdi_hydroxyethyl_source_control_2026-10-26",
+      "path": "results/discovery/pmdi_hydroxyethyl_source_control_2026-10-26/candidates.json",
+      "role": "proposal"
+    },
+    {
+      "name": "anthraquinone_carboxylate_matrix_2026-10-26",
+      "path": "results/discovery/anthraquinone_carboxylate_matrix_2026-10-26/candidates.json",
+      "role": "proposal"
+    },
+    {
+      "name": "ptz_hydroxyethyl_source_2026-10-26",
+      "path": "results/discovery/ptz_hydroxyethyl_source_2026-10-26/candidates.json",
+      "role": "proposal"
+    },
+    {
+      "name": "phenothiazine_linker_matrix_2026-10-26",
+      "path": "results/discovery/phenothiazine_linker_matrix_2026-10-26/candidates.json",
+      "role": "proposal"
+    },
+    {
+      "name": "registered_local_models",
+      "path": "config/registered_local_models.json",
+      "root": "checkout",
+      "role": "registered_model"
+    },
+    {
+      "name": "ptz_ring_2026-10-29",
+      "path": "results/candidates/pool/proposals/ptz_ring_2026-10-29.json",
+      "root": "checkout",
+      "role": "proposal"
+    }
+  ],
+  "route_evidence": "results/grafting/route_evidence.json",
+  "assessment": "results/grafting/selection_assessment.json"
+}
