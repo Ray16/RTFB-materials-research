@@ -2,11 +2,11 @@
   "status": "changed_pages_visually_reviewed",
   "documents": {
     "manuscript": {
-      "pdf_sha256": "2375935e1a85dbc2ffc2a249a6f2d7c6435fb5221440f9ac819f059f17a093f8",
+      "pdf_sha256": "717d4fd889d4c6a6755b9160eab9912d538956fd36ac165a1520d2e72f7ebd7d",
       "pages": 20
     },
     "supporting_information": {
-      "pdf_sha256": "ba367afbc52091390f892cea2d935aac0257fcd9c4e26c3b9b024000a46a2954",
+      "pdf_sha256": "8c7d8044682e70b1bcbbd98eef4787d06c041ec4218fa5bb5188fefa37a6eb7a",
       "pages": 24
     }
   },
@@ -16,14 +16,20 @@
   "SI_pages_reviewed": [
     14,
     15,
-    20
+    20,
+    21
   ],
-  "render_root": "calcs/validation/paper_visual_2026-10-30",
+  "render_root": "calcs/validation/paper_visual_2026-10-30_continuations",
+  "renderer": {
+    "module": "PyMuPDF",
+    "version": "1.28.2"
+  },
   "checks": [
-    "Sampling counts and late-input comparison visible with explicit incomplete-batch limit",
-    "Four-panel plot has separate graph minima, readable labels and missing-input markers",
-    "Source-reconstruction methods retained in SI, with no current-runtime qualification claim",
-    "No overlapping text or clipped figure on inspected pages"
+    "Current 67-state counts and early-input limits match the frozen reconstruction",
+    "Updated four-panel figure shows all checked points and missing-state markers",
+    "Primary-model cycles remain separate from the alternate-model sampling",
+    "Nitro failed repeatability bound is visible without claiming an implementation cause",
+    "Inspected pages have readable labels and no overlapping or clipped content"
   ],
   "whole_document_visual_review_performed": false,
   "submission_ready": false

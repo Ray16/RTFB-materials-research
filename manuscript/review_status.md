@@ -9,7 +9,7 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 | M3 | addressed in current scope | DBU/HCl and two DIPEA source estimates checked; full-route signs remain conditional. |
 | M4 | open | Expanded geometries and downstream evaluations are incomplete; original two-pose results remain finite controls. |
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
-| M6 | addressed in current scope | Methods and twelve-pose SI table report these values; Nitro preference is distinguished from pending parity. |
+| M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
 | M7 | partial | Local raw-state replays and scoped fresh/relocated checks pass; public DOI, final metadata and wider configuration portability remain open. |
 | M8 | addressed in current scope | 48 references; 43 DOI identities and five non-DOI sources checked. Every benchmark study is cited, with source locations/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
@@ -27,10 +27,13 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 
 The [machine-readable audit](../results/validation/review_comment_audit_2026-10-26/current.json) binds the inspected sources by SHA-256. Its statuses concern the reviewer requests within the current declared scope; they are not a submission-readiness certificate.
 
-The 30 October revision integrates the sixty-state source-bound polymer replay
-and its finite sampling coverage into SI Sections 5.1 and 8.1. The main article
-now describes the component-specific sampling implication. All inherited and new
-values reconstruct before the 20-page main paper and 24-page SI build; changed
-pages were inspected separately. Twenty-five focused checks pass. The occupied
-sets remain incomplete, so M4 is still open; this revision does not close M1,
-public deposition under M7 or final submission readiness under M9.
+The current 30 October revision adds seven independently reviewed and physically
+reconstructed polymer states to the sixty retained states. Coverage is 67, with
+18/13 site-2 and 20/16 empty states across the two configurations. The sampling
+figure and discussion reflect the current minima; the earlier incomplete-set
+3.84 kJ/mol comparison is no longer the current conclusion. The SI also records
+the tested Nitro force-repeatability failure. All inherited and new quantitative
+claims reconstruct before the 20-page main paper and 24-page SI build.
+Thirty-four focused manuscript/replay checks pass. Occupied sets remain
+incomplete, so M4 is still open; this revision does not close M1, public deposition
+under M7 or final submission readiness under M9.
