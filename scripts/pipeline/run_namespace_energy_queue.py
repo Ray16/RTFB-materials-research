@@ -6,6 +6,7 @@ is a separate collector; a written energy never substitutes for native G.
 Uncertain submissions and stopped scientific attempts remain preserved.
 """
 import argparse
+from concurrent.futures import ThreadPoolExecutor
 import fcntl
 import importlib.util
 import json
@@ -74,6 +75,69 @@ def fits(spec, resources):
             (spec['maximum_host_RSS_GiB']+32)*2**30)
 
 
+def discover_slots(hosts):
+    """A failed node observation contributes no free GPUs and preserves peers."""
+    from redox.workflows.resources import GATE
+
+    def observe(host):
+        try:
+            result = subprocess.run([str(GATE), 'list', '--hosts', host],
+                                    capture_output=True, text=True, timeout=15, check=True)
+            rows = []
+            for line in result.stdout.splitlines():
+                fields = line.split()
+                if len(fields) != 2 or fields[0] != host or not fields[1].isdigit():
+                    raise ValueError('Unexpected reservation-gate availability response')
+                rows.append((host, int(fields[1])))
+            return rows, None
+        except (OSError, ValueError, subprocess.SubprocessError) as error:
+            return [], dict(host=host, error=repr(error), availability='unverified_no_submission')
+
+    with ThreadPoolExecutor(max_workers=max(1, len(hosts))) as pool:
+        observations = list(pool.map(observe, hosts))
+    return [slot for rows, _ in observations for slot in rows], [error for _, error in observations if error]
+
+
+def release_gate_contention(spec, output, alive):
+    """Release only this queue's proven gate refusal, never an uncertain start."""
+    from redox.validation.namespace_sources import NamespaceSources
+    case = Path(spec['attempt'])
+    claim = case/'dispatch_claim'
+    if not (claim/'owner.json').exists() or not (claim/'launch.json').exists():
+        return False
+    owner = json.loads((claim/'owner.json').read_text())
+    if owner.get('queue') != str(output):
+        return False
+    receipts = json.loads((claim/'launch.json').read_text())['receipts']
+    if len(receipts) != 1 or receipts[0]['status'] != 'controller_spawned_scientific_start_unverified':
+        return False
+    receipt = receipts[0]
+    placement = Path(receipt['argv'][receipt['argv'].index('--out')+1])
+    if not (placement/'completion.json').exists():
+        return False
+    result = json.loads((placement/'completion.json').read_text())
+    refusal = f'gpu_reserve: gpu{result["GPU"]} BUSY/reserved -> not running'
+    if (result.get('returncode') in (None, 0) or refusal not in (placement/'command.log').read_text().splitlines()
+            or (case/'residency_guard').exists() or (case/'experimental_energy').exists()
+            or NamespaceSources(spec).path(spec['original_raw_root']).exists()):
+        return False
+    owners = [receipt['owner'], dict(host=result['host'], pid=result['pid'], process_start=result['process_start'])]
+    try:
+        if any(alive(value) for value in owners):
+            return False
+    except (OSError, RuntimeError, ValueError, subprocess.SubprocessError):
+        return False
+    history = output/'gate_contention_history'/spec['key']/str(time.time_ns())
+    shutil.copytree(claim, history)
+    atomic_write_json(history/'resolution.json', dict(status='gate_refused_no_scientific_attempt',
+                      stopped_owners=owners, placement=str(placement), checked=time.time(),
+                      no_guard_or_scientific_outputs=True, inference_attempt_consumed=False))
+    for child in claim.iterdir():
+        child.unlink()
+    claim.rmdir()
+    return True
+
+
 def coordinate(manifest_path, output, interpreter, hours, resume):
     from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity, free_slots
     from redox.validation.namespace_sources import read_checked_review
@@ -122,6 +186,7 @@ def coordinate(manifest_path, output, interpreter, hours, resume):
                     if key in checked:
                         rows.append(checked[key])
                         continue
+                    release_gate_contention(spec, output, owner_checks.alive)
                     state, raw = inspect_state(spec, owner_checks.alive)
                     row = dict(key=key, spec=str(path), status=state)
                     if state == 'finished_review_pending' and (Path(spec['attempt'])/'independent_energy_review.json').exists():
@@ -162,7 +227,10 @@ def coordinate(manifest_path, output, interpreter, hours, resume):
                                                        'stopped_attempt_preserved') for r in rows):
                     record['status'] = 'energy_queue_terminal_native_G_separate'
                     return
-                for host, gpu in free_slots(config['hosts']):
+                slots, discovery_errors = discover_slots(config['hosts'])
+                record['availability_observation_errors'] = discovery_errors
+                atomic_write_json(status, record)
+                for host, gpu in slots:
                     if not pending:
                         break
                     if host in stopped_hosts or host in unsettled_hosts:

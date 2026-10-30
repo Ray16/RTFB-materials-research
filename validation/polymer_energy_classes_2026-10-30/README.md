@@ -34,6 +34,12 @@ A separate collector applies the unchanged independent electronic-energy audit
 on the source host after the worker and its residency guard close. Completion of
 an electronic state never supplies a missing DFT Hessian or nuclear partition.
 
+[Availability discovery and gate-contention recovery](discovery_recovery/README.md)
+preserve verified peer nodes when another observation times out. A gate refusal
+can be retried only after its exact producers are stopped and the absence of
+any scientific stage, guard or raw output is established. Existing scientific
+calculations are not reopened by a discovery timeout.
+
 Original geometry ownership is checked by exact host/PID/process-start identity.
 The remote query uses system Python and disables SSH connection multiplexing,
 so it requires neither a moved interpreter nor a writable control socket inside
