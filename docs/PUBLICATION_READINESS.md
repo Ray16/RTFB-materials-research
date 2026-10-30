@@ -25,9 +25,12 @@ Seven additional states now pass independent review and a second
 verifying 10,937 source bindings. The manuscript epoch contains 67 states: 20/16
 empty and 18/13 site-2 occupied states across the two backbone configurations.
 The [working native collection](../validation/native_working_collection_2026-10-30/README.md)
-adds five more independently reviewed and reconstructed states, bringing current
-coverage to 72: 20/18 empty and 18/16 site-2 states. The paper remains bound to its
-explicit 67-state snapshot while the complete sampling comparisons are pending.
+added five more independently reviewed and reconstructed states, reaching
+72: 20/18 empty and 18/16 site-2 states. Three further reconstructions now bring
+the [current census](../validation/polymer_empty_batches_2026-10-30/native_census.json)
+to 75, including forty empty states and a separate site-4 resource point.
+The paper remains bound to its explicit 67-state snapshot until the new
+component-specific comparison is integrated and rebuilt.
 Remaining occupied graphs and complete sampling comparisons are still required.
 The [remaining-graph energy roster](../validation/polymer_energy_classes_2026-10-30/README.md)
 now accounts for all 160 declared inputs in the other eight graph/configuration
@@ -61,12 +64,14 @@ separate from experimental chemical accuracy.
 
 ## Polymer completion standard
 
-The twenty-conformer empty-backbone analysis is at
-`results/validation/empty_chain_twenty_2026-10-27/` in the archive. For one
-configuration, expanding ranks 1–10 to 1–20 leaves the minimum E and G unchanged
-and changes the finite-set ensemble G by −1.03 kJ/mol. This meets the declared
-2 kJ/mol batch diagnostic **for that component only**. It does not complete the
-occupied cycles or prove global conformer convergence.
+The [two-configuration empty-backbone analysis](../validation/polymer_empty_batches_2026-10-30/README.md)
+now checks all forty native input states. Chirality-preserving heavy-atom
+comparisons identify 20 distinct structures for all same and 19 for alternating.
+At the primary settings, expanding inputs 1–10 to 1–20 changes the finite-set
+ensemble G by −1.03 and −1.23 kJ/mol, respectively. Minimum-E, minimum-G and
+ensemble-G changes meet the declared 2 kJ/mol criterion across all nine
+rotor/duplicate settings for both empty components. This does not complete the
+occupied cycles, remove the source-search limits or prove global convergence.
 
 Four checkpoint-recovery geometries passed independent geometry checks; their
 energy and thermochemistry follow-up must use explicit source relations.

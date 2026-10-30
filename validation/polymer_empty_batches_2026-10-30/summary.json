@@ -1,0 +1,52 @@
+{
+  "status": "two_empty_backbone_batches_meet_declared_finite_set_criterion",
+  "checked_empty_states": 40,
+  "first_count": 10,
+  "total_count": 20,
+  "temperature_K": 298.15,
+  "model": "separate smooth-surface acetonitrile control",
+  "global_ensemble_convergence_proven": false,
+  "occupied_ensemble_cycles_complete": false,
+  "primary_candidate_admission": false,
+  "analysis_sha256": "3b9e4c4e29403983a46b9f24ac13b30ef4b869e841b6d6e5c4ee71dcc77ce7a7",
+  "groups": [
+    {
+      "configuration": "all_same",
+      "checked_states": 20,
+      "unique_minima": 20,
+      "comparison_at_50_cm": {
+        "status": "within_protocol_batch_comparison",
+        "minimum_E_change_kJ_mol": 0.0,
+        "minimum_G_change_kJ_mol": 0.0,
+        "ensemble_G_change_kJ_mol": -1.0313810085632913,
+        "within_batch_tolerance": true,
+        "tolerance_kJ_mol": 2.0,
+        "global_ensemble_convergence_proven": false
+      },
+      "all_nine_settings_pass_batch_criterion": true,
+      "ensemble_change_range_kJ_mol": [
+        -1.0741350560542882,
+        -0.8488629409071313
+      ]
+    },
+    {
+      "configuration": "alternating",
+      "checked_states": 20,
+      "unique_minima": 19,
+      "comparison_at_50_cm": {
+        "status": "within_protocol_batch_comparison",
+        "minimum_E_change_kJ_mol": -0.20170438381941505,
+        "minimum_G_change_kJ_mol": 0.0,
+        "ensemble_G_change_kJ_mol": -1.231187392666226,
+        "within_batch_tolerance": true,
+        "tolerance_kJ_mol": 2.0,
+        "global_ensemble_convergence_proven": false
+      },
+      "all_nine_settings_pass_batch_criterion": true,
+      "ensemble_change_range_kJ_mol": [
+        -1.282496744007865,
+        -1.1347966746452416
+      ]
+    }
+  ]
+}
