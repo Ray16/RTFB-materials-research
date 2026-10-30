@@ -1,6 +1,6 @@
 # Publication readiness: acceptance criteria and current gaps
 
-As of 28 October 2026, **the workflow and manuscript are not submission ready**.
+As of 30 October 2026, **the workflow and manuscript are not submission ready**.
 The objective is to address the scientific review, validate the maintained
 workflow, and deliver a manuscript whose claims match its released evidence.
 Code cleanup, completed example calculations and presentation updates each
@@ -20,6 +20,11 @@ The maintained [native-state CPU replay](../validation/publication_native_replay
 now reconstructs sixty retained states and verifies 12,386 source bindings after
 explicit relocation. This closes a scoped post-refactor evidence-reading gap;
 it does not complete missing occupancy states or qualify current GPU execution.
+Seven additional states now pass independent review and a second
+[physical reconstruction](../validation/polymer_continuations_checked_2026-10-30/README.md),
+verifying 10,937 source bindings. The combined set contains 67 states: 20/16
+empty and 18/13 site-2 occupied states across the two backbone configurations.
+Remaining occupied graphs and complete sampling comparisons are still required.
 
 ## Scientific acceptance
 

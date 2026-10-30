@@ -16,6 +16,8 @@ from redox.properties.conformer_ensemble import EV_KJ_MOL
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--replay', type=Path, required=True)
+    p.add_argument('--continuation', type=Path,
+                   help='Additional independently reconstructed namespace states; no overlap permitted')
     p.add_argument('--out', type=Path, required=True)
     a = p.parse_args()
     data = json.loads(a.replay.read_text())
@@ -25,12 +27,35 @@ def main():
     for path, digest in data['producer_sha256'].items():
         if sha256_file(path) != digest:
             raise ValueError('Replay producer changed')
+    continuation = None
+    if a.continuation is not None:
+        continuation = json.loads(a.continuation.read_text())
+        if (continuation['status'] != 'namespace_native_physical_records_replayed'
+                or continuation['quantum_calculations_run']
+                or continuation['global_ensemble_convergence_proven']
+                or continuation['states'] != len(continuation['records'])):
+            raise ValueError('Checked finite continuation replay required')
+        for path, digest in continuation['producer_sha256'].items():
+            if sha256_file(path) != digest:
+                raise ValueError('Continuation replay producer changed')
+        data['records'] = data['records'] + continuation['records']
+    if (len({r['key'] for r in data['records']}) != len(data['records'])
+            or len({r['method_id'] for r in data['records']}) != 1):
+        raise ValueError('Distinct conformer identities at one solvent model required')
     plt.rcParams.update({'font.family': 'DejaVu Sans', 'font.size': 11,
                          'axes.spines.top': False, 'axes.spines.right': False,
                          'pdf.fonttype': 42, 'svg.fonttype': 'none'})
     fig, axes = plt.subplots(2, 2, figsize=(10.5, 6.8), sharex=True, sharey=True,
                              layout='constrained')
     summaries = []
+    ranges = []
+    for configuration in ('all_same', 'alternating'):
+        for sites in ([], [2]):
+            values = [r['G_by_cutoff_eV']['50'] for r in data['records']
+                      if r['configuration'] == configuration and r['occupied_sites'] == sites]
+            if values:
+                ranges.append((max(values)-min(values))*EV_KJ_MOL)
+    upper = max(15., max(ranges)*1.08)
     for i, configuration in enumerate(('all_same', 'alternating')):
         for j, sites in enumerate(([], [2])):
             ax = axes[i, j]
@@ -54,7 +79,7 @@ def main():
             name = 'Empty backbone' if not sites else 'Site 2 occupied'
             ax.set_title(f'{configuration.replace("_", " ")} · {name} ({len(rows)}/20)', loc='left', fontsize=12)
             ax.set_xlim(.5, 20.5)
-            ax.set_ylim(-1.8, 15)
+            ax.set_ylim(-1.8, upper)
             ax.set_xticks([1, 5, 10, 15, 20])
             ax.grid(axis='y', alpha=.12)
             if i == 1:
@@ -81,6 +106,8 @@ def main():
     atomic_write_json(a.out.with_suffix('.json'), dict(
         status='finite_checked_native_sampling_coverage', panels=summaries,
         source_replay=str(a.replay.resolve()), replay_sha256=sha256_file(a.replay),
+        continuation_replay=None if a.continuation is None else str(a.continuation.resolve()),
+        continuation_sha256=None if a.continuation is None else sha256_file(a.continuation),
         producer_sha256=sha256_file(Path(__file__)), outputs_sha256=outputs,
         model='alternate smooth-surface acetonitrile', temperature_K=298.15,
         rotor_cutoff_cm=50, global_convergence_proven=False,

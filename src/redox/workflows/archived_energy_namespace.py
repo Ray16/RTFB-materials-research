@@ -52,13 +52,19 @@ def probe(path):
 
 
 def validate_plan(plan, prior):
+    bound = plan['maximum_host_RSS_GiB']
+    task = plan['tasks'][0] if len(plan['tasks']) == 1 else {}
+    larger_declared_resource_pilot = (bound in (160, 240)
+        and plan.get('prospective_resource_pilot') is True
+        and task.get('candidate_id') == 'exp_phthalimide_control'
+        and task.get('role') == 'interaction_method_control; not synthesis admission')
     if (len(plan['tasks']) != 1 or (plan['tasks'][0]['charge'], plan['tasks'][0]['mult']) != (0, 1)
             or plan['experimental_model']['solvent'] != 'acetonitrile'
             or plan['execution_driver'] != str(prior/'scripts/pipeline/smooth_polymer_energy_bounded.py')
             or plan['native_G_computed'] is not False or plan['primary_candidate_admission'] is not False
             or not plan['energy_only_execution'] or plan['maximum_peak_GPU_MiB'] != 31744
             or not math.isfinite(plan['maximum_host_RSS_GiB'])
-            or not 80 < plan['maximum_host_RSS_GiB'] <= 128):
+            or not (80 < bound <= 128 or larger_declared_resource_pilot)):
         raise ValueError('Only the declared alternate-model neutral-singlet bounded hybrid energy is supported')
 
 

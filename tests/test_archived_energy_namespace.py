@@ -16,6 +16,18 @@ def test_predeclared_bounded_energy_class_retains_scope():
     validate_plan(plan(), Path('/old'))
 
 
+@pytest.mark.parametrize('bound', [160, 240])
+def test_larger_bounds_require_the_explicit_method_control_resource_pilot(bound):
+    row = plan()
+    row['maximum_host_RSS_GiB'] = bound
+    with pytest.raises(ValueError):
+        validate_plan(row, Path('/old'))
+    row['prospective_resource_pilot'] = True
+    row['tasks'][0].update(candidate_id='exp_phthalimide_control',
+                          role='interaction_method_control; not synthesis admission')
+    validate_plan(row, Path('/old'))
+
+
 @pytest.mark.parametrize('field,value', [('native_G_computed', True), ('primary_candidate_admission', True),
                                       ('maximum_host_RSS_GiB', float('nan')),
                                       ('maximum_host_RSS_GiB', 256.), ('energy_only_execution', False),
