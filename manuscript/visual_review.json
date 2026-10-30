@@ -2,34 +2,31 @@
   "status": "changed_pages_visually_reviewed",
   "documents": {
     "manuscript": {
-      "pdf_sha256": "717d4fd889d4c6a6755b9160eab9912d538956fd36ac165a1520d2e72f7ebd7d",
-      "pages": 20
+      "pages": 20,
+      "pdf_sha256": "7ed18f527034a97ed203821a5eb4a8749d1a1772dc02abb5e396b91c53c62f40"
     },
     "supporting_information": {
-      "pdf_sha256": "8c7d8044682e70b1bcbbd98eef4787d06c041ec4218fa5bb5188fefa37a6eb7a",
-      "pages": 24
+      "pages": 24,
+      "pdf_sha256": "08ef994fc91619b76107f9ec0223a556ce04ab83985493194a3e4ecca7d74fdb"
     }
   },
   "main_pages_reviewed": [
     12
   ],
   "SI_pages_reviewed": [
+    1,
     14,
     15,
-    20,
-    21
+    20
   ],
-  "render_root": "calcs/validation/paper_visual_2026-10-30_continuations",
-  "renderer": {
-    "module": "PyMuPDF",
-    "version": "1.28.2"
-  },
+  "render_root": "calcs/validation/paper_visual_2026-10-30_empty_backbones",
   "checks": [
-    "Current 67-state counts and early-input limits match the frozen reconstruction",
-    "Updated four-panel figure shows all checked points and missing-state markers",
-    "Primary-model cycles remain separate from the alternate-model sampling",
-    "Nitro failed repeatability bound is visible without claiming an implementation cause",
-    "Inspected pages have readable labels and no overlapping or clipped content"
+    "SI title matches the main paper",
+    "Generated numerical values agree with the independently reconstructed partitions",
+    "Both empty configurations and the 20/19 distinct structures are stated accurately",
+    "Figure settings ranges are distinguished from confidence intervals",
+    "Primary cycles and incomplete occupied ensembles remain separate",
+    "Changed pages have readable labels and no overlapping or clipped content"
   ],
   "whole_document_visual_review_performed": false,
   "submission_ready": false

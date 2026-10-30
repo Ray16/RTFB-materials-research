@@ -29,8 +29,8 @@ added five more independently reviewed and reconstructed states, reaching
 72: 20/18 empty and 18/16 site-2 states. Three further reconstructions now bring
 the [current census](../validation/polymer_empty_batches_2026-10-30/native_census.json)
 to 75, including forty empty states and a separate site-4 resource point.
-The paper remains bound to its explicit 67-state snapshot until the new
-component-specific comparison is integrated and rebuilt.
+The current paper integrates the component-specific empty-backbone comparison
+from the 75-state frozen evidence epoch; occupied ensembles remain incomplete.
 Remaining occupied graphs and complete sampling comparisons are still required.
 The [remaining-graph energy roster](../validation/polymer_energy_classes_2026-10-30/README.md)
 now accounts for all 160 declared inputs in the other eight graph/configuration

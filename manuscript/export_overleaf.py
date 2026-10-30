@@ -21,6 +21,41 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def export_dependencies(text, paper, root, evidence_directory, source_prefix, snapshot, destination, active=()):
+    figures = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", text)
+    for figure in figures:
+        source = (paper/figure).resolve()
+        if (not source.is_relative_to(root) or source.suffix != '.pdf'
+                or not (figure.startswith(source_prefix) or source.parent == evidence_directory)
+                or snapshot['snapshot_sha256'].get(str(source.relative_to(root))) != sha(source)):
+            raise ValueError('Figure is not bound by the current evidence snapshot')
+        existing = destination/'figures'/source.name
+        if existing.exists() and sha(existing) != sha(source):
+            raise ValueError('Different figure bytes share an export filename')
+        existing.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, existing)
+        text = text.replace(figure, 'figures/'+source.name)
+    for command, name in re.findall(r"\\(input|include)\{([^}]+)\}", text):
+        source = (paper/name).resolve()
+        if not source.suffix:
+            source = source.with_suffix('.tex')
+        if (source.parent != evidence_directory or source.suffix != '.tex'
+                or snapshot['snapshot_sha256'].get(str(source.relative_to(root))) != sha(source)):
+            raise ValueError('TeX input is not bound by the current evidence snapshot')
+        if source in active:
+            raise ValueError('Cyclic TeX input dependency')
+        child = export_dependencies(source.read_text(), paper, root, evidence_directory,
+                                    source_prefix, snapshot, destination, (*active, source))
+        target = destination/'inputs'/source.name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        if target.exists() and target.read_text() != child:
+            raise ValueError('Different TeX inputs share an export filename')
+        target.write_text(child)
+        exported = 'inputs/'+(source.stem if command == 'include' else source.name)
+        text = text.replace('\\'+command+'{'+name+'}', '\\'+command+'{'+exported+'}')
+    return text
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--destination", type=Path, default=ROOT.parent / "0_redox_overleaf")
@@ -52,25 +87,14 @@ def main():
         if sha(PAPER / (source_name + ".pdf")) != built["documents"][source_name]["pdf_sha256"]:
             raise ValueError("Document PDF differs from checked build: " + source_name)
         text = (PAPER / (source_name + ".tex")).read_text()
-        figures = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", text)
-        for figure in figures:
-            source = (PAPER / figure).resolve()
-            if (not source.is_relative_to(ROOT) or source.suffix != '.pdf'
-                    or not (figure.startswith(source_prefix) or source.parent == evidence_directory)
-                    or snapshot['snapshot_sha256'].get(str(source.relative_to(ROOT))) != sha(source)):
-                raise ValueError("Figure is not bound by the current evidence snapshot")
-            existing = destination / "figures" / source.name
-            if existing.exists() and sha(existing) != sha(source):
-                raise ValueError("Different figure bytes share an export filename")
-            shutil.copyfile(source, destination / "figures" / source.name)
-            text = text.replace(figure, "figures/" + source.name)
+        text = export_dependencies(text, PAPER, ROOT, evidence_directory, source_prefix, snapshot, destination)
         (destination / (exported_name + ".tex")).write_text(text)
     shutil.copyfile(PAPER / "references.bib", destination / "references.bib")
     shutil.copyfile(PAPER / "novelty_references.bib", destination / "novelty_references.bib")
     (destination / ".gitignore").write_text("*.aux\n*.bbl\n*.blg\n*.log\n*.out\n*.toc\n*.fls\n*.fdb_latexmk\n*.synctex.gz\nmain.pdf\n")
     (destination / "README.md").write_text(
         "# Redox polymer manuscript\n\nMain document: `main.tex`. Supporting Information: `supporting_information.tex`. Compiler: pdfLaTeX.\n\n"
-        "This is a working draft with explicit unfinished analyses. All required figures and bibliography are included.\n\n"
+        "This is a working draft with explicit unfinished analyses. Figures, bibliography and frozen numerical TeX inputs are included.\n\n"
         "The source and frozen computational evidence are maintained in the 0_redox project. "
         "Do not replace collaborators' edits with a fresh export: fetch and merge before each edit and push.\n")
     outputs = {str(p.relative_to(destination)): sha(p) for p in destination.rglob("*") if p.is_file()}

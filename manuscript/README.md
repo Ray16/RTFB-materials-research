@@ -6,37 +6,34 @@ Editable sources are [manuscript.tex](manuscript.tex),
 [supporting_information.tex](supporting_information.tex),
 [references.bib](references.bib) and [novelty_references.bib](novelty_references.bib).
 No Overleaf project is connected. A self-contained
-[upload ZIP](overleaf_upload_2026-10-30_polymer_continuations.zip) contains both documents,
-bibliographies and all required figure PDFs. Both exported documents compile with
+[upload ZIP](overleaf_upload_2026-10-30_empty_backbones.zip) contains both documents,
+bibliographies, required figures and frozen numerical TeX inputs. Both exported documents compile with
 text identical to their checked local counterparts; this does not claim upload
 or remote synchronization.
 
-The [current evidence snapshot](evidence/2026-10-30_polymer_continuations/manifest.json)
-preserves the preceding numerical evidence and adds the sixty-state polymer
-physical replay, seven additional reconstructed states and their finite sampling
-analysis. The primary benchmark, grafting
-and PMDI occupancy values remain at their original methods. New smooth-surface
-MeCN values are a separate phthalimide control and cannot replace primary-cycle
-components. SI Sections 5.1 and 8.1 report the observed sampling coverage and
-saved-record reconstruction. The main text explains their implication for
-component-specific convergence; it does not describe runtime history.
+The [current evidence snapshot](evidence/2026-10-30_empty_backbones/manifest.json)
+preserves the primary benchmark, grafting and PMDI occupancy evidence and adds
+the duplicate-aware empty-backbone comparison. Both configurations have twenty
+checked native inputs. Their 20/19 distinct structures give nominal 10-to-20
+ensemble changes of −1.03/−1.23 kJ/mol, and both meet the declared batch criterion
+across the nine rotor/duplicate settings. SI Sections 5.1 and 8.1 describe the
+scientific comparison and source reconstruction. These alternate-model controls
+do not replace primary-cycle components or establish global convergence.
 
-The occupied-state conformer sets remain incomplete. Coverage is now 67 states:
-20/16 empty and 18/13 site-2 states for the two backbone configurations.
-The current all-same site-2 minimum is early input 8; the alternating minimum
-is late input 17, with only four first-ten states checked. The earlier 3.84
-kJ/mol comparison belongs to the preceding incomplete snapshot and is not
-retained as the current conclusion. No complete-batch occupied convergence or
-global ensemble claim follows. All required candidate criteria,
-the public raw-data DOI and final author information remain open; this is a
-working draft, not a submission-ready paper.
+The evidence includes 75 reconstructed native states: forty empty, 18/16 site-2
+states and one separate site-4 resource point. Occupied ensembles and the complete
+material assessment remain unfinished. The public raw-data DOI and final author
+information also remain open; this is a working draft, not a submission-ready
+paper. The new numerical macros are generated from the checked results and
+frozen with their evidence, rather than hand-transcribed into the prose.
 
 Run `manuscript/build.py` with the redox interpreter, `PYTHONPATH=src`, and native
 CPU thread pools capped at one. It verifies frozen evidence and reconstructs
 reported arithmetic before building both PDFs. The new checker also rejects
 changed energy/coverage/configuration records, nonfinite frequencies, altered
-figure bytes and an unsupported global-convergence flag. Thirty-four focused
-checks pass, including nine current-coverage/backend tests. The SI also states
+figure bytes and an unsupported global-convergence flag. Sixty-eight focused
+checks pass, including duplicate/geometry, frozen-claim and self-contained export
+checks. The SI also states
 the tested Nitro force-repeatability failure rather than implying production
 qualification. [Compiler facts](build_check.json),
 [numerical checks](claim_check.json) and the
@@ -45,7 +42,7 @@ qualification. [Compiler facts](build_check.json),
 The restored workspace is deliberately small; the original manuscript history,
 bulk calculation records and earlier upload bundles remain in the archive
 identified by [restoration.json](restoration.json). The current figure snapshot
-is kept at `results/figures/manuscript/2026-10-30_polymer_continuations/`. Its twenty small
+is kept at `results/figures/manuscript/2026-10-30_empty_backbones/`. Its twenty small
 PDFs are versioned as publication inputs, separately from runtime results.
 Do not modify existing evidence snapshots; append a new snapshot for verified
 scientific additions. Once an Overleaf project is connected, pull/merge before

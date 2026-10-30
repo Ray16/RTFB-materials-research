@@ -7,11 +7,11 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 | M1 | partial | Exact PMDI finite cycle reported; converged ensembles and complete material/route criteria remain open. |
 | M2 | addressed in current scope | 39 endpoints and diagnostic controls reported; reference-error attribution and external NDI accuracy remain explicitly limited. |
 | M3 | addressed in current scope | DBU/HCl and two DIPEA source estimates checked; full-route signs remain conditional. |
-| M4 | open | Expanded geometries and downstream evaluations are incomplete; original two-pose results remain finite controls. |
+| M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
 | M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
 | M7 | partial | Local raw-state replays and scoped fresh/relocated checks pass; public DOI, final metadata and wider configuration portability remain open. |
-| M8 | addressed in current scope | 48 references; 43 DOI identities and five non-DOI sources checked. Every benchmark study is cited, with source locations/reference handling tabulated. |
+| M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024 and CREST 2020 are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
 | remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
 | m1 | addressed in current scope | Current immutable epoch and separately built PDFs replace stale reporting. |
@@ -27,13 +27,14 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 
 The [machine-readable audit](../results/validation/review_comment_audit_2026-10-26/current.json) binds the inspected sources by SHA-256. Its statuses concern the reviewer requests within the current declared scope; they are not a submission-readiness certificate.
 
-The current 30 October revision adds seven independently reviewed and physically
-reconstructed polymer states to the sixty retained states. Coverage is 67, with
-18/13 site-2 and 20/16 empty states across the two configurations. The sampling
-figure and discussion reflect the current minima; the earlier incomplete-set
-3.84 kJ/mol comparison is no longer the current conclusion. The SI also records
-the tested Nitro force-repeatability failure. All inherited and new quantitative
-claims reconstruct before the 20-page main paper and 24-page SI build.
-Thirty-four focused manuscript/replay checks pass. Occupied sets remain
-incomplete, so M4 is still open; this revision does not close M1, public deposition
-under M7 or final submission readiness under M9.
+The current 30 October revision integrates duplicate-aware empty-backbone
+partitions for both configurations. Forty native inputs yield 20/19 distinct
+structures and nominal ensemble changes of −1.03/−1.23 kJ/mol; all nine settings
+meet the declared finite-batch criterion. The frozen evidence includes 75
+reconstructed states, while occupied sets remain incomplete. An independent
+checker reconstructs grouping, partitions, settings comparisons and the LaTeX
+numerical macros. Sixty-eight focused checks pass. The 20-page paper and 24-page
+SI compile, and the revised pages are visually inspected. The self-contained
+upload also includes nested frozen numerical inputs and compiles with text
+identical to the checked documents. M4, complete candidate decisions under M1,
+public deposition under M7 and final submission readiness under M9 remain open.
