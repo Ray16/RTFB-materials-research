@@ -888,6 +888,10 @@ def audit():
     pointer = json.loads((root / "manuscript/evidence/current.json").read_text())
     folder = (root / pointer["manifest"]).parent
     load = lambda name: json.loads((folder / name).read_text())
+    replay = None
+    if (folder/'polymer_native_replay.json').exists():
+        from check_polymer_replay import audit as audit_polymer_replay
+        replay = audit_polymer_replay(folder)
     benchmark = load("benchmark.json")
     panel = load("benchmark_panel.json")
     rows = list(csv.DictReader((folder / "benchmark_points.csv").open()))
@@ -1143,7 +1147,7 @@ def audit():
                 or digest("review_package_data.json") != package["files_sha256"]["data/manifest.json"]
                 or package["code_commit"] != current["code_snapshot_commit"]):
             raise ValueError("Frozen reviewer inventory differs from the tested package")
-    return dict(status="numerical_snapshot_reconstructed", benchmark=dict(admitted=len(rows), target=len(targets),
+    return dict(status="numerical_snapshot_reconstructed", polymer_native_replay=replay, benchmark=dict(admitted=len(rows), target=len(targets),
                 molecules=len({r["id"] for r in rows}), studies=len({r["doi"] for r in rows}), **statistics),
                 base_assisted_values=base_values, dipea_experimental_anchor=dipea_experiment, dipea_uv_anchor=dipea_uv,
                 qualified_spacing_G=sum(r["G_eV"] is not None for r in cases.values()),

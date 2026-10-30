@@ -46,6 +46,7 @@ def main():
     destination.mkdir()
     (destination / "figures").mkdir()
     source_prefix = "../" + pointer["figures"] + "/"
+    evidence_directory = (ROOT / pointer["manifest"]).parent.resolve()
     document_names = {"manuscript": "main", "supporting_information": "supporting_information"}
     for source_name, exported_name in document_names.items():
         if sha(PAPER / (source_name + ".pdf")) != built["documents"][source_name]["pdf_sha256"]:
@@ -53,9 +54,14 @@ def main():
         text = (PAPER / (source_name + ".tex")).read_text()
         figures = re.findall(r"\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}", text)
         for figure in figures:
-            if not figure.startswith(source_prefix):
-                raise ValueError("Unexpected external figure path")
             source = (PAPER / figure).resolve()
+            if (not source.is_relative_to(ROOT) or source.suffix != '.pdf'
+                    or not (figure.startswith(source_prefix) or source.parent == evidence_directory)
+                    or snapshot['snapshot_sha256'].get(str(source.relative_to(ROOT))) != sha(source)):
+                raise ValueError("Figure is not bound by the current evidence snapshot")
+            existing = destination / "figures" / source.name
+            if existing.exists() and sha(existing) != sha(source):
+                raise ValueError("Different figure bytes share an export filename")
             shutil.copyfile(source, destination / "figures" / source.name)
             text = text.replace(figure, "figures/" + source.name)
         (destination / (exported_name + ".tex")).write_text(text)

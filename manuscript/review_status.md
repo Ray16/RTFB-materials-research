@@ -26,3 +26,11 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 | m10 | addressed in current scope | Initial seed/counts, one-configuration scope and xTB symmetry detection are explicit. |
 
 The [machine-readable audit](../results/validation/review_comment_audit_2026-10-26/current.json) binds the inspected sources by SHA-256. Its statuses concern the reviewer requests within the current declared scope; they are not a submission-readiness certificate.
+
+The 30 October revision integrates the sixty-state source-bound polymer replay
+and its finite sampling coverage into SI Sections 5.1 and 8.1. The main article
+now describes the component-specific sampling implication. All inherited and new
+values reconstruct before the 20-page main paper and 24-page SI build; changed
+pages were inspected separately. Twenty-five focused checks pass. The occupied
+sets remain incomplete, so M4 is still open; this revision does not close M1,
+public deposition under M7 or final submission readiness under M9.

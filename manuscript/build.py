@@ -47,7 +47,7 @@ def main():
         if shutil.which(program) is None:
             raise RuntimeError(f"Missing manuscript build program: {program}")
     source = {str(p.relative_to(ROOT)): sha(p) for p in
-              (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", Path(__file__), manifest, pointer)}
+              (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", Path(__file__), manifest, pointer)}
     # Keep compiler logs on durable project storage rather than node-local /tmp.
     # The root can be configured for an independently relocated checkout.
     build_root = Path(os.environ.get("REDOX_MANUSCRIPT_BUILD_ROOT",
