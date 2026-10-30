@@ -1,6 +1,6 @@
 # Current disposition of colleague review
 
-The manuscript remains a working draft. The main unfinished scientific work is the broader conformer/occupancy analysis and completion of the material assessment. Public deposition and the central legacy conversion constant also remain open.
+The manuscript remains a working draft. The main unfinished scientific work is the broader conformer/occupancy analysis and completion of the material assessment. Public deposition remains open. The maintained conversion factor now uses exact SI definitions, with historical evidence retained explicitly.
 
 | Comment | Status | Current disposition |
 | --- | --- | --- |
@@ -19,7 +19,7 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 | m3 | addressed in current scope | Actual conformers and exact occupancy construction appear in main/SI figures. |
 | m4 | addressed in current scope | Main text states the exact identity relationship. |
 | m5 | addressed in current scope | SI reports signed fragment terms, cancellations, 57–93 steps and 0.25–0.70 Å relaxation. |
-| m6 | partial | New SI analyses use the exact factor; the central historical compatibility constant still needs a controlled migration. |
+| m6 | addressed in maintained code | Central conversion now uses exact SI defining constants; 68 focused checks retain archived arithmetic without rewriting raw scientific records. |
 | m7 | addressed in current scope | Build emits compiler facts and requests a separate PDF-hash-bound visual record. |
 | m8 | addressed in current scope | Current chemical artwork and exact models replace status banners; no extra author-approval gate is inferred. |
 | m9 | addressed in current scope | Remaining evidence/decision terms are defined in an SI table. |

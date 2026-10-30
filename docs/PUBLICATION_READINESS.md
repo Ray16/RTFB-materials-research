@@ -35,10 +35,13 @@ it does not complete missing occupancy states or qualify current GPU execution.
 | M8: literature | Archived audit checks 48 references, including all seven benchmark studies | Preserve the checked bibliography and verify references in the final built manuscript. |
 | M9: publication narrative | Revised article/SI and a separate scientific presentation | Integrate final results into a coherent article; synchronize all tables, figures, evidence manifests, methods, limitations and data-availability statements. Build and inspect final PDFs. |
 
-The remaining minor conversion-constant item (m6) also needs a controlled
-migration: `src/redox/core/common.py` still uses the historical 96.485 kJ/mol/eV.
-New examples use the exact SI factor and label the historical comparison.
-Changing a constant must not silently invalidate existing source-bound evidence.
+The minor conversion-constant item (m6) is addressed for the maintained pipeline:
+`src/redox/core/common.py` now derives 96.48533212331002 kJ/mol/eV from the exact SI
+elementary charge and Avogadro constant. The historical 96.485 factor remains
+explicit for archived arithmetic; source-bound records are not rewritten.
+[Migration checks](../validation/energy_conversion_2026-10-30/README.md) include
+cached reaction sums and balanced conditional cycles. This units correction is
+separate from experimental chemical accuracy.
 
 ## Polymer completion standard
 

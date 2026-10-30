@@ -28,7 +28,10 @@ RESULTS = ROOT / "results"
 
 # --- Physical constants ---
 HARTREE_EV = 27.211386245988
-EV_KJ = 96.485            # eV -> kJ/mol
+ELEMENTARY_CHARGE_C = 1.602176634e-19  # exact SI definition
+AVOGADRO_PER_MOL = 6.02214076e23       # exact SI definition
+EV_KJ = ELEMENTARY_CHARGE_C * AVOGADRO_PER_MOL / 1000
+LEGACY_EV_KJ = 96.485  # explicit historical-record arithmetic only
 EV_MEV = 1000.0
 KT_EV = 0.0256926         # k_B * T at 298.15 K, in eV
 
