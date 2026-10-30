@@ -1,0 +1,76 @@
+{
+  "entries": [
+    {
+      "key": "alternating__occ_2__conf006",
+      "host": "lambda1",
+      "GPU": 4,
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_unstarted/alternating__occ_2__conf006/namespace.json",
+      "owner": {
+        "pid": 2185690,
+        "host": "lambda1",
+        "process_start": "562684456"
+      },
+      "argv": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "OMP_THREAD_LIMIT=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "XTB_THREADS=1",
+        "CUPY_CACHE_DIR=/tmp/cupy_kernel_cache",
+        "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.archived_native_namespace",
+        "launch",
+        "--spec",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_unstarted/alternating__occ_2__conf006/namespace.json",
+        "--gpu",
+        "4",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/unstarted_native_namespace_2026-10-30/alternating__occ_2__conf006/placement"
+      ],
+      "status": "controller_started_scientific_start_unverified"
+    },
+    {
+      "key": "alternating__occ_2__conf008",
+      "host": "lambda11",
+      "GPU": 0,
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_unstarted/alternating__occ_2__conf008/namespace.json",
+      "owner": {
+        "pid": 2645596,
+        "host": "lambda11",
+        "process_start": "1417724357"
+      },
+      "argv": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "OMP_THREAD_LIMIT=1",
+        "OPENBLAS_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "NUMEXPR_NUM_THREADS=1",
+        "XTB_THREADS=1",
+        "CUPY_CACHE_DIR=/tmp/cupy_kernel_cache",
+        "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+        "PATH=/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin:/usr/local/bin:/usr/bin:/bin",
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-m",
+        "redox.workflows.archived_native_namespace",
+        "launch",
+        "--spec",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_unstarted/alternating__occ_2__conf008/namespace.json",
+        "--gpu",
+        "0",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/unstarted_native_namespace_2026-10-30/alternating__occ_2__conf008/placement"
+      ],
+      "status": "controller_started_scientific_start_unverified"
+    }
+  ],
+  "prepared_but_not_submitted": [
+    "alternating__occ_2__conf009"
+  ],
+  "remaining_constraint": "Host RAM promises, not a GPU-worker cap",
+  "scientific_results_admitted": false
+}

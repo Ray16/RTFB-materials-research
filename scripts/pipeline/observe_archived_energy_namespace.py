@@ -11,6 +11,8 @@ from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.archived_energy_namespace import energy_mount
+from redox.workflows.host_local_review import command_for_host
+from redox.validation.namespace_sources import read_checked_review
 from observe_archived_native_namespace import alive
 
 
@@ -31,6 +33,8 @@ def main():
     proof = {path: sha256_file(path) for path in paths}
     for path in (Path(__file__).resolve(), ROOT/'src/redox/workflows/archived_energy_namespace.py',
                  ROOT/'src/redox/workflows/archived_native_namespace.py',
+                 ROOT/'src/redox/workflows/host_local_review.py',
+                 ROOT/'src/redox/validation/namespace_sources.py',
                  ROOT/'scripts/pipeline/observe_archived_native_namespace.py'):
         proof[str(path)] = sha256_file(path)
     record = dict(status='waiting_for_energy_and_closed_ownership', started=time.time(),
@@ -39,6 +43,7 @@ def main():
                              process_start=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19]),
                   native_G_admitted=False)
     done = {}
+    reviews_returned = set()
     while time.time() < record['deadline']:
         if any(sha256_file(path) != digest for path, digest in proof.items()):
             raise ValueError('Energy namespace changed')
@@ -68,19 +73,28 @@ def main():
                             prior = Path(spec['prior_root'])
                             profile = json.loads((Path(spec['archive'])/'environments/cutensor22/runtime.json').read_text())
                             target = case/'independent_energy_review.json'
-                            if target.exists():
-                                raise FileExistsError('Preserve previous independent review')
                             command = energy_mount(spec)+['env', 'PYTHONPATH='+str(prior/'src'), profile['python'],
                                 str(prior/'scripts/validation/review_smooth_polymer_energy.py'),
                                 '--campaign', spec['original_campaign'], '--out',
                                 str(Path(spec['original_campaign'])/'independent_energy_review.json')]
-                            with (a.out/(spec['key']+'_review.log')).open('x') as log:
-                                result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, timeout=300)
-                            row.update(status='energy_independently_reviewed' if result.returncode == 0
-                                       else 'energy_independent_review_failed_preserved', returncode=result.returncode)
-                            if result.returncode == 0:
-                                row.update(review=str(target), review_sha256=sha256_file(target))
-                            done[path] = row
+                            command = command_for_host(command, state['owner']['host'])
+                            if not target.exists() and path not in reviews_returned:
+                                with (a.out/(spec['key']+'_review.log')).open('x') as log:
+                                    result = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, timeout=300)
+                                if result.returncode:
+                                    row.update(status='energy_independent_review_failed_preserved', returncode=result.returncode)
+                                    done[path] = row
+                                    rows.append(row)
+                                    continue
+                                reviews_returned.add(path)
+                            try:
+                                report, binding = read_checked_review(path, 'energy')
+                            except FileNotFoundError:
+                                row['status'] = 'completed_energy_review_file_visibility_pending'
+                            else:
+                                row.update(status='energy_independently_reviewed', **binding,
+                                           E_smd_eV=report['E_smd_eV'])
+                                done[path] = row
             rows.append(row)
         record.update(updated=time.time(), entries=rows, terminal=len(done), expected=len(paths))
         atomic_write_json(a.out/'status.json', record)

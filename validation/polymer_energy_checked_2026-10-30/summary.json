@@ -1,0 +1,54 @@
+{
+  "status": "two_upstream_hybrid_energy_states_independently_checked_and_source_bound",
+  "checked_states": [
+    {
+      "key": "alternating__occ_none__conf010",
+      "E_smd_eV": -82892.87778837333,
+      "E_gas_eV": -82891.37583167962,
+      "peak_host_RSS_GiB": 80.4636459350586,
+      "observed_peak_GPU_MiB": 16900,
+      "binding": {
+        "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy/alternating__occ_none__conf010/namespace.json",
+        "key": "alternating__occ_none__conf010",
+        "status": "energy_independently_reviewed",
+        "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy/alternating__occ_none__conf010/campaign/independent_energy_review.json",
+        "review_sha256": "f05605792aedf1f0624287b5dfbf84ec43c0224f09808309d4c252eb76bd357b",
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy/alternating__occ_none__conf010/namespace.json",
+        "namespace_sha256": "e33f831308a7c60fc3eb803b1aee3a3d53ae0851a93b8cf72acad0e0c8d13de6",
+        "verified_bindings": 1520,
+        "original_source_hashes_preserved": true,
+        "E_smd_eV": -82892.87778837333
+      },
+      "review": "validation/polymer_energy_checked_2026-10-30/alternating__occ_none__conf010.json"
+    },
+    {
+      "key": "alternating__occ_none__conf019",
+      "E_smd_eV": -82892.89442995151,
+      "E_gas_eV": -82891.3841098107,
+      "peak_host_RSS_GiB": 80.67783737182617,
+      "observed_peak_GPU_MiB": 16934,
+      "binding": {
+        "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy/alternating__occ_none__conf019_attempt002/namespace.json",
+        "key": "alternating__occ_none__conf019",
+        "status": "energy_independently_reviewed",
+        "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy/alternating__occ_none__conf019_attempt002/campaign/independent_energy_review.json",
+        "review_sha256": "968e2d383771da17fcae2e9fc0ccea8f8582f672a8bc19cee298795ed8bc994a",
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy/alternating__occ_none__conf019_attempt002/namespace.json",
+        "namespace_sha256": "ebd50496a371b79262bab0682edbf0a9b204fa34b3e05a3583b36d405b27e218",
+        "verified_bindings": 1520,
+        "original_source_hashes_preserved": true,
+        "E_smd_eV": -82892.89442995151
+      },
+      "review": "validation/polymer_energy_checked_2026-10-30/alternating__occ_none__conf019.json"
+    }
+  ],
+  "physical_source_bindings_each": 1520,
+  "native_Hessian_or_G_qualified": false,
+  "experimental_accuracy_inferred": false,
+  "collector_source_sha256": {
+    "src/redox/validation/namespace_sources.py": "1e4cc0bd3dca19c1b3a7e1fda447bfa8fddf12b15465c69324085a7d058197b6",
+    "src/redox/workflows/host_local_review.py": "154f69f9f98ab6f4a8f37f1ef28ebde4aecc1bb2f7dee7fdb5d9746332679609",
+    "scripts/pipeline/observe_archived_energy_namespace.py": "4e397520ff2b9e52a62b39b5d4008d1d817823c09ac92c3a1afd2a0a59124528"
+  },
+  "scope": "Two previously missing alternating empty-backbone electronic states in separate smooth-surface MeCN model; native follow-up still required"
+}

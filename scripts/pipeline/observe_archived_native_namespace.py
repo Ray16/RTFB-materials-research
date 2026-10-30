@@ -12,6 +12,8 @@ from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.archived_native_namespace import mount_command, verify_spec
+from redox.workflows.host_local_review import command_for_host
+from redox.validation.namespace_sources import read_checked_review
 
 
 def alive(owner):
@@ -47,13 +49,18 @@ def main():
     hashes = {path: sha256_file(path) for path in specs}
     frozen = {str(Path(__file__).resolve()): sha256_file(Path(__file__)),
               str(ROOT/'src/redox/workflows/archived_native_namespace.py'):
-                  sha256_file(ROOT/'src/redox/workflows/archived_native_namespace.py')}
+                  sha256_file(ROOT/'src/redox/workflows/archived_native_namespace.py'),
+              str(ROOT/'src/redox/workflows/host_local_review.py'):
+                  sha256_file(ROOT/'src/redox/workflows/host_local_review.py'),
+              str(ROOT/'src/redox/validation/namespace_sources.py'):
+                  sha256_file(ROOT/'src/redox/validation/namespace_sources.py')}
     result = dict(status='waiting_for_finished_native_states_and_closed_ownership', started=time.time(),
                   owner=dict(host=os.uname().nodename, pid=os.getpid(),
                              process_start=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19]),
                   deadline=time.time()+a.hours*3600, source_sha256=frozen, specs_sha256=hashes,
                   completed_native_G_inferred_from_launch=False)
     done = {}
+    reviews_returned = set()
     while time.time() < result['deadline']:
         if any(sha256_file(path) != digest for path, digest in {**frozen, **hashes}.items()):
             raise ValueError('Observer source or namespace changed')
@@ -83,23 +90,30 @@ def main():
                             prior = Path(spec['prior_root'])
                             profile = json.loads((Path(spec['archive'])/'environments/cutensor22/runtime.json').read_text())
                             review = actual/'independent_native_review.json'
-                            if review.exists():
-                                raise FileExistsError('Preserve existing independent review; inspect before reuse')
                             command = mount_command(spec)+['env', 'PYTHONPATH='+str(prior/'src'),
                                 profile['python'], str(prior/'scripts/validation/review_smooth_polymer_native.py'),
                                 '--campaign', spec['original_campaign'], '--out',
                                 str(Path(spec['original_campaign'])/'independent_native_review.json')]
-                            with (a.out/(spec['key']+'_review.log')).open('x') as log:
-                                completed = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, timeout=300)
-                            if completed.returncode:
-                                row.update(status='independent_review_failed_preserved', returncode=completed.returncode)
+                            probe = json.loads(Path(path).with_name('namespace_probe.json').read_text())
+                            command[0] = probe.get('namespace_binary', {}).get('path', command[0])
+                            command = command_for_host(command, state['owner']['host'])
+                            if not review.exists() and path not in reviews_returned:
+                                with (a.out/(spec['key']+'_review.log')).open('x') as log:
+                                    completed = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, timeout=300)
+                                if completed.returncode:
+                                    row.update(status='independent_review_failed_preserved', returncode=completed.returncode)
+                                    done[path] = row
+                                    rows.append(row)
+                                    continue
+                                reviews_returned.add(path)
+                            try:
+                                report, binding = read_checked_review(path, 'native')
+                            except FileNotFoundError:
+                                row['status'] = 'completed_review_file_visibility_pending'
                             else:
-                                report = json.loads(review.read_text())
-                                if report['status'] != 'alternate_native_state_independently_reconstructed':
-                                    raise ValueError('Unexpected independent review scope')
                                 row.update(status='native_state_independently_checked_under_declared_namespace',
-                                           review=str(review), review_sha256=sha256_file(review), G_eV=report['G_eV'])
-                            done[path] = row
+                                           **binding, G_eV=report['G_eV'])
+                                done[path] = row
             rows.append(row)
         result.update(updated=time.time(), entries=rows, terminal=len(done), expected=len(specs))
         atomic_write_json(a.out/'status.json', result)
