@@ -20,20 +20,23 @@ from redox.validation.archived_sources import ArchivedSources
 from redox.workflows import archived_energy_namespace as base
 
 
-def validate_measured(plan, prior, archive):
-    if (len(plan['tasks']) != 1 or plan['maximum_host_RSS_GiB'] != 160
+def validate_measured(plan, prior, archive, *, source_reader=None):
+    bound = plan['maximum_host_RSS_GiB']
+    if (len(plan['tasks']) != 1 or bound not in (160, 240)
             or plan.get('prospective_resource_pilot') is not False
             or plan['execution_driver'] != str(prior/'scripts/pipeline/smooth_polymer_energy_bounded.py')
             or plan['native_G_computed'] is not False or plan['primary_candidate_admission'] is not False
             or not plan['energy_only_execution'] or plan['maximum_peak_GPU_MiB'] != 31744
             or plan['experimental_model']['solvent'] != 'acetonitrile'):
-        raise ValueError('Only the predeclared 160-GiB measured neutral-control successor is supported')
+        raise ValueError('Only the declared 160/240-GiB measured neutral-control classes are supported')
     task = plan['tasks'][0]
     if ((task['charge'], task['mult']) != (0, 1)
             or task.get('candidate_id') != 'exp_phthalimide_control'
             or task.get('role') != 'interaction_method_control; not synthesis admission'):
         raise ValueError('Exact neutral-singlet method-control scope required')
-    reader = ArchivedSources(prior, archive, relative_to_prior=True)
+    reader = source_reader or ArchivedSources(prior, archive, relative_to_prior=True)
+    if str(reader.prior) != str(prior) or reader.archive != archive.resolve():
+        raise ValueError('Resource source reader has different declared checkout roots')
     reader.verify_all(plan['producer_sha256'])
     reader.verify_all(plan['input_sha256'])
     reference_path = plan['electronic_RAM_class_review']
@@ -41,12 +44,19 @@ def validate_measured(plan, prior, archive):
         raise ValueError('Measured resource review is not bound by the exact plan')
     witness = json.loads(reader.verify(reference_path, plan['input_sha256'][reference_path]).read_text())
     reader.verify_all(witness['source_sha256'])
+    point_path = str(Path(plan['measured_alternate_model_electronic_reference'])/'plan.json')
+    if point_path not in plan['input_sha256']:
+        raise ValueError('Measured reference plan is not bound by the successor')
+    point = json.loads(reader.verify(point_path, plan['input_sha256'][point_path]).read_text())
+    if (any(plan[name] != point[name] for name in ('quantum_settings', 'runtime_profile', 'experimental_model'))
+            or not bound <= point['maximum_host_RSS_GiB']):
+        raise ValueError('Reference numerical settings/runtime or resource ceiling differs')
     if (witness['status'] != 'alternate_electronic_geometry_and_resource_checked_native_G_pending'
             or witness['native_Hessian_or_G_qualified'] or witness['primary_candidate_admission']
             or witness['portable_method_id'] != plan['experimental_method_id']
             or witness['experimental_model'] != plan['experimental_model']
             or witness['campaign'] != plan['measured_alternate_model_electronic_reference']
-            or not 0 < witness['peak_host_RSS_bytes']*1.25 <= 160*2**30
+            or not 0 < witness['peak_host_RSS_bytes']*1.25 <= bound*2**30
             or not 0 < witness['observed_peak_GPU_MiB'] <= 31744):
         raise ValueError('Measured electronic resource witness differs or lacks required headroom')
     other = witness['task']
@@ -57,7 +67,7 @@ def validate_measured(plan, prior, archive):
         raise ValueError('Resource witness has a different constitution')
     reader.recheck()
     return dict(resource_review=reference_path, resource_review_sha256=plan['input_sha256'][reference_path],
-                measured_peak_GiB=witness['peak_host_RSS_bytes']/2**30, bound_GiB=160,
+                measured_peak_GiB=witness['peak_host_RSS_bytes']/2**30, bound_GiB=bound,
                 source_bindings=len(reader.receipts), resource_budget_only_no_energy_transferred=True)
 
 

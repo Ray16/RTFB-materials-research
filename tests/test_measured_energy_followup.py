@@ -27,13 +27,20 @@ def fixture(tmp_path, *, peak=100, witness_atoms=105):
                    observed_peak_GPU_MiB=20000, task=dict(task, atoms=witness_atoms), source_sha256=sources)
     path = archive/'review.json'
     path.write_text(json.dumps(witness))
+    reference = archive/'reference'
+    reference.mkdir()
+    point = dict(quantum_settings={'max_opt_steps': 400}, runtime_profile='/old/runtime.json',
+                 experimental_model=dict(solvent='acetonitrile'), maximum_host_RSS_GiB=240)
+    (reference/'plan.json').write_text(json.dumps(point))
     plan = dict(tasks=[task], maximum_host_RSS_GiB=160, prospective_resource_pilot=False,
                 execution_driver='/old/scripts/pipeline/smooth_polymer_energy_bounded.py',
                 native_G_computed=False, primary_candidate_admission=False, energy_only_execution=True,
                 maximum_peak_GPU_MiB=31744, experimental_model=dict(solvent='acetonitrile'),
                 experimental_method_id='model', electronic_RAM_class_review='/old/review.json',
                 measured_alternate_model_electronic_reference='/old/reference', producer_sha256=sources,
-                input_sha256={'/old/review.json': hashlib.sha256(path.read_bytes()).hexdigest()})
+                quantum_settings=point['quantum_settings'], runtime_profile=point['runtime_profile'],
+                input_sha256={'/old/review.json': hashlib.sha256(path.read_bytes()).hexdigest(),
+                              '/old/reference/plan.json': hashlib.sha256((reference/'plan.json').read_bytes()).hexdigest()})
     return plan, archive
 
 
@@ -56,4 +63,19 @@ def test_changed_reference_bytes_cannot_authorize_successor(tmp_path):
     plan, archive = fixture(tmp_path)
     (archive/'review.json').write_text('{}')
     with pytest.raises(ValueError, match='differs'):
+        module.validate_measured(plan, Path('/old'), archive)
+
+
+def test_pair_class_uses_its_declared_240_gib_bound(tmp_path):
+    plan, archive = fixture(tmp_path, peak=166)
+    plan['maximum_host_RSS_GiB'] = 240
+    assert module.validate_measured(plan, Path('/old'), archive)['bound_GiB'] == 240
+
+
+@pytest.mark.parametrize('field,value', [('quantum_settings', {'max_opt_steps': 20}),
+                                      ('runtime_profile', '/another/runtime.json')])
+def test_method_or_runtime_change_cannot_inherit_resource_class(tmp_path, field, value):
+    plan, archive = fixture(tmp_path)
+    plan[field] = value
+    with pytest.raises(ValueError, match='settings/runtime'):
         module.validate_measured(plan, Path('/old'), archive)

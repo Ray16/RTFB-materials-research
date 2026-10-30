@@ -1,0 +1,241 @@
+{
+  "observed": 1793389309.1686208,
+  "hosts": {
+    "lambda1": {
+      "states": [
+        {
+          "key": "all_same__occ_2_4__conf002",
+          "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy_classes/pair24/namespaces/all_same__occ_2_4__conf002/namespace.json",
+          "owner": {
+            "host": "lambda1",
+            "pid": 2457942,
+            "process_start": "563903264"
+          },
+          "stage": "experimental_hybrid_energy_resource_pilot_running",
+          "owner_live": true,
+          "CPU_affinity": [
+            3,
+            4
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU_visibility": "0",
+          "guard": {
+            "host": "lambda1",
+            "pid": 2457942,
+            "process_start": "563903264",
+            "GPU": 0,
+            "CPU_affinity": [
+              3,
+              4
+            ],
+            "started": 1793388856.8957975,
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+            "foreign_processes_signaled": false
+          },
+          "host_guard": {
+            "pid": 2457942,
+            "process_start": 1793388856.64,
+            "host": "lambda1",
+            "CPU_affinity": [
+              3,
+              4
+            ],
+            "started": 1793388857.0665798,
+            "maximum_RSS_GiB": 240.0,
+            "minimum_free_GiB": 32.0,
+            "peak_RSS_bytes": 185400954880,
+            "status": "running",
+            "signal_target": "this owned process only",
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "RSS_bytes": 185391456256,
+            "free_RAM_bytes": 210555817984,
+            "checked": 1793389307.5404468
+          }
+        },
+        {
+          "key": "all_same__occ_3__conf002",
+          "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy_classes/site3_checked_reviews/namespaces/all_same__occ_3__conf002/namespace.json",
+          "owner": {
+            "host": "lambda1",
+            "pid": 2459037,
+            "process_start": "563908648"
+          },
+          "stage": "experimental_hybrid_energy_resource_pilot_running",
+          "owner_live": true,
+          "CPU_affinity": [
+            2,
+            5
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU_visibility": "1",
+          "guard": {
+            "host": "lambda1",
+            "pid": 2459037,
+            "process_start": "563908648",
+            "GPU": 1,
+            "CPU_affinity": [
+              2,
+              5
+            ],
+            "started": 1793388910.735946,
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+            "foreign_processes_signaled": false
+          },
+          "host_guard": {
+            "pid": 2459037,
+            "process_start": 1793388910.48,
+            "host": "lambda1",
+            "CPU_affinity": [
+              2,
+              5
+            ],
+            "started": 1793388910.88917,
+            "maximum_RSS_GiB": 160.0,
+            "minimum_free_GiB": 32.0,
+            "peak_RSS_bytes": 123350052864,
+            "status": "running",
+            "signal_target": "this owned process only",
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "RSS_bytes": 123259232256,
+            "free_RAM_bytes": 210555871232,
+            "checked": 1793389306.2584617
+          }
+        }
+      ],
+      "GPU_residents": "2457942, GPU-54527752-20db-dbfe-f13c-c14b1f7d3716, 16910\n2459037, GPU-acfb23c0-7163-580e-11cd-370e35867833, 16380\n"
+    },
+    "lambda4": {
+      "states": [
+        {
+          "key": "all_same__occ_2_3__conf002",
+          "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy_classes/pair23/namespaces/all_same__occ_2_3__conf002/namespace.json",
+          "owner": {
+            "host": "lambda4",
+            "pid": 349654,
+            "process_start": "24425678"
+          },
+          "stage": "experimental_hybrid_energy_resource_pilot_running",
+          "owner_live": true,
+          "CPU_affinity": [
+            0,
+            1
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU_visibility": "0",
+          "guard": {
+            "host": "lambda4",
+            "pid": 349654,
+            "process_start": "24425678",
+            "GPU": 0,
+            "CPU_affinity": [
+              0,
+              1
+            ],
+            "started": 1793387955.5369263,
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+            "foreign_processes_signaled": false
+          },
+          "host_guard": {
+            "pid": 349654,
+            "process_start": 1793387954.78,
+            "host": "lambda4",
+            "CPU_affinity": [
+              0,
+              1
+            ],
+            "started": 1793387955.7262905,
+            "maximum_RSS_GiB": 240.0,
+            "minimum_free_GiB": 32.0,
+            "peak_RSS_bytes": 170709245952,
+            "status": "running",
+            "signal_target": "this owned process only",
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "RSS_bytes": 166521057280,
+            "free_RAM_bytes": 228565651456,
+            "checked": 1793389305.3230135
+          }
+        },
+        {
+          "key": "all_same__occ_4__conf003",
+          "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy_classes/site4/namespaces/all_same__occ_4__conf003/namespace.json",
+          "owner": {
+            "host": "lambda4",
+            "pid": 373695,
+            "process_start": "24541080"
+          },
+          "stage": "experimental_hybrid_energy_resource_pilot_running",
+          "owner_live": true,
+          "CPU_affinity": [
+            2,
+            3
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "MKL_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU_visibility": "1",
+          "guard": {
+            "host": "lambda4",
+            "pid": 373695,
+            "process_start": "24541080",
+            "GPU": 1,
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "started": 1793389109.5587256,
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+            "foreign_processes_signaled": false
+          },
+          "host_guard": {
+            "pid": 373695,
+            "process_start": 1793389108.8,
+            "host": "lambda4",
+            "CPU_affinity": [
+              2,
+              3
+            ],
+            "started": 1793389109.7357755,
+            "maximum_RSS_GiB": 160.0,
+            "minimum_free_GiB": 32.0,
+            "peak_RSS_bytes": 124220899328,
+            "status": "running",
+            "signal_target": "this owned process only",
+            "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "RSS_bytes": 124220899328,
+            "free_RAM_bytes": 228565929984,
+            "checked": 1793389305.9468355
+          }
+        }
+      ],
+      "GPU_residents": "349654, GPU-49ab60bc-b8e1-e031-8966-b947648e9330, 2762\n373695, GPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 12754\n"
+    }
+  },
+  "completed_energies_inferred": false,
+  "native_G_computed": false
+}

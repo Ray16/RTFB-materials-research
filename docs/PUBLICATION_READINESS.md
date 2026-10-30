@@ -22,9 +22,20 @@ explicit relocation. This closes a scoped post-refactor evidence-reading gap;
 it does not complete missing occupancy states or qualify current GPU execution.
 Seven additional states now pass independent review and a second
 [physical reconstruction](../validation/polymer_continuations_checked_2026-10-30/README.md),
-verifying 10,937 source bindings. The combined set contains 67 states: 20/16
+verifying 10,937 source bindings. The manuscript epoch contains 67 states: 20/16
 empty and 18/13 site-2 occupied states across the two backbone configurations.
+The [working native collection](../validation/native_working_collection_2026-10-30/README.md)
+adds five more independently reviewed and reconstructed states, bringing current
+coverage to 72: 20/18 empty and 18/16 site-2 states. The paper remains bound to its
+explicit 67-state snapshot while the complete sampling comparisons are pending.
 Remaining occupied graphs and complete sampling comparisons are still required.
+The [remaining-graph energy roster](../validation/polymer_energy_classes_2026-10-30/README.md)
+now accounts for all 160 declared inputs in the other eight graph/configuration
+groups: 156 prepared energy jobs and four identical checked references. Six
+geometry recoveries have explicit source relations. This closes the dependency
+preparation gap, not the outstanding electronic/native calculations or ensemble
+validation. A resumable resource-aware dispatcher and separate physical-review
+collector carry those prepared states forward.
 
 ## Scientific acceptance
 

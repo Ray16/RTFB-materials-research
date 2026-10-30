@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Preflight and launch explicit archived-native placements, preserving receipts.
+"""Preflight explicit source-bound namespace placements, preserving receipts.
 
 GPU leases and CPU/RAM allocation are acquired by the remote namespace launcher.
 One host's dependency error stops further placements on that host. This script
@@ -23,7 +23,11 @@ CAPS = ('OMP_NUM_THREADS', 'OMP_THREAD_LIMIT', 'OPENBLAS_NUM_THREADS',
         'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS', 'XTB_THREADS')
 
 
-def launch_host(host, entries, destination, interpreter):
+def launch_host(host, entries, destination, interpreter, stage='native'):
+    module = ('redox.workflows.archived_native_namespace' if stage == 'native'
+              else 'redox.workflows.derived_energy_namespace')
+    expected_status = ('original_path_namespace_hashes_match' if stage == 'native'
+                       else 'original_path_energy_namespace_hashes_match')
     rows = []
     for entry in entries:
         case = destination/entry['key']
@@ -35,7 +39,7 @@ def launch_host(host, entries, destination, interpreter):
                 raise ValueError('Absolute declared namespace-binary directory required')
             prefix += ['PATH='+str(directory)+':/usr/local/bin:/usr/bin:/bin']
         prefix += [interpreter]
-        probe = prefix+['-m', 'redox.workflows.archived_native_namespace', 'probe', '--spec', entry['spec']]
+        probe = prefix+['-m', module, 'probe', '--spec', entry['spec']]
         response = subprocess.run(['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8', host,
                                    shlex.join(probe)], capture_output=True, text=True, timeout=240)
         (case/'preflight_stdout.txt').write_text(response.stdout)
@@ -45,9 +49,9 @@ def launch_host(host, entries, destination, interpreter):
                              returncode=response.returncode))
             break
         preflight = json.loads(response.stdout)
-        if preflight['host'] != host or preflight['status'] != 'original_path_namespace_hashes_match':
+        if preflight['host'] != host or preflight['status'] != expected_status:
             raise ValueError('Preflight node or source identity differs')
-        argv = prefix+['-m', 'redox.workflows.archived_native_namespace', 'launch', '--spec', entry['spec'],
+        argv = prefix+['-m', module, 'launch', '--spec', entry['spec'],
                        '--gpu', str(entry['gpu']), '--out', str(case/'placement')]
         code = ('import json,os,subprocess,pathlib; '
                 'p=pathlib.Path('+repr(str(case/'controller.log'))+'); '
@@ -73,6 +77,7 @@ def main():
     p.add_argument('--placements', type=Path, required=True)
     p.add_argument('--out', type=Path, required=True)
     p.add_argument('--python', required=True)
+    p.add_argument('--stage', choices=('native', 'measured-energy'), default='native')
     a = p.parse_args()
     from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity
     with allocation_guard():
@@ -90,14 +95,19 @@ def main():
     source = {str(path): sha256_file(path) for path in
               (Path(__file__).resolve(), a.placements.resolve(), policy,
                ROOT/'src/redox/workflows/archived_native_namespace.py')}
+    if a.stage == 'measured-energy':
+        for path in (ROOT/'src/redox/workflows/derived_energy_namespace.py',
+                     ROOT/'scripts/pipeline/run_measured_energy_followup.py'):
+            source[str(path)] = sha256_file(path)
     hosts = sorted({r['host'] for r in rows})
     with ThreadPoolExecutor(max_workers=len(hosts)) as pool:
         futures = [pool.submit(launch_host, h, [r for r in rows if r['host'] == h],
-                               a.out.resolve(), a.python) for h in hosts]
+                               a.out.resolve(), a.python, a.stage) for h in hosts]
         result = [row for future in futures for row in future.result()]
     if any(sha256_file(path) != digest for path, digest in source.items()):
         raise ValueError('Placement inputs changed during submission; inspect retained receipts')
-    atomic_write_json(a.out/'summary.json', dict(status='explicit_native_placements_submitted_review_pending',
+    atomic_write_json(a.out/'summary.json', dict(status='explicit_namespace_placements_submitted_review_pending',
+                                               stage=a.stage,
                                                entries=result, source_sha256=source,
                                                actual_scientific_starts_verified=False,
                                                completed_native_free_energies_verified=False))
