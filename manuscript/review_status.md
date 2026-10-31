@@ -66,3 +66,12 @@ the next scientific paper revision; it does not supply missing viologen native
 thermochemistry or complete M1. A separately checked occupied-conformer
 40-GiB pilot advances M4 without completing its occupied ensembles or changing
 the paper's existing 75-state snapshot.
+
+The maintained dispatcher now applies the checked 40-GiB outer guard only to
+matching pending neutral tasks and retains the original numerical protocol and
+inner guard. Two additional V100 calculations have actual SCF/gradient checkpoints;
+their native qualification remains pending. The completed pilot reconstructs
+through the new dispatcher review path. This execution work supports completion
+of M4; it neither establishes occupied-ensemble convergence nor changes the
+article's frozen numerical results. See
+`validation/native_profile_dispatch_2026-10-30/` for the checked scope.

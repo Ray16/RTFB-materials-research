@@ -2,7 +2,8 @@
 """Dispatch prepared native states and independently review completed records.
 
 The growing preparation stream is restricted to a frozen electronic cohort.
-Every scientific worker retains the original 80-GiB guard and numerical gates.
+Every scientific worker retains the original inner guard and numerical gates.
+Optional matched-class profiles add a prospectively tested stricter outer guard.
 Existing externally owned namespaces are observed separately, never relaunched.
 """
 import argparse
@@ -24,6 +25,7 @@ from redox.workflows.archived_native_namespace import verify_spec
 from redox.workflows.derived_native_namespace import namespace_command
 from redox.workflows.host_local_review import command_for_host
 from redox.workflows.submission_refusal import release_prelaunch_refusal
+from redox.workflows.native_resource_profiles import MatchedNativeProfiles,first_fitting,output_room
 
 
 def load(path, name):
@@ -94,21 +96,50 @@ def physical_review(path, spec, output, alive):
         if log_path.exists():
             return None
         profile = json.loads((Path(spec['archive'])/'environments/cutensor22/runtime.json').read_text())
-        command = namespace_command(spec)
-        command[0] = str(ROOT.parent/'redox_polymer_continuations/runtime/bin/bwrap')
-        command += ['env', 'PYTHONPATH='+spec['prior_root']+'/src', profile['python'],
-                    spec['prior_root']+'/scripts/validation/review_smooth_polymer_native.py',
-                    '--campaign', spec['original_campaign'], '--out',
-                    spec['original_campaign']+'/independent_native_review.json']
+        execution=case/'effective_execution.json'
+        if execution.exists():
+            from redox.workflows.effective_native_namespace import verify,mount
+            wrapped=json.loads(execution.read_text());profile_path=Path(wrapped['profile'])
+            resource_profile,checked_spec=verify(profile_path)
+            if checked_spec!=spec or sha256_file(profile_path)!=wrapped['profile_sha256']:
+                raise ValueError('Wrapped execution has a different native namespace/profile')
+            snapshot=profile_path.parent/'qc_sources'/str(time.time_ns())/'review_effective_native.py'
+            snapshot.parent.mkdir(parents=True)
+            shutil.copyfile(ROOT/'scripts/validation/review_effective_native.py',snapshot)
+            command=mount(resource_profile,spec)+['env','PYTHONPATH='+spec['prior_root']+'/src',
+                profile['python'],str(snapshot),'--campaign',spec['original_campaign'],
+                '--profile',str(profile_path),'--out',spec['original_campaign']+'/independent_native_review.json']
+        else:
+            command = namespace_command(spec)
+            command[0] = str(ROOT.parent/'redox_polymer_continuations/runtime/bin/bwrap')
+            command += ['env', 'PYTHONPATH='+spec['prior_root']+'/src', profile['python'],
+                        spec['prior_root']+'/scripts/validation/review_smooth_polymer_native.py',
+                        '--campaign', spec['original_campaign'], '--out',
+                        spec['original_campaign']+'/independent_native_review.json']
         command = command_for_host(command, state['owner']['host'])
         with log_path.open('x') as log:
             completed = subprocess.run(command, stdout=log, stderr=subprocess.STDOUT, timeout=300)
         if completed.returncode:
             raise ValueError('Independent native review failed; original attempt preserved')
-    return read_checked_review(path, 'native')
+    checked,binding=read_checked_review(path,'native')
+    execution=case/'effective_execution.json'
+    if execution.exists():
+        from redox.workflows.effective_native_namespace import review
+        profile_path=Path(json.loads(execution.read_text())['profile'])
+        resource_path=case/'effective_resource_review.json'
+        if not resource_path.exists():review(profile_path,resource_path)
+        resource=json.loads(resource_path.read_text())
+        if (resource['status']!='effective_native_resource_profile_checked'
+                or resource['normal_native_binding']!=binding
+                or not resource['tested_run_profile_qualified']):
+            raise ValueError('Native run lacks its matching checked effective resource result')
+        binding=dict(binding,effective_resource_review=str(resource_path),
+                     effective_resource_review_sha256=sha256_file(resource_path),
+                     effective_bound_GiB=resource['effective_bound_GiB'])
+    return checked,binding
 
 
-def submit(path, spec, host, gpu, output, interpreter):
+def submit(path, spec, host, gpu, output, interpreter, effective_profile=None):
     """Preflight on the target node, then detach its existing guarded launcher."""
     directory = output/spec['key']/str(time.time_ns())
     directory.mkdir(parents=True, exist_ok=False)
@@ -116,19 +147,24 @@ def submit(path, spec, host, gpu, output, interpreter):
             'MKL_NUM_THREADS', 'NUMEXPR_NUM_THREADS', 'XTB_THREADS')
     prefix = ['env', *(name+'=1' for name in caps), 'PYTHONPATH='+str(ROOT/'src'),
               'PATH='+str(ROOT.parent/'redox_polymer_continuations/runtime/bin')+':/usr/local/bin:/usr/bin:/bin',
-              interpreter, '-m', 'redox.workflows.derived_native_namespace']
+              interpreter, '-m', ('redox.workflows.derived_native_namespace' if effective_profile is None
+                                 else 'redox.workflows.effective_native_namespace')]
+    selected=['--spec',str(path)] if effective_profile is None else ['--profile',str(effective_profile)]
     ssh = ['ssh', '-S', 'none', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8', host]
-    probe = subprocess.run(ssh+[shlex.join(prefix+['probe', '--spec', str(path)])],
+    probe = subprocess.run(ssh+[shlex.join(prefix+['probe',*selected])],
                            capture_output=True, text=True, timeout=240)
     (directory/'preflight_stdout.txt').write_text(probe.stdout)
     (directory/'preflight_stderr.txt').write_text(probe.stderr)
     if probe.returncode:
         return dict(status='preflight_failed_no_launch', host=host, returncode=probe.returncode)
     checked = json.loads(probe.stdout)
-    if (checked['host'] != host or checked['namespace_sha256'] != sha256_file(path)
-            or checked['status'] != 'derived_native_original_paths_and_CPU_dependencies_checked'):
+    expected=('derived_native_original_paths_and_CPU_dependencies_checked' if effective_profile is None
+              else 'effective_native_node_sources_checked')
+    key='namespace_sha256' if effective_profile is None else 'profile_sha256'
+    if (checked['host'] != host or checked[key] != sha256_file(path if effective_profile is None else effective_profile)
+            or checked['status'] != expected):
         raise ValueError('Node preflight has another identity or incomplete dependency check')
-    argv = prefix+['launch', '--spec', str(path), '--gpu', str(gpu), '--out', str(directory/'placement')]
+    argv = prefix+['launch',*selected,'--gpu',str(gpu),'--out',str(directory/'placement')]
     code = ('import json,os,pathlib,subprocess; '
             'pathlib.Path('+repr(str(directory))+').mkdir(parents=True,exist_ok=True); '
             'f=pathlib.Path('+repr(str(directory/'controller.log'))+').open("x"); '
@@ -184,7 +220,7 @@ def release_gate_refusal(spec, output, alive):
     return True
 
 
-def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_hosts=()):
+def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_hosts=(),effective_reference=None):
     from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity
     helpers = load(ROOT/'scripts/pipeline/run_namespace_energy_queue.py', 'checked_native_capacity')
     owners = load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py', 'checked_native_owners')
@@ -205,7 +241,14 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
         ROOT/'scripts/pipeline/observe_archived_native_namespace.py',
         ROOT/'src/redox/workflows/derived_native_namespace.py',
         ROOT/'src/redox/workflows/submission_refusal.py',
+        ROOT/'src/redox/workflows/native_resource_profiles.py',
         ROOT/'src/redox/workflows/host_local_review.py', ROOT/'src/redox/validation/namespace_sources.py']}
+    profiles=None if effective_reference is None else MatchedNativeProfiles(effective_reference)
+    if profiles is not None:
+        frozen.update(profiles.source_sha256)
+        for name in ('src/redox/workflows/native_resource_profiles.py','src/redox/workflows/effective_native_namespace.py',
+                     'scripts/validation/review_effective_native.py'):
+            frozen[str(ROOT/name)]=sha256_file(ROOT/name)
     with (output/'queue.lock').open('a+') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
         previous = json.loads((output/'status.json').read_text()) if (output/'status.json').exists() else {}
@@ -219,7 +262,8 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
                      process_start=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19])
         record = dict(status='native_conveyor_running', owner=owner, started=time.time(),
                       deadline=time.time()+hours*3600, source_sha256=frozen, declared_energy_states=len(allowed),
-                      thermochemistry_inferred_from_energy=False, effective_memory_profile_used=False)
+                      thermochemistry_inferred_from_energy=False,effective_memory_profile_used=False,
+                      effective_reference=None if effective_reference is None else str(effective_reference))
         bindings = previous.get('namespaces_sha256', {})
         done = {row['key']: row for row in previous.get('entries', [])
                 if row['status'] in ('native_independently_checked', 'failed_preserved', 'independent_review_failed_preserved')}
@@ -237,6 +281,7 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
                     raise ValueError('Preparation stream belongs to another frozen cohort')
                 ready = ready_inputs(preparation, allowed, bindings)
                 pending, rows, unsettled, newly_terminal = [], [], set(), []
+                pending_profiles={}
                 for entry, spec in ready:
                     key, path = spec['key'], Path(entry['native_namespace'])
                     if entry['status'] == 'matching_native_namespace_reused':
@@ -264,6 +309,9 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
                             done[key] = row
                     elif state == 'pending':
                         pending.append((path, spec))
+                        if profiles is not None:
+                            matched=profiles.for_pending(path)
+                            if matched is not None:pending_profiles[str(path)]=matched
                     elif state == 'failed_preserved':
                         done[key] = row
                     if state in ('guard_present_start_pending', 'submission_claim_preserved'):
@@ -281,6 +329,10 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
                               prepared_states=len(ready), pending=len(pending), independently_checked=sum(
                                   r['status'] == 'native_independently_checked' for r in rows),
                               stopped_hosts=sorted(stopped_hosts), consecutive_scientific_host_failures=failures)
+                record['pending_admissions']=[dict(namespace=str(p),maximum_host_RSS_GiB=(80 if str(p) not in pending_profiles
+                    else profiles.bound)) for p,_ in pending]
+                record['prospective_profiles']={} if profiles is None else profiles.profiles
+                record['shared_storage_admission']=output_room(ROOT)
                 atomic_write_json(output/'status.json', record)
                 if len(ready) == len(allowed) and all(r['status'] in (
                     'native_independently_checked', 'failed_preserved', 'independent_review_failed_preserved',
@@ -291,6 +343,8 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
                 record['availability_observation_errors'] = errors
                 atomic_write_json(output/'status.json', record)
                 for host, gpu in slots:
+                    record['shared_storage_admission']=output_room(ROOT)
+                    if not record['shared_storage_admission']['admit_new_work']:break
                     if not pending:
                         break
                     if host in stopped_hosts or host in unsettled:
@@ -299,27 +353,29 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
                         capacity = helpers.capacity(host, gpu, interpreter)
                     except (OSError, ValueError, subprocess.SubprocessError):
                         continue
-                    path, spec = pending[0]
-                    if not helpers.fits(spec, capacity):
+                    index,effective_profile=first_fitting(pending,capacity,pending_profiles,helpers.fits)
+                    if index is None:
                         continue
+                    path,spec=pending[index]
                     claim = Path(spec['attempt'])/'native_dispatch_claim'
                     try:
                         claim.mkdir()
                     except FileExistsError:
-                        pending.pop(0)
+                        pending.pop(index)
                         continue
                     atomic_write_json(claim/'owner.json', dict(owner=owner, host=host, GPU=gpu,
                         queue=str(output), namespace=str(path), namespace_sha256=bindings[str(path)],
                         resource_preflight=capacity, claimed=time.time()))
                     try:
-                        receipt = submit(path, spec, host, gpu, output/'placements', interpreter)
+                        receipt = submit(path,spec,host,gpu,output/'placements',interpreter,effective_profile)
+                        if effective_profile is not None:record['effective_memory_profile_used']=True
                         atomic_write_json(claim/'launch.json', receipt)
                         if receipt['status'] == 'preflight_failed_no_launch':
                             stopped_hosts.add(host)
                     except (OSError, ValueError, subprocess.SubprocessError) as error:
                         atomic_write_json(claim/'uncertain_submission.json', dict(error=repr(error), preserved=True))
                         stopped_hosts.add(host)
-                    pending.pop(0)
+                    pending.pop(index)
                     unsettled.add(host)
                 time.sleep(20)
             record['status'] = 'native_conveyor_window_ended_workers_untouched'
@@ -340,7 +396,9 @@ if __name__ == '__main__':
     p.add_argument('--hours', type=float, default=24)
     p.add_argument('--resume', action='store_true')
     p.add_argument('--recheck-host', action='append', default=[])
+    p.add_argument('--effective-reference',type=Path,help='Checked resource review for prospective matched-class outer guards')
     a = p.parse_args()
     if not 0 < a.hours <= 48:
         p.error('A bounded window up to 48 hours is required')
-    run(a.cohort.resolve(), a.preparation.resolve(), a.out.resolve(), a.python, a.hours, a.resume, a.recheck_host)
+    run(a.cohort.resolve(),a.preparation.resolve(),a.out.resolve(),a.python,a.hours,a.resume,a.recheck_host,
+        None if a.effective_reference is None else a.effective_reference.resolve())

@@ -13,9 +13,10 @@ import sys
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
+from redox.workflows.native_resource_profiles import output_room
 
 
-def native_waiting(path):
+def native_status(path):
     if not path.exists():
         raise ValueError('The native priority dispatcher must publish its initial state first')
     status = json.loads(path.read_text())
@@ -26,10 +27,24 @@ def native_waiting(path):
     try:
         fields = process.read_text().rsplit(')', 1)[1].split()
     except FileNotFoundError:
-        return False
+        return None
     if fields[19] != owner['process_start'] or fields[0] == 'Z' or 'finished' in status:
-        return False
-    return status.get('pending', 0) > 0
+        return None
+    return status
+
+
+def native_waiting(path):
+    status=native_status(path)
+    return status is not None and status.get('pending',0)>0
+
+
+def native_capacity_waiting(path,resources,fits):
+    """Reserve capacity only for an actual pending task that fits this host."""
+    state=native_status(path)
+    if state is None or state.get('pending',0)<=0:return False
+    admissions=state.get('pending_admissions')
+    if admissions is None:admissions=[dict(maximum_host_RSS_GiB=80)]
+    return any(fits(row,resources) for row in admissions)
 
 
 def main():
@@ -41,7 +56,8 @@ def main():
     module = importlib.util.module_from_spec(definition)
     definition.loader.exec_module(module)
     proof = {str(p): sha256_file(p) for p in [Path(__file__).resolve(), original,
-             ROOT/'scripts/pipeline/run_checked_native_queue.py']}
+             ROOT/'scripts/pipeline/run_checked_native_queue.py',
+             ROOT/'src/redox/workflows/native_resource_profiles.py']}
     output = Path(sys.argv[sys.argv.index('--out')+1]).resolve()
     atomic_write_json(output.with_name(output.name+'_native_priority_adapter.json'),
                       dict(status='admission_order_only_running_workers_unchanged',
@@ -51,8 +67,8 @@ def main():
     def fits(spec, resources):
         if any(sha256_file(p) != digest for p, digest in proof.items()):
             raise ValueError('Priority admission source changed')
-        native_fits = ordinary_fits(dict(maximum_host_RSS_GiB=80), resources)
-        return ordinary_fits(spec, resources) and not (native_fits and native_waiting(path))
+        return (output_room(ROOT)['admit_new_work'] and ordinary_fits(spec,resources)
+                and not native_capacity_waiting(path,resources,ordinary_fits))
 
     module.fits = fits
     import argparse

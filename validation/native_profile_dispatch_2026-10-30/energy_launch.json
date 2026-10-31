@@ -1,0 +1,22 @@
+{
+  "status": "energy_dispatcher_spawned_stage_starts_unverified",
+  "host": "lambda1",
+  "pid": 3352431,
+  "process_start": "566463175",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_energy_queue_with_native_priority.py",
+    "--native-priority",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/status.json",
+    "--manifest",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/polymer_energy_classes_2026-10-30/queue_inputs.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/energy_classes_2026-10-30/queue",
+    "--python",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "--hours",
+    "24",
+    "--resume"
+  ],
+  "started": 1793414455.9419878
+}

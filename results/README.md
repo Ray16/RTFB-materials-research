@@ -46,6 +46,10 @@ establish that a calculation is currently running.
   [40-GiB pilot](../validation/polymer_effective_checked_2026-10-30/README.md)
   now passes both physical and resource checks for one occupied conformation.
   Wider matched-class use still requires prospective checks.
+- [Matched native resource profiles](../validation/native_profile_dispatch_2026-10-30/README.md):
+  seven pending profiles prepared and two new V100 starts checked, including actual
+  SCF/gradient checkpoints. The scheduling update retains the original numerical
+  gates and adds shared-volume headroom before new starts.
 - [Resource-refusal recovery](../validation/resource_refusals_2026-10-30/README.md):
   native and electronic prelaunch refusals now recover after source/ownership
   checks and a full policy-node producer audit, without charging scientific attempts.

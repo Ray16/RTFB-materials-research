@@ -28,6 +28,12 @@ Its completed collector is `independent_reviews_v3/status.json` under the same
 runtime pilot directory. Wider matched-class use still needs explicit prospective
 profiles. No in-flight reservation is retroactively shrunk.
 
+The [matched-profile dispatcher update](../native_profile_dispatch_2026-10-30/README.md)
+now applies the tested stricter bound to pending members of its exact neutral
+resource class. It also removes head-of-queue blocking between differently sized
+admissions and retains 64 GiB of shared-volume headroom before new starts.
+The normal native plan and all numerical/physical checks remain unchanged.
+
 Ready native calculations receive admission priority over new energy-only work
 when they fit a free device and its host. Running calculations remain untouched;
 there is no fixed fleet-size cap. An uncertain submission retains its claim. An
