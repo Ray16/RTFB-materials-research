@@ -88,3 +88,5 @@ full solvent H1. Ninety-eight focused tests and read-only checks of both live
 119-atom prefixes pass. Source owners remain live and ineligible for continuation;
 full molecular continuation equivalence and corrected-Hessian qualification are
 still pending. This infrastructure update changes no manuscript chemical claim.
+
+The current SI integrates the fresh xTB-component installation and configurable-prefix methods. Its source evidence is frozen in `2026-10-31_xtb_component_checked`; both PDFs build at 21/30 pages without overfull boxes, changed SI pages are visually checked and the updated upload archive compiles with matching text. No Overleaf project is connected.

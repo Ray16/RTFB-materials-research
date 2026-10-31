@@ -1,0 +1,303 @@
+{
+  "status": "seven_source_inventory_reconstructed_from_frozen_endpoints",
+  "source": "manuscript/evidence/2026-10-26_review_context_qc/benchmark.json",
+  "source_sha256": "f529e951647d3a9365d84fa45dfba821ce19a156cfbf003fb356eeec6bbebef7",
+  "studies": [
+    {
+      "doi": "10.1002/chem.202200149",
+      "citation_key": "kim2022",
+      "endpoints": 2,
+      "molecules": 1,
+      "source_locations": [
+        "Results text, Figure 1 discussion; open copy PMC9310624"
+      ],
+      "reference_scope": [
+        "E deg' / E1/2 vs Fc (direct or authors' own calibration)"
+      ],
+      "endpoint_ids": [
+        {
+          "id": "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+          "event": "ox2->ox1",
+          "exp_V": -0.785
+        },
+        {
+          "id": "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+          "event": "ox1->neu",
+          "exp_V": -1.204
+        }
+      ]
+    },
+    {
+      "doi": "10.1021/acs.chemmater.8b04770",
+      "citation_key": "attanayake2019",
+      "endpoints": 5,
+      "molecules": 4,
+      "source_locations": [
+        "Table 1 / Figure 2 p.4356; CV methods p.4355; Figure 1 structures p.4354; author copy https://xray.uky.edu/people/parkin/papers/426.pdf"
+      ],
+      "reference_scope": [
+        "E deg' / E1/2 vs Fc (direct or authors' own calibration)"
+      ],
+      "endpoint_ids": [
+        {
+          "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+          "event": "ox2->ox1",
+          "exp_V": 0.655
+        },
+        {
+          "id": "bm_n_ethylphenothiazine",
+          "event": "ox1->neu",
+          "exp_V": 0.278
+        },
+        {
+          "id": "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+          "event": "ox1->neu",
+          "exp_V": 0.311
+        },
+        {
+          "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+          "event": "ox1->neu",
+          "exp_V": 0.093
+        },
+        {
+          "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+          "event": "ox1->neu",
+          "exp_V": 0.056
+        }
+      ]
+    },
+    {
+      "doi": "10.1021/acs.jpcc.0c03632",
+      "citation_key": "wang2020quinones",
+      "endpoints": 7,
+      "molecules": 4,
+      "source_locations": [
+        "SI Table S1 (TBAPF6/MeCN columns); methods p.13610 (open copy: diva-portal.org diva2:1446467; SI via acs.figshare.com 12493136)"
+      ],
+      "reference_scope": [
+        "E deg' / E1/2 vs Fc (direct or authors' own calibration)"
+      ],
+      "endpoint_ids": [
+        {
+          "id": "bm_2_tert_butyl_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -1.0
+        },
+        {
+          "id": "bm_2_fluoro_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.77
+        },
+        {
+          "id": "bm_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.9
+        },
+        {
+          "id": "bm_2_methyl_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.98
+        },
+        {
+          "id": "bm_2_tert_butyl_1_4_benzoquinone",
+          "event": "red1->red2",
+          "exp_V": -1.79
+        },
+        {
+          "id": "bm_1_4_benzoquinone",
+          "event": "red1->red2",
+          "exp_V": -1.71
+        },
+        {
+          "id": "bm_2_methyl_1_4_benzoquinone",
+          "event": "red1->red2",
+          "exp_V": -1.78
+        }
+      ]
+    },
+    {
+      "doi": "10.1021/acsaem.1c01490",
+      "citation_key": "daub2021imides",
+      "endpoints": 9,
+      "molecules": 6,
+      "source_locations": [
+        "SI Table S1 (E1/2 vs Fc/Fc+); SI p.S10 methods; SI via acs.figshare.com 16684876"
+      ],
+      "reference_scope": [
+        "E deg' / E1/2 vs Fc (direct or authors' own calibration)"
+      ],
+      "endpoint_ids": [
+        {
+          "id": "bm_n_2_methoxyethyl_phthalimide",
+          "event": "neu->red1",
+          "exp_V": -1.89
+        },
+        {
+          "id": "bm_n_isopropylphthalimide",
+          "event": "neu->red1",
+          "exp_V": -1.93
+        },
+        {
+          "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+          "event": "red1->red2",
+          "exp_V": -1.84
+        },
+        {
+          "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+          "event": "red1->red2",
+          "exp_V": -1.81
+        },
+        {
+          "id": "bm_n_methylphthalimide",
+          "event": "neu->red1",
+          "exp_V": -1.9
+        },
+        {
+          "id": "bm_n_n_diisopropylpyromellitic_diimide",
+          "event": "neu->red1",
+          "exp_V": -1.29
+        },
+        {
+          "id": "bm_n_n_diisopropylpyromellitic_diimide",
+          "event": "red1->red2",
+          "exp_V": -1.92
+        },
+        {
+          "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+          "event": "neu->red1",
+          "exp_V": -1.2
+        },
+        {
+          "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+          "event": "neu->red1",
+          "exp_V": -1.23
+        }
+      ]
+    },
+    {
+      "doi": "10.1021/acscentsci.5b00163",
+      "citation_key": "gerken2015tempo",
+      "endpoints": 1,
+      "molecules": 1,
+      "source_locations": [
+        "Results text ('E1/2 = 249 mV vs Fc/Fc+'), Figure 2 caption (conditions); open copy PMC4827547"
+      ],
+      "reference_scope": [
+        "E deg' / E1/2 vs Fc (direct or authors' own calibration)"
+      ],
+      "endpoint_ids": [
+        {
+          "id": "tempo_parent",
+          "event": "ox->rad",
+          "exp_V": 0.249
+        }
+      ]
+    },
+    {
+      "doi": "10.1021/jacs.6b05797",
+      "citation_key": "huynh2016quinones",
+      "endpoints": 13,
+      "molecules": 13,
+      "source_locations": [
+        "SI Table S3 (E1red, E1ox, E1 deg, mV vs Fc0/+); SI via acs.figshare.com 4269167"
+      ],
+      "reference_scope": [
+        "E deg' / E1/2 vs Fc (direct or authors' own calibration)"
+      ],
+      "endpoint_ids": [
+        {
+          "id": "bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq",
+          "event": "neu->red1",
+          "exp_V": 0.137
+        },
+        {
+          "id": "bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil",
+          "event": "neu->red1",
+          "exp_V": -0.3565
+        },
+        {
+          "id": "bm_2_3_dichloro_1_4_naphthoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.89
+        },
+        {
+          "id": "bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil",
+          "event": "neu->red1",
+          "exp_V": -0.377
+        },
+        {
+          "id": "bm_2_5_dichloro_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.5605
+        },
+        {
+          "id": "bm_tetramethyl_1_4_benzoquinone_duroquinone",
+          "event": "neu->red1",
+          "exp_V": -1.213
+        },
+        {
+          "id": "bm_2_chloro_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.723
+        },
+        {
+          "id": "bm_2_3_dimethyl_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -1.0455
+        },
+        {
+          "id": "bm_2_3_5_trimethyl_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -1.131
+        },
+        {
+          "id": "bm_2_6_dimethyl_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -1.0345
+        },
+        {
+          "id": "bm_2_6_dimethoxy_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -1.092
+        },
+        {
+          "id": "bm_9_10_phenanthrenequinone",
+          "event": "neu->red1",
+          "exp_V": -1.039
+        },
+        {
+          "id": "bm_2_methoxy_1_4_benzoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.98
+        }
+      ]
+    },
+    {
+      "doi": "10.3390/molecules28031232",
+      "citation_key": "cabral2023quinones",
+      "endpoints": 2,
+      "molecules": 1,
+      "source_locations": [
+        "Table 3 (scan 0.100 V/s); Experimental: Fc measured as internal standard and values 'corrected to SCE using Fc+/Fc E1/2 = 0.40 V vs SCE'; open copy PMC9919139"
+      ],
+      "reference_scope": [
+        "E deg' / E1/2 vs Fc (direct or authors' own calibration)"
+      ],
+      "endpoint_ids": [
+        {
+          "id": "bm_1_2_naphthoquinone",
+          "event": "red1->red2",
+          "exp_V": -1.31
+        },
+        {
+          "id": "bm_1_2_naphthoquinone",
+          "event": "neu->red1",
+          "exp_V": -0.9
+        }
+      ]
+    }
+  ],
+  "total_endpoints": 39,
+  "unique_molecules": 30,
+  "scope": "Source inventory and citation links for the unchanged retrospective panel; no new measurement, potential or statistical refit."
+}
