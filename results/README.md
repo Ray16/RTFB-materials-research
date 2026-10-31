@@ -61,6 +61,11 @@ establish that a calculation is currently running.
   execution in both configurations. Old finite-batch G selects coordinates only;
   old energies or thermochemistry cannot enter the new occupancy cycle. Both
   actual SCF starts are verified; new native G and cycle qualification remain pending.
+- [Finite stationary electronic cycles](../validation/ionic_electronic_cycles_2026-10-31/README.md):
+  eleven checked components supply three balanced electronic nonadditivities
+  under one corrected model/implementation. The fourth cycle remains pending.
+  These finite-conformer whole-chain E terms include backbone/deformation effects;
+  all interaction-G, isolated-binding, coupling, ensemble and material gates remain open.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)

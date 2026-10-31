@@ -125,3 +125,11 @@ occupancy panel. Old finite-batch thermochemistry selects warm-start coordinates
 only; old E/G is not imported into the corrected cycle. Namespace-visible source
 hash checks now run during preflight. New native G and balanced occupancy cycles
 remain pending.
+
+The two corrected empty references now pass independent stationary-geometry
+review. Together with the checked occupied structures, they provide three
+[balanced finite-conformer electronic cycles](../validation/ionic_electronic_cycles_2026-10-31/README.md).
+Their whole-chain nonadditivities are -3.46/+1.20 kJ/mol for adjacent grafts in
+the two configurations and -13.48 kJ/mol for the alternating one-spacer case.
+These E-only results are separate from the frozen manuscript thermochemistry;
+missing nuclear/ensemble terms are not supplied, and M1/M4 remain incomplete.
