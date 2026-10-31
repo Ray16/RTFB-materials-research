@@ -83,6 +83,8 @@ establish that a calculation is currently running.
   The new continuation path requires a closed source and a fresh unchanged-equation
   residual check. Molecular continuation equivalence and full-Hessian qualification
   remain pending; no source worker was interrupted or new GPU job submitted.
+  The [prospective full-Hessian comparison](../docs/HESSIAN_REPRODUCTION_CHECK.md)
+  fixes numerical reproduction limits before the completed matrices are available.
 - [Portable native numerical cache](../validation/native_cache_2026-10-30/README.md):
   a 63 MB raw-input archive for the same 75 states passes extracted-archive
   replay in a fresh hash-locked NumPy environment with original paths blocked.
