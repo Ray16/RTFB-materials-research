@@ -8,7 +8,7 @@ import h5py
 import numpy as np
 import pytest
 
-from redox.qm.hessian_restart import read_frame,reuse_components,array_digest,response_ceiling_gib,capture_solution_h1
+from redox.qm.hessian_restart import read_frame,reuse_components,array_digest,response_ceiling_gib,capture_solution_h1,read_continuation_frame
 
 
 @pytest.fixture
@@ -76,6 +76,7 @@ def test_reuse_returns_independent_copies_and_restores_only_the_target_object(tm
 def test_captured_solution_checkpoint_keeps_the_solvent_addition(tmp_path,monkeypatch):
     monkeypatch.setitem(sys.modules,'cupy',SimpleNamespace(asarray=np.asarray))
     class Base:
+        def __init__(self):self.base=SimpleNamespace(with_solvent=SimpleNamespace(equilibrium_solvation=True))
         def partial_hess_elec(self):return np.zeros((2,2))
         def make_h1(self):return np.zeros((2,2))
     class Solvent:
@@ -88,3 +89,56 @@ def test_captured_solution_checkpoint_keeps_the_solvent_addition(tmp_path,monkey
     np.testing.assert_array_equal(value,np.full((2,2),3.))
     np.testing.assert_array_equal(np.load(tmp_path/'full/full_H1.npy'),value)
     assert json.loads((tmp_path/'full/identity.json').read_text())['scope']=='full SMD H1 including PCM contribution'
+    target.base.with_solvent.equilibrium_solvation=False
+    with pytest.raises(ValueError,match='equilibrium'):
+        with capture_solution_h1(target,tmp_path/'frozen',dict(frame='same')):target.make_h1()
+
+
+def test_continuation_resolves_original_SCF_but_checks_its_own_center_and_grids(frame_case,tmp_path):
+    import shutil
+    frame,_=read_frame(frame_case);warm=tmp_path/'warm';(warm/'points/0000').mkdir(parents=True)
+    (warm/'plan.json').write_text(json.dumps(dict(resume_components=dict(source_case=str(frame_case),frame=frame))))
+    shutil.copyfile(frame_case/'points/0000/evaluation.json',warm/'points/0000/evaluation.json')
+    shutil.copyfile(frame_case/'grids.npz',warm/'grids.npz')
+    restored,_,source=read_continuation_frame(warm)
+    assert restored==frame and source==frame_case
+    np.savez(warm/'grids.npz',coords=np.zeros((2,3)),weights=np.full(2,2.))
+    with pytest.raises(ValueError,match='grids'):read_continuation_frame(warm)
+
+
+def response_source(frame_case):
+    from redox.qm.response_diagnostic import save_array
+    from redox.qm.response_resume import digest
+    frame,_=read_frame(frame_case);center=frame_case/'points/0000/evaluation.json'
+    (frame_case/'plan.json').write_text(json.dumps(dict(role='screening_polymer_Hessian_control',screening_variant='corrected',full_polymer_Hessian_control=True,original_namespace='/original.json')))
+    identity=dict(center_evaluation=str(center),center_evaluation_sha256=digest(center),grids_sha256=digest(frame_case/'grids.npz'),source_namespace='/original.json',screening_variant='corrected')
+    full=frame_case/'solution_H1';full.mkdir();payload=save_array(full/'full_H1.npy',np.ones((1,3,2,1)))
+    (full/'identity.json').write_text(json.dumps(dict(payload,scope='full SMD H1 including PCM contribution',identity=identity)))
+    blocks=frame_case/'response_blocks';blocks.mkdir();payload=save_array(blocks/'block_000.npy',np.ones((3,2)))
+    (blocks/'block_000.json').write_text(json.dumps(dict(checkpoint=payload,identity=identity,rhs_sha256='test',original_solver_source_sha256='solver',kind='raw_Krylov_solution_before_occupied_block_reconstruction')))
+    return frame
+
+
+def test_only_explicit_full_solvent_H1_can_supply_raw_blocks(frame_case):
+    from redox.qm.response_resume import inspect_source
+    frame=response_source(frame_case);bound=inspect_source(frame_case,frame)
+    assert bound['completed_blocks']==1 and bound['completed_RHS']==3
+    assert bound['full_H1']['scope']=='full SMD H1 including PCM contribution'
+
+
+@pytest.mark.parametrize('change',['H1_scope','H1_payload','block_identity','block_payload','center','gapped_prefix','wrong_role'])
+def test_mismatched_full_response_backing_is_not_admitted(frame_case,change):
+    from redox.qm.response_resume import inspect_source
+    frame=response_source(frame_case)
+    if change=='H1_scope':
+        p=frame_case/'solution_H1/identity.json';r=json.loads(p.read_text());r['scope']='solute contribution';p.write_text(json.dumps(r))
+    if change=='H1_payload':np.save(frame_case/'solution_H1/full_H1.npy',np.zeros((1,3,2,1)))
+    if change=='block_identity':
+        p=frame_case/'response_blocks/block_000.json';r=json.loads(p.read_text());r['identity']['grids_sha256']='changed';p.write_text(json.dumps(r))
+    if change=='block_payload':np.save(frame_case/'response_blocks/block_000.npy',np.zeros((3,2)))
+    if change=='center':
+        p=frame_case/'points/0000/evaluation.json';r=json.loads(p.read_text());r['coordinates_Bohr'][0][0]=.1;p.write_text(json.dumps(r))
+    if change=='gapped_prefix':(frame_case/'response_blocks/block_000.json').rename(frame_case/'response_blocks/block_001.json')
+    if change=='wrong_role':
+        p=frame_case/'plan.json';r=json.loads(p.read_text());r['role']='frozen_solvent_response_probe';p.write_text(json.dumps(r))
+    with pytest.raises(ValueError):inspect_source(frame_case,frame)

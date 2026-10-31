@@ -77,6 +77,12 @@ establish that a calculation is currently running.
   the earlier seven-block/315-coordinate calculation used solute H1 and frozen
   solvent response. Its file/frame/resource checks are instrumentation evidence;
   they do not qualify a full equilibrium-solvent response or native G.
+- [Response-checkpoint continuation](../validation/response_continuation_2026-10-31/README.md):
+  full-solvent source/frame and saved-prefix checks pass for both live controls;
+  98 focused tests check continuation, residuals, precision and ownership.
+  The new continuation path requires a closed source and a fresh unchanged-equation
+  residual check. Molecular continuation equivalence and full-Hessian qualification
+  remain pending; no source worker was interrupted or new GPU job submitted.
 - [Portable native numerical cache](../validation/native_cache_2026-10-30/README.md):
   a 63 MB raw-input archive for the same 75 states passes extracted-archive
   replay in a fresh hash-locked NumPy environment with original paths blocked.

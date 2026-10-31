@@ -73,3 +73,10 @@ Author/license metadata and public DOI deposition remain pending; the collection
 does not close the remaining scientific comments.
 
 An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall. The earlier seven-block/315-coordinate response execution probe used solute H1 and a frozen-solvent operator; its array/resource review remains scoped to instrumentation, without native equilibrium-response or G qualification. Fresh full Hessian and corrected checkpoint-reuse controls preserve the PCM/SMD H1 contribution. An unqualified restart that bypassed that term was explicitly rejected and stopped; it supplies no accepted result. See the [current assessment](../validation/screening_chemical_impact_2026-10-31/README.md).
+
+The [response-continuation workflow](../validation/response_continuation_2026-10-31/README.md)
+now binds completed raw response blocks to the original orbital/grid frame and
+full solvent H1. Ninety-eight focused tests and read-only checks of both live
+119-atom prefixes pass. Source owners remain live and ineligible for continuation;
+full molecular continuation equivalence and corrected-Hessian qualification are
+still pending. This infrastructure update changes no manuscript chemical claim.

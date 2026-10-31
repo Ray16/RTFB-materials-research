@@ -130,7 +130,7 @@ def trace_solver(module,directory,*,trace_seconds=30,checkpoint_root=None,checkp
         if checkpoint_root is not None:
             checkpoint=save_array(Path(checkpoint_root)/f'block_{index:03d}.npy',result)
             atomic_write_json(Path(checkpoint_root)/f'block_{index:03d}.json',dict(checkpoint=checkpoint,rhs_sha256=rhs_sha,identity=checkpoint_identity,
-                original_solver_source_sha256=digest(original.__code__.co_filename),kind='raw_Krylov_solution_before_occupied_block_reconstruction',native_G_qualified=False))
+                original_solver_source_sha256=getattr(original,'_redox_original_solver_source_sha256',digest(original.__code__.co_filename)),kind='raw_Krylov_solution_before_occupied_block_reconstruction',native_G_qualified=False))
             calls[index]['checkpoint']=checkpoint
         calls[index].update(status='returned',operator_calls=operator_calls)
         event('solver_returned',index=index,operator_calls=operator_calls)
@@ -149,4 +149,5 @@ def trace_solver(module,directory,*,trace_seconds=30,checkpoint_root=None,checkp
         finally:
             module.residual_krylov=original;stopped.set();sampler.join()
             atomic_write_json(directory/'trace.json',dict(calls=calls,event_count=len(events),solver_replaced=False,
+                solver_replaced_scope='timing instrumentation only',underlying_checkpoint_reuse_wrapper=hasattr(original,'_redox_original_solver_source_sha256'),
                 array_values_modified_by_instrumentation=False,GPU_synchronization_added=checkpoint_root is not None,asynchronous_C_watchdog_used=False,native_G_qualified=False))

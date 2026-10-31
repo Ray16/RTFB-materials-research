@@ -62,6 +62,8 @@ def main():
         responses = load(sources / 'response_helper.py', 'corrected_polymer_response_checkpoints')
         checkpoints = load(sources / 'checkpoints.py', 'corrected_polymer_SCF_checkpoints')
         restart = load(sources / 'restart_helper.py', 'corrected_polymer_exact_restart')
+        response_restart = (load(sources / 'response_resume_helper.py', 'corrected_polymer_checked_response_reuse')
+                            if plan.get('resume_response') else None)
         native = load(ROOT / 'scripts/pipeline/smooth_polymer_native.py', 'unchanged_polymer_Hessian_settings')
         adapter = load(ROOT / 'scripts/pipeline/residual_response_solver.py', 'unchanged_polymer_response_operator')
         model = load(ROOT / 'scripts/pipeline/smooth_cds_control.py', 'unchanged_polymer_MeCN_model')
@@ -147,8 +149,12 @@ def main():
             from gpu4pyscf.hessian import rhf as response_rhf
             from contextlib import nullcontext
             reuse=nullcontext() if saved_components is None else restart.reuse_components(hobj,saved_components,case/'component_reuse')
+            response_reuse=(nullcontext() if response_restart is None else response_restart.checked_blocks(adapter,
+                plan['resume_response']['blocks'],case/'response_reuse',expected_identity=plan['resume_response']['identity'],
+                source_h1=plan['resume_response']['full_H1'],current_h1=case/'solution_H1/identity.json'))
             with responses.response_memory_cap(response_rhf, plan['response_available_memory_GiB'] * 2**30), reuse, \
                     restart.capture_solution_h1(hobj,case/'solution_H1',identity), \
+                    response_reuse, \
                     responses.trace_solver(adapter, case / 'trace', checkpoint_root=case / 'response_blocks',
                                            checkpoint_identity=identity):
                 value = hobj.kernel()

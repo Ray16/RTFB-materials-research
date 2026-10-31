@@ -7,6 +7,7 @@ from contextlib import contextmanager
 import hashlib
 import io
 import json
+import math
 from pathlib import Path
 from types import MethodType
 
@@ -90,6 +91,21 @@ def read_frame(case):
                 PCM_H1_included=False),arrays
 
 
+def read_continuation_frame(case):
+    """Resolve a restored center to its original SCF/component frame."""
+    case=Path(case);plan=json.loads((case/'plan.json').read_text())
+    source=Path(plan['resume_components']['source_case']) if plan.get('resume_components') else case
+    frame,arrays=read_frame(source)
+    if plan.get('resume_components') and frame!=plan['resume_components']['frame']:
+        raise ValueError('Continuation orbital/component frame changed')
+    center=json.loads((case/'points/0000/evaluation.json').read_text())
+    if (not center['SCF_converged'] or center['coordinates_Bohr']!=frame['identity']['coordinates_Bohr'] or not math.isfinite(center['E_Ha'])
+            or abs(center['E_Ha']-frame['identity']['SCF_E_Ha'])>1e-12
+            or hashlib.sha256((case/'grids.npz').read_bytes()).hexdigest()!=hashlib.sha256((source/'grids.npz').read_bytes()).hexdigest()):
+        raise ValueError('Continuation center or actual grids differ from the original frame')
+    return frame,arrays,source
+
+
 def restore_mf(mf,frame,arrays,report_path):
     """Restore the original grids/orbitals and verify the resulting energy."""
     import cupy as cp
@@ -156,6 +172,8 @@ def capture_solution_h1(hessian,directory,identity):
     present='make_h1' in hessian.__dict__;original=hessian.make_h1;calls=0
     def capture(self,*args,**kwargs):
         nonlocal calls
+        equilibrium=bool(self.base.with_solvent.equilibrium_solvation)
+        if not equilibrium:raise ValueError('Full solution H1 must be captured inside the equilibrium-solvent Hessian context')
         value=original(*args,**kwargs);calls+=1
         if calls!=1:raise ValueError('One complete RKS solution H1 per control required')
         array=np.asarray(value.get() if hasattr(value,'get') else value)
@@ -165,7 +183,7 @@ def capture_solution_h1(hessian,directory,identity):
         os.replace(temporary,path)
         atomic_write_json(directory/'identity.json',dict(scope='full SMD H1 including PCM contribution',identity=identity,
             shape=list(array.shape),dtype='float64',path=str(path),file_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
-            array_sha256=array_digest(array),native_G_qualified=False))
+            array_sha256=array_digest(array),equilibrium_solvation=equilibrium,native_G_qualified=False))
         return value
     hessian.make_h1=MethodType(capture,hessian)
     try:yield

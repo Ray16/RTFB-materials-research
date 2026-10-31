@@ -125,6 +125,25 @@ def review(namespace,placement):
             or any(row['solver_info']!=0 or row['precision']!='float64' or row['level_shift_added']
                    or not 0<=row['true_residual_norm']<=row['solver_absolute_target'] for row in solver['calls'])):
         raise ValueError('Full source-bound original-equation response coverage required')
+    response_reused=0
+    if plan.get('resume_response'):
+        continuation=read(case/'response_reuse/status.json');capture=read(case/'solution_H1/identity.json')
+        if (capture.get('equilibrium_solvation') is not True or continuation['equations_changed']
+                or continuation['original_solver_sha256']!=plan['resume_response']['original_solver_source_sha256']
+                or len(continuation['calls'])!=len(solver['calls'])):
+            raise ValueError('A source-bound equilibrium-response continuation is required')
+        for index,(candidate,solved) in enumerate(zip(continuation['calls'],solver['calls'])):
+            if candidate['index']!=index or candidate['reused']!=solved.get('checkpoint_reused',False):
+                raise ValueError('Response continuation decisions differ from the actual solver records')
+            if candidate['reused']:
+                if (not 0<=candidate['fresh_true_residual_norm']<=candidate['current_absolute_target']
+                        or candidate['fresh_true_residual_norm']!=solved['true_residual_norm']
+                        or candidate['current_absolute_target']!=solved['solver_absolute_target']):
+                    raise ValueError('Reused block lacks its fresh unchanged-equation residual check')
+                response_reused+=1
+        for path,digest in plan['resume_response']['source_sha256'].items():
+            if sha256_file(path)!=digest:raise ValueError('Response continuation backing changed')
+            used.append(Path(path))
     nuclear=read(case/'nuclear.json');parent=read(Path(reference['partition']))
     masses=np.asarray(nuclear['atomic_masses_amu'])
     modes=load(ROOT/'scripts/validation/replay_archived_polymer_native.py','independent_full_hessian_modes')
@@ -145,6 +164,7 @@ def review(namespace,placement):
         maximum_Hessian_difference_from_reference_Ha_Bohr2=float(abs(matrix-original).max()),
         nuclear_difference_from_reference_eV={k:v-parent['nuclear']['nuclear_by_cutoff_eV'][k] for k,v in thermal.items()},
         exact_component_reuse_exercised=bool(plan.get('resume_components')),equilibrium_solvent_H1_retained=True,
+        response_checkpoint_blocks_reused_after_fresh_operator_check=response_reused,
         residuals_independently_reevaluated=False,native_G_assembled=False,native_G_qualified=False,complete_polymer_ensemble_qualified=False,
         source_sha256={str(p):sha256_file(p) for p in used},producer_sha256=sha256_file(__file__))
 

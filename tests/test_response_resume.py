@@ -49,3 +49,47 @@ def test_changed_payload_is_rejected_without_borrowing_a_solution(checkpoint):
     with pytest.raises(ValueError):
         with checked_blocks(target,source,root/'replay'):
             target.residual_krylov(lambda x:x@matrix,rhs,tol=1e-10,record=lambda row:None)
+
+
+def test_traced_reused_block_keeps_original_solver_identity_and_can_resume_again(checkpoint):
+    from redox.qm.response_diagnostic import trace_solver
+    module,matrix,rhs,solution,source,root=checkpoint;target=SimpleNamespace(residual_krylov=module.residual_krylov)
+    first=[]
+    with checked_blocks(target,source,root/'first_reuse'),trace_solver(target,root/'trace',checkpoint_root=root/'new_blocks',checkpoint_identity={'same':'frame'}):
+        actual=target.residual_krylov(lambda x:x@matrix,rhs,tol=1e-10,record=first.append)
+    a=json.loads((source/'block_000.json').read_text());b=json.loads((root/'new_blocks/block_000.json').read_text())
+    assert a['original_solver_source_sha256']==b['original_solver_source_sha256']
+    with checked_blocks(target,root/'new_blocks',root/'second_reuse',expected_identity={'same':'frame'}) as calls:
+        again=target.residual_krylov(lambda x:x@matrix,rhs,tol=1e-10,record=lambda row:None)
+    np.testing.assert_array_equal(actual,solution);np.testing.assert_array_equal(again,solution)
+    assert calls[0]['reused']
+
+
+def test_changed_full_H1_forces_a_fresh_equation_solve(checkpoint):
+    module,matrix,rhs,solution,source,root=checkpoint;target=SimpleNamespace(residual_krylov=module.residual_krylov)
+    h1=dict(scope='full SMD H1 including PCM contribution',array_sha256='original',identity=dict(grids_sha256='grid',source_namespace='parent'))
+    current=dict(h1,array_sha256='changed',equilibrium_solvation=True);p=root/'current_H1.json';p.write_text(json.dumps(current))
+    with checked_blocks(target,source,root/'replay',source_h1=h1,current_h1=p) as calls:
+        result=target.residual_krylov(lambda x:x@matrix,rhs,tol=1e-10,record=lambda row:None)
+    np.testing.assert_allclose(result,solution,rtol=0,atol=1e-13)
+    assert not calls[0]['reused']
+
+
+@pytest.mark.parametrize('change',['missing_frame','nonfinite_RHS','lower_precision_operator'])
+def test_bad_frame_or_precision_cannot_reuse(checkpoint,change):
+    module,matrix,rhs,solution,source,root=checkpoint;target=SimpleNamespace(residual_krylov=module.residual_krylov)
+    expected={'same':'frame'} if change=='missing_frame' else None
+    if change=='nonfinite_RHS':rhs[0,0]=np.nan
+    operator=lambda x:(x@matrix).astype(np.float32) if change=='lower_precision_operator' else x@matrix
+    with pytest.raises(ValueError):
+        with checked_blocks(target,source,root/'replay',expected_identity=expected):
+            target.residual_krylov(operator,rhs,tol=1e-10,record=lambda row:None)
+
+
+def test_operator_workspace_cannot_modify_the_returned_saved_candidate(checkpoint):
+    module,matrix,rhs,solution,source,root=checkpoint;target=SimpleNamespace(residual_krylov=module.residual_krylov)
+    def operator(x):x[:]=x@matrix;return x
+    with checked_blocks(target,source,root/'replay') as calls:
+        result=target.residual_krylov(operator,rhs,tol=1e-10,record=lambda row:None)
+    np.testing.assert_array_equal(result,solution)
+    assert calls[0]['reused']

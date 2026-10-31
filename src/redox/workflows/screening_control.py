@@ -41,7 +41,7 @@ def probe(path):
     program=('import ast,importlib.util,importlib.metadata as m,json,pathlib;import numpy,psutil,ase,h5py;from pyscf.gto import mole;'
         'wanted='+repr(runtime['versions'])+';assert {k:m.version(k) for k in wanted}==wanted;'
         'root=pathlib.Path('+repr(spec['sources'])+');'
-        'modules=sorted({n.module for name in ["worker.py","helper.py","host_guard.py","scientific_worker.py","checkpoints.py","response_helper.py","restart_helper.py"] if (root/name).exists() for n in ast.walk(ast.parse((root/name).read_text())) if isinstance(n,ast.ImportFrom) and n.module and n.module.startswith("redox.")});'
+        'modules=sorted({n.module for name in ["worker.py","helper.py","host_guard.py","scientific_worker.py","checkpoints.py","response_helper.py","restart_helper.py","response_resume_helper.py"] if (root/name).exists() for n in ast.walk(ast.parse((root/name).read_text())) if isinstance(n,ast.ImportFrom) and n.module and n.module.startswith("redox.")});'
         'assert all(importlib.util.find_spec(name) is not None for name in modules),modules;'
         'print(json.dumps(dict(versions=wanted,worker_imports=modules,CUDA_context_started=False)))')
     run=subprocess.run(execution.command(spec)+[runtime['python'],'-c',program],capture_output=True,text=True,check=True,timeout=120)
@@ -71,10 +71,24 @@ def prepare_polymer(namespace,output,variant):
     return spec
 
 
-def prepare_polymer_hessian(namespace,reference,output,resume_from=None):
+def response_continuation_closure(stage,guard,completion,alive):
+    """Only a proven closed normal control or a recorded wall stop may resume."""
+    normal=(stage['status']=='screening_polymer_Hessian_control_finished_review_pending'
+            and completion['returncode']==0 and completion['budget_stop'] is None)
+    budget=(completion['returncode'] not in (None,0) and completion['budget_stop']=='wall_time_budget'
+            and stage['status'] in ('screening_polymer_Hessian_control_running','screening_polymer_Hessian_control_failed_preserved'))
+    if (not (normal or budget) or not guard.get('guard_stopped')
+            or any(guard.get(k)!=stage['owner'].get(k) for k in ('host','pid','process_start'))
+            or alive(stage['owner']) is not False):
+        raise ValueError('Original control must be proven closed; no age- or timeout-based recovery')
+    return 'closed_normal_control' if normal else 'closed_recorded_wall_budget_stop'
+
+
+def prepare_polymer_hessian(namespace,reference,output,resume_from=None,resume_response_from=None):
     """A new corrected derivative control; never a mixed-implementation G."""
     from redox.validation.namespace_sources import read_checked_review,NamespaceSources
     from redox.workflows.archived_native_namespace import verify_spec
+    if resume_from is not None and resume_response_from is not None:raise ValueError('Choose one component/response source')
     checked,binding=read_checked_review(reference,'native')
     ref=verify_spec(reference);original=verify_spec(namespace)
     if (ref['key']!=original['key'] or ref['geometry_sha256']!=original['geometry_sha256']
@@ -85,7 +99,8 @@ def prepare_polymer_hessian(namespace,reference,output,resume_from=None):
     plan=json.loads(plan_path.read_text());shutil.copyfile(plan_path,case/'gradient_control_preparation.json')
     for path,name in [(ROOT/'scripts/validation/run_screening_polymer_hessian.py','worker.py'),
             (ROOT/'src/redox/qm/response_diagnostic.py','response_helper.py'),
-            (ROOT/'src/redox/qm/hessian_restart.py','restart_helper.py')]:shutil.copyfile(path,sources/name)
+            (ROOT/'src/redox/qm/hessian_restart.py','restart_helper.py'),
+            (ROOT/'src/redox/qm/response_resume.py','response_resume_helper.py')]:shutil.copyfile(path,sources/name)
     inputs=[reference,Path(binding['review']),raw/'hessian.npy',raw/'geometry.xyz',raw/'experimental_partition.json']
     files=[*sources.glob('*'),case/'gradient_control_preparation.json',*inputs]
     archive=Path(spec['archive'])
@@ -121,6 +136,24 @@ def prepare_polymer_hessian(namespace,reference,output,resume_from=None):
         plan['source_sha256'].update(frame['source_sha256'])
         for p in [resume_from,resume_case/'plan.json',resume_case/'status.json',resume_case/'screening_implementation/implementation.json']:
             plan['source_sha256'][str(p)]=sha256_file(p)
+    if resume_response_from is not None:
+        from redox.qm.hessian_restart import read_continuation_frame
+        from redox.qm.response_resume import inspect_source
+        resumed=execution.verify(resume_response_from);resume_case=Path(resumed['case'])
+        old=json.loads((resume_case/'plan.json').read_text());stage=json.loads((resume_case/'status.json').read_text())
+        placements=list(resume_case.parent.glob('placement*/completion.json'))
+        if (len(placements)!=1 or old['original_namespace']!=plan['original_namespace']
+                or old.get('numerical_settings')!=plan['numerical_settings'] or old['screening_variant']!='corrected'):
+            raise ValueError('One matched corrected control with the original protocol required')
+        completion=json.loads(placements[0].read_text());guard=resume_case/'residency_guard/owner.json'
+        owners=execution.load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','response_closed_owner')
+        reason=response_continuation_closure(stage,json.loads(guard.read_text()),completion,owners.alive)
+        frame,_,component_case=read_continuation_frame(resume_case);response=inspect_source(resume_case,frame)
+        plan.update(resume_components=dict(namespace=str(resume_response_from),source_case=str(component_case),frame=frame),
+            resume_response=dict(**response,closure=reason),response_checkpoint_continuation=True,maximum_wall_seconds=28800)
+        plan['source_sha256'].update(frame['source_sha256']);plan['source_sha256'].update(response['source_sha256'])
+        for p in [resume_response_from,resume_case/'status.json',resume_case/'screening_implementation/implementation.json',guard,placements[0]]:
+            plan['source_sha256'][str(p)]=sha256_file(p)
     atomic_write_json(plan_path,plan);spec['plan_sha256']=sha256_file(plan_path)
     atomic_write_json(output/'namespace.json',spec);reader.recheck()
     return spec
@@ -135,7 +168,8 @@ def launch(path,gpu,output):
     if plan.get('screening_variant'):
         expected=(80,3600,512*2**20);role='polymer_gradient_diagnostic'
     if plan.get('full_polymer_Hessian_control'):
-        expected=(80,14400,4*2**30);role='screening_polymer_Hessian_control'
+        expected=(80,28800 if plan.get('response_checkpoint_continuation') else 14400,4*2**30);role='screening_polymer_Hessian_control'
+        if plan.get('response_checkpoint_continuation') and not plan.get('resume_response'):raise ValueError('Explicit source-bound response continuation required')
         if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(36,32):raise ValueError('Full-Hessian control storage margins changed')
     if plan.get('energy_control'):
         from redox.workflows.screening_energy_panel import output_budget
@@ -171,13 +205,13 @@ def launch(path,gpu,output):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('prepare','prepare-polymer','prepare-Hessian','probe','launch'));p.add_argument('--spec',type=Path);p.add_argument('--reference',type=Path);p.add_argument('--resume-components',type=Path);p.add_argument('--archive',type=Path);p.add_argument('--out',type=Path);p.add_argument('--gpu',type=int);p.add_argument('--water-reference',action='store_true');p.add_argument('--molecular-control',choices=('closed','open'));p.add_argument('--screening-variant',choices=('installed','corrected'));a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('prepare','prepare-polymer','prepare-Hessian','probe','launch'));p.add_argument('--spec',type=Path);p.add_argument('--reference',type=Path);p.add_argument('--resume-components',type=Path);p.add_argument('--resume-response',type=Path);p.add_argument('--archive',type=Path);p.add_argument('--out',type=Path);p.add_argument('--gpu',type=int);p.add_argument('--water-reference',action='store_true');p.add_argument('--molecular-control',choices=('closed','open'));p.add_argument('--screening-variant',choices=('installed','corrected'));a=p.parse_args()
     if a.action!='launch':
         from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
-        with allocation_guard():host_capacity(1,minimum_ram_gib=2);os.sched_setaffinity(0,cpu_allocation(1))
+        with allocation_guard():host_capacity(1,minimum_ram_gib=4 if a.action=='prepare-Hessian' else 2);os.sched_setaffinity(0,cpu_allocation(1))
     if a.action=='prepare':result=prepare(a.archive.resolve(),a.out.resolve(),a.water_reference,a.molecular_control)
     elif a.action=='prepare-polymer':result=prepare_polymer(a.spec.resolve(),a.out.resolve(),a.screening_variant)
-    elif a.action=='prepare-Hessian':result=prepare_polymer_hessian(a.spec.resolve(),a.reference.resolve(),a.out.resolve(),None if a.resume_components is None else a.resume_components.resolve())
+    elif a.action=='prepare-Hessian':result=prepare_polymer_hessian(a.spec.resolve(),a.reference.resolve(),a.out.resolve(),None if a.resume_components is None else a.resume_components.resolve(),None if a.resume_response is None else a.resume_response.resolve())
     elif a.action=='probe':result=probe(a.spec.resolve())
     else:
         spec=execution.verify(a.spec.resolve());child,result=launch(a.spec.resolve(),a.gpu,a.out.resolve());print(json.dumps(result),flush=True);result=observe_budget(child,spec,result,a.out.resolve())
