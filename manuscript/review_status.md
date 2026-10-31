@@ -36,7 +36,7 @@ claims are provisional for release. New uncorrected admissions are held.
 | m9 | addressed in current scope | Remaining evidence/decision terms are defined in an SI table. |
 | m10 | addressed in current scope | Initial seed/counts, one-configuration scope and xTB symmetry detection are explicit. |
 
-The current article and SI are 21/29 pages; the focused deck has fifteen main and four supporting slides. Both PDFs compile without overfull boxes and the revised pages are visually checked. The self-contained upload compiles with matching text; no Overleaf project is connected.
+The current article and SI are 21/30 pages; the focused deck has fifteen main and four supporting slides. Both PDFs compile without overfull boxes and the revised pages are visually checked. The self-contained upload compiles with matching text; no Overleaf project is connected.
 
 The exact baseline enumerated viologen has checked MeCN reductions of −0.608/−1.208 V versus matched Fc and a finite local quaternization ΔG of −11.49 kJ/mol at 298.15 K. Three precursor starts pass independent geometry, derivative, nuclear, spin and resource checks. The seed span is 1.50 kJ/mol; rotor settings give −13.30 to −11.49 kJ/mol. This is a separated-ion capped-site model, with no HCl/base term. Salt association, exchange, reflux thermodynamics and polymer penalties remain unresolved. [Sources and reproduction](../validation/viologen_grafting_2026-10-31/README.md).
 
@@ -49,5 +49,19 @@ The 75-state extracted cache reconstructs Hessians, sampled derivative checks an
 The older [machine-readable comment audit](../results/validation/review_comment_audit_2026-10-26/current.json) binds its historical inspected sources; it is not a certificate for the current revision. [Publication acceptance criteria](../docs/PUBLICATION_READINESS.md) remain authoritative for completion.
 
 The exact viologen now has [twelve audited initial charged-polymer models](../validation/viologen_polymer_preparation_2026-10-31/README.md), including adjacent/spacer graphs in two configurations. SI Section 3.4 separates connectivity, global state hypotheses and PF6 dry-salt mass bookkeeping from uncomputed charged-polymer thermochemistry. This preparation advances M1 without closing its polymer assessment or M4.
+
+A subsequent [137-atom charged-polymer resource control](../validation/viologen_polymer_SCF_2026-10-31/README.md)
+passes actual SCF/force and execution review. The compact V100 calculation
+uses 29,964 MiB versus 87,026 MiB for the direct H100 reference, agreeing in
+energy/force within the declared numerical limits. The starting geometry is
+not stationary; solvent optimization, minimum checks, occupancy energies and
+operating-state coupling remain open. No charged-polymer G or material pass is
+reported from this pilot.
+
+A [422-MB local reviewer collection](../validation/reviewer_collection_2026-10-31/README.md)
+now consolidates eight checked data/replay packages and committed code/evidence.
+Archive integrity and a fresh isolated standard-Python extraction replay pass.
+Author/license metadata and public DOI deposition remain pending; the collection
+does not close the remaining scientific comments.
 
 An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall. The earlier seven-block/315-coordinate response execution probe used solute H1 and a frozen-solvent operator; its array/resource review remains scoped to instrumentation, without native equilibrium-response or G qualification. Fresh full Hessian and corrected checkpoint-reuse controls preserve the PCM/SMD H1 contribution. An unqualified restart that bypassed that term was explicitly rejected and stopped; it supplies no accepted result. See the [current assessment](../validation/screening_chemical_impact_2026-10-31/README.md).

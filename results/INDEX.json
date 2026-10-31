@@ -270,6 +270,23 @@
       "physical_replay": "validation/screening_chemical_impact_2026-10-31/energy_inputs.json",
       "status": "71_states_and_39_electronic_sensitivity_shifts_independently_checked",
       "scope": "Fixed geometries and unchanged active electronic protocol; retained nuclear terms are not promoted to new potentials"
+    },
+    "viologen_charged_polymer_solver": {
+      "guide": "validation/viologen_polymer_SCF_2026-10-31/README.md",
+      "current": "validation/viologen_polymer_SCF_2026-10-31/execution_agreement.json",
+      "source_snapshot": "validation/viologen_polymer_SCF_2026-10-31/manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2",
+      "status": "137_atom_charge4_initial_state_checked_optimization_and_G_pending",
+      "scope": "Exact route-bound bare-ion MeCN model; no intersite interaction strength or material pass"
+    },
+    "consolidated_reviewer_collection": {
+      "guide": "validation/reviewer_collection_2026-10-31/README.md",
+      "current": "validation/reviewer_collection_2026-10-31/summary.json",
+      "source_snapshot": "validation/reviewer_collection_2026-10-31/manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-10-31_reviewer_collection",
+      "archive": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-10-31_reviewer_collection.tar.zst",
+      "status": "local_review_draft_archive_checked_public_DOI_metadata_pending",
+      "scope": "Eight checked data packages plus committed code/evidence; cached replay, no new physical qualification"
     }
   }
 }

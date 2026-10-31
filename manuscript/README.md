@@ -1,17 +1,17 @@
 # Working scientific manuscript
 
 Open [the paper](manuscript.pdf) (21 pages) and
-[Supporting Information](supporting_information.pdf) (29 pages).
+[Supporting Information](supporting_information.pdf) (30 pages).
 Editable sources are [manuscript.tex](manuscript.tex),
 [supporting_information.tex](supporting_information.tex),
 [references.bib](references.bib) and [novelty_references.bib](novelty_references.bib).
 No Overleaf project is connected. A self-contained
-[upload ZIP](overleaf_upload_2026-10-31_screening_chemical_checked.zip) contains both documents,
+[upload ZIP](overleaf_upload_2026-10-31_ionic_solver_checked.zip) contains both documents,
 bibliographies, required figures and frozen numerical TeX inputs. Both exported documents compile with
 text identical to their checked local counterparts; this does not claim upload
 or remote synchronization.
 
-The [current evidence snapshot](evidence/2026-10-31_screening_chemical_checked/manifest.json)
+The [current evidence snapshot](evidence/2026-10-31_ionic_solver_checked/manifest.json)
 preserves the primary benchmark, grafting and PMDI occupancy evidence and adds
 the duplicate-aware empty-backbone comparison. Both configurations have twenty
 checked native inputs. Their 20/19 distinct structures give nominal 10-to-20
@@ -70,7 +70,7 @@ qualification. [Compiler facts](build_check.json),
 The restored workspace is deliberately small; the original manuscript history,
 bulk calculation records and earlier upload bundles remain in the archive
 identified by [restoration.json](restoration.json). The current figure snapshot
-is kept at `results/figures/manuscript/2026-10-31_screening_chemical_checked/`. Its small
+is kept at `results/figures/manuscript/2026-10-31_ionic_solver_checked/`. Its small
 PDFs are versioned as publication inputs, separately from runtime results.
 Do not modify existing evidence snapshots; append a new snapshot for verified
 scientific additions. Once an Overleaf project is connected, pull/merge before

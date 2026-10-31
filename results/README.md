@@ -5,7 +5,7 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 21/29-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 21/30-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates both empty-backbone sampling comparisons and
   portable numerical replay of its 75 native states, plus six fresh checked

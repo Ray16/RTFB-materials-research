@@ -60,6 +60,10 @@ def main():
     if (manifest.parent/'screening_V100_integration.json').exists():
         from check_screening_controls import audit as audit_screening
         screening_check = audit_screening(manifest.parent)
+    ionic_solver_check = None
+    if (manifest.parent/'ionic_compact_review.json').exists():
+        from check_charged_pilot import audit as audit_ionic_solver
+        ionic_solver_check = audit_ionic_solver(manifest.parent)
     ionic_preparation = manifest.parent/'ionic_preparation_replay.json'
     if ionic_preparation.exists():
         expected=json.loads(ionic_preparation.read_text())
@@ -88,6 +92,7 @@ def main():
         source['manuscript/check_screening_controls.py']=sha(PAPER/'check_screening_controls.py')
         if 'electronic_benchmark_implementation_sensitivity' in screening_check:
             source['src/redox/validation/screening_sensitivity.py']=sha(ROOT/'src/redox/validation/screening_sensitivity.py')
+    if ionic_solver_check is not None:source['manuscript/check_charged_pilot.py']=sha(PAPER/'check_charged_pilot.py')
     # Bind all frozen inputs through the end of compilation, including cached
     # raw structure records used by the prospective ionic-model demonstration.
     source.update(evidence['snapshot_sha256'])
@@ -142,6 +147,7 @@ def main():
                   additional_citation_check=citation_check,
                   solution_model_citation_check=solution_citation_check,
                   screening_implementation_check=screening_check,
+                  ionic_solver_check=ionic_solver_check,
                   visual_review="pending; record separately in visual_review.json, bound to these PDF hashes")
     (PAPER / "claim_check.json").write_text(json.dumps(claims, indent=2) + "\n")
     (PAPER / "build_check.json").write_text(json.dumps(report, indent=2) + "\n")

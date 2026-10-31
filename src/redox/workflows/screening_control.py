@@ -142,6 +142,12 @@ def launch(path,gpu,output):
         budget=output_budget(plan['nao'],plan['source_state']['mult'],plan['has_iron'])
         expected=(40,7200,budget);role='screening_energy_control'
         if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(32+budget/2**30,32):raise ValueError('Energy-control storage margins changed')
+    if plan.get('charged_polymer_pilot') and not plan.get('charged_polymer_optimization'):
+        expected=(40,7200,512*2**20);role='charged_polymer_SCF_gradient_resource_pilot'
+        if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(32.5,32):raise ValueError('Charged-pilot storage margins changed')
+    if plan.get('charged_polymer_optimization'):
+        expected=(40,28800,256*2**20);role='charged_polymer_solution_geometry_pilot'
+        if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(32.25,32):raise ValueError('Charged-geometry storage margins changed')
     if plan['role']!=role or (plan['maximum_host_RSS_GiB'],plan['maximum_wall_seconds'],plan['maximum_durable_output_bytes'])!=expected:raise ValueError('Exact bounded control resource class required')
     if proof['host']!=host or proof['namespace_sha256']!=sha256_file(path):raise ValueError('Exact node-local preflight required')
     if output.exists() or any((case/name).exists() for name in ('status.json','residency_guard','host_guard')):raise FileExistsError('Preserve earlier controls')
@@ -155,6 +161,8 @@ def launch(path,gpu,output):
         storage_floor=plan.get('minimum_initial_storage_GiB',2)
         if capacity['available_RAM_bytes']-promises<(plan['maximum_host_RSS_GiB']+32)*2**30 or shutil.disk_usage(case).free<storage_floor*2**30:raise RuntimeError('Control RAM or output headroom unavailable')
         cpus=cpu_allocation(2);device=gpu_suitability(gpu)
+        if plan.get('charged_polymer_pilot') and device['memory_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024):
+            raise RuntimeError('The charged-polymer reference needs its declared larger-memory device')
         if (host,gpu) not in free_slots([host]):raise RuntimeError('GPU occupied; no screening control started')
         with (output/'command.log').open('x') as log:child=subprocess.Popen(['taskset','--cpu-list',','.join(map(str,cpus)),*argv],env=env,stdout=log,stderr=subprocess.STDOUT,stdin=subprocess.DEVNULL,start_new_session=True,preexec_fn=lambda:os.sched_setaffinity(0,cpus))
         result=dict(status='screening_control_submitted_start_unverified',host=host,GPU=gpu,pid=child.pid,process_start=Path(f'/proc/{child.pid}/stat').read_text().rsplit(')',1)[1].split()[19],CPU_affinity=cpus,capacity=capacity,remaining_RAM_promises_bytes=promises,device=device,argv=argv,namespace=str(path),namespace_sha256=sha256_file(path),started=time.time(),maximum_wall_seconds=plan['maximum_wall_seconds'],maximum_durable_output_bytes=plan['maximum_durable_output_bytes'],budget_observer_owner=dict(host=host,pid=os.getpid(),process_start=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]),budget_observer_source_sha256=sha256_file(output/'budget_observer_source.py'),native_G_qualified=False,production_storage_gate_changed=False)

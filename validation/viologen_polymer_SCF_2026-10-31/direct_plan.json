@@ -1,0 +1,243 @@
+{
+  "role": "charged_polymer_SCF_gradient_resource_pilot",
+  "charged_polymer_pilot": true,
+  "source_id": "charged_polymer_resource_pilot",
+  "state": "rest",
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/smooth_CDS_2026-10-25/pilot/summary.json": "b76f084e6a59c04feb7a54e63ab1df659d55c5d0a7f46b2eb01188ec8297eceb",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/smooth_CDS_2026-10-25/pilot/independent_review.json": "a2fba05af1f68ac74cd420875b012912259f267d8a9789cb2913452566ca1df9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/qualify_smooth_cds.py": "6ac8a5659079a23a8d50320898f508c9f0ff148ae3b3e26b6723308574deb71f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/reviews/2026-10-25/pmdi_first_site_grafting_checked/summary.json": "07ff7f10d6f111d14f0b97afdf202c343dc5213e4ac9bf0ebb0bc87ebba129bb",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/CDS_contact_2026-10-25/alternating_conf005.json": "575683851ea96596acdc4f16ec92c4a0ad43e7f1f18504efad93977c8de37b99",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/smd.py": "287d43f251a16c50791f35fcf43eba12b92bd2b5aa0b3c739a8e3eb465c0ccfc",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/smd_experiment.py": "c19c5e8826dd1fa3437a6224f9fcfded95ce709069f3e33b66f878a34f3c621d",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/grad/smd_experiment.py": "5ef6e57f0945b2190d5efd2b49f7da529a23f68d3ccd92fc6861d8851bd40070",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/polymer_models/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/energy/alternating__occ_none__conf005/rest/opt.xyz": "63d261687916041e56e9c2ea6213ebd046dd454d924a47f26703e1d9e083e606",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_16aa455cb6d2/rest/opt.xyz": "01e7823fbda7b6cbf3f3b20490d4b5949e929ae32ca2cd9abb3e442e8ca30869",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/grafting/2026-10-19_mecn_reference/merrifield_local_chloride/rest/opt.xyz": "a4db19e0cf2bcffc231070edff3be4eb03eff3abad847999787518b3662857e6",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/grafting/2026-10-19_mecn_reference/chloride/rest/opt.xyz": "f4cf65f4e14ef93332eb3949ce16cf25aea2a16450b2e92123e0ea4134058aa9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_neutral/rest/opt.xyz": "1aa91da990fca77b47d22810f3ab1d17362fcf984918e450dd2171acb966e4f9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_protonated/rest/opt.xyz": "d2f2434161efd0e8b71f502da9f5b9a2a942356b35f787743cf82d68a14ccdca",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_chloride_pair/rest/opt.xyz": "ca1307db928dbe53022de318b2de13a50edacd6395e4a2b205172d73b396eeac",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/polymer_models/2026-10-21_spacing_extra_thermal/thermal/occ_none__pose1/rest/opt.xyz": "737f6546a0c6e62ac962ec01be5ba693453d651edba7e26e73cb884a38fcd380",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/design_pmdi_ethyl/neu/opt.xyz": "7280f76f5e5b85b115181929fca6b3fbb5916dd86028df9a5325a8e1a3abfc9b",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/polymer_models/2026-10-24_streamed_native/baseline__design_pmdi_ethyl__occ_2/thermal/baseline__design_pmdi_ethyl__occ_2__pose0/rest/opt.xyz": "794467949799326a943f1434802ea48af97c052622f35061e1f04a4a3a317604",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/polymer_models/2026-10-23_crest_refinement/baseline__design_pmdi_ethyl__occ_3_native_switch_curvature/thermal/baseline__design_pmdi_ethyl__occ_3__pose0/rest/opt.xyz": "fe912c560a247ef49ff5a44b76587cac49355188b45fdf6416a5ab0915893e8f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/review_smooth_cds.py": "35ccbe46d57b44d9339b4f0886624e5536a8f1edc9f60e277aaf338bb0c5d54e",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libsolvent.so": "6b5ac2a3e60e71c71f905c9506ddac773ae3ffa2582d0ee7c6915520d2f53bdf",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/worker.py": "b25b25b1a1828848cb812805ec23c70a0ffe935a8e4dc14abdbf7ffc697a1c8d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/helper.py": "8775c8093a84c19765ce3bf4824a498a6f54da8720b72fa16b01755c56d6c3d6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/checkpoints.py": "8f0713974bc83a752d10515f1ace94b8d522ff48796e6de5d1c71ce7279ddd47",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/kernel.cu": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/host_guard.py": "218b850c43edc1b25d41c56860988e281db103d8c625f533de04f2e6e113e9ab",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/preparer.py": "0debd93d09ad30e8540dc59cbecf9a793d74039cd7895a85fc2c0168a076d971",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/input.xyz": "de65662c48fa86d741c2c7d54bab0ee133f283877287dc3d2fdf5bee4c5c7328",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/preparation.json": "8e2cb1e2804155cfc91243a76b5e3a4e13dbdc5ff4c68a05869383b5c1202771",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/route_gate.py": "9504ee0b1f7b5af5fb8d15ce6b89a375505e7b52cce7406b20834267a7202db6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/geometry_auditor.py": "91b6fbd5b8973f23d43be393302af3cdab35b88b6e544ebd35c6d3b0d6ed00c3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/initial_audit.json": "a1f8319f29d5c8c77b76295c0bf88176bfd1889095ec489fcc445f7afbf2a750",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_large_GPU_reference/sources/prospective_route.json": "4e1fcf4ee86919bdd5207ac5f4d90680fb0b05199e20548475484792c0d03b21",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/pipeline/smooth_cds_control.py": "b9b687cce8bff54dd0fa2ce2dd7f62a457fca98a994386f87400e52337fbe4b5",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/pipeline/run_pi_stacking.py": "d748caad31e9c6295a006eef9d56036c2d9c0a25b5f06d7a156652cb55752078",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/workflows/resources.py": "174858d1e92fb7f170508ef2df5bb4db2931868075bcdea50fe561194ecf1f7d",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/fleet/tensor_runtime_worker.py": "070cb6517a50fe7d8a0245b0fbaf01aaefcd86ddfa14890a052faaebb0d3c26a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/gen_grid.py": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py": "28bc63a04db57d13a6cad4153b72927eff1d9d448c520efa8cc6b889b6b10d17",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/libgdft.so": "fa89413d5e465b461f5c9e62b00ea58d30b2efd24ed54df75fd1299ecfe13437",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/core/common.py": "ebbbfd4df187c30b2b80e1e4ad4b483efb4bf715b8b256c4d560656f61c75a72",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/core/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/core/io.py": "4069a181d62207b31f186725b7cb277ccabf4cd2101e808060ed6f4ee354ed6a"
+  },
+  "exact_candidate_alias": "search_viologen_b7a4dca7a5e1",
+  "prepared_case": {
+    "smiles": "C[C@H](C[C@@H](C[C@H](C[C@@H](CCc1ccccc1)c1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1)c1ccc(CCl)cc1)c1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1)c1ccccc1",
+    "mapped_smiles": "C[n+]1ccc(-c2cc[n+](Cc3ccc([C@@H:1004]([CH2:1003][C@H:1002](c4ccccc4)[CH3:1001])[CH2:1005][C@@H:1006](c4ccc(CCl)cc4)[CH2:1007][C@H:1008](c4ccc(C[n+]5ccc(-c6cc[n+](C)cc6)cc5)cc4)[CH2:1009][CH2:1010]c4ccccc4)cc3)cc2)cc1",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [
+      2,
+      4
+    ],
+    "site_states": [
+      "styrene",
+      "grafted",
+      "benzyl_chloride",
+      "grafted",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CCW",
+      "CW",
+      "CCW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 137,
+    "charge": 4,
+    "model_loading_per_repeat": 0.4,
+    "model_conversion_per_reactive_site": 0.6666666666666666,
+    "graph_sha256": "5dd0c80e5b68ba5da3b88c74e945324090235eb1a8142c7c625ed5530101bdcb",
+    "key": "alternating__occ_2_4",
+    "proposed_global_states": [
+      {
+        "id": "oxidized",
+        "charge": 4,
+        "mult": 1
+      },
+      {
+        "id": "one_reduced",
+        "charge": 3,
+        "mult": 2
+      },
+      {
+        "id": "two_reduced_singlet",
+        "charge": 2,
+        "mult": 1
+      },
+      {
+        "id": "two_reduced_triplet",
+        "charge": 2,
+        "mult": 3
+      },
+      {
+        "id": "three_reduced",
+        "charge": 1,
+        "mult": 2
+      },
+      {
+        "id": "four_reduced_singlet",
+        "charge": 0,
+        "mult": 1
+      },
+      {
+        "id": "four_reduced_triplet",
+        "charge": 0,
+        "mult": 3
+      },
+      {
+        "id": "four_reduced_quintet",
+        "charge": 0,
+        "mult": 5
+      }
+    ],
+    "charge_or_spin_localization_established": false,
+    "explicit_counterions_in_coordinates": false,
+    "calculation_ion_convention": "bare_charged_polymer_with_separated_omitted_spectators",
+    "composition_bounds": {
+      "1": {
+        "polymer_cation_mass_g_mol": 939.732,
+        "counterion_mass_g_mol": 579.8480000000001,
+        "mass_g_mol": 1519.58,
+        "bare_polymer_charge": 4,
+        "reference_salt_charge": 0,
+        "capacity_upper_bound_mAh_g": 35.274853769283474,
+        "capacity_lower_bound_mAh_g": 0.0,
+        "electrons_per_graft": 1,
+        "composition_reference_label": "declared fully oxidized PF6 salt reference; no measured ion content",
+        "additional_inactive_mass_g_mol": 0.0,
+        "experimental_loading_inferred": false,
+        "accessible_capacity_established": false,
+        "mobile_ion_mass_during_redox_established": false
+      },
+      "2": {
+        "polymer_cation_mass_g_mol": 939.732,
+        "counterion_mass_g_mol": 579.8480000000001,
+        "mass_g_mol": 1519.58,
+        "bare_polymer_charge": 4,
+        "reference_salt_charge": 0,
+        "capacity_upper_bound_mAh_g": 70.54970753856695,
+        "capacity_lower_bound_mAh_g": 0.0,
+        "electrons_per_graft": 2,
+        "composition_reference_label": "declared fully oxidized PF6 salt reference; no measured ion content",
+        "additional_inactive_mass_g_mol": 0.0,
+        "experimental_loading_inferred": false,
+        "accessible_capacity_established": false,
+        "mobile_ion_mass_during_redox_established": false
+      }
+    },
+    "quantum_calculation_admitted": false,
+    "native_G_qualified": false,
+    "material_admission": false,
+    "configuration": "alternating"
+  },
+  "selected_initial_geometry_sha256": "de65662c48fa86d741c2c7d54bab0ee133f283877287dc3d2fdf5bee4c5c7328",
+  "atoms": 137,
+  "charge": 4,
+  "mult": 1,
+  "selected_global_state": {
+    "id": "oxidized",
+    "charge": 4,
+    "mult": 1
+  },
+  "solvent_model": {
+    "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+    "solvent": "acetonitrile",
+    "electrostatic_model": "SMD",
+    "electrostatic_surface_points": 590,
+    "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+    "CDS_points_per_sphere": 2030,
+    "supported_elements": [
+      "C",
+      "H",
+      "N",
+      "O",
+      "Cl"
+    ],
+    "scientific_model_changed": true,
+    "primary_candidate_admission": false
+  },
+  "calculation_ion_convention": "bare_charged_polymer_with_separated_omitted_spectators",
+  "explicit_counterions_in_coordinates": false,
+  "requested_medium": "acetonitrile",
+  "quantum_settings": {
+    "xc": "r2scan",
+    "basis": "def2-svp",
+    "disp": "d4",
+    "solvent": "acetonitrile",
+    "grid_level": 3,
+    "SCF_conv_tol": 1e-12,
+    "SCF_conv_tol_grad": 1e-08,
+    "SCF_max_cycle": 200,
+    "gradient_grid_response": true
+  },
+  "execution_profile": "direct_large_GPU_reference",
+  "maximum_host_RSS_GiB": 40,
+  "minimum_free_GiB": 32,
+  "maximum_peak_GPU_MiB": 88000,
+  "minimum_GPU_memory_MiB": 81920,
+  "maximum_wall_seconds": 7200,
+  "maximum_durable_output_bytes": 536870912,
+  "minimum_initial_storage_GiB": 32.5,
+  "minimum_live_storage_GiB": 32,
+  "geometry_optimization_performed": false,
+  "native_G_qualified": false,
+  "material_admission": false
+}

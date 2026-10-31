@@ -1,0 +1,46 @@
+{
+  "status": "immutable_scoped_checked_workflow_records",
+  "source_base_commit": "66254a7b",
+  "files_sha256": {
+    "compact_review.json": "50881e6a1c8040223efd0150f2928ecbb0ce442377d19e59a881f96495745b0f",
+    "compact_plan.json": "1e7736ad109733ef819a6c9bbde08bada670d453ef4550b311a60478b370ff8f",
+    "direct_review.json": "70e3b09bd1f1ef6af85453ec42d35c070b291831b616e149eba1d9d9b24cb701",
+    "direct_plan.json": "c2359fd8e61e0b5e11837de5b5570b4caa7a8977fc92a9bc2931727341077d92",
+    "execution_agreement.json": "9ba1cdc4ca131d91e1c271df0112f1521b76398a32b049b304627cc805bc865b",
+    "original_memory_failure.json": "1f4b87f7ddf020b16c60e1a6fbae0dadbe70d6720d0c7f2729fd2209580af594",
+    "README.md": "bac539c51d84c3610adee239a4842a0274cf8b27606d58c27abaaee7fb749241",
+    "producer_snapshots/0_charged_polymer_pilot.py": "4e2f62a5ed0e2927c4e4f8db6120e1c939ca17ebcf1a021b980088744ff4a470",
+    "producer_snapshots/1_run_charged_polymer_pilot.py": "b25b25b1a1828848cb812805ec23c70a0ffe935a8e4dc14abdbf7ffc697a1c8d",
+    "producer_snapshots/2_run_charged_polymer_optimization.py": "dfc9cb0d0fd65f22cdb5fccbd7daef66807d706c718ec6c0e6dbdb6a17a1ef2e",
+    "producer_snapshots/3_review_charged_polymer_pilot.py": "8448d9888546c2fb30023788d6a3df1b72e84ec5d50cf010d7d81c9f65ab6b64",
+    "producer_snapshots/4_review_screening_polymer_hessian.py": "becc90ef8ad819d7659e1ce8d43c869ab799ab9cd6969f2ab3f71bb657275449",
+    "producer_snapshots/5_response_resume.py": "2ba6a56cd7585b4be7bb216f68e7691e8f0c588a8f7a5aed6c138d45ac39f138"
+  },
+  "as_used_producers": {
+    "src/redox/workflows/charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/0_charged_polymer_pilot.py",
+      "sha256": "4e2f62a5ed0e2927c4e4f8db6120e1c939ca17ebcf1a021b980088744ff4a470"
+    },
+    "scripts/validation/run_charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/1_run_charged_polymer_pilot.py",
+      "sha256": "b25b25b1a1828848cb812805ec23c70a0ffe935a8e4dc14abdbf7ffc697a1c8d"
+    },
+    "scripts/validation/run_charged_polymer_optimization.py": {
+      "snapshot": "producer_snapshots/2_run_charged_polymer_optimization.py",
+      "sha256": "dfc9cb0d0fd65f22cdb5fccbd7daef66807d706c718ec6c0e6dbdb6a17a1ef2e"
+    },
+    "scripts/validation/review_charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/3_review_charged_polymer_pilot.py",
+      "sha256": "8448d9888546c2fb30023788d6a3df1b72e84ec5d50cf010d7d81c9f65ab6b64"
+    },
+    "scripts/validation/review_screening_polymer_hessian.py": {
+      "snapshot": "producer_snapshots/4_review_screening_polymer_hessian.py",
+      "sha256": "becc90ef8ad819d7659e1ce8d43c869ab799ab9cd6969f2ab3f71bb657275449"
+    },
+    "src/redox/qm/response_resume.py": {
+      "snapshot": "producer_snapshots/5_response_resume.py",
+      "sha256": "2ba6a56cd7585b4be7bb216f68e7691e8f0c588a8f7a5aed6c138d45ac39f138"
+    }
+  },
+  "submission_ready": false
+}

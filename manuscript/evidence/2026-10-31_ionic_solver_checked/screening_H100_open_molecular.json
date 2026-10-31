@@ -1,0 +1,526 @@
+{
+  "status": "small_molecule_screening_energy_force_Hessian_control_independently_checked",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/namespace.json",
+  "control": "open",
+  "charge": 0,
+  "mult": 2,
+  "device": {
+    "index": 0,
+    "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+    "name": "NVIDIA H100 NVL",
+    "memory_MiB": 95830.0,
+    "compute_capability": "9.0"
+  },
+  "atoms": 4,
+  "derivative_checks": [
+    {
+      "variant": "installed",
+      "atom": 0,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.403209404933306e-06,
+      "energy_gradient_error_Ha_Bohr": 5.112436792922586e-08
+    },
+    {
+      "variant": "installed",
+      "atom": 0,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.5706683469958513e-06,
+      "energy_gradient_error_Ha_Bohr": 2.0804417840816518e-07
+    },
+    {
+      "variant": "installed",
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.456156853700868e-06,
+      "energy_gradient_error_Ha_Bohr": -4.263476140315071e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.6829413985067895e-06,
+      "energy_gradient_error_Ha_Bohr": 6.039393528206381e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 0,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.955112458909255e-05,
+      "energy_gradient_error_Ha_Bohr": -2.8421791063704585e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 0,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.4919859575868867e-05,
+      "energy_gradient_error_Ha_Bohr": 3.197434147590393e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 1,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 9.646735917005534e-06,
+      "energy_gradient_error_Ha_Bohr": -4.723017311969446e-08
+    },
+    {
+      "variant": "installed",
+      "atom": 1,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 4.20287164235939e-06,
+      "energy_gradient_error_Ha_Bohr": -1.90113211853693e-07
+    },
+    {
+      "variant": "installed",
+      "atom": 1,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.72645541867055e-05,
+      "energy_gradient_error_Ha_Bohr": -7.105294687747333e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 1,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.124109020486511e-05,
+      "energy_gradient_error_Ha_Bohr": 1.3266985366847528e-15
+    },
+    {
+      "variant": "installed",
+      "atom": 1,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 0.00037288264191489407,
+      "energy_gradient_error_Ha_Bohr": -4.9737990365608445e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 1,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 0.0001811669869861033,
+      "energy_gradient_error_Ha_Bohr": 7.1054284951995715e-12
+    },
+    {
+      "variant": "installed",
+      "atom": 2,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 2.0330952202139254e-05,
+      "energy_gradient_error_Ha_Bohr": -1.1389704630826447e-10
+    },
+    {
+      "variant": "installed",
+      "atom": 2,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 7.141885907124346e-06,
+      "energy_gradient_error_Ha_Bohr": -1.1974747183424173e-09
+    },
+    {
+      "variant": "installed",
+      "atom": 2,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 1.1411107120508891e-05,
+      "energy_gradient_error_Ha_Bohr": -2.7677929669098905e-08
+    },
+    {
+      "variant": "installed",
+      "atom": 2,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 4.394359927251946e-06,
+      "energy_gradient_error_Ha_Bohr": -1.0950047840555324e-07
+    },
+    {
+      "variant": "installed",
+      "atom": 2,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 0.0003788279708955323,
+      "energy_gradient_error_Ha_Bohr": -4.9737924377815835e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 2,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 0.00017697399278471715,
+      "energy_gradient_error_Ha_Bohr": 6.03961996649997e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 3,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 2.0330967166245024e-05,
+      "energy_gradient_error_Ha_Bohr": 3.531670268730469e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 3,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 7.141887147744171e-06,
+      "energy_gradient_error_Ha_Bohr": -1.2401075080020751e-09
+    },
+    {
+      "variant": "installed",
+      "atom": 3,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 1.1411116758465592e-05,
+      "energy_gradient_error_Ha_Bohr": 2.777030635352576e-08
+    },
+    {
+      "variant": "installed",
+      "atom": 3,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 4.394361847011604e-06,
+      "energy_gradient_error_Ha_Bohr": 1.0953245895744049e-07
+    },
+    {
+      "variant": "installed",
+      "atom": 3,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 0.0003788280443991092,
+      "energy_gradient_error_Ha_Bohr": 1.4210754896141981e-11
+    },
+    {
+      "variant": "installed",
+      "atom": 3,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 0.0001769741121149167,
+      "energy_gradient_error_Ha_Bohr": -7.460708707387054e-11
+    },
+    {
+      "variant": "corrected",
+      "atom": 0,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.403192313627899e-06,
+      "energy_gradient_error_Ha_Bohr": 5.1003578416034713e-08
+    },
+    {
+      "variant": "corrected",
+      "atom": 0,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.5706717055991425e-06,
+      "energy_gradient_error_Ha_Bohr": 2.0815076257041727e-07
+    },
+    {
+      "variant": "corrected",
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.456154986983758e-06,
+      "energy_gradient_error_Ha_Bohr": -1.4210753246120177e-10
+    },
+    {
+      "variant": "corrected",
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.6829447656820343e-06,
+      "energy_gradient_error_Ha_Bohr": -7.104412666782728e-12
+    },
+    {
+      "variant": "corrected",
+      "atom": 0,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.955106514929313e-05,
+      "energy_gradient_error_Ha_Bohr": 8.52650491782854e-11
+    },
+    {
+      "variant": "corrected",
+      "atom": 0,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.4919897667321974e-05,
+      "energy_gradient_error_Ha_Bohr": -2.131636118572963e-11
+    },
+    {
+      "variant": "corrected",
+      "atom": 1,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 9.64673823933836e-06,
+      "energy_gradient_error_Ha_Bohr": -4.747176315933466e-08
+    },
+    {
+      "variant": "corrected",
+      "atom": 1,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 4.2028699888595385e-06,
+      "energy_gradient_error_Ha_Bohr": -1.9005992665799276e-07
+    },
+    {
+      "variant": "corrected",
+      "atom": 1,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 7.726449125692792e-05,
+      "energy_gradient_error_Ha_Bohr": 6.25803203125819e-16
+    },
+    {
+      "variant": "corrected",
+      "atom": 1,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 3.124113485742191e-05,
+      "energy_gradient_error_Ha_Bohr": 9.947660880961715e-11
+    },
+    {
+      "variant": "corrected",
+      "atom": 1,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 0.00037288399665443884,
+      "energy_gradient_error_Ha_Bohr": -1.1368685479650518e-10
+    },
+    {
+      "variant": "corrected",
+      "atom": 1,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 0.00018116706858207305,
+      "energy_gradient_error_Ha_Bohr": -1.4210871790091156e-11
+    },
+    {
+      "variant": "corrected",
+      "atom": 2,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 2.0330967957410528e-05,
+      "energy_gradient_error_Ha_Bohr": -1.7074307245845688e-10
+    },
+    {
+      "variant": "corrected",
+      "atom": 2,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 7.141891429070423e-06,
+      "energy_gradient_error_Ha_Bohr": -1.2720843128866122e-09
+    },
+    {
+      "variant": "corrected",
+      "atom": 2,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 1.1411118012235619e-05,
+      "energy_gradient_error_Ha_Bohr": -2.7777400938861635e-08
+    },
+    {
+      "variant": "corrected",
+      "atom": 2,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 4.394363919413921e-06,
+      "energy_gradient_error_Ha_Bohr": -1.0954310625645516e-07
+    },
+    {
+      "variant": "corrected",
+      "atom": 2,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 0.00037882841546514975,
+      "energy_gradient_error_Ha_Bohr": -5.684340785108223e-11
+    },
+    {
+      "variant": "corrected",
+      "atom": 2,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 0.00017697395910545798,
+      "energy_gradient_error_Ha_Bohr": -9.947597199668824e-11
+    },
+    {
+      "variant": "corrected",
+      "atom": 3,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 2.0330988311105758e-05,
+      "energy_gradient_error_Ha_Bohr": -1.4231869849279377e-10
+    },
+    {
+      "variant": "corrected",
+      "atom": 3,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 7.141888795616081e-06,
+      "energy_gradient_error_Ha_Bohr": -1.2543180799573506e-09
+    },
+    {
+      "variant": "corrected",
+      "atom": 3,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 1.1411121970753311e-05,
+      "energy_gradient_error_Ha_Bohr": 2.7713452156827995e-08
+    },
+    {
+      "variant": "corrected",
+      "atom": 3,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 4.394366935561767e-06,
+      "energy_gradient_error_Ha_Bohr": 1.0952889546592473e-07
+    },
+    {
+      "variant": "corrected",
+      "atom": 3,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_Hessian_error": 0.00037882728748829303,
+      "energy_gradient_error_Ha_Bohr": 1.4210853431957007e-10
+    },
+    {
+      "variant": "corrected",
+      "atom": 3,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_Hessian_error": 0.00017697400004359503,
+      "energy_gradient_error_Ha_Bohr": -1.0658153868851468e-11
+    }
+  ],
+  "differences": {
+    "energy_Ha": 1.4921397450962104e-13,
+    "gradient_Ha_Bohr": 1.0777836956243902e-14,
+    "Hessian_Ha_Bohr2": 1.861510945389e-12
+  },
+  "maximum_relative_Hessian_error": 0.00037882841546514975,
+  "maximum_energy_gradient_error_Ha_Bohr": 2.0815076257041727e-07,
+  "polymer_implementation_qualified": false,
+  "native_G_qualified": false,
+  "production_default_changed": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/namespace.json": "0930ef9a797e1bef52ddfdeb28868ef22473df6f6abc396871c95a9ce5c7dd7b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/plan.json": "dc7adff4fffb79435dba22cc77a3bd8bdab33b9b5400f77d1fe0362c32faaeed",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/sources/molecule.json": "866b192ee5112042b3e54dd98b78c0cad84b03f260e0d9e9f05c684b81500de7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/status.json": "99a3e3e3cf0900e6a38a14a9f68461bbae0ec1a6b62cf8277f4bb699c9dd0fec",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/placement/launch.json": "2d2f617432ed679657476a99645822059f5cdac0bc764c8a6c4295868d02d3ac",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/placement/completion.json": "3b54d3c5e0166ccf6f958a0ca84acb333dbfa4258aa7d61e91730eb85dcf8d44",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/host_guard/status.json": "811eaf9d6d2b8018e95dbf6c63784541bc18ad59eb0bfac570d652feff7452f2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/tensor_runtime/status.json": "b3cb37e62557cae7da42f02de12ce6e22fd400809456552ca0224c90388b0751",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/residency_guard/owner.json": "e0b9c458837888ab65dbe8848ffcf850870108dd0514c6c06981d82557a490dd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/residency_guard/state.json": "f016118d4dfea211252aa64ae08a4fcf8e19801b9e8ae03a611b50cef603d5d1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_000/evaluation.json": "fb62c43ca18afcd1445494a361477f3e025532d964bbdb0c52ca22cdd456cb1e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_001/evaluation.json": "e023ff93e3e69ced27ad38d30837b2d2c8faf1d891be0a573dea6d871b7c06e7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_002/evaluation.json": "fcdd241c1c68dc052d450a8a4a9d354e0ab456427612892e2a5b01752cef6fc3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_003/evaluation.json": "7a80df95f655ddbde45c0bb3adcffbadf45c3c58ae9546a71ed6c054acc59095",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_004/evaluation.json": "2cc97c25b5eff461f10e5bce1561226912393cd43377329d5d816f4118fc3549",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_005/evaluation.json": "59c4779d0b37c730068add06a670da02bfa5107eaaef42386ae10f936fd27f1d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_006/evaluation.json": "73df471be1315cbe442db7b95fa587e59b890a89009ec858913b3f19c4af0cb2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_007/evaluation.json": "c3a1860eb044194980d82817795ec7bbc00b89d19669876912ae8b96f688af38",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_008/evaluation.json": "267ea4b5a9b77a1ace13ca6825353aa96794755b79bb85708cd65060c7474c4f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_009/evaluation.json": "af43a40995b24205c5387b43a1b417363584214d8d5f23bef617bad37b3aa486",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_010/evaluation.json": "3be400b14556ab1e8bdc39939679f783698fb0ac0c0fb86cf9b8a81eca5bc822",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_011/evaluation.json": "12f1fefb1747edfc7a460d22fe17fb16773e3a94014092fe12faa80a6e3d7ce9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_012/evaluation.json": "e96b3af73937c79649b5e98ef500631fb2155ae5b4192911cbddfac3c7f4dca1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_013/evaluation.json": "387df7a6e562b8b812e9ac27866874ba926cadb5a8dffe4525d9eeb9359b9a24",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_014/evaluation.json": "0081ae88fd812ece7054523ed6c774c57fa689322a1ec7d007937bafd766bc75",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_015/evaluation.json": "288fda0edd8adb03034df06dc7ed5b0d9017b80aad02e771eba3171985b954c2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_016/evaluation.json": "7c2f97293d35df482723a559b2b641b7bc2dfd3da452e5276e2378e4b97d8046",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_017/evaluation.json": "45fee153519b77f34ae32ec75deb5cc37fa8b3bc17e08236798d389d097df2f6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_018/evaluation.json": "fe2b36d93b92b649664f2ac1b6f912828093cd219d4e5cf875ca17c91a7f8fc2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_019/evaluation.json": "82d65768d92bbd9f5bb58072b1b86049cb4b6353f0c4213a5e1657974b5554a5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_020/evaluation.json": "f614f7503b109437497af6766a5a777ff1cbeefd2549de993d4dbc3dfa112e60",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_021/evaluation.json": "4839066f19793c1300a6d3c7af0e69026eb49dc9883bb494cc8890bee65b8b39",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_022/evaluation.json": "8279dba8bc5eb4a615e95d6eba2ca10f559268d7378dbf3d1d1575930cc58fe8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_023/evaluation.json": "8b1a8c0409ab8dd62516a9b3191280baea8c0b3d4b1ed531968874d9c06660a6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_024/evaluation.json": "c47c403e1af2305903692998f7d1db349b3739391380bd25c078cd6e31b360be",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_025/evaluation.json": "954154c54770ccc6e71c8e42fbc30f2ac17b4b73517eb7eb661f7cb0e094e7ab",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_026/evaluation.json": "40b1cd91c6612213e48bacb8747e04393e021a8d23fd35a8299d8c5d06294b60",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_027/evaluation.json": "8fb9309f1362ec45149a422f4cdc18cecdb29ce40a0b118258be26106eaedebe",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_028/evaluation.json": "01dfb2dc47779c3198ddb4c75407e424023e8245686c1f3c647ade377833913a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_029/evaluation.json": "8fe786fa283ad463df2b1f241c26d1592a96dbd1fe5676b1f1c1e4d7ebb2ca38",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_030/evaluation.json": "b19adda00f483eb66dd12518f1a21a730737e433c018447c93fd455e2ec4fe87",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_031/evaluation.json": "b8c273636ba188afae47d5e0e253152e29a1400fe437ca443b312ff9fbc9c05a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_032/evaluation.json": "41e16c64c981a9f51579bd30026625b7f50729432c52f21fcf70231bcf5aa606",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_033/evaluation.json": "22388e50c43f233b17c2b9f315048e290bdd4e46dfedc73f859f3831b31c1b2c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_034/evaluation.json": "6f0bcb181cb7bd00a5fcc9dc6fb4991213ffe0be63aec7983ea67f59c69c5d6a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_035/evaluation.json": "3940be6ff591ce896921951a9fbe6a94c49e8158acef22149ba7df7cf919c509",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_036/evaluation.json": "122d0b358ec758b49c1970d60e30e7724a5b275f6493af411b20c4065c03d2b4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_037/evaluation.json": "c7d9c131c207011ff19f5984d653773baa622c5d01e3882a3fa6dea9ab8f69a4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_038/evaluation.json": "46fc689eb974e18d62eb478bc12d31e80201d6ce52ad542f8f62487a8798b2d2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_039/evaluation.json": "0812ba82e67bd9425d16fe8ff81039d111fb6eb108af4e7ce6b0e28e5e191a5b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_040/evaluation.json": "31526815892842c573754374440f330fd14e1aabeada3287746bddce4e3d521a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_041/evaluation.json": "2ffc0ae6d260de09daaae40f6e2aedd7b82196a58f46b313496ee6c1919f5f67",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_042/evaluation.json": "1fe3bc6056c7efe0967fd61f4e30929b53d44f40b2da93593be49125eb62e880",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_043/evaluation.json": "56ee0a7465c8d0f13e8084489537da7389e0ffe7723633811d5b88361c5ba358",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_044/evaluation.json": "e4c78709397e8da453c0338be2d874407ae1304823cb48aec319d3410a701083",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_045/evaluation.json": "9db0f4e94bd0119fa5d42ed185017a04b6962bb6de71f21904e55978f68ef729",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_046/evaluation.json": "d857b7b14de38eccf35e1a9a1447d3b0efec260f58ea2078f3aede7d24bb6404",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_047/evaluation.json": "ecc8bdc155575cce0c7b3771c756854d6c7ab13e157ae12f51d7caa490f6290a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/point_048/evaluation.json": "64322f6647fed2f8f9169f7dce0fc07ee0644015f12577b3910c9b6d18707dee",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/Hessian.npy": "a39c6905d57a27856e9b7c160622380d7226d5d467ac400a9efc5a2b8bf2515c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/installed/derivatives.json": "12e6f6389ea22d704aa0b4c4c14fbe55c6da7958f39f7945b58deead2cc0d324",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_000/evaluation.json": "3f1e4fac69149895026eb9eafca20c2985ad80c8f6106a1418871330b2e352ae",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_001/evaluation.json": "6fb8129cfc83debd0190cf5a7ba8068cd963df7f803c17acc23e97706f39d618",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_002/evaluation.json": "d7a13a128bf11261c8724a2596fded82908c560c57a4c1e590ea9484f2089068",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_003/evaluation.json": "e2579ccfaa44d976cac4eab7be0d806ebba18603a6a6459e415d360dfbd7b3c5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_004/evaluation.json": "d9b407e069f4b9875656efed98ca910388e65abb832e026ff898e8e7357eea53",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_005/evaluation.json": "3b66acfe008c0851219e4ff4607a7da26d6a1e9acd9999ed4f516537dfbba5d0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_006/evaluation.json": "a7a10913f0947e0c9770e36e26e1002b3a1aa8036c9ce082c23040b2092585d6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_007/evaluation.json": "05bdae41c31553c5a7c6d0f0cb419d45d5a59dc2e9d65e8981ad360982626cbe",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_008/evaluation.json": "af4b4912a76fb1a908b925f1976fa6cd8c1bd5afb942cef754c967396b45c105",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_009/evaluation.json": "5c8200e683cb0416c52f26c54f4bba4e093b2ad822b091dcf26586ab2bca4987",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_010/evaluation.json": "2b2b64f48f4b3f8abeb37118894d498fdda5ea314cbaa401ceabe7bdfc1a7722",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_011/evaluation.json": "783b085d0109805872a9e5ec251bd39250ee801c6c84fb908bddce85d9bbc2d2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_012/evaluation.json": "5787c9f0a7960ce002160e670c006c9c043e21eb1c04d28edc6ee58c277e7555",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_013/evaluation.json": "e3019ba2b60edea28c8331661e444cc4c91e596dcf043786b1c876c7219ae4d9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_014/evaluation.json": "2edf0ec8255c767d6c081f4a954b177e39562055ca881d3c1af097a2c1fc9133",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_015/evaluation.json": "05fbf1ff7b9e088465553cda64d5b5191ff088e79ae4d2beb20f98c511e51745",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_016/evaluation.json": "c832dd01bd54e0f22a61a84b54146d54f05a38c71ddb302c48b3cc241fb4f344",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_017/evaluation.json": "bb3b28cf0fe63eb05d887d54cffe6626c673b53c58ab6fb0bf87d056e2696217",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_018/evaluation.json": "7580626c07815c60c0b7b1833d4607d3b13bf14e9fd3c05b3d5701de04473d1b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_019/evaluation.json": "bba659d06d08776afc4bcdee5db46c58b86a17b4e48c1e0c5873cc454a5d517b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_020/evaluation.json": "caf5fae1ae3b71bf0544075b255e6d2704cad8230938cf11b77adb6b1352f115",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_021/evaluation.json": "2a969493797a8e4d558c47dfca39b885ef45eba5d2d13ad4d2ccf0b58538009d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_022/evaluation.json": "d2a288c7e115930f4c344676122f31d96a5dc22dbb21243679fe5cc2f6c7b9a7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_023/evaluation.json": "94c1f298986fb66d5e9bddcf5c509c10abf8eab3b34645286eb08cfed492ec10",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_024/evaluation.json": "3476fc3debae292897aec486fc316356f7414c4816b1472510e9dc4dde5fb672",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_025/evaluation.json": "c72a1776f70735a5f312e96924723c93f0c4246387f3d7a25fd09f221c60eeee",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_026/evaluation.json": "b0d48886dfd4b372aa9ebacf14dc6fba0fb48cceaf9f4fa9a4b4e178c6b33cf6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_027/evaluation.json": "1450576900a6b0986edaedd3d1c7245b8b7dc790b2d30846ded37e38d0804fde",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_028/evaluation.json": "ec2b690c831f9caa68ad65d24245edd34021b1f0c2b2fe80c559088c057d1fef",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_029/evaluation.json": "a293767949ecf6b8611567c95a076bb781bb596181426667e7d21eec236a5fd5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_030/evaluation.json": "0c9b071160f0b32ec29a1261f450d5ee9afb5ac52ed7d368d853ae3ea40a3cb4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_031/evaluation.json": "30290921a635913ef6f9ff5e422c774892b3844ffc8fe61d126f96f2e1388ce6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_032/evaluation.json": "9d86a7a294cbfaf706b2b589ef589c20263bbc58c4a739ffd05a90ef080b8a6a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_033/evaluation.json": "5b77ba5f71fa26508f535f140848f04ea77a1262262995c192f1c2842abfd8d3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_034/evaluation.json": "142fa034b443cc64a154073413390b08ccf5a09540eb45a6558ee5ca98ee4cde",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_035/evaluation.json": "8973b2cee0387e9e651e90a025084c198bc9f89a195ee4b40f3c79234982ddd3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_036/evaluation.json": "bce9cc6e9a0d08c831769ba65366d5cb2884597114ca6675cc83d641e7e1ebb0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_037/evaluation.json": "caf65d4c43be0a6855771ea1c50f23774bb6cd9741e8de4e569a4e0396fa96af",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_038/evaluation.json": "c580655ab86a7d25bbefadde9be2b06416f86928c334fb874b5d06a21a08077d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_039/evaluation.json": "9d040d96e102465b14fbc7eef87f2b96125aba0766625b6cd0d221ef5c16084f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_040/evaluation.json": "a11cd8169863083cb244e19da76060520441582b107c323cf9684f6a37d916f0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_041/evaluation.json": "6bd23340eeed4d0d97957dfd86343f7fa21eafb28e40c315429b22cdd1e859eb",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_042/evaluation.json": "49c921101a20aa36488d129f6c917c63fe754fd3b9cfec8b01a95cb89b47b297",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_043/evaluation.json": "6c741f03e466cfd74320e11fc85e3f16421c022c57dc68aa93ebb04944cf1e4c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_044/evaluation.json": "2ee2e09998d7a88c556be209ab2cd9e58880f01338c5c403c235497e346c6aa6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_045/evaluation.json": "0f2d83be1184cf56972ac6bd9ed8529407b6634a866a7ffccb94b44280cc7175",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_046/evaluation.json": "0da7c93bf6f49abb2285bc1e6ead558c4d95554c6138cceec7e4a78e06a9e202",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_047/evaluation.json": "8742d4295bad787012f3f57456f554999a56d96e691cab0a01c90ef8f4256c9c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/point_048/evaluation.json": "7070b3c53e19e265772bce1f850d49a2a05b633c49eaa884b8943a8740e083f6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/Hessian.npy": "03df98f5f7ede1082dce060c49c135ea9bc77b49c81c9181334122afb0b62333",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_molecular_H100_methyl/case/corrected/derivatives.json": "595e951f0217b9182184ca3ebf29a20cfc770ee570758593523e7c55c6a3d476"
+  },
+  "producer_sha256": "2cb98843e32f89e93fb176926a3576232bac1e11a20a13fc031d27b8d3f5c538"
+}
