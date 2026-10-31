@@ -10,7 +10,7 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 | M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
 | M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
-| M7 | partial | Local raw-state replays and scoped fresh/relocated checks pass; public DOI, final metadata and wider configuration portability remain open. |
+| M7 | partial | The current 75-state polymer cache also passes extracted-archive replay in a fresh NumPy-only environment; public DOI, final metadata, complete release assembly and wider deployment portability remain open. |
 | M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024 and CREST 2020 are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
 | remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
@@ -38,3 +38,10 @@ SI compile, and the revised pages are visually inspected. The self-contained
 upload also includes nested frozen numerical inputs and compiles with text
 identical to the checked documents. M4, complete candidate decisions under M1,
 public deposition under M7 and final submission readiness under M9 remain open.
+
+The current native-cache revision adds raw numerical inputs for all 75 states
+in the existing polymer snapshot. An extracted archive in a fresh NumPy-only
+environment reproduces the saved Hessians, sampled derivative checks and nuclear
+terms with original scientific paths blocked. The article and SI describe this
+scoped reproduction. It does not replace the complete historical executable and
+scratch closure, supply missing occupied states, or establish public deposition.

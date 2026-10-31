@@ -3,30 +3,27 @@
   "documents": {
     "manuscript": {
       "pages": 20,
-      "pdf_sha256": "7ed18f527034a97ed203821a5eb4a8749d1a1772dc02abb5e396b91c53c62f40"
+      "pdf_sha256": "f0d83b853790ac3ddcf1df48617c3fa347f9469e159b074b1aac5ef16a33aa66"
     },
     "supporting_information": {
       "pages": 24,
-      "pdf_sha256": "08ef994fc91619b76107f9ec0223a556ce04ab83985493194a3e4ecca7d74fdb"
+      "pdf_sha256": "930177b2ad167188baa9c0b2176cb19114464a10729f4e1c212af9c81f327555"
     }
   },
   "main_pages_reviewed": [
-    12
+    15,
+    16
   ],
   "SI_pages_reviewed": [
-    1,
-    14,
-    15,
-    20
+    20,
+    21
   ],
-  "render_root": "calcs/validation/paper_visual_2026-10-30_empty_backbones",
+  "render_root": "calcs/validation/paper_visual_2026-10-30_native_cache",
   "checks": [
-    "SI title matches the main paper",
-    "Generated numerical values agree with the independently reconstructed partitions",
-    "Both empty configurations and the 20/19 distinct structures are stated accurately",
-    "Figure settings ranges are distinguished from confidence intervals",
-    "Primary cycles and incomplete occupied ensembles remain separate",
-    "Changed pages have readable labels and no overlapping or clipped content"
+    "Data/code availability states the 75-state numerical cache and pending public DOI accurately",
+    "SI distinguishes selected raw numerical inputs from the complete historical source closure",
+    "The archive scope does not imply new quantum calculations or completed occupied ensembles",
+    "Changed pages and adjoining references have readable text with no clipping or overlap"
   ],
   "whole_document_visual_review_performed": false,
   "submission_ready": false

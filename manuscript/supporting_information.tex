@@ -13,7 +13,7 @@
 \renewcommand{\floatpagefraction}{0.8}
 \newcommand{\pending}[1]{\par\smallskip\Needspace{4\baselineskip}\noindent\textcolor{red!65!black}{\textbf{Draft completion item:} #1}\par\smallskip}
 \newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
-\input{evidence/2026-10-30_empty_backbones/empty_batch_values.tex}
+\input{evidence/2026-10-30_native_cache/empty_batch_values.tex}
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
 \title{Supporting Information: From Molecular Redox Motifs to Polymer Grafts: Attachment Thermodynamics and Neighboring-Site Effects}
@@ -92,7 +92,7 @@ Cutoff / cm$^{-1}$ & MAE & RMSE & Bias\\\midrule
 \end{tabular}\end{table}
 For the 67 completed HCl-reference and 20 base-assisted reactions, the largest cutoff span is 4.46 kJ mol$^{-1}$ and no nominal reaction sign changes. At each fixed cutoff, the contribution of a specified base/byproduct model remains identical across its five candidates. Variant reaction values use the exact SI eV-to-molar-energy factor; original source-conversion arithmetic is retained without replacement. Figure~\ref{fig:rotor-sensitivity} displays these ranges. Independent reconstruction from the full archived state sums checks 117 potential evaluations and 261 reaction sums. This analysis does not test missing conformers, ion speciation, electronic-structure accuracy or attachment selectivity.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/thermal_cutoff.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/thermal_cutoff.pdf}
 \caption{Nuclear rotor-cutoff sensitivity at fixed geometry and electronic structure. Panel a: potential shifts relative to 50 cm$^{-1}$, ordered by decreasing range over the three cutoffs; the dashed line denotes the primary convention. Panel b: 67 HCl-reference and ten DBU/ten DIPEA reaction-model ranges; horizontal marks are medians. Shared components make reaction values correlated. The ranges are settings scenarios, not confidence or candidate prediction intervals.}
 \label{fig:rotor-sensitivity}
 \end{figure}
@@ -126,7 +126,7 @@ The 4-hydroxy-TEMPO precursor is attached through its hydroxyl oxygen to the ben
 
 For the exact local graft, the nitroxide/oxoammonium potential relative to the matched computed Fc/Fc$^+$ reference is $+0.576$, $+0.579$ and $+0.579$ V for rotor cutoffs of 25, 50 and 100 cm$^{-1}$, respectively. The active solution electronic energies and four native thermal partitions were independently reconstructed. This is not an experimental potential for the graft, and the source reports catalytic use rather than battery cycling. Route evidence permits further evaluation; missing operating criteria, actual-condition grafting thermodynamics, intersite interactions and accessibility keep the material decision pending.
 \begin{figure}[htbp]\centering
-\includegraphics[width=0.92\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/tempo_exact_route.pdf}
+\includegraphics[width=0.92\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/tempo_exact_route.pdf}
 \caption{4-Hydroxy-TEMPO and the capped local graft-site model. Highlighting identifies the precursor oxygen and the new oxygen--benzyl carbon bond. The drawing is a local molecular model, not a whole resin bead.}
 \label{fig:tempo-route}\end{figure}
 
@@ -141,13 +141,13 @@ where $n$ is repeat count, $h$ is the number of original reactive handles and $g
 All eight occupancy graphs at $n=5,h=3$ reproduce the analytic masses. Positional isomers with the same graft count have the same composition ceiling; their accessibility and interaction energies need not agree. The broader composition grid contains 21 $(h,g)$ cases with one- and two-electron assumptions. No application target is fitted to these values, and the capacity dimension remains unresolved in the decision ledger.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/pmdi_capacity.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/pmdi_capacity.pdf}
 \caption{Composition-dependent PMDI capacity ceilings. The neutral H-capped fragment has five repeats; panel (a) fixes three reactive handles and varies conversion, while panel (b) varies handle density at full conversion. One- and two-electron budgets are assumptions. Residual chlorides and scaffold mass are retained. The dotted capped-molecule descriptor excludes the polymer scaffold; none of these curves establishes accessible material capacity.}
 \label{fig:capacity}\end{figure}
 
 Three exact PMDI inputs, occupied at sites 2, 3 or both 2 and 3, contain 115, 115 and 139 atoms, respectively. They preserve the open ten-carbon backbone, two plain-styrene padding units and any residual benzyl chlorides (Figure~\ref{fig:pmdiconstruction}). Initial structures use seed 20261023, 32 distance-geometry embeddings and up to 2,000 MMFF steps; the best converged initial structure seeds each subsequent search. Connectivity, declared stereochemistry and geometry sanity are checked before calculation. Starting-structure and search records alone do not establish occupancy thermodynamics; each resulting state requires separate active-energy and native-Hessian qualification. The common empty reference has the same exact graph and configuration as the phthalimide empty control; no occupied phthalimide energy is substituted for a PMDI energy.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/pmdi_construction.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/pmdi_construction.pdf}
 \caption{Exact PMDI-ethyl occupancy inputs. Blue highlights the open backbone and purple the diimide cores. Panels show the empty chain, site 2 and sites 2/3; the separate site-3 reference is also prepared. Numbers label repeats. These two-dimensional drawings preserve connectivity and declared stereochemistry, not optimized spatial contact.}
 \label{fig:pmdiconstruction}\end{figure}
 
@@ -187,7 +187,7 @@ At the primary setting, DBU/separated-ion attachment at site 2 is $-97.72$ \kj\ 
 
 The accepted paired geometry has core centroids 16.30~\AA\ apart and a 69.0$^\circ$ interplane angle (Figure~\ref{fig:pmdineighborgeometry}). The finite result includes backbone, conformational and solvent response; it is not an estimate of intrinsic close-contact core binding or electronic coupling. No loading distribution, atactic ensemble or preferred experimental graft site is inferred.
 \begin{figure}[htbp]\centering
-\includegraphics[width=.95\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/pmdi_neighbor_geometry.pdf}
+\includegraphics[width=.95\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/pmdi_neighbor_geometry.pdf}
 \caption{Actual paired PMDI minimum used in the matched cycle. A proper rotation makes both conjugated cores visible while preserving the saved XYZ coordinates. Blue highlights the open backbone; numbers mark repeats 2 and 3. Orange and magenta mark the PMDI cores, and green marks the remaining chloride at reactive site 4. Repeats 1 and 5 are plain-styrene padding. Hydrogens are omitted and bond lines follow the checked covalent graph. The dashed line joins core centroids; the stated distance is three-dimensional.}
 \label{fig:pmdineighborgeometry}\end{figure}
 
@@ -201,13 +201,13 @@ With pKa(HCl)=10.30, the 18.64 value instead implies $-47.60$ \kj\ for the separ
 Twenty-six of the original twenty-seven electronic oligomer cases currently pass geometry and active-energy checks. The open PMDI trimer has recovered and passed independent force checks. The stacked-start PMDI trimer returned optimizer convergence and saved active energies, but a later GPU-library call terminated abnormally. Separate final-force checks disagree with finite energy differences and remain unresolved, including a subsequent finer-step diagnostic. This case stays outside completed comparisons; no minimum or free energy is inferred from optimizer convergence alone. Construction and XYZ audits verify the intended open-chain topology. A trimer contains six backbone carbons, five backbone C--C bonds and two chain ends, rather than a triangular or cyclic backbone (Figure~\ref{fig:construction}). Proximity of pendant rings does not change that covalent connectivity.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/construction.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/construction.pdf}
 \caption{Exact finite-polymer construction used in the interaction controls. The highlighted open backbone distinguishes covalent connectivity from spatial contacts among pendant groups. Monomer, dimer and trimer models are dense local scenarios and do not represent an experimentally measured sequence or graft-loading distribution.}
 \label{fig:construction}
 \end{figure}
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/spacing_construction.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/spacing_construction.pdf}
 \caption{Exact five-repeat phthalimide graphs used in the occupancy cycles. Blue highlights the open ten-carbon backbone. Sites 1 and 5 are plain styrene padding; unoccupied reactive sites retain benzyl chloride. Numbers label repeat positions, and stereobonds retain the declared configuration. These are connectivity drawings, not sampled spatial conformations. Single-occupancy reference graphs are included in the evidence.}
 \label{fig:spacingconstruction}\end{figure}
 For the six-graph spacing control, all twelve electronic conformers qualify. The selected electronic nonadditivities are $-10.98$ and $-14.50$ \kj\ for adjacent and one-spacer grafts, respectively. These refer to a matched empty-backbone minimum within the declared, limited sampling set. It demonstrates why a matched empty-backbone reference is necessary; it does not establish a universal distance trend.
@@ -246,7 +246,7 @@ empty & 1 & $1.01\times10^{-5}$ & 10.76 & $2.04\times10^{-7}$ & 0.005\\
 For DBU and separated ions, the finite-partition free energy of grafting onto an empty backbone is $-110.86$ \kj\ at site 3 and $-103.37$ \kj\ at site 4. With site 2 already grafted, the values become $-116.02$ and $-114.76$ \kj. The contact-pair alternatives are $-115.65$ to $-120.82$ \kj\ for site 3 and $-108.17$ to $-119.56$ \kj\ for site 4. Both attachment orders close the same nonadditivity cycle. The base/byproduct contribution cancels from this conditional difference, as does the common empty-chain term when comparing the two spacing cycles. Conformer response in the occupied graphs remains relevant. More favorable subsequent attachment is not automatically desirable when weak unwanted neighboring-site interaction is the objective.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/finite_ensemble.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/finite_ensemble.pdf}
 \caption{Finite-set phthalimide occupancy control in MeCN at 298.15 K. Panel (a) distinguishes lowest sampled electronic-energy cycles from two-pose free-energy partitions; whiskers vary only the rotor cutoff. Panel (b) shows the configurational lowering within each known two-pose set. Twelve native records pass their checks, but these two-pose sets do not establish converged conformer ensembles or a general spacing trend.}
 \label{fig:conditional}
 \end{figure}
@@ -264,7 +264,7 @@ At a 50 cm$^{-1}$ rotor cutoff and a 0.10 \AA\ duplicate threshold, expanding te
 The occupied sets remain incomplete. Each occupancy graph and backbone configuration requires its own assessed sampling before a balanced ensemble cycle can be interpreted. These alternate-model controls cannot replace components of the primary-model PMDI or phthalimide cycles.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{evidence/2026-10-30_empty_backbones/empty_batch_stability.pdf}
+\includegraphics[width=\linewidth]{evidence/2026-10-30_native_cache/empty_batch_stability.pdf}
 \caption{Empty-backbone sampling stability in the separate smooth-surface MeCN model at 298.15 K. Points show changes from the first ten to all twenty inputs at a 50 cm$^{-1}$ rotor cutoff and a 0.10 \AA\ duplicate threshold. Vertical ranges span the explicit rotor/duplicate settings and are not confidence intervals. The dashed line marks the magnitude of the 2 \kj\ batch criterion. Each configuration is treated separately; passing empty-component checks does not establish occupied-cycle convergence.}
 \label{fig:empty-batch-stability}
 \end{figure}
@@ -272,7 +272,7 @@ The occupied sets remain incomplete. Each occupancy graph and backbone configura
 The intact-segment decomposition is complete for three sampled pairs using six frozen-fragment single-point calculations (Figure~\ref{fig:decomposition}). Its partition separates interactions at the complex geometry from deformation relative to relaxed fragments. The interaction energies are $-55.25$, $-44.30$ and $-50.87$ \kj, with deformation terms $+0.56$, $+0.49$ and $+0.38$ \kj, respectively. A saved-coordinate audit shows 57--93 optimization steps and heavy-atom input-to-final RMSDs of 0.25--0.70 \AA\ for the complexes, so small deformation sums do not imply negligible structural relaxation. Two totals also contain cancellation: the parallel phthalimide fragments contribute $-0.68$ and $+1.24$ \kj, and the PMDI fragments contribute $+1.00$ and $-0.62$ \kj. These signed differences refer to one sampled independently optimized monomer at a distinct geometry level; they are not positive-definite strain penalties. Global isolated-monomer minima and Hessian minima are unestablished. The resulting quantities remain electronic, uncorrected for basis-set superposition error and inclusive of backbone and cap contributions. No electron-transfer rate follows from their magnitude.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/decomposition.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/decomposition.pdf}
 \caption{Electronic interaction/deformation partition for three intact segment pairs. Frozen fragments retain the complex geometry without bond cutting or new caps. The partition closes the association-energy cycle but is not a pure pendant-core interaction, a counterpoise-corrected energy or an association free energy.}
 \label{fig:decomposition}
 \end{figure}
@@ -299,7 +299,7 @@ Ammonia & $1.98\times10^{-7}$ & 0.0003 & 1127.5\\
 Chloromethyl radical & $1.32\times10^{-7}$ & 0.2793 & 190.3\\
 \bottomrule\end{tabular}\end{table}
 \begin{figure}[htbp]\centering
-\includegraphics[width=.58\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/CDS_surface_smoothness.pdf}
+\includegraphics[width=.58\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/CDS_surface_smoothness.pdf}
 \caption{Radial finite-difference curvature of the CDS component at the tested carbon contact. The legacy estimate does not converge as the displacement shrinks, whereas the separate smooth control approaches a plateau. No full electronic Hessian or thermochemical result is inferred from this component scan.}
 \label{fig:cdssmooth}\end{figure}
 
@@ -312,7 +312,7 @@ A seeded randomized concurrency experiment executes the same 837 exact designs f
 A separate sparse Git checkout and newly installed Python 3.11 CPU environment reproduce the declared 32-recipe / 17-design example with system and user site packages disabled. The project loads from that checkout and scientific dependencies load from the new environment. Serial descriptor replay, exact-route holds and the regenerated conditional-grafting table all match; rendered RGB pixels of the figure are identical. This qualifies a small CPU reproduction using curated scientific data. It does not recompute the underlying quantum energies or qualify the complete CUDA environment.
 
 \begin{figure}[htbp]
-\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/cpu_concurrency.pdf}
+\centering\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/cpu_concurrency.pdf}
 \caption{Measured CPU descriptor concurrency for the same 837 exact designs. Three randomized repeats per condition retain every result. Ranges are observed minima and maxima, not confidence intervals. Launch, preflight and scorer overhead are included; preparation is separate. Requested workers and workers executing at least one chunk are distinct. This shared-node, small-library experiment does not measure million-molecule chemistry or quantum throughput.}
 \label{fig:concurrency}
 \end{figure}
@@ -337,6 +337,8 @@ A complementary numerical-control addendum contains eight small-molecule geometr
 The sixty retained smooth-surface polymer records were read after an explicit checkout-prefix relocation, without rewriting their original paths or hashes. A relative source path was accepted only with a declared original working directory. Missing archived files could not fall back to files in the current checkout. The replay verified 12,386 source/input bindings and forced a fresh content-hash pass over all bindings before publishing a completed report.
 
 For each state, the replay checked the exact graph, neutral-singlet identity, solvent-model definition and equality of the thermochemical and scored electronic geometries. It reconstructed the stored sampled Hessian columns from the displaced gradients at 0.0005 and 0.001 bohr, including the protocol coordinates and the two largest-force coordinates. The rigid-space projection, internal frequencies, symmetry number, three rotor-cutoff nuclear partitions and final electronic/nuclear/spin sums were then reconstructed. Retained stationarity, exclusive-residency and resource records were checked separately. Fifteen further completed states passed the same physical reconstruction after explicit output-path relocation. The forty empty-backbone inputs analyzed above are fully included; reconstructed occupied states remain individual controls until their sets are complete. The following numerical maxima refer to the original sixty-state replay. The largest sampled-column relative error was $3.92\times10^{-5}$; the maximum differences from stored internal frequencies and nuclear free energies were $6.97\times10^{-11}$ cm$^{-1}$ and $1.50\times10^{-13}$ eV. Seventeen software tests covered the archive binding and derivative reconstruction, including rejection of changed bytes, incorrect displacements, nonfinite force/spin values and contradictory backbone labels. These checks establish reproduction of the saved physical evidence; they do not repeat SCF, optimization or Hessian execution, qualify the current GPU runtime, or supply missing conformers.
+
+A portable numerical-input archive contains the geometries, Cartesian Hessians, gradients, displaced-gradient records, electronic parents and three-cutoff partitions for all 75 reconstructed expanded-polymer states. After extraction, a newly installed, hash-locked NumPy 2.2.6 environment reproduces the stored sampled derivative checks, internal-mode projections and nuclear free-energy terms with access to the original checkout, archive, calculation directories and prepared cache blocked. The unchanged original reviews retain the hashes of historical executable binaries and large response scratch tensors that are excluded from this numerical-input archive. The replay reconstructs saved numerical evidence; it does not repeat SCF, live execution checks or the complete historical source closure. Rehashed but inconsistent Hessians, gradients, masses, solvent identities and nonfinite quantities are rejected.
 
 \subsection{Fresh quantum-environment reproduction}
 A separate CUDA 12.8 compatibility profile retains the recorded molecular-method packages and xTB build while changing fourteen CUDA runtime distributions to satisfy the exact requirements of Torch 2.8.0+cu128. The historical runtime inventory remains separate. All 235 external distributions were installed into a fresh prefix, the project was installed from an archived source checkout, and the dependency check passed. Retrieved package artifacts carry SHA-256 identities; the conda artifact lock and all certificate backing files are retained. The fresh xTB library is byte-identical to the qualified thermodynamic build.

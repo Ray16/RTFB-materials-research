@@ -11,7 +11,7 @@
 \setlength{\emergencystretch}{2em}
 \newcommand{\pending}[1]{\par\smallskip\Needspace{4\baselineskip}\noindent\textcolor{red!65!black}{\textbf{Draft completion item:} #1}\par\smallskip}
 \newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
-\input{evidence/2026-10-30_empty_backbones/empty_batch_values.tex}
+\input{evidence/2026-10-30_native_cache/empty_batch_values.tex}
 \title{From Molecular Redox Motifs to Polymer Grafts: Attachment Thermodynamics and Neighboring-Site Effects}
 \author{Working draft: authorship and affiliations to be confirmed}
 \date{Evidence revision: 30 October 2026}
@@ -138,7 +138,7 @@ Coverage differs materially from the design space. Twenty-two endpoints are quin
 
 As an oxidation-active comparison outside the enumerated pool, the existing 4-oxy-TEMPO local graft has a direct attachment precedent on preformed Merrifield resin. A patent reports reaction of 4-hydroxy-TEMPO with the resin using NaH in DMF or THF and reports N-oxyl content in the washed product.\cite{sommerlade2002tempo} The mapped local graft passes the route screen, and its independently reconstructed MeCN oxidation potential is $+0.579$ V versus Fc/Fc$^+$. This is a computed local-model value; the actual-condition grafting free energy, neighboring-motif interactions and application-specific material criteria remain unresolved. The all-axis decision therefore remains pending.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/benchmark.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/benchmark.pdf}
 \caption{Unfitted retrospective benchmark for 39 exact free-parent potentials in MeCN. Family and redox-step labels expose unequal coverage. All sourced endpoints and outliers are retained; no fitted offset is applied.}
 \label{fig:benchmark}\end{figure}
 \subsection{Reference bias and charge-state errors are distinguishable}
@@ -146,7 +146,7 @@ All 30 first-step errors are positive, with mean $+0.266$ V. The nine second-ste
 
 The computed Fc absolute potential is 4.379 V. Stored comparison values, 4.618--4.662 V, use other functionals and cannot be adopted as level-matched replacements. Their difference from the present reference is similar to the positive first-step bias, making a reference contribution plausible. Multiple organic-reference differences that cancel Fc are examined in the SI. Fixed-geometry B3LYP and PBE0 reference controls shift the electronic gap downward and worsen the reference-only counterfactual bias (SI); they do not establish alternative absolute potentials. Nevertheless, all nine paired step spacings are too large in magnitude: a common reference shift cancels from a spacing and cannot explain this result. Reference, charge-state solvation and ion-pairing errors can coexist. A large quinone study found distinct first/second-reduction intercepts under other methods in DMF versus SCE; it provides relevant precedent, not a numerical calibration for MeCN/Fc.\cite{elhajj2024} In five neutral-SVPD controls, changing both geometry and Hessian basis lowers the first potential by 11.7--35.1 mV when the original anion and Fc are held fixed. Nuclear contributions are 7.8--21.3 meV; geometry-induced active-energy contributions are 0.4--13.8 meV (SI). The imbalance is measurable but does not explain the full observed bias. A spin-only partition also omits ferrocenium orbital/vibronic contributions; their sign and limiting size are discussed in the SI.\cite{fcorbital2017}
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/reference_bias.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/reference_bias.pdf}
 \caption{Unfitted step-dependent residuals and internal molecule-held-out offset diagnostics. Training offsets exclude the entire target molecule. Diagnostic calibration is shown separately from the primary benchmark and is not an external test on new compounds.}
 \label{fig:reference}\end{figure}
 Changing the nuclear rotor cutoff over 25, 50 and 100 cm$^{-1}$ gives a maximum benchmark endpoint span of 25.4 mV and aggregate MAE values of 0.245--0.247 V (SI). The primary 50 cm$^{-1}$ convention is retained.
@@ -161,7 +161,7 @@ with the paired analogue and its standard-state correction defined separately. T
 
 The two benzoquinone HCl-reference values, $+57.63$ and $+56.03$ \kj, become $-45.14/-46.75$ \kj\ with DBU and $-13.34/-14.94$ \kj\ with DIPEA. AQ-1-oxy and NDI also change sign in this panel (Figure~\ref{fig:grafting}); this is not a benzoquinone-specific rescue. These values motivate testing a defined base-assisted route, while selectivity, precursor access, salt speciation and support accessibility remain separate route gates.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/grafting.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/grafting.pdf}
 \caption{Candidate HCl-reference reactions plus a constant per-base proton-capture term. Separated ions and contact pairs are alternative thermodynamic representations; their differences do not establish measured ion-pair populations.}
 \label{fig:grafting}\end{figure}
 
@@ -182,12 +182,12 @@ The completed paired-state calculation closes the four-state occupancy cycle for
 
 The two PMDI cores are 16.30~\AA\ apart in the paired minimum, despite occupying adjacent sequence sites (SI). This finite whole-chain response therefore does not measure a close-contact stacking interaction, isolated motif binding or electronic coupling. Each occupancy graph contributes one minimum. The example links enumeration, exact molecular response, route evidence and matched polymer thermodynamics while retaining a pending material decision: selectivity, broader conformer sampling and accessible utilization remain unresolved.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/pmdi_first_graft.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/pmdi_first_graft.pdf}
 \caption{First-site PMDI grafting in sampled five-repeat polymer minima. (a) The polymer-minus-local free-energy penalty stays positive at each tested rotor cutoff; common precursor, base and byproduct terms cancel. (b) The small free-energy difference between grafts at sites 2 and 3 changes sign. Lines connect tested numerical settings and are not statistical uncertainty intervals. Each occupied graph contributes one minimum, so neither panel establishes a converged conformer ensemble or a preferred graft site.}
 \label{fig:firstgraft}\end{figure}
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/pmdi_neighbor_grafting.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/pmdi_neighbor_grafting.pdf}
 \caption{Finite PMDI neighboring-graft cycle in MeCN. (a) Defined DBU/separated-ion attachment free energies with the other site empty or grafted. Vertical segments show conditional differences for the same target site. (b) Nonadditivity at three rotor cutoffs; lines connect settings and are not uncertainty intervals. Common reaction terms cancel. All four graphs have one sampled minimum; the paired geometry has separated cores and does not establish stacking strength, electronic coupling or ensemble convergence.}
 \label{fig:pmdineighbor}\end{figure}
 
@@ -196,7 +196,7 @@ A five-repeat phthalimide model distinguishes reactive sites, plain-styrene end 
 
 The sequence interval does not fix spatial separation in these controls (Figure~\ref{fig:spatialconformers}). Each occupied graph has both a close-core and a separated-core local minimum. Adjacent-site core centroids are 4.24 and 16.66 \AA\ apart; the corresponding one-spacer distances are 4.77 and 20.20 \AA. Within each sampled pair, the close-contact conformer has lower $G$ by 11.9 and 7.1 \kj, respectively. These same-graph differences include changes throughout the chain and solvent response, distinct from the four-state grafting nonadditivity. The one-spacer model therefore permits motif contact through backbone folding. The strength of this contact was assessed separately using frozen methyl-capped phthalimide fragments. At the central cap length, the close adjacent and one-spacer poses give electronic interaction energies of $-24.76$ and $-26.22$ \kj\ in the MeCN model, respectively; the separated poses give values near zero. These energies include cap and continuum response and lack basis-superposition correction. They are neither association free energies nor electronic couplings, and the four sampled poses do not establish contact populations or a spacing trend.
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_empty_backbones/spacing_conformers.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-30_native_cache/spacing_conformers.pdf}
 \caption{Accepted phthalimide control geometries at adjacent (a,b) and one-spacer (c,d) occupancy. Blue marks the open backbone; numbers identify occupied repeats. Orange and magenta mark conjugated core-ring atoms. Ungrafted site 3 in the one-spacer graph retains benzyl chloride; the end-padding repeats are plain styrene. Orthographic views use the saved XYZ coordinates, proper rotations and a common spatial scale; hydrogens are hidden and bond lines indicate checked connectivity. Dashed lines join core centroids, and angles refer to their fitted planes. Conformer $\Delta G$ is relative to the lower $G$ in the same two-pose graph at 298.15 K and a 50 cm$^{-1}$ rotor cutoff. These finite sets do not establish converged populations or isolated core-binding free energies.}
 \label{fig:spatialconformers}\end{figure}
 
@@ -220,7 +220,7 @@ Selecting motifs for a preformed redox-active polymer requires a connection betw
 \section*{Supporting Information}
 Benchmark intervals and grouped offset diagnostics; relative-basicity controls; finite-polymer construction and conditional cycles; electronic fragment decomposition; numerical implementation, concurrency and quantum restart controls; evidence terminology.
 \section*{Data and code availability}
-The immutable evidence epoch and source hashes are recorded under \path{manuscript/evidence/2026-10-30_empty_backbones/}. Versioned code and curated metadata are maintained in the \href{https://github.com/Ray16/RTFB-materials-research}{public project repository}. A locally prepared reviewer package contains raw geometries, energies, frequencies and state metadata for the earlier primary calculations and auxiliary sensitivity controls. Its offline replay reconstructs the primary benchmark, grafting and finite-ensemble values after relocation without opening original cluster paths; package scope, environment records and integrity checks are described in the Supporting Information. A fourteen-state PMDI addendum reproduces the complete neighboring-graft cycle, and a separate four-state TEMPO addendum reproduces the local oxidation potential. Both reconstruct their Hessian modes and nuclear terms in a fresh NumPy environment. A separately pinned CUDA 12.8 compatibility profile has been installed afresh and reproduces complete singlet and doublet quantum controls within predeclared tolerances (Supporting Information). This verifies a tested Linux/CUDA deployment rather than unrestricted platform portability. An explicit relocation test also reproduces the saved singlet and doublet nuclear partitions with original-checkout file access excluded. The raw-state packages do not yet have a public archival DOI; final deposition metadata remain outstanding.
+The immutable evidence epoch and source hashes are recorded under \path{manuscript/evidence/2026-10-30_native_cache/}. Versioned code and curated metadata are maintained in the \href{https://github.com/Ray16/RTFB-materials-research}{public project repository}. A locally prepared reviewer package contains raw geometries, energies, frequencies and state metadata for the earlier primary calculations and auxiliary sensitivity controls. Its offline replay reconstructs the primary benchmark, grafting and finite-ensemble values after relocation without opening original cluster paths; package scope, environment records and integrity checks are described in the Supporting Information. A fourteen-state PMDI addendum reproduces the complete neighboring-graft cycle, and a separate four-state TEMPO addendum reproduces the local oxidation potential. Both reconstruct their Hessian modes and nuclear terms in a fresh NumPy environment. A separate numerical-input cache reproduces the sampled derivative checks, internal modes and thermal terms of all 75 reconstructed expanded-polymer states in an extracted, isolated NumPy environment. A separately pinned CUDA 12.8 compatibility profile has been installed afresh and reproduces complete singlet and doublet quantum controls within predeclared tolerances (Supporting Information). This verifies a tested Linux/CUDA deployment rather than unrestricted platform portability. An explicit relocation test also reproduces the saved singlet and doublet nuclear partitions with original-checkout file access excluded. The raw-state packages do not yet have a public archival DOI; final deposition metadata remain outstanding.
 \section*{Author contributions, funding and competing interests}
 These statements require confirmation by the authors and are intentionally not inferred in this working draft.
 \bibliographystyle{unsrtnat}\bibliography{references,novelty_references}
@@ -228,6 +228,6 @@ These statements require confirmation by the authors and are intentionally not i
 \thispagestyle{empty}
 \begin{center}
 \textbf{For Table of Contents Only}\\[1.5em]
-\includegraphics[width=3.25in,height=1.75in]{../results/figures/manuscript/2026-10-30_empty_backbones/graphical_abstract.pdf}
+\includegraphics[width=3.25in,height=1.75in]{../results/figures/manuscript/2026-10-30_native_cache/graphical_abstract.pdf}
 \end{center}
 \end{document}

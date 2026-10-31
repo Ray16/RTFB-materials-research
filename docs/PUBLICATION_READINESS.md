@@ -40,6 +40,13 @@ preparation gap, not the outstanding electronic/native calculations or ensemble
 validation. A resumable resource-aware dispatcher and separate physical-review
 collector carry those prepared states forward.
 
+The [portable numerical cache](../validation/native_cache_2026-10-30/README.md)
+now supplies raw Hessian/gradient, displaced-gradient and partition inputs for
+these same 75 states. Its extracted archive passes in a fresh hash-locked NumPy
+environment with the original scientific paths blocked. This closes a scoped
+raw-input replay gap; complete release assembly, public deposition and wider GPU
+deployment portability remain open.
+
 ## Scientific acceptance
 
 | Reviewer item | Evidence available | Requirement still to close |
