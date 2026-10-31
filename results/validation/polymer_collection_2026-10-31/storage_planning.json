@@ -1,0 +1,35 @@
+{
+  "status": "retained_native_output_size_planning_estimate_not_admission_qualification",
+  "UTC": "2026-10-31T10:51:15Z",
+  "shared_volume": "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+  "available_GiB": 60.9267578125,
+  "missing_native_inputs": {
+    "one_graft": 60,
+    "two_grafts": 65
+  },
+  "observed_completed_allocated_GiB_by_class": {
+    "one_graft": {
+      "n": 9,
+      "minimum": 0.6788215637207031,
+      "maximum": 0.6789512634277344
+    },
+    "two_grafts": {
+      "n": 5,
+      "minimum": 0.982391357421875,
+      "maximum": 0.9861907958984375
+    }
+  },
+  "remaining_retained_native_GiB_at_observed_class_maximum": 104.8394775390625,
+  "production_new_start_floor_GiB": 64,
+  "free_space_deficit_GiB_for_estimate_plus_floor": 107.9127197265625,
+  "upstream_energy_outputs_included": false,
+  "temporary_or_in_flight_growth_fully_accounted": false,
+  "other_users_future_writes_controlled": false,
+  "measured_final_sizes_are_peak_bounds": false,
+  "existing_results_deleted_or_moved": false,
+  "new_GPU_jobs_launched": false,
+  "source_sha256": {
+    "validation/polymer_collection_2026-10-31/native_census.json": "814b66a23171e2637556addb25230c26e37307496b551a6665737a89bdc7c37f",
+    "results/validation/polymer_collection_2026-10-31/completed_output_sizes.json": "ed8276ce633acff6c2df26a93bdfe9823320f19af9dbafc85fcac74dcdba549a"
+  }
+}

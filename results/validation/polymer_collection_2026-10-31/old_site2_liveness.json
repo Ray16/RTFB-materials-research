@@ -1,0 +1,171 @@
+{
+  "status": "read_only_short_liveness_and_resource_samples",
+  "host": "lambda2",
+  "samples": [
+    {
+      "UTC": "2026-10-31T10:48:05Z",
+      "processes": [
+        {
+          "pid": 2013918,
+          "process_start": "1417472543",
+          "identity_matches": true,
+          "cpu_seconds": 69965.29,
+          "RSS_bytes": 22262661120,
+          "CPUs": [
+            1,
+            2
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2041210,
+          "process_start": "1417541051",
+          "identity_matches": true,
+          "cpu_seconds": 69118.97,
+          "RSS_bytes": 20465774592,
+          "CPUs": [
+            10,
+            11
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2041741,
+          "process_start": "1417541408",
+          "identity_matches": true,
+          "cpu_seconds": 69092.53,
+          "RSS_bytes": 21020135424,
+          "CPUs": [
+            9,
+            12
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2042299,
+          "process_start": "1417541769",
+          "identity_matches": true,
+          "cpu_seconds": 69088.44,
+          "RSS_bytes": 21219545088,
+          "CPUs": [
+            6,
+            13
+          ],
+          "state": "running"
+        }
+      ],
+      "GPU_memory_and_utilization_csv": "0, 0, 0, 14978\n1, 0, 0, 6512\n2, 0, 0, 14416\n3, 0, 0, 15550\n4, 0, 0, 15394\n5, 0, 0, 4\n6, 0, 0, 4\n7, 0, 0, 4"
+    },
+    {
+      "UTC": "2026-10-31T10:48:09Z",
+      "processes": [
+        {
+          "pid": 2013918,
+          "process_start": "1417472543",
+          "identity_matches": true,
+          "cpu_seconds": 69968.41,
+          "RSS_bytes": 22262661120,
+          "CPUs": [
+            1,
+            2
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2041210,
+          "process_start": "1417541051",
+          "identity_matches": true,
+          "cpu_seconds": 69122.1,
+          "RSS_bytes": 20465774592,
+          "CPUs": [
+            10,
+            11
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2041741,
+          "process_start": "1417541408",
+          "identity_matches": true,
+          "cpu_seconds": 69095.66,
+          "RSS_bytes": 21020135424,
+          "CPUs": [
+            9,
+            12
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2042299,
+          "process_start": "1417541769",
+          "identity_matches": true,
+          "cpu_seconds": 69091.57,
+          "RSS_bytes": 21219545088,
+          "CPUs": [
+            6,
+            13
+          ],
+          "state": "running"
+        }
+      ],
+      "GPU_memory_and_utilization_csv": "0, 0, 0, 14978\n1, 0, 0, 6512\n2, 0, 0, 14416\n3, 0, 0, 15550\n4, 0, 0, 15394\n5, 0, 0, 4\n6, 0, 0, 4\n7, 0, 0, 4"
+    },
+    {
+      "UTC": "2026-10-31T10:48:12Z",
+      "processes": [
+        {
+          "pid": 2013918,
+          "process_start": "1417472543",
+          "identity_matches": true,
+          "cpu_seconds": 69971.52,
+          "RSS_bytes": 22262661120,
+          "CPUs": [
+            1,
+            2
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2041210,
+          "process_start": "1417541051",
+          "identity_matches": true,
+          "cpu_seconds": 69125.20999999999,
+          "RSS_bytes": 20465774592,
+          "CPUs": [
+            10,
+            11
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2041741,
+          "process_start": "1417541408",
+          "identity_matches": true,
+          "cpu_seconds": 69098.76,
+          "RSS_bytes": 21020135424,
+          "CPUs": [
+            9,
+            12
+          ],
+          "state": "running"
+        },
+        {
+          "pid": 2042299,
+          "process_start": "1417541769",
+          "identity_matches": true,
+          "cpu_seconds": 69094.68000000001,
+          "RSS_bytes": 21219545088,
+          "CPUs": [
+            6,
+            13
+          ],
+          "state": "running"
+        }
+      ],
+      "GPU_memory_and_utilization_csv": "0, 0, 0, 14978\n1, 0, 0, 6512\n2, 0, 0, 14416\n3, 0, 0, 15550\n4, 0, 0, 15394\n5, 0, 0, 4\n6, 0, 0, 4\n7, 0, 0, 4"
+    }
+  ],
+  "scientific_progress_inferred_from_CPU_or_GPU_utilization": false,
+  "calculation_restarted": false,
+  "interpretation": "Processes are live; completion and numerical progress require source checkpoints. No live stack was read: ptrace_scope=1 and perf_event_paranoid=4 prohibit sibling profiling."
+}

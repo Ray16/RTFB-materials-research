@@ -1,0 +1,77 @@
+{
+  "status": "namespace_native_physical_records_replayed",
+  "states": 1,
+  "records": [
+    {
+      "key": "all_same__occ_2__conf002",
+      "configuration": "all_same",
+      "occupied_sites": [
+        2
+      ],
+      "graph_sha256": "27e117714d6e817978a4b31a5308c7e51a73619bb989419a75d66fef72517a7c",
+      "backbone_stereo_fingerprint": [
+        [
+          2,
+          -1
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          6,
+          -1
+        ],
+        [
+          8,
+          -1
+        ]
+      ],
+      "method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+      "G_by_cutoff_eV": {
+        "25": -84296.23351416002,
+        "50": -84296.0983807279,
+        "100": -84296.01007620452
+      },
+      "E_eV": -84317.51877769947,
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_2__conf002/campaign_parent/all_same__occ_2__conf002/independent_native_review.json",
+      "review_sha256": "68431d74ed97a82abe760b02c2df3b0893e6e3f6a09924d757151743519ab14d",
+      "atoms": 105,
+      "sampled_columns": 4,
+      "maximum_column_error": 2.9055647026501192e-06,
+      "minimum_frequency_cm": 9.221323449855218,
+      "frequency_error_cm": 2.0030199721077224e-11,
+      "nuclear_errors_eV": {
+        "25": 1.7763568394002505e-14,
+        "50": 2.842170943040401e-14,
+        "100": 2.4868995751603507e-14
+      },
+      "status": "relocated_native_physical_replay_passed"
+    }
+  ],
+  "source_bindings": 2594,
+  "bindings": [
+    {
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_2__conf002/campaign_parent/all_same__occ_2__conf002/independent_native_review.json",
+      "review_sha256": "68431d74ed97a82abe760b02c2df3b0893e6e3f6a09924d757151743519ab14d",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_2__conf002/namespace.json",
+      "namespace_sha256": "e451091b6b0217b958753a458910b8171e80be1ecbc87738a84ea9afd8b731b4",
+      "verified_bindings": 2593,
+      "original_source_hashes_preserved": true
+    }
+  ],
+  "manifest_sha256": "a50be1db7b5abc1383fd0a3015abf8c582ef33f9003d31dc931ddde2943f24ec",
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/replay_namespace_native.py": "815ddc04d92e2f3fefb2af0fefec935b6b90f1092d0c8ab49b7bef4831de4270",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/replay_archived_polymer_native.py": "f304d9a0ba234a22bb5e9ff6a126b4d8f54bb2125c4ed2e44179b84e111617d9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/audit/native_partition.py": "e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/namespace_sources.py": "1e4cc0bd3dca19c1b3a7e1fda447bfa8fddf12b15465c69324085a7d058197b6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/archived_sources.py": "f66deeaf8f5bea1be5486577d720a1ca6bddf53462a3dd886cc251b0ba0b70ec"
+  },
+  "CPU_affinity": [
+    7
+  ],
+  "quantum_calculations_run": false,
+  "primary_candidate_admission": false,
+  "global_ensemble_convergence_proven": false
+}

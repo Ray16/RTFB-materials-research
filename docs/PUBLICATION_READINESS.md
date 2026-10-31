@@ -34,6 +34,14 @@ to 75, including forty empty states and a separate site-4 resource point.
 The current paper integrates the component-specific empty-backbone comparison
 from the 75-state frozen evidence epoch; occupied ensembles remain incomplete.
 Remaining occupied graphs and complete sampling comparisons are still required.
+The [subsequent working collection](../validation/polymer_collection_2026-10-31/README.md)
+now reconstructs 115 inputs, including fourteen new states with 34,299 source
+bindings. Complete occupied-ensemble cycles remain unavailable. Measured retained
+outputs indicate a full retained footprint of about 105 GiB for unfinished
+native inputs, before subtracting already written partial files. This is not a
+peak bound or additional-write forecast. The shared volume has about 61 GiB free,
+below the new-start floor; additional writable shared capacity is needed. The
+production storage gate and numerical thresholds remain unchanged.
 The [remaining-graph energy roster](../validation/polymer_energy_classes_2026-10-30/README.md)
 now accounts for all 160 declared inputs in the other eight graph/configuration
 groups: 156 prepared energy jobs and four identical checked references. Six
