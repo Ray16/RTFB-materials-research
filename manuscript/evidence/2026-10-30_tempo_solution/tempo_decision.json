@@ -1,0 +1,147 @@
+{
+  "status": "exact_TEMPO_route_and_all_axis_decision_checked",
+  "candidate": {
+    "id": "tempo",
+    "product_key": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+    "role": "candidate",
+    "axes": {
+      "attachment_route": {
+        "product_key": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+        "scope": "exact_precursor_product_route",
+        "status": "qualified",
+        "value": "proceed",
+        "sources": [
+          {
+            "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/tempo_exact_support_2026-10-26/route_review.json",
+            "sha256": "e9fb25d7240fd41e120d40ec5b4f8886e31c3dae098bfd4272654628291fc22e"
+          },
+          {
+            "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/tempo_exact_support_2026-10-26/route_screen.json",
+            "sha256": "1e482f20f09bcd3a639d924759bee2ce2db81c5be41e9a589e59de7f4d4b2c5f"
+          }
+        ],
+        "context": {
+          "solvent": "DMF or THF",
+          "base": "NaH",
+          "support": "Merrifield resin",
+          "source": "US6441243B1 Example A4"
+        }
+      },
+      "redox_window": {
+        "product_key": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+        "scope": "exact_capped_graft",
+        "status": "partial",
+        "reason": "Exact local model potential reconstructed; application window and predictive uncertainty are unresolved",
+        "model_potential_V_vs_Fc": 0.5787750407616841,
+        "sources": [
+          {
+            "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/tempo_exact_support_2026-10-26/native_potential_review.json",
+            "sha256": "f653078b71d2410da41cb10aca93bb815a235955bb84ac52a1bc4faf64482dac"
+          }
+        ]
+      }
+    },
+    "electrode_pools": [
+      "catholyte"
+    ]
+  },
+  "decision": {
+    "id": "tempo",
+    "product_key": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+    "profile_id": "all_axes_preformed_polymer_v1",
+    "policy_sha256": "156d56107895ff7287e770edab74533c476988f4a96993fd5b6a78f0bec50291",
+    "required_axis_ids": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "status": "pending",
+    "all_required_axes_pass": false,
+    "eligible_for_Pareto": false,
+    "failed_axes": [],
+    "pending_axes": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "axes": [
+      {
+        "axis": "redox_window",
+        "status": "pending",
+        "reason": "Exact local model potential reconstructed; application window and predictive uncertainty are unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "capacity",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "state_stability",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "charge_transfer",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "attachment_route",
+        "status": "pass",
+        "reason": "Reviewed evidence meets the criterion",
+        "evidence_status": "qualified"
+      },
+      {
+        "axis": "grafting_thermodynamics",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "motif_association",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "neighbor_coupling",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "occupancy_sensitivity",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      },
+      {
+        "axis": "accessibility",
+        "status": "pending",
+        "reason": "Required evidence missing"
+      }
+    ],
+    "inference_scope": "Conditional computational shortlist within explicitly declared model/scenario coverage; no experimental material-performance guarantee.",
+    "experimental_performance_established": false
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/tempo_exact_support_2026-10-26/route_review.json": "e9fb25d7240fd41e120d40ec5b4f8886e31c3dae098bfd4272654628291fc22e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/tempo_exact_support_2026-10-26/route_screen.json": "1e482f20f09bcd3a639d924759bee2ce2db81c5be41e9a589e59de7f4d4b2c5f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/tempo_exact_support_2026-10-26/native_potential_review.json": "f653078b71d2410da41cb10aca93bb815a235955bb84ac52a1bc4faf64482dac",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/candidate_feasibility.json": "7627ca89bbd7cebe2f52e7a89fe08e5418a2519264984a80bcad6494990edb27",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/assess_tempo_route_and_material.py": "1e19922e29c63e9b515c15ff1c59b020e29d406b4efe55df2f2103e17f2b8079"
+  },
+  "primary_decision_ledger_modified": false,
+  "quantum_jobs_submitted": 0,
+  "interpretation": "Route proceed permits further evaluation only; it is not a synthesis or material shortlist."
+}

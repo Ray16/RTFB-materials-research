@@ -3,30 +3,33 @@
   "documents": {
     "manuscript": {
       "pages": 20,
-      "pdf_sha256": "daf0218b3d3eb43411590fa50e5ab7a25ad82c95e0296d05629b33292971eba3"
+      "pdf_sha256": "28bd77a11da5297e4c75da85ef5174dc76df4508f8f9af14486e7243aae1c203",
+      "overfull_boxes": []
     },
     "supporting_information": {
-      "pages": 24,
-      "pdf_sha256": "9d8beb865d44d0cc6e96cafa2089cf7f47e0ca60455ef8dd7655c1f231ab904b"
+      "pages": 25,
+      "pdf_sha256": "14e81262fa385cb1dc109164621180b4f783c6ca7b76fbd32ae4fef4e2211116",
+      "overfull_boxes": []
     }
   },
   "main_pages_reviewed": [
-    2,
-    14,
-    16,
-    19
+    4,
+    7,
+    18,
+    20
   ],
-  "SI_pages_reviewed": [],
-  "SI_text_matches_previously_checked_build": true,
-  "previous_SI_build": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/manuscript_builds/redox_manuscript_xtn4xvfa/supporting_information.pdf",
-  "previous_SI_pdf_sha256": "930177b2ad167188baa9c0b2176cb19114464a10729f4e1c212af9c81f327555",
-  "render_root": "calcs/validation/paper_visual_2026-10-30_polymer_literature",
+  "SI_pages_reviewed": [
+    5,
+    6,
+    7
+  ],
+  "render_root": "calcs/validation/tempo_final_visual_2026-10-30",
   "checks": [
-    "The 2025 post-functionalized PS precedent is credited without transferring unverified exact-route conditions",
-    "The 2026 phthalimide transport/kinetics context is distinguished from MeCN occupancy thermodynamics",
-    "Both new references render with matching authors, year, journal, pages and DOI",
-    "Changed introduction, discussion and reference pages are readable without overlap or clipping",
-    "SI text is identical to the previously checked build"
+    "Directional MeCN response methods and six-cell limits are readable",
+    "TEMPO result retains both directions and no symmetric promotion",
+    "SI equations, state identities, table and stacked figure match checked inputs",
+    "New theory reference renders with verified primary metadata",
+    "No overlap or clipping on changed pages"
   ],
   "whole_document_visual_review_performed": false,
   "submission_ready": false

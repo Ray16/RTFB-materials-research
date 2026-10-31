@@ -52,14 +52,18 @@ def main():
     citations = importlib.util.module_from_spec(definition)
     definition.loader.exec_module(citations)
     citation_check = citations.audit(PAPER/'novelty_references.bib',citation_registry)
+    solution_citation_registry = manifest.parent/'tempo_solution_method_references.json'
+    solution_citation_check = citations.audit(PAPER/'novelty_references.bib',solution_citation_registry) if solution_citation_registry.exists() else None
     for program in ("pdflatex", "bibtex"):
         if shutil.which(program) is None:
             raise RuntimeError(f"Missing manuscript build program: {program}")
     source = {str(p.relative_to(ROOT)): sha(p) for p in
-              (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", Path(__file__), manifest, pointer)}
+              (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", Path(__file__), manifest, pointer)}
     for path in (citation_source,citation_registry,*[citation_registry.parent/r['metadata_file']
                  for r in json.loads(citation_registry.read_text())['records']]):
         source[str(path.relative_to(ROOT))]=sha(path)
+    if solution_citation_check:
+        source[str(solution_citation_registry.relative_to(ROOT))]=sha(solution_citation_registry)
     # Keep compiler logs on durable project storage rather than node-local /tmp.
     # The root can be configured for an independently relocated checkout.
     build_root = Path(os.environ.get("REDOX_MANUSCRIPT_BUILD_ROOT",
@@ -97,6 +101,7 @@ def main():
                   pages=len(reader.pages), source_sha256=source, pdf_sha256=sha(PAPER / "manuscript.pdf"),
                   build_logs=str(temporary), submission_ready=False, documents=documents,
                   additional_citation_check=citation_check,
+                  solution_model_citation_check=solution_citation_check,
                   visual_review="pending; record separately in visual_review.json, bound to these PDF hashes")
     (PAPER / "claim_check.json").write_text(json.dumps(claims, indent=2) + "\n")
     (PAPER / "build_check.json").write_text(json.dumps(report, indent=2) + "\n")

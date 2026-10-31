@@ -1,17 +1,17 @@
 # Working scientific manuscript
 
 Open [the paper](manuscript.pdf) (20 pages) and
-[Supporting Information](supporting_information.pdf) (24 pages).
+[Supporting Information](supporting_information.pdf) (25 pages).
 Editable sources are [manuscript.tex](manuscript.tex),
 [supporting_information.tex](supporting_information.tex),
 [references.bib](references.bib) and [novelty_references.bib](novelty_references.bib).
 No Overleaf project is connected. A self-contained
-[upload ZIP](overleaf_upload_2026-10-30_polymer_literature.zip) contains both documents,
+[upload ZIP](overleaf_upload_2026-10-30_tempo_directional.zip) contains both documents,
 bibliographies, required figures and frozen numerical TeX inputs. Both exported documents compile with
 text identical to their checked local counterparts; this does not claim upload
 or remote synchronization.
 
-The [current evidence snapshot](evidence/2026-10-30_native_cache/manifest.json)
+The [current evidence snapshot](evidence/2026-10-30_tempo_directional/manifest.json)
 preserves the primary benchmark, grafting and PMDI occupancy evidence and adds
 the duplicate-aware empty-backbone comparison. Both configurations have twenty
 checked native inputs. Their 20/19 distinct structures give nominal 10-to-20
@@ -33,6 +33,17 @@ information also remain open; this is a working draft, not a submission-ready
 paper. The new numerical macros are generated from the checked results and
 frozen with their evidence, rather than hand-transcribed into the prose.
 
+The new exact-candidate TEMPO comparison independently checks six MeCN
+electronic calculations and their density records. Directional solution
+relaxation costs are 1.477 eV for reduction and 1.639 eV for oxidation. Their
+10.4% difference exceeds the declared 5% equal-curvature diagnostic, so both
+directions are retained and a qualified symmetric parameter remains blank.
+These composite-model descriptors are separate from grafting free energy,
+electronic coupling and measured rates. The exact candidate remains pending
+under the all-axis policy. Methods, numerical components and the figure are
+included in the paper and SI; see the
+[calculation and validation record](../validation/tempo_solution_pair_2026-10-30/README.md).
+
 Run `manuscript/build.py` with the redox interpreter, `PYTHONPATH=src`, and native
 CPU thread pools capped at one. It verifies frozen evidence and reconstructs
 reported arithmetic before building both PDFs. The new checker also rejects
@@ -48,7 +59,7 @@ qualification. [Compiler facts](build_check.json),
 The restored workspace is deliberately small; the original manuscript history,
 bulk calculation records and earlier upload bundles remain in the archive
 identified by [restoration.json](restoration.json). The current figure snapshot
-is kept at `results/figures/manuscript/2026-10-30_native_cache/`. Its twenty small
+is kept at `results/figures/manuscript/2026-10-30_tempo_directional/`. Its small
 PDFs are versioned as publication inputs, separately from runtime results.
 Do not modify existing evidence snapshots; append a new snapshot for verified
 scientific additions. Once an Overleaf project is connected, pull/merge before

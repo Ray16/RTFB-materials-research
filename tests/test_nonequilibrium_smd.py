@@ -54,3 +54,15 @@ def test_native_mecn_descriptor_is_used_and_invalid_overrides_rejected(molecule)
     dm=scf.RHF(molecule).get_init_guess()
     with pytest.raises(ValueError):
         attach_frozen_slow_smd(scf.RHF(molecule),dm,eps_s=1.,eps_op=2.)
+
+
+def test_open_shell_reference_uses_the_same_total_electrostatic_density(molecule):
+    from pyscf import scf,gto
+    ion=gto.M(atom=molecule.atom,basis='sto-3g',charge=1,spin=1,verbose=0)
+    spin_density=scf.UHF(ion).get_init_guess()
+    target=scf.RHF(molecule).get_init_guess()
+    separate=attach_frozen_slow_smd(scf.RHF(molecule),spin_density,order=11)
+    total=attach_frozen_slow_smd(scf.RHF(molecule),spin_density.sum(axis=0),order=11)
+    assert abs(separate.energy_tot(target)-total.energy_tot(target))<1e-11
+    np.testing.assert_allclose(separate.with_solvent._get_vind(target)[1],
+                               total.with_solvent._get_vind(target)[1],atol=1e-11,rtol=0)

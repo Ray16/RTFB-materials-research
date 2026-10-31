@@ -4,14 +4,14 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 
 | Comment | Status | Current disposition |
 | --- | --- | --- |
-| M1 | partial | Exact PMDI finite cycle reported; converged ensembles and complete material/route criteria remain open. |
+| M1 | partial | Exact PMDI finite cycle and exact TEMPO directional MeCN descriptors reported; converged ensembles and complete material/route criteria remain open. |
 | M2 | addressed in current scope | 39 endpoints and diagnostic controls reported; reference-error attribution and external NDI accuracy remain explicitly limited. |
 | M3 | addressed in current scope | DBU/HCl and two DIPEA source estimates checked; full-route signs remain conditional. |
 | M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
 | M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
 | M7 | partial | The current 75-state polymer cache also passes extracted-archive replay in a fresh NumPy-only environment; public DOI, final metadata, complete release assembly and wider deployment portability remain open. |
-| M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024, CREST 2020 and the Oh Biying 2025/Mohanty 2026 polymer studies are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
+| M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024, CREST 2020, the Oh Biying 2025/Mohanty 2026 polymer studies and You 2015 nonequilibrium-solvation theory are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
 | remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
 | m1 | addressed in current scope | Current immutable epoch and separately built PDFs replace stale reporting. |
@@ -33,7 +33,7 @@ structures and nominal ensemble changes of −1.03/−1.23 kJ/mol; all nine sett
 meet the declared finite-batch criterion. The frozen evidence includes 75
 reconstructed states, while occupied sets remain incomplete. An independent
 checker reconstructs grouping, partitions, settings comparisons and the LaTeX
-numerical macros. Sixty-eight focused checks pass. The 20-page paper and 24-page
+numerical macros. Sixty-eight focused checks passed for that comparison. The 20-page paper and 25-page
 SI compile, and the revised pages are visually inspected. The self-contained
 upload also includes nested frozen numerical inputs and compiles with text
 identical to the checked documents. M4, complete candidate decisions under M1,
@@ -45,3 +45,13 @@ environment reproduces the saved Hessians, sampled derivative checks and nuclear
 terms with original scientific paths blocked. The article and SI describe this
 scoped reproduction. It does not replace the complete historical executable and
 scratch closure, supply missing occupied states, or establish public deposition.
+
+The exact TEMPO follow-up adds six independently checked MeCN electronic
+calculations, their density checks and a source-bound field-level publication.
+Directional relaxation costs are 1.477/1.639 eV; their 10.4% asymmetry prevents
+promotion to a qualified symmetric scalar under the declared 5% diagnostic.
+Fifty-eight focused tests pass, including frozen numerical macro checks. The
+20-page article and 25-page SI include this result and its methodological limits.
+The route-screened candidate remains pending: actual-route grafting free energy,
+occupancy, coupling and complete application criteria are not supplied by this
+calculation. M1, M4, M7 and final M9 therefore remain open.
