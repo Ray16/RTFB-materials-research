@@ -23,7 +23,7 @@ def inside(root,relative):
     return path
 
 
-def append_epoch(root,name,extras,scope,source_commit):
+def append_epoch(root,name,extras,scope,source_commit,figure_extras=None):
     root=Path(root).resolve()
     if not name or Path(name).name!=name or name in ('.','..') or not scope or not source_commit:
         raise ValueError('An epoch name, declared scope and source revision are required')
@@ -43,6 +43,12 @@ def append_epoch(root,name,extras,scope,source_commit):
         if not key or Path(key).name!=key or key in ('.','..','manifest.json','CAPTURE_FAILED.txt'):raise ValueError('Added evidence names must be flat filenames')
         target=evidence/key
         if target in mapping:raise ValueError('An addition would replace inherited evidence: '+key)
+        mapping[target]=inside(root,relative)
+    for key,relative in (figure_extras or {}).items():
+        if not key or Path(key).name!=key or key in ('.','..'):
+            raise ValueError('Added figure names must be flat filenames')
+        target=figures/key
+        if target in mapping:raise ValueError('An addition would replace an inherited figure: '+key)
         mapping[target]=inside(root,relative)
     identities={str(p.relative_to(root)):sha(p) for p in set(mapping.values())}
     evidence.mkdir();figures.mkdir()

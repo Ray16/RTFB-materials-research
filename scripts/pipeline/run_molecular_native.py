@@ -18,6 +18,28 @@ def load(path,name):
     module=importlib.util.module_from_spec(definition);definition.loader.exec_module(module);return module
 
 
+def physical_installer(original,prior,case):
+    """Keep atomic promotions within the single writable case bind mount."""
+    prior,case=Path(prior),Path(case)
+    aliases=[(prior/'calcs/dft',case/'dft'),
+        (prior/'results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs',case/'repairs')]
+    def physical(value):
+        path=Path(value)
+        if '..' in path.parts:raise ValueError('Promotion paths cannot traverse parents')
+        if path.is_relative_to(case):target=path
+        else:
+            target=None
+            for prefix,directory in aliases:
+                if path.is_relative_to(prefix):target=directory/path.relative_to(prefix);break
+            if target is None:raise ValueError('Promotion path lies outside the declared private aliases')
+        if not target.resolve().is_relative_to(case.resolve()):raise ValueError('Promotion symlink escapes its private case')
+        return target
+    def install(canonical,selected,base,expected_source_sha256,producer_snapshot,q,m):
+        return original(physical(canonical),physical(selected),physical(base),expected_source_sha256,
+                        physical(producer_snapshot),q,m)
+    return install
+
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--plan',type=Path,required=True);a=p.parse_args()
     from redox.core.common import ROOT
@@ -51,6 +73,8 @@ def main():
         dft._build_smd_mf=checkpoint.recording_builder(dft._build_smd_mf,case/'SCF_evaluations',owner)
         from pyscf.geomopt import geometric_solver
         geometric_solver.kernel=checkpoint.recording_optimizer(geometric_solver.kernel,case/'optimizer_returns',owner)
+        from redox.qm import native_thermal_repair
+        native_thermal_repair.install_repaired_state=physical_installer(native_thermal_repair.install_repaired_state,ROOT,case)
         monitor=load(ROOT/'scripts/pipeline/run_pi_stacking.py','molecular_native_memory_monitor')
         directory=Path(plan['target_directory']);gid,state=plan['source_id'],plan['state']
         select_policy(directory)

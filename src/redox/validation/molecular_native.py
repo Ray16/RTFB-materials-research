@@ -1,5 +1,6 @@
 """Source-bound molecular native review with independent density/resource checks."""
 import json
+import math
 from pathlib import Path,PurePosixPath
 import shutil
 import subprocess
@@ -18,6 +19,21 @@ from redox.workflows.molecular_native_namespace import command,verify
 
 
 class ReviewPending(RuntimeError):pass
+
+
+def spin_record_agreement(spin,saved,mult):
+    """Honor the producer's four decimals without weakening the physical gate."""
+    S=(mult-1)/2;computed=spin['s_squared'];contamination=computed-S*(S+1)
+    if not math.isfinite(computed) or abs(contamination)>.1:
+        raise ValueError('Full-precision spin-contamination gate failed')
+    half_unit=0.5e-4;roundoff=1e-10
+    for actual,key in [(computed,'s_squared'),(contamination,'spin_contam')]:
+        value=saved[key]
+        if (type(value) not in (int,float) or not math.isfinite(value) or round(value,4)!=value
+                or abs(actual-value)>half_unit+roundoff):
+            raise ValueError('Independent density spin differs beyond the stored four-decimal precision')
+    return dict(stored_decimal_places=4,full_precision_contamination=contamination,
+                full_precision_limit=.1,stored_s_squared=saved['s_squared'])
 
 
 class MolecularSources(ArchivedSources):
@@ -87,19 +103,20 @@ def review(spec_path,output):
         charge=plan['charge'],spin=plan['mult']-1,basis=settings['basis'],verbose=0)
     if any(z>36 for z in mol.atom_charges()):raise ValueError('ECP density review needs an explicit additional binding')
     spin=density_spin(np.load(path.with_name('density.npy'),allow_pickle=False),mol.intor('int1e_ovlp'),(mol.nelectron,plan['mult']))
-    if abs(spin['s_squared']-surface['smd_spin_diagnostics']['s_squared'])>1e-6:
-        raise ValueError('Independent baseline density spin does not reconstruct')
+    spin_agreement=spin_record_agreement(spin,surface['smd_spin_diagnostics'],plan['mult'])
     snapshot=case/'review_sources'/str(time.time_ns());snapshot.mkdir(parents=True)
     copied=snapshot/'molecular_native_reviewer.py';shutil.copyfile(Path(__file__).resolve(),copied)
+    density_source=snapshot/'density_spin_reviewer.py'
+    shutil.copyfile(ROOT/'src/redox/validation/solution_pair_review.py',density_source)
     sources=[case/'plan.json',case/'status.json',case/'result.json',numerical_path,
         case/'residency_guard/owner.json',case/'residency_guard/state.json',case/'host_guard/status.json',
         case/'tensor_runtime/status.json',path,path.with_name('density.npy'),path.with_name('settings.json'),
-        copied,ROOT/'src/redox/validation/solution_pair_review.py']
+        copied,density_source]
     reader.recheck()
     result=dict(status='exact_molecular_native_G_independently_checked',candidate_alias=plan['candidate_alias'],
         source_id=plan['source_id'],state=plan['state'],charge=plan['charge'],mult=plan['mult'],
         product_inchikey=plan['product_inchikey'],G_by_cutoff_eV=numerical['G_by_cutoff_eV'],
-        density_spin=spin,resource_pilot_passed_for_this_state=True,
+        density_spin=spin,spin_record_agreement=spin_agreement,resource_pilot_passed_for_this_state=True,
         repaired_geometry_used=numerical['repaired_geometry_used'],namespace=str(spec_path),
         namespace_sha256=sha256_file(spec_path),global_conformer_convergence_proven=False,
         material_admission=False,experimental_accuracy_inferred=False,declared_spin_model=True,

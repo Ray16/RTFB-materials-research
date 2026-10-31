@@ -85,3 +85,12 @@ exactly. Full potentials and their scientific interpretation await the complete
 checked set; they are not yet article results. M1 remains open, including actual
 grafting and occupancy dimensions. The source-bound record is
 `validation/viologen_native_2026-10-30/`.
+
+The complete exact viologen ladder is now independently checked after source
+minimum repairs and explicit recovery from a post-QM bind-mount promotion error.
+The MeCN potentials are −0.608/−1.208 V versus matched native Fc; modeled monomer
+disproportionation costs +57.91 kJ/mol. All raw failures remain preserved, and
+the physical gates are unchanged. The final collection and figure are at
+`validation/viologen_native_recovery_2026-10-30/`. These completed scientific
+results are prepared for the next article/SI and presentation revision. They
+do not complete grafting/occupancy/coupling evidence or the all-axis decision.
