@@ -235,6 +235,9 @@ def launch(path,gpu,output):
     if plan.get('Hessian_validation_continuation'):
         expected=(80,7200,2**30);role='screening_polymer_Hessian_control'
         if not plan.get('saved_full_Hessian') or (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(33,32):raise ValueError('Saved-Hessian validation profile changed')
+    if plan.get('charged_polymer_native_component'):
+        expected=(80,28800,4*2**30);role='charged_polymer_native_component'
+        if plan.get('charge',0)<=0 or plan.get('mult')!=1 or (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(36,32):raise ValueError('Charged native component profile changed')
     if plan.get('energy_control'):
         from redox.workflows.screening_energy_panel import output_budget
         budget=output_budget(plan['nao'],plan['source_state']['mult'],plan['has_iron'])

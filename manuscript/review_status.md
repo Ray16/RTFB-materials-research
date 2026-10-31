@@ -109,3 +109,11 @@ cutoff nuclear terms reproduce within 1.67e-8 eV across the controls. This close
 the large retained-case numerical comparison, including component-restart and
 matrix-producer architecture sensitivity. It does not close full reaction-cycle
 impact, uninterrupted resource profiling or occupied-polymer ensembles.
+
+The [charged native component pilot](../validation/charged_native_pilot_2026-10-31/README.md)
+now runs at an independently checked 114-atom +2/singlet viologen geometry.
+Nine charged-polymer structures pass stationary-geometry checks; one remaining
+one-spacer optimization is separate. The pilot uses the corrected implementation
+and the same physical thresholds, with explicit charged-state and alternate-model
+identity. Its thermochemistry is unqualified until normal completion and independent
+reconstruction; M1/M4 remain incomplete.

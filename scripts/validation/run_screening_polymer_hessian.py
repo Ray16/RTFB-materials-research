@@ -13,6 +13,8 @@ import math
 import os
 from pathlib import Path
 import shutil
+import re
+import subprocess
 import time
 
 
@@ -28,6 +30,25 @@ def workspace_file(plan,root):
     return root/'scripts/pipeline'/('df_occupied_workspace.py' if plan.get('Hessian_validation_continuation') else 'residual_response_solver.py')
 
 
+def charge_state(plan):
+    charge,mult=plan.get('charge',0),plan.get('mult',1)
+    component=plan.get('charged_polymer_native_component',False)
+    if (type(charge) is not int or type(mult) is not int or mult!=1 or (component and charge<=0)
+            or (not component and charge!=0)):
+        raise ValueError('An explicit closed-shell charged component or neutral control is required')
+    if component and (plan.get('resume_components') or plan.get('resume_response') or plan.get('saved_full_Hessian')):
+        raise ValueError('The first charged native pilot requires a fresh full Hessian')
+    return charge,mult
+
+
+def declared_columns(native,gradient,symbols,plan):
+    columns=set(native.fd_columns(gradient,symbols))
+    if plan.get('failed_column'):columns.add((plan['failed_column']['atom'],plan['failed_column']['axis']))
+    columns.update(tuple(v) for v in plan.get('extra_FD_columns',[]))
+    if any(not 0<=a<len(symbols) or b not in (0,1,2) for a,b in columns):raise ValueError('Invalid declared sampled derivative column')
+    return sorted(columns)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--plan', type=Path, required=True)
@@ -39,9 +60,12 @@ def main():
     case = args.plan.parent
     sources = case.parent / 'sources'
     plan = json.loads(args.plan.read_text())
-    if (plan['role'] != 'screening_polymer_Hessian_control'
+    if (plan['role'] not in ('screening_polymer_Hessian_control','charged_polymer_native_component')
             or plan['screening_variant'] != 'corrected' or plan['native_G_qualified']):
         raise ValueError('Separate corrected-Hessian implementation control required')
+    charge,mult=charge_state(plan)
+    if (plan['role']=='charged_polymer_native_component')!=bool(plan.get('charged_polymer_native_component')):
+        raise ValueError('The native component role and identity must agree')
     def check_sources():
         if any(hashlib.sha256(Path(p).read_bytes()).hexdigest() != h
                for p, h in plan['source_sha256'].items()):
@@ -53,7 +77,8 @@ def main():
         raise ValueError('Two CPUs, six matching caps and import-time NumPy profile required')
     owner = dict(host=os.uname().nodename, pid=os.getpid(),
                  process_start=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19])
-    record = dict(status='screening_polymer_Hessian_control_running', owner=owner,
+    prefix='charged_polymer_native_component' if plan.get('charged_polymer_native_component') else 'screening_polymer_Hessian_control'
+    record = dict(status=prefix+'_running', owner=owner,
                   started=time.time(), native_G_qualified=False, production_default_changed=False)
     atomic_write_json(case / 'status.json', record)
     try:
@@ -89,7 +114,7 @@ def main():
             counter += 1
             folder.mkdir(parents=True)
             mol = gto.M(atom=list(zip(symbols, coords.tolist())), unit='Bohr',
-                        basis='def2-svp', charge=0, spin=0, verbose=0, max_memory=6000)
+                        basis='def2-svp', charge=charge, spin=mult-1, verbose=0, max_memory=6000)
             mf = builder(mol, 'r2scan', 'acetonitrile', 'gpu', disp='d4')
             mf.conv_tol = 1e-12
             mf.conv_tol_grad = 1e-8
@@ -98,9 +123,9 @@ def main():
             mf.callback = lambda e: atomic_write_json(folder / 'progress.json',
                 dict(cycle=int(e['cycle']) + 1, E_Ha=float(e['e_tot']), updated=time.time()))
             mf.kernel()
-            if not mf.converged:
+            if not mf.converged or not math.isfinite(float(mf.e_tot)):
                 raise ValueError('Corrected control SCF did not converge')
-            spin = dft._orbital_diag(mf, 0)
+            spin = dft._orbital_diag(mf, mult-1)
             if abs(spin.get('spin_contam', math.inf)) > .1:
                 raise ValueError('Unchanged spin contamination gate failed')
             obj = mf.nuc_grad_method()
@@ -140,9 +165,11 @@ def main():
             maximum_gradient = float(abs(gradient).max())
             if maximum_gradient > native.NATIVE_SETTINGS['gradient_limit_Ha_Bohr']:
                 raise ValueError('Unchanged stationarity gate failed at the retained geometry')
-            columns = native.fd_columns(gradient, symbols)
-            required = (plan['failed_column']['atom'], plan['failed_column']['axis'])
-            columns = sorted(set(columns) | {required})
+            columns = declared_columns(native,gradient,symbols,plan)
+            if plan.get('charged_polymer_native_component'):
+                source=json.loads(Path(plan['points'][0]['evaluation']).read_text())
+                if abs(float(mf.e_tot)-source['E_Ha'])>1e-8 or np.max(abs(gradient-np.asarray(source['gradient_Ha_Bohr'])))>1e-6:
+                    raise ValueError('Fresh native component center differs from its checked stationary source')
             atomic_write_json(case / 'columns.json', dict(columns=columns, steps_Bohr=[.0005, .001]))
             mf.cphf_grids = mf.grids.copy()
             if saved_components is None:
@@ -202,27 +229,50 @@ def main():
                 native_G_qualified=False))
         if not 0 < memory.peak <= 31744:
             raise ValueError('Corrected full-Hessian GPU ceiling failed')
-        reference = plan['checked_native_reference']
-        partition = json.loads(Path(reference['partition']).read_text())
-        atoms = read(reference['geometry'])
-        nuclear = qrrho.nuclear_thermals(matrix, atoms.positions, atoms.numbers, partition['symmetry_number'])
+        reference = plan.get('checked_native_reference')
+        if plan.get('charged_polymer_native_component'):
+            atoms=read(sources/'input.xyz')
+            from redox.qm.vibrations import project_rigid_modes,write_xtb_hessian
+            masses=qrrho.atomic_masses(atoms.numbers);projected,rank=project_rigid_modes(matrix,atoms.positions,masses)
+            write_xtb_hessian(case/'symmetry_hessian',projected);shutil.copyfile(sources/'input.xyz',case/'geometry.xyz')
+            with (case/'symmetry_thermo.log').open('x') as stream:
+                run=subprocess.run([str(qrrho.LIBRARY.parent.parent/'bin/xtb'),'thermo','--sthr','50','--temp','298.15',
+                    'geometry.xyz','symmetry_hessian'],cwd=case,stdout=stream,stderr=subprocess.STDOUT,timeout=120)
+            text=(case/'symmetry_thermo.log').read_text();match=re.search(r'rotational number\s+(\d+)',text)
+            if run.returncode or match is None or rank!=6:raise ValueError('Exact-geometry symmetry/projection check failed')
+            symmetry=int(match[1]);atomic_write_json(case/'symmetry.json',dict(symmetry_number=symmetry,source='xTB autodetection on exact geometry'))
+        else:
+            partition = json.loads(Path(reference['partition']).read_text())
+            atoms = read(reference['geometry']);symmetry=partition['symmetry_number']
+        nuclear = qrrho.nuclear_thermals(matrix, atoms.positions, atoms.numbers, symmetry)
         if min(nuclear['frequencies_cm']) < -5:
             raise ValueError('Unchanged internal-mode minimum gate failed')
-        original = np.load(reference['Hessian'], allow_pickle=False)
-        comparison = dict(maximum_Hessian_difference_Ha_Bohr2=float(abs(matrix - original).max()),
-            relative_Hessian_difference=float(np.linalg.norm(matrix - original) / np.linalg.norm(original)),
-            nuclear_difference_eV={k:nuclear['nuclear_by_cutoff_eV'][k] - partition['nuclear']['nuclear_by_cutoff_eV'][k]
-                                   for k in ('25', '50', '100')},
-            source_geometric_symmetry_number=partition['symmetry_number'], native_G_qualified=False)
+        if plan.get('charged_polymer_native_component'):
+            center=json.loads((case/'points/0000/evaluation.json').read_text());electronic=center['E_Ha']*qrrho.HARTREE_EV
+            component=dict(candidate_alias=plan['exact_candidate_alias'],graph_key=plan['prepared_case']['key'],
+                charge=charge,mult=mult,model=plan['solvent_model'],quantum_settings=plan['numerical_settings'],
+                geometry_sha256=hashlib.sha256((sources/'input.xyz').read_bytes()).hexdigest(),E_geometry_level_Ha=center['E_Ha'],
+                E_geometry_level_eV=electronic,nuclear_by_cutoff_eV=nuclear['nuclear_by_cutoff_eV'],spin_partition_eV=0.,
+                G_by_cutoff_eV={k:electronic+v for k,v in nuclear['nuclear_by_cutoff_eV'].items()},native_G_qualified=False,
+                primary_model_admission=False,material_admission=False)
+            atomic_write_json(case/'thermodynamic_component.json',component)
+            comparison=dict(source_geometric_symmetry_number=symmetry,native_G_qualified=False)
+        else:
+            original = np.load(reference['Hessian'], allow_pickle=False)
+            comparison = dict(maximum_Hessian_difference_Ha_Bohr2=float(abs(matrix - original).max()),
+                relative_Hessian_difference=float(np.linalg.norm(matrix - original) / np.linalg.norm(original)),
+                nuclear_difference_eV={k:nuclear['nuclear_by_cutoff_eV'][k] - partition['nuclear']['nuclear_by_cutoff_eV'][k]
+                                       for k in ('25', '50', '100')},
+                source_geometric_symmetry_number=symmetry, native_G_qualified=False)
         atomic_write_json(case / 'nuclear.json', nuclear)
         atomic_write_json(case / 'reference_comparison.json', comparison)
         check_sources()
-        record.update(status='screening_polymer_Hessian_control_finished_review_pending',
+        record.update(status=prefix+'_finished_review_pending',
             observed_peak_GPU_MiB=memory.peak, maximum_gradient_Ha_Bohr=maximum_gradient,
             maximum_sampled_column_error=max(c['relative_error'] for c in checks),
             minimum_frequency_cm=min(nuclear['frequencies_cm']), comparison=comparison)
     except BaseException as error:
-        record.update(status='screening_polymer_Hessian_control_failed_preserved', error=repr(error))
+        record.update(status=prefix+'_failed_preserved', error=repr(error))
         if 'memory' in locals():record['observed_peak_GPU_MiB']=memory.peak
         raise
     finally:

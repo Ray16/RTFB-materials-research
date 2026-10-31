@@ -152,14 +152,71 @@ def prepare_finalization(source_namespace,output):
     result['status']='converged_ionic_optimizer_return_prepared_for_fresh_final_evaluation';return result
 
 
+def prepare_native_component(review_path,output):
+    """One closed-shell ionic native pilot, at a separately checked geometry."""
+    from ase.io import read
+    from redox.build.geometry import _skeleton
+    from redox.build.oligomer_topology import chain_topology
+    from rdkit.Chem import rdDetermineBonds
+    from redox.qm.hessian_restart import response_ceiling_gib
+    report=json.loads(review_path.read_text())
+    if report['status']!='charged_polymer_solution_stationary_geometry_independently_checked' or report['native_G_qualified']:
+        raise ValueError('A separately checked stationary ionic graph is required')
+    for path,digest in report['source_sha256'].items():
+        if sha256_file(path)!=digest:raise ValueError('Stationary source changed')
+    source=execution.verify(Path(report['namespace']));source_case=Path(source['case']);old=json.loads((source_case/'plan.json').read_text())
+    if old['mult']!=1 or old['charge']<=0:raise ValueError('This first charged native pilot is a closed-shell cation')
+    evaluation=json.loads((source_case/'evaluation.json').read_text());nao=evaluation['nao']
+    from pyscf import gto
+    atoms=read(Path(source['sources'])/'input.xyz');symbols=atoms.get_chemical_symbols()
+    mol=gto.M(atom=list(zip(symbols,atoms.positions.tolist())),unit='Angstrom',basis='def2-svp',charge=old['charge'],spin=0,verbose=0)
+    nocc=mol.nelectron//2
+    if nao!=mol.nao or nao>1193 or nocc>235:raise ValueError('First charged native pilot must fit inside the checked neutral dimension envelope')
+    initial=json.loads((Path(source['sources'])/'initial_audit.json').read_text());preparation=Path(initial['source'])
+    if sha256_file(preparation)!=initial['source_sha256']:raise ValueError('Original ionic preparation changed')
+    result=prepare(Path(source['archive']),preparation,output,old['prepared_case']['key'])
+    spec=json.loads((output/'namespace.json').read_text());case=Path(spec['case']);sources=Path(spec['sources'])
+    shutil.copyfile(Path(source['sources'])/'input.xyz',sources/'input.xyz')
+    for original,name in [(ROOT/'scripts/validation/run_screening_polymer_hessian.py','worker.py'),
+            (ROOT/'src/redox/qm/response_diagnostic.py','response_helper.py'),
+            (ROOT/'src/redox/qm/hessian_restart.py','restart_helper.py'),
+            (ROOT/'src/redox/qm/response_resume.py','response_resume_helper.py')]:shutil.copyfile(original,sources/name)
+    native=execution.load(Path(source['archive'])/'scripts/pipeline/smooth_polymer_native.py','ionic_native_unchanged_settings')
+    graph=Chem.AddHs(Chem.MolFromSmiles(old['prepared_case']['smiles']));observed=Chem.MolFromXYZFile(str(sources/'input.xyz'))
+    rdDetermineBonds.DetermineConnectivity(observed,charge=0);mapping=_skeleton(observed).GetSubstructMatch(_skeleton(graph))
+    if len(mapping)!=graph.GetNumAtoms():raise ValueError('Full ionic native input connectivity differs')
+    topology=chain_topology(old['prepared_case']['smiles'],old['prepared_case']['repeat_units'],old['prepared_case']['reactive_sites'])
+    site=old['prepared_case']['occupied_sites'][0];benzyl=topology['para_graft_sites'][site-1]['benzyl_atom']
+    nitrogen=next(a.GetIdx() for a in graph.GetAtomWithIdx(benzyl).GetNeighbors() if a.GetAtomicNum()==7 and a.GetFormalCharge()==1)
+    extras=[[mapping[nitrogen],2],[mapping[benzyl],2]]
+    cap,minimum=response_ceiling_gib(nao,nocc)
+    plan=json.loads((case/'plan.json').read_text());plan.update(role='charged_polymer_native_component',charged_polymer_pilot=False,
+        charged_polymer_native_component=True,screening_variant='corrected',symbols=symbols,
+        original_namespace=report['namespace'],original_namespace_sha256=sha256_file(Path(report['namespace'])),
+        source_stationary_review=str(review_path),points=[dict(evaluation=str(source_case/'evaluation.json'))],
+        numerical_settings=native.NATIVE_SETTINGS,extra_FD_columns=extras,response_available_memory_GiB=cap,
+        response_nao=nao,response_nocc=nocc,minimum_aligned_response_bytes=minimum,
+        maximum_host_RSS_GiB=80,maximum_wall_seconds=28800,maximum_durable_output_bytes=4*2**30,
+        minimum_initial_storage_GiB=36,minimum_live_storage_GiB=32,
+        selected_initial_geometry_sha256=sha256_file(sources/'input.xyz'),native_G_qualified=False,material_admission=False)
+    plan['source_sha256'].update(report['source_sha256']);plan['source_sha256'][str(review_path)]=sha256_file(review_path)
+    for name in ('qrrho.py','vibrations.py','cds_finite.py','hessian_memory.py','native_thermal.py'):
+        path=Path(source['archive'])/'src/redox/qm'/name;plan['source_sha256'][str(path)]=sha256_file(path)
+    plan['source_sha256'].update({str(p):sha256_file(p) for p in sources.glob('*')})
+    atomic_write_json(case/'plan.json',plan);spec.update(plan_sha256=sha256_file(case/'plan.json'),maximum_host_RSS_GiB=80)
+    atomic_write_json(output/'namespace.json',spec);result['status']='closed_shell_ionic_native_component_pilot_prepared';return result
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
     for name in ('archive','preparation','out'):parser.add_argument('--'+name,type=Path,required=name=='out')
     parser.add_argument('--finalize-from',type=Path)
+    parser.add_argument('--native-from-review',type=Path)
     parser.add_argument('--key');parser.add_argument('--execution-profile',choices=('compact_28GiB','direct_large_GPU_reference'),default='compact_28GiB');parser.add_argument('--optimization-agreement',type=Path);args=parser.parse_args()
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
     with allocation_guard():host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
-    if args.finalize_from is not None:result=prepare_finalization(args.finalize_from.resolve(),args.out.resolve())
+    if args.native_from_review is not None:result=prepare_native_component(args.native_from_review.resolve(),args.out.resolve())
+    elif args.finalize_from is not None:result=prepare_finalization(args.finalize_from.resolve(),args.out.resolve())
     elif args.optimization_agreement is None:result=prepare(args.archive.resolve(),args.preparation.resolve(),args.out.resolve(),args.key,args.execution_profile)
     else:result=prepare_optimization(args.archive.resolve(),args.preparation.resolve(),args.optimization_agreement.resolve(),args.out.resolve(),args.key)
     print(json.dumps(result))

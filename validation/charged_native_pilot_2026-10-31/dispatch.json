@@ -1,0 +1,34 @@
+{
+  "status": "charged_native_pilot_controller_spawned_start_unverified",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_native_v2/namespace.json",
+  "receipt": {
+    "status": "controller_spawned_scientific_start_unverified",
+    "owner": {
+      "host": "lambda4",
+      "pid": 3185797,
+      "process_start": "34229959"
+    },
+    "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_native_v2/placement_001",
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.screening_control",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_native_v2/namespace.json",
+      "--gpu",
+      "0",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_native_v2/placement_001"
+    ]
+  },
+  "storage": {
+    "free_bytes": 41222668288,
+    "remaining_existing_budget_bytes": 242566900,
+    "additional_budget_bytes": 4294967296,
+    "minimum_margin_bytes": 34359738368,
+    "sufficient": true
+  },
+  "checked": 1793485998.376297
+}

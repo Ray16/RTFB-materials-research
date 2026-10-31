@@ -1,0 +1,55 @@
+{
+  "status": "immutable_scoped_charged_native_pilot_preparation_and_start",
+  "source_base_commit": "d2010e85",
+  "files_sha256": {
+    "all_same__occ_2_stationary.json": "e5bdf4ad23d324513c491ecabdcf8ae2cc42875655268ec29a6cb6f6e081f307",
+    "all_same__occ_3_stationary.json": "d82c5eba0d5268c0ff22706b2ed9f3e7ebe9a50671e7b0df288382a8ba9e1f1b",
+    "all_same__occ_4_stationary.json": "2d9bfbb59a426fe8bdf92eaab0ed309dd90ae9f9e505def9f9ff461ffc8104f9",
+    "alternating__occ_2_stationary.json": "68ad2bbaff38d833ae6eac41465383dfec6cf6ee555a0606f5283e3e9c1787d8",
+    "alternating__occ_3_stationary.json": "b9f6f115ddb584f6abab39f67b407f33afe0368cf79e22517df44f974b570206",
+    "alternating__occ_4_stationary.json": "2a10e63789b12da815cff35d62f1be0edf95820450a6214b19c7eb736bc4a612",
+    "all_same__occ_2_3_stationary.json": "e0bf161077fb95ecc1e772ba1d506b58db8eadd87ac21fb1f8130334e238206f",
+    "alternating__occ_2_3_stationary.json": "e7f75fc9ffa5175cf9051488c897011a9f4d786e4a5ae10e82e8bc4763654ec2",
+    "alternating__occ_2_4_stationary.json": "965791bb3711be1ac5df0dde9a103c8e5c1b44b0b99661818a448d6770f035b4",
+    "pilot_plan.json": "28b348f551619cb20001de66cdf443a088042dbe8167dc7b5105d07161fda6d2",
+    "pilot_namespace.json": "397dac2958d3bcd2f40a624f69c3a3128a3b7d56290ebb7fbd90b929af6bb483",
+    "startup.json": "65594eaf7acc7f93064624d346dec9ee1ea0673e7c275e726ab859c1e3919ede",
+    "dispatch.json": "7a8176deb61f8d5bb384d8679ea63413d3680dcfdc3b5785aa42d6d118a8ecad",
+    "tests.xml": "854deb677a319a89e7e450c2bf8dc1af53d0b7dcb80b34aaabdfa4cb9fa7b50c",
+    "summary.json": "d9dbdb16da9d1015fdc3ce41f7b98362c52907c71e64263db0c2955af2ffa295",
+    "README.md": "2c2e9ac4c8b5717124e4a615019e0ef4e2a687b820e2bf35acc9cc1c8f409dd6",
+    "producer_snapshots/0_charged_polymer_pilot.py": "ea31b1f077289fbffe516544d238126d25c2c5a8313c2aba7772bc492b0e4701",
+    "producer_snapshots/1_screening_control.py": "7b9b4db0b81d407f03ee528ea30a79a32505af126a6dd3669ad47df6bf37bac6",
+    "producer_snapshots/2_run_screening_polymer_hessian.py": "799e0f798e0f30e8841233069c98a63f6b08f5f045a9689e66ea4cfc1c2a96e5",
+    "producer_snapshots/3_review_charged_polymer_native.py": "ebf6471948f6aa84b361551e50bc4c598dd8111c408429a1bea0e29f7728474f",
+    "producer_snapshots/4_test_charged_native_protocol.py": "d0257699239bd8362b1699c9a61ac1c369de516f06a29a91977505136a23a874",
+    "producer_snapshots/5_test_charged_native_sums.py": "e21d2ef4b7b0e9eb452193e6e2017d30b33bc3ca4e17c7b72f17021ea983493c"
+  },
+  "as_used_producers": {
+    "src/redox/workflows/charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/0_charged_polymer_pilot.py",
+      "sha256": "ea31b1f077289fbffe516544d238126d25c2c5a8313c2aba7772bc492b0e4701"
+    },
+    "src/redox/workflows/screening_control.py": {
+      "snapshot": "producer_snapshots/1_screening_control.py",
+      "sha256": "7b9b4db0b81d407f03ee528ea30a79a32505af126a6dd3669ad47df6bf37bac6"
+    },
+    "scripts/validation/run_screening_polymer_hessian.py": {
+      "snapshot": "producer_snapshots/2_run_screening_polymer_hessian.py",
+      "sha256": "799e0f798e0f30e8841233069c98a63f6b08f5f045a9689e66ea4cfc1c2a96e5"
+    },
+    "scripts/validation/review_charged_polymer_native.py": {
+      "snapshot": "producer_snapshots/3_review_charged_polymer_native.py",
+      "sha256": "ebf6471948f6aa84b361551e50bc4c598dd8111c408429a1bea0e29f7728474f"
+    },
+    "tests/test_charged_native_protocol.py": {
+      "snapshot": "producer_snapshots/4_test_charged_native_protocol.py",
+      "sha256": "d0257699239bd8362b1699c9a61ac1c369de516f06a29a91977505136a23a874"
+    },
+    "tests/test_charged_native_sums.py": {
+      "snapshot": "producer_snapshots/5_test_charged_native_sums.py",
+      "sha256": "e21d2ef4b7b0e9eb452193e6e2017d30b33bc3ca4e17c7b72f17021ea983493c"
+    }
+  },
+  "complete_thermochemistry_or_material_qualification": false
+}

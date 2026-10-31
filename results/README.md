@@ -50,6 +50,12 @@ establish that a calculation is currently running.
   Hessian minimum, conformer-ensemble and interaction/free-energy checks remain
   incomplete. Complete control Hessians are retained and their fresh derivative
   validation continues in separate source-bound namespaces.
+- [Charged native thermochemistry pilot](../validation/charged_native_pilot_2026-10-31/README.md):
+  nine stationary structures are independently checked. A verified 114-atom
+  +2/singlet component has started full native thermochemistry on a V100, with
+  the corrected implementation and unchanged physical gates. Native G, minima,
+  ensembles and occupancy interaction results remain unqualified until completion
+  and independent reconstruction; the running pilot supplies no material decision.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)
