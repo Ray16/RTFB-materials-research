@@ -21,6 +21,35 @@ from redox.workflows.molecular_native_namespace import command,verify
 class ReviewPending(RuntimeError):pass
 
 
+def completed_review_record(path,timeout_seconds=30):
+    """Allow bounded NFS visibility lag after the existing producer exits."""
+    deadline=time.monotonic()+timeout_seconds
+    while True:
+        try:return json.loads(Path(path).read_text())
+        except (FileNotFoundError,json.JSONDecodeError) as error:
+            if time.monotonic()>=deadline:
+                raise ReviewPending('Completed review handoff not yet visible; preserve it without launching a duplicate') from error
+            time.sleep(.2)
+
+
+def cross_device_uma_review(check,reference):
+    """Recompute the reported errors from fixed-geometry energy/force arrays."""
+    force=np.asarray(reference['forces_eV_A'],dtype=float)
+    if (check['energy_tolerance_eV']!=1e-4 or check['force_tolerance_eV_A']!=1e-4
+            or len(check['repeats'])!=3 or force.shape!=(len(reference['numbers']),3)
+            or not np.isfinite(force).all()):raise ValueError('Incomplete fixed-geometry UMA control')
+    errors=[]
+    for row in check['repeats']:
+        got=np.asarray(row['forces_eV_A'],dtype=float)
+        if got.shape!=force.shape or not np.isfinite(got).all():raise ValueError('Malformed repeated UMA force array')
+        energy=abs(row['energy_eV']-reference['energy_eV']);maximum=float(abs(got-force).max())
+        if (not math.isfinite(energy) or energy>1e-4 or maximum>1e-4
+                or abs(energy-row['energy_error_eV'])>1e-12 or abs(maximum-row['force_max_error_eV_A'])>1e-12):
+            raise ValueError('Cross-device standard UMA energy/forces do not reconstruct or pass')
+        errors.append(dict(energy_error_eV=energy,force_max_error_eV_A=maximum))
+    return errors
+
+
 def spin_record_agreement(spin,saved,mult):
     """Honor the producer's four decimals without weakening the physical gate."""
     S=(mult-1)/2;computed=spin['s_squared'];contamination=computed-S*(S+1)
@@ -53,11 +82,16 @@ class MolecularSources(ArchivedSources):
         return super().path(path)
 
 
-def review(spec_path,output):
+def review(spec_path,output,*,reaction_component=False):
     if output.exists():raise FileExistsError('Preserve existing molecular reviews')
     spec=verify(spec_path);case=Path(spec['case']);plan=json.loads((case/'plan.json').read_text())
+    if reaction_component!=(plan.get('role')=='reaction_component'):
+        raise ValueError('Candidate and reagent reviews must be requested separately')
+    identity_key='inchikey' if reaction_component else 'product_inchikey'
     state=json.loads((case/'status.json').read_text())
-    if state['status']!='molecular_native_state_finished_independent_review_pending':raise ValueError('Completed native result required')
+    completed=('reaction_component_native_finished_independent_review_pending' if reaction_component
+               else 'molecular_native_state_finished_independent_review_pending')
+    if state['status']!=completed:raise ValueError('Completed native result required')
     guard=json.loads((case/'residency_guard/owner.json').read_text());residency=json.loads((case/'residency_guard/state.json').read_text())
     host=json.loads((case/'host_guard/status.json').read_text());runtime=json.loads((case/'tensor_runtime/status.json').read_text())
     if (not guard.get('guard_stopped') or not residency['own_residency_observed'] or residency['foreign_resident_PIDs']
@@ -82,13 +116,24 @@ def review(spec_path,output):
         with log.open('x') as stream:
             try:subprocess.run(command_for_host(argv,state['owner']['host']),stdout=stream,stderr=subprocess.STDOUT,check=True,timeout=300)
             except subprocess.TimeoutExpired as error:raise ReviewPending('Review observation expired; retain its existing handoff') from error
-    numerical=json.loads(numerical_path.read_text());reader=MolecularSources(spec)
+    numerical=completed_review_record(numerical_path);reader=MolecularSources(spec)
     reader.verify_all(numerical['source_sha256'])
     produced=json.loads((case/'result.json').read_text())
-    if (sha256_file(case/'result.json')!=state['result_sha256'] or numerical['product_inchikey']!=plan['product_inchikey']
+    if ((not reaction_component and sha256_file(case/'result.json')!=state['result_sha256'])
+            or state.get('plan_sha256')!=sha256_file(case/'plan.json')
+            or numerical[identity_key]!=plan[identity_key]
             or numerical['state']!=plan['state'] or numerical['charge']!=plan['charge'] or numerical['mult']!=plan['mult']
             or any(abs(v-produced['G_by_cutoff_eV'][c])>1e-8 for c,v in numerical['G_by_cutoff_eV'].items())):
         raise ValueError('Independent molecular result has different state/identity/energies')
+    if reaction_component:
+        post=json.loads((case/'post_UMA_runtime.json').read_text())
+        if (produced.get('role')!='reaction_component' or numerical.get('role')!='reaction_component'
+                or post['versions']!=runtime['versions'] or post['engine']!='cutensor'
+                or post['library_sha256']!=runtime['library_sha256']
+                or len(post['FP64_smoke_checks'])!=3
+                or any(not math.isfinite(c['maximum_absolute_error']) or c['maximum_absolute_error']>1e-11
+                       for c in post['FP64_smoke_checks'])):
+            raise ValueError('Reagent role or post-UMA contraction-runtime gate failed')
     surface=json.loads(reader.path(produced['native_record_path']).read_text())
     matrix=np.load(reader.path(produced['native_record_path']).with_suffix('')/'hessian_cartesian.npy',allow_pickle=False)
     candidates=[]
@@ -113,13 +158,31 @@ def review(spec_path,output):
         case/'tensor_runtime/status.json',path,path.with_name('density.npy'),path.with_name('settings.json'),
         copied,density_source]
     reader.recheck()
-    result=dict(status='exact_molecular_native_G_independently_checked',candidate_alias=plan['candidate_alias'],
+    result=dict(status=('reaction_component_native_G_independently_checked' if reaction_component
+                       else 'exact_molecular_native_G_independently_checked'),
         source_id=plan['source_id'],state=plan['state'],charge=plan['charge'],mult=plan['mult'],
-        product_inchikey=plan['product_inchikey'],G_by_cutoff_eV=numerical['G_by_cutoff_eV'],
+        G_by_cutoff_eV=numerical['G_by_cutoff_eV'],
         density_spin=spin,spin_record_agreement=spin_agreement,resource_pilot_passed_for_this_state=True,
-        repaired_geometry_used=numerical['repaired_geometry_used'],namespace=str(spec_path),
+        repaired_geometry_used=(produced['final_geometry_sha256']!=produced['initial_optimized_geometry_sha256']
+            if reaction_component else numerical['repaired_geometry_used']),namespace=str(spec_path),
         namespace_sha256=sha256_file(spec_path),global_conformer_convergence_proven=False,
         material_admission=False,experimental_accuracy_inferred=False,declared_spin_model=True,
         source_sha256={**{str(reader.path(p)):h for p,h in numerical['source_sha256'].items()},
                        **{str(p):sha256_file(p) for p in sources}})
+    result[identity_key]=plan[identity_key]
+    if reaction_component:
+        result.update(role='reaction_component',route_candidate=plan['route_candidate'])
+        for path in (case/'post_UMA_runtime.json',case/'uma/result.json'):
+            result['source_sha256'][str(path)]=sha256_file(path)
+        if plan.get('UMA_cross_device_reference'):
+            path=case/'UMA_cross_device_check.json';cross=json.loads(path.read_text())
+            reference=json.loads(Path(plan['UMA_cross_device_reference']).read_text())
+            if cross['reference_sha256']!=sha256_file(plan['UMA_cross_device_reference']):
+                raise ValueError('Cross-device standard UMA reference checks failed')
+            result['UMA_cross_device_errors']=cross_device_uma_review(cross,reference)
+            result['source_sha256'][str(path)]=sha256_file(path)
+            for origin,digest in reference['source_sha256'].items():
+                if sha256_file(origin)!=digest:raise ValueError('Original V100 fixed-geometry reference changed')
+                result['source_sha256'][origin]=digest
+    else:result['candidate_alias']=plan['candidate_alias']
     atomic_write_json(output,result);return result

@@ -1,35 +1,34 @@
 {
-  "status": "changed_pages_visually_reviewed",
+  "status": "changed_pages_and_whole_document_contact_sheets_reviewed",
   "documents": {
     "manuscript": {
-      "pages": 20,
-      "pdf_sha256": "b7e3e89ede2471fd90678f2a158e4df2c6b99e51d9e32420da3e8097d3ddb126",
+      "pages": 21,
+      "pdf_sha256": "326b3029780eba593c6ac52611f19e56b1412eed5d852ae7a312a8623391f38a",
       "overfull_boxes": []
     },
     "supporting_information": {
-      "pages": 26,
-      "pdf_sha256": "2e8d37745e293fe9e4428fd6bf7e7b5ce12ad1c875c1d4b39300b47cc32aa193",
+      "pages": 27,
+      "pdf_sha256": "b52b6ee95a5ff37a729c96e6241d26ac0b6ea5909171b57b02cdd8d17bc31855",
       "overfull_boxes": []
     }
   },
   "main_pages_reviewed": [
-    7,
     8,
     9
   ],
   "SI_pages_reviewed": [
-    6,
     7,
-    8
+    8,
+    9
   ],
-  "render_root": "calcs/validation/viologen_publication_visual_2026-10-31",
-  "reviewed_page_renders_match_final_rebuild": true,
+  "whole_document_contact_sheets_reviewed": true,
+  "whole_document_full_resolution_review_performed": false,
+  "render_root": "calcs/validation/viologen_grafting_visual_2026-10-31",
   "checks": [
-    "Historical assessment and maintained identity registry distinguished",
-    "Exact viologen route and checked redox values readable",
-    "SI native minimum table and rotor-sensitivity figure match reconstructed inputs",
-    "No clipping or overlapping content on changed pages"
+    "Exact viologen redox and finite grafting results connected in prose",
+    "Three-seed SI table matches independently reconstructed components",
+    "Settings span and excluded salt/polymer physics stated",
+    "No clipping, overlap or compiler overfull boxes observed"
   ],
-  "whole_document_visual_review_performed": false,
   "submission_ready": false
 }

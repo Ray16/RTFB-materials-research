@@ -72,6 +72,8 @@ def main():
     source = {str(p.relative_to(ROOT)): sha(p) for p in
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", PAPER / "check_viologen_native.py", Path(__file__), manifest, pointer)}
     source.update(figure_inputs)
+    if (manifest.parent/'viologen_grafting_result.json').exists():
+        source[str((PAPER/'check_viologen_grafting.py').relative_to(ROOT))]=sha(PAPER/'check_viologen_grafting.py')
     for path in (citation_source,citation_registry,*[citation_registry.parent/r['metadata_file']
                  for r in json.loads(citation_registry.read_text())['records']]):
         source[str(path.relative_to(ROOT))]=sha(path)

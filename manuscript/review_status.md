@@ -1,10 +1,10 @@
 # Current disposition of colleague review
 
-The manuscript remains a working draft. The main unfinished scientific work is the broader conformer/occupancy analysis and completion of the material assessment. Public deposition remains open. The maintained conversion factor now uses exact SI definitions, with historical evidence retained explicitly.
+As of 31 October 2026, the manuscript remains a working draft. M1, M4, complete M7 and final M9 remain open. The table distinguishes scoped reviewer responses from complete submission readiness.
 
 | Comment | Status | Current disposition |
 | --- | --- | --- |
-| M1 | partial | Exact PMDI finite cycle, baseline enumerated viologen native ladder and TEMPO directional MeCN descriptors reported; converged ensembles and complete material/route criteria remain open. |
+| M1 | partial | Exact PMDI finite cycle, baseline enumerated viologen native ladder plus three-seed local quaternization and TEMPO directional MeCN descriptors reported; converged ensembles and complete material/route criteria remain open. |
 | M2 | addressed in current scope | 39 endpoints and diagnostic controls reported; reference-error attribution and external NDI accuracy remain explicitly limited. |
 | M3 | addressed in current scope | DBU/HCl and two DIPEA source estimates checked; full-route signs remain conditional. |
 | M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
@@ -25,80 +25,14 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 | m9 | addressed in current scope | Remaining evidence/decision terms are defined in an SI table. |
 | m10 | addressed in current scope | Initial seed/counts, one-configuration scope and xTB symmetry detection are explicit. |
 
-The [machine-readable audit](../results/validation/review_comment_audit_2026-10-26/current.json) binds the inspected sources by SHA-256. Its statuses concern the reviewer requests within the current declared scope; they are not a submission-readiness certificate.
+The current article and SI are 21/27 pages; the focused deck has fifteen main and four supporting slides. Both PDFs compile without overfull boxes and the revised pages are visually checked. The self-contained upload compiles with matching text; no Overleaf project is connected.
 
-The current 30 October revision integrates duplicate-aware empty-backbone
-partitions for both configurations. Forty native inputs yield 20/19 distinct
-structures and nominal ensemble changes of −1.03/−1.23 kJ/mol; all nine settings
-meet the declared finite-batch criterion. The frozen evidence includes 75
-reconstructed states, while occupied sets remain incomplete. An independent
-checker reconstructs grouping, partitions, settings comparisons and the LaTeX
-numerical macros. Sixty-eight focused checks passed for that comparison. The 20-page paper and 25-page
-SI compile, and the revised pages are visually inspected. The self-contained
-upload also includes nested frozen numerical inputs and compiles with text
-identical to the checked documents. M4, complete candidate decisions under M1,
-public deposition under M7 and final submission readiness under M9 remain open.
+The exact baseline enumerated viologen has checked MeCN reductions of −0.608/−1.208 V versus matched Fc and a finite local quaternization ΔG of −11.49 kJ/mol at 298.15 K. Three precursor starts pass independent geometry, derivative, nuclear, spin and resource checks. The seed span is 1.50 kJ/mol; rotor settings give −13.30 to −11.49 kJ/mol. This is a separated-ion capped-site model, with no HCl/base term. Salt association, exchange, reflux thermodynamics and polymer penalties remain unresolved. [Sources and reproduction](../validation/viologen_grafting_2026-10-31/README.md).
 
-The current native-cache revision adds raw numerical inputs for all 75 states
-in the existing polymer snapshot. An extracted archive in a fresh NumPy-only
-environment reproduces the saved Hessians, sampled derivative checks and nuclear
-terms with original scientific paths blocked. The article and SI describe this
-scoped reproduction. It does not replace the complete historical executable and
-scratch closure, supply missing occupied states, or establish public deposition.
+The TEMPO example retains separate directional MeCN relaxation costs of 1.477/1.639 eV. Their 10.4% asymmetry fails the declared equal-curvature diagnostic, so a symmetric scalar remains unqualified. Neither example is a fully admitted material.
 
-The exact TEMPO follow-up adds six independently checked MeCN electronic
-calculations, their density checks and a source-bound field-level publication.
-Directional relaxation costs are 1.477/1.639 eV; their 10.4% asymmetry prevents
-promotion to a qualified symmetric scalar under the declared 5% diagnostic.
-Fifty-eight focused tests pass, including frozen numerical macro checks. The
-20-page article and 25-page SI include this result and its methodological limits.
-The route-screened candidate remains pending: actual-route grafting free energy,
-occupancy, coupling and complete application criteria are not supplied by this
-calculation. M1, M4, M7 and final M9 therefore remain open.
+The frozen polymer comparison contains 75 reconstructed states. Both twenty-input empty-backbone sets meet the finite-batch criterion with 20/19 distinct structures. Additional occupied states are being computed and reviewed outside that snapshot; balanced occupied ensembles remain incomplete. One failed sampled-derivative column is independently reconstructed at 1.2138%, above the unchanged 1% gate, and is not counted as qualified.
 
-Subsequent working evidence admits the exact baseline enumerated viologen route
-after a primary-paper/SI review and an atom-mapped prospective gate. Only that
-graph changes status in the 904-graph registry; there are two route proceeds and
-902 holds, with no full material admissions. Sixteen focused route/registry
-checks include exact-graph transfer failures and source-snapshot consistency.
-This addition is recorded in `validation/viologen_route_2026-10-30/` and awaits
-the next scientific paper revision; it does not supply missing viologen native
-thermochemistry or complete M1. A separately checked occupied-conformer
-40-GiB pilot advances M4 without completing its occupied ensembles or changing
-the paper's existing 75-state snapshot.
+The 75-state extracted cache reconstructs Hessians, sampled derivative checks and nuclear terms in a fresh NumPy-only environment with original paths blocked. This does not establish complete historical executable closure, wider deployment portability or public deposition. Final archive assembly, DOI and author/deposition metadata remain open.
 
-The maintained dispatcher now applies the checked 40-GiB outer guard only to
-matching pending neutral tasks and retains the original numerical protocol and
-inner guard. Two additional V100 calculations have actual SCF/gradient checkpoints;
-their native qualification remains pending. The completed pilot reconstructs
-through the new dispatcher review path. This execution work supports completion
-of M4; it neither establishes occupied-ensemble convergence nor changes the
-article's frozen numerical results. See
-`validation/native_profile_dispatch_2026-10-30/` for the checked scope.
-
-The exact baseline enumerated viologen now has a native continuation for three
-declared redox states. The dication is independently checked. Initial radical
-and neutral source geometries have genuine native imaginary modes and are
-undergoing bounded minimum repair, with original records and every new
-SCF/derivative evaluation retained. Matched Fc raw partitions reconstruct
-exactly. Full potentials and their scientific interpretation await the complete
-checked set; they are not yet article results. M1 remains open, including actual
-grafting and occupancy dimensions. The source-bound record is
-`validation/viologen_native_2026-10-30/`.
-
-The complete exact viologen ladder is now independently checked after source
-minimum repairs and explicit recovery from a post-QM bind-mount promotion error.
-The MeCN potentials are −0.608/−1.208 V versus matched native Fc; modeled monomer
-disproportionation costs +57.91 kJ/mol. All raw failures remain preserved, and
-the physical gates are unchanged. The final collection and figure are at
-`validation/viologen_native_recovery_2026-10-30/`. These completed scientific
-results are prepared for the next article/SI and presentation revision. They
-do not complete grafting/occupancy/coupling evidence or the all-axis decision.
-
-The 31 October scientific revision integrates the complete viologen ladder into
-the article/SI and slide 8 of the focused deck. Three candidate plus two matched
-reference components reconstruct independently; the actual 904-graph index,
-reported native QC, generated macros and compiled figure are checked. The paper
-and SI are 20/26 pages; the presentation has fifteen main and four supporting
-slides. M1 remains partial because grafting/occupancy/coupling criteria for the
-new case are unfinished; M4, full M7 and final M9 remain open.
+The older [machine-readable comment audit](../results/validation/review_comment_audit_2026-10-26/current.json) binds its historical inspected sources; it is not a certificate for the current revision. [Publication acceptance criteria](../docs/PUBLICATION_READINESS.md) remain authoritative for completion.

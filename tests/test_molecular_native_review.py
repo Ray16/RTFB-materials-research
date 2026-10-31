@@ -70,3 +70,13 @@ def test_another_namespace_cannot_reuse_the_same_state_review(tmp_path):
     namespace=tmp_path/'namespace.json';namespace.write_text('{}')
     p=tmp_path/'review.json';p.write_text(json.dumps(dict(namespace=str(namespace),namespace_sha256='wrong')))
     with pytest.raises(ValueError):observer.checked_cached(p,namespace)
+
+
+def test_delayed_shared_review_is_pending_and_does_not_start_another_producer(tmp_path):
+    from redox.validation.molecular_native import completed_review_record,ReviewPending
+    path=tmp_path/'delayed.json'
+    with pytest.raises(ReviewPending):completed_review_record(path,timeout_seconds=0)
+    path.write_text('{')
+    with pytest.raises(ReviewPending):completed_review_record(path,timeout_seconds=0)
+    path.write_text('{"status":"finished"}')
+    assert completed_review_record(path,timeout_seconds=0)=={'status':'finished'}

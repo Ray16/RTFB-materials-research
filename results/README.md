@@ -5,7 +5,7 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 20/26-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 21/27-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates both empty-backbone sampling comparisons and
   portable numerical replay of its 75 native states, plus six fresh checked
@@ -25,7 +25,7 @@ establish that a calculation is currently running.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.
-  The full material decision remains pending; grafting/occupancy/coupling are incomplete.
+  The [new quaternization cycle](../validation/viologen_grafting_2026-10-31/README.md) gives −11.49 kJ/mol in MeCN at 298.15 K from three checked precursor seeds. This is a finite local-site separated-ion model; polymer occupancy/coupling and material admission remain incomplete.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)

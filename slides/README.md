@@ -10,7 +10,7 @@ The main sequence explains the motivation, criteria, UMA-to-DFT pipeline,
 candidate registry, benchmark, exact TEMPO response, base-defined grafting ΔG,
 four-state polymer cycle, finite PMDI result and the limits of descriptor ranking.
 Slide 4 shows UMA structural search followed by final DFT in MeCN. Slide 8 is the
-new exact-viologen reduction ladder; slide 9 gives the TEMPO directional comparison,
+exact-viologen reduction ladder and −11.49 kJ/mol local quaternization; slide 9 gives the TEMPO directional comparison,
 and slide 10 explains grafting ΔG. Supporting
 slide 18 updates both empty-backbone ensemble comparisons. Each slide has one
 claim, its supporting visual and a concise source/scope note.
@@ -24,7 +24,7 @@ separate from synthesis priorities.
 
 Build with the redox interpreter, `PYTHONPATH=src`, and native CPU thread pools
 capped at one: `python slides/build.py`. The build verifies the exact TEMPO
-numerical inputs and explicit local figure sources, then records compiler facts
+and exact-viologen redox/grafting numerical inputs and explicit local figure sources, then records compiler facts
 in [build_check.json](build_check.json). Rendered-page inspection is recorded
 separately in [visual_review.json](visual_review.json). Figures are collected
 under `results/figures/slides/2026-10-30_tempo/`; plotting code stays in

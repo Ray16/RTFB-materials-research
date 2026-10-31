@@ -147,11 +147,17 @@ def verify(path):
 def command(spec):
     validate_layout(spec);prior=Path(spec['prior_root']);case=Path(spec['case'])
     binary=ROOT.parent/'redox_polymer_continuations/runtime/bin/bwrap'
-    return [str(binary),'--die-with-parent','--ro-bind','/','/','--ro-bind',spec['archive'],spec['prior_root'],
+    argv=[str(binary),'--die-with-parent','--ro-bind','/','/','--ro-bind',spec['archive'],spec['prior_root'],
         '--bind',str(case),str(case),'--bind',str(case/'dft'),str(prior/'calcs/dft'),
         '--bind',str(case/'locks'),str(prior/'logs/pipeline_locks'),
         '--bind',str(case/'repairs'),str(prior/'results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs'),
         '--proc','/proc','--dev-bind','/dev','/dev','--tmpfs','/tmp','--chdir',str(prior),'--']
+    if spec.get('library_overlay') is not None:
+        library=Path(spec['library_overlay'])
+        if library.resolve()!=(case/'library').resolve() or not library.is_dir():
+            raise ValueError('A library overlay must be the private case/library directory')
+        argv[-1:-1]=['--ro-bind',str(library),str(prior/'library')]
+    return argv
 
 
 def probe(path):
