@@ -74,6 +74,11 @@ def main():
     source.update(figure_inputs)
     if (manifest.parent/'viologen_grafting_result.json').exists():
         source[str((PAPER/'check_viologen_grafting.py').relative_to(ROOT))]=sha(PAPER/'check_viologen_grafting.py')
+    if (manifest.parent/'exact_molecular_CPU_validation.json').exists():
+        example=ROOT/'examples/exact_viologen_replay';package=example/'data'
+        for path in [PAPER/'check_molecular_example.py',example/'replay.py',package/'manifest.json',
+                     *[package/name for name in json.loads((package/'manifest.json').read_text())['files_sha256']]]:
+            source[str(path.relative_to(ROOT))]=sha(path)
     for path in (citation_source,citation_registry,*[citation_registry.parent/r['metadata_file']
                  for r in json.loads(citation_registry.read_text())['records']]):
         source[str(path.relative_to(ROOT))]=sha(path)

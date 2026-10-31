@@ -1,0 +1,80 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_precursor_H100_checked/conf001/case/uma/relaxed.xyz",
+  "charge": 1,
+  "mult": 1,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "geometry_optimization_converged": true,
+  "optimization_SCF_converged": true,
+  "opt_gradient_grid_response": true,
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/viologen_methyl_precursor/rest/opt.xyz",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "639b448392b30f99",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -535.1438262536524,
+  "e_smd_eV": -14562.005353344028,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -535.1438262536524,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -9.876597294146858,
+  "smd_lumo_eV": -0.7528724414471165,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "gas_occupation_guesses": [],
+  "e_gas_Ha": -535.0427542589618,
+  "e_gas_eV": -14559.255044257852,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -535.0427542589618,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -12.984269616033789,
+  "gas_lumo_eV": -4.743837564507256,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "dG_solv_eV": -2.7503090861764137,
+  "id": "viologen_methyl_precursor",
+  "state": "rest",
+  "role": "reaction_component",
+  "smiles": "C[n+]1ccc(-c2ccncc2)cc1"
+}

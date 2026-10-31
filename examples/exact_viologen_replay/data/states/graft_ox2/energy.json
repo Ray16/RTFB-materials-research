@@ -1,0 +1,70 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "fc8e0a1c0909caa3",
+  "geom_sha1": "c9409b595fe90d33",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/viologen__ox2/opt.xyz",
+  "charge": 2,
+  "mult": 1,
+  "id": "viologen",
+  "state": "ox2",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -845.2519416799657,
+  "e_smd_eV": -23000.47706022487,
+  "converged_smd": true,
+  "e_gas_Ha": -844.9833981109339,
+  "e_gas_eV": -22993.16961744407,
+  "converged_gas": true,
+  "gas_homo_eV": -13.942691577184938,
+  "gas_lumo_eV": -8.020248153746085,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "dG_solv_eV": -7.307442780802158,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -845.2519416799657,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -844.9833981109339,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -9.190802483434435,
+  "smd_lumo_eV": -1.3457408927452648,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "viologen__ox2",
+    "record_sha256": "e5a8225be6ad4e92a40042798f87a0e8504261e8c9552cb365e92b493475766b",
+    "original_sha256": "87840037040550319b367e7831595caca3a1d1e8630db9e18872486b678a6935"
+  }
+}

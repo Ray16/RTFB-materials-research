@@ -10,7 +10,7 @@ As of 31 October 2026, the manuscript remains a working draft. M1, M4, complete 
 | M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
 | M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
-| M7 | partial | The current 75-state polymer cache also passes extracted-archive replay in a fresh NumPy-only environment; public DOI, final metadata, complete release assembly and wider deployment portability remain open. |
+| M7 | partial | The current 75-state polymer cache also passes extracted-archive replay in a fresh NumPy-only environment; a ten-state exact-viologen CPU example is now versioned and passes fresh NumPy-only extracted replay; public DOI, final metadata, complete release assembly and wider deployment portability remain open. |
 | M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024, CREST 2020, the Oh Biying 2025/Mohanty 2026 polymer studies and You 2015 nonequilibrium-solvation theory are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
 | remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
@@ -25,7 +25,7 @@ As of 31 October 2026, the manuscript remains a working draft. M1, M4, complete 
 | m9 | addressed in current scope | Remaining evidence/decision terms are defined in an SI table. |
 | m10 | addressed in current scope | Initial seed/counts, one-configuration scope and xTB symmetry detection are explicit. |
 
-The current article and SI are 21/27 pages; the focused deck has fifteen main and four supporting slides. Both PDFs compile without overfull boxes and the revised pages are visually checked. The self-contained upload compiles with matching text; no Overleaf project is connected.
+The current article and SI are 21/28 pages; the focused deck has fifteen main and four supporting slides. Both PDFs compile without overfull boxes and the revised pages are visually checked. The self-contained upload compiles with matching text; no Overleaf project is connected.
 
 The exact baseline enumerated viologen has checked MeCN reductions of −0.608/−1.208 V versus matched Fc and a finite local quaternization ΔG of −11.49 kJ/mol at 298.15 K. Three precursor starts pass independent geometry, derivative, nuclear, spin and resource checks. The seed span is 1.50 kJ/mol; rotor settings give −13.30 to −11.49 kJ/mol. This is a separated-ion capped-site model, with no HCl/base term. Salt association, exchange, reflux thermodynamics and polymer penalties remain unresolved. [Sources and reproduction](../validation/viologen_grafting_2026-10-31/README.md).
 

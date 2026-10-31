@@ -6,7 +6,7 @@ workflow, and deliver a manuscript whose claims match its released evidence.
 Code cleanup, completed example calculations and presentation updates each
 contribute to that objective but do not establish completion.
 
-The current article/SI are 21/27 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 21/28 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The refactor moved the pre-existing manuscript, slides, calculation campaigns
 and evidence to `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`.

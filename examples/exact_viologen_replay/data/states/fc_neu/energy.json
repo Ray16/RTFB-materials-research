@@ -1,0 +1,64 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "099d67e7303245de",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/ferrocene/neu/1791738376554349651/branch_1/opt.xyz",
+  "geom_sha1": "0d8b472c3ecf764d",
+  "charge": 0,
+  "mult": 1,
+  "id": "ferrocene",
+  "state": "neu",
+  "source": "computed:gpu",
+  "wall_s": 36.1,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "e_smd_Ha": -1650.7494010861333,
+  "e_smd_eV": -44919.179548288135,
+  "converged_smd": true,
+  "e_gas_Ha": -1650.735087648296,
+  "e_gas_eV": -44918.79005980264,
+  "converged_gas": true,
+  "gas_homo_eV": -8.489068308066967,
+  "gas_lumo_eV": 1.0982862583933537,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "dG_solv_eV": -0.38948848549721676,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.7494010861333,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.735087648296,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -8.527160657550429,
+  "smd_lumo_eV": 1.1430579430551788,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0
+}

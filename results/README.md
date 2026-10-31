@@ -5,11 +5,15 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 21/27-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 21/28-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates both empty-backbone sampling comparisons and
   portable numerical replay of its 75 native states, plus six fresh checked
   TEMPO solution-response calculations and the checked exact viologen ladder.
+- [Exact-molecule CPU example](../examples/exact_viologen_replay/README.md):
+  ten versioned cached states reconstruct both viologen reductions and local
+  quaternization with NumPy only. Nine Hessians and six saved-gradient panels
+  pass extracted-archive replay with original scientific paths blocked.
 - [Focused slides](../slides/README.md): fifteen main slides and four supporting
   slides, including the UMA-to-DFT pipeline, grafting ΔG and exact TEMPO response.
 - [Exact TEMPO follow-up](../validation/tempo_solution_pair_2026-10-30/README.md):

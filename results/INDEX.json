@@ -47,12 +47,12 @@
       "guide": "manuscript/README.md",
       "current": "manuscript/manuscript.pdf",
       "supporting_information": "manuscript/supporting_information.pdf",
-      "source_snapshot": "manuscript/evidence/2026-10-31_viologen_grafting/manifest.json",
+      "source_snapshot": "manuscript/evidence/2026-10-31_exact_CPU_example/manifest.json",
       "build": "manuscript/build_check.json",
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
-      "status": "exact_viologen_redox_and_local_grafting_integrated_scientific_gaps_open",
-      "scope": "21-page article and 27-page SI; finite exact VI grafting added; occupied ensembles and material assessment incomplete"
+      "status": "exact_viologen_and_versioned_CPU_replay_integrated_scientific_gaps_open",
+      "scope": "21-page article and 28-page SI; small raw-state CPU example available; occupied ensembles and material assessment incomplete"
     },
     "native_polymer_continuation": {
       "guide": "validation/native_followup_collection_2026-10-30/README.md",
@@ -222,6 +222,16 @@
       "figure": "results/figures/polymer_models/native_occupancy_coverage.pdf",
       "status": "101_inputs_reconstructed_complete_occupied_cycles_pending",
       "scope": "Neutral phthalimide control; explicit same alternate solvent model; no converged occupied ensemble or experimental loading"
+    },
+    "exact_molecular_CPU_example": {
+      "guide": "examples/exact_viologen_replay/README.md",
+      "current": "validation/exact_molecular_CPU_2026-10-31/summary.json",
+      "source_snapshot": "validation/exact_molecular_CPU_2026-10-31/manifest.json",
+      "raw_root": "examples/exact_viologen_replay/data",
+      "archive": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-10-31_exact_viologen_CPU_final.tar.zst",
+      "archive_sha256": "d0c6cc2ff42a594425fdd51050126a40c9ddb1013b73dddb98e5bc616e0bf1c8",
+      "status": "versioned_exact_molecular_CPU_example_fresh_numpy_replay_checked",
+      "scope": "Ten cached states: redox plus local quaternization; no live SCF, full historical closure or complete material assessment"
     }
   }
 }

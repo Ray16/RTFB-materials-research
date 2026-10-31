@@ -1,0 +1,112 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "713061f27507eb78",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/ferrocene/ox/opt.xyz",
+  "geom_sha1": "2ea6640ea1251941",
+  "charge": 1,
+  "mult": 2,
+  "id": "ferrocene",
+  "state": "ox",
+  "source": "verified_refined_minimum:phase_matched_occupation_checks",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "occupation_proof": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/refined_fc_smd_occupation_checks/plus.json",
+  "e_smd_Ha": -1650.5863776273136,
+  "e_smd_eV": -44914.743453983036,
+  "converged_smd": true,
+  "e_gas_Ha": -1650.4985503046228,
+  "e_gas_eV": -44912.35355078234,
+  "converged_gas": true,
+  "gas_homo_eV": -14.07133640071622,
+  "gas_lumo_eV": -4.827539121266569,
+  "gas_s_squared": 0.7849,
+  "gas_spin_contam": 0.0349,
+  "anion_unbound": null,
+  "dG_solv_eV": -2.3899032006956986,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.4931456353843,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1650.5516889369437,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1650.4931456175714,
+      "converged": true
+    },
+    {
+      "guess": "smd_rm0",
+      "e_Ha": -1650.5863776273136,
+      "converged": true
+    },
+    {
+      "guess": "smd_rm1",
+      "e_Ha": -1650.4931456319127,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.405576259563,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1650.4642592229266,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1650.4055765267972,
+      "converged": true
+    },
+    {
+      "guess": "rm0",
+      "e_Ha": -1650.4985503046228,
+      "converged": true
+    },
+    {
+      "guess": "rm1",
+      "e_Ha": -1650.493808500797,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [
+    "rm0",
+    "rm1"
+  ],
+  "smd_occupation_guesses": [
+    "rm0",
+    "rm1"
+  ],
+  "smd_homo_eV": -10.02493771614268,
+  "smd_lumo_eV": -0.7588362877197492,
+  "smd_s_squared": 0.7848,
+  "smd_spin_contam": 0.0348
+}

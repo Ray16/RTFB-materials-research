@@ -1,0 +1,78 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/viologen/neu/relaxed.xyz",
+  "charge": 0,
+  "mult": 1,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native_recovery_checked/neu/case/dft/viologen/neu/opt.xyz",
+  "e_smd_Ha": -845.4998508043882,
+  "e_smd_eV": -23007.223011163434,
+  "converged_smd": true,
+  "e_gas_Ha": -845.4670458582777,
+  "e_gas_eV": -23006.330343104044,
+  "converged_gas": true,
+  "dG_solv_eV": -0.8926680593901568,
+  "id": "viologen",
+  "state": "neu",
+  "n_e": -2,
+  "g_thermal_eV": null,
+  "zpe_eV": 8.999129976282498,
+  "n_imag": null,
+  "freq_min_cm": null,
+  "thermal_method": "gfn2-xtb",
+  "freq_level": "gfn2-xtb (RRHO, 298.15K)",
+  "geometry_optimization_converged": true,
+  "optimization_SCF_converged": true,
+  "opt_gradient_grid_response": true,
+  "minimum_repair_source": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/neu/case/dft/viologen/neu/opt.xyz",
+  "minimum_repair_source_sha256": "96bdc26bb923024ac11ccf38b6b5ab0c379e46ee499ea4d7bcf6c3f2a77511f3",
+  "gas_homo_eV": -5.1581586519933325,
+  "gas_lumo_eV": 0.9376211964514016,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -845.4998508043882,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -845.4670458582777,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -5.369782000870913,
+  "smd_lumo_eV": 1.0219321908094345,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "legacy_thermal_archive": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/neu/case/dft/viologen/neu/result.json",
+  "recovery_input_record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/neu/case/repairs/viologen/neu/1793417642352456921/branch_1/result.json",
+  "recovery_input_record_sha256": "2bbe6cb97d99686964f80be55d348f0a9049401025bfac4781f1753441e7d5ba",
+  "recovery_metadata_scope": "provenance-path relocation; chemistry, geometry and addressed energy unchanged"
+}
