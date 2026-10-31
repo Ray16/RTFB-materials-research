@@ -1,17 +1,17 @@
 # Working scientific manuscript
 
 Open [the paper](manuscript.pdf) (20 pages) and
-[Supporting Information](supporting_information.pdf) (25 pages).
+[Supporting Information](supporting_information.pdf) (26 pages).
 Editable sources are [manuscript.tex](manuscript.tex),
 [supporting_information.tex](supporting_information.tex),
 [references.bib](references.bib) and [novelty_references.bib](novelty_references.bib).
 No Overleaf project is connected. A self-contained
-[upload ZIP](overleaf_upload_2026-10-30_tempo_directional.zip) contains both documents,
+[upload ZIP](overleaf_upload_2026-10-31_viologen_native.zip) contains both documents,
 bibliographies, required figures and frozen numerical TeX inputs. Both exported documents compile with
 text identical to their checked local counterparts; this does not claim upload
 or remote synchronization.
 
-The [current evidence snapshot](evidence/2026-10-30_tempo_directional/manifest.json)
+The [current evidence snapshot](evidence/2026-10-31_viologen_native/manifest.json)
 preserves the primary benchmark, grafting and PMDI occupancy evidence and adds
 the duplicate-aware empty-backbone comparison. Both configurations have twenty
 checked native inputs. Their 20/19 distinct structures give nominal 10-to-20
@@ -59,7 +59,7 @@ qualification. [Compiler facts](build_check.json),
 The restored workspace is deliberately small; the original manuscript history,
 bulk calculation records and earlier upload bundles remain in the archive
 identified by [restoration.json](restoration.json). The current figure snapshot
-is kept at `results/figures/manuscript/2026-10-30_tempo_directional/`. Its small
+is kept at `results/figures/manuscript/2026-10-31_viologen_native/`. Its small
 PDFs are versioned as publication inputs, separately from runtime results.
 Do not modify existing evidence snapshots; append a new snapshot for verified
 scientific additions. Once an Overleaf project is connected, pull/merge before
@@ -69,3 +69,13 @@ The current literature pass adds the directly relevant 2025 chloromethylated-PS
 phenothiazine/TEMPO study and the 2026 phthalimide-polymer kinetics/MD study.
 Their primary metadata are checked during each build. These context additions
 do not change the frozen numerical results or promote held candidate routes.
+
+The exact enumerated viologen now has three independently checked native states.
+The paper reports −0.608/−1.208 V versus matched Fc in MeCN and +57.91 kJ/mol
+for modeled monomer disproportionation. The SI gives its minimum-admission table
+and redox figure. Original source saddles were repaired before acceptance.
+The maintained 904-graph identity registry is explicitly distinguished from the
+frozen 878-candidate assessment. Actual-condition grafting, occupancy/coupling
+and full material eligibility remain incomplete. Thirty publication-focused
+tests pass; every compiled figure is now snapshot-bound and rechecked through
+the end of the build.

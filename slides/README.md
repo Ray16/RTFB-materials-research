@@ -1,6 +1,6 @@
 # Focused redox workflow presentation
 
-Open [redox_workflow.pdf](redox_workflow.pdf): fourteen main slides followed by
+Open [redox_workflow.pdf](redox_workflow.pdf): fifteen main slides followed by
 four supporting slides. The editable sources are
 [redox_workflow.tex](redox_workflow.tex),
 [story/motivation_results.tex](story/motivation_results.tex) and
@@ -10,8 +10,9 @@ The main sequence explains the motivation, criteria, UMA-to-DFT pipeline,
 candidate registry, benchmark, exact TEMPO response, base-defined grafting ΔG,
 four-state polymer cycle, finite PMDI result and the limits of descriptor ranking.
 Slide 4 shows UMA structural search followed by final DFT in MeCN. Slide 8 is the
-new exact-TEMPO directional comparison; slide 9 explains grafting ΔG. Supporting
-slide 17 updates both empty-backbone ensemble comparisons. Each slide has one
+new exact-viologen reduction ladder; slide 9 gives the TEMPO directional comparison,
+and slide 10 explains grafting ΔG. Supporting
+slide 18 updates both empty-backbone ensemble comparisons. Each slide has one
 claim, its supporting visual and a concise source/scope note.
 
 The 904-graph registry is broader than the 837-design systematic three-core grid

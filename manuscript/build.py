@@ -20,6 +20,17 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def compiled_figure_inputs(paper,root,snapshot):
+    inputs={}
+    for document in ('manuscript.tex','supporting_information.tex'):
+        for name in re.findall(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}',(paper/document).read_text()):
+            figure=(paper/name).resolve();relative=str(figure.relative_to(root))
+            if snapshot.get(relative)!=sha(figure):
+                raise ValueError('Compiled figure is not bound by the current evidence: '+relative)
+            inputs[relative]=sha(figure)
+    return inputs
+
+
 def check_draft_labels(text):
     # pdfLaTeX may hyphenate a required word at a physical line boundary.
     joined = re.sub(r"(?<=[A-Za-z])-\s*\n\s*(?=[A-Za-z])", "", text)
@@ -41,6 +52,7 @@ def main():
     for path, expected in evidence["snapshot_sha256"].items():
         if sha(ROOT / path) != expected:
             raise ValueError(f"Draft evidence changed: {path}")
+    figure_inputs=compiled_figure_inputs(PAPER,ROOT,evidence['snapshot_sha256'])
     from check_claims import audit
 
     claims = audit()
@@ -58,7 +70,8 @@ def main():
         if shutil.which(program) is None:
             raise RuntimeError(f"Missing manuscript build program: {program}")
     source = {str(p.relative_to(ROOT)): sha(p) for p in
-              (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", Path(__file__), manifest, pointer)}
+              (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", PAPER / "check_viologen_native.py", Path(__file__), manifest, pointer)}
+    source.update(figure_inputs)
     for path in (citation_source,citation_registry,*[citation_registry.parent/r['metadata_file']
                  for r in json.loads(citation_registry.read_text())['records']]):
         source[str(path.relative_to(ROOT))]=sha(path)

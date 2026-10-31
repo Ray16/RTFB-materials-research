@@ -77,8 +77,8 @@
 \at{23}{6.2}{7}{exact graphs in the registry}
 \at{23}{8.5}{7}{\bfseries Design variables\\[.3cm]\normalfont Core\\Linker\\Cap\\Ring substituent}
 \at{1}{12.8}{28}{\fontsize{22}{27}\selectfont The 837-grid subset spans core, linker, cap and ring choices.}
-\claim{Enumerated designs still need route and quantum evaluation.}
-\src{The systematic subset contains 459 viologens, 135 PMDIs and 243 NDIs. The unified registry has 904 graphs; most additional designs have no new quantum results. Comparable BQ/AQ and oxidation-active coverage remains incomplete.}
+\claim{Enumeration feeds exact-route and quantum checks.}
+\src{The systematic subset contains 459 viologens, 135 PMDIs and 243 NDIs. The unified registry has 904 graphs; the baseline viologen now has three checked native states; most designs await quantum work. Comparable BQ/AQ and oxidation-active coverage remains incomplete.}
 \end{tikzpicture}
 \end{frame}
 
@@ -105,6 +105,19 @@
 \at{20}{12.3}{10}{\fontsize{19}{24}\selectfont MeCN; RMSE = 0.279 V}
 \claim{The benchmark defines a limited molecular accuracy context.}
 \src{Retrospective exact-free-molecule panel. Molecule-cluster 95\% MAE interval: 0.213--0.286 V. No NDI endpoint; grafted-polymer accuracy is not established.}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Exact enumerated example}{A viologen design has a checked redox ladder}
+\fig{1.2}{4.3}{12.3}{5.4}{../results/figures/candidates/viologen_exact_graft.pdf}
+\at{1.5}{10.3}{12}{\fontsize{22}{28}\selectfont Exact capped graft graph}
+\at{1.5}{11.5}{12}{\fontsize{22}{28}\selectfont Reviewed Merrifield route}
+\at{1.5}{12.8}{12}{\fontsize{20}{25}\selectfont Monomer $\Delta G_{\mathrm{disp}}=+\MolecularDisproportionation$ kJ/mol}
+\fig{14.4}{3.5}{16.2}{10.5}{../results/figures/manuscript/2026-10-31_viologen_native/viologen_native_redox.pdf}
+\claim{Exact identity links enumeration to checked quantum results.}
+\src{Capped local model, MeCN, 298.15 K; three native states and matched Fc, no fitted offset. Bars show rotor-setting sensitivity. Grafting free energy, occupancy and coupling remain pending. Drawing shows resting connectivity; no charge/spin localization is inferred.}
 \end{tikzpicture}
 \end{frame}
 

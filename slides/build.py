@@ -24,8 +24,12 @@ def main():
     pointer=json.loads((ROOT/'manuscript/evidence/current.json').read_text());epoch=(ROOT/pointer['manifest']).parent
     spec=importlib.util.spec_from_file_location('deck_checked_directional_values',ROOT/'manuscript/check_tempo_solution.py')
     checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);descriptor=checker.audit(epoch)
+    spec=importlib.util.spec_from_file_location('deck_checked_viologen_values',ROOT/'manuscript/check_viologen_native.py')
+    viologen=importlib.util.module_from_spec(spec);spec.loader.exec_module(viologen)
+    redox=viologen.audit(epoch,ROOT/pointer['figures'])
     paths=[SLIDES/'redox_workflow.tex',SLIDES/'story/motivation_results.tex',SLIDES/'story/supporting.tex',
-           epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',Path(__file__).resolve()]
+           epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',
+           epoch/'viologen_native_values.tex',ROOT/'manuscript/check_viologen_native.py',Path(__file__).resolve()]
     inputs={str(p.relative_to(ROOT)):sha(p) for p in paths}
     for source in paths[:3]:
         text=source.read_text()
@@ -48,6 +52,8 @@ def main():
     text='\n'.join(page.extract_text() for page in reader.pages)
     for number in (f"{descriptor['reduction_eV']:.3f}",f"{descriptor['oxidation_eV']:.3f}"):
         if number not in text:raise ValueError('Checked directional value absent from the deck')
+    for value in redox['potentials_V_vs_Fc']:
+        if f'{abs(value):.3f}' not in text:raise ValueError('Checked viologen potential absent from the deck')
     if any(sha(ROOT/path)!=digest for path,digest in inputs.items()):raise ValueError('Deck source changed during compilation')
     shutil.copyfile(pdf,SLIDES/'redox_workflow.pdf')
     report=dict(status='focused_deck_built_checked_directional_result',pages=len(reader.pages),main_frames=main_frames,

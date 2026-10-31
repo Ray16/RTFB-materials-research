@@ -4,7 +4,7 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 
 | Comment | Status | Current disposition |
 | --- | --- | --- |
-| M1 | partial | Exact PMDI finite cycle and exact TEMPO directional MeCN descriptors reported; converged ensembles and complete material/route criteria remain open. |
+| M1 | partial | Exact PMDI finite cycle, baseline enumerated viologen native ladder and TEMPO directional MeCN descriptors reported; converged ensembles and complete material/route criteria remain open. |
 | M2 | addressed in current scope | 39 endpoints and diagnostic controls reported; reference-error attribution and external NDI accuracy remain explicitly limited. |
 | M3 | addressed in current scope | DBU/HCl and two DIPEA source estimates checked; full-route signs remain conditional. |
 | M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
@@ -94,3 +94,11 @@ the physical gates are unchanged. The final collection and figure are at
 `validation/viologen_native_recovery_2026-10-30/`. These completed scientific
 results are prepared for the next article/SI and presentation revision. They
 do not complete grafting/occupancy/coupling evidence or the all-axis decision.
+
+The 31 October scientific revision integrates the complete viologen ladder into
+the article/SI and slide 8 of the focused deck. Three candidate plus two matched
+reference components reconstruct independently; the actual 904-graph index,
+reported native QC, generated macros and compiled figure are checked. The paper
+and SI are 20/26 pages; the presentation has fifteen main and four supporting
+slides. M1 remains partial because grafting/occupancy/coupling criteria for the
+new case are unfinished; M4, full M7 and final M9 remain open.

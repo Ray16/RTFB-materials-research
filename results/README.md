@@ -5,12 +5,12 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 20/25-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 20/26-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates both empty-backbone sampling comparisons and
   portable numerical replay of its 75 native states, plus six fresh checked
-  TEMPO solution-response calculations.
-- [Focused slides](../slides/README.md): fourteen main slides and four supporting
+  TEMPO solution-response calculations and the checked exact viologen ladder.
+- [Focused slides](../slides/README.md): fifteen main slides and four supporting
   slides, including the UMA-to-DFT pipeline, grafting ΔG and exact TEMPO response.
 - [Exact TEMPO follow-up](../validation/tempo_solution_pair_2026-10-30/README.md):
   checked MeCN relaxation costs of 1.477/1.639 eV. The 10.4% directional asymmetry
