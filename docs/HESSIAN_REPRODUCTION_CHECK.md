@@ -23,6 +23,14 @@ backing, mismatched states or duplicate runs fail explicitly. Differences above
 the limits are written as failed comparisons and return a nonzero exit status;
 the tolerances are not adjusted after seeing the results.
 
+Newly prepared full controls use an explicit eight-hour wall profile. The
+matched historical native reference took about 5.04 hours, so a four-hour
+allowance can end before the ordinary physical checks finish. This changes
+only a prospective wall limit: existing frozen four-hour plans retain their
+original limits, and CPU/GPU memory, durable-output budgets, storage margins
+and numerical gates are unchanged. A wall stop never implies a geometry or
+physical failure, and recovery still requires proven closed ownership.
+
 After normal completion and separate physical review, run:
 
 ```bash

@@ -84,6 +84,13 @@ def response_continuation_closure(stage,guard,completion,alive):
     return 'closed_normal_control' if normal else 'closed_recorded_wall_budget_stop'
 
 
+def full_hessian_wall_seconds(plan):
+    profiles={'initial_4h':14400,'extended_8h':28800}
+    profile=plan.get('Hessian_wall_profile','initial_4h')
+    if profile not in profiles:raise ValueError('Explicit supported full-Hessian wall profile required')
+    return 28800 if plan.get('response_checkpoint_continuation') else profiles[profile]
+
+
 def prepare_polymer_hessian(namespace,reference,output,resume_from=None,resume_response_from=None):
     """A new corrected derivative control; never a mixed-implementation G."""
     from redox.validation.namespace_sources import read_checked_review,NamespaceSources
@@ -115,7 +122,8 @@ def prepare_polymer_hessian(namespace,reference,output,resume_from=None,resume_r
     response_cap,minimum_response=response_ceiling_gib(mol.nao,mol.nelectron//2)
     plan.update(role='screening_polymer_Hessian_control',full_polymer_Hessian_control=True,
         numerical_settings=native.NATIVE_SETTINGS,response_available_memory_GiB=response_cap,
-        response_nao=mol.nao,response_nocc=mol.nelectron//2,minimum_aligned_response_bytes=minimum_response,maximum_wall_seconds=14400,
+        response_nao=mol.nao,response_nocc=mol.nelectron//2,minimum_aligned_response_bytes=minimum_response,
+        Hessian_wall_profile='extended_8h',maximum_wall_seconds=28800,
         maximum_durable_output_bytes=4*2**30,minimum_initial_storage_GiB=36,minimum_live_storage_GiB=32,
         checked_native_reference=dict(namespace=str(reference),review=binding,
             Hessian=str(raw/'hessian.npy'),partition=str(raw/'experimental_partition.json'),geometry=str(raw/'geometry.xyz')),
@@ -168,7 +176,7 @@ def launch(path,gpu,output):
     if plan.get('screening_variant'):
         expected=(80,3600,512*2**20);role='polymer_gradient_diagnostic'
     if plan.get('full_polymer_Hessian_control'):
-        expected=(80,28800 if plan.get('response_checkpoint_continuation') else 14400,4*2**30);role='screening_polymer_Hessian_control'
+        expected=(80,full_hessian_wall_seconds(plan),4*2**30);role='screening_polymer_Hessian_control'
         if plan.get('response_checkpoint_continuation') and not plan.get('resume_response'):raise ValueError('Explicit source-bound response continuation required')
         if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(36,32):raise ValueError('Full-Hessian control storage margins changed')
     if plan.get('energy_control'):

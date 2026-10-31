@@ -74,3 +74,12 @@ def test_unresolved_storage_limit_is_not_treated_as_a_wall_stop(reason):
     from redox.workflows.screening_control import response_continuation_closure
     owner=dict(host='node',pid=7,process_start='123');stage=dict(status='screening_polymer_Hessian_control_failed_preserved',owner=owner)
     with pytest.raises(ValueError):response_continuation_closure(stage,dict(owner,guard_stopped=True),dict(returncode=-15,budget_stop=reason),lambda row:False)
+
+
+def test_new_wall_profile_does_not_reinterpret_older_frozen_plans():
+    from redox.workflows.screening_control import full_hessian_wall_seconds
+    assert full_hessian_wall_seconds({})==14400
+    assert full_hessian_wall_seconds(dict(Hessian_wall_profile='initial_4h'))==14400
+    assert full_hessian_wall_seconds(dict(Hessian_wall_profile='extended_8h'))==28800
+    assert full_hessian_wall_seconds(dict(response_checkpoint_continuation=True))==28800
+    with pytest.raises(ValueError):full_hessian_wall_seconds(dict(Hessian_wall_profile='unbounded'))
