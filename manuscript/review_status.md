@@ -8,7 +8,8 @@ The isolated correction passes fixed-density and closed/open-shell MeCN
 derivative controls on both devices. All 71 benchmark electronic states now
 pass independent repeat review; the largest corrected-minus-installed
 electronic contribution to a relative-potential change is 8.66e-11 V.
-Full polymer-Hessian, reaction-cycle and production qualification remain open. Previous arithmetic,
+The retained 119-atom full-Hessian controls now pass independent reconstruction
+and prospective comparison. Broader reaction-cycle and production qualification remain open. Previous arithmetic,
 experimental-source and saved-record replays remain reproducible; they do not
 measure the defect's effect on converged chemical predictions. Stored chemical
 claims are provisional for release. New uncorrected admissions are held.
@@ -99,3 +100,12 @@ complete control Hessians are also retained. Their resource/adapter failures
 remain preserved, and phase-specific validation continues with the original
 physical thresholds. These records advance M1/M6 without supplying missing
 polymer minima, ensembles, interaction G or full material decisions.
+
+Three [complete corrected polymer Hessians](../validation/polymer_hessian_reproduction_2026-10-31/README.md)
+now pass independent reconstruction and the prospective pairwise comparison.
+For the retained 119-atom phthalimide control, the maximum sampled-column error
+is 9.45e-6, the lowest internal frequency is positive at 9.59 cm-1 and all three
+cutoff nuclear terms reproduce within 1.67e-8 eV across the controls. This closes
+the large retained-case numerical comparison, including component-restart and
+matrix-producer architecture sensitivity. It does not close full reaction-cycle
+impact, uninterrupted resource profiling or occupied-polymer ensembles.

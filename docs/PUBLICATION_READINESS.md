@@ -12,8 +12,10 @@ upstream correction passes the original fixed-density integration tolerance;
 closed- and open-shell V100/H100 MeCN derivative controls also pass. The
 [complete 71-state electronic benchmark audit](../validation/screening_chemical_impact_2026-10-31/README.md)
 finds a largest corrected-minus-installed electronic potential contribution
-below 9e-11 V across all 39 endpoints. Full polymer-Hessian, reaction-cycle
-impact and production qualification remain open. Stored
+below 9e-11 V across all 39 endpoints. Three complete Hessians for one retained
+119-atom control now pass [independent physical reconstruction and prospective
+comparison](../validation/polymer_hessian_reproduction_2026-10-31/README.md).
+Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 

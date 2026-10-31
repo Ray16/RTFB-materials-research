@@ -64,9 +64,16 @@ establish that a calculation is currently running.
   upstream correction passes both integration controls and V100/H100 closed/open-shell
   MeCN derivative controls. All 71 benchmark electronic states pass independent
   repeats, with all 39 electronic relative-potential shifts below 9e-11 V.
-  Fresh and correctly scoped full polymer-Hessian restart controls are active.
+  The large retained-case Hessian controls now pass independent reconstruction
+  and the prospective numerical comparison linked below.
   Complete polymer/reaction-cycle and production qualification remain open; new uncorrected admissions
   are held and stored chemical results remain provisional for release.
+- [Complete large-polymer Hessian reproduction](../validation/polymer_hessian_reproduction_2026-10-31/README.md):
+  three corrected 119-atom control matrices pass fresh derivative, minimum and
+  independent nuclear reconstruction, then all prospective pairwise limits.
+  Their largest nuclear-term difference is 1.67e-8 eV. This qualifies the tested
+  retained structure; broader reaction-cycle impact, uninterrupted resource
+  profiles and polymer ensembles remain separate open requirements.
 - [Working occupied-state census](../validation/screening_implementation_2026-10-31/native_census.json):
   122 input states now reconstruct under their stored protocol. Six earlier states verify
   14,643 source bindings, including one recovered interrupted case. The
