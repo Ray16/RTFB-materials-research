@@ -120,7 +120,23 @@ def review(namespace,placement):
             raise ValueError('Complete solvent H1 must survive component reuse')
         used.append(Path(capture['path']))
     solver=read(case/'execution/response_solver.json')
-    if (solver['status']!='response_equations_solved_full_physical_QC_separate' or solver['equations_changed'] or solver['level_shift_added']
+    saved_matrix_validated=False
+    if plan.get('Hessian_validation_continuation'):
+        saved=plan['saved_full_Hessian'];reuse=read(case/'saved_matrix_reuse.json');source_center=read(Path(saved['center']))
+        source_matrix=Path(saved['matrix']);used.append(source_matrix)
+        energy_error=abs(center['E_Ha']-source_center['E_Ha']);gradient_error=float(abs(gradient-np.asarray(source_center['gradient_Ha_Bohr'])).max())
+        if (solver['status']!='no_new_response_solve_saved_full_Hessian_validation' or solver['calls']
+                or len(reuse['calls'])!=1 or not np.array_equal(matrix,np.load(source_matrix,allow_pickle=False))
+                or energy_error>1e-8 or gradient_error>1e-6
+                or energy_error!=reuse['calls'][0]['center_energy_difference_Ha']
+                or gradient_error!=reuse['calls'][0]['center_gradient_difference_Ha_Bohr']
+                or not np.allclose(coordinates,source_center['coordinates_Bohr'],atol=1e-12,rtol=0)):
+            raise ValueError('Retained full matrix and fresh center binding do not reconstruct')
+        for path,digest in saved['source_sha256'].items():
+            if sha256_file(path)!=digest:raise ValueError('Saved complete Hessian source changed')
+            used.append(Path(path))
+        solver=read(Path(saved['solver']));saved_matrix_validated=True
+    if ((not saved_matrix_validated and solver['status']!='response_equations_solved_full_physical_QC_separate') or solver['equations_changed'] or solver['level_shift_added']
             or sum(row['shape'][0] for row in solver['calls'])!=3*count
             or any(row['solver_info']!=0 or row['precision']!='float64' or row['level_shift_added']
                    or not 0<=row['true_residual_norm']<=row['solver_absolute_target'] for row in solver['calls'])):
@@ -164,6 +180,7 @@ def review(namespace,placement):
         maximum_Hessian_difference_from_reference_Ha_Bohr2=float(abs(matrix-original).max()),
         nuclear_difference_from_reference_eV={k:v-parent['nuclear']['nuclear_by_cutoff_eV'][k] for k,v in thermal.items()},
         exact_component_reuse_exercised=bool(plan.get('resume_components')),equilibrium_solvent_H1_retained=True,
+        complete_saved_Hessian_validated=saved_matrix_validated,
         response_checkpoint_blocks_reused_after_fresh_operator_check=response_reused,
         residuals_independently_reevaluated=False,native_G_assembled=False,native_G_qualified=False,complete_polymer_ensemble_qualified=False,
         source_sha256={str(p):sha256_file(p) for p in used},producer_sha256=sha256_file(__file__))

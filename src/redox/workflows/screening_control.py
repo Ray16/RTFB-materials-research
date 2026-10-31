@@ -41,7 +41,7 @@ def probe(path):
     program=('import ast,importlib.util,importlib.metadata as m,json,pathlib;import numpy,psutil,ase,h5py;from pyscf.gto import mole;'
         'wanted='+repr(runtime['versions'])+';assert {k:m.version(k) for k in wanted}==wanted;'
         'root=pathlib.Path('+repr(spec['sources'])+');'
-        'modules=sorted({n.module for name in ["worker.py","helper.py","host_guard.py","scientific_worker.py","checkpoints.py","response_helper.py","restart_helper.py","response_resume_helper.py"] if (root/name).exists() for n in ast.walk(ast.parse((root/name).read_text())) if isinstance(n,ast.ImportFrom) and n.module and n.module.startswith("redox.")});'
+        'modules=sorted({n.module for name in ["worker.py","helper.py","host_guard.py","scientific_worker.py","checkpoints.py","response_helper.py","restart_helper.py","response_resume_helper.py","saved_matrix_helper.py"] if (root/name).exists() for n in ast.walk(ast.parse((root/name).read_text())) if isinstance(n,ast.ImportFrom) and n.module and n.module.startswith("redox.")});'
         'assert all(importlib.util.find_spec(name) is not None for name in modules),modules;'
         'print(json.dumps(dict(versions=wanted,worker_imports=modules,CUDA_context_started=False)))')
     run=subprocess.run(execution.command(spec)+[runtime['python'],'-c',program],capture_output=True,text=True,check=True,timeout=120)
@@ -167,6 +167,59 @@ def prepare_polymer_hessian(namespace,reference,output,resume_from=None,resume_r
     return spec
 
 
+def hessian_resource_stop(stage,completion):
+    return (completion.get('budget_stop')=='wall_time_budget' or any(message in stage.get('error','') for message in (
+        'cudaErrorMemoryAllocation','Out of GPU memory for XC energy first derivative')))
+
+
+def prepare_hessian_validation(source_namespace,output):
+    """Recover validation after a complete matrix and a closed resource stop."""
+    import numpy as np
+    source=execution.verify(source_namespace);source_case=Path(source['case'])
+    old=json.loads((source_case/'plan.json').read_text());stage=json.loads((source_case/'status.json').read_text())
+    guard=json.loads((source_case/'residency_guard/owner.json').read_text())
+    owners=execution.load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','saved_matrix_closed_owner')
+    completions=list(source_case.parent.glob('placement*/completion.json'))
+    if len(completions)!=1:raise ValueError('One closed original placement required')
+    completion=json.loads(completions[0].read_text())
+    resource_stop=hessian_resource_stop(stage,completion)
+    if (old.get('role')!='screening_polymer_Hessian_control' or old.get('screening_variant')!='corrected'
+            or not old.get('full_polymer_Hessian_control') or not resource_stop
+            or completion['returncode'] in (None,0) or not guard.get('guard_stopped')
+            or any(guard.get(k)!=stage['owner'].get(k) for k in ('host','pid','process_start'))
+            or owners.alive(stage['owner']) is not False):
+        raise ValueError('Proven closed full-Hessian resource failure required')
+    matrix_path=source_case/'Hessian.npy';matrix=np.load(matrix_path,allow_pickle=False);count=len(old['symbols'])
+    diagnostic=json.loads((source_case/'Hessian_diagnostics.json').read_text());center_path=source_case/'points/0000/evaluation.json'
+    center=json.loads(center_path.read_text());solver_path=source_case/'execution/response_solver.json';solver=json.loads(solver_path.read_text())
+    if (matrix.dtype!=np.float64 or matrix.shape!=(3*count,3*count) or not np.isfinite(matrix).all()
+            or float(abs(matrix-matrix.T).max())>1e-6 or not diagnostic['all_finite'] or diagnostic['maximum_asymmetry']>1e-6
+            or not center['SCF_converged'] or not np.isfinite(center['gradient_Ha_Bohr']).all()
+            or abs(np.asarray(center['gradient_Ha_Bohr'])).max()>.00045
+            or solver['equations_changed'] or solver['level_shift_added'] or sum(r['shape'][0] for r in solver['calls'])!=3*count
+            or any(r['solver_info']!=0 or r['precision']!='float64' or r['level_shift_added']
+                   or not 0<=r['true_residual_norm']<=r['solver_absolute_target'] for r in solver['calls'])):
+        raise ValueError('A complete finite matrix, stationary center and full successful response rows required')
+    spec=prepare_polymer_hessian(Path(old['original_namespace']),Path(old['checked_native_reference']['namespace']),output)
+    case=Path(spec['case']);sources=Path(spec['sources']);plan_path=case/'plan.json';plan=json.loads(plan_path.read_text())
+    if any(plan[k]!=old[k] for k in ('symbols','numerical_settings','original_namespace','original_namespace_sha256')):
+        raise ValueError('Saved and validation state/model definitions differ')
+    shutil.copyfile(sources/'worker.py',sources/'scientific_worker.py')
+    shutil.copyfile(ROOT/'scripts/validation/run_saved_polymer_hessian.py',sources/'worker.py')
+    shutil.copyfile(ROOT/'src/redox/qm/saved_hessian.py',sources/'saved_matrix_helper.py')
+    paths=[source_namespace,source_case/'plan.json',source_case/'status.json',source_case/'residency_guard/owner.json',completions[0],
+           matrix_path,source_case/'Hessian_diagnostics.json',center_path,solver_path,source_case/'columns.json']
+    source_hashes={str(p):sha256_file(p) for p in paths}
+    plan['source_sha256'].update(old['source_sha256']);plan['source_sha256'].update(source_hashes)
+    plan['source_sha256'].update({str(p):sha256_file(p) for p in sources.glob('*')})
+    plan.update(Hessian_validation_continuation=True,saved_full_Hessian=dict(namespace=str(source_namespace),source_case=str(source_case),
+        matrix=str(matrix_path),center=str(center_path),solver=str(solver_path),source_sha256=source_hashes),
+        maximum_wall_seconds=7200,maximum_durable_output_bytes=2**30,minimum_initial_storage_GiB=33,
+        checkpoint_policy='Complete source matrix retained; fresh center, all sampled gradients and modes must pass',native_G_qualified=False)
+    atomic_write_json(plan_path,plan);spec['plan_sha256']=sha256_file(plan_path);atomic_write_json(output/'namespace.json',spec)
+    return spec
+
+
 def launch(path,gpu,output):
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation,gpu_suitability,free_slots,GATE
     spec=execution.verify(path);case=Path(spec['case']);plan=json.loads((case/'plan.json').read_text());host=os.uname().nodename.split('.')[0];proof=json.loads(path.with_name('node_probe.json').read_text())
@@ -178,7 +231,10 @@ def launch(path,gpu,output):
     if plan.get('full_polymer_Hessian_control'):
         expected=(80,full_hessian_wall_seconds(plan),4*2**30);role='screening_polymer_Hessian_control'
         if plan.get('response_checkpoint_continuation') and not plan.get('resume_response'):raise ValueError('Explicit source-bound response continuation required')
-        if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(36,32):raise ValueError('Full-Hessian control storage margins changed')
+        if not plan.get('Hessian_validation_continuation') and (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(36,32):raise ValueError('Full-Hessian control storage margins changed')
+    if plan.get('Hessian_validation_continuation'):
+        expected=(80,7200,2**30);role='screening_polymer_Hessian_control'
+        if not plan.get('saved_full_Hessian') or (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(33,32):raise ValueError('Saved-Hessian validation profile changed')
     if plan.get('energy_control'):
         from redox.workflows.screening_energy_panel import output_budget
         budget=output_budget(plan['nao'],plan['source_state']['mult'],plan['has_iron'])
@@ -213,13 +269,14 @@ def launch(path,gpu,output):
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('prepare','prepare-polymer','prepare-Hessian','probe','launch'));p.add_argument('--spec',type=Path);p.add_argument('--reference',type=Path);p.add_argument('--resume-components',type=Path);p.add_argument('--resume-response',type=Path);p.add_argument('--archive',type=Path);p.add_argument('--out',type=Path);p.add_argument('--gpu',type=int);p.add_argument('--water-reference',action='store_true');p.add_argument('--molecular-control',choices=('closed','open'));p.add_argument('--screening-variant',choices=('installed','corrected'));a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('prepare','prepare-polymer','prepare-Hessian','prepare-Hessian-validation','probe','launch'));p.add_argument('--spec',type=Path);p.add_argument('--reference',type=Path);p.add_argument('--resume-components',type=Path);p.add_argument('--resume-response',type=Path);p.add_argument('--archive',type=Path);p.add_argument('--out',type=Path);p.add_argument('--gpu',type=int);p.add_argument('--water-reference',action='store_true');p.add_argument('--molecular-control',choices=('closed','open'));p.add_argument('--screening-variant',choices=('installed','corrected'));a=p.parse_args()
     if a.action!='launch':
         from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
-        with allocation_guard():host_capacity(1,minimum_ram_gib=4 if a.action=='prepare-Hessian' else 2);os.sched_setaffinity(0,cpu_allocation(1))
+        with allocation_guard():host_capacity(1,minimum_ram_gib=4 if a.action in ('prepare-Hessian','prepare-Hessian-validation') else 2);os.sched_setaffinity(0,cpu_allocation(1))
     if a.action=='prepare':result=prepare(a.archive.resolve(),a.out.resolve(),a.water_reference,a.molecular_control)
     elif a.action=='prepare-polymer':result=prepare_polymer(a.spec.resolve(),a.out.resolve(),a.screening_variant)
     elif a.action=='prepare-Hessian':result=prepare_polymer_hessian(a.spec.resolve(),a.reference.resolve(),a.out.resolve(),None if a.resume_components is None else a.resume_components.resolve(),None if a.resume_response is None else a.resume_response.resolve())
+    elif a.action=='prepare-Hessian-validation':result=prepare_hessian_validation(a.spec.resolve(),a.out.resolve())
     elif a.action=='probe':result=probe(a.spec.resolve())
     else:
         spec=execution.verify(a.spec.resolve());child,result=launch(a.spec.resolve(),a.gpu,a.out.resolve());print(json.dumps(result),flush=True);result=observe_budget(child,spec,result,a.out.resolve())

@@ -11,6 +11,7 @@ import h5py
 import numpy as np
 from ase.io import read as read_atoms
 from pyscf.lib import param
+from pyscf import gto
 
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
@@ -21,7 +22,9 @@ from redox.workflows.molecular_native_namespace import verify
 def review(namespace):
     spec=verify(namespace);case=Path(spec['case']);used=[namespace]
     def read(path):used.append(path);return json.loads(path.read_text())
-    plan=read(case/'plan.json');stage=read(case/'status.json');placement=case.parent/'placement'
+    plan=read(case/'plan.json');stage=read(case/'status.json');placements=list(case.parent.glob('placement*/launch.json'))
+    if len(placements)!=1:raise ValueError('One exact charged-point placement required')
+    placement=placements[0].parent
     completion=read(placement/'completion.json');launch=read(placement/'launch.json')
     host=read(case/'host_guard/status.json');runtime=read(case/'tensor_runtime/status.json')
     owner=read(case/'residency_guard/owner.json');residency=read(case/'residency_guard/state.json')
@@ -52,18 +55,25 @@ def review(namespace):
             or result['native_G_qualified'] or gradient.shape!=(plan['atoms'],3) or not np.isfinite(gradient).all()
             or not np.allclose(result['coordinates_Bohr'],atoms.positions/param.BOHR,rtol=0,atol=1e-10)
             or not np.array_equal(gradient,result['gradient_Ha_Bohr'])
+            or not np.allclose(settings['coordinates_Bohr'],result['coordinates_Bohr'],rtol=0,atol=1e-12)
             or np.max(abs(gradient-sum(np.asarray(v) for v in result['gradient_components_Ha_Bohr'].values())))>1e-10
             or any(settings[k]!=v for k,v in dict(charge=plan['charge'],mult=plan['mult'],basis='def2-svp',xc='r2scan',disp='d4',conv_tol=1e-12,conv_tol_grad=1e-8,max_cycle=200,grid_level=3).items())
             or not solved['converged'] or abs(solved['energy_Ha']-result['E_Ha'])>1e-10):
         raise ValueError('Actual fixed charged geometry, SCF settings or force components differ')
     with h5py.File(checkpoint,'r') as handle:
         if abs(float(handle['scf/e_tot'][()])-result['E_Ha'])>1e-10:raise ValueError('SCF checkpoint energy differs')
+        mol=gto.loads(handle['mol'][()]);occupations=handle['scf/mo_occ'][()]
+        if (not np.allclose(mol.atom_coords(),result['coordinates_Bohr'],rtol=0,atol=1e-12)
+                or mol.charge!=plan['charge'] or mol.spin+1!=plan['mult'] or mol.basis!='def2-svp'
+                or not np.isfinite(occupations).all() or abs(float(occupations.sum())-mol.nelectron)>1e-10):
+            raise ValueError('Actual SCF checkpoint geometry/state differs')
     return dict(status='initial_charged_polymer_SCF_gradient_and_resources_independently_checked',
         namespace=str(namespace),candidate_alias=plan['exact_candidate_alias'],graph_key=plan['prepared_case']['key'],
         geometry_sha256=sha256_file(xyz),charge=plan['charge'],mult=plan['mult'],atoms=plan['atoms'],
         execution_profile=plan['execution_profile'],E_Ha=result['E_Ha'],gradient_Ha_Bohr=gradient.tolist(),
         initial_gradient_max_Ha_Bohr=float(abs(gradient).max()),peak_GPU_MiB=stage['observed_peak_GPU_MiB'],
         peak_host_RSS_bytes=max(host['peak_tree_RSS_bytes'],host['self_VmHWM_bytes']),
+        checkpoint_coordinates_A=mol.atom_coords(unit='Angstrom').tolist(),
         solvent_model=plan['solvent_model'],calculation_ion_convention=plan['calculation_ion_convention'],
         solvent_optimization_complete=False,conformer_sampling_qualified=False,interaction_strength_computed=False,
         native_G_qualified=False,material_admission=False,source_sha256={str(p):sha256_file(p) for p in used},

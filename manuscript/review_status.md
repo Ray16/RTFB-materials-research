@@ -90,3 +90,12 @@ full molecular continuation equivalence and corrected-Hessian qualification are
 still pending. This infrastructure update changes no manuscript chemical claim.
 
 The current SI integrates the fresh xTB-component installation and configurable-prefix methods. Its source evidence is frozen in `2026-10-31_xtb_component_checked`; both PDFs build at 21/30 pages without overfull boxes, changed SI pages are visually checked and the updated upload archive compiles with matching text. No Overleaf project is connected.
+
+Six [single-site charged-polymer geometries](../validation/checkpoint_recovery_2026-10-31/README.md)
+now pass independent final-SCF, stationarity, connectivity and stereochemistry
+checks. Converged optimizer returns were retained when a subsequent allocation
+failed; separate fresh final solves avoid repeating the optimization. Three
+complete control Hessians are also retained. Their resource/adapter failures
+remain preserved, and phase-specific validation continues with the original
+physical thresholds. These records advance M1/M6 without supplying missing
+polymer minima, ensembles, interaction G or full material decisions.

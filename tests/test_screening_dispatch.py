@@ -83,3 +83,12 @@ def test_new_wall_profile_does_not_reinterpret_older_frozen_plans():
     assert full_hessian_wall_seconds(dict(Hessian_wall_profile='extended_8h'))==28800
     assert full_hessian_wall_seconds(dict(response_checkpoint_continuation=True))==28800
     with pytest.raises(ValueError):full_hessian_wall_seconds(dict(Hessian_wall_profile='unbounded'))
+
+
+def test_only_known_resource_stops_can_supply_post_hessian_recovery():
+    from redox.workflows.screening_control import hessian_resource_stop
+    assert hessian_resource_stop({'error':'cudaErrorMemoryAllocation'},{'budget_stop':None})
+    assert hessian_resource_stop({'error':'Out of GPU memory for XC energy first derivative'},{'budget_stop':None})
+    assert hessian_resource_stop({},dict(budget_stop='wall_time_budget'))
+    assert not hessian_resource_stop({'error':'sampled derivative gate failed'},{'budget_stop':None})
+    assert not hessian_resource_stop({'error':'internal minimum gate failed'},{'budget_stop':None})

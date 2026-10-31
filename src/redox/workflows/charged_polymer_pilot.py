@@ -74,6 +74,7 @@ def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB
     hashes={**{str(reader.path(p)):h for p,h in model['evidence'].items()},**{str(p):sha256_file(p) for p in bound}}
     plan=dict(role='charged_polymer_SCF_gradient_resource_pilot',charged_polymer_pilot=True,
         source_id=spec['source_id'],state='rest',source_sha256=hashes,exact_candidate_alias=data['candidate_alias'],
+        preparation_source=dict(path=str(preparation),sha256=sha256_file(preparation)),
         prepared_case=state,selected_initial_geometry_sha256=selected['initial_geometry_sha256'],
         atoms=graph.GetNumAtoms(),charge=state['charge'],mult=selected_state['mult'],selected_global_state=selected_state,
         solvent_model=model['model'],calculation_ion_convention=data['config']['ionic_model']['calculation_convention'],
@@ -113,12 +114,52 @@ def prepare_optimization(archive,preparation,agreement_path,output,key=None):
     result['status']='exact_route_bound_ionic_solution_geometry_pilot_prepared';return result
 
 
+def prepare_finalization(source_namespace,output):
+    source=execution.verify(source_namespace);source_case=Path(source['case']);old=json.loads((source_case/'plan.json').read_text())
+    stage=json.loads((source_case/'status.json').read_text());returned=json.loads((source_case/'optimizer_return.json').read_text())
+    guard=json.loads((source_case/'residency_guard/owner.json').read_text());completions=list(source_case.parent.glob('placement*/completion.json'))
+    owners=execution.load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','ionic_final_closed_owner')
+    if (not old.get('charged_polymer_optimization') or stage['status']!='charged_polymer_solution_optimization_failed_preserved'
+            or 'cudaErrorMemoryAllocation' not in stage.get('error','') or not returned['converged']
+            or not guard.get('guard_stopped') or len(completions)!=1 or owners.alive(stage['owner']) is not False
+            or any(guard.get(k)!=stage['owner'].get(k) for k in ('host','pid','process_start'))):
+        raise ValueError('A proven closed resource failure after converged optimizer return is required')
+    completion=json.loads(completions[0].read_text())
+    if completion['returncode'] in (None,0):raise ValueError('Original failed placement must be closed')
+    initial_audit=json.loads((Path(source['sources'])/'initial_audit.json').read_text())
+    preparation=Path(initial_audit['source'])
+    if sha256_file(preparation)!=initial_audit['source_sha256']:raise ValueError('Original preparation manifest changed')
+    result=prepare(Path(source['archive']),preparation,output,old['prepared_case']['key'])
+    spec=json.loads((output/'namespace.json').read_text());case=Path(spec['case']);sources=Path(spec['sources'])
+    if len(returned['elements'])!=old['atoms'] or len(returned['coordinates_A'])!=old['atoms']:
+        raise ValueError('Complete optimizer-returned coordinates required')
+    (sources/'input.xyz').write_text(str(old['atoms'])+'\nExact optimizer-returned coordinates\n'+'\n'.join(
+        symbol+' '+' '.join(format(float(v),'.17g') for v in xyz)
+        for symbol,xyz in zip(returned['elements'],returned['coordinates_A']))+'\n')
+    geometry=execution.load(ROOT/'scripts/validation/review_charged_polymer_optimization.py','returned_ionic_connectivity')
+    atomic_write_json(sources/'optimizer_return_geometry_review.json',geometry.graph_checks(old['prepared_case']['smiles'],Path(source['sources'])/'input.xyz',sources/'input.xyz'))
+    for path,name in [(source_case/'optimizer_return.json','source_optimizer_return.json'),(source_case/'status.json','source_optimization_status.json')]:shutil.copyfile(path,sources/name)
+    plan=json.loads((case/'plan.json').read_text());paths=[source_namespace,source_case/'plan.json',source_case/'status.json',
+        source_case/'optimizer_return.json',source_case/'returned.xyz',source_case/'residency_guard/owner.json',completions[0],
+        *sorted((source_case/'geometry_evaluations').glob('*.json'))]
+    source_hashes={str(p):sha256_file(p) for p in paths}
+    plan['source_sha256'].update(old['source_sha256']);plan['source_sha256'].update(source_hashes)
+    plan['source_sha256'].update({str(p):sha256_file(p) for p in sources.glob('*')})
+    plan.update(optimizer_returned_input=True,input_geometry_role='converged_optimizer_return_fresh_final_state_evaluation',
+        original_initial_geometry_sha256=plan['selected_initial_geometry_sha256'],selected_initial_geometry_sha256=sha256_file(sources/'input.xyz'),
+        source_optimization=dict(namespace=str(source_namespace),source_case=str(source_case),source_sha256=source_hashes),native_G_qualified=False)
+    atomic_write_json(case/'plan.json',plan);spec['plan_sha256']=sha256_file(case/'plan.json');atomic_write_json(output/'namespace.json',spec)
+    result['status']='converged_ionic_optimizer_return_prepared_for_fresh_final_evaluation';return result
+
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)
-    for name in ('archive','preparation','out'):parser.add_argument('--'+name,type=Path,required=True)
+    for name in ('archive','preparation','out'):parser.add_argument('--'+name,type=Path,required=name=='out')
+    parser.add_argument('--finalize-from',type=Path)
     parser.add_argument('--key');parser.add_argument('--execution-profile',choices=('compact_28GiB','direct_large_GPU_reference'),default='compact_28GiB');parser.add_argument('--optimization-agreement',type=Path);args=parser.parse_args()
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
     with allocation_guard():host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
-    if args.optimization_agreement is None:result=prepare(args.archive.resolve(),args.preparation.resolve(),args.out.resolve(),args.key,args.execution_profile)
+    if args.finalize_from is not None:result=prepare_finalization(args.finalize_from.resolve(),args.out.resolve())
+    elif args.optimization_agreement is None:result=prepare(args.archive.resolve(),args.preparation.resolve(),args.out.resolve(),args.key,args.execution_profile)
     else:result=prepare_optimization(args.archive.resolve(),args.preparation.resolve(),args.optimization_agreement.resolve(),args.out.resolve(),args.key)
     print(json.dumps(result))

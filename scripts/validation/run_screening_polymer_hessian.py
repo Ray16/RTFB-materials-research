@@ -23,6 +23,11 @@ def load(path, name):
     return module
 
 
+def workspace_file(plan,root):
+    """A saved-matrix phase performs no new CPHF solve; full runs must do so."""
+    return root/'scripts/pipeline'/('df_occupied_workspace.py' if plan.get('Hessian_validation_continuation') else 'residual_response_solver.py')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--plan', type=Path, required=True)
@@ -66,6 +71,7 @@ def main():
                             if plan.get('resume_response') else None)
         native = load(ROOT / 'scripts/pipeline/smooth_polymer_native.py', 'unchanged_polymer_Hessian_settings')
         adapter = load(ROOT / 'scripts/pipeline/residual_response_solver.py', 'unchanged_polymer_response_operator')
+        workspace = adapter if not plan.get('Hessian_validation_continuation') else load(workspace_file(plan,ROOT),'unchanged_bounded_validation_operators')
         model = load(ROOT / 'scripts/pipeline/smooth_cds_control.py', 'unchanged_polymer_MeCN_model')
         monitor = load(ROOT / 'scripts/pipeline/run_pi_stacking.py', 'unchanged_polymer_memory_monitor')
         symbols = plan['symbols']
@@ -110,7 +116,7 @@ def main():
             return mf, gradient, row, folder
         with helper.corrected_screening(sources / 'kernel.cu', case / 'screening_implementation'), \
                 monitor.MemoryMonitor() as memory, native.execution_budget() as policy, \
-                adapter.compact_smd_execution(case / 'execution', 28), \
+                workspace.compact_smd_execution(case / 'execution', 28), \
                 model.smooth_cds(case / 'model', ROOT / 'results/validation/smooth_CDS_2026-10-25/pilot'), \
                 finer_cds_hessian(1e-5):
             saved_components=None
@@ -123,6 +129,9 @@ def main():
                 restart.restore_mf(mf,frame,saved_components,case/'restart_energy.json')
                 obj=mf.nuc_grad_method();obj.grid_response=True;value=obj.kernel()
                 gradient=np.asarray(value.get() if hasattr(value,'get') else value)
+                # A bound gradient object retains its entire GPU mean field.
+                # Only the CPU force and explicit mf are needed past this point.
+                del obj
                 center_folder=case/'points/0000';center_folder.mkdir(parents=True);counter=1
                 atomic_write_json(center_folder/'evaluation.json',dict(coordinates_Bohr=coordinates.tolist(),
                     gradient_Ha_Bohr=gradient.tolist(),E_Ha=float(mf.e_tot),SCF_converged=True,
@@ -187,6 +196,10 @@ def main():
                     if not math.isfinite(error) or error > .01:
                         raise ValueError('Unchanged sampled derivative gate failed')
             atomic_write_json(case / 'derivatives.json', dict(checks=checks, complete=True))
+        if plan.get('Hessian_validation_continuation'):
+            atomic_write_json(case/'execution/response_solver.json',dict(status='no_new_response_solve_saved_full_Hessian_validation',
+                calls=[],equations_changed=False,level_shift_added=False,source_response=plan['saved_full_Hessian']['solver'],
+                native_G_qualified=False))
         if not 0 < memory.peak <= 31744:
             raise ValueError('Corrected full-Hessian GPU ceiling failed')
         reference = plan['checked_native_reference']
@@ -210,6 +223,7 @@ def main():
             minimum_frequency_cm=min(nuclear['frequencies_cm']), comparison=comparison)
     except BaseException as error:
         record.update(status='screening_polymer_Hessian_control_failed_preserved', error=repr(error))
+        if 'memory' in locals():record['observed_peak_GPU_MiB']=memory.peak
         raise
     finally:
         record['finished'] = time.time()

@@ -43,6 +43,13 @@ establish that a calculation is currently running.
   The independent final-geometry reviewer and 62 focused tests are checked;
   optimized structures, Hessian minima and interaction/free-energy conclusions
   remain pending. The frozen start observation is separate from live progress.
+- [Recovered charged-polymer geometries](../validation/checkpoint_recovery_2026-10-31/README.md):
+  six single-site structures pass independent fresh final-SCF, stationarity,
+  connectivity and stereochemistry checks after converged optimizer returns.
+  The final evaluations run in separate processes to release optimizer GPU state.
+  Hessian minimum, conformer-ensemble and interaction/free-energy checks remain
+  incomplete. Complete control Hessians are retained and their fresh derivative
+  validation continues in separate source-bound namespaces.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)

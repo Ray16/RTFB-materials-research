@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Optimize one exact ionic graph in MeCN with durable geometry evaluations."""
 import argparse
+import gc
 import hashlib
 import importlib.util
 import json
@@ -75,6 +76,12 @@ def main():
             atomic_write_json(case/'optimizer_return.json',dict(converged=bool(converged),coordinates_A=returned.atom_coords(unit='Angstrom').tolist(),
                 elements=symbols,charge=plan['charge'],mult=plan['mult'],geometry_evaluations=count,qualified=False))
             final_atoms=Atoms(symbols,positions=returned.atom_coords(unit='Angstrom'));write(case/'returned.xyz',final_atoms)
+            # Release the optimizer/scanner's mean field before allocating a
+            # separate final solve on the same finite-memory device.
+            del mf,gradient_method
+            gc.collect()
+            import cupy as cp
+            cp.get_default_memory_pool().free_all_blocks()
             # A fresh solve at exactly the optimizer-returned coordinates avoids
             # attaching an earlier scanner energy to a different final geometry.
             final=build(returned,case/'final_SCF.h5');final.kernel()

@@ -77,7 +77,9 @@ def main():
         if not 0<memory.peak<=plan['maximum_peak_GPU_MiB']:raise ValueError('Charged pilot exceeds its prospective GPU envelope')
         verify_sources()
         record.update(status='charged_polymer_SCF_gradient_resource_pilot_finished_review_pending',
-            observed_peak_GPU_MiB=memory.peak,gradient_max_Ha_Bohr=float(abs(gradient).max()),requires_solvent_optimization=True)
+            observed_peak_GPU_MiB=memory.peak,gradient_max_Ha_Bohr=float(abs(gradient).max()),
+            requires_solvent_optimization=not bool(plan.get('optimizer_returned_input')),
+            source_optimizer_return_attached=bool(plan.get('optimizer_returned_input')))
     except BaseException as error:
         record.update(status='charged_polymer_SCF_gradient_resource_pilot_failed_preserved',error=repr(error));raise
     finally:record['finished']=time.time();atomic_write_json(case/'status.json',record)
