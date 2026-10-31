@@ -1,0 +1,1745 @@
+{
+  "status": "ten_ionic_optimizers_actual_starts_verified",
+  "checked": 1793475071.9750764,
+  "manifest": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/manifest.json",
+  "manifest_sha256": "d307bd07ed9782d54c8d1dda1e28b85f13c57db577aab053c183ac6e9be04989",
+  "target_states": 10,
+  "verified_running_starts": 10,
+  "states": [
+    {
+      "key": "all_same__occ_2",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/namespace.json",
+      "namespace_sha256": "543e096ee9d63eb732275121ad91e949bcc87ee9fe2072ad835719c4f1d5f49b",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474880.1026058,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1240059,
+          "process_start": "572505225"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 1,
+        "pid": 1239838,
+        "process_start": "572505135",
+        "CPU_affinity": [
+          4,
+          5
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 1.8837890625,
+          "available_RAM_bytes": 522959704064,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 41252524032,
+        "device": {
+          "index": 1,
+          "uuid": "GPU-acfb23c0-7163-580e-11cd-370e35867833",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "1",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/namespace.json",
+        "namespace_sha256": "543e096ee9d63eb732275121ad91e949bcc87ee9fe2072ad835719c4f1d5f49b",
+        "started": 1793474875.550438,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1239593,
+          "process_start": "572504949"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/plan.json",
+      "SCF_progress": {
+        "cycle": 17,
+        "E_Ha": -3118.0083721604656,
+        "updated": 1793475070.075707
+      },
+      "saved_geometry_evaluations": 2,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "all_same__occ_3",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/namespace.json",
+      "namespace_sha256": "c584b907d18f21cb3223e26752e280ff8f81406cf321d7a800e75f87797b75af",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474890.8794956,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1240543,
+          "process_start": "572506292"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 2,
+        "pid": 1240330,
+        "process_start": "572506195",
+        "CPU_affinity": [
+          8,
+          9
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 2.29638671875,
+          "available_RAM_bytes": 522236383232,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 83222806528,
+        "device": {
+          "index": 2,
+          "uuid": "GPU-7f3f747c-971a-4267-719f-e3d850db3f89",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "2",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/namespace.json",
+        "namespace_sha256": "c584b907d18f21cb3223e26752e280ff8f81406cf321d7a800e75f87797b75af",
+        "started": 1793474886.1496081,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1240131,
+          "process_start": "572506005"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/plan.json",
+      "SCF_progress": {
+        "cycle": 5,
+        "E_Ha": -3118.003264696581,
+        "updated": 1793475069.538589
+      },
+      "saved_geometry_evaluations": 2,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "all_same__occ_4",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/namespace.json",
+      "namespace_sha256": "dcc51c756e6766d6efe1729fc93b2d451fcfdd85dc1420d0ae4c77ae9736b8e6",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474903.0816333,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1241094,
+          "process_start": "572507511"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 3,
+        "pid": 1240878,
+        "process_start": "572507417",
+        "CPU_affinity": [
+          11,
+          12
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 2.478515625,
+          "available_RAM_bytes": 521169231872,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 124855795712,
+        "device": {
+          "index": 3,
+          "uuid": "GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "3",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/namespace.json",
+        "namespace_sha256": "dcc51c756e6766d6efe1729fc93b2d451fcfdd85dc1420d0ae4c77ae9736b8e6",
+        "started": 1793474898.3689654,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1240662,
+          "process_start": "572507204"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/plan.json",
+      "SCF_progress": {
+        "cycle": 10,
+        "E_Ha": -3118.005147273833,
+        "updated": 1793475070.4020898
+      },
+      "saved_geometry_evaluations": 2,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "all_same__occ_2_3",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/namespace.json",
+      "namespace_sha256": "a184a6fcdc6df3d65d4f08777da6af2b8636467cefea6623fa92bac231cae4d6",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474912.9947438,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1241636,
+          "process_start": "572508518"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 4,
+        "pid": 1241410,
+        "process_start": "572508412",
+        "CPU_affinity": [
+          14,
+          15
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 2.8603515625,
+          "available_RAM_bytes": 520028192768,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 166397116416,
+        "device": {
+          "index": 4,
+          "uuid": "GPU-87f454bb-e27d-5274-da01-09db9787f2b3",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "4",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/namespace.json",
+        "namespace_sha256": "a184a6fcdc6df3d65d4f08777da6af2b8636467cefea6623fa92bac231cae4d6",
+        "started": 1793474908.3209848,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1241183,
+          "process_start": "572508213"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/plan.json",
+      "SCF_progress": {
+        "cycle": 2,
+        "E_Ha": -3192.2918179329135,
+        "updated": 1793475070.533195
+      },
+      "saved_geometry_evaluations": 1,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "all_same__occ_2_4",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/namespace.json",
+      "namespace_sha256": "3936f6e614446622d25dfed74d0c2a2f58c61d3b04fcc9f365565cadf64e69f6",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474923.1104326,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1242332,
+          "process_start": "572509518"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 5,
+        "pid": 1242092,
+        "process_start": "572509402",
+        "CPU_affinity": [
+          17,
+          18
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 3.564453125,
+          "available_RAM_bytes": 518994907136,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 208036020224,
+        "device": {
+          "index": 5,
+          "uuid": "GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "5",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/namespace.json",
+        "namespace_sha256": "3936f6e614446622d25dfed74d0c2a2f58c61d3b04fcc9f365565cadf64e69f6",
+        "started": 1793474918.221348,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1241847,
+          "process_start": "572509198"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/plan.json",
+      "SCF_progress": {
+        "cycle": 2,
+        "E_Ha": -3192.2852718689405,
+        "updated": 1793475070.2318573
+      },
+      "saved_geometry_evaluations": 1,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "alternating__occ_2",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/namespace.json",
+      "namespace_sha256": "3b879c79eebc23cbc2576ffd3047d90b602eaa3b2950a3d8afb5f5d0f9e86fbc",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474933.2055726,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1243010,
+          "process_start": "572510536"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 6,
+        "pid": 1242758,
+        "process_start": "572510417",
+        "CPU_affinity": [
+          20,
+          21
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 4.5673828125,
+          "available_RAM_bytes": 517838016512,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 249538293760,
+        "device": {
+          "index": 6,
+          "uuid": "GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "6",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/namespace.json",
+        "namespace_sha256": "3b879c79eebc23cbc2576ffd3047d90b602eaa3b2950a3d8afb5f5d0f9e86fbc",
+        "started": 1793474928.3646019,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1242472,
+          "process_start": "572510205"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/plan.json",
+      "SCF_progress": {
+        "cycle": 22,
+        "E_Ha": -3118.009549295996,
+        "updated": 1793475070.1943073
+      },
+      "saved_geometry_evaluations": 1,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "alternating__occ_3",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/namespace.json",
+      "namespace_sha256": "fd3b9438deb58c3adc9422082a1c977a80f83bfa0ecf57ed2fc8359fc2dc1268",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474943.9850447,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1243720,
+          "process_start": "572511596"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 7,
+        "pid": 1243384,
+        "process_start": "572511461",
+        "CPU_affinity": [
+          23,
+          24
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 5.64306640625,
+          "available_RAM_bytes": 516633362432,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 291043295232,
+        "device": {
+          "index": 7,
+          "uuid": "GPU-4895a53e-f3e2-0f6e-fcc3-5632b9be64b6",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "7",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/namespace.json",
+        "namespace_sha256": "fd3b9438deb58c3adc9422082a1c977a80f83bfa0ecf57ed2fc8359fc2dc1268",
+        "started": 1793474938.806953,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1243120,
+          "process_start": "572511240"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/plan.json",
+      "SCF_progress": {
+        "cycle": 10,
+        "E_Ha": -3118.006701720816,
+        "updated": 1793475071.0726452
+      },
+      "saved_geometry_evaluations": 1,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "alternating__occ_4",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/namespace.json",
+      "namespace_sha256": "03b6181482e99fccb6d3704df7ed2a28e6a991e0cef731db9534901c279a7ad4",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474956.0823152,
+        "owner": {
+          "host": "lambda2",
+          "pid": 2403772,
+          "process_start": "1427557166"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda2",
+        "GPU": 5,
+        "pid": 2403520,
+        "process_start": "1427557038",
+        "CPU_affinity": [
+          7,
+          8
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 10.31787109375,
+          "available_RAM_bytes": 390960693248,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 312828850176,
+        "device": {
+          "index": 5,
+          "uuid": "GPU-452861da-032d-d5bf-6f05-06552461e8fd",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "5",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/namespace.json",
+        "namespace_sha256": "03b6181482e99fccb6d3704df7ed2a28e6a991e0cef731db9534901c279a7ad4",
+        "started": 1793474950.41756,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda2",
+          "pid": 2403271,
+          "process_start": "1427556804"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/plan.json",
+      "SCF_progress": {
+        "cycle": 42,
+        "E_Ha": -3118.0010215956645,
+        "updated": 1793475047.0741081
+      },
+      "saved_geometry_evaluations": 1,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "alternating__occ_2_3",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/namespace.json",
+      "namespace_sha256": "f5c1778b6e7c6b45a227d23f8cf217ed7f2fc1600d1e446836d76048605d9acf",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793474984.9304712,
+        "owner": {
+          "host": "lambda4",
+          "pid": 2927589,
+          "process_start": "33128254"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda4",
+        "GPU": 2,
+        "pid": 2927244,
+        "process_start": "33128162",
+        "CPU_affinity": [
+          6,
+          7
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 3.0458984375,
+          "available_RAM_bytes": 479879196672,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 123705073664,
+        "device": {
+          "index": 2,
+          "uuid": "GPU-587fc9d4-517f-3df3-cf06-547e2a51104e",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "2",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/namespace.json",
+        "namespace_sha256": "f5c1778b6e7c6b45a227d23f8cf217ed7f2fc1600d1e446836d76048605d9acf",
+        "started": 1793474980.3199782,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda4",
+          "pid": 2926992,
+          "process_start": "33127979"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/plan.json",
+      "SCF_progress": {
+        "cycle": 26,
+        "E_Ha": -3192.2791340893955,
+        "updated": 1793475070.754702
+      },
+      "saved_geometry_evaluations": 0,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    },
+    {
+      "key": "alternating__occ_2_4",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/namespace.json",
+      "namespace_sha256": "68e9d0e4335af0a998ee218a5f15b3bc069c33acfa98eeef8371d179ff1ebf27",
+      "stage": {
+        "status": "charged_polymer_solution_optimization_running",
+        "started": 1793473620.4276865,
+        "owner": {
+          "host": "lambda1",
+          "pid": 1211465,
+          "process_start": "572379242"
+        },
+        "native_G_qualified": false,
+        "material_admission": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 0,
+        "pid": 1211279,
+        "process_start": "572379156",
+        "CPU_affinity": [
+          0,
+          2
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 0.2421875,
+          "available_RAM_bytes": 524417667072,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 0,
+        "device": {
+          "index": 0,
+          "uuid": "GPU-54527752-20db-dbfe-f13c-c14b1f7d3716",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "0",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/namespace.json",
+        "namespace_sha256": "68e9d0e4335af0a998ee218a5f15b3bc069c33acfa98eeef8371d179ff1ebf27",
+        "started": 1793473615.752884,
+        "maximum_wall_seconds": 28800,
+        "maximum_durable_output_bytes": 268435456,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 1211099,
+          "process_start": "572378941"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "worker": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/sources/worker.py",
+      "plan": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/plan.json",
+      "SCF_progress": {
+        "cycle": 8,
+        "E_Ha": -3192.308471662241,
+        "updated": 1793475070.5409703
+      },
+      "saved_geometry_evaluations": 15,
+      "checks": {
+        "actual_process_live": true,
+        "worker_command_bound": true,
+        "CPU_affinity_bound": true,
+        "thread_pools_capped": true,
+        "NumPy_import_profile": true,
+        "exclusive_actual_GPU_residency": true,
+        "actual_SCF_started": true,
+        "scientific_worker_running": true
+      }
+    }
+  ],
+  "node_observations": {
+    "lambda1": {
+      "processes": {
+        "1240059": {
+          "process_start": "572505225",
+          "cpus": [
+            4,
+            5
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "1"
+          }
+        },
+        "1240543": {
+          "process_start": "572506292",
+          "cpus": [
+            8,
+            9
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_3/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "2"
+          }
+        },
+        "1241094": {
+          "process_start": "572507511",
+          "cpus": [
+            11,
+            12
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_4/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "3"
+          }
+        },
+        "1241636": {
+          "process_start": "572508518",
+          "cpus": [
+            14,
+            15
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_3/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "4"
+          }
+        },
+        "1242332": {
+          "process_start": "572509518",
+          "cpus": [
+            17,
+            18
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/all_same__occ_2_4/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "5"
+          }
+        },
+        "1243010": {
+          "process_start": "572510536",
+          "cpus": [
+            20,
+            21
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "6"
+          }
+        },
+        "1243720": {
+          "process_start": "572511596",
+          "cpus": [
+            23,
+            24
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_3/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "7"
+          }
+        },
+        "1211465": {
+          "process_start": "572379242",
+          "cpus": [
+            0,
+            2
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_polymer_solution_optimization_v2/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "0"
+          }
+        }
+      },
+      "load_1m": 11.3740234375,
+      "online_cpus": 80,
+      "residents": [
+        {
+          "pid": 1211465,
+          "uuid": "GPU-54527752-20db-dbfe-f13c-c14b1f7d3716",
+          "used_memory_MiB": 23330
+        },
+        {
+          "pid": 1240059,
+          "uuid": "GPU-acfb23c0-7163-580e-11cd-370e35867833",
+          "used_memory_MiB": 16816
+        },
+        {
+          "pid": 1240543,
+          "uuid": "GPU-7f3f747c-971a-4267-719f-e3d850db3f89",
+          "used_memory_MiB": 16428
+        },
+        {
+          "pid": 1241094,
+          "uuid": "GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70",
+          "used_memory_MiB": 17144
+        },
+        {
+          "pid": 1241636,
+          "uuid": "GPU-87f454bb-e27d-5274-da01-09db9787f2b3",
+          "used_memory_MiB": 23762
+        },
+        {
+          "pid": 1242332,
+          "uuid": "GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a",
+          "used_memory_MiB": 23964
+        },
+        {
+          "pid": 1243010,
+          "uuid": "GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8",
+          "used_memory_MiB": 17188
+        },
+        {
+          "pid": 1243720,
+          "uuid": "GPU-4895a53e-f3e2-0f6e-fcc3-5632b9be64b6",
+          "used_memory_MiB": 16304
+        }
+      ]
+    },
+    "lambda2": {
+      "processes": {
+        "2403772": {
+          "process_start": "1427557166",
+          "cpus": [
+            7,
+            8
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_4/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "5"
+          }
+        }
+      },
+      "load_1m": 10.60400390625,
+      "online_cpus": 80,
+      "residents": [
+        {
+          "pid": 2013918,
+          "uuid": "GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074",
+          "used_memory_MiB": 14942
+        },
+        {
+          "pid": 3293874,
+          "uuid": "GPU-099acaa2-a585-2324-846e-c57f056f80a7",
+          "used_memory_MiB": 15464
+        },
+        {
+          "pid": 2041210,
+          "uuid": "GPU-891d8452-4937-16a3-d9a7-36baf0370c9a",
+          "used_memory_MiB": 15408
+        },
+        {
+          "pid": 2041741,
+          "uuid": "GPU-a282ce96-9ef7-08f7-f0c4-c17407a0bae9",
+          "used_memory_MiB": 15514
+        },
+        {
+          "pid": 2042299,
+          "uuid": "GPU-2c4c6bf7-dfe7-0a42-db3a-43d3e97c5dd7",
+          "used_memory_MiB": 14888
+        },
+        {
+          "pid": 2403772,
+          "uuid": "GPU-452861da-032d-d5bf-6f05-06552461e8fd",
+          "used_memory_MiB": 22018
+        }
+      ]
+    },
+    "lambda4": {
+      "processes": {
+        "2927589": {
+          "process_start": "33128254",
+          "cpus": [
+            6,
+            7
+          ],
+          "argv": [
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+            "--guard-out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/residency_guard",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/sources/host_guard.py",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/host_guard",
+            "--maximum-rss-gib",
+            "40",
+            "--minimum-free-gib",
+            "32",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+            "--profile",
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+            "--out",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/tensor_runtime",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/sources/worker.py",
+            "--plan",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_geometry_panel/states/alternating__occ_2_3/case/plan.json",
+            ""
+          ],
+          "env": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "NUMPY_MADVISE_HUGEPAGE": "0",
+            "CUDA_VISIBLE_DEVICES": "2"
+          }
+        }
+      },
+      "load_1m": 3.93359375,
+      "online_cpus": 80,
+      "residents": [
+        {
+          "pid": 2719372,
+          "uuid": "GPU-49ab60bc-b8e1-e031-8966-b947648e9330",
+          "used_memory_MiB": 18502
+        },
+        {
+          "pid": 2755102,
+          "uuid": "GPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff",
+          "used_memory_MiB": 18452
+        },
+        {
+          "pid": 2927589,
+          "uuid": "GPU-587fc9d4-517f-3df3-cf06-547e2a51104e",
+          "used_memory_MiB": 23190
+        }
+      ]
+    }
+  },
+  "completed_geometries": 0,
+  "native_G_qualified": false,
+  "material_admission": false,
+  "producer_sha256": "bb4eac1278dec59457390c95384d327704afd5731365b0c4270384e070c8eb21"
+}

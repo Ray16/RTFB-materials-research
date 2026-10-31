@@ -34,8 +34,15 @@ establish that a calculation is currently running.
   twelve exact graph/configuration models pass initial XYZ connectivity,
   stereochemistry, backbone and salt-mass audits. The
   [construction figure](figures/polymer_models/viologen_occupancy_construction.pdf)
-  shows adjacent and one-spacer grafts. No charged-polymer QM result or converged
-  conformer ensemble is supplied; the exact-candidate material decision remains pending.
+  shows adjacent and one-spacer grafts. Charged-polymer thermochemistry and
+  converged conformer ensembles remain incomplete; the exact-candidate material decision remains pending.
+- [Charged viologen geometry campaign](../validation/viologen_polymer_geometry_2026-10-31/README.md):
+  ten actual SCF starts verified across ten V100 GPUs, covering three single-site
+  and adjacent/spacer graft patterns in each of two backbone configurations.
+  Each optimizer retains evaluated geometries and a rolling SCF checkpoint.
+  The independent final-geometry reviewer and 62 focused tests are checked;
+  optimized structures, Hessian minima and interaction/free-energy conclusions
+  remain pending. The frozen start observation is separate from live progress.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)
@@ -61,7 +68,9 @@ establish that a calculation is currently running.
   incomplete; the article retains its separate 75-state numerical snapshot.
   At observed class maxima, unfinished inputs have a full retained footprint of
   about 100 GiB, including some already written partial files. Shared storage has
-  about 61 GiB free, below the new-start floor; the measured sizes are not peak bounds.
+  remained below the legacy new-start floor at the latest campaign observation;
+  the measured sizes are not peak bounds. The bounded charged-geometry class has
+  separate prospective output budgets and does not relax that legacy gate.
 - [V100 response-execution control](../validation/screening_chemical_impact_2026-10-31/response_scope.json):
   a repeatable CPU allocation test supports disabling NumPy huge-page advice on
   the affected host. Three traced response probes failed and remain unqualified;

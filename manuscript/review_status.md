@@ -21,7 +21,7 @@ claims are provisional for release. New uncorrected admissions are held.
 | M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
 | M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
-| M7 | partial | The current 75-state polymer cache also passes extracted-archive replay in a fresh NumPy-only environment; a ten-state exact-viologen CPU example is now versioned and passes fresh NumPy-only extracted replay; public DOI, final metadata, complete release assembly and wider deployment portability remain open. |
+| M7 | partial | The current 75-state polymer cache and ten-state exact-viologen CPU example pass fresh NumPy-only extracted replay. A checked local reviewer collection is assembled; public DOI, final metadata, final release updating and wider deployment portability remain open. |
 | M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024, CREST 2020, the Oh Biying 2025/Mohanty 2026 polymer studies and You 2015 nonequilibrium-solvation theory are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
 | remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
@@ -44,9 +44,9 @@ The TEMPO example retains separate directional MeCN relaxation costs of 1.477/1.
 
 The frozen polymer comparison contains 75 reconstructed states. Both twenty-input empty-backbone sets meet the finite-batch criterion with 20/19 distinct structures. The [working census](../validation/screening_implementation_2026-10-31/native_census.json) now contains 122 independently reconstructed input states outside that frozen comparison; balanced occupied ensembles remain incomplete. The original atom-31/z sampled-derivative failure remains preserved at 1.2138%, above the unchanged 1% gate. A separate full native repeat passes the existing protocol, with a maximum column error of 0.7044%, and passes independent physical reconstruction. Force repeatability and finite-difference step convergence remain distinct open questions; neither the repeat nor its census count qualifies the corrected screening implementation.
 
-The 75-state extracted cache reconstructs Hessians, sampled derivative checks and nuclear terms in a fresh NumPy-only environment with original paths blocked. This does not establish complete historical executable closure, wider deployment portability or public deposition. Final archive assembly, DOI and author/deposition metadata remain open.
+The 75-state extracted cache reconstructs Hessians, sampled derivative checks and nuclear terms in a fresh NumPy-only environment with original paths blocked. This does not establish complete historical executable closure, wider deployment portability or public deposition. A checked draft collection is assembled; final release updating, DOI and author/deposition metadata remain open.
 
-The older [machine-readable comment audit](../results/validation/review_comment_audit_2026-10-26/current.json) binds its historical inspected sources; it is not a certificate for the current revision. [Publication acceptance criteria](../docs/PUBLICATION_READINESS.md) remain authoritative for completion.
+The older [machine-readable comment audit](/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/review_comment_audit_2026-10-26/current.json) binds its historical inspected sources; it is not a certificate for the current revision. [Publication acceptance criteria](../docs/PUBLICATION_READINESS.md) remain authoritative for completion.
 
 The exact viologen now has [twelve audited initial charged-polymer models](../validation/viologen_polymer_preparation_2026-10-31/README.md), including adjacent/spacer graphs in two configurations. SI Section 3.4 separates connectivity, global state hypotheses and PF6 dry-salt mass bookkeeping from uncomputed charged-polymer thermochemistry. This preparation advances M1 without closing its polymer assessment or M4.
 
@@ -57,6 +57,14 @@ energy/force within the declared numerical limits. The starting geometry is
 not stationary; solvent optimization, minimum checks, occupancy energies and
 operating-state coupling remain open. No charged-polymer G or material pass is
 reported from this pilot.
+
+The [exact viologen geometry campaign](../validation/viologen_polymer_geometry_2026-10-31/README.md)
+now has ten actual SCF starts verified on ten V100s: single grafts at sites 2, 3
+and 4, adjacent 2/3 and one-spacer 2/4 grafts, each in two backbone configurations.
+Every evaluation is checkpointed; a separately tested reviewer binds final SCF,
+force, geometry and graph records after normal completion. This is an execution
+milestone, with no accepted charged-polymer minimum, ensemble or occupancy free
+energy yet. It advances M1 while M1 and M4 remain incomplete.
 
 A [422-MB local reviewer collection](../validation/reviewer_collection_2026-10-31/README.md)
 now consolidates eight checked data/replay packages and committed code/evidence.

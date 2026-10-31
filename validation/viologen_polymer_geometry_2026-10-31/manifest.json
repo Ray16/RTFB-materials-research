@@ -1,0 +1,46 @@
+{
+  "status": "immutable_scoped_execution_snapshot",
+  "source_base_commit": "13e1e54d",
+  "files_sha256": {
+    "prepared_panel.json": "d307bd07ed9782d54c8d1dda1e28b85f13c57db577aab053c183ac6e9be04989",
+    "dispatch.json": "a7aa3e7b9a89e40f8ece8ff3dc751d3cf78a4b7c428bd856e5cca09c68579f9d",
+    "startup_observation.json": "09cce8e079196c3a2b4214bd8ae402d75c2e2e0af0e5531ba2a5ef7ddf1a8205",
+    "initial_geometry_reviewer_check.json": "09efa7c1532c6b0bac3ec14e81f08a4d1456622320e9e1ec0065296e6d5859b2",
+    "tests.xml": "4f2b88ebee67d22a0af58a90d23f763beab773b6d2a19ab0ea24cac152e86197",
+    "summary.json": "6722cb592de2520e0de5f001094c3ed94b9dd7efbb1961d57d5dcb739980d7a4",
+    "README.md": "4c9103cec6d50eb9f350ce1aa555f7a60024f5770f73d93dc33c79c4ab49685e",
+    "producer_snapshots/0_run_charged_polymer_geometry_panel.py": "70a9cad88a554320bbe0834af71c96384a37b83995a11235335f1cad49d4726c",
+    "producer_snapshots/1_review_charged_polymer_optimization.py": "04b4e26401b95a62036e9712bf5958b3f4de66c121523b08fc1db3f9eeb86c3f",
+    "producer_snapshots/2_observe_charged_geometry_panel.py": "bb4eac1278dec59457390c95384d327704afd5731365b0c4270384e070c8eb21",
+    "producer_snapshots/3_test_charged_geometry_dispatch.py": "296480fffb1c8a66102e0476a59e53ead705617097b98567f919184c6f080dcd",
+    "producer_snapshots/4_test_charged_geometry_review.py": "d449876189fac050557d63b88e4ba936a10c6c23af8c62cd5cd6288121777e37",
+    "producer_snapshots/initial_audit_reviewer.py": "64b4f1de1e333f7ef9a17dedf24b8a8e69c7cf097b3a14a9b062c6f66788ce9b"
+  },
+  "as_used_producers": {
+    "scripts/fleet/run_charged_polymer_geometry_panel.py": {
+      "snapshot": "producer_snapshots/0_run_charged_polymer_geometry_panel.py",
+      "sha256": "70a9cad88a554320bbe0834af71c96384a37b83995a11235335f1cad49d4726c"
+    },
+    "scripts/validation/review_charged_polymer_optimization.py": {
+      "snapshot": "producer_snapshots/1_review_charged_polymer_optimization.py",
+      "sha256": "04b4e26401b95a62036e9712bf5958b3f4de66c121523b08fc1db3f9eeb86c3f"
+    },
+    "scripts/validation/observe_charged_geometry_panel.py": {
+      "snapshot": "producer_snapshots/2_observe_charged_geometry_panel.py",
+      "sha256": "bb4eac1278dec59457390c95384d327704afd5731365b0c4270384e070c8eb21"
+    },
+    "tests/test_charged_geometry_dispatch.py": {
+      "snapshot": "producer_snapshots/3_test_charged_geometry_dispatch.py",
+      "sha256": "296480fffb1c8a66102e0476a59e53ead705617097b98567f919184c6f080dcd"
+    },
+    "tests/test_charged_geometry_review.py": {
+      "snapshot": "producer_snapshots/4_test_charged_geometry_review.py",
+      "sha256": "d449876189fac050557d63b88e4ba936a10c6c23af8c62cd5cd6288121777e37"
+    }
+  },
+  "submission_ready": false,
+  "initial_geometry_audit_producer": {
+    "snapshot": "producer_snapshots/initial_audit_reviewer.py",
+    "sha256": "64b4f1de1e333f7ef9a17dedf24b8a8e69c7cf097b3a14a9b062c6f66788ce9b"
+  }
+}
