@@ -2,6 +2,7 @@
 """Build the working paper only from unchanged, frozen draft evidence."""
 
 import hashlib
+import importlib.util
 import json
 import os
 from pathlib import Path
@@ -43,11 +44,22 @@ def main():
     from check_claims import audit
 
     claims = audit()
+    # Recent context references are separate from the frozen 48-reference base
+    # audit. Their primary DOI records must match the actual compiled BibTeX.
+    citation_source = ROOT/'scripts/validation/check_recent_polymer_literature.py'
+    citation_registry = ROOT/'validation/route_evidence_followup_2026-10-30/recent_references.json'
+    definition = importlib.util.spec_from_file_location('checked_recent_polymer_citations',citation_source)
+    citations = importlib.util.module_from_spec(definition)
+    definition.loader.exec_module(citations)
+    citation_check = citations.audit(PAPER/'novelty_references.bib',citation_registry)
     for program in ("pdflatex", "bibtex"):
         if shutil.which(program) is None:
             raise RuntimeError(f"Missing manuscript build program: {program}")
     source = {str(p.relative_to(ROOT)): sha(p) for p in
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", Path(__file__), manifest, pointer)}
+    for path in (citation_source,citation_registry,*[citation_registry.parent/r['metadata_file']
+                 for r in json.loads(citation_registry.read_text())['records']]):
+        source[str(path.relative_to(ROOT))]=sha(path)
     # Keep compiler logs on durable project storage rather than node-local /tmp.
     # The root can be configured for an independently relocated checkout.
     build_root = Path(os.environ.get("REDOX_MANUSCRIPT_BUILD_ROOT",
@@ -84,6 +96,7 @@ def main():
     report = dict(status="draft_built_with_frozen_evidence", checked_UTC=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                   pages=len(reader.pages), source_sha256=source, pdf_sha256=sha(PAPER / "manuscript.pdf"),
                   build_logs=str(temporary), submission_ready=False, documents=documents,
+                  additional_citation_check=citation_check,
                   visual_review="pending; record separately in visual_review.json, bound to these PDF hashes")
     (PAPER / "claim_check.json").write_text(json.dumps(claims, indent=2) + "\n")
     (PAPER / "build_check.json").write_text(json.dumps(report, indent=2) + "\n")

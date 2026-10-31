@@ -11,7 +11,7 @@ The manuscript remains a working draft. The main unfinished scientific work is t
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
 | M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
 | M7 | partial | The current 75-state polymer cache also passes extracted-archive replay in a fresh NumPy-only environment; public DOI, final metadata, complete release assembly and wider deployment portability remain open. |
-| M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024 and CREST 2020 are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
+| M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024, CREST 2020 and the Oh Biying 2025/Mohanty 2026 polymer studies are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
 | remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
 | m1 | addressed in current scope | Current immutable epoch and separately built PDFs replace stale reporting. |

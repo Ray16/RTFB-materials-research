@@ -23,6 +23,7 @@ from redox.validation.namespace_sources import read_checked_review
 from redox.workflows.archived_native_namespace import verify_spec
 from redox.workflows.derived_native_namespace import namespace_command
 from redox.workflows.host_local_review import command_for_host
+from redox.workflows.submission_refusal import release_prelaunch_refusal
 
 
 def load(path, name):
@@ -203,6 +204,7 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
         ROOT/'scripts/pipeline/run_namespace_energy_queue.py',
         ROOT/'scripts/pipeline/observe_archived_native_namespace.py',
         ROOT/'src/redox/workflows/derived_native_namespace.py',
+        ROOT/'src/redox/workflows/submission_refusal.py',
         ROOT/'src/redox/workflows/host_local_review.py', ROOT/'src/redox/validation/namespace_sources.py']}
     with (output/'queue.lock').open('a+') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -244,6 +246,7 @@ def run(cohort, preparation_path, output, interpreter, hours, resume, recheck_ho
                         rows.append(done[key])
                         continue
                     release_gate_refusal(spec, output, owners.alive)
+                    release_prelaunch_refusal(spec, output, owners.alive, hosts, 'native', frozen)
                     state, raw = inspect(spec, owners.alive)
                     row = dict(key=key, spec=str(path), status=state)
                     if state == 'finished_review_pending':

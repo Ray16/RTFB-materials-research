@@ -6,7 +6,7 @@ Editable sources are [manuscript.tex](manuscript.tex),
 [supporting_information.tex](supporting_information.tex),
 [references.bib](references.bib) and [novelty_references.bib](novelty_references.bib).
 No Overleaf project is connected. A self-contained
-[upload ZIP](overleaf_upload_2026-10-30_native_cache.zip) contains both documents,
+[upload ZIP](overleaf_upload_2026-10-30_polymer_literature.zip) contains both documents,
 bibliographies, required figures and frozen numerical TeX inputs. Both exported documents compile with
 text identical to their checked local counterparts; this does not claim upload
 or remote synchronization.
@@ -53,3 +53,8 @@ PDFs are versioned as publication inputs, separately from runtime results.
 Do not modify existing evidence snapshots; append a new snapshot for verified
 scientific additions. Once an Overleaf project is connected, pull/merge before
 each edit and again before pushing the checked revision.
+
+The current literature pass adds the directly relevant 2025 chloromethylated-PS
+phenothiazine/TEMPO study and the 2026 phthalimide-polymer kinetics/MD study.
+Their primary metadata are checked during each build. These context additions
+do not change the frozen numerical results or promote held candidate routes.

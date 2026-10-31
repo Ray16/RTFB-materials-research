@@ -54,6 +54,14 @@ binds that reported compound to the configured precursor. This is a patent
 report, not an independent preparation or a Merrifield grafting demonstration.
 The exact PMDI route still needs selectivity and redox-core-retention evidence.
 
+Hamilton and co-workers report molecular PMDI N-alkylation with CsF
+([Australian Journal of Chemistry, 1998](https://connectsci.au/ch/article-abstract/51/5/441/146332/N-Alkylation-of-Pyromellitic-Diimide-Solid-State),
+DOI 10.1071/C97214). This supports the reaction class. It does not establish
+the proposed DBU/MeCN reaction on crosslinked beads or resolve the exact
+mono-N-ethyl precursor's attachment selectivity. The PMDI route remains held
+for those specific gaps; its computed properties and finite polymer results
+are retained.
+
 ## What “easy to graft” must include
 
 **Attachment and selectivity.** Review the exact precursor and attachment atom.
@@ -125,9 +133,13 @@ Explicit ion-pair and solvent sensitivity are needed before interpreting small
 differences. The literature review itself computed no condition-specific energies;
 the separate DBU/DIPEA pilot below subsequently completed those calculations.
 
-Retain the highlighted BQ designs and AQ-1-O as **base required**. The completed
-MeCN pilot gives favorable base-assisted thermodynamics for DBU and DIPEA in both
-ionic models. Positive HCl-reference values alone must not exclude them.
+Retain the highlighted BQ designs and AQ-1-O as **base required**. The all-DFT
+MeCN pilot places their DBU and DIPEA reaction sums below zero in both specified
+ionic models. The proton-transfer comparisons below show why these signs are
+conditional, particularly for DIPEA; they do not establish feasible synthesis.
+Each fixed base/byproduct model adds the same shift to every precursor and
+therefore cannot change their within-base ranking. Positive HCl-reference values
+alone must not exclude these designs.
 AQ-2-O/6-OMe remains unresolved because of precursor QC. The accessible sources reviewed here did not
 establish a practical route for those exact phenolic precursors. Prioritize
 review of the close viologen precedent, the imide-anion route, and a separately

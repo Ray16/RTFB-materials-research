@@ -1,0 +1,173 @@
+{
+  "observed": 1793407512.36942,
+  "exact_process_observations": {
+    "lambda1": [
+      {
+        "role": "native_controller",
+        "host": "lambda1",
+        "pid": 2980965,
+        "process_start": "565597439",
+        "live": true
+      },
+      {
+        "role": "energy_controller",
+        "host": "lambda1",
+        "pid": 2980976,
+        "process_start": "565597460",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_4__conf002",
+        "host": "lambda1",
+        "pid": 2890750,
+        "process_start": "565397765",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_3__conf004",
+        "host": "lambda1",
+        "pid": 2892129,
+        "process_start": "565402978",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_4__conf005",
+        "host": "lambda1",
+        "pid": 2893847,
+        "process_start": "565407177",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_3__conf005",
+        "host": "lambda1",
+        "pid": 2902939,
+        "process_start": "565427905",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_3__conf005",
+        "host": "lambda1",
+        "pid": 2904932,
+        "process_start": "565433364",
+        "live": true
+      }
+    ],
+    "lambda13": [
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_3__conf002",
+        "host": "lambda13",
+        "pid": 2222423,
+        "process_start": "152088853",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_4__conf003",
+        "host": "lambda13",
+        "pid": 2227383,
+        "process_start": "152097310",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_4__conf004",
+        "host": "lambda13",
+        "pid": 2232976,
+        "process_start": "152105923",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_4__conf004",
+        "host": "lambda13",
+        "pid": 2247710,
+        "process_start": "152117859",
+        "live": true
+      }
+    ],
+    "lambda4": [
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_3__conf002",
+        "host": "lambda4",
+        "pid": 724795,
+        "process_start": "25989926",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_3__conf003",
+        "host": "lambda4",
+        "pid": 727884,
+        "process_start": "25994300",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_3__conf003",
+        "host": "lambda4",
+        "pid": 729295,
+        "process_start": "25998683",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_4__conf006",
+        "host": "lambda4",
+        "pid": 742991,
+        "process_start": "26046166",
+        "live": true
+      },
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_3__conf006",
+        "host": "lambda4",
+        "pid": 744592,
+        "process_start": "26050772",
+        "live": true
+      }
+    ],
+    "lambda2": [
+      {
+        "role": "native_scientific_worker",
+        "key": "all_same__occ_2_3__conf004",
+        "host": "lambda2",
+        "pid": 3293874,
+        "process_start": "1420442575",
+        "live": true
+      }
+    ]
+  },
+  "native_scientific_workers": 15,
+  "queue_statuses": {
+    "native": {
+      "status": "native_conveyor_running",
+      "owner": {
+        "host": "lambda1",
+        "pid": 2980965,
+        "process_start": "565597439"
+      },
+      "updated": 1793407492.3744044,
+      "pending": 30,
+      "independently_checked": 0
+    },
+    "energy": {
+      "status": "prepared_energy_queue_running",
+      "owner": {
+        "host": "lambda1",
+        "pid": 2980976,
+        "process_start": "565597460"
+      },
+      "updated": 1793407491.3036861,
+      "pending": 109,
+      "independently_checked": 47
+    }
+  },
+  "new_native_free_energy_inferred_from_process": false
+}

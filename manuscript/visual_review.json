@@ -3,27 +3,30 @@
   "documents": {
     "manuscript": {
       "pages": 20,
-      "pdf_sha256": "f0d83b853790ac3ddcf1df48617c3fa347f9469e159b074b1aac5ef16a33aa66"
+      "pdf_sha256": "daf0218b3d3eb43411590fa50e5ab7a25ad82c95e0296d05629b33292971eba3"
     },
     "supporting_information": {
       "pages": 24,
-      "pdf_sha256": "930177b2ad167188baa9c0b2176cb19114464a10729f4e1c212af9c81f327555"
+      "pdf_sha256": "9d8beb865d44d0cc6e96cafa2089cf7f47e0ca60455ef8dd7655c1f231ab904b"
     }
   },
   "main_pages_reviewed": [
-    15,
-    16
+    2,
+    14,
+    16,
+    19
   ],
-  "SI_pages_reviewed": [
-    20,
-    21
-  ],
-  "render_root": "calcs/validation/paper_visual_2026-10-30_native_cache",
+  "SI_pages_reviewed": [],
+  "SI_text_matches_previously_checked_build": true,
+  "previous_SI_build": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/manuscript_builds/redox_manuscript_xtn4xvfa/supporting_information.pdf",
+  "previous_SI_pdf_sha256": "930177b2ad167188baa9c0b2176cb19114464a10729f4e1c212af9c81f327555",
+  "render_root": "calcs/validation/paper_visual_2026-10-30_polymer_literature",
   "checks": [
-    "Data/code availability states the 75-state numerical cache and pending public DOI accurately",
-    "SI distinguishes selected raw numerical inputs from the complete historical source closure",
-    "The archive scope does not imply new quantum calculations or completed occupied ensembles",
-    "Changed pages and adjoining references have readable text with no clipping or overlap"
+    "The 2025 post-functionalized PS precedent is credited without transferring unverified exact-route conditions",
+    "The 2026 phthalimide transport/kinetics context is distinguished from MeCN occupancy thermodynamics",
+    "Both new references render with matching authors, year, journal, pages and DOI",
+    "Changed introduction, discussion and reference pages are readable without overlap or clipping",
+    "SI text is identical to the previously checked build"
   ],
   "whole_document_visual_review_performed": false,
   "submission_ready": false

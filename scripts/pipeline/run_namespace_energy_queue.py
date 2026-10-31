@@ -20,6 +20,7 @@ import time
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
+from redox.workflows.submission_refusal import release_prelaunch_refusal
 
 
 def module(path, name):
@@ -167,6 +168,7 @@ def coordinate(manifest_path, output, interpreter, hours, resume):
                      ROOT/'src/redox/workflows/derived_energy_namespace.py',
                      ROOT/'scripts/pipeline/run_measured_energy_followup.py',
                      ROOT/'src/redox/workflows/archived_energy_namespace.py']
+        producers.append(ROOT/'src/redox/workflows/submission_refusal.py')
         hashes = {str(path): sha256_file(path) for path in [*producers, *paths]}
         owner = dict(host=os.uname().nodename.split('.')[0], pid=os.getpid(),
                      process_start=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19])
@@ -187,6 +189,7 @@ def coordinate(manifest_path, output, interpreter, hours, resume):
                         rows.append(checked[key])
                         continue
                     release_gate_contention(spec, output, owner_checks.alive)
+                    release_prelaunch_refusal(spec, output, owner_checks.alive, config['hosts'], 'energy', hashes)
                     state, raw = inspect_state(spec, owner_checks.alive)
                     row = dict(key=key, spec=str(path), status=state)
                     if state == 'finished_review_pending' and (Path(spec['attempt'])/'independent_energy_review.json').exists():

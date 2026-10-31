@@ -1,0 +1,71 @@
+{
+  "status": "two_source_bound_prelaunch_refusals_recovered",
+  "records": [
+    {
+      "status": "prelaunch_resource_refusal_no_scientific_attempt",
+      "stage": "native",
+      "branch": {
+        "message": "GPU occupied or reserved; no native calculation started",
+        "raise_line": 179,
+        "first_subprocess_line": 182
+      },
+      "controller": {
+        "host": "lambda13",
+        "pid": 2262693,
+        "process_start": "152145695"
+      },
+      "producer_inventory": {
+        "lambda0": [],
+        "lambda1": [],
+        "lambda2": [],
+        "lambda4": [],
+        "lambda5": [],
+        "lambda6": [],
+        "lambda11": [],
+        "lambda12": [],
+        "lambda13": []
+      },
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/derived_native_namespace.py",
+      "source_sha256": "637c8a15abe2d69e5b76b8f9daaa903e2b4e56710cd5a4f982baa040e9f5dcd7",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf005/native/namespace.json",
+      "namespace_sha256": "6708d7fff54209264340f6e7dfa44b2b8b00772ff797b6f50bdf678ffe8e1fbd",
+      "checked": 1793405777.3303022,
+      "scientific_attempt_consumed": false,
+      "scientific_outputs_absent": true,
+      "placement_preserved": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/placements/all_same__occ_4__conf005/1793404115168806763/placement"
+    },
+    {
+      "status": "prelaunch_resource_refusal_no_scientific_attempt",
+      "stage": "energy",
+      "branch": {
+        "message": "RAM already promised to other live workers; no scientific attempt started",
+        "raise_line": 140,
+        "first_subprocess_line": 147
+      },
+      "controller": {
+        "pid": 1826637,
+        "process_start": "151551344",
+        "host": "lambda13"
+      },
+      "producer_inventory": {
+        "lambda0": [],
+        "lambda1": [],
+        "lambda2": [],
+        "lambda4": [],
+        "lambda5": [],
+        "lambda6": [],
+        "lambda11": [],
+        "lambda12": [],
+        "lambda13": []
+      },
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/archived_energy_namespace.py",
+      "source_sha256": "debceef0e4826b8c083a550873f8f6d6309f615ba5883580d6be431edd99007e",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy_classes/pair23/namespaces/all_same__occ_2_3__conf009/namespace.json",
+      "namespace_sha256": "14b4ed236c71cf9610b7e8bc48b6059b143c61c4c3301915f2e4c1fb17598507",
+      "checked": 1793405778.8244343,
+      "scientific_attempt_consumed": false,
+      "scientific_outputs_absent": true,
+      "placement_preserved": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/energy_classes_2026-10-30/queue/placements/0031/all_same__occ_2_3__conf009/placement"
+    }
+  ]
+}
