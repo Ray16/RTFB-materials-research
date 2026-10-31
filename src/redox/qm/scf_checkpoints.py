@@ -28,9 +28,9 @@ def array(path,value):
 
 
 class Context:
-    def __init__(self,root,owner):
+    def __init__(self,root,owner,save_density=True):
         self.root=Path(root);self.root.mkdir(parents=True,exist_ok=False)
-        self.owner=owner;self.counter=0;self.current=None
+        self.owner=owner;self.counter=0;self.current=None;self.save_density=save_density
 
     def begin(self,obj):
         path=self.root/f'{self.counter:04d}';self.counter+=1;path.mkdir();self.current=path
@@ -59,9 +59,9 @@ def wrap_derivative(derivative,filename):
     return derivative
 
 
-def attach(mf,directory,owner):
+def attach(mf,directory,owner,*,save_density=True):
     """Record actual solves without binding a scanner to an obsolete MF object."""
-    mf._redox_checkpoint_context=Context(directory,owner)
+    mf._redox_checkpoint_context=Context(directory,owner,save_density)
     mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
     cls=type(mf);original=cls.kernel
     if not getattr(original,'_redox_checkpoint_wrapper',False):
@@ -70,9 +70,10 @@ def attach(mf,directory,owner):
             if context is None:return original(self,*args,**kwargs)
             path=context.begin(self)
             result=original(self,*args,**kwargs)
-            array(path/'density.npy',self.make_rdm1())
+            if context.save_density:array(path/'density.npy',self.make_rdm1())
             write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
-                checkpoint=str(path/'SCF.h5'),finished=time.time()))
+                checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
             return result
         kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
     for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
@@ -85,13 +86,13 @@ def attach(mf,directory,owner):
     return mf
 
 
-def recording_builder(builder,root,owner):
+def recording_builder(builder,root,owner,*,save_density=True):
     root=Path(root);root.mkdir(parents=True,exist_ok=True)
     counter=0
     def build(*args,**kwargs):
         nonlocal counter
         directory=root/f'{counter:04d}';counter+=1
-        return attach(builder(*args,**kwargs),directory,owner)
+        return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
     return build
 
 

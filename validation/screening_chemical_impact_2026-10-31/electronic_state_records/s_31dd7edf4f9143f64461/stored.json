@@ -1,0 +1,92 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "7d490e13fc27a026",
+  "geom_sha1": "279109db24699bc4",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/bm_n_2_methoxyethyl_phthalimide__red1/opt.xyz",
+  "charge": -1,
+  "mult": 2,
+  "id": "bm_n_2_methoxyethyl_phthalimide",
+  "state": "red1",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -706.385018585055,
+  "e_smd_eV": -19221.715579097345,
+  "converged_smd": true,
+  "e_gas_Ha": -706.3025129951449,
+  "e_gas_eV": -19219.470487622846,
+  "converged_gas": true,
+  "gas_homo_eV": -1.5532727176450694,
+  "gas_lumo_eV": 3.2469035270788167,
+  "gas_s_squared": 0.7681,
+  "gas_spin_contam": 0.0181,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.245091474498723,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -706.3850185849118,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -706.3850185848327,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -706.385018585055,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -706.302512994827,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -706.3025129951449,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -706.3025129948345,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -5.0972444649348745,
+  "smd_lumo_eV": 0.7144197922603982,
+  "smd_s_squared": 0.7672,
+  "smd_spin_contam": 0.0172,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "bm_n_2_methoxyethyl_phthalimide__red1",
+    "record_sha256": "070b9e7b832e9de70bb98bc230b8f1f9d5e3176ebc5f582e6f708e2871721e60",
+    "original_sha256": "23852a175ba6cdff9484c537505d7fc5b3965ec7f83c4b9e59f8f1c23476a070"
+  }
+}

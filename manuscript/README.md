@@ -6,12 +6,12 @@ Editable sources are [manuscript.tex](manuscript.tex),
 [supporting_information.tex](supporting_information.tex),
 [references.bib](references.bib) and [novelty_references.bib](novelty_references.bib).
 No Overleaf project is connected. A self-contained
-[upload ZIP](overleaf_upload_2026-10-31_screening_checked.zip) contains both documents,
+[upload ZIP](overleaf_upload_2026-10-31_screening_chemical_checked.zip) contains both documents,
 bibliographies, required figures and frozen numerical TeX inputs. Both exported documents compile with
 text identical to their checked local counterparts; this does not claim upload
 or remote synchronization.
 
-The [current evidence snapshot](evidence/2026-10-31_screening_implementation/manifest.json)
+The [current evidence snapshot](evidence/2026-10-31_screening_chemical_checked/manifest.json)
 preserves the primary benchmark, grafting and PMDI occupancy evidence and adds
 the duplicate-aware empty-backbone comparison. Both configurations have twenty
 checked native inputs. Their 20/19 distinct structures give nominal 10-to-20
@@ -22,12 +22,14 @@ do not replace primary-cycle components or establish global convergence.
 
 The new implementation assessment reproduces the upstream GPU4PySCF
 grid-screening defect and verifies an isolated correction in fixed-density
-controls on V100/H100. Closed/open-shell MeCN derivative controls on V100 pass;
-three-geometry polymer force repeats do not reproduce the earlier force
-discrepancy. Full corrected polymer Hessian and chemical-impact qualification
-remain open. The Methods and SI now make the stored implementation and these
+controls on V100/H100. Closed/open-shell MeCN derivative controls on both devices pass.
+All 71 benchmark electronic states now pass independent repeats, with electronic
+relative-potential changes below 9e-11 V for all 39 endpoints. The frozen scalar
+and molecular data reproduce these shifts and all 144 derivative checks with
+standard Python. Full corrected polymer Hessian and reaction-cycle qualification
+remain open. The Methods and SI make the stored implementation and these
 limits explicit; chemical claims remain provisional for release. See the
-[checked assessment](../validation/screening_implementation_2026-10-31/README.md).
+[checked assessment](../validation/screening_chemical_impact_2026-10-31/README.md).
 
 A separate [portable raw-input archive](../validation/native_cache_2026-10-30/README.md)
 now reproduces all 75 native-state Hessians, sampled derivative checks and nuclear
@@ -68,7 +70,7 @@ qualification. [Compiler facts](build_check.json),
 The restored workspace is deliberately small; the original manuscript history,
 bulk calculation records and earlier upload bundles remain in the archive
 identified by [restoration.json](restoration.json). The current figure snapshot
-is kept at `results/figures/manuscript/2026-10-31_screening_implementation/`. Its small
+is kept at `results/figures/manuscript/2026-10-31_screening_chemical_checked/`. Its small
 PDFs are versioned as publication inputs, separately from runtime results.
 Do not modify existing evidence snapshots; append a new snapshot for verified
 scientific additions. Once an Overleaf project is connected, pull/merge before

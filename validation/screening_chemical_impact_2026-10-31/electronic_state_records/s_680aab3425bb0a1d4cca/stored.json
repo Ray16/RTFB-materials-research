@@ -1,0 +1,70 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "4b8176999d23965e",
+  "geom_sha1": "3c31576458a899cd",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/bm_n_n_diisopropylpyromellitic_diimide__neu/opt.xyz",
+  "charge": 0,
+  "mult": 1,
+  "id": "bm_n_n_diisopropylpyromellitic_diimide",
+  "state": "neu",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -1029.9024695546057,
+  "e_smd_eV": -28025.07389474727,
+  "converged_smd": true,
+  "e_gas_Ha": -1029.876158136117,
+  "e_gas_eV": -28024.357924576096,
+  "converged_gas": true,
+  "gas_homo_eV": -10.157805690755042,
+  "gas_lumo_eV": -1.325057252664747,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "dG_solv_eV": -0.7159701711732203,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1029.9024695546057,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1029.876158136117,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -9.718690070499878,
+  "smd_lumo_eV": -0.9786794223831579,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "bm_n_n_diisopropylpyromellitic_diimide__neu",
+    "record_sha256": "3656358f40c265901314b6cd8b103817e4242aa96079c0b808725343b7d08d51",
+    "original_sha256": "5956f5c4c4d904b77d0dbad8a7b3c2a4cf7491d4973c60819cbd4dff51fdc3f7"
+  }
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Recreate one saved state's orbital response with timings and periodic stacks."""
+"""Trace a legacy frozen-solvent/solute-H1 execution diagnostic; no native QC."""
 import argparse
 import faulthandler
 import hashlib
@@ -60,6 +60,10 @@ def main():
             symbols=plan['symbols'];coords=checkpoint['identity']['coordinates_Bohr']
             mol=gto.M(atom=list(zip(symbols,coords)),unit='Bohr',basis='def2-svp',charge=0,spin=0,verbose=0,max_memory=6000)
             mf=dft._build_smd_mf(mol,'r2scan','acetonitrile','gpu',disp='d4');mf.grids.level=3
+            # This auxiliary probe reproduces the historical execution model.
+            # Full native Hessians instead use Hessian.kernel(), which enables
+            # equilibrium response and adds PCM to the solute H1 contribution.
+            mf.with_solvent.equilibrium_solvation=False
             mf.conv_tol=1e-12;mf.conv_tol_grad=1e-8;mf.max_cycle=200
             # Original grids are not present in the historical checkpoint.
             # Recreate the original default initial-guess/pruning recipe and

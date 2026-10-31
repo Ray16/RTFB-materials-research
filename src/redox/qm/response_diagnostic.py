@@ -83,13 +83,15 @@ def read_checkpoint(raw):
     hashes={str(path):hashlib.sha256(content).hexdigest() for path,content in captured.items()};hashes[str(matrix)]=matches[0]
     if any(digest(path)!=value for path,value in hashes.items()):raise ValueError('A source checkpoint changed during inspection')
     return dict(identity=identity,settings=settings,energy_Ha=energy,source_sha256=hashes,
+        first_derivative_scope='solute contribution at the solvated SCF density; PCM H1 is not included',
         reader='hash-checked contiguous native-FP64 payload; HDF5 metadata only'),arrays,h1
 
 
 @contextmanager
 def response_memory_cap(module,cap_bytes):
     """Reduce automatic RHS batching; never advertise more than actual memory."""
-    if cap_bytes!=3*2**30:raise ValueError('This diagnostic profile uses a 3-GiB available-memory ceiling')
+    if type(cap_bytes) is not int or cap_bytes%2**30 or not 3*2**30<=cap_bytes<=24*2**30:
+        raise ValueError('A declared whole-GiB response ceiling in the validated 3–24-GiB envelope is required')
     original=module.get_avail_mem
     module.get_avail_mem=lambda *args,**kwargs:min(original(*args,**kwargs),cap_bytes)
     try:yield

@@ -33,6 +33,18 @@ def test_checkpoint_wrappers_do_not_retain_a_completed_mean_field(tmp_path):
     assert reference() is None
 
 
+def test_orbitals_only_checkpoint_reconstructs_the_same_density(tmp_path):
+    from pyscf import lib
+    target=attach(scf.RHF(molecule()),tmp_path/'solve',{},save_density=False)
+    energy=target.kernel()
+    assert not (tmp_path/'solve/0000/density.npy').exists()
+    path=str(tmp_path/'solve/0000/SCF.h5')
+    orbitals=lib.chkfile.load(path,'scf/mo_coeff');occupations=lib.chkfile.load(path,'scf/mo_occ')
+    rebuilt=(orbitals*occupations)@orbitals.T
+    np.testing.assert_allclose(rebuilt,target.make_rdm1(),atol=1e-13,rtol=0)
+    assert abs(lib.chkfile.load(path,'scf/e_tot')-energy)<1e-13
+
+
 def test_nonconverged_optimizer_coordinates_survive_before_caller_rejection(tmp_path):
     mol=molecule();result=(False,mol)
     run=recording_optimizer(lambda:result,tmp_path,{})

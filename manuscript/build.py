@@ -86,6 +86,8 @@ def main():
     source.update(figure_inputs)
     if screening_check is not None:
         source['manuscript/check_screening_controls.py']=sha(PAPER/'check_screening_controls.py')
+        if 'electronic_benchmark_implementation_sensitivity' in screening_check:
+            source['src/redox/validation/screening_sensitivity.py']=sha(ROOT/'src/redox/validation/screening_sensitivity.py')
     # Bind all frozen inputs through the end of compilation, including cached
     # raw structure records used by the prospective ionic-model demonstration.
     source.update(evidence['snapshot_sha256'])

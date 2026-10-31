@@ -40,6 +40,7 @@ def prepare(namespace,output,debugger=None,checkpoint_response=False):
     debug=None if debugger is None else configuration(debugger)
     limits=(7200,2*2**30,34) if checkpoint_response else (900,64*2**20,2)
     plan=dict(role='orbital_response_diagnostic',source_id='orbital_response_diagnostic',state='rest',source_namespace=str(namespace),source_key=source['key'],raw_source=str(raw),checkpoint=checkpoint,debugger=debug,checkpoint_response=checkpoint_response,
+        H1_scope='solute contribution at the solvated SCF density',equilibrium_solvent_response=False,
         symbols=[line.split()[0] for line in (raw/'geometry.xyz').read_text().splitlines()[2:]],source_sha256=bindings,
         maximum_host_RSS_GiB=80,minimum_free_GiB=32,maximum_peak_GPU_MiB=31744,maximum_wall_seconds=limits[0],maximum_durable_output_bytes=limits[1],
         minimum_diagnostic_free_GiB=limits[2],native_G_qualified=False,material_admission=False,original_grid_arrays_available=False,
@@ -126,6 +127,9 @@ def observe_budget(child,spec,result,output):
                 continue
         if reason is None and (time.time()-result['started']>plan['maximum_wall_seconds'] or allocated>plan['maximum_durable_output_bytes']):
             reason='wall_time_budget' if time.time()-result['started']>plan['maximum_wall_seconds'] else 'durable_output_budget';requested=time.monotonic()
+            atomic_write_json(output/'budget_stop.json',dict(reason=reason,native_G_qualified=False,checked=time.time()))
+        if reason is None and plan.get('minimum_live_storage_GiB') is not None and shutil.disk_usage(case).free<plan['minimum_live_storage_GiB']*2**30:
+            reason='shared_storage_margin';requested=time.monotonic()
             atomic_write_json(output/'budget_stop.json',dict(reason=reason,native_G_qualified=False,checked=time.time()))
         if reason:
             guard=case/'residency_guard/owner.json'

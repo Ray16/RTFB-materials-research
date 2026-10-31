@@ -1,0 +1,70 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "53bc633151fffab6",
+  "geom_sha1": "9dd02b2562264b81",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/bm_2_methyl_1_4_benzoquinone__neu/opt.xyz",
+  "charge": 0,
+  "mult": 1,
+  "id": "bm_2_methyl_1_4_benzoquinone",
+  "state": "neu",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -420.80658813420774,
+  "e_smd_eV": -11450.730604576318,
+  "converged_smd": true,
+  "e_gas_Ha": -420.79094387539243,
+  "e_gas_eV": -11450.304902607162,
+  "converged_gas": true,
+  "gas_homo_eV": -10.29169573389625,
+  "gas_lumo_eV": -1.5370048826695044,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "dG_solv_eV": -0.4257019691557135,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -420.80658813420774,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -420.79094387539243,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -10.041584634019094,
+  "smd_lumo_eV": -1.238191759795199,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "bm_2_methyl_1_4_benzoquinone__neu",
+    "record_sha256": "a09607ae6d056ad3225c20c932d1b4c0bcc594b90efaaa2023631f2995dac29a",
+    "original_sha256": "3c4409ab73adb24c39fae62e731f65f86ede9ea4b258204fbf2191c6822bad5c"
+  }
+}

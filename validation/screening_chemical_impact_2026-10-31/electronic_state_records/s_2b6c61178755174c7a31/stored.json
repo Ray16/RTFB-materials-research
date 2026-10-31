@@ -1,0 +1,60 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "401df1fb5e8fb1b8",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethylphenothiazine/neu/opt.xyz",
+  "geom_sha1": "46970d52b018bafa",
+  "charge": 0,
+  "mult": 1,
+  "id": "bm_n_ethylphenothiazine",
+  "state": "neu",
+  "source": "adopted:result.json",
+  "adopted_result_sha256": "349a8cb44e3e67cfda6cb553e5d618c112b31c9791ad0a21699f8b03a29dd67c",
+  "e_smd_Ha": -994.2550310023387,
+  "e_smd_eV": -27055.05767562141,
+  "converged_smd": true,
+  "e_gas_Ha": -994.23560984039,
+  "e_gas_eV": -27054.52919888228,
+  "converged_gas": true,
+  "gas_homo_eV": -7.2132569598468965,
+  "gas_lumo_eV": 0.8829564814338807,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "dG_solv_eV": -0.5284767391315536,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -994.2550310023387,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -994.23560984039,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -7.2330830568815,
+  "smd_lumo_eV": 0.907613872582882,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0
+}

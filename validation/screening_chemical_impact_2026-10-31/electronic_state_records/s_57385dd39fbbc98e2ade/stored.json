@@ -1,0 +1,70 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "656529af290c7c82",
+  "geom_sha1": "98f128c282dd460a",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/bm_1_2_naphthoquinone__red2/opt.xyz",
+  "charge": -2,
+  "mult": 1,
+  "id": "bm_1_2_naphthoquinone",
+  "state": "red2",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -535.3760710405306,
+  "e_smd_eV": -14568.325055943389,
+  "converged_smd": true,
+  "e_gas_Ha": -535.084025590605,
+  "e_gas_eV": -14560.378094404081,
+  "converged_gas": true,
+  "gas_homo_eV": 2.4629352039912797,
+  "gas_lumo_eV": 6.319745466427173,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": true,
+  "dG_solv_eV": -7.946961539308335,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -535.3760710405306,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -535.084025590605,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -4.946053492488476,
+  "smd_lumo_eV": 1.257037565094747,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "bm_1_2_naphthoquinone__red2",
+    "record_sha256": "6ced29c15a4ddaba02ac70c344a52aa270157b9ea7b1938cbd017e692fcf9b9a",
+    "original_sha256": "984e3f1ebae66e8507e4bb93e73e3e6cc025532cc944d4c574c323aca9b4f8bf"
+  }
+}

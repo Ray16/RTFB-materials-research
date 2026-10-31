@@ -1,0 +1,64 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "1b06d88b1dee515b",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/bm_2_5_dichloro_1_4_benzoquinone/neu/1792632042115215013/branch_0/opt.xyz",
+  "geom_sha1": "df10ec904657cce0",
+  "charge": 0,
+  "mult": 1,
+  "id": "bm_2_5_dichloro_1_4_benzoquinone",
+  "state": "neu",
+  "source": "computed:gpu",
+  "wall_s": 13.1,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "e_smd_Ha": -1300.6907841800903,
+  "e_smd_eV": -35393.599314921456,
+  "converged_smd": true,
+  "e_gas_Ha": -1300.6745152268031,
+  "e_gas_eV": -35393.15661414974,
+  "converged_gas": true,
+  "gas_homo_eV": -10.44845221853876,
+  "gas_lumo_eV": -2.098615135637019,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "dG_solv_eV": -0.44270077171541616,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1300.6907841800903,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1300.6745152268031,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -10.03577051564962,
+  "smd_lumo_eV": -1.7193650992444542,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0
+}

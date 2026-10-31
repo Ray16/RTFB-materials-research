@@ -4,9 +4,11 @@ As of 31 October 2026, the manuscript remains a working draft. M1, M4, complete 
 
 **Additional release requirement:** the [screening implementation assessment](../validation/screening_implementation_2026-10-31/README.md)
 reproduces an upstream GPU4PySCF grid-screening defect on V100 and H100.
-The isolated correction passes fixed-density controls on both devices and
-closed/open-shell MeCN derivative controls on V100. Chemical-impact assessment
-and complete production qualification remain open. Previous arithmetic,
+The isolated correction passes fixed-density and closed/open-shell MeCN
+derivative controls on both devices. All 71 benchmark electronic states now
+pass independent repeat review; the largest corrected-minus-installed
+electronic contribution to a relative-potential change is 8.66e-11 V.
+Full polymer-Hessian, reaction-cycle and production qualification remain open. Previous arithmetic,
 experimental-source and saved-record replays remain reproducible; they do not
 measure the defect's effect on converged chemical predictions. Stored chemical
 claims are provisional for release. New uncorrected admissions are held.
@@ -48,4 +50,4 @@ The older [machine-readable comment audit](../results/validation/review_comment_
 
 The exact viologen now has [twelve audited initial charged-polymer models](../validation/viologen_polymer_preparation_2026-10-31/README.md), including adjacent/spacer graphs in two configurations. SI Section 3.4 separates connectivity, global state hypotheses and PF6 dry-salt mass bookkeeping from uncomputed charged-polymer thermochemistry. This preparation advances M1 without closing its polymer assessment or M4.
 
-An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall. The revised checkpointed orbital-response control completed all seven blocks/315 Cartesian right-hand sides; independent review verifies its arrays, source frame, ownership and resources. Original grid arrays are absent, so an exact Hessian restart remains unqualified and no native G follows. Three earlier traced probes remain failed. This response control used the installed screening implementation; its completion cannot qualify the separate correction. See the [current assessment](../validation/screening_implementation_2026-10-31/README.md).
+An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall. The earlier seven-block/315-coordinate response execution probe used solute H1 and a frozen-solvent operator; its array/resource review remains scoped to instrumentation, without native equilibrium-response or G qualification. Fresh full Hessian and corrected checkpoint-reuse controls preserve the PCM/SMD H1 contribution. An unqualified restart that bypassed that term was explicitly rejected and stopped; it supplies no accepted result. See the [current assessment](../validation/screening_chemical_impact_2026-10-31/README.md).

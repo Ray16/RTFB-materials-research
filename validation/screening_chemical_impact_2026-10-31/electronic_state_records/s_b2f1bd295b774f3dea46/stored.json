@@ -1,0 +1,92 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "fcf97b37f7c5e9e4",
+  "geom_sha1": "742210b6e6bc809b",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/bm_2_methoxy_1_4_benzoquinone__red1/opt.xyz",
+  "charge": -1,
+  "mult": 2,
+  "id": "bm_2_methoxy_1_4_benzoquinone",
+  "state": "red1",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -496.1597850932537,
+  "e_smd_eV": -13501.195551898925,
+  "converged_smd": true,
+  "e_gas_Ha": -496.0792972296984,
+  "e_gas_eV": -13499.005365555608,
+  "converged_gas": true,
+  "gas_homo_eV": -2.501706268605812,
+  "gas_lumo_eV": 3.672446019862459,
+  "gas_s_squared": 0.774,
+  "gas_spin_contam": 0.024,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.190186343317018,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -496.15978509317284,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -496.1597850932537,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -496.1597850930394,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -496.0792972296984,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -496.0792972295042,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -495.988181514249,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -6.309794834470855,
+  "smd_lumo_eV": -0.10876298968682599,
+  "smd_s_squared": 0.7729,
+  "smd_spin_contam": 0.0229,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "bm_2_methoxy_1_4_benzoquinone__red1",
+    "record_sha256": "2fb15cf2550fdc793bc96a776d1d5b56a49d133b26c6eb4963f6a867d18372bf",
+    "original_sha256": "016839bb084fd39807f119013ca7e9c78eda9238052b75307bbb862a3b89bc8f"
+  }
+}
