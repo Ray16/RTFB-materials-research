@@ -16,7 +16,16 @@ from redox.validation.archived_sources import ArchivedSources
 from redox.workflows import molecular_native_namespace as execution
 
 
-def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB'):
+def resting_state(case,allow_empty_reference=False):
+    graph=Chem.MolFromSmiles(case['smiles']);charge=Chem.GetFormalCharge(graph)
+    states=[s for s in case['proposed_global_states'] if s['charge']==case['charge']]
+    empty=allow_empty_reference and not case['occupied_sites'] and charge==case['charge']==0
+    if len(states)!=1 or states[0]['mult']!=1 or charge!=case['charge'] or (charge<=0 and not empty):
+        raise ValueError('A closed-shell ionic graph or explicitly scoped empty reference is required')
+    return states[0],empty
+
+
+def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB',allow_empty_reference=False):
     if execution_profile not in ('compact_28GiB','direct_large_GPU_reference'):raise ValueError('Explicit measured execution profile required')
     if output.exists() or any(output.is_relative_to(p) for p in (ROOT,archive)):
         raise FileExistsError('Use a new durable pilot outside both scientific checkouts')
@@ -30,11 +39,7 @@ def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB
         if len(matches)!=1:raise ValueError('One exact prepared graph/configuration required')
         selected=matches[0]
     state=selected['case'];graph=Chem.AddHs(Chem.MolFromSmiles(state['smiles']))
-    resting=[s for s in state['proposed_global_states'] if s['charge']==state['charge']]
-    if len(resting)!=1:raise ValueError('One declared resting global charge/spin state required for this pilot')
-    selected_state=resting[0]
-    if state['charge']!=Chem.GetFormalCharge(graph) or state['charge']<=0 or selected_state['mult']!=1:
-        raise ValueError('This first ionic pilot requires the resting closed-shell charged graph')
+    selected_state,empty_reference=resting_state(state,allow_empty_reference)
     source=preparation.parent/'source_snapshot';registry=json.loads((source/'1_registry.json').read_text())['candidates']
     candidates=[r for r in registry if data['candidate_alias'] in r['aliases']]
     if len(candidates)!=1:raise ValueError('One exact candidate graph required')
@@ -73,6 +78,7 @@ def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB
     if execution_profile=='compact_28GiB':bound.extend((archive/'scripts/pipeline').glob('*.py'))
     hashes={**{str(reader.path(p)):h for p,h in model['evidence'].items()},**{str(p):sha256_file(p) for p in bound}}
     plan=dict(role='charged_polymer_SCF_gradient_resource_pilot',charged_polymer_pilot=True,
+        matched_empty_polymer_reference=empty_reference,
         source_id=spec['source_id'],state='rest',source_sha256=hashes,exact_candidate_alias=data['candidate_alias'],
         preparation_source=dict(path=str(preparation),sha256=sha256_file(preparation)),
         prepared_case=state,selected_initial_geometry_sha256=selected['initial_geometry_sha256'],
@@ -93,13 +99,13 @@ def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB
                 selected_case=state['key'],charge=state['charge'],mult=selected_state['mult'],atoms=graph.GetNumAtoms(),quantum_jobs_submitted=0)
 
 
-def prepare_optimization(archive,preparation,agreement_path,output,key=None):
+def prepare_optimization(archive,preparation,agreement_path,output,key=None,allow_empty_reference=False):
     agreement=json.loads(agreement_path.read_text())
     if agreement['status']!='charged_polymer_execution_profiles_compared' or not agreement['initial_state_execution_agreement_passed']:
         raise ValueError('Paired direct/compact ionic energy/force agreement required before optimization')
     for path,digest in agreement['source_sha256'].items():
         if sha256_file(path)!=digest:raise ValueError('Ionic execution qualification changed')
-    result=prepare(archive,preparation,output,key,execution_profile='compact_28GiB')
+    result=prepare(archive,preparation,output,key,execution_profile='compact_28GiB',allow_empty_reference=allow_empty_reference)
     spec=json.loads((output/'namespace.json').read_text());case=Path(spec['case']);sources=Path(spec['sources'])
     shutil.copyfile(ROOT/'scripts/validation/run_charged_polymer_optimization.py',sources/'worker.py')
     shutil.copyfile(agreement_path,sources/'execution_agreement.json')

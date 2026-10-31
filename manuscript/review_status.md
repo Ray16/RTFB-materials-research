@@ -117,3 +117,11 @@ one-spacer optimization is separate. The pilot uses the corrected implementation
 and the same physical thresholds, with explicit charged-state and alternate-model
 identity. Its thermochemistry is unqualified until normal completion and independent
 reconstruction; M1/M4 remain incomplete.
+
+Two [matched empty references](../validation/matched_empty_reference_2026-10-31/README.md)
+now have verified fresh optimization starts under the corrected implementation.
+Exact graph, stereochemistry, reactive-site and model identities match the ionic
+occupancy panel. Old finite-batch thermochemistry selects warm-start coordinates
+only; old E/G is not imported into the corrected cycle. Namespace-visible source
+hash checks now run during preflight. New native G and balanced occupancy cycles
+remain pending.

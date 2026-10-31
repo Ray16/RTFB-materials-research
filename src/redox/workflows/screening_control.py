@@ -38,7 +38,10 @@ def prepare(archive,output,water_reference=False,molecular_control=None):
 
 def probe(path):
     spec=execution.verify(path);runtime=json.loads((Path(spec['archive'])/'environments/cutensor22/runtime.json').read_text())
-    program=('import ast,importlib.util,importlib.metadata as m,json,pathlib;import numpy,psutil,ase,h5py;from pyscf.gto import mole;'
+    program=('import ast,importlib.util,importlib.metadata as m,json,pathlib,hashlib;'
+        'plan=json.loads(pathlib.Path('+repr(str(Path(spec['case'])/'plan.json'))+').read_text());'
+        'assert all(hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()==h for p,h in plan["source_sha256"].items()),"Namespace-visible source differs";'
+        'import numpy,psutil,ase,h5py;from pyscf.gto import mole;'
         'wanted='+repr(runtime['versions'])+';assert {k:m.version(k) for k in wanted}==wanted;'
         'root=pathlib.Path('+repr(spec['sources'])+');'
         'modules=sorted({n.module for name in ["worker.py","helper.py","host_guard.py","scientific_worker.py","checkpoints.py","response_helper.py","restart_helper.py","response_resume_helper.py","saved_matrix_helper.py"] if (root/name).exists() for n in ast.walk(ast.parse((root/name).read_text())) if isinstance(n,ast.ImportFrom) and n.module and n.module.startswith("redox.")});'

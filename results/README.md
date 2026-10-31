@@ -56,6 +56,11 @@ establish that a calculation is currently running.
   the corrected implementation and unchanged physical gates. Native G, minima,
   ensembles and occupancy interaction results remain unqualified until completion
   and independent reconstruction; the running pilot supplies no material decision.
+- [Matched empty references](../validation/matched_empty_reference_2026-10-31/README.md):
+  exact empty-backbone graph/model matches are freshly reoptimized with corrected
+  execution in both configurations. Old finite-batch G selects coordinates only;
+  old energies or thermochemistry cannot enter the new occupancy cycle. Both
+  actual SCF starts are verified; new native G and cycle qualification remain pending.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)
