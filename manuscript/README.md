@@ -1,17 +1,17 @@
 # Working scientific manuscript
 
 Open [the paper](manuscript.pdf) (21 pages) and
-[Supporting Information](supporting_information.pdf) (28 pages).
+[Supporting Information](supporting_information.pdf) (29 pages).
 Editable sources are [manuscript.tex](manuscript.tex),
 [supporting_information.tex](supporting_information.tex),
 [references.bib](references.bib) and [novelty_references.bib](novelty_references.bib).
 No Overleaf project is connected. A self-contained
-[upload ZIP](overleaf_upload_2026-10-31_exact_CPU_example_final.zip) contains both documents,
+[upload ZIP](overleaf_upload_2026-10-31_ionic_polymer_checked.zip) contains both documents,
 bibliographies, required figures and frozen numerical TeX inputs. Both exported documents compile with
 text identical to their checked local counterparts; this does not claim upload
 or remote synchronization.
 
-The [current evidence snapshot](evidence/2026-10-31_exact_CPU_example/manifest.json)
+The [current evidence snapshot](evidence/2026-10-31_ionic_polymer_checked/manifest.json)
 preserves the primary benchmark, grafting and PMDI occupancy evidence and adds
 the duplicate-aware empty-backbone comparison. Both configurations have twenty
 checked native inputs. Their 20/19 distinct structures give nominal 10-to-20
@@ -83,3 +83,5 @@ the end of the build.
 The same exact viologen now has a checked local quaternization cycle: −11.49 kJ/mol at 298.15 K in MeCN. Three independently checked precursor seeds span 1.50 kJ/mol; rotor settings give −13.30 to −11.49 kJ/mol. The SI states the separated-ion convention and remaining salt, sampling and polymer limits. See the [reproducible calculation record](../validation/viologen_grafting_2026-10-31/README.md).
 
 The [versioned ten-state CPU example](../examples/exact_viologen_replay/README.md) now reconstructs the exact viologen reductions and local quaternization from raw cached Hessians/records in a fresh NumPy-only environment. Six states retain independently replayable gradient columns; inherited reference summaries remain metadata-only. Full deposition/DOI and the open scientific analyses remain separate requirements.
+
+The exact viologen also has twelve audited initial charged-polymer models and four balanced occupancy cycles. SI Section 3.4 presents the construction and explicit PF6 dry-salt convention. These starting coordinates do not supply charged-polymer energies or conformer ensembles; the [preparation record](../validation/viologen_polymer_preparation_2026-10-31/README.md) preserves the failed embedding attempt, bounded fallback and independent XYZ/mass checks.

@@ -56,6 +56,14 @@ def main():
     from check_claims import audit
 
     claims = audit()
+    ionic_preparation = manifest.parent/'ionic_preparation_replay.json'
+    if ionic_preparation.exists():
+        expected=json.loads(ionic_preparation.read_text())
+        checker_path=ROOT/'scripts/validation/check_charged_polymer_preparation.py'
+        definition=importlib.util.spec_from_file_location('checked_ionic_preparation',checker_path)
+        checker=importlib.util.module_from_spec(definition);definition.loader.exec_module(checker)
+        if checker.check(Path(expected['source']))!=expected:
+            raise ValueError('Frozen ionic initial-structure audit differs from actual evidence')
     # Recent context references are separate from the frozen 48-reference base
     # audit. Their primary DOI records must match the actual compiled BibTeX.
     citation_source = ROOT/'scripts/validation/check_recent_polymer_literature.py'
@@ -72,6 +80,9 @@ def main():
     source = {str(p.relative_to(ROOT)): sha(p) for p in
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", PAPER / "check_viologen_native.py", Path(__file__), manifest, pointer)}
     source.update(figure_inputs)
+    # Bind all frozen inputs through the end of compilation, including cached
+    # raw structure records used by the prospective ionic-model demonstration.
+    source.update(evidence['snapshot_sha256'])
     if (manifest.parent/'viologen_grafting_result.json').exists():
         source[str((PAPER/'check_viologen_grafting.py').relative_to(ROOT))]=sha(PAPER/'check_viologen_grafting.py')
     if (manifest.parent/'exact_molecular_CPU_validation.json').exists():

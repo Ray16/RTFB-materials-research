@@ -13,10 +13,10 @@
 \renewcommand{\floatpagefraction}{0.8}
 \newcommand{\pending}[1]{\par\smallskip\Needspace{4\baselineskip}\noindent\textcolor{red!65!black}{\textbf{Draft completion item:} #1}\par\smallskip}
 \newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
-\input{evidence/2026-10-31_exact_CPU_example/empty_batch_values.tex}
-\input{evidence/2026-10-31_exact_CPU_example/tempo_solution_values.tex}
-\input{evidence/2026-10-31_exact_CPU_example/viologen_native_values.tex}
-\input{evidence/2026-10-31_exact_CPU_example/viologen_grafting_values.tex}
+\input{evidence/2026-10-31_ionic_polymer_checked/empty_batch_values.tex}
+\input{evidence/2026-10-31_ionic_polymer_checked/tempo_solution_values.tex}
+\input{evidence/2026-10-31_ionic_polymer_checked/viologen_native_values.tex}
+\input{evidence/2026-10-31_ionic_polymer_checked/viologen_grafting_values.tex}
 \renewcommand{\thefigure}{S\arabic{figure}}
 \renewcommand{\thetable}{S\arabic{table}}
 \title{Supporting Information: From Molecular Redox Motifs to Polymer Grafts: Attachment Thermodynamics and Neighboring-Site Effects}
@@ -164,10 +164,10 @@ Three native molecular states and the two matched Fc states enter the potential 
 \begin{table}[htbp]\centering
 \caption{Native minimum admission for the exact viologen graft. Frequencies are cm$^{-1}$. Initial values refer to the source optimized geometries; accepted values follow the unchanged native gates.}
 \label{tab:viologen-QC}
-\input{evidence/2026-10-31_exact_CPU_example/viologen_native_QC_table.tex}
+\input{evidence/2026-10-31_ionic_polymer_checked/viologen_native_QC_table.tex}
 \end{table}
 
-The primary reduction potentials are $\MolecularFirstReduction$ and $\MolecularSecondReduction$ V versus Fc/Fc$^+$ (Figure~\ref{fig:viologen-redox}). The 25/50/100 cm$^{-1}$ calculations are settings sensitivities, not independent samples. The positive $\MolecularDisproportionation$ \kj\ monomer disproportionation value does not establish resistance to other decay or association reactions. Global conformer/spin ordering, actual-condition grafting free energy, neighboring-site response and electronic coupling remain unresolved; no material admission follows from this ladder.
+The primary reduction potentials are $\MolecularFirstReduction$ and $\MolecularSecondReduction$ V versus Fc/Fc$^+$ (Figure~\ref{fig:viologen-redox}). The 25/50/100 cm$^{-1}$ calculations are settings sensitivities, not independent samples. The positive $\MolecularDisproportionation$ \kj\ monomer disproportionation value does not establish resistance to other decay or association reactions. Global conformer/spin ordering, polymer-context grafting free energy, neighboring-site response and electronic coupling remain unresolved; no material admission follows from this ladder.
 
 \begin{figure}[htbp]\centering
 \includegraphics[width=.82\linewidth]{../results/figures/manuscript/2026-10-31_exact_CPU_example/viologen_native_redox.pdf}
@@ -182,8 +182,24 @@ Table~\ref{tab:viologen-graft} reports the three precursor starts after independ
 \begin{table}[htbp]\centering
 \caption{Three fixed precursor starts for the exact viologen grafting cycle. Relative precursor $G$ and grafting $\Delta G$ are kJ/mol at the 50 cm$^{-1}$ rotor setting; the lowest internal frequency is cm$^{-1}$. The product is the checked dicationic graft.}
 \label{tab:viologen-graft}
-\input{evidence/2026-10-31_exact_CPU_example/viologen_grafting_QC_table.tex}
+\input{evidence/2026-10-31_ionic_polymer_checked/viologen_grafting_QC_table.tex}
 \end{table}
+
+\subsection{Charged viologen occupancy construction and salt convention}
+The same precursor/attachment identity defines a conditional five-repeat viologen panel with reactive benzyl sites 2, 3 and 4 and plain-styrene padding at sites 1 and 5. Each of two declared backbone configurations has an empty graph, three singly grafted graphs and adjacent (2,3) or one-spacer (2,4) double grafts. The four corresponding nonadditivity cycles conserve atoms and charge. Independent examination of the initial XYZ structures verifies the ten-carbon, nine-bond open backbone, stereochemistry, benzyl--pyridinium nitrogen attachments and residual benzyl chlorides. Figure~\ref{fig:viologen-occupancy-construction} shows the actual two-graft graphs; it does not represent a spatial arrangement or an interaction energy.
+
+ETKDGv3 requests four starting conformers per graph, using seed 20261031 plus the graph index and at most 1,000 embedding iterations. A failed embedding triggers one declared random-coordinate retry with the same seed. Connectivity-valid structures are ranked after 200 MMFF steps; this pre-relaxation did not converge and supplies initial coordinates only. Neither these force-field energies nor the starting contact distances enter solution thermodynamics. Global charge/spin hypotheses are recorded separately from graph construction, without assigning charge localization or spin ordering. No charged-polymer energy, conformer ensemble or native nuclear partition is inferred from this preparation.
+
+Coordinates omit counterions under a separated-spectator convention. A distinct, fully oxidized dry-salt reference assigns two PF$_6^-$ ions per viologen for composition bookkeeping. For this quaternization, the precursor loses no hydrogen, giving
+\begin{equation}
+M_{\mathrm{salt}}=nM_{\mathrm{C_8H_8}}+hM_{\mathrm{CHCl}}+2M_{\mathrm H}
+ +g\big(M_{\mathrm{precursor}}-M_{\mathrm{Cl}}+2M_{\mathrm{PF_6}}\big)+M_{\mathrm{extra}}.
+\end{equation}
+Direct masses of the constructed graphs plus declared counterions reproduce this expression. For $n=5,h=3$, one and two grafts have reference masses 1093.886 and 1519.580 g/mol and two-electron ceilings 49.00 and 70.55 mAh/g, respectively. These conditional ceilings include residual chlorides and scaffold mass. They establish neither accessible capacity nor mobile-ion mass during redox. The PF$_6^-$ composition reference is separate from precursor iodide and attachment-generated chloride; counterion exchange, association and actual resin loading remain unmodeled.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.96\linewidth]{evidence/2026-10-31_ionic_polymer_checked/viologen_occupancy_construction.pdf}
+\caption{Exact viologen occupancy graphs for adjacent and one-spacer grafts on the same open backbone. Numbers label repeat sites; teal identifies the backbone, orange the two viologen cores and purple the retained covalent chloride. Both drawings use the same declared backbone configuration. Counterions are omitted. The separate initial-XYZ audit checks connectivity and stereochemistry; no optimized solution structure, interaction strength or free energy is reported here.}
+\label{fig:viologen-occupancy-construction}\end{figure}
 
 \subsection{Composition bounds and exact occupancy inputs}
 For neutral N--H/O--H substitution, the H-capped linear-fragment mass is
@@ -319,7 +335,7 @@ At a 50 cm$^{-1}$ rotor cutoff and a 0.10 \AA\ duplicate threshold, expanding te
 The occupied sets remain incomplete. Each occupancy graph and backbone configuration requires its own assessed sampling before a balanced ensemble cycle can be interpreted. These alternate-model controls cannot replace components of the primary-model PMDI or phthalimide cycles.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{evidence/2026-10-31_exact_CPU_example/empty_batch_stability.pdf}
+\includegraphics[width=\linewidth]{evidence/2026-10-31_ionic_polymer_checked/empty_batch_stability.pdf}
 \caption{Empty-backbone sampling stability in the separate smooth-surface MeCN model at 298.15 K. Points show changes from the first ten to all twenty inputs at a 50 cm$^{-1}$ rotor cutoff and a 0.10 \AA\ duplicate threshold. Vertical ranges span the explicit rotor/duplicate settings and are not confidence intervals. The dashed line marks the magnitude of the 2 \kj\ batch criterion. Each configuration is treated separately; passing empty-component checks does not establish occupied-cycle convergence.}
 \label{fig:empty-batch-stability}
 \end{figure}

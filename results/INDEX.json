@@ -47,12 +47,12 @@
       "guide": "manuscript/README.md",
       "current": "manuscript/manuscript.pdf",
       "supporting_information": "manuscript/supporting_information.pdf",
-      "source_snapshot": "manuscript/evidence/2026-10-31_exact_CPU_example/manifest.json",
+      "source_snapshot": "manuscript/evidence/2026-10-31_ionic_polymer_checked/manifest.json",
       "build": "manuscript/build_check.json",
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
       "status": "exact_viologen_and_versioned_CPU_replay_integrated_scientific_gaps_open",
-      "scope": "21-page article and 28-page SI; small raw-state CPU example available; occupied ensembles and material assessment incomplete"
+      "scope": "21-page article and 29-page SI; exact charged-polymer construction documented, occupied ensembles and material assessment incomplete"
     },
     "native_polymer_continuation": {
       "guide": "validation/native_followup_collection_2026-10-30/README.md",
@@ -232,6 +232,16 @@
       "archive_sha256": "d0c6cc2ff42a594425fdd51050126a40c9ddb1013b73dddb98e5bc616e0bf1c8",
       "status": "versioned_exact_molecular_CPU_example_fresh_numpy_replay_checked",
       "scope": "Ten cached states: redox plus local quaternization; no live SCF, full historical closure or complete material assessment"
+    },
+    "viologen_charged_polymer_preparation": {
+      "guide": "validation/viologen_polymer_preparation_2026-10-31/README.md",
+      "current": "results/polymer_models/viologen_preparation_2026-10-31_v2/preparation.json",
+      "source_snapshot": "results/polymer_models/viologen_preparation_2026-10-31_v2/plan.json",
+      "raw_root": "results/polymer_models/viologen_preparation_2026-10-31_v2",
+      "physical_replay": "validation/viologen_polymer_preparation_2026-10-31/checked_replay.json",
+      "figure": "results/figures/polymer_models/viologen_occupancy_construction.pdf",
+      "status": "twelve_initial_models_audited_no_charged_QM_admission",
+      "scope": "Exact route-bound charged graphs, initial XYZs and dry-salt composition ceilings; solution/native/ensemble/coupling assessment pending"
     }
   }
 }

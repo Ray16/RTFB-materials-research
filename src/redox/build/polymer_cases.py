@@ -237,7 +237,8 @@ def build_case(fragment, n, reactive_sites, occupied_sites, stereo):
     )
 
 
-def panel(spec, fragment):
+def matched_graphs(spec, fragment):
+    """Construct balanced graphs only; charge/spin/ion admission is separate."""
     if len({scenario["name"] for scenario in spec["scenarios"]}) != len(
         spec["scenarios"]
     ):
@@ -273,11 +274,6 @@ def panel(spec, fragment):
     for sites in sorted(occupied_sets, key=lambda s: (len(s), s)):
         case = build_case(fragment, n, reactive, sites, stereo)
         case["key"] = "occ_" + "_".join(map(str, sites)) if sites else "occ_none"
-        if case["charge"] != 0:
-            raise ValueError(
-                "Only neutral controls are admitted; charged panels require "
-                "explicit spin/counterion models"
-            )
         cases.append(case)
     fingerprints = {str(c["backbone_stereo_fingerprint"]) for c in cases}
     if len(fingerprints) != 1:
@@ -295,4 +291,15 @@ def panel(spec, fragment):
             charge += coefficient * Chem.GetFormalCharge(mol)
         if any(balance.values()) or charge:
             raise ValueError("Site-nonadditivity cycle is not atom/charge balanced")
+    return cases, pairs
+
+
+def panel(spec, fragment):
+    """Keep the established neutral calculation path restricted to neutrals."""
+    cases, pairs = matched_graphs(spec, fragment)
+    if any(case["charge"] != 0 for case in cases):
+        raise ValueError(
+            "Only neutral controls are admitted; charged panels require "
+            "explicit spin/counterion models"
+        )
     return cases, pairs
