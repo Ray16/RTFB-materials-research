@@ -1,0 +1,52 @@
+{
+  "status": "checkpointed_V100_response_control_scientific_start_verified_completion_pending",
+  "UTC": "2026-10-31T13:23:17Z",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_response_checkpointed_v4b/namespace.json",
+  "namespace_sha256": "fd3dec4970ef99d8c43746d9aac0b4323d13ad14da0d1dda6bc775aed0c2c6a2",
+  "scientific_owner": {
+    "host": "lambda2",
+    "pid": 1474240,
+    "process_start": "1425343477",
+    "GPU": 5,
+    "CPU_affinity": [
+      7,
+      8
+    ],
+    "started": 1793452814.889348,
+    "program": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_response_checkpointed_v4b/sources/host_guard.py",
+    "foreign_processes_signaled": false
+  },
+  "scientific_CPU_affinity": [
+    7,
+    8
+  ],
+  "budget_observer": {
+    "host": "lambda2",
+    "pid": 1473291,
+    "process_start": "1425342313"
+  },
+  "selected_environment": {
+    "CUDA_VISIBLE_DEVICES": "5",
+    "NUMEXPR_NUM_THREADS": "2",
+    "OMP_THREAD_LIMIT": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "NUMPY_MADVISE_HUGEPAGE": "0",
+    "OMP_NUM_THREADS": "2",
+    "XTB_THREADS": "2",
+    "MKL_NUM_THREADS": "2"
+  },
+  "resident_GPU_process": "1474240, 15240",
+  "source_energy_reproduction": {
+    "saved_energy_Ha": -3095.584381702979,
+    "recreated_energy_Ha": -3095.584381702979,
+    "difference_Ha": 0.0,
+    "original_grid_arrays_available": false,
+    "native_G_qualified": false
+  },
+  "maximum_wall_seconds": 7200,
+  "maximum_durable_output_bytes": 2147483648,
+  "native_G_qualified": false,
+  "full_response_completed": false,
+  "original_scientific_workers_stopped_or_restarted": false,
+  "production_storage_gate_changed": false
+}

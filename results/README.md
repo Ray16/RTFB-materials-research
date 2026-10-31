@@ -45,14 +45,19 @@ establish that a calculation is currently running.
   Nominal 10-to-20 ensemble changes are −1.03/−1.23 kJ/mol; both empty components
   meet the declared finite-batch criterion. The linked native census contains
   75 reconstructed states. Occupied ensemble cycles remain incomplete.
-- [Working occupied-state census](../validation/polymer_collection_2026-10-31/README.md):
-  115 input states now reconstruct independently. Fourteen additional states
-  verify 34,299 source bindings. The [coverage figure](figures/polymer_models/2026-10-31_collection/native_occupancy_coverage.pdf)
+- [Working occupied-state census](../validation/response_diagnostic_2026-10-31/README.md):
+  121 input states now reconstruct independently. Six additional states verify
+  14,643 source bindings, including one recovered interrupted case. The
+  [coverage figure](figures/polymer_models/2026-10-31_response_recovery/native_occupancy_coverage.pdf)
   shows all twelve graph/configuration cells. Occupied ensemble cycles remain
   incomplete; the article retains its separate 75-state numerical snapshot.
   At observed class maxima, unfinished inputs have a full retained footprint of
-  about 105 GiB, including some already written partial files. Shared storage has
+  about 100 GiB, including some already written partial files. Shared storage has
   about 61 GiB free, below the new-start floor; the measured sizes are not peak bounds.
+- [V100 response-execution control](../validation/response_diagnostic_2026-10-31/README.md):
+  a repeatable CPU allocation test supports disabling NumPy huge-page advice on
+  the affected host. Three traced response probes failed and remain unqualified;
+  a revised checkpointed control is active. No native G follows from its progress.
 - [Portable native numerical cache](../validation/native_cache_2026-10-30/README.md):
   a 63 MB raw-input archive for the same 75 states passes extracted-archive
   replay in a fresh hash-locked NumPy environment with original paths blocked.

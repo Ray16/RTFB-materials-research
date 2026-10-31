@@ -1,0 +1,64 @@
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/lib/x86_64-linux-gnu/libthread_db.so.1".
+0x00007f0671a5774a in clock_nanosleep () from /lib/x86_64-linux-gnu/libc.so.6
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007f0671b2417c in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+
+Thread 1 (Thread 0x7f067196d740 (LWP 1245336) "python"):
+#0  0x00007f0671b2417c in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#1  0x00007f067112b0f8 in string_at (ptr=0x0, size=-1) at /usr/local/src/conda/python-3.11.15/Modules/_ctypes/_ctypes.c:5564
+#2  0x00007f0671c99d6a in ffi_call_unix64 () from /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../libffi.so.8
+#3  0x00007f0671c9885f in ffi_call_int () from /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../libffi.so.8
+#4  0x00007f0671c994e1 in ffi_call () from /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../libffi.so.8
+#5  0x00007f0671133852 in _call_function_pointer (flags=4357, pProc=0x7f067112b0bf <string_at>, avalues=0x7fff8da577a0, atypes=<optimized out>, restype=<optimized out>, resmem=0x7fff8da577c0, argcount=2, argtypecount=<optimized out>) at /usr/local/src/conda/python-3.11.15/Modules/_ctypes/callproc.c:923
+#6  _ctypes_callproc (pProc=0x7f067112b0bf <string_at>, argtuple=<optimized out>, flags=4357, argtypes=<optimized out>, restype=<optimized out>, checker=0x0) at /usr/local/src/conda/python-3.11.15/Modules/_ctypes/callproc.c:1262
+#7  0x00007f0671133463 in PyCFuncPtr_call (self=<optimized out>, inargs=<optimized out>, kwds=<optimized out>) at /usr/local/src/conda/python-3.11.15/Modules/_ctypes/_ctypes.c:4201
+#8  0x0000558abbd2afdb in _PyObject_MakeTpCall (tstate=0x558abc0cbf98 <_PyRuntime+166328>, callable=0x7f067118ea90, args=0x7f0671c9f0f8, nargs=<optimized out>, keywords=<optimized out>) at /usr/local/src/conda/python-3.11.15/Objects/call.c:214
+#9  0x0000558abbd3946f in _PyEval_EvalFrameDefault (tstate=<optimized out>, frame=<optimized out>, throwflag=<optimized out>) at /usr/local/src/conda/python-3.11.15/Python/ceval.c:4769
+#10 0x0000558abbdf5555 in _PyEval_EvalFrame (tstate=0x558abc0cbf98 <_PyRuntime+166328>, frame=0x7f0671c9f020, throwflag=0) at /usr/local/src/conda/python-3.11.15/Include/internal/pycore_ceval.h:73
+#11 _PyEval_Vector (tstate=0x558abc0cbf98 <_PyRuntime+166328>, func=0x7f067133c540, locals=0x7f067139aa40, args=0x0, argcount=0, kwnames=<optimized out>) at /usr/local/src/conda/python-3.11.15/Python/ceval.c:6434
+#12 0x0000558abbdf4c9d in PyEval_EvalCode (co=0x7f06713805b0, globals=<optimized out>, locals=0x7f067139aa40) at /usr/local/src/conda/python-3.11.15/Python/ceval.c:1148
+#13 0x0000558abbe128ca in run_eval_code_obj (tstate=0x558abc0cbf98 <_PyRuntime+166328>, co=0x7f06713805b0, globals=0x7f067139aa40, locals=0x7f067139aa40) at /usr/local/src/conda/python-3.11.15/Python/pythonrun.c:1741
+#14 0x0000558abbe0e5d5 in run_mod (mod=<optimized out>, filename=<optimized out>, globals=0x7f067139aa40, locals=0x7f067139aa40, flags=<optimized out>, arena=<optimized out>) at /usr/local/src/conda/python-3.11.15/Python/pythonrun.c:1762
+#15 0x0000558abbe23ea0 in pyrun_file (fp=fp@entry=0x558af8e1c370, filename=filename@entry=0x7f06712fd0b0, start=start@entry=257, globals=globals@entry=0x7f067139aa40, locals=locals@entry=0x7f067139aa40, closeit=closeit@entry=1, flags=0x7fff8da57de8) at /usr/local/src/conda/python-3.11.15/Python/pythonrun.c:1657
+#16 0x0000558abbe2382a in _PyRun_SimpleFileObject (fp=0x558af8e1c370, filename=0x7f06712fd0b0, closeit=1, flags=0x7fff8da57de8) at /usr/local/src/conda/python-3.11.15/Python/pythonrun.c:440
+#17 0x0000558abbe23604 in _PyRun_AnyFileObject (fp=0x558af8e1c370, filename=0x7f06712fd0b0, closeit=1, flags=0x7fff8da57de8) at /usr/local/src/conda/python-3.11.15/Python/pythonrun.c:79
+#18 0x0000558abbe1d927 in pymain_run_file_obj (program_name=0x7f06712d1290, filename=0x7f06712fd0b0, skip_source_first_line=0) at /usr/local/src/conda/python-3.11.15/Modules/main.c:360
+#19 pymain_run_file (config=0x558abc0b1fe0 <_PyRuntime+59904>) at /usr/local/src/conda/python-3.11.15/Modules/main.c:379
+#20 pymain_run_python (exitcode=0x7fff8da57de0) at /usr/local/src/conda/python-3.11.15/Modules/main.c:605
+#21 Py_RunMain () at /usr/local/src/conda/python-3.11.15/Modules/main.c:684
+#22 0x0000558abbde4b67 in Py_BytesMain (argc=<optimized out>, argv=<optimized out>) at /usr/local/src/conda/python-3.11.15/Modules/main.c:738
+#23 0x00007f067199bd90 in ?? () from /lib/x86_64-linux-gnu/libc.so.6
+#24 0x00007f067199be40 in __libc_start_main () from /lib/x86_64-linux-gnu/libc.so.6
+#25 0x0000558abbde49f9 in _start ()
+From                To                  Syms Read   Shared Object Library
+0x00007f0671c8d040  0x00007f0671c8d105  Yes         /lib/x86_64-linux-gnu/libpthread.so.0
+0x00007f0671c88040  0x00007f0671c88105  Yes (*)     /lib/x86_64-linux-gnu/libdl.so.2
+0x00007f0671c83040  0x00007f0671c83105  Yes (*)     /lib/x86_64-linux-gnu/libutil.so.1
+0x00007f0671ba93a0  0x00007f0671c248c8  Yes (*)     /lib/x86_64-linux-gnu/libm.so.6
+0x00007f067199a700  0x00007f0671b2c9fd  Yes (*)     /lib/x86_64-linux-gnu/libc.so.6
+0x00007f0671cae090  0x00007f0671cd7315  Yes (*)     /lib64/ld-linux-x86-64.so.2
+0x00007f0671128040  0x00007f0671135a05  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so
+0x00007f0671c94080  0x00007f0671c9a9c6  Yes (*)     /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../libffi.so.8
+0x00007f0671116040  0x00007f067111a28a  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_struct.cpython-311-x86_64-linux-gnu.so
+0x00007f067110e040  0x00007f067110eb55  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/resource.cpython-311-x86_64-linux-gnu.so
+0x00007f0671002040  0x00007f0671007b56  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_json.cpython-311-x86_64-linux-gnu.so
+0x00007f0670efa040  0x00007f0670efafcf  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/fcntl.cpython-311-x86_64-linux-gnu.so
+0x00007f0670ef3040  0x00007f0670ef4cdd  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_posixsubprocess.cpython-311-x86_64-linux-gnu.so
+0x00007f0670eea040  0x00007f0670eec0c5  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/select.cpython-311-x86_64-linux-gnu.so
+0x00007f0670ed8040  0x00007f0670edf076  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/math.cpython-311-x86_64-linux-gnu.so
+0x00007f0670ec9040  0x00007f0670ecd860  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_hashlib.cpython-311-x86_64-linux-gnu.so
+0x00007f0670997080  0x00007f0670cfa67a  Yes (*)     /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../libcrypto.so.3
+0x00007f067089d040  0x00007f06708a37c5  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_blake2.cpython-311-x86_64-linux-gnu.so
+0x00007f0670892040  0x00007f0670895183  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/zlib.cpython-311-x86_64-linux-gnu.so
+0x00007f0670877040  0x00007f0670886307  Yes (*)     /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../libz.so.1
+0x00007f067086e040  0x00007f067086fb43  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_bz2.cpython-311-x86_64-linux-gnu.so
+0x00007f0670859040  0x00007f0670867a3f  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../libbz2.so.1.0
+0x00007f067084e040  0x00007f0670851cfa  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_lzma.cpython-311-x86_64-linux-gnu.so
+0x00007f067081f040  0x00007f067083cd63  Yes (*)     /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/../../liblzma.so.5
+0x00007f0670816040  0x00007f0670816f95  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_bisect.cpython-311-x86_64-linux-gnu.so
+0x00007f067080f040  0x00007f06708103ca  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_random.cpython-311-x86_64-linux-gnu.so
+0x00007f0670806040  0x00007f0670809c75  Yes         /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/lib-dynload/_sha512.cpython-311-x86_64-linux-gnu.so
+(*): Shared library is missing debugging information.
+[Inferior 1 (process 1245336) killed]

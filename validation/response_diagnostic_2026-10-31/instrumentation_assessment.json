@@ -1,0 +1,20 @@
+{
+  "status": "periodic_stack_dump_instrumentation_is_a_leading_fault_hypothesis_not_a_proven_numerical_engine_failure",
+  "fault_instruction_address": "0x000055894b6db896",
+  "symbol_candidate": "dump_frame / Python/traceback.c:1264",
+  "ELF_relative_candidate": "0x18f896",
+  "image_base_hypothesis": "0x000055894b54c000",
+  "actual_image_base_known": false,
+  "inference_note": "Fault lies in the Python-image address range and the stack log ends after File. Mapping to dump_frame assumes the stated page-aligned load base; original debugger could not load target ELF symbols through the namespace. No definitive symbol attribution is claimed.",
+  "periodic_C_watchdog_removed_from_new_helpers": true,
+  "replacement": "Python-thread sampler entering dump_traceback with the GIL held",
+  "upstream_reference": "https://github.com/python/cpython/issues/116008",
+  "CPU_thread_stress": {
+    "C_watchdog": "completed_without_fault_under_debugger",
+    "GIL_held": "completed_without_fault_under_debugger",
+    "reproduces_GPU_process_crash": false
+  },
+  "numerical_model_changed": false,
+  "native_G_qualified": false,
+  "older_profiling_correction": "The previous absolute sibling-ptrace restriction inference was too broad for owned nested namespaces. A later attach/backtrace/detach succeeded; target ELF access failed, so the raw backtrace does not identify the old hot function."
+}

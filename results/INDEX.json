@@ -215,15 +215,15 @@
       "scope": "Three fixed precursor seeds, MeCN 298.15 K, separated chloride; no complete material admission"
     },
     "occupied_native_working_census": {
-      "guide": "validation/polymer_collection_2026-10-31/README.md",
-      "current": "validation/polymer_collection_2026-10-31/native_census.json",
-      "source_snapshot": "validation/polymer_collection_2026-10-31/manifest.json",
+      "guide": "validation/response_diagnostic_2026-10-31/README.md",
+      "current": "validation/response_diagnostic_2026-10-31/native_census.json",
+      "source_snapshot": "validation/response_diagnostic_2026-10-31/manifest.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations",
-      "physical_replay": "results/validation/polymer_collection_2026-10-31/replay.json",
-      "figure": "results/figures/polymer_models/2026-10-31_collection/native_occupancy_coverage.pdf",
-      "storage_measurement": "results/validation/polymer_collection_2026-10-31/storage_measurement.json",
-      "status": "115_inputs_reconstructed_occupied_cycles_and_storage_capacity_incomplete",
-      "scope": "Source-bound physical replay; no complete occupied ensemble, primary-model substitution or material admission"
+      "physical_replay": "results/validation/response_diagnostic_2026-10-31/native_replay.json",
+      "figure": "results/figures/polymer_models/2026-10-31_response_recovery/native_occupancy_coverage.pdf",
+      "storage_measurement": "results/validation/response_diagnostic_2026-10-31/native_storage.json",
+      "status": "121_inputs_reconstructed_occupied_ensemble_cycles_incomplete",
+      "scope": "Six further native reconstructions; source-frozen article cohort retained, no complete material admission"
     },
     "exact_molecular_CPU_example": {
       "guide": "examples/exact_viologen_replay/README.md",
@@ -244,6 +244,15 @@
       "figure": "results/figures/polymer_models/viologen_occupancy_construction.pdf",
       "status": "twelve_initial_models_audited_no_charged_QM_admission",
       "scope": "Exact route-bound charged graphs, initial XYZs and dry-salt composition ceilings; solution/native/ensemble/coupling assessment pending"
+    },
+    "V100_response_execution_control": {
+      "guide": "validation/response_diagnostic_2026-10-31/README.md",
+      "current": "validation/response_diagnostic_2026-10-31/checkpointed_start.json",
+      "source_snapshot": "validation/response_diagnostic_2026-10-31/manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_response_checkpointed_v4b",
+      "live_status": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_response_checkpointed_v4b/case/status.json",
+      "status": "checkpointed_response_control_running_full_completion_and_qualification_pending",
+      "scope": "Allocation controls and instrumentation correction; no native G or material admission"
     }
   }
 }

@@ -1,0 +1,27 @@
+{
+  "pid": 2013918,
+  "process_start": "1417472543",
+  "old_stack_sha256": "e0d05e94d7db5dae3c2816102d13d8d67f52d24359a3c78611b7b5751c4333b1",
+  "maps_sha256": "ad1fedb7ce9ac4db17759b3be8d49be6751f05c15ae0cbd7c81cd9d225fd38c5",
+  "symbolized_executable_addresses": [
+    {
+      "address": "0x00007f77b5602b12",
+      "object": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/numpy/_core/_multiarray_umath.cpython-311-x86_64-linux-gnu.so",
+      "ELF_relative_address": "0x59db12",
+      "symbolization": "DOUBLE_add_AVX2\n:?"
+    },
+    {
+      "address": "0x00007f77b52acd75",
+      "object": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/numpy/_core/_multiarray_umath.cpython-311-x86_64-linux-gnu.so",
+      "ELF_relative_address": "0x247d75",
+      "symbolization": "generic_wrapped_legacy_loop\nlegacy_array_method.c:?"
+    },
+    {
+      "address": "0x00007f77b52afcf3",
+      "object": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/numpy/_core/_multiarray_umath.cpython-311-x86_64-linux-gnu.so",
+      "ELF_relative_address": "0x24acf3",
+      "symbolization": "try_trivial_single_output_loop\nufunc_object.c:?"
+    }
+  ],
+  "process_memory_modified": false
+}

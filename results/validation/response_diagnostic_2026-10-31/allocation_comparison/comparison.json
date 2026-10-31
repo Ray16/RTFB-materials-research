@@ -1,0 +1,78 @@
+{
+  "status": "source_bound_numpy_allocation_comparison_completed",
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/raw/all_same__occ_2__conf005/SCF_evaluations/0000/SCF.h5": "d9e5e62dd38d9714995985838c57c441052a1fe6477a1a897d125a22e65cd407",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/raw/all_same__occ_2__conf005/execution/rks_make_h1_0.npy": "ad08cece0bb18aeffa3fed150c6140cfd30038c2786bdaca01ba2250c603a5e4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/raw/all_same__occ_2__conf005/execution/rks_make_h1_state_identity.json": "1478f8a320bc51e62136c603d61e36528c9fdceac45ec179ad4a7caba7d414bb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/compare_numpy_allocation.py": "049530d8a60bce785783717eee5e5477f7eac75bbdc85b5f45abdcfb4e0cd49b"
+  },
+  "sequence": [
+    0,
+    1,
+    0
+  ],
+  "samples": [
+    {
+      "flag": 0,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.4662131406366825,
+      "result": {
+        "status": "allocation_control_completed",
+        "hugepage_advice": 0,
+        "wall_seconds": 0.2092453818768263,
+        "user_seconds": 0.110579,
+        "system_seconds": 0.08860499999999999,
+        "peak_RSS_bytes": 664723456,
+        "orbital_payload_sha256": "c07554141fa7367aaa4adafdea0a6480d690e973e9f74cf9bebd3ae9ee0196e0",
+        "H1_shape": [
+          105,
+          3,
+          1037,
+          206
+        ],
+        "all_finite": true,
+        "native_G_qualified": false
+      }
+    },
+    {
+      "flag": 1,
+      "status": "observation_budget_expired",
+      "observation_seconds": 20,
+      "elapsed_seconds": 20.00595815293491
+    },
+    {
+      "flag": 0,
+      "status": "completed",
+      "returncode": 0,
+      "elapsed_seconds": 0.4655428808182478,
+      "result": {
+        "status": "allocation_control_completed",
+        "hugepage_advice": 0,
+        "wall_seconds": 0.20871033519506454,
+        "user_seconds": 0.11568200000000001,
+        "system_seconds": 0.08552199999999999,
+        "peak_RSS_bytes": 664797184,
+        "orbital_payload_sha256": "c07554141fa7367aaa4adafdea0a6480d690e973e9f74cf9bebd3ae9ee0196e0",
+        "H1_shape": [
+          105,
+          3,
+          1037,
+          206
+        ],
+        "all_finite": true,
+        "native_G_qualified": false
+      }
+    }
+  ],
+  "disabled_samples_all_completed": true,
+  "enabled_observation_censored": true,
+  "numerical_QM_protocol_changed": false,
+  "shared_kernel_policy_changed": false,
+  "original_scientific_workers_signalled": false,
+  "native_G_qualified": false,
+  "references": {
+    "NumPy": "https://numpy.org/doc/2.0/reference/global_state.html",
+    "kernel": "https://www.kernel.org/doc/html/v6.7/admin-guide/mm/transhuge.html"
+  }
+}
