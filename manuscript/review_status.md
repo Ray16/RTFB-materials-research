@@ -55,3 +55,14 @@ Fifty-eight focused tests pass, including frozen numerical macro checks. The
 The route-screened candidate remains pending: actual-route grafting free energy,
 occupancy, coupling and complete application criteria are not supplied by this
 calculation. M1, M4, M7 and final M9 therefore remain open.
+
+Subsequent working evidence admits the exact baseline enumerated viologen route
+after a primary-paper/SI review and an atom-mapped prospective gate. Only that
+graph changes status in the 904-graph registry; there are two route proceeds and
+902 holds, with no full material admissions. Sixteen focused route/registry
+checks include exact-graph transfer failures and source-snapshot consistency.
+This addition is recorded in `validation/viologen_route_2026-10-30/` and awaits
+the next scientific paper revision; it does not supply missing viologen native
+thermochemistry or complete M1. A separately checked occupied-conformer
+40-GiB pilot advances M4 without completing its occupied ensembles or changing
+the paper's existing 75-state snapshot.

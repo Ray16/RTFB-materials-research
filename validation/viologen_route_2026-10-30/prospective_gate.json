@@ -1,0 +1,137 @@
+{
+  "stage": "pre_redox_route_gate",
+  "scope": "Prospective gate; existing 75-candidate calculations are retained",
+  "candidates": [
+    {
+      "id": "search_viologen_b7a4dca7a5e1",
+      "route_status": "proceed",
+      "proceed_to_full_redox": true,
+      "proceed_to_feasibility_model": true,
+      "reasons": [],
+      "experimental_ease": "reviewed_workable_route; kinetics/yield not inferred from deltaG alone",
+      "reaction_class": "N_quaternization",
+      "precursor_smiles": "C[n+]1ccc(-c2ccncc2)cc1",
+      "evidence": {
+        "exact_precursor_access_reviewed": true,
+        "attachment_selectivity_reviewed": true,
+        "conditions_defined": true,
+        "balanced_route_reviewed": true,
+        "redox_core_retention_reviewed": true,
+        "source_urls": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9310624/",
+          "https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.202200149"
+        ],
+        "route_binding": {
+          "product_smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+          "precursor_smiles": "C[n+]1ccc(-c2ccncc2)cc1",
+          "site_smiles": "Cc1ccc(CCl)cc1",
+          "reaction_class": "N_quaternization",
+          "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][n+:1018]2[cH:1017][cH:1016][c:1015](-[c:1014]3[cH:1013][cH:1012][n+:1011]([CH3:1010])[cH:1023][cH:1022]3)[cH:1021][cH:1020]2)[cH:1008][cH:1009]1",
+          "mapped_precursor_smiles": "[CH3:1010][n+:1011]1[cH:1012][cH:1013][c:1014](-[c:1015]2[cH:1016][cH:1017][n:1018][cH:1020][cH:1021]2)[cH:1022][cH:1023]1",
+          "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+          "new_bond_atom_maps": [
+            1006,
+            1018
+          ],
+          "leaving_atom_map": 9001,
+          "heavy_atom_mapping": true,
+          "model_scope": "4-methylbenzyl local site on a preformed polymer"
+        },
+        "conditions": {
+          "solvent": "MeCN",
+          "temperature": "reflux",
+          "time_h": 48,
+          "reactive_form": "1-methyl-4,4-bipyridinium iodide",
+          "base": "none required for pyridyl N quaternization",
+          "counterions": "precursor I-; initial graft Cl-/I-; separate NH4PF6 exchange before operation"
+        },
+        "support_evidence": "Same unsubstituted N-methyl bipyridinium attachment chemistry on preformed Merrifield beads",
+        "source_sections": [
+          "SI S3\u2013S6",
+          "Main Results, bead functionalization and electrochemistry"
+        ],
+        "source_review_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/viologen_route_2026-10-30/primary_source_review.json",
+        "source_review_sha256": "aa1ced6cc8971b16b01c553457d1d781424982c4a13b325224d3410b1d013f0d",
+        "model_scope": "The 4-methylbenzyl cap represents a local polymer site; the exact capped molecule is not the demonstrated support",
+        "grafting_conversion_fraction": null,
+        "material_admission": false,
+        "thermodynamic_scope": "Quaternization releases chloride without HCl or base capture; precursor iodide cancels only under a separated spectator-ion convention",
+        "limitations": [
+          "Counterion association and exchange thermodynamics are not computed",
+          "Published bead conversion is not an exact measured grafting yield",
+          "No transfer of this review to substituted viologen precursors",
+          "Route pass permits property calculation; all-axis material decision remains pending"
+        ]
+      },
+      "missing_route_evidence": [],
+      "exact_route_binding_verified": true
+    },
+    {
+      "id": "viologen",
+      "route_status": "proceed",
+      "proceed_to_full_redox": true,
+      "proceed_to_feasibility_model": true,
+      "reasons": [],
+      "experimental_ease": "reviewed_workable_route; kinetics/yield not inferred from deltaG alone",
+      "reaction_class": "N_quaternization",
+      "precursor_smiles": "C[n+]1ccc(-c2ccncc2)cc1",
+      "evidence": {
+        "exact_precursor_access_reviewed": true,
+        "attachment_selectivity_reviewed": true,
+        "conditions_defined": true,
+        "balanced_route_reviewed": true,
+        "redox_core_retention_reviewed": true,
+        "source_urls": [
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC9310624/",
+          "https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/chem.202200149"
+        ],
+        "route_binding": {
+          "product_smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+          "precursor_smiles": "C[n+]1ccc(-c2ccncc2)cc1",
+          "site_smiles": "Cc1ccc(CCl)cc1",
+          "reaction_class": "N_quaternization",
+          "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][n+:1018]2[cH:1017][cH:1016][c:1015](-[c:1014]3[cH:1013][cH:1012][n+:1011]([CH3:1010])[cH:1023][cH:1022]3)[cH:1021][cH:1020]2)[cH:1008][cH:1009]1",
+          "mapped_precursor_smiles": "[CH3:1010][n+:1011]1[cH:1012][cH:1013][c:1014](-[c:1015]2[cH:1016][cH:1017][n:1018][cH:1020][cH:1021]2)[cH:1022][cH:1023]1",
+          "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+          "new_bond_atom_maps": [
+            1006,
+            1018
+          ],
+          "leaving_atom_map": 9001,
+          "heavy_atom_mapping": true,
+          "model_scope": "4-methylbenzyl local site on a preformed polymer"
+        },
+        "conditions": {
+          "solvent": "MeCN",
+          "temperature": "reflux",
+          "time_h": 48,
+          "reactive_form": "1-methyl-4,4-bipyridinium iodide",
+          "base": "none required for pyridyl N quaternization",
+          "counterions": "precursor I-; initial graft Cl-/I-; separate NH4PF6 exchange before operation"
+        },
+        "support_evidence": "Same unsubstituted N-methyl bipyridinium attachment chemistry on preformed Merrifield beads",
+        "source_sections": [
+          "SI S3\u2013S6",
+          "Main Results, bead functionalization and electrochemistry"
+        ],
+        "source_review_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/viologen_route_2026-10-30/primary_source_review.json",
+        "source_review_sha256": "aa1ced6cc8971b16b01c553457d1d781424982c4a13b325224d3410b1d013f0d",
+        "model_scope": "The 4-methylbenzyl cap represents a local polymer site; the exact capped molecule is not the demonstrated support",
+        "grafting_conversion_fraction": null,
+        "material_admission": false,
+        "thermodynamic_scope": "Quaternization releases chloride without HCl or base capture; precursor iodide cancels only under a separated spectator-ion convention",
+        "limitations": [
+          "Counterion association and exchange thermodynamics are not computed",
+          "Published bead conversion is not an exact measured grafting yield",
+          "No transfer of this review to substituted viologen precursors",
+          "Route pass permits property calculation; all-axis material decision remains pending"
+        ]
+      },
+      "missing_route_evidence": [],
+      "exact_route_binding_verified": true
+    }
+  ],
+  "counts": {
+    "proceed": 2
+  }
+}

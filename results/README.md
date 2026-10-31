@@ -17,6 +17,9 @@ establish that a calculation is currently running.
   leaves a symmetric parameter unqualified; the all-axis material decision is pending.
 - [Candidate pool](../validation/candidate_pool_2026-10-29/README.md): 904 exact
   local-graft graphs, with source/recipe identity and prospective route status.
+  Two exact graphs now have reviewed route passes (TEMPO and baseline viologen);
+  902 remain on hold. The [new exact-route review](../validation/viologen_route_2026-10-30/README.md)
+  preserves the prior registry and all graph/property records.
   Enumeration and recorded property presence are separate from quantum or
   experimental validation; no complete material shortlist is claimed.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
@@ -40,7 +43,9 @@ establish that a calculation is currently running.
 - [Checked-energy to native thermochemistry](../validation/native_conveyor_2026-10-30/README.md):
   automatic preparation, guarded dispatch and independent reconstruction of the
   remaining occupied states. Ready thermochemistry has admission priority; the
-  separate smaller-memory pilot remains prospective until physically checked.
+  [40-GiB pilot](../validation/polymer_effective_checked_2026-10-30/README.md)
+  now passes both physical and resource checks for one occupied conformation.
+  Wider matched-class use still requires prospective checks.
 - [Resource-refusal recovery](../validation/resource_refusals_2026-10-30/README.md):
   native and electronic prelaunch refusals now recover after source/ownership
   checks and a full policy-node producer audit, without charging scientific attempts.

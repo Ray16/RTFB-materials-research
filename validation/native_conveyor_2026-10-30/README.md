@@ -22,9 +22,11 @@ durable ownership receipts. They use the system GPU reservation policy, suitable
 32-GB-class or larger devices, disjoint two-CPU bindings, six native thread caps,
 host load/RAM checks, and unused RAM promises. The ordinary native dispatcher
 retains the original 80-GiB guard and 32-GiB free-memory floor. A separate,
-prospective 40-GiB pilot adds a stricter outer guard; it remains unqualified until
-both physical and resource reviews pass. No in-flight reservation is retroactively
-shrunk.
+prospective 40-GiB pilot adds a stricter outer guard. That one tested run now
+[passes both physical and resource reviews](../polymer_effective_checked_2026-10-30/README.md).
+Its completed collector is `independent_reviews_v3/status.json` under the same
+runtime pilot directory. Wider matched-class use still needs explicit prospective
+profiles. No in-flight reservation is retroactively shrunk.
 
 Ready native calculations receive admission priority over new energy-only work
 when they fit a free device and its host. Running calculations remain untouched;

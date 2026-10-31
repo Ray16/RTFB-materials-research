@@ -47,6 +47,17 @@ environment with the original scientific paths blocked. This closes a scoped
 raw-input replay gap; complete release assembly, public deposition and wider GPU
 deployment portability remain open.
 
+New working evidence beyond that paper snapshot includes the exact baseline
+viologen attachment review and a completed 40-GiB occupied-state resource pilot.
+The former changes only one graph's route disposition in the 904-graph registry
+(two proceeds, 902 holds); the latter supplies one additional checked native
+free energy and a tested resource profile. Neither supplies a complete material
+decision or a converged occupied ensemble. Their records are
+`validation/viologen_route_2026-10-30/` and
+`validation/polymer_effective_checked_2026-10-30/`. The next scientific paper
+revision must integrate the route evidence and the completed ensemble results
+without mixing their distinct numerical models.
+
 ## Scientific acceptance
 
 | Reviewer item | Evidence available | Requirement still to close |

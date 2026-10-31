@@ -28,11 +28,11 @@
       "scope": "DBUH chloride association component; no full reaction validation or new QM"
     },
     "unified_candidate_pool": {
-      "guide": "validation/candidate_pool_2026-10-29/README.md",
+      "guide": "validation/viologen_route_2026-10-30/README.md",
       "current": "results/candidates/pool/current.json",
-      "source_snapshot": "results/candidates/pool/2026-10-29_published/summary.json",
-      "raw_root": "results/candidates/pool/2026-10-29_published/inputs",
-      "status": "904_exact_graphs_8_new_route_held_hypotheses",
+      "source_snapshot": "results/candidates/pool/2026-10-30_viologen_checked/summary.json",
+      "raw_root": "results/candidates/pool/2026-10-30_viologen_checked/inputs",
+      "status": "904_exact_graphs_two_reviewed_route_passes_no_material_admissions",
       "scope": "Unified exact design registry; historical QC labels preserved, no blanket raw-state or experimental validation"
     },
     "publication_draft": {
@@ -180,6 +180,14 @@
       "raw_root": "calcs/validation/slides_builds",
       "status": "eighteen_frames_built_and_visually_reviewed",
       "scope": "Fourteen main and four supporting slides; UMA pipeline, grafting deltaG and new TEMPO response"
+    },
+    "checked_effective_native_profile": {
+      "guide": "validation/polymer_effective_checked_2026-10-30/README.md",
+      "current": "validation/polymer_effective_checked_2026-10-30/summary.json",
+      "source_snapshot": "validation/polymer_effective_checked_2026-10-30/manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/native/campaign_parent/all_same__occ_4__conf003",
+      "status": "native_and_effective_resource_checks_passed",
+      "scope": "One occupied conformation; 40-GiB prospective bound; wider same-class rollout requires explicit checks"
     }
   }
 }

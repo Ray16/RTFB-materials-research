@@ -1,0 +1,49 @@
+{
+  "status": "prospective_effective_native_memory_profile",
+  "native_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/native/namespace.json",
+  "native_namespace_sha256": "37bfcfbf75f4a3fcffa6bc4e47fdd5a57f7471d7bb8402e110d1e6760958c3b5",
+  "native_plan_sha256": "9193ea1ef10ea99c95a83c90808e7fb91d85ed25b22ff08d82e5cfdc41a2ebb0",
+  "native_settings": {
+    "xc": "r2scan",
+    "basis": "def2-svp",
+    "disp": "d4",
+    "solvent": "acetonitrile",
+    "SCF_conv_tol": 1e-12,
+    "SCF_conv_tol_grad": 1e-08,
+    "SCF_max_cycle": 200,
+    "grid_level": 3,
+    "gradient_grid_response": true,
+    "Hessian_grid_response": true,
+    "CPHF_grids_matched": true,
+    "gradient_limit_Ha_Bohr": 0.00045,
+    "Hessian_asymmetry_limit": 1e-06,
+    "FD_steps_Bohr": [
+      0.0005,
+      0.001
+    ],
+    "FD_relative_limit": 0.01,
+    "minimum_frequency_limit_cm": -5
+  },
+  "original_native_worker": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_native.py",
+  "original_inner_guard_GiB": 80,
+  "effective_bound_GiB": 40,
+  "minimum_free_GiB": 32,
+  "reference_review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_4__conf001/campaign_parent/all_same__occ_4__conf001/independent_native_review.json",
+  "reference_review_sha256": "68481d6daf81c72766a9bcf616e30f911bb6fcde8e5c709313a1d01eb8a16c6d",
+  "reference_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_4__conf001/namespace.json",
+  "resource_derivation": {
+    "reference_observed_peak_GiB": 25.213695526123047,
+    "effective_bound_GiB": 40,
+    "sampled_reference_is_not_a_hard_peak": true,
+    "profile_qualified": false
+  },
+  "worker_source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/execution_profile/peak_guard.py": "218b850c43edc1b25d41c56860988e281db103d8c625f533de04f2e6e113e9ab",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/execution_profile/resource_worker.py": "4e97be07be7b8649747f129f40f4d3f2806f95f75ba94c8b5f13e16d404a233e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/execution_profile/launcher_source.py": "0295c858f1ed1bca1ca54b7078b7637306fbdcef9a6a8d3c20d0b90d267f4a75",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_native.py": "32d925908a8bb62a0988ae97ad16304664901aa350a6374e1353185aec679305"
+  },
+  "layout": "derived",
+  "scientific_equations_or_settings_changed": false,
+  "profile_qualified": false
+}

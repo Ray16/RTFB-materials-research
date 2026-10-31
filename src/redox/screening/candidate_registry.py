@@ -55,10 +55,11 @@ def merge_sources(sources):
     return sorted(records.values(), key=lambda r: r['graph_key'])
 
 
-def publish(spec_path, archive, output):
+def publish(spec_path, archive, output, *, route_evidence=None):
     spec_path, archive, output = Path(spec_path), Path(archive).resolve(), Path(output)
     if output.exists(): raise ValueError('Use a fresh publication directory')
-    spec = json.loads(spec_path.read_text())
+    spec_bytes = spec_path.read_bytes()
+    spec = json.loads(spec_bytes)
     sources, inventory, frozen = [], [], {}
     for item in spec['sources']:
         base = spec_path.resolve().parents[1] if item.get('root') == 'checkout' else archive
@@ -79,9 +80,12 @@ def publish(spec_path, archive, output):
     gate_path = Path(__file__).resolve().parents[3] / 'scripts/pipeline/screen_grafting_routes.py'
     module = importlib.util.spec_from_file_location('unified_route_gate', gate_path)
     gate = importlib.util.module_from_spec(module); module.loader.exec_module(gate)
-    evidence_path = archive / spec['route_evidence']; assessment_path = archive / spec['assessment']
-    evidence = json.loads(evidence_path.read_text())['candidates']
-    assessment = json.loads(assessment_path.read_text())
+    evidence_path = Path(route_evidence).resolve() if route_evidence is not None else archive / spec['route_evidence']
+    assessment_path = archive / spec['assessment']
+    route_bytes = evidence_path.read_bytes()
+    assessment_bytes = assessment_path.read_bytes()
+    evidence = json.loads(route_bytes)['candidates']
+    assessment = json.loads(assessment_bytes)
     for record in records:
         decisions = [gate.screen(dict(id=d['id'], frag=d['fragment'], product_smiles=record['product_smiles']), evidence, assessment)
                      for d in record['declarations']]
@@ -94,11 +98,15 @@ def publish(spec_path, archive, output):
     for item in inventory:
         if hashlib.sha256(Path(item['original_path']).read_bytes()).hexdigest() != item['sha256']:
             raise ValueError('Input changed during registry assembly')
+    if (evidence_path.read_bytes() != route_bytes or assessment_path.read_bytes() != assessment_bytes
+            or spec_path.read_bytes() != spec_bytes):
+        raise ValueError('Route evidence, assessment or specification changed during registry assembly')
     output.mkdir(parents=True)
     (output/'inputs').mkdir()
     for name, raw in frozen.items(): (output/'inputs'/f'{name}.json').write_bytes(raw)
-    for name, path in [('route_evidence', evidence_path), ('assessment', assessment_path), ('spec', spec_path)]:
-        raw=path.read_bytes(); (output/'inputs'/f'{name}.json').write_bytes(raw)
+    for name, path, raw in [('route_evidence', evidence_path, route_bytes),
+                           ('assessment', assessment_path, assessment_bytes), ('spec', spec_path, spec_bytes)]:
+        (output/'inputs'/f'{name}.json').write_bytes(raw)
         inventory.append(dict(name=name, original_path=str(path.resolve()), sha256=hashlib.sha256(raw).hexdigest(), snapshot='inputs/'+name+'.json'))
     atomic_write_json(output/'registry.json', dict(schema=1, candidates=records))
     summary=dict(exact_graphs=len(records), aliases=len({a for r in records for a in r['aliases']}),
