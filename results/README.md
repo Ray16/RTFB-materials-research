@@ -35,6 +35,11 @@ establish that a calculation is currently running.
   Nominal 10-to-20 ensemble changes are −1.03/−1.23 kJ/mol; both empty components
   meet the declared finite-batch criterion. The linked native census contains
   75 reconstructed states. Occupied ensemble cycles remain incomplete.
+- [Working occupied-state census](../validation/polymer_recovery_2026-10-31/README.md):
+  101 input states now reconstruct independently, including 26 additional occupied
+  states. The [coverage figure](figures/polymer_models/native_occupancy_coverage.pdf)
+  shows all twelve graph/configuration cells. Occupied ensemble cycles remain
+  incomplete; the article retains its separate 75-state numerical snapshot.
 - [Portable native numerical cache](../validation/native_cache_2026-10-30/README.md):
   a 63 MB raw-input archive for the same 75 states passes extracted-archive
   replay in a fresh hash-locked NumPy environment with original paths blocked.

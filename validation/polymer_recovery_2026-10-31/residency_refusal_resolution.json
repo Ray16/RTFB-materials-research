@@ -1,0 +1,77 @@
+{
+  "status": "pre_science_residency_refusal_released_without_scientific_attempt",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/namespace.json",
+  "namespace_sha256": "e0ebeb855484b96cf280b66de745927fab5d23aa20143f6b348519718ef7aed8",
+  "branch": {
+    "message": "Foreign GPU residency found before scientific program start",
+    "raise_line": 50,
+    "first_run_path_line": 70
+  },
+  "stopped_owners": [
+    {
+      "host": "lambda13",
+      "pid": 2722991,
+      "process_start": "152779640"
+    },
+    {
+      "host": "lambda13",
+      "pid": 2725741,
+      "process_start": "152783455",
+      "GPU": 3,
+      "CPU_affinity": [
+        0,
+        7
+      ],
+      "started": 1793410495.2075946,
+      "program": "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+      "foreign_processes_signaled": false
+    },
+    {
+      "host": "lambda13",
+      "pid": 2724359,
+      "process_start": "152782371"
+    }
+  ],
+  "producer_inventory": {
+    "lambda0": [],
+    "lambda1": [],
+    "lambda2": [],
+    "lambda4": [],
+    "lambda5": [],
+    "lambda6": [],
+    "lambda11": [],
+    "lambda12": [],
+    "lambda13": []
+  },
+  "placement_preserved": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/placements/all_same__occ_3__conf006/1793410454043797721/placement",
+  "scientific_outputs_absent": true,
+  "scientific_attempt_consumed": false,
+  "foreign_processes_signalled": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/residency_refusal_history/all_same__occ_3__conf006/1793428834781895320/claim/owner.json": "2f82dc019a551dac861ee614df314805647a1c62eb1f06924c752ffca8b3c668",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/residency_refusal_history/all_same__occ_3__conf006/1793428834781895320/claim/launch.json": "9004a4f4feb1ce81f252aa794a2b169215ca4cb8817c030439506bd232ba4be1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/residency_refusal_history/all_same__occ_3__conf006/1793428834781895320/residency_guard/owner.json": "7b90657cd41b3cc417892149196ac35b912f163504e0b2431f4a9e39c29098ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/residency_refusal_history/all_same__occ_3__conf006/1793428834781895320/residency_guard/state.json": "62dc945e638f62712c35a652124bc1d7690679d63c2d652e6b6521c2c00eded1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/placements/all_same__occ_3__conf006/1793410454043797721/placement/completion.json": "810433bce7a0e57507ba30836a245bc357d54e2f225e19c0fbd8562c2ee85d86",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/placements/all_same__occ_3__conf006/1793410454043797721/placement/command.log": "ed4e7831b82e5946680d4574e21253ebacb6d18a550e75ba24d978d2a1d709b8",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/namespace.json": "9ecac6e6c966bc148578413ab07d39cc68195c293ebea02667611d8696642fa1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/plan.json": "eb44a2a4384d693f8cea2f3b25365a31f186103a0970de10310ee3ccc48610bc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/input.xyz": "e0ebeb855484b96cf280b66de745927fab5d23aa20143f6b348519718ef7aed8"
+  },
+  "original_source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/native_dispatch_claim/owner.json": "2f82dc019a551dac861ee614df314805647a1c62eb1f06924c752ffca8b3c668",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/native_dispatch_claim/launch.json": "9004a4f4feb1ce81f252aa794a2b169215ca4cb8817c030439506bd232ba4be1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/residency_guard/owner.json": "7b90657cd41b3cc417892149196ac35b912f163504e0b2431f4a9e39c29098ad",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/residency_guard/state.json": "62dc945e638f62712c35a652124bc1d7690679d63c2d652e6b6521c2c00eded1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/placements/all_same__occ_3__conf006/1793410454043797721/placement/completion.json": "810433bce7a0e57507ba30836a245bc357d54e2f225e19c0fbd8562c2ee85d86",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/placements/all_same__occ_3__conf006/1793410454043797721/placement/command.log": "ed4e7831b82e5946680d4574e21253ebacb6d18a550e75ba24d978d2a1d709b8",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/namespace.json": "9ecac6e6c966bc148578413ab07d39cc68195c293ebea02667611d8696642fa1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/plan.json": "eb44a2a4384d693f8cea2f3b25365a31f186103a0970de10310ee3ccc48610bc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/campaign_parent/all_same__occ_3__conf006/input.xyz": "e0ebeb855484b96cf280b66de745927fab5d23aa20143f6b348519718ef7aed8"
+  },
+  "immutable_guard_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch/residency_refusal_history/all_same__occ_3__conf006/1793428834781895320/exclusive_worker_source.py",
+  "immutable_guard_source_sha256": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+  "checked": 1793428834.7903051
+}

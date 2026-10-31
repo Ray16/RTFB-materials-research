@@ -24,6 +24,7 @@ from redox.validation.protonation import hydrogen_topology_status
 from redox.workflows.solution_pair_namespace import validate_layout
 from redox.workflows.archived_native_namespace import remaining_host_promises
 
+LAUNCHER_SOURCE_BYTES=Path(__file__).read_bytes()
 
 def load(path,name):
     definition=importlib.util.spec_from_file_location(name,path)
@@ -147,10 +148,13 @@ def verify(path):
 def command(spec):
     validate_layout(spec);prior=Path(spec['prior_root']);case=Path(spec['case'])
     binary=ROOT.parent/'redox_polymer_continuations/runtime/bin/bwrap'
+    aliases=[]
+    if not spec.get('scientific_sources_read_only',False):
+        aliases=['--bind',str(case/'dft'),str(prior/'calcs/dft'),
+            '--bind',str(case/'locks'),str(prior/'logs/pipeline_locks'),
+            '--bind',str(case/'repairs'),str(prior/'results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs')]
     argv=[str(binary),'--die-with-parent','--ro-bind','/','/','--ro-bind',spec['archive'],spec['prior_root'],
-        '--bind',str(case),str(case),'--bind',str(case/'dft'),str(prior/'calcs/dft'),
-        '--bind',str(case/'locks'),str(prior/'logs/pipeline_locks'),
-        '--bind',str(case/'repairs'),str(prior/'results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs'),
+        '--bind',str(case),str(case),*aliases,
         '--proc','/proc','--dev-bind','/dev','/dev','--tmpfs','/tmp','--chdir',str(prior),'--']
     if spec.get('library_overlay') is not None:
         library=Path(spec['library_overlay'])
@@ -186,6 +190,7 @@ def launch(path,gpu,output):
     if output.exists() or any((case/n).exists() for n in ('status.json','residency_guard','host_guard')):
         raise FileExistsError('Preserve previous scientific and placement attempts')
     output.mkdir(parents=True);runtime=json.loads((Path(spec['archive'])/'environments/cutensor22/runtime.json').read_text())
+    (output/'launcher_source.py').write_bytes(LAUNCHER_SOURCE_BYTES)
     argv=command(spec);locks=GATE.parent.parent/'.gpu_locks';argv[-1:-1]=['--bind',str(locks),str(locks)]
     argv += [str(GATE),'run',str(gpu),'--label','redox-molecular-native','--',runtime['python'],
         str(prior/'scripts/fleet/exclusive_python_worker.py'),'--guard-out',str(case/'residency_guard'),
@@ -209,7 +214,8 @@ def launch(path,gpu,output):
         result=dict(status='molecular_native_submitted_start_unverified',host=host,GPU=gpu,pid=child.pid,
             process_start=Path(f'/proc/{child.pid}/stat').read_text().rsplit(')',1)[1].split()[19],
             CPU_affinity=cpus,capacity=capacity,remaining_RAM_promises_bytes=promises,device=device,
-            namespace=str(path),namespace_sha256=sha256_file(path),argv=argv,started=time.time(),prospective_resource_pilot=True)
+            namespace=str(path),namespace_sha256=sha256_file(path),argv=argv,started=time.time(),prospective_resource_pilot=True,
+            launcher_source=str(output/'launcher_source.py'),launcher_source_sha256=sha256_file(output/'launcher_source.py'))
         atomic_write_json(output/'launch.json',result)
     return child,result
 

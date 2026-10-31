@@ -63,3 +63,11 @@ def test_only_private_dft_locks_repairs_and_case_paths_are_writable(tmp_path):
     assert (str(case/'dft'),'/original/calcs/dft') in binds
     assert (str(case/'locks'),'/original/logs/pipeline_locks') in binds
     assert not any(target in ['/archive','/original'] for _,target in binds)
+
+
+def test_read_only_diagnostic_view_preserves_archived_DFT_control_dependencies(tmp_path):
+    case=tmp_path/'case';sources=tmp_path/'sources';case.mkdir();sources.mkdir()
+    spec=dict(prior_root='/original',archive='/archive',case=str(case),sources=str(sources),scientific_sources_read_only=True)
+    args=command(spec);binds=[tuple(args[i+1:i+3]) for i,v in enumerate(args) if v=='--bind']
+    assert binds==[(str(case),str(case))]
+    assert not any(target.startswith('/original/') for _,target in binds)

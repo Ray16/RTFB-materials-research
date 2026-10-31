@@ -6,10 +6,12 @@ is a separate collector; a written energy never substitutes for native G.
 Uncertain submissions and stopped scientific attempts remain preserved.
 """
 import argparse
+import csv
 from concurrent.futures import ThreadPoolExecutor
 import fcntl
 import importlib.util
 import json
+import math
 import os
 from pathlib import Path
 import shlex
@@ -77,7 +79,13 @@ def fits(spec, resources):
 
 
 def discover_slots(hosts):
-    """A failed node observation contributes no free GPUs and preserves peers."""
+    """Intersect gate availability with one device-memory inventory per node.
+
+    These full DFT/native jobs require 32-GB-class cards. Filtering before the
+    more expensive per-slot capacity/preflight avoids repeatedly visiting every
+    unsuitable 16-GB device. Reservation and live RAM/CPU checks still occur at
+    submission; this read-only snapshot cannot admit occupied devices.
+    """
     from redox.workflows.resources import GATE
 
     def observe(host):
@@ -90,7 +98,18 @@ def discover_slots(hosts):
                 if len(fields) != 2 or fields[0] != host or not fields[1].isdigit():
                     raise ValueError('Unexpected reservation-gate availability response')
                 rows.append((host, int(fields[1])))
-            return rows, None
+            if not rows:return [],None
+            query=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=8',host,
+                'nvidia-smi --query-gpu=index,memory.total --format=csv,noheader,nounits'],
+                capture_output=True,text=True,timeout=15,check=True)
+            devices={}
+            for fields in csv.reader(query.stdout.splitlines(),skipinitialspace=True):
+                if len(fields)!=2 or not fields[0].strip().isdigit():raise ValueError('Malformed device-memory inventory')
+                index=int(fields[0]);memory=float(fields[1])
+                if index in devices or not math.isfinite(memory) or memory<=0:raise ValueError('Unknown or repeated GPU memory record')
+                devices[index]=memory
+            if not {index for _,index in rows}<=set(devices):raise ValueError('Available GPU absent from memory inventory')
+            return [(name,index) for name,index in rows if devices[index]>=31*1024], None
         except (OSError, ValueError, subprocess.SubprocessError) as error:
             return [], dict(host=host, error=repr(error), availability='unverified_no_submission')
 

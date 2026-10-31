@@ -60,6 +60,7 @@ def test_dead_owner_does_not_reopen_partial_scientific_outputs(tmp_path):
 
 def test_node_timeout_does_not_discard_verified_peer_availability(monkeypatch):
     def query(argv, **kwargs):
+        if argv[0]=='ssh':return SimpleNamespace(stdout='2, 32768\n')
         if argv[-1] == 'unreachable':
             raise subprocess.TimeoutExpired(argv, 15)
         return SimpleNamespace(stdout='healthy 2\n')
@@ -69,6 +70,25 @@ def test_node_timeout_does_not_discard_verified_peer_availability(monkeypatch):
     assert slots == [('healthy', 2)]
     assert errors[0]['host'] == 'unreachable'
     assert errors[0]['availability'] == 'unverified_no_submission'
+
+
+def test_small_cards_are_filtered_in_one_inventory_without_truncating_large_cards(monkeypatch):
+    calls=[]
+    def query(argv,**kwargs):
+        calls.append(argv)
+        if argv[0]=='ssh':return SimpleNamespace(stdout=''.join(f'{i}, {16384 if i<24 else 95830}\n' for i in range(32)))
+        return SimpleNamespace(stdout=''.join(f'node {i}\n' for i in range(32)))
+    monkeypatch.setattr(queue.subprocess,'run',query)
+    slots,errors=queue.discover_slots(['node'])
+    assert slots==[('node',i) for i in range(24,32)] and not errors
+    assert len(calls)==2  # Gate + one inventory, not 32 interpreter preflights.
+
+
+@pytest.mark.parametrize('inventory',['0, nan\n','0, 32768\n0, 32768\n','wrong','1, 32768\n'])
+def test_incomplete_or_ambiguous_device_inventory_cannot_admit_a_slot(monkeypatch,inventory):
+    monkeypatch.setattr(queue.subprocess,'run',lambda argv,**kwargs:SimpleNamespace(stdout=inventory if argv[0]=='ssh' else 'node 0\n'))
+    slots,errors=queue.discover_slots(['node'])
+    assert slots==[] and errors[0]['host']=='node'
 
 
 def test_malformed_availability_cannot_authorize_another_host(monkeypatch):
