@@ -75,3 +75,13 @@ through the new dispatcher review path. This execution work supports completion
 of M4; it neither establishes occupied-ensemble convergence nor changes the
 article's frozen numerical results. See
 `validation/native_profile_dispatch_2026-10-30/` for the checked scope.
+
+The exact baseline enumerated viologen now has a native continuation for three
+declared redox states. The dication is independently checked. Initial radical
+and neutral source geometries have genuine native imaginary modes and are
+undergoing bounded minimum repair, with original records and every new
+SCF/derivative evaluation retained. Matched Fc raw partitions reconstruct
+exactly. Full potentials and their scientific interpretation await the complete
+checked set; they are not yet article results. M1 remains open, including actual
+grafting and occupancy dimensions. The source-bound record is
+`validation/viologen_native_2026-10-30/`.

@@ -22,6 +22,10 @@ establish that a calculation is currently running.
   preserves the prior registry and all graph/property records.
   Enumeration and recorded property presence are separate from quantum or
   experimental validation; no complete material shortlist is claimed.
+- [Exact enumerated viologen](../validation/viologen_native_2026-10-30/README.md):
+  three native redox-state jobs started. The dication passes independent review;
+  two source geometries require minimum repair. Complete potentials and further
+  grafting/occupancy criteria remain pending.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)

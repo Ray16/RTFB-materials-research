@@ -1,0 +1,104 @@
+{
+  "graph_key": "b7a4dca7a5e164ab5e872ae4432a408c337f1b6d1c34397bba0387bc7f52c9d4",
+  "product_smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+  "inchikey": "PBNXFHGCSKYNHC-UHFFFAOYSA-N",
+  "aliases": [
+    "search_viologen_b7a4dca7a5e1",
+    "viologen"
+  ],
+  "families": [
+    "pyridine-multi-e"
+  ],
+  "roles": [
+    "enumerated",
+    "registered_model"
+  ],
+  "declarations": [
+    {
+      "source": "systematic",
+      "row": 0,
+      "id": "search_viologen_b7a4dca7a5e1",
+      "fragment": "C[n+]1ccc(-c2cc[n+]([*:1])cc2)cc1",
+      "precursor_smiles": "C[n+]1ccc(-c2ccncc2)cc1",
+      "reaction_class": "N_quaternization",
+      "states": [
+        [
+          "ox2",
+          2,
+          1,
+          0
+        ],
+        [
+          "ox1",
+          1,
+          2,
+          -1
+        ],
+        [
+          "neu",
+          0,
+          1,
+          -2
+        ]
+      ],
+      "state_scope": "declared hypothesis; field-specific QC required",
+      "design_factors": {}
+    },
+    {
+      "source": "registered_local_models",
+      "row": 2,
+      "id": "viologen",
+      "fragment": "[*:1][n+]1ccc(-c2cc[n+](C)cc2)cc1",
+      "precursor_smiles": "C[n+]1ccc(-c2ccncc2)cc1",
+      "reaction_class": "N_quaternization",
+      "states": [
+        [
+          "ox2",
+          2,
+          1,
+          0
+        ],
+        [
+          "ox1",
+          1,
+          2,
+          -1
+        ],
+        [
+          "neu",
+          0,
+          1,
+          -2
+        ]
+      ],
+      "state_scope": "declared hypothesis; field-specific QC required",
+      "design_factors": {}
+    }
+  ],
+  "evaluations": [],
+  "recipes": [
+    {
+      "core": "viologen",
+      "anchor": "direct_N",
+      "cap": "methyl",
+      "ring": "H",
+      "template_atom": null
+    }
+  ],
+  "route_status": "proceed",
+  "material_decision": "pending",
+  "route_decisions": [
+    {
+      "id": "search_viologen_b7a4dca7a5e1",
+      "status": "proceed",
+      "missing": [],
+      "reasons": []
+    },
+    {
+      "id": "viologen",
+      "status": "proceed",
+      "missing": [],
+      "reasons": []
+    }
+  ]
+}
