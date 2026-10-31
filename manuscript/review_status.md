@@ -21,7 +21,7 @@ claims are provisional for release. New uncorrected admissions are held.
 | M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
 | M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
 | M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
-| M7 | partial | The current 75-state polymer cache and ten-state exact-viologen CPU example pass fresh NumPy-only extracted replay. A checked local reviewer collection is assembled; public DOI, final metadata, final release updating and wider deployment portability remain open. |
+| M7 | partial | The 75-state cache and exact-viologen CPU example pass fresh NumPy-only replay; a fresh locked xTB component passes masked-original-path kernel checks. The local reviewer collection is assembled. Public DOI, final metadata/release updating and wider deployment portability remain open. |
 | M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024, CREST 2020, the Oh Biying 2025/Mohanty 2026 polymer studies and You 2015 nonequilibrium-solvation theory are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
 | M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
 | remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
@@ -71,6 +71,14 @@ now consolidates eight checked data/replay packages and committed code/evidence.
 Archive integrity and a fresh isolated standard-Python extraction replay pass.
 Author/license metadata and public DOI deposition remain pending; the collection
 does not close the remaining scientific comments.
+
+The [fresh xTB component check](../validation/xtb_runtime_relocation_2026-10-31/README.md)
+installs the exact build and its eighteen-package runtime closure in a temporary
+prefix. With the original xTB paths masked, the actual kernel reference values
+and sub-wavenumber mode test pass. Kernel/native/projected path configuration is
+now explicit, with the qualification hash retained. This advances M7's component
+installation and path requirements, without certifying a complete fresh
+Python/CUDA stack or newly computed native molecular states.
 
 An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall. The earlier seven-block/315-coordinate response execution probe used solute H1 and a frozen-solvent operator; its array/resource review remains scoped to instrumentation, without native equilibrium-response or G qualification. Fresh full Hessian and corrected checkpoint-reuse controls preserve the PCM/SMD H1 contribution. An unqualified restart that bypassed that term was explicitly rejected and stopped; it supplies no accepted result. See the [current assessment](../validation/screening_chemical_impact_2026-10-31/README.md).
 

@@ -41,7 +41,8 @@ QRRHO_SOURCE_BYTES=Path(Q.__file__).read_bytes()
 KERNEL_SOURCE_BYTES=Path(Q.__file__).with_name('xtb_kernel.py').read_bytes()
 
 CERTIFICATE = ROOT / 'config/projected_thermal_validation.json'
-XTB = Q.LIBRARY.parent.parent / 'bin/xtb'
+from redox.qm.xtb_runtime import configured_binary
+XTB = configured_binary()
 
 
 def sha(path):

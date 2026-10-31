@@ -9,8 +9,42 @@ import hashlib
 import os
 from pathlib import Path
 import threading
+import sys
 
 QUALIFIED_XTB_BINARY_SHA256='271dd6cdd5da127a8e39919e7e32d924790fb346f0057b4183769ba8b3411887'
+LEGACY_PREFIX=Path('/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox')
+
+
+def _absolute(value,name):
+    if not value or not Path(value).expanduser().is_absolute():
+        raise ValueError(name+' must be a nonempty absolute path')
+    return Path(value).expanduser().resolve()
+
+
+def configured_prefix(environ=None):
+    """Find a complete xTB installation without importing numerical libraries.
+
+    An explicit prefix wins. Normal conda/venv interpreter locations follow;
+    the historical cluster location is only a compatibility fallback. Hash
+    qualification remains the responsibility of the thermodynamic entry point.
+    """
+    environ=os.environ if environ is None else environ
+    if 'REDOX_XTB_PREFIX' in environ:return _absolute(environ['REDOX_XTB_PREFIX'],'REDOX_XTB_PREFIX')
+    for prefix in dict.fromkeys((Path(sys.prefix),Path(sys.base_prefix),LEGACY_PREFIX)):
+        if (prefix/'lib/libxtb.so.6.7.1').is_file() and (prefix/'bin/xtb').is_file():return prefix.resolve()
+    return Path(sys.prefix).resolve()
+
+
+def configured_library(environ=None):
+    environ=os.environ if environ is None else environ
+    if 'REDOX_XTB_LIBRARY' in environ:return _absolute(environ['REDOX_XTB_LIBRARY'],'REDOX_XTB_LIBRARY')
+    return configured_prefix(environ)/'lib/libxtb.so.6.7.1'
+
+
+def configured_binary(environ=None):
+    environ=os.environ if environ is None else environ
+    if 'REDOX_XTB_EXECUTABLE' in environ:return _absolute(environ['REDOX_XTB_EXECUTABLE'],'REDOX_XTB_EXECUTABLE')
+    return configured_prefix(environ)/'bin/xtb'
 
 
 def digest(path):

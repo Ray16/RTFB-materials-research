@@ -16,6 +16,7 @@ from redox.core.common import ROOT,DFT,read_manifest,read_result
 from redox.core.protocol import load_record,software_versions
 from redox.qm.thermal import spin_degeneracy_eV
 from redox.qm.vibrations import write_xtb_hessian,parse_xtb_thermal_eV
+from redox.qm.xtb_runtime import configured_binary
 
 NATIVE_THERMAL=dict(schema=1,model='solution geometry-level DFT Hessian',xc='r2scan',
     disp='d4',basis='def2-svp',anion_basis='def2-svpd',solvent='acetonitrile',solvent_model='SMD',
@@ -25,7 +26,7 @@ NATIVE_THERMAL=dict(schema=1,model='solution geometry-level DFT Hessian',xc='r2s
     finite_difference_step_Bohr=.0005,finite_difference_relative_acceptance=.01,
     max_spin_contamination=.1,df_batch_cap_GiB=6,
     validated_pyscf_version='2.14.0',validated_gpu4pyscf_version='1.8.1')
-XTB=Path('/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/xtb')
+XTB=configured_binary()
 THERMAL_DEFINITION='native_solution_dft_qrrho_spin'
 
 

@@ -89,6 +89,13 @@ establish that a calculation is currently running.
   a 63 MB raw-input archive for the same 75 states passes extracted-archive
   replay in a fresh hash-locked NumPy environment with original paths blocked.
   Complete historical runtime closure and public deposition remain open.
+- [Fresh qualified xTB runtime](../validation/xtb_runtime_relocation_2026-10-31/README.md):
+  an explicit 18-package installation passes real thermodynamic checks with the
+  original xTB paths masked. The upstream kernel fixture reproduces to 1e-12 Ha,
+  and the 0.391 cm-1 internal mode is retained. Native/projected/kernel paths now
+  share explicit prefix configuration and interpreter-prefix discovery; the
+  qualification hash remains enforced. Full Python/CUDA deployment and public
+  deposition remain separate requirements.
 - [Remaining occupied-energy workflow](../validation/polymer_energy_classes_2026-10-30/README.md):
   all 160 declared inputs are represented by 156 prepared jobs and four identical
   checked references. Consult the linked live dispatcher and independent

@@ -1,0 +1,63 @@
+{
+  "status": "fresh_locked_xtb_runtime_and_relocated_thermo_checked",
+  "offline": true,
+  "original_xtb_files_masked": true,
+  "lock_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/qualified_xtb/packages.json": "ee4f47ac80a6176433dc90f802fc524ecc0d1903bf4d47153e24ab0c79c3fe1b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/qualified_xtb/environment.explicit.txt": "6589d71f6d837b419a9da5e98181bbf5d19c3be9c481c3124bdc71043d27763e"
+  },
+  "producer_sha256": "add6d1616fdb2569a21a69319cf0d8bc786b9262057d32557515c02aa292b2bd",
+  "GPU_job_started": false,
+  "full_quantum_environment_qualified": false,
+  "installed_packages": 18,
+  "qualified_runtime": {
+    "prefix": "/tmp/redox_xtb_installation_9gre13od/environment",
+    "library": "/tmp/redox_xtb_installation_9gre13od/environment/lib/libxtb.so.6.7.1",
+    "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+    "binary": "/tmp/redox_xtb_installation_9gre13od/environment/bin/xtb",
+    "binary_sha256": "271dd6cdd5da127a8e39919e7e32d924790fb346f0057b4183769ba8b3411887"
+  },
+  "dynamic_linkage": {
+    "library": "\tlinux-vdso.so.1 (0x00007fff6affc000)\n\tliblapack.so.3 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./liblapack.so.3 (0x00007fb2ab048000)\n\tlibmctc-lib.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libmctc-lib.so.0 (0x00007fb2aafcf000)\n\tlibtblite.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libtblite.so.0 (0x00007fb2aad69000)\n\tlibmulticharge.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libmulticharge.so.0 (0x00007fb2aad1a000)\n\tlibdftd4.so.4 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libdftd4.so.4 (0x00007fb2aac61000)\n\tlibcpx.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libcpx.so.1 (0x00007fb2aa809000)\n\tlibgfortran.so.5 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libgfortran.so.5 (0x00007fb2aa4a5000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fb2aa3a5000)\n\tlibgomp.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libgomp.so.1 (0x00007fb2aa34a000)\n\tlibgcc_s.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/lib/./libgcc_s.so.1 (0x00007fb2aa31c000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb2aa0f3000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fb2aa0ee000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fb2ae2c4000)\n\tlibjonquil.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/lib/././libjonquil.so.0 (0x00007fb2aa0e0000)\n\tlibtoml-f.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/lib/././libtoml-f.so.0 (0x00007fb2aa099000)\n\tlibs-dftd3.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/lib/././libs-dftd3.so.1 (0x00007fb2a9e16000)\n\tlibnumsa.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/lib/././libnumsa.so.0 (0x00007fb2a9d3e000)\n\tlibquadmath.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/lib/././libquadmath.so.0 (0x00007fb2a9cf5000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fb2a9cf0000)\n",
+    "binary": "\tlinux-vdso.so.1 (0x00007ffc70bcc000)\n\tlibxtb.so.6 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/libxtb.so.6 (0x00007fdbfacdb000)\n\tlibmctc-lib.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/libmctc-lib.so.0 (0x00007fdbfac62000)\n\tlibgfortran.so.5 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/libgfortran.so.5 (0x00007fdbfa8fe000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007fdbfa7fe000)\n\tlibgomp.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/libgomp.so.1 (0x00007fdbfa7a1000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fdbfa578000)\n\tliblapack.so.3 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./liblapack.so.3 (0x00007fdbf7ec0000)\n\tlibtblite.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libtblite.so.0 (0x00007fdbf7c5a000)\n\tlibmulticharge.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libmulticharge.so.0 (0x00007fdbf7c0b000)\n\tlibdftd4.so.4 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libdftd4.so.4 (0x00007fdbf7b52000)\n\tlibcpx.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libcpx.so.1 (0x00007fdbf76fa000)\n\tlibgcc_s.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libgcc_s.so.1 (0x00007fdbf76cc000)\n\tlibjonquil.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libjonquil.so.0 (0x00007fdbf76be000)\n\tlibtoml-f.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libtoml-f.so.0 (0x00007fdbf7677000)\n\tlibquadmath.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/./libquadmath.so.0 (0x00007fdbf762e000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007fdbfb8d7000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fdbf7629000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007fdbf7624000)\n\tlibs-dftd3.so.1 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/././libs-dftd3.so.1 (0x00007fdbf73a1000)\n\tlibnumsa.so.0 => /tmp/redox_xtb_installation_9gre13od/environment/bin/../lib/././libnumsa.so.0 (0x00007fdbf72cb000)\n"
+  },
+  "numerical_checks": {
+    "library": "/tmp/redox_xtb_installation_9gre13od/environment/lib/libxtb.so.6.7.1",
+    "executable": "/tmp/redox_xtb_installation_9gre13od/environment/bin/xtb",
+    "upstream_kernel": {
+      "G_Ha": 0.01741750163569817,
+      "H_Ha": 0.05027577191681057,
+      "thermal_enthalpy_Ha": 0.006752824123324718,
+      "TS_Ha": 0.0328582702811124,
+      "ZPE_Ha": 0.04352294779348585
+    },
+    "upstream_expected": {
+      "G_Ha": 0.017417501635698,
+      "H_Ha": 0.050275771916811,
+      "TS_Ha": 0.032858270281112
+    },
+    "soft_frequency_cm": 0.39099999999999996,
+    "soft_mode_retained": true,
+    "kernel_execution": {
+      "pid": 2511277,
+      "host": "lambda2",
+      "process_start": "1427840073",
+      "cpu_affinity": [
+        3
+      ],
+      "interpreter": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "source_sha256": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+      "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+      "thread_limits": {
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1"
+      }
+    },
+    "xtb_version_stdout": "      -----------------------------------------------------------      \n     |                   =====================                   |     \n     |                           x T B                           |     \n     |                   =====================                   |     \n     |                         S. Grimme                         |     \n     |          Mulliken Center for Theoretical Chemistry        |     \n     |                    University of Bonn                     |     \n      -----------------------------------------------------------      \n\n   * xtb version 6.7.1 (edcfbbe) compiled by 'conda@5dfe00f5fb80' on 2026-06-10\n\n",
+    "CUDA_imported": false
+  },
+  "Python_environment_recreated": false
+}
