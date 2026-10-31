@@ -1,31 +1,39 @@
 {
-  "status": "ionic_polymer_method_and_construction_pages_visually_checked",
+  "status": "changed_manuscript_pages_visually_checked",
+  "checked": 1793459964.4847658,
   "documents": {
     "manuscript": {
+      "pdf_sha256": "25c48ac167f7b17b8c97013f8d023d6c748e33ff78eb15d30d85532949d153c3",
       "pages": 21,
-      "pdf_sha256": "a73011d704256f4ed098bb112912ed6fbd5aa78fb3762c7e06bdd634776b99a5",
-      "overfull_boxes": []
+      "reviewed_changed_pages": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "inspection": "Main page 4 and SI 26/27 inspected individually; all shifted pages reviewed in rendered contact sheets; no clipping/overlap, orphan at main page 10 removed."
     },
     "supporting_information": {
+      "pdf_sha256": "d451077051de7899a07f7634bab8ae881c32f686f933fcb4629702db494c5339",
       "pages": 29,
-      "pdf_sha256": "01073e8eca3abcbd74c2524cc707da3f0487742f005cfb12fa5deb922e6a4d61",
-      "overfull_boxes": []
+      "reviewed_changed_pages": [
+        26,
+        27,
+        28,
+        29
+      ],
+      "inspection": "Main page 4 and SI 26/27 inspected individually; all shifted pages reviewed in rendered contact sheets; no clipping/overlap, orphan at main page 10 removed."
     }
   },
-  "SI_pages_reviewed": [
-    9,
-    10
-  ],
-  "render_root": "calcs/validation/ionic_polymer_publication_visual_2026-10-31",
-  "checks": [
-    "Actual open-chain connectivity and retained chloride visible",
-    "No overlapping chemical rings in final construction diagram",
-    "Text states unconverged MMFF warm starts and absent solution thermodynamics",
-    "No clipping or compiler overfull boxes observed"
-  ],
-  "submission_ready": false,
-  "reviewed_renders_match_final_checked_build": {
-    "9": true,
-    "10": true
-  }
+  "compiler_overfull_boxes": {
+    "manuscript": [],
+    "supporting_information": []
+  },
+  "submission_ready": false
 }

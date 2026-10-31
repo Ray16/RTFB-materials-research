@@ -45,8 +45,15 @@ establish that a calculation is currently running.
   Nominal 10-to-20 ensemble changes are −1.03/−1.23 kJ/mol; both empty components
   meet the declared finite-batch criterion. The linked native census contains
   75 reconstructed states. Occupied ensemble cycles remain incomplete.
-- [Working occupied-state census](../validation/response_diagnostic_2026-10-31/README.md):
-  121 input states now reconstruct independently. Six additional states verify
+- [Screening implementation assessment](../validation/screening_implementation_2026-10-31/README.md):
+  the installed GPU4PySCF screening defect reproduces on V100/H100; the isolated
+  upstream correction passes both integration controls and V100 closed/open-shell
+  MeCN derivative controls. Four polymer force controls also completed; the
+  earlier force discrepancy is not reproduced at their three tested geometries. Chemical
+  impact and production qualification remain open; new uncorrected admissions
+  are held and stored chemical results remain provisional for release.
+- [Working occupied-state census](../validation/screening_implementation_2026-10-31/native_census.json):
+  122 input states now reconstruct under their stored protocol. Six earlier states verify
   14,643 source bindings, including one recovered interrupted case. The
   [coverage figure](figures/polymer_models/2026-10-31_response_recovery/native_occupancy_coverage.pdf)
   shows all twelve graph/configuration cells. Occupied ensemble cycles remain
@@ -54,10 +61,12 @@ establish that a calculation is currently running.
   At observed class maxima, unfinished inputs have a full retained footprint of
   about 100 GiB, including some already written partial files. Shared storage has
   about 61 GiB free, below the new-start floor; the measured sizes are not peak bounds.
-- [V100 response-execution control](../validation/response_diagnostic_2026-10-31/README.md):
+- [V100 response-execution control](../validation/screening_implementation_2026-10-31/response_review.json):
   a repeatable CPU allocation test supports disabling NumPy huge-page advice on
   the affected host. Three traced response probes failed and remain unqualified;
-  a revised checkpointed control is active. No native G follows from its progress.
+  the revised checkpointed control completed seven blocks/315 right-hand sides
+  and passed independent file/frame/resource review. No native G or corrected
+  screening implementation qualification follows from this completion.
 - [Portable native numerical cache](../validation/native_cache_2026-10-30/README.md):
   a 63 MB raw-input archive for the same 75 states passes extracted-archive
   replay in a fresh hash-locked NumPy environment with original paths blocked.

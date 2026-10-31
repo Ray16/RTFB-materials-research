@@ -2,6 +2,15 @@
 
 As of 31 October 2026, the manuscript remains a working draft. M1, M4, complete M7 and final M9 remain open. The table distinguishes scoped reviewer responses from complete submission readiness.
 
+**Additional release requirement:** the [screening implementation assessment](../validation/screening_implementation_2026-10-31/README.md)
+reproduces an upstream GPU4PySCF grid-screening defect on V100 and H100.
+The isolated correction passes fixed-density controls on both devices and
+closed/open-shell MeCN derivative controls on V100. Chemical-impact assessment
+and complete production qualification remain open. Previous arithmetic,
+experimental-source and saved-record replays remain reproducible; they do not
+measure the defect's effect on converged chemical predictions. Stored chemical
+claims are provisional for release. New uncorrected admissions are held.
+
 | Comment | Status | Current disposition |
 | --- | --- | --- |
 | M1 | partial | Exact PMDI finite cycle, baseline enumerated viologen native ladder plus three-seed local quaternization and TEMPO directional MeCN descriptors reported; converged ensembles and complete material/route criteria remain open. |
@@ -31,7 +40,7 @@ The exact baseline enumerated viologen has checked MeCN reductions of âˆ’0.608/â
 
 The TEMPO example retains separate directional MeCN relaxation costs of 1.477/1.639 eV. Their 10.4% asymmetry fails the declared equal-curvature diagnostic, so a symmetric scalar remains unqualified. Neither example is a fully admitted material.
 
-The frozen polymer comparison contains 75 reconstructed states. Both twenty-input empty-backbone sets meet the finite-batch criterion with 20/19 distinct structures. The [working census](../validation/response_diagnostic_2026-10-31/README.md) now contains 121 independently reconstructed input states outside that frozen comparison; balanced occupied ensembles remain incomplete. One failed sampled-derivative column is independently reconstructed at 1.2138%, above the unchanged 1% gate, and is not counted as qualified. Three fresh SCFs reproduce the energies but change one displaced gradient; its repeated column error is 0.000853%. Full native recovery/repetition remains subject to the original gates.
+The frozen polymer comparison contains 75 reconstructed states. Both twenty-input empty-backbone sets meet the finite-batch criterion with 20/19 distinct structures. The [working census](../validation/screening_implementation_2026-10-31/native_census.json) now contains 122 independently reconstructed input states outside that frozen comparison; balanced occupied ensembles remain incomplete. The original atom-31/z sampled-derivative failure remains preserved at 1.2138%, above the unchanged 1% gate. A separate full native repeat passes the existing protocol, with a maximum column error of 0.7044%, and passes independent physical reconstruction. Force repeatability and finite-difference step convergence remain distinct open questions; neither the repeat nor its census count qualifies the corrected screening implementation.
 
 The 75-state extracted cache reconstructs Hessians, sampled derivative checks and nuclear terms in a fresh NumPy-only environment with original paths blocked. This does not establish complete historical executable closure, wider deployment portability or public deposition. Final archive assembly, DOI and author/deposition metadata remain open.
 
@@ -39,4 +48,4 @@ The older [machine-readable comment audit](../results/validation/review_comment_
 
 The exact viologen now has [twelve audited initial charged-polymer models](../validation/viologen_polymer_preparation_2026-10-31/README.md), including adjacent/spacer graphs in two configurations. SI Section 3.4 separates connectivity, global state hypotheses and PF6 dry-salt mass bookkeeping from uncomputed charged-polymer thermochemistry. This preparation advances M1 without closing its polymer assessment or M4.
 
-An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall; the corrected, checkpointed orbital-response control remains unfinished and supplies no native G. Three earlier traced probes failed and remain excluded. The stack-dump fault hypothesis and its missing symbol evidence are kept separate from numerical-model validation; see the [execution and recovery record](../validation/response_diagnostic_2026-10-31/README.md).
+An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall. The revised checkpointed orbital-response control completed all seven blocks/315 Cartesian right-hand sides; independent review verifies its arrays, source frame, ownership and resources. Original grid arrays are absent, so an exact Hessian restart remains unqualified and no native G follows. Three earlier traced probes remain failed. This response control used the installed screening implementation; its completion cannot qualify the separate correction. See the [current assessment](../validation/screening_implementation_2026-10-31/README.md).

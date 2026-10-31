@@ -6,6 +6,14 @@ workflow, and deliver a manuscript whose claims match its released evidence.
 Code cleanup, completed example calculations and presentation updates each
 contribute to that objective but do not establish completion.
 
+An additional [implementation assessment](../validation/screening_implementation_2026-10-31/README.md)
+reproduces the GPU4PySCF grid-screening defect on V100 and H100. An isolated
+upstream correction passes the original fixed-density integration tolerance;
+closed- and open-shell V100 MeCN derivative controls also pass. Its effect on
+the chemical comparisons and full production qualification remain open. Stored
+chemical results are provisional for release; new uncorrected admissions are
+held. No corrected/uncorrected cycle components may be mixed.
+
 The current article/SI are 21/29 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The refactor moved the pre-existing manuscript, slides, calculation campaigns
@@ -35,13 +43,19 @@ The current paper integrates the component-specific empty-backbone comparison
 from the 75-state frozen evidence epoch; occupied ensembles remain incomplete.
 Remaining occupied graphs and complete sampling comparisons are still required.
 The [subsequent working collection](../validation/response_diagnostic_2026-10-31/README.md)
-now reconstructs 121 inputs. Six additional states verify 14,643 source bindings,
+reconstructs 121 inputs. Six additional states verify 14,643 source bindings,
 including the interrupted site-4 recovery. Complete occupied-ensemble cycles remain unavailable. Measured retained
 outputs indicate a full retained footprint of about 100 GiB for unfinished
 native inputs, before subtracting already written partial files. This is not a
 peak bound or additional-write forecast. The shared volume has about 61 GiB free,
 below the new-start floor; additional writable shared capacity is needed. The
 production storage gate and numerical thresholds remain unchanged.
+The subsequent [native repeat](../validation/screening_implementation_2026-10-31/native_replay.json)
+passes the existing protocol and brings the source-replayed input count to 122.
+That count does not establish the new screening implementation's chemical
+impact or complete occupied ensembles. A separate full response execution
+control has completed seven blocks/315 right-hand sides with durable arrays;
+its reviewed completion supplies no native free energy.
 The [remaining-graph energy roster](../validation/polymer_energy_classes_2026-10-30/README.md)
 now accounts for all 160 declared inputs in the other eight graph/configuration
 groups: 156 prepared energy jobs and four identical checked references. Six

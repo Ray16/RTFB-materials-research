@@ -56,6 +56,10 @@ def main():
     from check_claims import audit
 
     claims = audit()
+    screening_check = None
+    if (manifest.parent/'screening_V100_integration.json').exists():
+        from check_screening_controls import audit as audit_screening
+        screening_check = audit_screening(manifest.parent)
     ionic_preparation = manifest.parent/'ionic_preparation_replay.json'
     if ionic_preparation.exists():
         expected=json.loads(ionic_preparation.read_text())
@@ -80,6 +84,8 @@ def main():
     source = {str(p.relative_to(ROOT)): sha(p) for p in
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", PAPER / "check_viologen_native.py", Path(__file__), manifest, pointer)}
     source.update(figure_inputs)
+    if screening_check is not None:
+        source['manuscript/check_screening_controls.py']=sha(PAPER/'check_screening_controls.py')
     # Bind all frozen inputs through the end of compilation, including cached
     # raw structure records used by the prospective ionic-model demonstration.
     source.update(evidence['snapshot_sha256'])
@@ -133,6 +139,7 @@ def main():
                   build_logs=str(temporary), submission_ready=False, documents=documents,
                   additional_citation_check=citation_check,
                   solution_model_citation_check=solution_citation_check,
+                  screening_implementation_check=screening_check,
                   visual_review="pending; record separately in visual_review.json, bound to these PDF hashes")
     (PAPER / "claim_check.json").write_text(json.dumps(claims, indent=2) + "\n")
     (PAPER / "build_check.json").write_text(json.dumps(report, indent=2) + "\n")
