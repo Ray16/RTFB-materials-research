@@ -1,0 +1,102 @@
+{
+  "status": "exact_primary_native_controls_prepared_no_jobs_submitted",
+  "states": [
+    {
+      "key": "graft_ox2",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/graft_ox2/namespace.json",
+      "namespace_sha256": "cef00a536d8dce926505f6451647cc51da1db33f7ed034fe9e8be45cde90b4ba",
+      "nao": 394,
+      "mult": 1
+    },
+    {
+      "key": "graft_ox1",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/graft_ox1/namespace.json",
+      "namespace_sha256": "cf8bf4cc6276aa7bd82c80e1204365fbae9e6fc08318417f0c0b902d22b787a6",
+      "nao": 394,
+      "mult": 2
+    },
+    {
+      "key": "graft_neu",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/graft_neu/namespace.json",
+      "namespace_sha256": "3621ba54af280e20a21cfa668c83910338691fefe7d55866072714604c327764",
+      "nao": 394,
+      "mult": 1
+    },
+    {
+      "key": "precursor_0",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/precursor_0/namespace.json",
+      "namespace_sha256": "60efc2f2a04d737f234f3157bc6e99a2737e0d7c8c076fd94310cce946ac6b1c",
+      "nao": 237,
+      "mult": 1
+    },
+    {
+      "key": "precursor_1",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/precursor_1/namespace.json",
+      "namespace_sha256": "3a618857e0a589856266dcd2978bc31d0b985b6f91f72fbfd437ac0370dd806c",
+      "nao": 237,
+      "mult": 1
+    },
+    {
+      "key": "precursor_2",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/precursor_2/namespace.json",
+      "namespace_sha256": "0d3099b1c3ad0450f3fe516486b60e05c2d74fd5e53402c8daeb4f2037bc9e7e",
+      "nao": 237,
+      "mult": 1
+    },
+    {
+      "key": "fc_neu",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/fc_neu/namespace.json",
+      "namespace_sha256": "ae71dc194cbdecb325b424f969466b48a7e0e9334ef51c93142588b491dd1395",
+      "nao": 221,
+      "mult": 1
+    },
+    {
+      "key": "fc_ox",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/fc_ox/namespace.json",
+      "namespace_sha256": "aca05c207883d435eb92d891845e382a222af1a99de4662d6a025d35facee46a",
+      "nao": 221,
+      "mult": 2
+    },
+    {
+      "key": "local",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel/states/local/namespace.json",
+      "namespace_sha256": "db36671d823c3cb534a003e4e48da3509ec0b77687cf4a51324cd97a49f26758",
+      "nao": 175,
+      "mult": 1
+    }
+  ],
+  "target_native_states": 9,
+  "monatomic_components": [
+    {
+      "key": "chloride",
+      "status": "monatomic_partition_no_Hessian_repeat",
+      "state": {
+        "id": "chloride",
+        "smiles": "[Cl-]",
+        "charge": -1,
+        "mult": 1,
+        "files": {
+          "geometry": "states/chloride/geometry.xyz",
+          "result": "states/chloride/result.json",
+          "energy": "states/chloride/energy.json",
+          "partition": "states/chloride/partition.json"
+        },
+        "checked_G_by_cutoff_eV": {
+          "25": -12527.552059753192,
+          "50": -12527.552059753192,
+          "100": -12527.552059753192
+        },
+        "partition_kind": "monatomic",
+        "finite_difference_replay": false
+      }
+    }
+  ],
+  "pilot_keys": [
+    "graft_ox1",
+    "graft_ox2"
+  ],
+  "source_package_manifest_sha256": "76a2dc890d7d3ca660516e0761e8f149a82fd650474b5733e38b2e7bcc9c39f6",
+  "source_package": "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data",
+  "quantum_jobs_submitted": 0,
+  "new_complete_free_energy_cycles_qualified": false
+}

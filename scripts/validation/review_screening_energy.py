@@ -5,8 +5,10 @@ import importlib.util
 import json
 import math
 import os
-import shutil
 from pathlib import Path
+import hashlib
+
+REVIEWER_SOURCE_BYTES=Path(__file__).read_bytes()
 
 import h5py
 import numpy as np
@@ -22,42 +24,29 @@ def review(namespace,placement):
     from pyscf.lib import param
     spec=verify(namespace);case=Path(spec['case']);used=[namespace]
     def read(path):used.append(path);return json.loads(path.read_text())
-    plan=read(case/'plan.json');stage=read(case/'status.json')
-    launch=read(placement/'launch.json');completion=read(placement/'completion.json')
-    guard=read(case/'residency_guard/owner.json');residency=read(case/'residency_guard/state.json')
-    host=read(case/'host_guard/status.json');runtime=read(case/'tensor_runtime/status.json')
+    plan=read(case/'plan.json')
     definition=importlib.util.spec_from_file_location('energy_control_owner',ROOT/'scripts/pipeline/observe_archived_native_namespace.py')
     owners=importlib.util.module_from_spec(definition);definition.loader.exec_module(owners)
-    if (stage['status']!='screening_energy_control_finished_review_pending' or stage['native_G_qualified']
-            or completion['returncode']!=0 or completion['budget_stop'] is not None
-            or owners.alive(stage['owner']) is not False or not guard['guard_stopped']
-            or not residency['own_residency_observed'] or residency['foreign_resident_PIDs']
-            or host['status']!='effective_memory_guard_finished_profile_review_pending'
-            or runtime['status']!='task_returned_under_checked_cutensor_runtime'
-            or host['maximum_RSS_GiB']!=40 or host['minimum_free_GiB']!=32
-            or max(host['self_VmHWM_bytes'],host['peak_tree_RSS_bytes'])>40*2**30
-            or host['free_RAM_bytes']<32*2**30 or not 0<stage['observed_peak_GPU_MiB']<=31744
-            or not stage['owner']['pid']==guard['pid']==runtime['pid']==host['pid']
-            or not stage['owner']['process_start']==guard['process_start']==host['process_start']
-            or not guard['CPU_affinity']==runtime['CPU_affinity']==host['CPU_affinity']==launch['CPU_affinity']
-            or len(host['CPU_affinity'])!=2 or runtime['program']!=str(Path(spec['sources'])/'worker.py')):
-        raise ValueError('Closed source-exact energy control and normal resource/owner checks required')
-    from redox.validation.scf_frame import checkpoint_frame
-    frame_source=ROOT/'src/redox/validation/scf_frame.py'
-    frozen=case/'review_sources'/sha256_file(frame_source)/'scf_frame.py'
-    if not frozen.exists():
-        frozen.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(frame_source,frozen)
-    if sha256_file(frozen)!=sha256_file(frame_source):raise ValueError('Frozen checkpoint reviewer differs')
-    used.append(frozen)
+    from redox.validation.execution_review import review_closure,freeze_source,SOURCE_BYTES
+    used.extend([freeze_source(case,Path(review_closure.__code__.co_filename),SOURCE_BYTES),freeze_source(case,Path(__file__),REVIEWER_SOURCE_BYTES)])
+    placements=list(case.parent.glob('placement*/launch.json'))
+    if len(placements)!=1 or placements[0].parent.resolve()!=placement.resolve():
+        raise ValueError('Exact requested energy-control placement required')
+    stage=review_closure(case,read,owners.alive,
+        expected_status='screening_energy_control_finished_review_pending',
+        host_GiB=40,GPU_MiB=31744,worker=Path(spec['sources'])/'worker.py')
+    host=read(case/'host_guard/status.json')
+    from redox.validation.scf_frame import checkpoint_frame,freeze_reviewer,check_spin_contamination
+    used.append(freeze_reviewer(case))
     expected_atoms=read_atoms(Path(spec['sources'])/'input.xyz')
     expected_coordinates=expected_atoms.positions/param.BOHR
     energy_results={};checkpoint_counts={};frame_errors={}
     for variant in ('installed','corrected'):
         root=case/variant;result=read(root/'result.json')
+        check_spin_contamination(result.get('smd_spin_contam'))
         if (result['energy_protocol']!=plan['electronic_protocol'] or result['optimized']
                 or result['charge']!=plan['source_state']['charge'] or result['mult']!=plan['source_state']['mult']
-                or result['converged_smd'] is not True or not math.isfinite(result['e_smd_Ha'])
-                or abs(result.get('smd_spin_contam',math.inf))>.1):
+                or result['converged_smd'] is not True or not math.isfinite(result['e_smd_Ha'])):
             raise ValueError('Matched converged unoptimized electronic parent required')
         energies=[];count=0;frame_errors[variant]=[]
         for path in sorted((root/'SCF_evaluations').glob('*/*/SCF_result.json')):
@@ -102,7 +91,7 @@ def review(namespace,placement):
         maximum_checkpoint_coordinate_error_Bohr={k:max(v) for k,v in frame_errors.items()},peak_GPU_MiB=stage['observed_peak_GPU_MiB'],
         peak_host_RSS_bytes=max(host['self_VmHWM_bytes'],host['peak_tree_RSS_bytes']),
         resources_checked=True,native_G_qualified=False,new_potential_qualified=False,
-        source_sha256={str(p):sha256_file(p) for p in used},producer_sha256=sha256_file(__file__))
+        source_sha256={str(p):sha256_file(p) for p in used},producer_sha256=hashlib.sha256(REVIEWER_SOURCE_BYTES).hexdigest())
 
 
 def pilots(paths,manifest_path):

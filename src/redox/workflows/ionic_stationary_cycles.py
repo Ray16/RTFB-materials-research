@@ -11,7 +11,8 @@ from redox.core.hashing import sha256_file
 from redox.workflows.molecular_native_namespace import verify
 
 
-def electronic_cycle(cycle,records,cases):
+def validate_cycle_balance(cycle,cases):
+    """Shared exact-graph atom/charge bookkeeping for E and native-G cycles."""
     elements=Counter();charge=0
     for key,coefficient in cycle['coefficients'].items():
         if type(coefficient) is not int:raise ValueError('Exact integer cycle coefficients required')
@@ -19,7 +20,11 @@ def electronic_cycle(cycle,records,cases):
         if Chem.GetFormalCharge(mol)!=case['charge']:raise ValueError('Declared formal state differs from graph')
         for atom in mol.GetAtoms():elements[atom.GetSymbol()]+=coefficient
         charge+=coefficient*case['charge']
-    if charge or any(elements.values()):raise ValueError('Electronic cycle is not atom/charge balanced')
+    if charge or any(elements.values()):raise ValueError('Occupancy cycle is not atom/charge balanced')
+
+
+def electronic_cycle(cycle,records,cases):
+    validate_cycle_balance(cycle,cases)
     missing=[key for key in cycle['coefficients'] if key not in records]
     if missing:return dict(status='pending_checked_stationary_components',missing=missing,delta_delta_E_Ha=None,delta_delta_E_kJ_mol=None,delta_delta_G_kJ_mol=None)
     delta=math.fsum(coefficient*records[key]['E_Ha'] for key,coefficient in cycle['coefficients'].items())

@@ -39,7 +39,7 @@ def contiguous_payload(handle,name,content):
     return np.frombuffer(content,dtype=np.float64,count=count,offset=offset).reshape(dataset.shape)
 
 
-def read_frame(case):
+def read_frame(case, *, partial_only=False):
     """Read completed solute tensors; the outer PCM H1 must be recomputed."""
     import h5py
     import numpy as np
@@ -48,13 +48,16 @@ def read_frame(case):
         h1_identity=case/'execution/rks_make_h1_state_identity.json',
         evaluation=case/'points/0000/evaluation.json',settings=case/'SCF_evaluations/0000/0000/settings.json',
         checkpoint=case/'SCF_evaluations/0000/0000/SCF.h5',grids=case/'grids.npz')
+    if partial_only:paths.pop('h1_identity')
     data={k:json.loads(p.read_text()) for k,p in paths.items() if p.suffix=='.json'}
-    a,b=data['partial_identity'],data['h1_identity']
+    a=data['partial_identity'];b=a if partial_only else data['h1_identity']
     fields=('coordinates_Bohr','basis','charge','mult','xc','SCF_E_Ha','SCF_converged','mo_coeff','mo_energy','mo_occ')
     if any(a[k]!=b[k] for k in fields) or not b['SCF_converged']:
         raise ValueError('Partial Hessian and H1 have different orbital/geometry frames')
     evaluation=data['evaluation'];settings=data['settings']
     coordinates=np.asarray(b['coordinates_Bohr'],dtype=np.float64)
+    if coordinates.ndim!=2 or coordinates.shape[1]!=3 or not np.isfinite(coordinates).all():
+        raise ValueError('Finite complete saved coordinate frame required')
     if (not evaluation['SCF_converged'] or evaluation['coordinates_Bohr']!=b['coordinates_Bohr']
             or abs(evaluation['E_Ha']-b['SCF_E_Ha'])>1e-12
             or settings['coordinates_Bohr']!=b['coordinates_Bohr']
@@ -65,20 +68,20 @@ def read_frame(case):
     content=paths['checkpoint'].read_bytes()
     with h5py.File(io.BytesIO(content),'r') as handle:
         energy=float(contiguous_payload(handle,'scf/e_tot',content))
-        if abs(energy-b['SCF_E_Ha'])>1e-12:raise ValueError('Checkpoint energy differs from the derivative frame')
+        if not math.isfinite(energy) or abs(energy-b['SCF_E_Ha'])>1e-12:raise ValueError('Checkpoint energy differs from the derivative frame')
         for name in ('mo_coeff','mo_occ','mo_energy'):
             value=contiguous_payload(handle,'scf/'+name,content)
             if value.dtype!=np.float64 or list(value.shape)!=b[name]['shape'] or array_digest(value)!=b[name]['sha256']:
                 raise ValueError('Checkpoint orbitals do not exactly match the derivative frame')
             arrays[name]=value.copy()
-    for name,identity in [('partial',a),('h1',b)]:
+    for name,identity in ([('partial',a)] if partial_only else [('partial',a),('h1',b)]):
         if len(identity['arrays'])!=1:raise ValueError('One complete tensor per derivative stage required')
         path,value=next(iter(identity['arrays'].items()));path=Path(path)
         if not path.is_relative_to(case) or hashlib.sha256(path.read_bytes()).hexdigest()!=value:
             raise ValueError('Changed or foreign derivative tensor')
         paths[name]=path;arrays[name]=np.load(path,mmap_mode='r',allow_pickle=False)
     n=len(coordinates);nao=arrays['mo_coeff'].shape[0];nocc=int((arrays['mo_occ']>0).sum())
-    if arrays['partial'].shape!=(n,n,3,3) or arrays['h1'].shape!=(n,3,nao,nocc):
+    if arrays['partial'].shape!=(n,n,3,3) or (not partial_only and arrays['h1'].shape!=(n,3,nao,nocc)):
         raise ValueError('Saved component dimensions do not match the declared frame')
     with np.load(paths['grids'],allow_pickle=False) as grids:
         arrays['grid_coords']=grids['coords'];arrays['grid_weights']=grids['weights']
@@ -86,9 +89,35 @@ def read_frame(case):
             or any(value.dtype!=np.float64 or not np.isfinite(value).all() for value in arrays.values())):
         raise ValueError('Finite FP64 orbital, grid and derivative arrays required')
     hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths.values()}
-    return dict(identity={k:b[k] for k in fields},settings=settings,source_sha256=hashes,
+    frame=dict(identity={k:b[k] for k in fields},settings=settings,source_sha256=hashes,
                 nocc=nocc,nao=nao,natom=n,H1_scope='solute contribution at the solvated SCF density',
-                PCM_H1_included=False),arrays
+                PCM_H1_included=False)
+    if partial_only:frame.update(partial_only=True,H1_scope='not reused; complete solvent H1 must be computed')
+    return frame,arrays
+
+
+@contextmanager
+def reuse_partial(hessian,arrays,directory):
+    """Reuse only the exact solute partial tensor; never replace make_h1."""
+    import cupy as cp
+    from redox.core.io import atomic_write_json
+    if 'h1' in arrays or not hasattr(hessian,'undo_solvent'):
+        raise ValueError('Only the solute partial tensor may be reused in this scope')
+    directory=Path(directory);directory.mkdir(exist_ok=False)
+    present='partial_hess_elec' in hessian.__dict__;original=hessian.partial_hess_elec;calls=0
+    def partial(self,*args,**kwargs):
+        nonlocal calls
+        calls+=1;return cp.asarray(arrays['partial']).copy()
+    hessian.partial_hess_elec=MethodType(partial,hessian)
+    try:
+        yield
+        if calls!=1:raise ValueError('The exact saved partial tensor must be used once')
+    finally:
+        if present:hessian.partial_hess_elec=original
+        else:delattr(hessian,'partial_hess_elec')
+        atomic_write_json(directory/'reuse.json',dict(partial_calls=calls,
+            partial_only=True,make_h1_replaced=False,full_solvent_H1_recomputation_required=True,
+            source_arrays_modified=False,native_G_qualified=False))
 
 
 def read_continuation_frame(case):

@@ -262,6 +262,10 @@ def launch(path,gpu,output):
     if plan.get('charged_polymer_optimization'):
         expected=(40,28800,256*2**20);role='charged_polymer_solution_geometry_pilot'
         if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(32.25,32):raise ValueError('Charged-geometry storage margins changed')
+    if plan.get('primary_molecular_Hessian_control'):
+        expected=(40,14400,2**30);role='primary_molecular_Hessian_control'
+        if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(33,32) or plan.get('native_memory_cap_GiB')!=6:
+            raise ValueError('Primary molecular native control profile changed')
     if plan['role']!=role or (plan['maximum_host_RSS_GiB'],plan['maximum_wall_seconds'],plan['maximum_durable_output_bytes'])!=expected:raise ValueError('Exact bounded control resource class required')
     if proof['host']!=host or proof['namespace_sha256']!=sha256_file(path):raise ValueError('Exact node-local preflight required')
     if output.exists() or any((case/name).exists() for name in ('status.json','residency_guard','host_guard')):raise FileExistsError('Preserve earlier controls')

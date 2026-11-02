@@ -5,7 +5,7 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 18/30-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 18/31-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates both empty-backbone sampling comparisons and
   portable numerical replay of its 75 native states, plus six fresh checked
@@ -14,7 +14,11 @@ establish that a calculation is currently running.
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
   pass extracted-archive replay with original scientific paths blocked.
-- [Focused slides](../slides/README.md): fifteen main slides and five supporting
+- [Corrected-primary CPU companion](../examples/exact_viologen_corrected_replay/README.md):
+  all nine new molecular Hessians and saved-gradient panels, analytic chloride
+  and six exact cycles pass fresh NumPy-only extraction replay with original
+  project/calculation paths blocked. The earlier example remains intact.
+- [Focused slides](../slides/README.md): fifteen main slides and six supporting
   slides, including the UMA-to-DFT pipeline, grafting ΔG and exact TEMPO response.
 - [Exact TEMPO follow-up](../validation/tempo_solution_pair_2026-10-30/README.md):
   checked MeCN relaxation costs of 1.477/1.639 eV. The 10.4% directional asymmetry
@@ -50,12 +54,21 @@ establish that a calculation is currently running.
   Hessian minimum, conformer-ensemble and interaction/free-energy checks remain
   incomplete. Complete control Hessians are retained and their fresh derivative
   validation continues in separate source-bound namespaces.
-- [Charged native component and followups](../validation/viologen_native_2026-11-02/README.md):
-  the first 114-atom +2/singlet viologen component passes independent Hessian,
-  minimum, sampled-derivative, nuclear, checkpoint and resource reconstruction.
-  Seven small/matched-empty followups have live PID/start observations. Four
-  larger double-graft components require a separate dimension pilot. This is
-  the separate smooth-surface MeCN model; no occupied G cycle or ensemble is qualified.
+- [Checked ionic native collection](../validation/ionic_cycle_completion_2026-11-02/README.md):
+  six single-graft minima and both matched empty references pass independent
+  Hessian, derivative, mode, nuclear, checkpoint and resource reconstruction.
+  Four balanced occupancy G cycles still lack matched partners. These are
+  separately identified smooth-surface MeCN r2SCAN/SVP components, not primary-model replacements.
+- [Complete primary molecular control](../validation/ionic_cycle_completion_2026-11-02/primary_cohort_summary.json):
+  nine new molecular Hessians, analytic chloride and 81 independent orbital/frame
+  reviews reconstruct six full exact-viologen G cycles. Changes from source are
+  below 2.45e-8 V and 1.55e-6 kJ/mol. This is numerical reproduction, not
+  experimental/speciation or material validation.
+- [Larger native recovery](../validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json):
+  the failed 137-atom pilot's exact grids/orbitals and solute partial tensor are
+  preserved. A declared H100/RKS workspace expansion recomputes full solvent H1,
+  response and all physical checks. Three matched followups remain held until
+  the new pilot independently qualifies; no G is inferred from the restart.
 - [Finite stationary electronic cycles](../validation/viologen_native_2026-11-02/stationary_electronic_summary.json):
   all twelve stationary components supply four balanced whole-chain E cycles.
   Adjacent/one-spacer values are −3.46/+18.68 kJ/mol for all-same and

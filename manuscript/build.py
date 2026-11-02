@@ -80,6 +80,13 @@ def main():
     if (manifest.parent/'ionic_native_component_review.json').exists():
         from check_native_component_pilot import audit as audit_native_component
         native_component_check = audit_native_component(manifest.parent)
+    primary_native_cohort_check = None
+    corrected_example_check = None
+    if (manifest.parent/'primary_native_cohort_inputs.json').exists():
+        from check_primary_native_cohort import audit as audit_primary_native_cohort
+        primary_native_cohort_check = audit_primary_native_cohort(manifest.parent)
+        from check_corrected_example import audit as audit_corrected_example
+        corrected_example_check = audit_corrected_example(ROOT,manifest.parent)
     ionic_preparation = manifest.parent/'ionic_preparation_replay.json'
     if ionic_preparation.exists():
         expected=json.loads(ionic_preparation.read_text())
@@ -106,6 +113,13 @@ def main():
     source.update(figure_inputs)
     if native_component_check is not None:
         source['manuscript/check_native_component_pilot.py']=sha(PAPER/'check_native_component_pilot.py')
+    if primary_native_cohort_check is not None:
+        source['manuscript/check_primary_native_cohort.py']=sha(PAPER/'check_primary_native_cohort.py')
+        source['src/redox/validation/native_component_sensitivity.py']=sha(ROOT/'src/redox/validation/native_component_sensitivity.py')
+        example=ROOT/'examples/exact_viologen_corrected_replay';cache=example/'data'
+        for path in [PAPER/'check_corrected_example.py',example/'replay.py',cache/'manifest.json',
+                     *[cache/name for name in json.loads((cache/'manifest.json').read_text())['files_sha256']]]:
+            source[str(path.relative_to(ROOT))]=sha(path)
     if component_sensitivity_check is not None:
         source['manuscript/check_component_sensitivity.py']=sha(PAPER/'check_component_sensitivity.py')
         source['src/redox/validation/component_sensitivity.py']=sha(ROOT/'src/redox/validation/component_sensitivity.py')
@@ -176,6 +190,8 @@ def main():
                   context_consequences_check=context_consequences_check,
                   component_sensitivity_check=component_sensitivity_check,
                   native_component_check=native_component_check,
+                  primary_native_cohort_check=primary_native_cohort_check,
+                  corrected_example_check=corrected_example_check,
                   xtb_runtime_check=xtb_runtime_check,
                   visual_review="pending; record separately in visual_review.json, bound to these PDF hashes")
     (PAPER / "claim_check.json").write_text(json.dumps(claims, indent=2) + "\n")

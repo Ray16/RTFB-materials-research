@@ -37,6 +37,33 @@ def test_exact_orbitals_grid_and_completed_components_share_one_frame(frame_case
     assert arrays['h1'].shape==(1,3,2,1) and not arrays['h1'].flags.writeable
 
 
+def test_partial_only_recovery_needs_no_completed_H1_and_cannot_import_one(frame_case):
+    (frame_case/'execution/rks_make_h1_state_identity.json').unlink()
+    (frame_case/'execution/rks_make_h1_0.npy').unlink()
+    frame,arrays=read_frame(frame_case,partial_only=True)
+    assert frame['partial_only'] and 'h1' not in arrays and not frame['PCM_H1_included']
+    assert 'complete solvent H1 must be computed' in frame['H1_scope']
+    with pytest.raises(FileNotFoundError):read_frame(frame_case)
+
+
+def test_partial_reuse_leaves_full_solvent_H1_method_untouched(tmp_path,monkeypatch):
+    from redox.qm.hessian_restart import reuse_partial
+    monkeypatch.setitem(sys.modules,'cupy',SimpleNamespace(asarray=np.asarray))
+    class Hessian:
+        def partial_hess_elec(self):return 'original'
+        def undo_solvent(self):pass
+        def make_h1(self):return 'complete solvent H1'
+    target=Hessian();source=np.ones((2,2));source.flags.writeable=False
+    with reuse_partial(target,{'partial':source},tmp_path/'partial'):
+        value=target.partial_hess_elec();value[0,0]=42
+        assert target.make_h1()=='complete solvent H1' and source[0,0]==1
+    assert target.partial_hess_elec()=='original'
+    record=json.loads((tmp_path/'partial/reuse.json').read_text())
+    assert not record['make_h1_replaced'] and record['full_solvent_H1_recomputation_required']
+    with pytest.raises(ValueError):
+        with reuse_partial(target,{'partial':source,'h1':source},tmp_path/'wrong'):pass
+
+
 def test_response_cap_accounts_for_the_installed_minimum_aligned_block():
     assert response_ceiling_gib(1037,206)[0]==3
     cap,minimum=response_ceiling_gib(1193,238)

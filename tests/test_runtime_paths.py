@@ -38,3 +38,22 @@ def test_shared_site_gate_works_with_a_different_node_home(tmp_path,monkeypatch)
     monkeypatch.setattr(Path,'home',classmethod(lambda cls:tmp_path/'different_home'))
     assert reservation_gate()==tool
     assert reservation_lock_root()==tmp_path/'shared_leases'
+
+
+def test_shared_quantum_package_binding_requires_identical_bytes(tmp_path,monkeypatch):
+    from types import SimpleNamespace
+    from redox.core import runtime_paths as runtime
+    installed=tmp_path/'node-local/gpu4pyscf';shared=tmp_path/'shared/gpu4pyscf'
+    for base in (installed,shared):
+        base.mkdir(parents=True);(base/'__init__.py').write_text('')
+        for name in ('dft/gen_grid.py','dft/numint.py','lib/libgdft.so'):
+            p=base/name;p.parent.mkdir(exist_ok=True);p.write_bytes(b'identical implementation fixture')
+    original=runtime.importlib.util.find_spec
+    monkeypatch.setattr(runtime.importlib.util,'find_spec',lambda name:SimpleNamespace(origin=str(installed/'__init__.py')) if name=='gpu4pyscf' else original(name))
+    monkeypatch.delenv('REDOX_GPU4PYSCF_ROOT',raising=False)
+    monkeypatch.setattr(runtime,'site_defaults',lambda:{'gpu4pyscf_source_root':str(shared)})
+    assert runtime.gpu4pyscf_source_root()==shared
+    (shared/'lib/libgdft.so').write_bytes(b'different kernel')
+    with pytest.raises(ValueError,match='differs'):runtime.gpu4pyscf_source_root()
+    monkeypatch.setenv('REDOX_GPU4PYSCF_ROOT',str(installed))
+    assert runtime.gpu4pyscf_source_root()==installed

@@ -31,11 +31,15 @@ def main():
     grafting=importlib.util.module_from_spec(spec);spec.loader.exec_module(grafting);graft=grafting.audit(epoch)
     spec=importlib.util.spec_from_file_location('deck_checked_ionic_native',ROOT/'manuscript/check_native_component_pilot.py')
     ionic=importlib.util.module_from_spec(spec);spec.loader.exec_module(ionic);native=ionic.audit(epoch)
+    spec=importlib.util.spec_from_file_location('deck_checked_primary_native_cohort',ROOT/'manuscript/check_primary_native_cohort.py')
+    primary=importlib.util.module_from_spec(spec);spec.loader.exec_module(primary);cohort=primary.audit(epoch)
     paths=[SLIDES/'redox_workflow.tex',SLIDES/'story/motivation_results.tex',SLIDES/'story/supporting.tex',
            epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',
            epoch/'viologen_native_values.tex',ROOT/'manuscript/check_viologen_native.py',Path(__file__).resolve()]
     if graft is not None:paths.extend([epoch/'viologen_grafting_values.tex',ROOT/'manuscript/check_viologen_grafting.py'])
     paths.extend([epoch/'ionic_native_component_review.json',ROOT/'manuscript/check_native_component_pilot.py'])
+    paths.extend([epoch/name for name in ('primary_native_cohort_inputs.json','primary_native_cohort_cycles.json','primary_native_component_reviews.json','primary_native_cohort_table.tex')])
+    paths.extend([ROOT/'manuscript/check_primary_native_cohort.py',ROOT/'src/redox/validation/native_component_sensitivity.py'])
     inputs={str(p.relative_to(ROOT)):sha(p) for p in paths}
     for source in paths[:3]:
         text=source.read_text()
@@ -65,6 +69,7 @@ def main():
     if (str(native['atoms']) not in text or f"{native['minimum_internal_frequency_cm']:.2f}" not in text
             or 'occupiedfree-energycycle' not in ''.join(text.split())):
         raise ValueError('Checked ionic component or its cycle limit is absent from the deck')
+    if '81' not in text or cohort['complete_cycles']!=6:raise ValueError('Checked primary-native coverage absent from the deck')
     if any(sha(ROOT/path)!=digest for path,digest in inputs.items()):raise ValueError('Deck source changed during compilation')
     shutil.copyfile(pdf,SLIDES/'redox_workflow.pdf')
     report=dict(status='focused_deck_built_checked_directional_result',pages=len(reader.pages),main_frames=main_frames,

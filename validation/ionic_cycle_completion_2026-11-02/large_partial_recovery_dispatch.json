@@ -1,0 +1,70 @@
+{
+  "status": "checked_native_followup_bounded_pass_finished",
+  "started": 1793618703.9212673,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16/namespace.json": "16e3294d9cf84a8c844e300adcf95fe6217fa15665a2e16b210e721b6ade984c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16/sources/partial_checkpoint_review.json": "35601e22620f07b929fbadbfafd41cb4d92e53047d5f9b4191740ff9d0ed9073",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/viologen_native_2026-11-02/site2_resource_review.json": "11dc3758061ead48b087b9713384a90d8408ca734d561e564e65028d857309f8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/charged_native_followup.py": "b36d02e84a5b694f597f77a96bb0694cc2a75ef1df0e0e76b133c3797867dc0b",
+    "/nfs/lambda_stor_01/homes/rzhu/.config/gpu_reserve/config.env": "68811b4ca0bb7c5191c6fae5c22c81ccf48898893521bf63db0ce2f83a7fa70e"
+  },
+  "launches": [],
+  "refusals": [
+    {
+      "key": "all_same__occ_2_3",
+      "host": "lambda13",
+      "GPU": 1,
+      "error": "CalledProcessError(1, ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8', 'lambda13', 'env PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src OMP_NUM_THREADS=1 OMP_THREAD_LIMIT=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 XTB_THREADS=1 NUMPY_MADVISE_HUGEPAGE=0 /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python -c \\'import json,os,pathlib,subprocess,sys\\nfrom redox.workflows.screening_control import probe\\nfrom redox.core.io import atomic_write_json\\nfrom redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation\\nspec=pathlib.Path(sys.argv[1]);output=pathlib.Path(sys.argv[2]);gpu=sys.argv[3]\\nallowed=os.sched_getaffinity(0)\\nwith allocation_guard():host_capacity(1,minimum_ram_gib=2);os.sched_setaffinity(0,cpu_allocation(1))\\nprobe(spec)\\nos.sched_setaffinity(0,allowed)\\nargv=[sys.executable,\"-u\",\"-m\",\"redox.workflows.screening_control\",\"launch\",\"--spec\",str(spec),\"--gpu\",gpu,\"--out\",str(output)]\\nlogpath=pathlib.Path(sys.argv[4]);logpath.parent.mkdir(parents=True,exist_ok=True)\\nwith logpath.open(\"x\") as log:child=subprocess.Popen(argv,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)\\nowner=dict(host=os.uname().nodename.split(\".\")[0],pid=child.pid,process_start=pathlib.Path(f\"/proc/{child.pid}/stat\").read_text().rsplit(\")\",1)[1].split()[19])\\nreceipt=dict(status=\"controller_spawned_scientific_start_unverified\",owner=owner,placement=str(output),argv=argv)\\natomic_write_json(pathlib.Path(sys.argv[5]),receipt);print(json.dumps(receipt))\\n\\' /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16/namespace.json /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16/placement_001 1 /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16/dispatch_logs/try_001.log /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16/dispatch_claim/try_001.json'])",
+      "uncertain_attempt_preserved": true
+    }
+  ],
+  "native_G_qualified": false,
+  "avoided_hosts": [
+    "lambda1"
+  ],
+  "availability_errors": [
+    {
+      "host": "lambda13",
+      "error": "TimeoutExpired(['/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve', 'list', '--hosts', 'lambda13'], 15)",
+      "availability": "unverified_no_submission"
+    }
+  ],
+  "availability_retries": [
+    {
+      "host": "lambda13",
+      "status": "authoritative_gate_query_completed",
+      "slots": [
+        [
+          "lambda13",
+          1
+        ],
+        [
+          "lambda13",
+          2
+        ],
+        [
+          "lambda13",
+          3
+        ],
+        [
+          "lambda13",
+          4
+        ],
+        [
+          "lambda13",
+          5
+        ],
+        [
+          "lambda13",
+          6
+        ],
+        [
+          "lambda13",
+          7
+        ]
+      ]
+    }
+  ],
+  "finished": 1793618776.9838202,
+  "unsubmitted": []
+}

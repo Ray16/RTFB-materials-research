@@ -1,0 +1,73 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/ferrocene/neu/relaxed.xyz",
+  "charge": 0,
+  "mult": 1,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/ferrocene/neu/1791738376554349651/branch_1/opt.xyz",
+  "e_smd_Ha": -1650.7494010861333,
+  "e_smd_eV": -44919.179548288135,
+  "converged_smd": true,
+  "e_gas_Ha": -1650.735087648296,
+  "e_gas_eV": -44918.79005980264,
+  "converged_gas": true,
+  "dG_solv_eV": -0.38948848549721676,
+  "id": "ferrocene",
+  "state": "neu",
+  "n_e": 0,
+  "g_thermal_eV": null,
+  "zpe_eV": 4.351357181219899,
+  "n_imag": null,
+  "freq_min_cm": null,
+  "thermal_method": "gfn2-xtb",
+  "freq_level": "gfn2-xtb (RRHO, 298.15K)",
+  "minimum_repair_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/ferrocene/neu/opt.xyz",
+  "minimum_repair_source_sha256": "8a991735dfaaaea4bf61fa42bc69f709fccc94c1761d51a197c975c4d52147e2",
+  "gas_homo_eV": -8.489068308066967,
+  "gas_lumo_eV": 1.0982862583933537,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.7494010861333,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.735087648296,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -8.527160657550429,
+  "smd_lumo_eV": 1.1430579430551788,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "legacy_thermal_archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/ferrocene/neu/1791738376554349651/superseded_canonical/result.json",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "energy_metadata_corrected_from": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/fc_neu_refined_result_metadata_before_1791739550912408240.json"
+}

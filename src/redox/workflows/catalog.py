@@ -10,6 +10,12 @@ CATEGORIES = {
  'discovery': ['workflows'],
 }
 SPECIALIZED = [
+ dict(kind='recovery', module='redox.workflows.charged_partial_recovery',
+      purpose='Closed allocation failure only; exact partial frame, full solvent H1 and prospective H100 workspace'),
+ dict(kind='checked_analysis', module='redox.workflows.ionic_native_cycles',
+      purpose='Read-only matched native occupancy cycles; missing components remain blank'),
+ dict(kind='checked_control_preparation', module='redox.workflows.screening_native_panel',
+      purpose='Prepare exact primary molecular Hessian repeats; separate pilot launch/review required'),
  dict(kind='checked_campaign', module='redox.workflows.charged_native_followup',
       purpose='Release only source/dimension-matched components after an exact charged-native pilot passes'),
  dict(kind='recovery', module='redox.workflows.relocate_unstarted_namespace',

@@ -1,0 +1,141 @@
+{
+  "status": "checked_native_followup_bounded_pass_finished",
+  "started": 1793616184.9663496,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/manifest.json": "7ad1138459d9f4a4c7abec9829fa06c2ae7e5b6ab1165525cbdf545084d39092",
+    "validation/ionic_cycle_completion_2026-11-02/primary_graft_ox2_review.json": "1dad1aabaca98c4cbf60312374ef8d0261b6ae0eb7c1754f42d01283f63318f2",
+    "validation/ionic_cycle_completion_2026-11-02/primary_graft_ox1_review.json": "159a9602174489f768a8c5524b0af5f79c5a52b61333e6a2834115a5f110c3f3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/screening_native_panel.py": "e265f9f2ac36892a9acb3843ebeb920c75db049fd26dd76b8daa978e3c460c76",
+    "validation/ionic_cycle_completion_2026-11-02/primary_storage_peers.json": "cd905ae8fcd4e20e54a98f62c2be953905b052a0bf321c8061b806aa79610e9f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/charged_native_followup.py": "cd383a3240bbed87a9bfe6b2a9c171813e063bb8c9e9373980984d55754bc799",
+    "/nfs/lambda_stor_01/homes/rzhu/.config/gpu_reserve/config.env": "68811b4ca0bb7c5191c6fae5c22c81ccf48898893521bf63db0ce2f83a7fa70e"
+  },
+  "launches": [
+    {
+      "key": "graft_neu",
+      "host": "lambda4",
+      "GPU": 0,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda4",
+          "pid": 1367482,
+          "process_start": "47251789"
+        },
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_neu/placement_001",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.screening_control",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_neu/namespace.json",
+          "--gpu",
+          "0",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_neu/placement_001"
+        ]
+      }
+    },
+    {
+      "key": "precursor_0",
+      "host": "lambda4",
+      "GPU": 5,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda4",
+          "pid": 1370645,
+          "process_start": "47252308"
+        },
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_0/placement_001",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.screening_control",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_0/namespace.json",
+          "--gpu",
+          "5",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_0/placement_001"
+        ]
+      }
+    },
+    {
+      "key": "precursor_1",
+      "host": "lambda4",
+      "GPU": 6,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda4",
+          "pid": 1371163,
+          "process_start": "47252847"
+        },
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_1/placement_001",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.screening_control",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_1/namespace.json",
+          "--gpu",
+          "6",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_1/placement_001"
+        ]
+      }
+    },
+    {
+      "key": "precursor_2",
+      "host": "lambda4",
+      "GPU": 7,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda4",
+          "pid": 1371689,
+          "process_start": "47253362"
+        },
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_2/placement_001",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.screening_control",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_2/namespace.json",
+          "--gpu",
+          "7",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/precursor_2/placement_001"
+        ]
+      }
+    }
+  ],
+  "refusals": [],
+  "native_G_qualified": false,
+  "avoided_hosts": [
+    "lambda1"
+  ],
+  "availability_errors": [
+    {
+      "host": "lambda13",
+      "error": "TimeoutExpired(['/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve', 'list', '--hosts', 'lambda13'], 15)",
+      "availability": "unverified_no_submission"
+    }
+  ],
+  "finished": 1793616232.4316998,
+  "unsubmitted": [
+    "fc_neu",
+    "fc_ox",
+    "local"
+  ]
+}

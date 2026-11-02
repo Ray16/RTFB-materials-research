@@ -51,8 +51,8 @@
       "build": "manuscript/build_check.json",
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
-      "status": "18_page_JCIM_rewrite_with_context_tests_and_scoped_implementation_checks",
-      "scope": "18-page article and 30-page SI; no complete occupied ensemble or synthesis/material admission"
+      "status": "full_primary_native_cohort_integrated_working_JCIM_draft",
+      "scope": "18-page article and 31-page SI; six full primary molecular G controls, no completed ionic occupied G cycle or ensemble/material admission"
     },
     "native_polymer_continuation": {
       "guide": "validation/native_followup_collection_2026-10-30/README.md",
@@ -390,6 +390,41 @@
       "source_snapshot": "validation/jcim_completion_2026-11-02/context_consequences_checked.json",
       "status": "five_source_bound_interpretation_tests_checked",
       "scope": "Saved results and explicit transfers, not new QM accuracy or experimental decision validation"
+    },
+    "primary_native_lead_control": {
+      "guide": "validation/ionic_cycle_completion_2026-11-02/README.md",
+      "current": "validation/ionic_cycle_completion_2026-11-02/primary_cohort_cycles.json",
+      "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/primary_cohort_scalar_inputs.json",
+      "physical_replay": "validation/ionic_cycle_completion_2026-11-02/primary_cohort_summary.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2",
+      "status": "ten_exact_primary_states_six_complete_G_cycles_numerically_requalified",
+      "scope": "Nine fresh native molecular Hessians and analytic chloride; 81 independent occupied-orbital spin/frame reviews; no experimental/speciation/ensemble/material inference"
+    },
+    "ionic_native_component_collection": {
+      "guide": "validation/ionic_cycle_completion_2026-11-02/README.md",
+      "current": "validation/ionic_cycle_completion_2026-11-02/native_collection_summary.json",
+      "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/partial_cycles_08.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations",
+      "status": "all_eight_single_graft_and_empty_components_checked_double_grafts_pending",
+      "scope": "Six charge-2 single grafts and two neutral references in the separate smooth-surface MeCN r2SCAN/SVP model; no complete occupied cycle"
+    },
+    "charged_partial_Hessian_recovery": {
+      "guide": "validation/ionic_cycle_completion_2026-11-02/README.md",
+      "current": "validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json",
+      "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/RHF16_followup_preparation.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared",
+      "status": "exact_partial_frame_restart_actual_start_verified_full_physical_review_pending",
+      "scope": "Closed H1 allocation failure retained; full solution H1/response recomputed with prospective RKS-16-GiB workspace; no G/minimum/ensemble admission"
+    },
+    "corrected_primary_CPU_example": {
+      "guide": "examples/exact_viologen_corrected_replay/README.md",
+      "current": "validation/ionic_cycle_completion_2026-11-02/corrected_CPU_validation.json",
+      "source_snapshot": "examples/exact_viologen_corrected_replay/data/manifest.json",
+      "raw_root": "examples/exact_viologen_corrected_replay/data",
+      "archive": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-02_exact_viologen_corrected_CPU.tar.zst",
+      "archive_sha256": "d4b0f13c9b845c4f42090b9802a94d683be70c111313b2768baa3c8b86c2502e",
+      "status": "ten_states_nine_Hessians_nine_FD_panels_fresh_numpy_extracted_replay_checked",
+      "scope": "Six cached redox/grafting/disproportionation cycles; original paths blocked; no SCF/orbital-spin or full historical closure repetition"
     }
   }
 }

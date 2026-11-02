@@ -19,7 +19,7 @@ Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 
-The current article/SI are 18/30 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 18/31 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The [2 November completion evidence](../validation/jcim_completion_2026-11-02/README.md)
 adds five interpretation-transfer tests, 29 accepted electronic-control
@@ -35,6 +35,15 @@ E cycles, plus one independently checked native local-minimum component.
 Seven matching small/empty native followups have live observations; a separate
 137-atom H100 dimension pilot precedes release of the larger class. Complete
 occupied G/ensemble cycles and synthesis/material decisions remain open.
+
+The [full primary molecular repeat](../validation/ionic_cycle_completion_2026-11-02/README.md)
+now closes the exact ten-state lead's numerical thermochemical comparison:
+nine fresh Hessians, analytic chloride, 81 native orbital/frame reviews and
+six complete matched G cycles, with changes below 2.45e-8 V and 1.55e-6 kJ/mol.
+The polymer collection separately has eight reviewed native components but no
+complete occupied G cycle. A source-frame-bound larger recovery is prospective;
+its allocation failure and partial outputs remain preserved. Other benchmark/
+base-reaction nuclear coverage and wider production qualification remain open.
 
 The historical dated observations below document previous milestones and
 resource conditions. They are not current fleet or storage observations.

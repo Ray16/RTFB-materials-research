@@ -80,7 +80,10 @@ def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB
         'print(json.dumps(dict(model=m.MODEL,evidence=m.component_evidence(ROOT/"results/validation/smooth_CDS_2026-10-25/pilot"))))')
     result=subprocess.run(execution.command(spec)+[runtime['python'],'-c',program],capture_output=True,text=True,timeout=180,check=True)
     model=json.loads(result.stdout);reader=ArchivedSources(ROOT,archive);reader.verify_all(model['evidence'])
-    package=Path(importlib.util.find_spec('gpu4pyscf').origin).parent
+    from redox.core.runtime_paths import gpu4pyscf_source_root
+    package=gpu4pyscf_source_root()
+    shutil.copyfile(ROOT/'src/redox/core/runtime_paths.py',sources/'runtime_discovery.py')
+    if (ROOT/'config/runtime_paths.json').exists():shutil.copyfile(ROOT/'config/runtime_paths.json',sources/'runtime_paths.json')
     bound=[*sources.glob('*'),archive/'src/redox/qm/dft.py',archive/'scripts/pipeline/smooth_cds_control.py',
         archive/'scripts/pipeline/run_pi_stacking.py',archive/'src/redox/workflows/resources.py',
         archive/'scripts/fleet/exclusive_python_worker.py',archive/'scripts/fleet/tensor_runtime_worker.py',
@@ -169,7 +172,7 @@ def prepare_finalization(source_namespace,output):
     result['status']='converged_ionic_optimizer_return_prepared_for_fresh_final_evaluation';return result
 
 
-def prepare_native_component(review_path,output,larger_dimension_pilot_review=None):
+def prepare_native_component(review_path,output,larger_dimension_pilot_review=None,larger_resource_class=None):
     """One closed-shell ionic native pilot, at a separately checked geometry."""
     from ase.io import read
     from redox.build.geometry import _skeleton
@@ -199,7 +202,7 @@ def prepare_native_component(review_path,output,larger_dimension_pilot_review=No
     if larger_dimension_pilot_review is None:
         if nao>1193 or nocc>235:raise ValueError('First charged native pilot must fit inside the checked neutral dimension envelope')
     else:
-        from redox.workflows.native_component_resources import larger_profile as large_resources
+        from redox.workflows.native_component_resources import larger_profile as large_resources,LARGE_CLASS
         witness=json.loads(larger_dimension_pilot_review.read_text())
         if (witness.get('status')!='charged_polymer_native_component_independently_reconstructed'
                 or not witness.get('native_G_qualified') or witness.get('charge')!=2 or witness.get('mult')!=1
@@ -207,7 +210,7 @@ def prepare_native_component(review_path,output,larger_dimension_pilot_review=No
                 or witness.get('primary_model_admission') or not witness.get('source_sha256')
                 or any(sha256_file(p)!=h for p,h in witness['source_sha256'].items())):
             raise ValueError('A source-bound smaller charged native pilot is required before the larger dimension pilot')
-        larger_profile=large_resources(len(symbols),nao,nocc,old['charge'],old['mult'],old['prepared_case']['occupied_sites'])
+        larger_profile=large_resources(len(symbols),nao,nocc,old['charge'],old['mult'],old['prepared_case']['occupied_sites'],larger_resource_class or LARGE_CLASS)
     initial=json.loads((Path(source['sources'])/'initial_audit.json').read_text());preparation=Path(initial['source'])
     if sha256_file(preparation)!=initial['source_sha256']:raise ValueError('Original ionic preparation changed')
     result=prepare(Path(source['archive']),preparation,output,old['prepared_case']['key'],allow_empty_reference=empty)

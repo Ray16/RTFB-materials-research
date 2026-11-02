@@ -1,0 +1,49 @@
+{
+  "status": "checked_native_followup_bounded_pass_finished",
+  "started": 1793619107.593597,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/namespace.json": "50d76738bc04e6b6d66bd40d569a2ad4aa59501b1d55216b50adb301cfa1ad6f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/sources/partial_checkpoint_review.json": "35601e22620f07b929fbadbfafd41cb4d92e53047d5f9b4191740ff9d0ed9073",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/viologen_native_2026-11-02/site2_resource_review.json": "11dc3758061ead48b087b9713384a90d8408ca734d561e564e65028d857309f8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/charged_native_followup.py": "b36d02e84a5b694f597f77a96bb0694cc2a75ef1df0e0e76b133c3797867dc0b",
+    "/nfs/lambda_stor_01/homes/rzhu/.config/gpu_reserve/config.env": "68811b4ca0bb7c5191c6fae5c22c81ccf48898893521bf63db0ce2f83a7fa70e"
+  },
+  "launches": [
+    {
+      "key": "all_same__occ_2_3",
+      "host": "lambda13",
+      "GPU": 1,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda13",
+          "pid": 1943878,
+          "process_start": "173651075"
+        },
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/placement_001",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.screening_control",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/namespace.json",
+          "--gpu",
+          "1",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/placement_001"
+        ]
+      }
+    }
+  ],
+  "refusals": [],
+  "native_G_qualified": false,
+  "avoided_hosts": [
+    "lambda1"
+  ],
+  "availability_errors": [],
+  "availability_retries": [],
+  "finished": 1793619171.4066782,
+  "unsubmitted": []
+}

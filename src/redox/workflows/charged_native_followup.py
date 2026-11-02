@@ -25,8 +25,8 @@ def load(path,name):
 
 
 def prerequisite(manifest,review_path):
-    from redox.workflows.native_component_resources import LARGE_CLASS,peak_limit,validate_plan
-    large=manifest.get('native_resource_class')==LARGE_CLASS
+    from redox.workflows.native_component_resources import LARGE_CLASS,EXPANDED_RHF_CLASS,peak_limit,validate_plan
+    large=manifest.get('native_resource_class') in (LARGE_CLASS,EXPANDED_RHF_CLASS)
     if manifest.get('native_resource_class') and not large:raise ValueError('Unknown native followup resource class')
     review=json.loads(review_path.read_text())
     if (review['status']!='charged_polymer_native_component_independently_reconstructed' or not review['native_G_qualified']
@@ -35,7 +35,7 @@ def prerequisite(manifest,review_path):
     if any(sha256_file(p)!=h for p,h in review['source_sha256'].items()):raise ValueError('Pilot backing changed')
     original=verify(Path(review['namespace']));pilot=json.loads((Path(original['case'])/'plan.json').read_text())
     raw=json.loads((Path(original['case'])/'thermodynamic_component.json').read_text())
-    if large and review.get('native_resource_class')!=LARGE_CLASS:raise ValueError('Exact completed larger dimension pilot required')
+    if large and review.get('native_resource_class')!=manifest['native_resource_class']:raise ValueError('Exact completed larger dimension pilot required')
     if large:validate_plan(pilot)
     if (review['charge']!=(4 if large else 2) or review['mult']!=1 or set(review['G_by_cutoff_eV'])!={'25','50','100'}
             or any(type(v) not in (int,float) or not math.isfinite(v) for v in review['G_by_cutoff_eV'].values())
@@ -63,15 +63,21 @@ def prerequisite(manifest,review_path):
 
 def dispatch(manifest_path,review_path,interpreter,avoid_hosts=()):
     manifest=json.loads(manifest_path.read_text());rows=prerequisite(manifest,review_path)
+    return dispatch_rows(rows,manifest_path.parent,interpreter,[manifest_path,review_path],avoid_hosts)
+
+
+def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),storage_peers=()):
+    """Bounded shared launcher; callers first qualify their scientific class."""
+    from redox.workflows.resources import GATE,free_slots
     capacity=load(ROOT/'scripts/pipeline/run_namespace_energy_queue.py','charged_native_capacity')
     owners=load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','charged_native_owners')
     remote=load(ROOT/'scripts/fleet/run_screening_energy_panel.py','charged_native_shared_launcher')
     storage=load(ROOT/'scripts/fleet/run_charged_polymer_geometry_panel.py','charged_native_shared_storage')
-    policy=Path(os.environ.get('GPU_RESERVE_CONFIG',str(Path.home()/'.config/gpu_reserve/config.env'))).resolve()
+    policy=Path(os.environ.get('GPU_RESERVE_CONFIG',str(GATE.parent.parent/'.config/gpu_reserve/config.env'))).resolve()
     match=re.search(r'^ALLOWED_HOSTS="([^"]+)"',policy.read_text(),re.M)
     if match is None:raise ValueError('Authoritative system host policy required')
-    output=manifest_path.parent;record=dict(status='checked_native_followup_dispatching',started=time.time(),
-        source_sha256={str(p):sha256_file(p) for p in [manifest_path,review_path,Path(__file__),policy]},launches=[],refusals=[],native_G_qualified=False,avoided_hosts=sorted(set(avoid_hosts)))
+    record=dict(status='checked_native_followup_dispatching',started=time.time(),
+        source_sha256={str(p):sha256_file(p) for p in [*prerequisite_sources,Path(__file__),policy]},launches=[],refusals=[],native_G_qualified=False,avoided_hosts=sorted(set(avoid_hosts)))
     with (output/'followup_dispatch.lock').open('a+') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         pending=[]
@@ -80,11 +86,26 @@ def dispatch(manifest_path,review_path,interpreter,avoid_hosts=()):
             if not (root/'case/status.json').exists() and not (root/'case/residency_guard/owner.json').exists() and not (root/'dispatch_claim').exists():pending.append(row)
         hosts=[host for host in match.group(1).split() if host not in avoid_hosts]
         slots,errors=capacity.discover_slots(hosts);record['availability_errors']=errors;blocked_hosts=set()
+        # The fast inventory can time out on a healthy many-GPU host. One
+        # authoritative 60-second gate query distinguishes that observation
+        # limit from an unavailable node; capacity and atomic reservation still
+        # run for every returned device. No worker or claim is restarted here.
+        record['availability_retries']=[]
+        for error in errors:
+            host=error['host']
+            if host not in hosts:continue
+            try:
+                recovered=free_slots([host])
+                if any(name!=host for name,_ in recovered):raise ValueError('Gate returned an unrequested host')
+                slots.extend(slot for slot in recovered if slot not in slots)
+                record['availability_retries'].append(dict(host=host,status='authoritative_gate_query_completed',slots=recovered))
+            except Exception as retry_error:
+                record['availability_retries'].append(dict(host=host,status='unverified_no_submission',error=repr(retry_error)))
         for host,gpu in slots:
             if not pending:break
             if host in blocked_hosts:continue
             row=pending[0];spec=verify(Path(row['namespace']));plan=json.loads((Path(spec['case'])/'plan.json').read_text())
-            space=storage.storage_headroom(rows,[],plan['maximum_durable_output_bytes'],owners.alive,shutil.disk_usage(output).free)
+            space=storage.storage_headroom(rows,storage_peers,plan['maximum_durable_output_bytes'],owners.alive,shutil.disk_usage(output).free)
             if not space['sufficient']:record['refusals'].append(dict(reason='aggregate_storage',**space));break
             claim=None
             try:

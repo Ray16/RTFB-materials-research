@@ -87,3 +87,37 @@ class through a source-bound manifest, with no automatic smaller-to-larger
 admission. The existing compact numerical adapter and physical QC are unchanged.
 Review inputs are copied into each new namespace to stay visible inside the
 isolated source checkout.
+
+
+## Matched native analysis and primary implementation controls
+
+`python -m redox.workflows.ionic_native_cycles --help` is a read-only analysis
+entry point. It verifies exact graphs, charges, model, implementation, thermal
+protocol and source receipts before context-checked sums. Missing partners keep
+the whole cycle blank. Finite-minimum G is distinct from an occupied ensemble,
+isolated motif binding or electronic coupling.
+
+`python -m redox.workflows.screening_native_panel prepare --help` prepares
+source-bound primary molecular repeats; `dispatch` requires the exact largest
+closed/open-shell physical/resource pilot reviews. Both this panel and charged
+native followups reuse one bounded launcher, storage accounting, authoritative
+reservation queries, node preflight and CPU/RAM guards. A slower healthy-node
+query may be retried once through the same system gate; an observation timeout
+never reclaims a worker or changes a reservation.
+
+Actual SCF molecular frames, occupied electron counts/global S², execution
+closure and resource identity use shared CPU reviewers. Their as-used source
+bytes are frozen beside each receipt. The independent full-precision spin gate
+is separate from comparison with four-decimal producer diagnostics.
+
+The large RKS recovery uses `charged_partial_recovery` after a proven closed
+H1 workspace failure. It restores exact orbitals/grids and the completed solute
+partial tensor, while leaving the full solvent H1 method intact. A prospective
+16-GiB RKS workspace and 40-GiB compact budget require the declared H100 class;
+all derivative, residual, symmetry and minimum limits remain unchanged.
+
+Quantum preparation discovers a declared shared GPU4PySCF source root from
+`REDOX_GPU4PYSCF_ROOT` or site defaults, falling back to the actual installed
+package only when none is declared. Grid, integrator and compiled-kernel bytes
+must match before shared-path binding. The discovery source/config is frozen
+in the namespace; this does not change the executable or numerical method.

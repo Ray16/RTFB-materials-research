@@ -40,6 +40,9 @@ def charge_state(plan):
         raise ValueError('An explicit closed-shell charged component or neutral control is required')
     if component and (plan.get('resume_components') or plan.get('resume_response') or plan.get('saved_full_Hessian')):
         raise ValueError('The first charged native pilot requires a fresh full Hessian')
+    if plan.get('resume_partial_Hessian') and (not component or charge!=4
+            or plan.get('native_resource_class')!='double_graft_H100_RHF16_workspace_v2'):
+        raise ValueError('Partial-only charged recovery requires its declared larger dimension class')
     return charge,mult
 
 
@@ -101,6 +104,11 @@ def main():
         workspace = adapter if not plan.get('Hessian_validation_continuation') else load(workspace_file(plan,ROOT),'unchanged_bounded_validation_operators')
         model = load(ROOT / 'scripts/pipeline/smooth_cds_control.py', 'unchanged_polymer_MeCN_model')
         monitor = load(ROOT / 'scripts/pipeline/run_pi_stacking.py', 'unchanged_polymer_memory_monitor')
+        resource_helper=(load(sources/'native_resource_helper.py','frozen_native_resource_profile')
+                         if plan.get('native_resource_class') else None)
+        budget=(resource_helper.execution_budget(native,plan)
+                if plan.get('native_resource_class')=='double_graft_H100_RHF16_workspace_v2'
+                else native.execution_budget())
         symbols = plan['symbols']
         center = json.loads(Path(plan['points'][0]['evaluation']).read_text())
         coordinates = np.asarray(center['coordinates_Bohr'], dtype=np.float64)
@@ -142,15 +150,17 @@ def main():
             atomic_write_json(folder / 'evaluation.json', row)
             return mf, gradient, row, folder
         with helper.corrected_screening(sources / 'kernel.cu', case / 'screening_implementation'), \
-                monitor.MemoryMonitor() as memory, native.execution_budget() as policy, \
-                workspace.compact_smd_execution(case / 'execution', 28), \
+                monitor.MemoryMonitor() as memory, budget as policy, \
+                workspace.compact_smd_execution(case / 'execution', plan.get('compact_memory_budget_GiB',28)), \
                 model.smooth_cds(case / 'model', ROOT / 'results/validation/smooth_CDS_2026-10-25/pilot'), \
                 finer_cds_hessian(1e-5):
             saved_components=None
-            if plan.get('resume_components'):
-                frame,saved_components=restart.read_frame(plan['resume_components']['source_case'])
-                if frame!=plan['resume_components']['frame']:raise ValueError('Restart frame changed')
-                mol=gto.M(atom=list(zip(symbols,coordinates.tolist())),unit='Bohr',basis='def2-svp',charge=0,spin=0,verbose=0,max_memory=6000)
+            partial_restart=bool(plan.get('resume_partial_Hessian'))
+            restart_plan=plan.get('resume_partial_Hessian') if partial_restart else plan.get('resume_components')
+            if restart_plan:
+                frame,saved_components=restart.read_frame(restart_plan['source_case'],partial_only=partial_restart)
+                if frame!=restart_plan['frame']:raise ValueError('Restart frame changed')
+                mol=gto.M(atom=list(zip(symbols,coordinates.tolist())),unit='Bohr',basis='def2-svp',charge=charge,spin=mult-1,verbose=0,max_memory=6000)
                 mf=dft._build_smd_mf(mol,'r2scan','acetonitrile','gpu',disp='d4')
                 mf.conv_tol=1e-12;mf.conv_tol_grad=1e-8;mf.max_cycle=200;mf.grids.level=3
                 restart.restore_mf(mf,frame,saved_components,case/'restart_energy.json')
@@ -162,6 +172,8 @@ def main():
                 center_folder=case/'points/0000';center_folder.mkdir(parents=True);counter=1
                 atomic_write_json(center_folder/'evaluation.json',dict(coordinates_Bohr=coordinates.tolist(),
                     gradient_Ha_Bohr=gradient.tolist(),E_Ha=float(mf.e_tot),SCF_converged=True,
+                    spin=dft._orbital_diag(mf,mult-1),
+                    SCF_checkpoint=str(Path(restart_plan['source_case'])/'SCF_evaluations/0000/0000/SCF.h5'),
                     SCF_state_restored=True,source_frame=frame,native_G_qualified=False))
             else:mf, gradient, _, center_folder = solve(coordinates)
             maximum_gradient = float(abs(gradient).max())
@@ -176,7 +188,7 @@ def main():
             mf.cphf_grids = mf.grids.copy()
             if saved_components is None:
                 np.savez(case / 'grids.npz', coords=cp.asnumpy(mf.grids.coords), weights=cp.asnumpy(mf.grids.weights))
-            else:shutil.copyfile(Path(plan['resume_components']['source_case'])/'grids.npz',case/'grids.npz')
+            else:shutil.copyfile(Path(restart_plan['source_case'])/'grids.npz',case/'grids.npz')
             identity = dict(center_evaluation=str(center_folder / 'evaluation.json'),
                 center_evaluation_sha256=hashlib.sha256((center_folder / 'evaluation.json').read_bytes()).hexdigest(),
                 grids_sha256=hashlib.sha256((case / 'grids.npz').read_bytes()).hexdigest(),
@@ -186,7 +198,9 @@ def main():
             hobj.max_cycle = 100
             from gpu4pyscf.hessian import rhf as response_rhf
             from contextlib import nullcontext
-            reuse=nullcontext() if saved_components is None else restart.reuse_components(hobj,saved_components,case/'component_reuse')
+            reuse=(nullcontext() if saved_components is None else
+                   restart.reuse_partial(hobj,saved_components,case/'component_reuse') if partial_restart else
+                   restart.reuse_components(hobj,saved_components,case/'component_reuse'))
             response_reuse=(nullcontext() if response_restart is None else response_restart.checked_blocks(adapter,
                 plan['resume_response']['blocks'],case/'response_reuse',expected_identity=plan['resume_response']['identity'],
                 source_h1=plan['resume_response']['full_H1'],current_h1=case/'solution_H1/identity.json'))

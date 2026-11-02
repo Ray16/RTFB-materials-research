@@ -1,0 +1,118 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/plus/opt.xyz",
+  "charge": 1,
+  "mult": 2,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "e_smd_Ha": -1650.5863776273136,
+  "e_smd_eV": -44914.743453983036,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.4931456353843,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1650.5516889369437,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1650.4931456175714,
+      "converged": true
+    },
+    {
+      "guess": "smd_rm0",
+      "e_Ha": -1650.5863776273136,
+      "converged": true
+    },
+    {
+      "guess": "smd_rm1",
+      "e_Ha": -1650.4931456319127,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [
+    "rm0",
+    "rm1"
+  ],
+  "e_gas_Ha": -1650.4985503046228,
+  "e_gas_eV": -44912.35355078234,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.405576259563,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1650.4642592229266,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1650.4055765267972,
+      "converged": true
+    },
+    {
+      "guess": "rm0",
+      "e_Ha": -1650.4985503046228,
+      "converged": true
+    },
+    {
+      "guess": "rm1",
+      "e_Ha": -1650.493808500797,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -14.07133640071622,
+  "gas_lumo_eV": -4.827539121266569,
+  "gas_s_squared": 0.7849,
+  "gas_spin_contam": 0.0349,
+  "dG_solv_eV": -2.3899032006956986,
+  "smd_occupation_guesses": [
+    "rm0",
+    "rm1"
+  ],
+  "smd_homo_eV": -10.02493771614268,
+  "smd_lumo_eV": -0.7588362877197492,
+  "smd_s_squared": 0.7848,
+  "smd_spin_contam": 0.0348,
+  "id": "ferrocene",
+  "state": "ox",
+  "n_e": 1,
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/ferrocene/ox/opt.xyz",
+  "g_thermal_eV": null,
+  "n_imag": null,
+  "thermal_method": null,
+  "legacy_thermal_archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/fc_minimum_adoption_1791737928316703432/canonical_ox/result.json",
+  "minimum_promotion_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/plus/opt.xyz",
+  "minimum_promotion_source_sha256": "3723c2ce6b1e1a7d14ee7f087293f90299eb9118ffa6a6802e7aae79d2b8d97b",
+  "conservative_gradient_max": 1.0486819615751998e-05,
+  "e_opt_smd_Ha": -1650.020002947145
+}

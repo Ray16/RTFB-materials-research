@@ -1,18 +1,18 @@
 # Current manuscript review disposition
 
 As of 2 November 2026, this is an 18-page JCIM working article with a separate
-30-page SI. Submission remains incomplete. Historical review dispositions are
+31-page SI. Submission remains incomplete. Historical review dispositions are
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
 | Requirement | Current evidence | Still required |
 | --- | --- | --- |
-| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; first checked ionic native component | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
+| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; eight checked alternate-model polymer components | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
 | M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged | Actual counterion/speciation and reaction-condition sensitivity; ΔG is not yield or rate |
 | M4: polymer sampling | Forty alternate-model empty inputs meet the finite 10-to-20 criterion; primary finite PMDI/phthalimide cycles remain separately scoped | Occupied graph/configuration batches, duplicate review and balanced occupied ensemble cycles |
 | M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
-| M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Broader nuclear/reaction-cycle impact and corrected production qualification |
+| M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
 | M7: reproducibility | Versioned exact-viologen CPU example; 75-state numerical cache; checked xTB component relocation; local reviewer collection and new control archive | Final synchronized code/data/environment release, author/license metadata and public deposition |
 | M8: literature | Verified base reference audit and separately checked methodological/polymer additions | Final built bibliography and claim/source consistency |
 | M9: publication narrative | Rewritten article; five quantitative interpretation-transfer tests; separate SI and focused slides | Integrate final lead results, demonstrate transferable scientific utility and synchronize final figures/data statements |
@@ -53,14 +53,26 @@ configuration. They are single-conformer E terms under one corrected
 r2SCAN-D4/SVP smooth-surface MeCN model. They supply neither interaction G,
 isolated motif binding nor operating-state coupling.
 
-One 114-atom +2/singlet component passes independent full-Hessian, sampled-column,
-mode, nuclear, SCF-frame, source and resource reconstruction. Its minimum internal
-frequency is +8.1893 cm⁻¹ and maximum column error 4.665e-6. Seven matching
-smaller/matched-empty followups have live-owner observations. Four larger double
-grafts require a separate dimension pilot; the first H100 submission is recorded
-separately from scientific completion. No complete ionic occupied G cycle or
-converged ensemble is reported. The alternate model is not mixed with primary
-molecular or polymer G values.
+The alternate polymer collection now has eight independently checked components:
+six charge-2 singlet single grafts and two matched neutral empty references.
+Minimum internal frequencies range from 7.90 to 12.74 cm⁻¹. All retain their own
+Hessian, nuclear, checkpoint, source and resource reviews. No complete ionic
+occupied G cycle or converged ensemble is reported. The initial 137-atom pilot
+stopped at an RKS H1 allocation limit, retaining its converged SCF, exact grids
+and completed solute partial tensor. A separately declared H100 recovery reuses
+only that frame/tensor, expands the RKS workspace to 16 GiB and recomputes full
+solvent H1 and response under unchanged physical gates. Three corresponding
+larger followups remain held for its independent review. The alternate model is
+not mixed with primary molecular/polymer G values.
+
+The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)
+now repeats all ten exact viologen reaction/reference states with nine new
+molecular Hessians and independent analytic chloride translation. Eighty-one
+native SCF frames and occupied-orbital spin values pass reconstruction; 70
+additional electronic-control wavefunctions also pass independent spin review.
+The six complete cycles change by at most 2.44e-8 V or 1.54e-6 kJ/mol from the
+source across all cutoffs. This qualifies numerical reproduction of the tested
+primary cohort, without experimental/speciation or occupied-ensemble admission.
 
 TEMPO retains directional solution costs 1.477/1.639 eV. Their 10.4% asymmetry
 fails the declared 5% equal-curvature diagnostic; a symmetric scalar remains

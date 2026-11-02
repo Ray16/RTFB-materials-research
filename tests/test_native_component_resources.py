@@ -39,3 +39,30 @@ def test_larger_profile_cannot_silently_relax_state_dimensions_or_resource_gates
 @pytest.mark.parametrize('value',[math.nan,math.inf,-1,0,88001])
 def test_nonfinite_or_excess_peaks_fail(value):
     with pytest.raises(ValueError):check_peak(plan(),value)
+
+
+def test_expanded_RHF_budget_is_explicit_and_does_not_expand_other_stages(monkeypatch):
+    from contextlib import contextmanager
+    from types import SimpleNamespace,ModuleType
+    import sys
+    from redox.workflows.native_component_resources import EXPANDED_RHF_CLASS,execution_budget
+    p=plan();p.update(larger_profile(137,1319,249,4,1,[2,4],EXPANDED_RHF_CLASS))
+    validate_plan(p)
+    original=lambda:64*2**30
+    rhf=SimpleNamespace(get_avail_mem=original)
+    for name in ('gpu4pyscf','gpu4pyscf.df','gpu4pyscf.df.hessian'):
+        module=ModuleType(name);module.__path__=[];monkeypatch.setitem(sys.modules,name,module)
+    sys.modules['gpu4pyscf.df.hessian'].rhf=rhf
+    @contextmanager
+    def native_budget():
+        rhf.get_avail_mem=lambda:6*2**30
+        try:yield {'cap_GiB':24,'protocol_default_cap_GiB':6}
+        finally:rhf.get_avail_mem=original
+    native=SimpleNamespace(execution_budget=native_budget)
+    def _get_veff():return rhf.get_avail_mem()
+    def _partial_hess_elec():return rhf.get_avail_mem()
+    with execution_budget(native,p) as policy:
+        assert _get_veff()==16*2**30 and _partial_hess_elec()==6*2**30
+        assert policy['separate_larger_dimension_qualification_required']
+        assert not policy['equations_changed'] and not policy['precision_changed']
+    assert rhf.get_avail_mem is original

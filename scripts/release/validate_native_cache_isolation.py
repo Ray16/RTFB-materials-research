@@ -156,6 +156,10 @@ if __name__ == '__main__':
     parser.add_argument('--python', type=Path, default=Path(sys.executable))
     parser.add_argument('--forbid', type=Path, action='append', default=[])
     args = parser.parse_args()
+    if args.action=='compress' and any(value is None for value in (args.package,args.archive,args.out)):
+        parser.error('compress requires --package, --archive and the --out report file')
+    if args.action=='validate' and any(value is None for value in (args.archive,args.name,args.out)):
+        parser.error('validate requires --archive, --name and the fresh --out directory')
     from redox.workflows.resources import allocation_guard, cpu_allocation, host_capacity
     with allocation_guard():
         slots = 2 if args.action == 'compress' else 1
