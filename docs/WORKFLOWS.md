@@ -1,0 +1,67 @@
+# Maintained workflows and property contracts
+
+Start with `python -m redox workflows` (or `--json`) for a read-only catalogue.
+The catalogue uses the public command registry and fails if a public command has
+no declared category. It does not submit calculations.
+
+| Purpose | Entry point | Scientific scope |
+|---|---|---|
+| Registered molecular campaign | `redox motifs` | Plan by default; execution requires `--execute`, a suitable reserved GPU and state-specific QC |
+| Resource-controlled shard launch | `redox launch`, `redox run-gpu` | Scheduling/preflight; process completion is not scientific admission |
+| Candidate construction | `redox build`, `redox search`, `redox expand` | Graphs and hypotheses; route review precedes new full-property campaigns |
+| Table/status review | `redox review`, `redox status`, `redox energy-audit` | Inspect/reconstruct existing outputs without launching QM |
+| Low-level calculation stage | `redox uma`, `redox dft`; `python -m redox.qm.sp`, `python -m redox.qm.native_thermal` | Stage controls and defaults differ from the orchestrator; use deliberately |
+| Numerical implementation controls | `python -m redox.workflows.screening_control --help` | Explicitly scoped controls; a passed control does not qualify every system |
+| Charged-polymer pilot | `python -m redox.workflows.charged_polymer_pilot --help` | Route-bound private namespace, first-class resource and physical checks |
+| Directional solvent response | `python -m redox.workflows.solution_pair_namespace --help` | Exact matched candidate/state pair, independently reviewed |
+| Historical compatibility entry | `python -m redox.current` | Alias of the same public CLI, not a second production implementation |
+
+Historical source snapshots and recovery namespaces remain intact. Inspect exact
+host/PID/start identity, checkpoints and source contracts before recovery. A
+prepared namespace, launch receipt or old status file does not establish a live
+calculation, an admitted G or an ensemble result. Only expand a resource class
+after its declared pilot passes. The unified design pool is
+`results/candidates/pool/current.json`; a route pass is distinct from a full
+material decision.
+
+## Physical context at arithmetic boundaries
+
+`redox.properties.context.combine_properties` is the shared checked-arithmetic
+boundary introduced for new property combinations. It retains the component
+identity, charge/multiplicity, source bindings and QC together with the quantity,
+unit, electronic protocol, thermal definition, solvent/model, temperature,
+standard state and reference. Mixed contexts, nonfinite values, missing state
+information and pending QC are rejected. Explicit conversions must precede
+combination; the helper never invents a conversion or validates a raw calculation.
+
+The checked quaternization publisher now uses this contract at every cutoff and
+for every precursor seed. It first verifies the actual quantum records and only
+then declares independently checked component inputs. Its result retains those
+contexts and references the verified source inventory. The legacy pure
+`quaternization_delta_g` arithmetic API remains usable without context records,
+but explicitly reports `property_context_verified=False`; it cannot acquire
+physical qualification merely through arithmetic. This is an initial integration,
+not a claim that all historical property readers have migrated to the contract.
+Gas diagnostics, directional solution relaxation, composite free energies,
+conditional occupancy differences and electronic couplings remain different
+quantities. Never silently add a solvent contribution to an already composite
+solution-relaxation value or promote an electronic occupancy difference into G.
+
+## Runtime discovery and portability
+
+The common resource layer discovers the system reservation executable from an
+explicit `REDOX_GPU_RESERVE`, then `PATH`, then the account's `~/bin/gpu_reserve`.
+An explicitly configured invalid tool fails rather than falling back. CPU-only
+imports work when no GPU service is installed; GPU execution still cannot bypass
+the missing gate. `GPU_LOCK_ROOT` is the shared ownership-namespace override
+consumed by both the Python owner check and the system gate. The default follows
+`~/.gpu_locks`. All workers must inherit the same authoritative tool/config and
+lock namespace. This is runtime discovery, not permission to replace the system
+reservation policy or alter another job's ownership.
+
+The generic resource and full-molecular launch paths use these declarations.
+Frozen scientific namespaces can retain the original cluster paths for evidence
+integrity; their explicit relocation and pinned-runtime contracts are separate.
+Dependency/environment qualification and architecture-specific numerical tests
+remain necessary on a new host. Numerical and publication builds must not rely on
+GPU availability when their task is CPU-only.

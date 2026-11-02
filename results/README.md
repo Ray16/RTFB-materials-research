@@ -160,3 +160,5 @@ establish that a calculation is currently running.
 state the remaining scientific and public-release requirements. The current
 Nitro force-repeatability failure remains explicit; gas-phase structural warm
 starts do not replace final DFT/acetonitrile energies or Hessians.
+
+- [JCIM rewrite and workflow contracts](../validation/jcim_rewrite_2026-11-01/README.md): new 18-page main draft, checked context-preserving viologen reaction assembly and a reserved charged-native recovery pilot. The pilot is running/unqualified; no new polymer G is reported.

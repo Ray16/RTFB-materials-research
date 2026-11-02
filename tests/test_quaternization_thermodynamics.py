@@ -38,3 +38,21 @@ def test_incompatible_species_and_missing_thermochemistry_cannot_enter_cycle(cyc
     if change=='base_route':reaction['base_correction_required']=True
     if change=='forged_balance':reaction['site_smiles']=rows['site']['smiles']='CCl'
     with pytest.raises(ValueError):quaternization_delta_g(reaction,rows)
+
+
+def test_checked_cycle_retains_context_and_rejects_mixed_model(cycle):
+    reaction,rows=copy.deepcopy(cycle)
+    for row in rows.values():row['mult']=1
+    records={c:{role:dict(value=row['G_by_cutoff_eV'][c],
+        context=dict(quantity='G',unit='eV',electronic_protocol={'xc':'test','basis':'test'},
+            thermal_definition='native_solution_dft_qrrho_spin',solvent='acetonitrile',solvent_model='SMD',
+            temperature_K=298.15,standard_state='1atm_translation',reference='absolute_component_free_energy',
+            rotor_cutoff_cm=int(c)),state=dict(identity=row['smiles'],charge=row['charge'],multiplicity=1),
+        qc='independently_checked',sources={'fixture':'test-only'}) for role,row in rows.items()}
+        for c in ('25','50','100')}
+    result=quaternization_delta_g(reaction,rows,property_records=records)
+    assert result['property_context_verified']
+    assert result['deltaG_kJ_mol_by_cutoff']==quaternization_delta_g(reaction,rows)['deltaG_kJ_mol_by_cutoff']
+    records['50']['product']['context']['electronic_protocol']={'xc':'other'}
+    with pytest.raises(ValueError,match='contexts differ'):
+        quaternization_delta_g(reaction,rows,property_records=records)

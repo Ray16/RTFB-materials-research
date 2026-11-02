@@ -13,7 +13,9 @@ from pathlib import Path
 import socket
 import subprocess
 
-GATE = Path("/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve")
+from redox.core.runtime_paths import reservation_gate, reservation_lock_root
+
+GATE = reservation_gate(required=False)
 
 
 @contextmanager
@@ -34,7 +36,7 @@ def verify_gate_owner():
     if not gpu.isdigit():
         raise RuntimeError("GPU dependency probe requires a live gpu_reserve run")
     host = socket.gethostname().split(".")[0]
-    owner = Path("/nfs/lambda_stor_01/homes/rzhu/.gpu_locks") / f"{host}_gpu{gpu}" / "owner"
+    owner = reservation_lock_root() / f"{host}_gpu{gpu}" / "owner"
     fields = owner.read_text().split()
     parent = os.getppid()
     start = Path(f"/proc/{parent}/stat").read_text().rsplit(")", 1)[1].split()[19]

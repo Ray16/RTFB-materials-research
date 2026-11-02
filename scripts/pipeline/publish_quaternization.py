@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Assemble an exact quaternization from independently checked native records."""
 import argparse
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -91,10 +92,23 @@ def publish(product_review,precursor_reviews,package,registry_path,recipe_path,o
     for relative,digest in manifest['files_sha256'].items():sources[str(package/relative)]=digest
     for path in (package/'manifest.json',package/'reproduce.py',package/'cached_reader.py',
                  package/'nuclear_equations.py',package/'projected_modes.py',registry_path,recipe_path,
-                 Path(__file__).resolve(),ROOT/'src/redox/properties/grafting.py',ROOT/'src/redox/build/grafting.py'):
+                 Path(__file__).resolve(),ROOT/'src/redox/properties/grafting.py',ROOT/'src/redox/properties/context.py',ROOT/'src/redox/build/grafting.py'):
         sources[str(path.resolve())]=sha256_file(path)
     selected=min(range(len(precursors)),key=lambda i:precursors[i]['G_by_cutoff_eV']['50'])
-    cycles=[quaternization_delta_g(reaction,dict(shared,product=product,precursor=p)) for p in precursors]
+    def checked_cycle(precursor):
+        components = dict(shared, product=product, precursor=precursor)
+        context = dict(quantity='G', unit='eV', electronic_protocol=ACTIVE_SP,
+            thermal_definition='native_solution_dft_qrrho_spin', solvent='acetonitrile',
+            solvent_model='SMD', temperature_K=298.15, standard_state='1atm_translation',
+            reference='absolute_component_free_energy')
+        records = {c: {role: dict(value=row['G_by_cutoff_eV'][c],
+            context=dict(context, rotor_cutoff_cm=int(c)),
+            state=dict(identity=row['smiles'], charge=row['charge'], multiplicity=row['mult']),
+            qc='independently_checked', sources=dict(verified_source_digests_sha256=
+                hashlib.sha256(json.dumps(sorted(sources.values())).encode()).hexdigest())) for role,row in components.items()}
+            for c in ('25','50','100')}
+        return quaternization_delta_g(reaction,components,property_records=records)
+    cycles=[checked_cycle(p) for p in precursors]
     result=dict(status='exact_local_quaternization_native_cycle_checked_finite_sampling',
         candidate_alias=recipe['route_candidate'],product_inchikey=candidate['inchikey'],reaction=reaction,
         selected_precursor_conformer_index=indices[selected],selection='lowest precursor G at 50 cm^-1 among three fixed seeds',
@@ -107,8 +121,8 @@ def publish(product_review,precursor_reviews,package,registry_path,recipe_path,o
     if any(sha256_file(p)!=h for p,h in sources.items()):raise ValueError('A reaction source changed during assembly')
     output.mkdir(parents=True);snapshot=output/'producer_sources';snapshot.mkdir()
     result['producer_original_sha256']={}
-    for path in (Path(__file__).resolve(),ROOT/'src/redox/properties/grafting.py',ROOT/'src/redox/build/grafting.py'):
-        name='publisher.py' if path==Path(__file__).resolve() else ('thermodynamics.py' if path.parent.name=='properties' else 'reaction_builder.py')
+    for path in (Path(__file__).resolve(),ROOT/'src/redox/properties/grafting.py',ROOT/'src/redox/properties/context.py',ROOT/'src/redox/build/grafting.py'):
+        name='publisher.py' if path==Path(__file__).resolve() else ('property_context.py' if path.name=='context.py' else 'thermodynamics.py' if path.parent.name=='properties' else 'reaction_builder.py')
         target=snapshot/name;shutil.copyfile(path,target)
         digest=sources.pop(str(path.resolve()));result['producer_original_sha256'][str(path)]=digest
         if sha256_file(target)!=digest:raise ValueError('Producer changed during snapshot')

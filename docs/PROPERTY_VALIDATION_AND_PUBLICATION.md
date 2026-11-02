@@ -17,12 +17,12 @@ the historical feed.
 | Redox potentials | 39 free-parent endpoints reconstructed; state/reference controls | Exact graft validation and family coverage, especially NDI; spin/conformer and reference sensitivity |
 | Grafting free energy | Balanced HCl/base cycles and relative-basicity controls | Matched solution speciation, ion-pair/conformer sensitivity and full-reaction experimental anchors; DBUH chloride comparison remains preliminary |
 | Capacity | Exact formula/electron bookkeeping and polymer mass scenarios | Retained accessible charge, actual loading and swelling; nominal capacity is not a material measurement |
-| Reorganization | Separate historical gas diagnostics | Complete matched solution four-point calculations with all cross states physically checked; outer-sphere model and assumptions independently assessed |
+| Reorganization | Checked TEMPO directional solution response and separate historical gas diagnostics | Extend matched solution four-point calculations with all cross states physically checked; outer-sphere model and assumptions independently assessed |
 | State stability | Computed ladders and disproportionation bookkeeping | Alternative states, relevant competing chemical pathways and experimental reversibility |
 | Oligomer effects | Checked finite primary-model PMDI cycle and separate-model native replay | Complete declared occupied/configuration ensembles, duplicates and convergence; preserve solvent-model boundaries |
 | Motif interactions | Frozen-fragment electronic triplets | Counterpoise/basis checks, conformers and thermal association; do not infer coupling from interaction energy |
 | Electronic coupling and transport | No complete material qualification | Defined charge states, configurations and transport mechanism, then suitable calculations and experiment |
-| Attachment route | One reviewed TEMPO route proceed in the unified pool | Exact precursor/selectivity/conditions/core-retention evidence for held new candidates |
+| Attachment route | Reviewed TEMPO and baseline viologen route proceeds in the unified pool | Exact precursor/selectivity/conditions/core-retention evidence for held new candidates |
 
 The publication's central contribution is the exact-identity link between
 molecular screening and balanced grafting/occupancy comparisons. Shared base
@@ -40,3 +40,5 @@ completion of the key occupied ensembles and matched controls, a defensible
 material assessment, synchronized figures/tables/SI, a reproducible release and
 public data deposition, plus author information. See PUBLICATION_READINESS.md
 and validation/candidate_pool_2026-10-29/ for concrete current checks.
+
+The maintained workflow catalogue and new context-preserving arithmetic boundary are documented in [WORKFLOWS.md](WORKFLOWS.md). The JCIM main-text rewrite and its evidence/validation plan are recorded in `validation/jcim_rewrite_2026-11-01/`.

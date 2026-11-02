@@ -1,0 +1,153 @@
+{
+  "commands": [
+    {
+      "command": "redox motifs",
+      "category": "production",
+      "module": "redox.workflows.motifs",
+      "description": "plan or execute registered candidates"
+    },
+    {
+      "command": "redox launch",
+      "category": "production",
+      "module": "redox.workflows.launch_current",
+      "description": "plan current DFT/UMA shards; --execute submits"
+    },
+    {
+      "command": "redox run-gpu",
+      "category": "production",
+      "module": "redox.workflows.gpu",
+      "description": "preflight and run one reserved full-QM command"
+    },
+    {
+      "command": "redox build",
+      "category": "design",
+      "module": "redox.build.candidates",
+      "description": "build candidate structures; --dry-run validates only"
+    },
+    {
+      "command": "redox build-validation",
+      "category": "design",
+      "module": "redox.build.validation",
+      "description": "build validation cores incl. the ferrocene reference (--set benchmark)"
+    },
+    {
+      "command": "redox expand",
+      "category": "design",
+      "module": "redox.screening.expansion",
+      "description": "prepare matched-comparison hypotheses; --register appends definitions"
+    },
+    {
+      "command": "redox search",
+      "category": "design",
+      "module": "redox.screening.family_search",
+      "description": "enumerate family/substituent/linker search space; no QM or registration"
+    },
+    {
+      "command": "redox source-audit",
+      "category": "design",
+      "module": "redox.screening.source_audit",
+      "description": "audit downloaded source quality; no label admission or QM"
+    },
+    {
+      "command": "redox status",
+      "category": "analysis_and_validation",
+      "module": "redox.validation.readiness",
+      "description": "inspect all declared states and QC"
+    },
+    {
+      "command": "redox energy-audit",
+      "category": "analysis_and_validation",
+      "module": "redox.qm.sp",
+      "description": "inspect active single-point coverage; no QM"
+    },
+    {
+      "command": "redox review",
+      "category": "analysis_and_validation",
+      "module": "redox.workflows.tables",
+      "description": "rebuild and audit tables in a fresh directory; no QM"
+    },
+    {
+      "command": "redox thermal-postprocess",
+      "category": "analysis_and_validation",
+      "module": "redox.qm.projected_thermal",
+      "description": "recompute corrected partitions from admitted Hessians; CPU only"
+    },
+    {
+      "command": "redox uma-check",
+      "category": "analysis_and_validation",
+      "module": "redox.validation.uma_environment",
+      "description": "inspect UMA configuration without loading CUDA"
+    },
+    {
+      "command": "redox seed-reference",
+      "category": "analysis_and_validation",
+      "module": "redox.workflows.reference",
+      "description": "install + verify pinned Fc/benchmark calibration records (data/reference)"
+    },
+    {
+      "command": "redox resources",
+      "category": "analysis_and_validation",
+      "module": "redox.workflows.resources",
+      "description": "discover free GPUs through the system policy"
+    },
+    {
+      "command": "redox uma",
+      "category": "calculation_stages",
+      "module": "redox.qm.uma_current",
+      "description": "gas-phase warm starts with explicit backend qualification"
+    },
+    {
+      "command": "redox dft",
+      "category": "calculation_stages",
+      "module": "redox.qm.uma_current",
+      "description": "DFT/SMD with checked warm-start provenance"
+    },
+    {
+      "command": "redox sp",
+      "category": "calculation_stages",
+      "module": "redox.qm.sp",
+      "description": "active-protocol single points; adopts matching DFT energies (--backend gpu)"
+    },
+    {
+      "command": "redox native-thermal",
+      "category": "calculation_stages",
+      "module": "redox.qm.native_thermal",
+      "description": "solution DFT Hessian thermochemistry via gpu_reserve (--only, --select-policy)"
+    },
+    {
+      "command": "redox workflows",
+      "category": "discovery",
+      "module": "redox.workflows.catalog",
+      "description": "show maintained workflows, calculation stages, controls and recovery tools; no execution"
+    }
+  ],
+  "specialized": [
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.screening_control",
+      "purpose": "Explicit numerical controls; does not change the production method"
+    },
+    {
+      "kind": "checked_campaign",
+      "module": "redox.workflows.charged_polymer_pilot",
+      "purpose": "Route-bound ionic polymer pilots; exact namespace and resource qualification required"
+    },
+    {
+      "kind": "checked_campaign",
+      "module": "redox.workflows.solution_pair_namespace",
+      "purpose": "Matched directional solution response for an exact candidate"
+    },
+    {
+      "kind": "recovery",
+      "module": "redox.workflows.molecular_native_namespace",
+      "purpose": "Private source-bound native continuation; inspect its subcommands and source contract"
+    },
+    {
+      "kind": "historical",
+      "module": "redox.current",
+      "purpose": "Compatibility alias to the public command registry; not a separate implementation"
+    }
+  ],
+  "default": "redox motifs plans; --execute is required for submission",
+  "qualification": "A maintained entry point does not qualify every chemistry, GPU class or protocol"
+}
