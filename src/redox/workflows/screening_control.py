@@ -278,10 +278,20 @@ def launch(path,gpu,output):
             raise ValueError('Primary molecular native control profile changed')
     if plan.get('corrected_sampling_energy'):
         from redox.workflows.sampling_energy import profile
-        declared=profile(plan['tasks'][0])
+        declared=profile(plan['tasks'][0],plan['host_memory_profile'])
         if len(plan['tasks'])!=1 or any(plan.get(k)!=v for k,v in declared.items()):
             raise ValueError('Exact corrected sampling energy storage/resource profile required')
         expected=(declared['maximum_host_RSS_GiB'],14400,256*2**20);role='corrected_sampling_energy'
+    if plan.get('corrected_sampling_native'):
+        from redox.workflows.sampling_native import profile,PILOT_KEYS
+        declared=profile()
+        if (len(plan['tasks'])!=1 or (plan['tasks'][0]['charge'],plan['tasks'][0]['mult'])!=(0,1)
+                or plan['native_nao']>1193 or plan['native_nocc']>235 or plan['atoms']>119
+                or any(plan.get(k)!=v for k,v in declared.items())):
+            raise ValueError('Exact neutral corrected native resource/dimension profile required')
+        expected=(80,28800,2*2**30);role='corrected_sampling_native'
+        if plan.get('native_class_prerequisite') is None and plan['source_id'] not in PILOT_KEYS:
+            raise ValueError('Only declared native pilots may precede largest-pilot qualification')
     if plan['role']!=role or (plan['maximum_host_RSS_GiB'],plan['maximum_wall_seconds'],plan['maximum_durable_output_bytes'])!=expected:raise ValueError('Exact bounded control resource class required')
     if proof['host']!=host or proof['namespace_sha256']!=sha256_file(path):raise ValueError('Exact node-local preflight required')
     if output.exists() or any((case/name).exists() for name in ('status.json','residency_guard','host_guard')):raise FileExistsError('Preserve earlier controls')

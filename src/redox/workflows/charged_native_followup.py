@@ -69,7 +69,7 @@ def dispatch(manifest_path,review_path,interpreter,avoid_hosts=()):
     return dispatch_rows(rows,manifest_path.parent,interpreter,[manifest_path,review_path],avoid_hosts)
 
 
-def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),storage_peers=()):
+def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),storage_peers=(),eligible_keys=None):
     """Bounded shared launcher; callers first qualify their scientific class."""
     from redox.workflows.resources import GATE,free_slots
     capacity=load(ROOT/'scripts/pipeline/run_namespace_energy_queue.py','charged_native_capacity')
@@ -88,10 +88,12 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
         snapshots[str(source)]=dict(snapshot=str(frozen),sha256=digest)
     record=dict(status='checked_native_followup_dispatching',started=time.time(),source_snapshots=snapshots,
         source_sha256={row['snapshot']:row['sha256'] for row in snapshots.values()},launches=[],refusals=[],native_G_qualified=False,avoided_hosts=sorted(set(avoid_hosts)))
+    record['eligible_keys']=None if eligible_keys is None else sorted(eligible_keys)
     with (output/'followup_dispatch.lock').open('a+') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         pending=[]
         for row in rows:
+            if eligible_keys is not None and row['key'] not in eligible_keys:continue
             root=Path(row['namespace']).parent
             condition,_=remote.inspect(row,root/'dispatch_claim',owners.alive)
             if condition in ('pending','prelaunch_refusal_no_scientific_attempt'):pending.append(row)
@@ -115,9 +117,7 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
         for host,gpu in slots:
             if not pending:break
             if host in blocked_hosts:continue
-            row=pending[0];spec=verify(Path(row['namespace']));plan=json.loads((Path(spec['case'])/'plan.json').read_text())
-            space=storage.storage_headroom(rows,storage_peers,plan['maximum_durable_output_bytes'],owners.alive,shutil.disk_usage(output).free)
-            if not space['sufficient']:record['refusals'].append(dict(reason='aggregate_storage',**space));break
+            row=pending[0]
             claim=None
             try:
                 observed=capacity.capacity(host,gpu,interpreter)
@@ -127,7 +127,20 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
                 starting=sum(previous['maximum_host_RSS_GiB']*2**30 for previous in record['launches']
                     if previous['host']==host and not (Path(previous['receipt']['placement']).parent/'case/residency_guard/owner.json').exists())
                 observed=dict(observed,promised=observed['promised']+starting)
-                if observed['GPU_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024) or not capacity.fits(plan,observed):continue
+                selected=None
+                # A large input at the head of the queue must not hide a
+                # smaller ready input that fits this node's remaining RAM.
+                for index,candidate in enumerate(pending):
+                    hint=json.loads(Path(candidate['namespace']).read_text())
+                    candidate_plan=json.loads((Path(hint['case'])/'plan.json').read_text())
+                    if observed['GPU_MiB']>=candidate_plan.get('minimum_GPU_memory_MiB',31*1024) and capacity.fits(candidate_plan,observed):
+                        selected=(index,candidate);break
+                if selected is None:continue
+                index,row=selected;spec=verify(Path(row['namespace']));plan=json.loads((Path(spec['case'])/'plan.json').read_text())
+                if observed['GPU_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024) or not capacity.fits(plan,observed):
+                    raise ValueError('Selected resource hints changed before verification')
+                space=storage.storage_headroom(rows,storage_peers,plan['maximum_durable_output_bytes'],owners.alive,shutil.disk_usage(output).free)
+                if not space['sufficient']:record['refusals'].append(dict(reason='aggregate_storage',**space));break
                 candidate_claim=Path(row['namespace']).parent/'dispatch_claim'
                 if candidate_claim.exists():
                     if json.loads((candidate_claim/'owner.json').read_text()).get('queue')!=str(output):
@@ -138,7 +151,7 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
                     candidate_claim.mkdir()
                     atomic_write_json(candidate_claim/'owner.json',dict(queue=str(output),host=os.uname().nodename,pid=os.getpid(),process_start=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]))
                 claim=candidate_claim
-                pending.pop(0)
+                pending.pop(index)
                 number=len(list(claim.glob('try_*.json')))+1
                 receipt=remote.launch(row,host,gpu,interpreter,claim,number)
                 record['launches'].append(dict(key=row['key'],host=host,GPU=gpu,receipt=receipt,maximum_host_RSS_GiB=plan['maximum_host_RSS_GiB']))

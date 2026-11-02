@@ -1,7 +1,7 @@
 # Working JCIM manuscript
 
-Open [the article](manuscript.pdf) (18 pages) and
-[Supporting Information](supporting_information.pdf) (31 pages).
+Open [the article](manuscript.pdf) (19 pages) and
+[Supporting Information](supporting_information.pdf) (32 pages).
 Editable sources are [manuscript.tex](manuscript.tex) and
 [supporting_information.tex](supporting_information.tex). Earlier article
 versions remain preserved in Git and the recorded pre-rewrite archive; see
@@ -21,6 +21,13 @@ independent occupied-orbital spin reconstructions. Six complete redox,
 quaternization and disproportionation cycles reproduce the retained results
 within 2.45e-8 V and 1.55e-6 kJ/mol across the three rotor settings. SI Table S15
 reports component QC. [Calculation/review record](../validation/ionic_cycle_completion_2026-11-02/README.md).
+
+The exact lead now also has one complete matched ionic-polymer neighboring-graft
+G cycle: −3.94 kJ/mol for the adjacent all-same-backbone model, with a
+−5.85 to −3.94 kJ/mol rotor-setting range. The article and SI distinguish this
+finite r2SCAN-D4/SVP smooth-surface MeCN response from primary molecular
+quaternization, direct motif binding, electronic coupling and an ensemble result.
+Three other ionic cycles remain pending. SI Table S11 reports the four partners.
 
 The retrospective benchmark still has 39 endpoints and MAE 0.247 V. Numerical
 reproduction is distinct from experimental accuracy. Counterion/speciation

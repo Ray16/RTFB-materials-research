@@ -1,5 +1,28 @@
 # Exact lead thermochemistry and occupancy completion
 
+The [current nine-component collection](partial_cycles_09.json) closes the first
+balanced ionic viologen G cycle. Its adjacent all-same-backbone nonadditivity is
+−3.9365 kJ/mol at the 50-cm⁻¹ rotor setting; the 25/50/100 settings give
+−5.8454/−3.9365/−4.0622 kJ/mol. The electronic contribution is −3.4607 kJ/mol.
+This modest net response includes backbone/deformation changes. It is not
+isolated motif binding, electronic coupling, a converged ensemble or material
+admission. [Current summary](native_collection_summary_09.json).
+
+The [new 137-atom +4/singlet component](larger_RHF16_native_review.json) passes
+independent reconstruction of all 25 actual SCF frames, its full Hessian,
+sampled derivatives, modes and own nuclear terms. Its lowest frequency is
+6.9604 cm⁻¹, largest sampled-column error 7.20e-6 and GPU peak 34,580 MiB. The
+unchanged larger H100 resource class now releases the three remaining
+configuration/spacing followups. Those G values remain pending; the raw
+followup manifest is at
+`/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_larger_RHF16_followups/manifest.json`.
+
+The article/SI now compile at 19/32 pages from the new immutable
+`2026-11-02_first_ionic_G_cycle` epoch. Supporting slide 19 reports the qualified
+finite cycle and its limits. Numerical sums, generated TeX, decimal four-state
+arithmetic and missing-cycle behavior pass dedicated checks. The earlier
+eight-component snapshot and allocation failures below remain historical evidence.
+
 This milestone closes the full primary molecular implementation-control cohort
 and advances the separate ionic polymer collection. Publication readiness remains
 incomplete. Earlier source records, failed attempts and manuscript epochs are

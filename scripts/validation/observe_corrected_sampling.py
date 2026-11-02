@@ -8,9 +8,12 @@ from pathlib import Path
 import shlex
 import subprocess
 import time
+import hashlib
 
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
+
+SOURCE_BYTES=Path(__file__).read_bytes()
 
 REMOTE = '''import json,os,pathlib,subprocess,sys
 owners=json.loads(sys.argv[1]);result=[]
@@ -40,8 +43,11 @@ def observe(manifest, output, extra_namespaces=()):
             continue
         stage = json.loads(path.read_text()); owner = stage['owner']; host = owner['host'].split('.')[0]
         owners.setdefault(host, []).append(owner)
+        plan=json.loads((case/'plan.json').read_text());raw=Path(plan.get('raw_root',str(case)))
+        native=plan.get('corrected_sampling_native',False)
+        scf=raw/'SCF_frames' if native else raw/'SCF_checkpoints'
         progresses = []
-        for p in (case / 'raw/SCF_checkpoints').glob('*/*/progress.json'):
+        for p in scf.glob('*/*/progress.json'):
             progresses.append(dict(path=str(p), snapshot=json.loads(p.read_text())))
         response=case/'execution/response_solver.json'; response_summary=None
         if response.exists():
@@ -51,8 +57,11 @@ def observe(manifest, output, extra_namespaces=()):
         records.append(dict(namespace=str(namespace), namespace_sha256=sha256_file(namespace),
             stage_snapshot=stage, SCF_iterations=progresses,
             response_summary=response_summary,
-            SCF_kernels_entered=len(list((case / 'raw/SCF_checkpoints').glob('*/*/settings.json'))),
-            occupied_checkpoints_written=len(list((case / 'raw/SCF_checkpoints').glob('*/*/occupied.h5'))),
+            SCF_kernels_entered=len(list(scf.glob('*/*/settings.json'))),
+            checkpoint_representation='full_orbitals' if native else 'occupied_orbitals_or_retained_source_frame',
+            occupied_checkpoints_written=len(list(scf.glob('*/*/occupied.h5'))),
+            full_SCF_checkpoints_written=len(list(scf.glob('*/*/SCF.h5'))),
+            Hessian_written=(raw/'hessian.npy').exists() or (case/'Hessian.npy').exists(),
             native_G_qualified=False))
     def remote(item):
         host, entries = item
@@ -65,10 +74,13 @@ def observe(manifest, output, extra_namespaces=()):
             return host, dict(status='observation_unverified_no_restart', error=repr(error))
     with ThreadPoolExecutor(max_workers=max(1, len(owners))) as pool:
         live = dict(pool.map(remote, owners.items()))
+    digest=hashlib.sha256(SOURCE_BYTES).hexdigest();snapshot=output.parent/'observer_sources'/digest/Path(__file__).name
+    if not snapshot.exists():snapshot.parent.mkdir(parents=True,exist_ok=True);snapshot.write_bytes(SOURCE_BYTES)
+    if sha256_file(snapshot)!=digest:raise ValueError('As-used observer source differs')
     result = dict(status='sampling_process_and_progress_observation_not_physical_admission',
         checked=time.time(), manifest=str(manifest), manifest_sha256=sha256_file(manifest),
         records=records, live_hosts=live, native_G_qualified=False, jobs_restarted=False,
-        producer_sha256=sha256_file(__file__))
+        producer_sha256=digest,producer_snapshot=str(snapshot))
     atomic_write_json(output, result); return result
 
 

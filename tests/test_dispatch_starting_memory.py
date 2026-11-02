@@ -12,7 +12,7 @@ def setup(tmp_path, monkeypatch, bounds):
         root = output / 'states' / str(i); case = root / 'case'; case.mkdir(parents=True)
         (case / 'plan.json').write_text(json.dumps(dict(maximum_host_RSS_GiB=bound,
             maximum_durable_output_bytes=256 * 2**20, minimum_GPU_memory_MiB=31744)))
-        ns = root / 'namespace.json'; ns.write_text('{}'); specs[str(ns)] = dict(case=str(case))
+        ns = root / 'namespace.json'; ns.write_text(json.dumps(dict(case=str(case)))); specs[str(ns)] = dict(case=str(case))
         rows.append(dict(key=str(i), namespace=str(ns)))
     policy = tmp_path / 'policy.env'; policy.write_text('ALLOWED_HOSTS="lambdaA lambdaB"\n')
     monkeypatch.setenv('GPU_RESERVE_CONFIG', str(policy))
@@ -40,6 +40,12 @@ def test_not_yet_started_workers_cannot_consume_the_same_host_RAM(tmp_path, monk
     assert launched == [('0', 'lambdaA', 1), ('1', 'lambdaA', 1), ('2', 'lambdaB', 1)]
     assert len(result['launches']) == 3 and not result['refusals']
     assert all(Path(p).is_file() for p in result['source_sha256'])
+
+
+def test_large_queue_head_does_not_hide_a_fitting_ready_input(tmp_path, monkeypatch):
+    output, rows, launched, _ = setup(tmp_path, monkeypatch, [240, 240, 160])
+    flow.dispatch_rows(rows, output, 'test-python', [])
+    assert launched == [('0', 'lambdaA', 1), ('2', 'lambdaA', 1), ('1', 'lambdaB', 1)]
 
 
 def test_stopped_prelaunch_retry_preserves_first_receipt_and_number(tmp_path, monkeypatch):

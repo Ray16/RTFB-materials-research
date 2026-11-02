@@ -19,7 +19,7 @@ Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 
-The current article/SI are 18/31 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 19/32 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The [2 November completion evidence](../validation/jcim_completion_2026-11-02/README.md)
 adds five interpretation-transfer tests, 29 accepted electronic-control
@@ -44,6 +44,15 @@ The polymer collection separately has eight reviewed native components but no
 complete occupied G cycle. A source-frame-bound larger recovery is prospective;
 its allocation failure and partial outputs remain preserved. Other benchmark/
 base-reaction nuclear coverage and wider production qualification remain open.
+
+The first full ionic neighboring-graft G cycle is now independently checked:
+nine components close the adjacent all-same cycle at −3.94 kJ/mol, with a
+−5.85 to −3.94 kJ/mol rotor-setting range. Three other cycles and occupied
+ensembles remain pending. This is a finite same-model response, not direct motif
+binding, electronic coupling or material validation. The article/SI and deck
+now report this distinction. The 240-input corrected sampling campaign is
+released after three independently checked electronic resource pilots; native
+thermochemistry retains separate physical gates.
 
 The historical dated observations below document previous milestones and
 resource conditions. They are not current fleet or storage observations.

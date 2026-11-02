@@ -7,6 +7,7 @@ full-orbital Hessian/response restart. No solver or physical setting is changed.
 """
 from contextlib import contextmanager
 import json
+import hashlib
 import os
 from pathlib import Path
 import time
@@ -106,6 +107,7 @@ class Context:
     def __init__(self, directory):
         self.directory = Path(directory); self.directory.mkdir(parents=True, exist_ok=False)
         self.current = None; self.counter = 0
+        self.restart_source = None
 
     def begin(self, mf):
         folder = self.directory / f'{self.counter:04d}'; self.counter += 1; folder.mkdir()
@@ -118,6 +120,8 @@ class Context:
             grid_level=getattr(getattr(mf, 'grids', None), 'level', None),
             solvent=getattr(getattr(mf, 'with_solvent', None), 'solvent', None),
             level_shift=mf.level_shift, damp=mf.damp, started=time.time(), qualified=False))
+        if self.restart_source is not None:
+            _json(folder / 'initial_density.json', self.restart_source)
         return folder
 
 
@@ -162,16 +166,42 @@ def attach(mf, directory):
 
 
 @contextmanager
-def scf_checkpoints(directory):
+def scf_checkpoints(directory, restart_by_solvent=None):
     """Keep the existing multiple-guess solver and record each factory/solve."""
     from redox.qm import dft
     original = dft._lowest_scf; robust = dft._kernel_robust; counter = 0
-    def lowest(factory, *args, **kwargs):
+    restarts = restart_by_solvent or {}; used = set(); policies = []
+    def lowest(factory, guesses, post=None, initial_densities=None):
+        first = factory(); phase = getattr(getattr(first, 'with_solvent', None), 'solvent', None)
+        restart = None; actual_guesses = guesses; seeds = initial_densities
+        if phase in restarts:
+            if len(tuple(guesses)) != 1 or initial_densities:
+                raise ValueError('A checkpoint density may replace only a single unseeded restricted guess')
+            path = Path(restarts[phase]); molecule, data = read(path)
+            if (molecule.charge != first.mol.charge or molecule.spin != first.mol.spin
+                    or molecule.basis != first.mol.basis or molecule.nao_nr() != first.mol.nao_nr()
+                    or [molecule.atom_symbol(i) for i in range(molecule.natm)] !=
+                       [first.mol.atom_symbol(i) for i in range(first.mol.natm)]
+                    or molecule.atom_coords().shape != first.mol.atom_coords().shape
+                    or np.max(abs(molecule.atom_coords() - first.mol.atom_coords())) > 1e-10):
+                raise ValueError('Checkpoint restart requires the exact molecular frame/state/basis')
+            restart = dict(path=str(path), sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                           source_converged=bool(data['converged']), source_energy_Ha=float(data['e_tot']),
+                           source_qualification_transferred=False, density_only=True)
+            actual_guesses = (); seeds = {'checkpoint_density': density(path)}; used.add(phase)
+        pool = [first]; first = None
         def build():
             nonlocal counter
             folder = Path(directory) / f'{counter:04d}'; counter += 1
-            return attach(factory(), folder)
-        return original(build, *args, **kwargs)
+            mf = attach(pool.pop() if pool else factory(), folder)
+            mf._redox_occupied_context.restart_source = restart
+            return mf
+        result = original(build, actual_guesses, post=post, initial_densities=seeds)
+        policies.append(dict(solvent=phase, nominal_guesses=list(guesses),
+            actual_guesses=[r['guess'] for r in result[3]], restart=restart))
+        _json(Path(directory) / 'initial_density_policy.json', dict(phases=policies,
+              physical_equations_changed=False, source_qualification_transferred=False))
+        return result
     def solve(mf, *args, **kwargs):
         result = robust(mf, *args, **kwargs)
         context = getattr(mf, '_redox_occupied_context', None)
@@ -188,5 +218,7 @@ def scf_checkpoints(directory):
     dft._lowest_scf = lowest; dft._kernel_robust = solve
     try:
         yield
+        if set(restarts) != used:
+            raise ValueError('A declared checkpoint restart was not used by its target solvent phase')
     finally:
         dft._lowest_scf = original; dft._kernel_robust = robust

@@ -52,3 +52,18 @@ def test_source_capture_keeps_as_used_bytes_after_the_source_changes(tmp_path):
     current=freeze_source(tmp_path/'case',source)
     assert first.read_bytes()==captured and current.read_bytes()==b'new implementation'
     assert first!=current
+
+
+def test_proportional_profile_requires_explicit_declaration_and_preserves_main_RSS_limit(records):
+    rows=deepcopy(records);host=rows[5]
+    host.update(resource_profile='corrected_hybrid_energy_pss',maximum_RSS_GiB=160,
+        memory_accounting='max_self_HWM_tree_PSS',peak_tree_RSS_bytes=260*2**30,
+        self_VmHWM_bytes=130*2**30,peak_tree_PSS_bytes=132*2**30,peak_guard_usage_bytes=132*2**30)
+    arguments=dict(owner_alive=False,expected_status='test_finished',host_GiB=160,GPU_MiB=31744,worker=Path('/test/worker.py'))
+    with pytest.raises(ValueError):validate_closed(*rows,**arguments)
+    validate_closed(*rows,**arguments,expected_memory_profile='corrected_hybrid_energy_pss')
+    for field,value in [('self_VmHWM_bytes',161*2**30),('peak_tree_PSS_bytes',float('nan')),
+                        ('peak_guard_usage_bytes',131*2**30),('memory_accounting','RSS')]:
+        modified=deepcopy(rows);modified[5][field]=value
+        with pytest.raises(ValueError):
+            validate_closed(*modified,**arguments,expected_memory_profile='corrected_hybrid_energy_pss')

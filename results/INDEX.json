@@ -51,8 +51,8 @@
       "build": "manuscript/build_check.json",
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
-      "status": "full_primary_native_cohort_integrated_working_JCIM_draft",
-      "scope": "18-page article and 31-page SI; six full primary molecular G controls, no completed ionic occupied G cycle or ensemble/material admission"
+      "status": "first_balanced_ionic_G_cycle_integrated_working_JCIM_draft",
+      "scope": "19-page article and 32-page SI; primary molecular controls and one finite ionic G cycle; three ionic cycles, ensembles, speciation and public release pending"
     },
     "native_polymer_continuation": {
       "guide": "validation/native_followup_collection_2026-10-30/README.md",
@@ -402,19 +402,19 @@
     },
     "ionic_native_component_collection": {
       "guide": "validation/ionic_cycle_completion_2026-11-02/README.md",
-      "current": "validation/ionic_cycle_completion_2026-11-02/native_collection_summary.json",
-      "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/partial_cycles_08.json",
+      "current": "validation/ionic_cycle_completion_2026-11-02/native_collection_summary_09.json",
+      "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/partial_cycles_09.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations",
-      "status": "all_eight_single_graft_and_empty_components_checked_double_grafts_pending",
-      "scope": "Six charge-2 single grafts and two neutral references in the separate smooth-surface MeCN r2SCAN/SVP model; no complete occupied cycle"
+      "status": "nine_components_one_balanced_finite_ionic_G_cycle_checked",
+      "scope": "Adjacent all-same viologen G nonadditivity -3.94 kJ/mol; three cycles, occupied ensembles, direct binding, coupling and material admission remain pending"
     },
     "charged_partial_Hessian_recovery": {
       "guide": "validation/ionic_cycle_completion_2026-11-02/README.md",
-      "current": "validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json",
+      "current": "validation/ionic_cycle_completion_2026-11-02/larger_RHF16_native_review.json",
       "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/RHF16_followup_preparation.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared",
-      "status": "exact_partial_frame_restart_actual_start_verified_full_physical_review_pending",
-      "scope": "Closed H1 allocation failure retained; full solution H1/response recomputed with prospective RKS-16-GiB workspace; no G/minimum/ensemble admission"
+      "status": "full_larger_native_pilot_checked_three_followups_released",
+      "scope": "137 atoms, +4 singlet, own full Hessian/25 SCF frames/nuclear terms checked; 34580 MiB observed peak, remaining cycles pending"
     },
     "corrected_primary_CPU_example": {
       "guide": "examples/exact_viologen_corrected_replay/README.md",
@@ -428,17 +428,23 @@
     },
     "corrected_polymer_sampling": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
-      "current": "validation/corrected_sampling_2026-11-02/prepared_manifest.json",
-      "source_snapshot": "validation/corrected_sampling_2026-11-02/input_inventory_complete.json",
+      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_04.json",
+      "source_snapshot": "validation/corrected_sampling_2026-11-02/recovery_manifest_01.json",
       "protocol": "validation/corrected_sampling_2026-11-02/sampling_contract.json",
-      "live_observation": "validation/corrected_sampling_2026-11-02/progress_observation_03.json",
+      "live_observation": "validation/corrected_sampling_2026-11-02/full_campaign_observation_03.json",
       "checkpoint_control": "validation/corrected_sampling_2026-11-02/occupied_equivalence.json",
-      "checks": "validation/corrected_sampling_2026-11-02/final_checks.xml",
-      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4",
-      "status": "240_exact_inputs_prepared_two_energy_pilots_checked_double_pilot_resource_stop",
-      "scope": "Separate smooth-surface MeCN method control; no historical E/G transfer, completed occupied G cycle, ensemble convergence or material admission",
+      "checks": "validation/corrected_sampling_2026-11-02/current_focused_checks.xml",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5",
+      "status": "29_electronic_inputs_and_one_empty_native_input_checked_complete_sampling_pending",
+      "scope": "All 240 input slots retained; 29 checked same-model hybrid gas/SMD inputs, one checked empty native input, occupied G/ensembles and material admission pending",
       "checked_energy": "validation/corrected_sampling_2026-11-02/empty_pilot_review.json",
-      "checked_single_energy": "validation/corrected_sampling_2026-11-02/single_pilot_review.json"
+      "checked_single_energy": "validation/corrected_sampling_2026-11-02/single_pilot_review.json",
+      "prepared_manifest": "validation/corrected_sampling_2026-11-02/PSS_prepared_manifest.json",
+      "previous_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4",
+      "native_preparation": "validation/corrected_sampling_2026-11-02/native_pilot_manifest.json",
+      "native_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native",
+      "queue_status": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json",
+      "native_checked": "validation/corrected_sampling_2026-11-02/empty_native_review.json"
     }
   }
 }

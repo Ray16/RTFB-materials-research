@@ -18,6 +18,8 @@ import psutil
 
 from redox.core.io import atomic_write_json
 
+PSS_PROFILE = 'corrected_hybrid_energy_pss'
+
 
 def high_water_bytes(status):
     for line in status.splitlines():
@@ -31,9 +33,43 @@ def high_water_bytes(status):
 
 def validate_resources(bound, free_floor, poll, grace, profile='native'):
     allowed = (0 < bound <= 80) if profile == 'native' else (
-        bound in (160, 240) if profile == 'corrected_hybrid_energy' else False)
+        bound in (160, 240) if profile in ('corrected_hybrid_energy', PSS_PROFILE) else False)
     if not allowed or free_floor != 32 or not .05 <= poll <= 1 or not 0 < grace <= 30:
         raise ValueError('Explicit supported RSS profile, 32 GiB free floor and 0.05–1 s sampling required')
+
+
+def tree_memory(process, proportional=False):
+    """Retain raw RSS; optionally count shared descendant pages proportionally.
+
+    Main-process RSS/high-water limits remain independent. PSS is queried only
+    for the separately declared hybrid profile; native/RSS behavior is unchanged.
+    A disappeared owned child has released its memory. Other observation errors
+    propagate so the caller stops rather than dropping an unobserved allocation.
+    """
+    own = process.memory_info().rss
+    children = []; readers = []; total = own
+    for child in process.children(recursive=True):
+        try:
+            rss = child.memory_info().rss; total += rss
+            row=dict(pid=child.pid,process_start=child.create_time(),RSS_bytes=rss)
+            children.append(row);readers.append((child,row))
+        except psutil.NoSuchProcess:
+            continue
+    value = None
+    if proportional:
+        # With no descendants, using full self RSS is conservative and avoids
+        # scanning a large page table just to count the main process alone.
+        value = own if not children else process.memory_full_info().pss
+        for child,row in readers:
+            try:
+                if not child.is_running():raise psutil.NoSuchProcess(child.pid)
+                info = child.memory_full_info()
+                value += info.pss; row['PSS_bytes'] = info.pss
+            except psutil.NoSuchProcess:
+                row['exited_before_PSS_observation'] = True
+        if value < 0:
+            raise ValueError('Nonnegative proportional resident memory required')
+    return dict(self_RSS_bytes=own, tree_RSS_bytes=total, tree_PSS_bytes=value, children=children)
 
 
 def main():
@@ -43,7 +79,7 @@ def main():
     p.add_argument('--minimum-free-gib', type=float, default=32)
     p.add_argument('--poll-seconds', type=float, default=.1)
     p.add_argument('--grace-seconds', type=float, default=5)
-    p.add_argument('--resource-profile', choices=('native', 'corrected_hybrid_energy'), default='native')
+    p.add_argument('--resource-profile', choices=('native', 'corrected_hybrid_energy', PSS_PROFILE), default='native')
     p.add_argument('program', type=Path)
     p.add_argument('arguments', nargs=argparse.REMAINDER)
     a = p.parse_args()
@@ -58,24 +94,28 @@ def main():
                   host=os.uname().nodename, maximum_RSS_GiB=a.maximum_rss_gib,
                   minimum_free_GiB=a.minimum_free_gib, CPU_affinity=process.cpu_affinity(),
                   resource_profile=a.resource_profile,
+                  memory_accounting='max_self_HWM_tree_PSS' if a.resource_profile==PSS_PROFILE else 'max_self_HWM_tree_RSS',
+                  peak_tree_PSS_bytes=0, peak_guard_usage_bytes=0,
                   peak_tree_RSS_bytes=0, self_VmHWM_bytes=0, started=time.time(),
                   polling_seconds=a.poll_seconds, signal_target='this owned process only')
     stopped, breached = threading.Event(), threading.Event()
 
     def sample():
-        own = process.memory_info().rss
-        children = 0
-        for child in process.children(recursive=True):
-            try:
-                children += child.memory_info().rss
-            except psutil.NoSuchProcess:
-                continue
+        started=time.monotonic();observed=tree_memory(process,a.resource_profile==PSS_PROFILE)
         hwm = high_water_bytes(Path('/proc/self/status').read_text())
         free = psutil.virtual_memory().available
-        record.update(peak_tree_RSS_bytes=max(record['peak_tree_RSS_bytes'], own+children),
+        usage=max(hwm,observed['tree_PSS_bytes'] if a.resource_profile==PSS_PROFILE else observed['tree_RSS_bytes'])
+        if observed['tree_RSS_bytes']>record['peak_tree_RSS_bytes']:
+            record['peak_tree_RSS_sample']=observed
+        record.update(peak_tree_RSS_bytes=max(record['peak_tree_RSS_bytes'], observed['tree_RSS_bytes']),
                       self_VmHWM_bytes=max(record['self_VmHWM_bytes'], hwm),
-                      current_tree_RSS_bytes=own+children, free_RAM_bytes=free, checked=time.time())
-        return max(own+children, hwm) > a.maximum_rss_gib*2**30 or free < a.minimum_free_gib*2**30
+                      peak_tree_PSS_bytes=max(record['peak_tree_PSS_bytes'],observed['tree_PSS_bytes'] or 0),
+                      peak_guard_usage_bytes=max(record['peak_guard_usage_bytes'],usage),
+                      current_tree_RSS_bytes=observed['tree_RSS_bytes'],
+                      current_tree_PSS_bytes=observed['tree_PSS_bytes'],
+                      last_children=observed['children'],free_RAM_bytes=free,checked=time.time(),
+                      observation_seconds=time.monotonic()-started)
+        return usage > a.maximum_rss_gib*2**30 or free < a.minimum_free_gib*2**30
 
     def watch():
         requested = None

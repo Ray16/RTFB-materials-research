@@ -5,7 +5,7 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 18/31-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 19/32-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates both empty-backbone sampling comparisons and
   portable numerical replay of its 75 native states, plus six fresh checked
@@ -55,10 +55,10 @@ establish that a calculation is currently running.
   incomplete. Complete control Hessians are retained and their fresh derivative
   validation continues in separate source-bound namespaces.
 - [Checked ionic native collection](../validation/ionic_cycle_completion_2026-11-02/README.md):
-  six single-graft minima and both matched empty references pass independent
-  Hessian, derivative, mode, nuclear, checkpoint and resource reconstruction.
-  Four balanced occupancy G cycles still lack matched partners. These are
-  separately identified smooth-surface MeCN r2SCAN/SVP components, not primary-model replacements.
+  nine components now close the first adjacent all-same viologen G cycle at
+  −3.94 kJ/mol (−5.85 to −3.94 across rotor settings). Three cycles remain pending.
+  These finite smooth-surface MeCN r2SCAN/SVP values are separate from primary
+  molecular G, isolated motif binding, electronic coupling and material admission.
 - [Complete primary molecular control](../validation/ionic_cycle_completion_2026-11-02/primary_cohort_summary.json):
   nine new molecular Hessians, analytic chloride and 81 independent orbital/frame
   reviews reconstruct six full exact-viologen G cycles. Changes from source are
@@ -66,16 +66,18 @@ establish that a calculation is currently running.
   experimental/speciation or material validation.
 - [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
   all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
-  Empty and single-graft gas/SMD energy pairs are independently checked; the
-  double-graft resource pilot remains unqualified and 237 followups remain held.
-  Occupied-only checkpoints preserve actual
-  determinants/densities exactly; native G, ensemble cycles and material decisions
-  remain pending. Historical values and failed/prelaunch attempts are preserved.
+  All three memory-size pilots passed; 29 hybrid gas/SMD inputs now pass
+  independent actual-wavefunction review. The remaining energy roster is
+  released, and three matched native pilots have saved their center SCFs/grids.
+  One empty native input is checked; occupied G, ensemble cycles and material decisions remain pending. Occupied-only
+  energy and full-orbital native checkpoints retain their distinct scopes;
+  historical values and failed/prelaunch attempts remain preserved.
 - [Larger native recovery](../validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json):
   the failed 137-atom pilot's exact grids/orbitals and solute partial tensor are
   preserved. A declared H100/RKS workspace expansion recomputes full solvent H1,
-  response and all physical checks. Three matched followups remain held until
-  the new pilot independently qualifies; no G is inferred from the restart.
+  response and all physical checks. The completed pilot is now independently
+  qualified; three matched followups are released. The earlier start receipt
+  alone supplies no G qualification.
 - [Finite stationary electronic cycles](../validation/viologen_native_2026-11-02/stationary_electronic_summary.json):
   all twelve stationary components supply four balanced whole-chain E cycles.
   Adjacent/one-spacer values are −3.46/+18.68 kJ/mol for all-same and
@@ -182,4 +184,4 @@ state the remaining scientific and public-release requirements. The current
 Nitro force-repeatability failure remains explicit; gas-phase structural warm
 starts do not replace final DFT/acetonitrile energies or Hessians.
 
-- [JCIM rewrite and workflow contracts](../validation/jcim_rewrite_2026-11-01/README.md): new 18-page main draft, checked context-preserving viologen reaction assembly and a reserved charged-native recovery pilot. The pilot is running/unqualified; no new polymer G is reported.
+- [Historical JCIM rewrite checkpoint](../validation/jcim_rewrite_2026-11-01/README.md): the original 18-page rewrite, property contracts and then-unqualified recovery are preserved. Use the current paper and ionic-cycle entries above for the later checked results.

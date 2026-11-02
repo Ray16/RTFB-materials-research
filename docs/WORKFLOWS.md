@@ -13,6 +13,7 @@ no declared category. It does not submit calculations.
 | Low-level calculation stage | `redox uma`, `redox dft`; `python -m redox.qm.sp`, `python -m redox.qm.native_thermal` | Stage controls and defaults differ from the orchestrator; use deliberately |
 | Numerical implementation controls | `python -m redox.workflows.screening_control --help` | Explicitly scoped controls; a passed control does not qualify every system |
 | Corrected polymer sampling control | `python -m redox.workflows.sampling_energy --help` | Complete 240-input roster; empty/single/double pilots precede same-model energy followups and separate native/ensemble review |
+| Corrected polymer native stage | `python -m redox.workflows.sampling_native --help` | Exact checked energy input, full-orbital recovery data, unchanged native physical checks; largest complete native pilot precedes wider native release |
 | Charged-polymer pilot | `python -m redox.workflows.charged_polymer_pilot --help` | Route-bound private namespace, first-class resource and physical checks |
 | Directional solvent response | `python -m redox.workflows.solution_pair_namespace --help` | Exact matched candidate/state pair, independently reviewed |
 | Historical compatibility entry | `python -m redox.current` | Alias of the same public CLI, not a second production implementation |

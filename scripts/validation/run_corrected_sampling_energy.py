@@ -22,12 +22,12 @@ def load(path, name):
 
 
 @contextmanager
-def occupied_storage(api, driver_path, recorder):
+def occupied_storage(api, driver_path, recorder, restarts=None):
     original = api.load_module
     def module(name, path):
         result = original(name, path)
         if Path(path) == driver_path:
-            result.scf_checkpoints = recorder.scf_checkpoints
+            result.scf_checkpoints = lambda directory: recorder.scf_checkpoints(directory,restart_by_solvent=restarts)
         return result
     api.load_module = module
     try:
@@ -63,8 +63,15 @@ def main():
         helper = load(sources / 'helper.py', 'sampling_corrected_screening')
         recorder = load(sources / 'occupied.py', 'sampling_occupied_checkpoint')
         driver = load(ROOT / 'scripts/pipeline/smooth_polymer_energy_bounded.py', 'sampling_original_bounded_energy')
+        restart=plan.get('density_restart');restarts=None
+        if restart is not None:
+            source=Path(restart['checkpoint']);receipt=Path(restart['source_receipt'])
+            if (restart['solvent']!='acetonitrile' or hashlib.sha256(source.read_bytes()).hexdigest()!=restart['sha256']
+                    or hashlib.sha256(receipt.read_bytes()).hexdigest()!=restart['source_receipt_sha256']):
+                raise ValueError('Declared exact-frame density restart changed')
+            restarts={'acetonitrile':source}
         with helper.corrected_screening(sources / 'kernel.cu', case / 'screening_implementation'), \
-                occupied_storage(api, ROOT / 'scripts/pipeline/smooth_polymer_energy.py', recorder):
+                occupied_storage(api, ROOT / 'scripts/pipeline/smooth_polymer_energy.py', recorder,restarts):
             driver.run(case)
         verify()
         stage = json.loads((case / 'experimental_energy/status.json').read_text())

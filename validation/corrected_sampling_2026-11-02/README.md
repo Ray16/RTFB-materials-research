@@ -17,6 +17,13 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
+The [current frozen complete-roster collection](electronic_collection_04.json) has
+29 independently checked electronic inputs and no review errors. Every one of
+the 240 slots remains present; pending E/G values are null. The current
+[PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
+resource preparations while preserving them. No new native G or occupied
+ensemble cycle is supplied by this electronic collection.
+
 ## Method and storage
 
 The existing ωB97M-V/def2-TZVPD gas and MeCN single-point equations are unchanged.
@@ -43,6 +50,106 @@ corruption rejection and multiple-guess restoration also pass tests.
 
 ## Starts, resource checks and pending results
 
+### Qualified PSS profile and released electronic cohort
+
+All three new energy pilots pass independent closed-execution, actual orbital/
+geometry and gas/SMD energy review:
+[empty](PSS_empty_pilot_review.json), [single](PSS_single_pilot_review.json) and
+[double](PSS_double_pilot_review.json). Their effective host peaks are
+72.070, 111.047 and 166.150 GiB, within the declared 160/160/240-GiB classes with
+25% headroom. Peak GPU usage is 16,792/18,804/19,962 MiB. The
+[cross-profile repeats](memory_profile_electronic_comparison.json) reproduce
+the earlier empty/single gas/SMD energies within 4.37e-11 eV.
+
+The [controlled fork experiment](fork_memory_control.json) distinguishes shared
+pages from a real 96-MiB private allocation. Linux
+[PSS accounts for each process's proportional share of shared pages](https://docs.kernel.org/filesystems/proc.html).
+The new `corrected_hybrid_energy_pss` profile limits the maximum of the main
+process RSS high-water mark and summed descendant PSS. It retains raw tree RSS,
+child identities, the original main-process 160/240-GiB bounds and 32-GiB free-RAM
+floor. A real single-graft run recorded 221 GiB summed RSS and approximately
+111 GiB PSS. The older native/RSS profile is unchanged. Independent reviewers
+accept PSS only when explicitly declared and reconstruct its effective peak;
+missing/invalid metrics cannot pass.
+
+The [recovery receipt](density_restart_source.json) proves the stopped double
+pilot's exact ownership closure and molecular/orbital frame. Its unqualified
+checkpoint supplied only a starting density. The new solution solve reconverged
+in six iterations, followed by its own gas solve. The per-phase policy preserves
+both the legacy nominal guess and the actual `checkpoint_density` guess, with
+the exact input hash; no convergence or property qualification transfers.
+
+After all three pilots passed, the bounded dispatcher released the full cohort.
+Its first pass submitted ten more energy jobs, which now all pass independent
+review. Subsequent passes retain atomic claims, exact stopped-owner checks and
+all pending inputs. A ready smaller job can fill remaining host RAM when the
+queue's first larger job does not fit; RAM promised to starting workers is
+accounted separately. This improves utilization without changing resource bounds.
+
+### Native thermochemistry
+
+The [three native pilot namespaces](native_pilot_manifest.json) run the original
+smooth-model native equations under corrected screening. Their electronic inputs
+are independently checked; their own r2SCAN-D4/SVP SCFs, complete Hessians,
+sampled derivatives, projected modes and nuclear partitions remain mandatory.
+All three center SCFs and matched SCF/CPHF grids have been saved. The
+[empty native input](empty_native_review.json) now passes full independent
+reconstruction: 17 actual SCF frames, a 9.9656-cm⁻¹ minimum, sampled derivatives
+and its own three nuclear partitions. The two occupied native pilots, complete
+occupied sampling and ensemble cycles remain pending.
+
+The dimension witness separates a 119-atom corrected full Hessian that completed
+before its producer's wall stop from its subsequently completed derivative/mode
+validation. It does not invent a normal construction exit or a retained full-
+construction GPU peak. New complete native pilots must pass their own 80-GiB/
+31-GiB resource and physical gates before the largest pilot can release further
+native inputs. The numerical reviewer reuses the original scientific expressions,
+adapts only the historical guard fields and adds exact execution, actual orbital,
+grid and original-equation response checks. Full virtual-orbital checkpoints are
+retained for native recovery; raw Krylov vectors are not part of this bulk profile.
+
+The [current combined suite](../ionic_cycle_completion_2026-11-02/current_combined_checks.xml) passes 165 tests. It
+includes actual CPU DFT/Hessian equality, mismatch rejection for response grids,
+real fork/private-memory accounting and density-restart reconvergence. A shared
+receipt reader checks context and exact raw E values before collection or native
+preparation, rejecting corrupted scalar caches and mismatched source states.
+
+The latest [process observation](full_campaign_observation_02.json) is separate
+from these accepted values. Quantum workers and budget observers retain their
+own PID/start identities; observation timeouts cannot trigger recovery. The
+collector retains its as-used source bytes and checks each cached E against its
+exact bound raw scalar before reuse.
+
+### Autonomous queue and exclusivity recovery
+
+The bounded [queue observation](queue_observation_02.json) and mutable raw ledger
+at `electronic_queue/electronic_current.json` retain all 240 slots and refill
+eligible GPUs after review. The controller has an exact PID/start identity,
+one CPU, a 24-hour window, source-change stop, prelaunch cooldown/attempt limits
+and a three-failure host circuit breaker. It never restarts a failed science job
+by age. Its storage-peer ledger is append-only and includes the ionic followups.
+
+One producer returned normally but recorded a foreign GPU resident. Independent
+closure review rejected it; its numerical result remains unqualified. The
+[successor manifest](recovery_manifest_01.json) preserves that namespace and
+replaces only the same exact input slot with a fresh density-initialized solve.
+No source qualification transfers. The first recovery preparation's copied
+bytecode directory was caught before any GPU execution; copying/hashing now
+excludes bytecode directories and preserves that failed preparation separately.
+
+[Independent CPU watchdogs](watchdog_observation_01.json) now supplement the
+historical in-process monitor. An exact UID/PID-start/plan-argv check precedes
+every owned-process signal; an ignored SIGTERM can escalate to a kill of that
+same owned worker. Foreign processes are never signaled and claims/reservations
+are never cleared. A recorded external interruption prevents normal scientific
+admission even if a runtime suppresses the first termination signal. Actual
+TERM-ignoring-process and wrong-identity tests pass.
+
+### Preserved first-stage observations
+
+The following v4 observations document the earlier held-pilot stage. The
+qualified PSS profile and released cohort above supersede those holds.
+
 [The frozen start observation](start_observation_01.json) confirms three live
 energy workers and the existing larger viologen native recovery by exact
 host/PID/start identity. Energy pilots occupy λ1 GPUs 0/1 and λ2 GPU 0; the lead
@@ -68,7 +175,7 @@ declared 240-GiB bound. Its last iteration checkpoint is retained unqualified.
 Transient shared/forked memory is a hypothesis to test before recovery; the
 record does not establish an out-of-memory event or permit ignoring the guard.
 The larger lead recovery continues separately. The
-[latest observation](progress_observation_03.json) records exact ownership and
+[then-current observation](progress_observation_03.json) records exact ownership and
 nine completed response blocks for that lead at its observation time. A complete
 response is still followed by full Hessian, displaced-gradient and minimum QC.
 
@@ -101,7 +208,12 @@ Use `python -m redox.workflows.sampling_energy --help` for preparation/dispatch;
 `--pilots-only` restricts the initial stage, and full dispatch requires three
 exact `--pilot-review` receipts. Use
 `scripts/validation/review_corrected_sampling_energy.py` for independent closed
-pilot/state review and `scripts/validation/observe_corrected_sampling.py` for
+pilot/state review, `scripts/validation/collect_corrected_sampling_energy.py` for
+the full 240-slot ledger, and `python -m redox.workflows.sampling_native --help`
+for native preparation/dispatch. Only the three declared native pilots precede
+the independently checked largest native G/resource receipt. Use
+`scripts/validation/review_corrected_sampling_native.py` for native reconstruction
+and `scripts/validation/observe_corrected_sampling.py` for
 read-only process observations. Shared reservations, node preflight, aggregate
 RAM/storage accounting, native thread caps and source-frozen namespace execution
 remain in force. No old claim or output is cleared by age or an observation

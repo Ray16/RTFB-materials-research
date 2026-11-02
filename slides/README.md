@@ -31,4 +31,8 @@ under `results/figures/slides/2026-10-30_tempo/`; plotting code stays in
 `scripts/plotting/`. The unmodified archived source is identified in
 [restoration.json](restoration.json).
 
-Supporting slide 19 reports the first independently checked ionic polymer native component; slide 20 reports the full primary molecular control and slide 21 retains reproducibility limits. This is one alternate-model local minimum, with no complete occupied free-energy cycle.
+Supporting slide 19 reports the first complete matched ionic neighboring-graft G
+cycle: −3.94 kJ/mol at the primary cutoff, within a −5.85 to −3.94 kJ/mol settings
+range. Four independently checked local minima enter this finite model; three
+other cycles and occupied ensembles remain pending. Slide 20 reports the full
+primary molecular control and slide 21 retains reproducibility limits.

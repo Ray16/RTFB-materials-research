@@ -57,12 +57,12 @@ atomic_write_json(pathlib.Path(sys.argv[5]),receipt);print(json.dumps(receipt))
     return json.loads(result.stdout)
 
 
-def inspect(row,claim,alive):
+def inspect(row,claim,alive,finished_status='screening_energy_control_finished_review_pending'):
     root=Path(row['namespace']).parent;case=root/'case';stage=case/'status.json'
     if stage.exists():
         data=json.loads(stage.read_text())
         if 'finished' in data:
-            return ('completed_review_pending' if data['status']=='screening_energy_control_finished_review_pending'
+            return ('completed_review_pending' if data['status']==finished_status
                     else 'scientific_failure_preserved'),data
         live=alive(data['owner'])
         return ('running' if live is True else 'stopped_attempt_preserved' if live is False else 'ownership_unverified'),data

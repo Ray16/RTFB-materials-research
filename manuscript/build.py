@@ -80,6 +80,10 @@ def main():
     if (manifest.parent/'ionic_native_component_review.json').exists():
         from check_native_component_pilot import audit as audit_native_component
         native_component_check = audit_native_component(manifest.parent)
+    ionic_native_cycle_check = None
+    if (manifest.parent/'ionic_native_cycles.json').exists():
+        from check_ionic_native_cycles import audit as audit_ionic_native_cycles
+        ionic_native_cycle_check = audit_ionic_native_cycles(manifest.parent)
     primary_native_cohort_check = None
     corrected_example_check = None
     if (manifest.parent/'primary_native_cohort_inputs.json').exists():
@@ -113,6 +117,9 @@ def main():
     source.update(figure_inputs)
     if native_component_check is not None:
         source['manuscript/check_native_component_pilot.py']=sha(PAPER/'check_native_component_pilot.py')
+    if ionic_native_cycle_check is not None:
+        source['manuscript/check_ionic_native_cycles.py']=sha(PAPER/'check_ionic_native_cycles.py')
+        source['src/redox/workflows/ionic_native_cycles.py']=sha(ROOT/'src/redox/workflows/ionic_native_cycles.py')
     if primary_native_cohort_check is not None:
         source['manuscript/check_primary_native_cohort.py']=sha(PAPER/'check_primary_native_cohort.py')
         source['src/redox/validation/native_component_sensitivity.py']=sha(ROOT/'src/redox/validation/native_component_sensitivity.py')
@@ -190,6 +197,7 @@ def main():
                   context_consequences_check=context_consequences_check,
                   component_sensitivity_check=component_sensitivity_check,
                   native_component_check=native_component_check,
+                  ionic_native_cycle_check=ionic_native_cycle_check,
                   primary_native_cohort_check=primary_native_cohort_check,
                   corrected_example_check=corrected_example_check,
                   xtb_runtime_check=xtb_runtime_check,

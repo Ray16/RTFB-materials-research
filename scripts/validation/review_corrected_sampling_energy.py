@@ -28,13 +28,13 @@ def load(path, name):
 
 
 def review(namespace):
-    from redox.validation.execution_review import review_closure, freeze_source, SOURCE_BYTES as closure_bytes
+    from redox.validation.execution_review import review_closure, host_usage_peak, freeze_source, SOURCE_BYTES as closure_bytes
     from redox.validation.scf_frame import checkpoint_frame, freeze_reviewer
     from redox.workflows.sampling_energy import profile
     spec = verify(namespace); case = Path(spec['case']); sources = Path(spec['sources']); used = [namespace]
     def read(path):
         used.append(path); return json.loads(path.read_text())
-    plan = read(case / 'plan.json'); task = plan['tasks'][0]; declared = profile(task)
+    plan = read(case / 'plan.json'); task = plan['tasks'][0]; declared = profile(task,plan['host_memory_profile'])
     if (plan['role'] != 'corrected_sampling_energy' or plan['electronic_protocol'] != ACTIVE_SP
             or any(plan.get(k) != v for k, v in declared.items()) or plan['native_G_computed']
             or plan['primary_candidate_admission'] or plan['historical_energy_or_thermal_values_transferred']):
@@ -42,7 +42,8 @@ def review(namespace):
     owners = load(ROOT / 'scripts/pipeline/observe_archived_native_namespace.py', 'sampling_energy_ownership')
     stage = review_closure(case, read, owners.alive,
         expected_status='corrected_sampling_energy_finished_independent_review_pending',
-        host_GiB=plan['maximum_host_RSS_GiB'], GPU_MiB=31744, worker=sources / 'worker.py')
+        host_GiB=plan['maximum_host_RSS_GiB'], GPU_MiB=31744, worker=sources / 'worker.py',
+        expected_memory_profile=plan['host_memory_profile'])
     used += [freeze_source(case, Path(__file__), SOURCE_BYTES), freeze_reviewer(case),
              freeze_source(case, ROOT / 'src/redox/validation/execution_review.py', closure_bytes)]
     original = read(case / 'experimental_energy/status.json')
@@ -59,6 +60,25 @@ def review(namespace):
     driver.check_energy(result, task, plan['experimental_method_id'])
     if result['energy_protocol'] != plan['electronic_protocol']:
         raise ValueError('Actual hybrid electronic protocol differs from its declaration')
+    policy=None
+    if plan.get('checkpoint_initial_density_policy'):
+        policy=read(raw/'SCF_checkpoints/initial_density_policy.json')
+        phases=policy['phases']
+        if (policy['physical_equations_changed'] or policy['source_qualification_transferred']
+                or len(phases)!=2 or {p['solvent'] for p in phases}!={None,'acetonitrile'}):
+            raise ValueError('Both actual initial-density phase definitions required')
+        for phase in phases:
+            name='smd' if phase['solvent']=='acetonitrile' else 'gas'
+            if (phase['nominal_guesses']!=result['scf_guesses']
+                    or phase['actual_guesses']!=[g['guess'] for g in result['scf_guess_energies_'+name]]):
+                raise ValueError('Actual SCF guesses differ from their recorded density policy')
+            restart=phase['restart'];expected=plan.get('density_restart') if name=='smd' else None
+            if (restart is None)!=(expected is None):raise ValueError('Unplanned or missing density restart')
+            if restart is not None:
+                if (restart['path']!=expected['checkpoint'] or restart['sha256']!=expected['sha256']
+                        or restart['source_qualification_transferred'] or not restart['density_only']):
+                    raise ValueError('Actual restart differs from its exact declared source')
+                used.append(Path(restart['path']))
     atoms = read_atoms(case / 'input.xyz'); coordinates = atoms.positions / param.BOHR
     saved = load(sources / 'occupied.py', 'sampling_energy_frozen_occupied_format')
     groups = {'gas': [], 'smd': []}; counts = {'gas': 0, 'smd': 0}; errors = []; orthogonal = []
@@ -99,11 +119,15 @@ def review(namespace):
         experimental_model=plan['experimental_model'], electronic_protocol=plan['electronic_protocol'],
         E_smd_eV=result['e_smd_eV'], E_gas_eV=result['e_gas_eV'],
         actual_checkpoint_counts=counts, actual_checkpoint_frames_verified=True,
+        initial_density_policy=policy,source_checkpoint_qualification_transferred=False,
         maximum_checkpoint_coordinate_error_Bohr=max(errors), occupied_wavefunctions_checked=True,
         maximum_occupied_orthonormality_error=max(orthogonal),
         virtual_coefficients_retained=False, response_restart_supported=False,
         resources_checked=True, peak_GPU_MiB=stage['observed_peak_GPU_MiB'],
         peak_host_RSS_bytes=max(host['self_VmHWM_bytes'], host['peak_tree_RSS_bytes']),
+        host_memory_profile=plan['host_memory_profile'],self_VmHWM_bytes=host['self_VmHWM_bytes'],
+        peak_tree_RSS_bytes=host['peak_tree_RSS_bytes'],peak_tree_PSS_bytes=host.get('peak_tree_PSS_bytes'),
+        peak_host_guard_usage_bytes=host_usage_peak(host,plan['host_memory_profile']),
         native_G_qualified=False, primary_candidate_admission=False,
         source_sha256={str(p): sha256_file(p) for p in used},
         reviewer_sha256=hashlib.sha256(SOURCE_BYTES).hexdigest())

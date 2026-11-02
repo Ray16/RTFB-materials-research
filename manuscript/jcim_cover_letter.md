@@ -14,7 +14,10 @@ models, with explicit boundaries on property reuse and material interpretation.
 
 A 39-endpoint MeCN benchmark establishes the protocol's accuracy context. An exact
 viologen example connects reviewed attachment chemistry with two calculated
-reductions and a checked local quaternization cycle. TEMPO illustrates why
+reductions, a checked local quaternization and one matched ionic polymer
+neighboring-graft cycle. Its −3.94 kJ/mol nonadditivity is a finite same-model
+response; the separate molecular and polymer models retain their own scopes.
+TEMPO illustrates why
 directional solution-relaxation costs need not qualify a single symmetric
 parameter. The PMDI and phthalimide cases distinguish a local-to-polymer penalty,
 neighboring-site nonadditivity, spatial contact and frozen-fragment electronic

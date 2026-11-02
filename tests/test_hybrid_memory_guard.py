@@ -39,3 +39,39 @@ def test_actual_same_process_guard_runs_the_declared_hybrid_profile(tmp_path):
     assert result['maximum_RSS_GiB'] == 160 and result['resource_profile'] == 'corrected_hybrid_energy'
     assert result['status'] == 'effective_memory_guard_finished_profile_review_pending'
     assert result['peak_tree_RSS_bytes'] > 0 and result['self_VmHWM_bytes'] > 0
+
+
+def test_proportional_energy_profile_is_explicit_and_keeps_both_resource_limits(tmp_path):
+    script = tmp_path / 'program.py'; script.write_text('pass\n'); output = tmp_path / 'guard'
+    subprocess.run([sys.executable, str(ROOT / 'scripts/fleet/bounded_peak_host_python_worker.py'),
+        '--out', str(output), '--maximum-rss-gib', '160', '--resource-profile', 'corrected_hybrid_energy_pss',
+        str(script)], env=os.environ, capture_output=True, text=True, check=True, timeout=20)
+    result = json.loads((output / 'status.json').read_text())
+    assert result['memory_accounting'] == 'max_self_HWM_tree_PSS'
+    assert result['peak_guard_usage_bytes'] == max(result['self_VmHWM_bytes'], result['peak_tree_PSS_bytes'])
+    assert result['peak_guard_usage_bytes'] > 0 and result['minimum_free_GiB'] == 32
+
+
+def test_actual_guard_sampler_counts_shared_and_private_child_pages_separately():
+    import multiprocessing as mp
+    import psutil
+    size=64*2**20;data=bytearray(size)
+    for i in range(0,size,4096):data[i]=1
+    parent,child=mp.get_context('fork').Pipe()
+    def work():
+        parent.close();child.send(True);child.recv()
+        for i in range(0,size,4096):data[i]=2
+        child.send(True);child.recv();child.close()
+    process=mp.get_context('fork').Process(target=work);process.start();child.close()
+    try:
+        assert parent.poll(10) and parent.recv()
+        shared=guard().tree_memory(psutil.Process(),True)
+        assert shared['tree_RSS_bytes']>1.5*shared['tree_PSS_bytes']
+        parent.send(True);assert parent.poll(10) and parent.recv()
+        private=guard().tree_memory(psutil.Process(),True)
+        assert .8*size<private['tree_PSS_bytes']-shared['tree_PSS_bytes']<1.2*size
+        assert guard().tree_memory(psutil.Process(),False)['tree_PSS_bytes'] is None
+        parent.send(True);process.join(10);assert process.exitcode==0
+    finally:
+        if process.is_alive():process.terminate();process.join(10)
+        parent.close()

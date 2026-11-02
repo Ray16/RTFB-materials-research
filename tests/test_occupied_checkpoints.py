@@ -76,3 +76,32 @@ def test_multiple_guesses_keep_each_final_determinant_and_restore_solver(tmp_pat
     paths = sorted(tmp_path.glob('SCF/*/final/occupied.h5'))
     assert len(paths) == len(guesses) == 2 and converged
     assert abs(min(review(p)['energy_Ha'] for p in paths) - energy) < 1e-12
+
+
+def test_explicit_same_frame_density_restart_reconverges_and_records_its_origin(tmp_path):
+    import json
+    from redox.qm import dft
+    from redox.qm.occupied_checkpoints import scf_checkpoints
+    mf = attach(scf.RHF(molecule()), tmp_path / 'first'); mf.conv_tol = 1e-11; expected = mf.kernel()
+    path = tmp_path / 'first/0000/occupied.h5'
+    with scf_checkpoints(tmp_path / 'restart', {None: path}):
+        energy, converged, _, guesses = dft._lowest_scf(lambda: scf.RHF(molecule()), ('minao',))
+    assert converged and abs(energy - expected) < 1e-10
+    assert guesses[0]['guess'] == 'checkpoint_density'
+    policy = json.loads((tmp_path / 'restart/initial_density_policy.json').read_text())
+    assert policy['phases'][0]['restart']['path'] == str(path)
+    assert not policy['phases'][0]['restart']['source_qualification_transferred']
+
+
+def test_density_restart_cannot_transfer_orbitals_to_another_geometry(tmp_path):
+    from redox.qm import dft
+    from redox.qm.occupied_checkpoints import scf_checkpoints
+    mf = attach(scf.RHF(molecule()), tmp_path / 'first'); mf.kernel()
+    path = tmp_path / 'first/0000/occupied.h5'
+    changed = molecule(); coords = changed.atom_coords(); coords[0, 0] += .01
+    changed.set_geom_(coords, unit='Bohr')
+    before = dft._lowest_scf, dft._kernel_robust
+    with pytest.raises(ValueError, match='exact molecular frame'):
+        with scf_checkpoints(tmp_path / 'wrong', {None: path}):
+            dft._lowest_scf(lambda: scf.RHF(changed), ('minao',))
+    assert (dft._lowest_scf, dft._kernel_robust) == before
