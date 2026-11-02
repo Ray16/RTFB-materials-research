@@ -59,7 +59,8 @@ def main():
                     with redirect_stdout(log),redirect_stderr(log):
                         result=dft.dft_smd(case/'input.xyz',1,1,backend='gpu',solvent='acetonitrile',
                             do_opt=True,do_freq=False,do_smd=False,do_gas=False,opt_out=case/'optimizer_return.xyz',
-                            max_opt_steps=400,assert_convergence=False)
+                            max_opt_steps=400,assert_convergence=False,
+                            conv_params=plan.get('optimizer_convergence'))
                 atomic_write_json(case/'optimizer_result.json',result)
                 if not result['optimized']:raise ValueError('Optimizer did not converge; all returned coordinates remain unqualified')
                 if hydrogen_topology_status(plan['smiles'],case/'optimizer_return.xyz')!='ok':

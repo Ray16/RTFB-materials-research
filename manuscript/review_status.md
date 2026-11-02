@@ -74,8 +74,13 @@ The separate full 240-input corrected phthalimide-control campaign now has
 resource review; matching native followups are released, with nine further
 workers observed live. No occupied ensemble is complete. Six exact local
 viologen/chloride geometries now pass independent stationarity and actual
-SCF-energy checks. A full component pilot interrupted by foreign GPU residency
-is preserved unqualified; no association G is yet supplied.
+SCF-energy checks. The first pose's −50.52-cm⁻¹ minimum failure is independently
+reconstructed and preserved unqualified. Two signed repairs pass full native
+QC and give finite 1-M association G of +15.4 to +15.6 kJ/mol at the primary
+cutoff. Other poses and actual-condition speciation remain open. Twelve frozen
+motif triplets additionally pass 72 actual SCF reviews; local repulsion and the
+whole-chain E cycle have opposite signs in two of four parent frames. These
+new working results await their next frozen manuscript integration.
 [Sampling progress](../validation/corrected_sampling_2026-11-02/README.md).
 
 The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)

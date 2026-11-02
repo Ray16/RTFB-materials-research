@@ -1,0 +1,38 @@
+{
+  "status": "repaired_plus_native_start_unverified",
+  "launch": {
+    "host": "lambda1",
+    "GPU": 0,
+    "capacity": {
+      "available": 380788781056,
+      "promised": 287626653696,
+      "GPU_MiB": 32768.0,
+      "load": 7.89599609375,
+      "cpus": 80
+    },
+    "receipt": {
+      "status": "controller_spawned_scientific_start_unverified",
+      "owner": {
+        "host": "lambda1",
+        "pid": 1764331,
+        "process_start": "590660081"
+      },
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.counterion_thermochemistry",
+        "launch",
+        "--spec",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_repaired_contact_thermochemistry/plus/namespace.json",
+        "--gpu",
+        "0",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_repaired_contact_thermochemistry/plus/placement_001"
+      ],
+      "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_repaired_contact_thermochemistry/plus/placement_001"
+    }
+  },
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_repaired_contact_thermochemistry/plus/namespace.json",
+  "checked": 1793656425.1014607
+}

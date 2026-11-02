@@ -43,6 +43,11 @@ def review(namespace):
     atoms=atoms_read(xyz);gradient=np.asarray(final['gradient_Ha_Bohr'])
     if gradient.shape!=(len(atoms),3) or not np.isfinite(gradient).all() or abs(gradient).max()>.00045:
         raise ValueError('Fresh optimizer-return stationarity check failed')
+    if plan.get('optimizer_convergence'):
+        limits=plan['optimizer_convergence'];norms=np.linalg.norm(gradient,axis=1)
+        if (float(norms.max())>limits['convergence_gmax']
+                or float(np.sqrt(np.mean(norms**2)))>limits['convergence_grms']):
+            raise ValueError('Fresh final gradient fails the declared stricter repair convergence')
     paths=sorted((case/'SCF_evaluations').glob('*/*/SCF.h5'))
     if not paths:raise ValueError('Every accepted geometry needs actual final-SCF evidence')
     checkpoint=paths[-1];settings=read(checkpoint.with_name('settings.json'));solved=read(checkpoint.with_name('SCF_result.json'))

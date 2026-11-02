@@ -17,6 +17,9 @@ no declared category. It does not submit calculations.
 | Corrected native queue | `python scripts/fleet/run_corrected_native_queue.py --help` | Maintained coordinator for the full 240-slot objective; independently collects closed native results, waits for the largest pilot, then prepares and dispatches checked-energy followups |
 | Counterion geometry control | `python -m redox.workflows.counterion_geometry --help` | Oxidized graft plus explicit chloride: +1 singlet, separate from the +1 doublet redox state; geometry/resource pilot precedes wider contacts and native G |
 | Counterion thermochemistry | `python -m redox.workflows.counterion_thermochemistry --help` | Prepare/launch own matched primary electronic/native components; analyze only complete independent reviews, with explicit two-to-one solute conversion |
+| Signed minimum repair | `python -m redox.workflows.counterion_mode_repair --help` | Independently diagnose a closed physical failure and prepare both signed-mode branches; fresh geometry and native QC remain mandatory |
+| Ionic motif construction | `python -m redox.workflows.viologen_motif_fragments --help` | Reuse the audited methyl-cap constructor at four checked parent frames; exact CH2 attachment, retained coordinates and charges are checked |
+| Frozen motif electronic control | `python -m redox.workflows.motif_interaction_energy --help` | Prepare/launch/collect matched A/B/AB gas and MeCN electronic triplets after a checked pilot; no binding G or complete backbone decomposition |
 | Charged-polymer pilot | `python -m redox.workflows.charged_polymer_pilot --help` | Route-bound private namespace, first-class resource and physical checks |
 | Directional solvent response | `python -m redox.workflows.solution_pair_namespace --help` | Exact matched candidate/state pair, independently reviewed |
 | Historical compatibility entry | `python -m redox.current` | Alias of the same public CLI, not a second production implementation |
@@ -167,3 +170,15 @@ cluster is one statistical solute despite its disconnected SMILES components;
 the 1-atm-to-1-M correction is applied after the balanced source-convention sum.
 Each starting pose remains a separate finite scenario, without inferred
 experimental populations, graft conversion or yield.
+
+The counterion failed-mode workflow preserves the original SCFs and Hessian,
+reconstructs their sampled derivatives and signed internal modes, and retains
+both ±0.1-Å branches. The repair uses stricter optimization convergence without
+changing the molecular Hamiltonian or the −5-cm⁻¹ native minimum gate. Stationary
+geometry, native minimum and composite G retain separate qualification fields.
+
+The full counterion pilot measured approximately 1.65 GiB host RSS and 20.9 GiB
+GPU usage. Matching followups may use a declared 16-GiB host envelope after
+checking 25% headroom against the measured pilot, while retaining the validated
+32-GB-or-larger GPU requirement. These resource bounds do not alter the SCF,
+Hessian, finite-difference or thermal protocols.

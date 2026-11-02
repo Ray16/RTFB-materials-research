@@ -61,10 +61,17 @@ establish that a calculation is currently running.
   molecular G, isolated motif binding, electronic coupling and material admission.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
-  total charge +1 and singlet spin. The first stationary geometry passes
-  independent review; six stationary poses now have checked final SCF energies.
-  this is distinct from the +1 doublet redox state. Association G, populations,
-  full minimum qualification and any synthesis/material conclusion remain pending.
+  total charge +1 and singlet spin, distinct from the +1 doublet redox state.
+  Six stationary poses have checked SCF energies. After a −50.52-cm⁻¹ minimum
+  failure, two signed repairs pass full native QC and give finite 1-M association
+  G of +15.4 to +15.6 kJ/mol at the primary cutoff. Other poses, salt speciation
+  and any synthesis/material conclusion remain pending.
+- [Frozen ionic motif controls](../validation/viologen_motif_interactions_2026-11-02/README.md):
+  twelve charged A/B/AB triplets (72 SCFs) pass independent review. The capped
+  motif interaction is repulsive in all four checked MeCN parent frames,
+  while whole-chain E nonadditivity is favorable in two. These are distinct
+  electronic quantities; no binding G, pure backbone decomposition or coupling
+  is inferred.
 - [Complete primary molecular control](../validation/ionic_cycle_completion_2026-11-02/primary_cohort_summary.json):
   nine new molecular Hessians, analytic chloride and 81 independent orbital/frame
   reviews reconstruct six full exact-viologen G cycles. Changes from source are

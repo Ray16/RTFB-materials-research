@@ -1,0 +1,155 @@
+{
+  "status": "sampling_process_and_progress_observation_not_physical_admission",
+  "checked": 1793655039.2201455,
+  "manifest": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_and_motif_dispatch/dispatch.json",
+  "manifest_sha256": "ab377cb1cf43c9c4fac819277209b3ad3c77ae78fd5d59ba8337473bb169151c",
+  "records": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/minus/namespace.json",
+      "namespace_sha256": "cd2e33c7a27ffefb4e77e8a457c07155b876cd665f49f3d117bd81fbfdb494c3",
+      "stage_snapshot": {
+        "status": "counterion_geometry_control_running",
+        "owner": {
+          "host": "lambda1",
+          "pid": 1666532,
+          "process_start": "590502730"
+        },
+        "started": 1793654855.5251753,
+        "native_G_qualified": false
+      },
+      "SCF_iterations": [],
+      "response_summary": null,
+      "SCF_kernels_entered": 0,
+      "checkpoint_representation": "occupied_orbitals_or_retained_source_frame",
+      "occupied_checkpoints_written": 0,
+      "full_SCF_checkpoints_written": 0,
+      "Hessian_written": false,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/plus/namespace.json",
+      "namespace_sha256": "62c9ff5068fccd369f56510060b288a1c4eda13a71d2e43ba55bccd2915f202f",
+      "stage_snapshot": {
+        "status": "counterion_geometry_control_running",
+        "owner": {
+          "host": "lambda2",
+          "pid": 329218,
+          "process_start": "1445553814"
+        },
+        "started": 1793654922.1865125,
+        "native_G_qualified": false
+      },
+      "SCF_iterations": [],
+      "response_summary": null,
+      "SCF_kernels_entered": 0,
+      "checkpoint_representation": "occupied_orbitals_or_retained_source_frame",
+      "occupied_checkpoints_written": 0,
+      "full_SCF_checkpoints_written": 0,
+      "Hessian_written": false,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/namespace.json",
+      "namespace_sha256": "c40fb5ac611de2069288fb23065cb32478e501b6003877fc0cb13001cb499b11",
+      "stage_snapshot": {
+        "status": "frozen_charged_motif_energy_finished_independent_review_pending",
+        "owner": {
+          "host": "lambda1",
+          "pid": 1668556,
+          "process_start": "590505862"
+        },
+        "started": 1793654886.728568,
+        "native_G_qualified": false,
+        "observed_peak_GPU_MiB": 9000,
+        "finished": 1793654953.8501008
+      },
+      "SCF_iterations": [],
+      "response_summary": null,
+      "SCF_kernels_entered": 0,
+      "checkpoint_representation": "occupied_orbitals_or_retained_source_frame",
+      "occupied_checkpoints_written": 0,
+      "full_SCF_checkpoints_written": 0,
+      "Hessian_written": false,
+      "native_G_qualified": false
+    }
+  ],
+  "live_hosts": {
+    "lambda1": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda1",
+            "pid": 1666532,
+            "process_start": "590502730"
+          },
+          "live": true,
+          "CPU_affinity": [
+            16,
+            17
+          ],
+          "environment": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "CUDA_VISIBLE_DEVICES": "0"
+          }
+        },
+        {
+          "owner": {
+            "host": "lambda1",
+            "pid": 1668556,
+            "process_start": "590505862"
+          },
+          "live": false
+        }
+      ],
+      "GPU_residency": [
+        "1666532, GPU-54527752-20db-dbfe-f13c-c14b1f7d3716, 3144",
+        "1502546, GPU-acfb23c0-7163-580e-11cd-370e35867833, 18062",
+        "1504099, GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70, 18362",
+        "1505648, GPU-87f454bb-e27d-5274-da01-09db9787f2b3, 19274",
+        "1460403, GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a, 19182",
+        "1507247, GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8, 17078"
+      ]
+    },
+    "lambda2": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda2",
+            "pid": 329218,
+            "process_start": "1445553814"
+          },
+          "live": true,
+          "CPU_affinity": [
+            2,
+            3
+          ],
+          "environment": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "CUDA_VISIBLE_DEVICES": "1"
+          }
+        }
+      ],
+      "GPU_residency": [
+        "155295, GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074, 19084",
+        "329218, GPU-099acaa2-a585-2324-846e-c57f056f80a7, 3968",
+        "331166, GPU-a282ce96-9ef7-08f7-f0c4-c17407a0bae9, 16394",
+        "332823, GPU-2c4c6bf7-dfe7-0a42-db3a-43d3e97c5dd7, 16500",
+        "335863, GPU-452861da-032d-d5bf-6f05-06552461e8fd, 1052"
+      ]
+    }
+  },
+  "native_G_qualified": false,
+  "jobs_restarted": false,
+  "producer_sha256": "abc024ce2139912584685201326d9a98594be249834631a02e88b7dcd735880e",
+  "producer_snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/observer_sources/abc024ce2139912584685201326d9a98594be249834631a02e88b7dcd735880e/observe_corrected_sampling.py"
+}

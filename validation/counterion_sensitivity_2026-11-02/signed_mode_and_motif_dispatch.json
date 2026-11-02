@@ -1,0 +1,128 @@
+{
+  "status": "signed_mode_geometry_and_frozen_motif_bounded_dispatch",
+  "launches": [
+    {
+      "key": "N0_above_mode_minus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/minus/namespace.json",
+      "host": "lambda1",
+      "GPU": 0,
+      "host_bound_GiB": 32,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda1",
+          "pid": 1665921,
+          "process_start": "590502332"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.counterion_geometry",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/minus/namespace.json",
+          "--gpu",
+          "0",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/minus/placement_001"
+        ],
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/minus/placement_001"
+      }
+    },
+    {
+      "key": "frozen_motif_energy_pilot",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/namespace.json",
+      "host": "lambda1",
+      "GPU": 2,
+      "host_bound_GiB": 16,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda1",
+          "pid": 1667911,
+          "process_start": "590505410"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.motif_interaction_energy",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/namespace.json",
+          "--gpu",
+          "2",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/placement_001"
+        ],
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/placement_001"
+      }
+    },
+    {
+      "key": "N0_above_mode_plus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/plus/namespace.json",
+      "host": "lambda2",
+      "GPU": 1,
+      "host_bound_GiB": 32,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda2",
+          "pid": 328790,
+          "process_start": "1445553386"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.counterion_geometry",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/plus/namespace.json",
+          "--gpu",
+          "1",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/plus/placement_001"
+        ],
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/plus/placement_001"
+      }
+    }
+  ],
+  "refusals": [],
+  "availability_errors": [
+    {
+      "host": "lambda13",
+      "error": "TimeoutExpired(['/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve', 'list', '--hosts', 'lambda13'], 15)",
+      "availability": "unverified_no_submission"
+    }
+  ],
+  "native_G_qualified": false,
+  "states": [
+    {
+      "key": "N0_above_mode_minus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/minus/namespace.json",
+      "namespace_sha256": "cd2e33c7a27ffefb4e77e8a457c07155b876cd665f49f3d117bd81fbfdb494c3",
+      "sign": -1,
+      "module": "redox.workflows.counterion_geometry"
+    },
+    {
+      "key": "N0_above_mode_plus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_geometry_repairs/plus/namespace.json",
+      "namespace_sha256": "62c9ff5068fccd369f56510060b288a1c4eda13a71d2e43ba55bccd2915f202f",
+      "sign": 1,
+      "module": "redox.workflows.counterion_geometry"
+    },
+    {
+      "key": "frozen_motif_energy_pilot",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/namespace.json",
+      "namespace_sha256": "c40fb5ac611de2069288fb23065cb32478e501b6003877fc0cb13001cb499b11",
+      "module": "redox.workflows.motif_interaction_energy"
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_signed_mode_and_motif_dispatch/remote_launch.py": "63e7e49dd65611195d1461d9d1ee55847531244131b3299241377b0df16659f6"
+  },
+  "checked": 1793654913.9721098,
+  "unsubmitted": []
+}

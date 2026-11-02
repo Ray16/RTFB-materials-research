@@ -1,5 +1,33 @@
 # Exact local viologen chloride-contact sensitivity
 
+## Current checked thermochemistry
+
+The initial N0-above stationary pose failed its native minimum test. The
+[independent diagnosis](failed_minimum_diagnosis.json) reconstructs one unstable
+internal mode at −50.52 cm⁻¹ from the preserved full Hessian, nine actual SCFs
+and four sampled finite-difference checks. No frequency was made positive and
+no G was admitted for that pose.
+
+Both ±0.1-Å mode branches were optimized under stricter convergence and then
+received entirely fresh electronic energies and native Hessians. Their
+independent [minus](mode_minus_thermochemistry_review.json) and
+[plus](mode_plus_thermochemistry_review.json) reviews pass, with lowest internal
+frequencies 22.83 and 22.66 cm⁻¹. The independent partition reader validates the
+same pinned archived certificate and source tree used by the actual worker;
+it does not substitute the refactored reader's source hash.
+
+The first finite-pose association cycles are now checked:
+[minus branch](association_first_repaired_pose.json),
+[plus branch](association_second_repaired_pose.json). At the 50-cm⁻¹ cutoff,
+the 1-M values are +15.61 and +15.42 kJ/mol. The −7.92587-kJ/mol translation
+conversion is applied once after the count-balanced source sum (association
+changes solute count by −1). These are two repaired outcomes from one initial
+pose, not independently weighted populations, an exhaustive conformer set,
+an experimentally validated association constant or a grafting-yield prediction.
+The five other checked contact starts still require full thermochemistry.
+
+## Earlier preparation and geometry milestones
+
 The [seven-start collection](geometry_collection_02.json) now contains six
 independently checked stationary geometries, with the separated start still
 running at that observation. Their primary r2SCAN-D4/SVP geometry-level energies
@@ -15,8 +43,8 @@ placement was refused before science because declared host-RAM headroom was
 unavailable; a fresh suitable reservation is required. All physical protocols,
 resource limits and the exact input geometry remain unchanged.
 
-The [association ledger](association_pending_02.json) keeps all seven G cycles
-blank. Its maintained analysis verifies the exact primary parents and eventual
+The earlier [prepared association ledger](association_pending_02.json) keeps all
+seven G cycles blank. Its maintained analysis verifies the exact primary parents and eventual
 microstate component before matched arithmetic. The paired state is a single
 statistical solute even though its graph contains disconnected chloride;
 the association changes solute count by −1. A common base/HCl term is not added,

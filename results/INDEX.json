@@ -460,18 +460,30 @@
       "current": "validation/counterion_sensitivity_2026-11-02/geometry_collection_02.json",
       "source_snapshot": "validation/counterion_sensitivity_2026-11-02/prepared_manifest.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2",
-      "status": "six_stationary_chloride_geometries_checked_thermochemistry_pending",
-      "scope": "Six exact oxidized-graft/chloride stationary poses checked with actual SCF energies; no association G, conformer weights, experimental accuracy or material conclusion",
+      "status": "two_repaired_contact_minima_and_finite_association_G_checked_other_poses_pending",
+      "scope": "Two signed-mode repairs of one initial chloride pose give full-minimum QC and finite 1-M association G +15.4 to +15.6 kJ/mol at cutoff 50; other poses/speciation remain unresolved; no yield or material claim",
       "followup_dispatch": "validation/counterion_sensitivity_2026-11-02/followup_dispatch.json",
       "followup_observation": "validation/counterion_sensitivity_2026-11-02/followup_start_verification.json",
       "prelaunch_recovery": "validation/counterion_sensitivity_2026-11-02/prelaunch_retry_dispatch.json",
       "thermochemistry_preparation": "validation/counterion_sensitivity_2026-11-02/thermochemistry_preparation.json",
       "interruption": "validation/counterion_sensitivity_2026-11-02/thermochemistry_interruption.json",
-      "association": "validation/counterion_sensitivity_2026-11-02/association_pending_02.json",
+      "association": "validation/counterion_sensitivity_2026-11-02/association_first_repaired_pose.json",
       "checks": "validation/counterion_sensitivity_2026-11-02/thermochemistry_checks_06.xml",
       "regression": "validation/counterion_sensitivity_2026-11-02/primary_checkpoint_regression/summary.json",
       "external_controls": "validation/counterion_sensitivity_2026-11-02/external_validation_evidence.json",
-      "thermochemistry_current": "validation/counterion_sensitivity_2026-11-02/thermochemistry_current.json"
+      "thermochemistry_current": "validation/counterion_sensitivity_2026-11-02/thermochemistry_current_02.json",
+      "association_second_branch": "validation/counterion_sensitivity_2026-11-02/association_second_repaired_pose.json",
+      "failed_minimum": "validation/counterion_sensitivity_2026-11-02/failed_minimum_diagnosis.json"
+    },
+    "ionic_frozen_motif_interactions": {
+      "guide": "validation/viologen_motif_interactions_2026-11-02/README.md",
+      "current": "validation/viologen_motif_interactions_2026-11-02/motif_definition_comparison.json",
+      "source_snapshot": "validation/viologen_motif_interactions_2026-11-02/motif_energy_collection.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions",
+      "figure": "results/figures/polymer_models/viologen_interaction_definitions.pdf",
+      "checks": "validation/viologen_motif_interactions_2026-11-02/focused_checks.xml",
+      "status": "twelve_triplets_72_actual_SCFs_checked_four_matched_parent_frames",
+      "scope": "Frozen methyl-capped motif E repulsive in all four MeCN frames; whole-chain E cycle favourable in two. Distinct quantities; no binding G, pure-backbone energy, coupling or populations."
     }
   }
 }

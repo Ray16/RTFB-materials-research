@@ -34,9 +34,16 @@ def review(namespace):
             or plan['geometry_repair_permitted'] or plan['parent_formal_core_charge'] != 2):
         raise ValueError('Exact primary oxidized-core chloride microstate required')
     owners = load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py', 'chloride_thermo_owner')
+    bound=plan['maximum_host_RSS_GiB']
+    if plan['pilot_review'] is not None:
+        from redox.workflows.counterion_thermochemistry import checked_pilot,followup_host_bound
+        resource_pilot,_=checked_pilot(Path(plan['pilot_review']))
+        if bound!=followup_host_bound(resource_pilot):raise ValueError('Declared host profile lacks its measured full-pilot witness')
+    elif bound!=40:
+        raise ValueError('The unqualified pilot must retain its original host envelope')
     stage = review_closure(case, read, owners.alive,
         expected_status='counterion_thermochemistry_finished_independent_review_pending',
-        host_GiB=40, GPU_MiB=31744, worker=sources/'worker.py')
+        host_GiB=bound, GPU_MiB=31744, worker=sources/'worker.py')
     used.extend([freeze_reviewer(case), freeze_source(case, Path(__file__), SOURCE_BYTES),
         freeze_source(case, ROOT/'src/redox/validation/execution_review.py', CLOSURE_SOURCE),
         freeze_source(case, Path(primary_checkpoints.__file__), primary_checkpoints.SOURCE_BYTES)])
@@ -88,6 +95,9 @@ def review(namespace):
     used.extend(paths)
     audit = load(ROOT/'scripts/validation/audit/native_partition.py', 'chloride_independent_partition')
     used.append(freeze_source(case, Path(audit.__file__)))
+    # The worker executes the pinned archived quantum tree. Validate its exact
+    # certificate/evidence/source bytes rather than the refactored reader tree.
+    audit.ROOT = Path(spec['archive'])
     partition = audit.read_partition(native_path, geometry)
     if partition is None or partition['protocol'] != plan['thermal_protocol']:
         raise ValueError('Independent modes, masses, symmetry, nuclear or spin partition failed')
@@ -111,6 +121,7 @@ def review(namespace):
         dimensions=plan['dimensions'], geometry_sha256=plan['geometry_sha256'],
         electronic_protocol=protocol, native_protocol=plan['native_protocol'], thermal_protocol=plan['thermal_protocol'],
         temperature_K=298.15, standard_state=plan['thermal_protocol']['pressure'],
+        independent_partition_source_root=str(audit.ROOT),
         reference='absolute composite microstate G within the primary molecular model; separated omitted iodide spectator',
         electronic_eV=energy['e_smd_eV'], nuclear_by_cutoff_eV=partition['nuclear_by_cutoff_eV'],
         spin_partition_eV=projection['g_spin_partition_eV'], G_by_cutoff_eV=values,

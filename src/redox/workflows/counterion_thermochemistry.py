@@ -62,6 +62,13 @@ def checked_pilot(path):
     return report, spec
 
 
+def followup_host_bound(pilot):
+    peak=pilot['peak_host_RSS_bytes']
+    if type(peak) not in (int,float) or not math.isfinite(peak) or not 0<peak<=40*2**30:
+        raise ValueError('Measured finite full-pilot host peak required')
+    return 16 if 1.25*peak<=16*2**30 else 40
+
+
 def prepare(archive, geometry_review, output, pilot_review=None):
     from redox.core.runtime_paths import gpu4pyscf_source_root
     from redox.validation.protonation import hydrogen_topology_status
@@ -132,7 +139,7 @@ def prepare(archive, geometry_review, output, pilot_review=None):
         parent_formal_core_charge=2, counterion_charge=-1, atoms=42, dimensions=dimensions,
         geometry_sha256=review['geometry_sha256'], electronic_protocol=ACTIVE_SP,
         native_protocol=native.NATIVE_THERMAL, thermal_protocol=thermal.PROTOCOL,
-        native_memory_cap_GiB=6, maximum_host_RSS_GiB=40, minimum_free_GiB=32,
+        native_memory_cap_GiB=6, maximum_host_RSS_GiB=40 if pilot_review is None else followup_host_bound(pilot), minimum_free_GiB=32,
         maximum_peak_GPU_MiB=31744, maximum_wall_seconds=14400, maximum_durable_output_bytes=2*2**30,
         minimum_initial_storage_GiB=34, minimum_live_storage_GiB=32,
         source_sha256={str(p): sha256_file(p) for p in files},
@@ -142,7 +149,7 @@ def prepare(archive, geometry_review, output, pilot_review=None):
         purpose='Exact primary molecular microstate component for a matched incoming-chloride association cycle; iodide remains an omitted separated spectator')
     atomic_write_json(case/'plan.json', plan)
     spec = dict(prior_root=str(ROOT), archive=str(archive), case=str(case), sources=str(sources),
-        source_id=review['key'], state='oxidized_contact', maximum_host_RSS_GiB=40, minimum_free_GiB=32,
+        source_id=review['key'], state='oxidized_contact', maximum_host_RSS_GiB=plan['maximum_host_RSS_GiB'], minimum_free_GiB=32,
         scientific_sources_read_only=True, library_overlay=str(case/'library'), plan_sha256=sha256_file(case/'plan.json'))
     atomic_write_json(output/'namespace.json', spec)
     return spec
@@ -155,7 +162,10 @@ def launch(namespace, gpu, output):
     if plan['role'] != 'primary_counterion_thermochemistry' or (plan['source_id'] != 'N0_above' and plan['pilot_review'] is None):
         raise ValueError('Exact prospective pilot or independently released thermochemistry input required')
     if plan['pilot_review'] is not None:
-        checked_pilot(Path(plan['pilot_review']))
+        pilot,_=checked_pilot(Path(plan['pilot_review']))
+        if plan['maximum_host_RSS_GiB']!=followup_host_bound(pilot):raise ValueError('Declared host envelope differs from the measured pilot release')
+    elif plan['maximum_host_RSS_GiB']!=40:
+        raise ValueError('Unqualified pilot retains the original host envelope')
     return execute(namespace, gpu, output, caller_source=Path(__file__))
 
 
