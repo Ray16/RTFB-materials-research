@@ -1,0 +1,59 @@
+{
+  "stage": "pre_redox_route_gate",
+  "scope": "Prospective gate; existing 75-candidate calculations are retained",
+  "candidates": [
+    {
+      "id": "tempo",
+      "route_status": "proceed",
+      "proceed_to_full_redox": true,
+      "proceed_to_feasibility_model": true,
+      "reasons": [],
+      "experimental_ease": "reviewed_workable_route; kinetics/yield not inferred from deltaG alone",
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "CC1(C)CC(O)CC(C)(C)N1[O]",
+      "evidence": {
+        "route_binding": {
+          "product_smiles": "Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1",
+          "precursor_smiles": "CC1(C)CC(O)CC(C)(C)N1[O]",
+          "site_smiles": "Cc1ccc(CCl)cc1",
+          "reaction_class": "NH_OH_substitution",
+          "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][O:1015][CH:1014]2[CH2:1013][C:1011]([CH3:1010])([CH3:1012])[N:1021]([O:1022])[C:1018]([CH3:1019])([CH3:1020])[CH2:1017]2)[cH:1008][cH:1009]1",
+          "mapped_precursor_smiles": "[CH3:1010][C:1011]1([CH3:1012])[CH2:1013][CH:1014]([OH:1015])[CH2:1017][C:1018]([CH3:1019])([CH3:1020])[N:1021]1[O:1022]",
+          "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+          "new_bond_atom_maps": [
+            1006,
+            1015
+          ],
+          "leaving_atom_map": 9001,
+          "heavy_atom_mapping": true,
+          "model_scope": "4-methylbenzyl local site on a preformed polymer"
+        },
+        "exact_design_key": "fc59809dd149604fa0c24700a6ffff20cd95e5ab153bf584beb84659c36cc8ef",
+        "exact_precursor_access_reviewed": true,
+        "attachment_selectivity_reviewed": true,
+        "conditions_defined": true,
+        "balanced_route_reviewed": true,
+        "redox_core_retention_reviewed": true,
+        "conditions": {
+          "solvent": "DMF or THF (source)",
+          "reactive_form": "4-hydroxy-TEMPO with NaH",
+          "base": "NaH",
+          "counterions": "Na+ and Cl- in overall stoichiometric bookkeeping",
+          "temperature": "0 C addition, then room temperature",
+          "time": "1 to 4 days after resin addition"
+        },
+        "source_urls": [
+          "https://patents.google.com/patent/US6441243B1/en",
+          "https://pubchem.ncbi.nlm.nih.gov/compound/137994"
+        ],
+        "evidence_scope": "Patent Example A4 reports 4-oxy-bound TEMPO on 1% DVB Merrifield resin and 0.9 mmol N-oxyl/g after washing; the capped product is its local graph model.",
+        "limitations": "One patent report; N-oxyl/g and starting chloride/g have different mass bases and do not define conversion. Selectivity and radical retention are source claims, not independent replication. Electrochemical cycling, loading in our beads, permeability, grafting free energy, motif interaction and device performance remain unresolved.",
+        "balance_scope": "Overall NaH stoichiometry is atom/charge/radical balanced; ion pairing, phases, kinetics and reaction free energy are not modeled."
+      },
+      "missing_route_evidence": []
+    }
+  ],
+  "counts": {
+    "proceed": 1
+  }
+}

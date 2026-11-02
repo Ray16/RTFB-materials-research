@@ -48,3 +48,21 @@ review entry points are `viologen_motif_fragments`, `motif_interaction_energy`
 and `review_motif_interaction_energy.py`. This folder contains self-contained
 SCF scalar/state receipts and the exact frozen XYZ inputs for manuscript replay;
 that replay does not repeat the original physical QC or fresh QM.
+
+## Checked presentation and manuscript milestone
+
+The immutable `2026-11-02_three_ionic_cycles` manuscript epoch now integrates
+this electronic counterexample and three independently checked finite ionic G
+cycles. The article/SI build at 20/33 pages. The slide deck has 16 main and six
+supporting slides; all pages were visually inspected, with detailed checks of
+new slides 13 and 20. Source hashes, decimal cycle/motif replay, generated TeX
+and compiler checks pass. All 228 indexed local result paths and the result
+README links resolve (`result_links_check.json`). The self-contained local
+reviewer export also compiles and matches both checked documents. No Overleaf
+remote is connected.
+
+The fourth ionic G cycle remains blank after a checkpoint-file I/O failure;
+its Hessian and completed evaluations are preserved. Occupied ensembles, broader
+counterion/speciation controls, material eligibility, public deposition and
+author metadata remain open. This is a checked presentation/draft milestone,
+not a submission-ready manuscript.

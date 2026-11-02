@@ -1,33 +1,29 @@
 # Exact lead thermochemistry and occupancy completion
 
-The [current nine-component collection](partial_cycles_09.json) closes the first
-balanced ionic viologen G cycle. Its adjacent all-same-backbone nonadditivity is
-−3.9365 kJ/mol at the 50-cm⁻¹ rotor setting; the 25/50/100 settings give
-−5.8454/−3.9365/−4.0622 kJ/mol. The electronic contribution is −3.4607 kJ/mol.
-This modest net response includes backbone/deformation changes. It is not
-isolated motif binding, electronic coupling, a converged ensemble or material
-admission. [Current summary](native_collection_summary_09.json).
+The [current eleven-component collection](partial_cycles_11.json) closes three
+balanced finite ionic viologen G cycles. At the 50-cm⁻¹ rotor setting they are
+−3.9365 kJ/mol (all-same adjacent), +22.5790 (all-same one spacer), and −5.2972
+(alternating one spacer). The 25/50/100 values are preserved in the collection.
+The all-same adjacent/spacer electronic contributions are −3.4607/+18.6848 kJ/mol.
+These whole-chain responses include deformation and solvent changes; they are
+not isolated motif binding, coupling, converged ensembles or material admission.
 
-The [new 137-atom +4/singlet component](larger_RHF16_native_review.json) passes
-independent reconstruction of all 25 actual SCF frames, its full Hessian,
-sampled derivatives, modes and own nuclear terms. Its lowest frequency is
-6.9604 cm⁻¹, largest sampled-column error 7.20e-6 and GPU peak 34,580 MiB. The
-unchanged larger H100 resource class now releases the three remaining
-configuration/spacing followups. Those G values remain pending; the raw
-followup manifest is at
-`/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_larger_RHF16_followups/manifest.json`.
+All three 137-atom +4/singlet double-graft components pass full Hessian, minimum,
+sampled derivative, own nuclear-term and all 25 actual SCF-frame checks.
+Their minimum frequencies are 6.9604, 6.6572 and 8.4292 cm⁻¹.
+[Adjacent review](larger_RHF16_native_review.json) ·
+[All-same spacer review](all_same_pair24_native_review.json) ·
+[Alternating spacer review](alternating_pair24_native_review.json).
+The fourth double-graft case retains its full Hessian and 19 completed gradient
+points after an HDF5 checkpoint-file I/O failure. Its G is blank until full
+validation and independent review succeed. Raw followups are preserved at
+`/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_larger_RHF16_followups/`.
 
-The article/SI now compile at 19/32 pages from the new immutable
-`2026-11-02_first_ionic_G_cycle` epoch. Supporting slide 19 reports the qualified
-finite cycle and its limits. Numerical sums, generated TeX, decimal four-state
-arithmetic and missing-cycle behavior pass dedicated checks. The earlier
-eight-component snapshot and allocation failures below remain historical evidence.
-
-This milestone closes the full primary molecular implementation-control cohort
-and advances the separate ionic polymer collection. Publication readiness remains
-incomplete. Earlier source records, failed attempts and manuscript epochs are
-preserved. The article/SI now build at 18/31 pages; the deck has fifteen main
-and six supporting slides.
+The article/SI compile at 20/33 pages from the immutable
+`2026-11-02_three_ionic_cycles` epoch. The deck has 16 main and 6 supporting
+slides: slide 13 compares electronic interaction definitions and slide 20 reports
+the three G cycles and their limits. Earlier snapshots and failures below remain
+historical evidence. Publication readiness is incomplete.
 
 ## Full primary molecular control
 

@@ -1,15 +1,15 @@
 # Current manuscript review disposition
 
-As of 2 November 2026, this is a 19-page JCIM working article with a separate
-32-page SI. Submission remains incomplete. Historical review dispositions are
+As of 2 November 2026, this is a 20-page JCIM working article with a separate
+33-page SI. Submission remains incomplete. Historical review dispositions are
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
 | Requirement | Current evidence | Still required |
 | --- | --- | --- |
-| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; nine checked alternate-model polymer components and one matched neighboring-graft G cycle | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
+| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; eleven checked alternate-model polymer components and three matched neighboring-graft G cycles | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
-| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; one exact viologen/chloride stationary geometry independently checked | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
+| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; two repaired exact viologen/chloride poses pass full native QC | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
 | M4: polymer sampling | Forty alternate-model empty inputs meet the finite 10-to-20 criterion; primary finite PMDI/phthalimide cycles remain separately scoped | Occupied graph/configuration batches, duplicate review and balanced occupied ensemble cycles |
 | M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
 | M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
@@ -53,21 +53,15 @@ configuration. They are single-conformer E terms under one corrected
 r2SCAN-D4/SVP smooth-surface MeCN model. They supply neither interaction G,
 isolated motif binding nor operating-state coupling.
 
-The alternate polymer collection now has nine independently checked components:
-six single grafts, two empty references and the adjacent all-same two-graft
-minimum. The latter closes one of four matched occupancy G cycles at −3.94
-kJ/mol (50-cm⁻¹ cutoff), with −5.85 to −3.94 kJ/mol across three rotor settings.
-The full 137-atom Hessian, all 25 SCF frames, sampled columns, modes and nuclear
-terms pass independent review; its lowest internal frequency is 6.96 cm⁻¹.
-This finite bare-charged-polymer response includes backbone/deformation changes;
-it does not isolate motif binding, electronic coupling or an experimental
-occupancy distribution. The model remains separate from primary molecular G.
-[Current collection](../validation/ionic_cycle_completion_2026-11-02/partial_cycles_09.json).
+The alternate polymer collection now has eleven independently checked components
+and three matched finite G cycles: all-same adjacent −3.94 kJ/mol, all-same
+one-spacer +22.58, and alternating one-spacer −5.30 at the primary cutoff.
+Each double-graft component passes a full Hessian and all 25 SCF frame checks.
+The alternating adjacent component retains its full Hessian and completed gradient
+checks after a checkpoint-file I/O failure; its G remains blank pending recovery
+and full independent admission. No ensemble or material inference follows.
+[Current collection](../validation/ionic_cycle_completion_2026-11-02/partial_cycles_11.json).
 
-The original allocation failures and partial tensors remain preserved. The
-completed 16-GiB-RKS-workspace H100 recovery qualifies the larger class under
-unchanged physical gates; its observed peak is 34,580 MiB. Three corresponding
-configuration/spacing followups are released, with their G still pending.
 The separate full 240-input corrected phthalimide-control campaign now has
 78 checked electronic inputs and three checked native inputs. The largest
 119-atom pilot passes full independent minimum, derivative, wavefunction and
@@ -80,7 +74,7 @@ QC and give finite 1-M association G of +15.4 to +15.6 kJ/mol at the primary
 cutoff. Other poses and actual-condition speciation remain open. Twelve frozen
 motif triplets additionally pass 72 actual SCF reviews; local repulsion and the
 whole-chain E cycle have opposite signs in two of four parent frames. These
-new working results await their next frozen manuscript integration.
+motif results are integrated into the current frozen manuscript and slide evidence; the two chloride association poses remain separately scoped working results.
 [Sampling progress](../validation/corrected_sampling_2026-11-02/README.md).
 
 The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)

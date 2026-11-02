@@ -55,8 +55,9 @@ establish that a calculation is currently running.
   incomplete. Complete control Hessians are retained and their fresh derivative
   validation continues in separate source-bound namespaces.
 - [Checked ionic native collection](../validation/ionic_cycle_completion_2026-11-02/README.md):
-  nine components now close the first adjacent all-same viologen G cycle at
-  −3.94 kJ/mol (−5.85 to −3.94 across rotor settings). Three cycles remain pending.
+  eleven components now close three finite viologen G cycles: all-same adjacent
+  −3.94 kJ/mol, all-same one-spacer +22.58, and alternating one-spacer −5.30.
+  The alternating adjacent cycle and occupied ensembles remain pending.
   These finite smooth-surface MeCN r2SCAN/SVP values are separate from primary
   molecular G, isolated motif binding, electronic coupling and material admission.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):

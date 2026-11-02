@@ -84,6 +84,10 @@ def main():
     if (manifest.parent/'ionic_native_cycles.json').exists():
         from check_ionic_native_cycles import audit as audit_ionic_native_cycles
         ionic_native_cycle_check = audit_ionic_native_cycles(manifest.parent)
+    motif_interaction_check = None
+    if (manifest.parent/'motif_energy_collection.json').exists():
+        from check_motif_interactions import audit as audit_motif_interactions
+        motif_interaction_check = audit_motif_interactions(manifest.parent)
     primary_native_cohort_check = None
     corrected_example_check = None
     if (manifest.parent/'primary_native_cohort_inputs.json').exists():
@@ -120,6 +124,8 @@ def main():
     if ionic_native_cycle_check is not None:
         source['manuscript/check_ionic_native_cycles.py']=sha(PAPER/'check_ionic_native_cycles.py')
         source['src/redox/workflows/ionic_native_cycles.py']=sha(ROOT/'src/redox/workflows/ionic_native_cycles.py')
+    if motif_interaction_check is not None:
+        source['manuscript/check_motif_interactions.py']=sha(PAPER/'check_motif_interactions.py')
     if primary_native_cohort_check is not None:
         source['manuscript/check_primary_native_cohort.py']=sha(PAPER/'check_primary_native_cohort.py')
         source['src/redox/validation/native_component_sensitivity.py']=sha(ROOT/'src/redox/validation/native_component_sensitivity.py')
@@ -198,6 +204,7 @@ def main():
                   component_sensitivity_check=component_sensitivity_check,
                   native_component_check=native_component_check,
                   ionic_native_cycle_check=ionic_native_cycle_check,
+                  motif_interaction_check=motif_interaction_check,
                   primary_native_cohort_check=primary_native_cohort_check,
                   corrected_example_check=corrected_example_check,
                   xtb_runtime_check=xtb_runtime_check,

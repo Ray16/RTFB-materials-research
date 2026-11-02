@@ -1,6 +1,6 @@
 # Focused redox workflow presentation
 
-Open [redox_workflow.pdf](redox_workflow.pdf): fifteen main slides followed by
+Open [redox_workflow.pdf](redox_workflow.pdf): sixteen main slides followed by
 six supporting slides. The editable sources are
 [redox_workflow.tex](redox_workflow.tex),
 [story/motivation_results.tex](story/motivation_results.tex) and
@@ -11,8 +11,8 @@ candidate registry, benchmark, exact TEMPO response, base-defined grafting ΔG,
 four-state polymer cycle, finite PMDI result and the limits of descriptor ranking.
 Slide 4 shows UMA structural search followed by final DFT in MeCN. Slide 8 is the
 exact-viologen reduction ladder and −11.49 kJ/mol local quaternization; slide 9 gives the TEMPO directional comparison,
-and slide 10 explains grafting ΔG. Supporting
-slide 18 updates both empty-backbone ensemble comparisons. Each slide has one
+and slide 10 explains grafting ΔG. Slide 13 compares whole-chain and frozen-motif electronic definitions. Supporting
+slide 19 updates both empty-backbone ensemble comparisons. Each slide has one
 claim, its supporting visual and a concise source/scope note.
 
 The 904-graph registry is broader than the 837-design systematic three-core grid
@@ -31,8 +31,12 @@ under `results/figures/slides/2026-10-30_tempo/`; plotting code stays in
 `scripts/plotting/`. The unmodified archived source is identified in
 [restoration.json](restoration.json).
 
-Supporting slide 19 reports the first complete matched ionic neighboring-graft G
-cycle: −3.94 kJ/mol at the primary cutoff, within a −5.85 to −3.94 kJ/mol settings
-range. Four independently checked local minima enter this finite model; three
-other cycles and occupied ensembles remain pending. Slide 20 reports the full
-primary molecular control and slide 21 retains reproducibility limits.
+Supporting slide 20 reports three checked matched ionic neighboring-graft G
+cycles: −3.94 kJ/mol for all-same adjacent, +22.58 for all-same one-spacer,
+and −5.30 for alternating one-spacer at the primary cutoff. Eleven independently
+checked local minima support these finite cycles. The alternating adjacent cycle
+and occupied ensembles remain pending. Slide 21 reports the primary molecular
+control; slide 22 retains reproducibility limits. The current immutable manuscript
+evidence epoch also supplies twelve motif triplets and 72 independently checked
+SCFs for slide 13. Its electronic comparison is distinct from binding G,
+electronic coupling and an experimental grafting distribution.

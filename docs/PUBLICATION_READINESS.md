@@ -29,7 +29,7 @@ Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 
-The current article/SI are 19/32 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 20/33 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The [2 November completion evidence](../validation/jcim_completion_2026-11-02/README.md)
 adds five interpretation-transfer tests, 29 accepted electronic-control
@@ -40,29 +40,27 @@ executions. Their corrected-minus-installed electronic contributions are below
 4.18e-9 kJ/mol (five HCl-reference/twenty base-assisted sums). This narrows the
 electronic implementation gap without requalifying nuclear terms or total G.
 
-The exact charged lead has twelve stationary components and four balanced
-E cycles, plus one independently checked native local-minimum component.
-Seven matching small/empty native followups have live observations; a separate
-137-atom H100 dimension pilot precedes release of the larger class. Complete
-occupied G/ensemble cycles and synthesis/material decisions remain open.
+The exact charged lead has twelve stationary electronic components and four
+balanced E cycles. Eleven independently checked native components now close
+three finite ionic G cycles: −3.94 kJ/mol (all-same adjacent), +22.58 (all-same
+one spacer), and −5.30 (alternating one spacer) at the primary cutoff. The
+remaining alternating adjacent cycle is pending after a checkpoint-file I/O
+failure; its saved Hessian and completed evaluations are preserved. Occupied
+ensembles and synthesis/material admission remain incomplete.
 
 The [full primary molecular repeat](../validation/ionic_cycle_completion_2026-11-02/README.md)
-now closes the exact ten-state lead's numerical thermochemical comparison:
-nine fresh Hessians, analytic chloride, 81 native orbital/frame reviews and
-six complete matched G cycles, with changes below 2.45e-8 V and 1.55e-6 kJ/mol.
-The polymer collection separately has eight reviewed native components but no
-complete occupied G cycle. A source-frame-bound larger recovery is prospective;
-its allocation failure and partial outputs remain preserved. Other benchmark/
-base-reaction nuclear coverage and wider production qualification remain open.
+reconstructs nine fresh Hessians, analytic chloride, 81 native orbital/frame
+reviews and six complete matched G cycles. Changes are below 2.45e-8 V and
+1.55e-6 kJ/mol. This numerical agreement does not establish experimental accuracy.
 
-The first full ionic neighboring-graft G cycle is now independently checked:
-nine components close the adjacent all-same cycle at −3.94 kJ/mol, with a
-−5.85 to −3.94 kJ/mol rotor-setting range. Three other cycles and occupied
-ensembles remain pending. This is a finite same-model response, not direct motif
-binding, electronic coupling or material validation. The article/SI and deck
-now report this distinction. The 240-input corrected sampling campaign is
-released after three independently checked electronic resource pilots; native
-thermochemistry retains separate physical gates.
+The article/SI and 16-main/6-supporting slide deck now integrate the three finite
+ionic cycles and a four-frame electronic counterexample: frozen methyl-capped
+motifs are repulsive in MeCN, whereas whole-chain nonadditivity is favorable in
+two frames. Twelve triplets and 72 SCFs support this separately defined result;
+it is not a unique backbone decomposition, binding G, coupling or a population.
+The corrected 240-input sampling campaign retains separate native and ensemble
+gates. Other benchmark/base-reaction nuclear coverage, broader counterion
+speciation, public deposition and author metadata remain open.
 
 The historical dated observations below document previous milestones and
 resource conditions. They are not current fleet or storage observations.
