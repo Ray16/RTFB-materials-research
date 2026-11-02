@@ -69,11 +69,13 @@ completed 16-GiB-RKS-workspace H100 recovery qualifies the larger class under
 unchanged physical gates; its observed peak is 34,580 MiB. Three corresponding
 configuration/spacing followups are released, with their G still pending.
 The separate full 240-input corrected phthalimide-control campaign now has
-48 checked electronic inputs and two checked native inputs. A maintained
-source-bound native coordinator holds wider release for the largest pilot's
-independent review; no occupied ensemble is complete. Six further exact local
-viologen/chloride geometry controls have verified actual SCF starts after the first passes
-independent stationarity/resource review. No association G is yet supplied.
+78 checked electronic inputs and three checked native inputs. The largest
+119-atom pilot passes full independent minimum, derivative, wavefunction and
+resource review; matching native followups are released, with nine further
+workers observed live. No occupied ensemble is complete. Six exact local
+viologen/chloride geometries now pass independent stationarity and actual
+SCF-energy checks. A full component pilot interrupted by foreign GPU residency
+is preserved unqualified; no association G is yet supplied.
 [Sampling progress](../validation/corrected_sampling_2026-11-02/README.md).
 
 The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)

@@ -1,5 +1,42 @@
 # Exact local viologen chloride-contact sensitivity
 
+The [seven-start collection](geometry_collection_02.json) now contains six
+independently checked stationary geometries, with the separated start still
+running at that observation. Their primary r2SCAN-D4/SVP geometry-level energies
+span 11.64 kJ/mol. The initial N0-above pilot is 4.72 kJ/mol above the lowest
+checked geometry at that level. These are same-composition pose comparisons;
+they supply neither association G nor independently weighted conformers.
+
+The full primary electronic/native pilot has been prepared. Its first attempt
+was [interrupted by foreign GPU residency](thermochemistry_interruption.json),
+well below its host-memory bound, and supplies no qualified energy or G. The
+fresh recovery preserves the original and transfers no qualification. Its first
+placement was refused before science because declared host-RAM headroom was
+unavailable; a fresh suitable reservation is required. All physical protocols,
+resource limits and the exact input geometry remain unchanged.
+
+The [association ledger](association_pending_02.json) keeps all seven G cycles
+blank. Its maintained analysis verifies the exact primary parents and eventual
+microstate component before matched arithmetic. The paired state is a single
+statistical solute even though its graph contains disconnected chloride;
+the association changes solute count by −1. A common base/HCl term is not added,
+and the source translation-to-1-M correction follows the balanced sum. This
+does not supply a complete salt/speciation model or experimental populations.
+
+Shared actual-SCF checkpoint validation reproduces all nine existing molecular
+native controls (81 frames) with unchanged scientific outputs; see the
+[regression](primary_checkpoint_regression/summary.json). The
+[focused checks](thermochemistry_checks_06.xml) pass 94 tests, including actual
+CPU wavefunctions, scalar/frame/state corruption, standard-state/cluster-count
+and incompatible-model rejection. Shared launch code records the exact budget
+observer owner before observation starts.
+
+The [experimental-source review](external_validation_evidence.json) distinguishes
+qualitative molecular salt controls from quantitative association benchmarks.
+No exact-graft MeCN association constant has been established. A separate
+imidazolium/chloride source is retained as an unadmitted calibration candidate
+until its full conditions, uncertainty and association definition are checked.
+
 The [prepared manifest](prepared_manifest.json) contains seven geometry starts
 for the exact oxidized local graft plus one chloride. All starts preserve the
 covalent graft graph and contain a disconnected Cl⁻ component. The formal core

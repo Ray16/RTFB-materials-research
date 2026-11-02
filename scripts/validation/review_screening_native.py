@@ -11,7 +11,6 @@ from pathlib import Path
 
 REVIEWER_SOURCE_BYTES=Path(__file__).read_bytes()
 
-import h5py
 import numpy as np
 from ase.io import read as read_atoms
 
@@ -20,7 +19,7 @@ from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.molecular_native_namespace import verify,load
 from redox.validation.execution_review import review_closure,freeze_source,SOURCE_BYTES
-from redox.validation.scf_frame import checkpoint_frame,checkpoint_spin,freeze_reviewer,check_spin_contamination
+from redox.validation.scf_frame import freeze_reviewer,check_spin_contamination
 from redox.workflows.ionic_stationary_cycles import screening_signature
 
 
@@ -52,26 +51,13 @@ def review(namespace):
     fd=load(ROOT/'scripts/validation/review_molecular_native.py','primary_native_independent_FD')
     used.append(freeze_source(case,Path(fd.__file__)))
     checks,paths=fd.finite_difference_review(case,geometry,native,matrix);used.extend(paths)
-    points=sorted((case/'SCF_evaluations').glob('*/*/settings.json'))
-    if len(points)!=9:raise ValueError('One center and eight sampled-displacement SCFs required')
-    frame_errors=[];spin_rows=[]
-    for point in points:
-        settings=read(point);solved=read(point.with_name('SCF_result.json'));checkpoint=point.with_name('SCF.h5');used.append(checkpoint)
-        if (any(settings[k]!=v for k,v in dict(charge=plan['charge'],mult=plan['mult'],basis='def2-svp',xc='r2scan',disp='d4',conv_tol=1e-12,conv_tol_grad=1e-8,max_cycle=200,grid_level=3,solvent_class='SMD').items())
-                or not solved['converged'] or not math.isfinite(solved['energy_Ha'])):
-            raise ValueError('Actual primary native SCF settings differ')
-        frame=checkpoint_frame(checkpoint,charge=plan['charge'],mult=plan['mult'],basis='def2-svp',
-            coordinates_Bohr=settings['coordinates_Bohr'],symbols=atoms.get_chemical_symbols(),maximum_error_Bohr=1e-12)
-        frame_errors.append(frame['maximum_coordinate_error_Bohr'])
-        spin_row=checkpoint_spin(checkpoint);spin_rows.append(spin_row)
-        # The pinned producer serializes these diagnostics to four decimals.
-        # Admission above uses the independently reconstructed full precision.
-        if len(spin_rows)==1 and (round(spin_row['s_squared'],4)!=native['smd_spin_diagnostics']['s_squared']
-                or round(spin_row['spin_contamination'],4)!=native['smd_spin_diagnostics']['spin_contam']):
-            raise ValueError('Independent occupied-orbital spin differs from the producer diagnostic')
-        with h5py.File(checkpoint,'r') as stream:
-            actual=float(stream['scf/e_tot'][()])
-            if not math.isfinite(actual) or abs(actual-solved['energy_Ha'])>1e-10:raise ValueError('Actual SCF checkpoint energy differs')
+    from redox.validation import primary_checkpoints
+    used.append(freeze_source(case,Path(primary_checkpoints.__file__),primary_checkpoints.SOURCE_BYTES))
+    series=primary_checkpoints.checkpoint_series(case/'SCF_evaluations',geometry,
+        dict(charge=plan['charge'],mult=plan['mult'],basis='def2-svp',xc='r2scan',disp='d4',
+             conv_tol=1e-12,conv_tol_grad=1e-8,max_cycle=200,grid_level=3,solvent_class='SMD'),
+        read,used,expected_count=9,native_diagnostics=native['smd_spin_diagnostics'])
+    frame_errors=series['frame_errors'];spin_rows=series['spins']
     projections=[]
     for p in (case/'state/projected_thermal').glob('*.json'):
         x=read(p)

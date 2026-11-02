@@ -62,7 +62,7 @@ establish that a calculation is currently running.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin. The first stationary geometry passes
-  independent review; six same-class followups have verified actual SCF starts.
+  independent review; six stationary poses now have checked final SCF energies.
   this is distinct from the +1 doublet redox state. Association G, populations,
   full minimum qualification and any synthesis/material conclusion remain pending.
 - [Complete primary molecular control](../validation/ionic_cycle_completion_2026-11-02/primary_cohort_summary.json):
@@ -72,12 +72,14 @@ establish that a calculation is currently running.
   experimental/speciation or material validation.
 - [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
   all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
-  All three memory-size pilots passed; 48 hybrid gas/SMD inputs now pass
+  All three memory-size pilots passed; 78 hybrid gas/SMD inputs now pass
   independent actual-wavefunction review. The remaining energy roster is
   released, and three matched native pilots have saved their center SCFs/grids.
-  Empty and site-2 native inputs are checked. A maintained native coordinator
-  retains all 240 slots and waits for the largest pilot before wider native
-  release; complete occupied sampling, ensemble cycles and material decisions remain pending. Occupied-only
+  Empty, site-2 and largest double-graft native inputs are checked. A maintained
+  native coordinator retains all 240 slots and releases matching followups after
+  the largest pilot passes; nine further native workers have verified live
+  observations. Complete occupied sampling, ensemble cycles and material
+  decisions remain pending. Occupied-only
   energy and full-orbital native checkpoints retain their distinct scopes;
   historical values and failed/prelaunch attempts remain preserved.
 - [Larger native recovery](../validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json):

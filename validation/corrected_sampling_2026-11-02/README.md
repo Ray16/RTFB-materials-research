@@ -1,5 +1,14 @@
 # Complete corrected polymer-sampling cohort
 
+The [largest native pilot](double_native_review.json) now passes independent
+full-Hessian, sampled-gradient, actual-wavefunction and nuclear-partition review.
+Its 17 SCF frames are checked, its lowest internal mode is 6.4952 cm⁻¹ and its
+GPU/host peaks are 24,062 MiB / 32.08 GiB. This releases matching native inputs
+under the unchanged 31-GiB-GPU / 80-GiB-host bound. The
+[new native collection](native_collection_02.json) contains three checked inputs;
+the remaining native and ensemble quantities are pending. Later preparation and
+live scheduling counts are separate from this frozen collection.
+
 The corrected native stage now has a maintained resumable coordinator:
 `python scripts/fleet/run_corrected_native_queue.py --help`. It retains the full
 240-input objective, collects closed native calculations independently and
@@ -38,16 +47,16 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_06.json) has
-48 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_08.json) has
+78 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
 ensemble cycle is supplied by this electronic collection.
 
-The separate [native collection](native_collection_01.json) retains all 240
-slots with two checked G inputs. Its [controller snapshot](native_queue_status_02.json)
-and [exact process observation](controller_observation_02.json) distinguish
+The separate [native collection](native_collection_02.json) retains all 240
+slots with three checked G inputs. Its [controller snapshot](native_queue_status_03.json)
+and [process observation](native_followup_observation_01.json) distinguish
 active coordination, the live largest pilot and physical qualification.
 
 ## Method and storage

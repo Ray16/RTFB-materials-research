@@ -21,11 +21,62 @@ from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 
 
-def launch(namespace,gpu,output,pilot_review=None):
-    from redox.workflows.molecular_native_namespace import verify,launch as launch_process
-    from redox.workflows.screening_control import probe
-    from redox.workflows.response_diagnostic import observe_budget
+def collect(manifest_path, output):
+    """Collect checked stationary poses; pending E/G remains explicitly blank."""
+    from redox.workflows.molecular_native_namespace import verify, load
     import time
+    if output.exists():raise FileExistsError('Preserve earlier geometry collections')
+    manifest=json.loads(manifest_path.read_text());rows=manifest['states']
+    expected={'N0_above','N0_below','N0_outer','N1_above','N1_below','N1_outer','separated_start'}
+    if len(rows)!=7 or {r['key'] for r in rows}!=expected:raise ValueError('All seven declared chloride starts required')
+    reviewer=load(ROOT/'scripts/validation/review_counterion_geometry.py','counterion_geometry_collection_review')
+    owners=load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','counterion_geometry_collection_owner')
+    reviews=output.parent/(output.stem+'_reviews');reviews.mkdir(parents=True,exist_ok=False)
+    records=[];sources={str(manifest_path):sha256_file(manifest_path),str(Path(__file__)):sha256_file(__file__)}
+    method=None
+    for row in rows:
+        namespace=Path(row['namespace'])
+        if sha256_file(namespace)!=row['namespace_sha256']:raise ValueError('Prepared chloride namespace changed')
+        spec=verify(namespace);case=Path(spec['case']);path=case/'status.json'
+        record=dict(key=row['key'],namespace=str(namespace),status='geometry_not_started',
+            E_geometry_Ha=None,relative_geometry_E_kJ_mol=None,G_by_cutoff_eV=None,
+            geometry_qualified=False,native_G_qualified=False)
+        if path.exists():
+            stage=json.loads(path.read_text());record['status']=stage['status']
+            if stage['status']=='counterion_geometry_control_finished_independent_review_pending':
+                if owners.alive(stage['owner']) is not False:
+                    record['status']='geometry_execution_closure_pending';records.append(record);continue
+                try:
+                    checked=reviewer.review(namespace);review_path=reviews/(row['key']+'.json');atomic_write_json(review_path,checked)
+                    final=json.loads((case/'final_evaluation.json').read_text());atoms=read(case/'optimizer_return.xyz')
+                    if method is None:method=checked['method']
+                    if method!=checked['method']:raise ValueError('Stationary geometry methods differ')
+                    nitrogens=[i for i,s in enumerate(atoms.get_chemical_symbols()) if s=='N']
+                    chloride=[i for i,s in enumerate(atoms.get_chemical_symbols()) if s=='Cl']
+                    if len(chloride)!=1 or len(nitrogens)!=2:raise ValueError('Exact viologen/chloride atom identities required')
+                    distances=[float(np.linalg.norm(atoms.positions[i]-atoms.positions[chloride[0]])) for i in nitrogens]
+                    record.update(status='stationary_counterion_geometry_independently_checked',geometry_qualified=True,
+                        E_geometry_Ha=checked['actual_final_SCF_energy_Ha'],maximum_gradient_Ha_Bohr=checked['maximum_gradient_Ha_Bohr'],
+                        charge=1,multiplicity=1,geometry_sha256=checked['geometry_sha256'],N_to_Cl_distances_A=distances,
+                        review=str(review_path),review_sha256=sha256_file(review_path))
+                    sources[str(review_path)]=sha256_file(review_path)
+                except Exception as error:record.update(status='geometry_review_failed_preserved',error=repr(error))
+        records.append(record)
+    values=[r['E_geometry_Ha'] for r in records if r['geometry_qualified']]
+    if values:
+        from redox.core.common import HARTREE_EV,EV_KJ
+        for row in records:
+            if row['geometry_qualified']:row['relative_geometry_E_kJ_mol']=(row['E_geometry_Ha']-min(values))*HARTREE_EV*EV_KJ
+    result=dict(status='seven_start_counterion_stationary_geometry_collection',checked=time.time(),states=records,
+        checked_geometries=len(values),method=method,reference='lowest geometry-level E among currently checked starts only',
+        starts_are_not_independent_populations=True,duplicate_or_conformer_ensemble_analysis_complete=False,
+        association_free_energy_computed=False,source_sha256=sources)
+    atomic_write_json(output,result);return result
+
+
+def launch(namespace,gpu,output,pilot_review=None):
+    from redox.workflows.molecular_native_namespace import verify
+    from redox.workflows.bounded_molecular import launch as launch_process
     spec=verify(namespace);plan=json.loads((Path(spec['case'])/'plan.json').read_text())
     if plan['role']!='primary_counterion_geometry_control' or plan['maximum_host_RSS_GiB']!=32:
         raise ValueError('Exact primary chloride-contact geometry resource pilot required')
@@ -36,14 +87,7 @@ def launch(namespace,gpu,output,pilot_review=None):
                 or reference['nao']<plan['nao'] or reference['native_G_qualified']
                 or any(sha256_file(p)!=h for p,h in reference['source_sha256'].items())):
             raise ValueError('Exact physically checked chloride pilot required before wider geometry release')
-    probe(namespace);child,result=launch_process(namespace,gpu,output)
-    observer_source=Path(observe_budget.__code__.co_filename);shutil.copyfile(observer_source,output/'budget_observer_source.py')
-    result.update(maximum_wall_seconds=plan['maximum_wall_seconds'],maximum_durable_output_bytes=plan['maximum_durable_output_bytes'],
-        budget_observer_owner=dict(host=os.uname().nodename.split('.')[0],pid=os.getpid(),
-            process_start=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]),
-        budget_observer_source_sha256=sha256_file(output/'budget_observer_source.py'))
-    atomic_write_json(output/'launch.json',result)
-    result=observe_budget(child,spec,result,output);return result
+    return launch_process(namespace,gpu,output,caller_source=Path(__file__))
 
 
 def seeds(atoms):
@@ -118,8 +162,8 @@ def prepare(archive,package,output):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action',nargs='?',choices=('prepare','launch'),default='prepare')
-    for name in ('archive','package','out','spec','pilot-review'):p.add_argument('--'+name,type=Path)
+    p.add_argument('action',nargs='?',choices=('prepare','launch','collect'),default='prepare')
+    for name in ('archive','package','out','spec','pilot-review','manifest'):p.add_argument('--'+name,type=Path)
     p.add_argument('--gpu',type=int)
     a=p.parse_args()
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
@@ -127,7 +171,11 @@ if __name__=='__main__':
         with allocation_guard():host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
         if any(v is None for v in (a.archive,a.package,a.out)):p.error('Preparation requires archive, exact source package and fresh output')
         result=prepare(a.archive.resolve(),a.package.resolve(),a.out.resolve());print(json.dumps({k:result[k] for k in ('status','pilot_key','total_charge','multiplicity')}))
-    else:
+    elif a.action=='launch':
         if a.spec is None or a.gpu is None or a.out is None:p.error('Launch requires exact namespace, device and fresh placement')
         result=launch(a.spec.resolve(),a.gpu,a.out.resolve(),None if a.pilot_review is None else a.pilot_review.resolve())
         print(json.dumps(dict(status=result['status'],returncode=result['returncode'],budget_stop=result['budget_stop'])))
+    else:
+        with allocation_guard():host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
+        if a.manifest is None or a.out is None:p.error('Collection requires declared seven-start manifest and fresh output')
+        result=collect(a.manifest.resolve(),a.out.resolve());print(json.dumps(dict(status=result['status'],checked_geometries=result['checked_geometries'])))

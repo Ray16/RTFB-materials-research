@@ -118,11 +118,6 @@ def run(manifest_path, energy_stream, pilot_manifest, resource_review, archive,
                     break
                 largest = checked.get('all_same__occ_2_3__conf001')
                 state['largest_native_pilot_checked'] = largest is not None
-                if largest is not None:
-                    stream = json.loads(energy_stream.read_text())
-                    prepared = prepare_ready(manifest_path, stream, prepared, Path(largest['review']),
-                                             resource_review, archive, output)
-                    peers = extend_peers(peers_path, prepared)
                 entries, eligible = [], []
                 terminal = []
                 for row in prepared:
@@ -148,8 +143,12 @@ def run(manifest_path, energy_stream, pilot_manifest, resource_review, archive,
                         if state['host_failures'][host] >= 3 and host not in state['blocked_hosts']:
                             state['blocked_hosts'].append(host)
                 state.update(prepared_inputs=len(prepared), counts=dict(Counter(r['status'] for r in entries)), entries=entries)
+                state['phase'] = 'reviewing_and_dispatching_prepared_inputs'
                 atomic_write_json(status_path, state)
                 if eligible and not stop.is_set():
+                    if any(sha256_file(p) != h for p, h in hashes.items()):
+                        state['status'] = 'native_queue_source_changed_workers_preserved'
+                        break
                     # Preserve all rows for storage accounting; only send the
                     # eligible subset to the existing scientifically gated API.
                     manifest = output / 'dispatch_manifests' / (str(time.time_ns()) + '.json')
@@ -165,6 +164,18 @@ def run(manifest_path, energy_stream, pilot_manifest, resource_review, archive,
                 if terminal_incomplete(len(prepared), entries, eligible, set(checked)):
                     state['status'] = 'native_queue_terminal_incomplete_recovery_required'
                     break
+                # Start already prepared work before spending time validating
+                # and copying the next growing group of checked energy inputs.
+                if largest is not None and not stop.is_set():
+                    state['phase'] = 'preparing_more_checked_inputs_after_dispatch'
+                    atomic_write_json(status_path, state)
+                    if any(sha256_file(p) != h for p, h in hashes.items()):
+                        state['status'] = 'native_queue_source_changed_workers_preserved'
+                        break
+                    stream = json.loads(energy_stream.read_text())
+                    prepared = prepare_ready(manifest_path, stream, prepared, Path(largest['review']),
+                                             resource_review, archive, output)
+                    peers = extend_peers(peers_path, prepared)
                 atomic_write_json(status_path, state)
                 stop.wait(30)
             else:

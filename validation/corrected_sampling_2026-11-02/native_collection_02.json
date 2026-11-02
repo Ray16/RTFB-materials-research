@@ -1,0 +1,2295 @@
+{
+  "status": "complete_roster_corrected_native_review_snapshot",
+  "checked": 1793651955.5365849,
+  "declared_inputs": 240,
+  "checked_native_inputs": 3,
+  "states": [
+    {
+      "key": "all_same__occ_2_3__conf001",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.74235985054,
+        "50": -85718.59775769486,
+        "100": -85718.4828510424
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.01247876761944,
+        "50": 24.157080923296025,
+        "100": 24.271987575766413
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/all_same__occ_2_3__conf001/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf001.json",
+      "review_sha256": "05045458e9d225b63f5507eaa52f4b97df4843ae623a6fcccbb1ca2fb60f3d20",
+      "electronic_E_smd_eV": -85742.75483861816,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf001",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 1,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_2_3__pose0"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "0f3278cd1b1566390866f393a4321243cc2a99d16a18e6dc0c37db12b61def13"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf002",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf003",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf004",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf005",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf006",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf006/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf007",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf007/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf008",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf009",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf009/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf010",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf010/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf011",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf011/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf012",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf012/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf013",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf013/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf014",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf014/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf015",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf015/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf016",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf016/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf017",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf017/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf018",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf018/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf019",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf019/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf020",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf020/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf001",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf001/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf002",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf003",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf004",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf005",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf006",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf006/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_2_4__conf008",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf009",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf009/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf010",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf010/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf011",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf011/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf012",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf012/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf013",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf013/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf014",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf014/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf015",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf015/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf016",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf016/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf017",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf017/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf018",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf018/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf019",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf019/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf020",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf020/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf001",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -84296.36271889671,
+        "50": -84296.21723100467,
+        "100": -84296.10668838346
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 21.29974353941972,
+        "50": 21.44523143144945,
+        "100": 21.555774052665438
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/all_same__occ_2__conf001/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2__conf001.json",
+      "review_sha256": "14536a8a52e6baa596da969378705bb7e36d4e243b99c85f9e6ebadebd14a09b",
+      "electronic_E_smd_eV": -84317.66246243613,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "benzyl_chloride",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 105,
+          "charge": 0,
+          "model_loading_per_repeat": 0.2,
+          "model_conversion_per_reactive_site": 0.3333333333333333,
+          "graph_sha256": "27e117714d6e817978a4b31a5308c7e51a73619bb989419a75d66fef72517a7c",
+          "key": "all_same__occ_2__conf001",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 32,
+          "converged_MMFF": 32,
+          "initial_MMFF_energy_kcal_mol": 130.74052917225373,
+          "model_key": "all_same__occ_2",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              37,
+              38,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46
+            ]
+          ],
+          "active_basis_functions": 2537,
+          "search_rank": 1,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_2__pose0"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "30d107d6de76033aed47acbc04eac9659e5c97709771472811156d4f8e8b3129"
+      }
+    },
+    {
+      "key": "all_same__occ_2__conf002",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf003",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf004",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf005",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf006",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf006/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf007",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf007/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf008",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf009",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf009/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf010",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf010/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf011",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf011/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf012",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf012/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf013",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf013/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf014",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf014/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf015",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf015/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf016",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf016/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf017",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf017/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf018",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf018/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf019",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf019/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf020",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf020/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf001",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf001/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf002",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf003",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf004",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf005",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf006",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf006/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf007",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf007/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf008",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_3__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf001",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -82874.07522832791,
+        "50": -82873.93719440931,
+        "100": -82873.84011166557
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 18.567344515034474,
+        "50": 18.705378433631104,
+        "100": 18.802461177365874
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/all_same__occ_none__conf001/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_none__conf001.json",
+      "review_sha256": "f76c0c8971a6767c51a76d23146451acc9dd89763337d5b231c6c0c70c075435",
+      "electronic_E_smd_eV": -82892.64257284295,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+          "mapped_smiles": "ClCc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [],
+          "site_states": [
+            "styrene",
+            "benzyl_chloride",
+            "benzyl_chloride",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 91,
+          "charge": 0,
+          "model_loading_per_repeat": 0.0,
+          "model_conversion_per_reactive_site": 0.0,
+          "graph_sha256": "d491da6b2fecf508575878eae2f7f20b980d6c1c652a126a026b57a72eab0c2f",
+          "role": "interaction_method_control; not synthesis admission",
+          "ETKDG_seed": 20261022,
+          "configuration_label": "all_same",
+          "seed_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_extra_thermal/thermal/occ_none__pose1/rest/opt.xyz",
+          "mult": 1,
+          "key": "all_same__occ_none__conf001",
+          "initial_geometry_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_revision_2026-10-22/all_same/input.xyz",
+          "initial_geometry_source_sha256": "737f6546a0c6e62ac962ec01be5ba693453d651edba7e26e73cb884a38fcd380",
+          "model_key": "all_same__occ_none",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [],
+          "active_basis_functions": 2134,
+          "search_rank": 1,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_none__pose0"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "3ab4d9b040f12cf443ad4159f608ace114fb35bb3511133c3cc8273ee680a901"
+      }
+    },
+    {
+      "key": "all_same__occ_none__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    }
+  ],
+  "independent_review_errors": [],
+  "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+  "occupied_ensemble_cycles_qualified": false,
+  "pending_values_are_null": true,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/recovery_manifest_02.json": "74122a52438bd23076a32a88b8b09ee9e8388cd85dde433036b153ad46f4a435",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/review_sources/71baa0d7928983c3666ccc54848752183d1f699723f590475db3d81f66555c37/sampling_native_queue.py": "71baa0d7928983c3666ccc54848752183d1f699723f590475db3d81f66555c37",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/review_sources/e74c086cf1d1dac624eeda30a68d561d9ed158b02502d6150eccdd4a745f95e7/sampling_native_receipts.py": "e74c086cf1d1dac624eeda30a68d561d9ed158b02502d6150eccdd4a745f95e7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf001.json": "05045458e9d225b63f5507eaa52f4b97df4843ae623a6fcccbb1ca2fb60f3d20",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2__conf001.json": "14536a8a52e6baa596da969378705bb7e36d4e243b99c85f9e6ebadebd14a09b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_none__conf001.json": "f76c0c8971a6767c51a76d23146451acc9dd89763337d5b231c6c0c70c075435"
+  }
+}

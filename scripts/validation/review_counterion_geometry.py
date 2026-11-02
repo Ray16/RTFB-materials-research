@@ -3,10 +3,12 @@
 import argparse
 import hashlib
 import json
+import math
 import os
 from pathlib import Path
 
 import numpy as np
+import h5py
 from ase.io import read as atoms_read
 from pyscf.lib import param
 from rdkit import Chem
@@ -49,6 +51,10 @@ def review(namespace):
             or settings['solvent_class']!='SMD' or not solved['converged'] or abs(solved['energy_Ha']-final['E_Ha'])>1e-10):
         raise ValueError('Actual final primary-model SCF settings/convergence differ')
     frame=checkpoint_frame(checkpoint,charge=1,mult=1,basis='def2-svp',coordinates_Bohr=atoms.positions/param.BOHR,symbols=atoms.get_chemical_symbols())
+    with h5py.File(checkpoint,'r') as stream:actual_energy=float(stream['scf/e_tot'][()])
+    if (not all(math.isfinite(value) for value in (actual_energy,solved['energy_Ha'],final['E_Ha']))
+            or abs(actual_energy-solved['energy_Ha'])>1e-10 or abs(actual_energy-final['E_Ha'])>1e-10):
+        raise ValueError('Actual final SCF checkpoint energy differs from geometry records')
     spin=checkpoint_spin(checkpoint);stored=np.load(checkpoint.with_name('gradient.npy'),allow_pickle=False)
     if not np.allclose(stored,gradient,rtol=0,atol=1e-12):raise ValueError('Actual final gradient differs')
     used.extend([checkpoint,checkpoint.with_name('gradient.npy')])
@@ -57,6 +63,7 @@ def review(namespace):
     return dict(status='primary_counterion_geometry_independently_checked',namespace=str(namespace),key=plan['source_id'],
         smiles=plan['smiles'],parent_smiles=plan['parent_smiles'],total_charge=1,multiplicity=1,
         formal_core_charge=2,geometry_sha256=sha256_file(xyz),nao=plan['nao'],method=plan['method'],
+        actual_final_SCF_energy_Ha=actual_energy,
         maximum_gradient_Ha_Bohr=float(abs(gradient).max()),actual_frame=frame,actual_occupied_spin=spin,
         peak_GPU_MiB=stage['observed_peak_GPU_MiB'],peak_host_RSS_bytes=max(host['peak_tree_RSS_bytes'],host['self_VmHWM_bytes']),
         native_G_qualified=False,association_free_energy_computed=False,experimental_speciation_inferred=False,material_admission=False,

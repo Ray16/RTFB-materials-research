@@ -16,6 +16,7 @@ no declared category. It does not submit calculations.
 | Corrected polymer native stage | `python -m redox.workflows.sampling_native --help` | Exact checked energy input, full-orbital recovery data, unchanged native physical checks; largest complete native pilot precedes wider native release |
 | Corrected native queue | `python scripts/fleet/run_corrected_native_queue.py --help` | Maintained coordinator for the full 240-slot objective; independently collects closed native results, waits for the largest pilot, then prepares and dispatches checked-energy followups |
 | Counterion geometry control | `python -m redox.workflows.counterion_geometry --help` | Oxidized graft plus explicit chloride: +1 singlet, separate from the +1 doublet redox state; geometry/resource pilot precedes wider contacts and native G |
+| Counterion thermochemistry | `python -m redox.workflows.counterion_thermochemistry --help` | Prepare/launch own matched primary electronic/native components; analyze only complete independent reviews, with explicit two-to-one solute conversion |
 | Charged-polymer pilot | `python -m redox.workflows.charged_polymer_pilot --help` | Route-bound private namespace, first-class resource and physical checks |
 | Directional solvent response | `python -m redox.workflows.solution_pair_namespace --help` | Exact matched candidate/state pair, independently reviewed |
 | Historical compatibility entry | `python -m redox.current` | Alias of the same public CLI, not a second production implementation |
@@ -150,3 +151,19 @@ three terminal failures block the affected host. Source changes stop further
 admission while preserving workers. Explicit resume requires the exact previous
 controller to be proven stopped. All time windows and paths are declared CLI
 arguments, and a new controller revalidates receipt hashes before caching them.
+Already prepared native inputs dispatch before additional preparation. Source
+checks run again before preparation and dispatch; the status records which
+phase is active. A slow preparation pass does not change the scientific
+qualification of already running calculations.
+
+The counterion geometry entry also supplies `collect`, which retains all seven
+starts and field-specific pending values. Geometry-level E differences are not
+association G. Thermochemistry reuses the existing molecular SCF and full native
+Hessian/partition routines, with shared actual-checkpoint and bounded-launch
+adapters. The first full contact component gates further thermochemistry.
+`analyze` checks atom/charge balance, exact graft retention, methods, thermal
+definitions, numerical implementation and physical-review backing. A bound
+cluster is one statistical solute despite its disconnected SMILES components;
+the 1-atm-to-1-M correction is applied after the balanced source-convention sum.
+Each starting pose remains a separate finite scenario, without inferred
+experimental populations, graft conversion or yield.
