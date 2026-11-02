@@ -66,8 +66,9 @@ establish that a calculation is currently running.
   experimental/speciation or material validation.
 - [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
   all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
-  The empty gas/SMD energy pair is independently checked; the larger resource
-  pilots remain unqualified and 237 followups remain held. Occupied-only checkpoints preserve actual
+  Empty and single-graft gas/SMD energy pairs are independently checked; the
+  double-graft resource pilot remains unqualified and 237 followups remain held.
+  Occupied-only checkpoints preserve actual
   determinants/densities exactly; native G, ensemble cycles and material decisions
   remain pending. Historical values and failed/prelaunch attempts are preserved.
 - [Larger native recovery](../validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json):

@@ -57,14 +57,20 @@ Its maximum coordinate error is 1.78e-15 Bohr and occupied-orthonormality error
 4.67e-15. Peak GPU memory is 16,768 MiB and host RSS is 72.1 GiB. This qualifies
 one electronic input, not its new native G or an occupied ensemble.
 
+The [single-graft pilot review](single_pilot_review.json) also accepts both gas
+and MeCN electronic energies, with independent actual-frame and occupied-orbital
+checks. Its peak GPU memory is 18,856 MiB. Thus two of the three electronic
+pilots are checked; no corresponding new native G is yet qualified.
+
 The double-graft pilot stopped at its owned host-memory guard. Its main-process
 RSS peak is 166.09 GiB but its summed process-tree peak is 332.03 GiB, above the
 declared 240-GiB bound. Its last iteration checkpoint is retained unqualified.
 Transient shared/forked memory is a hypothesis to test before recovery; the
 record does not establish an out-of-memory event or permit ignoring the guard.
-The single-graft pilot and the larger lead recovery continue separately. The
-[later observation](progress_observation_02.json) records exact ownership and
-eight completed response blocks for that lead at its observation time.
+The larger lead recovery continues separately. The
+[latest observation](progress_observation_03.json) records exact ownership and
+nine completed response blocks for that lead at its observation time. A complete
+response is still followed by full Hessian, displaced-gradient and minimum QC.
 
 Only the empty, single- and double-graft energy pilots may start until all three
 have independent closed-execution, molecular-frame, occupied-wavefunction,
