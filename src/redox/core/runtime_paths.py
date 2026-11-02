@@ -1,12 +1,22 @@
 """Discover the authoritative reservation tool without a checkout-specific path."""
 import os
+import json
 from pathlib import Path
 import shutil
 
 
+def site_defaults():
+    path=Path(__file__).resolve().parents[3]/'config/runtime_paths.json'
+    if not path.exists():return {}
+    data=json.loads(path.read_text())
+    if data.get('schema')!=1 or not isinstance(data.get('site_defaults'),dict):
+        raise ValueError('Unsupported runtime-path configuration')
+    return data['site_defaults']
+
+
 def reservation_gate(*, required=True):
     explicit = os.environ.get('REDOX_GPU_RESERVE')
-    candidates = [explicit] if explicit else [shutil.which('gpu_reserve'), Path.home()/'bin/gpu_reserve']
+    candidates = [explicit] if explicit else [site_defaults().get('gpu_reserve'), shutil.which('gpu_reserve'), Path.home()/'bin/gpu_reserve']
     for candidate in candidates:
         if candidate:
             path = Path(candidate).expanduser().resolve()
@@ -22,4 +32,9 @@ def reservation_gate(*, required=True):
 def reservation_lock_root():
     # This environment name is also consumed by gpu_reserve itself. Using it
     # keeps ownership checks and the gate in the same reservation namespace.
-    return Path(os.environ.get('GPU_LOCK_ROOT', str(Path.home()/'.gpu_locks'))).expanduser().resolve()
+    if 'GPU_LOCK_ROOT' in os.environ:
+        return Path(os.environ['GPU_LOCK_ROOT']).expanduser().resolve()
+    configured=site_defaults();gate=configured.get('gpu_reserve');locks=configured.get('gpu_lock_root')
+    if gate and locks and reservation_gate(required=False)==Path(gate).expanduser().resolve():
+        return Path(locks).expanduser().resolve()
+    return (Path.home()/'.gpu_locks').resolve()

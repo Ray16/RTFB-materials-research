@@ -25,6 +25,17 @@ def resting_state(case,allow_empty_reference=False):
     return states[0],empty
 
 
+def native_output_profile(atoms,nao,nocc,empty_reference):
+    """Bound the declared retained arrays and all sampled SCF checkpoints."""
+    from redox.workflows.native_component_resources import retained_estimate
+    max_columns=6
+    estimate=retained_estimate(atoms,nao,nocc)
+    small=(empty_reference is True and atoms<=91 and nao<=881 and nocc<=177 and estimate*1.2<=2*2**30)
+    return dict(estimated_retained_bytes=estimate,retention_margin_factor=1.2,maximum_sampled_columns=max_columns,
+        maximum_durable_output_bytes=(2 if small else 4)*2**30,
+        output_profile='matched_empty_dimension_bound_2GiB' if small else 'full_native_4GiB')
+
+
 def prepare(archive,preparation,output,key=None,execution_profile='compact_28GiB',allow_empty_reference=False):
     if execution_profile not in ('compact_28GiB','direct_large_GPU_reference'):raise ValueError('Explicit measured execution profile required')
     if output.exists() or any(output.is_relative_to(p) for p in (ROOT,archive)):
@@ -158,7 +169,7 @@ def prepare_finalization(source_namespace,output):
     result['status']='converged_ionic_optimizer_return_prepared_for_fresh_final_evaluation';return result
 
 
-def prepare_native_component(review_path,output):
+def prepare_native_component(review_path,output,larger_dimension_pilot_review=None):
     """One closed-shell ionic native pilot, at a separately checked geometry."""
     from ase.io import read
     from redox.build.geometry import _skeleton
@@ -171,41 +182,79 @@ def prepare_native_component(review_path,output):
     for path,digest in report['source_sha256'].items():
         if sha256_file(path)!=digest:raise ValueError('Stationary source changed')
     source=execution.verify(Path(report['namespace']));source_case=Path(source['case']);old=json.loads((source_case/'plan.json').read_text())
-    if old['mult']!=1 or old['charge']<=0:raise ValueError('This first charged native pilot is a closed-shell cation')
-    evaluation=json.loads((source_case/'evaluation.json').read_text());nao=evaluation['nao']
+    empty=(old.get('matched_empty_polymer_reference') is True and old['charge']==0 and not old['prepared_case']['occupied_sites'])
+    if old['mult']!=1 or (old['charge']<=0 and not empty):raise ValueError('A closed-shell cation or exact matched empty reference is required')
+    evaluation_path=source_case/'evaluation.json'
+    if not evaluation_path.exists():evaluation_path=source_case/'final_evaluation.json'
+    evaluation=json.loads(evaluation_path.read_text())
     from pyscf import gto
-    atoms=read(Path(source['sources'])/'input.xyz');symbols=atoms.get_chemical_symbols()
-    mol=gto.M(atom=list(zip(symbols,atoms.positions.tolist())),unit='Angstrom',basis='def2-svp',charge=old['charge'],spin=0,verbose=0)
+    from pyscf.lib import param
+    geometry_source=source_case/'returned.xyz' if (source_case/'returned.xyz').exists() else Path(source['sources'])/'input.xyz'
+    atoms=read(geometry_source);symbols=atoms.get_chemical_symbols()
+    mol=gto.M(atom=list(zip(symbols,evaluation['coordinates_Bohr'])),unit='Bohr',basis='def2-svp',charge=old['charge'],spin=0,verbose=0)
+    nao=evaluation.get('nao',mol.nao)
     nocc=mol.nelectron//2
-    if nao!=mol.nao or nao>1193 or nocc>235:raise ValueError('First charged native pilot must fit inside the checked neutral dimension envelope')
+    larger_profile=None
+    if nao!=mol.nao:raise ValueError('The stationary AO dimension differs')
+    if larger_dimension_pilot_review is None:
+        if nao>1193 or nocc>235:raise ValueError('First charged native pilot must fit inside the checked neutral dimension envelope')
+    else:
+        from redox.workflows.native_component_resources import larger_profile as large_resources
+        witness=json.loads(larger_dimension_pilot_review.read_text())
+        if (witness.get('status')!='charged_polymer_native_component_independently_reconstructed'
+                or not witness.get('native_G_qualified') or witness.get('charge')!=2 or witness.get('mult')!=1
+                or witness.get('model')!=old['solvent_model'] or witness.get('material_admission')
+                or witness.get('primary_model_admission') or not witness.get('source_sha256')
+                or any(sha256_file(p)!=h for p,h in witness['source_sha256'].items())):
+            raise ValueError('A source-bound smaller charged native pilot is required before the larger dimension pilot')
+        larger_profile=large_resources(len(symbols),nao,nocc,old['charge'],old['mult'],old['prepared_case']['occupied_sites'])
     initial=json.loads((Path(source['sources'])/'initial_audit.json').read_text());preparation=Path(initial['source'])
     if sha256_file(preparation)!=initial['source_sha256']:raise ValueError('Original ionic preparation changed')
-    result=prepare(Path(source['archive']),preparation,output,old['prepared_case']['key'])
+    result=prepare(Path(source['archive']),preparation,output,old['prepared_case']['key'],allow_empty_reference=empty)
     spec=json.loads((output/'namespace.json').read_text());case=Path(spec['case']);sources=Path(spec['sources'])
-    shutil.copyfile(Path(source['sources'])/'input.xyz',sources/'input.xyz')
+    (sources/'input.xyz').write_text(str(len(symbols))+'\nExact checked native-component geometry\n'+'\n'.join(
+        symbol+' '+' '.join(format(float(value)*param.BOHR,'.17g') for value in xyz)
+        for symbol,xyz in zip(symbols,evaluation['coordinates_Bohr']))+'\n')
     for original,name in [(ROOT/'scripts/validation/run_screening_polymer_hessian.py','worker.py'),
             (ROOT/'src/redox/qm/response_diagnostic.py','response_helper.py'),
             (ROOT/'src/redox/qm/hessian_restart.py','restart_helper.py'),
             (ROOT/'src/redox/qm/response_resume.py','response_resume_helper.py')]:shutil.copyfile(original,sources/name)
+    shutil.copyfile(review_path,sources/'stationary_geometry_review.json')
     native=execution.load(Path(source['archive'])/'scripts/pipeline/smooth_polymer_native.py','ionic_native_unchanged_settings')
     graph=Chem.AddHs(Chem.MolFromSmiles(old['prepared_case']['smiles']));observed=Chem.MolFromXYZFile(str(sources/'input.xyz'))
     rdDetermineBonds.DetermineConnectivity(observed,charge=0);mapping=_skeleton(observed).GetSubstructMatch(_skeleton(graph))
     if len(mapping)!=graph.GetNumAtoms():raise ValueError('Full ionic native input connectivity differs')
     topology=chain_topology(old['prepared_case']['smiles'],old['prepared_case']['repeat_units'],old['prepared_case']['reactive_sites'])
-    site=old['prepared_case']['occupied_sites'][0];benzyl=topology['para_graft_sites'][site-1]['benzyl_atom']
-    nitrogen=next(a.GetIdx() for a in graph.GetAtomWithIdx(benzyl).GetNeighbors() if a.GetAtomicNum()==7 and a.GetFormalCharge()==1)
-    extras=[[mapping[nitrogen],2],[mapping[benzyl],2]]
+    if empty:
+        site=old['prepared_case']['reactive_sites'][0];benzyl=topology['para_graft_sites'][site-1]['benzyl_atom']
+        chloride=next(a.GetIdx() for a in graph.GetAtomWithIdx(benzyl).GetNeighbors() if a.GetAtomicNum()==17)
+        extras=[[mapping[chloride],2],[mapping[benzyl],2]]
+    else:
+        site=old['prepared_case']['occupied_sites'][0];benzyl=topology['para_graft_sites'][site-1]['benzyl_atom']
+        nitrogen=next(a.GetIdx() for a in graph.GetAtomWithIdx(benzyl).GetNeighbors() if a.GetAtomicNum()==7 and a.GetFormalCharge()==1)
+        extras=[[mapping[nitrogen],2],[mapping[benzyl],2]]
     cap,minimum=response_ceiling_gib(nao,nocc)
+    output_profile=native_output_profile(len(symbols),nao,nocc,empty)
+    if larger_profile is not None:
+        output_profile=larger_profile
+        helper=Path(__file__).with_name('native_component_resources.py')
+        shutil.copyfile(helper,sources/'native_resource_helper.py')
+        shutil.copyfile(larger_dimension_pilot_review,sources/'smaller_native_pilot_review.json')
     plan=json.loads((case/'plan.json').read_text());plan.update(role='charged_polymer_native_component',charged_polymer_pilot=False,
         charged_polymer_native_component=True,screening_variant='corrected',symbols=symbols,
         original_namespace=report['namespace'],original_namespace_sha256=sha256_file(Path(report['namespace'])),
-        source_stationary_review=str(review_path),points=[dict(evaluation=str(source_case/'evaluation.json'))],
+        source_stationary_review=str(sources/'stationary_geometry_review.json'),points=[dict(evaluation=str(evaluation_path))],
         numerical_settings=native.NATIVE_SETTINGS,extra_FD_columns=extras,response_available_memory_GiB=cap,
         response_nao=nao,response_nocc=nocc,minimum_aligned_response_bytes=minimum,
-        maximum_host_RSS_GiB=80,maximum_wall_seconds=28800,maximum_durable_output_bytes=4*2**30,
-        minimum_initial_storage_GiB=36,minimum_live_storage_GiB=32,
+        maximum_host_RSS_GiB=80,maximum_wall_seconds=28800,**output_profile,
+        minimum_initial_storage_GiB=32+output_profile['maximum_durable_output_bytes']/2**30,minimum_live_storage_GiB=32,
         selected_initial_geometry_sha256=sha256_file(sources/'input.xyz'),native_G_qualified=False,material_admission=False)
-    plan['source_sha256'].update(report['source_sha256']);plan['source_sha256'][str(review_path)]=sha256_file(review_path)
+    if larger_profile is not None:
+        plan.update(larger_dimension_resource_pilot=True,resource_class_qualification_pending=True,
+            smaller_native_pilot_review=str(sources/'smaller_native_pilot_review.json'),
+            resource_changes_only='larger device and retained-output budgets; original compact adapter, equations and physical gates retained')
+        plan['source_sha256'].update(witness['source_sha256'])
+    plan['source_sha256'].update(report['source_sha256'])
     for name in ('qrrho.py','vibrations.py','cds_finite.py','hessian_memory.py','native_thermal.py'):
         path=Path(source['archive'])/'src/redox/qm'/name;plan['source_sha256'][str(path)]=sha256_file(path)
     plan['source_sha256'].update({str(p):sha256_file(p) for p in sources.glob('*')})
@@ -218,10 +267,12 @@ if __name__=='__main__':
     for name in ('archive','preparation','out'):parser.add_argument('--'+name,type=Path,required=name=='out')
     parser.add_argument('--finalize-from',type=Path)
     parser.add_argument('--native-from-review',type=Path)
+    parser.add_argument('--larger-dimension-pilot-review',type=Path,help='Checked smaller native pilot; prepare a separate exact 137-atom H100 dimension pilot')
     parser.add_argument('--key');parser.add_argument('--execution-profile',choices=('compact_28GiB','direct_large_GPU_reference'),default='compact_28GiB');parser.add_argument('--optimization-agreement',type=Path);args=parser.parse_args()
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
     with allocation_guard():host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
-    if args.native_from_review is not None:result=prepare_native_component(args.native_from_review.resolve(),args.out.resolve())
+    if args.larger_dimension_pilot_review is not None and args.native_from_review is None:parser.error('Larger dimension pilot requires --native-from-review')
+    if args.native_from_review is not None:result=prepare_native_component(args.native_from_review.resolve(),args.out.resolve(),None if args.larger_dimension_pilot_review is None else args.larger_dimension_pilot_review.resolve())
     elif args.finalize_from is not None:result=prepare_finalization(args.finalize_from.resolve(),args.out.resolve())
     elif args.optimization_agreement is None:result=prepare(args.archive.resolve(),args.preparation.resolve(),args.out.resolve(),args.key,args.execution_profile)
     else:result=prepare_optimization(args.archive.resolve(),args.preparation.resolve(),args.optimization_agreement.resolve(),args.out.resolve(),args.key)

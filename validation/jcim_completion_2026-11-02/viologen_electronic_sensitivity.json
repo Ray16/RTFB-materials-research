@@ -1,0 +1,69 @@
+{
+  "status": "declared_cycle_electronic_sensitivity_reconstructed",
+  "states": 10,
+  "cycles": [
+    {
+      "id": "E1_V_vs_Fc",
+      "kind": "one_electron_potential_vs_Fc",
+      "unit": "V",
+      "electronic_contribution_to_shift": {
+        "installed_minus_stored": -3.5885486847003086e-09,
+        "corrected_minus_stored": -3.6009229905096197e-09,
+        "corrected_minus_installed": -1.2374305809311408e-11
+      }
+    },
+    {
+      "id": "E2_V_vs_Fc",
+      "kind": "one_electron_potential_vs_Fc",
+      "unit": "V",
+      "electronic_contribution_to_shift": {
+        "installed_minus_stored": 1.2374305809311408e-11,
+        "corrected_minus_stored": 2.4748611618622816e-11,
+        "corrected_minus_installed": 1.2374305809311408e-11
+      }
+    },
+    {
+      "id": "graft_precursor_0_kJ_mol",
+      "kind": "grafting_free_energy",
+      "unit": "kJ/mol",
+      "electronic_contribution_to_shift": {
+        "installed_minus_stored": -7.702399011211221e-07,
+        "corrected_minus_stored": -7.715830825026546e-07,
+        "corrected_minus_installed": -1.3431813815326677e-09
+      }
+    },
+    {
+      "id": "graft_precursor_1_kJ_mol",
+      "kind": "grafting_free_energy",
+      "unit": "kJ/mol",
+      "electronic_contribution_to_shift": {
+        "installed_minus_stored": -1.267217012288209e-06,
+        "corrected_minus_stored": -1.267366254663935e-06,
+        "corrected_minus_installed": -1.4924237572585197e-10
+      }
+    },
+    {
+      "id": "graft_precursor_2_kJ_mol",
+      "kind": "grafting_free_energy",
+      "unit": "kJ/mol",
+      "electronic_contribution_to_shift": {
+        "installed_minus_stored": -8.463535127413065e-07,
+        "corrected_minus_stored": -8.470997246199358e-07,
+        "corrected_minus_installed": -7.462118786292598e-10
+      }
+    },
+    {
+      "id": "disproportionation_kJ_mol",
+      "kind": "reaction_free_energy",
+      "unit": "kJ/mol",
+      "electronic_contribution_to_shift": {
+        "installed_minus_stored": -3.474362506897834e-07,
+        "corrected_minus_stored": -3.49824128701397e-07,
+        "corrected_minus_installed": -2.3878780116136315e-09
+      }
+    }
+  ],
+  "nuclear_terms_recomputed": false,
+  "total_free_energy_requalified": false,
+  "new_potentials_or_reaction_G_qualified": false
+}

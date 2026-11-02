@@ -18,6 +18,13 @@ def test_native_component_closes_at_each_cutoff(record):
     m,component,nuclear,energy=record;assert m.component_sums(component,nuclear,energy)==component['G_by_cutoff_eV']
 
 
+def test_neutral_component_requires_explicit_matched_reference_role(record):
+    m,component,nuclear,energy=record;component['charge']=0
+    with pytest.raises(ValueError):m.component_sums(component,nuclear,energy)
+    component['matched_empty_polymer_reference']=True
+    assert m.component_sums(component,nuclear,energy)==component['G_by_cutoff_eV']
+
+
 @pytest.mark.parametrize('change',['parent','nuclear','sum','spin','scope','nonfinite','nonfinite_sum','nonfinite_nuclear'])
 def test_mixed_or_unsupported_component_cannot_be_admitted(record,change):
     m,component,nuclear,energy=record

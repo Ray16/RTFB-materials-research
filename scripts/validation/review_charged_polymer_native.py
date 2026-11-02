@@ -12,11 +12,13 @@ import h5py
 import numpy as np
 from ase.io import read
 from pyscf import gto
+from pyscf.lib import param
 
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.molecular_native_namespace import verify
+from redox.workflows.native_component_resources import peak_limit
 
 
 def load(path,name):
@@ -24,7 +26,8 @@ def load(path,name):
 
 
 def component_sums(component,nuclear,energy_Ha):
-    if component['mult']!=1 or component['charge']<=0 or component['spin_partition_eV']!=0. or component['primary_model_admission'] or component['material_admission']:
+    empty=component.get('matched_empty_polymer_reference') is True and component['charge']==0
+    if component['mult']!=1 or (component['charge']<=0 and not empty) or (component.get('matched_empty_polymer_reference') and component['charge']!=0) or component['spin_partition_eV']!=0. or component['primary_model_admission'] or component['material_admission']:
         raise ValueError('Explicit alternate-model closed-shell ionic component required')
     energy=energy_Ha*27.211386245988
     if not all(math.isfinite(v) for v in (energy,component['E_geometry_level_eV'],component['E_geometry_level_Ha'])) or abs(component['E_geometry_level_eV']-energy)>1e-8 or abs(component['E_geometry_level_Ha']-energy_Ha)>1e-10:
@@ -42,13 +45,18 @@ def review(namespace):
     spec=verify(namespace);case=Path(spec['case']);sources=Path(spec['sources']);used=[namespace]
     def read_json(path):used.append(path);return json.loads(path.read_text())
     plan=read_json(case/'plan.json');stage=read_json(case/'status.json');placements=list(case.parent.glob('placement*/launch.json'))
+    if plan.get('native_resource_class'):
+        current=Path(peak_limit.__code__.co_filename);frozen=sources/'native_resource_helper.py'
+        if sha256_file(current)!=sha256_file(frozen):raise ValueError('Independent resource policy differs from the frozen worker helper')
+        used.extend([current,frozen])
     if len(placements)!=1:raise ValueError('One exact charged native placement required')
     launch=read_json(placements[0]);completion=read_json(placements[0].parent/'completion.json')
     owner=read_json(case/'residency_guard/owner.json');residency=read_json(case/'residency_guard/state.json')
     host=read_json(case/'host_guard/status.json');runtime=read_json(case/'tensor_runtime/status.json')
     owners=load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','charged_native_closed_owners')
+    empty=(plan.get('matched_empty_polymer_reference') is True and plan['charge']==0 and not plan['prepared_case']['occupied_sites'])
     if (not plan.get('charged_polymer_native_component') or plan['role']!='charged_polymer_native_component'
-            or plan['mult']!=1 or plan['charge']<=0 or stage['status']!='charged_polymer_native_component_finished_review_pending'
+            or plan['mult']!=1 or (plan['charge']<=0 and not empty) or stage['status']!='charged_polymer_native_component_finished_review_pending'
             or stage['native_G_qualified'] or owners.alive(stage['owner']) is not False
             or completion['returncode']!=0 or completion['budget_stop'] is not None or not owner.get('guard_stopped')
             or not residency['own_residency_observed'] or residency['foreign_resident_PIDs']
@@ -56,7 +64,7 @@ def review(namespace):
             or runtime['status']!='task_returned_under_checked_cutensor_runtime'
             or host['maximum_RSS_GiB']!=80 or host['minimum_free_GiB']!=32 or host['free_RAM_bytes']<32*2**30
             or max(host['peak_tree_RSS_bytes'],host['self_VmHWM_bytes'])>80*2**30
-            or not 0<stage['observed_peak_GPU_MiB']<=31744
+            or not math.isfinite(stage['observed_peak_GPU_MiB']) or not 0<stage['observed_peak_GPU_MiB']<=peak_limit(plan)
             or not stage['owner']['pid']==owner['pid']==host['pid']==runtime['pid']
             or not stage['owner']['process_start']==owner['process_start']==host['process_start']
             or not stage['owner']['host']==owner['host']==host['host']==launch['host']
@@ -72,7 +80,7 @@ def review(namespace):
     center=read_json(case/'points/0000/evaluation.json');coordinates=np.asarray(center['coordinates_Bohr']);gradient=np.asarray(center['gradient_Ha_Bohr'])
     if (atoms.get_chemical_symbols()!=plan['symbols'] or matrix.dtype!=np.float64 or matrix.shape!=(3*count,3*count) or not np.isfinite(matrix).all()
             or abs(matrix-matrix.T).max()>1e-6 or gradient.shape!=(count,3) or not np.isfinite(gradient).all()
-            or abs(gradient).max()>.00045 or not np.allclose(coordinates,atoms.positions/.529177210903,rtol=0,atol=1e-10)
+            or abs(gradient).max()>.00045 or not np.allclose(coordinates,atoms.positions/param.BOHR,rtol=0,atol=1e-10)
             or abs(center['E_Ha']-source['E_Ha'])>1e-8):raise ValueError('Native matrix, stationarity or source geometry/energy fails')
     hetero=next((i for i,s in enumerate(plan['symbols']) if s=='O'),next((i for i,s in enumerate(plan['symbols']) if s=='Fe'),count-1))
     required={(0,1),(hetero,2),*map(tuple,plan['extra_FD_columns'])}
@@ -118,9 +126,11 @@ def review(namespace):
     return dict(status='charged_polymer_native_component_independently_reconstructed',namespace=str(namespace),
         candidate_alias=plan['exact_candidate_alias'],graph_key=plan['prepared_case']['key'],charge=plan['charge'],mult=1,
         model=plan['solvent_model'],quantum_settings=plan['numerical_settings'],geometry_sha256=sha256_file(geometry_path),
+        matched_empty_polymer_reference=empty,
         atoms=count,maximum_column_error=max(errors),minimum_frequency_cm=float(min(frequencies)),nuclear_by_cutoff_eV=thermal,
         E_geometry_level_Ha=center['E_Ha'],G_by_cutoff_eV=totals,native_G_qualified=True,primary_model_admission=False,
         conformer_ensemble_qualified=False,material_admission=False,peak_GPU_MiB=stage['observed_peak_GPU_MiB'],
+        native_resource_class=plan.get('native_resource_class','original_32GiB_class'),
         source_sha256={str(p):sha256_file(p) for p in used},producer_sha256=sha256_file(__file__))
 
 

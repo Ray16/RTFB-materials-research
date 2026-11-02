@@ -1,0 +1,242 @@
+{
+  "status": "seven_native_followup_actual_process_resources_and_exclusive_residency_verified",
+  "checked": 1793610318.9421923,
+  "records": [
+    {
+      "key": "all_same__occ_3",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_native_followup_prepared/all_same__occ_3/namespace.json",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2817233,
+        "process_start": "1440790591"
+      },
+      "status": "charged_polymer_native_component_running"
+    },
+    {
+      "key": "all_same__occ_4",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_native_followup_prepared/all_same__occ_4/namespace.json",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2817655,
+        "process_start": "1440791009"
+      },
+      "status": "charged_polymer_native_component_running"
+    },
+    {
+      "key": "alternating__occ_2",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_native_followup_prepared/alternating__occ_2/namespace.json",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2818147,
+        "process_start": "1440791430"
+      },
+      "status": "charged_polymer_native_component_running"
+    },
+    {
+      "key": "alternating__occ_3",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_native_followup_prepared/alternating__occ_3/namespace.json",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2818639,
+        "process_start": "1440791877"
+      },
+      "status": "charged_polymer_native_component_running"
+    },
+    {
+      "key": "alternating__occ_4",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_native_followup_prepared/alternating__occ_4/namespace.json",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2819199,
+        "process_start": "1440792355"
+      },
+      "status": "charged_polymer_native_component_running"
+    },
+    {
+      "key": "all_same__occ_none",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_all_same_empty_shared_dependencies/namespace.json",
+      "owner": {
+        "host": "lambda13",
+        "pid": 1369837,
+        "process_start": "172661152"
+      },
+      "status": "charged_polymer_native_component_running"
+    },
+    {
+      "key": "alternating__occ_none",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_native_followup_prepared/alternating__occ_none/namespace.json",
+      "owner": {
+        "host": "lambda4",
+        "pid": 1198623,
+        "process_start": "46361657"
+      },
+      "status": "charged_polymer_native_component_running"
+    }
+  ],
+  "nodes": [
+    {
+      "host": "lambda2",
+      "checked": 1793610303.7866166,
+      "workers": [
+        {
+          "key": "all_same__occ_3",
+          "pid": 2817233,
+          "actual_start": "1440790591",
+          "expected_start": "1440790591",
+          "CPU_affinity": [
+            2,
+            3
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU": "0"
+        },
+        {
+          "key": "all_same__occ_4",
+          "pid": 2817655,
+          "actual_start": "1440791009",
+          "expected_start": "1440791009",
+          "CPU_affinity": [
+            5,
+            6
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU": "1"
+        },
+        {
+          "key": "alternating__occ_2",
+          "pid": 2818147,
+          "actual_start": "1440791430",
+          "expected_start": "1440791430",
+          "CPU_affinity": [
+            8,
+            9
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU": "2"
+        },
+        {
+          "key": "alternating__occ_3",
+          "pid": 2818639,
+          "actual_start": "1440791877",
+          "expected_start": "1440791877",
+          "CPU_affinity": [
+            11,
+            12
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU": "3"
+        },
+        {
+          "key": "alternating__occ_4",
+          "pid": 2819199,
+          "actual_start": "1440792355",
+          "expected_start": "1440792355",
+          "CPU_affinity": [
+            14,
+            15
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU": "4"
+        }
+      ],
+      "gpu_inventory": "0, GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074, 32768\n1, GPU-099acaa2-a585-2324-846e-c57f056f80a7, 32768\n2, GPU-891d8452-4937-16a3-d9a7-36baf0370c9a, 32768\n3, GPU-a282ce96-9ef7-08f7-f0c4-c17407a0bae9, 32768\n4, GPU-2c4c6bf7-dfe7-0a42-db3a-43d3e97c5dd7, 32768\n5, GPU-452861da-032d-d5bf-6f05-06552461e8fd, 32768\n6, GPU-14f56038-d6ea-03bd-7d4b-a630316354f7, 32768\n7, GPU-fab99e67-e6e2-56bb-e07d-ea240da3e84a, 32768\n",
+      "gpu_processes": "GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074, 2817233, 18706\nGPU-099acaa2-a585-2324-846e-c57f056f80a7, 2817655, 17956\nGPU-891d8452-4937-16a3-d9a7-36baf0370c9a, 2818147, 18572\nGPU-a282ce96-9ef7-08f7-f0c4-c17407a0bae9, 2818639, 18052\nGPU-2c4c6bf7-dfe7-0a42-db3a-43d3e97c5dd7, 2819199, 19030\n",
+      "load_1m": 10.08056640625,
+      "online_CPUs": 80
+    },
+    {
+      "host": "lambda13",
+      "checked": 1793610304.0250833,
+      "workers": [
+        {
+          "key": "all_same__occ_none",
+          "pid": 1369837,
+          "actual_start": "172661152",
+          "expected_start": "172661152",
+          "CPU_affinity": [
+            1,
+            2
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU": "0"
+        }
+      ],
+      "gpu_inventory": "0, GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00, 95830\n1, GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 95830\n2, GPU-5d07badb-4052-7045-bdc1-c0476709589b, 95830\n3, GPU-31e42837-2afb-0b14-c287-66eabb51d40e, 95830\n4, GPU-7313cbc9-b64b-7359-3d2e-e9e6c1b6ef52, 95830\n5, GPU-7b939bee-465f-2aad-2acd-8cec35064a53, 95830\n6, GPU-8defa300-1c9b-2d37-01ea-122e6fda2a88, 95830\n7, GPU-93801177-43f6-555f-d319-913daa719ad4, 95830\n",
+      "gpu_processes": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00, 1369837, 4646\n",
+      "load_1m": 10.6640625,
+      "online_CPUs": 384
+    },
+    {
+      "host": "lambda4",
+      "checked": 1793610318.731849,
+      "workers": [
+        {
+          "key": "alternating__occ_none",
+          "pid": 1198623,
+          "actual_start": "46361657",
+          "expected_start": "46361657",
+          "CPU_affinity": [
+            0,
+            1
+          ],
+          "thread_caps": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2"
+          },
+          "GPU": "0"
+        }
+      ],
+      "gpu_inventory": "0, GPU-49ab60bc-b8e1-e031-8966-b947648e9330, 32768\n1, GPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 32768\n2, GPU-587fc9d4-517f-3df3-cf06-547e2a51104e, 32768\n3, GPU-7e8e466e-2e08-08f1-7597-9942f36b7ac7, 32768\n4, GPU-eb49e30a-38b4-a788-d4be-8675eabd59e7, 32768\n5, GPU-247509dc-0263-be1d-1312-352d9f4c37b4, 32768\n6, GPU-c7971ddf-fdd9-cc05-91dd-f7664056187d, 32768\n7, GPU-a2370f0a-361c-0770-6e16-ed78ac5af98e, 32768\n",
+      "gpu_processes": "GPU-49ab60bc-b8e1-e031-8966-b947648e9330, 1198623, 12436\nGPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 3319996, 366\nGPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 3320559, 31780\nGPU-587fc9d4-517f-3df3-cf06-547e2a51104e, 3320814, 31828\nGPU-7e8e466e-2e08-08f1-7597-9942f36b7ac7, 3321190, 31780\nGPU-eb49e30a-38b4-a788-d4be-8675eabd59e7, 3321636, 31732\n",
+      "load_1m": 4.29150390625,
+      "online_CPUs": 80
+    }
+  ],
+  "new_G_qualified": false
+}

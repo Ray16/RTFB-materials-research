@@ -10,6 +10,10 @@ CATEGORIES = {
  'discovery': ['workflows'],
 }
 SPECIALIZED = [
+ dict(kind='checked_campaign', module='redox.workflows.charged_native_followup',
+      purpose='Release only source/dimension-matched components after an exact charged-native pilot passes'),
+ dict(kind='recovery', module='redox.workflows.relocate_unstarted_namespace',
+      purpose='Explicit byte-identical dependency relocation before any scientific start'),
  dict(kind='checked_control', module='redox.workflows.screening_control',
       purpose='Explicit numerical controls; does not change the production method'),
  dict(kind='checked_campaign', module='redox.workflows.charged_polymer_pilot',

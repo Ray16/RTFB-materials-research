@@ -1,135 +1,86 @@
-# Current disposition of colleague review
+# Current manuscript review disposition
 
-As of 31 October 2026, the manuscript remains a working draft. M1, M4, complete M7 and final M9 remain open. The table distinguishes scoped reviewer responses from complete submission readiness.
+As of 2 November 2026, this is an 18-page JCIM working article with a separate
+30-page SI. Submission remains incomplete. Historical review dispositions are
+preserved in Git; the source-frozen manuscript epoch is selected by
+[evidence/current.json](evidence/current.json).
 
-**Additional release requirement:** the [screening implementation assessment](../validation/screening_implementation_2026-10-31/README.md)
-reproduces an upstream GPU4PySCF grid-screening defect on V100 and H100.
-The isolated correction passes fixed-density and closed/open-shell MeCN
-derivative controls on both devices. All 71 benchmark electronic states now
-pass independent repeat review; the largest corrected-minus-installed
-electronic contribution to a relative-potential change is 8.66e-11 V.
-The retained 119-atom full-Hessian controls now pass independent reconstruction
-and prospective comparison. Broader reaction-cycle and production qualification remain open. Previous arithmetic,
-experimental-source and saved-record replays remain reproducible; they do not
-measure the defect's effect on converged chemical predictions. Stored chemical
-claims are provisional for release. New uncorrected admissions are held.
-
-| Comment | Status | Current disposition |
+| Requirement | Current evidence | Still required |
 | --- | --- | --- |
-| M1 | partial | Exact PMDI finite cycle, baseline enumerated viologen native ladder plus three-seed local quaternization and TEMPO directional MeCN descriptors reported; converged ensembles and complete material/route criteria remain open. |
-| M2 | addressed in current scope | 39 endpoints and diagnostic controls reported; reference-error attribution and external NDI accuracy remain explicitly limited. |
-| M3 | addressed in current scope | DBU/HCl and two DIPEA source estimates checked; full-route signs remain conditional. |
-| M4 | open | Both twenty-input empty components meet the batch criterion with 20/19 distinct structures; occupied ensembles and balanced cycles remain incomplete. |
-| M5 | addressed in current scope | Five controls reported; no complete basis-convergence claim. |
-| M6 | addressed in current scope | Methods and twelve-pose SI table report the gates; the tested Nitro repeatability failure is explicit and production qualification is withheld. |
-| M7 | partial | The 75-state cache and exact-viologen CPU example pass fresh NumPy-only replay; a fresh locked xTB component passes masked-original-path kernel checks. The local reviewer collection is assembled. Public DOI, final metadata/release updating and wider deployment portability remain open. |
-| M8 | addressed in current scope | The 48-reference base audit is preserved; Achazi 2024, CREST 2020, the Oh Biying 2025/Mohanty 2026 polymer studies and You 2015 nonequilibrium-solvation theory are separately verified additions. Every benchmark study is cited, with source/reference handling tabulated. |
-| M9 | revised final science pending | Current article and separate SI are revised; final narrative depends on open physical results. |
-| remaining_endpoint | addressed in current scope | 39 endpoints reconstruct; alternative-spin thermochemistry is still stated as a limit. |
-| m1 | addressed in current scope | Current immutable epoch and separately built PDFs replace stale reporting. |
-| m2 | addressed in current scope | Molecule/study intervals and their weak calibration are explicit. |
-| m3 | addressed in current scope | Actual conformers and exact occupancy construction appear in main/SI figures. |
-| m4 | addressed in current scope | Main text states the exact identity relationship. |
-| m5 | addressed in current scope | SI reports signed fragment terms, cancellations, 57–93 steps and 0.25–0.70 Å relaxation. |
-| m6 | addressed in maintained code | Central conversion now uses exact SI defining constants; 68 focused checks retain archived arithmetic without rewriting raw scientific records. |
-| m7 | addressed in current scope | Build emits compiler facts and requests a separate PDF-hash-bound visual record. |
-| m8 | addressed in current scope | Current chemical artwork and exact models replace status banners; no extra author-approval gate is inferred. |
-| m9 | addressed in current scope | Remaining evidence/decision terms are defined in an SI table. |
-| m10 | addressed in current scope | Initial seed/counts, one-configuration scope and xTB symmetry detection are explicit. |
+| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; first checked ionic native component | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
+| M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
+| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged | Actual counterion/speciation and reaction-condition sensitivity; ΔG is not yield or rate |
+| M4: polymer sampling | Forty alternate-model empty inputs meet the finite 10-to-20 criterion; primary finite PMDI/phthalimide cycles remain separately scoped | Occupied graph/configuration batches, duplicate review and balanced occupied ensemble cycles |
+| M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
+| M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Broader nuclear/reaction-cycle impact and corrected production qualification |
+| M7: reproducibility | Versioned exact-viologen CPU example; 75-state numerical cache; checked xTB component relocation; local reviewer collection and new control archive | Final synchronized code/data/environment release, author/license metadata and public deposition |
+| M8: literature | Verified base reference audit and separately checked methodological/polymer additions | Final built bibliography and claim/source consistency |
+| M9: publication narrative | Rewritten article; five quantitative interpretation-transfer tests; separate SI and focused slides | Integrate final lead results, demonstrate transferable scientific utility and synchronize final figures/data statements |
 
-The current article and SI are 21/30 pages; the focused deck has fifteen main and four supporting slides. Both PDFs compile without overfull boxes and the revised pages are visually checked. The self-contained upload compiles with matching text; no Overleaf project is connected.
+## Numerical reliability and its limits
 
-The exact baseline enumerated viologen has checked MeCN reductions of −0.608/−1.208 V versus matched Fc and a finite local quaternization ΔG of −11.49 kJ/mol at 298.15 K. Three precursor starts pass independent geometry, derivative, nuclear, spin and resource checks. The seed span is 1.50 kJ/mol; rotor settings give −13.30 to −11.49 kJ/mol. This is a separated-ion capped-site model, with no HCl/base term. Salt association, exchange, reflux thermodynamics and polymer penalties remain unresolved. [Sources and reproduction](../validation/viologen_grafting_2026-10-31/README.md).
+The [implementation assessment](../validation/screening_chemical_impact_2026-10-31/README.md)
+reproduces a GPU4PySCF screening defect on V100/H100 and checks an isolated
+upstream correction. All 71 benchmark electronic states pass independent repeat
+review; the largest reference-cancelled electronic potential shift is 8.66e-11 V.
+Three [119-atom full-Hessian controls](../validation/polymer_hessian_reproduction_2026-10-31/README.md)
+pass physical reconstruction and prospective comparisons; their largest nuclear
+term difference is 1.67e-8 eV. These are scoped controls rather than broad
+production or experimental qualification. New uncorrected admissions remain held.
 
-The TEMPO example retains separate directional MeCN relaxation costs of 1.477/1.639 eV. Their 10.4% asymmetry fails the declared equal-curvature diagnostic, so a symmetric scalar remains unqualified. Neither example is a fully admitted material.
+The [new component panels](../validation/jcim_completion_2026-11-02/README.md)
+cover ten exact viologen states and twenty-one base-reaction inputs, sharing two
+Fc executions. All 70 actual SCF molecular frames are independently checked.
+Corrected-minus-installed electronic contributions are at most 1.24e-11 V for
+viologen potentials, 1.35e-9 kJ/mol for three local grafting sums and 4.18e-9
+kJ/mol for five HCl-reference/twenty base-assisted sums. Retained nuclear terms
+are not promoted to newly qualified total G by these electronic checks.
 
-The frozen polymer comparison contains 75 reconstructed states. Both twenty-input empty-backbone sets meet the finite-batch criterion with 20/19 distinct structures. The [working census](../validation/screening_implementation_2026-10-31/native_census.json) now contains 122 independently reconstructed input states outside that frozen comparison; balanced occupied ensembles remain incomplete. The original atom-31/z sampled-derivative failure remains preserved at 1.2138%, above the unchanged 1% gate. A separate full native repeat passes the existing protocol, with a maximum column error of 0.7044%, and passes independent physical reconstruction. Force repeatability and finite-difference step convergence remain distinct open questions; neither the repeat nor its census count qualifies the corrected screening implementation.
+## Lead and oligomer evidence
 
-The 75-state extracted cache reconstructs Hessians, sampled derivative checks and nuclear terms in a fresh NumPy-only environment with original paths blocked. This does not establish complete historical executable closure, wider deployment portability or public deposition. A checked draft collection is assembled; final release updating, DOI and author/deposition metadata remain open.
+The exact viologen's checked molecular reductions are −0.608/−1.208 V versus
+matched Fc in MeCN. Local separated-ion quaternization is −11.49 kJ/mol at
+298.15 K; three precursor starts span 1.50 kJ/mol and rotor settings give
+−13.30 to −11.49 kJ/mol. This route has no HCl/base term. Salt association,
+exchange, reflux conditions and polymer accessibility remain unresolved.
+[Source/reproduction](../validation/viologen_grafting_2026-10-31/README.md).
 
-The older [machine-readable comment audit](/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/review_comment_audit_2026-10-26/current.json) binds its historical inspected sources; it is not a certificate for the current revision. [Publication acceptance criteria](../docs/PUBLICATION_READINESS.md) remain authoritative for completion.
+The [ionic polymer collection](../validation/viologen_native_2026-11-02/README.md)
+now contains twelve checked stationary components and four balanced
+whole-chain electronic nonadditivities: adjacent/one-spacer values are
+−3.46/+18.68 kJ/mol for all-same and +1.20/−13.48 kJ/mol for alternating
+configuration. They are single-conformer E terms under one corrected
+r2SCAN-D4/SVP smooth-surface MeCN model. They supply neither interaction G,
+isolated motif binding nor operating-state coupling.
 
-The exact viologen now has [twelve audited initial charged-polymer models](../validation/viologen_polymer_preparation_2026-10-31/README.md), including adjacent/spacer graphs in two configurations. SI Section 3.4 separates connectivity, global state hypotheses and PF6 dry-salt mass bookkeeping from uncomputed charged-polymer thermochemistry. This preparation advances M1 without closing its polymer assessment or M4.
+One 114-atom +2/singlet component passes independent full-Hessian, sampled-column,
+mode, nuclear, SCF-frame, source and resource reconstruction. Its minimum internal
+frequency is +8.1893 cm⁻¹ and maximum column error 4.665e-6. Seven matching
+smaller/matched-empty followups have live-owner observations. Four larger double
+grafts require a separate dimension pilot; the first H100 submission is recorded
+separately from scientific completion. No complete ionic occupied G cycle or
+converged ensemble is reported. The alternate model is not mixed with primary
+molecular or polymer G values.
 
-A subsequent [137-atom charged-polymer resource control](../validation/viologen_polymer_SCF_2026-10-31/README.md)
-passes actual SCF/force and execution review. The compact V100 calculation
-uses 29,964 MiB versus 87,026 MiB for the direct H100 reference, agreeing in
-energy/force within the declared numerical limits. The starting geometry is
-not stationary; solvent optimization, minimum checks, occupancy energies and
-operating-state coupling remain open. No charged-polymer G or material pass is
-reported from this pilot.
+TEMPO retains directional solution costs 1.477/1.639 eV. Their 10.4% asymmetry
+fails the declared 5% equal-curvature diagnostic; a symmetric scalar remains
+unqualified. PMDI retains a finite primary-model −1.86-kJ/mol four-state G
+cycle and +5.3–6.1-kJ/mol first-site penalties, with one minimum per graph.
+Its practical route is still on hold. The broader 904-graph registry and older
+878-candidate all-axis snapshot have distinct scopes; neither is a material shortlist.
 
-The [exact viologen geometry campaign](../validation/viologen_polymer_geometry_2026-10-31/README.md)
-now has ten actual SCF starts verified on ten V100s: single grafts at sites 2, 3
-and 4, adjacent 2/3 and one-spacer 2/4 grafts, each in two backbone configurations.
-Every evaluation is checkpointed; a separately tested reviewer binds final SCF,
-force, geometry and graph records after normal completion. This is an execution
-milestone, with no accepted charged-polymer minimum, ensemble or occupancy free
-energy yet. It advances M1 while M1 and M4 remain incomplete.
+## Reviewer access and completion
 
-A [422-MB local reviewer collection](../validation/reviewer_collection_2026-10-31/README.md)
-now consolidates eight checked data/replay packages and committed code/evidence.
-Archive integrity and a fresh isolated standard-Python extraction replay pass.
-Author/license metadata and public DOI deposition remain pending; the collection
-does not close the remaining scientific comments.
+The new 29-execution local control archive contains 70 SCF checkpoints. Every
+archive byte is verified and an extracted CPU replay succeeds with original
+project/data paths blocked and no GPU-library imports. It reconstructs cached
+frames/energies/cycle shifts, not fresh quantum calculations or wavefunction
+spin diagnostics. Public deposition and final metadata remain open.
 
-The [fresh xTB component check](../validation/xtb_runtime_relocation_2026-10-31/README.md)
-installs the exact build and its eighteen-package runtime closure in a temporary
-prefix. With the original xTB paths masked, the actual kernel reference values
-and sub-wavenumber mode test pass. Kernel/native/projected path configuration is
-now explicit, with the qualification hash retained. This advances M7's component
-installation and path requirements, without certifying a complete fresh
-Python/CUDA stack or newly computed native molecular states.
-
-An interrupted site-4 case now passes independent reconstruction. V100 host-allocation controls reproduce a NumPy huge-page-advice stall. The earlier seven-block/315-coordinate response execution probe used solute H1 and a frozen-solvent operator; its array/resource review remains scoped to instrumentation, without native equilibrium-response or G qualification. Fresh full Hessian and corrected checkpoint-reuse controls preserve the PCM/SMD H1 contribution. An unqualified restart that bypassed that term was explicitly rejected and stopped; it supplies no accepted result. See the [current assessment](../validation/screening_chemical_impact_2026-10-31/README.md).
-
-The [response-continuation workflow](../validation/response_continuation_2026-10-31/README.md)
-now binds completed raw response blocks to the original orbital/grid frame and
-full solvent H1. Ninety-eight focused tests and read-only checks of both live
-119-atom prefixes pass. Source owners remain live and ineligible for continuation;
-full molecular continuation equivalence and corrected-Hessian qualification are
-still pending. This infrastructure update changes no manuscript chemical claim.
-
-The current SI integrates the fresh xTB-component installation and configurable-prefix methods. Its source evidence is frozen in `2026-10-31_xtb_component_checked`; both PDFs build at 21/30 pages without overfull boxes, changed SI pages are visually checked and the updated upload archive compiles with matching text. No Overleaf project is connected.
-
-Six [single-site charged-polymer geometries](../validation/checkpoint_recovery_2026-10-31/README.md)
-now pass independent final-SCF, stationarity, connectivity and stereochemistry
-checks. Converged optimizer returns were retained when a subsequent allocation
-failed; separate fresh final solves avoid repeating the optimization. Three
-complete control Hessians are also retained. Their resource/adapter failures
-remain preserved, and phase-specific validation continues with the original
-physical thresholds. These records advance M1/M6 without supplying missing
-polymer minima, ensembles, interaction G or full material decisions.
-
-Three [complete corrected polymer Hessians](../validation/polymer_hessian_reproduction_2026-10-31/README.md)
-now pass independent reconstruction and the prospective pairwise comparison.
-For the retained 119-atom phthalimide control, the maximum sampled-column error
-is 9.45e-6, the lowest internal frequency is positive at 9.59 cm-1 and all three
-cutoff nuclear terms reproduce within 1.67e-8 eV across the controls. This closes
-the large retained-case numerical comparison, including component-restart and
-matrix-producer architecture sensitivity. It does not close full reaction-cycle
-impact, uninterrupted resource profiling or occupied-polymer ensembles.
-
-The [charged native component pilot](../validation/charged_native_pilot_2026-10-31/README.md)
-now runs at an independently checked 114-atom +2/singlet viologen geometry.
-Nine charged-polymer structures pass stationary-geometry checks; one remaining
-one-spacer optimization is separate. The pilot uses the corrected implementation
-and the same physical thresholds, with explicit charged-state and alternate-model
-identity. Its thermochemistry is unqualified until normal completion and independent
-reconstruction; M1/M4 remain incomplete.
-
-Two [matched empty references](../validation/matched_empty_reference_2026-10-31/README.md)
-now have verified fresh optimization starts under the corrected implementation.
-Exact graph, stereochemistry, reactive-site and model identities match the ionic
-occupancy panel. Old finite-batch thermochemistry selects warm-start coordinates
-only; old E/G is not imported into the corrected cycle. Namespace-visible source
-hash checks now run during preflight. New native G and balanced occupancy cycles
-remain pending.
-
-The two corrected empty references now pass independent stationary-geometry
-review. Together with the checked occupied structures, they provide three
-[balanced finite-conformer electronic cycles](../validation/ionic_electronic_cycles_2026-10-31/README.md).
-Their whole-chain nonadditivities are -3.46/+1.20 kJ/mol for adjacent grafts in
-the two configurations and -13.48 kJ/mol for the alternating one-spacer case.
-These E-only results are separate from the frozen manuscript thermochemistry;
-missing nuclear/ensemble terms are not supplied, and M1/M4 remain incomplete.
+The prior measured Nitro repeatability failure, alternative-spin limits and
+incomplete occupied ensembles remain visible. A successful later repeat does
+not erase the failure or establish force-step convergence. Compiler, visual
+inspection and self-contained export records each retain separate scopes;
+no Overleaf remote is connected. Author details and final data reuse terms
+require the authors' input. The [publication acceptance criteria](../docs/PUBLICATION_READINESS.md)
+remain authoritative; green tests or a built PDF do not establish completion.

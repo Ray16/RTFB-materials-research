@@ -47,12 +47,12 @@
       "guide": "manuscript/README.md",
       "current": "manuscript/manuscript.pdf",
       "supporting_information": "manuscript/supporting_information.pdf",
-      "source_snapshot": "manuscript/evidence/2026-10-31_xtb_component_checked/manifest.json",
+      "source_snapshot": "manuscript/evidence/current.json",
       "build": "manuscript/build_check.json",
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
-      "status": "exact_viologen_and_versioned_CPU_replay_integrated_scientific_gaps_open",
-      "scope": "21-page article and 30-page SI; fresh qualified xTB component installation added to reproducibility methods; occupied ensembles and material assessment incomplete"
+      "status": "18_page_JCIM_rewrite_with_context_tests_and_scoped_implementation_checks",
+      "scope": "18-page article and 30-page SI; no complete occupied ensemble or synthesis/material admission"
     },
     "native_polymer_continuation": {
       "guide": "validation/native_followup_collection_2026-10-30/README.md",
@@ -329,12 +329,12 @@
       "scope": "One retained 119-atom phthalimide control, original matrix producers V100/H100 and fresh validation on V100; no total chemical G or ensemble claim"
     },
     "charged_polymer_native_pilot": {
-      "guide": "validation/charged_native_pilot_2026-10-31/README.md",
-      "current": "validation/charged_native_pilot_2026-10-31/summary.json",
-      "source_snapshot": "validation/charged_native_pilot_2026-10-31/manifest.json",
-      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_native_v2",
-      "status": "nine_stationary_geometries_checked_first_charged_native_pilot_running_unqualified",
-      "scope": "One +2/singlet 114-atom alternate-SMD component; native G, ensemble and material admission pending"
+      "guide": "validation/viologen_native_2026-11-02/README.md",
+      "current": "validation/viologen_native_2026-11-02/site2_resource_review.json",
+      "source_snapshot": "validation/viologen_native_2026-11-02/site2_resource_review.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-01_viologen_all_same_occ_2_native_storage_recovery",
+      "status": "one_charge2_native_component_independently_qualified_occupied_G_cycles_pending",
+      "scope": "114 atoms; separate smooth-surface r2SCAN-D4/SVP MeCN local minimum; primary-model/ensemble/material admission false"
     },
     "matched_empty_reference_reoptimization": {
       "guide": "validation/matched_empty_reference_2026-10-31/README.md",
@@ -345,11 +345,11 @@
       "scope": "Old model/graph-matched native geometry seeds; fresh corrected optimization, no old E/G imported and no new native G or occupancy admission"
     },
     "ionic_stationary_electronic_cycles": {
-      "guide": "validation/ionic_electronic_cycles_2026-10-31/README.md",
-      "current": "validation/ionic_electronic_cycles_2026-10-31/summary.json",
-      "source_snapshot": "validation/ionic_electronic_cycles_2026-10-31/manifest.json",
+      "guide": "validation/viologen_native_2026-11-02/README.md",
+      "current": "validation/viologen_native_2026-11-02/stationary_electronic_summary.json",
+      "source_snapshot": "validation/viologen_native_2026-11-02/stationary_electronic_cycles.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_matched_empty_reference_dispatch",
-      "status": "three_exact_balanced_stationary_E_cycles_no_G_admission",
+      "status": "twelve_stationary_components_four_exact_balanced_E_cycles_no_G_admission",
       "scope": "One stationary conformer per graph, same corrected model/implementation; whole-chain E nonadditivity only, no isolated binding/coupling or converged ensemble"
     },
     "jcim_rewrite": {
@@ -367,11 +367,28 @@
       "status": "checked_component_context_reassembly_same_deltaG"
     },
     "viologen_native_storage_recovery": {
-      "guide": "validation/jcim_rewrite_2026-11-01/README.md",
-      "current": "validation/jcim_rewrite_2026-11-01/native_start_verification.json",
+      "guide": "validation/viologen_native_2026-11-02/README.md",
+      "current": "validation/viologen_native_2026-11-02/site2_resource_review.json",
       "source_snapshot": "validation/jcim_rewrite_2026-11-01/native_preparation.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-01_viologen_all_same_occ_2_native_storage_recovery",
-      "status": "actual_start_verified_native_G_pending"
+      "status": "completed_and_independently_reconstructed_single_component"
+    },
+    "component_implementation_controls": {
+      "guide": "validation/jcim_completion_2026-11-02/README.md",
+      "current": "validation/jcim_completion_2026-11-02/component_implementation_replay.json",
+      "source_snapshot": "validation/jcim_completion_2026-11-02/component_implementation_inputs.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls",
+      "archive": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-02_component_controls.tar.zst",
+      "physical_replay": "validation/jcim_completion_2026-11-02/component_archive_check.json",
+      "status": "29_execution_namespaces_70_SCF_frames_checked_electronic_only",
+      "scope": "Exact viologen 10-state and base-reaction 21-input panels share two reference states; nuclear terms and total G are not requalified"
+    },
+    "context_transfer_consequences": {
+      "guide": "validation/jcim_completion_2026-11-02/README.md",
+      "current": "validation/jcim_completion_2026-11-02/context_consequences.json",
+      "source_snapshot": "validation/jcim_completion_2026-11-02/context_consequences_checked.json",
+      "status": "five_source_bound_interpretation_tests_checked",
+      "scope": "Saved results and explicit transfers, not new QM accuracy or experimental decision validation"
     }
   }
 }

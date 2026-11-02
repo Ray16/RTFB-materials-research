@@ -1,0 +1,832 @@
+{
+  "package": {
+    "schema": 1,
+    "scope_id": "headline_base_reaction_components",
+    "states": [
+      {
+        "id": "fc_ox",
+        "aliases": [
+          "benchmark:ferrocene:ox"
+        ],
+        "smiles": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+        "charge": 1,
+        "mult": 2,
+        "files": {
+          "geometry": "states/fc_ox/geometry.xyz",
+          "energy": "states/fc_ox/energy.json"
+        },
+        "original_source_state": "s_b27554ee4dba6783f383",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/ferrocene/ox"
+      },
+      {
+        "id": "fc_neu",
+        "aliases": [
+          "benchmark:ferrocene:neu"
+        ],
+        "smiles": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/fc_neu/geometry.xyz",
+          "energy": "states/fc_neu/energy.json"
+        },
+        "original_source_state": "s_d7263c0db6cc53480153",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/ferrocene/neu"
+      },
+      {
+        "id": "s_61413a787f52a2248491",
+        "aliases": [
+          "component:chloride"
+        ],
+        "smiles": "[Cl-]",
+        "charge": -1,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_61413a787f52a2248491/geometry.xyz",
+          "energy": "states/s_61413a787f52a2248491/energy.json"
+        },
+        "original_source_state": "s_61413a787f52a2248491",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/chloride/rest"
+      },
+      {
+        "id": "s_c9ce0d8c9e97a8ee862d",
+        "aliases": [
+          "component:gp_0f1219817f48"
+        ],
+        "smiles": "COC1=CC(=O)C(O)=CC1=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_c9ce0d8c9e97a8ee862d/geometry.xyz",
+          "energy": "states/s_c9ce0d8c9e97a8ee862d/energy.json"
+        },
+        "original_source_state": "s_c9ce0d8c9e97a8ee862d",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_0f1219817f48/rest"
+      },
+      {
+        "id": "s_f49ea0b9b3c81e3eb765",
+        "aliases": [
+          "component:gp_16aa455cb6d2"
+        ],
+        "smiles": "CCn1c(=O)c2cc3c(=O)[nH]c(=O)c3cc2c1=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_f49ea0b9b3c81e3eb765/geometry.xyz",
+          "energy": "states/s_f49ea0b9b3c81e3eb765/energy.json"
+        },
+        "original_source_state": "s_f49ea0b9b3c81e3eb765",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_16aa455cb6d2/rest"
+      },
+      {
+        "id": "s_c6a27eec6ada46cbf3d0",
+        "aliases": [
+          "component:gp_37066c25cfdc"
+        ],
+        "smiles": "O=C1c2ccccc2C(=O)c2c(O)cccc21",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_c6a27eec6ada46cbf3d0/geometry.xyz",
+          "energy": "states/s_c6a27eec6ada46cbf3d0/energy.json"
+        },
+        "original_source_state": "s_c6a27eec6ada46cbf3d0",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_37066c25cfdc/rest"
+      },
+      {
+        "id": "s_a98083ebd611e47affd0",
+        "aliases": [
+          "component:gp_e752c8058cc0"
+        ],
+        "smiles": "CC1=C(C)C(=O)C(O)=C(C)C1=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_a98083ebd611e47affd0/geometry.xyz",
+          "energy": "states/s_a98083ebd611e47affd0/energy.json"
+        },
+        "original_source_state": "s_a98083ebd611e47affd0",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_e752c8058cc0/rest"
+      },
+      {
+        "id": "s_3bcfddd9d196ba09a611",
+        "aliases": [
+          "component:gp_f127a03c7d9a"
+        ],
+        "smiles": "CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)NC3=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_3bcfddd9d196ba09a611/geometry.xyz",
+          "energy": "states/s_3bcfddd9d196ba09a611/energy.json"
+        },
+        "original_source_state": "s_3bcfddd9d196ba09a611",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/gp_f127a03c7d9a/rest"
+      },
+      {
+        "id": "s_caa63b1eb4e3582237c3",
+        "aliases": [
+          "component:hydrogen_chloride"
+        ],
+        "smiles": "Cl",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_caa63b1eb4e3582237c3/geometry.xyz",
+          "energy": "states/s_caa63b1eb4e3582237c3/energy.json"
+        },
+        "original_source_state": "s_caa63b1eb4e3582237c3",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/hydrogen_chloride/rest"
+      },
+      {
+        "id": "s_617d302cb0ed605cbb56",
+        "aliases": [
+          "component:merrifield_local_chloride"
+        ],
+        "smiles": "Cc1ccc(CCl)cc1",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_617d302cb0ed605cbb56/geometry.xyz",
+          "energy": "states/s_617d302cb0ed605cbb56/energy.json"
+        },
+        "original_source_state": "s_617d302cb0ed605cbb56",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_mecn_reference/merrifield_local_chloride/rest"
+      },
+      {
+        "id": "s_89ad88bf455049d7dd5a",
+        "aliases": [
+          "base:dbu_neutral",
+          "relative_basicity:dbu_neutral"
+        ],
+        "smiles": "C1CCC2=NCCCN2CC1",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_89ad88bf455049d7dd5a/geometry.xyz",
+          "energy": "states/s_89ad88bf455049d7dd5a/energy.json"
+        },
+        "original_source_state": "s_89ad88bf455049d7dd5a",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_neutral/rest"
+      },
+      {
+        "id": "s_69ae47beed8d512f4e9b",
+        "aliases": [
+          "base:dbu_protonated",
+          "relative_basicity:dbu_protonated"
+        ],
+        "smiles": "C1CCC2=[NH+]CCCN2CC1",
+        "charge": 1,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_69ae47beed8d512f4e9b/geometry.xyz",
+          "energy": "states/s_69ae47beed8d512f4e9b/energy.json"
+        },
+        "original_source_state": "s_69ae47beed8d512f4e9b",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_protonated/rest"
+      },
+      {
+        "id": "s_37ad592049761f87e9c4",
+        "aliases": [
+          "base:dbu_chloride_pair"
+        ],
+        "smiles": "C1CCC2=[NH+]CCCN2CC1.[Cl-]",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_37ad592049761f87e9c4/geometry.xyz",
+          "energy": "states/s_37ad592049761f87e9c4/energy.json"
+        },
+        "original_source_state": "s_37ad592049761f87e9c4",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dbu_chloride_pair/rest"
+      },
+      {
+        "id": "s_d716904b75d578470cee",
+        "aliases": [
+          "base:dipea_neutral"
+        ],
+        "smiles": "CCN(C(C)C)C(C)C",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_d716904b75d578470cee/geometry.xyz",
+          "energy": "states/s_d716904b75d578470cee/energy.json"
+        },
+        "original_source_state": "s_d716904b75d578470cee",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dipea_neutral/rest"
+      },
+      {
+        "id": "s_92143098bf9a91b6af53",
+        "aliases": [
+          "base:dipea_protonated"
+        ],
+        "smiles": "CC[NH+](C(C)C)C(C)C",
+        "charge": 1,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_92143098bf9a91b6af53/geometry.xyz",
+          "energy": "states/s_92143098bf9a91b6af53/energy.json"
+        },
+        "original_source_state": "s_92143098bf9a91b6af53",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dipea_protonated/rest"
+      },
+      {
+        "id": "s_c94c91da0bf4ef64b263",
+        "aliases": [
+          "base:dipea_chloride_pair"
+        ],
+        "smiles": "CC[NH+](C(C)C)C(C)C.[Cl-]",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_c94c91da0bf4ef64b263/geometry.xyz",
+          "energy": "states/s_c94c91da0bf4ef64b263/energy.json"
+        },
+        "original_source_state": "s_c94c91da0bf4ef64b263",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/grafting/2026-10-19_base_assisted_pilot/dipea_chloride_pair/rest"
+      },
+      {
+        "id": "s_b93a6e9e45dfad93451e",
+        "aliases": [
+          "product:design_pmdi_ethyl",
+          "exact:design_pmdi_ethyl:neu"
+        ],
+        "smiles": "CCn1c(=O)c2cc3c(=O)n(Cc4ccc(C)cc4)c(=O)c3cc2c1=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_b93a6e9e45dfad93451e/geometry.xyz",
+          "energy": "states/s_b93a6e9e45dfad93451e/energy.json"
+        },
+        "original_source_state": "s_b93a6e9e45dfad93451e",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/design_pmdi_ethyl/neu"
+      },
+      {
+        "id": "s_cc009ead9efbd2addf51",
+        "aliases": [
+          "product:design_ndi_ethyl",
+          "exact:design_ndi_ethyl:neu"
+        ],
+        "smiles": "CCN1C(=O)c2ccc3c4c(ccc(c24)C1=O)C(=O)N(Cc1ccc(C)cc1)C3=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_cc009ead9efbd2addf51/geometry.xyz",
+          "energy": "states/s_cc009ead9efbd2addf51/energy.json"
+        },
+        "original_source_state": "s_cc009ead9efbd2addf51",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/design_ndi_ethyl/neu"
+      },
+      {
+        "id": "s_854c01eb3a11191bd75c",
+        "aliases": [
+          "product:exp_aq_1oxy"
+        ],
+        "smiles": "Cc1ccc(COc2cccc3c2C(=O)c2ccccc2C3=O)cc1",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_854c01eb3a11191bd75c/geometry.xyz",
+          "energy": "states/s_854c01eb3a11191bd75c/energy.json"
+        },
+        "original_source_state": "s_854c01eb3a11191bd75c",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_aq_1oxy/neu"
+      },
+      {
+        "id": "s_68977f221d1cdd570a23",
+        "aliases": [
+          "product:exp_bq_oxy_methoxy"
+        ],
+        "smiles": "COC1=CC(=O)C(OCc2ccc(C)cc2)=CC1=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_68977f221d1cdd570a23/geometry.xyz",
+          "energy": "states/s_68977f221d1cdd570a23/energy.json"
+        },
+        "original_source_state": "s_68977f221d1cdd570a23",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_bq_oxy_methoxy/neu"
+      },
+      {
+        "id": "s_a087d1ecb517f1477dbe",
+        "aliases": [
+          "product:exp_bq_oxy_trimethyl"
+        ],
+        "smiles": "CC1=C(C)C(=O)C(OCc2ccc(C)cc2)=C(C)C1=O",
+        "charge": 0,
+        "mult": 1,
+        "files": {
+          "geometry": "states/s_a087d1ecb517f1477dbe/geometry.xyz",
+          "energy": "states/s_a087d1ecb517f1477dbe/energy.json"
+        },
+        "original_source_state": "s_a087d1ecb517f1477dbe",
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/exp_bq_oxy_trimethyl/neu"
+      }
+    ],
+    "reactions": [
+      {
+        "id": "reference:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_b93a6e9e45dfad93451e": 1,
+          "s_caa63b1eb4e3582237c3": 1,
+          "s_f49ea0b9b3c81e3eb765": -1,
+          "s_617d302cb0ed605cbb56": -1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "reference:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_cc009ead9efbd2addf51": 1,
+          "s_caa63b1eb4e3582237c3": 1,
+          "s_3bcfddd9d196ba09a611": -1,
+          "s_617d302cb0ed605cbb56": -1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "reference:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_854c01eb3a11191bd75c": 1,
+          "s_caa63b1eb4e3582237c3": 1,
+          "s_c6a27eec6ada46cbf3d0": -1,
+          "s_617d302cb0ed605cbb56": -1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "reference:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_68977f221d1cdd570a23": 1,
+          "s_caa63b1eb4e3582237c3": 1,
+          "s_c9ce0d8c9e97a8ee862d": -1,
+          "s_617d302cb0ed605cbb56": -1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "reference:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_a087d1ecb517f1477dbe": 1,
+          "s_caa63b1eb4e3582237c3": 1,
+          "s_a98083ebd611e47affd0": -1,
+          "s_617d302cb0ed605cbb56": -1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_b93a6e9e45dfad93451e": 1,
+          "s_f49ea0b9b3c81e3eb765": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_69ae47beed8d512f4e9b": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_b93a6e9e45dfad93451e": 1,
+          "s_f49ea0b9b3c81e3eb765": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_37ad592049761f87e9c4": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_b93a6e9e45dfad93451e": 1,
+          "s_f49ea0b9b3c81e3eb765": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_92143098bf9a91b6af53": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_b93a6e9e45dfad93451e": 1,
+          "s_f49ea0b9b3c81e3eb765": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_c94c91da0bf4ef64b263": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_cc009ead9efbd2addf51": 1,
+          "s_3bcfddd9d196ba09a611": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_69ae47beed8d512f4e9b": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_cc009ead9efbd2addf51": 1,
+          "s_3bcfddd9d196ba09a611": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_37ad592049761f87e9c4": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_cc009ead9efbd2addf51": 1,
+          "s_3bcfddd9d196ba09a611": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_92143098bf9a91b6af53": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_cc009ead9efbd2addf51": 1,
+          "s_3bcfddd9d196ba09a611": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_c94c91da0bf4ef64b263": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_854c01eb3a11191bd75c": 1,
+          "s_c6a27eec6ada46cbf3d0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_69ae47beed8d512f4e9b": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_854c01eb3a11191bd75c": 1,
+          "s_c6a27eec6ada46cbf3d0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_37ad592049761f87e9c4": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_854c01eb3a11191bd75c": 1,
+          "s_c6a27eec6ada46cbf3d0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_92143098bf9a91b6af53": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_854c01eb3a11191bd75c": 1,
+          "s_c6a27eec6ada46cbf3d0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_c94c91da0bf4ef64b263": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_68977f221d1cdd570a23": 1,
+          "s_c9ce0d8c9e97a8ee862d": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_69ae47beed8d512f4e9b": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_68977f221d1cdd570a23": 1,
+          "s_c9ce0d8c9e97a8ee862d": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_37ad592049761f87e9c4": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_68977f221d1cdd570a23": 1,
+          "s_c9ce0d8c9e97a8ee862d": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_92143098bf9a91b6af53": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_68977f221d1cdd570a23": 1,
+          "s_c9ce0d8c9e97a8ee862d": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_c94c91da0bf4ef64b263": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_a087d1ecb517f1477dbe": 1,
+          "s_a98083ebd611e47affd0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_69ae47beed8d512f4e9b": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_a087d1ecb517f1477dbe": 1,
+          "s_a98083ebd611e47affd0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_89ad88bf455049d7dd5a": -1,
+          "s_37ad592049761f87e9c4": 1
+        },
+        "target_delta_n_solutes": -1
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_a087d1ecb517f1477dbe": 1,
+          "s_a98083ebd611e47affd0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_92143098bf9a91b6af53": 1,
+          "s_61413a787f52a2248491": 1
+        },
+        "target_delta_n_solutes": 0
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "coefficients": {
+          "s_a087d1ecb517f1477dbe": 1,
+          "s_a98083ebd611e47affd0": -1,
+          "s_617d302cb0ed605cbb56": -1,
+          "s_d716904b75d578470cee": -1,
+          "s_c94c91da0bf4ef64b263": 1
+        },
+        "target_delta_n_solutes": -1
+      }
+    ],
+    "files_sha256": {
+      "states/fc_ox/geometry.xyz": "3723c2ce6b1e1a7d14ee7f087293f90299eb9118ffa6a6802e7aae79d2b8d97b",
+      "states/fc_ox/energy.json": "9fe47ba949e214060c55f2f2a09d8a597cbf1d0e7661b854eaa54b7806797c6f",
+      "states/fc_neu/geometry.xyz": "302fdab624f41c98e33449f9ee4b468a8db4f62c58d5c675efc1730c2d3c62dc",
+      "states/fc_neu/energy.json": "9cdfb192fd07705170b6a29cb1e39f60078a2d02c0ced45a9a93cf6ee9c1298b",
+      "states/s_61413a787f52a2248491/geometry.xyz": "f4cf65f4e14ef93332eb3949ce16cf25aea2a16450b2e92123e0ea4134058aa9",
+      "states/s_61413a787f52a2248491/energy.json": "acf56aa1120f87f9a9dc527dee7341b458fdf177100bfde86cb670c779afbfaa",
+      "states/s_c9ce0d8c9e97a8ee862d/geometry.xyz": "e03628ef71475da82756d712f7dc8768320d86993638e178289f647339afce43",
+      "states/s_c9ce0d8c9e97a8ee862d/energy.json": "6537fec9ae416f0f9f924f56239b426e8af17c284db5d1d6e2317cac81ffa428",
+      "states/s_f49ea0b9b3c81e3eb765/geometry.xyz": "01e7823fbda7b6cbf3f3b20490d4b5949e929ae32ca2cd9abb3e442e8ca30869",
+      "states/s_f49ea0b9b3c81e3eb765/energy.json": "30849f89ce2c82e2a302ea7ee339b8046ef27b2e81d80404eabaaba6f5945402",
+      "states/s_c6a27eec6ada46cbf3d0/geometry.xyz": "1b69dae5fa5ec4f4b93b0472c14b1148a8c08513876ab7c6ef9164a26c18028e",
+      "states/s_c6a27eec6ada46cbf3d0/energy.json": "3dd19a6a45d64d75e3e4d7028086dd338c3a3bca9e2599ac1b12b5c2819ad9fb",
+      "states/s_a98083ebd611e47affd0/geometry.xyz": "1b6d46ea922d83e3a46c79ae15d3994854920dc00615a101ebfea10f47db74dc",
+      "states/s_a98083ebd611e47affd0/energy.json": "4352fcf03a8a01095227d0fc1b0a2129e65dc89d1950c09c829cf7565983862d",
+      "states/s_3bcfddd9d196ba09a611/geometry.xyz": "f7bf301510df990e5497387ffabab6bb073455927ca083b4fe2c8e634bc2a112",
+      "states/s_3bcfddd9d196ba09a611/energy.json": "5ce5807e92487bb0b4a56f27189b301b747f6b51f00ba7059774da34a0c3369f",
+      "states/s_caa63b1eb4e3582237c3/geometry.xyz": "de05f66481f21eaba5542e5c7da4552e90f2dbfb424a637297675dabe334bc7f",
+      "states/s_caa63b1eb4e3582237c3/energy.json": "3a4dc9cb85190271f76a196c13fd606dbc18f9331e75026ad50bfe50ba955cde",
+      "states/s_617d302cb0ed605cbb56/geometry.xyz": "a4db19e0cf2bcffc231070edff3be4eb03eff3abad847999787518b3662857e6",
+      "states/s_617d302cb0ed605cbb56/energy.json": "2ba52387e7a05ee1e489d6ba35c3413b64990a4c84f4980f12df6391e115d100",
+      "states/s_89ad88bf455049d7dd5a/geometry.xyz": "1aa91da990fca77b47d22810f3ab1d17362fcf984918e450dd2171acb966e4f9",
+      "states/s_89ad88bf455049d7dd5a/energy.json": "3a8cbc992d1da2349ab9f98ddf3eb4f654aaa7411e6a1471aff3a6592d50e1b2",
+      "states/s_69ae47beed8d512f4e9b/geometry.xyz": "d2f2434161efd0e8b71f502da9f5b9a2a942356b35f787743cf82d68a14ccdca",
+      "states/s_69ae47beed8d512f4e9b/energy.json": "8cba196d4062c356bc7130a3bff83beb9296cbeb9d589fea58aa1f0af43a420d",
+      "states/s_37ad592049761f87e9c4/geometry.xyz": "ca1307db928dbe53022de318b2de13a50edacd6395e4a2b205172d73b396eeac",
+      "states/s_37ad592049761f87e9c4/energy.json": "73d667bd568b353da5f65aeb22b99d19fa11f4c91ad7388e47274d3bf97adc6f",
+      "states/s_d716904b75d578470cee/geometry.xyz": "7cf126b3dc788cf0183a3b04e092e3273153139285a0206bf06e6e707429869b",
+      "states/s_d716904b75d578470cee/energy.json": "ab05ea9b3acab295d054cf49348bd5ac11e44b83d3628a88bec2e6b7497b307d",
+      "states/s_92143098bf9a91b6af53/geometry.xyz": "95ad2a00384abbabc3ce33ca51eecfb7473d6f1eea99995d01f61c93306d6652",
+      "states/s_92143098bf9a91b6af53/energy.json": "dba4fdd3a74654b428053f2a05036c20ec37b719800f329d72fd1a068285c852",
+      "states/s_c94c91da0bf4ef64b263/geometry.xyz": "a6511e8666c70e8a0c8ec2d9b42760069bd168d219c40e5cf4b710238d430f63",
+      "states/s_c94c91da0bf4ef64b263/energy.json": "36641b06005839bf26c189f2cd0226d9b0978ade4e92f4124ab6ed6857a6dc56",
+      "states/s_b93a6e9e45dfad93451e/geometry.xyz": "7280f76f5e5b85b115181929fca6b3fbb5916dd86028df9a5325a8e1a3abfc9b",
+      "states/s_b93a6e9e45dfad93451e/energy.json": "652dc6c91ecfffc9841253105cf29c341ade668d4703f5823911a0a41201aee0",
+      "states/s_cc009ead9efbd2addf51/geometry.xyz": "b4e10ce41ca5e16d5898f30964bd7263d9b1db449bca4816b80abdd04c0e08ab",
+      "states/s_cc009ead9efbd2addf51/energy.json": "f124c1addcc6654021e29ca16c67bf8e6f215216558fac6c5736d004bda3a565",
+      "states/s_854c01eb3a11191bd75c/geometry.xyz": "adea568f6c9e56c8df7499e02b041da7a1a9fdc5cdf06ee5d15cc2b522568c49",
+      "states/s_854c01eb3a11191bd75c/energy.json": "a53a399b0f4784c7194807496ad13d71eecf8afdec2957e6d715b745e1089f97",
+      "states/s_68977f221d1cdd570a23/geometry.xyz": "73e86126e56f41022e7712014110a152a3a84271b04b139d57f07dff277b3515",
+      "states/s_68977f221d1cdd570a23/energy.json": "c32f7fee90de97514c5977046918e0d92eee13644981fc0eef5b05f668fdba4c",
+      "states/s_a087d1ecb517f1477dbe/geometry.xyz": "306a4a926f4bb82ee68f3eca2ab07bf0d16667aa8c23d38a97565c967ff6f02f",
+      "states/s_a087d1ecb517f1477dbe/energy.json": "bd5cd98831066aaae24ecf158e1a89022f9b8a686036ba5ffd09809444552f14"
+    },
+    "source_manifest": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/releases/2026-10-23_scientific_review_v5/data/manifest.json",
+    "source_manifest_sha256": "424b7715f588da32dd8464b5e2045e40005129c5f6da9ef3eaee62d9c235a7ca",
+    "native_thermochemistry_copied": false,
+    "new_G_qualified": false,
+    "scope": "Electronic implementation contributions to 25 declared reaction sums only; no nuclear or standard-state correction is recomputed"
+  },
+  "energies": {
+    "fc_ox": {
+      "stored_Ha": -1650.5863776273136,
+      "installed_Ha": -1650.5863776273127,
+      "corrected_Ha": -1650.586377627314,
+      "charge": 1,
+      "mult": 2
+    },
+    "fc_neu": {
+      "stored_Ha": -1650.7494010861333,
+      "installed_Ha": -1650.749401086132,
+      "corrected_Ha": -1650.7494010861328,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_61413a787f52a2248491": {
+      "stored_Ha": -460.36401245178473,
+      "installed_Ha": -460.3640124517844,
+      "corrected_Ha": -460.3640124517848,
+      "charge": -1,
+      "mult": 1
+    },
+    "s_c9ce0d8c9e97a8ee862d": {
+      "stored_Ha": -571.2793514374133,
+      "installed_Ha": -571.2793514373587,
+      "corrected_Ha": -571.279351437359,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_f49ea0b9b3c81e3eb765": {
+      "stored_Ha": -872.6823568413859,
+      "installed_Ha": -872.6823568415002,
+      "corrected_Ha": -872.6823568414993,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_c6a27eec6ada46cbf3d0": {
+      "stored_Ha": -764.0762771335296,
+      "installed_Ha": -764.0762771329139,
+      "corrected_Ha": -764.0762771329134,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_a98083ebd611e47affd0": {
+      "stored_Ha": -574.6799802078626,
+      "installed_Ha": -574.6799802072485,
+      "corrected_Ha": -574.6799802072487,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_3bcfddd9d196ba09a611": {
+      "stored_Ha": -1026.3445331987505,
+      "installed_Ha": -1026.3445331988926,
+      "corrected_Ha": -1026.344533198893,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_caa63b1eb4e3582237c3": {
+      "stored_Ha": -460.79593434147097,
+      "installed_Ha": -460.7959343415472,
+      "corrected_Ha": -460.79593434154674,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_617d302cb0ed605cbb56": {
+      "stored_Ha": -770.4539706964458,
+      "installed_Ha": -770.4539706963227,
+      "corrected_Ha": -770.4539706963227,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_89ad88bf455049d7dd5a": {
+      "stored_Ha": -462.0660092897414,
+      "installed_Ha": -462.06600928983664,
+      "corrected_Ha": -462.0660092898373,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_69ae47beed8d512f4e9b": {
+      "stored_Ha": -462.54834293487545,
+      "installed_Ha": -462.54834293491194,
+      "corrected_Ha": -462.5483429349117,
+      "charge": 1,
+      "mult": 1
+    },
+    "s_37ad592049761f87e9c4": {
+      "stored_Ha": -922.9214249885197,
+      "installed_Ha": -922.9214249887057,
+      "corrected_Ha": -922.9214249887059,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_d716904b75d578470cee": {
+      "stored_Ha": -370.9638233527519,
+      "installed_Ha": -370.96382335292685,
+      "corrected_Ha": -370.96382335292685,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_92143098bf9a91b6af53": {
+      "stored_Ha": -371.4369041062944,
+      "installed_Ha": -371.43690410646605,
+      "corrected_Ha": -371.4369041064658,
+      "charge": 1,
+      "mult": 1
+    },
+    "s_c94c91da0bf4ef64b263": {
+      "stored_Ha": -831.810325503671,
+      "installed_Ha": -831.8103255039989,
+      "corrected_Ha": -831.8103255039991,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_b93a6e9e45dfad93451e": {
+      "stored_Ha": -1182.3444511435027,
+      "installed_Ha": -1182.3444511435018,
+      "corrected_Ha": -1182.3444511435023,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_cc009ead9efbd2addf51": {
+      "stored_Ha": -1336.0022541671292,
+      "installed_Ha": -1336.0022541671287,
+      "corrected_Ha": -1336.0022541671296,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_854c01eb3a11191bd75c": {
+      "stored_Ha": -1073.7124731351978,
+      "installed_Ha": -1073.7124731351983,
+      "corrected_Ha": -1073.712473135197,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_68977f221d1cdd570a23": {
+      "stored_Ha": -880.9164262327924,
+      "installed_Ha": -880.9164262327924,
+      "corrected_Ha": -880.9164262327924,
+      "charge": 0,
+      "mult": 1
+    },
+    "s_a087d1ecb517f1477dbe": {
+      "stored_Ha": -884.3186847731045,
+      "installed_Ha": -884.318684773104,
+      "corrected_Ha": -884.3186847731035,
+      "charge": 0,
+      "mult": 1
+    }
+  }
+}

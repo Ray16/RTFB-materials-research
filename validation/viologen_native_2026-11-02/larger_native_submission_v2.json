@@ -1,0 +1,68 @@
+{
+  "status": "larger_native_dimension_pilot_controller_submitted_start_unverified",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot_v2/namespace.json",
+  "namespace_sha256": "17003a8e01b231837b084797fc8ad4169d46d27a50ce0ec8d34cdb19bae741a3",
+  "slots": [
+    [
+      "lambda13",
+      1
+    ],
+    [
+      "lambda13",
+      2
+    ],
+    [
+      "lambda13",
+      3
+    ],
+    [
+      "lambda13",
+      4
+    ],
+    [
+      "lambda13",
+      5
+    ],
+    [
+      "lambda13",
+      6
+    ],
+    [
+      "lambda13",
+      7
+    ]
+  ],
+  "availability_errors": [],
+  "native_G_qualified": false,
+  "host": "lambda13",
+  "GPU": 1,
+  "prelaunch_capacity": {
+    "available": 1564789366784,
+    "promised": 71070367744,
+    "GPU_MiB": 95830.0,
+    "load": 6.53125,
+    "cpus": 384
+  },
+  "receipt": {
+    "status": "controller_spawned_scientific_start_unverified",
+    "owner": {
+      "host": "lambda13",
+      "pid": 1602678,
+      "process_start": "173068757"
+    },
+    "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot_v2/placement_001",
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.screening_control",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot_v2/namespace.json",
+      "--gpu",
+      "1",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot_v2/placement_001"
+    ]
+  }
+}

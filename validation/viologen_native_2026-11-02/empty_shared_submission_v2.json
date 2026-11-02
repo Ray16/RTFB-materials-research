@@ -1,0 +1,29 @@
+{
+  "status": "shared_dependency_and_gate_discovery_recovery_submitted_start_unverified",
+  "host": "lambda13",
+  "GPU": 0,
+  "receipt": {
+    "status": "controller_spawned_scientific_start_unverified",
+    "owner": {
+      "host": "lambda13",
+      "pid": 1367601,
+      "process_start": "172656670"
+    },
+    "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_all_same_empty_shared_dependencies/placement_002",
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.screening_control",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_all_same_empty_shared_dependencies/namespace.json",
+      "--gpu",
+      "0",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_all_same_empty_shared_dependencies/placement_002"
+    ]
+  },
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_all_same_empty_shared_dependencies/namespace.json",
+  "science_changed": false
+}

@@ -5,7 +5,7 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 21/30-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 18/30-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates both empty-backbone sampling comparisons and
   portable numerical replay of its 75 native states, plus six fresh checked
@@ -14,7 +14,7 @@ establish that a calculation is currently running.
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
   pass extracted-archive replay with original scientific paths blocked.
-- [Focused slides](../slides/README.md): fifteen main slides and four supporting
+- [Focused slides](../slides/README.md): fifteen main slides and five supporting
   slides, including the UMA-to-DFT pipeline, grafting ΔG and exact TEMPO response.
 - [Exact TEMPO follow-up](../validation/tempo_solution_pair_2026-10-30/README.md):
   checked MeCN relaxation costs of 1.477/1.639 eV. The 10.4% directional asymmetry
@@ -50,22 +50,23 @@ establish that a calculation is currently running.
   Hessian minimum, conformer-ensemble and interaction/free-energy checks remain
   incomplete. Complete control Hessians are retained and their fresh derivative
   validation continues in separate source-bound namespaces.
-- [Charged native thermochemistry pilot](../validation/charged_native_pilot_2026-10-31/README.md):
-  nine stationary structures are independently checked. A verified 114-atom
-  +2/singlet component has started full native thermochemistry on a V100, with
-  the corrected implementation and unchanged physical gates. Native G, minima,
-  ensembles and occupancy interaction results remain unqualified until completion
-  and independent reconstruction; the running pilot supplies no material decision.
-- [Matched empty references](../validation/matched_empty_reference_2026-10-31/README.md):
-  exact empty-backbone graph/model matches are freshly reoptimized with corrected
-  execution in both configurations. Old finite-batch G selects coordinates only;
-  old energies or thermochemistry cannot enter the new occupancy cycle. Both
-  actual SCF starts are verified; new native G and cycle qualification remain pending.
-- [Finite stationary electronic cycles](../validation/ionic_electronic_cycles_2026-10-31/README.md):
-  eleven checked components supply three balanced electronic nonadditivities
-  under one corrected model/implementation. The fourth cycle remains pending.
-  These finite-conformer whole-chain E terms include backbone/deformation effects;
-  all interaction-G, isolated-binding, coupling, ensemble and material gates remain open.
+- [Charged native component and followups](../validation/viologen_native_2026-11-02/README.md):
+  the first 114-atom +2/singlet viologen component passes independent Hessian,
+  minimum, sampled-derivative, nuclear, checkpoint and resource reconstruction.
+  Seven small/matched-empty followups have live PID/start observations. Four
+  larger double-graft components require a separate dimension pilot. This is
+  the separate smooth-surface MeCN model; no occupied G cycle or ensemble is qualified.
+- [Finite stationary electronic cycles](../validation/viologen_native_2026-11-02/stationary_electronic_summary.json):
+  all twelve stationary components supply four balanced whole-chain E cycles.
+  Adjacent/one-spacer values are −3.46/+18.68 kJ/mol for all-same and
+  +1.20/−13.48 kJ/mol for alternating configuration. These single-conformer
+  electronic terms include backbone/deformation response; they do not isolate
+  motif binding, coupling, interaction G or an experimental spacing distribution.
+- [JCIM completion evidence](../validation/jcim_completion_2026-11-02/README.md):
+  exact viologen and five HCl-reference/twenty base-assisted reaction electronic
+  implementation checks, 70 actual checkpoint molecular-frame checks, five
+  interpretation-transfer tests and a checked portable CPU control archive.
+  Complete nuclear/reaction-cycle qualification and public deposition remain open.
 - [Grafting and candidate evidence](../validation/candidate_grafting_audit_2026-10-28/README.md):
   source-bound PMDI arithmetic, defined routes and explicit limits. The
   [DBUH–chloride check](../validation/dbu_chloride_anchor_2026-10-29/README.md)

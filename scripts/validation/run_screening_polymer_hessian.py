@@ -33,7 +33,9 @@ def workspace_file(plan,root):
 def charge_state(plan):
     charge,mult=plan.get('charge',0),plan.get('mult',1)
     component=plan.get('charged_polymer_native_component',False)
-    if (type(charge) is not int or type(mult) is not int or mult!=1 or (component and charge<=0)
+    empty=(plan.get('matched_empty_polymer_reference') is True and charge==0
+           and plan.get('prepared_case',{}).get('occupied_sites')==[])
+    if (type(charge) is not int or type(mult) is not int or mult!=1 or (component and charge<=0 and not empty)
             or (not component and charge!=0)):
         raise ValueError('An explicit closed-shell charged component or neutral control is required')
     if component and (plan.get('resume_components') or plan.get('resume_response') or plan.get('saved_full_Hessian')):
@@ -227,7 +229,10 @@ def main():
             atomic_write_json(case/'execution/response_solver.json',dict(status='no_new_response_solve_saved_full_Hessian_validation',
                 calls=[],equations_changed=False,level_shift_added=False,source_response=plan['saved_full_Hessian']['solver'],
                 native_G_qualified=False))
-        if not 0 < memory.peak <= 31744:
+        if plan.get('native_resource_class'):
+            resources = load(sources / 'native_resource_helper.py', 'frozen_native_resource_class')
+            resources.check_peak(plan, memory.peak)
+        elif not 0 < memory.peak <= 31744:
             raise ValueError('Corrected full-Hessian GPU ceiling failed')
         reference = plan.get('checked_native_reference')
         if plan.get('charged_polymer_native_component'):
@@ -251,6 +256,7 @@ def main():
             center=json.loads((case/'points/0000/evaluation.json').read_text());electronic=center['E_Ha']*qrrho.HARTREE_EV
             component=dict(candidate_alias=plan['exact_candidate_alias'],graph_key=plan['prepared_case']['key'],
                 charge=charge,mult=mult,model=plan['solvent_model'],quantum_settings=plan['numerical_settings'],
+                matched_empty_polymer_reference=bool(plan.get('matched_empty_polymer_reference')),
                 geometry_sha256=hashlib.sha256((sources/'input.xyz').read_bytes()).hexdigest(),E_geometry_level_Ha=center['E_Ha'],
                 E_geometry_level_eV=electronic,nuclear_by_cutoff_eV=nuclear['nuclear_by_cutoff_eV'],spin_partition_eV=0.,
                 G_by_cutoff_eV={k:electronic+v for k,v in nuclear['nuclear_by_cutoff_eV'].items()},native_G_qualified=False,

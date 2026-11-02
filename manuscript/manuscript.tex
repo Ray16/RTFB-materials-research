@@ -8,13 +8,13 @@
 \hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
 \setlength{\emergencystretch}{2em}
 \newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
-\input{evidence/2026-10-31_xtb_component_checked/empty_batch_values.tex}
-\input{evidence/2026-10-31_xtb_component_checked/tempo_solution_values.tex}
-\input{evidence/2026-10-31_xtb_component_checked/viologen_native_values.tex}
-\input{evidence/2026-10-31_xtb_component_checked/viologen_grafting_values.tex}
+\input{evidence/2026-11-02_ionic_native_component/empty_batch_values.tex}
+\input{evidence/2026-11-02_ionic_native_component/tempo_solution_values.tex}
+\input{evidence/2026-11-02_ionic_native_component/viologen_native_values.tex}
+\input{evidence/2026-11-02_ionic_native_component/viologen_grafting_values.tex}
 \title{Context-Preserving Computational Assessment of Redox Motifs for Polymer Grafting}
 \author{Working draft: authorship and affiliations to be confirmed}
-\date{JCIM Article draft; scientific evidence snapshot: 31 October 2026}
+\date{JCIM Article draft; evidence updated: 2 November 2026}
 \begin{document}
 \maketitle
 
@@ -73,7 +73,7 @@ G=E_{\mathrm{SMD}}^{\omega\mathrm{B97M-V}}+G_{\mathrm{nuclear}}^{\mathrm{qRRHO}}
 \end{equation}
 The nuclear term is obtained from the geometry-level solution DFT Hessian. Mass-weighted projection removes rigid translations and rotations, and the xTB 6.7.1 thermodynamic kernel integrates the explicit internal-mode list using unscaled frequencies.\cite{grimme2012,xtbprogram2021} Its use as an integrator does not introduce an xTB Hessian. The symmetry number is determined from the exact geometry. A 50 cm$^{-1}$ rotor cutoff is primary, with 25 and 100 cm$^{-1}$ settings used for sensitivity. Modes from $-5$ to 0 cm$^{-1}$ enter as absolute frequencies within the stated minimum tolerance; lower frequencies fail. The spin contribution assumes an unsplit ground multiplet.
 
-Admission requires a maximum Cartesian gradient component of $4.5\times10^{-4}$ hartree bohr$^{-1}$ or less, Hessian asymmetry of $10^{-6}$ or less in the stored atomic-unit matrix, and a lowest projected internal frequency no lower than $-5$ cm$^{-1}$. Two complete sampled Hessian columns are compared with displaced gradients at 0.0005 and 0.001 bohr and must satisfy a 1\% relative-norm criterion; the coordinate-selection policy is given in the SI. This samples derivatives rather than validating every matrix column. Finite data, full grid response and $|\langle S^2\rangle-S(S+1)|\leq0.1$ are checked independently. The active energy must refer to the actual accepted geometry. Incomplete or repaired structures remain unqualified until their required checks pass.
+Admission requires a maximum Cartesian gradient component of $4.5\times10^{-4}$ hartree bohr$^{-1}$ or less, Hessian asymmetry of $10^{-6}$ or less in the stored atomic-unit matrix, and a lowest projected internal frequency no lower than $-5$ cm$^{-1}$. Two complete sampled Hessian columns are compared with displaced gradients at 0.0005 and 0.001 bohr and must satisfy a 1\% relative-norm criterion; the coordinate-selection policy is given in the SI. This samples derivatives rather than validating every matrix column. Finite data, full grid response and $|\langle S^2\rangle-S(S+1)|\leq0.1$ are checked independently. The active energy must refer to the actual accepted geometry. Electronic implementation sensitivity is assessed separately for the benchmark and exact candidate/reaction states, with the control scope reported in the SI. Incomplete or repaired structures remain unqualified until their required checks pass.
 
 The charge-dependent geometry basis and the composite electronic/Hessian protocol are deliberate approximations. Five neutral benchmark partners were separately reoptimized and evaluated with def2-SVPD Hessians to measure one aspect of this imbalance. Their anion and ferrocene records were held fixed. Broader basis convergence, alternative spin-state thermochemistry and global conformer convergence are not inferred from this sensitivity test.
 
@@ -142,7 +142,7 @@ The unfitted protocol gives MAE 0.247 V, RMSE 0.279 V and bias $+0.190$ V (Figur
 All 30 first-step errors are positive, with mean $+0.266$ V, whereas the nine second-step errors have mean $-0.064$ V and MAE 0.185 V. A common offset therefore cannot explain the complete residual structure. In particular, all nine paired step spacings are too large in magnitude, and the Fc contribution cancels from each spacing. The apparent improvement of second-step MAE can include error cancellation rather than better second-step prediction. Reference, solvation and charge-state contributions must be assessed together.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-31_xtb_component_checked/benchmark.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-02_ionic_native_component/benchmark.pdf}
 \caption{Retrospective benchmark for 39 sourced free-parent potentials in MeCN. All endpoints and outliers are retained, and no fitted offset is applied. Family and redox-step labels distinguish the panel's uneven coverage. Accuracy on these free parents does not validate the exact grafts or oligomer environments.}
 \label{fig:benchmark}\end{figure}
 
@@ -178,7 +178,7 @@ Of the 75 historical local reference reactions, 67 have complete free energies a
 The two highlighted benzoquinone HCl-reference values are $+57.63$ and $+56.03$ \kj. They become $-45.14/-46.75$ \kj\ with DBU and $-13.34/-14.94$ \kj\ with DIPEA (Figure~\ref{fig:grafting}). AQ-1-oxy and NDI also change sign in the panel. The relevant inference is that an HCl-reference sign cannot exclude an unmodeled base-assisted synthesis, while a favorable base-assisted model cannot supply missing precursor or selectivity evidence.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-31_xtb_component_checked/grafting.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-02_ionic_native_component/grafting.pdf}
 \caption{Local substitution energies under HCl-reference, separated-ion and contact-pair conventions. Each specified base contributes a shared term to compatible reactions. Changing absolute signs does not establish a new within-base ranking, measured ion-pair population or experimental grafting yield.}
 \label{fig:grafting}\end{figure}
 
@@ -192,7 +192,7 @@ The PMDI-ethyl local graft has checked reductions at $-1.076$ and $-1.977$ V ver
 For the sampled five-repeat minima, attachment at sites 2 and 3 gives $-97.7$ and $-97.0$ \kj\ under the same DBU/separated-ion convention. Relative to the capped reaction, the polymer penalties are $+5.34$ and $+6.11$ \kj\ (Eq.~\ref{eq:polylocal}). Their positivity persists across rotor cutoffs, but the small relative preference between the two sites changes sign (Figure~\ref{fig:firstgraft}). Common precursor and base terms cancel from the polymer-minus-local comparison. Thus the calculation identifies a finite-model context penalty more defensibly than it identifies a preferred graft site.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-31_xtb_component_checked/pmdi_first_graft.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-02_ionic_native_component/pmdi_first_graft.pdf}
 \caption{First-site PMDI attachment relative to the local capped reference. Polymer-minus-local penalties remain positive over tested rotor cutoffs, whereas the small difference between sites 2 and 3 changes sign. Lines connect numerical settings, not statistical uncertainty bounds. Each occupied graph contributes one minimum.}
 \label{fig:firstgraft}\end{figure}
 
@@ -201,7 +201,7 @@ The four-state occupancy cycle gives $\Delta\Delta G_{23}=-1.86$ \kj\ at the pri
 The paired minimum has PMDI core centroids 16.30~\AA\ apart. Adjacent sequence sites therefore do not imply close-contact stacking, and the weak cycle response cannot be read as an isolated PMDI binding energy or coupling. Each of the four graphs contributes one minimum; broader occupied sampling is required before assigning equilibrium populations or a general spacing preference.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-31_xtb_component_checked/pmdi_neighbor_grafting.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-02_ionic_native_component/pmdi_neighbor_grafting.pdf}
 \caption{Matched PMDI neighboring-site cycle. Conditional attachment energies compare the same target site with the other site empty or grafted. Shared precursor, base and byproduct terms cancel from nonadditivity. The cutoff dependence reflects numerical scenarios; one minimum per graph and separated cores delimit the interpretation.}
 \label{fig:pmdineighbor}\end{figure}
 
@@ -211,7 +211,7 @@ Polymer mass introduces another independent distinction. The neutral capped PMDI
 The finite phthalimide control supplies two accepted poses for each of six occupancy graphs. Its twelve native free energies give adjacent and one-spacer nonadditivities of $-5.17$ and $-11.39$ \kj\ in the declared two-pose partitions. Both spacings support close-core and separated-core minima (Figure~\ref{fig:spatialconformers}). Adjacent-site centroids are 4.24 and 16.66~\AA\ apart; one-spacer centroids are 4.77 and 20.20~\AA\ apart. The close-contact poses have lower $G$ by 11.9 and 7.1 \kj\ within their respective graph-specific pairs.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-10-31_xtb_component_checked/spacing_conformers.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-02_ionic_native_component/spacing_conformers.pdf}
 \caption{Actual phthalimide control conformers for adjacent and one-spacer occupancy. Backbone and motif colors identify the open chain and conjugated cores; unoccupied reactive sites retain benzyl chloride. Views use the saved coordinates, proper rotations and a common scale. Distances join core centroids, and relative free energies compare poses of the same chemical graph. These finite samples do not establish converged contact populations.}
 \label{fig:spatialconformers}\end{figure}
 
@@ -220,6 +220,12 @@ The geometry comparison motivates a separate interaction calculation. At the cen
 Adding the second known pose lowers each finite partition by at most 0.14 \kj, but this bounds only the contribution of that known pose. It does not bound undiscovered conformers. Rotor-cutoff changes give adjacent and one-spacer cycle ranges of $-5.17$ to $-4.64$ and $-12.34$ to $-11.39$ \kj. Expanded sampling in the separate smooth-surface MeCN control further illustrates the component-wise requirement: its two empty-backbone sets meet the declared 10-to-20 input diagnostic, with changes of $\EmptyAllSameChange$ and $\EmptyAlternatingChange$ \kj, while occupied sets remain incomplete. This does not qualify occupied ensemble cycles or permit mixing the alternate-model values into the primary cycles.
 
 \subsection{Implications for candidate selection and method applicability}
+The effect of retaining context can be assessed while holding the underlying saved calculations fixed (Table~\ref{tab:context-consequences}). Under the declared nonpositive-reaction-energy screen, the DBU-separated-ion representation changes the sign classification of four of five complete reactions relative to their HCl references, while preserving all ten within-base pairwise orders. The PMDI polymer penalties are positive in all six site/cutoff comparisons, whereas the small site preference changes sign. Molecular capacity exceeds the stated one-graft fragment ceiling by a factor of 2.51, and a sequence spacer still permits a close-contact sampled geometry. The directional TEMPO calculation supplies an additional case in which a successful numerical result leaves a symmetric descriptor unqualified.
+
+These tests measure the consequences of specified transfers between chemical or physical contexts. They do not benchmark a prior screening algorithm or establish experimental decision accuracy. Their utility is to identify which interpretation changes are supported by the same calculations, rather than attributing an improvement in intrinsic electronic-structure accuracy to the framework.
+
+\input{evidence/2026-11-02_ionic_native_component/context_consequences_table.tex}
+
 The candidate examples expose different limits on a seemingly favorable molecular design. Viologen combines a reviewed route with two checked reductions and a favorable local quaternization model, yet its ionic polymer environment remains to be qualified. TEMPO combines route evidence and a checked oxidation potential with directional electronic response that resists reduction to a symmetric parameter. PMDI provides explicit finite polymer cycles but retains a practical-route hold. A scalar score that fills these missing dimensions from family analogues would erase scientifically relevant differences among the candidates.
 
 The resulting assessment requires every application-specific criterion to be evaluated in a declared reaction or operating context. Exact identity connects those contexts; it does not make reaction solvent and battery electrolyte identical. Operating redox window, accessible capacity, state stability, intended charge transfer, attachment feasibility, defined-route thermodynamics, unwanted association, coupling, occupancy sensitivity and accessibility remain distinct requirements. A failed criterion excludes the design in that context, whereas missing evidence or an undeclared threshold leaves the material decision pending. The historical 878-candidate all-axis ledger and the broader identity inventory describe different scopes, and neither currently supplies a complete material shortlist.
@@ -248,6 +254,6 @@ OpenAI Codex was used during manuscript preparation to assist with literature re
 \thispagestyle{empty}
 \begin{center}
 \textbf{For Table of Contents Only}\\[1.5em]
-\includegraphics[width=3.25in,height=1.75in]{../results/figures/manuscript/2026-10-31_xtb_component_checked/graphical_abstract.pdf}
+\includegraphics[width=3.25in,height=1.75in]{../results/figures/manuscript/2026-11-02_ionic_native_component/graphical_abstract.pdf}
 \end{center}
 \end{document}

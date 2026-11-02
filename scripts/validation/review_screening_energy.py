@@ -5,6 +5,7 @@ import importlib.util
 import json
 import math
 import os
+import shutil
 from pathlib import Path
 
 import h5py
@@ -41,8 +42,16 @@ def review(namespace,placement):
             or not guard['CPU_affinity']==runtime['CPU_affinity']==host['CPU_affinity']==launch['CPU_affinity']
             or len(host['CPU_affinity'])!=2 or runtime['program']!=str(Path(spec['sources'])/'worker.py')):
         raise ValueError('Closed source-exact energy control and normal resource/owner checks required')
-    expected_coordinates=read_atoms(Path(spec['sources'])/'input.xyz').positions/param.BOHR
-    energy_results={};checkpoint_counts={}
+    from redox.validation.scf_frame import checkpoint_frame
+    frame_source=ROOT/'src/redox/validation/scf_frame.py'
+    frozen=case/'review_sources'/sha256_file(frame_source)/'scf_frame.py'
+    if not frozen.exists():
+        frozen.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(frame_source,frozen)
+    if sha256_file(frozen)!=sha256_file(frame_source):raise ValueError('Frozen checkpoint reviewer differs')
+    used.append(frozen)
+    expected_atoms=read_atoms(Path(spec['sources'])/'input.xyz')
+    expected_coordinates=expected_atoms.positions/param.BOHR
+    energy_results={};checkpoint_counts={};frame_errors={}
     for variant in ('installed','corrected'):
         root=case/variant;result=read(root/'result.json')
         if (result['energy_protocol']!=plan['electronic_protocol'] or result['optimized']
@@ -50,7 +59,7 @@ def review(namespace,placement):
                 or result['converged_smd'] is not True or not math.isfinite(result['e_smd_Ha'])
                 or abs(result.get('smd_spin_contam',math.inf))>.1):
             raise ValueError('Matched converged unoptimized electronic parent required')
-        energies=[];count=0
+        energies=[];count=0;frame_errors[variant]=[]
         for path in sorted((root/'SCF_evaluations').glob('*/*/SCF_result.json')):
             solved=read(path);settings=read(path.with_name('settings.json'));checkpoint=path.with_name('SCF.h5')
             used.append(checkpoint)
@@ -60,6 +69,10 @@ def review(namespace,placement):
                     or settings['max_cycle']!=200 or settings['solvent_class']!='SMD'
                     or np.max(abs(np.asarray(settings['coordinates_Bohr'])-expected_coordinates))>1e-10):
                 raise ValueError('Recorded actual SCF settings differ')
+            frame=checkpoint_frame(checkpoint,charge=plan['source_state']['charge'],mult=plan['source_state']['mult'],
+                basis=plan['electronic_protocol']['basis'],coordinates_Bohr=expected_coordinates,
+                symbols=expected_atoms.get_chemical_symbols())
+            frame_errors[variant].append(frame['maximum_coordinate_error_Bohr'])
             with h5py.File(checkpoint,'r') as handle:
                 actual=float(handle['scf/e_tot'][()])
                 if not math.isfinite(actual) or abs(actual-solved['energy_Ha'])>1e-9:
@@ -85,7 +98,8 @@ def review(namespace,placement):
         key=plan['source_id'],source_state=plan['source_state'],nao=plan['nao'],atoms=plan['atoms'],
         differences=differences,agreement_tolerance_Ha=plan['comparison_absolute_tolerance_Ha'],
         declared_agreement_passed=all(abs(v)<=plan['comparison_absolute_tolerance_Ha'] for v in differences.values()),
-        actual_SCF_checkpoint_counts=checkpoint_counts,peak_GPU_MiB=stage['observed_peak_GPU_MiB'],
+        actual_SCF_checkpoint_counts=checkpoint_counts,actual_checkpoint_frames_verified=True,
+        maximum_checkpoint_coordinate_error_Bohr={k:max(v) for k,v in frame_errors.items()},peak_GPU_MiB=stage['observed_peak_GPU_MiB'],
         peak_host_RSS_bytes=max(host['self_VmHWM_bytes'],host['peak_tree_RSS_bytes']),
         resources_checked=True,native_G_qualified=False,new_potential_qualified=False,
         source_sha256={str(p):sha256_file(p) for p in used},producer_sha256=sha256_file(__file__))

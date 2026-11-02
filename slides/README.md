@@ -1,7 +1,7 @@
 # Focused redox workflow presentation
 
 Open [redox_workflow.pdf](redox_workflow.pdf): fifteen main slides followed by
-four supporting slides. The editable sources are
+five supporting slides. The editable sources are
 [redox_workflow.tex](redox_workflow.tex),
 [story/motivation_results.tex](story/motivation_results.tex) and
 [story/supporting.tex](story/supporting.tex).
@@ -30,3 +30,5 @@ separately in [visual_review.json](visual_review.json). Figures are collected
 under `results/figures/slides/2026-10-30_tempo/`; plotting code stays in
 `scripts/plotting/`. The unmodified archived source is identified in
 [restoration.json](restoration.json).
+
+Supporting slide 19 reports the first independently checked ionic polymer native component; slide 20 retains reproducibility limits. This is one alternate-model local minimum, with no complete occupied free-energy cycle.

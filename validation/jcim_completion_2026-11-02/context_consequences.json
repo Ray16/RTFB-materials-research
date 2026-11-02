@@ -1,0 +1,127 @@
+{
+  "status": "saved_context_consequences_reconstructed",
+  "route_definition": {
+    "complete": 5,
+    "missing": [
+      "exp_aq_2oxy_6methoxy"
+    ],
+    "changes_at_declared_nonpositive_screen": 4,
+    "comparisons": [
+      {
+        "id": "design_pmdi_ethyl",
+        "reference_kJ_mol": -0.2915699601324377,
+        "DBU_kJ_mol": -103.06847138700617,
+        "nonpositive_screen_changes": false
+      },
+      {
+        "id": "design_ndi_ethyl",
+        "reference_kJ_mol": 10.050786392814334,
+        "DBU_kJ_mol": -92.7261150340594,
+        "nonpositive_screen_changes": true
+      },
+      {
+        "id": "exp_aq_1oxy",
+        "reference_kJ_mol": 62.854579764785775,
+        "DBU_kJ_mol": -39.92232166208796,
+        "nonpositive_screen_changes": true
+      },
+      {
+        "id": "exp_bq_oxy_methoxy",
+        "reference_kJ_mol": 57.63446054516755,
+        "DBU_kJ_mol": -45.142440881706186,
+        "nonpositive_screen_changes": true
+      },
+      {
+        "id": "exp_bq_oxy_trimethyl",
+        "reference_kJ_mol": 56.03066081132074,
+        "DBU_kJ_mol": -46.74624061555299,
+        "nonpositive_screen_changes": true
+      }
+    ],
+    "unchanged_pairwise_orders": 10,
+    "criterion_scope": "Model deltaG <= 0; not an experimental feasibility or synthesis gate"
+  },
+  "polymer_context": {
+    "penalties": [
+      {
+        "site": 2,
+        "rotor_cutoff_cm": 25,
+        "penalty_kJ_mol": 6.6130586633317705
+      },
+      {
+        "site": 3,
+        "rotor_cutoff_cm": 25,
+        "penalty_kJ_mol": 6.474026378782895
+      },
+      {
+        "site": 2,
+        "rotor_cutoff_cm": 50,
+        "penalty_kJ_mol": 5.344179019204148
+      },
+      {
+        "site": 3,
+        "rotor_cutoff_cm": 50,
+        "penalty_kJ_mol": 6.110648228128667
+      },
+      {
+        "site": 2,
+        "rotor_cutoff_cm": 100,
+        "penalty_kJ_mol": 6.105121674145735
+      },
+      {
+        "site": 3,
+        "rotor_cutoff_cm": 100,
+        "penalty_kJ_mol": 6.308556976163132
+      }
+    ],
+    "positive_penalties": 6,
+    "site2_minus_site3_by_cutoff_kJ_mol": {
+      "25": 0.1390322845488754,
+      "50": -0.7664692089245193,
+      "100": -0.20343530201739668
+    },
+    "site_preference_changes_sign": true,
+    "conformer_convergence_established": false
+  },
+  "capacity": {
+    "molecular_two_e_mAh_g": 153.87320598558887,
+    "fragment_two_e_bounds_mAh_g": {
+      "1": 61.194997232366944,
+      "2": 98.92747557074455,
+      "3": 124.5203072819318
+    },
+    "nominal_to_one_graft_bound_ratio": 2.51447361622239,
+    "experimental_loading_inferred": false
+  },
+  "spatial_contacts": {
+    "centroid_distances_A": {
+      "occ_2_3": [
+        4.243072663869501,
+        16.65681819429088
+      ],
+      "occ_2_4": [
+        4.769931547165518,
+        20.197401715471628
+      ]
+    },
+    "contact_population_or_binding_G_established": false
+  },
+  "directional_response": {
+    "reduction_eV": 1.477122030002647,
+    "oxidation_eV": 1.6386410691520723,
+    "relative_asymmetry": 0.10367863923495596,
+    "diagnostic_tolerance": 0.05,
+    "symmetric_parameter_qualified": false
+  },
+  "new_quantum_calculations": false,
+  "algorithmic_superiority_established": false,
+  "experimental_material_decisions_validated": false,
+  "source_files_sha256": {
+    "base_assisted.json": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20",
+    "pmdi_first_site_grafting.json": "07ff7f10d6f111d14f0b97afdf202c343dc5213e4ac9bf0ebb0bc87ebba129bb",
+    "pmdi_capacity.json": "af167dc66c5f7479eb39e7ddbfca164fc239556fdc13e78e79f092e0a4591de1",
+    "spacing_conformers.json": "8a8f4a6682231272014a591fac94d1215b96c4f3347a66a8062b767d908c455f",
+    "tempo_solution_raw_result.json": "b66870e94913014eec52ea7e9a774c132ef9d02d63e7a9407dd6ab59013f72b8"
+  },
+  "source_manifest_sha256": "c46425c6f501f97f566de482d8bf1079a7fb45ee7e8967b31335d24ae97acd3b"
+}

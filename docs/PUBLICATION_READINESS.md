@@ -1,6 +1,6 @@
 # Publication readiness: acceptance criteria and current gaps
 
-As of 31 October 2026, **the workflow and manuscript are not submission ready**.
+As of 2 November 2026, **the workflow and manuscript are not submission ready**.
 The objective is to address the scientific review, validate the maintained
 workflow, and deliver a manuscript whose claims match its released evidence.
 Code cleanup, completed example calculations and presentation updates each
@@ -19,7 +19,26 @@ Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 
-The current article/SI are 21/30 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 18/30 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+
+The [2 November completion evidence](../validation/jcim_completion_2026-11-02/README.md)
+adds five interpretation-transfer tests, 29 accepted electronic-control
+execution namespaces and 70 independently checked actual SCF checkpoint frames.
+Ten exact viologen states and twenty-one base-reaction inputs share two Fc
+executions. Their corrected-minus-installed electronic contributions are below
+1.24e-11 V (viologen potentials), 1.35e-9 kJ/mol (three local grafting sums) and
+4.18e-9 kJ/mol (five HCl-reference/twenty base-assisted sums). This narrows the
+electronic implementation gap without requalifying nuclear terms or total G.
+
+The exact charged lead has twelve stationary components and four balanced
+E cycles, plus one independently checked native local-minimum component.
+Seven matching small/empty native followups have live observations; a separate
+137-atom H100 dimension pilot precedes release of the larger class. Complete
+occupied G/ensemble cycles and synthesis/material decisions remain open.
+
+The historical dated observations below document previous milestones and
+resource conditions. They are not current fleet or storage observations.
+Use the current review disposition and exact ownership checks for live state.
 
 The refactor moved the pre-existing manuscript, slides, calculation campaigns
 and evidence to `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`.

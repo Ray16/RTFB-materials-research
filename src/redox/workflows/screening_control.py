@@ -239,8 +239,18 @@ def launch(path,gpu,output):
         expected=(80,7200,2**30);role='screening_polymer_Hessian_control'
         if not plan.get('saved_full_Hessian') or (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(33,32):raise ValueError('Saved-Hessian validation profile changed')
     if plan.get('charged_polymer_native_component'):
-        expected=(80,28800,4*2**30);role='charged_polymer_native_component'
-        if plan.get('charge',0)<=0 or plan.get('mult')!=1 or (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(36,32):raise ValueError('Charged native component profile changed')
+        empty=plan.get('matched_empty_polymer_reference') is True and plan.get('charge')==0 and not plan['prepared_case']['occupied_sites']
+        budget=4*2**30
+        if plan.get('native_resource_class'):
+            from redox.workflows.native_component_resources import validate_plan
+            budget=validate_plan(plan)['maximum_durable_output_bytes']
+        elif plan.get('output_profile'):
+            from redox.workflows.charged_polymer_pilot import native_output_profile
+            profile=native_output_profile(plan['atoms'],plan['response_nao'],plan['response_nocc'],empty)
+            if any(plan.get(k)!=v for k,v in profile.items()):raise ValueError('Native retained-array output profile changed')
+            budget=profile['maximum_durable_output_bytes']
+        expected=(80,28800,budget);role='charged_polymer_native_component'
+        if (plan.get('charge',0)<=0 and not empty) or plan.get('mult')!=1 or (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(32+budget/2**30,32):raise ValueError('Native component profile changed')
     if plan.get('energy_control'):
         from redox.workflows.screening_energy_panel import output_budget
         budget=output_budget(plan['nao'],plan['source_state']['mult'],plan['has_iron'])
@@ -265,8 +275,10 @@ def launch(path,gpu,output):
         storage_floor=plan.get('minimum_initial_storage_GiB',2)
         if capacity['available_RAM_bytes']-promises<(plan['maximum_host_RSS_GiB']+32)*2**30 or shutil.disk_usage(case).free<storage_floor*2**30:raise RuntimeError('Control RAM or output headroom unavailable')
         cpus=cpu_allocation(2);device=gpu_suitability(gpu)
-        if plan.get('charged_polymer_pilot') and device['memory_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024):
+        if (plan.get('charged_polymer_pilot') or plan.get('charged_polymer_native_component')) and device['memory_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024):
             raise RuntimeError('The charged-polymer reference needs its declared larger-memory device')
+        if plan.get('minimum_GPU_compute_capability',0)>float(device['compute_capability']):
+            raise RuntimeError('The dimension resource pilot requires its declared GPU architecture')
         if (host,gpu) not in free_slots([host]):raise RuntimeError('GPU occupied; no screening control started')
         with (output/'command.log').open('x') as log:child=subprocess.Popen(['taskset','--cpu-list',','.join(map(str,cpus)),*argv],env=env,stdout=log,stderr=subprocess.STDOUT,stdin=subprocess.DEVNULL,start_new_session=True,preexec_fn=lambda:os.sched_setaffinity(0,cpus))
         result=dict(status='screening_control_submitted_start_unverified',host=host,GPU=gpu,pid=child.pid,process_start=Path(f'/proc/{child.pid}/stat').read_text().rsplit(')',1)[1].split()[19],CPU_affinity=cpus,capacity=capacity,remaining_RAM_promises_bytes=promises,device=device,argv=argv,namespace=str(path),namespace_sha256=sha256_file(path),started=time.time(),maximum_wall_seconds=plan['maximum_wall_seconds'],maximum_durable_output_bytes=plan['maximum_durable_output_bytes'],budget_observer_owner=dict(host=host,pid=os.getpid(),process_start=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]),budget_observer_source_sha256=sha256_file(output/'budget_observer_source.py'),native_G_qualified=False,production_storage_gate_changed=False)

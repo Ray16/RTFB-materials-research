@@ -50,12 +50,11 @@ solution-relaxation value or promote an electronic occupancy difference into G.
 ## Runtime discovery and portability
 
 The common resource layer discovers the system reservation executable from an
-explicit `REDOX_GPU_RESERVE`, then `PATH`, then the account's `~/bin/gpu_reserve`.
+explicit `REDOX_GPU_RESERVE`, then installed site defaults in `config/runtime_paths.json`, then `PATH` and the account's `~/bin/gpu_reserve`.
 An explicitly configured invalid tool fails rather than falling back. CPU-only
 imports work when no GPU service is installed; GPU execution still cannot bypass
 the missing gate. `GPU_LOCK_ROOT` is the shared ownership-namespace override
-consumed by both the Python owner check and the system gate. The default follows
-`~/.gpu_locks`. All workers must inherit the same authoritative tool/config and
+consumed by both the Python owner check and the system gate. The default follows the matching site lock directory when that site gate is selected, otherwise `~/.gpu_locks`. All workers must inherit the same authoritative tool/config and
 lock namespace. This is runtime discovery, not permission to replace the system
 reservation policy or alter another job's ownership.
 
@@ -65,3 +64,26 @@ integrity; their explicit relocation and pinned-runtime contracts are separate.
 Dependency/environment qualification and architecture-specific numerical tests
 remain necessary on a new host. Numerical and publication builds must not rely on
 GPU availability when their task is CPU-only.
+
+The charged-native followup entry point requires the exact independently checked
+pilot, complete G values, matching physical context and identical worker/kernel
+bytes, and admits only dimensions within that pilot. It reuses the established
+node preflight/launcher, capacity utility and storage accounting. A RAM refusal
+before worker start is not a scientific attempt. The unstarted-namespace
+relocation entry point preserves the original and accepts only hash-identical
+dependency replacements; an existing scientific start prohibits this operation.
+This permits shared storage to replace a node-local package location without
+changing the method, geometry, state, model, or original evidence.
+
+
+The exact 137-atom, charge-4 double-graft native class uses an explicit separate
+H100 dimension pilot (`charged_polymer_pilot --native-from-review ...
+--larger-dimension-pilot-review ... --out ...`). Its state/dimension, retained
+output, device and peak limits are shared by preparation, launcher, frozen
+worker helper and independent review. The completed smaller native witness is
+required to prepare it; the *larger pilot itself* must pass before matching
+larger followups may dispatch. The same followup entry point handles each
+class through a source-bound manifest, with no automatic smaller-to-larger
+admission. The existing compact numerical adapter and physical QC are unchanged.
+Review inputs are copied into each new namespace to stay visible inside the
+isolated source checkout.

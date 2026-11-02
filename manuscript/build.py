@@ -68,6 +68,18 @@ def main():
     if (manifest.parent/'xtb_runtime_installation.json').exists():
         from check_xtb_runtime import audit as audit_xtb_runtime
         xtb_runtime_check = audit_xtb_runtime(manifest.parent)
+    context_consequences_check = None
+    if (manifest.parent/'context_consequences.json').exists():
+        from check_context_consequences import audit as audit_context_consequences
+        context_consequences_check = audit_context_consequences(manifest.parent)
+    component_sensitivity_check = None
+    if (manifest.parent/'component_implementation_inputs.json').exists():
+        from check_component_sensitivity import audit as audit_component_sensitivity
+        component_sensitivity_check = audit_component_sensitivity(manifest.parent)
+    native_component_check = None
+    if (manifest.parent/'ionic_native_component_review.json').exists():
+        from check_native_component_pilot import audit as audit_native_component
+        native_component_check = audit_native_component(manifest.parent)
     ionic_preparation = manifest.parent/'ionic_preparation_replay.json'
     if ionic_preparation.exists():
         expected=json.loads(ionic_preparation.read_text())
@@ -92,6 +104,14 @@ def main():
     source = {str(p.relative_to(ROOT)): sha(p) for p in
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", PAPER / "check_viologen_native.py", Path(__file__), manifest, pointer)}
     source.update(figure_inputs)
+    if native_component_check is not None:
+        source['manuscript/check_native_component_pilot.py']=sha(PAPER/'check_native_component_pilot.py')
+    if component_sensitivity_check is not None:
+        source['manuscript/check_component_sensitivity.py']=sha(PAPER/'check_component_sensitivity.py')
+        source['src/redox/validation/component_sensitivity.py']=sha(ROOT/'src/redox/validation/component_sensitivity.py')
+    if context_consequences_check is not None:
+        source['manuscript/check_context_consequences.py']=sha(PAPER/'check_context_consequences.py')
+        source['src/redox/validation/context_consequences.py']=sha(ROOT/'src/redox/validation/context_consequences.py')
     if screening_check is not None:
         source['manuscript/check_screening_controls.py']=sha(PAPER/'check_screening_controls.py')
         if 'electronic_benchmark_implementation_sensitivity' in screening_check:
@@ -153,6 +173,9 @@ def main():
                   solution_model_citation_check=solution_citation_check,
                   screening_implementation_check=screening_check,
                   ionic_solver_check=ionic_solver_check,
+                  context_consequences_check=context_consequences_check,
+                  component_sensitivity_check=component_sensitivity_check,
+                  native_component_check=native_component_check,
                   xtb_runtime_check=xtb_runtime_check,
                   visual_review="pending; record separately in visual_review.json, bound to these PDF hashes")
     (PAPER / "claim_check.json").write_text(json.dumps(claims, indent=2) + "\n")
