@@ -29,7 +29,7 @@ Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 
-The current article/SI are 20/33 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 20/34 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The [2 November completion evidence](../validation/jcim_completion_2026-11-02/README.md)
 adds five interpretation-transfer tests, 29 accepted electronic-control
@@ -71,6 +71,14 @@ replay checks every rotor sum and the single solute standard-state correction;
 25 focused checks reject corrupted data and unsupported promotion. This does
 not establish an exhaustive ensemble, actual ion populations, experimental
 association accuracy or a reaction yield. Those requirements remain open.
+
+The current identity registry has 912 graphs: all 904 earlier graphs and
+reported evaluations are preserved, and eight new direct N-linked phenothiazine
+F/CN pairs remain held and uncomputed. A reviewed primary bead-attachment report
+supports the unsubstituted phenothiazine baseline, bringing the registry to three
+reviewed route passes and zero full material admissions. The paper/SI and slide 5
+now freeze and check this extension. New exact-graft thermochemistry, operating
+redox properties and bead performance are not supplied by the route evidence.
 
 The historical dated observations below document previous milestones and
 resource conditions. They are not current fleet or storage observations.

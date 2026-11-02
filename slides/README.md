@@ -15,7 +15,7 @@ and slide 10 explains grafting ΔG. Slide 13 compares whole-chain and frozen-mot
 slide 19 updates both empty-backbone ensemble comparisons. Each slide has one
 claim, its supporting visual and a concise source/scope note.
 
-The 904-graph registry is broader than the 837-design systematic three-core grid
+The 912-graph registry is broader than the 837-design systematic three-core grid
 shown as its subset. The paper's older frozen 878-candidate all-axis assessment
 is separately scoped. No full material shortlist is claimed. Nitro's measured
 force-repeatability failure is explicit; the standard-inference/V100 profile is

@@ -1,7 +1,7 @@
 # Working JCIM manuscript
 
 Open [the article](manuscript.pdf) (20 pages) and
-[Supporting Information](supporting_information.pdf) (33 pages).
+[Supporting Information](supporting_information.pdf) (34 pages).
 Editable sources are [manuscript.tex](manuscript.tex) and
 [supporting_information.tex](supporting_information.tex). Earlier article
 versions remain preserved in Git and the recorded pre-rewrite archive; see
@@ -38,6 +38,13 @@ review places the two signed N0 repairs in one group at all tested thresholds,
 leaving three groups. The SI table and supporting slide preserve all outcomes
 without assigning population weights. This tests one part of the separated-ion
 convention; full salt speciation and exact-graft experimental accuracy remain open.
+
+The unified pool now has 912 exact graphs, preserving all 904 prior graphs and
+evaluations. Eight new direct N-linked phenothiazine F/CN pairs remain held and
+uncomputed. The unsubstituted baseline has a newly reviewed primary bead route;
+three baseline routes pass in total. Route qualification supplies neither a
+new exact-graft property nor a full material admission. The current article,
+SI and slide 5 use checked frozen registry inputs and verified DOI metadata.
 
 The retrospective benchmark still has 39 endpoints and MAE 0.247 V. Numerical
 reproduction is distinct from experimental accuracy. Counterion/speciation

@@ -5,7 +5,7 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 20/33-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 20/34-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates three finite ionic neighboring-graft G cycles,
   matched motif/chain electronic comparisons and four chloride-contact outcomes
@@ -29,8 +29,7 @@ establish that a calculation is currently running.
   Three exact designs have reviewed route passes: TEMPO, baseline viologen and
   unsubstituted direct N-linked phenothiazine. The other 909 remain held.
   Eight new mapped F/CN designs have no computed properties or transferred route
-  approval. No full material admission is claimed. The paper's older frozen
-  registry and all-axis ledger retain their separate scopes.
+  approval. No full material admission is claimed. Earlier registry snapshots and the historical all-axis ledger retain their separate scopes.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.

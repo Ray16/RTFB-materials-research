@@ -1,7 +1,7 @@
 # Current manuscript review disposition
 
 As of 2 November 2026, this is a 20-page JCIM working article with a separate
-33-page SI. Submission remains incomplete. Historical review dispositions are
+34-page SI. Submission remains incomplete. Historical review dispositions are
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
@@ -91,7 +91,7 @@ TEMPO retains directional solution costs 1.477/1.639 eV. Their 10.4% asymmetry
 fails the declared 5% equal-curvature diagnostic; a symmetric scalar remains
 unqualified. PMDI retains a finite primary-model −1.86-kJ/mol four-state G
 cycle and +5.3–6.1-kJ/mol first-site penalties, with one minimum per graph.
-Its practical route is still on hold. The broader 904-graph registry and older
+Its practical route is still on hold. The broader 912-graph registry and older
 878-candidate all-axis snapshot have distinct scopes; neither is a material shortlist.
 
 ## Reviewer access and completion

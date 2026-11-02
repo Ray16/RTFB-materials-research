@@ -45,6 +45,10 @@ def main():
     if (epoch/'counterion_inputs.json').exists():
         spec=importlib.util.spec_from_file_location('deck_checked_counterion_association',ROOT/'manuscript/check_counterion_association.py')
         checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);counterion_check=checker.audit(epoch)
+    registry_check=None
+    if (epoch/'registry_update_current.json').exists():
+        spec=importlib.util.spec_from_file_location('deck_checked_registry_expansion',ROOT/'manuscript/check_registry_expansion.py')
+        checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);registry_check=checker.audit(epoch)
     paths=[SLIDES/'redox_workflow.tex',SLIDES/'story/motivation_results.tex',SLIDES/'story/supporting.tex',
            epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',
            epoch/'viologen_native_values.tex',ROOT/'manuscript/check_viologen_native.py',Path(__file__).resolve()]
@@ -63,6 +67,9 @@ def main():
         paths.extend([ROOT/'manuscript/check_counterion_association.py',
             *[ROOT/'src/redox/properties'/name for name in ('counterion.py','context.py','conformer_geometry.py','conformer_ensemble.py')],
             *[p for p in epoch.glob('counterion_*') if p.is_file()]])
+    if registry_check is not None:
+        paths.extend([ROOT/'manuscript/check_registry_expansion.py',ROOT/'scripts/pipeline/screen_grafting_routes.py',
+            ROOT/'src/redox/build/attachment_identity.py',*[p for p in epoch.glob('registry_update_*') if p.is_file()]])
     inputs={str(p.relative_to(ROOT)):sha(p) for p in paths}
     for source in paths[:3]:
         text=source.read_text()
@@ -106,6 +113,8 @@ def main():
             if number not in numerical_text:raise ValueError('Checked chloride association range absent from the deck')
         if 'threeduplicategroups' not in ''.join(text.lower().split()):
             raise ValueError('Chloride duplicate scope absent from the deck')
+    if registry_check is not None and str(registry_check['exact_graphs']) not in text:
+        raise ValueError('Checked current registry census absent from the deck')
     if '81' not in text or cohort['complete_cycles']!=6:raise ValueError('Checked primary-native coverage absent from the deck')
     if any(sha(ROOT/path)!=digest for path,digest in inputs.items()):raise ValueError('Deck source changed during compilation')
     shutil.copyfile(pdf,SLIDES/'redox_workflow.pdf')
@@ -113,6 +122,7 @@ def main():
         supporting_frames=supporting_frames,source_sha256=inputs,pdf_sha256=sha(SLIDES/'redox_workflow.pdf'),
         build_logs=str(build),overfull_boxes=[line for line in log.splitlines() if line.startswith('Overfull ')],
         ionic_cycle_check=ionic_cycle,motif_interaction_check=motif_check,counterion_association_check=counterion_check,
+        registry_expansion_check=registry_check,
         visual_review='pending; record separately bound to this PDF',submission_ready=False)
     (SLIDES/'build_check.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
 

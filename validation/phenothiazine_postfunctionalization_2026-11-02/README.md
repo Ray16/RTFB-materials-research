@@ -65,8 +65,8 @@ bond, retained symmetry-equivalent recipes and one-electron state hypothesis.
 The shared attachment validator is also used by the prospective route gate.
 The maintained merger reads `config/candidate_registry_sources.json` and writes
 a fresh union inside `results/candidates/pool/`; `current.json` is its stable
-pointer. The older 904-graph manuscript snapshot remains a distinct frozen
-assessment until its next evidence update.
+pointer. The current manuscript epoch now freezes the 912-graph extension and its primary
+route reference. Earlier 904-graph snapshots remain preserved separately.
 
 The [panel checks](panel_checks.xml) pass 18 tests, including exact mapping,
 registry preservation logic and existing route-stage controls. The [route
@@ -74,3 +74,11 @@ checks](route_checks.xml) pass seven tests covering the expanded mapped panel,
 the NaH stoichiometry and rejection of transferring the baseline's review to a
 ring-substituted or ether-linked structure. These overlap in shared controls;
 they are not additional quantum calculations or experimental validation.
+
+The article/SI build at 20/34 pages and slide 5 reports 912 graphs. Independent
+registry replay checks every prior graph/evaluation, the eight uncomputed held
+additions, exact N-bond mappings and route counts. Negative controls reject a
+changed previous property and an invented new evaluation. Citation checking
+compares the new reference with publisher DOI metadata; historical citation
+registries are unchanged. The full material and occupied-ensemble decisions
+remain pending.

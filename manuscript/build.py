@@ -92,6 +92,10 @@ def main():
     if (manifest.parent/'counterion_inputs.json').exists():
         from check_counterion_association import audit as audit_counterion_association
         counterion_association_check = audit_counterion_association(manifest.parent)
+    registry_expansion_check = None
+    if (manifest.parent/'registry_update_current.json').exists():
+        from check_registry_expansion import audit as audit_registry_expansion
+        registry_expansion_check = audit_registry_expansion(manifest.parent)
     primary_native_cohort_check = None
     corrected_example_check = None
     if (manifest.parent/'primary_native_cohort_inputs.json').exists():
@@ -117,6 +121,8 @@ def main():
     citation_check = citations.audit(PAPER/'novelty_references.bib',citation_registry)
     solution_citation_registry = manifest.parent/'tempo_solution_method_references.json'
     solution_citation_check = citations.audit(PAPER/'novelty_references.bib',solution_citation_registry) if solution_citation_registry.exists() else None
+    registry_citation_registry = manifest.parent/'registry_update_reference_registry.json'
+    registry_citation_check = citations.audit(PAPER/'novelty_references.bib',registry_citation_registry) if registry_citation_registry.exists() else None
     for program in ("pdflatex", "bibtex"):
         if shutil.which(program) is None:
             raise RuntimeError(f"Missing manuscript build program: {program}")
@@ -134,6 +140,10 @@ def main():
         for name in ('manuscript/check_counterion_association.py','src/redox/properties/counterion.py',
                      'src/redox/properties/context.py','src/redox/properties/conformer_geometry.py',
                      'src/redox/properties/conformer_ensemble.py'):
+            source[name]=sha(ROOT/name)
+    if registry_expansion_check is not None:
+        for name in ('manuscript/check_registry_expansion.py','scripts/pipeline/screen_grafting_routes.py',
+                     'src/redox/build/attachment_identity.py'):
             source[name]=sha(ROOT/name)
     if primary_native_cohort_check is not None:
         source['manuscript/check_primary_native_cohort.py']=sha(PAPER/'check_primary_native_cohort.py')
@@ -215,6 +225,8 @@ def main():
                   ionic_native_cycle_check=ionic_native_cycle_check,
                   motif_interaction_check=motif_interaction_check,
                   counterion_association_check=counterion_association_check,
+                  registry_expansion_check=registry_expansion_check,
+                  registry_citation_check=registry_citation_check,
                   primary_native_cohort_check=primary_native_cohort_check,
                   corrected_example_check=corrected_example_check,
                   xtb_runtime_check=xtb_runtime_check,
