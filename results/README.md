@@ -5,11 +5,12 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 19/32-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 20/33-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
-  The current revision integrates both empty-backbone sampling comparisons and
-  portable numerical replay of its 75 native states, plus six fresh checked
-  TEMPO solution-response calculations and the checked exact viologen ladder.
+  The current revision integrates three finite ionic neighboring-graft G cycles,
+  matched motif/chain electronic comparisons and four chloride-contact outcomes
+  in three numerical duplicate groups. Occupied ensembles, broader salt speciation
+  and full material eligibility remain pending.
 - [Exact-molecule CPU example](../examples/exact_viologen_replay/README.md):
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
@@ -18,18 +19,18 @@ establish that a calculation is currently running.
   all nine new molecular Hessians and saved-gradient panels, analytic chloride
   and six exact cycles pass fresh NumPy-only extraction replay with original
   project/calculation paths blocked. The earlier example remains intact.
-- [Focused slides](../slides/README.md): fifteen main slides and six supporting
+- [Focused slides](../slides/README.md): sixteen main slides and seven supporting
   slides, including the UMA-to-DFT pipeline, grafting ΔG and exact TEMPO response.
 - [Exact TEMPO follow-up](../validation/tempo_solution_pair_2026-10-30/README.md):
   checked MeCN relaxation costs of 1.477/1.639 eV. The 10.4% directional asymmetry
   leaves a symmetric parameter unqualified; the all-axis material decision is pending.
-- [Candidate pool](../validation/candidate_pool_2026-10-29/README.md): 904 exact
-  local-graft graphs, with source/recipe identity and prospective route status.
-  Two exact graphs now have reviewed route passes (TEMPO and baseline viologen);
-  902 remain on hold. The [new exact-route review](../validation/viologen_route_2026-10-30/README.md)
-  preserves the prior registry and all graph/property records.
-  Enumeration and recorded property presence are separate from quantum or
-  experimental validation; no complete material shortlist is claimed.
+- [Unified candidate pool and direct N-linked phenothiazine](../validation/phenothiazine_postfunctionalization_2026-11-02/README.md):
+  912 exact local-graft graphs, preserving all 904 earlier graphs and evaluations.
+  Three exact designs have reviewed route passes: TEMPO, baseline viologen and
+  unsubstituted direct N-linked phenothiazine. The other 909 remain held.
+  Eight new mapped F/CN designs have no computed properties or transferred route
+  approval. No full material admission is claimed. The paper's older frozen
+  registry and all-axis ledger retain their separate scopes.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.

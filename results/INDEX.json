@@ -28,12 +28,12 @@
       "scope": "DBUH chloride association component; no full reaction validation or new QM"
     },
     "unified_candidate_pool": {
-      "guide": "validation/viologen_route_2026-10-30/README.md",
+      "guide": "validation/phenothiazine_postfunctionalization_2026-11-02/README.md",
       "current": "results/candidates/pool/current.json",
       "source_snapshot": "results/candidates/pool/2026-10-30_viologen_checked/summary.json",
       "raw_root": "results/candidates/pool/2026-10-30_viologen_checked/inputs",
-      "status": "904_exact_graphs_two_reviewed_route_passes_no_material_admissions",
-      "scope": "Unified exact design registry; historical QC labels preserved, no blanket raw-state or experimental validation"
+      "status": "912_exact_graphs_three_route_passes_eight_new_uncomputed_hypotheses",
+      "scope": "All prior 904 graphs and evaluations preserved. New direct N-linked F/CN pairs remain held; unsubstituted phenothiazine has a reviewed bead route. No parent measurements inherited or full material admissions."
     },
     "publication_draft": {
       "guide": "docs/PROPERTY_VALIDATION_AND_PUBLICATION.md",
@@ -492,6 +492,14 @@
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_alternating23_saved_matrix_validation_01",
       "status": "complete_source_ionic_Hessian_retained_fresh_validation_prepared_G_pending",
       "scope": "Closed post-Hessian file-lock failure; nine solved response blocks/411 rows and complete matrix retained. Fresh center, all sampled derivatives, actual SCF frames, modes and independent review remain mandatory."
+    },
+    "direct_phenothiazine_route": {
+      "guide": "validation/phenothiazine_postfunctionalization_2026-11-02/README.md",
+      "current": "validation/phenothiazine_postfunctionalization_2026-11-02/route_decisions.json",
+      "source_snapshot": "validation/phenothiazine_postfunctionalization_2026-11-02/source_review.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_route_sources/2026-11-02_phenothiazine_postfunctionalization",
+      "status": "unsubstituted_bead_route_reviewed_eight_substituted_exact_routes_held",
+      "scope": "Primary source supports NaH/DMF N-attachment and chemical redox retention; exact capped properties, actual-condition G, MeCN operation and our bead performance remain unverified."
     }
   }
 }

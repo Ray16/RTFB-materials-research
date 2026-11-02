@@ -9,6 +9,8 @@ no declared category. It does not submit calculations.
 | Registered molecular campaign | `redox motifs` | Plan by default; execution requires `--execute`, a suitable reserved GPU and state-specific QC |
 | Resource-controlled shard launch | `redox launch`, `redox run-gpu` | Scheduling/preflight; process completion is not scientific admission |
 | Candidate construction | `redox build`, `redox search`, `redox expand` | Graphs and hypotheses; route review precedes new full-property campaigns |
+| Exact matched ring panel | `python scripts/candidates/expand_ring_panel.py --help` | Declared baseline/substituents; exact precursor/product and mapped new bond for every graph; retains equivalent recipes, computes no redox properties |
+| Unified candidate pool | `python scripts/candidates/merge_registry.py --help` | Fresh source-frozen union with alias deduplication and prospective exact-route decisions; archive and updated route catalog are explicit inputs |
 | Table/status review | `redox review`, `redox status`, `redox energy-audit` | Inspect/reconstruct existing outputs without launching QM |
 | Low-level calculation stage | `redox uma`, `redox dft`; `python -m redox.qm.sp`, `python -m redox.qm.native_thermal` | Stage controls and defaults differ from the orchestrator; use deliberately |
 | Numerical implementation controls | `python -m redox.workflows.screening_control --help` | Explicitly scoped controls; a passed control does not qualify every system |
