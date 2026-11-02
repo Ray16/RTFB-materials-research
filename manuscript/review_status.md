@@ -9,7 +9,7 @@ preserved in Git; the source-frozen manuscript epoch is selected by
 | --- | --- | --- |
 | M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; nine checked alternate-model polymer components and one matched neighboring-graft G cycle | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
-| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged | Actual counterion/speciation and reaction-condition sensitivity; ΔG is not yield or rate |
+| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; one exact viologen/chloride stationary geometry independently checked | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
 | M4: polymer sampling | Forty alternate-model empty inputs meet the finite 10-to-20 criterion; primary finite PMDI/phthalimide cycles remain separately scoped | Occupied graph/configuration batches, duplicate review and balanced occupied ensemble cycles |
 | M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
 | M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
@@ -69,7 +69,11 @@ completed 16-GiB-RKS-workspace H100 recovery qualifies the larger class under
 unchanged physical gates; its observed peak is 34,580 MiB. Three corresponding
 configuration/spacing followups are released, with their G still pending.
 The separate full 240-input corrected phthalimide-control campaign now has
-checked electronic inputs and native pilots, but no completed occupied ensemble.
+48 checked electronic inputs and two checked native inputs. A maintained
+source-bound native coordinator holds wider release for the largest pilot's
+independent review; no occupied ensemble is complete. Six further exact local
+viologen/chloride geometry controls have verified actual SCF starts after the first passes
+independent stationarity/resource review. No association G is yet supplied.
 [Sampling progress](../validation/corrected_sampling_2026-11-02/README.md).
 
 The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)

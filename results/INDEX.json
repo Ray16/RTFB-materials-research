@@ -428,15 +428,15 @@
     },
     "corrected_polymer_sampling": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
-      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_05.json",
+      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_06.json",
       "source_snapshot": "validation/corrected_sampling_2026-11-02/recovery_manifest_02.json",
       "protocol": "validation/corrected_sampling_2026-11-02/sampling_contract.json",
       "live_observation": "validation/corrected_sampling_2026-11-02/full_campaign_observation_03.json",
       "checkpoint_control": "validation/corrected_sampling_2026-11-02/occupied_equivalence.json",
-      "checks": "validation/corrected_sampling_2026-11-02/current_focused_checks.xml",
+      "checks": "validation/corrected_sampling_2026-11-02/native_queue_checks_05.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5",
-      "status": "42_electronic_two_native_inputs_checked_occupied_sampling_pending",
-      "scope": "All 240 inputs retained; 42 checked hybrid gas/SMD inputs and two full native inputs; largest native pilot and occupied ensembles remain pending",
+      "status": "48_electronic_two_native_inputs_checked_native_coordinator_active",
+      "scope": "All 240 slots retained; largest native pilot gates further preparation/dispatch; occupied ensemble cycles and material decisions remain pending",
       "checked_energy": "validation/corrected_sampling_2026-11-02/empty_pilot_review.json",
       "checked_single_energy": "validation/corrected_sampling_2026-11-02/single_pilot_review.json",
       "prepared_manifest": "validation/corrected_sampling_2026-11-02/PSS_prepared_manifest.json",
@@ -445,15 +445,23 @@
       "native_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native",
       "queue_status": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json",
       "native_checked": "validation/corrected_sampling_2026-11-02/empty_native_review.json",
-      "native_checked_single": "validation/corrected_sampling_2026-11-02/single_native_review.json"
+      "native_checked_single": "validation/corrected_sampling_2026-11-02/single_native_review.json",
+      "native_collection": "validation/corrected_sampling_2026-11-02/native_collection_01.json",
+      "native_queue_snapshot": "validation/corrected_sampling_2026-11-02/native_queue_status_02.json",
+      "native_queue_status": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/status.json",
+      "native_reader_check": "validation/corrected_sampling_2026-11-02/native_receipt_crosscheck.json",
+      "controller_observation": "validation/corrected_sampling_2026-11-02/controller_observation_02.json"
     },
     "counterion_geometry_sensitivity": {
       "guide": "validation/counterion_sensitivity_2026-11-02/README.md",
-      "current": "validation/counterion_sensitivity_2026-11-02/start_observation.json",
+      "current": "validation/counterion_sensitivity_2026-11-02/pilot_geometry_review.json",
       "source_snapshot": "validation/counterion_sensitivity_2026-11-02/prepared_manifest.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2",
-      "status": "seven_exact_chloride_microstate_starts_prepared_one_geometry_pilot_started",
-      "scope": "Formal oxidized core +2 plus Cl- gives total +1 singlet, distinct from the reduced radical; geometry-only, no association G/speciation/material conclusion"
+      "status": "one_stationary_chloride_geometry_checked_six_followup_SCF_starts_verified",
+      "scope": "One actual stationary oxidized-graft/Cl microstate +1 singlet checked; six submissions retain separate startup status; full minima, association G, speciation and material conclusions pending",
+      "followup_dispatch": "validation/counterion_sensitivity_2026-11-02/followup_dispatch.json",
+      "followup_observation": "validation/counterion_sensitivity_2026-11-02/followup_start_verification.json",
+      "prelaunch_recovery": "validation/counterion_sensitivity_2026-11-02/prelaunch_retry_dispatch.json"
     }
   }
 }

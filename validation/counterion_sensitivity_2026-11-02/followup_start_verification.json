@@ -1,0 +1,185 @@
+{
+  "status": "six_counterion_geometry_followup_workers_actual_starts_verified",
+  "checked": 1793649510.6697698,
+  "records": [
+    {
+      "key": "N0_below",
+      "owner": {
+        "host": "lambda1",
+        "pid": 1366674,
+        "process_start": "589957597"
+      },
+      "CPU_affinity": [
+        16,
+        17
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "visible_GPU": "5",
+      "GPU_residency": [
+        "1366674",
+        " GPU-672272e0-0adc-c3ae-21bd-bf2583d28e4a",
+        " 4534"
+      ],
+      "SCF_kernels_entered": 8,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    },
+    {
+      "key": "N0_outer",
+      "owner": {
+        "host": "lambda1",
+        "pid": 1343839,
+        "process_start": "589919216"
+      },
+      "CPU_affinity": [
+        4,
+        5
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "visible_GPU": "1",
+      "GPU_residency": [
+        "1343839",
+        " GPU-acfb23c0-7163-580e-11cd-370e35867833",
+        " 2606"
+      ],
+      "SCF_kernels_entered": 46,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    },
+    {
+      "key": "N1_above",
+      "owner": {
+        "host": "lambda1",
+        "pid": 1350101,
+        "process_start": "589926681"
+      },
+      "CPU_affinity": [
+        11,
+        12
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "visible_GPU": "3",
+      "GPU_residency": [
+        "1350101",
+        " GPU-dc53ea79-982d-d0b8-e9c8-cadbf92a7b70",
+        " 3952"
+      ],
+      "SCF_kernels_entered": 40,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    },
+    {
+      "key": "N1_below",
+      "owner": {
+        "host": "lambda1",
+        "pid": 1351382,
+        "process_start": "589929066"
+      },
+      "CPU_affinity": [
+        10,
+        14
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "visible_GPU": "4",
+      "GPU_residency": [
+        "1351382",
+        " GPU-87f454bb-e27d-5274-da01-09db9787f2b3",
+        " 5548"
+      ],
+      "SCF_kernels_entered": 37,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    },
+    {
+      "key": "N1_outer",
+      "owner": {
+        "host": "lambda2",
+        "pid": 60264,
+        "process_start": "1444975640"
+      },
+      "CPU_affinity": [
+        10,
+        13
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "visible_GPU": "2",
+      "GPU_residency": [
+        "60264",
+        " GPU-891d8452-4937-16a3-d9a7-36baf0370c9a",
+        " 4528"
+      ],
+      "SCF_kernels_entered": 31,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    },
+    {
+      "key": "separated_start",
+      "owner": {
+        "host": "lambda4",
+        "pid": 2001921,
+        "process_start": "50546150"
+      },
+      "CPU_affinity": [
+        6,
+        8
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "visible_GPU": "6",
+      "GPU_residency": [
+        "2001921",
+        " GPU-c7971ddf-fdd9-cc05-91dd-f7664056187d",
+        " 3936"
+      ],
+      "SCF_kernels_entered": 5,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/followup_observation_02.json": "4fb060212a1d94823d64719aa942bff1f15d05dae3fb300380fdbb1a90847892"
+  },
+  "one_prior_stationary_geometry_checked": true,
+  "association_free_energy_computed": false
+}

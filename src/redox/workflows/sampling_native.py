@@ -169,7 +169,7 @@ def prepare(energy_review, resource_review, archive, output, native_pilot=None):
         source_electronic_review=str(energy_review),native_G_qualified=False)
 
 
-def dispatch(manifest_path,interpreter,storage_peers=()):
+def dispatch(manifest_path,interpreter,storage_peers=(),avoid_hosts=()):
     from redox.workflows.charged_native_followup import dispatch_rows
     data=json.loads(manifest_path.read_text());rows=data['states']
     if data['declared_sampling_inputs']!=240 or len({r['key'] for r in rows})!=len(rows):
@@ -181,7 +181,7 @@ def dispatch(manifest_path,interpreter,storage_peers=()):
                 or any(plan.get(k)!=v for k,v in profile().items())
                 or (plan.get('native_class_prerequisite') is None and row['key'] not in PILOT_KEYS)):
             raise ValueError('Exact native pilot or independently released followup class required')
-    return dispatch_rows(rows,manifest_path.parent,interpreter,[manifest_path,Path(__file__)],storage_peers=storage_peers)
+    return dispatch_rows(rows,manifest_path.parent,interpreter,[manifest_path,Path(__file__)],storage_peers=storage_peers,avoid_hosts=avoid_hosts)
 
 
 if __name__=='__main__':

@@ -13,13 +13,28 @@ Atomic separation and full hydrogen/heavy-atom connectivity are checked in the
 actual XYZ files. These starting geometries are hypotheses, not measured
 ion-pair populations or independent statistical weights.
 
+The [first geometry review](pilot_geometry_review.json) now passes independent
+execution closure, actual SCF/frame/occupied-spin, returned connectivity and a
+fresh gradient check. Its maximum gradient is 2.8145e-5 Ha/Bohr and GPU peak is
+10,610 MiB. This is a stationary geometry; a full Hessian is still needed to
+qualify a minimum. The six remaining prepared starts are released within this
+same measured geometry class, subject to live reservations and CPU/RAM/storage
+capacity. All six now have [actual SCF starts verified](followup_start_verification.json),
+with exclusive GPU residency, disjoint two-CPU bindings and all six native thread
+caps set to two. The original [bounded dispatch](followup_dispatch.json) includes
+one prelaunch GPU-contention refusal. Its exact stopped controller and absence
+of science were checked before the [new placement](prelaunch_retry_dispatch.json);
+the refused placement and receipts are preserved. No completed geometry or G
+is inferred from these starts.
+
 The [pilot plan](pilot_plan.json) retains the primary molecular SMD/MeCN model,
 r2SCAN-D4/def2-SVP optimization, matched strict SCF/grid settings and actual
 charge/spin. It does not substitute the separately scoped smooth-surface polymer
 model. [Actual start](start_observation.json) confirms one live reserved GPU
 worker on λ1, disjoint two-CPU affinity and entry into geometry evaluations.
 Full SCFs, gradients and optimizer-returned coordinates are retained. The
-remaining starts are held for the first independent geometry/resource review.
+initial start observation remains historical; it is not evidence of current
+ownership. The later independent review releases the geometry class only.
 
 No new association G, grafting yield, speciation population or material admission
 is assigned. A later association cycle must compare this exact ion-associated

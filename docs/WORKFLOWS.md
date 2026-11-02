@@ -14,6 +14,7 @@ no declared category. It does not submit calculations.
 | Numerical implementation controls | `python -m redox.workflows.screening_control --help` | Explicitly scoped controls; a passed control does not qualify every system |
 | Corrected polymer sampling control | `python -m redox.workflows.sampling_energy --help` | Complete 240-input roster; empty/single/double pilots precede same-model energy followups and separate native/ensemble review |
 | Corrected polymer native stage | `python -m redox.workflows.sampling_native --help` | Exact checked energy input, full-orbital recovery data, unchanged native physical checks; largest complete native pilot precedes wider native release |
+| Corrected native queue | `python scripts/fleet/run_corrected_native_queue.py --help` | Maintained coordinator for the full 240-slot objective; independently collects closed native results, waits for the largest pilot, then prepares and dispatches checked-energy followups |
 | Counterion geometry control | `python -m redox.workflows.counterion_geometry --help` | Oxidized graft plus explicit chloride: +1 singlet, separate from the +1 doublet redox state; geometry/resource pilot precedes wider contacts and native G |
 | Charged-polymer pilot | `python -m redox.workflows.charged_polymer_pilot --help` | Route-bound private namespace, first-class resource and physical checks |
 | Directional solvent response | `python -m redox.workflows.solution_pair_namespace --help` | Exact matched candidate/state pair, independently reviewed |
@@ -124,3 +125,28 @@ Quantum preparation discovers a declared shared GPU4PySCF source root from
 package only when none is declared. Grid, integrator and compiled-kernel bytes
 must match before shared-path binding. The discovery source/config is frozen
 in the namespace; this does not change the executable or numerical method.
+
+## Corrected sampling handoff
+
+The electronic and native coordinators share the append-only storage-peer
+registry. The native coordinator consumes the complete electronic ledger while
+retaining every pending slot. A checked electronic input must match the original
+task, geometry, model and protocol, including when its execution namespace was
+recovered. A completed largest native pilot and identical calculation helper
+bytes are required before preparing the remaining native inputs.
+
+`redox.validation.sampling_native_receipts.checked_native` is the arithmetic
+reader for this stage. It checks both electronic and own nuclear components,
+all three rotor settings, exact geometry, charge/spin, solvent/model, electronic
+and thermal definitions, temperature, translation convention and field-specific
+QC. The collector retains that context alongside each G. Pending G stays null;
+240 native completions still require separate duplicate, sampling-convergence
+and balanced ensemble analysis.
+
+The queue reuses the shared reservation/preflight dispatcher and its RAM/storage
+accounting. Unknown/live owners and scientific failures are preserved. Only
+proven prelaunch refusals can retry, with cooldown and a three-receipt limit;
+three terminal failures block the affected host. Source changes stop further
+admission while preserving workers. Explicit resume requires the exact previous
+controller to be proven stopped. All time windows and paths are declared CLI
+arguments, and a new controller revalidates receipt hashes before caching them.

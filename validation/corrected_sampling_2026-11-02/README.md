@@ -1,5 +1,26 @@
 # Complete corrected polymer-sampling cohort
 
+The corrected native stage now has a maintained resumable coordinator:
+`python scripts/fleet/run_corrected_native_queue.py --help`. It retains the full
+240-input objective, collects closed native calculations independently and
+holds wider preparation/dispatch until the largest native pilot passes. Two
+native receipts have also passed the [new context/component reader](native_receipt_crosscheck.json).
+All three rotor sums, the exact energy/geometry parent, thermal definition,
+charge/spin, model, standard state and physical/resource QC remain attached to
+each admitted value. No occupied ensemble is yet qualified.
+
+The controller uses the existing reservation/preflight dispatcher, aggregate
+RAM/storage budgets and append-only peer registry. It never restarts a failed
+scientific worker. Its source-change guard was exercised during development;
+the stopped controller and history are retained, and the updated coordinator
+was explicitly resumed only after exact process closure. Raw controller records
+are under
+`/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/`.
+The [focused checks](native_queue_checks_05.xml) pass 72 tests, including actual
+CPU SCF/checkpoint controls and rejection of altered native values, context,
+partial rosters, premature release, later residency interruptions and terminal
+failures that must be reported rather than treated as active work.
+
 The [source inventory](input_inventory_complete.json) accounts for all 240
 declared phthalimide-control inputs: six occupancy graphs, two explicit backbone
 configurations and twenty starting IDs per cell. All 240 actual XYZ inputs pass
@@ -17,12 +38,17 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_05.json) has
-42 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_06.json) has
+48 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
 ensemble cycle is supplied by this electronic collection.
+
+The separate [native collection](native_collection_01.json) retains all 240
+slots with two checked G inputs. Its [controller snapshot](native_queue_status_02.json)
+and [exact process observation](controller_observation_02.json) distinguish
+active coordination, the live largest pilot and physical qualification.
 
 ## Method and storage
 

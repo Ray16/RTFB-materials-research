@@ -1,0 +1,80 @@
+{
+  "status": "two_actual_native_receipts_components_and_context_rechecked",
+  "checked": 1793649120.409266,
+  "records": [
+    {
+      "key": "all_same__occ_none__conf001",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/empty_native_review.json",
+      "review_sha256": "f76c0c8971a6767c51a76d23146451acc9dd89763337d5b231c6c0c70c075435",
+      "G_by_cutoff_eV": {
+        "25": -82874.07522832791,
+        "50": -82873.93719440931,
+        "100": -82873.84011166557
+      },
+      "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+      "thermal_protocol": {
+        "schema": 1,
+        "model": "projected internal-mode xTB6.7.1 qRRHO",
+        "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+        "masses": "installed xTB NIST isotopic-average atomic masses",
+        "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+        "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+        "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+        "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+        "frequency_scale": 1.0,
+        "temperature_K": 298.15,
+        "rotor_cutoffs_cm": [
+          25,
+          50,
+          100
+        ],
+        "primary_rotor_cutoff_cm": 50,
+        "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+        "zero_internal_frequency_policy": "refuse; no artificial floor",
+        "symmetry": "xTB symmetry detection for the exact input geometry",
+        "pressure": "same translation convention as installed xTB thermodyn"
+      },
+      "native_G_qualified": true,
+      "conformer_ensemble_qualified": false
+    },
+    {
+      "key": "all_same__occ_2__conf001",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/single_native_review.json",
+      "review_sha256": "14536a8a52e6baa596da969378705bb7e36d4e243b99c85f9e6ebadebd14a09b",
+      "G_by_cutoff_eV": {
+        "25": -84296.36271889671,
+        "50": -84296.21723100467,
+        "100": -84296.10668838346
+      },
+      "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+      "thermal_protocol": {
+        "schema": 1,
+        "model": "projected internal-mode xTB6.7.1 qRRHO",
+        "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+        "masses": "installed xTB NIST isotopic-average atomic masses",
+        "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+        "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+        "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+        "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+        "frequency_scale": 1.0,
+        "temperature_K": 298.15,
+        "rotor_cutoffs_cm": [
+          25,
+          50,
+          100
+        ],
+        "primary_rotor_cutoff_cm": 50,
+        "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+        "zero_internal_frequency_policy": "refuse; no artificial floor",
+        "symmetry": "xTB symmetry detection for the exact input geometry",
+        "pressure": "same translation convention as installed xTB thermodyn"
+      },
+      "native_G_qualified": true,
+      "conformer_ensemble_qualified": false
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/sampling_native_receipts.py": "e74c086cf1d1dac624eeda30a68d561d9ed158b02502d6150eccdd4a745f95e7"
+  },
+  "new_quantum_calculations": false
+}

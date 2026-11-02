@@ -1,0 +1,69 @@
+{
+  "status": "closed_prelaunch_refusal_retried_start_unverified",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_below/namespace.json",
+  "original_receipt": {
+    "status": "controller_spawned_scientific_start_unverified",
+    "owner": {
+      "host": "lambda1",
+      "pid": 1342141,
+      "process_start": "589916594"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_geometry",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_below/namespace.json",
+      "--gpu",
+      "0",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_below/placement_001",
+      "--pilot-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/pilot_geometry_review.json"
+    ],
+    "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_below/placement_001"
+  },
+  "availability_errors": [],
+  "launch": {
+    "host": "lambda1",
+    "GPU": 5,
+    "receipt": {
+      "status": "controller_spawned_scientific_start_unverified",
+      "owner": {
+        "host": "lambda1",
+        "pid": 1366060,
+        "process_start": "589957201"
+      },
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.counterion_geometry",
+        "launch",
+        "--spec",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_below/namespace.json",
+        "--gpu",
+        "5",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_below/placement_002",
+        "--pilot-review",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/pilot_geometry_review.json"
+      ],
+      "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_below/placement_002"
+    },
+    "capacity": {
+      "available": 306308161536,
+      "promised": 232060108800,
+      "GPU_MiB": 32768.0,
+      "load": 9.40478515625,
+      "cpus": 80
+    }
+  },
+  "refusals": [],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/retry_release_02/remote_launch.py": "3a7a8c2c1187be4a3e672181d9cbe7dc609a680d59df0ef3b33aaf919646a333"
+  },
+  "checked": 1793649392.7427363
+}
