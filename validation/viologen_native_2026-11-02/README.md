@@ -72,3 +72,11 @@ or electrochemical transport is inferred.
 scientific PID/start, two disjoint CPUs, all six thread caps, sole GPU residency
 and actual SCF progress. The [three prepared followups](larger_followup_preparation.json)
 remain held for its physical/resource review. Their preparation is not a start.
+
+
+The [eight-worker observation](eight_worker_observation.json) verifies all five
+lambda2, one lambda4 and two lambda13 workers by live PID/start identity and
+actual GPU residency, with disjoint CPU affinities. This is a dated observation,
+not a completion certificate. The first component review's exact original
+producer is retained under `producers/`, matching its reported SHA-256; the
+current reviewer separately adds the larger resource-class checks.
