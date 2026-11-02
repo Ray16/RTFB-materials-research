@@ -28,6 +28,17 @@ def test_unsupported_or_ambiguous_states_are_rejected(worker,plan):
     with pytest.raises(ValueError):worker.charge_state(plan)
 
 
+def test_only_explicit_checked_full_matrix_can_enter_charged_validation(worker):
+    plan=dict(charged_polymer_native_component=True,charge=4,mult=1,
+        charged_saved_Hessian_validation=True,Hessian_validation_continuation=True,
+        saved_full_Hessian=dict(charge=4,mult=1,source_response_independently_checked=True))
+    assert worker.charge_state(plan)==(4,1)
+    for field in ('charged_saved_Hessian_validation','Hessian_validation_continuation'):
+        with pytest.raises(ValueError):worker.charge_state(dict(plan,**{field:False}))
+    for field in ('resume_components','resume_response','resume_partial_Hessian'):
+        with pytest.raises(ValueError):worker.charge_state(dict(plan,**{field:{'source':'other'}}))
+
+
 def test_component_sampling_adds_actual_graft_atoms_without_dropping_protocol_columns(worker):
     native=SimpleNamespace(fd_columns=lambda gradient,symbols:[(0,1),(2,2)])
     gradient=np.zeros((4,3));symbols=['C','N','C','H']

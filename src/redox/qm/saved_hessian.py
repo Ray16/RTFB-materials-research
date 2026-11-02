@@ -41,8 +41,13 @@ def builder(module,plan,case):
                         or gradient.shape!=(len(plan['symbols']),3) or not np.isfinite(gradient).all() or not math.isfinite(force_difference) or force_difference>1e-6
                         or not np.allclose(coordinates,old['coordinates_Bohr'],rtol=0,atol=1e-12)
                         or not np.allclose(mf.mol.atom_coords(),coordinates,rtol=0,atol=1e-12)
-                        or mf.mol.charge!=0 or mf.mol.spin!=0 or mf.xc!='r2scan' or mf.mol.basis!='def2-svp'):
+                        or mf.mol.charge!=plan.get('charge',0) or mf.mol.spin!=plan.get('mult',1)-1
+                        or mf.xc!='r2scan' or mf.mol.basis!='def2-svp'):
                     raise ValueError('Fresh center does not reproduce the saved matrix state')
+                if plan.get('charge',0)!=0 and (not plan.get('charged_saved_Hessian_validation')
+                        or saved.get('charge')!=plan['charge'] or saved.get('mult')!=plan.get('mult')
+                        or saved.get('source_response_independently_checked') is not True):
+                    raise ValueError('Charged matrix reuse requires its exact checked source state')
                 matrix=np.load(saved['matrix'],allow_pickle=False);n=len(plan['symbols'])
                 if (matrix.dtype!=np.float64 or matrix.shape!=(3*n,3*n) or not np.isfinite(matrix).all()
                         or float(abs(matrix-matrix.T).max())>1e-6):raise ValueError('Complete finite symmetric FP64 source Hessian required')

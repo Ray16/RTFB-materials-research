@@ -60,12 +60,16 @@ establish that a calculation is currently running.
   The alternating adjacent cycle and occupied ensembles remain pending.
   These finite smooth-surface MeCN r2SCAN/SVP values are separate from primary
   molecular G, isolated motif binding, electronic coupling and material admission.
+  The [fourth-cycle recovery](../validation/ionic_cycle_completion_2026-11-02/saved_matrix_recovery_01/README.md)
+  retains its complete source Hessian after a later file-lock failure; fresh
+  validation and independent G admission remain pending.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin, distinct from the +1 doublet redox state.
-  Six stationary poses have checked SCF energies. After a −50.52-cm⁻¹ minimum
-  failure, two signed repairs pass full native QC and give finite 1-M association
-  G of +15.4 to +15.6 kJ/mol at the primary cutoff. Other poses, salt speciation
+  Six stationary poses have checked SCF energies. Four microstates from three original starts pass full native QC and give
+  finite 1-M association G of +15.4 to +22.4 kJ/mol at the primary cutoff.
+  Two other minimum failures have independently diagnosed signed repairs
+  prepared. Other poses, salt speciation
   and any synthesis/material conclusion remain pending.
 - [Frozen ionic motif controls](../validation/viologen_motif_interactions_2026-11-02/README.md):
   twelve charged A/B/AB triplets (72 SCFs) pass independent review. The capped
@@ -80,7 +84,7 @@ establish that a calculation is currently running.
   experimental/speciation or material validation.
 - [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
   all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
-  All three memory-size pilots passed; 78 hybrid gas/SMD inputs now pass
+  All three memory-size pilots passed; 87 hybrid gas/SMD inputs now pass
   independent actual-wavefunction review. The remaining energy roster is
   released, and three matched native pilots have saved their center SCFs/grids.
   Empty, site-2 and largest double-graft native inputs are checked. A maintained

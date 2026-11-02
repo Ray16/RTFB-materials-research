@@ -24,7 +24,19 @@ conversion is applied once after the count-balanced source sum (association
 changes solute count by −1). These are two repaired outcomes from one initial
 pose, not independently weighted populations, an exhaustive conformer set,
 an experimentally validated association constant or a grafting-yield prediction.
-The five other checked contact starts still require full thermochemistry.
+The [current four-component summary](thermochemistry_current_03.json) additionally
+includes independently checked N1-above and N1-below minima (15.32 and
+14.00 cm⁻¹). Their [matched association ledger](association_N1_poses.json) gives
++22.36 and +22.11 kJ/mol at 1 M and the primary cutoff. The four checked outcomes
+represent three original starts; they do not define populations or a global pose.
+
+N0-below and N0-outer failed their own minimum gates. Independent diagnoses
+reconstruct one unstable mode each at −40.64 and −35.66 cm⁻¹, with saved
+finite-difference errors below the original 1% gate. Both signed branches are
+prepared for each failed pose, with no transferred geometry/minimum/G
+qualification. The other poses and exhaustive salt/speciation assessment remain
+pending. Repair labels now follow the actual source start, avoiding an earlier
+N0-above-only label assumption. Historical failed attempts remain untouched.
 
 ## Earlier preparation and geometry milestones
 

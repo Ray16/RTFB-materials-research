@@ -38,8 +38,17 @@ def charge_state(plan):
     if (type(charge) is not int or type(mult) is not int or mult!=1 or (component and charge<=0 and not empty)
             or (not component and charge!=0)):
         raise ValueError('An explicit closed-shell charged component or neutral control is required')
-    if component and (plan.get('resume_components') or plan.get('resume_response') or plan.get('saved_full_Hessian')):
+    saved=plan.get('saved_full_Hessian')
+    saved_validation=(plan.get('charged_saved_Hessian_validation') is True
+        and plan.get('Hessian_validation_continuation') is True and isinstance(saved,dict)
+        and saved.get('charge')==charge and saved.get('mult')==mult
+        and saved.get('source_response_independently_checked') is True)
+    if component and (plan.get('resume_components') or plan.get('resume_response')
+            or (saved and not saved_validation)):
         raise ValueError('The first charged native pilot requires a fresh full Hessian')
+    if plan.get('charged_saved_Hessian_validation') and (not component or not saved_validation
+            or plan.get('resume_partial_Hessian')):
+        raise ValueError('Saved charged validation requires one explicitly source-bound complete matrix')
     if plan.get('resume_partial_Hessian') and (not component or charge!=4
             or plan.get('native_resource_class')!='double_graft_H100_RHF16_workspace_v2'):
         raise ValueError('Partial-only charged recovery requires its declared larger dimension class')

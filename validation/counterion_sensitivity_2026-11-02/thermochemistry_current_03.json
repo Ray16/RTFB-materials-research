@@ -1,0 +1,95 @@
+{
+  "status": "four_checked_contact_components_from_three_original_starts",
+  "checked": 1793659711.9651453,
+  "declared_original_starts": 7,
+  "distinct_original_starts_with_checked_G": 3,
+  "checked_components": 4,
+  "records": [
+    {
+      "branch": "minus",
+      "minimum_frequency_cm": 22.825058026824383,
+      "association_one_M_kJ_mol": {
+        "25": 14.740670042619229,
+        "50": 15.614209149443266,
+        "100": 17.21352570769161
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/mode_minus_thermochemistry_review.json",
+      "review_sha256": "d16875c7ddf19b2a4548cedf9ca7ccb4bf5dac044a65800bf3f9731faf070a36",
+      "ledger": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/association_first_repaired_pose.json",
+      "ledger_sha256": "3312c8d2f9bd1642828554d3d30a3ebf7f93087d82f1db5639e3af10d882855c",
+      "original_start": "N0_above"
+    },
+    {
+      "branch": "plus",
+      "minimum_frequency_cm": 22.663381286944727,
+      "association_one_M_kJ_mol": {
+        "25": 14.356987520686829,
+        "50": 15.41861032305853,
+        "100": 16.954360656522528
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/mode_plus_thermochemistry_review.json",
+      "review_sha256": "654595eea6d1395b326dbd5dbf40c36eaca7eb5b3d3e22ad0caba5e848a58645",
+      "ledger": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/association_second_repaired_pose.json",
+      "ledger_sha256": "03cd51126a933951f2ae36e72ce647508279eb21103afb002f49a33ccff510c1",
+      "original_start": "N0_above"
+    },
+    {
+      "original_start": "N1_above",
+      "branch": null,
+      "minimum_frequency_cm": 15.320550618730936,
+      "association_one_M_kJ_mol": {
+        "25": 22.576380514948923,
+        "50": 22.355890949962223,
+        "100": 22.539849646771504
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/N1_above_thermochemistry_review.json",
+      "review_sha256": "1f9f9df6ee431fcfc6e18395bd5ec93924df5028febcbfe2978372b92e2bb112",
+      "ledger": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/association_N1_poses.json",
+      "ledger_sha256": "f535934cf1857d3447518fbb39f1a64f8dfb8487daea7514a515c8889b962682"
+    },
+    {
+      "original_start": "N1_below",
+      "branch": null,
+      "minimum_frequency_cm": 14.00294063470539,
+      "association_one_M_kJ_mol": {
+        "25": 21.950159601440546,
+        "50": 22.111558854042507,
+        "100": 22.13118123717349
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/N1_below_thermochemistry_review.json",
+      "review_sha256": "afba86c80a285725852d237ad3d3c726eba6b6696db85cf1ffbefa7b25ff0d1b",
+      "ledger": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/association_N1_poses.json",
+      "ledger_sha256": "f535934cf1857d3447518fbb39f1a64f8dfb8487daea7514a515c8889b962682"
+    }
+  ],
+  "minimum_failures_with_two_signed_repair_branches_prepared": [
+    {
+      "original_start": "N0_below",
+      "diagnosis": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/N0_below_failed_minimum_diagnosis.json",
+      "diagnosis_sha256": "e794568f95644df71b56cf48a64d34bab4267ac8c020b4106f0ba96614bc4c19",
+      "minimum_frequency_cm": -40.63527812281382,
+      "repair_manifest": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_N0_below_signed_mode_geometry_repairs/manifest.json",
+      "repair_manifest_sha256": "7b5cfdb1e3cdad90ae92cb9134c71bf1ca8082a3d9900cdb9626d2c42e6e1173",
+      "prepared_branches": 2,
+      "geometry_optimized": false,
+      "native_G_qualified": false
+    },
+    {
+      "original_start": "N0_outer",
+      "diagnosis": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/N0_outer_failed_minimum_diagnosis.json",
+      "diagnosis_sha256": "2e2435a3286f429f843c55d5d6a399610a04f0e0eefa83e502565e90ebb522e9",
+      "minimum_frequency_cm": -35.65542098628238,
+      "repair_manifest": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_N0_outer_signed_mode_geometry_repairs/manifest.json",
+      "repair_manifest_sha256": "5f6407e8bbcda5bb0b5e8232b97799c0b2ba861518d938dee0d0a2d767348436",
+      "prepared_branches": 2,
+      "geometry_optimized": false,
+      "native_G_qualified": false
+    }
+  ],
+  "global_thermodynamic_pose_selected": false,
+  "conformer_ensemble_qualified": false,
+  "populations_inferred": false,
+  "other_poses_pending": true,
+  "covalent_grafting_cycle_modified": false,
+  "material_admission": false
+}

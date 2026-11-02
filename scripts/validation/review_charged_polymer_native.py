@@ -98,19 +98,25 @@ def review(namespace):
         with h5py.File(checkpoint,'r') as stream:
             actual=float(stream['scf/e_tot'][()])
             if not math.isfinite(actual) or abs(actual-point['E_Ha'])>1e-10:raise ValueError('Native SCF checkpoint differs')
-    solver=read_json(case/'execution/response_solver.json')
-    if (solver['status']!='response_equations_solved_full_physical_QC_separate' or solver['equations_changed'] or solver['level_shift_added']
-            or sum(row['shape'][0] for row in solver['calls'])!=3*count
-            or any(row['solver_info']!=0 or row['precision']!='float64' or row['level_shift_added'] or not 0<=row['true_residual_norm']<=row['solver_absolute_target'] for row in solver['calls'])):
-        raise ValueError('Full original-equation charged response required')
-    solution=read_json(case/'solution_H1/identity.json');h1_path=Path(solution['path']);used.append(h1_path)
-    if (solution['scope']!='full SMD H1 including PCM contribution' or not solution['equilibrium_solvation']
-            or solution['file_sha256']!=sha256_file(h1_path)
-            or h1_path.resolve()!=(case/'solution_H1/full_H1.npy').resolve()
-            or solution['identity']['center_evaluation_sha256']!=sha256_file(case/'points/0000/evaluation.json')
-            or solution['identity']['grids_sha256']!=sha256_file(case/'grids.npz')
-            or solution['shape']!=[count,3,plan['response_nao'],plan['response_nocc']]):
-        raise ValueError('Complete solvent H1 checkpoint at the exact response frame required')
+    saved_proof=None
+    if plan.get('charged_saved_Hessian_validation'):
+        from redox.validation.charged_hessian_source import saved_response
+        used.append(freeze_source(case,Path(saved_response.__code__.co_filename)))
+        saved_proof=saved_response(case,plan,read_json,used,owners.alive)
+    else:
+        solver=read_json(case/'execution/response_solver.json')
+        if (solver['status']!='response_equations_solved_full_physical_QC_separate' or solver['equations_changed'] or solver['level_shift_added']
+                or sum(row['shape'][0] for row in solver['calls'])!=3*count
+                or any(row['solver_info']!=0 or row['precision']!='float64' or row['level_shift_added'] or not 0<=row['true_residual_norm']<=row['solver_absolute_target'] for row in solver['calls'])):
+            raise ValueError('Full original-equation charged response required')
+        solution=read_json(case/'solution_H1/identity.json');h1_path=Path(solution['path']);used.append(h1_path)
+        if (solution['scope']!='full SMD H1 including PCM contribution' or not solution['equilibrium_solvation']
+                or solution['file_sha256']!=sha256_file(h1_path)
+                or h1_path.resolve()!=(case/'solution_H1/full_H1.npy').resolve()
+                or solution['identity']['center_evaluation_sha256']!=sha256_file(case/'points/0000/evaluation.json')
+                or solution['identity']['grids_sha256']!=sha256_file(case/'grids.npz')
+                or solution['shape']!=[count,3,plan['response_nao'],plan['response_nocc']]):
+            raise ValueError('Complete solvent H1 checkpoint at the exact response frame required')
     if plan.get('resume_partial_Hessian'):
         reuse=read_json(case/'component_reuse/reuse.json')
         if (reuse.get('partial_calls')!=1 or reuse.get('make_h1_replaced') is not False
@@ -136,7 +142,8 @@ def review(namespace):
     return dict(status='charged_polymer_native_component_independently_reconstructed',namespace=str(namespace),
         candidate_alias=plan['exact_candidate_alias'],graph_key=plan['prepared_case']['key'],charge=plan['charge'],mult=1,
         model=plan['solvent_model'],quantum_settings=plan['numerical_settings'],geometry_sha256=sha256_file(geometry_path),
-        matched_empty_polymer_reference=empty,
+        matched_empty_polymer_reference=empty,full_response_recomputed=saved_proof is None,
+        saved_Hessian_source_evidence=saved_proof,
         atoms=count,maximum_column_error=max(errors),minimum_frequency_cm=float(min(frequencies)),nuclear_by_cutoff_eV=thermal,
         E_geometry_level_Ha=center['E_Ha'],G_by_cutoff_eV=totals,native_G_qualified=True,primary_model_admission=False,
         conformer_ensemble_qualified=False,material_admission=False,peak_GPU_MiB=stage['observed_peak_GPU_MiB'],

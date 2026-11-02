@@ -16,7 +16,7 @@ Their minimum frequencies are 6.9604, 6.6572 and 8.4292 cm⁻¹.
 [Alternating spacer review](alternating_pair24_native_review.json).
 The fourth double-graft case retains its full Hessian and 19 completed gradient
 points after an HDF5 checkpoint-file I/O failure. Its G is blank until full
-validation and independent review succeed. Raw followups are preserved at
+validation and independent review succeed. The [source-bound saved-matrix recovery](saved_matrix_recovery_01/README.md) retains the full response and requires fresh physical validation. Raw followups are preserved at
 `/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_larger_RHF16_followups/`.
 
 The article/SI compile at 20/33 pages from the immutable

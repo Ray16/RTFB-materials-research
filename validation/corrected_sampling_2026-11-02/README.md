@@ -47,8 +47,8 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_08.json) has
-78 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_09.json) has
+87 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
@@ -262,3 +262,9 @@ read-only process observations. Shared reservations, node preflight, aggregate
 RAM/storage accounting, native thread caps and source-frozen namespace execution
 remain in force. No old claim or output is cleared by age or an observation
 timeout.
+
+The saved-ionic-Hessian launcher correction exercised the electronic queue's
+source-change guard. Its exact controller was confirmed closed before explicit
+resume; existing workers and all results were preserved. The current source-bound
+controller receipt is `electronic_queue/resume_launch_004.json` under the raw
+energy root. This scheduling change does not alter the quantum method or QC.

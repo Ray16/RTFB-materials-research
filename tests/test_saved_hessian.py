@@ -69,3 +69,40 @@ def test_saved_validation_uses_bounded_operators_without_claiming_a_new_response
     spec=importlib.util.spec_from_file_location('saved_phase_operator_scope',p);module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
     assert module.workspace_file({},root).name=='residual_response_solver.py'
     assert module.workspace_file(dict(Hessian_validation_continuation=True),root).name=='df_occupied_workspace.py'
+
+
+def test_declared_checked_ionic_state_can_reuse_its_own_matrix(source):
+    module,original,mf,plan,case,matrix=source
+    plan.update(charge=4,mult=1,charged_saved_Hessian_validation=True)
+    plan['saved_full_Hessian'].update(charge=4,mult=1,source_response_independently_checked=True)
+    mf.mol.charge=4
+    with builder(module,plan,case):actual=module._build_smd_mf().Hessian().kernel()
+    np.testing.assert_array_equal(actual.transpose(0,2,1,3).reshape(9,9),np.load(matrix))
+
+
+@pytest.mark.parametrize('change',['actual_charge','source_charge','source_spin','unchecked_source','unscoped'])
+def test_ionic_matrix_cannot_be_borrowed_across_states_or_without_source_review(source,change):
+    module,original,mf,plan,case,matrix=source
+    plan.update(charge=4,mult=1,charged_saved_Hessian_validation=True)
+    plan['saved_full_Hessian'].update(charge=4,mult=1,source_response_independently_checked=True)
+    mf.mol.charge=4
+    if change=='actual_charge':mf.mol.charge=2
+    if change=='source_charge':plan['saved_full_Hessian']['charge']=2
+    if change=='source_spin':plan['saved_full_Hessian']['mult']=3
+    if change=='unchecked_source':plan['saved_full_Hessian']['source_response_independently_checked']=False
+    if change=='unscoped':plan['charged_saved_Hessian_validation']=False
+    with pytest.raises(ValueError):
+        with builder(module,plan,case):module._build_smd_mf().Hessian().kernel()
+
+
+def test_saved_validation_does_not_apply_neutral_storage_bounds_to_ionic_class():
+    from redox.workflows.screening_control import saved_validation_profile
+    neutral=dict(Hessian_validation_continuation=True,saved_full_Hessian={'matrix':'bound'},
+        minimum_initial_storage_GiB=33,minimum_live_storage_GiB=32)
+    assert saved_validation_profile(neutral)==(80,7200,2**30)
+    ionic=dict(neutral,charged_polymer_native_component=True,charged_saved_Hessian_validation=True,
+        charge=4,mult=1,minimum_initial_storage_GiB=38,
+        saved_full_Hessian=dict(charge=4,mult=1,source_response_independently_checked=True))
+    assert saved_validation_profile(ionic) is None
+    with pytest.raises(ValueError):saved_validation_profile(dict(neutral,minimum_initial_storage_GiB=38))
+    with pytest.raises(ValueError):saved_validation_profile(dict(ionic,charged_saved_Hessian_validation=False))

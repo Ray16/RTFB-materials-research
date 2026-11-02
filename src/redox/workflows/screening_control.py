@@ -233,6 +233,22 @@ def prepare_hessian_validation(source_namespace,output):
     return spec
 
 
+def saved_validation_profile(plan):
+    """Neutral validation has its own envelope; ionic checks retain their class."""
+    if not plan.get('Hessian_validation_continuation'):return None
+    saved=plan.get('saved_full_Hessian')
+    if not isinstance(saved,dict):raise ValueError('Source-bound complete Hessian required')
+    if plan.get('charged_polymer_native_component'):
+        if (plan.get('charged_saved_Hessian_validation') is not True
+                or saved.get('charge')!=plan.get('charge') or saved.get('mult')!=plan.get('mult')
+                or saved.get('source_response_independently_checked') is not True):
+            raise ValueError('Exact checked ionic matrix state required')
+        return None  # The full ionic resource class is validated below.
+    if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(33,32):
+        raise ValueError('Saved-Hessian validation profile changed')
+    return (80,7200,2**30)
+
+
 def launch(path,gpu,output):
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation,gpu_suitability,free_slots,GATE
     spec=execution.verify(path);case=Path(spec['case']);plan=json.loads((case/'plan.json').read_text());host=os.uname().nodename.split('.')[0];proof=json.loads(path.with_name('node_probe.json').read_text())
@@ -245,9 +261,9 @@ def launch(path,gpu,output):
         expected=(80,full_hessian_wall_seconds(plan),4*2**30);role='screening_polymer_Hessian_control'
         if plan.get('response_checkpoint_continuation') and not plan.get('resume_response'):raise ValueError('Explicit source-bound response continuation required')
         if not plan.get('Hessian_validation_continuation') and (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(36,32):raise ValueError('Full-Hessian control storage margins changed')
-    if plan.get('Hessian_validation_continuation'):
-        expected=(80,7200,2**30);role='screening_polymer_Hessian_control'
-        if not plan.get('saved_full_Hessian') or (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(33,32):raise ValueError('Saved-Hessian validation profile changed')
+    saved_profile=saved_validation_profile(plan)
+    if saved_profile is not None:
+        expected=saved_profile;role='screening_polymer_Hessian_control'
     if plan.get('charged_polymer_native_component'):
         empty=plan.get('matched_empty_polymer_reference') is True and plan.get('charge')==0 and not plan['prepared_case']['occupied_sites']
         budget=4*2**30

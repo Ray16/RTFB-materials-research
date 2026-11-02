@@ -130,7 +130,7 @@ def prepare(diagnosis,output):
             source_sha256={**old_plan['source_sha256'],**{str(p):sha256_file(p) for p in [*sources.glob('*'),case/'input.xyz'] if p.is_file()}})
         atomic_write_json(case/'plan.json',plan);spec=dict(original,case=str(case),sources=str(sources),plan_sha256=sha256_file(case/'plan.json'))
         atomic_write_json(root/'namespace.json',spec);verify(root/'namespace.json')
-        rows.append(dict(key='N0_above_mode_'+('minus' if sign<0 else 'plus'),namespace=str(root/'namespace.json'),namespace_sha256=sha256_file(root/'namespace.json'),sign=sign))
+        rows.append(dict(key=old_plan['source_id']+'_mode_'+('minus' if sign<0 else 'plus'),namespace=str(root/'namespace.json'),namespace_sha256=sha256_file(root/'namespace.json'),sign=sign))
     result=dict(status='two_signed_counterion_mode_repair_geometries_prepared',states=rows,source_diagnosis=str(diagnosis),
         source_diagnosis_sha256=sha256_file(diagnosis),native_G_qualified=False,quantum_jobs_submitted=0,
         selection='Both branches retained; fresh geometry and native minimum checks required before any thermodynamic selection')
