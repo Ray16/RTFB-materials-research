@@ -59,6 +59,11 @@ establish that a calculation is currently running.
   −3.94 kJ/mol (−5.85 to −3.94 across rotor settings). Three cycles remain pending.
   These finite smooth-surface MeCN r2SCAN/SVP values are separate from primary
   molecular G, isolated motif binding, electronic coupling and material admission.
+- [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
+  seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
+  total charge +1 and singlet spin. One reserved geometry pilot is running;
+  this is distinct from the +1 doublet redox state. Association G, populations,
+  full minimum qualification and any synthesis/material conclusion remain pending.
 - [Complete primary molecular control](../validation/ionic_cycle_completion_2026-11-02/primary_cohort_summary.json):
   nine new molecular Hessians, analytic chloride and 81 independent orbital/frame
   reviews reconstruct six full exact-viologen G cycles. Changes from source are
@@ -66,10 +71,10 @@ establish that a calculation is currently running.
   experimental/speciation or material validation.
 - [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
   all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
-  All three memory-size pilots passed; 29 hybrid gas/SMD inputs now pass
+  All three memory-size pilots passed; 42 hybrid gas/SMD inputs now pass
   independent actual-wavefunction review. The remaining energy roster is
   released, and three matched native pilots have saved their center SCFs/grids.
-  One empty native input is checked; occupied G, ensemble cycles and material decisions remain pending. Occupied-only
+  Empty and site-2 native inputs are checked; complete occupied sampling, ensemble cycles and material decisions remain pending. Occupied-only
   energy and full-orbital native checkpoints retain their distinct scopes;
   historical values and failed/prelaunch attempts remain preserved.
 - [Larger native recovery](../validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json):

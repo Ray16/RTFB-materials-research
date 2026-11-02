@@ -17,8 +17,8 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_04.json) has
-29 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_05.json) has
+42 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
@@ -95,8 +95,10 @@ sampled derivatives, projected modes and nuclear partitions remain mandatory.
 All three center SCFs and matched SCF/CPHF grids have been saved. The
 [empty native input](empty_native_review.json) now passes full independent
 reconstruction: 17 actual SCF frames, a 9.9656-cm⁻¹ minimum, sampled derivatives
-and its own three nuclear partitions. The two occupied native pilots, complete
-occupied sampling and ensemble cycles remain pending.
+and its own three nuclear partitions. The [site-2 single graft](single_native_review.json)
+also passes its own 17-frame, derivative, mode and nuclear reconstruction, with
+a minimum frequency of 11.0972 cm⁻¹. The largest native pilot, complete occupied
+sampling and ensemble cycles remain pending.
 
 The dimension witness separates a 119-atom corrected full Hessian that completed
 before its producer's wall stop from its subsequently completed derivative/mode
@@ -136,6 +138,13 @@ replaces only the same exact input slot with a fresh density-initialized solve.
 No source qualification transfers. The first recovery preparation's copied
 bytecode directory was caught before any GPU execution; copying/hashing now
 excludes bytecode directories and preserves that failed preparation separately.
+
+A later initial-residency query exited before any scientific worker or SCF
+started. [The exact guard, wrapper and controller were proven closed](guard_preflight_recovery_source.json);
+the [next successor manifest](recovery_manifest_02.json) replaces only that
+unchanged input with a fresh namespace. Existing guard records remain intact.
+A query timeout cannot authorize a restart while any recorded process is live
+or unverified; dedicated tests enforce this distinction.
 
 [Independent CPU watchdogs](watchdog_observation_01.json) now supplement the
 historical in-process monitor. An exact UID/PID-start/plan-argv check precedes

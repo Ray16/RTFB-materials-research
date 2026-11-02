@@ -428,15 +428,15 @@
     },
     "corrected_polymer_sampling": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
-      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_04.json",
-      "source_snapshot": "validation/corrected_sampling_2026-11-02/recovery_manifest_01.json",
+      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_05.json",
+      "source_snapshot": "validation/corrected_sampling_2026-11-02/recovery_manifest_02.json",
       "protocol": "validation/corrected_sampling_2026-11-02/sampling_contract.json",
       "live_observation": "validation/corrected_sampling_2026-11-02/full_campaign_observation_03.json",
       "checkpoint_control": "validation/corrected_sampling_2026-11-02/occupied_equivalence.json",
       "checks": "validation/corrected_sampling_2026-11-02/current_focused_checks.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5",
-      "status": "29_electronic_inputs_and_one_empty_native_input_checked_complete_sampling_pending",
-      "scope": "All 240 input slots retained; 29 checked same-model hybrid gas/SMD inputs, one checked empty native input, occupied G/ensembles and material admission pending",
+      "status": "42_electronic_two_native_inputs_checked_occupied_sampling_pending",
+      "scope": "All 240 inputs retained; 42 checked hybrid gas/SMD inputs and two full native inputs; largest native pilot and occupied ensembles remain pending",
       "checked_energy": "validation/corrected_sampling_2026-11-02/empty_pilot_review.json",
       "checked_single_energy": "validation/corrected_sampling_2026-11-02/single_pilot_review.json",
       "prepared_manifest": "validation/corrected_sampling_2026-11-02/PSS_prepared_manifest.json",
@@ -444,7 +444,16 @@
       "native_preparation": "validation/corrected_sampling_2026-11-02/native_pilot_manifest.json",
       "native_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native",
       "queue_status": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json",
-      "native_checked": "validation/corrected_sampling_2026-11-02/empty_native_review.json"
+      "native_checked": "validation/corrected_sampling_2026-11-02/empty_native_review.json",
+      "native_checked_single": "validation/corrected_sampling_2026-11-02/single_native_review.json"
+    },
+    "counterion_geometry_sensitivity": {
+      "guide": "validation/counterion_sensitivity_2026-11-02/README.md",
+      "current": "validation/counterion_sensitivity_2026-11-02/start_observation.json",
+      "source_snapshot": "validation/counterion_sensitivity_2026-11-02/prepared_manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2",
+      "status": "seven_exact_chloride_microstate_starts_prepared_one_geometry_pilot_started",
+      "scope": "Formal oxidized core +2 plus Cl- gives total +1 singlet, distinct from the reduced radical; geometry-only, no association G/speciation/material conclusion"
     }
   }
 }
