@@ -9,7 +9,7 @@ preserved in Git; the source-frozen manuscript epoch is selected by
 | --- | --- | --- |
 | M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; eleven checked alternate-model polymer components and three matched neighboring-graft G cycles | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
-| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; two repaired exact viologen/chloride poses pass full native QC | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
+| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; four exact viologen/chloride outcomes pass full native QC and form three duplicate groups | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
 | M4: polymer sampling | Forty alternate-model empty inputs meet the finite 10-to-20 criterion; primary finite PMDI/phthalimide cycles remain separately scoped | Occupied graph/configuration batches, duplicate review and balanced occupied ensemble cycles |
 | M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
 | M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
@@ -75,7 +75,7 @@ failed minima have diagnosed signed repair branches prepared. Other poses and
 actual-condition speciation remain open. Twelve frozen
 motif triplets additionally pass 72 actual SCF reviews; local repulsion and the
 whole-chain E cycle have opposite signs in two of four parent frames. These
-motif results are integrated into the current frozen manuscript and slide evidence; the two chloride association poses remain separately scoped working results.
+motif and four chloride-contact outcomes are integrated into the current frozen manuscript and slide evidence. The N0 repairs share one numerical duplicate group; no hit-count entropy is introduced.
 [Sampling progress](../validation/corrected_sampling_2026-11-02/README.md).
 
 The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)

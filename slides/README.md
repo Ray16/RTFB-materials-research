@@ -1,7 +1,7 @@
 # Focused redox workflow presentation
 
 Open [redox_workflow.pdf](redox_workflow.pdf): sixteen main slides followed by
-six supporting slides. The editable sources are
+seven supporting slides. The editable sources are
 [redox_workflow.tex](redox_workflow.tex),
 [story/motivation_results.tex](story/motivation_results.tex) and
 [story/supporting.tex](story/supporting.tex).
@@ -35,8 +35,10 @@ Supporting slide 20 reports three checked matched ionic neighboring-graft G
 cycles: −3.94 kJ/mol for all-same adjacent, +22.58 for all-same one-spacer,
 and −5.30 for alternating one-spacer at the primary cutoff. Eleven independently
 checked local minima support these finite cycles. The alternating adjacent cycle
-and occupied ensembles remain pending. Slide 21 reports the primary molecular
-control; slide 22 retains reproducibility limits. The current immutable manuscript
+and occupied ensembles remain pending. Slide 21 reports four primary chloride-contact outcomes in three duplicate groups
+(1-M association G +15.42 to +22.36 kJ/mol), with the spin and particle-count
+conventions explicit. Slide 22 reports the primary molecular control; slide 23
+retains reproducibility limits. The current immutable manuscript
 evidence epoch also supplies twelve motif triplets and 72 independently checked
 SCFs for slide 13. Its electronic comparison is distinct from binding G,
 electronic coupling and an experimental grafting distribution.

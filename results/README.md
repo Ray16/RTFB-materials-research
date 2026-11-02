@@ -66,7 +66,8 @@ establish that a calculation is currently running.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin, distinct from the +1 doublet redox state.
-  Six stationary poses have checked SCF energies. Four microstates from three original starts pass full native QC and give
+  Six stationary poses have checked SCF energies. Four checked outcomes from three original starts form three numerical
+  duplicate groups and give
   finite 1-M association G of +15.4 to +22.4 kJ/mol at the primary cutoff.
   Two other minimum failures have independently diagnosed signed repairs
   prepared. Other poses, salt speciation

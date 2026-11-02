@@ -24,11 +24,15 @@ conversion is applied once after the count-balanced source sum (association
 changes solute count by −1). These are two repaired outcomes from one initial
 pose, not independently weighted populations, an exhaustive conformer set,
 an experimentally validated association constant or a grafting-yield prediction.
-The [current four-component summary](thermochemistry_current_03.json) additionally
+The [current four-component summary](thermochemistry_current_04.json) additionally
 includes independently checked N1-above and N1-below minima (15.32 and
 14.00 cm⁻¹). Their [matched association ledger](association_N1_poses.json) gives
 +22.36 and +22.11 kJ/mol at 1 M and the primary cutoff. The four checked outcomes
-represent three original starts; they do not define populations or a global pose.
+represent three original starts. The [proper-rotation, symmetry-aware heavy-atom
+comparison](contact_geometry_duplicate_review.json) places the two N0 signed
+repairs in one duplicate group (0.00377 Å RMSD and an electronic-energy difference
+within 0.2 kJ/mol) at all 0.05/0.10/0.20-Å thresholds. Thus four outcomes supply
+three numerical duplicate groups; no population or global pose is inferred.
 
 N0-below and N0-outer failed their own minimum gates. Independent diagnoses
 reconstruct one unstable mode each at −40.64 and −35.66 cm⁻¹, with saved
@@ -134,3 +138,12 @@ review. The existing namespace preflight, atomic GPU gate, resource allocation,
 full-state checkpointer and budget observer are reused. All cases remain scoped
 as ion-convention controls for the established graft, rather than new synthesis
 candidates.
+
+The current immutable manuscript epoch integrates these four outcomes, their
+matched primary parents and the duplicate comparison. A frozen reader
+replays all three rotor-cutoff sums with independent decimal arithmetic, checks
+the single 1-atm-to-1-M conversion and repeats the geometry duplicate comparison.
+It does not repeat physical quantum QC. The [25 focused checks](publication_checks.xml)
+reject changed electronic/nuclear values, redox spin, model, missing chloride,
+double conversion, duplicate weights and unsupported population claims. The
+article and SI distinguish this finite test from exact-graft experimental accuracy.

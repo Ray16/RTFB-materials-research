@@ -32,6 +32,13 @@ local motif repulsion and whole-chain electronic nonadditivity have opposite
 signs in two of four parent frames. The article distinguishes these quantities
 from primary molecular G, binding free energy, coupling and ensemble predictions.
 
+The primary counterion test now supplies four checked chloride-contact outcomes
+and finite 1-M association G of +15.42 to +22.36 kJ/mol. Geometry/energy duplicate
+review places the two signed N0 repairs in one group at all tested thresholds,
+leaving three groups. The SI table and supporting slide preserve all outcomes
+without assigning population weights. This tests one part of the separated-ion
+convention; full salt speciation and exact-graft experimental accuracy remain open.
+
 The retrospective benchmark still has 39 endpoints and MAE 0.247 V. Numerical
 reproduction is distinct from experimental accuracy. Counterion/speciation
 sensitivity, complete occupied-polymer cycles/sampling, material accessibility,

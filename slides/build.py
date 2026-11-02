@@ -41,6 +41,10 @@ def main():
     if (epoch/'motif_energy_collection.json').exists():
         spec=importlib.util.spec_from_file_location('deck_checked_motif_interactions',ROOT/'manuscript/check_motif_interactions.py')
         checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);motif_check=checker.audit(epoch)
+    counterion_check=None
+    if (epoch/'counterion_inputs.json').exists():
+        spec=importlib.util.spec_from_file_location('deck_checked_counterion_association',ROOT/'manuscript/check_counterion_association.py')
+        checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);counterion_check=checker.audit(epoch)
     paths=[SLIDES/'redox_workflow.tex',SLIDES/'story/motivation_results.tex',SLIDES/'story/supporting.tex',
            epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',
            epoch/'viologen_native_values.tex',ROOT/'manuscript/check_viologen_native.py',Path(__file__).resolve()]
@@ -55,6 +59,10 @@ def main():
             *[epoch/(stem+suffix+extension) for stem,extension in [('ionic_native_cycles','.json'),('ionic_native_cycle_values','.tex'),('ionic_native_cycle_table','.tex')]]])
     if motif_check is not None:
         paths.extend([ROOT/'manuscript/check_motif_interactions.py',*[p for p in epoch.glob('motif_*') if p.is_file()]])
+    if counterion_check is not None:
+        paths.extend([ROOT/'manuscript/check_counterion_association.py',
+            *[ROOT/'src/redox/properties'/name for name in ('counterion.py','context.py','conformer_geometry.py','conformer_ensemble.py')],
+            *[p for p in epoch.glob('counterion_*') if p.is_file()]])
     inputs={str(p.relative_to(ROOT)):sha(p) for p in paths}
     for source in paths[:3]:
         text=source.read_text()
@@ -90,13 +98,21 @@ def main():
         raise ValueError('Checked ionic component or its cycle limit is absent from the deck')
     if motif_check is not None and 'motifrepulsion' not in ''.join(text.split()):
         raise ValueError('Checked motif/whole-chain interpretation is absent from the deck')
+    if counterion_check is not None:
+        # Math-mode decimal punctuation can acquire extraction-only spaces.
+        numerical_text=re.sub(r'(?<=\d)\s*\.\s*(?=\d)', '.',text)
+        for number in (f"{counterion_check['minimum_primary_association_1M_kJ_mol']:.2f}",
+                       f"{counterion_check['maximum_primary_association_1M_kJ_mol']:.2f}"):
+            if number not in numerical_text:raise ValueError('Checked chloride association range absent from the deck')
+        if 'threeduplicategroups' not in ''.join(text.lower().split()):
+            raise ValueError('Chloride duplicate scope absent from the deck')
     if '81' not in text or cohort['complete_cycles']!=6:raise ValueError('Checked primary-native coverage absent from the deck')
     if any(sha(ROOT/path)!=digest for path,digest in inputs.items()):raise ValueError('Deck source changed during compilation')
     shutil.copyfile(pdf,SLIDES/'redox_workflow.pdf')
     report=dict(status='focused_deck_built_checked_directional_result',pages=len(reader.pages),main_frames=main_frames,
         supporting_frames=supporting_frames,source_sha256=inputs,pdf_sha256=sha(SLIDES/'redox_workflow.pdf'),
         build_logs=str(build),overfull_boxes=[line for line in log.splitlines() if line.startswith('Overfull ')],
-        ionic_cycle_check=ionic_cycle,motif_interaction_check=motif_check,
+        ionic_cycle_check=ionic_cycle,motif_interaction_check=motif_check,counterion_association_check=counterion_check,
         visual_review='pending; record separately bound to this PDF',submission_ready=False)
     (SLIDES/'build_check.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
 

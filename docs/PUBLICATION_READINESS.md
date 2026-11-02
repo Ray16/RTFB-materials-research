@@ -53,7 +53,7 @@ reconstructs nine fresh Hessians, analytic chloride, 81 native orbital/frame
 reviews and six complete matched G cycles. Changes are below 2.45e-8 V and
 1.55e-6 kJ/mol. This numerical agreement does not establish experimental accuracy.
 
-The article/SI and 16-main/6-supporting slide deck now integrate the three finite
+The article/SI and 16-main/7-supporting slide deck now integrate the three finite
 ionic cycles and a four-frame electronic counterexample: frozen methyl-capped
 motifs are repulsive in MeCN, whereas whole-chain nonadditivity is favorable in
 two frames. Twelve triplets and 72 SCFs support this separately defined result;
@@ -61,6 +61,16 @@ it is not a unique backbone decomposition, binding G, coupling or a population.
 The corrected 240-input sampling campaign retains separate native and ensemble
 gates. Other benchmark/base-reaction nuclear coverage, broader counterion
 speciation, public deposition and author metadata remain open.
+
+Four primary-model incoming-chloride contact outcomes are now integrated into
+the article, SI and supporting slide 21. At 1 M their finite association G values
+are +15.42 to +22.36 kJ/mol. Proper-rotation, symmetry-aware heavy-atom RMSD and
+energy review place the two N0 repairs in one duplicate group at all tested
+thresholds, so four outcomes supply three numerical groups. Independent decimal
+replay checks every rotor sum and the single solute standard-state correction;
+25 focused checks reject corrupted data and unsupported promotion. This does
+not establish an exhaustive ensemble, actual ion populations, experimental
+association accuracy or a reaction yield. Those requirements remain open.
 
 The historical dated observations below document previous milestones and
 resource conditions. They are not current fleet or storage observations.

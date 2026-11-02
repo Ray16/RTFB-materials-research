@@ -88,6 +88,10 @@ def main():
     if (manifest.parent/'motif_energy_collection.json').exists():
         from check_motif_interactions import audit as audit_motif_interactions
         motif_interaction_check = audit_motif_interactions(manifest.parent)
+    counterion_association_check = None
+    if (manifest.parent/'counterion_inputs.json').exists():
+        from check_counterion_association import audit as audit_counterion_association
+        counterion_association_check = audit_counterion_association(manifest.parent)
     primary_native_cohort_check = None
     corrected_example_check = None
     if (manifest.parent/'primary_native_cohort_inputs.json').exists():
@@ -126,6 +130,11 @@ def main():
         source['src/redox/workflows/ionic_native_cycles.py']=sha(ROOT/'src/redox/workflows/ionic_native_cycles.py')
     if motif_interaction_check is not None:
         source['manuscript/check_motif_interactions.py']=sha(PAPER/'check_motif_interactions.py')
+    if counterion_association_check is not None:
+        for name in ('manuscript/check_counterion_association.py','src/redox/properties/counterion.py',
+                     'src/redox/properties/context.py','src/redox/properties/conformer_geometry.py',
+                     'src/redox/properties/conformer_ensemble.py'):
+            source[name]=sha(ROOT/name)
     if primary_native_cohort_check is not None:
         source['manuscript/check_primary_native_cohort.py']=sha(PAPER/'check_primary_native_cohort.py')
         source['src/redox/validation/native_component_sensitivity.py']=sha(ROOT/'src/redox/validation/native_component_sensitivity.py')
@@ -205,6 +214,7 @@ def main():
                   native_component_check=native_component_check,
                   ionic_native_cycle_check=ionic_native_cycle_check,
                   motif_interaction_check=motif_interaction_check,
+                  counterion_association_check=counterion_association_check,
                   primary_native_cohort_check=primary_native_cohort_check,
                   corrected_example_check=corrected_example_check,
                   xtb_runtime_check=xtb_runtime_check,
