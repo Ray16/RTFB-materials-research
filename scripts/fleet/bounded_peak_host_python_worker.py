@@ -29,6 +29,13 @@ def high_water_bytes(status):
     raise ValueError('Linux RSS high-water mark unavailable')
 
 
+def validate_resources(bound, free_floor, poll, grace, profile='native'):
+    allowed = (0 < bound <= 80) if profile == 'native' else (
+        bound in (160, 240) if profile == 'corrected_hybrid_energy' else False)
+    if not allowed or free_floor != 32 or not .05 <= poll <= 1 or not 0 < grace <= 30:
+        raise ValueError('Explicit supported RSS profile, 32 GiB free floor and 0.05–1 s sampling required')
+
+
 def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--out', type=Path, required=True)
@@ -36,18 +43,21 @@ def main():
     p.add_argument('--minimum-free-gib', type=float, default=32)
     p.add_argument('--poll-seconds', type=float, default=.1)
     p.add_argument('--grace-seconds', type=float, default=5)
+    p.add_argument('--resource-profile', choices=('native', 'corrected_hybrid_energy'), default='native')
     p.add_argument('program', type=Path)
     p.add_argument('arguments', nargs=argparse.REMAINDER)
     a = p.parse_args()
-    if (not 0 < a.maximum_rss_gib <= 80 or a.minimum_free_gib != 32
-            or not .05 <= a.poll_seconds <= 1 or not 0 < a.grace_seconds <= 30):
-        p.error('A positive effective bound up to 80 GiB, 32 GiB free floor and 0.05–1 s sampling are required')
+    try:
+        validate_resources(a.maximum_rss_gib, a.minimum_free_gib, a.poll_seconds, a.grace_seconds, a.resource_profile)
+    except ValueError as error:
+        p.error(str(error))
     a.out.mkdir(parents=True, exist_ok=False)
     process = psutil.Process()
     record = dict(status='effective_memory_guard_running', pid=os.getpid(),
                   process_start=Path('/proc/self/stat').read_text().rsplit(')', 1)[1].split()[19],
                   host=os.uname().nodename, maximum_RSS_GiB=a.maximum_rss_gib,
                   minimum_free_GiB=a.minimum_free_gib, CPU_affinity=process.cpu_affinity(),
+                  resource_profile=a.resource_profile,
                   peak_tree_RSS_bytes=0, self_VmHWM_bytes=0, started=time.time(),
                   polling_seconds=a.poll_seconds, signal_target='this owned process only')
     stopped, breached = threading.Event(), threading.Event()

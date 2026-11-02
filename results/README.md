@@ -64,6 +64,12 @@ establish that a calculation is currently running.
   reviews reconstruct six full exact-viologen G cycles. Changes from source are
   below 2.45e-8 V and 1.55e-6 kJ/mol. This is numerical reproduction, not
   experimental/speciation or material validation.
+- [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
+  all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
+  The empty gas/SMD energy pair is independently checked; the larger resource
+  pilots remain unqualified and 237 followups remain held. Occupied-only checkpoints preserve actual
+  determinants/densities exactly; native G, ensemble cycles and material decisions
+  remain pending. Historical values and failed/prelaunch attempts are preserved.
 - [Larger native recovery](../validation/ionic_cycle_completion_2026-11-02/RHF16_recovery_start_verification.json):
   the failed 137-atom pilot's exact grids/orbitals and solute partial tensor are
   preserved. A declared H100/RKS workspace expansion recomputes full solvent H1,

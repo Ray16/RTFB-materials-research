@@ -14,10 +14,13 @@ from pathlib import Path
 import re
 import shutil
 import time
+import hashlib
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.molecular_native_namespace import verify
+
+SOURCE_BYTES=Path(__file__).read_bytes()
 
 
 def load(path,name):
@@ -76,14 +79,22 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
     policy=Path(os.environ.get('GPU_RESERVE_CONFIG',str(GATE.parent.parent/'.config/gpu_reserve/config.env'))).resolve()
     match=re.search(r'^ALLOWED_HOSTS="([^"]+)"',policy.read_text(),re.M)
     if match is None:raise ValueError('Authoritative system host policy required')
-    record=dict(status='checked_native_followup_dispatching',started=time.time(),
-        source_sha256={str(p):sha256_file(p) for p in [*prerequisite_sources,Path(__file__),policy]},launches=[],refusals=[],native_G_qualified=False,avoided_hosts=sorted(set(avoid_hosts)))
+    snapshots={}
+    for source in [*prerequisite_sources,Path(__file__),policy]:
+        source=Path(source);content=SOURCE_BYTES if source==Path(__file__) else source.read_bytes()
+        digest=hashlib.sha256(content).hexdigest();frozen=output/'source_snapshots'/digest/source.name
+        if not frozen.exists():frozen.parent.mkdir(parents=True,exist_ok=True);frozen.write_bytes(content)
+        if sha256_file(frozen)!=digest:raise ValueError('As-used dispatch source snapshot differs')
+        snapshots[str(source)]=dict(snapshot=str(frozen),sha256=digest)
+    record=dict(status='checked_native_followup_dispatching',started=time.time(),source_snapshots=snapshots,
+        source_sha256={row['snapshot']:row['sha256'] for row in snapshots.values()},launches=[],refusals=[],native_G_qualified=False,avoided_hosts=sorted(set(avoid_hosts)))
     with (output/'followup_dispatch.lock').open('a+') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         pending=[]
         for row in rows:
             root=Path(row['namespace']).parent
-            if not (root/'case/status.json').exists() and not (root/'case/residency_guard/owner.json').exists() and not (root/'dispatch_claim').exists():pending.append(row)
+            condition,_=remote.inspect(row,root/'dispatch_claim',owners.alive)
+            if condition in ('pending','prelaunch_refusal_no_scientific_attempt'):pending.append(row)
         hosts=[host for host in match.group(1).split() if host not in avoid_hosts]
         slots,errors=capacity.discover_slots(hosts);record['availability_errors']=errors;blocked_hosts=set()
         # The fast inventory can time out on a healthy many-GPU host. One
@@ -110,12 +121,27 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
             claim=None
             try:
                 observed=capacity.capacity(host,gpu,interpreter)
+                # A returned SSH receipt can precede the Python guard's start.
+                # Account for its RAM until the live process scan can see that
+                # worker, rather than assigning the same headroom twice.
+                starting=sum(previous['maximum_host_RSS_GiB']*2**30 for previous in record['launches']
+                    if previous['host']==host and not (Path(previous['receipt']['placement']).parent/'case/residency_guard/owner.json').exists())
+                observed=dict(observed,promised=observed['promised']+starting)
                 if observed['GPU_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024) or not capacity.fits(plan,observed):continue
-                candidate_claim=Path(row['namespace']).parent/'dispatch_claim';candidate_claim.mkdir();claim=candidate_claim
-                atomic_write_json(claim/'owner.json',dict(queue=str(output),host=os.uname().nodename,pid=os.getpid(),process_start=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]))
+                candidate_claim=Path(row['namespace']).parent/'dispatch_claim'
+                if candidate_claim.exists():
+                    if json.loads((candidate_claim/'owner.json').read_text()).get('queue')!=str(output):
+                        raise ValueError('A foreign dispatch claim remains preserved')
+                    condition,_=remote.inspect(row,candidate_claim,owners.alive)
+                    if condition!='prelaunch_refusal_no_scientific_attempt':raise ValueError('Only a proven closed prelaunch refusal may retry')
+                else:
+                    candidate_claim.mkdir()
+                    atomic_write_json(candidate_claim/'owner.json',dict(queue=str(output),host=os.uname().nodename,pid=os.getpid(),process_start=Path('/proc/self/stat').read_text().rsplit(')',1)[1].split()[19]))
+                claim=candidate_claim
                 pending.pop(0)
-                receipt=remote.launch(row,host,gpu,interpreter,claim,1)
-                record['launches'].append(dict(key=row['key'],host=host,GPU=gpu,receipt=receipt))
+                number=len(list(claim.glob('try_*.json')))+1
+                receipt=remote.launch(row,host,gpu,interpreter,claim,number)
+                record['launches'].append(dict(key=row['key'],host=host,GPU=gpu,receipt=receipt,maximum_host_RSS_GiB=plan['maximum_host_RSS_GiB']))
             except Exception as error:
                 record['refusals'].append(dict(key=row['key'],host=host,GPU=gpu,error=repr(error),uncertain_attempt_preserved=claim is not None))
                 blocked_hosts.add(host)

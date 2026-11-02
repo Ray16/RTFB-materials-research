@@ -1,0 +1,195 @@
+{
+  "status": "sampling_process_and_progress_observation_not_physical_admission",
+  "checked": 1793630369.333042,
+  "manifest": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/manifest.json",
+  "manifest_sha256": "675916c21a0d985a39fd98149ac04345e91bcda16c7f970c8ca08bfb27e33039",
+  "records": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_2_3__conf001/namespace.json",
+      "namespace_sha256": "bede994f2dd5bf09aad15f111612443ef09edddb524b5b4a432a481cf0a84b7a",
+      "stage_snapshot": {
+        "status": "corrected_sampling_energy_running",
+        "started": 1793630118.867153,
+        "owner": {
+          "host": "lambda1",
+          "pid": 459148,
+          "process_start": "588028197"
+        },
+        "native_G_qualified": false,
+        "occupied_ensemble_cycle_qualified": false
+      },
+      "SCF_iterations": [],
+      "SCF_kernels_entered": 1,
+      "occupied_checkpoints_written": 0,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_2__conf001/namespace.json",
+      "namespace_sha256": "c3b4dca89d8a9c3410ad31c21a496b81e854670d216f1e01d03b4460ff459188",
+      "stage_snapshot": {
+        "status": "corrected_sampling_energy_running",
+        "started": 1793630118.8685725,
+        "owner": {
+          "host": "lambda1",
+          "pid": 459677,
+          "process_start": "588028557"
+        },
+        "native_G_qualified": false,
+        "occupied_ensemble_cycle_qualified": false
+      },
+      "SCF_iterations": [],
+      "SCF_kernels_entered": 1,
+      "occupied_checkpoints_written": 1,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_none__conf001/namespace.json",
+      "namespace_sha256": "e451af6a8ccd59ed45b72d974f94f915e465cdf4905389da6c80f5e513187bc8",
+      "stage_snapshot": {
+        "status": "corrected_sampling_energy_running",
+        "started": 1793630334.4529097,
+        "owner": {
+          "host": "lambda2",
+          "pid": 3609152,
+          "process_start": "1443095009"
+        },
+        "native_G_qualified": false,
+        "occupied_ensemble_cycle_qualified": false
+      },
+      "SCF_iterations": [],
+      "SCF_kernels_entered": 1,
+      "occupied_checkpoints_written": 0,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/namespace.json",
+      "namespace_sha256": "50d76738bc04e6b6d66bd40d569a2ad4aa59501b1d55216b50adb301cfa1ad6f",
+      "stage_snapshot": {
+        "status": "charged_polymer_native_component_running",
+        "owner": {
+          "host": "lambda13",
+          "pid": 1945676,
+          "process_start": "173654991"
+        },
+        "started": 1793619460.5758607,
+        "native_G_qualified": false,
+        "production_default_changed": false
+      },
+      "SCF_iterations": [],
+      "SCF_kernels_entered": 0,
+      "occupied_checkpoints_written": 0,
+      "native_G_qualified": false
+    }
+  ],
+  "live_hosts": {
+    "lambda1": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda1",
+            "pid": 459148,
+            "process_start": "588028197"
+          },
+          "live": true,
+          "CPU_affinity": [
+            0,
+            1
+          ],
+          "environment": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "CUDA_VISIBLE_DEVICES": "0"
+          }
+        },
+        {
+          "owner": {
+            "host": "lambda1",
+            "pid": 459677,
+            "process_start": "588028557"
+          },
+          "live": true,
+          "CPU_affinity": [
+            3,
+            4
+          ],
+          "environment": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "CUDA_VISIBLE_DEVICES": "1"
+          }
+        }
+      ],
+      "GPU_residency": [
+        "459148, GPU-54527752-20db-dbfe-f13c-c14b1f7d3716, 15048",
+        "459677, GPU-acfb23c0-7163-580e-11cd-370e35867833, 18856"
+      ]
+    },
+    "lambda2": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda2",
+            "pid": 3609152,
+            "process_start": "1443095009"
+          },
+          "live": true,
+          "CPU_affinity": [
+            2,
+            3
+          ],
+          "environment": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "CUDA_VISIBLE_DEVICES": "0"
+          }
+        }
+      ],
+      "GPU_residency": [
+        "3609152, GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074, 10526"
+      ]
+    },
+    "lambda13": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda13",
+            "pid": 1945676,
+            "process_start": "173654991"
+          },
+          "live": true,
+          "CPU_affinity": [
+            4,
+            5
+          ],
+          "environment": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "CUDA_VISIBLE_DEVICES": "1"
+          }
+        }
+      ],
+      "GPU_residency": [
+        "1945676, GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 25966"
+      ]
+    }
+  },
+  "native_G_qualified": false,
+  "jobs_restarted": false,
+  "producer_sha256": "40b6752d82730facd5858735584ba6566d3f1057cb2ba631ba3158244a87a9d7"
+}

@@ -44,10 +44,20 @@ def probe(path):
         'import numpy,psutil,ase,h5py;from pyscf.gto import mole;'
         'wanted='+repr(runtime['versions'])+';assert {k:m.version(k) for k in wanted}==wanted;'
         'root=pathlib.Path('+repr(spec['sources'])+');'
+        'guard_definition=importlib.util.spec_from_file_location("preflight_host_guard",root/"host_guard.py");'
+        'guard=importlib.util.module_from_spec(guard_definition);guard_definition.loader.exec_module(guard);'
+        'guard.validate_resources(plan["maximum_host_RSS_GiB"],32,.1,5,plan["host_memory_profile"]) if plan.get("corrected_sampling_energy") else None;'
         'modules=sorted({n.module for name in ["worker.py","helper.py","host_guard.py","scientific_worker.py","checkpoints.py","response_helper.py","restart_helper.py","response_resume_helper.py","saved_matrix_helper.py"] if (root/name).exists() for n in ast.walk(ast.parse((root/name).read_text())) if isinstance(n,ast.ImportFrom) and n.module and n.module.startswith("redox.")});'
         'assert all(importlib.util.find_spec(name) is not None for name in modules),modules;'
         'print(json.dumps(dict(versions=wanted,worker_imports=modules,CUDA_context_started=False)))')
-    run=subprocess.run(execution.command(spec)+[runtime['python'],'-c',program],capture_output=True,text=True,check=True,timeout=120)
+    try:
+        run=subprocess.run(execution.command(spec)+[runtime['python'],'-c',program],capture_output=True,text=True,check=True,timeout=120)
+    except subprocess.CalledProcessError as error:
+        atomic_write_json(path.with_name('node_probe_failure_'+str(time.time_ns())+'.json'),dict(
+            status='node_preflight_failed_no_GPU_started',host=os.uname().nodename.split('.')[0],
+            namespace_sha256=sha256_file(path),returncode=error.returncode,
+            stdout=error.stdout,stderr=error.stderr,GPU_started=False,checked=time.time()))
+        raise
     result=dict(host=os.uname().nodename.split('.')[0],namespace_sha256=sha256_file(path),checks=json.loads(run.stdout),GPU_started=False);atomic_write_json(path.with_name('node_probe.json'),result);return result
 
 
@@ -266,12 +276,19 @@ def launch(path,gpu,output):
         expected=(40,14400,2**30);role='primary_molecular_Hessian_control'
         if (plan.get('minimum_initial_storage_GiB'),plan.get('minimum_live_storage_GiB'))!=(33,32) or plan.get('native_memory_cap_GiB')!=6:
             raise ValueError('Primary molecular native control profile changed')
+    if plan.get('corrected_sampling_energy'):
+        from redox.workflows.sampling_energy import profile
+        declared=profile(plan['tasks'][0])
+        if len(plan['tasks'])!=1 or any(plan.get(k)!=v for k,v in declared.items()):
+            raise ValueError('Exact corrected sampling energy storage/resource profile required')
+        expected=(declared['maximum_host_RSS_GiB'],14400,256*2**20);role='corrected_sampling_energy'
     if plan['role']!=role or (plan['maximum_host_RSS_GiB'],plan['maximum_wall_seconds'],plan['maximum_durable_output_bytes'])!=expected:raise ValueError('Exact bounded control resource class required')
     if proof['host']!=host or proof['namespace_sha256']!=sha256_file(path):raise ValueError('Exact node-local preflight required')
     if output.exists() or any((case/name).exists() for name in ('status.json','residency_guard','host_guard')):raise FileExistsError('Preserve earlier controls')
     output.mkdir(parents=True);shutil.copyfile(__file__,output/'launcher_source.py');shutil.copyfile(observe_budget.__code__.co_filename,output/'budget_observer_source.py');runtime=json.loads((Path(spec['archive'])/'environments/cutensor22/runtime.json').read_text());prior=Path(spec['prior_root'])
     argv=execution.command(spec);locks=GATE.parent.parent/'.gpu_locks';argv[-1:-1]=['--bind',str(locks),str(locks)]
-    argv += [str(GATE),'run',str(gpu),'--label','redox-screening-control','--',runtime['python'],str(prior/'scripts/fleet/exclusive_python_worker.py'),'--guard-out',str(case/'residency_guard'),str(Path(spec['sources'])/'host_guard.py'),'--out',str(case/'host_guard'),'--maximum-rss-gib',str(plan['maximum_host_RSS_GiB']),'--minimum-free-gib','32',str(prior/'scripts/fleet/tensor_runtime_worker.py'),'--profile',str(prior/'environments/cutensor22/runtime.json'),'--out',str(case/'tensor_runtime'),str(Path(spec['sources'])/'worker.py'),'--plan',str(case/'plan.json')]
+    guard_profile=['--resource-profile',plan['host_memory_profile']] if plan.get('corrected_sampling_energy') else []
+    argv += [str(GATE),'run',str(gpu),'--label','redox-screening-control','--',runtime['python'],str(prior/'scripts/fleet/exclusive_python_worker.py'),'--guard-out',str(case/'residency_guard'),str(Path(spec['sources'])/'host_guard.py'),'--out',str(case/'host_guard'),'--maximum-rss-gib',str(plan['maximum_host_RSS_GiB']),'--minimum-free-gib','32',*guard_profile,str(prior/'scripts/fleet/tensor_runtime_worker.py'),'--profile',str(prior/'environments/cutensor22/runtime.json'),'--out',str(case/'tensor_runtime'),str(Path(spec['sources'])/'worker.py'),'--plan',str(case/'plan.json')]
     env=dict(os.environ,PYTHONPATH=str(prior/'src'),LD_LIBRARY_PATH=runtime['library_path'],PYTHONDONTWRITEBYTECODE='1',CUPY_CACHE_DIR='/tmp/cupy_kernel_cache',NUMPY_MADVISE_HUGEPAGE='0',TMPDIR='/tmp')
     for name in ('OMP_NUM_THREADS','OMP_THREAD_LIMIT','OPENBLAS_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS','XTB_THREADS'):env[name]='2'
     with allocation_guard():
