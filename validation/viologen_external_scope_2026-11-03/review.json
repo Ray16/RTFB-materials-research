@@ -1,0 +1,55 @@
+{
+  "status": "closest_experimental_analogue_identity_and_overlap_audited",
+  "doi": "10.1002/chem.202200149",
+  "primary_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9310624/",
+  "source_location": "Results and Discussion, Figure 1 discussion",
+  "experimental_context": {
+    "object": "soluble benzyl/methyl viologen mediator",
+    "solvent": "acetonitrile",
+    "reference": "Fc+/0",
+    "supporting_electrolyte": "tetrabutylammonium hexafluorophosphate",
+    "supporting_electrolyte_M": 0.5,
+    "mediator_counterions": "two hexafluorophosphate ions"
+  },
+  "measured_identity": {
+    "smiles": "C[n+]1ccc(-c2cc[n+](Cc3ccccc3)cc2)cc1",
+    "formula": "C18H18N2+2"
+  },
+  "local_graft_model_identity": {
+    "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+    "formula": "C19H20N2+2"
+  },
+  "exact_graph_match": false,
+  "matched_solvent_label": true,
+  "matched_reference_label": true,
+  "electrolyte_and_ion_environment_matched": false,
+  "identity_difference": "The local model adds a para-methyl substituent to the benzyl ring",
+  "already_present_in_retrospective_benchmark": true,
+  "overlapping_endpoints": 2,
+  "independent_held_out_endpoints_added": 0,
+  "points": [
+    {
+      "wave": 1,
+      "experimental_V_vs_Fc": -0.785,
+      "existing_same_parent_benchmark_calculated_V_vs_Fc": -0.5946151498974359,
+      "existing_benchmark_signed_error_V": 0.19038485010256412,
+      "new_exact_graft_error_V": null
+    },
+    {
+      "wave": 2,
+      "experimental_V_vs_Fc": -1.204,
+      "existing_same_parent_benchmark_calculated_V_vs_Fc": -1.207346329385473,
+      "existing_benchmark_signed_error_V": -0.003346329385472968,
+      "new_exact_graft_error_V": null
+    }
+  ],
+  "exact_graft_experimental_accuracy_established": false,
+  "polymer_potential_validated": false,
+  "existing_benchmark_modified": false,
+  "manuscript_numerical_results_changed": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-11-03_editorial_pass/benchmark.json": "f529e951647d3a9365d84fa45dfba821ce19a156cfbf003fb356eeec6bbebef7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-11-03_editorial_pass/viologen_native_candidate.json": "6e3213f1a1fa5df98cfedd2f4bfdbcaedce999492febb5b0cbd29cdeefe19960",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/viologen_external_scope_2026-11-03/audit.py": "5bb4e977ccc6d4f874c7b48fa16ae96d051106762584e8650b0d62f8eceb3589"
+  }
+}

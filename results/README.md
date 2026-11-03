@@ -61,6 +61,11 @@ establish that a calculation is currently running.
   the oxidized state retain separate fresh electronic inputs, with no historical
   energy substituted. All three electronic states pass independent actual SCF/spin review; own
   native jobs are prepared and queued, with G and potential pending.
+- [Experimental viologen comparison scope](../validation/viologen_external_scope_2026-11-03/README.md):
+  the closest measured mediator differs from the capped graft by a para-methyl
+  substituent and both endpoints are already in the retrospective benchmark.
+  It adds no new exact-graft or held-out accuracy result; the published numerical
+  comparison and final PDFs remain unchanged.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.
