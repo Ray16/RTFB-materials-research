@@ -1,0 +1,184 @@
+{
+  "schema": 1,
+  "profile_id": "all_axes_preformed_polymer_v1",
+  "decision_scope": "Conditional computational shortlist within explicitly declared model/scenario coverage; no experimental material-performance guarantee.",
+  "rule": "All required axes must pass. No weighted average, compensation or missing-as-zero rule. Pareto comparison follows admission.",
+  "status": "initial_criteria_profile_with_explicit_unset_targets",
+  "required_axes": [
+    {
+      "id": "redox_window",
+      "label": "Operating redox window",
+      "kind": "numeric",
+      "scope": "exact_capped_graft",
+      "unit": "V_vs_Fc",
+      "minimum": -3.0,
+      "maximum": 2.0,
+      "accepted_interval_kinds": [
+        "qualified_scenario_envelope",
+        "validated_prediction_interval"
+      ],
+      "criterion_source": "config/project.json: declared model operating window; not a measured stability guarantee."
+    },
+    {
+      "id": "capacity",
+      "label": "Capacity at declared loading",
+      "kind": "numeric",
+      "scope": "conditional_polymer_capacity",
+      "unit": "mAh_per_g_material",
+      "minimum": null,
+      "maximum": null,
+      "accepted_interval_kinds": [
+        "qualified_scenario_envelope",
+        "validated_prediction_interval"
+      ],
+      "criterion_source": "Application cutoff pending; do not derive it from candidate ranks."
+    },
+    {
+      "id": "state_stability",
+      "label": "Redox-state integrity/stability",
+      "kind": "categorical",
+      "scope": "declared_redox_path",
+      "accepted_values": [
+        "criteria_passed"
+      ],
+      "rejected_values": [
+        "demonstrated_unacceptable"
+      ],
+      "criterion_source": "Required physical/state and chemical-stability criteria must be specified and checked; disproportionation alone is insufficient."
+    },
+    {
+      "id": "charge_transfer",
+      "label": "Intended charge transfer",
+      "kind": "numeric",
+      "scope": "declared_solution_ET_model",
+      "unit": "eV",
+      "minimum": null,
+      "maximum": null,
+      "accepted_interval_kinds": [
+        "qualified_scenario_envelope",
+        "validated_prediction_interval"
+      ],
+      "criterion_source": "Application cutoff pending; do not derive it from candidate ranks."
+    },
+    {
+      "id": "attachment_route",
+      "label": "Practical attachment route",
+      "kind": "categorical",
+      "scope": "exact_precursor_product_route",
+      "accepted_values": [
+        "proceed"
+      ],
+      "rejected_values": [
+        "exclude_route"
+      ],
+      "criterion_source": "docs/PRACTICAL_GRAFTING.md plus exact mapped route gate."
+    },
+    {
+      "id": "grafting_thermodynamics",
+      "label": "Defined-route thermodynamics",
+      "kind": "numeric",
+      "scope": "defined_base_assisted_reaction",
+      "unit": "kJ_per_mol",
+      "minimum": null,
+      "maximum": 0,
+      "accepted_interval_kinds": [
+        "qualified_scenario_envelope",
+        "validated_prediction_interval"
+      ],
+      "criterion_source": "Declared nonpositive standard free-energy screen within specified route/scenarios; not a universal experimental synthesis-feasibility cutoff."
+    },
+    {
+      "id": "motif_association",
+      "label": "Unwanted motif association",
+      "kind": "numeric",
+      "scope": "matched_motif_interaction_model",
+      "unit": "kJ_per_mol",
+      "minimum": null,
+      "maximum": null,
+      "accepted_interval_kinds": [
+        "qualified_scenario_envelope",
+        "validated_prediction_interval"
+      ],
+      "criterion_source": "Application cutoff pending; do not derive it from candidate ranks."
+    },
+    {
+      "id": "neighbor_coupling",
+      "label": "Unwanted intersite electronic coupling",
+      "kind": "numeric",
+      "scope": "specified_charge_state_coupling",
+      "unit": "eV",
+      "minimum": null,
+      "maximum": null,
+      "accepted_interval_kinds": [
+        "qualified_scenario_envelope",
+        "validated_prediction_interval"
+      ],
+      "criterion_source": "Application cutoff pending; do not derive it from candidate ranks."
+    },
+    {
+      "id": "occupancy_sensitivity",
+      "label": "Loading/spacing sensitivity",
+      "kind": "categorical",
+      "scope": "conditional_polymer_ensemble",
+      "accepted_values": [
+        "criteria_passed"
+      ],
+      "rejected_values": [
+        "demonstrated_unacceptable"
+      ],
+      "criterion_source": "Compare explicit occupancy, stereochemistry and converged conformer scenarios; no assumed experimental sequence distribution."
+    },
+    {
+      "id": "accessibility",
+      "label": "Model of polymer accessibility",
+      "kind": "categorical",
+      "scope": "declared_support_accessibility_model",
+      "accepted_values": [
+        "criteria_passed"
+      ],
+      "rejected_values": [
+        "demonstrated_unacceptable"
+      ],
+      "criterion_source": "Assess the specified support, linker and medium. Molecular solubility or SA is insufficient."
+    }
+  ],
+  "context": {
+    "route": "post-functionalization of a preformed polymer",
+    "operating_medium": "acetonitrile",
+    "temperature_K": 298.15,
+    "pools_evaluated_separately": true
+  },
+  "unconfigured_targets_are_pending": true,
+  "missing_or_unvalidated_evidence_is_pending": true,
+  "proxy_policy": "SA, bare molecular nominal capacity, gas-only lambda, stacked geometry and full-segment association cannot replace the corresponding material/route/motif/kinetic quantities.",
+  "route_policy": "Positive HCl-reference G alone does not exclude a base-assisted route. Base-required candidates remain in the evaluation pool.",
+  "intervals": "Scenario envelopes are model sensitivities; retrospective benchmark RMSE or a single sigma is not a calibrated candidate prediction interval.",
+  "shared_context_groups": [
+    {
+      "id": "operating_environment",
+      "axes": [
+        "redox_window",
+        "capacity",
+        "state_stability",
+        "charge_transfer",
+        "motif_association",
+        "neighbor_coupling",
+        "occupancy_sensitivity",
+        "accessibility"
+      ],
+      "required_context": {
+        "medium": "acetonitrile",
+        "temperature_K": 298.15
+      }
+    },
+    {
+      "id": "attachment_conditions",
+      "axes": [
+        "attachment_route",
+        "grafting_thermodynamics"
+      ],
+      "required_context": {}
+    }
+  ],
+  "context_policy": "Qualified axes share a declared operating environment; route evidence and reaction G share a separate declared reaction context. Reaction medium/temperature may differ from operation, but cannot be silently mixed between route and thermodynamics."
+}

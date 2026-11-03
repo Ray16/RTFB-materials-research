@@ -10,8 +10,13 @@ from redox.core.hashing import sha256_file
 from redox.properties.counterion import association_cycle
 from redox.properties.conformer_geometry import alignment_molecule,symmetry_rmsd_matrix
 from redox.properties.conformer_ensemble import cluster_minima
+from redox.properties.contact_identity import validate_identities
 
 FACTOR=Decimal('1.602176634e-19')*Decimal('6.02214076e23')/Decimal(1000)
+
+
+def prefix_for(folder):
+    return next(p for p in ('counterion_v3_','counterion_v2_','counterion_') if (folder/(p+'inputs.json')).exists())
 
 
 def close(actual,expected,tolerance=1e-7):
@@ -21,7 +26,7 @@ def close(actual,expected,tolerance=1e-7):
 
 
 def reconstruct(folder):
-    prefix='counterion_v2_' if (folder/'counterion_v2_inputs.json').exists() else 'counterion_'
+    prefix=prefix_for(folder)
     def artifact(name):return folder/(prefix+name)
     catalog=json.loads(artifact('inputs.json').read_text())
     parents=json.loads((artifact('primary_inputs.json')).read_text())
@@ -29,10 +34,18 @@ def reconstruct(folder):
         if parents!=json.loads((folder/'primary_native_cohort_inputs.json').read_text()):
             raise ValueError('Counterion and manuscript primary parents differ')
     thermal=json.loads((artifact('parent_thermal_protocol.json')).read_text())
-    if (catalog['checked_outcomes'] not in (4,6) or len(catalog['outcomes'])!=catalog['checked_outcomes'] or catalog['declared_original_starts']!=7
+    modern=catalog.get('identity_schema')==2
+    if (type(catalog['checked_outcomes']) is not int or catalog['checked_outcomes']<1
+            or len(catalog['outcomes'])!=catalog['checked_outcomes']
             or catalog['conformer_ensemble_qualified'] or catalog['experimental_accuracy_validated']
             or catalog['material_admission'] or catalog['reaction_rate_or_yield_inferred']):
-        raise ValueError('Exact finite four-outcome scope required')
+        raise ValueError('Exact declared finite-outcome scope required')
+    if modern:
+        identities=validate_identities(catalog['outcomes'],catalog['declared_start_keys'])
+        if catalog['declared_original_starts']!=len(catalog['declared_start_keys']):raise ValueError('Declared start count differs')
+        if [(r['key'],r['label']) for r in catalog['outcomes']]!=identities:raise ValueError('Publication identities differ')
+    elif catalog['checked_outcomes'] not in (4,6) or catalog['declared_original_starts']!=7:
+        raise ValueError('Legacy publication roster differs')
     context=deepcopy(parents['components']['graft_ox2']['context'])
     if context!=parents['components']['chloride']['context'] or context['temperature_K']!=298.15:
         raise ValueError('Matched primary parent context and temperature required')
@@ -53,6 +66,7 @@ def reconstruct(folder):
     rows=[];molecules=[];electronic=[]
     for item in catalog['outcomes']:
         report=json.loads((folder/item['review']).read_text());geometry=folder/item['geometry']
+        if modern and report['key']!=item['original_start']:raise ValueError('Original start differs from reviewed component')
         if (report['status']!='primary_counterion_thermochemistry_independently_checked'
                 or (report['charge'],report['mult'],report['formal_core_charge'])!=(1,1,2)
                 or report['native_G_qualified'] is not True or report['conformer_ensemble_qualified']
@@ -84,6 +98,9 @@ def reconstruct(folder):
         temperature=Decimal(str(context['temperature_K']))
         correction=-Decimal('0.00831446261815324')*temperature*(Decimal('0.08205736608096')*temperature).ln()
         for cutoff in ('25','50','100'):
+            binding=recorded['component_contexts'][cutoff]['components']['paired']['sources']
+            if list(binding.values())!=[sha256_file(folder/item['review'])]:
+                raise ValueError('Ledger refers to a different contact review')
             source=(Decimal(str(report['G_by_cutoff_eV'][cutoff]))
                     -Decimal(str(shared['graft']['G_by_cutoff_eV'][cutoff]))
                     -Decimal(str(shared['chloride']['G_by_cutoff_eV'][cutoff])))*FACTOR
@@ -97,28 +114,36 @@ def reconstruct(folder):
             source_G=recorded['source_convention_deltaG_kJ_mol'],correction=float(correction)))
         molecules.append(alignment_molecule(report['smiles'],geometry))
         electronic.append(dict(key=item['key'],E_eV=report['electronic_eV']))
-    expected_keys=['N0_minus','N0_plus','N1_above','N1_below']+(['N0_below_minus','N0_outer_minus'] if catalog['checked_outcomes']==6 else [])
-    if [row['key'] for row in rows]!=expected_keys:
-        raise ValueError('Four exact source outcomes must retain their individual identities')
+    expected_keys=[key for key,label in identities] if modern else ['N0_minus','N0_plus','N1_above','N1_below']+(['N0_below_minus','N0_outer_minus'] if catalog['checked_outcomes']==6 else [])
+    if [row['key'] for row in rows]!=expected_keys or len({sha256_file(folder/r['review']) for r in catalog['outcomes']})!=len(rows):
+        raise ValueError('Exact source outcomes must retain their distinct identities')
     duplicate=json.loads((artifact('duplicate_review.json')).read_text())
     matrix,matches=symmetry_rmsd_matrix(molecules)
     if (not np.allclose(matrix,duplicate['proper_rotation_symmetry_heavy_RMSD_A'],atol=1e-8,rtol=0)
             or matches!=duplicate['automorphisms'] or duplicate['populations_inferred']
-            or duplicate['conformer_ensemble_qualified']):
+            or duplicate['conformer_ensemble_qualified'] or duplicate['electronic_energy_tolerance_kJ_mol']!=.2):
         raise ValueError('Actual frozen geometry duplicate comparison differs')
     for cutoff in (.05,.1,.2):
         groups=cluster_minima(electronic,matrix,cutoff,.2)
-        if groups!=duplicate['groups_by_RMSD_cutoff_A'][str(cutoff)] or len(groups)!=len(rows)-1:
-            raise ValueError('Four outcomes must not be counted as four independent conformational wells')
-    return rows,float(matrix[0,1])
+        if groups!=duplicate['groups_by_RMSD_cutoff_A'][str(cutoff)]:
+            raise ValueError('Duplicate groups must match the actual frozen geometries and energies')
+    keys=[r['key'] for r in rows]
+    rmsd=float(matrix[keys.index('N0_minus'),keys.index('N0_plus')]) if {'N0_minus','N0_plus'}<=set(keys) else None
+    return rows,rmsd
 
 
-def values(rows):
+def values(rows, *, counts=None):
     numbers=dict(ChlorideAssocMin=min(r['G']['50'] for r in rows),
         ChlorideAssocMax=max(r['G']['50'] for r in rows),ChlorideCorrection=rows[0]['correction'])
-    numbers.update({name:row['G']['50'] for name,row in zip(
-        ['ChlorideNZeroMinus','ChlorideNZeroPlus','ChlorideNOneAbove','ChlorideNOneBelow','ChlorideNZeroBelow','ChlorideNZeroOuter'],rows)})
-    return ''.join('\\newcommand{\\'+name+'}{'+f'{value:.2f}'+'}\n' for name,value in numbers.items())
+    names=dict(N0_minus='ChlorideNZeroMinus',N0_plus='ChlorideNZeroPlus',N1_above='ChlorideNOneAbove',
+               N1_below='ChlorideNOneBelow',N0_below_minus='ChlorideNZeroBelow',
+               N0_outer_minus='ChlorideNZeroOuter',N0_outer_plus='ChlorideNZeroOuterPlus')
+    numbers.update({names[row['key']]:row['G']['50'] for row in rows if row['key'] in names})
+    text=''.join('\\newcommand{\\'+name+'}{'+f'{value:.2f}'+'}\n' for name,value in numbers.items())
+    if counts is not None:
+        text+=f'\\newcommand{{\\ChlorideOutcomeCount}}{{{len(rows)}}}\n'
+        text+=f'\\newcommand{{\\ChlorideDuplicateCount}}{{{counts}}}\n'
+    return text
 
 
 def table(rows):
@@ -132,10 +157,15 @@ def table(rows):
 
 def audit(folder):
     rows,rmsd=reconstruct(folder)
-    prefix='counterion_v2_' if (folder/'counterion_v2_inputs.json').exists() else 'counterion_'
-    if (folder/(prefix+'values.tex')).read_text()!=values(rows) or (folder/(prefix+'table.tex')).read_text()!=table(rows):
+    prefix=prefix_for(folder)
+    catalog=json.loads((folder/(prefix+'inputs.json')).read_text())
+    duplicate=json.loads((folder/(prefix+'duplicate_review.json')).read_text())
+    counts={c:len(groups) for c,groups in duplicate['groups_by_RMSD_cutoff_A'].items()}
+    if (folder/(prefix+'values.tex')).read_text()!=values(rows,counts=counts['0.1'] if catalog.get('identity_schema')==2 else None) or (folder/(prefix+'table.tex')).read_text()!=table(rows):
         raise ValueError('Counterion numerical TeX inputs differ from frozen evidence')
-    return dict(status='frozen_primary_contact_outcomes_replayed',checked_outcomes=len(rows),duplicate_groups=len(rows)-1,
+    return dict(status='frozen_primary_contact_outcomes_replayed',checked_outcomes=len(rows),duplicate_groups=counts['0.1'],
+        duplicate_groups_by_RMSD_cutoff_A=counts,
+        primary_association_values_kJ_mol=[r['G']['50'] for r in rows],
         same_group_N0_heavy_RMSD_A=rmsd,minimum_primary_association_1M_kJ_mol=min(r['G']['50'] for r in rows),
         maximum_primary_association_1M_kJ_mol=max(r['G']['50'] for r in rows),
         original_physical_QC_repeated=False,geometry_duplicate_comparison_repeated=True,

@@ -165,7 +165,7 @@ def main():
         source['manuscript/check_motif_interactions.py']=sha(PAPER/'check_motif_interactions.py')
     if counterion_association_check is not None:
         for name in ('manuscript/check_counterion_association.py','src/redox/properties/counterion.py',
-                     'src/redox/properties/context.py','src/redox/properties/conformer_geometry.py',
+                     'src/redox/properties/context.py','src/redox/properties/contact_identity.py','src/redox/properties/conformer_geometry.py',
                      'src/redox/properties/conformer_ensemble.py'):
             source[name]=sha(ROOT/name)
     if registry_expansion_check is not None:

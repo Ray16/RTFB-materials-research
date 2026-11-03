@@ -78,7 +78,7 @@ def main():
         paths.extend([ROOT/'manuscript/check_motif_interactions.py',*[p for p in epoch.glob('motif_*') if p.is_file()]])
     if counterion_check is not None:
         paths.extend([ROOT/'manuscript/check_counterion_association.py',
-            *[ROOT/'src/redox/properties'/name for name in ('counterion.py','context.py','conformer_geometry.py','conformer_ensemble.py')],
+            *[ROOT/'src/redox/properties'/name for name in ('counterion.py','context.py','contact_identity.py','conformer_geometry.py','conformer_ensemble.py')],
             *[p for p in epoch.glob('counterion_*') if p.is_file()]])
     if registry_check is not None:
         paths.extend([ROOT/'manuscript/check_registry_expansion.py',ROOT/'scripts/pipeline/screen_grafting_routes.py',
@@ -129,8 +129,14 @@ def main():
         for number in (f"{counterion_check['minimum_primary_association_1M_kJ_mol']:.2f}",
                        f"{counterion_check['maximum_primary_association_1M_kJ_mol']:.2f}"):
             if number not in numerical_text:raise ValueError('Checked chloride association range absent from the deck')
-        if ({3:'three',5:'five'}[counterion_check['duplicate_groups']]+'duplicategroups') not in ''.join(text.lower().split()):
+        compact=''.join(text.lower().split());count=counterion_check['duplicate_groups']
+        forms=[str(count)+'duplicategroups']
+        if count in (3,5):forms.append({3:'three',5:'five'}[count]+'duplicategroups')
+        if not any(form in compact for form in forms):
             raise ValueError('Chloride duplicate scope absent from the deck')
+        contact_text=re.sub(r'(?<=\d)\s*\.\s*(?=\d)', '.', reader.pages[20].extract_text())
+        if any(f'{value:.2f}' not in contact_text for value in counterion_check['primary_association_values_kJ_mol']):
+            raise ValueError('A checked chloride outcome is absent from slide 21')
     if registry_check is not None and str(registry_check['exact_graphs']) not in text:
         raise ValueError('Checked current registry census absent from the deck')
     if phenothiazine_check is not None and f"{phenothiazine_check['primary_V']:.3f}" not in text:

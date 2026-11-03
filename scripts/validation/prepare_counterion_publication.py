@@ -11,15 +11,23 @@ from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.counterion_thermochemistry import checked_component
 from redox.workflows.molecular_native_namespace import load,verify
+from redox.properties.contact_identity import validate_identities
 
 
 def prepare(summary_path,primary_inputs,duplicate_review,output):
     if output.exists():raise FileExistsError('Preserve all previous evidence')
     summary=json.loads(summary_path.read_text())
-    if (summary['checked_components'] not in (4,6) or summary['distinct_original_starts_with_checked_G']!=summary['checked_components']-1
-            or summary['declared_original_starts']!=7 or summary['conformer_ensemble_qualified']
+    modern=summary.get('identity_schema')==2
+    if (summary['checked_components']!=len(summary['records'])
+            or summary['distinct_original_starts_with_checked_G']!=len({r['original_start'] for r in summary['records']})
+            or summary['conformer_ensemble_qualified']
             or summary['populations_inferred'] or summary['global_thermodynamic_pose_selected']):
-        raise ValueError('Four checked finite outcomes and three original starts required')
+        raise ValueError('Exact checked finite-outcome scope required')
+    if modern:
+        identities=validate_identities(summary['records'],summary['declared_start_keys'])
+        if summary['declared_original_starts']!=len(summary['declared_start_keys']):raise ValueError('Declared starts differ')
+    elif summary['checked_components'] not in (4,6) or summary['declared_original_starts']!=7:
+        raise ValueError('Legacy publication roster differs')
     parents=json.loads(primary_inputs.read_text());parent=parents['components']['graft_ox2']
     parent_paths={Path(p) for p in parent['sources']}
     for path,digest in parent['sources'].items():
@@ -36,9 +44,10 @@ def prepare(summary_path,primary_inputs,duplicate_review,output):
     shutil.copyfile(primary_inputs,output/'counterion_primary_inputs.json')
     shutil.copyfile(duplicate_review,output/'counterion_duplicate_review.json')
     atomic_write_json(output/'counterion_parent_thermal_protocol.json',thermal)
-    identities=[('N0_minus',r'N0 above, $-$ mode'),('N0_plus',r'N0 above, $+$ mode'),
-                ('N1_above','N1 above'),('N1_below','N1 below')]
-    if summary['checked_components']==6:identities.extend([('N0_below_minus',r'N0 below, $-$ mode'),('N0_outer_minus',r'N0 outer, $-$ mode')])
+    if not modern:
+        identities=[('N0_minus',r'N0 above, $-$ mode'),('N0_plus',r'N0 above, $+$ mode'),
+                    ('N1_above','N1 above'),('N1_below','N1 below')]
+        if summary['checked_components']==6:identities.extend([('N0_below_minus',r'N0 below, $-$ mode'),('N0_outer_minus',r'N0 outer, $-$ mode')])
     if len(summary['records'])!=len(identities):raise ValueError('Complete declared publication outcomes required')
     outcomes=[];sources={str(p):sha256_file(p) for p in [summary_path,primary_inputs,duplicate_review,partitions[0],Path(__file__)]}
     for item,(key,label) in zip(summary['records'],identities):
@@ -51,16 +60,19 @@ def prepare(summary_path,primary_inputs,duplicate_review,output):
         if sha256_file(geometry)!=report['geometry_sha256']:raise ValueError('Actual checked contact geometry differs')
         row=dict(key=key,label=label,review='counterion_review_'+key+'.json',
                  geometry='counterion_geometry_'+key+'.xyz',ledger='counterion_ledger_'+key+'.json')
+        if modern:row.update(original_start=item['original_start'],branch=item['branch'])
         for source,name in [(review,row['review']),(geometry,row['geometry']),(ledger,row['ledger'])]:
             shutil.copyfile(source,output/name);sources[str(source)]=sha256_file(source)
         outcomes.append(row)
     checker=load(ROOT/'manuscript/check_counterion_association.py','frozen_counterion_publication_checker')
-    catalog=dict(checked_outcomes=len(outcomes),declared_original_starts=7,outcomes=outcomes,
+    catalog=dict(checked_outcomes=len(outcomes),declared_original_starts=summary['declared_original_starts'],outcomes=outcomes,
         conformer_ensemble_qualified=False,experimental_accuracy_validated=False,material_admission=False,
         reaction_rate_or_yield_inferred=False,source_sha256=sources)
+    if modern:catalog.update(identity_schema=2,declared_start_keys=summary['declared_start_keys'])
     atomic_write_json(output/'counterion_inputs.json',catalog)
     rows,_=checker.reconstruct(output)
-    (output/'counterion_values.tex').write_text(checker.values(rows))
+    duplicate=json.loads(duplicate_review.read_text())
+    (output/'counterion_values.tex').write_text(checker.values(rows,counts=len(duplicate['groups_by_RMSD_cutoff_A']['0.1']) if modern else None))
     (output/'counterion_table.tex').write_text(checker.table(rows))
     report=checker.audit(output);atomic_write_json(output/'counterion_replay.json',report)
     shutil.copyfile(ROOT/'manuscript/check_counterion_association.py',output/'counterion_checker_source.py')

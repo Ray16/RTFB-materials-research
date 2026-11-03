@@ -1,12 +1,27 @@
 # Expanded finite chloride-contact sensitivity
 
-The subsequent [N0-outer plus branch](N0_outer_plus_native_review.json) now
-passes independent full native review, with a 23.9544-cm-1 minimum and maximum
-sampled-column relative error of 1.8090e-4. Its
+The [current seven-outcome collection](current_03.json) incorporates the
+[N0-outer plus branch](N0_outer_plus_native_review.json), whose
 [matched association cycle](association_N0_outer_plus.json) is +5.93 kJ/mol
-at 1 M and 50 cm-1, within the current six-outcome publication range. This is
-an additional checked outcome; it has not yet been merged into the publication
-cohort's duplicate analysis. No population or synthesis inference is added.
+at 1 M and 50 cm-1. Seven outcomes from five original starts form **five
+numerical duplicate groups** at every tested threshold. The N0-above and
+N0-outer signed pairs each share one group, with proper-rotation heavy-atom
+RMSDs of 0.00377 and 0.01472 Angstrom. All 21 outcome/cutoff values are positive;
+the primary range remains **+5.33 to +22.36 kJ/mol**. Individual G values remain
+visible, and neither pair supplies hit-count entropy or population weights.
+
+The article, SI Table S11 and supporting slide 21 include all seven outcomes
+under the new immutable evidence epoch. The maintained collector is
+`python -m redox.validation.contact_cohort --help`, with the explicit
+[roster](seven_outcome_roster_02.json). It binds the original geometry campaign,
+exact native reviews and matched ledgers. Shared outcome identities and
+geometry-derived grouping replace assumptions that outcome count determines
+the number of starts or duplicate groups. Historical four/six-outcome snapshots
+remain supported. [Fifty checks](seven_publication_checks_03.xml) cover both old
+cohorts, the new cohort, numerical/state/context changes, wrong branch ledgers
+and reordered rosters. No population, synthesis or material inference is added.
+
+## Earlier six-outcome milestone
 
 Two additional contact components pass independent full thermochemistry review:
 [N0-below, minus repair](N0_below_minus_review.json) and

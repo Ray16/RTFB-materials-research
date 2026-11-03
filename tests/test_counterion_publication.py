@@ -11,9 +11,10 @@ spec=importlib.util.spec_from_file_location('counterion_publication_audit',ROOT/
 checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker)
 
 
-@pytest.fixture(params=['legacy','expanded'])
+@pytest.fixture(params=['legacy','expanded','seven'])
 def frozen(tmp_path,request):
     source=ROOT/('validation/counterion_sensitivity_2026-11-02/publication' if request.param=='legacy'
+                else 'validation/counterion_completion_2026-11-03/publication_seven' if request.param=='seven'
                 else 'validation/counterion_completion_2026-11-03/publication')
     target=tmp_path/'frozen';shutil.copytree(source,target)
     return target
@@ -26,7 +27,7 @@ def edit(folder,name,change):
 def test_actual_frozen_outcomes_replay_with_one_statistical_group_per_near_duplicate(frozen):
     result=checker.audit(frozen)
     count=json.loads((frozen/'counterion_inputs.json').read_text())['checked_outcomes']
-    assert result['checked_outcomes']==count and result['duplicate_groups']==count-1
+    assert result['checked_outcomes']==count and result['duplicate_groups']==(3 if count==4 else 5)
     low,high=(15.41,15.43) if count==4 else (5.32,5.34)
     assert low<result['minimum_primary_association_1M_kJ_mol']<high
     assert 22.35<result['maximum_primary_association_1M_kJ_mol']<22.37
@@ -52,3 +53,45 @@ def test_changed_chemistry_or_unsupported_interpretation_is_rejected(frozen,chan
         edit(frozen,'counterion_duplicate_review.json',lambda d:d['groups_by_RMSD_cutoff_A'].update({'0.1':[['N0_minus'],['N0_plus'],['N1_above'],['N1_below']]}))
     if change=='population_claim':edit(frozen,'counterion_inputs.json',lambda d:d.update(conformer_ensemble_qualified=True))
     with pytest.raises(ValueError):checker.audit(frozen)
+
+
+def test_seven_outcomes_retain_two_near_duplicate_pairs_without_weights():
+    folder=ROOT/'validation/counterion_completion_2026-11-03/publication_seven'
+    result=checker.audit(folder)
+    assert result['duplicate_groups_by_RMSD_cutoff_A']=={'0.05':5,'0.1':5,'0.2':5}
+    groups=json.loads((folder/'counterion_duplicate_review.json').read_text())['groups_by_RMSD_cutoff_A']['0.1']
+    assert any(set(g)=={'N0_outer_minus','N0_outer_plus'} for g in groups)
+    assert any(set(g)=={'N0_minus','N0_plus'} for g in groups)
+
+
+def test_outcome_identity_cannot_be_changed_even_when_values_stay_the_same(tmp_path):
+    source=ROOT/'validation/counterion_completion_2026-11-03/publication_seven'
+    folder=tmp_path/'seven';shutil.copytree(source,folder)
+    edit(folder,'counterion_inputs.json',lambda d:d['outcomes'][-1].update(original_start='N1_outer'))
+    with pytest.raises(ValueError):checker.audit(folder)
+
+
+def test_ledger_cannot_be_reassigned_to_another_branch(tmp_path):
+    source=ROOT/'validation/counterion_completion_2026-11-03/publication_seven'
+    folder=tmp_path/'seven';shutil.copytree(source,folder)
+    def alter(d):
+        row=next(r for r in d['states'] if r['key']=='N0_outer')
+        row['component_contexts']['50']['components']['paired']['sources']={'wrong_branch':'0'*64}
+    edit(folder,'counterion_ledger_N0_outer_plus.json',alter)
+    with pytest.raises(ValueError,match='different contact review'):checker.audit(folder)
+
+
+def test_declared_roster_order_does_not_reassign_named_values(tmp_path):
+    source=ROOT/'validation/counterion_completion_2026-11-03/publication_seven'
+    folder=tmp_path/'seven';shutil.copytree(source,folder)
+    path=folder/'counterion_inputs.json';data=json.loads(path.read_text());order=[6,0,1,2,3,4,5]
+    data['outcomes']=[data['outcomes'][i] for i in order];path.write_text(json.dumps(data))
+    path=folder/'counterion_duplicate_review.json';duplicate=json.loads(path.read_text());matrix=duplicate['proper_rotation_symmetry_heavy_RMSD_A']
+    duplicate['proper_rotation_symmetry_heavy_RMSD_A']=[[matrix[i][j] for j in order] for i in order];path.write_text(json.dumps(duplicate))
+    rows,rmsd=checker.reconstruct(folder)
+    text=checker.values(rows,counts=5)
+    (folder/'counterion_values.tex').write_text(text);(folder/'counterion_table.tex').write_text(checker.table(rows))
+    result=checker.audit(folder)
+    assert result['duplicate_groups']==5 and rmsd<.004
+    assert r'\newcommand{\ChlorideNZeroOuterPlus}{5.93}' in text
+    assert r'\newcommand{\ChlorideNZeroMinus}{15.61}' in text

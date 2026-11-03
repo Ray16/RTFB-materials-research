@@ -5,12 +5,12 @@ As of 3 November 2026, this is a 21-page JCIM working article with a separate
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
-The [six-outcome chloride followup](../validation/counterion_completion_2026-11-03/README.md)
+The [seven-outcome chloride followup](../validation/counterion_completion_2026-11-03/README.md)
 is now integrated into the article, SI Table S11 and slide 21. The finite 1-M
 range is +5.33 to +22.36 kJ/mol, with five numerical duplicate groups and
 positive values at all tested cutoffs. This expands the declared sample while
 retaining conditional reaction and incomplete-speciation limits. The earlier
-four-outcome editorial snapshot remains preserved.
+four- and six-outcome snapshots remain preserved.
 
 ## Next publication decisions
 
@@ -41,7 +41,7 @@ polymer performance. Final release and deposition remain required for submission
 | --- | --- | --- |
 | M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; twelve checked alternate-model polymer components and all four declared matched neighboring-graft G cycles | Retain finite-model and conditional-reaction scope; qualify additional components only if their quantities enter a headline claim; full material admission is not claimed |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
-| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; six exact viologen/chloride outcomes pass full native QC and form five duplicate groups | Test the scenarios needed for the claimed interpretation, or retain conditional ΔG without a synthesis-feasibility conclusion; ΔG is not yield or rate |
+| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; seven exact viologen/chloride outcomes pass full native QC and form five duplicate groups | Test the scenarios needed for the claimed interpretation, or retain conditional ΔG without a synthesis-feasibility conclusion; ΔG is not yield or rate |
 | M4: polymer sampling | Earlier forty-input empty cohorts pass their finite diagnostic; the first corrected occupied 20-input cell fails the 2-kJ/mol diagnostic across all duplicate/rotor scenarios; SI Table S17 reports the signed changes | For equilibrium claims, complete and converge every required cycle component; otherwise restrict conclusions to retained geometries. Phthalimide failure does not establish viologen convergence |
 | M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
 | M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
@@ -101,7 +101,7 @@ slots. These are publication-snapshot counts, not a live fleet census. Its first
 complete occupied cell fails the declared ten-to-twenty sampling diagnostic;
 eleven cells and balanced occupied ensemble cycles remain incomplete. The
 largest 119-atom pilot passes independent minimum, derivative, wavefunction and
-resource review. Separately, six exact local viologen/chloride outcomes from
+resource review. Separately, seven exact local viologen/chloride outcomes from
 five original starts pass full native QC and give finite 1-M association G of
 +5.33 to +22.36 kJ/mol at the primary cutoff. They form five numerical duplicate
 groups. Failed stationary poses remain preserved and unqualified; other

@@ -67,7 +67,7 @@ inputs and 31 independently reconstructed native inputs out of 240 declared
 slots. The largest native pilot passed full review; matched followups continue,
 while occupied ensembles remain incomplete. All four declared finite ionic
 viologen cycles now pass independent component and balance review, including
-the source-bound saved-Hessian recovery (+8.28 kJ/mol for alternating adjacent). Six primary chloride-contact outcomes now have
+the source-bound saved-Hessian recovery (+8.28 kJ/mol for alternating adjacent). Seven primary chloride-contact outcomes now have
 checked finite association G and form five numerical duplicate groups. Broader
 contacts, salt speciation and material conclusions remain unresolved. These
 milestones do not establish JCIM submission readiness.
@@ -119,13 +119,13 @@ The corrected 240-input sampling campaign retains separate native and ensemble
 gates. Other benchmark/base-reaction nuclear coverage, broader counterion
 speciation, public deposition and author metadata remain open.
 
-Six primary-model incoming-chloride contact outcomes are now integrated into
+Seven primary-model incoming-chloride contact outcomes are now integrated into
 the article, SI and supporting slide 21. At 1 M their finite association G values
 are +5.33 to +22.36 kJ/mol. Proper-rotation, symmetry-aware heavy-atom RMSD and
-energy review place the two N0 repairs in one duplicate group at all tested
-thresholds, so six outcomes supply five numerical groups. Independent decimal
+energy review place each signed N0-above and N0-outer pair in one group at all
+tested thresholds, so seven outcomes supply five numerical groups. Independent decimal
 replay checks every rotor sum and the single solute standard-state correction;
-25 focused checks reject corrupted data and unsupported promotion. This does
+50 focused checks reject corrupted data, wrong branch ledgers and unsupported promotion. This does
 not establish an exhaustive ensemble, actual ion populations, experimental
 association accuracy or a reaction yield. Those requirements remain open.
 

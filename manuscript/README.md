@@ -43,10 +43,10 @@ publication checker reconstructs the geometry/partition analysis for both paper
 and slides; the [76 focused tests](../validation/corrected_sampling_2026-11-02/manuscript_shared_checks.xml)
 include prefix relocation, numerical tampering and unsupported scope promotion.
 
-The primary counterion test now supplies six checked chloride-contact outcomes
+The primary counterion test now supplies seven checked chloride-contact outcomes
 and finite 1-M association G of +5.33 to +22.36 kJ/mol. Geometry/energy duplicate
-review places the two signed N0 repairs in one group at all tested thresholds,
-leaving five groups. The SI table and supporting slide preserve all outcomes
+review places each signed N0-above and N0-outer pair in one group at all tested
+thresholds, leaving five groups. The SI table and supporting slide preserve all outcomes
 without assigning population weights. This tests one part of the separated-ion
 convention; full salt speciation and exact-graft experimental accuracy remain open.
 
@@ -94,11 +94,11 @@ scope is cached arithmetic/context, complementing the molecular CPU examples.
 The final editorial PDFs are unchanged; this package does not replace full
 raw-data deposition or rerun quantum validation.
 
-The six-contact evidence update retains the editorial revision and now includes
-the N0-below/outer minus minima. SI Table S11 and supporting slide 21 contain
-all six outcomes in five numerical duplicate groups. Their primary-cutoff
+The subsequent seven-outcome update adds N0-outer plus to the six-contact
+snapshot while retaining the editorial revision. SI Table S11 and supporting slide 21 contain
+all seven outcomes in five numerical duplicate groups. Their primary-cutoff
 association range is +5.33 to +22.36 kJ/mol; all tested cutoffs remain positive.
-Earlier four-outcome snapshots are preserved. This is a finite conditional
+Earlier four- and six-outcome snapshots are preserved. This is a finite conditional
 association result, without population, yield or complete speciation claims.
 
 The exact local N-linked phenothiazine baseline now has a checked finite first

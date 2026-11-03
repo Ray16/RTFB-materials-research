@@ -8,7 +8,7 @@ establish that a calculation is currently running.
 - [Paper and SI](../manuscript/README.md): checked 21/36-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates all four declared finite ionic neighboring-graft G cycles,
-  matched motif/chain electronic comparisons and six chloride-contact outcomes
+  matched motif/chain electronic comparisons and seven chloride-contact outcomes
   in five numerical duplicate groups. The new occupied sampling diagnostic fails and is reported in the abstract,
   results and SI Table S17. Occupied ensembles, broader salt speciation
   and full material eligibility remain pending.
@@ -77,9 +77,9 @@ establish that a calculation is currently running.
   It adds no new exact-graft or held-out accuracy result; the published numerical
   comparison and final PDFs remain unchanged.
 - [Expanded chloride-contact sensitivity](../validation/counterion_completion_2026-11-03/README.md):
-  six checked outcomes form five numerical groups and span +5.33 to +22.36
+  seven checked outcomes form five numerical groups and span +5.33 to +22.36
   kJ/mol at 1 M. All tested cutoff scenarios remain positive. The earlier paper
-  snapshot remains preserved; all six outcomes are integrated in the article,
+  snapshot remains preserved; all seven outcomes are integrated in the article,
   SI and supporting slides.
 - [Chloride release dependency inventory](../validation/counterion_release_inventory_2026-11-03/README.md):
   the initial 7,217-file inventory and all 163 obsolete logical bindings are
@@ -140,17 +140,17 @@ establish that a calculation is currently running.
   remains unchanged.
 - [T4 full geometry resource pilot](../validation/counterion_T4_geometry_2026-11-02/README.md):
   the strict pilot passes independent review of 102 SCFs and final stationarity,
-  at 9,762 MiB peak. Three matching repairs now run exclusively on T4 GPUs;
-  their own geometry checks remain pending. Hessian and native G remain separate.
-- [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
+  at 9,762 MiB peak. This qualifies the scoped smaller-card geometry workflow;
+  Hessian and native G require their separate full-class reviews.
+- [Earlier chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin, distinct from the +1 doublet redox state.
-  Six stationary poses have checked SCF energies. Four checked outcomes from three original starts form three numerical
-  duplicate groups and give
+  The initial four-outcome cohort from three original starts formed three numerical
+  duplicate groups and gave
   finite 1-M association G of +15.4 to +22.4 kJ/mol at the primary cutoff.
-  Two other minimum failures have independently diagnosed signed repairs
-  prepared. Other poses, salt speciation
-  and any synthesis/material conclusion remain pending.
+  The expanded seven-outcome cohort above is now current. Original failures
+  and repair records remain preserved; salt speciation and material conclusions
+  remain unresolved.
 - [Frozen ionic motif controls](../validation/viologen_motif_interactions_2026-11-02/README.md):
   twelve charged A/B/AB triplets (72 SCFs) pass independent review. The capped
   motif interaction is repulsive in all four checked MeCN parent frames,
