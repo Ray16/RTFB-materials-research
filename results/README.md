@@ -54,10 +54,10 @@ establish that a calculation is currently running.
   failure and earlier prelaunch interruptions remain preserved. No G is admitted.
 - [Phenothiazine CDS derivative accuracy](../validation/phenothiazine_cds_2026-11-03/README.md):
   both neutral Hessian asymmetries are traced to the legacy CDS numerical step.
-  Both finer-step neutral controls now pass full independent native review,
-  including 42 actual SCF checkpoints. The original default-step oxidized
-  component passes separately; matching finer-step oxidized review and
-  state/reference compatibility remain pending. No oxidation potential is admitted.
+  All three finer-step controls now pass full independent native review,
+  including 63 actual SCF checkpoints. The matched oxidized step sensitivity
+  is below 6e-9 eV. Exact Fc/Fc+ reference compatibility remains to be checked;
+  no oxidation potential is admitted.
 - [Fresh phenothiazine electronic scoring](../validation/refined_electronic_2026-11-02/README.md):
   all three refined geometries pass independent review. Both neutral branches and
   the oxidized state retain separate fresh electronic inputs, with no historical
@@ -74,10 +74,10 @@ establish that a calculation is currently running.
   snapshot remains preserved; all six outcomes are integrated in the article,
   SI and supporting slides.
 - [Chloride release dependency inventory](../validation/counterion_release_inventory_2026-11-03/README.md):
-  7,217 files verified, with exact-content recovery of 153 obsolete logical
-  bindings. Ten historical metadata bindings in shared provenance remain
-  unresolved. This inventories declared dependencies; complete portable release
-  and public deposition remain pending.
+  the initial 7,217-file inventory and all 163 obsolete logical bindings are
+  resolved by exact hashes. A local package retains 5,528 unique raw objects;
+  runtime dependencies and third-party papers remain external. Numerical replay,
+  implicit dependencies and public deposition retain separate scopes.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.

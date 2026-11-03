@@ -609,13 +609,13 @@
     },
     "phenothiazine_CDS_derivative_accuracy": {
       "guide": "validation/phenothiazine_cds_2026-11-03/README.md",
-      "current": "validation/phenothiazine_cds_2026-11-03/current_02.json",
+      "current": "validation/phenothiazine_cds_2026-11-03/current_03.json",
       "source_snapshot": "validation/phenothiazine_cds_2026-11-03/prepared_manifest.json",
       "qualification": "validation/phenothiazine_cds_2026-11-03/qualification_02.json",
       "checks": "validation/phenothiazine_cds_2026-11-03/final_checks_02.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6",
-      "status": "two_neutral_finer_CDS_native_components_independently_qualified",
-      "scope": "Both finer-step neutral components pass full independent Hessian, 42 actual SCF-frame, derivative, mode and nuclear review. Original default-step oxidized G remains separate; matching finer-step oxidized review and state/reference compatibility remain pending. No oxidation potential or material admission."
+      "status": "all_three_finer_CDS_native_components_independently_qualified",
+      "scope": "Three full finer-step native components pass independent Hessian, 63 actual SCF-frame, derivative, mode and nuclear review. Matched oxidized step sensitivity is below 6e-9 eV. Exact Fc/Fc+ reference compatibility remains to be checked with component numerical policies retained; no potential or material admission."
     },
     "finite_viologen_portable_replay": {
       "guide": "examples/finite_viologen_replay/README.md",
@@ -646,11 +646,13 @@
     },
     "chloride_release_dependency_inventory": {
       "guide": "validation/counterion_release_inventory_2026-11-03/README.md",
-      "current": "validation/counterion_release_inventory_2026-11-03/content_resolution.json",
+      "current": "validation/counterion_release_inventory_2026-11-03/package_verification.json",
       "source_snapshot": "validation/counterion_release_inventory_2026-11-03/inventory.json",
-      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls",
-      "status": "declared_dependency_inventory_with_ten_historical_metadata_bindings_unresolved",
-      "scope": "Six chloride outcomes and parents seed recursive declared hash-map inventory; aggregate records also reference historical PMDI/base chemistry. Exact-content relocation only; no lost-data conclusion, full dependency closure, new quantum QC or public deposition."
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_declared_contact_sources",
+      "status": "declared_bindings_resolved_local_raw_package_isolated_integrity_verified",
+      "scope": "All 163 obsolete logical bindings located by exact hashes. Local package verifies 5528 unique objects and 7207 file mappings with original scientific paths blocked; 20 runtime/publication dependencies remain external. No new quantum replay, implicit-dependency coverage or public deposition.",
+      "resolution": "validation/counterion_release_inventory_2026-11-03/grafting_metadata_resolution.json",
+      "checks": "validation/counterion_release_inventory_2026-11-03/release_checks_02.xml"
     }
   }
 }

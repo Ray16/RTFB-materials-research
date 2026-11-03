@@ -40,10 +40,10 @@ and balanced occupied ensemble cycles remain incomplete. The earlier phenothiazi
 independently checked refinements and fresh electronic states. The neutral
 native Hessian failures are now traced to the legacy CDS derivative step. The
 [oxidized component passes independent native review](../validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json),
-and both [finer-step neutral controls now pass full native review](../validation/phenothiazine_cds_2026-11-03/current_02.json).
-The matching finer-step oxidized control remains unqualified in that snapshot;
-state/reference compatibility and numerical-policy sensitivity must be checked
-before an oxidation potential is admitted. Phenothiazine electrochemistry will enter
+and all [three finer-step controls now pass full native review](../validation/phenothiazine_cds_2026-11-03/current_03.json).
+The matched oxidized step sensitivity is below 6e-9 eV at every cutoff.
+Exact Fc/Fc+ reference compatibility, with component numerical policies retained,
+remains to be checked before an oxidation potential is admitted. Phenothiazine electrochemistry will enter
 the paper quantitatively only after compatible state/reference components
 qualify; its unfinished calculations do not block the existing core examples.
 Code cleanup, completed example calculations and presentation updates each

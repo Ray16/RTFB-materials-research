@@ -1,6 +1,15 @@
 # Phenothiazine CDS derivative accuracy and native validation
 
-## Qualified neutral controls
+## Qualified finer-step controls
+
+All three full native controls now qualify in the
+[latest collection](current_03.json), including the
+[oxidized doublet](oxidized_finer_native_review.json). Its minimum frequency is
+26.0728 cm-1 and maximum sampled-column relative error is 2.2623e-5. The three
+reviews cover 63 actual SCF checkpoints. At the same oxidized geometry, the
+finer-minus-default G difference is below 6e-9 eV at every rotor cutoff; the
+physical model and electronic energy are unchanged. The exact Fc/Fc+ reference
+compatibility check remains to be completed before a potential is admitted.
 
 Both finer-step neutral calculations now pass full independent review:
 [minus branch](neutral_minus_native_review.json) and
@@ -11,15 +20,14 @@ projected modes and reconstructed nuclear terms. Minimum frequencies are
 1.1784e-5 and 1.1342e-5. The unchanged physical thresholds are met using the
 declared 1e-6-Bohr CDS step; the earlier failed matrices remain unqualified.
 
-The [current collection](current_02.json) preserves exact graph, charge/spin,
+The [neutral-only snapshot](current_02.json) preserves exact graph, charge/spin,
 electronic/native/thermal protocols and the CDS numerical policy. At the
 50-cm-1 cutoff the two neutral G values differ by -7.36e-6 kJ/mol (plus branch
 minus minus branch); across all three cutoffs the largest absolute difference
 is below 0.000336 kJ/mol. This is agreement between two refined branches, not
-an ensemble or a measure of experimental accuracy. The matching finer-step
-oxidized calculation remains unqualified in this snapshot, and no oxidation
-potential is admitted. The default-step oxidized result below is retained
-separately for a subsequent numerical-policy sensitivity comparison.
+an ensemble or a measure of experimental accuracy. That snapshot predates
+the oxidized qualification above. The default-step oxidized result below
+remains separately preserved for the numerical-policy sensitivity comparison.
 
 ## Diagnosis and original preparation
 
