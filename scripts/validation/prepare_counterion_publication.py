@@ -16,7 +16,7 @@ from redox.workflows.molecular_native_namespace import load,verify
 def prepare(summary_path,primary_inputs,duplicate_review,output):
     if output.exists():raise FileExistsError('Preserve all previous evidence')
     summary=json.loads(summary_path.read_text())
-    if (summary['checked_components']!=4 or summary['distinct_original_starts_with_checked_G']!=3
+    if (summary['checked_components'] not in (4,6) or summary['distinct_original_starts_with_checked_G']!=summary['checked_components']-1
             or summary['declared_original_starts']!=7 or summary['conformer_ensemble_qualified']
             or summary['populations_inferred'] or summary['global_thermodynamic_pose_selected']):
         raise ValueError('Four checked finite outcomes and three original starts required')
@@ -38,6 +38,8 @@ def prepare(summary_path,primary_inputs,duplicate_review,output):
     atomic_write_json(output/'counterion_parent_thermal_protocol.json',thermal)
     identities=[('N0_minus',r'N0 above, $-$ mode'),('N0_plus',r'N0 above, $+$ mode'),
                 ('N1_above','N1 above'),('N1_below','N1 below')]
+    if summary['checked_components']==6:identities.extend([('N0_below_minus',r'N0 below, $-$ mode'),('N0_outer_minus',r'N0 outer, $-$ mode')])
+    if len(summary['records'])!=len(identities):raise ValueError('Complete declared publication outcomes required')
     outcomes=[];sources={str(p):sha256_file(p) for p in [summary_path,primary_inputs,duplicate_review,partitions[0],Path(__file__)]}
     for item,(key,label) in zip(summary['records'],identities):
         review=Path(item['review']);ledger=Path(item['ledger'])
@@ -53,7 +55,7 @@ def prepare(summary_path,primary_inputs,duplicate_review,output):
             shutil.copyfile(source,output/name);sources[str(source)]=sha256_file(source)
         outcomes.append(row)
     checker=load(ROOT/'manuscript/check_counterion_association.py','frozen_counterion_publication_checker')
-    catalog=dict(checked_outcomes=4,declared_original_starts=7,outcomes=outcomes,
+    catalog=dict(checked_outcomes=len(outcomes),declared_original_starts=7,outcomes=outcomes,
         conformer_ensemble_qualified=False,experimental_accuracy_validated=False,material_admission=False,
         reaction_rate_or_yield_inferred=False,source_sha256=sources)
     atomic_write_json(output/'counterion_inputs.json',catalog)

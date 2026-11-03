@@ -11,9 +11,10 @@ spec=importlib.util.spec_from_file_location('counterion_publication_audit',ROOT/
 checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker)
 
 
-@pytest.fixture
-def frozen(tmp_path):
-    source=ROOT/'validation/counterion_sensitivity_2026-11-02/publication'
+@pytest.fixture(params=['legacy','expanded'])
+def frozen(tmp_path,request):
+    source=ROOT/('validation/counterion_sensitivity_2026-11-02/publication' if request.param=='legacy'
+                else 'validation/counterion_completion_2026-11-03/publication')
     target=tmp_path/'frozen';shutil.copytree(source,target)
     return target
 
@@ -24,8 +25,10 @@ def edit(folder,name,change):
 
 def test_actual_frozen_outcomes_replay_with_one_statistical_group_per_near_duplicate(frozen):
     result=checker.audit(frozen)
-    assert result['checked_outcomes']==4 and result['duplicate_groups']==3
-    assert 15.41<result['minimum_primary_association_1M_kJ_mol']<15.43
+    count=json.loads((frozen/'counterion_inputs.json').read_text())['checked_outcomes']
+    assert result['checked_outcomes']==count and result['duplicate_groups']==count-1
+    low,high=(15.41,15.43) if count==4 else (5.32,5.34)
+    assert low<result['minimum_primary_association_1M_kJ_mol']<high
     assert 22.35<result['maximum_primary_association_1M_kJ_mol']<22.37
     assert result['same_group_N0_heavy_RMSD_A']<.004
     assert not result['conformer_ensemble_qualified'] and not result['experimental_accuracy_validated']

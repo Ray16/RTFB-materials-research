@@ -35,8 +35,8 @@ Supporting slide 20 reports all four checked finite ionic neighboring-graft G
 cycles: −3.94 kJ/mol for all-same adjacent, +22.58 for all-same one-spacer,
 +8.28 for alternating adjacent, and −5.30 for alternating one-spacer at the
 primary cutoff. Twelve independently checked local minima support the cycles.
-Both signs reverse with backbone configuration. Occupied ensembles remain pending. Slide 21 reports four primary chloride-contact outcomes in three duplicate groups
-(1-M association G +15.42 to +22.36 kJ/mol), with the spin and particle-count
+Both signs reverse with backbone configuration. Occupied ensembles remain pending. Slide 21 reports six primary chloride-contact outcomes in five duplicate groups
+(1-M association G +5.33 to +22.36 kJ/mol), with the spin and particle-count
 conventions explicit. Slide 22 reports the primary molecular control; slide 23
 retains reproducibility limits. The current immutable manuscript
 evidence epoch also supplies twelve motif triplets and 72 independently checked

@@ -119,7 +119,7 @@ def main():
         for number in (f"{counterion_check['minimum_primary_association_1M_kJ_mol']:.2f}",
                        f"{counterion_check['maximum_primary_association_1M_kJ_mol']:.2f}"):
             if number not in numerical_text:raise ValueError('Checked chloride association range absent from the deck')
-        if 'threeduplicategroups' not in ''.join(text.lower().split()):
+        if ({3:'three',5:'five'}[counterion_check['duplicate_groups']]+'duplicategroups') not in ''.join(text.lower().split()):
             raise ValueError('Chloride duplicate scope absent from the deck')
     if registry_check is not None and str(registry_check['exact_graphs']) not in text:
         raise ValueError('Checked current registry census absent from the deck')

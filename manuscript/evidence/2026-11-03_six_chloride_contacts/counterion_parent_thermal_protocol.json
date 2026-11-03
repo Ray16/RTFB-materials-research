@@ -1,0 +1,22 @@
+{
+  "schema": 1,
+  "model": "projected internal-mode xTB6.7.1 qRRHO",
+  "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+  "masses": "installed xTB NIST isotopic-average atomic masses",
+  "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+  "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+  "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+  "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+  "frequency_scale": 1.0,
+  "temperature_K": 298.15,
+  "rotor_cutoffs_cm": [
+    25,
+    50,
+    100
+  ],
+  "primary_rotor_cutoff_cm": 50,
+  "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+  "zero_internal_frequency_policy": "refuse; no artificial floor",
+  "symmetry": "xTB symmetry detection for the exact input geometry",
+  "pressure": "same translation convention as installed xTB thermodyn"
+}

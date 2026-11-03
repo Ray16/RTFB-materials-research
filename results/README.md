@@ -8,8 +8,8 @@ establish that a calculation is currently running.
 - [Paper and SI](../manuscript/README.md): checked 21/35-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates all four declared finite ionic neighboring-graft G cycles,
-  matched motif/chain electronic comparisons and four chloride-contact outcomes
-  in three numerical duplicate groups. The new occupied sampling diagnostic fails and is reported in the abstract,
+  matched motif/chain electronic comparisons and six chloride-contact outcomes
+  in five numerical duplicate groups. The new occupied sampling diagnostic fails and is reported in the abstract,
   results and SI Table S17. Occupied ensembles, broader salt speciation
   and full material eligibility remain pending.
 - [Exact-molecule CPU example](../examples/exact_viologen_replay/README.md):

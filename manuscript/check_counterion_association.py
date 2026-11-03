@@ -21,13 +21,15 @@ def close(actual,expected,tolerance=1e-7):
 
 
 def reconstruct(folder):
-    catalog=json.loads((folder/'counterion_inputs.json').read_text())
-    parents=json.loads((folder/'counterion_primary_inputs.json').read_text())
+    prefix='counterion_v2_' if (folder/'counterion_v2_inputs.json').exists() else 'counterion_'
+    def artifact(name):return folder/(prefix+name)
+    catalog=json.loads(artifact('inputs.json').read_text())
+    parents=json.loads((artifact('primary_inputs.json')).read_text())
     if (folder/'primary_native_cohort_inputs.json').exists():
         if parents!=json.loads((folder/'primary_native_cohort_inputs.json').read_text()):
             raise ValueError('Counterion and manuscript primary parents differ')
-    thermal=json.loads((folder/'counterion_parent_thermal_protocol.json').read_text())
-    if (catalog['checked_outcomes']!=4 or catalog['declared_original_starts']!=7
+    thermal=json.loads((artifact('parent_thermal_protocol.json')).read_text())
+    if (catalog['checked_outcomes'] not in (4,6) or len(catalog['outcomes'])!=catalog['checked_outcomes'] or catalog['declared_original_starts']!=7
             or catalog['conformer_ensemble_qualified'] or catalog['experimental_accuracy_validated']
             or catalog['material_admission'] or catalog['reaction_rate_or_yield_inferred']):
         raise ValueError('Exact finite four-outcome scope required')
@@ -95,9 +97,10 @@ def reconstruct(folder):
             source_G=recorded['source_convention_deltaG_kJ_mol'],correction=float(correction)))
         molecules.append(alignment_molecule(report['smiles'],geometry))
         electronic.append(dict(key=item['key'],E_eV=report['electronic_eV']))
-    if [row['key'] for row in rows]!=['N0_minus','N0_plus','N1_above','N1_below']:
+    expected_keys=['N0_minus','N0_plus','N1_above','N1_below']+(['N0_below_minus','N0_outer_minus'] if catalog['checked_outcomes']==6 else [])
+    if [row['key'] for row in rows]!=expected_keys:
         raise ValueError('Four exact source outcomes must retain their individual identities')
-    duplicate=json.loads((folder/'counterion_duplicate_review.json').read_text())
+    duplicate=json.loads((artifact('duplicate_review.json')).read_text())
     matrix,matches=symmetry_rmsd_matrix(molecules)
     if (not np.allclose(matrix,duplicate['proper_rotation_symmetry_heavy_RMSD_A'],atol=1e-8,rtol=0)
             or matches!=duplicate['automorphisms'] or duplicate['populations_inferred']
@@ -105,7 +108,7 @@ def reconstruct(folder):
         raise ValueError('Actual frozen geometry duplicate comparison differs')
     for cutoff in (.05,.1,.2):
         groups=cluster_minima(electronic,matrix,cutoff,.2)
-        if groups!=duplicate['groups_by_RMSD_cutoff_A'][str(cutoff)] or len(groups)!=3:
+        if groups!=duplicate['groups_by_RMSD_cutoff_A'][str(cutoff)] or len(groups)!=len(rows)-1:
             raise ValueError('Four outcomes must not be counted as four independent conformational wells')
     return rows,float(matrix[0,1])
 
@@ -114,7 +117,7 @@ def values(rows):
     numbers=dict(ChlorideAssocMin=min(r['G']['50'] for r in rows),
         ChlorideAssocMax=max(r['G']['50'] for r in rows),ChlorideCorrection=rows[0]['correction'])
     numbers.update({name:row['G']['50'] for name,row in zip(
-        ['ChlorideNZeroMinus','ChlorideNZeroPlus','ChlorideNOneAbove','ChlorideNOneBelow'],rows)})
+        ['ChlorideNZeroMinus','ChlorideNZeroPlus','ChlorideNOneAbove','ChlorideNOneBelow','ChlorideNZeroBelow','ChlorideNZeroOuter'],rows)})
     return ''.join('\\newcommand{\\'+name+'}{'+f'{value:.2f}'+'}\n' for name,value in numbers.items())
 
 
@@ -129,9 +132,10 @@ def table(rows):
 
 def audit(folder):
     rows,rmsd=reconstruct(folder)
-    if (folder/'counterion_values.tex').read_text()!=values(rows) or (folder/'counterion_table.tex').read_text()!=table(rows):
+    prefix='counterion_v2_' if (folder/'counterion_v2_inputs.json').exists() else 'counterion_'
+    if (folder/(prefix+'values.tex')).read_text()!=values(rows) or (folder/(prefix+'table.tex')).read_text()!=table(rows):
         raise ValueError('Counterion numerical TeX inputs differ from frozen evidence')
-    return dict(status='four_frozen_primary_contact_outcomes_replayed',checked_outcomes=4,duplicate_groups=3,
+    return dict(status='frozen_primary_contact_outcomes_replayed',checked_outcomes=len(rows),duplicate_groups=len(rows)-1,
         same_group_N0_heavy_RMSD_A=rmsd,minimum_primary_association_1M_kJ_mol=min(r['G']['50'] for r in rows),
         maximum_primary_association_1M_kJ_mol=max(r['G']['50'] for r in rows),
         original_physical_QC_repeated=False,geometry_duplicate_comparison_repeated=True,
