@@ -1,9 +1,11 @@
 """Collect current documents/source and existing checked replay packages locally."""
 import json
 import argparse
+import hashlib
 import os
 from pathlib import Path
 import shutil
+import subprocess
 
 from redox.core.hashing import sha256_file
 from redox.workflows.resources import allocation_guard,cpu_allocation,host_capacity
@@ -14,10 +16,22 @@ ROOT=Path(__file__).resolve().parents[2];FOLDER=Path(__file__).parent
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--source-export',type=Path,default=FOLDER/'source_export.json')
 parser.add_argument('--portable-validation',type=Path)
+parser.add_argument('--submission-inventory',type=Path)
 parser.add_argument('--out',type=Path,required=True);parser.add_argument('--report',type=Path,required=True)
 args=parser.parse_args();OUT=args.out.resolve()
 if OUT.exists() or args.report.exists():raise FileExistsError('Preserve earlier review candidates')
 source_export=json.loads(args.source_export.read_text())
+submission=None
+if args.submission_inventory:
+    submission=json.loads(args.submission_inventory.read_text())
+    for row in submission['files']:
+        relative=Path(row['path'])
+        if relative.is_absolute() or '..' in relative.parts:
+            raise ValueError('Submission paths must be checkout-relative')
+        committed=subprocess.check_output(['git','show',source_export['source_commit']+':'+relative.as_posix()],cwd=ROOT)
+        if (hashlib.sha256(committed).hexdigest()!=row['sha256']
+                or sha256_file(ROOT/relative)!=row['sha256']):
+            raise ValueError('Submission file differs from the exported source commit')
 portable=None
 if args.portable_validation:
     portable=json.loads(args.portable_validation.read_text())
@@ -38,9 +52,10 @@ rows.append(dict(id='corrected_molecular_replay',source=index['archive'],sha256=
 deck=json.loads((ROOT/'slides/build_check.json').read_text())
 rows.append(dict(id='slides',source=str(ROOT/'slides/redox_workflow.pdf'),sha256=deck['pdf_sha256'],record=str(ROOT/'slides/build_check.json')))
 required=sum(Path(r['source']).stat().st_size for r in rows)
+submission_bytes=sum((ROOT/r['path']).stat().st_size for r in submission['files']) if submission else 0
 # Small bundle only: leave the existing live-calculation promises plus reserve.
 headroom=json.loads((FOLDER/'storage_headroom.json').read_text())
-if shutil.disk_usage(OUT.parent).free<required+headroom['remaining_existing_budget_bytes']+32*2**30:
+if shutil.disk_usage(OUT.parent).free<required+submission_bytes+headroom['remaining_existing_budget_bytes']+32*2**30:
     raise RuntimeError('Current calculation/storage margin unavailable')
 OUT.mkdir();(OUT/'packages').mkdir();(OUT/'records').mkdir()
 for row in rows:
@@ -54,6 +69,13 @@ for row in rows:
 for name in ('source_replay.json','raw_seed_manifest.json','storage_headroom.json'):
     shutil.copyfile(FOLDER/name,OUT/'records'/name)
 if args.portable_validation:shutil.copyfile(args.portable_validation,OUT/'records/portable_source_validation.json')
+if submission:
+    for row in submission['files']:
+        target=OUT/'submission'/row['path']
+        target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copyfile(ROOT/row['path'],target)
+        if sha256_file(target)!=row['sha256']:raise ValueError('Copied submission file differs')
+    shutil.copyfile(args.submission_inventory,OUT/'records/submission_files.json')
 shutil.copyfile(Path(__file__),OUT/'packaging_source.py')
 (OUT/'README.md').write_text('''# JCIM local review candidate — 3 November 2026
 
@@ -87,10 +109,19 @@ which calculations and diagnostics their replays cover.
 
 This candidate does not yet contain the full newly inventoried raw dependency
 archive. All declared raw bindings are located; a suitable storage destination
-remains pending. The
-the supplied source/replay evidence is not a full-raw-release certificate.
+remains pending. Later additions require an inventory addendum before raw
+archiving. The supplied source/replay evidence is not a full-raw-release certificate.
 Author details, reuse licensing and public deposition remain outstanding.
 No journal submission or external publication has been performed.
+''')
+if submission:
+    with (OUT/'README.md').open('a') as stream:
+        stream.write('''
+The submission/ directory contains the checked article, SI, draft cover letter,
+TOC TIFF, and context-complete CSV/JSON/TXT data companion. Read the benchmark
+CSV together with its context file. Design enumeration does not imply completed
+calculation or synthesis eligibility. The records/submission_files.json hashes
+bind these files to the exact source commit. Author placeholders remain explicit.
 ''')
 manifest=dict(status='local_JCIM_review_candidate_full_new_raw_archive_pending',
     source_commit=source_export['source_commit'],
@@ -98,12 +129,15 @@ manifest=dict(status='local_JCIM_review_candidate_full_new_raw_archive_pending',
     packages=rows,files_sha256={str(p.relative_to(OUT)):sha256_file(p) for p in OUT.rglob('*') if p.is_file()},
     full_new_raw_archive_included=False,public_deposition_complete=False,data_license=None,
     author_metadata_handled_by_user=True,submission_ready=False,
+    submission_files=len(submission['files']) if submission else 0,
+    submission_bytes=submission_bytes,
     producer_sha256=sha256_file(__file__))
 (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 report=dict(status=manifest['status'],candidate=str(OUT),manifest_sha256=sha256_file(OUT/'manifest.json'),
     packages=len(rows),package_bytes=required,checked_files=len(manifest['files_sha256']),
     full_new_raw_archive_included=False,public_deposition_complete=False,submission_ready=False,
     source_commit=source_export['source_commit'],committed_full_validation_build_passed=portable is not None,
+    submission_files=manifest['submission_files'],submission_bytes=submission_bytes,
     producer_sha256=sha256_file(__file__))
 args.report.write_text(json.dumps(report,indent=2)+'\n')
 print(json.dumps(report))

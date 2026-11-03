@@ -665,16 +665,18 @@
     },
     "publication_release_candidate": {
       "guide": "validation/publication_release_2026-11-03/README.md",
-      "current": "validation/publication_release_2026-11-03/review_candidate_03.json",
+      "current": "validation/publication_release_2026-11-03/review_candidate_04.json",
       "source_snapshot": "validation/publication_release_2026-11-03/raw_seed_manifest.json",
-      "source_replay": "validation/counterion_completion_2026-11-03/committed_source_validation.json",
+      "source_replay": "validation/jcim_submission_2026-11-03/committed_source_validation.json",
       "raw_inventory": "validation/publication_release_2026-11-03/namespace_resolution_summary_02.json",
       "storage": "validation/publication_release_2026-11-03/storage_headroom.json",
       "portability": "validation/portable_sampling_2026-11-03/committed_example_validation.json",
       "checks": "validation/publication_release_2026-11-03/archive_checks.xml",
-      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_seven",
-      "status": "seven_outcome_review_bundle_committed_source_validation_checked",
-      "scope": "Six checked payloads, 821 MB, with source commit 042724ac and the seven-outcome/five-group chloride update. Full isolated article/SI validation build passes. Prior full raw inventory has 120.3 GB unique content; raw archive refresh/storage and public deposition remain pending."
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_submission",
+      "status": "submission_pass_review_bundle_committed_source_validation_checked",
+      "scope": "Six checked payloads (822 MB) plus nine direct submission files (2 MB), with source commit bd375957. Full isolated article/SI validation build passes. Raw inventory remains the earlier 120.3-GB snapshot; raw archive refresh/storage and public deposition remain pending.",
+      "source_export": "validation/jcim_submission_2026-11-03/source_export.json",
+      "submission_inventory": "manuscript/submission_files.json"
     },
     "portable_manuscript_validation": {
       "guide": "validation/portable_sampling_2026-11-03/README.md",

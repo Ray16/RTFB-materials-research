@@ -1,15 +1,19 @@
 # Publication release preparation
 
-The [updated local reviewer candidate](review_candidate_03.json) contains six checked
-payloads totaling 820,812,179 bytes: committed scientific source, the current
-manuscript upload and slides, historical review packages, electronic-control
-checkpoints and the corrected molecular CPU replay. It is located at
-`/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_seven`.
-Its manifest hashes all 18 bundled files and records the full validation build
-of source commit `042724ac`, including the seven-outcome chloride cohort.
-The earlier candidates and producer are preserved.
-This is ready for local review; the
-new full raw archive, public deposition and final metadata remain outstanding.
+The [current local reviewer candidate](review_candidate_04.json) contains six
+checked payloads totaling 822,165,239 bytes, plus nine directly accessible
+submission files totaling 1,999,045 bytes. It includes the revised article and
+SI, cover letter, TOC TIFF, context-complete data tables, committed scientific
+source, slides and prior checked replay/control packages. It is located at
+`/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_submission`.
+Its manifest hashes all 28 files. The direct submission files are checked
+against source commit `bd375957`, whose complete manuscript validation build
+passes with original user data hidden and networking disabled. The build uses
+the existing checked runtime and does not repeat quantum calculations.
+
+The earlier candidates and producer versions remain preserved. This is ready
+for local review; the full raw archive, public deposition and final metadata
+remain outstanding. The raw inventory below retains its earlier snapshot scope.
 
 ## Source replay and resolved portability gap
 

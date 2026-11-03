@@ -35,6 +35,8 @@ current local files. These are prepared components, not a submitted or deposited
 release. Author details and declarations remain with the user. Full raw archiving
 needs additional storage; the 120.3-GB resolved inventory predates the seventh
 contact outcome and needs an addendum before archival release. Public deposition
-and a permanent release identifier remain outstanding. The earlier reviewer
-bundle and source archive retain their original commit scope; they do not yet
-contain this editorial pass or the new submission tables.
+and a permanent release identifier remain outstanding. The [updated reviewer bundle](../publication_release_2026-11-03/review_candidate_04.json)
+now includes this pass and its nine submission files. The source archive is
+commit bd375957; its [isolated validation build](committed_source_validation.json)
+passes with original user data hidden, networking disabled and no CUDA devices.
+Earlier bundles retain their original scope.

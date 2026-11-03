@@ -17,14 +17,14 @@ establish that a calculation is currently running.
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
   pass extracted-archive replay with original scientific paths blocked.
 - [Current publication release candidate](../validation/publication_release_2026-11-03/README.md):
-  six checked source/document/replay payloads form an 821-MB local reviewer
-  bundle. Three numerical replays pass from the exported source with original
-  scientific paths blocked. The broader declared inventory resolves 53,640
-  files and 120.3 GB of unique content. Full raw archiving awaits suitable
-  storage. The [portable validation update](../validation/portable_sampling_2026-11-03/README.md)
-  now passes the complete manuscript build with original user data hidden;
-  all scientific values and PDF content remain unchanged. Public deposition
-  remains pending.
+  six checked source/document/replay payloads (822 MB), plus nine directly
+  accessible submission files (2 MB), include the final editorial pass and
+  context-complete data tables from commit `bd375957`. Its complete manuscript
+  validation build passes with original user data hidden and networking disabled.
+  This replays cached evidence, not fresh quantum calculations. The earlier raw
+  inventory resolves 53,640 files and 120.3 GB; later additions still need an
+  inventory addendum. Full raw archiving awaits suitable storage, and public
+  deposition remains pending.
 - [Finite viologen comparison replay](../examples/finite_viologen_replay/README.md):
   standard-library reconstruction of the four finite ionic cycles and twelve
   motif triplets. An isolated copy passes with original scientific paths blocked;
