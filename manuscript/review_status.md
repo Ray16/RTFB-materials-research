@@ -5,6 +5,15 @@ As of 2 November 2026, this is a 21-page JCIM working article with a separate
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
+The [new six-outcome chloride followup](../validation/counterion_completion_2026-11-03/README.md)
+adds two independently checked minima after the editorial evidence freeze.
+The finite 1-M range extends to +5.33 to +22.36 kJ/mol, with five numerical
+duplicate groups and positive values at all tested cutoffs. The positive
+finite-association interpretation survives, but the sampled minimum changes
+materially. Incorporate these completed results in the next scientific
+snapshot before submission; the current PDFs still explicitly report the
+preserved four-outcome sample.
+
 ## Next publication decisions
 
 Keep the paper's current identity inventory fixed while completing a bounded

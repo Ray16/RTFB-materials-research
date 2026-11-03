@@ -66,6 +66,10 @@ establish that a calculation is currently running.
   substituent and both endpoints are already in the retrospective benchmark.
   It adds no new exact-graft or held-out accuracy result; the published numerical
   comparison and final PDFs remain unchanged.
+- [Expanded chloride-contact sensitivity](../validation/counterion_completion_2026-11-03/README.md):
+  six checked outcomes form five numerical groups and span +5.33 to +22.36
+  kJ/mol at 1 M. All tested cutoff scenarios remain positive. The earlier paper
+  snapshot remains preserved; the two new contacts need the next scientific update.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.
