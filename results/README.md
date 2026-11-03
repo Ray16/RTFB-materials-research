@@ -39,12 +39,17 @@ establish that a calculation is currently running.
 - [Exact TEMPO follow-up](../validation/tempo_solution_pair_2026-10-30/README.md):
   checked MeCN relaxation costs of 1.477/1.639 eV. The 10.4% directional asymmetry
   leaves a symmetric parameter unqualified; the all-axis material decision is pending.
-- [Unified candidate pool](../validation/phenothiazine_precursor_access_2026-11-02/README.md):
+- [Unified candidate pool](../validation/phenothiazine_registry_2026-11-03/README.md):
   912 exact local-graft graphs, preserving all 904 earlier graphs and evaluations.
   Three exact designs have reviewed route passes: TEMPO, baseline viologen and
   unsubstituted direct N-linked phenothiazine. The other 909 remain held.
   Eight new mapped F/CN designs have no computed properties or transferred route
   approval. No full material admission is claimed. Earlier registry snapshots and the historical all-axis ledger retain their separate scopes.
+- [Qualified phenothiazine case](../validation/phenothiazine_registry_2026-11-03/README.md):
+  its +0.626-V finite local-model oxidation is now attached to the exact graph
+  in the shared pool, with complete context and numerical policies. All prior
+  records are preserved; 77 graphs now have reported evaluations, including
+  historical results. Missing property axes and material admission remain pending.
 - [Unsubstituted phenothiazine primary comparison](../validation/phenothiazine_primary_2026-11-02/README.md):
   historical electronic controls and initial failed minimum/stationarity
   attempts remain preserved. Subsequent refinements and the qualified

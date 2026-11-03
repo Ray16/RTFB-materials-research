@@ -1,0 +1,2453 @@
+{
+  "schema": "qualified_neutral_oxidation_case_v2",
+  "status": "qualified_exact_finite_redox_case",
+  "candidate_alias": "phenothiazine",
+  "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+  "product_inchikey": "AWCNUEZNXDGDBF-UHFFFAOYSA-N",
+  "registry_graph_key": "499eb5e18d0502d05e11885a4b53511e90a1885954d2541570e6b5a7ffafe0cd",
+  "registry_aliases": [
+    "phenothiazine"
+  ],
+  "model_scope": "exact capped local graft; no full polymer or explicit counterion model",
+  "properties": {
+    "first_oxidation": {
+      "value": 0.6260868628669414,
+      "unit": "V",
+      "value_QC": "qualified_finite_model",
+      "context": {
+        "quantity": "one_electron_oxidation_potential",
+        "unit": "V",
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "thermal_definition": {
+          "native_protocol": {
+            "schema": 1,
+            "model": "solution geometry-level DFT Hessian",
+            "xc": "r2scan",
+            "disp": "d4",
+            "basis": "def2-svp",
+            "anion_basis": "def2-svpd",
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "density_fit": true,
+            "grid_level": 3,
+            "cphf_grid_level": 3,
+            "grid_response": true,
+            "conv_tol": 1e-12,
+            "conv_tol_grad": 1e-08,
+            "temperature_K": 298.15,
+            "rotor_cutoff_cm": 50,
+            "spin_partition": "unsplit ground spin multiplet",
+            "gradient_max_acceptance_Ha_Bohr": 0.00045,
+            "min_frequency_acceptance_cm": -5,
+            "finite_difference_step_Bohr": 0.0005,
+            "finite_difference_relative_acceptance": 0.01,
+            "max_spin_contamination": 0.1,
+            "df_batch_cap_GiB": 6,
+            "validated_pyscf_version": "2.14.0",
+            "validated_gpu4pyscf_version": "1.8.1"
+          },
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "spin_partition": "unsplit ground spin multiplet",
+          "full_projected_protocol": {
+            "schema": 1,
+            "model": "projected internal-mode xTB6.7.1 qRRHO",
+            "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+            "masses": "installed xTB NIST isotopic-average atomic masses",
+            "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+            "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+            "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+            "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+            "frequency_scale": 1.0,
+            "temperature_K": 298.15,
+            "rotor_cutoffs_cm": [
+              25,
+              50,
+              100
+            ],
+            "primary_rotor_cutoff_cm": 50,
+            "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+            "zero_internal_frequency_policy": "refuse; no artificial floor",
+            "symmetry": "xTB symmetry detection for the exact input geometry",
+            "pressure": "same translation convention as installed xTB thermodyn"
+          },
+          "selected_rotor_cutoff_cm": 50
+        },
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "temperature_K": 298.15,
+        "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+        "reference": {
+          "electrode": "Fc/Fc+",
+          "definition": "[G(graft+) + G(Fc) - G(graft) - G(Fc+)] / e",
+          "electrons": 1,
+          "delta_n_solutes": 0,
+          "source_component_reference": {
+            "energy": "absolute component within primary composite protocol",
+            "ions": "separated species; omitted spectators cancel only within declared cycles",
+            "numerical_implementation": {
+              "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+              "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+              "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+              "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+            }
+          }
+        },
+        "model_scope": "exact capped local graft; no full polymer or explicit counterion model"
+      },
+      "scenario_bounds_V": [
+        0.6155735078937141,
+        0.6260869391771848
+      ],
+      "bounds_scope": "Retained branches and rotor settings; not an experimental confidence interval",
+      "primary_neutral_branch": "minus",
+      "neutral_branches_population_weighted": false,
+      "component_states": {
+        "minus": {
+          "graft_neu": {
+            "identity": "minus",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "graft_ox": {
+            "identity": "oxidized",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 1,
+            "multiplicity": 2
+          },
+          "fc_neu": {
+            "identity": "fc_neu",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "fc_ox": {
+            "identity": "fc_ox",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 1,
+            "multiplicity": 2
+          }
+        },
+        "plus": {
+          "graft_neu": {
+            "identity": "plus",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "graft_ox": {
+            "identity": "oxidized",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 1,
+            "multiplicity": 2
+          },
+          "fc_neu": {
+            "identity": "fc_neu",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "fc_ox": {
+            "identity": "fc_ox",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 1,
+            "multiplicity": 2
+          }
+        }
+      },
+      "component_numerical_policies": {
+        "graft_neu": {
+          "schema": 1,
+          "component": "primary legacy SMD CDS",
+          "Hessian_gradient_step_Bohr": 1e-06,
+          "energy_function_changed": false,
+          "gradient_function_changed": false,
+          "global_defaults_changed": false
+        },
+        "graft_ox": {
+          "schema": 1,
+          "component": "primary legacy SMD CDS",
+          "Hessian_gradient_step_Bohr": 1e-06,
+          "energy_function_changed": false,
+          "gradient_function_changed": false,
+          "global_defaults_changed": false
+        },
+        "fc_neu": {
+          "schema": 1,
+          "component": "primary legacy SMD CDS",
+          "Hessian_gradient_step_Bohr": 0.0001,
+          "energy_function_changed": false,
+          "gradient_function_changed": false,
+          "global_defaults_changed": false
+        },
+        "fc_ox": {
+          "schema": 1,
+          "component": "primary legacy SMD CDS",
+          "Hessian_gradient_step_Bohr": 0.0001,
+          "energy_function_changed": false,
+          "gradient_function_changed": false,
+          "global_defaults_changed": false
+        }
+      }
+    },
+    "second_oxidation": null,
+    "grafting_free_energy": null,
+    "solution_relaxation": null,
+    "occupancy_nonadditivity": null,
+    "motif_association": null,
+    "electronic_coupling": null,
+    "accessible_capacity": null
+  },
+  "redox_cycles": {
+    "minus": {
+      "status": "qualified_component_finite_oxidation_cycle_assembled",
+      "definition": "[G(graft+) + G(Fc) - G(graft) - G(Fc+)] / e",
+      "unit": "V versus Fc/Fc+",
+      "electron_count": 1,
+      "coefficients": {
+        "graft_ox": 1,
+        "graft_neu": -1,
+        "fc_ox": -1,
+        "fc_neu": 1
+      },
+      "potential_by_cutoff_V": {
+        "25": 0.6155735078937141,
+        "50": 0.6260868628669414,
+        "100": 0.622132392214553
+      },
+      "delta_n_solutes": 0,
+      "one_atm_to_one_M_correction_V": 0.0,
+      "components": {
+        "graft_neu": {
+          "state": {
+            "identity": "minus",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "symbols": [
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "N",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "S",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -33335.20345611531,
+            "50": -33335.16613816716,
+            "100": -33335.132012373884
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 1e-06,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json": "6fb04f5ab8acb3e66c169764dfe47f11f282da3d02f8b34462315b4185e20854"
+          },
+          "actual_native_SCF_frames_checked": 21
+        },
+        "graft_ox": {
+          "state": {
+            "identity": "oxidized",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 1,
+            "multiplicity": 2
+          },
+          "symbols": [
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "N",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "S",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -33330.205863188756,
+            "50": -33330.160855385046,
+            "100": -33330.1296100705
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 1e-06,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+          },
+          "actual_native_SCF_frames_checked": 21
+        },
+        "fc_neu": {
+          "state": {
+            "identity": "fc_neu",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "symbols": [
+            "Fe",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -44915.47142827211,
+            "50": -44915.461898517366,
+            "100": -44915.460703586956
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 0.0001,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+          },
+          "actual_native_SCF_frames_checked": 9
+        },
+        "fc_ox": {
+          "state": {
+            "identity": "fc_ox",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 1,
+            "multiplicity": 2
+          },
+          "symbols": [
+            "Fe",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -44911.08940885345,
+            "50": -44911.08270259812,
+            "100": -44911.08043367579
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 0.0001,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+          },
+          "actual_native_SCF_frames_checked": 9
+        }
+      },
+      "property_assemblies": {
+        "25": {
+          "value": 0.6155735078937141,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              },
+              "selected_rotor_cutoff_cm": 25
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "graft_neu": {
+              "coefficient": -1,
+              "state": {
+                "identity": "minus",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json": "6fb04f5ab8acb3e66c169764dfe47f11f282da3d02f8b34462315b4185e20854"
+              }
+            },
+            "graft_ox": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+              }
+            },
+            "fc_neu": {
+              "coefficient": 1,
+              "state": {
+                "identity": "fc_neu",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+              }
+            },
+            "fc_ox": {
+              "coefficient": -1,
+              "state": {
+                "identity": "fc_ox",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "50": {
+          "value": 0.6260868628669414,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              },
+              "selected_rotor_cutoff_cm": 50
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "graft_neu": {
+              "coefficient": -1,
+              "state": {
+                "identity": "minus",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json": "6fb04f5ab8acb3e66c169764dfe47f11f282da3d02f8b34462315b4185e20854"
+              }
+            },
+            "graft_ox": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+              }
+            },
+            "fc_neu": {
+              "coefficient": 1,
+              "state": {
+                "identity": "fc_neu",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+              }
+            },
+            "fc_ox": {
+              "coefficient": -1,
+              "state": {
+                "identity": "fc_ox",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "100": {
+          "value": 0.622132392214553,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              },
+              "selected_rotor_cutoff_cm": 100
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "graft_neu": {
+              "coefficient": -1,
+              "state": {
+                "identity": "minus",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json": "6fb04f5ab8acb3e66c169764dfe47f11f282da3d02f8b34462315b4185e20854"
+              }
+            },
+            "graft_ox": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+              }
+            },
+            "fc_neu": {
+              "coefficient": 1,
+              "state": {
+                "identity": "fc_neu",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+              }
+            },
+            "fc_ox": {
+              "coefficient": -1,
+              "state": {
+                "identity": "fc_ox",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "numerical_policy_variation_retained": true,
+      "conformer_ensemble_qualified": false,
+      "experimental_accuracy_validated": false,
+      "material_admission": false
+    },
+    "plus": {
+      "status": "qualified_component_finite_oxidation_cycle_assembled",
+      "definition": "[G(graft+) + G(Fc) - G(graft) - G(Fc+)] / e",
+      "unit": "V versus Fc/Fc+",
+      "electron_count": 1,
+      "coefficients": {
+        "graft_ox": 1,
+        "graft_neu": -1,
+        "fc_ox": -1,
+        "fc_neu": 1
+      },
+      "potential_by_cutoff_V": {
+        "25": 0.615576981123013,
+        "50": 0.6260869391771848,
+        "100": 0.6221310298860772
+      },
+      "delta_n_solutes": 0,
+      "one_atm_to_one_M_correction_V": 0.0,
+      "components": {
+        "graft_neu": {
+          "state": {
+            "identity": "plus",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "symbols": [
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "N",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "S",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -33335.20345958854,
+            "50": -33335.16613824347,
+            "100": -33335.132011011556
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 1e-06,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json": "a0a2f42fef340a5801dd1cef44fb9d60b7eafe93ec78546e203ebaaf290276c5"
+          },
+          "actual_native_SCF_frames_checked": 21
+        },
+        "graft_ox": {
+          "state": {
+            "identity": "oxidized",
+            "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+            "charge": 1,
+            "multiplicity": 2
+          },
+          "symbols": [
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "N",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "S",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "C",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -33330.205863188756,
+            "50": -33330.160855385046,
+            "100": -33330.1296100705
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 1e-06,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+          },
+          "actual_native_SCF_frames_checked": 21
+        },
+        "fc_neu": {
+          "state": {
+            "identity": "fc_neu",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 0,
+            "multiplicity": 1
+          },
+          "symbols": [
+            "Fe",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -44915.47142827211,
+            "50": -44915.461898517366,
+            "100": -44915.460703586956
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 0.0001,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+          },
+          "actual_native_SCF_frames_checked": 9
+        },
+        "fc_ox": {
+          "state": {
+            "identity": "fc_ox",
+            "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+            "charge": 1,
+            "multiplicity": 2
+          },
+          "symbols": [
+            "Fe",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H",
+            "C",
+            "H"
+          ],
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              }
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "G_by_cutoff_eV": {
+            "25": -44911.08940885345,
+            "50": -44911.08270259812,
+            "100": -44911.08043367579
+          },
+          "native_numerical_policy": {
+            "schema": 1,
+            "component": "primary legacy SMD CDS",
+            "Hessian_gradient_step_Bohr": 0.0001,
+            "energy_function_changed": false,
+            "gradient_function_changed": false,
+            "global_defaults_changed": false
+          },
+          "native_G_qualified": true,
+          "thermodynamic_entities": 1,
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+          },
+          "actual_native_SCF_frames_checked": 9
+        }
+      },
+      "property_assemblies": {
+        "25": {
+          "value": 0.615576981123013,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              },
+              "selected_rotor_cutoff_cm": 25
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "graft_neu": {
+              "coefficient": -1,
+              "state": {
+                "identity": "plus",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json": "a0a2f42fef340a5801dd1cef44fb9d60b7eafe93ec78546e203ebaaf290276c5"
+              }
+            },
+            "graft_ox": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+              }
+            },
+            "fc_neu": {
+              "coefficient": 1,
+              "state": {
+                "identity": "fc_neu",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+              }
+            },
+            "fc_ox": {
+              "coefficient": -1,
+              "state": {
+                "identity": "fc_ox",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "50": {
+          "value": 0.6260869391771848,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              },
+              "selected_rotor_cutoff_cm": 50
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "graft_neu": {
+              "coefficient": -1,
+              "state": {
+                "identity": "plus",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json": "a0a2f42fef340a5801dd1cef44fb9d60b7eafe93ec78546e203ebaaf290276c5"
+              }
+            },
+            "graft_ox": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+              }
+            },
+            "fc_neu": {
+              "coefficient": 1,
+              "state": {
+                "identity": "fc_neu",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+              }
+            },
+            "fc_ox": {
+              "coefficient": -1,
+              "state": {
+                "identity": "fc_ox",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "100": {
+          "value": 0.6221310298860772,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "full_projected_protocol": {
+                "schema": 1,
+                "model": "projected internal-mode xTB6.7.1 qRRHO",
+                "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+                "masses": "installed xTB NIST isotopic-average atomic masses",
+                "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+                "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+                "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+                "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+                "frequency_scale": 1.0,
+                "temperature_K": 298.15,
+                "rotor_cutoffs_cm": [
+                  25,
+                  50,
+                  100
+                ],
+                "primary_rotor_cutoff_cm": 50,
+                "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+                "zero_internal_frequency_policy": "refuse; no artificial floor",
+                "symmetry": "xTB symmetry detection for the exact input geometry",
+                "pressure": "same translation convention as installed xTB thermodyn"
+              },
+              "selected_rotor_cutoff_cm": 100
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "separated species; omitted spectators cancel only within declared cycles",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "graft_neu": {
+              "coefficient": -1,
+              "state": {
+                "identity": "plus",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json": "a0a2f42fef340a5801dd1cef44fb9d60b7eafe93ec78546e203ebaaf290276c5"
+              }
+            },
+            "graft_ox": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized",
+                "graph_identity": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795"
+              }
+            },
+            "fc_neu": {
+              "coefficient": 1,
+              "state": {
+                "identity": "fc_neu",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 0,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_neu.json": "0307eafdd41b82be6cabd74111d017227ad1837d6f16060d392b75b75531ccca"
+              }
+            },
+            "fc_ox": {
+              "coefficient": -1,
+              "state": {
+                "identity": "fc_ox",
+                "graph_identity": "[Fe].c1ccc[cH-]1.c1ccc[cH-]1",
+                "charge": 1,
+                "multiplicity": 2
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/fc_ox.json": "35601173b52f06a386127ba44b1a678ae9c6d40c0401efeb59a229fd7386d888"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "numerical_policy_variation_retained": true,
+      "conformer_ensemble_qualified": false,
+      "experimental_accuracy_validated": false,
+      "material_admission": false
+    }
+  },
+  "field_QC": {
+    "first_oxidation": "qualified finite molecular value",
+    "remaining_properties": "unqualified or uncomputed; no family or parent transfer"
+  },
+  "all_axis_decision": {
+    "id": "phenothiazine",
+    "product_key": "AWCNUEZNXDGDBF-UHFFFAOYSA-N",
+    "profile_id": "all_axes_preformed_polymer_v1",
+    "policy_sha256": "156d56107895ff7287e770edab74533c476988f4a96993fd5b6a78f0bec50291",
+    "required_axis_ids": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "status": "pending",
+    "all_required_axes_pass": false,
+    "eligible_for_Pareto": false,
+    "failed_axes": [],
+    "pending_axes": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "axes": [
+      {
+        "axis": "redox_window",
+        "status": "pending",
+        "reason": "Finite molecular potential qualified; application cutoff, exact-graft accuracy and material transfer unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "capacity",
+        "status": "pending",
+        "reason": "Exact application criterion or evidence unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "state_stability",
+        "status": "pending",
+        "reason": "Declared-state minima qualified; global spin/ensemble ordering and degradation remain unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "charge_transfer",
+        "status": "pending",
+        "reason": "Exact application criterion or evidence unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "attachment_route",
+        "status": "pending",
+        "reason": "Required operating/reaction context is not declared",
+        "evidence_status": "qualified"
+      },
+      {
+        "axis": "grafting_thermodynamics",
+        "status": "pending",
+        "reason": "Exact application criterion or evidence unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "motif_association",
+        "status": "pending",
+        "reason": "Exact application criterion or evidence unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "neighbor_coupling",
+        "status": "pending",
+        "reason": "Exact application criterion or evidence unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "occupancy_sensitivity",
+        "status": "pending",
+        "reason": "Exact application criterion or evidence unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "accessibility",
+        "status": "pending",
+        "reason": "Exact application criterion or evidence unresolved",
+        "evidence_status": "missing"
+      }
+    ],
+    "inference_scope": "Conditional computational shortlist within explicitly declared model/scenario coverage; no experimental material-performance guarantee.",
+    "experimental_performance_established": false
+  },
+  "material_admission": false,
+  "experimental_accuracy_validated": false,
+  "conformer_ensemble_qualified": false,
+  "source_bindings": {
+    "redox": {
+      "original_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/redox_cycle.json",
+      "sha256": "87656a39fae8eb580448138c161acaea16697b3c46ac3476c9b961253cef8389",
+      "snapshot": "inputs/redox.json"
+    },
+    "registry": {
+      "original_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/candidates/pool/2026-11-02_ptz_precursor_access/registry.json",
+      "sha256": "4923c5b87a2f2adde7ab368dfa00e9b4f0fa2e0be7a1b067ed41306d39e6b8aa",
+      "snapshot": "inputs/registry.json"
+    },
+    "policy": {
+      "original_path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-11-03_seven_chloride_outcomes/all_axes_policy.json",
+      "sha256": "7627ca89bbd7cebe2f52e7a89fe08e5418a2519264984a80bcad6494990edb27",
+      "snapshot": "inputs/policy.json"
+    }
+  },
+  "publisher_sha256": "b9203e518091883f6a86842cffd87cbb2d845d885563cd7312969b3402a01f8d"
+}

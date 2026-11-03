@@ -61,6 +61,7 @@ def publish(spec_path, archive, output, *, route_evidence=None):
     spec_bytes = spec_path.read_bytes()
     spec = json.loads(spec_bytes)
     sources, inventory, frozen = [], [], {}
+    qualified_frozen = {}
     for item in spec['sources']:
         base = spec_path.resolve().parents[1] if item.get('root') == 'checkout' else archive
         path = base / item['path']
@@ -95,6 +96,18 @@ def publish(spec_path, archive, output, *, route_evidence=None):
         # Conflicting route-specific exclusions require review; no silent override.
         record['route_status'] = ('review_conflict' if 'proceed' in statuses and any(s.startswith('exclude') for s in statuses)
                                   else 'proceed' if 'proceed' in statuses else 'hold')
+    # Qualified cases are attached by exact graph and replayed from their own
+    # frozen inputs. They never override the independently computed route gate.
+    from redox.screening.qualified_cases import read_case,attach
+    for item in spec.get('qualified_cases', []):
+        base = spec_path.resolve().parents[1] if item.get('root') == 'checkout' else archive
+        path=base/item['path'];raw=path.read_bytes();digest=hashlib.sha256(raw).hexdigest();name=item['name']
+        if name in frozen or Path(name).name!=name or name in ('.','..'):raise ValueError('Distinct safe source name required')
+        case=read_case(path);attach(records,case,name,digest)
+        frozen[name]=raw
+        qualified_frozen[name]=(path,case)
+        inventory.append(dict(name=name,original_path=str(path),sha256=digest,
+                              snapshot='inputs/'+name+'/candidate.json',role='qualified_exact_case',rows=1))
     for item in inventory:
         if hashlib.sha256(Path(item['original_path']).read_bytes()).hexdigest() != item['sha256']:
             raise ValueError('Input changed during registry assembly')
@@ -103,7 +116,17 @@ def publish(spec_path, archive, output, *, route_evidence=None):
         raise ValueError('Route evidence, assessment or specification changed during registry assembly')
     output.mkdir(parents=True)
     (output/'inputs').mkdir()
-    for name, raw in frozen.items(): (output/'inputs'/f'{name}.json').write_bytes(raw)
+    for name, raw in frozen.items():
+        if name not in qualified_frozen:
+            (output/'inputs'/f'{name}.json').write_bytes(raw)
+            continue
+        origin,case=qualified_frozen[name];target=output/'inputs'/name;target.mkdir()
+        (target/'candidate.json').write_bytes(raw)
+        for binding in case['source_bindings'].values():
+            source=origin.parent/binding['snapshot'];dest=target/binding['snapshot']
+            dest.parent.mkdir(parents=True,exist_ok=True);dest.write_bytes(source.read_bytes())
+            if hashlib.sha256(dest.read_bytes()).hexdigest()!=binding['sha256']:
+                raise ValueError('Qualified case backing changed during registry assembly')
     for name, path, raw in [('route_evidence', evidence_path, route_bytes),
                            ('assessment', assessment_path, assessment_bytes), ('spec', spec_path, spec_bytes)]:
         (output/'inputs'/f'{name}.json').write_bytes(raw)

@@ -28,12 +28,12 @@
       "scope": "DBUH chloride association component; no full reaction validation or new QM"
     },
     "unified_candidate_pool": {
-      "guide": "validation/phenothiazine_precursor_access_2026-11-02/README.md",
+      "guide": "validation/phenothiazine_registry_2026-11-03/README.md",
       "current": "results/candidates/pool/current.json",
-      "source_snapshot": "results/candidates/pool/2026-11-02_ptz_precursor_access/summary.json",
-      "raw_root": "results/candidates/pool/2026-11-02_ptz_precursor_access/inputs",
-      "status": "912_graphs_one_substituted_precursor_listing_reviewed_three_route_passes",
-      "scope": "All 912 graphs, aliases and evaluations preserved. One exact 2-cyano N-H precursor listing is reviewed; its graft route remains held. Three route passes, 909 holds and no property transfer or full material admission."
+      "source_snapshot": "results/candidates/pool/2026-11-03_qualified_phenothiazine_context/summary.json",
+      "raw_root": "results/candidates/pool/2026-11-03_qualified_phenothiazine_context/inputs",
+      "status": "912_graphs_phenothiazine_finite_redox_appended_prior_content_preserved",
+      "scope": "All 912 exact graphs and prior evaluations preserved. One exact phenothiazine +0.626-V model value appended with complete context and numerical policies; 77 graphs have reported evaluations, not full material qualification. Three route proceeds, 909 holds and zero material admissions."
     },
     "publication_draft": {
       "guide": "docs/PROPERTY_VALIDATION_AND_PUBLICATION.md",
@@ -686,6 +686,15 @@
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_source_5ceb4e3b_extracted",
       "status": "rebased_full_validation_build_passed_original_user_data_hidden",
       "scope": "Exact 183-input mapping and explicit initial-preparation relocation preserve all scientific checks. Full article/SI build passes with user data hidden, network disabled and no CUDA devices, using the existing checked runtime. All 80 local PDF pages retain identical text/raster content; no new physical or experimental validation."
+    },
+    "phenothiazine_verified_case": {
+      "guide": "validation/phenothiazine_registry_2026-11-03/README.md",
+      "current": "results/candidates/verified_cases/phenothiazine/current.json",
+      "source_snapshot": "validation/phenothiazine_registry_2026-11-03/comparison_02.json",
+      "checks": "validation/phenothiazine_registry_2026-11-03/checks_02.xml",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6",
+      "status": "exact_finite_redox_case_published_material_decision_pending",
+      "scope": "Qualified first oxidation only; both branches and all component/solvent/reference/thermal/numerical definitions retained. Other property fields null; no transfer to substituted proposals or material admission."
     }
   }
 }

@@ -19,6 +19,7 @@ no declared category. It does not submit calculations.
 | Candidate construction | `redox build`, `redox search`, `redox expand` | Graphs and hypotheses; route review precedes new full-property campaigns |
 | Exact matched ring panel | `python scripts/candidates/expand_ring_panel.py --help` | Declared baseline/substituents; exact precursor/product and mapped new bond for every graph; retains equivalent recipes, computes no redox properties |
 | Unified candidate pool | `python scripts/candidates/merge_registry.py --help` | Fresh source-frozen union with alias deduplication and prospective exact-route decisions; archive and updated route catalog are explicit inputs |
+| Qualified exact redox case publication | `python scripts/pipeline/publish_qualified_redox_case.py --help` | Replays the qualified neutral-oxidation case and freezes its exact graph, method, reference, state and numerical-policy context; uncomputed axes stay null and material admission remains pending |
 | Table/status review | `redox review`, `redox status`, `redox energy-audit` | Inspect/reconstruct existing outputs without launching QM |
 | Low-level calculation stage | `redox uma`, `redox dft`; `python -m redox.qm.sp`, `python -m redox.qm.native_thermal` | Stage controls and defaults differ from the orchestrator; use deliberately |
 | Numerical implementation controls | `python -m redox.workflows.screening_control --help` | Explicitly scoped controls; a passed control does not qualify every system |
@@ -98,6 +99,12 @@ quantities. Never silently add a solvent contribution to an already composite
 solution-relaxation value or promote an electronic occupancy difference into G.
 
 ## Runtime discovery and portability
+
+The candidate-source specification may include `qualified_cases`. These are
+reconstructed from their own frozen inputs and joined by exact graph identity;
+they do not replace historical evaluations or override route decisions. The
+registry snapshot includes each case's input packet. Historical reported values
+remain distinguishable from qualified finite-model properties.
 
 The common resource layer discovers the system reservation executable from an
 explicit `REDOX_GPU_RESERVE`, then installed site defaults in `config/runtime_paths.json`, then `PATH` and the account's `~/bin/gpu_reserve`.
