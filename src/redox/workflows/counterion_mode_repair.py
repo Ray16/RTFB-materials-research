@@ -31,8 +31,13 @@ def diagnose(namespace, output):
     spec=verify(namespace);case=Path(spec['case']);sources=Path(spec['sources']);used=[namespace]
     def read_json(path):used.append(Path(path));return json.loads(Path(path).read_text())
     plan=read_json(case/'plan.json');stage=read_json(case/'status.json')
-    if (plan['role']!='primary_counterion_thermochemistry' or (plan['charge'],plan['mult'])!=(1,1)
-            or stage['status']!='counterion_thermochemistry_failed_preserved'
+    first_native=plan.get('first_route_native_component') is True
+    if first_native:
+        from redox.workflows.route_primary_native import validate_plan
+        validate_plan(plan)
+    expected_status='route_primary_native_component_failed_preserved' if first_native else 'counterion_thermochemistry_failed_preserved'
+    if ((not first_native and (plan['role']!='primary_counterion_thermochemistry' or (plan['charge'],plan['mult'])!=(1,1)))
+            or stage['status']!=expected_status
             or stage.get('error')!="RuntimeError('Source DFT geometry is not a minimum of its own solution surface')"):
         raise ValueError('An actual diagnosed native minimum failure is required')
     owners=load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','counterion_failed_mode_owners')
@@ -56,7 +61,7 @@ def diagnose(namespace, output):
     if matrix.shape!=(3*n,3*n) or not np.isfinite(matrix).all() or abs(matrix-matrix.T).max()>1e-6:
         raise ValueError('Complete finite symmetric Cartesian Hessian required')
     series=primary_checkpoints.checkpoint_series(case/'SCF_evaluations',geometry,
-        dict(charge=1,mult=1,basis='def2-svp',xc='r2scan',disp='d4',conv_tol=1e-12,
+        dict(charge=plan['charge'],mult=plan['mult'],basis='def2-svp',xc='r2scan',disp='d4',conv_tol=1e-12,
              conv_tol_grad=1e-8,max_cycle=200,grid_level=3,solvent_class='SMD'),read_json,used,expected_count=9)
     evaluations=[]
     for p in sorted((case/'SCF_evaluations').glob('*/*/settings.json')):
@@ -79,8 +84,9 @@ def diagnose(namespace, output):
     mass=qrrho.atomic_masses(atoms.numbers)
     modes=load(ROOT/'scripts/validation/replay_archived_polymer_native.py','failed_counterion_independent_modes')
     frequencies,rank=modes.projected_modes(matrix,atoms.positions,mass)
-    mol=gto.M(atom=list(zip(atoms.get_chemical_symbols(),atoms.positions.tolist())),basis='def2-svp',charge=1,spin=0,verbose=0)
-    harmonic=thermo.harmonic_analysis(mol,matrix.reshape(n,3,n,3).transpose(0,2,1,3),mass=mass,imaginary_freq=False)
+    mol=gto.M(atom=list(zip(atoms.get_chemical_symbols(),atoms.positions.tolist())),basis='def2-svp',charge=plan['charge'],spin=plan['mult']-1,verbose=0)
+    symmetric=(matrix+matrix.T)/2
+    harmonic=thermo.harmonic_analysis(mol,symmetric.reshape(n,3,n,3).transpose(0,2,1,3),mass=mass,imaginary_freq=False)
     if rank!=6 or min(frequencies)>=-5 or np.max(abs(np.asarray(harmonic['freq_wavenumber'])-frequencies))>1e-5:
         raise ValueError('The independent projected unstable mode must agree with the molecular analysis')
     index=int(np.argmin(frequencies));mode=np.asarray(harmonic['norm_mode'][index]);mode/=np.linalg.norm(mode,axis=1).max()
@@ -88,13 +94,15 @@ def diagnose(namespace, output):
     used.extend([freeze_source(output.parent,Path(__file__),SOURCE_BYTES),
         freeze_source(output.parent,Path(primary_checkpoints.__file__),primary_checkpoints.SOURCE_BYTES),
         freeze_source(output.parent,Path(modes.__file__)),Path(qrrho.__file__)])
-    result=dict(status='counterion_unstable_native_mode_independently_reconstructed',namespace=str(namespace),
+    result=dict(status='route_primary_unstable_native_mode_independently_reconstructed' if first_native else 'counterion_unstable_native_mode_independently_reconstructed',namespace=str(namespace),
         geometry=str(geometry),geometry_sha256=sha256_file(geometry),Hessian=str(paths[0]),Hessian_sha256=sha256_file(paths[0]),
         minimum_frequency_cm=float(min(frequencies)),frequencies_cm=frequencies.tolist(),rigid_rank=rank,
         negative_internal_modes_below_gate=int(sum(frequencies<-5)),actual_native_SCF_frames_checked=series['actual_SCF_frames_checked'],
         sampled_derivative_checks=checks,maximum_column_error=max(r['relative_error'] for r in checks),
         signed_mode=str(mode_path),signed_mode_sha256=sha256_file(mode_path),mode_normalization='maximum Cartesian atom displacement norm = 1',
         proposed_maximum_atom_displacement_A=.1,native_G_qualified=False,association_free_energy_computed=False,
+        charge=plan['charge'],mult=plan['mult'],extra_sulfur_column_checks_completed=False if first_native else None,
+        maximum_raw_Hessian_asymmetry=float(abs(matrix-matrix.T).max()),harmonic_comparison_uses_same_symmetric_matrix=True,
         source_sha256={str(p):sha256_file(p) for p in used})
     atomic_write_json(output,result);return result
 

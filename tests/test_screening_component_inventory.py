@@ -26,6 +26,20 @@ def test_bound_monatomic_component_is_explicit(tmp_path):
     assert rows[0]['source_state']['aliases']==['exact_viologen:chloride']
 
 
+def test_another_exact_molecule_keeps_its_own_source_identity(tmp_path):
+    data=package(tmp_path);data['source_alias_prefix']='declared_other_package'
+    (tmp_path/'manifest.json').write_text(json.dumps(data))
+    _,rows=inventory(tmp_path)
+    assert rows[0]['source_state']['aliases']==['declared_other_package:chloride']
+
+
+@pytest.mark.parametrize('prefix',[None,'','wrong:scope','../wrong'])
+def test_ambiguous_source_alias_scope_is_rejected(tmp_path,prefix):
+    data=package(tmp_path);data['source_alias_prefix']=prefix
+    (tmp_path/'manifest.json').write_text(json.dumps(data))
+    with pytest.raises(ValueError):inventory(tmp_path)
+
+
 @pytest.mark.parametrize('bad',['file_hash','charge','basis','nonfinite_eV'])
 def test_rehashed_wrong_state_or_nonfinite_unit_cannot_enter_panel(tmp_path,bad):
     data=package(tmp_path)

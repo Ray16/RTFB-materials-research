@@ -45,6 +45,24 @@ def test_sampled_columns_reconstruct_from_actual_saved_displacements(derivatives
     assert len(paths)==27
 
 
+def test_additional_declared_columns_require_both_actual_step_pairs(derivatives):
+    root,xyz,record,matrix=derivatives
+    coordinates=Atoms('H2',positions=[[0,0,0],[0,0,.8]]).positions/.52917721067
+    for j,step in enumerate((.0005,.001)):
+        for k,sign in enumerate((-1,1)):
+            x=coordinates.copy();x[0,2]+=sign*step
+            folder=root/'SCF_evaluations'/f'{9+2*j+k:04d}'/'0000';folder.mkdir(parents=True)
+            (folder/'settings.json').write_text(json.dumps(dict(coordinates_Bohr=x.tolist(),charge=0,mult=1)))
+            (folder/'SCF_result.json').write_text(json.dumps(dict(converged=True)))
+            np.save(folder/'gradient.npy',(matrix@x.reshape(-1)).reshape(2,3))
+        record['derivative_checks'].append(dict(atom_index=0,axis=2,step_Bohr=step,relative_error=0.))
+    with pytest.raises(ValueError):reviewer.finite_difference_review(root,xyz,record,matrix)
+    checks,_=reviewer.finite_difference_review(root,xyz,record,matrix,expected_columns=[(0,1),(1,2),(0,2)])
+    assert len(checks)==6 and max(c['relative_error'] for c in checks)<1e-11
+    (root/'SCF_evaluations/0012/0000/gradient.npy').unlink()
+    with pytest.raises(ValueError):reviewer.finite_difference_review(root,xyz,record,matrix,expected_columns=[(0,1),(1,2),(0,2)])
+
+
 @pytest.mark.parametrize('change',['gradient','missing','charge','coverage'])
 def test_unreconstructable_hessian_evidence_cannot_be_admitted(derivatives,change):
     root,xyz,record,matrix=derivatives

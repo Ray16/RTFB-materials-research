@@ -30,6 +30,11 @@ establish that a calculation is currently running.
   unsubstituted direct N-linked phenothiazine. The other 909 remain held.
   Eight new mapped F/CN designs have no computed properties or transferred route
   approval. No full material admission is claimed. Earlier registry snapshots and the historical all-axis ledger retain their separate scopes.
+- [Unsubstituted phenothiazine primary comparison](../validation/phenothiazine_primary_2026-11-02/README.md):
+  both exact electronic states pass independent corrected-integration review.
+  The neutral native calculation reveals a -25.47-cm-1 failed minimum; signed
+  refinement seeds are prepared. The oxidized native stage has a preserved startup
+  interruption and a fresh queued recovery. Potential and G remain pending.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.
@@ -75,11 +80,12 @@ establish that a calculation is currently running.
 - [T4 fixed-gradient resource control](../validation/counterion_T4_resource_2026-11-02/README.md):
   one exact primary-model chloride SCF/gradient matches the V100 reference to
   1.4e-12 Ha / 1.3e-12 Ha/Bohr, at 9,088 MiB peak. This qualifies the fixed
-  control only; optimization and Hessian resource classes remain unqualified.
+  control only; the separate geometry pilot below now passes. Hessian admission
+  remains unchanged.
 - [T4 full geometry resource pilot](../validation/counterion_T4_geometry_2026-11-02/README.md):
-  one existing signed-mode chloride repair has an actual exclusive optimization
-  start after the checked fixed-gradient control. Closed geometry/resource review
-  is pending; no further repair, Hessian or native G is admitted by this start.
+  the strict pilot passes independent review of 102 SCFs and final stationarity,
+  at 9,762 MiB peak. Three matching repairs now run exclusively on T4 GPUs;
+  their own geometry checks remain pending. Hessian and native G remain separate.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin, distinct from the +1 doublet redox state.

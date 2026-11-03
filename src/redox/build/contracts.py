@@ -6,6 +6,23 @@ from rdkit import Chem
 from redox.build.structures import decorate, unassigned_stereo
 
 
+def state_declaration(candidate, alias):
+    """Accept repeated sources only when exact chemistry and state hypotheses agree."""
+    declarations=[row for row in candidate['declarations'] if row['id']==alias]
+    if not declarations:raise ValueError('An exact candidate state declaration is required')
+    def signature(row):
+        structures=[]
+        for field in ('fragment','precursor_smiles'):
+            mol=Chem.MolFromSmiles(row[field])
+            if mol is None:raise ValueError('Valid exact declaration structures required')
+            structures.append(Chem.MolToSmiles(mol,isomericSmiles=True))
+        return structures,row['reaction_class'],row['states']
+    first=signature(declarations[0])
+    if any(signature(row)!=first for row in declarations[1:]):
+        raise ValueError('Conflicting exact structures or charge/spin/state hypotheses require review')
+    return declarations[0]
+
+
 def validate_group(scaffold, group):
     for field in ("id", "name", "family", "frag", "states"):
         if not group.get(field):

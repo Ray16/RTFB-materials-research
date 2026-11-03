@@ -50,3 +50,18 @@ def test_changed_priority_plan_or_namespace_cannot_silently_hold_capacity(priori
     with pytest.raises(ValueError):priority_for_slot([row],{'namespace':'bulk'},dict(GPU_MiB=95830,GPU_compute_capability=9.),set(),lambda o:True,lambda p,o:True)
     Path(row['namespace']).write_text('{}')
     with pytest.raises(ValueError):priority_requests(config)
+
+
+def test_one_shared_controller_prioritizes_only_its_current_pending_input(priority_case,tmp_path):
+    config,first,case,status=priority_case
+    other=tmp_path/'other';other.mkdir();(other/'plan.json').write_bytes((case/'plan.json').read_bytes())
+    namespace=other/'namespace.json';namespace.write_text(json.dumps(dict(case=str(other),plan_sha256=sha256_file(other/'plan.json'))))
+    second=dict(first,namespace=str(namespace),namespace_sha256=sha256_file(namespace))
+    requests=[first,second];observed=dict(GPU_MiB=95830,GPU_compute_capability=9.)
+    # The two immutable requests share one controller's next-input field.
+    assert priority_for_slot(requests,{'namespace':first['namespace']},observed,set(),lambda o:True,lambda p,o:True) is None
+    assert priority_for_slot(requests,{'namespace':'bulk'},observed,set(),lambda o:True,lambda p,o:True)[0]==first
+    (case/'status.json').write_text('{}')
+    status.write_text(json.dumps(dict(namespace=second['namespace'],owner={'pid':1})))
+    assert priority_for_slot(requests,{'namespace':'bulk'},observed,set(),lambda o:True,lambda p,o:True)[0]==second
+    assert priority_for_slot(requests,{'namespace':second['namespace']},observed,set(),lambda o:True,lambda p,o:True) is None

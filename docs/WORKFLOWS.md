@@ -11,6 +11,8 @@ no declared category. It does not submit calculations.
 | Purpose | Entry point | Scientific scope |
 |---|---|---|
 | Registered molecular campaign | `redox motifs` | Plan by default; execution requires `--execute`, a suitable reserved GPU and state-specific QC |
+| Route-admitted primary molecular comparison | `python -m redox.workflows.route_molecular_panel --help` | Exact frozen route/graph/state admission; preserved source geometries and existing corrected electronic worker. A bounded `queue` waits for suitable capacity; own native and reference stages remain mandatory before potential/G publication |
+| First route-admitted native components | `python -m redox.workflows.route_primary_native --help` | The primary 32-GB-class Hessian envelope and existing native engine, with actual-center sulfur displacement checks. Failed minima retain blank G and require fresh refinement; no candidate potential is assembled here |
 | Resource-controlled shard launch | `redox launch`, `redox run-gpu` | Scheduling/preflight; process completion is not scientific admission |
 | Candidate construction | `redox build`, `redox search`, `redox expand` | Graphs and hypotheses; route review precedes new full-property campaigns |
 | Exact matched ring panel | `python scripts/candidates/expand_ring_panel.py --help` | Declared baseline/substituents; exact precursor/product and mapped new bond for every graph; retains equivalent recipes, computes no redox properties |
@@ -41,6 +43,23 @@ calculation, an admitted G or an ensemble result. Only expand a resource class
 after its declared pilot passes. The unified design pool is
 `results/candidates/pool/current.json`; a route pass is distinct from a full
 material decision.
+
+The route-admitted molecular queue and saved-ionic validation coordinator share
+`prepared_namespace_queue`: exact owner closure for resume, bounded resource
+refusal accounting, source guards, shared storage/GPU admission and preservation
+of every started scientific attempt. A multi-input queue exposes only its next
+pending namespace to the advisory priority rule, so it cannot hold extra slots
+for already running states. Scientific admission remains in each caller.
+Equivalent registry declarations may differ in SMILES spelling or source label;
+their exact structures and charge/spin/state hypotheses must all agree before a
+campaign starts. Conflicting declarations require review.
+
+Independent states continue to observe or dispatch when a partner has failed;
+the failed attempt is never restarted by this rule. A terminal incomplete queue
+is reported once all remaining states have finished or require explicit review.
+Added finite-difference probes must use the native engine's recorded center
+coordinates, preserving its pinned unit convention rather than applying a
+second Angstrom-to-Bohr constant.
 
 ## Physical context at arithmetic boundaries
 

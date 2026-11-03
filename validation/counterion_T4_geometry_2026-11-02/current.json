@@ -1,6 +1,6 @@
 {
-  "status": "one_T4_full_geometry_pilot_started_unqualified",
-  "checked": 1793668839.1673362,
+  "status": "T4_geometry_pilot_checked_three_independent_repairs_started",
+  "checked": 1793678089.0480442,
   "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_geometry_pilot/namespace.json",
   "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_geometry_pilot",
   "actual_start_verification": "validation/counterion_T4_geometry_2026-11-02/actual_start_verification.json",
@@ -8,11 +8,11 @@
   "source_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_N0_below_signed_mode_geometry_repairs/minus/namespace.json",
   "prospective_peak_GPU_limit_MiB": 12288,
   "prospective_host_RSS_limit_GiB": 32,
-  "geometry_resource_class_qualified": false,
+  "geometry_resource_class_qualified": true,
   "Hessian_class_qualified": false,
   "native_G_qualified": false,
   "material_admission": false,
-  "additional_repairs_released": 0,
+  "additional_repairs_released": 3,
   "source_sha256": {
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/namespace.json": "01940f397baa602888b7e7d1f5c354a8aeeefe523e7173fc6c2db394f028c301",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/plan.json": "f8916babc602921f1a45a1931816549a23c5dfe309a2b1e3afc7e4fc79b8c7f6",
@@ -21,6 +21,27 @@
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/storage_admission.json": "97f44b6d485552ca531ec48a982bdecaa6cab2817e0e2cd79b7a21c4e5c03f2d",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/controller_start.json": "97e6b8d17b985d00067417d4d9bc9acbff270f747b31bb7c907496ae11f8cbb2",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/actual_start_verification.json": "3fdeae0e06a672cd9d32185bc8b60d4300d6b9eb528e8e0b4c3fc411e0a9a2b2",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/scope_checks.xml": "3281f7e46fd55cf283851cf95a02b8747ca2825c3544a7823f3cdecc7a5ccc53"
-  }
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/scope_checks.xml": "3281f7e46fd55cf283851cf95a02b8747ca2825c3544a7823f3cdecc7a5ccc53",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/independent_review.json": "191ca7bf8e77ccb26180b618fd35a855106895a63d93542be44dc3bda8662151",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/manifest.json": "57d51cbeba24a44568baafdd492a8ceac423a676eee78faf2412ca5552d4ccf1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/storage_admission.json": "525913e89f395f0dd433341a31a3c43d95594ad2a0cc994ffb8339e8c8191ee4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/node_preflight.json": "8939863c0593f9c4fc1719ef6d9ec13e666dc8bb8ebbf87b68518ad3f75dba02",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/node_resources.json": "9f4ed35ec04961b552ad18dddae1b2e93a16028ff26f91c2f649e05368c2f3cc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/controller_starts.json": "5bcf1bfb4699ec95e9f3f14832281e64f84bffad46ca9909242b3bd6f59bfe46",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/actual_starts.json": "73b731ae2c0505de6896490cbc7daea468816b9c4aff2ccccabd5496099ff21b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/N0_below_plus_namespace.json": "530e9fa2cfc887c06876deb1c9c5549e040a80d97ef150c188c58892bd607ebb",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/N0_below_plus_plan.json": "69c050decf277790129f4dd0c26bb16ee06b726de93dc8dda7687dcf82f6aaa2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/N0_outer_minus_namespace.json": "8db781280357c8edc85bd10b84ca7dea2af45fc2b07336c3c6b4439b691fab84",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/N0_outer_minus_plan.json": "2875304e0228b26384a8137a61a2975e88fc155e20d831c73e2eb05ff474cb8c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/N0_outer_plus_namespace.json": "2ed72044c559eaafd7c0a8bb04465d52a185a91bb1e019be187ccbcbef0f4441",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/N0_outer_plus_plan.json": "5cae7d0d254dba827de689acb940b80bd15cc40c75d32b153bd752dab1873481"
+  },
+  "geometry_qualified": true,
+  "peak_GPU_MiB": 9762,
+  "actual_pilot_SCF_frames_checked": 102,
+  "maximum_gradient_Ha_Bohr": 3.8028168249028705e-07,
+  "additional_actual_starts_checked": 3,
+  "independent_review": "validation/counterion_T4_geometry_2026-11-02/independent_review.json",
+  "followup_current": "validation/counterion_T4_geometry_2026-11-02/followups/actual_starts.json",
+  "followup_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_remaining_geometry_repairs"
 }

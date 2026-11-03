@@ -13,7 +13,7 @@ import numpy as np
 def sha(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
-def finite_difference_review(case,geometry,record,matrix):
+def finite_difference_review(case,geometry,record,matrix,expected_columns=None):
     """Recompute the sampled errors from saved displaced SCF/gradient returns."""
     from ase.io import read
     coordinates=read(geometry).positions/.52917721067
@@ -45,12 +45,12 @@ def finite_difference_review(case,geometry,record,matrix):
             raise ValueError('Sampled finite-gradient Hessian column does not reconstruct')
         checks.append(dict(atom_index=atom,axis=axis,step_Bohr=step,relative_error=error))
         used.extend(r[0] for r in rows_plus+rows_minus)
-    expected={(0,1,h) for h in (.0005,.001)}
     symbols=read(geometry).get_chemical_symbols()
     other=next((i for i,s in enumerate(symbols) if s=='O'),next((i for i,s in enumerate(symbols) if s=='Fe'),len(symbols)-1))
-    expected|={(other,2,h) for h in (.0005,.001)}
-    if {(c['atom_index'],c['axis'],c['step_Bohr']) for c in checks}!=expected or len(checks)!=4:
-        raise ValueError('Two complete sampled columns at two steps are required')
+    columns=[(0,1),(other,2)] if expected_columns is None else list(expected_columns)
+    expected={(atom,axis,h) for atom,axis in columns for h in (.0005,.001)}
+    if len(set(columns))!=len(columns) or {(c['atom_index'],c['axis'],c['step_Bohr']) for c in checks}!=expected or len(checks)!=len(expected):
+        raise ValueError('Complete declared sampled columns at both steps are required')
     paths=set()
     for path in used:
         paths.update([path,path.with_name('gradient.npy'),path.with_name('SCF_result.json')])

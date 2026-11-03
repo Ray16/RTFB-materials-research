@@ -517,8 +517,9 @@
       "source_snapshot": "validation/counterion_T4_geometry_2026-11-02/plan.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_geometry_pilot",
       "checks": "validation/counterion_T4_geometry_2026-11-02/scope_checks.xml",
-      "status": "one_T4_full_geometry_pilot_started_unqualified",
-      "scope": "One actual exclusive T4 strict optimization of the existing N0_below minus repair, following the checked exact fixed-gradient control. Geometry resource/physical review pending; zero followups released, no Hessian or native G."
+      "status": "T4_geometry_pilot_checked_three_independent_repairs_started",
+      "scope": "Exact strict geometry pilot independently checked: 102 SCFs, final gradient 3.80e-7 Ha/Bohr, 9762 MiB peak. Three matching T4 repairs have actual exclusive starts; each remains physically unqualified. No Hessian/native G or general 16-GB full-workflow admission.",
+      "physical_replay": "validation/counterion_T4_geometry_2026-11-02/independent_review.json"
     },
     "substituted_phenothiazine_precursor_access": {
       "guide": "validation/phenothiazine_precursor_access_2026-11-02/README.md",
@@ -536,6 +537,16 @@
       "checks": "validation/corrected_sampling_2026-11-02/snapshot_catalog_checks.xml",
       "status": "90_electronic_18_native_receipts_and_full_240_slot_identity_rechecked",
       "scope": "Own electronic/nuclear sums and context retained; 306 previously reviewed SCF frames represented. Same-input repeat differs by 4.37e-11 eV; no fresh SCF/Hessian execution or ensemble qualification."
+    },
+    "phenothiazine_primary_comparison": {
+      "guide": "validation/phenothiazine_primary_2026-11-02/README.md",
+      "current": "validation/phenothiazine_primary_2026-11-02/current.json",
+      "source_snapshot": "validation/phenothiazine_primary_2026-11-02/source_manifest.json",
+      "protocol": "validation/phenothiazine_primary_2026-11-02/calculation_contract.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel",
+      "checks": "validation/phenothiazine_primary_2026-11-02/focused_checks.xml",
+      "status": "two_electronic_states_checked_neutral_minimum_failed_oxidized_native_recovery_pending",
+      "scope": "Both exact electronic states independently checked, maximum corrected/stored difference 5.19e-11 Ha. Neutral native geometry fails with a -25.47 cm-1 mode; signed repair seeds prepared, no G admitted. Oxidized native startup interruption preserved and fresh recovery queued; own native/S columns/reference remain pending."
     }
   }
 }

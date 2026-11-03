@@ -13,6 +13,10 @@ CATEGORIES = {
  'historical': [],
 }
 SPECIALIZED = [
+ dict(kind='checked_campaign', module='redox.workflows.route_molecular_panel',
+      purpose='Exact route-admitted source states; corrected electronic stage first, own native G and matched references remain required'),
+ dict(kind='checked_campaign', module='redox.workflows.route_primary_native',
+      purpose='First native phenothiazine components with explicit sulfur columns; independent minimum/component review before any potential'),
  dict(kind='design', script='scripts/candidates/expand_ring_panel.py',
       purpose='Exact mapped precursor/product ring panel; computes no properties'),
  dict(kind='design', script='scripts/candidates/merge_registry.py',

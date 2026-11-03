@@ -21,6 +21,7 @@ from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.core.protocol import ACTIVE_SP,load_record,record_path
 from redox.validation.protonation import hydrogen_topology_status
+from redox.build.contracts import state_declaration
 from redox.workflows.solution_pair_namespace import validate_layout
 from redox.workflows.archived_native_namespace import remaining_host_promises
 
@@ -72,14 +73,13 @@ def prepare(archive,registry,routes,assessment,candidate_alias,source_id,states,
     matches=[r for r in records if candidate_alias in r['aliases'] and source_id in r['aliases']]
     if len(matches)!=1:raise ValueError('One exact graph must bind both the enumerated alias and source ID')
     candidate=matches[0]
-    declarations=[d for d in candidate['declarations'] if d['id']==candidate_alias]
-    if len(declarations)!=1:raise ValueError('One exact declared candidate required')
+    declaration=state_declaration(candidate,candidate_alias)
     gate=load(ROOT/'scripts/pipeline/screen_grafting_routes.py','molecular_native_prospective_route')
-    route=gate.screen(dict(id=candidate_alias,frag=declarations[0]['fragment'],product_smiles=candidate['product_smiles']),
+    route=gate.screen(dict(id=candidate_alias,frag=declaration['fragment'],product_smiles=candidate['product_smiles']),
         json.loads(Path(routes).read_text())['candidates'],json.loads(Path(assessment).read_text()))
     if not route['proceed_to_full_redox'] or not route.get('exact_route_binding_verified'):
         raise ValueError('The exact prospective attachment route must pass before native calculations')
-    declared={s[0]:(s[1],s[2]) for s in declarations[0]['states']}
+    declared={s[0]:(s[1],s[2]) for s in declaration['states']}
     if len(states)!=len(set(states)) or not set(states)<=set(declared):raise ValueError('Distinct declared redox states required')
     prepared=[]
     for state in states:

@@ -24,6 +24,9 @@ def inventory(package):
     from ase.io import read
     from pyscf import gto
     data=json.loads((package/'manifest.json').read_text());rows=[];seen=set()
+    prefix=data.get('source_alias_prefix','exact_viologen')
+    if not isinstance(prefix,str) or not prefix or any(c in prefix for c in (':','/','\\')):
+        raise ValueError('A single explicit source alias namespace is required')
     for state in data['states']:
         key=state['id']
         if key in seen or not key or Path(key).name!=key:raise ValueError('Distinct safe package state IDs required')
@@ -45,7 +48,7 @@ def inventory(package):
         atoms=read(paths['geometry']);symbols=atoms.get_chemical_symbols()
         molecule=gto.M(atom=list(zip(symbols,atoms.positions.tolist())),basis=ACTIVE_SP['basis'],
                        charge=state['charge'],spin=state['mult']-1,verbose=0)
-        rows.append(dict(key=key,source_state=dict(id=key,aliases=['exact_viologen:'+key],
+        rows.append(dict(key=key,source_state=dict(id=key,aliases=[prefix+':'+key],
             smiles=state['smiles'],charge=state['charge'],mult=state['mult'],original_state_directory=str(paths['geometry'].parent)),
             geometry=str(paths['geometry']),energy=str(paths['energy']),reference_energy_Ha=value,
             atoms=len(atoms),nao=molecule.nao,has_iron='Fe' in symbols,

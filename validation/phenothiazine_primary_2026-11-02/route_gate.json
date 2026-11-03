@@ -1,0 +1,101 @@
+{
+  "id": "phenothiazine",
+  "route_status": "proceed",
+  "proceed_to_full_redox": true,
+  "proceed_to_feasibility_model": true,
+  "reasons": [],
+  "experimental_ease": "reviewed_workable_route; kinetics/yield not inferred from deltaG alone",
+  "reaction_class": "NH_OH_substitution",
+  "precursor_smiles": "c1ccc2c(c1)Nc1ccccc1S2",
+  "evidence": {
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+      "precursor_smiles": "c1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1023]2[c:1013]3[cH:1012][cH:1011][cH:1010][cH:1015][c:1014]3[S:1016][c:1017]3[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[cH:1010]1[cH:1011][cH:1012][c:1013]2[c:1014]([cH:1015]1)[S:1016][c:1017]1[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]1[NH:1023]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1023
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "25642b6cdf9c02ba3a508e02fd8ac57a1eab728e111ccb6129b9a10b666d94fd",
+    "reaction_class": "NH_OH_substitution",
+    "exact_precursor_access_reviewed": true,
+    "attachment_selectivity_reviewed": true,
+    "conditions_defined": true,
+    "balanced_route_reviewed": true,
+    "redox_core_retention_reviewed": true,
+    "conditions": {
+      "solvent": "DMF (reported bead functionalization)",
+      "reactive_form": "10H-phenothiazine with NaH; deprotonated N is the intended nucleophile",
+      "base": "NaH (reported; formulation/purity not specified)",
+      "counterions": "Na+ reagent and chloride-derived salt; NaCl/H2 shown only as balanced stoichiometry, not a measured phase/speciation model",
+      "temperature": "ambient temperature (reported)",
+      "time": "6 h (reported)"
+    },
+    "source_urls": [
+      "https://doi.org/10.1021/jo00265a043",
+      "https://file1.lookchem.com/html/freearticle/2022083003/5570506/img_02.png",
+      "https://file1.lookchem.com/html/freearticle/2022083003/5570506/img_03.png"
+    ],
+    "evidence_scope": "Wright and Jin, J. Org. Chem. 1989, 54, 965-968, Scheme I/p.966 and experimental p.967: N-attachment of unsubstituted phenothiazine to chloromethylated polystyrene beads; chemical oxidation and reduction of the attached core. The exact capped product is a local model of that connection.",
+    "support_evidence_class": "demonstrated bead attachment class; capped molecular model distinct",
+    "precursor_access_scope": "Commercial phenothiazine identified in the original general procedures; not a current vendor/procurement check",
+    "source_reported_product_characterization": "Washed/dried N-substituted polymer; nitrogen analysis calculated 3.34%, found 3.36%. Reported mass-based yield is not a measured loading or conversion for our beads.",
+    "redox_retention_scope": "Subsequent SbCl5 oxidation in CH2Cl2 and reduction during metal-complex oxidation support retained redox function; not reversible battery cycling or MeCN validation",
+    "limitations": "Single primary report. Our bead crosslinking, swelling, accessibility, conversion and loading are unknown. Solid/solution salt activities, hydrogen chemical potential, exact capped-graft G, MeCN redox accuracy and operating-state interactions remain unresolved. No ring-substituted or ether-linked route is admitted by this evidence.",
+    "actual_condition_stoichiometry": {
+      "species": {
+        "precursor": {
+          "smiles": "c1ccc2c(c1)Nc1ccccc1S2",
+          "charge": 0
+        },
+        "site": {
+          "smiles": "Cc1ccc(CCl)cc1",
+          "charge": 0
+        },
+        "hydride": {
+          "smiles": "[Na+].[H-]",
+          "charge": 0
+        },
+        "product": {
+          "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+          "charge": 0
+        },
+        "salt": {
+          "smiles": "[Na+].[Cl-]",
+          "charge": 0
+        },
+        "hydrogen": {
+          "smiles": "[H][H]",
+          "charge": 0
+        }
+      },
+      "coefficients": {
+        "precursor": -1,
+        "site": -1,
+        "hydride": -1,
+        "product": 1,
+        "salt": 1,
+        "hydrogen": 1
+      },
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "source_scope": "Stoichiometric local-site representation of the reported NaH reaction; salt phases and gas/solution activities are not quantified by this graph check",
+      "reaction_deltaG_kJ_mol": null,
+      "thermodynamic_entities_not_inferred_from_graph_dots": true,
+      "observed_hydrogen_evolution_claimed": false,
+      "actual_condition_thermochemistry_computed": false
+    },
+    "full_material_admission": false,
+    "experimental_grafting_yield_for_our_material": null
+  },
+  "missing_route_evidence": [],
+  "exact_route_binding_verified": true
+}
