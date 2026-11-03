@@ -116,9 +116,12 @@ geometries and their fresh electronic states now pass review. Two neutral
 native Hessians fail the unchanged symmetry threshold; component reconstruction
 traces their antisymmetry to the legacy CDS derivative step. The original
 oxidized native component independently qualifies, but a qualified oxidized
-component alone cannot supply an oxidation potential. Finer-step full native
-controls have been prepared; the cited records do not supply qualified neutral
-free energies. Quantitative phenothiazine electrochemistry remains excluded
+component alone cannot supply an oxidation potential. Both finer-step neutral
+controls now independently qualify their native free energies, with 42 actual
+SCF checkpoints checked in total. The matching finer-step oxidized control
+remains unqualified in the [new collection](../validation/phenothiazine_cds_2026-11-03/current_02.json).
+State/reference compatibility and numerical-policy sensitivity remain to be
+checked before a potential is admitted. Quantitative phenothiazine electrochemistry remains excluded
 until compatible state and reference components pass.
 [Native evidence and numerical-policy scope](../validation/phenothiazine_cds_2026-11-03/README.md).
 

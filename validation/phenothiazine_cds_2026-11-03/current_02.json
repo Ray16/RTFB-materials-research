@@ -1,0 +1,134 @@
+{
+  "status": "two_neutral_finer_CDS_native_components_independently_qualified",
+  "checked_UTC": "2026-11-03T08:09:52.236898+00:00",
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6",
+  "context": {
+    "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+    "charge": 0,
+    "mult": 1,
+    "electronic_protocol": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200
+    },
+    "native_protocol": {
+      "schema": 1,
+      "model": "solution geometry-level DFT Hessian",
+      "xc": "r2scan",
+      "disp": "d4",
+      "basis": "def2-svp",
+      "anion_basis": "def2-svpd",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "grid_level": 3,
+      "cphf_grid_level": 3,
+      "grid_response": true,
+      "conv_tol": 1e-12,
+      "conv_tol_grad": 1e-08,
+      "temperature_K": 298.15,
+      "rotor_cutoff_cm": 50,
+      "spin_partition": "unsplit ground spin multiplet",
+      "gradient_max_acceptance_Ha_Bohr": 0.00045,
+      "min_frequency_acceptance_cm": -5,
+      "finite_difference_step_Bohr": 0.0005,
+      "finite_difference_relative_acceptance": 0.01,
+      "max_spin_contamination": 0.1,
+      "df_batch_cap_GiB": 6,
+      "validated_pyscf_version": "2.14.0",
+      "validated_gpu4pyscf_version": "1.8.1"
+    },
+    "thermal_protocol": {
+      "schema": 1,
+      "model": "projected internal-mode xTB6.7.1 qRRHO",
+      "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+      "masses": "installed xTB NIST isotopic-average atomic masses",
+      "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+      "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+      "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+      "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+      "frequency_scale": 1.0,
+      "temperature_K": 298.15,
+      "rotor_cutoffs_cm": [
+        25,
+        50,
+        100
+      ],
+      "primary_rotor_cutoff_cm": 50,
+      "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+      "zero_internal_frequency_policy": "refuse; no artificial floor",
+      "symmetry": "xTB symmetry detection for the exact input geometry",
+      "pressure": "same translation convention as installed xTB thermodyn"
+    },
+    "native_numerical_policy": {
+      "schema": 1,
+      "component": "primary legacy SMD CDS",
+      "Hessian_gradient_step_Bohr": 1e-06,
+      "energy_function_changed": false,
+      "gradient_function_changed": false,
+      "global_defaults_changed": false
+    },
+    "numerical_implementation": {
+      "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+      "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+      "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+      "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+    }
+  },
+  "neutral_components": [
+    {
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json",
+      "key": "phenothiazine_neu_mode_minus",
+      "geometry_sha256": "8707e2cd3e638c5795f40ae1434f31b340a2cbf37b5568ffd6208e4c142f2663",
+      "G_by_cutoff_eV": {
+        "25": -33335.20345611531,
+        "50": -33335.16613816716,
+        "100": -33335.132012373884
+      },
+      "minimum_frequency_cm": 30.375710857631255,
+      "maximum_column_error": 1.178363690233853e-05,
+      "native_G_qualified": true
+    },
+    {
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json",
+      "key": "phenothiazine_neu_mode_plus",
+      "geometry_sha256": "04c278a6c6fde79c5b5ed8353b3062ac189807cf601bb65171bd66ea80d0a407",
+      "G_by_cutoff_eV": {
+        "25": -33335.20345958854,
+        "50": -33335.16613824347,
+        "100": -33335.132011011556
+      },
+      "minimum_frequency_cm": 30.375270448113973,
+      "maximum_column_error": 1.1341563153044793e-05,
+      "native_G_qualified": true
+    }
+  ],
+  "actual_SCF_checkpoint_frames_checked": 42,
+  "comparison": {
+    "definition": "G(neutral plus branch) - G(neutral minus branch), same declared context",
+    "delta_G_kJ_mol": {
+      "25": -0.00033511568243838627,
+      "50": -7.3628191844129135e-06,
+      "100": 0.0001314447154492678
+    },
+    "eV_to_kJ_mol": 96.48533212331002,
+    "branch_populations_inferred": false,
+    "conformer_ensemble_qualified": false
+  },
+  "oxidized_finer_step_native_G_qualified": false,
+  "oxidized_finer_step_G_by_cutoff_eV": null,
+  "oxidation_potential_V": null,
+  "redox_potential_qualified": false,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json": "6fb04f5ab8acb3e66c169764dfe47f11f282da3d02f8b34462315b4185e20854",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json": "a0a2f42fef340a5801dd1cef44fb9d60b7eafe93ec78546e203ebaaf290276c5"
+  }
+}

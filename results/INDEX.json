@@ -609,13 +609,13 @@
     },
     "phenothiazine_CDS_derivative_accuracy": {
       "guide": "validation/phenothiazine_cds_2026-11-03/README.md",
-      "current": "validation/phenothiazine_cds_2026-11-03/current.json",
+      "current": "validation/phenothiazine_cds_2026-11-03/current_02.json",
       "source_snapshot": "validation/phenothiazine_cds_2026-11-03/prepared_manifest.json",
       "qualification": "validation/phenothiazine_cds_2026-11-03/qualification_02.json",
       "checks": "validation/phenothiazine_cds_2026-11-03/final_checks_02.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6",
-      "status": "CDS_component_cause_identified_three_full_native_controls_queued",
-      "scope": "Both neutral antisymmetries traced to the default CDS numerical Hessian; energy/gradient functions unchanged. Three fresh full 1e-6-Bohr controls queued with all physical gates retained. Original oxidized default-step G independently checked; neutral G and potential remain unresolved."
+      "status": "two_neutral_finer_CDS_native_components_independently_qualified",
+      "scope": "Both finer-step neutral components pass full independent Hessian, 42 actual SCF-frame, derivative, mode and nuclear review. Original default-step oxidized G remains separate; matching finer-step oxidized review and state/reference compatibility remain pending. No oxidation potential or material admission."
     },
     "finite_viologen_portable_replay": {
       "guide": "examples/finite_viologen_replay/README.md",
@@ -643,6 +643,14 @@
       "status": "six_checked_contact_outcomes_five_numerical_groups",
       "scope": "Primary 1-M association G now spans +5.33 to +22.36 kJ/mol; all 18 cutoff/outcome sums positive. Two new minima extend the frozen four-outcome publication sample. No population, full salt-speciation or covalent-grafting conclusion promoted; scientific publication update pending.",
       "publication_evidence": "manuscript/evidence/2026-11-03_six_chloride_contacts/manifest.json"
+    },
+    "chloride_release_dependency_inventory": {
+      "guide": "validation/counterion_release_inventory_2026-11-03/README.md",
+      "current": "validation/counterion_release_inventory_2026-11-03/content_resolution.json",
+      "source_snapshot": "validation/counterion_release_inventory_2026-11-03/inventory.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls",
+      "status": "declared_dependency_inventory_with_ten_historical_metadata_bindings_unresolved",
+      "scope": "Six chloride outcomes and parents seed recursive declared hash-map inventory; aggregate records also reference historical PMDI/base chemistry. Exact-content relocation only; no lost-data conclusion, full dependency closure, new quantum QC or public deposition."
     }
   }
 }

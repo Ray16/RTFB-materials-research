@@ -1,5 +1,28 @@
 # Phenothiazine CDS derivative accuracy and native validation
 
+## Qualified neutral controls
+
+Both finer-step neutral calculations now pass full independent review:
+[minus branch](neutral_minus_native_review.json) and
+[plus branch](neutral_plus_native_review.json). Each review checks 21 actual
+SCF checkpoints, the full Hessian, standard and sulfur derivative columns,
+projected modes and reconstructed nuclear terms. Minimum frequencies are
+30.3757 and 30.3753 cm-1, with maximum sampled-column relative errors of
+1.1784e-5 and 1.1342e-5. The unchanged physical thresholds are met using the
+declared 1e-6-Bohr CDS step; the earlier failed matrices remain unqualified.
+
+The [current collection](current_02.json) preserves exact graph, charge/spin,
+electronic/native/thermal protocols and the CDS numerical policy. At the
+50-cm-1 cutoff the two neutral G values differ by -7.36e-6 kJ/mol (plus branch
+minus minus branch); across all three cutoffs the largest absolute difference
+is below 0.000336 kJ/mol. This is agreement between two refined branches, not
+an ensemble or a measure of experimental accuracy. The matching finer-step
+oxidized calculation remains unqualified in this snapshot, and no oxidation
+potential is admitted. The default-step oxidized result below is retained
+separately for a subsequent numerical-policy sensitivity comparison.
+
+## Diagnosis and original preparation
+
 The two neutral full Hessians failed the unchanged 1e-6 Ha/Bohr-squared
 symmetry limit. CPU reconstruction identifies the legacy SMD CDS numerical
 Hessian as the source of the antisymmetry. The saved full matrices have maxima
@@ -23,8 +46,8 @@ substituted into production results. The worker records the actual CDS
 evaluation, center, helper hash and numerical policy. The original 32-GB-class
 resource envelope and all stationarity, symmetry, minimum, spin, two-step
 derivative and sulfur-column gates remain mandatory. [Archive preflight](archive_preflight.json)
-passed for all three private namespaces. The [current record](current.json)
-distinguishes queued work from scientific starts and qualified properties.
+passed for all three private namespaces. The [original preparation record](current.json)
+preserves the earlier queued state; the collection above supersedes its status.
 
 The [original oxidized native state](original_oxidized_native_review.json)
 independently passes all 21 actual SCF/frame/spin checks, standard and sulfur
