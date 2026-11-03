@@ -185,6 +185,7 @@ def launch(path,gpu,output):
     from redox.workflows.resources import allocation_guard,cpu_allocation,host_capacity,gpu_suitability,free_slots,GATE
     from redox.workflows.native_resource_profiles import output_room
     spec=verify(path);case=Path(spec['case']);prior=Path(spec['prior_root']);bound=spec['maximum_host_RSS_GiB']
+    plan=json.loads((case/'plan.json').read_text())
     proof=json.loads(Path(path).with_name('node_probe.json').read_text());host=os.uname().nodename.split('.')[0]
     if proof['host']!=host or proof['namespace_sha256']!=sha256_file(path):raise ValueError('Exact node-local preflight required')
     if output.exists() or any((case/n).exists() for n in ('status.json','residency_guard','host_guard')):
@@ -205,7 +206,11 @@ def launch(path,gpu,output):
         capacity=host_capacity(2,minimum_ram_gib=bound+32);promises=remaining_host_promises()
         if not output_room(case)['admit_new_work']:raise RuntimeError('Shared output headroom unavailable; no molecular job started')
         if capacity['available_RAM_bytes']-promises<(bound+32)*2**30:raise RuntimeError('Host RAM promised; no molecular job started')
-        cpus=cpu_allocation(2);device=gpu_suitability(gpu)
+        cpus=cpu_allocation(2)
+        if plan.get('fixed_gradient_memory_pilot'):
+            from redox.workflows.counterion_gradient_pilot import device_for_plan
+            device=device_for_plan(plan,gpu)
+        else:device=gpu_suitability(gpu)
         if (host,gpu) not in free_slots([host]):raise RuntimeError('GPU occupied; no molecular job started')
         with (output/'command.log').open('x') as log:
             child=subprocess.Popen(['taskset','--cpu-list',','.join(map(str,cpus)),*argv],env=env,

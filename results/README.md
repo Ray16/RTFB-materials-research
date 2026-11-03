@@ -64,6 +64,10 @@ establish that a calculation is currently running.
   has an exclusive H100 start and reproduces the source center before reusing
   its complete Hessian. Fresh derivative/minimum checks and independent G
   admission remain pending.
+- [T4 fixed-gradient resource control](../validation/counterion_T4_resource_2026-11-02/README.md):
+  one exact primary-model chloride SCF/gradient matches the V100 reference to
+  1.4e-12 Ha / 1.3e-12 Ha/Bohr, at 9,088 MiB peak. This qualifies the fixed
+  control only; optimization and Hessian resource classes remain unqualified.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin, distinct from the +1 doublet redox state.

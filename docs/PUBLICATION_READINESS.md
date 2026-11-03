@@ -6,15 +6,15 @@ workflow, and deliver a manuscript whose claims match its released evidence.
 Code cleanup, completed example calculations and presentation updates each
 contribute to that objective but do not establish completion.
 
-The largest corrected phthalimide-control native pilot now passes full review
-(17 SCF frames, lowest internal mode 6.4952 cm⁻¹); the frozen working roster has
-78 checked electronic inputs and three native inputs. Matching native followups
-are released, while occupied-ensemble validation remains incomplete. Six local
-viologen/chloride stationary geometries now have independently checked actual
-SCF energies, but their Hessian/association G and salt/speciation conclusions
-remain pending. An interrupted full-component attempt is retained unqualified.
-These working milestones do not change the frozen manuscript's scientific scope
-or establish JCIM submission readiness.
+The current frozen corrected phthalimide-control roster has 89 checked electronic
+inputs and eight independently reconstructed native inputs out of 240 declared
+slots. The largest native pilot passed full review; matched followups continue,
+while occupied ensembles remain incomplete. The fourth finite ionic viologen
+cycle is undergoing fresh source-bound validation after its checkpoint-file
+failure; its G remains blank. Four primary chloride-contact outcomes now have
+checked finite association G and form three numerical duplicate groups. Broader
+contacts, salt speciation and material conclusions remain unresolved. These
+milestones do not establish JCIM submission readiness.
 
 An additional [implementation assessment](../validation/screening_implementation_2026-10-31/README.md)
 reproduces the GPU4PySCF grid-screening defect on V100 and H100. An isolated

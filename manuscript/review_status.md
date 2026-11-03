@@ -63,13 +63,12 @@ and full independent admission. No ensemble or material inference follows.
 [Current collection](../validation/ionic_cycle_completion_2026-11-02/partial_cycles_11.json).
 
 The separate full 240-input corrected phthalimide-control campaign now has
-87 checked electronic inputs and three checked native inputs. The largest
+89 checked electronic inputs and eight checked native inputs. The largest
 119-atom pilot passes full independent minimum, derivative, wavefunction and
-resource review; matching native followups are released, with nine further
-workers observed live. No occupied ensemble is complete. Six exact local
+resource review; matching native followups continue under source-bound resource and physical gates. No occupied ensemble is complete. Six exact local
 viologen/chloride geometries now pass independent stationarity and actual
 SCF-energy checks. The first pose's −50.52-cm⁻¹ minimum failure is independently
-reconstructed and preserved unqualified. Four microstates from three original starts pass full native QC and give finite
+reconstructed and preserved unqualified. Four checked outcomes from three original starts pass full native QC and give finite
 1-M association G of +15.4 to +22.4 kJ/mol at the primary cutoff. Two other
 failed minima have diagnosed signed repair branches prepared. Other poses and
 actual-condition speciation remain open. Twelve frozen
