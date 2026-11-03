@@ -1,7 +1,7 @@
 # Working JCIM manuscript
 
-Open [the article](manuscript.pdf) (20 pages) and
-[Supporting Information](supporting_information.pdf) (34 pages).
+Open [the article](manuscript.pdf) (21 pages) and
+[Supporting Information](supporting_information.pdf) (35 pages).
 Editable sources are [manuscript.tex](manuscript.tex) and
 [supporting_information.tex](supporting_information.tex). Earlier article
 versions remain preserved in Git and the recorded pre-rewrite archive; see
@@ -32,6 +32,16 @@ Twelve frozen motif triplets additionally supply 72 checked gas/MeCN SCFs:
 local motif repulsion and whole-chain electronic nonadditivity have opposite
 signs in two of four parent frames. The article distinguishes these quantities
 from primary molecular G, binding free energy, coupling and ensemble predictions.
+
+The first complete corrected occupied phthalimide cohort now fails its declared
+10-to-20 sampling diagnostic. Twenty inputs remain twenty numerical minima;
+ensemble G drops by 2.40 kJ/mol and minimum E by 3.88 kJ/mol at the primary
+rotor cutoff. All duplicate/rotor scenarios retain the failure. The abstract,
+results, conclusion and SI Table S17 report this additional limit, with the
+earlier empty-backbone cohorts and primary cycles kept separate. A shared
+publication checker reconstructs the geometry/partition analysis for both paper
+and slides; the [76 focused tests](../validation/corrected_sampling_2026-11-02/manuscript_shared_checks.xml)
+include prefix relocation, numerical tampering and unsupported scope promotion.
 
 The primary counterion test now supplies four checked chloride-contact outcomes
 and finite 1-M association G of +15.42 to +22.36 kJ/mol. Geometry/energy duplicate

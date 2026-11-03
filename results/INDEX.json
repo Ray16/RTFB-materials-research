@@ -51,8 +51,8 @@
       "build": "manuscript/build_check.json",
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
-      "status": "912_graph_registry_and_source_qualified_phenothiazine_integrated_working_JCIM_draft",
-      "scope": "20-page article and 34-page SI; 912 exact graphs, eight new uncomputed held designs, three reviewed baseline routes, all four declared finite ionic G cycles and scoped counterion/motif controls. Full material and ensemble admission remain open."
+      "status": "occupied_sampling_failure_and_matched_context_contribution_integrated_working_JCIM_draft",
+      "scope": "21-page article and 35-page SI; 912 exact graphs and all four finite ionic cycles retained. First complete corrected occupied 20-start phthalimide control fails its declared sampling tolerance. Abstract/results/conclusion and SI Table S17 report it, with a shared paper/deck checker and checked self-contained export. Full material and ensemble admission remain open."
     },
     "native_polymer_continuation": {
       "guide": "validation/native_followup_collection_2026-10-30/README.md",
@@ -518,9 +518,10 @@
       "source_snapshot": "validation/counterion_T4_geometry_2026-11-02/plan.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_geometry_pilot",
       "checks": "validation/counterion_T4_geometry_2026-11-02/scope_checks.xml",
-      "status": "T4_geometry_pilot_checked_three_independent_repairs_started",
-      "scope": "Exact strict geometry pilot independently checked: 102 SCFs, final gradient 3.80e-7 Ha/Bohr, 9762 MiB peak. Three matching T4 repairs have actual exclusive starts; each remains physically unqualified. No Hessian/native G or general 16-GB full-workflow admission.",
-      "physical_replay": "validation/counterion_T4_geometry_2026-11-02/independent_review.json"
+      "status": "T4_geometry_pilot_and_two_followup_geometries_checked",
+      "scope": "102-frame pilot plus 44/46-frame followups independently checked; remaining outer-plus geometry pending. Three accepted geometry branches have separate thermochemistry preparations under the unchanged 32-GB-class Hessian envelope. Prepared is not submitted; no native G or T4 Hessian qualification.",
+      "physical_replay": "validation/counterion_T4_geometry_2026-11-02/independent_review.json",
+      "thermochemistry_preparation": "validation/counterion_T4_geometry_2026-11-02/followups/thermochemistry_prepared_manifest.json"
     },
     "substituted_phenothiazine_precursor_access": {
       "guide": "validation/phenothiazine_precursor_access_2026-11-02/README.md",
@@ -546,8 +547,8 @@
       "protocol": "validation/phenothiazine_primary_2026-11-02/calculation_contract.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel",
       "checks": "validation/phenothiazine_primary_2026-11-02/focused_checks.xml",
-      "status": "two_electronic_states_checked_both_native_geometries_require_refinement",
-      "scope": "Both exact fixed-geometry electronic states independently checked. Neutral has -25.47 cm-1 internal mode; oxidized actual gradient 0.00045735997 Ha/Bohr exceeds 0.00045. Fresh strict neutral signed and oxidized-doublet geometry refinements queued; own electronic/native/S-column/reference checks still required. G and potential blank."
+      "status": "both_fixed_geometry_electronic_states_and_two_refined_geometries_checked_native_pending",
+      "scope": "Original exact electronic states retained separately. Neutral-minus and oxidized refinements independently pass all 53/43 actual SCF frames and strict gradients. Second neutral branch has an actual verified start. Own new-geometry high-level electronic, Hessian/minimum/S-column/reference checks remain pending; G and potential blank."
     },
     "phenothiazine_neutral_geometry_refinement": {
       "guide": "validation/phenothiazine_geometry_2026-11-02/README.md",
@@ -555,8 +556,8 @@
       "source_snapshot": "validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_private_manifest.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2",
       "checks": "validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml",
-      "status": "two_signed_neutral_refinements_queued_with_private_evidence",
-      "scope": "Both neutral-singlet +/-0.1-Angstrom seeds retained in archive-visible v2 namespaces. Old preflight-only attempts/controllers closed and preserved. Strict 32-GB-class geometry, fresh high-level energy and full own native checks required; no scientific starts at the observation, G/potential blank."
+      "status": "one_neutral_branch_geometry_checked_partner_running",
+      "scope": "Minus branch independently passes 53 actual SCF/frame/spin checks and final 3.50e-7-Ha/Bohr gradient. Plus branch actual worker PID/start verified on lambda1. Both branches retained until own new-geometry electronic/native G exist; no old-geometry energy transfer."
     },
     "corrected_native_finite_batches": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
@@ -567,7 +568,9 @@
       "checks": "validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups",
       "status": "one_complete_occupied_cell_fails_nested_batch_tolerance",
-      "scope": "Complete corrected phthalimide control cell only. All 20 wells distinct under 0.05/0.1/0.2-Angstrom numerical-duplicate rules; 10-to-20 comparison fails at every rotor setting. Other eleven cells and balanced cycles remain pending. No global sampling or experimental occupancy claim."
+      "scope": "Complete corrected phthalimide control cell only. All 20 wells distinct under 0.05/0.1/0.2-Angstrom numerical-duplicate rules; 10-to-20 comparison fails at every rotor setting. Other eleven cells and balanced cycles remain pending. No global sampling or experimental occupancy claim.",
+      "publication_evidence": "manuscript/evidence/2026-11-02_occupied_sampling_checked/manifest.json",
+      "publication_checks": "validation/corrected_sampling_2026-11-02/manuscript_shared_checks.xml"
     },
     "phenothiazine_oxidized_geometry_refinement": {
       "guide": "validation/phenothiazine_oxidized_geometry_2026-11-02/README.md",
@@ -576,8 +579,9 @@
       "diagnosis": "validation/phenothiazine_oxidized_geometry_2026-11-02/stationarity_diagnosis.json",
       "checks": "validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2",
-      "status": "oxidized_gradient_failure_checked_strict_refinement_queued",
-      "scope": "Actual closed +1-doublet failed-gradient SCF independently reconstructed. Fresh strict geometry-only profile and archive-visible evidence, no reduced thresholds or old-geometry energy transfer. Waiting coordination verified separately from scientific starts; G/potential remain blank."
+      "status": "oxidized_strict_geometry_independently_checked_native_pending",
+      "scope": "Actual prior gradient failure preserved. New +1-doublet geometry independently passes all 43 SCF/frame/spin records and strict fresh final gradient 1.05e-6 Ha/Bohr. New-geometry high-level energy/Hessian/S-column/minimum/own nuclear terms remain required; G and potential blank.",
+      "geometry_review": "validation/phenothiazine_oxidized_geometry_2026-11-02/oxidized_geometry_review.json"
     }
   }
 }

@@ -1,5 +1,20 @@
 # Checked T4 chloride geometry resource class
 
+The new [N0-below plus](followups/N0_below_plus_review.json) and
+[N0-outer minus](followups/N0_outer_minus_review.json) repairs independently pass
+all 44 and 46 saved SCF/frame/spin checks and their strict final gradients
+(5.26e-6 and 1.95e-6 Ha/Bohr). GPU peaks are 9,774 and 9,270 MiB. The remaining
+N0-outer plus calculation is still pending review. Together with the earlier
+102-frame pilot, these give three checked T4 geometries. Own native Hessians
+and association G remain unqualified.
+
+The [three thermochemistry preparations](followups/thermochemistry_prepared_manifest.json)
+retain both N0-below branches and the checked N0-outer branch. They use the
+independently qualified full-contact pilot and the unchanged 32-GB-class GPU
+requirement. These namespaces are prepared, not submitted; no T4 Hessian
+permission or thermodynamic selection is inferred. Earlier start observations
+and the original failed minima remain preserved below.
+
 The pilot now passes [independent geometry and resource review](independent_review.json):
 102 actual SCF frames, a final maximum Cartesian gradient of 3.80282e-7 Ha/Bohr,
 and 9,762 MiB peak GPU usage. The declared strict optimizer and fresh final

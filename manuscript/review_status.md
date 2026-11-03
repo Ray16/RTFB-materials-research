@@ -1,7 +1,7 @@
 # Current manuscript review disposition
 
-As of 2 November 2026, this is a 20-page JCIM working article with a separate
-34-page SI. Submission remains incomplete. Historical review dispositions are
+As of 2 November 2026, this is a 21-page JCIM working article with a separate
+35-page SI. Submission remains incomplete. Historical review dispositions are
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
@@ -10,12 +10,12 @@ preserved in Git; the source-frozen manuscript epoch is selected by
 | M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; twelve checked alternate-model polymer components and all four declared matched neighboring-graft G cycles | Complete occupied sampling, broader salt speciation and scoped decisions; no candidate currently passes every material requirement |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
 | M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; four exact viologen/chloride outcomes pass full native QC and form three duplicate groups | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
-| M4: polymer sampling | Forty alternate-model empty inputs meet the finite 10-to-20 criterion; primary finite PMDI/phthalimide cycles remain separately scoped | Occupied graph/configuration batches, duplicate review and balanced occupied ensemble cycles |
+| M4: polymer sampling | Earlier forty-input empty cohorts pass their finite diagnostic; the first corrected occupied 20-input cell fails the 2-kJ/mol diagnostic across all duplicate/rotor scenarios; SI Table S17 reports the signed changes | Complete all corrected graph/configuration cells and expand sampling without relaxing the failed tolerance; balanced occupied ensembles remain unqualified |
 | M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
 | M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
 | M7: reproducibility | Versioned exact-viologen CPU example; 75-state numerical cache; checked xTB component relocation; local reviewer collection and new control archive | Final synchronized code/data/environment release, author/license metadata and public deposition |
 | M8: literature | Verified base reference audit and separately checked methodological/polymer additions | Final built bibliography and claim/source consistency |
-| M9: publication narrative | Rewritten article; five quantitative interpretation-transfer tests; separate SI and focused slides | Integrate final lead results, demonstrate transferable scientific utility and synchronize final figures/data statements |
+| M9: publication narrative | Rewritten article; five interpretation-transfer tests and a failed prospective occupied sampling diagnostic; concrete contribution in the introduction, results and conclusion; separate SI and focused slides | Integrate final lead results, demonstrate transferable scientific utility and synchronize final figures/data statements |
 
 ## Numerical reliability and its limits
 

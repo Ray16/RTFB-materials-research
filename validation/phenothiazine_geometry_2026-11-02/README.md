@@ -1,5 +1,12 @@
 # Neutral phenothiazine: strict signed-mode geometry refinement
 
+The [minus branch](../phenothiazine_oxidized_geometry_2026-11-02/neutral_minus_geometry_review.json)
+now passes independent review of all 53 saved SCF frames and the strict final
+gradient (3.50e-7 Ha/Bohr). Its partner has a separately verified actual start;
+the [current record](current.json) retains both. High-level electronic scoring
+and own native/Hessian/S-column checks at the new geometry remain pending, and
+neither old-geometry energy nor nuclear terms transfer.
+
 The [current record](current.json) links both exact neutral-singlet signed
 branches and their live bounded controller. The source first-native calculation
 failed its minimum gate; [independent reconstruction](../phenothiazine_primary_2026-11-02/neutral_failed_minimum_diagnosis.json)

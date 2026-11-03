@@ -1,5 +1,13 @@
 # Exact unsubstituted phenothiazine primary comparison
 
+Fresh strict refinements now supply two independently checked stationary
+geometries: [neutral minus](../phenothiazine_oxidized_geometry_2026-11-02/neutral_minus_geometry_review.json)
+and [oxidized doublet](../phenothiazine_oxidized_geometry_2026-11-02/oxidized_geometry_review.json),
+with all 53/43 actual SCF frames reviewed. The second neutral branch is running.
+These are separate from the original-geometry electronic energies below.
+New-geometry high-level scoring, Hessians/minimum and sulfur-column checks remain
+pending; native G and oxidation potential stay blank.
+
 Both exact phenothiazine electronic states now pass independent corrected-
 integration, actual-wavefunction, spin, protocol and closed-resource review:
 [neutral](neutral_electronic_review.json) and [oxidized](oxidized_electronic_review.json).

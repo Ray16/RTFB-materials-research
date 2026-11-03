@@ -96,6 +96,10 @@ def main():
     if (manifest.parent/'registry_update_current.json').exists():
         from check_registry_expansion import audit as audit_registry_expansion
         registry_expansion_check = audit_registry_expansion(manifest.parent)
+    occupied_sampling_check = None
+    if (manifest.parent/'occupied_sampling_manifest.json').exists():
+        from redox.validation.sampling_publication import audit as audit_occupied_sampling
+        occupied_sampling_check = audit_occupied_sampling(manifest.parent, prefix='occupied_sampling_')
     primary_native_cohort_check = None
     corrected_example_check = None
     if (manifest.parent/'primary_native_cohort_inputs.json').exists():
@@ -145,6 +149,12 @@ def main():
         for name in ('manuscript/check_registry_expansion.py','scripts/pipeline/screen_grafting_routes.py',
                      'src/redox/build/attachment_identity.py'):
             source[name]=sha(ROOT/name)
+    if occupied_sampling_check is not None:
+        for name in ('sampling_publication.py','sampling_batches.py','native_conformer_batches.py'):
+            relative='src/redox/validation/'+name; source[relative]=sha(ROOT/relative)
+        for relative in ('src/redox/properties/conformer_geometry.py','src/redox/properties/conformer_ensemble.py',
+                         'scripts/plotting/plot_occupied_sampling.py','results/figures/slides/occupied_sampling_convergence.pdf'):
+            source[relative]=sha(ROOT/relative)
     if primary_native_cohort_check is not None:
         source['manuscript/check_primary_native_cohort.py']=sha(PAPER/'check_primary_native_cohort.py')
         source['src/redox/validation/native_component_sensitivity.py']=sha(ROOT/'src/redox/validation/native_component_sensitivity.py')
@@ -202,6 +212,12 @@ def main():
             raise RuntimeError("Unresolved citations or references in " + name)
         pdf = temporary / (name + ".pdf")
         reader = PdfReader(pdf)
+        if occupied_sampling_check is not None:
+            sampling_text='\n'.join(page.extract_text() for page in reader.pages)
+            numerical=re.sub(r'(?<=\d)\s*\.\s*(?=\d)', '.', sampling_text)
+            required=['2.40','3.88'] if name=='manuscript' else ['2.55','2.40','2.54','0.40','0.65','1.28','3.88']
+            if any(value not in numerical for value in required):
+                raise ValueError('Checked occupied sampling values absent from '+name)
         if ionic_native_cycle_check is not None:
             from check_ionic_native_cycles import check_compiled_values
             check_compiled_values('\n'.join(page.extract_text() for page in reader.pages),ionic_native_cycle_check)
@@ -229,6 +245,7 @@ def main():
                   motif_interaction_check=motif_interaction_check,
                   counterion_association_check=counterion_association_check,
                   registry_expansion_check=registry_expansion_check,
+                  occupied_sampling_check=occupied_sampling_check,
                   registry_citation_check=registry_citation_check,
                   primary_native_cohort_check=primary_native_cohort_check,
                   corrected_example_check=corrected_example_check,

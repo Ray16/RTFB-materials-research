@@ -74,7 +74,8 @@ def main():
         paths.extend([ROOT/'manuscript/check_registry_expansion.py',ROOT/'scripts/pipeline/screen_grafting_routes.py',
             ROOT/'src/redox/build/attachment_identity.py',*[p for p in epoch.glob('registry_update_*') if p.is_file()]])
     paths.extend([SLIDES/'check_sampling.py',ROOT/'src/redox/validation/sampling_batches.py',
-        ROOT/'src/redox/validation/native_conformer_batches.py',ROOT/'scripts/plotting/plot_occupied_sampling.py',
+        ROOT/'src/redox/validation/native_conformer_batches.py',ROOT/'src/redox/validation/sampling_publication.py',
+        ROOT/'scripts/plotting/plot_occupied_sampling.py',
         *[p for p in sampling_folder.iterdir() if p.is_file()]])
     inputs={str(p.relative_to(ROOT)):sha(p) for p in paths}
     for source in paths[:3]:

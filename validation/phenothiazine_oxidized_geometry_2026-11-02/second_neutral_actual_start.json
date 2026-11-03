@@ -1,0 +1,84 @@
+{
+  "status": "actual_second_neutral_geometry_start_verified",
+  "checked": 1793682191.9938056,
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/plus/namespace.json",
+  "owner": {
+    "host": "lambda1",
+    "pid": 3516132,
+    "process_start": "593211249"
+  },
+  "actual_process_start": "593211249",
+  "actual_CPU_affinity": [
+    7,
+    8
+  ],
+  "guard": {
+    "host": "lambda1",
+    "pid": 3516132,
+    "process_start": "593211249",
+    "GPU": 5,
+    "CPU_affinity": [
+      7,
+      8
+    ],
+    "started": 1793681936.7668107,
+    "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/plus/sources/host_guard.py",
+    "foreign_processes_signaled": false
+  },
+  "residency": {
+    "checked": 1793682190.998782,
+    "foreign_resident_PIDs": [],
+    "own_residency_observed": true,
+    "GPU": 5
+  },
+  "runtime": {
+    "status": "declared_runtime_and_FP64_smoke_passed",
+    "started": 1793681936.9937644,
+    "pid": 3516132,
+    "CPU_affinity": [
+      7,
+      8
+    ],
+    "profile": "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+    "profile_sha256": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+    "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/plus/sources/worker.py",
+    "engine": "cutensor",
+    "versions": {
+      "pyscf": "2.14.0",
+      "gpu4pyscf-cuda12x": "1.8.1",
+      "cupy-cuda12x": "13.4.1",
+      "cutensor-cu12": "2.2.0",
+      "fastrlock": "0.8.3"
+    },
+    "FP64_smoke_checks": [
+      {
+        "pattern": "ij,jk->ik",
+        "maximum_absolute_error": 1.7763568394002505e-15
+      },
+      {
+        "pattern": "xrs,yts->rtxy",
+        "maximum_absolute_error": 3.552713678800501e-15
+      },
+      {
+        "pattern": "uv,uij->vij",
+        "maximum_absolute_error": 1.7763568394002505e-15
+      }
+    ],
+    "library_sha256": {
+      "libcutensor.so.2": "88f15d2f934fc7b227c274bd21604112dea02373928ca23c6de42e92abb9d55e",
+      "libcutensorMg.so.2": "dfe0031ea612f89f24d28b093242e6d94e4bdda158966b5255f198147b917de6"
+    },
+    "actual_library_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cutensor/lib",
+    "device_name": "Tesla V100-SXM2-32GB",
+    "compute_capability": [
+      7,
+      0
+    ],
+    "total_GPU_bytes": 34072559616,
+    "source_sha256": "070cb6517a50fe7d8a0245b0fbaf01aaefcd86ddfa14890a052faaebb0d3c26a",
+    "installed_packages_changed": false,
+    "validated_full_molecular_workflow": false
+  },
+  "geometry_qualified": false,
+  "native_G_qualified": false
+}

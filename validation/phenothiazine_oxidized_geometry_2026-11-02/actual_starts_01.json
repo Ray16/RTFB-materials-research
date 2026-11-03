@@ -1,0 +1,209 @@
+{
+  "status": "two_actual_phenothiazine_geometry_workers_verified",
+  "checked": 1793681645.55603,
+  "records": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/minus/namespace.json",
+      "owner": {
+        "host": "lambda2",
+        "pid": 1955619,
+        "process_start": "1448185788"
+      },
+      "actual": {
+        "process_start": "1448185788",
+        "CPU_affinity": [
+          5,
+          6
+        ],
+        "thread_caps": {
+          "NUMEXPR_NUM_THREADS": "2",
+          "OPENBLAS_NUM_THREADS": "2",
+          "OMP_NUM_THREADS": "2",
+          "MKL_NUM_THREADS": "2"
+        },
+        "native_libraries": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libgomp-a34b3233.so.1.0.0",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libopenblas-r0-f650aae0.3.3.so",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so"
+        ]
+      },
+      "runtime": {
+        "status": "declared_runtime_and_FP64_smoke_passed",
+        "started": 1793681238.2165005,
+        "pid": 1955619,
+        "CPU_affinity": [
+          5,
+          6
+        ],
+        "profile": "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+        "profile_sha256": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+        "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/minus/sources/worker.py",
+        "engine": "cutensor",
+        "versions": {
+          "pyscf": "2.14.0",
+          "gpu4pyscf-cuda12x": "1.8.1",
+          "cupy-cuda12x": "13.4.1",
+          "cutensor-cu12": "2.2.0",
+          "fastrlock": "0.8.3"
+        },
+        "FP64_smoke_checks": [
+          {
+            "pattern": "ij,jk->ik",
+            "maximum_absolute_error": 1.7763568394002505e-15
+          },
+          {
+            "pattern": "xrs,yts->rtxy",
+            "maximum_absolute_error": 3.552713678800501e-15
+          },
+          {
+            "pattern": "uv,uij->vij",
+            "maximum_absolute_error": 1.7763568394002505e-15
+          }
+        ],
+        "library_sha256": {
+          "libcutensor.so.2": "88f15d2f934fc7b227c274bd21604112dea02373928ca23c6de42e92abb9d55e",
+          "libcutensorMg.so.2": "dfe0031ea612f89f24d28b093242e6d94e4bdda158966b5255f198147b917de6"
+        },
+        "actual_library_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cutensor/lib",
+        "device_name": "Tesla V100-SXM2-32GB",
+        "compute_capability": [
+          7,
+          0
+        ],
+        "total_GPU_bytes": 34072559616,
+        "source_sha256": "070cb6517a50fe7d8a0245b0fbaf01aaefcd86ddfa14890a052faaebb0d3c26a",
+        "installed_packages_changed": false,
+        "validated_full_molecular_workflow": false
+      },
+      "residency": {
+        "checked": 1793681645.271843,
+        "foreign_resident_PIDs": [],
+        "own_residency_observed": true,
+        "GPU": 3
+      },
+      "guard": {
+        "host": "lambda2",
+        "pid": 1955619,
+        "process_start": "1448185788",
+        "GPU": 3,
+        "CPU_affinity": [
+          5,
+          6
+        ],
+        "started": 1793681237.9967632,
+        "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/minus/sources/host_guard.py",
+        "foreign_processes_signaled": false
+      },
+      "actual_completed_gradient_frames": 41,
+      "native_G_qualified": false,
+      "geometry_qualified": false,
+      "source_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/minus/namespace.json": "ebc3f62dd5aa9d6c1c6abae208d1899df62371051e4900a813af000754f15ee5",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/minus/case/plan.json": "2cd3df00c354fbfabb5a1579f5f0033013d7907c122014b868874616b4917cfd"
+      }
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/oxidized/namespace.json",
+      "owner": {
+        "host": "lambda4",
+        "pid": 3109779,
+        "process_start": "53744352"
+      },
+      "actual": {
+        "process_start": "53744352",
+        "CPU_affinity": [
+          6,
+          8
+        ],
+        "thread_caps": {
+          "NUMEXPR_NUM_THREADS": "2",
+          "OPENBLAS_NUM_THREADS": "2",
+          "OMP_NUM_THREADS": "2",
+          "MKL_NUM_THREADS": "2"
+        },
+        "native_libraries": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/numpy.libs/libscipy_openblas64_-56d6093b.so",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libgomp-a34b3233.so.1.0.0",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libopenblas-r0-f650aae0.3.3.so",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy.libs/libscipy_openblas-6cdc3b4a.so"
+        ]
+      },
+      "runtime": {
+        "status": "declared_runtime_and_FP64_smoke_passed",
+        "started": 1793681142.5154357,
+        "pid": 3109779,
+        "CPU_affinity": [
+          6,
+          8
+        ],
+        "profile": "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+        "profile_sha256": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+        "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/oxidized/sources/worker.py",
+        "engine": "cutensor",
+        "versions": {
+          "pyscf": "2.14.0",
+          "gpu4pyscf-cuda12x": "1.8.1",
+          "cupy-cuda12x": "13.4.1",
+          "cutensor-cu12": "2.2.0",
+          "fastrlock": "0.8.3"
+        },
+        "FP64_smoke_checks": [
+          {
+            "pattern": "ij,jk->ik",
+            "maximum_absolute_error": 1.7763568394002505e-15
+          },
+          {
+            "pattern": "xrs,yts->rtxy",
+            "maximum_absolute_error": 3.552713678800501e-15
+          },
+          {
+            "pattern": "uv,uij->vij",
+            "maximum_absolute_error": 1.7763568394002505e-15
+          }
+        ],
+        "library_sha256": {
+          "libcutensor.so.2": "88f15d2f934fc7b227c274bd21604112dea02373928ca23c6de42e92abb9d55e",
+          "libcutensorMg.so.2": "dfe0031ea612f89f24d28b093242e6d94e4bdda158966b5255f198147b917de6"
+        },
+        "actual_library_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cutensor/lib",
+        "device_name": "Tesla V100-SXM2-32GB",
+        "compute_capability": [
+          7,
+          0
+        ],
+        "total_GPU_bytes": 34072559616,
+        "source_sha256": "070cb6517a50fe7d8a0245b0fbaf01aaefcd86ddfa14890a052faaebb0d3c26a",
+        "installed_packages_changed": false,
+        "validated_full_molecular_workflow": false
+      },
+      "residency": {
+        "checked": 1793681642.5614543,
+        "foreign_resident_PIDs": [],
+        "own_residency_observed": true,
+        "GPU": 6
+      },
+      "guard": {
+        "host": "lambda4",
+        "pid": 3109779,
+        "process_start": "53744352",
+        "GPU": 6,
+        "CPU_affinity": [
+          6,
+          8
+        ],
+        "started": 1793681142.309992,
+        "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/oxidized/sources/host_guard.py",
+        "foreign_processes_signaled": false
+      },
+      "actual_completed_gradient_frames": 27,
+      "native_G_qualified": false,
+      "geometry_qualified": false,
+      "source_sha256": {
+        "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/oxidized/namespace.json": "b036d16280ac2c3e6c3234757c66612759e8992ad478f394bd24310c2e00a988",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/oxidized/case/plan.json": "8d6e76ec22a58484fdbf2fa4e408c8f46a4e0e010fc9688adea4043536232722"
+      }
+    }
+  ],
+  "qualification": "Actual starts and residency only; four applicable native thread pools capped at two, optional platform libraries absent; fresh geometry and thermochemistry remain unqualified"
+}

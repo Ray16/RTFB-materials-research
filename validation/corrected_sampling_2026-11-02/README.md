@@ -357,3 +357,11 @@ cover ownership, source-version matching, resource accounting and terminal
 cooldown behavior. All three coordinators were resumed after exact source-guard
 closure, preserving their scientific workers. The [eight-receipt crosscheck](native_receipt_crosscheck_03.json)
 retains every state's source/context and all three component sums.
+
+The [new manuscript evidence epoch](../../manuscript/evidence/2026-11-02_occupied_sampling_checked/manifest.json)
+now integrates the same failed occupied diagnostic into the abstract, results,
+conclusion and SI Table S17. The paper and slides share a source-bound
+publication checker; [76 publication tests](manuscript_shared_checks.xml) pass.
+The article/SI compile to 21/35 pages, and the self-contained reviewer upload
+reproduces both documents. No raw quantum calculation or balanced-ensemble
+qualification is inferred from these publication checks.

@@ -39,7 +39,7 @@ Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 
-The current article/SI are 20/34 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 21/35 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The [2 November completion evidence](../validation/jcim_completion_2026-11-02/README.md)
 adds five interpretation-transfer tests, 29 accepted electronic-control

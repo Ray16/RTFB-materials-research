@@ -1,5 +1,16 @@
 # Phenothiazine: oxidized stationarity failure and strict refinement
 
+The [oxidized repair](oxidized_geometry_review.json) and
+[neutral minus branch](neutral_minus_geometry_review.json) now pass independent
+strict geometry review of all 43 and 53 saved SCF frames, respectively. Their
+fresh final gradients are 1.05e-6 and 3.50e-7 Ha/Bohr, and peak GPU memory is
+9,118 and 8,632 MiB. Exact frames, graph/hydrogen topology, occupied spin,
+method and closed resource/ownership records pass. The
+[second neutral branch](second_neutral_actual_start.json) has a verified actual
+start on lambda1. These are geometry qualifications: new high-level electronic
+energies, full own Hessians/minimum checks and sulfur-column validation remain
+required before G or a potential. Both neutral branches remain in the campaign.
+
 The [independent diagnosis](stationarity_diagnosis.json) reconstructs the actual
 oxidized +1 doublet SCF, wavefunction, exact geometry and gradient. The maximum
 gradient is 0.00045735997 Ha/Bohr, above the unchanged 0.00045 limit. This attempt
@@ -32,6 +43,8 @@ coordination and scientific starts separate. At that observation both controller
 were alive with exact recorded start times and one CPU each; all three scientific
 cases were still unstarted and waiting for suitable capacity. No running
 scientific worker was signaled or retried.
+The later [actual start observation](actual_starts_01.json) and geometry reviews
+above supersede those earlier waiting counts without changing their records.
 
 The [116 focused checks](all_checks.xml) cover physical failure closure,
 resource/residency interference, exact charge/spin and method profiles,

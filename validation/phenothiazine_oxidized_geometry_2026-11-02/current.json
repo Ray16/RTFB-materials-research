@@ -1,6 +1,6 @@
 {
-  "status": "oxidized_gradient_failure_checked_strict_refinement_queued",
-  "checked": 1793680837.6046836,
+  "status": "oxidized_strict_geometry_independently_checked_native_pending",
+  "checked": 1793682192.0007374,
   "candidate_alias": "phenothiazine",
   "charge": 1,
   "multiplicity": 2,
@@ -13,9 +13,11 @@
     {
       "key": "phenothiazine_ox_stationarity",
       "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/oxidized/namespace.json",
-      "status": "prepared_waiting_for_suitable_capacity",
+      "status": "geometry_independently_checked_own_electronic_and_native_pending",
       "native_G_eV": null,
-      "oxidation_potential_V": null
+      "oxidation_potential_V": null,
+      "maximum_gradient_Ha_Bohr": 1.0542979462217382e-06,
+      "actual_SCF_frames_checked": 43
     }
   ],
   "live_controller_status": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/queue/status.json",
@@ -27,8 +29,8 @@
   "controller_CPU_affinity": [
     46
   ],
-  "scientific_starts": 0,
-  "geometry_qualified": false,
+  "scientific_starts": 1,
+  "geometry_qualified": true,
   "native_G_qualified": false,
   "redox_potential_qualified": false,
   "material_admission": false,
@@ -37,6 +39,11 @@
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/oxidized_private_manifest.json": "c67c96c427a4092b276cce0cd1f1734b00e47e72120478dbc2cfbc6958c326bc",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/controller_observation_01.json": "335225121b271ea9f0e60c1cdfdf270f4f32a70020eea2c32411ff813f8eb6b8",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/private_namespace_preflight.json": "b213c1a63a4ce92fd1d8181759e568e7c5a5499090412fa60e9f7cb4d44afb08",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml": "5008df51a5c915a49319f94d3d70a7d71da87da8a4b94c65591740be1b899d1e"
-  }
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml": "5008df51a5c915a49319f94d3d70a7d71da87da8a4b94c65591740be1b899d1e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/oxidized_geometry_review.json": "b759d0bca4b3d2c21917e1aecf286f16f3905108850e7a03d222f9537fc5f811",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/actual_starts_01.json": "b058b223c9d9ec17dd7ed9ea2384495f24961c6b9ba42baadae0497bcc3aa8fa"
+  },
+  "checked_geometry_states": 1,
+  "geometry_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/oxidized_geometry_review.json",
+  "fresh_native_thermochemistry_pending": true
 }

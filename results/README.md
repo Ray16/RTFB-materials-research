@@ -5,11 +5,12 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 20/34-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 21/35-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates all four declared finite ionic neighboring-graft G cycles,
   matched motif/chain electronic comparisons and four chloride-contact outcomes
-  in three numerical duplicate groups. Occupied ensembles, broader salt speciation
+  in three numerical duplicate groups. The new occupied sampling diagnostic fails and is reported in the abstract,
+  results and SI Table S17. Occupied ensembles, broader salt speciation
   and full material eligibility remain pending.
 - [Exact-molecule CPU example](../examples/exact_viologen_replay/README.md):
   ten versioned cached states reconstruct both viologen reductions and local
@@ -35,14 +36,16 @@ establish that a calculation is currently running.
   The neutral native calculation reveals a -25.47-cm-1 failed minimum; signed
   refinement seeds are prepared. The oxidized native recovery fails its actual
   gradient gate (0.00045736 versus 0.00045 Ha/Bohr); strict refinement is queued.
-  Potential and G remain pending.
+  The neutral-minus and oxidized strict geometries now pass independent review
+  (53/43 SCF frames); a second neutral branch is running. Potential and G remain pending.
 - [Neutral phenothiazine geometry refinement](../validation/phenothiazine_geometry_2026-11-02/README.md):
-  both signed saddle-mode branches are prepared and queued for strict primary
-  optimization and fresh independent geometry review. Their energies and nuclear
+  one signed branch passes strict independent geometry review; its partner has a
+  verified scientific start. Their energies and nuclear
   terms must be recomputed at any accepted new geometry; G/potential stay blank.
 - [Oxidized phenothiazine geometry refinement](../validation/phenothiazine_oxidized_geometry_2026-11-02/README.md):
   the +1-doublet stationarity failure is independently reconstructed from its
-  actual SCF/wavefunction. Fresh strict geometry work is queued; the original
+  actual SCF/wavefunction. Its strict geometry repair now passes 43-frame
+  independent review; the original
   failure and earlier prelaunch interruptions remain preserved. No G is admitted.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
