@@ -147,6 +147,15 @@ Its practical route is still on hold. The broader 912-graph registry and older
 
 ## Reviewer access and completion
 
+The [new local reviewer candidate](../validation/publication_release_2026-11-03/README.md)
+collects current source, PDFs and checked replay archives. Three numerical
+replays pass with original scientific paths blocked. The full manuscript
+validation build still reads original paths for occupied-sampling inputs;
+that portability gap is distinct from the self-contained TeX upload, which
+compiles. All declared raw hash bindings are located, but the 120.3-GB full
+inventory exceeds the observed safe archive budget and needs a suitable
+destination. No complete raw deposition is claimed.
+
 The new 29-execution local control archive contains 70 SCF checkpoints. Every
 archive byte is verified and an extracted CPU replay succeeds with original
 project/data paths blocked and no GPU-library imports. It reconstructs cached

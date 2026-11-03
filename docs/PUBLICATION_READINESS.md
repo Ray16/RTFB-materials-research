@@ -30,6 +30,15 @@ artifacts actually deposited. The user will supply author information. Completin
 every ongoing campaign, every candidate or full material qualification is not an
 additional submission criterion for this explicitly scoped paper.
 
+The [current release preparation](../validation/publication_release_2026-11-03/README.md)
+provides an 818-MB local reviewer bundle and three successful numerical replays
+from exported source with original scientific paths blocked. The complete
+declared raw inventory now resolves 53,640 files (120.3 GB unique content), but
+full raw archiving requires suitable storage beyond the observed 51-GB budget.
+A full source-validation build also identifies an absolute-path dependency in
+the occupied-sampling reader. Supplying those exact inputs portably remains a
+release task; the separately checked self-contained TeX upload compiles.
+
 The first complete corrected occupied sampling cell now [fails the declared
 10-to-20 tolerance](../validation/corrected_sampling_2026-11-02/README.md):
 conditional ensemble G changes by -2.40 kJ/mol at the primary rotor cutoff,

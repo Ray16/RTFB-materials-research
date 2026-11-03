@@ -16,6 +16,13 @@ establish that a calculation is currently running.
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
   pass extracted-archive replay with original scientific paths blocked.
+- [Current publication release candidate](../validation/publication_release_2026-11-03/README.md):
+  six checked source/document/replay payloads form an 818-MB local reviewer
+  bundle. Three numerical replays pass from the exported source with original
+  scientific paths blocked. The broader declared inventory resolves 53,640
+  files and 120.3 GB of unique content. Full raw archiving awaits suitable
+  storage; the complete manuscript-validation build still needs portable
+  occupied-sampling inputs. Public deposition remains pending.
 - [Finite viologen comparison replay](../examples/finite_viologen_replay/README.md):
   standard-library reconstruction of the four finite ionic cycles and twelve
   motif triplets. An isolated copy passes with original scientific paths blocked;

@@ -94,7 +94,33 @@ def test_staging_keeps_external_relocations_separate(tmp_path):
         stager.stage(inv, content, metadata, output)
     (output / 'manifest.json').unlink()
     (output / 'verify.py').unlink()
+    (output / 'stage_source.py').unlink()
     (output / 'README.md').unlink()
     (output / 'objects' / raw_hash).write_bytes(b'bad')
     with pytest.raises(ValueError, match='Copied evidence differs'):
         stager.stage(inv, content, metadata, output, resume=True)
+
+
+def test_resolved_inventory_mode_requires_complete_declared_bindings(tmp_path):
+    spec=importlib.util.spec_from_file_location('resolved_stager',SCRIPT.with_name('stage_declared_sources.py'))
+    stager=importlib.util.module_from_spec(spec);spec.loader.exec_module(stager)
+    raw=tmp_path/'raw';raw.write_bytes(b'raw')
+    inv=tmp_path/'inventory.json';data=dict(status='declared_dependency_inventory_verified',unresolved=[],
+        files=[dict(path=str(raw),sha256=module.sha256(raw),bytes=3,category='research_evidence_or_source_snapshot')],
+        explicit_archive_relocations=[],traversal_scope='test')
+    inv.write_text(json.dumps(data));stager.stage(inv,None,None,tmp_path/'complete')
+    assert module.verify(tmp_path/'complete')['verified_objects']==1
+    data['unresolved']=[dict(path='missing')];inv.write_text(json.dumps(data))
+    with pytest.raises(ValueError,match='Completely resolved'):
+        stager.stage(inv,None,None,tmp_path/'incomplete')
+    assert not (tmp_path/'incomplete').exists()
+
+
+def test_bound_support_code_change_is_rejected(package):
+    folder,manifest,_=package
+    source=folder/'verify.py';source.write_text('original verifier')
+    manifest['support_files_sha256']={'verify.py':module.sha256(source)}
+    (folder/'manifest.json').write_text(json.dumps(manifest))
+    source.write_text('changed verifier')
+    with pytest.raises(ValueError,match='Support file differs'):
+        module.verify(folder)

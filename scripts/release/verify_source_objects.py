@@ -16,6 +16,12 @@ def sha256(path):
 def verify(folder):
     folder = Path(folder).resolve()
     data = json.loads((folder / 'manifest.json').read_text())
+    for name,digest in data.get('support_files_sha256', {}).items():
+        if Path(name).name != name or name in ('.','..'):
+            raise ValueError('Unsafe support-file path')
+        path=folder/name
+        if path.is_symlink() or sha256(path)!=digest:
+            raise ValueError('Support file differs: '+name)
     expected = set()
     for digest, size in data['objects'].items():
         if len(digest) != 64 or any(c not in '0123456789abcdef' for c in digest):
