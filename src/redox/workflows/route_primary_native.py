@@ -15,16 +15,20 @@ import shutil
 
 PROFILE='route_phenothiazine_first_native_v1'
 REFINED_PROFILE='route_phenothiazine_refined_native_v1'
+CDS_PROFILE='route_phenothiazine_refined_native_CDS_1e6_v1'
+CDS_POLICY=dict(schema=1,component='primary legacy SMD CDS',Hessian_gradient_step_Bohr=1e-6,
+    energy_function_changed=False,gradient_function_changed=False,global_defaults_changed=False)
 SMILES='Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1'
 
 
 def validate_plan(plan):
-    refined=plan.get('route_native_profile')==REFINED_PROFILE
+    numerical=plan.get('route_native_profile')==CDS_PROFILE
+    refined=plan.get('route_native_profile') in (REFINED_PROFILE,CDS_PROFILE)
     states=({'phenothiazine_neu_mode_minus':(0,1,'neu'),'phenothiazine_neu_mode_plus':(0,1,'neu'),
              'phenothiazine_ox_stationarity':(1,2,'ox')} if refined else
             {'phenothiazine_neu':(0,1,'neu'),'phenothiazine_ox':(1,2,'ox')})
     expected=dict(role='primary_molecular_Hessian_control',primary_molecular_Hessian_control=True,
-        first_route_native_component=True,route_native_profile=REFINED_PROFILE if refined else PROFILE,candidate_alias='phenothiazine',
+        first_route_native_component=True,route_native_profile=CDS_PROFILE if numerical else REFINED_PROFILE if refined else PROFILE,candidate_alias='phenothiazine',
         smiles=SMILES,atoms=39,native_nao=397,native_memory_cap_GiB=6,
         maximum_host_RSS_GiB=40,minimum_free_GiB=32,minimum_GPU_memory_MiB=31744,
         maximum_peak_GPU_MiB=31744,maximum_wall_seconds=14400,maximum_durable_output_bytes=2**30,
@@ -37,6 +41,10 @@ def validate_plan(plan):
     if refined and (plan.get('refined_route_native_component') is not True
             or plan.get('electronic_origin_status')!='route_refined_primary_electronic_independently_checked'):
         raise ValueError('Refined native components require the new-geometry electronic admission')
+    if bool(plan.get('CDS_Hessian_numerical_control'))!=numerical:
+        raise ValueError('Numerical CDS changes require their own explicitly admitted profile')
+    if numerical and plan.get('native_numerical_policy')!=CDS_POLICY:
+        raise ValueError('Only the independently scoped 1e-6-Bohr unchanged-function CDS control is supported')
     return expected
 
 
@@ -71,7 +79,7 @@ def prepare(archive,package,energy_review,output,contract):
         package/row['files']['result'],row,package/'route_gate.json',False)
 
 
-def prepare_refined(archive, energy_review, output, contract):
+def prepare_refined(archive, energy_review, output, contract, cds_qualification=None):
     from redox.core.hashing import sha256_file
     from redox.core.protocol import ACTIVE_SP
     from redox.workflows.molecular_native_namespace import verify
@@ -103,16 +111,21 @@ def prepare_refined(archive, energy_review, output, contract):
         raise ValueError('Exact native sulfur dimension and ordering required')
     row=dict(id=report['key'],charge=q,mult=m)
     return _prepare_component(archive,energy_review,output,contract,report,parent,geometry,
-        original/'optimizer_result.json',row,sources/'route_gate.json',True)
+        original/'optimizer_result.json',row,sources/'route_gate.json',True,cds_qualification)
 
 
-def _prepare_component(archive, energy_review, output, contract, report, parent, geometry, raw_source, row, gate_path, refined):
+def _prepare_component(archive, energy_review, output, contract, report, parent, geometry, raw_source, row, gate_path, refined, cds_qualification=None):
     from redox.core.common import ROOT
     from redox.core.hashing import sha256_file
     from redox.core.io import atomic_write_json
     from redox.core.protocol import ACTIVE_SP
     from redox.core.runtime_paths import gpu4pyscf_source_root
     from redox.workflows.molecular_native_namespace import load,verify
+    numerical=cds_qualification is not None
+    if numerical:
+        from redox.workflows.route_cds_native import checked_qualification
+        component=checked_qualification(cds_qualification)
+        if not refined:raise ValueError('This numerical control is scoped to the exact accepted refinements')
     if output.exists() or any(output.is_relative_to(p) for p in (ROOT,archive)):
         raise FileExistsError('Fresh durable native outputs outside scientific source trees required')
     case=output/'case';sources=output/'sources';case.mkdir(parents=True);sources.mkdir()
@@ -125,6 +138,12 @@ def _prepare_component(archive, energy_review, output, contract, report, parent,
             (geometry,'reference_geometry.xyz'),(raw_source,'optimizer_source_result.json'),
             (gate_path,'route_gate.json'),(contract,'calculation_contract.json')]:
         shutil.copyfile(p,sources/name)
+    numerical_sources={}
+    if numerical:
+        from redox.workflows.route_geometry import visible_bindings
+        shutil.copyfile(ROOT/'src/redox/qm/cds_finite.py',sources/'cds_finite.py')
+        shutil.copyfile(cds_qualification,sources/'cds_component_qualification.json')
+        numerical_sources=visible_bindings(component['source_sha256'],sources,ROOT)
     shutil.copyfile(geometry,case/'state/opt.xyz')
     raw=json.loads(raw_source.read_text())
     if (raw['charge'],raw['mult'])!=(row['charge'],row['mult']) or not raw['optimized']:
@@ -139,14 +158,14 @@ def _prepare_component(archive, energy_review, output, contract, report, parent,
     native=load(archive/'src/redox/qm/native_thermal.py','route_primary_native_protocol')
     thermal=load(archive/'src/redox/qm/qrrho.py','route_primary_thermal_protocol')
     installed=gpu4pyscf_source_root()
-    files=[*sources.glob('*'),case/'state/opt.xyz',case/'state/result.json',case/'library/manifest.csv',
+    files=[*[p for p in sources.iterdir() if p.is_file()],case/'state/opt.xyz',case/'state/result.json',case/'library/manifest.csv',
         *(archive/'src/redox/qm').glob('*.py'),*(archive/'src/redox/core').glob('*.py'),
         *(archive/'config').glob('*.py'),*(archive/'config').glob('*.json'),archive/'src/redox/workflows/resources.py',
         archive/'scripts/pipeline/run_pi_stacking.py',archive/'scripts/validation/audit/native_partition.py',
         archive/'scripts/fleet/exclusive_python_worker.py',archive/'scripts/fleet/tensor_runtime_worker.py',
         archive/'environments/cutensor22/runtime.json',installed/'dft/gen_grid.py',installed/'dft/numint.py',installed/'lib/libgdft.so']
     plan=dict(role='primary_molecular_Hessian_control',primary_molecular_Hessian_control=True,
-        first_route_native_component=True,route_native_profile=REFINED_PROFILE if refined else PROFILE,candidate_alias='phenothiazine',
+        first_route_native_component=True,route_native_profile=CDS_PROFILE if numerical else REFINED_PROFILE if refined else PROFILE,candidate_alias='phenothiazine',
         source_id=row['id'],state='rest',native_id=raw['id'],native_state=raw['state'],smiles=SMILES,
         charge=row['charge'],mult=row['mult'],atoms=39,native_nao=397,geometry_sha256=sha256_file(geometry),
         native_protocol=native.NATIVE_THERMAL,thermal_protocol=thermal.PROTOCOL,electronic_protocol=ACTIVE_SP,
@@ -155,8 +174,11 @@ def _prepare_component(archive, energy_review, output, contract, report, parent,
         minimum_initial_storage_GiB=33,minimum_live_storage_GiB=32,extra_columns=[[15,0],[15,1],[15,2]],
         geometry_repair_permitted=False,prospective_resource_pilot=True,native_G_qualified=False,
         redox_potential_qualified=False,material_admission=False,
-        source_sha256={**report['source_sha256'],**{str(p):sha256_file(p) for p in files}})
+        source_sha256={**report['source_sha256'],**numerical_sources,**{str(p):sha256_file(p) for p in files}})
     if refined:plan.update(refined_route_native_component=True,electronic_origin_status=report['status'])
+    if numerical:plan.update(CDS_Hessian_numerical_control=True,native_numerical_policy=CDS_POLICY,
+        controlled_full_recalculation=True,original_failed_attempts_preserved=True,
+        component_qualification_sha256=sha256_file(sources/'cds_component_qualification.json'))
     validate_plan(plan);atomic_write_json(case/'plan.json',plan)
     spec=dict(prior_root=str(ROOT),archive=str(archive),case=str(case),sources=str(sources),source_id=plan['source_id'],state='rest',
         plan_sha256=sha256_file(case/'plan.json'),maximum_host_RSS_GiB=40,minimum_free_GiB=32,
@@ -180,13 +202,15 @@ def queued_rows(manifest_path):
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=('prepare','prepare-refined','queue'))
     for name in ('archive','package','energy-review','out','contract','manifest','storage-peers'):p.add_argument('--'+name,type=Path)
+    p.add_argument('--cds-component-qualification',type=Path)
     p.add_argument('--python');p.add_argument('--hours',type=float,default=12);p.add_argument('--resume',action='store_true');a=p.parse_args()
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
     with allocation_guard():host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
     if a.action=='prepare-refined':
         for k in ('archive','energy_review','out','contract'):
             if getattr(a,k) is None:p.error('Refined preparation requires archive, checked own energy, contract and fresh output')
-        result=prepare_refined(a.archive.resolve(),a.energy_review.resolve(),a.out.resolve(),a.contract.resolve())
+        result=prepare_refined(a.archive.resolve(),a.energy_review.resolve(),a.out.resolve(),a.contract.resolve(),
+            None if a.cds_component_qualification is None else a.cds_component_qualification.resolve())
         print(json.dumps(dict(status='refined_route_primary_native_prepared',**result)))
     elif a.action=='prepare':
         for k in ('archive','package','energy_review','out','contract'):

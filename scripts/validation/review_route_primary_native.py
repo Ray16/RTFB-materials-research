@@ -65,12 +65,32 @@ def review(namespace):
         read,used,expected_count=21,native_diagnostics=native['smd_spin_diagnostics'])
     equations=load(ROOT/'scripts/validation/audit/native_partition.py','first_native_independent_partition')
     used.append(freeze_source(case,Path(equations.__file__)))
+    # The producer used this declared immutable archive's qualified qRRHO
+    # implementation. A refactored current-tree wrapper has a different source
+    # hash and cannot stand in for that certificate's exact implementation.
+    equations.ROOT=Path(spec['archive'])
     partition=equations.read_partition(native_path,geometry)
     if partition is None:raise ValueError('Independent masses, projected modes, minimum, symmetry and nuclear reconstruction failed')
     projection=read(Path(partition['path']))
     used.extend(Path(p) for p in partition['evidence_sha256'])
     energy=read(sources/'corrected_electronic.json');spin=-8.617333262145e-5*298.15*math.log(plan['mult'])
-    if abs(spin-partition['g_spin_partition_eV'])>1e-8:raise ValueError('Ground-state spin partition differs')
+    numerical_policy=dict(schema=1,component='primary legacy SMD CDS',Hessian_gradient_step_Bohr=1e-4,
+        energy_function_changed=False,gradient_function_changed=False,global_defaults_changed=False)
+    if plan.get('CDS_Hessian_numerical_control'):
+        numerical_policy=plan['native_numerical_policy']
+        if (result.get('native_numerical_policy')!=numerical_policy
+                or result.get('full_Hessian_recomputed') is not True or result.get('old_saved_matrix_reused') is not False):
+            raise ValueError('Explicit fresh numerical-policy provenance required')
+        events_path=Path(result['CDS_numerical_events']);used.append(events_path)
+        if events_path!=case/'CDS_numerical_events.jsonl':raise ValueError('Own CDS numerical events required')
+        events=[json.loads(line) for line in events_path.read_text().splitlines()]
+        center=read(sorted((case/'SCF_evaluations').glob('*/*/settings.json'))[0])
+        if (len(events)!=1 or events[0]['policy']!=numerical_policy or not events[0]['all_finite']
+                or events[0]['shape']!=[39,39,3,3] or events[0]['coordinates_Bohr']!=center['coordinates_Bohr']
+                or events[0]['helper_sha256']!=sha256_file(sources/'cds_finite.py')):
+            raise ValueError('Actual CDS component evaluation does not match the declared center or step')
+        used.extend([sources/'cds_finite.py',sources/'cds_component_qualification.json'])
+    if abs(spin-projection['g_spin_partition_eV'])>1e-8:raise ValueError('Ground-state spin partition differs')
     values={c:energy['e_smd_eV']+partition['nuclear_by_cutoff_eV'][c]+spin for c in ('25','50','100')}
     if (energy['energy_protocol']!=plan['electronic_protocol'] or not energy['converged_smd']
             or abs(energy['e_smd_Ha']*HARTREE_EV-energy['e_smd_eV'])>1e-8
@@ -86,6 +106,7 @@ def review(namespace):
         minimum_frequency_cm=min(projection['frequencies_cm']),maximum_column_error=max(r['relative_error'] for r in checks),
         checked_derivative_columns=columns,actual_SCF_checkpoint_frames_checked=series['actual_SCF_frames_checked'],
         peak_GPU_MiB=stage['observed_peak_GPU_MiB'],numerical_implementation=signature,
+        native_numerical_policy=numerical_policy,
         native_G_qualified=True,redox_potential_qualified=False,geometry_ensemble_qualified=False,material_admission=False,
         source_sha256={str(p):sha256_file(p) for p in used})
 

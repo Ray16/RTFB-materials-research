@@ -116,12 +116,12 @@
       "stored_energy_comparison_performed": false,
       "electronic_status": "independently_checked",
       "electronic_E_Ha": -1225.1302259459644,
-      "native_G_eV": null,
+      "native_G_eV": -33330.1608553809,
       "redox_potential_V": null,
       "field_QC": {
         "geometry": "independently_checked",
         "electronic": "independently_checked",
-        "native": "pending_own_Hessian_sulfur_columns_and_partition"
+        "native": "independently_checked"
       },
       "electronic_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/phenothiazine_ox_stationarity_review.json",
       "electronic_review_sha256": "d0180088c66540a56ce2c8d8e819879ad50f9590bf9790853aab3820aed35c45",
@@ -137,13 +137,27 @@
         "maximum_occupied_orthonormality_error": 3.6637359812630166e-15,
         "wavefunction_spin_reconstructed": true
       },
-      "native_status": "route_primary_native_component_running",
-      "native_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_ox_stationarity/namespace.json"
+      "native_status": "independently_checked_default_CDS_step",
+      "native_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_ox_stationarity/namespace.json",
+      "G_by_cutoff_eV": {
+        "25": -33330.20586318339,
+        "50": -33330.1608553809,
+        "100": -33330.12961006554
+      },
+      "native_numerical_policy": {
+        "schema": 1,
+        "component": "primary legacy SMD CDS",
+        "Hessian_gradient_step_Bohr": 0.0001,
+        "energy_function_changed": false,
+        "gradient_function_changed": false,
+        "global_defaults_changed": false
+      },
+      "native_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json"
     }
   ],
   "scientific_starts_verified": 3,
   "qualified_electronic_states": 3,
-  "qualified_native_states": 0,
+  "qualified_native_states": 1,
   "controller": {
     "label": "refined_electronic_v2",
     "owner": {
@@ -215,7 +229,8 @@
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/neutral_minus_Hessian_symmetry_failure_02.json": "a6ee7b142de9a376f6fb86946c898a5359baa9b2917b39a1fbe287740101a3f6",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/resource_delegate_checks.xml": "6c0cb6062670ecdd081db7c442666015ad662f44d4ebf7721874b82393c4e1ef",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/contact_resource_refusals_reconstructed.json": "b654e07d6e38382609f681fef139f44f0f68ab0c890100b97f472443927f3df3",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/resource_resumed_actual_owners.json": "d4daba6699bec36f70dd187848313a796d519b577c99334e474ffe1aadeedf97"
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/resource_resumed_actual_owners.json": "d4daba6699bec36f70dd187848313a796d519b577c99334e474ffe1aadeedf97",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json": "9e84356a66c4bbacbc2516c728b2e2d2b7f7d13196240b3a38f355c4836c0d5e"
   },
   "native_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native",
   "native_manifest": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/native_prepared_manifest.json",
@@ -259,5 +274,7 @@
   "active_controller_observation": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/resource_resumed_actual_owners.json",
   "native_symmetry_diagnosis": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/neutral_minus_Hessian_symmetry_failure_02.json",
   "resource_refusals_reclassified_without_scientific_retry": 3,
-  "native_failed_components_diagnosed": 1
+  "native_failed_components_diagnosed": 1,
+  "native_G_qualification_scope": "Individual default-step oxidized component only; both neutral components remain unqualified",
+  "derivative_accuracy_followup_current": "validation/phenothiazine_cds_2026-11-03/current.json"
 }

@@ -1,0 +1,138 @@
+{
+  "status": "prospective_full_native_CDS_derivative_accuracy_control_no_property_admission",
+  "candidate_alias": "phenothiazine",
+  "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+  "product_inchikey": "AWCNUEZNXDGDBF-UHFFFAOYSA-N",
+  "states": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "charge": 0,
+      "multiplicity": 1,
+      "geometry_sha256": "8707e2cd3e638c5795f40ae1434f31b340a2cbf37b5568ffd6208e4c142f2663",
+      "atoms": 39,
+      "native_nao": 397,
+      "sulfur_atom_indices": [
+        15
+      ],
+      "pending_G_by_cutoff_eV": null,
+      "electronic_parent": "Exact independently checked first scoring at this same geometry"
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "charge": 0,
+      "multiplicity": 1,
+      "geometry_sha256": "04c278a6c6fde79c5b5ed8353b3062ac189807cf601bb65171bd66ea80d0a407",
+      "atoms": 39,
+      "native_nao": 397,
+      "sulfur_atom_indices": [
+        15
+      ],
+      "pending_G_by_cutoff_eV": null,
+      "electronic_parent": "Exact independently checked first scoring at this same geometry"
+    },
+    {
+      "key": "phenothiazine_ox_stationarity",
+      "charge": 1,
+      "multiplicity": 2,
+      "geometry_sha256": "0183397bf313b3dabf28f5b751ad2fa907e4e86fbc7f24daf69728332f43eb48",
+      "atoms": 39,
+      "native_nao": 397,
+      "sulfur_atom_indices": [
+        15
+      ],
+      "pending_G_by_cutoff_eV": null,
+      "electronic_parent": "Exact independently checked first scoring at this same geometry"
+    }
+  ],
+  "model_scope": "Exact N-(4-methylbenzyl)phenothiazine local graft-site model; not a full polymer environment",
+  "electronic_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "solvent_model": "primary SMD with legacy CDS, corrected run-local integration kernel",
+  "native_protocol": {
+    "xc": "r2scan",
+    "basis": "def2-svp",
+    "disp": "d4",
+    "solvent": "acetonitrile",
+    "SCF_conv_tol": 1e-12,
+    "SCF_conv_tol_grad": 1e-08,
+    "SCF_max_cycle": 200,
+    "grid_level": 3,
+    "full_gradient_and_Hessian_grid_response": true
+  },
+  "native_required_checks": {
+    "fresh_final_stationarity": true,
+    "exact_covalent_and_hydrogen_topology": true,
+    "actual_wavefunction_spin_and_frames": true,
+    "maximum_gradient_Ha_Bohr": 0.00045,
+    "maximum_Hessian_asymmetry": 1e-06,
+    "maximum_sampled_column_relative_error": 0.01,
+    "minimum_internal_frequency_cm": -5,
+    "FD_steps_Bohr": [
+      0.0005,
+      0.001
+    ],
+    "standard_sampled_columns": "First-atom y and last-atom z (no O/Fe in this molecule)",
+    "additional_sampled_columns": "Every sulfur atom, x/y/z axes, each at both FD steps",
+    "minimum_unique_center_and_displaced_points": 21,
+    "full_solvent_response_and_own_nuclear_terms": true,
+    "coordinate_reference": "Use the first actual native SCF checkpoint for every extra displacement; preserve the pinned native geometry-to-Bohr convention",
+    "pinned_native_Bohr_A": 0.52917721067
+  },
+  "thermal_definition": {
+    "temperature_K": 298.15,
+    "rotor_cutoffs_cm": [
+      25,
+      50,
+      100
+    ],
+    "primary_cutoff_cm": 50,
+    "spin_partition": "Own declared-state multiplicity once, checked against occupied orbitals",
+    "standard_state": "Same translation convention as the checked primary molecular cohort"
+  },
+  "reference": {
+    "file": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/ionic_cycle_completion_2026-11-02/primary_cohort_scalar_inputs.json",
+    "sha256": "11b3df5a3c206156158a734d670e19cfea0cedebf931f15725419e3b35575eb0",
+    "components": [
+      "fc_neu",
+      "fc_ox"
+    ],
+    "condition": "Exact quantum, native/thermal, solvent/model, implementation and standard-state context must match before combination"
+  },
+  "oxidation_definition": {
+    "unit": "V versus Fc/Fc+",
+    "electron_count": 1,
+    "coefficients": {
+      "phenothiazine_ox": 1,
+      "phenothiazine_neu": -1,
+      "fc_ox": -1,
+      "fc_neu": 1
+    },
+    "one_M_translation_conversion": "Cancels in this balanced two-versus-two component difference"
+  },
+  "grafting_deltaG_status": "Pending; NaH/DMF salt phases and H2 chemical potential are not supplied by a base-free HCl reference",
+  "pending_oxidation_potential_V": null,
+  "geometry_ensemble_qualified": false,
+  "material_admission": false,
+  "source_original_contract": "validation/phenothiazine_primary_2026-11-02/calculation_contract.json",
+  "source_original_contract_sha256": "f94f2b3dec9070a6a42aead82c1e56a5595fa69b44e545a9efce2b79bd6e1ae0",
+  "neutral_branch_selection": "Both retained until own electronic/native values exist; no historical-energy or search-hit weighting",
+  "numerical_derivative_policy": {
+    "component": "primary legacy SMD CDS",
+    "Hessian_gradient_step_Bohr": 1e-06,
+    "energy_function_changed": false,
+    "gradient_function_changed": false,
+    "global_defaults_changed": false
+  },
+  "full_Hessian_recomputed_required": true,
+  "old_saved_matrix_reuse_permitted": false
+}

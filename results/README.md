@@ -47,6 +47,10 @@ establish that a calculation is currently running.
   actual SCF/wavefunction. Its strict geometry repair now passes 43-frame
   independent review; the original
   failure and earlier prelaunch interruptions remain preserved. No G is admitted.
+- [Phenothiazine CDS derivative accuracy](../validation/phenothiazine_cds_2026-11-03/README.md):
+  both neutral Hessian asymmetries are traced to the legacy CDS numerical step.
+  Fresh full finer-step controls are queued. The original oxidized component
+  passes 21-point native review; neutral G and the oxidation potential remain pending.
 - [Fresh phenothiazine electronic scoring](../validation/refined_electronic_2026-11-02/README.md):
   all three refined geometries pass independent review. Both neutral branches and
   the oxidized state retain separate fresh electronic inputs, with no historical

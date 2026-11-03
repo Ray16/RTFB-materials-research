@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Compute a first primary native component with explicit sulfur FD coverage."""
 import argparse
+from contextlib import contextmanager
 import gc
 import importlib.util
 import json
@@ -24,6 +25,28 @@ def recorded_center(case,charge,mult,count):
             or (center['charge'],center['mult'])!=(charge,mult)):
         raise ValueError('The actual native center must define every added displacement')
     return paths[0],coordinates
+
+
+@contextmanager
+def numerical_cds_context(plan,sources,case,sha):
+    if not plan.get('CDS_Hessian_numerical_control'):
+        yield
+        return
+    import numpy as np
+    from gpu4pyscf.solvent.hessian import smd as hessian_module
+    module=load(sources/'cds_finite.py','private_qualified_CDS_derivative_step')
+    policy=plan['native_numerical_policy']
+    with module.finer_cds_hessian(policy['Hessian_gradient_step_Bohr']):
+        finer=hessian_module.get_cds
+        def evaluate(solvent):
+            matrix=np.asarray(finer(solvent));coordinates=solvent.mol.atom_coords(unit='Bohr')
+            event=dict(policy=policy,coordinates_Bohr=coordinates.tolist(),all_finite=bool(np.isfinite(matrix).all()),
+                helper_sha256=sha(sources/'cds_finite.py'),shape=list(matrix.shape))
+            with (case/'CDS_numerical_events.jsonl').open('a') as stream:stream.write(json.dumps(event)+'\n')
+            return matrix
+        hessian_module.get_cds=evaluate
+        try:yield
+        finally:hessian_module.get_cds=finer
 
 
 def main():
@@ -55,7 +78,7 @@ def main():
         checkpoints=load(sources/'checkpoints.py','route_native_checkpoints')
         monitor=load(ROOT/'scripts/pipeline/run_pi_stacking.py','route_native_memory')
         builder=dft._build_smd_mf;dft._build_smd_mf=checkpoints.recording_builder(builder,case/'SCF_evaluations',owner,save_density=False)
-        with helper.corrected_screening(sources/'kernel.cu',case/'screening_implementation'),monitor.MemoryMonitor() as memory:
+        with helper.corrected_screening(sources/'kernel.cu',case/'screening_implementation'),numerical_cds_context(plan,sources,case,sha),monitor.MemoryMonitor() as memory:
             kind,thermal=ensure_native_thermal(plan['native_id'],plan['native_state'],state_dir=case/'state',memory_cap_gib=6)
             if kind!='computed':raise ValueError('Fresh own native thermochemistry required')
             native_path,_=cache_path(case/'state',plan['charge'],plan['mult'])
@@ -88,11 +111,16 @@ def main():
         energy=json.loads((sources/'corrected_electronic.json').read_text())
         values={c:energy['e_smd_eV']+thermal['nuclear_by_cutoff_eV'][c]+thermal['g_spin_partition_eV'] for c in ('25','50','100')}
         if not all(math.isfinite(v) for v in values.values()):raise ValueError('Finite own component sums required')
-        atomic_write_json(case/'result.json',dict(key=plan['source_id'],charge=plan['charge'],mult=plan['mult'],
+        result=dict(key=plan['source_id'],charge=plan['charge'],mult=plan['mult'],
             corrected_electronic_eV=energy['e_smd_eV'],native_record_path=str(native_path),
             nuclear_by_cutoff_eV=thermal['nuclear_by_cutoff_eV'],spin_partition_eV=thermal['g_spin_partition_eV'],
             G_by_cutoff_eV=values,extra_derivative_checks=extra,extra_FD_center_settings=str(center_path),
-            native_G_qualified=False,redox_potential_qualified=False,material_admission=False))
+            native_G_qualified=False,redox_potential_qualified=False,material_admission=False)
+        if plan.get('CDS_Hessian_numerical_control'):
+            result.update(native_numerical_policy=plan['native_numerical_policy'],
+                CDS_numerical_events=str(case/'CDS_numerical_events.jsonl'),
+                full_Hessian_recomputed=True,old_saved_matrix_reused=False)
+        atomic_write_json(case/'result.json',result)
         verify();stage.update(status='route_primary_native_component_finished_review_pending',observed_peak_GPU_MiB=memory.peak)
     except BaseException as error:
         stage.update(status='route_primary_native_component_failed_preserved',error=repr(error));raise

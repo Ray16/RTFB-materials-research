@@ -5,6 +5,27 @@ As of 2 November 2026, this is a 21-page JCIM working article with a separate
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
+## Next publication decisions
+
+Keep the paper's current identity inventory fixed while completing a bounded
+comparison on exact viologen, TEMPO, PMDI and the route-admitted phenothiazine
+baseline. Phthalimide remains a method control. Compare molecule-only,
+route-aware local-graft and polymer-context interpretations using explicitly
+matched inputs. Record changed priorities, supported conclusions and missing
+evidence separately; an evidence hold is not a demonstrated synthetic failure.
+The existing five interpretation-transfer tests are the starting evidence,
+not proof of superior screening accuracy.
+
+The next acceptance targets are complete independently checked lead-state
+cycles, convergence/uncertainty for the occupancy comparisons supporting the
+main conclusions, and an externally supported comparison with simpler
+screening. Representative ion and reaction-condition sensitivity should test
+the claimed decisions. Additional candidate enumeration is useful only when it
+fills a declared coverage gap. Exact-graft experimental data would strengthen
+application claims; the retrospective parent benchmark cannot establish
+polymer performance. These priorities supplement the remaining requirements
+below without declaring the current article submission-ready.
+
 | Requirement | Current evidence | Still required |
 | --- | --- | --- |
 | M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; twelve checked alternate-model polymer components and all four declared matched neighboring-graft G cycles | Complete occupied sampling, broader salt speciation and scoped decisions; no candidate currently passes every material requirement |

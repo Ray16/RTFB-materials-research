@@ -4,7 +4,7 @@ import pytest
 import numpy as np
 
 from redox.core.common import ROOT
-from redox.workflows.route_primary_native import validate_plan,REFINED_PROFILE
+from redox.workflows.route_primary_native import validate_plan,REFINED_PROFILE,CDS_PROFILE,CDS_POLICY
 from redox.workflows.molecular_native_namespace import load
 
 
@@ -45,4 +45,20 @@ def test_refined_native_inputs_keep_full_own_hessian_and_sulfur_contract(plan,ke
         refined_route_native_component=True,electronic_origin_status='route_refined_primary_electronic_independently_checked')
     assert validate_plan(plan)['extra_columns']==[[15,0],[15,1],[15,2]]
     plan['electronic_origin_status']='benchmark_screening_energy_control_independently_checked'
+    with pytest.raises(ValueError):validate_plan(plan)
+
+
+def test_cds_accuracy_control_is_explicit_and_does_not_relax_physical_gates(plan):
+    from copy import deepcopy
+    plan.update(route_native_profile=CDS_PROFILE,source_id='phenothiazine_neu_mode_minus',
+        refined_route_native_component=True,electronic_origin_status='route_refined_primary_electronic_independently_checked',
+        CDS_Hessian_numerical_control=True,native_numerical_policy=deepcopy(CDS_POLICY))
+    assert validate_plan(plan)['minimum_GPU_memory_MiB']==31744
+    assert not plan['native_G_qualified'] and plan['extra_columns']==[[15,0],[15,1],[15,2]]
+    plan['native_numerical_policy']['energy_function_changed']=True
+    with pytest.raises(ValueError):validate_plan(plan)
+
+
+def test_numerical_override_cannot_be_hidden_in_a_default_profile(plan):
+    plan['CDS_Hessian_numerical_control']=True
     with pytest.raises(ValueError):validate_plan(plan)
