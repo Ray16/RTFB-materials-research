@@ -76,3 +76,13 @@ identifies a compiled upload archive with matching text, figures, bibliography
 and numerical TeX inputs. It is a local reviewer upload, not a remote sync.
 
 The [corrected CPU companion](../examples/exact_viologen_corrected_replay/README.md) supplies all nine new Hessians and gradient panels and passes extracted replay in a fresh NumPy-only environment with original paths blocked. It preserves the earlier example separately.
+
+The [3 November editorial pass](editorial_review.json) tightens the abstract,
+interpretation and conclusions, clarifies the workflow graphic, and redraws the
+matched electronic comparison with signed labels and grayscale-safe hatching.
+All eight plotted values are unchanged. Figure placement now pairs the principal
+comparison with its evidence table. The article/SI remain 21/35 pages and the
+final self-contained upload reproduces both. The supplied audit comments are
+addressed explicitly: core examples are viologen, TEMPO and PMDI; finite-model
+claims do not require completion of every campaign. Author metadata remains
+with the user, and the availability statement retains outstanding deposition.

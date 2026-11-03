@@ -56,6 +56,10 @@ def main():
     from check_claims import audit
 
     claims = audit()
+    editorial_figure_check=None
+    if (manifest.parent/'editorial_figure_review.json').exists():
+        from check_editorial_figures import audit as audit_editorial
+        editorial_figure_check=audit_editorial(manifest.parent,ROOT/json.loads(pointer.read_text())['figures'])
     screening_check = None
     if (manifest.parent/'screening_V100_integration.json').exists():
         from check_screening_controls import audit as audit_screening
@@ -133,6 +137,7 @@ def main():
     source = {str(p.relative_to(ROOT)): sha(p) for p in
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", PAPER / "check_viologen_native.py", Path(__file__), manifest, pointer)}
     source.update(figure_inputs)
+    if editorial_figure_check is not None:source['manuscript/check_editorial_figures.py']=sha(PAPER/'check_editorial_figures.py')
     if native_component_check is not None:
         source['manuscript/check_native_component_pilot.py']=sha(PAPER/'check_native_component_pilot.py')
     if ionic_native_cycle_check is not None:
@@ -245,6 +250,7 @@ def main():
                   motif_interaction_check=motif_interaction_check,
                   counterion_association_check=counterion_association_check,
                   registry_expansion_check=registry_expansion_check,
+                  editorial_figure_check=editorial_figure_check,
                   occupied_sampling_check=occupied_sampling_check,
                   registry_citation_check=registry_citation_check,
                   primary_native_cohort_check=primary_native_cohort_check,

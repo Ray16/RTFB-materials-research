@@ -8,8 +8,9 @@ preserved in Git; the source-frozen manuscript epoch is selected by
 ## Next publication decisions
 
 Keep the paper's current identity inventory fixed while completing a bounded
-comparison on exact viologen, TEMPO, PMDI and the route-admitted phenothiazine
-baseline. Phthalimide remains a method control. Compare molecule-only,
+comparison on exact viologen, TEMPO and PMDI. Phenothiazine electrochemistry is
+an optional extension requiring qualified state/reference components; its
+unfinished controls do not block the core paper. Phthalimide remains a method control. Compare molecule-only,
 route-aware local-graft and polymer-context interpretations using explicitly
 matched inputs. Record changed priorities, supported conclusions and missing
 evidence separately; an evidence hold is not a demonstrated synthetic failure.
@@ -28,15 +29,15 @@ below without declaring the current article submission-ready.
 
 | Requirement | Current evidence | Still required |
 | --- | --- | --- |
-| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; twelve checked alternate-model polymer components and all four declared matched neighboring-graft G cycles | Complete occupied sampling, broader salt speciation and scoped decisions; no candidate currently passes every material requirement |
+| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; twelve checked alternate-model polymer components and all four declared matched neighboring-graft G cycles | Retain finite-model and conditional-reaction scope; qualify additional components only if their quantities enter a headline claim; full material admission is not claimed |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
-| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; four exact viologen/chloride outcomes pass full native QC and form three duplicate groups | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
-| M4: polymer sampling | Earlier forty-input empty cohorts pass their finite diagnostic; the first corrected occupied 20-input cell fails the 2-kJ/mol diagnostic across all duplicate/rotor scenarios; SI Table S17 reports the signed changes | Complete all corrected graph/configuration cells and expand sampling without relaxing the failed tolerance; balanced occupied ensembles remain unqualified |
+| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; four exact viologen/chloride outcomes pass full native QC and form three duplicate groups | Test the scenarios needed for the claimed interpretation, or retain conditional ΔG without a synthesis-feasibility conclusion; ΔG is not yield or rate |
+| M4: polymer sampling | Earlier forty-input empty cohorts pass their finite diagnostic; the first corrected occupied 20-input cell fails the 2-kJ/mol diagnostic across all duplicate/rotor scenarios; SI Table S17 reports the signed changes | For equilibrium claims, complete and converge every required cycle component; otherwise restrict conclusions to retained geometries. Phthalimide failure does not establish viologen convergence |
 | M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
 | M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
 | M7: reproducibility | Versioned exact-viologen CPU example; 75-state numerical cache; checked xTB component relocation; local reviewer collection and new control archive | Final synchronized code/data/environment release, author/license metadata and public deposition |
 | M8: literature | Verified base reference audit and separately checked methodological/polymer additions | Final built bibliography and claim/source consistency |
-| M9: publication narrative | Rewritten article; five interpretation-transfer tests and a failed prospective occupied sampling diagnostic; concrete contribution in the introduction, results and conclusion; separate SI and focused slides | Integrate final lead results, demonstrate transferable scientific utility and synchronize final figures/data statements |
+| M9: publication narrative | Rewritten article; five interpretation-transfer tests and a failed prospective occupied sampling diagnostic; concrete contribution in the introduction, results and conclusion; separate SI and focused slides | Lead with matched motif/chain and finite-backbone comparisons; keep the common-base shift secondary; reconcile final figures, evidence and release statements |
 
 ## Numerical reliability and its limits
 

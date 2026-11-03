@@ -1,8 +1,34 @@
 # Publication readiness: acceptance criteria and current gaps
 
-As of 2 November 2026, **the workflow and manuscript are not submission ready**.
+As of 3 November 2026, the editorial revision is complete in scope; submission
+readiness depends on the claim-specific checks and release requirements below.
 The objective is to address the scientific review, validate the maintained
 workflow, and deliver a manuscript whose claims match its released evidence.
+
+
+## Bounded completion criteria for this paper
+
+The core examples are viologen, TEMPO and PMDI. The central results are the
+contrast between whole-chain nonadditivity and frozen local motif interactions,
+and the backbone-dependent signs of the four finite ionic cycles. Each headline
+claim must identify its matched comparison, evidence and practical implication.
+The shared base correction is a supporting consistency check; its invariant
+within-base ranking follows from the common stoichiometric term and does not
+establish superior screening accuracy.
+
+An equilibrium-preference claim requires complete, qualified and adequately
+sampled cycle components. Otherwise the conclusion remains explicitly limited
+to retained geometries. The failed phthalimide diagnostic cannot establish
+viologen convergence. Likewise, grafting ΔG remains conditional on the declared
+reaction and ion convention unless relevant condition/salt sensitivity supports
+a broader conclusion. A conditional thermodynamic result does not establish
+synthetic feasibility or yield.
+
+Final release requires reproducible headline numbers, consistent article/SI/
+figure records, inspected PDFs and availability statements that describe the
+artifacts actually deposited. The user will supply author information. Completing
+every ongoing campaign, every candidate or full material qualification is not an
+additional submission criterion for this explicitly scoped paper.
 
 The first complete corrected occupied sampling cell now [fails the declared
 10-to-20 tolerance](../validation/corrected_sampling_2026-11-02/README.md):
@@ -10,14 +36,19 @@ conditional ensemble G changes by -2.40 kJ/mol at the primary rotor cutoff,
 with the same failure across all duplicate and rotor scenarios. This is a
 phthalimide method control, separate from the lead's finite ionic cycles.
 Supporting slide 19 now presents that limitation explicitly. Eleven other cells
-and balanced occupied ensemble cycles remain incomplete. Both exact phenothiazine
-native geometries also need refinement: a neutral imaginary mode and an oxidized
-gradient failure are independently reconstructed; neither supplies G or potential.
+and balanced occupied ensemble cycles remain incomplete. The earlier phenothiazine geometry failures have been followed by three
+independently checked refinements and fresh electronic states. The neutral
+native Hessian failures are now traced to the legacy CDS derivative step. The
+[oxidized component passes independent native review](../validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json),
+while the finer-step controls remain pending. An oxidized component alone does
+not provide an oxidation potential. Phenothiazine electrochemistry will enter
+the paper quantitatively only after compatible state/reference components
+qualify; its unfinished calculations do not block the existing core examples.
 Code cleanup, completed example calculations and presentation updates each
 contribute to that objective but do not establish completion.
 
-The current frozen corrected phthalimide-control roster has 90 checked electronic
-inputs and eighteen independently reconstructed native inputs out of 240 declared
+The current frozen corrected phthalimide-control roster has 100 checked electronic
+inputs and 31 independently reconstructed native inputs out of 240 declared
 slots. The largest native pilot passed full review; matched followups continue,
 while occupied ensembles remain incomplete. All four declared finite ionic
 viologen cycles now pass independent component and balance review, including
