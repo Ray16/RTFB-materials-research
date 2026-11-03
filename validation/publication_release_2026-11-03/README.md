@@ -1,12 +1,13 @@
 # Publication release preparation
 
-The [updated local reviewer candidate](review_candidate_02.json) contains six checked
-payloads totaling 818,081,211 bytes: committed scientific source, the current
+The [updated local reviewer candidate](review_candidate_03.json) contains six checked
+payloads totaling 820,812,179 bytes: committed scientific source, the current
 manuscript upload and slides, historical review packages, electronic-control
 checkpoints and the corrected molecular CPU replay. It is located at
-`/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_portable`.
+`/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_seven`.
 Its manifest hashes all 18 bundled files and records the full validation build
-of source commit `5ceb4e3b`. The earlier candidate and producer are preserved.
+of source commit `042724ac`, including the seven-outcome chloride cohort.
+The earlier candidates and producer are preserved.
 This is ready for local review; the
 new full raw archive, public deposition and final metadata remain outstanding.
 
@@ -80,3 +81,8 @@ versions, missing or wrong content, altered support code, corrupted resumed
 objects, source changes during archiving and changed manifests. Archives
 preserve the 32-GiB floor and use one zstd worker. The dated scripts in this
 directory are audit producers, not calculation-submission entry points.
+
+The 120.3-GB raw inventory is a frozen earlier release snapshot. Later validated
+additions, including the N0-outer plus result, retain their own raw locations
+and hashes. The full raw archive must refresh these additions and any producer
+relocations before staging; the archive tools recheck included bytes.

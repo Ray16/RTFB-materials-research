@@ -19,7 +19,9 @@ geometry-derived grouping replace assumptions that outcome count determines
 the number of starts or duplicate groups. Historical four/six-outcome snapshots
 remain supported. [Fifty checks](seven_publication_checks_03.xml) cover both old
 cohorts, the new cohort, numerical/state/context changes, wrong branch ledgers
-and reordered rosters. No population, synthesis or material inference is added.
+and reordered rosters. The [committed source](source_export.json) also passes
+the [full isolated manuscript validation build](committed_source_validation.json).
+No population, synthesis or material inference is added.
 
 ## Earlier six-outcome milestone
 
