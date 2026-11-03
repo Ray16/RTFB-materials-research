@@ -1,0 +1,607 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,xcolor,hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{tikz}
+\usepackage{needspace,float,placeins}
+\usetikzlibrary{arrows.meta,positioning}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.8}
+\newcommand{\pending}[1]{\par\smallskip\Needspace{4\baselineskip}\noindent\textcolor{red!65!black}{\textbf{Draft completion item:} #1}\par\smallskip}
+\newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
+\input{inputs/empty_batch_values.tex}
+\input{inputs/tempo_solution_values.tex}
+\input{inputs/viologen_native_values.tex}
+\input{inputs/viologen_grafting_values.tex}
+\input{inputs/ionic_native_cycle_values_v4.tex}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\title{Supporting Information: From Molecular Redox Screening to Polymer Grafts: Benchmarking and Matched Thermodynamic Comparisons}
+\author{Working draft: authorship and affiliations to be confirmed}
+\date{Evidence revision: 3 November 2026}
+\input{inputs/motif_interaction_values.tex}
+\input{inputs/counterion_v3_values.tex}
+\input{inputs/registry_update_values.tex}
+\input{inputs/ptz_redox_values.tex}
+\begin{document}\maketitle
+\noindent This Supporting Information provides the source data, reaction definitions and numerical checks for the molecular benchmark and finite polymer comparisons. Sampling and experimental-validation limits are identified with each calculation.
+\section{Benchmark intervals and post hoc reference diagnostics}
+The complete panel has 39 endpoints from 30 molecules and seven studies. Molecule-cluster 95\% percentile bootstrap intervals are [0.213,0.286] V for MAE, [0.245,0.313] V for RMSE and [0.128,0.257] V for bias. Study-cluster intervals are [0.178,0.306], [0.211,0.325] and [0.053,0.285] V, respectively. Both use 2,000 replicates and seed 20261021. The seven study clusters have unequal sizes; their percentile intervals are weakly calibrated. Molecule resampling retains common study and family effects and is also not a prediction interval for a new molecule.
+
+Table~\ref{tab:benchmark-sources} inventories all seven studies and the 39 selected endpoints. Each endpoint retains its exact molecular identity, redox-state pair, experimental value and source location in the accompanying data. Source-reported formal or midpoint potentials are retained under their stated measurement conditions; supporting-electrolyte and activity conventions are not assumed identical across studies. Values reported against another reference are used only with the source's own calibration.
+\begin{table}[htbp]\centering\small
+\caption{Primary experimental sources for the fixed MeCN benchmark. Counts are endpoints, not independent molecules. The table inventories the unchanged sourced panel; it adds no new measurements.}
+\label{tab:benchmark-sources}
+\begin{tabular}{p{.22\linewidth}rp{.60\linewidth}}\toprule
+Study & Endpoints & Source location and reference handling\\\midrule
+Attanayake et al.\cite{attanayake2019} & 5 & Table 1 and Figure 2; potentials reported versus Fc/Fc$^+$ in MeCN.\\
+Cabral et al.\cite{cabral2023quinones} & 2 & Table 3; SCE-referenced values use the authors' measured internal Fc calibration, $E_{1/2}(\mathrm{Fc})=0.40$ V versus SCE.\\
+Huynh et al.\cite{huynh2016quinones} & 13 & SI Table S3; source formal one-electron potentials versus Fc/Fc$^+$.\\
+Wang et al.\cite{wang2020quinones} & 7 & SI Table S1; TBAPF$_6$/MeCN columns and the stated reference convention.\\
+Gerken and Stahl\cite{gerken2015tempo} & 1 & Results text and Figure 2; TEMPO midpoint reported directly versus Fc/Fc$^+$.\\
+Daub et al.\cite{daub2021imides} & 9 & SI Table S1 and methods on page S10; imide midpoint potentials versus Fc/Fc$^+$.\\
+Kim et al.\cite{kim2022} & 2 & Results text and Figure 1 discussion; exact source-parent measurements kept separate from bead properties.\\\bottomrule
+\end{tabular}\end{table}
+
+For each cross-validation fold, a constant residual offset is estimated only from training endpoints and subtracted from the held-out prediction. Molecule and study folds remove all endpoints of the held-out molecule or DOI. The two-offset model fits separate constants for first and second redox steps. These choices were motivated by inspection of the complete retrospective panel and are internal diagnostics, not an untouched external test.
+\begin{table}[htbp]\centering
+\caption{Potential errors (V); primary unfitted statistics and internal offset diagnostics.}
+\begin{tabular}{llrr}\toprule
+Holdout & Offset model & MAE & RMSE\\\midrule
+None & Unfitted, primary &0.247&0.279\\
+Endpoint & One constant &0.157&0.210\\
+Molecule & One constant &0.158&0.211\\
+Study & One constant &0.182&0.232\\
+Endpoint & Separate step constants &0.106&0.166\\
+Molecule & Separate step constants &0.106&0.166\\
+Study & Separate step constants &0.124&0.177\\\bottomrule
+\end{tabular}\end{table}
+Relative potentials to TEMPO, N-ethylphenothiazine, N-methylphthalimide and 1,4-benzoquinone cancel the computed ferrocene term algebraically. Each diagnostic excludes every endpoint of its anchor molecule. The resulting error includes the organic anchor's own model and measurement errors. Agreement after reference cancellation therefore does not uniquely identify a ferrocene error.
+\begin{table}[htbp]\centering
+\caption{Fc-independent relative-potential diagnostics; all endpoints of each organic anchor are excluded. Errors include the anchor's own model and experimental uncertainty.}
+\begin{tabular}{lrrr}\toprule
+Organic anchor & Endpoints & MAE (V) & RMSE (V)\\\midrule
+TEMPO & 38 & 0.152 & 0.217\\
+N-Ethylphenothiazine & 38 & 0.152 & 0.219\\
+N-Methylphthalimide & 38 & 0.155 & 0.208\\
+1,4-Benzoquinone & 37 & 0.168 & 0.250\\\bottomrule
+\end{tabular}\end{table}
+
+
+The spin-only partition includes multiplicity but omits an additional ferrocenium orbital contribution. Matrix spectroscopy and multireference calculations support a degenerate electronic ground state.\cite{fcorbital2017} An idealized additional twofold factor at 298.15 K would lower ferrocenium $G$ by 0.0178 eV, lower the computed Fc absolute potential by 0.0178 V and increase target potentials versus Fc by 0.0178 V. This limiting calculation would worsen the positive first-step bias. It is not an applied correction: solvent, orbital, vibronic and Jahn--Teller splittings are unresolved.
+\subsection{Fixed-geometry ferrocene functional controls}
+To test whether a change of reference functional supplies the hypothesized upward shift, we recalculated neutral and oxidized Fc single-point energies with three functionals at the same qualified R2SCAN-D4/def2-SVP/SMD geometries. All six calculations use def2-TZVPD, separately converged gas and MeCN SMD states, and the stated spin-contamination gate. The original functional reproduces the stored SMD energies within $10^{-6}$ eV. Nuclear thermochemistry is not recalculated, and no alternative absolute potential is assigned.
+
+Table~\ref{tab:fc-functional} separates gas electronic gaps from differential solvation. Relative to the primary functional, B3LYP and PBE0 lower the SMD electronic gap by 0.1184 and 0.0658 eV. A reference-only counterfactual subtracts each shift from the unchanged primary benchmark residuals. Its bias increases from $+0.1896$ V to $+0.3080$ and $+0.2554$ V, respectively. These functional-only changes therefore do not supply the proposed upward reference correction. They neither reproduce the full protocols of the published comparison values nor identify a unique source of the benchmark error; consistent alternative molecular and reference thermochemistry would be required for an alternative predictive protocol.
+\begin{table}[htbp]\centering\small
+\caption{Electronic-only Fc controls at fixed solution geometries. Gaps and solvation terms are in eV; counterfactual errors are in V. The latter hold every target-molecule and nuclear term fixed and are not alternative validated potentials.}
+\label{tab:fc-functional}
+\begin{tabular}{lrrrrr}\toprule
+Functional & Gas gap & Solvation difference & SMD gap & MAE & RMSE\\\midrule
+$\omega$B97M-V & 6.4365 & $-2.0004$ & 4.4361 & 0.2470 & 0.2793\\
+B3LYP & 6.3440 & $-2.0264$ & 4.3177 & 0.3373 & 0.3700\\
+PBE0 & 6.3525 & $-1.9822$ & 4.3703 & 0.2947 & 0.3275\\\bottomrule
+\end{tabular}\end{table}
+
+\subsection{Nuclear rotor-cutoff sensitivity}
+The archived projected nuclear partitions at 25, 50 and 100 cm$^{-1}$ were propagated through the same state and reaction sums with geometries, electronic energies, Hessians and spin factors fixed. No new SCF calculation was performed. The primary benchmark remains the 50 cm$^{-1}$ result. Across all 39 endpoints, the largest individual span is 25.43 mV for the first duroquinone reduction, while the Fc reference spans 2.82 mV. Table~\ref{tab:rotor-metrics} reports the aggregate metrics. These deterministic settings scenarios do not supply candidate-specific prediction intervals.
+\begin{table}[H]\centering\small
+\caption{Unfitted benchmark metrics under the three nuclear rotor cutoffs. Potentials and errors are in V; all 39 endpoints are retained.}
+\label{tab:rotor-metrics}
+\begin{tabular}{rrrr}\toprule
+Cutoff / cm$^{-1}$ & MAE & RMSE & Bias\\\midrule
+25 & 0.2449 & 0.2759 & $+0.1850$\\
+50 (primary) & 0.2470 & 0.2793 & $+0.1896$\\
+100 & 0.2473 & 0.2800 & $+0.1901$\\\bottomrule
+\end{tabular}\end{table}
+For the 67 completed HCl-reference and 20 base-assisted reactions, the largest cutoff span is 4.46 kJ mol$^{-1}$ and no nominal reaction sign changes. At each fixed cutoff, the contribution of a specified base/byproduct model remains identical across its five candidates. Variant reaction values use the exact SI eV-to-molar-energy factor; original source-conversion arithmetic is retained without replacement. Figure~\ref{fig:rotor-sensitivity} displays these ranges. Independent reconstruction from the full archived state sums checks 117 potential evaluations and 261 reaction sums. This analysis does not test missing conformers, ion speciation, electronic-structure accuracy or attachment selectivity.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/thermal_cutoff.pdf}
+\caption{Nuclear rotor-cutoff sensitivity at fixed geometry and electronic structure. Panel a: potential shifts relative to 50 cm$^{-1}$, ordered by decreasing range over the three cutoffs; the dashed line denotes the primary convention. Panel b: 67 HCl-reference and ten DBU/ten DIPEA reaction-model ranges; horizontal marks are medians. Shared components make reaction values correlated. The ranges are settings scenarios, not confidence or candidate prediction intervals.}
+\label{fig:rotor-sensitivity}
+\end{figure}
+
+\section{Neutral-partner diffuse-basis sensitivity}
+Five existing benchmark neutral partners were reoptimized with r$^2$SCAN, D4, def2-SVPD and SMD MeCN, with the same active $\omega$B97M-V/def2-TZVPD electronic-energy protocol and a separately checked SVPD Hessian. Each passed stationarity, spin, finite/symmetry, two-column/two-step derivative and minimum checks. A basis-independent certified qRRHO integrator and an independent partition reconstruction were used. No primary state, protocol label or certificate was replaced. Table~\ref{tab:basis} separates the change in nuclear thermal contribution from the active-energy change due to reoptimization. The existing reduced state and Fc reference are held fixed; only the neutral-partner contribution to the first potential is tested. These are combined reoptimization/Hessian sensitivities; thermal changes are not isolated fixed-geometry basis effects, and conformational relaxation can contribute.
+\begin{table}[htbp]\centering
+\caption{SVPD minus primary neutral-partner contributions, in meV; the total also equals the first-potential shift in mV.}
+\label{tab:basis}
+\begin{tabular}{lrrr}\toprule
+Neutral partner & Nuclear & Geometry/SP & Total\\\midrule
+1,4-Benzoquinone & -11.29 & -0.39 & -11.67\\
+1,2-Naphthoquinone & -13.06 & -2.23 & -15.29\\
+9,10-Phenanthrenequinone & -7.78 & -5.66 & -13.44\\
+N-Methylphthalimide & -8.63 & -5.19 & -13.82\\
+N,N'-Diisopropyl-PMDI & -21.27 & -13.81 & -35.08\\\bottomrule
+\end{tabular}\end{table}
+\section{Supporting molecular and grafting cases}
+PMDI-ethyl and NDI-ethyl match enumerated exact designs by precursor, product and mapped new bond. All six redox states and the Fc reference were independently reconstructed; their existing grafting evidence hashes are unchanged. The registry now contains exact assessments rather than inherited family passes. Both routes remain held. The exact PMDI mono-N-ethyl/NH precursor is reported in EP0010440B1, Example 19 (printed page 10), with a stated NMR assignment.\cite{bochis1983} That access report supports one requirement for PMDI; its selective bead attachment and experimental redox retention remain unverified. NDI precursor access is still unresolved in the checked collection. The soluble-polymer attachment precedent concerns phthalimide; separate molecular PMDI N-alkylation with CsF supports the reaction class but not the exact bead route.\cite{hamilton1998} Proposed DBU/MeCN conditions define the computed cycle and do not constitute a demonstrated synthesis protocol.
+\begin{table}[htbp]\centering
+\caption{Joined exact-case evidence. Potentials are V versus computed Fc; grafting free energies are \kj. The finite PMDI occupancy cycle is complete; NDI occupancy thermochemistry remains missing.}
+\begin{tabular}{lrrrrl}\toprule
+Case & $E_1$ & $E_2$ & HCl route & DBU ions & Decision\\\midrule
+PMDI-ethyl & -1.076 & -1.977 & -0.29 & -103.07 & Hold\\
+NDI-ethyl & -0.764 & -1.418 & +10.05 & -92.73 & Hold\\\bottomrule
+\end{tabular}\end{table}
+Favorable model thermodynamics therefore do not override the route gate. These records identify the missing evidence and avoid duplicate full-redox jobs, and link PMDI enumeration through molecular, route and finite occupancy calculations. They do not establish material eligibility or a converged polymer ensemble.
+
+\subsection{Source-supported TEMPO attachment and local oxidation model}
+The 4-hydroxy-TEMPO precursor is attached through its hydroxyl oxygen to the benzyl site in the local model (Figure~\ref{fig:tempo-route}). The source reports this attachment to preformed Merrifield resin with NaH in DMF or THF and a washed-product N-oxyl content of 0.9 mmol g$^{-1}$.\cite{sommerlade2002tempo} The reported starting chloride density is referenced to the starting resin mass, so the two values do not directly determine conversion. The overall sodium-hydride stoichiometry is atom- and charge-balanced, with one nitroxide radical on each side; ion pairing and reaction free energy are not calculated.
+
+For the exact local graft, the nitroxide/oxoammonium potential relative to the matched computed Fc/Fc$^+$ reference is $+0.576$, $+0.579$ and $+0.579$ V for rotor cutoffs of 25, 50 and 100 cm$^{-1}$, respectively. The active solution electronic energies and four native thermal partitions were independently reconstructed. This is not an experimental potential for the graft, and the source reports catalytic use rather than battery cycling. Route evidence permits further evaluation; missing operating criteria, actual-condition grafting thermodynamics, intersite interactions and accessibility keep the material decision pending.
+\begin{figure}[htbp]\centering
+\includegraphics[width=0.92\linewidth]{figures/tempo_exact_route.pdf}
+\caption{4-Hydroxy-TEMPO and the capped local graft-site model. Highlighting identifies the precursor oxygen and the new oxygen--benzyl carbon bond. The drawing is a local molecular model, not a whole resin bead.}
+\label{fig:tempo-route}\end{figure}
+
+\subsection{Directional electronic solution relaxation of the exact TEMPO graft}
+The oxidized $O$ state has charge $+1$ and singlet multiplicity; the reduced $R$ state has charge zero and doublet multiplicity. Each uses its previously checked r$^2$SCAN-D4/def2-SVP/SMD minimum. The shared heavy-atom ordering and full hydrogen connectivity match the declared graft. Their heavy-atom RMSD is 0.137 \AA; the three bridge-torsion differences are 10.84, 2.24 and 1.88 degrees. The declared 0.3 \AA\ and 30-degree diagnostics identify a paired local basin; they do not establish a conformer ensemble.
+
+All six fresh calculations use $\omega$B97M-V/def2-TZVPD with density fitting and native MeCN SMD. The native solvent constants are $\epsilon_s=35.688$ and $\epsilon_{\rm op}=1.80687364$. Optical polarization relaxes self-consistently during each vertical charge change while the initial slow polarization is frozen using a Pekar partition.\cite{you2015nonequilibrium} Each vertical event retains the same coordinates, basis and cavity for both electronic states. The native geometry-only CDS functional is included once; its treatment away from equilibrium is a stated model assumption, not a solvent-dynamics validation. With $Q_X$ denoting the geometry of state $X$ and $D_X$ its equilibrium density,
+\begin{align}
+ L_{O\to R}&=E_R^{\rm neq}(Q_O;D_O)-E_R^{\rm eq}(Q_R),\\
+ L_{R\to O}&=E_O^{\rm neq}(Q_R;D_R)-E_O^{\rm eq}(Q_O).
+\end{align}
+The first direction separates into $E_R^{\rm eq}(Q_O)-E_R^{\rm eq}(Q_R)$ and $E_R^{\rm neq}(Q_O;D_O)-E_R^{\rm eq}(Q_O)$, with the analogous reverse expressions. The first component includes equilibrium solvation and geometry response; it is not an isolated gas inner-sphere term. No gas-inner or Born-outer quantity is added to either total. These electronic-structure energies include no nuclear thermal correction, explicit counterion or polymer environment.
+
+\begin{table}[htbp]\centering
+\caption{Checked electronic solution-relaxation components for the exact capped TEMPO graft, in eV. One paired minimum per charge state is used.}
+\begin{tabular}{lrrr}\toprule
+Direction & Equilibrium geometry & Frozen-slow increment & Total\\\midrule
+Reduction $(+1\to0)$ & \TempoReductionGeometry{} & \TempoReductionSlow{} & \TempoReduction{}\\
+Oxidation $(0\to+1)$ & \TempoOxidationGeometry{} & \TempoOxidationSlow{} & \TempoOxidation{}\\\bottomrule
+\end{tabular}\end{table}
+\begin{figure}[htbp]\centering
+\includegraphics[width=.94\linewidth]{figures/tempo_solution_relaxation.pdf}
+\caption{Directional electronic solution response of the same exact TEMPO graft used for the route and potential assessment. Components refer to the defined frozen-slow SMD model. The \TempoAsymmetryPercent{}\% asymmetry exceeds the declared 5\% equal-curvature diagnostic; their average is not promoted to a qualified symmetric parameter. Statistical or prediction intervals are not estimated.}
+\label{fig:tempo-solution}\end{figure}
+The asymmetry diagnostic is $|L_{O\to R}-L_{R\to O}|/[(L_{O\to R}+L_{R\to O})/2]$. Its 5\% cutoff is a predeclared diagnostic convention, not an experimental accuracy threshold. Independent reconstruction checks the six energy/density records, electron and spin traces, reference-density identities, and both directional sums. Both own-geometry energies reproduce the source active single points within $2\times10^{-9}$ eV. The stationary minima are at the geometry level; active-single-point stationarity, global conformer convergence and experimental rates are unestablished. The exact-candidate ledger retains the two directions and leaves the symmetric scalar, actual-route grafting free energy, occupancy response and electronic coupling unfilled where their requirements have not passed.
+
+\subsection{Exact enumerated viologen: route and native molecular states}
+The unsubstituted N-methyl viologen design has the same mapped precursor/product graph as the registered capped local model. The primary source establishes precursor access and attachment to preformed Merrifield resin in refluxing MeCN over 48 h; separate counterion exchange precedes operation.\cite{kim2022} The precursor iodide and newly released chloride are distinguished from the operating PF$_6^-$ convention. The capped calculations include no explicit counterions. Quaternization is atom- and charge-balanced as a monocationic precursor plus neutral benzyl chloride giving a dicationic graft plus chloride; no HCl or base-capture correction is added.
+
+Three native molecular states and the two matched Fc states enter the potential differences. The candidate states have charges/multiplicities $(+2,1)$, $(+1,2)$ and $(0,1)$. Their active energies use the same diffuse basis, and all native geometry/Hessian bases are SVP in this non-anionic comparison. Two initially optimized structures fail the native minimum gate. Signed-mode repairs are checked before choosing the lowest active-energy admitted branch; the original structures and both branches remain available. Table~\ref{tab:viologen-QC} reports the actual lowest internal frequencies. The final Hessians, displaced-gradient columns, projected nuclear terms and density/spin populations are independently reconstructed. The producer's four-decimal S$^2$ values are compared at their recorded precision; the independent physical contamination limit remains 0.1 at full precision.
+
+\begin{table}[htbp]\centering
+\caption{Native minimum admission for the exact viologen graft. Frequencies are cm$^{-1}$. Initial values refer to the source optimized geometries; accepted values follow the unchanged native gates.}
+\label{tab:viologen-QC}
+\input{inputs/viologen_native_QC_table.tex}
+\end{table}
+
+The primary reduction potentials are $\MolecularFirstReduction$ and $\MolecularSecondReduction$ V versus Fc/Fc$^+$ (Figure~\ref{fig:viologen-redox}). The 25/50/100 cm$^{-1}$ calculations are settings sensitivities, not independent samples. The positive $\MolecularDisproportionation$ \kj\ monomer disproportionation value does not establish resistance to other decay or association reactions. Global conformer/spin ordering, polymer-context grafting free energy, neighboring-site response and electronic coupling remain unresolved; no material admission follows from this ladder.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=.82\linewidth]{figures/viologen_native_redox.pdf}
+\caption{Checked reduction ladder for one exact enumerated capped viologen in MeCN at 298.15 K. Labels report global charges and spin multiplicities, not localization of charge or spin. Bars span 25--100 cm$^{-1}$ rotor settings; they are not statistical or prediction intervals. One selected geometry per declared state is used. The matched Fc convention includes spin degeneracy without an orbital/vibronic correction.}
+\label{fig:viologen-redox}\end{figure}
+
+\paragraph{Local quaternization thermodynamics.}
+The same dicationic graft enters a balanced reaction with one monocationic mono-methyl bipyridinium precursor and one neutral local benzyl-chloride site, releasing chloride. There are two separated solutes on each side, so the net 1-atm-to-1-M correction is zero. No HCl or base term enters this reaction. The existing local-site and monatomic chloride records have the matched electronic/native definitions; their cached Hessians and partitions reconstruct independently. The precursor has its own native DFT Hessian and projected nuclear terms for each seed. RDKit/MMFF seeds were generated with seed 20261031, retaining three starts. Standard UMA S1.2.1 supplies warm starts only; DFT/SMD supplies the reported thermodynamics. Fixed-geometry H100 comparisons reproduce the V100 standard-model energies and forces within $1.3\times10^{-6}$ eV and $2.0\times10^{-6}$ eV/\AA, respectively, across three evaluations per H100 calculation. This does not qualify Nitro inference.
+
+Table~\ref{tab:viologen-graft} reports the three precursor starts after independent native and resource checks. The selected lowest precursor $G$ at 50 cm$^{-1}$ gives $\ViologenGraftDG$ \kj; the precursor-seed span is \ViologenGraftSeedSpan{} \kj. Identical site, product and chloride records enter every comparison. These fixed starts do not establish global sampling or a Boltzmann ensemble, and the 25--100 cm$^{-1}$ rotor span (\ViologenGraftRotorLow{} to \ViologenGraftRotorHigh{} \kj) is a settings sensitivity. The model includes separated ionic species in MeCN at 298.15 K. It does not include iodide association, the full distribution of chloride/iodide contacts with the graft, PF$_6^-$ exchange, polymer penalties or reflux-temperature thermodynamics. The iodide spectator cancels only within the separated-ion convention. Bare-chloride solvation uncertainty can affect the reaction sign; the DBU/HCl p$K_\mathrm a$ comparison does not isolate a transferable chloride correction for this quaternization.
+
+\begin{table}[htbp]\centering
+\caption{Three fixed precursor starts for the exact viologen grafting cycle. Relative precursor $G$ and grafting $\Delta G$ are kJ/mol at the 50 cm$^{-1}$ rotor setting; the lowest internal frequency is cm$^{-1}$. The product is the checked dicationic graft.}
+\label{tab:viologen-graft}
+\input{inputs/viologen_grafting_QC_table.tex}
+\end{table}
+
+\paragraph{Explicit incoming-chloride contacts.}
+The paired graph is the same oxidized local graft plus disconnected Cl$^-$, with total charge $+1$ and singlet multiplicity. This is chemically distinct from the isolated $+1$ doublet in the reduction ladder. N0 is the benzyl-bearing nitrogen and N1 the methyl-bearing nitrogen; above/below labels refer to the initial core-normal directions. Seven deterministic starts sample both nitrogen regions and a separated configuration. The \ChlorideOutcomeCount{} optimized outcomes from five original starts pass independent primary-model electronic, Hessian, sampled-derivative, actual-wavefunction and projected-partition checks (Table~\ref{tab:chloride-association}). Each has its own $\omega$B97M-V/def2-TZVPD energy and r$^2$SCAN-D4/def2-SVP solution Hessian; the isolated monatomic chloride retains its matched analytic partition. All nine native SCF frames per contact are checked. The two N0-above outcomes follow opposite 0.1-\AA\ displacements along a preserved unstable mode and tighter reoptimization; the failed parent remains unqualified. The N0-below minus repair and both signed N0-outer repairs also pass independent review; their initial labels do not imply equilibrium populations.
+
+For each outcome, the exact checked dication and chloride parents give
+\begin{equation}
+\Delta G_{\rm assoc}^{\circ}=G(\mathrm{VCl}^{+})-G(\mathrm V^{2+})-G(\mathrm{Cl}^{-}).
+\end{equation}
+A contact is one statistical solute despite its disconnected molecular graph. Thus $\Delta n=-1$ and the 1-atm-to-1-M correction is $\ChlorideCorrection$ \kj\ at 298.15 K, applied once after the source-convention sum. The three rotor cutoffs change the nuclear definition; their spread is not a confidence interval. Covalent quaternization has its separate balanced particle count and receives no additional HCl/base term.
+
+\begin{table}[htbp]\centering\small
+\caption{Finite incoming-chloride association outcomes for the exact oxidized local graft in primary-model MeCN at 298.15 K. All $\Delta G$ values are kJ/mol at a 1-M solute standard state; subscripts denote qRRHO rotor cutoffs in cm$^{-1}$. Frequencies are cm$^{-1}$; FD error is the largest sampled-column relative error in percent. Outcome labels retain starting/repair history. The signed N0-above and N0-outer pairs each occupy one numerical duplicate group.}
+\label{tab:chloride-association}
+\input{inputs/counterion_v3_table.tex}
+\end{table}
+
+Symmetry-aware heavy-atom RMSD uses exact graph mappings and proper rotations, including the chloride atom. The N0-above and N0-outer signed pairs differ by 0.00377 and 0.01472 \AA, respectively, and each meets the 0.2-kJ/mol electronic-energy duplicate tolerance. Each pair forms one complete-link duplicate group at all three RMSD thresholds (0.05, 0.10 and 0.20 \AA); the \ChlorideOutcomeCount{} outcomes form \ChlorideDuplicateCount{} groups. Individual computed G values are retained for both pairs. This is a duplicate diagnostic, not a proof of chemical-well boundaries or a license to assign observed hit counts as degeneracies. No conformational partition or ion-pair population is constructed from these incomplete starts. The other poses include independently diagnosed failed minima and pending reoptimizations. Iodide contacts, PF$_6^-$ exchange, concentration/activity effects, reflux-temperature thermodynamics and exact-graft experimental association accuracy remain unresolved. Consequently, these finite association results cannot establish a grafting yield or a complete actual-condition reaction free energy.
+
+\subsection{Charged viologen occupancy construction and salt convention}
+The same precursor/attachment identity defines a conditional five-repeat viologen panel with reactive benzyl sites 2, 3 and 4 and plain-styrene padding at sites 1 and 5. Each of two declared backbone configurations has an empty graph, three singly grafted graphs and adjacent (2,3) or one-spacer (2,4) double grafts. The four corresponding nonadditivity cycles conserve atoms and charge. Independent examination of the initial XYZ structures verifies the ten-carbon, nine-bond open backbone, stereochemistry, benzyl--pyridinium nitrogen attachments and residual benzyl chlorides. Figure~\ref{fig:viologen-occupancy-construction} shows the actual two-graft graphs; it does not represent a spatial arrangement or an interaction energy.
+
+ETKDGv3 requests four starting conformers per graph, using seed 20261031 plus the graph index and at most 1,000 embedding iterations. A failed embedding triggers one declared random-coordinate retry with the same seed. Connectivity-valid structures are ranked after 200 MMFF steps; this pre-relaxation did not converge and supplies initial coordinates only. Neither these force-field energies nor the starting contact distances enter solution thermodynamics. Global charge/spin hypotheses are recorded separately from graph construction, without assigning charge localization or spin ordering. No charged-polymer energy, conformer ensemble or native nuclear partition is inferred from this preparation.
+
+A subsequent fixed-geometry solver control evaluates the 137-atom, fully oxidized two-graft model as a charge-$+4$ singlet in MeCN with omitted separated spectator ions. It uses r$^2$SCAN-D4/def2-SVP and the separately declared smooth-CDS/SMD surface. Compact-buffer V100 and direct H100 calculations agree to $3.64\times10^{-12}$ Ha in energy and $2.94\times10^{-10}$ Ha/bohr in maximum Cartesian force difference; their measured GPU peaks are 29,964 and 87,026 MiB. The surface, basis and precision are unchanged between these executions. This validates initial-state execution within the declared model. Its $1.40\times10^{-2}$-Ha/bohr maximum Cartesian gradient exceeds the stationarity threshold, so solvent optimization, minimum checks and conformer sampling remain necessary. No polymer interaction energy or grafting free energy follows from this control.
+
+A subsequent corrected-implementation native calculation at an independently checked 114-atom, site-2 geometry supplies the first charge-$+2$ singlet polymer component in this separate smooth-surface MeCN model. Independent reconstruction verifies a positive minimum internal frequency of 8.19 cm$^{-1}$ and a largest sampled-column relative error of $4.67\times10^{-6}$ under the unchanged 1\% gate. Its r$^2$SCAN-D4/def2-SVP electronic energy and own nuclear terms close the three cutoff-dependent component sums at that level. This is one checked local minimum, not a complete occupied free-energy cycle, a converged ensemble or a primary-model molecular/grafting replacement.
+
+The twelve-component collection closes all four declared balanced neighboring-graft cycles for the exact viologen design. For the adjacent, all-same-backbone configuration,
+\begin{equation}
+\Delta\Delta G=G(P_{23}^{4+})+G(P_0)-G(P_2^{2+})-G(P_3^{2+}).
+\end{equation}
+All components are singlets under the same corrected r$^2$SCAN-D4/def2-SVP smooth-surface MeCN model at 298.15 K (Table~\ref{tab:ionic-native-cycle}). Atom, formal-charge and component counts balance; the net 1-atm-to-1-M translation correction cancels. Spectator ions are omitted consistently, rather than modeled as associated counterions. The adjacent primary result is $\IonicAdjacentG$ \kj, with a $\IonicAdjacentGLow$ to $\IonicAdjacentGHigh$ \kj\ range across the three rotor cutoffs. The one-spacer counterpart is $\IonicSpacerG$ \kj, spanning $\IonicSpacerGLow$ to $\IonicSpacerGHigh$ \kj. Their electronic nonadditivities are $\IonicAdjacentE$ and $\IonicSpacerE$ \kj. These finite retained-minimum comparisons do not establish a converged ensemble, isolated motif binding, electronic coupling or experimental occupancy probabilities.
+
+The all-same adjacent 137-atom, charge-$+4$ component has a minimum internal frequency of $\IonicLargeMinimum$ cm$^{-1}$ and a largest sampled-column error of $7.20\times10^{-6}$. Its recovery reused the exact converged SCF/grid frame and completed solute partial tensor while recomputing the complete solution H1, original-equation response, full Hessian and all declared displaced-gradient checks. Both one-spacer components complete the same full physical checks. All 25 actual SCF frames of each double-graft component pass independent review, followed by its own mode and nuclear reconstruction.
+
+The alternating adjacent calculation suffered a checkpoint-file I/O failure after completing its full Hessian. A separate recovery preserves that FP64 matrix and its original full solvent H1 and nine solved response blocks (411 response rows). A fresh center reproduces the original energy within $1.82\times10^{-12}$ Ha and maximum gradient difference within $4.27\times10^{-10}$ Ha/Bohr before the matrix is loaded unchanged. All 25 center/displaced SCF evaluations are then computed afresh. Independent review verifies the original response evidence, both-step sampled derivatives, wavefunctions, modes, symmetry and own nuclear terms; the response equations are not claimed to have been solved a second time. The lowest internal frequency is $\IonicAlternatingAdjacentMinimum$ cm$^{-1}$ and the largest sampled-column error is $2.86\times10^{-6}$. Its matched adjacent cycle is $\IonicAlternatingAdjacentG$ \kj, spanning $\IonicAlternatingAdjacentGLow$ to $\IonicAlternatingAdjacentGHigh$ \kj\ across the three rotor settings. The alternating one-spacer cycle is $\IonicAlternatingSpacerG$ \kj, spanning $\IonicAlternatingSpacerGLow$ to $\IonicAlternatingSpacerGHigh$ \kj. Neither cycle changes sign across those settings. These polymer-level values are separate from the primary molecular $\omega$B97M-V/composite quaternization model and cannot replace its components or establish occupied-ensemble convergence.
+
+\begin{table}[htbp]\centering\small
+\caption{Matched components of all four checked ionic viologen neighboring-graft cycles. Charges and multiplicities are global assignments. Frequencies are cm$^{-1}$; FD error is the largest sampled-column relative error in percent. Each graph retains one local minimum.}
+\label{tab:ionic-native-cycle}
+\input{inputs/ionic_native_cycle_table_v4.tex}
+\end{table}
+
+Coordinates omit counterions under a separated-spectator convention. A distinct, fully oxidized dry-salt reference assigns two PF$_6^-$ ions per viologen for composition bookkeeping. For this quaternization, the precursor loses no hydrogen, giving
+\begin{equation}
+M_{\mathrm{salt}}=nM_{\mathrm{C_8H_8}}+hM_{\mathrm{CHCl}}+2M_{\mathrm H}
+ +g\big(M_{\mathrm{precursor}}-M_{\mathrm{Cl}}+2M_{\mathrm{PF_6}}\big)+M_{\mathrm{extra}}.
+\end{equation}
+Direct masses of the constructed graphs plus declared counterions reproduce this expression. For $n=5,h=3$, one and two grafts have reference masses 1093.886 and 1519.580 g/mol and two-electron ceilings 49.00 and 70.55 mAh/g, respectively. These conditional ceilings include residual chlorides and scaffold mass. They establish neither accessible capacity nor mobile-ion mass during redox. The PF$_6^-$ composition reference is separate from precursor iodide and attachment-generated chloride; counterion exchange, association and actual resin loading remain unmodeled.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.96\linewidth]{figures/viologen_occupancy_construction.pdf}
+\caption{Exact viologen occupancy graphs for adjacent and one-spacer grafts on the same open backbone. Numbers label repeat sites; teal identifies the backbone, orange the two viologen cores and purple the retained covalent chloride. Both drawings use the same declared backbone configuration. Counterions are omitted. The separate initial-XYZ audit checks connectivity and stereochemistry; no optimized solution structure, interaction strength or free energy is reported here.}
+\label{fig:viologen-occupancy-construction}\end{figure}
+
+\FloatBarrier
+\subsection{Direct N-linked phenothiazine: a route-qualified expansion}
+The maintained registry contains \UnifiedRegistryCount{} exact graft graphs and retains every prior graph, alias and reported evaluation. The latest panel adds \NewDirectPTZDesigns{} F/CN-substituted designs to the unsubstituted N-linked phenothiazine baseline, with seventeen site recipes deduplicated to nine graphs including that existing baseline. Every design retains its exact precursor/product pair, mapped N--benzylic new bond and a neutral-singlet/oxidized-doublet one-electron hypothesis. No second accessible oxidation, electrochemical value, steric-shielding improvement or route qualification is transferred to the new structures.
+
+Wright and Jin report attachment of unsubstituted phenothiazine to chloromethylated polystyrene beads using NaH in DMF at ambient temperature for six hours (Scheme I and experimental section, pp.966--967).\cite{wright1989supported} Their general procedures identify commercial phenothiazine, and the washed product is assigned as the N-substituted polymer with supporting nitrogen analysis. Subsequent chemical oxidation and reduction demonstrate retained redox function under their conditions. K$_2$CO$_3$ did not give the analogous phenothiazine modification. The local 4-methylbenzyl graph models that N--CH$_2$--aryl connection; its properties, our resin's composition and MeCN battery performance are not measured by this precedent.
+
+An atom- and charge-balanced local representation of the NaH route is
+\begin{equation}
+\mathrm{HPTZ+P{-}CH_2Cl+NaH\rightarrow P{-}CH_2{-}PTZ+NaCl+H_2},
+\end{equation}
+where HPTZ denotes neutral N--H phenothiazine. The new covalent bond is to nitrogen. This is stoichiometric bookkeeping: NaH/NaCl solid or solvated activities and the hydrogen chemical potential have not been calculated, and hydrogen evolution is not asserted as a measured observation here. The HCl-reference substitution used elsewhere remains a separate thermodynamic model. Neither a DBU/HCl capture term nor an all-solute particle-count correction supplies an actual-condition NaH reaction G.
+
+The source supports a route pass for the unsubstituted baseline, making \ReviewedRouteCount{} reviewed baseline passes in the full registry, with 909 remaining holds and no full material admissions. All eight substituted precursors still require access, selectivity, condition-transfer and redox-retention review before a full property campaign. O-linked hydroxyethyl phenothiazines are chemically different and receive no approval from this N-linked precedent. Operating-state stability, interactions, transport and actual bead accessibility remain unresolved for the new baseline as well.
+
+For the exact N-(4-methylbenzyl)phenothiazine local model, two refined neutral-singlet branches and the oxidized doublet each pass full native review, including 21 actual SCF evaluations, minimum checks and standard plus sulfur-centered derivative probes. The first oxidation is
+\[
+E_{\mathrm{ox}}^{\mathrm{vs\,Fc}}=[G(\mathrm{PTZ}^{+})+G(\mathrm{Fc})-G(\mathrm{PTZ})-G(\mathrm{Fc}^{+})]/e.
+\]
+The exact Fc/Fc$^+$ components retain their own independently qualified Hessians, spin checks and nuclear terms. Electronic, solvent, native and projected-thermal definitions match; atom, charge and solute counts balance, so the common 1-atm-to-1-M correction cancels. At 298.15 K the primary-cutoff potential is $+\PTZPrimaryV$ V, with $+\PTZLowV$ to $+\PTZHighV$ V across the 25, 50 and 100 cm$^{-1}$ settings. The two neutral branches differ by only \PTZBranchMicroV{} $\mu$V at the primary cutoff; they are not assigned population weights.
+
+The legacy SMD CDS energy and gradient functions are unchanged. Phenothiazine uses a qualified $10^{-6}$-bohr gradient-difference step for the CDS Hessian after the default step failed the neutral Hessian symmetry check; Fc retains the validated $10^{-4}$-bohr default. Component numerical policies remain explicit. A matched full-Hessian repeat of the oxidized phenothiazine changes G by less than $6\times10^{-9}$ eV across cutoffs. These tests establish finite-component numerical consistency, not Fc step convergence, a converged conformer ensemble or experimental accuracy for the graft. Earlier failed geometries and Hessians remain excluded.
+
+\subsection{Composition bounds and exact occupancy inputs}
+For neutral N--H/O--H substitution, the H-capped linear-fragment mass is
+\begin{equation}
+M=nM_{\mathrm{C_8H_8}}+hM_{\mathrm{CHCl}}
+ +g(M_{\mathrm{NuH}}-M_{\mathrm{H}}-M_{\mathrm{Cl}})+2M_{\mathrm H}+M_{\mathrm{extra}},
+\end{equation}
+where $n$ is repeat count, $h$ is the number of original reactive handles and $g\le h\le n$ is graft count. The chloromethyl increment replaces a ring hydrogen; an ungrafted handle retains chlorine. Additional inactive mass $M_{\mathrm{extra}}$ is explicit and nonnegative. The capacity ceiling for an assumed $z$ electrons per graft is $Q_{\mathrm{upper}}=gzF/(3.6M)$. Actual utilization can be lower, including zero. This convention uses neutral dry-fragment mass and does not implicitly include crosslinker, absorbed electrolyte or charging counterions. Charged precursor/attachment classes require a separately declared counterion mass model.
+
+All eight occupancy graphs at $n=5,h=3$ reproduce the analytic masses. Positional isomers with the same graft count have the same composition ceiling; their accessibility and interaction energies need not agree. The broader composition grid contains 21 $(h,g)$ cases with one- and two-electron assumptions. No application target is fitted to these values, and the capacity dimension remains unresolved in the decision ledger.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/pmdi_capacity.pdf}
+\caption{Composition-dependent PMDI capacity ceilings. The neutral H-capped fragment has five repeats; panel (a) fixes three reactive handles and varies conversion, while panel (b) varies handle density at full conversion. One- and two-electron budgets are assumptions. Residual chlorides and scaffold mass are retained. The dotted capped-molecule descriptor excludes the polymer scaffold; none of these curves establishes accessible material capacity.}
+\label{fig:capacity}\end{figure}
+
+Three exact PMDI inputs, occupied at sites 2, 3 or both 2 and 3, contain 115, 115 and 139 atoms, respectively. They preserve the open ten-carbon backbone, two plain-styrene padding units and any residual benzyl chlorides (Figure~\ref{fig:pmdiconstruction}). Initial structures use seed 20261023, 32 distance-geometry embeddings and up to 2,000 MMFF steps; the best converged initial structure seeds each subsequent search. Connectivity, declared stereochemistry and geometry sanity are checked before calculation. Starting-structure and search records alone do not establish occupancy thermodynamics; each resulting state requires separate active-energy and native-Hessian qualification. The common empty reference has the same exact graph and configuration as the phthalimide empty control; no occupied phthalimide energy is substituted for a PMDI energy.
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/pmdi_construction.pdf}
+\caption{Exact PMDI-ethyl occupancy inputs. Blue highlights the open backbone and purple the diimide cores. Panels show the empty chain, site 2 and sites 2/3; the separate site-3 reference is also prepared. Numbers label repeats. These two-dimensional drawings preserve connectivity and declared stereochemistry, not optimized spatial contact.}
+\label{fig:pmdiconstruction}\end{figure}
+
+\subsection{First-site PMDI grafting and the local-to-polymer comparison}
+The site-2 and site-3 polymer states pass native-Hessian admission and an independent reconstruction of the internal modes, nuclear partition and electronic contribution. The common empty state is the lowest-electronic-energy member of the two inherited empty-backbone conformers, selected by the declared baseline policy. All three retain the same backbone configuration, two styrene padding units and three original reactive-site positions. Each occupied graph contributes one sampled minimum; these values are finite structural scenarios rather than conformer-ensemble free energies.
+
+For separated ions, the first-site reaction is $\mathrm{P_0+HM+B\rightarrow P_i+BH^++Cl^-}$, where $HM$ is the exact mono-N-ethyl/NH PMDI precursor and $B$ is DBU. The contact-pair model replaces the two ionic products with one explicit $\mathrm{BH^+\cdot Cl^-}$ species and includes the $\Delta n=-1$ standard-state term once. At 298.15 K this term is $-7.9259$ \kj. The balances are checked independently for atoms and charge. The relative reaction $\mathrm{P_0+RM\rightarrow P_i+RCl}$ gives the polymer-context penalty without the common precursor or base terms. The new reconstruction uses 96.48533212331001 \kj/eV; earlier source arithmetic is retained.
+
+\begin{table}[htbp]\centering\small
+\caption{First-site PMDI grafting in sampled five-repeat models. All values are \kj\ at 298.15 K in SMD MeCN. The local capped model has DBU/separated-ion $\Delta G=-103.07$ \kj\ at the primary 50 cm$^{-1}$ cutoff. The last column is the balanced polymer-minus-local difference; common reagent terms cancel.}
+\begin{tabular}{rrrrr}\toprule
+Site & Cutoff / cm$^{-1}$ & Separated ions & Contact pair & Polymer minus local\\\midrule
+2 & 25  & $-97.03$ & $-102.98$ & $+6.61$\\
+2 & 50  & $-97.72$ & $-102.52$ & $+5.34$\\
+2 & 100 & $-97.15$ & $-100.52$ & $+6.11$\\
+3 & 25  & $-97.17$ & $-103.12$ & $+6.47$\\
+3 & 50  & $-96.96$ & $-101.75$ & $+6.11$\\
+3 & 100 & $-96.95$ & $-100.32$ & $+6.31$\\\bottomrule
+\end{tabular}\label{tab:pmdifirstsite}\end{table}
+
+The site-2 electronic energy is 8.15 \kj\ below site 3, while their primary free-energy difference is only $-0.77$ \kj. The site-2-minus-site-3 free-energy differences at 25, 50 and 100 cm$^{-1}$ are $+0.14$, $-0.77$ and $-0.20$ \kj, respectively. The nominal placement preference therefore changes sign within this settings test. It cannot support positional selectivity or an experimental occupancy distribution. The paired-state calculation now passes the same native-Hessian and independent reconstruction gates. Its four-state electronic nonadditivity is $\Delta\Delta E=-2.31$ \kj; the corresponding primary free-energy result is $\Delta\Delta G=-1.86$ \kj. Neither quantity isolates motif binding. Broader conformer searches remain necessary for both the first-site and neighboring-site comparisons.
+
+\subsection{Completed finite PMDI occupancy cycle}
+The paired state has 411 internal modes, a lowest frequency of $+5.77$ cm$^{-1}$ and a largest Cartesian gradient of $7.62\times10^{-6}$ hartree bohr$^{-1}$. Its Hessian asymmetry is $1.54\times10^{-10}$ atomic units, and the largest relative error over the two sampled columns at both displacements is $3.43\times10^{-6}$. Independent mode projection and nuclear equations reconstruct the accepted free energy. Table~\ref{tab:pmdineighbor} specifies the matched states; the shared empty reference follows the stated lowest-electronic-energy policy rather than a claim of global conformer convergence.
+\begin{table}[htbp]\centering\small
+\caption{Matched neutral PMDI occupancy states at the primary 50 cm$^{-1}$ rotor cutoff. Each graph contributes one native free energy; values are eV.}
+\label{tab:pmdineighbor}
+\begin{tabular}{lrr}\toprule
+Occupied sites & Atoms & $G$\\\midrule
+None & 91 & $-82874.029197$\\
+2 & 115 & $-94077.698759$\\
+3 & 115 & $-94077.690815$\\
+2,3 & 139 & $-105281.379671$\\\bottomrule
+\end{tabular}\end{table}
+
+At the primary setting, DBU/separated-ion attachment at site 2 is $-97.72$ \kj\ on the empty chain and $-99.59$ \kj\ when site 3 is grafted. The corresponding site-3 values are $-96.96$ and $-98.82$ \kj. Both attachment orders give $-196.54$ \kj\ for the direct double-grafting reaction. The contact-pair calculation gives the same $-1.86$ \kj\ nonadditivity: the shared reaction constant and standard-state term cancel algebraically. Rotor cutoffs of 25/50/100 cm$^{-1}$ give $-1.07/-1.86/-1.82$ \kj. These are deterministic settings comparisons, not statistical uncertainty bounds.
+
+The accepted paired geometry has core centroids 16.30~\AA\ apart and a 69.0$^\circ$ interplane angle (Figure~\ref{fig:pmdineighborgeometry}). The finite result includes backbone, conformational and solvent response; it is not an estimate of intrinsic close-contact core binding or electronic coupling. No loading distribution, atactic ensemble or preferred experimental graft site is inferred.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.95\linewidth]{figures/pmdi_neighbor_geometry.pdf}
+\caption{Actual paired PMDI minimum used in the matched cycle. A proper rotation makes both conjugated cores visible while preserving the saved XYZ coordinates. Blue highlights the open backbone; numbers mark repeats 2 and 3. Orange and magenta mark the PMDI cores, and green marks the remaining chloride at reactive site 4. Repeats 1 and 5 are plain-styrene padding. Hydrogens are omitted and bond lines follow the checked covalent graph. The dashed line joins core centroids; the stated distance is three-dimensional.}
+\label{fig:pmdineighborgeometry}\end{figure}
+
+\section{Relative-basicity controls}
+The balanced reactions $\mathrm{B+DBUH^+\rightarrow BH^++DBU}$ avoid HCl, chloride and a free-proton reference. The exact pyridine, triethylamine and DBU identities match the revised author-maintained MeCN scale, with conjugate-acid pKa values 12.53, 18.83 and 24.31.\cite{basicity2019,pkaTables} Four new components and the two reused DBU components pass the same thermodynamic checks and an independent six-partition reconstruction. At 298.15 K, computed values are 71.82 and 32.68 \kj, compared with pKa-derived values 67.24 and 31.28 \kj; differences are $+4.58$ and $+1.40$ \kj. These values use the exact SI eV-to-molar-energy factor. Historical source records use 96.485 \kj/eV and are retained without replacement. Source temperature/activity qualifications remain open. This two-reaction control does not validate DIPEA, contact pairs or the complete grafting reaction and cannot assign the DBU/HCl discrepancy to a unique species. The separated model uses bare chloride in a continuum. Recent MeCN ion-solvation comparisons identify both species-dependent errors and sensitivity to absolute single-ion conventions, so the capture discrepancy cannot be assigned to chloride alone.\cite{pliego2024} Acid--chloride homoconjugation, such as $\mathrm{HCl+Cl^-\rightleftharpoons HCl_2^-}$, would introduce an additional species and acid-dependent speciation. It is not included in either ionic representation; no population or homoconjugation constant is inferred from the free-ion pKa comparison.
+Spectrophotometric titration against bromocresol green reports $\log K^{\mathrm H}=18.64(1)$ for DIPEA in MeCN at $(25.0\pm0.1)$ $^\circ$C.\cite{barisic2021dipea} A separate NMR competition study estimates pKa 18.7 for diisopropylethylammonium hexafluorophosphate in MeCN-d$_3$.\cite{cook2024dipea} The latter uses a 0.02 M initial salt solution and triethylamine reference; its supporting table labels negative values as a $K_a$ ratio and applies an absolute value in the reported logarithm. We retain the authors' stated estimate rather than independently refitting its sign convention. The two sources are not pooled into an uncertainty interval. Combining the 18.64 value with pKaH(DBU)=24.31 and 298.15 K gives $+32.36$ \kj\ for $\mathrm{DIPEA+DBUH^+\rightarrow DIPEAH^++DBU}$, compared with $+31.80$ \kj\ from the stored components. Indicator calibration and activity conventions are not established to match the separate basicity scale. The $0.56$ \kj\ difference is not an uncertainty estimate or proof of an error in a particular species.
+
+With pKa(HCl)=10.30, the 18.64 value instead implies $-47.60$ \kj\ for the separated capture term, compared with $-70.98$ \kj\ computed. Holding each computed HCl-reference reaction fixed and replacing only the capture term yields $+10.03/+8.43$ \kj\ for methoxy/trimethyl BQ, compared with $-13.34/-14.94$ \kj\ for the all-DFT DIPEA sums. This hybrid changes shared-error cancellation because HCl cancels from the complete all-DFT cycle; it is a sensitivity, not a calibrated reaction prediction or an accepted uncertainty interval. Salt speciation, chloride homoconjugation, attachment selectivity and actual grafting yields remain unvalidated. The earlier 18.6 value is a distinct PCM estimate despite a conflicting generic table label and is not treated as an independent measurement.\cite{heldebrant2011}
+
+\section{Finite-polymer method controls}
+Twenty-six of the original twenty-seven electronic oligomer cases currently pass geometry and active-energy checks. The open PMDI trimer has recovered and passed independent force checks. The stacked-start PMDI trimer returned optimizer convergence and saved active energies, but a later GPU-library call terminated abnormally. Separate final-force checks disagree with finite energy differences and remain unresolved, including a subsequent finer-step diagnostic. This case stays outside completed comparisons; no minimum or free energy is inferred from optimizer convergence alone. Construction and XYZ audits verify the intended open-chain topology. A trimer contains six backbone carbons, five backbone C--C bonds and two chain ends, rather than a triangular or cyclic backbone (Figure~\ref{fig:construction}). Proximity of pendant rings does not change that covalent connectivity.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{figures/construction.pdf}
+\caption{Exact finite-polymer construction used in the interaction controls. The highlighted open backbone distinguishes covalent connectivity from spatial contacts among pendant groups. Monomer, dimer and trimer models are dense local scenarios and do not represent an experimentally measured sequence or graft-loading distribution.}
+\label{fig:construction}
+\end{figure}
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/spacing_construction.pdf}
+\caption{Exact five-repeat phthalimide graphs used in the occupancy cycles. Blue highlights the open ten-carbon backbone. Sites 1 and 5 are plain styrene padding; unoccupied reactive sites retain benzyl chloride. Numbers label repeat positions, and stereobonds retain the declared configuration. These are connectivity drawings, not sampled spatial conformations. Single-occupancy reference graphs are included in the evidence.}
+\label{fig:spacingconstruction}\end{figure}
+For the six-graph spacing control, all twelve electronic conformers qualify. The selected electronic nonadditivities are $-10.98$ and $-14.50$ \kj\ for adjacent and one-spacer grafts, respectively. These refer to a matched empty-backbone minimum within the declared, limited sampling set. It demonstrates why a matched empty-backbone reference is necessary; it does not establish a universal distance trend.
+
+All twelve pose-specific native free energies now qualify and have been independently reconstructed from their electronic, Hessian and projected partition records. For a finite set of distinct conformers, we compute
+\begin{equation}
+G_{\mathrm{finite}}=-RT\ln\sum_{c\in\mathcal C}\exp[-G_c/(RT)].
+\end{equation}
+Each distinct optimized minimum has unit occurrence weight; conformer-search hit counts are not degeneracies. Complete-link grouping checks mapped heavy-atom RMSD and electronic-energy agreement. RMSD cutoffs of 0.05, 0.10 and 0.20 \AA\ leave these six pairs distinct, with pairwise RMSDs of 3.50--6.53 \AA. The finite partition uses the same temperature, solvent and free-energy protocol for every graph. A partition over a sampled subset does not establish the complete equilibrium ensemble.
+
+The spatial comparison in this SI uses both accepted conformers of each doubly occupied graph. Conjugated core-ring atoms are identified from the graft fragment and independently mapped to the saved XYZ connectivity. Core centroids are the arithmetic means of those coordinates; core planes are fitted by singular-value decomposition and their acute interplane angle is reported. Orthographic views apply proper rotations with determinant $+1$ and a common spatial scale. Within a graph, the displayed conformer difference is $G_i-\min_j G_j$ over its two known conformers, using the primary 50 cm$^{-1}$ cutoff. This quantity includes the entire chain and solvent response. It is separate from the four-state occupancy cycle. Coordinate data, view matrices and source identities accompany the figure; cached-coordinate rendering reproduces its pixels with original calculation paths blocked, without repeating physical qualification.
+
+The primary adjacent and one-spacer finite-set $\Delta\Delta G$ values are $-5.17$ and $-11.39$ \kj, respectively (Figure~\ref{fig:conditional}). Values at rotor cutoffs of 25/50/100 cm$^{-1}$ are $-5.13/-5.17/-4.64$ and $-12.34/-11.39/-11.69$ \kj. These are partition-model sensitivities, not confidence intervals or bounds on undiscovered-conformer error. Relative to the lowest-$G$ member of each two-pose set, the largest configurational lowering is 0.140 \kj. The previously reported values, $-5.15/-11.23$ \kj, used only the minimum-electronic-energy geometry from each graph. Both sets remain tied to the same limited baseline sampling and single backbone configuration.
+
+
+The largest Cartesian gradient component ranges from $6.15\times10^{-6}$ to $7.62\times10^{-5}$ hartree bohr$^{-1}$ across these twelve conformers, below the $4.5\times10^{-4}$ acceptance threshold. Table~\ref{tab:spacing-native-qc} reports the stored physical checks for every pose. These checks establish stationary structures; they do not establish conformer-search completeness. The $-2.72$ cm$^{-1}$ mode falls within the declared tolerance and enters qRRHO as its absolute value.
+\begin{table}[htbp]\centering\small
+\caption{Stored native physical checks for the twelve spacing-control conformers. Gradients are maximum Cartesian components in hartree bohr$^{-1}$; frequencies are the lowest projected internal modes in cm$^{-1}$; asymmetry is the maximum absolute Hessian asymmetry in atomic units. The final column is the largest relative-norm error among the sampled finite-difference Hessian columns, expressed as a percentage.}
+\label{tab:spacing-native-qc}
+\begin{tabular}{llrrrr}\toprule
+Occupied sites & Pose & Maximum gradient & Lowest frequency & Asymmetry & Column error (\%)\\\midrule
+empty & 0 & $6.15\times10^{-6}$ & 10.60 & $3.68\times10^{-8}$ & 0.342\\
+empty & 1 & $1.01\times10^{-5}$ & 10.76 & $2.04\times10^{-7}$ & 0.005\\
+2 & 0 & $3.53\times10^{-5}$ & 8.72 & $1.77\times10^{-10}$ & 0.009\\
+2 & 1 & $4.22\times10^{-5}$ & 7.62 & $1.67\times10^{-11}$ & 0.005\\
+3 & 0 & $5.50\times10^{-5}$ & 3.45 & $7.21\times10^{-11}$ & 0.008\\
+3 & 1 & $8.39\times10^{-6}$ & 7.61 & $3.97\times10^{-10}$ & 0.006\\
+4 & 0 & $2.47\times10^{-5}$ & 6.60 & $6.73\times10^{-11}$ & 0.007\\
+4 & 1 & $8.81\times10^{-6}$ & -2.72 & $3.98\times10^{-10}$ & 0.004\\
+2,3 & 0 & $4.63\times10^{-5}$ & 10.04 & $1.35\times10^{-10}$ & 0.008\\
+2,3 & 1 & $2.80\times10^{-5}$ & 6.36 & $6.73\times10^{-9}$ & 0.004\\
+2,4 & 0 & $2.75\times10^{-5}$ & 7.50 & $9.21\times10^{-12}$ & 0.004\\
+2,4 & 1 & $7.62\times10^{-5}$ & 7.23 & $2.05\times10^{-8}$ & 0.007\\
+\bottomrule\end{tabular}\end{table}
+
+For DBU and separated ions, the finite-partition free energy of grafting onto an empty backbone is $-110.86$ \kj\ at site 3 and $-103.37$ \kj\ at site 4. With site 2 already grafted, the values become $-116.02$ and $-114.76$ \kj. The contact-pair alternatives are $-115.65$ to $-120.82$ \kj\ for site 3 and $-108.17$ to $-119.56$ \kj\ for site 4. Both attachment orders close the same nonadditivity cycle. The base/byproduct contribution cancels from this conditional difference, as does the common empty-chain term when comparing the two spacing cycles. Conformer response in the occupied graphs remains relevant. More favorable subsequent attachment is not automatically desirable when weak unwanted neighboring-site interaction is the objective.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{figures/finite_ensemble.pdf}
+\caption{Finite-set phthalimide occupancy control in MeCN at 298.15 K. Panel (a) distinguishes lowest sampled electronic-energy cycles from two-pose free-energy partitions; whiskers vary only the rotor cutoff. Panel (b) shows the configurational lowering within each known two-pose set. Twelve native records pass their checks, but these two-pose sets do not establish converged conformer ensembles or a general spacing trend.}
+\label{fig:conditional}
+\end{figure}
+To examine local contacts, each phthalimide group and its benzyl carbon was retained at the parent geometry and capped with hydrogen where it had been connected to the polymer aryl group. For each of four parent poses and three cap lengths (1.07, 1.09 and 1.11 \AA), independent acetonitrile-model electronic energies for the pair and both capped fragments give $E_{AB}-E_A-E_B$. The twelve triplets use the same frozen coordinates and electronic settings within each comparison. At 1.09 \AA, the adjacent close/separated poses give $-24.76$ and $+0.048$ \kj, and the one-spacer close/separated poses give $-26.22$ and $+0.061$ \kj, respectively. The ranges over cap lengths are $-24.81$ to $-24.71$, $+0.047$ to $+0.049$, $-26.24$ to $-26.20$ and $+0.060$ to $+0.062$ \kj, respectively. These uncorrected electronic values include the caps and continuum response; they are not ensemble free energies, electron-transfer couplings or decompositions of the whole-chain occupancy cycle. Basis-superposition error and broader conformer sampling remain unresolved.
+
+The finite conformer sets do not establish convergence with respect to broader sampling or backbone configuration. Consequently, these conditional-cycle values cannot establish a general spacing design rule or the behavior of an exact redox motif. The final stacked-trimer structure is excluded because it failed the final force check.
+
+\subsection{Charged viologen motifs and whole-chain electronic definitions}
+Four independently checked stationary ionic parent frames provide the adjacent and one-spacer geometries in each backbone configuration. Full graph-to-coordinate permutations preserve every parent atom. The complete viologen group and benzyl carbon are retained, and the benzyl--aryl bond is replaced by a C--H cap along its original direction. Each frozen fragment is a 28-atom dimethyl-viologen dication; the pair contains 56 atoms with total charge $+4$. All are singlets. A CH$_2$-constrained wildcard selects the intended benzyl carbon rather than the other N-methyl carbon of the symmetric core. Independent construction review checks all retained bonds, hydrogen positions, cap directions and unchanged relative poses at 1.07, 1.09 and 1.11 \AA.
+
+The twelve triplets supply 72 independent SCFs: A, B and AB in vacuum and in the same corrected r$^2$SCAN-D4/def2-SVP smooth-surface MeCN model used for the ionic parents. Actual checkpoint molecular frames, integer occupied electron counts, global spin and raw SCF energies are reconstructed before the interaction sums. Table~\ref{tab:ionic-motif-controls} gives the central-cap results and MeCN cap-length spans. The gas/MeCN difference includes the declared continuum response. These are uncorrected electronic interactions of methyl-capped fragments at fixed coordinates, without isolated-fragment optimization, thermal association terms, counterpoise correction, transport or electronic-coupling analysis.
+
+\begin{table}[htbp]\centering\small
+\caption{Electronic definitions at matched ionic parent frames. All values are kJ/mol. The first column of energies is the whole-chain occupancy cycle with each parent graph at its retained geometry; the next two are the frozen methyl-capped A/B/AB interactions at 1.09 \AA. The cap span is the deterministic 1.07--1.11-\AA\ MeCN variation, not a confidence interval.}
+\label{tab:ionic-motif-controls}
+\resizebox{\linewidth}{!}{\input{inputs/motif_interaction_table.tex}}
+\end{table}
+
+The local MeCN interactions are positive in all four frames, whereas two whole-chain electronic cycles are negative. Their difference includes altered linker/backbone/cap, deformation and solvent contributions and is not assigned uniquely. This construction does not establish a pure aromatic-core interaction, an ensemble, an experimental ionic distribution or the interaction of partially reduced grafts. All numerical inputs and raw electronic scalar sums are retained in the source-frozen machine-readable records; independent decimal replay checks their signs without repeating physical QC.
+
+\subsection{Broader sampling and retained-state reconstruction}
+Broader phthalimide sampling uses a separate smooth-surface acetonitrile model, defined and tested below. Twenty inputs were declared for each of twelve occupancy/backbone-configuration groups. Both empty-backbone configurations have checked native thermochemistry for all twenty inputs. The forty empty inputs comprise 38 diverse warm starts from saved CREST/GFN2-xTB searches and two retained DFT reference structures.\cite{pracht2020crest} The site-2 sets contain 18 and 16 checked states for the all-same and alternating configurations, respectively. The labels specify two backbone structures and imply no experimental atactic-polymer distribution.
+
+Full connectivity, hydrogen attachment and configured stereochemistry are checked before symmetry-aware heavy-atom alignment. Chirality-preserving graph mappings and proper rotations identify duplicates without admitting reflected structures. At RMSD thresholds of 0.05, 0.10 and 0.20 \AA\ combined with a 0.20 \kj\ electronic-energy tolerance, the all-same and alternating empty sets contain \EmptyAllSameUnique{} and \EmptyAlternatingUnique{} distinct structures, respectively. Alternating inputs 16 and 17 belong to one duplicate group. The complete-link groups defined on the twenty-input set are restricted to the first ten inputs for a consistent nested comparison; each well contributes once and search-hit frequency is not a statistical weight.
+
+At a 50 cm$^{-1}$ rotor cutoff and a 0.10 \AA\ duplicate threshold, expanding ten inputs to twenty changes finite-set ensemble G by $\EmptyAllSameChange$ and $\EmptyAlternatingChange$ \kj\ for the all-same and alternating backbones, respectively (Figure~\ref{fig:empty-batch-stability}). Minimum-E, minimum-G and ensemble-G changes remain within the declared 2 \kj\ criterion across all nine rotor/duplicate settings. This establishes batch stability for both empty components within the selected inputs. It does not prove global conformational completeness, remove the saved-search limits or control possible overlap between soft-mode qRRHO entropy and explicit conformer partitioning. The configurations are partitioned separately.
+
+These earlier empty-backbone cohorts retain their original source and implementation identities. Their stability does not establish convergence for an occupied graph. Each occupancy graph and backbone configuration requires its own assessed sampling before a balanced ensemble cycle can be interpreted. These alternate-model controls cannot replace components of the primary-model PMDI or phthalimide cycles.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/empty_batch_stability.pdf}
+\caption{Empty-backbone sampling stability in the separate smooth-surface MeCN model at 298.15 K. Points show changes from the first ten to all twenty inputs at a 50 cm$^{-1}$ rotor cutoff and a 0.10 \AA\ duplicate threshold. Vertical ranges span the explicit rotor/duplicate settings and are not confidence intervals. The dashed line marks the magnitude of the 2 \kj\ batch criterion. Each configuration is treated separately; passing empty-component checks does not establish occupied-cycle convergence.}
+\label{fig:empty-batch-stability}
+\end{figure}
+
+The first complete occupied cohort with corrected integration contains twenty independently checked all-same, adjacent-site (2,3) phthalimide inputs. These neutral-singlet, 119-atom models retain the same exact graft graph and open backbone. Every component uses its own checked $\omega$B97M-V/def2-TZVPD electronic energy in the declared smooth-surface MeCN model and its own r$^2$SCAN-D4/def2-SVP Hessian and projected qRRHO nuclear terms. Temperature, translation convention, multiplicity and thermal definition agree before a partition is formed. This cohort is separate from the earlier empty-backbone data and from the primary molecular model.
+
+All twenty occupied inputs remain distinct numerical minima at the declared 0.05/0.10/0.20-\AA\ heavy-atom RMSD thresholds with a 0.2-\kj\ electronic-energy tolerance. Chirality-preserving symmetry maps and proper rotations are used; search-hit counts provide no degeneracy. The declared first ten inputs are a strict subset of the twenty-input set. Table~\ref{tab:occupied-sampling} reports changes from ten to twenty for each rotor cutoff. Both the minimum electronic energy and conditional ensemble free energy exceed the predeclared 2-\kj\ change tolerance in magnitude; no tested duplicate or rotor scenario passes. The result establishes failure of this finite-batch diagnostic, without measuring the remaining sampling error or claiming a globally complete ensemble.
+
+\begin{table}[htbp]\centering\small
+\caption{Corrected occupied phthalimide-control sampling diagnostic. Changes are twenty-input minus ten-input quantities in kJ/mol for the all-same, adjacent-site cell. The 0.10-\AA\ duplicate scenario is shown; 0.05 and 0.20 \AA\ give identical results. The predeclared tolerance is 2 kJ/mol for each metric. These deterministic sensitivities are not statistical intervals.}
+\label{tab:occupied-sampling}
+\input{inputs/occupied_sampling_table.tex}
+\end{table}
+
+The frozen corrected snapshot retains all 240 declared slots, with 100 checked electronic and 31 checked native inputs. Eleven of the twelve graph/configuration cells remain incomplete. Their partitions and balanced occupied-ensemble cycles are left unresolved. Additional sampling must preserve the original inputs and physical protocol; the failed tolerance is not relaxed after observing the result. These counts are the frozen analysis scope rather than a claim about later queue completion.
+
+The intact-segment decomposition is complete for three sampled pairs using six frozen-fragment single-point calculations (Figure~\ref{fig:decomposition}). Its partition separates interactions at the complex geometry from deformation relative to relaxed fragments. The interaction energies are $-55.25$, $-44.30$ and $-50.87$ \kj, with deformation terms $+0.56$, $+0.49$ and $+0.38$ \kj, respectively. A saved-coordinate audit shows 57--93 optimization steps and heavy-atom input-to-final RMSDs of 0.25--0.70 \AA\ for the complexes, so small deformation sums do not imply negligible structural relaxation. Two totals also contain cancellation: the parallel phthalimide fragments contribute $-0.68$ and $+1.24$ \kj, and the PMDI fragments contribute $+1.00$ and $-0.62$ \kj. These signed differences refer to one sampled independently optimized monomer at a distinct geometry level; they are not positive-definite strain penalties. Global isolated-monomer minima and Hessian minima are unestablished. The resulting quantities remain electronic, uncorrected for basis-set superposition error and inclusive of backbone and cap contributions. No electron-transfer rate follows from their magnitude.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{figures/decomposition.pdf}
+\caption{Electronic interaction/deformation partition for three intact segment pairs. Frozen fragments retain the complex geometry without bond cutting or new caps. The partition closes the association-energy cycle but is not a pure pendant-core interaction, a counterpoise-corrected energy or an association free energy.}
+\label{fig:decomposition}
+\end{figure}
+
+\section{Numerical implementation checks}
+Diagnostics exposed distinct numerical issues. At a checkpoint of the open PMDI trimer, a legacy solvent cavitation--dispersion--solvent-structure (CDS) force component disagrees with total-energy finite differences by approximately $1.81\times10^{-4}$ hartree bohr$^{-1}$ at the tested coordinate on both integration grids. This discrepancy is not resolved by electronic-grid refinement. Conservative CDS energy derivatives reproduce the tested total-energy differences; their step consistency is checked before use in a continuation. Adaptive refinement of unresolved CDS derivative components recovers the open-trimer optimization. At the returned geometry, independent total-energy derivatives at two step sizes and two tested coordinates agree within $4.2$--$5.0\times10^{-7}$ hartree bohr$^{-1}$, below the unchanged $10^{-6}$ check threshold. This establishes an admitted stationary electronic geometry; no native-Hessian minimum or association free energy is inferred for that original oligomer case.
+
+For the largest spacing Hessian, the original CDS finite-difference step produces a total asymmetry of $2.06\times10^{-6}$, exceeding the fixed $10^{-6}$ admission threshold. A separately qualified finer step reduces this to $2.05\times10^{-8}$. Additive reconstruction replays complete singlet and radical recomputations with maximum matrix differences of $1.33\times10^{-11}$ and $2.83\times10^{-9}$ atomic units, and thermal differences below $1.2\times10^{-8}$ eV. The recovered target then passes the ordinary native gates, with a lowest internal frequency of $+7.23$ cm$^{-1}$. These are execution-equivalence results, not a relaxation of physical QC or a high-level validation of grafting energetics.
+
+\subsection{Solvent-surface differentiability controls}
+Harmonic thermochemistry requires a locally differentiable energy surface. Surface discretization can introduce artifacts into continuum-solvent geometries and vibrational derivatives; switching/Gaussian constructions address this numerical requirement.\cite{langeherbert2010} At a tested 4.2~\AA\ carbon contact in an excluded backbone structure, the centered curvature of the legacy CDS component increases approximately as the inverse displacement. A separate smooth-surface control instead gives a stable curvature over the tested displacements (Figure~\ref{fig:cdssmooth}). This is a component diagnostic, not a full DFT Hessian or a polymer free energy.
+
+The control replaces only the nonelectronic area term with the installed experimental PySCF solvent-accessible-surface formulation at 2,030 points per sphere, retaining the SMD electrostatic surface at 590 points per sphere. The implementation is treated as a distinct model rather than relabeled as the primary calculation. Fixed-geometry component energies, quadrature and rigid-rotation sensitivity are checked separately from derivatives. All Cartesian CDS gradient components of the stored imide precursor, DBU, protonated DBU and chloride-pair structures pass central energy differences at $10^{-4}$, $5\times10^{-4}$ and $10^{-3}$ bohr with maximum errors below $8\times10^{-9}$ hartree bohr$^{-1}$.
+
+Full quantum controls cover formaldehyde, methyl radical, ammonia and chloromethyl radical. Both surface models are reoptimized independently; full SMD energy differences test all twelve Cartesian gradient components, while two Hessian columns are tested at 0.0005 and 0.001 bohr. The smooth controls pass the unchanged $10^{-6}$ hartree bohr$^{-1}$ force and 1\% Hessian criteria (Table~\ref{tab:cdscontrols}). Projected modes and nuclear sums are independently reconstructed. A common imposed symmetry number of one is used solely for these nuclear-kernel comparisons; primary state calculations retain their stated symmetry procedure. These controls establish numerical self-consistency within their neutral molecular scope, not predictive solvation accuracy, polymer ensemble convergence or synthetic eligibility. Primary benchmark and grafting values remain at their original model definition; any alternative-model reaction or occupancy cycle requires all of its components to be calculated consistently.
+\begin{table}[htbp]\centering
+\caption{Smooth-surface quantum controls. Force errors are maxima over twelve Cartesian components at both steps; Hessian errors are maxima over the two tested columns, reported as percentages. Frequencies are the lowest projected internal modes in cm$^{-1}$.}
+\label{tab:cdscontrols}
+\begin{tabular}{lrrr}\toprule
+Control & $\max|\delta g|$ / hartree bohr$^{-1}$ & $\max\delta H$ / \% & $\nu_{\min}$\\\midrule
+Formaldehyde & $5.14\times10^{-7}$ & 0.0013 & 1182.1\\
+Methyl radical & $2.19\times10^{-7}$ & 0.0149 & 525.4\\
+Ammonia & $1.98\times10^{-7}$ & 0.0003 & 1127.5\\
+Chloromethyl radical & $1.32\times10^{-7}$ & 0.2793 & 190.3\\
+\bottomrule\end{tabular}\end{table}
+\begin{figure}[htbp]\centering
+\includegraphics[width=.58\linewidth]{figures/CDS_surface_smoothness.pdf}
+\caption{Radial finite-difference curvature of the CDS component at the tested carbon contact. The legacy estimate does not converge as the displacement shrinks, whereas the separate smooth control approaches a plateau. No full electronic Hessian or thermochemical result is inferred from this component scan.}
+\label{fig:cdssmooth}\end{figure}
+
+\section{Execution and restart controls}
+A synthetic control packs one million distinct tasks into one thousand chunks in 75.9 s with a measured preparation peak RSS of 67.2 MiB. Eight workers on two hosts execute the synthetic tasks over a 9.58 s span, excluding packing and startup. Independent arithmetic checks find zero discrepancies. This timing characterizes scheduling and storage, not chemical enumeration, conformer search or DFT throughput.
+
+Separately, all 837 molecular descriptor outputs agree with serial definitions. In the shared-filesystem recovery experiment, 32 real design recipes deduplicate to 17 exact molecular tasks. A worker on one host exits abruptly after four checkpointed tasks; owner verification on that host precedes recovery. A second host completes the remaining thirteen tasks without repeating the four checked tasks. All resumed outputs match uninterrupted execution and a separate serial replay. This experiment tests descriptor-stage recovery. A distinct quantum interruption experiment is described below; neither establishes million-molecule quantum throughput.
+A seeded randomized concurrency experiment executes the same 837 exact designs fifteen times, with three repeats per condition and eight tasks per chunk. All 12,555 molecular comparisons match the independent serial definition. Median launch-to-observed completion times are 4.436, 3.147, 2.680 and 2.497 s for one, two, four and eight CPU workers on one host; eight workers across two hosts require 2.585 s (Figure~\ref{fig:concurrency}). These times include node preflight, SSH, scorer initialization, execution and at most 0.1 s of observation polling; preparation is separate. All requested workers finish, but only seven of eight execute chunks in one single-host repeat. The diminishing returns of this small library do not determine an optimal concurrency for larger or more expensive stages.
+
+A separate sparse Git checkout and newly installed Python 3.11 CPU environment reproduce the declared 32-recipe / 17-design example with system and user site packages disabled. The project loads from that checkout and scientific dependencies load from the new environment. Serial descriptor replay, exact-route holds and the regenerated conditional-grafting table all match; rendered RGB pixels of the figure are identical. This qualifies a small CPU reproduction using curated scientific data. It does not recompute the underlying quantum energies or qualify the complete CUDA environment.
+
+\begin{figure}[htbp]
+\centering\includegraphics[width=\linewidth]{figures/cpu_concurrency.pdf}
+\caption{Measured CPU descriptor concurrency for the same 837 exact designs. Three randomized repeats per condition retain every result. Ranges are observed minima and maxima, not confidence intervals. Launch, preflight and scorer overhead are included; preparation is separate. Requested workers and workers executing at least one chunk are distinct. This shared-node, small-library experiment does not measure million-molecule chemistry or quantum throughput.}
+\label{fig:concurrency}
+\end{figure}
+These throughput measurements apply to the measured descriptor and scheduling stages. They neither quantify full quantum-campaign throughput nor establish recovery for arbitrary flexible-polymer calculations.
+
+
+\subsection{Actual quantum interruption and recovery}
+Two rigid controls, formaldehyde (singlet) and methyl radical (doublet), compare uninterrupted calculations with a fresh process resumed after an intentional exit following three durable gradient evaluations. The exit code is 87; process and start identity confirm termination before resubmission. The saved geometry is unqualified until optimization, active electronic energy, DFT Hessian, projected partition, topology and spin checks pass normally. Acceptance tolerances were $10^{-5}$ eV for electronic energy, $10^{-4}$ eV for free energy, $10^{-3}$ \AA\ aligned RMSD and 0.5 cm$^{-1}$ for internal frequencies. Singlet differences are $4.03\times10^{-6}$ eV, $1.26\times10^{-5}$ eV, $6.87\times10^{-6}$ \AA\ and 0.0685 cm$^{-1}$; doublet differences are $4.00\times10^{-6}$ eV, $1.11\times10^{-6}$ eV, $3.45\times10^{-5}$ \AA\ and 0.0264 cm$^{-1}$. Four final partitions were independently reconstructed. This verifies restart equivalence for these two controls, not flexible-polymer sampling or chemical accuracy.
+\section{Reproducibility package}
+A locally prepared reviewer package contains 243 thermochemical state records and 32 electronic-only records, together with versioned code, exact conda artifacts, pip distribution versions and an immutable evidence snapshot. Its 2,498 archived files are hash-verified. After relocation, a standard-library interpreter running in isolation reconstructs all 39 benchmark endpoints, 67 HCl-reference grafting values, 20 base-assisted values, two relative-basicity controls and six finite graph partitions. The auxiliary replay covers five alternative-basis controls, two interruption/recovery comparisons and three electronic fragment-decomposition cycles. A separate CPU reconstruction recovers internal modes and nuclear partitions for 242 non-monatomic states from their stored DFT Hessians; it does not load the xTB library or repeat the original physical minimum checks. Seven changed-data, identity, balance, path and unsupported-promotion tests are rejected.
+
+The package represents the preceding numerical evidence epoch, \path{2026-10-23_all_axes_checked}; subsequent records are frozen separately in the present manuscript snapshot. A fourteen-state PMDI addendum includes the two singly occupied chains, their matched empty chain, the doubly grafted chain and molecular/reagent references. After archive extraction and relocation, isolated standard Python reconstructs fourteen balanced reaction comparisons and the complete neighboring-graft cycle at 25, 50 and 100 cm$^{-1}$; both attachment orders close. A fresh environment containing only hash-locked NumPy 2.2.6 independently reconstructs thirteen DFT-Hessian mode sets and their nuclear sums at all three cutoffs, plus monatomic chloride translation. Original project reads are blocked in both modes, and no quantum program or xTB library is loaded. Fourteen integration checks include rejection of changed or borrowed Hessians, altered masses, symmetry numbers and frequencies, as well as identity, arithmetic, scope and path failures. These cached-data checks do not repeat the original SCF, stationarity, spin or displaced-gradient validation.
+
+An unpublished repository draft stages the earlier package; downloaded assets match the recorded checksums. The PMDI and control addenda remain local reviewer artifacts. Package replay establishes numerical traceability within the declared scopes, rather than experimental accuracy or broader conformer convergence. No public DOI or deposition is claimed. General GPU-platform portability, remaining execution-diagnostic records and final deposition metadata remain open; the separately tested deployment profile is described below.
+
+A separate TEMPO addendum contains the two local-graft states and the two Fc reference states. After relocation, standard-library arithmetic reproduces the three rotor-cutoff potentials, and locked NumPy reconstructs the four Hessian mode sets and nuclear terms with original-project Python opens blocked. These records overlap the earlier packages and are not counted as additional unique Fc states. The replay does not repeat SCF, stationarity or spin checks.
+
+\Needspace{19\baselineskip}
+A complementary numerical-control addendum contains eight small-molecule geometry/Hessian records for four species under two surface models, together with six fixed-geometry Fc electronic records. Its 392 stored SCF evaluations comprise eight baselines and 384 displacements. A hash-locked, freshly installed NumPy CPU environment reconstructs the stored force differences, sampled Hessian columns, internal modes and nuclear sums after archive extraction and relocation, with original project reads blocked. A standard-library mode reconstructs the Fc and component arithmetic. These cached-data checks neither rerun the physical calculations nor qualify a new polymer ensemble; identities overlap with the other packages and record counts must not be summed as unique molecules.
+
+\subsection{Source-bound reconstruction of retained polymer states}
+The sixty retained smooth-surface polymer records were read after an explicit checkout-prefix relocation, without rewriting their original paths or hashes. A relative source path was accepted only with a declared original working directory. Missing archived files could not fall back to files in the current checkout. The replay verified 12,386 source/input bindings and forced a fresh content-hash pass over all bindings before publishing a completed report.
+
+For each state, the replay checked the exact graph, neutral-singlet identity, solvent-model definition and equality of the thermochemical and scored electronic geometries. It reconstructed the stored sampled Hessian columns from the displaced gradients at 0.0005 and 0.001 bohr, including the protocol coordinates and the two largest-force coordinates. The rigid-space projection, internal frequencies, symmetry number, three rotor-cutoff nuclear partitions and final electronic/nuclear/spin sums were then reconstructed. Retained stationarity, exclusive-residency and resource records were checked separately. Fifteen further completed states passed the same physical reconstruction after explicit output-path relocation. The forty empty-backbone inputs analyzed above are fully included; reconstructed occupied states remain individual controls until their sets are complete. The following numerical maxima refer to the original sixty-state replay. The largest sampled-column relative error was $3.92\times10^{-5}$; the maximum differences from stored internal frequencies and nuclear free energies were $6.97\times10^{-11}$ cm$^{-1}$ and $1.50\times10^{-13}$ eV. Seventeen software tests covered the archive binding and derivative reconstruction, including rejection of changed bytes, incorrect displacements, nonfinite force/spin values and contradictory backbone labels. These checks establish reproduction of the saved physical evidence; they do not repeat SCF, optimization or Hessian execution, qualify the current GPU runtime, or supply missing conformers.
+
+A portable numerical-input archive contains the geometries, Cartesian Hessians, gradients, displaced-gradient records, electronic parents and three-cutoff partitions for all 75 reconstructed expanded-polymer states. After extraction, a newly installed, hash-locked NumPy 2.2.6 environment reproduces the stored sampled derivative checks, internal-mode projections and nuclear free-energy terms with access to the original checkout, archive, calculation directories and prepared cache blocked. The unchanged original reviews retain the hashes of historical executable binaries and large response scratch tensors that are excluded from this numerical-input archive. The replay reconstructs saved numerical evidence; it does not repeat SCF, live execution checks or the complete historical source closure. Rehashed but inconsistent Hessians, gradients, masses, solvent identities and nonfinite quantities are rejected.
+
+\subsection{Fresh quantum-environment reproduction}
+A separate CUDA 12.8 compatibility profile retains the recorded molecular-method packages and xTB build while changing fourteen CUDA runtime distributions to satisfy the exact requirements of Torch 2.8.0+cu128. The historical runtime inventory remains separate. All 235 external distributions were installed into a fresh prefix, the project was installed from an archived source checkout, and the dependency check passed. Retrieved package artifacts carry SHA-256 identities; the conda artifact lock and all certificate backing files are retained. The fresh xTB library is byte-identical to the qualified thermodynamic build.
+
+Formaldehyde (singlet) and methyl radical (doublet) were independently optimized and evaluated with the active electronic-energy, native Hessian and projected-partition procedures in the fresh environment. Both passed the normal physical checks and the predeclared original-versus-fresh comparison bounds: $10^{-5}$ eV for electronic energy, $10^{-4}$ eV for free energy, $10^{-3}$ \AA\ for aligned RMSD and 0.5 cm$^{-1}$ for internal frequencies. A separate replay reconstructed both saved Hessian mode sets and all three rotor-cutoff partitions. Package imports, shared-library locations and the thermodynamic helper interpreter were checked against the fresh prefix; the original environment was not modified. These controls establish reproduction on the tested Linux/CUDA host. They do not establish unrestricted device coverage, eliminate external cluster-reservation configuration or extend polymer conformer validation. The deployment evidence is separate from the earlier cached reviewer-package epoch.
+
+\subsection{Relocation of saved native-Hessian partitions}
+The thermodynamic component is distributed as an explicit eighteen-package Linux runtime lock for xTB 6.7.1 (\texttt{gfortran\_ha02e54d\_5}). The kernel, native and projected-partition entry points accept a common configurable prefix while retaining the library-hash check. With the original library and executable paths masked, a fresh runtime installation reproduced the upstream kernel fixture within $10^{-12}$ hartree and retained the 0.391 cm$^{-1}$ internal mode. This component test used the existing Python environment.
+
+Saved formaldehyde and methyl-radical records were copied with their native Hessians and certificate backing files into a separate checkout. An explicit original-prefix declaration maps the stored certificate paths onto local files only when their hashes and all other certificate metadata agree. The original physical checks remain in force, and the native records are unchanged. With the separately staged, hash-qualified xTB prefix, both projected partitions were recomputed through the CPU entry point. Internal frequencies, symmetry numbers, spin terms and nuclear free energies at all three rotor cutoffs matched their original values exactly. Python reads of the original checkout were blocked; a file-system trace across the process tree recorded no access to files inside it. Ten altered-input controls were rejected, including changed stationarity, gradient, spin, derivative and certificate evidence. These checks establish the tested relocation of saved-Hessian postprocessing; they do not repeat electronic-structure calculations or requalify native GPU Hessian execution.
+
+\subsection{Exact-molecule CPU example}
+The versioned example in \path{examples/exact_viologen_replay/} contains ten cached states for the exact viologen case: three declared graft redox states, three fixed precursor starts, two matched Fc states, the local benzyl-chloride site and chloride. Its NumPy-only replay reconstructs nine Hessian mode sets and nuclear partitions, plus saved finite-difference columns for six recent states. The inherited Fc/local-site finite-difference summaries remain metadata-only; complete historical executable/scratch closure is not claimed. The monatomic chloride partition reconstructs analytically. The cached chemical reactions are atom-, charge- and solute-count balanced, including the explicit Fc electron-transfer reference.
+
+An extracted archive passes in a fresh CPython 3.11/Linux x86\_64 environment with the hash-locked NumPy 2.2.6 wheel. The project, PySCF, ASE and Torch are unavailable in that environment, and an audit hook denies original project/archive/calculation path prefixes. No xTB library or SCF calculation is invoked. The replay reproduces the two reduction potentials and each precursor-specific local quaternization at all three rotor settings. This verifies a small cached numerical example, independently of the complete historical runtime and public-deposition tasks. The generated data directory includes its manifest and as-used runner/exporter; changing a backing record or the exact reaction/state conventions fails the replay.
+
+A corrected-primary companion at \path{examples/exact_viologen_corrected_replay/} supplies all nine newly repeated molecular Hessians and their saved-gradient panels, with the same exact ten-state identities and corrected energy records. A fresh extracted archive passes in CPython 3.11 with only the hash-locked NumPy dependency and six original project/calculation/prepared-package prefixes blocked. It reconstructs all nine mode/derivative panels, monatomic translation and six cycles; maximum frequency and nuclear reconstruction errors are $6.49\times10^{-11}$ cm$^{-1}$ and $3.60\times10^{-14}$ eV. This cache does not repeat SCF execution, occupied-orbital spin reconstruction or the original resource checks. Their separate raw records and receipts remain source-bound; complete public deposition remains outstanding.
+
+\subsection{Molecular warm-start execution profiles}
+Gas-phase molecular warm starts retain their recorded engine identities, with the standard engine selected on V100. The tested UMA Nitro profile is not accepted as a production calculator. In a fixed-geometry repeatability control on the 42-atom neutral PMDI-ethyl design using identical checkpoint weights, the initial-to-final force difference was $7.57\times10^{-4}$ eV \AA$^{-1}$ for Nitro, above the predeclared $10^{-4}$ eV \AA$^{-1}$ bound; the standard profile gave $1.65\times10^{-6}$ eV \AA$^{-1}$. This single-case failure does not identify its implementation cause or establish full-panel parity.\cite{fairchemInference2026} Composition, charge and spin define each calculator state; a state change creates a new fixed-state predictor and invalidates cached ASE results. Checkpoint weights, atomic references, loader identity and actual execution mode identify the model profile. Current-model warm starts occupy a separate cache, while archived calculations retain their original model and input identities. Solution energies and nuclear partitions follow the DFT/SMD procedures described above. Numerical comparisons of starting-geometry engines do not establish solution thermochemistry or full polymer conformer convergence.
+
+\section{Grid-screening implementation control}
+A fixed-density integration control reproduces the GPU4PySCF grid-screening race described in \href{https://github.com/pyscf/gpu4pyscf/issues/919}{upstream issue 919}. The 39-atom water-cluster test uses def2-TZVPD, revPBE, an all-ones density matrix and matched sorted/unsorted grids. On both V100 and H100, the stored implementation exceeds the upstream absolute $2\times10^{-9}$ tolerance for the integrated density and exchange--correlation energy. A run-local implementation of the shared-memory barrier in \href{https://github.com/pyscf/gpu4pyscf/pull/925}{upstream correction 925} passes that unchanged tolerance on both devices. Installed libraries and source-frozen chemical records are preserved.
+
+All 71 electronic states defining the 39 benchmark endpoints were independently recomputed at their stored geometries with both screening implementations. The unchanged $\omega$B97M-V/def2-TZVPD/SMD MeCN procedure includes the original multiple guesses and Fc occupation seeds. The largest corrected-minus-installed energy difference is $2.27\times10^{-12}$ Ha. After exact one-electron and Fc-reference cancellation, the largest electronic contribution to a potential change is $8.66\times10^{-11}$ V. Relative to the stored energies, the largest corresponding change is $1.67\times10^{-8}$ V. Thus, this implementation correction does not explain the benchmark bias through its electronic-energy contribution in the fixed-geometry panel. Nuclear terms were not recomputed for all benchmark states, and these sensitivity checks do not assemble new qualified potentials from retained thermal terms.
+
+The exact viologen control panel covers ten source-matched states, including the three graft charge states, three precursor conformers, local site, chloride and the matched Fc pair. Both implementations pass independent SCF-checkpoint, state/protocol and resource review. The largest corrected-minus-installed electronic contribution is $1.24\times10^{-11}$ V for the two referenced potentials and $1.35\times10^{-9}$ kJ mol$^{-1}$ for the three precursor-specific grafting sums. A second panel covers twenty-one inputs, including the shared Fc reference controls, for the five local HCl-reference and twenty base-assisted reaction models. Its largest corrected-minus-installed electronic contribution to those reaction sums is $4.18\times10^{-9}$ kJ mol$^{-1}$; the repeat-versus-stored contribution is below $2.35\times10^{-6}$ kJ mol$^{-1}$. Reference states overlap between panels and are not counted as new unique structures. These controls retain the original geometries and recompute electronic energies only. They do not replace the original nuclear terms, establish total reaction-free-energy accuracy, or constitute an experimental grafting benchmark.
+
+The exact molecular example also has a complete primary-model thermochemical repeat under the corrected implementation (Table~\ref{tab:primary-native-control}). Nine molecular Hessians were freshly calculated with the original r$^2$SCAN-D4/def2-SVP/SMD geometry-level protocol, while the monatomic chloride term was independently reconstructed from ideal translation. The corrected $\omega$B97M-V/def2-TZVPD electronic energies above and each state's own projected nuclear and spin terms define a consistent ten-state cohort. All 81 native SCF checkpoints pass molecular-frame and electron-count checks; global $\langle S^2\rangle$ is independently reconstructed from the occupied orbital overlaps. The largest spin contamination is 0.03190, below the unchanged 0.1 limit. The producer's four-decimal spin diagnostics are compared at their stored precision, while the independent admission check uses full precision.
+
+The largest full-Hessian difference from the retained source is $2.23\times10^{-8}$ Ha bohr$^{-2}$, and the largest nuclear-term change is $2.26\times10^{-8}$ eV. Across 25, 50 and 100 cm$^{-1}$ rotor settings, the six complete cycles change by at most $2.45\times10^{-8}$ V for the two referenced reductions and $1.55\times10^{-6}$ kJ mol$^{-1}$ for grafting and disproportionation. These are measured numerical repeat differences, not uncertainty estimates or experimental error bounds. The result qualifies the tested primary molecular cohort; broader benchmark/base-reaction nuclear coverage, counterion speciation and polymer ensembles remain separate requirements.
+
+\begin{table}[htbp]\centering\small
+\caption{Primary-model native repeats for the exact molecular cohort. Frequencies are cm$^{-1}$; FD error is the largest sampled-column relative-norm error in percent. Nuclear changes are maxima over the three rotor cutoffs relative to the retained source. The separate monatomic chloride component has no internal modes or Hessian. All charges and multiplicities are global state assignments.}
+\label{tab:primary-native-control}
+\input{inputs/primary_native_cohort_table.tex}
+\end{table}
+
+Fixed-geometry closed-shell OH$^-$ and open-shell methyl-radical controls use r$^2$SCAN-D4/def2-SVPD/SMD MeCN on V100 and H100. All Cartesian Hessian columns at both 0.0005 and 0.001 bohr pass the original 1\% relative-norm limit for both implementations; the largest relative error is $3.79\times10^{-4}$. These molecular controls do not establish full polymer-Hessian or conformer-ensemble accuracy. Checkpoint reuse must bind derivative components to the same orbital and grid frame and retain the complete solvent response. Wider production qualification remains open. The newly repeated molecular cohort retains the corrected implementation throughout; corrected and uncorrected components are not combined into a newly qualified cycle.
+
+\section{Evidence terminology}
+\begin{table}[H]\centering\small
+\caption{Terms used in evidence files and their interpretation.}
+\begin{tabular}{p{.24\linewidth}p{.67\linewidth}}\toprule
+Term & Meaning\\\midrule
+Exact design & A specified precursor/product graph and mapped attachment bond; generating recipes can deduplicate to the same design.\\
+Checked or qualified & The checks required for the named field passed; this is not experimental validation.\\
+Native free energy & Active electronic energy plus the projected geometry-level DFT nuclear partition and declared spin partition.\\
+Frozen snapshot & An immutable, hash-verified copy of specified evidence; newer live results require a new snapshot.\\
+Proceed / hold / exclude & Route decisions within the stated evidence scope; hold means required exact-route evidence is incomplete.\\
+Endpoint & One sourced redox-potential comparison, with exact molecular identity, state pair and reference convention.\\
+Pose & One conformational starting geometry; the final optimized contact class is checked separately.\\
+\bottomrule\end{tabular}\end{table}
+
+\section{Supporting design and reaction comparisons}
+\subsection{Exact design inventory and scope}
+The systematic construction gives 1,593 recipes and 837 exact graft graphs: 459 viologens, 243 NDI derivatives and 135 PMDI derivatives. Its linkers, caps and ring substitutions define a focused chemical space. The historical evaluated cohort contains 75 candidates and one comparison control; its union with enumeration comprises 879 graphs. Later registered models and proposal panels bring the maintained identity inventory to \UnifiedRegistryCount{}. The latest extension preserves all 904 prior graphs and reported evaluations, adding \NewDirectPTZDesigns{} exact F/CN-substituted phenothiazine designs at fixed N-benzylic attachment. Their precursor/product pairs and new bonds are mapped, while all new electrochemical properties remain pending. These scopes are kept distinct because proposing a structure does not provide its electrochemistry, route evidence or polymer behavior.
+
+The current route gate permits further computation of \ReviewedRouteCount{} exact baseline designs. In addition to the TEMPO and viologen examples below, a primary report describes direct N-attachment of unsubstituted phenothiazine to chloromethylated polystyrene beads using NaH in DMF, followed by chemical oxidation and reduction of the bound group.\cite{wright1989supported} This supports evaluating that attachment class; it supplies neither properties of our exact capped graph nor a battery-material admission. The source also reports no phenothiazine modification with K$_2$CO$_3$, illustrating why base identity is part of the route. The new substituted designs retain separate route holds rather than inheriting the baseline's approval. Independently qualified states give a first oxidation potential of $+\PTZPrimaryV$ V versus Fc/Fc$^+$ for the unsubstituted local graft model in MeCN, spanning $+\PTZLowV$ to $+\PTZHighV$ V across rotor settings (SI). This finite molecular result does not establish its NaH/DMF grafting free energy or polymer performance.
+
+The experimental panel also samples a different chemical distribution. Twenty-two of its 39 endpoints are quinones; nine imide endpoints come from six molecules in one study, including PMDI and phthalimide derivatives. Viologen is represented by one molecule and NDI by none. Thus overall benchmark accuracy cannot be assigned to every enumerated family or exact graft. This imbalance is part of the applicability domain of the calculations, rather than a reason to omit less favorable endpoint errors.
+
+
+\subsection{Reaction definitions and base-capture bookkeeping}
+Of the 75 historical local reference reactions, 67 have complete free energies and eight remain held. Five complete candidate reactions and six checked DBU/DIPEA components give twenty base-assisted values. The separated-ion capture terms are $-102.78$ \kj\ for DBU and $-70.98$ \kj\ for DIPEA. For $\Delta G_{\mathrm{graft,B}}=\Delta G_{\mathrm{graft,HCl}}+\Delta G_{\mathrm{capture,B}}$, each base representation shifts every matched reaction by the same term; changing that term cannot reorder candidates within the representation.
+
+The two highlighted benzoquinone HCl-reference values are $+57.63$ and $+56.03$ \kj. They become $-45.14/-46.75$ \kj\ with DBU and $-13.34/-14.94$ \kj\ with DIPEA (Figure~\ref{fig:grafting}). AQ-1-oxy and NDI also change sign in the panel. The relevant inference is that an HCl-reference sign cannot exclude an unmodeled base-assisted synthesis, while a favorable base-assisted model cannot supply missing precursor or selectivity evidence.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{figures/grafting.pdf}
+\caption{Local substitution energies under HCl-reference, separated-ion and contact-pair conventions. Each specified base contributes a shared term to compatible reactions. Changing absolute signs does not establish a new within-base ranking, measured ion-pair population or experimental grafting yield.}
+\label{fig:grafting}\end{figure}
+
+External comparisons qualify the absolute values. The revised MeCN DBU/basicity and recommended HCl scales imply a capture term of $-79.97$ \kj, differing from the calculation by $-22.81$ \kj.\cite{basicity2019,acidity2013,pkaTables} In contrast, HCl/chloride-free relative-basicity controls for pyridine and triethylamine against DBU differ by $+4.58$ and $+1.40$ \kj\ from the corresponding tabulated values. A DIPEA spectrophotometric measurement gives $\log K^{\mathrm H}=18.64(1)$ in MeCN at 25 $^\circ$C; a separate NMR salt estimate gives 18.7 in MeCN-d$_3$.\cite{barisic2021dipea,cook2024dipea} Combining the former with the DBU scale gives $+32.36$ \kj\ for relative proton transfer versus $+31.80$ \kj\ computed, whereas its HCl-capture comparison gives $-47.60$ versus $-70.98$ \kj. Indicator, activity and association conventions are not established to match across sources.
+
+These controls show why agreement for one relative reaction does not validate every absolute grafting sum. Replacing only the DBU capture term gives $-22.33/-23.94$ \kj\ for the two BQ reactions, but changes the cancellation of HCl-related errors in the complete cycle. Such hybrid values remain sensitivities. All 87 complete historical reference/base-assisted values retain their nominal sign over the three rotor cutoffs, with a maximum span of 4.46 \kj; that numerical robustness does not close the independent speciation uncertainty.
+
+
+\subsection{Primary PMDI cycle illustrations}
+These figures summarize the primary-model first-site and neighboring-site comparisons tabulated above. The shared reagent terms cancel from each balanced difference. Each graph contributes one retained minimum; rotor scenarios do not quantify sampling uncertainty.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.94\linewidth]{figures/pmdi_first_graft.pdf}
+\caption{PMDI polymer-minus-local first-attachment penalties. The site/cutoff differences compare the same defined reactions; one minimum per graph is used. The small site ordering changes with cutoff.}
+\label{fig:supp-firstgraft}\end{figure}
+\begin{figure}[htbp]\centering
+\includegraphics[width=.94\linewidth]{figures/pmdi_neighbor_grafting.pdf}
+\caption{Primary PMDI neighboring-site cycle. Shared precursor, base and byproduct contributions cancel. This finite whole-chain response includes conformational and solvent contributions.}
+\label{fig:supp-pmdineighbor}\end{figure}
+\subsection{Spatial contact in the phthalimide method control}
+The retained adjacent-site conformers have core-centroid distances of 4.24 and 16.66 \AA; the one-spacer conformers give 4.77 and 20.20 \AA. The close-contact poses have lower whole-chain free energy by 11.9 and 7.1 \kj\ within their respective two-pose graph samples. These comparisons establish the existence of contact and separated structures at both sequence spacings, without determining equilibrium populations.
+\begin{figure}[htbp]\centering
+\includegraphics[width=.94\linewidth]{figures/spacing_conformers.pdf}
+\caption{Saved phthalimide conformers for adjacent and one-spacer occupancy. Proper rotations and a common spatial scale preserve the actual XYZ geometry. Distances join core centroids; relative free energies compare conformers of the same graph. The sampled pairs are not converged ensembles.}
+\label{fig:supp-spatialconformers}\end{figure}
+\subsection{Property records and numerical traceability}
+A calculated property is associated with a structured record,
+\begin{equation}
+\mathcal{P}=\{x,\mathcal{I},\mathcal{C},\mathcal{Q},\mathcal{S}\},
+\end{equation}
+where $x$ is the value, $\mathcal{I}$ identifies the molecular graph, charge, multiplicity and geometry, $\mathcal{C}$ defines the electronic and thermal methods, solvent, temperature, standard state and reference, $\mathcal{Q}$ records the applicable quality checks, and $\mathcal{S}$ binds the source records. A property can be reused for the same exact structure only when its state and model requirements match the new calculation. Reference subtraction and reaction sums impose additional compatibility conditions. A failed or absent check leaves the corresponding quantity unresolved; no missing thermal term is replaced by zero.
+
+
+Exact graphs, numerical settings and field-specific checks bind each source quantity. Provenance implementations facilitate traceability,\cite{aiida2020,fireworks2015,qcarchive2021} while chemical balance and physical definitions determine whether quantities may enter the same comparison. Machine-readable records retain failed and incomplete fields explicitly.
+
+\bibliographystyle{unsrtnat}\bibliography{references,novelty_references}
+\end{document}

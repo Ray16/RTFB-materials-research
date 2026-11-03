@@ -1,0 +1,97 @@
+{
+  "status": "passed",
+  "benchmark_source_sha256": "1a7f35323aee304e2eeb017ea8a24ed0fd79cd65c31d8a10d0c15ff8eaa908bf",
+  "endpoints": 39,
+  "family_counts": {
+    "phenothiazine": 5,
+    "quinone": 22,
+    "nitroxide": 1,
+    "aromatic imide": 9,
+    "viologen": 2
+  },
+  "MAE_V": 0.2469676364897687,
+  "bias_V": 0.18959431512275965,
+  "mean_signed_error_by_step_V": {
+    "1": 0.26553470054420564,
+    "2": -0.06354030294872709
+  },
+  "paired_spacings": [
+    {
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "calculated_spacing_V": 0.9530895066563971,
+      "experimental_spacing_V": 0.599
+    },
+    {
+      "id": "bm_1_2_naphthoquinone",
+      "calculated_spacing_V": 1.110781201714417,
+      "experimental_spacing_V": 0.41000000000000003
+    },
+    {
+      "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+      "calculated_spacing_V": 0.8392103118894738,
+      "experimental_spacing_V": 0.6100000000000001
+    },
+    {
+      "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+      "calculated_spacing_V": 0.896161282013054,
+      "experimental_spacing_V": 0.6100000000000001
+    },
+    {
+      "id": "bm_n_n_diisopropylpyromellitic_diimide",
+      "calculated_spacing_V": 0.8820543196088693,
+      "experimental_spacing_V": 0.6299999999999999
+    },
+    {
+      "id": "bm_2_tert_butyl_1_4_benzoquinone",
+      "calculated_spacing_V": 1.1661778522138775,
+      "experimental_spacing_V": 0.79
+    },
+    {
+      "id": "bm_1_4_benzoquinone",
+      "calculated_spacing_V": 1.1743420820002939,
+      "experimental_spacing_V": 0.8099999999999999
+    },
+    {
+      "id": "bm_2_methyl_1_4_benzoquinone",
+      "calculated_spacing_V": 1.1519373590999749,
+      "experimental_spacing_V": 0.8
+    },
+    {
+      "id": "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+      "calculated_spacing_V": 0.612731179488037,
+      "experimental_spacing_V": 0.41899999999999993
+    }
+  ],
+  "matched_parent_rows": [
+    {
+      "id": "tempo_parent",
+      "wave": "1",
+      "experimental_V": 0.249,
+      "calculated_V": 0.5015081264591572,
+      "signed_error_V": 0.2525081264591572
+    },
+    {
+      "id": "bm_n_ethylphenothiazine",
+      "wave": "1",
+      "experimental_V": 0.278,
+      "calculated_V": 0.5373751950901351,
+      "signed_error_V": 0.25937519509013507
+    },
+    {
+      "id": "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+      "wave": "1",
+      "experimental_V": -0.785,
+      "calculated_V": -0.5946151498974359,
+      "signed_error_V": 0.19038485010256412
+    },
+    {
+      "id": "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+      "wave": "2",
+      "experimental_V": -1.204,
+      "calculated_V": -1.207346329385473,
+      "signed_error_V": -0.003346329385472968
+    }
+  ],
+  "frozen_numerical_inputs_unchanged": true,
+  "references_and_figure_paths_checked": true
+}

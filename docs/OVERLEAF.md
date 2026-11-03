@@ -19,6 +19,15 @@ inputs and figures are included; full raw calculations remain on shared storage.
 The initial uploaded commit is `9aee5adb2a2c83a86637642ecb3478aaa606344e`.
 The machine-readable connection and build record is [overleaf_connection.json](overleaf_connection.json).
 
+## Current reviewed revision
+
+Overleaf commit `2dea0497b637de6bdd2012522e4148e882629b73` is the first systematic narrative revision.
+The article is 14 pages and the SI is 40 pages. The
+[manuscript entry point](../manuscript/README.md) links the checked PDFs,
+self-contained source snapshot and claim/build/visual records.
+No new quantum calculations were performed; the original numerical inputs
+and fixed 39-endpoint benchmark are preserved.
+
 ## Editing and synchronization
 
 Fetch and merge Overleaf immediately before every manuscript edit pass, preserving
