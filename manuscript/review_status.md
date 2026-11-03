@@ -64,7 +64,7 @@ and nuclear reconstruction. No ensemble or material inference follows.
 [Current collection](../validation/ionic_cycle_completion_2026-11-02/complete_cycles_12.json).
 
 The separate full 240-input corrected phthalimide-control campaign now has
-89 checked electronic inputs and eight checked native inputs. The largest
+90 checked electronic inputs and eighteen checked native inputs. The largest
 119-atom pilot passes full independent minimum, derivative, wavefunction and
 resource review; matching native followups continue under source-bound resource and physical gates. No occupied ensemble is complete. Six exact local
 viologen/chloride geometries now pass independent stationarity and actual

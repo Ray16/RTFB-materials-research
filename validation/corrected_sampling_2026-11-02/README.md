@@ -5,9 +5,30 @@ full-Hessian, sampled-gradient, actual-wavefunction and nuclear-partition review
 Its 17 SCF frames are checked, its lowest internal mode is 6.4952 cm⁻¹ and its
 GPU/host peaks are 24,062 MiB / 32.08 GiB. This releases matching native inputs
 under the unchanged 31-GiB-GPU / 80-GiB-host bound. The
-[new native collection](native_collection_04.json) contains eight checked inputs;
+[new native collection](native_collection_05.json) contains eighteen checked inputs;
 the remaining native and ensemble quantities are pending. Later preparation and
 live scheduling counts are separate from this frozen collection.
+
+
+The [full frozen-snapshot audit](sampling_snapshot_audit_01.json) rechecks all
+90 electronic and 18 native receipts, including every declared pending identity
+against the source-bound 240-slot manifests. The native records represent 306
+previously reviewed actual SCF frames; this audit does not repeat SCF or Hessian
+physics. Fifteen checked native inputs belong to all-same adjacent double grafts,
+and the other three are one spacer, one single graft and one empty backbone.
+No complete occupied ensemble or balanced occupied-ensemble cycle is supplied.
+
+The maintained command is `python -m redox.validation.sampling_snapshot --help`.
+It rejects changed snapshot values, missing slots/parents, invented pending
+energies, mixed context and changed roster backing. An initial strict
+cross-inventory comparison found a separately checked empty-backbone electronic
+repeat. The retained comparison differs by only 4.37e-11 eV at exactly the same
+graph, geometry and protocol. Each native G retains its original checked
+full-orbital electronic parent; no scalar is replaced. The 1e-8-eV repeat gate
+and actual difference are recorded separately. The [initial refusal
+log](snapshot_parent_comparison_initial.log) is preserved. The
+[snapshot/catalogue checks](snapshot_catalog_checks.xml) also exercise these
+rules and the inherited component readers.
 
 The corrected native stage now has a maintained resumable coordinator:
 `python scripts/fleet/run_corrected_native_queue.py --help`. It retains the full
@@ -47,15 +68,15 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_11.json) has
-89 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_12.json) has
+90 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
 ensemble cycle is supplied by this electronic collection.
 
-The separate [native collection](native_collection_04.json) retains all 240
-slots with eight checked G inputs. Its [controller snapshot](native_queue_status_03.json)
+The separate [native collection](native_collection_05.json) retains all 240
+slots with eighteen checked G inputs. Its [controller snapshot](native_queue_status_03.json)
 and [process observation](native_followup_observation_01.json) distinguish
 active coordination, the live largest pilot and physical qualification.
 

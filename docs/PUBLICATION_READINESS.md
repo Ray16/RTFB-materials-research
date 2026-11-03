@@ -6,8 +6,8 @@ workflow, and deliver a manuscript whose claims match its released evidence.
 Code cleanup, completed example calculations and presentation updates each
 contribute to that objective but do not establish completion.
 
-The current frozen corrected phthalimide-control roster has 89 checked electronic
-inputs and eight independently reconstructed native inputs out of 240 declared
+The current frozen corrected phthalimide-control roster has 90 checked electronic
+inputs and eighteen independently reconstructed native inputs out of 240 declared
 slots. The largest native pilot passed full review; matched followups continue,
 while occupied ensembles remain incomplete. All four declared finite ionic
 viologen cycles now pass independent component and balance review, including

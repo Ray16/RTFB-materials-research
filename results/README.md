@@ -24,7 +24,7 @@ establish that a calculation is currently running.
 - [Exact TEMPO follow-up](../validation/tempo_solution_pair_2026-10-30/README.md):
   checked MeCN relaxation costs of 1.477/1.639 eV. The 10.4% directional asymmetry
   leaves a symmetric parameter unqualified; the all-axis material decision is pending.
-- [Unified candidate pool and direct N-linked phenothiazine](../validation/phenothiazine_postfunctionalization_2026-11-02/README.md):
+- [Unified candidate pool](../validation/phenothiazine_precursor_access_2026-11-02/README.md):
   912 exact local-graft graphs, preserving all 904 earlier graphs and evaluations.
   Three exact designs have reviewed route passes: TEMPO, baseline viologen and
   unsubstituted direct N-linked phenothiazine. The other 909 remain held.
@@ -64,6 +64,14 @@ establish that a calculation is currently running.
   passes independent source, all 25 fresh SCF/gradient, sampled-derivative,
   mode and own-nuclear-term review. The original complete response and Hessian
   are preserved; no second response solve or ensemble admission is claimed.
+- [Full sampling snapshot audit](../validation/corrected_sampling_2026-11-02/README.md):
+  90 checked electronic and 18 checked native inputs retain their exact source,
+  graph, method and own component sums. All 240 pending/completed slots remain
+  visible. This is receipt verification, not a fresh quantum repeat or an ensemble.
+- [Exact 2-cyanophenothiazine precursor access](../validation/phenothiazine_precursor_access_2026-11-02/README.md):
+  one supplier-deposited N-H graph matches a new direct N-linked design.
+  Its molecular N-butyl analogue supplies structural evidence only. The route
+  remains held; the unified pool retains all 912 graphs and prior properties.
 - [T4 fixed-gradient resource control](../validation/counterion_T4_resource_2026-11-02/README.md):
   one exact primary-model chloride SCF/gradient matches the V100 reference to
   1.4e-12 Ha / 1.3e-12 Ha/Bohr, at 9,088 MiB peak. This qualifies the fixed

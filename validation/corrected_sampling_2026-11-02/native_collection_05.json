@@ -1,0 +1,5152 @@
+{
+  "status": "complete_roster_corrected_native_review_snapshot",
+  "checked": 1793669201.5642977,
+  "declared_inputs": 240,
+  "checked_native_inputs": 18,
+  "states": [
+    {
+      "key": "all_same__occ_2_3__conf001",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.74235985054,
+        "50": -85718.59775769486,
+        "100": -85718.4828510424
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.01247876761944,
+        "50": 24.157080923296025,
+        "100": 24.271987575766413
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/all_same__occ_2_3__conf001/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf001.json",
+      "review_sha256": "05045458e9d225b63f5507eaa52f4b97df4843ae623a6fcccbb1ca2fb60f3d20",
+      "electronic_E_smd_eV": -85742.75483861816,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf001",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 1,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_2_3__pose0"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "0f3278cd1b1566390866f393a4321243cc2a99d16a18e6dc0c37db12b61def13"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf002",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.59295608873,
+        "50": -85718.44702633542,
+        "100": -85718.33468309916
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 23.984110750184527,
+        "50": 24.130040503505647,
+        "100": 24.242383739747048
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf002/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf002.json",
+      "review_sha256": "15eac50cb97b3f7fa240cc5e6761d1bea40e8fc2a74757f2da766dfd56dc4019",
+      "electronic_E_smd_eV": -85742.57706683892,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf002",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 2,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_2_3__pose1"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "8fa8bb235e07979d2fabafab93abc881219a580c098fbaf42a3f4aa3217d703c"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf003",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.70124810911,
+        "50": -85718.55193819285,
+        "100": -85718.43775223856
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.01253819718794,
+        "50": 24.161848113452074,
+        "100": 24.276034067736973
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf003/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf003.json",
+      "review_sha256": "a9e960b6fa8c08911452a09fe6c24119d208dad5e79888804adc3e06f2ea749c",
+      "electronic_E_smd_eV": -85742.7137863063,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf003",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_0",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 3,
+          "source_conformer_index": 0,
+          "source_GFN2_energy_Ha": -180.20528939,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "e509ca26310c5e43269fff1f9dbf5dea1f4ef7ea686f6b0e0429158bd0539072"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf004",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.76171594668,
+        "50": -85718.60639455281,
+        "100": -85718.49258361962
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.02891347997874,
+        "50": 24.184234873839205,
+        "100": 24.298045807033784
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf004/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf004.json",
+      "review_sha256": "91b7aa1ec097380a9998856b60874c10e510f2cfa3b1df0af727b537ba4140c1",
+      "electronic_E_smd_eV": -85742.79062942666,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf004",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_1",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 4,
+          "source_conformer_index": 1,
+          "source_GFN2_energy_Ha": -180.20460463,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "b6e814eec64400421e4feae5819f6f6ba06bc91fe05b4a0a41b7950c86287cf4"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf005",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.71330340952,
+        "50": -85718.56213216006,
+        "100": -85718.4500197793
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.038967026000925,
+        "50": 24.19013827545932,
+        "100": 24.302250656222938
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf005/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf005.json",
+      "review_sha256": "10fc7d84e2ede491879798f9c83b89afa631fc1c3e8adab9314e6f782af26d1e",
+      "electronic_E_smd_eV": -85742.75227043552,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf005",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_2",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 5,
+          "source_conformer_index": 2,
+          "source_GFN2_energy_Ha": -180.20408823,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "44349f3899d3085c9c16e2f42e305b2fac177c1c2ba31beed2d2e18ad111462c"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf006",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.79392128628,
+        "50": -85718.64703056822,
+        "100": -85718.53357994
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.013912056469408,
+        "50": 24.16080277454106,
+        "100": 24.27425340274346
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf006/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf006.json",
+      "review_sha256": "8313cfcbf67c7466c9d3b7f2b281980eb11d2cd8eb2852bb3e69c8ab14468ab4",
+      "electronic_E_smd_eV": -85742.80783334275,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf006",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_3",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 6,
+          "source_conformer_index": 3,
+          "source_GFN2_energy_Ha": -180.2040572,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "f654682d12776450b7270bf2d0dac434a0c8f6240c8da0c102cc763e6a657efd"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf007",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.71889133542,
+        "50": -85718.57299589893,
+        "100": -85718.46430336469
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.010095429496566,
+        "50": 24.155990865983384,
+        "100": 24.26468340022389
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf007/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf007.json",
+      "review_sha256": "d3494b3771ad4c72dd767100417f2eb85dfd4cdd19d2e21c794f3d4fe32e149c",
+      "electronic_E_smd_eV": -85742.72898676491,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf007",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_4",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 7,
+          "source_conformer_index": 4,
+          "source_GFN2_energy_Ha": -180.20397183,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "ca3d5f5cc9f0b10a68ea93b137238cc5b8bc2c17b432eb45690013a0d1790d4b"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf008",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.80634287765,
+        "50": -85718.65874270824,
+        "100": -85718.53898822369
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.04013772010581,
+        "50": 24.18773788951269,
+        "100": 24.307492374064772
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf008/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf008.json",
+      "review_sha256": "c977dbf64bc5486ef5223afec7aca0373efa01e81d576b379ac967615860a717",
+      "electronic_E_smd_eV": -85742.84648059776,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf008",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_5",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 8,
+          "source_conformer_index": 5,
+          "source_GFN2_energy_Ha": -180.20396745,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "ce910612de7145bac811229586649c1accddecfa768d588345461fbd246223ff"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf009",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.7918334661,
+        "50": -85718.64548454355,
+        "100": -85718.53669583789
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.033152499713765,
+        "50": 24.179501422258394,
+        "100": 24.288290127927255
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf009/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf009.json",
+      "review_sha256": "f93980c329218a92943dc3f917145651f2d23b9c459ecd7f7e2cc19bfe8fed3f",
+      "electronic_E_smd_eV": -85742.82498596581,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf009",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_6",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 9,
+          "source_conformer_index": 6,
+          "source_GFN2_energy_Ha": -180.20395481,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "7decf5a389b1bf3f82c059d612e191c7724040de60402c334cbbe9ced0e1943a"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf010",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.82157164623,
+        "50": -85718.66726177886,
+        "100": -85718.54718832829
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.030862563958664,
+        "50": 24.185172431332138,
+        "100": 24.305245881901293
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf010/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf010.json",
+      "review_sha256": "bc66e0120c05f1e77a1ed9be3e5128d8e47a8a78ebb403a9805eab5718138cd5",
+      "electronic_E_smd_eV": -85742.85243421019,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf010",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_7",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 10,
+          "source_conformer_index": 7,
+          "source_GFN2_energy_Ha": -180.20392189,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "a6cc9d17424879b8049b055bd26a2064e8c96e4aa4c6a636392c70e9e3c542f3"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf011",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.80563576099,
+        "50": -85718.65778917773,
+        "100": -85718.54907347848
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 23.98787492997076,
+        "50": 24.13572151322316,
+        "100": 24.24443721247778
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf011/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf011.json",
+      "review_sha256": "f2e1b7791cff81bf90fea3989a97fbc39ebf059fe7293bc00d8dc3155ffb6d57",
+      "electronic_E_smd_eV": -85742.79351069096,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf011",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_8",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 11,
+          "source_conformer_index": 8,
+          "source_GFN2_energy_Ha": -180.20389045,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "75eca422149d107f0278c85bab3b1b816f96bdcb563b2a455fe84d61248765c8"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf012",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.82575054566,
+        "50": -85718.67399748456,
+        "100": -85718.55130705636
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.066925315624022,
+        "50": 24.21867837672756,
+        "100": 24.341368804922404
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf012/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf012.json",
+      "review_sha256": "3ec36676779e97d3ad10310309775056d7956243409bda355c8c8c69a097c2c9",
+      "electronic_E_smd_eV": -85742.89267586128,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf012",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_9",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 12,
+          "source_conformer_index": 9,
+          "source_GFN2_energy_Ha": -180.2037854,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "7baac188ac9b565e2dab3a02cc4e45f3ea91706d65ea6eba163b5646ab884c09"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf013",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.77551663989,
+        "50": -85718.61741126182,
+        "100": -85718.50975943777
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 23.996153675976323,
+        "50": 24.15425905405156,
+        "100": 24.26191087809992
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf013/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf013.json",
+      "review_sha256": "2bda1435b74037d1e8aabf426d31ef51e830945853889a0028ddb1dcbe56efc9",
+      "electronic_E_smd_eV": -85742.77167031587,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf013",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_11",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 13,
+          "source_conformer_index": 11,
+          "source_GFN2_energy_Ha": -180.20370172,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "20c42ecddc034eb558076f001a83831a4b4724184453d5d7025f183e836aaeaf"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf014",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.71626164598,
+        "50": -85718.56699798192,
+        "100": -85718.45446700766
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 24.002335346281644,
+        "50": 24.151599010334994,
+        "100": 24.26412998459955
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf014/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf014.json",
+      "review_sha256": "763fa6357bf40f18cb0d3ae0c43faf2e6ee95646a28e27fe9c31893d69d572d2",
+      "electronic_E_smd_eV": -85742.71859699226,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf014",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_12",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 14,
+          "source_conformer_index": 12,
+          "source_GFN2_energy_Ha": -180.20362065,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "8503a900d95fe903957f3113618ec1cca05d64fed941a05bb9510161065e1cb0"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf015",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf015/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf016",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.78738574038,
+        "50": -85718.6321615347,
+        "100": -85718.51885231186
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 23.98938042633559,
+        "50": 24.1446046320137,
+        "100": 24.25791385486627
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf016/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf016.json",
+      "review_sha256": "b825a12ecade0b0ef3664874a3b46c9963a5033625924504d5c3d5ff2be06130",
+      "electronic_E_smd_eV": -85742.77676616672,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "grafted",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+          "key": "all_same__occ_2_3__conf016",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 4,
+          "converged_MMFF": 4,
+          "initial_MMFF_energy_kcal_mol": 112.75799960339236,
+          "model_key": "all_same__occ_2_3",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "diverse_saved_search_index_17",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              29,
+              30,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 16,
+          "source_conformer_index": 17,
+          "source_GFN2_energy_Ha": -180.20330778,
+          "starting_geometry_source_role": "diverse_saved_search_warm_start",
+          "source_reference_key": null
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "ea51f0e0db65794e1f195380994928453d3da2cbecbd38bd49b0e28b9db29019"
+      }
+    },
+    {
+      "key": "all_same__occ_2_3__conf017",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf017/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf018",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf018/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf019",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf019/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_3__conf020",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_3__conf020/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf001",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -85718.65511763969,
+        "50": -85718.50109734919,
+        "100": -85718.40008308792
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 23.939173450061688,
+        "50": 24.093193740570914,
+        "100": 24.194208001840206
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf001/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_4__conf001.json",
+      "review_sha256": "268543af6aac0d362e7cd6131d65a1c94d46fb57f6b1b6cbb74d40b52a81c216",
+      "electronic_E_smd_eV": -85742.59429108976,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2,
+            4
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "benzyl_chloride",
+            "grafted",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 119,
+          "charge": 0,
+          "model_loading_per_repeat": 0.4,
+          "model_conversion_per_reactive_site": 0.6666666666666666,
+          "graph_sha256": "3d9738f5273e88472ce9340bb680dc2d42e8862c01559442999f19a8d7b982f4",
+          "key": "all_same__occ_2_4__conf001",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 16,
+          "converged_MMFF": 16,
+          "initial_MMFF_energy_kcal_mol": 111.00874826750285,
+          "model_key": "all_same__occ_2_4",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              21,
+              22,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30
+            ],
+            [
+              47,
+              48,
+              50,
+              51,
+              52,
+              53,
+              54,
+              55,
+              56
+            ]
+          ],
+          "active_basis_functions": 2940,
+          "search_rank": 1,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_2_4__pose0"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "15f2f78dcd0761fe824d3bfe7db41625eae69ba0de966e1ecf52ece42a149ba5"
+      }
+    },
+    {
+      "key": "all_same__occ_2_4__conf002",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf003",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf004",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf005",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf006",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf006/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf007",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf007/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf008",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf009",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf009/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf010",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf010/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf011",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf011/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf012",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf012/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf013",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf013/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf014",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf014/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf015",
+      "status": "corrected_sampling_native_running",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf015/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf016",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf016/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf017",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf017/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf018",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf018/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf019",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf019/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2_4__conf020",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2_4__conf020/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf001",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -84296.36271889671,
+        "50": -84296.21723100467,
+        "100": -84296.10668838346
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 21.29974353941972,
+        "50": 21.44523143144945,
+        "100": 21.555774052665438
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/all_same__occ_2__conf001/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2__conf001.json",
+      "review_sha256": "14536a8a52e6baa596da969378705bb7e36d4e243b99c85f9e6ebadebd14a09b",
+      "electronic_E_smd_eV": -84317.66246243613,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+          "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [
+            2
+          ],
+          "site_states": [
+            "styrene",
+            "grafted",
+            "benzyl_chloride",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 105,
+          "charge": 0,
+          "model_loading_per_repeat": 0.2,
+          "model_conversion_per_reactive_site": 0.3333333333333333,
+          "graph_sha256": "27e117714d6e817978a4b31a5308c7e51a73619bb989419a75d66fef72517a7c",
+          "key": "all_same__occ_2__conf001",
+          "mult": 1,
+          "role": "interaction_method_control; not synthesis admission",
+          "initial_embedding_seed": 20261023,
+          "embedded": 32,
+          "converged_MMFF": 32,
+          "initial_MMFF_energy_kcal_mol": 130.74052917225373,
+          "model_key": "all_same__occ_2",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [
+            [
+              37,
+              38,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46
+            ]
+          ],
+          "active_basis_functions": 2537,
+          "search_rank": 1,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_2__pose0"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "30d107d6de76033aed47acbc04eac9659e5c97709771472811156d4f8e8b3129"
+      }
+    },
+    {
+      "key": "all_same__occ_2__conf002",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf003",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf004",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf005",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf006",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf006/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf007",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf007/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf008",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf009",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf009/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf010",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf010/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf011",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf011/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf012",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf012/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf013",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf013/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf014",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf014/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf015",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf015/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf016",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf016/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf017",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf017/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf018",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf018/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf019",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf019/namespace.json"
+    },
+    {
+      "key": "all_same__occ_2__conf020",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_2__conf020/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf001",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf001/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf002",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf003",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf004",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf005",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf006",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf006/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf007",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf007/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf008",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf009",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf009/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf010",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf010/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf011",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf011/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf012",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf012/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf013",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf013/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf014",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf014/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf015",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf015/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf016",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf016/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf017",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf017/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf018",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf018/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf019",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf019/namespace.json"
+    },
+    {
+      "key": "all_same__occ_3__conf020",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_3__conf020/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf001",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf001/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf002",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf002/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf003",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf003/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf004",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf004/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf005",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf005/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf008",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf008/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf009",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf009/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf010",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf010/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf011",
+      "status": "native_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/states/all_same__occ_4__conf011/namespace.json"
+    },
+    {
+      "key": "all_same__occ_4__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_4__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf001",
+      "status": "native_independently_checked",
+      "native_G_qualified": true,
+      "G_by_cutoff_eV": {
+        "25": -82874.07522832791,
+        "50": -82873.93719440931,
+        "100": -82873.84011166557
+      },
+      "nuclear_by_cutoff_eV": {
+        "25": 18.567344515034474,
+        "50": 18.705378433631104,
+        "100": 18.802461177365874
+      },
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/all_same__occ_none__conf001/namespace.json",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_none__conf001.json",
+      "review_sha256": "f76c0c8971a6767c51a76d23146451acc9dd89763337d5b231c6c0c70c075435",
+      "electronic_E_smd_eV": -82892.64257284295,
+      "context": {
+        "task": {
+          "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+          "mapped_smiles": "ClCc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+          "repeat_units": 5,
+          "reactive_sites": [
+            2,
+            3,
+            4
+          ],
+          "occupied_sites": [],
+          "site_states": [
+            "styrene",
+            "benzyl_chloride",
+            "benzyl_chloride",
+            "benzyl_chloride",
+            "styrene"
+          ],
+          "backbone_stereo_tags": [
+            "CW",
+            "CW",
+            "CW",
+            "CW"
+          ],
+          "backbone_stereo_fingerprint": [
+            [
+              2,
+              -1
+            ],
+            [
+              4,
+              -1
+            ],
+            [
+              6,
+              -1
+            ],
+            [
+              8,
+              -1
+            ]
+          ],
+          "backbone_carbon_count": 10,
+          "backbone_CC_bonds": 9,
+          "chain_ends": 2,
+          "atoms": 91,
+          "charge": 0,
+          "model_loading_per_repeat": 0.0,
+          "model_conversion_per_reactive_site": 0.0,
+          "graph_sha256": "d491da6b2fecf508575878eae2f7f20b980d6c1c652a126a026b57a72eab0c2f",
+          "role": "interaction_method_control; not synthesis admission",
+          "ETKDG_seed": 20261022,
+          "configuration_label": "all_same",
+          "seed_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_extra_thermal/thermal/occ_none__pose1/rest/opt.xyz",
+          "mult": 1,
+          "key": "all_same__occ_none__conf001",
+          "initial_geometry_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/conformer_revision_2026-10-22/all_same/input.xyz",
+          "initial_geometry_source_sha256": "737f6546a0c6e62ac962ec01be5ba693453d651edba7e26e73cb884a38fcd380",
+          "model_key": "all_same__occ_none",
+          "candidate_id": "exp_phthalimide_control",
+          "model_type": "covalent_oligomer",
+          "repeats": 5,
+          "stereoisomer": "all_same",
+          "target": "previous_checked_DFT_reference",
+          "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+          "pi_groups": [],
+          "active_basis_functions": 2134,
+          "search_rank": 1,
+          "source_conformer_index": null,
+          "source_GFN2_energy_Ha": null,
+          "starting_geometry_source_role": "previous_checked_DFT_pose",
+          "source_reference_key": "occ_none__pose0"
+        },
+        "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+        "experimental_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "electronic_protocol": {
+          "schema": 1,
+          "xc": "wb97m-v",
+          "basis": "def2-tzvpd",
+          "disp": null,
+          "nlc": "vv10",
+          "solvent": "acetonitrile",
+          "solvent_model": "SMD",
+          "density_fit": true,
+          "conv_tol": 1e-09,
+          "max_cycle": 200
+        },
+        "native_settings": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "thermal_protocol": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "standard_state": "same translation convention as installed xTB thermodyn",
+        "temperature_K": 298.15,
+        "charge": 0,
+        "multiplicity": 1,
+        "geometry_sha256": "3ab4d9b040f12cf443ad4159f608ace114fb35bb3511133c3cc8273ee680a901"
+      }
+    },
+    {
+      "key": "all_same__occ_none__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "all_same__occ_none__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_3__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2_4__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_2__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_3__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_4__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf001",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf002",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf003",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf004",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf005",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf006",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf007",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf008",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf009",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf010",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf011",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf012",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf013",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf014",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf015",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf016",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf017",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf018",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf019",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    },
+    {
+      "key": "alternating__occ_none__conf020",
+      "status": "native_not_prepared",
+      "native_G_qualified": false,
+      "G_by_cutoff_eV": null,
+      "nuclear_by_cutoff_eV": null
+    }
+  ],
+  "independent_review_errors": [],
+  "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+  "occupied_ensemble_cycles_qualified": false,
+  "pending_values_are_null": true,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/recovery_manifest_02.json": "74122a52438bd23076a32a88b8b09ee9e8388cd85dde433036b153ad46f4a435",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/review_sources/71baa0d7928983c3666ccc54848752183d1f699723f590475db3d81f66555c37/sampling_native_queue.py": "71baa0d7928983c3666ccc54848752183d1f699723f590475db3d81f66555c37",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/review_sources/e74c086cf1d1dac624eeda30a68d561d9ed158b02502d6150eccdd4a745f95e7/sampling_native_receipts.py": "e74c086cf1d1dac624eeda30a68d561d9ed158b02502d6150eccdd4a745f95e7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf001.json": "05045458e9d225b63f5507eaa52f4b97df4843ae623a6fcccbb1ca2fb60f3d20",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf002.json": "15eac50cb97b3f7fa240cc5e6761d1bea40e8fc2a74757f2da766dfd56dc4019",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf003.json": "a9e960b6fa8c08911452a09fe6c24119d208dad5e79888804adc3e06f2ea749c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf004.json": "91b7aa1ec097380a9998856b60874c10e510f2cfa3b1df0af727b537ba4140c1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf005.json": "10fc7d84e2ede491879798f9c83b89afa631fc1c3e8adab9314e6f782af26d1e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf006.json": "8313cfcbf67c7466c9d3b7f2b281980eb11d2cd8eb2852bb3e69c8ab14468ab4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf007.json": "d3494b3771ad4c72dd767100417f2eb85dfd4cdd19d2e21c794f3d4fe32e149c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf008.json": "c977dbf64bc5486ef5223afec7aca0373efa01e81d576b379ac967615860a717",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf009.json": "f93980c329218a92943dc3f917145651f2d23b9c459ecd7f7e2cc19bfe8fed3f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf010.json": "bc66e0120c05f1e77a1ed9be3e5128d8e47a8a78ebb403a9805eab5718138cd5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf011.json": "f2e1b7791cff81bf90fea3989a97fbc39ebf059fe7293bc00d8dc3155ffb6d57",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf012.json": "3ec36676779e97d3ad10310309775056d7956243409bda355c8c8c69a097c2c9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf013.json": "2bda1435b74037d1e8aabf426d31ef51e830945853889a0028ddb1dcbe56efc9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf014.json": "763fa6357bf40f18cb0d3ae0c43faf2e6ee95646a28e27fe9c31893d69d572d2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_3__conf016.json": "b825a12ecade0b0ef3664874a3b46c9963a5033625924504d5c3d5ff2be06130",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2_4__conf001.json": "268543af6aac0d362e7cd6131d65a1c94d46fb57f6b1b6cbb74d40b52a81c216",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_2__conf001.json": "14536a8a52e6baa596da969378705bb7e36d4e243b99c85f9e6ebadebd14a09b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/reviews/all_same__occ_none__conf001.json": "f76c0c8971a6767c51a76d23146451acc9dd89763337d5b231c6c0c70c075435"
+  }
+}

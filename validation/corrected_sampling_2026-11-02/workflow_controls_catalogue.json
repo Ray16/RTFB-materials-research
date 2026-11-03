@@ -1,0 +1,103 @@
+{
+  "commands": [],
+  "specialized": [
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.sampling_energy",
+      "purpose": "Full 240-slot corrected electronic method-control cohort; separate native and ensemble gates",
+      "category": "controls",
+      "command": "python -m redox.workflows.sampling_energy --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.sampling_native",
+      "purpose": "Native method-control inputs require checked exact energies and a completed largest pilot",
+      "category": "controls",
+      "command": "python -m redox.workflows.sampling_native --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "script": "scripts/fleet/run_corrected_sampling_queue.py",
+      "purpose": "Maintained resumable electronic coordinator; checked pilots, actual owners and shared resource gate",
+      "category": "controls",
+      "command": "python scripts/fleet/run_corrected_sampling_queue.py --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "script": "scripts/fleet/run_corrected_native_queue.py",
+      "purpose": "Maintained full-roster native coordinator; independent closed review and source-bound followups",
+      "category": "controls",
+      "command": "python scripts/fleet/run_corrected_native_queue.py --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.counterion_geometry",
+      "purpose": "Exact oxidized graft plus chloride (+1 singlet), distinct from the reduced +1 doublet",
+      "category": "controls",
+      "command": "python -m redox.workflows.counterion_geometry --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.counterion_gradient_pilot",
+      "purpose": "Prospective T4 fixed-gradient comparison only; no optimization, Hessian or native G admission",
+      "category": "controls",
+      "command": "python -m redox.workflows.counterion_gradient_pilot --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.counterion_geometry_resources",
+      "purpose": "T4 geometry-only pilot after checked fixed gradient; full closed review precedes other repairs",
+      "category": "controls",
+      "command": "python -m redox.workflows.counterion_geometry_resources --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.counterion_thermochemistry",
+      "purpose": "Exact primary electronic/native components and two-to-one solute standard-state conversion",
+      "category": "controls",
+      "command": "python -m redox.workflows.counterion_thermochemistry --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control_preparation",
+      "module": "redox.workflows.viologen_motif_fragments",
+      "purpose": "Frozen methyl-capped ionic motifs at checked parent frames; no interaction energy from geometry",
+      "category": "controls",
+      "command": "python -m redox.workflows.viologen_motif_fragments --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.motif_interaction_energy",
+      "purpose": "Matched frozen A/B/AB electronic triplets; no binding G, coupling or population",
+      "category": "controls",
+      "command": "python -m redox.workflows.motif_interaction_energy --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control_preparation",
+      "module": "redox.workflows.screening_native_panel",
+      "purpose": "Prepare exact primary molecular Hessian repeats; separate pilot launch/review required",
+      "category": "controls",
+      "command": "python -m redox.workflows.screening_native_panel --help",
+      "maintenance": "maintained"
+    },
+    {
+      "kind": "checked_control",
+      "module": "redox.workflows.screening_control",
+      "purpose": "Explicit numerical controls; does not change the production method",
+      "category": "controls",
+      "command": "python -m redox.workflows.screening_control --help",
+      "maintenance": "maintained"
+    }
+  ],
+  "default": "redox motifs plans; --execute is required for submission",
+  "qualification": "A maintained entry point does not qualify every chemistry, GPU class or protocol"
+}

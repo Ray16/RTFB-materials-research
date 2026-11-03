@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/sampling_snapshot.py", line 100, in <module>
+    result = audit(args.electronic.resolve(), args.native.resolve())
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/sampling_snapshot.py", line 72, in audit
+    raise ValueError('Snapshot G, components, graph or physical context differ from their receipts')
+ValueError: Snapshot G, components, graph or physical context differ from their receipts

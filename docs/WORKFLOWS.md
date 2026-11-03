@@ -1,6 +1,10 @@
 # Maintained workflows and property contracts
 
 Start with `python -m redox workflows` (or `--json`) for a read-only catalogue.
+Filter by role with `--category production`, `--category controls`, or
+`--category recovery`; `--category historical` isolates compatibility aliases.
+Advanced module and script entry points are grouped with their roles and are
+listed without importing scientific runtimes or starting jobs.
 The catalogue uses the public command registry and fails if a public command has
 no declared category. It does not submit calculations.
 
@@ -17,6 +21,7 @@ no declared category. It does not submit calculations.
 | Corrected polymer sampling control | `python -m redox.workflows.sampling_energy --help` | Complete 240-input roster; empty/single/double pilots precede same-model energy followups and separate native/ensemble review |
 | Corrected polymer native stage | `python -m redox.workflows.sampling_native --help` | Exact checked energy input, full-orbital recovery data, unchanged native physical checks; largest complete native pilot precedes wider native release |
 | Corrected native queue | `python scripts/fleet/run_corrected_native_queue.py --help` | Maintained coordinator for the full 240-slot objective; independently collects closed native results, waits for the largest pilot, then prepares and dispatches checked-energy followups |
+| Frozen sampling receipt audit | `python -m redox.validation.sampling_snapshot --help` | Verify all 240 declared slots and checked E/native receipts against their source manifest; preserve each native electronic parent and record same-input repeats separately; no fresh physical or ensemble qualification |
 | Counterion geometry control | `python -m redox.workflows.counterion_geometry --help` | Oxidized graft plus explicit chloride: +1 singlet, separate from the +1 doublet redox state; geometry/resource pilot precedes wider contacts and native G |
 | Counterion small-GPU resource control | `python -m redox.workflows.counterion_gradient_pilot --help` | Prospective exact 42-atom fixed primary SCF/gradient comparison on T4; no optimization, Hessian or native G admission. Full molecular/Hessian defaults retain the 32-GB class |
 | Counterion T4 geometry pilot | `python -m redox.workflows.counterion_geometry_resources --help` | One prospective optimization after a checked fixed-gradient witness; other prepared repairs require closed full geometry resource/physical review. No Hessian or native G admission |
