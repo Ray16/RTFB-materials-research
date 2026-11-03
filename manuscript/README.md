@@ -86,3 +86,10 @@ final self-contained upload reproduces both. The supplied audit comments are
 addressed explicitly: core examples are viologen, TEMPO and PMDI; finite-model
 claims do not require completion of every campaign. Author metadata remains
 with the user, and the availability statement retains outstanding deposition.
+
+The [finite viologen replay](../examples/finite_viologen_replay/README.md) now
+reproduces the central four-cycle and twelve-triplet comparisons using only
+the Python standard library, with the original scientific paths blocked. Its
+scope is cached arithmetic/context, complementing the molecular CPU examples.
+The final editorial PDFs are unchanged; this package does not replace full
+raw-data deposition or rerun quantum validation.

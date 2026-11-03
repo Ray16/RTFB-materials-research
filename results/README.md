@@ -16,6 +16,11 @@ establish that a calculation is currently running.
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
   pass extracted-archive replay with original scientific paths blocked.
+- [Finite viologen comparison replay](../examples/finite_viologen_replay/README.md):
+  standard-library reconstruction of the four finite ionic cycles and twelve
+  motif triplets. An isolated copy passes with original scientific paths blocked;
+  changed values, model, coverage, QC and geometry are rejected. This reproduces
+  cached arithmetic and context, without repeating quantum validation.
 - [Corrected-primary CPU companion](../examples/exact_viologen_corrected_replay/README.md):
   all nine new molecular Hessians and saved-gradient panels, analytic chloride
   and six exact cycles pass fresh NumPy-only extraction replay with original
