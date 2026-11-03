@@ -5,7 +5,7 @@ full-Hessian, sampled-gradient, actual-wavefunction and nuclear-partition review
 Its 17 SCF frames are checked, its lowest internal mode is 6.4952 cm⁻¹ and its
 GPU/host peaks are 24,062 MiB / 32.08 GiB. This releases matching native inputs
 under the unchanged 31-GiB-GPU / 80-GiB-host bound. The
-[new native collection](native_collection_03.json) contains six checked inputs;
+[new native collection](native_collection_04.json) contains eight checked inputs;
 the remaining native and ensemble quantities are pending. Later preparation and
 live scheduling counts are separate from this frozen collection.
 
@@ -47,15 +47,15 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_10.json) has
-88 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_11.json) has
+89 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
 ensemble cycle is supplied by this electronic collection.
 
-The separate [native collection](native_collection_03.json) retains all 240
-slots with six checked G inputs. Its [controller snapshot](native_queue_status_03.json)
+The separate [native collection](native_collection_04.json) retains all 240
+slots with eight checked G inputs. Its [controller snapshot](native_queue_status_03.json)
 and [process observation](native_followup_observation_01.json) distinguish
 active coordination, the live largest pilot and physical qualification.
 
@@ -276,3 +276,21 @@ lead validation now has an actual exclusive H100 start. Our bulk coordinators
 were explicitly stopped/resumed for the priority handoff while their workers
 continued; the shared dispatcher honors a declared single-slot pending-lead
 priority without changing methods or admitting an unqualified resource class.
+
+The shared prelaunch accountant now separates recorded resource contention from
+bounded environment/unclassified failures for the electronic, native and lead
+controllers. It requires exact closed owners, absent scientific/guard outputs,
+no launched-wrapper record, and the actual RuntimeError branch before every
+Popen. Content-addressed frozen launcher versions preserve original traceback
+line evidence after code updates. No claim or scientific output is modified.
+
+The [audit](prelaunch_accounting_01.json) resolves five resource-refused inputs,
+including three previously stranded at three receipts; their nonresource
+failure counts are zero. Retry cooldowns remain, while resource refusals do
+not consume the failure budget. Live/uncertain owners, started science and
+unverified source branches remain held. The full 240-input objective and all
+scientific QC gates are unchanged. [65 focused checks](shared_refusal_checks.xml)
+cover ownership, source-version matching, resource accounting and terminal
+cooldown behavior. All three coordinators were resumed after exact source-guard
+closure, preserving their scientific workers. The [eight-receipt crosscheck](native_receipt_crosscheck_03.json)
+retains every state's source/context and all three component sums.

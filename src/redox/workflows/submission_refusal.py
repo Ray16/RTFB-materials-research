@@ -29,7 +29,7 @@ STAGES = {
 }
 
 
-def refusal_branch(source, log, messages):
+def refusal_branch(source, log, messages, *, executed_path=None):
     """A unique literal RuntimeError must precede every Popen in launch()."""
     tree = ast.parse(source.read_text())
     function = next(node for node in tree.body if isinstance(node, ast.FunctionDef) and node.name == 'launch')
@@ -47,7 +47,7 @@ def refusal_branch(source, log, messages):
                   and isinstance(node.exc.args[0], ast.Constant) and node.exc.args[0].value == message]
         if (len(raises) == 1 and raises[0].lineno < min(spawns)
                 and lines[-1] == 'RuntimeError: '+message
-                and f'  File "{source}", line {raises[0].lineno}, in launch' in lines):
+                and f'  File "{source if executed_path is None else executed_path}", line {raises[0].lineno}, in launch' in lines):
             return dict(message=message, raise_line=raises[0].lineno, first_subprocess_line=min(spawns))
     return None
 

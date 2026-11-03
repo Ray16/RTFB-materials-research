@@ -17,24 +17,8 @@ from redox.core.io import atomic_write_json
 from redox.workflows.molecular_native_namespace import verify,load
 from redox.workflows.charged_native_followup import dispatch_rows
 from redox.workflows.sampling_native_queue import extend_peers
-
-
-def noncontention_prelaunch_failures(namespace,alive):
-    """A proven lost GPU race consumes no scientific or environment attempt."""
-    root=Path(namespace).parent
-    if (root/'case/status.json').exists() or (root/'case/residency_guard/owner.json').exists():
-        raise ValueError('Never retry a started scientific or guard attempt here')
-    failures=0
-    for path in sorted((root/'dispatch_claim').glob('try_*.json')):
-        receipt=json.loads(path.read_text())
-        if alive(receipt['owner']) is not False:
-            raise ValueError('Exact prelaunch controller closure is required')
-        placement=Path(receipt['placement']);log=root/'dispatch_logs'/(path.stem+'.log')
-        explicit_race=(log.exists() and log.read_text().rstrip().endswith(
-            "RuntimeError: GPU occupied; no screening control started")
-            and not (placement/'launch.json').exists())
-        if not explicit_race:failures+=1
-    return failures
+from redox.workflows.prelaunch_accounting import nonresource_prelaunch_failures as noncontention_prelaunch_failures
+from redox.workflows.prelaunch_accounting import launcher_versions
 
 
 def main():
@@ -57,6 +41,7 @@ def main():
     remote=load(ROOT/'scripts/fleet/run_screening_energy_panel.py','saved_ionic_common_inspection')
     sources=[Path(__file__).resolve(),namespace,ROOT/'src/redox/workflows/charged_native_followup.py',
         ROOT/'src/redox/workflows/screening_control.py',ROOT/'scripts/fleet/run_screening_energy_panel.py',
+        ROOT/'src/redox/workflows/prelaunch_accounting.py',ROOT/'src/redox/workflows/submission_refusal.py',
         ROOT/'scripts/pipeline/run_namespace_energy_queue.py',ROOT/'scripts/fleet/run_charged_polymer_geometry_panel.py']
     hashes={str(p):sha256_file(p) for p in sources}
     state=dict(status='saved_ionic_validation_controller_started',started=time.time(),deadline=time.time()+args.hours*3600,
@@ -85,7 +70,7 @@ def main():
             if condition in ('scientific_failure_preserved','stopped_attempt_preserved','guard_start_failed_preserved','uncertain_submission_preserved'):
                 state['status']='saved_ionic_attempt_preserved_for_explicit_review';break
             if condition in ('pending','prelaunch_refusal_no_scientific_attempt'):
-                failed=noncontention_prelaunch_failures(namespace,owners.alive)
+                failed=noncontention_prelaunch_failures(namespace,owners.alive,launcher_versions(output))
                 state['noncontention_prelaunch_failures']=failed
                 if failed>=3:state['status']='bounded_prelaunch_refusals_preserved';break
                 peers=extend_peers(args.storage_peers.resolve(),[row])

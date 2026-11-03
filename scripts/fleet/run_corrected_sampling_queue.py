@@ -14,6 +14,7 @@ import json
 import os
 from pathlib import Path
 import signal
+import subprocess
 import threading
 import time
 
@@ -21,6 +22,7 @@ from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.sampling_energy import dispatch
+from redox.workflows.prelaunch_accounting import prelaunch_accounting,launcher_versions
 
 SOURCE_BYTES=Path(__file__).read_bytes()
 
@@ -56,6 +58,7 @@ def run(manifest_path,reviews,interpreter,peers_path,output,hours,resume=False):
     paths=[manifest_path,*reviews,Path(__file__),policy,
         ROOT/'src/redox/workflows/sampling_energy.py',ROOT/'src/redox/workflows/charged_native_followup.py',
         ROOT/'src/redox/workflows/screening_control.py',ROOT/'scripts/fleet/run_screening_energy_panel.py',
+        ROOT/'src/redox/workflows/prelaunch_accounting.py',ROOT/'src/redox/workflows/submission_refusal.py',
         ROOT/'scripts/validation/collect_corrected_sampling_energy.py',ROOT/'src/redox/validation/sampling_receipts.py',
         ROOT/'scripts/validation/review_corrected_sampling_energy.py',ROOT/'src/redox/validation/execution_review.py']
     hashes={str(p):sha256_file(p) for p in paths};snapshots={}
@@ -95,11 +98,20 @@ def run(manifest_path,reviews,interpreter,peers_path,output,hours,resume=False):
                     condition,data=observer.inspect(row,claim,owners.alive,
                         finished_status='corrected_sampling_energy_finished_independent_review_pending')
                     tries=len(list(claim.glob('try_*.json')));key=row['key']
+                    failures=tries;accounting=None;accounting_error=None
+                    if condition=='prelaunch_refusal_no_scientific_attempt':
+                        try:
+                            accounting=prelaunch_accounting(Path(row['namespace']),owners.alive,launcher_versions(output))
+                            failures=accounting['prelaunch_failures']
+                        except (OSError,ValueError,subprocess.SubprocessError) as error:
+                            condition='ownership_unverified';accounting_error=repr(error);data=dict(error=accounting_error)
                     if condition=='prelaunch_refusal_no_scientific_attempt':last_retry.setdefault(key,time.time())
-                    if ready(condition,tries,last_retry.get(key,0),60,time.time()):eligible.add(key)
+                    if ready(condition,failures,last_retry.get(key,0),60,time.time()):eligible.add(key)
                     if condition in ('completed_review_pending','scientific_failure_preserved','stopped_attempt_preserved','guard_start_failed_preserved') and key not in state['accounted_terminal']:
                         new_terminal.append((data.get('finished',time.time()),key,condition,data.get('owner',data).get('host')))
-                    entries.append(dict(key=key,status=condition,submission_receipts=tries))
+                    entries.append(dict(key=key,status=condition,submission_receipts=tries,prelaunch_failures=failures,
+                                        resource_refusals=accounting['resource_refusals'] if accounting else None,
+                                        prelaunch_accounting_error=accounting_error))
                 for _,key,condition,host in sorted(new_terminal):
                     state['accounted_terminal'].append(key)
                     if host:
@@ -124,7 +136,7 @@ def run(manifest_path,reviews,interpreter,peers_path,output,hours,resume=False):
                 accepted={r['key'] for r in summary['states'] if r['status']=='electronic_independently_checked'}
                 active=any(r['status'] in ('running','guard_started','submitted','ownership_unverified','uncertain_submission_preserved')
                     or (r['status']=='completed_review_pending' and r['key'] not in accepted) for r in entries)
-                if not eligible and not active and not any(r['status']=='prelaunch_refusal_no_scientific_attempt' and r['submission_receipts']<3 for r in entries):
+                if not eligible and not active and not any(r['status']=='prelaunch_refusal_no_scientific_attempt' and r['prelaunch_failures']<3 for r in entries):
                     state['status']='electronic_queue_terminal_incomplete_reviews_or_recovery_required';break
                 atomic_write_json(status_path,state);stop.wait(20)
             else:state['status']='queue_stop_requested_workers_preserved' if stop.is_set() else 'queue_window_finished_workers_preserved'

@@ -78,3 +78,12 @@ def test_terminal_failures_do_not_masquerade_as_a_live_native_queue(condition, t
     assert queue.terminal_incomplete(240, rows, [], set()) is terminal
     assert not queue.terminal_incomplete(239, rows, [], set())
     assert not queue.terminal_incomplete(240, rows, ['ready'], set())
+
+
+def test_resource_refusals_keep_the_native_queue_open_during_retry_cooldown():
+    from redox.core.common import ROOT
+    import importlib.util
+    definition=importlib.util.spec_from_file_location('native_resource_cooldown',ROOT/'scripts/fleet/run_corrected_native_queue.py')
+    queue=importlib.util.module_from_spec(definition);definition.loader.exec_module(queue)
+    rows=[dict(key='last',status='prelaunch_refusal_no_scientific_attempt',submission_receipts=5,prelaunch_failures=0)]
+    assert not queue.terminal_incomplete(240,rows,[],set())

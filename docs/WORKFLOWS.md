@@ -194,6 +194,8 @@ slot to a verified live pending lead. It checks memory/architecture, CPU/RAM and
 aggregate storage, and continues allocating other suitable slots. A started or
 inactive priority cannot hold another GPU. Each pass freezes the configuration
 and the as-used capacity, ownership, launch and storage helpers. No site GPU
-policy, reservation ownership or scientific method is changed. Explicit closed
-GPU-contention refusals consume no scientific/prelaunch-failure budget in the
-saved-ionic validation controller; uncertain starts require review.
+policy, reservation ownership or scientific method is changed. The shared prelaunch accountant separates explicit closed GPU/RAM/storage
+refusals from bounded environment failures for electronic, native and saved-ionic
+controllers. It checks frozen source branches before Popen, exact owner closure
+and absent scientific outputs. Resource waits preserve cooldowns without
+consuming scientific/prelaunch-failure budgets; uncertain starts require review.

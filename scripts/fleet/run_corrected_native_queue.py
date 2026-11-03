@@ -12,6 +12,7 @@ import json
 import os
 from pathlib import Path
 import signal
+import subprocess
 import threading
 import time
 
@@ -21,6 +22,7 @@ from redox.core.io import atomic_write_json
 from redox.validation.sampling_native_receipts import ReceiptCache
 from redox.workflows.molecular_native_namespace import load
 from redox.workflows.sampling_native_queue import collect, prepare_ready, roster, extend_peers
+from redox.workflows.prelaunch_accounting import prelaunch_accounting,launcher_versions
 
 
 def terminal_incomplete(prepared_count, entries, eligible, checked_keys):
@@ -29,7 +31,8 @@ def terminal_incomplete(prepared_count, entries, eligible, checked_keys):
     active = {'running', 'guard_started', 'submitted', 'ownership_unverified', 'uncertain_submission_preserved'}
     return not any(row['status'] in active
         or (row['status'] == 'completed_review_pending' and row['key'] not in checked_keys)
-        or (row['status'] == 'prelaunch_refusal_no_scientific_attempt' and row['submission_receipts'] < 3)
+        or (row['status'] == 'prelaunch_refusal_no_scientific_attempt'
+            and row.get('prelaunch_failures',row['submission_receipts']) < 3)
         for row in entries)
 
 
@@ -52,6 +55,9 @@ def run(manifest_path, energy_stream, pilot_manifest, resource_review, archive,
              ROOT / 'scripts/fleet/run_screening_energy_panel.py',
              ROOT / 'scripts/fleet/run_corrected_sampling_queue.py',
              ROOT / 'src/redox/workflows/charged_native_followup.py',
+             ROOT / 'src/redox/workflows/screening_control.py',
+             ROOT / 'src/redox/workflows/prelaunch_accounting.py',
+             ROOT / 'src/redox/workflows/submission_refusal.py',
              ROOT / 'src/redox/workflows/sampling_native.py',
              ROOT / 'src/redox/workflows/sampling_native_queue.py',
              ROOT / 'src/redox/validation/sampling_native_receipts.py',
@@ -126,16 +132,25 @@ def run(manifest_path, energy_stream, pilot_manifest, resource_review, archive,
                         finished_status='corrected_sampling_native_finished_independent_review_pending')
                     tries = len(list(claim.glob('try_*.json')))
                     key = row['key']
+                    failures,accounting,accounting_error=tries,None,None
+                    if condition == 'prelaunch_refusal_no_scientific_attempt':
+                        try:
+                            accounting=prelaunch_accounting(Path(row['namespace']),owners.alive,launcher_versions(output))
+                            failures=accounting['prelaunch_failures']
+                        except (OSError,ValueError,subprocess.SubprocessError) as error:
+                            condition='ownership_unverified';accounting_error=repr(error);data=dict(error=accounting_error)
                     if condition == 'prelaunch_refusal_no_scientific_attempt':
                         state['prelaunch_retry_observed'].setdefault(key, time.time())
-                    if shared.ready(condition, tries, state['prelaunch_retry_observed'].get(key, 0), 60, time.time()):
+                    if shared.ready(condition, failures, state['prelaunch_retry_observed'].get(key, 0), 60, time.time()):
                         # Initial pilots were already explicitly authorized; all
                         # other rows can only exist after prepare's pilot gate.
                         eligible.append(row)
                     if condition in ('completed_review_pending', 'scientific_failure_preserved',
                                      'stopped_attempt_preserved', 'guard_start_failed_preserved') and key not in state['accounted_terminal']:
                         terminal.append((data.get('finished', time.time()), key, condition, data.get('owner', data).get('host')))
-                    entries.append(dict(key=key, status=condition, submission_receipts=tries))
+                    entries.append(dict(key=key,status=condition,submission_receipts=tries,prelaunch_failures=failures,
+                                        resource_refusals=accounting['resource_refusals'] if accounting else None,
+                                        prelaunch_accounting_error=accounting_error))
                 for _, key, condition, host in sorted(terminal):
                     state['accounted_terminal'].append(key)
                     if host:

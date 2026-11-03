@@ -86,10 +86,10 @@ establish that a calculation is currently running.
   experimental/speciation or material validation.
 - [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
   all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
-  All three memory-size pilots passed; 88 hybrid gas/SMD inputs now pass
+  All three memory-size pilots passed; 89 hybrid gas/SMD inputs now pass
   independent actual-wavefunction review. The remaining energy roster is
-  released, and six matched native inputs pass independent review.
-  Empty, site-2 and four double-graft native inputs are checked. A maintained
+  released, and eight matched native inputs pass independent review.
+  Empty, site-2 and six double-graft native inputs are checked. A maintained
   native coordinator retains all 240 slots and releases matching followups after
   the largest pilot passes; matching native followups remain active. Complete occupied sampling, ensemble cycles and material
   decisions remain pending. Occupied-only
