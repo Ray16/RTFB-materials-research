@@ -41,19 +41,10 @@ def diagnose(namespace, output):
             or stage.get('error')!="RuntimeError('Source DFT geometry is not a minimum of its own solution surface')"):
         raise ValueError('An actual diagnosed native minimum failure is required')
     owners=load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','counterion_failed_mode_owners')
-    placements=list(case.parent.glob('placement*/launch.json'))
-    if len(placements)!=1:raise ValueError('One actual scientific placement required')
-    launch=read_json(placements[0]);completion=read_json(placements[0].with_name('completion.json'))
-    guard=read_json(case/'residency_guard/owner.json');residency=read_json(case/'residency_guard/state.json')
-    host=read_json(case/'host_guard/status.json')
-    identities=[stage['owner'],dict(host=launch['host'],pid=launch['pid'],process_start=launch['process_start']),launch['budget_observer_owner']]
-    if (any(owners.alive(owner) is not False for owner in identities) or completion['returncode'] in (None,0)
-            or completion['budget_stop'] is not None or not guard['guard_stopped']
-            or residency['foreign_resident_PIDs'] or not residency['own_residency_observed']
-            or (case/'residency_guard/external_interruption.json').exists()
-            or max(host['peak_tree_RSS_bytes'],host['self_VmHWM_bytes'])>40*2**30
-            or host['free_RAM_bytes']<32*2**30):
-        raise ValueError('Closed physical failure without resource or residency interference required')
+    from redox.validation.failed_execution import physical_failure
+    physical_failure(case,read_json,owners.alive,status=expected_status,
+        error="RuntimeError('Source DFT geometry is not a minimum of its own solution surface')",host_GiB=40)
+    used.append(freeze_source(output.parent,Path(physical_failure.__code__.co_filename)))
     geometry=case/'state/opt.xyz';atoms=read(geometry);used.append(geometry)
     paths=list((case/'state/native_thermal').glob('*/hessian_cartesian.npy'))
     if len(paths)!=1:raise ValueError('One complete preserved native Hessian required')

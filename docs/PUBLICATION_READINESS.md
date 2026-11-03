@@ -3,6 +3,16 @@
 As of 2 November 2026, **the workflow and manuscript are not submission ready**.
 The objective is to address the scientific review, validate the maintained
 workflow, and deliver a manuscript whose claims match its released evidence.
+
+The first complete corrected occupied sampling cell now [fails the declared
+10-to-20 tolerance](../validation/corrected_sampling_2026-11-02/README.md):
+conditional ensemble G changes by -2.40 kJ/mol at the primary rotor cutoff,
+with the same failure across all duplicate and rotor scenarios. This is a
+phthalimide method control, separate from the lead's finite ionic cycles.
+Supporting slide 19 now presents that limitation explicitly. Eleven other cells
+and balanced occupied ensemble cycles remain incomplete. Both exact phenothiazine
+native geometries also need refinement: a neutral imaginary mode and an oxidized
+gradient failure are independently reconstructed; neither supplies G or potential.
 Code cleanup, completed example calculations and presentation updates each
 contribute to that objective but do not establish completion.
 

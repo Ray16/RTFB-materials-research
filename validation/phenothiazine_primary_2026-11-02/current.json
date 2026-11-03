@@ -1,6 +1,6 @@
 {
-  "status": "two_electronic_states_checked_neutral_minimum_failed_oxidized_native_recovery_pending",
-  "checked": 1793677572.6947055,
+  "status": "two_electronic_states_checked_both_native_geometries_require_refinement",
+  "checked": 1793680837.6088452,
   "candidate_alias": "phenothiazine",
   "states": [
     {
@@ -8,7 +8,7 @@
       "charge": 0,
       "multiplicity": 1,
       "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_neu/namespace.json",
-      "status": "prepared_not_scientifically_started",
+      "status": "electronic_checked_native_geometry_unqualified",
       "native_G_eV": null,
       "oxidation_potential_V": null,
       "electronic_status": "independently_checked",
@@ -20,24 +20,15 @@
       "charge": 1,
       "multiplicity": 2,
       "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/namespace.json",
-      "status": "prepared_not_scientifically_started",
+      "status": "electronic_checked_native_geometry_unqualified",
       "native_G_eV": null,
       "oxidation_potential_V": null,
       "electronic_status": "independently_checked",
-      "native_status": "fresh_native_preparation_after_closed_startup_interruption",
+      "native_status": "failed_stationarity_independently_reconstructed",
       "native_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_native/phenothiazine_ox_coordinate_01/namespace.json"
     }
   ],
   "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel",
-  "live_controller_status": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/queue/status.json",
-  "controller_owner_verified": {
-    "host": "lambda2",
-    "pid": 1366554,
-    "process_start": "1447298654"
-  },
-  "controller_CPU_affinity": [
-    25
-  ],
   "scientific_starts": 2,
   "route_admission": true,
   "redox_potential_qualified": false,
@@ -86,21 +77,40 @@
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_primary_2026-11-02/oxidized_native_recovery_namespace.json": "3d15ce55428f43a068400311018fd5cb4db10abf4894b66c1f37849d116445de",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_primary_2026-11-02/oxidized_native_recovery_plan.json": "2a95d38c8d0a8ec769998e921baad2d421ff8c502d75d8f69c0c7cf4b45255e5",
     "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_primary_2026-11-02/native_recovery_controller_snapshot.json": "8329e2a254f7cc8e2a40df429ee10ba54ea83fbdb9befca120aabe2ed5f834a9",
-    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_primary_2026-11-02/all_checks.xml": "0526068a692d07225eae1bc79c6679c9195b65c77ae1c350e6aa8d95d1d26533"
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_primary_2026-11-02/all_checks.xml": "0526068a692d07225eae1bc79c6679c9195b65c77ae1c350e6aa8d95d1d26533",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/stationarity_diagnosis.json": "e0b657b05cc22c4891433afe8ec5f76935deba9b573105c7865cbda1a1ba7095",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_shared_failure_review_01.json": "409f950137b95acd7365b972211c19f04037caab7ef0efacfc435c8bc1082f75"
   },
   "checked_electronic_states": 2,
   "native_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_native",
-  "live_native_controller_status": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_native/queue_recovery_01/status.json",
-  "live_native_owner_verified": {
-    "host": "lambda2",
-    "pid": 1674797,
-    "process_start": "1447783018"
-  },
   "neutral_minimum_frequency_cm": -25.465953398577955,
   "neutral_standard_native_SCF_frames_checked": 9,
   "neutral_extra_sulfur_columns_completed": false,
   "neutral_geometry_refinement_pending": true,
   "coordinate_extension_fix": "Added probes now use the native center checkpoint; the failed neutral minimum occurred before any added probes",
   "first_oxidized_startup": "Foreign resident interrupted runtime initialization before scientific program/SCF/Hessian entry; original namespace retained",
-  "automatic_scientific_retries_performed": 0
+  "automatic_scientific_retries_performed": 0,
+  "oxidized_maximum_gradient_Ha_Bohr": 0.0004573599706238625,
+  "oxidized_source_Hessian_computed": false,
+  "oxidized_geometry_refinement_pending": true,
+  "geometry_refinement_current": [
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_geometry_2026-11-02/current.json",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/current.json"
+  ],
+  "historical_live_native_owner_verified": {
+    "host": "lambda2",
+    "pid": 1674797,
+    "process_start": "1447783018"
+  },
+  "historical_live_controller_status": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/queue/status.json",
+  "historical_controller_owner_verified": {
+    "host": "lambda2",
+    "pid": 1366554,
+    "process_start": "1447298654"
+  },
+  "historical_controller_CPU_affinity": [
+    25
+  ],
+  "native_controller_scope": "Original native attempts ended; fresh geometry coordinators are tracked in geometry_refinement_current",
+  "historical_live_native_controller_status": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_native/queue_recovery_01/status.json"
 }

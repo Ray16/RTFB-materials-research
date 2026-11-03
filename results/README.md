@@ -33,12 +33,17 @@ establish that a calculation is currently running.
 - [Unsubstituted phenothiazine primary comparison](../validation/phenothiazine_primary_2026-11-02/README.md):
   both exact electronic states pass independent corrected-integration review.
   The neutral native calculation reveals a -25.47-cm-1 failed minimum; signed
-  refinement seeds are prepared. The oxidized native stage has a preserved startup
-  interruption and a fresh queued recovery. Potential and G remain pending.
+  refinement seeds are prepared. The oxidized native recovery fails its actual
+  gradient gate (0.00045736 versus 0.00045 Ha/Bohr); strict refinement is queued.
+  Potential and G remain pending.
 - [Neutral phenothiazine geometry refinement](../validation/phenothiazine_geometry_2026-11-02/README.md):
   both signed saddle-mode branches are prepared and queued for strict primary
   optimization and fresh independent geometry review. Their energies and nuclear
   terms must be recomputed at any accepted new geometry; G/potential stay blank.
+- [Oxidized phenothiazine geometry refinement](../validation/phenothiazine_oxidized_geometry_2026-11-02/README.md):
+  the +1-doublet stationarity failure is independently reconstructed from its
+  actual SCF/wavefunction. Fresh strict geometry work is queued; the original
+  failure and earlier prelaunch interruptions remain preserved. No G is admitted.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.
@@ -74,9 +79,14 @@ establish that a calculation is currently running.
   mode and own-nuclear-term review. The original complete response and Hessian
   are preserved; no second response solve or ensemble admission is claimed.
 - [Full sampling snapshot audit](../validation/corrected_sampling_2026-11-02/README.md):
-  90 checked electronic and 18 checked native inputs retain their exact source,
+  100 checked electronic and 31 checked native inputs retain their exact source,
   graph, method and own component sums. All 240 pending/completed slots remain
   visible. This is receipt verification, not a fresh quantum repeat or an ensemble.
+- [First complete occupied conformer comparison](../validation/corrected_sampling_2026-11-02/occupied_batch_comparison_02.json):
+  the 20-start adjacent all-same phthalimide control has 20 distinct minima.
+  Expanding 10 to 20 shifts ensemble G by -2.40 kJ/mol at the main cutoff,
+  beyond the declared 2-kJ tolerance at every tested rotor/duplicate setting.
+  Eleven other cells and all balanced occupied ensemble cycles remain pending.
 - [Exact 2-cyanophenothiazine precursor access](../validation/phenothiazine_precursor_access_2026-11-02/README.md):
   one supplier-deposited N-H graph matches a new direct N-linked design.
   Its molecular N-butyl analogue supplies structural evidence only. The route

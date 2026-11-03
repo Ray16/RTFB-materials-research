@@ -4,14 +4,14 @@
   "main_frames": 16,
   "supporting_frames": 7,
   "source_sha256": {
-    "slides/redox_workflow.tex": "2896ad72613cc2bef465f7a892280290aca4928124bdee25c8fa82c6ac8e626b",
+    "slides/redox_workflow.tex": "2045c4db2fc90184578c5134156cac80d3776143ce8b72b9723747c6d0550fef",
     "slides/story/motivation_results.tex": "e8c236acf38f7fd8878861dfa58e3e55372190adf286dd2e6bc01e6adcd25a93",
-    "slides/story/supporting.tex": "801dd8041c378b29e2a9c36c48db9abfa2773fd8e117c86b8710b50c2c11f98a",
+    "slides/story/supporting.tex": "04eda6b425ce565e7e3a2facd4e91ccd0df59b4b60075070ea7afd52e63fb7d7",
     "manuscript/evidence/2026-11-02_four_ionic_cycles/tempo_solution_values.tex": "965f77736a4f36791303dd1a0e26c7911e71e24012b5b684fc25901dce288c9a",
     "manuscript/check_tempo_solution.py": "0dd7e9a8d95d1cf4b9fd946b475ad9c16dbbc87e93e9d955d781c9e4b5582349",
     "manuscript/evidence/2026-11-02_four_ionic_cycles/viologen_native_values.tex": "098e3221c2efaace1d793d99f5c0a3db3f1eb792f38c4bdb558fcf395b428d6d",
     "manuscript/check_viologen_native.py": "d5ba67ff44b4e5075cc0d2ecac851373bb36fe571c7502bb17216a536e2ceeda",
-    "slides/build.py": "69a22266e44faed4fc9f9606cc1e01b2f88a581398a67ec47bd973371780af62",
+    "slides/build.py": "7ab27810baa172fc024fa80e0cc7b40480829cca06c3e742722f5b8cbb15aeb8",
     "manuscript/evidence/2026-11-02_four_ionic_cycles/viologen_grafting_values.tex": "8b27c6b7a14119d181dcffef153b606b88cb36df48408d01e22fa09b2deae40c",
     "manuscript/check_viologen_grafting.py": "f3ff228a4b00a2f3d5ed339f5f0cd921b9f80768aa0f86ddc34c6b891d174862",
     "manuscript/evidence/2026-11-02_four_ionic_cycles/ionic_native_component_review.json": "11dc3758061ead48b087b9713384a90d8408ca734d561e564e65028d857309f8",
@@ -127,6 +127,17 @@
     "manuscript/evidence/2026-11-02_four_ionic_cycles/registry_update_checker_source.py": "fe86cd386d1774dd383f519f857be97ab904b2557a67410717c3f2afe33e20e4",
     "manuscript/evidence/2026-11-02_four_ionic_cycles/registry_update_reference_check.json": "58fdc49f8d0c1cd32a1800b6ee4e57697eddfc5ef25bedfb5dc49348c4516e53",
     "manuscript/evidence/2026-11-02_four_ionic_cycles/registry_update_negative_checks.json": "da6c627fc65c22b73d8bc03c8a630f4360fbe4604f3f91baa7fbb010ff1eb560",
+    "slides/check_sampling.py": "b87fdc1635fb0aff9b2a610d2463973ad419b9bec7e3aa8de971f8dba1e88253",
+    "src/redox/validation/sampling_batches.py": "9ee66d5e8001e70c27a02b5896bab8c6f6683b99f939f54021dd79f61911bde9",
+    "src/redox/validation/native_conformer_batches.py": "67300f826c0f23acbf14ad1ec9c303b946bc97e13889898e29b0291e24eed9f1",
+    "scripts/plotting/plot_occupied_sampling.py": "4143c347439b7b43ee75e82b341bf8f46ef70789383749cde2410e6bf59291d0",
+    "slides/evidence/2026-11-02_occupied_sampling/native_snapshot.json": "edf9b4140a5abe7f5d75c2399224f42a0a331d463f939ce3970aec77f99f595c",
+    "slides/evidence/2026-11-02_occupied_sampling/receipt_audit.json": "c4ad60ce13ee38687b0b46996aa3313dfebf2daf2825214cba26bf7a4b20aefe",
+    "slides/evidence/2026-11-02_occupied_sampling/sampling_contract.json": "a9605328ff11d94b9215141447de6549bfd0d372bc5fc30724d86f032a1a5370",
+    "slides/evidence/2026-11-02_occupied_sampling/finite_batches.json": "6dc774aff5e09088a0b856861a9e738f58958e161570e6e980ab94fcbcc89899",
+    "slides/evidence/2026-11-02_occupied_sampling/values.tex": "5a555a524cdeea5303db14b209a53b0c19eb7d293bf37bc97d80f8b325921b38",
+    "slides/evidence/2026-11-02_occupied_sampling/manifest.json": "302b8fd3d7dc4a218334dbedbafc37f8055b9d6a5400c1ccc11981016963663e",
+    "slides/evidence/2026-11-02_occupied_sampling/figure.json": "9f33ac71a40c49f2e69a34c675d00dd070a4243d9129a46cb99102d3ae472290",
     "results/figures/slides/2026-10-30_tempo/pmdi_neighbor_geometry.pdf": "ca365e13a28289605d83293a3da6381a863726682161ff5c49f21c379938f4a1",
     "results/figures/slides/2026-10-30_tempo/library.pdf": "b83ecaff3d9a128343fc444795a8c9ad23b80635fb08afc83be307d5fda3201e",
     "results/figures/slides/2026-10-30_tempo/matched_pmdi.pdf": "d8f86a9dbd9ded3cdc978ccdb5afc71858e224f6c4a7dbabc7c675955abc19e1",
@@ -140,10 +151,11 @@
     "results/figures/manuscript/2026-11-02_three_ionic_cycles/viologen_interaction_definitions.pdf": "92f378847476f615a009339989bb5586c919a2e04fe0f51003f708a6cf3a6df3",
     "results/figures/slides/2026-10-30_tempo/local_motif_contacts.pdf": "dca7140e2a2108a23927f84f82f400a049e0cbdf86b7f5c02b7ad3c3592aa2bc",
     "results/figures/slides/2026-10-30_tempo/descriptor_projection.pdf": "21a7cf3d16ebea0d8833072263b95e11dadd5d7438a43a3bcf5f290415af1635",
-    "results/figures/slides/2026-10-30_tempo/bias.pdf": "583812f0313b5486149a590b9ea0fc64f815e423ff8fb34322776186ae021376"
+    "results/figures/slides/2026-10-30_tempo/bias.pdf": "583812f0313b5486149a590b9ea0fc64f815e423ff8fb34322776186ae021376",
+    "results/figures/slides/occupied_sampling_convergence.pdf": "9f77c46a1f40b3ba95dce52cdd6ada5a27fda47770912493694c401ab77588c8"
   },
-  "pdf_sha256": "eba5ab641800982baff7a41e27e90d1a01a31b73a808dc3e28ba5d1a810fc71f",
-  "build_logs": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/slides_builds/redox_story_i167dj_t",
+  "pdf_sha256": "e5273c118170b8681d48dfecabf96c838130dbadd7b9f4dda2f67b6bca4a5705",
+  "build_logs": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/slides_builds/redox_story_uyebtmii",
   "overfull_boxes": [],
   "ionic_cycle_check": {
     "checked_components": 12,
@@ -234,6 +246,29 @@
     "prior_evaluations_unchanged": true,
     "raw_quantum_records_revalidated": false,
     "new_quantum_calculations": false
+  },
+  "sampling_check": {
+    "model_key": "all_same__occ_2_3",
+    "checked_inputs": 20,
+    "distinct_minima": 20,
+    "ensemble_G_change_kJ_mol": {
+      "25": -2.551025405676002,
+      "50": -2.398701609421648,
+      "100": -2.5367943721273347
+    },
+    "minimum_E_change_kJ_mol": -3.882729070752948,
+    "tolerance_kJ_mol": 2.0,
+    "within_batch_tolerance": false,
+    "RMSD_and_partition_analysis_repeated": true,
+    "original_physical_QC_repeated": false,
+    "occupied_ensemble_cycles_qualified": false,
+    "numbers": [
+      "2.55",
+      "2.40",
+      "2.54",
+      "2.00",
+      "3.88"
+    ]
   },
   "visual_review": "pending; record separately bound to this PDF",
   "submission_ready": false

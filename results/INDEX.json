@@ -428,15 +428,15 @@
     },
     "corrected_polymer_sampling": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
-      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_12.json",
+      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_13.json",
       "source_snapshot": "validation/corrected_sampling_2026-11-02/recovery_manifest_03.json",
       "protocol": "validation/corrected_sampling_2026-11-02/sampling_contract.json",
       "live_observation": "validation/corrected_sampling_2026-11-02/full_campaign_observation_04.json",
       "checkpoint_control": "validation/corrected_sampling_2026-11-02/occupied_equivalence.json",
       "checks": "validation/corrected_sampling_2026-11-02/native_queue_checks_05.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5",
-      "status": "90_electronic_eighteen_native_inputs_checked_resource_refusals_reeligible",
-      "scope": "All 240 slots preserved. 90 electronic and eighteen native inputs independently checked; occupied ensembles incomplete. Five closed resource refusals retain retry eligibility without consuming the failure budget.",
+      "status": "100_electronic_31_native_one_complete_occupied_cell_fails_sampling_tolerance",
+      "scope": "All 240 slots preserved. First complete adjacent all-same phthalimide control cell has 20 distinct minima; 10-to-20 ensemble G changes -2.40 kJ/mol at cutoff 50, beyond the declared 2-kJ tolerance. Balanced occupied cycles remain incomplete; no primary-candidate or material admission.",
       "checked_energy": "validation/corrected_sampling_2026-11-02/empty_pilot_review.json",
       "checked_single_energy": "validation/corrected_sampling_2026-11-02/single_pilot_review.json",
       "prepared_manifest": "validation/corrected_sampling_2026-11-02/PSS_prepared_manifest.json",
@@ -446,15 +446,16 @@
       "queue_status": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json",
       "native_checked": "validation/corrected_sampling_2026-11-02/empty_native_review.json",
       "native_checked_single": "validation/corrected_sampling_2026-11-02/single_native_review.json",
-      "native_collection": "validation/corrected_sampling_2026-11-02/native_collection_05.json",
+      "native_collection": "validation/corrected_sampling_2026-11-02/native_collection_06.json",
       "native_queue_snapshot": "validation/corrected_sampling_2026-11-02/native_queue_status_03.json",
       "native_queue_status": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/status.json",
-      "native_reader_check": "validation/corrected_sampling_2026-11-02/sampling_snapshot_audit_01.json",
+      "native_reader_check": "validation/corrected_sampling_2026-11-02/sampling_snapshot_audit_02.json",
       "controller_observation": "validation/corrected_sampling_2026-11-02/controller_observation_03.json",
       "native_checked_double": "validation/corrected_sampling_2026-11-02/double_native_review.json",
       "native_followup_observation": "validation/corrected_sampling_2026-11-02/native_followup_observation_01.json",
       "successor_queue_launch": "validation/corrected_sampling_2026-11-02/energy_queue_resume_03.json",
-      "initial_native_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native"
+      "initial_native_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native",
+      "finite_batch_analysis": "validation/corrected_sampling_2026-11-02/occupied_batch_comparison_02.json"
     },
     "counterion_geometry_sensitivity": {
       "guide": "validation/counterion_sensitivity_2026-11-02/README.md",
@@ -531,12 +532,12 @@
     },
     "corrected_sampling_snapshot_audit": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
-      "current": "validation/corrected_sampling_2026-11-02/sampling_snapshot_audit_01.json",
-      "source_snapshot": "validation/corrected_sampling_2026-11-02/native_collection_05.json",
+      "current": "validation/corrected_sampling_2026-11-02/sampling_snapshot_audit_02.json",
+      "source_snapshot": "validation/corrected_sampling_2026-11-02/native_collection_06.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups",
       "checks": "validation/corrected_sampling_2026-11-02/snapshot_catalog_checks.xml",
-      "status": "90_electronic_18_native_receipts_and_full_240_slot_identity_rechecked",
-      "scope": "Own electronic/nuclear sums and context retained; 306 previously reviewed SCF frames represented. Same-input repeat differs by 4.37e-11 eV; no fresh SCF/Hessian execution or ensemble qualification."
+      "status": "100_electronic_31_native_receipts_and_full_240_slot_identity_rechecked",
+      "scope": "Own electronic/nuclear sums and exact contexts retained; 527 previously reviewed SCF frames represented. No fresh quantum execution or balanced occupied ensemble cycle qualification."
     },
     "phenothiazine_primary_comparison": {
       "guide": "validation/phenothiazine_primary_2026-11-02/README.md",
@@ -545,17 +546,38 @@
       "protocol": "validation/phenothiazine_primary_2026-11-02/calculation_contract.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel",
       "checks": "validation/phenothiazine_primary_2026-11-02/focused_checks.xml",
-      "status": "two_electronic_states_checked_neutral_minimum_failed_oxidized_native_recovery_pending",
-      "scope": "Both exact electronic states independently checked, maximum corrected/stored difference 5.19e-11 Ha. Neutral native geometry fails with a -25.47 cm-1 mode; signed repair seeds prepared, no G admitted. Oxidized native startup interruption preserved and fresh recovery queued; own native/S columns/reference remain pending."
+      "status": "two_electronic_states_checked_both_native_geometries_require_refinement",
+      "scope": "Both exact fixed-geometry electronic states independently checked. Neutral has -25.47 cm-1 internal mode; oxidized actual gradient 0.00045735997 Ha/Bohr exceeds 0.00045. Fresh strict neutral signed and oxidized-doublet geometry refinements queued; own electronic/native/S-column/reference checks still required. G and potential blank."
     },
     "phenothiazine_neutral_geometry_refinement": {
       "guide": "validation/phenothiazine_geometry_2026-11-02/README.md",
       "current": "validation/phenothiazine_geometry_2026-11-02/current.json",
-      "source_snapshot": "validation/phenothiazine_geometry_2026-11-02/prepared_manifest.json",
-      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs",
-      "checks": "validation/phenothiazine_geometry_2026-11-02/focused_checks.xml",
-      "status": "two_signed_neutral_refinements_prepared_and_queued",
-      "scope": "Both +/-0.1-Angstrom neutral-singlet mode branches queued under the unchanged strict primary geometry method, 39 atoms/397 AOs and 32-GB class. Existing workers preserved during a verified admission-controller handoff. Fresh electronic/native/S-column/minimum checks remain required; G/potential blank."
+      "source_snapshot": "validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_private_manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2",
+      "checks": "validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml",
+      "status": "two_signed_neutral_refinements_queued_with_private_evidence",
+      "scope": "Both neutral-singlet +/-0.1-Angstrom seeds retained in archive-visible v2 namespaces. Old preflight-only attempts/controllers closed and preserved. Strict 32-GB-class geometry, fresh high-level energy and full own native checks required; no scientific starts at the observation, G/potential blank."
+    },
+    "corrected_native_finite_batches": {
+      "guide": "validation/corrected_sampling_2026-11-02/README.md",
+      "current": "validation/corrected_sampling_2026-11-02/occupied_batch_comparison_02.json",
+      "source_snapshot": "validation/corrected_sampling_2026-11-02/native_collection_06.json",
+      "protocol": "validation/corrected_sampling_2026-11-02/sampling_contract.json",
+      "receipt_audit": "validation/corrected_sampling_2026-11-02/sampling_snapshot_audit_02.json",
+      "checks": "validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups",
+      "status": "one_complete_occupied_cell_fails_nested_batch_tolerance",
+      "scope": "Complete corrected phthalimide control cell only. All 20 wells distinct under 0.05/0.1/0.2-Angstrom numerical-duplicate rules; 10-to-20 comparison fails at every rotor setting. Other eleven cells and balanced cycles remain pending. No global sampling or experimental occupancy claim."
+    },
+    "phenothiazine_oxidized_geometry_refinement": {
+      "guide": "validation/phenothiazine_oxidized_geometry_2026-11-02/README.md",
+      "current": "validation/phenothiazine_oxidized_geometry_2026-11-02/current.json",
+      "source_snapshot": "validation/phenothiazine_oxidized_geometry_2026-11-02/oxidized_private_manifest.json",
+      "diagnosis": "validation/phenothiazine_oxidized_geometry_2026-11-02/stationarity_diagnosis.json",
+      "checks": "validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2",
+      "status": "oxidized_gradient_failure_checked_strict_refinement_queued",
+      "scope": "Actual closed +1-doublet failed-gradient SCF independently reconstructed. Fresh strict geometry-only profile and archive-visible evidence, no reduced thresholds or old-geometry energy transfer. Waiting coordination verified separately from scientific starts; G/potential remain blank."
     }
   }
 }

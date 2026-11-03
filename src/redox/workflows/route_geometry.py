@@ -10,8 +10,10 @@ import json
 import os
 from pathlib import Path
 import shutil
+import hashlib
 
 PROFILE='phenothiazine_signed_neutral_geometry_v1'
+OXIDIZED_PROFILE='phenothiazine_oxidized_stationarity_geometry_v1'
 SMILES='Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1'
 METHOD=dict(xc='r2scan',basis='def2-svp',disp='d4',solvent='acetonitrile',
     solvent_model='primary SMD with legacy CDS',SCF_conv_tol=1e-12,SCF_conv_tol_grad=1e-8,
@@ -20,20 +22,37 @@ CONVERGENCE=dict(convergence_energy=1e-9,convergence_grms=5e-6,convergence_gmax=
     convergence_drms=1e-4,convergence_dmax=2e-4)
 
 
+def visible_bindings(bindings,sources,logical_root):
+    """Freeze current-checkout evidence that an archive bind would otherwise hide."""
+    result={}
+    for name,digest in bindings.items():
+        path=Path(name)
+        if hashlib.sha256(path.read_bytes()).hexdigest()!=digest:raise ValueError('Evidence changed before namespace capture')
+        if path.resolve().is_relative_to(logical_root.resolve()):
+            target=sources/'bound_evidence'/digest/path.name;target.parent.mkdir(parents=True,exist_ok=True)
+            if not target.exists():shutil.copyfile(path,target)
+            if hashlib.sha256(target.read_bytes()).hexdigest()!=digest:raise ValueError('Private evidence bytes differ')
+            result[str(target)]=digest
+        else:result[name]=digest
+    return result
+
+
 def validate_plan(plan):
+    oxidized=plan.get('route_geometry_profile')==OXIDIZED_PROFILE
     expected=dict(role='route_primary_geometry_control',first_route_geometry_repair=True,
-        route_geometry_profile=PROFILE,candidate_alias='phenothiazine',smiles=SMILES,charge=0,mult=1,
+        route_geometry_profile=OXIDIZED_PROFILE if oxidized else PROFILE,candidate_alias='phenothiazine',smiles=SMILES,
+        charge=1 if oxidized else 0,mult=2 if oxidized else 1,
         atoms=39,nao=397,method=METHOD,optimizer_convergence=CONVERGENCE,
         maximum_host_RSS_GiB=32,minimum_free_GiB=32,minimum_GPU_memory_MiB=31744,
         maximum_peak_GPU_MiB=31744,maximum_wall_seconds=14400,maximum_durable_output_bytes=2*2**30,
         minimum_initial_storage_GiB=64,minimum_live_storage_GiB=32,geometry_qualified=False,
         Hessian_computed=False,native_G_qualified=False,material_admission=False)
     if (any(plan.get(k)!=v for k,v in expected.items())
-            or plan.get('source_id') not in ('phenothiazine_neu_mode_minus','phenothiazine_neu_mode_plus')
-            or plan.get('seed',{}).get('sign') not in (-1,1)
-            or plan.get('seed',{}).get('maximum_atom_displacement_A')!=.1
+            or plan.get('source_id') not in (('phenothiazine_ox_stationarity',) if oxidized else ('phenothiazine_neu_mode_minus','phenothiazine_neu_mode_plus'))
+            or plan.get('seed',{}).get('sign') not in ((0,) if oxidized else (-1,1))
+            or plan.get('seed',{}).get('maximum_atom_displacement_A')!=(0. if oxidized else .1)
             or plan.get('geometry_memory_pilot')):
-        raise ValueError('Only the exact neutral phenothiazine signed geometry repairs are admitted')
+        raise ValueError('Only the exact diagnosed phenothiazine geometry repairs are admitted')
     return expected
 
 
@@ -46,37 +65,43 @@ def prepare(diagnosis,output):
     from redox.workflows.molecular_native_namespace import verify
     from redox.validation.protonation import hydrogen_topology_status
     report=json.loads(diagnosis.read_text())
-    if (report['status']!='route_primary_unstable_native_mode_independently_reconstructed'
-            or report['native_G_qualified'] or report['charge']!=0 or report['mult']!=1
-            or report['minimum_frequency_cm']>=-5
+    oxidized=report['status']=='route_primary_stationarity_failure_independently_reconstructed'
+    if ((report['status']!='route_primary_unstable_native_mode_independently_reconstructed' and not oxidized)
+            or report['native_G_qualified'] or (report['charge'],report['mult'])!=((1,2) if oxidized else (0,1))
+            or (report['maximum_gradient_Ha_Bohr']<=.00045 if oxidized else report['minimum_frequency_cm']>=-5)
             or any(sha256_file(p)!=h for p,h in report['source_sha256'].items())):
         raise ValueError('An actual independently reconstructed closed failed minimum is required')
     original=verify(Path(report['namespace']));old=json.loads((Path(original['case'])/'plan.json').read_text())
-    if old['smiles']!=SMILES:raise ValueError('Exact route-admitted neutral graft required')
+    if old['smiles']!=SMILES:raise ValueError('Exact route-admitted graft required')
     if output.exists() or any(output.is_relative_to(Path(original[k])) for k in ('prior_root','archive','case','sources')):
         raise FileExistsError('Use fresh durable repair outputs outside scientific source trees')
-    atoms=read(report['geometry']);mode=np.load(report['signed_mode'],allow_pickle=False)
+    atoms=read(report['geometry']);mode=np.zeros((39,3)) if oxidized else np.load(report['signed_mode'],allow_pickle=False)
     if mode.shape!=(39,3) or not np.isfinite(mode).all():raise ValueError('Actual Cartesian signed mode required')
     rows=[]
-    for sign,label in ((-1,'minus'),(1,'plus')):
+    for sign,label in (((0,'oxidized'),) if oxidized else ((-1,'minus'),(1,'plus'))):
         root=output/label;case=root/'case';sources=root/'sources';case.mkdir(parents=True);sources.mkdir()
         for name in ('dft','locks','repairs'):(case/name).mkdir()
         for name in ('checkpoints.py','helper.py','kernel.cu','host_guard.py'):
             shutil.copyfile(Path(original['sources'])/name,sources/name)
         for source,name in ((ROOT/'scripts/validation/run_counterion_geometry.py','worker.py'),
-                (Path(__file__),'route_geometry_profile.py'),(diagnosis,'failed_mode_diagnosis.json'),
-                (Path(report['signed_mode']),'failed_mode.npy'),(Path(original['sources'])/'route_gate.json','route_gate.json')):
+                (Path(__file__),'route_geometry_profile.py'),(diagnosis,'source_failure_diagnosis.json'),
+                (Path(original['sources'])/'route_gate.json','route_gate.json')):
             shutil.copyfile(source,sources/name)
-        seed=atoms.copy();seed.positions+=sign*.1*mode;write(case/'input.xyz',seed,format='xyz')
+        if not oxidized:shutil.copyfile(report['signed_mode'],sources/'failed_mode.npy')
+        seed=atoms.copy();seed.positions+=sign*.1*mode
+        if oxidized:shutil.copyfile(report['geometry'],case/'input.xyz')
+        else:write(case/'input.xyz',seed,format='xyz')
         if hydrogen_topology_status(SMILES,case/'input.xyz')!='ok':raise ValueError('Signed seed changed the intended graph')
-        plan=dict(role='route_primary_geometry_control',first_route_geometry_repair=True,route_geometry_profile=PROFILE,
-            candidate_alias='phenothiazine',source_id='phenothiazine_neu_mode_'+label,state='neutral_geometry_repair',
-            smiles=SMILES,charge=0,mult=1,atoms=39,nao=397,method=METHOD,optimizer_convergence=CONVERGENCE,
-            seed=dict(sign=sign,maximum_atom_displacement_A=.1,source_Hessian_sha256=report['Hessian_sha256'],source_diagnosis=str(diagnosis)),
+        evidence=visible_bindings({**old['source_sha256'],**report['source_sha256']},sources,ROOT)
+        plan=dict(role='route_primary_geometry_control',first_route_geometry_repair=True,route_geometry_profile=OXIDIZED_PROFILE if oxidized else PROFILE,
+            candidate_alias='phenothiazine',source_id='phenothiazine_ox_stationarity' if oxidized else 'phenothiazine_neu_mode_'+label,
+            state='oxidized_geometry_repair' if oxidized else 'neutral_geometry_repair',
+            smiles=SMILES,charge=report['charge'],mult=report['mult'],atoms=39,nao=397,method=METHOD,optimizer_convergence=CONVERGENCE,
+            seed=dict(sign=sign,maximum_atom_displacement_A=0. if oxidized else .1,source_Hessian_sha256=report.get('Hessian_sha256'),source_diagnosis=str(diagnosis)),
             maximum_host_RSS_GiB=32,minimum_free_GiB=32,minimum_GPU_memory_MiB=31744,maximum_peak_GPU_MiB=31744,
             maximum_wall_seconds=14400,maximum_durable_output_bytes=2*2**30,minimum_initial_storage_GiB=64,minimum_live_storage_GiB=32,
             geometry_qualified=False,Hessian_computed=False,native_G_qualified=False,material_admission=False,
-            source_sha256={**old['source_sha256'],**report['source_sha256'],
+            source_sha256={**evidence,
                 **{str(p):sha256_file(p) for p in [*sources.iterdir(),case/'input.xyz'] if p.is_file()}})
         validate_plan(plan);atomic_write_json(case/'plan.json',plan)
         spec=dict(prior_root=original['prior_root'],archive=original['archive'],case=str(case),sources=str(sources),
@@ -84,7 +109,7 @@ def prepare(diagnosis,output):
             maximum_host_RSS_GiB=32,minimum_free_GiB=32,scientific_sources_read_only=True)
         atomic_write_json(root/'namespace.json',spec);verify(root/'namespace.json')
         rows.append(dict(key=plan['source_id'],namespace=str(root/'namespace.json'),namespace_sha256=sha256_file(root/'namespace.json'),launcher_module='redox.workflows.route_geometry'))
-    result=dict(status='two_signed_neutral_geometry_controls_prepared',states=rows,source_diagnosis=str(diagnosis),
+    result=dict(status='oxidized_stationarity_geometry_control_prepared' if oxidized else 'two_signed_neutral_geometry_controls_prepared',states=rows,source_diagnosis=str(diagnosis),
         quantum_jobs_submitted=0,native_G_qualified=False,material_admission=False)
     atomic_write_json(output/'manifest.json',result);return result
 
@@ -93,8 +118,9 @@ def qualified_rows(manifest):
     from redox.core.hashing import sha256_file
     from redox.workflows.molecular_native_namespace import verify
     rows=json.loads(manifest.read_text())['states']
-    if len(rows)!=2 or {r['key'] for r in rows}!={'phenothiazine_neu_mode_minus','phenothiazine_neu_mode_plus'}:
-        raise ValueError('Both signed branches must remain explicit')
+    keys={r['key'] for r in rows}
+    if len(keys)!=len(rows) or keys not in ({'phenothiazine_neu_mode_minus','phenothiazine_neu_mode_plus'},{'phenothiazine_ox_stationarity'}):
+        raise ValueError('The complete declared signed or stationarity-repair set must remain explicit')
     for row in rows:
         if row.get('launcher_module')!='redox.workflows.route_geometry' or sha256_file(row['namespace'])!=row['namespace_sha256']:
             raise ValueError('Exact namespace and maintained launcher required')

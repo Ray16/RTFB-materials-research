@@ -1,16 +1,57 @@
 # Complete corrected polymer-sampling cohort
 
+## First complete corrected occupied cell
+
+The [new source-bound audit](sampling_snapshot_audit_02.json) verifies 100
+electronic and 31 native inputs, representing 527 previously checked actual
+SCF frames. Every slot in the 240-input roster remains present. These are
+receipt/context/component checks, not new quantum repeats. The
+[publication receipt](snapshot_relocation_02.json) identifies byte-identical
+canonical copies of the snapshots captured during the molecular refinement work.
+Their chemistry is the phthalimide polymer method control, not phenothiazine.
+
+The [finite-batch analysis](occupied_batch_comparison_02.json) now covers the first
+complete occupied cell: all-same backbone, adjacent graft sites 2 and 3, twenty
+checked starts. Proper-rotation, chirality-preserving symmetry comparisons of
+all exact heavy-atom graphs find twenty numerical minima at all three declared
+RMSD cutoffs (0.05, 0.1 and 0.2 Angstrom), each with the same 0.2-kJ/mol
+electronic duplicate tolerance. Each native component retains its own checked
+high-level electronic parent, nuclear terms, temperature, translation convention
+and exact solvent/native/thermal protocols. Search hits are never degeneracies.
+
+The declared 10-to-20 comparison **fails** its 2-kJ/mol tolerance. At the primary
+50-cm-1 rotor cutoff, minimum electronic energy changes by -3.883 kJ/mol, minimum
+G by -0.650 kJ/mol and conditional finite-set ensemble G by -2.399 kJ/mol. The
+ensemble changes at 25 and 100 cm-1 are -2.551 and -2.537 kJ/mol. All three
+RMSD scenarios give the same conclusion. Twenty starts do not establish sampling
+convergence; a future expansion must retain the original protocol and inputs
+rather than loosen the tolerance. The remaining eleven cells are explicitly
+incomplete, so this analysis supplies no balanced occupied ensemble cycle.
+Backbone configurations, source-parent/primary models and experimental occupancy
+probabilities are not pooled or inferred. The earlier two empty-backbone
+comparisons remain a separately scoped historical cohort.
+
+Use `python -m redox.validation.sampling_batches --help` for the maintained
+read-only entry point. Supply a frozen native snapshot, its matching receipt
+audit and the predeclared sampling contract. The historical relocated analyzer
+and this corrected-cohort reader share the same finite-batch/duplicate kernel.
+Mixed physical contexts, changed geometry/receipt hashes and incomplete rosters
+are refused. The [116 focused software checks](../phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml)
+include these boundary cases and the shared thermodynamic/geometry routines.
+
+## Pilot qualification and earlier receipt audits
+
 The [largest native pilot](double_native_review.json) now passes independent
 full-Hessian, sampled-gradient, actual-wavefunction and nuclear-partition review.
 Its 17 SCF frames are checked, its lowest internal mode is 6.4952 cm⁻¹ and its
 GPU/host peaks are 24,062 MiB / 32.08 GiB. This releases matching native inputs
 under the unchanged 31-GiB-GPU / 80-GiB-host bound. The
-[new native collection](native_collection_05.json) contains eighteen checked inputs;
+[new native collection](native_collection_06.json) contains 31 checked inputs;
 the remaining native and ensemble quantities are pending. Later preparation and
 live scheduling counts are separate from this frozen collection.
 
 
-The [full frozen-snapshot audit](sampling_snapshot_audit_01.json) rechecks all
+The earlier [90/18 frozen-snapshot audit](sampling_snapshot_audit_01.json) rechecked all
 90 electronic and 18 native receipts, including every declared pending identity
 against the source-bound 240-slot manifests. The native records represent 306
 previously reviewed actual SCF frames; this audit does not repeat SCF or Hessian
@@ -68,15 +109,15 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_12.json) has
-90 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_13.json) has
+100 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
 ensemble cycle is supplied by this electronic collection.
 
-The separate [native collection](native_collection_05.json) retains all 240
-slots with eighteen checked G inputs. Its [controller snapshot](native_queue_status_03.json)
+The separate [native collection](native_collection_06.json) retains all 240
+slots with 31 checked G inputs. Its [controller snapshot](native_queue_status_03.json)
 and [process observation](native_followup_observation_01.json) distinguish
 active coordination, the live largest pilot and physical qualification.
 
@@ -104,7 +145,7 @@ comparison does not requalify source convergence or calculate new E/G.
 Actual CPU SCF equality, density restart, interruption retention, orbital-metric
 corruption rejection and multiple-guess restoration also pass tests.
 
-## Starts, resource checks and pending results
+## Historical launch and resource milestones
 
 ### Qualified PSS profile and released electronic cohort
 
@@ -142,7 +183,7 @@ all pending inputs. A ready smaller job can fill remaining host RAM when the
 queue's first larger job does not fit; RAM promised to starting workers is
 accounted separately. This improves utilization without changing resource bounds.
 
-### Native thermochemistry
+### Earlier native pilot progress (superseded)
 
 The [three native pilot namespaces](native_pilot_manifest.json) run the original
 smooth-model native equations under corrected screening. Their electronic inputs
@@ -153,8 +194,9 @@ All three center SCFs and matched SCF/CPHF grids have been saved. The
 reconstruction: 17 actual SCF frames, a 9.9656-cm⁻¹ minimum, sampled derivatives
 and its own three nuclear partitions. The [site-2 single graft](single_native_review.json)
 also passes its own 17-frame, derivative, mode and nuclear reconstruction, with
-a minimum frequency of 11.0972 cm⁻¹. The largest native pilot, complete occupied
-sampling and ensemble cycles remain pending.
+a minimum frequency of 11.0972 cm⁻¹. At that earlier observation the largest native pilot was pending; it has since
+passed as recorded above. Complete occupied sampling and balanced ensemble
+cycles remain pending.
 
 The dimension witness separates a 119-atom corrected full Hessian that completed
 before its producer's wall stop from its subsequently completed derivative/mode
@@ -166,13 +208,13 @@ adapts only the historical guard fields and adds exact execution, actual orbital
 grid and original-equation response checks. Full virtual-orbital checkpoints are
 retained for native recovery; raw Krylov vectors are not part of this bulk profile.
 
-The [current combined suite](../ionic_cycle_completion_2026-11-02/current_combined_checks.xml) passes 165 tests. It
+The earlier [combined suite](../ionic_cycle_completion_2026-11-02/current_combined_checks.xml) passes 165 tests. It
 includes actual CPU DFT/Hessian equality, mismatch rejection for response grids,
 real fork/private-memory accounting and density-restart reconvergence. A shared
 receipt reader checks context and exact raw E values before collection or native
 preparation, rejecting corrupted scalar caches and mismatched source states.
 
-The latest [process observation](full_campaign_observation_02.json) is separate
+The earlier [process observation](full_campaign_observation_02.json) is separate
 from these accepted values. Quantum workers and budget observers retain their
 own PID/start identities; observation timeouts cannot trigger recovery. The
 collector retains its as-used source bytes and checks each cached E against its

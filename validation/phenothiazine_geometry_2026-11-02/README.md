@@ -29,10 +29,14 @@ geometry launcher instead of adding another scheduler. Other workflow rows keep
 their original launcher. Three admission coordinators were gracefully stopped
 for that shared-code update; their exact owners were confirmed closed before
 explicit resume. No scientific worker was signaled. The
-[handoff records](controllers_actual_resume_verified.json) verify the resumed
-controllers and the new geometry waiting process separately from scientific
-starts. The original native oxidized-state priority remains ahead of these
-refinements; no extra slot is reserved for them.
+[handoff records](controllers_actual_resume_verified.json) preserve that earlier
+observation. The current v2 paths and owners replace the earlier neutral queue:
+archive preflight found hidden checkout evidence before either scientific start.
+The [recovery account](../phenothiazine_oxidized_geometry_2026-11-02/README.md)
+records closure of those controllers, unchanged evidence bytes and successful
+private-namespace probes. Both neutral branches are retained. The separately
+diagnosed oxidized-doublet gradient failure now has its own strict refinement
+queue and one advisory pending-input priority; it cannot reserve an extra slot.
 
 The [85 focused checks](focused_checks.xml) cover exact state/method/resource
 admission, rejection of T4 substitution or arbitrary launcher modules, legacy

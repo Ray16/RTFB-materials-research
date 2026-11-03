@@ -49,6 +49,9 @@ def main():
     if (epoch/'registry_update_current.json').exists():
         spec=importlib.util.spec_from_file_location('deck_checked_registry_expansion',ROOT/'manuscript/check_registry_expansion.py')
         checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);registry_check=checker.audit(epoch)
+    sampling_folder=SLIDES/'evidence/2026-11-02_occupied_sampling'
+    spec=importlib.util.spec_from_file_location('deck_checked_occupied_sampling',SLIDES/'check_sampling.py')
+    checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);sampling_check=checker.audit(sampling_folder)
     paths=[SLIDES/'redox_workflow.tex',SLIDES/'story/motivation_results.tex',SLIDES/'story/supporting.tex',
            epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',
            epoch/'viologen_native_values.tex',ROOT/'manuscript/check_viologen_native.py',Path(__file__).resolve()]
@@ -70,6 +73,9 @@ def main():
     if registry_check is not None:
         paths.extend([ROOT/'manuscript/check_registry_expansion.py',ROOT/'scripts/pipeline/screen_grafting_routes.py',
             ROOT/'src/redox/build/attachment_identity.py',*[p for p in epoch.glob('registry_update_*') if p.is_file()]])
+    paths.extend([SLIDES/'check_sampling.py',ROOT/'src/redox/validation/sampling_batches.py',
+        ROOT/'src/redox/validation/native_conformer_batches.py',ROOT/'scripts/plotting/plot_occupied_sampling.py',
+        *[p for p in sampling_folder.iterdir() if p.is_file()]])
     inputs={str(p.relative_to(ROOT)):sha(p) for p in paths}
     for source in paths[:3]:
         text=source.read_text()
@@ -116,6 +122,10 @@ def main():
             raise ValueError('Chloride duplicate scope absent from the deck')
     if registry_check is not None and str(registry_check['exact_graphs']) not in text:
         raise ValueError('Checked current registry census absent from the deck')
+    sampling_page=reader.pages[18].extract_text()
+    if ('failsthesamplingcheck' not in ''.join(sampling_page.lower().split())
+            or 'Twenty' not in sampling_page or sampling_check['numbers'][-1] not in sampling_page):
+        raise ValueError('Checked occupied sampling outcome absent from supporting slide 19')
     if '81' not in text or cohort['complete_cycles']!=6:raise ValueError('Checked primary-native coverage absent from the deck')
     if any(sha(ROOT/path)!=digest for path,digest in inputs.items()):raise ValueError('Deck source changed during compilation')
     shutil.copyfile(pdf,SLIDES/'redox_workflow.pdf')
@@ -123,7 +133,7 @@ def main():
         supporting_frames=supporting_frames,source_sha256=inputs,pdf_sha256=sha(SLIDES/'redox_workflow.pdf'),
         build_logs=str(build),overfull_boxes=[line for line in log.splitlines() if line.startswith('Overfull ')],
         ionic_cycle_check=ionic_cycle,motif_interaction_check=motif_check,counterion_association_check=counterion_check,
-        registry_expansion_check=registry_check,
+        registry_expansion_check=registry_check,sampling_check=sampling_check,
         visual_review='pending; record separately bound to this PDF',submission_ready=False)
     (SLIDES/'build_check.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
 

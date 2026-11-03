@@ -21,7 +21,13 @@ when another process became resident on its assigned GPU. The
 [closure record](oxidized_startup_interruption.json) verifies every original
 owner closed and no scientific program, SCF or Hessian was started. No foreign
 process was signaled and no reservation was force-released. A fresh namespace
-is queued while that interrupted attempt remains preserved. The multi-input
+was prepared while that interrupted attempt remains preserved. That fresh attempt
+completed its actual SCF but failed the unchanged stationarity gate:
+0.00045735997 Ha/Bohr exceeds 0.00045. The [independent diagnosis and strict
+refinement](../phenothiazine_oxidized_geometry_2026-11-02/README.md) preserve its
+wavefunction and gradient; no Hessian or G was reached. Both neutral signed
+branches and the oxidized state therefore require geometry refinement and new
+own electronic/native calculations. The multi-input
 coordinator now continues independent ready states while retaining a partner's
 failure; it never automatically retries the failed calculation.
 
@@ -33,7 +39,7 @@ and its original source bytes remain preserved; the selected recovery uses the
 corrected coordinate convention. This is a validation-extension correction;
 no nuclear or potential value was promoted from the earlier attempts.
 
-[Current record](current.json) links the observed states and live controller;
+[Current record](current.json) links the observed states and current refinement records;
 [108 focused checks](all_checks.xml) cover the workflow, scope, source, ownership,
 extra-column reconstruction and coordinate regression. Only validated 32-GB-
 class devices run these stages; free T4 availability does not qualify it for

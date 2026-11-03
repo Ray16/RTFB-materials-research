@@ -12,7 +12,7 @@ four-state polymer cycle, finite PMDI result and the limits of descriptor rankin
 Slide 4 shows UMA structural search followed by final DFT in MeCN. Slide 8 is the
 exact-viologen reduction ladder and −11.49 kJ/mol local quaternization; slide 9 gives the TEMPO directional comparison,
 and slide 10 explains grafting ΔG. Slide 13 compares whole-chain and frozen-motif electronic definitions. Supporting
-slide 19 updates both empty-backbone ensemble comparisons. Each slide has one
+slide 19 reports the first complete occupied phthalimide-control sampling comparison. Each slide has one
 claim, its supporting visual and a concise source/scope note.
 
 The 912-graph registry is broader than the 837-design systematic three-core grid
@@ -42,3 +42,16 @@ retains reproducibility limits. The current immutable manuscript
 evidence epoch also supplies twelve motif triplets and 72 independently checked
 SCFs for slide 13. Its electronic comparison is distinct from binding G,
 electronic coupling and an experimental grafting distribution.
+
+Supporting slide 19 now shows the failed predeclared 10-to-20 occupied sampling
+check: -2.40 kJ/mol ensemble G change at the main rotor cutoff and -3.88 kJ/mol
+minimum electronic-energy change, beyond the 2-kJ/mol tolerance. All three
+rotor settings and numerical duplicate thresholds retain the failure. Its
+[frozen evidence](evidence/2026-11-02_occupied_sampling/manifest.json),
+[geometry/partition replay](check_sampling.py) and standalone
+[figure](../results/figures/slides/occupied_sampling_convergence.pdf) are bound
+into the build checks. This is one complete corrected phthalimide control cell;
+the other eleven cells, balanced occupied ensembles and material admission
+remain pending. The earlier empty-backbone comparisons remain in the archived
+source/evidence history. All 23 pages were rendered against the prior checked
+deck; only page 19 changed and passed visual inspection.

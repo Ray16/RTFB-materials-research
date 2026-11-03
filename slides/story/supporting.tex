@@ -20,11 +20,11 @@ Local motif interaction & 12 triplets / 36 electronic states & No binding G or c
 \end{frame}
 \begin{frame}[plain]
 \begin{tikzpicture}[remember picture,overlay]\foot
-\head{Supporting evidence}{Both empty backbones pass the batch check}
-\at{1.5}{4}{13}{\fontsize{28}{35}\selectfont\bfseries Declared expansion\\[.4cm]\fontsize{23}{29}\selectfont\normalfont 20 starts for each of\\12 graph/configuration sets.\\[.5cm]Two backbone configurations.\\Occupancy and spacing varied.}
-\at{17}{4}{13}{\fontsize{28}{35}\selectfont\bfseries Both empty components\\[.4cm]\fontsize{23}{29}\selectfont\normalfont 20 checked inputs each.\\20 / 19 distinct minima.\\[.5cm]10 $\rightarrow$ 20 ensemble changes:\\$-1.03$ / $-1.23$ kJ/mol.}
-\claim{Both empty components pass; occupied cycles remain open.}
-\src{The new analysis uses a separately identified smooth-surface MeCN model; it cannot be mixed with the primary PMDI cycle. Global sampling convergence is not established.}
+\head{Supporting evidence}{The first occupied set fails the sampling check}
+\fig{1}{3.5}{17}{10.6}{../results/figures/slides/occupied_sampling_convergence.pdf}
+\at{19}{4}{11}{\fontsize{27}{33}\selectfont\bfseries 10 $\rightarrow$ 20 starts\\[.4cm]\fontsize{23}{30}\selectfont\normalfont Twenty distinct minima\\Same result at all three\\duplicate thresholds\\[.5cm]Minimum E lowers\\$\SamplingMinimumEDrop$ kJ/mol\\[.5cm]Eleven cells incomplete}
+\claim{Twenty checked starts still fail the declared sampling tolerance.}
+\src{First complete corrected phthalimide-control cell: all-same backbone, adjacent sites 2/3; smooth-surface composite MeCN, 298.15 K. Duplicate cutoffs 0.05/0.10/0.20 Angstrom and 0.2 kJ/mol. Source: frozen 31-native-input audit. Balanced occupied cycles and global convergence remain unqualified; no primary-model or measured-population transfer.}
 \end{tikzpicture}
 \end{frame}
 \begin{frame}[plain]

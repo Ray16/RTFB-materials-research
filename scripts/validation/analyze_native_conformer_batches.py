@@ -16,7 +16,7 @@ from pathlib import Path
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
-from redox.properties.conformer_ensemble import batch_change, cluster_minima, summarize
+from redox.validation.native_conformer_batches import finite_batches
 from redox.properties.conformer_geometry import alignment_molecule, symmetry_rmsd_matrix
 from redox.validation.archived_sources import ArchivedSources
 from redox.validation.namespace_sources import NamespaceSources
@@ -63,33 +63,14 @@ def load_record(row, reader):
                           backbone_stereo_fingerprint=report['task']['backbone_stereo_fingerprint'])
 
 
-def finite_batches(rows, matrix, first_count):
-    """Use one consistent well assignment for each RMSD sensitivity scenario."""
-    scenarios = {}
-    early = [row for row in rows if int(row['key'].split('conf')[-1]) <= first_count]
-    early_keys = {row['key'] for row in early}
-    for threshold in (.05, .1, .2):
-        groups = cluster_minima(rows, matrix, rmsd_cutoff_A=threshold, energy_tolerance_kJ_mol=.2)
-        first_groups = [[key for key in group if key in early_keys] for group in groups]
-        first_groups = [group for group in first_groups if group]
-        values = {}
-        for rotor in ('25', '50', '100'):
-            records = [dict(key=r['key'], E_eV=r['E_eV'], G_eV=r['G_by_cutoff_eV'][rotor]) for r in rows]
-            first = summarize([r for r in records if r['key'] in early_keys], first_groups,
-                              [r['key'] for r in early])
-            expanded = summarize(records, groups, [r['key'] for r in rows])
-            values[rotor] = dict(first=first, expanded=expanded, comparison=batch_change(first, expanded))
-        scenarios[str(threshold)] = values
-    return scenarios
-
-
 def analyze(replays, prior, archive, configurations, sites, first_count, total_count, output):
     if output.exists():
         raise FileExistsError('Preserve previous scientific analyses')
     if not configurations or len(configurations) != len(set(configurations)) or sites != sorted(set(sites)):
         raise ValueError('Distinct configurations and ordered unique occupancy sites required')
     hashes = {str(p): sha256_file(p) for p in replays}
-    for path in (Path(__file__).resolve(), ROOT/'src/redox/properties/conformer_geometry.py',
+    for path in (Path(__file__).resolve(), ROOT/'src/redox/validation/native_conformer_batches.py',
+                 ROOT/'src/redox/properties/conformer_geometry.py',
                  ROOT/'src/redox/properties/conformer_ensemble.py', ROOT/'src/redox/build/geometry.py',
                  ROOT/'src/redox/validation/protonation.py'):
         hashes[str(path)] = sha256_file(path)

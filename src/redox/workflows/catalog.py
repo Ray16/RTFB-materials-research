@@ -14,7 +14,7 @@ CATEGORIES = {
 }
 SPECIALIZED = [
  dict(kind='recovery', module='redox.workflows.route_geometry',
-      purpose='Exact diagnosed neutral saddle: retain both signed branches and require strict fresh geometry/SCF review before rescoring'),
+      purpose='Exact diagnosed neutral saddle or oxidized gradient failure; strict fresh geometry/SCF review before own electronic/native rescoring'),
  dict(kind='checked_campaign', module='redox.workflows.route_molecular_panel',
       purpose='Exact route-admitted source states; corrected electronic stage first, own native G and matched references remain required'),
  dict(kind='checked_campaign', module='redox.workflows.route_primary_native',
@@ -33,6 +33,8 @@ SPECIALIZED = [
       purpose='Maintained full-roster native coordinator; independent closed review and source-bound followups'),
  dict(kind='checked_analysis', module='redox.validation.sampling_snapshot',
       purpose='Read-only frozen 240-slot receipt/context audit; does not repeat physics or qualify ensembles'),
+ dict(kind='checked_analysis', module='redox.validation.sampling_batches',
+      purpose='Audited complete native cells only: nested batch, duplicate and rotor sensitivities; missing cells/cycles remain unqualified'),
  dict(kind='checked_control', module='redox.workflows.counterion_geometry',
       purpose='Exact oxidized graft plus chloride (+1 singlet), distinct from the reduced +1 doublet'),
  dict(kind='checked_control', module='redox.workflows.counterion_gradient_pilot',
