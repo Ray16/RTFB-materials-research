@@ -47,3 +47,31 @@ versus ionic storage rules. Actual frozen-source preparation additionally passes
 source hashes and original response-frame checks. The completed slide/manuscript
 build bindings remain intact. The fourth G cycle, occupied ensembles, electronic
 coupling, salt speciation, material admission and JCIM submission remain pending.
+
+## Actual priority start and contention accounting
+
+The corrected recovery now has an actual exclusive H100 start on lambda13 GPU 5,
+with worker PID/start identity, two disjoint CPU bindings and all six native
+thread caps verified (`actual_start_verification.json`). Its first fresh SCF
+converges and reproduces the source center to 1.82e-12 Ha in energy and
+4.27e-10 Ha/Bohr in maximum gradient difference (`fresh_center_matrix_match.json`).
+The original complete matrix is loaded unchanged. All fresh sampled derivatives,
+minimum/nuclear terms and final independent admission still remain mandatory;
+the fourth G cycle stays blank.
+
+Two earlier launchers lost GPU races after preflight and before any scientific
+worker or guard started. Those closed reservation refusals now consume no
+scientific or environment retry budget. Unknown/live owners and started attempts
+remain preserved. One genuine original profile failure remains in the bounded
+prelaunch count. All receipts and logs are retained. The contention checks pass
+37 tests; the priority/dispatch checks pass 36, with overlapping shared controls.
+
+Our two bulk scheduling controllers were gracefully stopped for the handoff
+and explicitly resumed only after their exact prior owners closed. Their
+scientific workers continued throughout. The declared priority file
+`config/campaign_dispatch_priorities.json` lets our common dispatcher leave one
+compatible free slot for a live pending lead while allocating every other
+suitable slot. Memory, architecture, CPU/RAM and aggregate storage must fit.
+A running, finished, dead or ownership-unverified priority request cannot hold
+an extra slot; the rule does not restart science or alter the system GPU gate.
+The file and as-used dispatcher helpers are frozen in each dispatch record.

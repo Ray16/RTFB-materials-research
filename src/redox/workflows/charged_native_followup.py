@@ -15,12 +15,60 @@ import re
 import shutil
 import time
 import hashlib
+import shlex
+import subprocess
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.molecular_native_namespace import verify
 
 SOURCE_BYTES=Path(__file__).read_bytes()
+
+
+def priority_requests(path):
+    """Read declared, immutable job identities; this grants no scientific admission."""
+    path=Path(path)
+    if not path.exists():return []
+    data=json.loads(path.read_text())
+    if data.get('schema')!=1 or not isinstance(data.get('requests'),list):
+        raise ValueError('Declared dispatch-priority schema required')
+    rows=data['requests']
+    if len({r['namespace'] for r in rows})!=len(rows):raise ValueError('Duplicate priority job')
+    for row in rows:
+        if sha256_file(row['namespace'])!=row['namespace_sha256'] or row.get('deferred_slots')!=1:
+            raise ValueError('Priority binds one exact namespace and one free slot')
+    return rows
+
+
+def priority_for_slot(requests,candidate,observed,already_deferred,alive,fits):
+    """Leave one suitable free slot for a live pending lead; running jobs are untouched."""
+    for row in requests:
+        namespace=Path(row['namespace'])
+        if str(namespace)==candidate['namespace'] or str(namespace) in already_deferred:continue
+        spec=json.loads(namespace.read_text());case=Path(spec['case'])
+        # A started, failed or finished scientific attempt cannot request an
+        # extra GPU or be restarted by this advisory scheduling rule.
+        if (case/'status.json').exists() or (case/'residency_guard/owner.json').exists():continue
+        status=Path(row['controller_status'])
+        if not status.exists():continue
+        controller=json.loads(status.read_text())
+        if ('finished' in controller or controller.get('namespace')!=str(namespace)
+                or alive(controller['owner']) is not True):continue
+        plan_path=case/'plan.json'
+        if sha256_file(plan_path)!=spec['plan_sha256']:raise ValueError('Priority plan changed')
+        plan=json.loads(plan_path.read_text())
+        if (observed['GPU_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024)
+                or observed.get('GPU_compute_capability',0)<plan.get('minimum_GPU_compute_capability',0)
+                or not fits(plan,observed)):continue
+        return row,plan
+    return None
+
+
+def device_capability(host,gpu):
+    argv=['nvidia-smi','--id',str(gpu),'--query-gpu=compute_cap','--format=csv,noheader,nounits']
+    result=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=8',host,shlex.join(argv)],
+                          capture_output=True,text=True,timeout=25,check=True)
+    return float(result.stdout.strip())
 
 
 def load(path,name):
@@ -79,8 +127,12 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
     policy=Path(os.environ.get('GPU_RESERVE_CONFIG',str(GATE.parent.parent/'.config/gpu_reserve/config.env'))).resolve()
     match=re.search(r'^ALLOWED_HOSTS="([^"]+)"',policy.read_text(),re.M)
     if match is None:raise ValueError('Authoritative system host policy required')
+    priority_path=ROOT/'config/campaign_dispatch_priorities.json'
+    priorities=priority_requests(priority_path)
     snapshots={}
-    for source in [*prerequisite_sources,Path(__file__),policy]:
+    for source in [*prerequisite_sources,Path(__file__),policy,
+                   *([priority_path] if priority_path.exists() else []),
+                   *[Path(m.__file__) for m in (capacity,owners,remote,storage)]]:
         source=Path(source);content=SOURCE_BYTES if source==Path(__file__) else source.read_bytes()
         digest=hashlib.sha256(content).hexdigest();frozen=output/'source_snapshots'/digest/source.name
         if not frozen.exists():frozen.parent.mkdir(parents=True,exist_ok=True);frozen.write_bytes(content)
@@ -89,6 +141,7 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
     record=dict(status='checked_native_followup_dispatching',started=time.time(),source_snapshots=snapshots,
         source_sha256={row['snapshot']:row['sha256'] for row in snapshots.values()},launches=[],refusals=[],native_G_qualified=False,avoided_hosts=sorted(set(avoid_hosts)))
     record['eligible_keys']=None if eligible_keys is None else sorted(eligible_keys)
+    record['priority_deferrals']=[]
     with (output/'followup_dispatch.lock').open('a+') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         pending=[]
@@ -114,6 +167,7 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
                 record['availability_retries'].append(dict(host=host,status='authoritative_gate_query_completed',slots=recovered))
             except Exception as retry_error:
                 record['availability_retries'].append(dict(host=host,status='unverified_no_submission',error=repr(retry_error)))
+        deferred=set()
         for host,gpu in slots:
             if not pending:break
             if host in blocked_hosts:continue
@@ -136,7 +190,23 @@ def dispatch_rows(rows,output,interpreter,prerequisite_sources,avoid_hosts=(),st
                     if observed['GPU_MiB']>=candidate_plan.get('minimum_GPU_memory_MiB',31*1024) and capacity.fits(candidate_plan,observed):
                         selected=(index,candidate);break
                 if selected is None:continue
-                index,row=selected;spec=verify(Path(row['namespace']));plan=json.loads((Path(spec['case'])/'plan.json').read_text())
+                index,row=selected
+                if priorities and any(r['namespace']!=row['namespace'] for r in priorities):
+                    observed['GPU_compute_capability']=device_capability(host,gpu)
+                    priority=priority_for_slot(priorities,row,observed,deferred,owners.alive,capacity.fits)
+                    if priority is not None:
+                        request,priority_plan=priority
+                        room=storage.storage_headroom(rows,storage_peers,priority_plan['maximum_durable_output_bytes'],
+                            owners.alive,shutil.disk_usage(output).free)
+                        if room['sufficient']:
+                            deferred.add(request['namespace'])
+                            record['priority_deferrals'].append(dict(host=host,GPU=gpu,
+                                namespace=request['namespace'],controller_status=request['controller_status'],
+                                reason=request['reason'],resources=observed,storage=room,
+                                existing_workers_interrupted=False))
+                            atomic_write_json(output/'followup_dispatch_current.json',record)
+                            continue
+                spec=verify(Path(row['namespace']));plan=json.loads((Path(spec['case'])/'plan.json').read_text())
                 if observed['GPU_MiB']<plan.get('minimum_GPU_memory_MiB',31*1024) or not capacity.fits(plan,observed):
                     raise ValueError('Selected resource hints changed before verification')
                 space=storage.storage_headroom(rows,storage_peers,plan['maximum_durable_output_bytes'],owners.alive,shutil.disk_usage(output).free)

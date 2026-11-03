@@ -185,3 +185,15 @@ GPU usage. Matching followups may use a declared 16-GiB host envelope after
 checking 25% headroom against the measured pilot, while retaining the validated
 32-GB-or-larger GPU requirement. These resource bounds do not alter the SCF,
 Hessian, finite-difference or thermal protocols.
+
+## Prioritizing a pending lead
+
+`config/campaign_dispatch_priorities.json` declares an exact prepared namespace
+and its controller status. The shared dispatcher may defer one compatible free
+slot to a verified live pending lead. It checks memory/architecture, CPU/RAM and
+aggregate storage, and continues allocating other suitable slots. A started or
+inactive priority cannot hold another GPU. Each pass freezes the configuration
+and the as-used capacity, ownership, launch and storage helpers. No site GPU
+policy, reservation ownership or scientific method is changed. Explicit closed
+GPU-contention refusals consume no scientific/prelaunch-failure budget in the
+saved-ionic validation controller; uncertain starts require review.

@@ -5,7 +5,7 @@ full-Hessian, sampled-gradient, actual-wavefunction and nuclear-partition review
 Its 17 SCF frames are checked, its lowest internal mode is 6.4952 cm⁻¹ and its
 GPU/host peaks are 24,062 MiB / 32.08 GiB. This releases matching native inputs
 under the unchanged 31-GiB-GPU / 80-GiB-host bound. The
-[new native collection](native_collection_02.json) contains three checked inputs;
+[new native collection](native_collection_03.json) contains six checked inputs;
 the remaining native and ensemble quantities are pending. Later preparation and
 live scheduling counts are separate from this frozen collection.
 
@@ -47,15 +47,15 @@ IDs, conditional configurations, 10-to-20 comparisons, three rotor settings,
 duplicate sensitivities and physical derivative/minimum limits. These are
 method controls, not synthesis candidates or measured occupancy probabilities.
 
-The [current frozen complete-roster collection](electronic_collection_09.json) has
-87 independently checked electronic inputs and no review errors. Every one of
+The [current frozen complete-roster collection](electronic_collection_10.json) has
+88 independently checked electronic inputs and no review errors. Every one of
 the 240 slots remains present; pending E/G values are null. The current
 [PSS-profile manifest](PSS_prepared_manifest.json) supersedes the earlier
 resource preparations while preserving them. No new native G or occupied
 ensemble cycle is supplied by this electronic collection.
 
-The separate [native collection](native_collection_02.json) retains all 240
-slots with three checked G inputs. Its [controller snapshot](native_queue_status_03.json)
+The separate [native collection](native_collection_03.json) retains all 240
+slots with six checked G inputs. Its [controller snapshot](native_queue_status_03.json)
 and [process observation](native_followup_observation_01.json) distinguish
 active coordination, the live largest pilot and physical qualification.
 
@@ -268,3 +268,11 @@ source-change guard. Its exact controller was confirmed closed before explicit
 resume; existing workers and all results were preserved. The current source-bound
 controller receipt is `electronic_queue/resume_launch_004.json` under the raw
 energy root. This scheduling change does not alter the quantum method or QC.
+
+The [six-receipt crosscheck](native_receipt_crosscheck_02.json) rechecks context,
+source backing and all three component sums for every admitted native input. It
+does not repeat physical quantum QC or complete an occupied ensemble. The saved
+lead validation now has an actual exclusive H100 start. Our bulk coordinators
+were explicitly stopped/resumed for the priority handoff while their workers
+continued; the shared dispatcher honors a declared single-slot pending-lead
+priority without changing methods or admitting an unqualified resource class.

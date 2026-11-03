@@ -428,15 +428,15 @@
     },
     "corrected_polymer_sampling": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
-      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_09.json",
+      "current": "validation/corrected_sampling_2026-11-02/electronic_collection_10.json",
       "source_snapshot": "validation/corrected_sampling_2026-11-02/recovery_manifest_03.json",
       "protocol": "validation/corrected_sampling_2026-11-02/sampling_contract.json",
       "live_observation": "validation/corrected_sampling_2026-11-02/full_campaign_observation_03.json",
       "checkpoint_control": "validation/corrected_sampling_2026-11-02/occupied_equivalence.json",
       "checks": "validation/corrected_sampling_2026-11-02/native_queue_checks_05.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5",
-      "status": "87_electronic_three_native_inputs_checked_matched_followups_released",
-      "scope": "All 240 declared slots retained; 87 checked electronic inputs and three checked native inputs. Occupied native and ensemble cycles remain incomplete.",
+      "status": "88_electronic_six_native_inputs_checked_occupied_ensembles_pending",
+      "scope": "All 240 declared slots retained; 88 checked electronic inputs and six independently reconstructed native inputs. Own electronic/nuclear context retained; occupied ensembles remain incomplete.",
       "checked_energy": "validation/corrected_sampling_2026-11-02/empty_pilot_review.json",
       "checked_single_energy": "validation/corrected_sampling_2026-11-02/single_pilot_review.json",
       "prepared_manifest": "validation/corrected_sampling_2026-11-02/PSS_prepared_manifest.json",
@@ -490,8 +490,8 @@
       "current": "validation/ionic_cycle_completion_2026-11-02/saved_matrix_recovery_01/current.json",
       "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/saved_matrix_recovery_01/source_evidence.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_alternating23_saved_matrix_validation_01",
-      "status": "complete_source_ionic_Hessian_retained_fresh_validation_prepared_G_pending",
-      "scope": "Closed post-Hessian file-lock failure; nine solved response blocks/411 rows and complete matrix retained. Fresh center, all sampled derivatives, actual SCF frames, modes and independent review remain mandatory."
+      "status": "fresh_ionic_validation_running_center_reproduced_G_pending",
+      "scope": "Exclusive H100 start verified; fresh center matches source energy/gradient to 1.82e-12 Ha / 4.27e-10 Ha/Bohr. Exact complete matrix reused; fresh derivatives, modes and independent G admission pending."
     },
     "direct_phenothiazine_route": {
       "guide": "validation/phenothiazine_postfunctionalization_2026-11-02/README.md",

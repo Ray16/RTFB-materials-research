@@ -19,6 +19,24 @@ from redox.workflows.charged_native_followup import dispatch_rows
 from redox.workflows.sampling_native_queue import extend_peers
 
 
+def noncontention_prelaunch_failures(namespace,alive):
+    """A proven lost GPU race consumes no scientific or environment attempt."""
+    root=Path(namespace).parent
+    if (root/'case/status.json').exists() or (root/'case/residency_guard/owner.json').exists():
+        raise ValueError('Never retry a started scientific or guard attempt here')
+    failures=0
+    for path in sorted((root/'dispatch_claim').glob('try_*.json')):
+        receipt=json.loads(path.read_text())
+        if alive(receipt['owner']) is not False:
+            raise ValueError('Exact prelaunch controller closure is required')
+        placement=Path(receipt['placement']);log=root/'dispatch_logs'/(path.stem+'.log')
+        explicit_race=(log.exists() and log.read_text().rstrip().endswith(
+            "RuntimeError: GPU occupied; no screening control started")
+            and not (placement/'launch.json').exists())
+        if not explicit_race:failures+=1
+    return failures
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--spec',type=Path,required=True);parser.add_argument('--out',type=Path,required=True)
@@ -67,8 +85,9 @@ def main():
             if condition in ('scientific_failure_preserved','stopped_attempt_preserved','guard_start_failed_preserved','uncertain_submission_preserved'):
                 state['status']='saved_ionic_attempt_preserved_for_explicit_review';break
             if condition in ('pending','prelaunch_refusal_no_scientific_attempt'):
-                tries=list((namespace.parent/'dispatch_claim').glob('try_*.json'))
-                if len(tries)>=3:state['status']='bounded_prelaunch_refusals_preserved';break
+                failed=noncontention_prelaunch_failures(namespace,owners.alive)
+                state['noncontention_prelaunch_failures']=failed
+                if failed>=3:state['status']='bounded_prelaunch_refusals_preserved';break
                 peers=extend_peers(args.storage_peers.resolve(),[row])
                 dispatch=dispatch_rows([row],output,args.python,sources,storage_peers=peers)
                 state['last_dispatch']=str(output/'followup_dispatch_current.json')

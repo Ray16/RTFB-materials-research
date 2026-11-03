@@ -61,8 +61,9 @@ establish that a calculation is currently running.
   These finite smooth-surface MeCN r2SCAN/SVP values are separate from primary
   molecular G, isolated motif binding, electronic coupling and material admission.
   The [fourth-cycle recovery](../validation/ionic_cycle_completion_2026-11-02/saved_matrix_recovery_01/README.md)
-  retains its complete source Hessian after a later file-lock failure; fresh
-  validation and independent G admission remain pending.
+  has an exclusive H100 start and reproduces the source center before reusing
+  its complete Hessian. Fresh derivative/minimum checks and independent G
+  admission remain pending.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin, distinct from the +1 doublet redox state.
@@ -85,13 +86,12 @@ establish that a calculation is currently running.
   experimental/speciation or material validation.
 - [Complete corrected sampling roster](../validation/corrected_sampling_2026-11-02/README.md):
   all 240 declared control inputs have source-bound, graph/stereo-checked XYZs.
-  All three memory-size pilots passed; 87 hybrid gas/SMD inputs now pass
+  All three memory-size pilots passed; 88 hybrid gas/SMD inputs now pass
   independent actual-wavefunction review. The remaining energy roster is
-  released, and three matched native pilots have saved their center SCFs/grids.
-  Empty, site-2 and largest double-graft native inputs are checked. A maintained
+  released, and six matched native inputs pass independent review.
+  Empty, site-2 and four double-graft native inputs are checked. A maintained
   native coordinator retains all 240 slots and releases matching followups after
-  the largest pilot passes; nine further native workers have verified live
-  observations. Complete occupied sampling, ensemble cycles and material
+  the largest pilot passes; matching native followups remain active. Complete occupied sampling, ensemble cycles and material
   decisions remain pending. Occupied-only
   energy and full-orbital native checkpoints retain their distinct scopes;
   historical values and failed/prelaunch attempts remain preserved.
