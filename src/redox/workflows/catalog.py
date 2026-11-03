@@ -15,6 +15,8 @@ CATEGORIES = {
 SPECIALIZED = [
  dict(kind='recovery', module='redox.workflows.route_geometry',
       purpose='Exact diagnosed neutral saddle or oxidized gradient failure; strict fresh geometry/SCF review before own electronic/native rescoring'),
+ dict(kind='checked_campaign', module='redox.workflows.route_refined_electronic',
+      purpose='First high-level energy at accepted refinements; both neutral branches retained, historical reference blank, actual checkpoint/spin review and own native stages required'),
  dict(kind='checked_campaign', module='redox.workflows.route_molecular_panel',
       purpose='Exact route-admitted source states; corrected electronic stage first, own native G and matched references remain required'),
  dict(kind='checked_campaign', module='redox.workflows.route_primary_native',
@@ -42,7 +44,7 @@ SPECIALIZED = [
  dict(kind='checked_control', module='redox.workflows.counterion_geometry_resources',
       purpose='T4 geometry-only pilot after checked fixed gradient; full closed review precedes other repairs'),
  dict(kind='checked_control', module='redox.workflows.counterion_thermochemistry',
-      purpose='Exact primary electronic/native components and two-to-one solute standard-state conversion'),
+      purpose='Exact primary electronic/native components with a shared bounded followup queue; full 32-GB class and two-to-one solute conversion retained'),
  dict(kind='recovery', module='redox.workflows.counterion_mode_repair',
       purpose='Diagnose a failed minimum and prepare both mode signs; fresh geometry/native QC required'),
  dict(kind='recovery', module='redox.workflows.charged_hessian_recovery',

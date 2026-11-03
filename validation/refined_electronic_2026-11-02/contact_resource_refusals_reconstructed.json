@@ -1,0 +1,69 @@
+{
+  "submission_receipts": 3,
+  "prelaunch_failures": 0,
+  "resource_refusals": 3,
+  "records": [
+    {
+      "receipt": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/dispatch_claim/try_001.json",
+      "receipt_sha256": "744bec9a562cf049d1ba3a84010c88a1636afa9d7283693940f49c6feccf9477",
+      "classification": "resource_contention_no_scientific_attempt",
+      "log_sha256": "e62d3398c914ecc4d6b6a74c49ecbeeea7fa12e186516daa3802bbd9ba1c62c7",
+      "branch": {
+        "message": "GPU occupied; no molecular job started",
+        "raise_line": 217,
+        "first_subprocess_line": 219
+      },
+      "launcher_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/molecular_native_namespace.py",
+      "launcher_source_sha256": "bdab48de00c4409397ead8cb8a33bb019b7ce117f821ebbadfdd9044bb61e8e5",
+      "owner": {
+        "host": "lambda1",
+        "pid": 3702450,
+        "process_start": "593477843"
+      }
+    },
+    {
+      "receipt": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/dispatch_claim/try_002.json",
+      "receipt_sha256": "a77b4371b2592dca6dcc897d74d7a02b5667ede62ab5dabd98b0ce4de89ea7ff",
+      "classification": "resource_contention_no_scientific_attempt",
+      "log_sha256": "e62d3398c914ecc4d6b6a74c49ecbeeea7fa12e186516daa3802bbd9ba1c62c7",
+      "branch": {
+        "message": "GPU occupied; no molecular job started",
+        "raise_line": 217,
+        "first_subprocess_line": 219
+      },
+      "launcher_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/molecular_native_namespace.py",
+      "launcher_source_sha256": "bdab48de00c4409397ead8cb8a33bb019b7ce117f821ebbadfdd9044bb61e8e5",
+      "owner": {
+        "host": "lambda1",
+        "pid": 3715830,
+        "process_start": "593493800"
+      }
+    },
+    {
+      "receipt": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/dispatch_claim/try_003.json",
+      "receipt_sha256": "8abfbb4bf3f1b131cf3e02224bdfad24f6bebe26da600b3820cac8f82a884fa4",
+      "classification": "resource_contention_no_scientific_attempt",
+      "log_sha256": "e62d3398c914ecc4d6b6a74c49ecbeeea7fa12e186516daa3802bbd9ba1c62c7",
+      "branch": {
+        "message": "GPU occupied; no molecular job started",
+        "raise_line": 217,
+        "first_subprocess_line": 219
+      },
+      "launcher_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/molecular_native_namespace.py",
+      "launcher_source_sha256": "bdab48de00c4409397ead8cb8a33bb019b7ce117f821ebbadfdd9044bb61e8e5",
+      "owner": {
+        "host": "lambda1",
+        "pid": 3726754,
+        "process_start": "593507037"
+      }
+    }
+  ],
+  "launcher_sources_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/screening_control.py": "1271cdd3ba40001390864c5700b9b48b56246d7d1bedccefa423bcfc86361ee4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/molecular_native_namespace.py": "bdab48de00c4409397ead8cb8a33bb019b7ce117f821ebbadfdd9044bb61e8e5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/queue/review_sources/1271cdd3ba40001390864c5700b9b48b56246d7d1bedccefa423bcfc86361ee4/screening_control.py": "1271cdd3ba40001390864c5700b9b48b56246d7d1bedccefa423bcfc86361ee4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/queue/source_snapshots/1271cdd3ba40001390864c5700b9b48b56246d7d1bedccefa423bcfc86361ee4/screening_control.py": "1271cdd3ba40001390864c5700b9b48b56246d7d1bedccefa423bcfc86361ee4"
+  },
+  "claims_modified": false,
+  "scientific_attempts_restarted": false
+}

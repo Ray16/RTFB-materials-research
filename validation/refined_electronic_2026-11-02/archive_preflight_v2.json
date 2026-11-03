@@ -1,0 +1,84 @@
+{
+  "status": "fixed_budget_adapter_three_namespaces_preflight_passed",
+  "checks": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "f3396313f15911361a6bb9b3645f17b05aab6c3b8b7f7e8088fff7516ccc6ef8",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.core.protocol",
+            "redox.qm",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      },
+      "profile": "profile_passed_no_CUDA"
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "a06bfa96f22cdf3c54d452dc5fce0852a87948a0c9bb862c56131ea01914650c",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.core.protocol",
+            "redox.qm",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      },
+      "profile": "profile_passed_no_CUDA"
+    },
+    {
+      "key": "phenothiazine_ox_stationarity",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "5b120c7a41daa73acbcacb54dc39c7bd7af7b37f439370b912825cb7219e289e",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.core.protocol",
+            "redox.qm",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      },
+      "profile": "profile_passed_no_CUDA"
+    }
+  ],
+  "GPU_started": false
+}

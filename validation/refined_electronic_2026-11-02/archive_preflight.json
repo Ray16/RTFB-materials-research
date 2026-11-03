@@ -1,0 +1,81 @@
+{
+  "status": "all_three_refined_electronic_namespaces_visible_inside_archive",
+  "checks": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "e0c3b7976984940cdb11acfa126709979232eb5c892dd188b98ab0c4216988c9",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.core.protocol",
+            "redox.qm",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      }
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "69bd88eddaa4abea3002f56e4c7313f7c914af3270c3c3dab3d17a000a235a18",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.core.protocol",
+            "redox.qm",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      }
+    },
+    {
+      "key": "phenothiazine_ox_stationarity",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "5ce5f79185858d18faedc35ece2f4721ab0061097fd30e89e94536694c8952d9",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.core.protocol",
+            "redox.qm",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      }
+    }
+  ],
+  "GPU_started": false
+}

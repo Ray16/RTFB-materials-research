@@ -1,5 +1,12 @@
 # Exact unsubstituted phenothiazine primary comparison
 
+All three strict geometry refinements now pass independent review, including the
+[neutral plus branch](../phenothiazine_oxidized_geometry_2026-11-02/neutral_plus_geometry_review.json).
+The [fresh electronic campaign](../refined_electronic_2026-11-02/README.md) retains
+both neutral branches and the oxidized state; one actual V100 start is verified.
+Own electronic/native qualification remains pending. Earlier observations below
+retain their original waiting/running counts.
+
 Fresh strict refinements now supply two independently checked stationary
 geometries: [neutral minus](../phenothiazine_oxidized_geometry_2026-11-02/neutral_minus_geometry_review.json)
 and [oxidized doublet](../phenothiazine_oxidized_geometry_2026-11-02/oxidized_geometry_review.json),

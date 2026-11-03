@@ -11,13 +11,17 @@ from redox.core.hashing import sha256_file
 from redox.workflows.submission_refusal import refusal_branch
 
 RESOURCE_MESSAGES=('GPU occupied; no screening control started',
-                   'Control RAM or output headroom unavailable')
+                   'Control RAM or output headroom unavailable',
+                   'GPU occupied; no molecular job started',
+                   'Host RAM promised; no molecular job started',
+                   'Shared output headroom unavailable; no molecular job started')
+LAUNCHER_NAMES=('screening_control.py','molecular_native_namespace.py')
 
 
 def launcher_versions(output):
     """Previously frozen launcher versions retain the original traceback lines."""
     return sorted({p for name in ('sources','review_sources','source_snapshots')
-                   for p in (Path(output)/name).glob('*/screening_control.py')})
+                   for basename in LAUNCHER_NAMES for p in (Path(output)/name).glob('*/'+basename)})
 
 
 def prelaunch_accounting(namespace,alive,source_versions=()):
@@ -25,9 +29,11 @@ def prelaunch_accounting(namespace,alive,source_versions=()):
     if (root/'case/status.json').exists() or (root/'case/residency_guard/owner.json').exists():
         raise ValueError('Never reopen a started scientific or guard attempt through prelaunch accounting')
     source=ROOT/'src/redox/workflows/screening_control.py'
-    versions=[source,*[Path(p) for p in source_versions if Path(p)!=source]]
+    current=[ROOT/'src/redox/workflows'/name for name in LAUNCHER_NAMES
+             if (ROOT/'src/redox/workflows'/name).is_file()]
+    versions=[*current,*[Path(p) for p in source_versions if Path(p) not in current]]
     hashes={str(p):sha256_file(p) for p in versions}
-    if any(p!=source and p.parent.name!=hashes[str(p)] for p in versions):
+    if any(p.name not in LAUNCHER_NAMES or (p not in current and p.parent.name!=hashes[str(p)]) for p in versions):
         raise ValueError('Historical launcher source must retain its content-addressed snapshot')
     failures=0;records=[]
     for path in sorted((root/'dispatch_claim').glob('try_*.json')):
@@ -38,7 +44,8 @@ def prelaunch_accounting(namespace,alive,source_versions=()):
         branch=None;matched_source=None
         if log.exists() and not (placement/'launch.json').exists():
             for version in versions:
-                branch=refusal_branch(version,log.read_text(),RESOURCE_MESSAGES,executed_path=source)
+                executed=ROOT/'src/redox/workflows'/version.name
+                branch=refusal_branch(version,log.read_text(),RESOURCE_MESSAGES,executed_path=executed)
                 if branch is not None:matched_source=version;break
         if branch is None:failures+=1
         records.append(dict(receipt=str(path),receipt_sha256=sha256_file(path),

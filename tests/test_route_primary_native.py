@@ -4,7 +4,7 @@ import pytest
 import numpy as np
 
 from redox.core.common import ROOT
-from redox.workflows.route_primary_native import validate_plan
+from redox.workflows.route_primary_native import validate_plan,REFINED_PROFILE
 from redox.workflows.molecular_native_namespace import load
 
 
@@ -35,3 +35,14 @@ def test_extra_columns_use_recorded_center_instead_of_another_Bohr_constant(tmp_
     assert np.array_equal(actual,exact)
     assert not np.array_equal(actual,np.array([[1.,2.,3.],[-4.,5.,-6.]])/.52917721092)
     with pytest.raises(ValueError):api.recorded_center(tmp_path,1,2,2)
+
+
+@pytest.mark.parametrize('key,charge,mult,state',[
+    ('phenothiazine_neu_mode_minus',0,1,'neu'),('phenothiazine_neu_mode_plus',0,1,'neu'),
+    ('phenothiazine_ox_stationarity',1,2,'ox')])
+def test_refined_native_inputs_keep_full_own_hessian_and_sulfur_contract(plan,key,charge,mult,state):
+    plan.update(route_native_profile=REFINED_PROFILE,source_id=key,charge=charge,mult=mult,native_state=state,
+        refined_route_native_component=True,electronic_origin_status='route_refined_primary_electronic_independently_checked')
+    assert validate_plan(plan)['extra_columns']==[[15,0],[15,1],[15,2]]
+    plan['electronic_origin_status']='benchmark_screening_energy_control_independently_checked'
+    with pytest.raises(ValueError):validate_plan(plan)

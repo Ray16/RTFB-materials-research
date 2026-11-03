@@ -159,6 +159,8 @@ def launch(namespace, gpu, output):
     from redox.workflows.bounded_molecular import launch as execute
     spec = verify(namespace)
     plan = json.loads((Path(spec['case'])/'plan.json').read_text())
+    if plan.get('minimum_GPU_memory_MiB',31744)!=31744:
+        raise ValueError('Full contact thermochemistry retains the validated 32-GB GPU class')
     if plan['role'] != 'primary_counterion_thermochemistry' or (plan['source_id'] != 'N0_above' and plan['pilot_review'] is None):
         raise ValueError('Exact prospective pilot or independently released thermochemistry input required')
     if plan['pilot_review'] is not None:
@@ -169,13 +171,38 @@ def launch(namespace, gpu, output):
     return execute(namespace, gpu, output, caller_source=Path(__file__))
 
 
+def prepared_rows(manifest):
+    """Admit only source-bound followups of the checked full-contact pilot."""
+    rows=json.loads(manifest.read_text())['states']
+    if not rows or len({r['key'] for r in rows})!=len(rows):
+        raise ValueError('Distinct nonempty declared contact followups required')
+    for row in rows:
+        if (not row['key'] or Path(row['key']).name!=row['key'] or row['key'] in ('.','..')
+                or sha256_file(row['namespace'])!=row['namespace_sha256']):
+            raise ValueError('Exact safe followup identity and namespace required')
+        spec=verify(Path(row['namespace']));case=Path(spec['case']);plan=json.loads((case/'plan.json').read_text())
+        if (plan['role']!='primary_counterion_thermochemistry' or plan.get('pilot_review') is None
+                or (plan['charge'],plan['mult'],plan['atoms'])!=(1,1,42)
+                or plan['dimensions']!={'def2-svp':412,'def2-tzvpd':1003}
+                or plan['native_G_qualified'] or plan['maximum_peak_GPU_MiB']!=31744
+                or plan.get('minimum_GPU_memory_MiB',31744)!=31744
+                or sha256_file(case/'state/opt.xyz')!=plan['geometry_sha256']):
+            raise ValueError('Exact checked-geometry full-class chloride followup required')
+        pilot,_=checked_pilot(Path(plan['pilot_review']))
+        if (plan['maximum_host_RSS_GiB']!=followup_host_bound(pilot)
+                or any(plan[k]!=pilot[k] for k in ('electronic_protocol','native_protocol','thermal_protocol','smiles'))):
+            raise ValueError('Followup resource or physical context differs from its qualified pilot')
+    return [dict(r,launcher_module='redox.workflows.counterion_thermochemistry') for r in rows]
+
+
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
-    p.add_argument('action', choices=('prepare', 'launch', 'analyze'))
-    for key in ('archive', 'geometry-review', 'pilot-review', 'out', 'spec', 'primary-inputs', 'geometry-manifest'):
+    p.add_argument('action', choices=('prepare', 'launch', 'analyze', 'queue'))
+    for key in ('archive', 'geometry-review', 'pilot-review', 'out', 'spec', 'primary-inputs', 'geometry-manifest', 'manifest', 'storage-peers'):
         p.add_argument('--'+key, type=Path)
     p.add_argument('--gpu', type=int)
     p.add_argument('--component-review', type=Path, action='append', default=[])
+    p.add_argument('--python');p.add_argument('--hours',type=float,default=12);p.add_argument('--resume',action='store_true')
     a = p.parse_args()
     if a.action == 'prepare':
         from redox.workflows.resources import allocation_guard, host_capacity, cpu_allocation
@@ -191,6 +218,16 @@ if __name__ == '__main__':
             p.error('Launch needs exact namespace, GPU and fresh placement')
         r = launch(a.spec.resolve(), a.gpu, a.out.resolve())
         print(json.dumps({k:r[k] for k in ('status', 'returncode', 'budget_stop')}))
+    elif a.action=='queue':
+        from redox.workflows.prepared_namespace_queue import run
+        if any(v is None for v in (a.manifest,a.out,a.storage_peers,a.python)):
+            p.error('Queue requires admitted manifest, output, storage roster and interpreter')
+        manifest=a.manifest.resolve();rows=prepared_rows(manifest)
+        r=run(rows,a.out.resolve(),a.storage_peers.resolve(),a.python,a.hours,
+            finished_status='counterion_thermochemistry_finished_independent_review_pending',
+            validate=lambda row:prepared_rows(manifest),sources=[Path(__file__),manifest],
+            resume=a.resume,label='counterion_thermochemistry')
+        print(json.dumps(dict(status=r['status'],native_G_qualified=False)))
     else:
         from redox.workflows.resources import allocation_guard, host_capacity, cpu_allocation
         from redox.workflows.counterion_association import analyze

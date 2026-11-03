@@ -49,6 +49,7 @@ def run(rows,output,peers_path,interpreter,hours,*,finished_status,validate,sour
     remote=load(ROOT/'scripts/fleet/run_screening_energy_panel.py','prepared_queue_inspection')
     paths=[*map(Path,sources),Path(__file__),*[Path(r['namespace']) for r in rows],
         ROOT/'src/redox/workflows/charged_native_followup.py',ROOT/'src/redox/workflows/screening_control.py',
+        ROOT/'src/redox/workflows/molecular_native_namespace.py',
         ROOT/'scripts/fleet/run_screening_energy_panel.py',ROOT/'src/redox/workflows/prelaunch_accounting.py',
         ROOT/'src/redox/workflows/submission_refusal.py',ROOT/'scripts/pipeline/run_namespace_energy_queue.py',
         ROOT/'scripts/fleet/run_charged_polymer_geometry_panel.py']

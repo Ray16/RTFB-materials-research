@@ -1,0 +1,189 @@
+{
+  "status": "actual_refined_electronic_starts_with_owned_budget_observers_verified",
+  "checked": 1793683782.929613,
+  "records": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/namespace.json",
+      "owner": {
+        "host": "lambda1",
+        "pid": 3637818,
+        "process_start": "593389314"
+      },
+      "actual": {
+        "process_start": "593389314",
+        "CPU_affinity": [
+          13,
+          14
+        ],
+        "thread_caps": {
+          "NUMEXPR_NUM_THREADS": "2",
+          "OMP_THREAD_LIMIT": "2",
+          "OPENBLAS_NUM_THREADS": "2",
+          "OMP_NUM_THREADS": "2",
+          "XTB_THREADS": "2",
+          "MKL_NUM_THREADS": "2"
+        }
+      },
+      "residency": {
+        "checked": 1793683780.2686644,
+        "foreign_resident_PIDs": [],
+        "own_residency_observed": true,
+        "GPU": 6
+      },
+      "runtime": {
+        "status": "declared_runtime_and_FP64_smoke_passed",
+        "started": 1793683717.6321266,
+        "pid": 3637818,
+        "CPU_affinity": [
+          13,
+          14
+        ],
+        "profile": "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+        "profile_sha256": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+        "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/sources/worker.py",
+        "engine": "cutensor",
+        "versions": {
+          "pyscf": "2.14.0",
+          "gpu4pyscf-cuda12x": "1.8.1",
+          "cupy-cuda12x": "13.4.1",
+          "cutensor-cu12": "2.2.0",
+          "fastrlock": "0.8.3"
+        },
+        "FP64_smoke_checks": [
+          {
+            "pattern": "ij,jk->ik",
+            "maximum_absolute_error": 1.7763568394002505e-15
+          },
+          {
+            "pattern": "xrs,yts->rtxy",
+            "maximum_absolute_error": 3.552713678800501e-15
+          },
+          {
+            "pattern": "uv,uij->vij",
+            "maximum_absolute_error": 1.7763568394002505e-15
+          }
+        ],
+        "library_sha256": {
+          "libcutensor.so.2": "88f15d2f934fc7b227c274bd21604112dea02373928ca23c6de42e92abb9d55e",
+          "libcutensorMg.so.2": "dfe0031ea612f89f24d28b093242e6d94e4bdda158966b5255f198147b917de6"
+        },
+        "actual_library_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cutensor/lib",
+        "device_name": "Tesla V100-SXM2-32GB",
+        "compute_capability": [
+          7,
+          0
+        ],
+        "total_GPU_bytes": 34072559616,
+        "source_sha256": "070cb6517a50fe7d8a0245b0fbaf01aaefcd86ddfa14890a052faaebb0d3c26a",
+        "installed_packages_changed": false,
+        "validated_full_molecular_workflow": false
+      },
+      "launch": {
+        "status": "screening_control_submitted_start_unverified",
+        "host": "lambda1",
+        "GPU": 6,
+        "pid": 3637519,
+        "process_start": "593389169",
+        "CPU_affinity": [
+          13,
+          14
+        ],
+        "capacity": {
+          "online_cpus": 80,
+          "load_1m": 10.01953125,
+          "available_RAM_bytes": 453666717696,
+          "minimum_RAM_GiB": 72
+        },
+        "remaining_RAM_promises_bytes": 290175643648,
+        "device": {
+          "index": 6,
+          "uuid": "GPU-96bf9538-1c69-8ebe-d50a-53b1690782d8",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/runtime/bin/bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/case",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/case",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "6",
+          "--label",
+          "redox-screening-control",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/case/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/sources/host_guard.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/case/host_guard",
+          "--maximum-rss-gib",
+          "40",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/case/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/sources/worker.py",
+          "--plan",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/case/plan.json"
+        ],
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/states/phenothiazine_neu_mode_minus/namespace.json",
+        "namespace_sha256": "f3396313f15911361a6bb9b3645f17b05aab6c3b8b7f7e8088fff7516ccc6ef8",
+        "started": 1793683715.8889546,
+        "maximum_wall_seconds": 7200,
+        "maximum_durable_output_bytes": 62500864,
+        "budget_observer_owner": {
+          "host": "lambda1",
+          "pid": 3637163,
+          "process_start": "593388889"
+        },
+        "budget_observer_source_sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+        "native_G_qualified": false,
+        "production_storage_gate_changed": false
+      },
+      "budget_observer": {
+        "owner": {
+          "host": "lambda1",
+          "pid": 3637163,
+          "process_start": "593388889"
+        },
+        "CPU_affinity": [
+          15
+        ],
+        "status": "bounded_response_budget_observer_running"
+      },
+      "actual_SCF_settings": 1,
+      "native_G_qualified": false,
+      "geometry_sha256": "8707e2cd3e638c5795f40ae1434f31b340a2cbf37b5568ffd6208e4c142f2663"
+    }
+  ],
+  "completed_electronic_states": 0,
+  "native_G_qualified": false
+}

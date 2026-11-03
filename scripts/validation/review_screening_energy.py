@@ -19,12 +19,26 @@ from redox.core.io import atomic_write_json
 from redox.workflows.molecular_native_namespace import verify
 
 
+def selected_spin_record(candidates, result):
+    """Match the exact minimum, not all guesses within the SCF tolerance."""
+    if not candidates: raise ValueError('Actual converged selected-spin checkpoint required')
+    selected=min(candidates,key=lambda row:row['energy_Ha'])
+    if (abs(selected['energy_Ha']-result['e_smd_Ha'])>1e-9
+            or round(selected['spin_contamination'],4)!=result['smd_spin_contam']):
+        raise ValueError('Selected actual occupied-wavefunction spin differs from the reported state')
+    return selected
+
+
 def review(namespace,placement):
     from ase.io import read as read_atoms
     from pyscf.lib import param
     spec=verify(namespace);case=Path(spec['case']);used=[namespace]
     def read(path):used.append(path);return json.loads(path.read_text())
     plan=read(case/'plan.json')
+    refined=plan.get('first_route_refined_electronic') is True
+    if refined:
+        from redox.workflows.route_refined_electronic import validate_inputs
+        validate_inputs(plan,Path(spec['sources']))
     definition=importlib.util.spec_from_file_location('energy_control_owner',ROOT/'scripts/pipeline/observe_archived_native_namespace.py')
     owners=importlib.util.module_from_spec(definition);definition.loader.exec_module(owners)
     from redox.validation.execution_review import review_closure,freeze_source,SOURCE_BYTES
@@ -40,7 +54,7 @@ def review(namespace,placement):
     used.append(freeze_reviewer(case))
     expected_atoms=read_atoms(Path(spec['sources'])/'input.xyz')
     expected_coordinates=expected_atoms.positions/param.BOHR
-    energy_results={};checkpoint_counts={};frame_errors={}
+    energy_results={};checkpoint_counts={};frame_errors={};spins={}
     for variant in ('installed','corrected'):
         root=case/variant;result=read(root/'result.json')
         check_spin_contamination(result.get('smd_spin_contam'))
@@ -48,7 +62,7 @@ def review(namespace,placement):
                 or result['charge']!=plan['source_state']['charge'] or result['mult']!=plan['source_state']['mult']
                 or result['converged_smd'] is not True or not math.isfinite(result['e_smd_Ha'])):
             raise ValueError('Matched converged unoptimized electronic parent required')
-        energies=[];count=0;frame_errors[variant]=[]
+        energies=[];count=0;frame_errors[variant]=[];spins[variant]=[]
         for path in sorted((root/'SCF_evaluations').glob('*/*/SCF_result.json')):
             solved=read(path);settings=read(path.with_name('settings.json'));checkpoint=path.with_name('SCF.h5')
             used.append(checkpoint)
@@ -66,10 +80,14 @@ def review(namespace,placement):
                 actual=float(handle['scf/e_tot'][()])
                 if not math.isfinite(actual) or abs(actual-solved['energy_Ha'])>1e-9:
                     raise ValueError('Checkpoint and recorded solver energy differ')
+            if refined and solved['converged']:
+                from redox.validation.scf_frame import checkpoint_spin
+                spins[variant].append(dict(checkpoint=str(checkpoint),energy_Ha=actual,**checkpoint_spin(checkpoint)))
             count+=1
             if solved['converged']:energies.append(actual)
         if not energies or abs(min(energies)-result['e_smd_Ha'])>1e-9:
             raise ValueError('The selected lowest converged state is not backed by actual SCF checkpoints')
+        if refined:spins[variant]=[selected_spin_record(spins[variant],result)]
         checkpoint_counts[variant]=count;energy_results[variant]=result['e_smd_Ha']
         if variant=='corrected':
             implementation=read(root/'implementation/implementation.json')
@@ -77,21 +95,34 @@ def review(namespace,placement):
                 raise ValueError('Only the isolated screening implementation may change')
             for name in ('screening_kernel.cu','corrected_host.py','original_host.py'):used.append(root/'implementation'/name)
     old=plan['reference_energy_Ha']
-    differences=dict(installed_minus_stored_Ha=energy_results['installed']-old,
-        corrected_minus_stored_Ha=energy_results['corrected']-old,
+    differences=dict(installed_minus_stored_Ha=None if refined else energy_results['installed']-old,
+        corrected_minus_stored_Ha=None if refined else energy_results['corrected']-old,
         corrected_minus_installed_Ha=energy_results['corrected']-energy_results['installed'])
-    if any(abs(v-stage['differences'][k])>1e-14 for k,v in differences.items()):
+    if any((stage['differences'][k] is not None if v is None else
+            stage['differences'][k] is None or abs(v-stage['differences'][k])>1e-14)
+            for k,v in differences.items()):
         raise ValueError('Implementation differences do not reconstruct')
+    if refined and stage.get('stored_energy_comparison_performed') is not False:
+        raise ValueError('A first-time geometry has no stored energy comparison')
     verify(namespace)
-    return dict(status='benchmark_screening_energy_control_independently_checked',namespace=str(namespace),
+    report=dict(status='route_refined_primary_electronic_independently_checked' if refined else 'benchmark_screening_energy_control_independently_checked',namespace=str(namespace),
         key=plan['source_id'],source_state=plan['source_state'],nao=plan['nao'],atoms=plan['atoms'],
         differences=differences,agreement_tolerance_Ha=plan['comparison_absolute_tolerance_Ha'],
-        declared_agreement_passed=all(abs(v)<=plan['comparison_absolute_tolerance_Ha'] for v in differences.values()),
+        declared_agreement_passed=all(abs(v)<=plan['comparison_absolute_tolerance_Ha'] for v in differences.values() if v is not None),
         actual_SCF_checkpoint_counts=checkpoint_counts,actual_checkpoint_frames_verified=True,
         maximum_checkpoint_coordinate_error_Bohr={k:max(v) for k,v in frame_errors.items()},peak_GPU_MiB=stage['observed_peak_GPU_MiB'],
         peak_host_RSS_bytes=max(host['self_VmHWM_bytes'],host['peak_tree_RSS_bytes']),
         resources_checked=True,native_G_qualified=False,new_potential_qualified=False,
         source_sha256={str(p):sha256_file(p) for p in used},producer_sha256=hashlib.sha256(REVIEWER_SOURCE_BYTES).hexdigest())
+    if refined:
+        used.extend([freeze_source(case,Path(validate_inputs.__code__.co_filename)),
+                     Path(spec['sources'])/'geometry_review.json',Path(spec['sources'])/'input.xyz'])
+        report.update(stored_energy_comparison_performed=False,reference_energy_Ha=None,
+            geometry_sha256=sha256_file(Path(spec['sources'])/'input.xyz'),
+            geometry_review_sha256=sha256_file(Path(spec['sources'])/'geometry_review.json'),
+            electronic_protocol=plan['electronic_protocol'],corrected_E_Ha=energy_results['corrected'],
+            actual_wavefunction_spins=spins,source_sha256={str(p):sha256_file(p) for p in used})
+    return report
 
 
 def pilots(paths,manifest_path):

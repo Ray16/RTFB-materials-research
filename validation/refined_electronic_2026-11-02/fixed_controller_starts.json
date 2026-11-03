@@ -1,0 +1,57 @@
+[
+  {
+    "label": "refined_electronic_v2",
+    "owner": {
+      "host": "lambda2",
+      "pid": 2108347,
+      "process_start": "1448422246"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.route_refined_electronic",
+      "queue",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/manifest.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/queue",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "12"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/queue_controller.log",
+    "checked": 1793683602.4896116
+  },
+  {
+    "label": "counterion_resume",
+    "owner": {
+      "host": "lambda2",
+      "pid": 2108350,
+      "process_start": "1448422251"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_thermochemistry",
+      "queue",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/thermochemistry_prepared_manifest.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/queue",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "12",
+      "--resume"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/counterion_resume_01.log",
+    "checked": 1793683602.5422852
+  }
+]

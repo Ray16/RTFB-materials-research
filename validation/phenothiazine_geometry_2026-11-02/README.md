@@ -1,5 +1,12 @@
 # Neutral phenothiazine: strict signed-mode geometry refinement
 
+All three strict geometry refinements now pass independent review, including the
+[neutral plus branch](../phenothiazine_oxidized_geometry_2026-11-02/neutral_plus_geometry_review.json).
+The [fresh electronic campaign](../refined_electronic_2026-11-02/README.md) retains
+both neutral branches and the oxidized state; one actual V100 start is verified.
+Own electronic/native qualification remains pending. Earlier observations below
+retain their original waiting/running counts.
+
 The [minus branch](../phenothiazine_oxidized_geometry_2026-11-02/neutral_minus_geometry_review.json)
 now passes independent review of all 53 saved SCF frames and the strict final
 gradient (3.50e-7 Ha/Bohr). Its partner has a separately verified actual start;

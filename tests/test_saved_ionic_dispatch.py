@@ -79,3 +79,21 @@ def test_prior_frozen_launcher_version_proves_its_original_traceback_lines(refus
     assert result['prelaunch_failures']==1 and result['records'][1]['launcher_source']==str(frozen)
     frozen.write_text(content+'# changed\n')
     with pytest.raises(ValueError):prelaunch_accounting(refusals,lambda owner:False,[frozen])
+
+
+@pytest.mark.parametrize('message',['GPU occupied; no molecular job started',
+    'Host RAM promised; no molecular job started','Shared output headroom unavailable; no molecular job started'])
+def test_molecular_delegate_resource_branch_does_not_consume_failure_budget(refusals,message):
+    from redox.workflows.prelaunch_accounting import prelaunch_accounting
+    source=path.parents[2]/'src/redox/workflows/molecular_native_namespace.py'
+    tree=ast.parse(source.read_text());line=next(n.lineno for n in ast.walk(tree) if isinstance(n,ast.Raise)
+        and isinstance(n.exc,ast.Call) and n.exc.args and isinstance(n.exc.args[0],ast.Constant)
+        and n.exc.args[0].value==message)
+    log=refusals.parent/'dispatch_logs/try_001.log'
+    log.write_text(f'Traceback (most recent call last):\n  File "{source}", line {line}, in launch\nRuntimeError: {message}\n')
+    result=prelaunch_accounting(refusals,lambda owner:False)
+    assert result['prelaunch_failures']==0 and result['resource_refusals']==3
+    assert result['records'][0]['launcher_source']==str(source)
+    # A started wrapper or guard is never reopened by this accounting exception.
+    placement=refusals.parent/'placement_1';placement.mkdir();(placement/'launch.json').write_text('{}')
+    assert prelaunch_accounting(refusals,lambda owner:False)['prelaunch_failures']==1

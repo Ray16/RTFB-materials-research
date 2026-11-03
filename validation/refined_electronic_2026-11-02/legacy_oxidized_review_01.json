@@ -1,0 +1,77 @@
+{
+  "status": "benchmark_screening_energy_control_independently_checked",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/namespace.json",
+  "key": "phenothiazine_ox",
+  "source_state": {
+    "id": "phenothiazine_ox",
+    "aliases": [
+      "phenothiazine:phenothiazine_ox"
+    ],
+    "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+    "charge": 1,
+    "mult": 2,
+    "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/ox"
+  },
+  "nao": 976,
+  "atoms": 39,
+  "differences": {
+    "installed_minus_stored_Ha": 5.184119800105691e-11,
+    "corrected_minus_stored_Ha": 5.184119800105691e-11,
+    "corrected_minus_installed_Ha": 0.0
+  },
+  "agreement_tolerance_Ha": 1e-07,
+  "declared_agreement_passed": true,
+  "actual_SCF_checkpoint_counts": {
+    "installed": 3,
+    "corrected": 3
+  },
+  "actual_checkpoint_frames_verified": true,
+  "maximum_checkpoint_coordinate_error_Bohr": {
+    "installed": 1.7763568394002505e-15,
+    "corrected": 1.7763568394002505e-15
+  },
+  "peak_GPU_MiB": 14746,
+  "peak_host_RSS_bytes": 1452056576,
+  "resources_checked": true,
+  "native_G_qualified": false,
+  "new_potential_qualified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/namespace.json": "3c80427c9dcde0c04408a93ba4780ef888991d5e94de512e99d5df7990cf4613",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/plan.json": "fd9bc172847fbc3089712f8d11f01552a4068ae6a41a2ffeea279b1f2c1da5c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/review_sources/df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29/execution_review.py": "df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/review_sources/f158f7587a4f1a201e5b45fe487553a67f2a95d0f1b9158f8993839721ef5d24/review_screening_energy.py": "f158f7587a4f1a201e5b45fe487553a67f2a95d0f1b9158f8993839721ef5d24",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/status.json": "7d17c3c07dc582fd9ff6db0fb4cbe2b36185c22d032aea10a0f4d705c20256c2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/placement_001/launch.json": "ff0ec9e674cee5f0287b6c3904527e33ba5aec024de6b2c73d21ebe2e9264d0b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/placement_001/completion.json": "563dc4dbf54930a5cdd277aaa78e27193e9c8b6e599fcbd23aaedf840908da2f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/residency_guard/owner.json": "b836af784405bc631e3ec7639fae7b3be16b779ae2d1245c166b53bfb8eee8b3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/residency_guard/state.json": "b5ac2b805fc6e2e0133729febf600f4539a0a71691c61a5e1e99f7c7c4ac9187",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/host_guard/status.json": "5e2a7d08983476b0eece7c1517c7a169a3fcc6808573cb1bda2c985e8863655f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/tensor_runtime/status.json": "09a4854fdd3668769e678fec2c30c91bcdc2c46df46356133312e1587de2d469",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/review_sources/3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a/scf_frame.py": "3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/result.json": "939d573439752d4ced4f85d77da754fbf6ad956067b8aca69c95046a1114878a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0000/0000/SCF_result.json": "371ba64028f6b42697d2d57a63ccd396a483567321dcfae0a8b89f8de827ccb9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0000/0000/settings.json": "5fe9efe499f317b9f805f85b540a0fe5268a32b0000a722105826f4af7aa6aec",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0000/0000/SCF.h5": "f0d11d09b26153c9a0f309da6f5f574b2a39b92629fe5ae2e80e01d07b5ad142",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0001/0000/SCF_result.json": "2421c9c477b128981ceada95e8841eeb89a046f44ba6b8c0fa18376c835af385",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0001/0000/settings.json": "5dfe7ad64736dfb5b0a039ee94e317afbefe4e606282e9a9368302f99d26a12b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0001/0000/SCF.h5": "440c5eb38efb821836452cb7a90beb04de97cb7acf7135a89412d470de15f823",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0002/0000/SCF_result.json": "49d04ebf4b61cd5249e34078e61895804899ab29485c70a5f58055945816778f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0002/0000/settings.json": "2959b1ad743176a51670ef38a8b8f639cdb55fe6e5ce635690778814154d9ead",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/installed/SCF_evaluations/0002/0000/SCF.h5": "a8f062209c05601c5e1dff87d6269ed96445bcd93ba90cfa182852d53bd94522",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/result.json": "e52ffddb116d796312c662257ce01ca1523198b067436d4936f1bc62bf610147",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0000/0000/SCF_result.json": "daaa7dfa16c20c449083ed70ccbeb0304d2bc957ec475ab43b650921983a9139",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0000/0000/settings.json": "b5ebb2d8b8a5063288b5e73672421c56881859df1d43f50a97c83f0b8b9b7f69",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0000/0000/SCF.h5": "60fa1e3e3f0e92ac1f6886dbde1edbc16a12ed915bf142b670601d6d9b22c03a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0001/0000/SCF_result.json": "50964581ea4a801f9c47393d59819665a814002a542857f07598d46698f7a883",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0001/0000/settings.json": "ed514b0f24bc5f22ce3f18cb8f1a2842e61eae9b4e066b55d7079688fa1fafa5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0001/0000/SCF.h5": "13f24e22947121c07c2f8da8bc8251793b2ad484047aecc4a5dcfd4a1b3217d4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0002/0000/SCF_result.json": "64771d97f4a33a0bc0d68ffede33e9b1b4ed02423e32d0df38f35dc61a505537",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0002/0000/settings.json": "d6c3824e34b980a9a0e3074f4f5f65dbbc2e67e7b8c1b326f14580b16104a960",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/SCF_evaluations/0002/0000/SCF.h5": "8f668419510009f4e636aa0a2848aeb2c3c9ac3cbcb40362fcd8eda7a777e91e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/implementation/corrected_host.py": "fcb065c065a81fc42fe835c987d5a1acc487517658b9dea57eabc52d51ac992f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/case/corrected/implementation/original_host.py": "43558f4a4e8b9c6855dd87824afaff214ec6d112c813f56d1f49eb17a42ea664"
+  },
+  "producer_sha256": "f158f7587a4f1a201e5b45fe487553a67f2a95d0f1b9158f8993839721ef5d24"
+}

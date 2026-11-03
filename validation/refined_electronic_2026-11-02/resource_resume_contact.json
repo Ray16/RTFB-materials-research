@@ -1,0 +1,33 @@
+{
+  "label": "contact",
+  "prior_owner": {
+    "host": "lambda2",
+    "pid": 2108350,
+    "process_start": "1448422251"
+  },
+  "owner": {
+    "host": "lambda2",
+    "pid": 2274511,
+    "process_start": "1448686004"
+  },
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.workflows.counterion_thermochemistry",
+    "queue",
+    "--manifest",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/thermochemistry_prepared_manifest.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/queue",
+    "--storage-peers",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+    "--python",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "--hours",
+    "12",
+    "--resume"
+  ],
+  "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/resource_resume_contact.log",
+  "checked": 1793686240.0665805
+}

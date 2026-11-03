@@ -547,8 +547,8 @@
       "protocol": "validation/phenothiazine_primary_2026-11-02/calculation_contract.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel",
       "checks": "validation/phenothiazine_primary_2026-11-02/focused_checks.xml",
-      "status": "both_fixed_geometry_electronic_states_and_two_refined_geometries_checked_native_pending",
-      "scope": "Original exact electronic states retained separately. Neutral-minus and oxidized refinements independently pass all 53/43 actual SCF frames and strict gradients. Second neutral branch has an actual verified start. Own new-geometry high-level electronic, Hessian/minimum/S-column/reference checks remain pending; G and potential blank."
+      "status": "three_refined_electronic_states_checked_own_native_queued",
+      "scope": "Original fixed-geometry energies and failures retained. All three strict refinements now have independently checked fresh electronic energies and selected occupied spins. Their own native/Hessian/sulfur/minimum components are queued; no nuclear or G transfer. Potential remains blank."
     },
     "phenothiazine_neutral_geometry_refinement": {
       "guide": "validation/phenothiazine_geometry_2026-11-02/README.md",
@@ -556,8 +556,8 @@
       "source_snapshot": "validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_private_manifest.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2",
       "checks": "validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml",
-      "status": "one_neutral_branch_geometry_checked_partner_running",
-      "scope": "Minus branch independently passes 53 actual SCF/frame/spin checks and final 3.50e-7-Ha/Bohr gradient. Plus branch actual worker PID/start verified on lambda1. Both branches retained until own new-geometry electronic/native G exist; no old-geometry energy transfer."
+      "status": "both_neutral_geometry_branches_independently_checked_fresh_electronic_queued",
+      "scope": "Both signed neutral branches pass independent actual-SCF, spin, topology and strict final-gradient review. Both remain explicit in the fresh high-level electronic campaign; own native G and sulfur derivatives remain required. No branch chosen by old energy or uncomputed thermochemistry."
     },
     "corrected_native_finite_batches": {
       "guide": "validation/corrected_sampling_2026-11-02/README.md",
@@ -582,6 +582,29 @@
       "status": "oxidized_strict_geometry_independently_checked_native_pending",
       "scope": "Actual prior gradient failure preserved. New +1-doublet geometry independently passes all 43 SCF/frame/spin records and strict fresh final gradient 1.05e-6 Ha/Bohr. New-geometry high-level energy/Hessian/S-column/minimum/own nuclear terms remain required; G and potential blank.",
       "geometry_review": "validation/phenothiazine_oxidized_geometry_2026-11-02/oxidized_geometry_review.json"
+    },
+    "phenothiazine_refined_first_electronic": {
+      "guide": "validation/refined_electronic_2026-11-02/README.md",
+      "current": "validation/refined_electronic_2026-11-02/current.json",
+      "source_snapshot": "validation/refined_electronic_2026-11-02/prepared_manifest_v2.json",
+      "preflight": "validation/refined_electronic_2026-11-02/archive_preflight_v2.json",
+      "checks": "validation/refined_electronic_2026-11-02/native_final_checks.xml",
+      "actual_starts": "validation/refined_electronic_2026-11-02/actual_scientific_starts_01.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2",
+      "status": "three_refined_electronic_states_independently_checked_own_native_queued",
+      "scope": "Three exact newly scored geometries independently pass ten actual SCF/frame and occupied-spin checks. Corrected/installed differences at most 9.10e-13 Ha; no historical reference substituted. Three own native components prepared and queued under the unchanged 32-GB Hessian/sulfur-column contract. No qualified G or potential."
+    },
+    "phenothiazine_refined_native": {
+      "guide": "validation/refined_electronic_2026-11-02/README.md",
+      "current": "validation/refined_electronic_2026-11-02/current.json",
+      "source_snapshot": "validation/refined_electronic_2026-11-02/native_prepared_manifest.json",
+      "protocol": "validation/refined_electronic_2026-11-02/native_calculation_contract.json",
+      "preflight": "validation/refined_electronic_2026-11-02/native_preflight.json",
+      "checks": "validation/refined_electronic_2026-11-02/resource_delegate_checks.xml",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native",
+      "status": "three_own_native_components_queued_first_symmetry_failure_held",
+      "scope": "Three own native components retain exact checked electronic parents. Neutral-minus saved matrix is finite but fails symmetry: 6.543e-6 versus 1e-6 Ha/Bohr-squared; no G or automatic scientific retry. Partners continue separately under unchanged full physical gates. Shared molecular GPU/RAM/storage refusals now retain resource-wait accounting before Popen.",
+      "actual_starts": "validation/refined_electronic_2026-11-02/native_actual_starts_01.json"
     }
   }
 }

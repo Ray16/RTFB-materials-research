@@ -1,5 +1,12 @@
 # Phenothiazine: oxidized stationarity failure and strict refinement
 
+All three strict geometry refinements now pass independent review, including the
+[neutral plus branch](../phenothiazine_oxidized_geometry_2026-11-02/neutral_plus_geometry_review.json).
+The [fresh electronic campaign](../refined_electronic_2026-11-02/README.md) retains
+both neutral branches and the oxidized state; one actual V100 start is verified.
+Own electronic/native qualification remains pending. Earlier observations below
+retain their original waiting/running counts.
+
 The [oxidized repair](oxidized_geometry_review.json) and
 [neutral minus branch](neutral_minus_geometry_review.json) now pass independent
 strict geometry review of all 43 and 53 saved SCF frames, respectively. Their

@@ -36,6 +36,10 @@ def main():
     plan=json.loads(args.plan.read_text())
     if plan['role']!='screening_energy_control' or plan['native_G_qualified']:
         raise ValueError('A separately identified electronic implementation control is required')
+    refined=plan.get('first_route_refined_electronic') is True
+    if refined:
+        admission=load(sources/'admission.py','frozen_refined_electronic_admission')
+        admission.validate_inputs(plan,sources)
     def check_sources():
         if any(hashlib.sha256(Path(p).read_bytes()).hexdigest()!=h for p,h in plan['source_sha256'].items()):
             raise ValueError('Frozen energy-control source changed')
@@ -88,12 +92,14 @@ def main():
         if not 0<memory.peak<=31744:
             raise ValueError('Electronic control exceeds the declared 32-GB GPU profile')
         old=plan['reference_energy_Ha'];installed=results['installed']['e_smd_Ha'];corrected=results['corrected']['e_smd_Ha']
-        differences=dict(installed_minus_stored_Ha=installed-old,corrected_minus_stored_Ha=corrected-old,
+        differences=dict(installed_minus_stored_Ha=None if refined else installed-old,
+                         corrected_minus_stored_Ha=None if refined else corrected-old,
                          corrected_minus_installed_Ha=corrected-installed)
         limit=plan['comparison_absolute_tolerance_Ha']
         check_sources()
         record.update(status='screening_energy_control_finished_review_pending',differences=differences,
-            declared_agreement_passed=all(abs(v)<=limit for v in differences.values()),
+            declared_agreement_passed=all(abs(v)<=limit for v in differences.values() if v is not None),
+            stored_energy_comparison_performed=not refined,
             observed_peak_GPU_MiB=memory.peak,chemical_free_energy_assembled=False)
     except BaseException as error:
         record.update(status='screening_energy_control_failed_preserved',error=repr(error))

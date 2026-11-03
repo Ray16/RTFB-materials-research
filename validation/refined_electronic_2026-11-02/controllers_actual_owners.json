@@ -1,0 +1,57 @@
+{
+  "checked": 1793683902.830012,
+  "records": [
+    {
+      "label": "refined_electronic_v2",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2108347,
+        "process_start": "1448422246"
+      },
+      "CPU_affinity": [
+        50
+      ],
+      "status": "route_refined_electronic_submitted_start_unverified",
+      "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic_v2/queue/status.json"
+    },
+    {
+      "label": "counterion_resume",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2108350,
+        "process_start": "1448422251"
+      },
+      "CPU_affinity": [
+        51
+      ],
+      "status": "waiting_for_suitable_free_GPU_or_host_capacity",
+      "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/queue/status.json"
+    },
+    {
+      "label": "bulk_0",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2081684,
+        "process_start": "1448387881"
+      },
+      "CPU_affinity": [
+        25
+      ],
+      "status": "corrected_sampling_queue_active",
+      "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json"
+    },
+    {
+      "label": "bulk_1",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2081687,
+        "process_start": "1448387887"
+      },
+      "CPU_affinity": [
+        46
+      ],
+      "status": "corrected_native_queue_active",
+      "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/status.json"
+    }
+  ]
+}

@@ -30,7 +30,8 @@ def launch(row,host,gpu,interpreter,claim,try_number):
     namespace=Path(row['namespace']);root=namespace.parent
     output=root/f'placement_{try_number:03d}'
     launcher=row.get('launcher_module','redox.workflows.screening_control')
-    if launcher not in ('redox.workflows.screening_control','redox.workflows.route_geometry'):
+    if launcher not in ('redox.workflows.screening_control','redox.workflows.route_geometry',
+                       'redox.workflows.route_refined_electronic','redox.workflows.counterion_thermochemistry'):
         raise ValueError('An explicitly maintained scientific launcher is required')
     # SSH gives the allocator a fresh node affinity, independently of this
     # coordinator's one-CPU binding. No GPU work runs in the SSH client.

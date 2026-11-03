@@ -32,10 +32,16 @@ def review(namespace):
     implementation=case/'screening_implementation/implementation.json';compiled=implementation.with_name('screening_kernel.cu')
     signature=screening_signature(read(implementation),sources,compiled);used.append(compiled)
     energy_review=read(sources/'electronic_review.json')
-    if (energy_review['status']!='benchmark_screening_energy_control_independently_checked'
+    refined=plan.get('refined_route_native_component') is True
+    expected_energy_status='route_refined_primary_electronic_independently_checked' if refined else 'benchmark_screening_energy_control_independently_checked'
+    if (energy_review['status']!=expected_energy_status
             or not energy_review['actual_checkpoint_frames_verified'] or not energy_review['declared_agreement_passed']
             or any(sha256_file(p)!=h for p,h in energy_review['source_sha256'].items())):
         raise ValueError('Exact independently reviewed electronic backing required')
+    if refined and (energy_review['geometry_sha256']!=plan['geometry_sha256']
+            or energy_review['reference_energy_Ha'] is not None or energy_review['stored_energy_comparison_performed']
+            or energy_review['key']!=plan['source_id'] or energy_review['electronic_protocol']!=plan['electronic_protocol']):
+        raise ValueError('Refined native geometry must retain its own first-scored electronic parent')
     result=read(case/'result.json');native_path=Path(result['native_record_path'])
     if not native_path.resolve().is_relative_to((case/'state').resolve()):raise ValueError('Own native record required')
     native=read(native_path);matrix_path=native_path.with_suffix('')/'hessian_cartesian.npy';used.append(matrix_path)

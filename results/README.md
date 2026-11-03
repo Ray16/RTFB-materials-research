@@ -37,16 +37,21 @@ establish that a calculation is currently running.
   refinement seeds are prepared. The oxidized native recovery fails its actual
   gradient gate (0.00045736 versus 0.00045 Ha/Bohr); strict refinement is queued.
   The neutral-minus and oxidized strict geometries now pass independent review
-  (53/43 SCF frames); a second neutral branch is running. Potential and G remain pending.
+  (53/43 SCF frames); both neutral branches are now checked and fresh electronic scoring has begun. Potential and G remain pending.
 - [Neutral phenothiazine geometry refinement](../validation/phenothiazine_geometry_2026-11-02/README.md):
-  one signed branch passes strict independent geometry review; its partner has a
-  verified scientific start. Their energies and nuclear
+  both signed branches pass strict independent geometry review and remain in the
+  fresh electronic campaign. Their energies and nuclear
   terms must be recomputed at any accepted new geometry; G/potential stay blank.
 - [Oxidized phenothiazine geometry refinement](../validation/phenothiazine_oxidized_geometry_2026-11-02/README.md):
   the +1-doublet stationarity failure is independently reconstructed from its
   actual SCF/wavefunction. Its strict geometry repair now passes 43-frame
   independent review; the original
   failure and earlier prelaunch interruptions remain preserved. No G is admitted.
+- [Fresh phenothiazine electronic scoring](../validation/refined_electronic_2026-11-02/README.md):
+  all three refined geometries pass independent review. Both neutral branches and
+  the oxidized state retain separate fresh electronic inputs, with no historical
+  energy substituted. All three electronic states pass independent actual SCF/spin review; own
+  native jobs are prepared and queued, with G and potential pending.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.

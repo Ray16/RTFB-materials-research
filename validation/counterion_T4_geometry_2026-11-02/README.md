@@ -51,3 +51,8 @@ per-evaluation checkpoints are on durable shared storage at the raw root in
 [current.json](current.json). The [31 focused checks](scope_checks.xml) include
 both T4 roles, unchanged full-workflow rejection, exact ionic connectivity and
 runtime paths. This resource pilot supplies no material or reaction-yield claim.
+
+The [bounded thermochemistry coordinator](../refined_electronic_2026-11-02/current.json)
+now retains those three admitted contact inputs while waiting for suitable
+32-GB-class capacity. Its exact live owner is recorded separately from scientific
+starts. This scheduling update supplies no new contact G or T4 Hessian permission.
