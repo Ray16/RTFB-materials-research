@@ -1,14 +1,16 @@
 # Publication release preparation
 
-The [local reviewer candidate](review_candidate.json) contains six checked
-payloads totaling 818,035,636 bytes: committed scientific source, the current
+The [updated local reviewer candidate](review_candidate_02.json) contains six checked
+payloads totaling 818,081,211 bytes: committed scientific source, the current
 manuscript upload and slides, historical review packages, electronic-control
 checkpoints and the corrected molecular CPU replay. It is located at
-`/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate`.
-Its manifest hashes all 16 bundled files. This is ready for local review; the
+`/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_portable`.
+Its manifest hashes all 18 bundled files and records the full validation build
+of source commit `5ceb4e3b`. The earlier candidate and producer are preserved.
+This is ready for local review; the
 new full raw archive, public deposition and final metadata remain outstanding.
 
-## Source replay and remaining portability work
+## Source replay and resolved portability gap
 
 The [source export](source_export.json) is exactly commit `7d19efe8` and excludes
 unrelated uncommitted work. From its 11,414 extracted files, the
@@ -16,14 +18,19 @@ unrelated uncommitted work. From its 11,414 extracted files, the
 corrected molecular cohort and phenothiazine oxidation with original scientific
 paths blocked. These checks reconstruct cached numerical results, not fresh QM.
 
-The [whole-manuscript validation attempt](portability_gap.json) identifies a
-remaining dependency on absolute source paths in the occupied-sampling reader.
+The initial [whole-manuscript validation attempt](portability_gap.json) identified a
+dependency on absolute source paths in the occupied-sampling reader.
 The first attempt stopped at a nested CPU-allocation guard in the test harness;
 the second used the builder's own allocation and reached the actual relocation
 failure. Neither is counted as a successful full validation build. The separate
 self-contained TeX upload still compiles to the checked 21/36-page PDFs.
-Portably supplying the sampling reader's exact inputs is the next code task;
-its source and physical-context checks must remain intact.
+The [subsequent portable-input fix](../portable_sampling_2026-11-03/README.md)
+preserves those source and physical-context checks. A fresh committed-source
+export now passes the complete validation build with original user data hidden,
+networking disabled and the source rebased to `/tmp/work`, using the existing
+checked runtime. Its standalone sampling replay passes the same isolation.
+The updated review candidate includes this source and its matching validation
+record; the failed initial attempts remain historical evidence.
 
 ## Raw inventory and storage
 

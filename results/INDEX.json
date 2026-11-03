@@ -668,25 +668,25 @@
     },
     "publication_release_candidate": {
       "guide": "validation/publication_release_2026-11-03/README.md",
-      "current": "validation/publication_release_2026-11-03/review_candidate.json",
+      "current": "validation/publication_release_2026-11-03/review_candidate_02.json",
       "source_snapshot": "validation/publication_release_2026-11-03/raw_seed_manifest.json",
-      "source_replay": "validation/publication_release_2026-11-03/source_replay.json",
+      "source_replay": "validation/portable_sampling_2026-11-03/committed_source_validation.json",
       "raw_inventory": "validation/publication_release_2026-11-03/namespace_resolution_summary_02.json",
       "storage": "validation/publication_release_2026-11-03/storage_headroom.json",
-      "portability": "validation/publication_release_2026-11-03/portability_gap.json",
+      "portability": "validation/portable_sampling_2026-11-03/committed_example_validation.json",
       "checks": "validation/publication_release_2026-11-03/archive_checks.xml",
-      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate",
-      "status": "historical_review_bundle_preserved_portability_fix_checked_updated_export_pending",
-      "scope": "The 818-MB source-7d19efe8 review bundle is preserved. The subsequent portable_manuscript_validation entry closes the original-path dependency in current code. Updated source export and full raw archive/deposition remain separate steps."
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_portable",
+      "status": "updated_review_bundle_with_committed_portable_validation_checked_raw_archive_pending",
+      "scope": "Six checked payloads, 818 MB, with source commit 5ceb4e3b. Its full article/SI validation build and standalone sampling replay pass with original user data hidden and networking disabled. All declared raw bindings located, 120.3 GB unique content; full raw storage and public deposition remain pending."
     },
     "portable_manuscript_validation": {
       "guide": "validation/portable_sampling_2026-11-03/README.md",
-      "current": "validation/portable_sampling_2026-11-03/home_isolation_02.json",
-      "source_snapshot": "validation/portable_sampling_2026-11-03/source_overlay_03.json",
+      "current": "validation/portable_sampling_2026-11-03/committed_source_validation.json",
+      "source_snapshot": "validation/portable_sampling_2026-11-03/source_export.json",
       "portable_inputs": "examples/occupied_sampling_replay/data/portable_inputs.json",
       "checks": "validation/portable_sampling_2026-11-03/focused_checks_02.xml",
       "pdf_equivalence": "validation/portable_sampling_2026-11-03/local_pdf_equivalence.json",
-      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_publication_source_extracted",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_source_5ceb4e3b_extracted",
       "status": "rebased_full_validation_build_passed_original_user_data_hidden",
       "scope": "Exact 183-input mapping and explicit initial-preparation relocation preserve all scientific checks. Full article/SI build passes with user data hidden, network disabled and no CUDA devices, using the existing checked runtime. All 80 local PDF pages retain identical text/raster content; no new physical or experimental validation."
     }

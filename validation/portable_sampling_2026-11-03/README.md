@@ -9,6 +9,14 @@ All numerical checks and compilation succeed: 21 article pages and 36 SI pages.
 This is a workspace-independence test using the existing checked runtime, not
 a fresh installation or a new quantum calculation.
 
+This was subsequently repeated from the
+[committed source export](source_export.json), not only the proposed overlay.
+The [full build](committed_source_validation.json) and
+[standalone sampling replay](committed_example_validation.json) both pass the
+same home-hidden, network-disabled isolation for commit `5ceb4e3b`. The
+[updated reviewer candidate](../publication_release_2026-11-03/review_candidate_02.json)
+contains that exact source version and its validation record.
+
 The [PDF comparison](rebased_pdf_equivalence.json) finds identical text and
 rendered pixels on all 57 pages relative to the previously inspected PDFs.
 No reported scientific value, figure or interpretation changes.
