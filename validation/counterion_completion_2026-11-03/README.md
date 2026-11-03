@@ -1,5 +1,13 @@
 # Expanded finite chloride-contact sensitivity
 
+The subsequent [N0-outer plus branch](N0_outer_plus_native_review.json) now
+passes independent full native review, with a 23.9544-cm-1 minimum and maximum
+sampled-column relative error of 1.8090e-4. Its
+[matched association cycle](association_N0_outer_plus.json) is +5.93 kJ/mol
+at 1 M and 50 cm-1, within the current six-outcome publication range. This is
+an additional checked outcome; it has not yet been merged into the publication
+cohort's duplicate analysis. No population or synthesis inference is added.
+
 Two additional contact components pass independent full thermochemistry review:
 [N0-below, minus repair](N0_below_minus_review.json) and
 [N0-outer, minus repair](N0_outer_minus_review.json). Their lowest internal

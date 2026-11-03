@@ -1,6 +1,6 @@
 {
   "status": "draft_built_with_frozen_evidence",
-  "checked_UTC": "2026-11-03T08:30:27Z",
+  "checked_UTC": "2026-11-03T10:16:36Z",
   "pages": 21,
   "source_sha256": {
     "manuscript/manuscript.tex": "469e71e1c8ade1ab03689f443934a1eb1fc7d702701444b824f83ac16e3c5a10",
@@ -14,7 +14,7 @@
     "manuscript/check_native_cache.py": "c67747fe58cbfc424af8eba767d950561c52720883a7217955afa41ef46b2d69",
     "manuscript/check_tempo_solution.py": "0dd7e9a8d95d1cf4b9fd946b475ad9c16dbbc87e93e9d955d781c9e4b5582349",
     "manuscript/check_viologen_native.py": "d5ba67ff44b4e5075cc0d2ecac851373bb36fe571c7502bb17216a536e2ceeda",
-    "manuscript/build.py": "26c66d92d098bb5ac6fda35592324f1d036f2bc25a352e3b68ec2077178f6133",
+    "manuscript/build.py": "2bf28e910cb4c424e9a5b5b0ae2b311e5e41301a34bb3db812626d215fa17558",
     "manuscript/evidence/2026-11-03_phenothiazine_redox/manifest.json": "2e820953f3dcab6e7b7d453e98291cb78ccada1f872bbdf60a41c3202a6a3362",
     "manuscript/evidence/current.json": "89cf0d139ac6f080d8439bb701478ee40a4f4882d2cd26e8ceff4ad2cb4f8938",
     "results/figures/manuscript/2026-11-03_phenothiazine_redox/benchmark.pdf": "5bf60931cbd5a3dfe24aac551abc6968cf70063756a6d7c2ad61d9d306008e6a",
@@ -40,6 +40,7 @@
     "results/figures/manuscript/2026-11-03_phenothiazine_redox/CDS_surface_smoothness.pdf": "2d26a30391f540b19a047a5d1c36677dab79ed4b8741d69b7edeac8419ac2fb2",
     "results/figures/manuscript/2026-11-03_phenothiazine_redox/cpu_concurrency.pdf": "43d0901481a670ca34f530926bb2ec426625578f276fa0603112534775124444",
     "manuscript/check_editorial_figures.py": "ca990664813eeaf658f0f6159fb542f77507945a600d5c7d1d879c0df3e66a03",
+    "src/redox/validation/ionic_preparation.py": "307d5a9938390338b0ed20a02a970ab4473d17f4c0ce7c7cca9b7f6b1349f74d",
     "manuscript/check_native_component_pilot.py": "11f141d2229bfc9fbfbb2dab910652c0f6ec8de0926af1c6d6d73469bac1c54d",
     "manuscript/check_ionic_native_cycles.py": "adce04312fa26a37684d04fdfeded754e704a0a08144217136bdf598543930a5",
     "src/redox/workflows/ionic_native_cycles.py": "6664a6e81743faa7bf273631b5d927e6fec64024e699ba44f6e66af9080fe05f",
@@ -54,8 +55,192 @@
     "src/redox/build/attachment_identity.py": "f01dcd9a5f2ce1f5296b58cf8f54b81be76c8d80caff6b6ff643b2213a61e81c",
     "manuscript/check_phenothiazine_redox.py": "79a273db480fead51e9f49c5148b069747e12dab119bea6cd5962a0fb0f729de",
     "src/redox/properties/reference_redox.py": "f80485f27aca7aeb80d9b55dcf217cef5160c7906e2d34c5c267a79b7ce13b69",
-    "src/redox/validation/sampling_publication.py": "fdaa4530458be5767431a97b94e6bf88e55a821de82f0b1adb2dc62ad7c31184",
-    "src/redox/validation/sampling_batches.py": "9ee66d5e8001e70c27a02b5896bab8c6f6683b99f939f54021dd79f61911bde9",
+    "examples/occupied_sampling_replay/data/portable_inputs.json": "bffe2df85c3c66b03bb7a61820d5b0648aa1352b0fb44ffdfa2cfd8b3ac0bcd8",
+    "examples/occupied_sampling_replay/data/input_edf9b4140a5abe7f5d75c2399224f42a0a331d463f939ce3970aec77f99f595c.json": "edf9b4140a5abe7f5d75c2399224f42a0a331d463f939ce3970aec77f99f595c",
+    "examples/occupied_sampling_replay/data/input_c4ad60ce13ee38687b0b46996aa3313dfebf2daf2825214cba26bf7a4b20aefe.json": "c4ad60ce13ee38687b0b46996aa3313dfebf2daf2825214cba26bf7a4b20aefe",
+    "examples/occupied_sampling_replay/data/input_a9605328ff11d94b9215141447de6549bfd0d372bc5fc30724d86f032a1a5370.json": "a9605328ff11d94b9215141447de6549bfd0d372bc5fc30724d86f032a1a5370",
+    "examples/occupied_sampling_replay/data/input_dbaf47cd040345c84e1b78471c7313e436d99a7944526f3fd17ef42bdc1b39de.json": "dbaf47cd040345c84e1b78471c7313e436d99a7944526f3fd17ef42bdc1b39de",
+    "examples/occupied_sampling_replay/data/input_1f6af24a727521aec0518ff3fe7bb2fb9674b4354f9903184cafc76eb968b852.json": "1f6af24a727521aec0518ff3fe7bb2fb9674b4354f9903184cafc76eb968b852",
+    "examples/occupied_sampling_replay/data/input_6f3c8f1e4e224d3bda11b479c504c5eabd0055b492e9dc862472439f5ae2c351.json": "6f3c8f1e4e224d3bda11b479c504c5eabd0055b492e9dc862472439f5ae2c351",
+    "examples/occupied_sampling_replay/data/input_f1a0171ae8913adbfdfc0b7db58f15204380af30014ff1336fec46a9c3a5ea0f.json": "f1a0171ae8913adbfdfc0b7db58f15204380af30014ff1336fec46a9c3a5ea0f",
+    "examples/occupied_sampling_replay/data/input_09801e882b966228f9705b8205554de2d24921af77713e9c953e417f8840662e.json": "09801e882b966228f9705b8205554de2d24921af77713e9c953e417f8840662e",
+    "examples/occupied_sampling_replay/data/input_f865dcb238cbd1398cf2e261abc0dad55b10ae46a3884a268f5865b3aec745da.json": "f865dcb238cbd1398cf2e261abc0dad55b10ae46a3884a268f5865b3aec745da",
+    "examples/occupied_sampling_replay/data/input_71820d96736898157834d325591baba5fb0999d1a234aedb0a69604c757c7e71.json": "71820d96736898157834d325591baba5fb0999d1a234aedb0a69604c757c7e71",
+    "examples/occupied_sampling_replay/data/input_d8fd4653401137db56f6ed02fe3a37e1548302f9f354c2f620ebebcebaa68f49.json": "d8fd4653401137db56f6ed02fe3a37e1548302f9f354c2f620ebebcebaa68f49",
+    "examples/occupied_sampling_replay/data/input_394ea97e1a3fb0d22e8c95f75ecfed121556984458997bf096830564866fffe1.json": "394ea97e1a3fb0d22e8c95f75ecfed121556984458997bf096830564866fffe1",
+    "examples/occupied_sampling_replay/data/input_5d51c5b31b8f618c95d974dbcd10f25f6920f1c6ac41ae17aaeed049693996c8.json": "5d51c5b31b8f618c95d974dbcd10f25f6920f1c6ac41ae17aaeed049693996c8",
+    "examples/occupied_sampling_replay/data/input_1c9c84a1dfae25404bd5297381c54bb920ef8ed287e1444dc0ac687dc929994e.json": "1c9c84a1dfae25404bd5297381c54bb920ef8ed287e1444dc0ac687dc929994e",
+    "examples/occupied_sampling_replay/data/input_f707b98f31c8b9b524dcf21aa0d7f556c84567f29e344bcb634d910abcd9a0d3.json": "f707b98f31c8b9b524dcf21aa0d7f556c84567f29e344bcb634d910abcd9a0d3",
+    "examples/occupied_sampling_replay/data/input_8877c4793ceede4b8c16935d9eff0e1ef517745311dd3d88b44ebc6db3c7b4e3.json": "8877c4793ceede4b8c16935d9eff0e1ef517745311dd3d88b44ebc6db3c7b4e3",
+    "examples/occupied_sampling_replay/data/input_81e82be5f105d885571479d7ea72778cc1dfca17491e5f18aeb9e0bfb7dda2dd.json": "81e82be5f105d885571479d7ea72778cc1dfca17491e5f18aeb9e0bfb7dda2dd",
+    "examples/occupied_sampling_replay/data/input_30596742a9d8a5ab05583e1abbf5dccc23dfcd8c9931a973557615831a5334b4.json": "30596742a9d8a5ab05583e1abbf5dccc23dfcd8c9931a973557615831a5334b4",
+    "examples/occupied_sampling_replay/data/input_439773586dd22f077cab0b44fd8dbad1f185a8f69e2b1f5270aab357f1f2a033.json": "439773586dd22f077cab0b44fd8dbad1f185a8f69e2b1f5270aab357f1f2a033",
+    "examples/occupied_sampling_replay/data/input_5108e0601170db98d144df5a6e59c6a73972e23f0f85360774e70fa7c07e45a5.json": "5108e0601170db98d144df5a6e59c6a73972e23f0f85360774e70fa7c07e45a5",
+    "examples/occupied_sampling_replay/data/input_11766090bad7b686f6ea57ad9de87264b37c06248e697d3978c29196f86fd721.json": "11766090bad7b686f6ea57ad9de87264b37c06248e697d3978c29196f86fd721",
+    "examples/occupied_sampling_replay/data/input_542a5c262816525f9476cd64eb2876d12b5d6f4e088c072b7e0542bf2e21997b.json": "542a5c262816525f9476cd64eb2876d12b5d6f4e088c072b7e0542bf2e21997b",
+    "examples/occupied_sampling_replay/data/input_8512d02cc0518cc99213252e7cd4fda1ebefff6058bb65695332b99f81b6f32c.json": "8512d02cc0518cc99213252e7cd4fda1ebefff6058bb65695332b99f81b6f32c",
+    "examples/occupied_sampling_replay/data/input_a3cee168d7487e5fe88f17de4232bbc348c4fcbc233308a69e8a4a85518811f2.json": "a3cee168d7487e5fe88f17de4232bbc348c4fcbc233308a69e8a4a85518811f2",
+    "examples/occupied_sampling_replay/data/input_9087f9f09e6eff0b40edfee693a559cfeb631171f0fc41511b08265aa230e19b.json": "9087f9f09e6eff0b40edfee693a559cfeb631171f0fc41511b08265aa230e19b",
+    "examples/occupied_sampling_replay/data/input_7835ead6a9fe717d1f31a3bdb990ba409629ffb09aa90eecfe17b3326b36569a.json": "7835ead6a9fe717d1f31a3bdb990ba409629ffb09aa90eecfe17b3326b36569a",
+    "examples/occupied_sampling_replay/data/input_fa34f40b015ec54ce2a75de50fde6447aa532300d518cd8d8b6368caf2332cf1.json": "fa34f40b015ec54ce2a75de50fde6447aa532300d518cd8d8b6368caf2332cf1",
+    "examples/occupied_sampling_replay/data/input_8abbadb8b0c9fd38e2fb6feee6c8e30303c82554ae39cac52405a6fe4e58006e.json": "8abbadb8b0c9fd38e2fb6feee6c8e30303c82554ae39cac52405a6fe4e58006e",
+    "examples/occupied_sampling_replay/data/input_2002ab2d79ebef0ff7b223d0e6d1279e0084fa6783ce6e4e549be5809fe92c1d.json": "2002ab2d79ebef0ff7b223d0e6d1279e0084fa6783ce6e4e549be5809fe92c1d",
+    "examples/occupied_sampling_replay/data/input_669a017a587fc2a4a058bce50a91c730c587d07d281a036c5d29f19052900e6f.json": "669a017a587fc2a4a058bce50a91c730c587d07d281a036c5d29f19052900e6f",
+    "examples/occupied_sampling_replay/data/input_7e2bfdfc587cd6ba86bb57641dac581c36966f5c718501a883abbdac956a774e.json": "7e2bfdfc587cd6ba86bb57641dac581c36966f5c718501a883abbdac956a774e",
+    "examples/occupied_sampling_replay/data/input_180631864be71d2f3c9a1b15375fc4a78830a00a24de8ed0d38a24c8edbf866c.json": "180631864be71d2f3c9a1b15375fc4a78830a00a24de8ed0d38a24c8edbf866c",
+    "examples/occupied_sampling_replay/data/input_bf1f3838d30db95167526153be647751edd94f5d66e12d831e391b508670c751.json": "bf1f3838d30db95167526153be647751edd94f5d66e12d831e391b508670c751",
+    "examples/occupied_sampling_replay/data/input_672733999c87a37f8d4de1a7a8968a61aea80002d39b995e1cd0a6d0683082ca.json": "672733999c87a37f8d4de1a7a8968a61aea80002d39b995e1cd0a6d0683082ca",
+    "examples/occupied_sampling_replay/data/input_b9b66f10fca62cea4f97f14b581f54c004c6d108dc82b22d51312a22fff5dc55.json": "b9b66f10fca62cea4f97f14b581f54c004c6d108dc82b22d51312a22fff5dc55",
+    "examples/occupied_sampling_replay/data/input_eb0139a7b5d1bff69ab083895ad5a49ddbaacecb3b5d64f4539c389350fba9fe.json": "eb0139a7b5d1bff69ab083895ad5a49ddbaacecb3b5d64f4539c389350fba9fe",
+    "examples/occupied_sampling_replay/data/input_b44263667577c42d206dc97468f0a2bec370206f52c22d55b9f933cfc207c5ca.json": "b44263667577c42d206dc97468f0a2bec370206f52c22d55b9f933cfc207c5ca",
+    "examples/occupied_sampling_replay/data/input_d485ff11d045c70129ad283ac70edb7190c29fa1ab510b5e52730b0638df477c.json": "d485ff11d045c70129ad283ac70edb7190c29fa1ab510b5e52730b0638df477c",
+    "examples/occupied_sampling_replay/data/input_b1517c73c3ae42f67602ae71c339d915b4ddc703f0cb276906387a5ca00c837f.json": "b1517c73c3ae42f67602ae71c339d915b4ddc703f0cb276906387a5ca00c837f",
+    "examples/occupied_sampling_replay/data/input_acaf5f677560767076adc11b5f55a2b515c54eaa71f03352b788715365adda0f.json": "acaf5f677560767076adc11b5f55a2b515c54eaa71f03352b788715365adda0f",
+    "examples/occupied_sampling_replay/data/input_4b216ac02d6ee364a080c13f2e5b394bfba4043f0785d48902eff9af131e624c.json": "4b216ac02d6ee364a080c13f2e5b394bfba4043f0785d48902eff9af131e624c",
+    "examples/occupied_sampling_replay/data/input_c5ea2532f963b4851d0fc637f2e468c3e582b3ebc32cb7d33dd58be52ce6d1af.json": "c5ea2532f963b4851d0fc637f2e468c3e582b3ebc32cb7d33dd58be52ce6d1af",
+    "examples/occupied_sampling_replay/data/input_9d7a8ec22f0b502aa0af690b3db8614834fef26da2902024d1e464f665b8536b.json": "9d7a8ec22f0b502aa0af690b3db8614834fef26da2902024d1e464f665b8536b",
+    "examples/occupied_sampling_replay/data/input_e68947cd8e66d3e4425d5035224e118e74525202f38253cca92e6458002247ae.json": "e68947cd8e66d3e4425d5035224e118e74525202f38253cca92e6458002247ae",
+    "examples/occupied_sampling_replay/data/input_87910ed84ac739d28ce31fdea89fc7b0f7e044f1f34b353631bdf5378122c122.json": "87910ed84ac739d28ce31fdea89fc7b0f7e044f1f34b353631bdf5378122c122",
+    "examples/occupied_sampling_replay/data/input_d81ef1c0bb8bf791210d07702a597940f2dd345c5ae735772387045a991d0a0f.json": "d81ef1c0bb8bf791210d07702a597940f2dd345c5ae735772387045a991d0a0f",
+    "examples/occupied_sampling_replay/data/input_71c71cdcad7783062371105b216964afdd411761a52fd9f3bd6563ae3cd4562a.json": "71c71cdcad7783062371105b216964afdd411761a52fd9f3bd6563ae3cd4562a",
+    "examples/occupied_sampling_replay/data/input_e8b6fb620f3c7fa3389dd1953cfa0f95bc2a972b7716670ea5c9c34e314e2458.json": "e8b6fb620f3c7fa3389dd1953cfa0f95bc2a972b7716670ea5c9c34e314e2458",
+    "examples/occupied_sampling_replay/data/input_0330448eff586f277a2e9455f5ab0a74d798c96e7e5796af4b10e7a9e6069e74.json": "0330448eff586f277a2e9455f5ab0a74d798c96e7e5796af4b10e7a9e6069e74",
+    "examples/occupied_sampling_replay/data/input_ae4e7801029d42af70c9d159af7cf02ee8a7ff3fbaa36d37bad7b53529f595af.json": "ae4e7801029d42af70c9d159af7cf02ee8a7ff3fbaa36d37bad7b53529f595af",
+    "examples/occupied_sampling_replay/data/input_e00afa2029108389aec30d9d01d7c5ec20c2a7ded2773db33399f3c686027ac6.json": "e00afa2029108389aec30d9d01d7c5ec20c2a7ded2773db33399f3c686027ac6",
+    "examples/occupied_sampling_replay/data/input_159bb96939b99cdcd94ce288a1f34a8a15211870b724ea9924f76e7ebddd3ebc.json": "159bb96939b99cdcd94ce288a1f34a8a15211870b724ea9924f76e7ebddd3ebc",
+    "examples/occupied_sampling_replay/data/input_18b90963de5a26b4b9f019f868637ecebb039fa8616802aea99e47167b620708.json": "18b90963de5a26b4b9f019f868637ecebb039fa8616802aea99e47167b620708",
+    "examples/occupied_sampling_replay/data/input_ab450620919439fd48c6452d116b82f5a01f0765e5a6c6b271580f95f928e4df.json": "ab450620919439fd48c6452d116b82f5a01f0765e5a6c6b271580f95f928e4df",
+    "examples/occupied_sampling_replay/data/input_c6ddcaa284562f24d5205ac3b097e5447d9c7b63d66d570133920083b7591eae.json": "c6ddcaa284562f24d5205ac3b097e5447d9c7b63d66d570133920083b7591eae",
+    "examples/occupied_sampling_replay/data/input_7ca1963ca94f96f7afd790352007b58f088416277c7ad83534ed3ac8bde38f67.json": "7ca1963ca94f96f7afd790352007b58f088416277c7ad83534ed3ac8bde38f67",
+    "examples/occupied_sampling_replay/data/input_9064e6375a5f959ffe8cb24daeb79758b7401d08792c6076060176a44d8bf28d.json": "9064e6375a5f959ffe8cb24daeb79758b7401d08792c6076060176a44d8bf28d",
+    "examples/occupied_sampling_replay/data/input_61df063a6a8a48b93ed7e6facea1cc4786dffa40bed9fe72e68d473a94d33e8f.json": "61df063a6a8a48b93ed7e6facea1cc4786dffa40bed9fe72e68d473a94d33e8f",
+    "examples/occupied_sampling_replay/data/input_aff65d22c02a54c67daea90b460f3211e7643ee115e603e41dcbfb648b88b02a.json": "aff65d22c02a54c67daea90b460f3211e7643ee115e603e41dcbfb648b88b02a",
+    "examples/occupied_sampling_replay/data/input_b7c60b35e94d1fe9a74d130211314d2a7e751c181775060ebd404466744f346b.json": "b7c60b35e94d1fe9a74d130211314d2a7e751c181775060ebd404466744f346b",
+    "examples/occupied_sampling_replay/data/input_d51fed2f4ed743d661c14b7cd1c931f942ba6b16bd7a2e6b5fc9b2b825d9597d.json": "d51fed2f4ed743d661c14b7cd1c931f942ba6b16bd7a2e6b5fc9b2b825d9597d",
+    "examples/occupied_sampling_replay/data/input_1a5f713d86da9d77c19bd1dbb6b285bde07ae65496d2d027d4cb52a0d45ffe4c.json": "1a5f713d86da9d77c19bd1dbb6b285bde07ae65496d2d027d4cb52a0d45ffe4c",
+    "examples/occupied_sampling_replay/data/input_24224f5fa607dcdd7ce8bdf48cec28049a1793b21504b51ca7cc3787a77ca78e.json": "24224f5fa607dcdd7ce8bdf48cec28049a1793b21504b51ca7cc3787a77ca78e",
+    "examples/occupied_sampling_replay/data/input_26aac2a1069c7f5d6f823bc0beb420d7116eac7046bafd6df799c9c925c853f2.json": "26aac2a1069c7f5d6f823bc0beb420d7116eac7046bafd6df799c9c925c853f2",
+    "examples/occupied_sampling_replay/data/input_30ee771c8d5a8d1b952d6e77b8440e3f62a18dbcfcf60e41d5bad2d3ba9297fc.json": "30ee771c8d5a8d1b952d6e77b8440e3f62a18dbcfcf60e41d5bad2d3ba9297fc",
+    "examples/occupied_sampling_replay/data/input_ae40fb846d5f6ae771f165ef6846f2801f6007c116b16cdcda90c4a49972b70f.json": "ae40fb846d5f6ae771f165ef6846f2801f6007c116b16cdcda90c4a49972b70f",
+    "examples/occupied_sampling_replay/data/input_31f418a868e9969f1e65e7cfda1afa17d6c783372be78e0d02a7ba8c1651ea85.json": "31f418a868e9969f1e65e7cfda1afa17d6c783372be78e0d02a7ba8c1651ea85",
+    "examples/occupied_sampling_replay/data/input_a6cefa5164cd629617ba47126790dff76111eeb3acb9041752db47cb5735555c.json": "a6cefa5164cd629617ba47126790dff76111eeb3acb9041752db47cb5735555c",
+    "examples/occupied_sampling_replay/data/input_7cfc9274e70a636233f4c06772f4b02878286d8c1aa78e5612a605062e3eeed7.json": "7cfc9274e70a636233f4c06772f4b02878286d8c1aa78e5612a605062e3eeed7",
+    "examples/occupied_sampling_replay/data/input_8bde97b23aa7cecd2e93740d317686af5df8ad2238e8c85d31d1b0c52728e724.json": "8bde97b23aa7cecd2e93740d317686af5df8ad2238e8c85d31d1b0c52728e724",
+    "examples/occupied_sampling_replay/data/input_e107b1830de2519f85c7b8296d4f83b58e4ec4a65380d067051939b263f19d47.json": "e107b1830de2519f85c7b8296d4f83b58e4ec4a65380d067051939b263f19d47",
+    "examples/occupied_sampling_replay/data/input_ee8acce9980cd6308a9266918e5fe43cf9fb95cc738ca6a287daf18030f8db52.json": "ee8acce9980cd6308a9266918e5fe43cf9fb95cc738ca6a287daf18030f8db52",
+    "examples/occupied_sampling_replay/data/input_36b7fb74aea9cb02a134c193af58f9467f6aa3a31d35ea6d9a92f7f418c533a1.json": "36b7fb74aea9cb02a134c193af58f9467f6aa3a31d35ea6d9a92f7f418c533a1",
+    "examples/occupied_sampling_replay/data/input_512b63ee24132427578a395208dd027c883e98ef4688a66c6431f9ccdfe8b2b2.json": "512b63ee24132427578a395208dd027c883e98ef4688a66c6431f9ccdfe8b2b2",
+    "examples/occupied_sampling_replay/data/input_efced4159dc4fe3285182ae5f816895bd6b1a3f4a748bc7d9418c69bc1114944.json": "efced4159dc4fe3285182ae5f816895bd6b1a3f4a748bc7d9418c69bc1114944",
+    "examples/occupied_sampling_replay/data/input_48bc4d8c5dd7dc637239254eab96c6f7e68b5eb2ceeeff8ae2a84ecdb5fc8c06.json": "48bc4d8c5dd7dc637239254eab96c6f7e68b5eb2ceeeff8ae2a84ecdb5fc8c06",
+    "examples/occupied_sampling_replay/data/input_e82cc9c4df543905a35378e0ec61fcfd8087298c59c552f13623906db9eedeeb.json": "e82cc9c4df543905a35378e0ec61fcfd8087298c59c552f13623906db9eedeeb",
+    "examples/occupied_sampling_replay/data/input_99313b9f68cba575efb0f1a1b191ff9afb61bfee60e8a0ef7506361db4080a1d.json": "99313b9f68cba575efb0f1a1b191ff9afb61bfee60e8a0ef7506361db4080a1d",
+    "examples/occupied_sampling_replay/data/input_b6a17d115389b4882a8b2e4dc907cdd691d8122501edb403f444783947efb3e8.json": "b6a17d115389b4882a8b2e4dc907cdd691d8122501edb403f444783947efb3e8",
+    "examples/occupied_sampling_replay/data/input_35267b936b15b116b4e3b5222b1ff4507cf6df2636af27ce65cd6855c955b9eb.json": "35267b936b15b116b4e3b5222b1ff4507cf6df2636af27ce65cd6855c955b9eb",
+    "examples/occupied_sampling_replay/data/input_72bc32ea4fa54a24bf813c082886aa27846e6bff87f4d4de2938ed9fbade107c.json": "72bc32ea4fa54a24bf813c082886aa27846e6bff87f4d4de2938ed9fbade107c",
+    "examples/occupied_sampling_replay/data/input_e2408c8c1f876857d2157362507106b7abadf39f3bb585ad62507e8891f0343d.json": "e2408c8c1f876857d2157362507106b7abadf39f3bb585ad62507e8891f0343d",
+    "examples/occupied_sampling_replay/data/input_ffac355f9128349f5cb1c5b4e47e0a520ba55deacc5227ca9596ca6a50c8b848.json": "ffac355f9128349f5cb1c5b4e47e0a520ba55deacc5227ca9596ca6a50c8b848",
+    "examples/occupied_sampling_replay/data/input_44a47fbf35e5a34de8e9fcd2f59c28f7fbed2f6470e765ea470110b39d0816d1.json": "44a47fbf35e5a34de8e9fcd2f59c28f7fbed2f6470e765ea470110b39d0816d1",
+    "examples/occupied_sampling_replay/data/input_0f5bf352e0d873d3ecf7cfbc87d8b4f400256f93af9b744b2a349a0c374de204.json": "0f5bf352e0d873d3ecf7cfbc87d8b4f400256f93af9b744b2a349a0c374de204",
+    "examples/occupied_sampling_replay/data/input_24df220b8cb31811b92ebf6f81bc5d1e67bf6d05bcb5798cf2859aec803dbdd0.json": "24df220b8cb31811b92ebf6f81bc5d1e67bf6d05bcb5798cf2859aec803dbdd0",
+    "examples/occupied_sampling_replay/data/input_926ae90f04478c014978bdd6756475a8dccd827692ec714de12d029fef9b131d.json": "926ae90f04478c014978bdd6756475a8dccd827692ec714de12d029fef9b131d",
+    "examples/occupied_sampling_replay/data/input_687271e883b068bcd71fc844f99b5f8873aa7c110f18d7b3fcf41c57842b687b.json": "687271e883b068bcd71fc844f99b5f8873aa7c110f18d7b3fcf41c57842b687b",
+    "examples/occupied_sampling_replay/data/input_c4d71da5e7678fb4d99f68817a758c0aea27262dc9086561e0f15d5c27855280.json": "c4d71da5e7678fb4d99f68817a758c0aea27262dc9086561e0f15d5c27855280",
+    "examples/occupied_sampling_replay/data/input_f4669624997f635c892edb0fed1e50cb49d89feeffbcb02de4366db33a2a29c9.json": "f4669624997f635c892edb0fed1e50cb49d89feeffbcb02de4366db33a2a29c9",
+    "examples/occupied_sampling_replay/data/input_63eabf23faf726c4754fabc74d7fd90bea7b71bca9dfcf14bfe7ea5ea4d11350.json": "63eabf23faf726c4754fabc74d7fd90bea7b71bca9dfcf14bfe7ea5ea4d11350",
+    "examples/occupied_sampling_replay/data/input_5c20a4a44f2438e8605d328acaf92d14ecd353c8aae5dc7112a686b8137115a1.json": "5c20a4a44f2438e8605d328acaf92d14ecd353c8aae5dc7112a686b8137115a1",
+    "examples/occupied_sampling_replay/data/input_2ce0403ecba35bc111c6ad6f8ef0184677da5b6c7b23903d0525b560593e14a8.json": "2ce0403ecba35bc111c6ad6f8ef0184677da5b6c7b23903d0525b560593e14a8",
+    "examples/occupied_sampling_replay/data/input_631a200b0c3b2448453eb474d782db9235e54213d5809da1a5bc30c894110435.json": "631a200b0c3b2448453eb474d782db9235e54213d5809da1a5bc30c894110435",
+    "examples/occupied_sampling_replay/data/input_7c285fe0d9534d95e23ad8c181bc68082b669959d0fec29d6bf0af495f464a0f.json": "7c285fe0d9534d95e23ad8c181bc68082b669959d0fec29d6bf0af495f464a0f",
+    "examples/occupied_sampling_replay/data/input_84e2b70c401c41d24d861643fb67d1a031018c64cc302620a72048d26a0e8925.json": "84e2b70c401c41d24d861643fb67d1a031018c64cc302620a72048d26a0e8925",
+    "examples/occupied_sampling_replay/data/input_e2659cdb8664bfcda3443b47ac366040c77e33f6f282a34e0385150c9ca0bc53.json": "e2659cdb8664bfcda3443b47ac366040c77e33f6f282a34e0385150c9ca0bc53",
+    "examples/occupied_sampling_replay/data/input_491c5b91766a6245fdcfaf03e3206fd355efac805003d9902202513231348dd2.json": "491c5b91766a6245fdcfaf03e3206fd355efac805003d9902202513231348dd2",
+    "examples/occupied_sampling_replay/data/input_1a5435048bea6d32d768b99a5bf9d6155a8d7c6a4e2975989c3fdcf68b013bcd.json": "1a5435048bea6d32d768b99a5bf9d6155a8d7c6a4e2975989c3fdcf68b013bcd",
+    "examples/occupied_sampling_replay/data/input_57aeb5abdc79ae0aa9e2828b2b6c2e6c106e929f3234bb7ac7dfa8b78677e2b5.json": "57aeb5abdc79ae0aa9e2828b2b6c2e6c106e929f3234bb7ac7dfa8b78677e2b5",
+    "examples/occupied_sampling_replay/data/input_f1cc7c75d808a5de7d0720f3fec6e6d27e390204e5648765c4c9450b146eb761.json": "f1cc7c75d808a5de7d0720f3fec6e6d27e390204e5648765c4c9450b146eb761",
+    "examples/occupied_sampling_replay/data/input_d2d46fe4ff59cac47bb9ce05a16058604bbb3bedff54e291a698616fcac6b924.json": "d2d46fe4ff59cac47bb9ce05a16058604bbb3bedff54e291a698616fcac6b924",
+    "examples/occupied_sampling_replay/data/input_75d3abc25f8d90e48a6f07a7a5602714dc308684ee3dbb20f21a5ef52dc71bac.json": "75d3abc25f8d90e48a6f07a7a5602714dc308684ee3dbb20f21a5ef52dc71bac",
+    "examples/occupied_sampling_replay/data/input_8287953a8adcd531f94244aa110c08656f6a2897b36576d425aed62d7196b13d.json": "8287953a8adcd531f94244aa110c08656f6a2897b36576d425aed62d7196b13d",
+    "examples/occupied_sampling_replay/data/input_05045458e9d225b63f5507eaa52f4b97df4843ae623a6fcccbb1ca2fb60f3d20.json": "05045458e9d225b63f5507eaa52f4b97df4843ae623a6fcccbb1ca2fb60f3d20",
+    "examples/occupied_sampling_replay/data/input_15eac50cb97b3f7fa240cc5e6761d1bea40e8fc2a74757f2da766dfd56dc4019.json": "15eac50cb97b3f7fa240cc5e6761d1bea40e8fc2a74757f2da766dfd56dc4019",
+    "examples/occupied_sampling_replay/data/input_a9e960b6fa8c08911452a09fe6c24119d208dad5e79888804adc3e06f2ea749c.json": "a9e960b6fa8c08911452a09fe6c24119d208dad5e79888804adc3e06f2ea749c",
+    "examples/occupied_sampling_replay/data/input_91b7aa1ec097380a9998856b60874c10e510f2cfa3b1df0af727b537ba4140c1.json": "91b7aa1ec097380a9998856b60874c10e510f2cfa3b1df0af727b537ba4140c1",
+    "examples/occupied_sampling_replay/data/input_10fc7d84e2ede491879798f9c83b89afa631fc1c3e8adab9314e6f782af26d1e.json": "10fc7d84e2ede491879798f9c83b89afa631fc1c3e8adab9314e6f782af26d1e",
+    "examples/occupied_sampling_replay/data/input_8313cfcbf67c7466c9d3b7f2b281980eb11d2cd8eb2852bb3e69c8ab14468ab4.json": "8313cfcbf67c7466c9d3b7f2b281980eb11d2cd8eb2852bb3e69c8ab14468ab4",
+    "examples/occupied_sampling_replay/data/input_d3494b3771ad4c72dd767100417f2eb85dfd4cdd19d2e21c794f3d4fe32e149c.json": "d3494b3771ad4c72dd767100417f2eb85dfd4cdd19d2e21c794f3d4fe32e149c",
+    "examples/occupied_sampling_replay/data/input_c977dbf64bc5486ef5223afec7aca0373efa01e81d576b379ac967615860a717.json": "c977dbf64bc5486ef5223afec7aca0373efa01e81d576b379ac967615860a717",
+    "examples/occupied_sampling_replay/data/input_f93980c329218a92943dc3f917145651f2d23b9c459ecd7f7e2cc19bfe8fed3f.json": "f93980c329218a92943dc3f917145651f2d23b9c459ecd7f7e2cc19bfe8fed3f",
+    "examples/occupied_sampling_replay/data/input_bc66e0120c05f1e77a1ed9be3e5128d8e47a8a78ebb403a9805eab5718138cd5.json": "bc66e0120c05f1e77a1ed9be3e5128d8e47a8a78ebb403a9805eab5718138cd5",
+    "examples/occupied_sampling_replay/data/input_f2e1b7791cff81bf90fea3989a97fbc39ebf059fe7293bc00d8dc3155ffb6d57.json": "f2e1b7791cff81bf90fea3989a97fbc39ebf059fe7293bc00d8dc3155ffb6d57",
+    "examples/occupied_sampling_replay/data/input_3ec36676779e97d3ad10310309775056d7956243409bda355c8c8c69a097c2c9.json": "3ec36676779e97d3ad10310309775056d7956243409bda355c8c8c69a097c2c9",
+    "examples/occupied_sampling_replay/data/input_2bda1435b74037d1e8aabf426d31ef51e830945853889a0028ddb1dcbe56efc9.json": "2bda1435b74037d1e8aabf426d31ef51e830945853889a0028ddb1dcbe56efc9",
+    "examples/occupied_sampling_replay/data/input_763fa6357bf40f18cb0d3ae0c43faf2e6ee95646a28e27fe9c31893d69d572d2.json": "763fa6357bf40f18cb0d3ae0c43faf2e6ee95646a28e27fe9c31893d69d572d2",
+    "examples/occupied_sampling_replay/data/input_0498a6f008b5b1eee4f1682bc7b873d277492600b70e66d7fbd31b403a0b876c.json": "0498a6f008b5b1eee4f1682bc7b873d277492600b70e66d7fbd31b403a0b876c",
+    "examples/occupied_sampling_replay/data/input_b825a12ecade0b0ef3664874a3b46c9963a5033625924504d5c3d5ff2be06130.json": "b825a12ecade0b0ef3664874a3b46c9963a5033625924504d5c3d5ff2be06130",
+    "examples/occupied_sampling_replay/data/input_1bc841cf9e3a0650dadcd33dfcfd688c6609a10927559119ea1e042870dd89c6.json": "1bc841cf9e3a0650dadcd33dfcfd688c6609a10927559119ea1e042870dd89c6",
+    "examples/occupied_sampling_replay/data/input_5dfa58afbf3976833c945d380e2a41dcb33517eab24e5c6780dcc41aedcf7826.json": "5dfa58afbf3976833c945d380e2a41dcb33517eab24e5c6780dcc41aedcf7826",
+    "examples/occupied_sampling_replay/data/input_4cc540ac6f4a3f4d5ac43ecd9c5a13d697452d69def7f1695ba1002ed77841cf.json": "4cc540ac6f4a3f4d5ac43ecd9c5a13d697452d69def7f1695ba1002ed77841cf",
+    "examples/occupied_sampling_replay/data/input_c68af0a8c6bc1efe942180af1178deba0ebb61fafdf1e6c7e4d30ad60e3cb274.json": "c68af0a8c6bc1efe942180af1178deba0ebb61fafdf1e6c7e4d30ad60e3cb274",
+    "examples/occupied_sampling_replay/data/input_268543af6aac0d362e7cd6131d65a1c94d46fb57f6b1b6cbb74d40b52a81c216.json": "268543af6aac0d362e7cd6131d65a1c94d46fb57f6b1b6cbb74d40b52a81c216",
+    "examples/occupied_sampling_replay/data/input_4c6c171d35612a69fcdc17dda67f7ad99c5484bce027fcd7a4f371f9d55351af.json": "4c6c171d35612a69fcdc17dda67f7ad99c5484bce027fcd7a4f371f9d55351af",
+    "examples/occupied_sampling_replay/data/input_32fef05e52065348deb713407f241fc245c2abcceed491aa1659d511010ddb8f.json": "32fef05e52065348deb713407f241fc245c2abcceed491aa1659d511010ddb8f",
+    "examples/occupied_sampling_replay/data/input_dc3ad188fe28e5254bf67e49f0ca37cd5c4b7f64f10ab9d3ca3512f496b7cd55.json": "dc3ad188fe28e5254bf67e49f0ca37cd5c4b7f64f10ab9d3ca3512f496b7cd55",
+    "examples/occupied_sampling_replay/data/input_c584ae37d2bdd72b402562c4c440ee8ef4223a0024e18c73429d2ccff291e3b4.json": "c584ae37d2bdd72b402562c4c440ee8ef4223a0024e18c73429d2ccff291e3b4",
+    "examples/occupied_sampling_replay/data/input_63fd8b193d352da325b90bf965e28054b32cf3ddf48201d168d50a8cf9395af6.json": "63fd8b193d352da325b90bf965e28054b32cf3ddf48201d168d50a8cf9395af6",
+    "examples/occupied_sampling_replay/data/input_bea75ae4a043c973fc9908519e17edb7d42f064309d1a3f44e071e2086561ae6.json": "bea75ae4a043c973fc9908519e17edb7d42f064309d1a3f44e071e2086561ae6",
+    "examples/occupied_sampling_replay/data/input_289ad63faffb1eea50b55bc5c43385c3c88f01b15a7bdb2142c9f6c11737f971.json": "289ad63faffb1eea50b55bc5c43385c3c88f01b15a7bdb2142c9f6c11737f971",
+    "examples/occupied_sampling_replay/data/input_14536a8a52e6baa596da969378705bb7e36d4e243b99c85f9e6ebadebd14a09b.json": "14536a8a52e6baa596da969378705bb7e36d4e243b99c85f9e6ebadebd14a09b",
+    "examples/occupied_sampling_replay/data/input_a6cc529d46b0bbb5a280c2abd1e78650fa03f1c00078829f7e6b2e36da17358e.json": "a6cc529d46b0bbb5a280c2abd1e78650fa03f1c00078829f7e6b2e36da17358e",
+    "examples/occupied_sampling_replay/data/input_f76c0c8971a6767c51a76d23146451acc9dd89763337d5b231c6c0c70c075435.json": "f76c0c8971a6767c51a76d23146451acc9dd89763337d5b231c6c0c70c075435",
+    "examples/occupied_sampling_replay/data/input_cffc8d16599bee9b8a11aedaf9c6d46adb2d431a6055f75b9f1d0dff911ee0ac.json": "cffc8d16599bee9b8a11aedaf9c6d46adb2d431a6055f75b9f1d0dff911ee0ac",
+    "examples/occupied_sampling_replay/data/input_0f3278cd1b1566390866f393a4321243cc2a99d16a18e6dc0c37db12b61def13.xyz": "0f3278cd1b1566390866f393a4321243cc2a99d16a18e6dc0c37db12b61def13",
+    "examples/occupied_sampling_replay/data/input_b1b434fa13ea4f201e985d13af2236cf937e12ec3827a2537277e34077415879.json": "b1b434fa13ea4f201e985d13af2236cf937e12ec3827a2537277e34077415879",
+    "examples/occupied_sampling_replay/data/input_8fa8bb235e07979d2fabafab93abc881219a580c098fbaf42a3f4aa3217d703c.xyz": "8fa8bb235e07979d2fabafab93abc881219a580c098fbaf42a3f4aa3217d703c",
+    "examples/occupied_sampling_replay/data/input_f45b9512fa5af59eb200aa5ade4e821e277b1dd793b848c5083e4823566329a7.json": "f45b9512fa5af59eb200aa5ade4e821e277b1dd793b848c5083e4823566329a7",
+    "examples/occupied_sampling_replay/data/input_e509ca26310c5e43269fff1f9dbf5dea1f4ef7ea686f6b0e0429158bd0539072.xyz": "e509ca26310c5e43269fff1f9dbf5dea1f4ef7ea686f6b0e0429158bd0539072",
+    "examples/occupied_sampling_replay/data/input_8fe811b2c5416e10a54fa2dc16c83e021372429db2b534c96117031c914e9a28.json": "8fe811b2c5416e10a54fa2dc16c83e021372429db2b534c96117031c914e9a28",
+    "examples/occupied_sampling_replay/data/input_b6e814eec64400421e4feae5819f6f6ba06bc91fe05b4a0a41b7950c86287cf4.xyz": "b6e814eec64400421e4feae5819f6f6ba06bc91fe05b4a0a41b7950c86287cf4",
+    "examples/occupied_sampling_replay/data/input_7f44110f6993af3d4f296a23e8f5a80b984017cc216c30508ad6c6e58b064b0c.json": "7f44110f6993af3d4f296a23e8f5a80b984017cc216c30508ad6c6e58b064b0c",
+    "examples/occupied_sampling_replay/data/input_44349f3899d3085c9c16e2f42e305b2fac177c1c2ba31beed2d2e18ad111462c.xyz": "44349f3899d3085c9c16e2f42e305b2fac177c1c2ba31beed2d2e18ad111462c",
+    "examples/occupied_sampling_replay/data/input_089dfd9aea10abede18408d47ce9116ecb591943d517bd94e5b201ea18466736.json": "089dfd9aea10abede18408d47ce9116ecb591943d517bd94e5b201ea18466736",
+    "examples/occupied_sampling_replay/data/input_f654682d12776450b7270bf2d0dac434a0c8f6240c8da0c102cc763e6a657efd.xyz": "f654682d12776450b7270bf2d0dac434a0c8f6240c8da0c102cc763e6a657efd",
+    "examples/occupied_sampling_replay/data/input_01d6fe54748365a4f8cd4fc438dc6a4f1b42d9c42a479d6e545a51cf0711c5b6.json": "01d6fe54748365a4f8cd4fc438dc6a4f1b42d9c42a479d6e545a51cf0711c5b6",
+    "examples/occupied_sampling_replay/data/input_ca3d5f5cc9f0b10a68ea93b137238cc5b8bc2c17b432eb45690013a0d1790d4b.xyz": "ca3d5f5cc9f0b10a68ea93b137238cc5b8bc2c17b432eb45690013a0d1790d4b",
+    "examples/occupied_sampling_replay/data/input_04807bcffd6b2189e1a1956e7c5615ea4df848a01a15f7193e79882ad3105ca6.json": "04807bcffd6b2189e1a1956e7c5615ea4df848a01a15f7193e79882ad3105ca6",
+    "examples/occupied_sampling_replay/data/input_ce910612de7145bac811229586649c1accddecfa768d588345461fbd246223ff.xyz": "ce910612de7145bac811229586649c1accddecfa768d588345461fbd246223ff",
+    "examples/occupied_sampling_replay/data/input_5b3f92422ce2bd8c66ed1d7a7fd82b9bbff20086f0679ffb63d056de179bd240.json": "5b3f92422ce2bd8c66ed1d7a7fd82b9bbff20086f0679ffb63d056de179bd240",
+    "examples/occupied_sampling_replay/data/input_7decf5a389b1bf3f82c059d612e191c7724040de60402c334cbbe9ced0e1943a.xyz": "7decf5a389b1bf3f82c059d612e191c7724040de60402c334cbbe9ced0e1943a",
+    "examples/occupied_sampling_replay/data/input_aba940c5e8bfbeff496e85e7bdaed70e882f869c9394b3f1a989172cddaf50fe.json": "aba940c5e8bfbeff496e85e7bdaed70e882f869c9394b3f1a989172cddaf50fe",
+    "examples/occupied_sampling_replay/data/input_a6cc9d17424879b8049b055bd26a2064e8c96e4aa4c6a636392c70e9e3c542f3.xyz": "a6cc9d17424879b8049b055bd26a2064e8c96e4aa4c6a636392c70e9e3c542f3",
+    "examples/occupied_sampling_replay/data/input_a3fe7faf8c855ab552391c8160676b3f7f2522a001fbeed565ba0ba524486a10.json": "a3fe7faf8c855ab552391c8160676b3f7f2522a001fbeed565ba0ba524486a10",
+    "examples/occupied_sampling_replay/data/input_75eca422149d107f0278c85bab3b1b816f96bdcb563b2a455fe84d61248765c8.xyz": "75eca422149d107f0278c85bab3b1b816f96bdcb563b2a455fe84d61248765c8",
+    "examples/occupied_sampling_replay/data/input_beb2dd0c61ff2506d68ad1b1e039d80e35c37079fc95cb6d877661b1acac7416.json": "beb2dd0c61ff2506d68ad1b1e039d80e35c37079fc95cb6d877661b1acac7416",
+    "examples/occupied_sampling_replay/data/input_7baac188ac9b565e2dab3a02cc4e45f3ea91706d65ea6eba163b5646ab884c09.xyz": "7baac188ac9b565e2dab3a02cc4e45f3ea91706d65ea6eba163b5646ab884c09",
+    "examples/occupied_sampling_replay/data/input_e345902201f6adfe4421ed87e09b3576721f540e71e0070fb3e491132136f271.json": "e345902201f6adfe4421ed87e09b3576721f540e71e0070fb3e491132136f271",
+    "examples/occupied_sampling_replay/data/input_20c42ecddc034eb558076f001a83831a4b4724184453d5d7025f183e836aaeaf.xyz": "20c42ecddc034eb558076f001a83831a4b4724184453d5d7025f183e836aaeaf",
+    "examples/occupied_sampling_replay/data/input_05ae9f1a7d052a84d49ff693fdedd05850dd57aa7972ed7b00b186a1bddda1f5.json": "05ae9f1a7d052a84d49ff693fdedd05850dd57aa7972ed7b00b186a1bddda1f5",
+    "examples/occupied_sampling_replay/data/input_8503a900d95fe903957f3113618ec1cca05d64fed941a05bb9510161065e1cb0.xyz": "8503a900d95fe903957f3113618ec1cca05d64fed941a05bb9510161065e1cb0",
+    "examples/occupied_sampling_replay/data/input_1142ad33350c69403b86aebd5e57fd834a3f81de113bf59747d714fda5ffed8a.json": "1142ad33350c69403b86aebd5e57fd834a3f81de113bf59747d714fda5ffed8a",
+    "examples/occupied_sampling_replay/data/input_7238a9070e59abcf2c6efc8346cc9375d9a5ee3a9c98cce5a4e5e7041f4a5b83.xyz": "7238a9070e59abcf2c6efc8346cc9375d9a5ee3a9c98cce5a4e5e7041f4a5b83",
+    "examples/occupied_sampling_replay/data/input_794bc3c2cec2ba706f1ed89fcbc24ff355205584b7258d07f36e8336092fa43f.json": "794bc3c2cec2ba706f1ed89fcbc24ff355205584b7258d07f36e8336092fa43f",
+    "examples/occupied_sampling_replay/data/input_ea51f0e0db65794e1f195380994928453d3da2cbecbd38bd49b0e28b9db29019.xyz": "ea51f0e0db65794e1f195380994928453d3da2cbecbd38bd49b0e28b9db29019",
+    "examples/occupied_sampling_replay/data/input_5c701cbde361fb2a0e2c6cdc8c77e6368b22474a3312fe28d5b297cb05ad3123.json": "5c701cbde361fb2a0e2c6cdc8c77e6368b22474a3312fe28d5b297cb05ad3123",
+    "examples/occupied_sampling_replay/data/input_389715dab377212292a3c622bbb9b9f98e6a73c4731091ba131e88f486e80389.xyz": "389715dab377212292a3c622bbb9b9f98e6a73c4731091ba131e88f486e80389",
+    "examples/occupied_sampling_replay/data/input_37939b28f42c0a7d6305310dc6abb2559bb3f3716a9481de04a249e23ca895b5.json": "37939b28f42c0a7d6305310dc6abb2559bb3f3716a9481de04a249e23ca895b5",
+    "examples/occupied_sampling_replay/data/input_3e9199c8e331b90aaef1d2f23a78e9c5b4dbeef397ffd60f9d74e328db64da58.xyz": "3e9199c8e331b90aaef1d2f23a78e9c5b4dbeef397ffd60f9d74e328db64da58",
+    "examples/occupied_sampling_replay/data/input_816ce8966d7c200ca7aa41e70110f96370702e749c0fef73eefb2841001c680b.json": "816ce8966d7c200ca7aa41e70110f96370702e749c0fef73eefb2841001c680b",
+    "examples/occupied_sampling_replay/data/input_cdd8a893947de42b0af347693e6bcab782294266d56031449b634517df57db21.xyz": "cdd8a893947de42b0af347693e6bcab782294266d56031449b634517df57db21",
+    "examples/occupied_sampling_replay/data/input_f810797a67011116e5cd074cae06a0c8794df8ce5ff68a57f173f168d3858986.json": "f810797a67011116e5cd074cae06a0c8794df8ce5ff68a57f173f168d3858986",
+    "examples/occupied_sampling_replay/data/input_73953354d681e05ee5e7b55490d513eb8c8a8f06d91873e65a4143dcee88f7c5.xyz": "73953354d681e05ee5e7b55490d513eb8c8a8f06d91873e65a4143dcee88f7c5",
+    "examples/occupied_sampling_replay/data/input_9ee66d5e8001e70c27a02b5896bab8c6f6683b99f939f54021dd79f61911bde9.py": "9ee66d5e8001e70c27a02b5896bab8c6f6683b99f939f54021dd79f61911bde9",
+    "examples/occupied_sampling_replay/data/input_67300f826c0f23acbf14ad1ec9c303b946bc97e13889898e29b0291e24eed9f1.py": "67300f826c0f23acbf14ad1ec9c303b946bc97e13889898e29b0291e24eed9f1",
+    "examples/occupied_sampling_replay/data/input_3fc4c03f685099ba2fd93b81f7c705bfa47eaa2ceb6cc932b61d222581d633f9.py": "3fc4c03f685099ba2fd93b81f7c705bfa47eaa2ceb6cc932b61d222581d633f9",
+    "examples/occupied_sampling_replay/data/input_e242810e41afbfda6c74da1beae06b74941daf9b6bf82641be92260d8ec01bd7.py": "e242810e41afbfda6c74da1beae06b74941daf9b6bf82641be92260d8ec01bd7",
+    "examples/occupied_sampling_replay/data/input_7f5d1b5e7a0a0ef4e1ccf99726e2e27eb00376666cd7a9a07deccfa284851768.py": "7f5d1b5e7a0a0ef4e1ccf99726e2e27eb00376666cd7a9a07deccfa284851768",
+    "examples/occupied_sampling_replay/data/input_7039b27875150a7e113a915e5fad54d194296f5f303033b68c3991ee6faa9336.py": "7039b27875150a7e113a915e5fad54d194296f5f303033b68c3991ee6faa9336",
+    "examples/occupied_sampling_replay/data/input_6753a714db0548e251bbba4c1b631d413fb41bdc6db770353c816249f145442e.py": "6753a714db0548e251bbba4c1b631d413fb41bdc6db770353c816249f145442e",
+    "src/redox/validation/portable_inputs.py": "30979d093edafe2ce8adb34b57899778bcf84bc204859e50a5c6eada8ed8c7dd",
+    "src/redox/validation/sampling_publication.py": "3a7f81122ef07a30d8fbcec41b7521e8c57616dcf0600281bfb3a57145d55a78",
+    "src/redox/validation/sampling_batches.py": "d023eed717c54bf8ae2f9e396a9d3bcb1359a44c0b9a9625628be4fedd927ce1",
     "src/redox/validation/native_conformer_batches.py": "67300f826c0f23acbf14ad1ec9c303b946bc97e13889898e29b0291e24eed9f1",
     "scripts/plotting/plot_occupied_sampling.py": "4143c347439b7b43ee75e82b341bf8f46ef70789383749cde2410e6bf59291d0",
     "results/figures/slides/occupied_sampling_convergence.pdf": "9f77c46a1f40b3ba95dce52cdd6ada5a27fda47770912493694c401ab77588c8",
@@ -756,18 +941,18 @@
     "validation/route_evidence_followup_2026-10-30/styrofoam_crossref.json": "e8d3040e66f9f0fdcd7e7ba4999e12a1eba04741f92067a63ebfec62a781a660",
     "validation/route_evidence_followup_2026-10-30/phthalimide_crossref.json": "ff41c306fef048f624dfb58c089ad8493a05d9778202649be973f2419b7b2f93"
   },
-  "pdf_sha256": "f59c2145f0097c2612810d9bca9a6c4b3ac7f7160e56c2e17d8bb0f6191d0be8",
-  "build_logs": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/manuscript_builds/redox_manuscript_9ewrufyp",
+  "pdf_sha256": "125c9c34e9f50db87d5b3a4e844c7066722e05308ec9508e7db276094e7666b2",
+  "build_logs": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/validation/manuscript_builds/redox_manuscript_skorrs9c",
   "submission_ready": false,
   "documents": {
     "manuscript": {
       "pages": 21,
-      "pdf_sha256": "f59c2145f0097c2612810d9bca9a6c4b3ac7f7160e56c2e17d8bb0f6191d0be8",
+      "pdf_sha256": "125c9c34e9f50db87d5b3a4e844c7066722e05308ec9508e7db276094e7666b2",
       "overfull_boxes": []
     },
     "supporting_information": {
       "pages": 36,
-      "pdf_sha256": "87accd531edf7f140622b80b50615ac85c64edb67903aa71e4e20d06657f4f6b",
+      "pdf_sha256": "7d4f3ac137f8c7a17b9ddc48ea5011d06f10a185ad6cff6a4dbeb857711b1feb",
       "overfull_boxes": []
     }
   },
@@ -779,6 +964,482 @@
     "new_quantum_validation": false,
     "experimental_accuracy_validated": false,
     "material_admission": false
+  },
+  "ionic_preparation_check": {
+    "current": {
+      "status": "initial_ionic_graph_XYZ_and_salt_mass_replay_passed",
+      "source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/viologen_preparation_2026-10-31_v2/preparation.json",
+      "source_sha256": "8e2cb1e2804155cfc91243a76b5e3a4e13dbdc5ff4c68a05869383b5c1202771",
+      "graphs": 12,
+      "balanced_cycles": 4,
+      "records": [
+        {
+          "key": "all_same__occ_none",
+          "charge": 0,
+          "occupied_sites": [],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "benzyl_chloride",
+              "linker_atom": 36,
+              "outer_atom": 37,
+              "bond": 36
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9150214523993055,
+          "maximum_bond_covalent_radius_ratio": 1.0297586939029901,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 668.1920000000018,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "all_same__occ_2",
+          "charge": 2,
+          "occupied_sites": [
+            2
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "grafted",
+              "linker_atom": 36,
+              "outer_atom": 37,
+              "bond": 36
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9159859090370601,
+          "maximum_bond_covalent_radius_ratio": 1.0275973967098528,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1093.8860000000018,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "all_same__occ_3",
+          "charge": 2,
+          "occupied_sites": [
+            3
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "benzyl_chloride",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "grafted",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.91544398789007,
+          "maximum_bond_covalent_radius_ratio": 1.0280295243000375,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1093.886000000002,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "all_same__occ_4",
+          "charge": 2,
+          "occupied_sites": [
+            4
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "benzyl_chloride",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 40,
+              "outer_atom": 41,
+              "bond": 40
+            },
+            {
+              "site": 4,
+              "state": "grafted",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9162150816543764,
+          "maximum_bond_covalent_radius_ratio": 1.0275971838880746,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1093.886000000002,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "all_same__occ_2_3",
+          "charge": 4,
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "grafted",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "grafted",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9153846525087491,
+          "maximum_bond_covalent_radius_ratio": 1.0281648985805956,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1519.580000000002,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "all_same__occ_2_4",
+          "charge": 4,
+          "occupied_sites": [
+            2,
+            4
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "grafted",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 40,
+              "outer_atom": 41,
+              "bond": 40
+            },
+            {
+              "site": 4,
+              "state": "grafted",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9156931137386057,
+          "maximum_bond_covalent_radius_ratio": 1.0295867640678205,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1519.5800000000022,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "alternating__occ_none",
+          "charge": 0,
+          "occupied_sites": [],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "benzyl_chloride",
+              "linker_atom": 36,
+              "outer_atom": 37,
+              "bond": 36
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9162296195137669,
+          "maximum_bond_covalent_radius_ratio": 1.0302717863915307,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 668.1920000000018,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "alternating__occ_2",
+          "charge": 2,
+          "occupied_sites": [
+            2
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "grafted",
+              "linker_atom": 36,
+              "outer_atom": 37,
+              "bond": 36
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9162978631204236,
+          "maximum_bond_covalent_radius_ratio": 1.0279495832626024,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1093.8860000000018,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "alternating__occ_3",
+          "charge": 2,
+          "occupied_sites": [
+            3
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "benzyl_chloride",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "grafted",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.915800778615521,
+          "maximum_bond_covalent_radius_ratio": 1.0284107258217599,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1093.886000000002,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "alternating__occ_4",
+          "charge": 2,
+          "occupied_sites": [
+            4
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "benzyl_chloride",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 40,
+              "outer_atom": 41,
+              "bond": 40
+            },
+            {
+              "site": 4,
+              "state": "grafted",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9161297261213083,
+          "maximum_bond_covalent_radius_ratio": 1.0281188063494555,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1093.886000000002,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "alternating__occ_2_3",
+          "charge": 4,
+          "occupied_sites": [
+            2,
+            3
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "grafted",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "grafted",
+              "linker_atom": 28,
+              "outer_atom": 29,
+              "bond": 28
+            },
+            {
+              "site": 4,
+              "state": "benzyl_chloride",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.9159892096013627,
+          "maximum_bond_covalent_radius_ratio": 1.0292621173890804,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1519.580000000002,
+          "all_axis_decision": "pending"
+        },
+        {
+          "key": "alternating__occ_2_4",
+          "charge": 4,
+          "occupied_sites": [
+            2,
+            4
+          ],
+          "backbone_carbons": 10,
+          "backbone_edges": 9,
+          "chain_ends": 2,
+          "attachments": [
+            {
+              "site": 2,
+              "state": "grafted",
+              "linker_atom": 48,
+              "outer_atom": 49,
+              "bond": 48
+            },
+            {
+              "site": 3,
+              "state": "benzyl_chloride",
+              "linker_atom": 40,
+              "outer_atom": 41,
+              "bond": 40
+            },
+            {
+              "site": 4,
+              "state": "grafted",
+              "linker_atom": 20,
+              "outer_atom": 21,
+              "bond": 20
+            }
+          ],
+          "minimum_bond_covalent_radius_ratio": 0.915938175903808,
+          "maximum_bond_covalent_radius_ratio": 1.0279822133344325,
+          "selected_MMFF_status": 1,
+          "salt_mass_g_mol": 1519.5800000000022,
+          "all_axis_decision": "pending"
+        }
+      ],
+      "quantum_jobs_submitted": 0,
+      "native_G_qualified": false,
+      "ensemble_sampling_qualified": false,
+      "charged_solver_qualified": false,
+      "material_admission": false,
+      "producer_sha256": "307d5a9938390338b0ed20a02a970ab4473d17f4c0ce7c7cca9b7f6b1349f74d"
+    },
+    "original_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/viologen_preparation_2026-10-31_v2/preparation.json",
+    "original_producer_sha256": "91b6fbd5b8973f23d43be393302af3cdab35b88b6e544ebd35c6d3b0d6ed00c3",
+    "numerical_results_unchanged": true
   },
   "additional_citation_check": {
     "status": "recent_polymer_references_match_primary_metadata",

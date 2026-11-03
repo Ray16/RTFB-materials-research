@@ -21,8 +21,10 @@ establish that a calculation is currently running.
   bundle. Three numerical replays pass from the exported source with original
   scientific paths blocked. The broader declared inventory resolves 53,640
   files and 120.3 GB of unique content. Full raw archiving awaits suitable
-  storage; the complete manuscript-validation build still needs portable
-  occupied-sampling inputs. Public deposition remains pending.
+  storage. The [portable validation update](../validation/portable_sampling_2026-11-03/README.md)
+  now passes the complete manuscript build with original user data hidden;
+  all scientific values and PDF content remain unchanged. Public deposition
+  remains pending.
 - [Finite viologen comparison replay](../examples/finite_viologen_replay/README.md):
   standard-library reconstruction of the four finite ionic cycles and twelve
   motif triplets. An isolated copy passes with original scientific paths blocked;

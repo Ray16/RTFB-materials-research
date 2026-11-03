@@ -35,9 +35,12 @@ provides an 818-MB local reviewer bundle and three successful numerical replays
 from exported source with original scientific paths blocked. The complete
 declared raw inventory now resolves 53,640 files (120.3 GB unique content), but
 full raw archiving requires suitable storage beyond the observed 51-GB budget.
-A full source-validation build also identifies an absolute-path dependency in
-the occupied-sampling reader. Supplying those exact inputs portably remains a
-release task; the separately checked self-contained TeX upload compiles.
+The subsequent [portable validation](../validation/portable_sampling_2026-11-03/README.md)
+supplies the exact occupied-sampling inputs and relocates the initial-structure
+audit explicitly. The full source-validation build now passes with original
+user data hidden and networking disabled, using the existing checked runtime.
+All 57 article/SI pages retain identical text and raster content. Full raw
+archiving and public deposition remain separate release tasks.
 
 The first complete corrected occupied sampling cell now [fails the declared
 10-to-20 tolerance](../validation/corrected_sampling_2026-11-02/README.md):

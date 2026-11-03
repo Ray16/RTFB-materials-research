@@ -4,6 +4,20 @@ import json
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.validation.sampling_batches import analyze
+from redox.validation.portable_inputs import PortableInputs
+
+
+def portable_source_paths(folder, prefix=""):
+    """Explicit files to bind through publication build completion."""
+    manifest=folder/(prefix+'portable_inputs.json')
+    if not manifest.exists():manifest=ROOT/'examples/occupied_sampling_replay/data/portable_inputs.json'
+    if not manifest.exists():return []
+    data=json.loads(manifest.read_text());paths=[manifest]
+    for row in data['bindings'].values():
+        name=row['file']
+        if '/' in name or '\\' in name or name in ('.','..'):raise ValueError('Unsafe portable input path')
+        paths.append(manifest.parent/name)
+    return list(dict.fromkeys(paths))
 
 
 def audit(folder, prefix=""):
@@ -13,10 +27,16 @@ def audit(folder, prefix=""):
             or any(sha256_file(artifact(name)) != h for name, h in manifest['files'].items())):
         raise ValueError('Frozen sampling publication sources changed')
     saved = json.loads((artifact('finite_batches.json')).read_text())
-    if any(sha256_file(p) != h for p, h in saved['source_sha256'].items()):
+    portable=portable_source_paths(folder,prefix)
+    reader=None
+    if portable:
+        reader=PortableInputs(portable[0],saved['source_sha256'],sha256_file(artifact('finite_batches.json')))
+        for path,digest in saved['source_sha256'].items():reader.verify(path,digest)
+    elif any(sha256_file(p) != h for p, h in saved['source_sha256'].items()):
         raise ValueError('The original finite-batch input or producer changed')
     # Repeats graph/RMSD/partition analysis of checked records, not quantum QC.
-    repeated = analyze(artifact('native_snapshot.json'), artifact('receipt_audit.json'), artifact('sampling_contract.json'))
+    arguments=(artifact('native_snapshot.json'),artifact('receipt_audit.json'),artifact('sampling_contract.json'))
+    repeated = analyze(*arguments,source_reader=reader) if reader is not None else analyze(*arguments)
     if {k: v for k, v in repeated.items() if k != 'source_sha256'} != {
             k: v for k, v in saved.items() if k != 'source_sha256'}:
         raise ValueError('Finite-cell geometry or partition reconstruction differs')

@@ -1,0 +1,197 @@
+{
+  "status": "corrected_sampling_energy_independently_checked",
+  "key": "all_same__occ_2__conf001",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/namespace.json",
+  "task": {
+    "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+    "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+    "repeat_units": 5,
+    "reactive_sites": [
+      2,
+      3,
+      4
+    ],
+    "occupied_sites": [
+      2
+    ],
+    "site_states": [
+      "styrene",
+      "grafted",
+      "benzyl_chloride",
+      "benzyl_chloride",
+      "styrene"
+    ],
+    "backbone_stereo_tags": [
+      "CW",
+      "CW",
+      "CW",
+      "CW"
+    ],
+    "backbone_stereo_fingerprint": [
+      [
+        2,
+        -1
+      ],
+      [
+        4,
+        -1
+      ],
+      [
+        6,
+        -1
+      ],
+      [
+        8,
+        -1
+      ]
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "atoms": 105,
+    "charge": 0,
+    "model_loading_per_repeat": 0.2,
+    "model_conversion_per_reactive_site": 0.3333333333333333,
+    "graph_sha256": "27e117714d6e817978a4b31a5308c7e51a73619bb989419a75d66fef72517a7c",
+    "key": "all_same__occ_2__conf001",
+    "mult": 1,
+    "role": "interaction_method_control; not synthesis admission",
+    "initial_embedding_seed": 20261023,
+    "embedded": 32,
+    "converged_MMFF": 32,
+    "initial_MMFF_energy_kcal_mol": 130.74052917225373,
+    "model_key": "all_same__occ_2",
+    "candidate_id": "exp_phthalimide_control",
+    "model_type": "covalent_oligomer",
+    "repeats": 5,
+    "stereoisomer": "all_same",
+    "target": "previous_checked_DFT_reference",
+    "fragment": "[*:1]N1C(=O)c2ccccc2C1=O",
+    "pi_groups": [
+      [
+        37,
+        38,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46
+      ]
+    ],
+    "active_basis_functions": 2537,
+    "search_rank": 1,
+    "source_conformer_index": null,
+    "source_GFN2_energy_Ha": null,
+    "starting_geometry_source_role": "previous_checked_DFT_pose",
+    "source_reference_key": "occ_2__pose0"
+  },
+  "portable_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+  "experimental_model": {
+    "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+    "solvent": "acetonitrile",
+    "electrostatic_model": "SMD",
+    "electrostatic_surface_points": 590,
+    "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+    "CDS_points_per_sphere": 2030,
+    "supported_elements": [
+      "C",
+      "H",
+      "N",
+      "O",
+      "Cl"
+    ],
+    "scientific_model_changed": true,
+    "primary_candidate_admission": false
+  },
+  "electronic_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "E_smd_eV": -84317.66246243613,
+  "E_gas_eV": -84315.85075824097,
+  "actual_checkpoint_counts": {
+    "gas": 1,
+    "smd": 1
+  },
+  "actual_checkpoint_frames_verified": true,
+  "initial_density_policy": {
+    "phases": [
+      {
+        "solvent": "acetonitrile",
+        "nominal_guesses": [
+          "minao"
+        ],
+        "actual_guesses": [
+          "minao"
+        ],
+        "restart": null
+      },
+      {
+        "solvent": null,
+        "nominal_guesses": [
+          "minao"
+        ],
+        "actual_guesses": [
+          "minao"
+        ],
+        "restart": null
+      }
+    ],
+    "physical_equations_changed": false,
+    "source_qualification_transferred": false
+  },
+  "source_checkpoint_qualification_transferred": false,
+  "maximum_checkpoint_coordinate_error_Bohr": 3.552713678800501e-15,
+  "occupied_wavefunctions_checked": true,
+  "maximum_occupied_orthonormality_error": 5.329070518200751e-15,
+  "virtual_coefficients_retained": false,
+  "response_restart_supported": false,
+  "resources_checked": true,
+  "peak_GPU_MiB": 18804,
+  "peak_host_RSS_bytes": 237525409792,
+  "host_memory_profile": "corrected_hybrid_energy_pss",
+  "self_VmHWM_bytes": 119235964928,
+  "peak_tree_RSS_bytes": 237525409792,
+  "peak_tree_PSS_bytes": 119192297472,
+  "peak_host_guard_usage_bytes": 119235964928,
+  "native_G_qualified": false,
+  "primary_candidate_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/namespace.json": "b59be0865e082469b9a16331e756597d56d0ea7a2584d1c7d4526ef4ae1136ea",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/plan.json": "bedaedec822cf27edb7c63821eb295754d9556f49f6bc7f9686b09c74758de60",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/status.json": "79270d0af3d61e822af188168a394785bb114a14849b2218e0f543de9a038265",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/placement_001/launch.json": "9d0616699f8119b83aa99ddc054dc909da9e9c5d7993c0341fe1b9b5b13c0f8f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/placement_001/completion.json": "bd17a2e3773286d76ab6fe0978d13c1a4d5b9cca94e503be7ffc8a31144fffae",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/residency_guard/owner.json": "7f317c1fb0e5df2a7ffcc74defd8043c264151b343160c1c6409e5df030e27d8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/residency_guard/state.json": "99a3c1e4cb7cfe28475f5379abfa3f665ac0c78dbd4aa269883f5761f2843491",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/host_guard/status.json": "6f3ef057f4ef248ce2d801855a77d03fb5b3cbdca2e8d7f89a2f49c2c4d807cb",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/tensor_runtime/status.json": "05a816717a879c0457592709ced0508f2af1959d95c5cc2be1fdbcb7ac90af58",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/review_sources/8c683c53fd0993a805bbe53beb0e805b24c56e107b133c5324ea31917e05cfef/review_corrected_sampling_energy.py": "8c683c53fd0993a805bbe53beb0e805b24c56e107b133c5324ea31917e05cfef",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/review_sources/3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a/scf_frame.py": "3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/review_sources/bc95be588afb3cf2c549327a0849408efaf2c4917f33f2f400421835bb7e20af/execution_review.py": "bc95be588afb3cf2c549327a0849408efaf2c4917f33f2f400421835bb7e20af",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/experimental_energy/status.json": "6be46e568af5b80465b4b55df5032e5ebdabffa3d7458703c43e309b235effc8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/raw/geometry.xyz": "30d107d6de76033aed47acbc04eac9659e5c97709771472811156d4f8e8b3129",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/raw/experimental_energy.json": "cdaba6c7063289748c79298d7aef5802e62e659665258b0e0d47187240dcd377",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/model/model.json": "edbca5e20477cdc462c9a3a05549d9315e53be0e9e75aeec866fb636be963d4b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/raw/SCF_checkpoints/initial_density_policy.json": "d9fad300485c54880ab9810e61993175d89a8ac6ffbadd19114d5a59944c5e83",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/raw/SCF_checkpoints/0000/0000/settings.json": "7935f31b8ff0f391f0736d4abdd82ca97fc7f4d52a9b7433ea06212ca097617b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/raw/SCF_checkpoints/0000/final/occupied.h5": "8c44b77fab069b408b089c8554303de5a406f4048920db0ac15fea53f43135ac",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/raw/SCF_checkpoints/0001/0000/settings.json": "eda07ab1be8f3692d7dd52550faca6592cf9e705bca8c258348c9d0df90ddd98",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/raw/SCF_checkpoints/0001/final/occupied.h5": "0dd6f8d1db324cc27ed8d810d1f318d307b59c9d07e1e6d250149c3be2d522a5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/screening_implementation/original_host.py": "43558f4a4e8b9c6855dd87824afaff214ec6d112c813f56d1f49eb17a42ea664",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/screening_implementation/corrected_host.py": "fcb065c065a81fc42fe835c987d5a1acc487517658b9dea57eabc52d51ac992f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf001/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536"
+  },
+  "reviewer_sha256": "8c683c53fd0993a805bbe53beb0e805b24c56e107b133c5324ea31917e05cfef"
+}

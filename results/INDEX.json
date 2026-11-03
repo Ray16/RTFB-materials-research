@@ -642,7 +642,10 @@
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry",
       "status": "six_checked_contact_outcomes_five_numerical_groups",
       "scope": "Primary 1-M association G now spans +5.33 to +22.36 kJ/mol; all 18 cutoff/outcome sums positive. Two new minima extend the frozen four-outcome publication sample. No population, full salt-speciation or covalent-grafting conclusion promoted; scientific publication update pending.",
-      "publication_evidence": "manuscript/evidence/2026-11-03_six_chloride_contacts/manifest.json"
+      "publication_evidence": "manuscript/evidence/2026-11-03_six_chloride_contacts/manifest.json",
+      "additional_checked_component": "validation/counterion_completion_2026-11-03/N0_outer_plus_native_review.json",
+      "additional_association": "validation/counterion_completion_2026-11-03/association_N0_outer_plus.json",
+      "additional_scope": "N0-outer plus independently checked, +5.93 kJ/mol at 1 M/50 cm-1; not yet merged into the duplicate-reviewed publication cohort."
     },
     "chloride_release_dependency_inventory": {
       "guide": "validation/counterion_release_inventory_2026-11-03/README.md",
@@ -673,8 +676,19 @@
       "portability": "validation/publication_release_2026-11-03/portability_gap.json",
       "checks": "validation/publication_release_2026-11-03/archive_checks.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate",
-      "status": "local_review_bundle_checked_full_raw_storage_and_sampling_relocation_pending",
-      "scope": "Six checked payloads, 818 MB; three numerical source replays isolated from original scientific paths. All declared raw bindings resolved: 53640 files, 120.3 GB unique content. Full manuscript validator still needs portable occupied-sampling inputs; full raw archive and public deposition pending."
+      "status": "historical_review_bundle_preserved_portability_fix_checked_updated_export_pending",
+      "scope": "The 818-MB source-7d19efe8 review bundle is preserved. The subsequent portable_manuscript_validation entry closes the original-path dependency in current code. Updated source export and full raw archive/deposition remain separate steps."
+    },
+    "portable_manuscript_validation": {
+      "guide": "validation/portable_sampling_2026-11-03/README.md",
+      "current": "validation/portable_sampling_2026-11-03/home_isolation_02.json",
+      "source_snapshot": "validation/portable_sampling_2026-11-03/source_overlay_03.json",
+      "portable_inputs": "examples/occupied_sampling_replay/data/portable_inputs.json",
+      "checks": "validation/portable_sampling_2026-11-03/focused_checks_02.xml",
+      "pdf_equivalence": "validation/portable_sampling_2026-11-03/local_pdf_equivalence.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_publication_source_extracted",
+      "status": "rebased_full_validation_build_passed_original_user_data_hidden",
+      "scope": "Exact 183-input mapping and explicit initial-preparation relocation preserve all scientific checks. Full article/SI build passes with user data hidden, network disabled and no CUDA devices, using the existing checked runtime. All 80 local PDF pages retain identical text/raster content; no new physical or experimental validation."
     }
   }
 }

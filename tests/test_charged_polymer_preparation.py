@@ -1,6 +1,7 @@
 """Preparation failures stay visible and cannot qualify quantum/material results."""
 import importlib.util
 import json
+import shutil
 from pathlib import Path
 
 import pytest
@@ -63,7 +64,7 @@ def test_failed_cases_leave_exact_graphs_sources_and_terminal_partial_result(tmp
 
 @pytest.mark.parametrize('mutation',['none','capacity','site_binding','cycle','qualification','inventory'])
 def test_independent_actual_preparation_replay_and_negative_controls(tmp_path,mutation):
-    spec=importlib.util.spec_from_file_location('check_charged_preparation',ROOT/'scripts/validation/check_charged_polymer_preparation.py')
+    spec=importlib.util.spec_from_file_location('check_charged_preparation',ROOT/'src/redox/validation/ionic_preparation.py')
     checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker)
     source=ROOT/'results/polymer_models/viologen_preparation_2026-10-31_v2/preparation.json'
     data=json.loads(source.read_text())
@@ -84,3 +85,24 @@ def test_independent_actual_preparation_replay_and_negative_controls(tmp_path,mu
     if mutation=='inventory':data['files_sha256'][str(source.resolve())]='0'*64
     changed=tmp_path/'changed.json';changed.write_text(json.dumps(data))
     with pytest.raises(ValueError):checker.check(changed)
+
+
+def test_preparation_relocation_preserves_values_without_original_reads(tmp_path,monkeypatch):
+    spec=importlib.util.spec_from_file_location('relocated_preparation',ROOT/'src/redox/validation/ionic_preparation.py')
+    checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker)
+    source=ROOT/'results/polymer_models/viologen_preparation_2026-10-31_v2'
+    expected=checker.check(source/'preparation.json')
+    dest=tmp_path/'relocated';shutil.copytree(source,dest)
+    original_open=Path.open
+    def guarded(path,*args,**kwargs):
+        if path.resolve().is_relative_to(source.resolve()):raise AssertionError('Original preparation read')
+        return original_open(path,*args,**kwargs)
+    monkeypatch.setattr(Path,'open',guarded)
+    actual=checker.check(dest/'preparation.json',original_root=source)
+    assert actual['records']==expected['records'] and actual['source_sha256']==expected['source_sha256']
+    assert actual['source']!=expected['source']
+    data=json.loads((dest/'preparation.json').read_text())
+    data['cases'][0]['initial_geometry']='/outside/declared/relocation.xyz'
+    (dest/'preparation.json').write_text(json.dumps(data))
+    with pytest.raises(ValueError,match='outside the declared'):
+        checker.check(dest/'preparation.json',original_root=source)

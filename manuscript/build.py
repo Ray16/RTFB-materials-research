@@ -116,13 +116,25 @@ def main():
         from check_corrected_example import audit as audit_corrected_example
         corrected_example_check = audit_corrected_example(ROOT,manifest.parent)
     ionic_preparation = manifest.parent/'ionic_preparation_replay.json'
+    ionic_preparation_check = None
     if ionic_preparation.exists():
         expected=json.loads(ionic_preparation.read_text())
-        checker_path=ROOT/'scripts/validation/check_charged_polymer_preparation.py'
+        checker_path=ROOT/'src/redox/validation/ionic_preparation.py'
         definition=importlib.util.spec_from_file_location('checked_ionic_preparation',checker_path)
         checker=importlib.util.module_from_spec(definition);definition.loader.exec_module(checker)
-        if checker.check(Path(expected['source']))!=expected:
+        candidates=[ROOT/name for name,digest in evidence['snapshot_sha256'].items()
+                    if Path(name).name==Path(expected['source']).name and digest==expected['source_sha256']]
+        if len(candidates)!=1:raise ValueError('One snapshot-bound preparation source required')
+        frozen_checker=manifest.parent/'ionic_preparation_checker.py'
+        if sha(frozen_checker)!=expected['producer_sha256']:
+            raise ValueError('Original preparation checker identity changed')
+        actual=checker.check(candidates[0],original_root=Path(expected['source']).parent)
+        scientific=lambda row:{k:v for k,v in row.items() if k not in ('source','producer_sha256')}
+        if scientific(actual)!=scientific(expected):
             raise ValueError('Frozen ionic initial-structure audit differs from actual evidence')
+        ionic_preparation_check=dict(current=actual,original_source=expected['source'],
+                                     original_producer_sha256=expected['producer_sha256'],
+                                     numerical_results_unchanged=True)
     # Recent context references are separate from the frozen 48-reference base
     # audit. Their primary DOI records must match the actual compiled BibTeX.
     citation_source = ROOT/'scripts/validation/check_recent_polymer_literature.py'
@@ -142,6 +154,8 @@ def main():
               (PAPER / "manuscript.tex", PAPER / "supporting_information.tex", PAPER / "references.bib", PAPER / "novelty_references.bib", PAPER / "check_claims.py", PAPER / "check_polymer_replay.py", PAPER / "check_polymer_continuations.py", PAPER / "check_empty_batches.py", PAPER / "check_native_cache.py", PAPER / "check_tempo_solution.py", PAPER / "check_viologen_native.py", Path(__file__), manifest, pointer)}
     source.update(figure_inputs)
     if editorial_figure_check is not None:source['manuscript/check_editorial_figures.py']=sha(PAPER/'check_editorial_figures.py')
+    if ionic_preparation_check is not None:
+        source[str(checker_path.relative_to(ROOT))]=sha(checker_path)
     if native_component_check is not None:
         source['manuscript/check_native_component_pilot.py']=sha(PAPER/'check_native_component_pilot.py')
     if ionic_native_cycle_check is not None:
@@ -163,6 +177,10 @@ def main():
                      'src/redox/properties/context.py'):
             source[name]=sha(ROOT/name)
     if occupied_sampling_check is not None:
+        from redox.validation.sampling_publication import portable_source_paths
+        for path in portable_source_paths(manifest.parent,prefix='occupied_sampling_'):
+            source[str(path.relative_to(ROOT))]=sha(path)
+        source['src/redox/validation/portable_inputs.py']=sha(ROOT/'src/redox/validation/portable_inputs.py')
         for name in ('sampling_publication.py','sampling_batches.py','native_conformer_batches.py'):
             relative='src/redox/validation/'+name; source[relative]=sha(ROOT/relative)
         for relative in ('src/redox/properties/conformer_geometry.py','src/redox/properties/conformer_ensemble.py',
@@ -252,6 +270,7 @@ def main():
                   pages=len(reader.pages), source_sha256=source, pdf_sha256=sha(PAPER / "manuscript.pdf"),
                   build_logs=str(temporary), submission_ready=False, documents=documents,
                   phenothiazine_redox_check=phenothiazine_redox_check,
+                  ionic_preparation_check=ionic_preparation_check,
                   additional_citation_check=citation_check,
                   solution_model_citation_check=solution_citation_check,
                   screening_implementation_check=screening_check,

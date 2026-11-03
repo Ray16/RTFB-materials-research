@@ -59,6 +59,9 @@ def main():
     paths=[SLIDES/'redox_workflow.tex',SLIDES/'story/motivation_results.tex',SLIDES/'story/supporting.tex',
            epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',
            epoch/'viologen_native_values.tex',ROOT/'manuscript/check_viologen_native.py',Path(__file__).resolve()]
+    from redox.validation.sampling_publication import portable_source_paths
+    paths.extend(portable_source_paths(sampling_folder))
+    paths.append(ROOT/'src/redox/validation/portable_inputs.py')
     if phenothiazine_check is not None:
         paths.extend([ROOT/'manuscript/check_phenothiazine_redox.py',ROOT/'src/redox/properties/reference_redox.py',
                       ROOT/'src/redox/properties/context.py',*[p for p in epoch.glob('ptz_*') if p.is_file()]])

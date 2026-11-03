@@ -107,3 +107,10 @@ and explicit CDS numerical policies are documented in the
 [validation record](../validation/phenothiazine_cds_2026-11-03/README.md).
 The current article/SI are 21/36 pages; slide 5 includes the new value.
 The viologen, TEMPO and PMDI comparisons remain the core narrative.
+
+The [portable sampling inputs](../examples/occupied_sampling_replay/README.md)
+remove the validator's original-workspace dependency without changing its
+checks. The full article/SI build passes after rebasing the source and hiding
+the original user data, with networking disabled. All 57 pages match the
+previously inspected text and raster content. The exact runtime and scope are
+recorded in the [validation evidence](../validation/portable_sampling_2026-11-03/README.md).

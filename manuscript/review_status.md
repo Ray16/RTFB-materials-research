@@ -149,10 +149,11 @@ Its practical route is still on hold. The broader 912-graph registry and older
 
 The [new local reviewer candidate](../validation/publication_release_2026-11-03/README.md)
 collects current source, PDFs and checked replay archives. Three numerical
-replays pass with original scientific paths blocked. The full manuscript
-validation build still reads original paths for occupied-sampling inputs;
-that portability gap is distinct from the self-contained TeX upload, which
-compiles. All declared raw hash bindings are located, but the 120.3-GB full
+replays pass with original scientific paths blocked. The subsequent
+[portable validation build](../validation/portable_sampling_2026-11-03/README.md)
+also passes with the original user data hidden, networking disabled and the
+checkout rebased. The exact input bytes, original producer identities and all
+scientific checks are retained. All declared raw hash bindings are located, but the 120.3-GB full
 inventory exceeds the observed safe archive budget and needs a suitable
 destination. No complete raw deposition is claimed.
 

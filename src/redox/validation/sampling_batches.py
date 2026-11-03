@@ -52,7 +52,15 @@ def checked_components(row, audited):
             raise ValueError('Native G must retain its own finite checked electronic and nuclear terms')
 
 
-def analyze(native_path, audit_path, contract_path):
+def analyze(native_path, audit_path, contract_path, *, source_reader=None):
+    def verify_sources(values):
+        for path,digest in values.items():
+            if source_reader is not None:
+                source_reader.verify(path,digest)
+            elif sha256_file(path)!=digest:
+                raise ValueError('An audited input or receipt changed')
+    if source_reader is not None:
+        source_reader.allow_local((native_path,audit_path,contract_path))
     sources = {str(p): sha256_file(p) for p in (native_path, audit_path, contract_path)}
     audit = json.loads(audit_path.read_text()); native = json.loads(native_path.read_text())
     contract = json.loads(contract_path.read_text())
@@ -65,8 +73,7 @@ def analyze(native_path, audit_path, contract_path):
             or contract['global_convergence_proven'] or contract['historical_E_or_G_imported']):
         raise ValueError('A matching current source-bound component audit and unqualified sampling contract required')
     sources.update(audit['source_sha256'])
-    if any(sha256_file(p) != h for p, h in sources.items()):
-        raise ValueError('An audited input or receipt changed')
+    verify_sources(sources)
     indices = contract['expanded_batch_input_IDs']; early = contract['first_batch_input_IDs']
     if (indices != list(range(1, contract['starts_per_cell'] + 1)) or early != list(range(1, len(early) + 1))
             or not 0 < len(early) < len(indices)):
@@ -105,12 +112,15 @@ def analyze(native_path, audit_path, contract_path):
                         or (graph is not None and identity != graph)):
                     raise ValueError('Exact graph, backbone and site identities must agree within each cell')
                 graph = identity
-                namespace_path = Path(row['namespace']); sources[str(namespace_path)] = sha256_file(namespace_path)
-                spec = json.loads(namespace_path.read_text()); geometry = Path(spec['case'])/'input.xyz'
+                namespace_path = Path(row['namespace'])
+                namespace_input = source_reader.path(namespace_path) if source_reader is not None else namespace_path
+                sources[str(namespace_path)] = sha256_file(namespace_input)
+                spec = json.loads(namespace_input.read_text()); geometry = Path(spec['case'])/'input.xyz'
                 sources[str(geometry)] = row['context']['geometry_sha256']
-                if sha256_file(geometry) != sources[str(geometry)]:
+                geometry_input = source_reader.verify(geometry,sources[str(geometry)]) if source_reader is not None else geometry
+                if sha256_file(geometry_input) != sources[str(geometry)]:
                     raise ValueError('Native geometry differs from the checked electronic/nuclear input')
-                molecules.append(alignment_molecule(task['smiles'], geometry))
+                molecules.append(alignment_molecule(task['smiles'], geometry_input))
                 bindings[row['key']] = dict(namespace=str(namespace_path), geometry=str(geometry),
                     geometry_sha256=sources[str(geometry)], review=row['review'], review_sha256=row['review_sha256'])
             matrix, matches = symmetry_rmsd_matrix(molecules)
@@ -126,13 +136,14 @@ def analyze(native_path, audit_path, contract_path):
         results.append(cell)
     for module in ('sampling_batches.py', 'native_conformer_batches.py', 'sampling_snapshot.py'):
         p = Path(__file__).with_name(module); sources[str(p)] = sha256_file(p)
+        if source_reader is not None:source_reader.allow_local((p,))
     from redox.properties import conformer_geometry, conformer_ensemble
     from redox.build import geometry as geometry_code
     from redox.validation import protonation
     for module in (conformer_geometry, conformer_ensemble, geometry_code, protonation):
         p = Path(module.__file__); sources[str(p)] = sha256_file(p)
-    if any(sha256_file(p) != h for p, h in sources.items()):
-        raise ValueError('An analysis input changed')
+        if source_reader is not None:source_reader.allow_local((p,))
+    verify_sources(sources)
     return dict(status='audited_corrected_native_finite_batches_analyzed', declared_inputs=len(rows),
         checked_native_inputs=len(checked), complete_cells=sum(r['partitions'] is not None for r in results),
         first_count=len(early), total_count=len(indices), cells=results, context=global_context, inputs=bindings,
