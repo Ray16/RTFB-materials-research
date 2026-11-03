@@ -27,12 +27,26 @@ def bindings(value):
             yield from bindings(item)
 
 
-def inventory(root, archive, seeds, known_files=()):
+def inventory(root, archive, seeds, known_files=(), *, baseline=None):
+    """Check declared dependencies, optionally inheriting a complete inventory.
+
+    A baseline is an explicit prior integrity observation, not a current rehash.
+    Callers must bind its bytes separately; final archive creation rechecks all
+    bytes. New bindings, including new versions at old paths, are always checked.
+    """
     root, archive = Path(root).resolve(), Path(archive).resolve()
+    if baseline is not None and (baseline.get('status') != 'declared_dependency_inventory_verified'
+                                 or baseline.get('unresolved') != []):
+        raise ValueError('A complete baseline inventory is required')
+    inherited = {(r['path'], r['sha256']): dict(r)
+                 for r in (baseline or {}).get('files', [])}
+    inherited_relocations = {(r['original'], r['sha256']): dict(r)
+                             for r in (baseline or {}).get('explicit_archive_relocations', [])}
+    covered = set(inherited) | set(inherited_relocations)
     known = defaultdict(set)
-    for row in known_files:
+    for row in [*known_files, *inherited.values()]:
         known[row['sha256']].add(row['path'])
-    cache = {}; found = {}; missing = {}; relocations = {}; parents = defaultdict(set)
+    cache = {}; found = dict(inherited); missing = {}; relocations = dict(inherited_relocations); parents = defaultdict(set)
     seed_items = seeds.items() if isinstance(seeds, dict) else seeds
     queue = [(str(Path(p).resolve()), digest, 'seed') for p, digest in seed_items]
     seen = set()
@@ -54,7 +68,7 @@ def inventory(root, archive, seeds, known_files=()):
     while queue:
         name, expected, parent = queue.pop(); key = (name, expected)
         parents[key].add(parent)
-        if key in seen:
+        if key in seen or key in covered:
             continue
         seen.add(key)
         original = Path(name); candidates = [original]
@@ -87,7 +101,7 @@ def inventory(root, archive, seeds, known_files=()):
     late = [(name,digest) for name,digest in missing
             if any(actual(p) == digest for p in known[digest])]
     if late:
-        retry = inventory(root, archive, late, [dict(path=p,sha256=h) for h, paths in known.items() for p in paths])
+        retry = inventory(root, archive, late, [dict(path=p,sha256=h) for h, paths in known.items() for p in paths], baseline=baseline)
         for row in retry['files']:found[(row['path'],row['sha256'])] = row
         for row in retry['explicit_archive_relocations']:
             relocations[(row['original'],row['sha256'])] = row
@@ -98,11 +112,13 @@ def inventory(root, archive, seeds, known_files=()):
             key=(row['path'],row['expected_sha256'])
             missing[key]={k:v for k,v in row.items() if k!='referenced_by'}
             parents[key].update(row['referenced_by'])
-    for row in found.values():
+    for key, row in found.items():
+        if key in inherited:
+            continue
         if actual(row['path']) != row['sha256']:
             raise ValueError('Evidence changed before inventory completion')
     unique = {r['sha256']:r['bytes'] for r in found.values()}
-    return dict(status='declared_dependency_inventory_verified' if not missing else 'declared_dependency_inventory_incomplete',
+    result = dict(status='declared_dependency_inventory_verified' if not missing else 'declared_dependency_inventory_incomplete',
         files=list(found.values()), explicit_archive_relocations=list(relocations.values()),
         unresolved=[dict(**row, referenced_by=sorted(parents[key])) for key,row in missing.items()],
         unique_content_bytes=sum(unique.values()),
@@ -110,3 +126,8 @@ def inventory(root, archive, seeds, known_files=()):
         traversal_scope='Recursive named path-to-SHA256 maps, including nested component records; only verified JSON branches traversed',
         implicit_dependencies_covered=False, quantum_validation_repeated=False,
         public_deposition_complete=False)
+    if baseline is not None:
+        result.update(baseline_raw_files_rehashed=False,
+                      inherited_files=len(inherited),
+                      new_files_hash_checked=len(set(found)-set(inherited)))
+    return result

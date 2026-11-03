@@ -21,10 +21,10 @@ establish that a calculation is currently running.
   accessible submission files (2 MB), include the final editorial pass and
   context-complete data tables from commit `bd375957`. Its complete manuscript
   validation build passes with original user data hidden and networking disabled.
-  This replays cached evidence, not fresh quantum calculations. The earlier raw
-  inventory resolves 53,640 files and 120.3 GB; later additions still need an
-  inventory addendum. Full raw archiving awaits suitable storage, and public
-  deposition remains pending.
+  This replays cached evidence, not fresh quantum calculations. The current raw
+  addendum resolves 54,101 files and 120.43 GB; 461 new files were hashed and
+  prior bulk checks are explicitly inherited. Full raw archiving awaits suitable
+  storage, and public deposition remains pending.
 - [Finite viologen comparison replay](../examples/finite_viologen_replay/README.md):
   standard-library reconstruction of the four finite ionic cycles and twelve
   motif triplets. An isolated copy passes with original scientific paths blocked;

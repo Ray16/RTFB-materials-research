@@ -32,9 +32,11 @@ additional submission criterion for this explicitly scoped paper.
 
 The [current release preparation](../validation/publication_release_2026-11-03/README.md)
 provides an 821-MB local reviewer bundle and three successful numerical replays
-from exported source with original scientific paths blocked. The complete
-declared raw inventory now resolves 53,640 files (120.3 GB unique content), but
-full raw archiving requires suitable storage beyond the observed 51-GB budget.
+from exported source with original scientific paths blocked. The current
+[raw addendum](../validation/publication_release_2026-11-03/raw_addendum_summary.json)
+resolves 54,101 files (120.43 GB unique content), with prior bulk checks explicitly
+inherited. Full raw archiving needs additional storage: the latest observation
+shows a 76.29-GB minimum shortfall including reserve, before active-job promises.
 The subsequent [portable validation](../validation/portable_sampling_2026-11-03/README.md)
 supplies the exact occupied-sampling inputs and relocates the initial-structure
 audit explicitly. The full source-validation build now passes with original

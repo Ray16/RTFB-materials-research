@@ -86,7 +86,33 @@ objects, source changes during archiving and changed manifests. Archives
 preserve the 32-GiB floor and use one zstd worker. The dated scripts in this
 directory are audit producers, not calculation-submission entry points.
 
-The 120.3-GB raw inventory is a frozen earlier release snapshot. Later validated
-additions, including the N0-outer plus result, retain their own raw locations
-and hashes. The full raw archive must refresh these additions and any producer
-relocations before staging; the archive tools recheck included bytes.
+## Current raw addendum and release blocker
+
+The [addendum](raw_addendum_summary.json) extends the resolved baseline to the
+current seven-contact evidence epoch: 54,101 physical files and 120,434,748,131
+bytes of unique content, with no unresolved declared bindings. Fourteen explicit
+seeds cover the 13 changed snapshot contents and the seven-outcome cohort. The
+shared inventory reader hashes all 461 newly discovered files. The prior 53,640
+file observations are explicitly inherited, not described as current rehashes.
+The [checkout producer check](inherited_producer_observation.json) separately
+rehashes 326 current-checkout text/code dependencies and finds no changed bytes.
+Implicit dependencies and live campaign outputs outside the frozen seeds remain
+outside this inventory's scope.
+
+[Nineteen tests](incremental_inventory_checks_02.xml) verify inherited-versus-new
+versions, wrong copies, late relocation, incomplete baselines, altered aliases,
+object staging and streaming archive integrity. Archive creation still rechecks
+every included byte; incremental inventory is not an archive-integrity certificate.
+Use `scripts/release/extend_source_inventory.py` with the hashed baseline summary
+and explicit seed manifest for future additions. The original reader is preserved
+as `source_inventory_v1.py`; earlier inventories and bundles are unchanged.
+
+The [fresh storage observation](storage_headroom_02.json) finds 78.45 GB free.
+The included research objects require 120.38 GB uncompressed, plus a 34.36-GB
+(32-GiB) reserve: a minimum 76.29-GB shortfall before active calculation promises.
+The existing compression pilot does not justify assuming the full archive fits.
+A suitable authorized durable destination remains pending user input; no full raw
+archive has started. Author details, reuse licensing, a permanent release identifier
+and public deposition remain outstanding. This small inventory addendum accompanies
+the immutable reviewer bundle through the results index; it does not rewrite that
+bundle or its scientific-source commit.

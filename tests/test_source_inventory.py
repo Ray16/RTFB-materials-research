@@ -51,3 +51,35 @@ def test_unrecognized_mapping_is_not_claimed_as_covered(tmp_path):
     digest=write(seed,{'other_sha256':{str(root/'absent'):'a'*64}})
     r=inventory(root,tmp_path/'archive',{seed:digest})
     assert len(r['files'])==1 and not r['implicit_dependencies_covered']
+
+
+def test_incremental_inventory_checks_new_versions_and_declares_inheritance(tmp_path):
+    root=tmp_path/'root';archive=tmp_path/'archive';source=root/'raw.json'
+    old=write(source,{'value':1})
+    base=inventory(root,archive,{source:old})
+    new=write(source,{'value':2})
+    seed=root/'review.json'
+    digest=write(seed,{'source_sha256':{str(source):new}})
+    result=inventory(root,archive,{seed:digest},baseline=base)
+    assert not result['unresolved']
+    assert {r['sha256'] for r in result['files'] if r['path']==str(source)}=={old,new}
+    assert result['inherited_files']==1 and result['new_files_hash_checked']==2
+    assert result['baseline_raw_files_rehashed'] is False
+    # The inherited old version cannot satisfy a different new expected value.
+    bad=inventory(root,archive,{source:'0'*64},baseline=base)
+    assert len(bad['unresolved'])==1
+
+
+def test_incremental_inventory_rejects_incomplete_baseline(tmp_path):
+    import pytest
+    base=inventory(tmp_path,tmp_path/'archive',{tmp_path/'missing':'0'*64})
+    with pytest.raises(ValueError,match='complete baseline'):
+        inventory(tmp_path,tmp_path/'archive',{},baseline=base)
+
+
+def test_new_alias_to_inherited_content_is_checked_again(tmp_path):
+    root=tmp_path/'root';source=root/'actual.json';old=write(source,{'value':1})
+    base=inventory(root,tmp_path/'archive',{source:old})
+    write(source,{'value':2})
+    result=inventory(root,tmp_path/'archive',{root/'new_alias.json':old},baseline=base)
+    assert len(result['unresolved'])==1
