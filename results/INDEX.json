@@ -547,6 +547,15 @@
       "checks": "validation/phenothiazine_primary_2026-11-02/focused_checks.xml",
       "status": "two_electronic_states_checked_neutral_minimum_failed_oxidized_native_recovery_pending",
       "scope": "Both exact electronic states independently checked, maximum corrected/stored difference 5.19e-11 Ha. Neutral native geometry fails with a -25.47 cm-1 mode; signed repair seeds prepared, no G admitted. Oxidized native startup interruption preserved and fresh recovery queued; own native/S columns/reference remain pending."
+    },
+    "phenothiazine_neutral_geometry_refinement": {
+      "guide": "validation/phenothiazine_geometry_2026-11-02/README.md",
+      "current": "validation/phenothiazine_geometry_2026-11-02/current.json",
+      "source_snapshot": "validation/phenothiazine_geometry_2026-11-02/prepared_manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs",
+      "checks": "validation/phenothiazine_geometry_2026-11-02/focused_checks.xml",
+      "status": "two_signed_neutral_refinements_prepared_and_queued",
+      "scope": "Both +/-0.1-Angstrom neutral-singlet mode branches queued under the unchanged strict primary geometry method, 39 atoms/397 AOs and 32-GB class. Existing workers preserved during a verified admission-controller handoff. Fresh electronic/native/S-column/minimum checks remain required; G/potential blank."
     }
   }
 }

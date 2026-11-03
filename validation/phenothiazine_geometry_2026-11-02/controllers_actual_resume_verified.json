@@ -1,0 +1,56 @@
+{
+  "checked": 1793679070.2232225,
+  "resumed": [
+    {
+      "owner": {
+        "host": "lambda2",
+        "pid": 1781917,
+        "process_start": "1447951328"
+      },
+      "actual_process_state": "running",
+      "CPU_affinity": [
+        48
+      ],
+      "phase": "active",
+      "recorded_status": "corrected_sampling_queue_active"
+    },
+    {
+      "owner": {
+        "host": "lambda2",
+        "pid": 1781918,
+        "process_start": "1447951328"
+      },
+      "actual_process_state": "sleeping",
+      "CPU_affinity": [
+        49
+      ],
+      "phase": "active",
+      "recorded_status": "corrected_native_queue_active"
+    },
+    {
+      "owner": {
+        "host": "lambda2",
+        "pid": 1781919,
+        "process_start": "1447951328"
+      },
+      "actual_process_state": "sleeping",
+      "CPU_affinity": [
+        46
+      ],
+      "phase": "active",
+      "recorded_status": "waiting_for_suitable_free_GPU_or_host_capacity"
+    }
+  ],
+  "geometry_queue": {
+    "owner": {
+      "host": "lambda2",
+      "pid": 1783654,
+      "process_start": "1447954885"
+    },
+    "CPU_affinity": [
+      50
+    ],
+    "status": "waiting_for_suitable_free_GPU_or_host_capacity"
+  },
+  "scientific_workers_signaled": false
+}

@@ -28,9 +28,15 @@ def review(namespace):
     spec=verify(namespace);case=Path(spec['case']);sources=Path(spec['sources']);used=[namespace]
     def read(p):used.append(p);return json.loads(p.read_text())
     plan=read(case/'plan.json')
-    if (plan['role']!='primary_counterion_geometry_control' or (plan['charge'],plan['mult'])!=(1,1)
+    route_geometry=plan.get('first_route_geometry_repair') is True
+    if route_geometry:
+        from redox.workflows.route_geometry import validate_plan
+        validate_plan(plan);used.append(freeze_source(case,Path(validate_plan.__code__.co_filename)))
+    elif (plan['role']!='primary_counterion_geometry_control' or (plan['charge'],plan['mult'])!=(1,1)
             or Chem.GetFormalCharge(Chem.MolFromSmiles(plan['smiles']))!=1 or plan['parent_formal_core_charge']!=2):
         raise ValueError('Exact oxidized-core chloride microstate required, distinct from a reduced radical')
+    q,m=plan['charge'],plan['mult']
+    prefix='route_primary_geometry_control' if route_geometry else 'counterion_geometry_control'
     peak_limit=31744
     resource_profile=None
     if plan.get('geometry_memory_pilot'):
@@ -41,7 +47,7 @@ def review(namespace):
         used.extend([Path(plan['fixed_gradient_review']),
             freeze_source(case,Path(validate_plan.__code__.co_filename))])
     owners=load(ROOT/'scripts/pipeline/observe_archived_native_namespace.py','chloride_geometry_owner')
-    stage=review_closure(case,read,owners.alive,expected_status='counterion_geometry_control_finished_independent_review_pending',
+    stage=review_closure(case,read,owners.alive,expected_status=prefix+'_finished_independent_review_pending',
         host_GiB=32,GPU_MiB=peak_limit,worker=sources/'worker.py')
     if resource_profile is not None:
         runtime=read(case/'tensor_runtime/status.json')
@@ -69,7 +75,7 @@ def review(namespace):
             or settings['conv_tol_grad']!=1e-8 or settings['max_cycle']!=200 or settings['grid_level']!=3
             or settings['solvent_class']!='SMD' or not solved['converged'] or abs(solved['energy_Ha']-final['E_Ha'])>1e-10):
         raise ValueError('Actual final primary-model SCF settings/convergence differ')
-    frame=checkpoint_frame(checkpoint,charge=1,mult=1,basis='def2-svp',coordinates_Bohr=atoms.positions/param.BOHR,symbols=atoms.get_chemical_symbols())
+    frame=checkpoint_frame(checkpoint,charge=q,mult=m,basis='def2-svp',coordinates_Bohr=atoms.positions/param.BOHR,symbols=atoms.get_chemical_symbols())
     with h5py.File(checkpoint,'r') as stream:actual_energy=float(stream['scf/e_tot'][()])
     if (not all(math.isfinite(value) for value in (actual_energy,solved['energy_Ha'],final['E_Ha']))
             or abs(actual_energy-solved['energy_Ha'])>1e-10 or abs(actual_energy-final['E_Ha'])>1e-10):
@@ -78,17 +84,17 @@ def review(namespace):
     if not np.allclose(stored,gradient,rtol=0,atol=1e-12):raise ValueError('Actual final gradient differs')
     used.extend([checkpoint,checkpoint.with_name('gradient.npy')])
     series=None
-    if resource_profile is not None:
+    if resource_profile is not None or route_geometry:
         from redox.validation.primary_checkpoints import checkpoint_series
         series=checkpoint_series(case/'SCF_evaluations',xyz,
-            dict(charge=1,mult=1,basis='def2-svp',xc='r2scan',disp='d4',conv_tol=1e-12,
+            dict(charge=q,mult=m,basis='def2-svp',xc='r2scan',disp='d4',conv_tol=1e-12,
                 conv_tol_grad=1e-8,max_cycle=200,grid_level=3,solvent_class='SMD'),read,used)
         used.append(freeze_source(case,Path(checkpoint_series.__code__.co_filename)))
     verify(namespace)
     host=read(case/'host_guard/status.json')
-    return dict(status='primary_counterion_geometry_independently_checked',namespace=str(namespace),key=plan['source_id'],
-        smiles=plan['smiles'],parent_smiles=plan['parent_smiles'],total_charge=1,multiplicity=1,
-        formal_core_charge=2,geometry_sha256=sha256_file(xyz),nao=plan['nao'],method=plan['method'],
+    return dict(status='route_primary_geometry_independently_checked' if route_geometry else 'primary_counterion_geometry_independently_checked',namespace=str(namespace),key=plan['source_id'],
+        smiles=plan['smiles'],parent_smiles=plan.get('parent_smiles',plan['smiles']),total_charge=q,multiplicity=m,
+        formal_core_charge=None if route_geometry else 2,geometry_sha256=sha256_file(xyz),nao=plan['nao'],method=plan['method'],
         actual_final_SCF_energy_Ha=actual_energy,
         maximum_gradient_Ha_Bohr=float(abs(gradient).max()),actual_frame=frame,actual_occupied_spin=spin,
         peak_GPU_MiB=stage['observed_peak_GPU_MiB'],peak_host_RSS_bytes=max(host['peak_tree_RSS_bytes'],host['self_VmHWM_bytes']),

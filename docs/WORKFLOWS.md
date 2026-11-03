@@ -13,6 +13,7 @@ no declared category. It does not submit calculations.
 | Registered molecular campaign | `redox motifs` | Plan by default; execution requires `--execute`, a suitable reserved GPU and state-specific QC |
 | Route-admitted primary molecular comparison | `python -m redox.workflows.route_molecular_panel --help` | Exact frozen route/graph/state admission; preserved source geometries and existing corrected electronic worker. A bounded `queue` waits for suitable capacity; own native and reference stages remain mandatory before potential/G publication |
 | First route-admitted native components | `python -m redox.workflows.route_primary_native --help` | The primary 32-GB-class Hessian envelope and existing native engine, with actual-center sulfur displacement checks. Failed minima retain blank G and require fresh refinement; no candidate potential is assembled here |
+| Route-admitted signed geometry refinement | `python -m redox.workflows.route_geometry --help` | Both signed branches of an independently diagnosed saddle; shared strict primary geometry worker/reviewer with explicit charge/spin. Requires 32-GB-class devices and fresh electronic/native work after geometry changes |
 | Resource-controlled shard launch | `redox launch`, `redox run-gpu` | Scheduling/preflight; process completion is not scientific admission |
 | Candidate construction | `redox build`, `redox search`, `redox expand` | Graphs and hypotheses; route review precedes new full-property campaigns |
 | Exact matched ring panel | `python scripts/candidates/expand_ring_panel.py --help` | Declared baseline/substituents; exact precursor/product and mapped new bond for every graph; retains equivalent recipes, computes no redox properties |
@@ -60,6 +61,12 @@ is reported once all remaining states have finished or require explicit review.
 Added finite-difference probes must use the native engine's recorded center
 coordinates, preserving its pinned unit convention rather than applying a
 second Angstrom-to-Bohr constant.
+
+The shared remote launcher has an explicit adapter for the maintained route
+geometry entry point; existing rows retain their original screening-control
+launcher by default. Each adapter enforces its own chemistry/state/resource
+contract before calling the same reservation and budget machinery. It cannot
+select an arbitrary Python module.
 
 ## Physical context at arithmetic boundaries
 

@@ -29,6 +29,9 @@ def load(path,name):
 def launch(row,host,gpu,interpreter,claim,try_number):
     namespace=Path(row['namespace']);root=namespace.parent
     output=root/f'placement_{try_number:03d}'
+    launcher=row.get('launcher_module','redox.workflows.screening_control')
+    if launcher not in ('redox.workflows.screening_control','redox.workflows.route_geometry'):
+        raise ValueError('An explicitly maintained scientific launcher is required')
     # SSH gives the allocator a fresh node affinity, independently of this
     # coordinator's one-CPU binding. No GPU work runs in the SSH client.
     code='''import json,os,pathlib,subprocess,sys
@@ -40,7 +43,7 @@ allowed=os.sched_getaffinity(0)
 with allocation_guard():host_capacity(1,minimum_ram_gib=2);os.sched_setaffinity(0,cpu_allocation(1))
 probe(spec)
 os.sched_setaffinity(0,allowed)
-argv=[sys.executable,"-u","-m","redox.workflows.screening_control","launch","--spec",str(spec),"--gpu",gpu,"--out",str(output)]
+argv=[sys.executable,"-u","-m",sys.argv[6],"launch","--spec",str(spec),"--gpu",gpu,"--out",str(output)]
 logpath=pathlib.Path(sys.argv[4]);logpath.parent.mkdir(parents=True,exist_ok=True)
 with logpath.open("x") as log:child=subprocess.Popen(argv,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)
 owner=dict(host=os.uname().nodename.split(".")[0],pid=child.pid,process_start=pathlib.Path(f"/proc/{child.pid}/stat").read_text().rsplit(")",1)[1].split()[19])
@@ -51,7 +54,7 @@ atomic_write_json(pathlib.Path(sys.argv[5]),receipt);print(json.dumps(receipt))
     receipt=claim/f'try_{try_number:03d}.json'
     argv=['env','PYTHONPATH='+str(ROOT/'src'),'OMP_NUM_THREADS=1','OMP_THREAD_LIMIT=1',
         'OPENBLAS_NUM_THREADS=1','MKL_NUM_THREADS=1','NUMEXPR_NUM_THREADS=1','XTB_THREADS=1',
-        'NUMPY_MADVISE_HUGEPAGE=0',interpreter,'-c',code,str(namespace),str(output),str(gpu),str(log),str(receipt)]
+        'NUMPY_MADVISE_HUGEPAGE=0',interpreter,'-c',code,str(namespace),str(output),str(gpu),str(log),str(receipt),launcher]
     result=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=8',host,shlex.join(argv)],
                           capture_output=True,text=True,timeout=180,check=True)
     return json.loads(result.stdout)

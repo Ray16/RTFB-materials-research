@@ -13,6 +13,8 @@ CATEGORIES = {
  'historical': [],
 }
 SPECIALIZED = [
+ dict(kind='recovery', module='redox.workflows.route_geometry',
+      purpose='Exact diagnosed neutral saddle: retain both signed branches and require strict fresh geometry/SCF review before rescoring'),
  dict(kind='checked_campaign', module='redox.workflows.route_molecular_panel',
       purpose='Exact route-admitted source states; corrected electronic stage first, own native G and matched references remain required'),
  dict(kind='checked_campaign', module='redox.workflows.route_primary_native',

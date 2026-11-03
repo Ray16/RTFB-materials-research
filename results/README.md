@@ -35,6 +35,10 @@ establish that a calculation is currently running.
   The neutral native calculation reveals a -25.47-cm-1 failed minimum; signed
   refinement seeds are prepared. The oxidized native stage has a preserved startup
   interruption and a fresh queued recovery. Potential and G remain pending.
+- [Neutral phenothiazine geometry refinement](../validation/phenothiazine_geometry_2026-11-02/README.md):
+  both signed saddle-mode branches are prepared and queued for strict primary
+  optimization and fresh independent geometry review. Their energies and nuclear
+  terms must be recomputed at any accepted new geometry; G/potential stay blank.
 - [Exact enumerated viologen](../validation/viologen_native_recovery_2026-10-30/README.md):
   three native states pass independent review after minimum repair. MeCN reductions
   are −0.608/−1.208 V versus Fc; modeled monomer disproportionation is +57.91 kJ/mol.
