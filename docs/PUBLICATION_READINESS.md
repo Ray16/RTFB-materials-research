@@ -274,3 +274,12 @@ reported; no gas-phase correction may silently become a solution correction.
 
 Completion is established by those artifacts and checks, not by a percentage
 estimate or a green unit-test suite alone.
+
+## Submission components
+
+The [3 November submission pass](../validation/jcim_submission_2026-11-03/README.md)
+checks the four-sentence abstract, revised letter, TOC TIFF and context-complete
+CSV exports. Both PDFs rebuild successfully; changed layouts were inspected.
+The [local file inventory](../manuscript/submission_files.json) is explicit about
+pending author details and archival deposition. This formatting pass changes no
+scientific values and does not promote conditional results to material validation.

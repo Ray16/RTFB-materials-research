@@ -1,0 +1,63 @@
+{
+  "id": "frozen_parent_benchmark_primary_model",
+  "quantity": "one_electron_couple_potential",
+  "unit": "V",
+  "solvent": "acetonitrile",
+  "temperature_K": 298.15,
+  "electronic_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "native_protocol": {
+    "schema": 1,
+    "model": "solution geometry-level DFT Hessian",
+    "xc": "r2scan",
+    "disp": "d4",
+    "basis": "def2-svp",
+    "anion_basis": "def2-svpd",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "grid_level": 3,
+    "cphf_grid_level": 3,
+    "grid_response": true,
+    "conv_tol": 1e-12,
+    "conv_tol_grad": 1e-08,
+    "temperature_K": 298.15,
+    "rotor_cutoff_cm": 50,
+    "spin_partition": "unsplit ground spin multiplet",
+    "gradient_max_acceptance_Ha_Bohr": 0.00045,
+    "min_frequency_acceptance_cm": -5,
+    "finite_difference_step_Bohr": 0.0005,
+    "finite_difference_relative_acceptance": 0.01,
+    "max_spin_contamination": 0.1,
+    "df_batch_cap_GiB": 6,
+    "validated_pyscf_version": "2.14.0",
+    "validated_gpu4pyscf_version": "1.8.1"
+  },
+  "thermal_definition": "Projected unscaled native solution-DFT modes, xTB qRRHO at 50 cm-1; ground spin multiplicity once",
+  "reference": {
+    "electrode": "Fc/Fc+",
+    "neutral": {
+      "charge": 0,
+      "multiplicity": 1
+    },
+    "oxidized": {
+      "charge": 1,
+      "multiplicity": 2
+    }
+  },
+  "standard_state": "Same source ideal-translation convention; balanced one-electron Fc cycle cancels common 1-M conversion",
+  "numerical_scope": "Frozen reported benchmark values; later electronic implementation repeats do not replace nuclear terms",
+  "QC_scope": "Export rechecks identity and residual arithmetic only; source validation is separate",
+  "graph_scope": "Parent SMILES is a connectivity representation; model charge/spin are explicit columns, not localization assignments",
+  "experimental_exact_graft_validation": false
+}

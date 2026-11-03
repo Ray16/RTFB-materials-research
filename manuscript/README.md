@@ -114,3 +114,10 @@ checks. The full article/SI build passes after rebasing the source and hiding
 the original user data, with networking disabled. All 57 pages match the
 previously inspected text and raster content. The exact runtime and scope are
 recorded in the [validation evidence](../validation/portable_sampling_2026-11-03/README.md).
+
+The [submission-format pass](../validation/jcim_submission_2026-11-03/README.md)
+provides a four-sentence abstract, revised cover letter, a checked TOC TIFF and
+CSV companions for 912 exact designs and 39 benchmark endpoints. Use the
+[submission file inventory](submission_files.json) for the current local files;
+the data companion includes model charge/spin, method, reference and scope.
+Author completion and archival deposition remain outstanding.

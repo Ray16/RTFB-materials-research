@@ -4,45 +4,36 @@ Please consider our Article, “Context-Preserving Computational Assessment of
 Redox Motifs for Polymer Grafting,” for the Journal of Chemical Information and
 Modeling.
 
-The manuscript addresses the transfer from molecular redox screening to motifs
-attached to a preformed polymer. We connect exact precursor/product and graft-bond
-identities with explicit calculation contexts, balanced attachment reactions and
-finite oligomer occupancy cycles. The study uses established electronic-structure
-methods and thermodynamic identities; its contribution is their coordinated,
-validated application across chemically matched molecular, reaction and polymer
-models, with explicit boundaries on property reuse and material interpretation.
+The manuscript tests which conclusions from molecular redox screening survive
+attachment to a preformed polymer. Its contribution is a set of matched chemical
+comparisons that distinguish local motif interactions, whole-chain responses and
+reaction-reference effects while retaining exact structures and calculation
+contexts.
 
-A 39-endpoint MeCN benchmark establishes the protocol's accuracy context. An exact
-viologen example connects reviewed attachment chemistry with two calculated
-reductions, a checked local quaternization and four balanced ionic polymer
-neighboring-graft free-energy cycles. Backbone configuration reverses the sign
-at both tested sequence spacings: adjacent/one-spacer responses are
-−3.94/+22.58 kJ/mol for the all-same backbone and +8.28/−5.30 for the alternating
-backbone. A complementary frozen-fragment test finds local electronic repulsion
-where whole-chain electronic nonadditivity can be favorable. These finite
-comparisons distinguish chemical response definitions and conditional structural
-effects; the separate molecular and polymer models retain their own scopes.
-TEMPO illustrates why
-directional solution-relaxation costs need not qualify a single symmetric
-parameter. The PMDI and phthalimide cases distinguish a local-to-polymer penalty,
-neighboring-site nonadditivity, spatial contact and frozen-fragment electronic
-interaction. These comparisons expose conclusions that cannot be obtained from
-a molecular-potential ranking alone. They also retain unresolved speciation,
-ensemble, coupling and material-accessibility requirements explicitly.
+A retrospective 39-endpoint MeCN benchmark provides a defined accuracy domain.
+In the exact viologen case, frozen methyl-capped motifs are repulsive in all four
+tested ionic frames, including two with favorable whole-chain electronic
+nonadditivity. Both adjacent and one-spacer neighboring-graft free energies
+reverse sign between backbone configurations. These results show why a chain
+response cannot be interpreted as local motif attraction or transferred between
+retained chain configurations without testing the comparison. A separate
+phthalimide control fails its prospective sampling diagnostic; TEMPO and PMDI
+provide complementary tests of directional relaxation and local-to-polymer
+transfer. The conclusions remain finite and conditional, with no claim of
+superior screening accuracy, grafting yield or validated material performance.
 
-The Article and separate Supporting Information include numerical protocols,
-source-defined validation, applicability limits and software/data availability.
-A portable ten-state viologen example reconstructs the exact molecular redox and
-local reaction values from supplied records on CPU. The manuscript discloses the
-use of AI assistance in drafting and code development. We believe the emphasis
-on chemically meaningful property combinations and reproducible computational
-assessment is relevant to JCIM's molecular modeling and chemical information
-readership.
+The Article, separate Supporting Information and machine-readable evidence
+include numerical protocols, applicability limits and reproducible examples.
+The full manuscript validation build runs with the original user data hidden
+and networking disabled. The manuscript discloses AI assistance in drafting
+and code development. We believe the matched chemical counterexamples and
+explicit rules for property reuse will interest JCIM readers working on
+molecular modeling and computer-aided materials design.
 
 [Before submission: corresponding author must supply author/contact details,
 confirm all authors' approval, originality and exclusive submission, competing
-interests and any prior editorial history; complete the full data/software
-release and replace this note.]
+interests and any prior editorial history; complete the data/software release
+and replace this note.]
 
 Sincerely,
 [Corresponding author]
