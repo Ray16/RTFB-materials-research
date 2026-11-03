@@ -1,6 +1,6 @@
 # Current manuscript review disposition
 
-As of 2 November 2026, this is a 21-page JCIM working article with a separate
+As of 3 November 2026, this is a 21-page JCIM working article with a separate
 35-page SI. Submission remains incomplete. Historical review dispositions are
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
@@ -24,15 +24,17 @@ evidence separately; an evidence hold is not a demonstrated synthetic failure.
 The existing five interpretation-transfer tests are the starting evidence,
 not proof of superior screening accuracy.
 
-The next acceptance targets are complete independently checked lead-state
-cycles, convergence/uncertainty for the occupancy comparisons supporting the
-main conclusions, and an externally supported comparison with simpler
-screening. Representative ion and reaction-condition sensitivity should test
-the claimed decisions. Additional candidate enumeration is useful only when it
-fills a declared coverage gap. Exact-graft experimental data would strengthen
+For the current finite-comparison paper, every reported cycle must use
+independently qualified, compatible state and reference components. Equilibrium
+preferences additionally require complete and adequately sampled cycles;
+otherwise the conclusions stay limited to the retained geometries. A claim of
+superior screening accuracy would require an external comparison and is not
+made here. Representative ion and reaction-condition sensitivity is required
+for any broader reaction interpretation; the current grafting values remain
+conditional. Additional candidate enumeration is useful only when it fills a
+declared coverage gap. Exact-graft experimental data would strengthen
 application claims; the retrospective parent benchmark cannot establish
-polymer performance. These priorities supplement the remaining requirements
-below without declaring the current article submission-ready.
+polymer performance. Final release and deposition remain required for submission.
 
 | Requirement | Current evidence | Still required |
 | --- | --- | --- |
@@ -92,20 +94,33 @@ and response, all 25 fresh center/displaced evaluations, and independent own-mod
 and nuclear reconstruction. No ensemble or material inference follows.
 [Current collection](../validation/ionic_cycle_completion_2026-11-02/complete_cycles_12.json).
 
-The separate full 240-input corrected phthalimide-control campaign now has
-90 checked electronic inputs and eighteen checked native inputs. The largest
-119-atom pilot passes full independent minimum, derivative, wavefunction and
-resource review; matching native followups continue under source-bound resource and physical gates. No occupied ensemble is complete. Six exact local
-viologen/chloride geometries now pass independent stationarity and actual
-SCF-energy checks. The first pose's −50.52-cm⁻¹ minimum failure is independently
-reconstructed and preserved unqualified. Four checked outcomes from three original starts pass full native QC and give finite
-1-M association G of +15.4 to +22.4 kJ/mol at the primary cutoff. Two other
-failed minima have diagnosed signed repair branches prepared. Other poses and
-actual-condition speciation remain open. Twelve frozen
-motif triplets additionally pass 72 actual SCF reviews; local repulsion and the
+The manuscript's frozen corrected phthalimide-control snapshot contains 100
+checked electronic inputs and 31 checked native inputs out of 240 declared
+slots. These are publication-snapshot counts, not a live fleet census. Its first
+complete occupied cell fails the declared ten-to-twenty sampling diagnostic;
+eleven cells and balanced occupied ensemble cycles remain incomplete. The
+largest 119-atom pilot passes independent minimum, derivative, wavefunction and
+resource review. Separately, six exact local viologen/chloride outcomes from
+five original starts pass full native QC and give finite 1-M association G of
++5.33 to +22.36 kJ/mol at the primary cutoff. They form five numerical duplicate
+groups. Failed stationary poses remain preserved and unqualified; other
+contacts and actual-condition speciation remain open. Twelve frozen motif
+triplets additionally pass 72 actual SCF reviews; local repulsion and the
 whole-chain E cycle have opposite signs in two of four parent frames. These
-motif and six chloride-contact outcomes are integrated into the current frozen manuscript and slide evidence. The N0 repairs share one numerical duplicate group; no hit-count entropy is introduced.
+motif and chloride-contact results are integrated into the current frozen
+manuscript and slide evidence. No hit-count entropy is introduced.
 [Sampling progress](../validation/corrected_sampling_2026-11-02/README.md).
+
+Phenothiazine's earlier geometry failures are historical: three refined
+geometries and their fresh electronic states now pass review. Two neutral
+native Hessians fail the unchanged symmetry threshold; component reconstruction
+traces their antisymmetry to the legacy CDS derivative step. The original
+oxidized native component independently qualifies, but a qualified oxidized
+component alone cannot supply an oxidation potential. Finer-step full native
+controls have been prepared; the cited records do not supply qualified neutral
+free energies. Quantitative phenothiazine electrochemistry remains excluded
+until compatible state and reference components pass.
+[Native evidence and numerical-policy scope](../validation/phenothiazine_cds_2026-11-03/README.md).
 
 The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)
 now repeats all ten exact viologen reaction/reference states with nine new

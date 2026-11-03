@@ -25,9 +25,12 @@ quaternization cycle is unchanged.
 
 The earlier four-outcome publication snapshot remains immutable. The new
 contacts preserve the positive finite-association interpretation but lower
-the sampled minimum by about 10.09 kJ/mol. They therefore warrant inclusion
-in the next scientific evidence update before submission; the finalized
-editorial PDFs have not been silently replaced.
+the sampled minimum by about 10.09 kJ/mol. All six outcomes are now integrated
+into the [3 November manuscript evidence epoch](../../manuscript/evidence/2026-11-03_six_chloride_contacts/manifest.json),
+the article, SI Table S11 and supporting slide 21. The source-bound
+[publication summary](publication_summary.json) and
+[38 publication checks](publication_checks.xml) document this update; the
+earlier editorial snapshot is preserved.
 
 The [N0-outer plus geometry](N0_outer_plus_review.json) also passes independent
 review. Its own thermochemistry is now prepared and queued under the existing
