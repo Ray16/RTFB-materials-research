@@ -1,7 +1,7 @@
 # Working JCIM manuscript
 
 Open [the article](manuscript.pdf) (21 pages) and
-[Supporting Information](supporting_information.pdf) (35 pages).
+[Supporting Information](supporting_information.pdf) (36 pages).
 Editable sources are [manuscript.tex](manuscript.tex) and
 [supporting_information.tex](supporting_information.tex). Earlier article
 versions remain preserved in Git and the recorded pre-rewrite archive; see
@@ -81,8 +81,8 @@ The [3 November editorial pass](editorial_review.json) tightens the abstract,
 interpretation and conclusions, clarifies the workflow graphic, and redraws the
 matched electronic comparison with signed labels and grayscale-safe hatching.
 All eight plotted values are unchanged. Figure placement now pairs the principal
-comparison with its evidence table. The article/SI remain 21/35 pages and the
-final self-contained upload reproduces both. The supplied audit comments are
+comparison with its evidence table. That editorial checkpoint contained 21/35 pages; its
+self-contained upload remains preserved. The supplied audit comments are
 addressed explicitly: core examples are viologen, TEMPO and PMDI; finite-model
 claims do not require completion of every campaign. Author metadata remains
 with the user, and the availability statement retains outstanding deposition.
@@ -100,3 +100,10 @@ all six outcomes in five numerical duplicate groups. Their primary-cutoff
 association range is +5.33 to +22.36 kJ/mol; all tested cutoffs remain positive.
 Earlier four-outcome snapshots are preserved. This is a finite conditional
 association result, without population, yield or complete speciation claims.
+
+The exact local N-linked phenothiazine baseline now has a checked finite first
+oxidation of +0.626 V versus Fc in MeCN. The qualified state/reference cycle
+and explicit CDS numerical policies are documented in the
+[validation record](../validation/phenothiazine_cds_2026-11-03/README.md).
+The current article/SI are 21/36 pages; slide 5 includes the new value.
+The viologen, TEMPO and PMDI comparisons remain the core narrative.

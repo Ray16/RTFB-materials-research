@@ -5,7 +5,7 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 21/35-page working documents,
+- [Paper and SI](../manuscript/README.md): checked 21/36-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
   The current revision integrates all four declared finite ionic neighboring-graft G cycles,
   matched motif/chain electronic comparisons and six chloride-contact outcomes
@@ -37,32 +37,31 @@ establish that a calculation is currently running.
   Eight new mapped F/CN designs have no computed properties or transferred route
   approval. No full material admission is claimed. Earlier registry snapshots and the historical all-axis ledger retain their separate scopes.
 - [Unsubstituted phenothiazine primary comparison](../validation/phenothiazine_primary_2026-11-02/README.md):
-  both exact electronic states pass independent corrected-integration review.
-  The neutral native calculation reveals a -25.47-cm-1 failed minimum; signed
-  refinement seeds are prepared. The oxidized native recovery fails its actual
-  gradient gate (0.00045736 versus 0.00045 Ha/Bohr); strict refinement is queued.
-  The neutral-minus and oxidized strict geometries now pass independent review
-  (53/43 SCF frames); both neutral branches are now checked and fresh electronic scoring has begun. Potential and G remain pending.
+  historical electronic controls and initial failed minimum/stationarity
+  attempts remain preserved. Subsequent refinements and the qualified
+  CDS/native/Fc cycle below supersede their pending-property status.
 - [Neutral phenothiazine geometry refinement](../validation/phenothiazine_geometry_2026-11-02/README.md):
-  both signed branches pass strict independent geometry review and remain in the
-  fresh electronic campaign. Their energies and nuclear
-  terms must be recomputed at any accepted new geometry; G/potential stay blank.
+  both signed branches pass strict independent geometry review. Their own
+  electronic/native terms have subsequently qualified in the CDS/Fc cycle below.
 - [Oxidized phenothiazine geometry refinement](../validation/phenothiazine_oxidized_geometry_2026-11-02/README.md):
   the +1-doublet stationarity failure is independently reconstructed from its
   actual SCF/wavefunction. Its strict geometry repair now passes 43-frame
   independent review; the original
-  failure and earlier prelaunch interruptions remain preserved. No G is admitted.
+  failure and earlier prelaunch interruptions remain preserved. The later
+  CDS/native review admits only the refined geometry's own G.
 - [Phenothiazine CDS derivative accuracy](../validation/phenothiazine_cds_2026-11-03/README.md):
   both neutral Hessian asymmetries are traced to the legacy CDS numerical step.
   All three finer-step controls now pass full independent native review,
   including 63 actual SCF checkpoints. The matched oxidized step sensitivity
-  is below 6e-9 eV. Exact Fc/Fc+ reference compatibility remains to be checked;
-  no oxidation potential is admitted.
+  is below 6e-9 eV. The exact Fc/Fc+ compatibility and balanced cycle now pass:
+  the local model's first oxidation is +0.626 V versus Fc in MeCN, with
+  numerical policies retained. The article, SI and slide 5 include the result;
+  ensemble, experimental and material qualification remain open.
 - [Fresh phenothiazine electronic scoring](../validation/refined_electronic_2026-11-02/README.md):
   all three refined geometries pass independent review. Both neutral branches and
   the oxidized state retain separate fresh electronic inputs, with no historical
   energy substituted. All three electronic states pass independent actual SCF/spin review; own
-  native jobs are prepared and queued, with G and potential pending.
+  native and Fc-cycle qualification is now complete in the linked CDS record.
 - [Experimental viologen comparison scope](../validation/viologen_external_scope_2026-11-03/README.md):
   the closest measured mediator differs from the capped graft by a para-methyl
   substituent and both endpoints are already in the retrospective benchmark.

@@ -1,5 +1,32 @@
 # Phenothiazine CDS derivative accuracy and native validation
 
+## Qualified finite oxidation potential
+
+The [checked Fc-referenced cycle](redox_cycle.json) now gives **+0.626 V versus
+Fc/Fc+ in MeCN** at 298.15 K and the 50-cm-1 rotor cutoff. The two neutral
+branches give +0.626086863 and +0.626086939 V. Across the three cutoffs, the
+range is +0.615573508 to +0.626086939 V; this is a finite numerical-sensitivity
+range, not an experimental confidence interval.
+
+The reader rechecks the five component reviews and their backing hashes, exact
+Fc/Fc+ cohort binding, own electronic/nuclear/spin sums, native and projected
+thermal definitions, solvent and corrected integration implementation. Atom,
+charge and solute counts balance. The positive-sign definition is
+`[G(PTZ+) + G(Fc) - G(PTZ) - G(Fc+)] / e`; the common translation correction
+cancels. Independent decimal arithmetic agrees within 1e-9 V. Each component
+retains its numerical policy: phenothiazine uses the qualified 1e-6-Bohr CDS
+step, while Fc uses the validated unmodified 1e-4-Bohr default. This is the same
+physical model; no Fc step-convergence study is inferred.
+
+Use `python scripts/validation/assemble_phenothiazine_redox.py --out NEW.json`
+under the declared environment and one-thread limits. Shared context arithmetic
+and a dedicated balanced Fc-cycle reader avoid separate paper/slide formulas.
+[24 checks](publication_checks.xml) cover signs, reference cancellation, state,
+graph, model, QC and numerical-policy boundaries, plus frozen publication
+tampering. The result is integrated in the article, SI and slide 5. Global
+conformer convergence, experimental exact-graft accuracy, NaH/DMF reaction G
+and polymer/material performance remain unqualified.
+
 ## Qualified finer-step controls
 
 All three full native controls now qualify in the
@@ -8,8 +35,9 @@ All three full native controls now qualify in the
 26.0728 cm-1 and maximum sampled-column relative error is 2.2623e-5. The three
 reviews cover 63 actual SCF checkpoints. At the same oxidized geometry, the
 finer-minus-default G difference is below 6e-9 eV at every rotor cutoff; the
-physical model and electronic energy are unchanged. The exact Fc/Fc+ reference
-compatibility check remains to be completed before a potential is admitted.
+physical model and electronic energy are unchanged. The subsequent reference
+compatibility and cycle checks are recorded above; the native-only snapshots
+retain their original admission scope.
 
 Both finer-step neutral calculations now pass full independent review:
 [minus branch](neutral_minus_native_review.json) and

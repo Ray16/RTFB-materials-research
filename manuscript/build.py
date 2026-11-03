@@ -97,6 +97,10 @@ def main():
         from check_counterion_association import audit as audit_counterion_association
         counterion_association_check = audit_counterion_association(manifest.parent)
     registry_expansion_check = None
+    phenothiazine_redox_check = None
+    if (manifest.parent/'ptz_redox_cycle.json').exists():
+        from check_phenothiazine_redox import audit as audit_phenothiazine
+        phenothiazine_redox_check = audit_phenothiazine(manifest.parent)
     if (manifest.parent/'registry_update_current.json').exists():
         from check_registry_expansion import audit as audit_registry_expansion
         registry_expansion_check = audit_registry_expansion(manifest.parent)
@@ -153,6 +157,10 @@ def main():
     if registry_expansion_check is not None:
         for name in ('manuscript/check_registry_expansion.py','scripts/pipeline/screen_grafting_routes.py',
                      'src/redox/build/attachment_identity.py'):
+            source[name]=sha(ROOT/name)
+    if phenothiazine_redox_check is not None:
+        for name in ('manuscript/check_phenothiazine_redox.py','src/redox/properties/reference_redox.py',
+                     'src/redox/properties/context.py'):
             source[name]=sha(ROOT/name)
     if occupied_sampling_check is not None:
         for name in ('sampling_publication.py','sampling_batches.py','native_conformer_batches.py'):
@@ -217,6 +225,10 @@ def main():
             raise RuntimeError("Unresolved citations or references in " + name)
         pdf = temporary / (name + ".pdf")
         reader = PdfReader(pdf)
+        if phenothiazine_redox_check is not None:
+            content='\n'.join(page.extract_text() for page in reader.pages)
+            if f"{phenothiazine_redox_check['primary_V']:.3f}" not in content:
+                raise ValueError('Checked phenothiazine potential absent from '+name)
         if occupied_sampling_check is not None:
             sampling_text='\n'.join(page.extract_text() for page in reader.pages)
             numerical=re.sub(r'(?<=\d)\s*\.\s*(?=\d)', '.', sampling_text)
@@ -239,6 +251,7 @@ def main():
     report = dict(status="draft_built_with_frozen_evidence", checked_UTC=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                   pages=len(reader.pages), source_sha256=source, pdf_sha256=sha(PAPER / "manuscript.pdf"),
                   build_logs=str(temporary), submission_ready=False, documents=documents,
+                  phenothiazine_redox_check=phenothiazine_redox_check,
                   additional_citation_check=citation_check,
                   solution_model_citation_check=solution_citation_check,
                   screening_implementation_check=screening_check,

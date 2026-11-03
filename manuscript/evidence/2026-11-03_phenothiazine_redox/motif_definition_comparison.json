@@ -1,0 +1,107 @@
+{
+  "status": "scoped_whole_chain_and_frozen_motif_E_definitions_compared",
+  "states": [
+    {
+      "parent_key": "all_same__occ_2_3",
+      "whole_chain_nonadditivity_E_kJ_mol": -3.460723967319408,
+      "frozen_methyl_motif_interaction_E_kJ_mol": 9.029331795044257,
+      "same_sign": false,
+      "cap_sensitivity": {
+        "checked_cap_lengths": [
+          1.09,
+          1.07,
+          1.11
+        ],
+        "complete": true,
+        "range_kJ_mol_by_medium": {
+          "gas": 0.13492380430790263,
+          "acetonitrile": 0.0015822008068617777
+        }
+      },
+      "unique_backbone_or_deformation_energy_assigned": false
+    },
+    {
+      "parent_key": "all_same__occ_2_4",
+      "whole_chain_nonadditivity_E_kJ_mol": 18.68479022850123,
+      "frozen_methyl_motif_interaction_E_kJ_mol": 7.6181514958004035,
+      "same_sign": true,
+      "cap_sensitivity": {
+        "checked_cap_lengths": [
+          1.07,
+          1.09,
+          1.11
+        ],
+        "complete": true,
+        "range_kJ_mol_by_medium": {
+          "gas": 0.09365142525524561,
+          "acetonitrile": 0.0012720876864618091
+        }
+      },
+      "unique_backbone_or_deformation_energy_assigned": false
+    },
+    {
+      "parent_key": "alternating__occ_2_3",
+      "whole_chain_nonadditivity_E_kJ_mol": 1.2020196315617375,
+      "frozen_methyl_motif_interaction_E_kJ_mol": 9.631316594550597,
+      "same_sign": true,
+      "cap_sensitivity": {
+        "checked_cap_lengths": [
+          1.07,
+          1.09,
+          1.11
+        ],
+        "complete": true,
+        "range_kJ_mol_by_medium": {
+          "gas": 0.11781278834769182,
+          "acetonitrile": 0.0026454616960585042
+        }
+      },
+      "unique_backbone_or_deformation_energy_assigned": false
+    },
+    {
+      "parent_key": "alternating__occ_2_4",
+      "whole_chain_nonadditivity_E_kJ_mol": -13.481572568962937,
+      "frozen_methyl_motif_interaction_E_kJ_mol": 7.7908247310970955,
+      "same_sign": false,
+      "cap_sensitivity": {
+        "checked_cap_lengths": [
+          1.07,
+          1.09,
+          1.11
+        ],
+        "complete": true,
+        "range_kJ_mol_by_medium": {
+          "gas": 0.10120806371537583,
+          "acetonitrile": 0.0012046596826245093
+        }
+      },
+      "unique_backbone_or_deformation_energy_assigned": false
+    }
+  ],
+  "compared_central_cap_frames": 4,
+  "opposite_sign_frames": 2,
+  "definition_whole": "E(Pij)+E(P0)-E(Pi)-E(Pj), with each parent graph at its retained optimized geometry",
+  "definition_local": "E(MA+MB)-E(MA)-E(MB), with methyl caps and parent-relative frozen motif coordinates",
+  "interpretation": "A favourable whole-chain occupancy cycle is not an isolated motif-attraction measurement. The quantities differ in backbone/linker/cap, deformation and continuum contributions; their difference is not assigned uniquely.",
+  "free_energies_compared": false,
+  "electronic_coupling_computed": false,
+  "experimental_validation_inferred": false,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/motif_energy_collection_04.json": "115500eb7056ba569548e9944d9c32e06fb148869babd85fb7a706997f113f71",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/viologen_native_2026-11-02/stationary_electronic_cycles.json": "61e1bca31abb7da0c0a47c1f02f622ec08aeb2294738d15c7d5dd6ec05fd5137",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/review_sources/6b929471f8ba5c53abb9a124e4c867cd2ee87d12dfab62b1d1190debd940a26a/compare_ionic_interaction_definitions.py": "6b929471f8ba5c53abb9a124e4c867cd2ee87d12dfab62b1d1190debd940a26a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap109.json": "46a628921d7b8724ae00e5825458607d573f60d192a9c5f6dbdf8a30792e43c5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap107.json": "0b3877d85d0a03a88d9e8f2ada12adfc5aef4f8379493abf4caeba9cdd4be39a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap111.json": "45c7922e40191b0aaa4e3fe1b0e2681efcff2176b6ccd7712f24fffb465a97de",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_4__cap107.json": "c08eef471d66f95ea2324ea47f543f82096af56b8d1e876bbb61ce2c5b832965",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_4__cap109.json": "2859055bc6779158311536ff3d0ecdedc6c18336d02150cfa3d15aa82643d115",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_4__cap111.json": "23f8afe690f4f3794a3a6804149ccd3ee2345d9e02ff5330f63e8c436513effa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/alternating__occ_2_3__cap107.json": "b555f9e5781d87642180c66c43da115d4eb8c6aede9043b472d8c19e306c85e9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/alternating__occ_2_3__cap109.json": "6ca7cbd037f1e0b9efe4f081d7d1b25950fb517e5dab65de5ef4029a6cbbfe93",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/alternating__occ_2_3__cap111.json": "d03ba9207dcbc140798ca8d8ca40fa8f68eac526e7d886ba310b1736d80d943c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/alternating__occ_2_4__cap107.json": "640a57e73d53ceb62ca28f5d153db01edcfdf4dd16a94cc9cc96e0b11ef855b6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/alternating__occ_2_4__cap109.json": "281eadd81130d3abb18638d5e4a4cce0ac202376b488dc644d3e47b5435d8caa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/alternating__occ_2_4__cap111.json": "42c08f1e8a02145ea5ca3b28fa8393bae8040c22abf9a692d29196f37e33a23f"
+  }
+}

@@ -40,8 +40,8 @@
       "current": "manuscript/build_check.json",
       "source_snapshot": "manuscript/evidence/current.json",
       "raw_root": "calcs/validation/publication_revision_2026-10-29",
-      "status": "912_graph_extension_and_primary_phenothiazine_route_integrated",
-      "scope": "Source-frozen 912-graph extension and primary phenothiazine bead-route citation integrated with checked molecular/reaction/oligomer evidence. Submission incomplete."
+      "status": "qualified_phenothiazine_secondary_result_integrated",
+      "scope": "21-page article, 36-page SI and 23-slide deck include the checked local phenothiazine +0.626-V first oxidation with explicit numerical policies. Core viologen/TEMPO/PMDI narrative and finite/speciation limits retained. PDFs inspected; self-contained upload compiled; public deposition and author metadata remain open."
     },
     "working_manuscript": {
       "guide": "manuscript/README.md",
@@ -51,8 +51,8 @@
       "build": "manuscript/build_check.json",
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
-      "status": "editorial_revision_retained_six_checked_chloride_outcomes_integrated",
-      "scope": "21-page article/35-page SI and 23-slide deck include six primary chloride outcomes in five numerical groups, +5.33 to +22.36 kJ/mol at 1 M. Both legacy and expanded arithmetic/context checks pass; earlier snapshots preserved. Finite conditional scope retained; no population or synthesis-feasibility promotion.",
+      "status": "qualified_phenothiazine_secondary_result_integrated",
+      "scope": "21-page article, 36-page SI and 23-slide deck include the checked local phenothiazine +0.626-V first oxidation with explicit numerical policies. Core viologen/TEMPO/PMDI narrative and finite/speciation limits retained. PDFs inspected; self-contained upload compiled; public deposition and author metadata remain open.",
       "editorial_review": "manuscript/editorial_review.json"
     },
     "native_polymer_continuation": {
@@ -615,7 +615,7 @@
       "checks": "validation/phenothiazine_cds_2026-11-03/final_checks_02.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6",
       "status": "all_three_finer_CDS_native_components_independently_qualified",
-      "scope": "Three full finer-step native components pass independent Hessian, 63 actual SCF-frame, derivative, mode and nuclear review. Matched oxidized step sensitivity is below 6e-9 eV. Exact Fc/Fc+ reference compatibility remains to be checked with component numerical policies retained; no potential or material admission."
+      "scope": "All three finer-step native components independently qualified; 63 actual SCF frames. Matched oxidized step sensitivity below 6e-9 eV. The separate phenothiazine_finite_redox entry supplies the subsequently checked Fc-referenced cycle."
     },
     "finite_viologen_portable_replay": {
       "guide": "examples/finite_viologen_replay/README.md",
@@ -653,6 +653,15 @@
       "scope": "All 163 obsolete logical bindings located by exact hashes. Local package verifies 5528 unique objects and 7207 file mappings with original scientific paths blocked; 20 runtime/publication dependencies remain external. No new quantum replay, implicit-dependency coverage or public deposition.",
       "resolution": "validation/counterion_release_inventory_2026-11-03/grafting_metadata_resolution.json",
       "checks": "validation/counterion_release_inventory_2026-11-03/release_checks_02.xml"
+    },
+    "phenothiazine_finite_redox": {
+      "guide": "validation/phenothiazine_cds_2026-11-03/README.md",
+      "current": "validation/phenothiazine_cds_2026-11-03/redox_cycle.json",
+      "source_snapshot": "manuscript/evidence/2026-11-03_phenothiazine_redox/manifest.json",
+      "checks": "validation/phenothiazine_cds_2026-11-03/publication_checks.xml",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6",
+      "status": "qualified_finite_oxidation_cycle_published_with_component_numerical_policies",
+      "scope": "Exact local N-linked phenothiazine first oxidation +0.626 V vs Fc in MeCN, +0.616 to +0.626 V across cutoffs. Independent own component and exact Fc-reference context checks; no ensemble, experimental, graft-yield or material qualification."
     }
   }
 }

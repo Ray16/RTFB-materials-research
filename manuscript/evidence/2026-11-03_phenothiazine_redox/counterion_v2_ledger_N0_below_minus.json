@@ -1,0 +1,1135 @@
+{
+  "status": "primary_counterion_association_review_snapshot",
+  "declared_microstate_starts": 7,
+  "computed_microstate_cycles": 2,
+  "states": [
+    {
+      "key": "N0_above",
+      "status": "pending_checked_microstate_thermochemistry",
+      "source_convention_deltaG_kJ_mol": null,
+      "one_M_deltaG_kJ_mol": null
+    },
+    {
+      "key": "N0_below",
+      "status": "finite_primary_microstate_association_cycle_computed",
+      "coefficients": {
+        "paired": 1,
+        "graft": -1,
+        "chloride": -1
+      },
+      "delta_n_solutes": -1,
+      "source_convention_deltaG_kJ_mol": {
+        "25": 13.365536319105397,
+        "50": 14.154198562116191,
+        "100": 15.893936877987915
+      },
+      "one_M_deltaG_kJ_mol": {
+        "25": 5.439666103157882,
+        "50": 6.228328346168676,
+        "100": 7.968066662040401
+      },
+      "one_atm_to_one_M_correction_kJ_mol": -7.925870215947515,
+      "standard_state_conversion": "delta_n R T ln(R_atm T); source ideal translation to 1 mol/L",
+      "component_contexts": {
+        "25": {
+          "value": 0.1385240225117741,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "evaluated_rotor_cutoff_cm": 25
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "explicit incoming chloride; omitted separated iodide spectator on both sides",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "paired": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized_graft_chloride:N0_below",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1.[Cl-]",
+                "charge": 1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_below_minus_review.json": "121c5c192c2223f75cfa8614a7fd92f676b55118c20b99b70f2ff9bb619262e0"
+              }
+            },
+            "graft": {
+              "coefficient": -1,
+              "state": {
+                "identity": "graft_ox2",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/graft_ox2.json": "c1379e67e5983bcbd5bd9e608ac123d5bc68036d480a72e57162d47c0bcc5fca"
+              }
+            },
+            "chloride": {
+              "coefficient": -1,
+              "state": {
+                "identity": "chloride",
+                "smiles": "[Cl-]",
+                "charge": -1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/component_checkpoint_frames_2026-11-02/viologen/chloride.json": "4c6b7af180a7c13ddc526d6c63c47e36a8bad27f3dc63e44702fbee584b045b1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_cohort_checked/atomic_reference.json": "5f3fd302e52d718cd93e1a24fe547b37822e53e744d2c0247b4beb080b593839",
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data/states/chloride/partition.json": "370106639a6352fab9d5e347c1a2be9b98249b06026c00831bd2f68e118dac90",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/result.json": "ef4150a480e39f7fa582fa8d041271424007deb1ad24ace3e5c830e04210dedc"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "50": {
+          "value": 0.14669793066605052,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "evaluated_rotor_cutoff_cm": 50
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "explicit incoming chloride; omitted separated iodide spectator on both sides",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "paired": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized_graft_chloride:N0_below",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1.[Cl-]",
+                "charge": 1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_below_minus_review.json": "121c5c192c2223f75cfa8614a7fd92f676b55118c20b99b70f2ff9bb619262e0"
+              }
+            },
+            "graft": {
+              "coefficient": -1,
+              "state": {
+                "identity": "graft_ox2",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/graft_ox2.json": "c1379e67e5983bcbd5bd9e608ac123d5bc68036d480a72e57162d47c0bcc5fca"
+              }
+            },
+            "chloride": {
+              "coefficient": -1,
+              "state": {
+                "identity": "chloride",
+                "smiles": "[Cl-]",
+                "charge": -1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/component_checkpoint_frames_2026-11-02/viologen/chloride.json": "4c6b7af180a7c13ddc526d6c63c47e36a8bad27f3dc63e44702fbee584b045b1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_cohort_checked/atomic_reference.json": "5f3fd302e52d718cd93e1a24fe547b37822e53e744d2c0247b4beb080b593839",
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data/states/chloride/partition.json": "370106639a6352fab9d5e347c1a2be9b98249b06026c00831bd2f68e118dac90",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/result.json": "ef4150a480e39f7fa582fa8d041271424007deb1ad24ace3e5c830e04210dedc"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "100": {
+          "value": 0.1647290477030765,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "evaluated_rotor_cutoff_cm": 100
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "explicit incoming chloride; omitted separated iodide spectator on both sides",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "paired": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized_graft_chloride:N0_below",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1.[Cl-]",
+                "charge": 1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_below_minus_review.json": "121c5c192c2223f75cfa8614a7fd92f676b55118c20b99b70f2ff9bb619262e0"
+              }
+            },
+            "graft": {
+              "coefficient": -1,
+              "state": {
+                "identity": "graft_ox2",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/graft_ox2.json": "c1379e67e5983bcbd5bd9e608ac123d5bc68036d480a72e57162d47c0bcc5fca"
+              }
+            },
+            "chloride": {
+              "coefficient": -1,
+              "state": {
+                "identity": "chloride",
+                "smiles": "[Cl-]",
+                "charge": -1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/component_checkpoint_frames_2026-11-02/viologen/chloride.json": "4c6b7af180a7c13ddc526d6c63c47e36a8bad27f3dc63e44702fbee584b045b1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_cohort_checked/atomic_reference.json": "5f3fd302e52d718cd93e1a24fe547b37822e53e744d2c0247b4beb080b593839",
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data/states/chloride/partition.json": "370106639a6352fab9d5e347c1a2be9b98249b06026c00831bd2f68e118dac90",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/result.json": "ef4150a480e39f7fa582fa8d041271424007deb1ad24ace3e5c830e04210dedc"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "pending_values_are_null": true,
+      "population_weights_inferred": false,
+      "conformer_ensemble_qualified": false,
+      "reaction_rate_or_yield_inferred": false,
+      "material_admission": false
+    },
+    {
+      "key": "N0_outer",
+      "status": "finite_primary_microstate_association_cycle_computed",
+      "coefficients": {
+        "paired": 1,
+        "graft": -1,
+        "chloride": -1
+      },
+      "delta_n_solutes": -1,
+      "source_convention_deltaG_kJ_mol": {
+        "25": 13.005042202908104,
+        "50": 13.258452665763562,
+        "100": 14.521691657483728
+      },
+      "one_M_deltaG_kJ_mol": {
+        "25": 5.079171986960589,
+        "50": 5.332582449816047,
+        "100": 6.595821441536214
+      },
+      "one_atm_to_one_M_correction_kJ_mol": -7.925870215947515,
+      "standard_state_conversion": "delta_n R T ln(R_atm T); source ideal translation to 1 mol/L",
+      "component_contexts": {
+        "25": {
+          "value": 0.13478776428200945,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "evaluated_rotor_cutoff_cm": 25
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "explicit incoming chloride; omitted separated iodide spectator on both sides",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "paired": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized_graft_chloride:N0_outer",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1.[Cl-]",
+                "charge": 1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_outer_minus_review.json": "5ae44b2800053807a7a163cb95996ca8f9074ee4c76457d4b5647ad5d116ea9b"
+              }
+            },
+            "graft": {
+              "coefficient": -1,
+              "state": {
+                "identity": "graft_ox2",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/graft_ox2.json": "c1379e67e5983bcbd5bd9e608ac123d5bc68036d480a72e57162d47c0bcc5fca"
+              }
+            },
+            "chloride": {
+              "coefficient": -1,
+              "state": {
+                "identity": "chloride",
+                "smiles": "[Cl-]",
+                "charge": -1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/component_checkpoint_frames_2026-11-02/viologen/chloride.json": "4c6b7af180a7c13ddc526d6c63c47e36a8bad27f3dc63e44702fbee584b045b1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_cohort_checked/atomic_reference.json": "5f3fd302e52d718cd93e1a24fe547b37822e53e744d2c0247b4beb080b593839",
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data/states/chloride/partition.json": "370106639a6352fab9d5e347c1a2be9b98249b06026c00831bd2f68e118dac90",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/result.json": "ef4150a480e39f7fa582fa8d041271424007deb1ad24ace3e5c830e04210dedc"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "50": {
+          "value": 0.13741417865276162,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "evaluated_rotor_cutoff_cm": 50
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "explicit incoming chloride; omitted separated iodide spectator on both sides",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "paired": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized_graft_chloride:N0_outer",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1.[Cl-]",
+                "charge": 1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_outer_minus_review.json": "5ae44b2800053807a7a163cb95996ca8f9074ee4c76457d4b5647ad5d116ea9b"
+              }
+            },
+            "graft": {
+              "coefficient": -1,
+              "state": {
+                "identity": "graft_ox2",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/graft_ox2.json": "c1379e67e5983bcbd5bd9e608ac123d5bc68036d480a72e57162d47c0bcc5fca"
+              }
+            },
+            "chloride": {
+              "coefficient": -1,
+              "state": {
+                "identity": "chloride",
+                "smiles": "[Cl-]",
+                "charge": -1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/component_checkpoint_frames_2026-11-02/viologen/chloride.json": "4c6b7af180a7c13ddc526d6c63c47e36a8bad27f3dc63e44702fbee584b045b1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_cohort_checked/atomic_reference.json": "5f3fd302e52d718cd93e1a24fe547b37822e53e744d2c0247b4beb080b593839",
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data/states/chloride/partition.json": "370106639a6352fab9d5e347c1a2be9b98249b06026c00831bd2f68e118dac90",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/result.json": "ef4150a480e39f7fa582fa8d041271424007deb1ad24ace3e5c830e04210dedc"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "100": {
+          "value": 0.15050672820325417,
+          "context": {
+            "quantity": "composite_solution_G",
+            "unit": "eV",
+            "electronic_protocol": {
+              "schema": 1,
+              "xc": "wb97m-v",
+              "basis": "def2-tzvpd",
+              "disp": null,
+              "nlc": "vv10",
+              "solvent": "acetonitrile",
+              "solvent_model": "SMD",
+              "density_fit": true,
+              "conv_tol": 1e-09,
+              "max_cycle": 200
+            },
+            "thermal_definition": {
+              "native_protocol": {
+                "schema": 1,
+                "model": "solution geometry-level DFT Hessian",
+                "xc": "r2scan",
+                "disp": "d4",
+                "basis": "def2-svp",
+                "anion_basis": "def2-svpd",
+                "solvent": "acetonitrile",
+                "solvent_model": "SMD",
+                "density_fit": true,
+                "grid_level": 3,
+                "cphf_grid_level": 3,
+                "grid_response": true,
+                "conv_tol": 1e-12,
+                "conv_tol_grad": 1e-08,
+                "temperature_K": 298.15,
+                "rotor_cutoff_cm": 50,
+                "spin_partition": "unsplit ground spin multiplet",
+                "gradient_max_acceptance_Ha_Bohr": 0.00045,
+                "min_frequency_acceptance_cm": -5,
+                "finite_difference_step_Bohr": 0.0005,
+                "finite_difference_relative_acceptance": 0.01,
+                "max_spin_contamination": 0.1,
+                "df_batch_cap_GiB": 6,
+                "validated_pyscf_version": "2.14.0",
+                "validated_gpu4pyscf_version": "1.8.1"
+              },
+              "rotor_cutoffs_cm": [
+                25,
+                50,
+                100
+              ],
+              "spin_partition": "unsplit ground spin multiplet",
+              "evaluated_rotor_cutoff_cm": 100
+            },
+            "solvent": "acetonitrile",
+            "solvent_model": "SMD",
+            "temperature_K": 298.15,
+            "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+            "reference": {
+              "energy": "absolute component within primary composite protocol",
+              "ions": "explicit incoming chloride; omitted separated iodide spectator on both sides",
+              "numerical_implementation": {
+                "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+                "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+                "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+                "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+              }
+            }
+          },
+          "components": {
+            "paired": {
+              "coefficient": 1,
+              "state": {
+                "identity": "oxidized_graft_chloride:N0_outer",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1.[Cl-]",
+                "charge": 1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_outer_minus_review.json": "5ae44b2800053807a7a163cb95996ca8f9074ee4c76457d4b5647ad5d116ea9b"
+              }
+            },
+            "graft": {
+              "coefficient": -1,
+              "state": {
+                "identity": "graft_ox2",
+                "smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/graft_ox2.json": "c1379e67e5983bcbd5bd9e608ac123d5bc68036d480a72e57162d47c0bcc5fca"
+              }
+            },
+            "chloride": {
+              "coefficient": -1,
+              "state": {
+                "identity": "chloride",
+                "smiles": "[Cl-]",
+                "charge": -1,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/component_checkpoint_frames_2026-11-02/viologen/chloride.json": "4c6b7af180a7c13ddc526d6c63c47e36a8bad27f3dc63e44702fbee584b045b1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_cohort_checked/atomic_reference.json": "5f3fd302e52d718cd93e1a24fe547b37822e53e744d2c0247b4beb080b593839",
+                "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data/states/chloride/partition.json": "370106639a6352fab9d5e347c1a2be9b98249b06026c00831bd2f68e118dac90",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/result.json": "ef4150a480e39f7fa582fa8d041271424007deb1ad24ace3e5c830e04210dedc"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "pending_values_are_null": true,
+      "population_weights_inferred": false,
+      "conformer_ensemble_qualified": false,
+      "reaction_rate_or_yield_inferred": false,
+      "material_admission": false
+    },
+    {
+      "key": "N1_above",
+      "status": "pending_checked_microstate_thermochemistry",
+      "source_convention_deltaG_kJ_mol": null,
+      "one_M_deltaG_kJ_mol": null
+    },
+    {
+      "key": "N1_below",
+      "status": "pending_checked_microstate_thermochemistry",
+      "source_convention_deltaG_kJ_mol": null,
+      "one_M_deltaG_kJ_mol": null
+    },
+    {
+      "key": "N1_outer",
+      "status": "pending_checked_microstate_thermochemistry",
+      "source_convention_deltaG_kJ_mol": null,
+      "one_M_deltaG_kJ_mol": null
+    },
+    {
+      "key": "separated_start",
+      "status": "pending_checked_microstate_thermochemistry",
+      "source_convention_deltaG_kJ_mol": null,
+      "one_M_deltaG_kJ_mol": null
+    }
+  ],
+  "coefficients": {
+    "paired": 1,
+    "graft": -1,
+    "chloride": -1
+  },
+  "source_parent_context": {
+    "quantity": "composite_solution_G",
+    "unit": "eV",
+    "electronic_protocol": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200
+    },
+    "thermal_definition": {
+      "native_protocol": {
+        "schema": 1,
+        "model": "solution geometry-level DFT Hessian",
+        "xc": "r2scan",
+        "disp": "d4",
+        "basis": "def2-svp",
+        "anion_basis": "def2-svpd",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "grid_level": 3,
+        "cphf_grid_level": 3,
+        "grid_response": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "temperature_K": 298.15,
+        "rotor_cutoff_cm": 50,
+        "spin_partition": "unsplit ground spin multiplet",
+        "gradient_max_acceptance_Ha_Bohr": 0.00045,
+        "min_frequency_acceptance_cm": -5,
+        "finite_difference_step_Bohr": 0.0005,
+        "finite_difference_relative_acceptance": 0.01,
+        "max_spin_contamination": 0.1,
+        "df_batch_cap_GiB": 6,
+        "validated_pyscf_version": "2.14.0",
+        "validated_gpu4pyscf_version": "1.8.1"
+      },
+      "rotor_cutoffs_cm": [
+        25,
+        50,
+        100
+      ],
+      "spin_partition": "unsplit ground spin multiplet"
+    },
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "temperature_K": 298.15,
+    "standard_state": "source xTB 1-atm ideal-translation convention; no 1-M conversion applied",
+    "reference": {
+      "energy": "absolute component within primary composite protocol",
+      "ions": "separated species; omitted spectators cancel only within declared cycles",
+      "numerical_implementation": {
+        "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+        "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+        "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+        "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+      }
+    }
+  },
+  "reaction_reference": {
+    "energy": "absolute component within primary composite protocol",
+    "ions": "explicit incoming chloride; omitted separated iodide spectator on both sides",
+    "numerical_implementation": {
+      "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+      "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+      "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+      "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+    }
+  },
+  "delta_n_solutes": -1,
+  "standard_state_conversion_applied_only_after_balanced_source_sum": true,
+  "missing_microstate_G_is_null": true,
+  "ion_pair_populations_inferred": false,
+  "covalent_quaternization_cycle_modified": false,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/ionic_cycle_completion_2026-11-02/primary_cohort_scalar_inputs.json": "11b3df5a3c206156158a734d670e19cfea0cedebf931f15725419e3b35575eb0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/manifest.json": "f750b84735d43848f660c0bef191dd7ed4b7d417ea078ca85c6ad7c055857ccf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/review_sources/c905615b0721644efdc60135a217139e4d8c19752e736942f88e1087ea89d8da/counterion_association.py": "c905615b0721644efdc60135a217139e4d8c19752e736942f88e1087ea89d8da",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/review_sources/6210d1f17d2115aee95baf7e6e90cb704a712f7c81b4f5c2b5ccfcb2728225c9/counterion.py": "6210d1f17d2115aee95baf7e6e90cb704a712f7c81b4f5c2b5ccfcb2728225c9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/review_sources/53e7d839bc0deb34c813b5c0265ae421ea148fde64941542392f3b9d702b0e3a/context.py": "53e7d839bc0deb34c813b5c0265ae421ea148fde64941542392f3b9d702b0e3a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/primary_native_spin_checked_2026-11-02/graft_ox2.json": "c1379e67e5983bcbd5bd9e608ac123d5bc68036d480a72e57162d47c0bcc5fca",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/namespace.json": "24adb349616f8a4c84520884d0333b4f5048bb00a3562bfef359a8d9feab3e59",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/plan.json": "83ffe5c38585b936f26e37305ba5691e7021f1a6c7b6388b9829d0ffc6253533",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/status.json": "00999372eb27fdf329290d482a1c2463c0f07288b4ac20078785f04de729daa8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/placement_001/launch.json": "453e8751cb0076206b6c765ace3761f49685c9c4fc86fa573c6c8d1b31a36034",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/placement_001/completion.json": "aca25f2e1eab418d1dbcf65b198418421b7051862f099f3de729a049f0cf771e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/residency_guard/owner.json": "e10866b2018388a2b091afae1018d794a29fb69c6c613e39c66ab5d65d67fee2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/residency_guard/state.json": "c8416cc434615d9ebee22118393d742921e65f985018949603918ee0176b9f46",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/host_guard/status.json": "d1d7aaa21605cfd340fb0ae3211520c090e8097857fea64732887783867d0287",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/tensor_runtime/status.json": "13bd53b5c9c102011aa4b0246357768735450c34786873b95b5b21d99f05e1c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/review_sources/3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a/scf_frame.py": "3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/review_sources/6c7316d085302e2ece93feb293f8ed6d59cdeaad17eafffd379d67e6646d016d/execution_review.py": "6c7316d085302e2ece93feb293f8ed6d59cdeaad17eafffd379d67e6646d016d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/review_sources/7db66b2c99dbbe9edab124c88157fa7512a2ba3d0ecccbbc3906fd0b78f75c5a/review_screening_native.py": "7db66b2c99dbbe9edab124c88157fa7512a2ba3d0ecccbbc3906fd0b78f75c5a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/result.json": "ab6addb7e330cf656240af4b8c3e958674523cad3afde5cff4f93eb7cf7d54ae",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/native_thermal/dc2b01333645dc53.json": "83279053d29e0a7f7156f2598585d996ec275e4a9bc9647cd399822aee2946b7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/native_thermal/dc2b01333645dc53/hessian_cartesian.npy": "08926620a92cd1da88ee22f598fcead007f0a0b76fe7488648113c98cd440a2f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/opt.xyz": "70fd1bfdb1df03365af7892c88cd78fafd283a3a86de20a09e3b5d73837d720b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/review_sources/5d899c86602c0cd4b1ee22bb92ccbad0f25b77711043ba641a8db8f7acd7ab08/review_molecular_native.py": "5d899c86602c0cd4b1ee22bb92ccbad0f25b77711043ba641a8db8f7acd7ab08",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0005/0000/gradient.npy": "a45c0740c94972f6802d00ddc18059ad4753552f496a8f14792e78cfb4d4df79",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0003/0000/gradient.npy": "195fee302fc5eb5cf8c1ad9279bf1bdb43454ba64b6fa21f8622ed5beec6d826",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0007/0000/SCF_result.json": "5b9969d5d6b2c663b37936b353a6f6430841daf2a494415dd330f309cf13dace",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0008/0000/SCF_result.json": "cb111e2f3c06df320ce201bfac460015e79c4550a8f5f9baf85e93608f1cc9bd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0004/0000/gradient.npy": "fb5d95118d73b4a477374d8baa63cae719742fe61940ff85c44f747f09bed0d9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0001/0000/SCF_result.json": "90b8ae283e8c1b6b9a8573abab060bfe6c93f0ff843b0c13a51a403fe2484130",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0006/0000/settings.json": "4a765e201c091607de7171c415a0cb1eef694839a6dc09db1679807b2edd22c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0006/0000/gradient.npy": "893c802f0b04fcee77c12bd63c836ed7979b7531ec2f3be8b75d58a685ac9943",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0000/0000/SCF_result.json": "0a1903b5298186e74847866338449c420dc9e239d87d1386687763fccacd7831",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0002/0000/SCF_result.json": "45f8d3cdb7ba005cae0d77b2e24fb0a4e378b6449f4e326d336cf13239b0945a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0004/0000/SCF_result.json": "3b835644bef70090aefda93e62e8757339fdec1b7d8d7be1aba2f466b8940f8c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0005/0000/SCF_result.json": "624e53f0061d1bd8becb3e0c27e477d7fecc0bbee716ca8cfa2acb24551cf44c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0003/0000/SCF_result.json": "6be15590c323cbdf072fcfc14e93d6b4b79ec30d15773801aed3f08ff026d3d1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0007/0000/settings.json": "1a06b92ea9a6dbd46ef18244d882fbf357a20accba298533a61c14fe00fc5bd5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0008/0000/settings.json": "980f4fd4bd24a7a4de79781da7dfb3e124c321a3dac5903d40b907b02a127277",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0001/0000/settings.json": "a6da4539a692fcf6676c392e1fe51b1292ef70827949a86f1799704fb0dcc4b1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0006/0000/SCF_result.json": "e3d4e53cf36c7cc9f87231910d3a4cc224c0b88f9385045dbfe57182d3b25d83",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0007/0000/gradient.npy": "096aad0c5c5ed1f6a8bda33f155f71c04d0b7e43fd45700ee16a387a4af0deca",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0000/0000/settings.json": "77e40a0de621a4293531feef350925786f84446bc339c3c243ee014852d06cc0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0008/0000/gradient.npy": "fa9d848bce7c5125a924414b2d872becdc541d9b58fe549914bb4494175877ac",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0002/0000/settings.json": "8207fb7923175de3ccceca86387fc076a65b54da460c4321b8c2a9dd91eb83b8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0001/0000/gradient.npy": "6cae45547c0b5e0939358f5446781f39751612b838a2dde00d3c9c2b1f024af7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0002/0000/gradient.npy": "c2c3b5b5922db228d8ff38d8fdf1f0281f5d5b1b90dd5c12226adba0e2d4120b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0000/0000/gradient.npy": "2e88a5d2836047e50bf1c87b3e5ca5c1970e4ef8b3f122e6c312fb936384c302",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0004/0000/settings.json": "8307d5c9a055e6e83f7d23da8f103ec0bf386ede760fc47804df2f1b92539423",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0005/0000/settings.json": "fae562121007be5b7a1821fe5d0cff6dd0cde697ef240aaef799775eff18161b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0003/0000/settings.json": "01296dccb76b25e307d8d54917d464c339691e7f356419f8f0419841a9dacb20",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0000/0000/SCF.h5": "16d165ca7d57903fd0f8d0fcc1950bf08593ce79e4eff4b9bdac4a22f3edec3f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0001/0000/SCF.h5": "b8b9e64a74ba7c37c5b294b7bb17a140002376ee5c39a10aa5b6ba067323d21c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0002/0000/SCF.h5": "4a0d3b6ddaa212f7391d5cf736de1756787135cf7ca55fc8722778c2bebe7399",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0003/0000/SCF.h5": "2e40f467379037e78a16de5fdf5b74a0e8414fe726459ae00a013f7883baf554",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0004/0000/SCF.h5": "fd413eac9a8d745cdd0769b9f9db63b7e6bbb4c1205349984ed86990acf7a998",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0005/0000/SCF.h5": "d19c3a5b8189cbab8d14f75b2b2e78f0f42928e451b816774abedf62efcdd4a7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0006/0000/SCF.h5": "87ccb4a37888cb1de99b95267d2d48c752af6e603193a09628ee194f6ecf87de",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0007/0000/SCF.h5": "5bba27a9620c93cd83f946f6755ac04bb87dd6631da93fbae69406100bcfa15c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0008/0000/SCF.h5": "ddbb250871bd091c0dec7c06d34521283f533cde1818a3512c9374e3a243b863",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08.json": "7cb31036092ac8e0610effbe3ab6b3237cdff3a77a24fc12a7f8a86222d8132f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/owner.json": "98aab3c5c44a6d80a1a0564d565acb082c06d20224ae22e4b2e64c45603ceed0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/projected_hessian.npy": "54efe9de81a0866d4a9bb22c8ea885d0d246ec9f58b5b67ccc4418d43023ce2f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/hessian": "5f3722600244fb0f8829b77279aa7242c20ffb39a0859343a81c79e87fa4b337",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/mol.xyz": "70fd1bfdb1df03365af7892c88cd78fafd283a3a86de20a09e3b5d73837d720b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/record_producer.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/thermo_CLI_25.log": "0790e88601f5620382fc2456156d2486afaa6064a477410f1f13af1fd1df8097",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/thermo_CLI_50.log": "120b98ae1850598118b13720cf811ac2d5a772a9b862325798afcd131ebe5f33",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/state/projected_thermal/df73a2a5f5b9ed08/thermo_CLI_100.log": "57efa2f70c5c7d570d9a6a98b06f016cdad2dd4845340586b6b88bfead76cf5c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/review_sources/f304d9a0ba234a22bb5e9ff6a126b4d8f54bb2125c4ed2e44179b84e111617d9/replay_archived_polymer_native.py": "f304d9a0ba234a22bb5e9ff6a126b4d8f54bb2125c4ed2e44179b84e111617d9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/review_sources/e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612/native_partition.py": "e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/sources/reference_partition.json": "b2e553bdf8cfdcc48e0d7fb7f18506c45a99a9b3e6404737a5b28d5a6d8e894f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/sources/corrected_electronic.json": "26adabfa78fa5323a44cc06fc7215263622b75c973fdc123e7eb1770abcad21a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/sources/reference_hessian.npy": "6af561fbe6b28d6b571c840708c90b9411f40d4161605d44f43b513a2d0515b2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/component_checkpoint_frames_2026-11-02/viologen/chloride.json": "4c6b7af180a7c13ddc526d6c63c47e36a8bad27f3dc63e44702fbee584b045b1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/namespace.json": "1a97799735e3a256bf0c680f39a770590488022a533c88821b45b982427df332",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/plan.json": "eec187643652f68ef35fa8e9823a2a35824436e5affb06395ced9a70de1c9a9c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/status.json": "586ac6f971d984812ac5a4623dd0ba45e68efbfe6401f67040b89fd610382fcc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/placement_001/launch.json": "d17ab9d5e2b938564250f52a250cd9080e1a99f99893ca76c14945db485cac22",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/placement_001/completion.json": "798cd485b8160677b2cefbbf29367f8339f435e99f142fa270400c8da0f4b128",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/residency_guard/owner.json": "c01e9a276f9ddd8d72511260053f29350f5051f0e7aa18db4886b4bccc601395",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/residency_guard/state.json": "838d919c6be48cc01c479926d58c6d1dbc90b2f18f13feb1d29fd6fe2be89783",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/host_guard/status.json": "7d64451c1f5439cf51145f0f4eda688c2386983684539f68d50871509004fa42",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/tensor_runtime/status.json": "dfb5a6822a21718dc8bc97aa9d5cd26351e2dfb271a6e30920129ec37eace018",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/review_sources/8c07b71e859dd201dd9aa1fb8386b4b256fa1bd1bb0bfdd4892cc50a80e7c69e/scf_frame.py": "8c07b71e859dd201dd9aa1fb8386b4b256fa1bd1bb0bfdd4892cc50a80e7c69e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/installed/result.json": "af0c41e1531ff201cf30a87e13646928c14c98c7748af83ce318dc71fd7a4da0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/installed/SCF_evaluations/0000/0000/SCF_result.json": "a382336b930550f64856b5853f324ec7cfdf5bfd8ebc6d0558dfe6028a912d35",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/installed/SCF_evaluations/0000/0000/settings.json": "47dc6abc353b46e518ac8c518c2db43a54769d81bcf19dd7837735ae34382293",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/installed/SCF_evaluations/0000/0000/SCF.h5": "504858ab8bafeadd8db70b3cbabfd6e7ea14bff063b0459771b384c4a068c1fb",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/result.json": "ef4150a480e39f7fa582fa8d041271424007deb1ad24ace3e5c830e04210dedc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/SCF_evaluations/0000/0000/SCF_result.json": "59d8003b3a9eab8209536c620ac8134ae24b85d800c82a982d4ea3d500bf1371",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/SCF_evaluations/0000/0000/settings.json": "1cf27ffb7b482a065f1ec91e3c144b41af09e082598ccee7f5d4750d06c8e1d7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/SCF_evaluations/0000/0000/SCF.h5": "de3987d2c89583fd969c84a53b1562a7374fcf28f358d3189c218763e882706b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/implementation/corrected_host.py": "fcb065c065a81fc42fe835c987d5a1acc487517658b9dea57eabc52d51ac992f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_energy_recovery/states/chloride/case/corrected/implementation/original_host.py": "43558f4a4e8b9c6855dd87824afaff214ec6d112c813f56d1f49eb17a42ea664",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_cohort_checked/atomic_reference.json": "5f3fd302e52d718cd93e1a24fe547b37822e53e744d2c0247b4beb080b593839",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/exact_viologen_replay/data/states/chloride/partition.json": "370106639a6352fab9d5e347c1a2be9b98249b06026c00831bd2f68e118dac90",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_below_minus_review.json": "121c5c192c2223f75cfa8614a7fd92f676b55118c20b99b70f2ff9bb619262e0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/namespace.json": "a7f8375f2fa8bdd04b2ac1d5c8ecfdeba365ae87ea38e7e1e21e21647cc4292e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/plan.json": "fb3250ab05a94a835cabb4e95b8e6e9632e05fea8943a6bebafd23a5d21f8e10",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/status.json": "83527a036bd85cc7167bf85545f2e459f769f4b4b457693a76ab853347f89529",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/placement_004/launch.json": "67ad7c8976cd9954930fafb6d5a215f7a6c030afd0f50395f7080eda7b8af341",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/placement_004/completion.json": "525e479a43993065f7a4420e116e31e0b7601cbd8f7fb6c2bbc4bfd365c94213",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/residency_guard/owner.json": "a46463aac85bfd8fcade59243bbd21a3f8f942bef45f9452319c950767a302ae",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/residency_guard/state.json": "46defb5522d8a9f4b3352ef4605c04825e4cd81894d0cb59e075e302a1558b54",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/host_guard/status.json": "4add4beb18fa67ddbd1a475d9f7d1f84202b6b04e26e3260664078adbc98c74d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/tensor_runtime/status.json": "2d4f63b660423269b34bc6738efafa886c7adbf0109e6bf89a2ec2ea42735cf5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/review_sources/3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a/scf_frame.py": "3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/review_sources/fd42e10006620c3189d15c2da88b1f73b3777ce092d84395a86db0b6bdd41abe/review_counterion_thermochemistry.py": "fd42e10006620c3189d15c2da88b1f73b3777ce092d84395a86db0b6bdd41abe",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/review_sources/df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29/execution_review.py": "df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/review_sources/400c66e49cf05181de1951e056cd298eba49e950f42ffc3182f449f66f0de2f5/primary_checkpoints.py": "400c66e49cf05181de1951e056cd298eba49e950f42ffc3182f449f66f0de2f5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/opt.xyz": "0e5dced659e21da32f75a55376f3680f5eac78450357e4d3a93654674a58c532",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/sources/reference_geometry.xyz": "0e5dced659e21da32f75a55376f3680f5eac78450357e4d3a93654674a58c532",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/sources/geometry_review.json": "191ca7bf8e77ccb26180b618fd35a855106895a63d93542be44dc3bda8662151",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/electronic.json": "d338feb564cc828303d797116bef1bd57817b82ad0db26af479b7d36942479b2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/electronic_SCF_evaluations/0000/0000/settings.json": "beeb166f411e1a7f95eaa52dc37fe04dc7b84f4db69c9b0c441263374e7339f8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/electronic_SCF_evaluations/0000/0000/SCF_result.json": "aaabdbd6fa2c5ffee20f69c9b00be60cafa278f79589f78753ee5c40bf22d2e2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/electronic_SCF_evaluations/0000/0000/SCF.h5": "89d0323e22f095fd318226873b39c2af98e0ea91847f70705e68fdf1038fb1a5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/result.json": "191c508acaf61cce2ca154d12b3994d4ac8bf0d8982478244ffcb7872920856b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/native_thermal/ccd11b8c2bf61b5c.json": "a338a1faa687cf2b3ec474f2429a86bb2ead968088163da642d78591415b1a37",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/native_thermal/ccd11b8c2bf61b5c/hessian_cartesian.npy": "ebf95ad391c46e9135c6c1a6200eff99e7bc4c3b413b6a6f50f63bf628e5470a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0000/0000/settings.json": "76ad9521008f8df1df2f50e2362b66128666d400448c423bf1aec152747ade62",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0000/0000/SCF_result.json": "ed1d2f08b581491d7b698c3afc65c85134e10444905ee42facbf1f82c4f43b06",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0000/0000/SCF.h5": "9307b7aa6cecff74a0c4544134bd4b5679772fecb451864a6d61775651469348",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0001/0000/settings.json": "4c71bbedfff563428b876d320371a88b0749995f4cb946d1c6c3f6be23b879b2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0001/0000/SCF_result.json": "0975bb5f6b96dc3e230f3e694c825f930bab414f27a16c6f8d6fe026c97c1d7e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0001/0000/SCF.h5": "745d5398d11825285115d7b27c5796826057deebcf5174046b13806b6252ff27",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0002/0000/settings.json": "814f71f8cbaa1467d8b36394b5aafad104a59bacda54c80a118c87a3007b839f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0002/0000/SCF_result.json": "b96d3c2185d55a49887b05b6be3b25b333becc43b3c8160a7ed5e5d038a1ccbd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0002/0000/SCF.h5": "ce2aee35803a21b940c9ab2ab23912050988e42222d882948ecfda01260e1c2d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0003/0000/settings.json": "fb43874edf9ac77f5699e1b0974dff85dc22f8a0c7cfabb35cc48708d769a7ca",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0003/0000/SCF_result.json": "dd22e8b13015c440fd70a9ecd272c71db8266e7598e5252466569f95a6142759",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0003/0000/SCF.h5": "432b7ae8e8a41692edf7b2d2442d91192046886760ac00a98ed1c6c5c7bb1a8b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0004/0000/settings.json": "41ca3fb9c564f36ea61b94f115b47f0ef6a491cf724af76a029f951bfd972b58",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0004/0000/SCF_result.json": "03bec74ed15ba1baa926d80c56aa212c5682d0674ecc1b4ebb4557664a983a55",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0004/0000/SCF.h5": "ec172e05eb2eb0d735ad40c686709d98455a0dc2054817e04bca89a1a8a6abb1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0005/0000/settings.json": "5d913666c40368029f2958a29ba5fb45bce0783be0c0e266a9e0e0f2bb7a1de8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0005/0000/SCF_result.json": "5c6c81f7f0816b66a7d446abee4027f43991518915bfc06a15d537142db1e6a5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0005/0000/SCF.h5": "8fabd94bffe7d656d7ac7adc65145037e7edc700c6132174634e0e591c060e2b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0006/0000/settings.json": "0a7101df5a248d956e69048648eeefeb8f8b32be98cb327699fd7ea2cc708135",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0006/0000/SCF_result.json": "78c6f978d0b1174fb39c3f02a1ab4643797d3628f4d0f4b3fa34fd8581320f11",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0006/0000/SCF.h5": "5bd9513b251044277501564c4e08a61230a0c6b7add3fd495a983d11a46b636f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0007/0000/settings.json": "12b1bd9cf23e62392af1e99c5bf50f4e8914bd17f155bd92e6b36ba5aa16beea",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0007/0000/SCF_result.json": "cf052b1733630e9f87d8021445f63da4d39d918fdc522aef0dc9dff6b59f0f68",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0007/0000/SCF.h5": "e6eab3c29f4dbf2ba491bfe38ca22f6640fe45f7b6fb53ff75f687ab9bae41a3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0008/0000/settings.json": "d01c0104c14557f06338601ef5b82a48477192c4121cf0a6ccb8e826af656db6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0008/0000/SCF_result.json": "b09be4f81924b45c5c62d3f824ce320a682175f4a55ada121822829fc5091e20",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0008/0000/SCF.h5": "03bbb133338e595323d762cadd61306f5c74ebd778c8c1540a4f616fe24dd913",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/review_sources/9ae1e5c9ffe2b7b7ccd87a793038505d5083c8b811aaf802f5beb0a0d93d187c/review_molecular_native.py": "9ae1e5c9ffe2b7b7ccd87a793038505d5083c8b811aaf802f5beb0a0d93d187c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0005/0000/gradient.npy": "ea58709e7bf5a8c225673dd2a2b18968da99d64a6aa027de0088e77e10886a7e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0001/0000/gradient.npy": "1effa881924b22b338eb4537cbfbf2023656b70ba4062af32527cdb655dc2d31",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0008/0000/gradient.npy": "b7280abbd35b7555e1ca1b45dc532cc692b97a984bd470d6bd5b0263742b11a7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0000/0000/gradient.npy": "9656fb8ec628e87cd77bffc07c5a7f59bcf56655a1656d0dda3ca90f2831e90a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0004/0000/gradient.npy": "baedb6fbbb7b3d0ef108cf11da5790de19bae20c23166bfcd257537eb6f8b5b4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0003/0000/gradient.npy": "379d8bc61c08d19573f85a817989eec6c86ed25c97d51888bbe40bec504cbe86",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0007/0000/gradient.npy": "4b351213b5fdca0c20480ab4639d7e6fe698ebf290765b0d44878af62a0ca286",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0002/0000/gradient.npy": "e56f1dc62b6e6dee527be781890f9c5618c3513563d43dd65563d7489e6e21bd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/SCF_evaluations/0006/0000/gradient.npy": "6630d6c9686fb10c44b868b092d4a157da87bb2b7a82d0f26afaf71cc66b1c58",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/review_sources/e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612/native_partition.py": "e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/config/projected_thermal_validation.json": "05d8e9afcf839bb1187a1bb46f935326b89777eb3609c1bc085042dafe6dd448",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/summary.json": "a602f6f7996dac1c201eede41cfb0d2f8b7b105a2db5c0fec2b33230088ed290",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/checks.json": "71e0719a383d95e50d3b5b9f72ea2f1b06c4fdc4f364f324da6db3bcbc265ed2",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_qualification_isolated/summary.json": "18a0926e55345e16e1308faebe09b8891a69907116652b14d3142250607e54ba",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_qualification_plan_isolated.json": "a2c9d55c98ad3abe19f6bef0b82ddfd7e1109583ec593e472ec83c8567cf458a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/review_kernel_isolated.py": "eec51efd809d79731e6fe0f625cc1246408c4648273196b40da96023d97f6376",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_thermo.f90": "af6f20030f68f23d8022896f97b7c5ac0be5a7e6afcbf4199c6f5753e44ccf48",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_mctc_mctc_constants.f90": "4ee5e45cfa40a9f3fbc4409cb531c213c8717cee38decaa98e3f973e5a9fe543",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_param_atomicmass.f90": "2f6f9e692d1ca85827b2abc2e777432dcb70aa4bb8f19d97dc4616774f71985a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/reviews/2026-10-18/software_checks_isolated_kernel_full.log": "1b37d3cc37dce123574f79e28897bbb317372cae58f8634d815957655e3c459b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/owner.json": "18c93e8d179fbfbb2d8f721191dbb93f28774bcdffe427cc9fd83709bf5f854e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/projected_hessian.npy": "eeb6056c8ca87fe2c486bf4d4ad3311c951a2ed8306d654276c13bc320594595",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/hessian": "31ba43928508c277a55b7ba338da89fedea22f5236bafde3d7b3001477852028",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/mol.xyz": "0e5dced659e21da32f75a55376f3680f5eac78450357e4d3a93654674a58c532",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/record_producer.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/thermo_CLI_25.log": "54332a9f2e67eda66d7a9fd1b41d3589b6330a3224f9188039b5500707ccd80d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/thermo_CLI_50.log": "8d025d2046f1d674d41245b7742a7a0547191b74746ddeb1f3c2e737f9e0fc85",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354/thermo_CLI_100.log": "d6b7a7d8292a556de46b94c21f2b50761c4a487b062470cb567bd5fa6fb323dc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/state/projected_thermal/ecd7f50c2e663354.json": "b505b3126f7678edc06b4532c1d779158de47defb60f818d681c311a0094a68b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_below_minus/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_completion_2026-11-03/N0_outer_minus_review.json": "5ae44b2800053807a7a163cb95996ca8f9074ee4c76457d4b5647ad5d116ea9b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/namespace.json": "4299deb30893b1a1b1be6d0a9f78b08b12287c678045952d3f0ce523bb1e817c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/plan.json": "58bf29fbb60a1798706dd1973f97f4071eb119ffa891ca01ab2e416cc6f0fcab",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/status.json": "8e4f11f68af4468ef78817a92a357cebb8c6c79d04ae647c0c513749c152dba9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/placement_002/launch.json": "a98d93bdbf1f5bc6575e4d25fe731d782b4cc11d8fb9d06e4388a39fb7ba29c0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/placement_002/completion.json": "01faf8e076c68c67e86ba2ed8e09d50a1b5b71cab65879ad670310247f871352",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/residency_guard/owner.json": "b802870bd36dfee99a4d8bbca31412baf95984090606dab74a9ef0bcd2309080",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/residency_guard/state.json": "fe4661a09a42aa8def6ad7a296f1b714a9d5f8eb703fade70e89f6a78108a2b0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/host_guard/status.json": "caae0e43341c051f08399d88ed652c2739d54377938c4401017a7ae4595991a6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/tensor_runtime/status.json": "555df363cfd7d3bdb4f8d8104dfcc2dc8f0e602dc7a62f6276461f4e2720a3e2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/review_sources/3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a/scf_frame.py": "3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/review_sources/fd42e10006620c3189d15c2da88b1f73b3777ce092d84395a86db0b6bdd41abe/review_counterion_thermochemistry.py": "fd42e10006620c3189d15c2da88b1f73b3777ce092d84395a86db0b6bdd41abe",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/review_sources/df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29/execution_review.py": "df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/review_sources/400c66e49cf05181de1951e056cd298eba49e950f42ffc3182f449f66f0de2f5/primary_checkpoints.py": "400c66e49cf05181de1951e056cd298eba49e950f42ffc3182f449f66f0de2f5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/opt.xyz": "5f2e294eea957d013f6725d0be58782d65a0123649c86b0a5f05c93ab039283e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/sources/reference_geometry.xyz": "5f2e294eea957d013f6725d0be58782d65a0123649c86b0a5f05c93ab039283e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/sources/geometry_review.json": "8c84a5527cc15bad010a8cb710d7023c8ca73d3eb73b7cc15518f060f9aa00ad",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/electronic.json": "4fb222a9634304d1cad2a079d31dbeea4c235d5980d4ba9c715c6ed59f4bb2b8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/electronic_SCF_evaluations/0000/0000/settings.json": "4ee91c6ceac9016299218a228ad4f36f6a1414a792be4e1017a11b9dcd62cdab",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/electronic_SCF_evaluations/0000/0000/SCF_result.json": "40875b7f546d198bf4b5031bc4ddc378bc5ffa6a95e4b64fd9ba18695bffa0bf",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/electronic_SCF_evaluations/0000/0000/SCF.h5": "bfebb204234c4f644f7142cddfa1f531097fff892b674f60603c745678df5c21",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/result.json": "a33a7d381b6d8a6bc5b2ebf9e2cd1002ab873fd359aded9a11c9014db7365d86",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/native_thermal/5c6098a094c54424.json": "689b688f789235516f502938721ea70beaf7c3b2a029ce8b18a139858663bcc0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/native_thermal/5c6098a094c54424/hessian_cartesian.npy": "646c8196c5400442b9af423f8c2415e9ef5979f346d82ca8bd4d30874b94da0d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0000/0000/settings.json": "dd182355af2bbe9e1dfb12b4531f52244608581c8be943074e90abf07f715a0d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0000/0000/SCF_result.json": "30a642a771904583422dca4ce5f79245aa36bb9ea812c2e8f38ce7fc8a24eeee",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0000/0000/SCF.h5": "c491ab94af58e61850eaa5fe0c0f109c8c38a949b5d28b4eef02865375653a79",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0001/0000/settings.json": "ea94746f832ae54af8b13420afbf3ecc881c0668acf9b97a41ee958516c70d8f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0001/0000/SCF_result.json": "2535e33e85ac66b114380ffefb339417897a5fb098ef41817a205fb0bb30379d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0001/0000/SCF.h5": "aa9c7f9ea950c713ffda4976aac3149282c7b32266f361f9c8eb7272324dd436",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0002/0000/settings.json": "3569e236239997366ca3be3e7aa445fb654b444af674db78b08e25ed42c3553b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0002/0000/SCF_result.json": "332a3fce04e166282300d9ff813621653f98c232ad951e86c28ba1235e1ef81c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0002/0000/SCF.h5": "e6379a23e8ff2a33aa01584d723a909271600d61a83fb8b2ae0e2d99220313b1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0003/0000/settings.json": "178335f56e670968c42b0acfab36c7670c07877842601949c0ca682e9839675b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0003/0000/SCF_result.json": "34caf288ca26d3d6ee3db234c8430c2a834a7bc9eb24e8636e752b22e769bebb",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0003/0000/SCF.h5": "9f3553a1c4bf6b23c7148d873815d2d3ac15ee30532604fe0e27967a59ebbf0b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0004/0000/settings.json": "665acbe357f2b85981d9cf9888a05a25c3ed0234700caf6bd47171e0a49e046b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0004/0000/SCF_result.json": "de57894110de6ff262c3ec3be665e950ed94a483db586f1b642381261a368dcd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0004/0000/SCF.h5": "008f820f079f9256bfa66e11c9dc1e34a6898f523330e46d17868580a5785e5d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0005/0000/settings.json": "0eb7e890e7f9a21a5dec3e1e9bbead20401e28a85c6d1666aa8731296e875c14",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0005/0000/SCF_result.json": "7c2e27d8ac2497f685dcf287745541bb3e9d36a7d5368466d66acc3b0728ff2a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0005/0000/SCF.h5": "ce838448a477eb6a4a34827e489b831d27e8d375aa8b8d41e90aaad3c81a8b18",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0006/0000/settings.json": "f11ffee4fc606bee76747bf4ef957d3f175eecdd1b1799647452a4e2ccd5f6fb",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0006/0000/SCF_result.json": "3381f7e2ec08790fcd49c8777161910a89a263d54ab6cacb0afa6eae7c69837d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0006/0000/SCF.h5": "8e623115e388b374c0fd153548962c4802c08e6edd1c491cfd37fbe1fb7f2614",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0007/0000/settings.json": "b51dde486d2b93867b5ea5783879428297c6aa22bebcb475a5f6cb0e7c605e7f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0007/0000/SCF_result.json": "501f78f9aa8d4c9c7b25ccf259de3c756e06896f0c0d540c76a8af81020ac12d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0007/0000/SCF.h5": "f422adce58b476f59c50d8d767255a995323464f7a1ca92ef6fe02b9ec504ff8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0008/0000/settings.json": "7b02d07f13281745f772f43edf3a7112cfbe6021b832f07cdc8f28308d7f8a96",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0008/0000/SCF_result.json": "dce9d7ddebb1013a95d62486b4b17f81c711cf8d39f4689856a25dc2f71b406a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0008/0000/SCF.h5": "71c115f8735a47960e6213e31491f3be688a706bd08aec247414ca14fad5a883",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/review_sources/9ae1e5c9ffe2b7b7ccd87a793038505d5083c8b811aaf802f5beb0a0d93d187c/review_molecular_native.py": "9ae1e5c9ffe2b7b7ccd87a793038505d5083c8b811aaf802f5beb0a0d93d187c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0007/0000/gradient.npy": "a38ad31dd2dcf39908309e355e37c860d1ea6e77ca19cbfe6a45a2b90bf32178",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0008/0000/gradient.npy": "ba82371d710003fba49613169b611c77312ffff4f71ed8ba47282552e9022978",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0006/0000/gradient.npy": "80732647da5438b0b32bcffd26f85c946a38afe82a067b2238b1a00531d20047",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0003/0000/gradient.npy": "a939d5fa24467bbddf74fadafbf6b79b42f0517f67b8a69989cc9900050a0167",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0001/0000/gradient.npy": "469693a0fcbe1c51ef78b4ffe6aa966d0bc1f3ad05aedae652ba085c59f93606",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0000/0000/gradient.npy": "e922425dc22f7047442aabcfe873e448a14d509ea1de22165b67629909516e1f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0002/0000/gradient.npy": "4cb61501fa84c9cb88652cbcbf4b982d865106410f7107102826af0f4c5ad497",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0005/0000/gradient.npy": "a1d450cc365db95a91df9a97668a99d84ee1c98f78746be7aa2e35abd78df2d5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/SCF_evaluations/0004/0000/gradient.npy": "b09714cf6c3a414510ac8de9da7aaa12b562ae52bba2568d6310e24e60c36605",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/review_sources/e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612/native_partition.py": "e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/owner.json": "7bb5977899e7e22c0de0385df9b493228966c862d84457c32cbed9ff2f6e0b07",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/projected_hessian.npy": "77db831ce8d59e993847c2a100eba6583a513f21827c39c18040c74fdc0e4612",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/hessian": "9c040347e6434874f3af8f1fa9edb436daed6c88c445e148d871ebad48851fbf",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/mol.xyz": "5f2e294eea957d013f6725d0be58782d65a0123649c86b0a5f05c93ab039283e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/record_producer.py": "3050727ad26c8967fbac1479e74499a430d3e08df39ba5ee1c8cf9572c01f5af",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/thermo_CLI_25.log": "b6f55da412c344c5166bd841154ab03926e8cc813488c60fa7b08ff1e9010369",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/thermo_CLI_50.log": "559a2c71572d60101bc47ea5a26697942e82663dbc2cedadef4c4e72d373c021",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87/thermo_CLI_100.log": "242366a01fb9e63467e82d8af76d6dede7944d2c45f6f59457fabfafd88b9b12",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/state/projected_thermal/93950059df89bc87.json": "b9b12bde177b2b105227f5de44ca2505765657f412460ac48ee199434cb0b0f4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/N0_outer_minus/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536"
+  }
+}

@@ -1,7 +1,7 @@
 # Current manuscript review disposition
 
 As of 3 November 2026, this is a 21-page JCIM working article with a separate
-35-page SI. Submission remains incomplete. Historical review dispositions are
+36-page SI. Submission remains incomplete. Historical review dispositions are
 preserved in Git; the source-frozen manuscript epoch is selected by
 [evidence/current.json](evidence/current.json).
 
@@ -15,9 +15,10 @@ four-outcome editorial snapshot remains preserved.
 ## Next publication decisions
 
 Keep the paper's current identity inventory fixed while completing a bounded
-comparison on exact viologen, TEMPO and PMDI. Phenothiazine electrochemistry is
-an optional extension requiring qualified state/reference components; its
-unfinished controls do not block the core paper. Phthalimide remains a method control. Compare molecule-only,
+comparison on exact viologen, TEMPO and PMDI. Phenothiazine now adds a qualified
+finite first-oxidation result as a secondary example. Its state/reference
+checks are complete; experimental and material qualification remain separate.
+Phthalimide remains a method control. Compare molecule-only,
 route-aware local-graft and polymer-context interpretations using explicitly
 matched inputs. Record changed priorities, supported conclusions and missing
 evidence separately; an evidence hold is not a demonstrated synthetic failure.
@@ -121,9 +122,11 @@ controls now independently qualify their native free energies, with 63 actual
 SCF checkpoints checked in total in the
 [new collection](../validation/phenothiazine_cds_2026-11-03/current_03.json).
 The matched oxidized step sensitivity is below 6e-9 eV across the cutoffs.
-Exact Fc/Fc+ reference compatibility, retaining component numerical policies,
-remains to be checked before a potential is admitted. Quantitative phenothiazine electrochemistry remains excluded
-until compatible state and reference components pass.
+Exact Fc/Fc+ reference compatibility and cycle assembly now pass with component
+numerical policies retained. The [checked finite first oxidation](../validation/phenothiazine_cds_2026-11-03/redox_cycle.json)
+is +0.626 V versus Fc in MeCN, spanning +0.616 to +0.626 V across cutoffs.
+It is included as a secondary molecular result, with no experimental,
+conformer-ensemble or polymer-performance inference.
 [Native evidence and numerical-policy scope](../validation/phenothiazine_cds_2026-11-03/README.md).
 
 The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)

@@ -42,10 +42,11 @@ native Hessian failures are now traced to the legacy CDS derivative step. The
 [oxidized component passes independent native review](../validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json),
 and all [three finer-step controls now pass full native review](../validation/phenothiazine_cds_2026-11-03/current_03.json).
 The matched oxidized step sensitivity is below 6e-9 eV at every cutoff.
-Exact Fc/Fc+ reference compatibility, with component numerical policies retained,
-remains to be checked before an oxidation potential is admitted. Phenothiazine electrochemistry will enter
-the paper quantitatively only after compatible state/reference components
-qualify; its unfinished calculations do not block the existing core examples.
+Exact Fc/Fc+ reference compatibility and the balanced cycle now pass, with
+component numerical policies retained. The [finite first oxidation](../validation/phenothiazine_cds_2026-11-03/redox_cycle.json)
+is +0.626 V versus Fc in MeCN and is included as a secondary result. Its
+experimental accuracy, conformer ensemble and material behavior remain open;
+the viologen, TEMPO and PMDI comparisons remain the paper's core examples.
 Code cleanup, completed example calculations and presentation updates each
 contribute to that objective but do not establish completion.
 
@@ -72,7 +73,7 @@ Broader reaction-cycle impact and production qualification remain open. Stored
 chemical results are provisional for release; new uncorrected admissions are
 held. No corrected/uncorrected cycle components may be mixed.
 
-The current article/SI are 21/35 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
+The current article/SI are 21/36 pages. The exact enumerated viologen now links a checked reduction ladder to a finite local quaternization ΔG of −11.49 kJ/mol in MeCN at 298.15 K, with three checked precursor starts. Salt speciation, occupied-polymer ensembles/coupling and full material eligibility remain open; see [the current review disposition](../manuscript/review_status.md).
 
 The [2 November completion evidence](../validation/jcim_completion_2026-11-02/README.md)
 adds five interpretation-transfer tests, 29 accepted electronic-control

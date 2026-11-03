@@ -1,0 +1,330 @@
+{
+  "viologen": {
+    "status": "declared_cycle_electronic_sensitivity_reconstructed",
+    "states": 10,
+    "cycles": [
+      {
+        "id": "E1_V_vs_Fc",
+        "kind": "one_electron_potential_vs_Fc",
+        "unit": "V",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -3.5885486847003086e-09,
+          "corrected_minus_stored": -3.6009229905096197e-09,
+          "corrected_minus_installed": -1.2374305809311408e-11
+        }
+      },
+      {
+        "id": "E2_V_vs_Fc",
+        "kind": "one_electron_potential_vs_Fc",
+        "unit": "V",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": 1.2374305809311408e-11,
+          "corrected_minus_stored": 2.4748611618622816e-11,
+          "corrected_minus_installed": 1.2374305809311408e-11
+        }
+      },
+      {
+        "id": "graft_precursor_0_kJ_mol",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -7.702399011211221e-07,
+          "corrected_minus_stored": -7.715830825026546e-07,
+          "corrected_minus_installed": -1.3431813815326677e-09
+        }
+      },
+      {
+        "id": "graft_precursor_1_kJ_mol",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.267217012288209e-06,
+          "corrected_minus_stored": -1.267366254663935e-06,
+          "corrected_minus_installed": -1.4924237572585197e-10
+        }
+      },
+      {
+        "id": "graft_precursor_2_kJ_mol",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -8.463535127413065e-07,
+          "corrected_minus_stored": -8.470997246199358e-07,
+          "corrected_minus_installed": -7.462118786292598e-10
+        }
+      },
+      {
+        "id": "disproportionation_kJ_mol",
+        "kind": "reaction_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -3.474362506897834e-07,
+          "corrected_minus_stored": -3.49824128701397e-07,
+          "corrected_minus_installed": -2.3878780116136315e-09
+        }
+      }
+    ],
+    "nuclear_terms_recomputed": false,
+    "total_free_energy_requalified": false,
+    "new_potentials_or_reaction_G_qualified": false
+  },
+  "base": {
+    "status": "declared_cycle_electronic_sensitivity_reconstructed",
+    "states": 21,
+    "cycles": [
+      {
+        "id": "reference:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.2072947369853506e-07,
+          "corrected_minus_stored": -2.231173517101487e-07,
+          "corrected_minus_installed": -2.3878780116136315e-09
+        }
+      },
+      {
+        "id": "reference:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.4909313335012613e-07,
+          "corrected_minus_stored": -1.4909313335012613e-07,
+          "corrected_minus_installed": 0.0
+        }
+      },
+      {
+        "id": "reference:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.1411803645387984e-06,
+          "corrected_minus_stored": -2.1375985475213776e-06,
+          "corrected_minus_installed": 3.5818170174204475e-09
+        }
+      },
+      {
+        "id": "reference:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -6.666656923673807e-07,
+          "corrected_minus_stored": -6.648747838586705e-07,
+          "corrected_minus_installed": 1.7909085087102238e-09
+        }
+      },
+      {
+        "id": "reference:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.1346137000068605e-06,
+          "corrected_minus_stored": -2.1316288524923435e-06,
+          "corrected_minus_installed": 2.9848475145170393e-09
+        }
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": 1.3461662290471848e-07,
+          "corrected_minus_stored": 1.323779872688307e-07,
+          "corrected_minus_installed": -2.2386356358877796e-09
+        }
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.587862795086273e-07,
+          "corrected_minus_stored": -2.6117415752024096e-07,
+          "corrected_minus_installed": -2.3878780116136315e-09
+        }
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.1043935803713046e-08,
+          "corrected_minus_stored": -1.5073479948311048e-08,
+          "corrected_minus_installed": -4.029544144598003e-09
+        }
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:design_pmdi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -4.2205743855270936e-07,
+          "corrected_minus_stored": -4.2623622507303325e-07,
+          "corrected_minus_installed": -4.178786520323855e-09
+        }
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": 2.0625296325312742e-07,
+          "corrected_minus_stored": 2.0640220562885327e-07,
+          "corrected_minus_installed": 1.4924237572585197e-10
+        }
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.8714993916021837e-07,
+          "corrected_minus_stored": -1.8714993916021837e-07,
+          "corrected_minus_installed": 0.0
+        }
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": 6.05924045446959e-08,
+          "corrected_minus_stored": 5.8950738411711526e-08,
+          "corrected_minus_installed": -1.6416661329843716e-09
+        }
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:design_ndi_ethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -3.504210982043004e-07,
+          "corrected_minus_stored": -3.5221200671301066e-07,
+          "corrected_minus_installed": -1.7909085087102238e-09
+        }
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.7858342679355447e-06,
+          "corrected_minus_stored": -1.7821032085423984e-06,
+          "corrected_minus_installed": 3.7310593931462994e-09
+        }
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.1792371703488905e-06,
+          "corrected_minus_stored": -2.17565535333147e-06,
+          "corrected_minus_installed": 3.5818170174204475e-09
+        }
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.9314948266439764e-06,
+          "corrected_minus_stored": -1.92955467575954e-06,
+          "corrected_minus_installed": 1.9401508844360757e-09
+        }
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:exp_aq_1oxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.3425083293929725e-06,
+          "corrected_minus_stored": -2.340717420884262e-06,
+          "corrected_minus_installed": 1.7909085087102238e-09
+        }
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -3.113195957641272e-07,
+          "corrected_minus_stored": -3.093794448796911e-07,
+          "corrected_minus_installed": 1.9401508844360757e-09
+        }
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -7.04722498177473e-07,
+          "corrected_minus_stored": -7.029315896687628e-07,
+          "corrected_minus_installed": 1.7909085087102238e-09
+        }
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -4.569801544725587e-07,
+          "corrected_minus_stored": -4.568309120968329e-07,
+          "corrected_minus_installed": 1.4924237572585197e-10
+        }
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:exp_bq_oxy_methoxy",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -8.679936572215551e-07,
+          "corrected_minus_stored": -8.679936572215551e-07,
+          "corrected_minus_installed": 0.0
+        }
+      },
+      {
+        "id": "dbu:free_ions_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.7792676034036071e-06,
+          "corrected_minus_stored": -1.7761335135133644e-06,
+          "corrected_minus_installed": 3.1340898902428913e-09
+        }
+      },
+      {
+        "id": "dbu:contact_pair_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.172670505816953e-06,
+          "corrected_minus_stored": -2.169685658302436e-06,
+          "corrected_minus_installed": 2.9848475145170393e-09
+        }
+      },
+      {
+        "id": "dipea:free_ions_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -1.9249281621120386e-06,
+          "corrected_minus_stored": -1.923584980730506e-06,
+          "corrected_minus_installed": 1.3431813815326677e-09
+        }
+      },
+      {
+        "id": "dipea:contact_pair_kJ_mol:exp_bq_oxy_trimethyl",
+        "kind": "grafting_free_energy",
+        "unit": "kJ/mol",
+        "electronic_contribution_to_shift": {
+          "installed_minus_stored": -2.335941664861035e-06,
+          "corrected_minus_stored": -2.334747725855228e-06,
+          "corrected_minus_installed": 1.1939390058068158e-09
+        }
+      }
+    ],
+    "nuclear_terms_recomputed": false,
+    "total_free_energy_requalified": false,
+    "new_potentials_or_reaction_G_qualified": false
+  }
+}

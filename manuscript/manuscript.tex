@@ -14,18 +14,19 @@
 \renewcommand{\textfraction}{0.08}
 \renewcommand{\floatpagefraction}{0.8}
 \newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
-\input{evidence/2026-11-03_six_chloride_contacts/empty_batch_values.tex}
-\input{evidence/2026-11-03_six_chloride_contacts/tempo_solution_values.tex}
-\input{evidence/2026-11-03_six_chloride_contacts/viologen_native_values.tex}
-\input{evidence/2026-11-03_six_chloride_contacts/viologen_grafting_values.tex}
-\input{evidence/2026-11-03_six_chloride_contacts/ionic_native_cycle_values_v4.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/empty_batch_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/tempo_solution_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/viologen_native_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/viologen_grafting_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/ionic_native_cycle_values_v4.tex}
 \title{Context-Preserving Computational Assessment of Redox Motifs for Polymer Grafting}
 \author{Working draft: authorship and affiliations to be confirmed}
 \date{JCIM Article draft; evidence updated: 3 November 2026}
-\input{evidence/2026-11-03_six_chloride_contacts/motif_interaction_values.tex}
-\input{evidence/2026-11-03_six_chloride_contacts/counterion_v2_values.tex}
-\input{evidence/2026-11-03_six_chloride_contacts/registry_update_values.tex}
-\input{evidence/2026-11-03_six_chloride_contacts/occupied_sampling_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/motif_interaction_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/counterion_v2_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/registry_update_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/occupied_sampling_values.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/ptz_redox_values.tex}
 \begin{document}
 \maketitle
 
@@ -149,7 +150,7 @@ For the ionic viologen frames, the same frozen-fragment definition is evaluated 
 \subsection{A linked design space has uneven validation coverage}
 The systematic construction gives 1,593 recipes and 837 exact graft graphs: 459 viologens, 243 NDI derivatives and 135 PMDI derivatives. Its linkers, caps and ring substitutions define a focused chemical space. The historical evaluated cohort contains 75 candidates and one comparison control; its union with enumeration comprises 879 graphs. Later registered models and proposal panels bring the maintained identity inventory to \UnifiedRegistryCount{}. The latest extension preserves all 904 prior graphs and reported evaluations, adding \NewDirectPTZDesigns{} exact F/CN-substituted phenothiazine designs at fixed N-benzylic attachment. Their precursor/product pairs and new bonds are mapped, while all new electrochemical properties remain pending. These scopes are kept distinct because proposing a structure does not provide its electrochemistry, route evidence or polymer behavior.
 
-The current route gate permits further computation of \ReviewedRouteCount{} exact baseline designs. In addition to the TEMPO and viologen examples below, a primary report describes direct N-attachment of unsubstituted phenothiazine to chloromethylated polystyrene beads using NaH in DMF, followed by chemical oxidation and reduction of the bound group.\cite{wright1989supported} This supports evaluating that attachment class; it supplies neither properties of our exact capped graph nor a battery-material admission. The source also reports no phenothiazine modification with K$_2$CO$_3$, illustrating why base identity is part of the route. The new substituted designs retain separate route holds rather than inheriting the baseline's approval.
+The current route gate permits further computation of \ReviewedRouteCount{} exact baseline designs. In addition to the TEMPO and viologen examples below, a primary report describes direct N-attachment of unsubstituted phenothiazine to chloromethylated polystyrene beads using NaH in DMF, followed by chemical oxidation and reduction of the bound group.\cite{wright1989supported} This supports evaluating that attachment class; it supplies neither properties of our exact capped graph nor a battery-material admission. The source also reports no phenothiazine modification with K$_2$CO$_3$, illustrating why base identity is part of the route. The new substituted designs retain separate route holds rather than inheriting the baseline's approval. Independently qualified states give a first oxidation potential of $+\PTZPrimaryV$ V versus Fc/Fc$^+$ for the unsubstituted local graft model in MeCN, spanning $+\PTZLowV$ to $+\PTZHighV$ V across rotor settings (SI). This finite molecular result does not establish its NaH/DMF grafting free energy or polymer performance.
 
 The experimental panel also samples a different chemical distribution. Twenty-two of its 39 endpoints are quinones; nine imide endpoints come from six molecules in one study, including PMDI and phthalimide derivatives. Viologen is represented by one molecule and NDI by none. Thus overall benchmark accuracy cannot be assigned to every enumerated family or exact graft. This imbalance is part of the applicability domain of the calculations, rather than a reason to omit less favorable endpoint errors.
 
@@ -159,7 +160,7 @@ The unfitted protocol gives MAE 0.247 V, RMSE 0.279 V and bias $+0.190$ V (Figur
 All 30 first-step errors are positive, with mean $+0.266$ V, whereas the nine second-step errors have mean $-0.064$ V and MAE 0.185 V. A common offset therefore cannot explain the complete residual structure. In particular, all nine paired step spacings are too large in magnitude, and the Fc contribution cancels from each spacing. The apparent improvement of second-step MAE can include error cancellation rather than better second-step prediction. Reference, solvation and charge-state contributions must be assessed together.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_six_chloride_contacts/benchmark.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_phenothiazine_redox/benchmark.pdf}
 \caption{Retrospective benchmark for 39 sourced free-parent potentials in MeCN. All endpoints and outliers are retained, and no fitted offset is applied. Family and redox-step labels distinguish the panel's uneven coverage. Accuracy on these free parents does not validate the exact grafts or oligomer environments.}
 \label{fig:benchmark}\end{figure}
 
@@ -199,7 +200,7 @@ Of the 75 historical local reference reactions, 67 have complete free energies a
 The two highlighted benzoquinone HCl-reference values are $+57.63$ and $+56.03$ \kj. They become $-45.14/-46.75$ \kj\ with DBU and $-13.34/-14.94$ \kj\ with DIPEA (Figure~\ref{fig:grafting}). AQ-1-oxy and NDI also change sign in the panel. The relevant inference is that an HCl-reference sign cannot exclude an unmodeled base-assisted synthesis, while a favorable base-assisted model cannot supply missing precursor or selectivity evidence.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_six_chloride_contacts/grafting.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_phenothiazine_redox/grafting.pdf}
 \caption{Local substitution energies under HCl-reference, separated-ion and contact-pair conventions. Each specified base contributes a shared term to compatible reactions. Changing absolute signs does not establish a new within-base ranking, measured ion-pair population or experimental grafting yield.}
 \label{fig:grafting}\end{figure}
 
@@ -213,7 +214,7 @@ The PMDI-ethyl local graft has checked reductions at $-1.076$ and $-1.977$ V ver
 For the sampled five-repeat minima, attachment at sites 2 and 3 gives $-97.7$ and $-97.0$ \kj\ under the same DBU/separated-ion convention. Relative to the capped reaction, the polymer penalties are $+5.34$ and $+6.11$ \kj\ (Eq.~\ref{eq:polylocal}). Their positivity persists across rotor cutoffs, but the small relative preference between the two sites changes sign (Figure~\ref{fig:firstgraft}). Common precursor and base terms cancel from the polymer-minus-local comparison. Thus the calculation identifies a finite-model context penalty more defensibly than it identifies a preferred graft site.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_six_chloride_contacts/pmdi_first_graft.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_phenothiazine_redox/pmdi_first_graft.pdf}
 \caption{First-site PMDI attachment relative to the local capped reference. Polymer-minus-local penalties remain positive over tested rotor cutoffs, whereas the small difference between sites 2 and 3 changes sign. Lines connect numerical settings, not statistical uncertainty bounds. Each occupied graph contributes one minimum.}
 \label{fig:firstgraft}\end{figure}
 
@@ -222,7 +223,7 @@ The four-state occupancy cycle gives $\Delta\Delta G_{23}=-1.86$ \kj\ at the pri
 The paired minimum has PMDI core centroids 16.30~\AA\ apart. Adjacent sequence sites therefore do not imply close-contact stacking, and the weak cycle response cannot be read as an isolated PMDI binding energy or coupling. Each of the four graphs contributes one minimum; broader occupied sampling is required before assigning equilibrium populations or a general spacing preference.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_six_chloride_contacts/pmdi_neighbor_grafting.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_phenothiazine_redox/pmdi_neighbor_grafting.pdf}
 \caption{Matched PMDI neighboring-site cycle. Conditional attachment energies compare the same target site with the other site empty or grafted. Shared precursor, base and byproduct terms cancel from nonadditivity. The cutoff dependence reflects numerical scenarios; one minimum per graph and separated cores delimit the interpretation.}
 \label{fig:pmdineighbor}\end{figure}
 
@@ -232,7 +233,7 @@ Polymer mass introduces another independent distinction. The neutral capped PMDI
 The finite phthalimide control supplies two accepted poses for each of six occupancy graphs. Its twelve native free energies give adjacent and one-spacer nonadditivities of $-5.17$ and $-11.39$ \kj\ in the declared two-pose partitions. Both spacings support close-core and separated-core minima (Figure~\ref{fig:spatialconformers}). Adjacent-site centroids are 4.24 and 16.66~\AA\ apart; one-spacer centroids are 4.77 and 20.20~\AA\ apart. The close-contact poses have lower $G$ by 11.9 and 7.1 \kj\ within their respective graph-specific pairs.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_six_chloride_contacts/spacing_conformers.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_phenothiazine_redox/spacing_conformers.pdf}
 \caption{Actual phthalimide control conformers for adjacent and one-spacer occupancy. Backbone and motif colors identify the open chain and conjugated cores; unoccupied reactive sites retain benzyl chloride. Views use the saved coordinates, proper rotations and a common scale. Distances join core centroids, and relative free energies compare poses of the same chemical graph. These finite samples do not establish converged contact populations.}
 \label{fig:spatialconformers}\end{figure}
 
@@ -248,7 +249,7 @@ The ionic viologen frames test whether whole-chain nonadditivity implies local m
 These opposite signs concern different operational quantities evaluated at matched electronic and solvent settings. The whole-chain cycle compares four separately optimized occupancy graphs. The fragment calculation removes the linker aryl groups and backbone, introduces methyl caps, and retains the two motif coordinates from a single parent. Changing the cap length across the declared interval gives a maximum MeCN span below 0.003 \kj\ (SI), but does not establish chemical-cap or basis convergence. Their difference is not assigned uniquely to backbone, linker, deformation or solvent. The comparison establishes why negative chain-level nonadditivity alone cannot be used as evidence for attractive local motifs under this cap model.
 
 \begin{figure}[htbp]\centering
-\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_six_chloride_contacts/viologen_interaction_definitions_final.pdf}
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_phenothiazine_redox/viologen_interaction_definitions_final.pdf}
 \caption{Electronic responses at four matched ionic parent frames. The whole-chain cycle is $E(P_{ij})+E(P_0)-E(P_i)-E(P_j)$ with each graph at its retained geometry. The frozen local interaction is $E_{AB}-E_A-E_B$ for methyl-capped viologen dications at unchanged parent-relative coordinates. Both use the same corrected r$^2$SCAN-D4/SVP smooth-surface MeCN model. Opposite signs in two frames do not constitute a unique backbone/deformation decomposition. The plotted cap length is 1.09 \AA; the three-length sensitivity is reported in SI. The values describe electronic responses, not association free energies, couplings or populations.}
 \label{fig:ionic-definitions}\end{figure}
 
@@ -257,7 +258,7 @@ The same saved calculations support different conclusions when their context cha
 
 These comparisons isolate the consequences of transferring a quantity between chemical or physical contexts. They establish changes in interpretation, without demonstrating improved intrinsic DFT accuracy, superiority to a prior screening algorithm or experimental decision accuracy.
 
-\input{evidence/2026-11-03_six_chloride_contacts/context_consequences_table.tex}
+\input{evidence/2026-11-03_phenothiazine_redox/context_consequences_table.tex}
 
 The candidate examples expose different limits on a seemingly favorable molecular design. Viologen now connects a reviewed route, two checked reductions, local quaternization and four balanced ionic neighbor cycles, while retaining unresolved salt association and occupied ensembles. Its finite neighbor response changes sign with backbone configuration at either sequence spacing. TEMPO combines route evidence and a checked oxidation potential with directional electronic response that resists reduction to a symmetric parameter. PMDI provides explicit finite polymer cycles but retains a practical-route hold. A scalar score that fills these missing dimensions from family analogues would erase scientifically relevant differences among the candidates.
 
@@ -289,6 +290,6 @@ OpenAI Codex was used during manuscript preparation to assist with literature re
 \thispagestyle{empty}
 \begin{center}
 \textbf{For Table of Contents Only}\\[1.5em]
-\includegraphics[width=3.25in,height=1.75in]{../results/figures/manuscript/2026-11-03_six_chloride_contacts/graphical_abstract.pdf}
+\includegraphics[width=3.25in,height=1.75in]{../results/figures/manuscript/2026-11-03_phenothiazine_redox/graphical_abstract.pdf}
 \end{center}
 \end{document}

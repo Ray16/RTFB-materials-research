@@ -46,6 +46,10 @@ def main():
         spec=importlib.util.spec_from_file_location('deck_checked_counterion_association',ROOT/'manuscript/check_counterion_association.py')
         checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);counterion_check=checker.audit(epoch)
     registry_check=None
+    phenothiazine_check=None
+    if (epoch/'ptz_redox_cycle.json').exists():
+        spec=importlib.util.spec_from_file_location('deck_checked_phenothiazine',ROOT/'manuscript/check_phenothiazine_redox.py')
+        checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);phenothiazine_check=checker.audit(epoch)
     if (epoch/'registry_update_current.json').exists():
         spec=importlib.util.spec_from_file_location('deck_checked_registry_expansion',ROOT/'manuscript/check_registry_expansion.py')
         checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);registry_check=checker.audit(epoch)
@@ -55,6 +59,9 @@ def main():
     paths=[SLIDES/'redox_workflow.tex',SLIDES/'story/motivation_results.tex',SLIDES/'story/supporting.tex',
            epoch/'tempo_solution_values.tex',ROOT/'manuscript/check_tempo_solution.py',
            epoch/'viologen_native_values.tex',ROOT/'manuscript/check_viologen_native.py',Path(__file__).resolve()]
+    if phenothiazine_check is not None:
+        paths.extend([ROOT/'manuscript/check_phenothiazine_redox.py',ROOT/'src/redox/properties/reference_redox.py',
+                      ROOT/'src/redox/properties/context.py',*[p for p in epoch.glob('ptz_*') if p.is_file()]])
     if graft is not None:paths.extend([epoch/'viologen_grafting_values.tex',ROOT/'manuscript/check_viologen_grafting.py'])
     paths.extend([epoch/'ionic_native_component_review.json',ROOT/'manuscript/check_native_component_pilot.py'])
     paths.extend([epoch/name for name in ('primary_native_cohort_inputs.json','primary_native_cohort_cycles.json','primary_native_component_reviews.json','primary_native_cohort_table.tex')])
@@ -123,6 +130,8 @@ def main():
             raise ValueError('Chloride duplicate scope absent from the deck')
     if registry_check is not None and str(registry_check['exact_graphs']) not in text:
         raise ValueError('Checked current registry census absent from the deck')
+    if phenothiazine_check is not None and f"{phenothiazine_check['primary_V']:.3f}" not in text:
+        raise ValueError('Checked phenothiazine potential absent from the deck')
     sampling_page=reader.pages[18].extract_text()
     if ('failsthesamplingcheck' not in ''.join(sampling_page.lower().split())
             or 'Twenty' not in sampling_page or sampling_check['numbers'][-1] not in sampling_page):
@@ -135,6 +144,7 @@ def main():
         build_logs=str(build),overfull_boxes=[line for line in log.splitlines() if line.startswith('Overfull ')],
         ionic_cycle_check=ionic_cycle,motif_interaction_check=motif_check,counterion_association_check=counterion_check,
         registry_expansion_check=registry_check,sampling_check=sampling_check,
+        phenothiazine_redox_check=phenothiazine_check,
         visual_review='pending; record separately bound to this PDF',submission_ready=False)
     (SLIDES/'build_check.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report))
 

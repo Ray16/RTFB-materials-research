@@ -55,3 +55,9 @@ the other eleven cells, balanced occupied ensembles and material admission
 remain pending. The earlier empty-backbone comparisons remain in the archived
 source/evidence history. All 23 pages were rendered against the prior checked
 deck; only page 19 changed and passed visual inspection.
+
+The subsequent phenothiazine update adds its checked local-model first oxidation
+(+0.626 V versus Fc in MeCN) to slide 5. The deck remains 23 pages. Its value
+uses the shared frozen-evidence checker; neither route yield nor polymer
+performance is inferred. The current visual-review record supersedes the
+earlier changed-page observations above.
