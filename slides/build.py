@@ -36,7 +36,7 @@ def main():
     ionic_cycle=None
     if (epoch/'ionic_native_cycles.json').exists():
         spec=importlib.util.spec_from_file_location('deck_checked_ionic_cycle',ROOT/'manuscript/check_ionic_native_cycles.py')
-        checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(checker);ionic_cycle=checker.audit(epoch)
+        cycle_checker=importlib.util.module_from_spec(spec);spec.loader.exec_module(cycle_checker);ionic_cycle=cycle_checker.audit(epoch)
     motif_check=None
     if (epoch/'motif_energy_collection.json').exists():
         spec=importlib.util.spec_from_file_location('deck_checked_motif_interactions',ROOT/'manuscript/check_motif_interactions.py')
@@ -57,7 +57,7 @@ def main():
     paths.extend([epoch/name for name in ('primary_native_cohort_inputs.json','primary_native_cohort_cycles.json','primary_native_component_reviews.json','primary_native_cohort_table.tex')])
     paths.extend([ROOT/'manuscript/check_primary_native_cohort.py',ROOT/'src/redox/validation/native_component_sensitivity.py'])
     if ionic_cycle is not None:
-        suffix=next(s for s in ('_v3','_v2','') if (epoch/('ionic_native_cycles'+s+'.json')).exists())
+        suffix=next(s for s in ('_v4','_v3','_v2','') if (epoch/('ionic_native_cycles'+s+'.json')).exists())
         paths.extend([ROOT/'manuscript/check_ionic_native_cycles.py',ROOT/'src/redox/workflows/ionic_native_cycles.py',
             epoch/'ionic_native_cycle_preparation.json',
             *[epoch/(stem+suffix+extension) for stem,extension in [('ionic_native_cycles','.json'),('ionic_native_cycle_values','.tex'),('ionic_native_cycle_table','.tex')]]])
@@ -97,6 +97,7 @@ def main():
     if graft is not None and f"{abs(graft['deltaG_kJ_mol_by_cutoff']['50']):.2f}" not in text:
         raise ValueError('Checked exact-viologen grafting value absent from the deck')
     if ionic_cycle is not None:
+        cycle_checker.check_compiled_values(text,ionic_cycle)
         count={1:'One',2:'Two',3:'Three',4:'Four'}[ionic_cycle['complete_finite_cycles']]
         if f"{abs(ionic_cycle['delta_delta_G_by_cutoff_kJ_mol']['50']):.2f}" not in text or count+'offour' not in ''.join(text.split()):
             raise ValueError('Checked ionic cycle or its finite coverage is absent from the deck')

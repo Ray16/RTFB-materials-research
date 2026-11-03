@@ -9,9 +9,9 @@ contribute to that objective but do not establish completion.
 The current frozen corrected phthalimide-control roster has 89 checked electronic
 inputs and eight independently reconstructed native inputs out of 240 declared
 slots. The largest native pilot passed full review; matched followups continue,
-while occupied ensembles remain incomplete. The fourth finite ionic viologen
-cycle is undergoing fresh source-bound validation after its checkpoint-file
-failure; its G remains blank. Four primary chloride-contact outcomes now have
+while occupied ensembles remain incomplete. All four declared finite ionic
+viologen cycles now pass independent component and balance review, including
+the source-bound saved-Hessian recovery (+8.28 kJ/mol for alternating adjacent). Four primary chloride-contact outcomes now have
 checked finite association G and form three numerical duplicate groups. Broader
 contacts, salt speciation and material conclusions remain unresolved. These
 milestones do not establish JCIM submission readiness.
@@ -41,11 +41,12 @@ executions. Their corrected-minus-installed electronic contributions are below
 electronic implementation gap without requalifying nuclear terms or total G.
 
 The exact charged lead has twelve stationary electronic components and four
-balanced E cycles. Eleven independently checked native components now close
-three finite ionic G cycles: −3.94 kJ/mol (all-same adjacent), +22.58 (all-same
-one spacer), and −5.30 (alternating one spacer) at the primary cutoff. The
-remaining alternating adjacent cycle is pending after a checkpoint-file I/O
-failure; its saved Hessian and completed evaluations are preserved. Occupied
+balanced E cycles. Twelve independently checked native components now close
+all four declared finite ionic G cycles: −3.94 kJ/mol (all-same adjacent),
++22.58 (all-same one spacer), +8.28 (alternating adjacent), and −5.30
+(alternating one spacer) at the primary cutoff. The recovered component
+preserves its original full Hessian and response and passes all 25 fresh SCF
+evaluations, sampled derivatives, own modes/nuclear terms and independent review. Occupied
 ensembles and synthesis/material admission remain incomplete.
 
 The [full primary molecular repeat](../validation/ionic_cycle_completion_2026-11-02/README.md)
@@ -53,7 +54,7 @@ reconstructs nine fresh Hessians, analytic chloride, 81 native orbital/frame
 reviews and six complete matched G cycles. Changes are below 2.45e-8 V and
 1.55e-6 kJ/mol. This numerical agreement does not establish experimental accuracy.
 
-The article/SI and 16-main/7-supporting slide deck now integrate the three finite
+The article/SI and 16-main/7-supporting slide deck now integrate all four declared finite
 ionic cycles and a four-frame electronic counterexample: frozen methyl-capped
 motifs are repulsive in MeCN, whereas whole-chain nonadditivity is favorable in
 two frames. Twelve triplets and 72 SCFs support this separately defined result;

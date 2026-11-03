@@ -52,7 +52,7 @@
       "visual_review": "manuscript/visual_review.json",
       "raw_root": "calcs/validation/manuscript_builds",
       "status": "912_graph_registry_and_source_qualified_phenothiazine_integrated_working_JCIM_draft",
-      "scope": "20-page article and 34-page SI; 912 exact graphs, eight new uncomputed held designs, three reviewed baseline routes, three finite ionic G cycles and scoped counterion/motif controls. Full material and ensemble admission remain open."
+      "scope": "20-page article and 34-page SI; 912 exact graphs, eight new uncomputed held designs, three reviewed baseline routes, all four declared finite ionic G cycles and scoped counterion/motif controls. Full material and ensemble admission remain open."
     },
     "native_polymer_continuation": {
       "guide": "validation/native_followup_collection_2026-10-30/README.md",
@@ -402,11 +402,11 @@
     },
     "ionic_native_component_collection": {
       "guide": "validation/ionic_cycle_completion_2026-11-02/README.md",
-      "current": "validation/ionic_cycle_completion_2026-11-02/partial_cycles_11.json",
-      "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/partial_cycles_11.json",
+      "current": "validation/ionic_cycle_completion_2026-11-02/complete_cycles_12.json",
+      "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/complete_cycles_12.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations",
-      "status": "eleven_components_three_balanced_finite_ionic_G_cycles_checked",
-      "scope": "Primary-cutoff finite G nonadditivities -3.94/+22.58/-5.30 kJ/mol; alternating adjacent cycle and occupied ensembles pending. No binding G, coupling or material admission."
+      "status": "twelve_components_all_four_declared_finite_ionic_G_cycles_checked",
+      "scope": "Finite primary-cutoff all-same adjacent/spacer -3.94/+22.58 and alternating adjacent/spacer +8.28/-5.30 kJ/mol. Occupied ensembles pending; no motif binding G, coupling or material admission."
     },
     "charged_partial_Hessian_recovery": {
       "guide": "validation/ionic_cycle_completion_2026-11-02/README.md",
@@ -490,8 +490,8 @@
       "current": "validation/ionic_cycle_completion_2026-11-02/saved_matrix_recovery_01/current.json",
       "source_snapshot": "validation/ionic_cycle_completion_2026-11-02/saved_matrix_recovery_01/source_evidence.json",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_alternating23_saved_matrix_validation_01",
-      "status": "fresh_ionic_validation_running_center_reproduced_G_pending",
-      "scope": "Exclusive H100 start verified; fresh center matches source energy/gradient to 1.82e-12 Ha / 4.27e-10 Ha/Bohr. Exact complete matrix reused; fresh derivatives, modes and independent G admission pending."
+      "status": "saved_full_ionic_Hessian_fresh_validation_independently_checked",
+      "scope": "Original full response and Hessian verified unchanged; all 25 fresh SCF/gradient evaluations and own modes/nuclear terms independently checked. Alternating adjacent finite cycle +8.28 kJ/mol; no ensemble or material admission."
     },
     "direct_phenothiazine_route": {
       "guide": "validation/phenothiazine_postfunctionalization_2026-11-02/README.md",
@@ -509,6 +509,15 @@
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_fixed_gradient_pilot",
       "status": "fixed_primary_SCF_gradient_resource_control_passed_no_geometry_or_Hessian_admission",
       "scope": "One exact 42-atom +1 singlet chloride control on T4; actual SCF/gradient matches V100 reference. 9088-MiB peak. Full molecular/Hessian default remains 32-GB class; optimization needs its own pilot."
+    },
+    "T4_primary_geometry_resource": {
+      "guide": "validation/counterion_T4_geometry_2026-11-02/README.md",
+      "current": "validation/counterion_T4_geometry_2026-11-02/current.json",
+      "source_snapshot": "validation/counterion_T4_geometry_2026-11-02/plan.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_geometry_pilot",
+      "checks": "validation/counterion_T4_geometry_2026-11-02/scope_checks.xml",
+      "status": "one_T4_full_geometry_pilot_started_unqualified",
+      "scope": "One actual exclusive T4 strict optimization of the existing N0_below minus repair, following the checked exact fixed-gradient control. Geometry resource/physical review pending; zero followups released, no Hessian or native G."
     }
   }
 }

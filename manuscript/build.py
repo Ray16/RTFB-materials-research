@@ -202,6 +202,9 @@ def main():
             raise RuntimeError("Unresolved citations or references in " + name)
         pdf = temporary / (name + ".pdf")
         reader = PdfReader(pdf)
+        if ionic_native_cycle_check is not None:
+            from check_ionic_native_cycles import check_compiled_values
+            check_compiled_values('\n'.join(page.extract_text() for page in reader.pages),ionic_native_cycle_check)
         documents[name] = dict(pages=len(reader.pages), pdf_sha256=sha(pdf),
             overfull_boxes=re.findall(r"Overfull \\[hv]box[^\n]*", log))
     if any(sha(ROOT / p) != expected for p, expected in source.items()):

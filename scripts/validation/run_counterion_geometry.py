@@ -30,6 +30,10 @@ def main():
             or plan['parent_formal_core_charge']!=2 or plan['counterion_charge']!=-1
             or plan['native_G_qualified'] or plan['material_admission']):
         raise ValueError('Exact oxidized-core chloride sensitivity scope required')
+    peak_limit=31744
+    if plan.get('geometry_memory_pilot'):
+        profile=load(sources/'resource_profile.py','counterion_geometry_resource_profile')
+        peak_limit=profile.validate_plan(plan)['maximum_peak_GPU_MiB']
     def verify():
         if any(hashlib.sha256(Path(p).read_bytes()).hexdigest()!=h for p,h in plan['source_sha256'].items()):
             raise ValueError('Counterion geometry source snapshot changed')
@@ -77,7 +81,7 @@ def main():
                     spin=spin,charge=1,mult=1,SCF_converged=True,method=plan['method'],geometry_qualified=False,native_G_qualified=False))
                 if not np.isfinite(gradient).all() or abs(gradient).max()>.00045 or abs(spin.get('spin_contam',float('inf')))>.1:
                     raise ValueError('Fresh final stationarity/spin gate failed')
-            if not 0<memory.peak<=31744:raise ValueError('Counterion geometry GPU memory bound exceeded')
+            if not 0<memory.peak<=peak_limit:raise ValueError('Counterion geometry GPU memory bound exceeded')
         finally:dft._build_smd_mf=builder;dft._geomopt_fn=optimizer
         verify();stage.update(status='counterion_geometry_control_finished_independent_review_pending',
             observed_peak_GPU_MiB=memory.peak,maximum_gradient_Ha_Bohr=float(abs(gradient).max()))

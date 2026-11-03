@@ -7,7 +7,7 @@ preserved in Git; the source-frozen manuscript epoch is selected by
 
 | Requirement | Current evidence | Still required |
 | --- | --- | --- |
-| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; eleven checked alternate-model polymer components and three matched neighboring-graft G cycles | Complete the chosen lead's matched polymer G cycles, sampling and scoped decisions; no candidate currently passes every material requirement |
+| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; twelve checked alternate-model polymer components and all four declared matched neighboring-graft G cycles | Complete occupied sampling, broader salt speciation and scoped decisions; no candidate currently passes every material requirement |
 | M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
 | M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; four exact viologen/chloride outcomes pass full native QC and form three duplicate groups | Complete counterion association thermochemistry and reaction-condition sensitivity; ΔG is not yield or rate |
 | M4: polymer sampling | Forty alternate-model empty inputs meet the finite 10-to-20 criterion; primary finite PMDI/phthalimide cycles remain separately scoped | Occupied graph/configuration batches, duplicate review and balanced occupied ensemble cycles |
@@ -53,14 +53,15 @@ configuration. They are single-conformer E terms under one corrected
 r2SCAN-D4/SVP smooth-surface MeCN model. They supply neither interaction G,
 isolated motif binding nor operating-state coupling.
 
-The alternate polymer collection now has eleven independently checked components
-and three matched finite G cycles: all-same adjacent −3.94 kJ/mol, all-same
-one-spacer +22.58, and alternating one-spacer −5.30 at the primary cutoff.
-Each double-graft component passes a full Hessian and all 25 SCF frame checks.
-The alternating adjacent component retains its full Hessian and completed gradient
-checks after a checkpoint-file I/O failure; its G remains blank pending recovery
-and full independent admission. No ensemble or material inference follows.
-[Current collection](../validation/ionic_cycle_completion_2026-11-02/partial_cycles_11.json).
+The alternate polymer collection now has twelve independently checked components
+and all four declared finite G cycles: all-same adjacent −3.94 kJ/mol, all-same
+one-spacer +22.58, alternating adjacent +8.28, and alternating one-spacer −5.30
+at the primary cutoff. Both finite signs reverse with backbone configuration.
+Each double-graft component has a full Hessian and all 25 actual SCF frames checked.
+The alternating adjacent recovery uses its original source-checked full matrix
+and response, all 25 fresh center/displaced evaluations, and independent own-mode
+and nuclear reconstruction. No ensemble or material inference follows.
+[Current collection](../validation/ionic_cycle_completion_2026-11-02/complete_cycles_12.json).
 
 The separate full 240-input corrected phthalimide-control campaign now has
 89 checked electronic inputs and eight checked native inputs. The largest

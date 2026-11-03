@@ -1,5 +1,6 @@
 """Replay frozen finite-minimum ionic cycles without promoting missing states."""
 import json
+import re
 from decimal import Decimal
 from redox.workflows.ionic_native_cycles import native_cycle,validate_component
 
@@ -21,6 +22,13 @@ def values(data):
     if alternating is not None:
         ag=alternating['delta_delta_G_by_cutoff_kJ_mol']
         fields.update(IonicAlternatingSpacerG=ag['50'],IonicAlternatingSpacerGLow=min(ag.values()),IonicAlternatingSpacerGHigh=max(ag.values()))
+    alternating_adjacent=next((c for c in data['cycles'] if c['native_cycle_qualified'] and c['definition']['configuration']=='alternating'
+                      and c['definition']['sites']==[2,3]),None)
+    if alternating_adjacent is not None:
+        ag=alternating_adjacent['delta_delta_G_by_cutoff_kJ_mol']
+        fields.update(IonicAlternatingAdjacentG=ag['50'],IonicAlternatingAdjacentE=alternating_adjacent['delta_delta_E_kJ_mol'],
+            IonicAlternatingAdjacentGLow=min(ag.values()),IonicAlternatingAdjacentGHigh=max(ag.values()),
+            IonicAlternatingAdjacentMinimum=data['records']['alternating__occ_2_3']['minimum_frequency_cm'])
     return ''.join('\\newcommand{\\'+key+'}{'+f'{value:.2f}'+'}\n' for key,value in fields.items())
 
 
@@ -32,6 +40,8 @@ def table(data):
     if 'alternating__occ_2_4' in data['records']:
         labels.update(alternating__occ_none='Alternating empty',alternating__occ_2='Alternating site 2',
             alternating__occ_4='Alternating site 4',alternating__occ_2_4='Alternating sites 2 and 4')
+    if 'alternating__occ_2_3' in data['records']:
+        labels.update(alternating__occ_3='Alternating site 3',alternating__occ_2_3='Alternating sites 2 and 3')
     lines=[r'\begin{tabular}{lrrrr}\toprule',r'Component & $q$ & $2S+1$ & $\nu_{\min}$ & FD error (\%)\\\midrule']
     for key,label in labels.items():
         row=data['records'][key];err=100*row['maximum_column_error'];mantissa,exponent=f'{err:.2e}'.split('e')
@@ -41,7 +51,7 @@ def table(data):
 
 
 def audit(folder):
-    suffix=next((s for s in ('_v3','_v2','') if (folder/('ionic_native_cycles'+s+'.json')).exists()))
+    suffix=next((s for s in ('_v4','_v3','_v2','') if (folder/('ionic_native_cycles'+s+'.json')).exists()))
     data=json.loads((folder/('ionic_native_cycles'+suffix+'.json')).read_text())
     preparation=json.loads((folder/'ionic_native_cycle_preparation.json').read_text())
     cases={r['case']['key']:r['case'] for r in preparation['cases']}
@@ -65,7 +75,7 @@ def audit(folder):
             raise ValueError('Frozen ionic cycle does not reconstruct from its exact components')
     cycle=next(c for c in data['cycles'] if c['native_cycle_qualified'])
     if cycle['definition']['configuration']!='all_same' or cycle['definition']['sites']!=[2,3]:
-        raise ValueError('Only the first adjacent all-same ionic cycle is reported in this epoch')
+        raise ValueError('The first reported cycle must be the adjacent all-same ionic cycle')
     factor=Decimal('1.602176634e-19')*Decimal('6.02214076e23')/Decimal(1000)
     for checked in (c for c in data['cycles'] if c['native_cycle_qualified']):
         for cutoff,value in checked['delta_delta_G_by_cutoff_kJ_mol'].items():
@@ -78,5 +88,17 @@ def audit(folder):
         primary_cutoff_cm=50,delta_delta_G_by_cutoff_kJ_mol=cycle['delta_delta_G_by_cutoff_kJ_mol'],
         delta_delta_E_kJ_mol=cycle['delta_delta_E_kJ_mol'],
         native_cycle_arithmetic_replayed=True,original_physical_QC_repeated=False,
+        primary_cycle_values=[dict(configuration=c['definition']['configuration'],sites=c['definition']['sites'],
+            G_kJ_mol=c['delta_delta_G_by_cutoff_kJ_mol']['50']) for c in data['cycles'] if c['native_cycle_qualified']],
         conformer_ensemble_qualified=False,isolated_motif_binding_energy=False,
         electronic_coupling_computed=False,experimental_accuracy_validated=False,material_admission=False)
+
+
+def check_compiled_values(text, report):
+    """Every reported cycle, including its sign, must survive TeX compilation."""
+    normalized=re.sub(r'(?<=\d)\s*\.\s*(?=\d)', '.', text.replace('\N{MINUS SIGN}', '-'))
+    normalized=re.sub(r'-\s+(?=\d)', '-', normalized)
+    for row in report['primary_cycle_values']:
+        value=f"{row['G_kJ_mol']:.2f}"
+        if re.search(r'(?<![\d.\-])'+re.escape(value)+r'(?![\d.])',normalized) is None:
+            raise ValueError('A checked signed ionic-cycle value is absent from the compiled document: '+value)

@@ -22,11 +22,12 @@ quaternization and disproportionation cycles reproduce the retained results
 within 2.45e-8 V and 1.55e-6 kJ/mol across the three rotor settings. The SI
 reports component QC. [Calculation/review record](../validation/ionic_cycle_completion_2026-11-02/README.md).
 
-The exact lead now also has three complete matched ionic-polymer neighboring-graft
-G cycles: −3.94 kJ/mol (all-same adjacent), +22.58 (all-same one spacer), and
-−5.30 (alternating one spacer) at the primary cutoff. Eleven checked native
-components supply these finite r2SCAN-D4/SVP smooth-surface MeCN responses.
-The alternating adjacent cycle and occupied ensembles remain pending.
+The exact lead now has all four declared matched ionic-polymer neighboring-graft
+G cycles: −3.94 kJ/mol (all-same adjacent), +22.58 (all-same one spacer),
++8.28 (alternating adjacent), and −5.30 (alternating one spacer) at the primary
+cutoff. Twelve checked native components supply these finite r2SCAN-D4/SVP
+smooth-surface MeCN responses. Both signs reverse with backbone configuration
+and remain unchanged across the tested rotor settings. Occupied ensembles remain pending.
 Twelve frozen motif triplets additionally supply 72 checked gas/MeCN SCFs:
 local motif repulsion and whole-chain electronic nonadditivity have opposite
 signs in two of four parent frames. The article distinguishes these quantities

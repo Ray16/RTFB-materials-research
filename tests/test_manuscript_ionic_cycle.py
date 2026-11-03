@@ -37,3 +37,35 @@ def test_corrupted_scalar_identity_or_scope_cannot_enter_the_paper(tmp_path,bad)
     if bad=='zero_for_missing':data['cycles'][1]['delta_delta_G_by_cutoff_kJ_mol']={'50':0.}
     path.write_text(json.dumps(data))
     with pytest.raises(ValueError):checker().audit(folder)
+
+
+def full_fixture(tmp_path):
+    folder=fixture(tmp_path)
+    data=json.loads((ROOT/'validation/ionic_cycle_completion_2026-11-02/complete_cycles_12.json').read_text())
+    (folder/'ionic_native_cycles_v4.json').write_text(json.dumps(data))
+    module=checker()
+    (folder/'ionic_native_cycle_values_v4.tex').write_text(module.values(data))
+    (folder/'ionic_native_cycle_table_v4.tex').write_text(module.table(data))
+    return folder
+
+
+def test_all_four_cycles_reconstruct_and_survive_compilation_with_their_signs(tmp_path):
+    module=checker();report=module.audit(full_fixture(tmp_path))
+    assert report['checked_components']==12 and report['complete_finite_cycles']==4 and report['pending_cycles']==0
+    values=[r['G_kJ_mol'] for r in report['primary_cycle_values']]
+    assert [v>0 for v in values]==[False,True,True,False]
+    module.check_compiled_values('−3.94 22.58 8.28 −5.30',report)
+    with pytest.raises(ValueError):module.check_compiled_values('−3.94 22.58 8.28 5.30',report)
+
+
+@pytest.mark.parametrize('bad',['component','cycle','scope','frames','model'])
+def test_the_recovered_fourth_component_cannot_be_promoted_with_incomplete_or_mixed_evidence(tmp_path,bad):
+    folder=full_fixture(tmp_path);path=folder/'ionic_native_cycles_v4.json';data=json.loads(path.read_text())
+    row=data['records']['alternating__occ_2_3']
+    if bad=='component':row['G_by_cutoff_eV']['50']+=.1
+    if bad=='cycle':data['cycles'][2]['delta_delta_G_by_cutoff_kJ_mol']['50']=0.
+    if bad=='scope':data['conformer_ensemble_qualified']=True
+    if bad=='frames':row['actual_SCF_checkpoint_frames_checked']=24
+    if bad=='model':row['context']['solvent_model']={'name':'borrowed primary molecular model'}
+    path.write_text(json.dumps(data))
+    with pytest.raises(ValueError):checker().audit(folder)

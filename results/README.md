@@ -7,7 +7,7 @@ establish that a calculation is currently running.
 
 - [Paper and SI](../manuscript/README.md): checked 20/34-page working documents,
   frozen evidence, independent arithmetic and a self-contained upload bundle.
-  The current revision integrates three finite ionic neighboring-graft G cycles,
+  The current revision integrates all four declared finite ionic neighboring-graft G cycles,
   matched motif/chain electronic comparisons and four chloride-contact outcomes
   in three numerical duplicate groups. Occupied ensembles, broader salt speciation
   and full material eligibility remain pending.
@@ -55,19 +55,23 @@ establish that a calculation is currently running.
   incomplete. Complete control Hessians are retained and their fresh derivative
   validation continues in separate source-bound namespaces.
 - [Checked ionic native collection](../validation/ionic_cycle_completion_2026-11-02/README.md):
-  eleven components now close three finite viologen G cycles: all-same adjacent
-  −3.94 kJ/mol, all-same one-spacer +22.58, and alternating one-spacer −5.30.
-  The alternating adjacent cycle and occupied ensembles remain pending.
+  twelve components now close all four declared finite viologen G cycles:
+  all-same adjacent −3.94 kJ/mol, all-same one-spacer +22.58, alternating adjacent
+  +8.28, and alternating one-spacer −5.30. Occupied ensembles remain pending.
   These finite smooth-surface MeCN r2SCAN/SVP values are separate from primary
   molecular G, isolated motif binding, electronic coupling and material admission.
   The [fourth-cycle recovery](../validation/ionic_cycle_completion_2026-11-02/saved_matrix_recovery_01/README.md)
-  has an exclusive H100 start and reproduces the source center before reusing
-  its complete Hessian. Fresh derivative/minimum checks and independent G
-  admission remain pending.
+  passes independent source, all 25 fresh SCF/gradient, sampled-derivative,
+  mode and own-nuclear-term review. The original complete response and Hessian
+  are preserved; no second response solve or ensemble admission is claimed.
 - [T4 fixed-gradient resource control](../validation/counterion_T4_resource_2026-11-02/README.md):
   one exact primary-model chloride SCF/gradient matches the V100 reference to
   1.4e-12 Ha / 1.3e-12 Ha/Bohr, at 9,088 MiB peak. This qualifies the fixed
   control only; optimization and Hessian resource classes remain unqualified.
+- [T4 full geometry resource pilot](../validation/counterion_T4_geometry_2026-11-02/README.md):
+  one existing signed-mode chloride repair has an actual exclusive optimization
+  start after the checked fixed-gradient control. Closed geometry/resource review
+  is pending; no further repair, Hessian or native G is admitted by this start.
 - [Exact chloride-contact sensitivity](../validation/counterion_sensitivity_2026-11-02/README.md):
   seven actual geometry starts retain the exact oxidized graft plus Cl⁻, with
   total charge +1 and singlet spin, distinct from the +1 doublet redox state.

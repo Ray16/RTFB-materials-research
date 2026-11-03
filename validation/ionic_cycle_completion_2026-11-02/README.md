@@ -1,12 +1,25 @@
 # Exact lead thermochemistry and occupancy completion
 
-The [current eleven-component collection](partial_cycles_11.json) closes three
-balanced finite ionic viologen G cycles. At the 50-cm⁻¹ rotor setting they are
-−3.9365 kJ/mol (all-same adjacent), +22.5790 (all-same one spacer), and −5.2972
-(alternating one spacer). The 25/50/100 values are preserved in the collection.
-The all-same adjacent/spacer electronic contributions are −3.4607/+18.6848 kJ/mol.
-These whole-chain responses include deformation and solvent changes; they are
-not isolated motif binding, coupling, converged ensembles or material admission.
+The [current twelve-component collection](complete_cycles_12.json) closes all
+four declared balanced finite ionic viologen G cycles. At the 50-cm⁻¹ rotor
+setting they are −3.9365 kJ/mol (all-same adjacent), +22.5790 (all-same one
+spacer), +8.2781 (alternating adjacent), and −5.2972 (alternating one spacer).
+Both signs reverse with backbone configuration and stay unchanged over the
+25/50/100-cm⁻¹ settings. These whole-chain responses include deformation and
+solvent changes; they are not isolated motif binding, coupling, converged
+ensembles or material admission.
+
+All four 137-atom +4/singlet double-graft components pass full matrix, minimum,
+sampled-derivative, own-nuclear-term and all 25 actual SCF-frame checks.
+The [alternating adjacent review](saved_matrix_recovery_01/independent_review.json)
+checks the saved original full response/Hessian and all 25 fresh evaluations;
+its minimum internal frequency is 9.23351 cm⁻¹ and sampled-column error is
+2.85872e-6. The interrupted source remains preserved, and its response is
+explicitly reused rather than claimed as newly solved. The [focused replay
+checks](four_cycle_checks.xml) also reject mixed models, missing frames,
+corrupt fourth-cycle sums and ensemble promotion.
+
+The observations below document earlier partial collections and remain historical.
 
 All three 137-atom +4/singlet double-graft components pass full Hessian, minimum,
 sampled derivative, own nuclear-term and all 25 actual SCF-frame checks.

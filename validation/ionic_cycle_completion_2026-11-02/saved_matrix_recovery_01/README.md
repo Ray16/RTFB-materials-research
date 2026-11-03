@@ -1,5 +1,17 @@
 # Fourth ionic cycle: saved-matrix validation recovery
 
+The recovery is now independently checked: [review](independent_review.json).
+Its original complete matrix and full-response evidence are verified, and all
+25 center/displaced SCF evaluations are fresh. The minimum internal frequency is
+9.23351 cm⁻¹ and largest sampled-column error is 2.85872e-6. Own modes, symmetry
+and nuclear terms pass reconstruction. The completed alternating adjacent cycle
+is +8.27807 kJ/mol at the primary cutoff. All four declared finite cycles now
+close in the [twelve-component collection](../complete_cycles_12.json).
+The response was reused, not newly solved. Occupied ensembles, salt speciation,
+electronic coupling and material/JCIM submission remain incomplete.
+
+The records below preserve preparation, failure diagnosis and actual-start history.
+
 The alternating adjacent double-graft calculation stopped during a displaced
 SCF checkpoint write with HDF5 file-lock error 11. The original worker, wrapper
 and budget observer are confirmed closed. Its failure, full Hessian, full solvent

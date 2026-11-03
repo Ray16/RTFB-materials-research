@@ -210,6 +210,9 @@ def launch(path,gpu,output):
         if plan.get('fixed_gradient_memory_pilot'):
             from redox.workflows.counterion_gradient_pilot import device_for_plan
             device=device_for_plan(plan,gpu)
+        elif plan.get('geometry_memory_pilot'):
+            from redox.workflows.counterion_geometry_resources import device_for_plan
+            device=device_for_plan(plan,gpu)
         else:device=gpu_suitability(gpu)
         if (host,gpu) not in free_slots([host]):raise RuntimeError('GPU occupied; no molecular job started')
         with (output/'command.log').open('x') as log:
