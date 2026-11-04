@@ -25,4 +25,4 @@ jobs:
           python -m redox --help
           python -m redox workflows --json
           python -I -S examples/cached_thermochemistry/reproduce.py
-          python -m pytest -q tests/test_cached_thermochemistry.py tests/test_workflow_catalog.py tests/test_config_loading.py
+          python -m pytest -q tests/test_cached_thermochemistry.py tests/test_workflow_catalog.py tests/test_config_loading.py tests/test_workspace_index.py

@@ -5,13 +5,16 @@ scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
 establish that a calculation is currently running.
 
-- [Paper and SI](../manuscript/README.md): checked 21/36-page working documents,
-  frozen evidence, independent arithmetic and a self-contained upload bundle.
-  The current revision integrates all four declared finite ionic neighboring-graft G cycles,
-  matched motif/chain electronic comparisons and seven chloride-contact outcomes
-  in five numerical duplicate groups. The new occupied sampling diagnostic fails and is reported in the abstract,
-  results and SI Table S17. Occupied ensembles, broader salt speciation
-  and full material eligibility remain pending.
+- [Paper and SI](../manuscript/README.md): the shared revision is a checked
+  14-page article and 40-page SI, with the parent benchmark and matched
+  molecular/reaction/polymer comparisons. The earlier 21/36-page source exports
+  retain their own frozen evidence scope. Occupied ensembles, broader salt
+  speciation and full material eligibility remain pending.
+- [Canonical workspace locations](../validation/workspace_index_update.json):
+  47 mutable result pointers now use the relocated directories inside `0_redox`.
+  Historical evidence bytes and their recorded logical paths are unchanged.
+  Temporary sibling links remain until their readers and namespaces are migrated;
+  the active polymer directory remains deferred until its calculations finish.
 - [Exact-molecule CPU example](../examples/exact_viologen_replay/README.md):
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels

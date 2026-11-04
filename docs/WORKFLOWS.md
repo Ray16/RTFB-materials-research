@@ -245,3 +245,18 @@ refusals from bounded environment failures for electronic, native and saved-ioni
 controllers. It checks frozen source branches before Popen, exact owner closure
 and absent scientific outputs. Resource waits preserve cooldowns without
 consuming scientific/prelaunch-failure budgets; uncertain starts require review.
+
+## Canonical result locations
+
+`results/README.md` and `results/INDEX.json` use current locations inside the
+canonical `0_redox` directory. `validation/workspace_relocation.json` records the
+explicit old/new prefix mapping; `validation/workspace_index_update.json` records
+the 47 pointer updates. Neither mapping qualifies a scientific result.
+
+`scripts/release/update_workspace_index.py --report PATH` checks the complete
+mapping and every changed target before atomically updating the mutable index.
+It refuses foreign old directories, targets outside the project, missing targets
+and overlapping prefixes. It never edits the evidence files behind the pointers.
+The active polymer directory is deferred and is absent from the move mapping.
+Legacy namespace/runtime paths and compatibility links must be retired only after
+source-bound readers have an explicitly validated replacement.
