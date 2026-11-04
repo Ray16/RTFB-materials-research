@@ -20,7 +20,7 @@ are included. Extraction occurs in private tmpfs and creates no persistent work
 folder. The existing runtime is reused; neither a fresh environment install nor
 new quantum calculations is claimed.
 
-The full raw archive is now being created separately, following newly available
+The full raw archive has been created and is undergoing read-back verification, following newly available
 storage and a [source preflight](raw_archive_preflight.json). It remains excluded
 from the current completed-package manifest until every archived member passes
 verification. Public deposition, reuse metadata and final author declarations
@@ -146,3 +146,8 @@ result, archive creation is incomplete. A partial archive is not a release.
 The [13 stream/package checks](raw_archive_stream_checks.xml) include existing
 metadata directories and refusal of conflicting filenames. No new release or
 working directory was created.
+
+The final manifest gate requires an exact matching inventory and manifest hash,
+complete member/object counts, the verifier's final archive checksum, and an
+unchanged local file size. Pending or mismatched receipts cannot admit the raw
+archive into the final package. The original version-five manifest remains intact.

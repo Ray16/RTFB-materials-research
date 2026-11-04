@@ -26,8 +26,8 @@ establish that a calculation is currently running.
   The shared PDFs' page text matches the checked version. Earlier bundles retain
   their original scope.
 - [Full raw archive](../validation/publication_release_2026-11-03/full_raw_archive_owner.json):
-  creation is underway now that storage is available. The 120.38-GB payload
-  must pass complete member/hash verification before it enters the checked
+  source-checked creation is complete. The 120.38-GB payload is undergoing
+  complete archive member/hash verification before it enters the checked
   reviewer package. Public deposition remains pending.
 - [Finite viologen comparison replay](../examples/finite_viologen_replay/README.md):
   standard-library reconstruction of the four finite ionic cycles and twelve

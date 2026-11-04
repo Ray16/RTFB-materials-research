@@ -19,8 +19,8 @@ python3 -I -S examples/cached_thermochemistry/reproduce.py
 ```
 
 The complete suite is `python -m pytest -q` in the scientific environment. Report
-exactly what ran, including skipped/failed tests. Hosted CI covers only the small
-subset above. It does not validate CUDA execution, Hessians or experimental accuracy.
+exactly what ran, including skipped/failed tests. Hosted CI covers a small CPU subset, including metadata relocation and
+release-admission checks. It does not validate CUDA execution, Hessians or experimental accuracy.
 
 ## Scientific changes
 

@@ -715,8 +715,9 @@
       "source_snapshot": "validation/publication_release_2026-11-03/current_raw_archive_inventory.json",
       "checks": "validation/publication_release_2026-11-03/raw_archive_stream_checks.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/redox_release_candidates/2026-11-03_jcim_review_candidate_submission/packages",
-      "status": "archive_creation_and_independent_verification_pending",
-      "scope": "46,789 objects, 120.38 GB research-evidence content. Source bytes rehashed while streaming; archive member verification must pass before publication. No fresh QM or public deposition."
+      "status": "source_archive_created_readback_verification_in_progress",
+      "scope": "46,789 objects, 120.38 GB research-evidence content, 107.29-GB compressed archive. Source hashes passed while streaming; full archive member read-back verification is in progress. No fresh QM or public deposition.",
+      "creation_receipt": "validation/publication_release_2026-11-03/full_raw_archive_created.json"
     }
   },
   "workspace_relocation": {
