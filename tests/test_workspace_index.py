@@ -42,3 +42,13 @@ def test_prefix_lookalikes_are_not_relocated(tmp_path):
     root,old,new,mapping=fixture(tmp_path)
     source={'path':str(old)+'_another/file'}
     assert relocate_index(source,mapping,root)==(source,[])
+
+
+def test_input_lookup_works_after_the_compatibility_link_is_removed(tmp_path):
+    from redox.validation.workspace_index import relocated_input_path
+    root,old,new,mapping=fixture(tmp_path)
+    old.unlink()
+    assert relocated_input_path(old/'value.json',mapping,root)==new/'value.json'
+    assert (new/'value.json').read_text()=='{}'
+    assert relocated_input_path(tmp_path/'unmapped.json',mapping,root)==tmp_path/'unmapped.json'
+

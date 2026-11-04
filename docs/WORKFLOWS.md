@@ -260,3 +260,13 @@ and overlapping prefixes. It never edits the evidence files behind the pointers.
 The active polymer directory is deferred and is absent from the move mapping.
 Legacy namespace/runtime paths and compatibility links must be retired only after
 source-bound readers have an explicitly validated replacement.
+
+For the historical eight-package collection tool, input archives can be resolved
+without sibling links by explicitly passing
+`--relocation validation/workspace_relocation.json` to
+`scripts/release/reviewer_collection.py`. The collection records both the original
+and resolved input paths and still verifies each expected archive hash. A fresh
+`--out` inside the canonical project is supported; the tool creates no destination
+while checking arguments. Run it only when a new collection directory is explicitly
+requested. The current reviewer package uses the append-only manifests described
+in the results index.

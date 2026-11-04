@@ -44,3 +44,13 @@ def relocate_index(index, relocation, root):
         return value
 
     return visit(index, []), changes
+
+
+def relocated_input_path(path: str | Path, relocation: dict, root: str | Path) -> Path:
+    """Resolve one input through an explicit, checked workspace mapping.
+
+    Unmapped inputs keep their declared location. This changes no source record;
+    callers must still verify the input's expected content hash before use.
+    """
+    resolved, _ = relocate_index(str(path), relocation, root)
+    return Path(resolved)

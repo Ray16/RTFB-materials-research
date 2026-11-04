@@ -11,11 +11,19 @@ import subprocess
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
+from redox.validation.workspace_index import relocated_input_path
 
 
-def assemble(archive,output,commit):
-    if output.exists() or output.is_relative_to(ROOT) or output.is_relative_to(archive):
-        raise FileExistsError('Use a new shared-storage release draft outside scientific checkouts')
+def output_location(archive, output):
+    """Validate an explicitly requested destination without creating it."""
+    archive, output = Path(archive).resolve(), Path(output).resolve()
+    if output.exists() or output.is_relative_to(archive):
+        raise FileExistsError('Use a fresh explicit output directory separate from the source archive')
+    return archive, output
+
+
+def assemble(archive,output,commit,relocation=None):
+    archive, output = output_location(archive, output)
     commit=subprocess.check_output(['git','rev-parse',commit+'^{commit}'],cwd=ROOT,text=True).strip()
     rows=[]
     for name in ('primary_review','first_site','controls','neighbor_cycle','tempo_addendum','local_motif'):
@@ -25,16 +33,21 @@ def assemble(archive,output,commit):
     for name,record_path in [('native_inputs75',ROOT/'validation/native_cache_2026-10-30/summary.json'),
                              ('exact_viologen_CPU',ROOT/'validation/exact_molecular_CPU_2026-10-31/summary.json')]:
         data=json.loads(record_path.read_text())
-        source=(Path(data['archive']) if name=='native_inputs75' else ROOT.parent/'redox_release_candidates/2026-10-31_exact_viologen_CPU_final.tar.zst')
+        source=(Path(data['archive']) if name=='native_inputs75' else ROOT/'results/redox_release_candidates/2026-10-31_exact_viologen_CPU_final.tar.zst')
         rows.append(dict(id=name,source=str(source),sha256=data['archive_sha256'],record=str(record_path)))
-    if any(sha256_file(r['source'])!=r['sha256'] for r in rows):raise ValueError('A checked package changed before assembly')
-    estimated=sum(Path(r['source']).stat().st_size for r in rows)
+    for row in rows:
+        source = (relocated_input_path(row['source'], relocation, ROOT)
+                  if relocation is not None else Path(row['source']))
+        row['resolved_source'] = str(source)
+        if sha256_file(source) != row['sha256']:
+            raise ValueError('A checked package changed before assembly')
+    estimated=sum(Path(r['resolved_source']).stat().st_size for r in rows)
     if shutil.disk_usage(output.parent).free<32*2**30+2*estimated+2*2**30:
         raise RuntimeError('Shared-volume margin unavailable for the bounded review bundle')
     output.mkdir(parents=True);packages=output/'packages';packages.mkdir();records=output/'package_records';records.mkdir()
     files={}
     for row in rows:
-        target=packages/(row['id']+'.tar.zst');shutil.copyfile(row['source'],target)
+        target=packages/(row['id']+'.tar.zst');shutil.copyfile(row['resolved_source'],target)
         if sha256_file(target)!=row['sha256']:raise ValueError('Copied checked archive differs')
         shutil.copyfile(row['record'],records/(row['id']+'.json'))
         files[str(target.relative_to(output))]=row['sha256']
@@ -78,8 +91,11 @@ No public deposition or submission readiness is claimed.
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--archive',type=Path,required=True)
-    parser.add_argument('--out',type=Path,required=True);parser.add_argument('--commit',default='HEAD');args=parser.parse_args()
+    parser.add_argument('--out',type=Path,required=True);parser.add_argument('--commit',default='HEAD')
+    parser.add_argument('--relocation',type=Path,help='explicit legacy input path mapping; source hashes remain mandatory')
+    args=parser.parse_args()
     from redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation
     with allocation_guard():host_capacity(4,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(4))
-    result=assemble(args.archive.resolve(),args.out.resolve(),args.commit)
+    relocation=json.loads(args.relocation.read_text()) if args.relocation else None
+    result=assemble(args.archive.resolve(),args.out.resolve(),args.commit,relocation)
     print(json.dumps({k:result[k] for k in ('status','source_commit','nested_archives_integrity_checked','public_deposition_complete')}))
