@@ -1,7 +1,7 @@
 Dear Editors,
 
-Please consider our Article, “Context-Preserving Computational Assessment of
-Redox Motifs for Polymer Grafting,” for the Journal of Chemical Information and
+Please consider our Article, “From Molecular Redox Screening to Polymer Grafts:
+Benchmarking and Matched Thermodynamic Comparisons,” for the Journal of Chemical Information and
 Modeling.
 
 The manuscript tests which conclusions from molecular redox screening survive
@@ -10,7 +10,9 @@ comparisons that distinguish local motif interactions, whole-chain responses and
 reaction-reference effects while retaining exact structures and calculation
 contexts.
 
-A retrospective 39-endpoint MeCN benchmark provides a defined accuracy domain.
+A retrospective 39-endpoint MeCN benchmark defines the molecular accuracy domain.
+All nine paired redox-step spacings are overestimated, exposing an error component
+that cannot be removed by a common ferrocene reference shift.
 In the exact viologen case, frozen methyl-capped motifs are repulsive in all four
 tested ionic frames, including two with favorable whole-chain electronic
 nonadditivity. Both adjacent and one-spacer neighboring-graft free energies
@@ -24,8 +26,7 @@ superior screening accuracy, grafting yield or validated material performance.
 
 The Article, separate Supporting Information and machine-readable evidence
 include numerical protocols, applicability limits and reproducible examples.
-The full manuscript validation build runs with the original user data hidden
-and networking disabled. The manuscript discloses AI assistance in drafting
+Source-bound numerical checks and portable examples accompany the paper. The manuscript discloses AI assistance in drafting
 and code development. We believe the matched chemical counterexamples and
 explicit rules for property reuse will interest JCIM readers working on
 molecular modeling and computer-aided materials design.

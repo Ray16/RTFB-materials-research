@@ -48,3 +48,21 @@ def test_changed_manifest_rejected_at_archive_verification(tmp_path,stream_modul
     path.write_text(json.dumps(data))
     with pytest.raises(ValueError,match='Archive member bytes differ'):
         stream_module.verify_archive(archive,path)
+
+
+def test_existing_metadata_directory_preserves_unrelated_records(tmp_path,stream_module):
+    raw,inv,archive,meta=inputs(tmp_path,stream_module)
+    meta.mkdir();record=meta/'earlier_review.json';record.write_text('{"preserved":true}')
+    stream_module.create(inv,archive,meta,existing_metadata=True)
+    assert record.read_text()=='{"preserved":true}'
+    manifest=json.loads((meta/'manifest.json').read_text())
+    assert 'earlier_review.json' not in manifest['support_files_sha256']
+    assert stream_module.verify_archive(archive,meta/'manifest.json')['members_verified']==6
+
+
+def test_existing_metadata_conflict_refuses_before_archive_write(tmp_path,stream_module):
+    raw,inv,archive,meta=inputs(tmp_path,stream_module)
+    meta.mkdir();(meta/'README.md').write_text('earlier evidence')
+    with pytest.raises(FileExistsError,match='conflicting'):
+        stream_module.create(inv,archive,meta,existing_metadata=True)
+    assert not archive.exists() and (meta/'README.md').read_text()=='earlier evidence'

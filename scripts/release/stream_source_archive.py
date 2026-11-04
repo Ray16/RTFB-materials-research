@@ -28,8 +28,13 @@ class CheckedReader:
         return block
 
 
-def create(inventory_path, archive, metadata):
-    if archive.exists() or metadata.exists():raise FileExistsError('Preserve earlier release outputs')
+def create(inventory_path, archive, metadata, *, existing_metadata=False):
+    if archive.exists() or (metadata.exists() and not existing_metadata):
+        raise FileExistsError('Preserve earlier release outputs')
+    support_names=('verify.py','archive_source.py','stage_declared_sources.py','README.md')
+    if existing_metadata and (not metadata.is_dir() or
+            any((metadata/name).exists() for name in (*support_names,'manifest.json'))):
+        raise FileExistsError('Existing metadata directory must have no conflicting archive files')
     inv=json.loads(inventory_path.read_text())
     if inv.get('status')!='declared_dependency_inventory_verified' or inv.get('unresolved')!=[]:
         raise ValueError('Complete declared-map inventory required')
@@ -37,7 +42,7 @@ def create(inventory_path, archive, metadata):
     # Use the uncompressed size as a conservative upper bound; no guessed ratio.
     if shutil.disk_usage(archive.parent).free<sum(layout['objects'].values())+32*2**30:
         raise RuntimeError('Insufficient worst-case archive headroom and shared reserve')
-    metadata.mkdir()
+    metadata.mkdir(exist_ok=existing_metadata)
     here=Path(__file__).parent
     for source,name in [(here/'verify_source_objects.py','verify.py'),
                         (Path(__file__),'archive_source.py'),
@@ -57,7 +62,7 @@ dependencies, reuse licensing and public deposition retain separate scopes.
 The archived producer sources preserve packaging logic; code/data rights are
 not reassigned by this local bundle. No fresh quantum calculation is performed.
 ''')
-    support={p.name:sha256_file(p) for p in metadata.iterdir()}
+    support={name:sha256_file(metadata/name) for name in support_names}
     manifest=dict(status='streamed_publication_raw_evidence_not_deposited',**layout,
         inventory_scope=inv['traversal_scope'],implicit_dependencies_covered=False,
         support_files_sha256=support,inventory_sha256=sha256_file(inventory_path),
@@ -136,6 +141,8 @@ if __name__=='__main__':
     parser.add_argument('--inventory',type=Path)
     parser.add_argument('--archive',type=Path,required=True)
     parser.add_argument('--metadata',type=Path,required=True)
+    parser.add_argument('--existing-metadata',action='store_true',
+                        help='use an existing directory while preserving unrelated files; refuse name collisions')
     parser.add_argument('--out',type=Path)
     args=parser.parse_args()
     from redox.workflows.resources import allocation_guard,cpu_allocation,host_capacity
@@ -143,7 +150,7 @@ if __name__=='__main__':
         host_capacity(2,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(2))
     if args.action=='create':
         if args.inventory is None:parser.error('--inventory required for create')
-        result=create(args.inventory.resolve(),args.archive.resolve(),args.metadata.resolve())
+        result=create(args.inventory.resolve(),args.archive.resolve(),args.metadata.resolve(),existing_metadata=args.existing_metadata)
     else:
         if args.out is None or args.out.exists():parser.error('--out must name a fresh verification record')
         result=verify_archive(args.archive.resolve(),args.metadata.resolve()/'manifest.json')
