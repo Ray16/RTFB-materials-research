@@ -665,7 +665,7 @@
     },
     "publication_release_candidate": {
       "guide": "validation/publication_release_2026-11-03/README.md",
-      "current": "validation/publication_release_2026-11-03/review_candidate_05.json",
+      "current": "validation/publication_release_2026-11-03/review_candidate_06.json",
       "source_snapshot": "validation/publication_release_2026-11-03/raw_seed_manifest.json",
       "source_replay": "validation/publication_release_2026-11-03/current_source_validation.json",
       "raw_inventory": "validation/publication_release_2026-11-03/current_raw_archive_inventory.json",
@@ -673,8 +673,8 @@
       "portability": "validation/portable_sampling_2026-11-03/committed_example_validation.json",
       "checks": "validation/publication_release_2026-11-03/archive_checks.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/redox_release_candidates/2026-11-03_jcim_review_candidate_submission",
-      "status": "current_shared_manuscript_review_package_checked_raw_archive_running",
-      "scope": "Six checked payloads (824 MB), nine submission files, source commit 6629fcd1 and shared manuscript 15/41 pages. All Git blobs verified; isolated scientific/shared builds pass and shared page text matches. Full raw archive is being created separately and is not yet verified or deposited.",
+      "status": "local_review_package_complete_with_verified_declared_raw_archive",
+      "scope": "Seven checked payloads, including the 107.29-GB raw archive, current 15/41-page manuscript and nine submission files. Source commit 6629fcd1 matches all Git blobs; isolated scientific/shared builds pass. All 46,794 raw archive members and final compressed checksum pass. Public deposition, data-reuse metadata and author declarations remain pending.",
       "source_export": "validation/publication_release_2026-11-03/current_source_export.json",
       "submission_inventory": "manuscript/submission_files.json",
       "raw_addendum_seeds": "validation/publication_release_2026-11-03/raw_addendum_seeds.json",
@@ -711,12 +711,12 @@
     },
     "publication_raw_archive": {
       "guide": "validation/publication_release_2026-11-03/README.md",
-      "current": "validation/publication_release_2026-11-03/full_raw_archive_owner.json",
+      "current": "validation/publication_release_2026-11-03/full_raw_archive_verified.json",
       "source_snapshot": "validation/publication_release_2026-11-03/current_raw_archive_inventory.json",
       "checks": "validation/publication_release_2026-11-03/raw_archive_stream_checks.xml",
       "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/redox_release_candidates/2026-11-03_jcim_review_candidate_submission/packages",
-      "status": "source_archive_created_readback_verification_in_progress",
-      "scope": "46,789 objects, 120.38 GB research-evidence content, 107.29-GB compressed archive. Source hashes passed while streaming; full archive member read-back verification is in progress. No fresh QM or public deposition.",
+      "status": "all_declared_archive_members_and_hashes_verified",
+      "scope": "46,789 objects and five metadata/support members verified. 120.38 GB research-evidence content, 107.29 GB compressed. This is byte integrity, not fresh QM/experimental qualification; implicit dependencies and current live campaign outputs are outside the frozen scope. Public deposition is pending.",
       "creation_receipt": "validation/publication_release_2026-11-03/full_raw_archive_created.json"
     }
   },

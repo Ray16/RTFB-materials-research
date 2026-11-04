@@ -310,3 +310,12 @@ prose. Newly available storage permits creation of the full raw archive; its
 independent verification is still pending. Earlier storage-shortfall observations
 above describe their original dates. Public deposition and final author/reuse
 metadata remain outstanding.
+
+## Completed local archive
+
+The [final local package](../validation/publication_release_2026-11-03/review_candidate_06.json)
+now includes the fully verified declared raw archive. All 46,794 members and the
+compressed archive checksum pass. Source code and both manuscript forms have
+independent export/build checks. The archive is 107.29 GB compressed. Public
+deposition, a permanent identifier and reuse/author metadata remain open; the
+running polymer campaign must finish before the final directory/link cleanup.

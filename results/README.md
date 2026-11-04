@@ -19,16 +19,15 @@ establish that a calculation is currently running.
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
   pass extracted-archive replay with original scientific paths blocked.
-- [Current publication release candidate](../validation/publication_release_2026-11-03/README.md):
-  six checked source/document/replay payloads (824 MB), the current 15/41-page
-  manuscript and nine submission files. Source commit `6629fcd1` matches every
-  Git blob; its scientific and shared builds pass with original user data hidden.
-  The shared PDFs' page text matches the checked version. Earlier bundles retain
-  their original scope.
-- [Full raw archive](../validation/publication_release_2026-11-03/full_raw_archive_owner.json):
-  source-checked creation is complete. The 120.38-GB payload is undergoing
-  complete archive member/hash verification before it enters the checked
-  reviewer package. Public deposition remains pending.
+- [Complete local publication package](../validation/publication_release_2026-11-03/README.md):
+  seven payloads include the current 15/41-page manuscript, nine submission files,
+  source commit `6629fcd1`, scoped replays and the verified full declared raw archive.
+  Isolated scientific/shared builds pass with original user data hidden; the shared
+  PDFs' page text matches the checked version. Earlier packages retain their scope.
+- [Verified full raw archive](../validation/publication_release_2026-11-03/full_raw_archive_verified.json):
+  all 46,789 objects and five metadata/support members pass byte verification.
+  The archive is 107.29 GB compressed (120.38 GB of research evidence).
+  Public deposition and data reuse metadata remain pending.
 - [Finite viologen comparison replay](../examples/finite_viologen_replay/README.md):
   standard-library reconstruction of the four finite ionic cycles and twelve
   motif triplets. An isolated copy passes with original scientific paths blocked;

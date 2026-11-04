@@ -1,30 +1,36 @@
 # Publication release preparation
 
-The [current reviewer package](review_candidate_05.json) is appended inside the
-existing canonical release directory:
+The [complete local reviewer package](review_candidate_06.json) is finalized
+inside the existing canonical release directory:
 `results/redox_release_candidates/2026-11-03_jcim_review_candidate_submission`.
-Use its `CURRENT.md` and `manifest_5f50c61.json`. The earlier manifests, packages
-and source versions remain unchanged.
+Use its `CURRENT.md` and `manifest_5f50c61_with_raw.json`. All earlier manifests,
+packages and source versions remain unchanged.
 
-The current package contains the shared 15-page Article and 41-page SI, aligned
-cover letter and TOC TIFF, context-complete data tables, self-contained manuscript
-source, scientific source commit `6629fcd1`, and the existing checked replay/control
-and slide packages with their dated scopes. Its 27 selected files are hash checked.
-The scientific source archive was streamed against all 12,377 Git blobs.
+The seven payloads include the shared 15-page Article and 41-page SI, aligned
+submission files, self-contained manuscript source, scientific source commit
+`6629fcd1`, existing scoped replay/control and slide packages, and the complete
+verified declared raw archive. The final manifest binds 37 package files.
+The scientific source archive matches all 12,377 Git blobs.
 
 The [isolated source check](current_source_validation.json) reconstructs the
-scientific-evidence documents and compiles the current shared manuscript from
-that committed archive with original user data hidden and networking disabled.
-The shared PDFs' page text matches the checked 15/41-page version. Compiler logs
-are included. Extraction occurs in private tmpfs and creates no persistent work
-folder. The existing runtime is reused; neither a fresh environment install nor
-new quantum calculations is claimed.
+scientific-evidence documents and compiles the shared manuscript from that
+committed archive with original user data hidden and networking disabled.
+Its shared PDFs' page text matches the checked 15/41-page version. Compiler logs
+are included. Extraction occurred in private tmpfs with no persistent work folder.
+The installed runtime was reused; no new quantum calculation was performed.
 
-The full raw archive has been created and is undergoing read-back verification, following newly available
-storage and a [source preflight](raw_archive_preflight.json). It remains excluded
-from the current completed-package manifest until every archived member passes
-verification. Public deposition, reuse metadata and final author declarations
-remain pending.
+The [full raw verifier receipt](full_raw_archive_verified.json) confirms every
+archive member and the final compressed checksum. The 107,289,881,732-byte archive
+contains 46,789 unique research-evidence objects (120,381,992,561 uncompressed
+bytes), plus five manifest/support members. The source bytes were hashed during
+creation and the entire archive was independently read back. This establishes
+byte integrity for the declared inventory, not new physical qualification or
+coverage of implicit dependencies. Runtime dependencies and third-party
+publications remain explicitly external.
+
+Local archive preparation and verification are complete. Public deposition,
+data reuse metadata and final author declarations remain pending. No journal
+submission or public data deposit is claimed.
 
 ## Source replay and resolved portability gap
 
@@ -129,7 +135,7 @@ and public deposition remain outstanding. This small inventory addendum accompan
 the immutable reviewer bundle through the results index; it does not rewrite that
 bundle or its scientific-source commit.
 
-## Full raw archive in progress
+## Full raw archive completion
 
 The [current archive inventory](current_raw_archive_inventory.json) resolves the
 canonical source locations and preserves the previous inventory. The one changed
@@ -141,8 +147,9 @@ dependencies and third-party publications kept explicitly external.
 `full_raw_archive_owner.json` records the live process identity and archive path.
 The writer uses one zstd worker, hashes every source while streaming, and preserves
 the 32-GiB storage floor. It then independently verifies the complete archive
-member set and hashes. Until `full_raw_archive_verified.json` exists with a passing
-result, archive creation is incomplete. A partial archive is not a release.
+member set and hashes. `full_raw_archive_verified.json` now records a passing result for all 46,794
+members and the compressed archive checksum. The gated finalizer admitted the
+archive only after that result and owner-stage closure.
 The [13 stream/package checks](raw_archive_stream_checks.xml) include existing
 metadata directories and refusal of conflicting filenames. No new release or
 working directory was created.
