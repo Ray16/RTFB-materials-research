@@ -1,0 +1,94 @@
+"""Do not retry scientific or uncertain starts, including PID-reuse boundaries."""
+import importlib.util
+import json
+from pathlib import Path
+
+import pytest
+
+from redox.core.common import ROOT
+
+
+@pytest.fixture
+def inspect_case(tmp_path):
+    spec=importlib.util.spec_from_file_location('tested_screening_dispatch',ROOT/'scripts/fleet/run_screening_energy_panel.py')
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    (tmp_path/'case').mkdir()
+    return module.inspect,dict(namespace=str(tmp_path/'namespace.json')),tmp_path/'dispatch_claim',tmp_path
+
+
+def test_unowned_pending_case_and_uncertain_claim_are_distinct(inspect_case):
+    inspect,row,claim,_=inspect_case
+    assert inspect(row,claim,lambda owner:False)[0]=='pending'
+    claim.mkdir()
+    assert inspect(row,claim,lambda owner:False)[0]=='uncertain_submission_preserved'
+
+
+def test_live_scientific_worker_is_not_reclaimed(inspect_case):
+    inspect,row,claim,root=inspect_case
+    (root/'case/status.json').write_text(json.dumps(dict(status='screening_energy_control_running',owner=dict(pid=123))))
+    assert inspect(row,claim,lambda owner:True)[0]=='running'
+    assert inspect(row,claim,lambda owner:None)[0]=='ownership_unverified'
+    assert inspect(row,claim,lambda owner:False)[0]=='stopped_attempt_preserved'
+
+
+def test_dead_controller_with_live_wrapper_cannot_be_retried(inspect_case):
+    inspect,row,claim,root=inspect_case
+    claim.mkdir();placement=root/'placement';placement.mkdir()
+    (claim/'try_001.json').write_text(json.dumps(dict(owner=dict(pid=12),placement=str(placement))))
+    (placement/'launch.json').write_text(json.dumps(dict(host='node',pid=34,process_start='expected')))
+    assert inspect(row,claim,lambda owner:owner['pid']==34)[0]=='submitted'
+    assert inspect(row,claim,lambda owner:False)[0]=='prelaunch_refusal_no_scientific_attempt'
+
+
+def test_scientific_failure_remains_preserved_even_after_owner_exit(inspect_case):
+    inspect,row,claim,root=inspect_case
+    (root/'case/status.json').write_text(json.dumps(dict(status='screening_energy_control_failed_preserved',finished=1,owner=dict(pid=12))))
+    assert inspect(row,claim,lambda owner:False)[0]=='scientific_failure_preserved'
+
+
+@pytest.mark.parametrize('live',[True,None])
+def test_response_recovery_refuses_live_or_unreachable_owner(live):
+    from redox.workflows.screening_control import response_continuation_closure
+    owner=dict(host='node',pid=7,process_start='123');stage=dict(status='screening_polymer_Hessian_control_failed_preserved',owner=owner)
+    with pytest.raises(ValueError):response_continuation_closure(stage,dict(owner,guard_stopped=True),dict(returncode=-15,budget_stop='wall_time_budget'),lambda row:live)
+
+
+def test_only_recorded_wall_stop_or_closed_normal_control_can_supply_response():
+    from redox.workflows.screening_control import response_continuation_closure
+    owner=dict(host='node',pid=7,process_start='123');stage=dict(status='screening_polymer_Hessian_control_failed_preserved',owner=owner)
+    guard=dict(owner,guard_stopped=True)
+    assert response_continuation_closure(stage,guard,dict(returncode=-15,budget_stop='wall_time_budget'),lambda row:False)=='closed_recorded_wall_budget_stop'
+    with pytest.raises(ValueError):response_continuation_closure(stage,guard,dict(returncode=-15,budget_stop=None),lambda row:False)
+    with pytest.raises(ValueError):response_continuation_closure(stage,dict(guard,process_start='other'),dict(returncode=-15,budget_stop='wall_time_budget'),lambda row:False)
+
+
+def test_closed_normal_control_can_supply_a_validation_repeat():
+    from redox.workflows.screening_control import response_continuation_closure
+    owner=dict(host='node',pid=7,process_start='123')
+    stage=dict(status='screening_polymer_Hessian_control_finished_review_pending',owner=owner)
+    assert response_continuation_closure(stage,dict(owner,guard_stopped=True),dict(returncode=0,budget_stop=None),lambda row:False)=='closed_normal_control'
+
+
+@pytest.mark.parametrize('reason',['shared_storage_margin','durable_output_budget'])
+def test_unresolved_storage_limit_is_not_treated_as_a_wall_stop(reason):
+    from redox.workflows.screening_control import response_continuation_closure
+    owner=dict(host='node',pid=7,process_start='123');stage=dict(status='screening_polymer_Hessian_control_failed_preserved',owner=owner)
+    with pytest.raises(ValueError):response_continuation_closure(stage,dict(owner,guard_stopped=True),dict(returncode=-15,budget_stop=reason),lambda row:False)
+
+
+def test_new_wall_profile_does_not_reinterpret_older_frozen_plans():
+    from redox.workflows.screening_control import full_hessian_wall_seconds
+    assert full_hessian_wall_seconds({})==14400
+    assert full_hessian_wall_seconds(dict(Hessian_wall_profile='initial_4h'))==14400
+    assert full_hessian_wall_seconds(dict(Hessian_wall_profile='extended_8h'))==28800
+    assert full_hessian_wall_seconds(dict(response_checkpoint_continuation=True))==28800
+    with pytest.raises(ValueError):full_hessian_wall_seconds(dict(Hessian_wall_profile='unbounded'))
+
+
+def test_only_known_resource_stops_can_supply_post_hessian_recovery():
+    from redox.workflows.screening_control import hessian_resource_stop
+    assert hessian_resource_stop({'error':'cudaErrorMemoryAllocation'},{'budget_stop':None})
+    assert hessian_resource_stop({'error':'Out of GPU memory for XC energy first derivative'},{'budget_stop':None})
+    assert hessian_resource_stop({},dict(budget_stop='wall_time_budget'))
+    assert not hessian_resource_stop({'error':'sampled derivative gate failed'},{'budget_stop':None})
+    assert not hessian_resource_stop({'error':'internal minimum gate failed'},{'budget_stop':None})

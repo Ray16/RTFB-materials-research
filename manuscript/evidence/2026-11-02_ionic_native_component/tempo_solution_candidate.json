@@ -1,0 +1,170 @@
+{
+  "status": "exact_candidate_solution_descriptor_published_with_field_QC",
+  "candidate_id": "tempo",
+  "product_smiles": "Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1",
+  "product_inchikey": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+  "registry_graph_key": "35fabdd73bcd08542203227f311604ab3c55744c15824ad32251748eb8321d93",
+  "registry_aliases": [
+    "tempo"
+  ],
+  "model_scope": "capped local graft; no explicit polymer or counterions",
+  "reaction_context": "NaH/DMF or THF attachment precedent; no reaction free energy computed",
+  "operating_model": "native SMD MeCN frozen-slow electronic relaxation at geometry-level minima",
+  "redox_potential_V_vs_Fc": 0.5787750407616841,
+  "solution_relaxation_eV": {
+    "reduction": 1.477122030002647,
+    "oxidation": 1.6386410691520723
+  },
+  "components": [
+    {
+      "total_solution_relaxation_eV": 1.477122030002647,
+      "equilibrium_geometry_component_eV": 0.39626565772050526,
+      "frozen_slow_increment_eV": 1.0808563722821418,
+      "vertical_charge_change_eV": -3.411856018305116,
+      "initial": "ox",
+      "final": "rad"
+    },
+    {
+      "total_solution_relaxation_eV": 1.6386410691520723,
+      "equilibrium_geometry_component_eV": 0.5526297276155674,
+      "frozen_slow_increment_eV": 1.086011341536505,
+      "vertical_charge_change_eV": 6.527619117459835,
+      "initial": "rad",
+      "final": "ox"
+    }
+  ],
+  "directional_relative_asymmetry": 0.10367863923495596,
+  "equal_curvature_diagnostic_tolerance": 0.05,
+  "qualified_symmetric_single_body_eV": null,
+  "diagnostic_average_eV": 1.5578815495773597,
+  "grafting_free_energy_kJ_mol": null,
+  "occupancy_nonadditivity_kJ_mol": null,
+  "unwanted_association_free_energy_kJ_mol": null,
+  "electronic_coupling_eV": null,
+  "field_QC": {
+    "redox": "independently reconstructed native local-model potential",
+    "directional_solution_relaxation": "independently checked composite electronic descriptor",
+    "symmetric_solution_relaxation": "equal_curvature_diagnostic_failed",
+    "grafting": "not_computed",
+    "occupancy": "not_computed",
+    "coupling": "not_computed"
+  },
+  "all_axis_decision": {
+    "id": "tempo",
+    "product_key": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+    "profile_id": "all_axes_preformed_polymer_v1",
+    "policy_sha256": "156d56107895ff7287e770edab74533c476988f4a96993fd5b6a78f0bec50291",
+    "required_axis_ids": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "status": "pending",
+    "all_required_axes_pass": false,
+    "eligible_for_Pareto": false,
+    "failed_axes": [],
+    "pending_axes": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "axes": [
+      {
+        "axis": "redox_window",
+        "status": "pending",
+        "reason": "Checked capped-model potential; candidate-specific prediction interval and material transfer unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "capacity",
+        "status": "pending",
+        "reason": "Required exact-case criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "state_stability",
+        "status": "pending",
+        "reason": "Required exact-case criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "charge_transfer",
+        "status": "pending",
+        "reason": "Directional composite solution descriptors checked; application cutoff, ensemble and rate model unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "attachment_route",
+        "status": "pass",
+        "reason": "Reviewed evidence meets the criterion",
+        "evidence_status": "qualified"
+      },
+      {
+        "axis": "grafting_thermodynamics",
+        "status": "pending",
+        "reason": "Required exact-case criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "motif_association",
+        "status": "pending",
+        "reason": "Required exact-case criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "neighbor_coupling",
+        "status": "pending",
+        "reason": "Required exact-case criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "occupancy_sensitivity",
+        "status": "pending",
+        "reason": "Required exact-case criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "accessibility",
+        "status": "pending",
+        "reason": "Required exact-case criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      }
+    ],
+    "inference_scope": "Conditional computational shortlist within explicitly declared model/scenario coverage; no experimental material-performance guarantee.",
+    "experimental_performance_established": false
+  },
+  "experimental_rate_inferred": false,
+  "material_admission": false,
+  "source_bindings": {
+    "review": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/tempo_solution_pair_2026-10-30/independent_reviews/independent_review.json",
+      "sha256": "291caca486f054810f41b45817a9699cc57d594476a8d79fa2979fb17bbe1c36"
+    },
+    "native": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/native_review.json",
+      "sha256": "f653078b71d2410da41cb10aca93bb815a235955bb84ac52a1bc4faf64482dac"
+    },
+    "registry": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/candidates/pool/2026-10-29_published/registry.json",
+      "sha256": "fffbe7ea45d8ee2937fa8691610c15e8957aa193b6eede4e66411731dae55b90"
+    },
+    "policy": {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-30_native_cache/all_axes_policy.json",
+      "sha256": "7627ca89bbd7cebe2f52e7a89fe08e5418a2519264984a80bcad6494990edb27"
+    }
+  },
+  "created": 1793410523.898137
+}

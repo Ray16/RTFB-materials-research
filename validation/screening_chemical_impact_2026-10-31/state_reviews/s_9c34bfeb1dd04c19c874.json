@@ -1,0 +1,69 @@
+{
+  "status": "benchmark_screening_energy_control_independently_checked",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/namespace.json",
+  "key": "s_9c34bfeb1dd04c19c874",
+  "source_state": {
+    "id": "s_9c34bfeb1dd04c19c874",
+    "aliases": [
+      "benchmark:bm_n_isopropylphthalimide:red1"
+    ],
+    "smiles": "CC(C)N1C(=O)c2ccccc2C1=O",
+    "charge": -1,
+    "mult": 2,
+    "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_isopropylphthalimide/red1"
+  },
+  "nao": 623,
+  "atoms": 25,
+  "differences": {
+    "installed_minus_stored_Ha": 1.1368683772161603e-12,
+    "corrected_minus_stored_Ha": 1.3642420526593924e-12,
+    "corrected_minus_installed_Ha": 2.2737367544323206e-13
+  },
+  "agreement_tolerance_Ha": 1e-07,
+  "declared_agreement_passed": true,
+  "actual_SCF_checkpoint_counts": {
+    "installed": 3,
+    "corrected": 3
+  },
+  "peak_GPU_MiB": 5144,
+  "peak_host_RSS_bytes": 1429143552,
+  "resources_checked": true,
+  "native_G_qualified": false,
+  "new_potential_qualified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/namespace.json": "f661ec05835e4211a5121cee693a4d304dc48f28e1a0574d428a8c26cc36330f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/plan.json": "b1f024759a5cfdbb2b61d9dbc46ef7ea37632301941b940a16a8e42e31b4c052",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/status.json": "345cb03972d8fb297983c896a2ade62bf3f8a08c363c37774bd7b5da9a919945",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/placement_001/launch.json": "483aba049545aba1db6c5cc89af8097329701d8d35582004eee752684d0b03db",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/placement_001/completion.json": "fa94183b8d709b00b87dc21d899842a057fb2a80a4ebc35c5185383e9578df6c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/residency_guard/owner.json": "8f588167208eeedca057c95a18c3f4ec336dfcd3f7591cf80546046924efc320",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/residency_guard/state.json": "1f1fa3ba5ef095ff602428d0bc82dd7f76d35724cbfbceeec0ffc8020cd5e7f8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/host_guard/status.json": "4e36330b3098fc6138f362ed12bee4db7381edea72df6629ff9a402e3b5506a5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/tensor_runtime/status.json": "8733a7110ddbe29df2ff754994d8327a4e5eeea7ce420668d195c576668c0335",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/result.json": "513f38894499b3aca8a4b1d6ebf5b72176da0ae1cb3cdaba33f5ba176056b867",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0000/0000/SCF_result.json": "075d5c35efabd05559a44a025e7958ca6d09a03b196a6aa174983b5434f9ab76",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0000/0000/settings.json": "31d04e4bc7f141ed91445de1068aede3906e4366abb988aae0fdce1eec51e672",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0000/0000/SCF.h5": "1fe4aa0f500c1c147de8f4f5f878cd6f02c902aa0097010d2df980066d01ac77",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0001/0000/SCF_result.json": "6cc8f0fc47984d016b7206b85d607734c6d5ea01cccb2570bafe06cfedd29e97",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0001/0000/settings.json": "31b9635fc4ffba74308c823d2a9cabbb0cecc99ef348dec80c8a4c4f64f1b8fc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0001/0000/SCF.h5": "2f48c5cf6b651cc56fea5833ea38c2425e3a75028eedd1589d7d6c54c8eaca88",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0002/0000/SCF_result.json": "409ab03b0687f080a61e7c838e51578d396fcad1a4468031155effaa1402d7dc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0002/0000/settings.json": "dbfc331db789a9024501f3f6f4cb180f4f6921281f2fe801351f000408371757",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/installed/SCF_evaluations/0002/0000/SCF.h5": "53f5d099f2f2ed383a752e254f70b6bff73f4a46bc7f93c0b4e0e6dc6b51cb8d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/result.json": "9c0b4326f0b58d566c0d70869c627d9b8828be3e524db03e477c0c5dbafa8f23",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0000/0000/SCF_result.json": "d67cc90abcd6de879674536301fef19d9af78020a74b0f53294625ed3a4fd492",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0000/0000/settings.json": "a4bf8309ca08ec034d79ba8db013ef46f350b9d27f23fe5e96cfdb976fb8696a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0000/0000/SCF.h5": "4f7cbd4c0b74bf40fdd2c7a1d3314c0e8a9420dc0c06c3984ebe137d39a0d0c3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0001/0000/SCF_result.json": "1ab20c541ea7b235b463a5d3586991d0907d682800098e01810037eabf637ac5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0001/0000/settings.json": "08ca8e8a3ea460e5123fc8da33824273dc5ce8b1cfb8b5dcd3d329267a3cd6df",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0001/0000/SCF.h5": "9a4fc1fbd05ba95607c326fe43dd8d03250ae1f2677b128888f3acd4cfa45995",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0002/0000/SCF_result.json": "2354d28fee1019f874444c5efea629e4295cbda77f7e63d3ac0e18cf1c73f5bd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0002/0000/settings.json": "285794f4a6a817785c6cf174b48411262bb3281f217b4b862da66c24497f4aa3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/SCF_evaluations/0002/0000/SCF.h5": "65242ad989c0709f1a7781566814dda9c68de83ebffb493045d3072199be040c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/implementation/corrected_host.py": "fcb065c065a81fc42fe835c987d5a1acc487517658b9dea57eabc52d51ac992f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_9c34bfeb1dd04c19c874/case/corrected/implementation/original_host.py": "43558f4a4e8b9c6855dd87824afaff214ec6d112c813f56d1f49eb17a42ea664"
+  },
+  "producer_sha256": "375b56e437df1328a02c1073f3e1aa41a7bdb8501acea4db078e3fb0308c5e81"
+}

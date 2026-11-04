@@ -1,0 +1,417 @@
+{
+  "status": "exact_TEMPO_directional_solution_descriptor_independently_checked",
+  "candidate_id": "tempo",
+  "product_smiles": "Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1",
+  "product_inchikey": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/worker.py": "886f83307d815db63e230904184bbfd56c36af4f34d301f1cb380635c38a9bda",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/host_guard.py": "218b850c43edc1b25d41c56860988e281db103d8c625f533de04f2e6e113e9ab",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/launcher_source.py": "8bb91273591d8f15841c4d0c84118f3dff5cde7c3ff9d871739290bc588dcbc7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/native_review.json": "f653078b71d2410da41cb10aca93bb815a235955bb84ac52a1bc4faf64482dac",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/registry.json": "fffbe7ea45d8ee2937fa8691610c15e8957aa193b6eede4e66411731dae55b90",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/route_evidence.json": "0581fa3797a373b1ce5a96acc9ea8feb512c2d36b4e4f84bf91fc411b1ebd7eb",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/sources/assessment.json": "4e70b0ccbc2a4764f4fc2df15147c495a952d8ec361cecaa0f4a8250575d8663",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/grafting/tempo_exact_support_2026-10-26/route_review.json": "e9fb25d7240fd41e120d40ec5b4f8886e31c3dae098bfd4272654628291fc22e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/review_tempo_native_potential.py": "6c802705fcb449293d43b2952065402bf94389a8d8daccddeca748dbc78e67df",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/audit/native_partition.py": "e430b20833391b520ddfeeb885e60942087b5503de7e448187913ec90cfab612",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/library/manifest.csv": "0a05e84ca02c0cb3b419a52669b087ef27ea57b09ecff42125d160cfe5ef46fe",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/result.json": "fcebc98b8e9faadf714f9af18efc0590d63e82fbdc8f6e8eeba291b9ebb14843",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/opt.xyz": "68bd437e5c75b766b7104b4a2e7c283f806a72ac9ae5161da556f80edcbf1ed3",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/sp/fe730e5d71bd2cf6.json": "2d5e1d65e74ef479806dc077f3e5410a753b2a9d1ba694b98c61ecd87dd6d168",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/native_thermal/fb8c7d25c4192ca7.json": "e09bdd58907d277575e41f72b1f4db655c39d5b3d4afd72e8003e0b11b0ad55e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/config/projected_thermal_validation.json": "05d8e9afcf839bb1187a1bb46f935326b89777eb3609c1bc085042dafe6dd448",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/summary.json": "a602f6f7996dac1c201eede41cfb0d2f8b7b105a2db5c0fec2b33230088ed290",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/checks.json": "71e0719a383d95e50d3b5b9f72ea2f1b06c4fdc4f364f324da6db3bcbc265ed2",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_qualification_isolated/summary.json": "18a0926e55345e16e1308faebe09b8891a69907116652b14d3142250607e54ba",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/kernel_qualification_plan_isolated.json": "a2c9d55c98ad3abe19f6bef0b82ddfd7e1109583ec593e472ec83c8567cf458a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/review_kernel_isolated.py": "eec51efd809d79731e6fe0f625cc1246408c4648273196b40da96023d97f6376",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_thermo.f90": "af6f20030f68f23d8022896f97b7c5ac0be5a7e6afcbf4199c6f5753e44ccf48",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_mctc_mctc_constants.f90": "4ee5e45cfa40a9f3fbc4409cb531c213c8717cee38decaa98e3f973e5a9fe543",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_param_atomicmass.f90": "2f6f9e692d1ca85827b2abc2e777432dcb70aa4bb8f19d97dc4616774f71985a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/reviews/2026-10-18/software_checks_isolated_kernel_full.log": "1b37d3cc37dce123574f79e28897bbb317372cae58f8634d815957655e3c459b",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/owner.json": "b12602b3bca2d84a2e113976dc25f4f07850353fb528727c25e75dfeb9ea4a6e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/projected_hessian.npy": "9bdb234dfb1ae77e327548f289ccc5216fcc317d9df359923cc3c38894f52040",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/hessian": "0cf9c1143e9f043c43b870a0e66ef4a9d892b33d947b5c39843622623a82f326",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/mol.xyz": "68bd437e5c75b766b7104b4a2e7c283f806a72ac9ae5161da556f80edcbf1ed3",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/record_producer.py": "325b1d33279cf5c04abde0488829d56e89e0792df1e6e146ada354575f4af4f9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/thermo_CLI_25.log": "dabd29048d3de591fc9d39ef635b11a38283cf4532df5b000245078924a3ca01",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/thermo_CLI_50.log": "02c722b5082ef64e49a37fde0fa43d00557f9e2e06f103f41f38843a48ac0a6e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5/thermo_CLI_100.log": "d7711d514d3dfa2d356a67c40cb92ee76c82fe6bcbe01e45c14513214797205f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/native_thermal/fb8c7d25c4192ca7/hessian_cartesian.npy": "2cb84cf084a18f61ef0ab86025c4360311ee7dd37c085e5e7e77e0d026e7b781",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/rad/projected_thermal/e683ed733f73bdb5.json": "d7b06e8ea42913b6a40e654e7a735d8a902fc886bc02dc8f61104913a7906639",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/result.json": "f727eaeb6d67ffe65fafc1917a0a750741c0fac44baf41cba1ff345ea5187cb2",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/opt.xyz": "77a40b6ae7f4c9c3d8aca59d7c19275e8a9b33d5bef3c9928eebd16219b5991e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/sp/4d35b366755c922e.json": "8e76ca197dd1fe58bb3ea2f03ef5a654a56854401021a775fa1e6c9bf3c08c55",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/native_thermal/44293b77563b08b5.json": "e4f2b0820d45cdd9d40ae6918754a9773c4b580faccb098ee6d28f32a71764cf",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/owner.json": "a4920809cad76232f4ca830dc7aedacf7b71b1921129bd92051598dac0140430",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/projected_hessian.npy": "e54349cfc443b2b249cbcadde9a09a62725533978a2c670268ae56b3ab0745ab",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/hessian": "f79663bfc298878e4d400a96da1fd850e7e70bfea813ce76f2ce970a4560520d",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/mol.xyz": "77a40b6ae7f4c9c3d8aca59d7c19275e8a9b33d5bef3c9928eebd16219b5991e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/record_producer.py": "325b1d33279cf5c04abde0488829d56e89e0792df1e6e146ada354575f4af4f9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/thermo_CLI_25.log": "f24cbbcb2c7d1b15f7e7dd1c953b28ced27c1fd0fdaf9e476170a7e5f5bed39a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/thermo_CLI_50.log": "19c887423488540de78378bb3c261c77c97df3e9e00464ee965cea78013002b1",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01/thermo_CLI_100.log": "43001b88b37abd0de0c814a01542b3d28f556180b5eb2eb60d425d8db666757e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/native_thermal/44293b77563b08b5/hessian_cartesian.npy": "4307c673af4c0936f5c2710339fa4fa510dd529523a434fd2d8d6f0fe7ff7e7c",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/tempo/ox/projected_thermal/45f58ebd22932f01.json": "29ce073c99a56d18d62d227b14e943c06612232bf223f6a1236eba9de2b434e3",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/result.json": "899c63632ac07fb179ed63acecb456d4515ee69bf064a01950a6be716cae1565",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/opt.xyz": "302fdab624f41c98e33449f9ee4b468a8db4f62c58d5c675efc1730c2d3c62dc",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/sp/099d67e7303245de.json": "9cdfb192fd07705170b6a29cb1e39f60078a2d02c0ced45a9a93cf6ee9c1298b",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/native_thermal/3617f7af5e978243.json": "c6c893838509a1fa147462d1482c0d3938f0da81c68e14a39419d7d652cdb03d",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/owner.json": "778c41bbe9b39d96cfc2166ff40c9a0256ca28b54880599889ba571b6bee8164",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/projected_hessian.npy": "4d6f3b2aee4abe2f185a0065dc7e66146e3c60899bbdc7df592ba8e0b922e69e",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/hessian": "a993c4b2bcf00436c86573c5d68eabaea303c1d6efdcebf46b930c55fa0f814a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/mol.xyz": "302fdab624f41c98e33449f9ee4b468a8db4f62c58d5c675efc1730c2d3c62dc",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/record_producer.py": "325b1d33279cf5c04abde0488829d56e89e0792df1e6e146ada354575f4af4f9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/thermo_CLI_25.log": "18d6f98fdcdf7a889314a7189e4bcdf46cd07e74e411350605d022fc20522673",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/thermo_CLI_50.log": "b2c0f817327ed01a89758c45e8679f7b5162e2fc2d3f5c203db04ff6ee2d79c9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626/thermo_CLI_100.log": "f3e6ea8157a6674e266e32a7b429c35837c2813a993e0008b30567d551790141",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/native_thermal/3617f7af5e978243/hessian_cartesian.npy": "79b32269ec8b53d87d509270f8fbaaa0c138a4e20503a6cf0b8a1e2f418e8a27",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/neu/projected_thermal/d3f589cb324e2626.json": "cf767246eb98d9225d5b9e59d5c1c29d30c12e10c1167f477f7c3bc38f630dc7",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/result.json": "0a079a8db6aa16e716a34c31a9b00261db78499a03c41535b7cb4888cc50279a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/opt.xyz": "3723c2ce6b1e1a7d14ee7f087293f90299eb9118ffa6a6802e7aae79d2b8d97b",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/sp/713061f27507eb78.json": "9fe47ba949e214060c55f2f2a09d8a597cbf1d0e7661b854eaa54b7806797c6f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/native_thermal/17d62c2f030ff086.json": "4e21140bc6e735edd2b3b8c232898b42527cdd20ea6d54d92eb35dc42773fa60",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/owner.json": "b1a9097290c78564967a73c64e0f2735f13de62ea9cbe5973eb38de278239845",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/projected_hessian.npy": "e5d6aa679cc3b3ee18c9d1c8aa9f169ace4d96d3d80e22078ec8312be101f97a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/hessian": "938ab2ad329db934818962e4ec6ec48e423bf32cd5fbd0652210ba64f8091c5f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/mol.xyz": "3723c2ce6b1e1a7d14ee7f087293f90299eb9118ffa6a6802e7aae79d2b8d97b",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/qrrho_producer.py": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/xtb_kernel_producer.py": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/record_producer.py": "325b1d33279cf5c04abde0488829d56e89e0792df1e6e146ada354575f4af4f9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/thermo_CLI_25.log": "5ae2e9aaf7085d908537472f29056d3520d0af65e447ee91bf014b95e5af9904",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/thermo_CLI_50.log": "44e630ffd45252f2826c73065c1aace5c487890ceaed97719b2fb3031ceba971",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2/thermo_CLI_100.log": "c23de8a9764cb48b27dc8b92f6a64a9e3d279c81ee3fba0a2b781d9f2572d25a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/native_thermal/17d62c2f030ff086/hessian_cartesian.npy": "9e049c6125091f7084aad580a3dc026ee7f67f53c97d49275a3f64407969bf9c",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/ferrocene/ox/projected_thermal/4fd080d7588939a2.json": "e0b16f49023d80d07e3a9f4c1512e3920273c1f49de7d449d8793d7dc9479da0",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/physical_reorg_2026-10-11/native_smd_independent_reference.json": "1d8888eaa8acbdce39878075c5c65b6d8208fb0961d4041103ba853326e7ffbb",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/validation/physical_reorg_2026-10-11/native_smd_gpu_reference.json": "34c210280b88c03acde9b26471cdc60e9541536990ff6b568645f9fa9361f94b",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/solution_reorg_pair.py": "51db30101b6b9727fc0576b57a9d6dc5fce89bdc37ea37670b56119a95ae0d69",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/solution_reorg_campaign.py": "e3308d114870eb040b458cd54d6d397f81f3ec4ca70ad4514978edb9feb4537c",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/physical_reorg.py": "db2d31592a69d635f08e2df51656ae0a568b79b9d70265c719e5bc73016ff0f7",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/validation/audit_solution_reorg_pair.py": "2ddaa0fae25f5c012d2deaf772b90a6afc98d3967cc7c76aaac874808443d01d",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/pipeline/run_pi_stacking.py": "d748caad31e9c6295a006eef9d56036c2d9c0a25b5f06d7a156652cb55752078",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/qm/nonequilibrium_smd.py": "2e97c4cf309275fe3900fcebb7e7cdcd169a96dca995b1ea30c897de97bf9c73",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/qm/nonequilibrium_pcm.py": "5943617598ad851d7237e1752236d3fda488fd51f02026dfacf4a9f11d0fae68",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/properties/solution_reorg.py": "c4f325a13b77c82d09ffee6357e7221592c198ac16b49890a63acc9140fc3131",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/validation/solution_relaxation.py": "5acf2b984801c39e74699206676ca403fae8f03dfed10e2956bade0c5f910c8f",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/core/protocol.py": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/src/redox/qm/dft.py": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/fleet/exclusive_python_worker.py": "02c32d43e9527a5c049259a2a122572d6dad27348d0c447217f63f23c998d5e9",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/fleet/bounded_host_python_worker.py": "77f6e51a995f7c299f10330075c02a0d375f303d99786f80296da54c5d6a35d2",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/fleet/tensor_runtime_worker.py": "070cb6517a50fe7d8a0245b0fbaf01aaefcd86ddfa14890a052faaebb0d3c26a",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/environments/cutensor22/runtime.json": "faca09c8e84a7fd652d8e87592b9e367e5c4d59f78d45a87e34b02e6b5f0c7cd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/plan.json": "9a7e0f1f7b72b79486950265806730881f0a2050e57761a5b179da3994e7d822",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/status.json": "1035aef6a8141cc62e8f1cfa7e68b9fb4d319d844ab462b3a08cbf7919d239d4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/result.json": "b66870e94913014eec52ea7e9a774c132ef9d02d63e7a9407dd6ab59013f72b8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/host_guard/status.json": "44a64de0f9f8307b8e519309c52d75986ddf99264e1b7169890d82d28c47e938",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/residency_guard/owner.json": "07ca3a65e9032bf885f2a29c535ac8d4df64d29560851e9f97906d2c55ef5e52",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/residency_guard/state.json": "e8d8f7052977dd36cc844c06e6cfc7d204d699e747518b7f9500aefe92290a07",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/tensor_runtime/status.json": "452aa6c85edd2d8cb0ebbee854c14e35548812d68ba28563302069da33ffe0ae",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/backend_control/native_smd_gpu_reference.json": "8133f7465173a9c6a4f1af129a42106c6a6f4dbd30856d8fd497f8554af4c0de",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/independent_checks/solution_pair_audit.json": "50bc99ba27a90714ec8cfa66de261c93065a0b671e8a4c0aa0c0eca02e24c5ea",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/independent_checks/solution_pair_checks.json": "f75a839649d006441569b03a49cf67584760c66c3e299775c423b56986676d43",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/solution_pair_review.py": "2feee2eaeca52b1c93b6bc61bc467986772720553362c8ede708d4db357490ac",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/solution_pair_namespace.py": "266827a90364935c459e6c3ac2e911621d05034fbbcab4df971286d3a13436f5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/protonation.py": "6753a714db0548e251bbba4c1b631d413fb41bdc6db770353c816249f145442e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/build/geometry.py": "7039b27875150a7e113a915e5fad54d194296f5f303033b68c3991ee6faa9336",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/solution_reorg.py": "c4f325a13b77c82d09ffee6357e7221592c198ac16b49890a63acc9140fc3131",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_5ee25cd0008cc72ebeb6.json": "9efcf3334278d3f7555f9e3c2c2011aaf8fd2a1ffa33789334c8bbd72f7bda7f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_d832e14bbba9563f2e5d.json": "f9f3b6da0bdbc7859d61cc30822eeb08e63bc8cc920d60bbe2338420f6434fa5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_450b08ae544dfd4e03a0.json": "56d2376aa3fee0018ac2f49450331b3e09bf8ecfe7ab0d2494853c3f49730200",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_0f69769d5574189e6c4a.json": "70b6067a10cbe43a35dbf510d1d7125189b4c2eb9fe4d044c3c7cc4e21188878",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_e916a2abe57c8594735c.json": "4d0c26bf52ded0aebe1fb3e76d75344f24b230034db910274f2604d39a8a0d58",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_c41e11e470e5bcdb8dc8.json": "258d8f86eefe7c28b85852bd5f1ac2c17ddf21ecbe79d07ff8c83987b626caf9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_5ee25cd0008cc72ebeb6.npz": "240b5358ab9886a5aa51b90f4ca355e021d008bed053d5f5204ede9e3cd24f59",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_d832e14bbba9563f2e5d.npz": "cd72468713b44d438bd8bf19bc7e5c040b911a75718eed490c35cca1291d96b3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_450b08ae544dfd4e03a0.npz": "d80f1dbc7ffbef59c6b7a3358a8de6b8083d37f1d01f6d5b77c5cbb821603e5c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_0f69769d5574189e6c4a.npz": "50c58a0f5175fcc2308460810dd140dc371d1ca9b5f299af6b03b3b7ff0983ca",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_e916a2abe57c8594735c.npz": "db8c788c1d71fc6c46145be572f3801cf56141a6c29f8dfc0b74f4f5cca1c10c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_c41e11e470e5bcdb8dc8.npz": "63348fb1c45599b2e510092d5f1345536d742b2351d050850528ba4aef97218b"
+  },
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/namespace.json",
+  "namespace_sha256": "c10836ea91d97c402e63c029c8a880dac2a983e08e88f1ea94efab7e841738ad",
+  "method": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "native_SMD_frozen_slow",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200,
+    "eps_s": 35.688,
+    "eps_op": 1.80687364,
+    "refractive_index": 1.3442,
+    "source": "native_pyscf_smd_solvent_db",
+    "sasa_ng": 590
+  },
+  "directional": [
+    {
+      "total_solution_relaxation_eV": 1.477122030002647,
+      "equilibrium_geometry_component_eV": 0.39626565772050526,
+      "frozen_slow_increment_eV": 1.0808563722821418,
+      "vertical_charge_change_eV": -3.411856018305116,
+      "initial": "ox",
+      "final": "rad"
+    },
+    {
+      "total_solution_relaxation_eV": 1.6386410691520723,
+      "equilibrium_geometry_component_eV": 0.5526297276155674,
+      "frozen_slow_increment_eV": 1.086011341536505,
+      "vertical_charge_change_eV": 6.527619117459835,
+      "initial": "rad",
+      "final": "ox"
+    }
+  ],
+  "summary": {
+    "lambda_reduction_eV": 1.477122030002647,
+    "lambda_oxidation_eV": 1.6386410691520723,
+    "symmetric_single_body_approximation_eV": 1.5578815495773597,
+    "self_exchange_infinite_separation_eV": 3.1157630991547194,
+    "directional_relative_asymmetry": 0.10367863923495596,
+    "equal_curvature_diagnostic_tolerance": 0.05,
+    "physical_flags": [
+      "equal_curvature_approximation_unverified"
+    ],
+    "calculation_verified": true,
+    "implementation_reference_verified": true,
+    "endpoint_model_verified": true,
+    "empirical_accuracy_validated": false,
+    "production_promotion": false,
+    "warning": "Do not add existing gas inner or outer reorganization terms",
+    "qualification_convention": "composite active-SP energies at geometry-level solution minima",
+    "active_SP_stationary_endpoints_proven": false
+  },
+  "source_result_summary": {
+    "lambda_reduction_eV": 1.477122030002647,
+    "lambda_oxidation_eV": 1.6386410691520723,
+    "symmetric_single_body_approximation_eV": 1.5578815495773597,
+    "self_exchange_infinite_separation_eV": 3.1157630991547194,
+    "directional_relative_asymmetry": 0.10367863923495596,
+    "equal_curvature_diagnostic_tolerance": 0.05,
+    "physical_flags": [
+      "equal_curvature_approximation_unverified"
+    ],
+    "calculation_verified": false,
+    "implementation_reference_verified": true,
+    "endpoint_model_verified": true,
+    "empirical_accuracy_validated": false,
+    "production_promotion": false,
+    "warning": "Do not add existing gas inner or outer reorganization terms",
+    "qualification_convention": "composite active-SP energies at geometry-level solution minima",
+    "active_SP_stationary_endpoints_proven": false
+  },
+  "geometry_diagnostic": {
+    "status": "paired_geometry_diagnostic_passed",
+    "heavy_RMSD_A": 0.13726854635134483,
+    "torsions": [
+      {
+        "heavy_atom_indices": [
+          3,
+          4,
+          5,
+          8
+        ],
+        "angles_deg": [
+          136.2858617382169,
+          147.1291397553855
+        ],
+        "difference_deg": 10.843278017168586
+      },
+      {
+        "heavy_atom_indices": [
+          4,
+          5,
+          8,
+          9
+        ],
+        "angles_deg": [
+          -68.63916096650316,
+          -70.88287559337131
+        ],
+        "difference_deg": 2.2437146268681545
+      },
+      {
+        "heavy_atom_indices": [
+          5,
+          8,
+          9,
+          10
+        ],
+        "angles_deg": [
+          154.7513753610916,
+          156.62915604191954
+        ],
+        "difference_deg": 1.8777806808279536
+      }
+    ],
+    "maximum_bridge_torsion_difference_deg": 10.843278017168586,
+    "criteria": {
+      "heavy_RMSD_A": 0.3,
+      "bridge_torsion_difference_deg": 30
+    },
+    "atom_ordering_identical": true,
+    "declared_full_graph_checked": true,
+    "global_conformer_convergence_proven": false
+  },
+  "spin_checks": [
+    {
+      "record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_5ee25cd0008cc72ebeb6.json",
+      "alpha_electrons": 74.99999999999994,
+      "beta_electrons": 74.99999999999994,
+      "s_squared": -2.842170943040401e-14,
+      "idempotency_errors": [
+        2.236758913888898e-15,
+        2.236758913888898e-15
+      ]
+    },
+    {
+      "record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_d832e14bbba9563f2e5d.json",
+      "alpha_electrons": 76.00000000000001,
+      "beta_electrons": 75.00000000000001,
+      "s_squared": 0.7541511026288816,
+      "idempotency_errors": [
+        2.0774503692717305e-15,
+        2.0658945468659938e-15
+      ]
+    },
+    {
+      "record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_450b08ae544dfd4e03a0.json",
+      "alpha_electrons": 76.00000000000001,
+      "beta_electrons": 75.00000000000001,
+      "s_squared": 0.7539706974703364,
+      "idempotency_errors": [
+        2.204362140495255e-15,
+        2.2090639792470166e-15
+      ]
+    },
+    {
+      "record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_0f69769d5574189e6c4a.json",
+      "alpha_electrons": 76.00000000000001,
+      "beta_electrons": 75.00000000000001,
+      "s_squared": 0.7539461870275233,
+      "idempotency_errors": [
+        2.2384199659319455e-15,
+        2.2386675424559443e-15
+      ]
+    },
+    {
+      "record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_e916a2abe57c8594735c.json",
+      "alpha_electrons": 74.99999999999996,
+      "beta_electrons": 74.99999999999996,
+      "s_squared": 1.4210854715202004e-14,
+      "idempotency_errors": [
+        2.038046049849697e-15,
+        2.038046049849697e-15
+      ]
+    },
+    {
+      "record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair/case/pair_results/scf_c41e11e470e5bcdb8dc8.json",
+      "alpha_electrons": 74.99999999999999,
+      "beta_electrons": 74.99999999999999,
+      "s_squared": 4.263256414560601e-14,
+      "idempotency_errors": [
+        2.187944436391126e-15,
+        2.187944436391126e-15
+      ]
+    }
+  ],
+  "own_geometry_energy_differences_eV": {
+    "ox": -1.8299033399671316e-09,
+    "rad": 0.0
+  },
+  "endpoint_evidence": [
+    {
+      "state": "ox",
+      "minimum_verified": true,
+      "conformer_policy": "same_basin",
+      "gradient_max_atomic_norm_Ha_Bohr": 0.00022534570113575168,
+      "stationary_gradient_pass": true,
+      "minimum_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/ox/native_thermal/44293b77563b08b5.json",
+      "minimum_source_sha256": "e4f2b0820d45cdd9d40ae6918754a9773c4b580faccb098ee6d28f32a71764cf",
+      "minimum_frequency_cm": 16.63343378128398,
+      "minimum_energy_surface": {
+        "schema": 1,
+        "model": "solution geometry-level DFT Hessian",
+        "xc": "r2scan",
+        "disp": "d4",
+        "basis": "def2-svp",
+        "anion_basis": "def2-svpd",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "grid_level": 3,
+        "cphf_grid_level": 3,
+        "grid_response": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "temperature_K": 298.15,
+        "rotor_cutoff_cm": 50,
+        "spin_partition": "unsplit ground spin multiplet",
+        "gradient_max_acceptance_Ha_Bohr": 0.00045,
+        "min_frequency_acceptance_cm": -5,
+        "finite_difference_step_Bohr": 0.0005,
+        "finite_difference_relative_acceptance": 0.01,
+        "max_spin_contamination": 0.1,
+        "df_batch_cap_GiB": 6,
+        "validated_pyscf_version": "2.14.0",
+        "validated_gpu4pyscf_version": "1.8.1"
+      },
+      "active_SP_stationarity_verified": false
+    },
+    {
+      "state": "rad",
+      "minimum_verified": true,
+      "conformer_policy": "same_basin",
+      "gradient_max_atomic_norm_Ha_Bohr": 3.2911496082626506e-06,
+      "stationary_gradient_pass": true,
+      "minimum_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/rad/native_thermal/fb8c7d25c4192ca7.json",
+      "minimum_source_sha256": "e09bdd58907d277575e41f72b1f4db655c39d5b3d4afd72e8003e0b11b0ad55e",
+      "minimum_frequency_cm": 17.33848164151033,
+      "minimum_energy_surface": {
+        "schema": 1,
+        "model": "solution geometry-level DFT Hessian",
+        "xc": "r2scan",
+        "disp": "d4",
+        "basis": "def2-svp",
+        "anion_basis": "def2-svpd",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "grid_level": 3,
+        "cphf_grid_level": 3,
+        "grid_response": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "temperature_K": 298.15,
+        "rotor_cutoff_cm": 50,
+        "spin_partition": "unsplit ground spin multiplet",
+        "gradient_max_acceptance_Ha_Bohr": 0.00045,
+        "min_frequency_acceptance_cm": -5,
+        "finite_difference_step_Bohr": 0.0005,
+        "finite_difference_relative_acceptance": 0.01,
+        "max_spin_contamination": 0.1,
+        "df_batch_cap_GiB": 6,
+        "validated_pyscf_version": "2.14.0",
+        "validated_gpu4pyscf_version": "1.8.1"
+      },
+      "active_SP_stationarity_verified": false
+    }
+  ],
+  "independent_checks": 103,
+  "fresh_SCF_records": 6,
+  "resource_pilot_passed_for_this_case": true,
+  "solution_rate_validated": false,
+  "global_conformer_convergence_proven": false,
+  "grafting_free_energy_computed": false,
+  "material_admission": false,
+  "gas_inner_or_Born_outer_terms_added": false
+}

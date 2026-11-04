@@ -1,0 +1,20 @@
+{
+  "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy/alternating__occ_none__conf019/campaign/experimental_energy/status.json",
+  "sha256": "8af1281b7d99e4938976fea13455b51bf25a743fb721400821cc8ea131159367",
+  "record": {
+    "status": "experimental_hybrid_energy_failed_preserved",
+    "owner": {
+      "host": "lambda4",
+      "pid": 71055,
+      "process_start": "23161609"
+    },
+    "started": 1793375319.4558597,
+    "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_smooth_empty_RAM_recovery_conf019/alternating__occ_none__conf019",
+    "native_G_computed": false,
+    "primary_candidate_admission": false,
+    "error": "OSError(30, 'Read-only file system')",
+    "finished": 1793375329.4560678
+  },
+  "diagnosis": "CuPy compiled-kernel cache target was read-only; retry redirects only the compilation cache to private /tmp",
+  "science_protocol_changed": false
+}

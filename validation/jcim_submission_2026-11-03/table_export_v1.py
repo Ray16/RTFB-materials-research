@@ -1,0 +1,67 @@
+#!/usr/bin/env python3
+"""Export exact design identities and the frozen retrospective benchmark as CSV."""
+import argparse
+import csv
+import hashlib
+import json
+import math
+import os
+from pathlib import Path
+
+from rdkit import Chem
+
+from redox.core.hashing import sha256_file
+
+
+def export(registry_path, benchmark_path, output):
+    if output.exists():raise FileExistsError('Preserve earlier submission tables')
+    registry=json.loads(registry_path.read_text());benchmark=json.loads(benchmark_path.read_text())
+    designs=[]
+    for row in registry['candidates']:
+        mol=Chem.MolFromSmiles(row['product_smiles'])
+        if mol is None or any(a.GetAtomicNum()==0 for a in mol.GetAtoms()):
+            raise ValueError('A complete exact product graph is required')
+        smiles=Chem.MolToSmiles(mol,isomericSmiles=True)
+        if (hashlib.sha256(smiles.encode()).hexdigest()!=row['graph_key']
+                or Chem.MolToInchiKey(mol)!=row['inchikey']):
+            raise ValueError('Registry identity differs from its SMILES')
+        designs.append(dict(graph_key=row['graph_key'],product_SMILES=smiles,
+            product_InChIKey=row['inchikey'],aliases_json=json.dumps(row['aliases']),
+            source_roles_json=json.dumps(row['roles']),route_status=row['route_status'],
+            reported_evaluation_count=len(row['evaluations']),material_decision=row['material_decision'],
+            scope='capped local graft design; enumeration is not experimental or material validation'))
+    endpoints=[]
+    for row in benchmark['outliers']:
+        if Chem.MolFromSmiles(row['parent_smiles']) is None:raise ValueError('Benchmark parent SMILES invalid')
+        if not all(math.isfinite(row[k]) for k in ('exp_V','calc_V','error_V')):
+            raise ValueError('Finite benchmark values required')
+        if not math.isclose(row['calc_V']-row['exp_V'],row['error_V'],abs_tol=1e-12):
+            raise ValueError('Benchmark residual does not close')
+        endpoints.append(dict(id=row['id'],name=row['name'],parent_SMILES=row['parent_smiles'],
+            family=row['family'],event=row['event'],wave=row['wave'],
+            experimental_V_vs_Fc=row['exp_V'],calculated_V_vs_Fc=row['calc_V'],
+            signed_error_V=row['error_V'],source_DOI=row['doi'],
+            scope='retrospective parent benchmark; not exact-graft experimental validation'))
+    if len({r['graph_key'] for r in designs})!=len(designs):raise ValueError('Duplicate design graph')
+    if len({(r['id'],r['event'],r['source_DOI']) for r in endpoints})!=len(endpoints):
+        raise ValueError('Duplicate benchmark endpoint')
+    output.mkdir(parents=True)
+    for name,rows in [('design_SMILES.csv',designs),('benchmark_endpoints.csv',endpoints)]:
+        with (output/name).open('w',newline='') as stream:
+            writer=csv.DictWriter(stream,fieldnames=list(rows[0]),lineterminator='\n');writer.writeheader();writer.writerows(rows)
+    result=dict(status='submission_tables_identity_and_arithmetic_checked',designs=len(designs),
+        benchmark_endpoints=len(endpoints),benchmark_molecules=len({r['id'] for r in endpoints}),
+        source_sha256={str(p):sha256_file(p) for p in (registry_path,benchmark_path,Path(__file__))},
+        files_sha256={p.name:sha256_file(p) for p in output.iterdir()},
+        original_quantum_QC_repeated=False,material_admission_inferred=False)
+    (output/'manifest.json').write_text(json.dumps(result,indent=2)+'\n');return result
+
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__)
+    for key in ('registry','benchmark','out'):p.add_argument('--'+key,type=Path,required=True)
+    a=p.parse_args()
+    from redox.workflows.resources import allocation_guard,cpu_allocation,host_capacity
+    with allocation_guard():host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
+    r=export(a.registry.resolve(),a.benchmark.resolve(),a.out.resolve())
+    print(json.dumps({k:r[k] for k in ('status','designs','benchmark_endpoints','benchmark_molecules')}))

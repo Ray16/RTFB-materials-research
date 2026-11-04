@@ -1,0 +1,86 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "fdb3c93108b5b9bf",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil/red1/1792632082513059495/branch_0/opt.xyz",
+  "geom_sha1": "e4f4bb104827d3ed",
+  "charge": -1,
+  "mult": 2,
+  "id": "bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil",
+  "state": "red1",
+  "source": "computed:gpu",
+  "wall_s": 56.9,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "e_smd_Ha": -778.6919249316,
+  "e_smd_eV": -21189.28673594566,
+  "converged_smd": true,
+  "e_gas_Ha": -778.6215125648199,
+  "e_gas_eV": -21187.37071783671,
+  "converged_gas": true,
+  "gas_homo_eV": -3.281913895479343,
+  "gas_lumo_eV": 2.977579515742585,
+  "gas_s_squared": 0.7752,
+  "gas_spin_contam": 0.0252,
+  "anion_unbound": false,
+  "dG_solv_eV": -1.91601810894875,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -778.6919249311892,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -778.691924931334,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -778.6919249316,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -778.6215125648199,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -778.621512564804,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -778.6215125647742,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -6.898391753237806,
+  "smd_lumo_eV": -0.6426671632616161,
+  "smd_s_squared": 0.7738,
+  "smd_spin_contam": 0.0238
+}

@@ -1,0 +1,78 @@
+{
+  "checked": 1793666019.8166034,
+  "observations": [
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_alternating23_saved_matrix_validation_01/recovery_queue/status.json",
+      "status": "saved_ionic_validation_attempt_observed",
+      "owner": {
+        "host": "lambda2",
+        "pid": 1006803,
+        "process_start": "1446652653"
+      },
+      "owner_alive": true,
+      "counts": null,
+      "checked_native_inputs": null,
+      "checked_electronic_inputs": null
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json",
+      "status": "corrected_sampling_queue_active",
+      "owner": {
+        "host": "lambda2",
+        "pid": 1006804,
+        "process_start": "1446652653"
+      },
+      "owner_alive": true,
+      "counts": {
+        "completed_review_pending": 89,
+        "prelaunch_refusal_no_scientific_attempt": 5,
+        "pending": 146
+      },
+      "checked_native_inputs": null,
+      "checked_electronic_inputs": 89,
+      "resource_refusal_rows": [
+        {
+          "key": "all_same__occ_4__conf003",
+          "status": "prelaunch_refusal_no_scientific_attempt",
+          "submission_receipts": 3,
+          "prelaunch_failures": 0,
+          "resource_refusals": 3,
+          "prelaunch_accounting_error": null
+        },
+        {
+          "key": "all_same__occ_4__conf006",
+          "status": "prelaunch_refusal_no_scientific_attempt",
+          "submission_receipts": 3,
+          "prelaunch_failures": 0,
+          "resource_refusals": 3,
+          "prelaunch_accounting_error": null
+        },
+        {
+          "key": "all_same__occ_4__conf007",
+          "status": "prelaunch_refusal_no_scientific_attempt",
+          "submission_receipts": 3,
+          "prelaunch_failures": 0,
+          "resource_refusals": 3,
+          "prelaunch_accounting_error": null
+        }
+      ]
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/status.json",
+      "status": "corrected_native_queue_active",
+      "owner": {
+        "host": "lambda2",
+        "pid": 1006805,
+        "process_start": "1446652653"
+      },
+      "owner_alive": true,
+      "counts": {
+        "completed_review_pending": 8,
+        "running": 21,
+        "pending": 60
+      },
+      "checked_native_inputs": 8,
+      "checked_electronic_inputs": null
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "765f5c7609654703",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/bm_n_methylphthalimide/red1/1792633789560002579/branch_1/opt.xyz",
+  "geom_sha1": "4073ecde24270bc5",
+  "charge": -1,
+  "mult": 2,
+  "id": "bm_n_methylphthalimide",
+  "state": "red1",
+  "source": "computed:gpu",
+  "wall_s": 112.0,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "e_smd_Ha": -552.551310839971,
+  "e_smd_eV": -15035.687139993428,
+  "converged_smd": true,
+  "e_gas_Ha": -552.469409466811,
+  "e_gas_eV": -15033.458490094294,
+  "converged_gas": true,
+  "gas_homo_eV": -1.4324601064186997,
+  "gas_lumo_eV": 3.8256653220878842,
+  "gas_s_squared": 0.7681,
+  "gas_spin_contam": 0.0181,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.2286498991337726,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -552.551310839683,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -552.5513108394586,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -552.551310839971,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -552.469409466811,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -552.4694094666278,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -552.4694094664823,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -5.075645186976191,
+  "smd_lumo_eV": 0.7362413123189251,
+  "smd_s_squared": 0.7672,
+  "smd_spin_contam": 0.0172
+}

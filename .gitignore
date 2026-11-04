@@ -44,3 +44,12 @@ validation/*.xml
 
 # Licensed / non-redistributable curated data (re-create via docs/DATASETS.md)
 data/raw/validation/solvation_refset_acetonitrile.csv
+
+# Local documentation/test tooling and canonical relocated raw artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+/build/
+/dist/
+data/redox_route_sources/
+manuscript/redox_overleaf_exports/

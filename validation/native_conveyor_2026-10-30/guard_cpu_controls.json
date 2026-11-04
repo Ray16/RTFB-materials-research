@@ -1,0 +1,55 @@
+{
+  "status": "normal_and_transient_peak_controls_checked",
+  "records": [
+    {
+      "name": "normal",
+      "returncode": 0,
+      "record": {
+        "status": "effective_memory_guard_finished_profile_review_pending",
+        "pid": 2727506,
+        "process_start": "564860957",
+        "host": "lambda1",
+        "maximum_RSS_GiB": 0.25,
+        "minimum_free_GiB": 32.0,
+        "CPU_affinity": [
+          7
+        ],
+        "peak_tree_RSS_bytes": 17334272,
+        "self_VmHWM_bytes": 17870848,
+        "started": 1793398433.8238482,
+        "polling_seconds": 0.1,
+        "signal_target": "this owned process only",
+        "current_tree_RSS_bytes": 16105472,
+        "free_RAM_bytes": 216999116800,
+        "checked": 1793398433.9138393,
+        "finished": 1793398433.9172454
+      }
+    },
+    {
+      "name": "transient",
+      "returncode": -2,
+      "record": {
+        "status": "effective_memory_guard_failed_preserved",
+        "pid": 2727508,
+        "process_start": "564860974",
+        "host": "lambda1",
+        "maximum_RSS_GiB": 0.1,
+        "minimum_free_GiB": 32.0,
+        "CPU_affinity": [
+          7
+        ],
+        "peak_tree_RSS_bytes": 16007168,
+        "self_VmHWM_bytes": 174551040,
+        "started": 1793398433.9884765,
+        "polling_seconds": 0.1,
+        "signal_target": "this owned process only",
+        "current_tree_RSS_bytes": 16007168,
+        "free_RAM_bytes": 216993730560,
+        "checked": 1793398434.2004592,
+        "graceful_stop_requested": 1793398434.2112176,
+        "error": "KeyboardInterrupt('Effective host guard stopped its owned process; preserve checkpoints')",
+        "finished": 1793398434.2114227
+      }
+    }
+  ]
+}

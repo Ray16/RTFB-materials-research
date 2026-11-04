@@ -1,0 +1,199 @@
+{
+  "status": "initial_connectivity_stereo_and_backbone_checked",
+  "selected": {
+    "conformer_id": 0,
+    "MMFF_status": 1,
+    "MMFF_energy_kcal_mol": 479.4527204911625,
+    "connectivity": "ok",
+    "stereochemistry": "ok",
+    "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/viologen_preparation_2026-10-31_v2/all_same__occ_2_4/trial_0.xyz",
+    "xyz_sha256": "a7368d418ab5f8e5882194f458c1b5f31c49d93b04919718bb7fd2888bbf5dbd"
+  },
+  "trials": [
+    {
+      "conformer_id": 0,
+      "MMFF_status": 1,
+      "MMFF_energy_kcal_mol": 479.4527204911625,
+      "connectivity": "ok",
+      "stereochemistry": "ok",
+      "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/viologen_preparation_2026-10-31_v2/all_same__occ_2_4/trial_0.xyz",
+      "xyz_sha256": "a7368d418ab5f8e5882194f458c1b5f31c49d93b04919718bb7fd2888bbf5dbd"
+    }
+  ],
+  "embedding_attempts": [
+    {
+      "profile": "ETKDGv3",
+      "seed": 20261036,
+      "conformers": 1,
+      "failure_counts": [
+        3646,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "topology": {
+    "topology": "open_linear_chain",
+    "repeat_units": 5,
+    "backbone_atoms": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "backbone_carbon_count": 10,
+    "backbone_CC_bonds": 9,
+    "chain_ends": 2,
+    "backbone_ring_closure": false,
+    "para_graft_sites": [
+      {
+        "backbone_position": 2,
+        "backbone_atom": 1,
+        "phenyl_atoms": [
+          64,
+          65,
+          66,
+          67,
+          68,
+          69
+        ],
+        "benzyl_atom": null
+      },
+      {
+        "backbone_position": 4,
+        "backbone_atom": 3,
+        "phenyl_atoms": [
+          44,
+          45,
+          46,
+          47,
+          62,
+          63
+        ],
+        "benzyl_atom": 48
+      },
+      {
+        "backbone_position": 6,
+        "backbone_atom": 5,
+        "phenyl_atoms": [
+          36,
+          37,
+          38,
+          39,
+          42,
+          43
+        ],
+        "benzyl_atom": 40
+      },
+      {
+        "backbone_position": 8,
+        "backbone_atom": 7,
+        "phenyl_atoms": [
+          16,
+          17,
+          18,
+          19,
+          34,
+          35
+        ],
+        "benzyl_atom": 20
+      },
+      {
+        "backbone_position": 10,
+        "backbone_atom": 9,
+        "phenyl_atoms": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "benzyl_atom": null
+      }
+    ]
+  },
+  "XYZ_backbone_atoms": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "XYZ_backbone_carbon_count": 10,
+  "XYZ_backbone_CC_bonds": 9,
+  "XYZ_chain_ends": 2,
+  "XYZ_core_groups": [
+    [
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      30,
+      31,
+      32,
+      33
+    ],
+    [
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      58,
+      59,
+      60,
+      61
+    ]
+  ],
+  "initial_contact_metrics": [
+    {
+      "site_i": 1,
+      "site_j": 2,
+      "centroid_distance_A": 20.202822665525552,
+      "interplane_angle_deg": 51.16464592181406,
+      "plane_separation_A": 7.81577669988556,
+      "lateral_offset_A": 18.629752500562077,
+      "nearest_core_atom_A": 15.095569318359244,
+      "core_planarity_rms_A": [
+        0.39261446541915695,
+        0.39099322121033503
+      ],
+      "stack_geometry": false
+    }
+  ],
+  "solvent_optimized": false,
+  "conformer_sampling_qualified": false,
+  "interaction_strength_computed": false,
+  "native_G_qualified": false
+}

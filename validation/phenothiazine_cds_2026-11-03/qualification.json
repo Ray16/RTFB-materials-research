@@ -1,0 +1,48 @@
+{
+  "status": "two_exact_neutral_CDS_step_controls_qualified_for_fresh_native_tests",
+  "step_Bohr": 1e-06,
+  "library_default_step_Bohr": 0.0001,
+  "controls": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "geometry_sha256": "8707e2cd3e638c5795f40ae1434f31b340a2cbf37b5568ffd6208e4c142f2663",
+      "component_report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/minus_component.json",
+      "fine_pair_maximum_change_Ha_Bohr2": 9.246347177499503e-10,
+      "residual_maximum_asymmetry_Ha_Bohr2": 5.12798137286552e-13
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "geometry_sha256": "04c278a6c6fde79c5b5ed8353b3062ac189807cf601bb65171bd66ea80d0a407",
+      "component_report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/plus_component.json",
+      "fine_pair_maximum_change_Ha_Bohr2": 1.0028056943861552e-09,
+      "residual_maximum_asymmetry_Ha_Bohr2": 5.556249904614674e-13
+    }
+  ],
+  "full_native_gates_qualified": false,
+  "native_G_qualified": false,
+  "redox_potential_qualified": false,
+  "scientific_model_changed": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/minus_component.json": "dd1252770e363a36b9153090a9986353ce7613101dc2051f3b3540331573ad1e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/plus_component.json": "66b2ac7dfaf217bbb3a899c41184e406f6c61b407a81abb5bee03901d3b60ac9",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/smd.py": "1af82c3a1997abbe2db69db4dab71891a6a582f7e69154e7e046c04f40638f06",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/libsolvent.so": "467dc0969542482a0bab7c321d28e56a94af02f4b162b7d800f12ad986182b25",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_minus/namespace.json": "e7b06975b9f788ca3fbcfda501f8c41dcf51e33664c1a8bcecd0f4884c0f17a3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_minus/case/plan.json": "b35da4af105356e25b06eadb443d0b3978b0b91e2df4aebecedfb82b501fde47",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_minus/case/status.json": "af2c2638476b4b8b6d3be5b2a5ee4304de23044c55de2f4122a915e94208b677",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_minus/case/state/opt.xyz": "8707e2cd3e638c5795f40ae1434f31b340a2cbf37b5568ffd6208e4c142f2663",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_minus/case/SCF_evaluations/0000/0000/settings.json": "50d5091552ca29e412b8c03f8f318463810ef43493d04fa6847d48f42a668d43",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_minus/case/state/native_thermal/eb56d2623aff43bc/hessian_cartesian.npy": "0eef7992e85f219f1a643926155381a39f2581428a536e50851e1bed176104b1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/cds_hessian_component.py": "be9ff301d04d4b48103e381da5b0eb7a00b6f9228dbf814aec23d0be9ea2c2e8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/cds_finite.py": "0357b0d0af126312c035be2d15b6fb4b102bde7d31d9acd267270f2d808a3656",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/minus_component.npz": "d800fe2b70b26aaf5111f99b80dea8ae5f2dc57ebc0a5a57626b9b12e79e0dd9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_plus/namespace.json": "f91b35035c7f09db608b92ed16bf04bac4127b8f66f2c22ec57c4ca53c7f4e70",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_plus/case/plan.json": "db659ceeb3d5f3b9f2b02d51f2c0f5b160283020613b8ef05d67887361b03d6f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_plus/case/status.json": "526fd1bb3edb9635b62ec81bdfd88ee12e503f488325d56bac9b5fe9f807f8f6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_plus/case/state/opt.xyz": "04c278a6c6fde79c5b5ed8353b3062ac189807cf601bb65171bd66ea80d0a407",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_plus/case/SCF_evaluations/0000/0000/settings.json": "8c3c5ac734d9a48bfed6e7f2ad8aceeffb290fa5b0c18039dfa6e3715a63d041",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_native/phenothiazine_neu_mode_plus/case/state/native_thermal/543ab67795e93356/hessian_cartesian.npy": "3e461d69f31c1959ad190d1f476f3a54ed2e9a44d8f61995968a32be76ea55a7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/plus_component.npz": "8fc0c754f0bf4be908afad1818f611bb9c679f34784c886f9da2a6362b68bdc1"
+  },
+  "producer_sha256": "a669c1df14036fe3013d06ddbf07fbd7d41039515ade4b7205a549f34ce22cb0"
+}

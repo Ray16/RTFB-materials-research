@@ -1,0 +1,81 @@
+{"target_pid": 2013918, "target_start": "1417472543", "action": "read-only attach/backtrace/detach; no inferior calls or data writes"}
+[New LWP 2013927]
+[New LWP 2013928]
+[New LWP 2013929]
+[New LWP 2014100]
+[New LWP 2014118]
+[New LWP 2014126]
+[New LWP 2014411]
+[New LWP 2014460]
+warning: "target:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python3.11": could not open as an executable file: Operation not permitted.
+warning: `target:/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python3.11': can't open to read symbols: Operation not permitted.
+warning: Could not load vsyscall page because no executable was specified
+0x00007f77b5602b12 in ?? ()
+
+Thread 9 (LWP 2014460 "python"):
+#0  0x00007f7740418b31 in ?? ()
+#1  0x00007f77404163e0 in ?? ()
+#2  0x0000000000000000 in ?? ()
+
+Thread 8 (LWP 2014411 "python"):
+#0  0x00007f77b7f420d7 in ?? ()
+#1  0x0000000000000000 in ?? ()
+
+Thread 7 (LWP 2014126 "cuda-EvtHandlr"):
+#0  0x00007f77b7fc9d1f in ?? ()
+#1  0x00007f76d8000cf0 in ?? ()
+#2  0x00007f76d8000cf0 in ?? ()
+#3  0x000000000000000e in ?? ()
+#4  0x00000064b7f9662d in ?? ()
+#5  0x00007f76f5ffede0 in ?? ()
+#6  0x00007f775caaa44f in ?? ()
+#7  0x0000000000000000 in ?? ()
+
+Thread 6 (LWP 2014118 "cuda00001400006"):
+#0  0x00007f77b7fc9d1f in ?? ()
+#1  0x000056242c89a8c0 in ?? ()
+#2  0x000056242c89a8a0 in ?? ()
+#3  0x0000000000000003 in ?? ()
+#4  0xffffffff01bfed90 in ?? ()
+#5  0x0000000000000000 in ?? ()
+
+Thread 5 (LWP 2014100 "python"):
+#0  0x00007f77b7f420d7 in ?? ()
+#1  0x0000000000000000 in ?? ()
+
+Thread 4 (LWP 2013929 "python"):
+#0  0x00007f77b7f420d7 in ?? ()
+#1  0x0000000000000001 in ?? ()
+#2  0x0000018900000008 in ?? ()
+#3  0x00007f77afec2460 in ?? ()
+#4  0x0000000000000000 in ?? ()
+
+Thread 3 (LWP 2013928 "python"):
+#0  0x00007f77b7f420d7 in ?? ()
+#1  0x0000000000000000 in ?? ()
+
+Thread 2 (LWP 2013927 "python"):
+#0  0x00007f77b7f420d7 in ?? ()
+#1  0x0000000000000000 in ?? ()
+
+Thread 1 (LWP 2013918 "python"):
+#0  0x00007f77b5602b12 in ?? ()
+#1  0x00005623f409a798 in ?? ()
+#2  0x00007f77b43d7cf0 in ?? ()
+#3  0x00007ffd364aec50 in ?? ()
+#4  0x00005623f40c2f98 in ?? ()
+#5  0x0000000000000001 in ?? ()
+#6  0x0000000000000001 in ?? ()
+#7  0x00007ffd364aee50 in ?? ()
+#8  0x00007f77b52acd75 in ?? ()
+#9  0x00007ffd364af750 in ?? ()
+#10 0x00007f77b52afcf3 in ?? ()
+#11 0x0000000000000003 in ?? ()
+#12 0x0000000000000002 in ?? ()
+#13 0x00007ffd364af760 in ?? ()
+#14 0x00007ffd364b0150 in ?? ()
+#15 0x0000020900000003 in ?? ()
+#16 0x00007f77b5ae0b40 in ?? ()
+#17 0x0000000000000000 in ?? ()
+[Inferior 1 (process 2013918) detached]
+debugger returncode 0

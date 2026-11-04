@@ -1,0 +1,55 @@
+{
+  "status": "actual_saved_determinants_preserved_by_occupied_storage",
+  "records": [
+    {
+      "source": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_V100_fresh4_validation_v3/case/SCF_evaluations/0000/0000/SCF.h5",
+      "source_sha256": "5d89360b616ebd0f90aaeef729105df136efe18bcd202c943aebbdbc036900c0",
+      "occupied_checkpoint": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_occupied_storage_equivalence_v2/000.h5",
+      "occupied_checkpoint_sha256": "885500d1f8a2b2a2c21f3590ffe6012b2a0938159b06da8d120300c8552d628f",
+      "actual_molecular_frame_preserved": true,
+      "occupied_coefficients_bitwise_identical": true,
+      "all_occupations_and_orbital_energies_bitwise_identical": true,
+      "energy_bitwise_identical": true,
+      "maximum_density_error": 0.0,
+      "energy_Ha": -3147.4393938370563,
+      "converged": false,
+      "electrons": 470,
+      "occupied_orbitals": 235,
+      "basis_functions": 1193,
+      "maximum_orthonormality_error": 3.9968028886505635e-15,
+      "restricted_s_squared": 0.0,
+      "virtual_coefficients_retained": false,
+      "density_restart_supported": true,
+      "response_restart_supported": false
+    },
+    {
+      "source": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/case/SCF_evaluations/0000/0000/SCF.h5",
+      "source_sha256": "16d165ca7d57903fd0f8d0fcc1950bf08593ce79e4eff4b9bdac4a22f3edec3f",
+      "occupied_checkpoint": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_occupied_storage_equivalence_v2/001.h5",
+      "occupied_checkpoint_sha256": "c7e73f728c828f1613deedfdf3a9806f466e5b5d24bc2d6735b6ab32203ee5ee",
+      "actual_molecular_frame_preserved": true,
+      "occupied_coefficients_bitwise_identical": true,
+      "all_occupations_and_orbital_energies_bitwise_identical": true,
+      "energy_bitwise_identical": true,
+      "maximum_density_error": 0.0,
+      "energy_Ha": -844.2060356166328,
+      "converged": false,
+      "electrons": 146,
+      "occupied_orbitals": 73,
+      "basis_functions": 394,
+      "maximum_orthonormality_error": 2.4424906541753444e-15,
+      "restricted_s_squared": 0.0,
+      "virtual_coefficients_retained": false,
+      "density_restart_supported": true,
+      "response_restart_supported": false
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/check_occupied_checkpoint_equivalence.py": "d852f8ca9e9c7390aebdcc56d981434bcbed7ea993b0811faf5077479e57a3f1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/occupied_checkpoints.py": "148deeee1734d6631195385a59577ec1859555e310eff7876909debf3f943b2b"
+  },
+  "new_SCF_calculations": false,
+  "source_convergence_requalified": false,
+  "native_G_qualified": false,
+  "full_response_restart_supported": false
+}

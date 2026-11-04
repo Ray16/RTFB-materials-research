@@ -1,0 +1,213 @@
+{
+  "status": "sampling_process_and_progress_observation_not_physical_admission",
+  "checked": 1793631566.960134,
+  "manifest": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/manifest.json",
+  "manifest_sha256": "675916c21a0d985a39fd98149ac04345e91bcda16c7f970c8ca08bfb27e33039",
+  "records": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_2_3__conf001/namespace.json",
+      "namespace_sha256": "bede994f2dd5bf09aad15f111612443ef09edddb524b5b4a432a481cf0a84b7a",
+      "stage_snapshot": {
+        "status": "corrected_sampling_energy_failed_preserved",
+        "started": 1793630118.867153,
+        "owner": {
+          "host": "lambda1",
+          "pid": 459148,
+          "process_start": "588028197"
+        },
+        "native_G_qualified": false,
+        "occupied_ensemble_cycle_qualified": false,
+        "error": "KeyboardInterrupt('Owned experimental energy stop; preserve SCF checkpoints')",
+        "finished": 1793630846.0569031
+      },
+      "SCF_iterations": [
+        {
+          "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_2_3__conf001/case/raw/SCF_checkpoints/0000/0000/progress.json",
+          "snapshot": {
+            "cycle": 8,
+            "energy_Ha": -3150.9881214635516,
+            "updated": 1793630807.7748709,
+            "qualified": false
+          }
+        }
+      ],
+      "response_summary": null,
+      "SCF_kernels_entered": 1,
+      "occupied_checkpoints_written": 1,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_2__conf001/namespace.json",
+      "namespace_sha256": "c3b4dca89d8a9c3410ad31c21a496b81e854670d216f1e01d03b4460ff459188",
+      "stage_snapshot": {
+        "status": "corrected_sampling_energy_finished_independent_review_pending",
+        "started": 1793630118.8685725,
+        "owner": {
+          "host": "lambda1",
+          "pid": 459677,
+          "process_start": "588028557"
+        },
+        "native_G_qualified": false,
+        "occupied_ensemble_cycle_qualified": false,
+        "observed_peak_GPU_MiB": 18856,
+        "finished": 1793631294.3337333
+      },
+      "SCF_iterations": [
+        {
+          "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_2__conf001/case/raw/SCF_checkpoints/0000/0000/progress.json",
+          "snapshot": {
+            "cycle": 13,
+            "energy_Ha": -3098.6169429301963,
+            "updated": 1793630732.6562235,
+            "qualified": false
+          }
+        },
+        {
+          "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_2__conf001/case/raw/SCF_checkpoints/0001/0000/progress.json",
+          "snapshot": {
+            "cycle": 13,
+            "energy_Ha": -3098.5503640290417,
+            "updated": 1793631263.7870362,
+            "qualified": false
+          }
+        }
+      ],
+      "response_summary": null,
+      "SCF_kernels_entered": 2,
+      "occupied_checkpoints_written": 4,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_none__conf001/namespace.json",
+      "namespace_sha256": "e451af6a8ccd59ed45b72d974f94f915e465cdf4905389da6c80f5e513187bc8",
+      "stage_snapshot": {
+        "status": "corrected_sampling_energy_finished_independent_review_pending",
+        "started": 1793630334.4529097,
+        "owner": {
+          "host": "lambda2",
+          "pid": 3609152,
+          "process_start": "1443095009"
+        },
+        "native_G_qualified": false,
+        "occupied_ensemble_cycle_qualified": false,
+        "observed_peak_GPU_MiB": 16768,
+        "finished": 1793630977.823424
+      },
+      "SCF_iterations": [
+        {
+          "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_none__conf001/case/raw/SCF_checkpoints/0000/0000/progress.json",
+          "snapshot": {
+            "cycle": 11,
+            "energy_Ha": -3046.2484279008204,
+            "updated": 1793630675.4907174,
+            "qualified": false
+          }
+        },
+        {
+          "path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/states/all_same__occ_none__conf001/case/raw/SCF_checkpoints/0001/0000/progress.json",
+          "snapshot": {
+            "cycle": 11,
+            "energy_Ha": -3046.19102570462,
+            "updated": 1793630965.004144,
+            "qualified": false
+          }
+        }
+      ],
+      "response_summary": null,
+      "SCF_kernels_entered": 2,
+      "occupied_checkpoints_written": 4,
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/namespace.json",
+      "namespace_sha256": "50d76738bc04e6b6d66bd40d569a2ad4aa59501b1d55216b50adb301cfa1ad6f",
+      "stage_snapshot": {
+        "status": "charged_polymer_native_component_running",
+        "owner": {
+          "host": "lambda13",
+          "pid": 1945676,
+          "process_start": "173654991"
+        },
+        "started": 1793619460.5758607,
+        "native_G_qualified": false,
+        "production_default_changed": false
+      },
+      "SCF_iterations": [],
+      "response_summary": {
+        "status": "residual_response_solver_active_unqualified",
+        "completed_blocks": 9,
+        "maximum_recorded_residual_norm": 1.4075674503440708e-07
+      },
+      "SCF_kernels_entered": 0,
+      "occupied_checkpoints_written": 0,
+      "native_G_qualified": false
+    }
+  ],
+  "live_hosts": {
+    "lambda1": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda1",
+            "pid": 459148,
+            "process_start": "588028197"
+          },
+          "live": false
+        },
+        {
+          "owner": {
+            "host": "lambda1",
+            "pid": 459677,
+            "process_start": "588028557"
+          },
+          "live": false
+        }
+      ],
+      "GPU_residency": []
+    },
+    "lambda2": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda2",
+            "pid": 3609152,
+            "process_start": "1443095009"
+          },
+          "live": false
+        }
+      ],
+      "GPU_residency": []
+    },
+    "lambda13": {
+      "processes": [
+        {
+          "owner": {
+            "host": "lambda13",
+            "pid": 1945676,
+            "process_start": "173654991"
+          },
+          "live": true,
+          "CPU_affinity": [
+            4,
+            5
+          ],
+          "environment": {
+            "OMP_NUM_THREADS": "2",
+            "OMP_THREAD_LIMIT": "2",
+            "MKL_NUM_THREADS": "2",
+            "OPENBLAS_NUM_THREADS": "2",
+            "NUMEXPR_NUM_THREADS": "2",
+            "XTB_THREADS": "2",
+            "CUDA_VISIBLE_DEVICES": "1"
+          }
+        }
+      ],
+      "GPU_residency": [
+        "1945676, GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 24846"
+      ]
+    }
+  },
+  "native_G_qualified": false,
+  "jobs_restarted": false,
+  "producer_sha256": "a94fa945374fa7cbc4f3119d06ea9235e67449850cdda9745e43aa8b73f30d0b"
+}

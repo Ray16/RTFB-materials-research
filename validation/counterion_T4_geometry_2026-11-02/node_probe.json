@@ -1,0 +1,22 @@
+{
+  "host": "lambda5",
+  "namespace_sha256": "01940f397baa602888b7e7d1f5c354a8aeeefe523e7173fc6c2db394f028c301",
+  "checks": {
+    "versions": {
+      "pyscf": "2.14.0",
+      "gpu4pyscf-cuda12x": "1.8.1",
+      "cupy-cuda12x": "13.4.1",
+      "cutensor-cu12": "2.2.0",
+      "fastrlock": "0.8.3"
+    },
+    "worker_imports": [
+      "redox.core.common",
+      "redox.core.io",
+      "redox.qm",
+      "redox.validation.protonation",
+      "redox.workflows.resources"
+    ],
+    "CUDA_context_started": false
+  },
+  "GPU_started": false
+}

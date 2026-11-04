@@ -20,8 +20,9 @@ import tempfile
 import threading
 
 import numpy as np
+from redox.qm.xtb_runtime import configured_library
 
-LIBRARY = Path('/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/libxtb.so.6.7.1')
+LIBRARY = configured_library()
 LIBRARY_SHA256 = 'c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853'
 AUTORCM = 219474.63067
 AMUTOAU = 1.660539040e-27 / 9.10938356e-31

@@ -1,0 +1,22 @@
+{
+  "status": "immutable_scoped_checked_workflow_records",
+  "source_base_commit": "66254a7b",
+  "files_sha256": {
+    "summary.json": "1f8ebe642b1aa38fbfa27645883158ff2b8f10673cb28d2756d0f02ce2311ae8",
+    "collection_manifest.json": "24d4e2a043071dc1cb83b4b657cc35d66b69935654d1f83fc009869bed4c2b62",
+    "README.md": "c1ffa5bb539e16a4515a0dab49309e74cd42befe3a442d8429064cd11d9c38fc",
+    "producer_snapshots/0_reviewer_collection.py": "75128f5242df7084ebd8abad9eee84eb8f99af5fa54610914195d1b9e0ce1de9",
+    "producer_snapshots/1_check_reviewer_collection.py": "6a5271785d6a865875b8e7ecee0d2287912398f763c22eb53ee75c737d1eb78c"
+  },
+  "as_used_producers": {
+    "scripts/release/reviewer_collection.py": {
+      "snapshot": "producer_snapshots/0_reviewer_collection.py",
+      "sha256": "75128f5242df7084ebd8abad9eee84eb8f99af5fa54610914195d1b9e0ce1de9"
+    },
+    "scripts/release/check_reviewer_collection.py": {
+      "snapshot": "producer_snapshots/1_check_reviewer_collection.py",
+      "sha256": "6a5271785d6a865875b8e7ecee0d2287912398f763c22eb53ee75c737d1eb78c"
+    }
+  },
+  "submission_ready": false
+}

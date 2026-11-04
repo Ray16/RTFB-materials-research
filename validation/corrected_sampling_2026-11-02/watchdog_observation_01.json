@@ -1,0 +1,242 @@
+{
+  "checked": 1793646027.0137427,
+  "records": [
+    {
+      "host": "lambda1",
+      "launch": {
+        "host": "lambda1",
+        "pid": 1069871,
+        "process_start": "589354225",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py",
+          "--roster",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+          "--helper",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/lambda1",
+          "--hours",
+          "24"
+        ]
+      },
+      "owner": {
+        "host": "lambda1",
+        "pid": 1069871,
+        "process_start": "589354225",
+        "CPU_affinity": [
+          0
+        ],
+        "deadline": 1793729766.6378512,
+        "foreign_processes_signaled": false,
+        "source_sha256": {
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py": "8c1350962671cada0c6f22f8514d3cdd8cd5c6d2d2f81d684cbf86519792b1a0",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py": "0df107e3c1ffa83a21e629912873f8bcf3df9b98085c1fa3e476e427652ee7b4"
+        }
+      },
+      "snapshot": {
+        "checked": 1793646025.2164783,
+        "host": "lambda1",
+        "live_workers": [
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/all_same__occ_2_3__conf001/namespace.json",
+            "pid": 683618,
+            "process_start": "588523427",
+            "GPU": 2,
+            "foreign_PIDs": []
+          },
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2_4__conf003/namespace.json",
+            "pid": 1165180,
+            "process_start": "589556368",
+            "GPU": 0,
+            "foreign_PIDs": []
+          }
+        ],
+        "events": [],
+        "unresolved": [],
+        "foreign_processes_signaled": false,
+        "claims_or_reservations_cleared": false
+      }
+    },
+    {
+      "host": "lambda2",
+      "launch": {
+        "host": "lambda2",
+        "pid": 4024539,
+        "process_start": "1444398640",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py",
+          "--roster",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+          "--helper",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/lambda2",
+          "--hours",
+          "24"
+        ]
+      },
+      "owner": {
+        "host": "lambda2",
+        "pid": 4024539,
+        "process_start": "1444398640",
+        "CPU_affinity": [
+          1
+        ],
+        "deadline": 1793729766.6413078,
+        "foreign_processes_signaled": false,
+        "source_sha256": {
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py": "8c1350962671cada0c6f22f8514d3cdd8cd5c6d2d2f81d684cbf86519792b1a0",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py": "0df107e3c1ffa83a21e629912873f8bcf3df9b98085c1fa3e476e427652ee7b4"
+        }
+      },
+      "snapshot": {
+        "checked": 1793646024.8149347,
+        "host": "lambda2",
+        "live_workers": [
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf011/namespace.json",
+            "pid": 4108906,
+            "process_start": "1444616945",
+            "GPU": 1,
+            "foreign_PIDs": []
+          }
+        ],
+        "events": [],
+        "unresolved": [],
+        "foreign_processes_signaled": false,
+        "claims_or_reservations_cleared": false
+      }
+    },
+    {
+      "host": "lambda4",
+      "launch": {
+        "host": "lambda4",
+        "pid": 1866498,
+        "process_start": "49966777",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py",
+          "--roster",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+          "--helper",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/lambda4",
+          "--hours",
+          "24"
+        ]
+      },
+      "owner": {
+        "host": "lambda4",
+        "pid": 1866498,
+        "process_start": "49966777",
+        "CPU_affinity": [
+          0
+        ],
+        "deadline": 1793729766.6458454,
+        "foreign_processes_signaled": false,
+        "source_sha256": {
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py": "8c1350962671cada0c6f22f8514d3cdd8cd5c6d2d2f81d684cbf86519792b1a0",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py": "0df107e3c1ffa83a21e629912873f8bcf3df9b98085c1fa3e476e427652ee7b4"
+        }
+      },
+      "snapshot": {
+        "checked": 1793646008.6575117,
+        "host": "lambda4",
+        "live_workers": [
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2_4__conf004/namespace.json",
+            "pid": 1923706,
+            "process_start": "50225987",
+            "GPU": 0,
+            "foreign_PIDs": []
+          },
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/states/all_same__occ_2__conf010/namespace.json",
+            "pid": 1909999,
+            "process_start": "50171764",
+            "GPU": 6,
+            "foreign_PIDs": []
+          }
+        ],
+        "events": [],
+        "unresolved": [],
+        "foreign_processes_signaled": false,
+        "claims_or_reservations_cleared": false
+      }
+    },
+    {
+      "host": "lambda13",
+      "launch": {
+        "host": "lambda13",
+        "pid": 3414287,
+        "process_start": "176070587",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py",
+          "--roster",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+          "--helper",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/lambda13",
+          "--hours",
+          "24"
+        ]
+      },
+      "owner": {
+        "host": "lambda13",
+        "pid": 3414287,
+        "process_start": "176070587",
+        "CPU_affinity": [
+          1
+        ],
+        "deadline": 1793729766.8004124,
+        "foreign_processes_signaled": false,
+        "source_sha256": {
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/watcher.py": "8c1350962671cada0c6f22f8514d3cdd8cd5c6d2d2f81d684cbf86519792b1a0",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/exclusivity_watchdogs/sources/snapshot.py": "0df107e3c1ffa83a21e629912873f8bcf3df9b98085c1fa3e476e427652ee7b4"
+        }
+      },
+      "snapshot": {
+        "checked": 1793646020.8635492,
+        "host": "lambda13",
+        "live_workers": [
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_larger_RHF16_followups/alternating__occ_2_3/namespace.json",
+            "pid": 3445381,
+            "process_start": "176123338",
+            "GPU": 0,
+            "foreign_PIDs": []
+          },
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_larger_RHF16_followups/alternating__occ_2_4/namespace.json",
+            "pid": 3446051,
+            "process_start": "176124337",
+            "GPU": 1,
+            "foreign_PIDs": []
+          },
+          {
+            "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_larger_RHF16_followups/all_same__occ_2_4/namespace.json",
+            "pid": 3450964,
+            "process_start": "176126884",
+            "GPU": 2,
+            "foreign_PIDs": []
+          }
+        ],
+        "events": [],
+        "unresolved": [],
+        "foreign_processes_signaled": false,
+        "claims_or_reservations_cleared": false
+      }
+    }
+  ],
+  "foreign_processes_signaled": false
+}

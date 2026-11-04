@@ -1,0 +1,40 @@
+{
+  "status": "immutable_scoped_matched_reference_preparation_and_start",
+  "source_base_commit": "1b83d02f",
+  "files_sha256": {
+    "v2_manifest.json": "1c3327f6fe5a5abbed149ffc2144b318b7abe8419e6cd06d96d0fb6193845db2",
+    "v2_dispatch.json": "5f4afe7a6c49f58e6ab464a3a3c2b4dfa0a13b3d245a40b7d7426acdd27a6004",
+    "v2_startup.json": "4e6a86a92c65c6d9a7d3f8dd1f408393584bbe8bcd4582dfd20522e0d2aa19ed",
+    "all_same_lineage.json": "df5615bae07721935e532f34cd753d3ec6e7a2b422ec88e6c26c2c13bf1c785f",
+    "all_same_initial_geometry_review.json": "fdc9282bb83c231a41d36c86d6f95d40ea446deb519dd45bfa8dba4dbae7551f",
+    "alternating_lineage.json": "c8cefe321316ac213d81a90c7fd4ea4460c49927cb395ae700a119bbe6478d38",
+    "alternating_initial_geometry_review.json": "b6026e5b61b9a64b262227e4dc999afc6c109b2a9bbbd87aec5f0219185778bd",
+    "original_prelaunch_failures.json": "d52fb06de798d8461b37355f61d00c1d1e58e7af2717d2bfb6bd625796e90d32",
+    "tests.xml": "304729bcca5a0e20202fa5479c070756a47945ac16cc66510a377cd0e5e382dd",
+    "summary.json": "0ea7cd0d17844bba603003d1dabee558cb00defa5a05159a52a3f4a9eec3d4bf",
+    "README.md": "c98811e10283f4cc195f9cb03931a23ae4b864bdc611bbb7b9d251504d5b53cf",
+    "producer_snapshots/0_matched_polymer_reference.py": "683f355ae7906d013386bb7d5dee472a1269a9b7d440b348fefe85b8371090bc",
+    "producer_snapshots/1_charged_polymer_pilot.py": "4930b3b4ce660ed452c34a0892d9809e6a5a1a1d6b9060baadd2165a4a8acc33",
+    "producer_snapshots/2_screening_control.py": "71e8cf99c05872739416badfe19dae5c488e2ced3367402314b3a747a56d0c12",
+    "producer_snapshots/3_test_matched_polymer_reference.py": "ac0718ec66e5846c46532768fca9f0e0eae24d043a7c7a03940269fcb120e6db"
+  },
+  "as_used_producers": {
+    "src/redox/workflows/matched_polymer_reference.py": {
+      "snapshot": "producer_snapshots/0_matched_polymer_reference.py",
+      "sha256": "683f355ae7906d013386bb7d5dee472a1269a9b7d440b348fefe85b8371090bc"
+    },
+    "src/redox/workflows/charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/1_charged_polymer_pilot.py",
+      "sha256": "4930b3b4ce660ed452c34a0892d9809e6a5a1a1d6b9060baadd2165a4a8acc33"
+    },
+    "src/redox/workflows/screening_control.py": {
+      "snapshot": "producer_snapshots/2_screening_control.py",
+      "sha256": "71e8cf99c05872739416badfe19dae5c488e2ced3367402314b3a747a56d0c12"
+    },
+    "tests/test_matched_polymer_reference.py": {
+      "snapshot": "producer_snapshots/3_test_matched_polymer_reference.py",
+      "sha256": "ac0718ec66e5846c46532768fca9f0e0eae24d043a7c7a03940269fcb120e6db"
+    }
+  },
+  "complete_native_or_cycle_qualification": false
+}

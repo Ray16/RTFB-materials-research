@@ -1,0 +1,29 @@
+{
+  "status": "two_fatal_response_attempts_preserved_no_native_admission",
+  "attempts": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_diagnostic/namespace.json",
+      "returncode": 139,
+      "exact_scientific_owner_live": false,
+      "source_energy_difference_Ha": 0.0,
+      "completed_operator_calls": 0,
+      "largest_RHS_batch": 288,
+      "full_execution_qualified": false,
+      "native_G_qualified": false,
+      "failure_scope": "native response crash after saved-density energy reproduction; source stage status remains running because process died without Python cleanup"
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_diagnostic_bounded_v2/namespace.json",
+      "returncode": 139,
+      "exact_scientific_owner_live": false,
+      "source_energy_difference_Ha": 0.0,
+      "completed_operator_calls": 3,
+      "largest_RHS_batch": 48,
+      "full_execution_qualified": false,
+      "native_G_qualified": false,
+      "failure_scope": "native response crash after saved-density energy reproduction; source stage status remains running because process died without Python cleanup"
+    }
+  ],
+  "original_scientific_workers_signalled": false,
+  "next_action": "Capture one explicitly owned debug-process native backtrace before further solver changes"
+}

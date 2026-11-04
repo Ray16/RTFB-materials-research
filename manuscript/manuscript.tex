@@ -1,0 +1,295 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,booktabs,graphicx,xcolor,hyperref}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{tikz,needspace,placeins}
+\usetikzlibrary{arrows.meta,positioning}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\setlength{\emergencystretch}{2em}
+\definecolor{paperteal}{HTML}{007F86}
+\definecolor{paperpale}{HTML}{EDF4F3}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.85}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.8}
+\newcommand{\kj}{\ensuremath{\mathrm{kJ\,mol^{-1}}}}
+\input{evidence/2026-11-03_seven_chloride_outcomes/empty_batch_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/tempo_solution_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/viologen_native_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/viologen_grafting_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/ionic_native_cycle_values_v4.tex}
+\title{Context-Preserving Computational Assessment of Redox Motifs for Polymer Grafting}
+\author{Working draft: authorship and affiliations to be confirmed}
+\date{JCIM Article draft; evidence updated: 3 November 2026}
+\input{evidence/2026-11-03_seven_chloride_outcomes/motif_interaction_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/counterion_v3_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/registry_update_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/occupied_sampling_values.tex}
+\input{evidence/2026-11-03_seven_chloride_outcomes/ptz_redox_values.tex}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+To test the transfer of molecular redox predictions to polymer grafts, we link exact precursor/product identities, defined attachment reactions and neighboring-site models through comparisons that preserve each calculation's physical context. A 39-endpoint acetonitrile benchmark gives a mean absolute error of 0.247 V, while an exact viologen example connects molecular reductions and a $\ViologenGraftDG$ \kj\ local quaternization with conditional oligomer responses. Frozen methyl-capped motif pairs are repulsive in all four tested ionic frames despite favorable whole-chain electronic nonadditivity in two, and both adjacent and one-spacer free-energy responses reverse sign between backbone configurations. A separate phthalimide control fails its predeclared sampling diagnostic, with a $-\SamplingFiftyAbs$ \kj\ ten-to-twenty shift; the matched results are finite-model comparisons, with salt speciation, occupied ensembles and material accessibility unresolved.
+\end{abstract}
+\noindent\textbf{Keywords:} molecular modeling; redox-active polymers; chemical identity; grafting thermodynamics; density functional theory; conformer sampling; computational electrochemistry; reproducibility.
+
+\section{Introduction}
+Redox-active polymers offer a means of retaining charge-storage groups within macromolecular or particulate architectures while allowing their electrochemistry to be tuned through molecular design. Aqueous polymer flow batteries, nonaqueous redox-active colloids and insoluble beads coupled to soluble mediators illustrate different implementations of this idea.\cite{janoschka2015,montoto2016,kim2022} Post-functionalization of an existing support is particularly attractive when the polymer architecture can be prepared independently of the redox group. Phenothiazine- and TEMPO-functionalized materials derived from chloromethylated commodity polystyrene further demonstrate the practical relevance of this route.\cite{ohbiying2025upcycling} Selecting a suitable pendant group nevertheless requires more than a favorable potential of the free parent molecule.
+
+Three changes accompany attachment to a preformed support. The redox core becomes an exact grafted molecular structure with a particular bond and linker; its installation requires an accessible precursor and defined reaction conditions; and its local environment depends on neighboring grafts, residual reactive sites and polymer conformation. These changes introduce questions that are often evaluated in different models. A molecular reduction potential, a base-assisted substitution energy and an oligomer interaction energy may each be well defined while remaining unsuitable for direct combination. Treating all three as interchangeable indicators of a promising polymer can obscure the assumptions governing the prediction.
+
+Existing computational studies provide important parts of this assessment. High-throughput quinone screening and redox databases organize chemical space and connect structure to electrochemical descriptors.\cite{er2015,d3tales2023,reddb2022} Achazi and co-workers developed multistep screening of redox-active molecules for radical-polymer anodes and flow-battery anolytes, combining conformer sampling, electronic-structure filters and benchmarked potentials.\cite{achazi2024screening} Computational electrochemistry also establishes the importance of reference conventions, solvation and charge-state treatment.\cite{marenich2014,fc2010,elhajj2024} At the polymer level, association of diimides, electron hopping, and concentration- and backbone-dependent transport show why neighboring groups and chain structure matter.\cite{wiberg2021,hopping2013,mohanty2026backbone} General provenance systems make calculations traceable and reusable, but provenance alone does not determine whether two chemical quantities have compatible meanings.\cite{aiida2020,fireworks2015,qcarchive2021}
+
+Here we test which conclusions survive when an exact graft is followed from its molecular redox states through a defined installation reaction to explicit neighboring sites. The contribution is a set of matched chemical comparisons: precursor/product pairs specify the installed bond, balanced oligomer cycles isolate an occupancy response, and frozen fragments test whether that response reflects local motif attraction. Keeping each quantity's identity and calculation context makes the proposed interpretation testable. The resulting counterexamples identify how reaction convention, retained chain structure and incomplete conformer sampling can change the conclusion drawn from an otherwise checked calculation.
+
+We evaluate this construction through a retrospective redox benchmark and complementary candidate-level examples. Viologen links a demonstrated attachment class to matched molecular, local-reaction and finite ionic-occupancy calculations. TEMPO tests the interpretation of directional solution relaxation. PMDI connects an enumerated molecular design to first-site and neighboring-site polymer cycles, and phthalimide controls examine whether a sequence spacer prevents spatial contact. The study asks what these linked calculations establish about a proposed graft, rather than assuming that every favorable descriptor constitutes material validation.
+
+\section{Computational Framework and Methods}
+\subsection{Chemical identities and permissible property combinations}
+The target synthesis is post-functionalization of a preformed polymer bearing benzyl chloride handles. The local model is 4-methylbenzyl chloride, whose reaction with a motif gives the corresponding capped graft. This model specifies local connectivity without representing a complete bead, crosslink network or graft distribution. Free parents, capped grafts and oligomers are distinct chemical objects throughout the analysis.
+
+A calculated property is associated with a structured record,
+\begin{equation}
+\mathcal{P}=\{x,\mathcal{I},\mathcal{C},\mathcal{Q},\mathcal{S}\},
+\end{equation}
+where $x$ is the value, $\mathcal{I}$ identifies the molecular graph, charge, multiplicity and geometry, $\mathcal{C}$ defines the electronic and thermal methods, solvent, temperature, standard state and reference, $\mathcal{Q}$ records the applicable quality checks, and $\mathcal{S}$ binds the source records. A property can be reused for the same exact structure only when its state and model requirements match the new calculation. Reference subtraction and reaction sums impose additional compatibility conditions. A failed or absent check leaves the corresponding quantity unresolved; no missing thermal term is replaced by zero.
+
+Candidate generation uses RDKit 2026.3.5 and exact stereochemical graphs.\cite{rdkit} Every generation recipe is retained after deduplication. Attachment is defined by a precursor/product pair and a mapped new heavy-atom bond. The route assessment requires evidence for exact precursor access, attachment selectivity, reaction conditions, a balanced route and redox-core retention. An exact-support demonstration, a molecular analogue and a proposed transformation retain different evidential scopes. Route admission permits a stated next calculation stage; it does not establish conversion or material performance.
+
+The frozen systematic cohort comprises viologen, pyromellitic-diimide (PMDI) and naphthalene-diimide (NDI) cores with declared linkers, terminal groups and single ring substitutions. Later proposal panels and evaluated structures are joined by exact graft graph while retaining aliases and source roles. The \UnifiedRegistryCount{}-graph maintained registry is an identity inventory; membership does not imply completed property evaluations. Nominal molecular capacity is calculated from $Q=nF/(3.6M)$, where $M$ is molar mass in g mol$^{-1}$ and $n$ is the assumed electron count. Accessible electron count and functionalized-polymer mass require separate evidence.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[node distance=5mm,every node/.style={draw,rounded corners,align=center,font=\small,text width=3.2cm,minimum height=14mm,draw=paperteal,fill=paperpale},>=Latex]
+\node (identity) {\textbf{1. Identity}\\Exact precursor,\\graft and bond};
+\node[right=of identity] (molecule) {\textbf{2. Redox}\\Charge, spin\\and reference};
+\node[right=of molecule] (reaction) {\textbf{3. Reaction}\\Base, ions\\and solvent};
+\node[right=of reaction] (polymer) {\textbf{4. Polymer}\\Occupancy and\\conformation};
+\node[below=9mm of molecule,xshift=15mm,text width=10.5cm] (context) {Matched calculation context and property-specific quality checks};
+\draw[->] (identity)--(molecule);\draw[->] (molecule)--(reaction);\draw[->] (reaction)--(polymer);
+\draw[->] (identity.south)|-(context.west);\draw[->] (polymer.south)|-(context.east);
+\end{tikzpicture}
+\caption{Context-preserving assessment of a graft. Exact structures connect molecular electrochemistry, attachment reactions and conditional oligomer comparisons. Each value retains its own state and calculation context; compatibility and physical quality checks govern permitted combinations. A passed route or molecular calculation does not supply missing polymer or material evidence.}
+\label{fig:workflow}
+\end{figure}
+
+\subsection{Electronic structure, thermochemistry and physical acceptance}
+Geometry optimization and native Hessians use r$^2$SCAN-D4 with SMD acetonitrile, employing def2-SVP for neutral/cationic species and def2-SVPD for anions.\cite{r2scan2020,d42019,smd2009} The final electronic energies use a uniform $\omega$B97M-V/def2-TZVPD protocol for all molecular charge states and the ferrocene reference.\cite{wb97mv2016,def22005,diffuse2010} Calculations use PySCF 2.14.0, GPU4PySCF 1.8.1 and geomeTRIC.\cite{pyscf2020,gpu4pyscf2024,geometric2016} Density fitting uses the implementation-default auxiliary bases with \texttt{only\_dfj=False}, fitting both Coulomb and exact-exchange contributions in hybrid calculations. Supporting electrolyte ions are absent unless an explicit ionic model is specified.
+
+At 298.15 K the composite free energy is
+\begin{equation}
+G=E_{\mathrm{SMD}}^{\omega\mathrm{B97M-V}}+G_{\mathrm{nuclear}}^{\mathrm{qRRHO}}-RT\ln(2S+1).
+\label{eq:g}
+\end{equation}
+The nuclear term is obtained from the geometry-level solution DFT Hessian. Mass-weighted projection removes rigid translations and rotations, and the xTB 6.7.1 thermodynamic kernel integrates the explicit internal-mode list using unscaled frequencies.\cite{grimme2012,xtbprogram2021} Its use as an integrator does not introduce an xTB Hessian. The symmetry number is determined from the exact geometry. A 50 cm$^{-1}$ rotor cutoff is primary, with 25 and 100 cm$^{-1}$ settings used for sensitivity. Modes from $-5$ to 0 cm$^{-1}$ enter as absolute frequencies within the stated minimum tolerance; lower frequencies fail. The spin contribution assumes an unsplit ground multiplet.
+
+Admission requires a maximum Cartesian gradient component of $4.5\times10^{-4}$ hartree bohr$^{-1}$ or less, Hessian asymmetry of $10^{-6}$ or less in the stored atomic-unit matrix, and a lowest projected internal frequency no lower than $-5$ cm$^{-1}$. At least two complete sampled Hessian columns are compared with displaced gradients at 0.0005 and 0.001 bohr and must satisfy a 1\% relative-norm criterion; the coordinate-selection policy is given in the SI. This samples derivatives rather than validating every matrix column. Finite data, full grid response and $|\langle S^2\rangle-S(S+1)|\leq0.1$ are checked independently. The active energy must refer to the actual accepted geometry. Implementation sensitivity is assessed through benchmark electronic repeats and an exact ten-state molecular cohort with new nuclear terms and matched complete free-energy cycles; the control scope is reported in the SI. Incomplete or repaired structures remain unqualified until their required checks pass.
+
+The charge-dependent geometry basis and the composite electronic/Hessian protocol are deliberate approximations. Five neutral benchmark partners were separately reoptimized and evaluated with def2-SVPD Hessians to measure one aspect of this imbalance. Their anion and ferrocene records were held fixed. Broader basis convergence, alternative spin-state thermochemistry and global conformer convergence are not inferred from this sensitivity test.
+
+\subsection{Redox potentials and retrospective validation}
+For a one-electron reduction, $\mathrm{O+e^-\rightarrow R}$, the potential relative to the computed Fc/Fc$^+$ couple is
+\begin{equation}
+E_{\mathrm{O/R}}^{\mathrm{vs\ Fc}}=
+\frac{G_{\mathrm O}-G_{\mathrm R}-[G_{\mathrm{Fc^+}}-G_{\mathrm{Fc}}]}{F}.
+\label{eq:redox}
+\end{equation}
+Equation~\ref{eq:redox} is written for molar energies; numerical energy differences in eV per molecule give the corresponding one-electron voltage directly. Both reference states and both molecular states use matched electronic and thermal conventions. Stored reference constants serve as diagnostics rather than replacements for a missing computed reference.
+
+The retrospective panel contains 39 sourced MeCN endpoints from 30 exact free-parent molecules and seven studies. Source location, reference conversion and evidence tier are retained for each endpoint. This is a benchmark of the chosen protocol on the available panel, not a prospective held-out test. Statistics use unrounded values without outlier removal or a fitted primary offset. Molecule- and study-cluster bootstrap intervals use 2,000 replicates with seed 20261021 and at least five clusters. Post hoc grouped offset diagnostics exclude every endpoint belonging to the held-out molecule or study. Their purpose is to expose residual structure; they do not establish a calibrated error distribution for new grafts.
+
+\subsection{Attachment reactions and matched thermodynamic differences}
+Neutral N--H/O--H substitution and pyridyl quaternization require different reaction definitions. For the former, the bookkeeping reference and two base-assisted models are
+\begin{align}
+\mathrm{RCl+HNu}&\rightarrow\mathrm{RNu+HCl},\\
+\mathrm{RCl+HNu+B}&\rightarrow\mathrm{RNu+BH^++Cl^-},\\
+\mathrm{RCl+HNu+B}&\rightarrow\mathrm{RNu+[BH^+\cdots Cl^-]}.
+\end{align}
+The first equation omits a synthesis base. The other two specify separated ions or a contact pair; they do not prescribe actual populations or salt precipitation. Quaternization instead combines a pyridyl precursor with RCl to form the quaternized graft and chloride. For the mono-N-methyl bipyridinium precursor, the total charges are $(+1)+0\rightarrow(+2)+(-1)$, with no HCl or base-capture term.
+
+All sums conserve atoms and charge. The nuclear translation convention is 1 atm; conversion to a 1 M solute standard state adds $\Delta nRT\ln(RTc^\circ/p^\circ)$. It cancels for the neutral reference, separated-ion substitution and separated-ion quaternization. The contact-pair substitution has $\Delta n=-1$, giving approximately $-7.93$ \kj\ at 298.15 K. The base pilot computes neutral, protonated and chloride-paired DBU/DIPEA components from three geometry seeds, with thermochemistry at the selected electronic minimum. The viologen precursor campaign instead checks all three fixed seeds and selects the lowest precursor $G$ at the primary cutoff, retaining every seed and cutoff result.
+
+For matched N--H/O--H reactions a fixed base representation contributes a common capture term,
+\begin{equation}
+\Delta G_{\mathrm{graft,B}}=\Delta G_{\mathrm{graft,HCl}}+
+\Delta G_{\mathrm{capture,B}}.
+\label{eq:base}
+\end{equation}
+External proton-transfer controls use graph-matched MeCN basicity/acid tables and separately reviewed DIPEA measurements.\cite{basicity2019,acidity2013,pkaTables,barisic2021dipea,cook2024dipea} The conversion $\Delta G^\circ=-RT\ln(10)\Delta\mathrm{p}K_a$ tests the specified component reaction. Since HCl cancels from the complete DFT substitution cycle, replacing only its capture term changes error cancellation and is interpreted as a sensitivity, not a correction to the full reaction.
+
+We test an explicit incoming-chloride convention for the exact oxidized viologen graft by pairing its dication with one chloride. The combined species has total charge $+1$ and singlet multiplicity, distinct from the isolated $+1$ doublet redox state. The graft, chloride and paired structures retain the primary electronic and nuclear models. Each optimized contact requires its own minimum and derivative checks. Association treats the contact as one statistical solute, so $G(\mathrm{VCl}^{+})-G(\mathrm{V}^{2+})-G(\mathrm{Cl}^{-})$ has $\Delta n=-1$. Proper-rotation, symmetry-aware heavy-atom alignment and an electronic-energy tolerance screen duplicate outcomes; starting-point counts supply no statistical weights. This finite test leaves iodide association, counterion exchange and the full reaction medium unresolved.
+
+For an empty open oligomer $P_0$, a single graft $P_i$, local site RCl and capped graft RM, the polymer-minus-local first-attachment difference is
+\begin{equation}
+\delta G_{i,\mathrm{poly-local}}=G(P_i)+G(\mathrm{RCl})-G(P_0)-G(\mathrm{RM}).
+\label{eq:polylocal}
+\end{equation}
+Common precursor, base and byproduct terms cancel. A second difference uses the empty, singly occupied and doubly occupied graphs,
+\begin{equation}
+\Delta\Delta G_{ij}=G(P_{ij})+G(P_0)-G(P_i)-G(P_j).
+\label{eq:nonadditivity}
+\end{equation}
+It measures the change in attachment at $j$ when $i$ is occupied under matched reaction conventions. Both differences include backbone, conformational and solvent response; neither isolates motif binding. Reference cancellation requires the same chemical and physical conventions, not merely energies with similar file labels.
+
+\subsection{Oligomer sampling and complementary interaction descriptors}
+Five-repeat spacing models contain three reactive sites and two plain-styrene padding units. Occupied sites carry the specified motif; unoccupied reactive sites retain benzyl chloride. The open backbone, graft connectivity and declared configuration are checked in both molecular graphs and actual XYZ structures. A reactive-handle density is not a graft conversion, and a deterministic occupancy scenario is not a probability distribution for a real polymer.
+
+Finite conformer sets use the same graph-specific partition at 298.15 K,
+\begin{equation}
+G_{\mathrm{set}}=-RT\ln\sum_k\exp[-G_k/(RT)].
+\end{equation}
+Duplicate review and component-wise sampling are required before interpreting convergence of a balanced cycle. The PMDI primary cycle uses one minimum per graph; the phthalimide spacing control uses two poses per graph. Expanded sampling under a separately identified smooth-surface MeCN model supplies a diagnostic of sampling requirements. Its free energies cannot enter the primary-model cycles.
+
+Two further descriptors address different aspects of a graft. Frozen methyl-capped phthalimide interactions use $E_{AB}-E_A-E_B$ at unchanged fragment coordinates and the same medium; these are electronic interactions without thermal association or counterpoise correction. Directional solution relaxation of the exact TEMPO graft uses a Pekar partition of SMD electrostatics, with fast solvent polarization relaxed and the initial slow polarization frozen.\cite{you2015nonequilibrium} All six equilibrium/vertical energies share the active level. These electronic relaxation costs contain the geometry and solvent response once; no gas inner-sphere, Born outer-sphere or thermal term is added. The SI specifies dielectric constants, energy cycles and the 5\% directional-asymmetry diagnostic for a symmetric approximation.
+
+For the ionic viologen frames, the same frozen-fragment definition is evaluated under the parent r$^2$SCAN-D4/def2-SVP smooth-surface MeCN model and separately in vacuum. The benzyl carbon and complete viologen motif are retained; replacing the carbon--aryl bond by C--H yields a methyl-capped dication. Each 28-atom fragment is a $+2$ singlet and its 56-atom pair is a $+4$ singlet. A CH$_2$-constrained attachment query prevents the symmetric viologen core from selecting its other N-methyl group. Four parent frames and three C--H cap lengths (1.07, 1.09 and 1.11 \AA) give twelve A/B/AB triplets and 72 independently checked SCFs. No retained motif coordinate is relaxed. These controls supply a capped electronic interaction with continuum response; a relaxed-monomer deformation energy, counterpoise correction and electronic coupling are not computed.
+
+\section{Results and Discussion}
+\subsection{A linked design space has uneven validation coverage}
+The systematic construction gives 1,593 recipes and 837 exact graft graphs: 459 viologens, 243 NDI derivatives and 135 PMDI derivatives. Its linkers, caps and ring substitutions define a focused chemical space. The historical evaluated cohort contains 75 candidates and one comparison control; its union with enumeration comprises 879 graphs. Later registered models and proposal panels bring the maintained identity inventory to \UnifiedRegistryCount{}. The latest extension preserves all 904 prior graphs and reported evaluations, adding \NewDirectPTZDesigns{} exact F/CN-substituted phenothiazine designs at fixed N-benzylic attachment. Their precursor/product pairs and new bonds are mapped, while all new electrochemical properties remain pending. These scopes are kept distinct because proposing a structure does not provide its electrochemistry, route evidence or polymer behavior.
+
+The current route gate permits further computation of \ReviewedRouteCount{} exact baseline designs. In addition to the TEMPO and viologen examples below, a primary report describes direct N-attachment of unsubstituted phenothiazine to chloromethylated polystyrene beads using NaH in DMF, followed by chemical oxidation and reduction of the bound group.\cite{wright1989supported} This supports evaluating that attachment class; it supplies neither properties of our exact capped graph nor a battery-material admission. The source also reports no phenothiazine modification with K$_2$CO$_3$, illustrating why base identity is part of the route. The new substituted designs retain separate route holds rather than inheriting the baseline's approval. Independently qualified states give a first oxidation potential of $+\PTZPrimaryV$ V versus Fc/Fc$^+$ for the unsubstituted local graft model in MeCN, spanning $+\PTZLowV$ to $+\PTZHighV$ V across rotor settings (SI). This finite molecular result does not establish its NaH/DMF grafting free energy or polymer performance.
+
+The experimental panel also samples a different chemical distribution. Twenty-two of its 39 endpoints are quinones; nine imide endpoints come from six molecules in one study, including PMDI and phthalimide derivatives. Viologen is represented by one molecule and NDI by none. Thus overall benchmark accuracy cannot be assigned to every enumerated family or exact graft. This imbalance is part of the applicability domain of the calculations, rather than a reason to omit less favorable endpoint errors.
+
+\subsection{The benchmark separates reference-like bias from step-dependent error}
+The unfitted protocol gives MAE 0.247 V, RMSE 0.279 V and bias $+0.190$ V (Figure~\ref{fig:benchmark}). Molecule-cluster 95\% bootstrap intervals are [0.213,0.286], [0.245,0.313] and [0.128,0.257] V, respectively. The seven unequal study clusters give less well calibrated summaries, reported separately in the SI. These are descriptive intervals for this retrospective panel.
+
+All 30 first-step errors are positive, with mean $+0.266$ V, whereas the nine second-step errors have mean $-0.064$ V and MAE 0.185 V. A common offset therefore cannot explain the complete residual structure. In particular, all nine paired step spacings are too large in magnitude, and the Fc contribution cancels from each spacing. The apparent improvement of second-step MAE can include error cancellation rather than better second-step prediction. Reference, solvation and charge-state contributions must be assessed together.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_seven_chloride_outcomes/benchmark.pdf}
+\caption{Retrospective benchmark for 39 sourced free-parent potentials in MeCN. All endpoints and outliers are retained, and no fitted offset is applied. Family and redox-step labels distinguish the panel's uneven coverage. Accuracy on these free parents does not validate the exact grafts or oligomer environments.}
+\label{fig:benchmark}\end{figure}
+
+Post hoc molecule-held-out constant offsets reduce MAE/RMSE to 0.158/0.211 V; separate first-/second-step offsets give 0.106/0.166 V. Study-held-out values are 0.182/0.232 and 0.124/0.177 V. These internal diagnostics establish systematic residual structure but are not adopted as prospective corrections. The computed Fc absolute value is 4.379 V. Reference-only substitutions from other functionals are not level-matched alternatives, and fixed-geometry B3LYP/PBE0 controls worsen the counterfactual benchmark bias (SI). Related work in DMF likewise found different first-/second-reduction intercepts under a different protocol and reference.\cite{elhajj2024}
+
+The five neutral-partner diffuse-basis controls shift first potentials by 11.7--35.1 mV when anion and reference records are fixed. Rotor-cutoff variation gives a maximum endpoint span of 25.4 mV and aggregate MAEs of 0.245--0.247 V. These measured sensitivities are substantially smaller than the panel's overall MAE, while addressing only specific protocol choices. Neither establishes basis convergence, a unique source of the residual bias or a candidate-specific prediction interval.
+
+\subsection{Route-admitted examples expose different missing dimensions}
+The baseline N-methyl viologen graft is exactly the enumerated design \path{search_viologen_b7a4dca7a5e1}. Kim and co-workers report preparation of its mono-methyl bipyridinium precursor and attachment to preformed Merrifield resin in refluxing MeCN, followed by separate counterion exchange.\cite{kim2022} This is evidence for the support-level attachment class. The computed 4-methylbenzyl product is a local model of that connection, and the reported approximate conversion is not a precisely measured loading for our material.
+
+The checked molecular ladder contains the dicationic singlet, radical-cation doublet and neutral singlet. The referenced reductions are $\MolecularFirstReduction$ and $\MolecularSecondReduction$ V, separated by $\MolecularSpacing$ V. The corresponding balanced disproportionation value is $\MolecularDisproportionation$ \kj. These thermodynamic values do not establish resistance to chemical decomposition or operational reversibility.
+
+The three checked mono-methyl precursor seeds close the separated-ion quaternization cycle at $\ViologenGraftDG$ \kj\ at the primary cutoff, with a $\ViologenGraftSeedSpan$ \kj\ precursor-seed span. Cutoff settings give $\ViologenGraftRotorLow$ to $\ViologenGraftRotorHigh$ \kj. The calculation avoids an HCl/base-capture term because it represents quaternization, not neutral N--H/O--H substitution. Its favorable local-model value remains conditional on separated spectator ions, incompletely sampled counterion association and the modeled 298.15 K temperature; the synthesis precedent uses reflux. These differences preclude interpreting the value as a grafting yield.
+
+Explicit incoming-chloride contacts test one part of that separated-ion assumption. The \ChlorideOutcomeCount{} independently checked optimized outcomes give finite 1-M association free energies of $\ChlorideAssocMin$ to $\ChlorideAssocMax$ \kj\ at the primary cutoff. The N0-above and N0-outer signed-repair pairs each form a numerical duplicate group across the tested thresholds, giving \ChlorideDuplicateCount{} groups in total without assigning population weights (SI). Their positive finite association values do not complete a salt-speciation model or validate the absolute quaternization energy experimentally. Other contacts, iodide, counterion exchange, concentration and reflux conditions remain open.
+
+A matched oligomer cycle evaluates the same viologen core in an explicit neighboring-site context. For adjacent grafts on the all-same-backbone model, $G(P_{23})+G(P_0)-G(P_2)-G(P_3)$ is $\IonicAdjacentG$ \kj\ at the 50 cm$^{-1}$ rotor cutoff; the three settings span $\IonicAdjacentGLow$ to $\IonicAdjacentGHigh$ \kj\ (SI). With one sequence spacer in that configuration, the matched response is $\IonicSpacerG$ \kj, spanning $\IonicSpacerGLow$ to $\IonicSpacerGHigh$ \kj. Changing to the alternating backbone reverses both signs: the adjacent and one-spacer responses are $\IonicAlternatingAdjacentG$ and $\IonicAlternatingSpacerG$ \kj, respectively. All four signs persist over the tested rotor settings. Thus sequence separation alone does not order the finite neighboring-graft response in these models. Each cycle uses one retained minimum per graph in a separately qualified r$^2$SCAN-D4/SVP smooth-surface MeCN model and includes backbone, deformation and solvent changes. Occupied ensembles remain incomplete; these finite values cannot be combined with the primary molecular quaternization to infer a polymer grafting yield.
+
+The O-linked TEMPO graft provides an oxidation-active comparison. Its source-supported Merrifield attachment retains the nitroxide and uses NaH in DMF or THF.\cite{sommerlade2002tempo} The exact local-model oxidation potential is $+0.579$ V versus Fc/Fc$^+$. Independently checked directional solution-relaxation costs are $\TempoReduction$ eV for reduction and $\TempoOxidation$ eV for oxidation. Their $\TempoAsymmetryPercent$\% asymmetry exceeds the declared 5\% equal-curvature diagnostic, so a single symmetric parameter remains unqualified. The directional response therefore remains explicit and is not interpreted as a measured transfer rate.
+
+\begin{table}[htbp]\centering\small
+\caption{Complementary exact-graft cases and the evidence they supply. All potentials refer to the computed Fc couple in MeCN. Reaction energies retain their stated finite-model convention.}
+\begin{tabular}{p{0.15\linewidth}p{0.35\linewidth}p{0.40\linewidth}}
+\toprule
+Case & Checked molecular/reaction result & Remaining decision-relevant evidence \\
+\midrule
+Viologen & Two reductions; local quaternization; four matched ionic neighbor $G$ cycles; finite chloride-contact tests & Broader salt speciation, occupied ensembles, accessibility and transport \\
+TEMPO & Oxidation; two directional solution-relaxation costs & Actual-condition grafting, polymer occupancy and transfer kinetics \\
+PMDI-ethyl & Two reductions; finite first-site and neighboring-site cycles & Exact graft selectivity, broader sampling and material utilization \\
+\bottomrule
+\end{tabular}
+\label{tab:cases}\end{table}
+
+\subsection{Reaction definition controls absolute grafting signs}
+Of the 75 historical local reference reactions, 67 have complete free energies and eight remain held. Five complete candidate reactions and six checked DBU/DIPEA components give twenty base-assisted values. The separated-ion capture terms are $-102.78$ \kj\ for DBU and $-70.98$ \kj\ for DIPEA. Under Eq.~\ref{eq:base}, each base representation shifts every matched reaction by the same term; changing that term cannot reorder candidates within the representation.
+
+The two highlighted benzoquinone HCl-reference values are $+57.63$ and $+56.03$ \kj. They become $-45.14/-46.75$ \kj\ with DBU and $-13.34/-14.94$ \kj\ with DIPEA (Figure~\ref{fig:grafting}). AQ-1-oxy and NDI also change sign in the panel. The relevant inference is that an HCl-reference sign cannot exclude an unmodeled base-assisted synthesis, while a favorable base-assisted model cannot supply missing precursor or selectivity evidence.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_seven_chloride_outcomes/grafting.pdf}
+\caption{Local substitution energies under HCl-reference, separated-ion and contact-pair conventions. Each specified base contributes a shared term to compatible reactions. Changing absolute signs does not establish a new within-base ranking, measured ion-pair population or experimental grafting yield.}
+\label{fig:grafting}\end{figure}
+
+External comparisons qualify the absolute values. The revised MeCN DBU/basicity and recommended HCl scales imply a capture term of $-79.97$ \kj, differing from the calculation by $-22.81$ \kj.\cite{basicity2019,acidity2013,pkaTables} In contrast, HCl/chloride-free relative-basicity controls for pyridine and triethylamine against DBU differ by $+4.58$ and $+1.40$ \kj\ from the corresponding tabulated values. A DIPEA spectrophotometric measurement gives $\log K^{\mathrm H}=18.64(1)$ in MeCN at 25 $^\circ$C; a separate NMR salt estimate gives 18.7 in MeCN-d$_3$.\cite{barisic2021dipea,cook2024dipea} Combining the former with the DBU scale gives $+32.36$ \kj\ for relative proton transfer versus $+31.80$ \kj\ computed, whereas its HCl-capture comparison gives $-47.60$ versus $-70.98$ \kj. Indicator, activity and association conventions are not established to match across sources.
+
+These controls show why agreement for one relative reaction does not validate every absolute grafting sum. Replacing only the DBU capture term gives $-22.33/-23.94$ \kj\ for the two BQ reactions, but changes the cancellation of HCl-related errors in the complete cycle. Such hybrid values remain sensitivities. All 87 complete historical reference/base-assisted values retain their nominal sign over the three rotor cutoffs, with a maximum span of 4.46 \kj; that numerical robustness does not close the independent speciation uncertainty.
+
+\subsection{PMDI distinguishes a first-site polymer penalty from a neighboring-graft response}
+The PMDI-ethyl local graft has checked reductions at $-1.076$ and $-1.977$ V versus Fc. Its HCl-reference attachment value is $-0.29$ \kj, and the defined DBU/separated-ion model gives $-103.07$ \kj. The exact mono-N-ethyl/NH precursor is reported in Example 19 of EP0010440B1, and molecular PMDI N-alkylation has separate precedent.\cite{bochis1983,hamilton1998} These sources support access and reaction-class plausibility, but not selective DBU-assisted installation on the exact bead or retention of its redox behavior. This case therefore tests linked computational comparisons without declaring a completed synthesis route.
+
+For the sampled five-repeat minima, attachment at sites 2 and 3 gives $-97.7$ and $-97.0$ \kj\ under the same DBU/separated-ion convention. Relative to the capped reaction, the polymer penalties are $+5.34$ and $+6.11$ \kj\ (Eq.~\ref{eq:polylocal}). Their positivity persists across rotor cutoffs, but the small relative preference between the two sites changes sign (Figure~\ref{fig:firstgraft}). Common precursor and base terms cancel from the polymer-minus-local comparison. Thus the calculation identifies a finite-model context penalty more defensibly than it identifies a preferred graft site.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_seven_chloride_outcomes/pmdi_first_graft.pdf}
+\caption{First-site PMDI attachment relative to the local capped reference. Polymer-minus-local penalties remain positive over tested rotor cutoffs, whereas the small difference between sites 2 and 3 changes sign. Lines connect numerical settings, not statistical uncertainty bounds. Each occupied graph contributes one minimum.}
+\label{fig:firstgraft}\end{figure}
+
+The four-state occupancy cycle gives $\Delta\Delta G_{23}=-1.86$ \kj\ at the primary cutoff. Attachment at site 3 changes from $-96.96$ \kj\ with site 2 empty to $-98.82$ \kj\ with site 2 grafted; reversing the order closes the same double-attachment sum. Values at the three cutoffs are $-1.07$, $-1.86$ and $-1.82$ \kj\ (Figure~\ref{fig:pmdineighbor}). The shared reaction terms cancel, so this nonadditivity is identical for the specified separated-ion and contact-pair bookkeeping. It remains a response of the entire sampled chain and solvent.
+
+The paired minimum has PMDI core centroids 16.30~\AA\ apart. Adjacent sequence sites therefore do not imply close-contact stacking, and the weak cycle response cannot be read as an isolated PMDI binding energy or coupling. Each of the four graphs contributes one minimum; broader occupied sampling is required before assigning equilibrium populations or a general spacing preference.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_seven_chloride_outcomes/pmdi_neighbor_grafting.pdf}
+\caption{Matched PMDI neighboring-site cycle. Conditional attachment energies compare the same target site with the other site empty or grafted. Shared precursor, base and byproduct terms cancel from nonadditivity. The cutoff dependence reflects numerical scenarios; one minimum per graph and separated cores delimit the interpretation.}
+\label{fig:pmdineighbor}\end{figure}
+
+Polymer mass introduces another independent distinction. The neutral capped PMDI molecule has a nominal two-electron capacity of 153.9 mAh g$^{-1}$. With three handles per five-repeat fragment, one, two or three grafts give dry-fragment ceilings of 61.2, 98.9 and 124.5 mAh g$^{-1}$ when scaffold and residual chloride mass are retained. These bounds assume full use of two electrons per motif and omit unspecified crosslinker, electrolyte and charging counterion mass. They do not infer an experimental loading distribution or accessible capacity. A molecular descriptor can therefore support a redox comparison while overestimating the capacity relevant to the whole material.
+
+\subsection{Sequence spacing does not determine spatial contact}
+The finite phthalimide control supplies two accepted poses for each of six occupancy graphs. Its twelve native free energies give adjacent and one-spacer nonadditivities of $-5.17$ and $-11.39$ \kj\ in the declared two-pose partitions. Both spacings support close-core and separated-core minima (Figure~\ref{fig:spatialconformers}). Adjacent-site centroids are 4.24 and 16.66~\AA\ apart; one-spacer centroids are 4.77 and 20.20~\AA\ apart. The close-contact poses have lower $G$ by 11.9 and 7.1 \kj\ within their respective graph-specific pairs.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_seven_chloride_outcomes/spacing_conformers.pdf}
+\caption{Actual phthalimide control conformers for adjacent and one-spacer occupancy. Backbone and motif colors identify the open chain and conjugated cores; unoccupied reactive sites retain benzyl chloride. Views use the saved coordinates, proper rotations and a common scale. Distances join core centroids, and relative free energies compare poses of the same chemical graph. These finite samples do not establish converged contact populations.}
+\label{fig:spatialconformers}\end{figure}
+
+The geometry comparison motivates a separate interaction calculation. At the central cap length, frozen methyl-capped fragments from the close adjacent and one-spacer poses give MeCN electronic interactions of $-24.76$ and $-26.22$ \kj, whereas separated poses are near zero. Those electronic sums include caps and continuum response and lack counterpoise correction. They cannot be subtracted from the whole-chain free-energy cycle to assign a backbone contribution, nor used as thermal association energies or electronic couplings.
+
+Adding the second known pose lowers each finite partition by at most 0.14 \kj, but this bounds only the contribution of that known pose. It does not bound undiscovered conformers. Rotor-cutoff changes give adjacent and one-spacer cycle ranges of $-5.17$ to $-4.64$ and $-12.34$ to $-11.39$ \kj. Earlier empty-backbone cohorts in the separate smooth-surface MeCN model meet their declared 10-to-20 input diagnostic, with changes of $\EmptyAllSameChange$ and $\EmptyAlternatingChange$ \kj. That result cannot establish sampling adequacy for an occupied graph.
+
+The first complete occupied cohort under the corrected implementation fails the predeclared diagnostic. For the all-same backbone with adjacent phthalimide grafts at sites 2 and 3, twenty checked inputs give twenty numerical minima at every tested duplicate threshold. Expanding from ten to twenty starts lowers the conditional finite-set free energy by $\SamplingFiftyAbs$ \kj\ at the primary rotor cutoff, exceeding the $\SamplingTolerance$ \kj\ tolerance; the minimum electronic energy also drops by $\SamplingMinimumEDrop$ \kj. The failure persists at all three rotor settings (SI). Eleven other corrected-cohort cells remain incomplete. This phthalimide diagnostic does not establish convergence or quantify sampling error for the viologen cycles. Passing component-level electronic, Hessian and nuclear checks is therefore insufficient to establish sampling convergence. The incomplete occupied ensembles cannot supply a converged cycle or replace primary-model components.
+
+\subsection{Whole-chain nonadditivity can coexist with local motif repulsion}
+The ionic viologen frames test whether whole-chain nonadditivity implies local motif attraction (Figure~\ref{fig:ionic-definitions}). At the central cap length, the frozen methyl-capped motif pairs are repulsive in all four MeCN frames, from $\MotifMinimumE$ to $\MotifMaximumE$ \kj. The whole-chain electronic cycle is favorable in two of those same source frames. For the adjacent all-same frame, its $\IonicAdjacentE$ \kj\ nonadditivity coexists with a $+\MotifAdjacentE$ \kj\ frozen motif interaction. Inserting a spacer weakens the capped repulsion while making the matched all-same whole-chain response less favorable.
+
+These opposite signs concern different operational quantities evaluated at matched electronic and solvent settings. The whole-chain cycle compares four separately optimized occupancy graphs. The fragment calculation removes the linker aryl groups and backbone, introduces methyl caps, and retains the two motif coordinates from a single parent. Changing the cap length across the declared interval gives a maximum MeCN span below 0.003 \kj\ (SI), but does not establish chemical-cap or basis convergence. Their difference is not assigned uniquely to backbone, linker, deformation or solvent. The comparison establishes why negative chain-level nonadditivity alone cannot be used as evidence for attractive local motifs under this cap model.
+
+\begin{figure}[htbp]\centering
+\includegraphics[width=\linewidth]{../results/figures/manuscript/2026-11-03_seven_chloride_outcomes/viologen_interaction_definitions_final.pdf}
+\caption{Electronic responses at four matched ionic parent frames. The whole-chain cycle is $E(P_{ij})+E(P_0)-E(P_i)-E(P_j)$ with each graph at its retained geometry. The frozen local interaction is $E_{AB}-E_A-E_B$ for methyl-capped viologen dications at unchanged parent-relative coordinates. Both use the same corrected r$^2$SCAN-D4/SVP smooth-surface MeCN model. Opposite signs in two frames do not constitute a unique backbone/deformation decomposition. The plotted cap length is 1.09 \AA; the three-length sensitivity is reported in SI. The values describe electronic responses, not association free energies, couplings or populations.}
+\label{fig:ionic-definitions}\end{figure}
+
+\subsection{Implications for candidate selection and method applicability}
+The same saved calculations support different conclusions when their context changes (Table~\ref{tab:context-consequences}). Under the declared nonpositive-reaction-energy screen, the DBU-separated-ion representation changes the sign classification of four of five complete reactions relative to their HCl references, while preserving all ten within-base pairwise orders. The PMDI polymer penalties are positive in all six site/cutoff comparisons, whereas the small site preference changes sign. Molecular capacity exceeds the stated one-graft fragment ceiling by a factor of 2.51, and a sequence spacer still permits a close-contact sampled geometry. The directional TEMPO calculation supplies an additional case in which a successful numerical result leaves a symmetric descriptor unqualified.
+
+These comparisons isolate the consequences of transferring a quantity between chemical or physical contexts. They establish changes in interpretation, without demonstrating improved intrinsic DFT accuracy, superiority to a prior screening algorithm or experimental decision accuracy.
+
+\input{evidence/2026-11-03_seven_chloride_outcomes/context_consequences_table.tex}
+
+The candidate examples expose different limits on a seemingly favorable molecular design. Viologen now connects a reviewed route, two checked reductions, local quaternization and four balanced ionic neighbor cycles, while retaining unresolved salt association and occupied ensembles. Its finite neighbor response changes sign with backbone configuration at either sequence spacing. TEMPO combines route evidence and a checked oxidation potential with directional electronic response that resists reduction to a symmetric parameter. PMDI provides explicit finite polymer cycles but retains a practical-route hold. A scalar score that fills these missing dimensions from family analogues would erase scientifically relevant differences among the candidates.
+
+The resulting assessment requires every application-specific criterion to be evaluated in a declared reaction or operating context. Exact identity connects those contexts; it does not make reaction solvent and battery electrolyte identical. Operating redox window, accessible capacity, state stability, intended charge transfer, attachment feasibility, defined-route thermodynamics, unwanted association, coupling, occupancy sensitivity and accessibility remain distinct requirements. A failed criterion excludes the design in that context, whereas missing evidence or an undeclared threshold leaves the material decision pending. The historical 878-candidate all-axis ledger and the broader identity inventory describe different scopes, and neither currently supplies a complete material shortlist.
+
+The matched references identify where a chemical interpretation changes. Base shifts follow shared stoichiometry; polymer penalties compare attachment with a local reference; neighboring-site responses use balanced occupancy graphs. Most directly, two favorable whole-chain electronic cycles coexist with repulsive frozen local motifs under the same electronic method. Broader chemistry and experimental grafts are needed to establish how widely these conclusions apply.
+
+The remaining uncertainties also define useful next calculations. Counterion and explicit-solvent sensitivity are particularly important for charged grafts and substitution salts. Conformer/configuration coverage must be completed separately for every component of an occupied cycle. Electronic coupling and transport require a declared charge-transfer mechanism rather than inference from neutral binding: polymer electrodes can exploit electron hopping, and high charge propagation has been demonstrated in TEMPO layers.\cite{hopping2013,oyaizu2008} Concentration and backbone effects observed in phthalimide polymers further caution against transferring a local molecular response directly to a material.\cite{mohanty2026backbone} Experimental loading, retained redox activity and electrolyte accessibility are ultimately needed to connect these computational scenarios to synthesis priorities.
+
+\section{Conclusions}
+The matched cases identify specific limits on transferring a molecular screening conclusion to a polymer graft. For the exact viologen, both adjacent and one-spacer neighboring-graft free energies reverse sign between the two backbone configurations. Its frozen methyl-capped motifs remain repulsive in all four tested ionic frames, including two with favorable whole-chain electronic nonadditivity. The occupied phthalimide control separately fails its declared ten-to-twenty sampling tolerance, showing why verified individual minima do not establish a stable ensemble comparison. PMDI separates a first-site polymer penalty from a neighboring-site response, while TEMPO retains directional relaxation that cannot be collapsed into the declared symmetric approximation.
+
+Exact identities and explicit physical definitions make these interpretation tests reproducible. The retrospective benchmark measures molecular redox accuracy within its domain, while the graft and polymer controls quantify specific consequences of descriptor transfer. Salt speciation, occupied ensembles, coupling, material accessibility and experimental validation remain necessary before a synthesis or device-performance decision. The resulting assessment provides reproducible chemical comparisons and explicit missing requirements for polymer-graft selection.
+
+\section*{Supporting Information}
+Benchmark sources, reference handling, bootstrap and offset diagnostics; basis and rotor sensitivity; exact candidate and route identities; native-state quality checks; solution-relaxation cycles; grafting components and occupancy partitions; fragment interactions; numerical implementation, restart and portable replay details (PDF); exact design structures and retrospective parent-benchmark endpoints (CSV), with model context, provenance and scope notes (JSON, TXT).
+
+\section*{Data and Software Availability}
+Code, curated benchmark data and frozen evidence snapshots are available in the \href{https://github.com/Ray16/RTFB-materials-research/tree/refactor/clean-workflow}{project repository}. The \href{https://github.com/Ray16/RTFB-materials-research/tree/refactor/clean-workflow/examples/exact_viologen_corrected_replay}{corrected-primary CPU example} provides the ten exact states needed to reconstruct this cohort's molecular redox and local quaternization results using NumPy, including nine Hessians and all nine saved-gradient panels. The \href{https://github.com/Ray16/RTFB-materials-research/tree/refactor/clean-workflow/examples/exact_viologen_replay}{earlier example} preserves the original snapshot. Benchmark, grafting and oligomer records, source inventories and runtime environments are described in the SI. Full raw-data archival deposition, a permanent release identifier and final deposition metadata remain outstanding.
+
+\section*{Author Information}
+Authorship, affiliations, corresponding-author details, contributions, funding and competing-interest statements require confirmation by the authors.
+
+\section*{Acknowledgments}
+OpenAI Codex was used during manuscript preparation to assist with literature retrieval, drafting and revision of prose, workflow code and numerical-check scripts. Computational claims are tied to the recorded calculations and independent checks described in the Methods and Supporting Information. The authors must review and approve the complete scientific content and this disclosure before submission.
+
+\bibliographystyle{unsrtnat}\bibliography{references,novelty_references}
+\clearpage
+\thispagestyle{empty}
+\begin{center}
+\textbf{For Table of Contents Only}\\[1.5em]
+\includegraphics[width=3.25in,height=1.75in]{../results/figures/manuscript/2026-11-03_seven_chloride_outcomes/graphical_abstract.pdf}
+\end{center}
+\end{document}

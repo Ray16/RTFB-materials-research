@@ -1,0 +1,32 @@
+{
+  "status": "maintained_molar_energy_conversion_migrated_with_historical_arithmetic_preserved",
+  "conversion_kJ_mol_per_eV": 96.48533212331002,
+  "historical_conversion_kJ_mol_per_eV": 96.485,
+  "relative_change": 3.4422273931244973e-06,
+  "tests_passed": 68,
+  "cached_reaction_checks": [
+    {
+      "name": "HCl_reference",
+      "deltaG_eV": -0.0030219200962164905,
+      "SI_kJ_mol": -0.29157096413355305,
+      "historical_kJ_mol": -0.2915699604834481,
+      "change_kJ_mol": -1.003650104961227e-06
+    },
+    {
+      "name": "DBU_separated_ions",
+      "deltaG_eV": -1.068233107607739,
+      "SI_kJ_mol": -103.06882617264826,
+      "historical_kJ_mol": -103.0684713875327,
+      "change_kJ_mol": -0.00035478511556804487
+    }
+  ],
+  "raw_state_energies_modified": false,
+  "archived_scientific_sources_modified": false,
+  "benchmark_potentials_modified": false,
+  "source_sha256": {
+    "src/redox/core/common.py": "b3edb2c14358fd207ab6f6d52db0ebb8475829af3c97bf0b6d7b56e0f065872f",
+    "src/redox/workflows/polymer_campaign.py": "ccecf571843161cbe3fd01afa8cf232ca8815958b0488568bd862b0e3fe2b882",
+    "tests/test_energy_conversion.py": "6e24688aca0c2345fc714d40ae5586b9990784493dce1b66e8fac7d386f299ca",
+    "examples/cached_thermochemistry/data/manifest.json": "cd13e8411b0c91868c20f12f5364b2743ec6bb772d3200eac09a2376ac6fb811"
+  }
+}

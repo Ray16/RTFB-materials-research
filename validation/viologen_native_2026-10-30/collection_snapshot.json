@@ -1,0 +1,49 @@
+{
+  "status": "molecular_native_outcomes_pending",
+  "owner": {
+    "host": "lambda1",
+    "pid": 3465732,
+    "process_start": "566736558"
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/prepared.json": "0bd77393a7d2504b917f0c36785d7c8a47bc3b5e0af90196b11e107431858f79",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/ox2/namespace.json": "bd0f6f552b91c65c175df58043d1b9dfeb004103f22e89685b6b55a048de91ca",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/ox1/namespace.json": "cc858b5d943bb40dea8d16772986a9c3301debe781275b5d58412802579548f6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/neu/namespace.json": "0a5255cfe3ce8720f3876fab9ac93346a3193ad4e4478422855fcfa7fb605c87",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/observe_molecular_native.py": "517200287e258a9bf878f91b99a2371c192ec365ffdd3662d0ebfd8482708543",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/molecular_native.py": "0f88f11d56eb53f3de809fb49e0dd79bf5ad8763ed26e7b2f83e503ed39befcd",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/molecular_native_namespace.py": "59ba4ee9d61c4854bf66706ade2f8eb6c95824c5800ef4a342a943eba4988992",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/solution_pair_review.py": "2feee2eaeca52b1c93b6bc61bc467986772720553362c8ede708d4db357490ac"
+  },
+  "started": 1793417191.063359,
+  "deadline": 1793503591.0633597,
+  "native_free_energies_inferred_from_process_exit": false,
+  "updated": 1793419777.7301116,
+  "entries": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/ox2/namespace.json",
+      "state": "ox2",
+      "status": "exact_molecular_native_G_independently_checked",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/viologen_native_2026-10-30/independent_reviews/bd0f6f552b91c65c__viologen__ox2_independent_review.json",
+      "review_sha256": "72f13ab723c98aecbf33309b8244959a8e4133e64cfefdb0172325d51b240d3e",
+      "G_by_cutoff_eV": {
+        "25": -22992.292074711433,
+        "50": -22992.243044967694,
+        "100": -22992.204613617538
+      }
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/ox1/namespace.json",
+      "state": "ox1",
+      "status": "running_or_ownership_unverified"
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/neu/namespace.json",
+      "state": "neu",
+      "status": "running_or_ownership_unverified"
+    }
+  ],
+  "terminal": 1,
+  "expected": 3,
+  "checked": 1
+}

@@ -1,0 +1,114 @@
+{
+  "worker_owner": {
+    "host": "lambda13",
+    "pid": 803815,
+    "process_start": "178163382",
+    "GPU": 5,
+    "CPU_affinity": [
+      9,
+      17
+    ],
+    "started": 1793664294.4757845,
+    "program": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_alternating23_saved_matrix_validation_01/sources/host_guard.py",
+    "foreign_processes_signaled": false
+  },
+  "CPU_affinity": [
+    9,
+    17
+  ],
+  "native_thread_caps": {
+    "OMP_NUM_THREADS": "2",
+    "OMP_THREAD_LIMIT": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2",
+    "XTB_THREADS": "2"
+  },
+  "visible_GPU": "5",
+  "device": [
+    "GPU-7b939bee-465f-2aad-2acd-8cec35064a53",
+    "NVIDIA H100 NVL",
+    "95830"
+  ],
+  "resident_compute_processes": [
+    "GPU-7b939bee-465f-2aad-2acd-8cec35064a53, 803815, 22308"
+  ],
+  "actual_owned_GPU_start_verified": true,
+  "checked": 1793664544.7410288,
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_alternating23_saved_matrix_validation_01/namespace.json",
+  "progress": {
+    "cycle": 28,
+    "E_Ha": -3192.3095015165354,
+    "updated": 1793664543.6607358
+  },
+  "native_G_qualified": false,
+  "other_owned_native_workers_with_disjoint_CPUs": [
+    {
+      "owner": {
+        "host": "lambda13",
+        "pid": 4194014,
+        "process_start": "177161547"
+      },
+      "CPU_affinity": [
+        11,
+        15
+      ]
+    },
+    {
+      "owner": {
+        "host": "lambda13",
+        "pid": 238450,
+        "process_start": "177485507"
+      },
+      "CPU_affinity": [
+        2,
+        3
+      ]
+    },
+    {
+      "owner": {
+        "host": "lambda13",
+        "pid": 296761,
+        "process_start": "177557942"
+      },
+      "CPU_affinity": [
+        4,
+        6
+      ]
+    },
+    {
+      "owner": {
+        "host": "lambda13",
+        "pid": 397277,
+        "process_start": "177699641"
+      },
+      "CPU_affinity": [
+        7,
+        8
+      ]
+    },
+    {
+      "owner": {
+        "host": "lambda13",
+        "pid": 746374,
+        "process_start": "178068364"
+      },
+      "CPU_affinity": [
+        12,
+        13
+      ]
+    },
+    {
+      "owner": {
+        "host": "lambda13",
+        "pid": 817775,
+        "process_start": "178179642"
+      },
+      "CPU_affinity": [
+        19,
+        20
+      ]
+    }
+  ],
+  "other_owned_energy_workers_with_disjoint_CPUs": []
+}

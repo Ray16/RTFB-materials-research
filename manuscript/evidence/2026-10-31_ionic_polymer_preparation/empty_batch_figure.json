@@ -1,0 +1,71 @@
+{
+  "status": "finite_empty_backbone_batch_stability_figure",
+  "records": [
+    {
+      "configuration": "all_same",
+      "nominal": {
+        "status": "within_protocol_batch_comparison",
+        "minimum_E_change_kJ_mol": 0.0,
+        "minimum_G_change_kJ_mol": 0.0,
+        "ensemble_G_change_kJ_mol": -1.0313810085632913,
+        "within_batch_tolerance": true,
+        "tolerance_kJ_mol": 2.0,
+        "global_ensemble_convergence_proven": false
+      },
+      "settings_ranges_kJ_mol": {
+        "minimum_E_change_kJ_mol": [
+          0.0,
+          0.0
+        ],
+        "minimum_G_change_kJ_mol": [
+          0.0,
+          0.0
+        ],
+        "ensemble_G_change_kJ_mol": [
+          -1.0741350560542882,
+          -0.8488629409071313
+        ]
+      },
+      "unique_minima": 20
+    },
+    {
+      "configuration": "alternating",
+      "nominal": {
+        "status": "within_protocol_batch_comparison",
+        "minimum_E_change_kJ_mol": -0.20170438381941505,
+        "minimum_G_change_kJ_mol": 0.0,
+        "ensemble_G_change_kJ_mol": -1.231187392666226,
+        "within_batch_tolerance": true,
+        "tolerance_kJ_mol": 2.0,
+        "global_ensemble_convergence_proven": false
+      },
+      "settings_ranges_kJ_mol": {
+        "minimum_E_change_kJ_mol": [
+          -0.20170438381941505,
+          -0.20170438381941505
+        ],
+        "minimum_G_change_kJ_mol": [
+          -0.3117068961803948,
+          0.0
+        ],
+        "ensemble_G_change_kJ_mol": [
+          -1.282496744007865,
+          -1.1347966746452416
+        ]
+      },
+      "unique_minima": 19
+    }
+  ],
+  "analysis": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/empty_backbone_both_configurations_2026-10-30/analysis.json",
+  "analysis_sha256": "3b9e4c4e29403983a46b9f24ac13b30ef4b869e841b6d6e5c4ee71dcc77ce7a7",
+  "source_sha256": "89850fec07669a2d7749311e9e9f52f7784c4fd8272e62be2941e16aa5046af3",
+  "outputs_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/figures/polymer_models/empty_backbone_batch_stability.pdf": "786967c35d790cc03e808a1265b1424cdf7108d95503be9b399ff81df4eed883",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/figures/polymer_models/empty_backbone_batch_stability.png": "1ee1bef16cbde19ad58d467070e8f2b9419fc12722177caa79d8919b6bc4237d"
+  },
+  "nominal_rotor_cm": 50,
+  "nominal_duplicate_RMSD_A": 0.1,
+  "settings_ranges_are_confidence_intervals": false,
+  "global_ensemble_convergence_proven": false,
+  "caption": "Points: 50 cm^-1 rotor and 0.1 A duplicate cutoff. Ranges: explicit rotor/duplicate settings; not uncertainty intervals. Each backbone configuration is a separate species."
+}

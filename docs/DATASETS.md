@@ -1,8 +1,13 @@
 # Datasets & Databases of Redox-Active Molecules
 
-Vetted inventory for the MeCN organic-redox screening project (viologen/pyridinium,
-TEMPO/nitroxide, phenothiazine, quinone/anthraquinone). Ties into `PLAN.md` §P2
-(validation set) and §P5 (compare vs D3TaLES).
+Historical dataset survey for the MeCN organic-redox screening project
+(viologen/pyridinium, TEMPO/nitroxide, phenothiazine, quinone/anthraquinone).
+The dated download statuses below describe the original workspace; they do not
+guarantee that bulk datasets are included in a clone. The current paper's fixed,
+retrospective parent benchmark is documented in the manuscript and its SI.
+Proposed calibration and dataset integrations below are historical plans, not
+an applied fitted correction to the paper's primary protocol. External URLs and
+download availability were not rechecked in the repository-polish pass.
 
 Two roles:
 - **(A) Redox-annotated** — trusted oxidation/reduction potentials for validation,

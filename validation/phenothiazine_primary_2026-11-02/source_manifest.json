@@ -1,0 +1,69 @@
+{
+  "scope_id": "route_admitted_phenothiazine_primary_electronic",
+  "source_alias_prefix": "phenothiazine",
+  "candidate_alias": "phenothiazine",
+  "source_id": "phenothiazine",
+  "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+  "product_inchikey": "AWCNUEZNXDGDBF-UHFFFAOYSA-N",
+  "states": [
+    {
+      "id": "phenothiazine_neu",
+      "source_id": "phenothiazine",
+      "source_state": "neu",
+      "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+      "charge": 0,
+      "mult": 1,
+      "files": {
+        "geometry": "neu/geometry.xyz",
+        "result": "neu/result.json",
+        "energy": "neu/energy.json"
+      },
+      "native_G_qualified": false,
+      "checked_G_by_cutoff_eV": null
+    },
+    {
+      "id": "phenothiazine_ox",
+      "source_id": "phenothiazine",
+      "source_state": "ox",
+      "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+      "charge": 1,
+      "mult": 2,
+      "files": {
+        "geometry": "ox/geometry.xyz",
+        "result": "ox/result.json",
+        "energy": "ox/energy.json"
+      },
+      "native_G_qualified": false,
+      "checked_G_by_cutoff_eV": null
+    }
+  ],
+  "files_sha256": {
+    "candidate.json": "8d69c27b803e806a02f0ab2fe83242c09942c7e3cc6fdf816c84320e457380a1",
+    "route_gate.json": "e5605dcf318d58781a21f70798ac88b28acd85d66811b2fad4caa98547e66ac3",
+    "preparer.py": "f68a41f6ab40fce9d3f7ada9e73599ebf47d628098523b6ee03c30d846b1c77c",
+    "neu/geometry.xyz": "813eac4368b60763ecb6bbe45177411a2957088e09aec53cf0057db3dca2d4fe",
+    "neu/result.json": "25dd480e03cf11111d106d5e20393d333c4f812fe67ccd757928f2cc64076a3b",
+    "neu/energy.json": "52a0fa62183e9385143d5f5fa3aa3009a05ac1e8286f35c8ddeef78f4fdd5aea",
+    "ox/geometry.xyz": "c11017f4014e329d915793bab26f22e6b5112f528e828e4161999566263945b0",
+    "ox/result.json": "452c96ad9328655bd70210dd8bd645a78fc3a777e1fdb975be7a8126c25f9685",
+    "ox/energy.json": "6225d4615f5dc5d9890f7f624eb98795eae7b90139850c8a69f132fb23b33404"
+  },
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/candidates/pool/2026-11-02_ptz_precursor_access/registry.json": "4923c5b87a2f2adde7ab368dfa00e9b4f0fa2e0be7a1b067ed41306d39e6b8aa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/route_evidence.json": "2ffce8f7383b379890048b12af78c278c815264172209dd6b7647ea0cacc8ea5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/candidates/pool/2026-11-02_ptz_precursor_access/inputs/assessment.json": "4e70b0ccbc2a4764f4fc2df15147c495a952d8ec361cecaa0f4a8250575d8663",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/phenothiazine/neu/opt.xyz": "813eac4368b60763ecb6bbe45177411a2957088e09aec53cf0057db3dca2d4fe",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/phenothiazine/neu/result.json": "25dd480e03cf11111d106d5e20393d333c4f812fe67ccd757928f2cc64076a3b",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/phenothiazine/neu/sp/313ced41ecdd3e1d.json": "52a0fa62183e9385143d5f5fa3aa3009a05ac1e8286f35c8ddeef78f4fdd5aea",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/phenothiazine/ox/opt.xyz": "c11017f4014e329d915793bab26f22e6b5112f528e828e4161999566263945b0",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/phenothiazine/ox/result.json": "452c96ad9328655bd70210dd8bd645a78fc3a777e1fdb975be7a8126c25f9685",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs/dft/phenothiazine/ox/sp/90a43fa9f443ecc1.json": "6225d4615f5dc5d9890f7f624eb98795eae7b90139850c8a69f132fb23b33404",
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/library/manifest.csv": "0a05e84ca02c0cb3b419a52669b087ef27ea57b09ecff42125d160cfe5ef46fe"
+  },
+  "route_gate_snapshot": "route_gate.json",
+  "source_geometries_reused": true,
+  "geometry_scope": "One preserved previously optimized geometry per state; fresh stationarity/minimum and conformer coverage are separate",
+  "native_G_qualified": false,
+  "redox_potential_qualified": false,
+  "material_admission": false
+}

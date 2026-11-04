@@ -2,7 +2,7 @@
 
 The [shared Overleaf project](https://www.overleaf.com/project/6aea2dc8096db15da57980a0)
 is the live collaboration copy. Pull and merge before edits and again before
-pushing; use `/homes/rzhu/0_redox_overleaf` for the active checkout.
+pushing; use `/homes/rzhu/0_redox/manuscript/overleaf` for the active checkout.
 
 The current language-edited revision is a 14-page
 [article](review/manuscript.pdf) with a 40-page

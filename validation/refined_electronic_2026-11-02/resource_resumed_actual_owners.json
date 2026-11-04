@@ -1,0 +1,58 @@
+{
+  "checked": 1793686325.2320945,
+  "records": [
+    {
+      "label": "native",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2274497,
+        "process_start": "1448685987"
+      },
+      "CPU_affinity": [
+        49
+      ],
+      "recorded_status": "route_primary_native_attempt_observed",
+      "status_belongs_to_current_owner": true
+    },
+    {
+      "label": "bulk_energy",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2274503,
+        "process_start": "1448685993"
+      },
+      "CPU_affinity": [
+        51
+      ],
+      "recorded_status": "corrected_sampling_queue_active",
+      "status_belongs_to_current_owner": true
+    },
+    {
+      "label": "bulk_native",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2274508,
+        "process_start": "1448685998"
+      },
+      "CPU_affinity": [
+        52
+      ],
+      "recorded_status": "native_queue_source_changed_workers_preserved",
+      "status_belongs_to_current_owner": false
+    },
+    {
+      "label": "contact",
+      "owner": {
+        "host": "lambda2",
+        "pid": 2274511,
+        "process_start": "1448686004"
+      },
+      "CPU_affinity": [
+        53
+      ],
+      "recorded_status": "waiting_for_suitable_free_GPU_or_host_capacity",
+      "status_belongs_to_current_owner": true
+    }
+  ],
+  "scientific_workers_signaled": false
+}

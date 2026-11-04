@@ -1,0 +1,92 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "f0c6222bd4fa6b59",
+  "geom_sha1": "49d485c6747e94e3",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/sp_revalidation_2026-10-18/inputs/bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide__red1/opt.xyz",
+  "charge": -1,
+  "mult": 2,
+  "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+  "state": "red1",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -1180.4574126843522,
+  "e_smd_eV": -32121.882603493563,
+  "converged_smd": true,
+  "e_gas_Ha": -1180.3760794564328,
+  "e_gas_eV": -32119.66941361401,
+  "converged_gas": true,
+  "gas_homo_eV": -2.4546796974787815,
+  "gas_lumo_eV": 2.825059374292699,
+  "gas_s_squared": 0.7782,
+  "gas_spin_contam": 0.0282,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.2131898795493545,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1180.4574126839188,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1180.4574126843522,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1180.4574126842858,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1180.3760794563777,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1180.3760794564328,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1180.3760794558216,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -5.478250032767412,
+  "smd_lumo_eV": -0.19313154349781717,
+  "smd_s_squared": 0.7774,
+  "smd_spin_contam": 0.0274,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/sp_revalidation_2026-10-18",
+    "task": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide__red1",
+    "record_sha256": "7ee08e86380ba4113aec90d2df9ae815b287f30863e95189c0099d893d718ab1",
+    "original_sha256": "bae25aa3ef059d6f569611eba5b5b0d3bf07a84ff8a96b7b418422102221217e"
+  }
+}

@@ -1,0 +1,662 @@
+{
+  "status": "incomplete_with_explicit_pending_fields",
+  "checked_at": 1792645855.1898835,
+  "campaign": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-21_spacing_bounded_pcm",
+  "original_checked": 26,
+  "original_expected": 27,
+  "qualified_spacing_conformers": 12,
+  "expected_spacing_conformers": 12,
+  "qualified_native_G": 6,
+  "expected_graphs": 6,
+  "cases": [
+    {
+      "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+      "mapped_smiles": "ClCc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+      "repeat_units": 5,
+      "reactive_sites": [
+        2,
+        3,
+        4
+      ],
+      "occupied_sites": [],
+      "site_states": [
+        "styrene",
+        "benzyl_chloride",
+        "benzyl_chloride",
+        "benzyl_chloride",
+        "styrene"
+      ],
+      "backbone_stereo_tags": [
+        "CW",
+        "CW",
+        "CW",
+        "CW"
+      ],
+      "backbone_stereo_fingerprint": [
+        [
+          2,
+          -1
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          6,
+          -1
+        ],
+        [
+          8,
+          -1
+        ]
+      ],
+      "backbone_carbon_count": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2,
+      "atoms": 91,
+      "charge": 0,
+      "model_loading_per_repeat": 0.0,
+      "model_conversion_per_reactive_site": 0.0,
+      "graph_sha256": "d491da6b2fecf508575878eae2f7f20b980d6c1c652a126a026b57a72eab0c2f",
+      "key": "occ_none",
+      "E_eV": -82892.7413102421,
+      "G_eV": -82874.0291974899,
+      "cutoff_G_eV": {
+        "25": -82874.16577377381,
+        "50": -82874.0291974899,
+        "100": -82873.940752909
+      },
+      "selected_conformer": "occ_none__pose1",
+      "geometry_QC": "passed",
+      "native_QC": "passed",
+      "native_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_extra_thermal/thermal/occ_none__pose1/rest/native_thermal/976499ab3942f59c.json",
+      "native_record_sha256": "7aa1cae5de2a0c52b01186ff8f2c0997f9158d01b1e6ebff96d63c9d3d7e0749",
+      "minimum_frequency_cm": 10.756812356294013,
+      "gradient_max_Ha_Bohr": 1.0072099529233292e-05,
+      "maximum_asymmetry": 2.035006609613088e-07,
+      "derivative_checks": [
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.0005,
+          "relative_error": 1.3308291102702424e-06
+        },
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.001,
+          "relative_error": 1.2775891609806923e-06
+        },
+        {
+          "atom_index": 90,
+          "axis": 2,
+          "step_Bohr": 0.0005,
+          "relative_error": 4.5180253296502945e-05
+        },
+        {
+          "atom_index": 90,
+          "axis": 2,
+          "step_Bohr": 0.001,
+          "relative_error": 3.194039388488009e-05
+        }
+      ]
+    },
+    {
+      "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+      "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+      "repeat_units": 5,
+      "reactive_sites": [
+        2,
+        3,
+        4
+      ],
+      "occupied_sites": [
+        2
+      ],
+      "site_states": [
+        "styrene",
+        "grafted",
+        "benzyl_chloride",
+        "benzyl_chloride",
+        "styrene"
+      ],
+      "backbone_stereo_tags": [
+        "CW",
+        "CW",
+        "CW",
+        "CW"
+      ],
+      "backbone_stereo_fingerprint": [
+        [
+          2,
+          -1
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          6,
+          -1
+        ],
+        [
+          8,
+          -1
+        ]
+      ],
+      "backbone_carbon_count": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2,
+      "atoms": 105,
+      "charge": 0,
+      "model_loading_per_repeat": 0.2,
+      "model_conversion_per_reactive_site": 0.3333333333333333,
+      "graph_sha256": "27e117714d6e817978a4b31a5308c7e51a73619bb989419a75d66fef72517a7c",
+      "key": "occ_2",
+      "E_eV": -84317.66309564355,
+      "G_eV": -84296.24091168925,
+      "cutoff_G_eV": {
+        "25": -84296.38980258083,
+        "50": -84296.24091168925,
+        "100": -84296.13766089526
+      },
+      "selected_conformer": "occ_2__pose0",
+      "geometry_QC": "passed",
+      "native_QC": "passed",
+      "native_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2__pose0/rest/native_thermal/f30238a42639fa3c.json",
+      "native_record_sha256": "e1a7afe6ffa111a510878e7880c27357246f164f2c71e63c75b40cac76bbcb76",
+      "minimum_frequency_cm": 8.7248421875437,
+      "gradient_max_Ha_Bohr": 3.525963839753774e-05,
+      "maximum_asymmetry": 1.765867440337368e-10,
+      "derivative_checks": [
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.0005,
+          "relative_error": 2.8878484837312303e-06
+        },
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.001,
+          "relative_error": 2.593795424478594e-06
+        },
+        {
+          "atom_index": 39,
+          "axis": 2,
+          "step_Bohr": 0.0005,
+          "relative_error": 8.777077462752485e-05
+        },
+        {
+          "atom_index": 39,
+          "axis": 2,
+          "step_Bohr": 0.001,
+          "relative_error": 8.262503390541907e-05
+        }
+      ]
+    },
+    {
+      "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccccc1",
+      "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1006]([CH2:1005][C@H:1004](c2ccc(CCl)cc2)[CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+      "repeat_units": 5,
+      "reactive_sites": [
+        2,
+        3,
+        4
+      ],
+      "occupied_sites": [
+        3
+      ],
+      "site_states": [
+        "styrene",
+        "benzyl_chloride",
+        "grafted",
+        "benzyl_chloride",
+        "styrene"
+      ],
+      "backbone_stereo_tags": [
+        "CW",
+        "CW",
+        "CW",
+        "CW"
+      ],
+      "backbone_stereo_fingerprint": [
+        [
+          2,
+          -1
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          6,
+          -1
+        ],
+        [
+          8,
+          -1
+        ]
+      ],
+      "backbone_carbon_count": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2,
+      "atoms": 105,
+      "charge": 0,
+      "model_loading_per_repeat": 0.2,
+      "model_conversion_per_reactive_site": 0.3333333333333333,
+      "graph_sha256": "05e15236a8fddef061e770b1dc97484f212b174873f48ba6c2d56fd5637b1ede",
+      "key": "occ_3",
+      "E_eV": -84317.71909756404,
+      "G_eV": -84296.33306662508,
+      "cutoff_G_eV": {
+        "25": -84296.47043529162,
+        "50": -84296.33306662508,
+        "100": -84296.24117109725
+      },
+      "selected_conformer": "occ_3__pose0",
+      "geometry_QC": "passed",
+      "native_QC": "passed",
+      "native_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_3__pose0/rest/native_thermal/9e2644faa04df217.json",
+      "native_record_sha256": "3bfbf4fda1c78258147a267156feb5145faeb79daf2c7a99a5db805f5e3b9167",
+      "minimum_frequency_cm": 3.4482490101582948,
+      "gradient_max_Ha_Bohr": 5.4991228352719745e-05,
+      "maximum_asymmetry": 7.21032678008271e-11,
+      "derivative_checks": [
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.0005,
+          "relative_error": 4.077030268579691e-06
+        },
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.001,
+          "relative_error": 3.4668444692135703e-06
+        },
+        {
+          "atom_index": 31,
+          "axis": 2,
+          "step_Bohr": 0.0005,
+          "relative_error": 7.451810763485225e-05
+        },
+        {
+          "atom_index": 31,
+          "axis": 2,
+          "step_Bohr": 0.001,
+          "relative_error": 7.790793094791534e-05
+        }
+      ]
+    },
+    {
+      "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccc(CCl)cc1)c1ccccc1",
+      "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1008]([CH2:1007][C@H:1006](c2ccc(CCl)cc2)[CH2:1005][C@H:1004](c2ccc(CCl)cc2)[CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1009][CH2:1010]c2ccccc2)cc1",
+      "repeat_units": 5,
+      "reactive_sites": [
+        2,
+        3,
+        4
+      ],
+      "occupied_sites": [
+        4
+      ],
+      "site_states": [
+        "styrene",
+        "benzyl_chloride",
+        "benzyl_chloride",
+        "grafted",
+        "styrene"
+      ],
+      "backbone_stereo_tags": [
+        "CW",
+        "CW",
+        "CW",
+        "CW"
+      ],
+      "backbone_stereo_fingerprint": [
+        [
+          2,
+          -1
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          6,
+          -1
+        ],
+        [
+          8,
+          -1
+        ]
+      ],
+      "backbone_carbon_count": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2,
+      "atoms": 105,
+      "charge": 0,
+      "model_loading_per_repeat": 0.2,
+      "model_conversion_per_reactive_site": 0.3333333333333333,
+      "graph_sha256": "6ed49166df9dcbd4cda1b65b6a3c7e39e9653dc9ac9cf2f752f78f41f645245d",
+      "key": "occ_4",
+      "E_eV": -84317.65409151933,
+      "G_eV": -84296.25579975598,
+      "cutoff_G_eV": {
+        "25": -84296.38387711074,
+        "50": -84296.25579975598,
+        "100": -84296.16343631693
+      },
+      "selected_conformer": "occ_4__pose0",
+      "geometry_QC": "passed",
+      "native_QC": "passed",
+      "native_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_4__pose0/rest/native_thermal/2d79919ef9f27768.json",
+      "native_record_sha256": "c8dd38383c185cc5fc0b07c64e751f363fe6353b0e4432142d988dc719571468",
+      "minimum_frequency_cm": 6.5990775356723645,
+      "gradient_max_Ha_Bohr": 2.4717181954734836e-05,
+      "maximum_asymmetry": 6.734881402570281e-11,
+      "derivative_checks": [
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.0005,
+          "relative_error": 2.337382960041939e-06
+        },
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.001,
+          "relative_error": 2.360255752722344e-06
+        },
+        {
+          "atom_index": 23,
+          "axis": 2,
+          "step_Bohr": 0.0005,
+          "relative_error": 6.69894206804056e-05
+        },
+        {
+          "atom_index": 23,
+          "axis": 2,
+          "step_Bohr": 0.001,
+          "relative_error": 6.664419252004837e-05
+        }
+      ]
+    },
+    {
+      "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+      "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1007][C@@H:1008](c2ccc(CCl)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+      "repeat_units": 5,
+      "reactive_sites": [
+        2,
+        3,
+        4
+      ],
+      "occupied_sites": [
+        2,
+        3
+      ],
+      "site_states": [
+        "styrene",
+        "grafted",
+        "grafted",
+        "benzyl_chloride",
+        "styrene"
+      ],
+      "backbone_stereo_tags": [
+        "CW",
+        "CW",
+        "CW",
+        "CW"
+      ],
+      "backbone_stereo_fingerprint": [
+        [
+          2,
+          -1
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          6,
+          -1
+        ],
+        [
+          8,
+          -1
+        ]
+      ],
+      "backbone_carbon_count": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2,
+      "atoms": 119,
+      "charge": 0,
+      "model_loading_per_repeat": 0.4,
+      "model_conversion_per_reactive_site": 0.6666666666666666,
+      "graph_sha256": "7c6b775850957a8a44297242bbc0705ec374ba4c17cf4146c1d704acb1f1ac01",
+      "key": "occ_2_3",
+      "E_eV": -85742.75470640796,
+      "G_eV": -85718.59818428564,
+      "cutoff_G_eV": {
+        "25": -85718.74746195937,
+        "50": -85718.59818428564,
+        "100": -85718.4863431128
+      },
+      "selected_conformer": "occ_2_3__pose0",
+      "geometry_QC": "passed",
+      "native_QC": "passed",
+      "native_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_3__pose0/rest/native_thermal/0612eaf0db72a611.json",
+      "native_record_sha256": "5f6c38d2bcfdda25a24845aa0b4fb6c535d52ee7d5b7fcecf38ecbfb6371e257",
+      "minimum_frequency_cm": 10.041883001676043,
+      "gradient_max_Ha_Bohr": 4.63331305278597e-05,
+      "maximum_asymmetry": 1.3487028160952264e-10,
+      "derivative_checks": [
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.0005,
+          "relative_error": 2.301310767162805e-06
+        },
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.001,
+          "relative_error": 2.743338036044359e-06
+        },
+        {
+          "atom_index": 31,
+          "axis": 2,
+          "step_Bohr": 0.0005,
+          "relative_error": 7.629254364226786e-05
+        },
+        {
+          "atom_index": 31,
+          "axis": 2,
+          "step_Bohr": 0.001,
+          "relative_error": 7.630430699558979e-05
+        }
+      ]
+    },
+    {
+      "smiles": "C[C@H](C[C@H](C[C@H](C[C@H](CCc1ccccc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccc(CCl)cc1)c1ccc(CN2C(=O)c3ccccc3C2=O)cc1)c1ccccc1",
+      "mapped_smiles": "O=C1c2ccccc2C(=O)N1Cc1ccc([C@H:1004]([CH2:1003][C@H:1002](c2ccccc2)[CH3:1001])[CH2:1005][C@@H:1006](c2ccc(CCl)cc2)[CH2:1007][C@@H:1008](c2ccc(CN3C(=O)c4ccccc4C3=O)cc2)[CH2:1009][CH2:1010]c2ccccc2)cc1",
+      "repeat_units": 5,
+      "reactive_sites": [
+        2,
+        3,
+        4
+      ],
+      "occupied_sites": [
+        2,
+        4
+      ],
+      "site_states": [
+        "styrene",
+        "grafted",
+        "benzyl_chloride",
+        "grafted",
+        "styrene"
+      ],
+      "backbone_stereo_tags": [
+        "CW",
+        "CW",
+        "CW",
+        "CW"
+      ],
+      "backbone_stereo_fingerprint": [
+        [
+          2,
+          -1
+        ],
+        [
+          4,
+          -1
+        ],
+        [
+          6,
+          -1
+        ],
+        [
+          8,
+          -1
+        ]
+      ],
+      "backbone_carbon_count": 10,
+      "backbone_CC_bonds": 9,
+      "chain_ends": 2,
+      "atoms": 119,
+      "charge": 0,
+      "model_loading_per_repeat": 0.4,
+      "model_conversion_per_reactive_site": 0.6666666666666666,
+      "graph_sha256": "3d9738f5273e88472ce9340bb680dc2d42e8862c01559442999f19a8d7b982f4",
+      "key": "occ_2_4",
+      "E_eV": -85742.72611846344,
+      "G_eV": -85718.5838565313,
+      "cutoff_G_eV": {
+        "25": -85718.73369930181,
+        "50": -85718.5838565313,
+        "100": -85718.47988338875
+      },
+      "selected_conformer": "occ_2_4__pose1",
+      "geometry_QC": "passed",
+      "native_QC": "passed",
+      "native_record": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-21_spacing_cds_recovery/thermal/occ_2_4__pose1/rest/native_thermal/f9ef4b3bf4e52fcc.json",
+      "native_record_sha256": "b95cb39c92ebf483eb756f83460f4e0eba98f02250432a069ecd159f5a325d68",
+      "minimum_frequency_cm": 7.233240892210579,
+      "gradient_max_Ha_Bohr": 7.618314351167586e-05,
+      "maximum_asymmetry": 2.0450472433541922e-08,
+      "derivative_checks": [
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.0005,
+          "relative_error": 9.165940505584702e-06
+        },
+        {
+          "atom_index": 0,
+          "axis": 1,
+          "step_Bohr": 0.001,
+          "relative_error": 4.367390172381756e-06
+        },
+        {
+          "atom_index": 23,
+          "axis": 2,
+          "step_Bohr": 0.0005,
+          "relative_error": 7.08122784032727e-05
+        },
+        {
+          "atom_index": 23,
+          "axis": 2,
+          "step_Bohr": 0.001,
+          "relative_error": 7.167553299725201e-05
+        }
+      ]
+    }
+  ],
+  "cycles": [
+    {
+      "name": "adjacent",
+      "sites": [
+        2,
+        3
+      ],
+      "intervening_repeat_units": 0,
+      "coefficients": {
+        "occ_2_3": 1,
+        "occ_none": 1,
+        "occ_2": -1,
+        "occ_3": -1
+      },
+      "electronic_deltaDeltaE_kJ_mol": -10.982254845554563,
+      "free_energy_deltaDeltaG_kJ_mol": -5.152632953102366,
+      "conditional_grafting_kJ_mol": {
+        "free_ions": {
+          "first_i": -101.97636805127766,
+          "first_j": -110.86793703500754,
+          "second_j_given_i": -116.02056998951394,
+          "second_i_given_j": -107.12900100578406
+        },
+        "contact_pair": {
+          "first_i": -106.77275081907368,
+          "first_j": -115.66431980280358,
+          "second_j_given_i": -120.81695275730998,
+          "second_i_given_j": -111.9253837735801
+        }
+      },
+      "rotor_cutoff_sensitivity_kJ_mol": {
+        "25": -5.113498591841854,
+        "50": -5.152632953102366,
+        "100": -4.656754866074043
+      },
+      "atoms_and_charge_balanced": true
+    },
+    {
+      "name": "one_spacer",
+      "sites": [
+        2,
+        4
+      ],
+      "intervening_repeat_units": 1,
+      "coefficients": {
+        "occ_2_4": 1,
+        "occ_none": 1,
+        "occ_2": -1,
+        "occ_4": -1
+      },
+      "electronic_deltaDeltaE_kJ_mol": -14.496055242701186,
+      "free_energy_deltaDeltaG_kJ_mol": -11.225313442778933,
+      "conditional_grafting_kJ_mol": {
+        "free_ions": {
+          "first_i": -101.97636805127766,
+          "first_j": -103.41284316930576,
+          "second_j_given_i": -114.6381566120847,
+          "second_i_given_j": -113.20168149405659
+        },
+        "contact_pair": {
+          "first_i": -106.77275081907368,
+          "first_j": -108.20922593710179,
+          "second_j_given_i": -119.43453937988072,
+          "second_i_given_j": -117.99806426185262
+        }
+      },
+      "rotor_cutoff_sensitivity_kJ_mol": {
+        "25": -12.137174661795871,
+        "50": -11.225313442778933,
+        "100": -11.533728668595431
+      },
+      "atoms_and_charge_balanced": true
+    }
+  ],
+  "source_plan_sha256": "3c94a52b3406f54378d668fc2524723fb22c33a73800b20dcaeeb72d6f1817b4",
+  "selected_geometry_G_pairing_required": true,
+  "no_missing_thermal_substitution": true,
+  "limits": [
+    "Finite neutral method-control screen; no experimental synthesis admission",
+    "Single-conformer thermochemistry; no polymer occupancy probabilities",
+    "Nonadditivity includes backbone/solvent response; no pure-core binding",
+    "Rotor-cutoff variation is sensitivity, not a confidence interval"
+  ],
+  "validator_sha256": "40602535ff07588f20f383450f65f951e8c88ba8d3c8b02b0ec9086bcd8ae765",
+  "validator_source_snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/validator_sources/40602535ff07588f20f383450f65f951e8c88ba8d3c8b02b0ec9086bcd8ae765.py"
+}

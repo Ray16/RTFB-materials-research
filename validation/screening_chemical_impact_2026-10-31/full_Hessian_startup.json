@@ -1,0 +1,61 @@
+{
+  "status": "fresh_and_correct_solvent_component_reuse_controls_live_disjoint_verified",
+  "checked": 1793468610.8164785,
+  "rows": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_V100_fresh4/namespace.json",
+      "owner": {
+        "host": "lambda4",
+        "pid": 2719372,
+        "process_start": "32099012"
+      },
+      "GPU": 0,
+      "CPU_affinity": [
+        0,
+        1
+      ],
+      "thread_caps": 2,
+      "numpy_madvise_hugepage": 0,
+      "response_phase": {
+        "kind": "operator_entered",
+        "monotonic": 324852.023078192,
+        "UTC": 1793468550.7115018,
+        "solver": 1,
+        "operator": 8,
+        "shape": [
+          48,
+          280355
+        ]
+      },
+      "native_G_qualified": false
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_V100_resume_PCM4/namespace.json",
+      "owner": {
+        "host": "lambda4",
+        "pid": 2755102,
+        "process_start": "32268480"
+      },
+      "GPU": 1,
+      "CPU_affinity": [
+        3,
+        4
+      ],
+      "thread_caps": 2,
+      "numpy_madvise_hugepage": 0,
+      "response_phase": {
+        "kind": "operator_entered",
+        "monotonic": 324859.429386783,
+        "UTC": 1793468558.1178105,
+        "solver": 1,
+        "operator": 7,
+        "shape": [
+          48,
+          280355
+        ]
+      },
+      "native_G_qualified": false
+    }
+  ],
+  "full_Hessian_qualification_complete": false
+}

@@ -1,0 +1,185 @@
+{
+  "schema": 2,
+  "guide": "results/README.md",
+  "entries": {
+    "publication_native_replay": {
+      "guide": "validation/publication_native_replay_2026-10-28/README.md",
+      "current": "validation/publication_native_replay_2026-10-28/summary.json",
+      "source_snapshot": "validation/publication_native_replay_2026-10-28/manifest_explicit_cwd.json",
+      "raw_root": "results/validation/publication_native_replay_2026-10-28",
+      "physical_replay": "results/validation/publication_native_replay_2026-10-28/checked_replay_v3.json",
+      "figure": "results/figures/polymer_models/native_sampling_coverage.pdf",
+      "status": "sixty_retained_states_physically_replayed_incomplete_sampling",
+      "scope": "Explicit relocation with unchanged source hashes; no new QM or production-runtime qualification"
+    },
+    "candidate_grafting_audit": {
+      "guide": "validation/candidate_grafting_audit_2026-10-28/README.md",
+      "source_snapshot": "validation/candidate_grafting_audit_2026-10-28/manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/calcs",
+      "status": "scoped_cached_arithmetic_and_route_screens_verified_no_new_qm",
+      "scope": "Archived grafting and oligomer records; no claim of all-property validation"
+    },
+    "dbu_chloride_anchor": {
+      "guide": "validation/dbu_chloride_anchor_2026-10-29/README.md",
+      "current": "validation/dbu_chloride_anchor_2026-10-29/comparison.json",
+      "source_snapshot": "validation/dbu_chloride_anchor_2026-10-29/reproduce.py",
+      "raw_root": "calcs/validation/dbu_chloride_anchor_2026-10-29",
+      "status": "preliminary_experimental_conventions_incomplete",
+      "scope": "DBUH chloride association component; no full reaction validation or new QM"
+    },
+    "unified_candidate_pool": {
+      "guide": "validation/candidate_pool_2026-10-29/README.md",
+      "current": "results/candidates/pool/current.json",
+      "source_snapshot": "results/candidates/pool/2026-10-29_published/summary.json",
+      "raw_root": "results/candidates/pool/2026-10-29_published/inputs",
+      "status": "904_exact_graphs_8_new_route_held_hypotheses",
+      "scope": "Unified exact design registry; historical QC labels preserved, no blanket raw-state or experimental validation"
+    },
+    "publication_draft": {
+      "guide": "docs/PROPERTY_VALIDATION_AND_PUBLICATION.md",
+      "current": "manuscript/build_check.json",
+      "source_snapshot": "manuscript/evidence/current.json",
+      "raw_root": "calcs/validation/publication_revision_2026-10-29",
+      "status": "narrative_revised_built_working_draft",
+      "scope": "Exact-identity reaction and occupancy novelty; original numerical snapshot retained"
+    },
+    "working_manuscript": {
+      "guide": "manuscript/README.md",
+      "current": "manuscript/manuscript.pdf",
+      "supporting_information": "manuscript/supporting_information.pdf",
+      "source_snapshot": "manuscript/evidence/2026-10-30_tempo_directional/manifest.json",
+      "build": "manuscript/build_check.json",
+      "visual_review": "manuscript/visual_review.json",
+      "raw_root": "calcs/validation/manuscript_builds",
+      "status": "checked_TEMPO_directionals_integrated_scientific_gaps_open",
+      "scope": "20-page paper and 25-page SI; six fresh TEMPO electronic cells added; 75-state polymer snapshot unchanged"
+    },
+    "native_polymer_continuation": {
+      "guide": "validation/native_followup_collection_2026-10-30/README.md",
+      "current": "validation/native_followup_collection_2026-10-30/summary.json",
+      "source_snapshot": "validation/native_followup_collection_2026-10-30/inputs.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30",
+      "live_status": "results/validation/host_local_reviews_2026-10-30/source_bound_collection/native_reviews/status.json",
+      "scope": "Original fifteen starts preserved; use checked_polymer_continuations for verified results",
+      "status": "historical_fifteen_start_snapshot_superseded_by_checked_collection",
+      "additional_live_status": "results/validation/unstarted_native_namespace_2026-10-30/last_case_reviews/status.json"
+    },
+    "empty_polymer_energy_continuation": {
+      "guide": "validation/polymer_energy_checked_2026-10-30/README.md",
+      "current": "validation/polymer_energy_checked_2026-10-30/summary.json",
+      "source_snapshot": "validation/polymer_energy_checked_2026-10-30/summary.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy",
+      "live_status": "results/validation/host_local_reviews_2026-10-30/source_bound_collection/energy_reviews/status.json",
+      "status": "two_electronic_states_independently_checked_native_followup_pending",
+      "scope": "Missing electronic stages for two empty-backbone conformers; unchanged archived 128-GiB RAM experiment plans and methods"
+    },
+    "energy_conversion": {
+      "guide": "validation/energy_conversion_2026-10-30/README.md",
+      "current": "validation/energy_conversion_2026-10-30/summary.json",
+      "source_snapshot": "tests/test_energy_conversion.py",
+      "status": "exact_SI_conversion_checked_historical_arithmetic_preserved"
+    },
+    "counterpoise_saved_checkpoint_diagnostic": {
+      "guide": "validation/counterpoise_checkpoint_diagnostic_2026-10-30/README.md",
+      "current": "validation/counterpoise_checkpoint_diagnostic_2026-10-30/summary.json",
+      "source_snapshot": "validation/counterpoise_checkpoint_diagnostic_2026-10-30/startup.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_counterpoise_checks/2026-10-30_saved_AB",
+      "live_status": "/nfs/lambda_stor_01/homes/rzhu/redox_counterpoise_checks/2026-10-30_saved_AB/status.json",
+      "status": "running_not_an_SCF_or_interaction_admission"
+    },
+    "checked_polymer_continuations": {
+      "guide": "validation/polymer_continuations_checked_2026-10-30/README.md",
+      "current": "validation/polymer_continuations_checked_2026-10-30/summary.json",
+      "source_snapshot": "validation/polymer_continuations_checked_2026-10-30/inputs.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations",
+      "figure": "validation/polymer_continuations_checked_2026-10-30/sampling.pdf",
+      "status": "seven_additional_native_states_physically_replayed_five_additional_energies_checked",
+      "scope": "67 checked states combined; separate smooth-MeCN control; incomplete occupied ensembles"
+    },
+    "occupied_polymer_energy_classes": {
+      "guide": "validation/polymer_energy_classes_2026-10-30/README.md",
+      "current": "validation/polymer_energy_classes_2026-10-30/summary.json",
+      "source_snapshot": "validation/polymer_energy_classes_2026-10-30/queue_inputs.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_energy_classes",
+      "live_status": "results/validation/energy_classes_2026-10-30/queue/status.json",
+      "independent_reviews": "results/validation/energy_classes_2026-10-30/independent_reviews/status.json",
+      "status": "160_inputs_accounted_for_156_prepared_4_checked_references_quantum_evaluation_ongoing",
+      "scope": "Separate smooth-MeCN method controls; electronic and native/ensemble qualification remain distinct"
+    },
+    "working_polymer_native_collection": {
+      "guide": "validation/polymer_empty_batches_2026-10-30/README.md",
+      "current": "validation/polymer_empty_batches_2026-10-30/native_census.json",
+      "source_snapshot": "validation/polymer_empty_batches_2026-10-30/inputs.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations",
+      "physical_replay": "validation/native_working_collection_2026-10-30/replay.json",
+      "status": "75_native_states_reconstructed_occupied_ensembles_incomplete",
+      "scope": "Includes forty empty states and one separate site-4 resource point; primary-model cycles unchanged"
+    },
+    "empty_backbone_batches": {
+      "guide": "validation/polymer_empty_batches_2026-10-30/README.md",
+      "current": "validation/polymer_empty_batches_2026-10-30/summary.json",
+      "source_snapshot": "validation/polymer_empty_batches_2026-10-30/inputs.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations",
+      "physical_replay": "validation/polymer_empty_batches_2026-10-30/native_additions.json",
+      "figure": "validation/polymer_empty_batches_2026-10-30/figure.pdf",
+      "status": "both_empty_components_meet_finite_batch_criterion_occupied_cycles_pending",
+      "scope": "Forty checked empty states; 20/19 distinct minima; no global ensemble or material inference"
+    },
+    "checked_native_conveyor": {
+      "guide": "validation/native_conveyor_2026-10-30/README.md",
+      "current": "validation/native_conveyor_2026-10-30/summary.json",
+      "source_snapshot": "validation/native_conveyor_2026-10-30/manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor",
+      "live_preparation": "results/validation/native_conveyor_2026-10-30/preparation/status.json",
+      "live_dispatch_and_review": "results/validation/native_conveyor_2026-10-30/dispatch/status.json",
+      "live_resource_pilot": "results/validation/effective_native_memory_2026-10-30/independent_reviews_v2/status.json",
+      "status": "checked_energy_to_native_execution_running_occupied_ensembles_pending",
+      "scope": "Original 80-GiB numerical protocol retained; separate 40-GiB pilot prospective; no launch or electronic value substitutes for native G"
+    },
+    "portable_native_cache": {
+      "guide": "validation/native_cache_2026-10-30/README.md",
+      "current": "validation/native_cache_2026-10-30/isolation.json",
+      "source_snapshot": "validation/native_cache_2026-10-30/manifest.json",
+      "package_manifest": "validation/native_cache_2026-10-30/package_manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-10-30_native_inputs75_checked",
+      "archive": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-10-30_native_inputs75_checked.tar.zst",
+      "status": "75_current_paper_native_states_replayed_from_extracted_archive_in_fresh_numpy",
+      "scope": "Selected raw numerical inputs; complete historical executable/scratch closure, full GPU deployment and public deposition remain outside this replay"
+    },
+    "prelaunch_resource_refusal_recovery": {
+      "guide": "validation/resource_refusals_2026-10-30/README.md",
+      "current": "validation/resource_refusals_2026-10-30/resolutions.json",
+      "source_snapshot": "validation/resource_refusals_2026-10-30/manifest.json",
+      "raw_root": "results/validation/resource_refusals_2026-10-30",
+      "status": "two_verified_unstarted_refusals_reopened_no_scientific_attempt_consumed",
+      "scope": "Source-branch, closed-owner, no-output and all-nine-node producer checks; scientific failures or uncertain ownership remain preserved"
+    },
+    "route_literature_followup": {
+      "guide": "validation/route_evidence_followup_2026-10-30/README.md",
+      "current": "validation/route_evidence_followup_2026-10-30/sources.json",
+      "source_snapshot": "validation/route_evidence_followup_2026-10-30/manifest.json",
+      "raw_root": "calcs/literature/2026-10-30_routes",
+      "bibliography": "validation/route_evidence_followup_2026-10-30/bibliography_check.json",
+      "status": "primary_literature_context_checked_no_route_promotion",
+      "scope": "Molecular, structural and polymer precedents kept distinct; inaccessible SI does not supply exact conditions"
+    },
+    "exact_tempo_solution": {
+      "guide": "validation/tempo_solution_pair_2026-10-30/README.md",
+      "current": "results/candidates/verified_cases/tempo/current.json",
+      "source_snapshot": "validation/tempo_solution_pair_2026-10-30/manifest.json",
+      "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_TEMPO_solution_pair",
+      "figure": "results/figures/candidates/tempo_solution_relaxation.pdf",
+      "status": "exact_TEMPO_directional_solution_descriptor_independently_checked",
+      "scope": "Checked directionals; symmetric scalar and material decision unqualified"
+    },
+    "focused_presentation": {
+      "guide": "slides/README.md",
+      "current": "slides/redox_workflow.pdf",
+      "source_snapshot": "slides/build_check.json",
+      "visual_review": "slides/visual_review.json",
+      "raw_root": "calcs/validation/slides_builds",
+      "status": "eighteen_frames_built_and_visually_reviewed",
+      "scope": "Fourteen main and four supporting slides; UMA pipeline, grafting deltaG and new TEMPO response"
+    }
+  }
+}

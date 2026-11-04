@@ -1,0 +1,126 @@
+[
+  {
+    "label": "refined_electronic",
+    "owner": {
+      "host": "lambda2",
+      "pid": 2081675,
+      "process_start": "1448387870"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.route_refined_electronic",
+      "queue",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/manifest.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/queue",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "12"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/queue_controller.log",
+    "checked": 1793683258.7335808
+  },
+  {
+    "label": "counterion_thermochemistry",
+    "owner": {
+      "host": "lambda2",
+      "pid": 2081680,
+      "process_start": "1448387876"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_thermochemistry",
+      "queue",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_T4_geometry_2026-11-02/followups/thermochemistry_prepared_manifest.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/queue",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "12"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_repaired_contact_thermochemistry/queue_controller.log",
+    "checked": 1793683258.7870646
+  },
+  {
+    "label": "bulk_0",
+    "owner": {
+      "host": "lambda2",
+      "pid": 2081684,
+      "process_start": "1448387881"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/run_corrected_sampling_queue.py",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/recovery_manifest_03.json",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "72",
+      "--pilot-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_empty_pilot_review.json",
+      "--pilot-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_single_pilot_review.json",
+      "--pilot-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_double_pilot_review.json",
+      "--resume"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/bulk_resume_0.log",
+    "checked": 1793683258.8411274
+  },
+  {
+    "label": "bulk_1",
+    "owner": {
+      "host": "lambda2",
+      "pid": 2081687,
+      "process_start": "1448387887"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/run_corrected_native_queue.py",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/recovery_manifest_02.json",
+      "--energy-stream",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/electronic_current.json",
+      "--pilot-manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/manifest.json",
+      "--resource-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/polymer_hessian_reproduction_2026-10-31/fresh_V100_review.json",
+      "--archive",
+      "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "72",
+      "--seed-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/empty_native_review.json",
+      "--seed-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/single_native_review.json",
+      "--resume"
+    ],
+    "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/bulk_resume_1.log",
+    "checked": 1793683258.896329
+  }
+]

@@ -1,0 +1,44 @@
+{
+  "status": "fresh_Git_checkout_and_isolated_CPU_environment_verified",
+  "source_commit": "c09bc544a7946751fb31a2f429c4d83c80344401",
+  "checkout": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-22_fresh_checkout/checkout",
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-22_fresh_checkout",
+  "environment": "/tmp/redox_release_cpu_zzt4ni2n/env",
+  "working_tree_tracked_clean": true,
+  "system_site_packages": false,
+  "user_site": false,
+  "redox_loaded_from_fresh_checkout": true,
+  "dependencies_loaded_only_from_new_environment": true,
+  "quantum_raw_trees_present_in_checkout": false,
+  "recipes": 32,
+  "exact_designs": 17,
+  "serial_discrepancies": 0,
+  "routes": {
+    "hold": 17
+  },
+  "quantum_jobs_submitted": 0,
+  "figure_CSV_exact_match": true,
+  "figure_RGB_pixels_exact_match": true,
+  "quantum_energies_recomputed": false,
+  "source_sha256": {
+    "examples/publication_smoke/run.py": "f765f303d7154b6531de875d332ed92b5e2de629095d3c0a9753b88fd0d453af",
+    "src/redox/workflows/chunked.py": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+    "src/redox/screening/streaming_search.py": "994a2fbf4c4a447f66fb83b855772758225d04a2d4206204f0cc75a636d30833",
+    "src/redox/screening/route_stage.py": "81e67d09a7b42d10b5f84c1c7c93e47868b35704b967be85afff340952903109",
+    "scripts/plotting/polymer_models/plot_conditional_grafting.py": "9d0af2cfd4aecb70b73596ff1939a487950f32dfc07f28f4d5502400c193ed63",
+    "manuscript/evidence/2026-10-22/polymer_validation.json": "42aa7018dace1041b780a2eba8f499703f3fb4ed194090246006ba09153812f7"
+  },
+  "evidence_sha256": {
+    "results/validation/fresh_checkout_2026-10-22/smoke.json": "33493e90a14090012dcbf7c4b35897f332d47a9930b7519b4df8bee1e8f1e337",
+    "results/validation/fresh_checkout_2026-10-22/isolation.json": "0b4fce05b2e0b1b2293f8ae91a21c196f5155a00433d8ad09b9925fa3ecc886a",
+    "results/validation/fresh_checkout_2026-10-22/installation.json": "5ad661ef49e53497885a35708fe0c79556a4007a2f542e6498c0968190c62fbf",
+    "results/validation/fresh_checkout_2026-10-22/pip_freeze.txt": "f5b88c982895a0c937a5971793f3e883c3eea1d7ad3ee991a5d75de239438f8c",
+    "results/validation/fresh_checkout_2026-10-22/pip_check.txt": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+  },
+  "generated_figure_provenance": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/release_validation/2026-10-22_fresh_checkout/checkout/calcs/publication_smoke/figures/conditional_grafting.json",
+  "limits": [
+    "Sparse clean Git checkout tested at the recorded commit; local Git object sharing is not a public archive release",
+    "Python 3.11 Linux CPU environment; full quantum/CUDA environment and quantum restart qualification remain separate",
+    "Frozen scientific data reproduced; external energetic accuracy is not inferred"
+  ]
+}

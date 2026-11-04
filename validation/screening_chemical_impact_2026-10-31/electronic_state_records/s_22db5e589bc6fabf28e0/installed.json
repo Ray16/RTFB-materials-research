@@ -1,0 +1,68 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_benchmark_energy_panel/states/s_22db5e589bc6fabf28e0/sources/input.xyz",
+  "charge": -1,
+  "mult": 2,
+  "solvent": "acetonitrile",
+  "optimized": false,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svpd",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "57619f1601597d78",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -420.941532608614,
+  "e_smd_eV": -11454.402630791148,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -420.9415326084837,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -420.941532608614,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -420.94153260846986,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -6.281558173690534,
+  "smd_lumo_eV": -0.08382257373711013,
+  "smd_s_squared": 0.7725,
+  "smd_spin_contam": 0.0225
+}

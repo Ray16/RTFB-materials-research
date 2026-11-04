@@ -1,0 +1,70 @@
+{
+  "status": "exact_component_screening_panel_prepared_no_jobs_submitted",
+  "target_states": 2,
+  "states": [
+    {
+      "key": "phenothiazine_neu",
+      "source_state": {
+        "id": "phenothiazine_neu",
+        "aliases": [
+          "phenothiazine:phenothiazine_neu"
+        ],
+        "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+        "charge": 0,
+        "mult": 1,
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/neu"
+      },
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/neu/geometry.xyz",
+      "energy": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/neu/energy.json",
+      "reference_energy_Ha": -1225.3136693305503,
+      "atoms": 39,
+      "nao": 976,
+      "has_iron": false,
+      "output_budget_bytes": 62500864,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_neu/namespace.json",
+      "namespace_sha256": "d810b642f412aa489414faeac399e7b12a6b248bf98d9599bb075a802c1af74b"
+    },
+    {
+      "key": "phenothiazine_ox",
+      "source_state": {
+        "id": "phenothiazine_ox",
+        "aliases": [
+          "phenothiazine:phenothiazine_ox"
+        ],
+        "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+        "charge": 1,
+        "mult": 2,
+        "original_state_directory": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/ox"
+      },
+      "geometry": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/ox/geometry.xyz",
+      "energy": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/ox/energy.json",
+      "reference_energy_Ha": -1225.1300849818822,
+      "atoms": 39,
+      "nao": 976,
+      "has_iron": false,
+      "output_budget_bytes": 291119104,
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/states/phenothiazine_ox/namespace.json",
+      "namespace_sha256": "3c80427c9dcde0c04408a93ba4780ef888991d5e94de512e99d5df7990cf4613"
+    }
+  ],
+  "workload": "route_admitted_phenothiazine_primary_electronic",
+  "source_package": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package",
+  "source_package_manifest_sha256": "f90a62d3813edc89aeab1a280e40e6ff53b124b5a0c5900c469cfc73c555a792",
+  "maximum_total_durable_output_bytes": 353619968,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/electronic/inputs/package_manifest.json": "f90a62d3813edc89aeab1a280e40e6ff53b124b5a0c5900c469cfc73c555a792"
+  },
+  "preparer_sha256": "5fcf1293c5cf643f4d66b0c8be26167894af326cb24181c71d580ed916c3a51e",
+  "native_G_qualified": false,
+  "new_redox_potentials_qualified": false,
+  "quantum_jobs_submitted": 0,
+  "candidate_alias": "phenothiazine",
+  "source_id": "phenothiazine",
+  "route_gate_snapshot": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_panel/source_package/route_gate.json",
+  "required_next_stages": [
+    "independent actual electronic/frame/resource review",
+    "own native stationarity/Hessian/modes/partition",
+    "matched corrected Fc reference and context-checked redox sum"
+  ],
+  "material_admission": false
+}

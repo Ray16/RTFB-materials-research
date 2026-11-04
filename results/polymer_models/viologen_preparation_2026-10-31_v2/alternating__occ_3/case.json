@@ -1,0 +1,114 @@
+{
+  "smiles": "C[C@H](C[C@@H](C[C@H](C[C@@H](CCc1ccccc1)c1ccc(CCl)cc1)c1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1)c1ccc(CCl)cc1)c1ccccc1",
+  "mapped_smiles": "C[n+]1ccc(-c2cc[n+](Cc3ccc([C@H:1006]([CH2:1005][C@@H:1004](c4ccc(CCl)cc4)[CH2:1003][C@H:1002](c4ccccc4)[CH3:1001])[CH2:1007][C@H:1008](c4ccc(CCl)cc4)[CH2:1009][CH2:1010]c4ccccc4)cc3)cc2)cc1",
+  "repeat_units": 5,
+  "reactive_sites": [
+    2,
+    3,
+    4
+  ],
+  "occupied_sites": [
+    3
+  ],
+  "site_states": [
+    "styrene",
+    "benzyl_chloride",
+    "grafted",
+    "benzyl_chloride",
+    "styrene"
+  ],
+  "backbone_stereo_tags": [
+    "CW",
+    "CCW",
+    "CW",
+    "CCW"
+  ],
+  "backbone_stereo_fingerprint": [
+    [
+      2,
+      -1
+    ],
+    [
+      4,
+      1
+    ],
+    [
+      6,
+      -1
+    ],
+    [
+      8,
+      1
+    ]
+  ],
+  "backbone_carbon_count": 10,
+  "backbone_CC_bonds": 9,
+  "chain_ends": 2,
+  "atoms": 114,
+  "charge": 2,
+  "model_loading_per_repeat": 0.2,
+  "model_conversion_per_reactive_site": 0.3333333333333333,
+  "graph_sha256": "33f45e8073da87f58a6d70d0208460cf3656c2f13cac91496947d0fce0a2809b",
+  "key": "alternating__occ_3",
+  "proposed_global_states": [
+    {
+      "id": "oxidized",
+      "charge": 2,
+      "mult": 1
+    },
+    {
+      "id": "one_reduced",
+      "charge": 1,
+      "mult": 2
+    },
+    {
+      "id": "two_reduced_singlet",
+      "charge": 0,
+      "mult": 1
+    },
+    {
+      "id": "two_reduced_triplet",
+      "charge": 0,
+      "mult": 3
+    }
+  ],
+  "charge_or_spin_localization_established": false,
+  "explicit_counterions_in_coordinates": false,
+  "calculation_ion_convention": "bare_charged_polymer_with_separated_omitted_spectators",
+  "composition_bounds": {
+    "1": {
+      "polymer_cation_mass_g_mol": 803.9619999999999,
+      "counterion_mass_g_mol": 289.92400000000004,
+      "mass_g_mol": 1093.886,
+      "bare_polymer_charge": 2,
+      "reference_salt_charge": 0,
+      "capacity_upper_bound_mAh_g": 24.501164788071055,
+      "capacity_lower_bound_mAh_g": 0.0,
+      "electrons_per_graft": 1,
+      "composition_reference_label": "declared fully oxidized PF6 salt reference; no measured ion content",
+      "additional_inactive_mass_g_mol": 0.0,
+      "experimental_loading_inferred": false,
+      "accessible_capacity_established": false,
+      "mobile_ion_mass_during_redox_established": false
+    },
+    "2": {
+      "polymer_cation_mass_g_mol": 803.9619999999999,
+      "counterion_mass_g_mol": 289.92400000000004,
+      "mass_g_mol": 1093.886,
+      "bare_polymer_charge": 2,
+      "reference_salt_charge": 0,
+      "capacity_upper_bound_mAh_g": 49.00232957614211,
+      "capacity_lower_bound_mAh_g": 0.0,
+      "electrons_per_graft": 2,
+      "composition_reference_label": "declared fully oxidized PF6 salt reference; no measured ion content",
+      "additional_inactive_mass_g_mol": 0.0,
+      "experimental_loading_inferred": false,
+      "accessible_capacity_established": false,
+      "mobile_ion_mass_during_redox_established": false
+    }
+  },
+  "quantum_calculation_admitted": false,
+  "native_G_qualified": false,
+  "material_admission": false,
+  "configuration": "alternating"
+}

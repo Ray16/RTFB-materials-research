@@ -1,0 +1,102 @@
+[
+  {
+    "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json",
+    "owner": {
+      "host": "lambda2",
+      "pid": 1006804,
+      "process_start": "1446652653"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/run_corrected_sampling_queue.py",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/recovery_manifest_03.json",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "72",
+      "--pilot-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_empty_pilot_review.json",
+      "--pilot-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_single_pilot_review.json",
+      "--pilot-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_double_pilot_review.json",
+      "--resume"
+    ],
+    "signal": "SIGTERM graceful admission stop only",
+    "checked": 1793678602.821501,
+    "scientific_workers_signaled": false
+  },
+  {
+    "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/status.json",
+    "owner": {
+      "host": "lambda2",
+      "pid": 1006805,
+      "process_start": "1446652653"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/run_corrected_native_queue.py",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/recovery_manifest_02.json",
+      "--energy-stream",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/electronic_current.json",
+      "--pilot-manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native/manifest.json",
+      "--resource-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/polymer_hessian_reproduction_2026-10-31/fresh_V100_review.json",
+      "--archive",
+      "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "72",
+      "--seed-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/empty_native_review.json",
+      "--seed-review",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/single_native_review.json",
+      "--resume"
+    ],
+    "signal": "SIGTERM graceful admission stop only",
+    "checked": 1793678602.8228672,
+    "scientific_workers_signaled": false
+  },
+  {
+    "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_native/queue_recovery_01/status.json",
+    "owner": {
+      "host": "lambda2",
+      "pid": 1674797,
+      "process_start": "1447783018"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.route_primary_native",
+      "queue",
+      "--manifest",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_native/manifest_recovery_01.json",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_primary_native/queue_recovery_01",
+      "--storage-peers",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+      "--python",
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "--hours",
+      "12"
+    ],
+    "signal": "SIGTERM graceful admission stop only",
+    "checked": 1793678602.8233707,
+    "scientific_workers_signaled": false
+  }
+]

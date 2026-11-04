@@ -7,6 +7,7 @@ import sys
 
 
 COMMANDS = {
+    "workflows": ("redox.workflows.catalog", (), "show maintained workflows, calculation stages, controls and recovery tools; no execution"),
     "uma": ("redox.qm.uma_current", (), "gas-phase warm starts with explicit backend qualification"),
     "dft": ("redox.qm.uma_current", ("--stage", "dft"), "DFT/SMD with checked warm-start provenance"),
     "motifs": ("redox.workflows.motifs", (), "plan or execute registered candidates"),

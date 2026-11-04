@@ -1,0 +1,28 @@
+{
+  "host": "lambda1",
+  "pid": 3947905,
+  "process_start": "567899802",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_checked_native_queue.py",
+    "--cohort",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/polymer_energy_classes_2026-10-30/queue_inputs.json",
+    "--preparation",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/preparation/status.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch",
+    "--python",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "--hours",
+    "24",
+    "--resume",
+    "--effective-reference",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/native/campaign_parent/all_same__occ_4__conf003/effective_resource_review.json"
+  ],
+  "started": 1793429205.5852058,
+  "only_controller_signalled": true,
+  "scientific_workers_signalled": false,
+  "children_at_stop": [],
+  "status": "exact_idle_controller_stopped",
+  "finished": 1793429205.6390147
+}

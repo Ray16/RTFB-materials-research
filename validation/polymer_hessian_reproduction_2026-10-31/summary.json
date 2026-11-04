@@ -1,0 +1,95 @@
+{
+  "status": "three_complete_corrected_polymer_Hessians_independently_reconstructed_and_compared",
+  "source_base_commit": "932add95",
+  "controls": [
+    {
+      "label": "fresh_V100",
+      "validation_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_V100_fresh4_validation_v3/namespace.json",
+      "matrix_producer_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_V100_fresh4/namespace.json",
+      "matrix_producer_device": {
+        "index": 0,
+        "uuid": "GPU-49ab60bc-b8e1-e031-8966-b947648e9330",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "matrix_producer_used_component_reuse": false,
+      "matrix_sha256": "6e24418b3d2a83a17b5ab6d710246aa652c59a4fce963bfd9980a8f6e400d392",
+      "validated_atoms": 119,
+      "internal_modes": 351,
+      "minimum_frequency_cm": 9.589974343387963,
+      "maximum_column_error": 9.44834584409729e-06,
+      "nuclear_difference_from_reference_eV": {
+        "25": 1.895504198046183e-09,
+        "50": 1.2950003736023064e-08,
+        "100": 1.518794334742779e-08
+      },
+      "source_full_run_resource_qualification": false
+    },
+    {
+      "label": "component_restart_V100",
+      "validation_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_V100_resume_PCM4_validation_v3/namespace.json",
+      "matrix_producer_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_V100_resume_PCM4/namespace.json",
+      "matrix_producer_device": {
+        "index": 1,
+        "uuid": "GPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff",
+        "name": "Tesla V100-SXM2-32GB",
+        "memory_MiB": 32768.0,
+        "compute_capability": "7.0"
+      },
+      "matrix_producer_used_component_reuse": true,
+      "matrix_sha256": "bc014a3b7506dadb80dd7100b55c17cda633aadc4debaa8ef3bca4c8e71e4070",
+      "validated_atoms": 119,
+      "internal_modes": 351,
+      "minimum_frequency_cm": 9.589972910307207,
+      "maximum_column_error": 7.411344808711628e-06,
+      "nuclear_difference_from_reference_eV": {
+        "25": -2.8441036192816682e-09,
+        "50": -6.512514971745986e-10,
+        "100": -1.430315421657724e-09
+      },
+      "source_full_run_resource_qualification": false
+    },
+    {
+      "label": "component_restart_H100",
+      "validation_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_H100_resume_PCM4_validation_v2/namespace.json",
+      "matrix_producer_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_full_Hessian_H100_resume_PCM4/namespace.json",
+      "matrix_producer_device": {
+        "index": 0,
+        "uuid": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00",
+        "name": "NVIDIA H100 NVL",
+        "memory_MiB": 95830.0,
+        "compute_capability": "9.0"
+      },
+      "matrix_producer_used_component_reuse": true,
+      "matrix_sha256": "d81e99723ad132026fa5edb86632251b641baa0d22eefb557a64ce898f627018",
+      "validated_atoms": 119,
+      "internal_modes": 351,
+      "minimum_frequency_cm": 9.589972261506226,
+      "maximum_column_error": 8.105748176066282e-06,
+      "nuclear_difference_from_reference_eV": {
+        "25": -2.2997923565526435e-09,
+        "50": 3.173081353224916e-09,
+        "100": 3.90348731116319e-09
+      },
+      "source_full_run_resource_qualification": false
+    }
+  ],
+  "maximum_pairwise_differences": {
+    "maximum_center_energy_difference_Ha": 5.4569682106375694e-12,
+    "maximum_center_gradient_difference_Ha_Bohr": 1.1643430941621347e-09,
+    "maximum_absolute_Hessian_difference_Ha_Bohr2": 1.3223514470916964e-09,
+    "maximum_relative_Frobenius_Hessian_difference": 8.306986139656022e-10,
+    "maximum_internal_frequency_difference_cm": 6.404945029458986e-06,
+    "maximum_nuclear_difference_eV": 1.661823745280344e-08
+  },
+  "all_pairs_within_prespecified_tolerances": true,
+  "maximum_sampled_derivative_relative_error": 9.44834584409729e-06,
+  "minimum_internal_frequency_cm": 9.589972261506226,
+  "scope": "One retained 119-atom phthalimide-control structure; full matrices produced on V100/H100, fresh derivative/mode validation on V100; no total chemical G or ensemble admission",
+  "full_reaction_cycle_impact_qualified": false,
+  "production_full_run_resource_profile_qualified": false,
+  "polymer_ensemble_qualified": false,
+  "native_G_assembled": false,
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_checkpoint_recovery"
+}

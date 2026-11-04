@@ -1,0 +1,61 @@
+{
+  "UTC": "2026-10-31T11:59:30Z",
+  "old_worker_samples": [
+    {
+      "pid": 2013918,
+      "process_start": "1417472543",
+      "user_seconds": 4190.68,
+      "system_seconds": 70069.46,
+      "RSS_bytes": 22410440704,
+      "CPUs": [
+        1,
+        2
+      ]
+    },
+    {
+      "pid": 2041210,
+      "process_start": "1417541051",
+      "user_seconds": 2149.6,
+      "system_seconds": 71265.04,
+      "RSS_bytes": 20827172864,
+      "CPUs": [
+        10,
+        11
+      ]
+    },
+    {
+      "pid": 2041741,
+      "process_start": "1417541408",
+      "user_seconds": 2138.13,
+      "system_seconds": 71253.91,
+      "RSS_bytes": 20598104064,
+      "CPUs": [
+        9,
+        12
+      ]
+    },
+    {
+      "pid": 2042299,
+      "process_start": "1417541769",
+      "user_seconds": 2451.92,
+      "system_seconds": 70934.74,
+      "RSS_bytes": 21218439168,
+      "CPUs": [
+        6,
+        13
+      ]
+    }
+  ],
+  "system_settings": {
+    "/proc/pressure/memory": "some avg10=58.86 avg60=58.19 avg300=48.66 total=92054234567\nfull avg10=58.86 avg60=58.17 avg300=48.64 total=91892948260\n",
+    "/sys/kernel/mm/transparent_hugepage/enabled": "always [madvise] never\n",
+    "/sys/kernel/mm/transparent_hugepage/defrag": "always defer defer+madvise [madvise] never\n"
+  },
+  "vm_compaction_counters": [
+    "compact_stall 203238821",
+    "compact_fail 197543066",
+    "compact_success 5695755"
+  ],
+  "shared_settings_changed": false,
+  "observations_do_not_prove_each_worker_hot_function": true
+}

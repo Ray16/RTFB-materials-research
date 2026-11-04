@@ -1,0 +1,63 @@
+{
+  "status": "same_protocol_counterion_recovery_controller_spawned_start_unverified",
+  "namespace": {
+    "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/namespace.json",
+    "namespace_sha256": "b0df5657ada072b127262977cb05799c8307f388626418efb3e7c92f93a4def9"
+  },
+  "avoided_host_for_this_pass": "lambda1 recent unattributed foreign GPU residency",
+  "availability_errors": [
+    {
+      "host": "lambda13",
+      "error": "TimeoutExpired(['/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve', 'list', '--hosts', 'lambda13'], 15)",
+      "availability": "unverified_no_submission"
+    }
+  ],
+  "launch": {
+    "host": "lambda4",
+    "GPU": 7,
+    "capacity": {
+      "available": 370306203648,
+      "promised": 151978446848,
+      "GPU_MiB": 32768.0,
+      "load": 7.87451171875,
+      "cpus": 80
+    },
+    "storage": {
+      "free_bytes": 254333157376,
+      "remaining_existing_budget_bytes": 20309959783,
+      "additional_budget_bytes": 2147483648,
+      "minimum_margin_bytes": 34359738368,
+      "sufficient": true
+    },
+    "receipt": {
+      "status": "controller_spawned_scientific_start_unverified",
+      "owner": {
+        "host": "lambda4",
+        "pid": 2067281,
+        "process_start": "50774610"
+      },
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.counterion_thermochemistry",
+        "launch",
+        "--spec",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/namespace.json",
+        "--gpu",
+        "7",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/placement_001"
+      ],
+      "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/placement_001"
+    }
+  },
+  "refusals": [],
+  "old_namespace_preserved": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_pilot",
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/dispatch/remote_launch.py": "1ee1752af8142f2ccfcd5ecbad83e2961445ff1a0264ba6c06c5dbd6ae4a48ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/thermochemistry_interruption.json": "530754f3a994065a2baff33ec557b2da86e36f5416befccf49114b89af4c280f"
+  },
+  "native_G_qualified": false,
+  "checked": 1793651444.9063587
+}

@@ -1,0 +1,166 @@
+{
+  "status": "first_start_failed_second_gate_inside_attempt_running_third_contention_refused",
+  "attempts": [
+    {
+      "path": "logs/polymer_namespace_2026-10-30/pilot/execution.json",
+      "record": {
+        "status": "failed",
+        "host": "lambda2",
+        "gpu": 0,
+        "pid": 2010483,
+        "process_start": "1417463800",
+        "interpreter": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-m",
+          "redox.workflows.archived_native_namespace",
+          "execute",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/namespace.json"
+        ],
+        "started": 1793374018.1305888,
+        "scientific_outputs_verified": false,
+        "host_preflight": {
+          "online_cpus": 80,
+          "load_1m": 3.85693359375,
+          "available_RAM_bytes": 500236648448,
+          "minimum_RAM_GiB": 8
+        },
+        "gpu_preflight": {
+          "index": 0,
+          "uuid": "GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "cpu_affinity": [
+          1,
+          2
+        ],
+        "threads": 2,
+        "gate_argv": [
+          "/usr/bin/taskset",
+          "--cpu-list",
+          "1,2",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "0",
+          "--label",
+          "redox",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-m",
+          "redox.workflows.gpu",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/logs/polymer_namespace_2026-10-30/pilot",
+          "--probe",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-m",
+          "redox.workflows.archived_native_namespace",
+          "execute",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/namespace.json"
+        ],
+        "gate_pid": 2010690,
+        "returncode": 1,
+        "finished": 1793374034.8980415
+      }
+    },
+    {
+      "path": "logs/polymer_namespace_2026-10-30/pilot_gate_inside/launch.json",
+      "record": {
+        "status": "namespace_gate_started_scientific_start_unverified",
+        "host": "lambda2",
+        "pid": 2013713,
+        "process_start": "1417472440",
+        "GPU": 0,
+        "CPU_affinity": [
+          1,
+          2
+        ],
+        "host_capacity": {
+          "online_cpus": 80,
+          "load_1m": 6.82177734375,
+          "available_RAM_bytes": 499918381056,
+          "minimum_RAM_GiB": 112
+        },
+        "gpu_preflight": {
+          "index": 0,
+          "uuid": "GPU-0940c147-b2ca-0b8b-f44f-bcf82617b074",
+          "name": "Tesla V100-SXM2-32GB",
+          "memory_MiB": 32768.0,
+          "compute_capability": "7.0"
+        },
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/namespace.json",
+        "namespace_sha256": "2060b961d5a03860cd086a0f030cd27a87f86f9d5cb6d62f81f7835c6329704c",
+        "argv": [
+          "bwrap",
+          "--die-with-parent",
+          "--ro-bind",
+          "/",
+          "/",
+          "--ro-bind",
+          "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/campaign",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_native_followup/all_same__occ_2__conf005",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30/all_same__occ_2__conf005/raw",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-26_occupied_site2_native_followup",
+          "--proc",
+          "/proc",
+          "--dev-bind",
+          "/dev",
+          "/dev",
+          "--tmpfs",
+          "/tmp",
+          "--chdir",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+          "--bind",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "/nfs/lambda_stor_01/homes/rzhu/.gpu_locks",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve",
+          "run",
+          "0",
+          "--label",
+          "redox-archived-native",
+          "--",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py",
+          "--guard-out",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_native_followup/all_same__occ_2__conf005/residency_guard",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_native_followup/all_same__occ_2__conf005/host_guard",
+          "--maximum-rss-gib",
+          "80",
+          "--minimum-free-gib",
+          "32",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py",
+          "--profile",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_native_followup/all_same__occ_2__conf005/tensor_runtime",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_native.py",
+          "run",
+          "--campaign",
+          "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-26_occupied_site2_native_followup/all_same__occ_2__conf005"
+        ],
+        "producer_sha256": "e5a138ffedf6b2a9d99d1794e74d427ed124c33ae7be225e0f0303f520a17235",
+        "started": 1793374104.4340162,
+        "quantum_result_qualified": false,
+        "gate_inside_namespace": true
+      }
+    }
+  ],
+  "causes": [
+    "first: direct-parent lease check rejected gate outside namespace",
+    "second: wrapper exited but gate and scientific PID remain alive",
+    "third: occupied GPU refused before worker spawn"
+  ],
+  "original_archived_attempt_untouched": true,
+  "previous_inference_corrected": "Outer wrapper disappearance did not establish gate or predictor termination"
+}

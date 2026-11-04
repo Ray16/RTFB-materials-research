@@ -1,0 +1,41 @@
+{
+  "status": "larger_native_scientific_start_actual_owner_GPU_affinity_and_thread_caps_verified",
+  "checked": 1793613755.5331478,
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot_v2/namespace.json",
+  "namespace_sha256": "17003a8e01b231837b084797fc8ad4169d46d27a50ce0ec8d34cdb19bae741a3",
+  "stage": {
+    "status": "charged_polymer_native_component_running",
+    "owner": {
+      "host": "lambda13",
+      "pid": 1604604,
+      "process_start": "173072320"
+    },
+    "started": 1793613583.682858,
+    "native_G_qualified": false,
+    "production_default_changed": false
+  },
+  "observed": {
+    "stat": "1604604 (python) D 1603901 1603900 1603900 0 -1 4194304 481064 233138 0 5 4964 13383 14 3115 20 0 9 0 173072320 44986245120 430220 18446744073709551615 94405354549248 94405356893773 140729423536976 0 0 0 0 16781312 16386 0 0 0 17 5 0 0 0 0 0 94405357864592 94405359304960 94406221791232 140729423540400 140729423541602 140729423541602 140729423544212 0\n",
+    "affinity": [
+      4,
+      5
+    ],
+    "thread_caps": {
+      "OMP_NUM_THREADS": "2",
+      "OMP_THREAD_LIMIT": "2",
+      "MKL_NUM_THREADS": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "NUMEXPR_NUM_THREADS": "2",
+      "XTB_THREADS": "2"
+    },
+    "gpu_query": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00, 1369837, 13132\nGPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 1604604, 23836\n",
+    "devices": "0, GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00, 95830, 9.0\n1, GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 95830, 9.0\n2, GPU-5d07badb-4052-7045-bdc1-c0476709589b, 95830, 9.0\n3, GPU-31e42837-2afb-0b14-c287-66eabb51d40e, 95830, 9.0\n4, GPU-7313cbc9-b64b-7359-3d2e-e9e6c1b6ef52, 95830, 9.0\n5, GPU-7b939bee-465f-2aad-2acd-8cec35064a53, 95830, 9.0\n6, GPU-8defa300-1c9b-2d37-01ea-122e6fda2a88, 95830, 9.0\n7, GPU-93801177-43f6-555f-d319-913daa719ad4, 95830, 9.0\n"
+  },
+  "exclusive_GPU_residency_verified": true,
+  "native_G_qualified": false,
+  "SCF_progress": {
+    "cycle": 19,
+    "E_Ha": -3192.314064637924,
+    "updated": 1793613754.6156213
+  }
+}

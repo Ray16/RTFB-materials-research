@@ -1,0 +1,64 @@
+{
+  "schema": 1,
+  "candidates": [
+    {
+      "graph_key": "35fabdd73bcd08542203227f311604ab3c55744c15824ad32251748eb8321d93",
+      "product_smiles": "Cc1ccc(COC2CC(C)(C)N([O])C(C)(C)C2)cc1",
+      "inchikey": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+      "aliases": [
+        "tempo"
+      ],
+      "families": [
+        "nitroxide"
+      ],
+      "roles": [
+        "registered_model"
+      ],
+      "declarations": [
+        {
+          "source": "registered_local_models",
+          "row": 4,
+          "id": "tempo",
+          "fragment": "[*:1]OC1CC(C)(C)N([O])C(C)(C)C1",
+          "precursor_smiles": "CC1(C)CC(O)CC(C)(C)N1[O]",
+          "reaction_class": "NH_OH_substitution",
+          "states": [
+            [
+              "rad",
+              0,
+              2,
+              0
+            ],
+            [
+              "ox",
+              1,
+              1,
+              1
+            ],
+            [
+              "red",
+              -1,
+              1,
+              -1
+            ]
+          ],
+          "state_scope": "declared hypothesis; field-specific QC required",
+          "design_factors": {}
+        }
+      ],
+      "evaluations": [],
+      "recipes": [],
+      "route_status": "proceed",
+      "material_decision": "pending",
+      "route_decisions": [
+        {
+          "id": "tempo",
+          "status": "proceed",
+          "missing": [],
+          "reasons": []
+        }
+      ]
+    }
+  ],
+  "original_registry_sha256": "fffbe7ea45d8ee2937fa8691610c15e8957aa193b6eede4e66411731dae55b90"
+}

@@ -1,0 +1,84 @@
+{
+  "status": "failed_polymer_derivative_check_independently_reconstructed",
+  "case": "all_same__occ_2_3__conf006",
+  "checks": [
+    {
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_error": 3.3140614962346635e-06,
+      "analytic_column_norm": 0.5762348351378701,
+      "gradient_difference_residual_norm_Ha_Bohr": 1.909678036139612e-09
+    },
+    {
+      "atom": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_error": 9.819299899012745e-07,
+      "analytic_column_norm": 0.5762348351378701,
+      "gradient_difference_residual_norm_Ha_Bohr": 1.1316454201538262e-09
+    },
+    {
+      "atom": 20,
+      "axis": 0,
+      "step_Bohr": 0.0005,
+      "relative_error": 0.00703927832672941,
+      "analytic_column_norm": 0.40978776390813354,
+      "gradient_difference_residual_norm_Ha_Bohr": 2.884664366321139e-06
+    },
+    {
+      "atom": 20,
+      "axis": 0,
+      "step_Bohr": 0.001,
+      "relative_error": 0.003520114575410747,
+      "analytic_column_norm": 0.40978776390813354,
+      "gradient_difference_residual_norm_Ha_Bohr": 2.885002910003055e-06
+    },
+    {
+      "atom": 29,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_error": 0.005041786891398591,
+      "analytic_column_norm": 0.57098660751609,
+      "gradient_difference_residual_norm_Ha_Bohr": 2.880663541899729e-06
+    },
+    {
+      "atom": 29,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_error": 0.0025176884808459786,
+      "analytic_column_norm": 0.57098660751609,
+      "gradient_difference_residual_norm_Ha_Bohr": 2.8760569654495915e-06
+    },
+    {
+      "atom": 31,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_error": 0.012137703563426224,
+      "analytic_column_norm": 0.2381717665436673,
+      "gradient_difference_residual_norm_Ha_Bohr": 2.88455921507561e-06
+    }
+  ],
+  "interpretation": "The saved check fails at atom 31/z, 0.0005 bohr (1.2138 percent > 1 percent). At two other columns the gradient-difference residual is approximately independent of displacement, making relative errors scale approximately as 1/h. This is a numerical diagnostic, not identification of its physical/algorithmic origin.",
+  "next_action": "Inspect cavity/quadrature switching and repeat the offending displaced gradients with unchanged geometry and protocol before choosing a controlled recovery; do not relax the gate or count this state as qualified.",
+  "native_G_qualified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/hessian.npy": "3aa506b8fe8f26da997ad272731557ee0a9f68a94295305f5a0b9667c8dcb655",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/derivative_checks.json": "c3ef22cc36c126bf77ab04d7d67c6ff7b7ad43ccd68f997e0a7f67aec5551560",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0000/evaluation.json": "80115efb7342e51cdf4e2c8850415faf9f4c267351a67b529ff2d88deb5a7e35",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0001/evaluation.json": "8b46755c90b8f8673e07e3de5c58861a08a3d9faba309f53a0e76731c16b4740",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0002/evaluation.json": "d8a1cad0c085a42b3e5b36f5d5ee2af6a0ca43b10b72cd866354a068f99a0e0e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0003/evaluation.json": "ee460dff4b796a7bd3fbf8fad8aa96cb49cd07480f222a78d90cb63a8928a75d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0004/evaluation.json": "dc8d076412fbf27823aecc970c58766c0e7a18a568cb45dd21a68e0a196fda36",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0005/evaluation.json": "bf8affea04a514fcb9e1417aaeffad632d63decaeef1b51a718984b979d9905c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0006/evaluation.json": "293092d9e8c414da5ac83e35e9d6caff1d9777c42f7c87749ae05a9a9b19215f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0007/evaluation.json": "e94c8dc1323eec04a20f1faec15eca072c56c75684b62eadfcb0febd277b0f16",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0008/evaluation.json": "c2ae811cb7c9dec5344cb56410fb164f8f5304e534435c8738a3433b7d74d86b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0009/evaluation.json": "7f8c12b2d947ceaa8387ed536cbd60927c6b0a98ade127e90dc6d578aac7d425",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0010/evaluation.json": "65280647f69d96207886a4e2740438fd0a515f070a209ab81b6df63b992f77da",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0011/evaluation.json": "0073f64f835a3bfbafd8b9558c31be86363599402ade12f2347c652c98270bfd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0012/evaluation.json": "59dd74cc94cbb14bcb24206d488766b8e9c33f06c893c07dfef3267da0c598c5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0013/evaluation.json": "54b03560367c180ec3e0e261eeeb7835ba1239d982e9a599f21a6727e52b4d46",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/raw/all_same__occ_2_3__conf006/SCF_evaluations/0014/evaluation.json": "2a116a230f39dd053001bc88fb7c3f396e8e152366c1b06f1eed7e33b59351bc"
+  }
+}

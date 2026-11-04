@@ -41,8 +41,30 @@
     "Keep base-assisted grafting, capped-site redox and polymer-neighbor quantities distinct"
   ],
   "future_axes": [
-    {"axis": "BQ_AQ_substitution", "status": "planned_not_enumerated", "question": "Extend exact precursor/product enumeration to BQ/AQ with selective handles"},
-    {"axis": "steric_shielding", "status": "planned_not_selected", "question": "Does shielding reduce unwanted motif association without obstructing grafting?"},
-    {"axis": "spacing_sensitivity", "status": "method_control_prepared_quantum_pending", "question": "How does a neighboring graft change local nonadditivity and conditional grafting G?"}
+    {
+      "axis": "BQ_AQ_substitution",
+      "status": "planned_not_enumerated",
+      "question": "Extend exact precursor/product enumeration to BQ/AQ with selective handles"
+    },
+    {
+      "axis": "steric_shielding",
+      "status": "planned_not_selected",
+      "question": "Does shielding reduce unwanted motif association without obstructing grafting?"
+    },
+    {
+      "axis": "spacing_sensitivity",
+      "status": "method_control_prepared_quantum_pending",
+      "question": "How does a neighboring graft change local nonadditivity and conditional grafting G?"
+    }
+  ],
+  "route_first_panels": [
+    {
+      "spec": "config/candidate_ring_expansion_direct_ptz.json",
+      "baseline": "phenothiazine",
+      "axis": "single F/CN ring substitution at fixed direct N-benzyl attachment",
+      "baseline_route_evidence": "validation/phenothiazine_postfunctionalization_2026-11-02/reviewed_route.json",
+      "proposal_path": "results/candidates/pool/proposals/ptz_direct_ring_2026-11-02.json",
+      "prospective_rule": "Baseline bead precedent does not transfer access, selectivity or redox retention to ring-substituted precursors; gate every exact pair before full QM"
+    }
   ]
 }

@@ -1,0 +1,65 @@
+{
+  "status": "qualitative_primary_controls_and_unadmitted_benchmark_candidate",
+  "checked": 1793652078.7948635,
+  "exact_graft_association_benchmark_found": false,
+  "quantitative_association_accuracy_validated": false,
+  "sources": [
+    {
+      "doi": "10.1021/jp010084d",
+      "title": "Excited State Dynamics of Methyl Viologen. Ultrafast Photoreduction in Methanol and Fluorescence in Acetonitrile",
+      "year": 2001,
+      "url": "https://pubs.acs.org/doi/10.1021/jp010084d",
+      "accessible_primary_pdf": "https://nathan.instras.com/documentDB/paper-258.pdf",
+      "evidence_locations": [
+        "p.5772 MeCN salt-dependent transient/emission comparison",
+        "p.5775 counterion discussion"
+      ],
+      "scope": "dimethyl viologen molecular analogue; excited-state/salt-concentration observations",
+      "observation": "Similar MeCN spectra/dynamics were reported for the PF6 salt and a saturated chloride solution; concentration-dependent fluorescence was discussed as evidence for predominantly free ions.",
+      "concentration_range_M": [
+        0.0001,
+        0.001
+      ],
+      "equilibrium_association_constant_M_inv": null,
+      "limitations": "No MeCN chloride association constant or experimental uncertainty suitable for direct ground-state DeltaG validation; concentration-series salt identity is not fully specified in the discussion.",
+      "benchmark_eligible": false
+    },
+    {
+      "doi": "10.1002/celc.201600536",
+      "title": "Heterogeneous Electron-Transfer Rates for the Reduction of Viologen Derivatives at Platinum and Bismuth Electrodes in Acetonitrile",
+      "year": 2017,
+      "first_online_date": "2016-10-24",
+      "url": "https://chemistry-europe.onlinelibrary.wiley.com/doi/10.1002/celc.201600536",
+      "evidence_locations": [
+        "Experimental Section",
+        "section 2.3 and Figure 8"
+      ],
+      "scope": "methyl/tethered viologens in PF6 supporting electrolyte",
+      "observation": "Migration and Frumkin analyses support a dication description under the stated MeCN/PF6 conditions.",
+      "typical_supporting_electrolyte_M": [
+        0.1,
+        0.2
+      ],
+      "equilibrium_association_constant_M_inv": null,
+      "limitations": "This supports a scoped ionic-model control; PF6 electrochemistry is not a chloride quaternization or polymer-graft equilibrium benchmark.",
+      "benchmark_eligible": false
+    },
+    {
+      "doi": "10.1039/C1CP21371G",
+      "title": "Association of ionic liquids in solution: a combined dielectric and conductivity study of [bmim][Cl] in water and in acetonitrile",
+      "year": 2011,
+      "url": "https://pubs.rsc.org/en/content/articlelanding/2011/cp/c1cp21371g",
+      "evidence_locations": [
+        "publisher abstract"
+      ],
+      "scope": "separate imidazolium/chloride methodological calibration candidate",
+      "association_constant_M_inv_approx": 60,
+      "temperature_K": null,
+      "uncertainty": null,
+      "full_table_and_conditions_verified": false,
+      "limitations": "Only the primary abstract was accessible; temperature, uncertainty, standard-state/activity convention and association definition require full-text/SI verification. A different cation cannot validate the exact viologen graft.",
+      "benchmark_eligible": false
+    }
+  ],
+  "screening_outcome": "Do not add numerical association endpoints or convert approximate literature K to a validation DeltaG at this stage"
+}

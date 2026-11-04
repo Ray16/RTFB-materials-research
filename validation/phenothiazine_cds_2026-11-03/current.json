@@ -1,0 +1,84 @@
+{
+  "status": "CDS_component_cause_identified_three_full_native_controls_queued",
+  "checked": 1793688790.9126782,
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6",
+  "states": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6/phenothiazine_neu_mode_minus/namespace.json",
+      "geometry_sha256": "8707e2cd3e638c5795f40ae1434f31b340a2cbf37b5568ffd6208e4c142f2663",
+      "charge": 0,
+      "multiplicity": 1,
+      "native_numerical_policy": {
+        "schema": 1,
+        "component": "primary legacy SMD CDS",
+        "Hessian_gradient_step_Bohr": 1e-06,
+        "energy_function_changed": false,
+        "gradient_function_changed": false,
+        "global_defaults_changed": false
+      },
+      "status": "prepared_waiting_for_suitable_capacity",
+      "G_by_cutoff_eV": null,
+      "native_G_qualified": false
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6/phenothiazine_neu_mode_plus/namespace.json",
+      "geometry_sha256": "04c278a6c6fde79c5b5ed8353b3062ac189807cf601bb65171bd66ea80d0a407",
+      "charge": 0,
+      "multiplicity": 1,
+      "native_numerical_policy": {
+        "schema": 1,
+        "component": "primary legacy SMD CDS",
+        "Hessian_gradient_step_Bohr": 1e-06,
+        "energy_function_changed": false,
+        "gradient_function_changed": false,
+        "global_defaults_changed": false
+      },
+      "status": "prepared_waiting_for_suitable_capacity",
+      "G_by_cutoff_eV": null,
+      "native_G_qualified": false
+    },
+    {
+      "key": "phenothiazine_ox_stationarity",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-03_phenothiazine_native_CDS_1e6/phenothiazine_ox_stationarity/namespace.json",
+      "geometry_sha256": "0183397bf313b3dabf28f5b751ad2fa907e4e86fbc7f24daf69728332f43eb48",
+      "charge": 1,
+      "multiplicity": 2,
+      "native_numerical_policy": {
+        "schema": 1,
+        "component": "primary legacy SMD CDS",
+        "Hessian_gradient_step_Bohr": 1e-06,
+        "energy_function_changed": false,
+        "gradient_function_changed": false,
+        "global_defaults_changed": false
+      },
+      "status": "prepared_waiting_for_suitable_capacity",
+      "G_by_cutoff_eV": null,
+      "native_G_qualified": false
+    }
+  ],
+  "controller_owner": {
+    "host": "lambda2",
+    "pid": 2411898,
+    "process_start": "1448882892"
+  },
+  "actual_controller_CPU_affinity": [
+    21
+  ],
+  "controller_status": "waiting_for_suitable_free_GPU_or_host_capacity",
+  "qualified_default_oxidized_native": "validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json",
+  "qualified_finer_step_native_components": 0,
+  "oxidation_potential_V": null,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/minus_component.json": "dd1252770e363a36b9153090a9986353ce7613101dc2051f3b3540331573ad1e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/plus_component.json": "66b2ac7dfaf217bbb3a899c41184e406f6c61b407a81abb5bee03901d3b60ac9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/qualification.json": "a80cf3523d2009120dec88848c14a2694618d2a4b6ea321e7f766f40d65ee0b1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json": "9e84356a66c4bbacbc2516c728b2e2d2b7f7d13196240b3a38f355c4836c0d5e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/prepared_manifest.json": "ba318965e51eeaa6cf7f85810d8ba245171d59e9d945e32edfe7363846b9a468",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/archive_preflight.json": "da83bf40043363b4f92924e216fe48fb6a400cec0e7d4589c92aa2c64c3f1085",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/qualification_02.json": "cdf1b3df4d486c4dd1c32b3c8f35ad9b548623d12d696ec251e72b1910bffa54",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/final_checks_02.xml": "709ddedea4761b357a75f92e7b81771fce9e8b47422e4e48ebed0c1e4ce9daec"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "species": {
+    "precursor": {
+      "smiles": "c1ccc2c(c1)Nc1ccccc1S2",
+      "charge": 0
+    },
+    "site": {
+      "smiles": "Cc1ccc(CCl)cc1",
+      "charge": 0
+    },
+    "hydride": {
+      "smiles": "[Na+].[H-]",
+      "charge": 0
+    },
+    "product": {
+      "smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+      "charge": 0
+    },
+    "salt": {
+      "smiles": "[Na+].[Cl-]",
+      "charge": 0
+    },
+    "hydrogen": {
+      "smiles": "[H][H]",
+      "charge": 0
+    }
+  },
+  "coefficients": {
+    "precursor": -1,
+    "site": -1,
+    "hydride": -1,
+    "product": 1,
+    "salt": 1,
+    "hydrogen": 1
+  },
+  "atom_balanced": true,
+  "charge_balanced": true,
+  "source_scope": "Stoichiometric local-site representation of the reported NaH reaction; salt phases and gas/solution activities are not quantified by this graph check",
+  "reaction_deltaG_kJ_mol": null,
+  "thermodynamic_entities_not_inferred_from_graph_dots": true,
+  "observed_hydrogen_evolution_claimed": false,
+  "actual_condition_thermochemistry_computed": false
+}

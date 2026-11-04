@@ -1,0 +1,188 @@
+{
+  "status": "exact_molecular_redox_and_finite_grafting_with_field_QC",
+  "candidate_alias": "search_viologen_b7a4dca7a5e1",
+  "product_smiles": "Cc1ccc(C[n+]2ccc(-c3cc[n+](C)cc3)cc2)cc1",
+  "product_inchikey": "PBNXFHGCSKYNHC-UHFFFAOYSA-N",
+  "registry_graph_key": "b7a4dca7a5e164ab5e872ae4432a408c337f1b6d1c34397bba0387bc7f52c9d4",
+  "model_scope": "capped local graft; no explicit polymer or counterions",
+  "redox": {
+    "events": [
+      {
+        "event": "ox2->ox1",
+        "electrons": 1,
+        "initial_charge": 2,
+        "final_charge": 1,
+        "initial_multiplicity": 1,
+        "final_multiplicity": 2,
+        "potential_V_vs_Fc_by_cutoff": {
+          "25": -0.617128663805488,
+          "50": -0.6077915087116708,
+          "100": -0.6085738437650434
+        }
+      },
+      {
+        "event": "ox1->neu",
+        "electrons": 1,
+        "initial_charge": 1,
+        "final_charge": 0,
+        "initial_multiplicity": 2,
+        "final_multiplicity": 1,
+        "potential_V_vs_Fc_by_cutoff": {
+          "25": -1.2115588537271833,
+          "50": -1.2080016580875963,
+          "100": -1.2089909280548454
+        }
+      }
+    ],
+    "fitted_offset_V": 0.0,
+    "nominal_temperature_K": 298.15,
+    "solvent": "acetonitrile",
+    "declared_spin_models": true,
+    "experimental_exact_graft_accuracy_validated": false,
+    "spacing_V_by_cutoff": {
+      "25": 0.5944301899216953,
+      "100": 0.600417084289802,
+      "50": 0.6002101493759255
+    },
+    "disproportionation_kJ_mol_by_cutoff": {
+      "25": 57.35379429871702,
+      "100": 57.93144179021097,
+      "50": 57.911475606317694
+    }
+  },
+  "grafting_free_energy_kJ_mol": -11.493329651980034,
+  "occupancy_nonadditivity_kJ_mol": null,
+  "electronic_coupling_eV": null,
+  "directional_solution_relaxation_eV": null,
+  "all_axis_decision": {
+    "id": "search_viologen_b7a4dca7a5e1",
+    "product_key": "PBNXFHGCSKYNHC-UHFFFAOYSA-N",
+    "profile_id": "all_axes_preformed_polymer_v1",
+    "policy_sha256": "156d56107895ff7287e770edab74533c476988f4a96993fd5b6a78f0bec50291",
+    "required_axis_ids": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "status": "pending",
+    "all_required_axes_pass": false,
+    "eligible_for_Pareto": false,
+    "failed_axes": [],
+    "pending_axes": [
+      "redox_window",
+      "capacity",
+      "state_stability",
+      "charge_transfer",
+      "attachment_route",
+      "grafting_thermodynamics",
+      "motif_association",
+      "neighbor_coupling",
+      "occupancy_sensitivity",
+      "accessibility"
+    ],
+    "axes": [
+      {
+        "axis": "redox_window",
+        "status": "pending",
+        "reason": "Checked capped-model potentials; exact-graft prediction interval and application cutoff unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "capacity",
+        "status": "pending",
+        "reason": "Exact application criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "state_stability",
+        "status": "pending",
+        "reason": "Declared-spin monomer calculations and disproportionation; global spin ordering and degradation/dimerization unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "charge_transfer",
+        "status": "pending",
+        "reason": "Exact application criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "attachment_route",
+        "status": "pending",
+        "reason": "Required operating/reaction context is not declared",
+        "evidence_status": "qualified"
+      },
+      {
+        "axis": "grafting_thermodynamics",
+        "status": "pending",
+        "reason": "Checked finite capped-site separated-ion MeCN cycle; global sampling, salt speciation and application uncertainty criteria unresolved",
+        "evidence_status": "partial"
+      },
+      {
+        "axis": "motif_association",
+        "status": "pending",
+        "reason": "Exact application criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "neighbor_coupling",
+        "status": "pending",
+        "reason": "Exact application criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "occupancy_sensitivity",
+        "status": "pending",
+        "reason": "Exact application criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      },
+      {
+        "axis": "accessibility",
+        "status": "pending",
+        "reason": "Exact application criterion/evidence remains unresolved",
+        "evidence_status": "missing"
+      }
+    ],
+    "inference_scope": "Conditional computational shortlist within explicitly declared model/scenario coverage; no experimental material-performance guarantee.",
+    "experimental_performance_established": false
+  },
+  "material_admission": false,
+  "global_conformer_convergence_proven": false,
+  "experimental_exact_graft_accuracy_validated": false,
+  "native_state_reviews": [
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/viologen_native_recovery_2026-10-30/all_states_reviews_source_v3/bd0f6f552b91c65c__viologen__ox2_independent_review.json",
+      "sha256": "a2672277752638f999e2185b48f1633fd959c36ef928781fe3966b8f9a6e6f0d"
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/viologen_native_recovery_2026-10-30/all_states_reviews_source_v3/9fa9e3e6dad2bb60__viologen__ox1_independent_review.json",
+      "sha256": "a9d2b5ce9ecbd780d99cb301a0be40335e1e42e25dcdd999c3f1a75aa199c28f"
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/viologen_native_recovery_2026-10-30/all_states_reviews_source_v3/e619499fef7d5328__viologen__neu_independent_review.json",
+      "sha256": "5eb4636e4f011a98ac72cecf11084f3477057009c50066d957f07bcad382090f"
+    }
+  ],
+  "source_bindings": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/viologen_native_recovery_2026-10-30/finalization_source_v3/checked_state_collection.json": "87f58ce2fd384b539e40b7a451c75eceb2432c034567175e3831e47efa54c32e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/tempo_solution_pair_2026-10-30/native_redox_source.json": "f653078b71d2410da41cb10aca93bb815a235955bb84ac52a1bc4faf64482dac",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/candidates/pool/2026-10-30_viologen_checked/registry.json": "40363eea9b80e9e4043e2ca5290bd3e44a4b8926fe67adcecc52949a95edc538",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/tempo_solution_pair_2026-10-30/all_axes_policy.json": "7627ca89bbd7cebe2f52e7a89fe08e5418a2519264984a80bcad6494990edb27",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/viologen/2026-10-31_native_checked_v2/reaction.json": "106442bbd2a8500194138285d08b9cd6b5a51c6479b9d683682f9ec5e896ed06",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/candidates/verified_cases/viologen/2026-10-31_native_checked/candidate.json": "6e3213f1a1fa5df98cfedd2f4bfdbcaedce999492febb5b0cbd29cdeefe19960"
+  },
+  "reference_scope": "Matched native Fc; spin-only partition; no empirical offset or orbital-degeneracy correction",
+  "grafting_field_QC": {
+    "status": "checked_finite_separated_ion_local_model",
+    "reaction": "results/grafting/viologen/2026-10-31_native_checked_v2/reaction.json",
+    "global_conformer_convergence_proven": false,
+    "actual_reflux_and_salt_speciation_modelled": false,
+    "experimental_accuracy_validated": false
+  }
+}

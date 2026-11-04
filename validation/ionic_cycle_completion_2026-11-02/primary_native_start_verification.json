@@ -1,0 +1,70 @@
+{
+  "status": "two_primary_native_actual_starts_sole_GPU_residency_disjoint_CPUs_and_thread_caps_verified",
+  "checked": 1793615482.428745,
+  "records": {
+    "graft_ox2": {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox2/namespace.json",
+      "stage": {
+        "status": "primary_molecular_Hessian_control_running",
+        "owner": {
+          "host": "lambda4",
+          "pid": 1354956,
+          "process_start": "47165158"
+        },
+        "started": 1793615354.1442392,
+        "native_G_qualified": false
+      },
+      "completed_SCF_records": 1
+    },
+    "graft_ox1": {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-11-02_exact_viologen_primary_native_panel_v2/states/graft_ox1/namespace.json",
+      "stage": {
+        "status": "primary_molecular_Hessian_control_running",
+        "owner": {
+          "host": "lambda4",
+          "pid": 1355800,
+          "process_start": "47165526"
+        },
+        "started": 1793615357.6675394,
+        "native_G_qualified": false
+      },
+      "completed_SCF_records": 1
+    }
+  },
+  "observed": {
+    "processes": {
+      "1354956": {
+        "stat": "1354956 (python) S 1354724 1354723 1354723 0 -1 1077936128 504291 649283 21 0 13513 2677 93 452 20 0 10 0 47165158 15698063360 400980 18446744073709551615 94462425919488 94462428264013 140732986716240 0 0 0 0 16781312 16386 0 0 0 17 0 0 0 0 0 0 94462429234832 94462430675200 94463492042752 140732986724480 140732986725730 140732986725730 140732986728340 0\n",
+        "affinity": [
+          0,
+          1
+        ],
+        "caps": {
+          "OMP_NUM_THREADS": "2",
+          "OMP_THREAD_LIMIT": "2",
+          "OPENBLAS_NUM_THREADS": "2",
+          "MKL_NUM_THREADS": "2",
+          "NUMEXPR_NUM_THREADS": "2",
+          "XTB_THREADS": "2"
+        }
+      },
+      "1355800": {
+        "stat": "1355800 (python) R 1355479 1355478 1355478 0 -1 4194304 479542 626034 0 0 13120 2636 107 419 20 0 9 0 47165526 15549997056 399860 18446744073709551615 94383478001664 94383480346189 140728468401120 0 0 0 0 16781312 16386 0 0 0 17 4 0 0 0 0 0 94383481317008 94383482757376 94384272015360 140728468402304 140728468403554 140728468403554 140728468406164 0\n",
+        "affinity": [
+          2,
+          4
+        ],
+        "caps": {
+          "OMP_NUM_THREADS": "2",
+          "OMP_THREAD_LIMIT": "2",
+          "OPENBLAS_NUM_THREADS": "2",
+          "MKL_NUM_THREADS": "2",
+          "NUMEXPR_NUM_THREADS": "2",
+          "XTB_THREADS": "2"
+        }
+      }
+    },
+    "gpus": "GPU-49ab60bc-b8e1-e031-8966-b947648e9330, 1354956, 5056\nGPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 3319996, 366\nGPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 3320559, 31780\nGPU-587fc9d4-517f-3df3-cf06-547e2a51104e, 3320814, 31828\nGPU-7e8e466e-2e08-08f1-7597-9942f36b7ac7, 3321190, 31780\nGPU-eb49e30a-38b4-a788-d4be-8675eabd59e7, 3321636, 31732\nGPU-247509dc-0263-be1d-1312-352d9f4c37b4, 1355800, 4262\n"
+  },
+  "physical_completion_qualified": false
+}

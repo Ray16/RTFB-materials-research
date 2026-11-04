@@ -1,0 +1,119 @@
+{
+  "status": "archived_polymer_native_physical_records_replayed",
+  "states": 60,
+  "verified_source_bindings": 12386,
+  "counts": [
+    {
+      "configuration": "all_same",
+      "occupied_sites": [],
+      "checked_states": 20
+    },
+    {
+      "configuration": "alternating",
+      "occupied_sites": [],
+      "checked_states": 16
+    },
+    {
+      "configuration": "all_same",
+      "occupied_sites": [
+        2
+      ],
+      "checked_states": 14
+    },
+    {
+      "configuration": "alternating",
+      "occupied_sites": [
+        2
+      ],
+      "checked_states": 10
+    }
+  ],
+  "maximum_frequency_error_cm": 6.961542453609582e-11,
+  "maximum_nuclear_reconstruction_error_eV": 1.4921397450962104e-13,
+  "maximum_sampled_column_error": 3.913311143888779e-05,
+  "all_same_empty_batch_ensemble_G_change_kJ_mol": {
+    "25": -0.8488629409071313,
+    "50": -1.0313810085632913,
+    "100": -1.0741350560542882
+  },
+  "duplicate_scope": "Uses the previously independently checked twenty distinct geometries; duplicate RMSDs were not recomputed here",
+  "raw_report": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_native_replay_2026-10-28/checked_replay_v3.json",
+  "raw_report_sha256": "80e63e88515befb761bf6fe8ee0fb900efad538634027909a10dc02a134f7b60",
+  "manifest_sha256": "f07b5efc76337b9a2ff5baefa4a540520106f0bd37656f1af67cc98d950aef80",
+  "producer_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/replay_archived_polymer_native.py": "f304d9a0ba234a22bb5e9ff6a126b4d8f54bb2125c4ed2e44179b84e111617d9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/archived_sources.py": "f66deeaf8f5bea1be5486577d720a1ca6bddf53462a3dd886cc251b0ba0b70ec",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/hashing.py": "598e0f79a60864556eea59fbc41175f749e2b258ed3644d5db00ca26c16769bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/io.py": "4069a181d62207b31f186725b7cb277ccabf4cd2101e808060ed6f4ee354ed6a"
+  },
+  "tests_passed": 17,
+  "quantum_calculations_run": false,
+  "current_production_runtime_qualified": false,
+  "global_ensemble_convergence_proven": false,
+  "sampling_panels": [
+    {
+      "configuration": "all_same",
+      "occupied_sites": [],
+      "checked": 20,
+      "missing_indices": [],
+      "observed_range_kJ_mol": 7.194140964733067,
+      "lowest_checked_key": "all_same__occ_none__conf002",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": 0.0
+    },
+    {
+      "configuration": "all_same",
+      "occupied_sites": [
+        2
+      ],
+      "checked": 14,
+      "missing_indices": [
+        2,
+        5,
+        8,
+        12,
+        17,
+        19
+      ],
+      "observed_range_kJ_mol": 13.743763114349687,
+      "lowest_checked_key": "all_same__occ_2__conf020",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": -3.8437660762395365
+    },
+    {
+      "configuration": "alternating",
+      "occupied_sites": [],
+      "checked": 16,
+      "missing_indices": [
+        10,
+        12,
+        13,
+        19
+      ],
+      "observed_range_kJ_mol": 5.441442578799958,
+      "lowest_checked_key": "alternating__occ_none__conf004",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": 0.0
+    },
+    {
+      "configuration": "alternating",
+      "occupied_sites": [
+        2
+      ],
+      "checked": 10,
+      "missing_indices": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        15,
+        16,
+        17,
+        18
+      ],
+      "observed_range_kJ_mol": 9.726389923463264,
+      "lowest_checked_key": "alternating__occ_2__conf010",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": 0.0
+    }
+  ],
+  "figure_metadata_sha256": "f4f3e389c9909c21018b244d193cd55e86fb7582e6ae1bacb8ed291b04bd2bf6"
+}

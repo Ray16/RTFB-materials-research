@@ -1,0 +1,63 @@
+{
+  "status": "both_sampling_controllers_exact_processes_verified",
+  "checked": 1793652926.1051872,
+  "records": [
+    {
+      "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_native_followups/status.json",
+      "status": "corrected_native_queue_active",
+      "owner": {
+        "host": "lambda2",
+        "pid": 171137,
+        "process_start": "1445226893"
+      },
+      "counts": {
+        "completed_review_pending": 3,
+        "running": 11,
+        "prelaunch_refusal_no_scientific_attempt": 1,
+        "pending": 62
+      },
+      "checked_inputs": 3,
+      "live": true,
+      "CPU_affinity": [
+        13
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "XTB_THREADS": "1"
+      }
+    },
+    {
+      "status_path": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue/status.json",
+      "status": "corrected_sampling_queue_active",
+      "owner": {
+        "host": "lambda2",
+        "pid": 211309,
+        "process_start": "1445316232"
+      },
+      "counts": {
+        "completed_review_pending": 78,
+        "running": 5,
+        "prelaunch_refusal_no_scientific_attempt": 2,
+        "pending": 155
+      },
+      "checked_inputs": 78,
+      "live": true,
+      "CPU_affinity": [
+        12
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "XTB_THREADS": "1"
+      }
+    }
+  ],
+  "scientific_workers_restarted": false
+}

@@ -1,0 +1,334 @@
+{
+  "status": "frozen_charged_motif_triplet_independently_checked",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/namespace.json",
+  "key": "alternating__occ_2_3__cap107",
+  "parent_key": "alternating__occ_2_3",
+  "cap_length_A": 1.07,
+  "actual_SCF_frames_checked": 6,
+  "method": {
+    "xc": "r2scan",
+    "basis": "def2-svp",
+    "disp": "d4",
+    "density_fit": true,
+    "conv_tol": 1e-12,
+    "conv_tol_grad": 1e-08,
+    "max_cycle": 200,
+    "grid_level": 3
+  },
+  "solvent_model": {
+    "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+    "solvent": "acetonitrile",
+    "electrostatic_model": "SMD",
+    "electrostatic_surface_points": 590,
+    "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+    "CDS_points_per_sphere": 2030,
+    "supported_elements": [
+      "C",
+      "H",
+      "N",
+      "O",
+      "Cl"
+    ],
+    "scientific_model_changed": true,
+    "primary_candidate_admission": false
+  },
+  "numerical_implementation": {
+    "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+    "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+    "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+  },
+  "exact_energies_Ha": {
+    "A": {
+      "gas": {
+        "E_Ha": -573.9037275014829,
+        "SCF_converged": true,
+        "spin": {
+          "homo_eV": -14.998393439191553,
+          "lumo_eV": -11.060939529496455,
+          "s_squared": 0.0,
+          "spin_contam": 0.0
+        },
+        "charge": 2,
+        "mult": 1,
+        "geometry_sha256": "53e9422e556b7e7cac47a984ab268eadfaf10223a6db3a83b9f10ebfd447d105"
+      },
+      "acetonitrile": {
+        "E_Ha": -574.1759624926873,
+        "SCF_converged": true,
+        "spin": {
+          "homo_eV": -7.962755038470969,
+          "lumo_eV": -4.011957271797504,
+          "s_squared": 0.0,
+          "spin_contam": 0.0
+        },
+        "charge": 2,
+        "mult": 1,
+        "geometry_sha256": "53e9422e556b7e7cac47a984ab268eadfaf10223a6db3a83b9f10ebfd447d105"
+      }
+    },
+    "B": {
+      "gas": {
+        "E_Ha": -573.9031997738259,
+        "SCF_converged": true,
+        "spin": {
+          "homo_eV": -15.050950767054603,
+          "lumo_eV": -10.955016629394146,
+          "s_squared": 0.0,
+          "spin_contam": 0.0
+        },
+        "charge": 2,
+        "mult": 1,
+        "geometry_sha256": "3dad8768163c0f4a6246cfb1aab9becf8f9939e67daed2c02bf62efb63ed3c69"
+      },
+      "acetonitrile": {
+        "E_Ha": -574.1751437161056,
+        "SCF_converged": true,
+        "spin": {
+          "homo_eV": -8.004264184840988,
+          "lumo_eV": -3.9011645771666466,
+          "s_squared": 0.0,
+          "spin_contam": 0.0
+        },
+        "charge": 2,
+        "mult": 1,
+        "geometry_sha256": "3dad8768163c0f4a6246cfb1aab9becf8f9939e67daed2c02bf62efb63ed3c69"
+      }
+    },
+    "AB": {
+      "gas": {
+        "E_Ha": -1147.6708054398673,
+        "SCF_converged": true,
+        "spin": {
+          "homo_eV": -16.797287777598,
+          "lumo_eV": -12.905859771619072,
+          "s_squared": 0.0,
+          "spin_contam": 0.0
+        },
+        "charge": 4,
+        "mult": 1,
+        "geometry_sha256": "cf5e60af7ccb736fccc2c4f4395ee6edc885e709ec980a62ba0abf600cfb1fed"
+      },
+      "acetonitrile": {
+        "E_Ha": -1148.3474383881785,
+        "SCF_converged": true,
+        "spin": {
+          "homo_eV": -8.01203368166909,
+          "lumo_eV": -4.061040138262237,
+          "s_squared": 0.0,
+          "spin_contam": 0.0
+        },
+        "charge": 4,
+        "mult": 1,
+        "geometry_sha256": "cf5e60af7ccb736fccc2c4f4395ee6edc885e709ec980a62ba0abf600cfb1fed"
+      }
+    }
+  },
+  "interaction_E_kJ_mol_by_medium": {
+    "gas": 357.387829876953,
+    "acetonitrile": 9.629861700773562
+  },
+  "solvent_response_to_interaction_kJ_mol": -347.7579681761794,
+  "checked_sums": {
+    "gas": {
+      "value": 0.13612183544148593,
+      "context": {
+        "quantity": "electronic_energy",
+        "unit": "Ha",
+        "electronic_protocol": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "density_fit": true,
+          "conv_tol": 1e-12,
+          "conv_tol_grad": 1e-08,
+          "max_cycle": 200,
+          "grid_level": 3
+        },
+        "thermal_definition": "none: electronic energies only",
+        "solvent": "gas",
+        "solvent_model": "vacuum",
+        "temperature_K": 298.15,
+        "standard_state": "not applied to fixed-geometry electronic energies",
+        "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+      },
+      "components": {
+        "A": {
+          "coefficient": -1,
+          "state": {
+            "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+            "charge": 2,
+            "multiplicity": 1
+          },
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/A.xyz": "53e9422e556b7e7cac47a984ab268eadfaf10223a6db3a83b9f10ebfd447d105",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/result.json": "86644b8fd4a7455a49cb9fd98e78e31b22324d13941cb4487e5ec84eab8f66f2"
+          }
+        },
+        "B": {
+          "coefficient": -1,
+          "state": {
+            "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+            "charge": 2,
+            "multiplicity": 1
+          },
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/B.xyz": "3dad8768163c0f4a6246cfb1aab9becf8f9939e67daed2c02bf62efb63ed3c69",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/result.json": "86644b8fd4a7455a49cb9fd98e78e31b22324d13941cb4487e5ec84eab8f66f2"
+          }
+        },
+        "AB": {
+          "coefficient": 1,
+          "state": {
+            "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+            "charge": 4,
+            "multiplicity": 1
+          },
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/AB.xyz": "cf5e60af7ccb736fccc2c4f4395ee6edc885e709ec980a62ba0abf600cfb1fed",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/result.json": "86644b8fd4a7455a49cb9fd98e78e31b22324d13941cb4487e5ec84eab8f66f2"
+          }
+        }
+      },
+      "context_verified": true,
+      "empirical_accuracy_validated": false
+    },
+    "acetonitrile": {
+      "value": 0.003667820614396078,
+      "context": {
+        "quantity": "electronic_energy",
+        "unit": "Ha",
+        "electronic_protocol": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "density_fit": true,
+          "conv_tol": 1e-12,
+          "conv_tol_grad": 1e-08,
+          "max_cycle": 200,
+          "grid_level": 3
+        },
+        "thermal_definition": "none: electronic energies only",
+        "solvent": "acetonitrile",
+        "solvent_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "temperature_K": 298.15,
+        "standard_state": "not applied to fixed-geometry electronic energies",
+        "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+      },
+      "components": {
+        "A": {
+          "coefficient": -1,
+          "state": {
+            "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+            "charge": 2,
+            "multiplicity": 1
+          },
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/A.xyz": "53e9422e556b7e7cac47a984ab268eadfaf10223a6db3a83b9f10ebfd447d105",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/result.json": "86644b8fd4a7455a49cb9fd98e78e31b22324d13941cb4487e5ec84eab8f66f2"
+          }
+        },
+        "B": {
+          "coefficient": -1,
+          "state": {
+            "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+            "charge": 2,
+            "multiplicity": 1
+          },
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/B.xyz": "3dad8768163c0f4a6246cfb1aab9becf8f9939e67daed2c02bf62efb63ed3c69",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/result.json": "86644b8fd4a7455a49cb9fd98e78e31b22324d13941cb4487e5ec84eab8f66f2"
+          }
+        },
+        "AB": {
+          "coefficient": 1,
+          "state": {
+            "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+            "charge": 4,
+            "multiplicity": 1
+          },
+          "qc": "independently_checked",
+          "sources": {
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/AB.xyz": "cf5e60af7ccb736fccc2c4f4395ee6edc885e709ec980a62ba0abf600cfb1fed",
+            "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/result.json": "86644b8fd4a7455a49cb9fd98e78e31b22324d13941cb4487e5ec84eab8f66f2"
+          }
+        }
+      },
+      "context_verified": true,
+      "empirical_accuracy_validated": false
+    }
+  },
+  "peak_GPU_MiB": 7872,
+  "peak_host_RSS_bytes": 1437593600,
+  "native_G_qualified": false,
+  "geometry_optimized": false,
+  "basis_superposition_corrected": false,
+  "electronic_coupling_computed": false,
+  "deformation_energy_computed": false,
+  "material_admission": false,
+  "scope": "Frozen methyl-capped local motif E interaction including cap and continuum response; not binding G, pure pi energy, coupling, occupancy population or complete backbone decomposition",
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/namespace.json": "3d5bb1f971cc10cd6556d61ce484be187007e14b8c5962272eda506b959ef995",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/plan.json": "71c2006dc17132365eb5e28fa0deb5e9b41f020a080c9cd0f19819411c9f9d28",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/status.json": "60d43585e1467a70b0fddfee670c37deb290abe21c094b8f8b813b78d34d19a5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/placement_001/launch.json": "48eabb977428407a88b3e3980005db6492f287b6052dc0df5bc5793f6149fe0a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/placement_001/completion.json": "9dd04e7c29023d83e23ef2829d05b95a30daeb92070d0f25d38ef5ac7ff0be99",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/residency_guard/owner.json": "360772403d058531ad9ecefe9bdfcd98c8bc08ed7f62d21d73bb977e7ba1e5c0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/residency_guard/state.json": "5608d520458473694727eacd631550a5cf4d753a4c4fc2a7dfff967055e27ac3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/host_guard/status.json": "0ef1b2595fd2ac0c0b7f5842d9b4b90b1f1ebc0890edc9e65ef9c4f193ecce98",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/tensor_runtime/status.json": "876e8b00893142a2d19256315f5f2ec70eaf5b7e6ef6068d523ac57b5bdea574",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/review_sources/3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a/scf_frame.py": "3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/review_sources/c07190df1837a5876744c9a79d6491679f0a30d30ef301adbe6afe776d17bde0/review_motif_interaction_energy.py": "c07190df1837a5876744c9a79d6491679f0a30d30ef301adbe6afe776d17bde0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/review_sources/df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29/execution_review.py": "df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/review_sources/400c66e49cf05181de1951e056cd298eba49e950f42ffc3182f449f66f0de2f5/primary_checkpoints.py": "400c66e49cf05181de1951e056cd298eba49e950f42ffc3182f449f66f0de2f5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/review_sources/53e7d839bc0deb34c813b5c0265ae421ea148fde64941542392f3b9d702b0e3a/context.py": "53e7d839bc0deb34c813b5c0265ae421ea148fde64941542392f3b9d702b0e3a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/construction_review.json": "cbdcb8f7b7abfe7bd241489a3d0304ee9c4e46f2a458c6b302a7fc7cae65c086",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/result.json": "86644b8fd4a7455a49cb9fd98e78e31b22324d13941cb4487e5ec84eab8f66f2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/model/model.json": "8d70b39fe3ab2dc5cbc2f7192eec579de4bbeabebf2789e79c54f8a6fad7fc4e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/A.xyz": "53e9422e556b7e7cac47a984ab268eadfaf10223a6db3a83b9f10ebfd447d105",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/A/gas/0000/0000/settings.json": "b99a0be22195f3092f1c1869bfa9ad4dc5ff0903082aee341057bc08422a4b38",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/A/gas/0000/0000/SCF_result.json": "7611337a82ac1fbb167cbf2253639146382a1120835038cc22d3345fc82c72f8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/A/gas/0000/0000/SCF.h5": "50268a1c94140722dfe7e8fac4635f19632c6522db6437b16148a8127d2aed30",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/A/acetonitrile/0000/0000/settings.json": "77c6657d905229816c7aef121b8e19297e9b53b77f6f4f236cfd40336e57f26f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/A/acetonitrile/0000/0000/SCF_result.json": "35118370b32dfc6c5f3aaa3ed4b8165145f8b92973ef0a5f05203ec5dbb5055c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/A/acetonitrile/0000/0000/SCF.h5": "4de9ad8c05f125a79fcdb128a21bb9cf3cc0f6e630509eb598acf0a059f224d5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/B.xyz": "3dad8768163c0f4a6246cfb1aab9becf8f9939e67daed2c02bf62efb63ed3c69",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/B/gas/0000/0000/settings.json": "36fe1fc10c7535774534c943bee0b35517d13824a58b7d6206f254b5495a1fd0",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/B/gas/0000/0000/SCF_result.json": "aa81cde80997bbc69349baa587ff56895803c3496445d986ec627f29398f158a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/B/gas/0000/0000/SCF.h5": "5bdbdecd1931a0c698dbb99ad10855be148d52930bf83a7a9ae368c4913bd267",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/B/acetonitrile/0000/0000/settings.json": "c76abecd5c475d6d254a77e3666f67833187c4e9c95f5530862eebd87fdf49d6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/B/acetonitrile/0000/0000/SCF_result.json": "1451dc6eac208dfa3fb605a1f18ffd078b5ea7a9f67548293025cba408f19306",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/B/acetonitrile/0000/0000/SCF.h5": "85cfc2ad5439492f9820a9b6bf8df2e4852b21443b2320586815317d8398d98b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/sources/AB.xyz": "cf5e60af7ccb736fccc2c4f4395ee6edc885e709ec980a62ba0abf600cfb1fed",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/AB/gas/0000/0000/settings.json": "2a2f5e403fa0f2538b738e32b40e6368b9e7b1e7a90bb4f8f47d7f83f10f5418",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/AB/gas/0000/0000/SCF_result.json": "d9b3a5d37d79b46ccfc41ceb6386dc18330b2b487e18b764894e0bdabc24dd21",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/AB/gas/0000/0000/SCF.h5": "584926b1576074502c1652f2c79869e68748a814cf24bcef0f26c28a5166d557",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/AB/acetonitrile/0000/0000/settings.json": "6c9279edb420ab6223f33f21b25bb2dedd4679b63a56f23d22f72d1a1346fde6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/AB/acetonitrile/0000/0000/SCF_result.json": "9d4900f801192d324554eca5174897d3f62bae99bdb7b2e3fc36c95f57aa76cc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/SCF_evaluations/AB/acetonitrile/0000/0000/SCF.h5": "63d60a5938f56ead889612be28ccc80ca448096232b9fe9250de9e43ba0b9c6d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536"
+  },
+  "producer_sha256": "c07190df1837a5876744c9a79d6491679f0a30d30ef301adbe6afe776d17bde0"
+}

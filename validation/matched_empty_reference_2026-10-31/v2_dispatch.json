@@ -1,0 +1,74 @@
+{
+  "receipts": [
+    {
+      "key": "2026-10-31_viologen_all_same_empty_corrected_optimization_v2",
+      "host": "lambda4",
+      "GPU": 1,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda4",
+          "pid": 3203381,
+          "process_start": "34318643"
+        },
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/placement_001",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.screening_control",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/namespace.json",
+          "--gpu",
+          "1",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/placement_001"
+        ]
+      },
+      "storage": {
+        "free_bytes": 41152413696,
+        "remaining_existing_budget_bytes": 4471490840,
+        "additional_budget_bytes": 268435456,
+        "minimum_margin_bytes": 34359738368,
+        "sufficient": true
+      }
+    },
+    {
+      "key": "2026-10-31_viologen_alternating_empty_corrected_optimization_v2",
+      "host": "lambda4",
+      "GPU": 2,
+      "receipt": {
+        "status": "controller_spawned_scientific_start_unverified",
+        "owner": {
+          "host": "lambda4",
+          "pid": 3203774,
+          "process_start": "34318941"
+        },
+        "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/placement_001",
+        "argv": [
+          "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+          "-u",
+          "-m",
+          "redox.workflows.screening_control",
+          "launch",
+          "--spec",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/namespace.json",
+          "--gpu",
+          "2",
+          "--out",
+          "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/placement_001"
+        ]
+      },
+      "storage": {
+        "free_bytes": 41152413696,
+        "remaining_existing_budget_bytes": 4739152074,
+        "additional_budget_bytes": 268435456,
+        "minimum_margin_bytes": 34359738368,
+        "sufficient": true
+      }
+    }
+  ],
+  "checked": 1793486888.1863947,
+  "scientific_starts_verified": false
+}

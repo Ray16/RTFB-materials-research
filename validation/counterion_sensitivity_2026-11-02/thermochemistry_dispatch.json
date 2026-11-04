@@ -1,0 +1,57 @@
+{
+  "status": "primary_counterion_thermochemistry_controller_spawned_start_unverified",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_pilot/namespace.json",
+  "availability_errors": [
+    {
+      "host": "lambda13",
+      "error": "TimeoutExpired(['/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve', 'list', '--hosts', 'lambda13'], 15)",
+      "availability": "unverified_no_submission"
+    }
+  ],
+  "launch": {
+    "host": "lambda1",
+    "GPU": 1,
+    "capacity": {
+      "available": 310890209280,
+      "promised": 166423547904,
+      "GPU_MiB": 32768.0,
+      "load": 6.6669921875,
+      "cpus": 80
+    },
+    "storage": {
+      "free_bytes": 257209401344,
+      "remaining_existing_budget_bytes": 17871979465,
+      "additional_budget_bytes": 2147483648,
+      "minimum_margin_bytes": 34359738368,
+      "sufficient": true
+    },
+    "receipt": {
+      "status": "controller_spawned_scientific_start_unverified",
+      "owner": {
+        "host": "lambda1",
+        "pid": 1413660,
+        "process_start": "590048427"
+      },
+      "argv": [
+        "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "-u",
+        "-m",
+        "redox.workflows.counterion_thermochemistry",
+        "launch",
+        "--spec",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_pilot/namespace.json",
+        "--gpu",
+        "1",
+        "--out",
+        "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_pilot/placement_001"
+      ],
+      "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_pilot/placement_001"
+    }
+  },
+  "refusals": [],
+  "native_G_qualified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_pilot/dispatch/remote_launch.py": "1ee1752af8142f2ccfcd5ecbad83e2961445ff1a0264ba6c06c5dbd6ae4a48ad"
+  },
+  "checked": 1793650308.5716457
+}

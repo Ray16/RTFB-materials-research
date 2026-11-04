@@ -1,0 +1,30 @@
+{
+  "status": "immutable_scoped_finite_electronic_cycle_analysis",
+  "source_base_commit": "f03eda3a",
+  "files_sha256": {
+    "cycles.json": "7f906a0ef3776b8be15910b8eaef7c8f25380cab397e0b3b0b1e5eb691f1c103",
+    "all_same_empty_review.json": "0ff8a5db76533f0e84aca2435af49448d4a873320a727cc100d1a783315379b4",
+    "alternating_empty_review.json": "fab8aebb2f8a7f10baa35dc915b1c1288bdc5097a53e2e005963675f18c51716",
+    "tests.xml": "cceeed0d5019f7ea0eb7e5c14b58295e3afce2e3121a473b34d4361a4483301a",
+    "summary.json": "add2099ca89bbcb339b7f0dd1367c0166cde83b54c00ab2b45fcacace44c1404",
+    "README.md": "0071e15265c40283848899b643228cb4ceb3408f718b2ddf4dc51087da984e28",
+    "producer_snapshots/0_ionic_stationary_cycles.py": "b98f4af91894cc791b7b59829f4f2ed804c80263d15684116445a727d2e6c705",
+    "producer_snapshots/1_analyze_ionic_stationary_cycles.py": "999a1d7a6180186fefa800d23d756130987c40af7b03aff5e5d6861b7f9a255d",
+    "producer_snapshots/2_test_ionic_stationary_cycles.py": "862c5835e781da495b7898779d9713ac41bce1bda6ea6c9bb50710a136369403"
+  },
+  "as_used_producers": {
+    "src/redox/workflows/ionic_stationary_cycles.py": {
+      "snapshot": "producer_snapshots/0_ionic_stationary_cycles.py",
+      "sha256": "b98f4af91894cc791b7b59829f4f2ed804c80263d15684116445a727d2e6c705"
+    },
+    "scripts/validation/analyze_ionic_stationary_cycles.py": {
+      "snapshot": "producer_snapshots/1_analyze_ionic_stationary_cycles.py",
+      "sha256": "999a1d7a6180186fefa800d23d756130987c40af7b03aff5e5d6861b7f9a255d"
+    },
+    "tests/test_ionic_stationary_cycles.py": {
+      "snapshot": "producer_snapshots/2_test_ionic_stationary_cycles.py",
+      "sha256": "862c5835e781da495b7898779d9713ac41bce1bda6ea6c9bb50710a136369403"
+    }
+  },
+  "thermodynamic_or_material_admission": false
+}

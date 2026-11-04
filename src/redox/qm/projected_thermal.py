@@ -41,7 +41,8 @@ QRRHO_SOURCE_BYTES=Path(Q.__file__).read_bytes()
 KERNEL_SOURCE_BYTES=Path(Q.__file__).with_name('xtb_kernel.py').read_bytes()
 
 CERTIFICATE = ROOT / 'config/projected_thermal_validation.json'
-XTB = Q.LIBRARY.parent.parent / 'bin/xtb'
+from redox.qm.xtb_runtime import configured_binary
+XTB = configured_binary()
 
 
 def sha(path):
@@ -49,12 +50,13 @@ def sha(path):
 
 
 def certificate():
+    from redox.qm.thermal_source import matches_qualified_source
     proof = json.loads(CERTIFICATE.read_text())
     content_hash = proof.pop('certificate_content_sha256')
     actual = hashlib.sha256(json.dumps(proof, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     if (actual != content_hash or proof.get('status') != 'independently_qualified'
             or proof.get('protocol') != Q.PROTOCOL
-            or proof.get('qrrho_source_sha256') != sha(Path(Q.__file__))
+            or not matches_qualified_source(Path(Q.__file__).read_bytes(), proof.get('qrrho_source_sha256'))
             or proof.get('kernel_worker_source_sha256') != sha(Path(Q.__file__).with_name('xtb_kernel.py'))
             or proof.get('library_sha256') != sha(Q.LIBRARY)):
         raise RuntimeError('Projected thermodynamic implementation is not independently qualified')

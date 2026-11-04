@@ -1,0 +1,87 @@
+{
+  "status": "all_three_full_native_numerical_profiles_visible_inside_archive",
+  "checks": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "d185849024ec3690a305e45b7188e0fbe6871e580201b619f1eb8c791266f11e",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.qm",
+            "redox.qm.native_thermal",
+            "redox.validation.protonation",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      },
+      "private_profile": "private_numerical_CDS_profile_passed_no_CUDA"
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "1c348ee39f29687b7bc1f15c2390c47582fff572c9562d91a56b99910f987e85",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.qm",
+            "redox.qm.native_thermal",
+            "redox.validation.protonation",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      },
+      "private_profile": "private_numerical_CDS_profile_passed_no_CUDA"
+    },
+    {
+      "key": "phenothiazine_ox_stationarity",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "18f6fc19e3cab1a5e148cbfa41af84cfad07c9f260cb339fc3a5cc19aa72e4db",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.qm",
+            "redox.qm.native_thermal",
+            "redox.validation.protonation",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      },
+      "private_profile": "private_numerical_CDS_profile_passed_no_CUDA"
+    }
+  ],
+  "GPU_started": false
+}

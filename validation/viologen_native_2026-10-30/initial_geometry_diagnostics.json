@@ -1,0 +1,43 @@
+{
+  "status": "initial_native_minimum_failures_and_bounded_repairs_observed",
+  "minimum_acceptance_cm": -5,
+  "states": [
+    {
+      "state": "ox1",
+      "reason": "Source DFT geometry is not a minimum of its own solution surface",
+      "source_min_frequency_cm": -51.7939407606321,
+      "source_geometry_sha256": "a0691a363c2d9bfe80572f6a9f6702842387734962430e1ae3ecfbeb9dca1451",
+      "repair_status": "running",
+      "branches": [
+        {
+          "sign": -1,
+          "status": "optimizing"
+        }
+      ]
+    },
+    {
+      "state": "neu",
+      "reason": "Source DFT geometry is not a minimum of its own solution surface",
+      "source_min_frequency_cm": -12.042258131599956,
+      "source_geometry_sha256": "96bdc26bb923024ac11ccf38b6b5ab0c379e46ee499ea4d7bcf6c3f2a77511f3",
+      "repair_status": "running",
+      "branches": [
+        {
+          "sign": -1,
+          "status": "verified",
+          "geometry_optimization_converged": true,
+          "optimization_SCF_converged": true,
+          "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/viologen/neu/1793417642352456921/branch_-1/opt.xyz",
+          "g_thermal_eV": 8.034858273266131,
+          "e_smd_eV": -23007.222985372417
+        },
+        {
+          "sign": 1,
+          "status": "optimizing"
+        }
+      ]
+    }
+  ],
+  "source_geometries_preserved": true,
+  "thresholds_relaxed": false
+}

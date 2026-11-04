@@ -1,0 +1,82 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "8edfacae2179591c",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_n_ethylphenothiazine/ox1/opt.xyz",
+  "geom_sha1": "b1aec2577d421a08",
+  "charge": 1,
+  "mult": 2,
+  "id": "bm_n_ethylphenothiazine",
+  "state": "ox1",
+  "source": "adopted:result.json",
+  "adopted_result_sha256": "ab0370dd6fda41c28d2f34a192838262d33a19410a4752465771294a4debce7b",
+  "e_smd_Ha": -994.0753406482609,
+  "e_smd_eV": -27050.16805199192,
+  "converged_smd": true,
+  "e_gas_Ha": -993.9927309367431,
+  "e_gas_eV": -27047.92012722414,
+  "converged_gas": true,
+  "gas_homo_eV": -11.561486457850265,
+  "gas_lumo_eV": -6.087019434394775,
+  "gas_s_squared": 0.7672,
+  "gas_spin_contam": 0.0172,
+  "anion_unbound": null,
+  "dG_solv_eV": -2.2479247677794585,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -994.0753406475696,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -994.0753406482609,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -994.0753406482249,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -993.9927309366076,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -993.9927309367431,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -993.9927309366858,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -8.118666103296572,
+  "smd_lumo_eV": -2.6352391730412505,
+  "smd_s_squared": 0.769,
+  "smd_spin_contam": 0.019
+}

@@ -1,0 +1,83 @@
+{
+  "status": "immutable_scoped_checkpoint_recovery_milestone",
+  "source_base_commit": "47b0258f",
+  "files_sha256": {
+    "all_same__occ_2_review.json": "e5bdf4ad23d324513c491ecabdcf8ae2cc42875655268ec29a6cb6f6e081f307",
+    "all_same__occ_3_review.json": "d82c5eba0d5268c0ff22706b2ed9f3e7ebe9a50671e7b0df288382a8ba9e1f1b",
+    "all_same__occ_4_review.json": "2d9bfbb59a426fe8bdf92eaab0ed309dd90ae9f9e505def9f9ff461ffc8104f9",
+    "alternating__occ_2_review.json": "68ad2bbaff38d833ae6eac41465383dfec6cf6ee555a0606f5283e3e9c1787d8",
+    "alternating__occ_3_review.json": "b9f6f115ddb584f6abab39f67b407f33afe0368cf79e22517df44f974b570206",
+    "alternating__occ_4_review.json": "2a10e63789b12da815cff35d62f1be0edf95820450a6214b19c7eb736bc4a612",
+    "initial_recovery_manifest.json": "f0b39638fb5eb366e0b654ef13093edd8a4977c4948ea6190168f3f55a7c9eb6",
+    "factory_retry_manifest.json": "9f39a3a968cacd290c202241e890b2ca477736c159f6d23a21017223c623888b",
+    "additional_manifest.json": "269242b6fc228f2a760fcc5a0ad736be0cc8e04c5026d8b1173e2e072d0ba825",
+    "current_validation_manifest.json": "742ca833d1400fe9f3be3f46943450768ea7c13b203214161ab5ba1852f30bee",
+    "tests.xml": "3120da7927c48819de7a65f627c3d91bcf818c0b4343e4e9853f750f7bbdd28b",
+    "source_failures.json": "bad5ede2ce9c6246fb4c758db4ff3b61824a62cdbb5d5f2e2b5ee3df39d91a5e",
+    "summary.json": "8fe85dfec8d5612eecea89674b36e13aa235a929dd63079787bd16ac91ada963",
+    "README.md": "5a1821d97f196ed745187e3282db185f1e9cebc5c84f5fd223c03337e7c7c7b5",
+    "producer_snapshots/0_saved_hessian.py": "c5bf032184c0eaac9f4f286ab7525793304ae19859b3bf2e3d6ceb5c98208892",
+    "producer_snapshots/1_screening_control.py": "8a488f70016352385e3fbef8c1bfeac1c1f1020bd727c6b1ab9dbcf9aad88219",
+    "producer_snapshots/2_charged_polymer_pilot.py": "faea8dc32643d80bb4dfb570867d614c27fdeb9413137486077e9cb1afe60274",
+    "producer_snapshots/3_run_saved_polymer_hessian.py": "35d57352a99f4962ef00c8e76d9228e47560122e9d20e2de3bd88533c710e85c",
+    "producer_snapshots/4_run_screening_polymer_hessian.py": "70639c7aa341e40c5ad13f3d26645750072d112707531f5fe8ffefc695dce9e4",
+    "producer_snapshots/5_review_screening_polymer_hessian.py": "e650701275cc2f04210311cc35b0f52c0ca5b686e23147d3704c3d0a440ad3b6",
+    "producer_snapshots/6_run_charged_polymer_optimization.py": "043b8a19846d6529de13d5ba813ee83041c081461af99ca8de336534f01fa063",
+    "producer_snapshots/7_run_charged_polymer_pilot.py": "fb2a6523e0dd1eb69aaa9aa71ec148939e1b02b1942cc7355f55dbda2c0ea53d",
+    "producer_snapshots/8_review_charged_polymer_pilot.py": "7f61ebf6402c4b935624e2b0671e71bc36c59861771be0afb1c378c29788c6c6",
+    "producer_snapshots/9_review_charged_polymer_finalization.py": "9fcf5e2e8f39add2f71f4879952768abd2cb6629e0777bed638ec5ec84e5e0da",
+    "producer_snapshots/10_test_saved_hessian.py": "ff384223db5f760a0d701ab0eb5d1eebf2dd8fb29551e9f3c5e4c89aecb821f7",
+    "producer_snapshots/11_test_screening_dispatch.py": "9b7469a659376651f42ffabee94f3b198b55548b1135d094f52c4f68fb2c3582"
+  },
+  "as_used_producers": {
+    "src/redox/qm/saved_hessian.py": {
+      "snapshot": "producer_snapshots/0_saved_hessian.py",
+      "sha256": "c5bf032184c0eaac9f4f286ab7525793304ae19859b3bf2e3d6ceb5c98208892"
+    },
+    "src/redox/workflows/screening_control.py": {
+      "snapshot": "producer_snapshots/1_screening_control.py",
+      "sha256": "8a488f70016352385e3fbef8c1bfeac1c1f1020bd727c6b1ab9dbcf9aad88219"
+    },
+    "src/redox/workflows/charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/2_charged_polymer_pilot.py",
+      "sha256": "faea8dc32643d80bb4dfb570867d614c27fdeb9413137486077e9cb1afe60274"
+    },
+    "scripts/validation/run_saved_polymer_hessian.py": {
+      "snapshot": "producer_snapshots/3_run_saved_polymer_hessian.py",
+      "sha256": "35d57352a99f4962ef00c8e76d9228e47560122e9d20e2de3bd88533c710e85c"
+    },
+    "scripts/validation/run_screening_polymer_hessian.py": {
+      "snapshot": "producer_snapshots/4_run_screening_polymer_hessian.py",
+      "sha256": "70639c7aa341e40c5ad13f3d26645750072d112707531f5fe8ffefc695dce9e4"
+    },
+    "scripts/validation/review_screening_polymer_hessian.py": {
+      "snapshot": "producer_snapshots/5_review_screening_polymer_hessian.py",
+      "sha256": "e650701275cc2f04210311cc35b0f52c0ca5b686e23147d3704c3d0a440ad3b6"
+    },
+    "scripts/validation/run_charged_polymer_optimization.py": {
+      "snapshot": "producer_snapshots/6_run_charged_polymer_optimization.py",
+      "sha256": "043b8a19846d6529de13d5ba813ee83041c081461af99ca8de336534f01fa063"
+    },
+    "scripts/validation/run_charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/7_run_charged_polymer_pilot.py",
+      "sha256": "fb2a6523e0dd1eb69aaa9aa71ec148939e1b02b1942cc7355f55dbda2c0ea53d"
+    },
+    "scripts/validation/review_charged_polymer_pilot.py": {
+      "snapshot": "producer_snapshots/8_review_charged_polymer_pilot.py",
+      "sha256": "7f61ebf6402c4b935624e2b0671e71bc36c59861771be0afb1c378c29788c6c6"
+    },
+    "scripts/validation/review_charged_polymer_finalization.py": {
+      "snapshot": "producer_snapshots/9_review_charged_polymer_finalization.py",
+      "sha256": "9fcf5e2e8f39add2f71f4879952768abd2cb6629e0777bed638ec5ec84e5e0da"
+    },
+    "tests/test_saved_hessian.py": {
+      "snapshot": "producer_snapshots/10_test_saved_hessian.py",
+      "sha256": "ff384223db5f760a0d701ab0eb5d1eebf2dd8fb29551e9f3c5e4c89aecb821f7"
+    },
+    "tests/test_screening_dispatch.py": {
+      "snapshot": "producer_snapshots/11_test_screening_dispatch.py",
+      "sha256": "9b7469a659376651f42ffabee94f3b198b55548b1135d094f52c4f68fb2c3582"
+    }
+  },
+  "full_material_or_native_G_qualification": false
+}

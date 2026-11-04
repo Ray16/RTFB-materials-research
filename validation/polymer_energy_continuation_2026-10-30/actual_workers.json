@@ -1,0 +1,67 @@
+{
+  "status": "two_actual_hybrid_energy_workers_verified",
+  "checked": 1793375560.1170912,
+  "workers": [
+    {
+      "key": "alternating__occ_none__conf010",
+      "host": "lambda1",
+      "pid": 2157653,
+      "process_start": "562549031",
+      "CPUs": [
+        6,
+        7
+      ],
+      "GPU": "3",
+      "parent": 2157440,
+      "parent_start": "562548937",
+      "lease": [
+        "2157440",
+        "lambda1",
+        "rzhu",
+        "redox-archived-energy",
+        "1793375313",
+        "562548937"
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "MKL_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "CUPY_CACHE_DIR": null
+    },
+    {
+      "key": "alternating__occ_none__conf019",
+      "host": "lambda4",
+      "pid": 78426,
+      "process_start": "23175969",
+      "CPUs": [
+        8,
+        9
+      ],
+      "GPU": "4",
+      "parent": 78190,
+      "parent_start": "23175874",
+      "lease": [
+        "78190",
+        "lambda4",
+        "rzhu",
+        "redox-archived-energy",
+        "1793375457",
+        "23175874"
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "MKL_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "CUPY_CACHE_DIR": "/tmp/cupy_kernel_cache"
+    }
+  ],
+  "native_G_computed": false
+}

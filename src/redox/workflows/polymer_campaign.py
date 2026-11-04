@@ -160,6 +160,7 @@ def reaction_terms(campaign, motif_id, base, overrides=None, *, reference_direct
         status="qualified_shared_terms" if not missing else "pending_reagent_QC",
         base=base,
         temperature_K=temperature,
+        conversion_kJ_mol_per_eV=EV_KJ,
         route_class=reaction_class,
         precursor_smiles=precursor_smiles,
         constant_eV=terms,
@@ -264,6 +265,7 @@ def conditional_grafting(empty, first, second, both, reagent_constant):
     if abs((second_j - first_j) - penalty) > 1e-6:
         raise ValueError("Conditional grafting cycle did not close")
     return dict(
+        conversion_kJ_mol_per_eV=EV_KJ,
         graft_i_on_empty_kJ_mol=first_i,
         graft_j_on_empty_kJ_mol=first_j,
         graft_j_given_i_kJ_mol=second_j,

@@ -1,0 +1,169 @@
+{
+  "id": "merrifield_local_chloride",
+  "state": "rest",
+  "status": "derivative_checked_solution_thermal",
+  "identity": {
+    "geometry_sha256": "a4db19e0cf2bcffc231070edff3be4eb03eff3abad847999787518b3662857e6",
+    "charge": 0,
+    "mult": 1,
+    "protocol": {
+      "schema": 1,
+      "model": "solution geometry-level DFT Hessian",
+      "xc": "r2scan",
+      "disp": "d4",
+      "basis": "def2-svp",
+      "anion_basis": "def2-svpd",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "grid_level": 3,
+      "cphf_grid_level": 3,
+      "grid_response": true,
+      "conv_tol": 1e-12,
+      "conv_tol_grad": 1e-08,
+      "temperature_K": 298.15,
+      "rotor_cutoff_cm": 50,
+      "spin_partition": "unsplit ground spin multiplet",
+      "gradient_max_acceptance_Ha_Bohr": 0.00045,
+      "min_frequency_acceptance_cm": -5,
+      "finite_difference_step_Bohr": 0.0005,
+      "finite_difference_relative_acceptance": 0.01,
+      "max_spin_contamination": 0.1,
+      "df_batch_cap_GiB": 6,
+      "validated_pyscf_version": "2.14.0",
+      "validated_gpu4pyscf_version": "1.8.1"
+    }
+  },
+  "converged": true,
+  "stationary_minimum": true,
+  "grid_response": true,
+  "smd_spin_diagnostics": {
+    "homo_eV": -6.102118488858872,
+    "lumo_eV": -1.3648192790364266,
+    "s_squared": 0.0,
+    "spin_contam": 0.0
+  },
+  "gradient_max": 2.114599720036002e-06,
+  "frequencies_cm": [
+    37.65165876695764,
+    64.97881950374635,
+    82.75946216770197,
+    189.02241440672327,
+    286.4290762075644,
+    344.4008717065382,
+    383.10786831188017,
+    416.19337607183166,
+    468.77902561285674,
+    524.664186937054,
+    647.4460640143267,
+    648.4944562829057,
+    738.033827477222,
+    757.9851574526718,
+    837.4510820273927,
+    852.4949510200506,
+    854.0598271829656,
+    906.8519417380602,
+    972.4753593307671,
+    992.1010701635395,
+    993.9888417342398,
+    1027.0618744274086,
+    1040.6735841258544,
+    1113.3671747066858,
+    1154.2504267182564,
+    1173.805231689648,
+    1233.1812546234703,
+    1239.2282670716984,
+    1274.8067149819165,
+    1310.3963245758264,
+    1370.5892532609441,
+    1386.5333127641702,
+    1426.379549766815,
+    1430.6587372746,
+    1443.1933271926018,
+    1453.1949351971093,
+    1539.3469194571787,
+    1621.3489974995798,
+    1661.9089630747021,
+    3029.4900832151616,
+    3102.1825136595617,
+    3111.6623358132633,
+    3145.888995977229,
+    3164.766288143447,
+    3167.311411006214,
+    3179.126226949309,
+    3182.3902338670073,
+    3185.9032021077346
+  ],
+  "derivative_checks": [
+    {
+      "atom_index": 0,
+      "axis": 1,
+      "step_Bohr": 0.0005,
+      "relative_error": 3.498904077245012e-07
+    },
+    {
+      "atom_index": 0,
+      "axis": 1,
+      "step_Bohr": 0.001,
+      "relative_error": 6.105281549060536e-07
+    },
+    {
+      "atom_index": 17,
+      "axis": 2,
+      "step_Bohr": 0.0005,
+      "relative_error": 2.7786460759989287e-06
+    },
+    {
+      "atom_index": 17,
+      "axis": 2,
+      "step_Bohr": 0.001,
+      "relative_error": 3.3714279738896554e-06
+    }
+  ],
+  "maximum_asymmetry": 5.911033745809036e-10,
+  "g_nuclear_qrrho_eV": 2.9164917950242364,
+  "g_spin_partition_eV": -0.0,
+  "g_thermal_total_eV": 2.9164917950242364,
+  "nuclear_by_cutoff_eV": {
+    "25": 2.8920570992301773,
+    "50": 2.9164917950242364,
+    "100": 2.93495144385143
+  },
+  "implementation_controls": [
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/analytic_full_response_aq_reference/status.json",
+      "sha256": "680f316ec2f8b0b47fa1bd8356792cce59eef1b054c86fae3799b0facb550b3e",
+      "status": "analytic_full_response_verified"
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/uks_bq_full_response_control/status.json",
+      "sha256": "1a85a8a9b37ceb2368c6fdd807524c8ad7ee257f6e7a7978a07f37d91426d55c",
+      "status": "uks_full_response_verified"
+    },
+    {
+      "path": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/status.json",
+      "sha256": "0d3843f23a938fe99b97d75fe0733bc134c471d345048b3a8a413a7807e35056",
+      "status": "fine_response_implementation_verified",
+      "relative_full_matrix_error": 1.9751602629739155e-05
+    }
+  ],
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "host": "lambda11",
+  "wall_s": 74.18148899078369,
+  "source_producer_sha256": "72de1c4048a7455ade023971130c7ac2d379ff7c4c707ea476b6db66374451ad",
+  "source_producer_snapshot": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/merrifield_local_chloride/rest/native_thermal/5ab20c4314b7333e/producer_source.py",
+  "producer_hash_convention": "source snapshot at module import",
+  "execution_memory": {
+    "cap_GiB": 24,
+    "protocol_default_cap_GiB": 6,
+    "qualification_sha256": "1fbba94cf38aecc7d13ae1fd24940da1ae9efb844ca27bc9612c26fe8d77dd68",
+    "qualification_only": false,
+    "scientific_model_changed": false,
+    "allocation_policy": "six-GiB integral batches; qualified larger unrestricted response workspace"
+  },
+  "experimental_accuracy_validated": false,
+  "legacy_production_modified": false
+}

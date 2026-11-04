@@ -1,0 +1,92 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "5f6246ecadf3e343",
+  "geom_sha1": "f79c4da5c4e957e4",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/bm_9_10_phenanthrenequinone__red1/opt.xyz",
+  "charge": -1,
+  "mult": 2,
+  "id": "bm_9_10_phenanthrenequinone",
+  "state": "red1",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -688.9375973179797,
+  "e_smd_eV": -18746.94706000249,
+  "converged_smd": true,
+  "e_gas_Ha": -688.8486359207707,
+  "e_gas_eV": -18744.526297062053,
+  "converged_gas": true,
+  "gas_homo_eV": -2.348341595108465,
+  "gas_lumo_eV": 3.2832349387303403,
+  "gas_s_squared": 0.7692,
+  "gas_spin_contam": 0.0192,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.420762940436984,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -688.9375973179374,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -688.9375973178405,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -688.9375973179797,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -688.8486359207707,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -688.8486359207395,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -688.8486359205915,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -5.909380765731657,
+  "smd_lumo_eV": -0.12928697438929887,
+  "smd_s_squared": 0.7667,
+  "smd_spin_contam": 0.0167,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "bm_9_10_phenanthrenequinone__red1",
+    "record_sha256": "aacf2cb5f7882c3d961648159b4324fbe983174491be19db02e35a5d792a9b9b",
+    "original_sha256": "e0c34911b6a2e7e6c46b810bf8d8584c149bbcf9b68b1ebc4f33318f70c98197"
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "checked": 1793624540.7892435,
+  "rows": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_all_same_empty_shared_dependencies/namespace.json",
+      "status": {
+        "status": "charged_polymer_native_component_finished_review_pending",
+        "owner": {
+          "host": "lambda13",
+          "pid": 1369837,
+          "process_start": "172661152"
+        },
+        "started": 1793609379.0814009,
+        "native_G_qualified": false,
+        "production_default_changed": false,
+        "observed_peak_GPU_MiB": 23486,
+        "maximum_gradient_Ha_Bohr": 4.752233135427153e-06,
+        "maximum_sampled_column_error": 3.66681858841435e-05,
+        "minimum_frequency_cm": 11.735437594229769,
+        "comparison": {
+          "source_geometric_symmetry_number": 1,
+          "native_G_qualified": false
+        },
+        "finished": 1793624533.6890748
+      },
+      "points": 25,
+      "SCF_progress": [
+        {
+          "path": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_all_same_empty_shared_dependencies/case/points/0024/progress.json",
+          "record": {
+            "cycle": 23,
+            "E_Ha": -3043.7172001829435,
+            "updated": 1793624421.1548207
+          }
+        }
+      ]
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/namespace.json",
+      "status": {
+        "status": "charged_polymer_native_component_running",
+        "owner": {
+          "host": "lambda13",
+          "pid": 1945676,
+          "process_start": "173654991"
+        },
+        "started": 1793619460.5758607,
+        "native_G_qualified": false,
+        "production_default_changed": false
+      },
+      "points": 1,
+      "SCF_progress": []
+    }
+  ],
+  "observed": {
+    "processes": {
+      "1369837": {
+        "stat": "1369837 (python) R 1368926 1368925 1368925 0 -1 4194304 116424212 16114204 3863 1367 358627 639464 798 219314 20 0 7 0 172661152 40488947712 1710706 18446744073709551615 94095821496320 94095823840845 140722571305968 0 0 0 0 16781312 2 0 0 0 17 1 0 0 0 0 0 94095824811664 94095826252032 94096248258560 140722571309262 140722571310434 140722571310434 140722571313044 0\n",
+        "wchan": "0",
+        "io": "rchar: 52338406609\nwchar: 4695958701\nsyscr: 491393008\nsyscw: 288236\nread_bytes: 2140774400\nwrite_bytes: 4953714688\ncancelled_write_bytes: 0\n"
+      },
+      "1945676": {
+        "stat": "1945676 (python) D 1944815 1944813 1944813 0 -1 4194304 43540153 5178733 5 720 121647 234935 258 63179 20 0 10 0 173654991 82142003200 7963603 18446744073709551615 94434357985280 94434360329805 140734823260960 0 0 0 0 16781312 16386 0 0 0 17 4 0 0 0 0 0 94434361300624 94434362740992 94434812481536 140734823264450 140734823265634 140734823265634 140734823268244 0\n",
+        "wchan": "down",
+        "io": "rchar: 22553833534\nwchar: 2228954258\nsyscr: 179848973\nsyscw: 131366\nread_bytes: 3292446720\nwrite_bytes: 2317189120\ncancelled_write_bytes: 0\n"
+      }
+    },
+    "gpu": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00, 1369837, 3312\nGPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 1945676, 25132\n"
+  },
+  "native_G_qualified": false
+}

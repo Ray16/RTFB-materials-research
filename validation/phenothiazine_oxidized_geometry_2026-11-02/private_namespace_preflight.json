@@ -1,0 +1,85 @@
+{
+  "checked": 1793680080.871674,
+  "status": "all_three_geometry_namespaces_visible_inside_archive_mount",
+  "probes": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/minus/namespace.json",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "ebc3f62dd5aa9d6c1c6abae208d1899df62371051e4900a813af000754f15ee5",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.qm",
+            "redox.validation.protonation",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      }
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/plus/namespace.json",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "8457f53d90a92f4197e652ae4e4e806905ac675a2abce17ca09a7436fc5e1fea",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.qm",
+            "redox.validation.protonation",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      }
+    },
+    {
+      "key": "phenothiazine_ox_stationarity",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_oxidized_geometry_repair_v2/oxidized/namespace.json",
+      "probe": {
+        "host": "lambda2",
+        "namespace_sha256": "b036d16280ac2c3e6c3234757c66612759e8992ad478f394bd24310c2e00a988",
+        "checks": {
+          "versions": {
+            "pyscf": "2.14.0",
+            "gpu4pyscf-cuda12x": "1.8.1",
+            "cupy-cuda12x": "13.4.1",
+            "cutensor-cu12": "2.2.0",
+            "fastrlock": "0.8.3"
+          },
+          "worker_imports": [
+            "redox.core.common",
+            "redox.core.io",
+            "redox.qm",
+            "redox.validation.protonation",
+            "redox.workflows.resources"
+          ],
+          "CUDA_context_started": false
+        },
+        "GPU_started": false
+      }
+    }
+  ],
+  "GPU_started": false
+}

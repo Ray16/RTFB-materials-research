@@ -28,21 +28,39 @@ RESULTS = ROOT / "results"
 
 # --- Physical constants ---
 HARTREE_EV = 27.211386245988
-EV_KJ = 96.485            # eV -> kJ/mol
+ELEMENTARY_CHARGE_C = 1.602176634e-19  # exact SI definition
+AVOGADRO_PER_MOL = 6.02214076e23       # exact SI definition
+EV_KJ = ELEMENTARY_CHARGE_C * AVOGADRO_PER_MOL / 1000
+LEGACY_EV_KJ = 96.485  # explicit historical-record arithmetic only
 EV_MEV = 1000.0
 KT_EV = 0.0256926         # k_B * T at 298.15 K, in eV
 
 
-def load_config(name: str) -> ModuleType:
-    """Import and return a `config/<name>.py` module by path.
+def load_python_config(path: str | Path, *, name: str | None = None) -> ModuleType:
+    """Execute a trusted Python configuration and return its module.
 
-    Config files are loaded by path (not as installed packages) so the pipeline works from a
-    plain checkout. Callers that want a single attribute do `getattr(load_config(name), attr)`.
+    Configuration files are executable Python, not a sandboxed data format.
+    Missing paths produce a diagnostic before any calculation or output writes.
+    Exceptions raised by configuration code retain their original traceback.
     """
-    spec = importlib.util.spec_from_file_location(name, CONFIG_DIR / f"{name}.py")
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod
+    path = Path(path)
+    if not path.is_file():
+        raise FileNotFoundError(f"Configuration file not found: {path}. Check the checkout or --config path.")
+    spec = importlib.util.spec_from_file_location(name or path.stem, path)
+    if spec is None or spec.loader is None:
+        raise ValueError(f"Cannot load Python configuration: {path}. Use a .py file.")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def load_config(name: str) -> ModuleType:
+    """Load a trusted ``config/<name>.py`` module from this checkout.
+
+    This preserves the project configuration namespace; external candidate files
+    are accepted separately by the builder's explicit ``--config`` argument.
+    """
+    return load_python_config(CONFIG_DIR / f"{name}.py", name=name)
 
 
 _MANIFEST_CACHE: dict = {}

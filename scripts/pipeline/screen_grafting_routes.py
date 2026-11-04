@@ -11,8 +11,38 @@ from pathlib import Path
 from rdkit import Chem
 
 from redox.build.grafting import precursor
+from redox.build.attachment_identity import canonical, exact_attachment
+from redox.build.structures import decorate
 from redox.core.common import ROOT
 from redox.core.io import atomic_write_json
+
+
+def exact_route_binding(row):
+    """Reconstruct the mapped local graft independently of evidence by ID."""
+    scaffold = 'Cc1ccc(C[*:1])cc1'
+    fragment = row['frag']
+    product = decorate(scaffold, fragment)
+    product_smiles = Chem.MolToSmiles(product)
+    for key in ('exact_grafted_smiles', 'product_smiles'):
+        declared = row.get(key)
+        if declared and canonical(declared) != canonical(product_smiles):
+            raise ValueError('Declared product differs from the constructed graft')
+    pre, _ = precursor(fragment)
+    precursor_smiles = Chem.MolToSmiles(pre)
+    declared_pre = row.get('precursor_smiles')
+    if declared_pre and canonical(declared_pre) != canonical(precursor_smiles):
+        raise ValueError('Declared precursor differs from the constructed precursor')
+    charge = Chem.GetFormalCharge(product)
+    electrons = sum(a.GetAtomicNum() for a in Chem.AddHs(product).GetAtoms()) - charge
+    # These parity-valid placeholder states only satisfy graph validation; they
+    # are not proposed or computed redox states.
+    states = [['rest', charge, 1 if electrons % 2 == 0 else 2, 0],
+              ['check', charge + 1, 2 if electrons % 2 == 0 else 1, 1]]
+    identity = dict(scaffold_smiles=scaffold, attachment_fragment=fragment,
+                    product_smiles=product_smiles, precursor_smiles=precursor_smiles)
+    payload = dict(attachment_fragment=fragment, product_smiles=product_smiles,
+                   precursor_smiles=precursor_smiles, family='identity_check', states=states)
+    return exact_attachment(dict(identity=identity, payload=payload))['route_binding']
 
 
 def screen(row, evidence, assessment):
@@ -49,8 +79,17 @@ def screen(row, evidence, assessment):
         result.update(route_status='exclude_route', proceed_to_feasibility_model=False)
         result['reasons'].append('Reviewed actual-condition attachment route remains strongly unfavorable')
     elif not missing and not hold:
-        result.update(route_status='proceed', proceed_to_full_redox=True,
-                      experimental_ease='reviewed_workable_route; kinetics/yield not inferred from deltaG alone')
+        try:
+            exact = reviewed.get('route_binding') == exact_route_binding(row)
+        except (ValueError, RuntimeError, KeyError) as exc:
+            exact = False
+            result['reasons'].append(f'Exact attachment reconstruction failed: {exc}')
+        result['exact_route_binding_verified'] = exact
+        if exact:
+            result.update(route_status='proceed', proceed_to_full_redox=True,
+                          experimental_ease='reviewed_workable_route; kinetics/yield not inferred from deltaG alone')
+        else:
+            result['reasons'].append('Route evidence must bind the exact precursor, product and mapped new bond')
     else:
         result['reasons'].append('Route review required before full redox calculations')
     return result

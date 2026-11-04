@@ -1,0 +1,25 @@
+{
+  "host": "lambda1",
+  "pid": 2455318,
+  "process_start": "563900415",
+  "argv": [
+    "env",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "MKL_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "XTB_THREADS=1",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_namespace_energy_queue.py",
+    "--manifest",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/polymer_energy_classes_2026-10-30/queue_inputs.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/energy_classes_2026-10-30/queue",
+    "--python",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "--hours",
+    "24"
+  ]
+}

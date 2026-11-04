@@ -1,0 +1,82 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "c4b8100be8ba60ef",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine/ox1/opt.xyz",
+  "geom_sha1": "33a7b5f67f039bad",
+  "charge": 1,
+  "mult": 2,
+  "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+  "state": "ox1",
+  "source": "adopted:result.json",
+  "adopted_result_sha256": "c90846ac05ba543211649a96a4c99470fc149ed8013a439ae739f93c878ee3fa",
+  "e_smd_Ha": -1491.5065097857305,
+  "e_smd_eV": -40585.95972618499,
+  "converged_smd": true,
+  "e_gas_Ha": -1491.4221173182018,
+  "e_gas_eV": -40583.663290154815,
+  "converged_gas": true,
+  "gas_homo_eV": -10.825895940947238,
+  "gas_lumo_eV": -5.523867230953708,
+  "gas_s_squared": 0.7709,
+  "gas_spin_contam": 0.0209,
+  "anion_unbound": null,
+  "dG_solv_eV": -2.2964360301751054,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1491.5065097857164,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1491.5065097857305,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1491.5065097856632,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1491.4221173182018,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1491.4221173181277,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1491.422117317628,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -7.736227686026308,
+  "smd_lumo_eV": -2.4089119193503263,
+  "smd_s_squared": 0.7717,
+  "smd_spin_contam": 0.0217
+}

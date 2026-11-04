@@ -6,6 +6,26 @@ import pytest
 from redox.qm import xtb_runtime
 
 
+def test_interpreter_prefix_discovery_and_explicit_paths(tmp_path,monkeypatch):
+    prefix=tmp_path/'environment';(prefix/'lib').mkdir(parents=True);(prefix/'bin').mkdir()
+    (prefix/'lib/libxtb.so.6.7.1').write_bytes(b'qualified separately');(prefix/'bin/xtb').write_bytes(b'qualified separately')
+    monkeypatch.setattr(xtb_runtime.sys,'prefix',str(prefix));monkeypatch.setattr(xtb_runtime.sys,'base_prefix',str(tmp_path/'base'))
+    assert xtb_runtime.configured_library({})==prefix/'lib/libxtb.so.6.7.1'
+    assert xtb_runtime.configured_binary({})==prefix/'bin/xtb'
+    chosen=tmp_path/'explicit'
+    assert xtb_runtime.configured_library({'REDOX_XTB_PREFIX':str(chosen)})==chosen/'lib/libxtb.so.6.7.1'
+    assert xtb_runtime.configured_binary({'REDOX_XTB_PREFIX':str(chosen)})==chosen/'bin/xtb'
+    assert xtb_runtime.configured_library({'REDOX_XTB_LIBRARY':str(tmp_path/'custom.so')})==tmp_path/'custom.so'
+    assert xtb_runtime.configured_binary({'REDOX_XTB_EXECUTABLE':str(tmp_path/'custom_xtb')})==tmp_path/'custom_xtb'
+
+
+@pytest.mark.parametrize('name',['REDOX_XTB_PREFIX','REDOX_XTB_LIBRARY','REDOX_XTB_EXECUTABLE'])
+@pytest.mark.parametrize('value',['','relative/path'])
+def test_ambiguous_runtime_overrides_are_refused(name,value):
+    call={'REDOX_XTB_PREFIX':xtb_runtime.configured_prefix,'REDOX_XTB_LIBRARY':xtb_runtime.configured_library,'REDOX_XTB_EXECUTABLE':xtb_runtime.configured_binary}[name]
+    with pytest.raises(ValueError,match='absolute'):call({name:value})
+
+
 def test_prefix_rejects_changed_bytes_and_files_outside_prefix(tmp_path):
     prefix=tmp_path/'prefix';(prefix/'bin').mkdir(parents=True);(prefix/'lib').mkdir()
     lib=prefix/'lib/libxtb.so.6.7.1';binary=prefix/'bin/xtb';lib.write_bytes(b'lib');binary.write_bytes(b'bin');binary.chmod(0o755)

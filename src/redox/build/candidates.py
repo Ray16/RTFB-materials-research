@@ -14,10 +14,10 @@ byte-for-byte the same way as redox_groups.py monomers.
 """
 from __future__ import annotations
 import argparse
-import importlib.util
 from pathlib import Path
 
 from rdkit import Chem
+from redox.core.common import load_python_config
 from redox.build.contracts import validate_group
 from redox.build.manifest import COLS, locked_manifest, read_rows, write_rows
 
@@ -31,10 +31,11 @@ MANIFEST = LIBRARY / "manifest.csv"
 
 def _load_config(path=None):
     path = Path(path) if path else CONFIG
-    spec = importlib.util.spec_from_file_location(path.stem, path)
-    mod = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(mod)
-    return mod.SCAFFOLD, mod.GROUPS
+    module = load_python_config(path)
+    missing = [field for field in ("SCAFFOLD", "GROUPS") if not hasattr(module, field)]
+    if missing:
+        raise ValueError(f"Candidate configuration {path} is missing: {', '.join(missing)}")
+    return module.SCAFFOLD, module.GROUPS
 
 
 def read_manifest_rows():

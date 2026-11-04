@@ -1,0 +1,26 @@
+{
+  "owner": {
+    "host": "lambda13",
+    "pid": 1033188,
+    "process_start": "150268432"
+  },
+  "owner_live": true,
+  "CPU_affinity": [
+    15,
+    16
+  ],
+  "thread_caps": {
+    "OMP_NUM_THREADS": "2",
+    "OMP_THREAD_LIMIT": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "MKL_NUM_THREADS": "2",
+    "NUMEXPR_NUM_THREADS": "2",
+    "XTB_THREADS": "2"
+  },
+  "GPU_visibility": "7",
+  "GPU_resident_processes": "704046, GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00, 19584\n772100, GPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 22360\n780591, GPU-5d07badb-4052-7045-bdc1-c0476709589b, 25330\n957344, GPU-31e42837-2afb-0b14-c287-66eabb51d40e, 6442\n1015944, GPU-7313cbc9-b64b-7359-3d2e-e9e6c1b6ef52, 6996\n958044, GPU-7b939bee-465f-2aad-2acd-8cec35064a53, 13068\n954501, GPU-8defa300-1c9b-2d37-01ea-122e6fda2a88, 13110\n1033188, GPU-93801177-43f6-555f-d319-913daa719ad4, 6058\n",
+  "command": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/bin/python /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py --guard-out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-30_occupied_native_from_checked_energy/all_same__occ_2__conf002/residency_guard /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/bounded_host_python_worker.py --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-30_occupied_native_from_checked_energy/all_same__occ_2__conf002/host_guard --maximum-rss-gib 80 --minimum-free-gib 32 /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py --profile /nfs/lambda_stor_01/homes/rzhu/0_redox/environments/cutensor22/runtime.json --out /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-30_occupied_native_from_checked_energy/all_same__occ_2__conf002/tensor_runtime /nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/smooth_polymer_native.py run --campaign /nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-30_occupied_native_from_checked_energy/all_same__occ_2__conf002 ",
+  "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_2__conf002/namespace.json",
+  "scientific_status": "experimental_native_resource_and_physical_pilot_running",
+  "observed": 1793385603.206889
+}

@@ -1,0 +1,61 @@
+{
+  "status": "repository_usability_and_thermal_source_compatibility_tests_passed",
+  "checked_UTC": "2026-11-04T04:24:39Z",
+  "canonical_project": "/nfs/lambda_stor_01/homes/rzhu/0_redox",
+  "full_suite": {
+    "tests": 1863,
+    "passed": 1863,
+    "failed": [],
+    "skipped": [],
+    "report": "calcs/validation/repository_full_tests_source_fix.xml",
+    "report_sha256": "0eb8dca819553f75562d654cef218fad4a0ca654759ef2c30448d8c5a245d9c0"
+  },
+  "focused_tests_passed": 29,
+  "CI_smoke_tests_passed": 10,
+  "hosted_CI_executed": false,
+  "editable_install_metadata_dry_run_passed": true,
+  "fresh_environment_install_executed": false,
+  "cached_PMDI_replay_passed": true,
+  "core_AST_unchanged_outside_config_loading": true,
+  "bootstrap_syntax_and_missing_conda_diagnostic_checked": true,
+  "pre_edit_reference_failure_receipt": "calcs/validation/repository_reference_baseline.json",
+  "scientific_protocols_or_thresholds_changed": false,
+  "new_quantum_calculations": false,
+  "committed": false,
+  "pushed": false,
+  "remaining": [
+    "Finish running polymer jobs before relocating that directory",
+    "Migrate historical path readers before removing compatibility symlinks",
+    "Full raw archive/public deposition and manuscript author clarifications"
+  ],
+  "files_sha256": {
+    "README.md": "9102efc9c1731aa246ca5c4615fdfe80caa9b65521fce44e9beff40c7adf467c",
+    "CONTRIBUTING.md": "1ea2eca17b3c5105764aab79d4b5c4b8cd781fa224d35b690768908942b0ef96",
+    "docs/INSTALLATION.md": "bef4683f491691bcafc05ee79b8bc882e6f0019ca7fa515ead7ceba496e3b38c",
+    "docs/RUNNING_CAMPAIGNS.md": "f75cd91d2b26f32bca434555aed5d9ef2d172f105fc250aa0aa63868c3a877f9",
+    "docs/REPOSITORY_REVIEW.md": "337cde64a6ee9b36986cd50c27928647a1a2398075b11f529898eee01dbc3005",
+    "docs/DATASETS.md": "78cf6d1c5a15bef7d75268124d9328e30306a47c96d63f2aa5fbb2207902397f",
+    "setup_env.sh": "ce4b64bde3591c48ed4ca195df648b6f1653d0349d925428a9b13e1151d20fb0",
+    "src/redox/core/common.py": "114b007babc3d02af93a1231b54de91b02df3808896a28f27763f7448a71fe9a",
+    "src/redox/build/candidates.py": "03730cf006c7f454171b3c2632ba7b85c081e29662b32d965fd61941b2a861a8",
+    "tests/test_config_loading.py": "c36a24ef8d96afa712cdf042f01c0e61f0fd6607045908f29d322e72c8b85046",
+    "tests/test_build_selection.py": "476de597fd9e763d06016ede7866a632c9696330a2d7ba1ae5df64d9b60e3874",
+    "tests/test_dispatch_starting_memory.py": "f1e480fe4b4c49dc1782f563743e760d6d8a155a50fdcadd2d5f66d6eb723b6c",
+    ".github/workflows/cpu-smoke.yml": "ca95fc3f6daa242f9df1e1f5b5d7dc65d45f8d09fbaaff55e927dfece476b14d",
+    "src/redox/qm/thermal_source.py": "45aea3bb889f08d1c833db962d855b1af6a0c80e3e5ab1195c461d4daee99f74",
+    "src/redox/qm/projected_thermal.py": "16ecb077c5a6a32e61b8cba99c85fd566cb23190fd0a52eff57b638b81ae8cd4",
+    "tests/test_thermal_source.py": "ffc44970a2cd1ff60d56a15dd355d8acff209c005650dc0edaeb156bd780f1c4"
+  },
+  "previous_full_suite": {
+    "tests": 1857,
+    "passed": 1856,
+    "failed": [
+      "tests.test_reference_bundle::test_seeded_checkout_reproduces_validated_evidence"
+    ],
+    "report": "calcs/validation/repository_full_tests_final.xml",
+    "report_sha256": "07e4c749aa0336ba12dcac68d1a8ca78f2001a607912ad6380835fc1465e65c2"
+  },
+  "thermal_source_compatibility": "calcs/validation/repository_thermal_source_compatibility.json",
+  "live_reference_recovery": "calcs/validation/repository_reference_recovery.json",
+  "record_scope": "Validation observation before the publication commit; Git history records publication separately"
+}

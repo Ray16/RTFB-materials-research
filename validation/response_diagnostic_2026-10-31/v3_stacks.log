@@ -1,0 +1,1908 @@
+Timeout (0:00:30)!
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 98 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 737 in compile
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 361 in _compile
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 377 in compile_using_nvrtc
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 622 in _compile_with_cache_cuda
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cupy/cuda/compiler.py", line 542 in _compile_module_with_cache
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cupy/_logic/truth.py", line 89 in any
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 667 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 340 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3558 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 98 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 128 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/numpy/_core/numeric.py", line 2436 in isscalar
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2463 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 121 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 2009 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2464 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py", line 1310 in proc
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/multi_gpu.py", line 36 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py", line 1333 in _get_jk
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py", line 1236 in _get_jk_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3940 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/runtime_profiles/cutensor22_2026-10-25/venv/lib/python3.11/site-packages/cupy/_creation/basic.py", line 333 in empty
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 0 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 168 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 331 in eval_rho4
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3535 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1526 in pids
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1568 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 114 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 168 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2463 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 118 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 168 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2463 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/selectors.py", line 415 in select
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 2115 in _communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 1209 in communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 550 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 466 in check_output
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 127 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cupy_helper.py", line 340 in add_sparse
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3562 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 42 in _create_tensor_descriptor
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 125 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 2342 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 331 in eval_rho4
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3535 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 128 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 168 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 331 in eval_rho4
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3535 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/tempfile.py", line 257 in _mkstemp_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/tempfile.py", line 577 in opener
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/tempfile.py", line 580 in NamedTemporaryFile
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/io.py", line 23 in atomic_text_writer
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/contextlib.py", line 137 in __enter__
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/core/io.py", line 43 in atomic_write_json
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 46 in check
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 55 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 98 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py", line 1310 in proc
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/multi_gpu.py", line 36 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py", line 1333 in _get_jk
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/df/hessian/rhf.py", line 1236 in _get_jk_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3940 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 168 in _scale_ao
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2464 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 168 in _scale_ao
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2463 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cupy_helper.py", line 512 in ndarray
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2009 in _scale_ao
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3561 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 118 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 168 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3562 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1571 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 764 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2461 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1571 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 128 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/numpy/_core/numeric.py", line 2436 in isscalar
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2463 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2437 in _scale_ao
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2462 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/selectors.py", line 415 in select
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 2115 in _communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 1209 in communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 550 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 466 in check_output
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 127 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/selectors.py", line 415 in select
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 2115 in _communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 1209 in communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 550 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 466 in check_output
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/watch_gpu_exclusivity.py", line 57 in query
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/watch_gpu_exclusivity.py", line 60 in snapshot
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 42 in check
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 55 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3561 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 98 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 764 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3557 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 98 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 821 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2461 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 57 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 128 in contraction
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cutensor.py", line 168 in contract
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3561 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 727 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 168 in _scale_ao
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2464 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 132 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2437 in _scale_ao
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/dft/numint.py", line 2462 in _tau_dot
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3559 in _nr_rks_fxc_mo_task
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 58 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 83 in _worker
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff8748b1640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/selectors.py", line 415 in select
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 2115 in _communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 1209 in communicate
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 550 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/subprocess.py", line 466 in check_output
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_pi_stacking.py", line 127 in poll
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff97ffff640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_common.py", line 682 in open_binary
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/_pslinux.py", line 1570 in ppid_map
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/psutil/__init__.py", line 978 in children
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 58 in sample
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 74 in watch
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff984d31640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 331 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 629 in wait
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 53 in observe
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 982 in run
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1045 in _bootstrap_inner
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1002 in _bootstrap
+
+Thread 0x00007ff985fd3200 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1139 in _wait_for_tstate_lock
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/threading.py", line 1119 in join
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/thread.py", line 235 in shutdown
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/concurrent/futures/_base.py", line 647 in __exit__
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3598 in nr_rks_fxc_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rks.py", line 3922 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/solvent/hessian/pcm.py", line 1373 in get_veff_resp_mo
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 754 in fx
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 679 in fvind_vo
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 102 in operator
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 41 in apply
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 620 in _matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_interface.py", line 262 in matvec
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 756 in gmres
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 53 in residual_krylov
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/helper.py", line 107 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/residual_response_solver.py", line 88 in solve
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 722 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/hessian/rhf.py", line 892 in solve_mo1
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/worker.py", line 94 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 78 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/tensor_runtime_worker.py", line 88 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 109 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-31_orbital_response_debug_v3c/sources/host_guard.py", line 126 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 70 in main
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/exclusive_python_worker.py", line 78 in <module>
+Timeout (0:00:30)!
+Thread 0x00007ff84d69a640 (most recent call first):
+  File "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/gpu4pyscf/lib/cupy_helper.py", line 886 in ndarray
+  File 

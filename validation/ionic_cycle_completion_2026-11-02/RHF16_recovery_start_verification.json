@@ -1,0 +1,40 @@
+{
+  "status": "RHF16_partial_recovery_actual_scientific_start_and_exclusive_resources_verified",
+  "checked": 1793619740.0506017,
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_partial_RHF16_shared/namespace.json",
+  "stage": {
+    "status": "charged_polymer_native_component_running",
+    "owner": {
+      "host": "lambda13",
+      "pid": 1945676,
+      "process_start": "173654991"
+    },
+    "started": 1793619460.5758607,
+    "native_G_qualified": false,
+    "production_default_changed": false
+  },
+  "observed": {
+    "stat": "1945676 (python) D 1944815 1944813 1944813 0 -1 4194304 5970878 379277 4 34 6170 21010 23 4660 20 0 10 0 173654991 58384494592 5631555 18446744073709551615 94434357985280 94434360329805 140734823260960 0 0 0 0 16781312 16386 0 0 0 17 4 0 0 0 0 0 94434361300624 94434362740992 94434812481536 140734823264450 140734823265634 140734823265634 140734823268244 0\n",
+    "affinity": [
+      4,
+      5
+    ],
+    "caps": {
+      "OMP_NUM_THREADS": "2",
+      "OMP_THREAD_LIMIT": "2",
+      "OPENBLAS_NUM_THREADS": "2",
+      "MKL_NUM_THREADS": "2",
+      "NUMEXPR_NUM_THREADS": "2",
+      "XTB_THREADS": "2"
+    },
+    "gpus": "GPU-838cc0bc-258a-4ee0-c563-0a0bc74eab00, 1369837, 12238\nGPU-4fc09ffb-eb36-f2b3-e5ba-ff79cad8c60b, 1945676, 2348\n"
+  },
+  "restart_energy": {
+    "source_energy_Ha": -3192.3140646379275,
+    "recreated_energy_Ha": -3192.3140646379275,
+    "difference_Ha": 0.0,
+    "original_grid_arrays_available": true,
+    "native_G_qualified": false
+  },
+  "native_G_qualified": false
+}

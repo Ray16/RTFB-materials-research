@@ -1,0 +1,45 @@
+{
+  "candidate": "results/candidates/verified_cases/viologen/2026-10-31_native_with_grafting/candidate.json",
+  "numeric_inputs": "results/candidates/verified_cases/viologen/2026-10-31_native_checked/numeric_inputs.json",
+  "figure": "results/figures/candidates/viologen_native_redox.pdf",
+  "source_snapshot": "results/validation/viologen_native_recovery_2026-10-30/finalization_source_v3/status.json",
+  "all_axis_decision": "pending",
+  "figure_visual_review": "pending",
+  "grafting": "results/grafting/viologen/2026-10-31_native_checked_v2/reaction.json",
+  "polymer_preparation": {
+    "manifest": "results/polymer_models/viologen_preparation_2026-10-31_v2/preparation.json",
+    "audit": "validation/viologen_polymer_preparation_2026-10-31/checked_replay.json",
+    "figure": "results/figures/polymer_models/viologen_occupancy_construction.pdf",
+    "status": "initial_models_only",
+    "native_G_qualified": false
+  },
+  "polymer_solver_pilot": {
+    "agreement": "validation/viologen_polymer_SCF_2026-10-31/execution_agreement.json",
+    "guide": "validation/viologen_polymer_SCF_2026-10-31/README.md",
+    "status": "initial_charged_SCF_force_resource_checks_passed_solution_geometry_pending",
+    "native_G_qualified": false
+  },
+  "polymer_geometry_campaign": {
+    "guide": "validation/viologen_polymer_geometry_2026-10-31/README.md",
+    "summary": "validation/viologen_polymer_geometry_2026-10-31/summary.json",
+    "status": "ten_actual_SCF_starts_verified_optimization_and_minimum_checks_pending",
+    "native_G_qualified": false
+  },
+  "polymer_geometry_recovery": {
+    "guide": "validation/checkpoint_recovery_2026-10-31/README.md",
+    "summary": "validation/checkpoint_recovery_2026-10-31/summary.json",
+    "checked_stationary_geometries": 6,
+    "Hessian_minimum_check_complete": false,
+    "conformer_ensemble_qualified": false,
+    "native_G_qualified": false,
+    "material_admission": false
+  },
+  "polymer_native_pilot": {
+    "guide": "validation/charged_native_pilot_2026-10-31/README.md",
+    "summary": "validation/charged_native_pilot_2026-10-31/summary.json",
+    "checked_stationary_geometries": 9,
+    "native_G_qualified": false,
+    "conformer_ensemble_qualified": false,
+    "material_admission": false
+  }
+}

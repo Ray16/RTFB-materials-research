@@ -1,0 +1,53 @@
+{
+  "status": "shared_fork_RSS_double_count_and_private_allocation_independently_observed",
+  "payload_bytes": 100663296,
+  "shared": {
+    "processes": [
+      {
+        "pid": 3652988,
+        "process_start": 1793631738.72,
+        "RSS_bytes": 124289024,
+        "PSS_bytes": 64984064,
+        "USS_bytes": 8368128
+      },
+      {
+        "pid": 3652996,
+        "process_start": 1793631739.16,
+        "RSS_bytes": 115621888,
+        "PSS_bytes": 58675200,
+        "USS_bytes": 2154496
+      }
+    ],
+    "tree_RSS_bytes": 239910912,
+    "tree_PSS_bytes": 123659264,
+    "tree_USS_bytes": 10522624
+  },
+  "private": {
+    "processes": [
+      {
+        "pid": 3652988,
+        "process_start": 1793631738.72,
+        "RSS_bytes": 124289024,
+        "PSS_bytes": 115381248,
+        "USS_bytes": 109162496
+      },
+      {
+        "pid": 3652996,
+        "process_start": 1793631739.16,
+        "RSS_bytes": 115707904,
+        "PSS_bytes": 109015040,
+        "USS_bytes": 102834176
+      }
+    ],
+    "tree_RSS_bytes": 239996928,
+    "tree_PSS_bytes": 224396288,
+    "tree_USS_bytes": 211996672
+  },
+  "private_PSS_increase_bytes": 100737024,
+  "child_returncode": 0,
+  "GPU_work": false,
+  "failed_quantum_job_cause_proven": false,
+  "quantum_G_qualified": false,
+  "checked": 1793631739.3068173,
+  "producer_sha256": "e1c270e16e9ba44e327af072b9ec7ebde55c4e5dd75a0ac9307c84a72ac83c99"
+}

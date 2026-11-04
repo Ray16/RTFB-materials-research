@@ -1,0 +1,158 @@
+[
+  {
+    "host": "lambda0",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda0\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda0",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda1",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda1\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda1",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda2",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda2\", \"matching_processes\": [{\"pid\": 2006626, \"argv\": [\"ssh\", \"-o\", \"BatchMode=yes\", \"-o\", \"ConnectTimeout=7\", \"lambda2\", \"/usr/bin/python3 -c 'import json,os\\nfrom pathlib import Path\\nrows=[]\\nfor p in Path('\\\"'\\\"'/proc'\\\"'\\\"').iterdir():\\n if not p.name.isdigit():continue\\n try:\\n  a=(p/'\\\"'\\\"'cmdline'\\\"'\\\"').read_bytes().decode().split('\\\"'\\\"'\\\\0'\\\"'\\\"')\\n  if '\\\"'\\\"'-c'\\\"'\\\"' in a:continue\\n  if any('\\\"'\\\"'smooth_polymer_native.py'\\\"'\\\"' in x or '\\\"'\\\"'coordinate_native_bounded.py'\\\"'\\\"' in x for x in a):\\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\\\"'\\\"'stat'\\\"'\\\"').read_text().rsplit('\\\"'\\\"')'\\\"'\\\"',1)[1].split()[19]))\\n except (OSError,ValueError):pass\\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\\n'\", \"\"], \"start\": \"1417458436\"}, {\"pid\": 2006637, \"argv\": [\"ssh\", \"-o\", \"BatchMode=yes\", \"-o\", \"ConnectTimeout=7\", \"lambda11\", \"/usr/bin/python3 -c 'import json,os\\nfrom pathlib import Path\\nrows=[]\\nfor p in Path('\\\"'\\\"'/proc'\\\"'\\\"').iterdir():\\n if not p.name.isdigit():continue\\n try:\\n  a=(p/'\\\"'\\\"'cmdline'\\\"'\\\"').read_bytes().decode().split('\\\"'\\\"'\\\\0'\\\"'\\\"')\\n  if '\\\"'\\\"'-c'\\\"'\\\"' in a:continue\\n  if any('\\\"'\\\"'smooth_polymer_native.py'\\\"'\\\"' in x or '\\\"'\\\"'coordinate_native_bounded.py'\\\"'\\\"' in x for x in a):\\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\\\"'\\\"'stat'\\\"'\\\"').read_text().rsplit('\\\"'\\\"')'\\\"'\\\"',1)[1].split()[19]))\\n except (OSError,ValueError):pass\\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\\n'\", \"\"], \"start\": \"1417458438\"}, {\"pid\": 2006638, \"argv\": [\"ssh\", \"-o\", \"BatchMode=yes\", \"-o\", \"ConnectTimeout=7\", \"lambda12\", \"/usr/bin/python3 -c 'import json,os\\nfrom pathlib import Path\\nrows=[]\\nfor p in Path('\\\"'\\\"'/proc'\\\"'\\\"').iterdir():\\n if not p.name.isdigit():continue\\n try:\\n  a=(p/'\\\"'\\\"'cmdline'\\\"'\\\"').read_bytes().decode().split('\\\"'\\\"'\\\\0'\\\"'\\\"')\\n  if '\\\"'\\\"'-c'\\\"'\\\"' in a:continue\\n  if any('\\\"'\\\"'smooth_polymer_native.py'\\\"'\\\"' in x or '\\\"'\\\"'coordinate_native_bounded.py'\\\"'\\\"' in x for x in a):\\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\\\"'\\\"'stat'\\\"'\\\"').read_text().rsplit('\\\"'\\\"')'\\\"'\\\"',1)[1].split()[19]))\\n except (OSError,ValueError):pass\\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\\n'\", \"\"], \"start\": \"1417458438\"}, {\"pid\": 2006639, \"argv\": [\"ssh\", \"-o\", \"BatchMode=yes\", \"-o\", \"ConnectTimeout=7\", \"lambda13\", \"/usr/bin/python3 -c 'import json,os\\nfrom pathlib import Path\\nrows=[]\\nfor p in Path('\\\"'\\\"'/proc'\\\"'\\\"').iterdir():\\n if not p.name.isdigit():continue\\n try:\\n  a=(p/'\\\"'\\\"'cmdline'\\\"'\\\"').read_bytes().decode().split('\\\"'\\\"'\\\\0'\\\"'\\\"')\\n  if '\\\"'\\\"'-c'\\\"'\\\"' in a:continue\\n  if any('\\\"'\\\"'smooth_polymer_native.py'\\\"'\\\"' in x or '\\\"'\\\"'coordinate_native_bounded.py'\\\"'\\\"' in x for x in a):\\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\\\"'\\\"'stat'\\\"'\\\"').read_text().rsplit('\\\"'\\\"')'\\\"'\\\"',1)[1].split()[19]))\\n except (OSError,ValueError):pass\\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\\n'\", \"\"], \"start\": \"1417458438\"}]}\n",
+    "stderr": "",
+    "observed_non_python_matches": [
+      {
+        "pid": 2006626,
+        "argv": [
+          "ssh",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "ConnectTimeout=7",
+          "lambda2",
+          "/usr/bin/python3 -c 'import json,os\nfrom pathlib import Path\nrows=[]\nfor p in Path('\"'\"'/proc'\"'\"').iterdir():\n if not p.name.isdigit():continue\n try:\n  a=(p/'\"'\"'cmdline'\"'\"').read_bytes().decode().split('\"'\"'\\0'\"'\"')\n  if '\"'\"'-c'\"'\"' in a:continue\n  if any('\"'\"'smooth_polymer_native.py'\"'\"' in x or '\"'\"'coordinate_native_bounded.py'\"'\"' in x for x in a):\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\"'\"'stat'\"'\"').read_text().rsplit('\"'\"')'\"'\"',1)[1].split()[19]))\n except (OSError,ValueError):pass\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\n'",
+          ""
+        ],
+        "start": "1417458436"
+      },
+      {
+        "pid": 2006637,
+        "argv": [
+          "ssh",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "ConnectTimeout=7",
+          "lambda11",
+          "/usr/bin/python3 -c 'import json,os\nfrom pathlib import Path\nrows=[]\nfor p in Path('\"'\"'/proc'\"'\"').iterdir():\n if not p.name.isdigit():continue\n try:\n  a=(p/'\"'\"'cmdline'\"'\"').read_bytes().decode().split('\"'\"'\\0'\"'\"')\n  if '\"'\"'-c'\"'\"' in a:continue\n  if any('\"'\"'smooth_polymer_native.py'\"'\"' in x or '\"'\"'coordinate_native_bounded.py'\"'\"' in x for x in a):\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\"'\"'stat'\"'\"').read_text().rsplit('\"'\"')'\"'\"',1)[1].split()[19]))\n except (OSError,ValueError):pass\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\n'",
+          ""
+        ],
+        "start": "1417458438"
+      },
+      {
+        "pid": 2006638,
+        "argv": [
+          "ssh",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "ConnectTimeout=7",
+          "lambda12",
+          "/usr/bin/python3 -c 'import json,os\nfrom pathlib import Path\nrows=[]\nfor p in Path('\"'\"'/proc'\"'\"').iterdir():\n if not p.name.isdigit():continue\n try:\n  a=(p/'\"'\"'cmdline'\"'\"').read_bytes().decode().split('\"'\"'\\0'\"'\"')\n  if '\"'\"'-c'\"'\"' in a:continue\n  if any('\"'\"'smooth_polymer_native.py'\"'\"' in x or '\"'\"'coordinate_native_bounded.py'\"'\"' in x for x in a):\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\"'\"'stat'\"'\"').read_text().rsplit('\"'\"')'\"'\"',1)[1].split()[19]))\n except (OSError,ValueError):pass\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\n'",
+          ""
+        ],
+        "start": "1417458438"
+      },
+      {
+        "pid": 2006639,
+        "argv": [
+          "ssh",
+          "-o",
+          "BatchMode=yes",
+          "-o",
+          "ConnectTimeout=7",
+          "lambda13",
+          "/usr/bin/python3 -c 'import json,os\nfrom pathlib import Path\nrows=[]\nfor p in Path('\"'\"'/proc'\"'\"').iterdir():\n if not p.name.isdigit():continue\n try:\n  a=(p/'\"'\"'cmdline'\"'\"').read_bytes().decode().split('\"'\"'\\0'\"'\"')\n  if '\"'\"'-c'\"'\"' in a:continue\n  if any('\"'\"'smooth_polymer_native.py'\"'\"' in x or '\"'\"'coordinate_native_bounded.py'\"'\"' in x for x in a):\n   rows.append(dict(pid=int(p.name),argv=a,start=(p/'\"'\"'stat'\"'\"').read_text().rsplit('\"'\"')'\"'\"',1)[1].split()[19]))\n except (OSError,ValueError):pass\nprint(json.dumps(dict(host=os.uname().nodename,matching_processes=rows)))\n'",
+          ""
+        ],
+        "start": "1417458438"
+      }
+    ],
+    "parsed_native_process_observation": {
+      "host": "lambda2",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda4",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda4\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda4",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda5",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda5\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda5",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda6",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda6\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda6",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda11",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda11\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda11",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda12",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda12\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda12",
+      "matching_processes": []
+    }
+  },
+  {
+    "host": "lambda13",
+    "returncode": 0,
+    "stdout": "{\"host\": \"lambda13\", \"matching_processes\": []}\n",
+    "stderr": "",
+    "observed_non_python_matches": [],
+    "parsed_native_process_observation": {
+      "host": "lambda13",
+      "matching_processes": []
+    }
+  }
+]

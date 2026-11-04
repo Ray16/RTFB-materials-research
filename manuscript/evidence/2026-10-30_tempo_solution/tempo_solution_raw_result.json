@@ -1,0 +1,242 @@
+{
+  "identity": {
+    "pair": {
+      "states": [
+        {
+          "name": "ox",
+          "charge": 1,
+          "mult": 1,
+          "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/ox/opt.xyz",
+          "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/ox"
+        },
+        {
+          "name": "rad",
+          "charge": 0,
+          "mult": 2,
+          "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/rad/opt.xyz",
+          "state_dir": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/rad"
+        }
+      ],
+      "require_native_minimum_states": [
+        "ox",
+        "rad"
+      ],
+      "conformer_policy": "same_basin",
+      "implementation_controls": {
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_reorg_2026-10-11/native_smd_independent_reference.json": "1d8888eaa8acbdce39878075c5c65b6d8208fb0961d4041103ba853326e7ffbb",
+        "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_reorg_2026-10-11/native_smd_gpu_reference.json": "34c210280b88c03acde9b26471cdc60e9541536990ff6b568645f9fa9361f94b"
+      }
+    },
+    "input_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/ox/opt.xyz": "77a40b6ae7f4c9c3d8aca59d7c19275e8a9b33d5bef3c9928eebd16219b5991e",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/rad/opt.xyz": "68bd437e5c75b766b7104b4a2e7c283f806a72ac9ae5161da556f80edcbf1ed3"
+    },
+    "method": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "native_SMD_frozen_slow",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200,
+      "eps_s": 35.688,
+      "eps_op": 1.80687364,
+      "refractive_index": 1.3442,
+      "source": "native_pyscf_smd_solvent_db",
+      "sasa_ng": 590
+    },
+    "source_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/solution_reorg_pair.py": "51db30101b6b9727fc0576b57a9d6dc5fce89bdc37ea37670b56119a95ae0d69",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/qm/nonequilibrium_smd.py": "2e97c4cf309275fe3900fcebb7e7cdcd169a96dca995b1ea30c897de97bf9c73",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/physical_reorg.py": "db2d31592a69d635f08e2df51656ae0a568b79b9d70265c719e5bc73016ff0f7",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/properties/solution_reorg.py": "c4f325a13b77c82d09ffee6357e7221592c198ac16b49890a63acc9140fc3131",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/solution_relaxation.py": "5acf2b984801c39e74699206676ca403fae8f03dfed10e2956bade0c5f910c8f"
+    }
+  },
+  "directional": [
+    {
+      "total_solution_relaxation_eV": 1.477122030002647,
+      "equilibrium_geometry_component_eV": 0.39626565772050526,
+      "frozen_slow_increment_eV": 1.0808563722821418,
+      "vertical_charge_change_eV": -3.411856018305116,
+      "initial": "ox",
+      "final": "rad"
+    },
+    {
+      "total_solution_relaxation_eV": 1.6386410691520723,
+      "equilibrium_geometry_component_eV": 0.5526297276155674,
+      "frozen_slow_increment_eV": 1.086011341536505,
+      "vertical_charge_change_eV": 6.527619117459835,
+      "initial": "rad",
+      "final": "ox"
+    }
+  ],
+  "endpoint_evidence": [
+    {
+      "state": "ox",
+      "minimum_verified": true,
+      "conformer_policy": "same_basin",
+      "gradient_max_atomic_norm_Ha_Bohr": 0.00022534570113575168,
+      "stationary_gradient_pass": true,
+      "minimum_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/ox/native_thermal/44293b77563b08b5.json",
+      "minimum_source_sha256": "e4f2b0820d45cdd9d40ae6918754a9773c4b580faccb098ee6d28f32a71764cf",
+      "minimum_frequency_cm": 16.63343378128398,
+      "minimum_energy_surface": {
+        "schema": 1,
+        "model": "solution geometry-level DFT Hessian",
+        "xc": "r2scan",
+        "disp": "d4",
+        "basis": "def2-svp",
+        "anion_basis": "def2-svpd",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "grid_level": 3,
+        "cphf_grid_level": 3,
+        "grid_response": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "temperature_K": 298.15,
+        "rotor_cutoff_cm": 50,
+        "spin_partition": "unsplit ground spin multiplet",
+        "gradient_max_acceptance_Ha_Bohr": 0.00045,
+        "min_frequency_acceptance_cm": -5,
+        "finite_difference_step_Bohr": 0.0005,
+        "finite_difference_relative_acceptance": 0.01,
+        "max_spin_contamination": 0.1,
+        "df_batch_cap_GiB": 6,
+        "validated_pyscf_version": "2.14.0",
+        "validated_gpu4pyscf_version": "1.8.1"
+      },
+      "active_SP_stationarity_verified": false
+    },
+    {
+      "state": "rad",
+      "minimum_verified": true,
+      "conformer_policy": "same_basin",
+      "gradient_max_atomic_norm_Ha_Bohr": 3.2911496082626506e-06,
+      "stationary_gradient_pass": true,
+      "minimum_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/tempo/rad/native_thermal/fb8c7d25c4192ca7.json",
+      "minimum_source_sha256": "e09bdd58907d277575e41f72b1f4db655c39d5b3d4afd72e8003e0b11b0ad55e",
+      "minimum_frequency_cm": 17.33848164151033,
+      "minimum_energy_surface": {
+        "schema": 1,
+        "model": "solution geometry-level DFT Hessian",
+        "xc": "r2scan",
+        "disp": "d4",
+        "basis": "def2-svp",
+        "anion_basis": "def2-svpd",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "grid_level": 3,
+        "cphf_grid_level": 3,
+        "grid_response": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "temperature_K": 298.15,
+        "rotor_cutoff_cm": 50,
+        "spin_partition": "unsplit ground spin multiplet",
+        "gradient_max_acceptance_Ha_Bohr": 0.00045,
+        "min_frequency_acceptance_cm": -5,
+        "finite_difference_step_Bohr": 0.0005,
+        "finite_difference_relative_acceptance": 0.01,
+        "max_spin_contamination": 0.1,
+        "df_batch_cap_GiB": 6,
+        "validated_pyscf_version": "2.14.0",
+        "validated_gpu4pyscf_version": "1.8.1"
+      },
+      "active_SP_stationarity_verified": false
+    }
+  ],
+  "electronic_state_evidence": [
+    {
+      "state": "ox",
+      "at": "ox",
+      "solvent_response": "equilibrium",
+      "solution_homo_eV": -8.885122431857607,
+      "s2": null,
+      "spin_contamination": null,
+      "flags": []
+    },
+    {
+      "state": "rad",
+      "at": "rad",
+      "solvent_response": "equilibrium",
+      "solution_homo_eV": -7.851424249346039,
+      "s2": 0.7541511026288674,
+      "spin_contamination": 0.00415110262886742,
+      "flags": []
+    },
+    {
+      "state": "rad",
+      "at": "ox",
+      "solvent_response": "equilibrium",
+      "solution_homo_eV": -6.8999158951961315,
+      "s2": 0.7539706974702938,
+      "spin_contamination": 0.003970697470293771,
+      "flags": []
+    },
+    {
+      "state": "rad",
+      "at": "ox",
+      "solvent_response": "frozen_slow",
+      "solution_homo_eV": -4.735472503669257,
+      "s2": 0.7539461870274806,
+      "spin_contamination": 0.003946187027480619,
+      "flags": []
+    },
+    {
+      "state": "ox",
+      "at": "rad",
+      "solvent_response": "equilibrium",
+      "solution_homo_eV": -8.845116157246121,
+      "s2": null,
+      "spin_contamination": null,
+      "flags": []
+    },
+    {
+      "state": "ox",
+      "at": "rad",
+      "solvent_response": "frozen_slow",
+      "solution_homo_eV": -10.007947152359929,
+      "s2": null,
+      "spin_contamination": null,
+      "flags": []
+    }
+  ],
+  "summary": {
+    "lambda_reduction_eV": 1.477122030002647,
+    "lambda_oxidation_eV": 1.6386410691520723,
+    "symmetric_single_body_approximation_eV": 1.5578815495773597,
+    "self_exchange_infinite_separation_eV": 3.1157630991547194,
+    "directional_relative_asymmetry": 0.10367863923495596,
+    "equal_curvature_diagnostic_tolerance": 0.05,
+    "physical_flags": [
+      "equal_curvature_approximation_unverified"
+    ],
+    "calculation_verified": false,
+    "implementation_reference_verified": true,
+    "endpoint_model_verified": true,
+    "empirical_accuracy_validated": false,
+    "production_promotion": false,
+    "warning": "Do not add existing gas inner or outer reorganization terms",
+    "qualification_convention": "composite active-SP energies at geometry-level solution minima",
+    "active_SP_stationary_endpoints_proven": false
+  },
+  "implementation_evidence": {
+    "implementation_reference_verified": true,
+    "backend": "gpu",
+    "module_sha256": "2e97c4cf309275fe3900fcebb7e7cdcd169a96dca995b1ea30c897de97bf9c73",
+    "evidence_sha256": {
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_reorg_2026-10-11/native_smd_independent_reference.json": "1d8888eaa8acbdce39878075c5c65b6d8208fb0961d4041103ba853326e7ffbb",
+      "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_reorg_2026-10-11/native_smd_gpu_reference.json": "34c210280b88c03acde9b26471cdc60e9541536990ff6b568645f9fa9361f94b"
+    },
+    "individual_calculation_independently_replayed": false
+  },
+  "validation_status": "paired_conformer_sensitivity",
+  "polymer_constraint_proven": false
+}

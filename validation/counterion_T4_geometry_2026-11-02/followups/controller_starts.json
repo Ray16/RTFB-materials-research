@@ -1,0 +1,74 @@
+[
+  {
+    "key": "N0_below_plus",
+    "host": "lambda5",
+    "pid": 3464574,
+    "process_start": "755853435",
+    "GPU": 0,
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_geometry_resources",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_remaining_geometry_repairs/N0_below_plus/namespace.json",
+      "--gpu",
+      "0",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_remaining_geometry_repairs/N0_below_plus/placement_001"
+    ],
+    "checked": 1793677954.4003704,
+    "geometry_only": true,
+    "Hessian_class_qualified": false,
+    "native_G_qualified": false
+  },
+  {
+    "key": "N0_outer_minus",
+    "host": "lambda5",
+    "pid": 3464622,
+    "process_start": "755853636",
+    "GPU": 1,
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_geometry_resources",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_remaining_geometry_repairs/N0_outer_minus/namespace.json",
+      "--gpu",
+      "1",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_remaining_geometry_repairs/N0_outer_minus/placement_001"
+    ],
+    "checked": 1793677956.4082222,
+    "geometry_only": true,
+    "Hessian_class_qualified": false,
+    "native_G_qualified": false
+  },
+  {
+    "key": "N0_outer_plus",
+    "host": "lambda5",
+    "pid": 3464938,
+    "process_start": "755853836",
+    "GPU": 2,
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_geometry_resources",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_remaining_geometry_repairs/N0_outer_plus/namespace.json",
+      "--gpu",
+      "2",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_remaining_geometry_repairs/N0_outer_plus/placement_001"
+    ],
+    "checked": 1793677958.41522,
+    "geometry_only": true,
+    "Hessian_class_qualified": false,
+    "native_G_qualified": false
+  }
+]

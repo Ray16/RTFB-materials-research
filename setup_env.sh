@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Bootstrap the `redox` conda environment; validated native-QM versions are pinned.
-# See docs/DEVELOPMENT.md for the recorded working environment and validation gates.
+# See docs/INSTALLATION.md for the recorded working environment and validation gates.
 #
 #   ./setup_env.sh [ENV_NAME]
 #
@@ -31,7 +31,10 @@ if [ -z "${CUDA_TAG:-}" ]; then
 fi
 
 # Prefer mamba if available (faster), else conda.
-CONDA="$(command -v mamba || command -v conda)"
+if ! CONDA="$(command -v mamba || command -v conda)"; then
+  echo "Error: install Conda or Mamba and initialize its shell before running setup_env.sh." >&2
+  exit 1
+fi
 echo ">> using $CONDA ; env=$ENV_NAME python=$PY_VER cuda=$CUDA_TAG"
 
 # 1. Create the environment.

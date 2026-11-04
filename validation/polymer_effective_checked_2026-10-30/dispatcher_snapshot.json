@@ -1,0 +1,366 @@
+{
+  "status": "native_conveyor_running",
+  "owner": {
+    "host": "lambda1",
+    "pid": 2980965,
+    "process_start": "565597439"
+  },
+  "started": 1793405798.8422365,
+  "deadline": 1793492198.8422368,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_checked_native_queue.py": "5e7260fbf2e50286235c335e1514934c6cf9bb824408f7b2aa19656dfb2cfeb8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/polymer_energy_classes_2026-10-30/queue_inputs.json": "463b16292b218d27cc6ae7f89e64001a9b908436602bde89a66b522d296b3fa8",
+    "/nfs/lambda_stor_01/homes/rzhu/.config/gpu_reserve/config.env": "68811b4ca0bb7c5191c6fae5c22c81ccf48898893521bf63db0ce2f83a7fa70e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_namespace_energy_queue.py": "0d06083b73ac0928c961a8d99a79fc67a0b7420af1135ffd58131a7cf858ee8c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/observe_archived_native_namespace.py": "ae847b3fbff49f1215856ba691f9e2df34f1998649fcd4cc1c6ac2295bb0e6c9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/derived_native_namespace.py": "637c8a15abe2d69e5b76b8f9daaa903e2b4e56710cd5a4f982baa040e9f5dcd7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/submission_refusal.py": "c8b2d71c411152810336b3987899b7c835e40cfeb9f17b0c0dc476b51ed79a31",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/host_local_review.py": "154f69f9f98ab6f4a8f37f1ef28ebde4aecc1bb2f7dee7fdb5d9746332679609",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/validation/namespace_sources.py": "1e4cc0bd3dca19c1b3a7e1fda447bfa8fddf12b15465c69324085a7d058197b6"
+  },
+  "declared_energy_states": 156,
+  "thermochemistry_inferred_from_energy": false,
+  "effective_memory_profile_used": false,
+  "explicit_hosts_to_recheck": [],
+  "updated": 1793413733.8685703,
+  "entries": [
+    {
+      "key": "all_same__occ_2_4__conf002",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf002/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_3__conf002",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf002/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_4__conf002",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_4__conf002_source_relocated/namespace.json",
+      "status": "external_namespace_preserved_separate_collector"
+    },
+    {
+      "key": "all_same__occ_3__conf002",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf002/native/namespace.json",
+      "status": "native_independently_checked",
+      "binding": {
+        "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf002/native/campaign_parent/all_same__occ_3__conf002/independent_native_review.json",
+        "review_sha256": "017a0378a8d3e6714e0cd92048042d7d328687942962e53ab63a7097dcd37a97",
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf002/native/namespace.json",
+        "namespace_sha256": "822b261544da7453ed22b3563a25759237a6a0e37eeba8afe9f46668f5c15422",
+        "verified_bindings": 2439,
+        "original_source_hashes_preserved": true
+      },
+      "G_by_cutoff_eV": {
+        "25": -84296.36325572745,
+        "50": -84296.2112139076,
+        "100": -84296.11656754528
+      }
+    },
+    {
+      "key": "all_same__occ_2_4__conf003",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf003/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_3__conf003",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf003/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_4__conf003",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/native/namespace.json",
+      "status": "external_namespace_preserved_separate_collector"
+    },
+    {
+      "key": "all_same__occ_3__conf003",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf003/native/namespace.json",
+      "status": "native_independently_checked",
+      "binding": {
+        "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf003/native/campaign_parent/all_same__occ_3__conf003/independent_native_review.json",
+        "review_sha256": "28cf89e6c5ee9aa7888d79406d45b50ed6a44489fb1e8c76d6b26ab9e75b07ad",
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf003/native/namespace.json",
+        "namespace_sha256": "44d035735e90cccf2f55cdf502c27af4b0c2321390a00879e1f87478407f8fe3",
+        "verified_bindings": 2435,
+        "original_source_hashes_preserved": true
+      },
+      "G_by_cutoff_eV": {
+        "25": -84296.40649624458,
+        "50": -84296.26052139273,
+        "100": -84296.15280099692
+      }
+    },
+    {
+      "key": "all_same__occ_2_4__conf004",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf004/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_3__conf004",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf004/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_4__conf004",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf004/native/namespace.json",
+      "status": "native_independently_checked",
+      "binding": {
+        "review": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf004/native/campaign_parent/all_same__occ_4__conf004/independent_native_review.json",
+        "review_sha256": "c5981103e2ec1e1c24d66d7e24fbd55cd15c5374049813a51c96a217a5e53250",
+        "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf004/native/namespace.json",
+        "namespace_sha256": "f9abda7e83f08a133ffba208826333aa08da6f9b405ba53e35726d6254d03b4d",
+        "verified_bindings": 2444,
+        "original_source_hashes_preserved": true
+      },
+      "G_by_cutoff_eV": {
+        "25": -84296.50043414504,
+        "50": -84296.36718887853,
+        "100": -84296.2535736444
+      }
+    },
+    {
+      "key": "all_same__occ_3__conf004",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf004/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_4__conf005",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf005/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_3__conf005",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf005/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_4__conf005",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf005/native/namespace.json",
+      "status": "failed_preserved"
+    },
+    {
+      "key": "all_same__occ_3__conf005",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf005/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_4__conf006",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf006/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_3__conf006",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_4__conf006",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf006/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_3__conf006",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/namespace.json",
+      "status": "guard_present_start_pending"
+    },
+    {
+      "key": "all_same__occ_2_4__conf007",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf007/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_2_3__conf007",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf007/native/namespace.json",
+      "status": "running"
+    },
+    {
+      "key": "all_same__occ_4__conf007",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf007/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_3__conf007",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf007/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_4__conf008",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf008/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_3__conf008",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf008/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_4__conf008",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf008/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_3__conf008",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf008/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_4__conf009",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf009/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_4__conf009",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf009/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_3__conf009",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf009/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_4__conf010",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf010/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_3__conf010",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf010/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_4__conf010",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf010/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_3__conf010",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf010/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_4__conf011",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf011/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "alternating__occ_3__conf002",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/alternating__occ_3__conf002/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_3__conf011",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf011/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_4__conf012",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf012/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_3__conf011",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf011/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_4__conf011",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf011/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_3__conf012",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf012/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_4__conf013",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf013/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_3__conf012",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf012/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_2_4__conf012",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf012/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_3__conf013",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf013/native/namespace.json",
+      "status": "pending"
+    },
+    {
+      "key": "all_same__occ_4__conf014",
+      "spec": "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf014/native/namespace.json",
+      "status": "pending"
+    }
+  ],
+  "namespaces_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf002/native/namespace.json": "58d1fe60f66d654035f392407d18bdcbea91c6794572181f6aa81a405f541fa2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf002/native/namespace.json": "b8ae50531458e650ded64966625e01fb674c9b976d5fbd04454fd17df8966c9e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_derived/all_same__occ_4__conf002_source_relocated/namespace.json": "45d635fed5db1c77202b2d59fc4a7fb1fbbe2ad9168968277c1570763164216a",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf002/native/namespace.json": "822b261544da7453ed22b3563a25759237a6a0e37eeba8afe9f46668f5c15422",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf003/native/namespace.json": "5b2655e9cef6b471864fa8b68f11c38ac9b069afd7d1347fb5e61acad0b79f5b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf003/native/namespace.json": "dc8909478e22503fa00e00bf664c00863736240eccd88471fd4f19a9c4134351",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/native/namespace.json": "37bfcfbf75f4a3fcffa6bc4e47fdd5a57f7471d7bb8402e110d1e6760958c3b5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf003/native/namespace.json": "44d035735e90cccf2f55cdf502c27af4b0c2321390a00879e1f87478407f8fe3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf004/native/namespace.json": "6ac5bbd68741d16cc7491ab3a9f3ef4ce55cbcffe0b40f49159acbda57b3ed80",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf004/native/namespace.json": "ade3e5d7b8bb7ff9bdd984a670a2f2051a730e13786386fae3532fcfa09cc983",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf004/native/namespace.json": "f9abda7e83f08a133ffba208826333aa08da6f9b405ba53e35726d6254d03b4d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf004/native/namespace.json": "73c9aff29c4ec74da138ad37507b8c820a0171515ca26c77f5b68078cc65e6ba",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf005/native/namespace.json": "e0ce6625ee332264b75ffe0fbe93f9a54918fcbbe49d56df049cdcfe602358b1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf005/native/namespace.json": "a10124964386f7cfbcc5798cd0622c136d423f504a476fe04605750432e25a41",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf005/native/namespace.json": "6708d7fff54209264340f6e7dfa44b2b8b00772ff797b6f50bdf678ffe8e1fbd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf005/native/namespace.json": "54717c5adf6b715e21ccf10f51bb9b6d5c5408c269ec0a9bceaf6106f4f86cf3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf006/native/namespace.json": "81fff2e60ed2c5226c97e9e6f303947b3c11630c37e4e686fa35d890ce643686",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf006/native/namespace.json": "367327e7cdfdc581a501332cbd9088eae9f2cbe09eec170bfeb8ba5b0246ec02",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf006/native/namespace.json": "1c0c7e1349a2546b106e060cc33f278ba2a82df0b27c4cf2f1d1e10ad9fb285b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf006/native/namespace.json": "9ecac6e6c966bc148578413ab07d39cc68195c293ebea02667611d8696642fa1",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf007/native/namespace.json": "df990d6f8f8e8f92042198d0dfd2ea2ea51a8334840cdd812fa3a0a978e72a49",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf007/native/namespace.json": "9b9f3fa8471c45345a1e6dfc5dd0fc73560632e44377c52f4b3f4dfc734e9120",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf007/native/namespace.json": "8c6341d5715308ab67e855f6ea93078cc9f593004b61dd79c6bf3417a186176f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf007/native/namespace.json": "a096a7bb39ca5fd7c6872766fef3a54716ebfbe5bf01df05fb7ff455ff7a7e91",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf008/native/namespace.json": "750f8a33004dbadff46581598c91f1d69cfc11d240ddae451046b8788f4d1e6c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf008/native/namespace.json": "9d073bb0d19ecd8a7a637151920023f1c7fcee6fa19b59c9f09dd96d310ffa25",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf008/native/namespace.json": "590baf2300a7bd8f180b175c8aec65ff435c30f81b6efb7425f3a48344725022",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf008/native/namespace.json": "e4cce50910acb98c84e697288f213cf4d2abe97204f36e38723b77d5a070d421",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf009/native/namespace.json": "1e4ca376e6b05472dd4180ed8fd064a518fc96a3ea9798131e7dba3de2acf1c3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf009/native/namespace.json": "7c56b03bec1ca27bd9c1f89e4e1a477914371de67dc61906e36d50063d41cc23",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf009/native/namespace.json": "7c35f857b45db515aca275481b8f0b69d21e3aa5fd986c1f10fcab68ae2de6cc",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf010/native/namespace.json": "feed5c597fc1fb4e6e1cc6f2b5709f54af2296c92562f53bd3e105d01b12d486",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf010/native/namespace.json": "6686701e596fd58eedc5c0665fd0df91bdf7c12722c7e26b385511f42998415b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf010/native/namespace.json": "4ebf2e3eed31413db01488cd4fec376839a35640b8804f431ec416ed97258f68",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf010/native/namespace.json": "ac0cbc7a448ce7e05263d4fde1cfe581453dad2a8a4a610ae4b296f633a1b4b3",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf011/native/namespace.json": "4547c6046fc191011f3d6774ef2518ffeb3022ef4a170944a650582c28bc87ac",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/alternating__occ_3__conf002/native/namespace.json": "377f167d8fb1099aa11f59bed4b768426afb24f86d50acab75eb297ca7f8239f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf011/native/namespace.json": "468ff989ec8bd15f0956e3c3de78f80110b6f9f0e55c8676b6c33a56f692a3e9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf012/native/namespace.json": "37f421efd5d0edf095f0f9260bfe08b2c54577004eb14770c80a6af7b427a44c",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf011/native/namespace.json": "1c98e02799c842e4a17a2fa12fd2aa436e105fffa82c8f3ea200f8d3de30fa51",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf011/native/namespace.json": "61bb029291fcd637460cb08d387c42e68f1bf5a1b8ddafc3f28944d173d95e90",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf012/native/namespace.json": "459fd9fa2c4d540d2b4afbe32b0fc49dbecfafb0afb4fc8d3cb1b537c5815a36",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf013/native/namespace.json": "87677d19eb92de2b9e632c1610f8d54a387e82bb89a1e0f7b8cc53025c846c43",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_3__conf012/native/namespace.json": "44877741190a61ad2f852febe0210e9e5e077b32e8cf13c69279fcafa0fea481",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_2_4__conf012/native/namespace.json": "37d64b22d785b9f32b29a63933e35c24bf291b20ef225fa02632004b67bce9b7",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_3__conf013/native/namespace.json": "8e3d566ddb665be0bcabd6c1311f6b436c9b440023b4de4a877e3c7257034a1f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_native_conveyor/all_same__occ_4__conf014/native/namespace.json": "77b188fab1ae7b03dc2e3ba35a3115da9bcb65b140bd0dec1be08163cabc6c67"
+  },
+  "prepared_states": 47,
+  "pending": 25,
+  "independently_checked": 3,
+  "stopped_hosts": [],
+  "consecutive_scientific_host_failures": {
+    "lambda13": 0,
+    "lambda4": 0
+  },
+  "availability_observation_errors": [
+    {
+      "host": "lambda13",
+      "error": "TimeoutExpired(['/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve', 'list', '--hosts', 'lambda13'], 15)",
+      "availability": "unverified_no_submission"
+    }
+  ]
+}

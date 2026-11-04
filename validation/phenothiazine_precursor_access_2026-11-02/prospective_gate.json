@@ -1,0 +1,80 @@
+{
+  "id": "proposal_ptz_176c4d2f397734ea",
+  "route_status": "hold",
+  "proceed_to_full_redox": false,
+  "proceed_to_feasibility_model": true,
+  "reasons": [
+    "Route review required before full redox calculations"
+  ],
+  "experimental_ease": "unestablished",
+  "reaction_class": "NH_OH_substitution",
+  "precursor_smiles": "N#Cc1ccc2c(c1)Nc1ccccc1S2",
+  "evidence": {
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccc(C#N)cc32)cc1",
+      "precursor_smiles": "N#Cc1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1018]2[c:1016]3[c:1015]([cH:1014][cH:1013][c:1012]([C:1011]#[N:1010])[cH:1017]3)[S:1026][c:1025]3[c:1020]2[cH:1021][cH:1022][cH:1023][cH:1024]3)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[N:1010]#[C:1011][c:1012]1[cH:1013][cH:1014][c:1015]2[c:1016]([cH:1017]1)[NH:1018][c:1020]1[cH:1021][cH:1022][cH:1023][cH:1024][c:1025]1[S:1026]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1018
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "0d96d1f41d9113f6efdeb52d08ad1ec95c35381082762c1b1e0e7c2646d1eee6",
+    "reaction_class": "NH_OH_substitution",
+    "exact_precursor_access_reviewed": true,
+    "attachment_selectivity_reviewed": false,
+    "conditions_defined": true,
+    "balanced_route_reviewed": false,
+    "redox_core_retention_reviewed": false,
+    "conditions": {
+      "review_status": "proposed transfer; not demonstrated for this precursor",
+      "solvent": "DMF (unsubstituted bead precedent)",
+      "reactive_form": "Exact 2-cyanophenothiazine N-H precursor; primary supplier listing and deposited graph reviewed",
+      "base": "NaH (proposed transfer from unsubstituted source)",
+      "counterions": "Na+ and chloride salt; actual phases/speciation unverified",
+      "temperature": "ambient (proposed transfer)",
+      "time": "6 h (proposed transfer)"
+    },
+    "source_urls": [
+      "https://doi.org/10.1021/jo00265a043",
+      "https://www.tcichemicals.com/US/en/p/P2308",
+      "https://pubchem.ncbi.nlm.nih.gov/substance/468592587",
+      "https://doi.org/10.1021/acs.cgd.4c00789.s001"
+    ],
+    "evidence_scope": "Exact N-H precursor access: primary manufacturer listing with deposited graph matched to this design. Primary N-butyl molecular analogue preserves the cyano/phenothiazine connectivity; exact benzylic bead attachment, functional redox retention and operating performance remain unverified.",
+    "limitations": "Precursor identity/listing reviewed, not purchased or independently synthesized. Exact-graft attachment selectivity, balanced actual-condition model, redox retention and operation remain unverified; full redox campaign held.",
+    "precursor_access": {
+      "name": "10H-Phenothiazine-2-carbonitrile",
+      "CAS": "38642-74-9",
+      "supplier": "TCI",
+      "product_code": "P2308",
+      "PubChem_SID": 468592587,
+      "PubChem_CID": 98841,
+      "canonical_SMILES": "N#Cc1ccc2c(c1)Nc1ccccc1S2",
+      "InChIKey": "XZSIGWOVDPSPMG-UHFFFAOYSA-N",
+      "evidence_kind": "manufacturer listing, not acquired material",
+      "stock_price_or_lot_QC_inferred": false
+    },
+    "molecular_analogue": {
+      "doi": "10.1021/acs.cgd.4c00789",
+      "source": "Supporting Information, p.2 and spectra S11-S13",
+      "product_name": "10-butyl-10H-phenothiazine-2-carbonitrile",
+      "conditions": "NaH/DMF; bromobutane; ambient-temperature N-alkylation",
+      "structural_core_and_nitrile_retention_supported": true,
+      "benzylic_or_polymer_attachment_demonstrated": false,
+      "redox_or_battery_performance_inferred": false
+    }
+  },
+  "missing_route_evidence": [
+    "attachment_selectivity_reviewed",
+    "balanced_route_reviewed",
+    "redox_core_retention_reviewed"
+  ]
+}

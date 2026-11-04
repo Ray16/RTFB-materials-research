@@ -1,0 +1,78 @@
+{
+  "checked": 1793677903.3899374,
+  "capacity_for_six_scientific_CPUs_and_three_controllers": {
+    "online_cpus": 32,
+    "load_1m": 1.83642578125,
+    "available_RAM_bytes": 783656947712,
+    "minimum_RAM_GiB": 128
+  },
+  "probes": [
+    {
+      "host": "lambda5",
+      "namespace_sha256": "530e9fa2cfc887c06876deb1c9c5549e040a80d97ef150c188c58892bd607ebb",
+      "checks": {
+        "versions": {
+          "pyscf": "2.14.0",
+          "gpu4pyscf-cuda12x": "1.8.1",
+          "cupy-cuda12x": "13.4.1",
+          "cutensor-cu12": "2.2.0",
+          "fastrlock": "0.8.3"
+        },
+        "worker_imports": [
+          "redox.core.common",
+          "redox.core.io",
+          "redox.qm",
+          "redox.validation.protonation",
+          "redox.workflows.resources"
+        ],
+        "CUDA_context_started": false
+      },
+      "GPU_started": false
+    },
+    {
+      "host": "lambda5",
+      "namespace_sha256": "8db781280357c8edc85bd10b84ca7dea2af45fc2b07336c3c6b4439b691fab84",
+      "checks": {
+        "versions": {
+          "pyscf": "2.14.0",
+          "gpu4pyscf-cuda12x": "1.8.1",
+          "cupy-cuda12x": "13.4.1",
+          "cutensor-cu12": "2.2.0",
+          "fastrlock": "0.8.3"
+        },
+        "worker_imports": [
+          "redox.core.common",
+          "redox.core.io",
+          "redox.qm",
+          "redox.validation.protonation",
+          "redox.workflows.resources"
+        ],
+        "CUDA_context_started": false
+      },
+      "GPU_started": false
+    },
+    {
+      "host": "lambda5",
+      "namespace_sha256": "2ed72044c559eaafd7c0a8bb04465d52a185a91bb1e019be187ccbcbef0f4441",
+      "checks": {
+        "versions": {
+          "pyscf": "2.14.0",
+          "gpu4pyscf-cuda12x": "1.8.1",
+          "cupy-cuda12x": "13.4.1",
+          "cutensor-cu12": "2.2.0",
+          "fastrlock": "0.8.3"
+        },
+        "worker_imports": [
+          "redox.core.common",
+          "redox.core.io",
+          "redox.qm",
+          "redox.validation.protonation",
+          "redox.workflows.resources"
+        ],
+        "CUDA_context_started": false
+      },
+      "GPU_started": false
+    }
+  ],
+  "GPU_started": false
+}

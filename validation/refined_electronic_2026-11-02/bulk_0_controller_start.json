@@ -1,0 +1,32 @@
+{
+  "label": "bulk_0",
+  "owner": {
+    "host": "lambda2",
+    "pid": 2081684,
+    "process_start": "1448387881"
+  },
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/fleet/run_corrected_sampling_queue.py",
+    "--manifest",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/recovery_manifest_03.json",
+    "--storage-peers",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/current_storage_peers.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v5/electronic_queue",
+    "--python",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "--hours",
+    "72",
+    "--pilot-review",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_empty_pilot_review.json",
+    "--pilot-review",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_single_pilot_review.json",
+    "--pilot-review",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/corrected_sampling_2026-11-02/PSS_double_pilot_review.json",
+    "--resume"
+  ],
+  "log": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/bulk_resume_0.log",
+  "checked": 1793683258.8411274
+}

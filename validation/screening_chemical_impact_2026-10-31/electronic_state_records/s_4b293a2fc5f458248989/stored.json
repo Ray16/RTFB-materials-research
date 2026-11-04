@@ -1,0 +1,70 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "6a1c5829d80b7cc2",
+  "geom_sha1": "e500a0334c909990",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/tempo_parent__ox/opt.xyz",
+  "charge": 1,
+  "mult": 1,
+  "id": "tempo_parent",
+  "state": "ox",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -483.50497816121776,
+  "e_smd_eV": -13156.840712602889,
+  "converged_smd": true,
+  "e_gas_Ha": -483.41713689861683,
+  "e_gas_eV": -13154.450430077919,
+  "converged_gas": true,
+  "gas_homo_eV": -15.622470603239647,
+  "gas_lumo_eV": -6.016286207751811,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "anion_unbound": null,
+  "dG_solv_eV": -2.3902825249692254,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -483.50497816121776,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -483.41713689861683,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -11.530324364173419,
+  "smd_lumo_eV": -1.9536537597248327,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "tempo_parent__ox",
+    "record_sha256": "ce5a8fb49951a94b84db5bf0e2318ece3bde63c3ffb9f9c779fb752c30034510",
+    "original_sha256": "a96c6cd5a392fba1129f12440260b9fe33882da0a1da110a8f4e84d07f58cd0e"
+  }
+}

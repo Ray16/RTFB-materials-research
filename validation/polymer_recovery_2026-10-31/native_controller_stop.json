@@ -1,0 +1,42 @@
+{
+  "host": "lambda1",
+  "pid": 3350477,
+  "process_start": "566451423",
+  "argv": [
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/run_checked_native_queue.py",
+    "--cohort",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/polymer_energy_classes_2026-10-30/queue_inputs.json",
+    "--preparation",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/preparation/status.json",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/native_conveyor_2026-10-30/dispatch",
+    "--python",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "--hours",
+    "24",
+    "--resume",
+    "--effective-reference",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-10-30_effective_native/all_same__occ_4__conf003/native/campaign_parent/all_same__occ_4__conf003/effective_resource_review.json"
+  ],
+  "started": 1793428613.5215037,
+  "only_controller_signalled": true,
+  "scientific_workers_signalled": false,
+  "last_children": [
+    {
+      "pid": 3940159,
+      "argv": [
+        "ssh",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=8",
+        "lambda11",
+        "env PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python -c 'import json,os,psutil,subprocess; from redox.workflows.archived_native_namespace import remaining_host_promises; m=psutil.virtual_memory(); g=subprocess.run([\"nvidia-smi\",\"--id\",'\"'\"'1'\"'\"',\"--query-gpu=memory.total\",\"--format=csv,noheader,nounits\"],capture_output=True,text=True,timeout=20,check=True); print(json.dumps(dict(available=m.available,promised=remaining_host_promises(),GPU_MiB=float(g.stdout.strip()),load=os.getloadavg()[0],cpus=os.cpu_count())))'"
+      ]
+    }
+  ],
+  "children_at_stop": [],
+  "status": "exact_idle_controller_stopped",
+  "finished": 1793428619.0759954
+}

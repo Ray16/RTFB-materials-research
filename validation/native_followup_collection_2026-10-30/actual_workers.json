@@ -1,0 +1,61 @@
+{
+  "status": "two_pre_science_holds_now_actual_native_starts",
+  "checked": 1793377059.4650698,
+  "workers": [
+    {
+      "key": "alternating__occ_2__conf006",
+      "host": "lambda1",
+      "pid": 2186139,
+      "start": "562684658",
+      "CPUs": [
+        6,
+        7
+      ],
+      "parent": 2185892,
+      "parent_start": "562684568",
+      "lease": [
+        "2185892",
+        "lambda1",
+        "rzhu",
+        "redox-archived-native",
+        "1793376669",
+        "562684568"
+      ],
+      "GPU": "4",
+      "CUPY_CACHE_DIR": "/tmp/cupy_kernel_cache",
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2"
+      }
+    },
+    {
+      "key": "alternating__occ_2__conf008",
+      "host": "lambda11",
+      "pid": 2645728,
+      "start": "1417724458",
+      "CPUs": [
+        0,
+        1
+      ],
+      "parent": 2645654,
+      "parent_start": "1417724419",
+      "lease": [
+        "2645654",
+        "lambda11",
+        "rzhu",
+        "redox-archived-native",
+        "1793376669",
+        "1417724419"
+      ],
+      "GPU": "0",
+      "CUPY_CACHE_DIR": "/tmp/cupy_kernel_cache",
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2"
+      }
+    }
+  ],
+  "completed_native_G_inferred": false
+}

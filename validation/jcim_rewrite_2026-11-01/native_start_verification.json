@@ -1,0 +1,38 @@
+{
+  "status": "charged_polymer_native_component_running",
+  "owner": {
+    "host": "lambda4",
+    "pid": 965661,
+    "process_start": "45130217"
+  },
+  "actual_start": "45130217",
+  "affinity": [
+    0,
+    1
+  ],
+  "thread_caps": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "NUMEXPR_NUM_THREADS": "2",
+    "OMP_THREAD_LIMIT": "2",
+    "OPENBLAS_NUM_THREADS": "2",
+    "OMP_NUM_THREADS": "2",
+    "XTB_THREADS": "2",
+    "MKL_NUM_THREADS": "2"
+  },
+  "gpu_processes": "GPU-49ab60bc-b8e1-e031-8966-b947648e9330, 965661, 5574\nGPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 3319996, 366\nGPU-9c87e195-86ff-7ce6-f483-91f2252dc9ff, 3320559, 31780\nGPU-587fc9d4-517f-3df3-cf06-547e2a51104e, 3320814, 31828\nGPU-7e8e466e-2e08-08f1-7597-9942f36b7ac7, 3321190, 31780\nGPU-eb49e30a-38b4-a788-d4be-8675eabd59e7, 3321636, 31732\n",
+  "load_1m": 4.62890625,
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-01_viologen_all_same_occ_2_native_storage_recovery/namespace.json",
+  "worker_owner_verified": true,
+  "progress_observed_at_unix": 1793595897.7357993,
+  "SCF_progress": {
+    "cycle": 28,
+    "E_Ha": -3118.011833875395,
+    "updated": 1793595089.5271444
+  },
+  "latest_stage": {
+    "stage": "rks_make_h1",
+    "status": "running",
+    "updated": 1793595535.7199495,
+    "qualified_native_G": false
+  }
+}

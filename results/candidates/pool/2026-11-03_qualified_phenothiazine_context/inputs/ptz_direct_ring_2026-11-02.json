@@ -1,0 +1,671 @@
+[
+  {
+    "id": "phenothiazine",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / H",
+    "family": "phenothiazine p-type",
+    "frag": "c1ccc2c(c1)Sc1ccccc1N2[*:1]",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+    "precursor_smiles": "c1ccc2c(c1)Nc1ccccc1S2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "H",
+        "template_atom": null,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+      "precursor_smiles": "c1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1023]2[c:1013]3[cH:1012][cH:1011][cH:1010][cH:1015][c:1014]3[S:1016][c:1017]3[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[cH:1010]1[cH:1011][cH:1012][c:1013]2[c:1014]([cH:1015]1)[S:1016][c:1017]1[cH:1018][cH:1019][cH:1020][cH:1021][c:1022]1[NH:1023]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1023
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "25642b6cdf9c02ba3a508e02fd8ac57a1eab728e111ccb6129b9a10b666d94fd",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "c1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccccc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_1b98adfe48bf91fc",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1cccc2c1N([*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cccc(F)c32)cc1",
+    "precursor_smiles": "Fc1cccc2c1Nc1ccccc1S2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 3,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 13,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cccc(F)c32)cc1",
+      "precursor_smiles": "Fc1cccc2c1Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1017]2[c:1016]3[c:1011]([F:1010])[cH:1012][cH:1013][cH:1014][c:1015]3[S:1025][c:1024]3[c:1019]2[cH:1020][cH:1021][cH:1022][cH:1023]3)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[F:1010][c:1011]1[cH:1012][cH:1013][cH:1014][c:1015]2[c:1016]1[NH:1017][c:1019]1[cH:1020][cH:1021][cH:1022][cH:1023][c:1024]1[S:1025]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1017
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "fe7eb7d5d337a9bb88be29e57f99c6dc8ae1a953ba122e555c145afe3351a152",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "Fc1cccc2c1Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cccc(F)c32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_695c6ee54fe1f0ff",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1ccc2c(c1)N([*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccc(F)cc32)cc1",
+    "precursor_smiles": "Fc1ccc2c(c1)Nc1ccccc1S2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 4,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 12,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccc(F)cc32)cc1",
+      "precursor_smiles": "Fc1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1017]2[c:1015]3[c:1014]([cH:1013][cH:1012][c:1011]([F:1010])[cH:1016]3)[S:1025][c:1024]3[c:1019]2[cH:1020][cH:1021][cH:1022][cH:1023]3)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[F:1010][c:1011]1[cH:1012][cH:1013][c:1014]2[c:1015]([cH:1016]1)[NH:1017][c:1019]1[cH:1020][cH:1021][cH:1022][cH:1023][c:1024]1[S:1025]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1017
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "b830e12862301d4da6ef254cb8459fb2109e4e1de2090c596bb57d9b017dc7d9",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "Fc1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccc(F)cc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_790d28cdb0748b61",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1ccc2c(c1)Sc1ccccc1N2[*:1]",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cc(F)ccc32)cc1",
+    "precursor_smiles": "Fc1ccc2c(c1)Sc1ccccc1N2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 5,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 11,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cc(F)ccc32)cc1",
+      "precursor_smiles": "Fc1ccc2c(c1)Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1024]2[c:1014]3[cH:1013][cH:1012][c:1011]([F:1010])[cH:1016][c:1015]3[S:1017][c:1018]3[cH:1019][cH:1020][cH:1021][cH:1022][c:1023]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[F:1010][c:1011]1[cH:1012][cH:1013][c:1014]2[c:1015]([cH:1016]1)[S:1017][c:1018]1[cH:1019][cH:1020][cH:1021][cH:1022][c:1023]1[NH:1024]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1024
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "2e3d09f1847c32a4f6cbd15837ece21647aadf1fedee90a931c7fd619d37ac74",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "Fc1ccc2c(c1)Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cc(F)ccc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_168f8f68f3ef0e4d",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1cccc2c1Sc1ccccc1N2[*:1]",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3c(F)cccc32)cc1",
+    "precursor_smiles": "Fc1cccc2c1Sc1ccccc1N2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 6,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 10,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3c(F)cccc32)cc1",
+      "precursor_smiles": "Fc1cccc2c1Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1024]2[c:1015]3[cH:1014][cH:1013][cH:1012][c:1011]([F:1010])[c:1016]3[S:1017][c:1018]3[cH:1019][cH:1020][cH:1021][cH:1022][c:1023]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[F:1010][c:1011]1[cH:1012][cH:1013][cH:1014][c:1015]2[c:1016]1[S:1017][c:1018]1[cH:1019][cH:1020][cH:1021][cH:1022][c:1023]1[NH:1024]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1024
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "5778e5b3f10df705b6e1d0617d82ff5750fe743f76d927400b64125de46ccdf1",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "Fc1cccc2c1Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3c(F)cccc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_46214027ff49dec8",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1cccc2c1N([*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cccc(C#N)c32)cc1",
+    "precursor_smiles": "N#Cc1cccc2c1Nc1ccccc1S2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 3,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 13,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cccc(C#N)c32)cc1",
+      "precursor_smiles": "N#Cc1cccc2c1Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1018]2[c:1017]3[c:1012]([C:1011]#[N:1010])[cH:1013][cH:1014][cH:1015][c:1016]3[S:1026][c:1025]3[c:1020]2[cH:1021][cH:1022][cH:1023][cH:1024]3)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[N:1010]#[C:1011][c:1012]1[cH:1013][cH:1014][cH:1015][c:1016]2[c:1017]1[NH:1018][c:1020]1[cH:1021][cH:1022][cH:1023][cH:1024][c:1025]1[S:1026]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1018
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "3e5a10204054fb91199790370915c6234ae67a19c8a31d9275f52f59c92345df",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "N#Cc1cccc2c1Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cccc(C#N)c32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_176c4d2f397734ea",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1ccc2c(c1)N([*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccc(C#N)cc32)cc1",
+    "precursor_smiles": "N#Cc1ccc2c(c1)Nc1ccccc1S2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 4,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 12,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccc(C#N)cc32)cc1",
+      "precursor_smiles": "N#Cc1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1018]2[c:1016]3[c:1015]([cH:1014][cH:1013][c:1012]([C:1011]#[N:1010])[cH:1017]3)[S:1026][c:1025]3[c:1020]2[cH:1021][cH:1022][cH:1023][cH:1024]3)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[N:1010]#[C:1011][c:1012]1[cH:1013][cH:1014][c:1015]2[c:1016]([cH:1017]1)[NH:1018][c:1020]1[cH:1021][cH:1022][cH:1023][cH:1024][c:1025]1[S:1026]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1018
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "0d96d1f41d9113f6efdeb52d08ad1ec95c35381082762c1b1e0e7c2646d1eee6",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "N#Cc1ccc2c(c1)Nc1ccccc1S2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3ccc(C#N)cc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_2d1a49afd8ea4273",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1ccc2c(c1)Sc1ccccc1N2[*:1]",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cc(C#N)ccc32)cc1",
+    "precursor_smiles": "N#Cc1ccc2c(c1)Sc1ccccc1N2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 5,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 11,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cc(C#N)ccc32)cc1",
+      "precursor_smiles": "N#Cc1ccc2c(c1)Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1025]2[c:1015]3[cH:1014][cH:1013][c:1012]([C:1011]#[N:1010])[cH:1017][c:1016]3[S:1018][c:1019]3[cH:1020][cH:1021][cH:1022][cH:1023][c:1024]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[N:1010]#[C:1011][c:1012]1[cH:1013][cH:1014][c:1015]2[c:1016]([cH:1017]1)[S:1018][c:1019]1[cH:1020][cH:1021][cH:1022][cH:1023][c:1024]1[NH:1025]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1025
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "b5917ae4a0d4ec3f0a50449ba5d2c617da118746d8974295f47f1e1792088c7e",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "N#Cc1ccc2c(c1)Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3cc(C#N)ccc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  },
+  {
+    "id": "proposal_ptz_9bfe59f1def340d2",
+    "name": "Direct N-(4-methylbenzyl) phenothiazine local graft / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1cccc2c1Sc1ccccc1N2[*:1]",
+    "states": [
+      [
+        "neu",
+        0,
+        1,
+        0
+      ],
+      [
+        "ox",
+        1,
+        2,
+        1
+      ]
+    ],
+    "provenance": {
+      "source": "https://doi.org/10.1021/jo00265a043",
+      "scope": "Primary bead-attachment precedent for unsubstituted phenothiazine only. Ring-substituted precursors and grafts remain hypotheses; source polymer data are not properties of these exact capped structures."
+    },
+    "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3c(C#N)cccc32)cc1",
+    "precursor_smiles": "N#Cc1cccc2c1Sc1ccccc1N2",
+    "baseline_id": "phenothiazine",
+    "hypothesis": "Test positional F/CN electronic changes while retaining direct N-benzylic attachment. One-electron oxidation is the declared comparison; no second accessible electron, steric-shielding benefit or improved grafting is presumed.",
+    "properties_computed": false,
+    "route_scope": "The unsubstituted N-linked baseline has a reviewed bead-attachment precedent. Every F/CN exact precursor/product pair requires its own access, selectivity and redox-retention review before a full campaign. Proposed condition transfer is not a demonstration for substituted structures.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 6,
+        "baseline_id": "phenothiazine"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 10,
+        "baseline_id": "phenothiazine"
+      }
+    ],
+    "route_binding": {
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3c(C#N)cccc32)cc1",
+      "precursor_smiles": "N#Cc1cccc2c1Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "reaction_class": "NH_OH_substitution",
+      "mapped_product_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][N:1025]2[c:1016]3[cH:1015][cH:1014][cH:1013][c:1012]([C:1011]#[N:1010])[c:1017]3[S:1018][c:1019]3[cH:1020][cH:1021][cH:1022][cH:1023][c:1024]32)[cH:1008][cH:1009]1",
+      "mapped_precursor_smiles": "[N:1010]#[C:1011][c:1012]1[cH:1013][cH:1014][cH:1015][c:1016]2[c:1017]1[S:1018][c:1019]1[cH:1020][cH:1021][cH:1022][cH:1023][c:1024]1[NH:1025]2",
+      "mapped_site_smiles": "[CH3:1001][c:1002]1[cH:1003][cH:1004][c:1005]([CH2:1006][Cl:9001])[cH:1008][cH:1009]1",
+      "new_bond_atom_maps": [
+        1006,
+        1025
+      ],
+      "leaving_atom_map": 9001,
+      "heavy_atom_mapping": true,
+      "model_scope": "4-methylbenzyl local site on a preformed polymer"
+    },
+    "exact_design_key": "c73de905b1c8733afc50e40f016aedc826869b49cf26219155922eea898ff6de",
+    "reference_reaction": {
+      "reaction_class": "NH_OH_substitution",
+      "precursor_smiles": "N#Cc1cccc2c1Sc1ccccc1N2",
+      "site_smiles": "Cc1ccc(CCl)cc1",
+      "product_smiles": "Cc1ccc(CN2c3ccccc3Sc3c(C#N)cccc32)cc1",
+      "byproduct_smiles": "Cl",
+      "precursor_charge": 0,
+      "product_charge": 0,
+      "byproduct_charge": 0,
+      "base_correction_required": true,
+      "atom_balanced": true,
+      "charge_balanced": true,
+      "model": "capped-site substitution; explicit byproduct; no base correction"
+    }
+  }
+]

@@ -1,0 +1,125 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/fc_functional_sensitivity_2026-10-25/pbe0__ox/input.xyz",
+  "charge": 1,
+  "mult": 2,
+  "solvent": "acetonitrile",
+  "optimized": false,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "pbe0",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": null,
+  "xc": "pbe0",
+  "basis": "def2-tzvpd",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "pbe0",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": null,
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "2ea6640ea1251941",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [
+    "rm0",
+    "rm1"
+  ],
+  "e_smd_Ha": -1650.1278503721546,
+  "e_smd_eV": -44902.26629173859,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.1225897925656,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1650.1020919830016,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1650.1278503657968,
+      "converged": true
+    },
+    {
+      "guess": "rm0",
+      "e_Ha": -1650.1225898229236,
+      "converged": true
+    },
+    {
+      "guess": "rm1",
+      "e_Ha": -1650.1278503721546,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -7.978319622287602,
+  "smd_lumo_eV": -3.0405241241637673,
+  "smd_s_squared": 0.7908,
+  "smd_spin_contam": 0.0408,
+  "gas_occupation_guesses": [
+    "rm0",
+    "rm1"
+  ],
+  "e_gas_Ha": -1650.0403444982676,
+  "e_gas_eV": -44899.88513560546,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1650.0350560734169,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1650.0148825956767,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1650.0148825994952,
+      "converged": true
+    },
+    {
+      "guess": "rm0",
+      "e_Ha": -1650.0403444982676,
+      "converged": true
+    },
+    {
+      "guess": "rm1",
+      "e_Ha": -1650.040344478089,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -12.013749358109498,
+  "gas_lumo_eV": -7.095768370513002,
+  "gas_s_squared": 0.791,
+  "gas_spin_contam": 0.041,
+  "dG_solv_eV": -2.3811561331329427,
+  "electronic_reference_method_control": true,
+  "primary_reference_modified": false,
+  "geometry_reoptimized": false,
+  "thermochemistry_computed": false,
+  "potential_computed": false
+}

@@ -1,0 +1,92 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "2007632ca1dbc98f",
+  "geom_sha1": "10271e17b076b99d",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/bm_1_2_naphthoquinone__red1/opt.xyz",
+  "charge": -1,
+  "mult": 2,
+  "id": "bm_1_2_naphthoquinone",
+  "state": "red1",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -535.2833435523419,
+  "e_smd_eV": -14565.801812446665,
+  "converged_smd": true,
+  "e_gas_Ha": -535.1953333359124,
+  "e_gas_eV": -14563.40693245381,
+  "converged_gas": true,
+  "gas_homo_eV": -2.3741012182074024,
+  "gas_lumo_eV": 3.427564460241125,
+  "gas_s_squared": 0.7727,
+  "gas_spin_contam": 0.0227,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.39487999285445,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -535.2833435523419,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -535.2833435520454,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -535.2833435522775,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -535.1953333358317,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -535.1953333359124,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -535.1953333355577,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -6.085461063438539,
+  "smd_lumo_eV": -0.19872172718740588,
+  "smd_s_squared": 0.7694,
+  "smd_spin_contam": 0.0194,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "bm_1_2_naphthoquinone__red1",
+    "record_sha256": "b96b6f2b5b09160ca27a8a68a05a0e2bf80773e83c113b159dc7aabee3e2cf92",
+    "original_sha256": "43d3c59fabd96f3eefe136fe7eb6413b85775f923c2396336b8ffe7dd7c0c34b"
+  }
+}

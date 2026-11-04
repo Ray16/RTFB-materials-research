@@ -1,0 +1,30 @@
+{
+  "host": "lambda5",
+  "pid": 2901231,
+  "process_start": "754800817",
+  "argv": [
+    "env",
+    "PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src",
+    "PYTHONDONTWRITEBYTECODE=1",
+    "OMP_NUM_THREADS=1",
+    "OMP_THREAD_LIMIT=1",
+    "MKL_NUM_THREADS=1",
+    "OPENBLAS_NUM_THREADS=1",
+    "NUMEXPR_NUM_THREADS=1",
+    "XTB_THREADS=1",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+    "-u",
+    "-m",
+    "redox.workflows.counterion_gradient_pilot",
+    "launch",
+    "--spec",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_fixed_gradient_pilot/namespace.json",
+    "--gpu",
+    "0",
+    "--out",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_T4_fixed_gradient_pilot/placement_002"
+  ],
+  "checked": 1793667428.2313156,
+  "original_prelaunch_owner_confirmed_closed": true,
+  "scientific_outputs_absent_before_retry": true
+}

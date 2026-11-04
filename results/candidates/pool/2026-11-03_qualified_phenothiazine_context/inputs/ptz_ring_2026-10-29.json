@@ -1,0 +1,356 @@
+[
+  {
+    "id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / H",
+    "family": "phenothiazine p-type",
+    "frag": "c1ccc2c(c1)Sc1ccccc1N2CCO[*:1]",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3ccccc32)cc1",
+    "precursor_smiles": "OCCN1c2ccccc2Sc2ccccc21",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "H",
+        "template_atom": null,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_4e36eb77e7847ebe",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1ccc2c(c1)Sc1ccccc1N2CCO[*:1]",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3cc(F)ccc32)cc1",
+    "precursor_smiles": "OCCN1c2ccccc2Sc2cc(F)ccc21",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 0,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 9,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_63a9e74d1cc3193d",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1ccc2c(c1)N(CCO[*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3ccc(F)cc32)cc1",
+    "precursor_smiles": "OCCN1c2ccccc2Sc2ccc(F)cc21",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 1,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 10,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_0ecd6fe4a1951542",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1cccc2c1N(CCO[*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3cccc(F)c32)cc1",
+    "precursor_smiles": "OCCN1c2ccccc2Sc2cccc(F)c21",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 2,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 11,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_a0962a066577405d",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / F",
+    "family": "phenothiazine p-type",
+    "frag": "Fc1cccc2c1Sc1ccccc1N2CCO[*:1]",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3c(F)cccc32)cc1",
+    "precursor_smiles": "OCCN1c2ccccc2Sc2c(F)cccc21",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 5,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "F",
+        "template_atom": 8,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_c5ea44ee9bbca0da",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1ccc2c(c1)Sc1ccccc1N2CCO[*:1]",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3cc(C#N)ccc32)cc1",
+    "precursor_smiles": "N#Cc1ccc2c(c1)Sc1ccccc1N2CCO",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 0,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 9,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_60b095d756c77a30",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1ccc2c(c1)N(CCO[*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3ccc(C#N)cc32)cc1",
+    "precursor_smiles": "N#Cc1ccc2c(c1)N(CCO)c1ccccc1S2",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 1,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 10,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_55ceb618a4796694",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1cccc2c1N(CCO[*:1])c1ccccc1S2",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3cccc(C#N)c32)cc1",
+    "precursor_smiles": "N#Cc1cccc2c1N(CCO)c1ccccc1S2",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 2,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 11,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  },
+  {
+    "id": "proposal_ptz_c9bb0b2a518d7b24",
+    "name": "O-linked hydroxyethyl phenothiazine baseline / CN",
+    "family": "phenothiazine p-type",
+    "frag": "N#Cc1cccc2c1Sc1ccccc1N2CCO[*:1]",
+    "states": [
+      [
+        "neutral",
+        0,
+        1,
+        0
+      ],
+      [
+        "oxidized",
+        1,
+        2,
+        1
+      ]
+    ],
+    "product_smiles": "Cc1ccc(COCCN2c3ccccc3Sc3c(C#N)cccc32)cc1",
+    "precursor_smiles": "N#Cc1cccc2c1Sc1ccccc1N2CCO",
+    "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2",
+    "hypothesis": "Single ring substitutions test electronic perturbations at fixed O-linked attachment and linker; site equivalence is deduplicated, and shielding is not presumed.",
+    "properties_computed": false,
+    "route_scope": "Exact precursor access, selectivity, grafting conditions and retained redox activity require review; no new full redox campaign admitted.",
+    "recipes": [
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 5,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      },
+      {
+        "axis": "single_ring_substitution",
+        "substituent": "CN",
+        "template_atom": 8,
+        "baseline_id": "source_ptz_hydroxyethyl_ed5a333777f2"
+      }
+    ]
+  }
+]

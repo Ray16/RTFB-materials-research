@@ -1,0 +1,100 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/uma/viologen/ox1/relaxed.xyz",
+  "charge": 1,
+  "mult": 2,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native_recovery_checked/radical/ox1/case/dft/viologen/ox1/opt.xyz",
+  "e_smd_Ha": -845.3866822374216,
+  "e_smd_eV": -23004.1435375768,
+  "converged_smd": true,
+  "e_gas_Ha": -845.2990718536616,
+  "e_gas_eV": -23001.75953758515,
+  "converged_gas": true,
+  "dG_solv_eV": -2.3839999916516628,
+  "id": "viologen",
+  "state": "ox1",
+  "n_e": -1,
+  "g_thermal_eV": null,
+  "zpe_eV": 9.054999708741406,
+  "n_imag": null,
+  "freq_min_cm": null,
+  "thermal_method": "gfn2-xtb",
+  "freq_level": "gfn2-xtb (RRHO, 298.15K)",
+  "geometry_optimization_converged": true,
+  "optimization_SCF_converged": true,
+  "opt_gradient_grid_response": true,
+  "minimum_repair_source": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/ox1/case/dft/viologen/ox1/opt.xyz",
+  "minimum_repair_source_sha256": "a0691a363c2d9bfe80572f6a9f6702842387734962430e1ae3ecfbeb9dca1451",
+  "gas_homo_eV": -9.27691401935948,
+  "gas_lumo_eV": -4.00672526279817,
+  "gas_s_squared": 0.7713,
+  "gas_spin_contam": 0.0213,
+  "anion_unbound": null,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -845.3866822373316,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -845.3866822374216,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -845.3866822371251,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -845.2990718536616,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -845.2990718536453,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -845.2990718535325,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -6.0674388067679805,
+  "smd_lumo_eV": -0.8120085664517547,
+  "smd_s_squared": 0.771,
+  "smd_spin_contam": 0.021,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "legacy_thermal_archive": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/ox1/case/dft/viologen/ox1/result.json",
+  "recovery_input_record": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-30_viologen_native/ox1/case/repairs/viologen/ox1/1793417904440902921/branch_-1/result.json",
+  "recovery_input_record_sha256": "c3d91beb4a4d3093c0a21f9115ef053a7e9ac1b9103124132bd3478b8542f2e2",
+  "recovery_metadata_scope": "provenance-path relocation; chemistry, geometry and addressed energy unchanged"
+}

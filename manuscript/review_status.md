@@ -1,0 +1,172 @@
+# Current manuscript review disposition
+
+As of 3 November 2026, this is a 21-page JCIM working article with a separate
+36-page SI. Submission remains incomplete. Historical review dispositions are
+preserved in Git; the source-frozen manuscript epoch is selected by
+[evidence/current.json](evidence/current.json).
+
+The [seven-outcome chloride followup](../validation/counterion_completion_2026-11-03/README.md)
+is now integrated into the article, SI Table S11 and slide 21. The finite 1-M
+range is +5.33 to +22.36 kJ/mol, with five numerical duplicate groups and
+positive values at all tested cutoffs. This expands the declared sample while
+retaining conditional reaction and incomplete-speciation limits. The earlier
+four- and six-outcome snapshots remain preserved.
+
+## Next publication decisions
+
+Keep the paper's current identity inventory fixed while completing a bounded
+comparison on exact viologen, TEMPO and PMDI. Phenothiazine now adds a qualified
+finite first-oxidation result as a secondary example. Its state/reference
+checks are complete; experimental and material qualification remain separate.
+Phthalimide remains a method control. Compare molecule-only,
+route-aware local-graft and polymer-context interpretations using explicitly
+matched inputs. Record changed priorities, supported conclusions and missing
+evidence separately; an evidence hold is not a demonstrated synthetic failure.
+The existing five interpretation-transfer tests are the starting evidence,
+not proof of superior screening accuracy.
+
+For the current finite-comparison paper, every reported cycle must use
+independently qualified, compatible state and reference components. Equilibrium
+preferences additionally require complete and adequately sampled cycles;
+otherwise the conclusions stay limited to the retained geometries. A claim of
+superior screening accuracy would require an external comparison and is not
+made here. Representative ion and reaction-condition sensitivity is required
+for any broader reaction interpretation; the current grafting values remain
+conditional. Additional candidate enumeration is useful only when it fills a
+declared coverage gap. Exact-graft experimental data would strengthen
+application claims; the retrospective parent benchmark cannot establish
+polymer performance. Final release and deposition remain required for submission.
+
+| Requirement | Current evidence | Still required |
+| --- | --- | --- |
+| M1: linked exact-candidate assessment | Exact viologen redox ladder and three-start local quaternization; TEMPO directional MeCN response; finite PMDI first-site/neighbor cycles; twelve checked alternate-model polymer components and all four declared matched neighboring-graft G cycles | Retain finite-model and conditional-reaction scope; qualify additional components only if their quantities enter a headline claim; full material admission is not claimed |
+| M2: redox accuracy | 39 sourced endpoints from 30 molecules/seven studies; MAE 0.247 V, grouped diagnostics and reference handling | Retain retrospective/domain limits; no NDI validation or exact-graft experimental accuracy is inferred |
+| M3: reaction convention | DBU/HCl and DIPEA source comparisons; four of five tested DBU sign screens change relative to HCl while pairwise ranks remain unchanged; seven exact viologen/chloride outcomes pass full native QC and form five duplicate groups | Test the scenarios needed for the claimed interpretation, or retain conditional ΔG without a synthesis-feasibility conclusion; ΔG is not yield or rate |
+| M4: polymer sampling | Earlier forty-input empty cohorts pass their finite diagnostic; the first corrected occupied 20-input cell fails the 2-kJ/mol diagnostic across all duplicate/rotor scenarios; SI Table S17 reports the signed changes | For equilibrium claims, complete and converge every required cycle component; otherwise restrict conclusions to retained geometries. Phthalimide failure does not establish viologen convergence |
+| M5: basis sensitivity | Five neutral-partner alternative-basis controls | Preserve limited scope; no complete basis-convergence claim |
+| M6: numerical implementation | Native derivative/mode/partition checks; 71 benchmark electronic repeats; exact viologen/base-reaction panels; three full 119-atom Hessian controls | Other benchmark/base-reaction nuclear coverage and wider corrected production qualification |
+| M7: reproducibility | Versioned exact-viologen CPU example; 75-state numerical cache; checked xTB component relocation; local reviewer collection and new control archive | Final synchronized code/data/environment release, author/license metadata and public deposition |
+| M8: literature | Verified base reference audit and separately checked methodological/polymer additions | Final built bibliography and claim/source consistency |
+| M9: publication narrative | Rewritten article; five interpretation-transfer tests and a failed prospective occupied sampling diagnostic; concrete contribution in the introduction, results and conclusion; separate SI and focused slides | Lead with matched motif/chain and finite-backbone comparisons; keep the common-base shift secondary; reconcile final figures, evidence and release statements |
+
+## Numerical reliability and its limits
+
+The [implementation assessment](../validation/screening_chemical_impact_2026-10-31/README.md)
+reproduces a GPU4PySCF screening defect on V100/H100 and checks an isolated
+upstream correction. All 71 benchmark electronic states pass independent repeat
+review; the largest reference-cancelled electronic potential shift is 8.66e-11 V.
+Three [119-atom full-Hessian controls](../validation/polymer_hessian_reproduction_2026-10-31/README.md)
+pass physical reconstruction and prospective comparisons; their largest nuclear
+term difference is 1.67e-8 eV. These are scoped controls rather than broad
+production or experimental qualification. New uncorrected admissions remain held.
+
+The [new component panels](../validation/jcim_completion_2026-11-02/README.md)
+cover ten exact viologen states and twenty-one base-reaction inputs, sharing two
+Fc executions. All 70 actual SCF molecular frames are independently checked.
+Corrected-minus-installed electronic contributions are at most 1.24e-11 V for
+viologen potentials, 1.35e-9 kJ/mol for three local grafting sums and 4.18e-9
+kJ/mol for five HCl-reference/twenty base-assisted sums. Retained nuclear terms
+are not promoted to newly qualified total G by these electronic checks.
+
+## Lead and oligomer evidence
+
+The exact viologen's checked molecular reductions are −0.608/−1.208 V versus
+matched Fc in MeCN. Local separated-ion quaternization is −11.49 kJ/mol at
+298.15 K; three precursor starts span 1.50 kJ/mol and rotor settings give
+−13.30 to −11.49 kJ/mol. This route has no HCl/base term. Salt association,
+exchange, reflux conditions and polymer accessibility remain unresolved.
+[Source/reproduction](../validation/viologen_grafting_2026-10-31/README.md).
+
+The [ionic polymer collection](../validation/viologen_native_2026-11-02/README.md)
+now contains twelve checked stationary components and four balanced
+whole-chain electronic nonadditivities: adjacent/one-spacer values are
+−3.46/+18.68 kJ/mol for all-same and +1.20/−13.48 kJ/mol for alternating
+configuration. They are single-conformer E terms under one corrected
+r2SCAN-D4/SVP smooth-surface MeCN model. They supply neither interaction G,
+isolated motif binding nor operating-state coupling.
+
+The alternate polymer collection now has twelve independently checked components
+and all four declared finite G cycles: all-same adjacent −3.94 kJ/mol, all-same
+one-spacer +22.58, alternating adjacent +8.28, and alternating one-spacer −5.30
+at the primary cutoff. Both finite signs reverse with backbone configuration.
+Each double-graft component has a full Hessian and all 25 actual SCF frames checked.
+The alternating adjacent recovery uses its original source-checked full matrix
+and response, all 25 fresh center/displaced evaluations, and independent own-mode
+and nuclear reconstruction. No ensemble or material inference follows.
+[Current collection](../validation/ionic_cycle_completion_2026-11-02/complete_cycles_12.json).
+
+The manuscript's frozen corrected phthalimide-control snapshot contains 100
+checked electronic inputs and 31 checked native inputs out of 240 declared
+slots. These are publication-snapshot counts, not a live fleet census. Its first
+complete occupied cell fails the declared ten-to-twenty sampling diagnostic;
+eleven cells and balanced occupied ensemble cycles remain incomplete. The
+largest 119-atom pilot passes independent minimum, derivative, wavefunction and
+resource review. Separately, seven exact local viologen/chloride outcomes from
+five original starts pass full native QC and give finite 1-M association G of
++5.33 to +22.36 kJ/mol at the primary cutoff. They form five numerical duplicate
+groups. Failed stationary poses remain preserved and unqualified; other
+contacts and actual-condition speciation remain open. Twelve frozen motif
+triplets additionally pass 72 actual SCF reviews; local repulsion and the
+whole-chain E cycle have opposite signs in two of four parent frames. These
+motif and chloride-contact results are integrated into the current frozen
+manuscript and slide evidence. No hit-count entropy is introduced.
+[Sampling progress](../validation/corrected_sampling_2026-11-02/README.md).
+
+Phenothiazine's earlier geometry failures are historical: three refined
+geometries and their fresh electronic states now pass review. Two neutral
+native Hessians fail the unchanged symmetry threshold; component reconstruction
+traces their antisymmetry to the legacy CDS derivative step. The original
+oxidized native component independently qualifies, but a qualified oxidized
+component alone cannot supply an oxidation potential. All three finer-step
+controls now independently qualify their native free energies, with 63 actual
+SCF checkpoints checked in total in the
+[new collection](../validation/phenothiazine_cds_2026-11-03/current_03.json).
+The matched oxidized step sensitivity is below 6e-9 eV across the cutoffs.
+Exact Fc/Fc+ reference compatibility and cycle assembly now pass with component
+numerical policies retained. The [checked finite first oxidation](../validation/phenothiazine_cds_2026-11-03/redox_cycle.json)
+is +0.626 V versus Fc in MeCN, spanning +0.616 to +0.626 V across cutoffs.
+It is included as a secondary molecular result, with no experimental,
+conformer-ensemble or polymer-performance inference.
+[Native evidence and numerical-policy scope](../validation/phenothiazine_cds_2026-11-03/README.md).
+
+The [full primary molecular cohort](../validation/ionic_cycle_completion_2026-11-02/README.md)
+now repeats all ten exact viologen reaction/reference states with nine new
+molecular Hessians and independent analytic chloride translation. Eighty-one
+native SCF frames and occupied-orbital spin values pass reconstruction; 70
+additional electronic-control wavefunctions also pass independent spin review.
+The six complete cycles change by at most 2.44e-8 V or 1.54e-6 kJ/mol from the
+source across all cutoffs. This qualifies numerical reproduction of the tested
+primary cohort, without experimental/speciation or occupied-ensemble admission.
+
+TEMPO retains directional solution costs 1.477/1.639 eV. Their 10.4% asymmetry
+fails the declared 5% equal-curvature diagnostic; a symmetric scalar remains
+unqualified. PMDI retains a finite primary-model −1.86-kJ/mol four-state G
+cycle and +5.3–6.1-kJ/mol first-site penalties, with one minimum per graph.
+Its practical route is still on hold. The broader 912-graph registry and older
+878-candidate all-axis snapshot have distinct scopes; neither is a material shortlist.
+
+## Reviewer access and completion
+
+The [new local reviewer candidate](../validation/publication_release_2026-11-03/README.md)
+collects current source, PDFs and checked replay archives. Three numerical
+replays pass with original scientific paths blocked. The subsequent
+[portable validation build](../validation/portable_sampling_2026-11-03/README.md)
+also passes with the original user data hidden, networking disabled and the
+checkout rebased. The exact input bytes, original producer identities and all
+scientific checks are retained. All declared raw hash bindings are located, but the 120.3-GB full
+inventory exceeds the observed safe archive budget and needs a suitable
+destination. No complete raw deposition is claimed.
+
+The new 29-execution local control archive contains 70 SCF checkpoints. Every
+archive byte is verified and an extracted CPU replay succeeds with original
+project/data paths blocked and no GPU-library imports. It reconstructs cached
+frames/energies/cycle shifts, not fresh quantum calculations or wavefunction
+spin diagnostics. Public deposition and final metadata remain open.
+
+The prior measured Nitro repeatability failure, alternative-spin limits and
+incomplete occupied ensembles remain visible. A successful later repeat does
+not erase the failure or establish force-step convergence. Compiler, visual
+inspection and self-contained export records each retain separate scopes;
+no Overleaf remote is connected. Author details and final data reuse terms
+require the authors' input. The [publication acceptance criteria](../docs/PUBLICATION_READINESS.md)
+remain authoritative; green tests or a built PDF do not establish completion.

@@ -1,0 +1,77 @@
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Supporting evidence}{Benchmark bias and numerical sensitivity}
+\fig{1}{3.3}{29}{10.8}{../results/figures/slides/2026-10-30_tempo/bias.pdf}
+\claim{Offset diagnostics supplement the unfitted benchmark.}
+\src{Molecule-held-out MAE: 0.158 V, one offset; 0.106 V, separate step offsets. Five neutral SVPD controls move potentials by $-11.7$ to $-35.1$ mV. Neither diagnoses all remaining error sources.}
+\end{tikzpicture}
+\end{frame}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Supporting evidence}{Computed values and external validation differ}
+\at{1}{3.5}{29}{\fontsize{22}{29}\selectfont\renewcommand{\arraystretch}{1.6}\begin{tabular}{p{7cm}p{10cm}p{10cm}}\toprule
+Quantity & Evidence & Limit\\\midrule
+Redox potential & 39 exact-parent MeCN endpoints & No polymer or NDI accuracy claim\\
+Grafting $\Delta G$ & Balanced reactions; experimental base-pKa comparisons & Speciation, selectivity, barriers\\
+Polymer neighbor effect & Finite PMDI and viologen cycles & Broader ensembles pending\\
+Local motif interaction & 12 triplets / 36 electronic states & No binding G or coupling\\\bottomrule\end{tabular}}
+\claim{Keep numerical checks, accuracy and sampling distinct.}
+\end{tikzpicture}
+\end{frame}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Supporting evidence}{The first occupied set fails the sampling check}
+\fig{1}{3.5}{17}{10.6}{../results/figures/slides/occupied_sampling_convergence.pdf}
+\at{19}{4}{11}{\fontsize{27}{33}\selectfont\bfseries 10 $\rightarrow$ 20 starts\\[.4cm]\fontsize{23}{30}\selectfont\normalfont Twenty distinct minima\\Same result at all three\\duplicate thresholds\\[.5cm]Minimum E lowers\\$\SamplingMinimumEDrop$ kJ/mol\\[.5cm]Eleven cells incomplete}
+\claim{Twenty checked starts still fail the declared sampling tolerance.}
+\src{First complete corrected phthalimide-control cell: all-same backbone, adjacent sites 2/3; smooth-surface composite MeCN, 298.15 K. Duplicate cutoffs 0.05/0.10/0.20 Angstrom and 0.2 kJ/mol. Source: frozen 31-native-input audit. Balanced occupied cycles and global convergence remain unqualified; no primary-model or measured-population transfer.}
+\end{tikzpicture}
+\end{frame}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Supporting evidence}{The retained chain context changes the neighbor response}
+\at{1.5}{4}{14}{\fontsize{27}{33}\selectfont\bfseries Four checked finite G cycles\\[.4cm]\fontsize{23}{30}\selectfont\normalfont All-same, adjacent: $\IonicAdjacentG$ kJ/mol\\All-same, one spacer: $\IonicSpacerG$\\Alternating, adjacent: $\IonicAlternatingAdjacentG$\\Alternating, one spacer: $\IonicAlternatingSpacerG$\\[.4cm]Matched atom, charge and reference balance}
+\at{17}{4}{13}{\fontsize{27}{33}\selectfont\bfseries What is qualified\\[.4cm]\fontsize{23}{30}\selectfont\normalfont Four of four finite ionic cycles\\Twelve checked local minima\\Own Hessian/nuclear term per state\\Occupied ensembles remain pending}
+\claim{Backbone configuration reverses both finite neighbor responses.}
+\src{Corrected r$^2$SCAN-D4/SVP, smooth-surface SMD MeCN, 298.15 K. Each state has its own Hessian/nuclear terms; no explicit spectator ions. No primary molecular-model substitution or material admission. Source: immutable ionic-cycle evidence.}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Supporting evidence}{Explicit chloride contacts test the ion convention}
+\at{1.5}{3.7}{29}{\fontsize{25}{31}\selectfont
+$\mathrm{V}^{2+}+\mathrm{Cl}^{-}\rightarrow\mathrm{VCl}^{+}$\hspace{1cm}Total contact state: $+1$, singlet}
+\at{1.5}{5.8}{16}{\fontsize{22}{27}\selectfont\renewcommand{\arraystretch}{1.10}\begin{tabular}{lr}\toprule
+Checked outcome & $\Delta G_{\rm assoc}^{\circ}$ (kJ/mol)\\\midrule
+N0 above, minus mode & $\ChlorideNZeroMinus$\\
+N0 above, plus mode & $\ChlorideNZeroPlus$\\
+N1 above & $\ChlorideNOneAbove$\\
+N1 below & $\ChlorideNOneBelow$\\
+N0 below, minus mode & $\ChlorideNZeroBelow$\\
+N0 outer, minus mode & $\ChlorideNZeroOuter$\\
+N0 outer, plus mode & $\ChlorideNZeroOuterPlus$\\\bottomrule\end{tabular}}
+\at{20}{6}{10}{\fontsize{25}{33}\selectfont\bfseries \ChlorideOutcomeCount{} outcomes\\\ChlorideDuplicateCount{} duplicate groups\\[.5cm]\fontsize{22}{30}\selectfont\normalfont 1 M, MeCN, 298.15 K\\Other contacts pending\\No population weights}
+\claim{Finite chloride association is separate from covalent grafting.}
+\src{Primary composite MeCN, 298.15 K; each contact has its own native Hessian. N0: benzyl-bearing N; N1: methyl-bearing N. One-atmosphere to 1-M correction: $\ChlorideCorrection$ kJ/mol, once. The signed N0-above and N0-outer pairs each share a group (RMSD 0.00377/0.01472 Angstrom; energy tolerance 0.2 kJ/mol). Other ions, populations and yield remain unresolved.}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Supporting evidence}{The exact molecular free-energy cohort reproduces}
+\at{1.5}{4}{13}{\fontsize{27}{33}\selectfont\bfseries New numerical evidence\\[.4cm]\fontsize{23}{30}\selectfont\normalfont Nine molecular Hessians\\81 SCF frames and orbital-spin checks\\One analytic chloride partition\\Matched electronic and nuclear terms}
+\at{17}{4}{13}{\fontsize{27}{33}\selectfont\bfseries Six complete cycles\\[.4cm]\fontsize{23}{30}\selectfont\normalfont Potential changes $<2.45\times10^{-8}$ V\\Reaction changes $<1.55\times10^{-6}$ kJ/mol\\Same source geometries and protocol\\Three rotor settings retained}
+\claim{Numerical reproduction and experimental accuracy remain separate.}
+\src{Corrected primary-model exact viologen cohort: two Fc-referenced reductions, three precursor-specific quaternizations and disproportionation. r$^2$SCAN-D4/SVP Hessians plus $\omega$B97M-V/TZVPD electronic terms in SMD MeCN. No polymer-cycle or ensemble admission.}
+\end{tikzpicture}
+\end{frame}
+\begin{frame}[plain]
+\begin{tikzpicture}[remember picture,overlay]\foot
+\head{Supporting evidence}{Reproducibility and model qualification remain explicit}
+\at{1.5}{4}{13}{\fontsize{27}{33}\selectfont\bfseries Available\\[.4cm]\fontsize{22}{29}\selectfont\normalfont Code and exact chemical identities\\Checkpointed calculations\\Frozen evidence and raw-state packages\\Relocated arithmetic/Hessian replay}
+\at{17}{4}{13}{\fontsize{27}{33}\selectfont\bfseries Remaining\\[.4cm]\fontsize{22}{29}\selectfont\normalfont Public data DOI and metadata\\Broader deployment portability\\Nitro force-repeatability qualification\\Complete material-level assessment}
+\claim{Solution free energies retain the checked DFT protocol.}
+\src{Current H100 Nitro repeatability controls fail the stated force threshold; installation is not numerical qualification. V100 uses a separately tested standard-inference fallback.}
+\end{tikzpicture}
+\end{frame}

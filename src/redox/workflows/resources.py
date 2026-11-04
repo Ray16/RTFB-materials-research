@@ -13,7 +13,9 @@ from pathlib import Path
 import socket
 import subprocess
 
-GATE = Path("/nfs/lambda_stor_01/homes/rzhu/bin/gpu_reserve")
+from redox.core.runtime_paths import reservation_gate, reservation_lock_root
+
+GATE = reservation_gate(required=False)
 
 
 @contextmanager
@@ -34,7 +36,7 @@ def verify_gate_owner():
     if not gpu.isdigit():
         raise RuntimeError("GPU dependency probe requires a live gpu_reserve run")
     host = socket.gethostname().split(".")[0]
-    owner = Path("/nfs/lambda_stor_01/homes/rzhu/.gpu_locks") / f"{host}_gpu{gpu}" / "owner"
+    owner = reservation_lock_root() / f"{host}_gpu{gpu}" / "owner"
     fields = owner.read_text().split()
     parent = os.getppid()
     start = Path(f"/proc/{parent}/stat").read_text().rsplit(")", 1)[1].split()[19]
@@ -42,8 +44,8 @@ def verify_gate_owner():
         raise RuntimeError("GPU dependency probe parent does not own the system reservation")
 
 
-def gpu_suitability(gpu: int):
-    """Inspect the required 32-GB-class device without creating a CUDA context."""
+def inspect_gpu(gpu: int):
+    """Read device identity without admitting a workload or creating CUDA context."""
     result = subprocess.run(
         ["nvidia-smi", f"--id={gpu}", "--query-gpu=index,uuid,name,memory.total,compute_cap",
          "--format=csv,noheader,nounits"],
@@ -53,10 +55,17 @@ def gpu_suitability(gpu: int):
     if len(rows) != 1 or len(rows[0]) != 5:
         raise RuntimeError("Cannot verify GPU identity and memory")
     index, uuid, name, memory, architecture = rows[0]
-    if int(index) != gpu or float(memory) < 31 * 1024:
-        raise RuntimeError("Full molecular DFT/Hessian requires a validated 32-GB-class GPU")
+    if int(index) != gpu:raise RuntimeError('GPU identity differs from the requested index')
     return dict(index=gpu, uuid=uuid.strip(), name=name.strip(),
                 memory_MiB=float(memory), compute_capability=architecture.strip())
+
+
+def gpu_suitability(gpu: int):
+    """Keep the validated 32-GB minimum for full molecular DFT/Hessian work."""
+    device=inspect_gpu(gpu)
+    if device['memory_MiB']<31*1024:
+        raise RuntimeError("Full molecular DFT/Hessian requires a validated 32-GB-class GPU")
+    return device
 
 
 def host_capacity(threads: int, *, minimum_ram_gib=8):

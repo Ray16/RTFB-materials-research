@@ -1,0 +1,67 @@
+{
+  "checked": 1793670575.5039408,
+  "status": "two_corrected_sampling_controllers_actual_owners_verified",
+  "controllers": {
+    "energy": {
+      "owner": {
+        "host": "lambda2",
+        "pid": 1006804,
+        "process_start": "1446652653"
+      },
+      "actual_process_state": "running",
+      "actual_CPU_affinity": [
+        13
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "XTB_THREADS": "1"
+      },
+      "recorded_status": "corrected_sampling_queue_active",
+      "recorded_checked": 1793670557.7434247,
+      "reported_count": 94,
+      "reported_counts": {
+        "completed_review_pending": 94,
+        "running": 2,
+        "prelaunch_refusal_no_scientific_attempt": 1,
+        "pending": 143
+      },
+      "phase": null
+    },
+    "native": {
+      "owner": {
+        "host": "lambda2",
+        "pid": 1006805,
+        "process_start": "1446652653"
+      },
+      "actual_process_state": "running",
+      "actual_CPU_affinity": [
+        47
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "1",
+        "OMP_THREAD_LIMIT": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "XTB_THREADS": "1"
+      },
+      "recorded_status": "corrected_native_queue_active",
+      "recorded_checked": 1793670571.2475808,
+      "reported_count": 19,
+      "reported_counts": {
+        "completed_review_pending": 19,
+        "running": 20,
+        "pending": 55
+      },
+      "phase": "reviewing_and_dispatching_prepared_inputs"
+    }
+  },
+  "frozen_electronic_inputs": 90,
+  "frozen_native_inputs": 18,
+  "collection": "validation/corrected_sampling_2026-11-02/sampling_snapshot_audit_01.json",
+  "original_physical_QC_repeated": false
+}

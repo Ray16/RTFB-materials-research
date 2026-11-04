@@ -2,7 +2,10 @@
 from rdkit import Chem
 
 
-def chain_topology(smiles, repeats):
+def chain_topology(smiles, repeats, reactive_sites=None):
+    """Verify every repeat; optional handles distinguish plain styrene padding."""
+    reactive=set(range(1,repeats+1)) if reactive_sites is None else set(reactive_sites)
+    if not reactive<=set(range(1,repeats+1)):raise ValueError('Reactive sites outside the chain')
     mol=Chem.MolFromSmiles(smiles)
     if mol is None or len(Chem.GetMolFrags(mol))!=1:raise ValueError('One intact covalent chain required')
     nodes={a.GetIdx() for a in mol.GetAtoms() if a.GetAtomicNum()==6 and not a.IsInRing()}
@@ -36,6 +39,10 @@ def chain_topology(smiles, repeats):
         if ring is None:raise ValueError('Styrene side group must contain a six-carbon phenyl ring')
         linkers=[(i,a.GetIdx()) for i in ring for a in mol.GetAtomWithIdx(i).GetNeighbors()
                  if a.GetAtomicNum()==6 and a.GetIdx() not in ring and a.GetIdx() not in backbone and not a.IsInRing()]
+        if position//2 not in reactive:
+            if linkers:raise ValueError('Plain styrene padding contains an unexpected benzyl handle')
+            sites.append(dict(backbone_position=position,backbone_atom=index,phenyl_atoms=sorted(ring),benzyl_atom=None))
+            continue
         if len(linkers)!=1:raise ValueError('Expected one benzyl graft linker on each phenyl ring')
         aryl,linker=linkers[0]
         if len(Chem.GetShortestPath(mol,aromatic[0],aryl))-1!=3:raise ValueError('Graft linker is not para to the backbone')

@@ -1,0 +1,63 @@
+{
+  "status": "immutable_scoped_implementation_and_source_audit",
+  "source_base_commit": "cd4114e0",
+  "files_sha256": {
+    "source_preflight.json": "711ca8be220065759352586b150f08370438784bc46f6f490b44787a5d690e25",
+    "tests.xml": "d5424f7f8f630871d7abf6f7f43068c63520dd7ac2730910dd6c7bf6c547b712",
+    "summary.json": "83d940f48d356fed09398812767abc5c9085f59f61b088390b44376fd8ff5502",
+    "README.md": "f00023ccd9932440f16f4879e88de5dda3ca0095d4400399189693ca326885bd",
+    "producer_snapshots/0_response_resume.py": "99dbcf57b7d546d5c4671ddd49a625e7ad0cacf13fcf34b0032d8e10fc67544a",
+    "producer_snapshots/1_hessian_restart.py": "f0c1801dcd42e277340bd0af8955465f613668a6224eb9ab57a69612b592433d",
+    "producer_snapshots/2_response_diagnostic.py": "4a18f37bb439bbc01995c1cf507e1de867b86691d388ec69e3a2ee64ba2788fd",
+    "producer_snapshots/3_screening_control.py": "12547ba87af54d01e62ab9f399cbe8009315d33e94f7159bae681f22fcaed8f8",
+    "producer_snapshots/4_run_screening_polymer_hessian.py": "d06744d6c810d45c1fd8433d8335e327f81e43c745a28fdbad9b82b64fd9808b",
+    "producer_snapshots/5_review_screening_polymer_hessian.py": "3b6ba5e752fcdde7c3d56ae3d41473814f7919ea15f76cdfaee3e75f622205b8",
+    "producer_snapshots/6_check_response_continuation_source.py": "e34ce5cf403226603a20120d25c91c714dd4f48d82acf9ca959687322b9bb253",
+    "producer_snapshots/7_test_hessian_restart.py": "791b940160f0b181a90a82aea1f0805c268dea63740edcc173ba22fee4f9ef90",
+    "producer_snapshots/8_test_response_resume.py": "11d682aa87f709ea0de094d16462ec2870be6c16ec4144bf9831eab77b5e0a9c",
+    "producer_snapshots/9_test_screening_dispatch.py": "af18fad160e79e7aa7108a9a62928d4fdd7c7a531fbd659bf76e6c2065b44c92"
+  },
+  "as_used_producers": {
+    "src/redox/qm/response_resume.py": {
+      "snapshot": "producer_snapshots/0_response_resume.py",
+      "sha256": "99dbcf57b7d546d5c4671ddd49a625e7ad0cacf13fcf34b0032d8e10fc67544a"
+    },
+    "src/redox/qm/hessian_restart.py": {
+      "snapshot": "producer_snapshots/1_hessian_restart.py",
+      "sha256": "f0c1801dcd42e277340bd0af8955465f613668a6224eb9ab57a69612b592433d"
+    },
+    "src/redox/qm/response_diagnostic.py": {
+      "snapshot": "producer_snapshots/2_response_diagnostic.py",
+      "sha256": "4a18f37bb439bbc01995c1cf507e1de867b86691d388ec69e3a2ee64ba2788fd"
+    },
+    "src/redox/workflows/screening_control.py": {
+      "snapshot": "producer_snapshots/3_screening_control.py",
+      "sha256": "12547ba87af54d01e62ab9f399cbe8009315d33e94f7159bae681f22fcaed8f8"
+    },
+    "scripts/validation/run_screening_polymer_hessian.py": {
+      "snapshot": "producer_snapshots/4_run_screening_polymer_hessian.py",
+      "sha256": "d06744d6c810d45c1fd8433d8335e327f81e43c745a28fdbad9b82b64fd9808b"
+    },
+    "scripts/validation/review_screening_polymer_hessian.py": {
+      "snapshot": "producer_snapshots/5_review_screening_polymer_hessian.py",
+      "sha256": "3b6ba5e752fcdde7c3d56ae3d41473814f7919ea15f76cdfaee3e75f622205b8"
+    },
+    "scripts/validation/check_response_continuation_source.py": {
+      "snapshot": "producer_snapshots/6_check_response_continuation_source.py",
+      "sha256": "e34ce5cf403226603a20120d25c91c714dd4f48d82acf9ca959687322b9bb253"
+    },
+    "tests/test_hessian_restart.py": {
+      "snapshot": "producer_snapshots/7_test_hessian_restart.py",
+      "sha256": "791b940160f0b181a90a82aea1f0805c268dea63740edcc173ba22fee4f9ef90"
+    },
+    "tests/test_response_resume.py": {
+      "snapshot": "producer_snapshots/8_test_response_resume.py",
+      "sha256": "11d682aa87f709ea0de094d16462ec2870be6c16ec4144bf9831eab77b5e0a9c"
+    },
+    "tests/test_screening_dispatch.py": {
+      "snapshot": "producer_snapshots/9_test_screening_dispatch.py",
+      "sha256": "af18fad160e79e7aa7108a9a62928d4fdd7c7a531fbd659bf76e6c2065b44c92"
+    }
+  },
+  "submission_ready": false
+}

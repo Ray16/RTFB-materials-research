@@ -1,0 +1,110 @@
+{
+  "status": "three_actual_exclusive_T4_geometry_starts_checked",
+  "checked": 1793678039.6933928,
+  "workers": [
+    {
+      "key": "N0_below_plus",
+      "owner": {
+        "host": "lambda5",
+        "pid": 3465841,
+        "process_start": "755854191"
+      },
+      "GPU": 0,
+      "CPU_affinity": [
+        0,
+        1
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "GPU_residents": [
+        [
+          "3465841",
+          "GPU-3d4d99d5-a072-f682-466f-b7dbc49cc473",
+          "2516"
+        ]
+      ],
+      "FP64_runtime_checked": true,
+      "SCF_frames_started": 1,
+      "SCF_frames_finished": 0,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    },
+    {
+      "key": "N0_outer_minus",
+      "owner": {
+        "host": "lambda5",
+        "pid": 3466742,
+        "process_start": "755854460"
+      },
+      "GPU": 1,
+      "CPU_affinity": [
+        2,
+        3
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "GPU_residents": [
+        [
+          "3466742",
+          "GPU-dcdde577-b12c-0300-479b-b9a813016461",
+          "2504"
+        ]
+      ],
+      "FP64_runtime_checked": true,
+      "SCF_frames_started": 1,
+      "SCF_frames_finished": 0,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    },
+    {
+      "key": "N0_outer_plus",
+      "owner": {
+        "host": "lambda5",
+        "pid": 3467429,
+        "process_start": "755854758"
+      },
+      "GPU": 2,
+      "CPU_affinity": [
+        6,
+        7
+      ],
+      "thread_caps": {
+        "OMP_NUM_THREADS": "2",
+        "OMP_THREAD_LIMIT": "2",
+        "MKL_NUM_THREADS": "2",
+        "OPENBLAS_NUM_THREADS": "2",
+        "NUMEXPR_NUM_THREADS": "2",
+        "XTB_THREADS": "2"
+      },
+      "GPU_residents": [
+        [
+          "3467429",
+          "GPU-4c483fe3-cf7b-b7c5-1813-0742ef6042bd",
+          "2702"
+        ]
+      ],
+      "FP64_runtime_checked": true,
+      "SCF_frames_started": 1,
+      "SCF_frames_finished": 0,
+      "geometry_qualified": false,
+      "native_G_qualified": false
+    }
+  ],
+  "disjoint_scientific_CPUs": true,
+  "load_1m": 5.427734375,
+  "available_RAM_bytes": 780326805504,
+  "Hessian_class_qualified": false,
+  "native_G_qualified": false
+}

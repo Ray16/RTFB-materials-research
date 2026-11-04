@@ -1,0 +1,92 @@
+{
+  "protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "protocol_hash": "ff57b044117f8279",
+  "geom_sha1": "d710f92fa66716d1",
+  "geom": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18/inputs/tempo_parent__rad/opt.xyz",
+  "charge": 0,
+  "mult": 2,
+  "id": "tempo_parent",
+  "state": "rad",
+  "source": "computed:gpu:independent_revalidation",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "producer_source_sha256": "89e68c735e7d147edc01442acce2e3bc9b6ba6d084ff13e13bfe21db20ca20f4",
+  "e_smd_Ha": -483.68208330378,
+  "e_smd_eV": -13161.6599890433,
+  "converged_smd": true,
+  "e_gas_Ha": -483.6701162186271,
+  "e_gas_eV": -13161.334348066966,
+  "converged_gas": true,
+  "gas_homo_eV": -7.816089454259012,
+  "gas_lumo_eV": 0.8182127591278194,
+  "gas_s_squared": 0.7541,
+  "gas_spin_contam": 0.0041,
+  "anion_unbound": null,
+  "dG_solv_eV": -0.3256409763354504,
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -483.68208330378,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -483.6820833036966,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -483.68208330371135,
+      "converged": true
+    }
+  ],
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -483.6701162186271,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -483.6701162185218,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -483.6701162186157,
+      "converged": true
+    }
+  ],
+  "gas_occupation_guesses": [],
+  "smd_occupation_guesses": [],
+  "smd_homo_eV": -7.78639124052318,
+  "smd_lumo_eV": 0.8833580032250311,
+  "smd_s_squared": 0.7542,
+  "smd_spin_contam": 0.0042,
+  "independent_revalidation": {
+    "run": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/remaining_solution_diagnostics_2026-10-18",
+    "task": "tempo_parent__rad",
+    "record_sha256": "c414c3a5340d3ea73952c77dc2a6cb2a1240ee7a14fad4c16fe99dcc65ac25b5",
+    "original_sha256": "c1f73cbbf6253c2ab54fd2c3d6d26b658bdc76ab9898f55ceb643c4cdcf8c752"
+  }
+}

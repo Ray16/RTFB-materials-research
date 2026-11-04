@@ -1,0 +1,83 @@
+{
+  "status": "all_three_finer_CDS_native_components_independently_qualified",
+  "components": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json",
+      "charge": 0,
+      "mult": 1,
+      "G_by_cutoff_eV": {
+        "25": -33335.20345611531,
+        "50": -33335.16613816716,
+        "100": -33335.132012373884
+      },
+      "native_numerical_policy": {
+        "schema": 1,
+        "component": "primary legacy SMD CDS",
+        "Hessian_gradient_step_Bohr": 1e-06,
+        "energy_function_changed": false,
+        "gradient_function_changed": false,
+        "global_defaults_changed": false
+      },
+      "native_G_qualified": true
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json",
+      "charge": 0,
+      "mult": 1,
+      "G_by_cutoff_eV": {
+        "25": -33335.20345958854,
+        "50": -33335.16613824347,
+        "100": -33335.132011011556
+      },
+      "native_numerical_policy": {
+        "schema": 1,
+        "component": "primary legacy SMD CDS",
+        "Hessian_gradient_step_Bohr": 1e-06,
+        "energy_function_changed": false,
+        "gradient_function_changed": false,
+        "global_defaults_changed": false
+      },
+      "native_G_qualified": true
+    },
+    {
+      "key": "phenothiazine_ox_stationarity",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json",
+      "charge": 1,
+      "mult": 2,
+      "G_by_cutoff_eV": {
+        "25": -33330.205863188756,
+        "50": -33330.160855385046,
+        "100": -33330.1296100705
+      },
+      "native_numerical_policy": {
+        "schema": 1,
+        "component": "primary legacy SMD CDS",
+        "Hessian_gradient_step_Bohr": 1e-06,
+        "energy_function_changed": false,
+        "gradient_function_changed": false,
+        "global_defaults_changed": false
+      },
+      "native_G_qualified": true
+    }
+  ],
+  "actual_SCF_checkpoint_frames_checked": 63,
+  "oxidized_finer_minus_default_G_eV": {
+    "25": -5.362380761653185e-09,
+    "50": -4.147295840084553e-09,
+    "100": -4.9622030928730965e-09
+  },
+  "oxidized_sensitivity_scope": "Same exact geometry and physical electronic/native/thermal model; full native Hessian recomputed at each CDS step",
+  "redox_potential_qualified": false,
+  "oxidation_potential_V": null,
+  "remaining_potential_gate": "Review exact Fc/Fc+ compatibility and retain component numerical policies before combining",
+  "geometry_ensemble_qualified": false,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_minus_native_review.json": "6fb04f5ab8acb3e66c169764dfe47f11f282da3d02f8b34462315b4185e20854",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/neutral_plus_native_review.json": "a0a2f42fef340a5801dd1cef44fb9d60b7eafe93ec78546e203ebaaf290276c5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/oxidized_finer_native_review.json": "5f7fa14888c8831a4588adbf41d20ab67b1e791f9578b2a61ac4ce86ecbc6795",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_cds_2026-11-03/original_oxidized_native_review.json": "9e84356a66c4bbacbc2516c728b2e2d2b7f7d13196240b3a38f355c4836c0d5e"
+  }
+}

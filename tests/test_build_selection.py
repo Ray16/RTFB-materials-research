@@ -33,3 +33,10 @@ def test_unknown_or_empty_batch_cannot_create_any_outputs(definitions,monkeypatc
     monkeypatch.setattr(sys,'argv',['builder','--config',str(config),'--library',str(library),'--only',selection])
     with pytest.raises(SystemExit,match='invalid --only'):candidates.main()
     assert not library.exists()
+
+
+def test_incomplete_config_reports_required_fields_before_output(tmp_path):
+    path = tmp_path/'incomplete.py'
+    path.write_text("SCAFFOLD = 'site'\n")
+    with pytest.raises(ValueError, match='missing: GROUPS'):
+        candidates._load_config(path)

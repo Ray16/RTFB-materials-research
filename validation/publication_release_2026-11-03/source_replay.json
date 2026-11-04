@@ -1,0 +1,216 @@
+{
+  "status": "committed_source_three_replays_passed_with_original_paths_blocked",
+  "source_commit": "7d19efe8933296e8c5489852e53c9df614d72604",
+  "archive_sha256": "01f497df8ed990dd71f4191d9a0698c16d9fdfb87cdb8313df2324d5333d19a5",
+  "extracted_source": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_publication_source_extracted",
+  "extracted_files": 11414,
+  "replays": {
+    "phenothiazine": {
+      "status": "frozen_phenothiazine_redox_arithmetic_and_component_scope_checked",
+      "primary_V": 0.6260868628669414,
+      "branches": 2,
+      "rotor_cutoffs": 3,
+      "new_quantum_validation": false,
+      "experimental_accuracy_validated": false,
+      "material_admission": false
+    },
+    "finite_viologen": {
+      "status": "packaged_finite_cycle_and_motif_arithmetic_replayed",
+      "components": 12,
+      "cycles": [
+        {
+          "configuration": "all_same",
+          "sites": [
+            2,
+            3
+          ],
+          "E_kJ_mol": -3.460723957874642,
+          "G_by_cutoff_kJ_mol": {
+            "25": -5.845426615602858,
+            "50": -3.9365010611576423,
+            "100": -4.062160615877265
+          }
+        },
+        {
+          "configuration": "all_same",
+          "sites": [
+            2,
+            4
+          ],
+          "E_kJ_mol": 18.68479025259135,
+          "G_by_cutoff_kJ_mol": {
+            "25": 19.75241901838273,
+            "50": 22.579039210795344,
+            "100": 20.6877358744183
+          }
+        },
+        {
+          "configuration": "alternating",
+          "sites": [
+            2,
+            3
+          ],
+          "E_kJ_mol": 1.2020196305314643,
+          "G_by_cutoff_kJ_mol": {
+            "25": 8.33787716125147,
+            "50": 8.278071245296216,
+            "100": 8.373187220921606
+          }
+        },
+        {
+          "configuration": "alternating",
+          "sites": [
+            2,
+            4
+          ],
+          "E_kJ_mol": -13.481572554467082,
+          "G_by_cutoff_kJ_mol": {
+            "25": -5.791659522649685,
+            "50": -5.29718829506024,
+            "100": -4.284892106523614
+          }
+        }
+      ],
+      "motif_triplets": 12,
+      "previously_reviewed_SCF_frames_represented": 72,
+      "motif_comparisons": [
+        {
+          "key": "all_same__occ_2_3",
+          "whole_E": -3.460723967319408,
+          "motif_E": 9.029331795044257,
+          "gas_E": 335.7202907990267,
+          "cap_span": 0.0015822008068617777
+        },
+        {
+          "key": "all_same__occ_2_4",
+          "whole_E": 18.68479022850123,
+          "motif_E": 7.6181514958004035,
+          "gas_E": 283.9066895502017,
+          "cap_span": 0.0012720876864618091
+        },
+        {
+          "key": "alternating__occ_2_3",
+          "whole_E": 1.2020196315617375,
+          "motif_E": 9.631316594550597,
+          "gas_E": 357.4477074126074,
+          "cap_span": 0.0026454616960585042
+        },
+        {
+          "key": "alternating__occ_2_4",
+          "whole_E": -13.481572568962937,
+          "motif_E": 7.7908247310970955,
+          "gas_E": 289.9328511329338,
+          "cap_span": 0.0012046596826245093
+        }
+      ],
+      "opposite_sign_frames": 2,
+      "context": {
+        "electronic": {
+          "xc": "r2scan",
+          "basis": "def2-svp",
+          "disp": "d4",
+          "solvent": "acetonitrile",
+          "SCF_conv_tol": 1e-12,
+          "SCF_conv_tol_grad": 1e-08,
+          "SCF_max_cycle": 200,
+          "grid_level": 3,
+          "gradient_grid_response": true,
+          "Hessian_grid_response": true,
+          "CPHF_grids_matched": true,
+          "gradient_limit_Ha_Bohr": 0.00045,
+          "Hessian_asymmetry_limit": 1e-06,
+          "FD_steps_Bohr": [
+            0.0005,
+            0.001
+          ],
+          "FD_relative_limit": 0.01,
+          "minimum_frequency_limit_cm": -5
+        },
+        "solvent_model": {
+          "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+          "solvent": "acetonitrile",
+          "electrostatic_model": "SMD",
+          "electrostatic_surface_points": 590,
+          "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+          "CDS_points_per_sphere": 2030,
+          "supported_elements": [
+            "C",
+            "H",
+            "N",
+            "O",
+            "Cl"
+          ],
+          "scientific_model_changed": true,
+          "primary_candidate_admission": false
+        },
+        "thermal": {
+          "schema": 1,
+          "model": "projected internal-mode xTB6.7.1 qRRHO",
+          "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+          "masses": "installed xTB NIST isotopic-average atomic masses",
+          "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+          "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+          "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+          "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+          "frequency_scale": 1.0,
+          "temperature_K": 298.15,
+          "rotor_cutoffs_cm": [
+            25,
+            50,
+            100
+          ],
+          "primary_rotor_cutoff_cm": 50,
+          "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+          "zero_internal_frequency_policy": "refuse; no artificial floor",
+          "symmetry": "xTB symmetry detection for the exact input geometry",
+          "pressure": "same translation convention as installed xTB thermodyn"
+        },
+        "spectator_ions": "omitted separated spectators",
+        "temperature_K": 298.15
+      },
+      "raw_quantum_QC_repeated": false,
+      "SCF_or_Hessian_calculations_run": false,
+      "conformer_ensemble_qualified": false,
+      "experimental_accuracy_validated": false,
+      "material_admission": false
+    },
+    "corrected_viologen": {
+      "status": "exact_viologen_cached_redox_and_quaternization_reconstructed",
+      "states": 10,
+      "by_cutoff": {
+        "25": {
+          "E1_V_vs_Fc": -0.6171286493045045,
+          "E2_V_vs_Fc": -1.211558833525487,
+          "graft_precursor_0_kJ_mol": -14.89021301533945,
+          "graft_precursor_1_kJ_mol": -14.883765793750044,
+          "graft_precursor_2_kJ_mol": -13.29863817574008,
+          "disproportionation_kJ_mol": 57.35379374868185
+        },
+        "50": {
+          "E1_V_vs_Fc": -0.6077915293826663,
+          "E2_V_vs_Fc": -1.2080016727049951,
+          "graft_precursor_0_kJ_mol": -12.997714293757225,
+          "graft_precursor_1_kJ_mol": -12.445209773057641,
+          "graft_precursor_2_kJ_mol": -11.493330592340094,
+          "disproportionation_kJ_mol": 57.9114750222344
+        },
+        "100": {
+          "E1_V_vs_Fc": -0.6085738681540533,
+          "E2_V_vs_Fc": -1.2089909458372858,
+          "graft_precursor_0_kJ_mol": -12.858477146205985,
+          "graft_precursor_1_kJ_mol": -12.571172400497119,
+          "graft_precursor_2_kJ_mol": -11.564164664506057,
+          "disproportionation_kJ_mol": 57.931441152773914
+        }
+      }
+    }
+  },
+  "original_scientific_paths_blocked": true,
+  "quantum_calculations_repeated": false,
+  "all_manuscript_claims_replayed": false,
+  "public_deposition_complete": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/publication_release_2026-11-03/source_export.json": "02b268c2a850f06fa2f0ebf81918b9576d865dbe39f2796f4b79c54565ae0f7f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/publication_release_2026-11-03/check_source_export.py": "e77742752db7eae803aa581b56e01fd1d0c1962e71e9771b981148b2be1c3cee"
+  }
+}

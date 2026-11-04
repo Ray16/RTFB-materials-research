@@ -1,0 +1,64 @@
+{
+  "status": "both_neutral_geometry_branches_independently_checked_fresh_electronic_queued",
+  "checked": 1793683961.8644066,
+  "candidate_alias": "phenothiazine",
+  "source_minimum_frequency_cm": -25.465953398577955,
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2",
+  "states": [
+    {
+      "key": "phenothiazine_neu_mode_minus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/minus/namespace.json",
+      "status": "geometry_independently_checked_own_electronic_and_native_pending",
+      "native_G_eV": null,
+      "redox_potential_V": null,
+      "maximum_gradient_Ha_Bohr": 3.497292419443129e-07,
+      "actual_SCF_frames_checked": 53
+    },
+    {
+      "key": "phenothiazine_neu_mode_plus",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/plus/namespace.json",
+      "status": "geometry_independently_checked_own_electronic_and_native_pending",
+      "native_G_eV": null,
+      "redox_potential_V": null,
+      "actual_owner": {
+        "host": "lambda1",
+        "pid": 3516132,
+        "process_start": "593211249"
+      },
+      "maximum_gradient_Ha_Bohr": 5.043018133686703e-07,
+      "actual_SCF_frames_checked": 52
+    }
+  ],
+  "live_controller_status": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs_v2/queue/status.json",
+  "actual_controller_owner_verified": {
+    "host": "lambda2",
+    "pid": 1868429,
+    "process_start": "1448074486"
+  },
+  "controller_CPU_affinity": [
+    47
+  ],
+  "scientific_starts": 2,
+  "strict_method": "r2SCAN-D4/def2-SVP, primary SMD MeCN, corrected integration",
+  "existing_scientific_workers_signaled": false,
+  "native_G_qualified": false,
+  "redox_potential_qualified": false,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_private_manifest.json": "5d39990dc272889f560d8825d3cadf224f8df53c438d7b98a7cc0357fd80beb5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/controller_observation_01.json": "335225121b271ea9f0e60c1cdfdf270f4f32a70020eea2c32411ff813f8eb6b8",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/private_namespace_preflight.json": "b213c1a63a4ce92fd1d8181759e568e7c5a5499090412fa60e9f7cb4d44afb08",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/visibility_recovery_admission.json": "be0a33bab17707c4db3b9a13126039b7cbc6e15851a88ec3cfa250162d89cc4a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/all_checks.xml": "5008df51a5c915a49319f94d3d70a7d71da87da8a4b94c65591740be1b899d1e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_minus_geometry_review.json": "832f4c57f815aacceacb33a7e83ecbd865b3d644b56bab3b1bee38b712c9e586",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/actual_starts_01.json": "b058b223c9d9ec17dd7ed9ea2384495f24961c6b9ba42baadae0497bcc3aa8fa",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/second_neutral_actual_start.json": "3e96ad9a866466a21e305b0eba5dc270e4ec4aefeac27b0851ee5c88f22c72de",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_plus_geometry_review.json": "32b0c272de1ba859e694f2e5c5af8d1bf426ea345b8f87d9b1ddbda97911501f"
+  },
+  "historical_raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_neutral_geometry_repairs",
+  "visibility_recovery": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/visibility_recovery_admission.json",
+  "checked_geometry_states": 2,
+  "geometry_review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/phenothiazine_oxidized_geometry_2026-11-02/neutral_minus_geometry_review.json",
+  "fresh_native_thermochemistry_pending": true,
+  "fresh_electronic_current": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/refined_electronic_2026-11-02/current.json"
+}

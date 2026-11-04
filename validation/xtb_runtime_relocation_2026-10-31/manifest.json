@@ -1,0 +1,61 @@
+{
+  "status": "immutable_scoped_fresh_xtb_component_check",
+  "source_base_commit": "e31f1f23",
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-10-31_xtb_installation_check_v2",
+  "files_sha256": {
+    "summary.json": "93e9079f10b574d8a27ae42a3f47661916c8c0ab65a256d7c23b2d916129f6b6",
+    "installed_packages.json": "85b176975b2a5f1912fc17ba410b35f7b38170985957024acb0e514b57640b1f",
+    "install.log": "b53a07a4556e1dd989673a32d63b526dfd3f09760dd573de091df6547f7ff16b",
+    "thermo.stdout": "ece7ff991abde1ea10881dec86db4c3b18e528132845a74ee3fcc71e4c925419",
+    "thermo.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tests.xml": "386c06a8f25e457493f8d579d04c794c766682c4bd2c5b111bb0e54b14a78e81",
+    "environment.explicit.txt": "6589d71f6d837b419a9da5e98181bbf5d19c3be9c481c3124bdc71043d27763e",
+    "packages.json": "ee4f47ac80a6176433dc90f802fc524ecc0d1903bf4d47153e24ab0c79c3fe1b",
+    "README.md": "0f37751a03591beca2d1a2dfef75b7c487de2bb5696e747fe10b2a4aa78ea818",
+    "producer_snapshots/0_xtb_runtime.py": "3f324309632c9aa0536307d9710ee1950d1e00f63d4608a5ead2c2835bca93e7",
+    "producer_snapshots/1_qrrho.py": "47d685298653c4cd3e0aec13b42aba3c81b954bbd7aa535b39574bd830d39ec2",
+    "producer_snapshots/2_native_thermal.py": "d3851f8fb32d90d6666d9bf9d86bd004083d76b47cca426d98258d144f4e3fe7",
+    "producer_snapshots/3_projected_thermal.py": "ac85fbe8a6b72a737a2ccafc82fc7a12aa18dd10ae635f964815d1a0f670e723",
+    "producer_snapshots/4_lock_xtb_runtime.py": "e8929376733fb8af217e20e68cc3dc7aaa7aa7d34e7f9dda5f45d47ca311f1cb",
+    "producer_snapshots/5_check_xtb_installation.py": "add6d1616fdb2569a21a69319cf0d8bc786b9262057d32557515c02aa292b2bd",
+    "producer_snapshots/6_test_xtb_runtime.py": "5d13361d15b47df1c8410565012741b06a163c538dc598cbe290f49d69c6ddc2",
+    "producer_snapshots/7_test_xtb_runtime_lock.py": "4960daae94774df5a27dcdf08d62bc53cbd69389bf7336dfd4df5db484b9c7ac",
+    "original_runtime_postcheck.json": "d53e768a000a03108daefc1a434091c3f4f2bc37bd853531e8392e3bba8d1657"
+  },
+  "as_used_producers": {
+    "src/redox/qm/xtb_runtime.py": {
+      "snapshot": "producer_snapshots/0_xtb_runtime.py",
+      "sha256": "3f324309632c9aa0536307d9710ee1950d1e00f63d4608a5ead2c2835bca93e7"
+    },
+    "src/redox/qm/qrrho.py": {
+      "snapshot": "producer_snapshots/1_qrrho.py",
+      "sha256": "47d685298653c4cd3e0aec13b42aba3c81b954bbd7aa535b39574bd830d39ec2"
+    },
+    "src/redox/qm/native_thermal.py": {
+      "snapshot": "producer_snapshots/2_native_thermal.py",
+      "sha256": "d3851f8fb32d90d6666d9bf9d86bd004083d76b47cca426d98258d144f4e3fe7"
+    },
+    "src/redox/qm/projected_thermal.py": {
+      "snapshot": "producer_snapshots/3_projected_thermal.py",
+      "sha256": "ac85fbe8a6b72a737a2ccafc82fc7a12aa18dd10ae635f964815d1a0f670e723"
+    },
+    "scripts/release/lock_xtb_runtime.py": {
+      "snapshot": "producer_snapshots/4_lock_xtb_runtime.py",
+      "sha256": "e8929376733fb8af217e20e68cc3dc7aaa7aa7d34e7f9dda5f45d47ca311f1cb"
+    },
+    "scripts/release/check_xtb_installation.py": {
+      "snapshot": "producer_snapshots/5_check_xtb_installation.py",
+      "sha256": "add6d1616fdb2569a21a69319cf0d8bc786b9262057d32557515c02aa292b2bd"
+    },
+    "tests/test_xtb_runtime.py": {
+      "snapshot": "producer_snapshots/6_test_xtb_runtime.py",
+      "sha256": "5d13361d15b47df1c8410565012741b06a163c538dc598cbe290f49d69c6ddc2"
+    },
+    "tests/test_xtb_runtime_lock.py": {
+      "snapshot": "producer_snapshots/7_test_xtb_runtime_lock.py",
+      "sha256": "4960daae94774df5a27dcdf08d62bc53cbd69389bf7336dfd4df5db484b9c7ac"
+    }
+  },
+  "full_quantum_environment_qualified": false,
+  "public_deposition_complete": false
+}

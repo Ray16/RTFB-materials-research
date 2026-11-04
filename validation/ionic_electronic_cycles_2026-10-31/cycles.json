@@ -1,0 +1,282 @@
+{
+  "status": "exact_ionic_stationary_electronic_cycles_collected",
+  "candidate_alias": "search_viologen_b7a4dca7a5e1",
+  "model": {
+    "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+    "solvent": "acetonitrile",
+    "electrostatic_model": "SMD",
+    "electrostatic_surface_points": 590,
+    "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+    "CDS_points_per_sphere": 2030,
+    "supported_elements": [
+      "C",
+      "H",
+      "N",
+      "O",
+      "Cl"
+    ],
+    "scientific_model_changed": true,
+    "primary_candidate_admission": false
+  },
+  "quantum_settings": {
+    "xc": "r2scan",
+    "basis": "def2-svp",
+    "disp": "d4",
+    "solvent": "acetonitrile",
+    "grid_level": 3,
+    "SCF_conv_tol": 1e-12,
+    "SCF_conv_tol_grad": 1e-08,
+    "SCF_max_cycle": 200,
+    "gradient_grid_response": true
+  },
+  "numerical_implementation": {
+    "upstream_fix": "https://github.com/pyscf/gpu4pyscf/pull/925",
+    "kernel_sha256": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "source_sha256": "95ad2fc9f8a02c70f7e7d28c0be030f1ad0c93d3e3137f5a542881d3e4f0859b",
+    "installed_gen_grid_sha256": "3c62c11d78e3475924b93d1c9a8a42fb92734dc089909bf5cce29d696a8e520b"
+  },
+  "records": {
+    "all_same__occ_2": {
+      "E_Ha": -3118.0118338753914,
+      "charge": 2,
+      "geometry_sha256": "e9c493fdb31ca4978a71168e0911ea310cfb3b261f0b8f822fee3a3add8e74c6",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_finalization/independent_review_v2.json",
+      "review_sha256": "e5bdf4ad23d324513c491ecabdcf8ae2cc42875655268ec29a6cb6f6e081f307",
+      "native_G_qualified": false
+    },
+    "all_same__occ_3": {
+      "E_Ha": -3118.0181128389677,
+      "charge": 2,
+      "geometry_sha256": "ebe492afc7ab0959ef1aaaac9ac0910ec6c70a8ca10e4b48e8ad82e85f34ea43",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_3_finalization/independent_review_v2.json",
+      "review_sha256": "d82c5eba0d5268c0ff22706b2ed9f3e7ebe9a50671e7b0df288382a8ba9e1f1b",
+      "native_G_qualified": false
+    },
+    "all_same__occ_4": {
+      "E_Ha": -3118.0103279860346,
+      "charge": 2,
+      "geometry_sha256": "0814686c235ecd518b8b01c111ba66dfcb7449f12377cea6b4a592261cbd69c1",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_4_finalization/independent_review_v2.json",
+      "review_sha256": "2d9bfbb59a426fe8bdf92eaab0ed309dd90ae9f9e505def9f9ff461ffc8104f9",
+      "native_G_qualified": false
+    },
+    "alternating__occ_2": {
+      "E_Ha": -3118.016083365715,
+      "charge": 2,
+      "geometry_sha256": "1808812a0a7075f2f2730729f17b487cc686407fb4c0da2a2091ae51dfcc2cef",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_finalization/independent_review_v2.json",
+      "review_sha256": "68ad2bbaff38d833ae6eac41465383dfec6cf6ee555a0606f5283e3e9c1787d8",
+      "native_G_qualified": false
+    },
+    "alternating__occ_3": {
+      "E_Ha": -3118.0187329303462,
+      "charge": 2,
+      "geometry_sha256": "55e2a1bdfe828d2e6203fe2e4c25f203595fd242dc79e9db983616b5a48882db",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_3_finalization/independent_review_v2.json",
+      "review_sha256": "b9f6f115ddb584f6abab39f67b407f33afe0368cf79e22517df44f974b570206",
+      "native_G_qualified": false
+    },
+    "alternating__occ_4": {
+      "E_Ha": -3118.0150875169265,
+      "charge": 2,
+      "geometry_sha256": "010c711f3864e88ea175f80acd1e4b828c9895ce0e6ac8eb50ef4c535382559f",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_4_finalization/independent_review_v2.json",
+      "review_sha256": "2a10e63789b12da815cff35d62f1be0edf95820450a6214b19c7eb736bc4a612",
+      "native_G_qualified": false
+    },
+    "all_same__occ_2_3": {
+      "E_Ha": -3192.3140646379275,
+      "charge": 4,
+      "geometry_sha256": "3def98123bb1056837b14b29085dc1da093e78cc87b428d8cb0f8b7cd6ea87a9",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_3_finalization/independent_review_v2.json",
+      "review_sha256": "e0bf161077fb95ecc1e772ba1d506b58db8eadd87ac21fb1f8130334e238206f",
+      "native_G_qualified": false
+    },
+    "alternating__occ_2_3": {
+      "E_Ha": -3192.30950151653,
+      "charge": 4,
+      "geometry_sha256": "3b145315ce056ed6991e4368aba0cb4e1ece904e9f8090704bd4cc76c18eee8b",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_3_finalization/independent_review_v2.json",
+      "review_sha256": "e7f75fc9ffa5175cf9051488c897011a9f4d786e4a5ae10e82e8bc4763654ec2",
+      "native_G_qualified": false
+    },
+    "alternating__occ_2_4": {
+      "E_Ha": -3192.311448788015,
+      "charge": 4,
+      "geometry_sha256": "32cdeef6246e609802162bab004cac2f9e5466a66ac749b932ee404efee971e0",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_4_finalization/independent_review_v2.json",
+      "review_sha256": "965791bb3711be1ac5df0dde9a103c8e5c1b44b0b99661818a448d6770f035b4",
+      "native_G_qualified": false
+    },
+    "all_same__occ_none": {
+      "E_Ha": -3043.7172001965773,
+      "charge": 0,
+      "geometry_sha256": "97fb606420ee6f01ca4f8b02da5c0271e6cf0d7054e075938e777029b251e733",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/independent_review.json",
+      "review_sha256": "0ff8a5db76533f0e84aca2435af49448d4a873320a727cc100d1a783315379b4",
+      "native_G_qualified": false
+    },
+    "alternating__occ_none": {
+      "E_Ha": -3043.7248569544327,
+      "charge": 0,
+      "geometry_sha256": "e193c1f96c5043828e915bea87857978ebd9862a3a48989c8a2ba5c8ab46f919",
+      "review": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/independent_review.json",
+      "review_sha256": "fab8aebb2f8a7f10baa35dc915b1c1288bdc5097a53e2e005963675f18c51716",
+      "native_G_qualified": false
+    }
+  },
+  "cycles": [
+    {
+      "definition": {
+        "name": "adjacent",
+        "sites": [
+          2,
+          3
+        ],
+        "intervening_repeat_units": 0,
+        "coefficients": {
+          "all_same__occ_2_3": 1,
+          "all_same__occ_none": 1,
+          "all_same__occ_2": -1,
+          "all_same__occ_3": -1
+        },
+        "configuration": "all_same"
+      },
+      "status": "finite_stationary_electronic_cycle_computed",
+      "missing": [],
+      "delta_delta_E_Ha": -0.0013181201456973213,
+      "delta_delta_E_kJ_mol": -3.460723967319408,
+      "delta_delta_G_kJ_mol": null,
+      "conformer_ensemble_qualified": false,
+      "isolated_motif_binding_energy": false,
+      "electronic_coupling_computed": false
+    },
+    {
+      "definition": {
+        "name": "one_spacer",
+        "sites": [
+          2,
+          4
+        ],
+        "intervening_repeat_units": 1,
+        "coefficients": {
+          "all_same__occ_2_4": 1,
+          "all_same__occ_none": 1,
+          "all_same__occ_2": -1,
+          "all_same__occ_4": -1
+        },
+        "configuration": "all_same"
+      },
+      "status": "pending_checked_stationary_components",
+      "missing": [
+        "all_same__occ_2_4"
+      ],
+      "delta_delta_E_Ha": null,
+      "delta_delta_E_kJ_mol": null,
+      "delta_delta_G_kJ_mol": null
+    },
+    {
+      "definition": {
+        "name": "adjacent",
+        "sites": [
+          2,
+          3
+        ],
+        "intervening_repeat_units": 0,
+        "coefficients": {
+          "alternating__occ_2_3": 1,
+          "alternating__occ_none": 1,
+          "alternating__occ_2": -1,
+          "alternating__occ_3": -1
+        },
+        "configuration": "alternating"
+      },
+      "status": "finite_stationary_electronic_cycle_computed",
+      "missing": [],
+      "delta_delta_E_Ha": 0.0004578250986924104,
+      "delta_delta_E_kJ_mol": 1.2020196315617375,
+      "delta_delta_G_kJ_mol": null,
+      "conformer_ensemble_qualified": false,
+      "isolated_motif_binding_energy": false,
+      "electronic_coupling_computed": false
+    },
+    {
+      "definition": {
+        "name": "one_spacer",
+        "sites": [
+          2,
+          4
+        ],
+        "intervening_repeat_units": 1,
+        "coefficients": {
+          "alternating__occ_2_4": 1,
+          "alternating__occ_none": 1,
+          "alternating__occ_2": -1,
+          "alternating__occ_4": -1
+        },
+        "configuration": "alternating"
+      },
+      "status": "finite_stationary_electronic_cycle_computed",
+      "missing": [],
+      "delta_delta_E_Ha": -0.005134859805821179,
+      "delta_delta_E_kJ_mol": -13.481572568962937,
+      "delta_delta_G_kJ_mol": null,
+      "conformer_ensemble_qualified": false,
+      "isolated_motif_binding_energy": false,
+      "electronic_coupling_computed": false
+    }
+  ],
+  "computed_cycles": 3,
+  "native_G_qualified": false,
+  "conformer_ensemble_qualified": false,
+  "experimental_loading_inferred": false,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/viologen_preparation_2026-10-31_v2/preparation.json": "8e2cb1e2804155cfc91243a76b5e3a4e13dbdc5ff4c68a05869383b5c1202771",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_finalization/independent_review_v2.json": "e5bdf4ad23d324513c491ecabdcf8ae2cc42875655268ec29a6cb6f6e081f307",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_finalization/namespace.json": "a593ec4253bc940449e31073bc32a63bc9bddc521b03fa75fa20ee15dfdb65aa",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_3_finalization/independent_review_v2.json": "d82c5eba0d5268c0ff22706b2ed9f3e7ebe9a50671e7b0df288382a8ba9e1f1b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_3_finalization/namespace.json": "426dbba72e56433d3cef5ea69e61226bfaad7f0778e8373848e819281f249648",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_3_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_3_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_4_finalization/independent_review_v2.json": "2d9bfbb59a426fe8bdf92eaab0ed309dd90ae9f9e505def9f9ff461ffc8104f9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_4_finalization/namespace.json": "8b52dbcc5a6264d9b6ffe4056d157948c34a211e310be1b467da361efafb20dd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_4_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_4_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_finalization/independent_review_v2.json": "68ad2bbaff38d833ae6eac41465383dfec6cf6ee555a0606f5283e3e9c1787d8",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_finalization/namespace.json": "97f61fdc344ad693d7dd42f8ef341fd724ea48b0d54c5f47cfaf6dff702cc1f5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_3_finalization/independent_review_v2.json": "b9f6f115ddb584f6abab39f67b407f33afe0368cf79e22517df44f974b570206",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_3_finalization/namespace.json": "53abb5fd6e5c65f80642372ec897a985957668832eb5f6eacf85634063b386e4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_3_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_3_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_4_finalization/independent_review_v2.json": "2a10e63789b12da815cff35d62f1be0edf95820450a6214b19c7eb736bc4a612",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_4_finalization/namespace.json": "00358c8efc8cf58b8a62234acc85c7bd41aed21935e89fc3ecd12b9d681e5f5d",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_4_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_4_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_3_finalization/independent_review_v2.json": "e0bf161077fb95ecc1e772ba1d506b58db8eadd87ac21fb1f8130334e238206f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_3_finalization/namespace.json": "49a18a46d38138283fc7fbb2ba51780c555de7d1cbdf30d0edefeb07572fe67f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_3_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_occ_2_3_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_3_finalization/independent_review_v2.json": "e7f75fc9ffa5175cf9051488c897011a9f4d786e4a5ae10e82e8bc4763654ec2",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_3_finalization/namespace.json": "5c06f3d1b0c58356d14f00c590653391db1893b6c2d2f665b7a772e2d5cf8fe5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_3_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_3_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_4_finalization/independent_review_v2.json": "965791bb3711be1ac5df0dde9a103c8e5c1b44b0b99661818a448d6770f035b4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_4_finalization/namespace.json": "1913aee1cfdafeb1afca3969f23f3bb55cd66e54e8701eef08541d475bdeee18",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_4_finalization/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_occ_2_4_finalization/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/independent_review.json": "0ff8a5db76533f0e84aca2435af49448d4a873320a727cc100d1a783315379b4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/namespace.json": "ac9a3ca67df29329c5210800c8451ace685bf043ba02eb62fcff31c98b48769e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_all_same_empty_corrected_optimization_v2/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/independent_review.json": "fab8aebb2f8a7f10baa35dc915b1c1288bdc5097a53e2e005963675f18c51716",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/namespace.json": "449c3de9e33e5288ad21ee5e280ae6405874654e2c533e599e72677f13f4f75b",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/case/screening_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-10-31_viologen_alternating_empty_corrected_optimization_v2/case/screening_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536"
+  },
+  "producer_sha256": "b98f4af91894cc791b7b59829f4f2ed804c80263d15684116445a727d2e6c705"
+}

@@ -1,0 +1,58 @@
+{
+  "status": "five_non_DOI_citation_identities_directly_reviewed",
+  "checked": 1793069322.3186584,
+  "records": [
+    {
+      "key": "pkaTables",
+      "url": "https://analytical.chem.ut.ee/databases/pka-values/",
+      "checked_fields": [
+        "institution",
+        "database_title",
+        "MeCN_scale_scope"
+      ],
+      "scope": "Author-maintained basicity scale and linked recommended acid table; no claim of matched ion-activity conventions."
+    },
+    {
+      "key": "bochis1983",
+      "url": "https://patents.google.com/patent/EP0010440B1/en",
+      "checked_fields": [
+        "title",
+        "inventors",
+        "publication_identifier",
+        "publication_date"
+      ],
+      "scope": "Granted patent EP0010440B1, 26 January 1983; exact precursor report remains separately source-reviewed."
+    },
+    {
+      "key": "sommerlade2002tempo",
+      "url": "https://patents.google.com/patent/US6441243B1/en",
+      "checked_fields": [
+        "title",
+        "inventors",
+        "publication_identifier",
+        "publication_date"
+      ],
+      "scope": "Granted patent US6441243B1, 27 August 2002; inventor name corrected to Souâd Boulmaâz. Attachment evidence remains scoped to the reported example."
+    },
+    {
+      "key": "fairchemInference2026",
+      "url": "https://facebookresearch.github.io/fairchem/ase-calculator/",
+      "checked_fields": [
+        "title",
+        "attributed_group",
+        "official_documentation"
+      ],
+      "scope": "Software documentation; access year and recorded source revision identify the citation, not an experimental or parity result."
+    },
+    {
+      "key": "rdkit",
+      "url": "https://www.rdkit.org/",
+      "checked_fields": [
+        "software_title",
+        "official_project_site"
+      ],
+      "scope": "Software citation; installed version is recorded independently in the environment. No experimental-validation claim."
+    }
+  ],
+  "review_type": "Direct inspection of primary patent records, author-maintained database and official software sites"
+}

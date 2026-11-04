@@ -1,0 +1,50 @@
+{
+  "status": "larger_native_dimension_pilot_uncertain_attempt_preserved",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot/namespace.json",
+  "namespace_sha256": "cff51f0a33cb22d4ecdf0277c49fc01302b7f9d4d252a924dcd24bb8d5b946cb",
+  "slots": [
+    [
+      "lambda13",
+      1
+    ],
+    [
+      "lambda13",
+      2
+    ],
+    [
+      "lambda13",
+      3
+    ],
+    [
+      "lambda13",
+      4
+    ],
+    [
+      "lambda13",
+      5
+    ],
+    [
+      "lambda13",
+      6
+    ],
+    [
+      "lambda13",
+      7
+    ]
+  ],
+  "availability_errors": [],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot/namespace.json": "cff51f0a33cb22d4ecdf0277c49fc01302b7f9d4d252a924dcd24bb8d5b946cb"
+  },
+  "native_G_qualified": false,
+  "host": "lambda13",
+  "GPU": 1,
+  "prelaunch_capacity": {
+    "available": 1573427847168,
+    "promised": 79583621120,
+    "GPU_MiB": 95830.0,
+    "load": 6.41015625,
+    "cpus": 384
+  },
+  "error": "CalledProcessError(1, ['ssh', '-o', 'BatchMode=yes', '-o', 'ConnectTimeout=8', 'lambda13', 'env PYTHONPATH=/nfs/lambda_stor_01/homes/rzhu/0_redox/src OMP_NUM_THREADS=1 OMP_THREAD_LIMIT=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 XTB_THREADS=1 NUMPY_MADVISE_HUGEPAGE=0 /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python -c \\'import json,os,pathlib,subprocess,sys\\nfrom redox.workflows.screening_control import probe\\nfrom redox.core.io import atomic_write_json\\nfrom redox.workflows.resources import allocation_guard,host_capacity,cpu_allocation\\nspec=pathlib.Path(sys.argv[1]);output=pathlib.Path(sys.argv[2]);gpu=sys.argv[3]\\nallowed=os.sched_getaffinity(0)\\nwith allocation_guard():host_capacity(1,minimum_ram_gib=2);os.sched_setaffinity(0,cpu_allocation(1))\\nprobe(spec)\\nos.sched_setaffinity(0,allowed)\\nargv=[sys.executable,\"-u\",\"-m\",\"redox.workflows.screening_control\",\"launch\",\"--spec\",str(spec),\"--gpu\",gpu,\"--out\",str(output)]\\nlogpath=pathlib.Path(sys.argv[4]);logpath.parent.mkdir(parents=True,exist_ok=True)\\nwith logpath.open(\"x\") as log:child=subprocess.Popen(argv,stdin=subprocess.DEVNULL,stdout=log,stderr=subprocess.STDOUT,start_new_session=True)\\nowner=dict(host=os.uname().nodename.split(\".\")[0],pid=child.pid,process_start=pathlib.Path(f\"/proc/{child.pid}/stat\").read_text().rsplit(\")\",1)[1].split()[19])\\nreceipt=dict(status=\"controller_spawned_scientific_start_unverified\",owner=owner,placement=str(output),argv=argv)\\natomic_write_json(pathlib.Path(sys.argv[5]),receipt);print(json.dumps(receipt))\\n\\' /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot/namespace.json /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot/placement_001 1 /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot/dispatch_logs/try_001.log /nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_viologen_pair23_H100_dimension_pilot/dispatch_claim/try_001.json'])"
+}

@@ -1,0 +1,89 @@
+{
+  "status": "closed_wrapper_adapter_failure_before_scientific_entry_preserved",
+  "checked": 1793683498.007805,
+  "error": "New CLI indexed the existing (child, launch_record) result as a dict before entering its budget observer",
+  "records": [
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/states/phenothiazine_neu_mode_minus/namespace.json",
+      "placements": [
+        {
+          "launch": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/states/phenothiazine_neu_mode_minus/placement_001/launch.json",
+          "closed_owners": [
+            {
+              "owner": {
+                "host": "lambda2",
+                "pid": 2088647,
+                "process_start": "1448397554"
+              },
+              "actual_process_start": null,
+              "alive": false
+            },
+            {
+              "owner": {
+                "host": "lambda2",
+                "pid": 2088034,
+                "process_start": "1448397205"
+              },
+              "actual_process_start": null,
+              "alive": false
+            }
+          ]
+        },
+        {
+          "launch": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/states/phenothiazine_neu_mode_minus/placement_002/launch.json",
+          "closed_owners": [
+            {
+              "owner": {
+                "host": "lambda2",
+                "pid": 2093885,
+                "process_start": "1448406161"
+              },
+              "actual_process_start": null,
+              "alive": false
+            },
+            {
+              "owner": {
+                "host": "lambda2",
+                "pid": 2093533,
+                "process_start": "1448405686"
+              },
+              "actual_process_start": null,
+              "alive": false
+            }
+          ]
+        }
+      ],
+      "absent_scientific_outputs": {
+        "status.json": true,
+        "SCF_evaluations": true,
+        "residency_guard": true,
+        "host_guard": true,
+        "tensor_runtime": true
+      }
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/states/phenothiazine_neu_mode_plus/namespace.json",
+      "placements": [],
+      "absent_scientific_outputs": {
+        "status.json": true,
+        "SCF_evaluations": true,
+        "residency_guard": true,
+        "host_guard": true,
+        "tensor_runtime": true
+      }
+    },
+    {
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_candidate_continuations/2026-11-02_phenothiazine_refined_electronic/states/phenothiazine_ox_stationarity/namespace.json",
+      "placements": [],
+      "absent_scientific_outputs": {
+        "status.json": true,
+        "SCF_evaluations": true,
+        "residency_guard": true,
+        "host_guard": true,
+        "tensor_runtime": true
+      }
+    }
+  ],
+  "controller_stop_requested": true,
+  "scientific_retries_performed": false
+}

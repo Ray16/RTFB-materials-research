@@ -1,0 +1,37 @@
+{
+  "status": "counterion_full_component_retry_controller_spawned_start_unverified",
+  "host": "lambda13",
+  "GPU": 4,
+  "capacity": {
+    "available": 1424021131264,
+    "promised": 445262172160,
+    "GPU_MiB": 95830.0,
+    "load": 27.080078125,
+    "cpus": 384
+  },
+  "receipt": {
+    "status": "controller_spawned_scientific_start_unverified",
+    "owner": {
+      "host": "lambda13",
+      "pid": 4110774,
+      "process_start": "177057757"
+    },
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_thermochemistry",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/namespace.json",
+      "--gpu",
+      "4",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/placement_002"
+    ],
+    "placement": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/placement_002"
+  },
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_thermochemistry_recovery_01/namespace.json",
+  "old_placement_preserved": true,
+  "checked": 1793653238.228928
+}

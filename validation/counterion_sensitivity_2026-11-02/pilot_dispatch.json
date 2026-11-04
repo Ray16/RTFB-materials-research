@@ -1,0 +1,33 @@
+{
+  "status": "counterion_geometry_controller_spawned_start_unverified",
+  "host": "lambda1",
+  "GPU": 1,
+  "capacity": {
+    "available": 293778702336,
+    "promised": 117498961920,
+    "GPU_MiB": 32768.0,
+    "load": 5.037109375,
+    "cpus": 80
+  },
+  "receipt": {
+    "host": "lambda1",
+    "pid": 1279243,
+    "process_start": "589791995",
+    "argv": [
+      "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/python",
+      "-u",
+      "-m",
+      "redox.workflows.counterion_geometry",
+      "launch",
+      "--spec",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_above/namespace.json",
+      "--gpu",
+      "1",
+      "--out",
+      "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_above/placement_001"
+    ]
+  },
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_counterion_controls/2026-11-02_primary_chloride_contact_geometries_v2/states/N0_above/namespace.json",
+  "namespace_sha256": "6f006403f8d1d673fe3966b47fe2b694ebb8b016127f1705c63b9df322bc40f2",
+  "quantum_G_qualified": false
+}
