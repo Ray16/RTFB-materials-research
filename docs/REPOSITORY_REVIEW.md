@@ -1,8 +1,8 @@
 # Repository release review
 
 Initial assessment: GitHub main at e25cf5ff. At the user's instruction, all
-work was consolidated into the canonical 0_redox directory, currently on
-refactor/clean-workflow with pre-existing uncommitted work. The older main
+work was consolidated into the canonical 0_redox directory. It is now on main;
+pre-existing unrelated edits remain local. The older main
 checkout and its review patch are preserved in Git metadata. The reconciliation preserves both committed histories and excludes unrelated
 local edits from the publication checkpoint.
 
@@ -43,7 +43,8 @@ adds no publication metadata or new license. Validation records describe the pre
   Missing files/required fields now have explicit diagnostics.
 - Added a minimal GitHub CPU workflow for the existing standard-library cached
   example and lightweight tests. It has read-only repository permissions and
-  launches no scientific jobs. Hosted execution remains unverified until pushed.
+  launches no scientific jobs. Hosted CI subsequently passed; the current
+  workflow includes 34 CPU interface, cache, relocation and release-gate tests.
 - Updated dispatch test doubles to supply source provenance and isolate synthetic
   hosts from live campaign priorities. Production dispatch behavior is unchanged.
 - Added conventional ignore patterns while preserving existing ignore rules.
@@ -67,7 +68,12 @@ The canonical checkout retains pre-existing scientific edits. The publication
 checkpoint joins the existing committed scientific history with main while
 leaving those unrelated edits local. The running polymer calculations
 must finish before their final relocation; temporary sibling links remain until
-readers and namespaces are migrated. Full raw archiving/deposition and the
-manuscript's author clarification points remain separate open tasks.
+readers and namespaces are migrated. The full declared raw archive is now
+verified, and the manuscript's method/reference clarification points are resolved.
+Public deposition, data reuse terms and author declarations remain pending.
 
 The machine-readable validation result is `validation/repository_review.json`.
+
+The [current handoff](../validation/publication_release_2026-11-03/current_handoff.json)
+records the completed local deliverables and the remaining input/state dependencies.
+Earlier validation reports retain their original observation times and scope.
