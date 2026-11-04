@@ -10,6 +10,8 @@ COMMANDS = {
     "workflows": ("redox.workflows.catalog", (), "show maintained workflows, calculation stages, controls and recovery tools; no execution"),
     "uma": ("redox.qm.uma_current", (), "gas-phase warm starts with explicit backend qualification"),
     "dft": ("redox.qm.uma_current", ("--stage", "dft"), "DFT/SMD with checked warm-start provenance"),
+    "sp": ("redox.qm.sp", (), "active-protocol single points; adopts matching DFT energies (--backend gpu)"),
+    "native-thermal": ("redox.qm.native_thermal", (), "solution DFT Hessian thermochemistry via gpu_reserve (--only, --select-policy)"),
     "motifs": ("redox.workflows.motifs", (), "plan or execute registered candidates"),
     "uma-check": ("redox.validation.uma_environment", (), "inspect UMA configuration without loading CUDA"),
     "status": ("redox.validation.readiness", (), "inspect all declared states and QC"),
