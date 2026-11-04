@@ -21,7 +21,7 @@ def sha(path):
 def main():
     os.sched_setaffinity(0, {min(os.sched_getaffinity(0))})
     env = dict(os.environ, OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', MKL_NUM_THREADS='1', BIBINPUTS=str(ROOT) + os.pathsep)
-    checks = ROOT.parent / '0_redox_overleaf_checks'
+    checks = ROOT.parents[1] / 'calcs/validation/overleaf_checks'
     checks.mkdir(exist_ok=True)
     build = Path(tempfile.mkdtemp(prefix='narrative_revision_', dir=checks))
     toc = ['pdflatex', '-interaction=nonstopmode', '-halt-on-error', '-output-directory=' + str(build), 'graphical_abstract.tex']

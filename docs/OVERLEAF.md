@@ -2,8 +2,8 @@
 
 Project: https://www.overleaf.com/project/6aea2dc8096db15da57980a0
 
-The active collaboration checkout is `/homes/rzhu/0_redox_overleaf`
-(canonical path `/nfs/lambda_stor_01/homes/rzhu/0_redox_overleaf`).
+The active collaboration checkout is `/homes/rzhu/0_redox/manuscript/overleaf`
+(canonical path `/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/overleaf`).
 Its Git remote is `https://git@git.overleaf.com/6aea2dc8096db15da57980a0`,
 with local and remote branch `main`.
 
@@ -21,9 +21,10 @@ The machine-readable connection and build record is [overleaf_connection.json](o
 
 ## Current reviewed revision
 
-Overleaf commit `b881af03810dc49baa83338f90f2c4356d93a8d1` contains the subsequent clarity and flow edit.
+Overleaf commit `5f50c614060e1470d32a104cbf2a1ed9624b5aea` clarifies the calculation levels and Fc scale comparison.
+The earlier language edit remains preserved at `b881af03810dc49baa83338f90f2c4356d93a8d1`.
 The first systematic narrative revision remains preserved at `2dea0497b637de6bdd2012522e4148e882629b73`.
-The article is 14 pages and the SI is 40 pages. The
+The article is 15 pages and the SI is 41 pages. The
 [manuscript entry point](../manuscript/README.md) links the checked PDFs,
 self-contained source snapshot and claim/build/visual records.
 No new quantum calculations were performed; the original numerical inputs

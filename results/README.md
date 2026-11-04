@@ -6,7 +6,7 @@ scientific outputs remain immutable at their original locations, including
 establish that a calculation is currently running.
 
 - [Paper and SI](../manuscript/README.md): the shared revision is a checked
-  14-page article and 40-page SI, with the parent benchmark and matched
+  15-page article and 41-page SI, with the parent benchmark and matched
   molecular/reaction/polymer comparisons. The earlier 21/36-page source exports
   retain their own frozen evidence scope. Occupied ensembles, broader salt
   speciation and full material eligibility remain pending.

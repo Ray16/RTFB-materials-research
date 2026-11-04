@@ -285,3 +285,18 @@ CSV exports. Both PDFs rebuild successfully; changed layouts were inspected.
 The [local file inventory](../manuscript/submission_files.json) is explicit about
 pending author details and archival deposition. This formatting pass changes no
 scientific values and does not promote conditional results to material validation.
+
+## Shared manuscript clarification
+
+The current shared revision is a checked 15-page article with a 41-page SI.
+The [method clarification](../manuscript/overleaf/method_clarification.json)
+reconciles the occupied-sampling electronic/Hessian levels with the frozen
+records and defines the limited Fc/photoemission scale comparison. No matched
+thermodynamic conversion, calibrated reference error or numerical correction
+is introduced. Earlier scientific-source build counts above describe their
+original frozen exports; the shared prose revision has its own build and
+visual records. Author information and final deposition remain pending.
+
+The existing reviewer bundle retains its earlier source-commit scope. Refreshing
+its manuscript payloads is a separate remaining release step; the current PDFs
+are linked directly from the shared manuscript entry point.

@@ -4,12 +4,12 @@ The [shared Overleaf project](https://www.overleaf.com/project/6aea2dc8096db15da
 is the live collaboration copy. Pull and merge before edits and again before
 pushing; use `/homes/rzhu/0_redox/manuscript/overleaf` for the active checkout.
 
-The current language-edited revision is a 14-page
-[article](review/manuscript.pdf) with a 40-page
+The current clarified revision is a 15-page
+[article](review/manuscript.pdf) with a 41-page
 [Supporting Information](review/supporting_information.pdf).
 The [self-contained source snapshot](overleaf/main.tex) and
 [provenance manifest](overleaf_snapshot.json) preserve Overleaf commit
-`b881af03810dc49baa83338f90f2c4356d93a8d1` on GitHub main. The previous 21/36-page version remains in
+`5f50c614060e1470d32a104cbf2a1ed9624b5aea` on GitHub main. The previous 21/36-page version remains in
 Overleaf Git history and the original scientific-source export.
 
 The revision leads with the fixed benchmark, surfaces matched TEMPO,
@@ -33,5 +33,8 @@ replacing the Overleaf project with this directory.
 The [language-edit record](overleaf/language_revision.json) documents sentence
 simplification and clearer transitions. All numerical literals, equations,
 citations and frozen inputs are preserved. The [author notes](overleaf/language_author_notes.md)
-flag the expanded-sampling method description and ferrocene scale comparison
-for scientific clarification. The SI text was not edited in this pass.
+record their resolution in the [method clarification](overleaf/method_clarification.json).
+The calculation levels were checked against 31 frozen native-sampling and
+12 ionic records. The main text and SI distinguish the computed composite
+Gibbs reference from the measured ionisation energy without inferring a matched
+conversion or calibrated Fc error. Equations and frozen numerical inputs are unchanged.
