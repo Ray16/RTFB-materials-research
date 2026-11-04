@@ -1,19 +1,30 @@
 # Publication release preparation
 
-The [current local reviewer candidate](review_candidate_04.json) contains six
-checked payloads totaling 822,165,239 bytes, plus nine directly accessible
-submission files totaling 1,999,045 bytes. It includes the revised article and
-SI, cover letter, TOC TIFF, context-complete data tables, committed scientific
-source, slides and prior checked replay/control packages. It is located at
-`/nfs/lambda_stor_01/homes/rzhu/redox_release_candidates/2026-11-03_jcim_review_candidate_submission`.
-Its manifest hashes all 28 files. The direct submission files are checked
-against source commit `bd375957`, whose complete manuscript validation build
-passes with original user data hidden and networking disabled. The build uses
-the existing checked runtime and does not repeat quantum calculations.
+The [current reviewer package](review_candidate_05.json) is appended inside the
+existing canonical release directory:
+`results/redox_release_candidates/2026-11-03_jcim_review_candidate_submission`.
+Use its `CURRENT.md` and `manifest_5f50c61.json`. The earlier manifests, packages
+and source versions remain unchanged.
 
-The earlier candidates and producer versions remain preserved. This is ready
-for local review; the full raw archive, public deposition and final metadata
-remain outstanding. The raw inventory below retains its earlier snapshot scope.
+The current package contains the shared 15-page Article and 41-page SI, aligned
+cover letter and TOC TIFF, context-complete data tables, self-contained manuscript
+source, scientific source commit `6629fcd1`, and the existing checked replay/control
+and slide packages with their dated scopes. Its 27 selected files are hash checked.
+The scientific source archive was streamed against all 12,377 Git blobs.
+
+The [isolated source check](current_source_validation.json) reconstructs the
+scientific-evidence documents and compiles the current shared manuscript from
+that committed archive with original user data hidden and networking disabled.
+The shared PDFs' page text matches the checked 15/41-page version. Compiler logs
+are included. Extraction occurs in private tmpfs and creates no persistent work
+folder. The existing runtime is reused; neither a fresh environment install nor
+new quantum calculations is claimed.
+
+The full raw archive is now being created separately, following newly available
+storage and a [source preflight](raw_archive_preflight.json). It remains excluded
+from the current completed-package manifest until every archived member passes
+verification. Public deposition, reuse metadata and final author declarations
+remain pending.
 
 ## Source replay and resolved portability gap
 
@@ -66,8 +77,9 @@ The [storage observation](storage_headroom.json) found 14 live calculation owner
 [compression pilot](compression_pilot.json) measures four full H1-family files;
 the two large arrays retain 95.5% and 96.1% of their size at zstd level 3.
 This sample is not a full-archive bound and provides no basis for assuming that
-the 120.3-GB payload will fit. A suitable durable destination is pending user
-input. No full raw archive has been started or marked complete.
+the 120.3-GB payload will fit. At that observation, a suitable durable destination was pending user
+input and no full raw archive had started. Storage has since become available;
+see the current archive section below.
 
 ## Maintained packaging tools
 
@@ -111,8 +123,26 @@ The [fresh storage observation](storage_headroom_02.json) finds 78.45 GB free.
 The included research objects require 120.38 GB uncompressed, plus a 34.36-GB
 (32-GiB) reserve: a minimum 76.29-GB shortfall before active calculation promises.
 The existing compression pilot does not justify assuming the full archive fits.
-A suitable authorized durable destination remains pending user input; no full raw
-archive has started. Author details, reuse licensing, a permanent release identifier
+That observation preceded the newly available storage. A full raw archive
+is now running as described below. Author details, reuse licensing, a permanent release identifier
 and public deposition remain outstanding. This small inventory addendum accompanies
 the immutable reviewer bundle through the results index; it does not rewrite that
 bundle or its scientific-source commit.
+
+## Full raw archive in progress
+
+The [current archive inventory](current_raw_archive_inventory.json) resolves the
+canonical source locations and preserves the previous inventory. The one changed
+producer path was recovered byte-for-byte from Git and stored as
+`raw_builder_source.py`; its original SHA-256 remains unchanged. The archive covers
+46,789 unique research-evidence objects totaling 120,381,992,561 bytes, with runtime
+dependencies and third-party publications kept explicitly external.
+
+`full_raw_archive_owner.json` records the live process identity and archive path.
+The writer uses one zstd worker, hashes every source while streaming, and preserves
+the 32-GiB storage floor. It then independently verifies the complete archive
+member set and hashes. Until `full_raw_archive_verified.json` exists with a passing
+result, archive creation is incomplete. A partial archive is not a release.
+The [13 stream/package checks](raw_archive_stream_checks.xml) include existing
+metadata directories and refusal of conflicting filenames. No new release or
+working directory was created.

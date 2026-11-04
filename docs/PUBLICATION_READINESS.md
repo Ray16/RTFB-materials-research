@@ -300,3 +300,13 @@ visual records. Author information and final deposition remain pending.
 The existing reviewer bundle retains its earlier source-commit scope. Refreshing
 its manuscript payloads is a separate remaining release step; the current PDFs
 are linked directly from the shared manuscript entry point.
+
+## Current release followup
+
+The reviewer package now includes the latest shared manuscript and aligned
+submission components. Its committed-source archive matches all Git blobs,
+and isolated builds pass for both the scientific evidence and current shared
+prose. Newly available storage permits creation of the full raw archive; its
+independent verification is still pending. Earlier storage-shortfall observations
+above describe their original dates. Public deposition and final author/reuse
+metadata remain outstanding.
