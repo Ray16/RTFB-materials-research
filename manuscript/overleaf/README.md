@@ -4,6 +4,8 @@ Shared project: https://www.overleaf.com/project/6aea2dc8096db15da57980a0
 
 Main document: `main.tex`. Supporting Information: `supporting_information.tex`.
 The current narrative revision compiles to a 14-page article and 40-page SI.
+The subsequent clarity edit is recorded in `language_revision.json`;
+`language_author_notes.md` lists two scientific clarification points.
 See `narrative_revision.json`, `narrative_claim_check.json`,
 `narrative_build_check.json` and `narrative_visual_review.json` for the changes
 and checks. The initial export/build records below describe the preserved starting version.

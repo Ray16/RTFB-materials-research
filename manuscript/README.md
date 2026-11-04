@@ -4,12 +4,12 @@ The [shared Overleaf project](https://www.overleaf.com/project/6aea2dc8096db15da
 is the live collaboration copy. Pull and merge before edits and again before
 pushing; use `/homes/rzhu/0_redox_overleaf` for the active checkout.
 
-The first systematic narrative revision is a 14-page
+The current language-edited revision is a 14-page
 [article](review/manuscript.pdf) with a 40-page
 [Supporting Information](review/supporting_information.pdf).
 The [self-contained source snapshot](overleaf/main.tex) and
 [provenance manifest](overleaf_snapshot.json) preserve Overleaf commit
-`2dea0497b637de6bdd2012522e4148e882629b73` on GitHub main. The previous 21/36-page version remains in
+`b881af03810dc49baa83338f90f2c4356d93a8d1` on GitHub main. The previous 21/36-page version remains in
 Overleaf Git history and the original scientific-source export.
 
 The revision leads with the fixed benchmark, surfaces matched TEMPO,
@@ -29,3 +29,9 @@ a tagged release and archival deposition remain outstanding.
 
 The source snapshot is a backup; merge live collaborator edits rather than
 replacing the Overleaf project with this directory.
+
+The [language-edit record](overleaf/language_revision.json) documents sentence
+simplification and clearer transitions. All numerical literals, equations,
+citations and frozen inputs are preserved. The [author notes](overleaf/language_author_notes.md)
+flag the expanded-sampling method description and ferrocene scale comparison
+for scientific clarification. The SI text was not edited in this pass.

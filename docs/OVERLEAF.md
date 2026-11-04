@@ -21,7 +21,8 @@ The machine-readable connection and build record is [overleaf_connection.json](o
 
 ## Current reviewed revision
 
-Overleaf commit `2dea0497b637de6bdd2012522e4148e882629b73` is the first systematic narrative revision.
+Overleaf commit `b881af03810dc49baa83338f90f2c4356d93a8d1` contains the subsequent clarity and flow edit.
+The first systematic narrative revision remains preserved at `2dea0497b637de6bdd2012522e4148e882629b73`.
 The article is 14 pages and the SI is 40 pages. The
 [manuscript entry point](../manuscript/README.md) links the checked PDFs,
 self-contained source snapshot and claim/build/visual records.
