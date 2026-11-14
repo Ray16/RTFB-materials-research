@@ -145,9 +145,26 @@ def aggregate(systems, output=None):
     return rows
 
 
-def aggregate_all():
+def aggregate_all(output=None):
+    if not CALC.is_dir():
+        return pinned_table(output)
     systems = sorted(int(path.name) for path in CALC.iterdir() if path.is_dir() and path.name.isdigit())
-    return aggregate(systems)
+    return aggregate(systems, output)
+
+
+def pinned_table(output=None):
+    """Without the 169 OROP calculations, carry the pinned table (redox seed-reference) through
+    unchanged; its rows still pass calibration_row_ok only against the matching live Fc."""
+    pinned = ROOT / "results" / "orop_benchmark.csv"
+    if not pinned.is_file():
+        raise SystemExit(f"{CALC} is absent and no pinned {pinned} exists; run `python -m redox seed-reference`")
+    target = Path(output) if output is not None else RESULTS / "orop_benchmark.csv"
+    if target.resolve() != pinned.resolve():
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(pinned, target)
+    print(f"[orop] {CALC} absent: using the pinned benchmark table {pinned}", flush=True)
+    with target.open(newline="") as handle:
+        return list(csv.DictReader(handle))
 
 
 def run_system(system, backend="gpu", force=False):
@@ -203,9 +220,9 @@ def main(argv=None):
     if args.only is not None:
         return run_system(args.only, args.backend, args.force)
     if args.aggregate == "all":
-        systems = sorted(int(path.name) for path in CALC.iterdir() if path.is_dir() and path.name.isdigit())
-    else:
-        systems = DEFAULT if args.aggregate == "default" else [int(value) for value in args.aggregate.split(",")]
+        aggregate_all(args.out)
+        return 0
+    systems = DEFAULT if args.aggregate == "default" else [int(value) for value in args.aggregate.split(",")]
     aggregate(systems, args.out)
     return 0
 

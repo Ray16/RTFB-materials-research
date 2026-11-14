@@ -32,6 +32,9 @@ step() { echo; echo "== [$1] $2 =="; }
 # is how stale-but-plausible tables reached the scorecard. Missing active-protocol energies
 # are reported per couple as INCOMPLETE by the modules themselves (never silently zero).
 
+step R "pinned calibration evidence installed (Fc reference + grounded MeCN benchmark records)"
+python -m redox seed-reference --check
+
 step T "data-contract tests (thermo identities, caches, capacity paths, Pareto)"
 python -m pytest -q tests
 
@@ -43,7 +46,7 @@ python scripts/pipeline/set_fc_reference.py
 
 step 2 "redox E° table (active protocol; INCOMPLETE couples flagged)"
 python -m redox.properties.potentials
-python scripts/validation/orop/run_orop_benchmark.py --aggregate all   # OROP E° benchmark (feeds sigma prior)
+python scripts/validation/orop/run_orop_benchmark.py --aggregate all   # OROP E° benchmark (pinned table if calcs/orop absent)
 
 step 3 "using existing reorganization cross points (no quantum calculations)"
 
@@ -67,6 +70,7 @@ python -m redox.properties.capacity_and_proxies
 
 step 10 "molecular scorecard and descriptor Pareto (full-candidate admission follows)"
 python -m redox.screening.scorecard
+python -m redox seed-reference --compare-results   # sigmas must equal the validated calibration
 python -m redox.screening.pareto
 
 step 11 "candidate spreadsheet + result-dependent figures"
@@ -86,6 +90,13 @@ step 12 "independent audit: every published number re-derived from raw records"
 python scripts/validation/audit/recompute_axes.py
 
 step 13 "source-current candidate evidence and ALL-axis decision admission"
-python scripts/pipeline/publish_candidate_decisions.py
+# Campaign publication needs the fixed publication benchmark and the verified candidate feed,
+# both collected from campaign records (~/archive/0_redox) rather than produced by this script.
+if [ -f results/validation/publication_benchmark/panel_v1.json ] && [ -f results/candidates/current.json ]; then
+  python scripts/pipeline/publish_candidate_decisions.py
+else
+  echo "NOT PUBLISHED: campaign decision publication needs results/validation/publication_benchmark/panel_v1.json"
+  echo "  and results/candidates/current.json (campaign evidence, see ~/archive/0_redox/results/README.md)"
+fi
 
 echo; echo "== finalization complete =="

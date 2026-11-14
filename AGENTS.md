@@ -57,6 +57,10 @@ grafting. Strongly unfavorable actual-condition routes should not enter the synt
 shortlist. Preserve existing results. Explicitly scoped method controls may be
 studied without implying synthesis eligibility.
 
+In this refactored tree `library/`, `calcs/` and `results/` are gitignored runtime outputs;
+the pre-refactor results index and campaign outputs are at `~/archive/0_redox/results/`
+(README.md, INDEX.json), and pinned calibration inputs live in `data/reference/`
+(install with `python -m redox seed-reference`).
 Maintain `results/README.md` as the single human entry point and `results/INDEX.json`
 as its machine-readable counterpart. Every new result category or campaign must
 record its stable current outputs, status/QC, raw calculation location and source
@@ -93,3 +97,16 @@ Include code, configuration, relevant tests, small result artifacts and a record
 of checks and remaining scientific limits. Preserve unrelated staged changes.
 Keep bulk datasets, model weights and large calculation outputs on shared storage;
 record their locations and hashes with the checked results. Report the pushed commit.
+
+## Canonical project location
+
+Keep all redox project work under `/nfs/lambda_stor_01/homes/rzhu/0_redox`.
+Do not create sibling checkouts, export folders, or new working directories
+without the user's explicit instruction. The live manuscript is
+`manuscript/overleaf/`; historical exports are preserved inside the canonical
+repository. Use existing project directories for checks and temporary outputs.
+
+Active `redox_polymer_continuations` calculations must finish before that directory
+is relocated. Existing sibling `redox_*` compatibility symlinks are transitional;
+all new outputs must use their canonical locations recorded in
+`validation/workspace_relocation.json`. Do not create new sibling outputs.

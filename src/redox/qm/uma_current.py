@@ -30,16 +30,17 @@ from redox.qm.uma_model_identity import digest
 POLICY = ROOT/'config/uma_execution.json'
 
 
-def select_backend(capability, require_nitro=False):
-    """Stock backend by default; Nitro only on a Nitro-capable (cc 8.x-12.x) GPU.
+def select_backend(capability, require_nitro=False, qualified=True):
+    """Stock backend by default; Nitro only on a qualified, Nitro-capable (cc 8.x-12.x) GPU.
 
     Nitro's fused kernels require CUDA compute capability 8.x-12.x (Ampere/Hopper/
     Blackwell). On this cluster that means an H100. Every other card - V100 (7.0),
-    T4 (7.5), ... - uses the deterministic stock calculator. ``require_nitro`` forces
-    Nitro and raises if the actual GPU cannot run it.
+    T4 (7.5), ... - uses the deterministic stock calculator. A capable card also falls
+    back to stock while Nitro is not production-qualified. ``require_nitro`` forces
+    Nitro and raises if the actual GPU cannot run it (or, later, if it is unqualified).
     """
     major, _ = capability
-    if major in (8,9,10,11,12):
+    if major in (8,9,10,11,12) and (qualified or require_nitro):
         return 'nitro'
     if require_nitro:
         raise RuntimeError('Nitro requires CUDA compute capability 8.x-12.x '
@@ -262,7 +263,12 @@ def main():
     gpu=os.environ['CUDA_VISIBLE_DEVICES']
     raw=subprocess.check_output(['nvidia-smi','--id='+gpu,'--query-gpu=compute_cap','--format=csv,noheader,nounits'],text=True,timeout=15).strip()
     major,minor=map(int,raw.split('.'))
-    profile=select_backend((major,minor),args.require_nitro)
+    from redox.qm.uma_policy import require_production_qualification
+    try:
+        require_production_qualification(policy);qualified=True
+    except RuntimeError:
+        qualified=False
+    profile=select_backend((major,minor),args.require_nitro,qualified)
     python=policy['nitro_python'] if profile == 'nitro' else policy['legacy_python']
     wanted_prefix=Path(python).parent.parent
     needs_library_path = profile == 'nitro' and not os.environ.get('LD_LIBRARY_PATH','').startswith(policy['nitro_library_path'])
@@ -271,7 +277,7 @@ def main():
         if profile == 'nitro':environment['LD_LIBRARY_PATH']=policy['nitro_library_path']+os.pathsep+environment.get('LD_LIBRARY_PATH','')
         os.execve(python,[python,'-m','redox.qm.uma_current',*sys.argv[1:]],environment)
     os.environ['FAIRCHEM_CACHE_DIR']=policy['fairchem_cache']
-    print(f'[UMA] device_cc={major}.{minor} backend={profile} (stock default; Nitro on cc 8.x-12.x)',flush=True)
+    print(f'[UMA] device_cc={major}.{minor} backend={profile} nitro_qualified={qualified} (stock default; Nitro on qualified cc 8.x-12.x)',flush=True)
     run_uma(remaining,profile,policy)
 
 

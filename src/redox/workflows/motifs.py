@@ -3,6 +3,7 @@
 
   python scripts/pipeline/run_motifs.py --config config/custom_candidates.py --out results/run_name
   python scripts/pipeline/run_motifs.py --config config/custom_candidates.py --out results/run_name --execute --gpu 0
+  ... --execute --gpu 0,1,2   # optimize the redox states of each motif concurrently, one GPU each
 
 GPU steps always run through gpu_reserve. Existing outputs are reused only when valid;
 repair that would replace an existing geometry must be reviewed separately.
@@ -19,6 +20,8 @@ import socket
 import subprocess
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
+from queue import Queue
 
 from redox.core.common import ROOT
 from redox.build.candidates import _load_config
@@ -83,6 +86,34 @@ def run_stage(argv, log, env, retry_delays=(1, 2, 4, 8, 16)):
         time.sleep(retry_delays[attempt])
 
 
+def state_jobs(argv, gid, states):
+    """One command per redox state: the DFT optimizations of a motif's states are independent
+    (each writes only calcs/dft/<id>/<state>/), so they can run on separate GPUs."""
+    at = argv.index("--only") + 1
+    if argv[at] != gid:
+        raise ValueError(f"expected --only {gid}")
+    return [(state, [*argv[:at], f"{gid}:{state}", *argv[at + 1:]]) for state in states]
+
+
+def run_parallel(jobs, slots, log, env, wrap):
+    """Run (state, argv) jobs concurrently, each on one free (gpu, cpus) slot.
+
+    Every job finishes even if another fails, so completed states are preserved."""
+    free = Queue()
+    for slot in slots:
+        free.put(slot)
+
+    def one(job):
+        state, argv = job
+        slot = free.get()
+        try:
+            return state, slot, run_stage(wrap(argv, *slot), log.with_name(f"{log.stem}_{state}{log.suffix}"), env)
+        finally:
+            free.put(slot)
+
+    with ThreadPoolExecutor(max_workers=len(slots)) as pool:
+        return list(pool.map(one, jobs))
+
 
 def commands(config, ids, output, backend, threads, nconf, thermal_definition="native"):
     py = sys.executable
@@ -119,13 +150,21 @@ def main(argv=None):
     ap.add_argument("--resume", action="store_true", help="resume a preserved run with matching inputs")
     ap.add_argument("--skip-review", action="store_true", help="fleet mode: verify selected records; collect tables separately")
     ap.add_argument("--backend", choices=["gpu", "cpu"], default="gpu")
-    ap.add_argument("--gpu", type=int)
+    ap.add_argument("--gpu", help="GPU index, or comma-separated indices on this host to optimize "
+                    "a motif's states concurrently (one state per GPU)")
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--nconf", type=int, default=3)
     ap.add_argument("--cpus", help="comma-separated CPU indices; otherwise choose unallocated CPUs")
     ap.add_argument("--thermal-definition", choices=["native", "legacy"], default="native",
                     help="new computations use derivative-checked solution DFT thermochemistry")
     a = ap.parse_args(argv)
+    try:
+        gpus = [int(v) for v in a.gpu.split(",")] if a.gpu is not None else []
+    except ValueError:
+        ap.error("--gpu takes integer indices")
+    if len(set(gpus)) != len(gpus):
+        ap.error("--gpu indices must be distinct (one task per GPU)")
+    a.gpu = gpus[0] if gpus else None
     if a.resume and not a.execute:
         ap.error("--resume requires --execute")
     config, output = a.config.resolve(), a.out.resolve()
@@ -176,8 +215,9 @@ def main(argv=None):
     if a.backend == "gpu" and (a.gpu is None or not GATE.is_file()):
         ap.error("GPU execution requires --gpu and the system reservation gate")
     allowed_cpus = sorted(os.sched_getaffinity(0))
-    if (a.threads > min(len(allowed_cpus), max(1, (os.cpu_count() or 1) // 2))
-            or os.getloadavg()[0] + a.threads > (os.cpu_count() or 1)):
+    workers = max(1, len(gpus))
+    if (a.threads * workers > min(len(allowed_cpus), max(1, (os.cpu_count() or 1) // 2))
+            or os.getloadavg()[0] + a.threads * workers > (os.cpu_count() or 1)):
         ap.error("insufficient CPU capacity on this shared node")
     taskset = shutil.which("taskset")
     if not taskset:
@@ -185,17 +225,23 @@ def main(argv=None):
     try:
         requested = [int(v) for v in a.cpus.split(",")] if a.cpus else None
         with allocation_guard():
-            cpu_set = cpu_allocation(a.threads, requested)
-            node_preflight = host_capacity(a.threads)
+            allocated = cpu_allocation(a.threads * workers, requested)
+            node_preflight = host_capacity(a.threads * workers)
             if a.backend == "gpu":
                 node_preflight["gpu"] = gpu_suitability(a.gpu)
+                node_preflight["gpus"] = [gpu_suitability(g) for g in gpus]
                 host = socket.gethostname().split(".")[0]
-                if (host, a.gpu) not in free_slots([host]):
+                available = free_slots([host])
+                if any((host, g) not in available for g in gpus):
                     raise RuntimeError("GPU occupied or reserved; no candidate calculation started")
             original_affinity = set(os.sched_getaffinity(0))
-            os.sched_setaffinity(0, cpu_set)
+            os.sched_setaffinity(0, allocated)
     except (ValueError, RuntimeError, OSError, subprocess.SubprocessError) as exc:
         ap.error(str(exc))
+    # Serial stages (and native thermal, which requires exactly --threads CPUs) use the first
+    # block; concurrent state workers each get a disjoint block of --threads CPUs.
+    cpu_blocks = [allocated[k * a.threads:(k + 1) * a.threads] for k in range(workers)]
+    cpu_set = cpu_blocks[0]
     env = dict(os.environ, PYTHONPATH=str(ROOT / "src"))
     env["REDOX_PIPELINE_OWNER_PID"] = str(os.getpid())
     env["REDOX_PIPELINE_OWNER_START"] = Path("/proc/self/stat").read_text().rsplit(")", 1)[1].split()[19]
@@ -235,22 +281,39 @@ def main(argv=None):
         manifest = dict(config=str(config), input_sha256=hashlib.sha256(config.read_bytes()).hexdigest(),
                         selected_definitions_sha256=selection_hash(scaffold, groups),
                         ids=ids, host=socket.gethostname(), pid=os.getpid(), python=sys.executable,
-                        backend=a.backend, gpu=a.gpu, threads=a.threads, cpu_affinity=cpu_set,
+                        backend=a.backend, gpu=a.gpu, gpus=gpus, threads=a.threads, cpu_affinity=cpu_set,
+                        worker_cpu_affinity=cpu_blocks,
                         node_preflight=node_preflight,
                         xtb=xtb, nconf=a.nconf, thermal_definition=a.thermal_definition,
                         prior_run_manifest=str(attempt_output / "previous_run_manifest.json") if previous else None,
                         attempt_output=str(attempt_output), steps=[])
         mp = output / "run_manifest.json"
+        def wrap(argv, gpu, cpus, compute=True):
+            argv = [taskset, "--cpu-list", ",".join(map(str, cpus)), *argv]
+            return [str(GATE), "run", str(gpu), "--", *argv] if compute and a.backend == "gpu" else argv
+
+        from redox.core.common import read_manifest as declared_rows
         for index, (label, compute, argv) in enumerate(jobs):
-            argv = [taskset, "--cpu-list", ",".join(map(str, cpu_set)), *argv]
-            if compute and a.backend == "gpu":
-                argv = [str(GATE), "run", str(a.gpu), "--", *argv]
             log = attempt_output / f"{index:02d}_{label}.log"
-            entry = dict(stage=label, argv=argv, log=str(log), started=time.time())
-            manifest["steps"].append(entry)
-            atomic_write_json(mp, manifest)
             print(f"[{index + 1}/{len(jobs)}] {label}: {log}", flush=True)
-            proc, attempts = run_stage(argv, log, env)
+            if label == "dft" and workers > 1:
+                gid = argv[argv.index("--only") + 1]
+                states = [r["state"] for r in declared_rows() if r["id"] == gid]
+                entry = dict(stage=label, parallel_states=states, log=str(log), started=time.time())
+                manifest["steps"].append(entry)
+                atomic_write_json(mp, manifest)
+                results = run_parallel(state_jobs(argv, gid, states), list(zip(gpus, cpu_blocks)), log, env, wrap)
+                entry["states"] = [dict(state=state, gpu=gpu, cpu_affinity=cpus, returncode=proc.returncode,
+                                        attempts=attempts) for state, (gpu, cpus), (proc, attempts) in results]
+                failed = [r for r in results if r[2][0].returncode]
+                proc, attempts = (failed or results)[0][2]
+                log = Path(attempts[-1]["log"])
+            else:
+                argv = wrap(argv, a.gpu, cpu_set, compute)
+                entry = dict(stage=label, argv=argv, log=str(log), started=time.time())
+                manifest["steps"].append(entry)
+                atomic_write_json(mp, manifest)
+                proc, attempts = run_stage(argv, log, env)
             entry.update(returncode=proc.returncode, finished=time.time(), attempts=attempts)
             atomic_write_json(mp, manifest)
             if proc.returncode:

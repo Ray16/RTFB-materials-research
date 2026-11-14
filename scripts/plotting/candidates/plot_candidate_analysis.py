@@ -39,6 +39,9 @@ FAM = {
     "imide (n-type)":   "#009E73",
     "quinone (n-type)": "#0072B2",
     "phenol (p-type)":  "#762A83",
+    "mono-imide (n-type)": "#56B4E9",
+    "amine (p-type)":   "#E69F00",
+    "phenothiazine (p-type, two-electron proposal)": "#999999",
 }
 BATCH_ACCENT = "#D55E00"          # ring colour marking the new merrifield_multi cohort
 BATCH_MARKER = {"starting": "o", "merrifield_multi": "D"}
@@ -48,6 +51,9 @@ FAM_LABEL = {
     "imide (n-type)":   "imide",
     "quinone (n-type)": "quinone",
     "phenol (p-type)":  "phenol",
+    "mono-imide (n-type)": "mono-imide",
+    "amine (p-type)":   "amine",
+    "phenothiazine (p-type, two-electron proposal)": "phenothiazine",
 }
 # Short display names for annotation.
 SHORT = {

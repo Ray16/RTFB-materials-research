@@ -370,7 +370,8 @@ def aggregate():
             if r:
                 rows.append(r)
     if not rows:
-        print("no lambda values yet (run --only <gid> to compute cross points)"); return
+        print("no lambda values yet (run --only <gid> to compute cross points)")
+        _write_table(rows); return
 
     # --- D3TaLES computed-lambda cross-check (identical 4-point definition, different level) ---
     smi = _our_smiles()
@@ -419,17 +420,25 @@ def aggregate():
     else:
         print("\nD3TaLES cross-check: no exact-SMILES matches among current molecules "
               "(most of ours are functionalized; run bare cores for a direct comparison).")
+    _write_table(rows)
+
+
+REORG_COLUMNS = ["id", "couple", "q_ox", "q_red", "lambda_i_eV", "lambda_i_meV",
+                 "lambda_i_kJmol", "relax_ox_meV", "relax_red_meV", "rmsd_A",
+                 "rmsd_naive_A", "rmsd_is_sym_aware",
+                 "anion_homo_eV", "flag", "d3tales_lambda_eV", "d3tales_type"]
+
+
+def _write_table(rows):
+    """Always (re)write the table, header-only when no couple has cross points, so a stale
+    reorganization.csv from an earlier state of the tree can never survive into the scorecard."""
     RESULTS.mkdir(exist_ok=True)
     out = RESULTS / "reorganization.csv"
-    cols = ["id", "couple", "q_ox", "q_red", "lambda_i_eV", "lambda_i_meV",
-            "lambda_i_kJmol", "relax_ox_meV", "relax_red_meV", "rmsd_A",
-            "rmsd_naive_A", "rmsd_is_sym_aware",
-            "anion_homo_eV", "flag", "d3tales_lambda_eV", "d3tales_type"]
     with out.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols); w.writeheader()
+        w = csv.DictWriter(f, fieldnames=REORG_COLUMNS); w.writeheader()
         for r in rows:
             w.writerow(r)
-    print(f"wrote {out}")
+    print(f"wrote {out} ({len(rows)} couples)")
 
 
 def main():

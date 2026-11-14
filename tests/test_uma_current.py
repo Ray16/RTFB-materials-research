@@ -94,6 +94,12 @@ def test_stock_is_the_default_on_every_non_nitro_capable_card(capability):
     assert current.select_backend(capability)=='legacy'
 
 
+@pytest.mark.parametrize('capability',[(8,0),(9,0)])
+def test_unqualified_nitro_falls_back_to_stock_on_a_capable_card(capability):
+    assert current.select_backend(capability,qualified=False)=='legacy'
+    assert current.select_backend(capability,require_nitro=True,qualified=False)=='nitro'
+
+
 def test_require_nitro_cannot_fall_back_on_a_non_capable_card():
     with pytest.raises(RuntimeError):current.select_backend((7,0),require_nitro=True)
     with pytest.raises(RuntimeError):current.select_backend((7,5),require_nitro=True)

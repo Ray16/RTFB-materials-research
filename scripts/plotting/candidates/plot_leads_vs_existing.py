@@ -85,7 +85,8 @@ def gather(feed=None):
     # historical; new points come only from the audited native feed.
     payload,allrows,admitted=load_overlay(feed)
     if payload:
-        couples=list(csv.DictReader(open(Path(payload['snapshot_path'])/'couples.csv')))
+        snapshot=Path(payload['snapshot_path'])/'couples.csv'
+        couples=list(csv.DictReader(snapshot.open())) if snapshot.is_file() else []   # gas lambda optional
         for r in admitted:
             gas=[]
             for c in couples:
@@ -170,7 +171,7 @@ def _scatter(rows, x, y, xlabel, ylabel, fname, note):
         fig.text(0.02 + 0.5 * col, 0.31, "\n".join(chunk), va="top", ha="left", fontsize=16)
     fig.text(0.02, 0.355, note, fontsize=18, va="top")
     OUT.mkdir(parents=True, exist_ok=True)
-    p = OUT / fname; fig.savefig(p);fig.savefig(p.with_suffix('.pdf'))
+    p = OUT / fname; fig.savefig(p)
     renderer=fig.canvas.get_renderer()
     box=ax.get_tightbbox(renderer).transformed(fig.dpi_scale_trans.inverted()).expanded(1.03,1.06)
     fig.savefig(OUT/(p.stem+'_slide.png'),bbox_inches=box,dpi=220)

@@ -102,7 +102,7 @@ def fig_capacity_sa(pool, front, cur, feed=None):
                                  label=f'new expansion: {len(expansion)} exact grafts')])
     _key(fig, cur, y=0.235)
     fig.text(.02,.275,'Nominal capacity and SA are graph-based descriptors; QM validation and synthetic feasibility remain separate.',fontsize=16)
-    p = OUT / "discovery_capacity_vs_sa.png"; fig.savefig(p);fig.savefig(p.with_suffix('.pdf'))
+    p = OUT / "discovery_capacity_vs_sa.png"; fig.savefig(p)
     box=ax.get_tightbbox(fig.canvas.get_renderer()).transformed(fig.dpi_scale_trans.inverted()).expanded(1.03,1.06)
     fig.savefig(OUT/'discovery_capacity_vs_sa_slide.png',bbox_inches=box,dpi=220)
     plt.close(fig); print(" ->", p)
@@ -111,6 +111,12 @@ def fig_capacity_sa(pool, front, cur, feed=None):
 def main(feed=None):
     apply_style()
     OUT.mkdir(parents=True, exist_ok=True)
+    needed = [D / name for name in ("d3tales_pool.csv", "d3tales_prefilter_front.csv", "current_candidates.csv")]
+    if not all(path.is_file() for path in needed):
+        # Discovery is a separate campaign over the (gitignored) D3TaLES dump, not a DFT result.
+        print(f"discovery outputs absent in {D}; figure not drawn "
+              "(run scripts/mining/identify_candidates.py with data/raw/validation/D3TaLES/)")
+        return
     pool, front, cur = _load()
     fig_capacity_sa(pool, front, cur,feed)
 

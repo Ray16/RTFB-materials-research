@@ -125,7 +125,7 @@ def parallel_coords(data, cmap):
         lims = {}
         for key, *_ in AXES:
             disp = [SIGN[key] * r["raw"][key] for r in rows if r["raw"][key] is not None]
-            lo, hi = min(disp), max(disp)
+            lo, hi = (min(disp), max(disp)) if disp else (0.0, 1.0)   # axis not yet computed for anyone
             pad = 0.06 * (hi - lo if hi > lo else 1.0)
             lims[key] = (lo - pad, hi + pad)
 
@@ -243,6 +243,9 @@ def main():
     ps.apply_style()
     OUT.mkdir(parents=True, exist_ok=True)
     data = load()
+    if not any(v is not None for rows in data.values() for r in rows for v in r["raw"].values()):
+        print("no complete pool rows yet; Pareto figures not drawn")
+        return
     cmap = _palette(data)
     for p in [parallel_coords(data, cmap),
               dominance_heatmap(data, cmap)]:

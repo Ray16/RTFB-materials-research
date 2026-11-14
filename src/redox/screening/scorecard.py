@@ -35,6 +35,7 @@ REORGANIZATION ENERGY — explicit conventions (Nelsen 4-point, gas, QC-clean co
 """
 from __future__ import annotations
 import csv
+import os
 import json
 import math
 import statistics
@@ -469,7 +470,13 @@ def derive_uncertainties(redox_rows):
     disp_res = [x * KJ_EV for x in disp_res if x is not None]
     sigma_disp = round(_rmse(disp_res), 3) if disp_res else sc.SIGMA_DISP_EV
 
+    sigma_sources = dict(redox="derived" if pooled_redox is not None else "prior",
+                         disp="derived" if disp_res else "prior",
+                         **{"lambda": "derived" if lambda_supported else "prior"},
+                         charge_class={k: "derived" if len(v) >= sc.MIN_REDOX_CALIBRATION_POINTS else "prior"
+                                       for k, v in cls.items()})
     return dict(family_redox=family_redox, pooled_redox=pooled_redox, charge_redox=charge_redox,
+                sigma_sources=sigma_sources,
                 sigma_lambda=sigma_lambda, sigma_disp=sigma_disp,
                 lambda_uncertainty_kind='computational_model_discrepancy_scale_with_prior_floor',
                 lambda_empirical_solution_accuracy_validated=False,
@@ -486,6 +493,23 @@ def derive_uncertainties(redox_rows):
                 redox_calibration_status="empirical_residuals_available" if pooled_redox is not None else "prior_limited")
 
 
+# Axes whose sigma must come from benchmark evidence. Charge-class redox priors are the
+# validated state (no OROP row passes calibration_row_ok), so they are labelled, not refused.
+REQUIRED_DERIVED_SIGMAS = ("redox", "disp", "lambda")
+
+
+def require_derived_sigmas(unc):
+    """Refuse config-prior sigmas unless explicitly allowed; a silent prior would change the
+    sigma-aware Pareto front without any visible signal (e.g. after a fresh checkout)."""
+    prior = [axis for axis in REQUIRED_DERIVED_SIGMAS if unc["sigma_sources"][axis] != "derived"]
+    if prior and os.environ.get("REDOX_ALLOW_PRIOR_SIGMAS") != "1":
+        raise RuntimeError(
+            f"scorecard sigmas for {', '.join(prior)} would fall back to config priors: the benchmark "
+            "evidence is missing. Run `python -m redox seed-reference` (and the finalization tables), "
+            "or pass --allow-prior-sigmas / REDOX_ALLOW_PRIOR_SIGMAS=1 to accept priors explicitly.")
+    return prior
+
+
 def build():
     ele = _cfg("electrolyte")
     sc = _cfg("scorecard_config")
@@ -494,6 +518,7 @@ def build():
 
     redox = _load("redox_potentials")
     unc = derive_uncertainties(redox)   # all sigmas computed from benchmarks (not hard-coded)
+    unc["prior_sigma_axes_accepted"] = require_derived_sigmas(unc)
     # lambda comes with a QC verdict from redox.properties.reorg (negative_lambda / negative_half /
     # conformer_jump / anion_unbound / large_half>1eV). A flagged value is NOT a usable
     # inner-sphere lambda, so it must not silently enter the mean or the Pareto ranking.
@@ -706,4 +731,10 @@ def build():
 
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Molecular scorecard with benchmark-derived sigmas")
+    parser.add_argument("--allow-prior-sigmas", action="store_true",
+                        help="accept config-prior sigmas when benchmark evidence is missing (recorded)")
+    if parser.parse_args().allow_prior_sigmas:
+        os.environ["REDOX_ALLOW_PRIOR_SIGMAS"] = "1"
     build()

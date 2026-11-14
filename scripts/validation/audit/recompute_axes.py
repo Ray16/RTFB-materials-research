@@ -669,11 +669,19 @@ def audit_orop():
     """
     table = "orop_benchmark"
     dataset = ROOT / "data/raw/validation/OROP"
+    calc = ROOT / "calcs/orop"
+    if not (dataset / "implicit_solvation_results.csv").is_file() or not calc.is_dir():
+        # A checkout seeded from data/reference has the pinned table but neither the raw OROP
+        # dataset nor its 169 calculations: record the gap explicitly instead of a silent pass.
+        ROWS.append(dict(table=table, id="*", key="independent_reconstruction", published="pinned",
+                         recomputed="", abs_diff="", verdict="not_audited", check_type="coverage", tol="",
+                         note="raw OROP dataset or calcs/orop absent; table is the pinned reference"))
+        print("[orop] not audited: raw OROP dataset or calcs/orop absent (pinned table)", flush=True)
+        return
     with (dataset / "implicit_solvation_results.csv").open(encoding="utf-8-sig") as stream:
         source_rows = [{key.strip(): value for key, value in row.items()} for row in csv.DictReader(stream)]
     features = np.loadtxt(dataset / "features/feature_input_implicit_OROP_B3LYP-D3.csv",
                           skiprows=2, delimiter=",", ndmin=2)
-    calc = ROOT / "calcs/orop"
     expected_systems = {int(path.name) for path in calc.iterdir() if path.is_dir() and path.name.isdigit()}
     published = {int(row["sys"]): row for row in read_csv(RES / "orop_benchmark.csv")}
     for system in sorted(expected_systems | set(published)):
@@ -1836,14 +1844,20 @@ def main():
         w.writeheader(); w.writerows(SAN)
     # summary
     by = {}
+    not_audited = [r for r in ROWS if r["verdict"] == "not_audited"]
     for r in ROWS:
+        if r["verdict"] == "not_audited":
+            continue
         t = by.setdefault(r["table"], [0, 0])
         t[0] += 1; t[1] += r["verdict"] != "ok"
     print(f"{'table':32s} {'checked':>8s} {'discrep':>8s}")
     for t, (n, d) in by.items():
         print(f"{t:32s} {n:8d} {d:8d}")
+    for r in not_audited:
+        print(f"{r['table']:32s} NOT AUDITED: {r['note']}")
     print(f"sanity flags: {len(SAN)}")
     print(f"wrote {OUT/'audit_recompute.csv'} and {OUT/'audit_sanity.csv'}")
+    # Coverage gaps are reported above and in audit_recompute.csv; they are not arithmetic discrepancies.
     n_bad = sum(d for _, d in by.values())
     if n_bad:
         print(f"[FAIL] {n_bad} published value(s) do not match the independent recompute")

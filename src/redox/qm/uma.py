@@ -80,6 +80,20 @@ def seed_identity(conf_paths):
     return [{'name': Path(p).name, 'sha256': file_sha256(p)} for p in conf_paths]
 
 
+_D_BLOCK = set(range(21, 31)) | set(range(39, 49)) | set(range(57, 81))
+
+
+def _ligand_graph(mol):
+    """Drop bonds to d-block metals: SMILES writes hapto/ionic coordination (e.g. ferrocene,
+    ``[Fe].c1ccc[cH-]1...``) without metal bonds, while distance-based perception finds them."""
+    from rdkit import Chem
+    rw = Chem.RWMol(mol)
+    for bond in list(rw.GetBonds()):
+        if {bond.GetBeginAtom().GetAtomicNum(), bond.GetEndAtom().GetAtomicNum()} & _D_BLOCK:
+            rw.RemoveBond(bond.GetBeginAtomIdx(), bond.GetEndAtomIdx())
+    return rw.GetMol()
+
+
 def geometry_checks(smiles, path, charge, mult):
     """Independent input-graph/composition/stereo checks on an optimized XYZ."""
     from rdkit import Chem
@@ -92,12 +106,15 @@ def geometry_checks(smiles, path, charge, mult):
     if actual is None or declared is None:
         return {'geometry_unreadable': True}
     rdDetermineBonds.DetermineConnectivity(actual, charge=0)
-    expected = _skeleton(Chem.RemoveHs(declared))
-    observed = _skeleton(Chem.RemoveHs(actual, sanitize=False))
+    metals = [a.GetIdx() for a in actual.GetAtoms() if a.GetAtomicNum() in _D_BLOCK]
+    uncoordinated_metal = any(actual.GetAtomWithIdx(i).GetDegree() == 0 for i in metals)
+    expected = _skeleton(_ligand_graph(Chem.RemoveHs(declared)))
+    observed = _skeleton(_ligand_graph(Chem.RemoveHs(actual, sanitize=False)))
     electrons = sum(a.GetAtomicNum() for a in actual.GetAtoms()) - charge
     errors = dict(composition_mismatch=sorted(a.GetAtomicNum() for a in actual.GetAtoms()) !=
                       sorted(a.GetAtomicNum() for a in declared.GetAtoms()),
                   connectivity_mismatch=not (observed.HasSubstructMatch(expected) and expected.HasSubstructMatch(observed)),
+                  uncoordinated_metal=uncoordinated_metal,
                   spin_parity_mismatch=mult < 1 or electrons < mult - 1 or (electrons - (mult - 1)) % 2 != 0)
     stereo = geometry_stereo_status(smiles, path)
     errors['stereochemistry_mismatch'] = stereo not in ('ok', 'not_applicable')

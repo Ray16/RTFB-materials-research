@@ -18,7 +18,8 @@ def source_metadata():
     paths = (Path(__file__).resolve(), ROOT / "src/redox/qm/uma_current.py",
              ROOT / "config/uma_execution.json")
     return {"current_entrypoint_source_sha256": {str(p): digest(p) for p in paths},
-            "preferred_UMA_backend": "nitro"}
+            "UMA_backend_selection": "per reserved GPU at run time: stock by default; Nitro only on a "
+                                     "qualified cc 8.x-12.x card (redox.qm.uma_current.select_backend)"}
 
 
 def main(argv=None):
