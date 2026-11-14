@@ -1,0 +1,28 @@
+{
+  "status": "TEMPO_raw_archive_and_two_relocated_replays_checked",
+  "checked": 1793057449.582703,
+  "prepared_package": "calcs/releases/2026-10-26_tempo_raw_addendum_v2",
+  "compressed_archive": "calcs/releases/2026-10-26_tempo_raw_addendum_v2.tar.zst",
+  "archive_sha256": "01049bf75f312b405312c6859fad1f225b515a1b030c262c2b56b172490a5d6d",
+  "archive_bytes": 372115,
+  "archive_regular_files": 34,
+  "package_manifest_sha256": "f6df5318a4051f8f0ee0207579c3021980157b8e8a273e72f898b06dceeb017a",
+  "raw_states": 4,
+  "Hessians_reconstructed": 4,
+  "rotor_cutoffs_cm": [
+    25,
+    50,
+    100
+  ],
+  "source": "results/grafting/tempo_exact_support_2026-10-26/native_potential_review.json",
+  "producer": "scripts/release/prepare_tempo_addendum.py",
+  "producer_sha256": "4e00c02ec2158744aaa510885922c98682d403fbe183321b4eea583961882668",
+  "relocated_replay": "results/releases/tempo_addendum/relocation.json",
+  "adverse_input_tests": "results/releases/tempo_addendum/negative_tests.xml",
+  "public_archive_deposited": false,
+  "public_DOI_created": false,
+  "data_deposition_license": null,
+  "scope": "Four cached TEMPO/Fc states, three-cutoff arithmetic and four Hessian/nuclear reconstructions. Original SCF, stationarity and spin QC are not rerun; no exact-graft experimental accuracy, grafting G, polymer interaction or material admission is inferred.",
+  "nuclear_partition_reintegrated": true,
+  "previous_draft": "calcs/releases/2026-10-26_tempo_raw_addendum"
+}

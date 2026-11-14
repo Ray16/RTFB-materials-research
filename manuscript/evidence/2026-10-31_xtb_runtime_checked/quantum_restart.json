@@ -1,0 +1,38 @@
+{
+  "status": "real_quantum_interruption_equivalence_verified",
+  "controls": [
+    {
+      "case": "formaldehyde",
+      "mult": 1,
+      "differences": {
+        "energy_eV": 4.028081548312912e-06,
+        "free_energy_eV": 1.260191083929385e-05,
+        "aligned_RMSD_Angstrom": 6.865551928377672e-06,
+        "frequency_cm": 0.06847703375433412
+      },
+      "owner_death_check": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/death_checks/formaldehyde__interrupted.json"
+    },
+    {
+      "case": "methyl_radical",
+      "mult": 2,
+      "differences": {
+        "energy_eV": 4.0042530145001365e-06,
+        "free_energy_eV": 1.1147294571856037e-06,
+        "aligned_RMSD_Angstrom": 3.451399744404065e-05,
+        "frequency_cm": 0.026426044527852355
+      },
+      "owner_death_check": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/quantum_restart_2026-10-22/death_checks/methyl_radical__interrupted.json"
+    }
+  ],
+  "tolerances": {
+    "energy_eV": 1e-05,
+    "free_energy_eV": 0.0001,
+    "aligned_RMSD_Angstrom": 0.001,
+    "frequency_cm": 0.5
+  },
+  "raw_root": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/quantum_restart/quantum_restart_2026-10-22",
+  "plan_sha256": "43308926e637155434916c8ea1fc420bb2d911b91ae2c87fddc2a8b47233ac06",
+  "scientific_model_changed": false,
+  "physical_gates_relaxed": false,
+  "limits": "Two small rigid spin controls; not universal recovery, chemical accuracy or flexible-polymer ensemble evidence"
+}

@@ -1,0 +1,90 @@
+{
+  "status": "source_origin_reviewed_no_independent_DIPEA_experiment_admitted",
+  "checked": 1792779962.0218651,
+  "source": {
+    "id": "dipea_heldebrant2011",
+    "base": "dipea",
+    "smiles": "CCN(C(C)C)C(C)C",
+    "value_type": "pKaH",
+    "solvent": "acetonitrile",
+    "reported_value": 18.6,
+    "origin_class": "computed_PCM_estimate",
+    "origin_conflict": true,
+    "independent_experimental_anchor": false,
+    "source_version": "PNNL author-posted article-in-press PDF",
+    "doi": "10.1016/j.cej.2011.02.012",
+    "url": "https://www.pnnl.gov/sites/default/files/media/file/at/publications/322_427201153539.pdf",
+    "raw_pdf": "calcs/literature/2026-10-23_dipea_reference_origin/heldebrant_2011_author.pdf",
+    "raw_pdf_sha256": "81383bcc3a162ae26920632cb5cf6f955523883a6a857ce07c1c417e24570abc",
+    "locator": "Table 1, page 2, Hunig row, note c; Table 2, page 3, note b",
+    "specific_note": "Estimated using the PCM model",
+    "subsequent_citation": {
+      "doi": "10.1039/D1CY01433A",
+      "locator": "Table 1, row 3; reference 38",
+      "experimental_measurement_reestablished": false
+    }
+  },
+  "source_role": {
+    "independent_experimental_origin_eligible": false,
+    "full_route_accuracy_validated": false,
+    "role": "model_sensitivity"
+  },
+  "independent_experimental_pKaH_MeCN": null,
+  "comparison_temperature_K": 298.15,
+  "source_temperature_verified": false,
+  "HCl_cancels_in_complete_all_DFT_route": true,
+  "computed_literature_capture_kJ_mol": -47.37647887104266,
+  "DFT_relative_DIPEA_DBU_transfer_kJ_mol": 31.80157594247036,
+  "DIPEA_pKaH_inferred_from_DFT_relative_transfer_and_DBU_anchor": 18.738604940418295,
+  "comparison_with_literature_is_model_to_model": true,
+  "candidate_model_sensitivities": [
+    {
+      "id": "design_pmdi_ethyl",
+      "reference_deltaG_kJ_mol": -0.2915699601324377,
+      "all_DFT_DIPEA_kJ_mol": -71.26700491241485,
+      "fixed_reference_plus_computed_literature_capture_kJ_mol": -47.66804883117509,
+      "calibrated_full_route_prediction": false
+    },
+    {
+      "id": "design_ndi_ethyl",
+      "reference_deltaG_kJ_mol": 10.050786392814334,
+      "all_DFT_DIPEA_kJ_mol": -60.92464855946808,
+      "fixed_reference_plus_computed_literature_capture_kJ_mol": -37.32569247822832,
+      "calibrated_full_route_prediction": false
+    },
+    {
+      "id": "exp_aq_1oxy",
+      "reference_deltaG_kJ_mol": 62.854579764785775,
+      "all_DFT_DIPEA_kJ_mol": -8.120855187496637,
+      "fixed_reference_plus_computed_literature_capture_kJ_mol": 15.478100893743118,
+      "calibrated_full_route_prediction": false
+    },
+    {
+      "id": "exp_bq_oxy_methoxy",
+      "reference_deltaG_kJ_mol": 57.63446054516755,
+      "all_DFT_DIPEA_kJ_mol": -13.340974407114864,
+      "fixed_reference_plus_computed_literature_capture_kJ_mol": 10.257981674124892,
+      "calibrated_full_route_prediction": false
+    },
+    {
+      "id": "exp_bq_oxy_trimethyl",
+      "reference_deltaG_kJ_mol": 56.03066081132074,
+      "all_DFT_DIPEA_kJ_mol": -14.94477414096167,
+      "fixed_reference_plus_computed_literature_capture_kJ_mol": 8.654181940278086,
+      "calibrated_full_route_prediction": false
+    }
+  ],
+  "primary_grafting_results_modified": false,
+  "candidate_decisions_modified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/review_basicity_origins.py": "acd8ada6d4e1ff6fec603495f8729523e67e5a49e34f67eb2dea0cff54669447",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/config/basicity_reference_origins.json": "8ab323cf24d7c16b112e82f3032a5e4908484b92332ee597e7752200987bbbc6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/base_assisted/current.json": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/acid_base_external_2026-10-22/comparison.json": "a22eccae18a1c62c605b5052a94b5d4057202263f44725d4a28cc497fa281a2c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/literature/2026-10-23_dipea_reference_origin/heldebrant_2011_author.pdf": "81383bcc3a162ae26920632cb5cf6f955523883a6a857ce07c1c417e24570abc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_base_assisted_pilot/done/dbu_neutral.json": "d000f19eae6ab55db1127773bd13519b18f36c9372716309251bcbcfd799ff84",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_base_assisted_pilot/done/dbu_protonated.json": "5fe3eac7d27baadcd5ebb7dd6a46ff86009937c2df38498b532dd0538a7b8593",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_base_assisted_pilot/done/dipea_neutral.json": "aa287c5bbab9f9de3a19d7f5f8003a8d9ccca1e8028b6c12c75e6b2dcf0d2be1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_base_assisted_pilot/done/dipea_protonated.json": "277a7fdd1d5c569a17f2311c2d37e949e91c559b7c82e46e9ed47de647d84a0e"
+  }
+}

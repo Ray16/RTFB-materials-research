@@ -1,0 +1,121 @@
+{
+  "status": "TEMPO_archive_and_two_relocated_replays_checked",
+  "checked": 1793057422.8794472,
+  "archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/releases/2026-10-26_tempo_raw_addendum_v2.tar.zst",
+  "archive_sha256": "01049bf75f312b405312c6859fad1f225b515a1b030c262c2b56b172490a5d6d",
+  "archive_bytes": 372115,
+  "package_manifest_sha256": "f6df5318a4051f8f0ee0207579c3021980157b8e8a273e72f898b06dceeb017a",
+  "archived_regular_files": 34,
+  "states": 4,
+  "Hessians_reconstructed": 4,
+  "stdlib_result": {
+    "status": "portable_TEMPO_local_oxidation_reconstructed",
+    "states": 4,
+    "oxidation_V_vs_Fc_by_cutoff": {
+      "25": 0.5761420931012253,
+      "50": 0.5787750407544081,
+      "100": 0.5794202526849404
+    },
+    "quantum_calculations_run": false,
+    "nuclear_partition_reintegrated": false,
+    "experimental_accuracy_inferred": false,
+    "grafting_deltaG_computed": false,
+    "material_eligibility_inferred": false
+  },
+  "native_result": {
+    "status": "portable_TEMPO_local_oxidation_reconstructed",
+    "states": 4,
+    "oxidation_V_vs_Fc_by_cutoff": {
+      "25": 0.5761420931012253,
+      "50": 0.5787750407544081,
+      "100": 0.5794202526849404
+    },
+    "quantum_calculations_run": false,
+    "nuclear_partition_reintegrated": true,
+    "experimental_accuracy_inferred": false,
+    "grafting_deltaG_computed": false,
+    "material_eligibility_inferred": false,
+    "native_reconstruction": {
+      "status": "TEMPO_and_Fc_Hessians_modes_and_nuclear_sums_reconstructed",
+      "Hessians_reconstructed": 4,
+      "monatomic_partitions_recomputed": 0,
+      "states": [
+        {
+          "id": "tempo_rad",
+          "internal_modes": 132,
+          "symmetry_number": 1,
+          "frequency_max_error_cm": 9.848122317634989e-12,
+          "nuclear_errors_eV": {
+            "25": 3.552713678800501e-15,
+            "50": 1.7763568394002505e-15,
+            "100": 0.0
+          }
+        },
+        {
+          "id": "tempo_ox",
+          "internal_modes": 132,
+          "symmetry_number": 1,
+          "frequency_max_error_cm": 1.674749228186556e-11,
+          "nuclear_errors_eV": {
+            "25": 5.329070518200751e-15,
+            "50": 7.105427357601002e-15,
+            "100": 7.105427357601002e-15
+          }
+        },
+        {
+          "id": "fc_neutral",
+          "internal_modes": 57,
+          "symmetry_number": 10,
+          "frequency_max_error_cm": 9.821476965043985e-11,
+          "nuclear_errors_eV": {
+            "25": 3.375077994860476e-14,
+            "50": 3.9968028886505635e-14,
+            "100": 5.3290705182007514e-14
+          }
+        },
+        {
+          "id": "fc_oxidized",
+          "internal_modes": 57,
+          "symmetry_number": 2,
+          "frequency_max_error_cm": 4.387601393318619e-12,
+          "nuclear_errors_eV": {
+            "25": 8.881784197001252e-16,
+            "50": 3.1086244689504383e-15,
+            "100": 3.1086244689504383e-15
+          }
+        }
+      ],
+      "monatomic_states": [],
+      "numpy_version": "2.2.6",
+      "original_stationarity_spin_and_displaced_SCF_QC_repeated": false,
+      "xTB_library_loaded": false,
+      "source_algorithm_status": "raw_neighbor_Hessians_modes_and_nuclear_sums_independently_reconstructed"
+    }
+  },
+  "stdlib_isolation": {
+    "status": "TEMPO_relocated_stdlib_checked",
+    "checked": 1793057422.4682963,
+    "original_project_open_attempts": [],
+    "forbidden_modules_loaded": [],
+    "interpreter": "/usr/bin/python3.10",
+    "isolated_python": true,
+    "numpy_version": null,
+    "result_sha256": "97f21f5b64780ae2ce77b778e426313394197d6e9a9460bf28bf96c25c4d3968",
+    "validator_sha256": "b89a1016afd342679be438407c9bbed6e596a2c217a0e5bdcf6fef5dbd3e5032"
+  },
+  "native_isolation": {
+    "status": "TEMPO_relocated_full_native_checked",
+    "checked": 1793057422.8384578,
+    "original_project_open_attempts": [],
+    "forbidden_modules_loaded": [],
+    "interpreter": "/nfs/lambda_stor_01/homes/rzhu/0_redox_control_reproduction_2026-10-25/venv/bin/python",
+    "isolated_python": true,
+    "numpy_version": "2.2.6",
+    "result_sha256": "4ba3f06115f01fb173fee276d665daa34ebc2cf013c139f96c79e6e3612adec6",
+    "validator_sha256": "b89a1016afd342679be438407c9bbed6e596a2c217a0e5bdcf6fef5dbd3e5032"
+  },
+  "validator_sha256": "b89a1016afd342679be438407c9bbed6e596a2c217a0e5bdcf6fef5dbd3e5032",
+  "quantum_calculations_repeated": false,
+  "public_archive_deposited": false,
+  "experimental_accuracy_inferred": false
+}

@@ -1,0 +1,100 @@
+{
+  "status": "primary_DIPEA_salt_NMR_estimate_source_checked_conditional_comparison",
+  "source": {
+    "doi": "10.1039/d3sc02611f",
+    "title": "Controlling product selectivity during dioxygen reduction with Mn complexes using pendent proton donor relays and added base\u2020",
+    "article_url": "https://doi.org/10.1039/D3SC02611F",
+    "open_fulltext_url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10952101/fullTextXML",
+    "publication": "Chemical Science 2024, 15, 4478\u20134488",
+    "authors": [
+      "Emma N. Cook",
+      "Ian M. Courter",
+      "Diane A. Dickie",
+      "Charles W. Machan"
+    ],
+    "observation": "1H-NMR titration/competition estimate for diisopropylethylammonium hexafluorophosphate",
+    "solvent": "acetonitrile",
+    "reported_pKa": 18.7,
+    "counterion": "hexafluorophosphate",
+    "source_temperature_and_activity_conventions_verified": false,
+    "locator": "Experimental: synthesis of diisopropylethylammonium hexafluorophosphate",
+    "article_license": "CC BY-NC 3.0; raw XML retained on shared storage"
+  },
+  "comparison": {
+    "temperature_K": 298.15,
+    "R_J_mol_K": 8.31446261815324,
+    "RTln10_kJ_mol": 5.708009502535258,
+    "HCl_pKa": 10.3,
+    "DBUH_pKa": 24.31,
+    "DIPEAH_reported_pKa": 18.7,
+    "DFT_separated_ion_capture_kJ_mol": -70.97543495228241,
+    "pKa_implied_capture_kJ_mol": -47.94727982129616,
+    "DFT_minus_pKa_implied_capture_kJ_mol": -23.02815513098625,
+    "DFT_relative_DIPEA_DBU_transfer_kJ_mol": 31.80157594247036,
+    "pKa_implied_DIPEA_DBU_transfer_kJ_mol": 32.021933309222796,
+    "DFT_minus_pKa_implied_relative_kJ_mol": -0.22035736675243456,
+    "relative_transfer_reaction": "DIPEA + DBUH+ -> DIPEAH+ + DBU",
+    "separation_ion_and_activity_conventions_equivalent": false
+  },
+  "candidate_hybrid_sensitivities": [
+    {
+      "id": "design_pmdi_ethyl",
+      "reference_deltaG_kJ_mol": -0.2915699601324377,
+      "all_DFT_DIPEA_kJ_mol": -71.26700491241485,
+      "hybrid_capture_sensitivity_kJ_mol": -48.2388497814286,
+      "hybrid_is_calibrated_reaction_prediction": false
+    },
+    {
+      "id": "design_ndi_ethyl",
+      "reference_deltaG_kJ_mol": 10.050786392814334,
+      "all_DFT_DIPEA_kJ_mol": -60.92464855946808,
+      "hybrid_capture_sensitivity_kJ_mol": -37.89649342848183,
+      "hybrid_is_calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_aq_1oxy",
+      "reference_deltaG_kJ_mol": 62.854579764785775,
+      "all_DFT_DIPEA_kJ_mol": -8.120855187496637,
+      "hybrid_capture_sensitivity_kJ_mol": 14.907299943489612,
+      "hybrid_is_calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_aq_2oxy_6methoxy",
+      "reference_deltaG_kJ_mol": null,
+      "all_DFT_DIPEA_kJ_mol": null,
+      "hybrid_capture_sensitivity_kJ_mol": null,
+      "hybrid_is_calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_bq_oxy_methoxy",
+      "reference_deltaG_kJ_mol": 57.63446054516755,
+      "all_DFT_DIPEA_kJ_mol": -13.340974407114864,
+      "hybrid_capture_sensitivity_kJ_mol": 9.687180723871386,
+      "hybrid_is_calibrated_reaction_prediction": false
+    },
+    {
+      "id": "exp_bq_oxy_trimethyl",
+      "reference_deltaG_kJ_mol": 56.03066081132074,
+      "all_DFT_DIPEA_kJ_mol": -14.94477414096167,
+      "hybrid_capture_sensitivity_kJ_mol": 8.08338099002458,
+      "hybrid_is_calibrated_reaction_prediction": false
+    }
+  ],
+  "limitations": [
+    "Experimental number is a salt-specific NMR estimate; PF6 association and measurement conditions may affect comparison.",
+    "HCl value is an author-tabulated recommendation, not necessarily matched in temperature or activity convention.",
+    "HCl cancels in the full DFT grafting cycle; substituting only the capture term changes error cancellation.",
+    "Agreement of relative-base transfer does not uniquely identify the cause of the HCl capture discrepancy.",
+    "No experimental grafting free energy, selectivity, yield or material admission is established."
+  ],
+  "calibrated_full_route_prediction": false,
+  "primary_grafting_results_modified": false,
+  "candidate_decisions_modified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/literature/2026-10-26_dipea_experiment/cook_2024_europepmc.xml": "d2b891a3f6e3c34b8fe7afb8c409472b9b4a816dcc56d9b231284166d9fe2693",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-26_native_replay/base_assisted.json": "d26186a8e587e849c426b0ca40b9761907ce71e317a7d3ffabff7d4a79872d20",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-26_native_replay/acid_base.json": "a22eccae18a1c62c605b5052a94b5d4057202263f44725d4a28cc497fa281a2c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/manuscript/evidence/2026-10-26_native_replay/basicity_reference_origin.json": "e645c9c85b2e5f7aa9523421a9992da89c82054da160f71363daa0ef0b8cb547",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/assess_dipea_experimental_anchor.py": "ef8553c2871c5ef0cdc15f75027e18b5368f7e6f7054e752c71695bef506d98a"
+  }
+}

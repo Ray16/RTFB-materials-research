@@ -1,0 +1,31 @@
+{
+  "status": "raw_neighbor_archive_and_two_relocated_replays_checked",
+  "checked": 1792978263.590574,
+  "prepared_package": "calcs/releases/2026-10-26_neighbor_cycle_native_replay",
+  "compressed_archive": "calcs/releases/2026-10-26_neighbor_cycle_native_replay.tar.zst",
+  "archive_sha256": "727c4f019111ce74fb2febaf4111c658821aaf62e1d1c22199fab55678da21b8",
+  "archive_bytes": 3952657,
+  "archive_regular_files": 97,
+  "package_manifest_sha256": "b2f2737f62f7d197360675a89fa750cd3ceb6129404497d2e5df98b51310135b",
+  "raw_states": 14,
+  "balanced_reactions": 14,
+  "rotor_cutoffs_cm": [
+    25,
+    50,
+    100
+  ],
+  "source": "results/reviews/2026-10-25/pmdi_neighbor_cycle_checked/summary.json",
+  "producer": "scripts/release/prepare_neighbor_addendum.py",
+  "producer_sha256": "8783d3a37b8f02741cdafc0f9af78a972d2f3ad0673a0e4a5d72b1e30ff66db1",
+  "relocated_replay": "results/releases/neighbor_cycle/relocation.json",
+  "adverse_input_tests": "results/releases/neighbor_cycle/negative_tests.xml",
+  "public_archive_deposited": false,
+  "public_DOI_created": false,
+  "code_license": "MIT",
+  "data_deposition_license": null,
+  "scope": "Fourteen cached states and balanced sums; complete three-cutoff finite neighbor cycle. Thirteen mode/nuclear reconstructions plus monatomic translation replay independently in locked NumPy; original SCF/force/spin QC not repeated, no converged ensemble, isolated motif binding or coupling.",
+  "nuclear_partition_reintegrated": true,
+  "Hessians_reconstructed": 13,
+  "monatomic_partitions_recomputed": 1,
+  "integration_checks": 14
+}

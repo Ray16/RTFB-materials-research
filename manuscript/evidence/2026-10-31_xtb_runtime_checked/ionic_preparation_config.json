@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "role": "exact_candidate_charged_polymer_preparation_only",
+  "candidate_alias": "search_viologen_b7a4dca7a5e1",
+  "repeat_units": 5,
+  "reactive_sites": [2, 3, 4],
+  "configurations": {
+    "all_same": ["CW", "CW", "CW", "CW"],
+    "alternating": ["CW", "CCW", "CW", "CCW"]
+  },
+  "scenarios": [
+    {"name": "adjacent", "occupied_sites": [2, 3]},
+    {"name": "one_spacer", "occupied_sites": [2, 4]}
+  ],
+  "electrons_per_graft_scenarios": [1, 2],
+  "ionic_model": {
+    "calculation_convention": "bare_charged_polymer_with_separated_omitted_spectators",
+    "explicit_counterions_in_coordinates": false,
+    "composition_reference": {
+      "state": "fully_oxidized_dry_salt",
+      "label": "declared fully oxidized PF6 salt reference; no measured ion content",
+      "counterions": [{"smiles": "F[P-](F)(F)(F)(F)F", "per_graft": 2}]
+    },
+    "attachment_ion_scope": "N-quaternization releases Cl-; precursor iodide cancels only as a separated spectator. PF6 mass is a separate operating-salt bookkeeping reference; exchange/association free energies are not computed.",
+    "proposed_global_states_by_graft_count": {
+      "0": [{"id": "empty", "charge": 0, "mult": 1}],
+      "1": [
+        {"id": "oxidized", "charge": 2, "mult": 1},
+        {"id": "one_reduced", "charge": 1, "mult": 2},
+        {"id": "two_reduced_singlet", "charge": 0, "mult": 1},
+        {"id": "two_reduced_triplet", "charge": 0, "mult": 3}
+      ],
+      "2": [
+        {"id": "oxidized", "charge": 4, "mult": 1},
+        {"id": "one_reduced", "charge": 3, "mult": 2},
+        {"id": "two_reduced_singlet", "charge": 2, "mult": 1},
+        {"id": "two_reduced_triplet", "charge": 2, "mult": 3},
+        {"id": "three_reduced", "charge": 1, "mult": 2},
+        {"id": "four_reduced_singlet", "charge": 0, "mult": 1},
+        {"id": "four_reduced_triplet", "charge": 0, "mult": 3},
+        {"id": "four_reduced_quintet", "charge": 0, "mult": 5}
+      ]
+    }
+  },
+  "initial_geometry": {"seed": 20261031, "embeds_per_graph": 4, "embedding_max_iterations": 1000, "random_coordinate_fallback": true, "MMFF_max_iterations": 200},
+  "requested_solution_medium": "acetonitrile",
+  "requested_temperature_K": 298.15,
+  "quantum_calculation_admitted": false,
+  "experimental_loading_known": false,
+  "occupancy_weights": null,
+  "scope": "Conditional exact-viologen polymer graphs, initial geometries and declared salt-mass ceilings only. Global charge/spin hypotheses do not establish localization or spin ordering. Charged-polymer numerical, conformer, solvent/ion and resource validation is required before QM admission."
+}

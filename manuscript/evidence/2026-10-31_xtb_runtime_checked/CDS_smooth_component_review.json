@@ -1,0 +1,64 @@
+{
+  "status": "smooth_CDS_fixed_geometry_component_review_passed",
+  "checked": 1792950675.3437226,
+  "actual_legacy_library": "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libsolvent.so",
+  "legacy_energy_replay_error_Ha": 0.0,
+  "smooth_energy_replay_error_Ha": 0.0,
+  "fixed_geometry_component_sensitivities": [
+    {
+      "site": "site2",
+      "CDS_grid": 590,
+      "free_ion_reaction_component_shift_kJ_mol": -0.010185243764749989,
+      "paired_reaction_component_shift_kJ_mol": -0.02988857025212895,
+      "polymer_minus_local_component_shift_kJ_mol": -0.029235360781145393
+    },
+    {
+      "site": "site2",
+      "CDS_grid": 974,
+      "free_ion_reaction_component_shift_kJ_mol": 0.062089576308387504,
+      "paired_reaction_component_shift_kJ_mol": 0.09190674865613684,
+      "polymer_minus_local_component_shift_kJ_mol": 0.006443364708833217
+    },
+    {
+      "site": "site2",
+      "CDS_grid": 2030,
+      "free_ion_reaction_component_shift_kJ_mol": -0.007854592018921842,
+      "paired_reaction_component_shift_kJ_mol": 0.0004576721671387887,
+      "polymer_minus_local_component_shift_kJ_mol": 0.01903847831929969
+    },
+    {
+      "site": "site3",
+      "CDS_grid": 590,
+      "free_ion_reaction_component_shift_kJ_mol": 0.005791419983026561,
+      "paired_reaction_component_shift_kJ_mol": -0.0139119065043524,
+      "polymer_minus_local_component_shift_kJ_mol": -0.013258697033368844
+    },
+    {
+      "site": "site3",
+      "CDS_grid": 974,
+      "free_ion_reaction_component_shift_kJ_mol": 0.05659160200757678,
+      "paired_reaction_component_shift_kJ_mol": 0.08640877435532611,
+      "polymer_minus_local_component_shift_kJ_mol": 0.0009453904080224895
+    },
+    {
+      "site": "site3",
+      "CDS_grid": 2030,
+      "free_ion_reaction_component_shift_kJ_mol": -0.008925831574279602,
+      "paired_reaction_component_shift_kJ_mol": -0.0006135673882189713,
+      "polymer_minus_local_component_shift_kJ_mol": 0.017967238763941927
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/review_smooth_cds.py": "35ccbe46d57b44d9339b4f0886624e5536a8f1edc9f60e277aaf338bb0c5d54e",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/smooth_CDS_2026-10-25/pilot/summary.json": "b76f084e6a59c04feb7a54e63ab1df659d55c5d0a7f46b2eb01188ec8297eceb",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/libsolvent.so": "6b5ac2a3e60e71c71f905c9506ddac773ae3ffa2582d0ee7c6915520d2f53bdf",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/smd.py": "287d43f251a16c50791f35fcf43eba12b92bd2b5aa0b3c739a8e3eb465c0ccfc",
+    "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/solvent/smd_experiment.py": "c19c5e8826dd1fa3437a6224f9fcfded95ce709069f3e33b66f878a34f3c621d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-25_CDS_geometry_repair_interruption/alternating__occ_none__conf005/energy/alternating__occ_none__conf005/rest/opt.xyz": "63d261687916041e56e9c2ea6213ebd046dd454d924a47f26703e1d9e083e606"
+  },
+  "full_DFT_electronic_energy_recomputed": false,
+  "nuclear_G_recomputed": false,
+  "original_geometry_changed": false,
+  "primary_records_changed": false,
+  "scope": "CDS component sensitivity at fixed geometries only; geometry and nuclear terms must be recomputed for any alternate-model G"
+}

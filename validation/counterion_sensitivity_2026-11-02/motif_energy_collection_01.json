@@ -1,0 +1,863 @@
+{
+  "status": "twelve_triplet_frozen_charged_motif_E_collection",
+  "states": [
+    {
+      "key": "all_same__occ_2_3__cap109",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/namespace.json",
+      "interaction_E_kJ_mol_by_medium": {
+        "gas": 335.7202907990267,
+        "acetonitrile": 9.029331795044257
+      },
+      "status": "frozen_motif_E_independently_checked",
+      "native_G_qualified": false,
+      "parent_key": "all_same__occ_2_3",
+      "cap_length_A": 1.09,
+      "method": {
+        "xc": "r2scan",
+        "basis": "def2-svp",
+        "disp": "d4",
+        "density_fit": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "max_cycle": 200,
+        "grid_level": 3
+      },
+      "solvent_model": {
+        "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+        "solvent": "acetonitrile",
+        "electrostatic_model": "SMD",
+        "electrostatic_surface_points": 590,
+        "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+        "CDS_points_per_sphere": 2030,
+        "supported_elements": [
+          "C",
+          "H",
+          "N",
+          "O",
+          "Cl"
+        ],
+        "scientific_model_changed": true,
+        "primary_candidate_admission": false
+      },
+      "checked_sums": {
+        "gas": {
+          "value": 0.1278691056554635,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "gas",
+            "solvent_model": "vacuum",
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/sources/A.xyz": "efe7ab321cf2c80da3c7b671cdb7cc390e793a3111ba6276957aa4e2d35809d1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/case/result.json": "52708ced44d482c3a5ae5be60854db35beda1597a3dca82d0adb74ba9469c39c"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/sources/B.xyz": "fbebe2dfd14fc00989e4d2e68e53e06a88bd05bb64c7aee8b88b20645c156b3e",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/case/result.json": "52708ced44d482c3a5ae5be60854db35beda1597a3dca82d0adb74ba9469c39c"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/sources/AB.xyz": "74dc330af2b30957bfd40cf69b98207904a190502cd59623753de990dfe8a53c",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/case/result.json": "52708ced44d482c3a5ae5be60854db35beda1597a3dca82d0adb74ba9469c39c"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "acetonitrile": {
+          "value": 0.003439090853134985,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "acetonitrile",
+            "solvent_model": {
+              "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+              "solvent": "acetonitrile",
+              "electrostatic_model": "SMD",
+              "electrostatic_surface_points": 590,
+              "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+              "CDS_points_per_sphere": 2030,
+              "supported_elements": [
+                "C",
+                "H",
+                "N",
+                "O",
+                "Cl"
+              ],
+              "scientific_model_changed": true,
+              "primary_candidate_admission": false
+            },
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/sources/A.xyz": "efe7ab321cf2c80da3c7b671cdb7cc390e793a3111ba6276957aa4e2d35809d1",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/case/result.json": "52708ced44d482c3a5ae5be60854db35beda1597a3dca82d0adb74ba9469c39c"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/sources/B.xyz": "fbebe2dfd14fc00989e4d2e68e53e06a88bd05bb64c7aee8b88b20645c156b3e",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/case/result.json": "52708ced44d482c3a5ae5be60854db35beda1597a3dca82d0adb74ba9469c39c"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/sources/AB.xyz": "74dc330af2b30957bfd40cf69b98207904a190502cd59623753de990dfe8a53c",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_pilot_v2/case/result.json": "52708ced44d482c3a5ae5be60854db35beda1597a3dca82d0adb74ba9469c39c"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap109.json",
+      "review_sha256": "46a628921d7b8724ae00e5825458607d573f60d192a9c5f6dbdf8a30792e43c5"
+    },
+    {
+      "key": "all_same__occ_2_3__cap107",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/namespace.json",
+      "interaction_E_kJ_mol_by_medium": {
+        "gas": 335.65195823744824,
+        "acetonitrile": 9.028622360367308
+      },
+      "status": "frozen_motif_E_independently_checked",
+      "native_G_qualified": false,
+      "parent_key": "all_same__occ_2_3",
+      "cap_length_A": 1.07,
+      "method": {
+        "xc": "r2scan",
+        "basis": "def2-svp",
+        "disp": "d4",
+        "density_fit": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "max_cycle": 200,
+        "grid_level": 3
+      },
+      "solvent_model": {
+        "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+        "solvent": "acetonitrile",
+        "electrostatic_model": "SMD",
+        "electrostatic_surface_points": 590,
+        "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+        "CDS_points_per_sphere": 2030,
+        "supported_elements": [
+          "C",
+          "H",
+          "N",
+          "O",
+          "Cl"
+        ],
+        "scientific_model_changed": true,
+        "primary_candidate_admission": false
+      },
+      "checked_sums": {
+        "gas": {
+          "value": 0.12784307915728732,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "gas",
+            "solvent_model": "vacuum",
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/sources/A.xyz": "e71d1a5d317b08cc08f08ab063650baffc994ec75ba76ee58638ae865c84d978",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/case/result.json": "fe342f7360bc1481766f28fe5d7b4fdf5d75162d06426a5afcb61f4f2b1428e0"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/sources/B.xyz": "0752137d2f6c621452ed61fee520d809186a23bc22dc6f4f0246b8308434060b",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/case/result.json": "fe342f7360bc1481766f28fe5d7b4fdf5d75162d06426a5afcb61f4f2b1428e0"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/sources/AB.xyz": "6634a456ea94272ae711d514eb32d9c880be4388b945052e555f271d216d6cd2",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/case/result.json": "fe342f7360bc1481766f28fe5d7b4fdf5d75162d06426a5afcb61f4f2b1428e0"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "acetonitrile": {
+          "value": 0.0034388206437370172,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "acetonitrile",
+            "solvent_model": {
+              "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+              "solvent": "acetonitrile",
+              "electrostatic_model": "SMD",
+              "electrostatic_surface_points": 590,
+              "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+              "CDS_points_per_sphere": 2030,
+              "supported_elements": [
+                "C",
+                "H",
+                "N",
+                "O",
+                "Cl"
+              ],
+              "scientific_model_changed": true,
+              "primary_candidate_admission": false
+            },
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/sources/A.xyz": "e71d1a5d317b08cc08f08ab063650baffc994ec75ba76ee58638ae865c84d978",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/case/result.json": "fe342f7360bc1481766f28fe5d7b4fdf5d75162d06426a5afcb61f4f2b1428e0"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/sources/B.xyz": "0752137d2f6c621452ed61fee520d809186a23bc22dc6f4f0246b8308434060b",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/case/result.json": "fe342f7360bc1481766f28fe5d7b4fdf5d75162d06426a5afcb61f4f2b1428e0"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/sources/AB.xyz": "6634a456ea94272ae711d514eb32d9c880be4388b945052e555f271d216d6cd2",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap107/case/result.json": "fe342f7360bc1481766f28fe5d7b4fdf5d75162d06426a5afcb61f4f2b1428e0"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap107.json",
+      "review_sha256": "0b3877d85d0a03a88d9e8f2ada12adfc5aef4f8379493abf4caeba9cdd4be39a"
+    },
+    {
+      "key": "all_same__occ_2_3__cap111",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/namespace.json",
+      "interaction_E_kJ_mol_by_medium": {
+        "gas": 335.78688204175614,
+        "acetonitrile": 9.03020456117417
+      },
+      "status": "frozen_motif_E_independently_checked",
+      "native_G_qualified": false,
+      "parent_key": "all_same__occ_2_3",
+      "cap_length_A": 1.11,
+      "method": {
+        "xc": "r2scan",
+        "basis": "def2-svp",
+        "disp": "d4",
+        "density_fit": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "max_cycle": 200,
+        "grid_level": 3
+      },
+      "solvent_model": {
+        "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+        "solvent": "acetonitrile",
+        "electrostatic_model": "SMD",
+        "electrostatic_surface_points": 590,
+        "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+        "CDS_points_per_sphere": 2030,
+        "supported_elements": [
+          "C",
+          "H",
+          "N",
+          "O",
+          "Cl"
+        ],
+        "scientific_model_changed": true,
+        "primary_candidate_admission": false
+      },
+      "checked_sums": {
+        "gas": {
+          "value": 0.1278944689203172,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "gas",
+            "solvent_model": "vacuum",
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/sources/A.xyz": "c9d7286cedc55cde9c4cf418e3bdfb1020ae4169f9dbadf92eb46732da9dae30",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/case/result.json": "4da8af36dec5ba72709dc9ca7825393ec5656dc1765ff698d0ae418b70e3e784"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/sources/B.xyz": "1596652a0dbfa681f62f67cf528bd974102af027654bed2546809699ac138235",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/case/result.json": "4da8af36dec5ba72709dc9ca7825393ec5656dc1765ff698d0ae418b70e3e784"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/sources/AB.xyz": "5ce343bc87e7fb1c5034c72c226e0839074ab5c72deba7967892a79706781efe",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/case/result.json": "4da8af36dec5ba72709dc9ca7825393ec5656dc1765ff698d0ae418b70e3e784"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "acetonitrile": {
+          "value": 0.003439423272197928,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "acetonitrile",
+            "solvent_model": {
+              "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+              "solvent": "acetonitrile",
+              "electrostatic_model": "SMD",
+              "electrostatic_surface_points": 590,
+              "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+              "CDS_points_per_sphere": 2030,
+              "supported_elements": [
+                "C",
+                "H",
+                "N",
+                "O",
+                "Cl"
+              ],
+              "scientific_model_changed": true,
+              "primary_candidate_admission": false
+            },
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/sources/A.xyz": "c9d7286cedc55cde9c4cf418e3bdfb1020ae4169f9dbadf92eb46732da9dae30",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/case/result.json": "4da8af36dec5ba72709dc9ca7825393ec5656dc1765ff698d0ae418b70e3e784"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/sources/B.xyz": "1596652a0dbfa681f62f67cf528bd974102af027654bed2546809699ac138235",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/case/result.json": "4da8af36dec5ba72709dc9ca7825393ec5656dc1765ff698d0ae418b70e3e784"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/sources/AB.xyz": "5ce343bc87e7fb1c5034c72c226e0839074ab5c72deba7967892a79706781efe",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_3__cap111/case/result.json": "4da8af36dec5ba72709dc9ca7825393ec5656dc1765ff698d0ae418b70e3e784"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap111.json",
+      "review_sha256": "45c7922e40191b0aaa4e3fe1b0e2681efcff2176b6ccd7712f24fffb465a97de"
+    },
+    {
+      "key": "all_same__occ_2_4__cap107",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/namespace.json",
+      "interaction_E_kJ_mol_by_medium": {
+        "gas": 283.85924999263875,
+        "acetonitrile": 7.617421121522686
+      },
+      "status": "frozen_motif_E_independently_checked",
+      "native_G_qualified": false,
+      "parent_key": "all_same__occ_2_4",
+      "cap_length_A": 1.07,
+      "method": {
+        "xc": "r2scan",
+        "basis": "def2-svp",
+        "disp": "d4",
+        "density_fit": true,
+        "conv_tol": 1e-12,
+        "conv_tol_grad": 1e-08,
+        "max_cycle": 200,
+        "grid_level": 3
+      },
+      "solvent_model": {
+        "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+        "solvent": "acetonitrile",
+        "electrostatic_model": "SMD",
+        "electrostatic_surface_points": 590,
+        "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+        "CDS_points_per_sphere": 2030,
+        "supported_elements": [
+          "C",
+          "H",
+          "N",
+          "O",
+          "Cl"
+        ],
+        "scientific_model_changed": true,
+        "primary_candidate_admission": false
+      },
+      "checked_sums": {
+        "gas": {
+          "value": 0.10811627841201243,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "gas",
+            "solvent_model": "vacuum",
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/sources/A.xyz": "3f79601abc8485fffa333f4a306d33bcf005c4204aa6e6442d0ca780e24a3d52",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/case/result.json": "8ae011c5fe28ed18eb71a6b987370162f2c22030955d0a35b28cd8a062eaa953"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/sources/B.xyz": "29b7fc2d203ab64b09e3f97f30afaa6f6fac648954efec2c7434433f8c488343",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/case/result.json": "8ae011c5fe28ed18eb71a6b987370162f2c22030955d0a35b28cd8a062eaa953"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/sources/AB.xyz": "78fecb7a8228148cd49eb5bf9b6680748b22af88e3644378ebb8e0c699501f96",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/case/result.json": "8ae011c5fe28ed18eb71a6b987370162f2c22030955d0a35b28cd8a062eaa953"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        },
+        "acetonitrile": {
+          "value": 0.0029013224785785496,
+          "context": {
+            "quantity": "electronic_energy",
+            "unit": "Ha",
+            "electronic_protocol": {
+              "xc": "r2scan",
+              "basis": "def2-svp",
+              "disp": "d4",
+              "density_fit": true,
+              "conv_tol": 1e-12,
+              "conv_tol_grad": 1e-08,
+              "max_cycle": 200,
+              "grid_level": 3
+            },
+            "thermal_definition": "none: electronic energies only",
+            "solvent": "acetonitrile",
+            "solvent_model": {
+              "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+              "solvent": "acetonitrile",
+              "electrostatic_model": "SMD",
+              "electrostatic_surface_points": 590,
+              "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+              "CDS_points_per_sphere": 2030,
+              "supported_elements": [
+                "C",
+                "H",
+                "N",
+                "O",
+                "Cl"
+              ],
+              "scientific_model_changed": true,
+              "primary_candidate_admission": false
+            },
+            "temperature_K": 298.15,
+            "standard_state": "not applied to fixed-geometry electronic energies",
+            "reference": "absolute electronic components at the same frozen relative pose and declared medium"
+          },
+          "components": {
+            "A": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/sources/A.xyz": "3f79601abc8485fffa333f4a306d33bcf005c4204aa6e6442d0ca780e24a3d52",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/case/result.json": "8ae011c5fe28ed18eb71a6b987370162f2c22030955d0a35b28cd8a062eaa953"
+              }
+            },
+            "B": {
+              "coefficient": -1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 2,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/sources/B.xyz": "29b7fc2d203ab64b09e3f97f30afaa6f6fac648954efec2c7434433f8c488343",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/case/result.json": "8ae011c5fe28ed18eb71a6b987370162f2c22030955d0a35b28cd8a062eaa953"
+              }
+            },
+            "AB": {
+              "coefficient": 1,
+              "state": {
+                "identity": "C[n+]1ccc(-c2cc[n+](C)cc2)cc1.C[n+]1ccc(-c2cc[n+](C)cc2)cc1",
+                "charge": 4,
+                "multiplicity": 1
+              },
+              "qc": "independently_checked",
+              "sources": {
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/sources/AB.xyz": "78fecb7a8228148cd49eb5bf9b6680748b22af88e3644378ebb8e0c699501f96",
+                "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap107/case/result.json": "8ae011c5fe28ed18eb71a6b987370162f2c22030955d0a35b28cd8a062eaa953"
+              }
+            }
+          },
+          "context_verified": true,
+          "empirical_accuracy_validated": false
+        }
+      },
+      "review": "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_4__cap107.json",
+      "review_sha256": "c08eef471d66f95ea2324ea47f543f82096af56b8d1e876bbb61ce2c5b832965"
+    },
+    {
+      "key": "all_same__occ_2_4__cap109",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap109/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    },
+    {
+      "key": "all_same__occ_2_4__cap111",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/all_same__occ_2_4__cap111/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    },
+    {
+      "key": "alternating__occ_2_3__cap107",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap107/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    },
+    {
+      "key": "alternating__occ_2_3__cap109",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap109/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    },
+    {
+      "key": "alternating__occ_2_3__cap111",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_3__cap111/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    },
+    {
+      "key": "alternating__occ_2_4__cap107",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_4__cap107/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    },
+    {
+      "key": "alternating__occ_2_4__cap109",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_4__cap109/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    },
+    {
+      "key": "alternating__occ_2_4__cap111",
+      "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/alternating__occ_2_4__cap111/namespace.json",
+      "interaction_E_kJ_mol_by_medium": null,
+      "status": "not_scientifically_started",
+      "native_G_qualified": false
+    }
+  ],
+  "checked_triplets": 4,
+  "declared_triplets": 12,
+  "independent_review_errors": [],
+  "cap_sensitivity": {
+    "all_same__occ_2_3": {
+      "checked_cap_lengths": [
+        1.09,
+        1.07,
+        1.11
+      ],
+      "complete": true,
+      "range_kJ_mol_by_medium": {
+        "gas": 0.13492380430790263,
+        "acetonitrile": 0.0015822008068617777
+      }
+    },
+    "all_same__occ_2_4": {
+      "checked_cap_lengths": [
+        1.07
+      ],
+      "complete": false,
+      "range_kJ_mol_by_medium": null
+    }
+  },
+  "basis_superposition_corrected": false,
+  "free_energy_computed": false,
+  "electronic_coupling_computed": false,
+  "full_polymer_nonadditivity_replaced": false,
+  "deformation_or_pure_backbone_energy_supplied": false,
+  "material_admission": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_motif_interactions/2026-11-02_viologen_methyl_energy_followups/manifest.json": "bc9204344d5a3c109d8c314a9d298e12fbefb26c80f6bffc4a06f97b066c59bf",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/review_sources/e3074518ce35616af4b0a57b913c144754cb6ef931f163324410aa33724f33fc/motif_interaction_energy.py": "e3074518ce35616af4b0a57b913c144754cb6ef931f163324410aa33724f33fc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap109.json": "46a628921d7b8724ae00e5825458607d573f60d192a9c5f6dbdf8a30792e43c5",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap107.json": "0b3877d85d0a03a88d9e8f2ada12adfc5aef4f8379493abf4caeba9cdd4be39a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_3__cap111.json": "45c7922e40191b0aaa4e3fe1b0e2681efcff2176b6ccd7712f24fffb465a97de",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/validation/counterion_sensitivity_2026-11-02/triplet_reviews/all_same__occ_2_4__cap107.json": "c08eef471d66f95ea2324ea47f543f82096af56b8d1e876bbb61ce2c5b832965"
+  }
+}

@@ -1,0 +1,181 @@
+{
+  "status": "segment_deformation_and_saved_relaxation_audited",
+  "checked": 1792751906.4493535,
+  "pairs": [
+    {
+      "pair_key": "exp_phthalimide_control__segments__parallel__parallel",
+      "candidate_id": "exp_phthalimide_control",
+      "pair_atoms": 70,
+      "pair_optimization": {
+        "optimizer_steps_in_saved_log": 76,
+        "gradient_max_Ha_Bohr": 4.947475021081443e-05,
+        "Hessian_minimum_tested": false
+      },
+      "monomer_optimization": {
+        "optimizer_steps_in_saved_log": 42,
+        "gradient_max_Ha_Bohr": 6.311644789064918e-05,
+        "Hessian_minimum_tested": false
+      },
+      "pair_input_to_optimized_heavy_RMSD_A": 0.6998952104977297,
+      "fragments": [
+        {
+          "key": "frozen_0_0",
+          "atoms": 35,
+          "smiles": "CCc1ccc(CN2C(=O)c3ccccc3C2=O)cc1",
+          "E_eV": -23459.580488725576,
+          "deformation_kJ_mol": -0.6798915900415392,
+          "frozen_to_relaxed_monomer_heavy_RMSD_A": 0.36183101148063057
+        },
+        {
+          "key": "frozen_0_1",
+          "atoms": 35,
+          "smiles": "CCc1ccc(CN2C(=O)c3ccccc3C2=O)cc1",
+          "E_eV": -23459.560579783727,
+          "deformation_kJ_mol": 1.2410292765099442,
+          "frozen_to_relaxed_monomer_heavy_RMSD_A": 0.23178950214857522
+        }
+      ],
+      "deformation_kJ_mol_CODATA": 0.561137686468405,
+      "historical_deformation_kJ_mol": 0.5611357552625487,
+      "frozen_interaction_kJ_mol": -55.25163881303508,
+      "negative_fragment_terms": [
+        "frozen_0_0"
+      ],
+      "cancellation_kJ_mol": 1.3597831800830784,
+      "deformation_is_positive_definite_strain": false,
+      "interpretation": "Signed difference from one sampled independently optimized monomer. Small sums may include cancellation; geometry and single-point levels differ. Neither global monomer minima nor nonnegative strain penalties are established."
+    },
+    {
+      "pair_key": "exp_phthalimide_control__segments__antiparallel__antiparallel",
+      "candidate_id": "exp_phthalimide_control",
+      "pair_atoms": 70,
+      "pair_optimization": {
+        "optimizer_steps_in_saved_log": 57,
+        "gradient_max_Ha_Bohr": 2.29123985777717e-05,
+        "Hessian_minimum_tested": false
+      },
+      "monomer_optimization": {
+        "optimizer_steps_in_saved_log": 42,
+        "gradient_max_Ha_Bohr": 6.311644789064918e-05,
+        "Hessian_minimum_tested": false
+      },
+      "pair_input_to_optimized_heavy_RMSD_A": 0.2450326741818913,
+      "fragments": [
+        {
+          "key": "frozen_1_0",
+          "atoms": 35,
+          "smiles": "CCc1ccc(CN2C(=O)c3ccccc3C2=O)cc1",
+          "E_eV": -23459.571969476772,
+          "deformation_kJ_mol": 0.14209096026099058,
+          "frozen_to_relaxed_monomer_heavy_RMSD_A": 0.0659513958380408
+        },
+        {
+          "key": "frozen_1_1",
+          "atoms": 35,
+          "smiles": "CCc1ccc(CN2C(=O)c3ccccc3C2=O)cc1",
+          "E_eV": -23459.56980648404,
+          "deformation_kJ_mol": 0.3507880324208746,
+          "frozen_to_relaxed_monomer_heavy_RMSD_A": 0.08799666782609664
+        }
+      ],
+      "deformation_kJ_mol_CODATA": 0.4928789926818652,
+      "historical_deformation_kJ_mol": 0.4928772957351248,
+      "frozen_interaction_kJ_mol": -44.29759307223389,
+      "negative_fragment_terms": [],
+      "cancellation_kJ_mol": 0.0,
+      "deformation_is_positive_definite_strain": false,
+      "interpretation": "Signed difference from one sampled independently optimized monomer. Small sums may include cancellation; geometry and single-point levels differ. Neither global monomer minima nor nonnegative strain penalties are established."
+    },
+    {
+      "pair_key": "design_pmdi_ethyl__segments__antiparallel__antiparallel",
+      "candidate_id": "design_pmdi_ethyl",
+      "pair_atoms": 90,
+      "pair_optimization": {
+        "optimizer_steps_in_saved_log": 93,
+        "gradient_max_Ha_Bohr": 5.584819694992246e-05,
+        "Hessian_minimum_tested": false
+      },
+      "monomer_optimization": {
+        "optimizer_steps_in_saved_log": 46,
+        "gradient_max_Ha_Bohr": 1.807961918447979e-05,
+        "Hessian_minimum_tested": false
+      },
+      "pair_input_to_optimized_heavy_RMSD_A": 0.5013760154760358,
+      "fragments": [
+        {
+          "key": "frozen_2_0",
+          "atoms": 45,
+          "smiles": "CCc1ccc(Cn2c(=O)c3cc4c(=O)n(CC)c(=O)c4cc3c2=O)cc1",
+          "E_eV": -33242.76439452655,
+          "deformation_kJ_mol": 1.0024919920243682,
+          "frozen_to_relaxed_monomer_heavy_RMSD_A": 0.5697731841237137
+        },
+        {
+          "key": "frozen_2_1",
+          "atoms": 45,
+          "smiles": "CCc1ccc(Cn2c(=O)c3cc4c(=O)n(CC)c(=O)c4cc3c2=O)cc1",
+          "E_eV": -33242.781212014335,
+          "deformation_kJ_mol": -0.6201489022516841,
+          "frozen_to_relaxed_monomer_heavy_RMSD_A": 0.6123073036783341
+        }
+      ],
+      "deformation_kJ_mol_CODATA": 0.38234308977268416,
+      "historical_deformation_kJ_mol": 0.38234177296333655,
+      "frozen_interaction_kJ_mol": -50.873355304849426,
+      "negative_fragment_terms": [
+        "frozen_2_1"
+      ],
+      "cancellation_kJ_mol": 1.2402978045033684,
+      "deformation_is_positive_definite_strain": false,
+      "interpretation": "Signed difference from one sampled independently optimized monomer. Small sums may include cancellation; geometry and single-point levels differ. Neither global monomer minima nor nonnegative strain penalties are established."
+    }
+  ],
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_pmdi_ethyl__segments__antiparallel__antiparallel.json": "a5bf6a874953a34f6133058b51ac7f54f0beb33aad3a5476c39d89986fae154c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/pipeline/polymer_conformer_thermals.py": "dce939388dafe90f85b1a717f419ad9ed3500227ae063e6133d1a04415e00efc",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__segments__antiparallel__antiparallel/rest/result.json": "e879c8cb3f4ae9c85d73a53e4b761c93cebe018e750bc2a0f358300ea7844172",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__n1__stereo0__monomer/input.xyz": "7335b42035775cedef1f618a26bd4b2328d74ffa214fd5a1d022da90c42079b1",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__segments__antiparallel__antiparallel/input.xyz": "35eafd821ea1d5096f79cddb06ae559327a6ca22620f1ef6c86129e8f9f3863d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/design_pmdi_ethyl__n1__stereo0__monomer.json": "c3c72b33f6d8864311a8032257e0053f4100198116d953bb708f22ff849ef086",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/done/frozen_2_1.json": "2ba42cb79f5b2970da0f42f36b6370ebe007e96001db2a1ef58ffaae0e2e5167",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__segments__antiparallel__antiparallel/input.xyz": "e4ae08e80133d78df795ea761de1c4bb14ff94ef033d43377d1e36f0ef300054",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/inputs/frozen_0_1.xyz": "54c5fcecbaefa5a4ff3de2d66b43e05098e0eb2e9fbb6d3bfdcfc89a86464d00",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n1__stereo0__monomer/rest/result.json": "c9736e62f3607209b48b18d8680fa8ed45428465d0f58c0b38ed1468b3546eb6",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/exp_phthalimide_control__segments__antiparallel__antiparallel.json": "a1e4b2db66b6099ce7593c3ad47a06fbd7a676d5ab8524817a5131bbb66d6328",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__segments__antiparallel__antiparallel/rest/opt.xyz": "9034d0c6a28c4582e326b3acf037f18132db17633b078f40f9f30f880e96465c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/done/frozen_0_0.json": "807ea452c56e85be077432f28810b9d9c34d6ce6d98bea5ff2451262d914483c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/inputs/frozen_2_1.xyz": "a19e1fc0e9ca7d7d8ae2bc49f6ffbe08b9c4200823d94ad8079454a49bc35d7a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/inputs/frozen_2_0.xyz": "29d5a7ef1f5bd4f87a7dcab2df7efd44c61e64c34d71a0bbf3d9b7a6666d7b34",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/exp_phthalimide_control__segments__parallel__parallel.json": "32afebe4d3d4fbe7f4f8fb1b7f5a20732f34853c580a1a6ce9a33c80cee423ff",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/exp_phthalimide_control__segments__parallel__parallel/input.xyz": "96d9bf647cf938445f7c951977d19f6af9f592f797264dc232a3978d1526323c",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__n1__stereo0__monomer/rest/opt.xyz": "1d7b1a6bd73032268c6a01c21769581a7bbce7425bb0bcafb7a2d5931a1306ad",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/done/frozen_1_1.json": "9efca7456a202c2f0963141ffebc288d569a4f1bf585cf9aa74ffee02ed4f44b",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/inputs/frozen_1_0.xyz": "af5afbd12c646f0b0cd9bbe25563c9a0bcf2c36febae791e94b1237e5ede2789",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/live_inputs/design_pmdi_ethyl__n1__stereo0__monomer/input.xyz": "55911f4d2cd64179bbf1ea9abfea557bbff20a67e54453664cda97e1f75cfd59",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/scripts/validation/audit_segment_deformation.py": "69c30450aa2cc7bd99409122bb5739477f4805b3c7b91aa55c1e3c43ae7543d4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/exp_phthalimide_control__segments__parallel__parallel/calculation.log": "bce69bc0be6fb07e2f4203a18b4447fcb5587412bbdbaaf52ab0309f5f120563",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/plan.json": "16bd8b266925595b6a30b14b24f6aae86922412ffe4929e68cdc5225761e4de4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/done/frozen_1_0.json": "a8256d3fccf161e434c0e2718de0bde538aa6700c53ee813ef8b294b136951c4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/design_pmdi_ethyl__segments__antiparallel__antiparallel/calculation.log": "ea6521c47222c3744f07c1bfc6f6b44763ad6f513dbc11d5c4f1cf7ff94445c2",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/interaction_decomposition.json": "f9c0262b536e832644b575447388d9d62771d85b77c3e324860caddf96794a3d",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__segments__parallel__parallel/rest/result.json": "76c00c2e6c011270f1677f2993d7f325bd29427a335bc75669230b1a96f64e4a",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/done/frozen_0_1.json": "ecdc89bccff63c55584e748ba30246bf5e532ee2017d3d38a4b5f5bdf50a4d49",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/exp_phthalimide_control__n1__stereo0__monomer/calculation.log": "700cfc6ec01599dfb75e50e78501192c575d15ad8a4ba3aeaca55c4a048a72b7",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/inputs/frozen_0_0.xyz": "3221207755b549bd6395c045d46843e89281518755f6e8de8f6e38a5f16c1843",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/inputs/frozen_1_1.xyz": "637f687dcff69dfc98e3508b45905e45ee76220f6d99dcb5b047784a7dfba1f3",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/interaction_checked.json": "6cbcf4153528ee488eed930cb9b690b766fa422676f14f806faa074bafcf3bab",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/exp_phthalimide_control__segments__antiparallel__antiparallel/calculation.log": "f813aec1e358b7582ebf06fa52feafe8a819421dfa605e2b8e1fdc5eba7879ab",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__segments__parallel__parallel/rest/opt.xyz": "994822cd8a42547649e36a4092f7a07a0d387179e01a68e09084cc85b0830ab4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n1__stereo0__monomer/rest/result.json": "0bbf88a18180d92f426f361df4e1ffa241e9b46a816e85b0d1909eb1eb49cf50",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__segments__antiparallel__antiparallel/rest/result.json": "226b6be138eb6640f69b8db557d08e372d2b2cabc94346be55a4be7fcd4901d4",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/tasks/design_pmdi_ethyl__n1__stereo0__monomer/calculation.log": "e019aa04522283ec3390a6992cdf92ae6985caaeddf35aaec3320021a257e429",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-20_frozen_fragments/done/frozen_2_0.json": "25a70f12007118187e42fdbd2f5ef80487f5ba339fa2283a62b2c10001a1f7be",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/exp_phthalimide_control__segments__antiparallel__antiparallel/rest/opt.xyz": "d659eefd8ff6ccbfaf1c2a61cd501204d0207d81513255ed557ae298ab08f14f",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-19_pi_stacking/done/exp_phthalimide_control__n1__stereo0__monomer.json": "b5e238c3df02761d5c12ec065c267100a69d75c467fed315d91880a585aabe42",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/polymer_models/2026-10-19_pi_stacking/design_pmdi_ethyl__n1__stereo0__monomer/rest/opt.xyz": "66ad2755530da33162bafbd3c98dc480612f4b9f5fcf30391e640625226d4421"
+  },
+  "new_quantum_calculations": 0,
+  "source_data_modified": false,
+  "original_constraints_reconstructed": false,
+  "limitations": "Stationary electronic structures only; no new Hessian, global minimum, constraint-history reconstruction, BSSE correction or pure-core binding result"
+}

@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="8" failures="0" skipped="0" tests="36" time="3.994" timestamp="2026-11-02T14:07:41.419497-06:00" hostname="lambda2"><testcase classname="tests.test_primary_checkpoints" name="test_actual_wavefunction_energy_nelec_spin_and_fixed_frame" time="0.040"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_actual_wavefunction_energ0')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec18d20e50&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_actual_wavefunction_energ0/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_checkpoints" name="test_swapped_state_frame_and_scalar_cannot_pass_actual_checkpoint_admission[basis]" time="0.002"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s0')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec0e1f2c10&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s0/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_checkpoints" name="test_swapped_state_frame_and_scalar_cannot_pass_actual_checkpoint_admission[charge]" time="0.002"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s1')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec0c70df10&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s1/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_checkpoints" name="test_swapped_state_frame_and_scalar_cannot_pass_actual_checkpoint_admission[multiplicity]" time="0.002"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s2')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec0c7230d0&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s2/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_checkpoints" name="test_swapped_state_frame_and_scalar_cannot_pass_actual_checkpoint_admission[frame]" time="0.002"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s3')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec0e2143d0&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s3/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_checkpoints" name="test_swapped_state_frame_and_scalar_cannot_pass_actual_checkpoint_admission[energy]" time="0.002"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s4')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec0c6d1bd0&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s4/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_checkpoints" name="test_swapped_state_frame_and_scalar_cannot_pass_actual_checkpoint_admission[count]" time="0.002"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s5')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec0e19a890&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_swapped_state_frame_and_s5/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_checkpoints" name="test_unconverged_search_step_remains_unqualified" time="0.002"><error message="failed on setup with &quot;AttributeError: type object 'RHF' has no attribute 'Hessian'&quot;">tmp_path = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_unconverged_search_step_r0')
+
+    @pytest.fixture
+    def actual_checkpoint(tmp_path):
+        molecule = gto.M(atom='H 0 0 0; H 0 0 .74', basis='sto-3g', verbose=0)
+        root = tmp_path/'SCF_evaluations'
+&gt;       mf = recording_builder(lambda: scf.RHF(molecule), root, {'test': 'actual_cpu_wavefunction'})()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_primary_checkpoints.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/redox/qm/scf_checkpoints.py:95: in build
+    return attach(builder(*args,**kwargs),directory,owner,save_density=save_density)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+mf = &lt;pyscf.scf.hf.RHF object at 0x7fec0e1ff010&gt;
+directory = PosixPath('/tmp/pytest-of-rzhu/pytest-1737/test_unconverged_search_step_r0/SCF_evaluations/0000')
+owner = {'test': 'actual_cpu_wavefunction'}, save_density = True
+
+    def attach(mf,directory,owner,*,save_density=True):
+        """Record actual solves without binding a scanner to an obsolete MF object."""
+        mf._redox_checkpoint_context=Context(directory,owner,save_density)
+        mf._keys=set(mf._keys)|{'_redox_checkpoint_context'}
+        cls=type(mf);original=cls.kernel
+        if not getattr(original,'_redox_checkpoint_wrapper',False):
+            def kernel(self,*args,**kwargs):
+                context=getattr(self,'_redox_checkpoint_context',None)
+                if context is None:return original(self,*args,**kwargs)
+                path=context.begin(self)
+                result=original(self,*args,**kwargs)
+                if context.save_density:array(path/'density.npy',self.make_rdm1())
+                write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+                    checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
+                    density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
+                return result
+            kernel._redox_checkpoint_wrapper=True;cls.kernel=kernel
+        for name,filename in [('nuc_grad_method','gradient.npy'),('Hessian','hessian_tensor.npy')]:
+&gt;           factory=getattr(cls,name)
+                    ^^^^^^^^^^^^^^^^^
+E           AttributeError: type object 'RHF' has no attribute 'Hessian'
+
+src/redox/qm/scf_checkpoints.py:80: AttributeError</error></testcase><testcase classname="tests.test_primary_native_release" name="test_exact_completed_RKS_UKS_pilots_release_only_their_shared_class" time="0.012" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[missing_pilot]" time="0.005" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[wrong_G]" time="0.006" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[wrong_spin]" time="0.006" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[nonfinite]" time="0.006" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[worker]" time="0.008" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[dimension]" time="0.008" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[thermal]" time="0.008" /><testcase classname="tests.test_primary_native_release" name="test_missing_or_inconsistent_pilots_and_changed_implementations_stay_held[pending]" time="0.006" /><testcase classname="tests.test_counterion_geometry" name="test_chloride_microstates_preserve_the_covalent_graft_and_correct_electron_parity" time="0.081" /><testcase classname="tests.test_execution_review" name="test_normal_exact_execution_closure_is_accepted" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[0-observed_peak_GPU_MiB-nan]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[0-observed_peak_GPU_MiB-40000]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[0-native_G_qualified-True]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[2-returncode-1]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[2-budget_stop-wall_time_budget]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[3-process_start-101]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[3-host-other-host]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[3-guard_stopped-False]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[4-foreign_resident_PIDs-value8]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[5-free_RAM_bytes-nan]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[5-peak_tree_RSS_bytes-44023414784]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[5-CPU_affinity-value11]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[6-program-/test/other.py]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_broken_identity_nonfinite_resources_or_abnormal_exit_cannot_pass[6-pid-20]" time="0.001" /><testcase classname="tests.test_execution_review" name="test_live_or_unknown_owner_cannot_be_accepted" time="0.000" /><testcase classname="tests.test_execution_review" name="test_source_capture_keeps_as_used_bytes_after_the_source_changes" time="0.002" /><testcase classname="tests.test_execution_review" name="test_proportional_profile_requires_explicit_declaration_and_preserves_main_RSS_limit" time="0.001" /></testsuite></testsuites>

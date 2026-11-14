@@ -1,0 +1,48 @@
+{
+  "status": "screening_masks_and_fixed_density_integration_independently_checked",
+  "namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/namespace.json",
+  "device": {
+    "index": 0,
+    "uuid": "GPU-54527752-20db-dbfe-f13c-c14b1f7d3716",
+    "name": "Tesla V100-SXM2-32GB",
+    "memory_MiB": 32768.0,
+    "compute_capability": "7.0"
+  },
+  "mask_comparisons": 60,
+  "corrected_mask_errors": 0,
+  "integration_differences": {
+    "installed": {
+      "density_integral_difference": 0.0006480381707660854,
+      "XC_energy_difference_Ha": -0.0010183034587498696
+    },
+    "corrected": {
+      "density_integral_difference": -7.676135282963514e-10,
+      "XC_energy_difference_Ha": 1.0559233487583697e-09
+    }
+  },
+  "upstream_absolute_limit": 2e-09,
+  "installed_control_exceeds_limit": true,
+  "peak_host_RSS_bytes": 1086742528,
+  "SCF_gradient_Hessian_qualification_complete": false,
+  "production_default_changed": false,
+  "native_G_qualified": false,
+  "proceed_to_SCF_force_qualification": true,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/namespace.json": "bffc7a02df46109c7492b8b5c8dd6c997f9898456ab8dc4bf1a637418c34c3e4",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/plan.json": "da145aa1197e86cfb71e3e12048b597b17d04c362dcb7293df91a05be0273998",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/status.json": "82cbbee845416f194cdfcd6df57b095bcd9a7c9e6bdf7bfd5ff4962d3508e2b9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/host_guard/status.json": "ec1c730c133642eeeb38ca13d2c2b8eb3c785c64b758fcae9cff295248305093",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/tensor_runtime/status.json": "7518ae8b883e34fcc8a1e75d49f1f18f83fc7362e14fe66a0a6565b4894d8f9e",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/residency_guard/owner.json": "228ebf2cbbeb51b6560a0edbaacf41bea605bd474ce083f7357bd7e1471422f5",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/residency_guard/state.json": "b5c8a4330cb960b2ab11716c846a9258ffa6dcadb74b6bc522f8e1970ec8c623",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/independent_mask.npy": "059cd7b8a631352c10e18cfc74f6bfec0f26e1b5ab5fb933d2a54e88338c82bd",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/water_comparison.json": "1cf8244909664b0c84ecd41c6d3738b271725dbec78fe8c957bf2df67703fb83",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/placement/launch.json": "aa0bd4219c799df640858b3c04b56548d2c479a95a175146262d79815189436f",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/placement/completion.json": "442b28d36ababf1f0e34b5eb23862c8a3422dccfeda1012b73d353a0a4e79418",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/sources/water.json": "812af0e86173aee7babe38434d0eac77985671ca0637b19754844685451101f9",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/water_implementation/implementation.json": "3ce881eb1ede343a518ad441caee79e84c6afab69094266f30c74ce4d63d56c6",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/water_implementation/screening_kernel.cu": "c53400f44a40ecdf9b88bd6a6f10ab9adbc9b2825dda345428c40c203629b536",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_kernel_controls/2026-10-31_screening_barrier_V100_v3/case/water_implementation/corrected_host.py": "fcb065c065a81fc42fe835c987d5a1acc487517658b9dea57eabc52d51ac992f"
+  },
+  "producer_sha256": "52fcafd2aede630f420473f2a94e11f3ce8681fab98565db8b2052fc739c47c5"
+}

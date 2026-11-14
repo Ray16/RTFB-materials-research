@@ -1,0 +1,80 @@
+{
+  "status": "finite_checked_native_sampling_coverage",
+  "panels": [
+    {
+      "configuration": "all_same",
+      "occupied_sites": [],
+      "checked": 20,
+      "missing_indices": [],
+      "observed_range_kJ_mol": 7.194140964733067,
+      "lowest_checked_key": "all_same__occ_none__conf002",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": 0.0
+    },
+    {
+      "configuration": "all_same",
+      "occupied_sites": [
+        2
+      ],
+      "checked": 14,
+      "missing_indices": [
+        2,
+        5,
+        8,
+        12,
+        17,
+        19
+      ],
+      "observed_range_kJ_mol": 13.743763114349687,
+      "lowest_checked_key": "all_same__occ_2__conf020",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": -3.8437660762395365
+    },
+    {
+      "configuration": "alternating",
+      "occupied_sites": [],
+      "checked": 16,
+      "missing_indices": [
+        10,
+        12,
+        13,
+        19
+      ],
+      "observed_range_kJ_mol": 5.441442578799958,
+      "lowest_checked_key": "alternating__occ_none__conf004",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": 0.0
+    },
+    {
+      "configuration": "alternating",
+      "occupied_sites": [
+        2
+      ],
+      "checked": 10,
+      "missing_indices": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        15,
+        16,
+        17,
+        18
+      ],
+      "observed_range_kJ_mol": 9.726389923463264,
+      "lowest_checked_key": "alternating__occ_2__conf010",
+      "lowest_checked_minus_lowest_checked_in_first_ten_kJ_mol": 0.0
+    }
+  ],
+  "source_replay": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/publication_native_replay_2026-10-28/checked_replay_v3.json",
+  "replay_sha256": "80e63e88515befb761bf6fe8ee0fb900efad538634027909a10dc02a134f7b60",
+  "producer_sha256": "9cf759a86bee8ab5177c08dec0a9e5da7d525c018fa9e497ff5da9fe8be4ad2b",
+  "outputs_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/figures/polymer_models/native_sampling_coverage.pdf": "28f707004b4ef8890e8e45e4e53ee097a18451a80b95870efca2c9de3b521ed9",
+    "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/figures/polymer_models/native_sampling_coverage.png": "6dbc41dc8eae668a87db6c85668936ebd3e653b871fc2a0345f3839b536c51e4"
+  },
+  "model": "alternate smooth-surface acetonitrile",
+  "temperature_K": 298.15,
+  "rotor_cutoff_cm": 50,
+  "global_convergence_proven": false,
+  "caption": "Each panel compares one exact graph/configuration only. Missing records are marked below the zero line, not assigned physical energies. Incomplete batches cannot establish a 10-to-20 convergence comparison. No polymer reaction or experimental occupancy probability is inferred."
+}

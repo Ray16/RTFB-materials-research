@@ -1,0 +1,45 @@
+{
+  "status": "TEMPO_exact_support_route_pass_local_potential_checked_material_pending",
+  "checked": 1793055832.2292345,
+  "candidate_id": "tempo",
+  "product_inchikey": "KTIGVFIKAXWERK-UHFFFAOYSA-N",
+  "exact_design_key": "fc59809dd149604fa0c24700a6ffff20cd95e5ab153bf584beb84659c36cc8ef",
+  "prospective_route_status": "proceed",
+  "modeled_oxidation_V_vs_Fc": {
+    "25": 0.5761420931085013,
+    "50": 0.5787750407616841,
+    "100": 0.5794202526922163
+  },
+  "all_axis_status": "pending",
+  "pending_axes": [
+    "redox_window",
+    "capacity",
+    "state_stability",
+    "charge_transfer",
+    "grafting_thermodynamics",
+    "motif_association",
+    "neighbor_coupling",
+    "occupancy_sensitivity",
+    "accessibility"
+  ],
+  "reported_support_N_oxyl_mmol_per_g": 0.9,
+  "reported_support_N_oxyl_scope": "source report after washing; not a measured conversion for our material",
+  "actual_route_deltaG_computed": false,
+  "exact_graft_experimental_potential_known": false,
+  "quantum_jobs_submitted": 0,
+  "current_879_graph_decision_ledger_modified": false,
+  "figure": "results/figures/grafting/tempo_exact_route.png",
+  "figure_sha256": "523740b1e1ce91ba57d7f97001b1f7515def91d913895c20b17607ffcd42392c",
+  "figure_script_sha256": "9bf87be39a013eb99c2865758301c7a9f6ffbd7d6413a70bbc431f850e764603",
+  "source_artifact_sha256": {
+    "route_review.json": "e9fb25d7240fd41e120d40ec5b4f8886e31c3dae098bfd4272654628291fc22e",
+    "route_screen.json": "1e482f20f09bcd3a639d924759bee2ce2db81c5be41e9a589e59de7f4d4b2c5f",
+    "native_potential_review.json": "f653078b71d2410da41cb10aca93bb815a235955bb84ac52a1bc4faf64482dac",
+    "all_axis_decision.json": "d51e3d0752f6d3e05d04e6b5f7281a9d984e2251927c93991308f147b6d26c5c",
+    "registry_reconciliation.json": "625b72c6520818677b023b568499715cc967e40b640e3537cf6657a569eb6a9e",
+    "tests_final.xml": "05c07fe7178d70c05d8c92bbccfe642eaa48e124af393bde3e72cdf8efe745a6"
+  },
+  "limits": "Patent-source route evidence and a numerically reconstructed local-model potential do not demonstrate feasible device operation, packing, electron coupling, grafting free energy or all-axis eligibility.",
+  "figure_pdf": "results/figures/grafting/tempo_exact_route.pdf",
+  "figure_pdf_sha256": "c7a9b730be1cd1d057393952484785e5f219223c5b7e63d654a7ad90854563e5"
+}
