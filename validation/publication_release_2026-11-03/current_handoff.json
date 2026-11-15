@@ -1,10 +1,11 @@
 {
   "status": "authorized_local_preparation_complete_external_deposition_and_live_job_cleanup_pending",
   "goal_complete": false,
-  "checked_UTC": "2026-11-04T06:02:18.321709+00:00",
+  "checked_UTC": "2026-11-15T00:00:00+00:00",
   "canonical_project": "/nfs/lambda_stor_01/homes/rzhu/0_redox",
   "branch": "main",
-  "latest_audited_commit": "311c7c05f556a37468c73777a0deb2b0d5b9cd45",
+  "latest_audited_commit": "36a2f0da",
+  "update_2026-11-15": "Pushed code milestone 37ff4aa0 (metallocene identity, run-time Nitro-qualification gating, parallel per-state motif DFT, pinned-reference calibration + sigma guard; 29 tests pass) and evidence snapshot 36a2f0da. Blocking polymer controllers 2274503/2274508 no longer running on lambda2 (clean finish unverified). Four superseded Overleaf draft zips archived (docs/ARCHIVE_LOG.md). Scientific campaigns (occupied sampling A1, counterion association A2) not yet launched, pending user go-ahead.",
   "completed": {
     "candidate_inventory": "912 exact graphs; systematic mapped-pair expansion; route/property/material decisions remain separate",
     "lead_validation": "Qualified finite viologen/TEMPO/PMDI examples and secondary phenothiazine result; uncomputed quantities retain field-specific pending status",
@@ -21,7 +22,7 @@
     },
     {
       "requirement": "Final canonical directory and compatibility-link cleanup",
-      "dependency": "User instructed the active polymer calculations to finish before relocation; controllers 2274503/2274508 observed live on lambda2",
+      "dependency": "Controllers 2274503/2274508 are no longer running on lambda2 as of 2026-11-15 (clean finish unverified); relocation is unblocked pending verification and an explicit cleanup step",
       "move_or_stop_active_work_authorized": false
     },
     {

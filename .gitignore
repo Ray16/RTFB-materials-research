@@ -45,10 +45,14 @@ validation/*.xml
 # Licensed / non-redistributable curated data (re-create via docs/DATASETS.md)
 data/raw/validation/solvation_refset_acetonitrile.csv
 
-# Pipeline runtime outputs (never committed; pinned reference inputs live in data/reference/)
+# Pipeline runtime outputs (never committed; pinned reference inputs live in data/reference/).
+# Use globs (not bare dirs) under results/ so the maintained entry points below can be
+# re-included; a bare "/results/" would prune the dir and block the negations.
 /library/
 /calcs/
-/results/
+/results/**
+!/results/README.md
+!/results/INDEX.json
 /.venv-figures/
 
 # Local documentation/test tooling and canonical relocated raw artifacts

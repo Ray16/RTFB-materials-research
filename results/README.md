@@ -13,8 +13,11 @@ establish that a calculation is currently running.
 - [Canonical workspace locations](../validation/workspace_index_update.json):
   47 mutable result pointers now use the relocated directories inside `0_redox`.
   Historical evidence bytes and their recorded logical paths are unchanged.
-  Temporary sibling links remain until their readers and namespaces are migrated;
-  the active polymer directory remains deferred until its calculations finish.
+  Temporary sibling links remain until their readers and namespaces are migrated.
+  The previously deferred polymer controllers (PIDs 2274503/2274508 on lambda2)
+  are no longer running as of 2026-11-15, so the final directory relocation is
+  unblocked pending an explicit cleanup step; whether they finished cleanly
+  should be verified before relocating. See [docs/ARCHIVE_LOG.md](../docs/ARCHIVE_LOG.md).
 - [Exact-molecule CPU example](../examples/exact_viologen_replay/README.md):
   ten versioned cached states reconstruct both viologen reductions and local
   quaternization with NumPy only. Nine Hessians and six saved-gradient panels
