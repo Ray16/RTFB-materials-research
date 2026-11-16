@@ -19,10 +19,10 @@ referenced by any doc, script, manifest or the live `manuscript/overleaf/`.
 | `overleaf_upload_2026-11-02_direct_phenothiazine_pool.zip` | `..._direct_phenothiazine_pool_final.zip` |
 | `overleaf_upload_2026-11-03_editorial_pass.zip` | `..._editorial_final.zip` |
 
-## Proposed but NOT moved — stale `validation/` dirs (awaiting confirmation)
+## 2026-11-16 — stale `validation/` dirs (moved to archive/0_redox/validation)
 
-Candidate dated dirs superseded by a later one and **not** referenced outside
-themselves (safe to archive on approval):
+Dated dirs superseded by a later one and not referenced outside themselves
+(only this log named them). Moved on approval:
 
 - `validation/ionic_electronic_cycles_2026-10-31` → `ionic_cycle_completion_2026-11-02`
 - `validation/manuscript_polymer_replay_2026-10-30` → `publication_native_replay_2026-10-28` / later replays
