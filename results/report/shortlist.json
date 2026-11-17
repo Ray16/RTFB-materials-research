@@ -1,0 +1,46 @@
+{
+  "status": "evidence_based_followup_priorities_not_validated_material_ranking",
+  "current_primary_front_members": 0,
+  "candidates": [
+    {
+      "id": "viologen",
+      "role": "Two-electron negative-side lead",
+      "checked_result_summary": "\u22120.608 / \u22121.208 V",
+      "reason": "Two checked electron-accepting steps and favorable local attachment energy (\u221211.49 kJ/mol).",
+      "missing_evidence": "Finish exact-model transfer-speed checks and occupied-polymer sampling; measure accessible charge and lifetime."
+    },
+    {
+      "id": "phenothiazine",
+      "role": "Positive-side lead",
+      "checked_result_summary": "+0.626 V",
+      "reason": "A checked electron-removal step and reviewed attachment precedent. It serves a different electrode role from viologen.",
+      "missing_evidence": "Establish accessible capacity, transfer behavior and durability for the exact graft; a voltage alone is not a full property assessment."
+    },
+    {
+      "id": "tempo",
+      "role": "Comparison candidate",
+      "checked_result_summary": "Route supported",
+      "reason": "Reviewed attachment evidence makes this a useful comparison case; its current electron-transfer assessment remains incomplete.",
+      "missing_evidence": "Resolve the unequal forward/reverse rearrangement costs before using one symmetric transfer parameter."
+    }
+  ],
+  "conditional_property_lead": {
+    "id": "d3_05stji",
+    "name": "2-(benzylamino)-1,4-naphthoquinone",
+    "status": "historical_only_route_and_QC_review_required",
+    "historical_LiPF6_capacity_mAh_g": 176.8,
+    "historical_mean_reduction_V": -1.413
+  },
+  "capacity_design_case": {
+    "id": "design_pmdi_ethyl",
+    "full_five_site_2e_bound_mAh_g": 148.58,
+    "mass_scope": "dry neutral H-capped fragment; residual chloride retained; extra inactive mass excluded"
+  },
+  "sources": [
+    "results/candidates/pool/2026-11-03_qualified_phenothiazine_context/registry.json",
+    "scripts/report/data/historical_scorecard.csv",
+    "scripts/report/data/historical_pareto.csv",
+    "results/scorecard.csv",
+    "results/pareto_shortlist.csv"
+  ]
+}

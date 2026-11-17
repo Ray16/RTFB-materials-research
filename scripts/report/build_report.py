@@ -14,6 +14,7 @@ import re
 import subprocess
 import tempfile
 import xml.etree.ElementTree as ET
+from enrich import visuals, INPUTS
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).resolve().parent
@@ -31,7 +32,7 @@ SOURCES = [
 ]
 FIGURES = {
  'benchmark': ('Calculated and measured voltages', 'Historical 39-potential comparison: MAE 0.25 V. The 35-point tier-A subset summarized above has MAE 0.22 V; these are different benchmark scopes.'),
- 'pmdi_capacity': ('How attachment and loading change stored charge per gram', 'PMDI accounting scenarios, not measured polymer performance. Read each curve with its stated electron count and counterion mass convention.'),
+ 'pmdi_capacity': ('How attachment and loading change stored charge per gram', 'PMDI accounting scenarios, not measured polymer performance. Dry neutral H-capped fragments, with residual chloride retained; no added electrolyte or crosslinker mass. One or two electrons per graft are assumed.'),
  'grafting': ('Attachment depends on the reaction conditions', 'Calculated attachment free energies under DBU, DIPEA and HCl reference conventions. Contact-pair and separated-ion treatments are distinct scenarios; neither determines yield.'),
  'viologen_interaction_definitions_final': ('Two definitions of neighboring-site effects', 'Four retained configurations. Frozen capped-pair energies and whole-chain occupancy cycles answer different questions; neither is an electronic-coupling measurement.'),
  'conditional_grafting': ('Does an occupied neighbor change attachment?', 'Electronic and free-energy changes are labeled separately. These finite configurations do not establish an average over a real polymer.'),
@@ -63,6 +64,8 @@ def figure(name):
 def build():
  OUT.mkdir(parents=True, exist_ok=True)
  template = (HERE / 'report.html').read_text()
+ for key, value in visuals().items():
+  template = template.replace('{{'+key+'}}', value)
  names = re.findall(r'\{\{figure:([\w_]+)\}\}', template)
  for name in names:
   template = template.replace('{{figure:' + name + '}}', figure(name))
@@ -72,7 +75,7 @@ def build():
  if '{{' in template: raise ValueError('Unresolved placeholder')
  output = OUT / 'project_highlights.html'
  output.write_text(template)
- paths = [HERE / 'build_report.py', HERE / 'report.html'] + [ROOT / p for _,p in SOURCES] + [FIGDIR / (n+'.pdf') for n in names]
+ paths = INPUTS + [HERE / 'build_report.py', HERE / 'report.html'] + [ROOT / p for _,p in SOURCES] + [FIGDIR / (n+'.pdf') for n in names]
  manifest = {'built_utc': stamp, 'evidence_scope': 'Pinned local sources; historical benchmark summaries and checked finite-model results, not new physical validation.', 'figure_snapshot': str(FIGDIR.relative_to(ROOT)), 'git_head': subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(), 'generator_sha256':digest(HERE/'build_report.py'), 'inputs': {str(p.relative_to(ROOT)): digest(p) for p in paths}, 'output_sha256':digest(output), 'figures': names}
  (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
  print(f'Wrote {output} ({output.stat().st_size/1024:.0f} KiB), {len(names)} vector figures')

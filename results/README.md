@@ -2,7 +2,7 @@
 
 ## Project highlights
 
-- [Visual project report](report/project_highlights.html): a plain-language walk through exact molecular results, benchmark limits, capacity, attachment and four finite neighbor-effect cycles. Eight embedded vector figures; no new quantum calculations or material qualification.
+- [Visual project report](report/project_highlights.html): a plain-language walk through exact molecular results, benchmark limits, capacity, attachment and four finite neighbor-effect cycles. Eight embedded vector figures, three exact molecular drawings, a scenario-switchable historical Pareto view and a PMDI composition explorer; no new quantum calculations or material qualification. [Follow-up shortlist](report/shortlist.json) keeps route-supported priorities separate from the historical property lead.
 - [Pinned report inputs](report/manifest.json) and [browser checks](report/checks.json). Raw evidence remains at the source locations listed in the manifest and existing entries below. Rebuild with `python scripts/report/build_report.py`.
 
 
