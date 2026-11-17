@@ -1,0 +1,4156 @@
+[
+  {
+    "path": "src/redox/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "purpose": null,
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/__main__.py",
+    "sha256": "ddf0f939b506d1209d50f506e5ba7cfbd3fa1a655e788fa421fef39e739b898a",
+    "purpose": "Module entry point, identical to the installed redox command.",
+    "definitions": [],
+    "imports": [
+      "redox.cli"
+    ]
+  },
+  {
+    "path": "src/redox/build/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "purpose": null,
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/build/attachment_identity.py",
+    "sha256": "f01dcd9a5f2ce1f5296b58cf8f54b81be76c8d80caff6b6ff643b2213a61e81c",
+    "purpose": "Exact precursor/product and heavy-atom attachment mapping for local grafts.",
+    "definitions": [
+      "canonical",
+      "exact_attachment"
+    ],
+    "imports": [
+      "rdkit",
+      "redox.build.contracts",
+      "redox.build.grafting",
+      "redox.workflows.chunked"
+    ]
+  },
+  {
+    "path": "src/redox/build/candidates.py",
+    "sha256": "03730cf006c7f454171b3c2632ba7b85c081e29662b32d965fd61941b2a861a8",
+    "purpose": "Build the starting-candidate set (config/starting_candidates.py) into the SAME library +\nmanifest as the decorated monomers, so they run the identical UMA -> DFT+SMD -> redox pipeline.\n\nMirrors build_validation.py's MERGE behaviour: existing manifest rows for ids we are NOT\n(re)building are preserved; freshly built candidate rows are appended. This never clobbers\nthe validation/ferrocene rows the way the from-scratch build.py would.\n\nReuses the grafting (decorate) + conformer ensemble from build.py, so candidates are built\nbyte-for-byte the same way as redox_groups.py monomers.\n\n  python -m redox.build.candidates              # build all starting candidates\n  python -m redox.build.candidates --only pmdi  # one candidate\n  python -m redox.build.candidates --config config/merrifield_multielectron.py",
+    "definitions": [
+      "_load_config",
+      "read_manifest_rows",
+      "build_group",
+      "main",
+      "_build_selected"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.build.contracts",
+      "redox.build.manifest",
+      "redox.build.structures"
+    ]
+  },
+  {
+    "path": "src/redox/build/contracts.py",
+    "sha256": "9c72af4c9fe87f153b7feef8b6ce33b37524830405f720c80db286f0785b811f",
+    "purpose": "Validate motif definitions before creating any files or scheduling calculations.",
+    "definitions": [
+      "state_declaration",
+      "validate_group"
+    ],
+    "imports": [
+      "rdkit",
+      "redox.build.structures"
+    ]
+  },
+  {
+    "path": "src/redox/build/geometry.py",
+    "sha256": "7039b27875150a7e113a915e5fad54d194296f5f303033b68c3991ee6faa9336",
+    "purpose": "Map declared molecular graphs to stored XYZ atom order and verify stereochemistry.\n\nHeavy cheminformatics dependencies are imported only when a check is requested.",
+    "definitions": [
+      "_skeleton",
+      "smiles_to_xyz_map",
+      "geometry_stereo_status",
+      "redox_core_xyz_indices"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "rdkit",
+      "rdkit.Chem",
+      "rdkit",
+      "rdkit.Chem",
+      "rdkit"
+    ]
+  },
+  {
+    "path": "src/redox/build/grafting.py",
+    "sha256": "d50990966f25d0d01481b3d85476fff133e0892fb91b816393a47e1a5bfe02cc",
+    "purpose": "Balanced local Merrifield grafting reactions; no assumed base or kinetics.",
+    "definitions": [
+      "atom_inventory",
+      "precursor",
+      "grafting_reaction"
+    ],
+    "imports": [
+      "collections",
+      "rdkit",
+      "redox.build.structures"
+    ]
+  },
+  {
+    "path": "src/redox/build/ionic_polymer.py",
+    "sha256": "8331f9f142b67a2496cd57f46c0c3cae88000b46ab9da88b8c93af24ce55ef3f",
+    "purpose": "Explicit ionic occupancy graphs and dry-salt composition ceilings.\n\nGraph construction, state hypotheses and a mass convention do not qualify QM,\nexperimental graft loading, ion speciation or a material selection.",
+    "definitions": [
+      "ionic_definition",
+      "capacity_bound",
+      "charged_panel"
+    ],
+    "imports": [
+      "rdkit",
+      "rdkit.Chem",
+      "redox.build.grafting",
+      "redox.build.polymer_cases",
+      "redox.properties.polymer_capacity"
+    ]
+  },
+  {
+    "path": "src/redox/build/manifest.py",
+    "sha256": "b17c1d416de7729bceab061c6086651b0e2e0c6f1c4649af1b117a8f05af99db",
+    "purpose": "One writer contract for candidate, standalone and validation libraries.",
+    "definitions": [
+      "locked_manifest",
+      "read_rows",
+      "write_rows"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/build/oligomer_topology.py",
+    "sha256": "fc173a6e63ee638f1a7ff2cfdd05c491f39683e46be56870fb844eab8ea8b7e9",
+    "purpose": "Independently verify an open, H-capped styrene backbone and para graft sites.",
+    "definitions": [
+      "chain_topology"
+    ],
+    "imports": [
+      "rdkit"
+    ]
+  },
+  {
+    "path": "src/redox/build/oligomers.py",
+    "sha256": "82a52863f7cc9081e7d1b76b1e49babc571cf85c102d8325ecbd15b4e390b307",
+    "purpose": "H-capped polystyrene fragments with explicit site occupancy and stereochemistry.",
+    "definitions": [
+      "oligomer_scaffold",
+      "decorate_sites"
+    ],
+    "imports": [
+      "rdkit",
+      "rdkit.Chem.EnumerateStereoisomers",
+      "redox.build.structures"
+    ]
+  },
+  {
+    "path": "src/redox/build/polymer_cases.py",
+    "sha256": "9ab513c107eb22bd2630595af09f1ba4dc154094396e5dcf5f1d61c06545a2d8",
+    "purpose": "Configurable, site-labelled H-capped polymer scenarios and matched controls.\n\nUse a common tagged backbone before decorating it. CIP R/S labels may change\nwhen substituents change; mapped-neighbor tetrahedral parity must not change.\nNo occupancy probability, physical loading or whole-network claim is implied.",
+    "definitions": [
+      "resolve_motif",
+      "_path",
+      "stereo_fingerprint",
+      "build_case",
+      "matched_graphs",
+      "panel"
+    ],
+    "imports": [
+      "collections",
+      "rdkit",
+      "redox.build.grafting"
+    ]
+  },
+  {
+    "path": "src/redox/build/polymer_contacts.py",
+    "sha256": "8131812ddd9326f6c2e061473dcae702aad096e41d8684aeb86689f976bf0f05",
+    "purpose": "Geometry-only descriptions and starting ensembles for pendant pi-core contacts.\n\nThese metrics classify geometry; they do not establish an interaction free energy,\nan aggregate population, or loss of electrochemical accessibility.",
+    "definitions": [
+      "enantiomer_representatives",
+      "pi_core_groups",
+      "plane",
+      "contact_metrics",
+      "_constraint_bounds",
+      "starting_ensemble"
+    ],
+    "imports": [
+      "__future__",
+      "rdkit",
+      "rdkit.Chem"
+    ]
+  },
+  {
+    "path": "src/redox/build/standalone.py",
+    "sha256": "ba2396a8e525b49980b665ae917652ce0e8234fb7ad6e3067617438bfb63ac09",
+    "purpose": "Build the standalone (un-tethered) candidate forms (config/standalone.py) into the shared\nlibrary + manifest, so they run the identical UMA -> DFT+SMD -> reorg pipeline. Direct SMILES\n(no scaffold decoration). MERGE-safe like build_validation.py.\n\n  python -m redox.build.standalone\n  python -m redox.build.standalone --only aq_benzyloxy_sa,nq_benzyloxy_sa",
+    "definitions": [
+      "_load",
+      "_rows",
+      "build_one",
+      "main",
+      "_build_selected"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "rdkit",
+      "redox.build.manifest",
+      "redox.build.structures"
+    ]
+  },
+  {
+    "path": "src/redox/build/structures.py",
+    "sha256": "d8519c738236a2706b248adc3a941f49471d9f595093a777279c922b92c3cf62",
+    "purpose": "Decorate the Merrifield-monomer benzylic site with redox groups and build 3D structures.\n\nReads the scaffold + groups from config/redox_groups.py, zips each group onto the\nscaffold, enumerates redox states (charge/spin), embeds a 3D conformer, and writes:\n\n  library/<group_id>/<group_id>.smiles     canonical decorated SMILES (state-independent)\n  library/<group_id>/<state>.xyz           3D geometry (same geom seed per state)\n  library/manifest.csv                     id, name, family, state, charge, mult, n_e, smiles\n\nRun:  python -m redox.build.structures          (from src/, with the `redox` env active)",
+    "definitions": [
+      "_load_config",
+      "decorate",
+      "unassigned_stereo",
+      "n_conformers",
+      "radius_of_gyration",
+      "conformer_ensemble",
+      "to_xyz",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "rdkit",
+      "rdkit.Chem",
+      "rdkit.Chem",
+      "rdkit.Chem"
+    ]
+  },
+  {
+    "path": "src/redox/build/validation.py",
+    "sha256": "ce24b7be7e8bdb56dacd55ceaf50e8cf900f3286b8a6cd5ef039e532aae5c329",
+    "purpose": "Build the \u00a7V validation set (parent redox cores) into the SAME library + manifest as the\ndecorated monomers, so they run through the identical UMA -> DFT+SMD -> redox pipeline.\n\nMost cores embed with RDKit like the monomers. Ferrocene is a metallocene: RDKit cannot\nembed the sandwich, so we synthesize an eclipsed-D5h starting geometry analytically and let\nUMA (charge/spin-aware) + DFT+SMD relax it. Ferrocene is also the internal reference \u2014 its\ncomputed Fc/Fc+ absolute potential (redox.py) becomes electrolyte.FC_ABS_COMPUTED_V, and is\nitself a validation check (should land near the OROP MeCN B3LYP value ~4.63 V).\n\n  python -m redox.build.validation                    # build all validation cores\n  python -m redox.build.validation --only ferrocene\n  python -m redox.build.validation --set benchmark    # sourced MeCN E1/E2 benchmark set",
+    "definitions": [
+      "_load_validation",
+      "ferrocene_xyz",
+      "build_core",
+      "_conf_to_xyz",
+      "read_manifest_rows",
+      "main",
+      "_build_selected"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "rdkit",
+      "redox.build.manifest",
+      "redox.build.structures"
+    ]
+  },
+  {
+    "path": "src/redox/cli.py",
+    "sha256": "1a7ec4199014d46cbf1ec0d0443483a9f1f3b89a9b8514427299bb43ff6ba19b",
+    "purpose": "Discoverable entry points for researchers and agents: ``python -m redox --help``.",
+    "definitions": [
+      "main"
+    ],
+    "imports": [
+      "__future__"
+    ]
+  },
+  {
+    "path": "src/redox/core/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "purpose": null,
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/core/common.py",
+    "sha256": "114b007babc3d02af93a1231b54de91b02df3808896a28f27763f7448a71fe9a",
+    "purpose": "Shared helpers used across the pipeline modules.\n\nSmall, dependency-light utilities that several modules had each re-implemented: the repo\npath constants, physical constants, the config-file loader, manifest/result readers, an\nXYZ writer, and a tolerant float coercion. Import these instead of copy-pasting them so the\npaths and conventions stay in one place.\n\nKept intentionally free of heavy imports (no rdkit/ase/pyscf at module load) so importing\n`redox.core.common` is cheap and cannot introduce import cycles.",
+    "definitions": [
+      "load_python_config",
+      "load_config",
+      "read_manifest",
+      "read_result",
+      "apply_thermal_policy",
+      "_apply_single_surface_thermal_policy",
+      "free_energy",
+      "group_ids",
+      "state_names",
+      "write_xyz",
+      "to_float"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "types",
+      "redox.build.geometry",
+      "redox.core.protocol",
+      "redox.validation.spin_ensemble",
+      "redox.qm.native_thermal",
+      "redox.qm.dft"
+    ]
+  },
+  {
+    "path": "src/redox/core/hashing.py",
+    "sha256": "598e0f79a60864556eea59fbc41175f749e2b258ed3644d5db00ca26c16769bf",
+    "purpose": "Bounded-memory file hashing for large calculation inventories.",
+    "definitions": [
+      "sha256_file"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/core/io.py",
+    "sha256": "4069a181d62207b31f186725b7cb277ccabf4cd2101e808060ed6f4ee354ed6a",
+    "purpose": "Atomic replacement for records read by resumable workers and watchers.\n\nStage in the destination directory so replacement stays on the same filesystem.\nCallers that merge shared state must also hold their domain's writer lock.",
+    "definitions": [
+      "atomic_text_writer",
+      "atomic_write_json"
+    ],
+    "imports": [
+      "__future__",
+      "contextlib",
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/core/metadata.py",
+    "sha256": "ba8ab8211a3719ed81d203206a4f32b5c0cf9ee931e03068853f7315b6b6f637",
+    "purpose": "CPU-only validation of diagnostic metadata before expensive qualifiers start.",
+    "definitions": [
+      "plain_metadata",
+      "validate_metadata",
+      "planned_allocation_metadata_check"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/core/protocol.py",
+    "sha256": "e1f10ed6a8a38d6dd024cb778aa97d37ebc5dd1712f36e69419ae898e30d10bf",
+    "purpose": "Protocol-addressed energy records \u2014 the data contract between compute and analysis.\n\nWHY: a state's `result.json` is written once by the geometry optimization and then skipped\nforever (\"exists -> done\"), whatever method, basis, solvent or geometry produced it. Two\nfailures followed from that:\n  * redox ladders mixed basis sets \u2014 neutral/cation states at def2-TZVP, anions at\n    def2-TZVPD \u2014 so the extra diffuse freedom sat on ONE side of every reduction and every\n    disproportionation, with no basis-set cancellation;\n  * a changed protocol could never be detected, so campaigns could silently mix.\n\nThe fix separates GEOMETRY (result.json + opt.xyz, from the optimizer) from ENERGY (single\npoints at a declared protocol). Every energy record lives at\n\n    calcs/dft/<id>/<state>/sp/<protocol_hash>.json\n\nwhere the hash covers exactly what determines the number: the coordinates (content hash of\nopt.xyz), charge, multiplicity, functional, basis, dispersion/NLC, solvent + solvent model,\ndensity fitting, and SCF convergence settings. Records are never overwritten; a different\nprotocol or geometry simply addresses a different file. Readers ask for the ACTIVE protocol\nand get None if its record is missing or unconverged \u2014 they must report INCOMPLETE, never\nfall back to an energy computed some other way.\n\nSoftware versions (pyscf / gpu4pyscf) are stored in each record as metadata but are NOT in\nthe hash: a version bump should be audited (`python -m redox.qm.sp --audit`), not silently\ninvalidate every energy.\n\nACTIVE_SP uses ONE diffuse basis (def2-TZVPD) for EVERY charge state, including the Fc/Fc+\nreference, so every redox ladder (and every candidate vs Fc) has a uniform basis.",
+    "definitions": [
+      "geom_sha1",
+      "protocol_hash",
+      "record_path",
+      "record_provenance_ok",
+      "load_record",
+      "software_versions"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/core/runtime_paths.py",
+    "sha256": "d73f10101b9065841bf61e68f3ec17c8a7e0e7fe240cf13705335715ce5ae16b",
+    "purpose": "Discover the authoritative reservation tool without a checkout-specific path.",
+    "definitions": [
+      "site_defaults",
+      "reservation_gate",
+      "reservation_lock_root",
+      "gpu4pyscf_source_root"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/current.py",
+    "sha256": "29fa637802fdb24b15dde578f249babcb46f4da5a758a8053ea61c06247d09b6",
+    "purpose": "Compatibility entry point for installations made before the clean refactor.",
+    "definitions": [],
+    "imports": [
+      "redox.cli"
+    ]
+  },
+  {
+    "path": "src/redox/properties/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "purpose": null,
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/properties/capacity_and_proxies.py",
+    "sha256": "456f7533edf751fca9294690459862fb81334a19e960f84ab103a49efdb49d28",
+    "purpose": "The 'free' scorecard axes \u2014 computed with no new DFT, to complete the candidate picture.\n\n  - NOMINAL CAPACITY: n declared adjacent-charge 1e- events and molecular weight.\n      C_spec = n * F / (3.6 * MW) [mAh/g] (F = N_A*e; 1 mAh = 3.6 C).\n    Exact arithmetic; potential-window, integrity, kinetics and device utilization\n    are assessed separately. Counterions are excluded from this active-species mass.\n  - SYNTHETIC ACCESSIBILITY: RDKit SA_Score (1 = easy ... 10 = hard). A cheap heuristic PROXY\n    for synthesizability/cost, not a cost model. The deterministic input checks ensure\n    the heuristic is applied to the intended graph: `_sa_prep` sanitizes, rejects dummy-atom fragments, and neutralizes where\n    chemically valid; inherently-charged aziniums (no neutral form) are scored as-is and flagged\n    in the `sa_species` column.\n  - SOLVATION DESCRIPTOR: legacy dG_solv field = E_SMD - E_gas of a charge-zero\n    state, with both electronic energies at the solution geometry. It has no phase\n    thermal, lattice, counterion, concentration or polymer contribution. A charge-zero\n    cycled viologen is not its resting dication salt. Gas-boundness, spin selection and\n    geometry evidence require field-specific QC; no actual solubility is validated.\n\nEach axis is labelled by trust level so the Pareto scorecard treats it correctly\n(capacity = trusted objective; SA + solubility = proxy filters).\n\n  PYTHONPATH=src python -m redox.properties.capacity_and_proxies",
+    "definitions": [
+      "_tolyl_proxy",
+      "_sascorer",
+      "_sa_prep",
+      "_manifest_smiles",
+      "_states",
+      "_n_events",
+      "_dG_solv_neutral",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common",
+      "scipy.constants",
+      "rdkit",
+      "rdkit.Chem",
+      "rdkit",
+      "rdkit.Chem.MolStandardize",
+      "redox.core.common",
+      "rdkit",
+      "rdkit.Chem"
+    ]
+  },
+  {
+    "path": "src/redox/properties/conformer_ensemble.py",
+    "sha256": "7f5d1b5e7a0a0ef4e1ccf99726e2e27eb00376666cd7a9a07deccfa284851768",
+    "purpose": "Finite conformer partitions, after independent state and identity checks.\n\nThese functions do not certify input quantum states. The caller must supply\nchecked free energies of one chemical species, backbone configuration and\nprotocol. Search hit counts are never statistical degeneracies. Each unique\nminimum contributes once; electronic spin and rotational symmetry are already\nincluded in each state's nuclear/electronic partition.",
+    "definitions": [
+      "finite_number",
+      "partition",
+      "cluster_minima",
+      "summarize",
+      "batch_change",
+      "neighbor_cycle"
+    ],
+    "imports": [
+      "__future__"
+    ]
+  },
+  {
+    "path": "src/redox/properties/conformer_geometry.py",
+    "sha256": "e242810e41afbfda6c74da1beae06b74941daf9b6bf82641be92260d8ec01bd7",
+    "purpose": "Chirality-preserving heavy-atom comparisons of declared XYZ structures.",
+    "definitions": [
+      "alignment_molecule",
+      "symmetry_rmsd_matrix"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.build.geometry",
+      "redox.validation.protonation"
+    ]
+  },
+  {
+    "path": "src/redox/properties/contact_identity.py",
+    "sha256": "d2674e7c7741456463590310e223c97ea47855ed543d072062f01c43722f9abb",
+    "purpose": "Stable publication identities for declared chloride starts and repair branches.",
+    "definitions": [
+      "publication_identity",
+      "validate_identities"
+    ],
+    "imports": []
+  },
+  {
+    "path": "src/redox/properties/context.py",
+    "sha256": "53e7d839bc0deb34c813b5c0265ae421ea148fde64941542392f3b9d702b0e3a",
+    "purpose": "Matched arithmetic with explicit physical context and retained provenance.\n\nThis checks the declarations supplied by a reader. It does not replace that\nreader's verification of raw energies, Hessians, convergence or source hashes.",
+    "definitions": [
+      "combine_properties"
+    ],
+    "imports": [
+      "copy"
+    ]
+  },
+  {
+    "path": "src/redox/properties/counterion.py",
+    "sha256": "6210d1f17d2115aee95baf7e6e90cb704a712f7c81b4f5c2b5ccfcb2728225c9",
+    "purpose": "Matched incoming-chloride association of an exact oxidized graft.\n\nInputs must already have independent physical QC. This module checks declared\nchemical/thermodynamic compatibility and stoichiometry, not quantum convergence.",
+    "definitions": [
+      "association_cycle"
+    ],
+    "imports": [
+      "copy",
+      "rdkit",
+      "redox.core.common",
+      "redox.properties.context",
+      "redox.workflows.ionic_stationary_cycles"
+    ]
+  },
+  {
+    "path": "src/redox/properties/grafting.py",
+    "sha256": "5de7a65230e65f682c9c781623caf26436fbfa68fc560fc614f374aa7b51ab5b",
+    "purpose": "Defined separated-ion quaternization cycles, distinct from HCl/base routes.",
+    "definitions": [
+      "quaternization_delta_g"
+    ],
+    "imports": [
+      "collections",
+      "rdkit",
+      "redox.core.common",
+      "redox.properties.context"
+    ]
+  },
+  {
+    "path": "src/redox/properties/integrity.py",
+    "sha256": "c1cfe01624ae03d20c8fa98406f3b25686e5ce28d302a448dfbaa488ab9e493f",
+    "purpose": "Charged-state INTEGRITY screen for redox couples (a necessary-condition gate).\n\nWhat this checks, per couple O + e- -> R (O = higher charge):\n  - bound : for anion products (q_red < 0) the SOLVATED electron attachment\n            E_smd(O) - E_smd(R) > 0 (gas EA falsely flags dianions, bound only in solution);\n  - intact: no covalent bond broken/formed between the O and R optimized geometries\n            (distance-threshold bond graph; robust to torsional flexibility). Kabsch\n            heavy-atom RMSD is a diagnostic only.\n  Verdict: intact_bound | unbound | bond_change | incomplete (missing active-protocol energy).\n\nWhat this does NOT establish: electrochemical REVERSIBILITY. Passing is necessary, not\nsufficient \u2014 it misses follow-up chemistry with unchanged connectivity or with a second\nmolecule: proton transfer, radical addition, nucleophilic attack, dimerization, low-barrier\nrearrangement. \"Reversible\" is reserved for experimental evidence or validated kinetic /\ndecomposition models. Use this as a hard pre-filter (a state that dissociates or cannot bind\nthe electron has no thermodynamic E\u00b0 at all \u2014 e.g. CCl4 dissociative attachment, FINDINGS #7),\nnever as a stability verdict.\n\n  PYTHONPATH=src python -m redox.properties.integrity      # -> results/state_integrity.csv",
+    "definitions": [
+      "kabsch_rmsd_heavy",
+      "_bond_set",
+      "connectivity_change",
+      "_couples",
+      "ensemble_integrity",
+      "assess",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.common",
+      "ase.io",
+      "ase.data",
+      "ase.io",
+      "redox.validation.spin_ensemble"
+    ]
+  },
+  {
+    "path": "src/redox/properties/lambda_outer.py",
+    "sha256": "521a0c58d4b8dd10cbba4e0d96573224c28e60152bf5bf3b8ca8ad52510d5e00",
+    "purpose": "Outer-sphere (solvent) reorganization energy lambda_out \u2014 two continuum methods, reusable\nfor any molecule and any solvent (MeCN defaults from config/electrolyte.py).\n\nBoth are LINEAR-RESPONSE CONTINUUM methods and give the 1-body (electrochemical / half-reaction)\nvalue. For homogeneous self-exchange use n_body=2 (== 2x at infinite separation; a contact cavity\nwould reduce this \u2014 see outer_sphere_validation.md). They are VERTICAL and use the fast/slow\n(Pekar) partition, so they are strictly orthogonal to our GAS-phase 4-point lambda_in (no\ndouble-counting). Optical dielectric = n**2 is used explicitly.\n\nMethods\n-------\n1. born_lambda_outer : single-sphere Born/Marcus,\n       lambda_o = z^2 e^2 / (8 pi eps0 a) * (1/eps_op - 1/eps_s)\n   `a` = effective (SASA) radius. Cheap, shape-blind. (Same as solvated_reorg.lambda_outer_eV.)\n\n2. pcm_lambda_outer  : MOLECULAR-CAVITY nonequilibrium continuum. Uses the REAL cavity + REAL\n   charge-transfer potential. From the PCM apparent-charge operators q(eps)=K(eps)^-1 R(eps) v,\n   the slow-polarization (Pekar) reorganization for the charge-transfer surface potential\n   dV = V(ox) - V(red) on the cavity is\n       lambda_o = 1/2 * dV . [ q_s(dV) - q_op(dV) ]\n   with q_s built at eps_s and q_op at eps_op. Reduces to Born for a spherical cavity (the\n   limiting-case test `sphere_sanity_check`: unit point charge in a single-atom cavity,\n   reproduces analytic Born to <1e-5 relative). This is the method that tests whether the\n   Born SPHERE is adequate for non-spherical ions.\n\nNeither closes the continuum-vs-explicit gap (see outer_sphere_validation.md); they are the two\nCONTINUUM points. Validate against explicit/experiment separately.",
+    "definitions": [
+      "solvent_constants",
+      "born_lambda_outer",
+      "born_two_sphere",
+      "sasa_radius_A",
+      "_pcm_operators",
+      "_surface_potential",
+      "_q_sym",
+      "_pekar_lambda_ha",
+      "pcm_lambda_outer",
+      "sphere_sanity_check"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common",
+      "redox.properties.solvated_reorg",
+      "pyscf.solvent",
+      "pyscf"
+    ]
+  },
+  {
+    "path": "src/redox/properties/nelsen.py",
+    "sha256": "e8c2bdce4e5fd847e01198e6c302ad3292bd8e807d1b3c693e132026b860dde1",
+    "purpose": "Shared Nelsen 4-point inner-sphere reorganization-energy helpers (fresh-geometry variant).\n\nThe production D3TaLES worker imports the embedding helper; fresh-gas diagnostics can\nembed a molecule, gas-optimize a charge state, and assemble the 4-point lambda_i from single\npoints at the two optimized geometries. Solver convergence is shared with the gas-reference\nworkers through qm.gas_reference; this module retains the established Atoms/eV interface.\n\n    lambda_i = [E_O(q_R) - E_O(q_O)] + [E_R(q_O) - E_R(q_R)]      (all in eV)\n\nEnergies are returned in eV. Density fitting (RI-J) is ON by default (~5x faster; the DF error\ncancels in these same-molecule energy differences). Note: reorg.py has its OWN 4-point over the\nproduction pipeline's cached SMD-optimized energies \u2014 this module is for on-the-fly gas-phase\nrecomputation (matched-protocol validation / diagnostics), not the production path.",
+    "definitions": [
+      "embed",
+      "_dft",
+      "mol",
+      "mean_field",
+      "atoms_of",
+      "energy",
+      "gas_opt",
+      "four_point_lambda"
+    ],
+    "imports": [
+      "__future__",
+      "ase",
+      "rdkit",
+      "rdkit.Chem",
+      "pyscf",
+      "pyscf",
+      "redox.qm.gas_reference",
+      "redox.qm.gas_reference",
+      "gpu4pyscf"
+    ]
+  },
+  {
+    "path": "src/redox/properties/polymer_capacity.py",
+    "sha256": "c8dca4cb211925c482b3d45d86836871d85a55ac2d38ef8738b931cc1a7fcb7a",
+    "purpose": "Composition-defined capacity bounds for neutral Merrifield substitution.\n\nThe bound assumes a declared electron budget per graft and full utilization.\nIt cannot establish an accessible capacity, reaction yield or loading distribution.\nThe mass convention is an H-capped linear fragment; optional added inactive mass\nmust be explicit. Charged attachment routes require their own counterion model.",
+    "definitions": [
+      "integer",
+      "substitution_masses",
+      "fragment_capacity_bound",
+      "target_exceeds_upper_bound"
+    ],
+    "imports": [
+      "rdkit",
+      "rdkit.Chem",
+      "redox.build.grafting"
+    ]
+  },
+  {
+    "path": "src/redox/properties/potentials.py",
+    "sha256": "5070f2ea2c64816775e343e180d63f7dfd008bac4acc05840c0207cb6e15c5a2",
+    "purpose": "Compute redox potentials from DFT+SMD energies (and UMA gas-phase, for comparison).\n\nFor each 1-electron event O + e- -> R (O = higher charge, R = one less):\n    dG        = G(R) - G(O)                       [eV]   (electron free energy in ref)\n    E_abs     = -dG / n                            [V]    (absolute, vs free electron)\n    E_vs_Fc   = E_abs - live_G(Fc+)+live_G(Fc)    [V]    (referenced to Fc/Fc+)\n\nG = E_smd + G_thermal using one explicitly matched thermal definition for the molecule\nand both Fc states. Legacy gas-GFN2 corrections retain their QC; the independently checked\nnative solution DFT route is being adopted with geometry-addressed records. A state missing\neither term makes the couple INCOMPLETE \u2014 no electronic-only fallback. E_smd is\nthe ACTIVE-protocol energy (uniform def2-TZVPD) via common.read_result. Absolute potentials remain\nPROVISIONAL until the validation gate (\u00a7V) is passed; compared to measurement before any\nranking is trusted.\n\n  python -m redox.properties.potentials            # writes results/redox_potentials.csv\n                                   #      + results/multielectron_stability.csv",
+    "definitions": [
+      "_cfg",
+      "uma_gas_diagnostic",
+      "thermal_definition",
+      "fc_live",
+      "_fc_reference",
+      "_multielectron_summary",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/properties/reference_redox.py",
+    "sha256": "f80485f27aca7aeb80d9b55dcf217cef5160c7906e2d34c5c267a79b7ce13b69",
+    "purpose": "Balanced neutral/singly oxidized molecular potentials against Fc/Fc+.\n\nPhysical QC and source verification belong to the input reader. Different\nqualified numerical differentiation steps are retained, not converted into\ndifferent physical solvent models or silently discarded.",
+    "definitions": [
+      "neutral_oxidation_vs_fc"
+    ],
+    "imports": [
+      "collections",
+      "copy",
+      "redox.properties.context"
+    ]
+  },
+  {
+    "path": "src/redox/properties/reorg.py",
+    "sha256": "39ecb4b1f3a3feec1b1b6b151854bea30f9580dae2a93fbfd7db29ebc58d5195",
+    "purpose": "Inner-sphere reorganization energy lambda_i (Nelsen 4-point) for each redox couple.\n\nFor a couple O + e- -> R (O = higher charge, R = one less), on the two adiabatic surfaces:\n\n    lambda_i = [E_O(q_R) - E_O(q_O)] + [E_R(q_O) - E_R(q_R)]\n\nwhere E_X(q_Y) is the energy of species X (its own charge+spin) evaluated at the OPTIMIZED\ngeometry of species Y. Two of the four points are already stored (each state's own energy);\nthe two CROSS points E_O(q_R) and E_R(q_O) are extra single points at the other geometry.\n\nAll four points must use the same molecule, atom ordering and active electronic protocol.\nThese SMD geometries are not gas-surface minima, so nonnegative gas distortion energies\nare a QC requirement, not a mathematical guarantee. A negative value can indicate a\ngeometry/surface mismatch, wrong charge/spin, atom-order mismatch or unresolved SCF state.\n\nConvention: GAS-PHASE diagnostic at the stored active protocol (wb97m-v/def2-TZVPD),\nevaluated on SMD-optimized geometries. The reported value is the sum of two directional\npenalties, not their mean. A validated frozen-slow solution total is a separate quantity;\ndo not add a solvent term to that total a second time.\n\nA QC-clean gas sum does not establish a solution rate, reversibility or decomposition\nstability. These require conformer, solvent, electronic-coupling and reaction-path evidence.\n\n  gpu_reserve run 0 --label redox-reorg -- env PYTHONPATH=src python -m redox.properties.reorg --only viologen --backend gpu\n  PYTHONPATH=src python -m redox.properties.reorg --aggregate",
+    "definitions": [
+      "_geom_hash",
+      "_cache_ok",
+      "_couples",
+      "_cache_path",
+      "_cross_energy_gas",
+      "stale_cross_points",
+      "_heavy_rmsd",
+      "_sym_heavy_rmsd",
+      "compute_group",
+      "lambda_for_couple",
+      "pd_ok",
+      "_canon",
+      "_our_smiles",
+      "_d3tales_reorg_map",
+      "aggregate",
+      "_write_table",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.core.protocol",
+      "redox.core.io",
+      "ase.io",
+      "rdkit",
+      "rdkit.Chem",
+      "rdkit"
+    ]
+  },
+  {
+    "path": "src/redox/properties/solution_reorg.py",
+    "sha256": "c4f325a13b77c82d09ffee6357e7221592c198ac16b49890a63acc9140fc3131",
+    "purpose": "Arithmetic and validity contract for solution relaxation descriptors.\n\nElectrostatic/composite continuum relaxation is an electronic descriptor.\nIt is not an experimentally validated rate, an isolated inner term, or a\nfinite-temperature activation free energy. Directional values remain available\neven when an equal-curvature approximation is unsupported.",
+    "definitions": [
+      "directional_relaxation",
+      "summarize_relaxations"
+    ],
+    "imports": [
+      "__future__"
+    ]
+  },
+  {
+    "path": "src/redox/properties/solvated_reorg.py",
+    "sha256": "6ed43c974ec3c6e240413ea0e3b595fdbd9cf91a6a726b52da08f67e431b95bf",
+    "purpose": "Solvated (total) reorganization energy = inner-sphere + outer-sphere.\n\n    lambda_total = lambda_i + lambda_o                              [Sharma 2021, Eq. 9]\n\n- lambda_i (inner-sphere): the geometric/vibrational term we already compute by the Nelsen\n  4-point scheme (src/redox/properties/reorg.py), GAS-phase. This is the \"gas phase\" reorganization.\n- lambda_o (outer-sphere): the solvent (Born/Marcus continuum) term the inner-sphere misses.\n  From Sharma et al., PNAS 2021 (Electrochemical implications of modulating the solvation\n  shell...), Eq. 12-13 -- the Marcus/Born expression with the Pekar factor (1/eps_op - 1/eps_r):\n\n    lambda_o = (z^2 e^2) / (8 pi eps0 a) * (1/eps_op - 1/eps_r)     [Eq. 12/13]\n\n  z  = electrons transferred (=1 for a 1e couple); e = elementary charge; eps0 = vacuum\n  permittivity; a = effective radius of the species (Sharma uses the hydrodynamic radius; we\n  use the effective radius from the molecular volume, a = (3V/4pi)^(1/3), as a computable\n  proxy -- absolute lambda_o is therefore approximate, but the trends between species and the\n  gas->solvated shift are robust). eps_op = optical permittivity (= n^2), eps_r = static\n  permittivity. Sharma's numbers are for WATER; we read MeCN from config/electrolyte.py\n  (eps_r=37.5, eps_op=1.806).\n\nThe \"solvated reorganization energy\" for the 2x2 SA-vs-lambda landscape is lambda_total; the\n\"gas phase\" value is lambda_i alone.",
+    "definitions": [
+      "lambda_outer_eV",
+      "_embed",
+      "hydrodynamic_radius_A",
+      "effective_radius_A"
+    ],
+    "imports": [
+      "__future__",
+      "rdkit",
+      "rdkit.Chem",
+      "rdkit.Chem",
+      "rdkit.Chem",
+      "rdkit.Chem"
+    ]
+  },
+  {
+    "path": "src/redox/properties/stability.py",
+    "sha256": "743b7df89936f933ce80f725badecffaa090cab31e910c21c33237395a492da2",
+    "purpose": "Disproportionation thermodynamics of redox intermediates.\n\nSelecting a good flow-battery redox molecule needs BOTH a target potential AND a durable\ncharged/radical state. This module checks one balanced thermodynamic pathway;\nother decomposition reactions, barriers and cycling conditions remain separate.\n\nReactions scored (per reactive intermediate R^q, the state that actually cycles):\n\n  (1) DISPROPORTIONATION   2 R^q -> R^(q+1) + R^(q-1)\n      dG_disp = [G(R^q+1) + G(R^q-1)] - 2 G(R^q)\n      dG_disp > 0  => disproportionation is thermodynamically uphill for R^q.\n      This is an exact arithmetic identity for the selected redox-state energies,\n      with atom and electron conservation. Same-protocol errors can partly cancel;\n      physical accuracy and cycling lifetime require separate validation. Equivalent wave\n      spacing: dG_disp = F*(E_high - E_low); K_comp = exp(+dG_disp/RT).\n\n  (2) DIMERIZATION         2 R^q -> (R2)^(2q)\n      dG_dim = G(dimer) - 2 G(R^q). Not evaluated by this module. A qualified\n      exact-molecule dimer, matched solution treatment and association standard state\n      are required. An uphill association alone does not prove cycling durability.\n\nSign convention everywhere: dG_decomp > 0 == STABLE (decomposition uphill).\nFree energy per species: G = e_smd_eV + the admitted thermal-policy correction.\nNative solution DFT thermals and historical GFN2-xTB estimates remain separate.\n\n  PYTHONPATH=src python -m redox.properties.stability            # disproportionation table",
+    "definitions": [
+      "G",
+      "_states_by_charge",
+      "disproportionation",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/qm/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "purpose": null,
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/qm/cds_finite.py",
+    "sha256": "0357b0d0af126312c035be2d15b6fb4b102bde7d31d9acd267270f2d808a3656",
+    "purpose": "Conservative finite derivatives of the unchanged SMD CDS energy function.",
+    "definitions": [
+      "energy_gradient",
+      "gradient_hessian",
+      "conservative_cds_gradient",
+      "finer_cds_hessian"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.workflows.resources",
+      "gpu4pyscf.solvent.grad",
+      "gpu4pyscf.solvent",
+      "redox.workflows.resources",
+      "gpu4pyscf.solvent.hessian",
+      "gpu4pyscf.solvent.grad"
+    ]
+  },
+  {
+    "path": "src/redox/qm/compact_smd.py",
+    "sha256": "a7c99affc59c5d83d833d3e0b2a8b6bc67fe725006f3864b3efb2eb8ffc092c7",
+    "purpose": "Reuse solvent-build temporaries without changing SMD surface or equations.",
+    "definitions": [
+      "compact_build",
+      "compact_solvent_build"
+    ],
+    "imports": [
+      "contextlib",
+      "gpu4pyscf.solvent"
+    ]
+  },
+  {
+    "path": "src/redox/qm/dft.py",
+    "sha256": "8805e9ac5ca423692f92fd2d86dd93a97017099e2606f76ff3cce4571a846422",
+    "purpose": "DFT + SMD(acetonitrile) energies (the solvation step).\n\nTakes a geometry (e.g. a UMA-relaxed xyz) plus explicit charge + spin multiplicity and\nreturns the SMD-solvated DFT energy (and the gas-phase energy for the solvation term).\nThis supplies the solution-phase energies the redox-potential calculation needs.\n\nBy default the geometry is OPTIMIZED IN SOLVENT (SMD gradients, geomeTRIC): UMA is only\na gas-phase pre-optimizer and cannot see solvation, so the final structure/energy must be\nrelaxed on the SMD potential-energy surface. Pass do_opt=False for a single-point only.\n\nLevel of theory (decided; see `redox.core.protocol.ACTIVE_SP`): geometry optimized IN SMD at\nr2SCAN-D4/def2-SVP(D); production energies at wB97M-V/def2-TZVPD (VV10 nonlocal dispersion)\nfor every charge state and Fc \u2014 a dispersion-corrected range-separated hybrid with a uniform\ndiffuse basis.\n\n  python -m redox.qm.dft --xyz calcs/uma/pyridinium/ox/relaxed.xyz --charge 1 --mult 1",
+    "definitions": [
+      "_electrolyte",
+      "_dft_module",
+      "_geomopt_fn",
+      "_basis_for",
+      "_ecp_for",
+      "_build_smd_mf",
+      "_kernel_robust",
+      "_free_gpu_pool",
+      "_lowest_scf",
+      "_metal_doublet_phase_seeds",
+      "_metal_doublet_gas_seeds",
+      "_orbital_diag",
+      "_thermal_correction",
+      "_xtb_alpb_opt",
+      "conformer_seeds",
+      "dft_smd",
+      "_mol_to_atoms",
+      "geom_for",
+      "_uma_mult",
+      "_opt_protocol_mismatch",
+      "run_batch",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.core.protocol",
+      "pyscf",
+      "pyscf.geomopt.geometric_solver",
+      "pyscf.data.elements",
+      "ase.io",
+      "pyscf",
+      "ase.io",
+      "redox.core.protocol",
+      "redox.core.protocol",
+      "ase",
+      "ase.io",
+      "gpu4pyscf",
+      "redox.qm.torsion_scan"
+    ]
+  },
+  {
+    "path": "src/redox/qm/gas_reference.py",
+    "sha256": "d1c25803d368c01e9b44a12eb22bcc89ba8e4a32063657d0d566067f6de0f910",
+    "purpose": "Strict solver admission for fresh gas-phase reference calculations.\n\nConvergence is separate from minimum, spin, binding and experimental validation.\nThese helpers do not change functionals, bases, SCF tolerances or fit any values.",
+    "definitions": [
+      "energy_Ha",
+      "optimized_molecule",
+      "homo_eV",
+      "verification",
+      "existing_result",
+      "record_guard"
+    ],
+    "imports": [
+      "contextlib",
+      "importlib",
+      "pathlib",
+      "pyscf.geomopt.geometric_solver"
+    ]
+  },
+  {
+    "path": "src/redox/qm/hessian_memory.py",
+    "sha256": "899c8d9da11e58bbac7f0d7c42bc0d8bdaafb608a4fdc36309c12bf5d5dee0db",
+    "purpose": "Certified execution budgets for identical native Hessian equations.\n\nThe protocol's six-GiB value remains the historical default. A larger execution\nbudget is recorded separately and requires full-matrix replay controls; it does\nnot alter geometry, grids, solvent, frequencies, or admission thresholds.",
+    "definitions": [
+      "pcm_certificate",
+      "record_pcm_ok",
+      "derivative_certificate",
+      "record_derivatives_ok",
+      "digest",
+      "certificate",
+      "execution_budget",
+      "stage_budget_bytes",
+      "record_budget_ok"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/qm/hessian_restart.py",
+    "sha256": "ae879c5db232dc1e56aa0b69d9ebc23c4f53d153919926936ee6d2b0c0774337",
+    "purpose": "Frame-checked reuse of completed electronic Hessian components.\n\nPartial arrays remain unqualified until the resumed full calculation passes its\nnormal derivative/minimum checks. No thermal or electronic energy is borrowed.",
+    "definitions": [
+      "response_ceiling_gib",
+      "array_digest",
+      "contiguous_payload",
+      "read_frame",
+      "reuse_partial",
+      "read_continuation_frame",
+      "restore_mf",
+      "reuse_components",
+      "capture_solution_h1"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "types",
+      "redox.core.io",
+      "redox.core.io",
+      "redox.core.io",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/hessian_resume.py",
+    "sha256": "b90f48c10d55f9874fdfd2056ae9d8f8ea563737bd49751abfb5217fc8c7ed11",
+    "purpose": "Recover an isolated native calculation from a source-bound saved Hessian.\n\nOnly an independently replayed additive CDS replacement is supported. Standard\nSCF, stationarity, finite-gradient, minimum and thermodynamic gates still run.",
+    "definitions": [
+      "reconstructed_matrix",
+      "verify_reconstruction_record",
+      "worst_column_checks",
+      "annotate_finer_hessian",
+      "resume_native"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.workflows",
+      "ase.io",
+      "pyscf",
+      "redox.qm.dft",
+      "redox.qm.stable_geometry_scf",
+      "redox.qm",
+      "redox.qm.hessian_memory",
+      "redox.workflows.resources",
+      "redox.qm",
+      "redox.qm.hessian_memory",
+      "gpu4pyscf.solvent.hessian",
+      "ase.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/native_thermal.py",
+    "sha256": "d3851f8fb32d90d6666d9bf9d86bd004083d76b47cca426d98258d144f4e3fe7",
+    "purpose": "Addressed, derivative-checked solution DFT thermochemistry.\n\nUses the geometry-level r2SCAN-D4/SVP(D)/SMD surface, full grid response and\nthe same nuclear qRRHO definition for every state and Fc. Legacy optimizer\nJSON/geometry files are preserved. This module is opt-in until a matched cohort\nand Fc have been computed; readers never mix this definition with legacy GFN2.",
+    "definitions": [
+      "installed_versions",
+      "select_policy",
+      "identity",
+      "cache_path",
+      "_load_native_surface_record",
+      "load_native_thermal",
+      "free_energy_native",
+      "implementation_controls",
+      "ensure_native_thermal",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "importlib",
+      "redox.core.common",
+      "redox.core.protocol",
+      "redox.qm.thermal",
+      "redox.qm.vibrations",
+      "redox.qm.xtb_runtime",
+      "redox.qm.projected_thermal",
+      "ase.io",
+      "pyscf",
+      "pyscf.hessian",
+      "redox.qm.dft",
+      "redox.qm.hessian_memory",
+      "redox.core.common",
+      "redox.qm.hessian_memory",
+      "redox.qm.hessian_memory",
+      "redox.qm.projected_thermal",
+      "redox.qm.projected_thermal",
+      "redox.qm.native_thermal_repair"
+    ]
+  },
+  {
+    "path": "src/redox/qm/native_thermal_repair.py",
+    "sha256": "23078eedd5af914d687e2edf35a2ce6bb78b0637e33b5ec167453cf2939c0562",
+    "purpose": "Bounded conservative minimum repair, then SHA-archived canonical promotion.\n\nOnly entered for an actual native gradient/stationarity failure. Every proposed\nbranch must pass the same native Hessian and connectivity contract before adoption.",
+    "definitions": [
+      "promotion_metadata",
+      "install_repaired_state",
+      "promotion_guard",
+      "repair_minimum"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.common",
+      "redox.qm.native_thermal",
+      "redox.core.protocol",
+      "redox.core.io",
+      "ase.io",
+      "pyscf",
+      "pyscf.hessian",
+      "pyscf.geomopt.geometric_solver",
+      "redox.qm.dft",
+      "redox.qm.sp"
+    ]
+  },
+  {
+    "path": "src/redox/qm/nonequilibrium_pcm.py",
+    "sha256": "5943617598ad851d7237e1752236d3fda488fd51f02026dfacf4a9f11d0fae68",
+    "purpose": "Diagnostic state-specific nonequilibrium PCM for vertical electron transfer.\n\nPekar partition, You et al., JCP 143, 204104 (2015), Eqs. 16, 21--23:\n    G[D;D0] = E_vac[D] + .5 V Qop V + V (Qs-Qop)V0\n              - .5 V0 (Qs-Qop)V0.\nV includes nuclei and electrons. Q is symmetrized, exactly as in native\nPySCF's variational PCM energy. Optical polarization relaxes in SCF; the\nslow reaction field and its polarization work remain fixed. Freezing the\nentire native PCM potential would incorrectly freeze the optical response.\n\nThis is electrostatic IEF-PCM, not equilibrium SMD and not a gas inner-only\nenergy. No gradients, geometry optimization, cavity transport or production\nranking promotion are implemented. Every vertical event MUST use the same\ncoordinates, basis and cavity for its initial and final electronic states.",
+    "definitions": [
+      "host_array",
+      "total_density",
+      "surface_potential",
+      "pcm_object",
+      "frozen_slow_terms",
+      "attach_frozen_slow",
+      "independent_hcore_reference"
+    ],
+    "imports": [
+      "__future__",
+      "gpu4pyscf.solvent.pcm",
+      "pyscf.solvent.pcm"
+    ]
+  },
+  {
+    "path": "src/redox/qm/nonequilibrium_smd.py",
+    "sha256": "2e97c4cf309275fe3900fcebb7e7cdcd169a96dca995b1ea30c897de97bf9c73",
+    "purpose": "Experimental frozen-slow extension of native SMD electrostatics.\n\nThe SMD apparent-charge response is IEF-PCM on SMD element/solvent radii.\nIts separate CDS term is independent of the electronic density at fixed\ncoordinates. This extension retains the native SMD cavity and CDS functional;\nonly electrostatic inertial polarization is frozen. CDS is not an additional\nouter-sphere lambda. Its treatment away from equilibrium is an explicit model\nassumption, not a validated model of solvent structural dynamics.\n\nNative solvent descriptors determine eps_static and eps_optical=n**2 unless\nexplicitly overridden; these must be recorded because project-level constants\ncan differ from the SMD library. No production promotion is done here.",
+    "definitions": [
+      "smd_object",
+      "smd_dielectrics",
+      "attach_frozen_slow_smd",
+      "cds_relaxation_difference",
+      "independent_hcore_smd_reference"
+    ],
+    "imports": [
+      "__future__",
+      "redox.qm.nonequilibrium_pcm",
+      "pyscf.solvent.smd",
+      "pyscf.solvent.smd",
+      "gpu4pyscf.solvent.smd"
+    ]
+  },
+  {
+    "path": "src/redox/qm/occupied_checkpoints.py",
+    "sha256": "3caa140603fe346ca712ed0187d4461ce8ae05131af979496a0c3be4eb50966d",
+    "purpose": "Durable, occupied-orbital checkpoints for restricted single-point SCF.\n\nAll occupied coefficients, occupations and orbital energies retain their native\nprecision. Virtual coefficients are explicitly absent. This represents the same\nSlater determinant and density, and supports a density restart; it is not a\nfull-orbital Hessian/response restart. No solver or physical setting is changed.",
+    "definitions": [
+      "host",
+      "save",
+      "read",
+      "density",
+      "review",
+      "_json",
+      "Context",
+      "attach",
+      "scf_checkpoints"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "pyscf.lib",
+      "redox.qm"
+    ]
+  },
+  {
+    "path": "src/redox/qm/pcm_bounded.py",
+    "sha256": "637e17ff04e9ca0910cb01a4813e4be0a9d8b16a728c67fbffece36feb8f23f7",
+    "purpose": "Bounded execution of the installed analytic PCM curvature equations.\n\nNo surface points, electronic settings or derivative terms are removed. Dense\ndiagonal tensors are contracted by atom; off-diagonal tensors use the unchanged\ninstalled CPU primitive on unions of requested surface blocks. Full-Hessian\nreplays and target finite-gradient checks gate production use.",
+    "definitions": [
+      "diagonal_contraction",
+      "DiagonalOperator",
+      "CurvatureBlocks",
+      "OffDiagonalTensor"
+    ],
+    "imports": [
+      "collections"
+    ]
+  },
+  {
+    "path": "src/redox/qm/projected_thermal.py",
+    "sha256": "16ecb077c5a6a32e61b8cba99c85fd566cb23190fd0a52eff57b638b81ae8cd4",
+    "purpose": "Source-addressed CPU postprocessing of already qualified native Hessians.\n\nOriginal DFT records and their unprojected xTB logs remain immutable. A separate\nrecord binds the corrected partition function to its geometry, raw native record,\nCartesian Hessian and qualified thermodynamic protocol. It never establishes\nthe backing DFT derivative or spin admission on its own.",
+    "definitions": [
+      "sha",
+      "certificate",
+      "source_identity",
+      "cache_path",
+      "_serialized_frequencies",
+      "load_projected_thermal",
+      "ensure_projected_thermal",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.qm",
+      "redox.qm.vibrations",
+      "redox.qm.xtb_runtime",
+      "redox.qm.thermal_source",
+      "redox.workflows.resources",
+      "redox.core.common",
+      "redox.qm.native_thermal",
+      "ase.io",
+      "ase.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/qrrho.py",
+    "sha256": "47d685298653c4cd3e0aec13b42aba3c81b954bbd7aa535b39574bd830d39ec2",
+    "purpose": "CPU thermodynamic kernel with explicit internal vibrational modes.\n\nThe validated xTB 6.7.1 CLI filters all frequencies below 1 cm^-1, including\ngenuine internal modes. Its installed thermodyn kernel accepts an explicit mode\nlist. This module uses that kernel after excluding rigid motion geometrically.\nIt does not establish DFT stationarity, derivative accuracy or spin ordering.",
+    "definitions": [
+      "_checked_library",
+      "_close_worker",
+      "_request",
+      "kernel_execution",
+      "atomic_masses",
+      "internal_vibrations",
+      "inertia_properties",
+      "kernel_thermal",
+      "nuclear_thermals"
+    ],
+    "imports": [
+      "__future__",
+      "functools",
+      "pathlib",
+      "redox.qm.xtb_runtime"
+    ]
+  },
+  {
+    "path": "src/redox/qm/relocated_native.py",
+    "sha256": "32c68f713f8323c625f120752823bb26b4fc2b672092f716326921f01f36606d",
+    "purpose": "Explicit relocation of immutable native-certificate provenance paths.\n\nThe original reader still checks every physical and numerical field. This layer\nallows only a declared old checkout prefix to change; certificate contents and\nall other metadata must agree exactly. It never opens the old checkout.",
+    "definitions": [
+      "controls_equal",
+      "relocated_native_reader"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.common",
+      "redox.qm"
+    ]
+  },
+  {
+    "path": "src/redox/qm/response_diagnostic.py",
+    "sha256": "4a18f37bb439bbc01995c1cf507e1de867b86691d388ec69e3a2ee64ba2788fd",
+    "purpose": "Read-only orbital checkpoints and transparent response-call instrumentation.\n\nThese helpers do not supply thermochemistry or qualify a restarted Hessian.",
+    "definitions": [
+      "digest",
+      "save_array",
+      "contiguous_payload",
+      "read_checkpoint",
+      "response_memory_cap",
+      "trace_solver"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/response_resume.py",
+    "sha256": "99dbcf57b7d546d5c4671ddd49a625e7ad0cacf13fcf34b0032d8e10fc67544a",
+    "purpose": "Reuse a saved linear-response candidate only after a fresh equation check.\n\nThe caller must bind the same orbital/grid/full-H1/operator frame. This layer\nalso checks the actual RHS bytes and the original solver source. Invalid or\ncorrupt backing records are never silently admitted.",
+    "definitions": [
+      "digest",
+      "inspect_source",
+      "checked_blocks"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/sampling_native_checkpoints.py",
+    "sha256": "acd3d908a232c25611c37fe412dffaf1a72c970c5254be16f67c2cf8c1ff5c0a",
+    "purpose": "Full-orbital native SCF evidence and center grids without extra response cubes.\n\nThe native solver keeps all virtual orbitals. Only the already-written partial\nHessian/H1 and exact center SCF/grid frame are restart inputs; no complete native\nG or response restart is inferred from these files alone.",
+    "definitions": [
+      "cpu",
+      "write",
+      "capture_before_hessian",
+      "recording_native"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/qm/saved_hessian.py",
+    "sha256": "48efde03daf9e09319c072879082ba18365efe6491630198763a2bc733c6a648",
+    "purpose": "Reuse one complete Cartesian Hessian only at its declared retained state.\n\nThe caller must admit a closed, source-bound producer. The returned matrix is\nstill unqualified until fresh gradients, sampled derivatives and modes pass.",
+    "definitions": [
+      "digest",
+      "builder"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "types",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/scf_checkpoints.py",
+    "sha256": "8f0713974bc83a752d10515f1ace94b8d522ff48796e6de5d1c71ce7279ddd47",
+    "purpose": "Execution-only checkpoints for existing molecular SCF/derivative code.\n\nClass-method wrappers preserve normal binding for copied geometry scanners.\nContexts contain no mean-field references, so completed GPU objects are released.\nObjects without a checkpoint context execute their original methods directly.",
+    "definitions": [
+      "cpu",
+      "write",
+      "array",
+      "Context",
+      "wrap_derivative",
+      "attach",
+      "recording_builder",
+      "recording_optimizer"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/qm/screening_barrier.py",
+    "sha256": "8775c8093a84c19765ce3bf4824a498a6f54da8720b72fa16b01755c56d6c3d6",
+    "purpose": "Run-local upstream grid-screening barrier correction; no installed-file edits.\n\nQualification is separate from construction. Changed screening implementations\nmust not silently reuse or replace source-frozen thermochemistry.",
+    "definitions": [
+      "reference_mask",
+      "standalone_source",
+      "launch",
+      "corrected_screening"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "pyscf.gto",
+      "gpu4pyscf.dft",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/sp.py",
+    "sha256": "09c6cfdb66d818c37c76c6f6587d44c6c3c804d383729a4161fd9c96bef9ec10",
+    "purpose": "Compute (or adopt) the ACTIVE-protocol single-point energy record for every state.\n\nFor each state with an optimized geometry (calcs/dft/<id>/<state>/opt.xyz):\n  * record already present          -> skip;\n  * result.json was scored at exactly the active protocol on this geometry and RECORDS it\n    (xc/basis/nlc/disp/solvent, density fitting, conv_tol, open-shell guess sweep;\n    converged)  -> ADOPT its energies (no recompute);\n  * otherwise                       -> gas + SMD single points at the active protocol.\n\nWrites calcs/dft/<id>/<state>/sp/<hash>.json (see redox.core.protocol). Never modifies\nresult.json. Resumable and shardable; run one shard per GPU through gpu_reserve:\n\n  python -m redox.qm.sp --audit                       # what is missing / adoptable\n  python -m redox.qm.sp --all --backend gpu --shard 4:0\n  python -m redox.qm.sp --only ferrocene --backend gpu",
+    "definitions": [
+      "states",
+      "states_orop",
+      "_adoptable",
+      "ensure",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.core.protocol"
+    ]
+  },
+  {
+    "path": "src/redox/qm/stable_geometry_scf.py",
+    "sha256": "eb7ad5fdba74938c3913aa696e26e9237d1bedb413c5ad9685ae61726442a363",
+    "purpose": "Process-local SCF recovery without loosening geometry or electronic tolerances.",
+    "definitions": [
+      "stabilize"
+    ],
+    "imports": []
+  },
+  {
+    "path": "src/redox/qm/thermal.py",
+    "sha256": "5368750d46bfb8d3442388407ec9d6f85288008cea1b3757212aa98f7265f44f",
+    "purpose": "Provenance-addressed solution thermal diagnostics; never hide unstable modes.\n\nThe geometry/energy protocol and thermal model are separate. A stable GFN2-ALPB\nminimum is evidence for this low-level thermal model, not a DFT Hessian validation.\nProduction adoption additionally requires a paired reference and transfer evidence.",
+    "definitions": [
+      "thermal_identity",
+      "thermal_hash",
+      "spectrum_values",
+      "stationary_verdict",
+      "paired_potential",
+      "spin_degeneracy_eV",
+      "load_solution_thermal_record"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/qm/thermal_source.py",
+    "sha256": "45aea3bb889f08d1c833db962d855b1af6a0c80e3e5ab1195c461d4daee99f74",
+    "purpose": "Recognize the exact runtime-location refactor of the qualified qRRHO source.\n\nOnly one literal source transformation is admitted. Restoring its historical\nlibrary assignment must reproduce the original certificate's full source hash.\nNumerical code, constants, imports elsewhere and even other formatting changes\nremain source-bound. The caller must still verify the actual library, worker,\nprotocol and all certificate evidence independently.",
+    "definitions": [
+      "matches_qualified_source"
+    ],
+    "imports": []
+  },
+  {
+    "path": "src/redox/qm/torsion_scan.py",
+    "sha256": "34688c3b5c7d2d5ae4f3f7f144a05017e8cf7a3c01db3b3b5876e8b3bab95770",
+    "purpose": "Optional torsion sampling for the reorg pipeline (opt-in via run_batch(torsion_scan=True)).\n\nFloppy molecules whose redox-relevant soft mode is a rotatable bond joining two ring systems\n(biaryl quinones, inter-pyridinium viologens) can have conformer-dependent reorganization\nenergies: a single-shot optimization may land the neutral and the ion in different torsional\nminima, inflating lambda_i. We protect against this WITHOUT a bespoke scan engine by seeding the\nexisting multi-conformer machinery (run_batch: SMD-optimize N seeds, keep lowest E_smd) with\ngeometries rotated around that torsion. Each state then finds its global-min conformer using the\nproduction DFT+SMD+diffuse settings, so reorg.py's 4-point uses global-min geometries.\n\nDetection is geometry-based (bond perception from the seed's 3D coords), so it needs no SMILES\natom-order matching and is charge/spin agnostic. Rigid molecules (no ring-ring rotatable bond)\nyield no torsion -> the caller falls back to normal seeding (a no-op).",
+    "definitions": [
+      "_load_perceived",
+      "primary_conjugated_torsion",
+      "_write_xyz",
+      "torsion_rotated_seeds"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "rdkit.Chem",
+      "rdkit",
+      "rdkit.Chem"
+    ]
+  },
+  {
+    "path": "src/redox/qm/uma.py",
+    "sha256": "61d71eb936425facb4974fbf2d8ab0c5ba50333e9db53a3c58e671982259fcf8",
+    "purpose": "UMA (FAIRChem / OMol) gas-phase geometry optimization for each redox state.\n\nReads library/manifest.csv, and for every (id, state) relaxes the seed geometry with UMA\nunder that state's explicit charge + spin multiplicity, writing:\n\n  calcs/uma/<id>/<state>/relaxed.xyz    optimized geometry\n  calcs/uma/<id>/<state>/result.json    energy (eV), fmax, n_steps, converged, charge, mult\n\nResumable: a state whose result.json exists is skipped. GPU is selected via the --device\nflag or CUDA_VISIBLE_DEVICES so states can be fanned across GPUs by an external launcher.\n\nNOTE: UMA/OMol is gas-phase. Charged states are pre-optimized here only as a warm start;\nsolvated geometries come from the DFT+SMD step (see docs/MODELING.md).\n\nUsage:\n  python -m redox.qm.uma --model uma-s-1p2p1 --device cuda            # all states\n  python -m redox.qm.uma --only pyridinium                           # one group\n  python -m redox.qm.uma --only pyridinium:red                       # one state",
+    "definitions": [
+      "file_sha256",
+      "model_identity",
+      "seed_identity",
+      "_ligand_graph",
+      "geometry_checks",
+      "cache_errors",
+      "ensure_registered",
+      "make_calculator",
+      "candidate_mults",
+      "relax_one",
+      "relax_state_scan",
+      "write_xyz",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.common",
+      "huggingface_hub",
+      "rdkit",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.core.common",
+      "rdkit",
+      "fairchem.core",
+      "ase.optimize",
+      "ase.io",
+      "ase.io"
+    ]
+  },
+  {
+    "path": "src/redox/qm/uma_current.py",
+    "sha256": "048174786389f10655b71c10bf9eb903de1650e20512a038b1350088216e5f64",
+    "purpose": "Current UMA entry point: stock (legacy) backend by default; Nitro only on a\nNitro-capable GPU (CUDA compute capability 8.x-12.x, e.g. an H100).\n\nThe backend is chosen from the *actual* reserved GPU's architecture, not from a\nconfig preference: a V100 (cc 7.0) or any non-capable card runs the deterministic\nstock calculator, and only an H100-class card routes to Nitro. Nitro additionally\nstays blocked by the production-qualification gate until its force repeatability\npasses (see redox.qm.uma_policy).\n\nFrozen replay modules and caches remain untouched. The dispatcher recreates a\nfixed-state calculator when composition, charge or multiplicity changes, and\nincludes electronic state in ASE cache invalidation.",
+    "definitions": [
+      "select_backend",
+      "state_aware_calculator",
+      "calculator_for_profile",
+      "nitro_state_directory",
+      "run_dft",
+      "run_uma",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.qm.uma_model_identity",
+      "ase.calculators.calculator",
+      "redox.qm.uma_nitro",
+      "redox.qm.uma_policy",
+      "redox.core.common",
+      "redox.qm.uma_nitro",
+      "ase.io",
+      "redox.qm.uma",
+      "redox.qm",
+      "redox.qm",
+      "redox.qm.uma_policy",
+      "redox.workflows.resources",
+      "redox.qm.uma_policy",
+      "redox.qm.uma_nitro",
+      "redox.qm.uma",
+      "redox.qm.uma_policy",
+      "redox.qm.uma_model_identity",
+      "redox.workflows.resources",
+      "redox.qm.uma_nitro"
+    ]
+  },
+  {
+    "path": "src/redox/qm/uma_model_identity.py",
+    "sha256": "e5ee6cbfd6b9b27023dc30dcb80298b5c55d4e5daf26c248ffa66902fb658071",
+    "purpose": "Local UMA fingerprints for wheel and editable FAIRChem installations.\n\nRegistry discovery never imports FAIRChem or initializes a model/GPU. Loaded\nmodule metadata and a local editable-project URL are alternative location hints.",
+    "definitions": [
+      "digest",
+      "registry_file",
+      "model_identity"
+    ],
+    "imports": [
+      "importlib",
+      "pathlib",
+      "urllib.parse",
+      "huggingface_hub"
+    ]
+  },
+  {
+    "path": "src/redox/qm/uma_nitro.py",
+    "sha256": "a6009d9e7d1b4f7bfabafad1ef846738c664b44af12a5585ec5e4f8055f0754e",
+    "purpose": "Strict, fixed-state UMA Nitro calculator for gas-phase molecular warm starts.\n\nThe inference engine is checked before and after evaluation. Unsupported devices\nor state changes fail explicitly; a non-Nitro fallback cannot enter these records.",
+    "definitions": [
+      "state_key",
+      "check_actual_nitro",
+      "make_calculator"
+    ],
+    "imports": [
+      "__future__",
+      "redox.workflows.resources",
+      "ase.calculators.calculator",
+      "fairchem.core"
+    ]
+  },
+  {
+    "path": "src/redox/qm/uma_policy.py",
+    "sha256": "6685334dc17cee464f0a088ffac8c54317d3ef98933d9f97bd095999b7146ecf",
+    "purpose": "Configuration and explicit admission for the current UMA engines.",
+    "definitions": [
+      "load_policy",
+      "require_production_qualification"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/qm/vibrations.py",
+    "sha256": "4596b96c01aa05cae425d9ca3e60a840c4b51725ece452d424f573492a6d152b",
+    "purpose": "Vibrational file contracts shared by independent Hessian validation tools.",
+    "definitions": [
+      "project_rigid_modes",
+      "write_xtb_hessian",
+      "parse_xtb_thermal_eV"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/qm/xtb_kernel.py",
+    "sha256": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+    "purpose": "Isolated JSON-lines adapter to the qualified xTB thermodynamic kernel.\n\nOnly standard-library modules are imported. This process never imports PySCF,\nD4 Python bindings, NumPy or a GPU backend, avoiding incompatible SONAME reuse.",
+    "definitions": [
+      "main"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/qm/xtb_runtime.py",
+    "sha256": "3f324309632c9aa0536307d9710ee1950d1e00f63d4608a5ead2c2835bca93e7",
+    "purpose": "Explicit, hash-qualified xTB path binding for thermochemistry entry points.\n\nThis does not alter producer source files, certificates or native physical gates.\nIt permits only the previously qualified library and executable bytes. A caller\nmust bind once before starting a qRRHO worker, within a single Python thread.",
+    "definitions": [
+      "_absolute",
+      "configured_prefix",
+      "configured_library",
+      "configured_binary",
+      "digest",
+      "validate_prefix",
+      "qualified_xtb_prefix"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.qm"
+    ]
+  },
+  {
+    "path": "src/redox/reports/__init__.py",
+    "sha256": "21b7e9c73fea4d3c8c07facd0d524d78499a98983591469bba21fa6f2d5eb9aa",
+    "purpose": "Derived exports. Calculation and independent audit code live separately.",
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/reports/benchmark.py",
+    "sha256": "1fa477278f5b069c7a2f7f435eca29115c81731deb0fea0693df6b5031c66334",
+    "purpose": "Score the production pipeline against the sourced MeCN benchmark (config/benchmark_mecn.py).\n\nReads results/redox_potentials.csv (computed E vs a live level-matched Fc) and writes\nresults/validation/benchmark_mecn.csv \u2014 one row per (molecule, couple, source) with the\nexperimental value, computed value, residual, tier and citation \u2014 plus summary statistics per\ntier and per family. Wave spacings (E1 - E2, reference-free) are scored from the same table.\nNothing is fitted or corrected; excluded waves are listed with their reason, never scored.\n\n  PYTHONPATH=src python scripts/validation/benchmark/score_benchmark_mecn.py",
+    "definitions": [
+      "_f",
+      "stats",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.screening.scorecard",
+      "redox.validation.reference_admission"
+    ]
+  },
+  {
+    "path": "src/redox/reports/outer_sphere.py",
+    "sha256": "49856942ba29d18056fd0d923a6a233ea4e47042f8d188268442d5e588e2e382",
+    "purpose": "Merge per-chunk outer-sphere lambda runs (scripts/pipeline/compute_lambda_outer.py) into the canonical\nresults/lambda_outer.csv read by redox.screening.scorecard. One row per (molecule, couple).\n\n  python scripts/pipeline/consolidate_lambda_outer.py",
+    "definitions": [
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/reports/workbook.py",
+    "sha256": "049a5b3a9b2ccf3b376b562bf3d8d4dbb8784b3e4862eeb598972854becadf09",
+    "purpose": "Fill data/raw/candidates/Candidates.xlsx with the values computed by this pipeline.\n\nThe sheet's \"SMILES string (neutral monosubstituted)\" column is the STANDALONE (pre-grafting)\nmolecule, so each row maps to a standalone library id; the resin-grafted analogue that the\nproject actually targets is reported alongside in `*_grafted` columns.\n\nHole vs electron reorganization is keyed on n_e from the manifest, NOT on net charge:\n`ndi_ammonium` carries a permanent +1 trimethylammonium, so its first reduction runs\n+1 -> 0 and would be misread as an oxidation by charge alone.\n\n  lambda_electron = first reduction  (n_e:  0 -> -1)\n  lambda_hole     = first oxidation  (n_e: +1 <-  0)\n  lambda_e2       = second reduction (n_e: -1 -> -2)\n\nOriginal sheet columns are left untouched (they hold the user's literature / D3TaLES values);\neverything computed here lands in new, explicitly-named columns.\n\nQC: a lambda that redox.properties.reorg flagged (conformer_jump / anion_unbound / negative_*) is NOT\nwritten to the clean `lambda_*_eV` column \u2014 it goes to `lambda_*_eV_unfiltered` alongside the\nflag and the heavy-atom RMSD, so a contaminated value cannot be read as a validated one.\n\n  python scripts/pipeline/fill_candidates_xlsx.py",
+    "definitions": [
+      "_read",
+      "_f",
+      "couple_labels",
+      "collect",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/screening/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "purpose": null,
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/screening/candidate_registry.py",
+    "sha256": "ad634ae54acc6a9e0c841867a2c280ac6bee8aecaa6862221b1c8392edcc6de1",
+    "purpose": "Consolidate exact local-graft designs while preserving every source declaration.",
+    "definitions": [
+      "merge_sources",
+      "publish"
+    ],
+    "imports": [
+      "collections",
+      "pathlib",
+      "rdkit",
+      "redox.build.structures",
+      "redox.build.grafting",
+      "redox.core.io",
+      "redox.screening.qualified_cases"
+    ]
+  },
+  {
+    "path": "src/redox/screening/comparisons.py",
+    "sha256": "13ea981be894e5bb22b2d82b39c37629fe2e3806d30f2d2ea60bbba2f6deb471",
+    "purpose": "Paired potential shifts from admitted candidate snapshots.\n\nThe collector supplies field-specific thermal, energy and spin admission. A pair\nmust describe the same charge/electron ladder. Missing events stay missing;\nsurface estimates and parent measurements never substitute for admitted values.",
+    "definitions": [
+      "_finite",
+      "_ladder",
+      "paired_potential_shifts"
+    ],
+    "imports": []
+  },
+  {
+    "path": "src/redox/screening/discovery.py",
+    "sha256": "c41b1cd7e6301e6535e512ca3b33c8278edd4eb80fd1a18cebd769e3f8a89a50",
+    "purpose": "Systematic identification of graftable multi-electron redox candidates.\n\nTurns any list of molecules (a database dump, a literature list, an enumeration) into the\nsame grafted-candidate rows the pipeline screens, with every rule explicit:\n\n  1. FAMILY        substructure patterns (FAMILIES). Each family carries whether it is a\n                   genuine 2e- (two resolved 1e- waves) motif and the evidence for that:\n                   measured two-wave spacings in data/raw/validation/two_wave_mecn/ (tier A,\n                   config/benchmark_mecn.py) or the source's own statement.\n  2. GRAFTING      the Merrifield (chloromethyl-polystyrene) attachment chemistry as RDKit\n                   reactions (GRAFTS): every nucleophilic site that can displace the benzylic\n                   chloride gives one grafted product, modelled with the same 4-methylbenzyl\n                   tether proxy as every current candidate (config/starting_candidates.py\n                   SCAFFOLD \"Cc1ccc(C[*:1])cc1\").\n  3. RULES         fully specified stereochemistry (CLAUDE.md), allowed elements, single\n                   fragment.\n  4. DESCRIPTORS   computed IDENTICALLY for pool and current candidates: monomer MW, nominal\n                   specific capacity n F / (3.6 MW) with n = family electrons (nominal: the\n                   pipeline's capacity uses the computed accessible path), Ertl SA of the\n                   grafted species (the scorer input prep of redox.properties.\n                   capacity_and_proxies).\n\n`rediscover()` is the correctness test: run on the PRECURSORS of the current candidates,\nthe rules must regenerate exactly the grafted candidates the pipeline already screens.",
+    "definitions": [
+      "families",
+      "graft_products",
+      "_unassigned_stereo",
+      "describe",
+      "identify",
+      "precursor_from_frag",
+      "rediscover"
+    ],
+    "imports": [
+      "__future__",
+      "rdkit",
+      "rdkit.Chem",
+      "rdkit.Chem",
+      "redox.properties.capacity_and_proxies"
+    ]
+  },
+  {
+    "path": "src/redox/screening/expansion.py",
+    "sha256": "2e3b22a68a6133294d02c41b18657fd2897e0849dc38a71001853b399dd9c6a9",
+    "purpose": "Matched-comparison candidate expansion with exact-graph registration.\n\nAll proposed electrochemical behavior and exact graft routes remain hypotheses.\nPreparation writes definitions and bookkeeping descriptors, never inherited parent\nmeasurements. Registration appends validated new definitions without rewriting old ones.",
+    "definitions": [
+      "registry_definitions",
+      "designs",
+      "prepare",
+      "register",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "datetime",
+      "pathlib",
+      "rdkit",
+      "redox.build.contracts",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.screening.discovery"
+    ]
+  },
+  {
+    "path": "src/redox/screening/expansion_review.py",
+    "sha256": "e7dd54141178a688644d433cdda369a3b466bc280acb8a7a713f770f73e2a2d2",
+    "purpose": "Join systematic designs to the existing evaluator without inheriting properties.\n\nExact graft graphs identify candidates; declared controls identify comparisons.\nPool coverage, admitted properties, route admission and polymer evidence remain\nseparate dimensions. This consumer never registers a candidate or launches QM.",
+    "definitions": [
+      "identity",
+      "finite",
+      "attach_evaluations",
+      "exact_evidence",
+      "build_review"
+    ],
+    "imports": [
+      "collections",
+      "rdkit",
+      "redox.screening.comparisons"
+    ]
+  },
+  {
+    "path": "src/redox/screening/family_search.py",
+    "sha256": "cc65e49f60f0ce9862d2de25c1e76c081a73a1d7af0cba481c8390596c8d1cb4",
+    "purpose": "Enumerate a declared family search space without registering or running QM.\n\nEnumerated graphs and all symmetry-equivalent recipes are retained. Cheap\ndescriptors are bookkeeping, not predicted solution performance or a ranking.",
+    "definitions": [
+      "ring_variants",
+      "enumerate_space",
+      "prepare",
+      "select_comparisons",
+      "prepare_comparisons",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "collections",
+      "pathlib",
+      "rdkit",
+      "redox.build.contracts",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.screening.discovery",
+      "redox.screening.expansion"
+    ]
+  },
+  {
+    "path": "src/redox/screening/feasibility.py",
+    "sha256": "5c965dbb48bca78fe5c1fa8734122309f79e928ed3fd4e4a0750e1ac719c9a9e",
+    "purpose": "Conjunctive, evidence-bound candidate admission before Pareto comparison.\n\nAn acceptable value on another axis never rescues an unacceptable or unresolved\nrequired axis. Bounds describe the declared model/scenarios, not a universal\nexperimental confidence interval. This module does not fill missing evidence or\nchoose application cutoffs from the distribution of candidates being screened.",
+    "definitions": [
+      "finite",
+      "policy_hash",
+      "validate_policy",
+      "assess_axis",
+      "assess_candidate",
+      "feasible_ids",
+      "pareto_after_feasibility"
+    ],
+    "imports": [
+      "__future__"
+    ]
+  },
+  {
+    "path": "src/redox/screening/pareto.py",
+    "sha256": "b03735da5983f120cbc93069ea25c0fc21092cbf19828d89b22dcafc28138e00",
+    "purpose": "Selection engine: turn the per-candidate scorecard into a discovery shortlist.\n\nApplies the design decided earlier:\n  - split into ANOLYTE / CATHOLYTE pools (redox potential is not 'more is better' globally;\n    an ambipolar molecule enters BOTH pools on its respective side);\n  - objectives = the TRUSTWORTHY axes only, oriented so higher = better:\n        anolyte  : voltage = -E_anolyte  | catholyte: voltage = +E_catholyte\n        capacity = specific capacity      (both)\n        stability = dG_disp               (both; missing for single-wave -> incomparable)\n        kinetics = -lambda                (both)\n  - SIGMA-AWARE domination: A dominates B only if A is not worse than B beyond combined noise\n    on every shared objective AND strictly better (beyond noise) on at least one. sigma per\n    axis = each row's OWN scorecard sigma column; capacity sigma = 0 (bookkeeping).\n  - COMPLETENESS: a row missing any primary objective (voltage, capacity, kinetics, and\n    stability when n>=2) is INCOMPLETE \u2014 excluded from the primary front and unable to\n    dominate; it is reported on a separate partial-information list.\n  - proxies (solubility, SA) are NOT objectives; carried as annotations/tiebreakers.\n  - the sigma-aware Pareto front is the output; within a pool candidates are ordered by the\n    primary axis (voltage). There is deliberately NO scalarized figure-of-merit: a weighted-sum\n    FoM would (a) require arbitrary weights, (b) ignore sigma (so it disagrees with the\n    sigma-aware front), and (c) be pool-relative via min-max normalization, so it silently\n    rescales when the candidate set changes. Read the front + the raw axes instead.\n\n  PYTHONPATH=src python -m redox.screening.pareto",
+    "definitions": [
+      "_load_candidates",
+      "decision_front",
+      "_objectives",
+      "_dominates",
+      "_pareto_front",
+      "run_pool",
+      "main",
+      "_print_pool",
+      "_write"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.screening.feasibility"
+    ]
+  },
+  {
+    "path": "src/redox/screening/qualified_cases.py",
+    "sha256": "baacde7134906e81ff33daf1335fa48e93888b04cae59068394e669da36e344c",
+    "purpose": "Exact-graph attachment of qualified computational cases to candidate registries.\n\nReplays declared arithmetic and checks case identity; it does not repeat raw\nquantum QC or turn a finite molecular result into a material admission.",
+    "definitions": [
+      "identity",
+      "validate_case",
+      "assemble",
+      "attach",
+      "read_case"
+    ],
+    "imports": [
+      "copy",
+      "pathlib",
+      "rdkit",
+      "redox.properties.context",
+      "redox.properties.reference_redox",
+      "redox.screening.feasibility",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/screening/route_stage.py",
+    "sha256": "81e67d09a7b42d10b5f84c1c7c93e47868b35704b967be85afff340952903109",
+    "purpose": "Stream checked descriptor outputs into the existing exact-route gate.\n\nThis stage prepares a successor queue; it registers no candidates and submits no\nquantum jobs. Each decision binds an exact precursor/product and attachment bond.",
+    "definitions": [
+      "gate",
+      "catalog",
+      "source_paths",
+      "stage",
+      "records",
+      "screen",
+      "verify",
+      "main"
+    ],
+    "imports": [
+      "contextlib",
+      "functools",
+      "pathlib",
+      "importlib.metadata",
+      "redox.build.attachment_identity",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.workflows",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/screening/scorecard.py",
+    "sha256": "1b9cafa8ceb09445ec21c1c8814178e3f8d3f1ec45387f8c7a1428e6d6d78b9c",
+    "purpose": "Unified scorecard \u2014 the input contract for the selection engine.\n\nJoins the per-axis tables (redox potentials, state integrity, reorganization energy,\ndisproportionation, capacity/proxies, outer-sphere lambda) and emits ONE ROW PER (molecule,\nelectrode pool), with a sigma per axis for sigma-aware domination.\n\nSTATUS: candidate | REJECTED (a real negative: no accessible electron) | INCOMPLETE (missing\ndata on the path \u2014 never scored as if the data were absent or zero).\n\nACCESSIBLE ELECTRONS = a CONTIGUOUS path from the declared resting state (manifest n_e=0):\n  anolyte   : successive reductions  rest -> rest-1e -> ...  while each couple is\n              intact_bound (redox.properties.integrity), inside WINDOW_V_VS_FC and below the divider;\n  catholyte : successive oxidations  rest -> rest+1e -> ...  above the divider.\nA second electron counts only if the first is accessible. An ambipolar molecule gets two pool\nrows, each with ONLY its own side's electrons (no double counting across electrodes).\n`intact_bound` is a necessary-condition screen, not proof of electrochemical reversibility.\n\nCAPACITY = n F / mass on that path. The counter-ion-inclusive variants are SCENARIO\nconventions (which ions count in the material mass depends on the device and state of charge),\nnot exact physics.\n\nREORGANIZATION ENERGY \u2014 explicit conventions (Nelsen 4-point, gas, QC-clean couples only):\n  lambda_i_ox_eV   = lambda_O : E_O(geom_R) - E_O(geom_O)   (distortion on the O surface)\n  lambda_i_red_eV  = lambda_R : E_R(geom_O) - E_R(geom_R)\n  lambda_i_eV      = lambda_O + lambda_R  (= inner-sphere lambda of a SELF-EXCHANGE pair)\n  lambda_het_eV    = heterogeneous (electrode) ET: (lambda_O + lambda_R)/2  +  lambda_o,1-body\n                     (one molecule reorganizes; outer sphere = 1-body molecular-cavity PCM,\n                     image term neglected)\n  lambda_se_contact_eV = self-exchange / polymer hopping at contact: lambda_O + lambda_R +\n                     lambda_o,SE(d = 2a); lambda_o_self_exchange() gives any separation d.\n  The Pareto kinetics objective is lambda_i_eV (monotone with lambda_i/2); lambda_het /\n  lambda_se are reported, not ranked, because lambda_o is a continuum proxy (sigma ~0.3 eV).\n\n  PYTHONPATH=src python -m redox.screening.scorecard",
+    "definitions": [
+      "_candidate_batches",
+      "_candidate_chem_flags",
+      "_unrankable_ids",
+      "_candidate_ids",
+      "_min_spin_gap_eV",
+      "_resting_states",
+      "contiguous_paths",
+      "lambda_o_self_exchange",
+      "_states_of",
+      "_ion_mass",
+      "_max_counterion_mass",
+      "_load",
+      "_bench_family",
+      "experimental_e_points",
+      "derive_family_sigma",
+      "_rmse",
+      "_mad_sigma",
+      "derive_uncertainties",
+      "require_derived_sigmas",
+      "build"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.core.common",
+      "redox.core.protocol",
+      "redox.qm.dft",
+      "redox.qm.native_thermal",
+      "redox.validation.spins",
+      "redox.validation.spin_evidence",
+      "redox.core.common",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.validation.reference_admission",
+      "redox.validation.orop",
+      "redox.properties.potentials",
+      "redox.core.common",
+      "redox.core.common",
+      "redox.validation.model_limits",
+      "redox.validation.spin_ensemble",
+      "redox.validation.spin_evidence"
+    ]
+  },
+  {
+    "path": "src/redox/screening/source_audit.py",
+    "sha256": "9fb89036f4038434bdca28a4fbef978f0c7a0047b0f8345376ed92873411055b",
+    "purpose": "Audit downloaded source quality without admitting labels or registering molecules.",
+    "definitions": [
+      "optimizer_grade",
+      "reaction_quality",
+      "audit_sources",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "collections",
+      "pathlib",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/screening/streaming_search.py",
+    "sha256": "994a2fbf4c4a447f66fb83b855772758225d04a2d4206204f0cc75a636d30833",
+    "purpose": "Stream exact family recipes into deduplicated, parallel descriptor chunks.\n\nThis extends the design/evaluation loop without registering molecules or\nlaunching quantum calculations. Its cheap outputs cannot bypass the route gate.",
+    "definitions": [
+      "family_records",
+      "control_records",
+      "stage_spec",
+      "descriptor_tools",
+      "descriptor",
+      "scheduler_control",
+      "handler_for",
+      "verify",
+      "main"
+    ],
+    "imports": [
+      "functools",
+      "importlib",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.workflows",
+      "rdkit",
+      "redox.build.contracts",
+      "redox.screening.family_search",
+      "redox.screening.discovery",
+      "redox.properties.capacity_and_proxies",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.properties.capacity_and_proxies",
+      "rdkit.Chem",
+      "rdkit",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/__init__.py",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "purpose": null,
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/validation/archived_sources.py",
+    "sha256": "f66deeaf8f5bea1be5486577d720a1ca6bddf53462a3dd886cc251b0ba0b70ec",
+    "purpose": "Read immutable evidence through one explicit checkout-prefix relocation.\n\nStored paths and hashes are never rewritten. An old checkout path is read only\nfrom its declared archive location; a missing archive file cannot fall back to\nan unrelated file now occupying the old checkout. External dependencies retain\ntheir exact paths and must still pass their original content hashes.",
+    "definitions": [
+      "ArchivedSources"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/validation/benchmark_panel.py",
+    "sha256": "0dac63e1a99ea0bcf9366a6e36c15ee565af6f00c0567ef0ce5d24b2acc502ad",
+    "purpose": "Frozen experimental panels and descriptive, dependency-aware error reports.\n\nNo calculation is admitted here: the independent matched-parent reviewer owns\nstate/reference/spin QC. This consumer verifies that review and its frozen inputs.\nHistorical measurements and model development are explicitly retrospective.",
+    "definitions": [
+      "digest",
+      "key",
+      "number",
+      "metrics",
+      "family",
+      "freeze",
+      "validate_panel",
+      "verify_hashes",
+      "cluster_intervals",
+      "summarize",
+      "review_report"
+    ],
+    "imports": [
+      "collections",
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/validation/cds_hessian_component.py",
+    "sha256": "be9ff301d04d4b48103e381da5b0eb7a00b6f9228dbf814aec23d0be9ea2c2e8",
+    "purpose": "CPU-only step convergence of the unchanged legacy SMD CDS component.\n\nLoads only the installed pure-CPU function and its Fortran library, without\nimporting CuPy or initializing CUDA. Component reassembly is diagnostic only;\nit cannot qualify a full Hessian, minimum or nuclear free energy.",
+    "definitions": [
+      "cpu_legacy",
+      "analyze"
+    ],
+    "imports": [
+      "pathlib",
+      "types",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.runtime_paths",
+      "redox.qm.cds_finite",
+      "redox.workflows.molecular_native_namespace",
+      "pyscf",
+      "ase.io",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/charged_hessian_source.py",
+    "sha256": "60d40e0c5d1ec6e1e2f38f0d4a7e7d702844855002a48dffff765ea67e2833b7",
+    "purpose": "Evidence for retaining a completed ionic Hessian after later file-lock failure.\n\nThis admits a matrix for further validation, never a minimum or free energy.\nThe original failure, response frame and resource/ownership chain stay intact.",
+    "definitions": [
+      "response_calls",
+      "full_response",
+      "io_closure",
+      "source_evidence",
+      "saved_response"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.validation.execution_review",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.native_component_resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/component_sensitivity.py",
+    "sha256": "fc805ff9d56f31534ad21fc054033b00168713ebf191446425b05b3e27262f8f",
+    "purpose": "Electronic-only implementation contributions to declared balanced cycles.",
+    "definitions": [
+      "reconstruct"
+    ],
+    "imports": [
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/validation/contact_cohort.py",
+    "sha256": "e45821c92e46d9074525c181a7895635a09646a1f0827b49d8440d3838ae7aca",
+    "purpose": "Collect a declared chloride cohort without fixed outcome or duplicate counts.",
+    "definitions": [
+      "collect"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.properties.contact_identity",
+      "redox.properties.conformer_geometry",
+      "redox.properties.conformer_ensemble",
+      "redox.workflows.counterion_thermochemistry",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/context_consequences.py",
+    "sha256": "8786e8bb441e749049f23f3d4d067fc5e63509bc4f64caec375056e774f3b0e2",
+    "purpose": "Reconstruct consequences of explicitly stated model transfers from saved data.\n\nThese are controlled interpretations of existing quantities, not new quantum\nresults, experimental decision accuracy or a comparison against a prior algorithm.",
+    "definitions": [
+      "finite",
+      "assess"
+    ],
+    "imports": [
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/validation/evidence_epoch.py",
+    "sha256": "4af93448e1082875511bf92ec4a534d3a82a302c5759a3e9b33ee3a623b3650d",
+    "purpose": "Append declared artifacts to an immutable manuscript evidence epoch.\n\nThis handles byte identity and ownership only. Callers must establish the\nscientific qualification and interpretation of each added artifact separately.",
+    "definitions": [
+      "sha",
+      "inside",
+      "append_epoch"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/validation/execution_review.py",
+    "sha256": "df8f2315156788fe32d8452826d718d82a06833116f7eeb6985ae5144f516e29",
+    "purpose": "Common closure, ownership and resource checks for independent QM reviews.",
+    "definitions": [
+      "host_usage_peak",
+      "freeze_source",
+      "validate_closed",
+      "review_closure"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/validation/failed_execution.py",
+    "sha256": "06d65fab9fb17d729a266e796444e3e791f996cc8a2ff02f296017149df9df26",
+    "purpose": "Closed physical failures, distinct from resource or residency interruption.",
+    "definitions": [
+      "physical_failure"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.validation.execution_review"
+    ]
+  },
+  {
+    "path": "src/redox/validation/ionic_preparation.py",
+    "sha256": "307d5a9938390338b0ed20a02a970ab4473d17f4c0ce7c7cca9b7f6b1349f74d",
+    "purpose": "Portable replay of stored ionic graphs, XYZ connectivity and masses.\n\nThis is an initial-structure audit, never a thermochemistry qualification.\nThe historical script remains byte-identical because old evidence binds it;\nthis maintained reader is checked against that frozen numerical result.",
+    "definitions": [
+      "check"
+    ],
+    "imports": [
+      "collections",
+      "pathlib",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.build.geometry",
+      "redox.build.oligomer_topology",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/model_limits.py",
+    "sha256": "6b7dfbe87ab9073cda74f91f0286ba62f8e43b4c782915a89c46c53d665e7397",
+    "purpose": "Scope observed model limits without changing calculations or censoring residuals.",
+    "definitions": [
+      "selection_admission"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.protocol"
+    ]
+  },
+  {
+    "path": "src/redox/validation/molecular_native.py",
+    "sha256": "bccd721d90d28f7a36a9a2f2ea81b07aacb62efed62b56c1d611e20a54e3fc47",
+    "purpose": "Source-bound molecular native review with independent density/resource checks.",
+    "definitions": [
+      "ReviewPending",
+      "completed_review_record",
+      "cross_device_uma_review",
+      "spin_record_agreement",
+      "MolecularSources",
+      "review"
+    ],
+    "imports": [
+      "pathlib",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.archived_sources",
+      "redox.validation.solution_pair_review",
+      "redox.workflows.host_local_review",
+      "redox.workflows.molecular_native_namespace"
+    ]
+  },
+  {
+    "path": "src/redox/validation/namespace_sources.py",
+    "sha256": "1e4cc0bd3dca19c1b3a7e1fda447bfa8fddf12b15465c69324085a7d058197b6",
+    "purpose": "Verify namespace-produced records through their two declared path aliases.",
+    "definitions": [
+      "NamespaceSources",
+      "read_checked_review"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.validation.archived_sources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/native_component_sensitivity.py",
+    "sha256": "779c8d66a48c022fb9701017e4506901e626644a942c089b1bf7cca2d2206ef2",
+    "purpose": "Context-checked reconstruction of a complete primary-model G control cohort.\n\nCallers independently review the actual SCFs, Hessians and partitions first.\nThis reader checks the declared state set, atom/charge balance and arithmetic;\nit cannot turn an incomplete or alternate-model cohort into a primary result.",
+    "definitions": [
+      "reconstruct"
+    ],
+    "imports": [
+      "collections",
+      "copy",
+      "redox.core.common",
+      "redox.properties.context"
+    ]
+  },
+  {
+    "path": "src/redox/validation/native_conformer_batches.py",
+    "sha256": "67300f826c0f23acbf14ad1ec9c303b946bc97e13889898e29b0291e24eed9f1",
+    "purpose": "Shared duplicate-aware comparison of complete nested native input sets.",
+    "definitions": [
+      "finite_batches"
+    ],
+    "imports": [
+      "redox.properties.conformer_ensemble"
+    ]
+  },
+  {
+    "path": "src/redox/validation/orop.py",
+    "sha256": "7ac8f3fef00b9d75479bdc5cccfa0f4bb778600815e3bc88ad03d3f37604817c",
+    "purpose": "OROP benchmark with live, explicitly matched molecular and Fc thermochemistry.\n\nExperimental and original-dataset predictions remain source measurements. Current\npredictions require admitted active SPs and the same selected thermal definition\nfor both molecular states and both Fc states. Pending rows are always written.",
+    "definitions": [
+      "load_index",
+      "matched_potential",
+      "calibration_row_ok",
+      "state_result",
+      "aggregate",
+      "aggregate_all",
+      "pinned_table",
+      "run_system",
+      "fanout",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.properties.potentials",
+      "redox.core.common",
+      "redox.qm",
+      "redox.qm.dft"
+    ]
+  },
+  {
+    "path": "src/redox/validation/portable_energy_parent.py",
+    "sha256": "c4a3f4a45246f3be124d7b5b76e2efe1aa82aaf827fb6d28a5fe9cbaa0b838bc",
+    "purpose": "Stage provenance-only electronic parents for subsequent archived workers.\n\nThe original plan and independent review remain unchanged. Only source-map path\nkeys in a derived plan are relocated, with both original and derived bytes bound\nexplicitly. No electronic value, chemical field or numerical setting changes.",
+    "definitions": [
+      "relocate_plan",
+      "stage"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.namespace_sources",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/portable_inputs.py",
+    "sha256": "30979d093edafe2ce8adb34b57899778bcf84bc204859e50a5c6eada8ed8c7dd",
+    "purpose": "Read exact historical input bytes from an explicit portable mapping.\n\nHistorical bindings and currently executing producer files stay distinct.\nMissing mappings never fall back to arbitrary original filesystem paths.",
+    "definitions": [
+      "PortableInputs"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/validation/primary_checkpoints.py",
+    "sha256": "400c66e49cf05181de1951e056cd298eba49e950f42ffc3182f449f66f0de2f5",
+    "purpose": "Shared actual-frame, occupied-spin and energy checks for molecular SCFs.",
+    "definitions": [
+      "checkpoint_series"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "pyscf.lib",
+      "redox.validation.scf_frame"
+    ]
+  },
+  {
+    "path": "src/redox/validation/protonation.py",
+    "sha256": "6753a714db0548e251bbba4c1b631d413fb41bdc6db770353c816249f145442e",
+    "purpose": "Check explicit hydrogen attachments without guessing charges or bond orders.\n\nAn element count and heavy-atom graph alone cannot distinguish a declared acid\nfrom a proton-transferred zwitterion. This check compares the full connectivity\ngraphs, allowing arbitrary atom order and symmetry-equivalent proton sites.",
+    "definitions": [
+      "hydrogen_topology_status"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.build.geometry"
+    ]
+  },
+  {
+    "path": "src/redox/validation/provenance.py",
+    "sha256": "eadd6364553a81ed0385e58fce680ef301a5d7d044b58cf558bc22374ef53668",
+    "purpose": "Existing file dependencies named in immutable validation evidence.",
+    "definitions": [
+      "spin_decision_paths",
+      "calculation_gid",
+      "scoped_spin_summary",
+      "input_changes_quarantined",
+      "repair_source",
+      "referenced_files"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/validation/readiness.py",
+    "sha256": "85eecef93551c015a9db5d4b9a178d38bc8b5d94b004c4231cc66f43575fcee1",
+    "purpose": "Manifest-based readiness, including states that have never produced any output.",
+    "definitions": [
+      "inspect_states",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.build.geometry",
+      "redox.core.protocol",
+      "redox.validation.provenance",
+      "redox.qm.dft",
+      "rdkit"
+    ]
+  },
+  {
+    "path": "src/redox/validation/reference_admission.py",
+    "sha256": "2d77ec00e96adc714908699f7c52484ea1043579ce9d4c04d7200e37b9be781a",
+    "purpose": "Current-state gates for experimental residuals and calibration inputs.",
+    "definitions": [
+      "event_admission"
+    ],
+    "imports": [
+      "redox.validation.spin_evidence",
+      "redox.core.common",
+      "redox.properties.potentials"
+    ]
+  },
+  {
+    "path": "src/redox/validation/reference_diagnostics.py",
+    "sha256": "13181998e7201b434388e48aee823954fb036107fd200ce0c25cbb0cded9e1cb",
+    "purpose": "Post hoc reference diagnostics; never replace the primary unfitted benchmark.",
+    "definitions": [
+      "metrics",
+      "cross_validated_offsets",
+      "independent_cluster_intervals",
+      "organic_reference"
+    ],
+    "imports": [
+      "collections"
+    ]
+  },
+  {
+    "path": "src/redox/validation/release_gate.py",
+    "sha256": "3eb7f13404b93420b1ce1872a6c2ee09f2a4107c4ee697f2a41be5c46e5128cc",
+    "purpose": "Admission checks for an archive whose streamed byte verification has passed.",
+    "definitions": [
+      "verified_archive_entry"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/validation/sampling_batches.py",
+    "sha256": "d023eed717c54bf8ae2f9e396a9d3bcb1359a44c0b9a9625628be4fedd927ce1",
+    "purpose": "Analyze complete corrected native cells after a source-bound snapshot audit.\n\nRetains all twelve declared cells. Missing inputs leave that cell blank; a\ncomplete cell does not qualify a balanced cycle or an experimental ensemble.",
+    "definitions": [
+      "common_context",
+      "checked_components",
+      "analyze"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.properties.conformer_geometry",
+      "redox.validation.native_conformer_batches",
+      "redox.validation.sampling_snapshot",
+      "redox.properties",
+      "redox.build",
+      "redox.validation",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/sampling_native_receipts.py",
+    "sha256": "e74c086cf1d1dac624eeda30a68d561d9ed158b02502d6150eccdd4a745f95e7",
+    "purpose": "Read native sampling values with their exact electronic and thermal context.\n\nA receipt proves a previously completed independent reconstruction. Reading it\ndoes not perform a new Hessian calculation or establish ensemble convergence.",
+    "definitions": [
+      "checked_native",
+      "ReceiptCache"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.validation.sampling_receipts",
+      "redox.workflows.molecular_native_namespace"
+    ]
+  },
+  {
+    "path": "src/redox/validation/sampling_publication.py",
+    "sha256": "3a7f81122ef07a30d8fbcec41b7521e8c57616dcf0600281bfb3a57145d55a78",
+    "purpose": "Shared source-bound occupied-sampling checks for the manuscript and slides.",
+    "definitions": [
+      "portable_source_paths",
+      "audit",
+      "sampling_table"
+    ],
+    "imports": [
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.validation.sampling_batches",
+      "redox.validation.portable_inputs"
+    ]
+  },
+  {
+    "path": "src/redox/validation/sampling_receipts.py",
+    "sha256": "7868efcc6a93f528a69f83efe611c96845ede1a02a51ad4659bf1f4b31fd5e5e",
+    "purpose": "Read checked electronic receipts without losing identity/context or raw values.\n\nThis verifies a previously produced physical review and its backing records; it\ndoes not replace fresh SCF, derivative or experimental validation.",
+    "definitions": [
+      "checked_energy"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.workflows.molecular_native_namespace"
+    ]
+  },
+  {
+    "path": "src/redox/validation/sampling_snapshot.py",
+    "sha256": "3fc4c03f685099ba2fd93b81f7c705bfa47eaa2ceb6cc932b61d222581d633f9",
+    "purpose": "Audit a frozen full-roster sampling snapshot against its checked receipts.\n\nThis reuses the maintained component readers. It does not rerun SCF/Hessian QC,\nassign an energy to a pending slot, or form a partition from an incomplete set.",
+    "definitions": [
+      "parent_agreement",
+      "roster",
+      "source_rosters",
+      "audit"
+    ],
+    "imports": [
+      "collections",
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.sampling_receipts",
+      "redox.validation.sampling_native_receipts",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/scf_frame.py",
+    "sha256": "3301224767ee3ad0bb225cc203262019ccf5643d99abead32cadeb591b372d2a",
+    "purpose": "Validate the molecular frame actually serialized in an SCF checkpoint.",
+    "definitions": [
+      "freeze_reviewer",
+      "check_spin_contamination",
+      "checkpoint_frame",
+      "checkpoint_spin"
+    ],
+    "imports": [
+      "pyscf.lib",
+      "pathlib",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/validation/screening_sensitivity.py",
+    "sha256": "b1458fdce6153dfbc8a8fc8b73d765557f6b77ed317a90ce584dd779cdd8c8a9",
+    "purpose": "Standard-library replay of electronic implementation differences only.",
+    "definitions": [
+      "reconstruct",
+      "molecular_derivatives"
+    ],
+    "imports": []
+  },
+  {
+    "path": "src/redox/validation/solution_pair_review.py",
+    "sha256": "2feee2eaeca52b1c93b6bc61bc467986772720553362c8ede708d4db357490ac",
+    "purpose": "Independently collect a completed source-bound molecular solution pair.",
+    "definitions": [
+      "ReviewPending",
+      "density_spin",
+      "review"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.archived_sources",
+      "redox.workflows.host_local_review",
+      "redox.workflows.solution_pair_namespace",
+      "redox.properties.solution_reorg"
+    ]
+  },
+  {
+    "path": "src/redox/validation/solution_relaxation.py",
+    "sha256": "5acf2b984801c39e74699206676ca403fae8f03dfed10e2956bade0c5f910c8f",
+    "purpose": "Read-only evidence checks for native-SMD relaxation implementation controls.",
+    "definitions": [
+      "verified_implementation_controls",
+      "scf_cache_matches",
+      "verified_density"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/validation/source_inventory.py",
+    "sha256": "c9185be6d3856eced3f872cb35ae4852d7f2b52aa57771592342659206848036",
+    "purpose": "Resolve declared evidence hash maps, preserving multiple versions per path.\n\nOnly named path-to-SHA256 maps are traversed. This is provenance/integrity\ninventory, not physical QC or discovery of implicit runtime dependencies.",
+    "definitions": [
+      "bindings",
+      "inventory"
+    ],
+    "imports": [
+      "collections",
+      "pathlib",
+      "redox.core.hashing"
+    ]
+  },
+  {
+    "path": "src/redox/validation/spin_ensemble.py",
+    "sha256": "f3afcdd2cf17c02cd1dae90f9bfcd2d7e2806d61d67d0fd81899e18536df9c20",
+    "purpose": "Source-bound equilibrium free energies for two qualified spin surfaces.\n\nComponent native free energies already include spin degeneracy. This module never\nruns quantum calculations and does not establish spin-conversion kinetics.",
+    "definitions": [
+      "digest",
+      "equilibrium",
+      "_current_components",
+      "prepare_policy",
+      "evaluate_policy",
+      "apply_selected_ensemble",
+      "admitted_ensemble",
+      "_independent_thermal_inputs",
+      "select_policy"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.common",
+      "redox.core.protocol",
+      "redox.qm.dft",
+      "redox.qm.native_thermal",
+      "redox.validation.spins",
+      "redox.core.common",
+      "contextlib",
+      "redox.core",
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/validation/spin_evidence.py",
+    "sha256": "7234d559b7204cb9b67203a7e2c0b3de87a52d6347a342550e0ef9d9ad596d39",
+    "purpose": "Read-only spin publication gates shared by candidate and scorecard readers.\n\nThese predicates do not run calculations or alter producer records.",
+    "definitions": [
+      "spin_comparison_running",
+      "qualify_DFT_spin_gap",
+      "helper_spin_report_admission",
+      "native_partition_dependencies_ok",
+      "state_spin_evidence"
+    ],
+    "imports": [
+      "redox.core.common",
+      "pathlib",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.protocol",
+      "redox.validation.spin_ensemble",
+      "redox.qm.dft",
+      "redox.validation.spins",
+      "redox.qm.native_thermal"
+    ]
+  },
+  {
+    "path": "src/redox/validation/spins.py",
+    "sha256": "ee723920779e26080db1d92aba4ab5c80550150d5a623a0b6a1e670217faec94",
+    "purpose": "Bounded, source-addressed solution DFT alternate-spin validation.\n\nThe selected state's production SP must exist before a GPU is claimed. Helpers\nare preserved; a lower alternative is promoted only after its native minimum,\nconnectivity and active energy are verified and the canonical writer is free.",
+    "definitions": [
+      "sha",
+      "atomic_json",
+      "declared",
+      "snapshot",
+      "alternate_mult",
+      "comparison_path",
+      "read_comparison",
+      "refreshed_electronic_gap",
+      "refresh_reproduced_comparison",
+      "two_state_ensemble",
+      "_archive_tree",
+      "_optimize_helper_minimum",
+      "_install_helper_minimum",
+      "_helper_native",
+      "_promote",
+      "check"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.protocol",
+      "redox.qm.native_thermal",
+      "redox.core.io",
+      "contextlib",
+      "redox.core.io",
+      "redox.workflows.revalidate_sp",
+      "redox.qm.dft",
+      "redox.qm.dft",
+      "redox.qm.native_thermal_repair",
+      "ase.io",
+      "pyscf",
+      "pyscf.hessian",
+      "redox.qm.dft",
+      "redox.qm.sp",
+      "redox.qm.dft",
+      "redox.qm.sp",
+      "redox.properties.reorg"
+    ]
+  },
+  {
+    "path": "src/redox/validation/stability.py",
+    "sha256": "133dad7451e9ec5799a00ad8c7f3f85f7d597b25d75100769b3c9e447542d700",
+    "purpose": "Validate the disproportionation-stability axis against experiment.\n\nThe disproportionation free energy is exactly the redox WAVE SPACING:\n    dG_disp = G(R^{q+1}) + G(R^{q-1}) - 2 G(R^q) = F * (E_high - E_low)\nso it is validated against measured two-wave spacings in MeCN for the interior intermediate\n(radical anion / radical cation). A spacing is reference-free: it needs no Fc conversion.\n\nExperimental spacings come ONLY from grounded sources (no hand-typed values):\n  * config/benchmark_mecn.py \"spacing\" events (data/raw/validation/two_wave_mecn/, each with\n    DOI + table/page; tier A = both waves E deg'/E1/2 of (quasi)reversible waves, tier B = e.g.\n    half-peak potentials);\n  * config/validation.py anchors carrying exp_dE12_V (e.g. methyl viologen, Cook et al. 2017\n    Table 1, -759 - (-1179) mV).\nRows are matched to results/stability_disproportionation.csv by (id, intermediate state).\nOnly tier A enters sigma_disp (redox.screening.scorecard); tier B is reported alongside.\n\n  PYTHONPATH=src python -m redox.validation.stability",
+    "definitions": [
+      "_intermediate",
+      "experimental_spacings",
+      "_computed",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "redox.core.common",
+      "scipy.stats"
+    ]
+  },
+  {
+    "path": "src/redox/validation/stationarity_failure.py",
+    "sha256": "251b8277a74f3f3e855ed2c002635a0367b15bc609939ed09042bd0625ccc0ab",
+    "purpose": "Reconstruct a failed primary gradient from its actual SCF and wavefunction.",
+    "definitions": [
+      "diagnose"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.execution_review",
+      "redox.validation.failed_execution",
+      "redox.validation.primary_checkpoints",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.route_primary_native",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/validation/uma_environment.py",
+    "sha256": "dbd340882a7f4ee08ac616afd3ce52ee6d0bd15e1eb933c0c8d498e17edf0c20",
+    "purpose": "Inspect both UMA environments without importing Torch or creating a CUDA context.",
+    "definitions": [
+      "inspect_policy",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.qm.uma_policy",
+      "redox.workflows.environment"
+    ]
+  },
+  {
+    "path": "src/redox/validation/uma_parity.py",
+    "sha256": "62c7aed3f0cb44af0e7a16279b602b60b9a33124e416f7fcced9033c1d11a422",
+    "purpose": "Compare frozen UMA states without treating execution as numerical admission.",
+    "definitions": [
+      "compare_points"
+    ],
+    "imports": []
+  },
+  {
+    "path": "src/redox/validation/workspace_index.py",
+    "sha256": "6361983e5abcdc9cc20aec4a45b53a9d6101cba08691e1db164f4092c9d7da86",
+    "purpose": "Relocate mutable result pointers without rewriting scientific evidence.",
+    "definitions": [
+      "relocate_index",
+      "relocated_input_path"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/__init__.py",
+    "sha256": "b06596eb476861e86efad0ab4c1aa17122b89a6bc71ee49d48f8eda971b4409a",
+    "purpose": "Supported orchestration of the redox pipeline.\n\nDomain implementations live in build, qm, properties, screening and validation.\nWorkflows arrange those implementations without changing scientific contracts.",
+    "definitions": [],
+    "imports": []
+  },
+  {
+    "path": "src/redox/workflows/archived_energy_namespace.py",
+    "sha256": "debceef0e4826b8c083a550873f8f6d6309f615ba5883580d6be431edd99007e",
+    "purpose": "Start declared hybrid-energy RAM experiments without rewriting archived plans.",
+    "definitions": [
+      "energy_mount",
+      "probe",
+      "validate_plan",
+      "prepare",
+      "launch",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.archived_sources",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/archived_native_namespace.py",
+    "sha256": "af57731fb82a8d98397d92f776639d50e5d372d849a96459b1d8778db9e22b36",
+    "purpose": "Filesystem-isolated continuation of an unchanged archived native worker.\n\nThe archive is mounted read-only at its original checkout path. Only a fresh\nattempt directory and its fresh raw-output parent are writable. No stored plan,\nprotocol, source hash or input path is rewritten. The shared GPU gate and host\nresource controls remain outside this filesystem adaptation.",
+    "definitions": [
+      "mount_command",
+      "prepare",
+      "verify_spec",
+      "probe",
+      "execute",
+      "launch_reserved",
+      "remaining_host_promises",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.archived_sources",
+      "redox.workflows.resources",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/benchmark_native.py",
+    "sha256": "61b990bf2b54dcf3ed9ff05159f299d7ce642188c9c858a684dad774221f7a94",
+    "purpose": "Resumable native-thermochemistry completion for frozen parent benchmarks.\n\nJobs are molecule-scoped so their native writer locks never compete internally.\nExisting partial records are held for inspection. Results retain physical and\nspin admission independently of process completion or experimental residuals.",
+    "definitions": [
+      "pending_states",
+      "prepare",
+      "complete_state",
+      "worker",
+      "launch",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.validation.benchmark_panel",
+      "redox.workflows.checkpoints",
+      "redox.core.protocol",
+      "redox.qm.dft",
+      "redox.qm.native_thermal",
+      "redox.qm.native_thermal",
+      "redox.validation.provenance",
+      "redox.core.protocol",
+      "redox.workflows.resources",
+      "redox.workflows.processes",
+      "redox.workflows.resources",
+      "redox.qm.native_thermal_repair"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/bounded_molecular.py",
+    "sha256": "d9354e18e4c665f0b47d8c0b2dded13d4f46117c9decf2564fc6bd30bdb6318f",
+    "purpose": "Shared execution/budget adapter for source-frozen molecular namespaces.\n\nCallers must first enforce their scientific pilot and workload admission rules.\nThe existing atomic reservation, node probe, CPU/RAM and process owner checks\nremain in the underlying molecular launcher and budget observer.",
+    "definitions": [
+      "launch"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.screening_control",
+      "redox.workflows.response_diagnostic"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/catalog.py",
+    "sha256": "f934ae89aa73e245a0bd7786ed48c6f8e2837ed974ae2055cdfbaadd00e63594",
+    "purpose": "Read-only catalogue of maintained commands, controls and recovery entry points.",
+    "definitions": [
+      "catalogue",
+      "main"
+    ],
+    "imports": [
+      "redox.cli"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/charged_hessian_recovery.py",
+    "sha256": "330a680c6ecc2bbf68c258a3922311ed0926bfe8de05dde69e106602cb27c528",
+    "purpose": "Prepare a fresh ionic validation namespace from a proven closed full Hessian.",
+    "definitions": [
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.charged_hessian_source",
+      "redox.workflows",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/charged_native_followup.py",
+    "sha256": "3fad9f2b97090fd840291e78589d8000d13e138ab494d2a088bb2af88f76c9f4",
+    "purpose": "Release prepared small charged-native components after their exact pilot passes.\n\nUses the existing gate, node probe/launcher, capacity utility and aggregate\nstorage accounting. One bounded dispatch pass considers every suitable free GPU;\nuncertain, occupied or failed attempts remain preserved for explicit review.",
+    "definitions": [
+      "priority_requests",
+      "priority_for_slot",
+      "device_capability",
+      "load",
+      "prerequisite",
+      "dispatch",
+      "dispatch_rows"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.native_component_resources",
+      "redox.workflows.resources",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/charged_partial_recovery.py",
+    "sha256": "7827e2c3a5a2355c2e834b18235e37a2932c4de454dfae2d5aa6882ffc5b2ef5",
+    "purpose": "Recover a closed RKS H1 allocation failure from its exact partial checkpoint.\n\nOnly the saved solute partial Hessian and its original orbital/grid frame are\nreused. Full solution H1, response, total Hessian and all physical checks remain\nmandatory. The 16-GiB RKS workspace is a separate prospective H100 profile.",
+    "definitions": [
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.charged_polymer_pilot",
+      "redox.workflows.native_component_resources",
+      "redox.qm.hessian_restart",
+      "redox.validation.scf_frame",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/charged_polymer_pilot.py",
+    "sha256": "144d503b49f07603451f3d0beedd48fc897c9cca7f8fa5e987f3b61286276853",
+    "purpose": "Prospective, route-bound charged-polymer SCF/gradient resource pilots.",
+    "definitions": [
+      "resting_state",
+      "native_output_profile",
+      "prepare",
+      "prepare_optimization",
+      "prepare_finalization",
+      "prepare_native_component"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.archived_sources",
+      "redox.workflows",
+      "redox.workflows.native_component_resources",
+      "redox.core.runtime_paths",
+      "ase.io",
+      "redox.build.geometry",
+      "redox.build.oligomer_topology",
+      "rdkit.Chem",
+      "redox.qm.hessian_restart",
+      "pyscf",
+      "pyscf.lib",
+      "redox.workflows.resources",
+      "redox.workflows.native_component_resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/checkpoint_io.py",
+    "sha256": "a57a851317216ec0b3dba0302b59895c520f71247ab3c1eacd60f450945a59e0",
+    "purpose": "Bounded retries of transient HDF5 checkpoint locks, without bypassing locks.",
+    "definitions": [
+      "retry_checkpoint",
+      "checkpoint_lock_retries"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "pyscf.scf"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/checkpoints.py",
+    "sha256": "2bf4c61e06e7de77dcc941dfbf48da556851df540e24e53e4934b5682ee2faf3",
+    "purpose": "Verify state-completion receipts against the actual saved output bytes.",
+    "definitions": [
+      "verify_state_checkpoint"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/chunked.py",
+    "sha256": "73af374d41a00040bf971d3667551c584f9af5b495b89c21a76593226c9c6af8",
+    "purpose": "Bounded-memory task packing and atomic chunk ownership on shared storage.\n\nCheap in-process stages use chunk journals instead of per-molecule control files.\nQuantum adapters must retain their separate reservations and physical admission;\nan executor completion record is never a quantum-quality certificate.",
+    "definitions": [
+      "canonical",
+      "content_hash",
+      "file_hash",
+      "local_scratch",
+      "task_record",
+      "prepare",
+      "read_plan",
+      "process_start",
+      "owner",
+      "claim",
+      "journal",
+      "save_journal",
+      "run_chunk",
+      "verify_done",
+      "run_worker",
+      "recover_local"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.io",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/counterion_association.py",
+    "sha256": "c905615b0721644efdc60135a217139e4d8c19752e736942f88e1087ea89d8da",
+    "purpose": "Read verified microstates and matched primary parents without model mixing.",
+    "definitions": [
+      "analyze"
+    ],
+    "imports": [
+      "copy",
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.properties.counterion",
+      "redox.workflows.molecular_native_namespace",
+      "redox.validation.execution_review",
+      "redox.workflows.counterion_thermochemistry"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/counterion_geometry.py",
+    "sha256": "d1ba053d9bcf533a7faf48d408aaca15275db0b657298433e57a3f538c31810c",
+    "purpose": "Exact local-graft chloride-contact hypotheses, separate from redox states.\n\nThe oxidized viologen core remains formally +2; adding Cl- gives a +1 singlet\nmicrostate. It is not the isolated +1 doublet obtained by one-electron reduction.\nThese geometries test ion-convention sensitivity, not synthesis eligibility.",
+    "definitions": [
+      "collect",
+      "launch",
+      "seeds",
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "ase",
+      "ase.io",
+      "rdkit",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.bounded_molecular",
+      "redox.validation.protonation",
+      "redox.core.runtime_paths",
+      "redox.workflows.resources",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/counterion_geometry_resources.py",
+    "sha256": "0ab23b9dfe3419645c60d3db7828975eef7cad5b2c28babd0b536a8942b8d543",
+    "purpose": "Prospective T4 optimization of the exact, already prepared chloride repairs.\n\nThe fixed-gradient witness admits one optimization pilot. Its closed physical\nand resource review is required before any additional repair is admitted. No\nHessian, native free energy, or general molecular GPU class is qualified here.\nKeep top-level dependencies standard-library-only for the frozen worker helper.",
+    "definitions": [
+      "validate_plan",
+      "device_for_plan",
+      "fixed_gradient_witness",
+      "geometry_witness",
+      "prepare",
+      "launch"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.workflows.resources",
+      "redox.core.hashing",
+      "redox.workflows.molecular_native_namespace",
+      "redox.core.hashing",
+      "redox.workflows.molecular_native_namespace",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.bounded_molecular",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/counterion_gradient_pilot.py",
+    "sha256": "d4cb5e4a0c3d42921bde9b3cc0dd0f6cd4c56ca8cbaa686acd87d3615e2527bd",
+    "purpose": "Separate T4 fixed-gradient validation; full molecular/Hessian limits stay intact.",
+    "definitions": [
+      "validate_plan",
+      "device_for_plan",
+      "prepare",
+      "review"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.workflows.resources",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "ase.io",
+      "redox.validation.execution_review",
+      "redox.validation.primary_checkpoints",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources",
+      "redox.workflows.bounded_molecular"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/counterion_mode_repair.py",
+    "sha256": "1b6e015c6f6bdf3ced3358477138700b2a534726a3e6f376a7330224ac9eb94a",
+    "purpose": "Diagnose a closed failed minimum and prepare both signed-mode relaxations.\n\nThe original Hessian, SCFs and failed attempt remain untouched. No frequency is\nmade positive and no G is assembled. Each branch needs fresh optimization,\nelectronic energy, native Hessian and independent physical review.",
+    "definitions": [
+      "diagnose",
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "pyscf",
+      "pyscf.hessian",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation",
+      "redox.validation.execution_review",
+      "redox.workflows.molecular_native_namespace",
+      "redox.validation.failed_execution",
+      "redox.validation.protonation",
+      "redox.workflows.resources",
+      "redox.workflows.route_primary_native"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/counterion_thermochemistry.py",
+    "sha256": "8bb9af034125da7102bee2ca3f1326df0dae4cdc3e60519f574e4ec7dcd98a8b",
+    "purpose": "Prospective primary-model thermochemistry of checked chloride microstates.\n\nThe first completed contact geometry is a resource/physical pilot. This stage\nreuses the molecular native equations and the uniform diffuse electronic basis.\nIt produces components, not ion-pair populations or a grafting-yield prediction.",
+    "definitions": [
+      "checked_component",
+      "checked_pilot",
+      "followup_host_bound",
+      "prepare",
+      "launch",
+      "prepared_rows"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.workflows.molecular_native_namespace",
+      "redox.core.runtime_paths",
+      "redox.validation.protonation",
+      "redox.workflows.bounded_molecular",
+      "redox.workflows.resources",
+      "redox.workflows.prepared_namespace_queue",
+      "redox.workflows.resources",
+      "redox.workflows.counterion_association"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/cpu_chunks.py",
+    "sha256": "f67633a450b8a448f8cfd9ace85c306b64f46a524289f3e744b9e19e82c3b47a",
+    "purpose": "Launch a measured CPU chunk experiment with explicit per-host concurrency.\n\nThis is a CPU-only executor. Quantum stages retain the shared GPU reservation\nworkflow; a cheap descriptor completion cannot establish quantum readiness.",
+    "definitions": [
+      "module_for_stage",
+      "launch",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.workflows"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/derived_energy_namespace.py",
+    "sha256": "5128bb7e5c9c51587ddaa4d11c4f43d39178a6a9241714227cae84f209a27b59",
+    "purpose": "Measured-class electronic successors using unchanged archived QM workers.",
+    "definitions": [
+      "mount",
+      "measured_validator",
+      "policy",
+      "prepare",
+      "finalize",
+      "refresh",
+      "main"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.namespace_sources",
+      "redox.workflows",
+      "redox.workflows.derived_native_namespace",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.resources",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/derived_native_namespace.py",
+    "sha256": "637c8a15abe2d69e5b76b8f9daaa903e2b4e56710cd5a4f982baa040e9f5dcd7",
+    "purpose": "Create new native states from checked namespace energy receipts.\n\nOnly provenance paths are relocated into a derived parent receipt. Original\nrecords remain byte-identical; numerical fields, state and method are unchanged.\nThe archived native preparer and worker supply every scientific calculation.",
+    "definitions": [
+      "portable_parent",
+      "namespace_command",
+      "prepare",
+      "probe",
+      "launch",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.namespace_sources",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/effective_native_namespace.py",
+    "sha256": "0295c858f1ed1bca1ca54b7078b7637306fbdcef9a6a8d3c20d0b90d267f4a75",
+    "purpose": "Prospective smaller-RSS execution with the original native equations intact.\n\nThe original 80-GiB same-PID guard stays active. An outer, stricter guard defines\nthe effective reservation. Only the resource-admission floor is adapted; native\ngeometry, SCF, Hessian, mode and thermochemistry checks remain unchanged.",
+    "definitions": [
+      "constitution",
+      "validate_class",
+      "mount",
+      "prepare",
+      "verify",
+      "probe",
+      "launch",
+      "review",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.archived_sources",
+      "redox.validation.namespace_sources",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.derived_native_namespace",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/environment.py",
+    "sha256": "1903276d32d936f94154ac095a7fd4e2e6c994d4013a841965d49be260e2e543",
+    "purpose": "Process environments shared by orchestration, without changing os.environ.",
+    "definitions": [
+      "worker_environment"
+    ],
+    "imports": [
+      "pathlib"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/geometry_checkpoints.py",
+    "sha256": "2493d41cd7a3ca7a6a2229092f4133fe944ade75e0fd052a2100f4f50ee3e84a",
+    "purpose": "Durable, explicitly unqualified geometry evaluation checkpoints.",
+    "definitions": [
+      "write_geometry",
+      "checkpoint_callback"
+    ],
+    "imports": [
+      "redox.core.io"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/gpu.py",
+    "sha256": "9c7ff95c95919e71ab1bbbee32a2a94e222277b914c6a027108c9a4c7c353ed1",
+    "purpose": "Run one full molecular QM command with resource preflight and a GPU reservation.\n\n    python -m redox.workflows.gpu --gpu 0 --out logs/runs/NAME --         python -m redox.qm.sp --only ID --backend gpu\n\nThe output directory must be new. A completed process is execution evidence;\nscientific outputs still need their domain's readiness and physical QC checks.",
+    "definitions": [
+      "_probe_and_exec",
+      "run_gpu",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.workflows.environment",
+      "redox.workflows.resources",
+      "redox.qm.native_thermal"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/host_local_review.py",
+    "sha256": "154f69f9f98ab6f4a8f37f1ef28ebde4aecc1bb2f7dee7fdb5d9746332679609",
+    "purpose": "Run an archived namespace review on its source host with one disjoint CPU.",
+    "definitions": [
+      "command_for_host"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/interrupted_native.py",
+    "sha256": "3d28b18c177b586ec195ca3502bb312875b9dbe0b221c539563b9050a304c39a",
+    "purpose": "Continue an exact native state interrupted by a proven foreign GPU resident.",
+    "definitions": [
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.namespace_sources",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.submission_refusal",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/ionic_native_cycles.py",
+    "sha256": "6664a6e81743faa7bf273631b5d927e6fec64024e699ba44f6e66af9080fe05f",
+    "purpose": "Collect exact, balanced finite-minimum native occupancy free energies.\n\nOnly independently reviewed components with actual SCF-frame checks enter a\ncycle. Missing components stay blank; E, G, sampling and material admission have\nseparate meanings. No new quantum calculation is launched by this module.",
+    "definitions": [
+      "validate_component",
+      "native_cycle",
+      "analyze",
+      "main"
+    ],
+    "imports": [
+      "copy",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.properties.context",
+      "redox.workflows.ionic_stationary_cycles",
+      "redox.workflows.molecular_native_namespace",
+      "redox.core.io",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/ionic_stationary_cycles.py",
+    "sha256": "1b31832a4b2974a1722c0e2b22d08b6da824edb053c7173946376ca2ef0d807a",
+    "purpose": "Balanced finite-pose electronic cycles; never substitute E for missing G.",
+    "definitions": [
+      "validate_cycle_balance",
+      "electronic_cycle",
+      "screening_signature",
+      "analyze"
+    ],
+    "imports": [
+      "collections",
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.workflows.molecular_native_namespace"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/launch.py",
+    "sha256": "d68b5a6d8948ee35270fd53c0f5d88c2e134f0d823d79dcaee222e808f2d4845",
+    "purpose": "Plan or run resumable DFT/UMA shards on all suitable free GPUs of this host.\n\n    python -m redox.workflows.launch --module dft --out logs/runs/NAME\n    python -m redox.workflows.launch --module dft --out logs/runs/NAME --execute\n\nFor multi-node static shards, supply the same --shard-count and disjoint\n--shard-start ranges. Each node must pass its own reservation/resource preflight.",
+    "definitions": [
+      "commands",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.workflows.environment",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/launch_current.py",
+    "sha256": "2096f8375d3b5288fe27e94f6b06967f051f05b67e85b68d9968aaae0088088e",
+    "purpose": "Current engine policy for the reservation-aware shard launcher.",
+    "definitions": [
+      "commands",
+      "source_metadata",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.qm.uma_model_identity",
+      "redox.workflows"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/matched_polymer_reference.py",
+    "sha256": "683f355ae7906d013386bb7d5dee472a1269a9b7d440b348fefe85b8371090bc",
+    "purpose": "Exact-identity warm starts for corrected empty-backbone reference calculations.",
+    "definitions": [
+      "select_seed",
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.charged_polymer_pilot",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/molecular_native_namespace.py",
+    "sha256": "bdab48de00c4409397ead8cb8a33bb019b7ce117f821ebbadfdd9044bb61e8e5",
+    "purpose": "Complete exact route-admitted molecular states in isolated archive namespaces.\n\nScientific programs and their controls remain source-frozen. Only private DFT,\nlock and bounded-repair directories are writable at the original recorded paths.",
+    "definitions": [
+      "load",
+      "safe_component",
+      "source_state",
+      "prepare",
+      "verify",
+      "command",
+      "probe",
+      "launch",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.validation.protonation",
+      "redox.build.contracts",
+      "redox.workflows.solution_pair_namespace",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.resources",
+      "redox.workflows.native_resource_profiles",
+      "redox.workflows.resources",
+      "redox.workflows.counterion_gradient_pilot",
+      "redox.workflows.counterion_geometry_resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/molecular_recovery.py",
+    "sha256": "d3338f25047bea4e9a3ea65c9a1f9256e9e3683ac6ed5f2608b9eb23b8a20dfe",
+    "purpose": "Reuse verified minimum-repair geometries after a post-QM namespace failure.\n\nOld attempts remain unchanged. Fresh native checks run in a new guarded case;\nsuccessful optimization and active-SP work is retained instead of recomputed.",
+    "definitions": [
+      "recovered_metadata",
+      "select_verified_repair",
+      "prepare_recovery"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.validation.protonation",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/motif_interaction_energy.py",
+    "sha256": "0231ed1b057fb67d8484ad9bc3ff494b5ba5be45618188d58f045d01c79809a8",
+    "purpose": "Source-bound electronic A/B/AB controls for frozen charged motif pairs.\n\nThis is an operational capped-fragment interaction, including continuum response.\nIt is separate from whole-chain nonadditivity, deformation, binding G and coupling.",
+    "definitions": [
+      "validate_construction_binding",
+      "checked_triplet",
+      "checked_pilot",
+      "collect",
+      "prepare",
+      "launch"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.ionic_stationary_cycles",
+      "redox.validation.execution_review",
+      "redox.core.runtime_paths",
+      "redox.workflows.bounded_molecular",
+      "redox.workflows.resources",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/motifs.py",
+    "sha256": "f95271cbfd5b47a0bd598a28b0ad5be7c39e93ad7b1edeaac24c34a9465bf638",
+    "purpose": "Validate, graft, compute and audit registered motifs. Default is a read-only plan.\n\n  python scripts/pipeline/run_motifs.py --config config/custom_candidates.py --out results/run_name\n  python scripts/pipeline/run_motifs.py --config config/custom_candidates.py --out results/run_name --execute --gpu 0\n  ... --execute --gpu 0,1,2   # optimize the redox states of each motif concurrently, one GPU each\n\nGPU steps always run through gpu_reserve. Existing outputs are reused only when valid;\nrepair that would replace an existing geometry must be reviewed separately.",
+    "definitions": [
+      "selection_hash",
+      "resume_config_matches",
+      "run_stage",
+      "state_jobs",
+      "run_parallel",
+      "commands",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "concurrent.futures",
+      "queue",
+      "redox.core.common",
+      "redox.build.candidates",
+      "redox.build.contracts",
+      "redox.core.io",
+      "redox.workflows.resources",
+      "redox.screening.scorecard",
+      "redox.core.common",
+      "redox.validation.readiness",
+      "redox.core.common",
+      "redox.properties.potentials",
+      "redox.core.common",
+      "redox.validation.readiness",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/native_component_resources.py",
+    "sha256": "5284813cfbc3aaa182608426f512351c3aff0066955c04c6ec44c62248120e11",
+    "purpose": "Declared native-component resource classes; physical tolerances stay separate.\n\nThis module is copied into each new larger pilot's frozen sources so its worker\nand independent reviewer use the same bounds without importing another checkout.",
+    "definitions": [
+      "retained_estimate",
+      "larger_profile",
+      "validate_plan",
+      "peak_limit",
+      "check_peak",
+      "execution_budget"
+    ],
+    "imports": [
+      "contextlib",
+      "gpu4pyscf.df.hessian"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/native_resource_profiles.py",
+    "sha256": "4231531a722535480b431668ae4c36f59911abc81f85707cd72f567c44be0a95",
+    "purpose": "Apply a prospectively tested resource bound to pending matched native tasks.\n\nNo numerical setting, namespace, geometry or running reservation is changed.\nThe reference run must pass independent native and high-water resource checks.\nEvery new task keeps both its original inner guard and a stricter outer guard.",
+    "definitions": [
+      "MatchedNativeProfiles",
+      "admission_spec",
+      "first_fitting",
+      "output_room"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.workflows",
+      "redox.validation.namespace_sources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/owned_debugger.py",
+    "sha256": "72e0221fdd63248c08098174381d12af2d095159814409ed2624d47ccae758c2",
+    "purpose": "Cooperative, PID-specific debugging of a new owned diagnostic process.\n\nThe target opts in to one verified debugger through the Linux Yama API. Shared\nptrace policy stays unchanged; existing scientific workers are never attached.",
+    "definitions": [
+      "sha256_file",
+      "process_start",
+      "permit",
+      "configuration",
+      "start",
+      "control"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.io",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/polymer_campaign.py",
+    "sha256": "ccecf571843161cbe3fd01afa8cf232ca8815958b0488568bd862b0e3fe2b882",
+    "purpose": "Scientific state and analysis for reproducible polymer occupancy campaigns.\n\nGeometry/SP calculation uses a thin adapter to the existing, qualified oligomer\ndriver. Electronic nonadditivity, conditional grafting free energies and physical\nfeasibility are deliberately separate fields with separate admission rules.",
+    "definitions": [
+      "digest",
+      "verify_sources",
+      "load_module",
+      "read_plan",
+      "reaction_terms",
+      "freeze",
+      "nonadditivity",
+      "conditional_grafting",
+      "admitted_records",
+      "selected_graph_records",
+      "energy_sampling_terminal",
+      "collect",
+      "optimizer_settings",
+      "calculate_energy",
+      "calculate_native_G"
+    ],
+    "imports": [
+      "contextlib",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.workflows.checkpoints",
+      "rdkit",
+      "redox.build.grafting",
+      "redox.workflows.geometry_checkpoints",
+      "redox.qm.sp",
+      "redox.core.protocol",
+      "redox.core.common",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/polymer_continuation.py",
+    "sha256": "b7b7409f02961b70eea1be17983f17c88e8e260234c3a75dba31de2e5c820a55",
+    "purpose": "Source-preserving continuations of finite, neutral polymer calculations.",
+    "definitions": [
+      "review_memory_pilot",
+      "separate_stages",
+      "execution_settings"
+    ],
+    "imports": [
+      "contextlib",
+      "redox.qm.dft"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/polymer_gradient_diagnostic.py",
+    "sha256": "ae2d8d134299922a27e7a70be1e6f547a6fe8c2466ab7862a9002603489151a2",
+    "purpose": "Source-bound three-SCF gradient reproduction, independent of native admission.",
+    "definitions": [
+      "select_points",
+      "prepare",
+      "probe"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.namespace_sources",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/prelaunch_accounting.py",
+    "sha256": "7ada4184177cfd6d9a2c5bb75f09392af0fac594ac932c7605480e0d5e03d597",
+    "purpose": "Separate proven closed resource refusals from bounded prelaunch failures.\n\nThis is read-only accounting. It retires no claim and admits no scientific\nresult. Started attempts and uncertain ownership must remain preserved.",
+    "definitions": [
+      "launcher_versions",
+      "prelaunch_accounting",
+      "nonresource_prelaunch_failures"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.workflows.submission_refusal"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/prepared_namespace_queue.py",
+    "sha256": "d672df14264844e1f6c3389ae2f622d3bec85fc151edbe2f730f0c6e3ec71a7e",
+    "purpose": "Bounded waiting for already admitted, immutable scientific namespaces.\n\nScientific admission stays with the caller. This shares process ownership,\nresource-refusal accounting, source guards and the existing fleet dispatcher;\nit never retries a started scientific calculation or certifies its outputs.",
+    "definitions": [
+      "disposition",
+      "run"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.charged_native_followup",
+      "redox.workflows.sampling_native_queue",
+      "redox.workflows.prelaunch_accounting",
+      "redox.workflows.resources",
+      "redox.validation.execution_review"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/processes.py",
+    "sha256": "de0b75568c12f6f135757426cf672efb46667d058a14093c5bb463aaebff6b88",
+    "purpose": "Release state-worker children without leaving reusable scientific clients stale.",
+    "definitions": [
+      "stop_owned_children"
+    ],
+    "imports": []
+  },
+  {
+    "path": "src/redox/workflows/publication.py",
+    "sha256": "455351ae4436afa976c102d9a9875918ba050944f34b9c6f01452b01e1721b36",
+    "purpose": "Daily publication windows shared by result collectors and slide watchers.",
+    "definitions": [
+      "watch_deadline"
+    ],
+    "imports": [
+      "datetime",
+      "zoneinfo"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/reaction_component_namespace.py",
+    "sha256": "c86f7a10e4b7c674dfd3ba975762f523990dff621abf1d6cf3a9771c003eb30f",
+    "purpose": "Prepare exact route reagents without adding them to the candidate registry.\n\nEach fixed conformer has a private archive view, a one-row reagent manifest,\ndurable checkpoints and independent native thermochemistry. UMA supplies only\nthe warm start; all reported energies and derivatives remain DFT/SMD.",
+    "definitions": [
+      "validate_component",
+      "prepare",
+      "probe",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "rdkit",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows",
+      "redox.build.structures",
+      "redox.build.manifest",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/reference.py",
+    "sha256": "175340047acf178a1cec9bc384079fd5b617000087842d82fb227cd2f6e467bf",
+    "purpose": "Seed a checkout with the pinned calibration evidence in data/reference/.\n\nEvery Fc-referenced potential and every scorecard uncertainty is re-derived live from raw\nrecords (ferrocene; grounded MeCN benchmark molecules) and from certificate evidence that\nthe native thermal gates re-hash. This installs exactly those immutable files into\nlibrary/, calcs/ and results/, verifying each sha256, and never overwrites a differing\nfile. `--verify` then recomputes the Fc reference and the uncertainty evidence through the\nproduction gates and requires an exact match with the validated values.\n\n  python -m redox seed-reference            # install (idempotent) and verify\n  python -m redox seed-reference --check    # report only, write nothing",
+    "definitions": [
+      "load",
+      "plan",
+      "merge_manifest_rows",
+      "live_evidence",
+      "verify",
+      "compare_results",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "pathlib",
+      "redox.core.common",
+      "redox.build.manifest",
+      "redox.core.common",
+      "redox.properties.potentials",
+      "redox.screening.scorecard"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/relocate_unstarted_namespace.py",
+    "sha256": "4550110d31e8eefd4c2067a922fad9c8fd13c604498bf67a37be96a8a770ff72",
+    "purpose": "Relocate byte-identical dependency bindings in a never-started namespace.\n\nNo code/geometry/state/method bytes are changed. Preserve the original namespace,\nprelaunch refusals and owner records; require every recorded controller closed.",
+    "definitions": [
+      "relocate"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/residency_refusal.py",
+    "sha256": "83e1448b25d0402e1067d62e6c023d65c7e4296b87943b35a7b48d42ec1bfd7f",
+    "purpose": "Recover a proven foreign-residency refusal before the scientific guard starts.\n\nThis never clears GPU reservations or interrupts a peer. A namespace whose\nhost/scientific guard or raw outputs exist is outside this recovery path.",
+    "definitions": [
+      "refusal_branch",
+      "release_residency_refusal"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.namespace_sources",
+      "redox.workflows.submission_refusal"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/resources.py",
+    "sha256": "8af2324f43a82e81f76a98f133ed2df0902172adf0a3b5e84639ced66877cbcf",
+    "purpose": "Shared CPU allocation and authoritative GPU availability discovery.\n\nAvailability is a snapshot; only gpu_reserve's atomic run establishes ownership.",
+    "definitions": [
+      "allocation_guard",
+      "verify_gate_owner",
+      "inspect_gpu",
+      "gpu_suitability",
+      "host_capacity",
+      "free_slots",
+      "cpu_allocation",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "contextlib",
+      "pathlib",
+      "redox.core.runtime_paths",
+      "redox.core.common"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/response_diagnostic.py",
+    "sha256": "f5adeaf61476978bec2765b840ec10c939196fafba5d5f20fff661c7e1f75c76",
+    "purpose": "Prepare and run a bounded, read-only orbital-response performance diagnostic.\n\nThe production 64-GiB disk gate remains unchanged. Short probes reuse large\ninput arrays and cap output at 64 MiB. The explicitly selected checkpointed\nprofile reserves a 2-GiB output budget above a 32-GiB shared-volume margin.\nIts recreated grid is not an exact native-Hessian restart.",
+    "definitions": [
+      "prepare",
+      "probe",
+      "launch",
+      "observe_budget"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.qm.response_diagnostic",
+      "redox.validation.namespace_sources",
+      "redox.workflows",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.owned_debugger",
+      "redox.workflows.resources",
+      "redox.workflows.resources",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/revalidate_sp.py",
+    "sha256": "5a34d4daa62d11811b0c82147d0d689eeee0c218474e09fc3d730d79994383ae",
+    "purpose": "Independently recompute selected historical SP adoptions on frozen geometries.\n\nPreparation and collection are CPU-only. Workers run inside workflows.gpu and\nclaim a shared resumable queue. Collection can replace an agreeing historical\nrecord only after preserving its exact original bytes and rechecking all inputs.\nChanged energies remain explicit review items rather than silently replacing data.",
+    "definitions": [
+      "sha",
+      "read_json",
+      "solution_diagnostics_ok",
+      "prepare",
+      "verified_candidate",
+      "inputs_current",
+      "done_valid",
+      "compute_task",
+      "worker",
+      "collect",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "importlib",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.qm",
+      "redox.core",
+      "redox.workflows.resources",
+      "redox.workflows.resources",
+      "gpu4pyscf.df",
+      "redox.qm"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/route_cds_native.py",
+    "sha256": "b7250d94dd7afd1fd4dbba8b6c45c128cae906a6bac75f37a402423e259b5bd6",
+    "purpose": "Qualify a targeted CDS numerical step for fresh full native controls.\n\nThis admits no G: exact saved neutral failures identify the component and all\nfresh DFT/Hessian/derivative/minimum/nuclear checks remain mandatory.",
+    "definitions": [
+      "check_components",
+      "checked_qualification"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/route_geometry.py",
+    "sha256": "a2055b93ea5ba59832a9b54b8ea2fc5e7660ba3b75df86cc7925857ebdc1a621",
+    "purpose": "Refine both signed branches of an independently diagnosed molecular saddle.\n\nShares the strict primary geometry worker/reviewer with chloride controls,\nwhile retaining its own exact chemistry/state and 32-GB resource admission.\nNo energy at the old geometry or native free energy transfers to a new pose.\nTop-level imports stay standard-library-only for the copied worker profile.",
+    "definitions": [
+      "visible_bindings",
+      "validate_plan",
+      "prepare",
+      "qualified_rows"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.validation.protonation",
+      "redox.core.hashing",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.bounded_molecular",
+      "redox.workflows.prepared_namespace_queue"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/route_molecular_panel.py",
+    "sha256": "d0bd3a8b220acb507b48aeec0be8440a2161716d50f5edd6f83878fb5b4ee6be",
+    "purpose": "Start an exact route-admitted molecule from preserved source geometries.\n\nThe first stage reuses the established installed/corrected electronic worker\nand its independent review. Own native thermochemistry and matched references\nremain required before publishing a potential or reaction free energy.",
+    "definitions": [
+      "route_candidate",
+      "prepare",
+      "qualified_rows",
+      "dispatch",
+      "queue"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.build.contracts",
+      "redox.workflows.screening_component_panel",
+      "redox.workflows.charged_native_followup",
+      "redox.workflows.prepared_namespace_queue",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/route_primary_native.py",
+    "sha256": "12a0fcf5bba29180ebdaf65da95cb26d17669a1c1968c389729f5c7b020fd06d",
+    "purpose": "First native components for the route-admitted phenothiazine baseline.\n\nReuses the primary molecular Hessian resource envelope and quantum/partition\nengine. Each state is a prospective pilot and needs its own sulfur derivatives,\nwavefunction, minimum, nuclear and closed-execution review. No potential is\npublished by this module. Top-level imports stay standard-library-only because\nthe profile is copied into the isolated scientific worker namespace.",
+    "definitions": [
+      "validate_plan",
+      "prepare",
+      "prepare_refined",
+      "_prepare_component",
+      "queued_rows"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.core.runtime_paths",
+      "redox.workflows.molecular_native_namespace",
+      "ase.io",
+      "pyscf",
+      "redox.core.hashing",
+      "redox.core.protocol",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.route_refined_electronic",
+      "redox.workflows.route_geometry",
+      "ase.io",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.core.runtime_paths",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources",
+      "redox.workflows.route_cds_native",
+      "redox.workflows.route_geometry",
+      "redox.workflows.prepared_namespace_queue"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/route_refined_electronic.py",
+    "sha256": "0e9595154ec9144ad58bc635f0beef41b793806233856f6b4c0b746286e302ba",
+    "purpose": "First high-level scoring of independently checked phenothiazine refinements.\n\nReuses the installed/corrected molecular solver and actual-checkpoint reviewer.\nNo stored electronic reference exists at these new geometries. Both neutral\nbranches remain distinct inputs until their own electronic/native checks pass.\nTop-level imports stay standard-library-only for the copied admission profile.",
+    "definitions": [
+      "validate_plan",
+      "validate_inputs",
+      "prepare",
+      "qualified_rows",
+      "launch"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.protocol",
+      "ase.io",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.core.runtime_paths",
+      "redox.validation.protonation",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.route_geometry",
+      "redox.workflows.screening_energy_panel",
+      "redox.core.hashing",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.screening_control",
+      "redox.workflows.resources",
+      "redox.workflows.prepared_namespace_queue"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/sampling_energy.py",
+    "sha256": "2f7648a097f4dcef5998de9ffffbf842798b2cbb7fc6005523c959a0c3456afd",
+    "purpose": "Prepare the complete corrected sampling cohort with compact SCF evidence.\n\nThe existing gas/SMD hybrid single-point equations and model are unchanged.\nOld geometries are explicit starting inputs; historical E/G never enter this\nnew cohort. Empty, single and double grafts require separate resource pilots.",
+    "definitions": [
+      "density_restart_source",
+      "profile",
+      "validate_inventory",
+      "prepare",
+      "dispatch"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.workflows.molecular_native_namespace",
+      "redox.validation.scf_frame",
+      "ase.io",
+      "pyscf.lib",
+      "redox.build.geometry",
+      "redox.validation.protonation",
+      "redox.core.runtime_paths",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.charged_native_followup",
+      "redox.workflows.resources",
+      "redox.validation.execution_review"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/sampling_energy_recovery.py",
+    "sha256": "b624934cb796aa6c19a85fc2d7c3c61cbd0f7e7457388bdb1dc5d8b609eeaefe",
+    "purpose": "Replace one rejected electronic slot with an exact-state fresh recovery.\n\nThe original namespace and its interrupted/exclusivity evidence remain intact.\nOnly its checked same-frame density initializes a new solve; every normal\nconvergence, residency, resource and independent review gate remains required.",
+    "definitions": [
+      "guard_preflight_source",
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.sampling_energy",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/sampling_inventory.py",
+    "sha256": "43df8e7d2a6723ed7b4fbebec761d62ac1ea16dcadbb89c7ade9da06e127435d",
+    "purpose": "Freeze the complete declared 20-start, twelve-cell polymer sampling roster.\n\nOnly starting geometries and their identities are selected. No old electronic or\nthermal values are imported into the corrected cohort. The original results\nremain available as a separate historical collection.",
+    "definitions": [
+      "inventory"
+    ],
+    "imports": [
+      "collections",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.validation.archived_sources",
+      "redox.validation.namespace_sources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/sampling_native.py",
+    "sha256": "6f7b96cb1aee165a5fc13eb87735760fb21171a7dbf7952e49e86c39710b07a3",
+    "purpose": "Prepare corrected native thermochemistry from an exact checked energy input.\n\nUses the original smooth-model native driver and its independent reconstruction.\nThe checked largest neutral Hessian supplies a resource witness, not a G value.\nEvery new input must pass its own derivative, mode and partition checks.",
+    "definitions": [
+      "profile",
+      "native_settings",
+      "resource_witness",
+      "prepare",
+      "dispatch"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "pyscf",
+      "pyscf.lib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.molecular_native_namespace",
+      "redox.validation.execution_review",
+      "redox.validation.archived_sources",
+      "redox.core.runtime_paths",
+      "redox.validation.sampling_receipts",
+      "redox.workflows.charged_native_followup",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/sampling_native_queue.py",
+    "sha256": "71baa0d7928983c3666ccc54848752183d1f699723f590475db3d81f66555c37",
+    "purpose": "Full-roster native collection and growing, source-bound preparation.\n\nThe 240 original slots remain visible, including those whose energy is pending.\nOnly independently checked energies become native inputs; the largest complete\nnative pilot is mandatory before preparing any followup.",
+    "definitions": [
+      "roster",
+      "checked_stream",
+      "collect",
+      "prepare_ready",
+      "extend_peers"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.sampling_native_receipts",
+      "redox.validation.sampling_receipts",
+      "redox.workflows.molecular_native_namespace",
+      "redox.validation.execution_review",
+      "redox.validation",
+      "redox.workflows.sampling_native"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/screening_component_panel.py",
+    "sha256": "5fcf1293c5cf643f4d66b0c8be26167894af326cb24181c71d580ed916c3a51e",
+    "purpose": "Implementation-impact controls for exact states of a portable reaction package.\n\nReuses the established electronic worker, reservation dispatcher, resource-pilot\nreview and independent SCF-checkpoint reviewer. No experimental endpoints are\ninvented and no new electronic energy is promoted to a total free energy.",
+    "definitions": [
+      "inventory",
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.core.protocol",
+      "redox.workflows.screening_energy_panel",
+      "ase.io",
+      "pyscf",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/screening_control.py",
+    "sha256": "1271cdd3ba40001390864c5700b9b48b56246d7d1bedccefa423bcfc86361ee4",
+    "purpose": "Source-frozen small GPU controls for the upstream screening-barrier fix.",
+    "definitions": [
+      "prepare",
+      "probe",
+      "prepare_polymer",
+      "response_continuation_closure",
+      "full_hessian_wall_seconds",
+      "prepare_polymer_hessian",
+      "hessian_resource_stop",
+      "prepare_hessian_validation",
+      "saved_validation_profile",
+      "launch"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.response_diagnostic",
+      "redox.workflows.polymer_gradient_diagnostic",
+      "redox.validation.namespace_sources",
+      "redox.workflows.archived_native_namespace",
+      "pyscf",
+      "redox.qm.hessian_restart",
+      "redox.workflows.resources",
+      "redox.qm.hessian_restart",
+      "redox.qm.hessian_restart",
+      "redox.qm.response_resume",
+      "redox.workflows.screening_energy_panel",
+      "redox.workflows.sampling_energy",
+      "redox.workflows.sampling_native",
+      "redox.workflows.resources",
+      "redox.workflows.native_component_resources",
+      "redox.workflows.charged_polymer_pilot"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/screening_energy_panel.py",
+    "sha256": "d643b97c34401687ab29c320bfa552a593d1522546add68815a02b9c6b468616",
+    "purpose": "Source-exact benchmark implementation controls and guarded case preparation.",
+    "definitions": [
+      "output_budget",
+      "benchmark_inventory",
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "ase.io",
+      "pyscf",
+      "redox.core.protocol",
+      "redox.core.protocol",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/screening_native_panel.py",
+    "sha256": "e265f9f2ac36892a9acb3843ebeb920c75db049fd26dd76b8daa978e3c460c76",
+    "purpose": "Prepare primary-model molecular Hessian repeats for the exact lead package.\n\nThe existing native thermal and projected partition implementation is retained.\nThese are numerical method controls, including references/precursors, with no\nnew synthesis or material admission. The largest RKS/UKS repeats are pilots.",
+    "definitions": [
+      "prepare",
+      "qualified_rows"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "pyscf",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.workflows.screening_component_panel",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources",
+      "redox.workflows.charged_native_followup"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/solution_pair_namespace.py",
+    "sha256": "266827a90364935c459e6c3ac2e911621d05034fbbcab4df971286d3a13436f5",
+    "purpose": "Source-bound continuation of the existing molecular solvent-relaxation model.",
+    "definitions": [
+      "geometry_pair",
+      "prepare",
+      "verify",
+      "validate_layout",
+      "command",
+      "probe",
+      "launch",
+      "main"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.archived_sources",
+      "redox.workflows.archived_native_namespace",
+      "redox.workflows.resources",
+      "redox.validation.protonation",
+      "redox.build.geometry",
+      "redox.workflows.resources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/split_electronic.py",
+    "sha256": "4c3a7feb5f1d9809b7badc536037b90e1177e421dbdc0414d8083433d48204c1",
+    "purpose": "Join a checked geometry and a canonical energy with explicit backend identity.",
+    "definitions": [
+      "composite_result"
+    ],
+    "imports": [
+      "redox.core.protocol",
+      "redox.qm.sp"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/split_polymer.py",
+    "sha256": "6ef4a0d3339069ef37e244d2066f17a6d4cab4b5c3af67785cecee42ccd27e75",
+    "purpose": "Join separately qualified geometry and active energies without losing parents.",
+    "definitions": [
+      "composite_result"
+    ],
+    "imports": [
+      "redox.core.protocol",
+      "redox.qm.sp"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/stages.py",
+    "sha256": "70ceb215535c529ffe10e8d778ef373392695b641150ec343dcde9ee627dd02f",
+    "purpose": "Dependency-aware execution of independent subprocess stages.\n\nOnly the coordinator changes status. Once a stage fails, no more work starts;\nalready-running independent stages finish and retain their logs.",
+    "definitions": [
+      "validate_graph",
+      "execute_graph"
+    ],
+    "imports": [
+      "concurrent.futures"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/submission_refusal.py",
+    "sha256": "bddc50ea934b63efa2747a3bc95525ba1adb7c424406777f5a0d13720608fd5a",
+    "purpose": "Recognize resource refusals that occurred before any scientific subprocess.\n\nNeither a dead controller nor a traceback alone authorizes reopening a task.\nThe exact source branch, source hash, absent outputs and fleet-wide absence of\nmatching producers must all agree. Unknown ownership preserves the claim.",
+    "definitions": [
+      "refusal_branch",
+      "producer_inventory",
+      "release_prelaunch_refusal"
+    ],
+    "imports": [
+      "concurrent.futures",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.validation.namespace_sources"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/tables.py",
+    "sha256": "0b9553745d32ac2e42465501caa91540bb0bc59166cd50a60ce98b00e2e14b90",
+    "purpose": "Rebuild and independently audit tables in a new directory using existing records.\n\nEach stage runs in a fresh interpreter. Legacy modules can use RESULTS globals\nwithout redirecting another review or contaminating the caller's modules.\nThis workflow performs no quantum calculations and never promotes its output.\n\n    python -m redox.workflows.tables --out results/reviews/my_review",
+    "definitions": [
+      "TableStage",
+      "snapshot_inputs",
+      "_load_stage",
+      "_execute_stage",
+      "review_tables",
+      "main"
+    ],
+    "imports": [
+      "__future__",
+      "dataclasses",
+      "pathlib",
+      "redox.core.common",
+      "redox.core.io",
+      "redox.core.hashing",
+      "redox.workflows.environment",
+      "redox.validation.provenance",
+      "redox.workflows.resources",
+      "redox.workflows.stages",
+      "redox.workflows.stages"
+    ]
+  },
+  {
+    "path": "src/redox/workflows/viologen_motif_fragments.py",
+    "sha256": "e288afe9248344ae44879cf8a24759384b5f1d304fbfb22399d394adcd72d953",
+    "purpose": "Prepare frozen methyl-capped viologen motifs from checked polymer frames.\n\nReuses the archived constructor and its independent cap/pose auditor. Charged\nviologens require an explicit CH2 wildcard: otherwise the symmetric core also\nmatches an N-methyl carbon, which is not the intended benzyl attachment atom.\nThis stage produces geometries, never interaction energies, G or populations.",
+    "definitions": [
+      "benzyl_query",
+      "prepare"
+    ],
+    "imports": [
+      "pathlib",
+      "ase.io",
+      "rdkit",
+      "rdkit.Chem",
+      "redox.core.common",
+      "redox.core.hashing",
+      "redox.core.io",
+      "redox.build.polymer_contacts",
+      "redox.workflows.molecular_native_namespace",
+      "redox.workflows.resources"
+    ]
+  }
+]
