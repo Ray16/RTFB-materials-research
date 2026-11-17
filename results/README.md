@@ -1,5 +1,11 @@
 # Current results
 
+## Project highlights
+
+- [Visual project report](report/project_highlights.html): a plain-language walk through exact molecular results, benchmark limits, capacity, attachment and four finite neighbor-effect cycles. Eight embedded vector figures; no new quantum calculations or material qualification.
+- [Pinned report inputs](report/manifest.json) and [browser checks](report/checks.json). Raw evidence remains at the source locations listed in the manifest and existing entries below. Rebuild with `python scripts/report/build_report.py`.
+
+
 Use [INDEX.json](INDEX.json) for machine-readable current pointers. Historical
 scientific outputs remain immutable at their original locations, including
 `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/`. Startup records alone do not
