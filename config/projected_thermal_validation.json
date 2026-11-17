@@ -1,0 +1,51 @@
+{
+  "schema": 1,
+  "status": "independently_qualified",
+  "protocol": {
+    "schema": 1,
+    "model": "projected internal-mode xTB6.7.1 qRRHO",
+    "projection": "mass-weighted SVD internal subspace; symmetric full-precision Cartesian Hessian",
+    "masses": "installed xTB NIST isotopic-average atomic masses",
+    "rigid_mode_exclusion": "geometric subspace; no frequency threshold",
+    "nuclear_kernel": "installed GNU Fortran thermodyn; explicit internal modes",
+    "kernel_isolation": "dedicated CPU subprocess; no PySCF/D4 Python imports",
+    "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+    "frequency_scale": 1.0,
+    "temperature_K": 298.15,
+    "rotor_cutoffs_cm": [
+      25,
+      50,
+      100
+    ],
+    "primary_rotor_cutoff_cm": 50,
+    "imaginary_mode_policy": "absolute value only within the existing -5 cm^-1 minimum gate",
+    "zero_internal_frequency_policy": "refuse; no artificial floor",
+    "symmetry": "xTB symmetry detection for the exact input geometry",
+    "pressure": "same translation convention as installed xTB thermodyn"
+  },
+  "qrrho_source_sha256": "0ea4a9ba48fe39572813aa38572d943bff70ebae7dbb76b277c80249bbadd36f",
+  "kernel_worker_source_sha256": "fda9b62c0bd03a3d415e622b6d3cce511b0df6c900b467004dc64bfe4ef3de90",
+  "library_sha256": "c405797f34ed96470f23158406e6d8a8e102681d3c3cbbaea16692f514f22853",
+  "CLI_reproduction_bound_eV": 1e-06,
+  "independent_partition_equation_bound_eV": 1e-08,
+  "independently_reviewed_records": 232,
+  "independent_checks": 6961,
+  "maximum_independent_partition_difference_eV": 7.858602657506708e-12,
+  "soft_mode_records": 1,
+  "caller_D4_preload_qualified": true,
+  "software_tests_passed": 381,
+  "evidence_sha256": {
+    "results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/summary.json": "a602f6f7996dac1c201eede41cfb0d2f8b7b105a2db5c0fec2b33230088ed290",
+    "results/validation/rigid_mode_thermal_2026-10-18/kernel_isolated_independent_review/checks.json": "71e0719a383d95e50d3b5b9f72ea2f1b06c4fdc4f364f324da6db3bcbc265ed2",
+    "results/validation/rigid_mode_thermal_2026-10-18/kernel_qualification_isolated/summary.json": "18a0926e55345e16e1308faebe09b8891a69907116652b14d3142250607e54ba",
+    "results/validation/rigid_mode_thermal_2026-10-18/kernel_qualification_plan_isolated.json": "a2c9d55c98ad3abe19f6bef0b82ddfd7e1109583ec593e472ec83c8567cf458a",
+    "results/validation/rigid_mode_thermal_2026-10-18/review_kernel_isolated.py": "eec51efd809d79731e6fe0f625cc1246408c4648273196b40da96023d97f6376",
+    "results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_thermo.f90": "af6f20030f68f23d8022896f97b7c5ac0be5a7e6afcbf4199c6f5753e44ccf48",
+    "results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_mctc_mctc_constants.f90": "4ee5e45cfa40a9f3fbc4409cb531c213c8717cee38decaa98e3f973e5a9fe543",
+    "results/validation/rigid_mode_thermal_2026-10-18/xtb_source/src_param_atomicmass.f90": "2f6f9e692d1ca85827b2abc2e777432dcb70aa4bb8f19d97dc4616774f71985a",
+    "results/reviews/2026-10-18/software_checks_isolated_kernel_full.log": "1b37d3cc37dce123574f79e28897bbb317372cae58f8634d815957655e3c459b"
+  },
+  "scope": "Nuclear partition and geometric mode exclusion only. Backing DFT gradient/Hessian/minimum, graph, electronic/spin ordering and reference gates remain separate.",
+  "created": 1792381924.7011244,
+  "certificate_content_sha256": "440722342b2f325d63ba7983fc90fa6ce5daf7ca9c936d836309133b55e1ff09"
+}

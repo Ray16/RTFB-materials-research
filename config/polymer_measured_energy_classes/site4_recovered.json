@@ -1,0 +1,28 @@
+{
+  "class_label": "site4_recovered",
+  "energy_namespace": "/nfs/lambda_stor_01/homes/rzhu/redox_energy_point_reviews/2026-10-30/all_same__occ_4__conf001/staged/namespace.json",
+  "maximum_RSS_GiB": 160,
+  "geometry_subset_inputs": [
+    {
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-27_smooth_checkpoint_recovery",
+      "keys": [
+        "alternating__occ_4__conf019",
+        "alternating__occ_4__conf020"
+      ],
+      "reviews": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-27/smooth_checkpoint_recovery/independent_reviews/checked"
+    },
+    {
+      "batch": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_resident_recovery",
+      "keys": [
+        "all_same__occ_4__conf001"
+      ],
+      "reviews": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/reviews/2026-10-25/smooth_recovered_pilots_review/checked"
+    }
+  ],
+  "recovered_from": {
+    "alternating__occ_4__conf019": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_4/alternating__occ_4__conf019",
+    "alternating__occ_4__conf020": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_expansion_checked/batches/2026-10-25_smooth_occupied_expansion_checked__alternating__occ_4/alternating__occ_4__conf020",
+    "all_same__occ_4__conf001": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/polymer_models/campaigns/2026-10-25_smooth_occupied_geometry_pilots/all_same__occ_4__conf001"
+  },
+  "scope": "Independently checked recoveries of the same six declared inputs; no new conformer identity or synthesis admission"
+}

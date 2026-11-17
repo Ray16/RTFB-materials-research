@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.ipynb_checkpoints/
+
+# Model weights & caches (UMA weights live in the HF cache, never in-repo)
+*.pt
+*.pth
+*.ckpt
+.cache/
+hf_cache/
+
+# Large / regenerable QM outputs
+*.chk
+*.fchk
+*.molden
+*.cube
+*.hdf5
+*.h5
+*.wfn
+*.wfx
+*.log
+
+# Conda / venv
+.venv/
+env/
+
+# Scratch, runtime locks & OS
+scratch/
+tmp/
+logs/
+*.lock
+.DS_Store
+
+# Secrets — never commit tokens
+*.token
+.env
+
+# Transient test / migration reports under validation/ (the committed Nitro
+# evidence under validation/nitro_prior/ and validation/nitro_environment.json
+# are .json and are kept explicitly).
+validation/*.xml
+
+# Licensed / non-redistributable curated data (re-create via docs/DATASETS.md)
+data/raw/validation/solvation_refset_acetonitrile.csv
+
+# Pipeline runtime outputs (never committed; pinned reference inputs live in data/reference/).
+# Use globs (not bare dirs) under results/ so the maintained entry points below can be
+# re-included; a bare "/results/" would prune the dir and block the negations.
+/library/
+/calcs/
+/results/**
+!/results/README.md
+!/results/INDEX.json
+/.venv-figures/
+
+# Local documentation/test tooling and canonical relocated raw artifacts
+.pytest_cache/
+.coverage
+htmlcov/
+/build/
+/dist/
+data/redox_route_sources/
+manuscript/redox_overleaf_exports/
+
+# Pinned oracle evidence. These are the projected-thermal certificate
+# inputs and the occupied-sampling replay figure, not campaign outputs.
+!/results/
+!/results/validation/
+!/results/validation/rigid_mode_thermal_2026-10-18/
+!/results/validation/rigid_mode_thermal_2026-10-18/**
+!/results/reviews/
+!/results/reviews/2026-10-18/
+!/results/reviews/2026-10-18/software_checks_isolated_kernel_full.log
+!/results/figures/
+!/results/figures/slides/
+!/results/figures/slides/occupied_sampling_convergence.pdf

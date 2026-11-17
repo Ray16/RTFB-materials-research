@@ -1,0 +1,99 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/design_pmdi_ethyl/red1/_seed_01.xyz",
+  "charge": -1,
+  "mult": 2,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svpd",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/design_pmdi_ethyl/red1/1791749506370685841/branch_1/opt.xyz",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "scf_guesses": [
+    "minao",
+    "atom",
+    "huckel"
+  ],
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -1182.4622700114546,
+  "e_smd_eV": -32176.437550589442,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -1182.462270011426,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1182.4622700112968,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1182.4622700114546,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -5.514103004100583,
+  "smd_lumo_eV": -0.22897004392246748,
+  "smd_s_squared": 0.7775,
+  "smd_spin_contam": 0.0275,
+  "gas_occupation_guesses": [],
+  "e_gas_Ha": -1182.3786727140268,
+  "e_gas_eV": -32174.162752240016,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -1182.3786727137563,
+      "converged": true
+    },
+    {
+      "guess": "atom",
+      "e_Ha": -1182.3786727138936,
+      "converged": true
+    },
+    {
+      "guess": "huckel",
+      "e_Ha": -1182.3786727140268,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -2.5775010663539266,
+  "gas_lumo_eV": 2.701372703544741,
+  "gas_s_squared": 0.7783,
+  "gas_spin_contam": 0.0283,
+  "anion_unbound": false,
+  "dG_solv_eV": -2.274798349428239,
+  "id": "design_pmdi_ethyl",
+  "state": "red1",
+  "n_e": -1,
+  "n_seeds": 3,
+  "seed_preopt": "alpb",
+  "winning_seed": 1,
+  "seed_e_smd_eV": [
+    -32176.4026,
+    -32176.4027,
+    -32176.4024
+  ],
+  "seed_spread_eV": 0.0004,
+  "g_thermal_eV": null,
+  "n_imag": null,
+  "minimum_repair_source": "/nfs/lambda_stor_01/homes/rzhu/0_redox/calcs/dft/design_pmdi_ethyl/red1/opt.xyz",
+  "minimum_repair_source_sha256": "b60a59fe9370235dd6b8916563ec6364cad9213bc4bffef8c386ff09fd494af5",
+  "legacy_thermal_archive": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs/design_pmdi_ethyl/red1/1791749506370685841/superseded_canonical/result.json"
+}

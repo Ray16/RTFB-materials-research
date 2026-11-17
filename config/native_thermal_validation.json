@@ -1,0 +1,88 @@
+{
+  "schema": 1,
+  "native_protocol": {
+    "schema": 1,
+    "model": "solution geometry-level DFT Hessian",
+    "xc": "r2scan",
+    "disp": "d4",
+    "basis": "def2-svp",
+    "anion_basis": "def2-svpd",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "grid_level": 3,
+    "cphf_grid_level": 3,
+    "grid_response": true,
+    "conv_tol": 1e-12,
+    "conv_tol_grad": 1e-08,
+    "temperature_K": 298.15,
+    "rotor_cutoff_cm": 50,
+    "spin_partition": "unsplit ground spin multiplet",
+    "gradient_max_acceptance_Ha_Bohr": 0.00045,
+    "min_frequency_acceptance_cm": -5,
+    "finite_difference_step_Bohr": 0.0005,
+    "finite_difference_relative_acceptance": 0.01,
+    "max_spin_contamination": 0.1,
+    "df_batch_cap_GiB": 6,
+    "validated_pyscf_version": "2.14.0",
+    "validated_gpu4pyscf_version": "1.8.1"
+  },
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "controls": [
+    {
+      "relative_path": "results/validation/physical_thermal_spin_2026-10-10/analytic_full_response_aq_reference/status.json",
+      "source_sha256": "680f316ec2f8b0b47fa1bd8356792cce59eef1b054c86fae3799b0facb550b3e",
+      "source_status": "analytic_full_response_verified",
+      "admission_status": "analytic_full_response_verified",
+      "software": {
+        "pyscf": "2.14.0",
+        "gpu4pyscf": "1.8.1"
+      },
+      "relative_full_matrix_error": 9.83950376621654e-05,
+      "max_admitted_relative_error": 0.01,
+      "reference": "full conservative independent numerical solution Hessian",
+      "thermal_error_eV_by_cutoff": {
+        "25": -0.003018396324967476,
+        "50": -0.0026499692030927946,
+        "100": -0.0024523591093528196
+      },
+      "fine_response_implementation_verified": null
+    },
+    {
+      "relative_path": "results/validation/physical_thermal_spin_2026-10-10/uks_bq_full_response_control/status.json",
+      "source_sha256": "1a85a8a9b37ceb2368c6fdd807524c8ad7ee257f6e7a7978a07f37d91426d55c",
+      "source_status": "uks_full_response_verified",
+      "admission_status": "uks_full_response_verified",
+      "software": {
+        "pyscf": "2.14.0",
+        "gpu4pyscf": "1.8.1"
+      },
+      "relative_full_matrix_error": 0.00013259510454357353,
+      "max_admitted_relative_error": 0.01,
+      "reference": "full conservative independent numerical solution Hessian",
+      "thermal_error_eV_by_cutoff": null,
+      "fine_response_implementation_verified": null
+    },
+    {
+      "relative_path": "results/validation/physical_thermal_spin_2026-10-10/fc_conservative_minimum_refinement/status.json",
+      "source_sha256": "0d3843f23a938fe99b97d75fe0733bc134c471d345048b3a8a413a7807e35056",
+      "source_status": "refined_reference_verified",
+      "admission_status": "fine_response_implementation_verified",
+      "software": {
+        "pyscf": "2.14.0",
+        "gpu4pyscf": "1.8.1"
+      },
+      "relative_full_matrix_error": 1.9751602629739155e-05,
+      "max_admitted_relative_error": 0.01,
+      "reference": "full conservative independent numerical solution Hessian",
+      "thermal_error_eV_by_cutoff": null,
+      "fine_response_implementation_verified": true
+    }
+  ],
+  "scientific_accuracy_validated": false,
+  "purpose": "Derivative implementation certificate; each new geometry still requires stationarity, spin, full Hessian and independent finite-gradient checks",
+  "certificate_content_sha256": "ec9766a17c7e8f09cde4d82a4aa48c28acb76ce22c60e3290782fd1abd75eba9"
+}

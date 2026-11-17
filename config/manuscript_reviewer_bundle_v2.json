@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "purpose": "Consolidated local reviewer bundle with library and projected-thermal certificate closure",
+  "source_paths": [
+    "src", "scripts", "config", "environments", "examples", "tests", "library",
+    "pyproject.toml", "setup_env.sh", "LICENSE", "README.md",
+    "manuscript/manuscript.tex", "manuscript/supporting_information.tex",
+    "manuscript/references.bib", "manuscript/check_claims.py", "manuscript/build.py",
+    "manuscript/freeze_evidence.py", "manuscript/extend_evidence_with_uv.py",
+    "manuscript/evidence/current.json", "manuscript/evidence/2026-10-26_dipea_uv",
+    "results/figures/manuscript/2026-10-26_dipea_uv",
+    "results/validation/dipea_uv_anchor_2026-10-26/README.md",
+    "results/validation/dipea_uv_anchor_2026-10-26/summary.json",
+    "results/validation/dipea_uv_anchor_2026-10-26/independent_review.json",
+    "results/validation/rigid_mode_thermal_2026-10-18",
+    "results/reviews/2026-10-18/software_checks_isolated_kernel_full.log"
+  ],
+  "packages": [
+    {"id": "primary_review", "record": "results/releases/primary_review/current.json"},
+    {"id": "first_site", "record": "results/releases/first_site/current.json"},
+    {"id": "numerical_controls", "record": "results/releases/controls/current.json"},
+    {"id": "neighbor_cycle", "record": "results/releases/neighbor_cycle/current.json"}
+  ],
+  "public_deposition_authorized_by_manifest": false,
+  "data_license": null,
+  "author_metadata": null,
+  "third_party_source_policy": "Link and identify experimental sources; do not silently relicense third-party PDFs or XML as project code."
+}

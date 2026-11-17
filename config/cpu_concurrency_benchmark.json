@@ -1,0 +1,12 @@
+{
+  "seed": 20261022,
+  "repeats": 3,
+  "chunk_size": 8,
+  "conditions": [
+    {"name": "one_host_1", "hosts": {"lambda2": 1}},
+    {"name": "one_host_2", "hosts": {"lambda2": 2}},
+    {"name": "one_host_4", "hosts": {"lambda2": 4}},
+    {"name": "one_host_8", "hosts": {"lambda2": 8}},
+    {"name": "two_hosts_8", "hosts": {"lambda1": 4, "lambda2": 4}}
+  ]
+}

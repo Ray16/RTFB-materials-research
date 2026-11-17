@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/examples/occupied_sampling_replay/replay.py", line 14, in <module>
+    host_capacity(1,minimum_ram_gib=4);os.sched_setaffinity(0,cpu_allocation(1))
+  File "/nfs/lambda_stor_01/homes/rzhu/0_redox/src/redox/workflows/resources.py", line 72, in host_capacity
+    import psutil
+ModuleNotFoundError: No module named 'psutil'

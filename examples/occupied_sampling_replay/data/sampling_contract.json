@@ -1,0 +1,141 @@
+{
+  "status": "declared_complete_sampling_protocol_not_completed_results",
+  "declared_inputs": 240,
+  "configurations": [
+    "all_same",
+    "alternating"
+  ],
+  "occupancy_graphs": [
+    [],
+    [
+      2
+    ],
+    [
+      3
+    ],
+    [
+      4
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ]
+  ],
+  "starts_per_cell": 20,
+  "first_batch_input_IDs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "expanded_batch_input_IDs": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20
+  ],
+  "electronic_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "solvent_model": {
+    "name": "experimental_PySCF_SWIG_CDS_2030_v1",
+    "solvent": "acetonitrile",
+    "electrostatic_model": "SMD",
+    "electrostatic_surface_points": 590,
+    "CDS_surface": "PySCF experimental SWIG solvent-accessible area",
+    "CDS_points_per_sphere": 2030,
+    "supported_elements": [
+      "C",
+      "H",
+      "N",
+      "O",
+      "Cl"
+    ],
+    "scientific_model_changed": true,
+    "primary_candidate_admission": false
+  },
+  "experimental_method_id": "2bfdff2bfdd7d8728d9398ddaf9eeed7f8d3171c7cbceb71ed1083070945a280",
+  "native_settings": {
+    "xc": "r2scan",
+    "basis": "def2-svp",
+    "disp": "d4",
+    "solvent": "acetonitrile",
+    "SCF_conv_tol": 1e-12,
+    "SCF_conv_tol_grad": 1e-08,
+    "SCF_max_cycle": 200,
+    "grid_level": 3,
+    "gradient_grid_response": true,
+    "Hessian_grid_response": true,
+    "CPHF_grids_matched": true,
+    "gradient_limit_Ha_Bohr": 0.00045,
+    "Hessian_asymmetry_limit": 1e-06,
+    "FD_steps_Bohr": [
+      0.0005,
+      0.001
+    ],
+    "FD_relative_limit": 0.01,
+    "minimum_frequency_limit_cm": -5
+  },
+  "rotor_cutoffs_cm": [
+    25,
+    50,
+    100
+  ],
+  "duplicate_heavy_atom_RMSD_cutoffs_A": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "duplicate_electronic_energy_tolerance_kJ_mol": 0.2,
+  "finite_batch_change_tolerance_kJ_mol": 2.0,
+  "batch_metrics": [
+    "minimum_E",
+    "minimum_G",
+    "finite_set_ensemble_G"
+  ],
+  "unique_minimum_search_hit_counts_are_degeneracies": false,
+  "backbone_configurations_combined_into_one_ensemble": false,
+  "experimental_occupancy_distribution_assumed": false,
+  "global_convergence_proven": false,
+  "historical_E_or_G_imported": false,
+  "complete_occupied_G_cycles_qualified": false,
+  "source_sha256": {
+    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/scripts/pipeline/smooth_polymer_native.py": "32d925908a8bb62a0988ae97ad16304664901aa350a6374e1353185aec679305",
+    "/nfs/lambda_stor_01/homes/rzhu/redox_polymer_continuations/2026-11-02_corrected_sampling_energy_v4/manifest.json": "675916c21a0d985a39fd98149ac04345e91bcda16c7f970c8ca08bfb27e33039"
+  }
+}

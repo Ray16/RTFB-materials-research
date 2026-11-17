@@ -1,0 +1,88 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_base_assisted_pilot/workspace/calcs/dft/dbu_protonated/rest/_seed_01.xyz",
+  "charge": 1,
+  "mult": 1,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "geometry_optimization_converged": true,
+  "optimization_SCF_converged": true,
+  "opt_gradient_grid_response": true,
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_base_assisted_pilot/workspace/calcs/dft/dbu_protonated/rest/opt.xyz",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "5b02dc4019131fef",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -462.54834293487545,
+  "e_smd_eV": -12586.58161704261,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -462.54834293487545,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -9.581493895619078,
+  "smd_lumo_eV": 1.0574811192167517,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "gas_occupation_guesses": [],
+  "e_gas_Ha": -462.45774867275316,
+  "e_gas_eV": -12584.11642158433,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -462.45774867275316,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -13.74961530831218,
+  "gas_lumo_eV": -2.5700803463338753,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "dG_solv_eV": -2.465195458280045,
+  "id": "dbu_protonated",
+  "state": "rest",
+  "n_e": 0,
+  "n_seeds": 3,
+  "seed_preopt": "alpb",
+  "winning_seed": 1,
+  "seed_e_smd_eV": [
+    -12586.5808,
+    -12586.5816,
+    -12586.5808
+  ],
+  "seed_spread_eV": 0.0008
+}

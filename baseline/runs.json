@@ -1,0 +1,47 @@
+[
+  {
+    "command": [
+      "python3",
+      "-I",
+      "-S",
+      "examples/cached_thermochemistry/reproduce.py"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "367b9fdf6969c171efdefdb9953fce44de34f9526af59ad684780e9f20c9162c"
+  },
+  {
+    "command": [
+      "python3",
+      "examples/exact_viologen_replay/replay.py",
+      "replay"
+    ],
+    "returncode": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "python3",
+      "examples/exact_viologen_corrected_replay/replay.py",
+      "replay"
+    ],
+    "returncode": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "command": [
+      "python3",
+      "-I",
+      "examples/finite_viologen_replay/replay.py"
+    ],
+    "returncode": 0,
+    "stdout_sha256": "f5d314956e55a531672059d4ddf79bf9977cf1440775be3c2dd59dae95ed928b"
+  },
+  {
+    "command": [
+      "python3",
+      "examples/occupied_sampling_replay/replay.py"
+    ],
+    "returncode": 1,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

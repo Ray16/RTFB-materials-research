@@ -1,0 +1,86 @@
+{
+  "xyz": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/merrifield_local_chloride/rest/_seed_00.xyz",
+  "charge": 0,
+  "mult": 1,
+  "solvent": "acetonitrile",
+  "optimized": true,
+  "backend": "gpu",
+  "opt_xc": "r2scan",
+  "opt_basis": "def2-svp",
+  "opt_disp": "d4",
+  "opt_nlc": null,
+  "sp_xc": "wb97m-v",
+  "sp_basis": "def2-tzvpd",
+  "sp_disp": null,
+  "sp_nlc": "vv10",
+  "xc": "wb97m-v",
+  "basis": "def2-tzvpd",
+  "geometry_optimization_converged": true,
+  "optimization_SCF_converged": true,
+  "opt_gradient_grid_response": true,
+  "opt_out": "/nfs/lambda_stor_01/homes/rzhu/0_redox/results/grafting/campaigns/2026-10-19_mecn_reference/workspace/calcs/dft/merrifield_local_chloride/rest/opt.xyz",
+  "density_fit": true,
+  "conv_tol": 1e-09,
+  "max_cycle": 200,
+  "scf_guesses": [
+    "minao"
+  ],
+  "energy_protocol": {
+    "schema": 1,
+    "xc": "wb97m-v",
+    "basis": "def2-tzvpd",
+    "disp": null,
+    "nlc": "vv10",
+    "solvent": "acetonitrile",
+    "solvent_model": "SMD",
+    "density_fit": true,
+    "conv_tol": 1e-09,
+    "max_cycle": 200
+  },
+  "energy_geom_sha1": "c6d2832c6b67c038",
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "smd_occupation_guesses": [],
+  "e_smd_Ha": -770.4539706964458,
+  "e_smd_eV": -20965.120581376108,
+  "converged_smd": true,
+  "scf_guess_energies_smd": [
+    {
+      "guess": "minao",
+      "e_Ha": -770.4539706964458,
+      "converged": true
+    }
+  ],
+  "smd_homo_eV": -8.918323756461454,
+  "smd_lumo_eV": 0.9252235989609748,
+  "smd_s_squared": 0.0,
+  "smd_spin_contam": 0.0,
+  "gas_occupation_guesses": [],
+  "e_gas_Ha": -770.4393269457917,
+  "e_gas_eV": -20964.722104620967,
+  "converged_gas": true,
+  "scf_guess_energies_gas": [
+    {
+      "guess": "minao",
+      "e_Ha": -770.4393269457917,
+      "converged": true
+    }
+  ],
+  "gas_homo_eV": -9.052289351285673,
+  "gas_lumo_eV": 0.9242452357509655,
+  "gas_s_squared": 0.0,
+  "gas_spin_contam": 0.0,
+  "dG_solv_eV": -0.3984767551402544,
+  "id": "merrifield_local_chloride",
+  "state": "rest",
+  "n_e": 0,
+  "n_seeds": 1,
+  "seed_preopt": "alpb",
+  "winning_seed": 0,
+  "seed_e_smd_eV": [
+    -20965.1206
+  ],
+  "seed_spread_eV": 0.0
+}

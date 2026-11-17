@@ -1,0 +1,202 @@
+"""Bounded conservative minimum repair, then SHA-archived canonical promotion.
+
+Only entered for an actual native gradient/stationarity failure. Every proposed
+branch must pass the same native Hessian and connectivity contract before adoption.
+"""
+import fcntl,hashlib,json,shutil,time,os,socket
+from contextlib import contextmanager
+from pathlib import Path
+import numpy as np
+from redox.core.common import ROOT,DFT,read_manifest,smiles_to_xyz_map
+from redox.thermochemistry.native import ensure_native_thermal,cache_path,load_native_thermal,select_policy,NATIVE_THERMAL
+from redox.core.protocol import load_record
+from redox.core.io import atomic_write_json
+
+REPAIR_SOURCE_BYTES=Path(__file__).read_bytes()
+REPAIR_SOURCE_SHA256=hashlib.sha256(REPAIR_SOURCE_BYTES).hexdigest()
+
+
+def promotion_metadata(record,canonical,archive,expected_source_sha256,producer_snapshot):
+ """Bind original geometry to its verified archive without inventing SP provenance."""
+ original=Path(archive)/'opt.xyz'
+ if hashlib.sha256(original.read_bytes()).hexdigest()!=expected_source_sha256:
+  raise RuntimeError('Archived repair source geometry changed')
+ snapshot=Path(producer_snapshot)
+ if hashlib.sha256(snapshot.read_bytes()).hexdigest()!=REPAIR_SOURCE_SHA256:
+  raise RuntimeError('Repair producer snapshot changed')
+ updated=dict(record)
+ # A repair copies a separately addressed SP; it is not a new direct producer
+ # of the geometry-bound energy proof in result.json.
+ updated.pop('energy_protocol',None);updated.pop('energy_geom_sha1',None)
+ updated.update(opt_out=str(Path(canonical)/'opt.xyz'),
+                minimum_repair_source=str(original),
+                minimum_repair_source_sha256=expected_source_sha256,
+                legacy_thermal_archive=str(Path(archive)/'result.json'),
+                repair_producer_snapshot=str(snapshot),repair_producer_sha256=REPAIR_SOURCE_SHA256)
+ return updated
+
+
+def install_repaired_state(canonical,selected,base,expected_source_sha256,producer_snapshot,q,m):
+ """Validate a complete private replacement, then install with rollback.
+
+ The caller holds the molecule/native writer locks. Preserve all old addressed
+ records and cross-point history; their geometry checks determine current use.
+ """
+ canonical,selected,base=map(Path,(canonical,selected,base))
+ digest=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
+ if digest(canonical/'opt.xyz')!=expected_source_sha256:
+  raise RuntimeError('Canonical source changed during bounded repair')
+ archive=base/'superseded_canonical';install=base/'install_state'
+ if archive.exists() or install.exists():raise FileExistsError('Repair promotion paths already exist')
+ old={str(p.relative_to(canonical)):digest(p) for p in canonical.rglob('*') if p.is_file()}
+ shutil.copytree(canonical,install)
+ for name in ('sp','native_thermal','projected_thermal'):
+  source=selected/name
+  if not source.is_dir():raise RuntimeError(f'Repaired state lacks {name}')
+  target=install/name;target.mkdir(exist_ok=True)
+  for path in source.iterdir():
+   if path.suffix=='.lock':continue
+   destination=target/path.name
+   if destination.exists():raise RuntimeError('Replacement addressed cache unexpectedly already exists')
+   if path.is_dir():shutil.copytree(path,destination)
+   else:shutil.copy2(path,destination)
+ shutil.copy2(selected/'opt.xyz',install/'opt.xyz')
+ # Verify the original geometry now, then bind its future archive location.
+ replacement=promotion_metadata(json.loads((selected/'result.json').read_text()),canonical,
+                                canonical,expected_source_sha256,producer_snapshot)
+ replacement.update(minimum_repair_source=str(archive/'opt.xyz'),
+                    legacy_thermal_archive=str(archive/'result.json'))
+ atomic_write_json(install/'result.json',replacement)
+ select_policy(install)
+ def verify(directory):
+  if not load_native_thermal(directory,q,m) or not load_record(directory,q,m):
+   raise RuntimeError('Complete repaired state failed native partition or active-energy admission')
+ verify(install)
+ current={str(p.relative_to(canonical)):digest(p) for p in canonical.rglob('*') if p.is_file()}
+ if current!=old:raise RuntimeError('Canonical files changed before repair promotion')
+ if canonical.stat().st_dev!=base.stat().st_dev:raise RuntimeError('Atomic repair requires one filesystem')
+ atomic_write_json(base/'SHA256.json',old)
+ os.replace(canonical,archive)
+ try:
+  os.replace(install,canonical)
+  verify(canonical)
+  if any(digest(archive/p)!=h for p,h in old.items()):raise RuntimeError('Archived state changed')
+ except BaseException:
+  if canonical.exists():os.replace(canonical,base/'failed_install_preserved')
+  os.replace(archive,canonical)
+  raise
+ return archive
+
+
+@contextmanager
+def promotion_guard(gid):
+ """Acquire the motif lock or verify the same local runner's live inherited ownership."""
+ path=ROOT/'logs/pipeline_locks'/f'{gid}.lock'
+ with path.open('a+') as lock:
+  try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+  except BlockingIOError:
+   pid=int(os.environ.get('REDOX_PIPELINE_OWNER_PID','0'))
+   start=os.environ.get('REDOX_PIPELINE_OWNER_START')
+   proc=Path(f'/proc/{pid}')
+   if pid<=0 or not proc.exists() or (proc/'stat').read_text().split()[21]!=start:
+    raise RuntimeError('Another writer owns the motif; promotion refused')
+   command=(proc/'cmdline').read_bytes().replace(b'\0',b' ').decode()
+   if not any(entry in command for entry in ('scripts/pipeline/run_motifs.py', 'redox.workflows.motifs', 'redox motifs')):raise RuntimeError('Unverified parent motif lock owner')
+   inode=path.stat().st_ino
+   owned=False
+   for fd in (proc/'fd').iterdir():
+    try:
+     info=(proc/'fdinfo'/fd.name).read_text()
+     if fd.stat().st_ino==inode and 'FLOCK' in info and 'WRITE' in info:owned=True
+    except OSError:pass
+   if not owned:raise RuntimeError('Parent does not own the declared exclusive motif lock')
+  yield
+
+
+def repair_minimum(gid,state,reason):
+ import inspect,importlib
+ import redox.thermochemistry.native as native
+ # An already running cohort may have imported the pre-adapter function. Reload
+ # only the directory adapter; the scientific protocol and equations are identical.
+ if 'state_dir' not in inspect.signature(native.ensure_native_thermal).parameters:
+  importlib.reload(native)
+ ensure_native_thermal=native.ensure_native_thermal
+ from ase.io import read,write
+ from pyscf import gto
+ from pyscf.hessian import thermo
+ from pyscf.geomopt.geometric_solver import kernel
+ from redox.backends.dft import _build_smd_mf,_ecp_for,_free_gpu_pool
+ from redox.backends.sp import ensure as ensure_sp,_ENERGY_KEYS
+ sd=DFT/gid/state;raw=json.loads((sd/'result.json').read_text());q,m=raw['charge'],raw['mult']
+ source_sha=hashlib.sha256((sd/'opt.xyz').read_bytes()).hexdigest()
+ base=ROOT/'results/validation/physical_thermal_spin_2026-10-10/native_minimum_repairs'/gid/state/str(time.time_ns());base.mkdir(parents=True)
+ (base/'repair_producer_source.py').write_bytes(REPAIR_SOURCE_BYTES)
+ status=dict(status='running',id=gid,state=state,reason=reason,source_sha256=source_sha,branches=[],max_branches=2)
+ def save():
+  p=base/'status.json';tmp=p.with_suffix('.tmp');tmp.write_text(json.dumps(status,indent=2));tmp.replace(p)
+ save();atoms=read(sd/'opt.xyz');symbols=atoms.get_chemical_symbols();nat=len(atoms)
+ basis=NATIVE_THERMAL['anion_basis'] if q<0 else NATIVE_THERMAL['basis']
+ def build(coords):
+  mol=gto.M(atom=list(zip(symbols,coords.tolist())),charge=q,spin=m-1,basis=basis,ecp=_ecp_for(symbols,basis),verbose=0,max_memory=6000)
+  mf=_build_smd_mf(mol,'r2scan','acetonitrile','gpu',disp='d4');mf.grids.level=3;mf.conv_tol=1e-12;mf.conv_tol_grad=1e-8;mf.max_cycle=200
+  return mol,mf
+ p,_=cache_path(sd,q,m);h=p.with_suffix('')/'hessian_cartesian.npy'
+ if h.exists():
+  mol,_=build(atoms.positions);mat=np.load(h);H=mat.reshape(nat,3,nat,3).transpose(0,2,1,3)
+  data=thermo.harmonic_analysis(mol,H,imaginary_freq=False);k=int(np.argmin(data['freq_wavenumber']))
+  mode=np.asarray(data['norm_mode'][k]);mode/=max(np.linalg.norm(mode,axis=1));seeds=[(-1,-.1*mode),(1,.1*mode)]
+  status['source_min_frequency_cm']=float(data['freq_wavenumber'][k])
+ else:seeds=[(0,np.zeros_like(atoms.positions))]
+ row=next(r for r in read_manifest() if r['id']==gid and r['state']==state)
+ previous=[]
+ for saved in base.parent.glob('*/status.json'):
+  try:
+   evidence=json.loads(saved.read_text())
+   if saved.parent!=base and evidence.get('source_sha256')==source_sha:
+    previous.append(saved.parent)
+  except (OSError,ValueError):pass
+ good=[]
+ for sign,delta in seeds:
+  work=base/f'branch_{sign}';work.mkdir();record=dict(sign=sign,status='optimizing');status['branches'].append(record);save()
+  try:
+   prior=next((folder/f'branch_{sign}'/'opt.xyz' for folder in reversed(previous)
+               if (folder/f'branch_{sign}'/'opt.xyz').exists()),None)
+   seed=read(prior) if prior is not None else atoms.copy()
+   if prior is not None:record['resumed_geometry_checkpoint']=str(prior)
+   else:seed.positions+=delta
+   write(work/'seed.xyz',seed)
+   _,mf=build(seed.positions);mf.kernel()
+   if not mf.converged:raise RuntimeError('Repair SCF unconverged')
+   grad=mf.nuc_grad_method();grad.grid_response=True;scanner=grad.as_scanner()
+   converged,finalmol=kernel(scanner,maxsteps=120,assert_convergence=True,
+       convergence_energy=1e-8,convergence_grms=3e-5,convergence_gmax=5e-5,convergence_drms=1e-4,convergence_dmax=2e-4)
+   record.update(geometry_optimization_converged=bool(converged),optimization_SCF_converged=bool(scanner.converged))
+   if not (converged and scanner.converged):raise RuntimeError('Repair optimizer did not converge')
+   final=atoms.copy();final.positions=finalmol.atom_coords(unit='Angstrom');write(work/'opt.xyz',final)
+   del mf,grad,scanner;_free_gpu_pool()
+   if smiles_to_xyz_map(row['smiles'],work/'opt.xyz') is None:raise RuntimeError('Repair changes declared molecular connectivity')
+   trial=dict(raw,optimized=True,geometry_optimization_converged=True,optimization_SCF_converged=True,
+              opt_gradient_grid_response=True,g_thermal_eV=None,n_imag=None,
+              minimum_repair_source=str(sd/'opt.xyz'),minimum_repair_source_sha256=source_sha)
+   # Old energies refer to the original geometry and must never be adoptable.
+   for key in _ENERGY_KEYS:trial[key]=None
+   (work/'result.json').write_text(json.dumps(trial,indent=2))
+   kind,th=ensure_native_thermal(gid,state,state_dir=work)
+   energy_kind,energy=ensure_sp(gid,state,work,q,m,backend='gpu')
+   if not load_record(work,q,m):raise RuntimeError('Repair active SP incomplete')
+   trial.update({key:energy.get(key) for key in _ENERGY_KEYS})
+   proto=energy['protocol']
+   trial.update(sp_xc=proto['xc'],sp_basis=proto['basis'],sp_disp=proto['disp'],sp_nlc=proto['nlc'],
+                xc=proto['xc'],basis=proto['basis'],software=energy.get('software'))
+   trial.update(opt_out=str(work/'opt.xyz'),optimized=True,legacy_thermal_archive=str(base/'superseded_canonical/result.json'))
+   (work/'result.json').write_text(json.dumps(trial,indent=2))
+   record.update(status='verified',geometry=str(work/'opt.xyz'),g_thermal_eV=th['g_thermal_total_eV'],e_smd_eV=energy['e_smd_eV'])
+   good.append((energy['e_smd_eV'],work,th))
+  except Exception as exc:record.update(status='failed',error=repr(exc))
+  save()
+ if not good:status['status']='repair_failed';save();raise RuntimeError(f'Bounded minimum repair failed; evidence {base}')
+ _,selected,thermal=min(good,key=lambda x:x[0])
+ with promotion_guard(gid):
+  archive=install_repaired_state(sd,selected,base,source_sha,base/'repair_producer_source.py',q,m)
+ status.update(status='verified_minimum_promoted',selected=str(selected),new_geometry_sha256=hashlib.sha256((sd/'opt.xyz').read_bytes()).hexdigest(),archive=str(archive),finished=time.time());save()
+ return 'repaired_minimum',thermal

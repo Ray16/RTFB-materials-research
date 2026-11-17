@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "status": "predeclared_design_hypotheses_not_evaluated",
+  "core": "phenothiazine",
+  "anchors": {
+    "flexible": "[*:1]OCC",
+    "cyclic": "[*:1]O[C@H]1C[C@H]1"
+  },
+  "substitution_cores": {
+    "H": "N1c2ccccc2Sc2ccccc21",
+    "3_7_dimethoxy": "N1c2ccc(OC)cc2Sc2cc(OC)ccc21"
+  },
+  "states": [["neutral", 0, 1, 0], ["oxidized", 1, 2, 1]],
+  "reference_sources": [
+    "https://api.mountainscholar.org/server/api/core/bitstreams/afbf9593-a8d1-4410-9c5a-c9f0b9fe441a/content",
+    "https://doi.org/10.1039/C7TA05883G"
+  ],
+  "scope": "One proposed oxidation; methoxy changes electronics as well as sterics, cyclic stereoisomer is explicit, and no route or performance is assumed."
+}
