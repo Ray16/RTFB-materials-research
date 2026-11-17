@@ -9,6 +9,7 @@ GPU steps always run through gpu_reserve. Existing outputs are reused only when 
 repair that would replace an existing geometry must be reviewed separately.
 """
 import argparse
+from dataclasses import dataclass
 import fcntl
 import hashlib
 import json
@@ -20,8 +21,6 @@ import socket
 import subprocess
 import sys
 import time
-from concurrent.futures import ThreadPoolExecutor
-from queue import Queue
 
 from redox.core.common import ROOT
 from redox.structures.candidates import _load_config
@@ -30,6 +29,7 @@ from redox.core.io import atomic_write_json
 from redox.execution.resources import (cpu_allocation, GATE, allocation_guard,
                                        gpu_suitability, host_capacity, free_slots)
 from redox.screening.scorecard import CANDIDATE_CONFIGS
+from redox.workflows.stages import execute_graph, validate_graph
 
 
 def selection_hash(scaffold, groups):
@@ -95,24 +95,150 @@ def state_jobs(argv, gid, states):
     return [(state, [*argv[:at], f"{gid}:{state}", *argv[at + 1:]]) for state in states]
 
 
-def run_parallel(jobs, slots, log, env, wrap):
-    """Run (state, argv) jobs concurrently, each on one free (gpu, cpus) slot.
+@dataclass(frozen=True)
+class MotifNode:
+    """One unit of work in the campaign DAG scheduled by stages.execute_graph.
 
-    Every job finishes even if another fails, so completed states are preserved."""
-    free = Queue()
-    for slot in slots:
-        free.put(slot)
+    name/dependencies are what execute_graph consumes; label/argv/compute reuse the
+    exact per-stage command from commands() verbatim (byte-identical argv -> zero
+    science change). gid/state/states and lock carry the metadata the resume
+    predicate and the one-time ferrocene prerequisite need.
+    """
+    name: str
+    label: str
+    argv: tuple
+    compute: bool
+    dependencies: tuple = ()
+    gid: str = ""
+    state: str = ""
+    states: tuple = ()
+    lock: str = ""
 
-    def one(job):
-        state, argv = job
-        slot = free.get()
+
+def _split_by_label(per_candidate_jobs):
+    by_label = {}
+    for label, compute, argv in per_candidate_jobs:
+        by_label.setdefault(label, []).append((compute, list(argv)))
+    return by_label
+
+
+def build_graph(config, groups, output, backend, threads, nconf,
+                thermal_definition="native", ferrocene_states=()):
+    """Bag-of-tasks DAG for the whole pool, one node per unit of GPU/CPU work.
+
+    Replaces the flat per-candidate serial job list. Per-(candidate, redox-state)
+    DFT nodes let independent states and candidates pipeline across GPU slots
+    instead of the slowest state (ox1) gating the next candidate. Edges encode the
+    scientific order exactly: uma -> dft(per state) -> sp -> native_thermal and
+    sp -> coverage -> cross_points (coverage gates reorg). Ferrocene is hoisted to
+    a single prerequisite node (its own lock) and fc_reference_sync is one node after
+    every native_thermal, so the shared calcs/dft/ferrocene and config/project.json
+    are never written concurrently under cross-candidate parallelism.
+
+    Review-table building is deliberately NOT a node here; it is taken off the
+    campaign critical path and run as a separate downstream job.
+    """
+    native = thermal_definition == "native"
+    nodes = []
+    native_thermal_names = []
+    fc_argv = None
+    fc_compute = False
+    for g in groups:
+        gid = g["id"]
+        states = tuple(s[0] for s in g["states"])
+        by_label = _split_by_label(
+            commands(config, [gid], output, backend, threads, nconf, thermal_definition))
+        b_compute, b_argv = by_label["build"][0]
+        nodes.append(MotifNode(f"build:{gid}", "build", tuple(b_argv), b_compute,
+                               (), gid=gid))
+        u_compute, u_argv = by_label["uma"][0]
+        nodes.append(MotifNode(f"uma:{gid}", "uma", tuple(u_argv), u_compute,
+                               (f"build:{gid}",), gid=gid, states=states))
+        d_compute, d_argv = by_label["dft"][0]
+        dft_names = []
+        for state, sargv in state_jobs(d_argv, gid, states):
+            name = f"dft:{gid}:{state}"
+            dft_names.append(name)
+            nodes.append(MotifNode(name, "dft", tuple(sargv), d_compute,
+                                   (f"uma:{gid}",), gid=gid, state=state))
+        s_compute, s_argv = by_label["sp"][0]
+        nodes.append(MotifNode(f"sp:{gid}", "sp", tuple(s_argv), s_compute,
+                               tuple(dft_names), gid=gid, states=states))
+        coverage_deps = [f"sp:{gid}"]
+        if native:
+            nt_compute, nt_argv = by_label["native_thermal"][0]
+            at = nt_argv.index("--only") + 1
+            # commands() targets "ferrocene,<gid>"; split so the shared ferrocene
+            # namespace is computed exactly once by its own prerequisite node and
+            # each candidate's native_thermal only touches its own records.
+            if fc_argv is None:
+                fc_compute, fc_argv = by_label["fc_reference_sync"][0]
+                ferrocene_argv = [*nt_argv[:at], "ferrocene", *nt_argv[at + 1:]]
+                nodes.append(MotifNode("native_thermal:ferrocene", "native_thermal",
+                                       tuple(ferrocene_argv), nt_compute, (),
+                                       gid="ferrocene", states=tuple(ferrocene_states),
+                                       lock="ferrocene"))
+            cand_argv = [*nt_argv[:at], gid, *nt_argv[at + 1:]]
+            nt_name = f"native_thermal:{gid}"
+            nodes.append(MotifNode(nt_name, "native_thermal", tuple(cand_argv), nt_compute,
+                                   (f"sp:{gid}", "native_thermal:ferrocene"),
+                                   gid=gid, states=states))
+            native_thermal_names.append(nt_name)
+            # readiness --strict requires the candidate's native thermal record.
+            coverage_deps.append(nt_name)
+        c_compute, c_argv = by_label["coverage"][0]
+        nodes.append(MotifNode(f"coverage:{gid}", "coverage", tuple(c_argv), c_compute,
+                               tuple(coverage_deps), gid=gid))
+        r_compute, r_argv = by_label["cross_points"][0]
+        nodes.append(MotifNode(f"cross_points:{gid}", "cross_points", tuple(r_argv), r_compute,
+                               (f"coverage:{gid}", f"sp:{gid}"), gid=gid))
+    if native and fc_argv is not None:
+        # One reference sync after EVERY native_thermal (ferrocene included), before
+        # anything downstream reads the Fc reference (final verify / separate tables).
+        nodes.append(MotifNode("fc_sync", "fc_reference_sync", tuple(fc_argv), fc_compute,
+                               tuple(["native_thermal:ferrocene", *native_thermal_names])))
+    validate_graph(nodes)
+    return nodes
+
+
+def node_done(node):
+    """True only when a node's scientific output already exists AND is valid, so a
+    resume skips it with no subprocess and no GPU reservation (resume is O(remaining)).
+
+    Conservative by construction: anything uncertain returns False and is simply
+    re-run; the stage subprocesses themselves reuse valid outputs idempotently, so a
+    False never corrupts science, while a True must be certain. Only the expensive
+    GPU stages with a cheap unambiguous completion check are reported done.
+    """
+    from redox.core.common import DFT, UMA, read_result, free_energy
+    gid, states = node.gid, node.states
+    if node.label == "dft":
+        sd = DFT / gid / node.state
+        if not ((sd / "result.json").is_file() and (sd / "opt.xyz").is_file()):
+            return False
         try:
-            return state, slot, run_stage(wrap(argv, *slot), log.with_name(f"{log.stem}_{state}{log.suffix}"), env)
-        finally:
-            free.put(slot)
-
-    with ThreadPoolExecutor(max_workers=len(slots)) as pool:
-        return list(pool.map(one, jobs))
+            from redox.backends.dft import _opt_protocol_mismatch
+            r = json.loads((sd / "result.json").read_text())
+            return not _opt_protocol_mismatch(r, int(r["charge"]))
+        except (OSError, ValueError, KeyError):
+            return False
+    if node.label == "uma":
+        return bool(states) and all((UMA / gid / s / "result.json").is_file() for s in states)
+    if node.label == "sp":
+        if not states:
+            return False
+        recs = [read_result(gid, s) for s in states]
+        return all(r is not None and r.get("sp_status") == "ok" for r in recs)
+    if node.label == "native_thermal":
+        if not states:
+            return False
+        for s in states:
+            r = read_result(gid, s)
+            if (r is None or r.get("thermal_definition") != "native_solution_dft_qrrho_spin"
+                    or r.get("thermal_qc") != "ok"):
+                return False
+        return True
+    return False
 
 
 def commands(config, ids, output, backend, threads, nconf, thermal_definition="native"):
@@ -275,9 +401,6 @@ def main(argv=None):
             attempt_output = output / f"resume_{time.time_ns()}"
             attempt_output.mkdir()
             shutil.copy2(output / "run_manifest.json", attempt_output / "previous_run_manifest.json")
-            jobs = commands(config, ids, attempt_output, a.backend, a.threads, a.nconf, a.thermal_definition)
-            if a.skip_review:
-                jobs = [job for job in jobs if job[0] not in ("review_tables", "fc_reference_sync")]
         manifest = dict(config=str(config), input_sha256=hashlib.sha256(config.read_bytes()).hexdigest(),
                         selected_definitions_sha256=selection_hash(scaffold, groups),
                         ids=ids, host=socket.gethostname(), pid=os.getpid(), python=sys.executable,
@@ -293,43 +416,79 @@ def main(argv=None):
             return [str(GATE), "run", str(gpu), "--", *argv] if compute and a.backend == "gpu" else argv
 
         from redox.core.common import read_manifest as declared_rows
-        for index, (label, compute, argv) in enumerate(jobs):
-            log = attempt_output / f"{index:02d}_{label}.log"
-            print(f"[{index + 1}/{len(jobs)}] {label}: {log}", flush=True)
-            if label == "dft" and workers > 1:
-                gid = argv[argv.index("--only") + 1]
-                states = [r["state"] for r in declared_rows() if r["id"] == gid]
-                entry = dict(stage=label, parallel_states=states, log=str(log), started=time.time())
-                manifest["steps"].append(entry)
-                atomic_write_json(mp, manifest)
-                results = run_parallel(state_jobs(argv, gid, states), list(zip(gpus, cpu_blocks)), log, env, wrap)
-                entry["states"] = [dict(state=state, gpu=gpu, cpu_affinity=cpus, returncode=proc.returncode,
-                                        attempts=attempts) for state, (gpu, cpus), (proc, attempts) in results]
-                failed = [r for r in results if r[2][0].returncode]
-                proc, attempts = (failed or results)[0][2]
-                log = Path(attempts[-1]["log"])
-            else:
-                argv = wrap(argv, a.gpu, cpu_set, compute)
-                entry = dict(stage=label, argv=argv, log=str(log), started=time.time())
-                manifest["steps"].append(entry)
-                atomic_write_json(mp, manifest)
-                proc, attempts = run_stage(argv, log, env)
-            entry.update(returncode=proc.returncode, finished=time.time(), attempts=attempts)
+        ferrocene_states = tuple(r["state"] for r in declared_rows() if r["id"] == "ferrocene")
+        nodes = build_graph(config, groups, attempt_output, a.backend, a.threads, a.nconf,
+                            a.thermal_definition, ferrocene_states=ferrocene_states)
+        # Review-table building is off the campaign critical path. The parallel driver
+        # (more than one GPU) ends after per-record QC; a single-GPU run keeps building
+        # tables for existing single-candidate callers. Either way run the full table
+        # audit separately with: python -m redox.reporting.tables --out <run>/tables --workers N
+        effective_skip_review = a.skip_review or workers > 1
+        entries, results = {}, {}
+        lockdir = ROOT / "logs/pipeline_locks"
+
+        # Only the coordinator thread (started/finished) mutates manifest and writes it;
+        # run() executes in a worker thread and stashes its outcome under its own node
+        # name, so no worker ever mutates a dict that atomic_write_json is serializing.
+        def started(node):
+            log = attempt_output / f"{node.name.replace(':', '_').replace('/', '_')}.log"
+            entry = dict(stage=node.label, node=node.name, argv=list(node.argv),
+                         log=str(log), started=time.time())
+            entries[node.name] = entry
+            manifest["steps"].append(entry)
             atomic_write_json(mp, manifest)
-            if proc.returncode:
-                from redox.quality.readiness import inspect_states
-                from redox.core.common import read_manifest
-                manifest.update(status="resource_unavailable" if attempts[-1]["reservation_refused"] else "failed",
-                                failed_stage=label,
-                                scientific_accuracy_validated=False,
-                                selected_state_qc=inspect_states([r for r in read_manifest() if r["id"] in ids]))
-                atomic_write_json(mp, manifest)
-                raise SystemExit(f"{label} failed; see {log}")
+            print(f"{node.name}: {log}", flush=True)
+
+        def run(node, slot):
+            log = attempt_output / f"{node.name.replace(':', '_').replace('/', '_')}.log"
+            if node_done(node):
+                results[node.name] = dict(skipped=True, returncode=0, attempts=[])
+                return 0
+            gpu = gpus[slot] if gpus else a.gpu
+            cpus = cpu_blocks[slot]
+            argv = wrap(list(node.argv), gpu, cpus, node.compute)
+            lock_handle = None
+            try:
+                if node.lock:
+                    # Serialize the one shared ferrocene namespace across any concurrent
+                    # runs; the per-gid flocks do not cover it. Blocking, not fail-fast,
+                    # so a sibling run waits rather than aborting.
+                    lock_handle = (lockdir / f"{node.lock}.lock").open("a+")
+                    fcntl.flock(lock_handle, fcntl.LOCK_EX)
+                    if node_done(node):
+                        results[node.name] = dict(skipped=True, returncode=0, attempts=[])
+                        return 0
+                proc, attempts = run_stage(argv, log, env)
+            finally:
+                if lock_handle is not None:
+                    fcntl.flock(lock_handle, fcntl.LOCK_UN); lock_handle.close()
+            results[node.name] = dict(argv=argv, gpu=gpu, cpu_affinity=cpus,
+                                      returncode=proc.returncode, attempts=attempts,
+                                      log=attempts[-1]["log"])
+            return proc.returncode
+
+        def finished(node, code):
+            entries[node.name].update(results.get(node.name, {}), finished=time.time())
+            atomic_write_json(mp, manifest)
+
+        result = execute_graph(nodes, run, workers=workers, started=started, finished=finished)
+        atomic_write_json(mp, manifest)
+        if result["failed"]:
+            from redox.quality.readiness import inspect_states
+            from redox.core.common import read_manifest
+            failed_entry = entries[result["failed"][0]]
+            refused = bool(failed_entry.get("attempts")) and failed_entry["attempts"][-1]["reservation_refused"]
+            manifest.update(status="resource_unavailable" if refused else "failed",
+                            failed_stage=failed_entry["stage"],
+                            scientific_accuracy_validated=False,
+                            selected_state_qc=inspect_states([r for r in read_manifest() if r["id"] in ids]))
+            atomic_write_json(mp, manifest)
+            raise SystemExit(f"{failed_entry['node']} failed; see {failed_entry.get('log')}")
         # Written last, after the independent audit passes; QC limits remain in tables.
         from redox.quality.readiness import inspect_states
         from redox.core.common import read_manifest
         states = inspect_states([r for r in read_manifest() if r["id"] in ids])
-        if a.skip_review:
+        if effective_skip_review:
             from redox.properties.potentials import fc_live, thermal_definition
             from redox.core.common import read_result, free_energy
             reference=fc_live()
@@ -344,8 +503,23 @@ def main(argv=None):
                             selected_states_ready=True,scientific_accuracy_validated=False,
                             table_collection_pending=True)
             atomic_write_json(mp, manifest)
-            print(f"Verified selected records: {mp}; tables await separate collection")
+            print(f"Verified selected records: {mp}; tables await separate collection "
+                  f"(python -m redox.reporting.tables --out {attempt_output / 'tables'} --workers N)")
             return
+        # Single-GPU default: build and audit tables as the final, off-DAG step.
+        review_log = attempt_output / "review_tables.log"
+        review_argv = wrap([sys.executable, "-m", "redox.reporting.tables",
+                            "--out", str(attempt_output / "tables")], a.gpu, cpu_set, False)
+        entry = dict(stage="review_tables", argv=review_argv, log=str(review_log), started=time.time())
+        manifest["steps"].append(entry); atomic_write_json(mp, manifest)
+        proc, attempts = run_stage(review_argv, review_log, env)
+        entry.update(returncode=proc.returncode, finished=time.time(), attempts=attempts)
+        atomic_write_json(mp, manifest)
+        if proc.returncode:
+            manifest.update(status="failed", failed_stage="review_tables",
+                            scientific_accuracy_validated=False, selected_state_qc=states)
+            atomic_write_json(mp, manifest)
+            raise SystemExit(f"review_tables failed; see {review_log}")
         review = json.loads((attempt_output / "tables/review_status.json").read_text())
         if review.get("arithmetic_discrepancies") != 0 or not (attempt_output / "tables/Candidates_computed.xlsx").is_file():
             raise SystemExit("Final property artifacts are missing or failed the independent audit")
