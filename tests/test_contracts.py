@@ -91,15 +91,18 @@ def test_state_names_skip_helper_dirs(tree):
 
 
 def test_reorg_cache_rejects_other_level():
+    # v4: the cross-point cache stores the SMD (solution) energy, not the gas energy.
     from redox.properties.reorg import _cache_ok, CACHE_SCHEMA
-    d = dict(e_gas_eV=-1.0, cache_schema=CACHE_SCHEMA, gas_homo_eV=-5, anion_unbound=False,
+    d = dict(e_smd_eV=-1.0, cache_schema=CACHE_SCHEMA, smd_s_squared=0.0, anion_unbound=False,
              charge=0, mult=1, geom_sha1="abc", sp_xc="wb97m-v", sp_basis="def2-tzvpd",
-             sp_nlc="vv10", sp_disp=None, converged_gas=True, protocol=protocol.ACTIVE_SP)
+             sp_nlc="vv10", sp_disp=None, converged_smd=True, protocol=protocol.ACTIVE_SP)
     assert _cache_ok(d, 0, 1, "abc")
     assert not _cache_ok(dict(d, sp_basis="def2-tzvp"), 0, 1, "abc")      # basis changed
     assert not _cache_ok(dict(d, sp_xc="b3lyp"), 0, 1, "abc")             # functional changed
     assert not _cache_ok(d, 0, 1, "xyz")                                   # geometry changed
-    assert not _cache_ok(dict(d, converged_gas=False), 0, 1, "abc")       # unconverged
+    assert not _cache_ok(dict(d, converged_smd=False), 0, 1, "abc")       # unconverged
+    # a legacy v3 gas-only entry (no SMD energy) is never reused for the SMD surface
+    assert not _cache_ok(dict(d, cache_schema=3, e_smd_eV=None, e_gas_eV=-1.0), 0, 1, "abc")
 
 
 # ------------------------------------------------------------- thermal gate / identities
@@ -257,14 +260,14 @@ def test_pooled_error_requires_multiple_grounded_events(monkeypatch):
 
 
 def test_reorg_cache_requires_explicit_convergence():
-    """A cross point without converged_gas=True is unverified and must not be used."""
+    """A cross point without converged_smd=True is unverified and must not be used."""
     from redox.properties import reorg
     from redox.core.protocol import ACTIVE_SP
-    d = dict(e_gas_eV=-1.0, sp_xc=ACTIVE_SP["xc"], sp_basis=ACTIVE_SP["basis"],
+    d = dict(e_smd_eV=-1.0, sp_xc=ACTIVE_SP["xc"], sp_basis=ACTIVE_SP["basis"],
              sp_nlc=ACTIVE_SP["nlc"], sp_disp=ACTIVE_SP["disp"], cache_schema=reorg.CACHE_SCHEMA,
              charge=0, mult=1, geom_sha1="g", protocol=ACTIVE_SP, **{k: None for k in reorg.REQUIRED_DIAG})
     assert not reorg._cache_ok(dict(d), 0, 1, "g")            # flag missing
-    assert reorg._cache_ok(dict(d, converged_gas=True), 0, 1, "g")
+    assert reorg._cache_ok(dict(d, converged_smd=True), 0, 1, "g")
 
 
 def test_adopted_record_needs_density_fit_provenance():
