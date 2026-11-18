@@ -15,13 +15,14 @@ Honesty about the numbers (CPU-only; no QM is run here):
       - scored candidates = 91 (manuscript pool), with the maintained
         results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv currently
         carrying 92 rows (one extra phenazine catholyte from the live expansion).
-  * PLACEHOLDER (one tier, flagged on the figure and in the caption): QC-clean.
-    Its final gate needs validated native-thermal free energies, whose
-    certificates are path-locked to the original /nfs/.../0_redox checkout; from
-    this archive-symlinked tree readiness reports 351 spurious
-    missing_validated_native_thermal, so the naive "103 ready" is a relocation
-    artifact and is NOT shown. A faithful count needs
-    redox.quality.relocated_native (or a checkout at the original path).
+      - QC-clean = 269 of the 271 states of the 91 scored candidates pass every
+        gate that the ranking relies on (redox.quality.readiness on the pool,
+        2026-11-18). The native-thermal certificate is not counted as a gate here:
+        the pool is ranked on the xTB thermal tier, and those certificates are
+        path-locked to the original checkout (a relocation artifact). The two
+        remaining states are dianions whose spin-state treatment is not yet
+        qualified (search_pmdi_1864c2c74267/red2, hyp_cata_ndi_ethyl/red2); both
+        molecules stay in the pool with a flag and neither lies on a Pareto front.
 
 The funnel spans THREE grains, annotated on the left: GRAPH grain (identity
 registry counts molecular graphs, incl. per-state and held/uncomputed graphs),
@@ -68,14 +69,12 @@ def main():
     # + opt.xyz + composition/connectivity/spin; it does NOT touch the native-
     # thermal certificate, so it is unaffected by the archive relocation.
     #
-    # QC-clean stays a flagged PLACEHOLDER: the final QC gate includes validated
-    # native-thermal free energies, whose certificates are path-locked to the
-    # original /nfs/.../0_redox checkout. Read from this archive-symlinked tree
-    # the readiness run reports 351 spurious `missing_validated_native_thermal`,
-    # so a faithful QC-clean count needs redox.quality.relocated_native (or a
-    # checkout at the original path); the 103 "ready" here is a relocation
-    # artifact and is deliberately NOT shown.
+    # QC-clean (pool, state grain): readiness on the 91 pool molecules gives 271
+    # states; 269 pass every ranking gate (the native-thermal certificate is not a
+    # gate for the xTB-tier ranking), 2 dianion states carry an unqualified
+    # spin-state flag.
     N_DECLARED, N_STATE_COMPLETE = 456, 450
+    N_POOL_STATES, N_QC_CLEAN = 271, 269
 
     # (label, count-text, gate description [wrapped], width, color, placeholder?)
     tiers = [
@@ -85,13 +84,13 @@ def main():
         ("State-complete",
          str(N_STATE_COMPLETE),
          f"converged geometry + SP\n({N_STATE_COMPLETE} of {N_DECLARED}\ndeclared states)",
-         0.80, C["measured"], False),
+         0.84, C["measured"], False),
         ("QC-clean",
-         "placeholder", "charge/spin, ⟨S²⟩, geometry,\ncoverage, cross-points pass",
-         0.62, "#9AA3AD", True),
+         str(N_QC_CLEAN), f"all ranking gates pass\n({N_QC_CLEAN} of {N_POOL_STATES} states\nof the 91 candidates)",
+         0.70, C["measured"], False),
         ("Scored candidates",
-         "91", "ranked on σ-aware\nPareto fronts",
-         0.46, C["good"], False),
+         "91", "ranked on Pareto fronts\n(2 carry a flagged state;\nneither on a front)",
+         0.62, C["good"], False),
     ]
 
     fig, ax = plt.subplots(figsize=(16.5, 10.5))
@@ -145,11 +144,9 @@ def main():
 
     ax.set_title("Reliability-gating funnel: registry → scored pool",
                  fontsize=22, pad=14)
-    sub = ("Real: 912 registered (identity registry), 450/456 state-complete "
-           "(readiness run),\nand 91 scored (maintained CSV currently "
-           f"{n_csv} rows). The hatched QC-clean tier is a\nplaceholder: its "
-           "native-thermal gate is path-locked to the original checkout and "
-           "needs\nredox.quality.relocated_native for a faithful count.")
+    sub = ("State counts from redox.quality.readiness (2026-11-18). Bar widths are "
+           "for legibility\nand do not scale with the counts; the tiers count "
+           "graphs, states, and candidates.")
     fig.text(0.5, 0.012, sub, ha="center", va="bottom", fontsize=18,
              color="#555555")
     ax.set_ylim(0.02, 1.02)

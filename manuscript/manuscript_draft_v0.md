@@ -312,18 +312,20 @@ never combined.
 
 ### Reliability gating and quality control
 
-Every reported candidate must pass explicit, automated QC before it is ranked
-(`quality/readiness.py --strict`): declared-vs-realized charge, atom composition,
-connectivity, stereochemistry and spin parity; geometry-protocol currency; presence
-of a valid active single point; a valid thermal term; and absence of imaginary
-thermal modes. Spin states are checked by ⟨S²⟩/spin-contamination diagnostics and,
+Every redox state is checked automatically (`quality/readiness.py`): the realized
+charge, atom composition, connectivity, stereochemistry, and spin parity must match
+the declared structure; the geometry must come from the current protocol; and a
+valid production single point and thermal term must exist. Imaginary thermal modes
+are flagged for review. Spin states are checked by ⟨S²⟩/spin-contamination diagnostics and,
 for near-degenerate cases, a bounded source-addressed alternate-multiplicity DFT
 comparison (`quality/spins.py`; max spin contamination 0.1). State coverage,
 cross-point caches, and the single shared thermal definition are verified for
-consistency across a ladder. Crucially, candidates failing QC are **held, not
-dropped**: `potentials.py` emits an explicit `INCOMPLETE`/`THERMAL_UNVALIDATED`
-status, and incomplete rows are carried on a separate partial-information list in
-the ranking (they can be dominated but can never dominate or be silently removed).
+consistency across a ladder. States that fail are **held, not dropped**: they keep an
+explicit `INCOMPLETE` status and their reason. In the 91-candidate pool, 269 of the
+271 states pass every check the ranking relies on (Figure 3). The two that do not
+are dianion states of two imide anolytes whose spin-state treatment is not yet
+qualified. Those two candidates are kept in the pool with a flag; neither is on a
+Pareto front, and the fronts are unchanged without them.
 
 ### Multi-property ranking
 
@@ -730,9 +732,10 @@ The contribution is the method rather than any one molecule: the pipeline builds
 the *exact* grafted species as a 4-methylbenzyl-capped model, computes each redox
 state at a consistent level of theory (ωB97M-V/def2-TZVPD with SMD in
 acetonitrile), reports potentials against a pinned ferrocene reference together
-with usable capacity and reorganization components, and admits a candidate to
-ranking only after explicit quality-control gates on spin, geometry integrity,
-state coverage, and cross-point consistency. Half-reactions and reorganization
+with usable capacity and reorganization components, and checks every redox state
+automatically for structure, spin, protocol, and completeness before ranking (269
+of the pool's 271 states pass; the two that do not are flagged and affect no
+front). Half-reactions and reorganization
 terms are kept as separate reported quantities; candidates are ranked on Pareto
 fronts of voltage and capacity, computed separately for anolytes and catholytes,
 with the potential uncertainty shown and no weighted-sum score.

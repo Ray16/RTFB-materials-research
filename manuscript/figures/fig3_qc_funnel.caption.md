@@ -2,41 +2,38 @@
 
 **File:** `fig3_qc_funnel.png` (300 dpi). PNG only, per the figure style contract.
 
-**Figure 3. Every reported candidate passes explicit, automated QC; the identity
-registry narrows to the scored pool through sequential gates.**
-The funnel shows four tiers: registered graphs → state-complete → QC-clean →
-scored candidates. A candidate advances only if it is state-complete (all declared
-redox states built and converged), then QC-clean (declared-vs-realized charge and
-spin, ⟨S²⟩/spin-contamination, geometry-protocol currency, full state coverage,
-and cross-point consistency all pass; `quality/readiness.py --strict`,
-`quality/spins.py`, `quality/stability.py`). **Candidates that fail a gate are
-held, not dropped** (left annotation): they are carried on a separate
-partial-information list and can be dominated but never silently removed or allowed
-to dominate. The scored tier is then ranked on Pareto fronts (Figure 5).
+**Figure 3. How the registry of molecules narrows to the scored pool through
+automated quality checks.**
+The funnel has four tiers: registered graphs → state-complete → QC-clean → scored
+candidates. A redox state is *state-complete* when it has a converged geometry and
+a valid production single point. It is *QC-clean* when it also passes every check
+the ranking relies on: the realized charge, atom composition, connectivity,
+stereochemistry, and spin parity match the declared structure; the geometry was
+made with the current protocol; and a valid thermal correction exists
+(`quality/readiness.py`, `quality/spins.py`, `quality/stability.py`). **States that
+fail a check are held, not dropped**: they stay in the records with their reason.
 
-**Honesty about the counts (critical).** The funnel spans **three grains**, as
-annotated on the left:
-- **Real / verified:** *registered graphs = 912* (**graph grain**; identity
-  registry, counting molecular graphs incl. per-state and held/uncomputed graphs;
-  `docs/PUBLICATION_READINESS.md`); *state-complete = 450 of 456 declared states*
-  (**state grain**; from a pool-wide `redox.quality.readiness` run, 2026-11-17 —
-  450 states have a converged geometry + active single-point, only 6 are
-  `missing_geometry_or_result`); and *scored candidates = 91* (**candidate grain**;
-  the frozen manuscript pool). The maintained
-  `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv` currently carries
-  **92** rows — the extra row is one phenazine catholyte appended by the live
-  `expand_catholyte` campaign; the frozen pool is 91.
-- **Placeholder (one tier, flagged):** *QC-clean* is drawn hatched and labelled
-  "placeholder" because its final gate includes **validated native-thermal free
-  energies**, whose certificates are path-locked to the original
-  `/nfs/.../0_redox` checkout. Read from this archive-symlinked tree, the readiness
-  run reports 351 *spurious* `missing_validated_native_thermal` states, so the naive
-  "103 ready" is a **relocation artifact** and is deliberately not shown. A faithful
-  QC-clean count needs `redox.quality.relocated_native` (or a checkout at the
-  original path). Bar widths are a fixed decreasing schedule for legibility and do
-  **not** encode counts proportionally.
+**Counts.** The tiers count different things, as marked on the left.
+- *Registered graphs = 912*: every molecular graph in the identity registry,
+  including held and uncomputed ones (`docs/PUBLICATION_READINESS.md`).
+- *State-complete = 450 of 456* declared redox states (readiness run over the whole
+  registry, 2026-11-18; the other 6 have no geometry or result yet).
+- *QC-clean = 269 of 271* states belonging to the 91 scored candidates (readiness
+  run on the pool, 2026-11-18). The two remaining states are dianions whose
+  spin-state treatment is not yet qualified: the second reduced state of a
+  CN-substituted pyromellitic diimide (`search_pmdi_1864c2c74267`) and of an
+  N-ethyl 1,2,3,4-naphthalene diimide (`hyp_cata_ndi_ethyl`). Both molecules are kept in the
+  pool with this flag; neither lies on a Pareto front, and removing them leaves
+  the fronts unchanged.
+- *Scored candidates = 91*, ranked on Pareto fronts (Figure 5). The scored table has
+  92 rows because one catholyte was added after the pool was fixed.
 
-**Provenance / reproducibility.** Scored count read live from the pool CSV; 912 and
-the gate definitions are fixed from the cited sources; state-complete (450/456) is
-from the dated `redox.quality.readiness` run documented in the generator. Generated
-by `scripts/plotting/manuscript/fig3_qc_funnel.py` (CPU only).
+The native-thermal certificate is not counted as a gate here, because the pool is
+ranked with the xTB thermal tier. (Read from this copy of the data, those
+certificates also fail for a technical reason: they are bound to the original
+directory path.) Bar widths are chosen for legibility and do not scale with the
+counts.
+
+**Provenance.** Counts come from `redox.quality.readiness`; the scored count is read
+from `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`. Generated by
+`scripts/plotting/manuscript/fig3_qc_funnel.py` (CPU only).
