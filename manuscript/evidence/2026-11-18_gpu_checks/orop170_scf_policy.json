@@ -1,0 +1,90 @@
+{
+  "purpose": "positive control: open-shell SCF guess policy (minao+huckel, escalate on split)",
+  "geometry": "/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor/calcs/orop/170/red/opt.xyz",
+  "geometry_sha256": "123039f6475a76f1763eeb6b4712ee7eecbb5384bef31851d1649962687ebf78",
+  "reference_search": "/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor/calcs/validation/scf_level/prod/orop_170/red.json",
+  "reference_sha256": "4b16f21d1625b8b8d9f5aa2783b5af50932b38ffe4be752622cdbc4964229b1e",
+  "reference_best_Ha": {
+    "gas": -765.2519079263675,
+    "solv": -765.338580905898
+  },
+  "tolerance_Ha": 1e-06,
+  "computed": {
+    "e_smd_Ha": -765.3385809058977,
+    "e_gas_Ha": -765.2519079263673,
+    "scf_guesses": [
+      "minao",
+      "huckel"
+    ],
+    "scf_guess_energies_smd": [
+      {
+        "guess": "minao",
+        "e_Ha": -765.3344768986055,
+        "converged": true
+      },
+      {
+        "guess": "huckel",
+        "e_Ha": -765.3385809058977,
+        "converged": true
+      },
+      {
+        "guess": "atom",
+        "e_Ha": -765.334476897252,
+        "converged": true
+      }
+    ],
+    "scf_guess_energies_gas": [
+      {
+        "guess": "minao",
+        "e_Ha": -765.2519079263673,
+        "converged": true
+      },
+      {
+        "guess": "huckel",
+        "e_Ha": -765.2519079263332,
+        "converged": true
+      }
+    ],
+    "smd_scf_guess_spread_eV": 0.11167572758437098,
+    "smd_scf_escalated": true,
+    "gas_scf_guess_spread_eV": 9.280729356983556e-10,
+    "gas_scf_escalated": false,
+    "smd_s_squared": 0.7719,
+    "gas_s_squared": 0.7693,
+    "energy_protocol": {
+      "schema": 1,
+      "xc": "wb97m-v",
+      "basis": "def2-tzvpd",
+      "disp": null,
+      "nlc": "vv10",
+      "solvent": "acetonitrile",
+      "solvent_model": "SMD",
+      "density_fit": true,
+      "conv_tol": 1e-09,
+      "max_cycle": 200
+    },
+    "timing_s": {
+      "sp_smd": 158.56,
+      "sp_gas": 100.07
+    }
+  },
+  "delta_vs_reference_eV": {
+    "smd": 6.187152904655704e-12,
+    "gas": 6.187152904655704e-12
+  },
+  "checks": {
+    "smd_escalated": true,
+    "smd_spread_eV_about_0p112": true,
+    "smd_ground_state": true,
+    "gas_not_escalated": true,
+    "gas_ground_state": true,
+    "converged": true
+  },
+  "passed": true,
+  "host": "lambda2",
+  "wall_s": 260.3,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  }
+}

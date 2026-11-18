@@ -1,0 +1,178 @@
+{
+  "purpose": "family-specific calibration check for the DMPZ catholytes (manuscript Validation)",
+  "molecule": "5,10-bis(2-methoxyethyl)-5,10-dihydrophenazine (BMEPZ)",
+  "smiles": "COCCN1c2ccccc2N(CCOC)c2ccccc21",
+  "route": "RDKit ETKDG(seed 0xC0FFEE)+MMFF start for every state -> DFT+SMD opt -> active-protocol SP -> GFN2-xTB RRHO (legacy ranking tier); single seed, no UMA/xTB-ALPB pre-optimization",
+  "measured": {
+    "E1": -0.29,
+    "E2": 0.5,
+    "units": "V vs Fc, MeCN",
+    "doi": "10.1016/j.chempr.2019.07.006"
+  },
+  "fc_reference_eV": 4.355316141227377,
+  "fc_reference_records": {
+    "neu": {
+      "e_smd_eV": -44919.179548288135,
+      "g_thermal_eV": 3.506344146977545,
+      "G_eV": -44915.67320414116,
+      "geometry_sha256": "302fdab624f41c98e33449f9ee4b468a8db4f62c58d5c675efc1730c2d3c62dc",
+      "result_sha256": "899c63632ac07fb179ed63acecb456d4515ee69bf064a01950a6be716cae1565"
+    },
+    "ox": {
+      "e_smd_eV": -44914.743453983036,
+      "g_thermal_eV": 3.4255659831025516,
+      "G_eV": -44911.31788799993,
+      "geometry_sha256": "3723c2ce6b1e1a7d14ee7f087293f90299eb9118ffa6a6802e7aae79d2b8d97b",
+      "result_sha256": "0a079a8db6aa16e716a34c31a9b00261db78499a03c41535b7cb4888cc50279a"
+    }
+  },
+  "states": {
+    "neu": {
+      "charge": 0,
+      "mult": 1,
+      "e_smd_eV": -26097.95470230234,
+      "e_gas_eV": -26097.27622116519,
+      "g_thermal_eV": 8.503392198183594,
+      "G_eV": -26089.451310104156,
+      "thermal_method": "gfn2-xtb RRHO (legacy tier)",
+      "converged": {
+        "geometry": true,
+        "smd": true,
+        "gas": true
+      },
+      "scf_guesses": [
+        "minao"
+      ],
+      "smd_scf_guess_spread_eV": null,
+      "smd_scf_escalated": false,
+      "smd_s_squared": 0.0,
+      "opt_level": "r2scan-d4/def2-svp SMD",
+      "energy_protocol": {
+        "schema": 1,
+        "xc": "wb97m-v",
+        "basis": "def2-tzvpd",
+        "disp": null,
+        "nlc": "vv10",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "conv_tol": 1e-09,
+        "max_cycle": 200
+      },
+      "n_atoms": 44,
+      "n_ao_sp": 1018,
+      "timing_s": {
+        "opt": 154.86,
+        "sp_smd": 55.25,
+        "sp_gas": 48.0,
+        "state_wall": 261.6
+      },
+      "geometry": "manuscript/evidence/2026-11-18_gpu_checks/bmepz_neu_opt.xyz",
+      "geometry_sha256": "ce0140dacd6ca2e4c5c600bc3e88bd023109d5b7cc843bb0fb0f1a34324ba946"
+    },
+    "ox1": {
+      "charge": 1,
+      "mult": 2,
+      "e_smd_eV": -26093.684267175846,
+      "e_gas_eV": -26091.3770664473,
+      "g_thermal_eV": 8.52654526737309,
+      "G_eV": -26085.157721908472,
+      "thermal_method": "gfn2-xtb RRHO (legacy tier)",
+      "converged": {
+        "geometry": true,
+        "smd": true,
+        "gas": true
+      },
+      "scf_guesses": [
+        "minao",
+        "huckel"
+      ],
+      "smd_scf_guess_spread_eV": 1.1743216213036526e-08,
+      "smd_scf_escalated": false,
+      "smd_s_squared": 0.767,
+      "opt_level": "r2scan-d4/def2-svp SMD",
+      "energy_protocol": {
+        "schema": 1,
+        "xc": "wb97m-v",
+        "basis": "def2-tzvpd",
+        "disp": null,
+        "nlc": "vv10",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "conv_tol": 1e-09,
+        "max_cycle": 200
+      },
+      "n_atoms": 44,
+      "n_ao_sp": 1018,
+      "timing_s": {
+        "opt": 205.81,
+        "sp_smd": 175.33,
+        "sp_gas": 166.36,
+        "state_wall": 550.1
+      },
+      "geometry": "manuscript/evidence/2026-11-18_gpu_checks/bmepz_ox1_opt.xyz",
+      "geometry_sha256": "b564ec03a2ee7f4ea3e9c3c2d87b36560711f8bb0dc3cfb7bfcea43eb99526c9"
+    },
+    "ox2": {
+      "charge": 2,
+      "mult": 1,
+      "e_smd_eV": -26088.401140588103,
+      "e_gas_eV": -26081.108352112777,
+      "g_thermal_eV": 8.46810359455163,
+      "G_eV": -26079.933036993552,
+      "thermal_method": "gfn2-xtb RRHO (legacy tier)",
+      "converged": {
+        "geometry": true,
+        "smd": true,
+        "gas": true
+      },
+      "scf_guesses": [
+        "minao"
+      ],
+      "smd_scf_guess_spread_eV": null,
+      "smd_scf_escalated": false,
+      "smd_s_squared": 0.0,
+      "opt_level": "r2scan-d4/def2-svp SMD",
+      "energy_protocol": {
+        "schema": 1,
+        "xc": "wb97m-v",
+        "basis": "def2-tzvpd",
+        "disp": null,
+        "nlc": "vv10",
+        "solvent": "acetonitrile",
+        "solvent_model": "SMD",
+        "density_fit": true,
+        "conv_tol": 1e-09,
+        "max_cycle": 200
+      },
+      "n_atoms": 44,
+      "n_ao_sp": 1018,
+      "timing_s": {
+        "opt": 258.06,
+        "sp_smd": 56.34,
+        "sp_gas": 58.22,
+        "state_wall": 376.1
+      },
+      "geometry": "manuscript/evidence/2026-11-18_gpu_checks/bmepz_ox2_opt.xyz",
+      "geometry_sha256": "ee8a899cfe4f644e498ce9fa43f71a064f2054b0b97c8ef7f4c1538c4e4980a5"
+    }
+  },
+  "computed": {
+    "E1_V": -0.06172794554368011,
+    "E2_V": 0.8693687736922584
+  },
+  "error_V": {
+    "E1": 0.22827205445631987,
+    "E2": 0.3693687736922584
+  },
+  "MAE_V": 0.29882041407428916,
+  "bias_V": 0.29882041407428916,
+  "host": "lambda2",
+  "wall_s": 1189.1,
+  "software": {
+    "pyscf": "2.14.0",
+    "gpu4pyscf": "1.8.1"
+  },
+  "date": "2026-11-18"
+}
