@@ -229,7 +229,21 @@ def convert():
                 block = []
                 while i < len(lines) and not lines[i].startswith("### "):
                     block.append(lines[i]); i += 1
-                out.append(inline(" ".join(x.strip() for x in block if x.strip())) + "\n\\end{suppinfo}\n")
+                paras, items = [], []
+                for x in block:
+                    s2 = x.strip()
+                    if s2.startswith("- "):
+                        items.append(s2[2:])
+                    elif items and x.startswith("  ") and s2:
+                        items[-1] += " " + s2
+                    elif s2:
+                        if items:
+                            paras.append("\\begin{itemize}\n" + "\n".join(r"\item " + inline(i) for i in items) + "\n\\end{itemize}")
+                            items = []
+                        paras.append(inline(s2))
+                if items:
+                    paras.append("\\begin{itemize}\n" + "\n".join(r"\item " + inline(i) for i in items) + "\n\\end{itemize}")
+                out.append("\n".join(paras) + "\n\\end{suppinfo}\n")
                 continue
             cmd = "\\section" if level == 2 else ("\\subsection*" if head in ("Code availability", "Data availability") else "\\subsection")
             out.append(f"{cmd}{{{inline(head)}}}\n")

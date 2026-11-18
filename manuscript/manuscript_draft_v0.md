@@ -7,18 +7,17 @@ _Draft v0 (JCIM target), last updated 2026-11-18. Remaining **[TODO]** markers a
 ## Abstract
 
 Choosing a redox-active molecule to attach (graft) onto a polymer for a non-aqueous
-organic redox flow battery needs three things: properties computed for the molecule
-as it is actually attached, automatic checks that each calculation is sound, and a
-test against measured values. Computational screens rarely provide all three. We
-present a reproducible pipeline that models each molecule with a small cap standing
-in for the polymer, computes its redox potentials (vs ferrocene, in acetonitrile),
-capacity, and reorganization energies with density functional theory (DFT), and
-checks every redox state before ranking. Tested without any fitting on 39 measured
+organic redox flow battery needs three things. Its properties must be computed for
+the molecule as it is actually attached, each calculation must be checked
+automatically, and the method must be tested against measured values. Computational screens rarely provide all three. We present a reproducible pipeline that models each molecule with a small cap
+standing in for the polymer. It computes redox potentials (vs ferrocene, in
+acetonitrile), capacity, and reorganization energies with density functional
+theory (DFT), and checks every redox state before ranking. Tested without any fitting on 39 measured
 potentials (30 molecules, 7 studies), the computed potentials have a mean absolute
 error (MAE) of 0.247 V, most of it a shared offset of +0.19 V, so rankings are more
 reliable than absolute values. Applied to 91 candidates, the pipeline shows that
 the options are dominated by anolytes (85 anolytes, 6 catholytes). Grafted
-5,10-dihydrophenazines fill part of the empty catholyte region, and a series that
+5,10-dihydrophenazines fill part of the empty catholyte region. A series that
 changes one substituent at a time gives a simple rule: electron-withdrawing groups
 on the nitrogen not attached to the polymer raise the potential, and
 electron-donating groups on the ring lower it.
@@ -277,10 +276,10 @@ Each property is computed and reported separately; they are never combined.
 - **Outer-sphere λ_o.** A continuum estimate of the solvent's reorganization
   energy. The single-sphere Born/Marcus expression [Born 1920; Marcus 1956], with
   the radius of the sphere that has the molecule's solvent-accessible surface area
-  (SASA), is reported for every candidate (SI S7). As a check, a nonequilibrium
-  polarizable continuum model (IEF-PCM) [Cancès 1997] that uses the molecule's
-  actual cavity shape was run for 10 couples of 5 pool molecules; it gives 1.03 to
-  1.39 times the Born value (ε_s = 37.5, ε_op = 1.806 in both). Values are per
+  (SASA), is reported for every candidate (SI S7). As a check, a nonequilibrium polarizable continuum model (IEF-PCM)
+  [Cancès 1997] that uses the molecule's actual cavity shape was run for 10 couples
+  of 5 pool molecules. It gives 1.03 to 1.39 times the Born value (ε_s = 37.5,
+  ε_op = 1.806 in both). Values are per
   half-reaction. How far these continuum estimates are from explicit-solvent
   values is not tested here.
 - **Inner-sphere λ_i.** Nelsen four-point scheme [Nelsen 1987]: each redox state's
@@ -390,7 +389,14 @@ version that produced it.
 | Inner-sphere λ_i | Nelsen four-point; reported values use gas-phase energies on SMD geometries (qualitative) |
 | Ranking | Pareto fronts on voltage and capacity, anolyte/catholyte pools separate, uncertainty shown; **no weighted-sum score** |
 
-*Solvent constants are those recorded in `config/project.json`: static permittivity ε_s = 37.5 and refractive index n_D = 1.344, giving optical permittivity ε_op = n_D² = 1.806 (the Pekar factor 1/ε_op − 1/ε_s feeds the outer-sphere λ_o). n_D = 1.344 is the standard tabulated value for MeCN at 20 °C; its temperature coefficient is small (dn/dT ≈ −4 × 10⁻⁴ K⁻¹), so the ~5 K difference from the 298.15 K thermochemistry shifts n_D by ≈ 0.002 and ε_op by < 0.01, a negligible effect on λ_o. We adopt the 20 °C n_D with the 298.15 K free energies, the conventional treatment.*
+*Solvent constants are those recorded in `config/project.json`: static
+permittivity ε_s = 37.5 and refractive index n_D = 1.344, which give the optical
+permittivity ε_op = n_D² = 1.806. The Pekar factor 1/ε_op − 1/ε_s enters the
+outer-sphere λ_o. The value n_D = 1.344 is the standard tabulated value for MeCN at
+20 °C. It changes little with temperature (dn/dT ≈ −4 × 10⁻⁴ K⁻¹), so the ~5 K
+difference from the 298.15 K thermochemistry shifts n_D by ≈ 0.002 and ε_op by
+< 0.01, a negligible effect on λ_o. We use the 20 °C n_D with the 298.15 K free
+energies, the usual practice.*
 
 ---
 
@@ -428,10 +434,9 @@ applied. The panel was not held out from method development, so it is a
 description of accuracy, not a test of a fitted model.
 
 **Headline result.** Across the fixed category-A panel the pipeline reproduces
-experimental potentials with a mean absolute error of **0.247 V**, a root-mean-square
-error (RMSE) of 0.279 V,
-and a **systematic bias of +0.19 V** (computed potentials sit above experiment),
-with a maximum absolute error of 0.547 V. The panel comprises **39 scored
+experimental potentials with a mean absolute error of **0.247 V** and a
+root-mean-square error (RMSE) of 0.279 V. The **systematic bias is +0.19 V**
+(computed potentials sit above experiment), and the largest error is 0.547 V. The panel comprises **39 scored
 endpoints (redox couples) drawn from 30 molecules and seven independent studies**.
 Averaging first within each molecule and then across molecules gives an MAE of
 0.263 V. The bias depends on the direction of the
@@ -462,10 +467,10 @@ it (MAE 0.266 V, bias +0.266 V), while the second (wave 2) is smaller and center
 (MAE 0.185 V, bias -0.064 V). A shared offset does not change the order of candidates, so comparisons
 within a pool are more reliable than absolute values, and that is how the screen
 below is used. We do not attribute the offset to a single cause. A part of it could
-come from the ferrocene reference, which shifts every potential equally. But the
-spacing between the two waves of a molecule (E1 − E2), which does not depend on
-the reference, is computed larger than measured in eight of the nine molecules with
-two measured waves, so a reference error alone cannot explain the residuals. Errors
+come from the ferrocene reference, which shifts every potential equally. But the spacing between the two waves of a molecule (E1 − E2) does not depend on
+the reference, and it is computed larger than measured in eight of the nine
+molecules with two measured waves. A reference error alone therefore cannot
+explain the residuals. Errors
 in how solvation and ion pairing are treated for each charge state probably
 contribute.
 
@@ -481,10 +486,10 @@ the exact measured parent, 5,10-bis(2-methoxyethyl)-5,10-dihydrophenazine (BMEPZ
 E₁ = −0.29 V, E₂ = +0.50 V vs Fc in MeCN [Kwon 2019]), with the xTB thermal tier
 used for the pool. The computed couples are −0.06 and +0.87 V, errors of +0.23 and
 +0.37 V (MAE 0.30 V, bias +0.30 V). This is one molecule, so it is a check rather
-than a benchmark. It agrees with the oxidation side of the panel: oxidations are
-too positive there by +0.29 V on average, and the panel's only second oxidation
-(of N-ethyl-3,7-dimethoxyphenothiazine) is too positive by 0.55 V, so the larger
-BMEPZ error on its second wave is not unexpected. It implies
+than a benchmark. It agrees with the oxidation side of the panel, where oxidations are too positive
+by +0.29 V on average. The panel's only second oxidation (of
+N-ethyl-3,7-dimethoxyphenothiazine) is too positive by 0.55 V, so the larger BMEPZ
+error on its second wave is not unexpected. It implies
 that the absolute DMPZ potentials reported below are likely about 0.3 V too
 positive. The full record (per-state energies, thermal corrections, optimized
 geometries, and the ferrocene reference with the hashes of its source records) is
@@ -501,10 +506,10 @@ errors between 0 and +0.4 V, with the mean bias of +0.19 V marked; the largest e
 of the code at commit `46b39c3b` (22 October 2026). That commit is preserved in the
 public repository under the tag `legacy/pre-refactor-main`, and the benchmark record,
 which records hashes of its inputs, is provided in the SI. The released code is a
-reorganized version of that code. Its five example replays reproduce stored results
-byte for byte, and the two later changes to the DFT step (computing the gas-phase
-energy only for the selected conformer, and the guess policy for radicals)
-reproduce the previous energies to within 10⁻¹² hartree (Ha) in direct tests. We have not,
+reorganized version of that code. Its five example replays reproduce stored results byte for byte. Two later changes
+to the DFT step, computing the gas-phase energy only for the selected conformer and
+the guess policy for radicals, reproduce the previous energies to within
+10⁻¹² hartree (Ha) in direct tests. We have not,
 however, rerun the benchmark's DFT calculations with the released code; the tagged
 version is the one to use to reproduce the benchmark exactly.
 
@@ -531,9 +536,9 @@ pyromellitic-diimides, benzo-, naphtho-, and anthraquinones) are abundant, where
 graftable p-type cores are scarce.
 
 Candidates are ranked not by a single score but on Pareto fronts computed
-**separately for the anolyte and catholyte pools**, because a redox potential is not
-"more is better" in general: an anolyte is better the more negative its potential,
-a catholyte the more positive. Within each pool the two objectives are voltage and
+**separately for the anolyte and catholyte pools**. A redox potential is not "more
+is better" in general: an anolyte is better the more negative its potential, a
+catholyte the more positive. Within each pool the two objectives are voltage and
 theoretical capacity (mAh g⁻¹, active mass), and a candidate is on the front if no
 other candidate is at least as good on both and better on one (Methods). The
 ±0.25 V uncertainty is drawn on each front member; differences in potential
@@ -658,11 +663,11 @@ concrete set of anolyte/catholyte pairings that experiments can test.
 Every pipeline run records the start and end time of each stage, and the DFT
 stage additionally records the time spent in each conformer seed's
 pre-optimization, geometry optimization, solvated and gas-phase single points,
-and thermal correction. Table 4 summarizes the measured cost of five of the
-grafted DMPZ catholytes (43–52 atoms; 1031–1196 basis functions at def2-TZVPD), each
-taken from its SMILES string (a text encoding of the structure) to a ranked
-property record with three redox states
-(neutral, radical cation, dication) and three conformer seeds per state. The
+and thermal correction. Table 4 summarizes the measured cost of five of the grafted DMPZ catholytes
+(43–52 atoms; 1031–1196 basis functions at def2-TZVPD). Each was taken from its
+SMILES string (a text encoding of the structure) to a ranked property record, with
+three redox states (neutral, radical cation, dication) and three conformer seeds
+per state. The
 per-run records are in `manuscript/tables/throughput_measured.csv`, regenerated by
 `scripts/validation/throughput_report.py`.
 
@@ -796,15 +801,21 @@ and extended independently.
 ### Supporting Information
 
 The Supporting Information (available free of charge at [TODO: DOI/URL]) contains:
-S1, the code module behind each pipeline stage; S2, the equations used for the
-potentials, capacities, reorganization energies, and thermal corrections; S3, every
-benchmark endpoint at both thermal tiers, with family, wave, and bootstrap
-statistics and the provenance of the benchmark record; S4, the BMEPZ calibration
-check; S5, the evidence for the open-shell SCF guess policy and its positive
-control; S6, the quality-check counts and the flagged states; S7, the full scored
-table (potentials, both capacity conventions, Born λ_o, Pareto-front membership);
-S8, the measured cost of each DFT state; and S9, software versions. Long tables
-are also provided as CSV files.
+
+- S1, the code module behind each pipeline stage;
+- S2, the equations used for the potentials, capacities, reorganization energies,
+  and thermal corrections;
+- S3, every benchmark endpoint at both thermal tiers, with family, wave, and
+  bootstrap statistics and the provenance of the benchmark record;
+- S4, the BMEPZ calibration check;
+- S5, the evidence for the open-shell SCF guess policy and its positive control;
+- S6, the quality-check counts and the flagged states;
+- S7, the full scored table (potentials, both capacity conventions, Born λ_o,
+  Pareto-front membership);
+- S8, the measured cost of each DFT state;
+- S9, software versions.
+
+Long tables are also provided as CSV files.
 
 ### Code availability
 
