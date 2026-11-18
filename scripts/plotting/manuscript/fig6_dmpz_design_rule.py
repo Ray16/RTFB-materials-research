@@ -10,7 +10,8 @@ independent, oppositely-signed handles on the mean redox potential vs Fc/Fc+:
   * an electron-DONATING ring substituent LOWERS E (2,7-dimethyl -0.13 V,
     2,7-dimethoxy -0.22 V vs the same N'-ethyl parent).
 
-The two handles act on opposite ends of the scaffold and are roughly additive.
+The two handles shift the potential in opposite directions. Whether they add when
+combined in one molecule is untested (no member carries both).
 
 fig6  : ordered potential ladder of the DMPZ series, Delta-vs-N'-ethyl-reference
         annotations, electron-withdrawing (N') vs electron-donating (ring)
@@ -25,9 +26,9 @@ floor on EVERY text element, zero overlaps, family colours fixed across figures
 (DMPZ orange #E69F00, PTZ purple #762A83). CPU / matplotlib only. No number is
 altered - potentials are read live from the scored CSV.
 
-Several members are provisional: the expansion campaign
-(results/expand_catholyte_20261117) is live and their native-DFT confirmation
-stages are still completing; legacy ranking potentials are plotted and flagged.
+All potentials are at the pool's ranking thermal tier (GFN2-xTB RRHO), like every
+value in the scored pool; none of the DMPZ members has been confirmed with the
+native-Hessian tier, so no member is marked differently from the others.
 
   python scripts/plotting/manuscript/fig6_dmpz_design_rule.py
 """
@@ -62,11 +63,11 @@ LOWER_C = C["good"]  # green - direction annotation: substituent lowers E
 #       "ptz" distinct phenothiazine scaffold (not part of the DMPZ delta rule)
 META = {
     "exp_dmpz_mb_ethyl":         dict(label="N'-ethyl (reference)",      fam="dmpz", role="ref",   provisional=False),
-    "exp_dmpz_mb_methyl":        dict(label="N'-methyl",                 fam="dmpz", role="raise", provisional=True),
-    "hyp_dmpz_mb_methoxyethyl":  dict(label="N'-(2-methoxyethyl)",       fam="dmpz", role="raise", provisional=True),
-    "hyp_dmpz_mb_trifluoroethyl":dict(label="N'-(2,2,2-trifluoroethyl)", fam="dmpz", role="raise", provisional=True),
-    "hyp_dmpz_27dimethyl_ethyl": dict(label="2,7-dimethyl, N'-ethyl",    fam="dmpz", role="lower", provisional=True),
-    "hyp_dmpz_27dimethoxy_ethyl":dict(label="2,7-dimethoxy, N'-ethyl",   fam="dmpz", role="lower", provisional=True),
+    "exp_dmpz_mb_methyl":        dict(label="N'-methyl",                 fam="dmpz", role="raise", provisional=False),
+    "hyp_dmpz_mb_methoxyethyl":  dict(label="N'-(2-methoxyethyl)",       fam="dmpz", role="raise", provisional=False),
+    "hyp_dmpz_mb_trifluoroethyl":dict(label="N'-(2,2,2-trifluoroethyl)", fam="dmpz", role="raise", provisional=False),
+    "hyp_dmpz_27dimethyl_ethyl": dict(label="2,7-dimethyl, N'-ethyl",    fam="dmpz", role="lower", provisional=False),
+    "hyp_dmpz_27dimethoxy_ethyl":dict(label="2,7-dimethoxy, N'-ethyl",   fam="dmpz", role="lower", provisional=False),
     "exp_ptz_37dimethoxy":       dict(label="3,7-dimethoxyphenothiazine",fam="ptz",  role="ptz",   provisional=False),
 }
 
@@ -111,7 +112,9 @@ def make_fig6(data):
     fig, ax = plt.subplots(figsize=(16.0, 12.0))
 
     # reference potential guide
-    ax.axvline(ref_E, color=C["measured"], lw=1.8, ls="--", zorder=1, alpha=0.8)
+    # drawn only across the data rows so it never crosses the arrow captions
+    ax.plot([ref_E, ref_E], [-0.55, ytop + 0.55], color=C["measured"], lw=1.8, ls="--",
+            zorder=1, alpha=0.8)
 
     for cid in ids:
         d = data[cid]
@@ -137,8 +140,8 @@ def make_fig6(data):
                         ha="right", va="center", fontsize=FS, color=LOWER_C)
         elif d["role"] == "ref":
             ax.annotate(f"{_fmt(d['E'])} V\n(reference)", (d["E"], y),
-                        xytext=(0, 24), textcoords="offset points",
-                        ha="center", va="bottom", fontsize=FS, color=C["measured"])
+                        xytext=(20, 0), textcoords="offset points",
+                        ha="left", va="center", fontsize=FS, color=C["measured"])
         else:  # ptz
             ax.annotate(f"{_fmt(d['E'])} V\n(PTZ)", (d["E"], y),
                         xytext=(16, 0), textcoords="offset points",
@@ -164,7 +167,7 @@ def make_fig6(data):
     ax.set_ylim(-1.75, ytop + 1.55)
     ax.set_xlim(-0.12, 1.16)
     ax.set_xlabel("Redox potential, E vs Fc/Fc⁺ (V)", fontsize=FS)
-    ax.set_title("DMPZ catholyte design rule: two additive, opposite-sign handles",
+    ax.set_title("DMPZ catholyte design rule: two opposite-sign handles",
                  fontsize=FS + 2, pad=18)
     ax.tick_params(axis="x", labelsize=FS)
     ax.tick_params(axis="y", length=0)
@@ -175,8 +178,6 @@ def make_fig6(data):
                label="DMPZ (dihydrophenazine)"),
         Line2D([], [], marker="o", ls="none", mfc=PTZ_C, mec=PTZ_C, ms=15,
                label="phenothiazine (PTZ)"),
-        Line2D([], [], marker="o", ls="none", mfc="white", mec=C["measured"],
-               mew=2.4, ms=15, label="* provisional (live campaign)"),
     ]
     ax.legend(handles=legend, loc="lower right", fontsize=FS, framealpha=0.95,
               borderpad=0.6)
@@ -237,8 +238,6 @@ def make_fig6b(data):
                label="DMPZ (dihydrophenazine)"),
         Line2D([], [], marker="o", ls="none", mfc=PTZ_C, mec=PTZ_C, ms=15,
                label="phenothiazine (PTZ)"),
-        Line2D([], [], marker="o", ls="none", mfc="white", mec=C["measured"],
-               mew=2.4, ms=15, label="* provisional (live campaign)"),
     ]
     ax.legend(handles=legend, loc="upper right", fontsize=FS, framealpha=0.95,
               borderpad=0.6)

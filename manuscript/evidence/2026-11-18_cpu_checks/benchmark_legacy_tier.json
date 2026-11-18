@@ -1,0 +1,1050 @@
+{
+  "purpose": "frozen benchmark re-scored at the pool's GFN2-xTB RRHO thermal tier",
+  "summary": {
+    "n_endpoints": 39,
+    "native_recomputed": {
+      "n": 39,
+      "MAE_V": 0.2469676364897687,
+      "RMSE_V": 0.27928820236442403,
+      "bias_V": 0.18959431512275962,
+      "max_abs_V": 0.5469170401181327
+    },
+    "legacy": {
+      "n": 39,
+      "MAE_V": 0.23195433299189608,
+      "RMSE_V": 0.26604733437205796,
+      "bias_V": 0.19251300796509224,
+      "max_abs_V": 0.4837999889993807
+    },
+    "legacy_reduction": {
+      "n": 33,
+      "MAE_V": 0.2235638504809855,
+      "RMSE_V": 0.26073133510953383,
+      "bias_V": 0.17695137544930825,
+      "max_abs_V": 0.4541626878521492
+    },
+    "legacy_oxidation": {
+      "n": 6,
+      "MAE_V": 0.2781019868019042,
+      "RMSE_V": 0.2935696454473867,
+      "bias_V": 0.2781019868019042,
+      "max_abs_V": 0.4837999889993807
+    },
+    "shift_V": {
+      "mean": 0.0029186928423326043,
+      "min": -0.06419185800405103,
+      "max": 0.10856974060152424
+    },
+    "max_native_reproduction_error_V": 0.0,
+    "fc_native_V": 4.379195901594358,
+    "fc_native_from_states_V": 4.379195901594358,
+    "fc_legacy_V": 4.355316141227377
+  },
+  "problems": [],
+  "endpoints": [
+    {
+      "id": "bm_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.9,
+      "calc_native_V": -0.566082319823181,
+      "calc_native_published_V": -0.566082319823181,
+      "calc_legacy_V": -0.5775477384104306,
+      "shift_V": -0.011465418587249587
+    },
+    {
+      "id": "bm_1_4_benzoquinone",
+      "event": "red1->red2",
+      "family": "quinone",
+      "wave": 2,
+      "exp_V": -1.71,
+      "calc_native_V": -1.740424401823475,
+      "calc_native_published_V": -1.740424401823475,
+      "calc_legacy_V": -1.6997129459323332,
+      "shift_V": 0.04071145589114167
+    },
+    {
+      "id": "bm_2_methyl_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.98,
+      "calc_native_V": -0.6506839169505838,
+      "calc_native_published_V": -0.6506839169505838,
+      "calc_legacy_V": -0.6611130340679665,
+      "shift_V": -0.010429117117382702
+    },
+    {
+      "id": "bm_2_methyl_1_4_benzoquinone",
+      "event": "red1->red2",
+      "family": "quinone",
+      "wave": 2,
+      "exp_V": -1.78,
+      "calc_native_V": -1.8026212760505587,
+      "calc_native_published_V": -1.8026212760505587,
+      "calc_legacy_V": -1.750190905208001,
+      "shift_V": 0.05243037084255775
+    },
+    {
+      "id": "bm_2_tert_butyl_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -1.0,
+      "calc_native_V": -0.6564798414547113,
+      "calc_native_published_V": -0.6564798414547113,
+      "calc_legacy_V": -0.6709237062477769,
+      "shift_V": -0.014443864793065586
+    },
+    {
+      "id": "bm_2_tert_butyl_1_4_benzoquinone",
+      "event": "red1->red2",
+      "family": "quinone",
+      "wave": 2,
+      "exp_V": -1.79,
+      "calc_native_V": -1.8226576936685888,
+      "calc_native_published_V": -1.8226576936685888,
+      "calc_legacy_V": -1.7590778856156248,
+      "shift_V": 0.06357980805296393
+    },
+    {
+      "id": "bm_2_fluoro_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.77,
+      "calc_native_V": -0.42844055051682517,
+      "calc_native_published_V": -0.42844055051682517,
+      "calc_legacy_V": -0.43730179184058215,
+      "shift_V": -0.008861241323756985
+    },
+    {
+      "id": "bm_1_2_naphthoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.9,
+      "calc_native_V": -0.7142184002495924,
+      "calc_native_published_V": -0.7142184002495924,
+      "calc_legacy_V": -0.708619237117091,
+      "shift_V": 0.005599163132501417
+    },
+    {
+      "id": "bm_1_2_naphthoquinone",
+      "event": "red1->red2",
+      "family": "quinone",
+      "wave": 2,
+      "exp_V": -1.31,
+      "calc_native_V": -1.8249996019640093,
+      "calc_native_published_V": -1.8249996019640093,
+      "calc_legacy_V": -1.7641626878521492,
+      "shift_V": 0.060836914111860096
+    },
+    {
+      "id": "bm_n_n_diisopropylpyromellitic_diimide",
+      "event": "neu->red1",
+      "family": "aromatic imide",
+      "wave": 1,
+      "exp_V": -1.29,
+      "calc_native_V": -1.1409412697612424,
+      "calc_native_published_V": -1.1409412697612424,
+      "calc_legacy_V": -1.1758023384136322,
+      "shift_V": -0.034861068652389804
+    },
+    {
+      "id": "bm_n_n_diisopropylpyromellitic_diimide",
+      "event": "red1->red2",
+      "family": "aromatic imide",
+      "wave": 2,
+      "exp_V": -1.92,
+      "calc_native_V": -2.0229955893701117,
+      "calc_native_published_V": -2.0229955893701117,
+      "calc_legacy_V": -1.9578928954724688,
+      "shift_V": 0.0651026938976429
+    },
+    {
+      "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+      "event": "neu->red1",
+      "family": "aromatic imide",
+      "wave": 1,
+      "exp_V": -1.2,
+      "calc_native_V": -1.115072526026779,
+      "calc_native_published_V": -1.115072526026779,
+      "calc_legacy_V": -1.1423265846788127,
+      "shift_V": -0.027254058652033564
+    },
+    {
+      "id": "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide",
+      "event": "red1->red2",
+      "family": "aromatic imide",
+      "wave": 2,
+      "exp_V": -1.81,
+      "calc_native_V": -2.011233808039833,
+      "calc_native_published_V": -2.011233808039833,
+      "calc_legacy_V": -1.9368168317960226,
+      "shift_V": 0.0744169762438105
+    },
+    {
+      "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+      "event": "neu->red1",
+      "family": "aromatic imide",
+      "wave": 1,
+      "exp_V": -1.23,
+      "calc_native_V": -1.2112907544651534,
+      "calc_native_published_V": -1.2112907544651534,
+      "calc_legacy_V": -1.2752490497441613,
+      "shift_V": -0.06395829527900787
+    },
+    {
+      "id": "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide",
+      "event": "red1->red2",
+      "family": "aromatic imide",
+      "wave": 2,
+      "exp_V": -1.84,
+      "calc_native_V": -2.0505010663546273,
+      "calc_native_published_V": -2.0505010663546273,
+      "calc_legacy_V": -1.941931325753103,
+      "shift_V": 0.10856974060152424
+    },
+    {
+      "id": "bm_n_methylphthalimide",
+      "event": "neu->red1",
+      "family": "aromatic imide",
+      "wave": 1,
+      "exp_V": -1.9,
+      "calc_native_V": -1.701265368166787,
+      "calc_native_published_V": -1.701265368166787,
+      "calc_legacy_V": -1.7051861240324797,
+      "shift_V": -0.003920755865692627
+    },
+    {
+      "id": "bm_n_isopropylphthalimide",
+      "event": "neu->red1",
+      "family": "aromatic imide",
+      "wave": 1,
+      "exp_V": -1.93,
+      "calc_native_V": -1.713677524778177,
+      "calc_native_published_V": -1.713677524778177,
+      "calc_legacy_V": -1.7263404539662588,
+      "shift_V": -0.012662929188081762
+    },
+    {
+      "id": "bm_n_2_methoxyethyl_phthalimide",
+      "event": "neu->red1",
+      "family": "aromatic imide",
+      "wave": 1,
+      "exp_V": -1.89,
+      "calc_native_V": -1.6540254396568344,
+      "calc_native_published_V": -1.6540254396568344,
+      "calc_legacy_V": -1.6734524624262122,
+      "shift_V": -0.0194270227693778
+    },
+    {
+      "id": "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+      "event": "ox2->ox1",
+      "family": "viologen",
+      "wave": 1,
+      "exp_V": -0.785,
+      "calc_native_V": -0.5946151498974359,
+      "calc_native_published_V": -0.5946151498974359,
+      "calc_legacy_V": -0.6588070079014869,
+      "shift_V": -0.06419185800405103
+    },
+    {
+      "id": "bm_1_benzyl_1_methyl_4_4_bipyridinium",
+      "event": "ox1->neu",
+      "family": "viologen",
+      "wave": 2,
+      "exp_V": -1.204,
+      "calc_native_V": -1.207346329385473,
+      "calc_native_published_V": -1.207346329385473,
+      "calc_legacy_V": -1.20705304740477,
+      "shift_V": 0.00029328198070288636
+    },
+    {
+      "id": "tempo_parent",
+      "event": "ox->rad",
+      "family": "nitroxide",
+      "wave": 1,
+      "exp_V": 0.249,
+      "calc_native_V": 0.5015081264591572,
+      "calc_native_published_V": 0.5015081264591572,
+      "calc_legacy_V": 0.4731114071528282,
+      "shift_V": -0.028396719306329032
+    },
+    {
+      "id": "bm_tetramethyl_1_4_benzoquinone_duroquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -1.213,
+      "calc_native_V": -0.8847519949176785,
+      "calc_native_published_V": -0.8847519949176785,
+      "calc_legacy_V": -0.8700171069758653,
+      "shift_V": 0.014734887941813213
+    },
+    {
+      "id": "bm_2_6_dimethoxy_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -1.092,
+      "calc_native_V": -0.7983227810327662,
+      "calc_native_published_V": -0.7983227810327662,
+      "calc_legacy_V": -0.807489246406476,
+      "shift_V": -0.009166465373709798
+    },
+    {
+      "id": "bm_2_methoxy_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.98,
+      "calc_native_V": -0.822134564838052,
+      "calc_native_published_V": -0.822134564838052,
+      "calc_legacy_V": -0.8405509235508362,
+      "shift_V": -0.01841635871278413
+    },
+    {
+      "id": "bm_2_6_dimethyl_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -1.0345,
+      "calc_native_V": -0.7357232469803421,
+      "calc_native_published_V": -0.7357232469803421,
+      "calc_legacy_V": -0.7430079212954297,
+      "shift_V": -0.007284674315087614
+    },
+    {
+      "id": "bm_2_3_dimethyl_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -1.0455,
+      "calc_native_V": -0.7305117503892689,
+      "calc_native_published_V": -0.7305117503892689,
+      "calc_legacy_V": -0.731819368991637,
+      "shift_V": -0.0013076186023681657
+    },
+    {
+      "id": "bm_2_3_5_trimethyl_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -1.131,
+      "calc_native_V": -0.820610484937788,
+      "calc_native_published_V": -0.820610484937788,
+      "calc_legacy_V": -0.8172228179209924,
+      "shift_V": 0.0033876670167956036
+    },
+    {
+      "id": "bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.3565,
+      "calc_native_V": 0.026942485135805327,
+      "calc_native_published_V": 0.026942485135805327,
+      "calc_legacy_V": 0.018702033259614836,
+      "shift_V": -0.008240451876190491
+    },
+    {
+      "id": "bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.377,
+      "calc_native_V": -0.02889148859321722,
+      "calc_native_published_V": -0.02889148859321722,
+      "calc_legacy_V": -0.0012477538621169515,
+      "shift_V": 0.027643734731100267
+    },
+    {
+      "id": "bm_2_5_dichloro_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.5605,
+      "calc_native_V": -0.22565835071873153,
+      "calc_native_published_V": -0.22565835071873153,
+      "calc_legacy_V": -0.2308281005898607,
+      "shift_V": -0.00516974987112917
+    },
+    {
+      "id": "bm_2_chloro_1_4_benzoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.723,
+      "calc_native_V": -0.39620858994385344,
+      "calc_native_published_V": -0.39620858994385344,
+      "calc_legacy_V": -0.40327242916828254,
+      "shift_V": -0.007063839224429103
+    },
+    {
+      "id": "bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": 0.137,
+      "calc_native_V": 0.6079789923896897,
+      "calc_native_published_V": 0.6079789923896897,
+      "calc_legacy_V": 0.5902438903212897,
+      "shift_V": -0.01773510206840001
+    },
+    {
+      "id": "bm_2_3_dichloro_1_4_naphthoquinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -0.89,
+      "calc_native_V": -0.5099956202102476,
+      "calc_native_published_V": -0.5099956202102476,
+      "calc_legacy_V": -0.5146228110461379,
+      "shift_V": -0.00462719083589036
+    },
+    {
+      "id": "bm_9_10_phenanthrenequinone",
+      "event": "neu->red1",
+      "family": "quinone",
+      "wave": 1,
+      "exp_V": -1.039,
+      "calc_native_V": -0.8339211879647337,
+      "calc_native_published_V": -0.8339211879647337,
+      "calc_legacy_V": -0.8239640000647341,
+      "shift_V": 0.009957187899999553
+    },
+    {
+      "id": "bm_n_ethylphenothiazine",
+      "event": "ox1->neu",
+      "family": "phenothiazine",
+      "wave": 1,
+      "exp_V": 0.278,
+      "calc_native_V": 0.5373751950901351,
+      "calc_native_published_V": 0.5373751950901351,
+      "calc_legacy_V": 0.5390227346615575,
+      "shift_V": 0.001647539571422385
+    },
+    {
+      "id": "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+      "event": "ox1->neu",
+      "family": "phenothiazine",
+      "wave": 1,
+      "exp_V": 0.311,
+      "calc_native_V": 0.5592722598012188,
+      "calc_native_published_V": 0.5592722598012188,
+      "calc_legacy_V": 0.5681774025433697,
+      "shift_V": 0.008905142742150929
+    },
+    {
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "event": "ox1->neu",
+      "family": "phenothiazine",
+      "wave": 1,
+      "exp_V": 0.056,
+      "calc_native_V": 0.24882753346173558,
+      "calc_native_published_V": 0.24882753346173558,
+      "calc_legacy_V": 0.25944447331130505,
+      "shift_V": 0.010616939849569462
+    },
+    {
+      "id": "bm_n_ethyl_3_7_dimethoxyphenothiazine",
+      "event": "ox2->ox1",
+      "family": "phenothiazine",
+      "wave": 2,
+      "exp_V": 0.655,
+      "calc_native_V": 1.2019170401181327,
+      "calc_native_published_V": 1.2019170401181327,
+      "calc_legacy_V": 1.1387999889993807,
+      "shift_V": -0.06311705111875199
+    },
+    {
+      "id": "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine",
+      "event": "ox1->neu",
+      "family": "phenothiazine",
+      "wave": 1,
+      "exp_V": 0.093,
+      "calc_native_V": 0.32465954626241,
+      "calc_native_published_V": 0.32465954626241,
+      "calc_legacy_V": 0.33205591414298397,
+      "shift_V": 0.007396367880573962
+    }
+  ],
+  "states": {
+    "bm_1_2_naphthoquinone:neu": {
+      "G_native_eV": -14559.512534560248,
+      "g_native_eV": 2.6766080961445913,
+      "e_smd_eV": -14562.189142662755,
+      "g_legacy_eV": 2.5058534289104526,
+      "g_legacy_stored_eV": 2.5058534289104526,
+      "G_legacy_eV": -14559.683289233844
+    },
+    "bm_1_2_naphthoquinone:red1": {
+      "G_native_eV": -14563.177512061593,
+      "g_native_eV": 2.6243003850728552,
+      "e_smd_eV": -14565.801812442582,
+      "g_legacy_eV": 2.4718263046270996,
+      "g_legacy_stored_eV": 2.4718263046270996,
+      "G_legacy_eV": -14563.329986137955
+    },
+    "bm_1_2_naphthoquinone:red2": {
+      "G_native_eV": -14565.731708361223,
+      "g_native_eV": 2.593347582166469,
+      "e_smd_eV": -14568.325055949399,
+      "g_legacy_eV": 2.403916358068867,
+      "g_legacy_stored_eV": 2.403916358068867,
+      "G_legacy_eV": -14565.92113959133
+    },
+    "bm_1_4_benzoquinone:neu": {
+      "G_native_eV": -10379.4744071031,
+      "g_native_eV": 1.5100907612681966,
+      "e_smd_eV": -10380.984497867037,
+      "g_legacy_eV": 1.40771543506919,
+      "g_legacy_stored_eV": 1.40771543506919,
+      "G_legacy_eV": -10379.576782431968
+    },
+    "bm_1_4_benzoquinone:red1": {
+      "G_native_eV": -10383.287520684871,
+      "g_native_eV": 1.4561343616572395,
+      "e_smd_eV": -10384.743655045144,
+      "g_legacy_eV": 1.3891042103578648,
+      "g_legacy_stored_eV": 1.3891042103578648,
+      "G_legacy_eV": -10383.354550834785
+    },
+    "bm_1_4_benzoquinone:red2": {
+      "G_native_eV": -10385.926292184642,
+      "g_native_eV": 1.4246041855582294,
+      "e_smd_eV": -10387.350896371925,
+      "g_legacy_eV": 1.3407423418448894,
+      "g_legacy_stored_eV": 1.3407423418448894,
+      "G_legacy_eV": -10386.01015403008
+    },
+    "bm_1_benzyl_1_methyl_4_4_bipyridinium:neu": {
+      "G_native_eV": -21930.224392718686,
+      "g_native_eV": 7.3698392553222085,
+      "e_smd_eV": -21937.594231986044,
+      "g_legacy_eV": 7.0879300754438335,
+      "g_legacy_stored_eV": 7.0879300754438335,
+      "G_legacy_eV": -21930.506301910602
+    },
+    "bm_1_benzyl_1_methyl_4_4_bipyridinium:ox1": {
+      "G_native_eV": -21927.052543146478,
+      "g_native_eV": 7.457366630197076,
+      "e_smd_eV": -21934.509909776676,
+      "g_legacy_eV": 7.151870959897931,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -21927.35803881678
+    },
+    "bm_1_benzyl_1_methyl_4_4_bipyridinium:ox2": {
+      "G_native_eV": -21923.26796239478,
+      "g_native_eV": 7.5675124463250105,
+      "e_smd_eV": -21930.835474841104,
+      "g_legacy_eV": 7.173945157651092,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -21923.661529683453
+    },
+    "bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil:neu": {
+      "G_native_eV": -60405.73159726538,
+      "g_native_eV": 0.2739582137768449,
+      "e_smd_eV": -60406.00555547916,
+      "g_legacy_eV": 0.16069385059058566,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -60405.84486162857
+    },
+    "bm_2_3_5_6_tetrachloro_1_4_benzoquinone_chloranil:red1": {
+      "G_native_eV": -60410.13773565211,
+      "g_native_eV": 0.22449770622227253,
+      "e_smd_eV": -60410.36223335833,
+      "g_legacy_eV": 0.14335355527972005,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -60410.218879803055
+    },
+    "bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil:neu": {
+      "G_native_eV": -21184.47067980896,
+      "g_native_eV": 0.49440838066563425,
+      "e_smd_eV": -21184.965088189627,
+      "g_legacy_eV": 0.4173557845690153,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -21184.54773240506
+    },
+    "bm_2_3_5_6_tetrafluoro_1_4_benzoquinone_fluoranil:red1": {
+      "G_native_eV": -21188.820984221962,
+      "g_native_eV": 0.4657517236994541,
+      "e_smd_eV": -21189.28673594566,
+      "g_legacy_eV": 0.384935153235867,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -21188.901800792424
+    },
+    "bm_2_3_5_trimethyl_1_4_benzoquinone:neu": {
+      "G_native_eV": -13586.577989302534,
+      "g_native_eV": 3.5219310969154147,
+      "e_smd_eV": -13590.099920387565,
+      "g_legacy_eV": 3.4909703026573835,
+      "g_legacy_stored_eV": 3.4909703026573835,
+      "G_legacy_eV": -13586.608950084908
+    },
+    "bm_2_3_5_trimethyl_1_4_benzoquinone:red1": {
+      "G_native_eV": -13590.13657471919,
+      "g_native_eV": 3.473430353044799,
+      "e_smd_eV": -13593.610005072234,
+      "g_legacy_eV": 3.4629616640196383,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -13590.147043408215
+    },
+    "bm_2_3_dichloro_1_4_naphthoquinone:neu": {
+      "G_native_eV": -39572.91178901095,
+      "g_native_eV": 2.0813877779669183,
+      "e_smd_eV": -39574.993176788914,
+      "g_legacy_eV": 1.9087996187714653,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -39573.08437717014
+    },
+    "bm_2_3_dichloro_1_4_naphthoquinone:red1": {
+      "G_native_eV": -39576.78098929233,
+      "g_native_eV": 2.0251365210776706,
+      "e_smd_eV": -39578.80612581341,
+      "g_legacy_eV": 1.8810553130907626,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -39576.92507050032
+    },
+    "bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq:neu": {
+      "G_native_eV": -40413.55550082661,
+      "g_native_eV": 0.6588165378318399,
+      "e_smd_eV": -40414.21431736444,
+      "g_legacy_eV": 0.5772736836505173,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -40413.63704368079
+    },
+    "bm_2_3_dichloro_5_6_dicyano_1_4_benzoquinone_ddq:red1": {
+      "G_native_eV": -40418.54267572059,
+      "g_native_eV": 0.6053741134985061,
+      "e_smd_eV": -40419.14804983409,
+      "g_legacy_eV": 0.5654461217454996,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -40418.58260371234
+    },
+    "bm_2_3_dimethyl_1_4_benzoquinone:neu": {
+      "G_native_eV": -12517.513048936939,
+      "g_native_eV": 2.845876259250157,
+      "e_smd_eV": -12520.35892518495,
+      "g_legacy_eV": 2.805291860356947,
+      "g_legacy_stored_eV": 2.805291860356947,
+      "G_legacy_eV": -12517.553633324593
+    },
+    "bm_2_3_dimethyl_1_4_benzoquinone:red1": {
+      "G_native_eV": -12521.161733088144,
+      "g_native_eV": 2.7988762095280815,
+      "e_smd_eV": -12523.960609297672,
+      "g_legacy_eV": 2.7834792008426166,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -12521.177130096828
+    },
+    "bm_2_5_dichloro_1_4_benzoquinone:neu": {
+      "G_native_eV": -35392.73168406559,
+      "g_native_eV": 0.8676308558620821,
+      "e_smd_eV": -35393.599314921456,
+      "g_legacy_eV": 0.7679141788551104,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -35392.8314007426
+    },
+    "bm_2_5_dichloro_1_4_benzoquinone:red1": {
+      "G_native_eV": -35396.88522161647,
+      "g_native_eV": 0.8199646866665663,
+      "e_smd_eV": -35397.70518630313,
+      "g_legacy_eV": 0.7492975198938949,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -35396.95588878324
+    },
+    "bm_2_6_dimethoxy_1_4_benzoquinone:neu": {
+      "G_native_eV": -16611.105242461083,
+      "g_native_eV": 3.062360263021892,
+      "e_smd_eV": -16614.16760273245,
+      "g_legacy_eV": 2.9269253561704063,
+      "g_legacy_stored_eV": 2.9269253561704063,
+      "G_legacy_eV": -16611.24067737628
+    },
+    "bm_2_6_dimethoxy_1_4_benzoquinone:red1": {
+      "G_native_eV": -16614.686115581644,
+      "g_native_eV": 2.9604801992303194,
+      "e_smd_eV": -16617.64659578215,
+      "g_legacy_eV": 2.8580915110477947,
+      "g_legacy_stored_eV": 2.8580915110477947,
+      "G_legacy_eV": -16614.788504271102
+    },
+    "bm_2_6_dimethyl_1_4_benzoquinone:neu": {
+      "G_native_eV": -12517.597741075302,
+      "g_native_eV": 2.87440304195664,
+      "e_smd_eV": -12520.472144118892,
+      "g_legacy_eV": 2.795279710575209,
+      "g_legacy_stored_eV": 2.795279710575209,
+      "G_legacy_eV": -12517.676864408317
+    },
+    "bm_2_6_dimethyl_1_4_benzoquinone:red1": {
+      "G_native_eV": -12521.241213729916,
+      "g_native_eV": 2.815520974403759,
+      "e_smd_eV": -12524.056734703785,
+      "g_legacy_eV": 2.7675620755360852,
+      "g_legacy_stored_eV": 2.7675620755360852,
+      "G_legacy_eV": -12521.289172628249
+    },
+    "bm_2_chloro_1_4_benzoquinone:neu": {
+      "G_native_eV": -22886.144017528233,
+      "g_native_eV": 1.1609344179577923,
+      "e_smd_eV": -22887.30495194619,
+      "g_legacy_eV": 1.060015679249891,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -22886.24493626694
+    },
+    "bm_2_chloro_1_4_benzoquinone:red1": {
+      "G_native_eV": -22890.127004839884,
+      "g_native_eV": 1.1121880197760796,
+      "e_smd_eV": -22891.23919285966,
+      "g_legacy_eV": 1.0422128806602229,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -22890.196979979
+    },
+    "bm_2_fluoro_1_4_benzoquinone:neu": {
+      "G_native_eV": -13080.907500352881,
+      "g_native_eV": 1.2263336452491516,
+      "e_smd_eV": -13082.13383399813,
+      "g_legacy_eV": 1.125485289097385,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -13081.008348709032
+    },
+    "bm_2_fluoro_1_4_benzoquinone:red1": {
+      "G_native_eV": -13084.858255703959,
+      "g_native_eV": 1.1723054718312806,
+      "e_smd_eV": -13086.03056117579,
+      "g_legacy_eV": 1.1041981173704944,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -13084.92636305842
+    },
+    "bm_2_methoxy_1_4_benzoquinone:neu": {
+      "G_native_eV": -13495.450304416088,
+      "g_native_eV": 2.282686751695229,
+      "e_smd_eV": -13497.73299116972,
+      "g_legacy_eV": 2.158646133602765,
+      "g_legacy_stored_eV": 2.158646133602765,
+      "G_legacy_eV": -13495.574345036117
+    },
+    "bm_2_methoxy_1_4_benzoquinone:red1": {
+      "G_native_eV": -13499.007365752845,
+      "g_native_eV": 2.188186146081334,
+      "e_smd_eV": -13501.195551899056,
+      "g_legacy_eV": 2.1064416452633608,
+      "g_legacy_stored_eV": 2.1064416452633608,
+      "G_legacy_eV": -13499.089110253793
+    },
+    "bm_2_methyl_1_4_benzoquinone:neu": {
+      "G_native_eV": -11448.564106110454,
+      "g_native_eV": 2.166498465863606,
+      "e_smd_eV": -11450.730604588054,
+      "g_legacy_eV": 2.0734008401786785,
+      "g_legacy_stored_eV": 2.0734008401786785,
+      "G_legacy_eV": -11448.657203747876
+    },
+    "bm_2_methyl_1_4_benzoquinone:red1": {
+      "G_native_eV": -11452.292618095098,
+      "g_native_eV": 2.1100126963860113,
+      "e_smd_eV": -11454.402630782914,
+      "g_legacy_eV": 2.0512239278779694,
+      "g_legacy_stored_eV": 2.0512239278779694,
+      "G_legacy_eV": -11452.351406855036
+    },
+    "bm_2_methyl_1_4_benzoquinone:red2": {
+      "G_native_eV": -11454.869192720642,
+      "g_native_eV": 2.0732614080062675,
+      "e_smd_eV": -11456.942454121594,
+      "g_legacy_eV": 1.9859220305387641,
+      "g_legacy_stored_eV": 1.9859220305387641,
+      "G_legacy_eV": -11454.956532091055
+    },
+    "bm_2_tert_butyl_1_4_benzoquinone:neu": {
+      "G_native_eV": -14654.954102983567,
+      "g_native_eV": 4.334384006157956,
+      "e_smd_eV": -14659.288486990417,
+      "g_legacy_eV": 4.249414936106007,
+      "g_legacy_stored_eV": 4.249414936106007,
+      "G_legacy_eV": -14655.039072054311
+    },
+    "bm_2_tert_butyl_1_4_benzoquinone:red1": {
+      "G_native_eV": -14658.676819043707,
+      "g_native_eV": 4.273174975502652,
+      "e_smd_eV": -14662.949994013987,
+      "g_legacy_eV": 4.226529524696782,
+      "g_legacy_stored_eV": 4.226529524696782,
+      "G_legacy_eV": -14658.72346448929
+    },
+    "bm_2_tert_butyl_1_4_benzoquinone:red2": {
+      "G_native_eV": -14661.233357251633,
+      "g_native_eV": 4.2363849068267845,
+      "e_smd_eV": -14665.469742155943,
+      "g_legacy_eV": 4.150039411040695,
+      "g_legacy_stored_eV": 4.150039411040695,
+      "G_legacy_eV": -14661.319702744902
+    },
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine:neu": {
+      "G_native_eV": -40581.39929453801,
+      "g_native_eV": 9.241330266490621,
+      "e_smd_eV": -40590.6406248045,
+      "g_legacy_eV": 8.913118988300415,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -40581.727505816205
+    },
+    "bm_3_7_dimethoxy_n_2_2_methoxyethoxy_ethyl_phenothiazine:ox1": {
+      "G_native_eV": -40576.69543909015,
+      "g_native_eV": 9.264287094839155,
+      "e_smd_eV": -40585.95972618499,
+      "g_legacy_eV": 8.919592424160344,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -40577.040133760835
+    },
+    "bm_9_10_phenanthrenequinone:neu": {
+      "G_native_eV": -18739.56031464302,
+      "g_native_eV": 3.89776020593331,
+      "e_smd_eV": -18743.45807485636,
+      "g_legacy_eV": 3.667299887731819,
+      "g_legacy_stored_eV": 3.667299887731819,
+      "G_legacy_eV": -18739.790774968627
+    },
+    "bm_9_10_phenanthrenequinone:red1": {
+      "G_native_eV": -18743.105589356648,
+      "g_native_eV": 3.8414706458418952,
+      "e_smd_eV": -18746.9470600069,
+      "g_legacy_eV": 3.624932897109298,
+      "g_legacy_stored_eV": 3.624932897109298,
+      "G_legacy_eV": -18743.32212710979
+    },
+    "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine:neu": {
+      "G_native_eV": -34349.788040601605,
+      "g_native_eV": 7.691320577214372,
+      "e_smd_eV": -34357.47936117882,
+      "g_legacy_eV": 7.40247341166508,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -34350.07688776715
+    },
+    "bm_n_2_2_methoxyethoxy_ethyl_phenothiazine:ox1": {
+      "G_native_eV": -34344.84957244021,
+      "g_native_eV": 7.707237007384518,
+      "e_smd_eV": -34352.5568094476,
+      "g_legacy_eV": 7.403415224219732,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -34345.15339422338
+    },
+    "bm_n_2_methoxyethyl_phthalimide:neu": {
+      "G_native_eV": -19214.612332974782,
+      "g_native_eV": 4.505880288763113,
+      "e_smd_eV": -19219.118213253307,
+      "g_legacy_eV": 4.309295804696769,
+      "g_legacy_stored_eV": 4.309295804696769,
+      "G_legacy_eV": -19214.80891744861
+    },
+    "bm_n_2_methoxyethyl_phthalimide:red1": {
+      "G_native_eV": -19217.33750343672,
+      "g_native_eV": 4.37807566062376,
+      "e_smd_eV": -19221.715579095053,
+      "g_legacy_eV": 4.224797967643951,
+      "g_legacy_stored_eV": 4.224797967643951,
+      "G_legacy_eV": -19217.49078112741
+    },
+    "bm_n_ethyl_3_7_dimethoxyphenothiazine:neu": {
+      "G_native_eV": -33281.23465917291,
+      "g_native_eV": 6.903941613982527,
+      "e_smd_eV": -33288.13860078689,
+      "g_legacy_eV": 6.665744480568341,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -33281.472856306325
+    },
+    "bm_n_ethyl_3_7_dimethoxyphenothiazine:ox1": {
+      "G_native_eV": -33276.60663573785,
+      "g_native_eV": 6.938482777719127,
+      "e_smd_eV": -33283.54511851557,
+      "g_legacy_eV": 6.687022823778655,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -33276.85809569179
+    },
+    "bm_n_ethyl_3_7_dimethoxyphenothiazine:ox2": {
+      "G_native_eV": -33271.02552279614,
+      "g_native_eV": 7.012468057161132,
+      "e_smd_eV": -33278.0379908533,
+      "g_legacy_eV": 6.674011291736936,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -33271.36397956156
+    },
+    "bm_n_ethylphenothiazine:neu": {
+      "G_native_eV": -27049.746550505595,
+      "g_native_eV": 5.3111251158145985,
+      "e_smd_eV": -27055.05767562141,
+      "g_legacy_eV": 5.11472257206741,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -27049.942953049343
+    },
+    "bm_n_ethylphenothiazine:ox1": {
+      "G_native_eV": -27044.82997940891,
+      "g_native_eV": 5.338072583008612,
+      "e_smd_eV": -27050.16805199192,
+      "g_legacy_eV": 5.119437818464928,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -27045.048614173455
+    },
+    "bm_n_isopropylphthalimide:neu": {
+      "G_native_eV": -17167.898037222894,
+      "g_native_eV": 4.400684744422634,
+      "e_smd_eV": -17172.29872196893,
+      "g_legacy_eV": 4.258955881795401,
+      "g_legacy_stored_eV": 4.258955881795401,
+      "G_legacy_eV": -17168.039766087135
+    },
+    "bm_n_isopropylphthalimide:red1": {
+      "G_native_eV": -17170.56355559971,
+      "g_native_eV": 4.296870451431339,
+      "e_smd_eV": -17174.86042603991,
+      "g_legacy_eV": 4.191684265514061,
+      "g_legacy_stored_eV": 4.191684265514061,
+      "G_legacy_eV": -17170.668741774396
+    },
+    "bm_n_methylphthalimide:neu": {
+      "G_native_eV": -15030.158763214842,
+      "g_native_eV": 2.9467055524955486,
+      "e_smd_eV": -15033.105468767337,
+      "g_legacy_eV": 2.813148945301803,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -15030.292319822034
+    },
+    "bm_n_methylphthalimide:red1": {
+      "G_native_eV": -15032.83669374827,
+      "g_native_eV": 2.8504462451576615,
+      "e_smd_eV": -15035.687139993428,
+      "g_legacy_eV": 2.7446901541988034,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -15032.942449839229
+    },
+    "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide:neu": {
+      "G_native_eV": -40480.78400785206,
+      "g_native_eV": 10.144138731253154,
+      "e_smd_eV": -40490.928146576865,
+      "g_legacy_eV": 9.761057469398253,
+      "g_legacy_stored_eV": 9.761057469398253,
+      "G_legacy_eV": -40481.16708910747
+    },
+    "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide:red1": {
+      "G_native_eV": -40483.95191299919,
+      "g_native_eV": 10.008757705048426,
+      "e_smd_eV": -40493.96067069793,
+      "g_legacy_eV": 9.713514498982395,
+      "g_legacy_stored_eV": 9.713514498982395,
+      "G_legacy_eV": -40484.24715619895
+    },
+    "bm_n_n_bis_2_2_methoxyethoxy_ethyl_pyromellitic_diimide:red2": {
+      "G_native_eV": -40486.28060783443,
+      "g_native_eV": 10.040596658164164,
+      "e_smd_eV": -40496.3212044926,
+      "g_legacy_eV": 9.660663478173998,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -40486.660541014426
+    },
+    "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide:neu": {
+      "G_native_eV": -32111.679948283334,
+      "g_native_eV": 7.036008288450018,
+      "e_smd_eV": -32118.715956567645,
+      "g_legacy_eV": 6.758795088349763,
+      "g_legacy_stored_eV": 6.758795088349763,
+      "G_legacy_eV": -32111.957161479295
+    },
+    "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide:red1": {
+      "G_native_eV": -32114.9440716589,
+      "g_native_eV": 6.938531834661845,
+      "e_smd_eV": -32121.882603482827,
+      "g_legacy_eV": 6.712452446984579,
+      "g_legacy_stored_eV": 6.712452446984579,
+      "G_legacy_eV": -32115.170151035843
+    },
+    "bm_n_n_bis_2_methoxyethyl_pyromellitic_diimide:red2": {
+      "G_native_eV": -32117.312033752456,
+      "g_native_eV": 6.92289242442015,
+      "e_smd_eV": -32124.234926174242,
+      "g_legacy_eV": 6.6462758289676325,
+      "g_legacy_stored_eV": 6.6462758289676325,
+      "G_legacy_eV": -32117.588650345275
+    },
+    "bm_n_n_diisopropylpyromellitic_diimide:neu": {
+      "G_native_eV": -28018.215643584554,
+      "g_native_eV": 6.858251162718897,
+      "e_smd_eV": -28025.073894757366,
+      "g_legacy_eV": 6.682148516161666,
+      "g_legacy_stored_eV": 6.682148516161666,
+      "G_legacy_eV": -28018.391746241206
+    },
+    "bm_n_n_diisopropylpyromellitic_diimide:red1": {
+      "G_native_eV": -28021.453898216387,
+      "g_native_eV": 6.7503819302606685,
+      "e_smd_eV": -28028.204280145368,
+      "g_legacy_eV": 6.633020101347092,
+      "g_legacy_stored_eV": 6.633020101347092,
+      "G_legacy_eV": -28021.57126004402
+    },
+    "bm_n_n_diisopropylpyromellitic_diimide:red2": {
+      "G_native_eV": -28023.81009852861,
+      "g_native_eV": 6.724085594456858,
+      "e_smd_eV": -28030.534184132994,
+      "g_legacy_eV": 6.565500843219285,
+      "g_legacy_stored_eV": 6.5655008431648625,
+      "G_legacy_eV": -28023.968683289775
+    },
+    "bm_tetramethyl_1_4_benzoquinone_duroquinone:neu": {
+      "G_native_eV": -14655.506640645706,
+      "g_native_eV": 4.208041488943642,
+      "e_smd_eV": -14659.714682137239,
+      "g_legacy_eV": 4.241608948021958,
+      "g_legacy_stored_eV": 4.241608948021958,
+      "G_legacy_eV": -14655.473073189218
+    },
+    "bm_tetramethyl_1_4_benzoquinone_duroquinone:red1": {
+      "G_native_eV": -14659.001084552383,
+      "g_native_eV": 4.151054214353131,
+      "e_smd_eV": -14663.152138766736,
+      "g_legacy_eV": 4.193766543266947,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -14658.95837222347
+    },
+    "ferrocene:neu": {
+      "G_native_eV": -44915.46189851847,
+      "g_native_eV": 3.7176497696617683,
+      "e_smd_eV": -44919.179548288135,
+      "g_legacy_eV": 3.506344146977545,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -44915.67320414116
+    },
+    "ferrocene:ox": {
+      "G_native_eV": -44911.08270261688,
+      "g_native_eV": 3.6607513661618993,
+      "e_smd_eV": -44914.743453983036,
+      "g_legacy_eV": 3.4255659831025516,
+      "g_legacy_stored_eV": null,
+      "G_legacy_eV": -44911.31788799993
+    },
+    "tempo_parent:ox": {
+      "G_native_eV": -13150.707855378034,
+      "g_native_eV": 6.132857224855126,
+      "e_smd_eV": -13156.840712602889,
+      "g_legacy_eV": 6.017049546167823,
+      "g_legacy_stored_eV": 6.017049546167823,
+      "G_legacy_eV": -13150.82366305672
+    },
+    "tempo_parent:rad": {
+      "G_native_eV": -13155.588559406087,
+      "g_native_eV": 6.071429637214258,
+      "e_smd_eV": -13161.6599890433,
+      "g_legacy_eV": 6.007898438199286,
+      "g_legacy_stored_eV": 6.007898438199286,
+      "G_legacy_eV": -13155.652090605101
+    }
+  },
+  "inputs": {
+    "states": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/reviews/2026-10-22/publication_benchmark_complete/states.json",
+    "summary": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/reviews/2026-10-22/publication_benchmark_complete/summary.json",
+    "points": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/manuscript/evidence/2026-10-22_benchmark_complete/benchmark_points.csv"
+  }
+}

@@ -12,7 +12,7 @@ and cross-point consistency all pass; `quality/readiness.py --strict`,
 `quality/spins.py`, `quality/stability.py`). **Candidates that fail a gate are
 held, not dropped** (left annotation): they are carried on a separate
 partial-information list and can be dominated but never silently removed or allowed
-to dominate. The scored tier is then ranked on σ-aware Pareto fronts (Figure 5).
+to dominate. The scored tier is then ranked on Pareto fronts (Figure 5).
 
 **Honesty about the counts (critical).** The funnel spans **three grains**, as
 annotated on the left:

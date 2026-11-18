@@ -12,7 +12,7 @@ r²SCAN-D4/def2-SVP(D) with a GFN2-xTB ALPB(MeCN) warm start, the three states r
 concurrently; (4) refined single-point energies at ωB97M-V(VV10)/def2-TZVPD in
 SMD(MeCN) using one diffuse basis for every charge state and for the Fc reference;
 (5) two-tier thermochemistry; (6) derived properties kept as separate quantities;
-(7) QC coverage and cross-point consistency; (8) σ-aware Pareto scoring; and
+(7) QC coverage and cross-point consistency; (8) Pareto ranking; and
 (9) an independent arithmetic audit of the exported tables. Each stage is
 addressed by content hash, so a change in geometry, protocol, or (charge,
 multiplicity) resolves a new record rather than overwriting an old one. Boxes are
@@ -22,11 +22,9 @@ The inset tabulates the level of theory and standard-state conventions
 Figure 4.
 
 **Method note — two-tier thermochemistry (stage 5).** The *pool-wide* ranking tier
-is a GFN2-xTB RRHO correction on the DFT+SMD geometry, used because RRHO
-corrections are nearly method-transferable (one cheap uniform Hessian cancels in
-the energy *differences* reported) and because the installed gpu4pyscf analytic
-UKS Hessian inflates open-shell frequencies ~2×, making DFT Hessians unsafe for
-the radical states. The *lead-confirmation* tier is a native solution DFT Hessian
+is a GFN2-xTB RRHO correction on the DFT+SMD geometry. It is cheap enough to apply
+identically across the pool, and on the experimental benchmark it is no less
+accurate than the native tier (MAE 0.232 V vs 0.247 V). The *lead-confirmation* tier is a native solution DFT Hessian
 (r²SCAN-D4/def2-SVP(D)/SMD) whose nuclear partition is evaluated by a
 certificate-locked projected internal-mode qRRHO kernel; it is disk-/GPU-gated and
 run only to confirm shortlisted leads. This is a deliberate two-tier design, not a

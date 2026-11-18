@@ -23,7 +23,8 @@ space (85 anolyte / 6 catholyte) and surfaces grafted 5,10-dihydrophenazine
 two-electron catholytes that fill the sparse catholyte region, with DFT-derived
 substituent design rules (electron-withdrawing N'-groups raise the potential,
 ring methylation lowers it). Pairing these catholytes with pipeline anolytes
-gives proposed full cells near 1.9 V. Code, byte-exact replays, and a contract-
+gives proposed full cells of about 1.7–1.9 V after correcting for each family's
+measured bias. Code, byte-exact replays, and a contract-
 test suite are released for independent reproduction.
 
 ---
@@ -38,7 +39,7 @@ panel shows a potential-versus-usable-capacity design map in which prior
 candidates cluster on the anolyte side and newly surfaced grafted
 5,10-dihydrophenazine two-electron catholytes (points colored by substituent)
 land in the previously empty catholyte region, with an arrow indicating a
-proposed ~1.9 V full cell. A single caption line states that a capped graft is a
+proposed full cell of about 1.9 V. A single caption line states that a capped graft is a
 model, not a synthesized material.
 
 ---
@@ -63,10 +64,10 @@ from a single polymer platform. The design space it opens, however, is badly
 unbalanced. The catalog of well-behaved organic anolytes — n-type couples based
 on quinones, imides, and related electron-poor scaffolds — is deep and still
 growing [Ding 2018], whereas robust, high-potential catholytes remain scarce
-[Kwon 2019]. Because a flow cell needs both a catholyte and an anolyte, this
-asymmetry, not the anolyte inventory, is what limits achievable cell voltage,
-and it is precisely the kind of gap that a well-posed computational screen
-should be able to survey and help fill.
+[Kwon 2019]. Because a flow cell needs both a catholyte and an anolyte, the
+shortage of good catholytes limits which cells can be built. This is the kind
+of gap that a well-designed computational screen should be able to map and help
+fill.
 
 Computation is in principle well suited to this task: redox potentials, and the
 reorganization energetics that govern electron-transfer kinetics, are
@@ -106,20 +107,20 @@ than a stand-in. (ii) Every candidate passes explicit per-state QC —
 spin/⟨S²⟩ checks, geometry integrity, full charge-state coverage, and
 cross-point consistency — and candidates that fail are held rather than silently
 dropped. (iii) All potentials are computed at ωB97M-V/def2-TZVPD with SMD(MeCN)
-and reported against the ferrocene (Fc) reference in a TBAPF₆/MeCN electrolyte,
-and the pipeline is calibrated against experiment, reproducing measured redox
-potentials with a mean absolute error of 0.247 V and a systematic +0.19 V bias;
-because the bias is systematic, relative rankings are more reliable than
-absolute values. (iv) Candidates are ranked on a transparent, uncertainty-aware
-(σ-aware) Pareto front over separate physical properties — potential and usable
-capacity — with anolyte and catholyte pools treated separately and half-reaction
-and reorganization quantities kept distinct; we deliberately avoid any
-weighted-sum scalar score. Reorganization energetics are reported with
+and reported against the ferrocene (Fc) reference in a TBAPF₆/MeCN electrolyte.
+The pipeline is tested, without any fitting, against measured redox potentials:
+the mean absolute error is 0.247 V, with a systematic +0.19 V bias. Because most
+of the error is a shared offset, relative rankings are more reliable than
+absolute values. (iv) Candidates are ranked on Pareto fronts over two separate
+properties, potential and usable capacity, with each potential's uncertainty
+shown. Anolytes and catholytes are ranked separately, half-reaction and
+reorganization quantities are kept apart, and we deliberately avoid any
+weighted-sum score. Reorganization energetics are reported with
 property-specific confidence: the outer-sphere term is a defensible continuum
 estimate, whereas the inner-sphere term is currently treated as qualitative.
-(v) The entire pipeline is byte-exact reproducible, distributed with portable
-replays, a large contract-test suite, and a certificate-locked thermochemistry
-kernel, so any reported number can be regenerated from its raw records.
+(v) The pipeline is released with example replays that reproduce stored results
+byte for byte, a large test suite, and a hash-locked thermochemistry kernel, and
+every reported number is traced to the raw records it was computed from.
 
 We demonstrate the pipeline on a pool of 91 graftable candidates spanning
 quinone, imide, pyridinic, phenazine, and phenothiazine families. The screen
@@ -129,15 +130,16 @@ Pareto front motivates a focused, matched-substituent study of grafted
 5,10-dihydrophenazine (DMPZ) two-electron catholytes. From matched series
 differing by a single substituent we extract an interpretable design rule —
 electron-withdrawing N′-substituents raise the potential while ring-methylation
-lowers it — that populates the previously empty catholyte front with
-DFT-supported candidates near +0.3 to +0.6 V versus Fc. Pairing these catholytes
-with pipeline anolytes suggests non-aqueous full cells near ~1.9 V; we stress
+lowers it. This rule places candidates in the previously empty catholyte region,
+at computed potentials of +0.2 to +0.6 V versus Fc (probably about 0.3 V lower in
+experiment). Pairing these catholytes
+with pipeline anolytes suggests non-aqueous full cells of about 1.7–1.9 V; we stress
 that these are computational proposals, not demonstrations of capacity, cycling,
 crossover, or synthetic feasibility. The remainder of the paper is organized as
 follows. We first describe the grafting abstraction and the nine-stage pipeline,
 including its two-tier thermochemistry and its reliability-gating policy. We then
 present the external validation against experiment that anchors the method's
-credibility, apply the pipeline to the 91-candidate pool and its σ-aware Pareto
+credibility, apply the pipeline to the 91-candidate pool and its Pareto
 fronts, and finally present the DMPZ catholyte showcase and the proposed full
 cells, before closing with the method's limitations and outlook.
 
@@ -157,7 +159,7 @@ in geometry, electronic protocol, or charge/multiplicity resolves a new record
 rather than silently overwriting an old one. The level of theory and standard-state
 conventions used throughout are collected in Table 1. Because this is a method-led
 study, we state the protocol precisely here and defer the supporting derivations
-(outer-sphere PCM operators, qRRHO projection, σ-aware domination proofs), together
+(outer-sphere PCM operators and the qRRHO projection), together
 with a module map naming the specific file and function behind each stage, to the
 Supporting Information (SI); the package layout is documented in the released code.
 
@@ -190,11 +192,12 @@ optimized in the gas phase with the UMA machine-learned interatomic potential, w
 pre-optimizer to select the lowest-energy conformer and furnish a good DFT seed.
 The backend is chosen from the *actual* reserved GPU architecture (deterministic
 stock calculator on all current production cards); UMA is gas-phase only and never
-supplies a solvated energy. By default a single best seed is carried into the DFT
-stage, because the rigid aromatic redox cores collapse to one solvated minimum
-(measured DFT seed spread < 5 meV in 13/14 reference states); multi-conformer
-screening (`--nconf > 1`) and an optional ring–ring torsion scan are reserved for
-genuinely floppy species and reduced dianions.
+supplies a solvated energy. For this study, three conformer seeds per redox state
+were carried into the DFT stage and the lowest-energy result was kept (262 of the
+pool's 274 states; the code's default is one seed). The search matters: in 154 of
+the 268 multi-seed states the seeds end within 5 meV of each other, but in 62 they
+differ by more than 25 meV and in 11 by more than 0.1 eV. An optional ring–ring
+torsion scan is available for flexible species.
 
 ### DFT geometry optimization and solvation
 
@@ -218,9 +221,11 @@ state and only Hückel finds it. When the two guesses disagree by more than 1 me
 or either fails to converge, the state has competing SCF solutions: the atomic
 guess is then also run, and the record is flagged for review. Metal-containing open
 shells use all three guesses, plus orbital-removal occupation seeds for the Fe
-doublet of ferrocenium. A def2
-effective core potential (ECP) is attached automatically for any element with Z ≥ 37. The three states of a motif are
-independent and are optimized concurrently, one GPU each.
+doublet of ferrocenium. (The pool's energies were computed with all three guesses
+for every open shell; the two-guess policy reproduces them, as described in the
+throughput section.) A def2 effective core potential (ECP) is attached
+automatically for any element with Z ≥ 37. The redox states of a motif are
+independent and can be optimized at the same time, one GPU per state.
 
 ### Refined electronic energies
 
@@ -243,13 +248,13 @@ dG_solv = E_SMD − E_gas and a gas-HOMO/unbound-anion diagnostic.
 
 Free energies are G = E_SMD(active protocol) + G_thermal, and the two thermal terms
 are maintained as two explicit tiers. The **pool-wide tier** is a GFN2-xTB
-rigid-rotor–harmonic-oscillator (RRHO) correction (298.15 K) evaluated on the DFT+SMD-optimized geometry: G_thermal = ZPE + H_thermal − TS. It is used
-for ranking because RRHO corrections are nearly independent of the electronic-
-structure method, so one cheap, uniform Hessian is applied identically to every
-molecule and every state in the pool and cancels cleanly in the energy
-*differences* we report. It is also the only safe option at scale here: the
-installed gpu4pyscf analytic UKS Hessian inflates open-shell frequencies roughly
-two-fold, corrupting ZPE for exactly the radical states that dominate this dataset.
+rigid-rotor–harmonic-oscillator (RRHO) correction (298.15 K) evaluated on the
+DFT+SMD-optimized geometry: G_thermal = ZPE + H_thermal − TS. It is cheap enough to
+apply identically to every molecule and state in the pool, and much of it cancels
+in the energy *differences* we report. It is also not less accurate on the
+experimental benchmark: re-scoring the 39 benchmark potentials with this tier
+instead of the native tier, with all electronic energies unchanged, gives an MAE
+of 0.232 V instead of 0.247 V (Results).
 The **lead-confirmation tier** is a native, derivative-checked solution DFT
 thermochemistry: an r²SCAN-D4/def2-SVP(D)/SMD Hessian
 with full grid response, stationary-minimum and gradient acceptance checks, and a
@@ -290,12 +295,13 @@ never combined.
   cavity and the charge-transfer surface potential, with ε_s = 37.5, ε_op = 1.806.
   Reported as the half-reaction (1-body) value; the continuum-vs-explicit gap is not
   closed.
-- **Inner-sphere λ_i.** Nelsen four-point, gas-phase at the active protocol on the
-  SMD geometries. This is a current limitation: the gas
-  energies on single-conformer SMD geometries make λ_i low-confidence (negative
-  values and large symmetry-aware RMSD are QC flags), so λ_i is treated as
-  qualitative/SI pending an all-SMD, conformer-matched surface. No kinetic or
-  reversibility claim is drawn from it.
+- **Inner-sphere λ_i.** Nelsen four-point scheme. The values reported here were
+  computed with gas-phase energies at the SMD geometries, from single conformers.
+  Gas-phase energies are not at a minimum on those geometries, so λ_i can come out
+  negative, and for anions the gas-phase state can be unbound. λ_i is therefore
+  treated as qualitative and used for no kinetic or reversibility claim. The
+  current code evaluates all four points in solvent instead, which removes these
+  problems; the pool's λ_i values have not yet been recomputed that way.
 - **Disproportionation.** dG_disp = G(R^{q+1}) + G(R^{q−1}) − 2G(R^q) = F·(E_high −
   E_low), i.e. the reference-free two-wave spacing,
   reported as computed and conditional.
@@ -317,22 +323,26 @@ the ranking (they can be dominated but can never dominate or be silently removed
 
 ### Multi-property ranking
 
-Ranking is performed on **σ-aware Pareto fronts with the anolyte and catholyte
-pools kept separate**. An
-ambipolar molecule enters both pools with only its own side's electrons. The
-objectives are the trustworthy axes only, oriented so that higher is better:
-voltage (−E for anolytes, +E for catholytes), specific capacity, disproportionation
-stability (only where an intermediate exists), and kinetics (−λ_i, QC-clean couples
-only). Domination is uncertainty-aware (σ-aware). Candidate A dominates candidate B only
-when, across the objectives they share (at least two), A is never worse than B by
-more than the combined per-axis noise, k·√(σ_A² + σ_B²), and is clearly better —
-beyond that noise — on at least one axis. Each σ is the candidate's own uncertainty,
-propagated from the validation benchmark. A candidate missing any primary
-objective is INCOMPLETE and cannot enter the front or dominate. Solubility and
-synthetic-accessibility proxies, and the continuum λ_o/λ_het/λ_se, are carried as
-annotations/tiebreakers, not objectives. There is deliberately **no scalar or
-weighted-sum figure of merit**: such a score would require arbitrary weights, ignore
-σ, and rescale as the candidate set changes; the front plus the raw axes are
+Candidates are ranked on **Pareto fronts, with the anolyte and catholyte pools
+kept separate**. An ambipolar molecule enters both pools with only its own side's
+electrons. The fronts in this paper use two objectives, oriented so that higher is
+better: voltage (−E for anolytes, +E for catholytes) and theoretical capacity. A
+candidate is on the front if no other candidate in its pool is at least as good on
+both and better on one. The benchmark's mean absolute error (±0.25 V) is drawn on
+the figures as the uncertainty of each potential, rather than built into the
+front. We tested an uncertainty-aware rule, under which A dominates B only if A is
+not worse beyond the combined uncertainty on any objective and better beyond it on
+one, using each family's benchmark RMSE as the uncertainty. Because capacity has no
+computational uncertainty, that rule lets any higher-capacity candidate dominate
+every candidate whose potential lies within the combined uncertainty (about 0.2–0.5 V,
+depending on the families), and each front collapses to its single
+highest-capacity member. We therefore report the plain fronts and ask the reader to treat
+differences in potential smaller than the shown uncertainty as unresolved. The
+ranking code also supports disproportionation stability and −λ_i as objectives;
+λ_i is not used here because it is qualitative (above). Solubility and
+synthetic-accessibility proxies are carried as annotations, not objectives. There
+is deliberately **no weighted-sum score**: it would need arbitrary weights and
+would change whenever the candidate set changes. The front and the raw values are
 reported instead.
 
 ### Reproducibility and software
@@ -376,8 +386,8 @@ the Results, together with the code version that produced it.
 | Potential reference | Fc/Fc⁺, computed live at the active protocol (level-matched) |
 | Electrolyte / window | TBAPF₆ / MeCN; [−3.0, 2.0] V vs Fc; anolyte/catholyte divider 0 V |
 | Outer-sphere λ_o | Born (SASA radius) and molecular-cavity nonequilibrium IEF-PCM (Pekar), 1-body |
-| Inner-sphere λ_i | Nelsen four-point, gas phase at the production protocol on SMD geometries (qualitative, SI) |
-| Ranking | σ-aware Pareto fronts, anolyte/catholyte pools separate; **no scalar/weighted-sum score** |
+| Inner-sphere λ_i | Nelsen four-point; reported values use gas-phase energies on SMD geometries (qualitative) |
+| Ranking | Pareto fronts on voltage and capacity, anolyte/catholyte pools separate, uncertainty shown; **no weighted-sum score** |
 
 *Solvent constants are those recorded in `config/project.json`: static permittivity ε_s = 37.5 and refractive index n_D = 1.344, giving optical permittivity ε_op = n_D² = 1.806 (the Pekar factor 1/ε_op − 1/ε_s feeds the outer-sphere λ_o). n_D = 1.344 is the standard tabulated value for MeCN at 20 °C; its temperature coefficient is small (dn/dT ≈ −4 × 10⁻⁴ K⁻¹), so the ~5 K difference from the 298.15 K thermochemistry shifts n_D by ≈ 0.002 and ε_op by < 0.01, a negligible effect on λ_o. We adopt the 20 °C n_D with the 298.15 K free energies, the conventional treatment.*
 
@@ -392,8 +402,11 @@ measured electrochemistry, so before applying it to the candidate pool we test i
 against literature redox potentials under matched conditions. The validation is
 deliberately retrospective and uncorrected: we compare the pipeline's computed
 potentials of *free parent* molecules against experimental values measured in
-acetonitrile and referenced to ferrocene (Fc), using the identical build → DFT+SMD →
-single-point → thermochemistry route applied to every screening candidate. The
+acetonitrile and referenced to ferrocene (Fc). The molecules go through the same
+build, DFT+SMD optimization, and single-point steps as the screening candidates.
+The thermal correction differs: the published benchmark uses the native-Hessian
+tier, while the pool uses the cheaper xTB tier, so we report the benchmark at both
+(below). The
 experimental panel is hand-curated from the primary literature, with each wave
 carrying its source, DOI, table or page, and original reference electrode; every
 value is admitted (or not) *before* any computed number is seen, on criteria set by
@@ -425,20 +438,28 @@ bias; the weaker seven-study clustering gives [0.178, 0.306] V and [0.053, 0.285
 reported in the SI. These are descriptive intervals for the observed panel, not
 prediction intervals for a new molecule.
 
+**At the pool's thermal tier.** Re-scoring the same 39 potentials with the xTB
+thermal correction used for the pool, for the molecules and for ferrocene alike,
+and keeping every electronic energy unchanged, gives an MAE of 0.232 V, an RMSE of
+0.266 V, and a bias of +0.19 V (reductions: MAE 0.224 V, bias +0.18 V; oxidations:
+MAE 0.278 V, bias +0.28 V). Individual potentials move by −0.06 to +0.11 V between
+the two tiers, and by +0.003 V on average. The cheaper tier used for the pool is
+therefore no less accurate on this panel. The re-scoring script and its record are
+in the SI (`scripts/validation/benchmark_tier_comparison.py`); recomputing the
+native tier the same way reproduces every published potential exactly.
+
 **Interpretation.** The dominant error is a *systematic* positive offset, not scatter:
 the bias (+0.19 V) is a large fraction of the MAE, and grouped diagnostics localize it.
 The first reduction/oxidation step carries nearly all of it (wave 1 MAE 0.266 V, bias
 +0.266 V), while the second step is both smaller and centered (wave 2 MAE 0.185 V, bias
--0.064 V). A systematic offset is exactly the error structure under which *relative*
-rankings are far more reliable than absolute values — a uniform shift reorders nothing —
-and this is what licenses the comparative screening in the following sections, where
-candidates are ranked within pools rather than reported as absolute cell potentials.
-We resist attributing the offset to a single cause. The live Fc reference (E_abs(Fc) =
-4.379 V) differs from other-functional literature values by an amount comparable to the
-first-step bias, making a reference contribution plausible but not proven; reference-free
-wave spacings (E1 - E2), which cancel any common Fc shift, are themselves systematically
-too large across all nine paired ladders, so a pure reference error cannot explain the
-residuals. Charge-state solvation and ion-pairing errors can coexist with it. We state
+-0.064 V). A shared offset does not change the order of candidates, so comparisons
+within a pool are more reliable than absolute values, and that is how the screen
+below is used. We do not attribute the offset to a single cause. A part of it could
+come from the ferrocene reference, which shifts every potential equally. But the
+spacing between the two waves of a molecule (E1 − E2), which does not depend on
+the reference, is too large in eight of the nine molecules with two measured
+waves, so a reference error alone cannot explain the residuals. Errors in how
+solvation and ion pairing are treated for each charge state probably contribute. We state
 these as explicit limits: the panel validates *free parents*, not exact grafts or
 polymer interactions (`exact_graft_accuracy_validated = False` in the record); external
 naphthalene-diimide (NDI) accuracy is not covered, since the available NDI entry was
@@ -496,35 +517,30 @@ graftable, well-precedented n-type cores (naphthalene- and pyromellitic-diimides
 benzo-/naphtho-/anthraquinones) are abundant, whereas graftable p-type cores are
 scarce.
 
-Candidates are ranked not by a single figure of merit but on σ-aware Pareto
-fronts computed **separately for the anolyte and catholyte pools**, because a
-redox potential is not globally "more is better": an anolyte is better the more
-negative its potential, a catholyte the more positive. Within each pool the
-trustworthy axes — pool-appropriate voltage and nominal usable capacity (mAh g⁻¹
-in TBAPF₆/MeCN) — define the objectives, oriented so that higher is better, and
-domination is declared only when one candidate is no worse than another beyond
-the combined per-candidate uncertainty (σ, propagated from the validation
-benchmark) on every shared axis and strictly better, beyond that noise, on at
-least one. Candidates missing a primary axis are reported on a separate
-partial-information list rather than silently promoted or dropped. We
-deliberately avoid any weighted-sum score: arbitrary weights, insensitivity to
-σ, and pool-relative min–max rescaling would all make a scalar rank change
-whenever the candidate set changes. The reader is given the front and the raw
-axes instead (Figure 5; full table in the SI). Inner-sphere reorganization
-(λᵢ) is carried only qualitatively and is not used to set the headline ranking,
-for the reasons given in the Methods.
+Candidates are ranked not by a single score but on Pareto fronts computed
+**separately for the anolyte and catholyte pools**, because a redox potential is not
+"more is better" in general: an anolyte is better the more negative its potential,
+a catholyte the more positive. Within each pool the two objectives are voltage and
+theoretical capacity (mAh g⁻¹, active mass), and a candidate is on the front if no
+other candidate is at least as good on both and better on one (Methods). The
+±0.25 V uncertainty is drawn on each front member; differences in potential
+smaller than that should be read as unresolved. We deliberately avoid any
+weighted-sum score, which would need arbitrary weights and would change whenever
+the candidate set changes. The front and the raw values are given instead
+(Figure 5; full table in the SI). Inner-sphere reorganization (λᵢ) is carried only
+qualitatively and is not used in the ranking, for the reasons given in the Methods.
 
 Figure 5 presents the two Pareto panels side by side. The anolyte panel (85
-candidates) is densely populated across a wide potential window: diimides and
-amino-/alkoxy-naphthoquinones span roughly −1.0 to −1.6 V vs Fc, with
-pyromellitic diimides (e.g. the ether-tethered PMDI at −1.54 V) and
-alkoxy-anthraquinones (≈ −1.49 V) anchoring the most-negative edge and the
-multi-electron viologens clustering nearer −0.7 to −1.0 V. Theoretical capacities
+candidates) is densely populated across a wide potential range: imides span
+−0.81 to −1.54 V vs Fc and quinones −0.83 to −1.49 V, with pyromellitic diimides
+(e.g. the ether-tethered PMDI at −1.54 V) and alkoxy-anthraquinones (≈ −1.49 V)
+at the most negative edge, and the multi-electron viologens between −0.63 and
+−0.99 V. Theoretical capacities
 of the two-electron anolytes span ≈ 90–200 mAh g⁻¹, highest for the light
 benzo- and naphthoquinones and falling as solubilizing oligoether or long-alkyl caps
 add inert mass. The catholyte panel,
-by contrast, is almost empty: six points, five of them dihydrophenazines
-clustered near +0.4 to +0.5 V and one 3,7-dimethoxyphenothiazine at +0.78 V.
+by contrast, is almost empty: six points, five of them dihydrophenazines between
++0.30 and +0.62 V and one 3,7-dimethoxyphenothiazine at +0.78 V.
 This visual sparsity — a crowded anolyte front against a nearly bare catholyte
 front — is the central structural result of the screen, and it defines the
 **catholyte gap** that the next step is designed to fill.
@@ -537,8 +553,8 @@ one substituent at a time, so that the resulting potential shifts can be read as
 matched single-substituent deltas rather than confounded whole-molecule
 comparisons (Figure 6). Every member carries the same 4-methylbenzyl (Merrifield
 proxy) cap on one nitrogen and a two-electron {neutral → +1 → +2} ladder,
-isolating the effect of the N′-substituent and of ring substitution. The
-confirmed series potentials (E vs Fc, mean of the two one-electron couples, from
+isolating the effect of the N′-substituent and of ring substitution. The series
+potentials (E vs Fc, mean of the two one-electron couples, from
 `full_pool_scored_legacyG_MeCN_TBAPF6.csv`) are:
 
 | Candidate | N′ / ring substitution | E vs Fc (V) | Couples (V) | Capacity (mAh g⁻¹) |
@@ -551,18 +567,18 @@ confirmed series potentials (E vs Fc, mean of the two one-electron couples, from
 | `hyp_dmpz_27dimethoxy_ethyl` | 2,7-dimethoxy, N′-ethyl | +0.21 | −0.22 / +0.64 | 138.7 |
 | `exp_ptz_37dimethoxy` | 3,7-dimethoxyphenothiazine | +0.78 | +0.37 / +1.19 | 142.7 |
 
-Read as matched deltas against the N′-ethyl DMPZ reference (+0.43 V), the series
-yields a clean, transferable **design rule**. An electron-withdrawing
+Read as shifts relative to the N′-ethyl DMPZ reference (+0.43 V), the series gives a
+consistent **design rule**. An electron-withdrawing
 N′-substituent raises the potential: replacing ethyl with 2,2,2-trifluoroethyl
 shifts E by +0.20 V (to +0.62 V), while the near-isosteric N′-methyl and
 N′-(2-methoxyethyl) caps barely move it (+0.04 to +0.05 V). Conversely,
 electron-donating ring substitution lowers it: 2,7-dimethyl brings E down by
 ≈ 0.13 V (to +0.30 V) and 2,7-dimethoxy by ≈ 0.22 V (to +0.21 V) relative to the
-same N′-ethyl parent. The two handles are roughly additive and act on opposite
-ends of the scaffold, so N′-electron-withdrawal and ring-electron-donation give
-independent, oppositely-signed control over where a DMPZ catholyte sits — spanning
-≈ +0.21 to +0.62 V across the grafted series, with the distinct
-3,7-dimethoxyphenothiazine scaffold extending the catholyte reach to +0.78 V.
+same N′-ethyl parent. The two handles push the potential in opposite directions,
+and together they span ≈ +0.21 to +0.62 V across the grafted series; the distinct
+3,7-dimethoxyphenothiazine scaffold reaches +0.78 V. Whether the two effects add
+when combined in one molecule was not tested, since no member of the series
+carries both.
 These light two-electron phenazine cores give theoretical capacities of
 ≈ 140–170 mAh g⁻¹. That is comparable to the anolyte pool, so the catholyte side is
 not a capacity bottleneck.
@@ -575,37 +591,37 @@ vs Fc in experiment. Re-plotting the
 catholyte Pareto panel with these points shows the gap being filled by a
 structured family rather than by isolated outliers (Figure 6).
 
-Several of these values are provisional. The expansion campaign
-(`results/expand_catholyte_20261117`) is live at the time of writing, with the
-N′-methyl, N′-(2,2,2-trifluoroethyl), 2,7-dimethyl, and 2,7-dimethoxy DMPZ
-members still completing their native-DFT confirmation stages; their legacy
-ranking potentials are reported here and will be reconciled against the
-disk-gated qRRHO values once the run finishes and QC gates pass. The frozen
-91-candidate pool underlying Figure 5 contains six catholytes (five DMPZ + one
-phenothiazine); the maintained scored CSV now carries a seventh catholyte — the
-2,7-dimethoxy DMPZ (E ≈ +0.21 V) appended by the live campaign — so it holds 92
-rows while the frozen analysis pool remains 91. The figures enforce the frozen 91
-and footnote the live extra.
+Four of these values are provisional. The N′-methyl, N′-(2,2,2-trifluoroethyl),
+2,7-dimethyl, and 2,7-dimethoxy DMPZ members were computed at the ranking tier
+only (`results/expand_catholyte_20261117`); their confirmation with the more
+expensive native-Hessian tier has not been run. On the benchmark the two tiers
+differ by −0.06 to +0.11 V per potential (above), which is a guide to how much
+these values could move. The 91-candidate pool behind Figure 5 contains six
+catholytes (five DMPZ and one phenothiazine). The 2,7-dimethoxy DMPZ (E ≈ +0.21 V)
+was added after that pool was fixed, so the scored table has 92 rows; Figure 5
+uses the 91; Figures 6 and 7 also show the seventh catholyte.
 
 ### Proposed non-aqueous full cells
 
-Because every potential in both pools is referenced to the same validated Fc
-scale, candidates can be paired directly and a nominal cell voltage read off as
-E(catholyte) − E(anolyte) (Figure 7). Pairing a surfaced DMPZ catholyte
-(≈ +0.4 to +0.6 V) with a pipeline anolyte from the most-negative edge of the
-quinone/imide front (≈ −1.5 V) gives proposed non-aqueous full cells near
-**~1.9 V** — for example N′-ethyl or N′-methyl DMPZ (+0.43 / +0.47 V) against an
-alkoxy-anthraquinone or pyromellitic-diimide anolyte (≈ −1.48 V) yields ≈ 1.9–1.95 V,
-and the more electron-poor N′-(2,2,2-trifluoroethyl) DMPZ (E ≈ +0.62 V) paired
-with an ether-tethered PMDI anolyte (≈ −1.48 to −1.54 V) would extend the proposal
-toward ≈ 2.1 V (mean-potential arithmetic verified against the scored CSV:
-+0.43/+0.47 − (−1.48) = 1.91/1.95 V; +0.62 − (−1.48) = 2.10 V). These cell voltages are
-less sensitive to the calibration bias than the individual potentials, because the
-two biases partly cancel. Subtracting the family-specific biases (+0.30 V for DMPZ
-from the BMEPZ check; +0.23 V for quinones from the benchmark) lowers the 1.91 and
-1.95 V cells to about 1.84 and 1.88 V. The design rule above makes
-this voltage a tunable quantity rather than a single number: catholyte and
-anolyte potentials can be shifted independently to target a window.
+Because every potential in both pools is on the same Fc scale, candidates can be
+paired directly, and a nominal cell voltage read off as E(catholyte) − E(anolyte)
+(Figure 7). Four example pairings, from the mean potentials in the scored table:
+
+| Catholyte | Anolyte | Computed cell (V) | After bias correction (V) |
+|---|---|---:|---:|
+| N′-ethyl DMPZ (+0.43 V) | 2-(4-methylbenzyloxy)-6-methoxyanthraquinone (−1.49 V) | 1.91 | 1.85 |
+| N′-methyl DMPZ (+0.47 V) | 1-(4-methylbenzyloxy)anthraquinone (−1.48 V) | 1.95 | 1.89 |
+| N′-ethyl DMPZ (+0.43 V) | ether-tethered pyromellitic diimide (−1.54 V) | 1.97 | 1.73 |
+| N′-(2,2,2-trifluoroethyl) DMPZ (+0.62 V) | ether-tethered pyromellitic diimide (−1.54 V) | 2.17 | 1.92 |
+
+The correction subtracts each family's measured bias at the pool's thermal tier:
++0.30 V for DMPZ (the BMEPZ check), +0.24 V for quinones, and +0.05 V for imides
+(benchmark). For the anthraquinone pairs the two biases nearly cancel, so the cell
+voltage barely changes. For the pyromellitic-diimide pairs they do not: the imide
+bias is small, so the correction lowers those cells by about 0.25 V. Taken
+together, the proposed cells lie at about 1.7–1.9 V. The design rule above makes
+the voltage adjustable: catholyte and anolyte potentials can be shifted
+independently.
 
 We state the limitation plainly. A computed cell voltage derived from two
 validated half-cell potentials is a **proposal**, not a demonstrated device. It
@@ -615,7 +631,7 @@ charged states over many cycles, or the synthetic feasibility of the exact
 grafted structure — each candidate's record carries explicit route caveats, and
 a capped graft is not its soluble parent nor an oligomer. What the screen does
 establish is a reliability-gated, internally consistent map of where these
-chemistries sit, a transferable substituent rule for moving a catholyte to a
+chemistries sit, a substituent rule for moving a DMPZ catholyte toward a
 target potential, and a concrete, testable set of anolyte/catholyte pairings for
 experimental follow-up.
 
@@ -651,9 +667,9 @@ dominates: on the V100 runs it accounts for 87% of GPU time, inner-sphere cross
 points for 9%, and the MLIP pre-optimization for 4%. Within DFT, the
 r²SCAN-D4/def2-SVP geometry optimizations take 57% (V100) to 66% (H100) of the time
 and the ωB97M-V/def2-TZVPD single points most of the rest. Second, the open-shell
-radical cation is the most expensive state, about half of all DFT time, because each
-unrestricted single point is converged from three initial guesses in both solvent
-and gas phase. Third, cost rises steeply with size even across this narrow range:
+radical cation is the most expensive state, about half of all DFT time, because in
+these runs each unrestricted single point was converged from three initial guesses
+in both solvent and gas phase. Third, cost rises steeply with size even across this narrow range:
 from 43 to 52 atoms (1031 to 1196 basis functions) the V100 DFT time grows by 1.47×,
 an apparent exponent of about 2.6 in the number of basis functions. With three
 molecules this exponent is indicative only. The H100 runs are 1.7–2× faster than
@@ -707,24 +723,25 @@ acetonitrile), reports potentials against a pinned ferrocene reference together
 with usable capacity and reorganization components, and admits a candidate to
 ranking only after explicit quality-control gates on spin, geometry integrity,
 state coverage, and cross-point consistency. Half-reactions and reorganization
-terms are kept as separate reported quantities; candidates are ranked on
-transparent, uncertainty-aware Pareto fronts computed separately for anolyte and
-catholyte pools, with no single weighted-sum score.
+terms are kept as separate reported quantities; candidates are ranked on Pareto
+fronts of voltage and capacity, computed separately for anolytes and catholytes,
+with the potential uncertainty shown and no weighted-sum score.
 
 The credibility of the applied results rests on an unfitted retrospective
 benchmark: across 39 endpoints (30 molecules, 7 studies) the pipeline reproduces
 experimental potentials with a mean absolute error of 0.247 V and a systematic
-+0.19 V bias. Because the error
-is largely a common offset, the pipeline ranks candidates more reliably than it
-places absolute potentials. Against this anchor, the 91-candidate screen reveals
-a strongly anolyte-dominated space (85 anolyte / 6 catholyte; 89 of 91 are
-two-electron couples), and the pipeline's matched-hypothesis machinery surfaces
-grafted 5,10-dihydrophenazine two-electron catholytes that populate the sparse
-catholyte front. A matched single-substituent series yields interpretable design
-rules — electron-withdrawing N'-substituents raise the potential versus Fc
-(e.g., 2,2,2-trifluoroethyl to ca. +0.62 V) while ring methylation lowers it
-(2,7-dimethyl to ca. +0.30 V). Pairing these catholytes with pipeline quinone and
-imide anolytes gives proposed full cells near 1.9 V.
++0.19 V bias (0.232 V with the cheaper thermal tier used for the pool). Because the
+error is largely a shared offset, the pipeline ranks candidates more reliably than
+it places absolute potentials. The 91-candidate screen shows a strongly
+anolyte-dominated space (85 anolyte / 6 catholyte; 89 of 91 are two-electron
+couples). Grafted 5,10-dihydrophenazine two-electron catholytes fill part of the
+sparse catholyte region, and a series that changes one substituent at a time gives
+a simple design rule: electron-withdrawing N′-substituents raise the potential
+(2,2,2-trifluoroethyl to a computed +0.62 V vs Fc) while ring methylation lowers it
+(2,7-dimethyl to +0.30 V). A check against the measured parent compound suggests
+these absolute potentials are about 0.3 V too high. Pairing these catholytes with
+quinone and imide anolytes from the pool gives proposed cells of about 1.7–1.9 V
+after correcting for each family's measured bias.
 
 These results are bounded by explicit limitations. The proposed full cells are
 proposals computed as the difference of two validated potentials; they are not
@@ -737,15 +754,14 @@ single conformers, so no kinetic or reversibility claim is drawn from them.
 Occupied-polymer ensembles, neighboring-graft coupling, and synthetic routes are
 out of scope for this study.
 
-The outlook follows directly. A pipeline-efficiency refactor — a bag-of-tasks GPU
-queue and incremental, content-hashed result tables — lowers the per-candidate
-cost and makes larger prospective screens, and the completion of the catholyte
-expansion, tractable. Lead candidates can then be confirmed on the pipeline's
-second thermochemical tier, native DFT qRRHO, together with the in-progress
-self-consistent, conformer-averaged treatment of nonequilibrium solvation and
-reorganization. The pipeline, its byte-exact replays, and its contract-test suite
-are released so that each reported number can be reproduced and extended
-independently.
+Three next steps follow. First, the measured cost breakdown shows where time can be
+saved without changing results; two such savings are already in the released code,
+and an MLIP pre-screen could cut the DFT load for larger, more varied libraries.
+Second, the provisional DMPZ catholytes should be confirmed with the native-Hessian
+thermal tier, and λ_i recomputed in solvent, which the current code already
+supports. Third, the proposed cells need experimental tests. The code, example
+replays, and test suite are released so that the reported numbers can be checked
+and extended independently.
 
 ---
 
@@ -786,14 +802,13 @@ tree runs reproduction and tests CPU-only and launches no DFT or Hessian jobs.
 ### Data availability
 
 The raw quantum-chemical records (geometries, energies, frequencies, and state
-metadata) for the candidate pool and the validation set reside in dedicated data
-trees (~270 GB candidate campaign; ~52 GB benchmark/reference set) referenced by
-the pipeline through a documented data root. A locally prepared reviewer bundle
-reconstructs the primary benchmark, grafting, and finite-ensemble values offline
-after relocation, with original cluster paths blocked; its scope, environment
-records, and integrity checks are described in the Supporting Information. The
-raw-record archive does not yet have a public archival DOI; final deposition and
-author metadata remain to be supplied **[TODO: author to supply data DOI,
+metadata) for the candidate pool and the benchmark, about 270 GB in total, are kept
+in a separate data tree that the code reads through a configurable data root. The
+smaller records behind specific statements in this paper (the BMEPZ check, the
+SCF-policy control, the benchmark re-scored at the pool's thermal tier, and the
+throughput measurements) are in the repository under `manuscript/evidence/` and
+`manuscript/tables/`. The raw-record archive does not yet have a public archival
+DOI; final deposition and author metadata remain to be supplied **[TODO: author to supply data DOI,
 repository release tag, author list, contributions, funding, and competing-
 interest statements]**.
 
