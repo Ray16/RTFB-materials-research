@@ -18,9 +18,10 @@ from pathlib import Path
 from rdkit import Chem
 from rdkit.Chem import AllChem
 
+from redox.core.common import LIBRARY  # DATA_ROOT-based library
+
 ROOT = Path(__file__).resolve().parents[3]
 CONFIG = ROOT / "config" / "redox_groups.py"
-LIBRARY = ROOT / "library"
 
 
 def _load_config():

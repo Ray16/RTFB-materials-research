@@ -4,26 +4,19 @@ Class-method wrappers preserve normal binding for copied geometry scanners.
 Contexts contain no mean-field references, so completed GPU objects are released.
 Objects without a checkpoint context execute their original methods directly.
 """
-import json
 import os
 from pathlib import Path
 import time
 
 import numpy as np
 
-
-def cpu(value):
-    return np.asarray(value.get() if hasattr(value,'get') else value)
-
-
-def write(path,data):
-    path=Path(path);temporary=path.with_name('.'+path.name+'.'+str(os.getpid())+'.tmp')
-    temporary.write_text(json.dumps(data,indent=2,allow_nan=False)+'\n');temporary.replace(path)
+from redox.backends.checkpoint_arrays import to_host
+from redox.core.io import atomic_write_json
 
 
 def array(path,value):
     path=Path(path);temporary=path.with_name('.'+path.name+'.'+str(os.getpid())+'.tmp')
-    with temporary.open('wb') as stream:np.save(stream,cpu(value),allow_pickle=False)
+    with temporary.open('wb') as stream:np.save(stream,to_host(value),allow_pickle=False)
     temporary.replace(path)
 
 
@@ -35,7 +28,7 @@ class Context:
     def begin(self,obj):
         path=self.root/f'{self.counter:04d}';self.counter+=1;path.mkdir();self.current=path
         obj.chkfile=str(path/'SCF.h5')
-        write(path/'settings.json',dict(owner=self.owner,coordinates_Bohr=obj.mol.atom_coords().tolist(),
+        atomic_write_json(path/'settings.json',dict(owner=self.owner,coordinates_Bohr=obj.mol.atom_coords().tolist(),
             elements=[obj.mol.atom_symbol(i) for i in range(obj.mol.natm)],charge=obj.mol.charge,
             mult=obj.mol.spin+1,basis=obj.mol.basis,xc=getattr(obj,'xc',None),disp=getattr(obj,'disp',None),
             conv_tol=obj.conv_tol,conv_tol_grad=getattr(obj,'conv_tol_grad',None),max_cycle=obj.max_cycle,
@@ -71,7 +64,7 @@ def attach(mf,directory,owner,*,save_density=True):
             path=context.begin(self)
             result=original(self,*args,**kwargs)
             if context.save_density:array(path/'density.npy',self.make_rdm1())
-            write(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
+            atomic_write_json(path/'SCF_result.json',dict(converged=bool(self.converged),energy_Ha=float(self.e_tot),
                 checkpoint=str(path/'SCF.h5'),density_saved=context.save_density,
                 density_reconstruction='SCF checkpoint orbitals and occupations',finished=time.time()))
             return result
@@ -104,7 +97,7 @@ def recording_optimizer(kernel,root,owner):
         nonlocal counter
         result=kernel(*args,**kwargs);converged,molecule=result
         path=root/f'{counter:04d}.json';counter+=1
-        write(path,dict(owner=owner,converged=bool(converged),coordinates_A=molecule.atom_coords(unit='Angstrom').tolist(),
+        atomic_write_json(path,dict(owner=owner,converged=bool(converged),coordinates_A=molecule.atom_coords(unit='Angstrom').tolist(),
             elements=[molecule.atom_symbol(i) for i in range(molecule.natm)],charge=molecule.charge,
             mult=molecule.spin+1,returned=time.time(),qualified=False))
         return result

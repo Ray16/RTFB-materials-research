@@ -15,7 +15,8 @@ import time
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
-from redox.workflows.molecular_native_namespace import verify,load
+from redox.core.source_modules import load_source_module as load
+from redox.workflows.molecular_native_namespace import verify
 from redox.workflows.charged_native_followup import dispatch_rows
 from redox.workflows.sampling_native_queue import extend_peers
 from redox.execution.prelaunch_accounting import nonresource_prelaunch_failures,launcher_versions

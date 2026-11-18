@@ -48,8 +48,10 @@ data/raw/validation/solvation_refset_acetonitrile.csv
 # Pipeline runtime outputs (never committed; pinned reference inputs live in data/reference/).
 # Use globs (not bare dirs) under results/ so the maintained entry points below can be
 # re-included; a bare "/results/" would prune the dir and block the negations.
-/library/
-/calcs/
+# Bare names (no trailing slash) so these also match when library/ and calcs/ are
+# symlinks into an external data tree (REDOX_DATA_ROOT) rather than real dirs.
+/library
+/calcs
 /results/**
 !/results/README.md
 !/results/INDEX.json

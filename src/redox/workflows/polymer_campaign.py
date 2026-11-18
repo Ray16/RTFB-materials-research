@@ -6,8 +6,6 @@ feasibility are deliberately separate fields with separate admission rules.
 """
 
 from contextlib import contextmanager
-import hashlib
-import importlib.util
 import json
 import math
 from pathlib import Path
@@ -15,25 +13,10 @@ import shutil
 import time
 
 from redox.core.common import ROOT, EV_KJ
+from redox.core.hashing import sha256_file as digest, verify_sources
 from redox.core.io import atomic_write_json
+from redox.core.source_modules import load_source_module
 from redox.execution.checkpoints import verify_state_checkpoint
-
-
-def digest(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
-
-
-def verify_sources(mapping):
-    for path, expected in mapping.items():
-        if digest(path) != expected:
-            raise RuntimeError(f"Source or input changed: {path}")
-
-
-def load_module(name, path):
-    specification = importlib.util.spec_from_file_location(name, path)
-    module = importlib.util.module_from_spec(specification)
-    specification.loader.exec_module(module)
-    return module
 
 
 def read_plan(campaign):
@@ -491,8 +474,8 @@ def optimizer_settings(settings, checkpoint_directory):
 def calculate_energy(campaign, task, pilot=False):
     campaign = Path(campaign)
     plan = read_plan(campaign)
-    backend = load_module(
-        "production_oligomer_backend", ROOT / "scripts/pipeline/run_pi_stacking.py"
+    backend = load_source_module(
+        ROOT / "scripts/pipeline/run_pi_stacking.py", "production_oligomer_backend"
     )
     backend.BASE = campaign / "energy"
     energy_plan = dict(plan, raw_root=str(Path(plan["raw_root"]) / "energy"))
@@ -503,9 +486,9 @@ def calculate_energy(campaign, task, pilot=False):
         backend.calculate(task, energy_plan, pilot=pilot)
     if pilot:
         return
-    audit = load_module(
-        "polymer_physical_audit",
+    audit = load_source_module(
         ROOT / "scripts/validation/audit_polymer_geometries.py",
+        "polymer_physical_audit",
     )
     review = audit.audit(
         task, Path(energy_plan["raw_root"]) / task["key"] / "rest/opt.xyz"

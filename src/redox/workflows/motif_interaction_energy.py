@@ -16,7 +16,8 @@ from pyscf import gto
 from redox.core.common import ROOT, HARTREE_EV, EV_KJ
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
-from redox.workflows.molecular_native_namespace import verify, load
+from redox.core.source_modules import load_source_module as load
+from redox.workflows.molecular_native_namespace import verify
 from redox.workflows.ionic_stationary_cycles import validate_cycle_balance
 
 PILOT = 'all_same__occ_2_3__cap109'

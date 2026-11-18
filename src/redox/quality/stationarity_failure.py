@@ -11,7 +11,8 @@ from redox.core.io import atomic_write_json
 from redox.quality.execution_review import freeze_source
 from redox.quality.failed_execution import physical_failure
 from redox.quality.primary_checkpoints import checkpoint_series
-from redox.workflows.molecular_native_namespace import verify,load
+from redox.core.source_modules import load_source_module as load
+from redox.workflows.molecular_native_namespace import verify
 from redox.workflows.route_primary_native import validate_plan
 
 

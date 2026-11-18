@@ -12,9 +12,7 @@ import json
 import math
 from pathlib import Path
 
-
-def digest(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+from redox.core.hashing import sha256_file as digest
 
 
 def key(row):

@@ -20,7 +20,7 @@ import argparse
 import json
 from pathlib import Path
 
-from redox.core.common import HARTREE_EV, ROOT, load_config, read_manifest
+from redox.core.common import HARTREE_EV, ROOT, DFT, UMA, LIBRARY, load_config, read_manifest
 from redox.core.common import write_xyz as _write_xyz
 from redox.core.io import atomic_write_json
 
@@ -352,7 +352,7 @@ def conformer_seeds(gid: str, state: str, n: int) -> list:
         g = geom_for(gid, state)          # UMA-relaxed best seed (charge/spin-aware)
         if g.exists():
             return [g]
-    confdir = ROOT / "library" / gid / "conformers"
+    confdir = LIBRARY / gid / "conformers"
     confs = sorted(confdir.glob("conf_*.xyz"))[:n]
     if confs:
         return confs
@@ -509,8 +509,8 @@ def _mol_to_atoms(mol):
 
 def geom_for(gid: str, state: str) -> Path:
     """Prefer the UMA-relaxed geometry; fall back to the conformer seed."""
-    relaxed = ROOT / "calcs" / "uma" / gid / state / "relaxed.xyz"
-    return relaxed if relaxed.exists() else ROOT / "library" / gid / f"{state}.xyz"
+    relaxed = UMA / gid / state / "relaxed.xyz"
+    return relaxed if relaxed.exists() else LIBRARY / gid / f"{state}.xyz"
 
 
 def _uma_mult(gid: str, state: str, fallback: int) -> int:
@@ -526,7 +526,7 @@ def _uma_mult(gid: str, state: str, fallback: int) -> int:
                     or entry['protocol']!=_SP):
                 raise RuntimeError(f'{gid}/{state}: DFT spin decision needs revalidation after input/protocol change')
             return int(entry['mult'])
-    uj = ROOT / "calcs" / "uma" / gid / state / "result.json"
+    uj = UMA / gid / state / "result.json"
     if uj.exists():
         try:
             return int(json.loads(uj.read_text())["chosen_mult"])
@@ -562,7 +562,7 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
     fall back to normal seeding automatically. See src/redox/backends/torsion_scan.py."""
     import shutil
     from ase.io import read as ase_read
-    outroot = ROOT / "calcs" / "dft"
+    outroot = DFT
     failures = 0
     for r in rows:
         gid, st = r["id"], r["state"]

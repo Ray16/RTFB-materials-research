@@ -1,0 +1,21 @@
+........................................................................ [  9%]
+........................................................................ [ 19%]
+........................................................................ [ 28%]
+........................................................................ [ 38%]
+........................................................................ [ 48%]
+........................................................................ [ 57%]
+....................................................s................... [ 67%]
+........................................................................ [ 76%]
+........................................................................ [ 86%]
+........................................................................ [ 96%]
+..............................                                           [100%]
+=============================== warnings summary ===============================
+tests/test_occupied_checkpoints.py::test_multiple_guesses_keep_each_final_determinant_and_restore_solver
+  /nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/lib/python3.11/site-packages/pyscf/lib/misc.py:726: DeprecationWarning: remove_linear_dep_ is deprecated and will be removed in a future release. Linear dependency handling is now built into the SCF procedure by default. Linear dependency removal can be controlled using the following settings:
+    pyscf.scf.hf.remove_overlap_zero_eigenvalue = True
+    pyscf.scf.hf.overlap_zero_eigenvalue_threshold = 1e-6
+  
+    return fn(self, *args, **kwargs)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+749 passed, 1 skipped, 1 warning in 26.53s

@@ -39,7 +39,8 @@ def prepare(geometry_review,output):
     from redox.core.common import ROOT
     from redox.core.hashing import sha256_file
     from redox.core.io import atomic_write_json
-    from redox.workflows.molecular_native_namespace import verify,load
+    from redox.core.source_modules import load_source_module as load
+    from redox.workflows.molecular_native_namespace import verify
     review=json.loads(geometry_review.read_text())
     if (review['status']!='primary_counterion_geometry_independently_checked'
             or (review['total_charge'],review['multiplicity'],review['formal_core_charge'])!=(1,1,2)
@@ -79,7 +80,8 @@ def review(namespace):
     from redox.core.common import ROOT
     from redox.core.hashing import sha256_file
     from redox.core.io import atomic_write_json
-    from redox.workflows.molecular_native_namespace import verify,load
+    from redox.core.source_modules import load_source_module as load
+    from redox.workflows.molecular_native_namespace import verify
     import numpy as np
     from ase.io import read as read_atoms
     from redox.quality.execution_review import review_closure,freeze_source

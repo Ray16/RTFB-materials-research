@@ -10,6 +10,7 @@ import math
 import os
 from pathlib import Path
 from redox.core.common import ROOT
+from redox.core.hashing import sha256_file as digest
 
 CERTIFICATE = ROOT / 'config/native_hessian_memory_validation.json'
 ALLOCATION_POLICY = 'six-GiB integral batches; qualified larger unrestricted response workspace'
@@ -129,10 +130,6 @@ def record_derivatives_ok(record,protocol,natm):
             if digest(ROOT/name)!=expected:return False
         return True
     except (OSError,ValueError,KeyError,TypeError,AttributeError,RuntimeError):return False
-
-
-def digest(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def certificate(protocol,cap=24):

@@ -10,16 +10,11 @@ import json
 import math
 from pathlib import Path
 
+from redox.core.hashing import sha256_file as digest
+
 MODEL = "two-spin equilibrium; component spin degeneracy already included"
 TEMPERATURE_K = 298.15
 POLICY_NAME = "spin_ensemble_policy.json"
-
-
-def digest(path):
-    # Bounded-memory hashing: evidence includes large Hessian .npy artifacts, so
-    # stream the file rather than reading it whole into RAM on a shared node.
-    from redox.core.hashing import sha256_file
-    return sha256_file(path)
 
 
 def equilibrium(chosen_G, alternative_G, temperature_K=TEMPERATURE_K):

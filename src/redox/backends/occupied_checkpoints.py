@@ -6,7 +6,6 @@ Slater determinant and density, and supports a density restart; it is not a
 full-orbital Hessian/response restart. No solver or physical setting is changed.
 """
 from contextlib import contextmanager
-import json
 import hashlib
 import os
 from pathlib import Path
@@ -15,25 +14,24 @@ import time
 import h5py
 import numpy as np
 
+from redox.backends.checkpoint_arrays import to_host
+from redox.core.io import atomic_write_json
+
 FORMAT = 'redox.restricted_occupied_SCF.v1'
-
-
-def host(value):
-    return np.asarray(value.get() if hasattr(value, 'get') else value)
 
 
 def save(path, molecule, coefficients, occupations, energies, energy, *, converged, cycle):
     """Atomically replace one checkpoint, retaining the preceding complete file."""
     path = Path(path)
-    occ = host(occupations)
+    occ = to_host(occupations)
     if (molecule.spin != 0 or occ.ndim != 1 or not np.isfinite(occ).all()
             or not np.all((occ == 0) | (occ == 2))
             or int(occ.sum()) != molecule.nelectron):
         raise ValueError('Integer closed-shell restricted occupations required')
     indices = np.flatnonzero(occ > 0)
     # Slice on the device before transfer: never serialize a full virtual space.
-    selected = host(coefficients[:, indices])
-    levels = host(energies)
+    selected = to_host(coefficients[:, indices])
+    levels = to_host(energies)
     if (selected.shape != (molecule.nao_nr(), len(indices))
             or levels.shape != occ.shape or not np.isfinite(selected).all()
             or not np.isfinite(levels).all() or not np.isfinite(energy)):
@@ -98,11 +96,6 @@ def review(path):
                 density_restart_supported=True, response_restart_supported=False)
 
 
-def _json(path, data):
-    path = Path(path); temporary = path.with_name('.' + path.name + '.' + str(os.getpid()) + '.tmp')
-    temporary.write_text(json.dumps(data, indent=2, allow_nan=False) + '\n'); temporary.replace(path)
-
-
 class Context:
     def __init__(self, directory):
         self.directory = Path(directory); self.directory.mkdir(parents=True, exist_ok=False)
@@ -112,7 +105,7 @@ class Context:
     def begin(self, mf):
         folder = self.directory / f'{self.counter:04d}'; self.counter += 1; folder.mkdir()
         self.current = folder
-        _json(folder / 'settings.json', dict(format=FORMAT, molecule=mf.mol.dumps(),
+        atomic_write_json(folder / 'settings.json', dict(format=FORMAT, molecule=mf.mol.dumps(),
             charge=mf.mol.charge, mult=mf.mol.spin + 1, xc=getattr(mf, 'xc', None),
             disp=getattr(mf, 'disp', None), nlc=getattr(mf, 'nlc', None),
             conv_tol=mf.conv_tol, conv_tol_grad=getattr(mf, 'conv_tol_grad', None),
@@ -121,7 +114,7 @@ class Context:
             solvent=getattr(getattr(mf, 'with_solvent', None), 'solvent', None),
             level_shift=mf.level_shift, damp=mf.damp, started=time.time(), qualified=False))
         if self.restart_source is not None:
-            _json(folder / 'initial_density.json', self.restart_source)
+            atomic_write_json(folder / 'initial_density.json', self.restart_source)
         return folder
 
 
@@ -144,7 +137,7 @@ def attach(mf, directory):
             raise RuntimeError('SCF iteration arrived before its kernel checkpoint')
         save(context.current / 'occupied.h5', env['mol'], env['mo_coeff'], env['mo_occ'],
              env['mo_energy'], float(env['e_tot']), converged=False, cycle=int(env['cycle']))
-        _json(context.current / 'progress.json', dict(cycle=int(env['cycle']),
+        atomic_write_json(context.current / 'progress.json', dict(cycle=int(env['cycle']),
               energy_Ha=float(env['e_tot']), updated=time.time(), qualified=False))
 
     mf.callback = callback
@@ -158,7 +151,7 @@ def attach(mf, directory):
             result = original(self, *args, **kwargs)
             save(folder / 'occupied.h5', self.mol, self.mo_coeff, self.mo_occ, self.mo_energy,
                  float(self.e_tot), converged=bool(self.converged), cycle=-1)
-            _json(folder / 'result.json', dict(converged=bool(self.converged),
+            atomic_write_json(folder / 'result.json', dict(converged=bool(self.converged),
                   energy_Ha=float(self.e_tot), finished=time.time(), qualified=False))
             return result
         kernel._redox_occupied_wrapper = True; cls.kernel = kernel
@@ -199,7 +192,7 @@ def scf_checkpoints(directory, restart_by_solvent=None):
         result = original(build, actual_guesses, post=post, initial_densities=seeds)
         policies.append(dict(solvent=phase, nominal_guesses=list(guesses),
             actual_guesses=[r['guess'] for r in result[3]], restart=restart))
-        _json(Path(directory) / 'initial_density_policy.json', dict(phases=policies,
+        atomic_write_json(Path(directory) / 'initial_density_policy.json', dict(phases=policies,
               physical_equations_changed=False, source_qualification_transferred=False))
         return result
     def solve(mf, *args, **kwargs):

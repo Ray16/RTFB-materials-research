@@ -21,10 +21,9 @@ from rdkit import Chem
 from redox.structures.manifest import COLS, locked_manifest, read_rows, write_rows
 
 from redox.structures.structures import conformer_ensemble, to_xyz, unassigned_stereo
+from redox.core.common import LIBRARY, MANIFEST
 
 ROOT = Path(__file__).resolve().parents[3]
-LIBRARY = ROOT / "library"
-MANIFEST = LIBRARY / "manifest.csv"
 
 
 def _load_validation(which: str = "anchors"):

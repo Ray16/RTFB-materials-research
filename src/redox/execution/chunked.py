@@ -5,7 +5,7 @@ Quantum adapters must retain their separate reservations and physical admission;
 an executor completion record is never a quantum-quality certificate.
 """
 
-from contextlib import contextmanager
+from contextlib import closing, contextmanager
 import hashlib
 import json
 import os
@@ -114,7 +114,7 @@ def prepare(
         with tempfile.TemporaryDirectory(
             prefix="redox_dedup_", dir=local_scratch(scratch)
         ) as temporary:
-            with sqlite3.connect(str(Path(temporary) / "dedup.sqlite")) as database:
+            with closing(sqlite3.connect(str(Path(temporary) / "dedup.sqlite"))) as database:
                 database.execute("PRAGMA cache_size=-32768")
                 database.execute("PRAGMA temp_store=FILE")
                 database.execute(
@@ -329,7 +329,8 @@ def run_chunk(campaign, chunk, handler, *, checkpoint_every=100):
     path = campaign / chunk["path"]
     if file_hash(path) != chunk["sha256"]:
         raise ValueError("Task chunk changed")
-    tasks = [json.loads(line) for line in path.open()]
+    with path.open() as stream:
+        tasks = [json.loads(line) for line in stream]
     if len(tasks) != chunk["count"] or len({t["task_id"] for t in tasks}) != len(tasks):
         raise ValueError("Task count or uniqueness mismatch")
     rows = journal(campaign, chunk)

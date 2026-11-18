@@ -6,7 +6,6 @@ uncertain, occupied or failed attempts remain preserved for explicit review.
 """
 import argparse
 import fcntl
-import importlib.util
 import json
 import math
 import os
@@ -71,8 +70,7 @@ def device_capability(host,gpu):
     return float(result.stdout.strip())
 
 
-def load(path,name):
-    definition=importlib.util.spec_from_file_location(name,path);module=importlib.util.module_from_spec(definition);definition.loader.exec_module(module);return module
+from redox.core.source_modules import load_source_module as load
 
 
 def prerequisite(manifest,review_path):

@@ -5,7 +5,6 @@ lock and bounded-repair directories are writable at the original recorded paths.
 """
 import argparse
 import csv
-import importlib.util
 import json
 import math
 import os
@@ -27,9 +26,7 @@ from redox.workflows.archived_native_namespace import remaining_host_promises
 
 LAUNCHER_SOURCE_BYTES=Path(__file__).read_bytes()
 
-def load(path,name):
-    definition=importlib.util.spec_from_file_location(name,path)
-    module=importlib.util.module_from_spec(definition);definition.loader.exec_module(module);return module
+from redox.core.source_modules import load_source_module as load
 
 
 def safe_component(value):

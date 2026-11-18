@@ -34,6 +34,7 @@ if __name__=='__main__':
 import numpy as np
 
 from redox.core.common import ROOT
+from redox.core.hashing import sha256_file_cached
 from redox.core.io import atomic_write_json
 from redox.qm import qrrho as Q
 from redox.thermochemistry.vibrations import project_rigid_modes, write_xtb_hessian, parse_xtb_thermal_eV
@@ -46,7 +47,9 @@ XTB = configured_binary()
 
 
 def sha(path):
-    return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+    # Streamed + memoized: the same immutable multi-GiB Hessian/SCF/response
+    # artifacts are re-verified across many per-state property reads in one run.
+    return sha256_file_cached(path)
 
 
 def certificate():

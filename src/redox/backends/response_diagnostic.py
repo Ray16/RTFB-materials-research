@@ -7,14 +7,13 @@ import faulthandler
 import hashlib
 import io
 import json
-import math
 import os
 from pathlib import Path
 import threading
 import time
 
-
-def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+from redox.backends.checkpoint_arrays import contiguous_payload, to_host
+from redox.core.hashing import sha256_file as digest
 
 
 def save_array(path,value):
@@ -22,30 +21,12 @@ def save_array(path,value):
     import numpy as np
     path=Path(path)
     if path.exists():raise FileExistsError('Preserve earlier response arrays')
-    array=np.asarray(value.get() if hasattr(value,'get') else value)
+    array=to_host(value)
     if array.dtype!=np.float64 or not np.isfinite(array).all():raise ValueError('Finite FP64 response checkpoint required')
     temporary=path.with_name(path.name+'.partial')
     with temporary.open('xb') as stream:np.save(stream,array,allow_pickle=False);stream.flush();os.fsync(stream.fileno())
     os.replace(temporary,path)
     return dict(path=str(path),shape=list(array.shape),dtype='float64',file_sha256=digest(path),array_sha256=hashlib.sha256(array.tobytes()).hexdigest(),native_G_qualified=False)
-
-
-def contiguous_payload(handle,name,content):
-    """Read only native FP64 contiguous payloads with verified in-file bounds.
-
-    The installed HDF5 high-level read stalls on the real source checkpoint.
-    Metadata offsets avoid that path; orbital SHA-256 checks below remain exact.
-    Chunked, compressed, external or unallocated datasets are unsupported.
-    """
-    import h5py
-    import numpy as np
-    dataset=handle[name];creation=dataset.id.get_create_plist();offset=dataset.id.get_offset()
-    if (dataset.dtype!=np.dtype('float64') or creation.get_layout()!=h5py.h5d.CONTIGUOUS
-            or creation.get_nfilters()!=0 or creation.get_external_count()!=0
-            or offset is None or offset<0):raise ValueError('Only allocated native FP64 contiguous checkpoint datasets are supported')
-    count=math.prod(dataset.shape);size=count*8
-    if offset+size>len(content):raise ValueError('Contiguous dataset extends beyond the source checkpoint')
-    return np.frombuffer(content,dtype=np.float64,count=count,offset=offset).reshape(dataset.shape)
 
 
 def read_checkpoint(raw):

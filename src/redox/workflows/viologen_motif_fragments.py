@@ -20,7 +20,8 @@ from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.structures.polymer_contacts import pi_core_groups, contact_metrics
-from redox.workflows.molecular_native_namespace import verify, load
+from redox.core.source_modules import load_source_module as load
+from redox.workflows.molecular_native_namespace import verify
 
 SOURCE_BYTES = Path(__file__).read_bytes()
 KEYS = ('all_same__occ_2_3','all_same__occ_2_4','alternating__occ_2_3','alternating__occ_2_4')

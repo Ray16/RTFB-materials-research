@@ -14,7 +14,8 @@ import shutil
 from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
-from redox.workflows.molecular_native_namespace import verify,load
+from redox.core.source_modules import load_source_module as load
+from redox.workflows.molecular_native_namespace import verify
 from redox.workflows.sampling_energy import density_restart_source
 
 

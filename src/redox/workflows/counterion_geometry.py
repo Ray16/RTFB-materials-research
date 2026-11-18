@@ -23,7 +23,8 @@ from redox.core.io import atomic_write_json
 
 def collect(manifest_path, output):
     """Collect checked stationary poses; pending E/G remains explicitly blank."""
-    from redox.workflows.molecular_native_namespace import verify, load
+    from redox.core.source_modules import load_source_module as load
+    from redox.workflows.molecular_native_namespace import verify
     import time
     if output.exists():raise FileExistsError('Preserve earlier geometry collections')
     manifest=json.loads(manifest_path.read_text());rows=manifest['states']

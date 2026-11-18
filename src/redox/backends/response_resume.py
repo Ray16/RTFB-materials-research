@@ -11,7 +11,8 @@ import math
 from pathlib import Path
 
 
-def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+from redox.backends.checkpoint_arrays import array_digest
+from redox.core.hashing import sha256_file as digest
 
 
 def inspect_source(case,frame):
@@ -37,7 +38,7 @@ def inspect_source(case,frame):
             or not path.is_relative_to(case/'solution_H1') or digest(path)!=capture['file_sha256']
             or array.dtype!=np.float64 or list(array.shape)!=capture['shape']
             or array.shape!=(frame['natom'],3,frame['nao'],frame['nocc']) or not np.isfinite(array).all()
-            or hashlib.sha256(memoryview(array).cast('B')).hexdigest()!=capture['array_sha256']):
+            or array_digest(array)!=capture['array_sha256']):
         raise ValueError('Complete, source-bound finite FP64 solution H1 required')
     paths=[case/'plan.json',center,grids,identity_path,path];blocks=sorted((case/'response_blocks').glob('block_*.json'))
     if not blocks:raise ValueError('No complete raw response block is available')
@@ -50,7 +51,7 @@ def inspect_source(case,frame):
                 or not payload.is_relative_to(case/'response_blocks') or digest(payload)!=saved['file_sha256']
                 or value.dtype!=np.float64 or not np.isfinite(value).all() or list(value.shape)!=saved['shape']
                 or value.ndim!=2 or value.shape[1]!=frame['nao']*frame['nocc']
-                or hashlib.sha256(memoryview(value).cast('B')).hexdigest()!=saved['array_sha256']):
+                or array_digest(value)!=saved['array_sha256']):
             raise ValueError('Changed or mismatched source response payload')
         total+=value.shape[0];solver_shas.add(row['original_solver_source_sha256']);paths.extend([metadata,payload])
     if total>3*frame['natom'] or len(solver_shas)!=1:raise ValueError('Response prefix dimensions or solver identity differ')

@@ -11,32 +11,18 @@ import math
 from pathlib import Path
 from types import MethodType
 
+from redox.backends.checkpoint_arrays import array_digest, contiguous_payload, to_host
+from redox.core.hashing import sha256_file
+
 
 def response_ceiling_gib(nao,nocc,aligned_atoms=16):
     """Minimum whole-GiB cap for the installed RHF aligned batching estimate."""
-    import math
     if any(type(v) is not int or v<1 for v in (nao,nocc,aligned_atoms)) or nocc>nao:
         raise ValueError('Explicit positive AO/occupied/alignment dimensions required')
     minimum=2*aligned_atoms*max(8*3*(nao*nocc*3+nao*nao),8*nao*nao*3*3)
     ceiling=max(3,math.ceil(minimum/2**30))
     if ceiling>24:raise ValueError('Aligned response exceeds this validated 24-GiB execution envelope')
     return ceiling,minimum
-
-
-def array_digest(array):
-    return hashlib.sha256(memoryview(array).cast('B')).hexdigest()
-
-
-def contiguous_payload(handle,name,content):
-    import h5py
-    import numpy as np
-    dataset=handle[name];creation=dataset.id.get_create_plist();offset=dataset.id.get_offset()
-    if (dataset.dtype!=np.dtype('float64') or creation.get_layout()!=h5py.h5d.CONTIGUOUS
-            or creation.get_nfilters() or creation.get_external_count() or offset is None or offset<0):
-        raise ValueError('Allocated native FP64 contiguous SCF data required')
-    count=int(np.prod(dataset.shape));size=count*8
-    if offset+size>len(content):raise ValueError('SCF dataset extends beyond its file')
-    return np.frombuffer(content,dtype=np.float64,count=count,offset=offset).reshape(dataset.shape)
 
 
 def read_frame(case, *, partial_only=False):
@@ -66,6 +52,7 @@ def read_frame(case, *, partial_only=False):
         raise ValueError('Saved SCF and derivative coordinates/state differ')
     arrays={}
     content=paths['checkpoint'].read_bytes()
+    digests={str(paths['checkpoint']):hashlib.sha256(content).hexdigest()}
     with h5py.File(io.BytesIO(content),'r') as handle:
         energy=float(contiguous_payload(handle,'scf/e_tot',content))
         if not math.isfinite(energy) or abs(energy-b['SCF_E_Ha'])>1e-12:raise ValueError('Checkpoint energy differs from the derivative frame')
@@ -77,9 +64,10 @@ def read_frame(case, *, partial_only=False):
     for name,identity in ([('partial',a)] if partial_only else [('partial',a),('h1',b)]):
         if len(identity['arrays'])!=1:raise ValueError('One complete tensor per derivative stage required')
         path,value=next(iter(identity['arrays'].items()));path=Path(path)
-        if not path.is_relative_to(case) or hashlib.sha256(path.read_bytes()).hexdigest()!=value:
+        if not path.is_relative_to(case) or sha256_file(path)!=value:
             raise ValueError('Changed or foreign derivative tensor')
         paths[name]=path;arrays[name]=np.load(path,mmap_mode='r',allow_pickle=False)
+        digests[str(path)]=value
     n=len(coordinates);nao=arrays['mo_coeff'].shape[0];nocc=int((arrays['mo_occ']>0).sum())
     if arrays['partial'].shape!=(n,n,3,3) or (not partial_only and arrays['h1'].shape!=(n,3,nao,nocc)):
         raise ValueError('Saved component dimensions do not match the declared frame')
@@ -88,7 +76,7 @@ def read_frame(case, *, partial_only=False):
     if (arrays['grid_coords'].shape!=(len(arrays['grid_weights']),3)
             or any(value.dtype!=np.float64 or not np.isfinite(value).all() for value in arrays.values())):
         raise ValueError('Finite FP64 orbital, grid and derivative arrays required')
-    hashes={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in paths.values()}
+    hashes={str(p):digests.get(str(p)) or sha256_file(p) for p in paths.values()}
     frame=dict(identity={k:b[k] for k in fields},settings=settings,source_sha256=hashes,
                 nocc=nocc,nao=nao,natom=n,H1_scope='solute contribution at the solvated SCF density',
                 PCM_H1_included=False)
@@ -130,7 +118,7 @@ def read_continuation_frame(case):
     center=json.loads((case/'points/0000/evaluation.json').read_text())
     if (not center['SCF_converged'] or center['coordinates_Bohr']!=frame['identity']['coordinates_Bohr'] or not math.isfinite(center['E_Ha'])
             or abs(center['E_Ha']-frame['identity']['SCF_E_Ha'])>1e-12
-            or hashlib.sha256((case/'grids.npz').read_bytes()).hexdigest()!=hashlib.sha256((source/'grids.npz').read_bytes()).hexdigest()):
+            or sha256_file(case/'grids.npz')!=sha256_file(source/'grids.npz')):
         raise ValueError('Continuation center or actual grids differ from the original frame')
     return frame,arrays,source
 
@@ -205,13 +193,13 @@ def capture_solution_h1(hessian,directory,identity):
         if not equilibrium:raise ValueError('Full solution H1 must be captured inside the equilibrium-solvent Hessian context')
         value=original(*args,**kwargs);calls+=1
         if calls!=1:raise ValueError('One complete RKS solution H1 per control required')
-        array=np.asarray(value.get() if hasattr(value,'get') else value)
+        array=to_host(value)
         if array.dtype!=np.float64 or not np.isfinite(array).all():raise ValueError('Finite FP64 full solution H1 required')
         path=directory/'full_H1.npy';temporary=directory/'full_H1.npy.partial'
         with temporary.open('xb') as stream:np.save(stream,array,allow_pickle=False);stream.flush();os.fsync(stream.fileno())
         os.replace(temporary,path)
         atomic_write_json(directory/'identity.json',dict(scope='full SMD H1 including PCM contribution',identity=identity,
-            shape=list(array.shape),dtype='float64',path=str(path),file_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+            shape=list(array.shape),dtype='float64',path=str(path),file_sha256=sha256_file(path),
             array_sha256=array_digest(array),equilibrium_solvation=equilibrium,native_G_qualified=False))
         return value
     hessian.make_h1=MethodType(capture,hessian)

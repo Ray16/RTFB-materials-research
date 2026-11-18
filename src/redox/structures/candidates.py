@@ -17,7 +17,7 @@ import argparse
 from pathlib import Path
 
 from rdkit import Chem
-from redox.core.common import load_python_config
+from redox.core.common import LIBRARY, MANIFEST, load_python_config
 from redox.structures.contracts import validate_group
 from redox.structures.manifest import COLS, locked_manifest, read_rows, write_rows
 
@@ -26,8 +26,6 @@ from redox.structures.structures import (decorate, conformer_ensemble, to_xyz, u
 
 ROOT = Path(__file__).resolve().parents[3]
 CONFIG = ROOT / "config" / "starting_candidates.py"   # default; override with --config
-LIBRARY = ROOT / "library"
-MANIFEST = LIBRARY / "manifest.csv"
 
 def _load_config(path=None):
     path = Path(path) if path else CONFIG

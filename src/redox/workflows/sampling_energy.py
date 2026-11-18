@@ -20,7 +20,8 @@ from redox.core.protocol import ACTIVE_SP
 
 def density_restart_source(namespace, task, model_id, geometry_sha256,reason='memory_stop'):
     """Admit a density only after exact closed-failure and actual-frame checks."""
-    from redox.workflows.molecular_native_namespace import verify, load
+    from redox.core.source_modules import load_source_module as load
+    from redox.workflows.molecular_native_namespace import verify
     from redox.quality.scf_frame import checkpoint_frame
     from ase.io import read as read_atoms
     from pyscf.lib import param

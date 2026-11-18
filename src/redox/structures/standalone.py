@@ -13,11 +13,10 @@ from rdkit import Chem
 from redox.structures.manifest import COLS, locked_manifest, read_rows, write_rows
 
 from redox.structures.structures import conformer_ensemble, to_xyz, unassigned_stereo, radius_of_gyration
+from redox.core.common import LIBRARY, MANIFEST
 
 ROOT = Path(__file__).resolve().parents[3]
 CONFIG = ROOT / "config" / "standalone.py"
-LIBRARY = ROOT / "library"
-MANIFEST = LIBRARY / "manifest.csv"
 
 def _load():
     spec = importlib.util.spec_from_file_location("standalone", CONFIG)

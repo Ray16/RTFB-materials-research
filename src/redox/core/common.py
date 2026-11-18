@@ -14,17 +14,29 @@ import csv
 import importlib.util
 import json
 import math
+import os
 from pathlib import Path
 from types import ModuleType
 
 # --- Repo layout (single source of truth for these paths) ---
+# Code and config always live in this checkout (ROOT). The heavy calculation
+# INPUTS (calcs/, library/) may live in a separate data tree: set
+# REDOX_DATA_ROOT to point the pipeline at an external results store (e.g. the
+# canonical repo's 52G calcs/) without copying it. Unset, DATA_ROOT == ROOT and
+# behavior is unchanged. Writable OUTPUTS (results/) stay under ROOT so an
+# external data tree is never mutated by analysis runs here.
 ROOT = Path(__file__).resolve().parents[3]
-CONFIG_DIR = ROOT / "config"
-LIBRARY = ROOT / "library"
-CALCS = ROOT / "calcs"
+DATA_ROOT = Path(os.environ["REDOX_DATA_ROOT"]).resolve() if os.environ.get("REDOX_DATA_ROOT") else ROOT
+CONFIG_DIR = ROOT / "config"          # code/config: always this checkout
+LIBRARY = DATA_ROOT / "library"       # built structures + manifest
+MANIFEST = LIBRARY / "manifest.csv"
+CALCS = DATA_ROOT / "calcs"           # all QM outputs
 UMA = CALCS / "uma"
 DFT = CALCS / "dft"
-RESULTS = ROOT / "results"
+SPINCHECK = CALCS / "spincheck"
+OROP = CALCS / "orop"
+UMA_PROFILES = CALCS / "uma_profiles"
+RESULTS = DATA_ROOT / "results"       # analysis outputs (same data tree)
 
 # --- Physical constants ---
 HARTREE_EV = 27.211386245988
@@ -36,21 +48,35 @@ EV_MEV = 1000.0
 KT_EV = 0.0256926         # k_B * T at 298.15 K, in eV
 
 
+_CONFIG_CACHE: dict = {}
+
+
 def load_python_config(path: str | Path, *, name: str | None = None) -> ModuleType:
     """Execute a trusted Python configuration and return its module.
 
     Configuration files are executable Python, not a sandboxed data format.
     Missing paths produce a diagnostic before any calculation or output writes.
     Exceptions raised by configuration code retain their original traceback.
+
+    Cached per (path, name, mtime, size): the scorecard and table builders load
+    the same handful of candidate/chemistry configs many times per run, and each
+    load otherwise re-``exec``s the file over NFS. A fresh write (new mtime/size)
+    re-executes. The returned module holds read-only definitions; callers must
+    not mutate its attributes (the instance is shared across calls).
     """
     path = Path(path)
     if not path.is_file():
         raise FileNotFoundError(f"Configuration file not found: {path}. Check the checkout or --config path.")
-    spec = importlib.util.spec_from_file_location(name or path.stem, path)
-    if spec is None or spec.loader is None:
-        raise ValueError(f"Cannot load Python configuration: {path}. Use a .py file.")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
+    st = path.stat()
+    key = (str(path), name or path.stem, st.st_mtime_ns, st.st_size)
+    module = _CONFIG_CACHE.get(key)
+    if module is None:
+        spec = importlib.util.spec_from_file_location(name or path.stem, path)
+        if spec is None or spec.loader is None:
+            raise ValueError(f"Cannot load Python configuration: {path}. Use a .py file.")
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        _CONFIG_CACHE[key] = module
     return module
 
 
@@ -88,6 +114,27 @@ def read_manifest() -> list[dict]:
         _MANIFEST_CACHE.clear()  # retain only the current manifest version
         _MANIFEST_CACHE[key] = rows
     return rows
+
+
+_MANIFEST_INDEX_CACHE: dict = {}
+
+
+def manifest_index() -> dict:
+    """``{(id, state): row}`` over `read_manifest()`, for O(1) per-state lookup.
+
+    The many per-state callers (read_result -> thermal policy, spins, scorecard)
+    would otherwise rescan the whole manifest for each (id, state). Rebuilt only
+    when `read_manifest()` returns a new list (i.e. the file changed on disk).
+    """
+    rows = read_manifest()
+    cached = _MANIFEST_INDEX_CACHE.get("entry")
+    if cached is None or cached[0] is not rows:
+        index: dict = {}
+        for row in rows:  # keep the first match, as the prior linear scan did
+            index.setdefault((row["id"], row["state"]), row)
+        _MANIFEST_INDEX_CACHE["entry"] = (rows, index)
+        return index
+    return cached[1]
 
 
 # energy fields that come ONLY from the active-protocol record (redox.core.protocol), never from
@@ -135,7 +182,7 @@ def _apply_single_surface_thermal_policy(r: dict, state_dir: Path) -> dict:
     """Overlay the explicitly selected thermal definition without a legacy fallback."""
     r = dict(r)
     gid, state = Path(state_dir).parent.name, Path(state_dir).name
-    row = next((row for row in read_manifest() if row['id']==gid and row['state']==state), None)
+    row = manifest_index().get((gid, state))
     r['geometry_spin_qc'] = 'ok'
     if row is not None:
         from redox.backends.dft import _uma_mult

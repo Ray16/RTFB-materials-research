@@ -11,7 +11,7 @@ from redox.core.common import ROOT
 from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.workflows.charged_polymer_pilot import prepare_optimization
-from redox.workflows.molecular_native_namespace import load
+from redox.core.source_modules import load_source_module as load
 
 
 def select_seed(analysis,case,solvent_model):

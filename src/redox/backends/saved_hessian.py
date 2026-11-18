@@ -4,7 +4,6 @@ The caller must admit a closed, source-bound producer. The returned matrix is
 still unqualified until fresh gradients, sampled derivatives and modes pass.
 """
 from contextlib import contextmanager
-import hashlib
 import json
 import math
 from pathlib import Path
@@ -13,7 +12,7 @@ from types import MethodType
 import numpy as np
 
 
-def digest(path):return hashlib.sha256(Path(path).read_bytes()).hexdigest()
+from redox.core.hashing import sha256_file as digest
 
 
 @contextmanager

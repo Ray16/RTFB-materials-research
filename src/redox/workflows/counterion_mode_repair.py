@@ -21,7 +21,8 @@ from redox.core.hashing import sha256_file
 from redox.core.io import atomic_write_json
 from redox.quality import primary_checkpoints
 from redox.quality.execution_review import freeze_source
-from redox.workflows.molecular_native_namespace import verify, load
+from redox.core.source_modules import load_source_module as load
+from redox.workflows.molecular_native_namespace import verify
 
 SOURCE_BYTES=Path(__file__).read_bytes()
 

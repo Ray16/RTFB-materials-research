@@ -10,8 +10,9 @@ from pathlib import Path
 import numpy as np
 
 from redox.core.common import ROOT
+from redox.core.hashing import sha256_file as digest, verify_sources
 from redox.core.io import atomic_write_json
-from redox.workflows import polymer_campaign as api
+from redox.core.source_modules import load_source_module
 
 
 def reconstructed_matrix(spec):
@@ -27,7 +28,7 @@ def reconstructed_matrix(spec):
     }
     if not required <= set(spec["input_sha256"]):
         raise ValueError("Reconstruction input hash coverage is incomplete")
-    api.verify_sources(spec["input_sha256"])
+    verify_sources(spec["input_sha256"])
     replay = json.loads(Path(spec["reconstruction_replay"]).read_text())
     if replay["status"] != "two_full_recomputation_replays_passed" or {
         r["mult"] for r in replay["controls"]
@@ -36,7 +37,7 @@ def reconstructed_matrix(spec):
     for row in replay["controls"]:
         if not row.get("input_sha256"):
             raise ValueError("Control replay input evidence is empty")
-        api.verify_sources(row["input_sha256"])
+        verify_sources(row["input_sha256"])
         if any(
             not 0 <= row[k] <= 1e-6
             for k in (
@@ -66,12 +67,12 @@ def reconstructed_matrix(spec):
 
 def verify_reconstruction_record(record, geometry):
     settings = record["execution_hessian_reconstruction"]
-    if settings["module_sha256"] != api.digest(__file__) or settings[
+    if settings["module_sha256"] != digest(__file__) or settings[
         "source_geometry_sha256"
-    ] != api.digest(geometry):
+    ] != digest(geometry):
         raise ValueError("Saved-Hessian reconstruction source/geometry differs")
     matrix, indices = reconstructed_matrix(settings["spec"])
-    if api.digest(settings["final_hessian"]) != settings[
+    if digest(settings["final_hessian"]) != settings[
         "final_hessian_sha256"
     ] or not np.array_equal(np.load(settings["final_hessian"]), matrix):
         raise ValueError("Final Hessian is not the checked additive reconstruction")
@@ -154,7 +155,7 @@ def worst_column_checks(state, matrix, indices, protocol):
                 )
                 path = directory / f"gradient_{column}_{step}_{sign}.npy"
                 np.save(path, gradient)
-                evidence[str(path)] = api.digest(path)
+                evidence[str(path)] = digest(path)
                 gradients.append(gradient)
                 atomic_write_json(
                     directory / "progress.json",
@@ -179,9 +180,9 @@ def annotate_finer_hessian(path, geometry):
 
     path = Path(path)
     state = path.parent.parent
-    helper = api.load_module(
-        "fine_CDS_target_component",
+    helper = load_source_module(
         ROOT / "scripts/validation/diagnose_saved_hessian.py",
+        "fine_CDS_target_component",
     )
     coarse = helper.cds_for_state(state, 1e-4)
     component = state / "coarse_CDS_for_validation.npy"
@@ -193,19 +194,19 @@ def annotate_finer_hessian(path, geometry):
     checks, evidence = worst_column_checks(
         state, matrix, indices, native.NATIVE_THERMAL
     )
-    evidence[str(component)] = api.digest(component)
+    evidence[str(component)] = digest(component)
     record = json.loads(path.read_text())
     record["execution_derivatives"] = dict(
         cds_step_Bohr=1e-5,
         qualification_only=False,
         scientific_model_changed=False,
         qualification_sha256=derivative_certificate(native.NATIVE_THERMAL, 1e-5),
-        source_geometry_sha256=api.digest(geometry),
+        source_geometry_sha256=digest(geometry),
         worst_contact_indices=indices,
         worst_contact_checks=checks,
         target_evidence_sha256=evidence,
-        execution_helper_sha256=api.digest(__file__),
-        finite_CDS_module_sha256=api.digest(ROOT / "src/redox/backends/cds_finite.py"),
+        execution_helper_sha256=digest(__file__),
+        finite_CDS_module_sha256=digest(ROOT / "src/redox/backends/cds_finite.py"),
     )
     atomic_write_json(path, record)
 
@@ -221,7 +222,7 @@ def resume_native(gid, state_name, state, spec, manifest_row):
 
     state = Path(state)
     matrix, indices = reconstructed_matrix(spec)
-    if api.digest(state / "opt.xyz") != spec["source_geometry_sha256"]:
+    if digest(state / "opt.xyz") != spec["source_geometry_sha256"]:
         raise ValueError("Cached Hessian cannot be transferred to another geometry")
     coordinates = read(state / "opt.xyz").positions / 0.52917721067
     n = len(coordinates)
@@ -265,10 +266,10 @@ def resume_native(gid, state_name, state, spec, manifest_row):
             raise ValueError("Native saved Hessian changed the cached matrix")
         raw["execution_hessian_reconstruction"] = dict(
             spec=spec,
-            module_sha256=api.digest(__file__),
-            source_geometry_sha256=api.digest(geometry),
+            module_sha256=digest(__file__),
+            source_geometry_sha256=digest(geometry),
             final_hessian=str(final),
-            final_hessian_sha256=api.digest(final),
+            final_hessian_sha256=digest(final),
             original_electronic_PCM_hessian_reused=True,
             CDS_only_replaced=True,
         )
@@ -277,18 +278,18 @@ def resume_native(gid, state_name, state, spec, manifest_row):
             qualification_only=False,
             scientific_model_changed=False,
             qualification_sha256=certificate,
-            source_geometry_sha256=api.digest(geometry),
+            source_geometry_sha256=digest(geometry),
             worst_contact_indices=indices,
             worst_contact_checks=checks,
             target_evidence_sha256=evidence,
         )
         raw["execution_bounded_pcm"] = dict(
-            adapter_sha256=api.digest(ROOT / "src/redox/backends/pcm_bounded.py"),
-            driver_sha256=api.digest(
+            adapter_sha256=digest(ROOT / "src/redox/backends/pcm_bounded.py"),
+            driver_sha256=digest(
                 ROOT / "scripts/pipeline/resume_bounded_polymer_thermal.py"
             ),
             replay_evidence_sha256=spec["memory_replay_evidence_sha256"],
-            source_geometry_sha256=api.digest(geometry),
+            source_geometry_sha256=digest(geometry),
             target_evidence_sha256=spec["input_sha256"],
             scientific_model_changed=False,
             surface_grid_changed=False,

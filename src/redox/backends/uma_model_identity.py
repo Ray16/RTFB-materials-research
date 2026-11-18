@@ -4,19 +4,13 @@ Registry discovery never imports FAIRChem or initializes a model/GPU. Loaded
 module metadata and a local editable-project URL are alternative location hints.
 """
 from importlib import metadata
-import hashlib
 import json
 import os
 from pathlib import Path
 import sys
 from urllib.parse import unquote,urlparse
 
-
-def digest(path):
-    value=hashlib.sha256()
-    with Path(path).open('rb') as stream:
-        for block in iter(lambda:stream.read(1024*1024),b''):value.update(block)
-    return value.hexdigest()
+from redox.core.hashing import sha256_file as digest
 
 
 def registry_file(distribution):

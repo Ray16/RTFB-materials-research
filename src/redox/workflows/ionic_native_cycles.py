@@ -13,7 +13,8 @@ from redox.core.common import ROOT, HARTREE_EV, EV_KJ
 from redox.core.hashing import sha256_file
 from redox.properties.context import combine_properties
 from redox.workflows.ionic_stationary_cycles import validate_cycle_balance, screening_signature
-from redox.workflows.molecular_native_namespace import verify, load
+from redox.core.source_modules import load_source_module as load
+from redox.workflows.molecular_native_namespace import verify
 
 CUTOFFS = ('25', '50', '100')
 

@@ -54,7 +54,8 @@ def prepare(archive,package,energy_review,output,contract):
     from redox.core.io import atomic_write_json
     from redox.core.protocol import ACTIVE_SP
     from redox.core.runtime_paths import gpu4pyscf_source_root
-    from redox.workflows.molecular_native_namespace import load,verify
+    from redox.core.source_modules import load_source_module as load
+    from redox.workflows.molecular_native_namespace import verify
     from ase.io import read
     from pyscf import gto
     report=json.loads(energy_review.read_text());source_manifest=json.loads((package/'manifest.json').read_text())
@@ -120,7 +121,8 @@ def _prepare_component(archive, energy_review, output, contract, report, parent,
     from redox.core.io import atomic_write_json
     from redox.core.protocol import ACTIVE_SP
     from redox.core.runtime_paths import gpu4pyscf_source_root
-    from redox.workflows.molecular_native_namespace import load,verify
+    from redox.core.source_modules import load_source_module as load
+    from redox.workflows.molecular_native_namespace import verify
     numerical=cds_qualification is not None
     if numerical:
         from redox.workflows.route_cds_native import checked_qualification

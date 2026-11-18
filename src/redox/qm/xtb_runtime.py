@@ -5,11 +5,12 @@ It permits only the previously qualified library and executable bytes. A caller
 must bind once before starting a qRRHO worker, within a single Python thread.
 """
 from contextlib import contextmanager
-import hashlib
 import os
 from pathlib import Path
 import threading
 import sys
+
+from redox.core.hashing import sha256_file as digest
 
 QUALIFIED_XTB_BINARY_SHA256='271dd6cdd5da127a8e39919e7e32d924790fb346f0057b4183769ba8b3411887'
 LEGACY_PREFIX=Path('/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox')
@@ -47,11 +48,6 @@ def configured_binary(environ=None):
     return configured_prefix(environ)/'bin/xtb'
 
 
-def digest(path):
-    h=hashlib.sha256()
-    with Path(path).open('rb') as stream:
-        for block in iter(lambda:stream.read(1024*1024),b''):h.update(block)
-    return h.hexdigest()
 
 
 def validate_prefix(prefix,library_sha256,binary_sha256=QUALIFIED_XTB_BINARY_SHA256):
