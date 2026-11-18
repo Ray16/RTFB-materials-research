@@ -4,7 +4,7 @@ _Draft v0 — assembled 2026-11-17 from parallel section drafts (method-led spin
 
 ---
 
-## Part 1 — Abstract (~190 words, single paragraph, JCIM style)
+## Abstract
 
 Selecting a redox-active motif to graft onto a preformed polymer backbone for a
 non-aqueous organic redox flow battery (ORFB) requires redox properties computed
@@ -28,7 +28,7 @@ test suite are released for independent reproduction.
 
 ---
 
-## Part 2 — TOC graphic description (single figure)
+## TOC Graphic
 
 A two-panel graphic. The left panel shows the grafting abstraction and pipeline
 spine: a SMILES redox motif plus a 4-methylbenzyl (Merrifield-proxy) cap, taken
@@ -43,9 +43,7 @@ model, not a synthesized material.
 
 ---
 
-
----
-
+## Introduction
 
 Non-aqueous organic redox flow batteries (ORFBs) are an attractive route to
 grid-scale electrochemical storage because they decouple energy and power,
@@ -145,10 +143,12 @@ cells, before closing with the method's limitations and outlook.
 
 ---
 
+## Computational Methods
 
 We screen graftable redox motifs through a single reproducible driver
 (`redox.workflows.motifs.commands`) that takes each registered motif through nine
-stages: (1) build, (2) MLIP pre-optimization, (3) DFT geometry optimization with
+stages: (1) build, (2) pre-optimization with a machine-learned interatomic
+potential (MLIP), (3) DFT geometry optimization with
 implicit solvation per redox state, (4) refined single-point energies, (5)
 thermochemistry, (6) derived redox properties, (7) reliability gating and
 cross-point consistency, (8) multi-property ranking, and (9) an independent audit
@@ -160,7 +160,7 @@ study, we state the protocol precisely here and defer the supporting derivations
 (outer-sphere PCM operators, qRRHO projection, σ-aware domination proofs) to the
 Supporting Information (SI).
 
-## 2.1 Grafted-motif model
+### Grafted-motif model
 
 Each candidate is a redox motif attached to a single *4-methylbenzyl* cap that
 serves as a Merrifield (poly(vinylbenzyl chloride)) backbone proxy. Grafting is
@@ -181,7 +181,7 @@ capacity bookkeeping the cap's methyl is converted to one backbone carbon per gr
 site (CH₃–Ar → –[CH₂–CH(Ar)]–; `properties/capacity_and_proxies.py`), giving an
 exact repeat-unit mass without asserting a synthesized material.
 
-## 2.2 Conformer generation and MLIP pre-optimization
+### Conformer generation and MLIP pre-optimization
 
 For each motif a charge-aware conformer ensemble is embedded with RDKit and
 force-field ranked (`structures/candidates.py`). Each redox state is then pre-
@@ -196,23 +196,24 @@ stage, because the rigid aromatic redox cores collapse to one solvated minimum
 screening (`--nconf > 1`) and an optional ring–ring torsion scan are reserved for
 genuinely floppy species and reduced dianions.
 
-## 2.3 DFT geometry optimization and solvation
+### DFT geometry optimization and solvation
 
 Every redox state is **optimized in solvent** on the SMD(acetonitrile) potential-
 energy surface (geomeTRIC driver with grid-response gradients; `backends/dft.py`),
 because a gas-phase MLIP seed cannot see solvation and charged/floppy species can
-collapse without it. Each seed is first warm-started with a GFN2-xTB ALPB(MeCN)
-pre-optimization, which also binds otherwise gas-unbound dianions. Geometries are
+collapse without it. Each seed is first warm-started with a GFN2-xTB solvated pre-optimization
+(ALPB, the analytical linearized Poisson–Boltzmann implicit-solvent model, in
+MeCN), which also binds otherwise gas-unbound dianions. Geometries are
 optimized at r²SCAN-D4/def2-SVP (anionic states def2-SVPD) in SMD. The SCF uses
 RI-J density fitting (`conv_tol = 1 × 10⁻⁹`, `max_cycle = 200`) with an escalating-
 stabilizer fallback (level shift/damping, then second-order Newton) for stubborn
 open-shell cases; open-shell states are solved from several initial guesses
 (minao/atom/Hückel) and the lowest converged solution is kept, with additional
-orbital-removal occupation seeds for the Fe doublet of ferrocenium. A def2 ECP is
-attached automatically for any element with Z ≥ 37. The three states of a motif are
+orbital-removal occupation seeds for the Fe doublet of ferrocenium. A def2
+effective core potential (ECP) is attached automatically for any element with Z ≥ 37. The three states of a motif are
 independent and are optimized concurrently, one GPU each.
 
-## 2.4 Refined electronic energies
+### Refined electronic energies
 
 Production energies are computed at a single uniform protocol,
 **ωB97M-V/def2-TZVPD** with the VV10 nonlocal dispersion built into the functional,
@@ -230,11 +231,11 @@ density-fitting provenance and the open-shell guess sweep); otherwise a fresh ga
 and SMD single point is computed. Both gas and solvated energies are retained, with
 dG_solv = E_SMD − E_gas and a gas-HOMO/unbound-anion diagnostic.
 
-## 2.5 Thermochemistry: a deliberate two-tier design
+### Thermochemistry: a deliberate two-tier design
 
 Free energies are G = E_SMD(active protocol) + G_thermal, and the two thermal terms
-are maintained as two explicit tiers. The **pool-wide tier** is a GFN2-xTB RRHO
-correction (298.15 K) evaluated on the DFT+SMD-optimized geometry
+are maintained as two explicit tiers. The **pool-wide tier** is a GFN2-xTB
+rigid-rotor–harmonic-oscillator (RRHO) correction (298.15 K) evaluated on the DFT+SMD-optimized geometry
 (`backends/dft._thermal_correction`): G_thermal = ZPE + H_thermal − TS. It is used
 for ranking because RRHO corrections are nearly independent of the electronic-
 structure method, so one cheap, uniform Hessian is applied identically to every
@@ -246,14 +247,14 @@ The **lead-confirmation tier** is a native, derivative-checked solution DFT
 thermochemistry (`thermochemistry/native.py`): an r²SCAN-D4/def2-SVP(D)/SMD Hessian
 with full grid response, stationary-minimum and gradient acceptance checks, and a
 spin-degeneracy term, with the nuclear partition evaluated by a certificate-locked
-projected internal-mode qRRHO kernel (`qm/qrrho.py`). It is disk-/GPU-gated and
+projected internal-mode quasi-RRHO (qRRHO) kernel (`qm/qrrho.py`). It is disk-/GPU-gated and
 expensive, so it is run to *confirm* shortlisted leads rather than across the pool.
 A state missing either an active energy or a valid thermal term makes its couple
 INCOMPLETE; there is no electronic-only fallback, and a molecule and the ferrocene
 reference must share one thermal definition or the couple is flagged
 `thermal_definition_mismatch`.
 
-## 2.6 Derived properties (kept as separate quantities)
+### Derived properties (kept as separate quantities)
 
 Each electrochemical descriptor is computed and reported independently; they are
 never combined.
@@ -269,8 +270,9 @@ never combined.
   anolyte/catholyte divider 0 V); a second electron outside the window collapses to
   1e usable capacity.
 - **Outer-sphere λ_o.** A linear-response continuum estimate by two methods
-  (`properties/lambda_outer.py`): single-sphere Born/Marcus (SASA-equivalent
-  radius) and a molecular-cavity nonequilibrium (Pekar) IEF-PCM using the real
+  (`properties/lambda_outer.py`): single-sphere Born/Marcus (using a radius from
+  the solvent-accessible surface area, SASA) and a molecular-cavity nonequilibrium
+  (Pekar) integral-equation-formalism polarizable continuum model (IEF-PCM) using the real
   cavity and the charge-transfer surface potential, with ε_s = 37.5, ε_op = 1.806.
   Reported as the half-reaction (1-body) value; the continuum-vs-explicit gap is not
   closed.
@@ -284,7 +286,7 @@ never combined.
   E_low), i.e. the reference-free two-wave spacing (`quality/stability.py`),
   reported as computed and conditional.
 
-## 2.7 Reliability gating and quality control
+### Reliability gating and quality control
 
 Every reported candidate must pass explicit, automated QC before it is ranked
 (`quality/readiness.py --strict`): declared-vs-realized charge, atom composition,
@@ -299,7 +301,7 @@ dropped**: `potentials.py` emits an explicit `INCOMPLETE`/`THERMAL_UNVALIDATED`
 status, and incomplete rows are carried on a separate partial-information list in
 the ranking (they can be dominated but can never dominate or be silently removed).
 
-## 2.8 Multi-property ranking
+### Multi-property ranking
 
 Ranking is performed on **σ-aware Pareto fronts with the anolyte and catholyte
 pools kept separate** (`screening/pareto.py`, `screening/scorecard.py`). An
@@ -318,7 +320,7 @@ weighted-sum figure of merit**: such a score would require arbitrary weights, ig
 σ, and rescale as the candidate set changes; the front plus the raw axes are
 reported instead.
 
-## 2.9 Reproducibility and software
+### Reproducibility and software
 
 The pipeline is a command registry: `motifs.commands()` emits the exact argument
 vector for every stage, and each run writes a `run_manifest.json` recording the
@@ -327,7 +329,7 @@ GPU and CPU affinity, thread caps, xTB binary, conformer count, thermal definiti
 and per-step return codes and timings; resume binds these inputs (append-only
 registry growth is permitted, but a changed selected molecule fails). Numerical
 reproducibility is anchored by five byte-exact portable replays (`examples/`, stdout
-SHA-256 pinned) and a curated contract-test suite (744 passing). The qRRHO kernel is
+SHA-256 pinned) and a curated contract-test suite (773 passing). The qRRHO kernel is
 certificate-locked (SHA-256-verified xTB thermodynamic library, isolated CPU
 subprocess), as are the xTB kernel/runtime, the sampling snapshot, and the hash-
 locked replay payloads; reformatting any of these invalidates the projected-thermal
@@ -339,7 +341,7 @@ tables are accepted only after an independent arithmetic audit (zero discrepanci
 required). An external experimental benchmark of the potential axis is maintained
 (`quality/benchmark_panel.py`) and reported in Section [Results]; an end-to-end
 re-run of the maintained code to re-confirm the frozen 39-endpoint benchmark is a
-GPU/QM step deferred under the current no-QM constraint (reviewer item M2).
+GPU/QM step deferred under the current no-QM constraint.
 
 ---
 
@@ -368,6 +370,9 @@ GPU/QM step deferred under the current no-QM constraint (reviewer item M2).
 
 ---
 
+## Results and Discussion
+
+### Validation against experiment
 
 The credibility of any downstream ranking rests on whether the pipeline reproduces
 measured electrochemistry, so before applying it to the candidate pool we test it
@@ -396,21 +401,13 @@ calibrated predictor.
 experimental potentials with a mean absolute error of **0.247 V**, an RMSE of 0.279 V,
 and a **systematic bias of +0.19 V** (computed potentials sit above experiment),
 with a maximum absolute error of 0.547 V. The panel comprises **39 scored
-endpoints (redox couples) drawn from 30 molecules and seven independent studies**
-[source: `manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json`;
-frozen archive `manuscript.tex`]. Per-molecule (macro) MAE is 0.263 V. Uncertainty is
+endpoints (redox couples) drawn from 30 molecules and seven independent studies**.
+Per-molecule (macro) MAE is 0.263 V. Uncertainty is
 quantified by cluster bootstrap (2000 replicates, seed 20261021): resampling by
 molecule gives a 95% interval of [0.213, 0.286] V for MAE and [0.128, 0.257] V for
 bias; the weaker seven-study clustering gives [0.178, 0.306] V and [0.053, 0.285] V,
 reported in the SI. These are descriptive intervals for the observed panel, not
 prediction intervals for a new molecule.
-
-We note a discrepancy with an earlier internal brief that quoted "MAE 0.226 V across
-44 couples." The frozen benchmark record is unambiguously **39 scored tier-A endpoints (30
-molecules, seven studies) with MAE 0.247 V**, obtained by applying the
-pre-registered admission rules to the larger raw curated table. The +0.19 V bias
-is common to both figures. We therefore report the verified frozen numbers and
-treat the earlier "0.226 V / 44 couples" pair as a stale or miscounted citation.
 
 **Interpretation.** The dominant error is a *systematic* positive offset, not scatter:
 the bias (+0.19 V) is a large fraction of the MAE, and grouped diagnostics localize it.
@@ -430,7 +427,7 @@ these as explicit limits: the panel validates *free parents*, not exact grafts o
 polymer interactions (`exact_graft_accuracy_validated = False` in the record); external
 naphthalene-diimide (NDI) accuracy is not covered, since the available NDI entry was
 excluded for inferred identity and unspecified stereocenters; and causal attribution of
-the bias to the Fc reference versus solvation remains unresolved (reviewer item M2).
+the bias to the Fc reference versus solvation remains unresolved.
 
 **Figure 4.** The parity plot reports computed vs experimental E_vs_Fc for all 39
 endpoints, colored by chemical family (quinone n=22, MAE 0.286 V; aromatic imide n=9,
@@ -440,7 +437,7 @@ makes the systematic positive shift visible as a displaced, roughly unimodal
 distribution, annotated with MAE = 0.247 V and bias = +0.19 V. The worst outlier
 (N-ethyl-3,7-dimethoxyphenothiazine, 0.547 V) is retained, not trimmed.
 
-**Reproducibility status (reviewer item M2).** The numbers above are the *frozen
+**Reproducibility status.** The numbers above are the *frozen
 archive* benchmark, regenerated here from the immutable evidence epoch and its
 content-hashed panel. The maintained, refactored code paths that produce them —
 `properties/potentials.py`, `reporting/benchmark.py`, and the content-hashed panel
@@ -448,7 +445,7 @@ builder/validator in `quality/benchmark_panel.py` — are in place and preserve 
 scoring, admission, and freeze logic verbatim. Re-confirming that an end-to-end run of
 the *maintained* code reproduces the frozen 39-endpoint / MAE 0.247 V / +0.19 V values
 requires regenerating `results/redox_potentials.csv` from the DFT energies, which is a
-GPU/QM step deferred under the current no-QM constraint (reviewer item M2 pending).
+GPU/QM step deferred under the current no-QM constraint.
 
 ---
 
@@ -584,7 +581,7 @@ experimental follow-up.
 
 ---
 
-## Part 3 — Conclusions (~520 words)
+## Conclusions
 
 We have presented a single, reproducible computational pipeline for screening
 redox motifs intended for grafting onto preformed Merrifield-type polymers, and
@@ -638,7 +635,7 @@ independently.
 
 ---
 
-## Part 4 — Associated Content / Data and Code Availability
+## Associated Content
 
 ### Supporting Information
 
