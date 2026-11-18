@@ -65,7 +65,7 @@ def s_module_map():
         ("2 MLIP pre-optimization", "`redox.backends.uma_current`", "UMA conformer and spin scan, gas phase"),
         ("3 DFT optimization", "`redox.backends.dft`", "xTB-ALPB warm start, r²SCAN-D4 SMD optimization, seeds"),
         ("4 Production energy", "`redox.backends.sp`", "ωB97M-V/def2-TZVPD SMD and gas single points (adopted when identical)"),
-        ("5 Thermochemistry", "`redox.backends.dft._thermal_correction`; `redox.qm.qrrho`", "xTB RRHO (pool tier); projected qRRHO (native tier)"),
+        ("5 Thermochemistry", "`redox.backends.dft._thermal_correction`; `redox.qm.qrrho`", "xTB RRHO (pool tier); projected qRRHO (DFT-frequency tier)"),
         ("6 Properties", "`redox.properties.potentials`, `.capacity_and_proxies`, `.lambda_outer`, `.reorg`", "potentials, capacity, λ_o, λ_i"),
         ("7 Quality checks", "`redox.quality.readiness`, `.spins`, `.stability`", "per-state structure, spin, protocol, completeness"),
         ("8 Ranking", "`redox.screening.scorecard`, `.pareto`", "pool assignment and Pareto fronts"),
@@ -120,7 +120,7 @@ The values in this work use gas-phase energies at the SMD geometries (main text)
 spacing between the two waves.
 
 **Thermal corrections.** Pool tier: GFN2-xTB Hessian at the DFT geometry, xTB
-thermodynamics at 298.15 K. Native tier: r²SCAN-D4/def2-SVP(D) SMD Hessian with grid
+thermodynamics at 298.15 K. DFT-frequency tier: r²SCAN-D4/def2-SVP(D) SMD Hessian with grid
 response; translations and rotations are projected out and the internal modes are passed
 to the xTB thermodynamics routine with the quasi-RRHO treatment of low modes (rotor cutoff
 50 cm⁻¹) [Grimme 2012], plus a spin-degeneracy term.
@@ -153,7 +153,7 @@ def s_benchmark():
              "[" + ", ".join(f2(x, 3) for x in u["intervals"]["MAE_V"]) + "]",
              "[" + ", ".join(f2(x, 3, True) for x in u["intervals"]["bias_V"]) + "]"] for u in b["uncertainty"]]
     boot = [[("study" if c == "doi" else c), *rest] for c, *rest in boot]
-    tiers = [["native Hessian (published)", m["n"], f2(m["MAE_V"], 3), f2(m["RMSE_V"], 3), f2(m["bias_V"], 3, True), f2(m["maximum_absolute_error_V"], 3)],
+    tiers = [["DFT frequencies (published)", m["n"], f2(m["MAE_V"], 3), f2(m["RMSE_V"], 3), f2(m["bias_V"], 3, True), f2(m["maximum_absolute_error_V"], 3)],
              ["xTB (used for the pool)", s["legacy"]["n"], f2(s["legacy"]["MAE_V"], 3), f2(s["legacy"]["RMSE_V"], 3), f2(s["legacy"]["bias_V"], 3, True), f2(s["legacy"]["max_abs_V"], 3)]]
     prov = b["review_snapshot_sha256"]
     man = j(BENCH / "manifest.json")
@@ -176,11 +176,11 @@ the xTB thermal correction with the same electronic energies. Source:
 
 {md_table(["Thermal tier", "n", "MAE", "RMSE", "Bias", "Max error"], tiers)}
 
-By family (native tier):
+By family (DFT-frequency tier):
 
 {md_table(["Family", "n", "Molecules", "MAE", "Bias", "RMSE"], fam)}
 
-By wave (native tier):
+By wave (DFT-frequency tier):
 
 {md_table(["Wave", "n", "MAE", "Bias"], wav)}
 
@@ -192,8 +192,8 @@ These intervals describe the observed panel; they are not prediction intervals f
 new molecule.
 
 Between the two tiers the potentials move by {f2(s['shift_V']['min'], 3, True)} to {f2(s['shift_V']['max'], 3, True)} V
-(mean {f2(s['shift_V']['mean'], 3, True)} V). The ferrocene reference is {f2(s['fc_native_V'], 4)} V at the native tier
-and {f2(s['fc_legacy_V'], 4)} V at the pool tier. Recomputing the native tier from the stored
+(mean {f2(s['shift_V']['mean'], 3, True)} V). The ferrocene reference is {f2(s['fc_native_V'], 4)} V at the DFT-frequency tier
+and {f2(s['fc_legacy_V'], 4)} V at the pool tier. Recomputing the DFT-frequency tier from the stored
 records reproduces every published potential (largest difference
 {s['max_native_reproduction_error_V']:.1e} V).
 
@@ -213,7 +213,7 @@ def s_bmepz():
     return f"""## S4. Calibration check for the dihydrophenazine family (BMEPZ)
 
 The benchmark has no dihydrophenazine, so the measured parent
-{r['molecule']} (SMILES `{r['smiles']}`) was computed at the pool's ranking tier and
+{r['molecule']} (SMILES `{r['smiles']}`) was computed at the pool's xTB tier and
 compared with its measured potentials (E₁ = {f2(r['measured']['E1'], sign=True)} V, E₂ = {f2(r['measured']['E2'], sign=True)} V vs Fc in
 MeCN [Kwon 2019]). Each state was started from the same RDKit/MMFF structure,
 optimized with DFT in SMD acetonitrile (one conformer seed, no UMA or xTB
@@ -349,7 +349,7 @@ def s_scored():
     order = sorted(range(len(md)), key=lambda i: (md[i][1], float(out[i]["E_mean_V"])))
     return f"""## S7. All scored candidates
 
-**Table S7.** Every row of the scored table (pool's ranking tier). E is the mean of the
+**Table S7.** Every row of the scored table (pool's xTB tier). E is the mean of the
 couples, vs Fc. Capacities: active = neutral repeat-unit mass (used in the paper); salt =
 with counterions (do not compare across pools). λ_o (Born) uses the SASA-equivalent radius.
 Source: `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,

@@ -21,10 +21,10 @@ The inset tabulates the level of theory and standard-state conventions
 (manuscript Table 1). External experimental validation is not shown here; it is
 Figure 4.
 
-**Method note — two-tier thermochemistry (stage 5).** The *pool-wide* ranking tier
+**Method note — two-tier thermochemistry (stage 5).** The *pool-wide* xTB tier
 is a GFN2-xTB RRHO correction on the DFT+SMD geometry. It is cheap enough to apply
 identically across the pool, and on the experimental benchmark it is no less
-accurate than the native tier (MAE 0.232 V vs 0.247 V). The *lead-confirmation* tier is a native solution DFT Hessian
+accurate than the DFT-frequency tier (MAE 0.232 V vs 0.247 V). The *lead-confirmation* tier is a native solution DFT Hessian
 (r²SCAN-D4/def2-SVP(D)/SMD) with a quasi-RRHO treatment of low-frequency modes; it
 needs a GPU and much disk space, so it is run only to confirm shortlisted leads. This is a deliberate two-tier design, not a
 fallback.

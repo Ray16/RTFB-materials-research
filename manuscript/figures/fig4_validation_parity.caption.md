@@ -25,7 +25,7 @@ scored set. The confidence intervals are panel-resampling (bootstrap) intervals 
 observed endpoints, not predictive intervals, and no empirical correction, outlier
 removal, or acceptance threshold was fit to these errors. The values were computed with
 the code version at commit `46b39c3b` (tag `legacy/pre-refactor-main`); the plotted
-potentials use the native-Hessian thermal tier, and the same panel at the pool's xTB
+potentials use the DFT-frequency thermal tier, and the same panel at the pool's xTB
 tier gives MAE 0.232 V (SI S3).
 
 Source: `archive/0_redox/manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json`.

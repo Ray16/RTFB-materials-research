@@ -13,7 +13,7 @@ Each stage of the pipeline is one module in the released package. The run manife
 | 2 MLIP pre-optimization | `redox.backends.uma_current` | UMA conformer and spin scan, gas phase |
 | 3 DFT optimization | `redox.backends.dft` | xTB-ALPB warm start, r²SCAN-D4 SMD optimization, seeds |
 | 4 Production energy | `redox.backends.sp` | ωB97M-V/def2-TZVPD SMD and gas single points (adopted when identical) |
-| 5 Thermochemistry | `redox.backends.dft._thermal_correction`; `redox.qm.qrrho` | xTB RRHO (pool tier); projected qRRHO (native tier) |
+| 5 Thermochemistry | `redox.backends.dft._thermal_correction`; `redox.qm.qrrho` | xTB RRHO (pool tier); projected qRRHO (DFT-frequency tier) |
 | 6 Properties | `redox.properties.potentials`, `.capacity_and_proxies`, `.lambda_outer`, `.reorg` | potentials, capacity, λ_o, λ_i |
 | 7 Quality checks | `redox.quality.readiness`, `.spins`, `.stability` | per-state structure, spin, protocol, completeness |
 | 8 Ranking | `redox.screening.scorecard`, `.pareto` | pool assignment and Pareto fronts |
@@ -58,7 +58,7 @@ The values in this work use gas-phase energies at the SMD geometries (main text)
 spacing between the two waves.
 
 **Thermal corrections.** Pool tier: GFN2-xTB Hessian at the DFT geometry, xTB
-thermodynamics at 298.15 K. Native tier: r²SCAN-D4/def2-SVP(D) SMD Hessian with grid
+thermodynamics at 298.15 K. DFT-frequency tier: r²SCAN-D4/def2-SVP(D) SMD Hessian with grid
 response; translations and rotations are projected out and the internal modes are passed
 to the xTB thermodynamics routine with the quasi-RRHO treatment of low modes (rotor cutoff
 50 cm⁻¹) [Grimme 2012], plus a spin-degeneracy term.
@@ -122,10 +122,10 @@ the xTB thermal correction with the same electronic energies. Source:
 
 | Thermal tier | n | MAE | RMSE | Bias | Max error |
 |---|---|---|---|---|---|
-| native Hessian (published) | 39 | 0.247 | 0.279 | +0.190 | 0.547 |
+| DFT frequencies (published) | 39 | 0.247 | 0.279 | +0.190 | 0.547 |
 | xTB (used for the pool) | 39 | 0.232 | 0.266 | +0.193 | 0.484 |
 
-By family (native tier):
+By family (DFT-frequency tier):
 
 | Family | n | Molecules | MAE | Bias | RMSE |
 |---|---|---|---|---|---|
@@ -135,7 +135,7 @@ By family (native tier):
 | quinone | 22 | 18 | 0.286 | +0.231 | 0.313 |
 | viologen | 2 | 1 | 0.097 | +0.094 | 0.135 |
 
-By wave (native tier):
+By wave (DFT-frequency tier):
 
 | Wave | n | MAE | Bias |
 |---|---|---|---|
@@ -153,8 +153,8 @@ These intervals describe the observed panel; they are not prediction intervals f
 new molecule.
 
 Between the two tiers the potentials move by −0.064 to +0.109 V
-(mean +0.003 V). The ferrocene reference is 4.3792 V at the native tier
-and 4.3553 V at the pool tier. Recomputing the native tier from the stored
+(mean +0.003 V). The ferrocene reference is 4.3792 V at the DFT-frequency tier
+and 4.3553 V at the pool tier. Recomputing the DFT-frequency tier from the stored
 records reproduces every published potential (largest difference
 0.0e+00 V).
 
@@ -173,7 +173,7 @@ records reproduces every published potential (largest difference
 ## S4. Calibration check for the dihydrophenazine family (BMEPZ)
 
 The benchmark has no dihydrophenazine, so the measured parent
-5,10-bis(2-methoxyethyl)-5,10-dihydrophenazine (BMEPZ) (SMILES `COCCN1c2ccccc2N(CCOC)c2ccccc21`) was computed at the pool's ranking tier and
+5,10-bis(2-methoxyethyl)-5,10-dihydrophenazine (BMEPZ) (SMILES `COCCN1c2ccccc2N(CCOC)c2ccccc21`) was computed at the pool's xTB tier and
 compared with its measured potentials (E₁ = −0.29 V, E₂ = +0.50 V vs Fc in
 MeCN [Kwon 2019]). Each state was started from the same RDKit/MMFF structure,
 optimized with DFT in SMD acetonitrile (one conformer seed, no UMA or xTB
@@ -235,7 +235,7 @@ them. Full outputs: `manuscript/evidence/2026-11-18_cpu_checks/readiness_*.csv`.
 
 ## S7. All scored candidates
 
-**Table S7.** Every row of the scored table (pool's ranking tier). E is the mean of the
+**Table S7.** Every row of the scored table (pool's xTB tier). E is the mean of the
 couples, vs Fc. Capacities: active = neutral repeat-unit mass (used in the paper); salt =
 with counterions (do not compare across pools). λ_o (Born) uses the SASA-equivalent radius.
 Source: `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,

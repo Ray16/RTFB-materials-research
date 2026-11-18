@@ -32,7 +32,7 @@ scattering as isolated outliers.
 
 All potentials use the pool's ranking thermal tier (GFN2-xTB RRHO), like every
 value in Figure 5; none of the DMPZ members has yet been confirmed with the more
-expensive native-Hessian tier. A check against the measured parent compound
+expensive DFT-frequency tier. A check against the measured parent compound
 (BMEPZ) suggests the absolute DMPZ potentials are about 0.3 V too high; the shifts
 relative to the reference are the robust quantity. Potentials are QC-gated values
 on the Fc/Fc⁺ scale (benchmark MAE 0.247 V over n = 39 endpoints; the error is
