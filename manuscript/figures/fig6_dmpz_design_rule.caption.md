@@ -24,9 +24,9 @@ electron-**donating** ring substituent **lowers** E: 2,7-dimethyl by −0.13 V (
 +0.30 V) and 2,7-dimethoxy by −0.22 V (to +0.21 V) relative to the same N′-ethyl
 parent. The grafted DMPZ series therefore spans +0.21 to +0.62 V, and the
 distinct PTZ scaffold extends the catholyte reach to +0.78 V. Panel **(b)**
-re-plots the catholyte sub-space (E vs Fc/Fc⁺ against usable capacity in
-TBAPF₆/MeCN); these light two-electron cores deliver high usable capacity
-(~81–91 mAh g⁻¹), and the structured family fills the catholyte gap rather than
+re-plots the catholyte sub-space (E vs Fc/Fc⁺ against theoretical capacity on the
+neutral repeat-unit mass); these light two-electron cores reach ~140–170 mAh g⁻¹,
+comparable to the anolyte pool, and the structured family fills the catholyte gap rather than
 scattering as isolated outliers.
 
 Open markers and an asterisk denote **provisional** members: the matched

@@ -5,8 +5,9 @@
 **Figure 5. Redox potential versus usable capacity for the 91-candidate grafted-motif pool,
 resolved into the two separate electrolyte roles.**
 Each point is one candidate, placed by its two computed performance quantities kept on
-*independent* axes — reduction/oxidation potential *E* vs Fc/Fc+ (x) and usable gravimetric
-capacity in TBAPF6/MeCN (y) — and coloured by redox family. **No weighted-sum or scalarized
+*independent* axes — reduction/oxidation potential *E* vs Fc/Fc+ (x) and theoretical
+gravimetric capacity (y; nF/3.6M on the neutral repeat-unit mass, counterions excluded —
+the salt-loaded variant, which leaves front membership unchanged, is in the SI) — and coloured by redox family. **No weighted-sum or scalarized
 figure of merit is used:** potential and capacity are never combined, so the trade-off is read
 directly from the plane rather than from a single ranked score. The Pareto-optimal front within
 each pool (step line, outlined numbered markers keyed to real chemical names) is the set of

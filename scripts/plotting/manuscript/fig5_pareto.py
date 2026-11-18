@@ -9,7 +9,9 @@ Two SEPARATE one-panel figures (JCIM house rule + STYLE_CONTRACT.md: one panel p
 Axes are the two raw performance quantities, kept SEPARATE (no scalarized / weighted-sum
 figure of merit):
     x = redox potential  E  vs Fc/Fc+   (V)
-    y = usable capacity                  (mAh/g, TBAPF6/MeCN)
+    y = usable theoretical capacity      (mAh/g, nF/3.6M on the neutral active-species mass;
+        counterions excluded -- the standard convention; the salt-loaded variant is in the
+        CSV column cap_salt_mAh_g and the SI)
 
 One point per candidate, coloured by redox family (colours per STYLE_CONTRACT §2, identical
 across both panels). The Pareto-optimal front within each pool is marked (step line + outlined,
@@ -74,7 +76,7 @@ CAT_FRONT = "#B2182B"
 
 # Verbatim axis labels (STYLE_CONTRACT §3).
 XLABEL = "Redox potential, $E$ vs Fc/Fc$^+$ (V)"
-YLABEL = "Usable capacity (mAh g$^{-1}$, TBAPF$_6$/MeCN)"
+YLABEL = "Usable capacity (mAh g$^{-1}$, active mass)"
 
 # ---- compact real-chemistry labels (adapted from make_full_pool_figure.py) ----
 _CORE = [("anthracene-9,10-dione", "AQ"), ("anthraquinone", "AQ"),
@@ -162,7 +164,7 @@ def load_frozen():
     rows = [r for r in rows if r["id"] not in EXTRA_IDS]
     for r in rows:
         r["E"] = float(r["E_mean"])
-        r["cap"] = float(r["cap_mAh_g"])
+        r["cap"] = float(r["cap_active_mAh_g"])
         r["ctrl"] = r["id"].endswith("_control") or r["n"] == "1"
         r["fk"] = fam_key(r["family"])
         r["lab"] = label_for(r["name"])
@@ -256,12 +258,12 @@ def fig_catholyte(rows):
     fig.subplots_adjust(left=0.085, right=0.52, top=0.90, bottom=0.13)
 
     ax.set_xlim(-0.02, 2.0)   # full catholyte window (0 -> +2.0 V vs Fc) -> sparsity visible
-    ax.set_ylim(74, 96)
+    ax.margins(y=0.22)
 
     cat_max_E = max(r["E"] for r in cat)
     ax.axvspan(cat_max_E, 2.0, color="#DDDDDD", alpha=0.35, zorder=0)
-    ax.text((cat_max_E + 2.0) / 2, 94.6, "sparse /\nlargely unexplored", ha="center",
-            va="top", fontsize=BASE, color="#888888", style="italic")
+    ax.text((cat_max_E + 2.0) / 2, 0.95, "sparse /\nlargely unexplored", ha="center",
+            transform=ax.get_xaxis_transform(), va="top", fontsize=BASE, color="#888888", style="italic")
 
     for r in cat:
         if r["id"] in front_ids:

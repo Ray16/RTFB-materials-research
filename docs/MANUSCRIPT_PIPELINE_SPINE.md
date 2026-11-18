@@ -63,11 +63,11 @@ with grafted dihydrophenazines carrying DFT-confirmed substituent design rules, 
   Anolyte front 7, catholyte front 3; the expansion fills the catholyte side.
 - KEY RESULT (the expansion's contribution): grafted dihydrophenazine 2e catholytes with
   DFT-confirmed design rules:
-  - smaller N'-cap -> higher capacity (N'-methyl-DHP 91 mAh/g, pool best 2e catholyte)
+  - smaller N'-cap -> higher capacity (N'-methyl-DHP 172 mAh/g active repeat-unit mass, pool best 2e catholyte)
   - EWG N'-cap -> higher potential (N'-CF3CH2-DHP +0.62 V)
   - ring donor -> lower potential, MONOTONIC: unsub +0.43 -> 2,7-diMe +0.30 -> 2,7-diOMe +0.21 V
-- PROPOSED LEAD CELL: 2-amino-1,4-NQ (anolyte -1.41 V, 70 mAh/g, lambda_o 0.73 eV) +
-  N'-methyl-DHP (catholyte +0.47 V, 91 mAh/g, lambda_o 0.70 eV, lambda_i reliable)
+- PROPOSED LEAD CELL: 2-amino-1,4-NQ (anolyte -1.41 V, 185 mAh/g active, lambda_o 0.73 eV) +
+  N'-methyl-DHP (catholyte +0.47 V, 172 mAh/g active, lambda_o 0.70 eV, lambda_i reliable)
   -> ~1.8 V (1.78-1.87 bias-corrected), +/- ~0.4 V per-couple uncertainty.
 - CAVEAT: a full CELL has no experimental datum (candidates are un-synthesized proposals); only
   the component potentials are benchmarked.

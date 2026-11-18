@@ -262,7 +262,14 @@ never combined.
   *live* at the active protocol with the same free-energy definition as the
   molecules, cancelling the systematic error of an absolute reference
   (`properties/potentials.py`; RT/F = 0.025693 V, Nernst slope 0.059160 V).
-- **Usable capacity.** Specific capacity C_spec = nF/(3.6·MW) [mAh g⁻¹] on the
+- **Usable capacity.** Theoretical specific capacity C_spec = nF/(3.6·M) [mAh g⁻¹],
+  with M the neutral polystyrene repeat-unit mass of the graft (above) and
+  counterions excluded, the usual active-material convention. A salt-loaded variant
+  that adds the heaviest counterion load (n PF₆⁻ for catholytes, n TBA⁺ for
+  anolytes) is reported in the SI. Because TBA⁺ (242 g mol⁻¹) is much heavier than
+  PF₆⁻ (145 g mol⁻¹), that variant penalizes anolytes more than catholytes, so it
+  must not be used to compare capacities across pools. It does not change
+  Pareto-front membership within either pool. Capacity is counted on the
   accessible electron path, with electrons counted as *usable* only while their
   potentials lie inside the TBAPF₆/MeCN stability window ([−3.0, 2.0] V vs Fc,
   anolyte/catholyte divider 0 V); a second electron outside the window collapses to
@@ -400,7 +407,10 @@ experimental potentials with a mean absolute error of **0.247 V**, an RMSE of 0.
 and a **systematic bias of +0.19 V** (computed potentials sit above experiment),
 with a maximum absolute error of 0.547 V. The panel comprises **39 scored
 endpoints (redox couples) drawn from 30 molecules and seven independent studies**.
-Per-molecule (macro) MAE is 0.263 V. Uncertainty is
+Per-molecule (macro) MAE is 0.263 V. The bias depends on the direction of the
+couple: the 33 reduction endpoints (anolyte-like) give MAE 0.239 V and bias
++0.17 V, whereas the six oxidation endpoints (five phenothiazine, one nitroxide;
+catholyte-like) give MAE 0.289 V and bias +0.29 V. Uncertainty is
 quantified by cluster bootstrap (2000 replicates, seed 20261021): resampling by
 molecule gives a 95% interval of [0.213, 0.286] V for MAE and [0.128, 0.257] V for
 bias; the weaker seven-study clustering gives [0.178, 0.306] V and [0.053, 0.285] V,
@@ -426,6 +436,17 @@ polymer interactions (`exact_graft_accuracy_validated = False` in the record); e
 naphthalene-diimide (NDI) accuracy is not covered, since the available NDI entry was
 excluded for inferred identity and unspecified stereocenters; and causal attribution of
 the bias to the Fc reference versus solvation remains unresolved.
+
+The panel contains no dihydrophenazine, so it does not by itself calibrate the
+catholyte family used in the showcase below. As a family-specific check we computed
+the exact measured parent, 5,10-bis(2-methoxyethyl)-5,10-dihydrophenazine (BMEPZ;
+E₁ = −0.29 V, E₂ = +0.50 V vs Fc in MeCN [Kwon 2019]), at the same ranking level
+used for the pool. The computed couples are −0.06 and +0.87 V, errors of +0.23 and
++0.37 V (MAE 0.30 V, bias +0.30 V). This is one molecule, so it is a check rather
+than a benchmark, but it agrees with the oxidation-side bias of the panel and implies
+that the absolute DMPZ potentials reported below are likely about 0.3 V too
+positive. **[TODO: persist the BMEPZ computed record (`scripts/validation/bmepz_anchor.py`)
+alongside the benchmark evidence; it currently exists only in a dated run note.]**
 
 **Figure 4.** The parity plot reports computed vs experimental E_vs_Fc for all 39
 endpoints, colored by chemical family (quinone n=22, MAE 0.286 V; aromatic imide n=9,
@@ -488,9 +509,10 @@ candidates) is densely populated across a wide potential window: diimides and
 amino-/alkoxy-naphthoquinones span roughly −1.0 to −1.6 V vs Fc, with
 pyromellitic diimides (e.g. the ether-tethered PMDI at −1.54 V) and
 alkoxy-anthraquinones (≈ −1.49 V) anchoring the most-negative edge and the
-multi-electron viologens clustering nearer −0.7 to −1.0 V. Nominal capacities
-across the anolyte pool fall in the ≈ 50–72 mAh g⁻¹ band, trending down as
-solubilizing oligoether or long-alkyl caps add inert mass. The catholyte panel,
+multi-electron viologens clustering nearer −0.7 to −1.0 V. Theoretical capacities
+of the two-electron anolytes span ≈ 90–200 mAh g⁻¹, highest for the light
+benzo- and naphthoquinones and falling as solubilizing oligoether or long-alkyl caps
+add inert mass. The catholyte panel,
 by contrast, is almost empty: six points, five of them dihydrophenazines
 clustered near +0.4 to +0.5 V and one 3,7-dimethoxyphenothiazine at +0.78 V.
 This visual sparsity — a crowded anolyte front against a nearly bare catholyte
@@ -511,13 +533,13 @@ confirmed series potentials (E vs Fc, mean of the two one-electron couples, from
 
 | Candidate | N′ / ring substitution | E vs Fc (V) | Couples (V) | Capacity (mAh g⁻¹) |
 |---|---|---:|---|---:|
-| `exp_dmpz_mb_ethyl` | N′-ethyl | +0.43 | −0.03 / +0.89 | 88.7 |
-| `exp_dmpz_mb_methyl` | N′-methyl | +0.47 | +0.03 / +0.91 | 90.8 |
-| `hyp_dmpz_mb_methoxyethyl` | N′-(2-methoxyethyl) | +0.47 | +0.01 / +0.94 | 84.5 |
-| `hyp_dmpz_mb_trifluoroethyl` | N′-(2,2,2-trifluoroethyl) | +0.62 | +0.15 / +1.10 | 81.4 |
-| `hyp_dmpz_27dimethyl_ethyl` | 2,7-dimethyl, N′-ethyl | +0.30 | −0.14 / +0.73 | 84.8 |
-| `hyp_dmpz_27dimethoxy_ethyl` | 2,7-dimethoxy, N′-ethyl | +0.21 | −0.22 / +0.64 | 80.7 |
-| `exp_ptz_37dimethoxy` | 3,7-dimethoxyphenothiazine | +0.78 | +0.37 / +1.19 | 82.0 |
+| `exp_dmpz_mb_ethyl` | N′-ethyl | +0.43 | −0.03 / +0.89 | 164.2 |
+| `exp_dmpz_mb_methyl` | N′-methyl | +0.47 | +0.03 / +0.91 | 171.6 |
+| `hyp_dmpz_mb_methoxyethyl` | N′-(2-methoxyethyl) | +0.47 | +0.01 / +0.94 | 150.4 |
+| `hyp_dmpz_mb_trifluoroethyl` | N′-(2,2,2-trifluoroethyl) | +0.62 | +0.15 / +1.10 | 140.9 |
+| `hyp_dmpz_27dimethyl_ethyl` | 2,7-dimethyl, N′-ethyl | +0.30 | −0.14 / +0.73 | 151.2 |
+| `hyp_dmpz_27dimethoxy_ethyl` | 2,7-dimethoxy, N′-ethyl | +0.21 | −0.22 / +0.64 | 138.7 |
+| `exp_ptz_37dimethoxy` | 3,7-dimethoxyphenothiazine | +0.78 | +0.37 / +1.19 | 142.7 |
 
 Read as matched deltas against the N′-ethyl DMPZ reference (+0.43 V), the series
 yields a clean, transferable **design rule**. An electron-withdrawing
@@ -531,9 +553,15 @@ ends of the scaffold, so N′-electron-withdrawal and ring-electron-donation giv
 independent, oppositely-signed control over where a DMPZ catholyte sits — spanning
 ≈ +0.21 to +0.62 V across the grafted series, with the distinct
 3,7-dimethoxyphenothiazine scaffold extending the catholyte reach to +0.78 V.
-Equally important for a flow-battery catholyte, these light two-electron
-phenazine cores deliver high nominal capacity (≈ 81–91 mAh g⁻¹), above the
-anolyte band, because the redox-active mass fraction is large. Re-plotting the
+These light two-electron phenazine cores give theoretical capacities of
+≈ 140–170 mAh g⁻¹. That is comparable to the anolyte pool, so the catholyte side is
+not a capacity bottleneck.
+
+Two cautions apply to these numbers. First, the matched shifts are the robust
+quantity: within one scaffold, errors common to the family cancel. Second, the
+absolute potentials are probably too high. The BMEPZ check above puts the DMPZ
+couples about 0.3 V too positive, so the series likely sits nearer −0.1 to +0.3 V
+vs Fc in experiment. Re-plotting the
 catholyte Pareto panel with these points shows the gap being filled by a
 structured family rather than by isolated outliers (Figure 6).
 
@@ -561,7 +589,11 @@ alkoxy-anthraquinone or pyromellitic-diimide anolyte (≈ −1.48 V) yields ≈ 
 and the more electron-poor N′-(2,2,2-trifluoroethyl) DMPZ (E ≈ +0.62 V) paired
 with an ether-tethered PMDI anolyte (≈ −1.48 to −1.54 V) would extend the proposal
 toward ≈ 2.1 V (mean-potential arithmetic verified against the scored CSV:
-+0.43/+0.47 − (−1.48) = 1.91/1.95 V; +0.62 − (−1.48) = 2.10 V). The design rule above makes
++0.43/+0.47 − (−1.48) = 1.91/1.95 V; +0.62 − (−1.48) = 2.10 V). These cell voltages are
+less sensitive to the calibration bias than the individual potentials, because the
+two biases partly cancel. Subtracting the family-specific biases (+0.30 V for DMPZ
+from the BMEPZ check; +0.23 V for quinones from the benchmark) lowers the 1.91 and
+1.95 V cells to about 1.84 and 1.88 V. The design rule above makes
 this voltage a tunable quantity rather than a single number: catholyte and
 anolyte potentials can be shifted independently to target a window.
 

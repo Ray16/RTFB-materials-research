@@ -68,7 +68,7 @@ COL["other"] = "#999999"
 
 rows = list(csv.DictReader(open(CSV)))
 for r in rows:
-    r["E"] = float(r["E_mean"]); r["cap"] = float(r["cap_mAh_g"])
+    r["E"] = float(r["E_mean"]); r["cap"] = float(r["cap_active_mAh_g"])
     r["ctrl"] = r["id"].endswith("_control") or r["n"] == "1"
     r["fk"] = fam_key(r["family"]); r["lab"] = label_for(r["name"])
 

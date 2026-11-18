@@ -84,7 +84,7 @@ def load_rows():
     out = {}
     for cid, m in META.items():
         r = rows[cid]
-        out[cid] = dict(E=float(r["E_mean"]), cap=float(r["cap_mAh_g"]),
+        out[cid] = dict(E=float(r["E_mean"]), cap=float(r["cap_active_mAh_g"]),
                         couples=r["E_couples"], **m)
     return out, rows
 
@@ -215,19 +215,21 @@ def make_fig6b(data):
     # span annotation across the grafted DMPZ series
     dmpz_E = [d["E"] for d in data.values() if d["fam"] == "dmpz"]
     lo, hi = min(dmpz_E), max(dmpz_E)
-    ax.annotate("", xy=(hi, 95.4), xytext=(lo, 95.4),
+    caps = [d["cap"] for d in data.values()]
+    y_arrow = max(caps) + 9.0
+    ax.annotate("", xy=(hi, y_arrow), xytext=(lo, y_arrow),
                 arrowprops=dict(arrowstyle="<->", color="#555555", lw=2.0))
-    ax.text((lo + hi) / 2, 96.1,
+    ax.text((lo + hi) / 2, y_arrow + 1.0,
             f"grafted DMPZ series: {_fmt(lo)} to {_fmt(hi)} V",
             ha="center", va="bottom", fontsize=FS, color="#333333")
 
     ax.set_xlabel("Redox potential, E vs Fc/Fc⁺ (V)", fontsize=FS)
-    ax.set_ylabel("Usable capacity (mAh g⁻¹, TBAPF₆/MeCN)", fontsize=FS)
+    ax.set_ylabel("Usable capacity (mAh g⁻¹, active mass)", fontsize=FS)
     ax.set_title("Catholyte sub-space populated by a structured DMPZ family",
                  fontsize=FS + 2, pad=14)
     ax.tick_params(axis="both", labelsize=FS)
     ax.set_xlim(0.05, 0.98)
-    ax.set_ylim(78, 99)
+    ax.set_ylim(min(caps) - 9.0, max(caps) + 15.0)
     grid_xy(ax, alpha=0.3)
 
     legend = [
