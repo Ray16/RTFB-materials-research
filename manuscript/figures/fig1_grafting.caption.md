@@ -17,7 +17,7 @@ carries a small ethyl *tuning* cap, not a second graft.** The depicted capped
 graft, *N*-(4-methylbenzyl)-*N*′-ethyl-DMPZ
 (`CCN1c2ccccc2N(Cc2ccc(C)cc2)c2ccccc21`), is identical to the registered
 model (`config/custom_candidates.py`, id `exp_dmpz_mb_ethyl`). **(b) Per-motif
-redox states.** The ladder is defined on the capped graft as adjacent
+redox states.** The redox states are defined on the capped graft as adjacent
 one-electron couples from the resting state; for this p-type motif, neutral →
 ox1 (+1, doublet radical cation) → ox2 (+2, singlet dication), reported vs Fc/Fc⁺.
 Because **both nitrogens are substituted (N,N′-disubstituted), N–H deprotonation on
@@ -32,7 +32,7 @@ motifs carry couples on both sides.)
   cooperative effects, and inherits no measured property from any soluble parent.
 - The badges ("0", "+1 •", "2+") are **formal overall charge/spin labels on a
   constant depiction**, not QM spin-density or bond-order predictions. Elemental
-  composition and connectivity are held fixed across the ladder; each computed
+  composition and connectivity are the same in every redox state; each computed
   state resolves its own (charge, multiplicity) at the DFT level in the pipeline.
 
 **Provenance.** Cap scaffold and motif fragment taken verbatim from

@@ -4,7 +4,7 @@
 5,10-dihydrophenazine (DMPZ) catholyte.** Mean redox potential versus ferrocene
 (E vs Fc/Fc⁺) in TBAPF₆/MeCN for a family built by grafting one scaffold — DMPZ
 with a 4-methylbenzyl (Merrifield-proxy) cap on one nitrogen and a two-electron
-{neutral → +1 → +2} ladder — and varying a single substituent at a time, so that
+neutral → +1 → +2 sequence of states — and varying a single substituent at a time, so that
 each shift reads as a matched delta rather than a confounded whole-molecule
 comparison. Potentials (E = mean of the two one-electron couples) are read live
 from `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`; no value is
