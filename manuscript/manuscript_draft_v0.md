@@ -135,20 +135,17 @@ cells, before closing with the method's limitations and outlook.
 
 ## Computational Methods
 
-We screen graftable redox motifs through a single reproducible driver
-(`redox.workflows.motifs.commands`) that takes each registered motif through nine
-stages (Figure 2): (1) build, (2) pre-optimization with a machine-learned interatomic
-potential (MLIP), (3) DFT geometry optimization with
-implicit solvation per redox state, (4) refined single-point energies, (5)
-thermochemistry, (6) derived redox properties, (7) reliability gating and
-cross-point consistency, (8) multi-property ranking, and (9) an independent audit
-of the exported tables. Each stage is addressed by content hash so that a change
-in geometry, electronic protocol, or charge/multiplicity resolves a new record
-rather than silently overwriting an old one. The level of theory and standard-state
-conventions used throughout are collected in Table 1. Because this is a method-led
-study, we state the protocol precisely here. The Supporting Information (SI) gives
-the equations used for each property and a map of which code module carries out
-each stage.
+We screen graftable redox molecules with one reproducible driver
+(`redox.workflows.motifs.commands`). It takes each registered molecule through nine
+stages (Figure 2): (1) build the structure; (2) pre-optimize it with a
+machine-learned interatomic potential (MLIP); (3) optimize each redox state with DFT
+in implicit solvent; (4) compute refined single-point energies; (5) add thermal
+corrections; (6) derive the redox properties; (7) run the quality checks; (8) rank
+the candidates; and (9) audit the exported tables. Every result is stored under a
+hash of its inputs, so a change in geometry, method, charge, or spin creates a new
+record instead of overwriting an old one. Table 1 collects the level of theory and
+the conventions used throughout. The Supporting Information (SI) gives the equations
+used for each property and a map of which code module carries out each stage.
 
 ### Grafted-motif model
 
@@ -341,29 +338,33 @@ reported instead.
 
 ### Reproducibility and software
 
-The pipeline is a command registry: `motifs.commands()` emits the exact argument
-vector for every stage, and each run writes a `run_manifest.json` recording the
-config and its hash, the selected-definition hash, host/PID/interpreter, backend,
-GPU and CPU affinity, thread caps, xTB binary, conformer count, thermal definition,
-and per-step return codes and timings; resume binds these inputs (append-only
-registry growth is permitted, but a changed selected molecule fails). Numerical
-reproducibility is anchored by five example replays that reproduce stored output byte for
-byte (`examples/`, stdout
-SHA-256 pinned) and a curated contract-test suite (780 passing). The qRRHO kernel runs in a separate process on a
-copy of the xTB thermodynamics library whose SHA-256 hash is checked before use; the
-xTB program, the sampling snapshot, and the replay inputs are hash-checked the same way,
-and if any of them changes, the stored thermal results no longer pass their check. All GPU work is submitted through a cluster-wide reservation gate
-(reserve → run with `CUDA_VISIBLE_DEVICES` → release), with a per-motif file lock so
-one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps, and
-a node-capacity/free-slot preflight; the gate is never bypassed. The table-building
-stage includes an independent arithmetic audit. The scored table used in this paper
-was assembled outside that stage, so it was checked another way: every couple of all
-92 candidates was recomputed from the stored energies and geometries
-(`scripts/validation/score_pool_legacy_tier.py`), and all agree with the table to
-within 0.5 mV, the size of its rounding (SI S7). The calculations use PySCF 2.14.0 [Sun 2020] with GPU acceleration from
-gpu4pyscf 1.8.1 [Li 2025; Wu 2025], xtb 6.7.1, and RDKit 2026.03.5. The comparison
-of computed potentials with experiment is reported in the Results, together with
-the code version that produced it.
+Every stage is launched from a command registry: `motifs.commands()` gives the exact
+command line for each stage. Each run writes a `run_manifest.json` that records the
+configuration and its hash, the selected molecules, the host, the GPU and CPU
+assignment, thread limits, the xTB program, the number of conformer seeds, the
+thermal tier, and the return code and timing of every step. A resumed run must use
+the same inputs: new molecules may be added, but a changed molecule stops the run.
+Numerical reproducibility rests on five example replays (`examples/`) whose output
+must match stored SHA-256 hashes byte for byte, and on a curated test suite (780
+passing). The qRRHO kernel runs in a separate process on a copy of the xTB
+thermodynamics library whose SHA-256 hash is checked before use. The xTB program,
+the sampling snapshot, and the replay inputs are checked the same way; if any of
+them changes, the stored thermal results no longer pass their check.
+
+All GPU work is submitted through a cluster-wide reservation tool (reserve, run
+with `CUDA_VISIBLE_DEVICES`, release), which is never bypassed. A file lock gives
+each molecule a single writer, CPU cores are pinned with `taskset`, OMP/MKL/OpenBLAS
+thread counts are capped, and free capacity on the node is checked before launch.
+
+The table-building stage includes an independent arithmetic audit. The scored
+table used in this paper was assembled outside that stage, so it was checked
+another way. Every couple of all 92 candidates was recomputed from the stored
+energies and geometries (`scripts/validation/score_pool_legacy_tier.py`), and all
+agree with the table to within 0.5 mV, the size of its rounding (SI S7). The
+calculations use PySCF 2.14.0 [Sun 2020] with GPU acceleration from gpu4pyscf 1.8.1
+[Li 2025; Wu 2025], xtb 6.7.1, and RDKit 2026.03.5. The comparison of computed
+potentials with experiment is reported in the Results, together with the code
+version that produced it.
 
 ---
 
@@ -460,12 +461,11 @@ come from the ferrocene reference, which shifts every potential equally. But the
 spacing between the two waves of a molecule (E1 − E2), which does not depend on
 the reference, is too large in eight of the nine molecules with two measured
 waves, so a reference error alone cannot explain the residuals. Errors in how
-solvation and ion pairing are treated for each charge state probably contribute. We state
-these as explicit limits: the panel validates *free parents*, not exact grafts or
-polymer interactions (`exact_graft_accuracy_validated = False` in the record); external
-naphthalene-diimide (NDI) accuracy is not covered, since the available NDI entry was
-excluded for inferred identity and unspecified stereocenters; and causal attribution of
-the bias to the Fc reference versus solvation remains unresolved.
+solvation and ion pairing are treated for each charge state probably contribute. Three limits apply. The panel tests *free parent* molecules, not grafts or polymers
+(`exact_graft_accuracy_validated = False` in the record). It contains no
+naphthalene diimide (NDI), because the only NDI entry was excluded for uncertain
+identity and unspecified stereocenters. And we cannot yet say how much of the bias
+comes from the ferrocene reference and how much from solvation.
 
 The panel contains no dihydrophenazine, so it does not by itself calibrate the
 catholyte family used in the showcase below. As a family-specific check we computed
@@ -631,16 +631,15 @@ the voltage adjustable: catholyte and anolyte potentials can be shifted
 independently.
 
 We state the limitation plainly. A cell voltage computed from two half-cell
-potentials is a **proposal**, not a demonstrated device. It
-says nothing about attainable capacity under cycling, Coulombic efficiency,
-membrane crossover of the small grafted proxies, chemical stability of the
-charged states over many cycles, or the synthetic feasibility of the exact
-grafted structure — each candidate's record carries explicit route caveats, and
-a capped graft is not its soluble parent nor an oligomer. What the screen does
-establish is a quality-checked, internally consistent map of where these
-chemistries sit, a substituent rule for moving a DMPZ catholyte toward a
-target potential, and a concrete, testable set of anolyte/catholyte pairings for
-experimental follow-up.
+potentials is a **proposal**, not a demonstrated device. It says nothing about
+capacity under cycling, Coulombic efficiency, or membrane crossover of the small
+grafted molecules. Nor does it show that the charged states stay stable over many
+cycles, or that the exact grafted structure can be made; each candidate's record
+lists the open questions about its synthesis. A capped graft is also not the same
+as its soluble parent or an oligomer. What the screen does provide is a
+quality-checked, internally consistent map of where these chemistries sit, a
+substituent rule for moving a DMPZ catholyte toward a target potential, and a
+concrete set of anolyte/catholyte pairings that experiments can test.
 
 ### Computational cost and throughput
 
@@ -720,20 +719,19 @@ the front.
 
 ## Conclusions
 
-We have presented a single, reproducible computational pipeline for screening
-redox motifs intended for grafting onto preformed Merrifield-type polymers, and
-demonstrated it on 91 candidates for non-aqueous organic redox flow batteries.
-The contribution is the method rather than any one molecule: the pipeline builds
-the *exact* grafted species as a 4-methylbenzyl-capped model, computes each redox
-state at a consistent level of theory (ωB97M-V/def2-TZVPD with SMD in
-acetonitrile), reports potentials against a pinned ferrocene reference together
-with usable capacity and reorganization components, and checks every redox state
-automatically for structure, spin, protocol, and completeness before ranking (269
-of the pool's 271 states pass; the two that do not are flagged and affect no
-front). Half-reactions and reorganization
-terms are kept as separate reported quantities; candidates are ranked on Pareto
-fronts of voltage and capacity, computed separately for anolytes and catholytes,
-with the potential uncertainty shown and no weighted-sum score.
+We have presented a reproducible computational pipeline for screening redox
+molecules to be grafted onto Merrifield-type polymers, and applied it to 91
+candidates for non-aqueous organic redox flow batteries. The contribution is the
+method rather than any one molecule. The pipeline models each molecule as it is
+attached, with a 4-methylbenzyl cap standing in for the polymer. It computes every
+redox state at one level of theory (ωB97M-V/def2-TZVPD with SMD in acetonitrile)
+and reports potentials against ferrocene, together with capacity and
+reorganization energies. Before ranking, it checks every redox state for
+structure, spin, protocol, and completeness: 269 of the pool's 271 states pass,
+and the two that do not are flagged and affect no front. Each property is reported
+separately, and candidates are ranked on Pareto fronts of voltage and capacity,
+anolytes and catholytes apart, with the potential uncertainty shown and no
+weighted-sum score.
 
 The credibility of the applied results rests on an unfitted retrospective
 benchmark: across 39 endpoints (30 molecules, 7 studies) the pipeline reproduces
