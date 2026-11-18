@@ -18,6 +18,8 @@ diffuse basis.
 from __future__ import annotations
 import argparse
 import json
+import socket
+import time
 from pathlib import Path
 
 from redox.core.common import HARTREE_EV, ROOT, DFT, UMA, LIBRARY, load_config, read_manifest
@@ -402,9 +404,14 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
                # xc/basis mirror the ENERGY level (what redox referencing keys on)
                xc=sp_xc, basis=sbas)
 
+    # Wall-clock bookkeeping only (seconds); never feeds any computed quantity.
+    timing = {}
+    out["timing_s"] = timing
+
     # Optimize the geometry IN SOLVENT (SMD gradients) at the opt level.
     mol = _mol(obas if do_opt else sbas)
     if do_opt:
+        _t0 = time.perf_counter()
         geomopt = _geomopt_fn(backend)
         mf_opt = _build_smd_mf(mol, opt_xc, solvent, backend, opt_disp, opt_nlc)
         # `constraints` (a geomeTRIC constraints file, e.g. frozen dihedrals) keeps a flexible
@@ -433,12 +440,14 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             out["opt_out"] = str(opt_out)
         # rebuild at the (larger) single-point basis on the optimized coordinates
         atoms = opt_atoms
+        timing["opt"] = round(time.perf_counter() - _t0, 2)
 
     # Energy: solvated single point at the sp level on the optimized geometry.
     # do_smd=False skips the (expensive) SMD SCF for callers that only need the gas energy
     # (e.g. inner-sphere reorganization cross-points) — a ~2x saving there.
     mol_sp = _mol(sbas)
     guesses = OPEN_SHELL_GUESSES if nunpaired else ("minao",)
+    out.update(n_atoms=int(mol_sp.natm), n_ao_sp=int(mol_sp.nao_nr()), n_ao_opt=int(mol.nao_nr()))
     # provenance of the energy: what an adopter must match (redox.backends.sp._adoptable)
     from redox.core.protocol import software_versions
     from redox.core.protocol import geom_sha1
@@ -450,6 +459,7 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
                software=software_versions())
     e_smd = None
     if do_smd:
+        _t0 = time.perf_counter()
         smd_seeds = (_metal_doublet_phase_seeds(mol_sp, sp_xc, backend, sp_disp, sp_nlc, solvent)
                      if nunpaired == 1 and 'Fe' in atoms.get_chemical_symbols() else {})
         e_smd, conv_smd, diag_smd, per = _lowest_scf(
@@ -460,8 +470,10 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
                    scf_guess_energies_smd=per)
         for k,v in (diag_smd or {}).items():
             out[f'smd_{k}']=v
+        timing["sp_smd"] = round(time.perf_counter() - _t0, 2)
 
     if do_gas:
+        _t0 = time.perf_counter()
         KS = dft.RKS if nunpaired == 0 else dft.UKS
 
         def _gas_mf():
@@ -485,10 +497,12 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             out["anion_unbound"] = bool(out["gas_homo_eV"] > 0.0)
         if e_smd is not None:
             out["dG_solv_eV"] = (e_smd - e_gas) * HARTREE_EV
+        timing["sp_gas"] = round(time.perf_counter() - _t0, 2)
 
     # Thermal free-energy correction (GFN2-xTB RRHO on the DFT+SMD-optimized geometry) so
     # redox uses G = E_smd + g_thermal, not the bare electronic energy. See _thermal_correction.
     if do_freq:
+        _t0 = time.perf_counter()
         try:
             th = _thermal_correction(atoms, q, int(mult))
             out.update(**th, freq_level="gfn2-xtb (RRHO, 298.15K)")
@@ -496,6 +510,7 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             print(f"[warn] freq/thermal failed: {type(exc).__name__}: {str(exc)[:120]}",
                   flush=True)
             out["g_thermal_eV"] = None
+        timing["thermal"] = round(time.perf_counter() - _t0, 2)
     return out
 
 
@@ -610,16 +625,23 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
         outdir.mkdir(parents=True, exist_ok=True)
         best = None            # (e_smd_eV, seed_idx, res_dict, opt_path)
         seed_es = []
+        seed_timing = []       # per-seed wall seconds (bookkeeping only)
+        _t_state = time.perf_counter()
         for si, seed in enumerate(seeds):
+            st_t = {}
+            seed_timing.append(st_t)
             try:
                 atoms0 = ase_read(str(seed))
                 if do_opt and preopt == "alpb":
+                    _t0 = time.perf_counter()
                     atoms0, ok = _xtb_alpb_opt(atoms0, q, mult)  # solvated warm start
+                    st_t["preopt"] = round(time.perf_counter() - _t0, 2)
                 seed_tmp = outdir / f"_seed_{si:02d}.xyz"
                 _write_xyz(atoms0, seed_tmp, comment=f"seed {si} preopt={preopt}")
                 opt_tmp = outdir / f"_opt_{si:02d}.xyz"
                 res = dft_smd(seed_tmp, q, mult, do_opt=do_opt, do_freq=False,
                               opt_out=opt_tmp, backend=backend)
+                st_t.update(res.get("timing_s") or {})
                 e = res.get("e_smd_eV")
                 seed_es.append(e)
                 if e is not None and res.get("converged_smd") is True and (best is None or e < best[0]):
@@ -634,13 +656,16 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
             print(f"[fail] {gid}/{st}: all {len(seeds)} seeds failed", flush=True); continue
         e_best, si_best, res, optpath = best
         # thermal (RRHO) only on the winning conformer
+        thermal_s = None
         if do_freq:
+            _t0 = time.perf_counter()
             try:
                 th = _thermal_correction(ase_read(str(optpath)), q, mult)
                 res.update(**th, freq_level="gfn2-xtb (RRHO, 298.15K)")
             except Exception as exc:
                 print(f"[warn] {gid}/{st} thermal failed: {str(exc)[:100]}", flush=True)
                 res["g_thermal_eV"] = None
+            thermal_s = round(time.perf_counter() - _t0, 2)
         shutil.copy(optpath, outdir / "opt.xyz"); res["opt_out"] = str(outdir / "opt.xyz")
         valid_es = [x for x in seed_es if x is not None]
         res.update(id=gid, state=st, n_e=int(r["n_e"]),
@@ -648,6 +673,10 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
                    seed_e_smd_eV=[round(x, 4) if x is not None else None for x in seed_es],
                    seed_spread_eV=(round(max(valid_es) - min(valid_es), 4)
                                    if len(valid_es) > 1 else 0.0))
+        # Throughput record (wall seconds; bookkeeping only, never used in any property).
+        res["timing_s"] = dict(state_wall=round(time.perf_counter() - _t_state, 2),
+                               seeds=seed_timing, thermal=thermal_s,
+                               host=socket.gethostname(), backend=backend)
         atomic_write_json(rj, res)
         for f in outdir.glob("_seed_*.xyz"):
             f.unlink()
