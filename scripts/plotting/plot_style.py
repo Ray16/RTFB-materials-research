@@ -49,6 +49,29 @@ OKABE_ITO = {
 }
 FAM_COLOR = {"quinone": "#0072B2", "imide": "#009E73", "viologen": "#CC79A7"}
 
+# Concise but REAL display labels for figures/tables. Candidate *ids* are internal keys
+# (coined, collision-prone: d3_05stji, mophquinone, ...); never show those to a reader.
+# Pass the scorecard `name` (real IUPAC/common name) and get a short, distinct label that
+# keeps the real substituent + an abbreviated core. No invented shorthand is introduced.
+import re as _re
+_CORE_ABBREV = [
+    ("1,2-naphthoquinone", "1,2-NQ"), ("1,4-naphthoquinone", "1,4-NQ"), ("naphthoquinone", "NQ"),
+    ("1,2-benzoquinone", "1,2-BQ"), ("1,4-benzoquinone", "1,4-BQ"), ("benzoquinone", "BQ"),
+    ("anthraquinone", "AQ"), ("pyromellitic diimide", "PMDI"), ("naphthalene diimide", "NDI"),
+    ("dihydrophenazine", "DHP"), ("bipyridinium", "viologen"), ("phenothiazine", "PTZ"),
+]
+
+
+def short_name(real_name: str) -> str:
+    """Concise real-chemistry label from a full IUPAC/common name (for plot/table labels)."""
+    s = _re.sub(r"\s*\([^)]*\)\s*$", "", real_name or "").strip()  # drop only a TRAILING note, keep substituents
+    low = s.lower()
+    for long, ab in _CORE_ABBREV:
+        if long in low:
+            i = low.index(long)
+            return (s[:i] + ab + s[i + len(long):]).strip(" -")
+    return s
+
 
 def apply_style():
     plt.rcParams.update({
