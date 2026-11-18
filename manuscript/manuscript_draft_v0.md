@@ -186,9 +186,9 @@ exact repeat-unit mass without asserting a synthesized material.
 
 ### Conformer generation and MLIP pre-optimization
 
-For each motif a charge-aware conformer ensemble is embedded with RDKit and
-force-field ranked. Each redox state is then pre-
-optimized in the gas phase with the UMA machine-learned interatomic potential, which is used purely as a fast, charge-/spin-aware
+For each motif a charge-aware conformer ensemble is embedded with RDKit [RDKit] and
+force-field ranked. Each redox state is then pre-optimized in the gas phase with the
+UMA machine-learned interatomic potential (model uma-s-1p2p1) [Wood 2025], which is used purely as a fast, charge-/spin-aware
 pre-optimizer to select the lowest-energy conformer and furnish a good DFT seed.
 The backend is chosen from the *actual* reserved GPU architecture (deterministic
 stock calculator on all current production cards); UMA is gas-phase only and never
@@ -202,13 +202,16 @@ torsion scan is available for flexible species.
 ### DFT geometry optimization and solvation
 
 Every redox state is **optimized in solvent** on the SMD(acetonitrile) potential-
-energy surface (geomeTRIC driver with grid-response gradients; `backends/dft.py`),
+energy surface [Marenich 2009] (geomeTRIC driver [Wang 2016] with grid-response
+gradients),
 because a gas-phase MLIP seed cannot see solvation and charged/floppy species can
-collapse without it. Each seed is first warm-started with a GFN2-xTB solvated pre-optimization
-(ALPB, the analytical linearized Poisson–Boltzmann implicit-solvent model, in
-MeCN), which also binds otherwise gas-unbound dianions. Geometries are
-optimized at r²SCAN-D4/def2-SVP (anionic states def2-SVPD) in SMD. The SCF uses
-RI-J density fitting (`conv_tol = 1 × 10⁻⁹`, `max_cycle = 200`) with an escalating-
+collapse without it. Each seed is first warm-started with a GFN2-xTB [Bannwarth 2019]
+solvated pre-optimization (ALPB, the analytical linearized Poisson–Boltzmann
+implicit-solvent model, in MeCN [Ehlert 2021]), which also binds otherwise
+gas-unbound dianions. Geometries are optimized at r²SCAN-D4/def2-SVP (anionic states
+def2-SVPD) in SMD [Furness 2020; Caldeweyher 2019; Weigend 2005; Rappoport 2010].
+The SCF uses RI-J density fitting [Weigend 2006] (`conv_tol = 1 × 10⁻⁹`,
+`max_cycle = 200`) with an escalating-
 stabilizer fallback (level shift/damping, then second-order Newton) for stubborn
 open-shell cases. Open-shell states can converge to an excited SCF solution from a
 single initial guess, so they are solved from more than one guess and the lowest
@@ -223,15 +226,15 @@ guess is then also run, and the record is flagged for review. Metal-containing o
 shells use all three guesses, plus orbital-removal occupation seeds for the Fe
 doublet of ferrocenium. (The pool's energies were computed with all three guesses
 for every open shell; the two-guess policy reproduces them, as described in the
-throughput section.) A def2 effective core potential (ECP) is attached
-automatically for any element with Z ≥ 37. The redox states of a motif are
+throughput section.) The def2 effective core potential (ECP) [Weigend 2005] is
+attached automatically for any element with Z ≥ 37. The redox states of a motif are
 independent and can be optimized at the same time, one GPU per state.
 
 ### Refined electronic energies
 
 Production energies are computed at a single uniform protocol,
-**ωB97M-V/def2-TZVPD** with the VV10 nonlocal dispersion built into the functional,
-SMD(acetonitrile), applied to *every* charge state and to the ferrocene reference. Using one diffuse basis for all
+**ωB97M-V/def2-TZVPD** [Mardirossian 2016; Rappoport 2010] with the VV10 nonlocal
+dispersion built into the functional [Vydrov 2010], SMD(acetonitrile), applied to *every* charge state and to the ferrocene reference. Using one diffuse basis for all
 charge states is deliberate. A mixed ladder — def2-TZVP for neutrals and def2-TZVPD
 for anions — would place the extra diffuse functions on only one side of every
 reduction and every disproportionation, so neither the potential (E°) nor the
@@ -259,7 +262,7 @@ The **lead-confirmation tier** is a native, derivative-checked solution DFT
 thermochemistry: an r²SCAN-D4/def2-SVP(D)/SMD Hessian
 with full grid response, stationary-minimum and gradient acceptance checks, and a
 spin-degeneracy term, with the nuclear partition evaluated by a certificate-locked
-projected internal-mode quasi-RRHO (qRRHO) kernel. It is disk-/GPU-gated and
+projected internal-mode quasi-RRHO (qRRHO) kernel [Grimme 2012]. It is disk-/GPU-gated and
 expensive, so it is run to *confirm* shortlisted leads rather than across the pool.
 A state missing either an active energy or a valid thermal term makes its couple
 INCOMPLETE; there is no electronic-only fallback, and a molecule and the ferrocene
@@ -289,13 +292,14 @@ never combined.
   anolyte/catholyte divider 0 V); a second electron outside the window collapses to
   1e usable capacity.
 - **Outer-sphere λ_o.** A linear-response continuum estimate by two methods
- : single-sphere Born/Marcus (using a radius from
+ : single-sphere Born/Marcus [Born 1920; Marcus 1956] (using a radius from
   the solvent-accessible surface area, SASA) and a molecular-cavity nonequilibrium
-  (Pekar) integral-equation-formalism polarizable continuum model (IEF-PCM) using the real
+  (Pekar) integral-equation-formalism polarizable continuum model (IEF-PCM)
+  [Cancès 1997] using the real
   cavity and the charge-transfer surface potential, with ε_s = 37.5, ε_op = 1.806.
   Reported as the half-reaction (1-body) value; the continuum-vs-explicit gap is not
   closed.
-- **Inner-sphere λ_i.** Nelsen four-point scheme. The values reported here were
+- **Inner-sphere λ_i.** Nelsen four-point scheme [Nelsen 1987]. The values reported here were
   computed with gas-phase energies at the SMD geometries, from single conformers.
   Gas-phase energies are not at a minimum on those geometries, so λ_i can come out
   negative, and for anions the gas-phase state can be unbound. λ_i is therefore
@@ -363,8 +367,10 @@ certificate. All GPU work is submitted through a cluster-wide reservation gate
 one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps, and
 a node-capacity/free-slot preflight; the gate is never bypassed. Final property
 tables are accepted only after an independent arithmetic audit (zero discrepancies
-required). The comparison of computed potentials with experiment is reported in
-the Results, together with the code version that produced it.
+required). The calculations use PySCF 2.14.0 [Sun 2020] with GPU acceleration from
+gpu4pyscf 1.8.1 [Li 2025; Wu 2025], xtb 6.7.1, and RDKit 2026.03.5. The comparison
+of computed potentials with experiment is reported in the Results, together with
+the code version that produced it.
 
 ---
 
@@ -402,12 +408,14 @@ measured electrochemistry, so before applying it to the candidate pool we test i
 against literature redox potentials under matched conditions. The validation is
 deliberately retrospective and uncorrected: we compare the pipeline's computed
 potentials of *free parent* molecules against experimental values measured in
-acetonitrile and referenced to ferrocene (Fc). The molecules go through the same
+acetonitrile and referenced to ferrocene (Fc), the reference recommended for
+nonaqueous solvents [Gritzner 1984]. The molecules go through the same
 build, DFT+SMD optimization, and single-point steps as the screening candidates.
 The thermal correction differs: the published benchmark uses the native-Hessian
 tier, while the pool uses the cheaper xTB tier, so we report the benchmark at both
 (below). The
-experimental panel is hand-curated from the primary literature, with each wave
+experimental panel is hand-curated from seven studies [Huynh 2016; Wang 2020;
+Cabral 2023; Kim 2022; Daub 2021; Attanayake 2019; Gerken 2015], with each wave
 carrying its source, DOI, table or page, and original reference electrode; every
 value is admitted (or not) *before* any computed number is seen, on criteria set by
 what the source reports rather than by the residual it produces. Only waves reported
@@ -512,10 +520,12 @@ oxidize into an accessible catholyte window (p-type). By family the set is 36
 imides, 29 quinones, 18 multi-electron pyridines, 5 dihydrophenazines, 2
 mono-imides, and 1 phenothiazine; 89 of the 91 are two-electron couples, the two
 exceptions being the single-wave phthalimide and 1,8-naphthalimide controls.
-This composition is itself a finding about the literature we draw from:
-graftable, well-precedented n-type cores (naphthalene- and pyromellitic-diimides,
-benzo-/naphtho-/anthraquinones) are abundant, whereas graftable p-type cores are
-scarce.
+The candidates combine 23 motifs derived from structures in the D3TaLES database
+[Duke 2022], grafted versions of literature redox cores, and designed variants that
+change one substituent, linker, or cap at a time. The composition reflects the
+source chemistry: graftable, well-precedented n-type cores (naphthalene- and
+pyromellitic-diimides, benzo-, naphtho-, and anthraquinones) are abundant, whereas
+graftable p-type cores are scarce.
 
 Candidates are ranked not by a single score but on Pareto fronts computed
 **separately for the anolyte and catholyte pools**, because a redox potential is not
@@ -814,9 +824,9 @@ interest statements]**.
 
 ## References
 
-*Introduction citations, resolved and DOI-verified against Crossref (2026-11-17).
-Author-year keys are used in text; JCIM numbering will be applied at submission.
-Citations in later sections are not yet enumerated here.*
+*All entries were checked against their Crossref (or, for the UMA preprint,
+DataCite) records; titles, volumes and pages are as registered. Author-year keys
+are used in the text; JCIM numbering will be applied at submission.*
 
 - **[Soloveichik 2015]** Soloveichik, G. L. Flow Batteries: Current Status and Trends. *Chem. Rev.* **2015**, *115* (20), 11533–11558. DOI: 10.1021/cr500720t.
 - **[Janoschka 2015]** Janoschka, T.; Martin, N.; Martin, U.; Friebe, C.; Morgenstern, S.; Hiller, H.; Hager, M. D.; Schubert, U. S. An Aqueous, Polymer-Based Redox-Flow Battery Using Non-Corrosive, Safe, and Low-Cost Materials. *Nature* **2015**, *527* (7576), 78–81. DOI: 10.1038/nature15746.
@@ -826,3 +836,33 @@ Citations in later sections are not yet enumerated here.*
 - **[Marenich 2014]** Marenich, A. V.; Ho, J.; Coote, M. L.; Cramer, C. J.; Truhlar, D. G. Computational Electrochemistry: Prediction of Liquid-Phase Reduction Potentials. *Phys. Chem. Chem. Phys.* **2014**, *16* (29), 15068–15106. DOI: 10.1039/C4CP01572J.
 - **[Er 2015]** Er, S.; Suh, C.; Marshak, M. P.; Aspuru-Guzik, A. Computational Design of Molecules for an All-Quinone Redox Flow Battery. *Chem. Sci.* **2015**, *6* (2), 885–893. DOI: 10.1039/C4SC03030C.
 - **[Lejaeghere 2016]** Lejaeghere, K.; et al. Reproducibility in Density Functional Theory Calculations of Solids. *Science* **2016**, *351* (6280), aad3000. DOI: 10.1126/science.aad3000.
+- **[Marenich 2009]** Marenich, A. V.; Cramer, C. J.; Truhlar, D. G. Universal Solvation Model Based on Solute Electron Density and on a Continuum Model of the Solvent Defined by the Bulk Dielectric Constant and Atomic Surface Tensions. *J. Phys. Chem. B* **2009**, *113* (18), 6378–6396. DOI: 10.1021/jp810292n.
+- **[Mardirossian 2016]** Mardirossian, N.; Head-Gordon, M. ωB97M-V: A combinatorially optimized, range-separated hybrid, meta-GGA density functional with VV10 nonlocal correlation. *J. Chem. Phys.* **2016**, *144* (21), 214110. DOI: 10.1063/1.4952647.
+- **[Vydrov 2010]** Vydrov, O. A.; Van Voorhis, T. Nonlocal van der Waals density functional: The simpler the better. *J. Chem. Phys.* **2010**, *133* (24), 244103. DOI: 10.1063/1.3521275.
+- **[Furness 2020]** Furness, J. W.; Kaplan, A. D.; Ning, J.; Perdew, J. P.; Sun, J. Accurate and Numerically Efficient r²SCAN Meta-Generalized Gradient Approximation. *J. Phys. Chem. Lett.* **2020**, *11* (19), 8208–8215. DOI: 10.1021/acs.jpclett.0c02405.
+- **[Caldeweyher 2019]** Caldeweyher, E.; Ehlert, S.; Hansen, A.; Neugebauer, H.; Spicher, S.; Bannwarth, C.; Grimme, S. A generally applicable atomic-charge dependent London dispersion correction. *J. Chem. Phys.* **2019**, *150* (15), 154122. DOI: 10.1063/1.5090222.
+- **[Weigend 2005]** Weigend, F.; Ahlrichs, R. Balanced basis sets of split valence, triple zeta valence and quadruple zeta valence quality for H to Rn: Design and assessment of accuracy. *Phys. Chem. Chem. Phys.* **2005**, *7* (18), 3297. DOI: 10.1039/b508541a.
+- **[Rappoport 2010]** Rappoport, D.; Furche, F. Property-optimized Gaussian basis sets for molecular response calculations. *J. Chem. Phys.* **2010**, *133* (13), 134105. DOI: 10.1063/1.3484283.
+- **[Weigend 2006]** Weigend, F. Accurate Coulomb-fitting basis sets for H to Rn. *Phys. Chem. Chem. Phys.* **2006**, *8* (9), 1057. DOI: 10.1039/b515623h.
+- **[Bannwarth 2019]** Bannwarth, C.; Ehlert, S.; Grimme, S. GFN2-xTB─An Accurate and Broadly Parametrized Self-Consistent Tight-Binding Quantum Chemical Method with Multipole Electrostatics and Density-Dependent Dispersion Contributions. *J. Chem. Theory Comput.* **2019**, *15* (3), 1652–1671. DOI: 10.1021/acs.jctc.8b01176.
+- **[Ehlert 2021]** Ehlert, S.; Stahn, M.; Spicher, S.; Grimme, S. Robust and Efficient Implicit Solvation Model for Fast Semiempirical Methods. *J. Chem. Theory Comput.* **2021**, *17* (7), 4250–4261. DOI: 10.1021/acs.jctc.1c00471.
+- **[Sun 2020]** Sun, Q.; Zhang, X.; Banerjee, S.; Bao, P.; Barbry, M.; Blunt, N. S.; Bogdanov, N. A.; Booth, G. H.; Chen, J.; Cui, Z.-H.; et al. Recent developments in the PySCF program package. *J. Chem. Phys.* **2020**, *153* (2), 024109. DOI: 10.1063/5.0006074.
+- **[Li 2025]** Li, R.; Sun, Q.; Zhang, X.; Chan, G. K.-L. Introducing GPU Acceleration into the Python-Based Simulations of Chemistry Framework. *J. Phys. Chem. A* **2025**, *129* (5), 1459–1468. DOI: 10.1021/acs.jpca.4c05876.
+- **[Wu 2025]** Wu, X.; Sun, Q.; Pu, Z.; Zheng, T.; Ma, W.; Yan, W.; Xia, Y.; Wu, Z.; Huo, M.; Li, X.; et al. Enhancing GPU-Acceleration in the Python-Based Simulations of Chemistry Frameworks. *WIREs Comput. Mol. Sci.* **2025**, *15* (2), e70008. DOI: 10.1002/wcms.70008.
+- **[Wang 2016]** Wang, L.-P.; Song, C. Geometry optimization made simple with translation and rotation coordinates. *J. Chem. Phys.* **2016**, *144* (21), 214108. DOI: 10.1063/1.4952956.
+- **[Grimme 2012]** Grimme, S. Supramolecular Binding Thermodynamics by Dispersion-Corrected Density Functional Theory. *Chem. Eur. J.* **2012**, *18* (32), 9955–9964. DOI: 10.1002/chem.201200497.
+- **[Marcus 1956]** Marcus, R. A. On the Theory of Oxidation-Reduction Reactions Involving Electron Transfer. I. *J. Chem. Phys.* **1956**, *24* (5), 966–978. DOI: 10.1063/1.1742723.
+- **[Nelsen 1987]** Nelsen, S. F.; Blackstock, S. C.; Kim, Y. Estimation of inner shell Marcus terms for amino nitrogen compounds by molecular orbital calculations. *J. Am. Chem. Soc.* **1987**, *109* (3), 677–682. DOI: 10.1021/ja00237a007.
+- **[Cancès 1997]** Cancès, E.; Mennucci, B.; Tomasi, J. A new integral equation formalism for the polarizable continuum model: Theoretical background and applications to isotropic and anisotropic dielectrics. *J. Chem. Phys.* **1997**, *107* (8), 3032–3041. DOI: 10.1063/1.474659.
+- **[Born 1920]** Born, M. Volumen und Hydratationswärme der Ionen. *Z. Phys.* **1920**, *1* (1), 45–48. DOI: 10.1007/BF01881023.
+- **[Gritzner 1984]** Gritzner, G.; Kuta, J. Recommendations on reporting electrode potentials in nonaqueous solvents (Recommendations 1983). *Pure Appl. Chem.* **1984**, *56* (4), 461–466. DOI: 10.1351/pac198456040461.
+- **[Duke 2022]** Duke, R.; Bhat, V.; Risko, C. Data storage architectures to accelerate chemical discovery: data accessibility for individual laboratories and the community. *Chem. Sci.* **2022**, *13* (46), 13646–13656. DOI: 10.1039/D2SC05142G.
+- **[Cabral 2023]** Cabral, R. G.; Viegas, G.; Pacheco, R.; Sousa, A. C.; Robalo, M. P. Sustainable Synthesis, Antiproliferative and Acetylcholinesterase Inhibition of 1,4- and 1,2-Naphthoquinone Derivatives. *Molecules* **2023**, *28* (3), 1232. DOI: 10.3390/molecules28031232.
+- **[Wang 2020]** Wang, H.; Emanuelsson, R.; Banerjee, A.; Ahuja, R.; Strømme, M.; Sjödin, M. Effect of Cycling Ion and Solvent on the Redox Chemistry of Substituted Quinones and Solvent-Induced Breakdown of the Correlation between Redox Potential and Electron-Withdrawing Power of Substituents. *J. Phys. Chem. C* **2020**, *124* (25), 13609–13617. DOI: 10.1021/acs.jpcc.0c03632.
+- **[Kim 2022]** Kim, D.; Sanford, M. S.; Vaid, T. P.; McNeil, A. J. A Nonaqueous Redox‐Matched Flow Battery with Charge Storage in Insoluble Polymer Beads. *Chem. Eur. J.* **2022**, *28* (25), e202200149. DOI: 10.1002/chem.202200149.
+- **[Huynh 2016]** Huynh, M. T.; Anson, C. W.; Cavell, A. C.; Stahl, S. S.; Hammes-Schiffer, S. Quinone 1 e⁻ and 2 e⁻/2 H⁺ Reduction Potentials: Identification and Analysis of Deviations from Systematic Scaling Relationships. *J. Am. Chem. Soc.* **2016**, *138* (49), 15903–15910. DOI: 10.1021/jacs.6b05797.
+- **[Attanayake 2019]** Attanayake, N. H.; Kowalski, J. A.; Greco, K. V.; Casselman, M. D.; Milshtein, J. D.; Chapman, S. J.; Parkin, S. R.; Brushett, F. R.; Odom, S. A. Tailoring Two-Electron-Donating Phenothiazines To Enable High-Concentration Redox Electrolytes for Use in Nonaqueous Redox Flow Batteries. *Chem. Mater.* **2019**, *31* (12), 4353–4363. DOI: 10.1021/acs.chemmater.8b04770.
+- **[Daub 2021]** Daub, N.; Janssen, R. A. J.; Hendriks, K. H. Imide-Based Multielectron Anolytes as High-Performance Materials in Nonaqueous Redox Flow Batteries. *ACS Appl. Energy Mater.* **2021**, *4* (9), 9248–9257. DOI: 10.1021/acsaem.1c01490.
+- **[Gerken 2015]** Gerken, J. B.; Stahl, S. S. High-Potential Electrocatalytic O₂ Reduction with Nitroxyl/NOx Mediators: Implications for Fuel Cells and Aerobic Oxidation Catalysis. *ACS Cent. Sci.* **2015**, *1* (5), 234–243. DOI: 10.1021/acscentsci.5b00163.
+- **[Wood 2025]** Wood, B. M.; Dzamba, M.; Fu, X.; Gao, M.; Shuaibi, M.; Barroso-Luque, L.; Abdelmaqsoud, K.; Gharakhanyan, V.; Kitchin, J. R.; Levine, D. S.; et al. UMA: A Family of Universal Models for Atoms. *arXiv* **2025**, arXiv:2506.23971. DOI: 10.48550/arXiv.2506.23971.
+- **[RDKit]** RDKit: Open-Source Cheminformatics Software, version 2026.03.5. https://www.rdkit.org (accessed 2026-11-18).
