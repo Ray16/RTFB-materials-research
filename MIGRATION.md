@@ -18,9 +18,10 @@ All five portable replays match the pre-migration stdout byte for byte.
 
 No scientific number was changed. Captured pre-migration stdout is in `baseline/`.
 
-Curated tests: **773 passed, 1 skipped** (`pytest tests -q` in the `redox`
-environment, 2026-11-17; was 744 at migration on 2026-11-16, before the
-relocatable-package and checkpoint-array additions). The skip is the local xTB
+Curated tests: **780 passed, 1 skipped** (`pytest tests -q` in the `redox`
+environment, 2026-11-18). The count was 744 at migration on 2026-11-16 and 773 on
+2026-11-17, after the relocatable-package and checkpoint-array additions; the later
+tests cover the winner-only gas single point and the open-shell SCF guess policy. The skip is the local xTB
 library guard in a test that still ran its other cases. GPU parity tests were not added and no DFT
 or Hessian job was launched.
 

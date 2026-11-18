@@ -1,6 +1,6 @@
 # A validated, reproducible pipeline for screening graftable redox motifs for non-aqueous organic redox flow batteries
 
-_Draft v0 — assembled 2026-11-17 from parallel section drafts (method-led spine, JCIM target). Benchmark verified at 0.247 V / 39 endpoints. Deterministic TODOs resolved against ground-truth data and the 7 Introduction citations placed (DOI-verified, see References). Remaining **[TODO]** markers are author/publisher metadata only (SI/data DOIs, author list, funding, competing interests) plus the GPU-deferred M2 benchmark re-run._
+_Draft v0 (JCIM target), last updated 2026-11-18. Remaining **[TODO]** markers are author and publisher metadata only: the SI and data DOIs, author list, contributions, funding, and competing interests._
 
 ---
 
@@ -344,7 +344,7 @@ GPU and CPU affinity, thread caps, xTB binary, conformer count, thermal definiti
 and per-step return codes and timings; resume binds these inputs (append-only
 registry growth is permitted, but a changed selected molecule fails). Numerical
 reproducibility is anchored by five byte-exact portable replays (`examples/`, stdout
-SHA-256 pinned) and a curated contract-test suite (773 passing). The qRRHO kernel is
+SHA-256 pinned) and a curated contract-test suite (780 passing). The qRRHO kernel is
 certificate-locked (SHA-256-verified xTB thermodynamic library, isolated CPU
 subprocess), as are the xTB kernel/runtime, the sampling snapshot, and the hash-
 locked replay payloads; reformatting any of these invalidates the projected-thermal
@@ -353,9 +353,8 @@ certificate. All GPU work is submitted through a cluster-wide reservation gate
 one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps, and
 a node-capacity/free-slot preflight; the gate is never bypassed. Final property
 tables are accepted only after an independent arithmetic audit (zero discrepancies
-required). An external experimental benchmark of the potential axis is maintained and reported in Section [Results]; an end-to-end
-re-run of the maintained code to re-confirm the frozen 39-endpoint benchmark is a
-GPU/QM step deferred under the current no-QM constraint.
+required). The comparison of computed potentials with experiment is reported in
+the Results, together with the code version that produced it.
 
 ---
 
@@ -466,15 +465,16 @@ makes the systematic positive shift visible as a displaced, roughly unimodal
 distribution, annotated with MAE = 0.247 V and bias = +0.19 V. The worst outlier
 (N-ethyl-3,7-dimethoxyphenothiazine, 0.547 V) is retained, not trimmed.
 
-**Reproducibility status.** The numbers above are the *frozen
-archive* benchmark, regenerated here from the immutable evidence epoch and its
-content-hashed panel. The maintained, refactored code paths that produce them —
-`properties/potentials.py`, `reporting/benchmark.py`, and the content-hashed panel
-builder/validator in `quality/benchmark_panel.py` — are in place and preserve the
-scoring, admission, and freeze logic verbatim. Re-confirming that an end-to-end run of
-the *maintained* code reproduces the frozen 39-endpoint / MAE 0.247 V / +0.19 V values
-requires regenerating `results/redox_potentials.csv` from the DFT energies, which is a
-GPU/QM step deferred under the current no-QM constraint.
+**Which code produced these numbers.** The benchmark was computed with the version
+of the code at commit `46b39c3b` (22 October 2026). That commit is preserved in the
+public repository under the tag `legacy/pre-refactor-main`, and the benchmark record,
+which records hashes of its inputs, is provided in the SI. The released code is a
+reorganized version of that code. Its five example replays reproduce stored results
+byte for byte, and the two later changes to the DFT step (computing the gas-phase
+energy only for the selected conformer, and the guess policy for radicals)
+reproduce the previous energies to within 10⁻¹² Ha in direct tests. We have not,
+however, rerun the benchmark's DFT calculations with the released code; the tagged
+version is the one to use to reproduce the benchmark exactly.
 
 ---
 
@@ -776,7 +776,7 @@ repository (https://github.com/Ray16/RTFB-materials-research). The release provi
 documented package layout), five byte-exact portable replays under `examples/`
 that reconstruct cached scientific results without rerunning DFT (verified via
 `scripts/validation/check_refactor_oracles.py`), a scientific-contract test suite
-of 773 passing tests (1 skipped; `pytest tests -q`, verified 2026-11-17), and a
+of 780 passing tests (1 skipped; `pytest tests -q`, verified 2026-11-18), and a
 certificate-locked projected-thermal qRRHO kernel whose byte-identity is required
 for the replays.
 Installation and a locked scientific environment are described by `setup_env.sh`
