@@ -54,7 +54,8 @@ chloride groups are alkylated by a nucleophilic site on the redox molecule
 route decouples the chemistry of the backbone from the chemistry of the redox
 center and makes a large library of candidate motifs synthetically plausible
 from a single polymer platform. The design space it opens, however, is badly
-unbalanced. The catalog of well-behaved organic anolytes — n-type couples based
+unbalanced. The catalog of well-behaved organic anolytes — n-type couples, which are
+reduced on charging, based
 on quinones, imides, and related electron-poor scaffolds — is deep and still
 growing [Ding 2018], whereas robust, high-potential catholytes remain scarce
 [Kwon 2019]. Because a flow cell needs both a catholyte and an anolyte, the
@@ -142,8 +143,7 @@ stages (Figure 2): (1) build the structure; (2) pre-optimize it with a
 machine-learned interatomic potential (MLIP); (3) optimize each redox state with DFT
 in implicit solvent; (4) compute refined single-point energies; (5) add thermal
 corrections; (6) derive the redox properties; (7) run the quality checks; (8) rank
-the candidates; and (9) audit the exported tables. Every result is stored under a
-hash of its inputs, so a change in geometry, method, charge, or spin creates a new
+the candidates; and (9) audit the exported tables. Every result is stored under a fingerprint (hash) of its inputs, so a change in geometry, method, charge, or spin creates a new
 record instead of overwriting an old one. Table 1 collects the level of theory and
 the conventions used throughout. The Supporting Information (SI) gives the equations
 used for each property and a map of which code module carries out each stage.
@@ -277,8 +277,8 @@ Each property is computed and reported separately; they are never combined.
   the radius of the sphere that has the molecule's solvent-accessible surface area
   (SASA), is reported for every candidate (SI S7). As a check, a nonequilibrium polarizable continuum model (IEF-PCM)
   [Cancès 1997] that uses the molecule's actual cavity shape was run for 10 couples
-  of 5 pool molecules. It gives 1.03 to 1.39 times the Born value (SI S10) (ε_s = 37.5,
-  ε_op = 1.806 in both). Values are per
+  of 5 pool molecules. It gives 1.03 to 1.39 times the Born value (SI S10), with static and optical
+  permittivities ε_s = 37.5 and ε_op = 1.806 in both. Values are per
   half-reaction. How far these continuum estimates are from explicit-solvent
   values is not tested here.
 - **Inner-sphere λ_i.** Nelsen four-point scheme [Nelsen 1987]: each redox state's
@@ -437,7 +437,7 @@ couple: the 33 reduction endpoints (anolyte-like) give MAE 0.239 V and bias
 +0.17 V, whereas the six oxidation endpoints (five phenothiazine, one nitroxide;
 catholyte-like) give MAE 0.289 V and bias +0.29 V. Uncertainty was estimated by
 bootstrap resampling of whole molecules, so that the waves of one molecule stay
-together (2000 replicates, seed 20261021): the 95% interval is [0.213, 0.286] V for
+together (2000 replicates, random-number seed 20261021): the 95% interval is [0.213, 0.286] V for
 the MAE and [0.128, 0.257] V for the bias. Resampling whole studies instead, which
 gives wider intervals because there are only seven, yields [0.178, 0.306] V and
 [0.053, 0.285] V (SI). These are descriptive intervals for the observed panel, not
