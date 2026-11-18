@@ -1,8 +1,11 @@
 # Project instructions
 
-This is the cleaned redox library at `/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor`.
-The manuscript, slides, dated campaign outputs and bulk calculations remain in
-`/nfs/lambda_stor_01/homes/rzhu/0_redox`. Do not copy those trees back here.
+This repo at `/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor` is the single home
+for all active work: the redox library (`src/redox/`), campaigns (`results/`),
+and the manuscript (`manuscript/`). Historical slides, dated campaign outputs and
+bulk calculations live in the read-only archive at
+`/nfs/lambda_stor_01/homes/rzhu/archive/0_redox` — reference only; do not make
+active work depend on it.
 
 GPU work uses `gpu_reserve`. Do not set `CUDA_VISIBLE_DEVICES` directly.
 Cap `OMP_NUM_THREADS`, `MKL_NUM_THREADS` and `OPENBLAS_NUM_THREADS` on this

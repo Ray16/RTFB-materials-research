@@ -102,8 +102,10 @@ takes about 1.5 min on CPU plus its test step.
 Finalization reports two campaign-level inputs explicitly rather than failing on a fresh
 checkout: the OROP row is `NOT AUDITED` without the raw OROP dataset, and step 13 (campaign
 decision publication) is `NOT PUBLISHED` without the campaign's publication benchmark and
-verified candidate feed. Step 13 also needs the figure interpreter:
-`python -m venv --system-site-packages .venv-figures && .venv-figures/bin/python -m pip install -r requirements-visualization.txt`.
+verified candidate feed. Step 13 also needs the figure interpreter (plotly,
+CairoSVG), now part of the main `requirements.txt`, so the `redox` env already
+provides them. For an isolated figure venv instead:
+`python -m venv --system-site-packages .venv-figures && .venv-figures/bin/python -m pip install plotly==6.3.0 CairoSVG==2.8.2`.
 
 The low-level stages (`redox uma`, `redox dft`, `redox sp`, `redox native-thermal`) remain
 available for repair work; they do not apply the orchestrator's defaults (e.g. `redox dft`

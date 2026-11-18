@@ -18,6 +18,8 @@ matplotlib
 adjustText  # non-overlapping point labels for publication figures (scripts/plotting/plot_sa_vs_reorg.py)
 graphviz  # python binding for the pipeline flowchart; needs the system `dot` binary
           # (apt: graphviz / conda: graphviz). Rendering falls back gracefully if absent.
+plotly==6.3.0  # interactive figures (merged from the former requirements-visualization.txt)
+CairoSVG==2.8.2  # vector molecular structures (merged from the former requirements-visualization.txt)
 jupyter
 huggingface_hub
 openpyxl  # read data/raw/candidates/Candidates.xlsx (pandas .read_excel engine)

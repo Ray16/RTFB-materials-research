@@ -6,10 +6,12 @@ quantum-chemical calculations, and evaluates redox potentials, attachment
 thermodynamics and finite oligomer responses with explicit method and quality
 information.
 
-This tree is the cleaned library. The manuscript, slides, dated campaign
-directories and bulk calculation outputs remain in
-`/nfs/lambda_stor_01/homes/rzhu/0_redox`. See [MIGRATION.md](MIGRATION.md) for
-what moved, what stayed byte-identical, and what was left behind.
+This tree is the single home for active work: the library (`src/redox/`),
+campaigns (`results/`), and the manuscript (`manuscript/`). Historical slides,
+dated campaign directories and bulk calculation outputs live in the read-only
+archive at `/nfs/lambda_stor_01/homes/rzhu/archive/0_redox`. See
+[MIGRATION.md](MIGRATION.md) for what moved, what stayed byte-identical, and what
+was left behind.
 
 A local capped graft, a soluble parent and an oligomer are different models.
 A calculated descriptor or a completed job does not establish synthetic
@@ -57,8 +59,20 @@ different checkout by accident.
 PYTHONPATH=src python -m redox --help
 ```
 
-GPU work still goes through `gpu_reserve`. This refactor does not launch DFT
-or Hessian jobs.
+GPU work still goes through `gpu_reserve`. Library-level commands do not launch
+DFT or Hessian jobs; the campaign driver (`redox.workflows.motifs`) submits them
+through the reservation gate and now schedules independent `(candidate, state)`
+stages as a bag-of-tasks DAG across the reserved GPUs.
+
+## Manuscript
+
+The manuscript (method-led JCIM paper) is drafted in `manuscript/`:
+per-section drafts in `manuscript/drafts/`, the assembled
+`manuscript/manuscript_draft_v0.md`, the figure-by-figure `manuscript/OUTLINE.md`,
+and `manuscript/CONTEXT.md` with the pinned facts and numbers. The validation
+anchor is **MAE 0.247 V, +0.19 V bias over 39 endpoints** (30 molecules, 7
+studies). Engineering plans behind recent pipeline changes are in
+`docs/EXECUTION_REFACTOR_PLAN.md` and `docs/EFFICIENCY_SURVEY.md`.
 
 ## Tests
 
@@ -69,3 +83,13 @@ OMP_NUM_THREADS=1 python -m pytest tests -q
 The suite is the scientific-contract subset. Tests that only opened dated
 campaign directories, the manuscript tree, or bulk `results/` were not copied.
 Those records stay in the source repository.
+
+For a byte-exact comparison of all five cached replays with the original source:
+
+```bash
+python scripts/validation/check_refactor_oracles.py
+```
+
+Use the scientific Python environment for NumPy/RDKit-dependent replays. See
+`baseline/refinement_oracles.jsonl` and `baseline/refinement_tests.txt` for the
+latest refinement checks and `MIGRATION.md` for remaining architecture work.
