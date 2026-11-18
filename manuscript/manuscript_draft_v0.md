@@ -1,6 +1,6 @@
 # A validated, reproducible pipeline for screening graftable redox motifs for non-aqueous organic redox flow batteries
 
-_Draft v0 — assembled 2026-11-17 from parallel section drafts (method-led spine, JCIM target). Benchmark corrected to 0.247 V / 39 endpoints. [TODO] markers flag unverified items; see punch-list._
+_Draft v0 — assembled 2026-11-17 from parallel section drafts (method-led spine, JCIM target). Benchmark verified at 0.247 V / 39 endpoints. Deterministic TODOs resolved against ground-truth data and the 7 Introduction citations placed (DOI-verified, see References). Remaining **[TODO]** markers are author/publisher metadata only (SI/data DOIs, author list, funding, competing interests) plus the GPU-deferred M2 benchmark re-run._
 
 ---
 
@@ -51,21 +51,21 @@ Non-aqueous organic redox flow batteries (ORFBs) are an attractive route to
 grid-scale electrochemical storage because they decouple energy and power,
 access cell voltages well beyond the aqueous stability window, and are built
 from earth-abundant, structurally tunable organic redox couples rather than
-scarce transition metals [AUTHOR, YEAR]. One of the more promising device
+scarce transition metals [Soloveichik 2015]. One of the more promising device
 architectures immobilizes the redox-active species on a soluble or swellable
 polymer, so that the active material is retained by a size-selective membrane
-and crossover is suppressed [AUTHOR, YEAR]. In practice these materials are
+and crossover is suppressed [Janoschka 2015]. In practice these materials are
 most readily made not by polymerizing a bespoke redox monomer but by grafting a
 preformed redox motif onto a reactive, preformed backbone — most commonly a
 chloromethylated (Merrifield-type) polystyrene, whose benzyl chloride handles
-are alkylated by a nucleophilic site on the motif [AUTHOR, YEAR]. This grafting
+are alkylated by a nucleophilic site on the motif [Merrifield 1963]. This grafting
 route decouples the chemistry of the backbone from the chemistry of the redox
 center and makes a large library of candidate motifs synthetically plausible
 from a single polymer platform. The design space it opens, however, is badly
 unbalanced. The catalog of well-behaved organic anolytes — n-type couples based
 on quinones, imides, and related electron-poor scaffolds — is deep and still
-growing [AUTHOR, YEAR], whereas robust, high-potential catholytes remain scarce
-[AUTHOR, YEAR]. Because a flow cell needs both a catholyte and an anolyte, this
+growing [Ding 2018], whereas robust, high-potential catholytes remain scarce
+[Kwon 2019]. Because a flow cell needs both a catholyte and an anolyte, this
 asymmetry, not the anolyte inventory, is what limits achievable cell voltage,
 and it is precisely the kind of gap that a well-posed computational screen
 should be able to survey and help fill.
@@ -74,7 +74,7 @@ Computation is in principle well suited to this task: redox potentials, and the
 reorganization energetics that govern electron-transfer kinetics, are
 accessible from solvated electronic-structure calculations, and density
 functional theory (DFT) with an implicit solvent model has been used
-extensively to rank organic redox couples [AUTHOR, YEAR]. In practice, though,
+extensively to rank organic redox couples [Marenich 2014; Er 2015]. In practice, though,
 most published screens are difficult to trust or to reuse for the specific
 problem of grafted motifs. Three shortcomings recur. First, the molecular model
 is often a proxy for convenience rather than for the real material: a bare
@@ -93,7 +93,7 @@ cannot tell whether a ranking reflects chemistry or method artifacts. Underlying
 all three is a reproducibility problem: level of theory, solvent, standard
 state, reference electrode, and software versions are often underspecified, and
 the raw records needed to regenerate a figure are not released, so neither the
-ranking nor its error bars can be independently reconstructed [AUTHOR, YEAR]. A
+ranking nor its error bars can be independently reconstructed [Lejaeghere 2016]. A
 computed descriptor, or a completed calculation, is not by itself evidence of
 synthetic feasibility or of material performance; a screen is only as useful as
 the discipline with which these distinctions are maintained.
@@ -685,3 +685,18 @@ raw-record archive does not yet have a public archival DOI; final deposition and
 author metadata remain to be supplied **[TODO: author to supply data DOI,
 repository release tag, author list, contributions, funding, and competing-
 interest statements]**.
+
+## References
+
+*Introduction citations, resolved and DOI-verified against Crossref (2026-11-17).
+Author-year keys are used in text; JCIM numbering will be applied at submission.
+Citations in later sections are not yet enumerated here.*
+
+- **[Soloveichik 2015]** Soloveichik, G. L. Flow Batteries: Current Status and Trends. *Chem. Rev.* **2015**, *115* (20), 11533–11558. DOI: 10.1021/cr500720t.
+- **[Janoschka 2015]** Janoschka, T.; Martin, N.; Martin, U.; Friebe, C.; Morgenstern, S.; Hiller, H.; Hager, M. D.; Schubert, U. S. An Aqueous, Polymer-Based Redox-Flow Battery Using Non-Corrosive, Safe, and Low-Cost Materials. *Nature* **2015**, *527* (7576), 78–81. DOI: 10.1038/nature15746.
+- **[Merrifield 1963]** Merrifield, R. B. Solid Phase Peptide Synthesis. I. The Synthesis of a Tetrapeptide. *J. Am. Chem. Soc.* **1963**, *85* (14), 2149–2154. DOI: 10.1021/ja00897a025.
+- **[Ding 2018]** Ding, Y.; Zhang, C.; Zhang, L.; Zhou, Y.; Yu, G. Molecular Engineering of Organic Electroactive Materials for Redox Flow Batteries. *Chem. Soc. Rev.* **2018**, *47* (1), 69–103. DOI: 10.1039/C7CS00569E.
+- **[Kwon 2019]** Kwon, G.; Lee, K.; Lee, M. H.; Lee, B.; Lee, S.; Jung, S.-K.; Ku, K.; Kim, J.; Park, S. Y.; Kwon, J. E.; Kang, K. Bio-Inspired Molecular Redesign of a Multi-Redox Catholyte for High-Energy Non-Aqueous Organic Redox Flow Batteries. *Chem* **2019**, *5* (10), 2642–2656. DOI: 10.1016/j.chempr.2019.07.006.
+- **[Marenich 2014]** Marenich, A. V.; Ho, J.; Coote, M. L.; Cramer, C. J.; Truhlar, D. G. Computational Electrochemistry: Prediction of Liquid-Phase Reduction Potentials. *Phys. Chem. Chem. Phys.* **2014**, *16* (29), 15068–15106. DOI: 10.1039/C4CP01572J.
+- **[Er 2015]** Er, S.; Suh, C.; Marshak, M. P.; Aspuru-Guzik, A. Computational Design of Molecules for an All-Quinone Redox Flow Battery. *Chem. Sci.* **2015**, *6* (2), 885–893. DOI: 10.1039/C4SC03030C.
+- **[Lejaeghere 2016]** Lejaeghere, K.; et al. Reproducibility in Density Functional Theory Calculations of Solids. *Science* **2016**, *351* (6280), aad3000. DOI: 10.1126/science.aad3000.
