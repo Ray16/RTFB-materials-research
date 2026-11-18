@@ -95,7 +95,7 @@ This work addresses those gaps with a single pipeline for screening graftable re
 molecules for non-aqueous ORFBs. Each design choice answers one of the problems
 above. (i) Each molecule is modeled as it is attached: the redox center carries a
 4-methylbenzyl group that stands in for the polystyrene backbone, and each charge
-state is built and optimized on its own. (ii) Every redox state is checked
+state is built and optimized on its own (Figure 1). (ii) Every redox state is checked
 automatically (structure, spin, protocol, completeness), and states that fail are
 kept with their reason rather than silently dropped. (iii) All potentials are
 computed at one level of theory (ωB97M-V/def2-TZVPD in implicit acetonitrile) and
@@ -137,7 +137,7 @@ cells, before closing with the method's limitations and outlook.
 
 We screen graftable redox motifs through a single reproducible driver
 (`redox.workflows.motifs.commands`) that takes each registered motif through nine
-stages: (1) build, (2) pre-optimization with a machine-learned interatomic
+stages (Figure 2): (1) build, (2) pre-optimization with a machine-learned interatomic
 potential (MLIP), (3) DFT geometry optimization with
 implicit solvation per redox state, (4) refined single-point energies, (5)
 thermochemistry, (6) derived redox properties, (7) reliability gating and
@@ -355,9 +355,12 @@ locked replay payloads; reformatting any of these invalidates the projected-ther
 certificate. All GPU work is submitted through a cluster-wide reservation gate
 (reserve → run with `CUDA_VISIBLE_DEVICES` → release), with a per-motif file lock so
 one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps, and
-a node-capacity/free-slot preflight; the gate is never bypassed. Final property
-tables are accepted only after an independent arithmetic audit (zero discrepancies
-required). The calculations use PySCF 2.14.0 [Sun 2020] with GPU acceleration from
+a node-capacity/free-slot preflight; the gate is never bypassed. The table-building
+stage includes an independent arithmetic audit. The scored table used in this paper
+was assembled outside that stage, so it was checked another way: every couple of all
+92 candidates was recomputed from the stored energies and geometries
+(`scripts/validation/score_pool_legacy_tier.py`), and all agree with the table to
+within 0.5 mV, the size of its rounding (SI S7). The calculations use PySCF 2.14.0 [Sun 2020] with GPU acceleration from
 gpu4pyscf 1.8.1 [Li 2025; Wu 2025], xtb 6.7.1, and RDKit 2026.03.5. The comparison
 of computed potentials with experiment is reported in the Results, together with
 the code version that produced it.
@@ -553,9 +556,12 @@ one substituent at a time, so that the resulting potential shifts can be read as
 matched single-substituent deltas rather than confounded whole-molecule
 comparisons (Figure 6). Every member carries the same 4-methylbenzyl (Merrifield
 proxy) cap on one nitrogen and a two-electron {neutral → +1 → +2} ladder,
-isolating the effect of the N′-substituent and of ring substitution. The series
-potentials (E vs Fc, mean of the two one-electron couples, from
-`full_pool_scored_legacyG_MeCN_TBAPF6.csv`) are:
+isolating the effect of the N′-substituent and of ring substitution. Table 2 lists
+the series.
+
+**Table 2.** Grafted DMPZ series and the 3,7-dimethoxyphenothiazine. E vs Fc is the
+mean of the two one-electron couples (ranking tier); capacity uses the neutral
+repeat-unit mass.
 
 | Candidate | N′ / ring substitution | E vs Fc (V) | Couples (V) | Capacity (mAh g⁻¹) |
 |---|---|---:|---|---:|
@@ -605,9 +611,13 @@ uses the 91; Figures 6 and 7 also show the seventh catholyte.
 
 Because every potential in both pools is on the same Fc scale, candidates can be
 paired directly, and a nominal cell voltage read off as E(catholyte) − E(anolyte)
-(Figure 7). Four example pairings, from the mean potentials in the scored table:
+(Figure 7). Table 3 gives four example pairings, from the mean potentials in the
+scored table.
 
-| Catholyte | Anolyte | Computed cell (V) | After bias correction (V) |
+**Table 3.** Proposed full cells. The bias correction subtracts each family's
+measured error at the pool's thermal tier (see text).
+
+| Catholyte | Anolyte | Cell (V) | Corrected (V) |
 |---|---|---:|---:|
 | N′-ethyl DMPZ (+0.43 V) | 2-(4-methylbenzyloxy)-6-methoxyanthraquinone (−1.49 V) | 1.91 | 1.85 |
 | N′-methyl DMPZ (+0.47 V) | 1-(4-methylbenzyloxy)anthraquinone (−1.48 V) | 1.95 | 1.89 |
@@ -640,14 +650,14 @@ experimental follow-up.
 Every pipeline run records the start and end time of each stage, and the DFT
 stage additionally records the time spent in each conformer seed's
 pre-optimization, geometry optimization, solvated and gas-phase single points,
-and thermal correction. Table 2 summarizes the measured cost of five of the
+and thermal correction. Table 4 summarizes the measured cost of five of the
 grafted DMPZ catholytes (43–52 atoms; 1031–1196 basis functions at def2-TZVPD), each
 taken from SMILES to a ranked property record with three redox states
 (neutral, radical cation, dication) and three conformer seeds per state. The
 per-run records are in `manuscript/tables/throughput_measured.csv`, regenerated by
 `scripts/validation/throughput_report.py`.
 
-**Table 2.** Measured per-candidate cost (GPU-minutes; one task per GPU, two CPU
+**Table 4.** Measured per-candidate cost (GPU-minutes; one task per GPU, two CPU
 threads per worker). DFT is the sum over the three redox states.
 
 | Candidate (atoms) | GPU | UMA | DFT (neu / +1 / +2) | λᵢ cross points | Total GPU-h |

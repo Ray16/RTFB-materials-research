@@ -15,14 +15,14 @@ releasing HCl. **Only one nitrogen (N5) carries the Merrifield backbone graft**
 (highlighted orange: the new benzylic C–N bond); **the other nitrogen (N10)
 carries a small ethyl *tuning* cap, not a second graft.** The depicted capped
 graft, *N*-(4-methylbenzyl)-*N*′-ethyl-DMPZ
-(`CCN1c2ccccc2N(Cc2ccc(C)cc2)c2ccccc21`), is byte-identical to the registered
+(`CCN1c2ccccc2N(Cc2ccc(C)cc2)c2ccccc21`), is identical to the registered
 model (`config/custom_candidates.py`, id `exp_dmpz_mb_ethyl`). **(b) Per-motif
 redox states.** The ladder is defined on the capped graft as adjacent
 one-electron couples from the resting state; for this p-type motif, neutral →
 ox1 (+1, doublet radical cation) → ox2 (+2, singlet dication), reported vs Fc/Fc⁺.
 Because **both nitrogens are substituted (N,N′-disubstituted), N–H deprotonation on
-oxidation is blocked, giving a reversible 2e⁻ couple** — the design basis for using
-DMPZ as a 2-electron catholyte. (n-type anolyte motifs instead reduce; ambipolar
+oxidation is blocked, giving a reversible 2e⁻ couple** [Kwon 2019] — the design
+basis for using DMPZ as a 2-electron catholyte. (n-type anolyte motifs instead reduce; ambipolar
 motifs carry couples on both sides.)
 
 **Interpretation / caveats.**

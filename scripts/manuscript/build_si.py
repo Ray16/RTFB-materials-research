@@ -335,6 +335,14 @@ def s_scored():
                    d["capacity_salt_mAh_g"], d["lambda_o_born_eV"] or "—", "yes" if d["pareto_front"] else "",
                    "" if d["in_91_pool"] else "added later", d["qc_flag"]])
     write_csv("S7_scored_candidates.csv", out, list(out[0]))
+    rs = j(EVID / "2026-11-18_cpu_checks/pool_legacy_tier_rescore.json")["summary"]
+    check = (f"**Independent check.** Every couple was recomputed from the stored energies and "
+             f"geometries (production single point plus a freshly computed xTB thermal term; "
+             f"ferrocene reference {f2(rs['fc_legacy_V'], 4)} V) by "
+             f"`scripts/validation/score_pool_legacy_tier.py`. All {rs['n_compared']} of "
+             f"{rs['n_candidates']} candidates agree with the table to within "
+             f"{rs['max_abs_diff_V'] * 1000:.1f} mV (the table's rounding); record: "
+             f"`manuscript/evidence/2026-11-18_cpu_checks/pool_legacy_tier_rescore.json`.\n")
     order = sorted(range(len(md)), key=lambda i: (md[i][1], float(out[i]["E_mean_V"])))
     return f"""## S7. All scored candidates
 
@@ -345,6 +353,7 @@ Source: `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,
 `results/validation/lambda_outer_fullpool_2026-11-17.csv`; CSV copy with identifiers,
 couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 
+{check}
 {md_table(["Candidate", "Pool", "n", "E (V)", "Capacity, active", "Capacity, salt", "λ_o Born (eV)", "Front", "Note", "QC flag"], [md[i] for i in order])}
 """
 
