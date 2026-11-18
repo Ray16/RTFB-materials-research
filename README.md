@@ -66,12 +66,13 @@ stages as a bag-of-tasks DAG across the reserved GPUs.
 
 ## Manuscript
 
-The manuscript (method-led JCIM paper) is drafted in `manuscript/`:
-per-section drafts in `manuscript/drafts/`, the assembled
-`manuscript/manuscript_draft_v0.md`, the figure-by-figure `manuscript/OUTLINE.md`,
-and `manuscript/CONTEXT.md` with the pinned facts and numbers. The validation
-anchor is **MAE 0.247 V, +0.19 V bias over 39 endpoints** (30 molecules, 7
-studies). Engineering plans behind recent pipeline changes are in
+The manuscript (method-led JCIM paper) is in `manuscript/`: the text
+`manuscript/manuscript_draft_v0.md`, the journal (achemso) version in
+`manuscript/jcim/` (built by `scripts/manuscript/build_latex.py`), the Supporting
+Information `manuscript/supporting_information.md` (built by
+`scripts/manuscript/build_si.py`), and the records behind specific statements in
+`manuscript/evidence/`. The validation anchor is **MAE 0.247 V, +0.19 V bias over
+39 endpoints** (30 molecules, 7 studies; 0.232 V at the pool's xTB thermal tier). Engineering plans behind recent pipeline changes are in
 `docs/EXECUTION_REFACTOR_PLAN.md` and `docs/EFFICIENCY_SURVEY.md`.
 
 ## Tests
