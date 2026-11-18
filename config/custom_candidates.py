@@ -826,9 +826,9 @@ GROUPS = [{'id': 'exp_viologen_methoxyethyl',
   'review_priority': 'one-electron control'},
  {'id': 'exp_ptz_37dimethoxy',
   'name': 'N-(4-methylbenzyl)-3,7-dimethoxyphenothiazine',
-  'family': 'phenothiazine (p-type, two-electron proposal)',
+  'family': 'phenothiazine (p-type)',
   'frag': '[*:1]N1c2ccc(OC)cc2Sc2cc(OC)ccc21',
-  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
+  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1]],
   'provenance': {'source_keys': ['phenothiazine', 'glycol_phenothiazine'],
                  'type': 'source-inspired grafted design',
                  'measured_for_this_structure': False,
@@ -839,11 +839,13 @@ GROUPS = [{'id': 'exp_viologen_methoxyethyl',
                  'registered': '2026-10-11',
                  'registration_stage': 'original39 exact graph/stereochemistry; computations pending',
                  'exact_grafted_experiment': False},
-  'chemistry_notes': 'N-H alkylation preserves the two methoxy donors para to N that support parent '
-                     'dication stabilization. Explicit 0/+1/+2 oxidative ladder; second oxidation is '
-                     'proposed for N-benzyl analog. Generic discovery labels phenothiazine 1e, so this '
-                     'source-specific exception must remain explicit.',
-  'review_priority': 'separate catholyte branch'}]
+  'chemistry_notes': 'N-H alkylation preserves the two methoxy donors para to N that support the '
+                     'parent radical cation. Reclassified 2026-11-16 to a single reversible 1e '
+                     'oxidation (0/+1): the proposed second oxidation (+1/+2) was not reproduced by '
+                     'the pipeline (benchmark error +0.55 V vs experiment on this dimethoxy core), '
+                     'and phenothiazine is a validated 1e motif. Retained as a 1e catholyte '
+                     'reference, not a two-electron candidate.',
+  'review_priority': 'separate catholyte branch (1e)'}]
 
 
 # Matched-comparison hypotheses registered 2026-10-18; exact-graft properties remain pending.
@@ -930,55 +932,11 @@ GROUPS += [{'id': 'hyp_pmdi_cyclopropyl',
                      'E1/E2, wave spacing and mass cost without assuming improved solubility. '
                      'Exact graft/precursor synthesis is unverified; parent measurements are not '
                      'graft properties. Imide mono-N-H precursor isolation or selective '
-                     'phenothiazine N-alkylation requires separate route review.'},
- {'id': 'hyp_ptz_37dimethyl',
-  'name': 'N-(4-methylbenzyl)-3,7-dimethylphenothiazine',
-  'family': 'amine (p-type)',
-  'frag': '[*:1]N1c2ccc(C)cc2Sc2cc(C)ccc21',
-  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
-  'comparison_baseline': 'exp_ptz_37dimethoxy',
-  'hypothesis': 'Test ring substitution against the dimethoxy graft. The second oxidation is an '
-                'explicit stress test: accept two accessible electrons only if both waves, '
-                'integrity and physical QC pass.',
-  'provenance': {'type': 'matched-comparison computational hypothesis',
-                 'source': 'https://pubs.rsc.org/en/content/articlelanding/2017/ta/c7ta05883g',
-                 'evidence_scope': 'Methoxy substitution stabilizes a particular parent dication. '
-                                   'Methyl/fluoro grafts are contrasting hypotheses, not '
-                                   'established two-electron donors.',
-                 'exact_grafted_experiment': False,
-                 'production_qm': False,
-                 'direct_merrifield_route_verified': False,
-                 'registration_stage': 'exact structure/state definition; properties pending'},
-  'chemistry_notes': 'Test ring substitution against the dimethoxy graft. The second oxidation is '
-                     'an explicit stress test: accept two accessible electrons only if both waves, '
-                     'integrity and physical QC pass. Exact graft/precursor synthesis is '
-                     'unverified; parent measurements are not graft properties. Imide mono-N-H '
-                     'precursor isolation or selective phenothiazine N-alkylation requires '
-                     'separate route review.'},
- {'id': 'hyp_ptz_37difluoro',
-  'name': 'N-(4-methylbenzyl)-3,7-difluorophenothiazine',
-  'family': 'amine (p-type)',
-  'frag': '[*:1]N1c2ccc(F)cc2Sc2cc(F)ccc21',
-  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
-  'comparison_baseline': 'exp_ptz_37dimethoxy',
-  'hypothesis': 'Test ring substitution against the dimethoxy graft. The second oxidation is an '
-                'explicit stress test: accept two accessible electrons only if both waves, '
-                'integrity and physical QC pass.',
-  'provenance': {'type': 'matched-comparison computational hypothesis',
-                 'source': 'https://pubs.rsc.org/en/content/articlelanding/2017/ta/c7ta05883g',
-                 'evidence_scope': 'Methoxy substitution stabilizes a particular parent dication. '
-                                   'Methyl/fluoro grafts are contrasting hypotheses, not '
-                                   'established two-electron donors.',
-                 'exact_grafted_experiment': False,
-                 'production_qm': False,
-                 'direct_merrifield_route_verified': False,
-                 'registration_stage': 'exact structure/state definition; properties pending'},
-  'chemistry_notes': 'Test ring substitution against the dimethoxy graft. The second oxidation is '
-                     'an explicit stress test: accept two accessible electrons only if both waves, '
-                     'integrity and physical QC pass. Exact graft/precursor synthesis is '
-                     'unverified; parent measurements are not graft properties. Imide mono-N-H '
-                     'precursor isolation or selective phenothiazine N-alkylation requires '
-                     'separate route review.'}]
+                     'phenothiazine N-alkylation requires separate route review.'}]
+# Removed 2026-11-16: hyp_ptz_37dimethyl and hyp_ptz_37difluoro. Both were speculative
+# two-electron (0/+1/+2) phenothiazine proposals; phenothiazine is a validated 1e motif and
+# the pipeline did not reproduce a second oxidation (benchmark +0.55 V error on the dimethoxy
+# core). No production QM was spent on them. See exp_ptz_37dimethoxy, kept as a 1e catholyte.
 
 
 # Matched-comparison hypotheses registered 2026-10-18; exact-graft properties remain pending.
@@ -1643,3 +1601,194 @@ GROUPS += [{'id': 'study_aryl_0d7aa75989e9',
                  'route_status': 'Parent synthesis reported; exact Merrifield graft synthesis and '
                                  'its stability unverified',
                  'source_attachment_positions': [5]}}]
+
+
+# New two-electron scaffold families (expansion 2026-11-16). The declared
+# viologen/PMDI/NDI substituent space was saturated, so these add validated 2e CORES
+# beyond it: 5,10-dihydrophenazine (a 2e p-type CATHOLYTE, the side the pool lacked)
+# and 9,10-anthraquinone (a 2e n-type anolyte). Grafted via the standard 4-methylbenzyl
+# tether proxy. Exact graft properties are uncomputed (production_qm False); these are
+# definitions for the route-review + QM queue, not inherited parent measurements.
+GROUPS += [
+ {'id': 'exp_dmpz_mb_ethyl',
+  'name': "N-(4-methylbenzyl)-N'-ethyl-5,10-dihydrophenazine",
+  'family': 'phenazine (p-type)',
+  'frag': '[*:1]N1c2ccccc2N(CC)c2ccccc21',
+  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
+  'provenance': {'type': 'new 2e scaffold family (expansion 2026-11-16)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'source': 'https://www.sciencedirect.com/science/article/pii/S2451929419303158',
+                 'family_grounding': 'Parent N,N-dialkyl-5,10-dihydrophenazine (BMEPZ) is a '
+                                     'two-electron nonaqueous catholyte: two 1e oxidations at '
+                                     '-0.29 and +0.50 V vs Fc in MeCN, 0.5 M solubility, 99.94%/'
+                                     'cycle over 200 cycles (Bio-inspired Molecular Redesign, 2019).',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Fills the missing 2e p-type catholyte slot. N-H alkylation on 5,10-'
+                     'dihydrophenazine; ethyl is the matched control cap. Second oxidation is '
+                     'validated for the parent family (unlike the removed phenothiazine 2e). '
+                     'Exact graft synthesis and its stability require separate route review.',
+  'review_priority': 'catholyte 2e lead (new family)'},
+ {'id': 'hyp_dmpz_mb_methoxyethyl',
+  'name': "N-(4-methylbenzyl)-N'-(2-methoxyethyl)-5,10-dihydrophenazine",
+  'family': 'phenazine (p-type)',
+  'frag': '[*:1]N1c2ccccc2N(CCOC)c2ccccc21',
+  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
+  'comparison_baseline': 'exp_dmpz_mb_ethyl',
+  'hypothesis': 'Methoxyethyl cap mirrors the validated BMEPZ solubilizing substituent; test '
+                'solubility/mass against the ethyl control. No performance improvement assumed.',
+  'provenance': {'type': 'new 2e scaffold family (expansion 2026-11-16)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'source': 'https://www.sciencedirect.com/science/article/pii/S2451929419303158',
+                 'family_grounding': 'BMEPZ (the 2-methoxyethyl-capped parent) is the measured 2e '
+                                     'catholyte; this graft substitutes one cap with the Merrifield tether.',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Dihydrophenazine 2e catholyte with the BMEPZ-type glycol cap for MeCN '
+                     'solubility. Exact graft synthesis and stability require separate route review.',
+  'review_priority': 'catholyte 2e (new family)'},
+ {'id': 'hyp_aq_2_benzyloxy',
+  'name': '2-[(4-methylbenzyl)oxy]-9,10-anthraquinone',
+  'family': 'quinone (n-type)',
+  'frag': '[*:1]Oc1ccc2C(=O)c3ccccc3C(=O)c2c1',
+  'states': [['neu', 0, 1, 0], ['red1', -1, 2, -1], ['red2', -2, 1, -2]],
+  'provenance': {'type': 'new 2e scaffold family (expansion 2026-11-16)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'family_grounding': '9,10-anthraquinone is a tier-A two-wave 2e anolyte in the '
+                                     'in-repo MeCN benchmark (config/benchmark_mecn.py).',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Anthraquinone grafted through a 2-position ether (benzylic-Cl displacement by '
+                     '2-hydroxyanthraquinone). Extends the quinone 2e anolyte family to the larger '
+                     'anthraquinone core. Exact graft synthesis and stability require route review.',
+  'review_priority': 'anolyte 2e (new core)'},
+ {'id': 'hyp_aq_2_amino',
+  'name': '2-[(4-methylbenzyl)amino]-9,10-anthraquinone',
+  'family': 'quinone (n-type)',
+  'frag': '[*:1]Nc1ccc2C(=O)c3ccccc3C(=O)c2c1',
+  'states': [['neu', 0, 1, 0], ['red1', -1, 2, -1], ['red2', -2, 1, -2]],
+  'comparison_baseline': 'hyp_aq_2_benzyloxy',
+  'hypothesis': 'Amino vs ether anchor on the anthraquinone 2-position; test the donor effect on '
+                'E1/E2 and the two-wave spacing. No performance improvement assumed.',
+  'provenance': {'type': 'new 2e scaffold family (expansion 2026-11-16)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'family_grounding': '9,10-anthraquinone is a tier-A two-wave 2e anolyte in the '
+                                     'in-repo MeCN benchmark (config/benchmark_mecn.py).',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Anthraquinone grafted through a 2-position secondary amine (benzylic-Cl '
+                     'displacement by 2-aminoanthraquinone). Exact graft synthesis and stability '
+                     'require route review.',
+  'review_priority': 'anolyte 2e (new core)'}]
+
+# Catholyte-focused expansion (2026-11-17). The full-pool scorecard shows the catholyte
+# Pareto front has only 3 members vs 7 anolytes, and all 3 are dihydrophenazine/phenothiazine
+# — the 2e catholyte side is the real scarcity. These deepen the ONE validated 2e catholyte
+# family (5,10-dihydrophenazine, BMEPZ parent) along two grounded levers: (a) a smaller N'-cap
+# raises gravimetric capacity (less dead mass), (b) N'/ring electron-withdrawing vs -donating
+# substituents tune the oxidation potential (EWG raise E -> higher cell voltage; EDG lower E,
+# usually better radical-cation stability). Same 4-methylbenzyl Merrifield tether; properties
+# uncomputed (production_qm False) — definitions for the QM queue, not inherited measurements.
+GROUPS += [
+ {'id': 'exp_dmpz_mb_methyl',
+  'name': "N-(4-methylbenzyl)-N'-methyl-5,10-dihydrophenazine",
+  'family': 'phenazine (p-type)',
+  'frag': '[*:1]N1c2ccccc2N(C)c2ccccc21',
+  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
+  'comparison_baseline': 'exp_dmpz_mb_ethyl',
+  'hypothesis': 'Smallest alkyl cap on the validated DHP core -> lowest dead mass -> highest '
+                'gravimetric capacity of the DHP catholyte series (~91 vs 89 mAh/g for ethyl). '
+                'No change to the redox chemistry assumed.',
+  'provenance': {'type': 'catholyte 2e expansion (2026-11-17)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'source': 'https://www.sciencedirect.com/science/article/pii/S2451929419303158',
+                 'family_grounding': 'N,N-dialkyl-5,10-dihydrophenazine (BMEPZ) is a measured 2e '
+                                     'nonaqueous catholyte (-0.29/+0.50 V vs Fc, MeCN).',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Capacity-maximizing member of the DHP 2e catholyte family. N-H methylation '
+                     'on 5,10-dihydrophenazine. Route/stability require separate review.',
+  'review_priority': 'catholyte 2e (capacity lead)'},
+ {'id': 'hyp_dmpz_mb_trifluoroethyl',
+  'name': "N-(4-methylbenzyl)-N'-(2,2,2-trifluoroethyl)-5,10-dihydrophenazine",
+  'family': 'phenazine (p-type)',
+  'frag': '[*:1]N1c2ccccc2N(CC(F)(F)F)c2ccccc21',
+  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
+  'comparison_baseline': 'exp_dmpz_mb_ethyl',
+  'hypothesis': 'Electron-withdrawing 2,2,2-trifluoroethyl cap lowers HOMO density -> raises both '
+                'oxidation potentials vs the ethyl control -> higher full-cell voltage. Tests '
+                'whether the 2nd oxidation stays reversible under an EWG. No value assumed.',
+  'provenance': {'type': 'catholyte 2e expansion (2026-11-17)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'source': 'https://www.sciencedirect.com/science/article/pii/S2451929419303158',
+                 'family_grounding': 'BMEPZ 2e catholyte parent; substituent-potential trend '
+                                     '(EWG raises oxidation potential) is standard for '
+                                     'N-aryl/N-alkyl dihydrophenazine redox.',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Potential-raising member of the DHP catholyte family via an N-CH2CF3 cap. '
+                     'Route/stability require separate review.',
+  'review_priority': 'catholyte 2e (voltage lead)'},
+ {'id': 'hyp_dmpz_27dimethyl_ethyl',
+  'name': "N-(4-methylbenzyl)-N'-ethyl-2,7-dimethyl-5,10-dihydrophenazine",
+  'family': 'phenazine (p-type)',
+  'frag': '[*:1]N1c2cc(C)ccc2N(CC)c2ccc(C)cc21',
+  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
+  'comparison_baseline': 'exp_dmpz_mb_ethyl',
+  'hypothesis': 'Ring methyl donors at 2,7 lower the oxidation potentials modestly and can '
+                'stabilize the oxidized states sterically/electronically vs the unsubstituted '
+                'ethyl control. Tests the ring-donor lever. No value assumed.',
+  'provenance': {'type': 'catholyte 2e expansion (2026-11-17)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'source': 'https://www.sciencedirect.com/science/article/pii/S2451929419303158',
+                 'family_grounding': 'BMEPZ 2e catholyte parent; ring-EDG lowers oxidation '
+                                     'potential in dihydrophenazine/phenazine redox.',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Ring-substituted DHP (2,7-dimethyl) probing the core-donor effect on E1/E2. '
+                     'Route/stability require separate review.',
+  'review_priority': 'catholyte 2e (ring-donor probe)'},
+ {'id': 'hyp_dmpz_27dimethoxy_ethyl',
+  'name': "N-(4-methylbenzyl)-N'-ethyl-2,7-dimethoxy-5,10-dihydrophenazine",
+  'family': 'phenazine (p-type)',
+  'frag': '[*:1]N1c2cc(OC)ccc2N(CC)c2ccc(OC)cc21',
+  'states': [['neu', 0, 1, 0], ['ox1', 1, 2, 1], ['ox2', 2, 1, 2]],
+  'comparison_baseline': 'hyp_dmpz_27dimethyl_ethyl',
+  'hypothesis': 'Stronger 2,7-methoxy donors lower the oxidation potentials further and typically '
+                'improve radical-cation stability (as in dialkoxy p-type catholytes). Tests the '
+                'strong ring-donor limit. No value assumed.',
+  'provenance': {'type': 'catholyte 2e expansion (2026-11-17)',
+                 'measured_for_this_structure': False,
+                 'production_qm': False,
+                 'exact_grafted_experiment': False,
+                 'direct_merrifield_route_verified': False,
+                 'parent_metrics_inherited': False,
+                 'source': 'https://www.sciencedirect.com/science/article/pii/S2451929419303158',
+                 'family_grounding': 'BMEPZ 2e catholyte parent; methoxy ring-donors lower '
+                                     'oxidation potential and stabilize radical cations in '
+                                     'dihydrophenazine/dialkoxyarene p-type redox.',
+                 'registration_stage': 'exact structure/state definition; properties pending'},
+  'chemistry_notes': 'Ring-substituted DHP (2,7-dimethoxy) probing the strong core-donor limit. '
+                     'Route/stability require separate review.',
+  'review_priority': 'catholyte 2e (ring-donor probe)'}]
