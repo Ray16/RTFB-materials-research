@@ -8,8 +8,8 @@ _Draft v0 — assembled 2026-11-17 from parallel section drafts (method-led spin
 
 Selecting a redox-active motif to graft onto a preformed polymer backbone for a
 non-aqueous organic redox flow battery (ORFB) requires redox properties computed
-on the *exact* grafted species, gated for reliability, and anchored to experiment
-— requirements that ad hoc density functional theory (DFT) screens rarely meet
+on the *exact* grafted species, gated for reliability, and anchored to experiment.
+Ad hoc density functional theory (DFT) screens rarely meet these three requirements
 together. We present an end-to-end, reproducible pipeline that builds exact
 capped-graft models, computes redox potentials, usable capacity, and
 reorganization components referenced to ferrocene (Fc) in acetonitrile, and
@@ -157,8 +157,9 @@ in geometry, electronic protocol, or charge/multiplicity resolves a new record
 rather than silently overwriting an old one. The level of theory and standard-state
 conventions used throughout are collected in Table 1. Because this is a method-led
 study, we state the protocol precisely here and defer the supporting derivations
-(outer-sphere PCM operators, qRRHO projection, σ-aware domination proofs) to the
-Supporting Information (SI).
+(outer-sphere PCM operators, qRRHO projection, σ-aware domination proofs), together
+with a module map naming the specific file and function behind each stage, to the
+Supporting Information (SI); the package layout is documented in the released code.
 
 ### Grafted-motif model
 
@@ -167,7 +168,7 @@ serves as a Merrifield (poly(vinylbenzyl chloride)) backbone proxy. Grafting is
 carried out as a balanced, local substitution onto 4-methylbenzyl chloride
 (`Cc1ccc(CCl)cc1`); the ring methyl *para* to the benzylic linker stands in for the
 polymer chain. Two reaction classes are recognized and charge/atom-balanced
-explicitly (`structures/grafting.py`): N-quaternization of an azinium nitrogen
+explicitly: N-quaternization of an azinium nitrogen
 (leaving group Cl⁻) and N–H/O–H substitution (leaving group HCl, flagged as
 requiring a separate base correction). No base, counterion activity, or kinetics is
 assumed. Redox states are defined per motif as adjacent one-electron couples from
@@ -184,9 +185,8 @@ exact repeat-unit mass without asserting a synthesized material.
 ### Conformer generation and MLIP pre-optimization
 
 For each motif a charge-aware conformer ensemble is embedded with RDKit and
-force-field ranked (`structures/candidates.py`). Each redox state is then pre-
-optimized in the gas phase with the UMA machine-learned interatomic potential
-(`backends/uma_current.py`), which is used purely as a fast, charge-/spin-aware
+force-field ranked. Each redox state is then pre-
+optimized in the gas phase with the UMA machine-learned interatomic potential, which is used purely as a fast, charge-/spin-aware
 pre-optimizer to select the lowest-energy conformer and furnish a good DFT seed.
 The backend is chosen from the *actual* reserved GPU architecture (deterministic
 stock calculator on all current production cards); UMA is gas-phase only and never
@@ -217,12 +217,11 @@ independent and are optimized concurrently, one GPU each.
 
 Production energies are computed at a single uniform protocol,
 **ωB97M-V/def2-TZVPD** with the VV10 nonlocal dispersion built into the functional,
-SMD(acetonitrile), applied to *every* charge state and to the ferrocene reference
-(`core/protocol.ACTIVE_SP`, `backends/sp.py`). Using one diffuse basis for all
-charge states is deliberate: a ladder that scored neutrals with def2-TZVP and
-anions with def2-TZVPD would place the diffuse freedom on one side of every
-reduction and every disproportionation, so neither E° nor the solvation term would
-get clean basis-set cancellation. Each energy is written to a protocol-addressed
+SMD(acetonitrile), applied to *every* charge state and to the ferrocene reference. Using one diffuse basis for all
+charge states is deliberate. A mixed ladder — def2-TZVP for neutrals and def2-TZVPD
+for anions — would place the extra diffuse functions on only one side of every
+reduction and every disproportionation, so neither the potential (E°) nor the
+solvation term would benefit from clean basis-set cancellation. Each energy is written to a protocol-addressed
 record (`calcs/dft/<id>/<state>/sp/<hash>.json`) whose hash covers the coordinates,
 charge, multiplicity, functional, basis, dispersion/NLC, solvent and solvent model,
 density fitting, and convergence settings. A pre-existing optimizer energy is
@@ -235,8 +234,7 @@ dG_solv = E_SMD − E_gas and a gas-HOMO/unbound-anion diagnostic.
 
 Free energies are G = E_SMD(active protocol) + G_thermal, and the two thermal terms
 are maintained as two explicit tiers. The **pool-wide tier** is a GFN2-xTB
-rigid-rotor–harmonic-oscillator (RRHO) correction (298.15 K) evaluated on the DFT+SMD-optimized geometry
-(`backends/dft._thermal_correction`): G_thermal = ZPE + H_thermal − TS. It is used
+rigid-rotor–harmonic-oscillator (RRHO) correction (298.15 K) evaluated on the DFT+SMD-optimized geometry: G_thermal = ZPE + H_thermal − TS. It is used
 for ranking because RRHO corrections are nearly independent of the electronic-
 structure method, so one cheap, uniform Hessian is applied identically to every
 molecule and every state in the pool and cancels cleanly in the energy
@@ -244,10 +242,10 @@ molecule and every state in the pool and cancels cleanly in the energy
 installed gpu4pyscf analytic UKS Hessian inflates open-shell frequencies roughly
 two-fold, corrupting ZPE for exactly the radical states that dominate this dataset.
 The **lead-confirmation tier** is a native, derivative-checked solution DFT
-thermochemistry (`thermochemistry/native.py`): an r²SCAN-D4/def2-SVP(D)/SMD Hessian
+thermochemistry: an r²SCAN-D4/def2-SVP(D)/SMD Hessian
 with full grid response, stationary-minimum and gradient acceptance checks, and a
 spin-degeneracy term, with the nuclear partition evaluated by a certificate-locked
-projected internal-mode quasi-RRHO (qRRHO) kernel (`qm/qrrho.py`). It is disk-/GPU-gated and
+projected internal-mode quasi-RRHO (qRRHO) kernel. It is disk-/GPU-gated and
 expensive, so it is run to *confirm* shortlisted leads rather than across the pool.
 A state missing either an active energy or a valid thermal term makes its couple
 INCOMPLETE; there is no electronic-only fallback, and a molecule and the ferrocene
@@ -270,20 +268,20 @@ never combined.
   anolyte/catholyte divider 0 V); a second electron outside the window collapses to
   1e usable capacity.
 - **Outer-sphere λ_o.** A linear-response continuum estimate by two methods
-  (`properties/lambda_outer.py`): single-sphere Born/Marcus (using a radius from
+ : single-sphere Born/Marcus (using a radius from
   the solvent-accessible surface area, SASA) and a molecular-cavity nonequilibrium
   (Pekar) integral-equation-formalism polarizable continuum model (IEF-PCM) using the real
   cavity and the charge-transfer surface potential, with ε_s = 37.5, ε_op = 1.806.
   Reported as the half-reaction (1-body) value; the continuum-vs-explicit gap is not
   closed.
 - **Inner-sphere λ_i.** Nelsen four-point, gas-phase at the active protocol on the
-  SMD geometries (`properties/reorg.py`). This is a current limitation: the gas
+  SMD geometries. This is a current limitation: the gas
   energies on single-conformer SMD geometries make λ_i low-confidence (negative
   values and large symmetry-aware RMSD are QC flags), so λ_i is treated as
   qualitative/SI pending an all-SMD, conformer-matched surface. No kinetic or
   reversibility claim is drawn from it.
 - **Disproportionation.** dG_disp = G(R^{q+1}) + G(R^{q−1}) − 2G(R^q) = F·(E_high −
-  E_low), i.e. the reference-free two-wave spacing (`quality/stability.py`),
+  E_low), i.e. the reference-free two-wave spacing,
   reported as computed and conditional.
 
 ### Reliability gating and quality control
@@ -304,15 +302,16 @@ the ranking (they can be dominated but can never dominate or be silently removed
 ### Multi-property ranking
 
 Ranking is performed on **σ-aware Pareto fronts with the anolyte and catholyte
-pools kept separate** (`screening/pareto.py`, `screening/scorecard.py`). An
+pools kept separate**. An
 ambipolar molecule enters both pools with only its own side's electrons. The
 objectives are the trustworthy axes only, oriented so that higher is better:
 voltage (−E for anolytes, +E for catholytes), specific capacity, disproportionation
 stability (only where an intermediate exists), and kinetics (−λ_i, QC-clean couples
-only). Domination is σ-aware: A dominates B only if, over the objectives they share
-(≥ 2), A is never worse beyond the combined per-axis noise k·√(σ_A² + σ_B²) and is
-strictly better beyond noise on at least one axis, with each σ taken from the
-candidate's own benchmark-derived uncertainty. A candidate missing any primary
+only). Domination is uncertainty-aware (σ-aware). Candidate A dominates candidate B only
+when, across the objectives they share (at least two), A is never worse than B by
+more than the combined per-axis noise, k·√(σ_A² + σ_B²), and is clearly better —
+beyond that noise — on at least one axis. Each σ is the candidate's own uncertainty,
+propagated from the validation benchmark. A candidate missing any primary
 objective is INCOMPLETE and cannot enter the front or dominate. Solubility and
 synthetic-accessibility proxies, and the continuum λ_o/λ_het/λ_se, are carried as
 annotations/tiebreakers, not objectives. There is deliberately **no scalar or
@@ -338,8 +337,7 @@ certificate. All GPU work is submitted through a cluster-wide reservation gate
 one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps, and
 a node-capacity/free-slot preflight; the gate is never bypassed. Final property
 tables are accepted only after an independent arithmetic audit (zero discrepancies
-required). An external experimental benchmark of the potential axis is maintained
-(`quality/benchmark_panel.py`) and reported in Section [Results]; an end-to-end
+required). An external experimental benchmark of the potential axis is maintained and reported in Section [Results]; an end-to-end
 re-run of the maintained code to re-confirm the frozen 39-endpoint benchmark is a
 GPU/QM step deferred under the current no-QM constraint.
 
