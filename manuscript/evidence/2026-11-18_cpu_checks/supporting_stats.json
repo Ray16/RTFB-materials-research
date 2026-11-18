@@ -1,0 +1,90 @@
+{
+  "seeds": {
+    "pool_states": 274,
+    "pool_three_seed": 262,
+    "pool_multi_seed": 268,
+    "spread_le_5meV": 154,
+    "spread_gt_25meV": 62,
+    "spread_gt_100meV": 11,
+    "all_records_multi_seed": 292,
+    "first_seed_gt_25meV": 37,
+    "first_seed_failed": 8
+  },
+  "outer_sphere_check": {
+    "source": "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/lambda_outer.csv",
+    "couples": 10,
+    "molecules": 5,
+    "ratio_min": 1.028,
+    "ratio_max": 1.393
+  },
+  "basis_counts": {
+    "exp_dmpz_mb_methyl": {
+      "atoms": 43,
+      "nao_def2_tzvpd": 1031
+    },
+    "exp_dmpz_mb_ethyl": {
+      "atoms": 46,
+      "nao_def2_tzvpd": 1086
+    },
+    "hyp_dmpz_mb_trifluoroethyl": {
+      "atoms": 46,
+      "nao_def2_tzvpd": 1179
+    },
+    "hyp_dmpz_mb_methoxyethyl": {
+      "atoms": 50,
+      "nao_def2_tzvpd": 1181
+    },
+    "hyp_dmpz_27dimethyl_ethyl": {
+      "atoms": 52,
+      "nao_def2_tzvpd": 1196
+    }
+  },
+  "uma_surrogate": {
+    "couples": 174,
+    "molecules": 89,
+    "loo_MAE_V": 0.13441954864807806,
+    "per_class": {
+      "neu/red1": {
+        "n": 63,
+        "loo_MAE_V": 0.12557214744670278,
+        "spearman": 0.7195660522273426,
+        "dft_sd_V": 0.22913722340018866
+      },
+      "ox1/neu": {
+        "n": 25,
+        "loo_MAE_V": 0.09415141939276057,
+        "spearman": 0.9376923076923077,
+        "dft_sd_V": 0.5270283582353019
+      },
+      "ox2/ox1": {
+        "n": 25,
+        "loo_MAE_V": 0.15834118586268275,
+        "spearman": 0.7738461538461539,
+        "dft_sd_V": 0.6900253241610663
+      },
+      "red1/red2": {
+        "n": 61,
+        "loo_MAE_V": 0.150256410561266,
+        "spearman": 0.6297726070861976,
+        "dft_sd_V": 0.24887334258098787
+      }
+    },
+    "anolyte_two_electron": 83,
+    "anolyte_with_both_couples": 60,
+    "anolyte_front": 7,
+    "funnel": {
+      "0.15": {
+        "sent_to_dft": 13,
+        "front_recovered": 6
+      },
+      "0.3": {
+        "sent_to_dft": 43,
+        "front_recovered": 7
+      },
+      "0.45": {
+        "sent_to_dft": 54,
+        "front_recovered": 7
+      }
+    }
+  }
+}

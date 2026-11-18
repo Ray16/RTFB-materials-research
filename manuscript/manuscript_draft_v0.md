@@ -180,7 +180,7 @@ the 92 scored candidates (the 91-candidate pool plus one DMPZ added later; see
 Results); the code's default is one seed. The choice of seed matters: of the 268
 states with more than one seed, the
 seeds end within 5 meV of each other in 154, but differ by more than 25 meV in 62
-and by more than 0.1 eV in 11. An optional scan of the ring–ring torsion is
+and by more than 0.1 eV in 11 (SI S10). An optional scan of the ring–ring torsion is
 available for flexible molecules.
 
 ### DFT geometry optimization
@@ -259,7 +259,7 @@ Each property is computed and reported separately; they are never combined.
   E_abs = −dG, and E_vs_Fc = E_abs − E_ref. The ferrocene/ferrocenium (Fc/Fc⁺)
   reference E_ref is computed at the same level, with the same free-energy
   definition, as the molecules, so errors common to both cancel (RT/F = 0.025693 V,
-  Nernst slope 0.059160 V).
+  Nernst slope 0.059159 V).
 - **Usable capacity.** Theoretical specific capacity C_spec = nF/(3.6·M) [mAh g⁻¹],
   with M the neutral repeat-unit mass of the graft (above) and counterions excluded,
   the usual active-material convention. An electron counts as usable only if its
@@ -277,7 +277,7 @@ Each property is computed and reported separately; they are never combined.
   the radius of the sphere that has the molecule's solvent-accessible surface area
   (SASA), is reported for every candidate (SI S7). As a check, a nonequilibrium polarizable continuum model (IEF-PCM)
   [Cancès 1997] that uses the molecule's actual cavity shape was run for 10 couples
-  of 5 pool molecules. It gives 1.03 to 1.39 times the Born value (ε_s = 37.5,
+  of 5 pool molecules. It gives 1.03 to 1.39 times the Born value (SI S10) (ε_s = 37.5,
   ε_op = 1.806 in both). Values are per
   half-reaction. How far these continuum estimates are from explicit-solvent
   values is not tested here.
@@ -375,7 +375,7 @@ version that produced it.
 | Thermal correction, xTB tier (whole pool) | GFN2-xTB RRHO on the DFT+SMD geometry, 298.15 K |
 | Thermal correction, DFT-frequency tier (lead confirmation; benchmark) | DFT frequencies in solvent (r²SCAN-D4/def2-SVP(D)/SMD) with quasi-RRHO |
 | Free energy | G = E_SMD + G_thermal (one matched thermal definition per molecule and Fc) |
-| Temperature | 298.15 K (RT/F = 0.025693 V; Nernst slope 0.059160 V) |
+| Temperature | 298.15 K (RT/F = 0.025693 V; Nernst slope 0.059159 V) |
 | Potential reference | Fc/Fc⁺, computed at the same level and thermal tier as the molecules |
 | Electrolyte / window | TBAPF₆ / MeCN; [−3.0, 2.0] V vs Fc; anolyte/catholyte divider 0 V |
 | Outer-sphere λ_o | Born (SASA radius) for every candidate; molecular-cavity IEF-PCM check on 5 molecules (10 couples) |
@@ -462,8 +462,8 @@ benchmark (DFT-frequency tier). A shared offset does not change the order of can
 within a pool are more reliable than absolute values, and that is how the screen
 below is used. We do not attribute the offset to a single cause. A part of it could
 come from the ferrocene reference, which shifts every potential equally. But the spacing between the two waves of a molecule (E1 − E2) does not depend on
-the reference, and it is computed larger than measured in eight of the nine
-molecules with two measured waves. A reference error alone therefore cannot
+the reference, and it is computed too wide (larger in magnitude than measured) in all nine molecules with
+two measured waves. A reference error alone therefore cannot
 explain the residuals. Errors
 in how solvation and ion pairing are treated for each charge state probably
 contribute.
@@ -573,7 +573,7 @@ repeat-unit mass. Identifiers are those used in the records and in SI Table S7.
 
 | Candidate | N′ / ring substitution | E vs Fc (V) | Couples (V) | Capacity (mAh g⁻¹) |
 |---|---|---:|---|---:|
-| `exp_dmpz_mb_ethyl` | N′-ethyl | +0.43 | −0.03 / +0.89 | 164.2 |
+| `exp_dmpz_mb_ethyl` | N′-ethyl | +0.43 | −0.03 / +0.88 | 164.2 |
 | `exp_dmpz_mb_methyl` | N′-methyl | +0.47 | +0.03 / +0.91 | 171.6 |
 | `hyp_dmpz_mb_methoxyethyl` | N′-(2-methoxyethyl) | +0.47 | +0.01 / +0.94 | 150.4 |
 | `hyp_dmpz_mb_trifluoroethyl` | N′-(2,2,2-trifluoroethyl) | +0.62 | +0.15 / +1.10 | 140.9 |
@@ -628,7 +628,7 @@ measured error at the pool's thermal tier (see text).
 |---|---|---:|---:|
 | N′-ethyl DMPZ (+0.43 V) | 2-(4-methylbenzyloxy)-6-methoxyanthraquinone (−1.49 V) | 1.91 | 1.85 |
 | N′-methyl DMPZ (+0.47 V) | 1-(4-methylbenzyloxy)anthraquinone (−1.48 V) | 1.95 | 1.89 |
-| N′-ethyl DMPZ (+0.43 V) | ether-tethered pyromellitic diimide (−1.54 V) | 1.97 | 1.73 |
+| N′-ethyl DMPZ (+0.43 V) | ether-tethered pyromellitic diimide (−1.54 V) | 1.97 | 1.72 |
 | N′-(2,2,2-trifluoroethyl) DMPZ (+0.62 V) | ether-tethered pyromellitic diimide (−1.54 V) | 2.17 | 1.92 |
 
 Computed potentials are too positive on both sides of the cell, so the two errors
@@ -660,7 +660,7 @@ Every pipeline run records the start and end time of each stage, and the DFT
 stage additionally records the time spent in each conformer seed's
 pre-optimization, geometry optimization, solvated and gas-phase single points,
 and thermal correction. Table 4 summarizes the measured cost of five of the grafted DMPZ catholytes
-(43–52 atoms; 1031–1196 basis functions at def2-TZVPD). Each was taken from its
+(43–52 atoms; 1031–1196 basis functions at def2-TZVPD; SI S10). Each was taken from its
 SMILES string (a text encoding of the structure) to a ranked property record, with
 three redox states (neutral, radical cation, dication) and three conformer seeds
 per state. The
@@ -692,9 +692,9 @@ radical cation is the most expensive state, about half of all DFT time, because 
 in both solvent and gas phase. Third, cost rises steeply with size even across this narrow range:
 from 43 to 52 atoms (1031 to 1196 basis functions) the V100 DFT time grows by 1.47×,
 an apparent exponent of about 2.6 in the number of basis functions. With three
-molecules this exponent is indicative only. The H100 runs are 1.7–2× faster than
-the V100 runs for molecules of similar size, less than the difference in
-double-precision throughput between these GPUs. This suggests that part of each
+molecules this exponent is indicative only. The H100 runs are 1.7–2.6× faster than the V100 runs for molecules of similar size
+(2.6× for the two 46-atom molecules), less than the roughly fourfold difference in
+peak double-precision throughput between these GPUs. This suggests that part of each
 stage is limited by the two CPU threads per worker rather than by the GPU.
 
 On this hardware a two-electron candidate costs about 0.9–2.6 GPU-hours, and the wall
@@ -718,13 +718,13 @@ have left 37 states more than 25 meV above the best seed's energy, and in 8 stat
 the first seed failed outright.
 
 We also tested, on the existing records, whether the much cheaper machine-learned
-potential (UMA) could replace DFT for ranking. For each type of couple (first or
-second reduction, first or second oxidation) we fitted a straight line from UMA
+potential (UMA) could replace DFT for ranking. For each pair of charge states (+2/+1, +1/0, 0/−1, and −1/−2) we fitted a straight
+line from UMA
 gas-phase energy differences to the DFT potentials. Predicting each couple from a
 fit that leaves it out gives an MAE of 0.13 V against DFT over 174 couples
-(89 molecules). The rank correlation is 0.94 for first
-oxidations but only 0.63–0.72 for the anolyte reductions, whose DFT potentials span
-a narrow range (standard deviation 0.23 V). We then used these predictions as a
+(89 molecules; SI S10). The rank correlation is 0.94 for the +1/0 couples (catholyte first oxidations and
+viologen second reductions) but only 0.63–0.72 for the reductions to anions (0/−1
+and −1/−2), whose DFT potentials span a narrow range (standard deviation 0.23–0.25 V). We then used these predictions as a
 pre-screen on the 60 two-electron anolytes that have both couples in the records
 (of the 83 two-electron anolytes in the pool). Every candidate predicted to lie
 within a set margin of the front was sent on to DFT. All seven anolyte front
@@ -808,7 +808,9 @@ The Supporting Information (available free of charge at [TODO: DOI/URL]) contain
 - S7, the full scored table (potentials, both capacity conventions, Born λ_o,
   Pareto-front membership);
 - S8, the measured cost of each DFT state;
-- S9, software versions.
+- S9, software versions;
+- S10, further numbers quoted in the main text (seed statistics, the λ_o check,
+  basis-set sizes, and the UMA surrogate test).
 
 Long tables are also provided as CSV files.
 

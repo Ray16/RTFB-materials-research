@@ -26,7 +26,7 @@ from redox.core.common import DFT, RESULTS, UMA, free_energy, load_config, read_
 # temperature is stored in project.json, so we fix the standard 298.15 K used everywhere
 # else in the pipeline (xtb RRHO thermal corrections are also at 298.15 K).
 RT_OVER_F_V = 8.314462618 * 298.15 / 96485.33212  # = 0.025693 V
-LOG10_FACTOR_V = RT_OVER_F_V * math.log(10.0)      # = 0.059160 V (Nernst slope)
+LOG10_FACTOR_V = RT_OVER_F_V * math.log(10.0)      # = 0.059159 V (Nernst slope)
 
 
 def _cfg(name, attr):

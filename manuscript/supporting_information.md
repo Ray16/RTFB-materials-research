@@ -27,7 +27,7 @@ G = E_SMD + G_thermal,
   E_vs_Fc = −[G(R) − G(O)]/e − E_abs(Fc),  E_abs(Fc) = G(Fc⁺) − G(Fc),
 
 with ferrocene computed at the same level and with the same thermal tier as the
-molecule. Constants at 298.15 K: RT/F = 0.025693 V; Nernst slope 0.059160 V per decade.
+molecule. Constants at 298.15 K: RT/F = 0.025693 V; Nernst slope 0.059159 V per decade.
 A two-electron candidate's reported potential is the mean of its two couples.
 
 **Capacity.** C = nF/(3.6 M) in mAh g⁻¹, with n the number of usable electrons (those whose
@@ -381,3 +381,48 @@ solvent and gas-phase single points with their SCF guesses). Source:
 
 GPUs used: NVIDIA Tesla V100-SXM2-32GB and NVIDIA H100 NVL. All GPU jobs were submitted
 through a reservation tool that assigns one job per GPU.
+
+## S10. Further numbers quoted in the main text
+
+Recomputed from the stored records by `scripts/validation/manuscript_supporting_stats.py`
+(record: `manuscript/evidence/2026-11-18_cpu_checks/supporting_stats.json`).
+
+**Conformer seeds.** Of the 274 redox states of the 92 scored candidates,
+262 used three seeds and 268 more than one. Among those, the
+seeds' final energies agree within 5 meV in 154, differ by more than 25 meV in
+62, and by more than 0.1 eV in 11. Across all 292
+multi-seed states in the stored records, the first seed alone would be more than 25 meV
+above the best in 37, and it failed in 8.
+
+**Outer-sphere check.** IEF-PCM and Born λ_o are both available for 10 couples of
+5 pool molecules; IEF-PCM / Born = 1.03 to 1.39.
+
+**Basis-set size (def2-TZVPD) of the molecules in Table 4.**
+
+| Candidate | Atoms | Basis functions |
+|---|---|---|
+| exp_dmpz_mb_methyl | 43 | 1031 |
+| exp_dmpz_mb_ethyl | 46 | 1086 |
+| hyp_dmpz_mb_trifluoroethyl | 46 | 1179 |
+| hyp_dmpz_mb_methoxyethyl | 50 | 1181 |
+| hyp_dmpz_27dimethyl_ethyl | 52 | 1196 |
+
+**UMA surrogate test.** Leave-one-out linear map from UMA gas-phase energy differences to
+DFT SMD electronic potentials, per pair of charge states: 174 couples from
+89 molecules, overall MAE 0.134 V.
+
+| Couple (states) | n | MAE (V) | Rank correlation | SD of DFT values (V) |
+|---|---|---|---|---|
+| neu/red1 | 63 | 0.126 | 0.72 | 0.23 |
+| ox1/neu | 25 | 0.094 | 0.94 | 0.53 |
+| ox2/ox1 | 25 | 0.158 | 0.77 | 0.69 |
+| red1/red2 | 61 | 0.150 | 0.63 | 0.25 |
+
+Pre-screen of the 60 two-electron anolytes with both couples (of
+83 in the pool), keeping every candidate within the margin of the predicted front:
+
+| Margin (V) | Sent to DFT | Figure 5 front members kept |
+|---|---|---|
+| 0.15 | 13 | 6 of 7 |
+| 0.3 | 43 | 7 of 7 |
+| 0.45 | 54 | 7 of 7 |

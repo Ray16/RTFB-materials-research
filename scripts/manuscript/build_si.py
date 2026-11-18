@@ -89,7 +89,7 @@ G = E_SMD + G_thermal,
   E_vs_Fc = −[G(R) − G(O)]/e − E_abs(Fc),  E_abs(Fc) = G(Fc⁺) − G(Fc),
 
 with ferrocene computed at the same level and with the same thermal tier as the
-molecule. Constants at 298.15 K: RT/F = 0.025693 V; Nernst slope 0.059160 V per decade.
+molecule. Constants at 298.15 K: RT/F = 0.025693 V; Nernst slope 0.059159 V per decade.
 A two-electron candidate's reported potential is the mean of its two couples.
 
 **Capacity.** C = nF/(3.6 M) in mAh g⁻¹, with n the number of usable electrons (those whose
@@ -400,6 +400,44 @@ through a reservation tool that assigns one job per GPU.
 """
 
 
+def s_supporting():
+    d = j(EVID / "2026-11-18_cpu_checks/supporting_stats.json")
+    s, o, b, u = d["seeds"], d["outer_sphere_check"], d["basis_counts"], d["uma_surrogate"]
+    cls = [[k, v["n"], f2(v["loo_MAE_V"], 3), f2(v["spearman"], 2), f2(v["dft_sd_V"], 2)] for k, v in u["per_class"].items()]
+    fun = [[m, v["sent_to_dft"], f"{v['front_recovered']} of {u['anolyte_front']}"] for m, v in u["funnel"].items()]
+    bas = [[k, v["atoms"], v["nao_def2_tzvpd"]] for k, v in b.items()]
+    return f"""## S10. Further numbers quoted in the main text
+
+Recomputed from the stored records by `scripts/validation/manuscript_supporting_stats.py`
+(record: `manuscript/evidence/2026-11-18_cpu_checks/supporting_stats.json`).
+
+**Conformer seeds.** Of the {s['pool_states']} redox states of the 92 scored candidates,
+{s['pool_three_seed']} used three seeds and {s['pool_multi_seed']} more than one. Among those, the
+seeds' final energies agree within 5 meV in {s['spread_le_5meV']}, differ by more than 25 meV in
+{s['spread_gt_25meV']}, and by more than 0.1 eV in {s['spread_gt_100meV']}. Across all {s['all_records_multi_seed']}
+multi-seed states in the stored records, the first seed alone would be more than 25 meV
+above the best in {s['first_seed_gt_25meV']}, and it failed in {s['first_seed_failed']}.
+
+**Outer-sphere check.** IEF-PCM and Born λ_o are both available for {o['couples']} couples of
+{o['molecules']} pool molecules; IEF-PCM / Born = {f2(o['ratio_min'], 2)} to {f2(o['ratio_max'], 2)}.
+
+**Basis-set size (def2-TZVPD) of the molecules in Table 4.**
+
+{md_table(["Candidate", "Atoms", "Basis functions"], bas)}
+
+**UMA surrogate test.** Leave-one-out linear map from UMA gas-phase energy differences to
+DFT SMD electronic potentials, per pair of charge states: {u['couples']} couples from
+{u['molecules']} molecules, overall MAE {f2(u['loo_MAE_V'], 3)} V.
+
+{md_table(["Couple (states)", "n", "MAE (V)", "Rank correlation", "SD of DFT values (V)"], cls)}
+
+Pre-screen of the {u['anolyte_with_both_couples']} two-electron anolytes with both couples (of
+{u['anolyte_two_electron']} in the pool), keeping every candidate within the margin of the predicted front:
+
+{md_table(["Margin (V)", "Sent to DFT", "Figure 5 front members kept"], fun)}
+"""
+
+
 def main():
     parts = ["# Supporting Information",
              "*A validated, reproducible pipeline for screening graftable redox motifs for "
@@ -408,7 +446,7 @@ def main():
              "below is read from the file named with it. Citations refer to the main-text "
              "reference list.\n",
              s_module_map(), s_equations(), s_benchmark(), s_bmepz(), s_scf(), s_qc(), s_scored(),
-             s_throughput(), s_software()]
+             s_throughput(), s_software(), s_supporting()]
     OUT_MD.write_text("\n".join(parts))
     print("wrote", OUT_MD, "and", sorted(p.name for p in OUT_TAB.glob("*.csv")))
 
