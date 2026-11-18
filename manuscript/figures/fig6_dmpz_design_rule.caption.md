@@ -37,6 +37,6 @@ expensive native-Hessian tier. A check against the measured parent compound
 relative to the reference are the robust quantity. Potentials are QC-gated values
 on the Fc/Fc⁺ scale (benchmark MAE 0.247 V over n = 39 endpoints; the error is
 mostly a shared offset, so ranking is more reliable than absolute values); a
-computed descriptor or a completed job establishes neither synthetic feasibility
-nor material performance, and a capped graft is not its soluble parent nor an
+computed value does not show that a molecule can be made or that the material will
+perform well, and a capped graft is not its soluble parent nor an
 oligomer.

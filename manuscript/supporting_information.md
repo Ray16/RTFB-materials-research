@@ -175,7 +175,10 @@ records reproduces every published potential (largest difference
 The benchmark has no dihydrophenazine, so the measured parent
 5,10-bis(2-methoxyethyl)-5,10-dihydrophenazine (BMEPZ) (SMILES `COCCN1c2ccccc2N(CCOC)c2ccccc21`) was computed at the pool's ranking tier and
 compared with its measured potentials (E₁ = −0.29 V, E₂ = +0.50 V vs Fc in
-MeCN [Kwon 2019]). Route: RDKit ETKDG(seed 0xC0FFEE)+MMFF start for every state -> DFT+SMD opt -> active-protocol SP -> GFN2-xTB RRHO (legacy ranking tier); single seed, no UMA/xTB-ALPB pre-optimization. Run on lambda2 (2026-11-18), 20 min in total.
+MeCN [Kwon 2019]). Each state was started from the same RDKit/MMFF structure,
+optimized with DFT in SMD acetonitrile (one conformer seed, no UMA or xTB
+pre-optimization), scored with the production single point, and given the xTB
+thermal correction used for the pool. Run on lambda2 (2026-11-18), 20 min in total.
 
 | State | Charge | Multiplicity | E_SMD (eV) | G_thermal (eV) | G (eV) | SCF guesses | Wall time (min) |
 |---|---|---|---|---|---|---|---|
@@ -219,7 +222,7 @@ Readiness was run on the whole registry and on the 91 scored candidates (2026-11
 | registry | 456 | 450 | — |
 | 91 scored candidates | 271 | 271 | 269 |
 
-The native-thermal certificate is not a ranking check, because the pool is ranked on the
+The native-tier thermal check is not a ranking check, because the pool is ranked on the
 xTB thermal tier. States that fail any ranking check:
 
 | Candidate | State | Charge | Issue |

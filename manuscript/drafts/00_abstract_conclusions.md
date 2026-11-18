@@ -1,3 +1,8 @@
+> **Superseded (2026-11-18).** This per-section draft is kept for history only and is out of date:
+> several numbers and claims in it were later corrected. The current text is
+> `manuscript/manuscript_draft_v0.md` (journal version: `manuscript/jcim/`; SI:
+> `manuscript/supporting_information.md`). Do not cite or copy from this file.
+
 # Abstract, Conclusions, TOC graphic, and Associated Content
 
 Target journal: Journal of Chemical Information and Modeling (JCIM).

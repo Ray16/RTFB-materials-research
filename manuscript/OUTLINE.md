@@ -1,5 +1,23 @@
 # Manuscript outline — method-led spine
 
+> **Corrections (2026-11-18) — these override anything below.** The current text is
+> `manuscript/manuscript_draft_v0.md`. Verified changes since this file was written:
+> - Benchmark: MAE 0.247 V at the native-Hessian tier; 0.232 V at the pool's xTB tier
+>   (`scripts/validation/benchmark_tier_comparison.py`). Computed with commit 46b39c3b
+>   (tag `legacy/pre-refactor-main`); not re-run with the refactored code.
+> - Do not justify the xTB tier with the "UKS Hessian inflates frequencies 2x" claim;
+>   use the measured tier comparison instead.
+> - Capacity is reported on the neutral repeat-unit mass (DMPZ ~140-170 mAh/g, anolytes
+>   ~90-200); the salt-loaded values are a secondary convention (SI).
+> - Pareto fronts are plain two-objective fronts with the +/-0.25 V MAE drawn, not
+>   uncertainty-aware fronts.
+> - lambda_i values are gas-phase (old cache schema); all DMPZ values are ranking tier.
+> - QC: 269 of 271 pool states pass every ranking check; 2 flagged dianion states.
+> - The scored table is verified by `scripts/validation/score_pool_legacy_tier.py`
+>   (92/92 within 0.5 mV); its pipeline audit stage had failed.
+> - Bias-corrected proposed cells: about 1.7-1.9 V. Tests: 780 passing.
+
+
 **Working title:** *A validated, reproducible pipeline for screening graftable
 redox motifs for non-aqueous organic redox flow batteries*
 

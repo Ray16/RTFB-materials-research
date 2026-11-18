@@ -87,7 +87,7 @@ all three is a reproducibility problem: level of theory, solvent, standard
 state, reference electrode, and software versions are often underspecified, and
 the raw records needed to regenerate a figure are not released, so neither the
 ranking nor its error bars can be independently reconstructed [Lejaeghere 2016]. A
-computed descriptor, or a completed calculation, is not by itself evidence of
+computed property, or a completed calculation, is not by itself evidence of
 synthetic feasibility or of material performance; a screen is only as useful as
 the discipline with which these distinctions are maintained.
 
@@ -124,7 +124,7 @@ experiment). Pairing these catholytes
 with anolytes from the pool suggests non-aqueous full cells of about 1.7–1.9 V; we stress
 that these are computational proposals, not demonstrations of capacity, cycling,
 crossover, or synthetic feasibility. The remainder of the paper is organized as
-follows. We first describe the grafting abstraction and the nine-stage pipeline,
+follows. We first describe the grafted-molecule model and the nine-stage pipeline,
 including its two-tier thermochemistry and its reliability-gating policy. We then
 present the external validation against experiment that anchors the method's
 credibility, apply the pipeline to the 91-candidate pool and its Pareto
@@ -161,7 +161,7 @@ explicitly: N-quaternization of an azinium nitrogen
 (leaving group Cl⁻) and N–H/O–H substitution (leaving group HCl, flagged as
 requiring a separate base correction). No base, counterion activity, or kinetics is
 assumed. Redox states are defined per motif as adjacent one-electron couples from
-the as-prepared resting state (manifest `n_e = 0`): p-type motifs oxidize
+the state as prepared (`n_e = 0` in the registry): p-type motifs oxidize
 (neutral → ox1 (+1) → ox2 (+2)), n-type anolytes reduce (neutral → red1 → red2),
 and ambipolar motifs carry couples on both sides. We emphasize throughout that a
 **capped graft, a soluble parent, and an oligomer are three distinct models**: the
@@ -222,7 +222,7 @@ independent and can be optimized at the same time, one GPU per state.
 Production energies are computed at a single uniform protocol,
 **ωB97M-V/def2-TZVPD** [Mardirossian 2016; Rappoport 2010] with the VV10 nonlocal
 dispersion built into the functional [Vydrov 2010], SMD(acetonitrile), applied to *every* charge state and to the ferrocene reference. Using one diffuse basis for all
-charge states is deliberate. A mixed ladder — def2-TZVP for neutrals and def2-TZVPD
+charge states is deliberate. A mixed scheme — def2-TZVP for neutrals and def2-TZVPD
 for anions — would place the extra diffuse functions on only one side of every
 reduction and every disproportionation, so neither the potential (E°) nor the
 solvation term would benefit from clean basis-set cancellation. Each energy is written to a protocol-addressed
@@ -230,7 +230,7 @@ record (`calcs/dft/<id>/<state>/sp/<hash>.json`) whose hash covers the coordinat
 charge, multiplicity, functional, basis, dispersion/NLC, solvent and solvent model,
 density fitting, and convergence settings. A pre-existing optimizer energy is
 *adopted* only if it proves it was produced at exactly this protocol (including
-density-fitting provenance and the open-shell guess sweep); otherwise a fresh gas-
+density fitting and the open-shell guess sweep); otherwise a fresh gas-
 and SMD single point is computed. Both gas and solvated energies are retained, with
 dG_solv = E_SMD − E_gas and a gas-HOMO/unbound-anion diagnostic.
 
@@ -259,7 +259,7 @@ reference must share one thermal definition or the couple is flagged
 
 ### Derived properties (kept as separate quantities)
 
-Each electrochemical descriptor is computed and reported independently; they are
+Each electrochemical property is computed and reported separately; they are
 never combined.
 
 - **Redox potential vs Fc.** For a one-electron couple O + e⁻ → R, dG = G(R) − G(O),
@@ -285,8 +285,8 @@ never combined.
   (Pekar) integral-equation-formalism polarizable continuum model (IEF-PCM)
   [Cancès 1997] using the real
   cavity and the charge-transfer surface potential, with ε_s = 37.5, ε_op = 1.806.
-  Reported as the half-reaction (1-body) value; the continuum-vs-explicit gap is not
-  closed.
+  Reported for one molecule (a half-reaction value); how far continuum and explicit-solvent
+  estimates differ is not tested here.
 - **Inner-sphere λ_i.** Nelsen four-point scheme [Nelsen 1987]. The values reported here were
   computed with gas-phase energies at the SMD geometries, from single conformers.
   Gas-phase energies are not at a minimum on those geometries, so λ_i can come out
@@ -308,7 +308,7 @@ are flagged for review. Spin states are checked by ⟨S²⟩/spin-contamination 
 for near-degenerate cases, a bounded source-addressed alternate-multiplicity DFT
 comparison (`quality/spins.py`; max spin contamination 0.1). State coverage,
 cross-point caches, and the single shared thermal definition are verified for
-consistency across a ladder. States that fail are **held, not dropped**: they keep an
+consistency across a molecule's redox states. States that fail are **held, not dropped**: they keep an
 explicit `INCOMPLETE` status and their reason. In the 91-candidate pool, 269 of the
 271 states pass every check the ranking relies on (Figure 3). The two that do not
 are dianion states of two imide anolytes whose spin-state treatment is not yet
@@ -347,12 +347,12 @@ config and its hash, the selected-definition hash, host/PID/interpreter, backend
 GPU and CPU affinity, thread caps, xTB binary, conformer count, thermal definition,
 and per-step return codes and timings; resume binds these inputs (append-only
 registry growth is permitted, but a changed selected molecule fails). Numerical
-reproducibility is anchored by five byte-exact portable replays (`examples/`, stdout
-SHA-256 pinned) and a curated contract-test suite (780 passing). The qRRHO kernel is
-certificate-locked (SHA-256-verified xTB thermodynamic library, isolated CPU
-subprocess), as are the xTB kernel/runtime, the sampling snapshot, and the hash-
-locked replay payloads; reformatting any of these invalidates the projected-thermal
-certificate. All GPU work is submitted through a cluster-wide reservation gate
+reproducibility is anchored by five example replays that reproduce stored output byte for
+byte (`examples/`, stdout
+SHA-256 pinned) and a curated contract-test suite (780 passing). The qRRHO kernel runs in a separate process on a
+copy of the xTB thermodynamics library whose SHA-256 hash is checked before use; the
+xTB program, the sampling snapshot, and the replay inputs are hash-checked the same way,
+and if any of them changes, the stored thermal results no longer pass their check. All GPU work is submitted through a cluster-wide reservation gate
 (reserve → run with `CUDA_VISIBLE_DEVICES` → release), with a per-motif file lock so
 one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps, and
 a node-capacity/free-slot preflight; the gate is never bypassed. The table-building
@@ -384,7 +384,7 @@ the code version that produced it.
 | Temperature | 298.15 K (RT/F = 0.025693 V; Nernst slope 0.059160 V) |
 | Potential reference | Fc/Fc⁺, computed live at the active protocol (level-matched) |
 | Electrolyte / window | TBAPF₆ / MeCN; [−3.0, 2.0] V vs Fc; anolyte/catholyte divider 0 V |
-| Outer-sphere λ_o | Born (SASA radius) and molecular-cavity nonequilibrium IEF-PCM (Pekar), 1-body |
+| Outer-sphere λ_o | Born (SASA radius) and molecular-cavity nonequilibrium IEF-PCM (Pekar), one molecule |
 | Inner-sphere λ_i | Nelsen four-point; reported values use gas-phase energies on SMD geometries (qualitative) |
 | Ranking | Pareto fronts on voltage and capacity, anolyte/catholyte pools separate, uncertainty shown; **no weighted-sum score** |
 
@@ -503,8 +503,8 @@ version is the one to use to reproduce the benchmark exactly.
 ### Mapping 91 grafted candidates onto a two-pool decision front
 
 Applied to the full set of 91 registered grafted motifs, the pipeline returns a
-reliability-gated property record for every candidate — potential versus
-ferrocene (Fc) in TBAPF₆/MeCN, nominal usable capacity, outer- and inner-sphere
+quality-checked property record for every candidate — potential versus
+ferrocene (Fc) in TBAPF₆/MeCN, usable capacity, outer- and inner-sphere
 reorganization estimates, and disproportionation free energies — from which the
 accessible design space can be read directly (Figure 5). The pool is strongly
 anolyte-dominated: 85 of the 91 candidates reduce (n-type anolytes) and only 6
@@ -553,7 +553,7 @@ To populate the empty catholyte front we grafted a single scaffold,
 5,10-dihydrophenazine (DMPZ), and varied one substituent at a time, so that each
 change in potential can be traced to one substituent rather than to several
 differences at once (Figure 6). Every member carries the same 4-methylbenzyl (Merrifield
-proxy) cap on one nitrogen and a two-electron {neutral → +1 → +2} ladder,
+proxy) cap on one nitrogen and the same two-electron sequence, neutral → +1 → +2,
 isolating the effect of the N′-substituent and of ring substitution. Table 2 lists
 the series.
 
@@ -793,7 +793,7 @@ are also provided as CSV files.
 Versioned code and curated metadata are maintained in the public project
 repository (https://github.com/Ray16/RTFB-materials-research). The release provides the
 `redox` command registry (unchanged public command names dispatching to the
-documented package layout), five byte-exact portable replays under `examples/`
+documented package layout), five example replays under `examples/`
 that reconstruct cached scientific results without rerunning DFT (verified via
 `scripts/validation/check_refactor_oracles.py`), a scientific-contract test suite
 of 780 passing tests (1 skipped; `pytest tests -q`, verified 2026-11-18), and a

@@ -215,7 +215,10 @@ def s_bmepz():
 The benchmark has no dihydrophenazine, so the measured parent
 {r['molecule']} (SMILES `{r['smiles']}`) was computed at the pool's ranking tier and
 compared with its measured potentials (E₁ = {f2(r['measured']['E1'], sign=True)} V, E₂ = {f2(r['measured']['E2'], sign=True)} V vs Fc in
-MeCN [Kwon 2019]). Route: {r['route']}. Run on {r['host']} ({r['date']}), {r['wall_s'] / 60:.0f} min in total.
+MeCN [Kwon 2019]). Each state was started from the same RDKit/MMFF structure,
+optimized with DFT in SMD acetonitrile (one conformer seed, no UMA or xTB
+pre-optimization), scored with the production single point, and given the xTB
+thermal correction used for the pool. Run on {r['host']} ({r['date']}), {r['wall_s'] / 60:.0f} min in total.
 
 {md_table(["State", "Charge", "Multiplicity", "E_SMD (eV)", "G_thermal (eV)", "G (eV)", "SCF guesses", "Wall time (min)"], rows)}
 
@@ -300,7 +303,7 @@ Readiness was run on the whole registry and on the 91 scored candidates (2026-11
 {md_table(["Set", "Declared states", "Complete (geometry + single point)", "Pass all ranking checks"],
           [["registry", len(reg), complete, "—"], ["91 scored candidates", len(pool), len(pool), sum(ok(r) for r in pool)]])}
 
-The native-thermal certificate is not a ranking check, because the pool is ranked on the
+The native-tier thermal check is not a ranking check, because the pool is ranked on the
 xTB thermal tier. States that fail any ranking check:
 
 {md_table(["Candidate", "State", "Charge", "Issue"], [[r["id"], r["state"], r["charge"], r["issues"]] for r in flagged])}

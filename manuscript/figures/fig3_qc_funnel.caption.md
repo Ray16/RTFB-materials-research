@@ -28,10 +28,9 @@ fail a check are held, not dropped**: they stay in the records with their reason
 - *Scored candidates = 91*, ranked on Pareto fronts (Figure 5). The scored table has
   92 rows because one catholyte was added after the pool was fixed.
 
-The native-thermal certificate is not counted as a gate here, because the pool is
-ranked with the xTB thermal tier. (Read from this copy of the data, those
-certificates also fail for a technical reason: they are bound to the original
-directory path.) Bar widths are chosen for legibility and do not scale with the
+The native-tier thermal check is not counted here, because the pool is ranked with
+the xTB thermal tier. (In this copy of the data that check also fails for a
+technical reason: its records are tied to the original directory path.) Bar widths are chosen for legibility and do not scale with the
 counts.
 
 **Provenance.** Counts come from `redox.quality.readiness`; the scored count is read
