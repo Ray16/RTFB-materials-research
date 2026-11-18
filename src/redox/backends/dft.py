@@ -373,10 +373,15 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             do_opt: bool = True, do_freq: bool = True, opt_out: Path | None = None,
             max_opt_steps: int = 100, constraints: str | None = None,
             conv_params: dict | None = None, assert_convergence: bool = True,
-            backend: str = "cpu") -> dict:
+            backend: str = "cpu", atoms_override=None, return_atoms: bool = False) -> dict:
     """Composite DFT+SMD: optimize geometry in solvent at (opt_xc/opt_basis), then score
     the energy at (sp_xc/sp_basis). Anions use the diffuse basis variant. Returns energies
     (Ha) in SMD solvent and (optionally) gas phase. backend='gpu' uses gpu4pyscf.
+
+    atoms_override: score these in-memory coordinates instead of reading xyz_path (lets a
+    caller re-score the exact full-precision optimized geometry; the .xyz on disk carries
+    8 decimals). return_atoms: put the scored ase.Atoms under the private key "_atoms";
+    the caller must pop it before serializing.
     """
     from pyscf import gto
     from ase.io import read
@@ -387,7 +392,7 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
     obas = _basis_for(q, opt_basis, opt_basis_anion)
     sbas = _basis_for(q, sp_basis, sp_basis_anion)
 
-    atoms = read(str(xyz_path))
+    atoms = atoms_override.copy() if atoms_override is not None else read(str(xyz_path))
     def _mol(basis):
         syms = atoms.get_chemical_symbols()
         atom_str = "\n".join(f"{s} {p[0]} {p[1]} {p[2]}"
@@ -511,6 +516,8 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
                   flush=True)
             out["g_thermal_eV"] = None
         timing["thermal"] = round(time.perf_counter() - _t0, 2)
+    if return_atoms:
+        out["_atoms"] = atoms.copy()
     return out
 
 
@@ -561,6 +568,28 @@ def _opt_protocol_mismatch(res: dict, charge: int) -> str:
     if not res.get("optimized"):
         bad.append("not optimized")
     return "; ".join(bad)
+
+
+_GAS_FIELDS = ("e_gas_Ha", "e_gas_eV", "converged_gas", "scf_guess_energies_gas",
+               "gas_occupation_guesses", "anion_unbound")
+
+
+def _winner_gas(path, q, mult, smd_res, atoms, backend):
+    """Gas-phase single point for the selected seed, on its exact (full-precision) optimized
+    coordinates and at the same sp level, returning (seconds, fields to merge). The merged
+    fields are exactly those the combined SMD+gas call used to write: the gas energy, its SCF
+    guesses, the gas_* orbital/spin diagnostics, anion_unbound, and dG_solv_eV."""
+    # The level of theory is taken from the winning seed's own record (sp_basis there is the
+    # already charge-resolved basis), so the gas point can never drift from the SMD point.
+    gas = dft_smd(path, q, mult, do_opt=False, do_smd=False, do_gas=True, do_freq=False,
+                  sp_xc=smd_res["sp_xc"], sp_basis=smd_res["sp_basis"],
+                  sp_basis_anion=smd_res["sp_basis"], sp_disp=smd_res.get("sp_disp"),
+                  sp_nlc=smd_res.get("sp_nlc"), solvent=smd_res.get("solvent"),
+                  backend=backend, atoms_override=atoms)
+    fields = {k: gas[k] for k in gas if k in _GAS_FIELDS or k.startswith("gas_")}
+    if smd_res.get("e_smd_Ha") is not None and gas.get("e_gas_Ha") is not None:
+        fields["dG_solv_eV"] = (smd_res["e_smd_Ha"] - gas["e_gas_Ha"]) * HARTREE_EV
+    return (gas.get("timing_s") or {}).get("sp_gas"), fields
 
 
 def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, preopt="alpb",
@@ -626,6 +655,7 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
         best = None            # (e_smd_eV, seed_idx, res_dict, opt_path)
         seed_es = []
         seed_timing = []       # per-seed wall seconds (bookkeeping only)
+        ranked = []            # converged seeds: (e_smd_eV, seed_idx, res, path, atoms)
         _t_state = time.perf_counter()
         for si, seed in enumerate(seeds):
             st_t = {}
@@ -639,18 +669,37 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
                 seed_tmp = outdir / f"_seed_{si:02d}.xyz"
                 _write_xyz(atoms0, seed_tmp, comment=f"seed {si} preopt={preopt}")
                 opt_tmp = outdir / f"_opt_{si:02d}.xyz"
-                res = dft_smd(seed_tmp, q, mult, do_opt=do_opt, do_freq=False,
-                              opt_out=opt_tmp, backend=backend)
+                # Seeds are ranked on E_smd only, so the gas-phase single point (used only for
+                # dG_solv and the gas diagnostics of the WINNING seed) runs once, after
+                # selection, on the winner's exact in-memory geometry. See _winner_gas.
+                res = dft_smd(seed_tmp, q, mult, do_opt=do_opt, do_freq=False, do_gas=False,
+                              opt_out=opt_tmp, backend=backend, return_atoms=True)
+                seed_atoms = res.pop("_atoms")
                 st_t.update(res.get("timing_s") or {})
                 e = res.get("e_smd_eV")
                 seed_es.append(e)
-                if e is not None and res.get("converged_smd") is True and (best is None or e < best[0]):
-                    best = (e, si, res, opt_tmp if opt_tmp.exists() else seed_tmp)
+                if e is not None and res.get("converged_smd") is True:
+                    ranked.append((e, si, res, opt_tmp if opt_tmp.exists() else seed_tmp, seed_atoms))
             except Exception as e:
                 print(f"[warn] {gid}/{st} seed {si} failed: {type(e).__name__}: "
                       f"{str(e)[:100]}", flush=True)
                 seed_es.append(None)
                 continue
+        # Winner = lowest E_smd whose gas single point also succeeds. This reproduces the
+        # previous per-seed behaviour exactly: a seed whose gas SCF raised was discarded there
+        # too, and the next-lowest seed won.
+        gas_s = None
+        for e_c, si_c, res_c, path_c, atoms_c in sorted(ranked, key=lambda x: x[0]):
+            try:
+                gas_s, gas_fields = _winner_gas(path_c, q, mult, res_c, atoms_c, backend)
+            except Exception as exc:
+                print(f"[warn] {gid}/{st} seed {si_c} gas single point failed: "
+                      f"{type(exc).__name__}: {str(exc)[:100]}", flush=True)
+                seed_es[si_c] = None
+                continue
+            res_c.update(gas_fields)
+            best = (e_c, si_c, res_c, path_c)
+            break
         if best is None:
             failures += 1
             print(f"[fail] {gid}/{st}: all {len(seeds)} seeds failed", flush=True); continue
@@ -675,7 +724,7 @@ def run_batch(rows, force, do_opt=True, do_freq=True, backend="cpu", nconf=1, pr
                                    if len(valid_es) > 1 else 0.0))
         # Throughput record (wall seconds; bookkeeping only, never used in any property).
         res["timing_s"] = dict(state_wall=round(time.perf_counter() - _t_state, 2),
-                               seeds=seed_timing, thermal=thermal_s,
+                               seeds=seed_timing, sp_gas_winner=gas_s, thermal=thermal_s,
                                host=socket.gethostname(), backend=backend)
         atomic_write_json(rj, res)
         for f in outdir.glob("_seed_*.xyz"):

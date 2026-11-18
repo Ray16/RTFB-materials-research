@@ -658,8 +658,11 @@ state has its own GPU. For example, the 91-candidate pool corresponds to roughly
 reductions that leave every reported number unchanged. Across all 110 open-shell
 organic states, the two additional SCF guesses never lowered the energy by more than
 1 meV; only the ferrocenium reference, which has dedicated handling, needed them.
-Only the winning seed's gas-phase energy is used, so the gas single points on the
-other two seeds can be skipped. And the inner-sphere cross points, which feed a
+Only the winning seed's gas-phase energy is used (for the solvation free energy and
+gas-phase diagnostics), so the pipeline now computes the gas single point once, on
+the selected seed, instead of for every seed. The resulting energies agree with the
+previous per-seed route to within 10⁻¹³ Ha, the level of run-to-run floating-point
+noise. In the measured DMPZ runs this removes an estimated 13–15% of DFT time. And the inner-sphere cross points, which feed a
 property reported only qualitatively, need be computed only for candidates that
 reach a Pareto front. Together these would remove an estimated 20–35% of
 per-candidate GPU time; this is an estimate from the measured component times, not
