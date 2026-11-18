@@ -207,9 +207,18 @@ MeCN), which also binds otherwise gas-unbound dianions. Geometries are
 optimized at r²SCAN-D4/def2-SVP (anionic states def2-SVPD) in SMD. The SCF uses
 RI-J density fitting (`conv_tol = 1 × 10⁻⁹`, `max_cycle = 200`) with an escalating-
 stabilizer fallback (level shift/damping, then second-order Newton) for stubborn
-open-shell cases; open-shell states are solved from several initial guesses
-(minao/atom/Hückel) and the lowest converged solution is kept, with additional
-orbital-removal occupation seeds for the Fe doublet of ferrocenium. A def2
+open-shell cases. Open-shell states can converge to an excited SCF solution from a
+single initial guess, so they are solved from more than one guess and the lowest
+converged solution is kept. For organic open shells the guesses are minao and
+Hückel. This choice rests on 250 organic open-shell states, 32 of them searched
+with nine guesses each, including orbital-occupation seeds. In every one, minao
+plus Hückel reached the lowest solution found by any guess. That includes a radical
+anion in which minao and the atomic guess both converge 0.11 eV above the ground
+state and only Hückel finds it. When the two guesses disagree by more than 1 meV,
+or either fails to converge, the state has competing SCF solutions: the atomic
+guess is then also run, and the record is flagged for review. Metal-containing open
+shells use all three guesses, plus orbital-removal occupation seeds for the Fe
+doublet of ferrocenium. A def2
 effective core potential (ECP) is attached automatically for any element with Z ≥ 37. The three states of a motif are
 independent and are optimized concurrently, one GPU each.
 
@@ -655,14 +664,15 @@ On this hardware a two-electron candidate costs about 1–2.6 GPU-hours, and the
 time per candidate is set by its slowest redox state (about 26–65 min) when each
 state has its own GPU. For example, the 91-candidate pool corresponds to roughly
 100–240 GPU-hours at these rates. The pool's own records point to three
-reductions that leave every reported number unchanged. Across all 110 open-shell
-organic states, the two additional SCF guesses never lowered the energy by more than
-1 meV; only the ferrocenium reference, which has dedicated handling, needed them.
-Only the winning seed's gas-phase energy is used (for the solvation free energy and
+reductions that leave every reported number unchanged. The first is the SCF guess
+policy described in the Methods: organic radicals now use two initial guesses
+instead of three, with automatic escalation when they disagree. On the 250-state
+evidence set this loses no ground state, and it removes a third of the
+single-point SCFs for every open-shell state. Second, only the winning seed's gas-phase energy is used (for the solvation free energy and
 gas-phase diagnostics), so the pipeline now computes the gas single point once, on
 the selected seed, instead of for every seed. The resulting energies agree with the
 previous per-seed route to within 10⁻¹³ Ha, the level of run-to-run floating-point
-noise. In the measured DMPZ runs this removes an estimated 13–15% of DFT time. And the inner-sphere cross points, which feed a
+noise. In the measured DMPZ runs this removes an estimated 13–15% of DFT time. Third, the inner-sphere cross points, which feed a
 property reported only qualitatively, need be computed only for candidates that
 reach a Pareto front. Together these would remove an estimated 20–35% of
 per-candidate GPU time; this is an estimate from the measured component times, not

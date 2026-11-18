@@ -148,8 +148,60 @@ def _kernel_robust(mf, dm0=None):
 # Open-shell SCF can converge to a higher solution from the default (minao) guess: ferrocenium
 # gas-phase landed 2.5 eV high, an OROP radical anion 0.11 eV high in SMD
 # (scripts/validation/reference/scf_level_check.py). Open shells are therefore solved from
-# every guess here and the lowest converged energy is kept; closed shells use minao only.
-OPEN_SHELL_GUESSES = ("minao", "atom", "huckel")
+# several guesses and the lowest converged energy is kept; closed shells use minao only.
+#
+# Guess policy (evidence: 250 organic open-shell phase-states = 32 scf_level_check states
+# searched with 9 guesses incl. occupation seeds + 218 production states with all 3 guesses):
+# minao + huckel reached the lowest solution found by ANY guess in every case, including the
+# OROP-170 radical anion where minao and atom both land 0.11 eV high and only huckel finds the
+# ground state; atom never found a lower solution than minao + huckel. Metal-containing open
+# shells keep the full sweep (plus their occupation seeds): ferrocenium needed them.
+#   organic open shell : minao + huckel; if these disagree by > SCF_SPLIT_EV (or either fails
+#                        to converge) the state has competing SCF solutions -> also run atom,
+#                        keep the lowest, and record the escalation for QC
+#   metal open shell   : minao + atom + huckel (+ metal occupation seeds, unchanged)
+#   closed shell       : minao (unchanged)
+OPEN_SHELL_GUESSES = ("minao", "atom", "huckel")          # metal open shells (full sweep)
+ORGANIC_OPEN_SHELL_GUESSES = ("minao", "huckel")
+ORGANIC_ESCALATION_GUESSES = ("atom",)
+SCF_SPLIT_EV = 1e-3
+_TRANSITION_METAL_Z = set(range(21, 31)) | set(range(39, 49)) | set(range(57, 81))
+
+
+def _has_transition_metal(symbols) -> bool:
+    from ase.data import atomic_numbers
+    return any(atomic_numbers.get(s, 0) in _TRANSITION_METAL_Z for s in symbols)
+
+
+def _guess_policy(nunpaired: int, symbols):
+    """(guesses, escalation) for a state; see the policy comment above."""
+    if not nunpaired:
+        return ("minao",), ()
+    if _has_transition_metal(symbols):
+        return OPEN_SHELL_GUESSES, ()
+    return ORGANIC_OPEN_SHELL_GUESSES, ORGANIC_ESCALATION_GUESSES
+
+
+def _guess_spread_eV(per):
+    """Spread (eV) between the converged guess solutions; None if fewer than two converged."""
+    es = [x["e_Ha"] for x in per if x.get("converged") and x.get("e_Ha") is not None]
+    return (max(es) - min(es)) * HARTREE_EV if len(es) > 1 else None
+
+
+def _lowest_scf_policy(make_mf, guesses, escalation, post=None, initial_densities=None):
+    """_lowest_scf over `guesses`; if the converged solutions disagree by more than
+    SCF_SPLIT_EV, or fewer than two converged, also solve from `escalation` and keep the lowest
+    converged solution overall. Returns (e, converged, post_result, per_guess, spread_eV,
+    escalated). The spread is over the base guesses (the multiple-solution signal)."""
+    e, conv, diag, per = _lowest_scf(make_mf, guesses, post=post, initial_densities=initial_densities)
+    spread = _guess_spread_eV(per)
+    escalated = bool(escalation) and (spread is None or spread > SCF_SPLIT_EV)
+    if escalated:
+        e2, conv2, diag2, per2 = _lowest_scf(make_mf, escalation, post=post)
+        per = per + per2
+        if conv2 and (not conv or e2 < e):
+            e, conv, diag = e2, conv2, diag2
+    return e, conv, diag, per, spread, escalated
 
 
 def _free_gpu_pool():
@@ -451,7 +503,7 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
     # do_smd=False skips the (expensive) SMD SCF for callers that only need the gas energy
     # (e.g. inner-sphere reorganization cross-points) — a ~2x saving there.
     mol_sp = _mol(sbas)
-    guesses = OPEN_SHELL_GUESSES if nunpaired else ("minao",)
+    guesses, escalation = _guess_policy(nunpaired, atoms.get_chemical_symbols())
     out.update(n_atoms=int(mol_sp.natm), n_ao_sp=int(mol_sp.nao_nr()), n_ao_opt=int(mol.nao_nr()))
     # provenance of the energy: what an adopter must match (redox.backends.sp._adoptable)
     from redox.core.protocol import software_versions
@@ -467,12 +519,13 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
         _t0 = time.perf_counter()
         smd_seeds = (_metal_doublet_phase_seeds(mol_sp, sp_xc, backend, sp_disp, sp_nlc, solvent)
                      if nunpaired == 1 and 'Fe' in atoms.get_chemical_symbols() else {})
-        e_smd, conv_smd, diag_smd, per = _lowest_scf(
+        e_smd, conv_smd, diag_smd, per, spread, esc = _lowest_scf_policy(
             lambda: _build_smd_mf(mol_sp, sp_xc, solvent, backend, sp_disp, sp_nlc), guesses,
-            post=lambda m: _orbital_diag(m, nunpaired), initial_densities=smd_seeds)
+            escalation, post=lambda m: _orbital_diag(m, nunpaired), initial_densities=smd_seeds)
         out['smd_occupation_guesses'] = list(smd_seeds)
         out.update(e_smd_Ha=e_smd, e_smd_eV=e_smd * HARTREE_EV, converged_smd=conv_smd,
-                   scf_guess_energies_smd=per)
+                   scf_guess_energies_smd=per, smd_scf_guess_spread_eV=spread,
+                   smd_scf_escalated=esc)
         for k,v in (diag_smd or {}).items():
             out[f'smd_{k}']=v
         timing["sp_smd"] = round(time.perf_counter() - _t0, 2)
@@ -490,11 +543,12 @@ def dft_smd(xyz_path: Path, charge: int, mult: int,
             return m
         gas_seeds = (_metal_doublet_gas_seeds(mol_sp, sp_xc, backend, sp_disp, sp_nlc)
                      if nunpaired == 1 and 'Fe' in atoms.get_chemical_symbols() else {})
-        e_gas, conv_gas, diag, per = _lowest_scf(_gas_mf, guesses,
+        e_gas, conv_gas, diag, per, spread, esc = _lowest_scf_policy(_gas_mf, guesses, escalation,
                         post=lambda m: _orbital_diag(m, nunpaired), initial_densities=gas_seeds)
         out['gas_occupation_guesses'] = list(gas_seeds)
         out.update(e_gas_Ha=e_gas, e_gas_eV=e_gas * HARTREE_EV, converged_gas=conv_gas,
-                   scf_guess_energies_gas=per)
+                   scf_guess_energies_gas=per, gas_scf_guess_spread_eV=spread,
+                   gas_scf_escalated=esc)
         # QC: anion-bound check (gas HOMO > 0 => unbound) + spin contamination.
         for k, v in (diag or {}).items():
             out[f"gas_{k}"] = v

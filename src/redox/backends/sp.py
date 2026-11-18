@@ -88,7 +88,12 @@ def _adoptable(res: dict, proto: dict = ACTIVE_SP, *, charge=None, mult=None,
             and res.get("conv_tol") == proto["conv_tol"]
             and (not open_shell or (isinstance(guesses, list)
                                    and all(isinstance(guess, str) for guess in guesses)
-                                   and len(set(guesses)) > 1))
+                                   and len(set(guesses)) > 1
+                                   # huckel is the guess that finds the ground state where
+                                   # minao and atom both fail (OROP-170 radical anion); metal
+                                   # repairs carry occupation seeds (rm*/add*) instead
+                                   and ("huckel" in guesses
+                                        or any(g.startswith(("rm", "add")) for g in guesses))))
             and res.get("optimized") is True
             and isinstance(res.get("sp_xc"), str) and res["sp_xc"].lower() == proto["xc"]
             and isinstance(res.get("sp_basis"), str) and res["sp_basis"].lower() == proto["basis"]
