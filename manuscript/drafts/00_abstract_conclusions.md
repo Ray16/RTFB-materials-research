@@ -125,15 +125,14 @@ JCIM requires a data-availability statement; see below.
 ### Code availability
 
 Versioned code and curated metadata are maintained in the public project
-repository [TODO: confirm URL — archived manuscript cites
-https://github.com/Ray16/RTFB-materials-research]. The release provides the
+repository (https://github.com/Ray16/RTFB-materials-research). The release provides the
 `redox` command registry (unchanged public command names dispatching to the
 documented package layout), five byte-exact portable replays under `examples/`
 that reconstruct cached scientific results without rerunning DFT (verified via
 `scripts/validation/check_refactor_oracles.py`), a scientific-contract test suite
-of 744 passing tests [TODO: verify final count — MIGRATION.md reports 744 passed /
-1 skipped; a later symlinked run reports 749 passed], and a certificate-locked
-projected-thermal qRRHO kernel whose byte-identity is required for the replays.
+of 773 passing tests (1 skipped; `pytest tests -q`, verified 2026-11-17), and a
+certificate-locked projected-thermal qRRHO kernel whose byte-identity is required
+for the replays.
 Installation and a locked scientific environment are described by `setup_env.sh`
 and `docs/INSTALLATION.md`. GPU work is gated through `gpu_reserve`; the released
 tree runs reproduction and tests CPU-only and launches no DFT or Hessian jobs.

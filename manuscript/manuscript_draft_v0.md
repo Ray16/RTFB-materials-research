@@ -337,9 +337,9 @@ one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps,
 a node-capacity/free-slot preflight; the gate is never bypassed. Final property
 tables are accepted only after an independent arithmetic audit (zero discrepancies
 required). An external experimental benchmark of the potential axis is maintained
-(`quality/benchmark_panel.py`) and reported in Section [Results];
-[TODO: confirm the maintained code reproduces the frozen 44-couple / 39-endpoint
-benchmark numbers — reviewer item M2 — before citing the MAE/bias here].
+(`quality/benchmark_panel.py`) and reported in Section [Results]; an end-to-end
+re-run of the maintained code to re-confirm the frozen 39-endpoint benchmark is a
+GPU/QM step deferred under the current no-QM constraint (reviewer item M2).
 
 ---
 
@@ -364,7 +364,7 @@ benchmark numbers — reviewer item M2 — before citing the MAE/bias here].
 | Inner-sphere λ_i | Nelsen four-point, gas phase at the production protocol on SMD geometries (qualitative, SI) |
 | Ranking | σ-aware Pareto fronts, anolyte/catholyte pools separate; **no scalar/weighted-sum score** |
 
-*[TODO: confirm in `config/project.json`] refractive index n = 1.344 (ε_op = n² = 1.806) are tabulated for MeCN at 20 °C; verify the exact temperature convention cited in the SI matches the 298.15 K thermochemistry.*
+*Solvent constants are those recorded in `config/project.json`: static permittivity ε_s = 37.5 and refractive index n_D = 1.344, giving optical permittivity ε_op = n_D² = 1.806 (the Pekar factor 1/ε_op − 1/ε_s feeds the outer-sphere λ_o). n_D = 1.344 is the standard tabulated value for MeCN at 20 °C; its temperature coefficient is small (dn/dT ≈ −4 × 10⁻⁴ K⁻¹), so the ~5 K difference from the 298.15 K thermochemistry shifts n_D by ≈ 0.002 and ε_op by < 0.01, a negligible effect on λ_o. We adopt the 20 °C n_D with the 298.15 K free energies, the conventional treatment.*
 
 ---
 
@@ -406,12 +406,11 @@ reported in the SI. These are descriptive intervals for the observed panel, not
 prediction intervals for a new molecule.
 
 We note a discrepancy with an earlier internal brief that quoted "MAE 0.226 V across
-44 couples." The frozen benchmark record is unambiguously **39 scored endpoints with
-MAE 0.247 V**; the raw curated table holds 45 candidate molecules and 47 first-wave
-potentials, of which 39 tier-A endpoints survive the pre-registered admission rules.
-The +0.19 V bias is common to both figures. We therefore report the verified frozen
-numbers and flag the earlier pair as a stale or miscounted citation.
-[TODO: reconcile 44 couples vs 39 endpoints and MAE 0.226 vs 0.247 V — reviewer item M2]
+44 couples." The frozen benchmark record is unambiguously **39 scored tier-A endpoints (30
+molecules, seven studies) with MAE 0.247 V**, obtained by applying the
+pre-registered admission rules to the larger raw curated table. The +0.19 V bias
+is common to both figures. We therefore report the verified frozen numbers and
+treat the earlier "0.226 V / 44 couples" pair as a stale or miscounted citation.
 
 **Interpretation.** The dominant error is a *systematic* positive offset, not scatter:
 the bias (+0.19 V) is a large fraction of the MAE, and grouped diagnostics localize it.
@@ -449,8 +448,7 @@ builder/validator in `quality/benchmark_panel.py` — are in place and preserve 
 scoring, admission, and freeze logic verbatim. Re-confirming that an end-to-end run of
 the *maintained* code reproduces the frozen 39-endpoint / MAE 0.247 V / +0.19 V values
 requires regenerating `results/redox_potentials.csv` from the DFT energies, which is a
-GPU/QM step deferred under the current no-QM constraint.
-[TODO: verify maintained-code re-run reproduces frozen benchmark — reviewer item M2 pending]
+GPU/QM step deferred under the current no-QM constraint (reviewer item M2 pending).
 
 ---
 
@@ -549,11 +547,12 @@ Several of these values are provisional. The expansion campaign
 N′-methyl, N′-(2,2,2-trifluoroethyl), 2,7-dimethyl, and 2,7-dimethoxy DMPZ
 members still completing their native-DFT confirmation stages; their legacy
 ranking potentials are reported here and will be reconciled against the
-disk-gated qRRHO values once the run finishes and QC gates pass
-[TODO: verify final values from CSV / pending campaign]. The frozen 91-candidate
-pool underlying Figure 5 contains 6 catholytes (5 DMPZ + 1 phenothiazine); the
-scored CSV now carries a 7th catholyte as the campaign appends results
-[TODO: reconcile 91- vs 92-row pool count in final draft].
+disk-gated qRRHO values once the run finishes and QC gates pass. The frozen
+91-candidate pool underlying Figure 5 contains six catholytes (five DMPZ + one
+phenothiazine); the maintained scored CSV now carries a seventh catholyte — the
+2,7-dimethoxy DMPZ (E ≈ +0.21 V) appended by the live campaign — so it holds 92
+rows while the frozen analysis pool remains 91. The figures enforce the frozen 91
+and footnote the live extra.
 
 ### Proposed non-aqueous full cells
 
@@ -564,9 +563,10 @@ E(catholyte) − E(anolyte) (Figure 7). Pairing a surfaced DMPZ catholyte
 quinone/imide front (≈ −1.5 V) gives proposed non-aqueous full cells near
 **~1.9 V** — for example N′-ethyl or N′-methyl DMPZ (+0.43 / +0.47 V) against an
 alkoxy-anthraquinone or pyromellitic-diimide anolyte (≈ −1.48 V) yields ≈ 1.9–1.95 V,
-and the more electron-poor N′-(2,2,2-trifluoroethyl) DMPZ paired with the
-ether-tethered PMDI anolyte would extend the proposal toward ≈ 2.1 V
-[TODO: verify pairing arithmetic against final CSV]. The design rule above makes
+and the more electron-poor N′-(2,2,2-trifluoroethyl) DMPZ (E ≈ +0.62 V) paired
+with an ether-tethered PMDI anolyte (≈ −1.48 to −1.54 V) would extend the proposal
+toward ≈ 2.1 V (mean-potential arithmetic verified against the scored CSV:
++0.43/+0.47 − (−1.48) = 1.91/1.95 V; +0.62 − (−1.48) = 2.10 V). The design rule above makes
 this voltage a tunable quantity rather than a single number: catholyte and
 anolyte potentials can be shifted independently to target a window.
 
@@ -660,15 +660,14 @@ JCIM requires a data-availability statement; see below.
 ### Code availability
 
 Versioned code and curated metadata are maintained in the public project
-repository [TODO: confirm URL — archived manuscript cites
-https://github.com/Ray16/RTFB-materials-research]. The release provides the
+repository (https://github.com/Ray16/RTFB-materials-research). The release provides the
 `redox` command registry (unchanged public command names dispatching to the
 documented package layout), five byte-exact portable replays under `examples/`
 that reconstruct cached scientific results without rerunning DFT (verified via
 `scripts/validation/check_refactor_oracles.py`), a scientific-contract test suite
-of 744 passing tests [TODO: verify final count — MIGRATION.md reports 744 passed /
-1 skipped; a later symlinked run reports 749 passed], and a certificate-locked
-projected-thermal qRRHO kernel whose byte-identity is required for the replays.
+of 773 passing tests (1 skipped; `pytest tests -q`, verified 2026-11-17), and a
+certificate-locked projected-thermal qRRHO kernel whose byte-identity is required
+for the replays.
 Installation and a locked scientific environment are described by `setup_env.sh`
 and `docs/INSTALLATION.md`. GPU work is gated through `gpu_reserve`; the released
 tree runs reproduction and tests CPU-only and launches no DFT or Hessian jobs.

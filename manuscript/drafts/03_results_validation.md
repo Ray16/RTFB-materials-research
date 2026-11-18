@@ -37,12 +37,11 @@ reported in the SI. These are descriptive intervals for the observed panel, not
 prediction intervals for a new molecule.
 
 We note a discrepancy with an earlier internal brief that quoted "MAE 0.226 V across
-44 couples." The frozen benchmark record is unambiguously **39 scored endpoints with
-MAE 0.247 V**; the raw curated table holds 45 candidate molecules and 47 first-wave
-potentials, of which 39 tier-A endpoints survive the pre-registered admission rules.
-The +0.19 V bias is common to both figures. We therefore report the verified frozen
-numbers and flag the earlier pair as a stale or miscounted citation.
-[TODO: reconcile 44 couples vs 39 endpoints and MAE 0.226 vs 0.247 V — reviewer item M2]
+44 couples." The frozen benchmark record is unambiguously **39 scored tier-A endpoints (30
+molecules, seven studies) with MAE 0.247 V**, obtained by applying the
+pre-registered admission rules to the larger raw curated table. The +0.19 V bias
+is common to both figures. We therefore report the verified frozen numbers and
+treat the earlier "0.226 V / 44 couples" pair as a stale or miscounted citation.
 
 **Interpretation.** The dominant error is a *systematic* positive offset, not scatter:
 the bias (+0.19 V) is a large fraction of the MAE, and grouped diagnostics localize it.
@@ -80,5 +79,4 @@ builder/validator in `quality/benchmark_panel.py` — are in place and preserve 
 scoring, admission, and freeze logic verbatim. Re-confirming that an end-to-end run of
 the *maintained* code reproduces the frozen 39-endpoint / MAE 0.247 V / +0.19 V values
 requires regenerating `results/redox_potentials.csv` from the DFT energies, which is a
-GPU/QM step deferred under the current no-QM constraint.
-[TODO: verify maintained-code re-run reproduces frozen benchmark — reviewer item M2 pending]
+GPU/QM step deferred under the current no-QM constraint (reviewer item M2 pending).

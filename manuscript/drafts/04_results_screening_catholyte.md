@@ -94,11 +94,12 @@ Several of these values are provisional. The expansion campaign
 N′-methyl, N′-(2,2,2-trifluoroethyl), 2,7-dimethyl, and 2,7-dimethoxy DMPZ
 members still completing their native-DFT confirmation stages; their legacy
 ranking potentials are reported here and will be reconciled against the
-disk-gated qRRHO values once the run finishes and QC gates pass
-[TODO: verify final values from CSV / pending campaign]. The frozen 91-candidate
-pool underlying Figure 5 contains 6 catholytes (5 DMPZ + 1 phenothiazine); the
-scored CSV now carries a 7th catholyte as the campaign appends results
-[TODO: reconcile 91- vs 92-row pool count in final draft].
+disk-gated qRRHO values once the run finishes and QC gates pass. The frozen
+91-candidate pool underlying Figure 5 contains six catholytes (five DMPZ + one
+phenothiazine); the maintained scored CSV now carries a seventh catholyte — the
+2,7-dimethoxy DMPZ (E ≈ +0.21 V) appended by the live campaign — so it holds 92
+rows while the frozen analysis pool remains 91. The figures enforce the frozen 91
+and footnote the live extra.
 
 ### Proposed non-aqueous full cells
 
@@ -109,9 +110,10 @@ E(catholyte) − E(anolyte) (Figure 7). Pairing a surfaced DMPZ catholyte
 quinone/imide front (≈ −1.5 V) gives proposed non-aqueous full cells near
 **~1.9 V** — for example N′-ethyl or N′-methyl DMPZ (+0.43 / +0.47 V) against an
 alkoxy-anthraquinone or pyromellitic-diimide anolyte (≈ −1.48 V) yields ≈ 1.9–1.95 V,
-and the more electron-poor N′-(2,2,2-trifluoroethyl) DMPZ paired with the
-ether-tethered PMDI anolyte would extend the proposal toward ≈ 2.1 V
-[TODO: verify pairing arithmetic against final CSV]. The design rule above makes
+and the more electron-poor N′-(2,2,2-trifluoroethyl) DMPZ (E ≈ +0.62 V) paired
+with an ether-tethered PMDI anolyte (≈ −1.48 to −1.54 V) would extend the proposal
+toward ≈ 2.1 V (mean-potential arithmetic verified against the scored CSV:
++0.43/+0.47 − (−1.48) = 1.91/1.95 V; +0.62 − (−1.48) = 2.10 V). The design rule above makes
 this voltage a tunable quantity rather than a single number: catholyte and
 anolyte potentials can be shifted independently to target a window.
 

@@ -191,9 +191,9 @@ one writer owns each motif, `taskset` CPU pinning, OMP/MKL/OpenBLAS thread caps,
 a node-capacity/free-slot preflight; the gate is never bypassed. Final property
 tables are accepted only after an independent arithmetic audit (zero discrepancies
 required). An external experimental benchmark of the potential axis is maintained
-(`quality/benchmark_panel.py`) and reported in Section [Results];
-[TODO: confirm the maintained code reproduces the frozen 44-couple / 39-endpoint
-benchmark numbers — reviewer item M2 — before citing the MAE/bias here].
+(`quality/benchmark_panel.py`) and reported in Section [Results]; an end-to-end
+re-run of the maintained code to re-confirm the frozen 39-endpoint benchmark is a
+GPU/QM step deferred under the current no-QM constraint (reviewer item M2).
 
 ---
 
@@ -218,4 +218,4 @@ benchmark numbers — reviewer item M2 — before citing the MAE/bias here].
 | Inner-sphere λ_i | Nelsen four-point, gas phase at the production protocol on SMD geometries (qualitative, SI) |
 | Ranking | σ-aware Pareto fronts, anolyte/catholyte pools separate; **no scalar/weighted-sum score** |
 
-*[TODO: confirm in `config/project.json`] refractive index n = 1.344 (ε_op = n² = 1.806) are tabulated for MeCN at 20 °C; verify the exact temperature convention cited in the SI matches the 298.15 K thermochemistry.*
+*Solvent constants are those recorded in `config/project.json`: static permittivity ε_s = 37.5 and refractive index n_D = 1.344, giving optical permittivity ε_op = n_D² = 1.806 (the Pekar factor 1/ε_op − 1/ε_s feeds the outer-sphere λ_o). n_D = 1.344 is the standard tabulated value for MeCN at 20 °C; its temperature coefficient is small (dn/dT ≈ −4 × 10⁻⁴ K⁻¹), so the ~5 K difference from the 298.15 K thermochemistry shifts n_D by ≈ 0.002 and ε_op by < 0.01, a negligible effect on λ_o. We adopt the 20 °C n_D with the 298.15 K free energies, the conventional treatment.*
