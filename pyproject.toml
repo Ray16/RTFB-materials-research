@@ -8,11 +8,17 @@ version = "0.1.0"
 description = "Computational screening of redox motifs for post-functionalization of Merrifield-type polymers in nonaqueous electrolyte."
 readme = "README.md"
 requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Ray Zhu"}]   # TODO(author): add co-authors before release
+
 # NOTE: runtime dependencies are intentionally NOT pinned here. The env (torch/fairchem/
 # gpu4pyscf/xtb) is built by setup_env.sh with CUDA-matched wheels and listed in
 # requirements.txt; `pip install -e .` should only link the `redox` package, never re-resolve
 # those. Install into the `redox` conda env after setup_env.sh has run.
 dependencies = []
+
+[project.urls]
+Repository = "https://github.com/Ray16/RTFB-materials-research"
 
 [project.scripts]
 redox = "redox.cli:main"

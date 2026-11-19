@@ -11,6 +11,6 @@ supporting electrolyte, molecular charge, counterions and original-study identit
 | [Cata diimides](cata_diimides_2024.json) | Four source compounds and eight half-wave potentials in CH2Cl2 | Alternative imide cores; graph transcription pending; no MeCN labels |
 
 The [source catalog](../../../config/discovery_sources.json) links original
-publications, licenses and acquisition records. The [exploration guide](../../../docs/CANDIDATE_EXPLORATION.md)
+publications, licenses and acquisition records. The exploration guide
 describes the current search and selection policy. Structure, condition and
 source checks are recorded with each campaign under `results/discovery/`.

@@ -25,7 +25,7 @@ path relocation is independent of changing the scientific implementation.
 `qualified_xtb_prefix` remains available for an explicit process-local binding
 before a thermodynamic worker or Python threads have started.
 
-The [fresh-prefix check](../../validation/xtb_runtime_relocation_2026-10-31/README.md)
+The fresh-prefix check
 installs all 18 exact packages in a new temporary directory, checks installed
 artifact metadata and both qualified file hashes, and checks dynamic linkage
 against that prefix and the system libraries. It runs the actual thermodynamic

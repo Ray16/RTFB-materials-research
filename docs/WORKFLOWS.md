@@ -271,6 +271,6 @@ while checking arguments. Run it only when a new collection directory is explici
 requested. The current reviewer package uses the append-only manifests described
 in the results index.
 
-The [reader checks](../validation/workspace_reader_checks.json) verify canonical
+The reader checks verify canonical
 output acceptance and rejection of changed relocated input bytes before output
 creation. These checks do not qualify the still-running full raw archive.

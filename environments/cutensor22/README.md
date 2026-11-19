@@ -1,6 +1,6 @@
 # Isolated V100-compatible tensor runtime
 
-[Runtime definition](runtime.json) · [Two-spin full-Hessian comparison](../../results/validation/cutensor22_full_spin_2026-10-25/comparison.json) · [Runtime guard](../../scripts/fleet/tensor_runtime_worker.py)
+[Runtime definition](runtime.json) · Two-spin full-Hessian comparison · Runtime guard
 
 This task-local, system-site-packages overlay uses CuPy 13.4.1, cuTENSOR 2.2.0 and fastrlock 0.8.3 with the existing PySCF 2.14.0/GPU4PySCF 1.8.1 installation. It does not modify the primary environment or change molecular methods. The runtime definition deliberately preserves its preparation-time label; qualification is a separate immutable result.
 

@@ -27,7 +27,6 @@ SOURCES = [
  ('Exact phenothiazine and candidate registry', 'validation/phenothiazine_registry_2026-11-03/README.md'),
  ('Four finite polymer cycles', 'validation/ionic_cycle_completion_2026-11-02/README.md'),
  ('Sampling completeness', 'validation/corrected_sampling_2026-11-02/README.md'),
- ('Publication scope and qualifications', 'docs/PUBLICATION_READINESS.md'),
  ('Current results guide', 'results/README.md'),
 ]
 FIGURES = {

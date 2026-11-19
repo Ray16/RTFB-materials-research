@@ -42,14 +42,14 @@ long-term operation in the proposed bead-based flow battery.
 
 For the existing TEMPO local graft, [US6441243B1, Example A4](https://patents.google.com/patent/US6441243B1/en)
 reports attachment of 4-hydroxy-TEMPO to Merrifield resin using NaH in DMF or
-THF, with N-oxyl content reported for the washed product. The [exact route and
-material assessment](../results/grafting/tempo_exact_support_2026-10-26/README.md)
+THF, with N-oxyl content reported for the washed product. The exact route and
+material assessment
 permits further evaluation, while reaction free energy, bead-specific loading,
 electrochemical cycling and neighboring-motif interactions remain unresolved.
 
 An exact precursor-access update on 23 October identified mono-N-ethyl/NH PMDI
 in [EP0010440B1, Example 19](https://patents.google.com/patent/EP0010440B1/en).
-The [identity review](../results/reviews/2026-10-23/pmdi_precursor_access/summary.json)
+The identity review
 binds that reported compound to the configured precursor. This is a patent
 report, not an independent preparation or a Merrifield grafting demonstration.
 The exact PMDI route still needs selectivity and redox-core-retention evidence.
@@ -147,13 +147,13 @@ registered AQ-carboxylate alternative. None is automatically admitted to synthes
 or to a new full-property campaign by this family-level review.
 
 The machine-readable sources are in
-[route_evidence.json](../results/grafting/route_evidence.json); candidate-specific
-reviews remain separate. The [route screen](../results/grafting/route_screen.json)
+route_evidence.json; candidate-specific
+reviews remain separate. The route screen
 requires precursor access, selectivity, defined conditions, a balanced route and
 redox-core retention before admission. The
-[synthesis-route guide](SYNTHESIS_ROUTE.md) records the prospective evaluation order.
+synthesis-route guide records the prospective evaluation order.
 
-A separately authorized [DBU/DIPEA pilot](../results/grafting/base_assisted/README.md)
+A separately authorized DBU/DIPEA pilot
 completed all six new components for proton capture and chloride contact-pair
 sensitivity in matched MeCN calculations. Five candidates have corrected values;
 one lacks a qualified upstream precursor. These bases have attachment precedents in other solvents and
@@ -164,7 +164,7 @@ reactions and experimental yield remain to be established.
 
 The later proton-transfer validation qualifies the base-assisted interpretation:
 the DBU capture term differs from the revised MeCN pKa estimate by 22.8 kJ/mol.
-A [DIPEA spectrophotometric measurement](../results/validation/dipea_uv_anchor_2026-10-26/README.md)
+A DIPEA spectrophotometric measurement
 reports log Kᴴ = 18.64(1) in MeCN at 25 °C; a separate DIPEAH
 hexafluorophosphate NMR estimate is 18.7. Indicator, counterion and activity
 conventions are not established to match the modeled separated-chloride

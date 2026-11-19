@@ -42,4 +42,4 @@ python scripts/validation/compare_screening_polymer_hessians.py \
 The same check can include the independently reviewed H100 control, or a future
 raw-response continuation. A source-prefix audit, CPU test or completed response
 block alone cannot serve as a completed full-Hessian input. Current results and
-remaining limits belong in [the results index](../results/README.md).
+remaining limits belong in the results index.
