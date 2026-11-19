@@ -352,7 +352,7 @@ assignment, thread limits, the xTB program, the number of conformer seeds, the
 thermal tier, and the return code and timing of every step. A resumed run must use
 the same inputs: new molecules may be added, but a changed molecule stops the run.
 Reproducibility is tested in two ways. Five worked examples (`examples/`) must
-reproduce stored results byte for byte, and a test suite (780 passing) checks the
+reproduce stored results byte for byte, and a test suite (783 passing) checks the
 code. The thermochemistry code, the xTB program, and the inputs of the worked
 examples are each checked against a stored SHA-256 hash before use, so any change
 to them is detected.
@@ -835,7 +835,7 @@ Versioned code and curated metadata are maintained in the public project
 repository (https://github.com/Ray16/RTFB-materials-research). The release provides the `redox` command registry and five worked examples under
 `examples/` that rebuild stored scientific results without rerunning DFT (checked
 with `scripts/validation/check_refactor_oracles.py`). It also includes a test suite
-of 780 passing tests (1 skipped; `pytest tests -q`, run 2026-11-18) and a
+of 783 passing tests (1 skipped; `pytest tests -q`, run 2026-11-19) and a
 hash-checked thermochemistry code that the worked examples depend on. The worked
 examples exercise this code on earlier systems; the numbers of this paper are
 regenerated separately. Every figure and the SI are rebuilt from committed tables by

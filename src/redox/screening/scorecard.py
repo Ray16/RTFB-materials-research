@@ -464,7 +464,8 @@ def derive_uncertainties(redox_rows):
     lambda_bias = statistics.median(lam_res) if lam_res else None
 
     # disproportionation: stability_validation residuals (kJ/mol -> eV)
-    KJ_EV = 1.0 / 96.485
+    from redox.core.common import EV_KJ
+    KJ_EV = 1.0 / EV_KJ
     disp_res = [_f(r.get("err_kJmol")) for r in _load("stability_validation")
                 if (r.get("tier") or "A") == "A"]          # grounded tier-A spacings only
     disp_res = [x * KJ_EV for x in disp_res if x is not None]

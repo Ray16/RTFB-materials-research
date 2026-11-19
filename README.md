@@ -118,7 +118,7 @@ availability statement. To recompute from them, extract the archive and set
 OMP_NUM_THREADS=1 python -m pytest tests -q
 ```
 
-The suite checks the scientific contracts of the package (CPU only; 780 pass,
+The suite checks the scientific contracts of the package (CPU only; 783 pass,
 1 skipped when run from a clone without the raw records).
 
 ## License

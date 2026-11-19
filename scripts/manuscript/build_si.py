@@ -335,6 +335,7 @@ def s_scored():
     lam = {r["id"]: r for r in csv.DictReader(open(ROOT / "data/manuscript/lambda_outer_fullpool_2026-11-17.csv"))}
     pool_flag = {r["id"]: r for r in csv.DictReader(open(EVID / "2026-11-18_cpu_checks/readiness_pool91.csv"))
                  if not (r["status"] == "ready" or r["issues"] == "missing_validated_native_thermal")}
+    smiles = {r["id"]: r["smiles"] for r in csv.DictReader(open(ROOT / "data/manuscript/pool_structures.csv"))}
     frozen, _ = fp.load_frozen()
     front = set()
     for pool, low in (("anolyte", True), ("catholyte", False)):
@@ -343,7 +344,7 @@ def s_scored():
     out, md = [], []
     for r in rows:
         L = lam.get(r["id"], {})
-        d = dict(id=r["id"], name=r["name"], family=r["family"], pool=r["pool"], n=r["n"],
+        d = dict(id=r["id"], name=r["name"], smiles=smiles[r["id"]], family=r["family"], pool=r["pool"], n=r["n"],
                  E_mean_V=r["E_mean"], E_couples_V=r["E_couples"], capacity_active_mAh_g=r["cap_active_mAh_g"],
                  capacity_salt_mAh_g=r["cap_salt_mAh_g"], MW_repeat_unit=r["MW_repeat_unit"],
                  lambda_o_born_eV=L.get("lambda_o_born_eV", ""), sasa_radius_A=L.get("sasa_radius_A", ""),
@@ -369,7 +370,9 @@ def s_scored():
 couples, vs Fc. Capacities: active = neutral repeat-unit mass (used in the paper); salt =
 with counterions (do not compare across pools). λ_o (Born) uses the SASA-equivalent radius.
 Source: `data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,
-`data/manuscript/lambda_outer_fullpool_2026-11-17.csv`; CSV copy with identifiers,
+`data/manuscript/lambda_outer_fullpool_2026-11-17.csv`; exact structures (SMILES of the
+capped graft, rebuilt by `scripts/manuscript/pool_structures.py`):
+`data/manuscript/pool_structures.csv`; CSV copy with identifiers, SMILES,
 couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 
 {check}

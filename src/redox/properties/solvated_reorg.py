@@ -85,12 +85,12 @@ def hydrodynamic_radius_A(smiles: str, probe_radius_A: float, method: str = "sas
         sasa = rdFreeSASA.CalcSASA(m, radii, opts=opts)          # Angstrom^2
         return math.sqrt(sasa / (4.0 * math.pi))
     except Exception as exc:
+        # Do not substitute the vdW-volume radius: it is a different (smaller) radius and
+        # would silently inflate lambda_o under a column labelled as the SASA radius.
         import warnings
-        warnings.warn(f"SASA radius failed ({type(exc).__name__}: {exc}); falling back to the "
-                      f"vdW-VOLUME radius for {smiles!r} — a different radius definition")
-        from rdkit.Chem import AllChem
-        vol = AllChem.ComputeMolVolume(m)
-        return (3.0 * vol / (4.0 * math.pi)) ** (1.0 / 3.0)
+        warnings.warn(f"SASA radius failed for {smiles!r} ({type(exc).__name__}: {exc}); "
+                      f"returning None")
+        return None
 
 
 # Back-compat alias: previous callers used effective_radius_A (bare vdW volume radius).

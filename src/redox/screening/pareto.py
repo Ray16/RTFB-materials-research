@@ -26,7 +26,7 @@ Applies the design decided earlier:
 from __future__ import annotations
 import csv
 
-from redox.core.common import RESULTS
+from redox.core.common import EV_KJ, RESULTS
 from redox.core.common import load_config as _cfg
 from redox.core.common import to_float as _f
 
@@ -80,7 +80,7 @@ def _objectives(cand, pool, sc, cap_key="specific_capacity_mAh_g"):
         missing.append("capacity")
     dg = _f(cand.get("dG_disp_kJmol"))
     if dg is not None and thermal_valid and model_ready:
-        o["stability"] = (dg, (_f(cand.get("sigma_disp_eV")) or sc.SIGMA_DISP_EV) * 96.485)
+        o["stability"] = (dg, (_f(cand.get("sigma_disp_eV")) or sc.SIGMA_DISP_EV) * EV_KJ)
     elif str(cand.get("disp_applicable")) == "True":
         missing.append("stability")
     # Only QC-clean inner-sphere lambda is admitted. A row whose couples were all flagged or

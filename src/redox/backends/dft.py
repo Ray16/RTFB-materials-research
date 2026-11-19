@@ -604,10 +604,13 @@ def _uma_mult(gid: str, state: str, fallback: int) -> int:
             return int(entry['mult'])
     uj = UMA / gid / state / "result.json"
     if uj.exists():
+        # An existing but unreadable UMA record must not silently revert to the manifest
+        # multiplicity: that would change the spin gate without any trace.
         try:
             return int(json.loads(uj.read_text())["chosen_mult"])
-        except Exception:
-            pass
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            raise RuntimeError(f"{gid}/{state}: unreadable UMA spin record {uj} "
+                               f"({type(exc).__name__}: {exc})") from exc
     return fallback
 
 

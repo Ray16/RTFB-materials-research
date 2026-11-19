@@ -113,11 +113,16 @@ def compute_couple(states, solv, smiles=None, xyz=None, xyz2=None, xc="b3lyp", b
     pcm1 = pcm_at(geom)
     pcm2 = pcm_at(_load_xyz(xyz2)) if xyz2 else None
     pcm = pcm1 if pcm2 is None else 0.5 * (pcm1 + pcm2)
-    a = sasa_radius_A(smiles) if smiles else _radius_from_geom(geom)
+    if smiles:
+        a, radius_method = sasa_radius_A(smiles), "sasa_equivalent_sphere"
+        if a is None:
+            raise RuntimeError(f"SASA radius failed for {smiles!r}; no lambda_o written")
+    else:
+        a, radius_method = _radius_from_geom(geom), "gyration_plus_1.5A"
     dz = abs(q2 - q1)  # electrons transferred
     born = born_lambda_outer(a, eps_s, eps_op, z=dz, n_body=n_body)
     return dict(smiles=smiles or "", solvent=solv["name"], eps_s=eps_s, eps_op=eps_op,
-                q1=q1, m1=m1, q2=q2, m2=m2, sasa_radius_A=round(a, 3),
+                q1=q1, m1=m1, q2=q2, m2=m2, sasa_radius_A=round(a, 3), radius_method=radius_method,
                 born_lambda_o_eV=round(born, 4), pcm_lambda_o_eV=round(pcm, 4),
                 pcm_lambda_o_geom1_eV=round(pcm1, 4),
                 pcm_lambda_o_geom2_eV=(round(pcm2, 4) if pcm2 is not None else ""),
@@ -199,7 +204,7 @@ def main():
             print(f"{rid:18s} ERROR: {type(e).__name__}: {e}", flush=True)
     if a.out and out_rows:
         cols = ["id", "shape", "smiles", "couple", "solvent", "eps_s", "eps_op",
-                "sasa_radius_A", "born_lambda_o_eV", "pcm_lambda_o_eV", "pcm_over_born", "n_body",
+                "sasa_radius_A", "radius_method", "born_lambda_o_eV", "pcm_lambda_o_eV", "pcm_over_born", "n_body",
                 "pcm_lambda_o_geom1_eV", "pcm_lambda_o_geom2_eV", "xc", "basis", "backend",
                 "cavity", "scf_converged", "geom_source"]
         with open(a.out, "w", newline="") as f:

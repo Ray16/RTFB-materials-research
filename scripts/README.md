@@ -16,6 +16,7 @@ records and a GPU cluster. The scripts below are the ones behind the JCIM paper.
 | Figure 6a/6b (DMPZ design rule) | `plotting/manuscript/fig6_dmpz_design_rule.py` | same scored table |
 | Figure 7 (proposed cells) | `plotting/manuscript/fig7_cell_voltage.py` | same scored table |
 | TOC graphic | `plotting/manuscript/fig_toc.py` | same scored table |
+| Exact structures of the scored candidates (`data/manuscript/pool_structures.csv`) | `manuscript/pool_structures.py` | `config/*.py` candidate definitions, scored table |
 | Supporting Information + `manuscript/si_tables/` | `manuscript/build_si.py` | the records above and `manuscript/evidence/` |
 | `manuscript/jcim/manuscript.tex` / `.pdf` | `manuscript/build_latex.py` | `manuscript/manuscript_draft_v0.md`, figure captions |
 

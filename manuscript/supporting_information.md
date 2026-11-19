@@ -240,7 +240,9 @@ them. Full outputs: `manuscript/evidence/2026-11-18_cpu_checks/readiness_*.csv`.
 couples, vs Fc. Capacities: active = neutral repeat-unit mass (used in the paper); salt =
 with counterions (do not compare across pools). λ_o (Born) uses the SASA-equivalent radius.
 Source: `data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,
-`data/manuscript/lambda_outer_fullpool_2026-11-17.csv`; CSV copy with identifiers,
+`data/manuscript/lambda_outer_fullpool_2026-11-17.csv`; exact structures (SMILES of the
+capped graft, rebuilt by `scripts/manuscript/pool_structures.py`):
+`data/manuscript/pool_structures.csv`; CSV copy with identifiers, SMILES,
 couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 
 **Independent check.** Every couple was recomputed from the stored energies and geometries (production single point plus a freshly computed xTB thermal term; ferrocene reference 4.3553 V) by `scripts/validation/score_pool_legacy_tier.py`. All 92 of 92 candidates agree with the table to within 0.5 mV (the table's rounding); record: `manuscript/evidence/2026-11-18_cpu_checks/pool_legacy_tier_rescore.json`.
