@@ -6,8 +6,8 @@ RDKit raster embedded in the layout). PNG only, per the figure style contract.
 **Figure 1. A redox motif is modeled as an exact capped graft, with redox states
 defined per motif.**
 **(a) Grafting abstraction.** Each candidate is built by attaching a redox motif
-(here 5,10-dihydrophenazine, DMPZ, the p-type catholyte scaffold used in the
-showcase; both ring nitrogens are N–H in the free motif) to a *4-methylbenzyl* cap
+(here 5,10-dihydrophenazine, DMPZ, the p-type catholyte scaffold examined in this
+work; both ring nitrogens are N–H in the free motif) to a *4-methylbenzyl* cap
 that serves as a Merrifield (poly(vinylbenzyl)) backbone proxy; the ring methyl
 *para* to the benzylic linker stands in for the polymer chain. Grafting is a
 balanced local substitution onto 4-methylbenzyl chloride (`Cc1ccc(CCl)cc1`),

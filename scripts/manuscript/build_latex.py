@@ -65,7 +65,8 @@ def inline(s: str) -> str:
         keys = [k.strip() for k in m.group(1).split(";")]
         cites.append(r"\cite{" + ",".join(key_id(k) for k in keys) + "}")
         return f"\x01{len(cites) - 1}\x01"
-    s = re.sub(r"\[((?:[A-Z][^\[\]]*?(?:\d{4}|RDKit))(?:;\s*[^\[\]]*?(?:\d{4}|RDKit))*)\]", keep_cite, s)
+    item = r"(?:[A-Z][^\[\];]*?\d{4}|RDKit)"
+    s = re.sub(r"\[(" + item + r"(?:;\s*" + item + r")*)\]", keep_cite, s)
     s = esc(s)
     s = re.sub(r"\*\*(.+?)\*\*", r"\\textbf{\1}", s)
     s = re.sub(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])", r"\\emph{\1}", s)
@@ -127,7 +128,9 @@ def caption_text(num):
 def figure_env(num):
     _, imgs = FIGURES[num]
     w = 0.98 if len(imgs) == 1 else 0.49
-    inc = "\n".join(rf"\includegraphics[width={w}\textwidth]{{figures/{i}}}" for i in imgs)
+    # Height cap keeps image + (long) caption on one page; keepaspectratio preserves shape.
+    inc = "\n".join(rf"\includegraphics[width={w}\textwidth,height=0.42\textheight,keepaspectratio]{{figures/{i}}}"
+                     for i in imgs)
     return ("\\begin{figure}[htbp]\n\\centering\n" + inc + "\n\\caption{" + caption_text(num)
             + "}\n\\label{fig:" + str(num) + "}\n\\end{figure}\n")
 
@@ -143,7 +146,7 @@ def bib_from_refs(ref_block: str) -> str:
         doi = re.search(r"DOI:\s*(\S+?)\.?$", rest)
         if key == "RDKit":
             out.append("@misc{rdkit,\n  title = {{RDKit}: Open-Source Cheminformatics Software, version 2026.03.5},\n"
-                       "  howpublished = {\\url{https://www.rdkit.org}},\n  note = {accessed 2026-11-18}\n}\n")
+                       "  howpublished = {\\url{https://www.rdkit.org}},\n  year = {2026},\n  note = {accessed 2026-11-18}\n}\n")
             continue
         # authors; title. *Journal* **year**, *vol* (issue), pages. DOI: x.
         mm = re.match(r"(.+?(?:\.|et al\.))\s+(.+?)\.\s+\*(.+?)\*\s+\*\*(\d{4})\*\*,\s*(.*?)\s*DOI:", rest)

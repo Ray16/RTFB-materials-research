@@ -7,7 +7,7 @@ to quality-checked redox properties in nine stages.**
 The driver `redox.workflows.motifs.commands()` runs: (1) build the grafted-motif
 model (RDKit ETKDG ensemble, 4-methylbenzyl cap, redox states per motif);
 (2) UMA MLIP gas-phase pre-optimization (charge-/spin-aware seed); (3) DFT
-geometry optimization in SMD(MeCN) for each state [neutral / ox1 / ox2] at
+geometry optimization in SMD(MeCN) for each redox state (for a catholyte: neutral, radical cation, dication) at
 r²SCAN-D4/def2-SVP(D) with a GFN2-xTB ALPB(MeCN) warm start, the three states run
 concurrently; (4) refined single-point energies at ωB97M-V(VV10)/def2-TZVPD in
 SMD(MeCN) using one diffuse basis for every charge state and for the Fc reference;

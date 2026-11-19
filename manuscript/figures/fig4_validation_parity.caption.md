@@ -1,7 +1,7 @@
 # Figure 4 — validation parity
 
 **Figure 4.** Computed versus experimental redox potentials (V vs Fc/Fc+, in MeCN) for
-the tier-A benchmark panel. Each point is one redox endpoint (a single measured wave /
+the 39-endpoint benchmark panel. Each point is one redox endpoint (a single measured wave /
 couple), coloured by redox family (quinone, aromatic imide, phenothiazine, viologen,
 nitroxide). The solid line is the 1:1 identity; the shaded envelope is the +/-MAE
 agreement band. Over **n = 39 endpoints from 30 molecules and 7 independent studies**,
@@ -24,9 +24,9 @@ established by this comparison. Naphthalene diimide (NDI) endpoints are excluded
 scored set. The confidence intervals are panel-resampling (bootstrap) intervals over the
 observed endpoints, not predictive intervals, and no empirical correction, outlier
 removal, or acceptance threshold was fit to these errors. The values were computed with
-the code version at commit `46b39c3b` (tag `legacy/pre-refactor-main`); the plotted
+the code version at commit `46b39c3b` (an ancestor of tag `legacy/pre-refactor-main`); the plotted
 potentials use the DFT-frequency thermal tier, and the same panel at the pool's xTB
 tier gives MAE 0.232 V (SI S3).
 
-Source: `archive/0_redox/manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json`.
+Source: `manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json`.
 Generator: `scripts/plotting/manuscript/fig4_validation_parity.py`.

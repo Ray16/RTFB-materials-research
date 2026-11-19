@@ -72,7 +72,7 @@ def s_module_map():
         ("5 Thermochemistry", "`redox.backends.dft._thermal_correction`; `redox.qm.qrrho`", "xTB RRHO (pool tier); projected qRRHO (DFT-frequency tier)"),
         ("6 Properties", "`redox.properties.potentials`, `.capacity_and_proxies`, `.lambda_outer`, `.reorg`", "potentials, capacity, λ_o, λ_i"),
         ("7 Quality checks", "`redox.quality.readiness`, `.spins`, `.stability`", "per-state structure, spin, protocol, completeness"),
-        ("8 Ranking", "`redox.screening.scorecard`, `.pareto`", "pool assignment and Pareto fronts"),
+        ("8 Ranking", "`scripts/plotting/manuscript/fig5_pareto.py`, `redox.screening.pareto`", "Pareto fronts per pool (the script computes the fronts shown; the module implements the uncertainty-aware rule tested in Methods)"),
         ("9 Tables and audit", "`redox.reporting.tables`", "exported tables and arithmetic audit"),
     ]
     missing = [m for _, mods, _ in stages for m in mods.replace("`", "").replace(";", ",").split(",")
@@ -202,7 +202,8 @@ records reproduces every published potential (largest difference
 {s['max_native_reproduction_error_V']:.1e} V).
 
 **Provenance.** The benchmark was produced by code commit `{man['source_commit'][:8]}`
-(preserved under the tag `legacy/pre-refactor-main`). Panel hash
+(an ancestor of the tag `legacy/pre-refactor-main`). The record itself is
+`manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json`. Panel hash
 `{b['panel_sha256'][:16]}…`; the review files it was checked against and their SHA-256:
 
 {md_table(["File", "SHA-256"], [[Path(k).name, f"`{v[:16]}…`"] for k, v in prov.items()])}

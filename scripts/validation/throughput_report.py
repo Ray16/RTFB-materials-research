@@ -23,10 +23,13 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
+# Raw QM records live outside the repository; set REDOX_DATA_ROOT to their root.
+DFT = Path(os.environ.get("REDOX_DATA_ROOT", ROOT)) / "calcs" / "dft"
 CACHED_S = 60.0
 _OPT = re.compile(r"Time elapsed since start of run_optimizer: ([\d.]+)")
 
@@ -42,7 +45,7 @@ def _gpu_names(m):
 
 
 def _n_atoms(gid, state):
-    p = ROOT / "calcs" / "dft" / gid / state / "opt.xyz"
+    p = DFT / gid / state / "opt.xyz"
     try:
         return int(p.read_text().split()[0])
     except (OSError, ValueError, IndexError):
@@ -50,7 +53,7 @@ def _n_atoms(gid, state):
 
 
 def _record_timing(gid, state):
-    p = ROOT / "calcs" / "dft" / gid / state / "result.json"
+    p = DFT / gid / state / "result.json"
     try:
         d = json.loads(p.read_text())
     except (OSError, ValueError):

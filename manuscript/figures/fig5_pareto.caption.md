@@ -14,7 +14,8 @@ each pool (step line, outlined numbered markers keyed to real chemical names) is
 candidates not dominated on both axes simultaneously — for anolytes, more negative potential
 *and* higher capacity; for catholytes, more positive potential *and* higher capacity.
 Horizontal whiskers on front members span ±0.25 V (MAE 0.247), the validation-benchmark
-potential error (MAE over 39 tier-A redox endpoints); front membership that would flip under a
+potential error (MAE over the 39 benchmark endpoints at the DFT-frequency tier; 0.232 V at the
+xTB tier used for the pool); front membership that would flip under a
 potential shift smaller than this is not physically meaningful, which the whiskers make
 explicit without collapsing the two axes.
 

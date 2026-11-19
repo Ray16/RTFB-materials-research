@@ -130,7 +130,7 @@ follows. We first describe the grafted-molecule model and the nine-stage pipelin
 including its two levels of thermal correction (a cheap one for the whole pool and
 a more expensive one for confirming leads) and its automatic quality checks. We then
 present the test against experiment, apply the pipeline to the 91-candidate pool and its Pareto
-fronts, and finally present the DMPZ catholyte showcase and the proposed full
+fronts, and finally present the DMPZ catholyte family and the proposed full
 cells, before closing with the method's limitations and outlook.
 
 ---
@@ -246,7 +246,12 @@ it, with all electronic energies unchanged, gives an MAE of 0.232 V instead of
 vibrational frequencies with DFT in solvent (r²SCAN-D4/def2-SVP(D)/SMD). It accepts
 a structure only if it is a true energy minimum, adds a spin-degeneracy term, and
 treats low-frequency vibrations with a quasi-RRHO (qRRHO) model [Grimme 2012]. It needs a GPU and much disk space, so
-it is used to *confirm* leads rather than across the pool. If a state lacks either
+it is used to *confirm* leads rather than across the pool. The xTB tier has no
+spin-degeneracy term (−k_BT ln m for multiplicity m). Because the ferrocenium
+reference is a doublet, this omission shifts every two-electron mean potential by the
+same −18 mV, which leaves the ranking unchanged. A one-electron couple moves by −36 mV
+when its product is the doublet and not at all when its reactant is, so the spacing
+between the two waves narrows by 36 mV. If a state lacks either
 its production energy or a valid thermal correction, its couple is marked
 incomplete; electronic energies alone are never used instead. A molecule and the
 ferrocene reference must use the same thermal tier, or the couple is flagged.
@@ -319,7 +324,9 @@ kept separate**. An ambipolar molecule enters both pools with only its own side'
 electrons. The fronts in this paper use two objectives, oriented so that higher is
 better: voltage (−E for anolytes, +E for catholytes) and theoretical capacity. A
 candidate is on the front if no other candidate in its pool is at least as good on
-both and better on one. The benchmark's mean absolute error (±0.25 V) is drawn on
+both and better on one. The two single-wave mono-imides (phthalimide and
+1,8-naphthalimide) are method controls, not candidates: they are plotted for
+reference but excluded from the front computation. The benchmark's mean absolute error (±0.25 V) is drawn on
 the figures as the uncertainty of each potential, rather than built into the
 front. We also tested a rule that takes uncertainty into account. Under it, candidate A
 beats candidate B only if A is clearly better on one property and not clearly worse
@@ -452,7 +459,9 @@ keeping every electronic energy unchanged. This gives an MAE of 0.232 V, an RMSE
 0.266 V, and a bias of +0.19 V (reductions: MAE 0.224 V, bias +0.18 V; oxidations:
 MAE 0.278 V, bias +0.28 V). Individual potentials move by −0.06 to +0.11 V between
 the two tiers, and by +0.003 V on average. The cheaper tier used for the pool is
-therefore no less accurate on this panel. The re-scoring script and its record are
+therefore no less accurate on this panel. Relative to the second reduction, the
+first reduction moves by −70 mV on average between the tiers; the missing
+spin-degeneracy term of the xTB tier (Methods) accounts for 36 mV of this. The re-scoring script and its record are
 in the SI (`scripts/validation/benchmark_tier_comparison.py`); recomputing the
 DFT-frequency tier the same way reproduces every published potential exactly.
 
@@ -478,7 +487,7 @@ identity and unspecified stereocenters. And we cannot yet say how much of the bi
 comes from the ferrocene reference and how much from solvation.
 
 The panel contains no dihydrophenazine, so it does not by itself calibrate the
-catholyte family used in the showcase below. As a family-specific check we computed
+catholyte family examined below. As a family-specific check we computed
 the exact measured parent, 5,10-bis(2-methoxyethyl)-5,10-dihydrophenazine (BMEPZ;
 E₁ = −0.29 V, E₂ = +0.50 V vs Fc in MeCN [Kwon 2019]), with the xTB thermal tier
 used for the pool. The computed couples are −0.06 and +0.87 V, errors of +0.23 and
@@ -501,9 +510,11 @@ errors between 0 and +0.4 V, with the mean bias of +0.19 V marked; the largest e
 (the second oxidation of N-ethyl-3,7-dimethoxyphenothiazine, 0.55 V) is kept.
 
 **Which code produced these numbers.** The benchmark was computed with the version
-of the code at commit `46b39c3b` (22 October 2026). That commit is preserved in the
-public repository under the tag `legacy/pre-refactor-main`, and the benchmark record,
-which records hashes of its inputs, is provided in the SI. The released code is a
+of the code at commit `46b39c3b` (22 October 2026). That commit is in the history of
+the public repository (it is an ancestor of the tag `legacy/pre-refactor-main`). The
+benchmark record, which records hashes of its inputs, is in the repository
+(`manuscript/evidence/2026-10-22_benchmark_complete/`), and every endpoint is listed
+in SI S3. The released code is a
 reorganized version of that code. Its five worked examples reproduce stored results byte for byte. Two later changes
 to the DFT step were tested directly: the gas-phase energy is now computed only for
 the selected conformer, and radicals use the new guess policy. Both reproduce the
@@ -549,7 +560,8 @@ qualitatively and is not used in the ranking, for the reasons given in the Metho
 Figure 5 presents the two Pareto panels side by side. The anolyte panel (85 candidates) is densely populated across a wide range of
 potentials. Imides span −0.81 to −1.54 V vs Fc and quinones −0.83 to −1.49 V.
 Pyromellitic diimides (PMDI; e.g. the ether-tethered PMDI at −1.54 V) and
-alkoxy-anthraquinones (≈ −1.49 V) sit at the most negative edge, and the viologens
+alkoxy-anthraquinones (≈ −1.49 V) sit at the most negative edge of the two-electron
+candidates (only the single-wave phthalimide control, at −1.63 V, lies further out), and the viologens
 lie between −0.63 and −0.99 V. Theoretical capacities
 of the two-electron anolytes span ≈ 90–200 mAh g⁻¹, highest for the light
 benzo- and naphthoquinones and falling as solubilizing oligoether or long-alkyl caps
@@ -572,17 +584,17 @@ the series.
 
 **Table 2.** Grafted DMPZ series and the 3,7-dimethoxyphenothiazine. E vs Fc is the
 mean of the two one-electron couples (xTB thermal tier); capacity uses the neutral
-repeat-unit mass. Identifiers are those used in the records and in SI Table S7.
+repeat-unit mass. SI Table S7 gives the record identifier of each candidate.
 
-| Candidate | N′ / ring substitution | E vs Fc (V) | Couples (V) | Capacity (mAh g⁻¹) |
-|---|---|---:|---|---:|
-| `exp_dmpz_mb_ethyl` | N′-ethyl | +0.43 | −0.03 / +0.88 | 164.2 |
-| `exp_dmpz_mb_methyl` | N′-methyl | +0.47 | +0.03 / +0.91 | 171.6 |
-| `hyp_dmpz_mb_methoxyethyl` | N′-(2-methoxyethyl) | +0.47 | +0.01 / +0.94 | 150.4 |
-| `hyp_dmpz_mb_trifluoroethyl` | N′-(2,2,2-trifluoroethyl) | +0.62 | +0.15 / +1.10 | 140.9 |
-| `hyp_dmpz_27dimethyl_ethyl` | 2,7-dimethyl, N′-ethyl | +0.30 | −0.14 / +0.73 | 151.2 |
-| `hyp_dmpz_27dimethoxy_ethyl` | 2,7-dimethoxy, N′-ethyl | +0.21 | −0.22 / +0.64 | 138.7 |
-| `exp_ptz_37dimethoxy` | 3,7-dimethoxyphenothiazine | +0.78 | +0.37 / +1.19 | 142.7 |
+| Candidate | E vs Fc (V) | Couples (V) | Capacity (mAh g⁻¹) |
+|---|---:|---|---:|
+| N-(4-methylbenzyl)-N′-ethyl-5,10-dihydrophenazine | +0.43 | −0.03 / +0.88 | 164.2 |
+| N-(4-methylbenzyl)-N′-methyl-5,10-dihydrophenazine | +0.47 | +0.03 / +0.91 | 171.6 |
+| N-(4-methylbenzyl)-N′-(2-methoxyethyl)-5,10-dihydrophenazine | +0.47 | +0.01 / +0.94 | 150.4 |
+| N-(4-methylbenzyl)-N′-(2,2,2-trifluoroethyl)-5,10-dihydrophenazine | +0.62 | +0.15 / +1.10 | 140.9 |
+| N-(4-methylbenzyl)-N′-ethyl-2,7-dimethyl-5,10-dihydrophenazine | +0.30 | −0.14 / +0.73 | 151.2 |
+| N-(4-methylbenzyl)-N′-ethyl-2,7-dimethoxy-5,10-dihydrophenazine | +0.21 | −0.22 / +0.64 | 138.7 |
+| N-(4-methylbenzyl)-3,7-dimethoxyphenothiazine | +0.78 | +0.37 / +1.19 | 142.7 |
 
 Read as shifts relative to the N′-ethyl DMPZ reference (+0.43 V), the series gives a
 consistent **design rule**. An electron-withdrawing
@@ -824,20 +836,29 @@ repository (https://github.com/Ray16/RTFB-materials-research). The release provi
 `examples/` that rebuild stored scientific results without rerunning DFT (checked
 with `scripts/validation/check_refactor_oracles.py`). It also includes a test suite
 of 780 passing tests (1 skipped; `pytest tests -q`, run 2026-11-18) and a
-hash-checked thermochemistry code that the worked examples depend on.
+hash-checked thermochemistry code that the worked examples depend on. The worked
+examples exercise this code on earlier systems; the numbers of this paper are
+regenerated separately. Every figure and the SI are rebuilt from committed tables by
+the scripts in `scripts/plotting/manuscript/` and `scripts/manuscript/` (listed in
+`scripts/README.md`); the values in Tables 2–4 can be read from the same tables
+(`data/manuscript/`, `manuscript/tables/throughput_measured.csv`); and `scripts/validation/score_pool_legacy_tier.py`
+recomputes the scored table from the raw records.
 Installation and a locked scientific environment are described by `setup_env.sh`
-and `docs/INSTALLATION.md`. GPU work is gated through `gpu_reserve`; the released
-tree runs reproduction and tests CPU-only and launches no DFT or Hessian jobs.
+and `docs/INSTALLATION.md`. GPU jobs are submitted through a reservation wrapper that
+assigns one job per GPU; reproduction and tests run on CPU only and launch no DFT or
+Hessian jobs.
 
 ### Data availability
 
 The raw quantum-chemical records (geometries, energies, frequencies, and state
 metadata) for the candidate pool and the benchmark, about 270 GB in total, are kept
 in a separate data tree that the code reads through a configurable data root. The
-smaller records behind specific statements in this paper (the BMEPZ check, the
-SCF-policy control, the benchmark re-scored at the pool's thermal tier, and the
-throughput measurements) are in the repository under `manuscript/evidence/` and
-`manuscript/tables/`. The raw-record archive does not yet have a public archival
+tables the figures are built from (the scored candidate pool and the outer-sphere
+estimates) are in the repository under `data/manuscript/`. The smaller records
+behind specific statements in this paper (the 39-endpoint benchmark record, the BMEPZ
+check, the SCF-policy control, the benchmark re-scored at the pool's thermal tier,
+the readiness checks and the throughput measurements) are under
+`manuscript/evidence/` and `manuscript/tables/`. The raw-record archive does not yet have a public archival
 DOI; final deposition and author metadata remain to be supplied **[TODO: author to supply data DOI,
 repository release tag, author list, contributions, funding, and competing-
 interest statements]**.
