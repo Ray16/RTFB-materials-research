@@ -1,0 +1,219 @@
+{
+  "commit": "94e6ed54b4144fe3392bd78569880b41d2e927cb",
+  "python": "3.11.15 | packaged by conda-forge | (main, Aug 11 2026, 10:26:29) [GCC 14.4.0]",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "3.0.5",
+    "matplotlib": "3.11.1",
+    "rdkit": "2026.3.5",
+    "graphviz": "0.21",
+    "pillow": "12.3.0"
+  },
+  "commands": [
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/manuscript/pool_structures.py"
+      ],
+      "returncode": 0,
+      "log": "00_pool_structures.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig1_grafting.py"
+      ],
+      "returncode": 0,
+      "log": "01_fig1_grafting.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig2_pipeline.py"
+      ],
+      "returncode": 0,
+      "log": "02_fig2_pipeline.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig3_qc_funnel.py"
+      ],
+      "returncode": 0,
+      "log": "03_fig3_qc_funnel.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig4_validation_parity.py"
+      ],
+      "returncode": 0,
+      "log": "04_fig4_validation_parity.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig5_pareto.py"
+      ],
+      "returncode": 0,
+      "log": "05_fig5_pareto.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig6_dmpz_design_rule.py"
+      ],
+      "returncode": 0,
+      "log": "06_fig6_dmpz_design_rule.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig7_cell_voltage.py"
+      ],
+      "returncode": 0,
+      "log": "07_fig7_cell_voltage.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/plotting/manuscript/fig_toc.py"
+      ],
+      "returncode": 0,
+      "log": "08_fig_toc.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/manuscript/build_si.py"
+      ],
+      "returncode": 0,
+      "log": "09_build_si.log"
+    },
+    {
+      "command": [
+        "/homes/rzhu/miniforge3/envs/redox/bin/python",
+        "scripts/manuscript/build_latex.py"
+      ],
+      "returncode": 0,
+      "log": "10_build_latex.log"
+    }
+  ],
+  "scope": "Rebuild from committed evidence; raw quantum records are not revalidated",
+  "pdf_compiled": true,
+  "byte_identical": true,
+  "success": true,
+  "artifacts": {
+    "data/manuscript/pool_structures.csv": {
+      "expected_sha256": "3ba30b6c47fb0aa24d05df6b59d2eda099695e711d65788fb9429ea9f09abda4",
+      "actual_sha256": "3ba30b6c47fb0aa24d05df6b59d2eda099695e711d65788fb9429ea9f09abda4",
+      "matches": true
+    },
+    "manuscript/figures/fig1_grafting.png": {
+      "expected_sha256": "d7d30852cc9b5c00234c6203c3ee2034092570e17760a410539b580af217b3df",
+      "actual_sha256": "d7d30852cc9b5c00234c6203c3ee2034092570e17760a410539b580af217b3df",
+      "matches": true
+    },
+    "manuscript/figures/fig2_pipeline.png": {
+      "expected_sha256": "85255989827ba6b247ffeb5b1a60293f0835b89d13887f881f777332f5940e9c",
+      "actual_sha256": "85255989827ba6b247ffeb5b1a60293f0835b89d13887f881f777332f5940e9c",
+      "matches": true
+    },
+    "manuscript/figures/fig3_qc_funnel.png": {
+      "expected_sha256": "9b76e76be1e6eab5ecf5d35581ac9d0e79ee43983db2c3aa1964cb9dd714b062",
+      "actual_sha256": "9b76e76be1e6eab5ecf5d35581ac9d0e79ee43983db2c3aa1964cb9dd714b062",
+      "matches": true
+    },
+    "manuscript/figures/fig4_validation_parity.png": {
+      "expected_sha256": "9f0331cdde856f57ec667b88b5034fa0c5890e0d00b3605e37e1fa72f600c3ff",
+      "actual_sha256": "9f0331cdde856f57ec667b88b5034fa0c5890e0d00b3605e37e1fa72f600c3ff",
+      "matches": true
+    },
+    "manuscript/figures/fig4b_residuals.png": {
+      "expected_sha256": "d3a488a80597141e69d41efd5b3c11844aeea83a6f91536b19d2ae28a2994507",
+      "actual_sha256": "d3a488a80597141e69d41efd5b3c11844aeea83a6f91536b19d2ae28a2994507",
+      "matches": true
+    },
+    "manuscript/figures/fig5a_anolyte_pareto.png": {
+      "expected_sha256": "aa01c59bfe059158deb8a3bfe845d3b58ed239f49b894d66223c1010bf940414",
+      "actual_sha256": "aa01c59bfe059158deb8a3bfe845d3b58ed239f49b894d66223c1010bf940414",
+      "matches": true
+    },
+    "manuscript/figures/fig5b_catholyte_pareto.png": {
+      "expected_sha256": "e1765365d209fdb464864dcd05f08b66c917f8965953ec13692501f53bf3c14e",
+      "actual_sha256": "e1765365d209fdb464864dcd05f08b66c917f8965953ec13692501f53bf3c14e",
+      "matches": true
+    },
+    "manuscript/figures/fig6_dmpz_design_rule.png": {
+      "expected_sha256": "066dad70e2e3cc06c2c00ad58caadc35d6a621fe74dfd7895da5868c407b9870",
+      "actual_sha256": "066dad70e2e3cc06c2c00ad58caadc35d6a621fe74dfd7895da5868c407b9870",
+      "matches": true
+    },
+    "manuscript/figures/fig6b_dmpz_catholyte_space.png": {
+      "expected_sha256": "2bb2c096e5afc35c4bd375d06110e7c54d5b7148dd77f6562b10e9bc41b48ca7",
+      "actual_sha256": "2bb2c096e5afc35c4bd375d06110e7c54d5b7148dd77f6562b10e9bc41b48ca7",
+      "matches": true
+    },
+    "manuscript/figures/fig7_cell_voltage.png": {
+      "expected_sha256": "120cc1e9ab1b96595be1edb51cc1041262836eed2b9fdf89532440d9c2e4f097",
+      "actual_sha256": "120cc1e9ab1b96595be1edb51cc1041262836eed2b9fdf89532440d9c2e4f097",
+      "matches": true
+    },
+    "manuscript/figures/toc_graphic.png": {
+      "expected_sha256": "eda3f48c33abcce92ff38913912ffb1d96aa8fadbb6603f39379cd9d94ab5f1b",
+      "actual_sha256": "eda3f48c33abcce92ff38913912ffb1d96aa8fadbb6603f39379cd9d94ab5f1b",
+      "matches": true
+    },
+    "manuscript/jcim/manuscript.tex": {
+      "expected_sha256": "a12ed9616607261d6fa7898ebdda385e42a42e9874d0f15bd6d98812487c538e",
+      "actual_sha256": "a12ed9616607261d6fa7898ebdda385e42a42e9874d0f15bd6d98812487c538e",
+      "matches": true
+    },
+    "manuscript/jcim/references.bib": {
+      "expected_sha256": "be9c0ecc9f111c77f871d875b320cdf6ba5ba9bb35c37764b49808e1e0664e22",
+      "actual_sha256": "be9c0ecc9f111c77f871d875b320cdf6ba5ba9bb35c37764b49808e1e0664e22",
+      "matches": true
+    },
+    "manuscript/si_tables/S3_benchmark_endpoints.csv": {
+      "expected_sha256": "70124a33ad6fcb2152693e46b510eeb6e32c2dbebb5bdc11ac0d31fbd937b4ba",
+      "actual_sha256": "70124a33ad6fcb2152693e46b510eeb6e32c2dbebb5bdc11ac0d31fbd937b4ba",
+      "matches": true
+    },
+    "manuscript/si_tables/S7_scored_candidates.csv": {
+      "expected_sha256": "8d184b6439f8ac99ee5419f7344788b920848f65e944a5a30f5b896b43f0b4a9",
+      "actual_sha256": "8d184b6439f8ac99ee5419f7344788b920848f65e944a5a30f5b896b43f0b4a9",
+      "matches": true
+    },
+    "manuscript/supporting_information.md": {
+      "expected_sha256": "7e8a9e268d61311a6e23432b4df223e73453084e5d7db5179778cded5c4976d1",
+      "actual_sha256": "7e8a9e268d61311a6e23432b4df223e73453084e5d7db5179778cded5c4976d1",
+      "matches": true
+    }
+  },
+  "validation": {
+    "pytest": {
+      "passed": 798,
+      "skipped": 1,
+      "warnings": 1,
+      "scope": "CPU tests; raw-record check skipped"
+    },
+    "scientific_replays": {
+      "passed": 5,
+      "stdout_hashes_match_baselines": true
+    },
+    "protected_certificate_inputs_changed": false,
+    "unresolved_latex_citations_or_references": false,
+    "latex_overfull_hboxes_pt": [
+      11.81055,
+      20.72336
+    ],
+    "submission_ready": false,
+    "remaining": [
+      "Overleaf authentication and pull/merge before further manuscript edits",
+      "Raw scored-pool records not recovered; data deposition and raw recomputation blocked",
+      "Candidate chemical-name cleanup",
+      "Two existing chemical-name table cell overflows",
+      "Author, affiliation, funding, competing-interest and deposit metadata deferred by author"
+    ]
+  }
+}
