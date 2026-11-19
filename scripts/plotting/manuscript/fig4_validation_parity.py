@@ -13,8 +13,8 @@ PNG only, 300 dpi, per manuscript/figures/STYLE_CONTRACT.md (no .pdf).
 
   python scripts/plotting/manuscript/fig4_validation_parity.py
 
-Data (frozen archive, READ ONLY):
-  archive/.../2026-10-22_benchmark_complete/benchmark.json
+Data (frozen benchmark record, READ ONLY):
+  manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json
 Outputs:
   manuscript/figures/fig4_validation_parity.png
   manuscript/figures/fig4b_residuals.png
@@ -31,10 +31,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np               # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[3]
-DATA = Path(
-    "/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/manuscript/evidence/"
-    "2026-10-22_benchmark_complete/benchmark.json"
-)
+DATA = ROOT / "manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json"
 FIGDIR = ROOT / "manuscript" / "figures"
 
 # Family -> colour per STYLE_CONTRACT.md section 2 (identical hues across all figures).
@@ -70,7 +67,7 @@ def main():
     n_mol = d["admitted_molecules"]
     n_std = d["original_studies"]
 
-    # integrity check: the data must agree with the pinned CONTEXT.md numbers.
+    # integrity check: the data must agree with the numbers quoted in the manuscript.
     assert n == 39, f"expected n=39, got {n}"
     assert len(rows) == 39, f"expected 39 endpoints, got {len(rows)}"
     assert n_mol == 30 and n_std == 7, (n_mol, n_std)

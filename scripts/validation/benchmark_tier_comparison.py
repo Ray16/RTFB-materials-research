@@ -27,21 +27,23 @@ import csv
 import glob
 import json
 import os
+import shutil
 import statistics as st
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
-os.environ.setdefault("XTB_BIN", "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/xtb")
+os.environ.setdefault("XTB_BIN", shutil.which("xtb") or str(Path(sys.executable).with_name("xtb")))
 from ase.io import read as aseread  # noqa: E402
 from redox.backends.dft import _thermal_correction  # noqa: E402
 from redox.core.common import DFT  # noqa: E402
 from redox.core.io import atomic_write_json  # noqa: E402
 
-ARCHIVE = Path("/nfs/lambda_stor_01/homes/rzhu/archive/0_redox")
-EVIDENCE = ARCHIVE / "manuscript/evidence/2026-10-22_benchmark_complete"
-REVIEW = ARCHIVE / "results/reviews/2026-10-22/publication_benchmark_complete"
+# Frozen benchmark record (states.json/summary.json of the 2026-10-22 review are stored
+# alongside it as review_states.json/benchmark_review.json). Raw QM records come from
+# redox.core.common.DFT, i.e. $REDOX_DATA_ROOT/calcs/dft.
+EVIDENCE = ROOT / "manuscript/evidence/2026-10-22_benchmark_complete"
 OUT = ROOT / "manuscript/evidence/2026-11-18_cpu_checks/benchmark_legacy_tier.json"
 
 
@@ -62,8 +64,8 @@ def _smd_energies(gid, state):
 
 
 def main() -> int:
-    states = json.loads((REVIEW / "states.json").read_text())
-    fc_native = json.loads((REVIEW / "summary.json").read_text())["native_Fc_absolute_V"]
+    states = json.loads((EVIDENCE / "review_states.json").read_text())
+    fc_native = json.loads((EVIDENCE / "benchmark_review.json").read_text())["native_Fc_absolute_V"]
     points = list(csv.DictReader(open(EVIDENCE / "benchmark_points.csv")))
     needed = {f"{p['id']}:{s}" for p in points for s in p["event"].split("->")}
     needed |= {"ferrocene:neu", "ferrocene:ox"}
@@ -130,9 +132,9 @@ def main() -> int:
     )
     record = dict(purpose="frozen benchmark re-scored at the pool's GFN2-xTB RRHO thermal tier",
                   summary=summary, problems=problems, endpoints=rows, states=per_state,
-                  inputs=dict(states=str(REVIEW / "states.json"),
-                              summary=str(REVIEW / "summary.json"),
-                              points=str(EVIDENCE / "benchmark_points.csv")))
+                  inputs=dict(states=str(EVIDENCE / "review_states.json"),
+                              summary=str(EVIDENCE / "benchmark_review.json"),
+                              points=str((EVIDENCE / "benchmark_points.csv").relative_to(ROOT))))
     OUT.parent.mkdir(parents=True, exist_ok=True)
     atomic_write_json(OUT, record)
     print(json.dumps(summary, indent=1))

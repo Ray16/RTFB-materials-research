@@ -178,7 +178,7 @@ compared with its measured potentials (E₁ = −0.29 V, E₂ = +0.50 V vs Fc in
 MeCN [Kwon 2019]). Each state was started from the same RDKit/MMFF structure,
 optimized with DFT in SMD acetonitrile (one conformer seed, no UMA or xTB
 pre-optimization), scored with the production single point, and given the xTB
-thermal correction used for the pool. Run on lambda2 (2026-11-18), 20 min in total.
+thermal correction used for the pool. Run on one GPU (2026-11-18), 20 min in total.
 
 | State | Charge | Multiplicity | E_SMD (eV) | G_thermal (eV) | G (eV) | SCF guesses | Wall time (min) |
 |---|---|---|---|---|---|---|---|
@@ -204,7 +204,7 @@ better of minao and Hückel is within 1 meV of the lowest solution found by any 
 
 **Positive control.** The OROP-170 radical anion has two SCF solutions in solvent.
 Re-scored through the production code on its stored geometry
-(lambda2, 260 s):
+(one GPU, 260 s):
 
 | Phase | Guess energies (Ha) | Spread (eV) | Escalated | Difference from 9-guess search (eV) |
 |---|---|---|---|---|
@@ -238,8 +238,8 @@ them. Full outputs: `manuscript/evidence/2026-11-18_cpu_checks/readiness_*.csv`.
 **Table S7.** Every row of the scored table (pool's xTB tier). E is the mean of the
 couples, vs Fc. Capacities: active = neutral repeat-unit mass (used in the paper); salt =
 with counterions (do not compare across pools). λ_o (Born) uses the SASA-equivalent radius.
-Source: `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,
-`results/validation/lambda_outer_fullpool_2026-11-17.csv`; CSV copy with identifiers,
+Source: `data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,
+`data/manuscript/lambda_outer_fullpool_2026-11-17.csv`; CSV copy with identifiers,
 couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 
 **Independent check.** Every couple was recomputed from the stored energies and geometries (production single point plus a freshly computed xTB thermal term; ferrocene reference 4.3553 V) by `scripts/validation/score_pool_legacy_tier.py`. All 92 of 92 candidates agree with the table to within 0.5 mV (the table's rounding); record: `manuscript/evidence/2026-11-18_cpu_checks/pool_legacy_tier_rescore.json`.

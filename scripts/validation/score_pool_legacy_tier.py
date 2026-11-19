@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 """Independently recompute the scored pool's potentials at the xTB ("legacy") thermal tier.
 
-The scored table results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv (the basis of
+The scored table data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv (the basis of
 Figures 5-7) has no producing script in the repository. This script rebuilds every couple
 from the stored records and compares it with the table:
 
@@ -21,14 +21,15 @@ import argparse
 import csv
 import json
 import os
+import shutil
 import sys
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
-os.environ.setdefault("XTB_BIN", "/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/xtb")
-TABLE = ROOT / "results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+os.environ.setdefault("XTB_BIN", shutil.which("xtb") or str(Path(sys.executable).with_name("xtb")))
+TABLE = ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
 OUT = ROOT / "manuscript/evidence/2026-11-18_cpu_checks/pool_legacy_tier_rescore.json"
 
 

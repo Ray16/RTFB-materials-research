@@ -29,8 +29,10 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts" / "plotting" / "manuscript"))
 from redox.core.io import atomic_write_json  # noqa: E402
 
-CALCS = ROOT / "calcs"
-TABLE = ROOT / "results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+# Raw QM records live outside the repository; set REDOX_DATA_ROOT to their root.
+DATA_ROOT = Path(os.environ.get("REDOX_DATA_ROOT", ROOT))
+CALCS = DATA_ROOT / "calcs"
+TABLE = ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
 OUT = ROOT / "manuscript/evidence/2026-11-18_cpu_checks/supporting_stats.json"
 
 
@@ -68,7 +70,7 @@ def seeds():
 
 def pcm_ratio():
     pool = {r["id"] for r in csv.DictReader(open(TABLE))}
-    src = Path("/nfs/lambda_stor_01/homes/rzhu/archive/0_redox/results/lambda_outer.csv")
+    src = DATA_ROOT / "results/lambda_outer.csv"
     rows = [r for r in csv.DictReader(open(src)) if r["id"] in pool and r.get("lambda_o_pcm_eV")]
     rat = [float(r["pcm_over_born"]) for r in rows]
     return dict(source=str(src), couples=len(rows), molecules=len({r["id"] for r in rows}),

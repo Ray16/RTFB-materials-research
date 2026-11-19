@@ -25,7 +25,7 @@ STYLE_CONTRACT compliance: DMPZ (never DHP); PNG only (no pdf); every text eleme
 zero overlapping elements (key + family legend live in a reserved right margin, clear of all
 data and of each other); verbatim axis labels; frozen-91 pool enforced.
 
-Data: results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv (legacy xTB-RRHO tier).
+Data: data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv (legacy xTB-RRHO tier).
 The live expand_catholyte campaign may append extra catholyte rows; they are dropped (and
 reported) so the figure matches the frozen 91-candidate manuscript pool.
 
@@ -40,7 +40,7 @@ import re
 import sys
 from pathlib import Path
 
-ROOT = Path("/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor")
+ROOT = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(ROOT / "scripts" / "plotting"))
 
 import matplotlib
@@ -51,15 +51,16 @@ from matplotlib.lines import Line2D
 from plot_style import apply_style, BASE
 
 CSV = Path(sys.argv[1]) if len(sys.argv) > 1 else \
-    ROOT / "results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+    ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
 OUTDIR = Path(sys.argv[2]) if len(sys.argv) > 2 else ROOT / "manuscript/figures"
 
-# Benchmark potential uncertainty (MAE over 39 tier-A redox endpoints, archive benchmark.json).
+# Benchmark potential uncertainty (MAE over the 39 benchmark endpoints,
+# manuscript/evidence/2026-10-22_benchmark_complete/benchmark.json).
 SIGMA_E = 0.247  # V
 WHISKER_LABEL = "whisker ±0.25 V (MAE 0.247)"
 
 # Live-campaign rows appended beyond the frozen 91-candidate pool (dropped, and reported).
-# Frozen catholytes = 5 DMPZ phenazines + 1 phenothiazine (manuscript CONTEXT.md).
+# Frozen catholytes = 5 DMPZ phenazines + 1 phenothiazine (Table S7).
 EXTRA_IDS = {"hyp_dmpz_27dimethoxy_ethyl"}
 
 # Family -> colour (STYLE_CONTRACT §2; identical across both panels). Keyed by entity.

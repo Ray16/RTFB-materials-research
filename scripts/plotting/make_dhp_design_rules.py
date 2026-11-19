@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 from plot_style import apply_style, C
 
-CSV = "/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor/results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+CSV = "/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor/data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
 OUT = "/nfs/lambda_stor_01/homes/rzhu/0_redox_refactor/results/figures/candidates/dhp_design_rules.png"
 rows = {r["id"]: r for r in csv.DictReader(open(CSV))}
 def couples(gid): return [float(x) for x in rows[gid]["E_couples"].split(";")]

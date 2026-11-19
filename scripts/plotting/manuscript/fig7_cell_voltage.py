@@ -33,7 +33,7 @@ from plot_style import apply_style, OKABE_ITO  # noqa: E402
 
 import matplotlib.pyplot as plt  # noqa: E402
 
-CSV = REPO / "results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+CSV = REPO / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
 OUT = REPO / "manuscript/figures/fig7_cell_voltage"
 
 # Family colours (STYLE_CONTRACT section 2).

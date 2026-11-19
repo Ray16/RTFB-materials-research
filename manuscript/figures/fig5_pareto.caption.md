@@ -41,7 +41,7 @@ anolyte-dominated and the catholyte side is the open gap.
 - Grafting handle is the universal 4-methylbenzyl (Merrifield proxy) tether, identical on every
   candidate, and is therefore stated here rather than repeated in each label.
 
-**Data provenance.** `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`
+**Data provenance.** `data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv`
 (the 91-candidate pool: 85 anolyte / 6 catholyte; families imide 36, quinone 29,
 pyridine-multi-e 18, phenazine 5, mono-imide 2, phenothiazine 1). One catholyte added after
 the pool was fixed (`hyp_dmpz_27dimethoxy_ethyl`, 2,7-dimethoxy-N'-ethyl-DMPZ, +0.21 V) is

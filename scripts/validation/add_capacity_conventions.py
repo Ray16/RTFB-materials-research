@@ -25,7 +25,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 CSV = Path(sys.argv[1]) if len(sys.argv) > 1 else \
-    ROOT / "results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+    ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
 
 FARADAY = 96485.33212   # C/mol
 C_MASS = 12.011         # g/mol, one backbone carbon per graft site

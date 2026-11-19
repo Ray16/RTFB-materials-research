@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 from matplotlib.patches import FancyBboxPatch, FancyArrowPatch  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[3]
-CSV = ROOT / "results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+CSV = ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
 OUT = ROOT / "manuscript/figures/toc_graphic.png"
 FS = 18
 DMPZ_C, ANO_C, PTZ_C = "#E69F00", "#9AA3AD", "#762A83"

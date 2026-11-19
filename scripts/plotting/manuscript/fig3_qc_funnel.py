@@ -6,27 +6,22 @@ registry narrows to the scored candidate pool through explicit QC gates:
 
     registered graphs -> state-complete -> QC-clean -> scored candidates
 
-Honesty about the numbers (CPU-only; no QM is run here):
-  * REAL, verified:
-      - registered graphs = 912 (identity registry; docs/PUBLICATION_READINESS.md)
-      - state-complete = 450 of 456 declared states (pool-wide
-        redox.quality.readiness run, 2026-11-17; 450 have converged geometry +
-        active SP, 6 missing). This check is path-independent (see below).
-      - scored candidates = 91 (manuscript pool), with the maintained
-        results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv currently
-        carrying 92 rows (one extra phenazine catholyte from the live expansion).
-      - QC-clean = 269 of the 271 states of the 91 scored candidates pass every
-        gate that the ranking relies on (redox.quality.readiness on the pool,
-        2026-11-18). The native-thermal certificate is not counted as a gate here:
-        the pool is ranked on the xTB thermal tier, and those certificates are
-        path-locked to the original checkout (a relocation artifact). The two
-        remaining states are dianions whose spin-state treatment is not yet
-        qualified (search_pmdi_1864c2c74267/red2, hyp_cata_ndi_ethyl/red2); both
-        molecules stay in the pool with a flag and neither lies on a Pareto front.
+All counts are computed from committed readiness records (CPU only; no QM):
+  * manuscript/evidence/2026-11-18_cpu_checks/readiness_registry.csv
+      one row per declared redox state of every registered molecule
+      (redox.quality.readiness over the whole registry).
+      registered molecules = distinct ids; state-complete = states without
+      missing_geometry_or_result.
+  * manuscript/evidence/2026-11-18_cpu_checks/readiness_pool91.csv
+      the same check restricted to the 91 scored candidates.
+      QC-clean = states with no issue other than
+      missing_validated_native_thermal. That certificate is excluded because the
+      pool is ranked on the xTB thermal tier, not the native tier (the
+      manuscript Methods and SI S6 state this exclusion).
+  * scored candidates = distinct ids in readiness_pool91.csv (91).
 
-The funnel spans THREE grains, annotated on the left: GRAPH grain (identity
-registry counts molecular graphs, incl. per-state and held/uncomputed graphs),
-STATE grain (the two middle tiers, manifest redox states), and CANDIDATE grain
+The funnel spans THREE grains, annotated on the left: MOLECULE grain
+(registered molecules), STATE grain (the two middle tiers, manifest redox states), and CANDIDATE grain
 (scored motifs). Bar widths are a fixed decreasing schedule for legibility and do
 NOT encode counts proportionally.
 
@@ -48,48 +43,47 @@ from matplotlib.patches import Polygon  # noqa: E402
 ROOT = Path(__file__).resolve().parents[3]
 FIGDIR = ROOT / "manuscript" / "figures"
 FIGDIR.mkdir(parents=True, exist_ok=True)
-CSV = ROOT / "results" / "validation" / "full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+EVID = ROOT / "manuscript" / "evidence" / "2026-11-18_cpu_checks"
+REGISTRY = EVID / "readiness_registry.csv"
+POOL = EVID / "readiness_pool91.csv"
+EXCLUDED_GATE = "missing_validated_native_thermal"   # native tier; pool uses xTB tier
 
 
-def scored_count() -> int:
-    try:
-        return int(len(pd.read_csv(CSV)))
-    except Exception:
-        return -1
+def funnel_counts() -> dict:
+    reg = pd.read_csv(REGISTRY).fillna("")
+    pool = pd.read_csv(POOL).fillna("")
+    qc_clean = pool["issues"].isin(["", EXCLUDED_GATE])
+    return {
+        "molecules": reg["id"].nunique(),
+        "declared": len(reg),
+        "complete": int((~reg["issues"].str.contains("missing_geometry_or_result")).sum()),
+        "pool_states": len(pool),
+        "qc_clean": int(qc_clean.sum()),
+        "flagged": int((~qc_clean).sum()),
+        "scored": pool["id"].nunique(),
+    }
 
 
 def main():
     apply_style()
-    n_csv = scored_count()
-
-    # State-complete is REAL and path-independent: from a pool-wide
-    # `redox.quality.readiness` run (manifest grain, 2026-11-17), 456 redox
-    # states are declared and 450 have a converged geometry + active single-point
-    # result (only 6 are missing_geometry_or_result). This check reads result.json
-    # + opt.xyz + composition/connectivity/spin; it does NOT touch the native-
-    # thermal certificate, so it is unaffected by the archive relocation.
-    #
-    # QC-clean (pool, state grain): readiness on the 91 pool molecules gives 271
-    # states; 269 pass every ranking gate (the native-thermal certificate is not a
-    # gate for the xTB-tier ranking), 2 dianion states carry an unqualified
-    # spin-state flag.
-    N_DECLARED, N_STATE_COMPLETE = 456, 450
-    N_POOL_STATES, N_QC_CLEAN = 271, 269
+    k = funnel_counts()
+    N_DECLARED, N_STATE_COMPLETE = k["declared"], k["complete"]
+    N_POOL_STATES, N_QC_CLEAN = k["pool_states"], k["qc_clean"]
 
     # (label, count-text, gate description [wrapped], width, color, placeholder?)
     tiers = [
-        ("Registered graphs",
-         "912", "identity registry\n(all graphs, incl.\nheld / uncomputed)",
+        ("Registered molecules",
+         str(k["molecules"]), f"candidate registry\n({N_DECLARED} declared\nredox states)",
          1.00, C["measured"], False),
         ("State-complete",
          str(N_STATE_COMPLETE),
          f"converged geometry + SP\n({N_STATE_COMPLETE} of {N_DECLARED}\ndeclared states)",
          0.84, C["measured"], False),
         ("QC-clean",
-         str(N_QC_CLEAN), f"all ranking gates pass\n({N_QC_CLEAN} of {N_POOL_STATES} states\nof the 91 candidates)",
+         str(N_QC_CLEAN), f"all ranking gates pass\n({N_QC_CLEAN} of {N_POOL_STATES} states\nof the {k['scored']} candidates)",
          0.70, C["measured"], False),
         ("Scored candidates",
-         "91", "ranked on Pareto fronts\n(2 carry a flagged state;\nneither on a front)",
+         str(k["scored"]), f"ranked on Pareto fronts\n({k['flagged']} carry a flagged state;\nneither on a front)",
          0.62, C["good"], False),
     ]
 
@@ -135,7 +129,7 @@ def main():
             fontweight="bold")
 
     # grain annotation (rotated, far left) — the funnel spans three grains
-    ax.annotate("graph grain", xy=(-0.72, centers[0][0]), ha="center",
+    ax.annotate("molecule grain", xy=(-0.72, centers[0][0]), ha="center",
                 va="center", fontsize=18, color="#666666", rotation=90)
     ax.annotate("state grain", xy=(-0.72, 0.5 * (centers[1][0] + centers[2][0])),
                 ha="center", va="center", fontsize=18, color="#666666", rotation=90)
@@ -146,7 +140,7 @@ def main():
                  fontsize=22, pad=14)
     sub = ("State counts from redox.quality.readiness (2026-11-18). Bar widths are "
            "for legibility\nand do not scale with the counts; the tiers count "
-           "graphs, states, and candidates.")
+           "molecules, states, and candidates.")
     fig.text(0.5, 0.012, sub, ha="center", va="bottom", fontsize=18,
              color="#555555")
     ax.set_ylim(0.02, 1.02)
@@ -154,7 +148,7 @@ def main():
     fig.subplots_adjust(left=0.02, right=0.98, top=0.92, bottom=0.16)
     fig.savefig(FIGDIR / "fig3_qc_funnel.png", dpi=300)
     plt.close(fig)
-    print("scored CSV rows:", n_csv)
+    print("funnel counts:", k)
     print("  ->", FIGDIR / "fig3_qc_funnel.png")
 
 

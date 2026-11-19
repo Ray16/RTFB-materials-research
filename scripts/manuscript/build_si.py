@@ -15,6 +15,8 @@ from __future__ import annotations
 import csv
 import glob
 import json
+import os
+import shutil
 import statistics as st
 import sys
 from pathlib import Path
@@ -24,13 +26,15 @@ sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts" / "plotting" / "manuscript"))
 
 H2EV = 27.211386245988
-ARCH = Path("/nfs/lambda_stor_01/homes/rzhu/archive/0_redox")
-BENCH = ARCH / "manuscript/evidence/2026-10-22_benchmark_complete"
 EVID = ROOT / "manuscript/evidence"
+BENCH = EVID / "2026-10-22_benchmark_complete"
 OUT_MD = ROOT / "manuscript/supporting_information.md"
 OUT_TAB = ROOT / "manuscript/si_tables"
-SCORED = ROOT / "results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
-CALCS = ROOT / "calcs"
+SCORED = ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
+# Raw QM records (not in the repository; see the data-availability statement). Point
+# REDOX_DATA_ROOT at an extracted copy of the raw-record archive to recount S5 from source.
+CALCS = Path(os.environ.get("REDOX_DATA_ROOT", ROOT)) / "calcs"
+SCF_COUNTS = EVID / "2026-11-18_cpu_checks/scf_guess_counts.json"
 
 
 def j(p):
@@ -218,7 +222,7 @@ compared with its measured potentials (E₁ = {f2(r['measured']['E1'], sign=True
 MeCN [Kwon 2019]). Each state was started from the same RDKit/MMFF structure,
 optimized with DFT in SMD acetonitrile (one conformer seed, no UMA or xTB
 pre-optimization), scored with the production single point, and given the xTB
-thermal correction used for the pool. Run on {r['host']} ({r['date']}), {r['wall_s'] / 60:.0f} min in total.
+thermal correction used for the pool. Run on one GPU ({r['date']}), {r['wall_s'] / 60:.0f} min in total.
 
 {md_table(["State", "Charge", "Multiplicity", "E_SMD (eV)", "G_thermal (eV)", "G (eV)", "SCF guesses", "Wall time (min)"], rows)}
 
@@ -230,6 +234,13 @@ MAE {f2(r['MAE_V'], 3)} V, bias {f2(r['bias_V'], 3, True)} V. Full record and op
 
 
 def _scf_evidence():
+    """Count SCF-guess agreement from the raw records, or read the stored counts.
+
+    With the raw records available the counts are recomputed and written to SCF_COUNTS;
+    otherwise the stored record is used, so the SI still builds from a clean clone."""
+    if not (CALCS / "dft").is_dir():
+        c = j(SCF_COUNTS)
+        return c["validation_states"], c["validation_agree"], c["pool_states"], c["pool_agree"]
     val_n, val_ok = 0, 0
     for f in glob.glob(str(CALCS / "validation/scf_level/prod/*/*.json")):
         d = j(f)
@@ -259,6 +270,10 @@ def _scf_evidence():
             if {"minao", "atom", "huckel"} <= set(g):
                 pool_n += 1
                 pool_ok += (min(g["minao"], g["huckel"]) - min(g.values())) * H2EV <= 1e-3
+    SCF_COUNTS.write_text(json.dumps(dict(
+        validation_states=val_n, validation_agree=val_ok, pool_states=pool_n, pool_agree=pool_ok,
+        tolerance_eV=1e-3, source="calcs/validation/scf_level/prod and calcs/dft (raw records)"),
+        indent=2) + "\n")
     return val_n, val_ok, pool_n, pool_ok
 
 
@@ -280,7 +295,7 @@ better of minao and Hückel is within 1 meV of the lowest solution found by any 
 
 **Positive control.** The OROP-170 radical anion has two SCF solutions in solvent.
 Re-scored through the production code on its stored geometry
-({c['host']}, {c['wall_s']:.0f} s):
+(one GPU, {c['wall_s']:.0f} s):
 
 {md_table(["Phase", "Guess energies (Ha)", "Spread (eV)", "Escalated", "Difference from 9-guess search (eV)"],
           [["solvent (SMD)", guesses("scf_guess_energies_smd"), f2(cm["smd_scf_guess_spread_eV"], 3), cm["smd_scf_escalated"], f"{c['delta_vs_reference_eV']['smd']:.1e}"],
@@ -316,7 +331,7 @@ them. Full outputs: `manuscript/evidence/2026-11-18_cpu_checks/readiness_*.csv`.
 def s_scored():
     import fig5_pareto as fp
     rows = list(csv.DictReader(open(SCORED)))
-    lam = {r["id"]: r for r in csv.DictReader(open(ROOT / "results/validation/lambda_outer_fullpool_2026-11-17.csv"))}
+    lam = {r["id"]: r for r in csv.DictReader(open(ROOT / "data/manuscript/lambda_outer_fullpool_2026-11-17.csv"))}
     pool_flag = {r["id"]: r for r in csv.DictReader(open(EVID / "2026-11-18_cpu_checks/readiness_pool91.csv"))
                  if not (r["status"] == "ready" or r["issues"] == "missing_validated_native_thermal")}
     frozen, _ = fp.load_frozen()
@@ -352,8 +367,8 @@ def s_scored():
 **Table S7.** Every row of the scored table (pool's xTB tier). E is the mean of the
 couples, vs Fc. Capacities: active = neutral repeat-unit mass (used in the paper); salt =
 with counterions (do not compare across pools). λ_o (Born) uses the SASA-equivalent radius.
-Source: `results/validation/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,
-`results/validation/lambda_outer_fullpool_2026-11-17.csv`; CSV copy with identifiers,
+Source: `data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv`,
+`data/manuscript/lambda_outer_fullpool_2026-11-17.csv`; CSV copy with identifiers,
 couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 
 {check}
@@ -387,8 +402,8 @@ def s_software():
         except im.PackageNotFoundError:
             pass
     import subprocess
-    xtb = subprocess.run(["/nfs/lambda_stor_01/homes/rzhu/miniforge3/envs/redox/bin/xtb", "--version"],
-                         capture_output=True, text=True).stdout
+    xtb_bin = os.environ.get("XTB_BIN") or shutil.which("xtb") or str(Path(sys.executable).with_name("xtb"))
+    xtb = subprocess.run([xtb_bin, "--version"], capture_output=True, text=True).stdout
     xv = next((l.split("version")[1].split()[0] for l in xtb.splitlines() if "xtb version" in l), "?")
     vers.append(["xtb", xv])
     return f"""## S9. Software

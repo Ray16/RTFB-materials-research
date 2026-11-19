@@ -7,7 +7,7 @@ back and confirm no text < 18 pt and no label/legend/marker collisions.
 
 ## 1. Abbreviations (UNIFY — this is the #1 cross-figure bug)
 - **DMPZ** = 5,10-dihydrophenazine. ALWAYS "DMPZ". Never "DHP". (Matches the
-  `dmpz` candidate IDs and CONTEXT.md.)
+  `dmpz` candidate IDs.)
 - **PTZ** = phenothiazine. **AQ/NQ/BQ** = anthra-/naphtho-/benzoquinone.
   **PMDI/NDI** = the imides. Define any abbreviation once per caption.
 - First use in each caption spells the name out, then the abbreviation.

@@ -305,7 +305,10 @@ comparing. We also check that every redox state of a molecule is present, that t
 extra geometries needed for λ_i exist, and that all states use the same thermal
 correction. States that fail are **held, not dropped**: they are marked incomplete
 and keep their reason. In the 91-candidate pool, 269 of the
-271 states pass every check the ranking relies on (Figure 3). The two that do not
+271 states pass every check the ranking relies on (Figure 3). The ranking uses the xTB
+thermal tier, so the certificate for the native thermal tier is not one of those checks;
+a rerun of the readiness check reports it as missing for 236 of the 271 states (SI S6).
+The two states that do not pass
 are dianion states of two imide anolytes whose spin state has not yet been confirmed by the checks described above. Those two candidates are kept in the pool with a flag; neither is on a
 Pareto front, and the fronts are unchanged without them.
 
