@@ -28,14 +28,30 @@ feasibility or material performance.
 
 ## Reproduce the paper's figures and SI
 
-Python 3.10+ with NumPy, pandas, matplotlib and RDKit (the `redox` environment
-below has all of them). No GPU and no raw QM records are needed:
+Python 3.10+ with the packages in `requirements-manuscript.txt`, the Graphviz
+`dot` executable and DejaVu fonts. No GPU, xTB executable or raw QM records are
+needed for figures and SI. The version pins record the verified rendering
+environment; exact image bytes also depend on system fonts and Graphviz.
 
 ```bash
 for f in scripts/plotting/manuscript/fig*.py; do python "$f"; done
 PYTHONPATH=src python scripts/manuscript/build_si.py
 python scripts/manuscript/build_latex.py      # optional; needs xelatex + bibtex
 ```
+
+To check a committed revision without modifying this working tree:
+
+```bash
+python scripts/validation/check_manuscript_rebuild.py       # includes PDF compilation
+# Add --no-compile to check figures, SI and LaTeX source without a TeX installation.
+```
+
+The check exports `HEAD` into a fresh temporary directory, removes the generated
+outputs, rebuilds them without raw records, and compares their SHA-256 hashes.
+It retains a JSON report and build logs. This checks the rendering path; it does
+not revalidate the underlying quantum calculations or establish submission readiness.
+The SI reports the recorded software versions in `data/manuscript/software_versions.json`,
+independently of the machine used to render it.
 
 The inputs are committed:
 
@@ -108,18 +124,25 @@ commands never launch DFT or Hessian jobs. See `docs/ARCHITECTURE.md`,
 ## Raw records
 
 The raw quantum-chemical records (geometries, energies, frequencies and state
-metadata, about 270 GB) are not in this repository; see the manuscript's data
-availability statement. To recompute from them, extract the archive and set
-`REDOX_DATA_ROOT` to the directory that contains its `calcs/` and `library/`.
+metadata, previously reported as about 270 GB) are not in this repository.
+As of 2026-11-19, the original archive path is unavailable and no recovered copy
+covering the scored pool has been verified. Raw-record regeneration and public
+data deposition remain blocked. Once recovered, set `REDOX_DATA_ROOT` to the
+directory containing the matching `calcs/` and `library/` records.
+
+The solution-surface reorganization module currently supports one conformer per
+state. It refuses multi-conformer averaging, which requires a defined state
+population and conformer free energies. This does not regenerate or change the
+paper's frozen gas-energy reorganization results.
 
 ## Tests
 
 ```bash
-OMP_NUM_THREADS=1 python -m pytest tests -q
+OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 python -m pytest tests -q
 ```
 
-The suite checks the scientific contracts of the package (CPU only; 783 pass,
-1 skipped when run from a clone without the raw records).
+The suite checks the scientific contracts of the package on CPU; a raw-record
+check is skipped when the records are unavailable.
 
 ## License
 

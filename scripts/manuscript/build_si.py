@@ -16,7 +16,6 @@ import csv
 import glob
 import json
 import os
-import shutil
 import statistics as st
 import sys
 from pathlib import Path
@@ -398,18 +397,10 @@ solvent and gas-phase single points with their SCF guesses). Source:
 
 
 def s_software():
-    import importlib.metadata as im
-    vers = []
-    for pkg in ("pyscf", "gpu4pyscf-cuda12x", "gpu4pyscf", "rdkit", "ase", "fairchem-core", "numpy", "geometric"):
-        try:
-            vers.append([pkg, im.version(pkg)])
-        except im.PackageNotFoundError:
-            pass
-    import subprocess
-    xtb_bin = os.environ.get("XTB_BIN") or shutil.which("xtb") or str(Path(sys.executable).with_name("xtb"))
-    xtb = subprocess.run([xtb_bin, "--version"], capture_output=True, text=True).stdout
-    xv = next((l.split("version")[1].split()[0] for l in xtb.splitlines() if "xtb version" in l), "?")
-    vers.append(["xtb", xv])
+    # Report the manuscript's recorded calculation environment, not the machine
+    # currently rendering its tables. Rebuilding SI needs neither xTB nor PySCF.
+    record = j(ROOT / "data/manuscript/software_versions.json")
+    vers = [[row["package"], row["version"]] for row in record["software"]]
     return f"""## S9. Software
 
 {md_table(["Package", "Version"], vers)}

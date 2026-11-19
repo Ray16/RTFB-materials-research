@@ -29,16 +29,13 @@ energy to move the SOLVENT CHARGE distribution at FIXED geometry. The two coordi
 double-count. Do NOT add a solvent term to lambda_i, and do NOT add lambda_i's relaxation to a
 frozen-slow solution total a second time.
 
-Matched-conformer averaging
----------------------------
-When a per-state DFT+SMD conformer ensemble is available on disk
-(calcs/dft/<id>/<state>/conformers/conf_*.xyz, optional sidecar conf_*.json with e_smd_eV),
-lambda_i is computed per MATCHED conformer family (same family index for O and R) and
-Boltzmann-weighted by the couple's per-family solution energy. If O and R optimized to
-different conformers, the families are re-paired (lowest-to-lowest) and the cross point is
-evaluated from the PARTNER's matching conformer rather than discarding the couple. If no
-ensemble is on disk the single matched minimum (opt.xyz) is used and conformer_averaged is
-recorded False.
+Conformer scope
+---------------
+Only one geometry per state is supported. If either state has multiple conformers,
+both cross-point submission and aggregation refuse the couple. Ensemble averaging needs
+a specified state population and conformer free energies; the sum of two states'
+electronic energies is not a population model. A lone conformer sidecar or the stored
+minimum (opt.xyz) remains supported, with conformer_averaged recorded False.
 
 A QC-clean lambda_i does not establish a solution rate, reversibility or decomposition
 stability. Those require electronic-coupling and reaction-path evidence.
@@ -54,7 +51,7 @@ import inspect
 import json
 import math
 
-from redox.core.common import DFT, EV_KJ, EV_MEV, KT_EV, RESULTS, ROOT, state_names, group_ids
+from redox.core.common import DFT, EV_KJ, EV_MEV, RESULTS, ROOT, state_names, group_ids
 from redox.core.common import read_result as _res
 from redox.core.protocol import ACTIVE_SP, protocol_hash
 from redox.core.io import atomic_write_json
@@ -176,9 +173,9 @@ def match_conformers(confs_O, confs_R):
     Pure, list-in / list-out so it is unit-testable without any QM. Each conf is a dict with a
     'key'. Rule:
       * families sharing a key (same conformer family on both surfaces) are paired directly;
-      * otherwise the two ensembles are RE-PAIRED lowest-to-lowest (both lists are energy
-        ordered), so a couple whose O and R minima fell in different families is averaged over
-        re-paired families rather than discarded.
+      * otherwise pair lowest-to-lowest (both lists are energy ordered).
+    This pairing utility does not define ensemble populations. Production callers
+    reject multiple conformers through _single_conformer_pair before using it.
     Returns (pairs, repaired) where pairs is a list of (idx_O, idx_R, label)."""
     keys_O = {c["key"]: i for i, c in enumerate(confs_O)}
     keys_R = {c["key"]: i for i, c in enumerate(confs_R)}
@@ -189,18 +186,17 @@ def match_conformers(confs_O, confs_R):
     return [(i, i, f"repair_{i}") for i in range(n)], True
 
 
-def _boltzmann_weights(energies_eV, kt_eV=KT_EV):
-    """Boltzmann weights for a list of conformer energies (eV); None entries drop out.
-    A single (or all-None) ensemble returns uniform weights that sum to 1."""
-    vals = [e for e in energies_eV if isinstance(e, (int, float)) and math.isfinite(e)]
-    if len(vals) <= 1 or not vals:
-        n = len(energies_eV)
-        return [1.0 / n] * n if n else []
-    emin = min(vals)
-    raw = [math.exp(-(e - emin) / kt_eV) if isinstance(e, (int, float)) and math.isfinite(e)
-           else 0.0 for e in energies_eV]
-    z = sum(raw)
-    return [r / z for r in raw] if z > 0 else [1.0 / len(raw)] * len(raw)
+def _single_conformer_pair(gid, sO, sR):
+    """Read both states and reject unsupported ensembles before any cross-point work."""
+    confs_O, _ = _state_conformers(gid, sO)
+    confs_R, _ = _state_conformers(gid, sR)
+    if len(confs_O) > 1 or len(confs_R) > 1:
+        raise ValueError(
+            f"{gid}: {sO}/{sR}: conformer averaging is unsupported; specify a "
+            "state-population convention and conformer free energies before averaging"
+        )
+    pairs, repaired = match_conformers(confs_O, confs_R)
+    return confs_O, confs_R, pairs, repaired
 
 
 def _four_point_lambda(E_O_at_O, E_O_at_R, E_R_at_R, E_R_at_O):
@@ -289,9 +285,7 @@ def _couple_cross_jobs(gid, O, R):
     """Every (species_state, q, m, geom_path, tag) cross point a couple needs, over matched
     conformer families. Used by both compute_group and stale_cross_points so they agree."""
     (sO, qO, mO), (sR, qR, mR) = O, R
-    confs_O, _ = _state_conformers(gid, sO)
-    confs_R, _ = _state_conformers(gid, sR)
-    pairs, _ = match_conformers(confs_O, confs_R)
+    confs_O, confs_R, pairs, _ = _single_conformer_pair(gid, sO, sR)
     jobs = []
     for iO, iR, label in pairs:
         gO, gR = confs_O[iO]["geom"], confs_R[iR]["geom"]
@@ -348,9 +342,9 @@ def _sym_heavy_rmsd(p1, p2, charge=0):
 
     A 180 deg rotation of a 2-fold symmetric aryl ring maps the molecule onto itself: the same
     physical conformer, but an index-wise RMSD sees every atom move. Returns None if bond
-    perception fails, so callers can fall back to the Kabsch value. (Informational only now:
-    the conformer-jump RMSD no longer disqualifies a couple; matched-conformer averaging and
-    the self-consistent SMD surface handle different minima directly.)"""
+    perception fails, so callers can fall back to the Kabsch value. This diagnostic
+    does not define conformer populations or establish that two minima are a matched
+    conformer family."""
     try:
         from rdkit import Chem
         from rdkit.Chem import AllChem, rdDetermineBonds
@@ -367,10 +361,14 @@ def _sym_heavy_rmsd(p1, p2, charge=0):
 
 
 def compute_group(gid, backend="gpu"):
-    for O, R in _couples(gid):
+    couples = _couples(gid)
+    # Preflight the entire group so an unsupported later couple cannot trigger
+    # a partial, costly calculation of the earlier couples.
+    jobs = [_couple_cross_jobs(gid, O, R) for O, R in couples]
+    for (O, R), cross_jobs in zip(couples, jobs):
         (sO, qO, mO), (sR, qR, mR) = O, R
         print(f"[reorg] {gid}: couple {sO}(q{qO:+d})/{sR}(q{qR:+d})", flush=True)
-        for (st, q, m, geom, tag) in _couple_cross_jobs(gid, O, R):
+        for (st, q, m, geom, tag) in cross_jobs:
             if not geom.exists():
                 raise RuntimeError(f"{gid}: cross-point geometry missing: {geom}")
             _cross_energy(gid, st, q, m, geom, backend, tag=tag)
@@ -394,17 +392,15 @@ def _read_cross(gid, species_state, geom_path, q, m, tag):
 
 def lambda_for_couple(gid, O, R):
     (sO, qO, mO), (sR, qR, mR) = O, R
-    confs_O, ens_O = _state_conformers(gid, sO)
-    confs_R, ens_R = _state_conformers(gid, sR)
-    pairs, repaired = match_conformers(confs_O, confs_R)
-    conformer_averaged = bool(ens_O and ens_R and len(pairs) > 1)
+    confs_O, confs_R, pairs, repaired = _single_conformer_pair(gid, sO, sR)
 
-    per_family = []   # (couple_energy_eV, lam_smd, relax_ox, relax_red, lam_gas, s2_max)
+    per_family = []   # (label, lam_smd, relax_ox, relax_red, lam_gas, s2_max)
     for iO, iR, label in pairs:
         cO, cR = confs_O[iO], confs_R[iR]
         E_O_at_O = cO["e_smd_eV"]
         E_R_at_R = cR["e_smd_eV"]
-        if E_O_at_O is None or E_R_at_R is None:
+        if not all(isinstance(e, (int, float)) and math.isfinite(e)
+                   for e in (E_O_at_O, E_R_at_R)):
             return None
         cross_O = _read_cross(gid, sO, cR["geom"], qO, mO, f"{sR}_{label}")   # E_O at geom_R
         cross_R = _read_cross(gid, sR, cO["geom"], qR, mR, f"{sO}_{label}")   # E_R at geom_O
@@ -421,21 +417,13 @@ def lambda_for_couple(gid, O, R):
                    else None)
         s2s = [cross_O.get("smd_s_squared"), cross_R.get("smd_s_squared")]
         s2_max = max((abs(float(s)) for s in s2s if isinstance(s, (int, float))), default=None)
-        family_energy = E_O_at_O + E_R_at_R
-        per_family.append((family_energy, lam, relax_ox, relax_red, lam_gas, s2_max,
+        per_family.append((label, lam, relax_ox, relax_red, lam_gas, s2_max,
                            cross_O.get("anion_unbound"), cross_R.get("anion_unbound")))
 
     if not per_family:
         return None
-    weights = _boltzmann_weights([f[0] for f in per_family])
-    lam = sum(w * f[1] for w, f in zip(weights, per_family))
-    relax_ox = sum(w * f[2] for w, f in zip(weights, per_family))
-    relax_red = sum(w * f[3] for w, f in zip(weights, per_family))
-    gas_terms = [(w, f[4]) for w, f in zip(weights, per_family) if f[4] is not None]
-    lam_gas = (sum(w * g for w, g in gas_terms) / sum(w for w, _ in gas_terms)
-               if gas_terms else None)
-    s2_max = max((f[5] for f in per_family if f[5] is not None), default=None)
-    any_anion_unbound = any(f[6] is True or f[7] is True for f in per_family)
+    _, lam, relax_ox, relax_red, lam_gas, s2_max, unbound_O, unbound_R = per_family[0]
+    any_anion_unbound = unbound_O is True or unbound_R is True
 
     # conformer diagnostic RMSD between the two state minima (informational only)
     gO, gR = DFT / gid / sO / "opt.xyz", DFT / gid / sR / "opt.xyz"
@@ -471,7 +459,7 @@ def lambda_for_couple(gid, O, R):
                 rmsd_A=round(rmsd, 3) if rmsd is not None else "",
                 rmsd_naive_A=round(rmsd_naive, 3) if rmsd_naive is not None else "",
                 rmsd_is_sym_aware=bool(rmsd_sym is not None),
-                conformer_averaged=bool(conformer_averaged),
+                conformer_averaged=False,
                 n_conf_matched=len(per_family),
                 conformer_repaired=bool(repaired),
                 cross_s_squared_max=round(s2_max, 3) if s2_max is not None else "",

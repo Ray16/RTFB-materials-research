@@ -26,6 +26,14 @@ PYTHONPATH=src python scripts/manuscript/build_si.py
 python scripts/manuscript/build_latex.py          # needs xelatex + bibtex
 ```
 
+`validation/check_manuscript_rebuild.py` runs this path plus structure rebuilding
+in an isolated export of a committed revision (`--ref HEAD` by default). It
+deletes generated artifacts first, compares rebuilt bytes, and preserves logs
+and a JSON report. Use `--no-compile` to omit PDF compilation. Dependencies are
+listed in `requirements-manuscript.txt`; system Graphviz and DejaVu fonts are
+also required. SI software versions come from the committed
+`data/manuscript/software_versions.json`, not the rendering environment.
+
 ## Recompute the committed records from raw QM records
 
 These read the raw-record archive. Point `REDOX_DATA_ROOT` at the directory that

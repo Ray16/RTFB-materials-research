@@ -316,6 +316,29 @@ def convert():
     return doc, bib_from_refs(refs)
 
 
+def compile_document():
+    """Compile all passes, refusing failed commands or a stale/missing PDF."""
+    pdf = OUT / "manuscript.pdf"
+    pdf.unlink(missing_ok=True)
+    log_path = OUT / "build.log"
+    with log_path.open("w") as log:
+        for cmd in (["xelatex", "-halt-on-error", "-interaction=nonstopmode", "manuscript.tex"],
+                    ["bibtex", "manuscript"],
+                    ["xelatex", "-halt-on-error", "-interaction=nonstopmode", "manuscript.tex"],
+                    ["xelatex", "-halt-on-error", "-interaction=nonstopmode", "manuscript.tex"]):
+            log.write("$ " + " ".join(cmd) + "\n")
+            log.flush()
+            try:
+                subprocess.run(cmd, cwd=OUT, stdout=log, stderr=subprocess.STDOUT, check=True)
+            except (OSError, subprocess.CalledProcessError) as exc:
+                pdf.unlink(missing_ok=True)
+                raise RuntimeError(f"LaTeX build failed at {cmd[0]}; see {log_path}") from exc
+    if not pdf.is_file() or pdf.stat().st_size == 0:
+        pdf.unlink(missing_ok=True)
+        raise RuntimeError(f"LaTeX build produced no PDF; see {log_path}")
+    print("compiled:", pdf)
+
+
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "figures").mkdir(exist_ok=True)
@@ -329,14 +352,7 @@ def main():
     print("wrote", OUT / "manuscript.tex", "and", bib.count("@"), "bib entries")
     if "--no-compile" in sys.argv:
         return 0
-    log = []
-    for cmd in (["xelatex", "-interaction=nonstopmode", "manuscript.tex"], ["bibtex", "manuscript"],
-                ["xelatex", "-interaction=nonstopmode", "manuscript.tex"],
-                ["xelatex", "-interaction=nonstopmode", "manuscript.tex"]):
-        r = subprocess.run(cmd, cwd=OUT, capture_output=True, text=True)
-        log.append(r.stdout[-3000:])
-    (OUT / "build.log").write_text("\n".join(log))
-    print("compiled:", (OUT / "manuscript.pdf").exists())
+    compile_document()
     return 0
 
 

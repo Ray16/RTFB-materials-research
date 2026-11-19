@@ -1,8 +1,6 @@
 """Synthetic (no-QM) unit tests for the solution-phase inner-sphere lambda_i machinery:
-the 4-point Nelsen arithmetic, matched-conformer pairing + Boltzmann weighting, and the
+the 4-point Nelsen arithmetic, single-conformer scope, and the
 structural-nonnegativity contract. All inputs are hand-made energies; no DFT is run."""
-import math
-
 import pytest
 
 from redox.properties import reorg
@@ -57,23 +55,58 @@ def test_match_conformers_single_minimum_fallback():
     assert pairs == [(0, 0, "min")] and not repaired
 
 
-# --------------------------------------------------------------- Boltzmann weighting
-def test_boltzmann_weights_single_family_is_unity():
-    assert reorg._boltzmann_weights([-123.4]) == [1.0]
+# --------------------------------------------------------------- unsupported ensembles
+@pytest.mark.parametrize("counts", [(2, 2), (1, 2), (2, 1)])
+@pytest.mark.parametrize("operation", [reorg.lambda_for_couple, reorg._couple_cross_jobs])
+def test_ensemble_refused_even_if_only_one_family_matches(monkeypatch, counts, operation):
+    def conformers(gid, state):
+        n = counts[0 if state == "O" else 1]
+        return [dict(key=f"conf_{i}") for i in range(n)], True
+
+    monkeypatch.setattr(reorg, "_state_conformers", conformers)
+    with pytest.raises(ValueError, match="state-population convention.*free energies"):
+        operation("test", ("O", 0, 1), ("R", -1, 2))
 
 
-def test_boltzmann_weights_favor_lower_energy_and_sum_to_one():
-    w = reorg._boltzmann_weights([0.0, reorg.KT_EV * math.log(2)])  # second is 2x less likely
-    assert w[0] == pytest.approx(2 * w[1])
-    assert sum(w) == pytest.approx(1.0)
+def test_group_preflight_refuses_later_ensemble_before_any_calculation(monkeypatch):
+    O, R, R2 = ("O", 0, 1), ("R", -1, 2), ("R2", -2, 1)
+    monkeypatch.setattr(reorg, "_couples", lambda gid: [(O, R), (R, R2)])
+    monkeypatch.setattr(reorg, "_state_conformers", lambda gid, state: (
+        [dict(key=f"conf_{i}", geom=reorg.DFT / "unused")
+         for i in range(2 if state == "R2" else 1)], True))
+    monkeypatch.setattr(reorg, "_cross_energy", lambda *a, **kw: pytest.fail("started QM"))
+    with pytest.raises(ValueError, match="conformer averaging is unsupported"):
+        reorg.compute_group("test")
 
 
-def test_boltzmann_average_of_lambda_lies_between_family_values():
-    fams = [(0.0, 0.5), (0.10, 0.9)]   # (relative energy eV, lambda eV)
-    w = reorg._boltzmann_weights([f[0] for f in fams])
-    lam = sum(wi * f[1] for wi, f in zip(w, fams))
-    assert 0.5 <= lam <= 0.9
-    assert lam == pytest.approx(0.5 * w[0] + 0.9 * w[1])
+def test_single_conformer_keeps_both_distortions_and_gas_diagnostic(monkeypatch, tmp_path):
+    monkeypatch.setattr(reorg, "DFT", tmp_path)
+    monkeypatch.setattr(reorg, "_state_conformers", lambda gid, state: ([dict(
+        key="min", geom=tmp_path / state,
+        e_smd_eV=-10.0 if state == "O" else -12.0,
+        e_gas_eV=-9.0 if state == "O" else -11.0)], False))
+    monkeypatch.setattr(reorg, "_read_cross", lambda gid, state, *a: dict(
+        e_smd_eV=-9.7 if state == "O" else -11.5,
+        e_gas_eV=-8.9 if state == "O" else -10.8,
+        smd_s_squared=0.0 if state == "O" else 0.75, anion_unbound=False))
+    monkeypatch.setattr(reorg, "_res", lambda *a: {})
+    monkeypatch.setattr(reorg, "_heavy_rmsd", lambda *a: None)
+    monkeypatch.setattr(reorg, "_sym_heavy_rmsd", lambda *a, **kw: None)
+    result = reorg.lambda_for_couple("test", ("O", 0, 1), ("R", -1, 2))
+    assert result["lambda_i_eV"] == pytest.approx(0.8)
+    assert result["relax_ox_meV"] == pytest.approx(300)
+    assert result["relax_red_meV"] == pytest.approx(500)
+    assert result["lambda_i_gas_eV"] == pytest.approx(0.3)
+    assert result["n_conf_matched"] == 1
+    assert result["conformer_averaged"] is False
+    assert result["flag"] == ""
+
+
+@pytest.mark.parametrize("energy", [None, float("nan"), float("inf")])
+def test_invalid_own_energy_is_not_reported_as_a_result(monkeypatch, energy):
+    monkeypatch.setattr(reorg, "_state_conformers", lambda *a: (
+        [dict(key="min", e_smd_eV=energy)], True))
+    assert reorg.lambda_for_couple("test", ("O", 0, 1), ("R", -1, 2)) is None
 
 
 # --------------------------------------------------------------- cache contract (v4 = SMD)
