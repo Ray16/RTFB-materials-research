@@ -46,18 +46,17 @@ def relocated_native_reader(prior_root):
         raise RuntimeError('Install relocation binding before starting Python workers')
     from redox.core.common import ROOT
     from redox.thermochemistry import native as native_thermal
+
     original = native_thermal._load_native_surface_record
-    body = inspect.getsource(original)
-    old = "if r.get('implementation_controls')!=implementation_controls():return None"
-    new = "if not _controls_equal(r.get('implementation_controls'),implementation_controls(),ROOT,_prior_root,_receipts):return None"
-    if body.count(old) != 1:
-        raise ValueError('Native reader changed; inspect before applying path relocation')
     receipts = {}
-    namespace = dict(vars(native_thermal), _controls_equal=controls_equal,
-                     _prior_root=prior_root, _receipts=receipts)
-    local = {}
-    exec(compile(body.replace(old, new, 1), __file__, 'exec'), namespace, local)
-    native_thermal._load_native_surface_record = local['_load_native_surface_record']
+
+    def _matcher(stored, expected):
+        return controls_equal(stored, expected, ROOT, prior_root, receipts)
+
+    def _relocated(sd, q, m, protocol=native_thermal.NATIVE_THERMAL):
+        return original(sd, q, m, protocol, controls_matcher=_matcher)
+
+    native_thermal._load_native_surface_record = _relocated
     try:
         yield dict(original_source_root=str(prior_root), relocated_source_root=str(ROOT),
                    native_reader_source_sha256=hashlib.sha256(inspect.getsource(original).encode()).hexdigest(),

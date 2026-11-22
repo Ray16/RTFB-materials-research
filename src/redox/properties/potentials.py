@@ -33,23 +33,35 @@ def _cfg(name, attr):
     return getattr(load_config(name), attr)
 
 
-def uma_gas_diagnostic(gid,sO,sR,qO,qR):
+def uma_gas_diagnostic(gid, sO, sR, qO, qR):
     """Electronic gas-phase comparison at one UMA model and a gas UMA Fc reference.
 
     This is a preoptimization diagnostic, never a solvated free-energy prediction.
     Subtracting the solvated DFT Fc reference here would mix phase and Hamiltonian.
     """
-    records=[read_result(gid,sO,root=UMA),read_result(gid,sR,root=UMA),
-             read_result('ferrocene','ox',root=UMA),read_result('ferrocene','neu',root=UMA)]
-    for record,q in zip(records,(qO,qR,1,0)):
-        if (record is None or record.get('converged') is not True or record.get('charge')!=q
-                or not isinstance(record.get('energy_eV'),(int,float)) or not math.isfinite(record['energy_eV'])):
-            return None,None,'INCOMPLETE_UMA_gas_diagnostic'
-    models={r.get('model') for r in records}
-    if None in models or len(models)!=1:return None,None,'model_mismatch'
-    ox,red,fc_ox,fc_neu=records
-    delta=red['energy_eV']-ox['energy_eV'];reference=fc_ox['energy_eV']-fc_neu['energy_eV']
-    return delta,-delta-reference,'UMA_gas_electronic_vs_UMA_Fc('+next(iter(models))+');not_MeCN_G'
+    records = [
+        read_result(gid, sO, root=UMA),
+        read_result(gid, sR, root=UMA),
+        read_result("ferrocene", "ox", root=UMA),
+        read_result("ferrocene", "neu", root=UMA),
+    ]
+    for record, q in zip(records, (qO, qR, 1, 0)):
+        if (
+            record is None
+            or record.get("converged") is not True
+            or record.get("charge") != q
+            or not isinstance(record.get("energy_eV"), (int, float))
+            or not math.isfinite(record["energy_eV"])
+        ):
+            return None, None, "INCOMPLETE_UMA_gas_diagnostic"
+    models = {r.get("model") for r in records}
+    if None in models or len(models) != 1:
+        return None, None, "model_mismatch"
+    ox, red, fc_ox, fc_neu = records
+    delta = red["energy_eV"] - ox["energy_eV"]
+    reference = fc_ox["energy_eV"] - fc_neu["energy_eV"]
+    model_name = next(iter(models))
+    return delta, -delta - reference, f"UMA_gas_electronic_vs_UMA_Fc({model_name});not_MeCN_G"
 
 
 def thermal_definition(record):

@@ -327,6 +327,56 @@ def _reuse_previous(destination: Path, previous: Path, report: dict) -> None:
                   scientific_accuracy_validated=bool(prior.get("scientific_accuracy_validated")))
 
 
+def _reserve_parallel_cpus(workers: int):
+    if workers <= 1:
+        return None
+    from redox.execution.resources import allocation_guard, cpu_allocation, host_capacity
+    from redox.workflows.stages import validate_graph
+
+    validate_graph(STAGES)
+    if shutil.which("taskset") is None:
+        raise RuntimeError("Parallel review requires taskset for disjoint CPU affinity")
+    with allocation_guard():
+        host_capacity(workers, minimum_ram_gib=2 * workers)
+        return cpu_allocation(workers)
+
+
+def _copy_benchmark_inputs(source: Path, destination: Path, report: dict) -> None:
+    for name in BENCHMARK_INPUTS:
+        path = Path(source) / name
+        if path.is_file():
+            target = destination / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(path, target)
+            report["copied_benchmark_inputs"].append(name)
+            report["benchmark_input_sha256"][name] = sha256_file(target)
+
+
+def _select_incremental_mode(incremental: bool, previous: Path | None, initial_inputs: dict, report: dict):
+    prior_inventory = (previous / "input_inventory.json") if previous else None
+    if not (incremental and prior_inventory and prior_inventory.is_file()):
+        return "full", []
+    try:
+        change = classify_changes(json.loads(prior_inventory.read_text()), initial_inputs)
+    except (OSError, ValueError):
+        return "full", []
+    report["change_summary"] = change
+    if not change["candidate_changed"] and not change["global_changed_any"]:
+        return "reuse", []
+    if change["global_changed_any"]:
+        report["incremental_fallback"] = "global_inputs_changed"
+        return "full", []
+    return "partial", change["recompute_ids"]
+
+
+def _changed_inputs(initial_inputs: dict, final_inputs: dict) -> list[str]:
+    return sorted(
+        path
+        for path in set(initial_inputs) | set(final_inputs)
+        if initial_inputs.get(path) != final_inputs.get(path)
+    )
+
+
 def review_tables(destination: Path, *, source: Path = RESULTS, workers: int = 1,
                   previous: Path | None = None, incremental: bool = False) -> dict:
     """Run CPU table stages, preserve existing reviews, and record every failure.
@@ -339,16 +389,7 @@ def review_tables(destination: Path, *, source: Path = RESULTS, workers: int = 1
     """
     if type(workers) is not int or workers < 1:
         raise ValueError("workers must be a positive integer")
-    cpu_sets = None
-    if workers > 1:
-        from redox.execution.resources import allocation_guard, cpu_allocation, host_capacity
-        from redox.workflows.stages import validate_graph
-        validate_graph(STAGES)
-        if shutil.which("taskset") is None:
-            raise RuntimeError("Parallel review requires taskset for disjoint CPU affinity")
-        with allocation_guard():
-            host_capacity(workers, minimum_ram_gib=2 * workers)
-            cpu_sets = cpu_allocation(workers)
+    cpu_sets = _reserve_parallel_cpus(workers)
     destination = Path(destination).resolve()
     if incremental and previous is None:
         previous = _discover_previous(destination)
@@ -368,39 +409,14 @@ def review_tables(destination: Path, *, source: Path = RESULTS, workers: int = 1
         inventory = destination / "input_inventory.json"
         atomic_write_json(inventory, initial_inputs)
         report.update(input_inventory=str(inventory), inputs_current=None)
-        for name in BENCHMARK_INPUTS:
-            path = Path(source) / name
-            if path.is_file():
-                target = destination / name
-                target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copy2(path, target)
-                report["copied_benchmark_inputs"].append(name)
-                report["benchmark_input_sha256"][name] = sha256_file(target)
+        _copy_benchmark_inputs(source, destination, report)
 
-        # --- incremental decision ----------------------------------------------------------
-        mode, recompute_ids = "full", []
-        prior_inventory = (previous / "input_inventory.json") if previous else None
-        if incremental and prior_inventory and prior_inventory.is_file():
-            try:
-                change = classify_changes(json.loads(prior_inventory.read_text()), initial_inputs)
-            except (OSError, ValueError):
-                change = None
-            if change is not None:
-                report["change_summary"] = change
-                if not change["candidate_changed"] and not change["global_changed_any"]:
-                    mode = "reuse"
-                elif change["global_changed_any"]:
-                    mode = "full"
-                    report["incremental_fallback"] = "global_inputs_changed"
-                else:
-                    mode, recompute_ids = "partial", change["recompute_ids"]
+        mode, recompute_ids = _select_incremental_mode(incremental, previous, initial_inputs, report)
         report["incremental_mode"] = mode
 
         if mode == "reuse":
             _reuse_previous(destination, previous, report)
-            final_inputs = snapshot_inputs(source)
-            changes = sorted(path for path in set(initial_inputs) | set(final_inputs)
-                             if initial_inputs.get(path) != final_inputs.get(path))
+            changes = _changed_inputs(initial_inputs, snapshot_inputs(source))
             report.update(inputs_current=not changes, changed_inputs=changes)
             return report
 
@@ -498,16 +514,9 @@ def review_tables(destination: Path, *, source: Path = RESULTS, workers: int = 1
                 report["status"] = "complete"
         if report["status"] == "complete" and report["failed_candidates"]:
             report["status"] = "candidate_failures"
-        # A failed audit can coincide with a live calculation publishing new
-        # input. Preserve both facts: do not hide its discrepancies, and do not
-        # leave input freshness unknown merely because a stage returned nonzero.
-        final_inputs = snapshot_inputs(source)
-        changes = sorted(path for path in set(initial_inputs) | set(final_inputs)
-                         if initial_inputs.get(path) != final_inputs.get(path))
+        # Preserve both audit discrepancies and concurrent input drift.
+        changes = _changed_inputs(initial_inputs, snapshot_inputs(source))
         report.update(inputs_current=not changes, changed_inputs=changes)
-        # Concurrent input drift is a stable-completion hazard for a from-scratch review, but in
-        # incremental mode the next run simply recomputes the drifted candidate cheaply, so it is
-        # recorded (not promoted to a failure) and never discards a review whose stages succeeded.
         if changes and report["status"] == "complete" and not incremental:
             report["status"] = "inputs_changed"
     except BaseException as exc:

@@ -146,7 +146,8 @@ def main():
         cspec = n * F_C_PER_MOL / (mw * C_PER_MAH) if mw else None   # mAh/g
         sa_mol, sa_q, sa_note = _sa_prep(s)  # hardened input prep (neutralize/guard/flag)
         if sa_mol is None:
-            print(f"[skip SA] {gid}: {sa_note}", flush=True); continue
+            print(f"[skip SA] {gid}: {sa_note}", flush=True)
+            continue
         sa = sascorer.calculateScore(sa_mol)
         dgs = _dG_solv_neutral(states)
         rows.append(dict(
@@ -159,10 +160,12 @@ def main():
         ))
 
     if not rows:
-        print("no candidate molecules found"); return
+        print("no candidate molecules found")
+        return
     hdr = (f"{'id':22s} {'n':>2s} {'MW':>7s} {'Cspec(mAh/g)':>12s} {'SA':>5s} "
            f"{'dGsolv_neu(eV)':>14s}")
-    print(hdr); print("-" * len(hdr))
+    print(hdr)
+    print("-" * len(hdr))
     for r in sorted(rows, key=lambda x: -(x["specific_capacity_mAh_g"] or 0)):
         cs = f"{r['specific_capacity_mAh_g']:.1f}" if r["specific_capacity_mAh_g"] else "n/a"
         dg = f"{r['dGsolv_neutral_eV']:.3f}" if r["dGsolv_neutral_eV"] is not None else "n/a"
@@ -176,7 +179,9 @@ def main():
     cols = ["id", "n_electrons", "MW", "n_graft_sites", "MW_repeat_unit",
             "specific_capacity_mAh_g", "SA_score", "sa_species", "dGsolv_neutral_eV"]
     with out.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
+        writer = csv.DictWriter(f, fieldnames=cols)
+        writer.writeheader()
+        writer.writerows(rows)
     print(f"wrote {out}")
 
 

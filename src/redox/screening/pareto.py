@@ -64,9 +64,11 @@ def _objectives(cand, pool, sc, cap_key="specific_capacity_mAh_g"):
     `missing` lists PRIMARY objectives that are absent. Stability is NOT APPLICABLE (not
     missing) for a 1-electron path: there is no intermediate to disproportionate."""
     o, missing = {}, []
-    model_ready=cand.get('model_primary_admissible',True) not in (False,'False')
-    if not model_ready:missing.append('model_validation')
-    if cand.get('spin_confidence') in ('DFT_check_required','wrong_ground_state'):missing.append('spin_state')
+    model_ready = cand.get("model_primary_admissible", True) not in (False, "False")
+    if not model_ready:
+        missing.append("model_validation")
+    if cand.get("spin_confidence") in ("DFT_check_required", "wrong_ground_state"):
+        missing.append("spin_state")
     thermal_valid = cand.get("thermal_qc", "ok") == "ok"
     E = _f(cand.get("E_V"))
     if E is not None and thermal_valid and model_ready:
@@ -110,6 +112,35 @@ def _dominates(A, B, k=1.0):
         if va - vb > tol:      # A better than B beyond noise
             better = True
     return better
+
+
+def raw_pareto_front(candidates, *, pool, e_key="E", cap_key="cap"):
+    """Plain two-objective Pareto front on raw axes (voltage and capacity).
+
+    Maximizes capacity and minimizes E for ``pool="anolyte"`` (maximizes E for
+    ``pool="catholyte"``), with no scalarization and no uncertainty collapse.
+    Preserves input order for non-dominated members.
+    """
+    if pool not in ("anolyte", "catholyte"):
+        raise ValueError(f"pool must be 'anolyte' or 'catholyte', got {pool!r}")
+    want_low_e = pool == "anolyte"
+    front = []
+    for a in candidates:
+        ea, ca = float(a[e_key]), float(a[cap_key])
+        dominated = False
+        for b in candidates:
+            if b is a:
+                continue
+            eb, cb = float(b[e_key]), float(b[cap_key])
+            cap_ge = cb >= ca
+            pot_ge = (eb <= ea) if want_low_e else (eb >= ea)
+            strict = (cb > ca) or ((eb < ea) if want_low_e else (eb > ea))
+            if cap_ge and pot_ge and strict:
+                dominated = True
+                break
+        if not dominated:
+            front.append(a)
+    return front
 
 
 def _pareto_front(cands, pool, sc, cap_key="specific_capacity_mAh_g"):

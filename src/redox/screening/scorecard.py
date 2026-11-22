@@ -511,48 +511,73 @@ def require_derived_sigmas(unc):
     return prior
 
 
-def build():
-    ele = _cfg("electrolyte")
-    sc = _cfg("scorecard_config")
-    wlo, whi = ele.WINDOW_V_VS_FC
-    divider = ele.ANOLYTE_CATHOLYTE_DIVIDER_V
+def _classify_spin_confidence(spin_gap, spin_src, sc):
+    if spin_gap is not None and spin_src.startswith("dft_") and spin_gap < -1e-4:
+        return "wrong_ground_state"
+    if spin_src.startswith("pending:") or (
+        spin_gap is not None and spin_src.startswith("uma:") and spin_gap < 0.5
+    ):
+        return "DFT_check_required"
+    if spin_gap is not None and spin_gap < sc.SPIN_GAP_LOW_EV:
+        return "low"
+    return "ok"
 
-    redox = _load("redox_potentials")
-    unc = derive_uncertainties(redox)   # all sigmas computed from benchmarks (not hard-coded)
-    unc["prior_sigma_axes_accepted"] = require_derived_sigmas(unc)
-    # lambda comes with a QC verdict from redox.properties.reorg (negative_lambda / negative_half /
-    # conformer_jump / anion_unbound / large_half>1eV). A flagged value is NOT a usable
-    # inner-sphere lambda, so it must not silently enter the mean or the Pareto ranking.
-    reorg_rows = {(r["id"], r["couple"]): r for r in _load("reorganization")}
-    integ = {(r["id"], r["couple"]): r["verdict"] for r in _load("state_integrity")}
-    disp = {(r["id"], r["intermediate"]): _f(r["dG_disp_kJmol"])
-            for r in _load("stability_disproportionation")}
-    cap = {r["id"]: r for r in _load("capacity_and_proxies")}
-    # outer-sphere lambda_o (molecular-cavity PCM + Born, 1-body), keyed by state pair
-    lam_o = {(r["id"], _states_of(r["couple"])): (_f(r["lambda_o_pcm_eV"]),
-                                                  _f(r["lambda_o_born_eV"]),
-                                                  r.get("method", ""))
-             for r in _load("lambda_outer")}
-    pekar = 1.0 / ele.SOLVENT["eps_optical"] - 1.0 / ele.SOLVENT["eps_r"]
-    m_anion = _ion_mass(getattr(sc, "COUNTERION_ANION_SMILES", None))
-    m_cations = {k: _ion_mass(s) for k, s in getattr(sc, "SUPPORTING_CATIONS", {}).items()}
-    candidate_ids = _candidate_ids()
-    batches, chem_flags = _candidate_batches(), _candidate_chem_flags()
-    unrankable = _unrankable_ids()
-    resting = _resting_states()
-    from redox.core.common import read_manifest
-    from redox.quality.model_limits import selection_admission
-    declared={}
-    for row in read_manifest():
-        entry=declared.setdefault(row['id'],dict(smiles=row['smiles'],charges=[]))
-        entry['charges'].append(int(row['charge']))
 
-    # couples by molecule (scoped to the current screening candidates)
+def _summarize_reorganization(acc, n_acc, pekar, unc, sc):
+    clean = [c for c in acc if c["lam"] is not None and not c["lam_flag"]]
+    flags_seen = sorted({c["lam_flag"] for c in acc if c["lam_flag"]})
+    n_lam_flagged = sum(1 for c in acc if c["lam"] is not None and c["lam_flag"])
+    n_lam_missing = sum(1 for c in acc if c["lam"] is None)
+    if len(clean) == n_acc:
+        lam_qc = "ok"
+    elif not clean:
+        lam_qc = "all_flagged"
+    else:
+        lam_qc = "partial"
+
+    def _mean(xs):
+        return round(statistics.mean(xs), 4) if xs else None
+
+    lam4 = _mean([c["lam"] for c in clean])  # lambda_O + lambda_R
+    lam_O = _mean([c["lam_ox"] / 1000.0 for c in clean if c["lam_ox"] is not None])
+    lam_R = _mean([c["lam_red"] / 1000.0 for c in clean if c["lam_red"] is not None])
+    lo = [c["lam_o"][0] for c in clean if c["lam_o"] and c["lam_o"][0]]
+    lam_o1 = _mean(lo)
+    lam_het = round(lam4 / 2.0 + lam_o1, 4) if (lam4 is not None and lam_o1) else None
+    lam_se = None
+    if lam4 is not None and lam_o1:
+        a_eff = 7.19982 * pekar / lam_o1  # Born-equivalent radius, A
+        lam_se = round(lam4 + lambda_o_self_exchange(lam_o1, a_eff, 2.0 * a_eff), 4)
+    sigma_lam_het = (
+        round(((unc["sigma_lambda"] / 2) ** 2 + getattr(sc, "SIGMA_LAMBDA_O_EV", 0.0) ** 2) ** 0.5, 3)
+        if lam_het is not None
+        else None
+    )
+    return dict(
+        lambda_i_eV=lam4,
+        lambda_i_ox_eV=lam_O,
+        lambda_i_red_eV=lam_R,
+        sigma_lambda_eV=(unc["sigma_lambda"] if lam4 is not None else None),
+        lambda_qc=lam_qc,
+        n_lambda_flagged=n_lam_flagged,
+        n_lambda_missing=n_lam_missing,
+        lambda_flags=";".join(flags_seen),
+        lambda_o_pcm_eV=lam_o1,
+        lambda_o_method=";".join(sorted({c["lam_o"][2] for c in clean if c["lam_o"]})),
+        lambda_het_eV=lam_het,
+        sigma_lambda_het_eV=sigma_lam_het,
+        lambda_se_contact_eV=lam_se,
+    )
+
+
+def _group_couples_by_molecule(redox, candidate_ids, reorg_rows, integ, lam_o, wlo, whi, sc, unc):
     by_mol = {}
     for r in redox:
         if r["id"] not in candidate_ids or r["id"] in REFERENCE_IDS:
             continue
-        e = _f(r.get("E_vs_Fc_V")); qo = int(r["q_ox"]); qr = int(r["q_red"])
+        e = _f(r.get("E_vs_Fc_V"))
+        qo = int(r["q_ox"])
+        qr = int(r["q_red"])
         couple = r["event"]
         sO, sR = couple.split("->")
         rr = reorg_rows.get((r["id"], couple), {})
@@ -565,148 +590,45 @@ def build():
             lam=_f(rr.get("lambda_i_eV")), lam_flag=(rr.get("flag") or "").strip(),
             lam_ox=_f(rr.get("relax_ox_meV")), lam_red=_f(rr.get("relax_red_meV")),
             lam_o=lam_o.get((r["id"], frozenset((sO, sR)))),
-            sigma_E=sc.sigma_redox(qo, qr, family=r["family"],
-                                   family_sigma=unc["family_redox"],
-                                   pooled_sigma=unc["pooled_redox"], charge_sigma=unc["charge_redox"]),
+            sigma_E=sc.sigma_redox(
+                qo, qr, family=r["family"],
+                family_sigma=unc["family_redox"],
+                pooled_sigma=unc["pooled_redox"],
+                charge_sigma=unc["charge_redox"],
+            ),
         )
+    return by_mol
 
-    rows = []
-    for gid, m in by_mol.items():
-        base = dict(id=gid, name=m["name"], family=m["family"], batch=batches.get(gid, ""),
-                    chem_flag=chem_flags.get(gid, ""), rankable=(gid not in unrankable))
-        rest = resting.get(gid)
-        if rest is None:
-            rows.append(dict(base, status="INCOMPLETE", reason="no declared resting state (n_e=0)",
-                             n_accessible=0)); continue
-        # CONTIGUOUS redox paths from the resting state (charge q0): an electron counts only
-        # if every earlier step on the same side is accessible. Anolyte = successive
-        # reductions below the divider; catholyte = successive oxidations above it. Each
-        # electrode pool gets ONLY its own side's electrons (an ambipolar molecule is two
-        # separate pool rows, never double-counted).
-        paths, stop = contiguous_paths(m["couples"], rest[1], divider)
-        incomplete = [v for v in stop.values() if v.startswith("INCOMPLETE")]
-        if not paths["anolyte"] and not paths["catholyte"]:
-            rows.append(dict(base, status=("INCOMPLETE" if incomplete else "REJECTED"),
-                             reason="; ".join(stop.values()), n_accessible=0))
-            continue
-        c_ = cap.get(gid, {})
-        mw = _f(c_.get("MW")); mw_rep = _f(c_.get("MW_repeat_unit"))
-        spin_gap, spin_src = _min_spin_gap_eV(gid)
-        for pool, acc in paths.items():
-            if not acc:
-                continue
-            n_acc = len(acc)
-            definition=declared[gid]
-            model_review=selection_admission(definition['smiles'],definition['charges'],pool)
-            Es = [c["E"] for c in acc]
-            # --- capacity (bookkeeping on the contiguous path; counter-ion variants are
-            # scenario conventions, not exact physics: whether supporting ions count in a
-            # material-level gravimetric capacity depends on the device mass convention) ---
-            def _cap(mass):
-                return round(n_acc * ele.FARADAY / (mass * 3.6), 1) if mass else None
-            cap_maxload = {}
-            for salt, m_cat in m_cations.items():
-                m_ion = _max_counterion_mass(acc, m_anion, m_cat)
-                cap_maxload[salt] = _cap(mw_rep + m_ion) if (mw_rep and m_ion is not None) else None
-            # --- inner-sphere lambda, explicit conventions (QC-clean couples only) ---
-            clean = [c for c in acc if c["lam"] is not None and not c["lam_flag"]]
-            flags_seen = sorted({c["lam_flag"] for c in acc if c["lam_flag"]})
-            n_lam_flagged = sum(1 for c in acc if c["lam"] is not None and c["lam_flag"])
-            n_lam_missing = sum(1 for c in acc if c["lam"] is None)
-            lam_qc = ("ok" if len(clean) == n_acc else ("all_flagged" if not clean else "partial"))
-            mean = (lambda xs: round(statistics.mean(xs), 4) if xs else None)
-            lam4 = mean([c["lam"] for c in clean])                     # lambda_O + lambda_R
-            lam_O = mean([c["lam_ox"] / 1000.0 for c in clean if c["lam_ox"] is not None])
-            lam_R = mean([c["lam_red"] / 1000.0 for c in clean if c["lam_red"] is not None])
-            # --- outer-sphere + combined, per ET process (see module docstring) ---
-            lo = [c["lam_o"][0] for c in clean if c["lam_o"] and c["lam_o"][0]]
-            lam_o1 = mean(lo)
-            lam_het = round(lam4 / 2.0 + lam_o1, 4) if (lam4 is not None and lam_o1) else None
-            lam_se = None
-            if lam4 is not None and lam_o1:
-                a_eff = 7.19982 * pekar / lam_o1          # Born-equivalent radius, A
-                lam_se = round(lam4 + lambda_o_self_exchange(lam_o1, a_eff, 2.0 * a_eff), 4)
-            dvals = [disp[(gid, c["sR"])] for c in acc[:-1] if (gid, c["sR"]) in disp] \
-                if pool == "anolyte" else \
-                [disp[(gid, c["sO"])] for c in acc[:-1] if (gid, c["sO"]) in disp]
-            # a path cut short by MISSING data (not by an inaccessible couple) gives only a
-            # lower bound on capacity and stability: INCOMPLETE, never a ranked candidate
-            truncated = stop.get(pool, "").startswith("INCOMPLETE")
-            rows.append(dict(
-                base, status=("INCOMPLETE" if truncated else "candidate"),
-                **model_review,
-                **({"reason": f"path truncated by missing data: {stop[pool]}"} if truncated else {}),
-                role=pool, pool=pool,
-                resting_state=rest[0], path=" ; ".join(c["couple"] for c in acc),
-                path_stop=stop.get(pool, ""),
-                n_accessible=n_acc,
-                model_predicted_n_accessible=n_acc,
-                min_spin_gap_eV=spin_gap, spin_gap_source=spin_src,
-                spin_confidence=("wrong_ground_state" if (spin_gap is not None and spin_src.startswith('dft_')
-                                                         and spin_gap < -1e-4)
-                                 else ("DFT_check_required" if (spin_src.startswith('pending:') or
-                                      (spin_gap is not None and spin_src.startswith('uma:') and spin_gap < .5))
-                                 else ("low" if spin_gap is not None and spin_gap < sc.SPIN_GAP_LOW_EV else "ok"))),
-                thermal_qc=("imag_modes" if any(c["thermal_qc"] == "imag_modes" for c in acc)
-                            else "ok"),
-                E_V=round(statistics.mean(Es), 3),
-                E_anolyte_V=(round(statistics.mean(Es), 3) if pool == "anolyte" else None),
-                E_catholyte_V=(round(statistics.mean(Es), 3) if pool == "catholyte" else None),
-                sigma_E_V=round(max(c["sigma_E"] for c in acc), 3),
-                specific_capacity_mAh_g=_cap(mw), MW=(round(mw, 1) if mw else None),
-                MW_repeat_unit=(round(mw_rep, 1) if mw_rep else None),
-                capacity_repeat_mAh_g=_cap(mw_rep),
-                capacity_maxload_Li_mAh_g=cap_maxload.get("Li"),
-                capacity_maxload_TBA_mAh_g=cap_maxload.get("TBA"),
-                lambda_i_eV=lam4, lambda_i_ox_eV=lam_O, lambda_i_red_eV=lam_R,
-                sigma_lambda_eV=(unc["sigma_lambda"] if lam4 is not None else None),
-                lambda_qc=lam_qc, n_lambda_flagged=n_lam_flagged, n_lambda_missing=n_lam_missing,
-                lambda_flags=";".join(flags_seen),
-                lambda_o_pcm_eV=lam_o1,
-                lambda_o_method=";".join(sorted({c["lam_o"][2] for c in clean if c["lam_o"]})),
-                lambda_het_eV=lam_het,
-                sigma_lambda_het_eV=(round(((unc["sigma_lambda"] / 2) ** 2
-                                            + getattr(sc, "SIGMA_LAMBDA_O_EV", 0.0) ** 2) ** 0.5, 3)
-                                     if lam_het is not None else None),
-                lambda_se_contact_eV=lam_se,
-                dG_disp_kJmol=(round(min(dvals), 1) if dvals else None),
-                disp_applicable=(n_acc >= 2),
-                sigma_disp_eV=(unc["sigma_disp"] if dvals else None),
-                all_intact_bound=True,
-                SA_score=_f(c_.get("SA_score")),
-                dGsolv_proxy_eV=_f(c_.get("dGsolv_neutral_eV")),
-            ))
 
-    # --- write ---
+def _write_and_print_scorecard(rows, unc, wlo, whi):
     RESULTS.mkdir(exist_ok=True)
     atomic_write_json(RESULTS / "uncertainty_evidence.json", unc)
-    cols = ["id", "name", "family", "batch", "chem_flag", "rankable", "status", "role", "pool",
-            "model_primary_admissible", "model_validation_status", "model_validation_evidence",
-            "model_max_observed_error_V", "model_predicted_n_accessible",
-            "resting_state", "path", "path_stop", "n_accessible", "E_V", "E_anolyte_V",
-            "E_catholyte_V", "sigma_E_V", "specific_capacity_mAh_g", "MW",
-            "MW_repeat_unit", "capacity_repeat_mAh_g", "capacity_maxload_Li_mAh_g",
-            "capacity_maxload_TBA_mAh_g", "lambda_i_eV", "lambda_i_ox_eV", "lambda_i_red_eV",
-            "sigma_lambda_eV", "lambda_qc", "n_lambda_flagged", "n_lambda_missing",
-            "lambda_flags", "lambda_o_pcm_eV", "lambda_o_method", "lambda_het_eV",
-            "sigma_lambda_het_eV", "lambda_se_contact_eV", "dG_disp_kJmol", "disp_applicable",
-            "sigma_disp_eV", "all_intact_bound", "thermal_qc", "min_spin_gap_eV",
-            "spin_gap_source", "spin_confidence", "SA_score", "dGsolv_proxy_eV", "reason"]
+    cols = [
+        "id", "name", "family", "batch", "chem_flag", "rankable", "status", "role", "pool",
+        "model_primary_admissible", "model_validation_status", "model_validation_evidence",
+        "model_max_observed_error_V", "model_predicted_n_accessible",
+        "resting_state", "path", "path_stop", "n_accessible", "E_V", "E_anolyte_V",
+        "E_catholyte_V", "sigma_E_V", "specific_capacity_mAh_g", "MW",
+        "MW_repeat_unit", "capacity_repeat_mAh_g", "capacity_maxload_Li_mAh_g",
+        "capacity_maxload_TBA_mAh_g", "lambda_i_eV", "lambda_i_ox_eV", "lambda_i_red_eV",
+        "sigma_lambda_eV", "lambda_qc", "n_lambda_flagged", "n_lambda_missing",
+        "lambda_flags", "lambda_o_pcm_eV", "lambda_o_method", "lambda_het_eV",
+        "sigma_lambda_het_eV", "lambda_se_contact_eV", "dG_disp_kJmol", "disp_applicable",
+        "sigma_disp_eV", "all_intact_bound", "thermal_qc", "min_spin_gap_eV",
+        "spin_gap_source", "spin_confidence", "SA_score", "dGsolv_proxy_eV", "reason",
+    ]
     out = RESULTS / "scorecard.csv"
     with out.open("w", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=cols); w.writeheader()
+        writer = csv.DictWriter(f, fieldnames=cols)
+        writer.writeheader()
         for r in rows:
-            w.writerow({k: r.get(k, "") for k in cols})
+            writer.writerow({k: r.get(k, "") for k in cols})
 
     cands = [r for r in rows if r["status"] == "candidate"]
-
-    def _sortkey(r):
-        return (r["role"], r["E_V"])
-
     print(f"{'id':22s} {'role':9s} {'n':>2s} {'E_an':>6s} {'E_cat':>6s} {'Cap':>5s} "
           f"{'lam':>5s} {'dGdisp':>7s} {'SA':>4s}")
     print("-" * 76)
-    for r in sorted(cands, key=_sortkey):
+    for r in sorted(cands, key=lambda row: (row["role"], row["E_V"])):
         ea = f"{r['E_anolyte_V']:+.2f}" if r["E_anolyte_V"] is not None else "-"
         ec = f"{r['E_catholyte_V']:+.2f}" if r["E_catholyte_V"] is not None else "-"
         cap_s = f"{r['specific_capacity_mAh_g']:.0f}" if r["specific_capacity_mAh_g"] else "-"
@@ -721,13 +643,131 @@ def build():
     rej = [r for r in rows if r["status"] == "REJECTED"]
     inc = [r for r in rows if r["status"] == "INCOMPLETE"]
     for r in rej:
-        print(f"REJECTED   {r['id']}: {r.get('reason','')}")
+        print(f"REJECTED   {r['id']}: {r.get('reason', '')}")
     for r in inc:
-        print(f"INCOMPLETE {r['id']}: {r.get('reason','')}")
+        print(f"INCOMPLETE {r['id']}: {r.get('reason', '')}")
     print(f"\n{len(cands)} candidate pool-rows, {len(rej)} rejected, {len(inc)} incomplete. "
           f"uncertainty values and evidence recorded in uncertainty_evidence.json. "
           f"Window {wlo}..{whi} V vs Fc.")
     print(f"wrote {out}")
+
+
+def build():
+    ele = _cfg("electrolyte")
+    sc = _cfg("scorecard_config")
+    wlo, whi = ele.WINDOW_V_VS_FC
+    divider = ele.ANOLYTE_CATHOLYTE_DIVIDER_V
+
+    redox = _load("redox_potentials")
+    unc = derive_uncertainties(redox)   # all sigmas computed from benchmarks (not hard-coded)
+    unc["prior_sigma_axes_accepted"] = require_derived_sigmas(unc)
+    # A flagged inner-sphere lambda must not silently enter the mean or the Pareto ranking.
+    reorg_rows = {(r["id"], r["couple"]): r for r in _load("reorganization")}
+    integ = {(r["id"], r["couple"]): r["verdict"] for r in _load("state_integrity")}
+    disp = {(r["id"], r["intermediate"]): _f(r["dG_disp_kJmol"])
+            for r in _load("stability_disproportionation")}
+    cap = {r["id"]: r for r in _load("capacity_and_proxies")}
+    lam_o = {(r["id"], _states_of(r["couple"])): (_f(r["lambda_o_pcm_eV"]),
+                                                  _f(r["lambda_o_born_eV"]),
+                                                  r.get("method", ""))
+             for r in _load("lambda_outer")}
+    pekar = 1.0 / ele.SOLVENT["eps_optical"] - 1.0 / ele.SOLVENT["eps_r"]
+    m_anion = _ion_mass(getattr(sc, "COUNTERION_ANION_SMILES", None))
+    m_cations = {k: _ion_mass(s) for k, s in getattr(sc, "SUPPORTING_CATIONS", {}).items()}
+    candidate_ids = _candidate_ids()
+    batches, chem_flags = _candidate_batches(), _candidate_chem_flags()
+    unrankable = _unrankable_ids()
+    resting = _resting_states()
+    from redox.core.common import read_manifest
+    from redox.quality.model_limits import selection_admission
+
+    declared = {}
+    for row in read_manifest():
+        entry = declared.setdefault(row["id"], dict(smiles=row["smiles"], charges=[]))
+        entry["charges"].append(int(row["charge"]))
+
+    by_mol = _group_couples_by_molecule(
+        redox, candidate_ids, reorg_rows, integ, lam_o, wlo, whi, sc, unc
+    )
+
+    rows = []
+    for gid, m in by_mol.items():
+        base = dict(id=gid, name=m["name"], family=m["family"], batch=batches.get(gid, ""),
+                    chem_flag=chem_flags.get(gid, ""), rankable=(gid not in unrankable))
+        rest = resting.get(gid)
+        if rest is None:
+            rows.append(dict(base, status="INCOMPLETE", reason="no declared resting state (n_e=0)",
+                             n_accessible=0))
+            continue
+        paths, stop = contiguous_paths(m["couples"], rest[1], divider)
+        incomplete = [v for v in stop.values() if v.startswith("INCOMPLETE")]
+        if not paths["anolyte"] and not paths["catholyte"]:
+            rows.append(dict(base, status=("INCOMPLETE" if incomplete else "REJECTED"),
+                             reason="; ".join(stop.values()), n_accessible=0))
+            continue
+        c_ = cap.get(gid, {})
+        mw = _f(c_.get("MW"))
+        mw_rep = _f(c_.get("MW_repeat_unit"))
+        spin_gap, spin_src = _min_spin_gap_eV(gid)
+        for pool, acc in paths.items():
+            if not acc:
+                continue
+            n_acc = len(acc)
+            definition = declared[gid]
+            model_review = selection_admission(definition["smiles"], definition["charges"], pool)
+            Es = [c["E"] for c in acc]
+
+            def _cap(mass):
+                return round(n_acc * ele.FARADAY / (mass * 3.6), 1) if mass else None
+
+            cap_maxload = {}
+            for salt, m_cat in m_cations.items():
+                m_ion = _max_counterion_mass(acc, m_anion, m_cat)
+                cap_maxload[salt] = _cap(mw_rep + m_ion) if (mw_rep and m_ion is not None) else None
+
+            reorg_summary = _summarize_reorganization(acc, n_acc, pekar, unc, sc)
+            if pool == "anolyte":
+                dvals = [disp[(gid, c["sR"])] for c in acc[:-1] if (gid, c["sR"]) in disp]
+            else:
+                dvals = [disp[(gid, c["sO"])] for c in acc[:-1] if (gid, c["sO"]) in disp]
+            truncated = stop.get(pool, "").startswith("INCOMPLETE")
+            mean_e = round(statistics.mean(Es), 3)
+            rows.append(dict(
+                base,
+                status=("INCOMPLETE" if truncated else "candidate"),
+                **model_review,
+                **({"reason": f"path truncated by missing data: {stop[pool]}"} if truncated else {}),
+                role=pool,
+                pool=pool,
+                resting_state=rest[0],
+                path=" ; ".join(c["couple"] for c in acc),
+                path_stop=stop.get(pool, ""),
+                n_accessible=n_acc,
+                model_predicted_n_accessible=n_acc,
+                min_spin_gap_eV=spin_gap,
+                spin_gap_source=spin_src,
+                spin_confidence=_classify_spin_confidence(spin_gap, spin_src, sc),
+                thermal_qc=("imag_modes" if any(c["thermal_qc"] == "imag_modes" for c in acc) else "ok"),
+                E_V=mean_e,
+                E_anolyte_V=(mean_e if pool == "anolyte" else None),
+                E_catholyte_V=(mean_e if pool == "catholyte" else None),
+                sigma_E_V=round(max(c["sigma_E"] for c in acc), 3),
+                specific_capacity_mAh_g=_cap(mw),
+                MW=(round(mw, 1) if mw else None),
+                MW_repeat_unit=(round(mw_rep, 1) if mw_rep else None),
+                capacity_repeat_mAh_g=_cap(mw_rep),
+                capacity_maxload_Li_mAh_g=cap_maxload.get("Li"),
+                capacity_maxload_TBA_mAh_g=cap_maxload.get("TBA"),
+                **reorg_summary,
+                dG_disp_kJmol=(round(min(dvals), 1) if dvals else None),
+                disp_applicable=(n_acc >= 2),
+                sigma_disp_eV=(unc["sigma_disp"] if dvals else None),
+                all_intact_bound=True,
+                SA_score=_f(c_.get("SA_score")),
+                dGsolv_proxy_eV=_f(c_.get("dGsolv_neutral_eV")),
+            ))
+
+    _write_and_print_scorecard(rows, unc, wlo, whi)
     return rows
 
 

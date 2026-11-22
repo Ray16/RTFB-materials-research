@@ -267,7 +267,7 @@ def commands(config, ids, output, backend, threads, nconf, thermal_definition="n
     return jobs
 
 
-def main(argv=None):
+def _parse_and_validate_args(argv):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--config", type=Path, default=ROOT / "config/custom_candidates.py")
     ap.add_argument("--only", help="comma-separated registered IDs")
@@ -311,19 +311,12 @@ def main(argv=None):
         ap.error("threads and nconf must be positive")
     for g in groups:
         validate_group(scaffold, g)
-    ids = [g["id"] for g in groups]
     if a.backend == "cpu" and a.thermal_definition == "native":
         ap.error("native thermochemistry is validated for GPU execution; select a GPU backend")
-    jobs = commands(config, ids, output, a.backend, a.threads, a.nconf, a.thermal_definition)
-    if a.skip_review:
-        jobs = [job for job in jobs if job[0] not in ("review_tables", "fc_reference_sync")]
-    if not a.execute:
-        for label, gpu, argv in jobs:
-            prefix = f"{GATE} run <gpu> -- " if gpu and a.backend == "gpu" else ""
-            print(f"{label}: {prefix}{shlex.join(argv)}")
-        print("Plan only. Add --execute and --gpu INDEX to run with a reservation.")
-        return
-    previous = None
+    return ap, a, gpus, config, output, scaffold, groups
+
+
+def _check_resume_state(ap, output, config, scaffold, groups, ids, a):
     if output.exists():
         if not a.resume:
             ap.error("choose a new output directory or use --resume; existing runs are preserved")
@@ -336,8 +329,13 @@ def main(argv=None):
         if (any(previous.get(key) != value for key, value in expected.items())
                 or not resume_config_matches(previous, config, scaffold, groups)):
             ap.error("resume inputs or methods differ from the preserved run")
-    elif a.resume:
+        return previous
+    if a.resume:
         ap.error("there is no preserved run to resume")
+    return None
+
+
+def _allocate_worker_resources(ap, a, gpus):
     if a.backend == "gpu" and (a.gpu is None or not GATE.is_file()):
         ap.error("GPU execution requires --gpu and the system reservation gate")
     allowed_cpus = sorted(os.sched_getaffinity(0))
@@ -367,7 +365,12 @@ def main(argv=None):
     # Serial stages (and native thermal, which requires exactly --threads CPUs) use the first
     # block; concurrent state workers each get a disjoint block of --threads CPUs.
     cpu_blocks = [allocated[k * a.threads:(k + 1) * a.threads] for k in range(workers)]
-    cpu_set = cpu_blocks[0]
+    return workers, taskset, cpu_blocks, node_preflight, original_affinity
+
+
+def _build_worker_env(ap, threads):
+    import site
+
     env = dict(os.environ, PYTHONPATH=str(ROOT / "src"))
     env["REDOX_PIPELINE_OWNER_PID"] = str(os.getpid())
     env["REDOX_PIPELINE_OWNER_START"] = Path("/proc/self/stat").read_text().rsplit(")", 1)[1].split()[19]
@@ -377,43 +380,137 @@ def main(argv=None):
         ap.error("the selected environment has no xTB executable")
     env["XTB_BIN"] = xtb
     for key in ("OMP_NUM_THREADS", "OMP_THREAD_LIMIT", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS", "NUMEXPR_NUM_THREADS"):
-        env[key] = str(a.threads)
-    import site
+        env[key] = str(threads)
     libs = [str(p) for base in site.getsitepackages() for p in Path(base).glob("nvidia/*/lib")]
     env["LD_LIBRARY_PATH"] = ":".join(libs + [env.get("LD_LIBRARY_PATH", "")])
+    return env, xtb
+
+
+def _acquire_motif_locks(ap, ids, lockdir):
+    lockdir.mkdir(parents=True, exist_ok=True)
+    handles = []
+    for gid in sorted(ids):
+        f = (lockdir / f"{gid}.lock").open("a+")
+        handles.append(f)
+        try:
+            fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError:
+            ap.error(f"{gid}: another pipeline run owns this motif")
+        f.seek(0)
+        f.truncate()
+        f.write(json.dumps(dict(host=socket.gethostname(), pid=os.getpid(), id=gid)))
+        f.flush()
+    return handles
+
+
+def _verify_selected_records(ids, states, manifest, mp, attempt_output):
+    from redox.core.common import free_energy, read_manifest, read_result
+    from redox.properties.potentials import fc_live, thermal_definition
+
+    reference = fc_live()
+    definition = thermal_definition(read_result("ferrocene", "ox"))
+    selected = [r for r in read_manifest() if r["id"] in ids]
+    records = [read_result(r["id"], r["state"]) for r in selected]
+    if (
+        reference is None
+        or any(s["status"] != "ready" for s in states)
+        or any(
+            free_energy(r)[1] != "ok"
+            or free_energy(r)[0] is None
+            or thermal_definition(r) != definition
+            for r in records
+        )
+    ):
+        raise SystemExit("Selected records or matched Fc reference remain unvalidated")
+    manifest.update(
+        status="selected_outputs_verified",
+        selected_state_qc=states,
+        selected_states_ready=True,
+        scientific_accuracy_validated=False,
+        table_collection_pending=True,
+    )
+    atomic_write_json(mp, manifest)
+    print(f"Verified selected records: {mp}; tables await separate collection "
+          f"(python -m redox.reporting.tables --out {attempt_output / 'tables'} --workers N)")
+
+
+def _run_final_table_audit(wrap, a, cpu_set, env, ids, states, manifest, mp, attempt_output):
+    import csv
+
+    review_log = attempt_output / "review_tables.log"
+    review_argv = wrap([sys.executable, "-m", "redox.reporting.tables",
+                        "--out", str(attempt_output / "tables")], a.gpu, cpu_set, False)
+    entry = dict(stage="review_tables", argv=review_argv, log=str(review_log), started=time.time())
+    manifest["steps"].append(entry)
+    atomic_write_json(mp, manifest)
+    proc, attempts = run_stage(review_argv, review_log, env)
+    entry.update(returncode=proc.returncode, finished=time.time(), attempts=attempts)
+    atomic_write_json(mp, manifest)
+    if proc.returncode:
+        manifest.update(status="failed", failed_stage="review_tables",
+                        scientific_accuracy_validated=False, selected_state_qc=states)
+        atomic_write_json(mp, manifest)
+        raise SystemExit(f"review_tables failed; see {review_log}")
+    review = json.loads((attempt_output / "tables/review_status.json").read_text())
+    if review.get("arithmetic_discrepancies") != 0 or not (attempt_output / "tables/Candidates_computed.xlsx").is_file():
+        raise SystemExit("Final property artifacts are missing or failed the independent audit")
+    with (attempt_output / "tables/redox_potentials.csv").open() as stream:
+        selected_events = [r for r in csv.DictReader(stream) if r["id"] in ids]
+    if ({r["id"] for r in selected_events} != set(ids)
+            or any(r.get("status") != "ok" for r in selected_events)
+            or any(r["status"] != "ready" for r in states)):
+        raise SystemExit("Selected motifs still have incomplete or unvalidated property records")
+    manifest.update(status="tables_audited", selected_state_qc=states,
+                    selected_states_ready=all(r["status"] == "ready" for r in states),
+                    scientific_accuracy_validated=False)
+    atomic_write_json(mp, manifest)
+    print(f"Audited property tables: {attempt_output / 'tables'}")
+
+
+def main(argv=None):
+    ap, a, gpus, config, output, scaffold, groups = _parse_and_validate_args(argv)
+    ids = [g["id"] for g in groups]
+    jobs = commands(config, ids, output, a.backend, a.threads, a.nconf, a.thermal_definition)
+    if a.skip_review:
+        jobs = [job for job in jobs if job[0] not in ("review_tables", "fc_reference_sync")]
+    if not a.execute:
+        for label, gpu, argv_item in jobs:
+            prefix = f"{GATE} run <gpu> -- " if gpu and a.backend == "gpu" else ""
+            print(f"{label}: {prefix}{shlex.join(argv_item)}")
+        print("Plan only. Add --execute and --gpu INDEX to run with a reservation.")
+        return
+
+    previous = _check_resume_state(ap, output, config, scaffold, groups, ids, a)
+    workers, taskset, cpu_blocks, node_preflight, original_affinity = _allocate_worker_resources(ap, a, gpus)
+    cpu_set = cpu_blocks[0]
+    env, xtb = _build_worker_env(ap, a.threads)
+    lockdir = ROOT / "logs/pipeline_locks"
     # One writer owns each motif for the entire run; kernel releases locks on crash/exit.
     handles = []
     try:
-        lockdir = ROOT / "logs/pipeline_locks"; lockdir.mkdir(parents=True, exist_ok=True)
-        for gid in sorted(ids):
-            f = (lockdir / f"{gid}.lock").open("a+")
-            handles.append(f)
-            try:
-                fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
-            except BlockingIOError:
-                ap.error(f"{gid}: another pipeline run owns this motif")
-            f.seek(0); f.truncate()
-            f.write(json.dumps(dict(host=socket.gethostname(), pid=os.getpid(), id=gid)))
-            f.flush()
+        handles = _acquire_motif_locks(ap, ids, lockdir)
         output.mkdir(parents=True, exist_ok=a.resume)
         attempt_output = output
         if previous is not None:
             attempt_output = output / f"resume_{time.time_ns()}"
             attempt_output.mkdir()
             shutil.copy2(output / "run_manifest.json", attempt_output / "previous_run_manifest.json")
-        manifest = dict(config=str(config), input_sha256=hashlib.sha256(config.read_bytes()).hexdigest(),
-                        selected_definitions_sha256=selection_hash(scaffold, groups),
-                        ids=ids, host=socket.gethostname(), pid=os.getpid(), python=sys.executable,
-                        backend=a.backend, gpu=a.gpu, gpus=gpus, threads=a.threads, cpu_affinity=cpu_set,
-                        worker_cpu_affinity=cpu_blocks,
-                        node_preflight=node_preflight,
-                        xtb=xtb, nconf=a.nconf, thermal_definition=a.thermal_definition,
-                        prior_run_manifest=str(attempt_output / "previous_run_manifest.json") if previous else None,
-                        attempt_output=str(attempt_output), steps=[])
+        manifest = dict(
+            config=str(config),
+            input_sha256=hashlib.sha256(config.read_bytes()).hexdigest(),
+            selected_definitions_sha256=selection_hash(scaffold, groups),
+            ids=ids, host=socket.gethostname(), pid=os.getpid(), python=sys.executable,
+            backend=a.backend, gpu=a.gpu, gpus=gpus, threads=a.threads, cpu_affinity=cpu_set,
+            worker_cpu_affinity=cpu_blocks, node_preflight=node_preflight, xtb=xtb,
+            nconf=a.nconf, thermal_definition=a.thermal_definition,
+            prior_run_manifest=str(attempt_output / "previous_run_manifest.json") if previous else None,
+            attempt_output=str(attempt_output), steps=[],
+        )
         mp = output / "run_manifest.json"
-        def wrap(argv, gpu, cpus, compute=True):
-            argv = [taskset, "--cpu-list", ",".join(map(str, cpus)), *argv]
-            return [str(GATE), "run", str(gpu), "--", *argv] if compute and a.backend == "gpu" else argv
+
+        def wrap(cmd, gpu, cpus, compute=True):
+            cmd = [taskset, "--cpu-list", ",".join(map(str, cpus)), *cmd]
+            return [str(GATE), "run", str(gpu), "--", *cmd] if compute and a.backend == "gpu" else cmd
 
         from redox.core.common import read_manifest as declared_rows
         ferrocene_states = tuple(r["state"] for r in declared_rows() if r["id"] == "ferrocene")
@@ -421,11 +518,9 @@ def main(argv=None):
                             a.thermal_definition, ferrocene_states=ferrocene_states)
         # Review-table building is off the campaign critical path. The parallel driver
         # (more than one GPU) ends after per-record QC; a single-GPU run keeps building
-        # tables for existing single-candidate callers. Either way run the full table
-        # audit separately with: python -m redox.reporting.tables --out <run>/tables --workers N
+        # tables for existing single-candidate callers.
         effective_skip_review = a.skip_review or workers > 1
         entries, results = {}, {}
-        lockdir = ROOT / "logs/pipeline_locks"
 
         # Only the coordinator thread (started/finished) mutates manifest and writes it;
         # run() executes in a worker thread and stashes its outcome under its own node
@@ -446,23 +541,23 @@ def main(argv=None):
                 return 0
             gpu = gpus[slot] if gpus else a.gpu
             cpus = cpu_blocks[slot]
-            argv = wrap(list(node.argv), gpu, cpus, node.compute)
+            cmd = wrap(list(node.argv), gpu, cpus, node.compute)
             lock_handle = None
             try:
                 if node.lock:
                     # Serialize the one shared ferrocene namespace across any concurrent
-                    # runs; the per-gid flocks do not cover it. Blocking, not fail-fast,
-                    # so a sibling run waits rather than aborting.
+                    # runs; the per-gid flocks do not cover it.
                     lock_handle = (lockdir / f"{node.lock}.lock").open("a+")
                     fcntl.flock(lock_handle, fcntl.LOCK_EX)
                     if node_done(node):
                         results[node.name] = dict(skipped=True, returncode=0, attempts=[])
                         return 0
-                proc, attempts = run_stage(argv, log, env)
+                proc, attempts = run_stage(cmd, log, env)
             finally:
                 if lock_handle is not None:
-                    fcntl.flock(lock_handle, fcntl.LOCK_UN); lock_handle.close()
-            results[node.name] = dict(argv=argv, gpu=gpu, cpu_affinity=cpus,
+                    fcntl.flock(lock_handle, fcntl.LOCK_UN)
+                    lock_handle.close()
+            results[node.name] = dict(argv=cmd, gpu=gpu, cpu_affinity=cpus,
                                       returncode=proc.returncode, attempts=attempts,
                                       log=attempts[-1]["log"])
             return proc.returncode
@@ -473,68 +568,22 @@ def main(argv=None):
 
         result = execute_graph(nodes, run, workers=workers, started=started, finished=finished)
         atomic_write_json(mp, manifest)
+        from redox.core.common import read_manifest
+        from redox.quality.readiness import inspect_states
+        states = inspect_states([r for r in read_manifest() if r["id"] in ids])
         if result["failed"]:
-            from redox.quality.readiness import inspect_states
-            from redox.core.common import read_manifest
             failed_entry = entries[result["failed"][0]]
             refused = bool(failed_entry.get("attempts")) and failed_entry["attempts"][-1]["reservation_refused"]
             manifest.update(status="resource_unavailable" if refused else "failed",
                             failed_stage=failed_entry["stage"],
                             scientific_accuracy_validated=False,
-                            selected_state_qc=inspect_states([r for r in read_manifest() if r["id"] in ids]))
+                            selected_state_qc=states)
             atomic_write_json(mp, manifest)
             raise SystemExit(f"{failed_entry['node']} failed; see {failed_entry.get('log')}")
-        # Written last, after the independent audit passes; QC limits remain in tables.
-        from redox.quality.readiness import inspect_states
-        from redox.core.common import read_manifest
-        states = inspect_states([r for r in read_manifest() if r["id"] in ids])
         if effective_skip_review:
-            from redox.properties.potentials import fc_live, thermal_definition
-            from redox.core.common import read_result, free_energy
-            reference=fc_live()
-            definition=thermal_definition(read_result("ferrocene","ox"))
-            selected=[r for r in read_manifest() if r["id"] in ids]
-            records=[read_result(r["id"],r["state"]) for r in selected]
-            if (reference is None or any(s["status"]!="ready" for s in states)
-                    or any(free_energy(r)[1]!="ok" or free_energy(r)[0] is None
-                           or thermal_definition(r)!=definition for r in records)):
-                raise SystemExit("Selected records or matched Fc reference remain unvalidated")
-            manifest.update(status="selected_outputs_verified",selected_state_qc=states,
-                            selected_states_ready=True,scientific_accuracy_validated=False,
-                            table_collection_pending=True)
-            atomic_write_json(mp, manifest)
-            print(f"Verified selected records: {mp}; tables await separate collection "
-                  f"(python -m redox.reporting.tables --out {attempt_output / 'tables'} --workers N)")
+            _verify_selected_records(ids, states, manifest, mp, attempt_output)
             return
-        # Single-GPU default: build and audit tables as the final, off-DAG step.
-        review_log = attempt_output / "review_tables.log"
-        review_argv = wrap([sys.executable, "-m", "redox.reporting.tables",
-                            "--out", str(attempt_output / "tables")], a.gpu, cpu_set, False)
-        entry = dict(stage="review_tables", argv=review_argv, log=str(review_log), started=time.time())
-        manifest["steps"].append(entry); atomic_write_json(mp, manifest)
-        proc, attempts = run_stage(review_argv, review_log, env)
-        entry.update(returncode=proc.returncode, finished=time.time(), attempts=attempts)
-        atomic_write_json(mp, manifest)
-        if proc.returncode:
-            manifest.update(status="failed", failed_stage="review_tables",
-                            scientific_accuracy_validated=False, selected_state_qc=states)
-            atomic_write_json(mp, manifest)
-            raise SystemExit(f"review_tables failed; see {review_log}")
-        review = json.loads((attempt_output / "tables/review_status.json").read_text())
-        if review.get("arithmetic_discrepancies") != 0 or not (attempt_output / "tables/Candidates_computed.xlsx").is_file():
-            raise SystemExit("Final property artifacts are missing or failed the independent audit")
-        import csv
-        with (attempt_output / "tables/redox_potentials.csv").open() as stream:
-            selected_events = [r for r in csv.DictReader(stream) if r["id"] in ids]
-        if ({r["id"] for r in selected_events} != set(ids)
-                or any(r.get("status") != "ok" for r in selected_events)
-                or any(r["status"] != "ready" for r in states)):
-            raise SystemExit("Selected motifs still have incomplete or unvalidated property records")
-        manifest.update(status="tables_audited", selected_state_qc=states,
-                        selected_states_ready=all(r["status"] == "ready" for r in states),
-                        scientific_accuracy_validated=False)
-        atomic_write_json(mp, manifest)
-        print(f"Audited property tables: {attempt_output / 'tables'}")
+        _run_final_table_audit(wrap, a, cpu_set, env, ids, states, manifest, mp, attempt_output)
     finally:
         for f in handles:
             f.close()

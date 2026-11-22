@@ -118,8 +118,15 @@ The campaign driver (`redox.workflows.motifs`) runs the nine-stage pipeline of t
 paper and schedules independent `(candidate, state)` stages across GPUs. On the
 original cluster it submitted every GPU job through a reservation wrapper
 (`config/runtime_paths.json`); adapt that file to your scheduler. Library-level
-commands never launch DFT or Hessian jobs. See `docs/ARCHITECTURE.md`,
-`docs/WORKFLOWS.md` and `docs/RUNNING_CAMPAIGNS.md`.
+commands never launch DFT or Hessian jobs.
+
+For readers focused on the JCIM paper, the nine pipeline stages live in a small
+core subset (`structures.candidates`, `backends.uma_current`, `backends.dft`,
+`backends.sp`, `qm.qrrho`, `properties.{potentials,capacity_and_proxies,lambda_outer,reorg}`,
+`quality.{readiness,spins,stability}`, `screening.pareto`, `reporting.tables`,
+orchestrated by `workflows.motifs`). Additional modules under `workflows/` and
+`quality/` support extended oligomer, counterion, and recovery campaigns documented
+in `docs/ARCHITECTURE.md`, `docs/WORKFLOWS.md` and `docs/RUNNING_CAMPAIGNS.md`.
 
 ## Raw records
 
