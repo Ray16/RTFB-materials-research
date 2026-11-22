@@ -41,7 +41,8 @@ def artifacts(root):
         "manuscript/si_tables/S3_benchmark_endpoints.csv",
         "manuscript/si_tables/S7_scored_candidates.csv",
         "data/manuscript/pool_structures.csv", "manuscript/supporting_information.md",
-        "manuscript/jcim/manuscript.tex", "manuscript/jcim/references.bib")]
+        "manuscript/jcim/manuscript.tex", "manuscript/jcim/references.bib",
+        "manuscript/jcim/supporting_information.tex")]
     return sorted(paths)
 
 
@@ -108,6 +109,7 @@ def main():
         for name in expected:
             (export / name).unlink()
         (export / "manuscript/jcim/manuscript.pdf").unlink(missing_ok=True)
+        (export / "manuscript/jcim/supporting_information.pdf").unlink(missing_ok=True)
         env = os.environ.copy()
         env.pop("REDOX_DATA_ROOT", None)
         env.pop("XTB_BIN", None)
@@ -116,10 +118,14 @@ def main():
         scripts = ["scripts/manuscript/pool_structures.py"]
         scripts += [str(p.relative_to(export)) for p in sorted(
             export.glob("scripts/plotting/manuscript/fig*.py"))]
-        scripts += ["scripts/manuscript/build_si.py", "scripts/manuscript/build_latex.py"]
+        scripts += [
+            "scripts/manuscript/build_si.py",
+            "scripts/manuscript/build_si_pdf.py",
+            "scripts/manuscript/build_latex.py",
+        ]
         for i, script in enumerate(scripts):
             command = [sys.executable, script]
-            if args.no_compile and script.endswith("build_latex.py"):
+            if args.no_compile and script.endswith(("build_latex.py", "build_si_pdf.py")):
                 command.append("--no-compile")
             log_path = work / f"{i:02d}_{Path(script).stem}.log"
             print(f"  {script}", flush=True)
@@ -134,9 +140,10 @@ def main():
             mismatches = [name for name, row in report["artifacts"].items() if not row["matches"]]
             raise RuntimeError("Generated artifacts differ: " + ", ".join(mismatches))
         if not args.no_compile:
-            pdf = export / "manuscript/jcim/manuscript.pdf"
-            if not pdf.is_file() or not pdf.stat().st_size:
-                raise RuntimeError("Compilation produced no PDF")
+            for rel_pdf in ("manuscript/jcim/manuscript.pdf", "manuscript/jcim/supporting_information.pdf"):
+                pdf = export / rel_pdf
+                if not pdf.is_file() or not pdf.stat().st_size:
+                    raise RuntimeError(f"Compilation produced no PDF: {rel_pdf}")
             report["pdf_compiled"] = True
         report["success"] = True
     except (OSError, ValueError, RuntimeError, subprocess.CalledProcessError) as exc:

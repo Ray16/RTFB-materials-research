@@ -18,11 +18,13 @@ records and a GPU cluster. The scripts below are the ones behind the JCIM paper.
 | TOC graphic | `plotting/manuscript/fig_toc.py` | same scored table |
 | Exact structures of the scored candidates (`data/manuscript/pool_structures.csv`) | `manuscript/pool_structures.py` | `config/*.py` candidate definitions, scored table |
 | Supporting Information + `manuscript/si_tables/` | `manuscript/build_si.py` | the records above and `manuscript/evidence/` |
+| `manuscript/jcim/supporting_information.tex` / `.pdf` | `manuscript/build_si_pdf.py` | `manuscript/supporting_information.md` |
 | `manuscript/jcim/manuscript.tex` / `.pdf` | `manuscript/build_latex.py` | `manuscript/manuscript_draft_v0.md`, figure captions |
 
 ```bash
 for f in scripts/plotting/manuscript/fig*.py; do python "$f"; done
 PYTHONPATH=src python scripts/manuscript/build_si.py
+python scripts/manuscript/build_si_pdf.py         # needs xelatex
 python scripts/manuscript/build_latex.py          # needs xelatex + bibtex
 ```
 

@@ -36,6 +36,7 @@ environment; exact image bytes also depend on system fonts and Graphviz.
 ```bash
 for f in scripts/plotting/manuscript/fig*.py; do python "$f"; done
 PYTHONPATH=src python scripts/manuscript/build_si.py
+python scripts/manuscript/build_si_pdf.py     # optional; needs xelatex
 python scripts/manuscript/build_latex.py      # optional; needs xelatex + bibtex
 ```
 

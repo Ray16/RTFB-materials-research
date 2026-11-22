@@ -131,3 +131,69 @@ def test_latex_table_cell_allows_breaks_in_long_chemical_names():
     )
     assert r"dimethoxy\-pheno\-thiazine" in tex
     assert r")\allowbreak{}anthra\-quinone" in tex
+
+
+@pytest.mark.parametrize("failed_pass", [0, 1, 2])
+def test_si_pdf_failed_compile_removes_stale_or_partial_pdf(monkeypatch, tmp_path, failed_pass):
+    build = load_script("build_si_pdf")
+    monkeypatch.setattr(build, "OUT", tmp_path)
+    pdf = tmp_path / "supporting_information.pdf"
+    pdf.write_bytes(b"stale PDF")
+    commands = []
+
+    def run(cmd, **kwargs):
+        if not commands:
+            assert not pdf.exists()
+        commands.append(cmd)
+        pdf.write_bytes(b"partial PDF")
+        kwargs["stdout"].write("si compiler diagnostic\n")
+        if len(commands) - 1 == failed_pass:
+            raise subprocess.CalledProcessError(1, cmd)
+
+    monkeypatch.setattr(build.subprocess, "run", run)
+    with pytest.raises(RuntimeError, match="LaTeX build failed"):
+        build.compile_document()
+    assert len(commands) == failed_pass + 1
+    assert not pdf.exists()
+    assert "si compiler diagnostic" in (tmp_path / "si_build.log").read_text()
+
+
+def test_si_pdf_missing_compiler_cannot_reuse_old_pdf(monkeypatch, tmp_path):
+    build = load_script("build_si_pdf")
+    monkeypatch.setattr(build, "OUT", tmp_path)
+    pdf = tmp_path / "supporting_information.pdf"
+    pdf.write_bytes(b"stale PDF")
+
+    def missing(*a, **kw):
+        raise FileNotFoundError("xelatex")
+
+    monkeypatch.setattr(build.subprocess, "run", missing)
+    with pytest.raises(RuntimeError, match="LaTeX build failed at xelatex"):
+        build.compile_document()
+    assert not pdf.exists()
+
+
+def test_si_pdf_success_exit_without_pdf_is_failure(monkeypatch, tmp_path):
+    build = load_script("build_si_pdf")
+    monkeypatch.setattr(build, "OUT", tmp_path)
+    monkeypatch.setattr(build.subprocess, "run", lambda *a, **kw: None)
+    with pytest.raises(RuntimeError, match="produced no PDF"):
+        build.compile_document()
+
+
+def test_si_pdf_wide_tables_use_landscape_xltabular_and_repeated_headers():
+    build = load_script("build_si_pdf")
+    tex = build.convert()
+    assert r"\renewcommand{\thepage}{S\arabic{page}}" in tex
+    assert r"\tableofcontents" in tex
+    assert r"\begin{landscape}" in tex
+    assert r"\begin{xltabular}" in tex
+    assert r"\toprule" in tex
+    assert r"\endhead" in tex
+    assert r"Table S3a (continued)" in tex
+    assert r"Table S7 (continued)" in tex
+    # S7 heading stays attached inside landscape with Table S7 (no orphaned portrait heading).
+    assert "\\begin{landscape}\n\\section{All scored candidates}" in tex
+    # Long chemical names and DOIs get clean break points.
+    assert r"dimethoxy\-pheno\-thiazine" in tex
+    assert r"10.\allowbreak{}1021/\allowbreak{}acs.\allowbreak{}chemmater.\allowbreak{}8b04770" in tex
