@@ -75,3 +75,59 @@ def test_si_reports_recorded_versions_without_executable_or_installed_packages(m
     recorded = (ROOT / "manuscript/supporting_information.md").read_text()
     assert section.strip() == ("## S9. Software" + recorded.split("## S9. Software", 1)[1]
                               .split("## S10.", 1)[0]).strip()
+
+
+def test_raw_pareto_front_anolyte_and_catholyte():
+    from redox.screening.pareto import raw_pareto_front
+
+    anolytes = [
+        {"id": "a_best_v", "E": -1.5, "cap": 140.0},
+        {"id": "a_best_c", "E": -1.0, "cap": 190.0},
+        {"id": "a_dom", "E": -1.2, "cap": 130.0},
+        {"id": "a_mid", "E": -1.3, "cap": 160.0},
+    ]
+    assert [r["id"] for r in raw_pareto_front(anolytes, pool="anolyte")] == [
+        "a_best_v",
+        "a_best_c",
+        "a_mid",
+    ]
+
+    catholytes = [
+        {"id": "c_best_v", "E": 0.8, "cap": 140.0},
+        {"id": "c_best_c", "E": 0.4, "cap": 170.0},
+        {"id": "c_dom", "E": 0.3, "cap": 150.0},
+    ]
+    assert [r["id"] for r in raw_pareto_front(catholytes, pool="catholyte")] == [
+        "c_best_v",
+        "c_best_c",
+    ]
+
+
+def test_raw_pareto_front_rejects_invalid_pool():
+    from redox.screening.pareto import raw_pareto_front
+
+    with pytest.raises(ValueError, match="pool must be"):
+        raw_pareto_front([], pool="ambipolar")
+
+
+def test_scored_pool_has_no_placeholder_chemical_names():
+    import csv
+
+    rows = list(csv.DictReader((ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv").open()))
+    assert len(rows) >= 91
+    placeholders = [r["id"] for r in rows if "canonical structure supplied" in r["name"]]
+    assert placeholders == []
+
+
+def test_latex_table_cell_allows_breaks_in_long_chemical_names():
+    build = load_script("build_latex")
+    tex = build.table(
+        [
+            "| Candidate | E (V) |",
+            "|---|---|",
+            "| N-(4-methylbenzyl)-3,7-dimethoxyphenothiazine | +0.78 |",
+            "| 1-(4-methylbenzyloxy)anthraquinone | -1.48 |",
+        ]
+    )
+    assert r"dimethoxy\-pheno\-thiazine" in tex
+    assert r")\allowbreak{}anthra\-quinone" in tex

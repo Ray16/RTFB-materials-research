@@ -41,6 +41,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "src"))
 sys.path.insert(0, str(ROOT / "scripts" / "plotting"))
 
 import matplotlib
@@ -49,6 +50,7 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 
 from plot_style import apply_style, BASE
+from redox.screening.pareto import raw_pareto_front
 
 CSV = Path(sys.argv[1]) if len(sys.argv) > 1 else \
     ROOT / "data/manuscript/full_pool_scored_legacyG_MeCN_TBAPF6.csv"
@@ -139,24 +141,8 @@ def _mm(v: float) -> str:
 
 
 def pareto(cands, want_low_E):
-    """Raw-axis Pareto front: maximise capacity AND (minimise E for anolytes /
-    maximise E for catholytes). No scalarization."""
-    front = []
-    for a in cands:
-        dominated = False
-        for b in cands:
-            if b is a:
-                continue
-            cge = b["cap"] >= a["cap"]
-            pge = (b["E"] <= a["E"]) if want_low_E else (b["E"] >= a["E"])
-            strict = (b["cap"] > a["cap"]) or \
-                     ((b["E"] < a["E"]) if want_low_E else (b["E"] > a["E"]))
-            if cge and pge and strict:
-                dominated = True
-                break
-        if not dominated:
-            front.append(a)
-    return front
+    """Raw-axis Pareto front via redox.screening.pareto.raw_pareto_front."""
+    return raw_pareto_front(cands, pool="anolyte" if want_low_E else "catholyte")
 
 
 def load_frozen():

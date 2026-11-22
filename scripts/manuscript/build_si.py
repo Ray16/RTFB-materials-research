@@ -71,7 +71,7 @@ def s_module_map():
         ("5 Thermochemistry", "`redox.backends.dft._thermal_correction`; `redox.qm.qrrho`", "xTB RRHO (pool tier); projected qRRHO (DFT-frequency tier)"),
         ("6 Properties", "`redox.properties.potentials`, `.capacity_and_proxies`, `.lambda_outer`, `.reorg`", "potentials, capacity, λ_o, λ_i"),
         ("7 Quality checks", "`redox.quality.readiness`, `.spins`, `.stability`", "per-state structure, spin, protocol, completeness"),
-        ("8 Ranking", "`scripts/plotting/manuscript/fig5_pareto.py`, `redox.screening.pareto`", "Pareto fronts per pool (the script computes the fronts shown; the module implements the uncertainty-aware rule tested in Methods)"),
+        ("8 Ranking", "`redox.screening.pareto`", "Pareto fronts per pool (`raw_pareto_front` for Figure 5 / Table S7; `_pareto_front` for the uncertainty-aware rule tested in Methods)"),
         ("9 Tables and audit", "`redox.reporting.tables`", "exported tables and arithmetic audit"),
     ]
     missing = [m for _, mods, _ in stages for m in mods.replace("`", "").replace(";", ",").split(",")
@@ -330,6 +330,7 @@ them. Full outputs: `manuscript/evidence/2026-11-18_cpu_checks/readiness_*.csv`.
 
 def s_scored():
     import fig5_pareto as fp
+    from redox.screening.pareto import raw_pareto_front
     rows = list(csv.DictReader(open(SCORED)))
     lam = {r["id"]: r for r in csv.DictReader(open(ROOT / "data/manuscript/lambda_outer_fullpool_2026-11-17.csv"))}
     pool_flag = {r["id"]: r for r in csv.DictReader(open(EVID / "2026-11-18_cpu_checks/readiness_pool91.csv"))
@@ -337,8 +338,8 @@ def s_scored():
     smiles = {r["id"]: r["smiles"] for r in csv.DictReader(open(ROOT / "data/manuscript/pool_structures.csv"))}
     frozen, _ = fp.load_frozen()
     front = set()
-    for pool, low in (("anolyte", True), ("catholyte", False)):
-        front |= {r["id"] for r in fp.pareto([r for r in frozen if r["pool"] == pool and not r["ctrl"]], low)}
+    for pool in ("anolyte", "catholyte"):
+        front |= {r["id"] for r in raw_pareto_front([r for r in frozen if r["pool"] == pool and not r["ctrl"]], pool=pool)}
     frozen_ids = {r["id"] for r in frozen}
     out, md = [], []
     for r in rows:

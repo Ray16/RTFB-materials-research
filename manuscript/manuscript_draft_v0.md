@@ -352,7 +352,7 @@ assignment, thread limits, the xTB program, the number of conformer seeds, the
 thermal tier, and the return code and timing of every step. A resumed run must use
 the same inputs: new molecules may be added, but a changed molecule stops the run.
 Reproducibility is tested in two ways. Five worked examples (`examples/`) must
-reproduce stored results byte for byte, and a test suite (783 passing) checks the
+reproduce stored results byte for byte, and a test suite (802 passing) checks the
 code. The thermochemistry code, the xTB program, and the inputs of the worked
 examples are each checked against a stored SHA-256 hash before use, so any change
 to them is detected.
@@ -835,7 +835,7 @@ Versioned code and curated metadata are maintained in the public project
 repository (https://github.com/Ray16/RTFB-materials-research). The release provides the `redox` command registry and five worked examples under
 `examples/` that rebuild stored scientific results without rerunning DFT (checked
 with `scripts/validation/check_refactor_oracles.py`). It also includes a test suite
-of 783 passing tests (1 skipped; `pytest tests -q`, run 2026-11-19) and a
+of 802 passing tests (1 skipped; `pytest tests -q`, run 2026-11-22) and a
 hash-checked thermochemistry code that the worked examples depend on. The worked
 examples exercise this code on earlier systems; the numbers of this paper are
 regenerated separately. Every figure and the SI are rebuilt from committed tables by
@@ -851,15 +851,18 @@ Hessian jobs.
 ### Data availability
 
 The raw quantum-chemical records (geometries, energies, frequencies, and state
-metadata) for the candidate pool and the benchmark, about 270 GB in total, are kept
-in a separate data tree that the code reads through a configurable data root. The
-tables the figures are built from (the scored candidate pool and the outer-sphere
-estimates) are in the repository under `data/manuscript/`. The smaller records
-behind specific statements in this paper (the 39-endpoint benchmark record, the BMEPZ
-check, the SCF-policy control, the benchmark re-scored at the pool's thermal tier,
-the readiness checks and the throughput measurements) are under
-`manuscript/evidence/` and `manuscript/tables/`. The raw-record archive does not yet have a public archival
-DOI; final deposition and author metadata remain to be supplied **[TODO: author to supply data DOI,
+metadata) for the candidate pool and the benchmark, about 270 GB in total including
+binary SCF checkpoints, are kept in a separate data tree that the code reads through
+a configurable data root. The archival deposition target is the compact set of final
+converged XYZ geometries, energies, frequencies, and state metadata for the scored
+pool and benchmark. The tables the figures are built from (the scored candidate pool,
+exact capped-graft SMILES, and outer-sphere estimates) are in the repository under
+`data/manuscript/`. The smaller records behind specific statements in this paper (the
+39-endpoint benchmark record, the BMEPZ check, the SCF-policy control, the benchmark
+re-scored at the pool's thermal tier, the readiness checks and the throughput
+measurements) are under `manuscript/evidence/` and `manuscript/tables/`. The
+raw-record archive does not yet have a public archival DOI; final deposition and
+author metadata remain to be supplied **[TODO: author to supply data DOI,
 repository release tag, author list, contributions, funding, and competing-
 interest statements]**.
 

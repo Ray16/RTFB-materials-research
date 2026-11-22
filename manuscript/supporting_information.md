@@ -16,7 +16,7 @@ Each stage of the pipeline is one module in the released package. The run manife
 | 5 Thermochemistry | `redox.backends.dft._thermal_correction`; `redox.qm.qrrho` | xTB RRHO (pool tier); projected qRRHO (DFT-frequency tier) |
 | 6 Properties | `redox.properties.potentials`, `.capacity_and_proxies`, `.lambda_outer`, `.reorg` | potentials, capacity, λ_o, λ_i |
 | 7 Quality checks | `redox.quality.readiness`, `.spins`, `.stability` | per-state structure, spin, protocol, completeness |
-| 8 Ranking | `scripts/plotting/manuscript/fig5_pareto.py`, `redox.screening.pareto` | Pareto fronts per pool (the script computes the fronts shown; the module implements the uncertainty-aware rule tested in Methods) |
+| 8 Ranking | `redox.screening.pareto` | Pareto fronts per pool (`raw_pareto_front` for Figure 5 / Table S7; `_pareto_front` for the uncertainty-aware rule tested in Methods) |
 | 9 Tables and audit | `redox.reporting.tables` | exported tables and arithmetic audit |
 
 ## S2. Equations used
@@ -270,28 +270,28 @@ couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 | 2-[benzyl(ethyl)amino]-1,4-naphthoquinone | anolyte | 2 | −1.41 | 168.9 | 66.8 | 0.6815 | yes |  |  |
 | pmdi / direct_N / ethyl / OMe | anolyte | 2 | −1.41 | 137.3 | 61.2 | 0.6455 |  |  |  |
 | 2-(benzylamino)-1,4-naphthoquinone | anolyte | 2 | −1.41 | 185.3 | 69.2 | 0.733 | yes |  |  |
-| D3TaLES 80NECN O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −1.40 | 160.8 | 65.5 | 0.6684 |  |  |  |
-| D3TaLES 80NOPT N-benzyl (amine N-H) product (canonical structure supplied) | anolyte | 2 | −1.36 | 155.2 | 64.6 | 0.643 |  |  |  |
-| D3TaLES 80EEOZ O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −1.36 | 148.7 | 63.4 | 0.6329 |  |  |  |
-| D3TaLES 80XWVS N-benzyl (amine N-H) product (canonical structure supplied) | anolyte | 2 | −1.34 | 176.1 | 67.9 | 0.7104 |  |  |  |
+| 2-(dimethylamino)-6-[(4-methylbenzyl)oxy]-1,4-naphthoquinone | anolyte | 2 | −1.40 | 160.8 | 65.5 | 0.6684 |  |  |  |
+| 2-[butyl(4-methylbenzyl)amino]-1,4-naphthoquinone | anolyte | 2 | −1.36 | 155.2 | 64.6 | 0.643 |  |  |  |
+| 3,6-dimethyl-2-{3-[(4-methylbenzyl)oxy]propyl}-1,4-naphthoquinone | anolyte | 2 | −1.36 | 148.7 | 63.4 | 0.6329 |  |  |  |
+| 7-[methyl(4-methylbenzyl)amino]isoquinoline-5,8-dione | anolyte | 2 | −1.34 | 176.1 | 67.9 | 0.7104 |  |  |  |
 | pmdi / direct_N / ethyl / F | anolyte | 2 | −1.32 | 141.7 | 62.1 | 0.6745 |  |  |  |
 | 2-(benzyloxy)-3-methyl-1,4-naphthoquinone (O-benzyl phthiocol) | anolyte | 2 | −1.30 | 176.1 | 67.9 | 0.7173 |  |  |  |
 | N-(4-methylbenzyl)-N-ethyl 1,2,3,4-naphthalene diimide | anolyte | 2 | −1.30 | 130.6 | 59.9 | 0.6408 |  |  | spin_ensemble_component_unqualified |
-| D3TaLES 80LEVD O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −1.28 | 149.6 | 63.6 | 0.6369 |  |  |  |
-| D3TaLES 05MNMT N-benzyl (amine N-H) product (canonical structure supplied) | anolyte | 2 | −1.28 | 145.6 | 62.8 | 0.7233 |  |  |  |
+| 2-[(4-methylbenzyl)oxy]-3-(3-methylbut-2-en-1-yl)-1,4-naphthoquinone | anolyte | 2 | −1.28 | 149.6 | 63.6 | 0.6369 |  |  |  |
+| 2-bromo-3-[(4-methylbenzyl)amino]-1,4-naphthoquinone | anolyte | 2 | −1.28 | 145.6 | 62.8 | 0.7233 |  |  |  |
 | pmdi / direct_N / ethyl / CN | anolyte | 2 | −1.28 | 139.1 | 61.6 | 0.6671 |  |  | spin_ensemble_component_unqualified |
-| D3TaLES 80GXWG O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −1.28 | 161.3 | 65.6 | 0.6704 |  |  |  |
-| D3TaLES 05TXCN N-benzyl (amine N-H) product (canonical structure supplied) | anolyte | 2 | −1.28 | 165.5 | 66.3 | 0.7274 |  |  |  |
-| D3TaLES 80GKVH O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −1.27 | 155.6 | 64.6 | 0.6623 |  |  |  |
-| D3TaLES 80TBWR O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −1.26 | 166.3 | 66.4 | 0.695 |  |  |  |
+| 3,6-dimethyl-2-{[(4-methylbenzyl)oxy]methyl}-1,4-naphthoquinone | anolyte | 2 | −1.28 | 161.3 | 65.6 | 0.6704 |  |  |  |
+| 2-chloro-3-[(4-methylbenzyl)amino]-1,4-naphthoquinone | anolyte | 2 | −1.28 | 165.5 | 66.3 | 0.7274 |  |  |  |
+| 2-[(4-methylbenzyl)oxy]-3-(2-methylprop-1-en-1-yl)-1,4-naphthoquinone | anolyte | 2 | −1.27 | 155.6 | 64.6 | 0.6623 |  |  |  |
+| 5-methyl-6-{2-[(4-methylbenzyl)oxy]ethyl}-1-benzofuran-4,7-dione | anolyte | 2 | −1.26 | 166.3 | 66.4 | 0.695 |  |  |  |
 | 2-(4-methylbenzyloxy)-3,5,6-trimethyl-1,4-benzoquinone | anolyte | 2 | −1.25 | 189.9 | 69.9 | 0.7148 | yes |  |  |
-| D3TaLES 80PRFF O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −1.23 | 184.6 | 69.1 | 0.7455 |  |  |  |
-| D3TaLES 05UJSA N-benzyl (amine N-H) product (canonical structure supplied) | anolyte | 2 | −1.21 | 141.1 | 62.0 | 0.6368 |  |  |  |
+| 5-[(4-methylbenzyl)oxy]-1,4-naphthoquinone | anolyte | 2 | −1.23 | 184.6 | 69.1 | 0.7455 |  |  |  |
+| 2-[butyl(4-methylbenzyl)amino]-3-chloro-1,4-naphthoquinone | anolyte | 2 | −1.21 | 141.1 | 62.0 | 0.6368 |  |  |  |
 | 4-(benzylamino)-3-bromo-1,2-naphthoquinone | anolyte | 2 | −1.21 | 145.6 | 62.8 | 0.7231 |  |  |  |
 | 8-(benzyloxy)-2-chloro-7-ethyl-6-methoxy-1,4-naphthoquinone | anolyte | 2 | −1.13 | 140.0 | 61.8 | 0.6541 |  |  |  |
 | N-(4-methylbenzyl)-N-ethyl 1,2,3,4-anthracene diimide | anolyte | 2 | −1.13 | 116.4 | 56.7 | 0.6092 |  |  |  |
 | ndi / direct_N / ethyl / OMe | anolyte | 2 | −1.12 | 121.7 | 57.9 | 0.6174 |  |  |  |
-| D3TaLES 05LCLA benzyl ester (carboxylate) product (canonical structure supplied) | anolyte | 2 | −1.11 | 141.7 | 62.1 | 0.6557 |  |  |  |
+| 4-methylbenzyl 3-[(3,4-dioxo-3,4-dihydronaphthalen-1-yl)thio]propanoate | anolyte | 2 | −1.11 | 141.7 | 62.1 | 0.6557 |  |  |  |
 | 2-(benzyloxy)-3-bromo-1,4-naphthoquinone | anolyte | 2 | −1.11 | 145.2 | 62.8 | 0.7292 |  |  |  |
 | ndi / direct_N / ethyl / Me | anolyte | 2 | −1.11 | 126.3 | 58.9 | 0.6253 |  |  |  |
 | ndi / ether_C2 / ethyl / H | anolyte | 2 | −1.11 | 117.9 | 57.1 | 0.5982 |  |  |  |
@@ -306,7 +306,7 @@ couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 | N-(4-methylbenzyl)-N'-methyl naphthalene diimide | anolyte | 2 | −1.05 | 135.2 | 60.8 | 0.6621 |  |  |  |
 | 2-(4-methylbenzyloxy)-5-methoxy-1,4-benzoquinone | anolyte | 2 | −1.04 | 198.3 | 71.0 | 0.7599 | yes |  |  |
 | N-(4-methylbenzyl)-N'-cyclopropyl NDI | anolyte | 2 | −1.04 | 126.9 | 59.1 | 0.6346 |  |  |  |
-| D3TaLES 80MDPM N-benzyl (amine N-H) product (canonical structure supplied) | anolyte | 2 | −1.03 | 158.2 | 65.1 | 0.7043 |  |  |  |
+| 6-chloro-7-[methyl(4-methylbenzyl)amino]isoquinoline-5,8-dione | anolyte | 2 | −1.03 | 158.2 | 65.1 | 0.7043 |  |  |  |
 | N-(4-methylbenzyl)-N'-2fluoroethyl NDI | anolyte | 2 | −1.03 | 125.1 | 58.7 | 0.6389 |  |  |  |
 | 2-(4-benzyloxyphenyl)-1,4-benzoquinone | anolyte | 2 | −1.01 | 169.5 | 66.9 | 0.71 |  |  |  |
 | ndi / direct_N / ethyl / F | anolyte | 2 | −1.01 | 125.1 | 58.7 | 0.6387 |  |  |  |
@@ -322,7 +322,7 @@ couples, masses and radii: `si_tables/S7_scored_candidates.csv`.
 | N-benzyl-N'-ethyl-4,4'-bipyridinium (ethyl viologen) | anolyte | 2 | −0.94 | 177.3 | 68.1 | 0.6744 |  |  |  |
 | N-(4-methylbenzyl)-N'-(2-methoxyethyl)-4,4'-bipyridinium | anolyte | 2 | −0.94 | 161.3 | 65.6 | 0.647 |  |  |  |
 | viologen / direct_N / ethyl / F | anolyte | 2 | −0.85 | 167.3 | 66.6 | 0.6731 |  |  |  |
-| D3TaLES 05CZHI O-benzyl ether (phenol/enol, Williamson) product (canonical structure supplied) | anolyte | 2 | −0.83 | 142.9 | 62.3 | 0.7212 |  |  |  |
+| 2,3-dichloro-5-hydroxy-8-[(4-methylbenzyl)oxy]-1,4-naphthoquinone | anolyte | 2 | −0.83 | 142.9 | 62.3 | 0.7212 |  |  |  |
 | ndi / direct_N / ethyl / CN | anolyte | 2 | −0.81 | 123.1 | 58.2 | 0.6302 |  |  |  |
 | AV-3f ether at aryl C2 | anolyte | 2 | −0.77 | 109.3 | 55.0 | 0.5603 |  |  |  |
 | AV-3f ether at aryl C5 | anolyte | 2 | −0.77 | 109.3 | 55.0 | 0.5601 |  |  |  |

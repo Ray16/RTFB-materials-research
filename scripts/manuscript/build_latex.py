@@ -90,9 +90,18 @@ def table(lines, caption=None, label=None):
         else:
             cols.append(r">{\raggedright\arraybackslash}X")
     spec = "@{}" + "".join(cols) + "@{}"
-    def cell(c):   # long identifiers and chemical names may break after _ - ,
+    def cell(c):   # long identifiers and chemical names may break after _ - , ) and long stems
         s = inline(c).replace(r"\_", r"\_\allowbreak{}")
-        return re.sub(r"(?<=[A-Za-z0-9)\]])([-,])(?=[A-Za-z0-9(])", r"\1\\allowbreak{}", s)
+        s = re.sub(r"(?<=[A-Za-z0-9)\]])([-,])(?=[A-Za-z0-9(])", r"\1\\allowbreak{}", s)
+        s = re.sub(r"(\))(?=[A-Za-z])", r"\1\\allowbreak{}", s)
+        for word, hyph in (
+            ("dimethoxyphenothiazine", r"dimethoxy\-pheno\-thiazine"),
+            ("dihydrophenazine", r"dihydro\-phenazine"),
+            ("anthraquinone", r"anthra\-quinone"),
+            ("naphthoquinone", r"naphtho\-quinone"),
+        ):
+            s = s.replace(word, hyph)
+        return s
     body = [" & ".join(cell(c) for c in rows[0]) + r" \\ \hline"]
     body += [" & ".join(cell(c) for c in r) + r" \\" for r in rows[1:]]
     cap = (r"\caption{" + caption + "}" + (r"\label{" + label + "}" if label else "") + "\n") if caption else ""
