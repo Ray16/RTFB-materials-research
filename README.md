@@ -132,11 +132,13 @@ in `docs/ARCHITECTURE.md`, `docs/WORKFLOWS.md` and `docs/RUNNING_CAMPAIGNS.md`.
 ## Raw records
 
 The raw quantum-chemical records (geometries, energies, frequencies and state
-metadata, previously reported as about 270 GB) are not in this repository.
-As of 2026-11-19, the original archive path is unavailable and no recovered copy
-covering the scored pool has been verified. Raw-record regeneration and public
-data deposition remain blocked. Once recovered, set `REDOX_DATA_ROOT` to the
-directory containing the matching `calcs/` and `library/` records.
+metadata) are kept outside this git repository and read through `REDOX_DATA_ROOT`.
+A compact archival dataset covering all 92 scored candidates, all 30 benchmark
+molecules, ferrocene, and the DMPZ/PTZ native DFT-frequency confirmations (1,106
+files, ~570 KB compressed without binary SCF checkpoints) has been regenerated and
+verified (median |ΔG| = 0.81 meV vs. the committed pool record), ready for public
+DOI deposition. Set `REDOX_DATA_ROOT` to the extracted archive root containing
+`calcs/` and `library/`.
 
 The solution-surface reorganization module currently supports one conformer per
 state. It refuses multi-conformer averaging, which requires a defined state

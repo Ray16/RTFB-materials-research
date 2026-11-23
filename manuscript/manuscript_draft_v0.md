@@ -620,14 +620,27 @@ vs Fc in experiment. Re-plotting the
 catholyte Pareto panel with these points shows the gap being filled by a
 structured family rather than by isolated outliers (Figure 6).
 
-Like every value in the pool, these potentials use the ranking thermal tier. The
-pipeline's design calls for confirming leads with the more expensive DFT-frequency
-tier, and that has not yet been run for any DMPZ member. On the benchmark the two
-tiers differ by −0.06 to +0.11 V per potential (above), which is a guide to how
-much these values could move. The 91-candidate pool behind Figure 5 contains six
-catholytes (five DMPZ and one phenothiazine). The 2,7-dimethoxy DMPZ (E ≈ +0.21 V)
-was added after that pool was fixed, so the scored table has 92 rows. Figure 5 shows the 91-candidate pool; Figures 6
-and 7 also include this seventh catholyte.
+Like every value in the pool, the Table 2 potentials use the ranking thermal tier
+(xTB RRHO). To confirm the catholyte design rule at the **DFT-frequency tier**
+(level-matched native Fc reference, 4.379 V), we ran solution-DFT Hessians on all
+six grafted DMPZ members and 3,7-dimethoxyphenothiazine
+(`manuscript/evidence/2026-11-23_dmpz_native_confirm/catholyte_native_confirmation.json`).
+All seven catholytes pass every native minimum, gradient, symmetry, and
+finite-difference check on their neutral and radical-cation states; their first
+oxidation potentials (E₁) move by only −19 to +18 mV relative to the xTB tier,
+preserving every substituent shift within 6 mV (N′-(2,2,2-trifluoroethyl) +0.185 V,
+2,7-dimethyl −0.141 V, 2,7-dimethoxy −0.206 V relative to N′-ethyl). Four DMPZ
+members (N′-methyl, N′-(2-methoxyethyl), 2,7-dimethyl, and 2,7-dimethoxy) pass all
+three states at the native tier, giving mean potentials of +0.52, +0.55, +0.35, and
++0.25 V vs Fc — a uniform +0.048 to +0.077 V shift relative to the xTB tier (within
+the −0.06 to +0.11 V inter-tier spread measured on the benchmark) that preserves the
+ring-substitution design rule to 3 mV. The dication (`ox2`) Hessians of N′-ethyl and
+N′-(2,2,2-trifluoroethyl) DMPZ exceeded the 10⁻⁶ Ha/Bohr² symmetry threshold and
+were held automatically by the QC gate, illustrating per-state gating in practice.
+The 91-candidate pool behind Figure 5 contains six catholytes (five DMPZ and one
+phenothiazine). The 2,7-dimethoxy DMPZ (E ≈ +0.21 V) was added after that pool was
+fixed, so the scored table has 92 rows. Figure 5 shows the 91-candidate pool; Figures
+6 and 7 also include this seventh catholyte.
 
 ### Proposed non-aqueous full cells
 
@@ -798,9 +811,10 @@ out of scope for this study.
 Three next steps follow. First, the measured cost breakdown shows where time can be
 saved without changing results; two such savings are already in the released code,
 and an MLIP pre-screen could cut the DFT load for larger, more varied libraries.
-Second, the DMPZ catholytes should be confirmed with the DFT-frequency
-thermal tier, and λ_i recomputed in solvent, which the current code already
-supports. Third, the proposed cells need experimental tests. The code, worked
+Second, while the DFT-frequency confirmation tier now verifies the DMPZ design rule
+(all six E₁ couples and four complete two-electron couples), the two held dication
+Hessians and solution-phase λ_i values for the Pareto fronts remain to be completed
+with the current code. Third, the proposed cells need experimental tests. The code, worked
 examples, and test suite are released so that the reported numbers can be checked
 and extended independently.
 

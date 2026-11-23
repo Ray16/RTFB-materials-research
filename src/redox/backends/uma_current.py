@@ -23,7 +23,7 @@ import subprocess
 import sys
 import time
 
-from redox.core.common import ROOT
+from redox.core.common import ROOT, UMA_PROFILES
 from redox.core.io import atomic_write_json
 from redox.backends.uma_model_identity import digest
 
@@ -218,7 +218,8 @@ def run_uma(arguments, profile, policy):
 
     uma.make_calculator,uma.model_identity,uma.relax_state_scan = factory,identity,scan
     uma.OUT = ROOT/policy['nitro_output'] if profile == 'nitro' else ROOT/policy['legacy_output']
-    receipts = ROOT/'calcs/uma_profiles/run_receipts';receipts.mkdir(parents=True,exist_ok=True)
+    receipts = UMA_PROFILES / "run_receipts"
+    receipts.mkdir(parents=True, exist_ok=True)
     receipt = receipts/f'{time.time_ns()}_{os.getpid()}.json'
     checkpoint_parent = ROOT/'calcs/uma_profiles/checkpoints'/receipt.stem
     report = dict(started=time.time(),requested_backend='nitro',actual_backend=profile,
