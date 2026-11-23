@@ -624,7 +624,7 @@ Like every value in the pool, the Table 2 potentials use the ranking thermal tie
 (xTB RRHO). To confirm the catholyte design rule at the **DFT-frequency tier**
 (level-matched native Fc reference, 4.379 V), we ran solution-DFT Hessians on all
 six grafted DMPZ members and 3,7-dimethoxyphenothiazine
-(`manuscript/evidence/2026-11-23_dmpz_native_confirm/catholyte_native_confirmation.json`).
+(`manuscript/evidence/2026-11-23_dmpz_native_confirm/`).
 All seven catholytes pass every native minimum, gradient, symmetry, and
 finite-difference check on their neutral and radical-cation states; their first
 oxidation potentials (E₁) move by only −19 to +18 mV relative to the xTB tier,
